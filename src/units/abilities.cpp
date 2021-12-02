@@ -839,15 +839,24 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
  * @param[in] sp reference to ability to check
  * @param[in,out] checking_name the reference for checking if @name already added
  */
-static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name)
+static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name, bool& already_added, std::string& intro_abilities)
 {
 	if (active) {
 		const std::string& name = sp.cfg["name"].str();
-
+		bool good_or_bad_effect = sp.cfg["add"].to_int(0)!=0 || sp.cfg["sub"].to_int(0) != 0 || abs(sp.cfg["multiply"].to_int(1))!=1 || abs(sp.cfg["divide"].to_int(1))!=1;
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!weapon_abilities.empty()) weapon_abilities += ", ";
-			weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+			if (!already_added) {
+				weapon_abilities += intro_abilities;
+				already_added = true;
+			}
+			if(good_or_bad_effect){
+				bool good_effect = sp.cfg["add"].to_int(0)>0 || sp.cfg["sub"].to_int(0) < 0 || abs(sp.cfg["multiply"].to_int(1))>1 || abs(sp.cfg["divide"].to_int(1))<1;
+				weapon_abilities += good_effect ? font::span_color(font::good_dmg_color, name) : font::span_color(font::bad_dmg_color, name);
+			} else {
+				weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
+			}
 		}
 	}
 }
@@ -880,16 +889,20 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		}
 	}
 	std::string weapon_abilities;
+	std::string intro_abilities;
 	std::set<std::string> checking_name;
+	bool already_added = true;
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 	if(self_){
 		for (const config::any_child &sp : self_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
-
-			add_name(weapon_abilities, active, sp, checking_name);
+			add_name(weapon_abilities, active, sp, checking_name, already_added, intro_abilities);
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
+		if (!weapon_abilities.empty()) intro_abilities = "\n";
+		intro_abilities += translation::dsgettext("wesnoth-lib", "Teacher:");
+		already_added = false;
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if (it == units.end() || it->incapacitated())
@@ -898,17 +911,19 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				continue;
 			for (const config::any_child &sp : it->abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
-
-				add_name(weapon_abilities, active, sp, checking_name);
+				add_name(weapon_abilities, active, sp, checking_name, already_added, intro_abilities);
 			}
 		}
 	}
 
 	if(other_){
+		already_added = false;
+		intro_abilities = "";
+		if (!weapon_abilities.empty()) intro_abilities = "\n";
+		intro_abilities += translation::dsgettext("wesnoth-lib", "Opponent:");
 		for (const config::any_child &sp : other_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
-
-			add_name(weapon_abilities, active, sp, checking_name);
+			add_name(weapon_abilities, active, sp, checking_name, already_added, intro_abilities);
 		}
 		const auto adjacent = get_adjacent_tiles(other_loc_);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -919,8 +934,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 				continue;
 			for (const config::any_child &sp : it->abilities().all_children_range()){
 				const bool active = check_adj_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, sp.key);
-
-				add_name(weapon_abilities, active, sp, checking_name);
+				add_name(weapon_abilities, active, sp, checking_name, already_added, intro_abilities);
 			}
 		}
 	}
