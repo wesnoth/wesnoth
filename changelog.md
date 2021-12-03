@@ -43,6 +43,7 @@
    * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
    * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
    * Removed support for writing BMP screenshots (PR #6206).
+   * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
 
 ## Version 1.16.0+dev
  ### Add-ons client

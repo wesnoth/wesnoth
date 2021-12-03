@@ -2681,6 +2681,22 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
+    # handle removal of {MAGENTA_IS_THE_TEAM_COLOR}
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        m = re.match(r"(\s*)\{MAGENTA_IS_THE_TEAM_COLOR\}(.*)", line)
+        if m:
+            new_line = m.group(1) + m.group(2).lstrip()
+            if new_line.isspace():
+                # only empty spaces, make the line blank
+                # don't remove the line to not alter the other for cycles
+                lines[i] = "\n"
+            else:
+                # keep indentation and comments
+                lines[i] = new_line + "\n"
+            print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
+                                                                            i+1))
     # More syntax transformations would go here.
     return lines
 
