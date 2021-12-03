@@ -901,7 +901,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		}
 		const auto adjacent = get_adjacent_tiles(self_loc_);
 		if (!weapon_abilities.empty()) intro_abilities = "\n";
-		intro_abilities += translation::dsgettext("wesnoth-lib", "Teacher:");
+		intro_abilities += font::span_color(font::LABEL_COLOR, translation::dsgettext("wesnoth-lib", "Tch: "));
 		already_added = false;
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
 			const unit_map::const_iterator it = units.find(adjacent[i]);
@@ -920,7 +920,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	if(other_){
 		already_added = false;
 		if (!weapon_abilities.empty()) intro_abilities = "\n";
-		intro_abilities += translation::dsgettext("wesnoth-lib", "Opponent:");
+		intro_abilities += font::span_color(font::YELLOW_COLOR, translation::dsgettext("wesnoth-lib", "Opp: "));
 		for (const config::any_child sp : other_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(other_attack_, shared_from_this(), sp.cfg, other_, other_loc_, AFFECT_OTHER, sp.key);
 			add_name(weapon_abilities, active, sp, checking_name, already_added, intro_abilities);
