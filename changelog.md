@@ -17,6 +17,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Password storage was fixed to work with multiple accounts (PR #6290)
+   * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
 
 ## Version 1.16.1
  ### Add-ons server
