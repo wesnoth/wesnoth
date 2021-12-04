@@ -842,7 +842,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name, bool affect_adjacent, bool is_opponent)
 {
 	if (active) {
-		const std::string& name = sp.cfg["name"].str();
+		const std::string& describe_effect = sp.cfg["describe_effect"].str();
+		const std::string& name = describe_effect.empty() ? sp.cfg["name"].str() : describe_effect;
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!weapon_abilities.empty()) weapon_abilities += ", ";
