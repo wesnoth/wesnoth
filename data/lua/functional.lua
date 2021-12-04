@@ -126,15 +126,28 @@ local known_operators = {
 	['or'] = function(a, b) return a or b end,
 }
 
-function functional.reduce(input, operator, identity)
-	if type(operator) == 'string' then
-		operator = known_operators[operator]
+--- Reduce the elements of array t into a single value. operator is called as
+--- 'operator(accumulator, element)' for every element in t. If a 3rd argument
+--- is provided, which may be nil, it will be used as the accumulator when
+--- calling operator on the first element. If there is no 3rd argument, the
+--- first operator call will be on the first two elements. If there is no 3rd
+--- argument and the array is empty, return nil. operator may be a function or a
+--- binary Lua operator as a string.
+function functional.reduce(t, operator, ...)
+	local f <const> = known_operators[operator] or operator
+
+	local function loop(init, i)
+		local value <const> = t[i]
+		if value == nil then
+			return init
+		end
+		return loop(f(init, value), i + 1)
 	end
-	local result = identity or 0
-	for _, v in ipairs(input) do
-		result = operator(result, v)
+
+	if select('#', ...) == 0 then
+		return loop(t[1], 2)
 	end
-	return result
+	return loop(select(1, ...), 1)
 end
 
 function functional.take_while(input, condition)
