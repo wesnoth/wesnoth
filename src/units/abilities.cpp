@@ -846,9 +846,10 @@ static void add_name(std::string& weapon_abilities, bool active, const config::a
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!weapon_abilities.empty()) weapon_abilities += ", ";
-			if(is_opponent){
+			if(is_opponent && sp.cfg["apply_to"].str() != "both"){
 				weapon_abilities += font::span_color(font::bad_dmg_color, name);
 			}
+			else if(is_opponent && sp.cfg["apply_to"].str() == "both"){}
 			else if(affect_adjacent){
 				weapon_abilities += sp.cfg["affect_enemies"].to_bool() ? font::span_color(font::YELLOW_COLOR, name) : font::span_color(font::LABEL_COLOR, name);
 			} else {
