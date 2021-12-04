@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-11-09 03:45+0300\n"
-"PO-Revision-Date: 2021-11-06 16:17-0300\n"
+"PO-Revision-Date: 2021-12-03 14:16-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -203,17 +203,13 @@ msgstr "Exibir todos tipos de unidades na secção de ajuda"
 # File: data/advanced_preferences.cfg, line: 157
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
 "Exibir todos tipos de unidades na secção de ajuda (o jogo precisará ser "
-"reiniciador para mostrar as alterações). Isso não afeta a lista de unidades "
-"encontradas"
+"reiniciado). Se estiver desmarcado, apenas unidades que já foram avistadas "
+"serão exibidas."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:118
@@ -5330,7 +5326,7 @@ msgstr "$percent|% do ouro transferido par ao próximo cenário."
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:6
 msgid "Plan Unit Advance"
-msgstr "Planejar Avanço da Unidade"
+msgstr "Planejar Avanço de Unidade"
 
 #. [modification]: id=plan_unit_advance
 #: data/modifications.cfg:7
@@ -5340,6 +5336,10 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"Em jogos multyplayer você não controla para o que a sua unidade avança se "
+"ela avançar no turnode um outro jogador. Com essa modificação você pode "
+"planejar de antemão para o que a sua unidade avançará, tanto para uma "
+"unidade específica quanto para todas as unidades de um mesmo tipo."
 
 #
 # File: src/reports.cpp, line: 243
@@ -5360,6 +5360,10 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Aparecerá uma pergunta para voccê escolher o avanço quando se deparar com um "
+"unidade que ainda não foi decidida.\n"
+"\n"
+"Algumas eras e cenários possuem essa opção ativada automaticamente."
 
 #
 # File: src/statistics_dialog.cpp, line: 125
@@ -5471,10 +5475,8 @@ msgstr "para após movimento atual"
 # File: src/savegame.cpp, line: 1063
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "replay"
+msgstr "Resetar"
 
 #
 # File: data/themes/macros.cfg, line: 95
@@ -6338,13 +6340,6 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 64
 #. [tip]
 #: data/tips.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Poisoned units will lose eight hitpoints every turn until they are one "
-#| "point from dying. They will then remain at death’s door until the poison "
-#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
-#| "the poison will not be removed unless the unit regenerates, or begins a "
-#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -6356,8 +6351,8 @@ msgstr ""
 "apenas um ponto de vida. Veneno por si só não mata uma unidade, mas ele "
 "impedirá que ela se cure até que o veneno seja removido. Curandeiros podem "
 "impedir que o veneno surta efeito por um turno, mas o veneno não será "
-"removido ao menos que a unidade se regenere, comece o turno numa aldeia ou "
-"adjacente a uma unidade com a habilidade de <i>Curar</i>."
+"removido ao menos que a unidade se regenere, comece o turno em uma aldeia, "
+"em um oásis, ou adjacente a uma unidade com a habilidade <i>Curar</i>."
 
 #
 # File: data/hardwired/tips.cfg, line: 68
@@ -6968,12 +6963,6 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 212
 #. [tip]
 #: data/tips.cfg:217
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks—especially magical attacks—are ideal for "
-#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
-#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
-#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
@@ -6981,9 +6970,9 @@ msgid ""
 "two of damage makes a one-hit kill possible."
 msgstr ""
 "Unidades com três ou mais ataques — especialmente ataques mágicos — são "
-"ideais para eliminar inimigos gravemente feridas. Certifique-se de usar "
-"liderança — ou uma unidade forte ou habilidosa — quando os pontos extras de "
-"dano são a diferença entre uma unidade morrer ou sair viva.."
+"ideais para eliminar inimigos gravemente feridao. Certifique-se de usar "
+"liderança — ou uma unidade forte ou habilidosa — sempre que o dano extra "
+"faça com que a unidade morra em um ataque."
 
 #
 # File: data/hardwired/tips.cfg, line: 216
@@ -7185,6 +7174,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Manter <b>shift</b> pressionado fará com que as animações para movimento e "
+"combate fiquem mais rápidas. O <i>fator de aceleração</i> pode ser mudado, e "
+"ativado como padrão, na aba <i>Geral</i> em <i>Preferências</i> no menu."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -7194,6 +7186,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
+"Você sabia que pode mudar a o nível de dificuldade no meio de uma campanha? "
+"Selecione a opção <i>Mudar Dificuldade</i> no canto inferior da tela de "
+"<i>Carregar</i> ao carregar um save do começo de um cenário."
 
 #
 # File: data/hardwired/tips.cfg, line: 237
@@ -7490,10 +7485,8 @@ msgstr "Solicitando index de arquivo..."
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 #: src/addon/client.cpp:231
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-msgstr "Enviando add-on <i>$addon_title</i>..."
+msgstr "Enviando um pacote de atualização para o add-on <i>$addon_title</i>..."
 
 #
 # File: src/addon/client.cpp, line: 140
@@ -7932,7 +7925,7 @@ msgstr "Sucesso."
 
 #: src/addon/validation.cpp:392
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Frase-passe incorreta para o add-on."
 
 #: src/addon/validation.cpp:396
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -7948,17 +7941,15 @@ msgstr ""
 
 #: src/addon/validation.cpp:409
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "Nenhuma data sobre o add-on foi fornecida pelo cliente."
 
 #
 # File: src/menu_events.cpp, line: 3058
 # File: src/menu_events.cpp, line: 3057
 # File: src/menu_events.cpp, line: 3057
 #: src/addon/validation.cpp:413
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid upload pack."
-msgstr "Local inválido"
+msgstr "Pacote de envio inválido."
 
 #
 # File: src/serialization/parser.cpp, line: 170
@@ -7973,7 +7964,7 @@ msgstr "Nome de add-on inválido."
 
 #: src/addon/validation.cpp:421
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Formatando caractere no nome do add-on."
 
 #: src/addon/validation.cpp:425
 msgid ""
@@ -7993,20 +7984,16 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 #: src/addon/validation.cpp:435
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"O add-on <i>$addon_title</i> contem arquivos ou diretórios em conflito. O "
-"nome (caixa alta ou baixa) dos arquivos ou diretórios não podem possuir "
-"versões diferentes do mesmo string."
+"O add-on contém arquivos ou diretórios com conflitos de caixa.\n"
+"\n"
+"Nomes idênticos em um mesmo diretório não podem conter versões com caixas "
+"diferentes."
 
 #: src/addon/validation.cpp:441
 msgid "The add-on name contains an invalid UTF-8 sequence."
@@ -8042,7 +8029,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:470
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Falta a frase-passe."
 
 #: src/addon/validation.cpp:474
 msgid "Formatting character in add-on title."
@@ -8053,10 +8040,8 @@ msgstr ""
 # File: src/menu_events.cpp, line: 3044
 # File: src/menu_events.cpp, line: 3044
 #: src/addon/validation.cpp:478
-#, fuzzy
-#| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
-msgstr "Tipo de unidade inválido"
+msgstr "Tipo de add-on inválido ou não especificado."
 
 #: src/addon/validation.cpp:482
 msgid "Version number not greater than the latest uploaded version."
@@ -8087,10 +8072,8 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 941
 # File: src/addon/manager_ui.cpp, line: 941
 #: src/addon/validation.cpp:511
-#, fuzzy
-#| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
-msgstr "Você não tem nenhum add-on instalado."
+msgstr "Lista de server dos add-ons corrompida."
 
 #: src/addon/validation.cpp:515
 msgid "Empty add-on version list on the server."
@@ -8739,6 +8722,7 @@ msgstr "Usar [modify_unit_type]\n"
 #: src/game_config_manager.cpp:574
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
+"ao invés disso, use o macro com o mesmo nome que está na tag [campaign]"
 
 #
 # File: src/game_controller.cpp, line: 1021
@@ -9178,7 +9162,7 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 #, fuzzy
 #| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Não foi possível encontrar a $era"
+msgstr "Não foi possível encontrar $era"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -9405,7 +9389,7 @@ msgstr "Você fez muitas tentativas de login."
 
 #: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Password hashing falhou."
 
 #
 # File: src/playcampaign.cpp, line: 122
@@ -10389,7 +10373,11 @@ msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
 msgstr[0] ""
+"Erro: há um tipo de unidade desconhecida na sua lista de recrutamento: "
+"$unknown_ids"
 msgstr[1] ""
+"Erro: há tipos de unidades desconhecidas na sua lista de recrutamento: "
+"$unknown_ids"
 
 #
 # File: src/menu_events.cpp, line: 585
@@ -10612,18 +10600,14 @@ msgstr "Mudar o controle de um lado para/da AI."
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1229
-#, fuzzy
-#| msgid ""
-#| "[<side> [on/off]]\n"
-#| "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
-"[<side> [on/off]]\n"
-"“on” = transfere o controle do lado para a AI, “off” = o lado é controlado "
-"pelo jogador"
+"[<side> [on/off/full]]\n"
+"“on” = habilita mas retém a visão, “full” = como se o lado fosse controlado "
+"por outro jogador"
 
 #: src/menu_events.cpp:1230
 msgid "Change terrain type of current hex"
@@ -10707,10 +10691,8 @@ msgid "Debug layers from terrain under the mouse."
 msgstr "Debug camadas de terreno debaio do mouse."
 
 #: src/menu_events.cpp:1247
-#, fuzzy
-#| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
-msgstr "Mostrar fps (Frames Por Segundo)."
+msgstr "Mostra e registra fps (Frames Por Segundo)."
 
 #
 # File: src/menu_events.cpp, line: 1977
@@ -11112,6 +11094,8 @@ msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
 msgstr ""
+"Não é permitido alterar o controle de um lado da AI para um humano quando "
+"não for o seu turno."
 
 #: src/menu_events.cpp:1508 src/menu_events.cpp:1564
 msgid "Side '$side' controller is now controlled by: AI."
@@ -11134,6 +11118,8 @@ msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
 msgstr ""
+"Não é permitido alterar o controle de um lado de um humano para AI quando "
+"não for o seu turno."
 
 #: src/menu_events.cpp:1540
 msgid "Side '$side' controller is now fully controlled by: AI."
@@ -11460,7 +11446,7 @@ msgstr "Detalhes do erro:"
 
 #: src/play_controller.cpp:1259
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Aviso: ramificações da campanha não funcionando"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -11471,7 +11457,10 @@ msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
 msgstr[0] ""
+"O próximo cenário está faltando. Você não será capaz de terminar a campanha."
 msgstr[1] ""
+"Alguns dos próximos cenários estão faltando. Talvez você não tenha como "
+"terminar a campanha."
 
 #: src/play_controller.cpp:1272
 msgid ""
@@ -11481,11 +11470,16 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Por favor avise o autor da campanha que o seguinte cenário está faltando:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Por favor avise o autor da campanha que os seguintes cenários estão "
+"faltando:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1276
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Quando isso for consertado, você precisará reiniciar o cenário."
 
 #
 # File: src/dialogs.cpp, line: 451
@@ -11731,7 +11725,7 @@ msgstr "Raça: "
 
 #: src/reports.cpp:239
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Lado: <b>$side_name</b> ($color_name)"
 
 #
 # File: src/reports.cpp, line: 284
@@ -12129,7 +12123,7 @@ msgstr[1] "Ataques"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1135
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Restantes: $left/$max"
 
 #
 # File: src/savegame.cpp, line: 739
@@ -12433,6 +12427,21 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Esse save é de uma versão diferente do jogo ($version_number|) e pode ser "
+"que não funcione nessa versão.\n"
+"\n"
+"<b>Aviso:</b> saves no meio de uma campanha são mais propensos a falhar, e é "
+"melhor você ou usar a versão antiga ou então recomeçar a campanha. Mesmo "
+"quando um jogo salvo aparenta carregar corretamente, aspectos mais sutis, "
+"como o balanceamento do jogo ou a progressão da história podem ter sido "
+"impactados. A dificuldade, o desafio, a <i>diversão</i> podem estar "
+"faltando.\n"
+"\n"
+"Por exemplo, pode ser que a campanha não tenha sido rebalanceada com menos "
+"unidades inimigas nos primeiros níves, presumindo que você terá menos "
+"unidades experientes para convocar em cenários mais tardios.\n"
+"\n"
+"Deseja continuar?"
 
 #
 # File: src/dialogs.cpp, line: 971
@@ -12501,6 +12510,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"O nome de um jogo salvo não pode terminar em ponto final, conter dois pontos "
+"ou qualquer um dos seguintes caracteres:\n"
+"    \" * / : < > ? \\ | ~"
 
 #
 # File: src/savegame.cpp, line: 965

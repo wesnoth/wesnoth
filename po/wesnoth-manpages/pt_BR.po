@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 03:45+0300\n"
-"PO-Revision-Date: 2021-11-09 18:51-0300\n"
+"PO-Revision-Date: 2021-11-19 18:07-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -240,7 +240,7 @@ msgstr "B<--config-dir>I<\\ name>"
 #. type: Plain text
 #: doc/man/wesnoth.6:85
 msgid "Deprecated, use B<--userdata-dir>."
-msgstr "Deprecated, usa B<--userdata-dir>."
+msgstr "Depreciação, usa B<--userdata-dir>."
 
 # type: TP
 #. type: TP
@@ -253,7 +253,7 @@ msgstr "B<--config-path>"
 #. type: Plain text
 #: doc/man/wesnoth.6:89
 msgid "Deprecated, use B<--userdata-path>."
-msgstr "Deprecated, usa B<--userdata-path>."
+msgstr "Depreciação, usa B<--userdata-path>."
 
 # type: TP
 #. type: TP
@@ -334,7 +334,7 @@ msgstr "B<--strict-lua>"
 #. type: Plain text
 #: doc/man/wesnoth.6:109
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "proibi chamadas de depreciação de Lua API"
 
 #. type: TP
 #: doc/man/wesnoth.6:109
@@ -349,6 +349,9 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"diffs os dois arquivos WML; não pre-processa eles primeiro (para fazer isso, "
+"primeiro use B<-p>). Diff sai como DiffWML na saída padrão ou para o arquivo "
+"indicado por I<--output>."
 
 # type: TP
 #. type: TP
@@ -688,7 +691,7 @@ msgstr "B<--nobanner>"
 #. type: Plain text
 #: doc/man/wesnoth.6:232
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "suprime o banner de início."
 
 # type: TP
 #. type: TP
@@ -743,6 +746,7 @@ msgstr "B<--output>I<\\ file>"
 #: doc/man/wesnoth.6:245
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
+"aloca para o arquivo especificado. Aplicável para diferentes operações."
 
 # type: TP
 #. type: TP
@@ -791,6 +795,9 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"aplica um patch DiffWML para um arquivo WML; não pré-processa nenhum dos "
+"dois arquivos.  Aloca o WML patched para a saída padrão ou para o arquivo "
+"indicado por I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:262
@@ -866,11 +873,11 @@ msgid ""
 "output file can be passed to B<--preprocess-input-macros>.  This switch "
 "should be typed before the B<--preprocess> command."
 msgstr ""
-"usado apenas pelo comando B<--preprocess>. Will output all preprocessed "
-"macros no arquivo alvo. Se o arquivo não for especificado, o resultado será "
-"arquvio '_MACROS_.cfg' no diretório alvo do comando do pré-processador. O "
-"arquivo resultante pode ser passado para B<--preprocess-input-macros>.  Esta "
-"opção deve ser digitada antes do comando B<--preprocess>."
+"usado apenas pelo comando B<--preprocess>. Colocará todos os macros "
+"processados no arquivo alvo. Se o arquivo não for especificado, o resultado "
+"será arquvio '_MACROS_.cfg' no diretório alvo do comando do pré-processador. "
+"O arquivo resultante pode ser passado para B<--preprocess-input-macros>.  "
+"Esta opção deve ser digitada antes do comando B<--preprocess>."
 
 # type: TP
 #. type: TP
@@ -898,7 +905,7 @@ msgid ""
 "outputs to a .png file. Image path functions are documented at https://wiki."
 "wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"pega um 'caminho de string de imagem' válido de wesnoth com função de "
+"pega um \"caminho de string de imagem\" válido de wesnoth com função de "
 "caminho de imagem, e produz um arquivo .png. As funções do caminho de imagem "
 "são documentados na página https://wiki.wesnoth.org/ImagePathFunctionWML."
 
@@ -2138,6 +2145,8 @@ msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"Se quiser previnir usuários que não estão registrados com o B<user_handler> "
+"logando. (padrão:falso)"
 
 # type: SS
 #. type: SS
