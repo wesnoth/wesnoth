@@ -38,10 +38,10 @@ link_directories(
 )
 
 set(common-external-libs ${ICU_DATA_LIBRARY} ${ICU_I18N_LIBRARY} ${ICU_UC_LIBRARY})
-if(WIN32)
+if(MSVC)
 	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib crypt32.lib)
 elseif(MINGW)
-	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm)
+	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm crypt32)
 elseif(APPLE)
 	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif()
@@ -80,7 +80,9 @@ set_source_files_properties(${lua_sources} PROPERTIES OBJECT_DEPENDS ${wesnoth_l
 if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
+endif()
 	
+if(MSVC)
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
 	# silence an implicit bitshift conversion warning
 	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334")
@@ -142,7 +144,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	add_library(wesnoth-widgets STATIC ${wesnoth_widget-sources})
 	if(APPLE)
 		set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
-	elseif(NOT WIN32)
+	elseif(NOT MSVC)
 		set(WIDGETS_LIB -Wl,--whole-archive wesnoth-widgets -Wl,--no-whole-archive)
 	else()
 		# handled by /WHOLEARCHIVE below
@@ -153,7 +155,9 @@ endif()
 if(ENABLE_GAME)
 	if(WIN32)
 		add_executable(wesnoth WIN32 wesnoth.cpp ../packaging/windows/wesnoth.rc)
-		target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		if(MSVC)
+			target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		endif()
 	elseif(APPLE)
 		add_executable(wesnoth wesnoth.cpp macosx/SDLMain.mm)
 	else()
@@ -195,7 +199,7 @@ if(ENABLE_TESTS)
 	GetSources("boost_unit_tests" boost_tests_sources)
 	add_executable(boost_unit_tests ${boost_tests_sources})
 
-	if(WIN32)
+	if(MSVC)
 		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
 	endif()
 
@@ -258,7 +262,7 @@ if(ENABLE_SERVER)
 		Boost::locale
 		Boost::filesystem
 	)
-	if(WIN32)
+	if(MSVC)
 		target_link_options(wesnothd PRIVATE /WX)
 	endif()
 
@@ -300,7 +304,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::locale
 		Boost::filesystem
 	)
-	if(WIN32)
+	if(MSVC)
 		target_link_options(campaignd PRIVATE /WX)
 	endif()
 
