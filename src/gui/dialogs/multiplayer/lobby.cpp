@@ -980,6 +980,13 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		break;
 	}
 
+	// prompt moderators for whether they want to join a game with observers disabled
+	if(!game.observers && mp::logged_in_as_moderator()) {
+		if(gui2::show_message(_("Observe"), _("This game doesn't allow observers. Observe using moderator rights anyway?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
+			return;
+		}
+	}
+
 	const bool try_join = mode == DO_JOIN;
 	const bool try_obsv = mode == DO_OBSERVE;
 
