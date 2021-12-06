@@ -849,7 +849,11 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	join_data["id"] = std::to_string(game.id);
 	join_data["observe"] = try_obsv;
 
-	if(!join_data.empty() && game.password_required) {
+	if(mp::logged_in_as_moderator() && game.password_required) {
+		if(gui2::show_message(_("Join"), _("This game is password protected. Join using moderator rights anyway?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
+			return;
+		}
+	} else if(!join_data.empty() && game.password_required) {
 		std::string password;
 
 		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password)) {
