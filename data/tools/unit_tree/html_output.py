@@ -720,7 +720,13 @@ class HTMLOutput:
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_all(tag="female")
-                    return self.pic(u, female[0], recursion=recursion + 1)
+                    if female:
+                        return self.pic(u, female[0], recursion=recursion + 1)
+                    else:
+                        # no female images found, fall back on the male/default ones
+                        error_message("Warning: missing female image for unit \
+{}, falling back to male/default image.\n".format(u.get_text_val("id")))
+                        return self.pic(u, u, recursion=recursion + 1)
                 else:
                     return self.pic(u, u, recursion=recursion + 1)
             error_message("Warning: Missing image for unit %s(%s).\n" %
