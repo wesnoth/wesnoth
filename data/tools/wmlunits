@@ -264,7 +264,7 @@ def list_contents():
         pass
 
     try:
-        batchlist = yaml.load(open(options.list))
+        batchlist = yaml.safe_load(open(options.list))
     except IOError:
         batchlist = []
 
@@ -431,7 +431,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     return n
 
 def batch_process():
-    batchlist = yaml.load(open(options.batch))
+    batchlist = yaml.safe_load(open(options.batch))
 
     for addon in batchlist:
         name = addon["name"]
