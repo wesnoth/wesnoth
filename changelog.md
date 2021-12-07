@@ -30,7 +30,7 @@
      * S06b:
        * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
        * Grog will not die as quick now (issue #6196 & #6197)
-       * Hermit dialogue cannot be accidentaly skipped now (issue #6196)
+       * Hermit dialogue cannot be accidentally skipped now (issue #6196)
        * Fixed bug where tentacles would not spawn (issue #6196)
      * S09: Rebels joining Kaleh’s side are now free of upkeep costs for the remainder of the scenario (issue #6229)
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
