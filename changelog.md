@@ -3,18 +3,30 @@
  ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
-     * S07: Clarified objectives (issue #5608)
+     * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
+   * Heir to the Throne
+     * S05b: Temples given an aged appearance to match ‘ancient temples’ description (issue #5576)
    * Liberty
      * S06: Enforce failure condition for allied team (issue #6019)
    * Northern Rebirth
      * Give Eryssa’s side a consistent team color (issue #5375)
+   * Sceptre of Fire
+     * S04: Mining objectives are much clearer now (issue #6154)
+   * Secret of the Ancients
+     * S06: Ardonna should no longer mistake hostile bats as ‘my pet’
    * The Rise of Wesnoth
+     * S19: The troll’s gold is automatically collected upon victory if not already obtained (issue #6141)
+     * S19: Avoid units spawning over chasms
      * Remove time-runs-out lose condition for final scenario (issue #6109)
    * Under the Burning Suns
      * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
      * Avoid dehydration status icon persisting into the next scenario (issue #5687)
-     * Correct Traveler’s Ring description (issue #6043)
+     * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
      * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
+     * S06b: Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
+     * S09: Rebels joining Kaleh’s side are now free of upkeep costs for the remainder of the scenario (issue #6229)
+     * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
+     * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
  ### Editor
    * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Multiplayer
@@ -25,6 +37,7 @@
    * Updated translations: British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, Indonesian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Spanish, Turkish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
+   * Added attack image for the Bone Knight’s trample
  ### User interface
    * Added a VSync option (issue #5018). This defaults to enabled and is available in Preferences -> Display only with SDL 2.0.17 and later as older versions do not support VSync with the software renderer.
    * The names of the abilities used as specials appear in the attack prediction window with specials weapons
@@ -43,6 +56,7 @@
    * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)
    * Fix the engine exiting immediately due to a corrupt .mo file (issue #6194)
    * Removed support for writing BMP screenshots (PR #6206).
+   * Password storage was fixed to work with multiple accounts (PR #6290)
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
 
 ## Version 1.16.0+dev
