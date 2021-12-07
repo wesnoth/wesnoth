@@ -3,7 +3,7 @@
  ### Add-ons server
  ### Campaigns
    * A Tale of Two Brothers
-     * The mercenary will now spawn in a less sudden way (issue #6183) 
+     * The mercenary will now spawn in a less sudden way (issue #6183)
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
    * Heir to the Throne
@@ -27,8 +27,8 @@
      * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
      * S02: Pinnacle rock is now shown during dialogue (issue #6125)
      * S05: Avoid village just taken by the player being re-assigned to the enemy (issue #6187)
-     * S06b: 
-          * Account for non-elvish units encountering Dwarf Sergeant (issue #6196) 
+     * S06b:
+          * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
           * Grog will not die as quick now (issue #6196 & #6197)
           * Hermit dialogue cannot be accidentaly skipped now (issue #6196)
           * Fixed bug where tentacles would not spawn (issue #6196)
