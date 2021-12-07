@@ -15,10 +15,14 @@
      * S19: Avoid units spawning over chasms
     * Under the Burning Suns
      * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
-     * S06b: Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
+     * S02: Pinnacle rock is now shown during dialogue (issue #6125)
+     * S06b: 
+      * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
+      * Hermit dialogue cannot be accidentaly skipped now (issue #6196)
      * S09: Rebels joining Kaleh’s side are now free of upkeep costs for the remainder of the scenario (issue #6229)
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
+     * The Dust Devil’s XP bar is now blue (issue #6212)
 ### Editor
  ### Multiplayer
    * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
