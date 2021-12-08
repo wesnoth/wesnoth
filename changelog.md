@@ -6,6 +6,8 @@
      * The mercenary will now spawn in a less sudden way (issue #6183)
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
+   * Descent into Darkness
+     * S08: Prevent possibility of Darken Volk advancing to Lich (issue #6351)
    * Heir to the Throne
      * S05b: Temples given an aged appearance to match ‘ancient temples’ description (issue #5576)
    * Liberty
