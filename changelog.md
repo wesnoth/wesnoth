@@ -34,6 +34,7 @@
        * Grog will not die as quick now (issue #6196 & #6197)
        * Hermit dialogue cannot be accidentally skipped now (issue #6196)
        * Fixed bug where tentacles would not spawn (issue #6196)
+       * Fixed weird scout AI behaviour (issue #6196)
      * S09: Rebels joining Kaleh’s side are now loyal (issue #6229 and #6365)
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
