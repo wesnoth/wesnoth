@@ -9,16 +9,22 @@
    * Heir to the Throne
      * S05b: Temples given an aged appearance to match ‘ancient temples’ description (issue #5576)
    * Sceptre of Fire
+     * Added notes about Thursagan’s rune mechanics
      * S04: Mining objectives are much clearer now (issue #6154)
    * Secret of the Ancients
      * S06: Ardonna should no longer mistake hostile bats as ‘my pet’
+     * S20: Directions “left” and “right” in character speech now use the character’s orientation, not the player’s
+     * Consistently capitalise the name of the Academy of Magic (issue #6310)
    * The Rise of Wesnoth
      * S08: The appearance of Naga is now smoother (issue #6140)
+     * S08: Refactored ship-boarding events (issue #6298)
      * S19: The troll’s gold is automatically collected upon victory if not already obtained (issue #6141)
      * S19: Avoid units spawning over chasms
    * Under the Burning Suns
      * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
+     * Remove the “formation” ability from the attack predictions dialog, as it was in a confusing location; its effect is still shown in the calculations and chance-to-hit percentage (PR #6326)
      * S02: Pinnacle rock is now shown during dialogue (issue #6125)
+     * S04: Improve dialogue about dark underground tunnels (PR #6345)
      * S06b: 
        * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
        * Grog will not die as quick now (issue #6196 & #6197)
@@ -28,23 +34,30 @@
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
      * The Dust Devil’s XP bar is now blue (issue #6212)
-### Editor
+ ### Editor
  ### Multiplayer
    * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
+   * Added a specific prompt for moderators before joining password-protected games (issue #4101)
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Japanese, Portuguese (Brazil).
-   * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097).
+   * Lots of corrections of typos in `en_US` (untranslated text), which will require marking translations as `non-fuzzy` again
+   * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097)
+   * Comments in .po files are now kept in order when the .pot is regenerated (issue #5989)
  ### Units
    * Added attack image for the Bone Knight’s trample
  ### User interface
-   * Improved translatability of MP ban durations (issue #6036, PR #6097).
+   * Improved translatability of MP ban durations (issue #6036, PR #6097)
+   * Fixed missing sidebar tooltips in low resolutions such as 800x600 (issue #6264)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Password storage was fixed to work with multiple accounts (PR #6290)
-   * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
+   * wmllint now automatically removes `{MAGENTA_IS_THE_TEAM_COLOR}`
+   * Added workaround for connecting to the multiplayer server taking too long when Chinese or Japanese language is selected (issue #6291)
+   * Added `KeyboardInterrupt` handling to many Python WML tools
+   * Added `--simple-version`` command line option
 
 ## Version 1.16.1
  ### Add-ons server
