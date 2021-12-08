@@ -283,7 +283,6 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true , scope_editor | scope_main, HKCAT_PLACEHOLDER, "" },
 	{ TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },
-	{ TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__CAMPAIGN, "title_screen__campaign", N_("Start Campaign"), false	, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__MULTIPLAYER, "title_screen__multiplayer", N_("Start Multiplayer Game"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__ADDONS, "title_screen__addons", N_("Manage Add-ons"), false	, scope_main, HKCAT_GENERAL, "" },

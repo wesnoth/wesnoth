@@ -6,6 +6,8 @@
      * The mercenary will now spawn in a less sudden way (issue #6183)
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
+   * Descent into Darkness
+     * S08: Prevent possibility of Darken Volk advancing to Lich (issue #6351)
    * Heir to the Throne
      * S05b: Temples given an aged appearance to match ‘ancient temples’ description (issue #5576)
    * Liberty
@@ -34,7 +36,7 @@
        * Fixed bug where tentacles would not spawn (issue #6196)
        * Fast units cannot get stuck on the wall now (issue #6196)
        * Camera now moves to where the charges are blown up (issue #6197)
-     * S09: Rebels joining Kaleh’s side are now free of upkeep costs for the remainder of the scenario (issue #6229)
+     * S09: Rebels joining Kaleh’s side are now loyal (issue #6229 and #6365)
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
      * The Dust Devil’s XP bar is now blue (issue #6212)
