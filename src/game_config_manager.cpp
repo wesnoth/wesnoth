@@ -583,7 +583,8 @@ void game_config_manager::load_addons_cfg()
 				"resource",
 				"multiplayer",
 				"scenario",
-				"campaign"
+				"campaign",
+				"terrain_type"
 			};
 
 			for(const std::string& tagname : entry_tags) {
