@@ -46,6 +46,10 @@ elseif(APPLE)
 	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif()
 
+if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
+	set(common-external-libs ${common-external-libs} socket)
+endif()
+
 set(game-external-libs
 	${common-external-libs}
 	${SDL2_LIBRARY}
