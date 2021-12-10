@@ -217,7 +217,8 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 std::string os_version()
 {
 #if defined(__APPLE__) || defined(_X11)
-	utsname u;
+	// Some systems, e.g. SunOS, need "struct" here
+	struct utsname u;
 
 	if(uname(&u) != 0) {
 		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
