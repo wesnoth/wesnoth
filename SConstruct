@@ -637,6 +637,9 @@ for env in [test_env, client_env, env]:
         env.Append(FRAMEWORKS = "IOKit")            # IOKit
         env.Append(FRAMEWORKS = "CoreGraphics")     # CoreGraphics
 
+    if env["PLATFORM"] == 'sunos':
+        env.Append(LINKFLAGS = "-lsocket")
+
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
