@@ -568,7 +568,7 @@ void game_config_manager::load_addons_cfg()
 						//      it before also didn't work in all cases (see #4402)
 						//      i don't think it is worth it.
 						deprecated_message(
-							"extra_defines=" + str,
+							"campaign id='" + campaign["id"].str() + "' has extra_defines=" + str,
 							DEP_LEVEL::REMOVED,
 							{1, 15, 4},
 							_("instead, use the macro with the same name in the [campaign] tag")
