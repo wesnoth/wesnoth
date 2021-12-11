@@ -52,6 +52,7 @@
    * Comments in .po files are now kept in order when the .pot is regenerated (issue #5989)
  ### Units
    * Added attack image for the Bone Knight’s trample
+   * Added attack image for the Nightblade’s kick
  ### User interface
    * Improved translatability of MP ban durations (issue #6036, PR #6097)
    * Fixed missing sidebar tooltips in low resolutions such as 800x600 (issue #6264)
