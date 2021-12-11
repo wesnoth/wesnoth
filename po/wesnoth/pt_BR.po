@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-12-03 14:16-0300\n"
+"PO-Revision-Date: 2021-12-06 08:46-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -5345,10 +5345,8 @@ msgstr ""
 # File: src/reports.cpp, line: 243
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:12
-#, fuzzy
-#| msgid "No advancement"
 msgid "Force advancement planning"
-msgstr "Sem avanços"
+msgstr "Forçar planejamento de avanços"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -6938,12 +6936,6 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 208
 #. [tip]
 #: data/tips.cfg:213
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks—such as Dark "
-#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
@@ -7973,6 +7965,15 @@ msgid ""
 "Additionally, names may not be longer than 255 characters, contain '..', or "
 "end with '.'."
 msgstr ""
+"O add-on contêm arquivos ou diretórios com nomes ilegais.\n"
+"\n"
+"Nomes não podem conte white-space, caracteres de controle ou qualquer um dos "
+"seguintes símbolos:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Além disso, nomes não podem ser maiores do que 255 caracteres, conter \".."
+"\", ou terminar em \".\"."
 
 #
 # File: src/addon/client.cpp, line: 212
@@ -8020,7 +8021,7 @@ msgstr "Nenhuma descrição para o add-on especificada."
 
 #: src/addon/validation.cpp:465
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "Não foi especificado um e-mail para o autor/maintainer do add-on."
 
 #: src/addon/validation.cpp:469
 msgid "Missing passphrase."
@@ -8028,7 +8029,7 @@ msgstr "Falta a frase-passe."
 
 #: src/addon/validation.cpp:473
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Formatando caractere no título do add-on."
 
 #
 # File: src/menu_events.cpp, line: 3045
@@ -8040,27 +8041,27 @@ msgstr "Tipo de add-on inválido ou não especificado."
 
 #: src/addon/validation.cpp:481
 msgid "Version number not greater than the latest uploaded version."
-msgstr ""
+msgstr "Número da versão não é maior do que o número da última versão enviada."
 
 #: src/addon/validation.cpp:485
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "O id do tópico de feedback não é um número."
 
 #: src/addon/validation.cpp:489
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "O tópico de feedback não existe."
 
 #: src/addon/validation.cpp:493
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "A informação de publicação do add-on contêm uma sequência UTF-8."
 
 #: src/addon/validation.cpp:502
 msgid "Unspecified server error."
-msgstr ""
+msgstr "Erro no servidor não especificado."
 
 #: src/addon/validation.cpp:506
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "O server está no modo de somente leitura."
 
 #
 # File: src/addon/manager_ui.cpp, line: 941
@@ -8072,11 +8073,11 @@ msgstr "Lista de server dos add-ons corrompida."
 
 #: src/addon/validation.cpp:514
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "Lista de versão do add-on vazia no servidor."
 
 #: src/addon/validation.cpp:524
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Falha de validação não especificada."
 
 #
 # File: src/menu_events.cpp, line: 2297
@@ -8310,6 +8311,8 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
+"Envia dados para o servidor. É usado para verifica a conexão com a internet "
+"e detectar desconexões."
 
 #
 # File: src/menu_events.cpp, line: 1776
@@ -8405,7 +8408,7 @@ msgstr "<N>"
 
 #: src/chat_command_handler.hpp:114
 msgid "Get a random number between 1 and N visible in the game setup lobby."
-msgstr ""
+msgstr "Arranja um número aleatório entre 1 e N visível no lobby do jogo."
 
 #
 # File: src/menu_events.cpp, line: 1800
@@ -9288,6 +9291,7 @@ msgstr "Atenção"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"O servidor remoto pediu por uma senha enquanto usava uma conexão não segura."
 
 #
 # File: src/multiplayer.cpp, line: 343
@@ -10125,6 +10129,8 @@ msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
+"Esse é um grupo de unidades, todas as quais são <ref>dst='$topic_id' "
+"text='$help_taxonomy'</ref>"
 
 #: src/help/help_impl.cpp:1080
 msgid "<header>text='Subgroups of units within this group'</header>"
