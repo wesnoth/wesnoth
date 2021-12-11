@@ -30,6 +30,7 @@
    * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097).
  ### Units
    * Added attack image for the Bone Knight’s trample
+   * Added attack image for the Nightblade’s kick
  ### User interface
    * Improved translatability of MP ban durations (issue #6036, PR #6097).
  ### WML Engine
