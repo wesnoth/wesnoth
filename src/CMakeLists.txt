@@ -18,9 +18,11 @@ include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR})
+if(NOT MSVC)
+	include_directories(SYSTEM ${SDL2_INCLUDE_DIRS})
+	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIRS})
+	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIRS})
+endif()
 
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
@@ -48,14 +50,20 @@ endif()
 
 set(game-external-libs
 	${common-external-libs}
-	${SDL2_LIBRARY}
-	${SDL2_IMAGE_LIBRARY}
-	${SDL2_MIXER_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
 	${VORBISFILE_LIBRARIES}
 )
+
+if(NOT MSVC)
+	set(game-external-libs
+		${game-external-libs}
+		${SDL2_LIBRARIES}
+		${SDL2IMAGE_LIBRARIES}
+		${SDL2MIXER_LIBRARIES}
+	)
+endif()
 
 if(HISTORY_FOUND)
 	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
@@ -178,6 +186,13 @@ if(ENABLE_GAME)
 		Boost::locale
 		Boost::filesystem
 	)
+	if(MSVC)
+		target_link_libraries(wesnoth SDL2::SDL2)
+		target_link_libraries(wesnoth SDL2::SDL2main)
+		target_link_libraries(wesnoth SDL2::SDL2_image)
+		target_link_libraries(wesnoth SDL2::SDL2_mixer)
+	endif()
+
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(wesnoth wesnoth-revision)
 	endif()
@@ -218,6 +233,13 @@ if(ENABLE_TESTS)
 		Boost::filesystem
 		Boost::unit_test_framework
 	)
+	if(MSVC)
+		target_link_libraries(boost_unit_tests SDL2::SDL2)
+		target_link_libraries(boost_unit_tests SDL2::SDL2main)
+		target_link_libraries(boost_unit_tests SDL2::SDL2_image)
+		target_link_libraries(boost_unit_tests SDL2::SDL2_mixer)
+	endif()
+
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(boost_unit_tests wesnoth-revision)
 	endif()
