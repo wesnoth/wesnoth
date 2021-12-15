@@ -191,6 +191,44 @@ def CheckPNG(context):
             context.Result("no")
             return False
 
+def CheckWebP(context):
+    test_program = '''
+    #include <SDL_image.h>
+    #include <stdlib.h>
+
+    int main(int argc, char **argv)
+    {
+            SDL_RWops *src;
+            char *testimage = "$TESTFILE";
+
+            src = SDL_RWFromFile(testimage, "rb");
+            if (src == NULL) {
+                    exit(2);
+            }
+            exit(!IMG_isWEBP(src));
+    }
+\n
+'''
+    nodepath = File("data/core/images/maps/background.webp").rfile().abspath.replace("\\", "\\\\")
+    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
+    context.Message("Checking for WebP support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
+    (result, output) = context.TryRun(test_program1, ".c")
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        test_program2 = context.env.Clone(TESTFILE = "data/core/images/maps/background.webp").subst(test_program)
+        (result, output) = context.TryRun(test_program2, ".c")
+        if result:
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            return False
+
 def CheckJPG(context):
     test_program = '''
     #include <SDL_image.h>
@@ -209,7 +247,7 @@ def CheckJPG(context):
     }
 \n
 '''
-    nodepath = File("data/core/images/maps/background.jpg").rfile().abspath.replace("\\", "\\\\")
+    nodepath = File("attic/northlands.jpg").rfile().abspath.replace("\\", "\\\\")
     test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
@@ -220,7 +258,7 @@ def CheckJPG(context):
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "data/core/images/maps/background.jpg").subst(test_program)
+        test_program2 = context.env.Clone(TESTFILE = "attic/northlands.jpg").subst(test_program)
         (result, output) = context.TryRun(test_program2, ".c")
         if result:
             context.Result("yes")
@@ -232,4 +270,5 @@ def CheckJPG(context):
 config_checks = { 'CheckSDL' : CheckSDL,
                   'CheckOgg' : CheckOgg,
                   'CheckPNG' : CheckPNG,
-                  'CheckJPG' : CheckJPG }
+                  'CheckJPG' : CheckJPG,
+                  'CheckWebP' : CheckWebP }
