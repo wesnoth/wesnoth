@@ -254,6 +254,12 @@ jobs:
           rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
           MSBuild.exe wesnoth.sln -p:Configuration=Debug
 
+# seems to work, but with the debug SDL libraries it's so slow that it times out even with a limit of 300 seconds
+#      - name: Run WML unit tests
+#        shell: cmd
+#        run: |
+#          python run_wml_tests -v -g -c -t 300 -p D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
+
   windows-release:
     runs-on: windows-2019
 

@@ -467,13 +467,25 @@ endif()
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
-# TODO: SDL2::SDL2 etc component target available with cmake 3.19+
-	find_package(SDL2 2.0.8 REQUIRED)
-	find_package(SDL2_image 2.0.2 REQUIRED)
-	find_package(SDL2_mixer 2.0.0 REQUIRED)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
+	if(NOT MSVC)
+		# for everything else, use pkgconfig
+		# find_package can't be used for SDL2 since at least as of Ubuntu 20.04 they forgot to include the sdl2-config-version.cmake, so cmake can't tell if it's >= 2.0.8 and thus rejects using it
+		# meanwhile SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all
+		# the best I could find is that the more modern cmake module support is only available if you build SDL2 yourself instead of using a distro-packaged version
+		# still wouldn't help for SDL2_image and SDL2_mixer though
+		pkg_check_modules(SDL2 REQUIRED sdl2>=2.0.8)
+		pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image>=2.0.2)
+		pkg_check_modules(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
+	else()
+		# for MSVC, vcpkg builds and provides SDL2-related modules for cmake to use, so use those
+		# this also fixes the issue with our previous FindSDL2* scripts incorrectly using the Release version of these libs instead of the Debug version
+		find_package(SDL2 CONFIG REQUIRED)
+		find_package(sdl2-image CONFIG REQUIRED)
+		find_package(sdl2-mixer CONFIG REQUIRED)
+	endif()
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
 endif()
