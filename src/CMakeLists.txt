@@ -13,7 +13,6 @@ if(ENABLE_MYSQL)
 endif()
 
 ## some includes ##
-include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS})
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
@@ -33,7 +32,6 @@ include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 link_directories(
 	${PANGOCAIRO_LIBRARY_DIRS}
-	${FONTCONFIG_LIBRARY_DIRS}
 	${LIBDBUS_LIBRARY_DIRS}
 )
 
@@ -56,7 +54,6 @@ set(game-external-libs
 	${SDL2_IMAGE_LIBRARY}
 	${SDL2_MIXER_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
-	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
 	${VORBISFILE_LIBRARIES}
 )
@@ -185,6 +182,7 @@ if(ENABLE_GAME)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		Fontconfig::Fontconfig
 	)
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(wesnoth wesnoth-revision)
@@ -225,6 +223,7 @@ if(ENABLE_TESTS)
 		Boost::locale
 		Boost::filesystem
 		Boost::unit_test_framework
+		Fontconfig::Fontconfig
 	)
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(boost_unit_tests wesnoth-revision)
