@@ -133,7 +133,19 @@ bool mp_join_game::fetch_game_config()
 		state_.classification() = game_classification(level_);
 
 		// Make sure that we have the same config as host, if possible.
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		std::string scenario_id = state_.get_scenario_id();
+		// since add-ons are now only enabled when used, the scenario ID may still not be known
+		// so check in the MP info sent from the server for the scenario ID if that's the case
+		if(scenario_id == "") {
+			for(const auto& addon : level_.child("multiplayer").child_range("addon")) {
+				for(const auto& content : addon.child_range("content")) {
+					if(content["type"] == "scenario") {
+						scenario_id = content["id"].str();
+					}
+				}
+			}
+		}
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), scenario_id);
 	}
 
 	game_config::add_color_info(game_config_view::wrap(get_scenario()));
