@@ -146,7 +146,7 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 } // end anonymous namespace
 
 void game_config_manager::load_game_config_with_loadscreen(
-	FORCE_RELOAD_CONFIG force_reload, game_classification const*, std::optional<std::set<std::string>> active_addons)
+	FORCE_RELOAD_CONFIG force_reload, std::optional<std::set<std::string>> active_addons)
 {
 	if(!lg::info().dont_log(log_config)) {
 		auto out = formatter();
@@ -703,7 +703,7 @@ void game_config_manager::load_game_config_for_game(
 	}
 
 	try {
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification, classification.active_addons(scenario_id));
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, classification.active_addons(scenario_id));
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
