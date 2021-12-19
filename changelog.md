@@ -41,6 +41,7 @@
  ### Multiplayer
    * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
    * Added a specific prompt for moderators before joining password-protected games (issue #4101)
+   * Fixed add-ons not getting enabled for clients, leading to errors such as Unknown Terrain (issue #6285)
  ### Lua API
  ### Packaging
  ### Terrain
