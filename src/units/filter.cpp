@@ -160,6 +160,44 @@ struct unit_filter_adjacent : public unit_filter_base
 	const vconfig cfg_;
 };
 
+struct unit_filter_distant : public unit_filter_base
+{
+	unit_filter_distant(const vconfig& cfg)
+		: child_(cfg)
+		, cfg_(cfg)
+	{
+	}
+
+	virtual bool matches(const unit_filter_args& args) const override
+	{
+		const unit_map& units = args.context().get_disp_context().units();
+		std::vector<map_location> surrounding;
+		int radius = cfg_["radius"].to_int(0);
+		int match_count=0;
+
+
+		get_tiles_in_radius(args.loc, radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
+				continue;
+			}
+			auto is_enemy = cfg_["is_enemy"];
+			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(unit_itor->side())) {
+				continue;
+			}
+			++match_count;
+		}
+
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-6");
+		config::attribute_value i_count = cfg_["count"];
+		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
+	}
+
+	const unit_filter_compound child_;
+	const vconfig cfg_;
+};
+
 
 template<typename F>
 struct unit_filter_child_literal : public unit_filter_base
@@ -795,6 +833,9 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 			else if (child.first == "filter_adjacent") {
 				children_.emplace_back(new unit_filter_adjacent(child.second));
+			}
+			else if (child.first == "filter_distant") {
+				children_.emplace_back(new unit_filter_distant(child.second));
 			}
 			else if (child.first == "filter_location") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
