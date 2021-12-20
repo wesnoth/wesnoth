@@ -1760,8 +1760,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.level().root().apply_diff(*scenario_diff);
 		const simple_wml::node* cfg_change = scenario_diff->child("change_child");
 
-		// it is very likely that the diff changes a side so this check isn't that important.
-		// Note that [side] is not at toplevel but inside [scenario] or [snapshot]
 		if(cfg_change) {
 			g.update_side_data();
 		}
