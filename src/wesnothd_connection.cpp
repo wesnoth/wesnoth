@@ -173,6 +173,27 @@ void wesnothd_connection::handshake()
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
+template<typename Verifier> auto verbose_verify(Verifier&& verifier)
+{
+	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx) {
+		char subject_name[256];
+		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
+		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
+		bool verified = verifier(preverified, ctx);
+		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
+			(verified ? "verified" : "failed") << std::endl;
+		BIO* bio = BIO_new(BIO_s_mem());
+		char buffer[1024];
+		X509_print(bio, cert);
+		while(BIO_read(bio, buffer, 1024) > 0)
+		{
+			DBG_NW << buffer;
+		}
+		BIO_free(bio);
+		return verified;
+	};
+}
+
 // worker thread
 void wesnothd_connection::handle_handshake(const error_code& ec)
 {
@@ -208,9 +229,9 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			);
 
 #if BOOST_VERSION >= 107300
-			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::host_name_verification(host_)));
 #else
-			socket.set_verify_callback(boost::asio::ssl::rfc2818_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::rfc2818_verification(host_)));
 #endif
 
 			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
