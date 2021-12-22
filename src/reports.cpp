@@ -196,7 +196,7 @@ static config unit_type(const unit* u)
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
-			tooltip << "• " << note << '\n';
+			tooltip << font::unicode_bullet << " " << note << '\n';
 		}
 	}
 	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
