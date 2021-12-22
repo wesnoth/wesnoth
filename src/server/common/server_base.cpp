@@ -109,7 +109,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		}
 	} catch(const boost::system::system_error& e) {
 		ERR_SERVER << "Exception when trying to bind port: " << e.code().message() << "\n";
-		throw server_shutdown("Port binding failed", e.code());
+		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
@@ -134,7 +134,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
 	if(error) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
-		throw server_shutdown("Accept failed", error);
+		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
 	if(accepting_connections()) {
