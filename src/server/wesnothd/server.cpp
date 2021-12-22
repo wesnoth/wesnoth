@@ -294,7 +294,7 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 
 	if(games().empty()) {
 		process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
-		throw server_shutdown("graceful shutdown timeout");
+		BOOST_THROW_EXCEPTION(server_shutdown("graceful shutdown timeout"));
 	} else {
 		timer_.expires_from_now(std::chrono::seconds(1));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
@@ -317,7 +317,7 @@ void server::handle_lan_server_shutdown(const boost::system::error_code& error)
 	if(error)
 		return;
 
-	throw server_shutdown("lan server shutdown");
+	BOOST_THROW_EXCEPTION(server_shutdown("lan server shutdown"));
 }
 
 void server::setup_fifo()
@@ -2089,7 +2089,7 @@ void server::shut_down_handler(
 	}
 
 	if(parameters == "now") {
-		throw server_shutdown("shut down by admin command");
+		BOOST_THROW_EXCEPTION(server_shutdown("shut down by admin command"));
 	} else {
 		// Graceful shut down.
 		graceful_restart = true;
