@@ -153,6 +153,14 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 		bool verified = verifier(preverified, ctx);
 		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
 			(verified ? "verified" : "failed") << std::endl;
+		BIO* bio = BIO_new(BIO_s_mem());
+		char buffer[1024];
+		X509_print(bio, cert);
+		while(BIO_read(bio, buffer, 1024) > 0)
+		{
+			DBG_NW << buffer;
+		}
+		BIO_free(bio);
 		return verified;
 	};
 }
