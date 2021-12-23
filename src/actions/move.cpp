@@ -1123,17 +1123,22 @@ namespace { // Private helpers for move_unit()
 			std::string message;
 			color_t msg_color;
 			if ( friend_count_ != 0  &&  enemy_count_ != 0 ) {
-				// Both friends and enemies sighted -- neutral message.
+				// TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 				symbols["friendphrase"] = VNGETTEXT("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friend_count_, symbols);
+				// TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 				symbols["enemyphrase"] = VNGETTEXT("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", enemy_count_, symbols);
+				// TRANSLATORS: Both friends and enemies sighted -- neutral message.
+				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VGETTEXT("Units sighted! ($friendphrase, $enemyphrase)", symbols);
 				msg_color = font::NORMAL_COLOR;
 			} else if ( enemy_count_ != 0 ) {
-				// Only enemies sighted -- bad message.
+				// TRANSLATORS: Only enemies sighted -- bad message.
+				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VNGETTEXT("Enemy unit sighted!", "$enemies enemy units sighted!", enemy_count_, symbols);
 				msg_color = font::BAD_COLOR;
 			} else if ( friend_count_ != 0 ) {
-				// Only friends sighted -- good message.
+				// TRANSLATORS: Only friends sighted -- good message.
+				// This is shown when a move is interrupted because units were revealed from the fog of war.
 				message = VNGETTEXT("Friendly unit sighted", "$friends friendly units sighted", friend_count_, symbols);
 				msg_color = font::GOOD_COLOR;
 			}

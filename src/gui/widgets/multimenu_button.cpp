@@ -174,6 +174,9 @@ void multimenu_button::update_label()
 		if(selected.size() > max_shown_) {
 			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
+			// TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
+			// of the text on the button when many of the boxes are selected. The text becomes
+			// "x, y and 1 other", "x, y and 2 others", etc.
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
 		set_label(utils::format_conjunct_list(_("multimenu^None Selected"), selected));
