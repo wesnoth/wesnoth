@@ -83,6 +83,7 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
+	std::string weapon_specials_value(const std::set<std::string> checking_tags, bool only_active=false, bool is_backstab=false) const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
@@ -150,6 +151,33 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
+	std::string weapon_specials_impl(bool only_active, bool is_backstab = false, const std::set<std::string> checking_tags= {}, bool is_tooltip = false) const;
+	static void weapon_specials_impl_self(
+		std::string& weapon_abilities,
+		unit_const_ptr self,
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const map_location& self_loc,
+		AFFECTS whom,
+		std::set<std::string>& checking_name,
+		const std::set<std::string> checking_tags,
+		bool is_tooltip,
+		bool leader_bool=false
+	);
+
+	static void weapon_specials_impl_adj(
+		std::string& weapon_abilities,
+		unit_const_ptr self,
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const map_location& self_loc,
+		AFFECTS whom,
+		std::set<std::string>& checking_name,
+		const std::set<std::string> checking_tags,
+		const std::string& affect_adjacents,
+		bool is_tooltip,
+		bool leader_bool = false
+	);
 	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a tag_name is active.
 	 * @param self_attack the attack used by unit checked in this function.
@@ -169,7 +197,7 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool = false
 	);
 
 
