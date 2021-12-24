@@ -18,6 +18,7 @@
 #include "help/help_topic_generators.hpp"
 
 #include "font/sdl_ttf_compat.hpp"
+#include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -153,6 +154,42 @@ std::string terrain_topic_generator::operator()() const {
 		return ss.str();
 	}
 
+	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
+	// to add their own via a [special_note] tag.
+	std::vector<std::string> special_notes;
+
+	if(type_.is_village()) {
+		special_notes.push_back(_("Villages allow any unit stationed therein to heal, or to be cured of poison."));
+	} else if(type_.gives_healing() > 0) {
+		auto symbols = utils::string_map{{"amount", std::to_string(type_.gives_healing())}};
+		// TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+		// For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+		auto message = VNGETTEXT("This terrain allows units to be cured of poison, or to heal a single hitpoint.",
+			"This terrain allows units to heal $amount hitpoints, or to be cured of poison, as if stationed in a village.",
+			type_.gives_healing(), symbols);
+		special_notes.push_back(std::move(message));
+	}
+
+	if(type_.is_castle()) {
+		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
+	}
+	if(type_.is_keep() && type_.is_castle()) {
+		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
+	} else if(type_.is_keep() && !type_.is_castle()) {
+		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
+	}
+
+	if(!special_notes.empty()) {
+		ss << "\n" << _("Special Notes:") << '\n';
+		for(const auto& note : special_notes) {
+			ss << font::unicode_bullet << " " << note << '\n';
+		}
+	}
+
+	// Almost all terrains will show the data in this conditional block. The ones that don't are the
+	// archetypes used in [movetype]'s subtags such as [movement_costs].
 	if (!type_.is_indivisible()) {
 		ss << "\n" << _("Base Terrain: ");
 
@@ -564,7 +601,7 @@ std::string unit_topic_generator::operator()() const {
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
 		ss << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
-			ss << "• " << note << '\n';
+			ss << font::unicode_bullet << " " << note << '\n';
 		}
 	}
 
