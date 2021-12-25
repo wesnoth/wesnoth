@@ -207,6 +207,8 @@
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BFFC79258256C700643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
 		46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
+		46CD12BB2777A64000A59D05 /* libboost_context-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46CD12BC2777A64000A59D05 /* libboost_coroutine-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B8D258CD3B4004A80EF /* libboost_coroutine-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46D6014E255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D6014F255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
 		46D60150255AFA6000E072F0 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014D255AFA6000E072F0 /* options.cpp */; };
@@ -1389,6 +1391,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				46CD12BB2777A64000A59D05 /* libboost_context-mt.dylib in Copy Frameworks */,
+				46CD12BC2777A64000A59D05 /* libboost_coroutine-mt.dylib in Copy Frameworks */,
 				468A5BC1258CD8CC004A80EF /* libboost_locale-mt.dylib in Copy Frameworks */,
 				91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */,
 				91B6220C1B76C0A600B00E0F /* libffi.7.dylib in Copy Frameworks */,
