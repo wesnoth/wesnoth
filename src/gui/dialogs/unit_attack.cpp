@@ -116,7 +116,8 @@ void unit_attack::pre_show(window& window)
 		);
 
 		std::string attw_specials = attacker_weapon.weapon_specials(true, attacker.backstab_pos);
-		std::string defw_specials = defender_weapon.weapon_specials(true);
+		bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0 && defender_weapon.num_attacks() == 0 && defender.chance_to_hit == 0);
+		std::string defw_specials = defender_attack ? defender_weapon.weapon_specials(true) : "";
 
 		if(!attw_specials.empty()) {
 			attw_specials = " " + attw_specials;
