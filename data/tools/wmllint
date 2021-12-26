@@ -194,6 +194,7 @@ import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 from collections import defaultdict
+from wesnoth import version
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -3202,7 +3203,8 @@ Also validates WML to check for errors.''',
 positive warnings with magic comments, read the introduction in the wmllint
 file itself.
 See also: https://wiki.wesnoth.org/Maintenance_tools.''',
-        formatter_class = argparse.RawTextHelpFormatter
+        formatter_class = argparse.RawTextHelpFormatter,
+        prog="wmllint"
     )
 
     mode = parser.add_mutually_exclusive_group()
@@ -3236,6 +3238,8 @@ scenarios, etc.""")
                         help="""Any number of directories. Each directory is converted.
 If no directories are specified, acts on the current
 directory.""")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
 
     namespace = parser.parse_args()
     clean = namespace.clean

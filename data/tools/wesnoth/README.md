@@ -5,7 +5,7 @@ are for checking, analysing and maintenance of WML-files.
 
 The modules intended to be imported by other programs are
 documented in the parent directory's README.md. These are
-wmltools3.py, wmldata.py, wmlparser.py, wmlparser3.py, and
+version.py, wmltools3.py, wmldata.py, wmlparser.py, wmlparser3.py and
 wmliterator3.py.
 
 `__init__.py`
@@ -13,6 +13,10 @@ wmliterator3.py.
 
 `campaignserver_client.py`
   textmode-client for uploading + downloding campaigns to the server.
+
+`version.py`
+  This module reports the current version of Wesnoth to any script which
+  might need it.
 
 `wescamp.py`
   This utility provides two tools

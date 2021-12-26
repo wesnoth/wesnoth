@@ -16,6 +16,8 @@
 import sys,os,threading,subprocess,codecs
 
 import queue
+
+from wesnoth import version
 # tkinter modules
 from tkinter import *
 from tkinter.messagebox import *
@@ -26,9 +28,8 @@ import tkinter.font as font
 from tkinter.ttk import *
 
 # we need to know in what series we are
-# so set it in a constant and change it for every new series
-# it must be a string
-WESNOTH_SERIES="1.17"
+# so set it in a constant string
+WESNOTH_SERIES="{}.{}".format(version.major, version.minor)
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory
@@ -1427,9 +1428,11 @@ Error code: {1}
     def on_about(self):
         showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2016
 
+Version: {}
+
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
-Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""".format(version.as_string))
 
     def on_quit(self):
         # check if the text widget contains something

@@ -72,6 +72,7 @@
    * Removed support for writing BMP screenshots (PR #6206).
    * Password storage was fixed to work with multiple accounts (PR #6290)
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
+   * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346). 
 
 ## Version 1.16.0+dev
  ### Add-ons client
