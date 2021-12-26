@@ -107,6 +107,7 @@
 
 import sys, os, time, re, argparse, hashlib, glob, codecs
 from wesnoth.wmltools3 import *
+from wesnoth import version
 
 def interpret(lines, css):
     "Interpret the ! convention for .cfg comments."
@@ -421,7 +422,7 @@ class CrossRefLister(CrossRef):
         fp.write(outstr)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog="wmlscope")
     parser.add_argument("-c", "--crossreference", action="store_true",
                         help="Report resolved macro references (implies -w 1)")
     parser.add_argument("-C", "--collisions", action="store_true",
@@ -455,6 +456,8 @@ if __name__ == "__main__":
     parser.add_argument("directories", action="store", nargs="*",
                         help="""Any number of directiories to check. If no
 directories are given, all files under the current directory are checked.""")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
     namespace = parser.parse_args()
 
     try:

@@ -62,6 +62,7 @@
    * Added workaround for connecting to the multiplayer server taking too long when Chinese or Japanese language is selected (issue #6291)
    * Added `KeyboardInterrupt` handling to many Python WML tools
    * Added `--simple-version`` command line option
+   * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
 
 ## Version 1.16.1
  ### Add-ons server
