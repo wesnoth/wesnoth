@@ -1113,9 +1113,9 @@ whomacros = {}
 # This dictionary pairs the ids of stored units with their variable name.
 storedids = {}
 
-# This list of the standard recruitable usage types can be appended with the
+# This set of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
-usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
+standard_usage_types = {"scout", "fighter", "mixed fighter", "archer", "healer"}
 
 # Since 1.13, UMC authors can define their own conditional tags in Lua
 # This list can be populated by using the magic comment
@@ -1135,6 +1135,7 @@ races = []
 unit_races = []
 nextrefs = []
 scenario_to_filename = {}
+unit_levels = {}
 
 # Attributes that should have translation marks
 def is_translatable(key):
@@ -1494,6 +1495,7 @@ def global_sanity_check(filename, lines):
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
+            unit_level = None
             base_unit = ""
             traits = []
             notes = []
@@ -1508,6 +1510,8 @@ def global_sanity_check(filename, lines):
         elif nav.element == "[/unit_type]":
             if unit_id and unit_usage:
                 usage[unit_id] = unit_usage
+            if unit_id and (unit_level is not None):
+                unit_levels[unit_id] = unit_level
             if unit_id and temp_movetypes:
                 for movetype in temp_movetypes:
                     # movetype, race and advance are 3-element tuples, expand them
@@ -1556,6 +1560,7 @@ def global_sanity_check(filename, lines):
             traits = []
             notes = []
             unit_id = ""
+            unit_level = None
             base_unit = ""
             has_special_notes = False
             unit_race = None
@@ -1577,6 +1582,10 @@ def global_sanity_check(filename, lines):
                         base_unit = value
                 elif key == "hitpoints":
                     hitpoints_specified = True
+                elif key == "level":
+                    # levels are signed integers, however here we leave them as strings
+                    # because we need to check for them in recruitment patterns (consistency_check())
+                    unit_level = value
                 elif key == "usage":
                     unit_usage = value
                 elif key == "movement_type":
@@ -1787,7 +1796,7 @@ to be called on their own".format(filename, num))
         m = re.search('# *wmllint: usagetypes? +(.*)', line)
         if m:
             for newusage in m.group(1).split(","):
-                usage_types.append(newusage.strip())
+                standard_usage_types.add(newusage.strip())
         # Accumulate global spelling exceptions
         words = re.search("wmllint: general spellings? (.*)", line)
         if words:
@@ -2320,7 +2329,9 @@ def consistency_check():
     derivations = {u[2]: u[3] for u in derived_units}
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
-            utypes = []
+            # using sets to automatically remove duplicates
+            usage_types = set()
+            available_levels = set()
             for rtype in recruit:
                 base = rtype
                 if rtype not in unit_types:
@@ -2341,35 +2352,55 @@ def consistency_check():
                     continue
                 else:
                     utype = usage[base]
-                utypes.append(utype)
+                usage_types.add(utype)
+                # collect available unit levels for recruitment
+                if rtype in unit_levels:
+                    available_levels.add(unit_levels[rtype])
+                elif rtype in derivations:
+                    base = derivations[rtype]
+                    available_levels.add(unit_levels[base])
+                else:
+                    print('"{}", line {}: {} has no level'.format(filename, rl, rtype))
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
-                        if utype not in recruit_pattern:
+                        # now recruitment patterns can also contain levels and unit types, not just usages
+                        # so check all these three options
+                        if (utype not in recruit_pattern) and \
+                           (unit_levels[rtype] not in recruit_pattern) and \
+                           (rtype not in recruit_pattern):
                             rshow = ''
                             if rdifficulty is not None:
                                 rshow = 'At ' + rdifficulty + ', '
                             ushow = ''
-                            if utype not in usage_types:
-                                ushow = ', a non-standard usage class'
+                            if utype not in standard_usage_types:
+                                ushow = ', a possible non-standard usage class'
                             pshow = ''
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
                             print('"%s", line %d: %s%s (%s%s) doesn\'t match the%s recruitment pattern (%s) for its side' \
                                   % (filename, rl, rshow, rtype, utype, ushow, pshow, ", ".join(recruit_pattern)))
             # We have a list of all the usage types recruited at this difficulty
-            # in utypes.  Use it to check the matching pattern, if any. Suppress
+            # in usage_types. Use it to check the matching pattern, if any. Suppress
             # this check if the recruit line is a macroexpansion.
             if recruit and not recruit[0].startswith("{"):
                 for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
                         for utype in recruitment_pattern:
-                            if utype not in utypes:
+                            # again, check for levels and unit types as well
+                            if (utype not in usage_types) and \
+                               (utype not in available_levels) and \
+                               (utype not in recruit):
                                 rshow = '.'
                                 if rdifficulty is not None:
                                     rshow = ' at difficulty ' + rdifficulty + '.'
                                 ushow = ''
-                                if utype not in usage_types:
-                                    ushow = ' (a non-standard usage class)'
+                                # unit types usually have at least one uppercase character
+                                # levels have only numeric characters
+                                # so assume that a completely lowercase string is a usage type
+                                if utype not in standard_usage_types and utype.islower():
+                                    ushow = ' (a possible non-standard usage class)'
+                                elif utype.isnumeric():
+                                    ushow = ' (a possible unit level)'
                                 print('"%s", line %d: no %s%s units recruitable%s' % (filename, pl, utype, ushow, rshow))
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
