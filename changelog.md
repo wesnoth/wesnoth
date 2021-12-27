@@ -63,6 +63,7 @@
    * Added `KeyboardInterrupt` handling to many Python WML tools
    * Added `--simple-version` command line option
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
+   * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
 
 ## Version 1.16.1
  ### Add-ons server
