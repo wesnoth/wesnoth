@@ -6,9 +6,9 @@ local M = wesnoth.map
 local ca_wolves_multipacks_attack = {}
 
 function ca_wolves_multipacks_attack:evaluation(cfg)
-    -- If wolves have attacks left, call this CA
-    -- It will be disabled by being black-listed, so as to avoid
-    -- having to do the full attack evaluation for every single move evaluation
+    -- If wolves have attacks left, always call the execution function in order to avoid
+    -- having to do the full attack evaluation for every loop through the CA evaluations.
+    -- If no attacks are found, attacks_left is set to zero for the wolves instead.
 
     local wolves = AH.get_units_with_attacks {
         side = wesnoth.current.side,
@@ -190,6 +190,11 @@ function ca_wolves_multipacks_attack:execution(cfg)
                         WMPF.put_label(wolf_moves.x, wolf_moves.y, pack_number)
                     end
                 end
+            end
+        else -- otherwise take attacks away from all wolves in the pack
+            for _,pack_wolf in ipairs(pack) do
+                local wolf = wesnoth.units.find_on_map { id = pack_wolf.id }[1]
+                AH.checked_stopunit_attacks(ai, wolf)
             end
         end
     end
