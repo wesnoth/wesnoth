@@ -894,6 +894,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
 
+	mousehandler.deselect_hex();
 	gui_->set_route(nullptr);
 	gui_->invalidate_game_status();
 }
