@@ -60,9 +60,9 @@ private:
 	game_config_manager(const game_config_manager&);
 	void operator=(const game_config_manager&);
 
-	void load_game_config(bool reload_everything);
+	void load_game_config(bool reload_everything, const game_classification* classification, const std::string& scenario_id);
 
-	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload, std::optional<std::set<std::string>> active_addons = {});
+	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload, const game_classification* classification, const std::string& scenario_id);
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();
@@ -75,7 +75,7 @@ private:
 	game_config_view game_config_view_;
 
 	std::map<std::string, config> addon_cfgs_;
-	std::optional<std::set<std::string>> active_addons_;
+	std::set<std::string> active_addons_;
 
 	preproc_map old_defines_map_;
 

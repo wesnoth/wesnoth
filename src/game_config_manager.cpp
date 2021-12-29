@@ -108,7 +108,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	game_config::reset_color_info();
 
-	load_game_config_with_loadscreen(force_reload);
+	load_game_config_with_loadscreen(force_reload, nullptr, "");
 
 	game_config::load_config(game_config().child("game_config"));
 
@@ -146,7 +146,7 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 } // end anonymous namespace
 
 void game_config_manager::load_game_config_with_loadscreen(
-	FORCE_RELOAD_CONFIG force_reload, std::optional<std::set<std::string>> active_addons)
+	FORCE_RELOAD_CONFIG force_reload, const game_classification* classification, const std::string& scenario_id)
 {
 	if(!lg::info().dont_log(log_config)) {
 		auto out = formatter();
@@ -154,15 +154,6 @@ void game_config_manager::load_game_config_with_loadscreen(
 
 		for(const auto& pair : cache_.get_preproc_map()) {
 			out << pair.first << ",";
-		}
-
-		out << "\n add_ons:";
-		if(active_addons) {
-			for(const auto& str : *active_addons) {
-				out << str << ",";
-			}
-		} else {
-			out << "\n Everything:";
 		}
 
 		out << "\n";
@@ -176,30 +167,23 @@ void game_config_manager::load_game_config_with_loadscreen(
 
 	// Game_config already holds requested config in memory.
 	if(!game_config_.empty()) {
-		if((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
+		if(force_reload == NO_FORCE_RELOAD && old_defines_map_ == cache_.get_preproc_map()) {
 			reload_everything = false;
 		}
 
-		if((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+		if(force_reload == NO_INCLUDE_RELOAD && map_includes(old_defines_map_, cache_.get_preproc_map())) {
 			reload_everything = false;
-		}
-
-		if(!reload_everything && active_addons == active_addons_) {
-			LOG_CONFIG << "load_game_config aborting\n";
-			return;
 		}
 	}
 
-	active_addons_ = active_addons;
+	LOG_CONFIG << "load_game_config reload everything: " << reload_everything << "\n";
 
-	LOG_CONFIG << "load_game_config: everything:" << reload_everything << "\n";
-
-	gui2::dialogs::loading_screen::display([this, reload_everything]() {
-		load_game_config(reload_everything);
+	gui2::dialogs::loading_screen::display([this, reload_everything, classification, scenario_id]() {
+		load_game_config(reload_everything, classification, scenario_id);
 	});
 }
 
-void game_config_manager::load_game_config(bool reload_everything)
+void game_config_manager::load_game_config(bool reload_everything, const game_classification* classification, const std::string& scenario_id)
 {
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
@@ -336,9 +320,18 @@ void game_config_manager::load_game_config(bool reload_everything)
 			}
 		}
 
-		if(active_addons_) {
-			set_enabled_addon(*active_addons_);
+		// only after addon configs have been loaded do we check for which addons are needed and whether they exist to be used
+		if(classification) {
+			std::set<std::string> active_addons = classification->active_addons(scenario_id);
+			// IMPORTANT: this is a significant performance optimization, particularly for the worst case example of the batched WML unit tests
+			if(!reload_everything && active_addons == active_addons_) {
+				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.\n";
+				return;
+			}
+			active_addons_ = active_addons;
+			set_enabled_addon(active_addons_);
 		} else {
+			active_addons_.clear();
 			set_enabled_addon_all();
 		}
 
@@ -366,7 +359,7 @@ void game_config_manager::load_game_config(bool reload_everything)
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
 					e.message);
 			});
-			load_game_config(reload_everything);
+			load_game_config(reload_everything, classification, scenario_id);
 		} else if(preferences::core_id() != "default") {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
@@ -375,7 +368,7 @@ void game_config_manager::load_game_config(bool reload_everything)
 			});
 			preferences::set_core_id("default");
 			game_config::no_addons = false;
-			load_game_config(reload_everything);
+			load_game_config(reload_everything, classification, scenario_id);
 		} else {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
@@ -592,17 +585,17 @@ void game_config_manager::load_addons_cfg()
 
 			addon_cfgs_[addon_id] = std::move(umc_cfg);
 		} catch(const config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "config error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const preproc_config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "preprocessor config error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const filesystem::io_exception&) {
-			ERR_CONFIG << "error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "filesystem I/O error reading usermade add-on '" << main_cfg << "'" << std::endl;
 			error_addons.push_back(main_cfg);
 		}
 	}
@@ -669,7 +662,7 @@ void game_config_manager::reload_changed_game_config()
 void game_config_manager::load_game_config_for_editor()
 {
 	game_config::scoped_preproc_define editor("EDITOR");
-	load_game_config_with_loadscreen(NO_FORCE_RELOAD);
+	load_game_config_with_loadscreen(NO_FORCE_RELOAD, nullptr, "");
 }
 
 void game_config_manager::load_game_config_for_game(
@@ -703,7 +696,7 @@ void game_config_manager::load_game_config_for_game(
 	}
 
 	try {
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD, classification.active_addons(scenario_id));
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification, scenario_id);
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
@@ -712,7 +705,7 @@ void game_config_manager::load_game_config_for_game(
 			previous_defines.emplace_back(preproc.first);
 		}
 
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, nullptr, "");
 		throw;
 	}
 
@@ -733,7 +726,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 		DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
 	try {
-		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
+		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD, nullptr, "");
 	} catch(const game::error&) {
 		cache_.clear_defines();
 
@@ -742,7 +735,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 			previous_defines.emplace_back(preproc.first);
 		}
 
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, nullptr, "");
 		throw;
 	}
 }
