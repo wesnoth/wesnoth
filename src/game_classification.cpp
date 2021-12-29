@@ -118,9 +118,9 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 	std::set<std::string> loaded_resources;
 	std::set<std::string> res;
 
-	std::transform(active_mods.begin(), active_mods.end(), std::back_inserter(mods),
-		[](const std::string& id) { return modevents_entry("modification", id); }
-	);
+	for(const auto& mod : active_mods) {
+		mods.emplace_back("modification", mod);
+	}
 
 	// We don't want the error message below if there is no era (= if this is a sp game).
 	if(!era_id.empty()) {
@@ -150,8 +150,16 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 			for (const config& load_res : cfg.child_range("load_resource")) {
 				mods.emplace_back("resource", load_res["id"].str());
 			}
+		} else {
+			ERR_NG << "Unable to find config for content " << current.id << " of type " << current.type;
 		}
 		mods.pop_front( );
 	}
+
+	DBG_NG << "Active content for game set to:" << std::endl;
+	for(const std::string& mod : res) {
+		DBG_NG << mod << std::endl;
+	}
+
 	return res;
 }
