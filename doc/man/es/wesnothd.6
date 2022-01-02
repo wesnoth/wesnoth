@@ -178,8 +178,8 @@ sean usados para acceder. (predeterminado: false)
 .SS "Etiquetas globales:"
 .
 .P
-\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
-redirigirán ciertas versiones de clientes.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -213,13 +213,12 @@ reenvíe las solicitudes de los clientes conectados al servidor
 especificado.  Acepta las mismas opciones que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura el servicio de usuarios. Las opciones
-disponibles varían según cual servicio ha sido activado con la opción
-\fBuser_handler\fP. Si no hay ninguna sección \fB[user_handler]\fP en la
-configuración, el servidor funcionará sin ningún servicio de registro de
-usuarios. Todas las tablas adicionales que se necesitan para que funcione
-\fBforum_user_handler\fP pueden encontrarse en table_definitions.sql en el
-repositorio de fuentes de Wesnoth.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

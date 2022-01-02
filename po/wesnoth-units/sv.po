@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:03 UTC\n"
 "PO-Revision-Date: 2020-03-08 12:30+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -237,9 +237,9 @@ msgstr "slaga"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -278,9 +278,9 @@ msgstr "svärd"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -303,9 +303,9 @@ msgid "bow"
 msgstr "pilbåge"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -339,7 +339,6 @@ msgstr "klor"
 msgid "saber"
 msgstr "sabel"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
@@ -352,6 +351,7 @@ msgstr "sabel"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -368,8 +368,8 @@ msgstr "sabel"
 msgid "Walking Corpse"
 msgstr "Vandrande död"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -445,8 +445,8 @@ msgstr "beröring"
 msgid "club"
 msgstr "klubba"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -460,8 +460,8 @@ msgstr "Uråldrig häxmästare"
 msgid "chill tempest"
 msgstr "köldstorm"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -473,8 +473,8 @@ msgstr "Nekromant"
 msgid "plague staff"
 msgstr "peststav"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -485,14 +485,14 @@ msgstr "peststav"
 msgid "curse"
 msgstr "förbannelse"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -517,16 +517,18 @@ msgstr "förbannelse"
 msgid "fangs"
 msgstr "huggtänder"
 
+#. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=SotA Soulless_Rat
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #. [attack]: type=cold
 #. [variation]
-#. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=SotA Soulless_Rat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:49
 #: data/core/units/monsters/Crocodile.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
@@ -558,7 +560,6 @@ msgstr ""
 "mångtaliga men bräckliga; dock kan gnistan väckas i dem av lukten av strid "
 "och död, vilket gör dem betydligt mer oroväckande."
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -573,6 +574,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -591,8 +593,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "Själlös"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -613,10 +615,18 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "bärsärkagång"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
+#, fuzzy
+#| msgid ""
+#| "It is not clear why the Dragonguards are called what they are, a name "
+#| "given by their dwarven brethren. Some speculate that the name comes from "
+#| "their weapon of choice, these strange staves that belch fire and death. "
+#| "Others have surmised that it is because such weapons would be a threat "
+#| "against even a true Dragon, should such a thing be seen again in the "
+#| "known world. Whatever the case, it is for these weapons that the "
+#| "guardians of the great Dwarven citadels are both renowned and feared; "
+#| "weapons that have broken the mightiest of warriors with a single blow."
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -624,7 +634,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 "Det är oklart varför drakgardisterna heter som de gör, men vissa spekulerar "
@@ -665,8 +675,8 @@ msgstr "dolk"
 msgid "dragonstaff"
 msgstr "drakstav"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -693,8 +703,8 @@ msgstr ""
 msgid "hammer"
 msgstr "hammare"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 #, fuzzy
@@ -798,8 +808,8 @@ msgstr ""
 "självmordsbenäget än ogenomtänkt. Dessa dvärgar är närstridens mästare, och "
 "kan hålla stånd med en eks envishet."
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 #, fuzzy
@@ -816,8 +826,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 #, fuzzy
@@ -842,10 +852,8 @@ msgstr ""
 msgid "thunderstick"
 msgstr "åskstav"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
 #, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
@@ -857,7 +865,7 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 "Dvärgarnas tordönsvakter är beryktade för deras egendomliga vapen, dessa "
 "märkliga stavar av trä och järn som ger ifrån sig mäktiga oljud i sin ilska. "
@@ -871,8 +879,8 @@ msgstr ""
 "förbereda anses detta av dvärgarna vara värt sin väntan med tanke på "
 "resultaten."
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -885,16 +893,16 @@ msgstr ""
 "vildsinta av dessa; i strid hamnar de i ett blint raseri där de känner "
 "varken fruktan eller smärta, och tar ingen notis om de skador de får."
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Runmästare"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -907,8 +915,8 @@ msgid ""
 "than would be expected."
 msgstr ""
 
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1243,7 +1251,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "treudd"
 
@@ -1345,6 +1353,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "nedslag"
 
@@ -2235,6 +2244,26 @@ msgstr "Dvärgbärsärk"
 msgid "Dwarvish Dragonguard"
 msgstr "Drakgardist"
 
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+"Det är oklart varför drakgardisterna heter som de gör, men vissa spekulerar "
+"i att det åsyftar deras vapen, dessa märkliga stavar som sprutar eld och "
+"död. Andra tror att det kommer sig av att dessa vapen skulle kunna hota även "
+"riktiga drakar, om de skulle dyka upp i den kända världen igen. Hur det än "
+"är med den saken, så är det dessa vapen som har gjort dvärgarnas "
+"citadellvakter både vitt kända och fruktade; dessa vapen som i ett slag har "
+"kunnat krossa även de mäktigaste krigare."
+
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
@@ -2397,6 +2426,33 @@ msgstr "Tordönskrigare"
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Tordönsvakt"
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+#, fuzzy
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+"Dvärgarnas tordönsvakter är beryktade för deras egendomliga vapen, dessa "
+"märkliga stavar av trä och järn som ger ifrån sig mäktiga oljud i sin ilska. "
+"Mekanismerna bakom dessa vapen är ett mysterium, en hemlighet som går i "
+"graven med de av Knalgas dvärgar som använder, och som även tros smida, "
+"dessa stavar. Det enda man känner till kommer från rapporter som berättar "
+"att dvärgarna setts hälla ett underligt svart pulver i mynningen på sina "
+"vapen, vilket av vissa sägs vara föda åt monstret som är inspärrat däri.\n"
+"\n"
+"Även om ett enda skott från dessa 'tordönsstavar' kan ta flera minuter att "
+"förbereda anses detta av dvärgarna vara värt sin väntan med tanke på "
+"resultaten."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -4188,8 +4244,12 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
+#, fuzzy
+#| msgid ""
+#| "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and "
+#| "are highly resistant to non-physical damage."
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
 "Silvermagiker är i balans med sin magiska natur och mycket motståndskraftiga "
@@ -5050,15 +5110,12 @@ msgid ""
 "boar is a challenge even to the best hunters."
 msgstr ""
 
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
-
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
 msgstr ""
 
 #. [unit_type]: id=Piglet, race=monster
@@ -5459,10 +5516,8 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr "spark"
+msgid "hooves"
+msgstr ""
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
@@ -6387,6 +6442,11 @@ msgstr ""
 msgid "blade"
 msgstr "domedagssvärd"
 
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "spark"
+
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
@@ -6989,12 +7049,6 @@ msgstr "Troll"
 #| msgid "wc_variation^Bat"
 msgid "wc_variation^Boar"
 msgstr "Fladdermus"
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:44+0300\n"
+"POT-Creation-Date: 2022-01-02 21:01+0300\n"
 "PO-Revision-Date: 2021-07-19 02:00+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:496
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "地下"
@@ -3253,6 +3253,32 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
+#, fuzzy
+#| msgid ""
+#| "The orbs show whether the unit can move or attack. The statuses and their "
+#| "standard colors are:\n"
+#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
+#| "turn.\n"
+#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
+#| "attack. It might still be able to move further too.\n"
+#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
+#| "this turn.\n"
+#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
+#| "    • when a unit is in the middle of a multi-turn move (has been told to "
+#| "move further than it can in the current turn).\n"
+#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
+#| "still move further, but it can no longer attack.\n"
+#| "    • This can happen due to campaign-specific events or abilities, for "
+#| "example the <italic>text='disengage'</italic> ability in the campaign "
+#| "<italic>text='Under the Burning Suns'</italic>.\n"
+#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
+#| "own turn.\n"
+#| "    • During the ally’s own turn, their units will be shown with the "
+#| "green/yellow/red/white colors; however their moves, and the corresponding "
+#| "orb changes, are delayed as explained in <ref>dst='shroud_and_fog' "
+#| "text='Shroud and Fog of War'</ref>.\n"
+#| "• Enemy units normally don’t have orbs, however these can be enabled in "
+#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3271,10 +3297,10 @@ msgid ""
 "<italic>text='Under the Burning Suns'</italic>.\n"
 "• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
 "turn.\n"
-"    • During the ally’s own turn, their units will be shown with the green/"
-"yellow/red/white colors; however their moves, and the corresponding orb "
-"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
-"and Fog of War'</ref>.\n"
+"    • During the ally’s own turn, their units will be shown with the colors "
+"showing whether the units can still move and attack; however their moves, "
+"and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
@@ -4278,7 +4304,7 @@ msgstr "一般指令"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:679 data/core/help.cfg:721 data/core/help.cfg:759
+#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -4295,6 +4321,15 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:684
+msgid ""
+"\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
@@ -4303,7 +4338,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -4319,7 +4354,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=general_commands
-#: data/core/help.cfg:688
+#: data/core/help.cfg:691
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -4338,7 +4373,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4349,7 +4384,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:694
+#: data/core/help.cfg:697
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4362,7 +4397,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:697
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4373,7 +4408,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4384,7 +4419,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4395,7 +4430,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4406,7 +4441,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4417,7 +4452,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4426,12 +4461,12 @@ msgstr ""
 "儲存遊戲並退出章節（無提示視窗）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:723
 msgid "Multiplayer Commands"
 msgstr "多人連線遊戲指令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -4446,7 +4481,7 @@ msgstr ""
 
 # 這裡的巢狀括號很詭異，所以翻譯時已經把括號的內容展開了。
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4465,7 +4500,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:732
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4477,7 +4512,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4489,7 +4524,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4504,7 +4539,7 @@ msgstr ""
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4518,7 +4553,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4530,7 +4565,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4541,7 +4576,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4554,7 +4589,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4565,13 +4600,13 @@ msgstr ""
 "以發言了。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:761
 msgid "Debug Mode Commands"
 msgstr "偵錯模式指令"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4583,7 +4618,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4594,7 +4629,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4605,7 +4640,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4616,7 +4651,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4627,7 +4662,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4638,7 +4673,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4649,7 +4684,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4660,7 +4695,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4672,7 +4707,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4810,23 +4845,14 @@ msgstr ""
 msgid "female^leadership"
 msgstr "領導"
 
-# 「your own units」應換成「its own side's units」會比較正確。
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better.\n"
+"This unit can lead other troops in battle.\n"
 "\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
+"All adjacent lower-level units from the same side deal 25% more damage for "
+"each difference in level."
 msgstr ""
-"這個單位可以領導旁邊同樣屬於他的陣營的單位，使他們戰鬥得更好。\n"
-"\n"
-"等級較低的鄰近同陣營單位能在戰鬥中對敵人造成更多的傷害。一個較低等級的單位鄰"
-"接一個帶有領導技能的同陣營單位，當他在交戰時，他們每差一個等級，他的攻擊就能"
-"多造成25%的傷害。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -6551,9 +6577,21 @@ msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
+#, fuzzy
+#| msgid ""
+#| "Domesticated horses come in many shapes and sizes, from mighty war "
+#| "chargers, to sturdy draught horses or agile stock horses.  While they are "
+#| "more fragile than many beasts, their speed and cunning allow feral horses "
+#| "to thrive in the wild, alongside their wild brethren.\n"
+#| "\n"
+#| "Horses have been an important part of many civilizations, so it is not "
+#| "surprising that there are many myths and stories centered around them.  "
+#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
+#| "into written history, though few can honestly claim to have seen such "
+#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
-"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"to sturdy draught horses or agile stock horses. While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
 "the wild, alongside their wild brethren.\n"
 "\n"
@@ -7608,6 +7646,22 @@ msgstr "視野成本"
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr "干擾成本"
+
+# 「your own units」應換成「its own side's units」會比較正確。
+#~ msgid ""
+#~ "This unit can lead your own units that are next to it, making them fight "
+#~ "better.\n"
+#~ "\n"
+#~ "Adjacent own units of lower level will do more damage in battle. When a "
+#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
+#~ "with Leadership engages in combat, its attacks do 25% more damage times "
+#~ "the difference in their levels."
+#~ msgstr ""
+#~ "這個單位可以領導旁邊同樣屬於他的陣營的單位，使他們戰鬥得更好。\n"
+#~ "\n"
+#~ "等級較低的鄰近同陣營單位能在戰鬥中對敵人造成更多的傷害。一個較低等級的單位"
+#~ "鄰接一個帶有領導技能的同陣營單位，當他在交戰時，他們每差一個等級，他的攻擊"
+#~ "就能多造成25%的傷害。"
 
 #~ msgid "TODO"
 #~ msgstr "待補"

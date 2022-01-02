@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:02 UTC\n"
 "PO-Revision-Date: 2009-03-19 23:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
+"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
 
@@ -48,7 +48,7 @@ msgstr ""
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
 #, fuzzy
 #| msgid "Who would you like to play?"
-msgid "Who do you want to play?"
+msgid "Who do you want to play as?"
 msgstr "את מי אתה רוצה לשחק (התכונות זהות)?"
 
 #. [button]
@@ -60,8 +60,8 @@ msgid "Konrad"
 msgstr "קונרד"
 
 #. [button]
-#. [modify_side]
 #. [lua]: wml_actions.select_character
+#. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
 #: data/campaigns/tutorial/lua/character_selection.lua:24
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
@@ -150,8 +150,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
 #, fuzzy
 msgid ""
-"For this tutorial, you are playing Konrad. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Konrad. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא בגדה המזרחית של הנהר"
@@ -160,8 +160,8 @@ msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא ב
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
 #, fuzzy
 msgid ""
-"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Li’sar. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא בגדה המזרחית של הנהר"
@@ -420,7 +420,7 @@ msgstr ""
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
-"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"Turn</b> button in the bottom right of the screen. The other sides, whether "
 "controlled by the AI or other human players, will then make their move. Some "
 "scenarios must be completed in a certain number of turns. You can see what "
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
@@ -580,7 +580,7 @@ msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
 "newly recruited units cannot act the turn you recruit them; you will be able "
-"to use them next turn. This scenario you have only one type of unit to "
+"to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
 "כשאתה נמצא במצודה, אתה יכול לגייס למשבצות הטירה שלייד ע\"י כפתור ימני על "
@@ -636,7 +636,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
-"have two kinds of attack..."
+"have two kinds of attacks..."
 msgstr ""
 
 #. [message]: speaker=student
@@ -737,9 +737,10 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
+#, fuzzy
 msgid ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
-msgstr ""
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
+msgstr "כפתור ימני על משבצת הטירה האחרת וגיס יחידה אחרת"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
@@ -975,7 +976,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
 msgid ""
-"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
@@ -998,7 +999,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1007,7 +1008,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1119,7 +1120,7 @@ msgid ""
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
 "gold each. This allows you to build up a formidable army over the course of "
 "multiple scenarios by recalling your highest leveled troops or those with "
-"good combinations of traits and abilities. To recall a unit, right click "
+"good combinations of traits and abilities. To recall a unit, right-click "
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
@@ -1188,7 +1189,7 @@ msgid ""
 "which allows that attack to always hit first no matter who attacks first, "
 "and Magical, which gives that attack a constant 70% chance to hit.\n"
 "\n"
-"A full list of abilities and weapons specials, along with traits, may be "
+"A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 
@@ -1216,7 +1217,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
-"per turn compared to your Shaman's 4. However, each unit can only receive "
+"per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
@@ -1557,7 +1558,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
-"them each 4 hitpoints at the beginning of the next turn."
+"each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
 
 #. [message]: speaker=second_unit
@@ -1610,8 +1611,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
 msgid ""
-"You’re venturing away from your keep. You might need recruit more units, and "
-"I doubt the orc leader will let you use his! Careful!"
+"You’re venturing away from your keep. You might need to recruit more units, "
+"and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
 
 #. [event]
@@ -1690,8 +1691,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Menu</b> menu."
+"conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
+"b> menu."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -2151,10 +2152,6 @@ msgstr ""
 #~ msgstr ""
 #~ "רעיון מצוין. תוכל לגייס 2 יחידות עם תחזור למצודה. יש לך מספיק זהב לעשות "
 #~ "זאת."
-
-#, fuzzy
-#~ msgid "Right click on a castle tile and select <b>Recruit</b>"
-#~ msgstr "כפתור ימני על משבצת הטירה האחרת וגיס יחידה אחרת"
 
 #, fuzzy
 #~ msgid "Right click on the other castle tile and recruit another unit"

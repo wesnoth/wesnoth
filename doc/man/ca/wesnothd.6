@@ -175,8 +175,8 @@ being used from logging in. (default: false)
 .SS "Etiquetes globals:"
 .
 .P
-\fB[redirect]\fP Una etiqueta per a especificar un servidor per a redirigir\-hi
-certes versions de client.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -211,12 +211,12 @@ intermediari i reenviar les sol·licituds del client connectat al servidor
 especificat. Accepta les mateixes claus que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura el gestor d'usuaris. Les claus disponibles
-varien en funció del gestor d'usuaris establert amb la clau
-\fBuser_handler\fP. Si no hi ha cap secció \fB[user_handler]\fP a la configuració,
-el servidor s'executarà sense cap servei de registre de sobrenoms. Totes les
-taules addicionals necessàries perquè \fBforum_user_handler\fP funcioni es
-poden trobar a table_definitions.sql al repositori font de Wesnoth.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

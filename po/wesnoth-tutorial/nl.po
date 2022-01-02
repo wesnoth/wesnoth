@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:02 UTC\n"
 "PO-Revision-Date: 2021-10-28 21:54+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -30,8 +30,12 @@ msgstr "Oefening"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#| "first time players."
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
+"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
 "Ontdek en leer hoe je Wesnoth speelt met deze training. Als je Wesnoth voor "
@@ -49,7 +53,9 @@ msgstr "Selecteer Personage"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-msgid "Who do you want to play?"
+#, fuzzy
+#| msgid "Who do you want to play?"
+msgid "Who do you want to play as?"
 msgstr "Als wie wil je spelen?"
 
 #. [button]
@@ -61,8 +67,8 @@ msgid "Konrad"
 msgstr "Konrad"
 
 #. [button]
-#. [modify_side]
 #. [lua]: wml_actions.select_character
+#. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
 #: data/campaigns/tutorial/lua/character_selection.lua:24
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
@@ -145,9 +151,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
+#| "and your mentor Delfador is on the east side of the river. You can move "
+#| "the mouse over a unit to see a summary of its abilities and stats on the "
+#| "right of the screen."
 msgid ""
-"For this tutorial, you are playing Konrad. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Konrad. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -158,9 +170,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
+#| "and your mentor Delfador is on the east side of the river. You can move "
+#| "the mouse over a unit to see a summary of its abilities and stats on the "
+#| "right of the screen."
 msgid ""
-"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Li’sar. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -425,10 +443,19 @@ msgstr "Beurten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
+#, fuzzy
+#| msgid ""
+#| "Every turn, each side in a scenario gets a chance to make their move. "
+#| "Once you’ve completed everything you wish to do this turn, click on the "
+#| "<b>End Turn</b> button in the bottom right of the screen. The other "
+#| "teams, whether controlled by the AI or other human players, will then "
+#| "make their move. Some scenarios must be completed in a certain number of "
+#| "turns. You can see what turn it is, and any applicable turn limit, next "
+#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
-"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"Turn</b> button in the bottom right of the screen. The other sides, whether "
 "controlled by the AI or other human players, will then make their move. Some "
 "scenarios must be completed in a certain number of turns. You can see what "
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
@@ -580,11 +607,18 @@ msgstr "Rekruteren"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
+#, fuzzy
+#| msgid ""
+#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
+#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
+#| "Note that newly recruited units cannot act the turn you recruit them; you "
+#| "will be able to use them next turn. This scenario you have only one type "
+#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
 "newly recruited units cannot act the turn you recruit them; you will be able "
-"to use them next turn. This scenario you have only one type of unit to "
+"to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
 "Wanneer je op een <i>donjon</i> staat, kun je eenheden <i>rekruteren</i> op "
@@ -653,9 +687,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+#, fuzzy
+#| msgid ""
+#| "Before you send your fighters against the quintain, you should know they "
+#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
-"have two kinds of attack..."
+"have two kinds of attacks..."
 msgstr ""
 "Voor je de stropop aanvalt met je krijgers, moet ik je nog vertellen dat ze "
 "twee soorten aanvallen hebben..."
@@ -789,8 +827,11 @@ msgstr "Eenheid Beschrijvingen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
+#, fuzzy
+#| msgid ""
+#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Je kunt met je rechter muisknop op een eenheid klikken om een gedetailleerde "
 "<b>Eenheid beschrijving</b> te bekijken."
@@ -1065,8 +1106,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
+#, fuzzy
+#| msgid ""
+#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
+#| "teach you about recalling units, abilities and weapon specials, income "
+#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
-"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
@@ -1095,9 +1141,15 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
+#, fuzzy
+#| msgid ""
+#| "This is no game, Konrad! Orcs have encamped across the river. This is "
+#| "elven country; they are fools to enter here. We Elves are fast and hard "
+#| "to hit in forests. You must defeat their leader so they never threaten us "
+#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1108,9 +1160,15 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
+#, fuzzy
+#| msgid ""
+#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
+#| "elven country; they are fools to enter here. We Elves are fast and hard "
+#| "to hit in forests. You must defeat their leader so they never threaten us "
+#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1245,12 +1303,22 @@ msgstr "Oproepen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
+#, fuzzy
+#| msgid ""
+#| "In addition to recruiting new units each scenario, you can also "
+#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
+#| "cost of 20 gold each. This allows you to build up a formidable army over "
+#| "the course of multiple scenarios by recalling your highest leveled troops "
+#| "or those with good combinations of traits and abilities. To recall a "
+#| "unit, right click while your leader stands on a keep and select the "
+#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
+#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
 "gold each. This allows you to build up a formidable army over the course of "
 "multiple scenarios by recalling your highest leveled troops or those with "
-"good combinations of traits and abilities. To recall a unit, right click "
+"good combinations of traits and abilities. To recall a unit, right-click "
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
@@ -1337,6 +1405,18 @@ msgstr "Wapen Specialiteiten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
+#, fuzzy
+#| msgid ""
+#| "Weapon specials are special attack modifiers that make certain attacks "
+#| "more powerful. In this case, the Shaman has the Slows special on her "
+#| "entangle attack. When this attack successfully hits an enemy, it will "
+#| "halve the damage they do for one turn. Other weapon specials include "
+#| "First Strike, which allows that attack to always hit first no matter who "
+#| "attacks first, and Magical, which gives that attack a constant 70% chance "
+#| "to hit.\n"
+#| "\n"
+#| "A full list of abilities and weapons specials, along with traits, may be "
+#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1345,7 +1425,7 @@ msgid ""
 "which allows that attack to always hit first no matter who attacks first, "
 "and Magical, which gives that attack a constant 70% chance to hit.\n"
 "\n"
-"A full list of abilities and weapons specials, along with traits, may be "
+"A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Wapen specialiteiten zijn speciale aanpassingen die bepaalde aanvallen "
@@ -1388,9 +1468,15 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
+#, fuzzy
+#| msgid ""
+#| "You now have two healers. Your Druid can heal adjacent units by 8 "
+#| "hitpoints per turn compared to your Shaman's 4. However, each unit can "
+#| "only receive healing from one healer — a unit next to multiple healers is "
+#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
-"per turn compared to your Shaman's 4. However, each unit can only receive "
+"per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
@@ -1830,9 +1916,13 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
+#, fuzzy
+#| msgid ""
+#| "If one of your Shamans stands just behind your wounded units, she will "
+#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
-"them each 4 hitpoints at the beginning of the next turn."
+"each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Als een van je Sjamanen net achter je gewonde eenheden staat, zal ze zorgen "
 "dat ze allemaal 4 levenspunten (LP) genezen aan het begin van de volgende "
@@ -1906,9 +1996,13 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+#, fuzzy
+#| msgid ""
+#| "You’re venturing away from your keep. You might need recruit more units, "
+#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
-"You’re venturing away from your keep. You might need recruit more units, and "
-"I doubt the orc leader will let you use his! Careful!"
+"You’re venturing away from your keep. You might need to recruit more units, "
+"and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
 "Je bent best ver van je donjon af. Misschien moet je nog wat eenheden "
 "rekruteren, en ik betwijfel of de Orkleider zijn donjon ter beschikking "
@@ -2019,10 +2113,15 @@ msgstr "Overwinningsvoorwaarden"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "the <b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Menu</b> menu."
+"conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
+"b> menu."
 msgstr ""
 "In dit scenario hoef je enkel de Orkleider te verslaan om te winnen. "
 "Overwinningsvoorwaarden voor een scenario zijn te vinden onder <b>Scenario "

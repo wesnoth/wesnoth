@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-thot)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:02 UTC\n"
 "PO-Revision-Date: 2019-01-22 13:22+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -455,7 +455,7 @@ msgid ""
 "runemasters and arcanisters then living — all those who had sworn to the "
 "craft and bound themselves to the power o’ the Hammer — dropped dead without "
 "a mark on them, all struck down at the same moment. Their craft secrets died "
-"with them. That is why there are nae runesmiths among the Dwarves today, and "
+"with them. That is why there are nae runesmiths among the dwarves today, and "
 "sorely we miss them."
 msgstr ""
 "Porque quando Thursagan foi queimado até a morte com a mão sobre o martelo, "
@@ -1988,9 +1988,14 @@ msgstr "Este lugar cheira a morte."
 #
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:282
+#, fuzzy
+#| msgid ""
+#| "It has been... so many years since I’ve been down here. Only Karrag and "
+#| "his personal followers used this level. I can't believe I never wondered "
+#| "about that before."
 msgid ""
 "It has been... so many years since I’ve been down here. Only Karrag and his "
-"personal followers used this level. I can't believe I never wondered about "
+"personal followers used this level. I can’t believe I never wondered about "
 "that before."
 msgstr ""
 "Já faz... já faz anos desde a última vez que estive aqui em baixo. Apenas "
@@ -2005,7 +2010,7 @@ msgstr ""
 #| "Karrag’s will, and his dark magic. I think he has been casting glamours "
 #| "on all of you ever since he passed over."
 msgid ""
-"It is Karrag's doing—his will, and his dark magic. I think he has been "
+"It is Karrag’s doing—his will, and his dark magic. I think he has been "
 "casting glamours on all of you ever since he passed over."
 msgstr ""
 "O querer de Karrag, e a sua magia negra. Acredito que deve estar a invocar "
@@ -2059,14 +2064,14 @@ msgstr "Alguém está aqui."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:364
-msgid "Poor guy didn't make it."
+msgid "Poor guy didn’t make it."
 msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:395
 #, fuzzy
 #| msgid "Wow! There is at least 1,000 gold in here!"
-msgid "There's some gold in here!"
+msgid "There’s some gold in here!"
 msgstr "Uau! Há pelo menos 1000 peças de ouro aqui dentro!"
 
 #. [message]: speaker=unit
@@ -2105,14 +2110,14 @@ msgstr "Vamos prosseguir."
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:524
 #, fuzzy
 #| msgid "Did you see that? There's something in the bay."
-msgid "There's something behind this door. I shall break it down!"
+msgid "There’s something behind this door. I shall break it down!"
 msgstr "Viste aquilo? Há qualquer coisa na baía."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:530
 #, fuzzy
 #| msgid "Did you see that? There's something in the bay."
-msgid "There's something behind this door."
+msgid "There’s something behind this door."
 msgstr "Viste aquilo? Há qualquer coisa na baía."
 
 #. [message]: speaker=Aiglondur
@@ -2132,7 +2137,7 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:615
-msgid "You could not stop us before and you won't be stopping us now!"
+msgid "You could not stop us before and you won’t be stopping us now!"
 msgstr ""
 
 #
@@ -2151,20 +2156,20 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:641
-msgid "You won't stop us!"
+msgid "You won’t stop us!"
 msgstr ""
 
 #. [message]: speaker=Dufon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:646
 msgid ""
-"Fools! Even should you defeat me, the master's ritual will soon be complete "
+"Fools! Even should you defeat me, the master’s ritual will soon be complete "
 "and you shall all become his slaves!"
 msgstr ""
 
 #. [message]: speaker=Aragoth
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:666
 msgid ""
-"Your path forward ends here! Once the lord's spell is complete, your souls "
+"Your path forward ends here! Once the lord’s spell is complete, your souls "
 "will soon be chained to his will!"
 msgstr ""
 
@@ -2202,7 +2207,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:880
 #, fuzzy
 #| msgid "We found the lich!"
-msgid "We've found a runic key!"
+msgid "We’ve found a runic key!"
 msgstr "Encontramos o Lich!"
 
 #
@@ -2354,13 +2359,15 @@ msgstr "De acordo, vamos."
 #
 #. [message]: speaker=Dufon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1310
-msgid "The master's ritual... must not be... interrupted..."
+#, fuzzy
+#| msgid "The master's ritual... must not be... interrupted..."
+msgid "The master’s ritual... must not be... interrupted..."
 msgstr "O ritual do nosso mestre não... pode... ser interrompido..."
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1322
 msgid ""
-"Imbeciles! Once the master's dark rite is complete, I will return to slay "
+"Imbeciles! Once the master’s dark rite is complete, I will return to slay "
 "you myself!"
 msgstr ""
 
@@ -2389,7 +2396,7 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1374
 msgid ""
-"Karrag's spell grows more powerful with every passing moment. If we do not "
+"Karrag’s spell grows more powerful with every passing moment. If we do not "
 "defeat him now, we will all turn into his thralls!"
 msgstr ""
 
@@ -2687,10 +2694,19 @@ msgstr "Senhor Anão Mascarado"
 #
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
+#| "formidable fighting powers of his kind without accounting to his peers "
+#| "and to the loremasters of Dwarven-kind for the dark and bloody uses to "
+#| "which he puts his weapons. Like his barefaced kin, the Dwarf Lord wields "
+#| "axe and hammer with masterful skill, and can hit a target with a thrown "
+#| "hand axe at several paces. Though slow on their feet, these dwarves are a "
+#| "testament to the prowess of their kind."
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
-"to the loremasters of Dwarven-kind for the dark and bloody uses to which he "
+"to the loremasters of dwarven-kind for the dark and bloody uses to which he "
 "puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe and "
 "hammer with masterful skill, and can hit a target with a thrown hand axe at "
 "several paces. Though slow on their feet, these dwarves are a testament to "
@@ -2726,8 +2742,13 @@ msgstr "Anão Guerreiro Mascarado"
 #
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:17
+#, fuzzy
+#| msgid ""
+#| "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
+#| "for which they are rightly famous. In the dark dreams of dwarvenkind, "
+#| "some conceal their faces behind riveted masks."
 msgid ""
-"More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
+"More experienced dwarvish fighters wear heavy chain mail and plate armor, "
 "for which they are rightly famous. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""

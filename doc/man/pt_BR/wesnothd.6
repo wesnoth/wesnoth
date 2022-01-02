@@ -165,14 +165,14 @@ pelo servidor. \fB*\fP e \fB?\fP de caracteres\-curinga são suportados.  (o pad
 Exemplo: \fBversions_accepted="*"\fP aceita qualquer versão do string.
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Se quiser previnir usuários que não estão registrados com o \fBuser_handler\fP
+logando. (padrão:falso)
 .
 .SS "Tags Globais:"
 .
 .P
-\fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
-certas versões de clientes.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -205,17 +205,16 @@ as requisições dos clientes conectados para  o servidor especificado.
 Aceita as mesmas chaves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura o apelido do usuário. As chaves disponíveis
-variam dependendo qual o apelido de usuário foi definido com a
-\fBuser_handler\fP chave. Se não houver uma entrada \fB[user_handler]\fP presente
-na configuração, o servidor rodará sem nenhum serviço de registro de
-apelidos. Todas as tabelas adicionais que são necessárias para que o
-\fBforum_user_handler\fP funcione podem ser encontradas na
-table_definitions.sql no repositório de código do Wesnoth.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
-O hostname do servidor de database
+O hostname do servidor da database
 .TP 
 \fBdb_name\fP
 O nome da database

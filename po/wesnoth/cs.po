@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:45+0300\n"
+"POT-Creation-Date: 2022-01-02 21:03+0300\n"
 "PO-Revision-Date: 2021-09-20 20:29+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -5243,6 +5243,7 @@ msgstr "Přepadení!"
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleport selhal! Druhá strana není prázdná"
 
+#. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
@@ -5250,32 +5251,39 @@ msgstr[0] "1 spřátelená"
 msgstr[1] "$friends spřátelené"
 msgstr[2] "$friends spřátelených"
 
-#: src/actions/move.cpp:1128
+#. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
+#: src/actions/move.cpp:1129
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 nepřátelská"
 msgstr[1] "$enemies nepřátelské"
 msgstr[2] "$enemies nepřátelských"
 
-#: src/actions/move.cpp:1129
+#. TRANSLATORS: Both friends and enemies sighted -- neutral message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1132
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Jednotky na dohled! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1133
+#. TRANSLATORS: Only enemies sighted -- bad message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1137
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Nepřátelská jednotka na dohled!"
 msgstr[1] "$enemies nepřátelské jednotky na dohled!"
 msgstr[2] "$enemies nepřátelských jednotek na dohled!"
 
-#: src/actions/move.cpp:1137
+#. TRANSLATORS: Only friends sighted -- good message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1142
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Spatřena spřátelená jednotka"
 msgstr[1] "Spatřeny $friends spřátelené jednotky"
 msgstr[2] "Spatřeno $friends spřátelených jednotek"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1157
 msgid "(press $hotkey to keep moving)"
 msgstr "(stiskni $hotkey k pokračování)"
 
@@ -5985,58 +5993,58 @@ msgstr "%b %d %y"
 msgid "Invalid color in range: "
 msgstr "Neplatná barva v rozsahu: "
 
-#: src/game_config_manager.cpp:258 src/game_config_manager.cpp:268
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:242 src/game_config_manager.cpp:252
+#: src/game_config_manager.cpp:264
 msgid "Error validating data core."
 msgstr "Chyba při ověřování datového jádra."
 
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:243
 msgid "Found a core without id attribute."
 msgstr "Nalezeno jádro bez atributu id."
 
-#: src/game_config_manager.cpp:260 src/game_config_manager.cpp:271
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:268
 msgid "Skipping the core."
 msgstr "Vynechávání jádra."
 
-#: src/game_config_manager.cpp:269 src/game_config_manager.cpp:281
-#: src/game_config_manager.cpp:304
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:288
 msgid "Core ID: "
 msgstr "ID jádra: "
 
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:254
 msgid "The ID is already in use."
 msgstr "Toto ID už někdo používá."
 
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:266
 msgid "Core Path: "
 msgstr "Cesta k jádru: "
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:267
 msgid "File not found."
 msgstr "Soubor nenalezen."
 
-#: src/game_config_manager.cpp:303 src/game_config_manager.cpp:315
+#: src/game_config_manager.cpp:287 src/game_config_manager.cpp:299
 msgid "Error loading core data."
 msgstr "Chyba při načítání jaderných dat."
 
-#: src/game_config_manager.cpp:305
+#: src/game_config_manager.cpp:289
 msgid "Error loading the core with named id."
 msgstr "Chyba při načítání jádra s pojmenovaným id."
 
-#: src/game_config_manager.cpp:306
+#: src/game_config_manager.cpp:290
 msgid "Falling back to the default core."
 msgstr "Použití výchozího jádra."
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:300
 msgid "Can't locate the default core."
 msgstr "Nepodařilo se najít výchozí jádro."
 
-#: src/game_config_manager.cpp:317
+#: src/game_config_manager.cpp:301
 msgid "The game will now exit."
 msgstr "Hra se nyní ukončí."
 
-#: src/game_config_manager.cpp:366
+#: src/game_config_manager.cpp:359
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6044,7 +6052,7 @@ msgstr ""
 "Chyba při nahrávání konfiguračních souborů. Hra se pokusí o zapnutí bez "
 "doplňků."
 
-#: src/game_config_manager.cpp:373
+#: src/game_config_manager.cpp:366
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6052,28 +6060,28 @@ msgstr ""
 "Chyba při nahrávání konfiguračních souborů. Hra se načte za použití "
 "výchozích souborů jádra."
 
-#: src/game_config_manager.cpp:382
+#: src/game_config_manager.cpp:375
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "Chyba při nahrávání výchozích konfiguračních souborů. Hra bude nyní ukončena."
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:528
 msgid "Use [modify_unit_type]\n"
 msgstr "Použij [modify_unit_type]\n"
 
-#: src/game_config_manager.cpp:574
+#: src/game_config_manager.cpp:567
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "místo toho použij ve značce [campaign] makro se stejným jménem"
 
-#: src/game_config_manager.cpp:625
+#: src/game_config_manager.cpp:618
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Následující rozšíření obsahovalo chyby a nemohlo být nahráno:"
 msgstr[1] "Následující rozšíření obsahovala chyby a nemohla být nahrána:"
 msgstr[2] "Následující rozšíření obsahovala chyby a nemohla být nahrána:"
 
-#: src/game_config_manager.cpp:629
+#: src/game_config_manager.cpp:622
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7160,6 +7168,12 @@ msgstr "Ladí terénní vrstvy pod myší."
 msgid "Display and log fps (Frames Per Second)."
 msgstr "Zobrazovat a zaznamenávat FPS (snímky za sekundu)."
 
+#: src/menu_events.cpp:1248
+msgid ""
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed."
+msgstr ""
+
 #: src/menu_events.cpp:1249
 msgid "Save game."
 msgstr "Uloží hru."
@@ -8076,14 +8090,18 @@ msgstr "Odpočítávání, než tvé kolo automaticky skončí."
 msgid "Turn Countdown"
 msgstr "Čas na kolo"
 
-#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-msgid "%a %b %d %I:%M %p %Y"
+#, fuzzy
+#| msgid "%a %b %d %I:%M %p %Y"
+msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-msgid "%a %b %d %H:%M %Y"
+#, fuzzy
+#| msgid "%a %b %d %H:%M %Y"
+msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
@@ -8605,7 +8623,7 @@ msgstr "$year př. P."
 msgid "$year AF"
 msgstr "$year po P."
 
-#: src/wesnothd_connection.cpp:510
+#: src/wesnothd_connection.cpp:531
 msgid "Disconnected from server."
 msgstr "Odpojen od serveru."
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:45+0300\n"
+"POT-Creation-Date: 2022-01-02 21:03+0300\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -5325,35 +5325,43 @@ msgstr "Emboscada!"
 msgid "Failed teleport! Exit not empty"
 msgstr "La teleportació ha fallat. La sortida no és buida"
 
+#. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends amiga"
 msgstr[1] "$friends amigues"
 
-#: src/actions/move.cpp:1128
+#. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
+#: src/actions/move.cpp:1129
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies enemiga"
 msgstr[1] "$enemies enemigues"
 
-#: src/actions/move.cpp:1129
+#. TRANSLATORS: Both friends and enemies sighted -- neutral message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1132
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitats a la vista! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1133
+#. TRANSLATORS: Only enemies sighted -- bad message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1137
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "S'ha vist una unitat enemiga!"
 msgstr[1] "S'han vist $enemies unitats enemigues!"
 
-#: src/actions/move.cpp:1137
+#. TRANSLATORS: Only friends sighted -- good message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1142
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "S'ha vist una unitat amiga"
 msgstr[1] "S'han vist $friends unitats amigues"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1157
 msgid "(press $hotkey to keep moving)"
 msgstr "(premeu $hotkey per a seguir movent)"
 
@@ -6068,58 +6076,58 @@ msgstr "%b %d %Y"
 msgid "Invalid color in range: "
 msgstr "Color no vàlid al rang: "
 
-#: src/game_config_manager.cpp:258 src/game_config_manager.cpp:268
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:242 src/game_config_manager.cpp:252
+#: src/game_config_manager.cpp:264
 msgid "Error validating data core."
 msgstr "Error de validació del nucli de dades."
 
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:243
 msgid "Found a core without id attribute."
 msgstr "S'ha trobat un nucli sense atribut identificador."
 
-#: src/game_config_manager.cpp:260 src/game_config_manager.cpp:271
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:268
 msgid "Skipping the core."
 msgstr "S'ometrà el nucli."
 
-#: src/game_config_manager.cpp:269 src/game_config_manager.cpp:281
-#: src/game_config_manager.cpp:304
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:288
 msgid "Core ID: "
 msgstr "ID del nucli: "
 
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:254
 msgid "The ID is already in use."
 msgstr "L'identificador ja està en ús."
 
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:266
 msgid "Core Path: "
 msgstr "Camí del nucli: "
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:267
 msgid "File not found."
 msgstr "No s'ha trobat el fitxer."
 
-#: src/game_config_manager.cpp:303 src/game_config_manager.cpp:315
+#: src/game_config_manager.cpp:287 src/game_config_manager.cpp:299
 msgid "Error loading core data."
 msgstr "S'ha produït un error en carregar les dades del nucli."
 
-#: src/game_config_manager.cpp:305
+#: src/game_config_manager.cpp:289
 msgid "Error loading the core with named id."
 msgstr "S'ha produït un error en carregar el nucli amb identificador amb nom."
 
-#: src/game_config_manager.cpp:306
+#: src/game_config_manager.cpp:290
 msgid "Falling back to the default core."
 msgstr "Es tornarà al nucli per defecte."
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:300
 msgid "Can't locate the default core."
 msgstr "No es pot trobar el nucli per defecte."
 
-#: src/game_config_manager.cpp:317
+#: src/game_config_manager.cpp:301
 msgid "The game will now exit."
 msgstr "El joc es tancarà ara."
 
-#: src/game_config_manager.cpp:366
+#: src/game_config_manager.cpp:359
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6127,7 +6135,7 @@ msgstr ""
 "S'ha produït un error en carregar els fitxers de configuració de la partida "
 "personalitzada. S'intentarà sense carregar complements."
 
-#: src/game_config_manager.cpp:373
+#: src/game_config_manager.cpp:366
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6135,29 +6143,29 @@ msgstr ""
 "S'ha produït un error en carregar els fitxers de configuració de la partida "
 "personalitzada. Es tornarà als fitxers bàsics per defecte."
 
-#: src/game_config_manager.cpp:382
+#: src/game_config_manager.cpp:375
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "S'ha produït un error en carregar els fitxers de configuració del nucli per "
 "defecte. El joc es tancarà ara."
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:528
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:574
+#: src/game_config_manager.cpp:567
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:625
+#: src/game_config_manager.cpp:618
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "El complement següent contenia errors i no s'ha pogut carregar:"
 msgstr[1] ""
 "Els complements següents contenien errors i no s'han pogut carregar:"
 
-#: src/game_config_manager.cpp:629
+#: src/game_config_manager.cpp:622
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7239,6 +7247,12 @@ msgstr "Depura les capes del terreny sota el ratolí."
 msgid "Display and log fps (Frames Per Second)."
 msgstr "Mostra els FPS (fotogrames per segon)."
 
+#: src/menu_events.cpp:1248
+msgid ""
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed."
+msgstr ""
+
 #: src/menu_events.cpp:1249
 msgid "Save game."
 msgstr "Desa la partida."
@@ -8161,14 +8175,18 @@ msgstr "Compte enrere fins que el torn s'acaba automàticament."
 msgid "Turn Countdown"
 msgstr "Comptador de torns"
 
-#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-msgid "%a %b %d %I:%M %p %Y"
+#, fuzzy
+#| msgid "%a %b %d %I:%M %p %Y"
+msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %I:%M %p %Y"
 
-#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-msgid "%a %b %d %H:%M %Y"
+#, fuzzy
+#| msgid "%a %b %d %H:%M %Y"
+msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
@@ -8664,7 +8682,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:510
+#: src/wesnothd_connection.cpp:531
 msgid "Disconnected from server."
 msgstr "Desconnectat del servidor."
 

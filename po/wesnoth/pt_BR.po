@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:45+0300\n"
+"POT-Creation-Date: 2022-01-02 21:03+0300\n"
 "PO-Revision-Date: 2021-12-06 08:46-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -7333,6 +7333,7 @@ msgstr "Teleporte falhou! A saída não está vazia"
 # File: src/actions/move.cpp, line: 1089
 # File: src/actions/move.cpp, line: 1089
 # File: src/actions/move.cpp, line: 1089
+#. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
@@ -7343,7 +7344,8 @@ msgstr[1] "$friends aliadas"
 # File: src/actions/move.cpp, line: 1090
 # File: src/actions/move.cpp, line: 1090
 # File: src/actions/move.cpp, line: 1090
-#: src/actions/move.cpp:1128
+#. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
+#: src/actions/move.cpp:1129
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 inimiga"
@@ -7353,7 +7355,9 @@ msgstr[1] "$enemies inimigas"
 # File: src/actions/move.cpp, line: 1091
 # File: src/actions/move.cpp, line: 1091
 # File: src/actions/move.cpp, line: 1091
-#: src/actions/move.cpp:1129
+#. TRANSLATORS: Both friends and enemies sighted -- neutral message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1132
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unidades avistas! ($friendphrase, $enemyphrase)"
 
@@ -7361,7 +7365,9 @@ msgstr "Unidades avistas! ($friendphrase, $enemyphrase)"
 # File: src/actions/move.cpp, line: 1095
 # File: src/actions/move.cpp, line: 1095
 # File: src/actions/move.cpp, line: 1095
-#: src/actions/move.cpp:1133
+#. TRANSLATORS: Only enemies sighted -- bad message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1137
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unidade inimiga avistada!"
@@ -7371,7 +7377,9 @@ msgstr[1] "$enemies unidades inimigas avistadas!"
 # File: src/actions/move.cpp, line: 1099
 # File: src/actions/move.cpp, line: 1099
 # File: src/actions/move.cpp, line: 1099
-#: src/actions/move.cpp:1137
+#. TRANSLATORS: Only friends sighted -- good message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1142
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unidade aliada avistada"
@@ -7381,7 +7389,7 @@ msgstr[1] "$friends unidades aliadas avistadas"
 # File: src/actions/move.cpp, line: 1115
 # File: src/actions/move.cpp, line: 1115
 # File: src/actions/move.cpp, line: 1115
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1157
 msgid "(press $hotkey to keep moving)"
 msgstr "(aperte $hotkey para continuar o movimento)"
 
@@ -8624,30 +8632,30 @@ msgstr "%b %d %Y"
 msgid "Invalid color in range: "
 msgstr "Gama de cor inválida: "
 
-#: src/game_config_manager.cpp:258 src/game_config_manager.cpp:268
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:242 src/game_config_manager.cpp:252
+#: src/game_config_manager.cpp:264
 msgid "Error validating data core."
 msgstr "Erro ao validar os dados do core."
 
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:243
 msgid "Found a core without id attribute."
 msgstr "Um core foi encontrado sem id atribuido."
 
-#: src/game_config_manager.cpp:260 src/game_config_manager.cpp:271
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:268
 msgid "Skipping the core."
 msgstr "Pulando o core."
 
-#: src/game_config_manager.cpp:269 src/game_config_manager.cpp:281
-#: src/game_config_manager.cpp:304
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:288
 msgid "Core ID: "
 msgstr "Core ID: "
 
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:254
 msgid "The ID is already in use."
 msgstr "O ID já está em uso."
 
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:266
 msgid "Core Path: "
 msgstr "Caminho do Core: "
 
@@ -8655,23 +8663,23 @@ msgstr "Caminho do Core: "
 # File: src/menu_events.cpp, line: 2927
 # File: src/menu_events.cpp, line: 2926
 # File: src/menu_events.cpp, line: 2926
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:267
 msgid "File not found."
 msgstr "Arquivo não encontrado."
 
-#: src/game_config_manager.cpp:303 src/game_config_manager.cpp:315
+#: src/game_config_manager.cpp:287 src/game_config_manager.cpp:299
 msgid "Error loading core data."
 msgstr "Erro ao carregar os dados do core."
 
-#: src/game_config_manager.cpp:305
+#: src/game_config_manager.cpp:289
 msgid "Error loading the core with named id."
 msgstr "Erro ao carregar o core com o id listado."
 
-#: src/game_config_manager.cpp:306
+#: src/game_config_manager.cpp:290
 msgid "Falling back to the default core."
 msgstr "Retornando ao core padrão."
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:300
 msgid "Can't locate the default core."
 msgstr "Não foi possível localizar o core padrão."
 
@@ -8679,7 +8687,7 @@ msgstr "Não foi possível localizar o core padrão."
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
-#: src/game_config_manager.cpp:317
+#: src/game_config_manager.cpp:301
 msgid "The game will now exit."
 msgstr "O jogo agora será fechado."
 
@@ -8687,7 +8695,7 @@ msgstr "O jogo agora será fechado."
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:366
+#: src/game_config_manager.cpp:359
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -8699,7 +8707,7 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:373
+#: src/game_config_manager.cpp:366
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -8711,18 +8719,18 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:382
+#: src/game_config_manager.cpp:375
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
 "Erro ao carregar arquivos de configuração de jogo personalizado. O jogo "
 "agora fechará."
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:528
 msgid "Use [modify_unit_type]\n"
 msgstr "Usar [modify_unit_type]\n"
 
-#: src/game_config_manager.cpp:574
+#: src/game_config_manager.cpp:567
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 "ao invés disso, use o macro com o mesmo nome que está na tag [campaign]"
@@ -8731,13 +8739,13 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
-#: src/game_config_manager.cpp:625
+#: src/game_config_manager.cpp:618
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguinte add-on não pode ser carregado corretamente:"
 msgstr[1] "Os seguintes add-ons não poderam ser carregados corretamente:"
 
-#: src/game_config_manager.cpp:629
+#: src/game_config_manager.cpp:622
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -10700,6 +10708,12 @@ msgstr "Debug camadas de terreno debaio do mouse."
 msgid "Display and log fps (Frames Per Second)."
 msgstr "Mostra e registra fps (Frames Por Segundo)."
 
+#: src/menu_events.cpp:1248
+msgid ""
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed."
+msgstr ""
+
 #
 # File: src/menu_events.cpp, line: 1977
 # File: src/menu_events.cpp, line: 1977
@@ -12344,9 +12358,11 @@ msgstr "Contagem Regressiva do Turno"
 # File: src/savegame.cpp, line: 306
 # File: src/dialogs.cpp, line: 809
 # File: src/savegame.cpp, line: 306
-#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-msgid "%a %b %d %I:%M %p %Y"
+#, fuzzy
+#| msgid "%a %b %d %I:%M %p %Y"
+msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %I:%M %p %Y"
 
 #
@@ -12356,9 +12372,11 @@ msgstr "%a %b %d %I:%M %p %Y"
 # File: src/savegame.cpp, line: 306
 # File: src/dialogs.cpp, line: 809
 # File: src/savegame.cpp, line: 306
-#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-msgid "%a %b %d %H:%M %Y"
+#, fuzzy
+#| msgid "%a %b %d %H:%M %Y"
+msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #
@@ -13262,7 +13280,7 @@ msgstr "$year AF"
 # File: src/multiplayer.cpp, line: 194
 # File: src/multiplayer.cpp, line: 151
 # File: src/multiplayer.cpp, line: 194
-#: src/wesnothd_connection.cpp:510
+#: src/wesnothd_connection.cpp:531
 msgid "Disconnected from server."
 msgstr "Desconectado do servidor."
 

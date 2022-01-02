@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 00:45 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:01 UTC\n"
 "PO-Revision-Date: 2021-07-19 01:52+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -63,9 +63,15 @@ msgstr "困難"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
+#| "knew how to live forever, so why can't you?\n"
+#| "\n"
+#| "(Hard level, 18 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
-"how to live forever, so why can't you?\n"
+"how to live forever, so why can’t you?\n"
 "\n"
 "(Hard level, 18 scenarios.)\n"
 msgstr ""
@@ -338,9 +344,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:343
+#, fuzzy
+#| msgid ""
+#| "A wolf! This journey may be more dangerous than I thought. If we need to, "
+#| "I suppose we could rest inside a farmer's or woodcutter's fence."
 msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
-"suppose we could rest inside a farmer's or woodcutter's fence."
+"suppose we could rest inside a farmer’s or woodcutter’s fence."
 msgstr ""
 "一隻狼！這趟旅程也許會比我所想的還要危險。如果我們需要的話，我想我們可以待在"
 "農夫或樵夫的圍籬內。"
@@ -392,7 +402,9 @@ msgstr "喚起骷髏弓箭手（14枚金幣）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:159
-msgid "You don't have enough gold to raise that unit."
+#, fuzzy
+#| msgid "You don't have enough gold to raise that unit."
+msgid "You don’t have enough gold to raise that unit."
 msgstr "你沒有足夠的金幣來喚起單位。"
 
 #. [objective]: condition=win
@@ -416,6 +428,9 @@ msgid "Guardhouse"
 msgstr "守衛房"
 
 #. [label]
+#. In English, this label bled into the two hexes on either side, and obscured
+#. the units there, which is why it's split across two lines. The extra spaces
+#. before "Temple" are to center that word above the others.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:274
 msgid ""
 "  Temple\n"
@@ -459,119 +474,135 @@ msgid "Caradoc"
 msgstr "卡拉達克"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:396
-msgid "Oh, hello friend! I didn't know you were hiding in there."
+#. She's speaking to a bat from scenario 1
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:397
+#, fuzzy
+#| msgid "Oh, hello friend! I didn't know you were hiding in there."
+msgid "Oh, hello friend! I didn’t know you were hiding in there."
 msgstr "噢，哈囉朋友！我不曉得你躲在這。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:402
-msgid "Oh, hello! You're a handsome one."
+#. She's speaking to a bat that she hasn't met before
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:404
+#, fuzzy
+#| msgid "Oh, hello! You're a handsome one."
+msgid "Oh, hello! You’re a handsome one."
 msgstr "噢，哈囉！你好帥喔。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:419
-msgid "Hey, come back! I didn't mean to frighten you."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:421
+#, fuzzy
+#| msgid "Hey, come back! I didn't mean to frighten you."
+msgid "Hey, come back! I didn’t mean to frighten you."
 msgstr "嘿，回來！我不是有意嚇你的。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:423
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:425
 msgid "Maybe I could attract it if I jingled some coins."
 msgstr "也許我可以敲擊金幣發出聲響來吸引它。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:446
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:448
 msgid "Right-click adjacent to your leader to summon the bat."
 msgstr "在鄰近你首領的格子上按下滑鼠右鍵來召喚蝙蝠。"
 
 #. [set_menu_item]: id=summon_bat
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:454
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:456
 msgid "Summon the Bat (20 gold)"
 msgstr "召喚蝙蝠（20枚金幣）"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:494
-msgid "You don't have enough gold to summon the bat."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:496
+#, fuzzy
+#| msgid "You don't have enough gold to summon the bat."
+msgid "You don’t have enough gold to summon the bat."
 msgstr "你沒有足夠的金幣召喚蝙蝠。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:576
-msgid "You can now recruit skeletons and skeleton archers!"
-msgstr "你現在可以招募骷髏兵和骷髏弓箭手！"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:578
+msgid ""
+"You can now recruit skeletons and skeleton archers! You will lose this "
+"ability if the guardhouse is retaken by the guards!"
+msgstr ""
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:630
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:632
 msgid "Blollyn"
 msgstr "布洛林"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:631
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:633
 msgid "Ceoran"
 msgstr "希歐蘭"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:633
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:635
 msgid "Vindry"
 msgstr "文德里"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:634
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:636
 msgid "Aethacyn"
 msgstr "艾薩辛"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:635
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:637
 msgid "Elomyr"
 msgstr "艾洛米爾"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:665
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:667
 msgid "You can no longer recruit skeletons and skeleton archers."
 msgstr "你不再能招募骷髏兵和骷髏弓箭手。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:727
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:729
 msgid ""
 "Wait, that guard said there were twelve of them, so where are the other five?"
 msgstr "等一下，那個守衛說他們有12人，那其他的5個在哪裡？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:729
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:731
 msgid ""
 "Wait, that guard said there were seven of them, so where are the other two?"
 msgstr "等一下，那個守衛說他們有7人，那其他的2個在哪裡？"
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:748
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:750
 msgid "Why are we stuck guarding a cemetery all night?"
 msgstr "為什麼我們要整晚守著墓園？"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:754
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:756
 msgid ""
 "And why <i>twelve</i> of us? Who wants to break into a cemetery that badly?"
 msgstr "又為什麼要<i>12個</i>人？誰會想闖進這個糟透的墓園？"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:756
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:758
 msgid ""
 "And why <i>seven</i> of us? Who wants to break into a cemetery that badly?"
 msgstr "又為什麼要<i>7個</i>人？誰會想闖進這個糟透的墓園？"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:761
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:763
+#, fuzzy
+#| msgid ""
+#| "I don’t know, but this evening a mage from the academy was here talking "
+#| "to the mayor, my brother says."
 msgid ""
-"I don’t know, but this evening a mage from the academy was here talking to "
+"I don’t know, but this evening a mage from the Academy was here talking to "
 "the mayor, my brother says."
 msgstr ""
 "我不知道，但傍晚有位從學院來的法師到這裡和市長這麼講，我的兄弟告訴我的。"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:765
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:767
 msgid "Well <i>I</i> say you shouldn’t question orders, so pipe down."
 msgstr "嗯，<i>我</i>說你不該質疑命令，所以閉上你的嘴。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:804
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:806
 msgid ""
 "They must be guarding the cemetery from <i>me</i>! Maybe Aimucasur really "
 "was suspicious. It’s a good thing I’m here already, but how am I going to "
@@ -585,73 +616,82 @@ msgstr ""
 "嗯，我還是先做我的實驗，之後再來擔心離開的事情。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:837
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:839
 msgid "Hello?"
 msgstr "哈囉？"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:842
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:844
 msgid "Uhngh."
 msgstr "呃嗯。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:846
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:848
 msgid "Do you remember anything?"
 msgstr "你還記得任何事情嗎？"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:851
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:853
 msgid "Uhrrr."
 msgstr "呃噁。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:855
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:857
 msgid ""
 "It seems that my first guess was correct. The poor creature is mindless."
 msgstr "看來我最初的猜想是正確的。這可憐的生物沒有心智。"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:869
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:871
 msgid "I heard something over there!"
 msgstr "我聽到那邊有什麼東西！"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:879
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:881
 msgid "Who’s there?"
 msgstr "誰在那裡？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:900
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:902
 msgid "It’s only me. Is the cemetery closed then? I was about to leave."
 msgstr "只有我。墓園是要關了嗎？我正要離開的說。"
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:904
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:906
 msgid "You and that... other person. Who is that?"
 msgstr "你和那……另一個人。那是誰？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:908
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:910
+#, fuzzy
+#| msgid ""
+#| "Oh, him. See here, I don't want any trouble, but he is a little... ah..."
 msgid ""
-"Oh, him. See here, I don't want any trouble, but he is a little... ah..."
+"Oh, him. See here, I don’t want any trouble, but he is a little... ah..."
 msgstr "噢，他啊。聽著，我不想惹麻煩，但他有點……呃……"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:912
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:914
+#, fuzzy
+#| msgid ""
+#| "He's <i>dead</i>! This is dark sorcery like in my granddad’s time in the "
+#| "old country! The penalty is death. Attack and destroy them both!"
 msgid ""
-"He's <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
+"He’s <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
 "country! The penalty is death. Attack and destroy them both!"
 msgstr ""
 "他是<i>死人</i>！這是黑暗巫術，就像我祖父在舊王國的時期那樣！處罰是死亡。攻擊"
 "並毀滅他們倆！"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:916
-msgid "Hey! Don't do that, or I will need more of them."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:918
+#, fuzzy
+#| msgid "Hey! Don't do that, or I will need more of them."
+msgid "Hey! Don’t do that, or I will need more of them."
 msgstr "嘿！別那樣做，不然我會需要更多的他們。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:920
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:922
 msgid ""
 "I would do better if I had weapons, and I bet I can find some in the "
 "guardhouse. Go take it, my companions."
@@ -659,12 +699,12 @@ msgstr ""
 "如果有武器，我會做得更好，我賭我可以在守衛房找到一些。去拿吧，我的夥伴。"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:924
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:926
 msgid "Gwyllin, don’t move from that guardhouse."
 msgstr "桂林，別離開守衛房。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:933
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:935
 msgid ""
 "The morning has come, and we have not escaped the city. We will be caught "
 "for sure!"
@@ -819,17 +859,32 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
+#, fuzzy
+#| msgid ""
+#| "I passed him a wineskin, to put him at ease. He eyed me suspiciously, "
+#| "then took a sip, calculating my intentions. I then placed a portion of my "
+#| "gold resources on the table, and his eyes locked upon it.\n"
+#| "\n"
+#| "I then placed upon the table a ring stripped off the bandit named "
+#| "'Mossa', his beloved partner in crime.  His gaze shifted from the gold to "
+#| "the ring, and then quickly to my eyes.  Had he not been tied to the "
+#| "chair, he would have attacked me.\n"
+#| "\n"
+#| "I added more gold to the pile, but he didn't notice, he only glared at me "
+#| "with such hatred.  The hunger for vengeance radiated off of him like heat "
+#| "from a thousand suns - I could feel it more strongly than the fear or "
+#| "hunger from any of my pets..."
 msgid ""
 "I passed him a wineskin, to put him at ease. He eyed me suspiciously, then "
 "took a sip, calculating my intentions. I then placed a portion of my gold "
 "resources on the table, and his eyes locked upon it.\n"
 "\n"
-"I then placed upon the table a ring stripped off the bandit named 'Mossa', "
+"I then placed upon the table a ring stripped off the bandit named ‘Mossa’, "
 "his beloved partner in crime.  His gaze shifted from the gold to the ring, "
 "and then quickly to my eyes.  Had he not been tied to the chair, he would "
 "have attacked me.\n"
 "\n"
-"I added more gold to the pile, but he didn't notice, he only glared at me "
+"I added more gold to the pile, but he didn’t notice, he only glared at me "
 "with such hatred.  The hunger for vengeance radiated off of him like heat "
 "from a thousand suns - I could feel it more strongly than the fear or hunger "
 "from any of my pets..."
@@ -937,27 +992,34 @@ msgstr "你可以在兩個最高層的甲板上進行招募。"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:263
+msgid ""
+"Player and Enemy units can move between the surface and the interior of the "
+"ship via stairs."
+msgstr ""
+
+#. [note]
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:266
 msgid "Barrels act as villages."
 msgstr "木桶作用同村莊。"
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:266
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:269
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:130
 msgid "Right-click to simplify the ship graphics."
 msgstr "點擊滑鼠右鍵可以簡化船的圖形。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:505
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:508
 msgid "You can now recruit ghouls!"
 msgstr "你現在可以招募食屍鬼了！"
 
 #. [unit]: type=Sailor, id=Joc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:539
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:542
 msgid "Joc"
 msgstr "喬克"
 
 #. [message]: speaker=Joc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:547
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:550
 msgid ""
 "I found Janryn in the hold. Or, ah... some of him. He’s dead. I didn’t stay "
 "to find out what killed him, but there was someone shuffling around in the "
@@ -967,7 +1029,7 @@ msgstr ""
 "有人在陰影中拖著腳走路，而且他聞起來很臭。"
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:551
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:554
 msgid ""
 "Murderous stowaways on my ship? I won’t have it! Go round up the rest of the "
 "crew and get them up here. We’re going hunting. All passengers are confined "
@@ -977,22 +1039,22 @@ msgstr ""
 "要來打獵。所有乘客即刻起都不准離開客房。"
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:612
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:615
 msgid "You! Dark girl. Why are you not in your cabin?"
 msgstr "你！陰沉的女孩。為什麼你沒待在你的隔間？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:616
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:619
 msgid "What if I said something in defense of the stowaways?"
 msgstr "如果我替偷渡者辯護的話要怎麼辦呢？"
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:620
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:623
 msgid "I would pitch you over the side with them. What do you know?"
 msgstr "我會把你和他們一起扔下船。你知道什麼？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:624
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:627
 msgid ""
 "They are my companions, and the poor things are just terribly hungry. I’m "
 "sorry we didn’t pay the full amount, but maybe we can reach some arrangement."
@@ -1001,7 +1063,7 @@ msgstr ""
 "也許我們可以達成某個協議。"
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:628
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:631
 msgid ""
 "They killed my crew member and played me for a fool! The only arrangement "
 "that suits me is the lot of you off my ship, preferably at the bottom of the "
@@ -1011,7 +1073,7 @@ msgstr ""
 "是滾進海底。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:632
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:635
 msgid ""
 "Oh dear. We must do this again. Come to me my friends! If you are still "
 "hungry, feed on a passenger first."
@@ -1020,30 +1082,30 @@ msgstr ""
 "一位乘客。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:644
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:647
 msgid ""
 "Good riddance. But, with the captain dead, who will sail the ship and guide "
 "us into port now?"
 msgstr "終於搞定了。但，隨著船長死了，現在誰要來開船把我們送入港口呢？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:648
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:651
 msgid "Rise Captain, and please retain your memories."
 msgstr "起來吧，船長，請保留你的記憶。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:672
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:675
 msgid "Can you still sail this ship?"
 msgstr "你仍會開這艘船嗎？"
 
 #. [message]: speaker=Bone Captain
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:677
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:680
 msgid "Sail. Yes. Need wind."
 msgstr "航行。是。需要風。"
 
 # 最後一句是對應前面船長說的「need wind」。
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:681
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:684
 msgid ""
 "Oh! It worked! Take us to port, Captain, as soon as you do have the wind."
 msgstr "噢！這能行！立刻帶我們到碼頭，船長，只要你有了那個風。"
@@ -1319,7 +1381,11 @@ msgstr "那個鬼魂肯定不會走那邊，因為那邊我跟不過去。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:253
-msgid "If there is one bat, there are certainly more. We should be careful."
+#, fuzzy
+#| msgid "If there is one bat, there are certainly more. We should be careful."
+msgid ""
+"If there is one bat, there are certainly more. We should be careful. It "
+"would be foolish to explore this cave alone."
 msgstr "如果有一隻蝙蝠，就肯定還會有更多。我們應該要小心。"
 
 #. [message]: speaker=Ardonna
@@ -1356,8 +1422,12 @@ msgstr "讓我們跟著他進洞穴吧。"
 
 #. [message]: speaker=Blaust
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:570
+#, fuzzy
+#| msgid ""
+#| "I don’t know, Bogdush. The chief said he wanted stuff that was helpful "
+#| "for the war."
 msgid ""
-"I don’t know, Bogdush. The chief said he wanted stuff that was helpful for "
+"I don’t know, Bogdush. The Chief said he wanted stuff that was helpful for "
 "the war."
 msgstr "我不知道，博格杜什。不過老大說過他想要能對戰爭有幫助的東西。"
 
@@ -1384,7 +1454,10 @@ msgstr "他們是啊。這讓我們殺他們的任務變得更加簡單！"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:592
-msgid "You must be Goblins. You will stand out of my way if you wish to live."
+#, fuzzy
+#| msgid ""
+#| "You must be Goblins. You will stand out of my way if you wish to live."
+msgid "You must be goblins. You will stand out of my way if you wish to live."
 msgstr "你們一定就是地精吧。你們將會給我讓路，如果你們希望活命的話。"
 
 #. [message]: speaker=Bogdush
@@ -1449,10 +1522,18 @@ msgstr "你怎麼知道我的名字？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:193
+#, fuzzy
+#| msgid ""
+#| "I know much about you. My ghosts have been watching you for some time "
+#| "now, and you and I share the goal of resisting death. I have been hoping "
+#| "several students would free themselves from that conservative academy, "
+#| "but it seems that you will be the only one. Fortunately, you are quite "
+#| "innovative, and have even accomplished something which I have not. You "
+#| "have useful creatures — I believe you call them ghouls?"
 msgid ""
 "I know much about you. My ghosts have been watching you for some time now, "
 "and you and I share the goal of resisting death. I have been hoping several "
-"students would free themselves from that conservative academy, but it seems "
+"students would free themselves from that conservative Academy, but it seems "
 "that you will be the only one. Fortunately, you are quite innovative, and "
 "have even accomplished something which I have not. You have useful creatures "
 "— I believe you call them ghouls?"
@@ -1531,10 +1612,19 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Splendid. Here is what I propose. First, we part ways for a time, and you "
+#| "raise a force of ghosts following my instructions. Meanwhile, I am going "
+#| "to try to train some local peasants in the magical arts. I don't expect "
+#| "much from that uneducated rabble, but hopefully some will be intelligent "
+#| "enough to add to our firepower. When we reunite, you will show me how to "
+#| "make one of those shambling ghouls. I am actually in no hurry, as they "
+#| "have a terrible odor."
 msgid ""
 "Splendid. Here is what I propose. First, we part ways for a time, and you "
 "raise a force of ghosts following my instructions. Meanwhile, I am going to "
-"try to train some local peasants in the magical arts. I don't expect much "
+"try to train some local peasants in the magical arts. I don’t expect much "
 "from that uneducated rabble, but hopefully some will be intelligent enough "
 "to add to our firepower. When we reunite, you will show me how to make one "
 "of those shambling ghouls. I am actually in no hurry, as they have a "
@@ -1563,9 +1653,18 @@ msgstr "為什麼我不能就在外面召喚一些地精的鬼魂？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:237
+#, fuzzy
+#| msgid ""
+#| "Those goblins were too weak, and it would take their spirits a long time "
+#| "to become strong enough to be useful. You are going to raise Elvish "
+#| "warriors instead. A few miles into the Grey Woods, there lies an ancient "
+#| "battleground from a civil war hundreds of years ago. You will follow an "
+#| "old elf road there and raise an army of ghosts while I visit Carcyn, a "
+#| "nearby town. We will meet at the end of the elf road by the Great River, "
+#| "and I will explain where we should go next."
 msgid ""
 "Those goblins were too weak, and it would take their spirits a long time to "
-"become strong enough to be useful. You are going to raise Elvish warriors "
+"become strong enough to be useful. You are going to raise elvish warriors "
 "instead. A few miles into the Grey Woods, there lies an ancient battleground "
 "from a civil war hundreds of years ago. You will follow an old elf road "
 "there and raise an army of ghosts while I visit Carcyn, a nearby town. We "
@@ -1977,7 +2076,9 @@ msgstr "這邊有些巨大的骨頭。我能看到爪子和翅膀。"
 
 #. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:186
-msgid "How odd. I wonder what are they from. A gryphon perhaps?"
+#, fuzzy
+#| msgid "How odd. I wonder what are they from. A gryphon perhaps?"
+msgid "How odd. I wonder what they are from. A gryphon perhaps?"
 msgstr "真奇怪。我想知道它們原本是什麼生物。一隻獅鷲也許？"
 
 #. [message]: speaker=Ras-Tabahn
@@ -1997,8 +2098,11 @@ msgstr "的確。讓我們瞧瞧。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:204
+#, fuzzy
+#| msgid ""
+#| "I wonder what are they from. A large flightless bird perhaps? Let us see."
 msgid ""
-"I wonder what are they from. A large flightless bird perhaps? Let us see."
+"I wonder what they are from. A large flightless bird perhaps? Let us see."
 msgstr "我想知道它們原本是什麼生物。一隻大型且不會飛的鳥也許？讓我們瞧瞧。"
 
 #. [message]: speaker=$other_human
@@ -2161,11 +2265,21 @@ msgstr "戰場"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:18
+#, fuzzy
+#| msgid ""
+#| "11 IV, 23 YW\n"
+#| "\n"
+#| "Ras-Tabahn seems like an acceptable ally. He is quite different from the "
+#| "stodgy teachers at the academy who were so full of themselves and loved "
+#| "to hear themselves talk. He also never once disparaged me for being a "
+#| "girl or even mentioned my hair. As long as he continues to respect me, "
+#| "everything will go fine. If not, well, I am surrounded by the remnants of "
+#| "those who assumed I was weak."
 msgid ""
 "11 IV, 23 YW\n"
 "\n"
 "Ras-Tabahn seems like an acceptable ally. He is quite different from the "
-"stodgy teachers at the academy who were so full of themselves and loved to "
+"stodgy teachers at the Academy who were so full of themselves and loved to "
 "hear themselves talk. He also never once disparaged me for being a girl or "
 "even mentioned my hair. As long as he continues to respect me, everything "
 "will go fine. If not, well, I am surrounded by the remnants of those who "
@@ -2181,9 +2295,18 @@ msgstr ""
 # 最後一句意思模糊，所以不照原文翻。
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:27
+#, fuzzy
+#| msgid ""
+#| "The question remains whether or not it is wise to trust him. As he said, "
+#| "I don't need to at this time, but if we are to travel together it will "
+#| "become necessary. He has shown me something marvelous in the ghosts, so "
+#| "that is a large mark in his favor. On consideration, I have decided to "
+#| "trust him, but only provisionally. For now, we are both vulnerable, and "
+#| "he must know that attacking me would be unwise. However, if he were to "
+#| "become indestructible first, I would do well to stay alert."
 msgid ""
 "The question remains whether or not it is wise to trust him. As he said, I "
-"don't need to at this time, but if we are to travel together it will become "
+"don’t need to at this time, but if we are to travel together it will become "
 "necessary. He has shown me something marvelous in the ghosts, so that is a "
 "large mark in his favor. On consideration, I have decided to trust him, but "
 "only provisionally. For now, we are both vulnerable, and he must know that "
@@ -2215,9 +2338,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:41
+#, fuzzy
+#| msgid ""
+#| "Well, these combatants were going to get a second chance for glory when "
+#| "they fought for me. The more strong willed among them may even remember "
+#| "desiring it."
 msgid ""
 "Well, these combatants were going to get a second chance for glory when they "
-"fought for me. The more strong willed among them may even remember desiring "
+"fought for me. The more strong-willed among them may even remember desiring "
 "it."
 msgstr ""
 "嗯，這些戰鬥人員將會在我的指揮下，得到第二次取得榮耀的機會。他們其中意志越強"
@@ -2584,26 +2712,41 @@ msgstr "我也這麼想。我們必須跨越大河，往北進入心之山脈。
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:154
+#, fuzzy
+#| msgid ""
+#| "Before we leave, I have an unrelated question. Vendraxis here has said "
+#| "that my name is untrue. Do you have an idea what could that mean?"
 msgid ""
 "Before we leave, I have an unrelated question. Vendraxis here has said that "
-"my name is untrue. Do you have an idea what could that mean?"
+"my name is untrue. Do you have an idea what that could mean?"
 msgstr ""
 "在我們離開前，我有個不相關的問題。這邊的這位萬德拉克西斯說我的名字不是真實"
 "的。你知道那意味著什麼嗎？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:160
+#, fuzzy
+#| msgid ""
+#| "Before we leave, I have an unrelated question. I met a mystic who said "
+#| "that my name was untrue. Do you have an idea what could that mean?"
 msgid ""
 "Before we leave, I have an unrelated question. I met a mystic who said that "
-"my name was untrue. Do you have an idea what could that mean?"
+"my name was untrue. Do you have an idea what that could mean?"
 msgstr ""
 "在我們離開前，我有個不相關的問題。我遇到了一個修行者，他說我的名字不是真實"
 "的。你知道那意味著什麼嗎？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:166
+#, fuzzy
+#| msgid ""
+#| "Possibly. When an academy mage completes his studies, he is granted "
+#| "syllables of power, which become his new name. You are well beyond that "
+#| "point, but you are with the free magi now, so choose your own name. I was "
+#| "originally Rassin Tabin, but that is fairly ordinary, and at one point, "
+#| "it no longer suited."
 msgid ""
-"Possibly. When an academy mage completes his studies, he is granted "
+"Possibly. When an Academy mage completes his studies, he is granted "
 "syllables of power, which become his new name. You are well beyond that "
 "point, but you are with the free magi now, so choose your own name. I was "
 "originally Rassin Tabin, but that is fairly ordinary, and at one point, it "
@@ -2616,9 +2759,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:170
+#, fuzzy
+#| msgid ""
+#| "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
+#| "Vendraxis was correct. From now I shall be... Ardryn-Na."
 msgid ""
 "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
-"Vendraxis was correct. From now I shall be... Ardryn-Na."
+"Vendraxis was correct. From now on I shall be... Ardryn-Na."
 msgstr ""
 "我想你是對的。我不再是那個平凡女孩亞當娜，萬德拉克西斯也是正確的。從現在起，"
 "我就是……亞德琳-娜。"
@@ -2647,6 +2794,21 @@ msgstr "<i>第三章：</i>征服死亡"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:29
+#, fuzzy
+#| msgid ""
+#| "24 IV, 23 YW\n"
+#| "\n"
+#| "We reached the Ford of Abez as the dawn light spread behind the mountain "
+#| "peaks to the north. As we waded across, the dark water reached to our "
+#| "waists, which made for slow going. I dared not imagine what manner of "
+#| "tentacled creature lurked below, but we completed the crossing without "
+#| "incident. The water was chill with snowmelt, so our teeth were chattering "
+#| "when we reached the far shore. The rising sun was warm though, and had us "
+#| "dried in short order. Despite this, Ras-Tabahn was not well off. He "
+#| "collapsed in the sand and went into a paroxysm of coughing the like of "
+#| "which I had never seen. When he could speak again, he assured me that it "
+#| "was only on account of the cold, and I should not be unduly troubled. I "
+#| "am uneasy all the same."
 msgid ""
 "24 IV, 23 YW\n"
 "\n"
@@ -2656,11 +2818,10 @@ msgid ""
 "tentacled creature lurked below, but we completed the crossing without "
 "incident. The water was chill with snowmelt, so our teeth were chattering "
 "when we reached the far shore. The rising sun was warm though, and had us "
-"dried in short order. Despite this, Ras-Tabahn was not well off. He "
-"collapsed in the sand and went into a paroxysm of coughing the like of which "
-"I had never seen. When he could speak again, he assured me that it was only "
-"on account of the cold, and I should not be unduly troubled. I am uneasy all "
-"the same."
+"dried in short order. Despite this, Ras-Tabahn was not well. He collapsed in "
+"the sand and went into a paroxysm of coughing the like of which I had never "
+"seen. When he could speak again, he assured me that it was only on account "
+"of the cold, and I should not be unduly troubled. I am uneasy all the same."
 msgstr ""
 "深根之月24日，23 YW\n"
 "\n"
@@ -2696,9 +2857,13 @@ msgstr "克朗格克"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:173
+#, fuzzy
+#| msgid ""
+#| "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "
+#| "We may meet our doom if we don't have enough coinsss."
 msgid ""
 "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. We "
-"may meet our doom if we don't have enough coinsss."
+"may meet our doom if we don’t have enough coinsss."
 msgstr ""
 "我對前方的雪峰有一個黑暗的不祥預感。我們也許會迎來我們的末日，如果我們沒有足"
 "夠的金幣。"
@@ -2813,6 +2978,18 @@ msgstr "山道"
 #. [part]
 #. "consumption" is an old word for tuberculosis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:23
+#, fuzzy
+#| msgid ""
+#| "6 V, 23 YW\n"
+#| "\n"
+#| "We have reached a pass through the mountains that Ras-Tabahn knew of. The "
+#| "air is cool in these upper reaches. Mist rises from the snow in the "
+#| "afternoon, and the icicles drip the purest water from rock overhangs. I "
+#| "find it all refreshing, but Ras-Tabahn’s coughing fits are frequent. "
+#| "Sometimes he is reduced to speaking in short phrases due to lack of "
+#| "breath. Of course he is quite old — 50 at least — but I am also certain "
+#| "that he is ill. His thinness leads me to believe it is consumption, but "
+#| "he refuses to discuss it, preferring to deny the severity of his problem."
 msgid ""
 "6 V, 23 YW\n"
 "\n"
@@ -2820,8 +2997,8 @@ msgid ""
 "air is cool in these upper reaches. Mist rises from the snow in the "
 "afternoon, and the icicles drip the purest water from rock overhangs. I find "
 "it all refreshing, but Ras-Tabahn’s coughing fits are frequent. Sometimes he "
-"is reduced to speaking in short phrases due to lack of breath. Of course he "
-"is quite old — 50 at least — but I am also certain that he is ill. His "
+"is reduced to speaking in short phrases due to lack of breath. Of course, he "
+"is quite old — at least fifty — but I am also certain that he is ill. His "
 "thinness leads me to believe it is consumption, but he refuses to discuss "
 "it, preferring to deny the severity of his problem."
 msgstr ""
@@ -2851,7 +3028,9 @@ msgstr "那邊有些……巨大的骨頭。爪子和翅膀……我想。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:176
-msgid "I wonder what are they from. A gryphon perhaps?"
+#, fuzzy
+#| msgid "I wonder what are they from. A gryphon perhaps?"
+msgid "I wonder what they are from. A gryphon perhaps?"
 msgstr "我想知道它們原本是什麼生物。一隻獅鷲也許？"
 
 #. [message]: speaker=Ras-Tabahn
@@ -3308,9 +3487,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:429
+#, fuzzy
+#| msgid ""
+#| "We have conquered death! Let us bring the news back to Wesnoth. We should "
+#| "to let them know that nobody ever need die again."
 msgid ""
-"We have conquered death! Let us bring the news back to Wesnoth. We should to "
-"let them know that nobody ever need die again."
+"We have conquered death! Let us bring the news back to Wesnoth! Let all in "
+"this world know that nobody ever need die again."
 msgstr ""
 "我們已征服死亡！讓我們把這個消息帶回韋諾。我們應該要讓他們知道永遠再也沒有人"
 "需要死亡了。"
@@ -3327,7 +3510,9 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:437
-msgid "Why would the Dwarvish empire abandon an outpost like this?"
+#, fuzzy
+#| msgid "Why would the Dwarvish empire abandon an outpost like this?"
+msgid "Why would the dwarvish empire abandon an outpost like this?"
 msgstr "為什麼矮人帝國要拋棄這樣的哨站？"
 
 #. [message]: speaker=Ras-Tabahn
@@ -3384,10 +3569,23 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:25
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn has tried to persuade me to join him in his endeavor, but I "
+#| "have serious misgivings about his plan. I am not positive he can defeat "
+#| "the city guard, and enslaving the population is the one of the ways the "
+#| "old Wesfolk leaders earned their poor reputations. I think a more "
+#| "benevolent approach has a better chance of ensuring our legacy. We should "
+#| "spread the news of our success and invite the citizenry to join us "
+#| "voluntarily. I will journey south into Wesnoth proper, and visit Dan’Tonk "
+#| "and Weldyn. At some point in the distant future, my new friends and Ras-"
+#| "Tabahn’s population will probably clash, but that will be a worry for "
+#| "another time, and for now, we each continue to regard the other as an "
+#| "ally."
 msgid ""
 "Ras-Tabahn has tried to persuade me to join him in his endeavor, but I have "
 "serious misgivings about his plan. I am not positive he can defeat the city "
-"guard, and enslaving the population is the one of the ways the old Wesfolk "
+"guard, and enslaving the population is one of the ways the old Wesfolk "
 "leaders earned their poor reputations. I think a more benevolent approach "
 "has a better chance of ensuring our legacy. We should spread the news of our "
 "success and invite the citizenry to join us voluntarily. I will journey "
@@ -3538,8 +3736,12 @@ msgstr "現在，我們在哪？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:712
+#, fuzzy
+#| msgid ""
+#| "We are in a Dwarvish burial chamber it seems. That is good. We could "
+#| "always use some more soldiers."
 msgid ""
-"We are in a Dwarvish burial chamber it seems. That is good. We could always "
+"We are in a dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
 msgstr "我們在一個矮人的墓室，看來。那很好。我們總是能用到更多的士兵。"
 
@@ -3562,8 +3764,12 @@ msgstr "很好，我們不走那條路。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:773
+#, fuzzy
+#| msgid ""
+#| "But look. There is a large crack in the wall to our left! I’m certain we "
+#| "could squeeze through."
 msgid ""
-"But look. There is a large crack in the wall to our left! I’m certain we "
+"But look. There is a large crack in the wall to our right! I’m certain we "
 "could squeeze through."
 msgstr "但你看。我們左邊的牆有個大裂縫！我確定我們可以擠過去。"
 
@@ -3589,10 +3795,17 @@ msgstr "對抗全世界"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:19
+#, fuzzy
+#| msgid ""
+#| "30 VI, 23 YW\n"
+#| "\n"
+#| "From the northern part of the kingdom of Knalga, the tunnel split into "
+#| "many passageways. Being able to feel the life force of the dwarves "
+#| "allowed us to take mostly unoccupied tunnels, which we did."
 msgid ""
 "30 VI, 23 YW\n"
 "\n"
-"From the northern part of the kingdom of Knalga, the tunnel split into many "
+"From the northern part of the Kingdom of Knalga, the tunnel split into many "
 "passageways. Being able to feel the life force of the dwarves allowed us to "
 "take mostly unoccupied tunnels, which we did."
 msgstr ""
@@ -3973,8 +4186,14 @@ msgstr "矮人礦工"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Secrets_of_the_Ancients/units/Dwarvish_Miner.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
+#| "precious ores out of the ground, but do not ever take part in the "
+#| "crafting of weapons or artifacts. They have no military training, but "
+#| "they can still do some damage with their picks."
 msgid ""
-"Dwarvish miners are the grunt workers of Dwarvish society. They take the "
+"Dwarvish miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
@@ -4008,12 +4227,20 @@ msgstr "半獸人薩滿"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
 "the whole Orcish community and arbitrates the many conflicts that arise "
 "between tribes of this argumentative race. Although physically weak (for "
-"Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
 "半獸人薩滿是半獸人魔法的守護者，他們在半獸人部落間受到尊敬。他們組成長老會，"
@@ -4110,7 +4337,9 @@ msgstr "呃啊。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:163
-msgid "But I don't know how to bring you back yet!"
+#, fuzzy
+#| msgid "But I don't know how to bring you back yet!"
+msgid "But I don’t know how to bring you back yet!"
 msgstr "但我還不知要如何帶你回來！"
 
 #. [message]: speaker=Carcyn
@@ -4127,7 +4356,9 @@ msgstr "帶她回來。拜托！"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:202
-msgid "I'm not sure that's such a good..."
+#, fuzzy
+#| msgid "I'm not sure that's such a good..."
+msgid "I’m not sure that’s such a good..."
 msgstr "我不確定那是不是一個好……"
 
 #. [message]: speaker=Ras-Tabahn
@@ -4152,8 +4383,12 @@ msgstr "也許那就是最好的了。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:259
+#, fuzzy
+#| msgid ""
+#| "It's not possible. She was already back from the dead. She has been "
+#| "utterly destroyed this time."
 msgid ""
-"It's not possible. She was already back from the dead. She has been utterly "
+"It’s not possible. She was already back from the dead. She has been utterly "
 "destroyed this time."
 msgstr "這不可能。她已經從死亡回來過了。這次她已經徹底被摧毀了。"
 
@@ -4179,7 +4414,9 @@ msgstr "現在我將永遠無法學習延長我的嘶嘶壽命的祕密了。"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
-msgid "I'm going to miss him."
+#, fuzzy
+#| msgid "I'm going to miss him."
+msgid "I’m going to miss him."
 msgstr "我會想念他的。"
 
 #. [message]: speaker=Ras-Tabahn
@@ -4198,37 +4435,39 @@ msgid "Indeed, he will be missed."
 msgstr "確實，他會被想念的。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
-msgid "Don't worry, my pet. I can save you."
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:375
+#, fuzzy
+#| msgid "Don't worry, my pet. I can save you."
+msgid "Don’t worry, my pet. I can save you."
 msgstr "別擔心，我的寵物。我可以拯救你。"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:431
 msgid "Aww. I wanted to be a mage like Shynal."
 msgstr "齁。我想要跟希那爾一樣當一個法師。"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:430
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:437
 msgid "Aww. I wanted to be a mage like Carcyn."
 msgstr "齁。我想要跟卡辛一樣當一個法師。"
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:437
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:444
 msgid "Do not make me regret liberating you from jail. My decision is final."
 msgstr "別讓我後悔從監獄把你放出來。我的決定是最終決定。"
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:440
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:447
 msgid "I have reconsidered. Perhaps you will be very powerful one day."
 msgstr "我已重新考慮了。也許你某天會變得很強。"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:451
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:458
 msgid "Thanks!"
 msgstr "謝啦！"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:466
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:473
 msgid ""
 "Hey, I wanted to be a wizard like you and live forever when you figure it "
 "out! I know I could be super-powerful in the end."
@@ -4237,27 +4476,27 @@ msgstr ""
 "後可以變得非常強。"
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:472
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:479
 msgid "Hold your tongue. You will do as I command."
 msgstr "閉嘴。你將照著我的命令來做。"
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:481
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:488
 msgid "Very well. Having more adepts might be a good idea after all."
 msgstr "好吧。畢竟多一點學徒也許是個不錯的主意。"
 
 #. [unstore_unit]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:870
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:877
 msgid "Lich"
 msgstr "巫妖"
 
 #. [set_menu_item]: id=hide-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:913
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:920
 msgid "Hide Sails and Rigging"
 msgstr "隱藏船舤和船索"
 
 #. [set_menu_item]: id=show-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:952
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:959
 msgid "Show Sails and Rigging"
 msgstr "顯示船舤和船索"
 
@@ -4619,6 +4858,9 @@ msgstr "沒有可用的屍體。"
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:97
 msgid "You do not have enough gold to recruit that unit"
 msgstr "你沒有足夠的金幣招募那個單位"
+
+#~ msgid "You can now recruit skeletons and skeleton archers!"
+#~ msgstr "你現在可以招募骷髏兵和骷髏弓箭手！"
 
 #~ msgid ""
 #~ "22 III, 23 YW\n"

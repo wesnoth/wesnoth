@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-08-22 03:31 UTC\n"
+"POT-Creation-Date: 2022-01-02 18:03 UTC\n"
 "PO-Revision-Date: 2021-09-07 20:18+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -128,14 +128,14 @@ msgstr "Impérium"
 #. [label]: id=title
 #. [lua]: root_node.on_modified
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:246
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:237
 msgid "WoCopedia"
 msgstr "WoCoDePedie"
 
 #. [label]: id=title
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -1159,7 +1159,7 @@ msgstr "Zběh"
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:117
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
 msgid "Training"
 msgstr "Výcvik"
 
@@ -2208,18 +2208,18 @@ msgid "...fine. I guess."
 msgstr "Tak fajn. Myslím, že to půjde."
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:25
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:24
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:26
 msgid "Game Mechanics"
 msgstr "Herní mechanika"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
 msgid "<b>Gold</b>\n"
 msgstr "<b>Peníze</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
 msgid ""
 "Carryover rate is 15% and split evenly among players. Negative amounts will "
 "not carry over. Early finish bonus is superior to village control, but it is "
@@ -2232,12 +2232,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
 msgid "<b>Autorecall</b>\n"
 msgstr "<b>Automatické přivolání</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
 msgid ""
 "Units with the <b>heroic</b> trait are recalled at the start of each "
 "scenario with no cost (up to castle size).\n"
@@ -2248,12 +2248,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
 msgid "<b>Recall Cost</b>\n"
 msgstr "<b>Náklady na přivolání</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
 msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
@@ -2262,12 +2262,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
 msgid "<b>Training</b>\n"
 msgstr "<b>Výcvik</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
 msgid ""
 "Every time you recruit a new unit, your training levels will be applied. If "
 "a unit gains training benefits, you can see them with the trait \"trained\". "
@@ -2282,12 +2282,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
 msgid "<b>Upkeep</b>\n"
 msgstr "<b>Údržba</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
 msgid ""
 "Units with the <b>heroic</b> trait or holding any magic <b>item</b> have "
 "free upkeep.\n"
@@ -2298,13 +2298,13 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
 msgid "<b>Bonus Points</b>\n"
 msgstr "<b>Bonusová místa</b>\n"
 
 # Ty uvedené počty sice moc nesedí se skutečností, ale budiž.
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
 msgid ""
 "In every scenario the game generates as many bonus points on the map as "
 "there are players in the game, the bonus points can be picked up by player "
@@ -2317,12 +2317,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
 msgid "<b>Army discipline</b>\n"
 msgstr "<b>Armádní disciplína</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
 msgid ""
 "At scenarios 1 to 3, for each training level players already own, trainers "
 "found have 2% to 4% chance to become advanced trainers (provide 2 levels). "
@@ -2337,24 +2337,7 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
-msgid "Feedback"
-msgstr "Zpětná vazba"
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
-msgid ""
-"For feedback please either post in the World Conquest II thread in the "
-"official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue "
-"at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;."
-msgstr ""
-"Svou zpětnou vazbu prosím napište do příspěvku vlákna World Conquest II na "
-"oficiálním fóru Wesnoth (viz &lt;https://r.wesnoth.org/t39651&gt;) nebo "
-"založte podnět v rámci GitHub (viz &lt;https://github.com/gfgtdf/"
-"World_Conquest_II/issues&gt;)."
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
 msgid ""
 "Training improves newly recruited units, it has no effect on already "
 "recruited units. The following list shows all available training, the "
@@ -2365,12 +2348,12 @@ msgstr ""
 "jsou označeny úrovně výcviku, které již ovládáš."
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid "Items"
 msgstr "Předměty"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid ""
 "Items can be given to units to make them stronger. You can get items in "
 "three ways: 1) By choosing an item as your starting bonus; 2) By finding it "
@@ -2384,12 +2367,12 @@ msgstr ""
 "mohou vyzvednout všechny předměty."
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Factions"
 msgstr "Frakce"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid ""
 "The World Conquest II era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, Rebels "
@@ -2409,12 +2392,12 @@ msgstr ""
 "Výběr tvé frakce však neovlivní předměty, které budeš moci získat."
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:171
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
 msgid " (not available for enemies)"
 msgstr " (předmět není dostupný pro nepřátele)"
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:172
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:170
 msgid " (not available for players)"
 msgstr " (předmět není dostupný pro hráče)"
 
@@ -2973,8 +2956,11 @@ msgid "Root of the Elder Wose"
 msgstr "Kořen starého stromouse"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
+#, fuzzy
+#| msgid ""
+#| " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgid ""
-" Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
+" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
 "Tato tupá zbraň, vykovaná trpaslíky, napodobuje drtivou sílu stromového lidu."
 
@@ -3555,3 +3541,17 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:93
 msgid "WC"
 msgstr "DS"
+
+#~ msgid "Feedback"
+#~ msgstr "Zpětná vazba"
+
+#~ msgid ""
+#~ "For feedback please either post in the World Conquest II thread in the "
+#~ "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an "
+#~ "issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/"
+#~ "issues&gt;."
+#~ msgstr ""
+#~ "Svou zpětnou vazbu prosím napište do příspěvku vlákna World Conquest II "
+#~ "na oficiálním fóru Wesnoth (viz &lt;https://r.wesnoth.org/t39651&gt;) "
+#~ "nebo založte podnět v rámci GitHub (viz &lt;https://github.com/gfgtdf/"
+#~ "World_Conquest_II/issues&gt;)."

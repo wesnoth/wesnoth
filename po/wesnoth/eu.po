@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:45+0300\n"
+"POT-Creation-Date: 2022-01-02 21:03+0300\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -4452,38 +4452,46 @@ msgstr "Segada batean harrapatuta!"
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
+#. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1127
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions/move.cpp:1128
+#. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
+#: src/actions/move.cpp:1129
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions/move.cpp:1129
+#. TRANSLATORS: Both friends and enemies sighted -- neutral message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1132
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions/move.cpp:1133
+#. TRANSLATORS: Only enemies sighted -- bad message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1137
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate etsai bat ikustatua!"
 msgstr[1] "Unitate etsai bat ikustatua!"
 
-#: src/actions/move.cpp:1137
+#. TRANSLATORS: Only friends sighted -- good message.
+#. This is shown when a move is interrupted because units were revealed from the fog of war.
+#: src/actions/move.cpp:1142
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate lagun bat ikustatua"
 msgstr[1] "Unitate lagun bat ikustatua"
 
-#: src/actions/move.cpp:1152
+#: src/actions/move.cpp:1157
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
@@ -5168,62 +5176,62 @@ msgstr "%b %d %y"
 msgid "Invalid color in range: "
 msgstr "Baliogabeko kolorea"
 
-#: src/game_config_manager.cpp:258 src/game_config_manager.cpp:268
-#: src/game_config_manager.cpp:280
+#: src/game_config_manager.cpp:242 src/game_config_manager.cpp:252
+#: src/game_config_manager.cpp:264
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:243
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:260 src/game_config_manager.cpp:271
-#: src/game_config_manager.cpp:284
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:268
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:269 src/game_config_manager.cpp:281
-#: src/game_config_manager.cpp:304
+#: src/game_config_manager.cpp:253 src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:288
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:254
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "Jokua bukatu da."
 
-#: src/game_config_manager.cpp:282
+#: src/game_config_manager.cpp:266
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:283
+#: src/game_config_manager.cpp:267
 #, fuzzy
 msgid "File not found."
 msgstr "Ez da garairik aurkitu"
 
-#: src/game_config_manager.cpp:303 src/game_config_manager.cpp:315
+#: src/game_config_manager.cpp:287 src/game_config_manager.cpp:299
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:305
+#: src/game_config_manager.cpp:289
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:306
+#: src/game_config_manager.cpp:290
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:316
+#: src/game_config_manager.cpp:300
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:317
+#: src/game_config_manager.cpp:301
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (Jokua orain irten egingo da)"
 
-#: src/game_config_manager.cpp:366
+#: src/game_config_manager.cpp:359
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5231,7 +5239,7 @@ msgid ""
 "loading add-ons."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game_config_manager.cpp:373
+#: src/game_config_manager.cpp:366
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5239,29 +5247,29 @@ msgid ""
 "default core files."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game_config_manager.cpp:382
+#: src/game_config_manager.cpp:375
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game_config_manager.cpp:535
+#: src/game_config_manager.cpp:528
 msgid "Use [modify_unit_type]\n"
 msgstr ""
 
-#: src/game_config_manager.cpp:574
+#: src/game_config_manager.cpp:567
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:625
+#: src/game_config_manager.cpp:618
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Ezin izan da joku mapa kargatu: "
 msgstr[1] "Ezin izan da joku mapa kargatu: "
 
-#: src/game_config_manager.cpp:629
+#: src/game_config_manager.cpp:622
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6408,6 +6416,12 @@ msgstr ""
 msgid "Display and log fps (Frames Per Second)."
 msgstr ""
 
+#: src/menu_events.cpp:1248
+msgid ""
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed."
+msgstr ""
+
 #: src/menu_events.cpp:1249
 #, fuzzy
 msgid "Save game."
@@ -7339,16 +7353,18 @@ msgstr ""
 msgid "Turn Countdown"
 msgstr ""
 
-#. TRANSLATORS: Day of week + month + day of month + 12-hour time + year, eg 'Tue Nov 02 1:59 PM 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
-msgid "%a %b %d %I:%M %p %Y"
+msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %H:%M %Y"
 
-#. TRANSLATORS: Day of week + month + day of month + 24-hour time + year, eg 'Tue Nov 02 13:59 2021'. Format for your locale.
+#. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-msgid "%a %b %d %H:%M %Y"
+#, fuzzy
+#| msgid "%a %b %d %H:%M %Y"
+msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
@@ -7886,7 +7902,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:510
+#: src/wesnothd_connection.cpp:531
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Disconnected from server."

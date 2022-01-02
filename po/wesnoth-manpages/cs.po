@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
+"POT-Creation-Date: 2022-01-02 21:01+0300\n"
 "PO-Revision-Date: 2021-08-31 20:40+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -1238,39 +1238,55 @@ msgstr "ukáže číslo verze a skončí."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:419
+#, fuzzy, no-wrap
+#| msgid "B<-v, --version>"
+msgid "B<--simple-version>"
+msgstr "B<-v, --version>"
+
+# type: Plain text
+#. type: Plain text
+#: doc/man/wesnoth.6:422
+#, fuzzy
+#| msgid "shows the version number and exits."
+msgid "shows the version number and nothing else, then exits."
+msgstr "ukáže číslo verze a skončí."
+
+# type: TP
+#. type: TP
+#: doc/man/wesnoth.6:422
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 msgid "runs the game in windowed mode."
 msgstr "spustí hru v režimu okna."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:427
+#: doc/man/wesnoth.6:430
 msgid "replays the game loaded with the B<--load> option."
 msgstr "přehraje záznam načtený volbou B<--load>."
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:428
+#: doc/man/wesnoth.6:431
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Volby pro --multiplayer"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -1282,14 +1298,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 #, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai-config>I<\\ číslo>B<:>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
@@ -1297,13 +1313,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 #, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<\\ číslo>B<:>I<hodnota>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1318,14 +1334,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 #, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<\\ číslo>B<:>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
@@ -1334,14 +1350,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 #, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era>I<\\ hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -1353,14 +1369,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1371,37 +1387,37 @@ msgstr ""
 "používá pro skriptovatelná srovnávací měření."
 
 #. type: TP
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 msgid "do not use map settings, use default values instead."
 msgstr "místo mapových nastavení použít výchozí hodnoty."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 #, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr "B<--label>I<\\ popisek>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 msgid "sets the I<label> for AIs."
 msgstr "nastaví I<popisek> pro umělé inteligence."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--multiplayer-repeat>I<\\ hodnota>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
@@ -1411,14 +1427,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<\\ číslo>B<:>I<název>B<:>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1430,14 +1446,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario>I<\\ hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -1447,14 +1463,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<\\ číslo>B<:>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1464,14 +1480,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns>I<\\ hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:502
+#: doc/man/wesnoth.6:505
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
@@ -1480,13 +1496,13 @@ msgstr ""
 "kol."
 
 #. type: SH
-#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:259
+#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:262
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "NÁVRATOVÝ KÓD"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:508
+#: doc/man/wesnoth.6:511
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1497,7 +1513,7 @@ msgstr ""
 "ve volbách příkazového řádku."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:518
+#: doc/man/wesnoth.6:521
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1515,20 +1531,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:519 doc/man/wesnothd.6:263
+#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:266
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOŘI"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:522
+#: doc/man/wesnoth.6:525
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:524
+#: doc/man/wesnoth.6:527
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1538,7 +1554,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:526
+#: doc/man/wesnoth.6:529
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -1548,27 +1564,27 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:528 doc/man/wesnothd.6:270
+#: doc/man/wesnoth.6:531 doc/man/wesnothd.6:273
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "Navštivte oficiální stránky: https://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:529 doc/man/wesnothd.6:271
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
+#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:538 doc/man/wesnothd.6:280
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1580,7 +1596,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:278
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:281
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIZ TAKÉ"
@@ -2140,50 +2156,54 @@ msgstr "Globální značky:"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:179
+#: doc/man/wesnothd.6:181
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
-"to."
+"to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Značka udávající server, na který bude přesměrován požadavek "
 "pro konkrétní verzi klienta."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:180
+#: doc/man/wesnothd.6:182
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:185
 msgid "The address of the server to redirect to."
 msgstr "Adresa serveru pro přesměrování."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:188
 msgid "The port to connect to."
 msgstr "Port, na kterém poslouchá vzdálený wesnothd."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:188
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:191
+#: doc/man/wesnothd.6:193
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -2194,7 +2214,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:195
+#: doc/man/wesnothd.6:197
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
@@ -2204,27 +2224,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:196
+#: doc/man/wesnothd.6:198
 #, no-wrap
 msgid "B<name>"
 msgstr "B<name>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:201
 msgid "The name used to reference the ban time."
 msgstr "Název pro období."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:201
 #, no-wrap
 msgid "B<time>"
 msgstr "B<time>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:207
+#: doc/man/wesnothd.6:209
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -2240,7 +2260,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:213
+#: doc/man/wesnothd.6:215
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -2252,14 +2272,22 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:223
+#: doc/man/wesnothd.6:226
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. Available keys vary "
+#| "depending on which user handler is set with the B<user_handler> key. If "
+#| "no B<[user_handler]> section is present in the configuration the server "
+#| "will run without any nick registration service. All additional tables "
+#| "that are needed for the B<forum_user_handler> to function can be found in "
+#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
-"B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no "
-"B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service. All additional tables that are "
-"needed for the B<forum_user_handler> to function can be found in "
-"table_definitions.sql in the Wesnoth source repository."
+"B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+"section is present in the configuration the server will run without any nick "
+"registration service. All additional tables that are needed for the "
+"B<forum_user_handler> to function can be found in table_definitions.sql in "
+"the Wesnoth source repository. Requires mysql support enabled. For cmake "
+"this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
 "B<[user_handler]> Konfiguruje obsluhu uživatelů. Dostupné klíče se liší "
 "podle toho, jaká obsluha uživatelů je klíčem B<user_handler> nastavena. "
@@ -2270,66 +2298,66 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:224
+#: doc/man/wesnothd.6:227
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:230
 msgid "The hostname of the database server"
 msgstr "Název hostitele databázového serveru"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:230
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:233
 msgid "The name of the database"
 msgstr "Název databáze"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:233
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:236
 msgid "The name of the user under which to log into the database"
 msgstr "Název uživatele pro přihlášení k databázi"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:236
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:239
 msgid "This user's password"
 msgstr "Heslo tohoto uživatele"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:239
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:242
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2340,14 +2368,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:242
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:245
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
@@ -2355,14 +2383,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<db_game_info_table>"
 msgstr "B<db_game_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:248
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
@@ -2370,14 +2398,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_game_player_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:251
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
@@ -2386,14 +2414,14 @@ msgstr ""
 "hře."
 
 #. type: TP
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
 msgstr "B<db_game_modification_info_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:254
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
@@ -2403,14 +2431,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<db_user_group_table>"
 msgstr "B<db_user_group_table>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:257
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2421,14 +2449,14 @@ msgstr ""
 "prefixE<gt>_user_group (např. phpbb3_user_group)."
 
 #. type: TP
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<mp_mod_group>"
 msgstr "B<mp_mod_group>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:257
+#: doc/man/wesnothd.6:260
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
@@ -2436,7 +2464,7 @@ msgstr ""
 "k moderování."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:262
+#: doc/man/wesnothd.6:265
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2446,7 +2474,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:271
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2462,6 +2490,6 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:281
+#: doc/man/wesnothd.6:284
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"

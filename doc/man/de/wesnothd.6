@@ -178,8 +178,8 @@ registriert sind. (Standard: false)
 .SS "Globale Elemente:"
 .
 .P
-\fB[redirect]\fP Ein Element, um bestimmte Programmversionen anzugeben, die auf
-einen anderen Server umgeleitet werden sollen.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -215,14 +215,12 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
-Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
-Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
-ist es nicht möglich, Nutzerauthentifizierung auf dem Server zu
-verwenden. Alle zusätzlichen Datenbanktabellen, welche für den
-\fBforum_user_handler\fP benötigt werden, können über die Datei
-table_definitions.sql angelegt werden, welche im Wesnoth Code\-Repository zu
-finden is.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

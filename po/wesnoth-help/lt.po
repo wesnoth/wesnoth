@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-11-09 03:44+0300\n"
+"POT-Creation-Date: 2022-01-02 21:01+0300\n"
 "PO-Revision-Date: 2019-03-17 11:00+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:496
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Požemis"
@@ -2900,10 +2900,10 @@ msgid ""
 "<italic>text='Under the Burning Suns'</italic>.\n"
 "• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
 "turn.\n"
-"    • During the ally’s own turn, their units will be shown with the green/"
-"yellow/red/white colors; however their moves, and the corresponding orb "
-"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
-"and Fog of War'</ref>.\n"
+"    • During the ally’s own turn, their units will be shown with the colors "
+"showing whether the units can still move and attack; however their moves, "
+"and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
@@ -3755,7 +3755,7 @@ msgstr "Bendros komandos"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:679 data/core/help.cfg:721 data/core/help.cfg:759
+#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3767,6 +3767,15 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:684
+msgid ""
+"\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
@@ -3775,7 +3784,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3791,7 +3800,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:688
+#: data/core/help.cfg:691
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -3804,7 +3813,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3812,7 +3821,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:694
+#: data/core/help.cfg:697
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3829,7 +3838,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:697
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3840,7 +3849,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3852,7 +3861,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3863,7 +3872,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3874,7 +3883,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3885,7 +3894,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3894,12 +3903,12 @@ msgstr ""
 "Išsaugoti žaidimą ir išjungti scenarijų (be užklausimo)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:723
 msgid "Multiplayer Commands"
 msgstr "Daug žaidėjų žaidimo komandos"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3909,7 +3918,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3922,7 +3931,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:732
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3931,7 +3940,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3940,7 +3949,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3950,7 +3959,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:741
 #, fuzzy
 msgid ""
 "\n"
@@ -3963,7 +3972,7 @@ msgstr ""
 "nevaldo jokios pusės jūsų žaidime."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3976,7 +3985,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3984,7 +3993,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3993,7 +4002,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:753
 #, fuzzy
 msgid ""
 "\n"
@@ -4006,12 +4015,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:761
 msgid "Debug Mode Commands"
 msgstr "Derinimo režimo komandos"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4020,7 +4029,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4031,7 +4040,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4042,7 +4051,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4053,7 +4062,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4064,7 +4073,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4075,7 +4084,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4086,7 +4095,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4097,7 +4106,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4109,7 +4118,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4268,13 +4277,10 @@ msgstr "vadovavimas"
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better.\n"
+"This unit can lead other troops in battle.\n"
 "\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
+"All adjacent lower-level units from the same side deal 25% more damage for "
+"each difference in level."
 msgstr ""
 
 #. [skirmisher]: id=skirmisher
@@ -6131,7 +6137,7 @@ msgstr "Miškiniai"
 #: data/core/units.cfg:186
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
-"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"to sturdy draught horses or agile stock horses. While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
 "the wild, alongside their wild brethren.\n"
 "\n"

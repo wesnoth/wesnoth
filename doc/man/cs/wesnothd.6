@@ -170,8 +170,8 @@ aby se přihlásili. (výchozí hodnota: false)
 .SS "Globální značky:"
 .
 .P
-\fB[redirect]\fP Značka udávající server, na který bude přesměrován požadavek
-pro konkrétní verzi klienta.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -205,12 +205,12 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Dostupné klíče se liší
-podle toho, jaká obsluha uživatelů je klíčem \fBuser_handler\fP
-nastavena. Pokud v\ konfiguraci oddíl \fB[user_handler]\fP chybí, server poběží
-bez jakékoli služby pro registraci přezdívek. Všechny další tabulky, které
-jsou třeba, aby pracoval \fBforum_user_handler\fP, lze najít
-v\ table_definitions.sql v\ repozitáři zdrojových kódů Wesnothu.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
