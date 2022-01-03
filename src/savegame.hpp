@@ -102,6 +102,13 @@ public:
 	loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate);
 	virtual ~loadgame() {}
 
+	void append_era_event();
+	const game_config_view& game_config();
+	void set_skip_append_era_event(bool skip_append_era_event)
+	{
+		skip_append_era_event_ = skip_append_era_event;
+	}
+
 	/* In any of the following three function, a bool value of false indicates
 	   some failure or abort of the load process */
 
@@ -139,6 +146,8 @@ private:
 	const game_config_view& game_config_;
 
 	saved_game& gamestate_; /** Primary output information. */
+
+	bool skip_append_era_event_;
 
 	load_game_metadata load_data_;
 };

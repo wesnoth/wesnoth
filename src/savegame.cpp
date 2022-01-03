@@ -41,6 +41,7 @@
 #include "resources.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
+#include "savegame_conversion.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
@@ -49,6 +50,7 @@
 
 #include <algorithm>
 #include <iomanip>
+#include <sstream>
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -83,6 +85,7 @@ void clean_saves(const std::string& label)
 loadgame::loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate)
 	: game_config_(game_config_manager::get()->game_config())
 	, gamestate_(gamestate)
+	, skip_append_era_event_(false)
 	, load_data_{index}
 {
 }
@@ -193,7 +196,9 @@ bool loadgame::load_game()
 	std::string error_log;
 	read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
 
-	convert_old_saves(load_data_.load_config);
+	if(not skip_append_era_event_) {
+		append_era_event();
+	}
 
 	for(config& side : load_data_.load_config.child_range("side")) {
 		side.remove_attribute("is_local");
@@ -220,6 +225,51 @@ bool loadgame::load_game()
 	}
 
 	return check_version_compatibility();
+}
+
+const game_config_view& loadgame::game_config() {
+	return game_config_;
+}
+
+void loadgame::append_era_event() {
+	// Copy from bool game_launcher::load_game()
+	loadgame load(load_data_.manager, gamestate_);
+	{
+		load.set_skip_append_era_event(true);
+		load.data().filename = load_data_.filename;
+		load.data().select_difficulty = load_data_.select_difficulty;
+		load.load_game();
+
+		{
+			game_config_manager::get()->
+				load_game_config_for_create(/*is_mp=*/true, /*is_test=*/false);
+		}
+
+		load.set_gamestate();
+	}
+
+ 	std::string mp_era = append_suffix_to_era_id(load_data_.load_config);
+	for(const config& era : load.game_config().child_range("era")) {
+		LOG_SAVE << "Found the following era in append_era_event() " << era["id"] << "\n";
+	}
+	if(not mp_era.empty()) {
+		LOG_SAVE << "Looking to append events from era: " << mp_era << "\n";
+		config &replay_start = replay_start_config(load_data_.load_config);
+		try {
+			const config& era_cfg = load.game_config().find_child("era", "id", mp_era);
+			for(const config& event : era_cfg.child_range("event")) {
+				replay_start.add_child("event", event);
+			}
+			for(const config& modify_ut : era_cfg.child_range("modify_unit_type")) {
+				replay_start.add_child("modify_unit_type", modify_ut);
+			}
+		} catch(const config::error&) {
+			LOG_SAVE << "The era " << mp_era << " was not found in game config\n";
+			return;
+		}
+	}
+	// Need to know PSDE eras to create [unit] to support 1.6
+	convert_old_saves(load_data_.load_config);
 }
 
 bool loadgame::check_version_compatibility()
@@ -680,184 +730,6 @@ void ingame_savegame::write_game(config_writer& out)
 	out.close_child("replay");
 }
 
-// changes done during 1.11.0-dev
-static void convert_old_saves_1_11_0(config& cfg)
-{
-	if(!cfg.has_child("snapshot")) {
-		return;
-	}
-
-	const config& snapshot = cfg.child("snapshot");
-	const config& replay_start = cfg.child("replay_start");
-	const config& replay = cfg.child("replay");
-
-	if(!cfg.has_child("carryover_sides") && !cfg.has_child("carryover_sides_start")) {
-		config carryover;
-		// copy rng and menu items from toplevel to new carryover_sides
-		carryover["random_seed"] = cfg["random_seed"];
-		carryover["random_calls"] = cfg["random_calls"];
-
-		for(const config& menu_item : cfg.child_range("menu_item")) {
-			carryover.add_child("menu_item", menu_item);
-		}
-
-		carryover["difficulty"] = cfg["difficulty"];
-		carryover["random_mode"] = cfg["random_mode"];
-		// the scenario to be played is always stored as next_scenario in carryover_sides_start
-		carryover["next_scenario"] = cfg["scenario"];
-
-		config carryover_start = carryover;
-
-		// copy sides from either snapshot or replay_start to new carryover_sides
-		if(!snapshot.empty()) {
-			for(const config& side : snapshot.child_range("side")) {
-				carryover.add_child("side", side);
-			}
-			// for compatibility with old savegames that use player instead of side
-			for(const config& side : snapshot.child_range("player")) {
-				carryover.add_child("side", side);
-			}
-			// save the sides from replay_start in carryover_sides_start
-			for(const config& side : replay_start.child_range("side")) {
-				carryover_start.add_child("side", side);
-			}
-			// for compatibility with old savegames that use player instead of side
-			for(const config& side : replay_start.child_range("player")) {
-				carryover_start.add_child("side", side);
-			}
-		} else if(!replay_start.empty()) {
-			for(const config& side : replay_start.child_range("side")) {
-				carryover.add_child("side", side);
-				carryover_start.add_child("side", side);
-			}
-			// for compatibility with old savegames that use player instead of side
-			for(const config& side : replay_start.child_range("player")) {
-				carryover.add_child("side", side);
-				carryover_start.add_child("side", side);
-			}
-		}
-
-		// get variables according to old hierarchy and copy them to new carryover_sides
-		if(!snapshot.empty()) {
-			if(const config& variables_from_snapshot = snapshot.child("variables")) {
-				carryover.add_child("variables", variables_from_snapshot);
-				carryover_start.add_child("variables", replay_start.child_or_empty("variables"));
-			} else if(const config& variables_from_cfg = cfg.child("variables")) {
-				carryover.add_child("variables", variables_from_cfg);
-				carryover_start.add_child("variables", variables_from_cfg);
-			}
-		} else if(!replay_start.empty()) {
-			if(const config& variables = replay_start.child("variables")) {
-				carryover.add_child("variables", variables);
-				carryover_start.add_child("variables", variables);
-			}
-		} else {
-			carryover.add_child("variables", cfg.child("variables"));
-			carryover_start.add_child("variables", cfg.child("variables"));
-		}
-
-		cfg.add_child("carryover_sides", carryover);
-		cfg.add_child("carryover_sides_start", carryover_start);
-	}
-
-	// if replay and snapshot are empty we've got a start of scenario save and don't want replay_start either
-	if(replay.empty() && snapshot.empty()) {
-		LOG_RG << "removing replay_start \n";
-		cfg.clear_children("replay_start");
-	}
-
-	// remove empty replay or snapshot so type of save can be detected more easily
-	if(replay.empty()) {
-		LOG_RG << "removing replay \n";
-		cfg.clear_children("replay");
-	}
-
-	if(snapshot.empty()) {
-		LOG_RG << "removing snapshot \n";
-		cfg.clear_children("snapshot");
-	}
-}
-// changes done during 1.13.0-dev
-static void convert_old_saves_1_13_0(config& cfg)
-{
-	if(config& carryover_sides_start = cfg.child("carryover_sides_start")) {
-		if(!carryover_sides_start.has_attribute("next_underlying_unit_id")) {
-			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
-		}
-	}
-
-	if(cfg.child_or_empty("snapshot").empty()) {
-		cfg.clear_children("snapshot");
-	}
-
-	if(cfg.child_or_empty("replay_start").empty()) {
-		cfg.clear_children("replay_start");
-	}
-
-	if(config& snapshot = cfg.child("snapshot")) {
-		// make [end_level] -> [end_level_data] since its alo called [end_level_data] in the carryover.
-		if(config& end_level = cfg.child("end_level")) {
-			snapshot.add_child("end_level_data", end_level);
-			snapshot.clear_children("end_level");
-		}
-		// if we have a snapshot then we already applied carryover so there is no reason to keep this data.
-		if(cfg.has_child("carryover_sides_start")) {
-			cfg.clear_children("carryover_sides_start");
-		}
-	}
-
-	if(!cfg.has_child("snapshot") && !cfg.has_child("replay_start")) {
-		cfg.clear_children("carryover_sides");
-	}
-
-	// This code is needed because for example otherwise it won't find the (empty) era
-	if(!cfg.has_child("multiplayer")) {
-		cfg.add_child("multiplayer",
-			config{
-				"mp_era",
-				"era_blank",
-				"mp_use_map_settings",
-				true,
-			});
-	}
-}
-
-// changes done during 1.13.0+dev
-static void convert_old_saves_1_13_1(config& cfg)
-{
-	if(config& multiplayer = cfg.child("multiplayer")) {
-		if(multiplayer["mp_era"] == "era_blank") {
-			multiplayer["mp_era"] = "era_default";
-		}
-	}
-
-	// This currently only fixes start-of-scenario saves.
-	if(config& carryover_sides_start = cfg.child("carryover_sides_start")) {
-		for(config& side : carryover_sides_start.child_range("side")) {
-			for(config& unit : side.child_range("unit")) {
-				if(config& modifications = unit.child("modifications")) {
-					for(config& advancement : modifications.child_range("advance")) {
-						modifications.add_child("advancement", advancement);
-					}
-					modifications.clear_children("advance");
-				}
-			}
-		}
-	}
-
-	for(config& snapshot : cfg.child_range("snapshot")) {
-		if(snapshot.has_attribute("used_items")) {
-			config used_items;
-			for(const std::string& item : utils::split(snapshot["used_items"])) {
-				used_items[item] = true;
-			}
-
-			snapshot.remove_attribute("used_items");
-			snapshot.add_child("used_items", used_items);
-		}
-	}
-}
-
 // changes done during 1.15.3+dev
 static void convert_old_saves_1_15_3(config& cfg)
 {
@@ -873,18 +745,8 @@ static void convert_old_saves_1_15_3(config& cfg)
 void convert_old_saves(config& cfg)
 {
 	version_info loaded_version(cfg["version"]);
-	if(loaded_version < version_info("1.12.0")) {
-		convert_old_saves_1_11_0(cfg);
-	}
-
-	// '<= version_info("1.13.0")' doesn't work
-	// because version_info cannot handle 1.13.0-dev versions correctly.
-	if(loaded_version < version_info("1.13.1")) {
-		convert_old_saves_1_13_0(cfg);
-	}
-
-	if(loaded_version <= version_info("1.13.1")) {
-		convert_old_saves_1_13_1(cfg);
+	if(loaded_version < version_info("1.15.0")) {
+		convert_earlier_version_saves(cfg);
 	}
 
 	if(loaded_version < version_info("1.15.4")) {
