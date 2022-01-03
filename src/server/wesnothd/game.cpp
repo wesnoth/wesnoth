@@ -521,7 +521,8 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(newplayer == old_player) {
 		// if the player is unchanged and the controller type (human or ai) is also unchanged then nothing to do
 		// else only need to change the controller type rather than the player who controls the side
-		if(CONTROLLER::string_to_enum(controller_type) == side_controllers_[side_num - 1]) {
+		// :droid provides a valid controller_type; :control provides nothing since it's only tranferring control between players regardless of type
+		if(controller_type == "" || CONTROLLER::string_to_enum(controller_type) == side_controllers_[side_num - 1]) {
 			std::stringstream msg;
 			msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
 			send_server_message(msg.str(), player);
