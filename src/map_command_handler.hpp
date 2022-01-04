@@ -191,13 +191,14 @@ public:
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
 			symbols["command"] = get_cmd();
-			std::string data = get_data(0);
-			if (data == cmd_prefix_){
-                print("help", VGETTEXT("Unknown command '$command', remove : or try help "
+			std::string input = get_data(0);
+			std::string compare = ":";
+			if (input[0] == compare[0]){
+                print("help", VGETTEXT("Unknown command '$command', remove ':' or try 'help' "
                     "for a list of available commands.", symbols));
 			}
 			else{
-                print("help", VGETTEXT("Unknown command '$command', try help "
+                print("help", VGETTEXT("Unknown command '$command', try 'help' "
                     "for a list of available commands.", symbols));
 			}
 		}
