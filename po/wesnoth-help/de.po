@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-10-18 21:04+0200\n"
+"PO-Revision-Date: 2022-01-02 22:09+0100\n"
 "Last-Translator: Whiskeyjack\n"
-"Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
+"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1415,7 +1415,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:401
-#, fuzzy
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1504,19 +1503,20 @@ msgstr "Lexikon"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Geographie'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Kalendar'</ref>\n"
+"<ref>dst='..geography' text='Geographie'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendar"
 
+# Diese Name wird vielleicht umbenennen, https://github.com/wesnoth/wesnoth/pull/6010
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
 msgid ""
@@ -3013,15 +3013,6 @@ msgstr "Früheren Speicherstand laden"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3030,25 +3021,14 @@ msgid ""
 "hoping for better luck."
 msgstr ""
 "Zufall gehört zu Wesnoth. Angriffe können verfehlen und Einheiten können "
-"durch Pech sterben. Dies ist ein erwarteter Teil des Spiels und eines seiner "
-"Ziele ist, dass ausreichend gute Spieler in der Lage sind, alle offiziellen "
-"Kampagnen auf schwer ohne das Laden alter Speicherstände abzuschließen. Zu "
-"einem früheren Zug zurückzugehen, um eine andere Strategie auszuprobieren, "
-"gehört dazu, wenn man das Spiel lernt. Aber wir empfehlen, keine Züge neu zu "
-"laden, nur um die gleiche Strategie erneut zu versuchen und auf besseres "
-"Glück zu hoffen."
+"durch Pech sterben. Dies ist ein erwarteter Teil des Spiels. Zu einem "
+"früheren Zug zurückzugehen, um eine andere Strategie auszuprobieren, gehört "
+"dazu, wenn man das Spiel lernt. Aber wir empfehlen, keine Züge neu zu laden, "
+"nur um die gleiche Strategie erneut zu versuchen und auf besseres Glück zu "
+"hoffen."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -3056,7 +3036,6 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
 "Eine der Herausforderungen des Spiels liegt im Schutz Eurer Helden. Kleine "
 "Risiken sind schnell aufaddiert: wenn fünf Eurer Einheiten jede Runde einer "
 "1-prozentigen Todeswahrscheinlichkeit ausgesetzt sind, so könnt Ihr "
@@ -5308,6 +5287,8 @@ msgstr ""
 msgid "female^leadership"
 msgstr "Führungsqualitäten"
 
+# Has been rephrased in 1.16.2 (PR #6117), but the translated version seems clearer
+# than either the 1.16.0 or 1.16.2 English text.
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
@@ -5316,6 +5297,14 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Weitblick und Autorität machen den einen oder anderen Krieger zum idealen "
+"Anführer, der seine Kampfgefährten in der Schlacht unterweist und zu "
+"besseren Leistungen anzuspornen vermag.\n"
+"\n"
+"Das Talent »Führungsqualitäten« lässt benachbarte eigene Einheiten "
+"niedrigerer Erfahrungsstufe und auch Verbündete um 25% mehr Schaden "
+"anrichten. Dieser Bonus vervielfacht sich noch um die Anzahl der "
+"Rangstufen, die sie sich vom Anführer unterscheiden."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -8667,21 +8656,3 @@ msgstr "Weitblick-Faktor"
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr "Tarnmöglichkeit"
-
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Weitblick und Autorität machen den einen oder anderen Krieger zum idealen "
-#~ "Anführer, der seine Kampfgefährten in der Schlacht unterweist und zu "
-#~ "besseren Leistungen anzuspornen vermag.\n"
-#~ " \n"
-#~ "Das Talent »Führungsqualitäten« lässt benachbarte eigene Einheiten "
-#~ "niedrigerer Erfahrungsstufe und auch Verbündete um 25% mehr Schaden "
-#~ "anrichten. Dieser Bonus vervielfacht sich noch um die Anzahl der "
-#~ "Rangstufen, die sie sich vom Anführer unterscheiden."
