@@ -457,7 +457,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			int gold = side["gold"];
 			int units = 0, recall_units = 0;
 
-			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
+			if(side["controller"] != side_controller::human) {
 				continue;
 			}
 

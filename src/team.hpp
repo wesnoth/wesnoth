@@ -23,6 +23,7 @@
 #include "recall_list_manager.hpp"
 #include "units/ptr.hpp"
 #include "config.hpp"
+#include "string_enums/side_controller.hpp"
 
 #include <set>
 
@@ -72,13 +73,6 @@ private:
 class team
 {
 public:
-
-	MAKE_ENUM(CONTROLLER,
-		(HUMAN,       "human")
-		(AI,          "ai")
-		(EMPTY,	      "null")
-	)
-
 	MAKE_ENUM(PROXY_CONTROLLER,
 		(PROXY_HUMAN, "human")
 		(PROXY_AI,    "ai")
@@ -137,7 +131,7 @@ private:
 		 * displayed to the user. */
 		mutable bool objectives_changed;
 
-		CONTROLLER controller;
+		side_controller::type controller;
 		bool is_local;
 		DEFEAT_CONDITION defeat_condition;
 
@@ -264,17 +258,17 @@ public:
 		}
 	}
 
-	CONTROLLER controller() const { return info_.controller; }
+	side_controller::type controller() const { return info_.controller; }
 	const std::string& color() const { return info_.color; }
 	/** @note Call display::reinit_flag_for_side() after calling this */
 	void set_color(const std::string& color) { info_.color = color; }
-	bool is_empty() const { return info_.controller == CONTROLLER::EMPTY; }
+	bool is_empty() const { return info_.controller == side_controller::type::NONE; }
 
 	bool is_local() const { return !is_empty() && info_.is_local; }
 	bool is_network() const { return !is_empty() && !info_.is_local; }
 
-	bool is_human() const { return info_.controller == CONTROLLER::HUMAN; }
-	bool is_ai() const { return info_.controller == CONTROLLER::AI; }
+	bool is_human() const { return info_.controller == side_controller::type::HUMAN; }
+	bool is_ai() const { return info_.controller == side_controller::type::AI; }
 
 	bool is_local_human() const {  return is_human() && is_local(); }
 	bool is_local_ai() const { return is_ai() && is_local(); }
@@ -282,13 +276,12 @@ public:
 	bool is_network_ai() const { return is_ai() && is_network(); }
 
 	void set_local(bool local) { info_.is_local = local; }
-	void make_human() { info_.controller = CONTROLLER::HUMAN; }
-	void make_ai() { info_.controller = CONTROLLER::AI; }
+	void make_human() { info_.controller = side_controller::type::HUMAN; }
+	void make_ai() { info_.controller = side_controller::type::AI; }
 	void change_controller(const std::string& new_controller) {
-		info_.controller = CONTROLLER::AI;
-		info_.controller.parse(new_controller);
+		info_.controller = side_controller::get_enum(new_controller).value_or(side_controller::type::AI);
 	}
-	void change_controller(CONTROLLER controller) { info_.controller = controller; }
+	void change_controller(side_controller::type controller) { info_.controller = controller; }
 	void change_controller_by_wml(const std::string& new_controller);
 
 	PROXY_CONTROLLER proxy_controller() const { return info_.proxy_controller; }

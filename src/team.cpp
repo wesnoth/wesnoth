@@ -243,17 +243,16 @@ void team::team_info::read(const config& cfg)
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 	}
 
-	controller = team::CONTROLLER::AI;
-	controller.parse(cfg["controller"].str());
+	controller = side_controller::get_enum(cfg["controller"].str()).value_or(side_controller::type::AI);
 
 	// TODO: Why do we read disallow observers differently when controller is empty?
-	if(controller == CONTROLLER::EMPTY) {
+	if(controller == side_controller::type::NONE) {
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 
 	// override persistence flag if it is explicitly defined in the config
 	// by default, persistence of a team is set depending on the controller
-	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN);
+	persistent = cfg["persistent"].to_bool(this->controller == side_controller::type::HUMAN);
 
 	//========================================================
 	// END OF MESSY CODE
@@ -309,7 +308,7 @@ void team::team_info::write(config& cfg) const
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = controller;
+	cfg["controller"] = side_controller::get_string(controller);
 	cfg["recruit"] = utils::join(can_recruit);
 	cfg["share_vision"] = share_vision;
 
@@ -551,7 +550,7 @@ namespace
 class controller_server_choice : public synced_context::server_choice
 {
 public:
-	controller_server_choice(team::CONTROLLER new_controller, const team& team)
+	controller_server_choice(side_controller::type new_controller, const team& team)
 		: new_controller_(new_controller)
 		, team_(team)
 	{
@@ -560,14 +559,14 @@ public:
 	/** We are in a game with no mp server and need to do this choice locally */
 	virtual config local_choice() const
 	{
-		return config{"controller", new_controller_, "is_local", true};
+		return config{"controller", side_controller::get_string(new_controller_), "is_local", true};
 	}
 
 	/** The request which is sent to the mp server. */
 	virtual config request() const
 	{
 		return config{
-				"new_controller", new_controller_, "old_controller", team_.controller(), "side", team_.side(),
+				"new_controller", side_controller::get_string(new_controller_), "old_controller", side_controller::get_string(team_.controller()), "side", team_.side(),
 		};
 	}
 
@@ -577,29 +576,29 @@ public:
 	}
 
 private:
-	team::CONTROLLER new_controller_;
+	side_controller::type new_controller_;
 	const team& team_;
 };
 } // end anon namespace
 
 void team::change_controller_by_wml(const std::string& new_controller_string)
 {
-	CONTROLLER new_controller;
-	if(!new_controller.parse(new_controller_string)) {
+	auto new_controller = side_controller::get_enum(new_controller_string);
+	if(!new_controller) {
 		WRN_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
 		return;
 	}
 
-	if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
+	if(new_controller == side_controller::type::NONE && resources::controller->current_side() == this->side()) {
 		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
 		return;
 	}
 
-	config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
-	if(!new_controller.parse(choice["controller"])) {
-		// TODO: this should be more than a ERR_NG message.
-		// GL-2016SEP02 Oh? So why was ERR_NG defined as warning level? Making the call fit the definition.
+	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
+	if(!side_controller::get_enum(choice["controller"])) {
 		WRN_NG << "Received an invalid controller string from the server" << choice["controller"] << std::endl;
+	} else {
+		new_controller = side_controller::get_enum(choice["controller"]);
 	}
 
 	if(!resources::controller->is_replay()) {
@@ -612,7 +611,7 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		}
 	}
 
-	change_controller(new_controller);
+	change_controller(*new_controller);
 }
 
 void team::change_team(const std::string& name, const t_string& user_name)

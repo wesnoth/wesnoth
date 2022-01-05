@@ -1490,8 +1490,6 @@ void console_handler::do_droid()
 		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
 		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
 		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
-		const std::string human = team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN);
-		const std::string ai = team::CONTROLLER::enum_to_string(team::CONTROLLER::AI);
 
 		if(action == "on") {
 			if(is_ai && !is_your_turn) {
@@ -1503,7 +1501,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			} else {
@@ -1519,7 +1517,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1535,7 +1533,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_human || is_proxy_human) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", ai}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::ai}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
 			} else {
@@ -1551,7 +1549,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1559,7 +1557,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			}
@@ -1715,7 +1713,7 @@ void console_handler::do_controller()
 		return;
 	}
 
-	std::string report = menu_handler_.board().get_team(side_num).controller().to_string();
+	std::string report = side_controller::get_string(menu_handler_.board().get_team(side_num).controller());
 	if(!menu_handler_.board().get_team(side_num).is_proxy_human()) {
 		report += " (" + menu_handler_.board().get_team(side_num).proxy_controller().to_string() + ")";
 	}

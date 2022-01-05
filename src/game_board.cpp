@@ -218,7 +218,7 @@ unit* game_board::get_visible_unit(const map_location& loc, const team& current_
 	return &*ui;
 }
 
-void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy)
+void game_board::side_drop_to(int side_num, side_controller::type ctrl, team::PROXY_CONTROLLER proxy)
 {
 	team& tm = get_team(side_num);
 
@@ -226,11 +226,11 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	tm.change_proxy(proxy);
 	tm.set_local(true);
 
-	tm.set_current_player(ctrl.to_string() + std::to_string(side_num));
+	tm.set_current_player(side_controller::get_string(ctrl) + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
 	if(leader.valid()) {
-		leader->rename(ctrl.to_string() + std::to_string(side_num));
+		leader->rename(side_controller::get_string(ctrl) + std::to_string(side_num));
 	}
 }
 
@@ -242,10 +242,10 @@ void game_board::side_change_controller(
 	tm.set_local(is_local);
 
 	// only changing the type of controller
-	if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::AI) && !tm.is_ai()) {
+	if(controller_type == side_controller::ai && !tm.is_ai()) {
 		tm.make_ai();
 		return;
-	} else if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN) && !tm.is_human()) {
+	} else if(controller_type == side_controller::human && !tm.is_human()) {
 		tm.make_human();
 		return;
 	}
