@@ -47,6 +47,7 @@
 #include "units/types.hpp"
 #include "utils/scope_exit.hpp"
 #include "wesnothd_connection.hpp"
+#include "string_enums/side_controller.hpp"
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
@@ -165,13 +166,13 @@ bool mp_join_game::fetch_game_config()
 	for(const config& side : get_scenario().child_range("side")) {
 		// TODO: it can happen that the scenario specifies that the controller
 		//       of a side should also gain control of another side.
-		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
+		if(side["controller"] == side_controller::reserved && side["current_player"] == preferences::login()) {
 			side_choice = &side;
 			side_num_choice = side_num_counter;
 			break;
 		}
 
-		if(side["controller"] == "human" && side["player_id"].empty()) {
+		if(side["controller"] == side_controller::human && side["player_id"].empty()) {
 			if(!side_choice) { // Found the first empty side
 				side_choice = &side;
 				side_num_choice = side_num_counter;
@@ -218,15 +219,15 @@ static std::string generate_user_description(const config& side)
 	const std::string reservation = side["current_player"].str();
 	const std::string owner = side["player_id"].str();
 
-	if(controller_type == "ai") {
+	if(controller_type == side_controller::ai) {
 		return _("Computer Player");
-	} else if(controller_type == "null") {
+	} else if(controller_type == side_controller::none) {
 		return _("Empty slot");
-	} else if(controller_type == "reserved") {
+	} else if(controller_type == side_controller::reserved) {
 		return VGETTEXT("Reserved for $playername", {{"playername", reservation}});
 	} else if(owner.empty()) {
 		return _("Vacant slot");
-	} else if(controller_type == "human" || controller_type == "network") {
+	} else if(controller_type == side_controller::human) {
 		return owner;
 	} else {
 		return _("empty");

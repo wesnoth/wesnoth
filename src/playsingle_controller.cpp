@@ -438,7 +438,7 @@ void playsingle_controller::play_side_impl()
 		}
 	} else {
 		// we should have skipped over empty controllers before so this shouldn't be possible
-		ERR_NG << "Found invalid side controller " << current_team().controller().to_string() << " ("
+		ERR_NG << "Found invalid side controller " << side_controller::get_string(current_team().controller()) << " ("
 			   << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
 	}
 }

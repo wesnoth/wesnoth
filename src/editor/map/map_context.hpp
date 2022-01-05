@@ -22,11 +22,12 @@
 #include "mp_game_settings.hpp"
 #include "overlay.hpp"
 #include "sound_music_track.hpp"
+#include "string_enums/side_controller.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
-#include <optional>
 
+#include <optional>
 #include <vector>
 class game_config_view;
 
@@ -45,7 +46,7 @@ struct editor_team_info {
 	bool fog;
 	bool shroud;
 	team::SHARE_VISION share_vision;
-	team::CONTROLLER controller;
+	side_controller::type controller;
 	bool no_leader;
 	bool hidden;
 };
