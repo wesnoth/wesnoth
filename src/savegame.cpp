@@ -196,7 +196,7 @@ bool loadgame::load_game()
 	std::string error_log;
 	read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
 
-	if(not skip_append_era_event_) {
+	if(!skip_append_era_event_) {
 		append_era_event();
 	}
 
@@ -252,7 +252,7 @@ void loadgame::append_era_event() {
 	for(const config& era : load.game_config().child_range("era")) {
 		LOG_SAVE << "Found the following era in append_era_event() " << era["id"] << "\n";
 	}
-	if(not mp_era.empty()) {
+	if(!mp_era.empty()) {
 		LOG_SAVE << "Looking to append events from era: " << mp_era << "\n";
 		config &replay_start = replay_start_config(load_data_.load_config);
 		try {

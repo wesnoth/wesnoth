@@ -118,7 +118,7 @@ void update_start_unit_types(config& cfg)
 {
 	version_info loaded_version(cfg["version"]);
 	config& replay_start = replay_start_config(cfg);
-	if(not convert_version_to_suffix(loaded_version).empty())
+	if(!convert_version_to_suffix(loaded_version).empty())
 	{
 		for(config& side : replay_start.child_range("side"))
 		{
@@ -397,7 +397,7 @@ void convert_earlier_version_saves(config& cfg)
 		convert_old_saves_1_13_1_plus(cfg);
 	}
 
-	if(not convert_version_to_suffix(loaded_version).empty())
+	if(!convert_version_to_suffix(loaded_version).empty())
 	{
 		update_start_unit_types(cfg);
 		update_replay_unit_types(cfg);
