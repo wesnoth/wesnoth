@@ -107,7 +107,7 @@ std::string append_suffix_to_unit_type(std::string unit_type, std::string suffix
 		null_found = (ut.find("null", 0) != std::string::npos);
 		suffix_found = (ut.find(suffix, 0) != std::string::npos);
 		ladder_found = (ut.find("Ladder", 0) != std::string::npos);
-		if(suffix_found or ladder_found or null_found) { continue; }
+		if(suffix_found || ladder_found || null_found) { continue; }
 
 		ss << suffix;
 	}
@@ -324,7 +324,7 @@ static void convert_old_saves_1_13_1_plus(config& cfg)
 	{
 		for(config& command : replay.child_range("command"))
 		{
-			if(command.has_child("recruit") or command.has_child("auto_shroud"))
+			if(command.has_child("recruit") || command.has_child("auto_shroud"))
 			{
 				command.clear_children("checkup");
 			}
