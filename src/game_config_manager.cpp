@@ -21,6 +21,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_version.hpp"
@@ -512,23 +513,20 @@ void game_config_manager::load_addons_cfg()
 				}
 			}
 
-			config advancefroms;
 			for(auto& units : umc_cfg.child_range("units")) {
 				for(auto& unit_type : units.child_range("unit_type")) {
-					for(const auto& advancefrom : units.child_range("advancefrom")) {
-						config modify_unit_type {
-							"type", unit_type["id"],
-							"add_advancement", advancefrom["unit"],
-							"set_experience", advancefrom["experience"]
+					for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
+						auto symbols = utils::string_map {
+							{"lower_level", advancefrom["unit"]},
+							{"higher_level", unit_type["id"]}
 						};
-						deprecated_message(
-							"[advancefrom]",
-							DEP_LEVEL::FOR_REMOVAL,
-							{1, 17, 0},
-							_("Use [modify_unit_type]\n") + modify_unit_type.debug()  + "\n [/modify_unit_type] instead in [campaign]"
-						);
-
-						advancefroms.add_child("modify_unit_type", modify_unit_type);
+						auto message = VGETTEXT(
+							// TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
+							// The substituted strings are unit ids, not translated names; hopefully any add-ons
+							// that trigger this will be quickly fixed and stop triggering the warning.
+							"Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able to advance to ‘$higher_level’; please ask the add-on author to use [modify_unit_type] instead.",
+							symbols);
+						deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
 					}
 					unit_type.remove_children("advancefrom", [](const config&){return true;});
 				}
@@ -550,8 +548,6 @@ void game_config_manager::load_addons_cfg()
 			};
 
 			for(auto& campaign : umc_cfg.child_range("campaign")) {
-				campaign.append_children(std::move(advancefroms));
-
 				for(auto str : utils::split(campaign["extra_defines"])) {
 					if(deprecated_defines.count(str) > 0) {
 						//TODO: we could try to implement a compatibility path by
