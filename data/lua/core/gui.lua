@@ -35,10 +35,23 @@ function gui.get_user_choice(attr, options)
 		msg[k] = attr[k]
 	end
 	for k,v in ipairs(options) do
-		table.insert(msg, wml.tag.option, { message = v,
-			wml.tag.command, { wml.tag.lua, {
-				code = string.format("gui.__user_choice_helper(%d)", k)
-			}}})
+		if type(v) == "table" or (type(v) == "userdata" and getmetatable(v) ~= "translatable string") then
+			table.insert(msg, wml.tag.option { image = v.image,
+				label = v.label,
+				description = v.description or v.message,
+				default = v.default,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		elseif type(v) == "string" or type(v) == "number" or type(v) == "boolean" or 
+			(type(v) == "userdata" and getmetatable(v) == "translatable string") then
+			table.insert(msg, wml.tag.option { description = v,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		else -- only function and thread, because nil stops the cycle anyway
+			error(string.format("Invalid data type in gui.get_user_choice (type: %s)", type(v)))
+		end
 	end
 	wesnoth.wml_actions.message(msg)
 	gui.__user_choice_helper = nil
