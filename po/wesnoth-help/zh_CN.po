@@ -11,7 +11,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
 "PO-Revision-Date: 2020-08-10 20:12+0800\n"
@@ -66,7 +66,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
 #, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " 此单位能够简单疗伤。"
 
@@ -104,28 +103,18 @@ msgstr ""
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
 #, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
 msgstr "疗伤+4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
 #, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
 msgstr "疗伤+4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
 #, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -144,9 +133,6 @@ msgstr ""
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
 #, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -237,7 +223,6 @@ msgstr "+1最大生命值"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
 #, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "先制"
 
@@ -389,7 +374,6 @@ msgstr "地形编辑器"
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
 #, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
 msgstr "地图/场景编辑器"
 
@@ -545,7 +529,6 @@ msgstr ""
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
 #, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
 msgstr "如何配置起始位置"
 
@@ -915,7 +898,6 @@ msgstr "遮罩可以用于基础地图上，以便于在多个发生于同一位
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:345
 #, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
 msgstr "时间日程编辑器"
 
@@ -1086,7 +1068,6 @@ msgstr "韦诺大百科"
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 #, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
@@ -1257,58 +1238,6 @@ msgstr "韦诺王国"
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
 #, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -2397,10 +2326,6 @@ msgstr ""
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
 msgstr ""
 "\n"
@@ -2426,14 +2351,6 @@ msgstr "保存和加载"
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
 #, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2450,14 +2367,6 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2496,11 +2405,6 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "That said, it’s a game; the best way to play it is whichever way gives "
-#| "you the most enjoyment."
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
@@ -2599,20 +2503,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. At all but the "
-#| "easiest difficulties, campaigns assume that you will have some "
-#| "<italic>text='carryover gold'</italic> and some advanced units on your "
-#| "<italic>text='recall list.'</italic> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your advanced units and "
-#| "much of your gold, the following scenario may be very difficult to beat, "
-#| "even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<italic>text='some'</italic> losses are expected, particularly at higher "
-#| "difficulties.)"
 msgid ""
 "\n"
 "\n"
@@ -3041,10 +2931,6 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
 msgstr ""
 "\n"
@@ -3118,16 +3004,6 @@ msgstr "时段"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
 #, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -4067,10 +3943,6 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:697
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4456,23 +4328,18 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
 #, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
 msgstr "再生"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
 #, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
 msgstr "再生"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
 #, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -4482,9 +4349,6 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
 #, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
@@ -4511,17 +4375,12 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
 #, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
 msgstr "领导"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
 #, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -4532,10 +4391,6 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
 #, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
@@ -4630,19 +4485,12 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
 #, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
 msgstr "缓慢"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
 #, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4796,9 +4644,6 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
 #, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
@@ -5086,10 +4931,6 @@ msgstr "长夜(4)"
 
 #: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
 msgstr ""
 "\n"
@@ -5098,9 +4939,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:17
 #, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5108,9 +4946,6 @@ msgstr " 亡魂们对伤害具有相当不寻常的抗性，但在开阔的水�
 
 #: data/core/macros/special-notes.cfg:20
 #, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5119,30 +4954,22 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:27
 #, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " 此单位能够简单疗伤。"
 
 #: data/core/macros/special-notes.cfg:30
 #, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " 此单位能够迅速疗伤。"
 
 #: data/core/macros/special-notes.cfg:33
 #, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " 此单位能够对周围的单位进行疗伤，并解除中毒状态。"
 
 #: data/core/macros/special-notes.cfg:36
 #, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
@@ -5150,9 +4977,6 @@ msgstr " 此单位能够解除周围单位的中毒状态。"
 
 #: data/core/macros/special-notes.cfg:39
 #, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5160,9 +4984,6 @@ msgstr " 此单位能够再生，这让它可以治疗自己，就像一直驻�
 
 #: data/core/macros/special-notes.cfg:42
 #, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5171,10 +4992,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:45
 #, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5184,9 +5001,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:48
 #, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5196,15 +5010,11 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:51
 #, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " 照明能力会提升相邻区域的明亮程度。"
 
 #: data/core/macros/special-notes.cfg:54
 #, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5214,9 +5024,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:57
 #, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5226,16 +5033,11 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:60
 #, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " 此单位能够在夜晚隐匿身形，不留蛛丝马迹。"
 
 #: data/core/macros/special-notes.cfg:63
 #, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5245,18 +5047,12 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:66
 #, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr " 此单位可以在深水中移动而不被发现，它不需要呼吸水面上的空气。"
 
 #: data/core/macros/special-notes.cfg:69
 #, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5264,9 +5060,6 @@ msgstr " 此单位每杀死一个活体单位就会获得1点额外的最大生�
 
 #: data/core/macros/special-notes.cfg:72
 #, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5275,10 +5068,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:75
 #, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5289,9 +5078,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:78
 #, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5299,9 +5085,6 @@ msgstr " 因瘟疫而丧生的敌人将重生为亡灵，除非他们在村庄�
 
 #: data/core/macros/special-notes.cfg:81
 #, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5310,18 +5093,12 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:84
 #, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " 把活人变成石头的能力使得此单位变得极其危险。"
 
 #: data/core/macros/special-notes.cfg:87
 #, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5330,9 +5107,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:90
 #, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5340,9 +5114,6 @@ msgstr " 此单位拥有魔法攻击，该攻击总是有很高的几率能命�
 
 #: data/core/macros/special-notes.cfg:93
 #, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -5350,9 +5121,6 @@ msgstr " 当此单位的成员受伤时，他们的成群攻击就不那么致�
 
 #: data/core/macros/special-notes.cfg:96
 #, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5360,18 +5128,12 @@ msgstr " 冲锋攻击将使得输出与受到的伤害都加倍。这不会影�
 
 #: data/core/macros/special-notes.cfg:99
 #, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr " 在作战时，此单位能够从受害者身上吸取生命以补充自己的体力。"
 
 #: data/core/macros/special-notes.cfg:102
 #, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5379,9 +5141,6 @@ msgstr " 此单位的武器很长，使得他在近战中可以先发制人，�
 
 #: data/core/macros/special-notes.cfg:105
 #, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5391,9 +5150,6 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:108
 #, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6349,21 +6105,18 @@ msgstr ""
 #. [race]: id=horse
 #: data/core/units.cfg:183
 #, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
 msgstr "树人"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
 #, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
 msgstr "食人魔"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
 #, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
 msgstr "树人"
 
@@ -6482,64 +6235,6 @@ msgstr "沙丘游民"
 #. [race]: id=dunefolk
 #: data/core/units.cfg:225
 #, fuzzy
-#| msgid ""
-#| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
-#| "claim to the river valleys and oases of the Sandy Wastes. How they came "
-#| "to inhabit this far corner of the Great Continent is unknown. Their "
-#| "legends tell of many long and perilous travels through far-flung lands, "
-#| "but the true origin of their people is a topic of endless and heated "
-#| "debate among even the most erudite of their scholars.\n"
-#| "\n"
-#| "Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
-#| "proudly in the largest fertile regions. Skilled artisans, fine smiths, "
-#| "and wealthy merchants form the backbone of the urban economy. Each of "
-#| "these cities also enjoys a degree of independence less common in the more "
-#| "centralized nations to the north, many even maintaining their own "
-#| "standing armies. In times of need, however, each and all rally to a "
-#| "higher authority designated to protect the superior interest of the "
-#| "nation.\n"
-#| "\n"
-#| "Those who have not settled in these urban centers still adhere to the "
-#| "lifestyle of their ancestors, roaming the dunes and leading their herds "
-#| "from one watering hole to another. They are most active during the early "
-#| "hours of dawn and the onset of dusk, when the wastelands are neither too "
-#| "hot nor too cold. Their skill at moving through the sands is excellent "
-#| "even by Dunefolk standards. Although sometimes regarded with contempt by "
-#| "their city counterparts, they provide an invaluable service as mobile, "
-#| "light troops in war, or as escorts for trading caravans during times of "
-#| "peace.\n"
-#| "\n"
-#| "The Dunefolk’s inclination towards trade and exploration has allowed "
-#| "their cities to amass immense fortunes, a fact regarded both with "
-#| "admiration and envy by other races. Mutual interests have fostered "
-#| "cordial relations with neighboring Naga tribes, but more secretive races "
-#| "such as Drakes and Elves have always considered Dunefolk expeditions to "
-#| "be too intrusive, especially when they venture close to territorial "
-#| "boundaries. It is not uncommon for caravans to fall prey to troll "
-#| "ambushes in the mountains, something that has given rise to countless "
-#| "tales of unimaginable treasure amassed in hidden caves.\n"
-#| "\n"
-#| "As a result of living in hostile environments for centuries, the Dunefolk "
-#| "have developed rational methods of enquiry through which they continue to "
-#| "improve their understanding of the world. Their study of herbal medicine "
-#| "keeps their warriors and workers fresh and healthy. Their knowledge of "
-#| "alchemy allows them to tame fire and wield it as a deadly weapon in "
-#| "battle. At the same time, this analytical mindset has distanced them from "
-#| "magical arts; to the rational mind, magic is uncontrollable, "
-#| "unpredictable, and hence unreliable. For this reason, the Dunefolk "
-#| "especially loathe the perversions of necromancy and the dark arts, even "
-#| "more so than other races.\n"
-#| "\n"
-#| "The Dunefolk’s inquisitive and explorative nature does not preclude "
-#| "military strength. Not only do they field nimble light troops, "
-#| "cataphracts, and heavily armored infantry, but their keen knowledge of "
-#| "technology grants them a decisive advantage over their opponents. When "
-#| "facing the Dunefolk in battle, however, the most fearsome sight is "
-#| "certainly their deployment of ferocious and bizarre beasts. From the "
-#| "majestic Roc to the imposing Wyvern, their synergy with these creatures "
-#| "allows for great versatility in combat. The origins of this tradition "
-#| "likely lie in the heritage of the Dunefolk’s distant past in the exotic "
-#| "far corners of Irdya."
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7062,43 +6757,6 @@ msgstr "巨魔"
 #. [race]: id=troll
 #: data/core/units.cfg:356
 #, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by "
-#| "orcish successes in persuading trolls to join their armies. Because they "
-#| "are rather simple and do not understand the ways of other races or "
-#| "sometimes cannot even tell them apart, it is usually easy for an orcish "
-#| "band to convince a group of trolls that by joining them they get to exact "
-#| "revenge on those that have before hunted them. These new recruits are "
-#| "then directed to attack whoever the orcs themselves are currently in "
-#| "conflict with, whether previously a foe of the trolls or not, "
-#| "accumulating even more enemies for the misled trolls. The most common "
-#| "enemy of trolls are dwarves, and the animosity between these two races is "
-#| "ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7176,31 +6834,6 @@ msgstr "亡灵"
 #. [race]: id=undead
 #: data/core/units.cfg:379
 #, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7370,7 +7003,6 @@ msgstr ""
 
 #: src/help/help.cpp:270 src/help/help.cpp:274
 #, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
 msgstr "分析帮助文本时出现分析错误："
 
@@ -7384,7 +7016,6 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:157
 #, fuzzy
-#| msgid "Terrains"
 msgid "Base Terrain: "
 msgstr "地形"
 
@@ -7402,13 +7033,11 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:322
 #, fuzzy
-#| msgid "Advancement"
 msgid "Advances from: "
 msgstr "升级"
 
 #: src/help/help_topic_generators.cpp:324
 #, fuzzy
-#| msgid "Advancement"
 msgid "Advances to: "
 msgstr "升级"
 
@@ -7426,7 +7055,6 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:400
 #, fuzzy
-#| msgid "race^Merman"
 msgid "race^Miscellaneous"
 msgstr "人鱼"
 
@@ -7436,7 +7064,6 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:472
 #, fuzzy
-#| msgid "Abilities"
 msgid "Abilities: "
 msgstr "能力"
 
@@ -7511,7 +7138,6 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:585
 #, fuzzy
-#| msgid "Weapon Specials"
 msgid "Special"
 msgstr "武器特效"
 
@@ -7525,19 +7151,16 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:697
 #, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "地形编辑器"
 
 #: src/help/help_topic_generators.cpp:701
 #, fuzzy
-#| msgid "Terrains"
 msgid "Terrain"
 msgstr "地形"
 
 #: src/help/help_topic_generators.cpp:703
 #, fuzzy
-#| msgid "Movement"
 msgid "Movement Cost"
 msgstr "移动"
 
@@ -7552,586 +7175,3 @@ msgstr ""
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
 msgstr ""
-
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "此单位可以领导相邻的己方单位，使他们更高效地战斗。\n"
-#~ "\n"
-#~ "相邻的等级比领导者低的己方单位将在战斗中造成更大的伤害。当有领导者与比他等"
-#~ "级低的己方单位相邻时，这些单位的攻击将比平时多造成25%乘以其与领导者等级之"
-#~ "差的伤害。"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "韦诺之战帮助"
-
-#, fuzzy
-#~| msgid " green if it hasn’t moved this turn,"
-#~ msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-#~ msgstr " 绿色：表明此单位本回合还没有移动过，"
-
-#, fuzzy
-#~| msgid " yellow if it has moved, but could still move further or attack, or"
-#~ msgid ""
-#~ "• <bold>text='Yellow'</bold> if it has moved, but could still move "
-#~ "further or attack."
-#~ msgstr " 黄色：表明此单位移动过，但还可以继续移动或攻击，或者"
-
-#~ msgid "TODO"
-#~ msgstr "TODO"
-
-#~ msgid "Item Tool"
-#~ msgstr "物品工具"
-
-#, fuzzy
-#~| msgid ""
-#~| "Named Areas are sets of gamefields which can be addressed during "
-#~| "scenario scripting by a given name.\n"
-#~| "\n"
-#~| "It can be used to abstract between the implementation of an effect and "
-#~| "the map specific setting.\n"
-#~| "This is a very powerful mechanism since it allows generic scenario "
-#~| "codings working with different maps providing the needed named locations."
-#~ msgid ""
-#~ "This tool can create [time_area]s, unlike the name suggests these do not "
-#~ "need to have a specific time zone assigned to them.\n"
-#~ "    [time_area]s are sets of tiles which can be addressed during scenario "
-#~ "scripting by their id. [time_area]s can optionally have a custom\n"
-#~ "    time zone assigned to them. The simplest way to address a [time_area] "
-#~ "via scenario scripting is the `area=` attribute in standard location "
-#~ "filters.\n"
-#~ "\n"
-#~ "This tool can be used to abstract between the implementation of an effect "
-#~ "and the map specific setting.\n"
-#~ "This is a very powerful mechanism since it allows generic scenario code "
-#~ "to work with different maps providing the needed named locations."
-#~ msgstr ""
-#~ "具名区域是在场景脚本中，可以用给定的名称来称呼的游戏区域。\n"
-#~ "\n"
-#~ "具名区域可以用于在效果实现和地图特定设置之间进行抽象。\n"
-#~ "这是非常强大的机制，因为它允许通用的场景代码在不同的地图上运作，只需地图提"
-#~ "供了所需的具名区域即可。"
-
-#~ msgid ""
-#~ "Saves a list of music tracks defining a random playlist to the scenario.\n"
-#~ "\n"
-#~ "Have a look at the addon server for easy to use additional music tracks."
-#~ msgstr ""
-#~ "此处保存了一份音轨列表，该列表即为场景所使用的随机播放列表。\n"
-#~ "\n"
-#~ "去附加组件服务器上浏览一番，可以找到易用的附加音轨。"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-#~| "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-#~| "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-#~| "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
-#~| "it needs a topic on its own\n"
-#~| "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
-#~ msgid ""
-#~ "<header>text='Basic Concepts'</header>\n"
-#~ "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-#~ "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-#~ "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-#~ "• The clipboard is described in the <ref>dst='editor_tool_paste' "
-#~ "text='Paste Tool'</ref>"
-#~ msgstr ""
-#~ "\n"
-#~ "• <ref>dst='editor_modes' text='编辑模式'</ref>\n"
-#~ "• <ref>dst='editor_toolkit' text='编辑器工具箱'</ref>\n"
-#~ "• <ref>dst='editor_palette' text='编辑器调色板'</ref>\n"
-#~ "• <ref>dst='editor_brush' text='编辑器笔刷'</ref> TODO: 不确定是否需要单列"
-#~ "主题\n"
-#~ "• <ref>dst='editor_clipboard' text='编辑器剪贴板'</ref>"
-
-#~ msgid "Editing Modes"
-#~ msgstr "编辑模式"
-
-#~ msgid "Editor Tools"
-#~ msgstr "编辑器工具"
-
-#, fuzzy
-#~| msgid ""
-#~| "The editor provides several tools for editing your maps and scenarios. "
-#~| "At all times, one of the editor tools is active. The active tool's "
-#~| "context determines the content of the editor palette and context menu.\n"
-#~| "\n"
-#~| "These following tools are provided:\n"
-#~| "\n"
-#~| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-#~| "\n"
-#~ msgid ""
-#~ "The editor provides several tools for editing your maps and scenarios. At "
-#~ "all times, one of the editor tools is active. The active tool’s context "
-#~ "determines the content of the editor palette and context menu.\n"
-#~ "\n"
-#~ "These tools are available in both terrain-only mode and scenario mode:\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
-#~ "\n"
-#~ "These tools are only available in scenario mode:\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
-#~ msgstr ""
-#~ "此编辑器提供了一些用于编辑你的地图和场景的工具。在任意时刻，都会有一个编辑"
-#~ "器工具处于激活状态。当前激活的工具的上下文决定了编辑器调色板和上下文菜单的"
-#~ "内容。\n"
-#~ "\n"
-#~ "编辑器中提供了以下工具：\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_paint' text='绘制工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_fill'  text='填充工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_select' text='选取工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_paste' text='粘贴工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_starting' text='起始工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_label' text='标签工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_item' text='物品工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_soundsource' text='声源工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_village' text='村庄工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_unit' text='单位工具'</ref>\n"
-#~ "\n"
-
-#~ msgid "Soundsource Tool"
-#~ msgstr "声源工具"
-
-#~ msgid ""
-#~ "Places Soundsources on your maps!\n"
-#~ "\n"
-#~ "This tool has not been implemented yet."
-#~ msgstr ""
-#~ "把声源放置在你的地图上！\n"
-#~ "\n"
-#~ "此工具尚未实现。"
-
-#~ msgid "Orbs"
-#~ msgstr "行动状态球"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "在你的每一个单位的能量条上方是一个行动状态球。对于你所控制的单位，行动状态"
-#~ "球有以下状态："
-
-#~ msgid ""
-#~ " red if it can no longer move or attack, or the user ended the unit’s "
-#~ "turn."
-#~ msgstr " 黑色：表明此单位不能继续移动或攻击，或玩家结束了其回合。"
-
-#~ msgid " blue if the unit is an ally you do not control."
-#~ msgstr " 蓝色：表明此单位是你所不能控制的友军。"
-
-#~ msgid " Enemy units have no orb on top of their energy bar."
-#~ msgstr " 敌方单位的能量条上方没有行动状态球。"
-
-# can someone explain this to me in other words? i have not seen this in real multiplayer yet
-#~ msgid ""
-#~ "\n"
-#~ "Set or toggle player on side between human and AI player. The player/"
-#~ "client who controls that side needs to issue this command. If no second "
-#~ "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
-#~ "AI controller. If it is ‘off’ set a human controller. Defaults to the "
-#~ "currently active side if no parameter is supplied.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "设置或开关某一阵营由人类玩家或者AI玩家来控制。这条命令需要由控制该阵营的玩"
-#~ "家/客户端来发出。如果不指定第二个参数，则在人类和AI之间切换。如果第二个参"
-#~ "数是“on”，则设置为AI控制。如果第二个参数是“off”，则设置为玩家控制。如果不"
-#~ "指定参数，则默认为当前活动的阵营。\n"
-#~ "\n"
-
-#~ msgid "Editor Brush"
-#~ msgstr "编辑笔刷"
-
-#~ msgid "Terrain Clipboard"
-#~ msgstr "地形剪贴板"
-
-#~ msgid ""
-#~ "Paint terrain tiles on the map.\n"
-#~ "\n"
-#~ "The paint tool utilizes the brushes and the terrain palette."
-#~ msgstr ""
-#~ "在地图上绘制地形块。\n"
-#~ "\n"
-#~ "绘图工具使用笔刷和地形调色板。"
-
-#~ msgid ""
-#~ "Fill continuous regions of terrain with a different one!\n"
-#~ "\n"
-#~ "The fill tool utilizes the terrain palette."
-#~ msgstr ""
-#~ "将连续的地形区域填充为另一种地形！\n"
-#~ "\n"
-#~ "填充工具使用地形调色板。"
-
-#~ msgid ""
-#~ "Selects a set of hex fields. The best tool ever!\n"
-#~ "\n"
-#~ "This tool utilizes the brushes."
-#~ msgstr "选中一组六角格区域。史上最棒的工具！此工具使用笔刷。"
-
-#~ msgid "Paste Tool"
-#~ msgstr "粘贴工具"
-
-#~ msgid "Paste the terrain in the clipboard"
-#~ msgstr "粘贴剪贴板中的地形"
-
-#~ msgid "Starting Tool"
-#~ msgstr "起始工具"
-
-#~ msgid ""
-#~ "Defines the side leader starting position\n"
-#~ "\n"
-#~ "This tool sets the side leaders' default starting locations, and named "
-#~ "special locations."
-#~ msgstr ""
-#~ "定义阵营首领的起始位置\n"
-#~ "\n"
-#~ "此工具可设置阵营首领的默认起始位置以及具名的特殊位置。"
-
-#~ msgid ""
-#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
-#~ "maps on which every Wesnoth scenario takes place. It also provides a "
-#~ "limited set of features for setting up a basic scenario.\n"
-#~ "\n"
-#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
-#~ msgstr ""
-#~ "韦诺的地图与场景编辑器允许用户创建及编辑地图。韦诺的每幕场景都是在这些地图"
-#~ "上发生的。它也提供了能够搭建基本场景的功能有限的特性。\n"
-#~ "\n"
-#~ "编辑器可以通过点击标题画面中的<bold>text='地图编辑器'</bold>来"
-
-#~ msgid ""
-#~ " option at the title screen.\n"
-#~ "\n"
-#~ "<header>text='What you get'</header>"
-#~ msgstr ""
-#~ "启动。\n"
-#~ "\n"
-#~ "<header>text='你将得到'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
-#~ "An easy to use map editor, similar to simple paint applications.\n"
-#~ "\n"
-#~ "• Scenario Editor\n"
-#~ "\n"
-#~ "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "• <ref>dst='editor_terrain' text='地形编辑器'</ref>\n"
-#~ "一个易用的地图编辑器，与简单的绘图程序类似。\n"
-#~ "\n"
-#~ "• 场景编辑器\n"
-#~ "\n"
-#~ "• <ref>dst='editor_playlist' text='播放列表管理器'</ref>"
-
-#~ msgid ""
-#~ "\n"
-#~ "Predefine the scenario's music track playlist.\n"
-#~ "\n"
-#~ "• Time Schedule Editor\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "预定义场景的音轨播放列表。\n"
-#~ "\n"
-#~ "• 时间日程编辑器\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "• What-you-see-is-what-you-get\n"
-#~ "The editor is not a WYSIWYG application.\n"
-#~ "\n"
-#~ "Because which exact graphic tile represents a terrain in the map depends "
-#~ "on all terrain rules loaded (which is different between the editor and "
-#~ "each other use case) the map won't look exactly the same.\n"
-#~ "\n"
-#~ "• Event handlers and scripting\n"
-#~ "The editor is not a tool to help you scripting the scenario's event "
-#~ "handlers.\n"
-#~ "\n"
-#~ "• Infinite Backwards Compatibility\n"
-#~ "The editor can't load maps from versions prior to 1.10.\n"
-#~ "TODO is that true?\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "• 所见即所得\n"
-#~ "此编辑器不是一个所见即所得的应用。\n"
-#~ "\n"
-#~ "代表地形的具体图形是由所载入的所有地形规则共同决定的（编辑器中使用的规则与"
-#~ "其他场合下的规则不同），因此实际地图与编辑器中的地图看起来不会完全一样。\n"
-#~ "\n"
-#~ "• 事件处理器与脚本\n"
-#~ "此编辑器不是用于协助你编写场景中事件处理器脚本的工具。\n"
-#~ "\n"
-#~ "• 无穷的后向兼容性\n"
-#~ "此编辑器不能读取1.10以前版本的地图。\n"
-#~ "TODO 这是真的吗？\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Pure Map Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='纯地图模式'</header>"
-
-#~ msgid "The editor features two separate modes of operation:"
-#~ msgstr "编辑器有两种不同的工作模式："
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Allows only the composing of the terrain map itself and the definition of "
-#~ "leader starting positions."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "仅允许进行地形图本身的组合以及对首领起始位置的定义。"
-
-#~ msgid ""
-#~ "\n"
-#~ "How the information is saved depends on the loaded file:\n"
-#~ "\n"
-#~ "<bold>text='Native'</bold>"
-#~ msgstr ""
-#~ "\n"
-#~ "信息的保存方式由所读取的文件决定：\n"
-#~ "\n"
-#~ "<bold>text='本地'</bold>"
-
-#~ msgid ""
-#~ "\n"
-#~ "A new map or file containing only the arguments to the map_data "
-#~ "attribute.\n"
-#~ "\n"
-#~ "The produced map can be played in the “User Maps” game type at the create "
-#~ "multiplayer game dialog if saved to the default directory.\n"
-#~ "\n"
-#~ "<bold>text='Embedded'</bold>"
-#~ msgstr ""
-#~ "\n"
-#~ "一个新的地图或文件，仅包括传入map_data属性的参数。\n"
-#~ "\n"
-#~ "如果保存进了默认目录，那么产生的地图可以在创建多人游戏对话框的“用户地图”游"
-#~ "戏类型中选择游玩。\n"
-#~ "\n"
-#~ "<bold>text='嵌入'</bold>"
-
-#~ msgid ""
-#~ "\n"
-#~ "Scenario files containing a valid map_data attribute (not a file include) "
-#~ "will be opened in this submode. The editor replaces only the content of "
-#~ "map_data and leaves everything else in the scenario untouched. Maps "
-#~ "opened this way are marked [e] in the Maps menu."
-#~ msgstr ""
-#~ "\n"
-#~ "包含有有效的map_data属性（而不是采用直接引入文件的方式）的场景文件将在此子"
-#~ "模式中打开。编辑器仅会替换map_data的内容，而不会触碰场景中的所有其他部分。"
-#~ "通过此方式打开的地图在地图菜单中以[e]标注。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Scenario Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='场景模式'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The Scenario mode allows several extra tools to be used, such as the Unit "
-#~ "tool. At least one side must be defined in order to use these tools, "
-#~ "however.\n"
-#~ "\n"
-#~ "In this mode, terrain data is stored in the map_data attribute and saved "
-#~ "into a file with any applicable WML."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "场景模式中允许使用几种额外工具，例如单位工具。然而，要定义至少一个阵营之"
-#~ "后，才能使用这些工具。\n"
-#~ "\n"
-#~ "在此模式中，地形数据存储在map_data属性里，并和所有适用的WML一起，存储到一"
-#~ "个文件中。"
-
-#~ msgid ""
-#~ "The terrain editor's functionality is covered by the "
-#~ "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
-#~ "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
-#~ msgstr ""
-#~ "地形编辑器的功能由<ref>dst='editor_tool_paint' text='绘制'</ref>和"
-#~ "<ref>dst='editor_tool_fill' text='填充工具'</ref>提供。"
-
-#~ msgid ""
-#~ "The editor palette contains the applicable items you may use with the "
-#~ "currently selected tool. For example, the Paint tool will display a full "
-#~ "list of all available terrains, and the unit tool will provide a list of "
-#~ "available units."
-#~ msgstr ""
-#~ "编辑器调色板包含了可与当前选定的工具配合使用的项。例如，绘制工具会显示所有"
-#~ "可用地形的完整列表，而单位工具则会提供可用单位的列表。"
-
-#~ msgid ""
-#~ "Wesnoth stores its maps in human readable plain text files.\n"
-#~ "\n"
-#~ "A map file consists of rows with comma separated terrain code strings. "
-#~ "The files can be edited with a general purpose text editor like notepad.\n"
-#~ "\n"
-#~ "The only additional information provided by the map syntax are the "
-#~ "starting positions of the scenario's sides.\n"
-#~ "\n"
-#~ "Additional information, such as teams, custom events, and complex side "
-#~ "setups still need to be manually coded in WML."
-#~ msgstr ""
-#~ "韦诺将其地图存储在人类可读的纯文本文件中。\n"
-#~ "\n"
-#~ "地图文件由多列逗号分隔的地形代码字符串组成。这些文件可以使用通用的文本编辑"
-#~ "器，例如记事本来编辑。\n"
-#~ "\n"
-#~ "地图语法中唯一提供的额外信息是场景中各阵营的起始位置。\n"
-#~ "\n"
-#~ "额外信息，例如队伍、自定义事件以及复杂的阵营设置等，仍然需要使用WML手动编"
-#~ "码。"
-
-#~ msgid "Scenario Format"
-#~ msgstr "场景格式"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The following points are under discussion on the forums. At least for the "
-#~ "1.15.x series before 1.16.0 please assume that the forum threads are more "
-#~ "authoritative than the text on this page."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "论坛上正在讨论以下几点内容。至少对于1.16.0发布之前的1.15.x系列，请假定论坛"
-#~ "上的讨论串比本页上的文本更具有权威性。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "In the mainline campaigns, on hard:\n"
-#~ "• A sufficiently skilled player will have a good chance to win each "
-#~ "scenario on the first time that they see that scenario, without "
-#~ "foreknowledge of what will happen.\n"
-#~ "• This assumes that the player picks up all of the clues given in the "
-#~ "dialogue.\n"
-#~ "• There are more experience points available than on easy, and the player "
-#~ "will be able to train enough troops to cope with losing some L2 or L3 "
-#~ "units."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "在主线战役中，困难难度下：\n"
-#~ "• 一个足够熟练的玩家将有很大的概率初见即赢下每一个场景，而无需事先知道会发"
-#~ "生什么。\n"
-#~ "• 其中，假定玩家会注意到对话中给出的所有线索。\n"
-#~ "• 相比简单难度有更多的经验点数可用， 玩家将能够训练足够多的部队，就算失去"
-#~ "一些二级或三级单位也能够应对。"
-
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
-#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
-#~ "Wesmere in the northwest, and the great northern woods of which the "
-#~ "Lintanir Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "相较于人类，精灵长得较高一些，行动更为敏捷，但是体格不如人类壮硕。他们有对"
-#~ "尖长的耳朵，肤色较白，而且通常一头金发。精灵与人类之间的最大差别莫过于他们"
-#~ "拥有非比寻常的寿命——除非死于疾病、意外或者战争，他们整整可以活两百五十年。"
-#~ "大部分精灵活到出生后250年到300年间就开始迅速虚弱死亡（一般在一两年内），不"
-#~ "过据了解一些拥有高魔法资质的精灵可以再多活一个世纪。\n"
-#~ "\n"
-#~ "精灵天生就有微弱的魔力，虽然大部分的精灵不会直接运用魔法，但这潜藏的魔力也"
-#~ "会赋予他们灵敏的知觉以及极长的寿命。许多精灵拥有着魔法所产生的天赋，例如高"
-#~ "超的射术或者匿踪能力，使他们能够完成令大多数生物惊讶的任务。那些学习将这些"
-#~ "力量用于更通用的场合的精灵们会在这方面变得十分强大。很多精灵选择将这个天赋"
-#~ "用于治疗他人。\n"
-#~ "\n"
-#~ "有少数精灵，因为在魔法与秘术的道路上走得太远，竟变得对冰冷的铁器十分敏感，"
-#~ "甚至会被这些铁器烫伤。精灵族的传说暗示说，在遥远的过去，这种情况要常见得"
-#~ "多。\n"
-#~ "\n"
-#~ "精灵们花很多时间来打磨他们的天赋与技能，不擅魔法的就将时间都花在锻炼身体技"
-#~ "能上。因而精灵擅长射术，这可能是他们在战争中最重要的战斗方式。大多数精灵士"
-#~ "兵都会携带一把弓，不论是在速度还是在精准度方面，没有任何一个其他种族可以跟"
-#~ "精灵部队的弓箭手匹敌。所有的精灵都对没有被破坏的自然世界有种强烈的情感，在"
-#~ "空旷而没有高大植被的地带里他们常常会觉得很不适应。精灵主要居住在泰陆的森林"
-#~ "中，像是西南边的艾森丛林，西北边的韦弥尔，以及以林塔尼尔森林为最南端的南部"
-#~ "大森林地区。\n"
-#~ "\n"
-#~ "也许除了巨魔以外，精灵是这片上最古老的种族。他们的许多定居点都无法确定究竟"
-#~ "有多少年的历史，但毋庸置疑地都已经存在了超过一千年。"
-
-#~ msgid "This race does not have a description yet."
-#~ msgstr "此种族暂时还没有描述。"

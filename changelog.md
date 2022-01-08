@@ -46,7 +46,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech, Italian, Japanese, Portuguese (Brazil), Turkish.
+   * Updated translations: British English, Chinese (Simplified), Czech, Italian, Japanese, Portuguese (Brazil), Turkish.
    * Lots of corrections of typos in `en_US` (untranslated text), which will require marking translations as `non-fuzzy` again
    * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097)
    * Comments in .po files are now kept in order when the .pot is regenerated (issue #5989)
