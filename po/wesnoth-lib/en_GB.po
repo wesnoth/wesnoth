@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-07-19 11:00+1000\n"
+"PO-Revision-Date: 2022-01-03 12:45+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1954,19 +1954,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1984,12 +1971,15 @@ msgstr ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
 "By this nature, they provide a considerable defensive bonus for most troops, "
-"but they also severely impede any passage through them. Most cavalry simply "
-"cannot enter mountainous terrain; however, elvish cavalry is an exception to "
-"this, as are the goblin wolf riders. Both dwarves and trolls are native to "
-"mountainous terrain, and have a very easy time getting around.\n"
+"but also severely impede any passage through them. Units burdened by heavy "
+"armour, such as the Wesnoth cavalry and heavy infantry lines, cannot even "
+"enter them. Aquatic races and creatures like the merfolk have piscine bodies "
+"which also render them unable to climb steep inclines. Nagas are an "
+"exception due to their strong arms and rugged scales. Both dwarves and "
+"trolls are native to mountainous terrain, and have an easy time traversing "
+"them.\n"
 "\n"
-"Most units receive about 60% defence in mountains, whereas Dwarves enjoy 70%."
+"Most units receive about 60% defence in mountains, whereas dwarves enjoy 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3114
@@ -4503,10 +4493,8 @@ msgstr "Recruits"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Choose Your Faction"
+msgstr "Choose Your Leader"
 
 #. [label]
 #. [widget]: id=name
@@ -4883,10 +4871,8 @@ msgstr "Available in editor"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5805,60 +5791,46 @@ msgstr "expired"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num year"
-msgstr[1] "$num year"
+msgstr[1] "num years"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num month"
-msgstr[1] "$num month"
+msgstr[1] "$num months"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num week"
-msgstr[1] "$num week"
+msgstr[1] "$num weeks"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num day"
-msgstr[1] "$num day"
+msgstr[1] "$num days"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num hour"
-msgstr[1] "$num hour"
+msgstr[1] "$num hours"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minute"
-msgstr[1] "$num minute"
+msgstr[1] "$num minutes"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num second"
-msgstr[1] "$num second"
+msgstr[1] "$num seconds"
 
 #: src/gui/core/canvas.cpp:511
 msgid "Image doesn't fit on canvas."
@@ -5920,7 +5892,7 @@ msgstr "Installed"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Upgradable"
-msgstr "Upgrade Available"
+msgstr "Upgrade available"
 
 #: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Publishable"
@@ -6216,12 +6188,12 @@ msgstr "Do you want to uninstall '$addon|'?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:960
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6704,6 +6676,7 @@ msgstr "lobby"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"This game doesn't allow observers. Observe using moderator rights anyway?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6715,7 +6688,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
-msgstr ""
+msgstr "This game is password protected. Join using moderator rights anyway?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
