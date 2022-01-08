@@ -9,13 +9,13 @@
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2021.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:03+0300\n"
-"PO-Revision-Date: 2021-10-26 19:37+0200\n"
+"PO-Revision-Date: 2022-01-03 23:36+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -8198,17 +8198,13 @@ msgstr "Conto alla rovescia dei turni"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %b %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:302 src/savegame.cpp:588
