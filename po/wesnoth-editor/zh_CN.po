@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2020-08-10 20:11+0800\n"
+"PO-Revision-Date: 2022-01-05 12:45+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -477,30 +477,30 @@ msgstr "删除"
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "Left-click: "
-msgstr ""
+msgstr "左击："
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Right-click: "
-msgstr ""
+msgstr "右击："
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift+左击：仅绘制覆盖层"
 
 #: src/editor/palette/terrain_palettes.cpp:239
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift+左击：仅绘制基础层"
 
 #: src/editor/palette/terrain_palettes.cpp:242
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd+点击：复制地形"
 
 #: src/editor/palette/terrain_palettes.cpp:244
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl+点击：复制地形"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:92
 msgid "Clipboard support not found, contact your packager"
@@ -513,21 +513,3 @@ msgstr "选择文件"
 #: src/gui/dialogs/editor/custom_tod.cpp:157
 msgid "Select"
 msgstr "选择"
-
-#~ msgid "player^None"
-#~ msgstr "无"
-
-#~ msgid "Player $player_number"
-#~ msgstr "玩家$player_number"
-
-#~ msgid "(Unknown unit type: $type)"
-#~ msgstr "（未知的单位类型：$type）"
-
-#~ msgid "Recruit: "
-#~ msgstr "征募："
-
-#~ msgid "FG: "
-#~ msgstr "前景："
-
-#~ msgid "BG: "
-#~ msgstr "背景："

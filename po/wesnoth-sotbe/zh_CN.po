@@ -6,10 +6,10 @@
 # termanary, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-08-10 20:15+0800\n"
+"PO-Revision-Date: 2022-01-07 10:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -61,6 +61,15 @@ msgstr "军阀"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Your father Karun Black-Eye was the greatest orcish leader that ever "
+#| "lived. Now, as his son, it’s up to you to thwart the selfish designs of "
+#| "the humans who have broken the old agreements with the orcs and are bent "
+#| "upon taking your lands. Unite the warring orcish tribes, bring together "
+#| "the Orcish Council and call up the Great Horde to send the human-worms "
+#| "and their wose-born allies to the Land of the Dead!\n"
+#| "\n"
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it’s up to you to thwart the selfish designs of the humans "
@@ -533,8 +542,8 @@ msgid ""
 "Gór in the lands of the free tribes. We shall ask them for support. With "
 "their help, perhaps we can unite the orcish tribes and crush these humans."
 msgstr ""
-"我父亲经常提到评议会的萨满，他们住在霸拉戈·高，自由部落的土地上。我们应该求助"
-"元老会的支援。在他们的帮助下，或许我们能再次联合兽人部族来消灭这些人类。"
+"我父亲经常提到评议会的萨满，他们住在霸拉戈·高，自由部落的土地上。我们应该请求"
+"大评议会的支援。在他们的帮助下，或许我们能再次联合兽人部族来消灭这些人类。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:208
@@ -1017,12 +1026,16 @@ msgstr "再往前一步你就死定了，小跳蚤。要活命还不赶紧跑。
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:300
+#, fuzzy
+#| msgid ""
+#| "Quit your boasting, mule-ears. The Chief wants to know why you’re here, "
+#| "instead of cowering in your dung-spattered forests."
 msgid ""
 "Quit your boasting, mule-ears. The chief wants to know why you’re here, "
 "instead of cowering in your dung-spattered forests."
 msgstr ""
 "少说大话，倔骡耳朵。我们头儿想知道你们不老实呆在自己堆粪的树林里，跑来这儿做"
-"什么呢？"
+"什么。"
 
 #. [message]: speaker=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:305
@@ -1071,7 +1084,7 @@ msgstr "这个嘛……"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:340
 msgid ""
 "So the ‘great and mighty’ elves are now nothing but a bunch of mercenaries."
-msgstr "所以“伟岸而强大”的精灵现在不过是一堆佣兵喽？"
+msgstr "所以“伟岸而强大”的精灵现在不过是一堆佣兵喽。"
 
 #. [message]: speaker=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:345
@@ -1086,7 +1099,7 @@ msgstr "哈哈哈！来试试啊！"
 #. [message]: speaker=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:414
 msgid "Blast it, he got away."
-msgstr "可恶，他跑了！"
+msgstr "可恶，他跑了。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:419
@@ -1108,7 +1121,7 @@ msgid ""
 "continent would surely be doomed."
 msgstr ""
 "跨过我的尸首再说！评议会的萨满是唯一可以召集大部落的人。如果他们被俘，整个大"
-"陆的兽人就玩完了！"
+"陆的兽人就玩完了。"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:434
@@ -1155,13 +1168,18 @@ msgstr "杰图，你怎么会被这些贱货俘虏呢?"
 
 #. [message]: speaker=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:498
+#, fuzzy
+#| msgid ""
+#| "The Barag Gór Council sent me to assassinate the elvish leaders. "
+#| "Unfortunately, I was captured. But now I am free and the elves shall feel "
+#| "my wrath!"
 msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
 "wrath!"
 msgstr ""
-"霸拉戈·高长老会派我暗杀精灵首领。可是我人品太差，被抓个现行。现在我自由了，我"
-"要让精灵感受我的怒火！"
+"霸拉戈·高评议会派我暗杀精灵首领。但我不幸被抓了。现在我自由了，我要让精灵感受"
+"我的怒火！"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:509
@@ -1237,10 +1255,14 @@ msgstr "你是怎么被抓住的？"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:600
+#, fuzzy
+#| msgid ""
+#| "The Barag Gór Council sent me to assassinate the elvish leaders. "
+#| "Unfortunately, I was captured."
 msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
-msgstr "霸拉戈·高长老会派我暗杀精灵首领。可惜我人品太差，被抓了个现行。"
+msgstr "霸拉戈·高评议会派我暗杀精灵首领。但我不幸被抓了。"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:605
@@ -1287,18 +1309,24 @@ msgid ""
 "entire Great Council would have to gather."
 msgstr ""
 "卡破尔和萨满休整三天，讨论了这件事。他们终于决定召唤大部落来对抗此次大规模人"
-"类入侵。但是为了这件事，他们也必须要集合整个长老会。"
+"类入侵。但是为了这件事，他们也必须要集合整个大评议会。"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:132
+#, fuzzy
+#| msgid ""
+#| "Since it was now obvious that the humans were going to try their best to "
+#| "prevent that by capturing or killing the shamans, Kapou’e was requested "
+#| "to escort the shamans to the harbor of Tirigaz where the rest of the "
+#| "Council was residing."
 msgid ""
 "Since it was now obvious that the humans were going to try their best to "
 "prevent that by capturing or killing the shamans, Kapou’e was requested to "
 "escort the shamans to the Harbor of Tirigaz where the rest of the council "
 "was residing."
 msgstr ""
-"很明显，人类试图通过绑架和杀害萨满们阻止大部落集结，萨满要求卡破尔护送他们前"
-"往其它长老会成员居住的提里嘎兹港。"
+"很明显，人类试图通过绑架和杀害萨满们来阻止大部落集结，萨满要求卡破尔护送他们"
+"前往其它评议会成员居住的提里嘎兹港。"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
@@ -1464,7 +1492,7 @@ msgstr ""
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:186
 msgid "This is a wise choice. Good luck, Son of the Black-Eye."
-msgstr "明智的选择。祝好运，黑眼之子！"
+msgstr "明智的选择。祝好运，黑眼之子。"
 
 #. [message]: speaker=Slowhand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:191
@@ -2018,6 +2046,10 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:272
+#, fuzzy
+#| msgid ""
+#| "Why would you elves want still more territory? You already have the "
+#| "undisputed rule of the whole elvish forest."
 msgid ""
 "Why would you elves want still more territory? You guys already have the "
 "undisputed rule of the whole elvish forest."
@@ -2096,9 +2128,13 @@ msgstr ""
 
 #. [message]: speaker=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:387
+#, fuzzy
+#| msgid ""
+#| "Ahhh! Flee; warn the Prince that I have been slain and the enclave "
+#| "destroyed."
 msgid ""
 "Ahhh! Flee; warn the prince that I have been slain and the enclave destroyed."
-msgstr "啊！快逃命吧。 告诉王子，我被杀了，基地也被摧毁了。"
+msgstr "啊！快逃命吧。 告诉王子，我被杀了，飞地也被摧毁了。"
 
 #. [unit]: type=Elvish Scout, id=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:396
@@ -2136,7 +2172,7 @@ msgstr "闪·陶姆"
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:69
 msgid "Rivals"
-msgstr ""
+msgstr "对手"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:78
@@ -2243,11 +2279,15 @@ msgstr "好吧，那……"
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:171
+#, fuzzy
+#| msgid ""
+#| "Kapou’e, rumors tell of you making a long trip to seek assistance from "
+#| "us, and escorting Pirk, Gork and Vraurk. The Council is grateful for that."
 msgid ""
 "Kapou’e, rumors tell of you making a long trip to seek assistance from us, "
 "and escorting Pirk, Gork and Vraurk. The council is grateful for that."
 msgstr ""
-"卡破尔，听说你长途跋涉来向我们求援，并护送了皮尔克，古尔克和瓦鲁克。评议会对"
+"卡破尔，听说你长途跋涉来向我们求援，并护送了皮尔克、古尔克和瓦鲁克。评议会对"
 "此非常感激。"
 
 #. [message]: speaker=Fabstep
@@ -2303,28 +2343,26 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
 #, fuzzy
 #| msgid ""
-#| "Leave your people here Kapou’e — they are safe for the moment — and go "
-#| "defend Prestim. In the meantime, now that the council is complete again, "
-#| "we will decide. We may have to form the Great Horde again, and give you "
-#| "the leadership of it."
+#| "Go defend Prestim, Kapou’e. In the meantime, now that the Council is "
+#| "complete again, we will decide. We may have to form the Great Horde "
+#| "again, and give you the leadership of it."
 msgid ""
 "Go defend Prestim, Kapou'e. In the meantime, now that the council is "
 "complete again, we will decide. We may have to form the Great Horde again, "
 "and give you the leadership of it."
 msgstr ""
-"把你的人民留在这吧，卡破尔——他们暂时是安全的——你要去保卫普雷斯提姆。与此同"
-"时，既然评议会已经重聚，那我们会作出决定的。我们可能必须再次组成大部落，并授"
-"予你最高领导权。"
+"去保卫普雷斯提姆吧，卡破尔。与此同时，既然评议会已经重聚，那我们会作出决定"
+"的。我们可能得再次组成大部落，并授予你最高领导权。"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:248
 msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
-msgstr "不不不！别杀我，我向你这烂蚯蚓投降了！"
+msgstr "不不不！别杀我，我向你这烂蚯蚓投降。"
 
 #. [scenario]: id=10_Saving_Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:12
 msgid "Saving Inarix"
-msgstr "援救依诺斯"
+msgstr "援救依那利克斯"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:31
@@ -2341,7 +2379,7 @@ msgstr "破坏南桥"
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety"
-msgstr "为了日后招募蜥蜴人，你至少要保证依诺斯和至少四个蜥蜴人的安全"
+msgstr "为了日后招募蜥蜴人，你至少要保证依那利克斯和至少四个蜥蜴人的安全"
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:65
@@ -2391,8 +2429,8 @@ msgid ""
 "still trapped on the other side of the river some miles away. They won’t be "
 "able to cross the river."
 msgstr ""
-"还有更糟的；我们的狼骑兵报告说依诺斯率领的蜥蜴盟军仍然被困在河那边的几里外。"
-"他们没法过河。"
+"还有更糟的；我们的狼骑兵报告说依那利克斯率领的蜥蜴盟军仍然被困在河那边的几里"
+"外。他们没法过河。"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:204
@@ -2409,12 +2447,13 @@ msgid ""
 "If Inarix falls prey to those humans then we won’t be able to count on their "
 "help in this struggle. We must do something!"
 msgstr ""
-"假如依诺斯成了人类的盘中餐，我们就不能指望他们帮助我们了。我们必须行动起来！"
+"假如依那利克斯成了人类的盘中餐，我们就不能指望他们帮助我们了。我们必须行动起"
+"来！"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:213
 msgid "I know what we must do. Kill elves and help Inarix cross."
-msgstr "俺知道俺们必须做什么。杀了精灵，帮依诺斯过河。"
+msgstr "俺知道俺们必须做什么。杀了精灵，帮依那利克斯过河。"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:217
@@ -2450,13 +2489,13 @@ msgid ""
 "Ahhh, it’s ‘the Prince’ from the Silent Forest. Unfortunately, I don’t think "
 "we can deal with him now, we have to focus on saving Inarix."
 msgstr ""
-"啊，它就是那个寂静森林的“王子”。真可惜现在不是理他的时候，我们得先援救依诺"
-"斯。"
+"啊，它就是那个寂静森林的“王子”。真可惜现在不是理他的时候，我们得先援救依那利"
+"克斯。"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:239
 msgid "Inarix"
-msgstr "依诺斯"
+msgstr "依那利克斯"
 
 #. [message]: speaker=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:258
@@ -2489,7 +2528,7 @@ msgstr "我才不去！"
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:412
 msgid "Get away from there you idiot, I’m still over here!"
-msgstr "离那地方远点，你这傻×！我还在这边呢。"
+msgstr "离那地方远点，你这傻×！我还在呢！"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:427
@@ -2499,14 +2538,14 @@ msgstr "喂，别点火，我还没到地方呢！"
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:450
 msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
-msgstr "头儿，依诺斯没到，俺们还不能炸桥吧？"
+msgstr "头儿，依那利克斯没到，俺们还不能炸桥吧？"
 
 #. [then]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:462
 msgid ""
 "Chief, Inarix hasn’t yet made it across! Are you really sure you want to do "
 "this?"
-msgstr "头而，依诺斯还没过桥！你真要这么做吗？"
+msgstr "头而，依那利克斯还没过桥！你真要这么做吗？"
 
 #. [else]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:466
@@ -2546,7 +2585,7 @@ msgstr "等一会儿。"
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:534
 msgid "<i>Phew!</i>"
-msgstr "咻！"
+msgstr "<b>咻！</b>"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:591
@@ -2620,6 +2659,10 @@ msgstr "成功防守普莱斯亭四天"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:25
+#, fuzzy
+#| msgid ""
+#| "You don’t control all villages on the north side of the river when turns "
+#| "run out"
 msgid ""
 "You don't control all villages on the north side of the river when turns run "
 "out"
@@ -4334,6 +4377,15 @@ msgstr "兽人萨满新手"
 
 #. [unit_type]: id=Novice Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4343,17 +4395,27 @@ msgid ""
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
-"兽人萨满是兽族魔法的守卫者，受到各部落的尊重。他们建立的长老会仲裁兽人团体间"
-"的纠纷。尽管他们身体脆弱（对于兽人而言），萨满却是魔咒专家──通过诅咒敌人，吸"
-"取他们的生命。这些年轻人精力旺盛，但魔力尚需锻练。"
+"兽人萨满是兽人魔法的守卫者，受到各部落的尊重。他们建立了兽人评议会，为整个兽"
+"人社区进行重大决策，并仲裁这一热衷争端的种族的各部落间的种种冲突。尽管他们身"
+"体脆弱（对于兽人而言），兽人萨满却是魔咒专家，可以诅咒敌人并吸取他们的生命。"
+"萨满新手年轻而精力旺盛，但魔力尚需锻练。"
 
 #. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
 msgid "Old Orcish Shaman"
-msgstr "兽人萨满长老"
+msgstr "兽人萨满长者"
 
 #. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4363,9 +4425,10 @@ msgid ""
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
-"兽人萨满是兽族魔法的守卫者，受到各部落的尊重。他们建立的长老会仲裁兽人团体间"
-"的纠纷。尽管他们身体脆弱（对于兽人而言），萨满却是魔咒专家──通过诅咒敌人，吸"
-"取他们的生命。而这些长者，虽然他们更好地掌握了魔法，身体也随年龄增长而衰弱。"
+"兽人萨满是兽人魔法的守卫者，受到各部落的尊重。他们建立了兽人评议会，为整个兽"
+"人社区进行重大决策，并仲裁这一热衷争端的种族的各部落间的种种冲突。尽管他们身"
+"体脆弱（对于兽人而言），兽人萨满却是魔咒专家，可以诅咒敌人并吸取他们的生命。"
+"兽人萨满长者是已然掌握了魔法的萨满，但他们的物理力量也随年龄增长而衰弱。"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
@@ -4374,6 +4437,14 @@ msgstr "兽人萨满"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4382,9 +4453,9 @@ msgid ""
 "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
-"兽人萨满是兽族魔法的守卫者，受到各部落的尊重。他们建立的长老会仲裁兽人团体间"
-"的纠纷。尽管他们身体脆弱（对于兽人而言），萨满却是魔咒专家──通过诅咒敌人，吸"
-"取他们的生命。"
+"兽人萨满是兽人魔法的守卫者，受到各部落的尊重。他们建立了兽人评议会，为整个兽"
+"人社区进行重大决策，并仲裁这一热衷争端的种族的各部落间的种种冲突。尽管他们身"
+"体脆弱（对于兽人而言），兽人萨满却是魔咒专家，可以诅咒敌人并吸取他们的生命。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
@@ -4413,14 +4484,10 @@ msgstr "啊！"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Blast it, without Inarix to lead his saurians, we can no longer count on "
-#| "their help."
 msgid ""
 "Blast it, without Inarix to lead her saurians, we can no longer count on "
 "their help."
-msgstr "没有依诺斯来率领他的蜥蜴，我们无法指望征召它们了。"
+msgstr "该死的，没有依那利克斯来率领他的蜥蜴人，我们没法指望他们帮忙了。"
 
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
 msgid "Al’Brock"
@@ -4434,8 +4501,3 @@ msgstr "弗拉塔"
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "大部落：每个单位的维护费用均减一。"
-
-#~ msgid ""
-#~ "In this scenario, you may ask Grüü to move to any hex by right-clicking "
-#~ "on that hex."
-#~ msgstr "在此场景中，你可以右击任意格子，以命令咕噜移动至该格。"

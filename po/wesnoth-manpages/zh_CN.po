@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2020-08-10 20:13+0800\n"
+"Project-Id-Version: wesnoth-1.16\n"
+"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"PO-Revision-Date: 2022-01-05 14:54+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -28,7 +28,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -290,21 +290,20 @@ msgstr "启用一些Lua调试机制"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
-msgstr "B<--strict-validation>"
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "禁用已废弃的Lua API调用"
 
 #. type: TP
 #: doc/man/wesnoth.6:109
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
@@ -313,6 +312,9 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"产生这两个WML文件的diff，不会对这两个文件先进行预处理（若要进行预处理，请对它"
+"们执行B<-p>命令）。将diff以DiffWML格式输出到标准输出或由I<--output>指定的文件"
+"中。"
 
 #. type: TP
 #: doc/man/wesnoth.6:115
@@ -336,15 +338,13 @@ msgstr "B<--fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:127
-#, fuzzy
-#| msgid ""
-#| "displays the number of frames per second the game is currently running "
-#| "at, in a corner of the screen."
 msgid ""
 "displays the number of frames per second the game is currently running at in "
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
-msgstr "在屏幕的一角显示游戏当前的每秒帧数（FPS）。"
+msgstr ""
+"在屏幕的一角显示游戏当前的每秒帧数（FPS），并将这些数值写入玩家数据目录中的一"
+"个文件里。"
 
 #. type: TP
 #: doc/man/wesnoth.6:127
@@ -456,10 +456,8 @@ msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:181
-#, fuzzy
-#| msgid "shows the timestamps in the logfile with more precision."
 msgid "shows the timestamps in log output with more precision."
-msgstr "在日志文件中显示更高精度的时间戳。"
+msgstr "在日志输出中显示更高精度的时间戳。"
 
 #. type: TP
 #: doc/man/wesnoth.6:181
@@ -601,15 +599,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:229
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:232
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "跳过启动时的封面图像。"
 
 #. type: TP
 #: doc/man/wesnoth.6:232
@@ -648,15 +645,14 @@ msgstr "以无音乐和音效的方式运行游戏。"
 
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<--script>I<\\ file>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--script>I<\\ file>"
+msgstr "B<--output>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:245
 msgid "output to the specified file. Applicable to diffing operations."
-msgstr ""
+msgstr "输出到指定的文件中。对diff操作适用。"
 
 #. type: TP
 #: doc/man/wesnoth.6:245
@@ -684,15 +680,14 @@ msgid ""
 "B<--script>, but Lua file should return a function which will be run as a "
 "coroutine and periodically woken up with updates."
 msgstr ""
-"（试验性）读取定义了韦诺插件的 I<script>。与B<--script>类似，但Lua文件应返回"
+"（实验性）读取定义了韦诺插件的 I<script>。与B<--script>类似，但Lua文件应返回"
 "一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。"
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:262
@@ -701,6 +696,8 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的"
+"WML输出到标准输出或由I<--output>指定的文件中。"
 
 #. type: TP
 #: doc/man/wesnoth.6:262
@@ -739,7 +736,7 @@ msgid ""
 "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
-"由逗号分隔的定义列表，用于 B<--preprocess> 指令。如果B<SKIP_CORE>在定义列表"
+"由逗号分隔的定义列表，用于 B<--preprocess> 命令。如果B<SKIP_CORE>在定义列表"
 "中，则“data/core”目录不会被预处理。"
 
 #. type: TP
@@ -950,15 +947,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:366
-#, fuzzy, no-wrap
-#| msgid "B<--scenario>I<\\ value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ value>"
+msgstr "B<-S,--use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
 msgid "sets the WML schema for use with B<-V,--validate>."
-msgstr ""
+msgstr "设置B<-V,--validate>所使用的WML schema。"
 
 #. type: TP
 #: doc/man/wesnoth.6:370
@@ -1040,50 +1036,47 @@ msgstr "在连接服务器时使用 I<username> ，忽略其他首选项。"
 
 #. type: TP
 #: doc/man/wesnoth.6:401
-#, fuzzy, no-wrap
-#| msgid "B<--data-path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--data-path>"
+msgstr "B<--validate>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:404
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "使用WML schema来验证文件。"
 
 #. type: TP
 #: doc/man/wesnoth.6:404
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ addon_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "在游戏过程中，验证指定附加组件的WML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:407
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "在游戏过程中，验证核心WML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:410
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "验证文件是否为合法的WML schema。"
 
 #. type: TP
 #: doc/man/wesnoth.6:413
@@ -1383,11 +1376,8 @@ msgstr "版权"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "版权所有 \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "版权所有 \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
@@ -1861,14 +1851,14 @@ msgstr "例如: B<versions_accepted=\"*\"> 允许所有版本连接。"
 #: doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
-msgstr ""
+msgstr "是否阻止没有通过B<user_handler>进行注册的用户登录。（默认：否）"
 
 #. type: SS
 #: doc/man/wesnothd.6:174
@@ -1878,12 +1868,16 @@ msgstr "全局标签："
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
 "B<[redirect]> 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务"
-"器上。"
+"器上。如果没有设置B<versions_accepted>，那么此标签无效。"
 
 #. type: TP
 #: doc/man/wesnothd.6:180
@@ -1973,6 +1967,14 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+#| "section is present in the configuration the server will run without any "
+#| "nick registration service. All additional tables that are needed for the "
+#| "B<forum_user_handler> to function can be found in table_definitions.sql "
+#| "in the Wesnoth source repository. Requires mysql support enabled. For "
+#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -1981,10 +1983,10 @@ msgid ""
 "needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
-"B<[user_handler]> 配置用户数据处理器。可设置的主键取决于通过B<user_handler>设"
-"置的用户数据处理器是哪一个。如果配置文件中没有B<[user_handler]>小节，则服务器"
-"在运行中将不提供任何昵称注册服务。B<forum_user_handler>正常运作所需的额外数据"
-"表可以在韦诺源代码库的table_definitions.sql中找到。"
+"B<[user_handler]> 配置用户数据处理器。如果配置中没有B<[user_handler]>小节，则"
+"服务器在运行中将不提供任何昵称注册服务。B<forum_user_handler>正常运作所需的额"
+"外数据表可以在韦诺源代码库的table_definitions.sql中找到。需要启用mysql支持。"
+"对于cmake，请使用B<ENABLE_MYSQL>，而对于scons，请使用B<forum_user_handler>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:224
@@ -1994,10 +1996,8 @@ msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:227
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "邮件服务器的主机名"
+msgstr "数据库服务器的主机名称"
 
 #. type: TP
 #: doc/man/wesnothd.6:227
@@ -2007,10 +2007,8 @@ msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:230
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "邮件服务器的主机名"
+msgstr "数据库名称"
 
 #. type: TP
 #: doc/man/wesnothd.6:230
@@ -2020,12 +2018,8 @@ msgstr "B<db_user>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:233
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr "（当user_handler=forum时）数据库登录用户名"
+msgstr "用于登录数据库的用户名称"
 
 #. type: TP
 #: doc/man/wesnothd.6:233
@@ -2035,10 +2029,8 @@ msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:236
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "这个用户的密码。"
+msgstr "这个用户的密码"
 
 #. type: TP
 #: doc/man/wesnothd.6:236
@@ -2048,17 +2040,12 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:239
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"（当user_handler=forum时）phpbb论坛中存放用户数据的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"你的phpbb论坛中存放用户数据的表名。很可能是E<lt>table-prefixE<gt>_users（例如"
+"phpbb3_users）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:239
@@ -2068,15 +2055,9 @@ msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
-"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与游戏相关的"
-"数据。"
+msgstr "用于保存wesnothd自有用户数据的表名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:242
@@ -2086,15 +2067,9 @@ msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
-"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与游戏相关的"
-"数据。"
+msgstr "用于保存wesnothd自有游戏数据的表名。"
 
 #. type: TP
 #: doc/man/wesnothd.6:245
@@ -2104,16 +2079,10 @@ msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
-"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中"
-"玩家相关的数据。"
+msgstr "用于保存wesnothd自有数据的表名，其中是与单场游戏中玩家相关的数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:248
@@ -2123,16 +2092,11 @@ msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
-"（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与单场游戏中"
-"使用的模组相关的数据。"
+"用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:251
@@ -2142,18 +2106,13 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user group data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"（当user_handler=forum时）phpbb论坛中存放用户组数据的表名。很可能是"
-"E<lt>table-prefixE<gt>_users_group（例如phpbb3_users_group）。"
+"你的phpbb论坛中存放用户组数据的表名。很可能是E<lt>table-"
+"prefixE<gt>_users_group（例如phpbb3_users_group）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:254
@@ -2163,13 +2122,9 @@ msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The ID of the forum group to be considered as "
-#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr "（当user_handler=forum时）论坛用户组ID，该组将视为拥有管理员权限。"
+msgstr "论坛用户组ID，该组将被视为拥有管理员权限。"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:262
@@ -2200,106 +2155,8 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 #, no-wrap
-#~ msgid "2018"
-#~ msgstr "2018"
+#~ msgid "B<--simple-version>"
+#~ msgstr "B<--simple-version>"
 
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "启用代理服务器来进行网络连接。"
-
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "指定代理服务器的B<地址>。"
-
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "指定代理服务器的B<端口>。"
-
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "指定用于登录代理服务器的B<用户名>。"
-
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "指定用于登录代理服务器的B<密码>。"
-
-#~ msgid "B<user_handler>"
-#~ msgstr "B<user_handler>"
-
-#~ msgid ""
-#~ "The name of the user handler to use. Currently available user handlers "
-#~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
-#~ "B<sample> (a sample implementation of the user handler interface, if you "
-#~ "use this on anything real you are insane). The default value is B<forum>. "
-#~ "You must also add a B<[user_handler]> section, see below."
-#~ msgstr ""
-#~ "希望使用的用户信息处理器的名称。目前可选的有B<forum>（将wesnothd与phpbb论"
-#~ "坛的数据库连接起来）和B<sample>（一个用户信息处理接口的样例实现，如果您真"
-#~ "的在实际中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个"
-#~ "B<[user_handler]>小节，请看下面。"
-
-#~ msgid "(for user_handler=forum) The hostname of the database server"
-#~ msgstr "（当user_handler=forum时）数据库服务器的主机名"
-
-#~ msgid "(for user_handler=forum) The name of the database"
-#~ msgstr "（当user_handler=forum时）数据库名"
-
-#~ msgid "(for user_handler=forum) This user's password"
-#~ msgstr "（当user_handler=forum时）这个用户的密码"
-
-#~ msgid ""
-#~ "(for user_handler=forum) The name of the table in which wesnothd will "
-#~ "save its own data about users. You will have to create this table "
-#~ "manually."
-#~ msgstr ""
-#~ "（当user_handler=forum时）用于保存wesnothd自有数据的表名，其中是与用户相关"
-#~ "的数据。你必须手动创建此表。"
-
-#~ msgid "B<user_expiration>"
-#~ msgstr "B<user_expiration>"
-
-#~ msgid ""
-#~ "(for user_handler=sample) The time after which a registered nick expires "
-#~ "(in days)."
-#~ msgstr "（如果user_handler=sample）注册昵称的失效时间（天数）。"
-
-#~ msgid ""
-#~ "B<[mail]> Configures an SMTP server through which the user handler can "
-#~ "send mail. Currently only used by the sample user handler."
-#~ msgstr ""
-#~ "B<[mail]> 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样"
-#~ "例处理器中使用。"
-
-#~ msgid "B<server>"
-#~ msgstr "B<server>"
-
-#~ msgid "B<username>"
-#~ msgstr "B<username>"
-
-#~ msgid "The user name under which to log into the mail server."
-#~ msgstr "登录到邮件服务器的用户名。"
-
-#~ msgid "B<password>"
-#~ msgstr "B<password>"
-
-#~ msgid "B<from_address>"
-#~ msgstr "B<from_address>"
-
-#~ msgid "The reply-to address of you mail."
-#~ msgstr "您的邮箱的“回复到”邮件地址。"
-
-#~ msgid "B<mail_port>"
-#~ msgstr "B<mail_port>"
-
-#~ msgid "The port on which your mail server is running. Default is 25."
-#~ msgstr "邮件服务器的端口。默认值为25。"
+#~ msgid "shows the version number and nothing else, then exits."
+#~ msgstr "仅显示版本号而不显示其他信息，之后退出。"
