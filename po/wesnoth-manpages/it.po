@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2021
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2021-05-23 17:45+0200\n"
+"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"PO-Revision-Date: 2022-01-05 23:08+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 # type: TH
 #. type: TH
@@ -2191,12 +2191,17 @@ msgstr "Tag globali:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:179
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
-"B<[redirect]> Un tag per specificare un server a cui redirigere certe "
-"versioni di client."
+"B<[redirect]> Un tag per specificare un server a cui redirigere determinate "
+"versioni di client. Non viene usato se B<versions_accepted> non viene "
+"impostato."
 
 # type: TP
 #. type: TP
@@ -2304,6 +2309,14 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+#| "section is present in the configuration the server will run without any "
+#| "nick registration service. All additional tables that are needed for the "
+#| "B<forum_user_handler> to function can be found in table_definitions.sql "
+#| "in the Wesnoth source repository. Requires mysql support enabled. For "
+#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2312,13 +2325,13 @@ msgid ""
 "needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
-"B<[user_handler]> Configura lo user handler. Sono disponibili diverse parole "
-"chiavi a seconda dello user handler selezionato con la chiave "
-"B<user_handler>. Se non è presente una sezione B<[user_handler]> nella "
-"configurazione il server verrà lanciato senza un servizio di registrazione "
-"del nick. Tutte le tabelle aggiuntive necessarie per il funzionamento di "
-"B<forum_user_handler> possono essere reperite in table_definitions.sql nel "
-"repository del codice sorgente di Wesnoth."
+"B<[user_handler]> Configura lo user handler. Se non è presente una sezione "
+"B<[user_handler]> nella configurazione il server verrà lanciato senza un "
+"servizio di registrazione del nick. Tutte le tabelle aggiuntive necessarie "
+"per il funzionamento di B<forum_user_handler> possono essere reperite in "
+"table_definitions.sql nel repository del codice sorgente di Wesnoth. "
+"Necessita che sia abilitato il supporto mysql. Per cmake occore utilizzare "
+"il flag B<ENABLE_MYSQL> e per scons B<forum_user_handler.>"
 
 # type: TP
 #. type: TP
@@ -2520,6 +2533,16 @@ msgstr ""
 #: doc/man/wesnothd.6:281
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+# type: TP
+#, no-wrap
+#~| msgid "B<-v, --version>"
+#~ msgid "B<--simple-version>"
+#~ msgstr "B<--simple-version>"
+
+# type: Plain text
+#~ msgid "shows the version number and nothing else, then exits."
+#~ msgstr "mostra il numero di versione e nient’altro, quindi termina."
 
 #~ msgid "2018"
 #~ msgstr "2018"

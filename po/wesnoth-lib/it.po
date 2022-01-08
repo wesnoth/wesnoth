@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2021.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-28 14:56+0200\n"
+"PO-Revision-Date: 2022-01-04 12:13+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -1977,6 +1977,21 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mountains'</italic> are steep enough that units often have "
+#| "to climb over obstacles to move.\n"
+#| "By this nature, they provide a considerable defensive bonus for most "
+#| "troops, but also severely impede any passage through them. Units burdened "
+#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
+#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
+#| "piscine bodies which also render them unable to climb steep inclines. "
+#| "Nagas are an exception due to their strong arms and rugged scales. Both "
+#| "dwarves and trolls are native to mountainous terrain, and have an easy "
+#| "time traversing them.\n"
+#| "\n"
+#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
+#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1989,14 +2004,16 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 "Le <italic>text='Montagne'</italic> sono così scoscese che le unità spesso "
-"devono scavalcare gli ostacoli per proseguire.\n"
+"devono arrampicarsi sopra gli ostacoli per proseguire.\n"
 "Per loro conformazione, questi terreni forniscono dei considerevoli bonus "
 "difensivi alla maggior parte delle truppe, ma contemporaneamente "
-"rappresentano un terreno difficile da attraversare. La maggior parte delle "
-"unità a cavallo semplicemente non posso attraversare i terreni montuosi. "
-"Fanno eccezione la cavalleria elfica e i goblin cavalcalupi. Sia i nani che "
-"i troll sono a proprio agio sul natio terreno montuoso,e si muovono "
-"velocemente in questo tipo di terreno.\n"
+"rappresentano un terreno difficile da attraversare. Le unità appesantite da "
+"armature pesanti, come la cavalleria di Wesnothe e le truppe di fanteria "
+"pesante non possono neanche entrare in questi territori. Le razze acquatiche "
+"e le creature che hanno un corpo pesciforme come i nereidi sono incapaci di "
+"arrampicarsi su pendii troppo scoscesi, ad eccezione dei Naga, dotati di "
+"forti braccia e dure scaglie. Sia i nani che i troll sono a proprio agio sul "
+"natio terreno montuoso,e si muovono velocemente in questo tipo di terreno.\n"
 "\n"
 "La maggior parte delle unità ottengono un bonus difensivo del 60%, mentre i "
 "nani ottengono un bonus del 70%."
@@ -4491,7 +4508,7 @@ msgstr "Condottiero:"
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
 msgid "Gender:"
-msgstr "Genere:"
+msgstr "Sesso:"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4514,8 +4531,10 @@ msgstr "Recluta:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
+#, fuzzy
+#| msgid "Choose Your Leader"
 msgid "Choose Your Faction"
-msgstr "Scegli la tua Fazione"
+msgstr "Scegli il tuo Condottiero"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
@@ -4553,7 +4572,7 @@ msgstr "<b>Fazione:</b>"
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
 msgid "<b>Gender:</b>"
-msgstr "<b>Sesso:</b>"
+msgstr "<b>Genere:</b>"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:359
@@ -5829,6 +5848,9 @@ msgid "timespan^expired"
 msgstr "scaduto"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgstr "$num anno"
 
@@ -5837,6 +5859,9 @@ msgid "timespan^$num years"
 msgstr "$num anni"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgstr "$num mese"
 
@@ -5845,6 +5870,9 @@ msgid "timespan^$num months"
 msgstr "$num mesi"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgstr "$num settimana"
 
@@ -5853,6 +5881,9 @@ msgid "timespan^$num weeks"
 msgstr "$num settimane"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgstr "$num giorno"
 
@@ -5861,6 +5892,9 @@ msgid "timespan^$num days"
 msgstr "$num giorni"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgstr "$num ora"
 
@@ -5869,6 +5903,9 @@ msgid "timespan^$num hours"
 msgstr "$num ore"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgstr "$num minuto"
 
@@ -5877,6 +5914,9 @@ msgid "timespan^$num minutes"
 msgstr "$num minuti"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgstr "$num secondo"
 
@@ -7759,7 +7799,7 @@ msgstr "Può reclutare"
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Toggle the recruit attribute of a unit."
-msgstr "Attiva/Disattiva recrutabilità di una unità."
+msgstr "Attiva/Disattiva reclutabilità di una unità."
 
 #: src/hotkey/hotkey_command.cpp:202
 msgid "Can be Renamed"
@@ -8171,6 +8211,26 @@ msgstr ""
 #~ "Scegli da quale versione di Wesnoth vuoi importare i dati.\n"
 #~ "Alcune impostazioni saranno operative soltanto al prossimo riavvio del "
 #~ "programma."
+
+#~ msgid "mainmenu_hotkeys^M"
+#~ msgstr "M"
+
+#~ msgid "%Y-%m-%d %I:%M %p"
+#~ msgstr "%Y-%m-%d %I:%M %p"
+
+#~ msgid "%Y-%m-%d %H:%M"
+#~ msgstr "%Y-%m-%d %H:%M"
+
+#~ msgid ""
+#~ "This game doesn't allow observers. Observe using moderator rights anyway?"
+#~ msgstr ""
+#~ "In questa partita non sono permessi osservatori. Desideri comunque "
+#~ "osservare con i permessi di moderatore?"
+
+#~ msgid "This game is password protected. Join using moderator rights anyway?"
+#~ msgstr ""
+#~ "Questa partita è protetta da una password. Vuoi comunque connetterti "
+#~ "utilizzando i permessi da moderatore?"
 
 #~ msgid "Add-on upload authentication dialog"
 #~ msgstr "Autenticazione invio estensione"
