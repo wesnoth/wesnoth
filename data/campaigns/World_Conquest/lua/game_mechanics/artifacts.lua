@@ -91,7 +91,7 @@ function artifacts.give_item(unit, index, visualize)
 
 	local object = {
 		wc2_atrifact_id = index,
-		-- cannot filter on wc2_atrifact_id beeing empty so we also need wc2_is_artifact
+		-- cannot filter on wc2_artifact_id being empty so we also need wc2_is_artifact
 		wc2_is_artifact = true,
 	}
 	if make_holder_loyal then
@@ -101,12 +101,12 @@ function artifacts.give_item(unit, index, visualize)
 		
 	-- IDEA: i _could_ replace the follwing with a 'apply_to=wc2_artifact' effect that
 	--       basicially applies all effects in the [artifact]s definition. The obvious
-	--       advantage would be a smaller savefile size. Also this woudl change how savefiles
-	--       would behve if an artifacts effect has changed, i am currently not sure
+	--       advantage would be a smaller savefile size. Also this would change how savefiles
+	--       would behave if an artifacts effect has changed, i am currently not sure
 	--       whether that'd be good or bad
 	--
 	--       One of the reasons why i currently won't do this is to make the artifacts list
-	--       more flixible: the suggested approach requires that artifacts are loaded before
+	--       more flexible: the suggested approach requires that artifacts are loaded before
 	--       units are created which means artifacts must be loaded at toplevel [lua] tags
 	for i, effect in ipairs(aftifact_data.effect) do
 		table.insert(object, wml.tag.effect (effect) )
