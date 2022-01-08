@@ -45,6 +45,7 @@
    * Avoid rare crash situation after editing scenarios (issue #5883)
  ### Multiplayer
  ### Lua API
+   * Fixed an error in gui.get_user_choice() and added support for the current DescriptionWML syntax (PR #6247)
  ### Packaging
  ### Terrain
  ### Translations
