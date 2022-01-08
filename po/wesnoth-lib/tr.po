@@ -1,22 +1,22 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Copyright (C) 2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2019.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-08-03 02:58+0300\n"
+"PO-Revision-Date: 2022-01-05 22:30+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [ai]: id=ai_default_rca
@@ -1944,6 +1944,21 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mountains'</italic> are steep enough that units often have "
+#| "to climb over obstacles to move.\n"
+#| "By this nature, they provide a considerable defensive bonus for most "
+#| "troops, but also severely impede any passage through them. Units burdened "
+#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
+#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
+#| "piscine bodies which also render them unable to climb steep inclines. "
+#| "Nagas are an exception due to their strong arms and rugged scales. Both "
+#| "dwarves and trolls are native to mountainous terrain, and have an easy "
+#| "time traversing them.\n"
+#| "\n"
+#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
+#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1958,10 +1973,12 @@ msgstr ""
 "<italic>text='Dağlar'</italic> birimlerin hareket etmek için engelleri "
 "tırmanmasını gerektirecek kadar dik yerlerdir.\n"
 "Bu doğalarından ötürü çoğu asker için güzel bir ek savunma verir, ancak aynı "
-"zamanda aralarından geçmeyi zorlaştırırlar. Elf süvarileri ve Goblin "
-"Binicileri istisna olmak kaydıyla, çoğu süvari dağlı araziye adım bile "
-"atamaz. Hem Cüceler hem de Troller dağların yerlisidir, onlar için bu "
-"arazide hareket pek kolaydır.\n"
+"zamanda aşılması da zordur. Ağır zırh kuşanmış Vesnot Süvarileri ve Ağır "
+"Piyadeler gibi birimler dağlı araziye adım bile atamaz. Sudaki ırklar ve "
+"susallar gibi yaratıklar, dik yokuşlara tırmanamayan balık gövdelerine "
+"sahiptir. Nagalar, güçlü kolları ve sağlam pulları nedeniyle bir istisnadır. "
+"Cüceler ve troller dağlık arazinin yerlileridir ve geçmek için bolca "
+"zamanları vardır.\n"
 "\n"
 "Çoğu birim dağlarda %60 savunma alırken Cüceler %70 alır."
 
@@ -4422,13 +4439,17 @@ msgstr "Harita Boyutları:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
+#, fuzzy
+#| msgid "Leader"
 msgid "Leader:"
-msgstr "Lider:"
+msgstr "Lider"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
+#, fuzzy
+#| msgid "<b>Gender:</b>"
 msgid "Gender:"
-msgstr "Cinsiyet:"
+msgstr "<b>Cinsiyet:</b>"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4446,18 +4467,24 @@ msgstr "Dişi"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:210
+#, fuzzy
+#| msgid "Recruits"
 msgid "Recruits:"
-msgstr "Askere alımlar:"
+msgstr "Asker alımlar"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
+#, fuzzy
+#| msgid "Choose Your Leader"
 msgid "Choose Your Faction"
-msgstr "Birliğinizi Seçin"
+msgstr "Liderinizi Seçin"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
+#, fuzzy
+#| msgid "Starting Positions Tool"
 msgid "Starting position:"
-msgstr "Başlangıç Konumu:"
+msgstr "Başlangıç Konumları Aracı"
 
 #. [widget]: id=name
 #. [label]
@@ -4837,8 +4864,10 @@ msgstr "Düzenleyicide müsait"
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:777
+#, fuzzy
+#| msgid "editor_hotkeys^E"
 msgid "titlescreen_hotkeys^T"
-msgstr "T"
+msgstr "E"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5753,58 +5782,100 @@ msgid "timespan^expired"
 msgstr "süresi doldu"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgstr "$num yıl"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num years"
 msgstr "$num yıl"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgstr "$num ay"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num months"
 msgstr "$num ay"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgstr "$num hafta"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num weeks"
 msgstr "$num hafta"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgstr "$num gün"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num days"
 msgstr "$num gün"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgstr "$num saat"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hours"
 msgstr "$num saat"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgstr "$num dakika"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minutes"
 msgstr "$num dakika"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgstr "$num saniye"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num seconds"
 msgstr "$num saniye"
 
@@ -6767,8 +6838,10 @@ msgstr "bu oyun"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
+#, fuzzy
+#| msgid "Team"
 msgid "Team:"
-msgstr "Takım:"
+msgstr "Takım"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
@@ -6995,11 +7068,11 @@ msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:633
 msgid "$player has entered the room"
-msgstr "$player odaya geldi"
+msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:675
 msgid "$player has left the room"
-msgstr "$player odadan çıktı"
+msgstr ""
 
 #: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -7928,8 +8001,10 @@ msgid "Previous Tip of the Day"
 msgstr "Günün Önceki Saati"
 
 #: src/hotkey/hotkey_command.cpp:285
+#, fuzzy
+#| msgid "Tutorial"
 msgid "Start Tutorial"
-msgstr "Öğreticiyi Başlat"
+msgstr "Öğretici"
 
 #: src/hotkey/hotkey_command.cpp:286
 msgid "Start Campaign"
@@ -8059,229 +8134,22 @@ msgstr ""
 #~ "Verinizin Wesnoth'un hangi sürümünden alınacağını seçin.\n"
 #~ "Bazı ayarlar Wesnoth yeniden başlatılana kadar geçerli olmaz."
 
-#~ msgid "Multiplayer server login dialog"
-#~ msgstr "Çok oyunculu sunucusu oturum açma penceresi"
+#~ msgid "mainmenu_hotkeys^M"
+#~ msgstr "M"
 
-#~ msgid "Current Room"
-#~ msgstr "Mevcut Oda"
+#~ msgid "%Y-%m-%d %I:%M %p"
+#~ msgstr "%d-%m-%Y %I:%M %p"
 
-#~ msgid "Line doesn't fit on canvas."
-#~ msgstr "Çizgi tuvale sığmıyor."
-
-#~ msgid "Rectangle doesn't fit on canvas."
-#~ msgstr "Dörtgen tuvale sığmıyor."
-
-#~ msgid "Rounded Rectangle doesn't fit on canvas."
-#~ msgstr "Yuvarlanmış Dörtgen tuvale sığmıyor."
-
-#~ msgid "Circle doesn't fit on canvas."
-#~ msgstr "Daire tuvale sığmıyor."
-
-#~ msgid "Text doesn't start on canvas."
-#~ msgstr "Metin tuvale sığmıyor."
-
-#~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "Eski çift yönlü işleme"
-
-#~ msgid "The maximum text width is less than 1."
-#~ msgstr "Azami metin genişliği 1’den küçük."
-
-#, fuzzy
-#~| msgid "Preferences"
-#~ msgid "Open Preferences Screen"
-#~ msgstr "Tercihler"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Sohbet Kaydını Göster"
-
-#~ msgid "Categories:"
-#~ msgstr "Kategoriler:"
-
-#~ msgid "Accelerated"
-#~ msgstr "Hızlandırılmış"
-
-#~ msgid "Clear Messages"
-#~ msgstr "İletileri Temizle"
-
-#~ msgid "Dates"
-#~ msgstr "Tarihler"
-
-#~ msgid "Save random seed"
-#~ msgstr "Rastgele dizesini kaydet"
+#~ msgid "%Y-%m-%d %H:%M"
+#~ msgstr "%d-%m-%Y %H:%M"
 
 #~ msgid ""
-#~ "Makes the random number generator yield the same results even after "
-#~ "reloading a game"
+#~ "This game doesn't allow observers. Observe using moderator rights anyway?"
 #~ msgstr ""
-#~ "Rastgele sayı üreticisi oyun tekrar yüklense bile aynı sonuçları üretsin"
+#~ "Bu oyun gözlemcilere izin vermiyor. Yine de yönetici haklarını kullanmaya "
+#~ "dikkat ediyor musunuz?"
 
-#~ msgid "Choose Player"
-#~ msgstr "Oyuncu Seç"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Burada hangi oyuncu başlasın?"
-
-#~ msgid "No ignored"
-#~ msgstr "Gözardı yok"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Harita Bilgileri"
-
-#~ msgid "Do you want to open this link?"
-#~ msgstr "Bağlantıyı açmak istiyor musunuz?"
-
-#~ msgid "url^Copy"
-#~ msgstr "Kopyala"
-
-#~ msgid "Copy this URL to clipboard"
-#~ msgstr "Bu URL'yi panoya kopyala"
-
-#~ msgid "url^Go"
-#~ msgstr "Git"
-
-#~ msgid "Visit this URL with a web browser"
-#~ msgstr "Bu URL'yi bir tarayıcıda aç"
-
-#~ msgid "Screenshots..."
-#~ msgstr "Ekran görüntüleri..."
-
-#~ msgid "feature^JPEG screenshots"
-#~ msgstr "JPEG ekran görüntüleri"
-
-#~ msgid "Number of columns differ."
-#~ msgstr "Sütun sayıları farklı."
-
-#~ msgid "Terms"
-#~ msgstr "Şartlar"
-
-#~ msgid "version^N/A"
-#~ msgstr "M/D"
-
-#~ msgid "Assign Recruit List"
-#~ msgstr "Askere alım listesini ata"
-
-#~ msgid "Assign the selected unit set as recruit list to the unit."
-#~ msgstr "Seçili birim kümesini askere alım listesi olarak ata."
-
-#~ msgid "Room <i>“$name”</i> joined"
-#~ msgstr "<i>\"$name\"</i> odasına katıldınız"
-
-#~ msgid ""
-#~ "Left mouse button sets a new item or moves it via drag and drop, right "
-#~ "clears. Not implemented yet."
+#~ msgid "This game is password protected. Join using moderator rights anyway?"
 #~ msgstr ""
-#~ "Sol fare tuşu ya yeni bir öğe koyar ya da sürükleyip bırakarak hareket "
-#~ "ettirir, sağ tuş temizler. Henüz gerçeklenmedi."
-
-#~ msgid ""
-#~ "Left mouse button sets or drags a sound source, right clears. Not "
-#~ "implemented yet."
-#~ msgstr ""
-#~ "Sol fare tuşu ya yeni bir ses kaynağı koyar ya da sürükleyip bırakarak "
-#~ "hareket ettirir, sağ tuş temizler. Henüz gerçeklenmedi."
-
-#~ msgid "Sound Source Tool"
-#~ msgstr "Ses Kaynağı Aracı"
-
-#~ msgid "Generate Tiles in Selection"
-#~ msgstr "Seçimde Döşeme Üret"
-
-#~ msgid "Rotate Map"
-#~ msgstr "Haritayı Döndür"
-
-#~ msgid "Allow only registered users to join the game"
-#~ msgstr "Sadece kayıtlı oyuncuların katılmasına izin ver"
-
-#~ msgid "Registered Users Only"
-#~ msgstr "Sadece Kayıtlı Oyuncular"
-
-#, fuzzy
-#~| msgid "Do you want to open this link?"
-#~ msgid "Are you sure you want to open this link? "
-#~ msgstr "Bağlantıyı açmak istiyor musunuz?"
-
-#~ msgid "Nearest Neighbor"
-#~ msgstr "En Yakın Komşu"
-
-#~ msgid "Nearest Neighbor scaling (fastest)"
-#~ msgstr "En Yakın Komşu Ölçeklemesi (en hızlı)"
-
-#~ msgid "xBRZ + linear"
-#~ msgstr "xBRZ + doğrusal"
-
-#~ msgid "xBRZ followed by Bilinear interpolation"
-#~ msgstr "Önce xBRZ sonra çift doğrusal ara değerleme"
-
-#~ msgid "xBRZ + NN"
-#~ msgstr "xBRZ + NN"
-
-#~ msgid "xBRZ followed by Nearest Neighbor (recommended)"
-#~ msgstr "Önce xBRZ sonra En Yakın Komşu (önerilen)"
-
-#~ msgid "Bilinear interpolation scaling"
-#~ msgstr "Çift doğrusal ara değerleme ölçeklemesi"
-
-#~ msgid "Linear"
-#~ msgstr "Doğrusal"
-
-#~ msgid "Advanced Graphics Options"
-#~ msgstr "Gelişmiş Grafik Seçenekler"
-
-#~ msgid "Images will be scaled using the following algorithms:"
-#~ msgstr "Resimler aşağıdaki algoritmalarla ölçeklendirilecek:"
-
-#~ msgid "All units, haloes, border hexes"
-#~ msgstr "Bütün birimler, haleler, sınır altıgenleri"
-
-#~ msgid "Scaled to zoom"
-#~ msgstr "Yakınlaştırma için ölçeklendi"
-
-#~ msgid "Everything else"
-#~ msgstr "Diğer herşey"
-
-#~ msgid "Scaled to hex"
-#~ msgstr "Altıgene ölçeklendi"
-
-#~ msgid "Sort by:"
-#~ msgstr "Şuna göre diz:"
-
-#~ msgid "Event"
-#~ msgstr "Olay"
-
-#~ msgid "You will now connect to the multiplayer server."
-#~ msgstr "Çok oyunculu oyun sunucusuna bağlanıyorsunuz."
-
-#~ msgid "View List"
-#~ msgstr "Listeyi Göster"
-
-#~ msgid "Font Scaling:"
-#~ msgstr "Yazı tipi boyutlandırması:"
-
-#~ msgid "Set the scaling factor of fonts"
-#~ msgstr "Yazı tipleri için boyutlandırma etkenini ata"
-
-#~ msgid "Start a tutorial to familiarize yourself with the game"
-#~ msgstr "Oyuna alışmak için öğreticiyi başlatın"
-
-#~ msgid "Cores"
-#~ msgstr "Çekirdekler"
-
-#~ msgid "Select the game core data"
-#~ msgstr "Oyun çekirdek verisini seç"
-
-#~ msgid "No matching widget found for scaling option"
-#~ msgstr "Boyutlandırma ayarına uyan gereç yok"
-
-#~ msgid "No server has been defined."
-#~ msgstr "Tanımlı sunucu yok."
-
-#~ msgid "&#9679;"
-#~ msgstr "&#9679;"
-
-#~ msgid "Kick / ban reason:"
-#~ msgstr "Atılma / yasaklanma sebebi:"
-
-#~ msgid "feature^Experimental OpenMP support"
-#~ msgstr "Deneysel AçıkÇO desteği"
+#~ "Bu oyun parola korumalıdır. Yine de yönetici haklarını kullanarak "
+#~ "katılacak mısınız?"

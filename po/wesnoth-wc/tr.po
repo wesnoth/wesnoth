@@ -1,14 +1,14 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2021 Wesnoth development team
+# Copyright (C) 2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2021.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2021,2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-08-03 03:04+0300\n"
+"PO-Revision-Date: 2022-01-06 04:19+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
@@ -191,7 +191,7 @@ msgstr " harita: "
 
 #: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
 msgid "Choose difficulty level:"
-msgstr "Zorluk seviyesini seçin:"
+msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -203,11 +203,11 @@ msgstr "Tüm düşman liderlerini ve komutanlarını yen"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Turns run out"
-msgstr "El kalmadı"
+msgstr "El kalmazsa"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
 msgid "Lose your leader and all your commanders"
-msgstr "Liderini ve tüm komutanlarını kaybet"
+msgstr "Liderini ve tüm komutanlarını kaybedersen"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
@@ -2331,7 +2331,7 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid "Feedback"
-msgstr "Geri besleme"
+msgstr ""
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
@@ -2340,10 +2340,6 @@ msgid ""
 "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue "
 "at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;."
 msgstr ""
-"Geri beslemede bulunmak isterseniz ya bunu resmi Wesnoth forumundaki &lt;"
-"https://r.wesnoth.org/t39651&gt; World Conquest II başlığı altında yazarak "
-"veya GitHub'da &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt; "
-"altında bir dosya göndererek yapabilirsiniz."
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
@@ -2398,7 +2394,7 @@ msgstr ""
 "alma listesi ayrıca çiftler halinde düzenlenmiştir, böylece bazen "
 "istediğiniz birimleri askere almadan önce farklı bir birimi askere almanız "
 "gerekebilir. Mevcut kahramanlar, kaçaklar ve rastgele liderler "
-"birliklerinize bağıdır, ancak alabileceğiniz nesneler seçtiğiniz birliğe "
+"birliklerinize bağlıdır, ancak alabileceğiniz nesneler seçtiğiniz birliğe "
 "bağlı değildir."
 
 #. [lua]: type_icon
@@ -2967,6 +2963,9 @@ msgid "Root of the Elder Wose"
 msgstr "Yaşlı Ulu Ağaç Kökü"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
+#, fuzzy
+#| msgid ""
+#| " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgstr " Cücelerin dövdüğü, bu kör silah Ulu Ağacın ezici gücünü taklit eder."

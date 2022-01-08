@@ -1,14 +1,14 @@
 # translation of wesnoth-manpages.po to Turkish
 # Turkish translations for Battle for Wesnoth package
-# Copyright (C) 2021 Wesnoth development team.
+# Copyright (C) 2022 Wesnoth development team.
 #
 # Automatically generated, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2021.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2021-06-23 10:18+0300\n"
-"PO-Revision-Date: 2021-07-17 14:25+0300\n"
+"PO-Revision-Date: 2022-01-06 00:07+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 # type: TH
 #. type: TH
@@ -29,7 +29,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr "2021"
+msgstr "2022"
 
 # type: TH
 #. type: TH
@@ -1579,7 +1579,7 @@ msgstr "TELİF HAKKI"
 #. type: Plain text
 #: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "Copyright  © 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "Copyright  © 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2126,7 +2126,7 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı listesi. "
-"Dosya ismi kalıp karakterlerinden B<*> ve B<?>desteklenmektedir. (kurulu "
+"Dosya ismi kalıp karakterlerinden B<*> ve B<?> desteklenmektedir. (kurulu "
 "wesnoth sürümü öntanımlıdır.)"
 
 # type: Plain text
@@ -2160,12 +2160,16 @@ msgstr "Genel etiketler:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:179
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
 "B<[redirect]> Belli istemci sürümlerinin yönlendirileceği sunucuların "
-"belirtildiği etiket."
+"belirtildiği etiket. B<versions_accepted> atanmışsa kullanılmaz."
 
 # type: TP
 #. type: TP
@@ -2271,6 +2275,14 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:223
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+#| "section is present in the configuration the server will run without any "
+#| "nick registration service. All additional tables that are needed for the "
+#| "B<forum_user_handler> to function can be found in table_definitions.sql "
+#| "in the Wesnoth source repository. Requires mysql support enabled. For "
+#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2279,12 +2291,12 @@ msgid ""
 "needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
-"B<[user_handler]> Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek "
-"anahtarlar B<user_handler> anahtarı ile hangi kullanıcı işlemcisinin "
-"tanımlandığına bağlıdır. B<[user_handler]> bölümü yapılandırmada yoksa "
-"sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır. "
-"B<forum_user_handler>'ın çalışması için gereken tüm ek tablolar Wesnoth "
-"kaynak deposundaki table_definitions.sql dosyasında bulunabilir."
+"B<[user_handler]> Kullanıcı işlemcisini yapılandırır. B<[user_handler]> "
+"bölümü yapılandırmada yoksa sunucu herhangi bir kullanıcı kayıt hizmeti "
+"olmadan çalışacaktır. B<forum_user_handler>'ın çalışması için gereken tüm ek "
+"tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında "
+"bulunabilir. Etkin mysql desteği gerektirir. Bu, cmake için B<ENABLE_MYSQL>, "
+"scons için B<forum_user_handler> etiketidir."
 
 # type: TP
 #. type: TP
@@ -2484,3 +2496,13 @@ msgstr ""
 #: doc/man/wesnothd.6:281
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+# type: TP
+#, no-wrap
+#~| msgid "B<-v, --version>"
+#~ msgid "B<--simple-version>"
+#~ msgstr "B<--simple-version>"
+
+# type: Plain text
+#~ msgid "shows the version number and nothing else, then exits."
+#~ msgstr "sürüm numarasını gösterip çıkar."

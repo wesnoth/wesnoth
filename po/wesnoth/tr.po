@@ -1,16 +1,16 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Copyright (C) 2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2019.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-08-21 11:18+0300\n"
+"PO-Revision-Date: 2022-01-05 17:25+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5855,39 +5855,43 @@ msgstr "Bir kullanıcı hakkında bilgi iste."
 #: src/chat_command_handler.hpp:120 src/chat_command_handler.hpp:123
 #: src/chat_command_handler.hpp:125
 msgid "<room>"
-msgstr "<oda>"
+msgstr ""
 
 #: src/chat_command_handler.hpp:120
 msgid "Join a room."
-msgstr "Odaya katıl."
+msgstr ""
 
 #: src/chat_command_handler.hpp:123
 msgid "Part a room."
-msgstr "Bir odayı ayır."
+msgstr ""
 
 #: src/chat_command_handler.hpp:125
 msgid "List room members."
-msgstr "Oda üyelerini listele."
+msgstr ""
 
 #: src/chat_command_handler.hpp:127
+#, fuzzy
+#| msgid "not available."
 msgid "List available rooms."
-msgstr " Müsait odaları listele."
+msgstr " Mevcut değil."
 
 #: src/chat_command_handler.hpp:129
 msgid "<room> <msg>"
-msgstr "<oda> <ileti>"
+msgstr ""
 
 #: src/chat_command_handler.hpp:129
+#, fuzzy
+#| msgid "Chat message"
 msgid "Room message."
-msgstr "Oda iletisi."
+msgstr "Sohbet iletisi"
 
 #: src/chat_command_handler.hpp:131
 msgid "<room> <type> [value]"
-msgstr "<oda> <tür> [değer]"
+msgstr ""
 
 #: src/chat_command_handler.hpp:131
 msgid "Room query."
-msgstr "Oda sorgusu"
+msgstr ""
 
 #: src/chat_events.cpp:59
 msgid "Unknown debug level: '$level'."
@@ -6267,8 +6271,10 @@ msgid "Defeat enemy leader(s)"
 msgstr "Düşman lider(ler)ini öldür"
 
 #: src/game_initialization/mp_game_utils.cpp:101
+#, fuzzy
+#| msgid "Cannot find era '$era'"
 msgid "Cannot find era $era"
-msgstr "$era çağı bulunamıyor"
+msgstr "'$era' çağı bulunamıyor"
 
 #: src/game_initialization/multiplayer.cpp:235
 msgid "Invalid address specified for multiplayer server"
@@ -8019,12 +8025,16 @@ msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
 #: src/save_index.cpp:262
+#, fuzzy
+#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %l:%M %p %Y"
+msgstr "%a %d %b %Y, %I:%M %p"
 
 #: src/save_index.cpp:263
+#, fuzzy
+#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %H:%M %Y"
-msgstr "%d %b %y %a %H:%M"
+msgstr "%a %d %b %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:283 src/savegame.cpp:588
@@ -8552,606 +8562,9 @@ msgstr "Planları $player için gizle"
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
 
-#, fuzzy
-#~| msgid "female^neutral"
-#~ msgid "female^feral"
-#~ msgstr "tarafsız"
-
-#, fuzzy
-#~| msgid "unhealable"
-#~ msgid "Unhealable"
-#~ msgstr "iyileştirilemez"
-
-#, fuzzy
-#~| msgid "Leadership: "
-#~ msgid "magical leadership"
-#~ msgstr "Liderlik: "
-
-#, fuzzy
-#~| msgid "female^cured"
-#~ msgid "female^darkens"
-#~ msgstr "tedavi edildi"
-
-#, fuzzy
-#~| msgid "This unit has been petrified. It may not move or attack."
-#~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
-
-#, fuzzy
-#~| msgid "female^chaotic"
-#~ msgid "female^cantor"
-#~ msgstr "kaypak"
-
-#, fuzzy
-#~| msgid "Jamming:"
-#~ msgid "Jamming Orc"
-#~ msgstr "Sıkıştırma: "
-
-#, fuzzy
-#~| msgid "Vision Cost"
-#~ msgid "Vision Test"
-#~ msgstr "Görüş Bedeli"
-
-#, fuzzy
-#~| msgid "Clear Labels"
-#~ msgid "Clear sailing!"
-#~ msgstr "Etiketleri temizle"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "görünmez: "
-
-#, fuzzy
-#~| msgid "Debug mode activated!"
-#~ msgid "Teleporters activated"
-#~ msgstr "Hata ayıklama kipi etkin kılındı!"
-
-#, fuzzy
-#~| msgid "Debug mode deactivated!"
-#~ msgid "Teleporters deactivated"
-#~ msgstr "Hata ayıklama kipinden çıkıldı!"
-
-#, fuzzy
-#~| msgid "Custom map."
-#~ msgid "Custom dialog"
-#~ msgstr "Özel harita."
-
-#, fuzzy
-#~| msgid "Clear objective orders"
-#~ msgid "objectives test"
-#~ msgstr "Amaç emirlerini sil"
-
-#, fuzzy
-#~| msgid "neutral"
-#~ msgid "Neutral"
-#~ msgstr "tarafsız"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "Düşman lider(ler)ini öldür"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "Düşman lider(ler)ini öldür"
-
-#, fuzzy
-#~| msgid "Temple"
-#~ msgid "Temporal Clone"
-#~ msgstr "Tapınak"
-
-#, fuzzy
-#~| msgid "Launch the gamestate inspector"
-#~ msgid "Gamestate Inspector"
-#~ msgstr "Oyun durumu denetçisini çalıştır"
-
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Parrot message"
-#~ msgstr "Sohbet iletisi"
-
-#, fuzzy
-#~| msgid "Holy Water"
-#~ msgid "Water"
-#~ msgstr "Okunmuş Su"
-
-#, fuzzy
-#~| msgid "poisoned"
-#~ msgid "poison"
-#~ msgstr "zehirlenmiş"
-
-#, fuzzy
-#~| msgid "Northerners"
-#~ msgid "Northerners unleashed!"
-#~ msgstr "Kuzeyliler"
-
-#, fuzzy
-#~| msgid "Lato Light"
-#~ msgid "Let’s fight"
-#~ msgstr "Lato Light"
-
-#, fuzzy
-#~| msgid "Cannot find era $era"
-#~ msgid "Cannot divide by zero!"
-#~ msgstr "$era çağı bulunamıyor"
-
-#, fuzzy
-#~| msgid "Trash Pile"
-#~ msgid "Crash test"
-#~ msgstr "Çöp Yığını"
-
-#, fuzzy
-#~| msgid "Potion of Decay"
-#~ msgid "Potion of bleach"
-#~ msgstr "Çürüme İksiri"
-
-#, fuzzy
-#~| msgid "Warning"
-#~ msgid "Win"
-#~ msgstr "Uyarı"
-
-#, fuzzy
-#~| msgid "This is not a multiplayer save."
-#~ msgid "This is not a forest"
-#~ msgstr "Bu çok oyunculu bir oyun kaydı değil."
-
-#, fuzzy
-#~| msgid "Still Another Wanderer"
-#~ msgid "Still there"
-#~ msgstr "Başka Bir Gezici"
-
-#, fuzzy
-#~| msgid "Summoning Circle"
-#~ msgid "Summon Troll"
-#~ msgstr "Çağırma Çemberi"
-
-#, fuzzy
-#~| msgid "Magic Circle"
-#~ msgid "Magic Troll"
-#~ msgstr "Büyü Çemberi"
-
-#, fuzzy
-#~| msgid "sceptre of fire"
-#~ msgid "ruby of fire"
-#~ msgstr "ateş asası"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change"
-#~ msgstr "El değişti"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change2"
-#~ msgstr "El değişti"
-
-#, fuzzy
-#~| msgid "Turn changed"
-#~ msgid "map change3"
-#~ msgstr "El değişti"
-
-#, fuzzy
-#~| msgid "Shroud"
-#~ msgid "Shrouded label"
-#~ msgstr "Örtü"
-
-#, fuzzy
-#~| msgid "Bright green"
-#~ msgid "More green!"
-#~ msgstr "Parlak yeşil"
-
-#, fuzzy
-#~| msgid "Dark Red"
-#~ msgid "More blue!"
-#~ msgstr "Koyu Kırmızı"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 1"
-#~ msgstr "Menü"
-
-#, fuzzy
-#~| msgid "Menu"
-#~ msgid "Menu 2"
-#~ msgstr "Menü"
-
-#~ msgid "very long"
-#~ msgstr "çok uzun"
-
-#~ msgid "electrical"
-#~ msgstr "elektrikli"
-
-#~ msgid "Group players in lobby"
-#~ msgstr "Salondaki oyuncuları kümelere ayır"
-
 #~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+#~ "Similar to the 'fps' command, but also forces everything to redraw "
+#~ "instead of only things that have changed."
 #~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-
-#~ msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-#~ msgstr "<b>Tercihler</b> menüsündeki <b>Kısayol Tuşlar</b>ını okuyun."
-
-#~ msgid ""
-#~ "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-#~ "mouse pointer over any button or icon to get a description or explanation "
-#~ "of what it does."
-#~ msgstr ""
-#~ "Vesnot Savaşı oyunundaki hemen her simge ve tuşun bir ipucu vardır. Bir "
-#~ "açıklama veya tanım almak için fare imlecini bunların üzerine götürün."
-
-#~ msgid "Bad data received from server"
-#~ msgstr "Sunucudan bozuk veri geldi"
-
-#~ msgid ""
-#~ "Error in the login procedure (the server had no seed for your connection)."
-#~ msgstr ""
-#~ "Oturum açarken hata oluştu (sunucunun bağlanmanız için kaynağı yok)."
-
-#~ msgid "Back to..."
-#~ msgstr "Geri dön..."
-
-#~ msgid ""
-#~ "This save is from a different version of the game ($version_number|). Do "
-#~ "you wish to try to load it?"
-#~ msgstr ""
-#~ "Bu kayıtlı oyun farklı bir sürümden ($version_number|). Yüklemeyi denemek "
-#~ "istiyor musunuz?"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Senaryoyu Bitir"
-
-#, fuzzy
-#~| msgid "Enemy village"
-#~ msgid "Enemies"
-#~ msgstr "Düşman köyü"
-
-#, fuzzy
-#~| msgid "Damage: "
-#~ msgid "damage"
-#~ msgstr "Hasar: "
-
-#, fuzzy
-#~| msgid "No advancement"
-#~ msgid "XP to advance"
-#~ msgstr "Terfi yok"
-
-#~ msgid "gold"
-#~ msgstr "altın"
-
-#, fuzzy
-#~| msgid "Moves:"
-#~ msgid "moves"
-#~ msgstr "Hamleler: "
-
-#, fuzzy
-#~| msgid "Resistances"
-#~ msgid " resistance vs "
-#~ msgstr "Dirençler"
-
-#, fuzzy
-#~| msgid "Strikes"
-#~ msgid "strike"
-#~ msgstr "Vuruşlar"
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^steadfast"
-#~ msgstr "yavaşlatıldı"
-
-#, fuzzy
-#~| msgid " (inactive)"
-#~ msgid "initiative"
-#~ msgstr "(etkisiz)"
-
-#, fuzzy
-#~| msgid "Max swarm bonus: "
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "Azami üşüşme ödülü: "
-
-#, fuzzy
-#~| msgid "Be more defensive"
-#~ msgid "+moves defense"
-#~ msgstr "Daha savunmacı ol"
-
-#~ msgid "Use experimental PRNG combat"
-#~ msgstr "Deneysel YRSÜ çarpışması kullan"
-
-#~ msgid ""
-#~ "Enables more determinstic chance-to-hit calculations. This is an "
-#~ "experimental feature designed to bring the observed hit/miss rate more in "
-#~ "line with the displayed percentages.\n"
-#~ "\n"
-#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
-#~ "option must also be enabled when creating a game for this to work."
-#~ msgstr ""
-#~ "İsabet ihtimallerini daha kararlı hesaplamaya yarar. İsabet/ıska "
-#~ "oranlarını oyunda gösterilen oranlara yaklaştırmak için kullanılan "
-#~ "deneysel bir özelliktir. \n"
-#~ " \n"
-#~ "Not: Bu ayar sadece tek oyunculu oyunları etkiler ve çalışması için oyun "
-#~ "kurarken 'Rastgele dizesini kaydet' seçeneğinin etkinleştirilmiş olması "
-#~ "gerekir."
-
-#~ msgid "Graphics scaling options"
-#~ msgstr "Grafik ölçeklendirme seçenekleri"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "Nur efekti göster"
-
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Özel birimlerin çevresinde grafik efekt gösterir"
-
-#~ msgid "Joystick support"
-#~ msgstr "Oyun çubuğu desteği"
-
-#~ msgid "Joystick: number of the scroll X-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun X ekseninde kaydırma değeri"
-
-#~ msgid "Joystick: number of the scroll X-axis"
-#~ msgstr "Oyun çubuğu: X ekseninde kaydırma değeri"
-
-#~ msgid "Joystick: number of the scroll Y-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun Y ekseninde kaydırma değeri"
-
-#~ msgid "Joystick: number of the scroll Y-axis"
-#~ msgstr "Oyun çubuğu: Y ekseninde kaydırma değeri"
-
-#~ msgid "Joystick: deadzone of the scrolling stick"
-#~ msgstr "Oyun çubuğu: Kaydırma çubuğunun ölü-bölgesi"
-
-#~ msgid "Joystick: number of the cursor X-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun X eksenindeki imleç değeri"
-
-#~ msgid "Joystick: number of the cursor X-axis"
-#~ msgstr "Oyun çubuğu: X eksenindeki imleç değeri"
-
-#~ msgid "Joystick: number of the cursor Y-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun Y eksenindeki imleç değeri"
-
-#~ msgid "Joystick: number of the cursor Y-axis"
-#~ msgstr "Oyun çubuğu: Y eksenindeki imleç değeri"
-
-#~ msgid "Joystick: deadzone of the cursor stick"
-#~ msgstr "Oyun çubuğu: İmleç çubuğunun ölü-bölgesi"
-
-#~ msgid "Joystick: number of the mouse X-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun X eksenindeki fare değeri"
-
-#~ msgid "Joystick: number of the mouse X-axis"
-#~ msgstr "Oyun çubuğu: X eksenindeki fare değeri"
-
-#~ msgid "Joystick: number of the mouse Y-axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun Y eksenindeki fare değeri"
-
-#~ msgid "Joystick: number of the mouse Y-axis"
-#~ msgstr "Oyun çubuğu: Y eksenindeki fare değeri"
-
-#~ msgid "Joystick: deadzone of the mouse stick"
-#~ msgstr "Oyun çubuğu: Fare çubuğunun ölü-bölgesi"
-
-#~ msgid "Joystick: number of the thrust axis joystick"
-#~ msgstr "Oyun çubuğu: Çubuğun itme eksenindeki değeri"
-
-#~ msgid "Joystick: number of the thrust axis"
-#~ msgstr "Oyun çubuğu: İtme eksenindeki değer"
-
-#~ msgid "Joystick: deadzone of the thruster"
-#~ msgstr "Oyun çubuğu: İticinin ölü-bölgesi"
-
-#~ msgid "<small>(early finish bonus)</small>"
-#~ msgstr "<small>(erken bitirme ödülü)</small>"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "İntikalî birimler yalnızca alacakaranlıkta tam güçlerine kavuşurlar.\n"
-#~ "\n"
-#~ "Gündüz: -%25 Hasar\n"
-#~ "Gece: -%25 Hasar"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "Seçili çağ, oyun veya değişiklik için özel ayarlar yoktur."
-
-#~ msgid "Defaults"
-#~ msgstr "Fabrika ayarları"
-
-#~ msgid "Connected Players"
-#~ msgstr "Bağlı Oyuncular"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr "*** parolasıyla e-posta adressiz kayıt ediliyor"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "*** parolasıyla ve $email e-posta adresi ile kayıt ediliyor"
-
-#~ msgid "dropping your username"
-#~ msgstr "kullanıcı isminiz düşürülüyor"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "$var için $value değeri atanıyor"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<parola> <e-posta (isteğe bağlı)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Kullanıcı adınızı kaydedin"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Kullanıcı adınızı silin."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Kullanıcı adınızla ilgili ayrıntıları günceller. Ayrıntılar için '/"
-#~ "details' komutuna bakınız."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<ayrıntı> <değer>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr "Kayıtlı isminiz için atayabileceğiniz ayrıntıların listesini iste."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Bağlantı süresi aşıldı"
-
-#~ msgid "No Saved Games"
-#~ msgstr "Kayıtlı Oyun Yok"
-
-#~ msgid "There are no save files to load"
-#~ msgstr "Yüklenecek bir kayıtlı dosya yok"
-
-#~ msgid "Best of"
-#~ msgstr "En iyisi"
-
-#~ msgid "Worst of"
-#~ msgstr "En kötüsü"
-
-#~ msgid "Base Terrain: "
-#~ msgstr "Temel Arazi: "
-
-#~ msgid "Movement properties: "
-#~ msgstr "Hareket özellikleri: "
-
-#~ msgid "Defense properties: "
-#~ msgstr "Savunma özellikleri: "
-
-#~ msgid "Level"
-#~ msgstr "Seviye"
-
-#~ msgid "Advances from: "
-#~ msgstr "Şundan terfi eder: "
-
-#~ msgid "Advances to: "
-#~ msgstr "Şuna terfi eder: "
-
-#~ msgid "Base unit: "
-#~ msgstr "Temel birim: "
-
-#~ msgid "Base units: "
-#~ msgstr "Temel birimler: "
-
-#~ msgid "Variations: "
-#~ msgstr "Çeşitler:"
-
-#~ msgid "Traits"
-#~ msgstr "Mizaçlar"
-
-#~ msgid "Abilities: "
-#~ msgstr "Yetenekler: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Yetenek Güncellemeleri: "
-
-#~ msgid "HP:"
-#~ msgstr "YP: "
-
-#~ msgid "Vision:"
-#~ msgstr "Görüş: "
-
-#~ msgid "Cost:"
-#~ msgstr "Bedel: "
-
-#~ msgid "Alignment:"
-#~ msgstr "Yönelim: "
-
-#~ msgid "Required XP:"
-#~ msgstr "Gerekli TP: "
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Saldırılar"
-
-#~ msgid "unit help^Name"
-#~ msgstr "İsim"
-
-#~ msgid "Type"
-#~ msgstr "Tür"
-
-#~ msgid "Range"
-#~ msgstr "Menzil"
-
-#~ msgid "Special"
-#~ msgstr "Özel"
-
-#~ msgid "Attack Type"
-#~ msgstr "Saldırı Türü"
-
-#~ msgid "Resistance"
-#~ msgstr "Direnç"
-
-#~ msgid "Terrain Modifiers"
-#~ msgstr "Arazi Niteleyicileri"
-
-#~ msgid "Terrain"
-#~ msgstr "Arazi"
-
-#~ msgid "Defense"
-#~ msgstr "Savunma"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Hareket Bedeli"
-
-#~ msgid "Defense Cap"
-#~ msgstr "Savunma Açığı"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "Sıkıştırma Bedeli"
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "yerel bir yz tarafı droidlenemez: '$side'."
-
-#~ msgid "Side:"
-#~ msgstr "Taraf:"
-
-#~ msgid "theme^Classic"
-#~ msgstr "Klasik"
-
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Klasik, 1.12 öncesi tema"
-
-#~ msgid "villages"
-#~ msgstr "köyler"
-
-#~ msgid "units"
-#~ msgstr "birimler"
-
-#~ msgid "upkeep"
-#~ msgstr "gider"
-
-#~ msgid "income"
-#~ msgstr "gelir"
-
-#~ msgid "statuspanel^level"
-#~ msgstr "seviye"
-
-#~ msgid "statuspanel^moves"
-#~ msgstr "hareketler"
-
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "arazi sav."
-
-#~ msgid " replay"
-#~ msgstr " tekrar"
-
-#~ msgid "do not translate the 'all'^[all|<command>]"
-#~ msgstr "[all|<komut>]"
-
-#~ msgid "aliases:"
-#~ msgstr "diğer adlar:"
-
-#~ msgid "Show fps."
-#~ msgstr "FPS göster."
-
-#~ msgid "Empty"
-#~ msgstr "Boş"
+#~ "'fps' komutunun benzeri olup sadece değişenlerin değil herşeyin yeniden "
+#~ "çizilmesini sağlar."

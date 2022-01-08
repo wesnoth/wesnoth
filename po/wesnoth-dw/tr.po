@@ -1,14 +1,14 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2019 Wesnoth development team
+# Copyright (C) 2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2019.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2019, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
-"PO-Revision-Date: 2021-06-27 20:50+0300\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"PO-Revision-Date: 2022-01-05 20:15+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -303,13 +303,18 @@ msgstr ""
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:350
+#, fuzzy
+#| msgid ""
+#| "Kai, please lead us against them yourself, it will hearten the folk. And "
+#| "— if you will permit — you now reach the age where a kai must learn "
+#| "battle skills."
 msgid ""
 "Kai, please lead us against them yourself, it will hearten the folk. And — "
 "if you will permit — you reach the age now where a kai must learn battle "
 "skills."
 msgstr ""
-"Şahım, lütfen onlara karşı bizi yönet, halkı cesaretlendir. Ve — İnşallah — "
-"bir şahın savaş becerilerini öğrenmesi gereken yaşa ulaşmışsınızdır"
+"Şahım, lütfen onlara karşı bizi yönet, halkı cesaretlendir. Ve — izninizle — "
+"bir şahın savaş becerilerini öğrenmesi gereken yaşa geldiniz."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:355
@@ -400,6 +405,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:41
+#, fuzzy
+#| msgid ""
+#| "Mal-Ravanal, it seemed, was a great human wizard who had transformed "
+#| "himself into a lich. He had attacked the edges of the Kingdom of Wesnoth, "
+#| "and was building a fearsome army of undead humans there. He had also sent "
+#| "necromancers to attack the orcs, and even the elves, in a quest for "
+#| "undead soldiers of different races. It seemed that he also lusted for "
+#| "merfolk slaves. Krellis’ scouts reported that more dark armies were "
+#| "heading north."
 msgid ""
 "Mal-Ravanal, it seemed, was a great human wizard who had transformed himself "
 "into a lich. He had attacked the edges of the kingdom of Wesnoth, and was "
@@ -408,10 +422,10 @@ msgid ""
 "soldiers of different races. It seemed that he also lusted for merfolk "
 "slaves. Krellis’ scouts reported that more dark armies were heading north."
 msgstr ""
-"Görünüşe göre Mal-Ravanal, kendisini bir umacıya dönüştürmüş büyük bir insan "
-"sihirbazıydı. Vesnot Krallığı'nın sınırlarına saldırmıştı ve orada ölmüş "
-"insanlardan korkunç bir ordu kuruyordu. Ayrıca farklı ırklardan askerler "
-"elde etme arayışı içinde orklara ve hatta elflere saldırmaları için "
+"Görünüşe göre Mal-Ravanal, kendisini bir umacıya dönüştürmüş büyük bir "
+"sihirbaz ve insandı. Vesnot Krallığı'nın sınırlarına saldırmıştı ve orada "
+"ölmüş insanlardan korkunç bir ordu kuruyordu. Ayrıca farklı ırklardan "
+"askerler elde etme arayışı içinde orklara ve hatta elflere saldırmaları için "
 "büyücüler göndermişti. Ayrıca, susal köleler için de istekli görünüyordu. "
 "Krellis'in gözcüleri büyük bir kara ordunun kuzeye doğru gittiğini bildirdi."
 
@@ -577,6 +591,11 @@ msgstr ""
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:366
+#, fuzzy
+#| msgid ""
+#| "However, I am afraid that not everyone will follow you on so perilous an "
+#| "adventure. First, you must prove you are not afraid of danger. If you "
+#| "leave now, many will think the mission is but an excuse to flee."
 msgid ""
 "However, I am afraid that not everyone will follow you on so perilous an "
 "adventure. First you must prove you are not afraid of danger. If you leave "
@@ -584,7 +603,7 @@ msgid ""
 msgstr ""
 "Ancak, korkarım ki bu kadar tehlikeli bir macerada herkes sizi takip "
 "etmeyecek. Öncelikle tehlikeden korkmadığınızı kanıtlamanız gerekir. Şimdi "
-"çıkarsanız, birçok kişi görevden kaçmak için bir bahane bulacaktır."
+"bırakırsanız, birçok kişi görevden kaçmak için bunu bahane edecektir."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:373
@@ -808,6 +827,10 @@ msgstr "Aslında, gerçekten ölmüş sanırım."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:778
+#, fuzzy
+#| msgid ""
+#| "I believe it is undead and has no will of its own, but the Kai may have "
+#| "the willpower to direct it."
 msgid ""
 "I believe it is undead and has no will of its own, but the Kai may have the "
 "will power to direct it."
@@ -844,6 +867,10 @@ msgstr "Senaryoyu sona erdirmek için yüzüğü bir birime aldır."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:931
+#, fuzzy
+#| msgid ""
+#| "Killing these enemies was good, but there are many more on the way. It "
+#| "will take greater might than we have to defeat them."
 msgid ""
 "Killing these enemies was good, but there were many more on the way. It will "
 "take greater might than we have to defeat them."
@@ -1174,14 +1201,19 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
+#, fuzzy
+#| msgid ""
+#| "You can choose when the slaves come out of their villages and attack "
+#| "their captors. When you are ready, right-click anywhere and select "
+#| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right click anywhere and select the slave "
 "revolt."
 msgstr ""
 "Kölelerin köylerinden çıkıp sahiplerine saldıracakları zamanı "
-"seçebilirsiniz. Hazır olduğunuzda herhangi bir yere sağ tıklayın ve köle "
-"isyanını seçin."
+"seçebilirsiniz. Hazır olduğunuzda herhangi bir yere sağ tıklayın ve "
+"'Köleleri isyana teşvik et' seçin."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -1302,6 +1334,10 @@ msgstr "Beni esaretten kurtardınız, size boçlandım. Size katılıp dövüşe
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
+#, fuzzy
+#| msgid ""
+#| "Don’t let him go too crazy. Those saurian spears can go right through his "
+#| "scales."
 msgid ""
 "Don’t let him go too crazy. Those saurian spears will go right through his "
 "scales."
@@ -1333,8 +1369,10 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:724
+#, fuzzy
+#| msgid "So, you will help us defeat them?"
 msgid "So you will help us defeat them?"
-msgstr "O halde onları yenmemize yardım edeceksin?"
+msgstr "Yani, onları yenmemize yardım edeceksin?"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:729
@@ -1532,6 +1570,8 @@ msgstr "Topraklarımızdan uzak durmanı söylemiştim! Sen kaşındın."
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:548
+#, fuzzy
+#| msgid "I told you not to bother the ships! Now you’re in for it."
 msgid "I told not to bother the ships! Now you’re in for it."
 msgstr "Gemilerimizden uzak durmanı söylemiştim! Sen kaşındın."
 
@@ -1821,13 +1861,19 @@ msgstr "Tiyegya ile Konuşma"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:16
+#, fuzzy
+#| msgid ""
+#| "It had been more of an adventure than Kai Krellis had planned, but they "
+#| "were finally at their destination. The small island where Tyegëa and her "
+#| "students lived was before them."
 msgid ""
 "It had been more of an adventure than the Kai Krellis had planned, but they "
 "were finally at their destination. The small island where Tyegëa and her "
 "students lived was before them."
 msgstr ""
 "Yolculuk Şah Krellis'in planladığından daha maceralı geçmişti, ama sonunda "
-"adaya varmışlardı. Tiyegya ve öğrencilerinin yaşadığı küçük ada önlerindeydi."
+"hedeflerine ulaşmışlardı. Tiyegya ve öğrencilerinin yaşadığı küçük ada "
+"önlerindeydi."
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:37
@@ -1975,19 +2021,27 @@ msgstr ""
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:179
+#, fuzzy
+#| msgid ""
+#| "That remains to be seen. I find it disturbing that a kai — and my "
+#| "descendant — would run here begging for help. Before I agree to save you, "
+#| "you have to prove that my blood flows in your veins. Prove that your are, "
+#| "despite appearances, courageous, and worthy of my help."
 msgid ""
 "That remains to be seen. I find it disturbing that a Kai — and my descendant "
 "— would run here begging for help. Before I agree to save you, you have to "
 "prove that my blood flows in your veins. Prove that your are, despite "
 "appearances, courageous, and worthy of my help."
 msgstr ""
-"Görünüşte öyle. Benim — soyumdan gelen bir şahın  —  yardım için "
-"yalvarmasını rahatsız edici buluyorum. Seni kurtarmayı kabul etmeden önce, "
-"kanımın damarlarında aktığını kanıtlamak zorundasın. Göründüğünden daha "
-"cesur ve benim yardımıma layık biri olduğunu kanıtlamalısın."
+"Görünüşte öyle. Benim — soyumdan gelen bir şahın — yardım için yalvarmasını "
+"rahatsız edici buluyorum. Seni kurtarmayı kabul etmeden önce, kanımın "
+"damarlarında aktığını kanıtlamak zorundasın. Göründüğünden daha cesur ve "
+"benim yardımıma layık biri olduğunu kanıtlamalısın."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:183
+#, fuzzy
+#| msgid "Well, I defeated the drakes on your island."
 msgid "Well, I defeated the Drakes on your island."
 msgstr "Şey, adandaki ejderleri yendim ya."
 
@@ -2381,6 +2435,14 @@ msgstr "Agnovon Umacı mı??"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:291
+#, fuzzy
+#| msgid ""
+#| "Well, he calls himself Mal-Govon now, but yes. He called this land the "
+#| "KINGDOM of Agnovon. He was its first king. And its last. And each one in "
+#| "between too! He kept getting older and older, but he never died. Well, "
+#| "NOW he’s dead of course. He still putters around in that castle over "
+#| "there, but he hasn’t really cared about keeping his kingdom under control "
+#| "for a good long while. I bet I can wake him up, though. Watch THIS!"
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
 "KINGDOM of Agnovon. He was its first king. And its last, and every one in "
@@ -2389,8 +2451,8 @@ msgid ""
 "he hasn’t really cared about keeping his kingdom under control for a good "
 "long while. I bet I can wake him up, though. Watch THIS!"
 msgstr ""
-"Şimdi kendine Mal-Govon diyor, ama evet. Bu ülkeye Agnovon'un Krallığı adını "
-"verdi. İlk kralıydı. Ve sonuncusu ve aradaki her biri! Yaşlanmaya devam etti "
+"Şimdi kendine Mal-Govon diyor, ama evet. Bu ülkeye Agnovon KRALLIĞI adını "
+"verdi. İlk kraldı. Ve sonuncusu ve aradaki her biri! Yaşlanmaya devam etti "
 "ama asla ölmedi. ŞİMDİ şüphesiz ölü. Kalesinin etrafında terör estirse de "
 "krallığını o kadar umursamadı. Eminim onu uyandırabilirim. Şunu İZLE!"
 
@@ -2423,6 +2485,12 @@ msgstr ""
 
 #. [message]: speaker=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:310
+#, fuzzy
+#| msgid ""
+#| "What I remember, you old fool, is you leaving behind the smoldering "
+#| "bodies of the orcs you had hired to steal my sword. Now, you bring "
+#| "merfolk to do your dirty work. When they lie expiring like gasping fish "
+#| "on the shore, will you not flee again? Do not speak to <i>me</i> of fear."
 msgid ""
 "What I remember, you old fool, is you leaving behind the smoldering bodies "
 "of the orcs you had hired to steal my sword. Now, you bring mer to do your "
@@ -2473,6 +2541,10 @@ msgstr "Merhabalar! Kimsiniz? Bir kılıcı almak için bağıranlar siz miydini
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:372
+#, fuzzy
+#| msgid ""
+#| "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take "
+#| "his sword. Will you join us in battle against a common enemy?"
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
@@ -2675,12 +2747,17 @@ msgstr "Başkası alsın."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1071
+#, fuzzy
+#| msgid ""
+#| "We thank all you humans for your help, and release you from any further "
+#| "obligations. Where we are going, you cannot easily follow."
 msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
 msgstr ""
 "İnsanlar, yardımlarınız için teşekkür ediyor, sizi bana olan "
-"yükümlülüklerden kurtarıyorum. Gittiğimiz yere sizi götüremeyiz."
+"yükümlülüklerden kurtarıyorum. Bizi kolayca takip edemeyeceğiniz bir yere "
+"gidiyoruz."
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1132
@@ -2838,6 +2915,12 @@ msgstr ""
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:422
+#, fuzzy
+#| msgid ""
+#| "Indeed, though we have not been hard-pressed. The creatures have been "
+#| "busy fouling the waters and making the bay more to their liking. We worry "
+#| "that they will soon be back to finish with us, and I fear we will not "
+#| "survive."
 msgid ""
 "Indeed, though we have not been hard pressed. The creatures have been busy "
 "fouling the waters and making the bay more to their liking. We worry that "
@@ -3288,6 +3371,8 @@ msgstr "Bu çatal susallara düşmana yıldırım fırlatma gücü verir."
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
+#, fuzzy
+#| msgid "Only merfolk can use this item."
 msgid "Only the merfolk can use this item."
 msgstr "Bu nesneyi sadece susallar kullanabilir."
 
@@ -3374,6 +3459,10 @@ msgstr "Güç Yüzüğü"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/utils/items.cfg:352
+#, fuzzy
+#| msgid ""
+#| "Killing these enemies was good, but there are many more on the way. I’m "
+#| "sure it is still unsafe here."
 msgid ""
 "Killing these enemies was good, but there were many more on the way. I’m "
 "sure it is still unsafe here."
@@ -3417,17 +3506,3 @@ msgstr ""
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr "Bu birim düşmanlarını sersemletebilir ve etki alanlarını bozabilir."
-
-#~ msgid "Beginner"
-#~ msgstr "Toy"
-
-#~ msgid ""
-#~ "Let’s hope those wild wolves over there don’t get to it before we do."
-#~ msgstr "Umarım oradaki vahşi kurtlar biz gelmeden işi bitirmezler."
-
-#~ msgid ""
-#~ "Hold on...It looks like a better feast is coming our way! Fresh fish, "
-#~ "boys! Go get it."
-#~ msgstr ""
-#~ "Bekle ... Görünüşe göre bayram yapacağız! Taze balık bunlar, çocuklar! "
-#~ "Gidip alın."
