@@ -402,7 +402,7 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = 'recall'
 			ucfg.y = 'recall'
 		end
-		utils.vwriter.write(writer, u.__cfg)
+		utils.vwriter.write(writer, ucfg)
 		if kill_units then u:erase() end
 	end
 end
