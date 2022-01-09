@@ -43,7 +43,7 @@ function gui.get_user_choice(attr, options)
 				wml.tag.command { wml.tag.lua {
 					code = string.format("gui.__user_choice_helper(%d)", k)
 				}}})
-		elseif type(v) == "string" or type(v) == "number" or type(v) == "boolean" or 
+		elseif type(v) == "string" or type(v) == "number" or type(v) == "boolean" or
 			(type(v) == "userdata" and getmetatable(v) == "translatable string") then
 			table.insert(msg, wml.tag.option { description = v,
 				wml.tag.command { wml.tag.lua {
