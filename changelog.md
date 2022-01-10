@@ -22,6 +22,7 @@
      * S08: The appearance of Naga is now smoother (issue #6140)
      * S19: The troll’s gold is automatically collected upon victory if not already obtained (issue #6141)
      * S19: Avoid units spawning over chasms
+     * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
      * Remove time-runs-out lose condition for final scenario (issue #6109)
    * Under the Burning Suns
      * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
