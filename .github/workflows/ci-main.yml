@@ -125,12 +125,18 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-      - name: Upload
+      - name: Upload 1
         uses: actions/upload-artifact@v2
         with:
-          name: Source-And-Windows-Installer
+          name: Source
           path: |
             ~/wesnoth-*.tar.bz2
+
+      - name: Upload 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Installer
+          path: |
             ~/wesnoth-*-win64.exe
 
   flatpak:
