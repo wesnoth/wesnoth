@@ -205,8 +205,16 @@ mapchanges = (
     ("^Vcha", "^Vca"),
     ("^Vch",  "^Vc"),
     ("^Vcm",  "^Vc"),
-    ("Ggf,",  "Gg^Emf"),
-    ("Qv,",  "Mv"),
+    ("Qv",  "Mv"),
+    )
+
+# These terrains were changed from just base to base + overlay
+# Automatic replacement is possible only
+# when the old terrain doesn't have an overlay
+# The terrain name is used to print warnings
+mapchanges_with_overlay = (
+    ("Xol", "Xos^Efs", "enlightened wall"),
+    ("Ggf", "Gg^Emf", "grassland flowers"),
     )
 
 # Base terrain aliasing changes.
@@ -2737,15 +2745,16 @@ def maptransform(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
-        # this change needs to be hardcoded here because it's tricky
+        # this change needs to be handled separately because it's tricky
         # we're converting from a terrain without overlays to a terrain +
         # overlay code
         # since we don't support having two overlays, skip and print a warning
-        if "Xol^" in inmap[y][i]:
-            print("{}, line {}: Xol (enlightened wall) terrain with overlays \
-must be converted manually".format(filename, baseline + y + 1))
-        elif "Xol" in inmap[y][i]:
-            inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
+        for (old, new, name) in mapchanges_with_overlay:
+            if old + "^" in inmap[y][i]:
+                print("{}, line {}: {} ({}) terrain with overlays \
+must be converted manually".format(filename, baseline + y + 1, old, name))
+            elif old in inmap[y][i]:
+                inmap[y][i] = inmap[y][i].replace(old, new)
 
 # Generic machinery starts here
 
