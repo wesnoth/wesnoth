@@ -43,6 +43,7 @@
    * Added a specific prompt for moderators before joining password-protected games (issue #4101)
    * Fixed add-ons not getting enabled for clients, leading to errors such as Unknown Terrain (issue #6285)
  ### Lua API
+   * Fixed an error in `gui.get_user_choice()` and added support for the current DescriptionWML syntax (PR #6247)
  ### Packaging
  ### Terrain
  ### Translations
