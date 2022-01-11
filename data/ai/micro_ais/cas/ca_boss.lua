@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local M = wesnoth.map
@@ -12,8 +11,8 @@ local function boss_attack_weakest_adj_enemy(ai, boss_unit)
 
     if (boss_unit.attacks_left == 0) then return 'no_attack' end
 
-    local min_hp, target = math.huge
-    for xa,ya in H.adjacent_tiles(boss_unit.x, boss_unit.y) do
+    local min_hp, target = math.huge, nil
+    for xa,ya in wesnoth.current.map:iter_adjacent(boss_unit) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
@@ -65,8 +64,7 @@ function ca_boss:execution(cfg)
     -- If boss_status is not set for the boss -> default behavior -> random wander
     if (not boss_vars.boss_status) then
         -- boss gets a new goal if none exist or on any move with 10% random chance
-        local rand = math.random(10)
-        if (not boss_vars.goal_x) or (rand == 1) then
+        if (not boss_vars.goal_x) or (math.random(10) == 1) then
             -- 'locs' includes border hexes, but that does not matter here
             locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), boss)
             local rand = math.random(#locs)
@@ -78,14 +76,14 @@ function ca_boss:execution(cfg)
         local reach_map = AH.get_reachable_unocc(boss)
 
         -- Now find the one of these hexes that is closest to the goal
-        local max_rating, best_hex = - math.huge
+        local max_rating, best_hex = - math.huge, nil
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
             local rating = -M.distance_between(x, y, boss_vars.goal_x, boss_vars.goal_y)
 
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
-            for xa,ya in H.adjacent_tiles(x, y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                 local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
@@ -117,7 +115,7 @@ function ca_boss:execution(cfg)
         -- Finally, if the boss ended up next to enemies, attack the weakest of those
         local attack_status = boss_attack_weakest_adj_enemy(ai, boss)
 
-        -- If the enemy was killed, boss returns home
+        -- If the enemy was killed, boss resets to nil status
         if boss and boss.valid and (attack_status == 'killed') then
             boss_vars.goal_x, boss_vars.goal_y = nil, nil
             -- here, we just set it back to nil
