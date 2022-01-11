@@ -9,7 +9,7 @@ function wesnoth.micro_ais.boss(cfg)
 
 	local CA_parms = {
 		ai_id = 'mai_boss',
-		{ ca_id = "move", location = '~add-ons/Hero_of_Irdya_I/ai/micro_ais/cas/ca_boss.lua', score = cfg.ca_score or 300000 }
+		{ ca_id = "move", location = 'ca_boss.lua', score = cfg.ca_score or 300000 }
 	}
     return required_keys, optional_keys, CA_parms
 end
