@@ -488,6 +488,8 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	endif()
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
+	pkg_check_modules(PANGO REQUIRED pango>=1.22.0)
+	pkg_check_modules(LIBREADLINE REQUIRED readline)
 endif()
 
 if(ENABLE_TESTS)
