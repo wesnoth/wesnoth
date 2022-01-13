@@ -910,7 +910,7 @@ macro found in {}: {}".format(filename,
                                     # it as a reference to everything the substitutions
                                     # could potentially match.
                                     elif '{' in name or '@' in name:
-                                        pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
+                                        pattern = re.sub(r"(\{[^}]*\}|@R[0-5]|@V)", '.*', name)
                                         key = self.mark_matching_resources(pattern, fn,n+1)
                                         if key:
                                             self.fileref[key].append(fn, n+1)
