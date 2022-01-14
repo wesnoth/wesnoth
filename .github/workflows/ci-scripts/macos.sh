@@ -23,7 +23,7 @@ ccache -z
 
 if [ $EXIT_VAL == 0 ] && [ "$CFG" == "Release" ]; then
 		cd ../..
-		./run_wml_tests -g -c -t 20 -p "./projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
+		./run_wml_tests -g -c -t 30 -p "./projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
 		EXIT_VAL=$?
 fi
 
