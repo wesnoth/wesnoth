@@ -984,7 +984,21 @@ linechanges = (
 
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
-        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png")
+        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png"),
+
+        # Changed just before 1.17.0
+        # removed some duplicated images that were also part of an obsolete theme
+        ("themes/unit_box/status-bg.png", "themes/legacy/status-bg.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-afternoon.png", "unit_env/schedule/ToD-day3.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-dawn.png", "unit_env/schedule/ToD-day2.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-dusk.png", "unit_env/schedule/ToD-day1.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-firstwatch.png", "unit_env/schedule/ToD-night.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-indoors.png", "unit_env/terrain/terrain-indoors.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-morning.png", "unit_env/schedule/ToD-day3.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-secondwatch.png", "unit_env/schedule/ToD-night.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-underground.png", "unit_env/terrain/terrain-underground.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-underground-illum.png", "misc/time-schedules/schedule-underground-illum.png"),
+        ("themes/unit_box/misc/time-schedules/default/tod-schedule-24hrs.png", "misc/time-schedules/tod-schedule-24hrs.png"),
 
         )
 
