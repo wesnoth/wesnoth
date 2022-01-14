@@ -423,7 +423,7 @@ else()
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 	set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:MSVCRT")
-	
+
 # -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
 	RemoveFlag(CMAKE_CXX_FLAGS_RELEASE CACHE "/DNDEBUG" "Default C++ flags for RELEASE")
 	RemoveFlag(CMAKE_C_FLAGS_RELEASE CACHE "/DNDEBUG" "Default C flags for RELEASE")
@@ -489,7 +489,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
 	pkg_check_modules(PANGO REQUIRED pango>=1.22.0)
-	pkg_check_modules(LIBREADLINE REQUIRED readline)
+	pkg_check_modules(LIBREADLINE readline)
 endif()
 
 if(ENABLE_TESTS)
