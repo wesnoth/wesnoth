@@ -45,6 +45,8 @@
    * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
    * Added a specific prompt for moderators before joining password-protected games (issue #4101)
    * Fixed add-ons not getting enabled for clients, leading to errors such as Unknown Terrain (issue #6285)
+   * Fixed an information leak where planned multi-turn moves could be visible to enemy players (issue #6292)
+   * Made planned moves visible to allies; this refers to trying to move more hexes than the unit can move this turn, it isn’t the whiteboard (issue #6292)
  ### Lua API
    * Fixed an error in `gui.get_user_choice()` and added support for the current DescriptionWML syntax (PR #6247)
  ### Packaging
@@ -69,6 +71,9 @@
    * Added `--simple-version` command line option
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+   * Fixed units on a recall list sometimes being put on the map by `[modify_unit]` or `[store_unit]...[unstore_unit]` (issues #6295 and #6315)
+   * Fixed abilities that are shown as weapon specials in the attack prediction window being shown on the placeholder for units with no ranged attack, or dark adepts' melee response
+   * Fixed a glitch after a move is interrupted, paths to the hex where the move started were shown (issue #6292)
 
 ## Version 1.16.1
  ### Add-ons server
