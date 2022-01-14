@@ -221,6 +221,13 @@ config_attribute_value& config_attribute_value::operator=(const std::string& v)
 	return *this;
 }
 
+config_attribute_value& config_attribute_value::operator=(const std::string_view& v)
+{
+	// TODO: Currently this acts just like std::string assignment.
+	// Perhaps the underlying variant should take a string_view directly?
+	return operator=(std::string(v));
+
+}
 config_attribute_value& config_attribute_value::operator=(const t_string& v)
 {
 	if(!v.translatable()) {

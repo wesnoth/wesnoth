@@ -138,6 +138,7 @@ public:
 	// String assignments:
 	config_attribute_value& operator=(const char *v) { return operator=(std::string(v)); }
 	config_attribute_value& operator=(const std::string &v);
+	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
 	template<typename T>
 	std::enable_if_t<std::is_base_of_v<enum_tag, T>, config_attribute_value&> operator=(const T &v)
