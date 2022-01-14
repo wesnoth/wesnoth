@@ -222,13 +222,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-N009
+        id: windows-cache
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
+          key: W001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -275,13 +275,13 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
-        id: windows-N009
+        id: windows-cache
         uses: actions/cache@v2
         with:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
+          key: W001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
