@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# GunChleoc, 2020
+# GunChleoc, 2021
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-06-14 09:26+0100\n"
-"Last-Translator: GunChleoc, 2020\n"
+"PO-Revision-Date: 2022-01-13 19:16+0000\n"
+"Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -27,31 +27,27 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "IF bhunaiteach (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Seann-IF bhunaiteach (tionndadh 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Brathan ioma-chluicheadair"
+msgstr "IF dheuchainneach"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Brathan ioma-chluicheadair"
+msgstr "IF nan Dev: IF ’na thàmh"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "IF nan Dev: IF bhunaiteach (RCA) le modh trusaidh eile"
 
 #. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -66,8 +62,6 @@ msgstr "Feansa"
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:196
 #: data/gui/window/mp_faction_select.cfg:169
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Air thuaiream"
 
@@ -276,10 +270,8 @@ msgstr "Dòirneagan robach"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:271
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Dòirneagan glana liatha"
+msgstr "Dòirneagan deighe"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:284
@@ -384,10 +376,8 @@ msgstr "Clachan"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:396
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Sneachd"
+msgstr "Badan sneachda"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:405
@@ -436,10 +426,8 @@ msgstr "Pràisiche le teine"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:500
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Feansa"
+msgstr "Feansa iarainn"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:509
@@ -478,10 +466,8 @@ msgstr "Mòr-chraobh"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:574
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Mòr-chraobh"
+msgstr "Mòr-chraobh shneachdach"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:586
@@ -490,10 +476,8 @@ msgstr "Mòr-chraobh mharbh"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:598
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Mòr-chraobh mharbh"
+msgstr "Mòr-chraobh darach mharbh"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -678,10 +662,8 @@ msgstr "Làr cloiche bunasach"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:894
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Làr cloiche"
+msgstr "Làr cloiche àrsaidh"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -771,10 +753,8 @@ msgstr "Badan balgain-bhuachair"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1009
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Badan balgain-bhuachair soillseach"
+msgstr "Badan balgain-bhuachair neo-mheasgaichte"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -790,6 +770,15 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"Cha mholamaid na tar-chòmhdachaidhean “^Uf” agus “^Ufi” tuilleadh on a "
+"sheallas a’ grafaigeachd tar-chòmhdachadh le cruth-tìre eile fodhpa ged a "
+"bhios stadastaireachd a’ ghluasaid is an dìona ’na chruth-tìre balgain-"
+"bhuachair a-mhàin nach doir an aire air a’ chruth-tìre a tha foidhe. "
+"Mholamaid gun chleachd thu “^Tf” agus “^Tfi” ’nan àite air a bheil an t-aon "
+"choltas ach aig a bheil an stadastaireachd air a bhiodhte an dùil a-rèir na "
+"grafaigeachd. Airson sia-cheàrnaich far nach eil thu ag iarraidh ach "
+"stadastaireachd nam balgan-buachair, tha “Tb” ann ’na chruth-tìre balgain-"
+"bhuachair bunasach a ghabhas cleachdadh le “^Tf” air a bhàrr ann no às."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -803,13 +792,17 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Innsidh sgeulachdan nan troichean mu sheòrsaichean eadar-dhealaichte de  "
+"bhalgan-buachair – le cuid dhiubh, chan eil duilgheas na coiseachd air an "
+"làr chòsach co-cheangailte ris an talamh fodhpa idir fiù ’s ma chithear an "
+"làr fodhpa fhathast. Chan eil dìon is cosgaisean gluasaid na tìre seo "
+"stèidhichte ach air stadastaireachd nan aonadan a thaobh "
+"<italic>text='Bhalgan-buachair'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Badan balgain-bhuachair soillseach"
+msgstr "Badan balgain-bhuachair soillseach neo-mheasgaichte"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1060
@@ -819,7 +812,7 @@ msgstr "Badan balgain-bhuachair soillseach"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1072 data/core/terrain.cfg:1073
 msgid "Mycelium"
-msgstr ""
+msgstr "Mycelium"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -859,10 +852,8 @@ msgstr ""
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1099
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Uamh chreagach"
+msgstr "Uamh ùire chreagach"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1011,38 +1002,28 @@ msgstr "Balla cloiche glan"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1382
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Balla cloiche soillseach"
+msgstr "Balla cloiche àrsaidh"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1392
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Balla uamha"
+msgstr "Balla chatacoman"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1393
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Balla cloiche glan"
+msgstr "Balla cloiche chatacoman"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1403
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Dòirneagan robach"
+msgstr "Balla laomach"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1404
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Balla cloiche glan"
+msgstr "Balla cloiche laomach"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1420,17 +1401,13 @@ msgstr "Tobhta caisteil-shìthe"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2141
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Caisteal-sìthe"
+msgstr "Caisteal Sìthiche geamhraidh"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Caisteal Troiche"
+msgstr "Caisteal Troiche fon talamh"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2165
@@ -1439,17 +1416,13 @@ msgstr "Caisteal Troiche"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2177
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Caisteal Troiche"
+msgstr "Tobhta caisteal Troiche"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2189
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Caisteal Troiche"
+msgstr "Caisteal Troiche geamhraidh"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1582,17 +1555,13 @@ msgstr "Tobhta daingein-shìthe"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2433
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Tobhta daingein-shìthe"
+msgstr "Daingean Sìthiche geamhraidh"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2446
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Daingean troiche"
+msgstr "Daingean Troiche fon talamh"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2459
@@ -1601,17 +1570,13 @@ msgstr "Daingean troiche"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2472
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Daingean troiche"
+msgstr "Tobhta daingean Troiche"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2485
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Daingean troiche"
+msgstr "Daingean Troiche geamhraidh"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1826,18 +1791,6 @@ msgstr "Balgain-bhuachair"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2991
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1924,17 +1877,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3046
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2027,19 +1969,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2055,12 +1984,15 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 "Tha <italic>text='beanntan'</italic> cas gu leòr ach am bidh aig aonadan ri "
-"sreap thairis air cnapan-starra gu tric. Seo as adhbhar gun toir iad "
-"buannachd dìona mhòr don mhòrchuid a dh’aonadan ach cuiridh iad fìor "
-"ghrabadh orra cuideachd. Chan urrainn do mharcaichean fiù ’s faighinn air an "
-"tìr seo ach marcaichean-sìthe is marcaichean madaidh nam bòcan. Buinidh an "
-"dà chuid troichean is athaich do na beanntan is tha e furasta dhaibh siubhal "
-"annta.\n"
+"sreap thairis air cnapan-starra gu tric.\n"
+"Seo as adhbhar gun toir iad buannachd dìona mhòr don mhòrchuid a dh’aonadan "
+"ach cuiridh iad fìor ghrabadh orra cuideachd. Chan urrainn do dh’aonadan air "
+"a bheil armachd throm, can marcaichean Bheasnaid no loidhnichean troma "
+"coisridh fiù ’s faighinn orra. Tha bodhaigean-èisg aig cinnidhean agus "
+"creutairean na mara, can aig an t&#8209;sluagh-mhara nach leig leotha na "
+"slèibhtean casa a dhìreadh. Tha na nagaidhean sònraichte ri linn an "
+"gàirdeanan treuna agus lannan garbha. Buinidh an dà chuid troichean is "
+"athaich do na beanntan is tha e furasta dhaibh faighinn tromhpa.\n"
 "\n"
 "Tha dìon de 60% aig a’ mhòrchuid a dh’aonadan air beanntan ach gheibh "
 "troichean 70%."
@@ -2254,12 +2186,12 @@ msgstr "Lorg"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "Rèitich roghainnean nan atharraichean gnàthaichte a thagh thu."
+msgstr ""
+"Chan eil roghainn gnàthaichte ri fhaighinn airson an linn, a’ gheama no an "
+"tuilleadain."
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
@@ -2274,10 +2206,8 @@ msgstr "Bun-roghainnean"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Coimpiutair"
+msgstr "Cluicheadairean ceangailte"
 
 #. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_name
@@ -2388,7 +2318,7 @@ msgstr "Pròifil"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Dearbh"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
@@ -2494,10 +2424,8 @@ msgstr "Dèan ceangal"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Seòrsa ($order)"
+msgstr "Teirmichean"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2505,19 +2433,22 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Mus luchdaich thu suas susbaint dhan fhrithealaiche seo, feumaidh tu "
+"aontachadh ri teirmichean an sgaoilidh a leanas is tu a’ taghadh “Gabhaidh "
+"Mi Ris”."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
 msgid "I Agree"
-msgstr ""
+msgstr "Gabhaidh mi ris"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Chan eil an trafaig eadar an geama ’s am frithealaiche tèarainte"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Tha an trafaig eadar an geama ’s am frithealaiche crioptaichte"
 
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:154
@@ -2531,10 +2462,8 @@ msgstr "Tionndadh:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:203
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Sguab às an tuilleadan air an fhrithealaiche"
+msgstr "Tagh tionndadh an tuilleadain"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2610,15 +2539,12 @@ msgstr "Gin"
 #. [label]
 #: data/gui/window/addon_manager.cfg:672 data/gui/window/addon_manager.cfg:788
 msgid "Tags:"
-msgstr ""
+msgstr "Tagaichean:"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:714
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr ""
-"Criathraich le tuairisgeul, tionndadh, seòrsa no ùghdar an tuilleadain."
+msgstr "Criathraich le tuairisgeul, tionndadh, seòrsa no ùghdar an tuilleadain"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:735
@@ -2639,10 +2565,8 @@ msgstr "Manaidsear nan tuilleadan"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:509
 #: src/gui/dialogs/addon/manager.cpp:744
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
-msgstr "Fiosrachadh an tuilleadain"
+msgstr "Mion-fhiosrachadh an tuilleadain"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:1034
@@ -2730,10 +2654,8 @@ msgstr "Seòrsaich a-rèir ainmean slàna nan iomairtean"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:226
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Cuingeachadh ùine:"
+msgstr "Loidhne-ama"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:227
@@ -2750,34 +2672,33 @@ msgstr "Atharraichean:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:302
 msgid "Combat:"
-msgstr ""
+msgstr "Còmhrag:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:317
-#, fuzzy
-#| msgid "Defaults"
 msgid "Default RNG"
-msgstr "Bun-roghainnean"
+msgstr "RNG bunaiteach"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:318
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Atharraichidh an t-ath-luchdadh toraidhean nan còmhragan ri teachd"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
 msgid "Predictable RNG"
-msgstr ""
+msgstr "RNG ro-innseach"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Combat outcomes remain constant when reloading"
 msgstr ""
+"Mairidh toraidhean nan còmhragan mar a tha iad nuair a nì thu ath-luchdadh"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "RNG taobhach (deuchainneil)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
@@ -2785,30 +2706,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"Bidh toraidhean nan còmhragan nas fhaisge air na bhiodhte ’n dùil a-rèir nan "
+"coltachdan a chì thu agus cha doir an t-ath-luchdadh buaidh orra"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:341
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Duilgheas: "
+msgstr "Duilgheas:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:355
 msgid "Easy"
-msgstr ""
+msgstr "Furasta"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:358
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Brat-ùrlair àbhaisteach"
+msgstr "Meadhanach"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:361
 msgid "Hard"
-msgstr ""
+msgstr "Cruaidh"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:418
@@ -2819,7 +2738,7 @@ msgstr "Cluich iomairt"
 #: data/gui/window/campaign_dialog.cfg:482
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
-msgstr ""
+msgstr "Cluich"
 
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
@@ -3201,7 +3120,7 @@ msgstr "Gun smachdair"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:395
 msgid "Share Vision:"
-msgstr "Co-roinn an sealladh:"
+msgstr "Co-roinn an lèirsinn:"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:405
@@ -3506,7 +3425,7 @@ msgstr "Luchdaich geama"
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:311
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Seall na chaidh a shàbhaladh le tionndadh eile de Bheasnad"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:496
@@ -3730,7 +3649,7 @@ msgstr "An tasgadan:"
 #. [grid]
 #: data/gui/window/game_version.cfg:139
 msgid "Logs:"
-msgstr ""
+msgstr "Logaichean:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
@@ -3799,7 +3718,7 @@ msgstr "Cuir lethbhreac dhen aithisg dhan stòr-bhòrd"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3919,7 +3838,7 @@ msgstr "Slotaichean falamh"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:336
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Na seall ach geamannan le slotaichean falamh"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
@@ -3931,17 +3850,17 @@ msgstr "Caraidean"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:349
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Na seall ach geamannan le caraidean"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:361
 msgid "Blocked players"
-msgstr ""
+msgstr "Cluicheadairean bacte"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:362
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Seall geamannan aig a bheil cluicheadairean a bhac thu"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:374
@@ -3979,10 +3898,8 @@ msgstr "Amhairc"
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
 #: data/gui/window/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Àrdachaidhean"
+msgstr "Brathan-fios"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -3997,7 +3914,7 @@ msgstr "Roghainnean"
 #. [button]: id=view_match_history
 #: data/gui/window/lobby_main.cfg:516
 msgid "Match History"
-msgstr ""
+msgstr "Eachdraidh nam maids"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
@@ -4125,35 +4042,33 @@ msgstr "Roghainnean an loga"
 
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Ceabain maidse"
+msgstr "Àrainn an loga"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Dì-bhugachadh"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Fiosrachadh"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Rabhadh"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Mearachd"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Gun loga"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4168,7 +4083,7 @@ msgstr "Falamhaich raon an loga"
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Imrich dàta"
 
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:53
@@ -4176,6 +4091,10 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Tagh an tionndadh de Bheasnad on a tha thu airson an dàta agad ion-"
+"phortadh.\n"
+"Cha bhi a h-uile roghainn an sàs gus an dèan thu ath-thòiseachadh air "
+"Bheasnad."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -4219,10 +4138,8 @@ msgstr "San lobaidh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Tighinn a-steach cluicheadair:"
+msgstr "Tighinn a-steach cluicheadair"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -4231,10 +4148,8 @@ msgstr "Nuair a thig cluicheadair a-steach dhan lobaidh no gheama"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Fàgail cluicheadair:"
+msgstr "Fàgail cluicheadair"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -4248,17 +4163,13 @@ msgstr "Nuair a gheibh thu cagairt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Cagairt:"
+msgstr "Cagairt"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Teachdaireachd o charaid:"
+msgstr "Teachdaireachd o charaid"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:187
@@ -4267,10 +4178,8 @@ msgstr "Nuair a gheibh thu teachdaireachd o charaid"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Teachdaireachd phoblach:"
+msgstr "Teachdaireachd phoblach"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:188
@@ -4279,10 +4188,8 @@ msgstr "Nuair a gheibh thu teachdaireachd phoblach"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Teachdaireachd on fhrithealaiche:"
+msgstr "Teachdaireachd on fhrithealaiche"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:189
@@ -4291,10 +4198,8 @@ msgstr "Nuair a gheibh thu teachdaireachd on fhrithealaiche"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Deiseil gus tòiseachadh:"
+msgstr "Deiseil gus tòiseachadh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
@@ -4303,10 +4208,8 @@ msgstr "Nuair a bhios an geama tha tha thu ag òstadh deiseil gus tòiseachadh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Tha geama air a thòiseachadh:"
+msgstr "Tha geama air a thòiseachadh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
@@ -4315,10 +4218,8 @@ msgstr "Nuair a thòisich an òstair (seach thu fhèin) an geama"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Cuairt air atharrachadh:"
+msgstr "Cuairt air atharrachadh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
@@ -4327,10 +4228,8 @@ msgstr "Nuair a thòisich cuairt ùr"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "Chaidh an geama a chruthachadh:"
+msgstr "Chaidh an geama a chruthachadh"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -4340,7 +4239,7 @@ msgstr "Nuair a bhios geama ùr air a chruthachadh"
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:228
 msgid "Reset all options to their default values"
-msgstr "Ath-shuidhich gach roghainn air a luach tùsail"
+msgstr "Ath-shuidhich gach roghainn air a luach bunaiteach"
 
 #. [label]: id=nick_title
 #: data/gui/window/mp_change_control.cfg:75
@@ -4354,17 +4253,13 @@ msgstr "Atharraich smachd"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Log a-steach dha fhrithealaiche ioma-chluicheadair Bheasnaid oifigeil"
+msgstr "Tagh no cuir a-steach seòladh frithealaiche ioma-chluicheadair."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Seòladh"
+msgstr "Seòladh:"
 
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
@@ -4373,10 +4268,8 @@ msgstr "Seòladh"
 
 #. [button]: id=server_add
 #: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Seòladh"
+msgstr "Cuir ris"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
@@ -4390,12 +4283,10 @@ msgstr "Taghadh nam buidhnean ar thuaiream:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
 "Ceadaich sgiobaidhean sgàthanaichte nuair a bhios buidhnean ’gan taghadh air "
-"thuaiream."
+"thuaiream"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -4601,15 +4492,11 @@ msgstr "Ainm a’ gheama:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
 "Suidhich am facal-faire a dh’fheumas an fheadhainn a tha airson gabhail sa "
-"gheama a chur ann."
+"gheama a chur ann"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4643,10 +4530,8 @@ msgstr "Air trusadh"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Tagh am buidheann agad"
+msgstr "Tagh do cheannard"
 
 #. [label]
 #. [widget]: id=name
@@ -4810,7 +4695,7 @@ msgstr "Tha mi deiseil"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Brùth air ESC a thoirt leum thairis air"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -4988,10 +4873,8 @@ msgstr "Criathrag:"
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Criathraich seo air tuairisgeulan nan grad-iuchraichean."
+msgstr "Criathraich seo air tuairisgeulan nan grad-iuchraichean"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:94
@@ -5034,10 +4917,8 @@ msgstr "Ri fhaighinn san deasaiche"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5167,17 +5048,13 @@ msgstr "Cuingich na FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Ma chuireas tu seo à comas, thèid 100% dhen CPU a cleachdadh ach dh’fhaoidte "
-"gum faigh thu dèanadas beagan nas fhearr às nuair a bhios dùmhlachd-"
-"bhreacaidh àrd agad"
+"Ma chuireas tu seo à comas, thèid barrachd dhen CPU a cleachdadh ach "
+"dh’fhaoidte gum faigh thu dèanadas beagan nas fheàrr às (bidh feum air ath-"
+"thòiseachadh gus a chur an sàs)"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5385,12 +5262,10 @@ msgstr "Thoir ainm a’ chleachdaiche seo air falbh on liosta agad"
 
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
 msgstr ""
-"Cha do chuir thu cluicheadair sam bith eile air liosta nan caraidean no air "
-"an liosta neo-shuime agad."
+"Cha do rinn thu caraid de chluicheadair eile sam bith is cha do bhac thu gin "
+"dhiubh."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5439,22 +5314,18 @@ msgstr "Seall cruinne an nàmhad"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
-#, fuzzy
-#| msgid "Show enemy orb"
 msgid "Show disengaged orb"
-msgstr "Seall cruinne an nàmhad"
+msgstr "Seall cruinne gun chòmhrag"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
 msgid "This uses the colors for partial and moved orbs."
-msgstr ""
+msgstr "Cleachdaidh seo dathan nan cruinnean pàirteach is a’ ghluasaid."
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Fiosrachadh mapa"
+msgstr "Fiosrachadh an fhrithealaiche"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5492,16 +5363,22 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"An diofar eadar an toradh a fhuaras agus an toradh air a bhiodhte ’n dùil, "
+"na cheudad.\n"
+"Innsidh a’ chiad àireamh eadar camagan an àireamh de phuingean-beatha a "
+"bhiodhte ’n dùil an toirt air falbh.\n"
+"’S e an suim (no diofar) eadar an dà àireamh eadar camagan an àireamh de "
+"phuingean-beatha ’gan toirt air falbh ann an da-rìribh."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Co-mheas an toraidh ’s na dùile"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Buillean"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5517,6 +5394,20 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"Seo a’ choltachd <i>a priori</i> gun soirbhich leis an àireamh seo de "
+"bhuillean air a char as motha, ’na cheudad.\n"
+"\n"
+"Gu h-imfhiosach, seo an tomhas air mar a thug an tuairmse buaidh air an "
+"taobh seo.\n"
+"Cuiridh luachan eadar 0 agus 50 ’nad shùil nach do shoirbhich le uiread nam "
+"buillean mar a bhiodhte ’n dùil.\n"
+"Cuiridh luachan eadar 50 agus 100 ’nad shùil gun do shoirbhich le barrachd "
+"buillean na bhiodhte ’n dùil.\n"
+"\n"
+"Riochdaichidh luachan uaine gun deach nas fheàrr leis an taobh seo na "
+"bhiodhte ’n dùil.\n"
+"Riochdaichidh luachan dearga gun deach nas miosa leis an taobh seo na "
+"bhiodhte ’n dùil"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -5718,10 +5609,8 @@ msgstr "Gabh air an nàmhaid"
 
 #. [label]
 #: data/gui/window/unit_create.cfg:55
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Sguab às an aonad"
+msgstr "Cruthaich aonad"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/unit_create.cfg:134
@@ -5777,10 +5666,8 @@ msgstr "Ais-ghairm aonad"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr "Lorg ainm aonaid, ainm seòrsa aonaid, rang aonaid no feart."
+msgstr "Lorg ainm aonaid, ainm seòrsa aonaid, rang aonaid no feart"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -5842,7 +5729,7 @@ msgstr "Backend nam brathan Cocoa"
 
 #: src/build_info.cpp:332 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "<chan eil fhios>"
 
 #: src/desktop/paths.cpp:97
 msgid "filesystem_path_system^Volumes"
@@ -5879,24 +5766,28 @@ msgstr "<chan eil fhios>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:638
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<slighe dhàimheach nach tòisich le dotag>"
 
 #: src/filesystem.cpp:641
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Cleachd slighe absaloideach no slighe dhàimheach a thòisicheas le dotag is "
+"slais air ais"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:706 src/filesystem.cpp:727
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<slighe dhàimheach>"
 
 #: src/filesystem.cpp:709 src/filesystem.cpp:730
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Cleachd slighean absaloideach. Cha mholamaid slighean dàimheach tuilleadh on "
+"a thèid an tuigsinn le $HOME ’na dhàimh"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5969,73 +5860,59 @@ msgstr "dh’fhalbh an ùine air"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num bhliadhna"
 msgstr[1] "$num bhliadhna"
-msgstr[2] "$num bhliadhna"
-msgstr[3] "$num bhliadhna"
+msgstr[2] "$num bliadhnaichean"
+msgstr[3] "$num bliadhna"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num mhìos"
 msgstr[1] "$num mhìos"
-msgstr[2] "$num mhìos"
-msgstr[3] "$num mhìos"
+msgstr[2] "$num mìosan"
+msgstr[3] "$num mìos"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
-msgstr[0] "$num sheachdain"
+msgstr[0] "$num seachdain"
 msgstr[1] "$num sheachdain"
-msgstr[2] "$num sheachdain"
-msgstr[3] "$num sheachdain"
+msgstr[2] "$num seachdainean"
+msgstr[3] "$num seachdain"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
-msgstr[0] "$num là"
-msgstr[1] "$num là"
-msgstr[2] "$num là"
-msgstr[3] "$num là"
+msgstr[0] "$num latha"
+msgstr[1] "$num latha"
+msgstr[2] "$num làithean"
+msgstr[3] "$num latha"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num uair a thìde"
 msgstr[1] "$num uair a thìde"
-msgstr[2] "$num uair a thìde"
+msgstr[2] "$num uairean a thìde"
 msgstr[3] "$num uair a thìde"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num mhionaid"
 msgstr[1] "$num mhionaid"
-msgstr[2] "$num mhionaid"
-msgstr[3] "$num mhionaid"
+msgstr[2] "$num mionaidean"
+msgstr[3] "$num mionaid"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num diog"
-msgstr[1] "$num diog"
-msgstr[2] "$num diog"
+msgstr[1] "$num dhiog"
+msgstr[2] "$num diogan"
 msgstr[3] "$num diog"
 
 #: src/gui/core/canvas.cpp:511
@@ -6048,11 +5925,11 @@ msgstr "Tha meud-teacsa dhe 0 aig an teacsa."
 
 #: src/gui/core/canvas.cpp:835
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "Tha meud àicheil aig an raoin ri tharraing"
 
 #: src/gui/core/canvas.cpp:837
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "Tha meud an raoin ri tharraing nas motha na meud a’ widget"
 
 #: src/gui/core/widget_definition.cpp:31
 msgid "No state or draw section defined."
@@ -6077,16 +5954,16 @@ msgid "No grid defined."
 msgstr "Cha deach griod a mhìneachadh."
 
 #: src/gui/core/window_builder.cpp:231
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "Feumaidh colbh a bhith aig ràgh."
+msgstr "Feumaidh colbh a bhith aig ràgh $row a’ ghrioda “$grid”."
 
 #: src/gui/core/window_builder.cpp:243
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Tha àireamh de cholbhan eadar-dhealaichte aig ràgh $row a’ ghrioda "
+"“$grid” (lorg sinn $found, an dùil air $expected)"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^All Add-ons"
@@ -6190,36 +6067,38 @@ msgstr "A’ chiad luchdadh suas ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Co-obrachadh"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
+"Bidh a h-uile cluicheadair daonnda air an aon sgioba còmhla ’s a’ cluich an "
+"aghaidh na h-IF"
 
 #: src/gui/dialogs/addon/manager.cpp:226
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Coltas"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
+"Bheir an fheadhainn seo coltas eadar-dhealaichte air a’ gheama gun bhuaidh "
+"air dòigh na cluiche"
 
 #: src/gui/dialogs/addon/manager.cpp:229
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Duilgheas"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "’S urrainn dhaibh na h-iomairtean a dhèanamh nas fhasa no nas dorra"
 
 #: src/gui/dialogs/addon/manager.cpp:232
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:234
@@ -6227,24 +6106,25 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Atharraich an tuairmse sa chòmhrag no thoir air falbh an tuairmse gu tur"
 
 #: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Maireachdainn"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Dèan sabaid an aghaidh iomadh ionnsaigh"
 
 #: src/gui/dialogs/addon/manager.cpp:238
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Tìr-atharrachadh"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:240
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "’S urrainn do chluicheadairean an cruth-tìre atharrachadh"
 
 #: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
@@ -6378,7 +6258,7 @@ msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
 #: src/gui/dialogs/addon/manager.cpp:870
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "Chaidh an tuilleadan a dhiùltadh leis an fhrithealaiche:"
 
 #: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:912
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
@@ -6401,12 +6281,12 @@ msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:960
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M%p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6587,24 +6467,20 @@ msgid "The game data cache could not be purged."
 msgstr "Cha b’ urrainn dhuinn tasgadan dàta a’ gheama a phurgaidicheadh."
 
 #: src/gui/dialogs/game_load.cpp:75
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Geamannan air an sàbhaladh"
+msgstr "Gun gheama air a shàbhaladh"
 
 #: src/gui/dialogs/game_load.cpp:75
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Chan eil geama air a shàbhaladh ri luchdadh ann."
 
 #: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "An tionndadh làithreach"
 
 #: src/gui/dialogs/game_load.cpp:148
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Tionndadh $version"
+msgstr "Beasnad $version"
 
 #: src/gui/dialogs/game_load.cpp:285
 msgid "The selected file is corrupt: "
@@ -6809,10 +6685,8 @@ msgid "Do you really want to log out?"
 msgstr "A bheil thu cinnteach gu bheil thu airson clàradh a-mach?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:235
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Tha tuilleadan neo-chòrdail ann."
+msgstr "Tuilleadan neo-chòrdail"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:236
 msgid ""
@@ -6825,10 +6699,8 @@ msgstr ""
 "mol thu dhan òstair gun ùraich iad na tuilleadain aca?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:251
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Tha tuilleadan a dhìth."
+msgstr "Tha tuilleadan a dhìth"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:252
 msgid ""
@@ -6867,7 +6739,7 @@ msgstr "Air ath-luchdadh:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Shared vision:"
-msgstr "Sealladh co-roinnte:"
+msgstr "Lèirsinn cho-roinnte:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Shuffle sides:"
@@ -6905,6 +6777,8 @@ msgstr "lobaidh"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Chan eil an geama seo a’ ceadachadh amhairc. A bheil thu airson amharc le "
+"còraichean maoir co-dhiù?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6918,6 +6792,8 @@ msgstr ""
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Tha an geama seo fo dhìon facail-fhaire. A bheil thu airson tighinn a-steach "
+"le còraichean maoir co-dhiù?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
@@ -6932,10 +6808,8 @@ msgid "Side $side"
 msgstr "Taobh $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Frithealaiche:"
+msgstr "Cuir frithealaiche ris"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 msgid "Scenarios"
@@ -7002,8 +6876,6 @@ msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
-#, fuzzy
-#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "Cha ghabh an geama a thagh thu a chruthachadh."
 
@@ -7089,7 +6961,8 @@ msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
 #: src/gui/dialogs/preferences_dialog.cpp:866
 msgid "All hotkeys have been reset to their default values."
-msgstr "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach tùsail."
+msgstr ""
+"Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach bhunaiteach."
 
 #: src/gui/dialogs/preferences_dialog.cpp:866
 msgid "Hotkeys Reset"
@@ -7116,11 +6989,11 @@ msgstr "A’ chuairt seo"
 
 #: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Reataichean nam bualaidhean a-rèir seans bualaidh:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:217
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(cha deach ionnsaigh sam bith a thoirt fhathast)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:325
 msgid ""
@@ -7131,6 +7004,12 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"An diofar eadar an toradh a fhuaras agus an toradh air a bhiodhte ’n dùil, "
+"na cheudad.\n"
+"Innsidh a’ chiad àireamh eadar camagan an àireamh de bhuillean a bhiodhte ’n "
+"dùil an toirt.\n"
+"’S e an suim (no diofar) eadar an dà àireamh eadar camagan an àireamh de "
+"bhuillean ’gan toirt ann an da-rìribh."
 
 #: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Recalls"
@@ -7172,7 +7051,7 @@ msgstr "Tagh deuchainn"
 
 #: src/gui/dialogs/unit_create.cpp:198
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Eugsamhlachadh bunaiteach"
 
 #: src/gui/dialogs/unit_recall.cpp:224
 msgid ""
@@ -7218,7 +7097,7 @@ msgstr "Cuir an t-aonad à dreuchd"
 
 #: src/gui/gui.cpp:85
 msgid "No default gui defined."
-msgstr "Cha deach GUI tùsail a shònrachadh"
+msgstr "Cha deach GUI bunaiteach a shònrachadh"
 
 #: src/gui/widgets/addon_list.cpp:119
 msgid "addon_state^Installed, upgradable"
@@ -7246,20 +7125,16 @@ msgstr "cagair gu $receiver"
 
 #: src/gui/widgets/chatbox.cpp:393
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "Air tighinn a-steach gu <i>$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:399
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"Chaidh seisean cagairt le <i>“$name”</i> a thòiseachadh. Mura h-eil thu "
-"airson teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh <i>/ignore "
-"$name</i>"
+"Chaidh teachdaireachd phrìobhaideach le <i>$name</i> a thòiseachadh. Mura h-"
+"eil thu airson teachdaireachdan fhaighinn on chluicheadair seo, sgrìobh <i>/"
+"ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:97
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -7271,10 +7146,8 @@ msgstr ""
 "Chan eil taic ri fosgladh cheanglaichean, cuir fios gun neach-pacaididh agad"
 
 #: src/gui/widgets/label.cpp:144
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Chaidh lethbhreac dhen cheangal a dhèanamh!"
+msgstr "Am fosgail thu an ceangal?"
 
 #: src/gui/widgets/label.cpp:175
 msgid "Copied link!"
@@ -7335,7 +7208,7 @@ msgstr "Cha deach widget a mhìneachadh."
 
 #: src/gui/widgets/slider.cpp:355
 msgid "The number of value_labels and values don't match."
-msgstr "Cha cho-fhreagair an t-àireamh dhe value_labels is luachan."
+msgstr "Cha cho-fhreagair an àireamh dhe value_labels is luachan."
 
 #: src/gui/widgets/stacked_widget.cpp:241
 msgid "No stack layers defined."
@@ -7531,10 +7404,8 @@ msgid "End Unit Turn"
 msgstr "Crìochnaich cuairt an aonaid"
 
 #: src/hotkey/hotkey_command.cpp:85
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Sgrolaich gu clì"
+msgstr "Sgrolaich dhan cheannard"
 
 #: src/hotkey/hotkey_command.cpp:86
 msgid "Undo"
@@ -7565,10 +7436,8 @@ msgid "Map Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
 #: src/hotkey/hotkey_command.cpp:94
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Astar luathaichte"
+msgstr "Toglaich an t-astar luathaichte"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Terrain Description"
@@ -7639,10 +7508,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Marbh aonad (Dì-bhugachadh!)"
 
 #: src/hotkey/hotkey_command.cpp:120
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Amasan a’ chnàmh-sgeòil"
+msgstr "Amasan"
 
 #: src/hotkey/hotkey_command.cpp:123
 msgid "Pause Network Game"
@@ -7653,10 +7520,8 @@ msgid "Continue Network Game"
 msgstr "Lean air geama lìonraidh"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
-msgstr "Fàg dhan phrìomh chlàr-taice"
+msgstr "Fàg dhan chlàr-taice"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Set Team Label"
@@ -7918,12 +7783,8 @@ msgid "Item Tool"
 msgstr "Inneal nan nithean"
 
 #: src/hotkey/hotkey_command.cpp:199
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item."
-msgstr ""
-"Suidhichidh no slaodaidh tu leubail le putan clì na luchaige, falamhaichidh "
-"tu an taghadh leis an fhear deas."
+msgstr "Suidhichidh putan clì na luchaige nì ùr."
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid ""
@@ -8162,10 +8023,8 @@ msgid "Update Shroud Now"
 msgstr "Ùraich an sgàil an-dràsta"
 
 #: src/hotkey/hotkey_command.cpp:270
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Lean air an gluasad"
+msgstr "Lean air adhart le gluasad neo-choileanta"
 
 #: src/hotkey/hotkey_command.cpp:271
 msgid "Find Label or Unit"
@@ -8181,17 +8040,15 @@ msgstr "Bruidhinn ris a h-uile"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Cobhair mun t-sàbhaladh is luchdadh"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Gliocas: Cha leig thu leas sàbhaladh is luchdadh"
 
 #: src/hotkey/hotkey_command.cpp:277
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Cuir àithne cleachdaiche a-steach"
+msgstr "Cuir a-steach àithne"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Custom Command"
@@ -8202,10 +8059,8 @@ msgid "Run Formula"
 msgstr "Ruith foirmle"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Cabadaich nan cluicheadair"
+msgstr "Falamhaich a’ chabadaich"
 
 #: src/hotkey/hotkey_command.cpp:282
 msgid "Change Language"
@@ -8293,16 +8148,12 @@ msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
 #: src/terrain/translation.cpp:713
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
 msgstr ""
 "Chaidh cruth-tìre le sreang aig a bheil barrachd air 4 caractaran a lorg, is "
-"an cruth-tìre seo :"
+"an cruth-tìre seo:"
 
 #: src/wml_exception.cpp:66
 msgid ""
@@ -8348,259 +8199,3 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
-
-#~ msgid "Recruits:"
-#~ msgstr "Luchd-trusaidh:"
-
-#~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "T"
-
-#~ msgid "timespan^$num years"
-#~ msgstr "$num bliadhna(ichean)"
-
-#~ msgid "timespan^$num months"
-#~ msgstr "$num mìos(an)"
-
-#~ msgid "timespan^$num weeks"
-#~ msgstr "$num seachdain(ean)"
-
-#~ msgid "timespan^$num days"
-#~ msgstr "$num là(ithean)"
-
-#~ msgid "timespan^$num hours"
-#~ msgstr "$num uair(ean) a thìde"
-
-#~ msgid "timespan^$num minutes"
-#~ msgstr "$num mionaid(ean)"
-
-#~ msgid "timespan^$num seconds"
-#~ msgstr "$num diog(an)"
-
-#~ msgid "Start Tutorial"
-#~ msgstr "Tòisich oideachadh"
-
-#~ msgid "$player has entered the room"
-#~ msgstr "Thàinig $player a-steach dhan t-seòmar"
-
-#~ msgid "$player has left the room"
-#~ msgstr "Dh’fhàg $player an seòmar"
-
-#~ msgid "Leader:"
-#~ msgstr "Ceannard:"
-
-#~ msgid "Gender:"
-#~ msgstr "Gnè:"
-
-#~ msgid "Starting position:"
-#~ msgstr "Ionad tòiseachaidh:"
-
-#~ msgid "Team:"
-#~ msgstr "Sgioba:"
-
-#~ msgid "Multiplayer server login dialog"
-#~ msgstr "Còmhradh logaidh a-steach dhan fhrithealaiche ioma-chluicheadair"
-
-#~ msgid "Current Room"
-#~ msgstr "An seòmar làithreach"
-
-#~ msgid "url^Copy"
-#~ msgstr "Dèan lethbhreac"
-
-#~ msgid "Copy this URL to clipboard"
-#~ msgstr "Cuir lethbhreac dhen URL dhan stòr-bhòrd"
-
-#~ msgid "url^Go"
-#~ msgstr "Siuthad"
-
-#~ msgid "Visit this URL with a web browser"
-#~ msgstr "Tadhail air an URL seo le brabhsair-lìn"
-
-#~ msgid "Nearest Neighbor"
-#~ msgstr "An nàbaidh as fhaisge"
-
-#~ msgid "Nearest Neighbor scaling (fastest)"
-#~ msgstr "Sgèileadh an nàbaidh as fhaisge (as luaithe)"
-
-#~ msgid "xBRZ + linear"
-#~ msgstr "xBRZ + loidhneach"
-
-#~ msgid "xBRZ followed by Bilinear interpolation"
-#~ msgstr "xBRZ le eadar-phòlachadh dà-loidhneach an uairsin"
-
-#~ msgid "xBRZ + NN"
-#~ msgstr "xBRZ + nàbaidh"
-
-#~ msgid "xBRZ followed by Nearest Neighbor (recommended)"
-#~ msgstr "xBRZ ’s an nàbaidh as fhaisge an uairsin (molta)"
-
-#~ msgid "Bilinear interpolation scaling"
-#~ msgstr "Sgèileadh le eadar-phòlachadh dà-loidhneach"
-
-#~ msgid "Linear"
-#~ msgstr "Loidhneach"
-
-#~ msgid "Advanced Graphics Options"
-#~ msgstr "Roghainnean adhartach na grafaigeachd"
-
-#~ msgid "Images will be scaled using the following algorithms:"
-#~ msgstr "Thèid dealbhan a sgèileadh leis na h-algairimean seo:"
-
-#~ msgid "All units, haloes, border hexes"
-#~ msgstr "Gach aonad, riomball is sia-cheàrnaich crìche"
-
-#~ msgid "Scaled to zoom"
-#~ msgstr "Sgèilichte dhan t-sùm"
-
-#~ msgid "Everything else"
-#~ msgstr "A h-uile càil eie"
-
-#~ msgid "Scaled to hex"
-#~ msgstr "Sgèilichte dhan t-sia-cheàrnach"
-
-#~ msgid "Sort by:"
-#~ msgstr "Seòrsaich a-rèir:"
-
-#~ msgid "Dates"
-#~ msgstr "Cinn-latha"
-
-#~ msgid "Save random seed"
-#~ msgstr "Sàbhail sìol na tuairmeachd"
-
-#~ msgid ""
-#~ "Makes the random number generator yield the same results even after "
-#~ "reloading a game"
-#~ msgstr ""
-#~ "Bheir gineadair nan àireamhan tuaireamach an aon toradh dhut gach turas "
-#~ "fiù ’s nuair a bhios tu air geama ath-luchdadh"
-
-#~ msgid "Choose Player"
-#~ msgstr "Tagh cluicheadair"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Cò an cluicheadair a thòisicheas an-seo?"
-
-#~ msgid "No ignored"
-#~ msgstr "Gun neach neo-shuime"
-
-#~ msgid "Event"
-#~ msgstr "Tachartas"
-
-#~ msgid "You will now connect to the multiplayer server."
-#~ msgstr "Nì thu ceangal ri frithealaiche ioma-chluicheadair a-nis"
-
-#~ msgid "View List"
-#~ msgstr "Faic liosta"
-
-#~ msgid "Allow only registered users to join the game"
-#~ msgstr ""
-#~ "Na leig ach le cleachdaichean clàraichte tighinn a-steach dhan gheama"
-
-#~ msgid "Registered Users Only"
-#~ msgstr "Cleachdaichean clàraichte a-mhàin"
-
-#~ msgid "Categories:"
-#~ msgstr "Roinnean-seòrsa:"
-
-#~ msgid "Font Scaling:"
-#~ msgstr "Sgèileadh a’ chrutha-chlò:"
-
-#~ msgid "Set the scaling factor of fonts"
-#~ msgstr "Suidhich factar sgàilidh nan cruthan-clò"
-
-#~ msgid "Screenshots..."
-#~ msgstr "Glacaidhean-sgrìn…"
-
-#~ msgid "Start a tutorial to familiarize yourself with the game"
-#~ msgstr "Tòisich oideachadh gus ionnsachadh mun gheama"
-
-#~ msgid "Cores"
-#~ msgstr "Eitein"
-
-#~ msgid "Select the game core data"
-#~ msgstr "Tagh dàta eitein a’ gheama"
-
-#~ msgid "feature^JPEG screenshots"
-#~ msgstr "Glacaidhean-sgrìn JPEG"
-
-#~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "Reandaradh dà-chomhaireach dìleabach"
-
-#~ msgid "The maximum text width is less than 1."
-#~ msgstr "Tha an leud as motha dhe theacsa nas lugha na 1."
-
-#~ msgid "Line doesn't fit on canvas."
-#~ msgstr "Tha an loidhne ro mhòr airson a’ chanabhais."
-
-#~ msgid "Rectangle doesn't fit on canvas."
-#~ msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
-
-#~ msgid "Rounded Rectangle doesn't fit on canvas."
-#~ msgstr "Tha an ceart-cheàrnach cruinn ro mhòr airson a’ chanabhais."
-
-#~ msgid "Circle doesn't fit on canvas."
-#~ msgstr "Tha an cearcall ro mhòr airson a’ chanabhais."
-
-#~ msgid "Text doesn't start on canvas."
-#~ msgstr "Chan eil an teacsa a’ tòiseachadh air a’ chanabhas."
-
-#~ msgid "Number of columns differ."
-#~ msgstr "Cha àireamhan eadar-dhealaichte dhe cholbhan ann."
-
-#~ msgid "Terms"
-#~ msgstr "Teirmichean"
-
-#~ msgid "No matching widget found for scaling option"
-#~ msgstr "Cha each widget a lorg airson na roghainn sgèilidh"
-
-#~ msgid "version^N/A"
-#~ msgstr "chan eil fhios"
-
-#~ msgid "Room <i>“$name”</i> joined"
-#~ msgstr "Air tighinn a-steach dhan t-seòmar <i>“$name”</i>"
-
-#~ msgid "Do you want to open this link?"
-#~ msgstr "A bheil thu airson an ceangal seo fhosgladh?"
-
-#~ msgid "Accelerated"
-#~ msgstr "Luathaichte"
-
-#~ msgid ""
-#~ "Left mouse button sets a new item or moves it via drag and drop, right "
-#~ "clears. Not implemented yet."
-#~ msgstr ""
-#~ "Suidhichidh putan clì na luchaige nì ùr no gluaisidh e aonad le slaodadh "
-#~ "’s leigeil às; falamhaichidh tu an taghadh leis an fhear deas. Cha deach "
-#~ "seo a chruthachadh fhathast."
-
-#~ msgid ""
-#~ "Left mouse button sets or drags a sound source, right clears. Not "
-#~ "implemented yet."
-#~ msgstr ""
-#~ "Suidhichidh no slaodaidh tu tùs fuaime le putan clì na luchaige; "
-#~ "falamhaichidh tu an taghadh leis an fhear deas. Cha deach seo a "
-#~ "chruthachadh fhathast."
-
-#~ msgid "Sound Source Tool"
-#~ msgstr "Inneal nan tùsan fuaime"
-
-#~ msgid "Assign Recruit List"
-#~ msgstr "Sònraich liosta-trusaidh"
-
-#~ msgid "Assign the selected unit set as recruit list to the unit."
-#~ msgstr ""
-#~ "Sònraich an seata de dh’aonadan a thagh thu mar liosta-trusaidh an aonaid."
-
-#~ msgid "Generate Tiles in Selection"
-#~ msgstr "Gin leacan san taghadh"
-
-#~ msgid "Rotate Map"
-#~ msgstr "Tionndadh mapa"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Seall loga na cabadaich"
-
-#~ msgid "Clear Messages"
-#~ msgstr "Falamhaich teachdaireachdan"
-
-#~ msgid "No server has been defined."
-#~ msgstr "Cha deach frithealaiche a shònrachadh."
