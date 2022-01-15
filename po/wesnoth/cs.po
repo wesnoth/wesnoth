@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-20 20:26+0200\n"
+"PO-Revision-Date: 2022-01-09 14:06+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5990,7 +5990,7 @@ msgstr "%H:%M"
 
 #: src/format_time_summary.cpp:49
 msgid "%I:%M %p"
-msgstr "%I:%M %p"
+msgstr "%I:%M"
 
 #: src/format_time_summary.cpp:54
 msgid "%A, %H:%M"
@@ -5998,15 +5998,15 @@ msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %I:%M %p"
+msgstr "%A, %I:%M"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
 msgid "%b %d %Y"
-msgstr "%b %d %y"
+msgstr "%d %b %Y"
 
 #: src/game_config.cpp:528
 msgid "Invalid color in range: "
@@ -8105,11 +8105,11 @@ msgstr "Čas na kolo"
 
 #: src/save_index.cpp:262
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %d %b %Y, %I:%M"
 
 #: src/save_index.cpp:263
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:283 src/savegame.cpp:588
