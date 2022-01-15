@@ -31,16 +31,10 @@ msgstr "チュートリアル"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
-"チュートリアルで Wesnoth の基本的なプレイ方法を学びましょう。初めてプレイする"
-"人に推奨されています。"
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
@@ -54,10 +48,8 @@ msgstr "キャラクター選択"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play?"
 msgid "Who do you want to play as?"
-msgstr "どのキャラクターでプレイしますか？"
+msgstr ""
 
 #. [button]
 #. [side]: type=Fighter, id=student
@@ -151,40 +143,21 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"このチュートリアルでは、Konradを操作します。Konradは主塔の上にいます。そし"
-"て、Konradの師匠、Delfadorは川の東岸にいます。マウスカーソルをユニット（マッ"
-"プ上のキャラクター）上に重ねると、ユニットの能力などが画面の右側に表示されま"
-"す。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"このチュートリアルではLi’sarを操作します。Li’sarは主塔の上にいます。そして、"
-"Li’sarの師匠、Delfadorは川の東岸にいます。マウスカーソルをユニット上に重ねる"
-"と、ユニットの能力などが画面の右側に表示されます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
@@ -434,15 +407,6 @@ msgstr "ターン"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "teams, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -452,11 +416,6 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
-"毎ターン、それぞれの陣営には移動する機会が与えられます。移動や攻撃を終えたの"
-"なら、画面右下にある<b>ターン終了</b>のボタンを押しましょう。すると、AIや他の"
-"プレイヤーに操作されているチームにターンが移ります。一部のシナリオでは、最大"
-"のターン数（ターン制限）が決められています。画面上部にある旗のアイコンの隣を"
-"見れば、現在のターンとターン制限を確認できます。"
 
 #. [event]
 #. [else]
@@ -591,13 +550,6 @@ msgstr "雇用"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. This scenario you have only one type "
-#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -605,11 +557,6 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"あなたが<i>主塔</i>にいる間、ユニットを<i>雇用</i>することができます。周りに"
-"ある城ヘクスを右クリックして<b>雇用</b>を選択してください。しかし、新しく雇用"
-"したユニットはそのターンの間は行動できません。行動できるようになるのは次の"
-"ターンからです。このシナリオでは、あなたはエルフの戦士を雇用することができま"
-"す。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
@@ -664,16 +611,10 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
 msgstr ""
-"おぬしの戦士たちをクィンティンに向かわせる前に、攻撃には2種類あることを知る必"
-"要があるじゃろう..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
@@ -793,12 +734,9 @@ msgstr "ユニット解説"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
-msgstr "ユニットを右クリックして<b>ユニットの解説</b>を見ることができます。"
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
@@ -1054,19 +992,11 @@ msgstr "ユニットを雇用し、村を確保するまでターンを終える
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
-#| "teach you about recalling units, abilities and weapon specials, income "
-#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
-"おかえりなさい！　これは、２パートから成るチュートリアルの２パート目です。"
-"パート II では、ユニットの召還、能力と特殊武器、収入と維持費、長距離移動、支"
-"配領域（ZOC）、時刻について学べます。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
@@ -1088,41 +1018,21 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"Konrad、これは試合ではありません！オークが川の向こう側で野営しています。ここ"
-"はエルフ領であるというのに、オークたちは侵入してきたのです。愚かなものです、"
-"我々エルフは森で機動力、回避率が向上するのですから。私が補佐しますから、二度"
-"と我々を脅かすことが無いようにオークのリーダーを倒してください。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"Li’sar、これは試合ではありません！オークが川の向こう側で野営しています。ここ"
-"はエルフ領であるというのに、オークたちは侵入してきたのです。愚かなものです、"
-"我々エルフは森で機動力、回避率が向上するのですから。私が補佐しますから、二度"
-"と我々を脅かすことが無いようにオークのリーダーを倒してください。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
@@ -1249,16 +1159,6 @@ msgstr "召還"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
-#, fuzzy
-#| msgid ""
-#| "In addition to recruiting new units each scenario, you can also "
-#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
-#| "cost of 20 gold each. This allows you to build up a formidable army over "
-#| "the course of multiple scenarios by recalling your highest leveled troops "
-#| "or those with good combinations of traits and abilities. To recall a "
-#| "unit, right click while your leader stands on a keep and select the "
-#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
-#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1268,12 +1168,6 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
-"新しいユニットを雇用することに加えて、20ゴールド払うことで以前のシナリオで活"
-"躍したユニットを<i>召還</i>することができます。高レベルのユニットや良い組み合"
-"わせの特性を持つユニットを召還することで、複数のシナリオに渡って強力な軍隊を"
-"編成することができます。ユニットを召還したければリーダーを主塔に移動させて、"
-"付近の城ヘクスを右クリックして<i>召還</i>を選択してください。<i>召還</i>する"
-"だけでなく、新しい兵を雇用することも忘れないでください。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:299
@@ -1347,18 +1241,6 @@ msgstr "特殊武器"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1370,13 +1252,6 @@ msgid ""
 "A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"特殊武器はある攻撃をより強力にするものです。今回のケースでは、呪術師は巻きつ"
-"き攻撃に遅化の効果を持っています。この攻撃を受けた敵は、1ターンの間攻撃力が半"
-"分になります。他の特殊武器の例を挙げると、先制は相手から攻撃をしかけられたと"
-"しても先に攻撃を開始し、魔法は必ず70%の命中率となります。\n"
-"\n"
-"能力と特殊武器の一覧については、特性と同様にヘルプを参照してください。（デ"
-"フォルトのホットキーは<b>F1</b>です）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
@@ -1409,23 +1284,12 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
-#, fuzzy
-#| msgid ""
-#| "You now have two healers. Your Druid can heal adjacent units by 8 "
-#| "hitpoints per turn compared to your Shaman's 4. However, each unit can "
-#| "only receive healing from one healer — a unit next to multiple healers is "
-#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
-"現在、あなたの陣営には2人のヒーラーがいます。呪術師の回復の力が4であるのに対"
-"し、ドルイド僧は隣接するユニットのHPを1ターンに8回復させることができます。し"
-"かしながら、個々のユニットが回復を受けられるのは1人のヒーラーからのみです。あ"
-"るユニットが複数のヒーラーに隣接している場合、最もレベルが高いヒーラーから回"
-"復を受けることになります。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
@@ -1833,16 +1697,10 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"もし呪術師が負傷したユニットの隣にいれば、次のターンの開始時にHPを4回復してく"
-"れます。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
@@ -1905,16 +1763,10 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
-#, fuzzy
-#| msgid ""
-#| "You’re venturing away from your keep. You might need recruit more units, "
-#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"主塔から離れ過ぎないでください。増援を呼ぶ必要があるかもしれませんし、オーク"
-"のリーダーに乗っ取られてしまうかもしれません。気をつけましょう！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
@@ -2017,18 +1869,11 @@ msgstr "勝利条件"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
 "b> menu."
 msgstr ""
-"このシナリオでは、オークのリーダーを倒すことで勝利できます。シナリオの勝利条"
-"件は<b>メニュー</b>の<b>シナリオ目標</b>から確認できます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
