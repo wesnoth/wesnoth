@@ -52,7 +52,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Bulgarian, Chinese (Simplified), Chinese (Traditional), Czech, Dutch, Finnish, French, Indonesian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Spanish, Turkish.
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Chinese (Traditional), Czech, Dutch, Finnish, French, Indonesian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Scottish Gaelic, Spanish, Turkish.
    * gettext plural forms now have caret prefixes stripped as well (PR #6094).
  ### Units
    * Added attack image for the Bone Knight’s trample
