@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-09-20 20:28+0200\n"
+"PO-Revision-Date: 2022-01-11 22:09+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1945,19 +1945,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1972,16 +1959,18 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"<italic>text='Hory'</italic> jsou strmé, takže jednotky musí při pohybu "
-"často překonávat překážky. V tomto prostředí získávají důležitý obranný "
-"bonus proti většině jednotek, zároveň se ale často zdržují při zdolávání "
-"terénu. Většina jezdectva jednoduše nemůže vstoupit do horského terénu; "
-"samozřejmě, že elfí jízda je toho výjimkou, stejně tak vlčí jezdci goblinů. "
-"Trpaslíci i Trollové jsou v horách jako doma a je pro ně velmi snadné se tu "
-"pohybovat.\n"
+"<italic>text='Hory'</italic> jsou dost příkré, takže jednotky musí často "
+"překonávat překážky, aby se hnuly.\n"
+"Takto přirozeně poskytují většině oddílů značný obranný bonus, ale také "
+"silně zdržují jakýkoli průchod přes ně. Jednotky, jejichž břemenem je těžká "
+"zbroj, jako wesnothská jízda a linie těžkooděnců, do nich ani nemohou "
+"vstoupit. Vodní rasy a tvorové jako mořský lid mají rybí těla, která jim "
+"rovněž znemožňují vylézt na strmá úbočí. Výjimkou jsou nágy díky svým silným "
+"pažím a drsným šupinám. Jak trpaslíci, tak trollové jsou v hornatém terénu "
+"doma a je pro ně snadné přes něj přecházet.\n"
 "\n"
-"Většina jednotek v horách získává okolo 60% obranného bonusu, zatímco "
-"trpaslíci se těší 70%."
+"Většina jednotek získává v horách okolo 60 % obrany, kdežto trpaslíci se "
+"těší 70 %."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3114
@@ -4502,10 +4491,8 @@ msgstr "Naverbováno"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Vyber si svou frakci"
+msgstr "Zvol si svého vůdce"
 
 #. [label]
 #. [widget]: id=name
@@ -4863,7 +4850,7 @@ msgstr "Klávesa"
 #: data/gui/window/preferences/02_hotkeys.cfg:118
 #: src/gui/dialogs/preferences_dialog.cpp:776
 msgid "game_hotkeys^G"
-msgstr "G"
+msgstr "H"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:119
@@ -4888,15 +4875,13 @@ msgstr "Dostupné v editoru"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
 msgid "Available at main menu"
-msgstr "Dostupné v hlavní nabídce"
+msgstr "Dostupné v hlavním menu"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:257
@@ -5321,7 +5306,7 @@ msgid ""
 "number of hitpoints inflicted/taken."
 msgstr ""
 "Rozdíl mezi očekávaným a skutečným výsledkem v procentech.\n"
-"První číslo v závorce je očekávaná velikost uštědřenéno nebo utrženéno "
+"První číslo v závorce je očekávaná velikost uštědřeného nebo utrženého "
 "zranění.\n"
 "Součet (nebo rozdíl) dvou čísel v závorce je zranění skutečně uštědřené nebo "
 "utržené."
@@ -5812,67 +5797,53 @@ msgstr "vypršel"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num rok"
-msgstr[1] "$num rok"
-msgstr[2] "$num rok"
+msgstr[1] "$num roky"
+msgstr[2] "$num let"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num měsíc"
-msgstr[1] "$num měsíc"
-msgstr[2] "$num měsíc"
+msgstr[1] "$num měsíce"
+msgstr[2] "$num měsíců"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num týden"
-msgstr[1] "$num týden"
-msgstr[2] "$num týden"
+msgstr[1] "$num týdny"
+msgstr[2] "$num týdnů"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num den"
-msgstr[1] "$num den"
-msgstr[2] "$num den"
+msgstr[1] "$num dny"
+msgstr[2] "$num dnů"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num hodina"
-msgstr[1] "$num hodina"
-msgstr[2] "$num hodina"
+msgstr[1] "$num hodiny"
+msgstr[2] "$num hodin"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minuta"
-msgstr[1] "$num minuta"
-msgstr[2] "$num minuta"
+msgstr[1] "$num minuty"
+msgstr[2] "$num minut"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num vteřina"
-msgstr[1] "$num vteřina"
-msgstr[2] "$num vteřina"
+msgstr[1] "$num vteřiny"
+msgstr[2] "$num vteřin"
 
 #: src/gui/core/canvas.cpp:511
 msgid "Image doesn't fit on canvas."
@@ -6230,12 +6201,12 @@ msgstr "Chceš odinstalovat '$addon|'?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:960
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6719,7 +6690,7 @@ msgstr "čekárna"
 #: src/gui/dialogs/multiplayer/lobby.cpp:985
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
-msgstr ""
+msgstr "Tato hra nepovoluje pozorovatele. Sledovat pomocí práv moderátora?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6732,7 +6703,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
-msgstr ""
+msgstr "Tato hra je chráněna heslem. Připojit se pomocí práv moderátora?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""

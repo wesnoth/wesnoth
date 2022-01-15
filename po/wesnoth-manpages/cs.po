@@ -2,14 +2,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-08-31 20:40+0200\n"
+"PO-Revision-Date: 2022-01-10 19:15+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1238,18 +1238,15 @@ msgstr "ukáže číslo verze a skončí."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:419
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:422
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "ukáže číslo verze a skončí."
+msgstr "ukáže číslo verze a nic jiného, pak skončí."
 
 # type: TP
 #. type: TP
@@ -2157,16 +2154,12 @@ msgstr "Globální značky:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:181
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
-"B<[redirect]> Značka udávající server, na který bude přesměrován požadavek "
-"pro konkrétní verzi klienta."
+"B<[redirect]> Značka pro zadání serveru, na který se mají přesměrovat určité "
+"verze klientů. Nepoužije se, pokud není nastaven klíč B<versions_accepted>."
 
 # type: TP
 #. type: TP
@@ -2273,14 +2266,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:226
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2289,12 +2274,12 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> Konfiguruje obsluhu uživatelů. Dostupné klíče se liší "
-"podle toho, jaká obsluha uživatelů je klíčem B<user_handler> nastavena. "
-"Pokud v konfiguraci oddíl B<[user_handler]> chybí, server poběží bez "
-"jakékoli služby pro registraci přezdívek. Všechny další tabulky, které jsou "
-"třeba, aby pracoval B<forum_user_handler>, lze najít v table_definitions.sql "
-"v repozitáři zdrojových kódů Wesnothu."
+"B<[user_handler]> Konfiguruje obsluhu uživatelů. Pokud v konfiguraci oddíl "
+"B<[user_handler]> chybí, server poběží bez jakékoli služby pro registraci "
+"přezdívek. Všechny další tabulky, které jsou třeba, aby pracoval "
+"B<forum_user_handler>, lze najít v table_definitions.sql v repozitáři "
+"zdrojových kódů Wesnothu. Vyžaduje zapnutou podporu mysql. Pro cmake je to "
+"B<ENABLE_MYSQL> a pro scons je to B<forum_user_handler.>"
 
 # type: TP
 #. type: TP
