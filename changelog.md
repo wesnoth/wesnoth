@@ -23,7 +23,7 @@
    * Under the Burning Suns
      * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
      * Remove the “formation” ability from the attack predictions dialog, as it was in a confusing location; its effect is still shown in the calculations and chance-to-hit percentage (PR #6326)
-     * S02: Pinnacle rock is now shown during dialogue (issue #6125)
+     * S02: Pinnacle Rock is now shown during dialogue (issue #6125)
      * S04: Improve dialogue about dark underground tunnels (PR #6345)
      * S06b: 
        * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
