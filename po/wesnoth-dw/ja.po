@@ -304,9 +304,6 @@ msgid ""
 "if you will permit — you reach the age now where a kai must learn battle "
 "skills."
 msgstr ""
-"Kai、お願いです。ご自身で戦いを率いてください。それで民は元気づけられましょ"
-"う。それに — このような言い方をお許しいただければ — あなたは Kai として戦闘の"
-"腕を磨かねばならない年齢にもうなっています。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:355
@@ -404,12 +401,6 @@ msgid ""
 "soldiers of different races. It seemed that he also lusted for merfolk "
 "slaves. Krellis’ scouts reported that more dark armies were heading north."
 msgstr ""
-"Mal-Ravanal と呼ばれている者は、人間族の偉大な魔術師が自身をリッチに変貌させ"
-"たらしいとのことでした。彼は Wesnoth 王国の国境に攻撃を仕掛け、人間族からアン"
-"デッド軍団を作り上げていたのです。また、オーク族を攻撃するために、さらにはエ"
-"ルフ族、様々な種族のアンデッド兵士を得るために降霊術師たちを派遣していまし"
-"た。彼はマーフォークを奴隷にすることも渇望しているらしいのです。Krellis の偵"
-"察隊は、暗黒の軍団が北へ向かっていることを報告しました。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:46
@@ -577,10 +568,6 @@ msgid ""
 "adventure. First you must prove you are not afraid of danger. If you leave "
 "now, many will think the mission is but an excuse to flee."
 msgstr ""
-"残念ながら、これほど危険な旅となると、皆があなたに着いてくるとは限らないので"
-"はないかと思います。まずは、あなたが危険を恐れている訳ではないことを立証せね"
-"ばなりません。今のままでこの地を離れれば、多くの者は、この行動は逃亡のための"
-"口実だと考えてしまうでしょう。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:373
@@ -810,8 +797,6 @@ msgid ""
 "I believe it is undead and has no will of its own, but the Kai may have the "
 "will power to direct it."
 msgstr ""
-"それはアンデッドで、自分の意思がないのは確かだと思います。ですが Kai にはそれ"
-"を操る意志の力があるかもしれません。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:782
@@ -846,8 +831,6 @@ msgid ""
 "Killing these enemies was good, but there were many more on the way. It will "
 "take greater might than we have to defeat them."
 msgstr ""
-"敵を殺せてよかったです。しかしその途中にはいろいろなことがありました。私たち"
-"には敵を倒せるだけではない、もっと大きな力が必要となることでしょう。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:935
@@ -1179,8 +1162,6 @@ msgid ""
 "captors. When you are ready, right click anywhere and select the slave "
 "revolt."
 msgstr ""
-"あなたは、村から奴隷を解放することと、看守を攻撃することを選択できます。準備"
-"ができたら任意の場所を右クリックして奴隷の反乱を選択してください。"
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -1306,8 +1287,6 @@ msgid ""
 "Don’t let him go too crazy. Those saurian spears will go right through his "
 "scales."
 msgstr ""
-"彼に無茶をさせてはならない。トカゲたちの槍は彼の鱗を容易にすり抜けてしまう"
-"ぞ。"
 
 #. [unit]: type=Poacher, id=Siddry
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:683
@@ -1335,8 +1314,10 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:724
+#, fuzzy
+#| msgid "Then you will die with them!"
 msgid "So you will help us defeat them?"
-msgstr "あなたは奴らを打ち負かすために我々と共に戦うか？"
+msgstr "お前も魚人と共に死ぬがよい！"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:729
@@ -1535,8 +1516,10 @@ msgstr "我々の土地に近寄るなと言ったはずだぞ！ まずい事�
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:548
+#, fuzzy
+#| msgid "I told you to stay off our land! Now you’re in for it."
 msgid "I told not to bother the ships! Now you’re in for it."
-msgstr "我々の船に手を出すなと言ったはずだぞ！ まずい事をしてくれたな。"
+msgstr "我々の土地に近寄るなと言ったはずだぞ！ まずい事をしてくれたな。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:581
@@ -1832,8 +1815,6 @@ msgid ""
 "were finally at their destination. The small island where Tyegëa and her "
 "students lived was before them."
 msgstr ""
-"Kai Krellis が計画していたより難しい冒険でしたが、彼らはついに目的地に到着し"
-"ました。Tyegëa とその生徒の住んでいる島が目の前にあります。"
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:37
@@ -1988,16 +1969,11 @@ msgid ""
 "prove that my blood flows in your veins. Prove that your are, despite "
 "appearances, courageous, and worthy of my help."
 msgstr ""
-"それはまだ分かりませんよ。私は Kai が — そして私の孫でもありますが — ここへ助"
-"けを求めて飛び込んできて平穏をかき乱されたと思っています。あなたを助けると決"
-"める前に、あなたの体に私の血が流れていると証明してもらわねばなりません。見か"
-"けにもよらず、あなたには勇気があって、私が助けるだけの価値があることを証明な"
-"さい。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:183
 msgid "Well, I defeated the Drakes on your island."
-msgstr "私は島にいたドレークを倒しました。"
+msgstr ""
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:187
@@ -2396,11 +2372,6 @@ msgid ""
 "he hasn’t really cared about keeping his kingdom under control for a good "
 "long while. I bet I can wake him up, though. Watch THIS!"
 msgstr ""
-"うむ、そうだが、今やあいつは自分のことを Mal-Govon と名乗っている。あいつはこ"
-"の土地を Agnovon <b>王国</b>と呼んでいた。一代目の王だ。そして、最後の王でも"
-"ある。やつはずっと王だった！ 老いに老いたが死ななかった。<b>今こそ</b>、やつ"
-"は死ぬべきだ。いまだに城の周りをぶらついているが、長い間自分の王国を気にかけ"
-"てこなかった。やつを目覚めさせることはできるぞ。<b>よく</b>見てろよ！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:295
@@ -2437,11 +2408,6 @@ msgid ""
 "dirty work. When they lay expiring like gasping fish on the shore, will you "
 "not flee again? Do not speak to <i>me</i> of fear."
 msgstr ""
-"覚えているぞ、老人よ、お前はオークどもを雇って私の剣を盗ませようとした愚か者"
-"だな。あの時はたしか、焼け焦げたオークどもの死体を置き去りにして遁走したので"
-"はなかったかな。此度は魚人なんぞを連れ出して、薄汚い仕事をさせようというの"
-"か。そ奴らは陸であえぐ魚のように倒れ、貴様は再び逃亡することになるのではない"
-"かな？ ありもしない恐怖を<i>この私に</i>語るなど、やめてもらいたいものだ。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:314
@@ -2486,8 +2452,6 @@ msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
 msgstr ""
-"私は Jotha の Krellis だ。Mal-Govon を倒し、剣を取り返すつもりだ。同じ敵に対"
-"して協力して戦わないか？"
 
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:377
@@ -2688,8 +2652,6 @@ msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
 msgstr ""
-"援助していただいて、人間たち全員に感謝しています。もう恩返しは十分にしていた"
-"だきました。我々についてくることは難しいでしょうし。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1132
@@ -2852,10 +2814,6 @@ msgid ""
 "fouling the waters and making the bay more to their liking. We worry that "
 "they will soon be back to finish with us, and I fear we will not survive."
 msgstr ""
-"実のところ、あまり厳しい攻撃を受けなかったのです。アンデッドは海を汚し、入り"
-"江を自分たちの気に入るように変えるのに忙しいようです。彼らがすぐに我々を片付"
-"けに戻ってくるのではないかと心配です。そうなると生き残れないのではないかと案"
-"じていたところです。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:426
@@ -3298,7 +3256,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
 msgid "Only the merfolk can use this item."
-msgstr "このアイテムはマーフォークのみが使用できます。"
+msgstr ""
 
 #. [effect]: type=fire
 #: data/campaigns/Dead_Water/utils/items.cfg:28
@@ -3385,8 +3343,6 @@ msgid ""
 "Killing these enemies was good, but there were many more on the way. I’m "
 "sure it is still unsafe here."
 msgstr ""
-"敵を殺せてよかったです。しかしその途中にはいろいろなことがありました。ここは"
-"まだま間違いなく危険です。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:357

@@ -1,6 +1,7 @@
 #
 # Translators:
 # RatArmy, 2021
+# k konami, 2022
 #
 msgid ""
 msgstr ""
@@ -8,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:33+0000\n"
-"Last-Translator: RatArmy, 2021\n"
+"Last-Translator: k konami, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -67,11 +68,6 @@ msgid ""
 "\n"
 "(Hard level, 18 scenarios.)\n"
 msgstr ""
-"緑の島のリッチ君主たちの秘密を解き明かせ。彼らは不死の秘訣を知っていたのだ。"
-"あなたにできぬはずはなかろう？\n"
-"\n"
-"（上級レベル、18シナリオ）\n"
-"\n"
 
 #. [about]
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:29
@@ -151,7 +147,7 @@ msgid ""
 msgstr ""
 "<i>TarrynthのArdonnaの日誌より</i>\n"
 "\n"
-"Wesnoth歴22年7月9日:\n"
+"Wesnoth暦22年7月9日:\n"
 "\n"
 "私たち人間はなぜこうも短命なの？こんなの間違ってる。エルフやドワーフは遥かに"
 "長命なのに。自然の摂理？そんなのやだ！緑の島の君主たちは永遠を生きるすべを"
@@ -175,7 +171,7 @@ msgid ""
 "eccentric. I am already marked as different because my hair is so light, and "
 "I lack a sense of smell."
 msgstr ""
-"Wesnoth歴23年2月26日：\n"
+"Wesnoth暦23年2月26日：\n"
 "\n"
 "コウモリを使った実験は無駄だった。コウモリは生命の力を吸収してるんじゃないか"
 "と思ってたけど、それは間違ってた。犠牲者が弱ってるのは血液不足に陥ったから"
@@ -201,7 +197,7 @@ msgid ""
 "glowering at me. I must be more careful in the future about which of my "
 "thoughts appear on my face."
 msgstr ""
-"Wesnoth歴23年3月4日：\n"
+"Wesnoth暦23年3月4日：\n"
 "\n"
 "今日、Aimucasur校長自らが念動力の授業を行ってた。それは道具に意志を投影させる"
 "テクニックで、物体を自らの体の一部であるかのように動かすことを学んだ。呪文に"
@@ -231,7 +227,7 @@ msgid ""
 "mage I trusted completely, but perhaps I can find someone with whom to make "
 "a pact."
 msgstr ""
-"Wesnoth歴23年3月15日：\n"
+"Wesnoth暦23年3月15日：\n"
 "\n"
 "コウモリの内一匹が老衰で死んじゃった。 大胆にも、私は死体を動かしてみることに"
 "した。それが成功したから嬉しかったけど、興味深い発見もあった。初めにコウモリ"
@@ -351,8 +347,6 @@ msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
 "suppose we could rest inside a farmer's or woodcutter's fence."
 msgstr ""
-"オオカミだ！ この旅は思ったよりも危険みたい。 けど、農家や木こりが丈夫な柵を"
-"築いてるはず。そこまで逃げ込めば、野生動物から身を守れるかな。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:366
@@ -374,7 +368,7 @@ msgid ""
 "animate a human body when night fell. With my dark cloak, I resembled the "
 "mourners, and with my hood up, nobody could see my hair."
 msgstr ""
-"Wesnoth歴23年3月6日：\n"
+"Wesnoth暦23年3月6日：\n"
 "\n"
 "墓地に隠れることにした。これなら夜間に人間の体を動かして実験できる。黒いロー"
 "ブのおかげで、墓参りに来たように見せかけることができるし、私の髪を隠すことが"
@@ -402,8 +396,10 @@ msgstr "スケルトンアーチャーを呼び出す（14ゴールド）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:159
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
 msgid "You don't have enough gold to raise that unit."
-msgstr "ユニットを呼び出すためのゴールドが足りません。"
+msgstr "そのユニットを雇用するにはゴールドが足りません。"
 
 #. [objective]: condition=win
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:238
@@ -473,17 +469,17 @@ msgstr "Caradoc"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:396
 msgid "Oh, hello friend! I didn't know you were hiding in there."
-msgstr "あ、こんにちは！ここはあなたのお家だったの？"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:402
 msgid "Oh, hello! You're a handsome one."
-msgstr "あ、こんにちは！あなたなかなかカッコいいね。"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:419
 msgid "Hey, come back! I didn't mean to frighten you."
-msgstr "ねえ、戻ってきて！あなたを怖がらせるつもりはないから。"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:423
@@ -502,13 +498,17 @@ msgstr "コウモリを呼び出す（20 ゴールド）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:494
+#, fuzzy
+#| msgid "You do not have enough gold to recruit that unit"
 msgid "You don't have enough gold to summon the bat."
-msgstr "コウモリを呼び出すにはゴールドが足りません。"
+msgstr "そのユニットを雇用するにはゴールドが足りません。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:576
+#, fuzzy
+#| msgid "You can no longer recruit skeletons and skeleton archers."
 msgid "You can now recruit skeletons and skeleton archers!"
-msgstr "スケルトンとスケルトンアーチャーが雇用できるようになった！"
+msgstr "スケルトンとスケルトンアーチャーが雇用できなくなった。"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:630
@@ -578,8 +578,6 @@ msgid ""
 "I don’t know, but this evening a mage from the academy was here talking to "
 "the mayor, my brother says."
 msgstr ""
-"知るか。だが、アカデミーから来た魔術師が夜に町長と話していたそうだ。俺の兄弟"
-"がそう言っていたぞ。"
 
 #. [message]: speaker=Caradoc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:765
@@ -652,7 +650,6 @@ msgstr "おめえと...そっちのやつ。何者だ？"
 msgid ""
 "Oh, him. See here, I don't want any trouble, but he is a little... ah..."
 msgstr ""
-"ああ、あそこにいる人か。 面倒事は起こしたくないのだけれど…彼は少し...あー..."
 
 #. [message]: speaker=Caradoc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:912
@@ -660,13 +657,11 @@ msgid ""
 "He's <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
 "country! The penalty is death. Attack and destroy them both!"
 msgstr ""
-"これは<i>死体</i>じゃ！祖父の時代に古い国で行われていた黒魔術！死をもって償う"
-"べし。やつらを攻撃するのじゃ！"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:916
 msgid "Hey! Don't do that, or I will need more of them."
-msgstr "待って！来ないで、でないとさらにコレをしちゃうよ。"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:920
@@ -707,7 +702,7 @@ msgid ""
 "the docks. A ship should be leaving for Blackwater Port in a few days, and I "
 "mean to be on it."
 msgstr ""
-"Wesnoth歴23年3月17日：\n"
+"Wesnoth暦23年3月17日：\n"
 "\n"
 "墓地で遅れてしまったけど、夜明けに Llorvin のはずれに到着した。私の遥か後方で"
 "は太陽が山頂に姿を現していた。仲間たちとの日中の旅は十分に安全だったし、アカ"
@@ -831,7 +826,7 @@ msgid ""
 "defensive, and while his hatred of me was unabated, his desire to live made "
 "him somewhat malleable."
 msgstr ""
-"Wesnoth 歴 23 年 3 月 22 日\n"
+"Wesnoth 暦 23 年 3 月 22 日\n"
 "\n"
 "研究に実験は付き物だし、私も始めた。あの山賊はもともと私から略奪しようとして"
 "たし、そのうえ彼の恋人を殺した私を拷問して殺そうとしてた。今や彼は私に命を握"
@@ -855,17 +850,6 @@ msgid ""
 "from a thousand suns - I could feel it more strongly than the fear or hunger "
 "from any of my pets..."
 msgstr ""
-"山賊を休ませるため、ぶどう酒を入れた革袋をあげた。彼は疑うような目で見た後、"
-"私の様子を伺いながら少しずつ飲んでた。そして私がゴールドの一部を机の上に置く"
-"と、彼の目はそれに釘付けになった。\n"
-"\n"
-"さらに彼の恋人「Mossa」から奪った指輪を机に置いた。彼の視線はゴールドから指輪"
-"に移り、そして私の両目に素早く移った。もし彼が椅子に縛り付けられていなかった"
-"ら、襲い掛かってきただろう。\n"
-"\n"
-"さらにゴールドを追加で積み重ねてみたけど彼は興味を示さなくて、憎しみのこもっ"
-"た目で睨んでくるだけ。千の太陽が放つ熱のように復讐への渇望が放たれていた。そ"
-"の思いは、私のペットたちの恐れや飢えよりも強烈に感じた。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
@@ -931,7 +915,7 @@ msgid ""
 "and the living ones soon got hungry. When one of the crew disappeared on the "
 "second evening, I suspected the cause. I was not wrong."
 msgstr ""
-"Wesnoth歴23年3月25日\n"
+"Wesnoth暦23年3月25日\n"
 "\n"
 "旅は順調に進んでいたけど、出発から次の夜明けには風が凪いでしまったから、私達"
 "は立ち往生することになった。乗客の食料は2〜3日分あったけど、私の仲間たちの分"
@@ -1091,7 +1075,7 @@ msgid ""
 "other passengers bore out that conclusion. Just think: They may be the first "
 "people on this continent to live forever!"
 msgstr ""
-"Wesnoth歴23年3月29日\n"
+"Wesnoth暦23年3月29日\n"
 "\n"
 "船長の記憶を保持することができたのは、死後間もない内に復活させたからだと思"
 "う。他の乗客にも実験をして、その結論に至った。つまり、彼らはこの大陸で初めて"
@@ -1259,7 +1243,7 @@ msgid ""
 "raised friends. I am disappointed, but the existence of my strange new "
 "companion keeps me from being depressed."
 msgstr ""
-"Wesnoth歴23年4月3日\n"
+"Wesnoth暦23年4月3日\n"
 "\n"
 "私は答えを見つけたと思い込んでた！私は間違ってた。認めたくは無かったけど、船"
 "長の記憶が薄れつつあるのは明白だ。彼は未だに会話もできるし、他の者たちを指揮"
@@ -1277,7 +1261,7 @@ msgid ""
 "retain the power of speech, but precious little else. I am disappointed, but "
 "the existence of my strange new companion keeps me from being depressed."
 msgstr ""
-"Wesnoth歴23年4月3日\n"
+"Wesnoth暦23年4月3日\n"
 "\n"
 "私は答えを見つけたと思い込んでた！けど私は間違ってた。認めたくは無かったけ"
 "ど、蘇らせた人たちの記憶が薄れつつあるのは明白だ。彼らは未だに会話はできるけ"
@@ -1348,7 +1332,7 @@ msgstr "私が進めない道を幽霊が通りはしないだろう。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:253
 msgid "If there is one bat, there are certainly more. We should be careful."
-msgstr "コウモリが１匹居たら、もっと居るのは間違いないわ。気をつけないと。"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:275
@@ -1387,7 +1371,7 @@ msgstr "洞窟の中について行こう。"
 msgid ""
 "I don’t know, Bogdush. The chief said he wanted stuff that was helpful for "
 "the war."
-msgstr "知らねえよ、Bogdush。族長は戦争のために人手が欲しいと言ってたぜ。"
+msgstr ""
 
 #. [message]: speaker=Bogdush
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:574
@@ -1413,7 +1397,7 @@ msgstr "まさにソイツらだ。こりゃあ楽に倒せるぜ！"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:592
 msgid "You must be Goblins. You will stand out of my way if you wish to live."
-msgstr "ゴブリンだな。死にたくなければどいてよ？"
+msgstr ""
 
 #. [message]: speaker=Bogdush
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:596
@@ -1440,7 +1424,7 @@ msgid ""
 "Patches of fungus on the wall gave off a feeble glow that kept me from "
 "stumbling too badly. Finally I saw a brighter light up ahead."
 msgstr ""
-"Wesnoth歴23年4月9日\n"
+"Wesnoth暦23年4月9日\n"
 "\n"
 "洞窟の奥にあるトンネルはかなり時間がかかるほど長かった。壁に生えたキノコがぼ"
 "んやりと光ってて、転ぶのをある程度防いでくれた。そして、眩しい明かりが前方に"
@@ -1486,11 +1470,6 @@ msgid ""
 "have even accomplished something which I have not. You have useful creatures "
 "— I believe you call them ghouls?"
 msgstr ""
-"君のことは良く知っておる。わしの幽霊たちが君を監視していたのじゃ。そして、わ"
-"しらの目的は共通しておる。そう、死を克服することじゃ。多くの生徒が自らあの保"
-"守的なアカデミーから離れることをわしは望んでいたが、それをしたのは君だけだっ"
-"た。幸運にも、君は革新的であり、わしが知らぬことを成し遂げた。あの有能な生き"
-"物は…グールと呼べばいいのかの？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:197
@@ -1577,13 +1556,6 @@ msgid ""
 "of those shambling ghouls. I am actually in no hurry, as they have a "
 "terrible odor."
 msgstr ""
-"頼もしいのう。わしらに必要な情報を集める手段は分かっておる。そのために、わし"
-"と君で任務を行うのじゃ。わしらは二手に分かれて行動する。まず、君には幽霊を生"
-"み出す術を学んでもらう。その間、わしはそこらの村人たちに魔術を教える。学の無"
-"い庶民にはあまり期待してはおらぬが、わしらの力となるほどの知性を持つ者もおる"
-"じゃろう。そして、わしらが再会したときにはグールを生み出す術をわしに教えてく"
-"れ。急ぐ必要はないぞ。わしは急いではおらんし、それにグールは鼻が曲がるほど臭"
-"いからのう。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:225
@@ -1612,12 +1584,6 @@ msgid ""
 "will meet at the end of the elf road by the Great River, and I will explain "
 "where we should go next."
 msgstr ""
-"ゴブリンでは弱すぎる。魂が十分に強くなるまでに時間が掛かり過ぎるのじゃ。代わ"
-"りにエルフの戦士を使うと良い。灰色森の中へ数マイル入ったところに、数百年前に"
-"内戦が起きた場所がある。古いエルフの道を通ってそこへ向かい、幽霊の軍勢を生み"
-"出すのじゃ。その間にわしは近くの町、Carcynを訪ねておく。そのエルフの道は大い"
-"なる川のそばまで続いておるから、そこで落ち合うことにしよう。その後、わしの計"
-"画の続きを聞かせよう。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:241
@@ -2029,7 +1995,7 @@ msgstr "ここには大きな骨があります。爪と翼のようだ。"
 #. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:186
 msgid "How odd. I wonder what are they from. A gryphon perhaps?"
-msgstr "妙ですね。どこから来たのでしょう？グリフォンでしょうか？"
+msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:190
@@ -2051,7 +2017,6 @@ msgstr "確かに。やってみるとしよう。"
 msgid ""
 "I wonder what are they from. A large flightless bird perhaps? Let us see."
 msgstr ""
-"どこから来たのじゃろう？大型の飛べない鳥じゃろうか？確かめてみるとしよう。"
 
 #. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
@@ -2230,13 +2195,6 @@ msgid ""
 "will go fine. If not, well, I am surrounded by the remnants of those who "
 "assumed I was weak."
 msgstr ""
-"Wesnoth歴23年4月11日\n"
-"\n"
-"Rastabanは良き同志だと思う。アカデミーのつまんない教師たち...今の自分に満足"
-"し、自分の講義を愛している連中...と彼は違う。私を小娘として軽蔑したりしない"
-"し、髪の色を気にすることも無かった。彼が私のことを尊重してくれる限りは、全て"
-"上手くいくかも。もしそうでなければ、私は敵に取り囲まれてしまうことになるだろ"
-"う。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:27
@@ -2249,12 +2207,6 @@ msgid ""
 "attacking me would be unwise. However, if he were to become indestructible "
 "first, I would do well to stay alert."
 msgstr ""
-"問題は、Rastabanを信頼することは正しいのかどうか。彼が言うには、今回は信頼な"
-"ど必要はないというけど、そのうち共に旅をすることになると思う。彼はすばらしい"
-"幽霊を見せてくれたし、それが彼の大きな功績なのかも。熟考の末、私は彼を信用す"
-"ることにした。まあ、とりあえずは、だけど。今や、私達は弱みを握り合っている"
-"し、彼も私を攻撃するのは不利益だと分かっているはず。しかし、彼がもし先に不死"
-"となれば、警戒する必要があるかも。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:34
@@ -2280,9 +2232,6 @@ msgid ""
 "fought for me. The more strong willed among them may even remember desiring "
 "it."
 msgstr ""
-"まあ、この戦士たちは栄光をつかむための二度目のチャンスを得ることになった。私"
-"のために戦ってもらおう。強い意志を持っていた者たちはまだ栄光を求めているかも"
-"しれない。"
 
 #. [side]: type=Saurian Soothsayer, id=Krissaz
 #. [side]
@@ -2476,7 +2425,7 @@ msgid ""
 "overgrown, leaving only a few smooth cobbles to mark the way. The second "
 "day, we were still deep in the woods when we encountered an elf sorceress."
 msgstr ""
-"Wesnoth 歴 23 年 4 月 17 日\n"
+"Wesnoth 暦 23 年 4 月 17 日\n"
 "\n"
 "私は最初の目標を達成して、たくさんの幽霊を従えられるようになった。 また、治癒"
 "の力を持つ仲間を見つけた。 Ras-Tabahn がすでに予定地に到着しているかは疑問"
@@ -2584,7 +2533,7 @@ msgid ""
 "my estimation. After we escaped the trees, we met no more resistance on the "
 "road, and soon arrived at the meeting place where Ras-Tabahn was waiting."
 msgstr ""
-"Wesnoth歴23年4月21日\n"
+"Wesnoth暦23年4月21日\n"
 "\n"
 "幽霊たちがいなければ、あの木たちから逃げることはできなかっただろう。幽霊の有"
 "用性が分かったし、そのおかげで助かった。Ras-Tabahnの私の評価もこれで上がるだ"
@@ -2666,8 +2615,6 @@ msgid ""
 "Before we leave, I have an unrelated question. Vendraxis here has said that "
 "my name is untrue. Do you have an idea what could that mean?"
 msgstr ""
-"その前に、一つ聞かせてもらえませんか？あまり関係無いことですが。このVendraxis"
-"が私の名はまだ真のものではないと言うのです。一体どういうことなのでしょう？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:160
@@ -2675,8 +2622,6 @@ msgid ""
 "Before we leave, I have an unrelated question. I met a mystic who said that "
 "my name was untrue. Do you have an idea what could that mean?"
 msgstr ""
-"その前に、一つ聞かせてもらえませんか？あまり関係無いことですが。昔出会った神"
-"官が私の名はまだ真のものではないと言うのです。一体どういうことなのでしょう？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:166
@@ -2687,10 +2632,6 @@ msgid ""
 "originally Rassin Tabin, but that is fairly ordinary, and at one point, it "
 "no longer suited."
 msgstr ""
-"有り得るかもしれん。アカデミーの魔術師が卒業するとき、力のある音節の集まりを"
-"与えられ、それが新しい名となるのじゃ。君はすでに一人前だし、自由な魔術師でも"
-"ある。じゃから、新しい名を自ら選ぶのじゃ。わしはかつてRassin Tabinじゃったが"
-"それでは普通過ぎるし、今はもう使ってはおらん。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:170
@@ -2698,8 +2639,6 @@ msgid ""
 "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
 "Vendraxis was correct. From now I shall be... Ardryn-Na."
 msgstr ""
-"確かにそうですね。 私はもう普通の少女 Ardonna ではないし、Vendraxis は正し"
-"かったようです。 今から私は…Ardryn-Na です。"
 
 #. [modify_unit]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:177
@@ -2740,16 +2679,6 @@ msgid ""
 "on account of the cold, and I should not be unduly troubled. I am uneasy all "
 "the same."
 msgstr ""
-"Wesnoth歴23年4月24日\n"
-"\n"
-"北の山頂に日が差した頃、私たちはAbezの浅瀬に到着した。川を渡る際に暗い水が腰"
-"にまでとどいたので、ゆっくり進むことになった。下にどのような生き物が潜んでい"
-"るかを考えないようにしていたけど、何事もなく渡ることができた。水は雪解けのせ"
-"いで冷たかったので、対岸に着く頃には私たちの唇は震えてた。夜明けの太陽は暖く"
-"て、すぐに体が乾いた。でも、Ras-Tabahnはそうではなかった。Ras-Tabahnは砂の上"
-"に倒れ、今までにないほどひどく咳の発作を起こした。再び喋れるようになると、彼"
-"は寒さのせいだから問題は無いと言った。あまり気を遣いすぎるのも良くないだろう"
-"けど、彼のことが心配だ。"
 
 #. [side]: type=Orcish Warlord, id=Rod-Ishnak
 #. [side]: type=Orcish Warlord, id=Vok-Hroog
@@ -2779,8 +2708,6 @@ msgid ""
 "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. We "
 "may meet our doom if we don't have enough coinsss."
 msgstr ""
-"前のおぉ雪山にはあぁ暗いぃ予感があああぁするううぅ。金をおぉぉ十分にいぃ持っ"
-"て行かないとおおぉぉぉ墓場行きにいいぃぃなるうううぅ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:179
@@ -2902,14 +2829,6 @@ msgid ""
 "thinness leads me to believe it is consumption, but he refuses to discuss "
 "it, preferring to deny the severity of his problem."
 msgstr ""
-"Wesnoth歴23年5月6日\n"
-"\n"
-"私たちはRas-Tabahnの知っていた山道を通った。高所の空気は冷たい。午後になると"
-"雪から霧が生じ、オーバーハングした岩につららができた。私は良い気分だったけ"
-"ど、Ras-Tabahnの咳が増えていた。時々彼は息が足りずに、短いフレーズで喋ってい"
-"た。もちろん彼が老いているのもあるだろうが（少なくとも50歳以上だろう）、病に"
-"侵されているに違いない。彼に疲労がたまっていると思うのだけど、本人はそのこと"
-"について話したがらなかった。"
 
 #. [side]: type=Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:46
@@ -2930,7 +2849,7 @@ msgstr "ここに...大きな骨がある。 わしが思うに...爪と翼じ�
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:176
 msgid "I wonder what are they from. A gryphon perhaps?"
-msgstr "どこから来たのでしょう？グリフォンかも？"
+msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:180
@@ -2998,7 +2917,7 @@ msgid ""
 "is quite weak and ill now, and breathing raggedly. I don’t know how much "
 "longer he can survive."
 msgstr ""
-"Wesnoth歴23年6月3日\n"
+"Wesnoth暦23年6月3日\n"
 "\n"
 "私たちは高原やArkan-thoriaの浅瀬を通り抜けた。そして、あの魔術師を見つけるた"
 "め、再び山に向かっていった。これはRas-Tabahnの計画だったし、登山を終えるため"
@@ -3185,7 +3104,7 @@ msgid ""
 "recognize. Ras-Tabahn said, “Dwarves.” It is infested with rats, and "
 "clearly, no dwarves have lived here for a long time."
 msgstr ""
-"Wesnoth歴23年6月6日\n"
+"Wesnoth暦23年6月6日\n"
 "\n"
 "洞窟の入り口からさほど遠くない所に、この前は気づかなかったけど廃城が建ってい"
 "たみたい。Ras-Tabahnは「ドワーフ」と言った。中にはネズミが住み着いていて、ド"
@@ -3309,7 +3228,7 @@ msgid ""
 "to make the transition, and a suitable object must be found to hold the "
 "consciousness for one crucial moment when the body expires."
 msgstr ""
-"Wesnoth 歴 23 年 6 月 9 日\n"
+"Wesnoth 暦 23 年 6 月 9 日\n"
 "\n"
 "リッチになるためには、まず死ぬ必要がある。 降霊の呪文は魂を縛り付けるが、すぐ"
 "に魂は離れてしまう。 リッチになるためには、死の直前に呪文を唱える必要があ"
@@ -3330,7 +3249,7 @@ msgid ""
 "discomfort. Nor can he smell it any more than I can. If all continues to go "
 "well, I will make the transition soon myself."
 msgstr ""
-"Wesnoth歴23年6月13日\n"
+"Wesnoth暦23年6月13日\n"
 "\n"
 "Ras-Tabahnはアンデッドになった。はじめは、彼の体調はさほど改善してなくて、寒"
 "さを訴えていた。彼の生命力は弱っていたけど、古代の城に巣喰っていたネズミの生"
@@ -3353,7 +3272,7 @@ msgid ""
 "through me, and can protect myself quite adequately! My next goal is to "
 "share my knowledge with the world so that <i>no one</i> need die."
 msgstr ""
-"Wesnoth歴23年6月17日\n"
+"Wesnoth暦23年6月17日\n"
 "\n"
 "私たちは二人ともリッチになった。私は特に変化を感じなかったけど、私の見た目は"
 "恐ろしいことになってるかも。これはしょうがない。でも、私の目的は達成できた"
@@ -3408,8 +3327,6 @@ msgid ""
 "We have conquered death! Let us bring the news back to Wesnoth. We should to "
 "let them know that nobody ever need die again."
 msgstr ""
-"私たちは死を征服しました！Wesnothにこのニュースを知らせてやりましょう。みんな"
-"に死ぬ必要がないことを教えなきゃ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:433
@@ -3424,7 +3341,7 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:437
 msgid "Why would the Dwarvish empire abandon an outpost like this?"
-msgstr "なぜドワーフの帝国は前哨基地を捨てていったのでしょう？"
+msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:441
@@ -3470,7 +3387,7 @@ msgid ""
 "or lack the mental fortitude to transition to lich form, they will of course "
 "be mindless slaves."
 msgstr ""
-"Wesnoth歴23年6月21日\n"
+"Wesnoth暦23年6月21日\n"
 "\n"
 "私たちは暗闇の中トンネルを進んだ。コウモリが私たちを導いてくれたので、暗くて"
 "も問題は無かった。全ての魔術師はコウモリの居場所を感じることができるし。Ras-"
@@ -3493,14 +3410,6 @@ msgid ""
 "clash, but that will be a worry for another time, and for now, we each "
 "continue to regard the other as an ally."
 msgstr ""
-"Ras-Tabahnは私にも計画に加わるように説得したけれど、私は彼の計画に疑問を持っ"
-"ていた。彼が都市の防衛隊を突破できるか怪しいし、人々を奴隷にするなんて、古代"
-"のWesfolkの指導者たちの愚かな行いと同じじゃないか。私達の技術を活かすには、"
-"もっとみんなに優しいやり方がいいと思う。私達の成功の知らせをみんなに伝えて、"
-"私達に同意する人々を仲間に加えるべきなんだ。不死を強制するのは間違ってる。私"
-"は南に向かいWesnothの国土、Dan'TonkやWeldynを訪ねるつもり。やがていつかは、私"
-"の仲間たちとRas-Tabahnの民が戦うことになるかもしれない。でも、そんな後のこと"
-"は考えなくてもいいだろう。とりあえず今は、お互いに同盟を結んだままだ。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:32
@@ -3589,7 +3498,7 @@ msgid ""
 "darkness. After a long trek, we were brought up short by a dead end in the "
 "tunnel... but the wall was not solid."
 msgstr ""
-"Wesnoth 歴 23 年 6 月 27 日\n"
+"Wesnoth 暦 23 年 6 月 27 日\n"
 "\n"
 "私たちは山の炎を離れ、再び暗闇の中を進んだ。 長い旅の後、トンネルの行き止まり"
 "に着いたけど...壁は薄かった。"
@@ -3642,7 +3551,7 @@ msgstr "ここはどこでしょう？"
 msgid ""
 "We are in a Dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
-msgstr "ここはドワーフの墓地じゃ。ちょうどいい。いつでも兵士が補充できるぞ。"
+msgstr ""
 
 #. [unit]: type=Dwarvish Sentinel, id=Aigondur
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:724
@@ -3667,8 +3576,6 @@ msgid ""
 "But look. There is a large crack in the wall to our left! I’m certain we "
 "could squeeze through."
 msgstr ""
-"じゃが、見るのじゃ。わしらの左にある壁には大きな亀裂がある。そこを通れるはず"
-"じゃ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:777
@@ -3699,10 +3606,6 @@ msgid ""
 "passageways. Being able to feel the life force of the dwarves allowed us to "
 "take mostly unoccupied tunnels, which we did."
 msgstr ""
-"Wesnoth歴23年6月30日\n"
-"\n"
-"Knalga王国の北から、トンネルはいくつもの道に分かれていた。ドワーフの生命力を"
-"感じることで、使われていないトンネルを通ることができた。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:28
@@ -3716,7 +3619,7 @@ msgid ""
 "to carry out his plan of carving out a special place for us in the world. "
 "(And becoming some sort of king as well I suppose.)"
 msgstr ""
-"Wesnoth歴23年7月3日\n"
+"Wesnoth暦23年7月3日\n"
 "\n"
 "私たちはついに山の外に出た。Abezの浅瀬を昼前に通り、南東のTathの町に向かって"
 "進んだ。私たちはここで二手に分かれることにしていた。私は南のDan’TonkとWeldyn"
@@ -3979,7 +3882,7 @@ msgid ""
 "certainly afford to wait. In the meantime, we are doing what we can to "
 "hasten that day."
 msgstr ""
-"Wesnoth 歴 23 年 7 月 10 日 — 最後の記録\n"
+"Wesnoth 暦 23 年 7 月 10 日 — 最後の記録\n"
 "\n"
 "私たちは今日の戦いを切り抜けたけど、私たちの勝利は苦しいものだった。 <i>みん"
 "な</i>が私たちを恐れ、怒り、私たちの話を聞かずに攻撃してきた。 今になって気付"
@@ -4088,10 +3991,6 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
-"ドワーフの炭鉱夫（Dwarvish Miner）はドワーフ社会における労働者です。彼らは貴"
-"重な鉱石を地下から掘り出しますが、武器やアーティファクトを作る訳ではありませ"
-"ん。彼らは戦いの訓練を受けてはいませんが、ツルハシで攻撃を行うことができま"
-"す。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/Dwarvish_Miner.cfg:22
@@ -4129,11 +4028,6 @@ msgid ""
 "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
-"オークのシャーマン（Orcish Shaman）はオークの魔法の守護者です。オークの部族の"
-"中で尊敬され、オークの評議会を組織しますが、そこではオークコミュニティー全体"
-"に対する重要な決定を下したり、この論争好きの種族の部族間に起こる多くの衝突を"
-"仲裁したりします。肉体的な弱点はありますが（オークとしては）、オークのシャー"
-"マンは呪文を唱えるのがうまく、敵を呪って生命力を奪うことも可能です。 "
 
 #. [unit_type]: id=Sailor, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:4
@@ -4227,7 +4121,7 @@ msgstr "ぐあぁ。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:163
 msgid "But I don't know how to bring you back yet!"
-msgstr "まだあなたを蘇らせる術を見出していないのに！"
+msgstr ""
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:194
@@ -4244,7 +4138,7 @@ msgstr "Shynalを蘇らせて下さい。どうか！"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:202
 msgid "I'm not sure that's such a good..."
-msgstr "それが良いことなのかは分かんない…"
+msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:206
@@ -4272,8 +4166,6 @@ msgid ""
 "It's not possible. She was already back from the dead. She has been utterly "
 "destroyed this time."
 msgstr ""
-"不可能じゃ。彼女はすでに一度蘇った存在じゃ。今回は完全に破壊されてしまってお"
-"る。"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:272
@@ -4298,7 +4190,7 @@ msgstr "もはや延命ぃの秘密を学ぶことはできぬぅぅ。"
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I'm going to miss him."
-msgstr "彼がいないと寂しくなりそうだ。"
+msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
@@ -4318,7 +4210,7 @@ msgstr "そうだね。寂しくなるな。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
 msgid "Don't worry, my pet. I can save you."
-msgstr "心配しないで。今助けるよ。"
+msgstr ""
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424

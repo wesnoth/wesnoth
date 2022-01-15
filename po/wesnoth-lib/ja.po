@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2021
+# RatArmy, 2022
 #
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: RatArmy, 2021\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -1935,6 +1935,21 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mountains'</italic> are steep enough that units often have "
+#| "to climb over obstacles to move.\n"
+#| "By this nature, they provide a considerable defensive bonus for most "
+#| "troops, but also severely impede any passage through them. Units burdened "
+#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
+#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
+#| "piscine bodies which also render them unable to climb steep inclines. "
+#| "Nagas are an exception due to their strong arms and rugged scales. Both "
+#| "dwarves and trolls are native to mountainous terrain, and have an easy "
+#| "time traversing them.\n"
+#| "\n"
+#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
+#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1947,10 +1962,11 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 "<italic>text='山'</italic> はユニットが移動するのが難しいほどの急勾配です。\n"
-"多くの兵は回避率は向上しますが、通行するのは困難です。多くの騎兵は山に立ち入"
-"ることすらできません。しかしながら、エルフの騎兵とゴブリンのウルフライダーは"
-"例外です。ドワーフとトロルのすみかでもあり、彼らは簡単に山を乗り越えることが"
-"できます。\n"
+"多くの兵は回避率は向上しますが、通行するのは困難です。Wesnoth 軍の騎兵や重歩"
+"兵のような重装備のユニットは山に立ち入ることすらできません。マーフォークなど"
+"の魚の体を持つ水棲種族も勾配によって立ち入ることができません。ただし、強靭な"
+"腕と丈夫な鱗を持つナーガは例外です。山はドワーフとトロルのすみかであり、彼ら"
+"は簡単に山を乗り越えることができます。\n"
 "\n"
 "ほとんどのユニットは60%の回避率を得ることができ、ドワーフは70%にもなります。"
 
@@ -4400,13 +4416,17 @@ msgstr "マップサイズ："
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
+#, fuzzy
+#| msgid "Leader"
 msgid "Leader:"
-msgstr "リーダー："
+msgstr "リーダー"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
+#, fuzzy
+#| msgid "<b>Gender:</b>"
 msgid "Gender:"
-msgstr "性別:"
+msgstr "<b>性別：</b>"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -4424,18 +4444,24 @@ msgstr "女性"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:210
+#, fuzzy
+#| msgid "Recruits"
 msgid "Recruits:"
-msgstr "雇用："
+msgstr "雇用"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
+#, fuzzy
+#| msgid "Choose Your Leader"
 msgid "Choose Your Faction"
-msgstr "党派を選択してください"
+msgstr "リーダー選択"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
+#, fuzzy
+#| msgid "Starting Positions Tool"
 msgid "Starting position:"
-msgstr "開始地点："
+msgstr "開始地点ツール"
 
 #. [widget]: id=name
 #. [label]
@@ -4816,8 +4842,10 @@ msgstr "エディタ"
 #. Translate T as the initial letter for Title Screen
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:777
+#, fuzzy
+#| msgid "editor_hotkeys^E"
 msgid "titlescreen_hotkeys^T"
-msgstr "タ"
+msgstr "エ"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5731,58 +5759,100 @@ msgid "timespan^expired"
 msgstr "期限切れ"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgstr "$num 年"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num years"
 msgstr "$num 年"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgstr "$num ヵ月"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num months"
 msgstr "$num ヵ月"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
-msgstr "$num 周"
+msgstr "$num 週間"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num weeks"
-msgstr "$num 周"
+msgstr "$num 週間"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgstr "$num 日"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num days"
 msgstr "$num 日"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgstr "$num 時間"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hours"
 msgstr "$num 時間"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgstr "$num 分"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minutes"
 msgstr "$num 分"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgstr "$num 秒"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num seconds"
 msgstr "$num 秒"
 
@@ -6754,8 +6824,10 @@ msgstr "このゲーム"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:358
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:154
+#, fuzzy
+#| msgid "Team"
 msgid "Team:"
-msgstr "チーム："
+msgstr "チーム"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
@@ -6982,11 +7054,11 @@ msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:633
 msgid "$player has entered the room"
-msgstr "$player が入室しました"
+msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:675
 msgid "$player has left the room"
-msgstr "$player が退室しました"
+msgstr ""
 
 #: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -7923,8 +7995,10 @@ msgid "Previous Tip of the Day"
 msgstr "前のヒント"
 
 #: src/hotkey/hotkey_command.cpp:285
+#, fuzzy
+#| msgid "Tutorial"
 msgid "Start Tutorial"
-msgstr "チュートリアルの開始"
+msgstr "チュートリアル"
 
 #: src/hotkey/hotkey_command.cpp:286
 msgid "Start Campaign"
@@ -8043,3 +8117,32 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
+
+#~ msgid "Data Migration"
+#~ msgstr "データの移行"
+
+#~ msgid ""
+#~ "Choose which version of Wesnoth to import your data from.\n"
+#~ "Some settings will not take effect until Wesnoth is restarted."
+#~ msgstr ""
+#~ "データの移行元の Wesnoth のバージョンを選択してください。\n"
+#~ "一部の設定は Wesnoth を再起動するまで適用されません。"
+
+#~ msgid "mainmenu_hotkeys^M"
+#~ msgstr "タ"
+
+#~ msgid "%Y-%m-%d %I:%M %p"
+#~ msgstr "%Y-%m-%d %I:%M %p"
+
+#~ msgid "%Y-%m-%d %H:%M"
+#~ msgstr "%Y-%m-%d %H:%M"
+
+#~ msgid ""
+#~ "This game doesn't allow observers. Observe using moderator rights anyway?"
+#~ msgstr ""
+#~ "このゲームでは観戦が許可されていません。管理者権限を使用して観戦しますか？"
+
+#~ msgid "This game is password protected. Join using moderator rights anyway?"
+#~ msgstr ""
+#~ "このゲームはパスワードで保護されています。管理者権限を使用して参加します"
+#~ "か？"

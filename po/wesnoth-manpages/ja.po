@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2021
+# RatArmy, 2022
 #
 #, fuzzy
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2021-06-23 10:18+0300\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: RatArmy, 2021\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -1934,12 +1934,16 @@ msgstr "グローバルタグ:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
-"B<[redirect]> クライアントのバージョンでリダイレクトするサーバーを指定するた"
-"めのタグ。"
+"B<[redirect]> 特定クライアントバージョンのリダイレクト先サーバーを指定するタ"
+"グ。B<versions_accepted> が指定されていない場合には使用されない。"
 
 #. type: TP
 #: doc/man/wesnothd.6:180
@@ -2029,6 +2033,14 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:223
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+#| "section is present in the configuration the server will run without any "
+#| "nick registration service. All additional tables that are needed for the "
+#| "B<forum_user_handler> to function can be found in table_definitions.sql "
+#| "in the Wesnoth source repository. Requires mysql support enabled. For "
+#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2037,12 +2049,12 @@ msgid ""
 "needed for the B<forum_user_handler> to function can be found in "
 "table_definitions.sql in the Wesnoth source repository."
 msgstr ""
-"B<[user_handler]> でユーザーハンドラを指定する。利用可能なキーは "
-"B<user_handler> キーに設定されているユーザーハンドラによって変化する。もし "
-"B<[user_handler]> セクションが設定中に存在しなければ、サーバーはニックネーム"
-"登録サービスなしで実行される。B<forum_user_handler> の動作に必要とされるすべ"
-"ての追加テーブルは、Wesnoth のソースリポジトリの table_definitions.sql で見つ"
-"けることができる。"
+"B<[user_handler]> ユーザーハンドラを設定する。B<[user_handler]> セクションが"
+"設定に存在しなければ、サーバーはニックネーム登録サービスなしで動作する。"
+"B<forum_user_handler> の動作に必要なすべての追加テーブルはWesnothソースリポジ"
+"トリの中の table_definitions.sql で確認可能。mysqlのサポートが有効化されてい"
+"る必要があり、cmake の場合は B<ENABLE_MYSQL> 、scons の場合は "
+"B<forum_user_handler.> でサポートを有効化できる。"
 
 #. type: TP
 #: doc/man/wesnothd.6:224
@@ -2211,3 +2223,10 @@ msgstr ""
 #: doc/man/wesnothd.6:281
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "B<--simple-version>"
+#~ msgstr "B<--simple-version>"
+
+#~ msgid "shows the version number and nothing else, then exits."
+#~ msgstr "バージョン番号を表示して終了する。"
