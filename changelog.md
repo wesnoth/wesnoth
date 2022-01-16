@@ -85,26 +85,107 @@
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346). 
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
 
-## Version 1.16.0+dev
- ### Add-ons client
+## Version 1.16.2
+ ### Campaigns
+   * Delfador’s Memoirs
+     * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
+   * Descent into Darkness
+     * S08: Prevent possibility of Darken Volk advancing to Lich (issue #6351)
+   * Heir to the Throne
+     * S05b: Temples given an aged appearance to match ‘ancient temples’ description (issue #5576)
+   * Sceptre of Fire
+     * Added notes about Thursagan’s rune mechanics
+     * S04: Mining objectives are much clearer now (issue #6154)
+   * Secret of the Ancients
+     * S06: Ardonna should no longer mistake hostile bats as ‘my pet’
+     * S20: Directions “left” and “right” in character speech now use the character’s orientation, not the player’s
+     * Consistently capitalise the name of the Academy of Magic (issue #6310)
+   * The Rise of Wesnoth
+     * S08: The appearance of Naga is now smoother (issue #6140)
+     * S08: Refactored ship-boarding events (issue #6298)
+     * S19: The troll’s gold is automatically collected upon victory if not already obtained (issue #6141)
+     * S19: Avoid units spawning over chasms
+   * Under the Burning Suns
+     * Correct Traveler’s Ring description (issue #6043) and add an icon overlay (issue #6126)
+     * Remove the “formation” ability from the attack predictions dialog, as it was in a confusing location; its effect is still shown in the calculations and chance-to-hit percentage (PR #6326)
+     * S02: Pinnacle Rock is now shown during dialogue (issue #6125)
+     * S04: Improve dialogue about dark underground tunnels (PR #6345)
+     * S06b: 
+       * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
+       * Grog will not die as quick now (issue #6196 & #6197)
+       * Hermit dialogue cannot be accidentally skipped now (issue #6196)
+       * Fixed bug where tentacles would not spawn (issue #6196)
+       * Fast units cannot get stuck on the wall now (issue #6196)
+       * Camera now moves to where the charges are blown up (issue #6197)
+       * Fixed weird scout AI behaviour (issue #6196)
+     * S09: Rebels joining Kaleh’s side are now loyal (issue #6229 and #6365)
+     * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
+     * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
+     * The Dust Devil’s XP bar is now blue (issue #6212)
+   * World Conquest:
+     * Fixed for Winged Scepter not giving the correct defence values
+     * Corrected the attack icon of ice bow from a lightning bolt to an iceball
+ ### Multiplayer
+   * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
+   * Added a specific prompt for moderators before joining password-protected games (issue #4101)
+   * Fixed add-ons not getting enabled for clients, leading to errors such as Unknown Terrain (issue #6285)
+   * Fixed an information leak where planned multi-turn moves could be visible to enemy players (issue #6292)
+   * Made planned moves visible to allies; this refers to trying to move more hexes than the unit can move this turn, it isn’t the whiteboard (issue #6292)
+ ### Lua API
+   * Fixed an error in `gui.get_user_choice()` and added support for the current DescriptionWML syntax (PR #6247)
+ ### Translations
+   * Added translations: Spanish (Latin American)
+   * Updated translations: British English, Chinese (Simplified), Czech, Finnish, Italian, Japanese, Portuguese (Brazil), Scottish Gaelic, Turkish.
+   * Lots of corrections of typos in `en_US` (untranslated text), which will require marking translations as `non-fuzzy` again
+   * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097)
+   * Comments in .po files are now kept in order when the .pot is regenerated (issue #5989)
+ ### Units
+   * Added attack image for the Bone Knight’s trample
+   * Added attack image for the Nightblade’s kick
+ ### User interface
+   * Improved translatability of MP ban durations (issue #6036, PR #6097)
+   * Fixed missing sidebar tooltips in low resolutions such as 800x600 (issue #6264)
+ ### Miscellaneous and Bug Fixes
+   * Password storage was fixed to work with multiple accounts (PR #6290)
+   * wmllint now automatically removes `{MAGENTA_IS_THE_TEAM_COLOR}`
+   * Added workaround for connecting to the multiplayer server taking too long when Chinese or Japanese language is selected (issue #6291)
+   * Added `KeyboardInterrupt` handling to many Python WML tools
+   * Added `--simple-version` command line option
+   * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
+   * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+   * Fixed units on a recall list sometimes being put on the map by `[modify_unit]` or `[store_unit]...[unstore_unit]` (issues #6295 and #6315)
+   * Fixed abilities that are shown as weapon specials in the attack prediction window being shown on the placeholder for units with no ranged attack, or dark adepts' melee response
+   * Fixed a glitch after a move is interrupted, paths to the hex where the move started were shown (issue #6292)
+
+## Version 1.16.1
  ### Add-ons server
-   * Fixed `core=` attribute in _server.pbl being completely ignored (issue #5664).
+   * Fixed `core=` attribute in `_server.pbl` being completely ignored (issue #5664).
  ### Campaigns
    * Tutorial
      * Use a portrait on the Campaigns menu.
- ### Editor
+   * Sceptre of Fire
+     * S02p5: Added defeat condition if Alanin dies.
  ### Multiplayer
-   * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
+   * Increased the limits of timer values (up to 10 minutes turn bonus, 50 minutes reservoir).
+   * Re-added HTML character escaping.
  ### Lua API
+   * Fixed an error in `gui.get_user_choice()` (part of PR #6247).
+   * Fixed an error in handling `x,y` locations (issue #6231).
  ### Packaging
- ### Terrain
+   * Fixed missing dependency on boost-math in the vcpkg config.
+   * Made `get_dlls.py` install libraries for `wesnothd` too.
  ### Translations
-   * Updated translations: Italian.
- ### Units
+   * Updated translations: Dutch, Italian, Portuguese (Brazil).
+   * Added po hints for time format strings.
  ### User interface
    * Made the Add-ons Manager search box less unwieldy on very small resolutions.
+   * Made listbox header toggle buttons taller.
  ### WML Engine
+   * Fixed `[item]x,y=` at scenario scope (issue #6231).
  ### Miscellaneous and Bug Fixes
+   * Fixed missing tooltips on the side-bar (hover over the unit type to see a description, etc) (issues #6007 and #6096).
+   * Fixed several issues in the multiplayer server about TLS connections, error-handling and disconnections.
+   * Added `.DS_Store` and `Thumbs.db` to wmltool's list of files to ignore.
 
 ## Version 1.16.0
  ### Campaigns
