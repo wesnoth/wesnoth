@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-02 21:01+0300\n"
+"POT-Creation-Date: 2022-01-16 13:30+0300\n"
 "PO-Revision-Date: 2022-01-12 23:27+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -1251,18 +1251,18 @@ msgid "Show only villages"
 msgstr "Ukázat pouze vesnice"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:377
+#: data/core/editor/help.cfg:378
 msgid "Wesnoth Map Format"
 msgstr "Formát mapy"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:379
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Wesnoth své mapy ukládá do jednoduchých textových souborů čitelných člověkem."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:381
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1319,7 +1319,7 @@ msgstr ""
 "začleňování preprocesorem."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1353,7 +1353,7 @@ msgstr ""
 "(E)."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:401
+#: data/core/editor/help.cfg:402
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1374,7 +1374,7 @@ msgstr ""
 "cfg'</ref> pro ručně upravované části."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:405
+#: data/core/editor/help.cfg:406
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -5643,7 +5643,7 @@ msgstr "Dlouhá temnota (4)"
 msgid "Special Notes:"
 msgstr "Zvláštní rysy:"
 
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:15
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5651,7 +5651,7 @@ msgstr ""
 "Duchové jsou neobyčejně odolní vůči běžným typům zranění a mohou se, byť "
 "velmi pomalu, pohybovat v hlubokých vodách."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:18
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5659,28 +5659,28 @@ msgstr ""
 "Nezemský útok této jednotky působí zničující zranění magickým stvořením "
 "a také dost velké poškození těm obyčejným."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:25
 msgid "This unit is capable of basic healing."
 msgstr "Tato jednotka dokáže poskytnout základní léčení."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:28
 msgid "This unit is capable of rapid healing."
 msgstr "Tato jednotka dokáže poskytnout rychlé léčení."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 "Tato jednotka je schopna jednak léčit, ale také uzdravovat okolní jednotky "
 "z otravy."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5688,7 +5688,7 @@ msgstr ""
 "Tato jednotka regeneruje, takže je léčena stejně, jako kdyby byla neustále "
 "ve vesnici."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5696,7 +5696,7 @@ msgstr ""
 "Vytrvalost umožňuje této jednotce snížit účinky zranění způsobených "
 "některými typy útoků, ale pouze při obraně."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:43
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5705,7 +5705,7 @@ msgstr ""
 "blízkosti způsobovat v boji větší poškození, i když toto platí pouze pro "
 "jednotky s nižší úrovní."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5714,11 +5714,11 @@ msgstr ""
 "jednotek, což jim dovoluje se mezi nimi volně pohybovat."
 
 # blbé, ale jak jinak to udělat?
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:49
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "Osvětlení zvyšuje stupeň osvětlení na přilehlých polích."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:52
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5726,7 +5726,7 @@ msgstr ""
 "Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
 "druhé."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:55
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5734,12 +5734,12 @@ msgstr ""
 "Dovedností této jednotky je schopnost stát se v lesích neviditelnou, dokud "
 "nezaútočí nebo se nepřítel nepostaví hned vedle."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:58
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 "Ve tmě se může tato jednotka dokonale skrýt a nezanechat po sobě žádné stopy."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5747,14 +5747,14 @@ msgstr ""
 "Tato jednotka se dokáže skrýt ve vesnicích (s výjimkou vodních) a zůstat "
 "nepovšimnuta nepřáteli, pokud se nepostaví těsně vedle ní."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "V hluboké vodě se tato jednotka pohybuje neviděna, neboť nepotřebuje dýchat "
 "vzduch."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5762,7 +5762,7 @@ msgstr ""
 "Vždy, když zabije živého nepřítele, zvyšuje tato jednotka maximum svých "
 "životů o 1."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5770,7 +5770,7 @@ msgstr ""
 "Pokaždé, když tato jednotka použije útok „na život a na smrt“, pokračuje "
 "v útoku, dokud ona či její nepřítel nepadne v boji."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:73
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5781,7 +5781,7 @@ msgstr ""
 "napadené jednotce způsobí dvojnásobná zranění. Platí to však pouze pro útok."
 
 # pův.: "procitnou "
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5789,7 +5789,7 @@ msgstr ""
 "Nepřátelé, kteří padnou na následky nákazy, znova povstanou jako nemrtví – "
 "pokud ovšem nestojí na vesnici."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5797,13 +5797,13 @@ msgstr ""
 "Tato jednotka dokáže zpomalit své nepřátele, čímž do konce kola zmenší "
 "jejich pohyb a jimi způsobená poškození na polovinu."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "Schopnost změnit živé tvory v kámen činí tuto jednotku extrémně nebezpečnou."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5811,7 +5811,7 @@ msgstr ""
 "Střelecké umění dává této jednotce vyšší šanci zasáhnout nepřátele, ale "
 "pouze při útoku."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5819,7 +5819,7 @@ msgstr ""
 "Tato jednotka používá magické útoky, které mají vždy velkou šanci zasáhnout "
 "protivníka."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -5827,7 +5827,7 @@ msgstr ""
 "Útok hejna se stává méně smrtícím při zranění jednotlivých jedinců v tomto "
 "hejnu."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5835,12 +5835,12 @@ msgstr ""
 "Útok výpadem zdvojnásobuje velikost poškození jak rozdaného, tak přijatého. "
 "To se nevztahuje na defenzivní protivýpady."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "Během boje se dokáže tato jednotka léčit vysátím života z nepřítele."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5848,7 +5848,7 @@ msgstr ""
 "Délka zbraně umožňuje této jednotce zaútočit jako první, a to i tehdy, když "
 "se brání."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5856,7 +5856,7 @@ msgstr ""
 "Obětem otráveným jedem této jednotky neustále přibývají zranění, dokud není "
 "oběť uzdravena ve vesnici nebo uzdravovatelem."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:106
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."

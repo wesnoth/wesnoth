@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Vesnot Savaşı çok oyunculu ağ sunucusu"
+.TH WESNOTHD 6 2022 wesnothd "Vesnot Savaşı çok oyunculu ağ sunucusu"
 .
 .SH İSİM
 .
@@ -161,8 +161,8 @@ belirler. (Öntanımlı değeri: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
-listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve
-\fB?\fPdesteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
+listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve \fB?\fP
+desteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
 .br
 Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir.
 .TP 
@@ -173,8 +173,8 @@ oturum açmasının engellenip engellenmeyeceği (öntanımlı: false)
 .SS "Genel etiketler:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceği sunucuların
+belirtildiği etiket. \fBversions_accepted\fP atanmışsa kullanılmaz.
 .RS
 .TP 
 \fBhost\fP
@@ -208,12 +208,12 @@ istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
 etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Kullanıcı işlemcisini yapılandırır. \fB[user_handler]\fP
+bölümü yapılandırmada yoksa sunucu herhangi bir kullanıcı kayıt hizmeti
+olmadan çalışacaktır. \fBforum_user_handler\fP'ın çalışması için gereken tüm ek
+tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında
+bulunabilir. Etkin mysql desteği gerektirir. Bu, cmake için \fBENABLE_MYSQL\fP,
+scons için \fBforum_user_handler\fP etiketidir.
 .RS
 .TP 
 \fBdb_host\fP
@@ -277,7 +277,7 @@ Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright  © 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright  © 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

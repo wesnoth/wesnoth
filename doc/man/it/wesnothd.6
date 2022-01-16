@@ -177,8 +177,9 @@ accedere. (default: falso)
 .SS "Tag globali:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Un tag per specificare un server a cui redirigere determinate
+versioni di client. Non viene usato se \fBversions_accepted\fP non viene
+impostato.
 .RS
 .TP 
 \fBhost\fP
@@ -214,12 +215,13 @@ richieste dei client connessi al server specificato. Accetta le stesse
 parole chiave di \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configura lo user handler. Se non è presente una sezione
+\fB[user_handler]\fP nella configurazione il server verrà lanciato senza un
+servizio di registrazione del nick. Tutte le tabelle aggiuntive necessarie
+per il funzionamento di \fBforum_user_handler\fP possono essere reperite in
+table_definitions.sql nel repository del codice sorgente di
+Wesnoth. Necessita che sia abilitato il supporto mysql. Per cmake occore
+utilizzare il flag \fBENABLE_MYSQL\fP e per scons \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
