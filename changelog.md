@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
  ### Editor
  ### Multiplayer
  ### Lua API
