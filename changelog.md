@@ -52,6 +52,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Added translations: Spanish (Latin American)
    * Updated translations: British English, Chinese (Simplified), Czech, Italian, Japanese, Portuguese (Brazil), Scottish Gaelic, Turkish.
    * Lots of corrections of typos in `en_US` (untranslated text), which will require marking translations as `non-fuzzy` again
    * Implemented delayed translation option for gettext plurals (issue #6036, PR #6097)
