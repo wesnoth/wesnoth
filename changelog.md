@@ -2,6 +2,12 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Delfador’s Memoirs
+     * S14: Smoother appearance of enemies and added dialogue (#6176)
+   * The Rise of Wesnoth
+     * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
+   * Under the Burning Suns
+     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
  ### Editor
  ### Multiplayer
  ### Lua API
@@ -19,7 +25,6 @@
      * The mercenary will now spawn in a less sudden way (issue #6183)
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
-     * S14: Smoother appearance of enemies and added dialogue (#6176)
    * Descent into Darkness
      * S08: Prevent possibility of Darken Volk advancing to Lich (issue #6351)
    * Heir to the Throne
@@ -36,7 +41,6 @@
      * S08: The appearance of Naga is now smoother (issue #6140)
      * S19: The troll’s gold is automatically collected upon victory if not already obtained (issue #6141)
      * S19: Avoid units spawning over chasms
-     * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
      * Remove time-runs-out lose condition for final scenario (issue #6109)
    * Under the Burning Suns
      * Avoid a few possibilities where the Dust Devil could speak (issue #4892)
@@ -52,7 +56,6 @@
        * Fast units cannot get stuck on the wall now (issue #6196)
        * Camera now moves to where the charges are blown up (issue #6197)
        * Fixed weird scout AI behaviour (issue #6196)
-     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
      * S09: Rebels joining Kaleh’s side are now loyal (issue #6229 and #6365)
      * The last unit killed to trigger certain events should no longer linger during those events (issue #6341)
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
