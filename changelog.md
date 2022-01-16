@@ -1,6 +1,4 @@
-## Version 1.16.1+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.16.2
  ### Campaigns
    * Delfador’s Memoirs
      * S07: Clarified objectives (issue #5608) and remove End Turn being required to trigger victory (issue #6173)
@@ -40,7 +38,6 @@
    * World Conquest:
      * Fixed for Winged Scepter not giving the correct defence values
      * Corrected the attack icon of ice bow from a lightning bolt to an iceball
- ### Editor
  ### Multiplayer
    * Lobby joins are no longer displayed in chat even when that preference has been disabled (issue #6234)
    * Added a specific prompt for moderators before joining password-protected games (issue #4101)
@@ -49,8 +46,6 @@
    * Made planned moves visible to allies; this refers to trying to move more hexes than the unit can move this turn, it isn’t the whiteboard (issue #6292)
  ### Lua API
    * Fixed an error in `gui.get_user_choice()` and added support for the current DescriptionWML syntax (PR #6247)
- ### Packaging
- ### Terrain
  ### Translations
    * Added translations: Spanish (Latin American)
    * Updated translations: British English, Chinese (Simplified), Czech, Finnish, Italian, Japanese, Portuguese (Brazil), Scottish Gaelic, Turkish.
@@ -63,7 +58,6 @@
  ### User interface
    * Improved translatability of MP ban durations (issue #6036, PR #6097)
    * Fixed missing sidebar tooltips in low resolutions such as 800x600 (issue #6264)
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Password storage was fixed to work with multiple accounts (PR #6290)
    * wmllint now automatically removes `{MAGENTA_IS_THE_TEAM_COLOR}`
