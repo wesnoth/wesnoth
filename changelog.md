@@ -42,7 +42,7 @@
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
      * The Dust Devil’s XP bar is now blue (issue #6212)
    * Winds of Fate:
-     * New Drakes Campaign  
+     * New Drakes-centric Campaign added to mainline  
    * World Conquest:
      * Fixed for Winged Scepter not giving the correct defence values
      * Corrected the attack icon of ice bow from a lightning bolt to an iceball
