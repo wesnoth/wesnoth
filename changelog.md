@@ -4,6 +4,7 @@
  ### Campaigns
    * Delfador’s Memoirs
      * S14: Smoother appearance of enemies and added dialogue (#6176)
+   * The Rise of Wesnoth
      * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
    * Under the Burning Suns
      * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
