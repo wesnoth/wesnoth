@@ -1,6 +1,4 @@
-## Version 1.17.0-dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.0
  ### Campaigns
    * A Tale of Two Brothers
      * The mercenary will now spawn in a less sudden way (issue #6183)
@@ -51,8 +49,6 @@
  ### Multiplayer
  ### Lua API
    * Fixed an error in `gui.get_user_choice()` and added support for the current DescriptionWML syntax (PR #6247)
- ### Packaging
- ### Terrain
  ### Translations
    * Added translations: Spanish (Latin American)
    * Updated translations: British English, Bulgarian, Chinese (Simplified), Chinese (Traditional), Czech, Dutch, Finnish, French, Indonesian, Italian, Japanese, Polish, Portuguese (Brazil), Russian, Scottish Gaelic, Spanish, Turkish.
