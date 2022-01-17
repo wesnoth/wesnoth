@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-02 18:00 UTC\n"
+"POT-Creation-Date: 2022-01-17 20:51 UTC\n"
 "PO-Revision-Date: 2022-01-01 14:33+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -392,7 +392,7 @@ msgstr ""
 msgid ""
 "But the elder mage’s health was taxed by the rigors of the journey. A year "
 "after the two left Alduin, Methor settled in a tranquil valley at the edge "
-"of the Dulatus Hills, not far southeast of the capitol at Weldyn. He opened "
+"of the Dulatus Hills, not far southeast of the capital at Weldyn. He opened "
 "a small school of his own; and with Delfador assisting him, he began "
 "training a handful of youths who might in time be worthy to enter the great "
 "Academy on Alduin."
@@ -660,7 +660,7 @@ msgstr "哈格哈-坦"
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:26
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:27
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:104
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:379
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:388
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:58
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:36
@@ -3326,24 +3326,30 @@ msgstr "我希望这书不会毁了他。"
 msgid "You speak my thoughts, granddaughter. May it be so."
 msgstr "你把我想说的说出来了，孙女。但愿如此吧。"
 
+#. [message]: speaker=Rudimil
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:334
+msgid ""
+"The elves have advanced much further than anticipated; Krumful, Unhul, arise!"
+msgstr ""
+
 #. [event]
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:333
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:336
 msgid "Krumful"
 msgstr "克鲁姆孚"
 
 #. [event]
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:334
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:340
 msgid "Unhul"
 msgstr "温霍"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:363
 #, fuzzy
 msgid "I have arrived too late for the entertainment, it would seem."
 msgstr "貌似我错过了一场好事。"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:361
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:370
 msgid ""
 "Well met, Delfador. Chantal has told me of you. I am Kalenz, High Lord of "
 "the Elves, and we are in your debt today."
@@ -3352,14 +3358,14 @@ msgstr ""
 "今天欠你一个人情。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:365
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:374
 msgid ""
 "It is my honor to meet you. And it relieves my mind to know Chantal is safe "
 "and with her kin again."
 msgstr "很荣幸见到你。这也让我不再为香黛尔能否安全见到亲人而担心了。"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:369
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:378
 msgid ""
 "I am not sure there is safety for anyone in these days, but we all travel "
 "the same road and face the same foes."
@@ -3367,7 +3373,7 @@ msgstr ""
 "我不确定这段日子里任何人绝对安全，但我们在同一条路上，面对的是相同的敌人。"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:373
+#: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:382
 msgid ""
 "Yes. We will follow you to the Ford of Abez, Delfador. Let us hope we are "
 "not too late to prevent an orcish victory there."
