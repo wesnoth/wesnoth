@@ -193,10 +193,10 @@ public:
 			symbols["command"] = get_cmd();
 			std::string input = get_data(0);
 			if (cmd_prefix_ == "/"){
-                symbols["help_command"] = cmd_prefix_ + "help";
+				symbols["help_command"] = cmd_prefix_ + "help";
 			}
 			else{
-                symbols["help_command"] = "help";
+				symbols["help_command"] = "help";
 			}
 			if (input[0] == ':'){
 				print("help", VGETTEXT("Unknown command '$command', remove ':' or try '$help_command' "
