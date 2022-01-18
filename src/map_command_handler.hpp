@@ -190,17 +190,24 @@ public:
 		}
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
-			symbols["command"] = get_cmd();
-			std::string input = get_data(0);
+			symbols["prefix"] = cmd_prefix_;
 			if (cmd_prefix_ == "/"){
 				symbols["help_command"] = cmd_prefix_ + "help";
+				symbols["command"] = cmd_prefix_ + get_cmd();
 			}
 			else{
 				symbols["help_command"] = "help";
+				symbols["command"] = get_cmd();
 			}
-			if (input[0] == ':'){
-				print("help", VGETTEXT("Unknown command '$command', remove ':' or try '$help_command' "
-					"for a list of available commands.", symbols));
+			if (get_cmd().find(cmd_prefix_) == 0){
+				if (const command* c = get_command(get_data(0).erase(0,1))) {
+					print("help", VGETTEXT("Unknown command '$command', remove '$prefix' or try '$help_command' "
+						"for a list of available commands.", symbols));
+				}
+				else{
+					print("help", VGETTEXT("Unknown command '$command', try '$help_command' "
+						"for a list of available commands.", symbols));
+				}
 			}
 			else{
 				print("help", VGETTEXT("Unknown command '$command', try '$help_command' "
