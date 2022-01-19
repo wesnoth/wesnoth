@@ -25,7 +25,11 @@ variable that should contains the pool of 'armies' that the enemies are chosen f
 	[set_variables]
 		name = "wc2_enemy_army"
 		[literal]
+			# last digit has to be the total number of factions you want to [group]
+			factions_available = "1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4"
 			[group]
+				# allies will be the factions who should be paired with this one
+			    allies_available="2,3,4"
 				id = "enemyfaction_id"
 				recruit= "Orcish Grunt,Orcish Archer,Wolf Rider,Orcish Assassin,Troll Whelp"
 				[recall]
