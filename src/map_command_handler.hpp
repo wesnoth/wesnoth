@@ -199,15 +199,9 @@ public:
 				symbols["help_command"] = "help";
 				symbols["command"] = get_cmd();
 			}
-			if (get_cmd().find(cmd_prefix_) == 0){
-				if (const command* c = get_command(get_data(0).erase(0,1))) {
-					print("help", VGETTEXT("Unknown command '$command', remove '$prefix' or try '$help_command' "
-						"for a list of available commands.", symbols));
-				}
-				else{
-					print("help", VGETTEXT("Unknown command '$command', try '$help_command' "
-						"for a list of available commands.", symbols));
-				}
+			if (get_cmd().find(cmd_prefix_) == 0 && get_command(get_cmd().erase(0,cmd_prefix_.length()))){
+				print("help", VGETTEXT("Unknown command '$command', remove '$prefix' or try '$help_command' "
+					"for a list of available commands.", symbols));
 			}
 			else{
 				print("help", VGETTEXT("Unknown command '$command', try '$help_command' "
