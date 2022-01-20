@@ -478,7 +478,6 @@ endif()
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
-	find_package(Fontconfig REQUIRED)
 	if(NOT MSVC)
 		# for everything else, use pkgconfig
 		# find_package can't be used for SDL2 since at least as of Ubuntu 20.04 they forgot to include the sdl2-config-version.cmake, so cmake can't tell if it's >= 2.0.8 and thus rejects using it
