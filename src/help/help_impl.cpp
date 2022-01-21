@@ -337,6 +337,16 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		} else {
 			WRN_HP << "Found a topic generator that I didn't recognize: " << generator << "\n";
 		}
+
+		if(parts.size()>1 && part[1] == "era"){
+			res = generate_era_topics(sort_generated, parts[1]);
+		}
+		else if(parts.size()>1 && parts[1] == "race"){
+			res = generate_faction_topics(sort_generated, parts[1]);
+		}
+		else{
+			WRN_HP << "Warning message: No id key recognized for race or era." << generator << "\n";
+		}
 	}
 
 	return res;
