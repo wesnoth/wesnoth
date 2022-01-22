@@ -14,7 +14,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Italian
+   * Updated translations: British English, Italian, Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine

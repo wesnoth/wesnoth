@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2022-01-07 15:09-0300\n"
+"PO-Revision-Date: 2022-01-15 17:15-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -682,6 +682,22 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Pinta espaços no mapa.\n"
+"\n"
+"A ferramenta de pintura utiliza o tamanho do pincel e a paleta de terrenos.\n"
+"\n"
+"<bold>text='Atalhos do Teclado'</bold>\n"
+"\n"
+"• Shift+clique com o mouse: Se um terreno base estiver selecionado, muda a "
+"base sem alterar a sobreposição. Se uma sobreposição estiver selecionada, "
+"muda a sobreposição sem alterar a base.\n"
+"• Control+clique com o mouse: Seleciona o terrenos sob o cursor do mouse, "
+"como se ele tivesse sido selecionado na paleta de terrenos (pega tanto a "
+"base quanto a sobreposição).\n"
+"\n"
+"<bold>text='Tamanho dos Pinceis'</bold>\n"
+"\n"
+"O pincel selecionado altera o tamanho da ferramenta:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
@@ -723,6 +739,18 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Preenche regiões contínuas de terreno com um novo terreno.\n"
+"\n"
+"O balde utiliza a paleta de terrenos.\n"
+"\n"
+"<bold>text='Atalhos do Teclado'</bold>\n"
+"\n"
+"• Shift+clique com o mouse: Se um terreno base estiver selecionado, muda a "
+"base sem alterar a sobreposição. Se uma sobreposição estiver selecionada, "
+"muda a sobreposição sem alterar a base.\n"
+"• Control+clique com o mouse: Seleciona o terrenos sob o cursor do mouse, "
+"como se ele tivesse sido selecionado na paleta de terrenos (pega tanto a "
+"base quanto a sobreposição)."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -745,6 +773,18 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Seleciona um conjunto de hexágonos para serem utilizados com os butões de "
+"recortar, copiar e balde no menu lateral.\n"
+"\n"
+"<bold>text='Atalhos do Teclado'</bold>\n"
+"\n"
+"• Shift+clique com o mouse: modo \"Varinha Mágica\", seleciona o hexágono "
+"sob o cursor do mouse e os hexágonos adjacentes do mesmo tipo de terreno.\n"
+"• Control+clique com o mouse: Deselecionar hexágonos.\n"
+"\n"
+"<bold>text='Tamanho do Pincel'</bold>\n"
+"\n"
+"O pincel selecionado altera o tamanho da ferramenta:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
@@ -786,6 +826,18 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Roda, gira e cola o terreno na área de transferência\n"
+"\n"
+"Hexágonos podem ser cortados ou copiados da área de transferência usando a "
+"<ref>dst='editor_tool_select' text='Ferramenta de Seleção'</ref>.\n"
+"\n"
+"A ferramenta de colagem mostra um contorno na área de transferência, podendo "
+"ser colado clicando com o botão do mouse. Só o contorno é mostrado, mas "
+"erros podem ser corrigidos com a função de desfazer, cujo atalho é Crontol+Z "
+"e a mesma tecla da função desfazer dentro do jogo.\n"
+"\n"
+"A ferramenta de colagem també possui algumas funções de manipulação da área "
+"de transferência:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
@@ -814,6 +866,7 @@ msgstr "Ferramenta para Definir Posições Iniciais"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
+#, fuzzy
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -845,6 +898,9 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"<bold>text='Atalhos do Teclado'</bold>\n"
+"\n"
+"• Control+clique do mouse em um espaço que já possui uma posição"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:129
@@ -893,6 +949,17 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"A Ferramenta de Itens permite colocar decorações, rais quais moinhos de "
+"vento, estantes de lívros e monólitos. Múltiplos itens podem ser colocados "
+"no mesmo hexágono.\n"
+"\n"
+"<bold>text='Nota:'</bold> a ferramenta não é capaz de deletar itens uma vez "
+"que eles tenham sido colocados, nem suporta a ação de desfazer. No presente "
+"momento, erros só tem como ser consertados editando o arquivo WML.\n"
+"\n"
+"Essa ferramenta só está disponível no Modo de Cenário; as decorações não são "
+"parte do cenário e são implementadas no cenário usando a tag WML "
+"<italic>text='[item]'</italic>."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:159
@@ -913,6 +980,17 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Essa ferramenta dita quem possui quais aldeias no começo de um cenário. "
+"Primeiro, as aldeias devem ser colocadas no terreno com o "
+"<ref>dst='editor_tool_paint' text='Pincel'</ref>.\n"
+"\n"
+"• Clique com o botão direito dará a vila para o lado atualmente "
+"selecionado.\n"
+"• Clique com o botão direito deixará a vila sem dono.\n"
+"\n"
+"Essa ferramenta só está disponível no Modo de Cenário; informações sobe a "
+"posse são guardadas adicionando as tags WML <italic>text='[village]'</"
+"italic> ao <italic>text='[side]'</italic> apropriado."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:174
@@ -933,6 +1011,17 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Coloca unidades pertencentes ao lado que está selecionado.\n"
+"\n"
+"• Botão esquerdo coloca uma unidade.\n"
+"• Arrastar e soltar com o botão esquerdo move uma unidade que já foi "
+"colocada.\n"
+"• Várias operações são adicionadas ao menu do botão direito quando um "
+"hexágono contêm uma unidade.\n"
+"\n"
+"Essa ferramenta só está disponível no Modo de Cenário; ela adiciona as tags "
+"<italic>text='[unit]'</italic> para o <italic>text='[side]'</italic> "
+"apropriado."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:190
@@ -1119,6 +1208,17 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Entrando no modo de cenário'</header>\n"
+"\n"
+"Para começar um mapa novo no modo de cenário, selecione \"Novo Cenário\" no "
+"menu \"Arquivo\".\n"
+"\n"
+"Se você já está editando um mapa no modo de terreno, use \"Salvar Cenário "
+"Como\" no menu \"Arquivo\"; isso mudará para o modo de cenário.\n"
+"\n"
+"Para carregar um mapa que foi criado no editor de cenário, use \"Carregar "
+"Mapa\" no menu \"Arquivo\", e então selecione o arquivo .cfg (e não um "
+"arquivo .map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:285
@@ -1138,6 +1238,22 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='Os arquivos: .map e .cfg'</header>\n"
+"\n"
+"O editor de mapas salva exatamente um arquivo, ou um .map (para o modo de "
+"terreno), ou um .cfg (para o modo de cenário). No modo de cenário o mapa do "
+"terreno é salvo dentro do arquivo .cfg; não há um arquivo .map separado. Se "
+"você começar editando no modo de terreno antes de mudar para o modo de "
+"cenário, um arquivo .map antigo permanecerá, mas isso não é atualizado pelo "
+"edito de cenário.\n"
+"\n"
+"Carregar um arquivo .cfg possui resultados diferentes dependendo dos "
+"conteúdos do arquivo .cfg. Para arquivos .cfg que foram criados pelo editor "
+"de cenário, ele abritá o .cfg no editor de cenário. Entretanto, para "
+"arquivos .cfg que usam um arquivo .map separado (o qual não pode ser criado "
+"pelo editor de cenário), o editor seguirá o link e abrirá o arquivo .map "
+"correspondente no modo de terreno, como se o arquivo .map tivesse sido "
+"selecionado."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:297
@@ -1229,6 +1345,14 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Esse butão no canto superior direito da tela permite acessar o período do "
+"dia e o edito de cronograma.\n"
+"\n"
+"No modo de terreno, exibe o mapa como ele ficará com a cor mudada de acordo "
+"com os diferentes períodos do dia.\n"
+"\n"
+"No modo de cenário, o butão acessa um editor para planejar cronogramas para "
+"o <ref>dst='editor_named_area' text='período nas áreas'</ref>."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:357
@@ -1238,6 +1362,7 @@ msgstr "Paleta do Editor"
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
 #: data/core/editor/help.cfg:359
+#, fuzzy
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1250,7 +1375,7 @@ msgid ""
 "There is a filter function to show only a subset of the available items — "
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
-msgstr ""
+msgstr "Pincel"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:364
@@ -1328,6 +1453,20 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Embutido'</header>\n"
+"\n"
+"As informações do mapa podem ser guardadas como uma parte .cfg do cenário, "
+"diretamente no atributo <italic>text='map_data'</italic>. Ou seja, no local "
+"em que o pré-processador lhe incluiria ao usar o método do pré-processador.\n"
+"\n"
+"<header>text='Usando o Formato Embutido no Modo de Terreno'</header>\n"
+"\n"
+"Se você está editando o mapa e não está usando o suporte para o Modo de "
+"Cenário, então é trivial mover as informações para um arquivo de mapa nativo "
+"antes de abri-ló no editor. Essa conversão é recomendada — o editor suporta "
+"a edição do conteúdo do map_data, deixando todo o resto intocado, mas esse é "
+"um código raramente utilizado. Mapas abertos dessa forma são marcados com um "
+"(E) no menu."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:402
@@ -3226,6 +3365,13 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"Em jogos multyplayer, ações enviadas para o servidor não podem ser "
+"desfeitas; o jogo atrasa o envio de informações para preserver a sua "
+"capacidade de desfazer ações. Ao montar estratégias com os seus alidos, "
+"lembre-se que os outros jogadores estão vendo uma versão do jogo do último "
+"combate ou movimento fora da névoa de guerra. Mensagens de chat e rótulos no "
+"mapa são enviados imediatamente, mas eles não forçam que os movimentos "
+"impossíveis sejam enviados."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -3394,21 +3540,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. At all but the "
-#| "easiest difficulties, campaigns assume that you will have some "
-#| "<italic>text='carryover gold'</italic> and some advanced units on your "
-#| "<italic>text='recall list.'</italic> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your advanced units and "
-#| "much of your gold, the following scenario may be very difficult to beat, "
-#| "even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<italic>text='some'</italic> losses are expected, particularly at higher "
-#| "difficulties.)"
 msgid ""
 "\n"
 "\n"
@@ -3425,17 +3556,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• Vitória pírrica num cenário anterior. Em todas as dificuldades, exceto as "
-"mais fáceis, as campanhas assumem que você terá alguma <italic>text='ouro "
-"transferido'</italic> e algumas unidades avançadas na sua "
-"<italic>text='lista de convocação.'</italic> (Estes conceitos são explicados "
-"no tutorial.) Se voc~e ganhar um cenário mas perder a maioria das suas "
-"unidades avançadas e a maior parte do seu ouro, provavelmente será muito "
-"dificil vencer o próximo cenário, até mesmo para um jogador experiente. Caso "
-"você se encontre nesta situação, você pode tentar de novo o último ou "
-"penúltimo cenário para ver se obtem uma vitória melhor, ou então diminuir a "
-"dificuldade. (Entretanto, lembre-se de que <italic>text='algumas'</italic> "
-"derrotas são esperadas, particularmente nas dificuldades mais altas.)"
+"• Vitória pírrica num cenário anterior. As campanhas assumem que você terá "
+"algum <italic>text='ouro transferido'</italic> e algumas unidades veteranas "
+"na sua <italic>text='lista de convocação.'</italic> (Estes conceitos são "
+"explicados no tutorial.) Se você ganhar um cenário mas perder a maioria das "
+"suas unidades veteranas e a maior parte do seu ouro, provavelmente será "
+"muito dificil vencer o próximo cenário, até mesmo para um jogador "
+"experiente. Caso você se encontre nesta situação, é uma boa ideia tentar de "
+"novo o último ou penúltimo cenário para ver se obtem uma vitória melhor, ou "
+"então diminuir a dificuldade. (Entretanto, lembre-se de que "
+"<italic>text='algumas'</italic> derrotas são esperadas, particularmente nas "
+"dificuldades mais altas.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
@@ -4022,6 +4153,25 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• Líderes possuem uma <bold>text='coroa dourada'</bold>.\n"
+"• Heróis possuem uma <bold>text='coroa cinza-azulada'</bold>.\n"
+"• Líderes descartáveis possuem uma <bold>text='coroa cinza'</bold>.\n"
+"• <ref>dst='traits_loyal' text='Unidades Leais'</ref> posuem o "
+"<bold>text='símbolo de leal'</bold>.\n"
+"\n"
+"Dessas categorias, só líderes fazem parte das regras básicas do jogo. As "
+"outras aparecem em campanhas e são personagens que compõem a narrativa. As "
+"regras exatas para eles são ditadas pela campanha, as quais podem ser um "
+"pouco diferentes das exdplicadas a seguir:\n"
+"\n"
+"• A morte de qualquer heói leva à derrota imediatamente.\n"
+"• A morte de um líder descartável não leva à derrota imediatamente, mesmo "
+"ele podendo recrutart.\n"
+"• Todas essas unidades possuem a principal vantagem de uma unidade leal, ou "
+"seja, não possuem custo de manutenção.\n"
+"• Se o cenário não terminar imediatamente, a perda de qualquer dessas "
+"unidades causa uma disvantagem para o resto da campanha.\n"
+"• Essas unidades nunca aparecem como recrutas aleatórios."
 
 #
 # File: data/core/help.cfg, line: 273
@@ -5863,7 +6013,7 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr "desvio"
+msgstr "distração"
 
 #
 # File: data/core/macros/abilities.cfg, line: 110
@@ -5884,7 +6034,7 @@ msgstr "desvio"
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
 msgid "female^diversion"
-msgstr "desvio"
+msgstr "distração"
 
 #
 # File: data/core/macros/special-notes.cfg, line: 62
@@ -5892,6 +6042,7 @@ msgstr "desvio"
 # File: data/core/macros/special-notes.cfg, line: 62
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
+#, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -10026,10 +10177,8 @@ msgstr "Visão:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Swarming"
 msgid "Jamming:"
-msgstr "Examiando"
+msgstr "Interferência:"
 
 #
 # File: src/help.cpp, line: 1494
@@ -10158,7 +10307,7 @@ msgstr "Custo de Visão"
 
 #: src/help/help_topic_generators.cpp:716
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Custo de Interferência"
 
 #
 # File: data/core/macros/abilities.cfg, line: 111
