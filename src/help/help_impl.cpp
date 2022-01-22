@@ -345,7 +345,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 			res = generate_faction_topics(sort_generated, parts[1]);
 		}
 		else{
-			WRN_HP << "Warning message: No id key recognized." << generator << "\n";
+			WRN_HP << "Warning message: No ID key recognized." << generator << "\n";
 		}
 	}
 
