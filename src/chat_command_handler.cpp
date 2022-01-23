@@ -15,6 +15,7 @@
 #include "chat_command_handler.hpp"
 
 #include "chat_events.hpp"
+#include "game_display.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_version.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
@@ -133,6 +134,10 @@ void chat_command_handler::do_info() {
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
 	chat_handler_.send_to_server(data);
+}
+
+void chat_command_handler::do_clear() {
+	game_display::get_singleton()->get_chat_manager().clear_chat_messages();
 }
 
 }
