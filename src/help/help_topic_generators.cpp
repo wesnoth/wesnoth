@@ -171,11 +171,11 @@ std::string terrain_topic_generator::operator()() const {
 	}
 
 	if(type_.is_castle()) {
-		special_notes.push_back(_("This terrain is a castle — units can be recruited on to it from a connected keep."));
+		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
 	}
 	if(type_.is_keep() && type_.is_castle()) {
 		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex on to connected castle hexes."));
+		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
 	} else if(type_.is_keep() && !type_.is_castle()) {
 		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
