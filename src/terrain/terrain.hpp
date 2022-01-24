@@ -145,8 +145,6 @@ public:
 	//these descriptions are shown for the terrain in the mouse over
 	//depending on the owner or the village
 	const t_string& income_description() const { return income_description_; }
-	const t_string& income_description_ally() const { return income_description_ally_; }
-	const t_string& income_description_enemy() const { return income_description_enemy_; }
 	const t_string& income_description_own() const { return income_description_own_; }
 
 	const std::string& editor_group() const { return editor_group_; }
@@ -226,8 +224,6 @@ private:
 	int heals_;
 
 	t_string income_description_;
-	t_string income_description_ally_;
-	t_string income_description_enemy_;
 	t_string income_description_own_;
 
 	std::string editor_group_;

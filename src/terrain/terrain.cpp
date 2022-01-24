@@ -56,8 +56,6 @@ terrain_type::terrain_type() :
 		min_light_(0),
 		heals_(0),
 		income_description_(),
-		income_description_ally_(),
-		income_description_enemy_(),
 		income_description_own_(),
 		editor_group_(),
 		village_(false),
@@ -95,8 +93,6 @@ terrain_type::terrain_type(const config& cfg) :
 		min_light_(cfg["min_light"].to_int(light_modification_)),
 		heals_(cfg["heals"]),
 		income_description_(),
-		income_description_ally_(),
-		income_description_enemy_(),
 		income_description_own_(),
 		editor_group_(cfg["editor_group"]),
 		village_(cfg["gives_income"].to_bool()),
@@ -188,16 +184,6 @@ terrain_type::terrain_type(const config& cfg) :
 			income_description_ = _("Village");
 		}
 
-		income_description_ally_ = cfg["income_description_ally"];
-		if(income_description_ally_.empty()) {
-			income_description_ally_ = _("Allied village");
-		}
-
-		income_description_enemy_ = cfg["income_description_enemy"];
-		if(income_description_enemy_.empty()) {
-			income_description_enemy_ = _("Enemy village");
-		}
-
 		income_description_own_ = cfg["income_description_own"];
 		if(income_description_own_.empty()) {
 			income_description_own_ = _("Owned village");
@@ -229,8 +215,6 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	min_light_(std::min(base.min_light_, overlay.min_light_)),
 	heals_(std::max<int>(base.heals_, overlay.heals_)),
 	income_description_(),
-	income_description_ally_(),
-	income_description_enemy_(),
 	income_description_own_(),
 	editor_group_(),
 	village_(base.village_ || overlay.village_),
@@ -281,14 +265,10 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	//mouse over message are only shown on villages
 	if(base.village_) {
 		income_description_ = base.income_description_;
-		income_description_ally_ = base.income_description_ally_;
-		income_description_enemy_ = base.income_description_enemy_;
 		income_description_own_ = base.income_description_own_;
 	}
 	else if (overlay.village_) {
 		income_description_ = overlay.income_description_;
-		income_description_ally_ = overlay.income_description_ally_;
-		income_description_enemy_ = overlay.income_description_enemy_;
 		income_description_own_ = overlay.income_description_own_;
 	}
 

@@ -1573,10 +1573,9 @@ REPORT_GENERATOR(terrain, rc)
 			str << map.get_terrain_info(terrain).income_description();
 		} else if (owner == viewing_side) {
 			str << map.get_terrain_info(terrain).income_description_own();
-		} else if (viewing_team.is_enemy(owner)) {
-			str << map.get_terrain_info(terrain).income_description_enemy();
 		} else {
-			str << map.get_terrain_info(terrain).income_description_ally();
+			const team &owner_team = rc.teams()[owner - 1];
+			str << VGETTEXT("$village_owner's village", {{ "village_owner", owner_team.team_name() }});
 		}
 
 		const std::string& underlying_desc = map.get_underlying_terrain_string(terrain);
