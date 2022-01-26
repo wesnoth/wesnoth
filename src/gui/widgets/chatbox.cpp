@@ -222,8 +222,9 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
+	const std::string before_message = log.get_label() == "" ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
 
 	log.set_use_markup(true);
 	log.set_label(new_text);
@@ -249,6 +250,14 @@ void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/
 
 	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
 	send_to_server(c);
+}
+
+void chatbox::clear()
+{
+	const auto id = active_window_;
+	grid& grid = chat_log_container_->page_grid(id);
+	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	log.set_label("");
 }
 
 void chatbox::user_relation_changed(const std::string& /*name*/)

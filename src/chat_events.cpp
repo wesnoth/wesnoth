@@ -15,6 +15,7 @@
 #include "chat_events.hpp"
 
 #include "formula/string_utils.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_command_handler.hpp"
@@ -125,6 +126,11 @@ void chat_handler::do_speak(const std::string& message, bool allies_only)
 	std::string cmd(message.begin() + 1, message.end());
 	chat_command_handler cch(*this, allies_only);
 	cch.dispatch(cmd);
+}
+
+void chat_handler::clear()
+{
+	game_display::get_singleton()->get_chat_manager().clear_chat_messages();
 }
 
 void chat_handler::user_relation_changed(const std::string& /*name*/)

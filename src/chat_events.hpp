@@ -64,6 +64,8 @@ protected:
 
 	void change_logging(const std::string& data);
 
+	virtual void clear();
+
 	friend class chat_command_handler;
 };
 

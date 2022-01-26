@@ -195,6 +195,8 @@ public:
 	/** Inherited form @ref chat_handler */
 	virtual void send_chat_message(const std::string& message, bool allies_only) override;
 
+	virtual void clear() override;
+
 	/**
 	 * Switch to the window given by a valid pointer (e.g. received from a call
 	 * to *_window_open)
