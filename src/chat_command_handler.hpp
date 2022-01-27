@@ -40,7 +40,7 @@ protected:
 	void do_remove();
 	void do_display();
 	void do_version();
-	void do_clear();
+	void do_clear_messages();
 
 	/** Request information about a user from the server. */
 	void do_info();
@@ -114,7 +114,7 @@ protected:
 			_("Display version information."));
 		register_command("info", &chat_command_handler::do_info,
 			_("Request information about a nickname."), _("<nickname>"));
-		register_command("clear", &chat_command_handler::do_clear,
+		register_command("clear", &chat_command_handler::do_clear_messages,
 			_("Clear chat history."));
 	}
 private:

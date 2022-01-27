@@ -252,7 +252,7 @@ void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/
 	send_to_server(c);
 }
 
-void chatbox::clear()
+void chatbox::clear_messages()
 {
 	const auto id = active_window_;
 	grid& grid = chat_log_container_->page_grid(id);

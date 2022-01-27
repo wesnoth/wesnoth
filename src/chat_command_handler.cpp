@@ -135,8 +135,8 @@ void chat_command_handler::do_info() {
 	chat_handler_.send_to_server(data);
 }
 
-void chat_command_handler::do_clear() {
-	chat_handler_.clear();
+void chat_command_handler::do_clear_messages() {
+	chat_handler_.clear_messages();
 }
 
 }
