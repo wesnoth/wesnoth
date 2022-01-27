@@ -896,18 +896,21 @@ std::string attack_type::weapon_specials(bool is_backstab) const
 	return res;
 }
 
-static void add_line(std::string& temp_string, std::string& weapon_abilities, const std::string temp_abilities, std::set<std::string>& checking_name)
+static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string from_str)
 {
-	temp_string.clear();
-	checking_name.clear();
-	weapon_abilities += (!weapon_abilities.empty() && !temp_abilities.empty()) ? "\n" : "";
-	weapon_abilities += temp_abilities;
+	if(!temp_string.empty()){
+		temp_string = translation::dsgettext("wesnoth", from_str.c_str()) + temp_string;
+		weapon_abilities += (!weapon_abilities.empty() && !temp_string.empty()) ? "\n" : "";
+		weapon_abilities += temp_string;
+		temp_string.clear();
+		checking_name.clear();
+	}
 }
 
 std::string attack_type::weapon_specials_value(const std::set<std::string> checking_tags) const
 {
 	//log_scope("weapon_specials_value");
-	std::string temp_string, weapon_abilities, self_teacher_allies, self_teacher_enemies, opponent_abilities;
+	std::string temp_string, weapon_abilities;
 	std::set<std::string> checking_name;
 	for (const config::any_child sp : specials_.all_children_range()) {
 		if((checking_tags.count(sp.key) != 0)){
@@ -917,23 +920,13 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	}
 	if(self_){
 		weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
-		if(!temp_string.empty()){
-			weapon_abilities += translation::dsgettext("wesnoth", "Self: ");
-			weapon_abilities += temp_string;
-			add_line(temp_string, weapon_abilities, self_teacher_allies, checking_name);
-		}
+		add_name_list(temp_string, weapon_abilities, checking_name, "Self: ");
+
 		weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
-		if(!temp_string.empty()){
-			self_teacher_allies += translation::dsgettext("wesnoth", "Teachers: ");
-			self_teacher_allies += temp_string;
-			add_line(temp_string, weapon_abilities, self_teacher_allies, checking_name);
-		}
+		add_name_list(temp_string, weapon_abilities, checking_name, "Teachers: ");
+
 		weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
-		if(!temp_string.empty()){
-			self_teacher_enemies += translation::dsgettext("wesnoth", "Enemies Teachers: ");
-			self_teacher_enemies += temp_string;
-			add_line(temp_string, weapon_abilities, self_teacher_enemies, checking_name);
-		}
+		add_name_list(temp_string, weapon_abilities, checking_name, "Enemies Teachers: ");
 	}
 
 	if(other_) {
@@ -947,11 +940,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 		}
 		weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
 		weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
-		if(!temp_string.empty()){
-			opponent_abilities += translation::dsgettext("wesnoth", "Opponent: ");
-			opponent_abilities += temp_string;
-			add_line(temp_string, weapon_abilities, opponent_abilities, checking_name);
-		}
+		add_name_list(temp_string, weapon_abilities, checking_name, "Opponent: ");
 	}
 	return weapon_abilities;
 }
