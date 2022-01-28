@@ -1690,12 +1690,12 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr att) :
+effect::effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr att, bool is_cumulable) :
 	effect_list_(),
 	composite_value_(0)
 {
 
-	int value_set = def;
+	int value_set = !is_cumulable ? def : (std::max(0, list.highest("value").first)- std::min(0, list.lowest("value").first));
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1721,19 +1721,20 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-
-			int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
-			assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
-			if(set_effect_min.type == NOT_USED) {
-				set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-				set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-			}
-			else {
-				if(value_cum > set_effect_max.value) {
+			if(!is_cumulable){
+				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
+				if(set_effect_min.type == NOT_USED) {
+					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 				}
-				if(value_cum < set_effect_min.value) {
-					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+				else {
+					if(value_cum > set_effect_max.value) {
+						set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					}
+					if(value_cum < set_effect_min.value) {
+						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					}
 				}
 			}
 		}
@@ -1786,7 +1787,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 		}
 	}
 
-	if(set_effect_max.type != NOT_USED) {
+	if(!is_cumulable && set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
