@@ -28,6 +28,9 @@ namespace string_enums
 template<typename T>
 struct enum_base : public T
 {
+	// check that all implementations of this are scoped enums
+	static_assert(std::is_enum<typename T::type>::value && !std::is_convertible<typename T::type, int>::value, "Enum is not a scoped enum");
+
 	/**
 	 * Uses the int value of the provided enum to get the associated index of the @a values array in the implementing class.
 	 *
@@ -56,6 +59,20 @@ struct enum_base : public T
 	}
 
 	/**
+	 * Convert an int into its enum equivalent.
+	 *
+	 * @param value The string value to convert.
+	 * @return The equivalent enum or std::nullopt.
+	 */
+	static std::optional<typename T::type> get_enum(unsigned long value)
+	{
+		if(value < T::values.size()) {
+			return static_cast<typename T::type>(value);
+		}
+		return std::nullopt;
+	}
+
+	/**
 	 * @return The size of the implementing class's @a values array.
 	 */
 	static constexpr std::size_t size()
@@ -63,4 +80,9 @@ struct enum_base : public T
 		return T::values.size();
 	}
 };
+
+#define ENUM_AND_ARRAY(...) \
+	enum class type { __VA_ARGS__ }; \
+	static constexpr std::array values{ __VA_ARGS__ };
+
 } // namespace string_enums
