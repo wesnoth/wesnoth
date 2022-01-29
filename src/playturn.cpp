@@ -232,7 +232,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			throw ingame_wesnothd_error("");
 		}
 
-		auto ctrl = side_controller::get_enum(side_drop_c["controller"]);
+		auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
 		if(!ctrl) {
 			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
 			throw ingame_wesnothd_error("");

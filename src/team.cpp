@@ -595,10 +595,10 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 	}
 
 	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
-	if(!side_controller::get_enum(choice["controller"])) {
+	if(!side_controller::get_enum(choice["controller"].str())) {
 		WRN_NG << "Received an invalid controller string from the server" << choice["controller"] << std::endl;
 	} else {
-		new_controller = side_controller::get_enum(choice["controller"]);
+		new_controller = side_controller::get_enum(choice["controller"].str());
 	}
 
 	if(!resources::controller->is_replay()) {
