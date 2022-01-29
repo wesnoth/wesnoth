@@ -72,7 +72,7 @@ static int intf_describe_plugins(lua_State * L)
 		std::stringstream line;
 		line << i
 		     << ":\t"
-		     << plugins_manager::get()->get_status(i)
+		     << plugin_manager_status::get_string(plugins_manager::get()->get_status(i))
 		     << "\t\t"
 		     << plugins_manager::get()->get_name(i)
 		     << "\n";

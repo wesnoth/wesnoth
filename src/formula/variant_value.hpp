@@ -16,8 +16,8 @@
 
 #include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
+#include "formula_variant.hpp"
 #include "utils/general.hpp"
-#include "utils/make_enum.hpp"
 
 #include <functional>
 #include <iostream>
@@ -34,17 +34,6 @@ namespace wfl
 class variant_value_base;
 class variant_iterator;
 class variant;
-
-/** The various types the variant class is designed to handle */
-MAKE_ENUM(VARIANT_TYPE,
-	(TYPE_NULL,     "null")
-	(TYPE_INT,      "int")
-	(TYPE_DECIMAL,  "decimal")
-	(TYPE_CALLABLE, "object")
-	(TYPE_LIST,     "list")
-	(TYPE_STRING,   "string")
-	(TYPE_MAP,      "map")
-);
 
 using variant_vector = std::vector<variant>;
 using variant_map_raw = std::map<variant, variant>;
@@ -145,9 +134,9 @@ public:
 	}
 
 	/** Returns the id of the variant type */
-	virtual const VARIANT_TYPE& get_type() const
+	virtual const formula_variant::type& get_type() const
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_NULL;
+		static formula_variant::type type = formula_variant::type::null;
 		return type;
 	}
 
@@ -259,9 +248,9 @@ public:
 		return string_cast();
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_INT;
+		static formula_variant::type type = formula_variant::type::integer;
 		return type;
 	}
 };
@@ -300,9 +289,9 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_DECIMAL;
+		static formula_variant::type type = formula_variant::type::decimal;
 		return type;
 	}
 
@@ -344,9 +333,9 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_CALLABLE;
+		static formula_variant::type type = formula_variant::type::object;
 		return type;
 	}
 
@@ -410,9 +399,9 @@ public:
 		return string_ < value_ref_cast<variant_string>(other).string_;
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_STRING;
+		static formula_variant::type type = formula_variant::type::string;
 		return type;
 	}
 
@@ -515,9 +504,9 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_LIST;
+		static formula_variant::type type = formula_variant::type::list;
 		return type;
 	}
 
@@ -541,9 +530,9 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_MAP;
+		static formula_variant::type type = formula_variant::type::map;
 		return type;
 	}
 

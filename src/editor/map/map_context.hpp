@@ -21,8 +21,8 @@
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "overlay.hpp"
+#include "side_controller.hpp"
 #include "sound_music_track.hpp"
-#include "string_enums/side_controller.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
@@ -45,7 +45,7 @@ struct editor_team_info {
 	int village_support;
 	bool fog;
 	bool shroud;
-	team::SHARE_VISION share_vision;
+	team_shared_vision::type share_vision;
 	side_controller::type controller;
 	bool no_leader;
 	bool hidden;

@@ -580,7 +580,7 @@ void game::change_controller(
 	const std::string& side = lexical_cast_default<std::string, std::size_t>(side_index + 1);
 	sides_[side_index] = player;
 
-	if(player_left && side_controllers_[side_index] == side_controller::type::AI) {
+	if(player_left && side_controllers_[side_index] == side_controller::type::ai) {
 		// Automatic AI side transfer.
 	} else {
 		if(started_) {
@@ -1134,7 +1134,7 @@ void game::handle_random_choice()
 void game::handle_add_side_wml()
 {
 	++nsides_;
-	side_controllers_.push_back(side_controller::type::NONE);
+	side_controllers_.push_back(side_controller::type::none);
 	sides_.emplace_back();
 }
 
@@ -1167,8 +1167,8 @@ void game::handle_controller_choice(const simple_wml::node& req)
 		return;
 	}
 
-	const bool was_null = this->side_controllers_[side_index] == side_controller::type::NONE;
-	const bool becomes_null = new_controller == side_controller::type::NONE;
+	const bool was_null = this->side_controllers_[side_index] == side_controller::type::none;
+	const bool becomes_null = new_controller == side_controller::type::none;
 
 	if(was_null) {
 		assert(!sides_[side_index]);
@@ -1312,7 +1312,7 @@ bool game::end_turn(int new_side)
 	}
 
 	// Skip over empty sides.
-	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == side_controller::type::NONE; ++i) {
+	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == side_controller::type::none; ++i) {
 		++current_side_index_;
 	}
 
@@ -1503,7 +1503,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 			continue;
 		}
 
-		if(side_controllers_[side_index] == side_controller::type::AI) {
+		if(side_controllers_[side_index] == side_controller::type::ai) {
 			ai_transfer = true;
 		}
 

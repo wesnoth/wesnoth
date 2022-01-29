@@ -20,30 +20,20 @@
 
 #pragma once
 
+#include "ai/ai_target.hpp"
 #include "ai/contexts.hpp"
 #include "formula/callable.hpp"
-#include "utils/make_enum.hpp"
 
 //============================================================================
 namespace ai {
 
 struct target {
-	MAKE_ENUM(TYPE,
-		(VILLAGE, "village")
-		(LEADER, "leader")
-		(EXPLICIT, "explicit")
-		(THREAT, "threat")
-		(BATTLE_AID, "battle aid")
-		(MASS, "mass")
-		(SUPPORT, "support")
-	)
-
-	target(const map_location& pos, double val, TYPE target_type=TYPE::VILLAGE) : loc(pos), value(val), type(target_type)
+	target(const map_location& pos, double val, ai_target::type target_type = ai_target::type::village) : loc(pos), value(val), type(target_type)
 	{}
 	map_location loc;
 	double value;
 
-	TYPE type;
+	ai_target::type type;
 };
 
 class attack_analysis : public wfl::action_callable

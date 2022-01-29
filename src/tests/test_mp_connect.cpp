@@ -58,13 +58,13 @@ struct mp_connect_fixture {
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());
-		state->classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+		state->classification().type = campaign_type::type::multiplayer;
 		state->classification().era_id = "era_default";
 		config_manager->load_game_config_for_game(state->classification(), state->get_scenario_id());
 
 		state->mp_settings().name = "multiplayer_The_Freelands";
 		state->mp_settings().use_map_settings = true;
-		state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+		state->mp_settings().saved_game = saved_game_mode::type::no;
 
 		state->set_scenario(config_manager->
 			game_config().find_child("multiplayer", "id", state->mp_settings().name));
@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
-	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
 	std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
@@ -325,7 +325,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
-	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
 	const std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;

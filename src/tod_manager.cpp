@@ -26,8 +26,8 @@
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "units/abilities.hpp"
-#include "units/alignment.hpp"
 #include "units/unit.hpp"
+#include "units/unit_alignments.hpp"
 
 #include <algorithm>
 #include <functional>
@@ -587,8 +587,8 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 
 	std::set<int> bonuses;
 	for(const auto& tod : schedule) {
-		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::CHAOTIC, true, 0);
-		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::LAWFUL, true, 0);
+		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::chaotic, true, 0);
+		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::lawful, true, 0);
 		bonuses.insert(std::abs(tod.lawful_bonus));
 	}
 
@@ -599,7 +599,7 @@ int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& sc
 	for(int bonus : bonuses) {
 		int liminal_effect = 0;
 		for(const auto& tod : schedule) {
-			liminal_effect += generic_combat_modifier(tod.lawful_bonus, UNIT_ALIGNMENT::LIMINAL, false, bonus);
+			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_alignments::type::liminal, false, bonus);
 		}
 
 		if(std::abs(target - liminal_effect) < delta) {

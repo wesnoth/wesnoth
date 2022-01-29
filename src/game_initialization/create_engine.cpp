@@ -19,6 +19,7 @@
 #include "game_config_manager.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
+#include "game_initialization/component_availability.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "log.hpp"
@@ -26,8 +27,9 @@
 #include "map/map.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
+#include "side_controller.hpp"
 #include "wml_exception.hpp"
-#include "string_enums/side_controller.hpp"
+#include "game_initialization/component_availability.hpp"
 
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
@@ -245,20 +247,20 @@ create_engine::create_engine(saved_game& state)
 	, game_config_(game_config_manager::get()->game_config())
 {
 	// Set up the type map. Do this first!
-	type_map_.emplace(level::TYPE::SCENARIO, type_list());
-	type_map_.emplace(level::TYPE::USER_MAP, type_list());
-	type_map_.emplace(level::TYPE::USER_SCENARIO, type_list());
-	type_map_.emplace(level::TYPE::CAMPAIGN, type_list());
-	type_map_.emplace(level::TYPE::SP_CAMPAIGN, type_list());
-	type_map_.emplace(level::TYPE::RANDOM_MAP, type_list());
+	type_map_.emplace(level_type::type::scenario, type_list());
+	type_map_.emplace(level_type::type::user_map, type_list());
+	type_map_.emplace(level_type::type::user_scenario, type_list());
+	type_map_.emplace(level_type::type::campaign, type_list());
+	type_map_.emplace(level_type::type::sp_campaign, type_list());
+	type_map_.emplace(level_type::type::random_map, type_list());
 
 	DBG_MP << "restoring game config\n";
 
 	// Restore game config for multiplayer.
-	game_classification::CAMPAIGN_TYPE type = state_.classification().campaign_type;
+	campaign_type::type type = state_.classification().type;
 
 	state_.clear();
-	state_.classification().campaign_type = type;
+	state_.classification().type = type;
 
 	game_config_manager::get()->load_game_config_for_create(state_.classification().is_multiplayer());
 
@@ -278,7 +280,7 @@ create_engine::create_engine(saved_game& state)
 	init_extras(ERA);
 	init_extras(MOD);
 
-	state_.mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+	state_.mp_settings().saved_game = saved_game_mode::type::no;
 
 	for(const std::string& str : preferences::modifications(state_.classification().is_multiplayer())) {
 		if(game_config_.find_child("modification", "id", str)) {
@@ -472,7 +474,7 @@ void create_engine::prepare_for_saved_game()
 
 	// The save might be a start-of-scenario save so make sure we have the scenario data loaded.
 	state_.expand_scenario();
-	state_.mp_settings().saved_game = state_.is_mid_game_save() ? mp_game_settings::SAVED_GAME_MODE::MIDGAME : mp_game_settings::SAVED_GAME_MODE::SCENARIO_START;
+	state_.mp_settings().saved_game = state_.is_mid_game_save() ? saved_game_mode::type::midgame : saved_game_mode::type::scenaro_start;
 }
 
 void create_engine::prepare_for_other()
@@ -506,7 +508,7 @@ void create_engine::reset_level_filters()
 
 level& create_engine::current_level() const
 {
-	return *type_map_.at(current_level_type_.v).games[current_level_index_];
+	return *type_map_.at(current_level_type_).games[current_level_index_];
 }
 
 const create_engine::extras_metadata& create_engine::current_era() const
@@ -517,12 +519,12 @@ const create_engine::extras_metadata& create_engine::current_era() const
 void create_engine::set_current_level(const std::size_t index)
 {
 	try {
-		current_level_index_ = type_map_.at(current_level_type_.v).games_filtered.at(index);
+		current_level_index_ = type_map_.at(current_level_type_).games_filtered.at(index);
 	} catch (const std::out_of_range&) {
 		current_level_index_ = 0u;
 	}
 
-	if(current_level_type_ == level::TYPE::RANDOM_MAP) {
+	if(current_level_type_ == level_type::type::random_map) {
 		random_map* current_random_map = dynamic_cast<random_map*>(&current_level());
 
 		// If dynamic cast has failed then we somehow have gotten all the pointers mixed together.
@@ -547,7 +549,7 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 
 bool create_engine::toggle_mod(int index, bool force)
 {
-	force |= state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	force |= state_.classification().type != campaign_type::type::multiplayer;
 
 	bool is_active = dependency_manager_->is_modification_active(index);
 	dependency_manager_->try_modification_by_index(index, !is_active, force);
@@ -572,7 +574,7 @@ void create_engine::generator_user_config()
 	generator_->user_config();
 }
 
-std::pair<level::TYPE, int> create_engine::find_level_by_id(const std::string& id) const
+std::pair<level_type::type, int> create_engine::find_level_by_id(const std::string& id) const
 {
 	for(const auto& type : type_map_) {
 		int i = 0;
@@ -586,7 +588,7 @@ std::pair<level::TYPE, int> create_engine::find_level_by_id(const std::string& i
 		}
 	}
 
-	return {level::TYPE::SP_CAMPAIGN, -1};
+	return {level_type::type::sp_campaign, -1};
 }
 
 int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const
@@ -670,7 +672,7 @@ void create_engine::init_all_levels()
 			}
 
 			if(add_map) {
-				type_map_[level::TYPE::USER_MAP].games.emplace_back(new user_map(user_map_data, user_map_names_[i], map.get()));
+				type_map_[level_type::type::user_map].games.emplace_back(new user_map(user_map_data, user_map_names_[i], map.get()));
 
 				// Since user maps are treated as scenarios, some dependency info is required
 				config depinfo;
@@ -696,7 +698,7 @@ void create_engine::init_all_levels()
 			scenario_ptr new_scenario(new scenario(data));
 			if(new_scenario->id().empty()) continue;
 
-			type_map_[level::TYPE::USER_SCENARIO].games.push_back(std::move(new_scenario));
+			type_map_[level_type::type::user_scenario].games.push_back(std::move(new_scenario));
 
 			// Since user scenarios are treated as scenarios, some dependency info is required
 			config depinfo;
@@ -716,9 +718,9 @@ void create_engine::init_all_levels()
 			continue;
 
 		if(data.has_attribute("map_generation") || data.has_attribute("scenario_generation")) {
-			type_map_[level::TYPE::RANDOM_MAP].games.emplace_back(new random_map(data));
+			type_map_[level_type::type::random_map].games.emplace_back(new random_map(data));
 		} else {
-			type_map_[level::TYPE::SCENARIO].games.emplace_back(new scenario(data));
+			type_map_[level_type::type::scenario].games.emplace_back(new scenario(data));
 		}
 	}
 
@@ -738,18 +740,18 @@ void create_engine::init_all_levels()
 		const bool mp = state_.classification().is_multiplayer();
 
 		if(type == "mp" || (type == "hybrid" && mp)) {
-			type_map_[level::TYPE::CAMPAIGN].games.emplace_back(new campaign(data));
+			type_map_[level_type::type::campaign].games.emplace_back(new campaign(data));
 		}
 
 		if(type == "sp" || type.empty() || (type == "hybrid" && !mp)) {
 			campaign_ptr new_sp_campaign(new campaign(data));
 			new_sp_campaign->mark_if_completed();
 
-			type_map_[level::TYPE::SP_CAMPAIGN].games.push_back(std::move(new_sp_campaign));
+			type_map_[level_type::type::sp_campaign].games.push_back(std::move(new_sp_campaign));
 		}
 	}
 
-	auto& sp_campaigns = type_map_[level::TYPE::SP_CAMPAIGN].games;
+	auto& sp_campaigns = type_map_[level_type::type::sp_campaign].games;
 
 	// Sort sp campaigns by rank.
 	std::stable_sort(sp_campaigns.begin(), sp_campaigns.end(),
@@ -764,17 +766,17 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 	std::vector<extras_metadata_ptr>& extras = get_extras_by_type(extra_type);
 	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
 
-	ng::depcheck::component_availability default_availabilty = (extra_type == ERA)
-		? ng::depcheck::component_availability::MP
-		: ng::depcheck::component_availability::HYBRID;
+	component_availability::type default_availabilty = (extra_type == ERA)
+		? component_availability::type::mp
+		: component_availability::type::hybrid;
 
 	std::set<std::string> found_ids;
 	for(const config& extra : game_config_.child_range(extra_name))
 	{
-		ng::depcheck::component_availability type = extra["type"].to_enum(default_availabilty);
+		component_availability::type type = component_availability::get_enum(extra["type"].str()).value_or(default_availabilty);
 		const bool mp = state_.classification().is_multiplayer();
 
-		if((type != ng::depcheck::component_availability::MP || mp) && (type != ng::depcheck::component_availability::SP || !mp) )
+		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp) )
 		{
 			if(found_ids.insert(extra["id"]).second) {
 				extras_metadata_ptr new_extras_metadata(new extras_metadata());
@@ -800,19 +802,19 @@ void create_engine::apply_level_filters()
 	}
 }
 
-std::vector<create_engine::level_ptr> create_engine::get_levels_by_type_unfiltered(level::TYPE type) const
+std::vector<create_engine::level_ptr> create_engine::get_levels_by_type_unfiltered(level_type::type type) const
 {
 	std::vector<level_ptr> levels;
-	for(const level_ptr& lvl : type_map_.at(type.v).games) {
+	for(const level_ptr& lvl : type_map_.at(type).games) {
 		levels.push_back(lvl);
 	}
 
 	return levels;
 }
 
-std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::TYPE type) const
+std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level_type::type type) const
 {
-    auto& g_list = type_map_.at(type.v);
+    auto& g_list = type_map_.at(type);
 
 	std::vector<level_ptr> levels;
 	for(std::size_t level : g_list.games_filtered) {
@@ -822,9 +824,9 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 	return levels;
 }
 
-std::vector<std::size_t> create_engine::get_filtered_level_indices(level::TYPE type) const
+std::vector<std::size_t> create_engine::get_filtered_level_indices(level_type::type type) const
 {
-	return type_map_.at(type.v).games_filtered;
+	return type_map_.at(type).games_filtered;
 }
 
 const std::vector<create_engine::extras_metadata_ptr>&

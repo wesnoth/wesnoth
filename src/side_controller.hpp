@@ -16,7 +16,7 @@
 
 #include <array>
 
-#include "string_enums/enum_base.hpp"
+#include "enum_base.hpp"
 
 struct side_controller_defines
 {
@@ -25,7 +25,6 @@ struct side_controller_defines
 	static constexpr const char* const ai = "ai";
 	static constexpr const char* const reserved = "reserved";
 
-	enum class type { NONE, HUMAN, AI, RESERVED, ENUM_MAX };
-	static constexpr std::array<const char*, static_cast<int>(type::ENUM_MAX)> values{ none, human, ai, reserved };
+	ENUM_AND_ARRAY(none, human, ai, reserved)
 };
 using side_controller = string_enums::enum_base<side_controller_defines>;

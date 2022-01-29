@@ -30,7 +30,6 @@
 #include "units/animation.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"
-#include "utils/make_enum.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -141,7 +140,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, do_not_list_()
 	, advances_to_()
 	, experience_needed_(0)
-	, alignment_(unit_type::ALIGNMENT::NEUTRAL)
+	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
 	, possible_traits_()
 	, genders_()
@@ -271,8 +270,7 @@ void unit_type::build_help_index(
 
 	adjust_profile(profile_);
 
-	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
-	alignment_.parse(cfg["alignment"].str());
+	alignment_ = unit_alignments::get_enum(cfg["alignment"].str()).value_or(unit_alignments::type::neutral);
 
 	for(int i = 0; i < 2; ++i) {
 		if(gender_types_[i]) {
@@ -350,7 +348,7 @@ void unit_type::build_help_index(
 			possible_traits_.clear();
 		} else {
 			for(const config& t : race_->additional_traits()) {
-				if(alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
+				if(alignment_ != unit_alignments::type::neutral || t["id"] != "fearless")
 					possible_traits_.add_child("trait", t);
 			}
 		}
@@ -839,30 +837,16 @@ bool unit_type::resistance_filter_matches(
 
 /** Implementation detail of unit_type::alignment_description */
 
-MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
-	(LAWFUL,         N_("female^lawful"))
-	(FEMALE_NEUTRAL, N_("female^neutral"))
-	(CHAOTIC       , N_("female^chaotic"))
-	(LIMINAL,        N_("female^liminal"))
-)
-
-std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
+std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count,
-		"ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
-
-	assert(align.valid());
-
-	std::string str = std::string();
+	static const std::array<t_string, unit_alignments::size()> male_names {{_("lawful"), _("neutral"), _("chaotic"), _("liminal")}};
+	static const std::array<t_string, unit_alignments::size()> female_names {{_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")}};
 
 	if(gender == unit_race::FEMALE) {
-		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
-		str = fem.to_string();
+		return female_names[static_cast<int>(align)];
 	} else {
-		str = align.to_string();
+		return male_names[static_cast<int>(align)];
 	}
-
-	return translation::sgettext(str.c_str());
 }
 
 /* ** unit_type_data ** */

@@ -539,7 +539,7 @@ config map_context::to_config()
 
 		side["fog"] = t->uses_fog();
 		side["shroud"] = t->uses_shroud();
-		side["share_vision"] = t->share_vision();
+		side["share_vision"] = team_shared_vision::get_string(t->share_vision());
 
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();

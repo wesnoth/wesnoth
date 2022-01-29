@@ -16,6 +16,7 @@
 
 #include <optional>
 #include <string>
+#include <tuple>
 
 namespace string_enums
 {
@@ -82,7 +83,8 @@ struct enum_base : public T
 };
 
 #define ENUM_AND_ARRAY(...) \
+	static constexpr std::size_t count = std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value; \
 	enum class type { __VA_ARGS__ }; \
-	static constexpr std::array values{ __VA_ARGS__ };
+	static constexpr std::array<const char*, count> values{ __VA_ARGS__ };
 
 } // namespace string_enums

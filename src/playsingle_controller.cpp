@@ -224,7 +224,7 @@ void playsingle_controller::play_scenario_main_loop()
 	} // end for loop
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
+level_result::type playsingle_controller::play_scenario(const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -292,7 +292,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			saved_game_.set_snapshot(config());
 
 			// this is probably only a story scenario, i.e. has its endlevel in the prestart event
-			return LEVEL_RESULT::VICTORY;
+			return level_result::type::victory;
 		}
 
 		if(linger_) {
@@ -303,14 +303,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 				persist_.end_transaction();
 			}
 
-			return LEVEL_RESULT::VICTORY;
+			return level_result::type::victory;
 		}
 
 		pump().fire(is_victory ? "local_victory" : "local_defeat");
 
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
-			pump().fire(end_level.proceed_to_next_level ? "victory" : "defeat");
+			pump().fire(end_level.proceed_to_next_level ? level_result::victory : level_result::defeat);
 			pump().fire("scenario_end");
 		}
 
@@ -320,7 +320,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		if(is_observer()) {
 			gui2::show_transient_message(_("Game Over"), _("The game is over."));
-			return LEVEL_RESULT::OBSERVER_END;
+			return level_result::type::observer_end;
 		}
 
 		// If we're a player, and the result is victory/defeat, then send
@@ -329,7 +329,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			"info", config {
 				"type", "termination",
 				"condition", "game over",
-				"result", is_victory ? "victory" : "defeat",
+				"result", is_victory ? level_result::victory : level_result::defeat,
 			},
 		});
 
@@ -349,9 +349,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		persist_.end_transaction();
 
-		LEVEL_RESULT res = LEVEL_RESULT::string_to_enum(end_level.test_result);
-		if(res == LEVEL_RESULT::TEST_NOT_SET) {
-			return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
+		level_result::type res = level_result::get_enum(end_level.test_result).value_or(level_result::type::test_invalid);
+		if(res == level_result::type::result_not_set) {
+			return is_victory ? level_result::type::victory : level_result::type::defeat;
 		} else {
 			return res;
 		}
@@ -373,7 +373,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 
 		if(dynamic_cast<const ingame_wesnothd_error*>(&e)) {
-			return LEVEL_RESULT::QUIT;
+			return level_result::type::quit;
 		} else {
 			throw;
 		}
@@ -439,7 +439,7 @@ void playsingle_controller::play_side_impl()
 	} else {
 		// we should have skipped over empty controllers before so this shouldn't be possible
 		ERR_NG << "Found invalid side controller " << side_controller::get_string(current_team().controller()) << " ("
-			   << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
+			   << side_proxy_controller::get_string(current_team().proxy_controller()) << ") for side " << current_team().side() << "\n";
 	}
 }
 

@@ -16,8 +16,8 @@
 #pragma once
 
 #include "config.hpp"
+#include "gui/sort_order.hpp"
 #include "terrain/translation.hpp"
-#include "utils/make_enum.hpp"
 
 #include <utility>
 
@@ -256,13 +256,7 @@ namespace preferences {
 	std::string addon_manager_saved_order_name();
 	void set_addon_manager_saved_order_name(const std::string& value);
 
-	// Sorting for GUI2 listboxes
-	MAKE_ENUM(SORT_ORDER,
-		(NONE, "none")
-		(ASCENDING, "ascending")
-		(DESCENDING, "descending")
-	)
-	SORT_ORDER addon_manager_saved_order_direction();
-	void set_addon_manager_saved_order_direction(SORT_ORDER value);
+	sort_order::type addon_manager_saved_order_direction();
+	void set_addon_manager_saved_order_direction(sort_order::type value);
 
 } // end namespace preferences

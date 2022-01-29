@@ -26,8 +26,8 @@
 
 #pragma once
 
+#include "units/conditional_type.hpp"
 #include "units/ptr.hpp"
-#include "utils/make_enum.hpp"
 
 #include "display_context.hpp"
 #include "filter_context.hpp"
@@ -47,11 +47,6 @@ struct map_location;
 
 namespace unit_filter_impl
 {
-	MAKE_ENUM (CONDITIONAL_TYPE,
-		(AND, "and")
-		(OR, "or")
-		(NOT, "not")
-	);
 	struct filter_error : public game::error
 	{
 		explicit filter_error(const std::string& message = "filter error")
@@ -103,7 +98,7 @@ namespace unit_filter_impl
 		bool filter_impl(const unit_filter_args& u) const;
 
 		std::vector<std::shared_ptr<unit_filter_base>> children_;
-		std::vector<std::pair<CONDITIONAL_TYPE, unit_filter_compound>> cond_children_;
+		std::vector<std::pair<conditional_type::type, unit_filter_compound>> cond_children_;
 	};
 
 }

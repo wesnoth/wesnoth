@@ -73,10 +73,10 @@
 #include "log.hpp"
 #include "random.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "side_controller.hpp"
 #include "statistics.hpp"
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
-#include "string_enums/side_controller.hpp"
 
 #include <cassert>
 #include <iomanip>

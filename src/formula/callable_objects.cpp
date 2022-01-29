@@ -285,7 +285,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "zoc") {
 		return variant(u_.get_emit_zoc());
 	} else if(key == "alignment") {
-		return variant(u_.alignment().to_string());
+		return variant(unit_alignments::get_string(u_.alignment()));
 	} else if(key == "facing") {
 		return variant(map_location::write_direction(u_.facing()));
 	} else if(key == "resistance" || key == "movement_cost" || key == "vision_cost" || key == "jamming_cost" || key == "defense") {
@@ -402,7 +402,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "type") {
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
-		return variant(u_.alignment().to_string());
+		return variant(unit_alignments::get_string(u_.alignment()));
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {
@@ -765,7 +765,7 @@ variant team_callable::get_value(const std::string& key) const
 	} else if(key == "color") {
 		return variant(team_.color());
 	} else if(key == "share_vision") {
-		return variant(team_.share_vision().to_string());
+		return variant(team_shared_vision::get_string(team_.share_vision()));
 	} else if(key == "carryover_bonus") {
 		return variant(team_.carryover_bonus(), variant::DECIMAL_VARIANT);
 	} else if(key == "carryover_percentage") {
