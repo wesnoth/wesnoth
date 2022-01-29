@@ -135,7 +135,7 @@ public:
 	void add_list_to_keyboard_chain();
 
 	/** Sets up a callback that will be called when the player changes the sorting order. */
-	void set_callback_order_change(std::function<void(unsigned, preferences::SORT_ORDER)> callback) {
+	void set_callback_order_change(std::function<void(unsigned, sort_order::type)> callback) {
 		get_listbox().set_callback_order_change(callback);
 	}
 

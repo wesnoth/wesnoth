@@ -28,7 +28,6 @@
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "picture.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"          // for operator<<
 #include "map/map.hpp"                  // for gamemap
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "font/sdl_ttf_compat.hpp"
@@ -422,10 +421,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
 		std::stringstream text;
 
-		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false, resources::tod_manager->get_max_liminal_bonus());
-		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus());
+		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::lawful, false, resources::tod_manager->get_max_liminal_bonus());
+		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::neutral, false, resources::tod_manager->get_max_liminal_bonus());
+		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::chaotic, false, resources::tod_manager->get_max_liminal_bonus());
+		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::liminal, false, resources::tod_manager->get_max_liminal_bonus());
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
 			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<

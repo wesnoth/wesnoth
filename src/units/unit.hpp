@@ -16,12 +16,11 @@
 #pragma once
 
 #include "movetype.hpp"
-
+#include "units/unit_alignments.hpp"
 #include "units/id.hpp"
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
-#include "units/alignment.hpp"
 #include "utils/variant.hpp"
 
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -463,13 +462,13 @@ public:
 	 *
 	 * This affects the time of day during which this unit's attacks do the most damage.
 	 */
-	UNIT_ALIGNMENT alignment() const
+	unit_alignments::type alignment() const
 	{
 		return alignment_;
 	}
 
 	/** Sets the alignment of this unit. */
-	void set_alignment(UNIT_ALIGNMENT alignment)
+	void set_alignment(unit_alignments::type alignment)
 	{
 		set_attr_changed(UA_ALIGNMENT);
 		alignment_ = alignment;
@@ -1866,7 +1865,7 @@ private:
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
-	UNIT_ALIGNMENT alignment_;
+	unit_alignments::type alignment_;
 
 	std::string flag_rgb_;
 	std::string image_mods_;

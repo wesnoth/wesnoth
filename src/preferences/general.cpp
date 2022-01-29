@@ -976,14 +976,14 @@ void set_addon_manager_saved_order_name(const std::string& value)
 	set("addon_manager_saved_order_name", value);
 }
 
-SORT_ORDER addon_manager_saved_order_direction()
+sort_order::type addon_manager_saved_order_direction()
 {
-	return SORT_ORDER::string_to_enum(get("addon_manager_saved_order_direction"), SORT_ORDER::NONE);
+	return sort_order::get_enum(get("addon_manager_saved_order_direction")).value_or(sort_order::type::none);
 }
 
-void set_addon_manager_saved_order_direction(SORT_ORDER value)
+void set_addon_manager_saved_order_direction(sort_order::type value)
 {
-	set("addon_manager_saved_order_direction", SORT_ORDER::enum_to_string(value));
+	set("addon_manager_saved_order_direction", sort_order::get_string(value));
 }
 
 

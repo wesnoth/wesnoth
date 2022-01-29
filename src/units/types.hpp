@@ -16,14 +16,14 @@
 #pragma once
 
 #include "gettext.hpp"
-#include "utils/make_enum.hpp"
 #include "map/location.hpp"
 #include "movetype.hpp"
+#include "units/unit_alignments.hpp"
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
-#include "units/alignment.hpp"
 #include "units/type_error.hpp"
 #include "game_config_view.hpp"
+
 #include <memory>
 #include <array>
 #include <map>
@@ -192,10 +192,8 @@ public:
 
 	int experience_needed(bool with_acceleration=true) const;
 
-	using ALIGNMENT = UNIT_ALIGNMENT;
-
-	ALIGNMENT alignment() const { return alignment_; }
-	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
+	unit_alignments::type alignment() const { return alignment_; }
+	static std::string alignment_description(unit_alignments::type align, unit_race::GENDER gender = unit_race::MALE);
 
 	struct ability_metadata
 	{
@@ -371,7 +369,7 @@ private:
 	int experience_needed_;
 
 
-	ALIGNMENT alignment_;
+	unit_alignments::type alignment_;
 
 	movetype movement_type_;
 

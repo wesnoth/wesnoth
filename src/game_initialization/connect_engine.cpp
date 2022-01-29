@@ -26,10 +26,10 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mt_rng.hpp"
+#include "side_controller.hpp"
 #include "tod_manager.hpp"
 #include "team.hpp"
 #include "wesnothd_connection.hpp"
-#include "string_enums/side_controller.hpp"
 
 #include <array>
 #include <cstdlib>
@@ -86,7 +86,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	}
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
-	force_lock_settings_ = (state.mp_settings().saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) && scenario()["force_lock_settings"].to_bool(!is_mp);
+	force_lock_settings_ = (state.mp_settings().saved_game != saved_game_mode::type::midgame) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -399,14 +399,14 @@ void connect_engine::start_game()
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
-		if(params_.random_faction_mode != mp_game_settings::RANDOM_FACTION_MODE::DEFAULT) {
+		if(params_.mode != random_faction_mode::type::independent) {
 			for(side_engine_ptr side2 : side_engines_) {
 				if(!side2->flg().is_random_faction()) {
-					switch(params_.random_faction_mode.v) {
-						case mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR:
+					switch(params_.mode) {
+						case random_faction_mode::type::no_mirror:
 							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							break;
-						case mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR:
+						case random_faction_mode::type::no_ally_mirror:
 							if(side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
 								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							}
@@ -844,8 +844,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME)
-	, allow_changes_(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
+	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
+	, allow_changes_(parent_.params_.saved_game != saved_game_mode::type::midgame && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
 	//TODO: what should we do if color_ is out of range?
@@ -971,7 +971,7 @@ config side_engine::new_config() const
 	res["side"] = index_ + 1;
 
 	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
@@ -1016,7 +1016,7 @@ config side_engine::new_config() const
 		// AI algorithm, we do nothing. Otherwise we add the chosen AI and if this
 		// is a saved game, we also remove the old stages from the AI config.
 		if(ai_algorithm_ != "use_saved") {
-			if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+			if(parent_.params_.saved_game == saved_game_mode::type::midgame) {
 				for (config &ai_config : res.child_range("ai")) {
 					ai_config.clear_children("stage");
 				}
@@ -1048,7 +1048,7 @@ config side_engine::new_config() const
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		// Find a config where a default leader is and set a new type and gender values for it.
 		config* leader = &res;
 
@@ -1132,7 +1132,7 @@ config side_engine::new_config() const
 	}
 
 
-	if(parent_.params_.use_map_settings && parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.use_map_settings && parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		if(cfg_.has_attribute("name")){
 			res["name"] = cfg_["name"];
 		}
@@ -1196,7 +1196,7 @@ bool side_engine::available_for_user(const std::string& name) const
 
 void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
-	if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game == saved_game_mode::type::midgame) {
 		return;
 	}
 
@@ -1215,7 +1215,7 @@ void side_engine::reset()
 	set_waiting_to_choose_status(false);
 	set_controller(parent_.default_controller_);
 
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		flg_.set_current_faction(0);
 	}
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2008 - 2021
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,12 +14,16 @@
 
 #pragma once
 
-#include "gettext.hpp"
-#include "utils/make_enum.hpp"
+#include <array>
 
-MAKE_ENUM (UNIT_ALIGNMENT,
-	(LAWFUL, N_("lawful"))
-	(NEUTRAL, N_("neutral"))
-	(CHAOTIC, N_("chaotic"))
-	(LIMINAL, N_("liminal"))
-)
+#include "enum_base.hpp"
+
+struct side_proxy_controller_defines
+{
+	static constexpr const char* const idle = "idle";
+	static constexpr const char* const human = "human";
+	static constexpr const char* const ai = "ai";
+
+	ENUM_AND_ARRAY(idle, human, ai)
+};
+using side_proxy_controller = string_enums::enum_base<side_proxy_controller_defines>;

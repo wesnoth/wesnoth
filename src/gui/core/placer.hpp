@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "utils/make_enum.hpp"
+#include "gui/grow_direction.hpp"
 
 struct point;
 
@@ -51,15 +51,6 @@ namespace gui2
 class placer_base
 {
 public:
-	/***** ***** Types. ***** *****/
-
-	/** The direction the placer should grow towards. */
-	MAKE_ENUM(grow_direction,
-		(horizontal, "horizontal")
-		(vertical, "vertical")
-	);
-
-
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
 public:
@@ -68,7 +59,7 @@ public:
 	 *
 	 * @pre                       @p parallel_items > 0
 	 *
-	 * @param grow_direction      The direction in which the items will be
+	 * @param grow_dir            The direction in which the items will be
 	 *                            added.
 	 * @param parallel_items      The direction perpendicular towards the grow
 	 *                            direction has a fixed number of items. This
@@ -76,8 +67,7 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static placer_base* build(const grow_direction grow_direction,
-						   const unsigned parallel_items);
+	static placer_base* build(const grow_direction::type grow_dir, const unsigned parallel_items);
 
 	virtual ~placer_base();
 

@@ -34,6 +34,7 @@
 
 #include "game_board.hpp"
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

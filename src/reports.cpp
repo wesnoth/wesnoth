@@ -36,6 +36,7 @@
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
+#include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
@@ -370,7 +371,7 @@ static config unit_alignment(reports::context & rc, const unit* u, const map_loc
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
-	const std::string align_id = u->alignment().to_string();
+	const std::string align_id = unit_alignments::get_string(u->alignment());
 	const time_of_day effective_tod = get_visible_time_of_day_at(rc, hex);
 	int cm = combat_modifier(effective_tod, u->alignment(), u->is_fearless());
 
@@ -1265,7 +1266,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	time_of_day tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int b = tod.lawful_bonus;
-	int l = generic_combat_modifier(b, unit_type::ALIGNMENT::LIMINAL, false, rc.tod().get_max_liminal_bonus());
+	int l = generic_combat_modifier(b, unit_alignments::type::liminal, false, rc.tod().get_max_liminal_bonus());
 	std::string  lawful_color("white");
 	std::string chaotic_color("white");
 	std::string liminal_color("white");
@@ -1318,7 +1319,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	time_of_day local_tod = get_visible_time_of_day_at(rc, mouseover_hex);
 
 	int bonus = local_tod.lawful_bonus;
-	int l = generic_combat_modifier(bonus, unit_type::ALIGNMENT::LIMINAL, false, rc.tod().get_max_liminal_bonus());
+	int l = generic_combat_modifier(bonus, unit_alignments::type::liminal, false, rc.tod().get_max_liminal_bonus());
 
 	std::string  lawful_color("white");
 	std::string chaotic_color("white");

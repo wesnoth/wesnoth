@@ -171,7 +171,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	, lobby_info()
 	, process_handlers()
 {
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	if(host) {
 		gui2::dialogs::loading_screen::display([&]() {
@@ -723,7 +723,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 
 	// Set the default parameters
 	saved_game state;
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	mp_game_settings& parameters = state.mp_settings();
 
@@ -748,7 +748,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	// [era] define.
 	if(cmdline_opts.multiplayer_era) {

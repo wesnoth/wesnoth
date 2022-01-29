@@ -14,9 +14,8 @@
 	See the COPYING file for more details.
 */
 
-#include "game_end_exceptions.hpp"
-
 #include "config.hpp"
+#include "game_end_exceptions.hpp"
 
 transient_end_level::transient_end_level()
 	: carryover_report(true)
@@ -29,7 +28,7 @@ end_level_data::end_level_data()
 	, replay_save(true)
 	, proceed_to_next_level(false)
 	, is_victory(true)
-	, test_result(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET))
+	, test_result(level_result::result_not_set)
 	, transient()
 {
 }

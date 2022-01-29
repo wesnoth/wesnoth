@@ -412,8 +412,7 @@ void addon_manager::pre_show(window& window)
 	order_dropdown.set_values(order_dropdown_entries);
 	{
 		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
-		const preferences::SORT_ORDER saved_order_direction =
-			static_cast<preferences::SORT_ORDER>(preferences::addon_manager_saved_order_direction());
+		const sort_order::type saved_order_direction = preferences::addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
@@ -421,7 +420,7 @@ void addon_manager::pre_show(window& window)
 			if(order_it != all_orders_.end()) {
 				int index = 2 * (std::distance(all_orders_.begin(), order_it));
 				addon_list::addon_sort_func func;
-				if(saved_order_direction == preferences::SORT_ORDER::ASCENDING) {
+				if(saved_order_direction == sort_order::type::ascending) {
 					func = order_it->sort_func_asc;
 				} else {
 					func = order_it->sort_func_desc;
@@ -493,8 +492,7 @@ void addon_manager::pre_show(window& window)
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
-	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this,
-		std::placeholders::_1, std::placeholders::_2));
+	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
@@ -708,9 +706,9 @@ void addon_manager::order_addons()
 {
 	const menu_button& order_menu = find_widget<const menu_button>(get_window(), "order_dropdown", false);
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	preferences::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? preferences::SORT_ORDER::ASCENDING : preferences::SORT_ORDER::DESCENDING;
+	sort_order::type order = order_menu.get_value() % 2 == 0 ? sort_order::type::ascending : sort_order::type::descending;
 	addon_list::addon_sort_func func;
-	if(order == preferences::SORT_ORDER::ASCENDING) {
+	if(order == sort_order::type::ascending) {
 		func = order_struct.sort_func_asc;
 	} else {
 		func = order_struct.sort_func_desc;
@@ -721,13 +719,13 @@ void addon_manager::order_addons()
 	preferences::set_addon_manager_saved_order_direction(order);
 }
 
-void addon_manager::on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order)
+void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
 {
 	menu_button& order_menu = find_widget<menu_button>(get_window(), "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
 	int index = 2 * (std::distance(all_orders_.begin(), order_it));
-	if(order == preferences::SORT_ORDER::DESCENDING) {
+	if(order == sort_order::type::descending) {
 		++index;
 	}
 	order_menu.set_value(index);

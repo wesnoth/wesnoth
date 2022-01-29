@@ -1,6 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
-	by Chris Beck <render787@gmail.com>
+	Copyright (C) 2008 - 2021
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,16 +12,17 @@
 	See the COPYING file for more details.
 */
 
-#include "utils/make_enum.hpp"
-#include "wml_exception.hpp"
-#include "game_config.hpp"
+#pragma once
 
-namespace make_enum_detail
+#include <array>
+
+#include "enum_base.hpp"
+
+struct grow_direction_defines
 {
-	void debug_conversion_error(const std::string& temp, const bad_enum_cast & e)
-	{
-		if (!temp.empty() && game_config::debug) {
-			FAIL( e.what() );
-		}
-	}
-}
+	static constexpr const char* const horizontal = "horizontal";
+	static constexpr const char* const vertical = "vertical";
+
+	ENUM_AND_ARRAY(horizontal, vertical)
+};
+using grow_direction = string_enums::enum_base<grow_direction_defines>;

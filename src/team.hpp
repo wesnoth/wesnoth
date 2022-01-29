@@ -16,14 +16,16 @@
 #pragma once
 
 #include "color_range.hpp"
+#include "config.hpp"
+#include "defeat_condition.hpp"
 #include "game_config.hpp"
 #include "game_events/fwd.hpp"
-#include "utils/make_enum.hpp"
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
+#include "side_controller.hpp"
+#include "side_proxy_controller.hpp"
+#include "team_shared_vision.hpp"
 #include "units/ptr.hpp"
-#include "config.hpp"
-#include "string_enums/side_controller.hpp"
 
 #include <set>
 
@@ -72,26 +74,6 @@ private:
  */
 class team
 {
-public:
-	MAKE_ENUM(PROXY_CONTROLLER,
-		(PROXY_HUMAN, "human")
-		(PROXY_AI,    "ai")
-		(PROXY_IDLE,  "idle")
-	)
-
-	MAKE_ENUM(DEFEAT_CONDITION,
-		(NO_LEADER, "no_leader_left")
-		(NO_UNITS, "no_units_left")
-		(NEVER, "never")
-		(ALWAYS, "always")
-	)
-
-	MAKE_ENUM(SHARE_VISION,
-		(ALL, "all")
-		(SHROUD, "shroud")
-		(NONE, "none")
-	)
-
 private:
 	struct team_info
 	{
@@ -133,12 +115,12 @@ private:
 
 		side_controller::type controller;
 		bool is_local;
-		DEFEAT_CONDITION defeat_condition;
+		defeat_condition::type defeat_cond;
 
-		PROXY_CONTROLLER proxy_controller;	// when controller == HUMAN, the proxy controller determines what input method is actually used.
+		side_proxy_controller::type proxy_controller;	// when controller == HUMAN, the proxy controller determines what input method is actually used.
 							// proxy controller is an interface property, not gamestate. it is not synced, not known to server.
 							// also not saved in save game file
-		SHARE_VISION share_vision;
+		team_shared_vision::type share_vision;
 		bool disallow_observers;
 		bool allow_player;
 		bool chose_random;
@@ -262,13 +244,13 @@ public:
 	const std::string& color() const { return info_.color; }
 	/** @note Call display::reinit_flag_for_side() after calling this */
 	void set_color(const std::string& color) { info_.color = color; }
-	bool is_empty() const { return info_.controller == side_controller::type::NONE; }
+	bool is_empty() const { return info_.controller == side_controller::type::none; }
 
 	bool is_local() const { return !is_empty() && info_.is_local; }
 	bool is_network() const { return !is_empty() && !info_.is_local; }
 
-	bool is_human() const { return info_.controller == side_controller::type::HUMAN; }
-	bool is_ai() const { return info_.controller == side_controller::type::AI; }
+	bool is_human() const { return info_.controller == side_controller::type::human; }
+	bool is_ai() const { return info_.controller == side_controller::type::ai; }
 
 	bool is_local_human() const {  return is_human() && is_local(); }
 	bool is_local_ai() const { return is_ai() && is_local(); }
@@ -276,28 +258,28 @@ public:
 	bool is_network_ai() const { return is_ai() && is_network(); }
 
 	void set_local(bool local) { info_.is_local = local; }
-	void make_human() { info_.controller = side_controller::type::HUMAN; }
-	void make_ai() { info_.controller = side_controller::type::AI; }
+	void make_human() { info_.controller = side_controller::type::human; }
+	void make_ai() { info_.controller = side_controller::type::ai; }
 	void change_controller(const std::string& new_controller) {
-		info_.controller = side_controller::get_enum(new_controller).value_or(side_controller::type::AI);
+		info_.controller = side_controller::get_enum(new_controller).value_or(side_controller::type::ai);
 	}
 	void change_controller(side_controller::type controller) { info_.controller = controller; }
 	void change_controller_by_wml(const std::string& new_controller);
 
-	PROXY_CONTROLLER proxy_controller() const { return info_.proxy_controller; }
-	bool is_proxy_human() const { return info_.proxy_controller == PROXY_CONTROLLER::PROXY_HUMAN; }
-	bool is_droid() const { return info_.proxy_controller == PROXY_CONTROLLER::PROXY_AI; }
-	bool is_idle() const { return info_.proxy_controller == PROXY_CONTROLLER::PROXY_IDLE; }
+	side_proxy_controller::type proxy_controller() const { return info_.proxy_controller; }
+	bool is_proxy_human() const { return info_.proxy_controller == side_proxy_controller::type::human; }
+	bool is_droid() const { return info_.proxy_controller == side_proxy_controller::type::ai; }
+	bool is_idle() const { return info_.proxy_controller == side_proxy_controller::type::idle; }
 
-	void make_droid() { info_.proxy_controller = PROXY_CONTROLLER::PROXY_AI; }
-	void make_idle() { info_.proxy_controller = PROXY_CONTROLLER::PROXY_IDLE; }
-	void make_proxy_human() { info_.proxy_controller = PROXY_CONTROLLER::PROXY_HUMAN; }
+	void make_droid() { info_.proxy_controller = side_proxy_controller::type::ai; }
+	void make_idle() { info_.proxy_controller = side_proxy_controller::type::idle; }
+	void make_proxy_human() { info_.proxy_controller = side_proxy_controller::type::human; }
 	void clear_proxy() { make_proxy_human(); }
 
-	void change_proxy(PROXY_CONTROLLER proxy) { info_.proxy_controller = proxy; }
+	void change_proxy(side_proxy_controller::type proxy) { info_.proxy_controller = proxy; }
 
-	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == PROXY_CONTROLLER::PROXY_AI  ) ? PROXY_CONTROLLER::PROXY_HUMAN : PROXY_CONTROLLER::PROXY_AI;   }
-	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == PROXY_CONTROLLER::PROXY_IDLE) ? PROXY_CONTROLLER::PROXY_HUMAN : PROXY_CONTROLLER::PROXY_IDLE; }
+	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == side_proxy_controller::type::ai  ) ? side_proxy_controller::type::human : side_proxy_controller::type::ai;   }
+	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == side_proxy_controller::type::idle) ? side_proxy_controller::type::human : side_proxy_controller::type::idle; }
 
 	const std::string& team_name() const { return info_.team_name; }
 	const t_string &user_team_name() const { return info_.user_team_name; }
@@ -345,10 +327,10 @@ public:
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; }
 	bool no_leader() const { return info_.no_leader; }
-	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
-	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
+	defeat_condition::type defeat_cond() const { return info_.defeat_cond; }
+	void set_defeat_condition(defeat_condition::type value) { info_.defeat_cond = value; }
 	/** sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes. */
-	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition.parse(value); }
+	void set_defeat_condition_string(const std::string& value) { info_.defeat_cond = defeat_condition::get_enum(value).value_or(info_.defeat_cond); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
@@ -392,17 +374,16 @@ public:
 
 	config to_config() const;
 
-	bool share_maps() const { return info_.share_vision != SHARE_VISION::NONE ; }
-	bool share_view() const { return info_.share_vision == SHARE_VISION::ALL; }
-	SHARE_VISION share_vision() const { return info_.share_vision; }
+	bool share_maps() const { return info_.share_vision != team_shared_vision::type::none ; }
+	bool share_view() const { return info_.share_vision == team_shared_vision::type::all; }
+	team_shared_vision::type share_vision() const { return info_.share_vision; }
 
 	void set_share_vision(const std::string& vision_status) {
-		info_.share_vision = SHARE_VISION::ALL;
-		info_.share_vision.parse(vision_status);
+		info_.share_vision = team_shared_vision::get_enum(vision_status).value_or(team_shared_vision::type::all);
 		clear_caches();
 	}
 
-	void set_share_vision(SHARE_VISION vision_status) {
+	void set_share_vision(team_shared_vision::type vision_status) {
 		info_.share_vision = vision_status;
 		clear_caches();
 	}

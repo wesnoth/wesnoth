@@ -19,7 +19,7 @@
 #include "server/wesnothd/player.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
-#include "string_enums/side_controller.hpp"
+#include "side_controller.hpp"
 
 #include <map>
 #include <optional>

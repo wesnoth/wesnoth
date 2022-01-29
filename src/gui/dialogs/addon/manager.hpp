@@ -152,7 +152,7 @@ private:
 
 	void apply_filters();
 	void order_addons();
-	void on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order);
+	void on_order_changed(unsigned int sort_column, sort_order::type order);
 	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility() const;

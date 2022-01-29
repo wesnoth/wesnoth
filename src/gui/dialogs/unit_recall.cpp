@@ -53,8 +53,8 @@ namespace gui2::dialogs
 {
 
 // Index 2 is by-level
-static listbox::order_pair sort_last    {-1, preferences::SORT_ORDER::NONE};
-static listbox::order_pair sort_default { 2, preferences::SORT_ORDER::DESCENDING};
+static listbox::order_pair sort_last    {-1, sort_order::type::none};
+static listbox::order_pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 

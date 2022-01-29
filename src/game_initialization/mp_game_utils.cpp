@@ -65,7 +65,7 @@ config initial_level_config(saved_game& state)
 	}
 
 	config& scenario = state.get_starting_point();
-	if(state.mp_settings().saved_game == mp_game_settings::SAVED_GAME_MODE::NONE) {
+	if(state.mp_settings().saved_game == saved_game_mode::type::no) {
 		state.set_random_seed();
 	}
 
@@ -99,7 +99,7 @@ config initial_level_config(saved_game& state)
 	const config& era_cfg = game_config.find_child("era", "id", era);
 
 	if(!era_cfg) {
-		if(params.saved_game == mp_game_settings::SAVED_GAME_MODE::NONE) {
+		if(params.saved_game == saved_game_mode::type::no) {
 			throw config::error(VGETTEXT("Cannot find era '$era'", {{"era", era}}));
 		}
 
@@ -131,9 +131,9 @@ config initial_level_config(saved_game& state)
 
 void level_to_gamestate(const config& level, saved_game& state)
 {
-	game_classification::CAMPAIGN_TYPE type = state.classification().campaign_type;
+	campaign_type::type type = state.classification().type;
 	state = saved_game(level);
-	state.classification().campaign_type = type;
+	state.classification().type = type;
 }
 
 } // end namespace mp

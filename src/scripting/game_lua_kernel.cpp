@@ -57,7 +57,6 @@
 #include "game_events/pump.hpp"         // for queued_event
 #include "preferences/game.hpp"         // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
 #include "map/label.hpp"
 #include "map/location.hpp"             // for map_location
@@ -269,9 +268,8 @@ static int impl_add_animation(lua_State* L)
 	unit& u = *up;
 	std::string which = luaL_checkstring(L, 3);
 
-	using hit_type = unit_animation::hit_type;
 	std::string hits_str = luaL_checkstring(L, 4);
-	hit_type hits = hit_type::string_to_enum(hits_str, hit_type::INVALID);
+	strike_result::type hits = strike_result::get_enum(hits_str).value_or(strike_result::type::invalid);
 
 	map_location dest;
 	int v1 = 0, v2 = 0;
@@ -1293,8 +1291,8 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", classification.campaign_type.to_string());
-	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", campaign_type::get_string(classification.type));
+	if(classification.type==campaign_type::type::multiplayer) {
 		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
 			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
@@ -1357,7 +1355,7 @@ static int impl_end_level_data_get(lua_State* L)
 	return_bool_attrib("proceed_to_next_level", data.proceed_to_next_level);
 	return_bool_attrib("is_victory", data.is_victory);
 	return_bool_attrib("is_loss", !data.is_victory);
-	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
+	return_cstring_attrib("result", data.is_victory ? level_result::victory : "loss"); // to match wesnoth.end_level()
 	return_string_attrib("test_result", data.test_result);
 	return_cfg_attrib("__cfg", data.to_config_full());
 
@@ -1458,14 +1456,14 @@ static int impl_mp_settings_get(lua_State* L)
 		return_bool_attrib("allow_observers", settings.allow_observers);
 		return_bool_attrib("private_replay", settings.private_replay);
 		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
-		return_string_attrib("random_faction_mode", settings.random_faction_mode.to_string());
+		return_string_attrib("random_faction_mode", random_faction_mode::get_string(settings.mode));
 		return_cfgref_attrib("options", settings.options);
 		if(strcmp(m, "savegame") == 0) {
 			auto savegame = settings.saved_game;
-			if(savegame == mp_game_settings::SAVED_GAME_MODE::NONE) {
+			if(savegame == saved_game_mode::type::no) {
 				lua_pushboolean(L, false);
 			} else {
-				lua_push(L, savegame.to_string());
+				lua_push(L, saved_game_mode::get_string(savegame));
 			}
 			return 1;
 		}
@@ -1555,7 +1553,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	}
 
 	const game_classification& classification = play_controller_.get_classification();
-	return_string_attrib("type", classification.campaign_type.to_string());
+	return_string_attrib("type", campaign_type::get_string(classification.type));
 	return_string_attrib("difficulty", classification.difficulty);
 	return_bool_attrib("show_credits", classification.end_credits);
 	return_tstring_attrib("end_text", classification.end_text);
@@ -1643,8 +1641,8 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.replay_save = cfg["replay_save"].to_bool(true);
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
-		data.is_victory = cfg["result"] == "victory";
-		data.test_result = cfg["test_result"].str(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET));
+		data.is_victory = cfg["result"] == level_result::victory;
+		data.test_result = cfg["test_result"].str(level_result::result_not_set);
 		play_controller_.set_end_level_data(data);
 
 		return 1;

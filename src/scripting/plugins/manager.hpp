@@ -21,7 +21,7 @@
 #pragma once
 
 #include "config.hpp"
-#include "utils/make_enum.hpp"
+#include "scripting/plugin_manager_status.hpp"
 
 #include <string>
 
@@ -42,15 +42,9 @@ public:
 	void play_slice(const plugins_context &);
 	void notify_event(const std::string & name, const config & data);
 
-	MAKE_ENUM( STATUS,
-		(NONE,		"not created")
-		(RUNNING,	"running")
-		(STOPPED,	"stopped")
-	);
-
 	std::size_t size();
 
-	STATUS get_status(std::size_t idx);
+	plugin_manager_status::type get_status(std::size_t idx);
 	std::string get_detailed_status(std::size_t idx);
 	std::string get_name (std::size_t idx);
 

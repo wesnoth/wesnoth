@@ -1715,7 +1715,7 @@ void console_handler::do_controller()
 
 	std::string report = side_controller::get_string(menu_handler_.board().get_team(side_num).controller());
 	if(!menu_handler_.board().get_team(side_num).is_proxy_human()) {
-		report += " (" + menu_handler_.board().get_team(side_num).proxy_controller().to_string() + ")";
+		report += " (" + side_proxy_controller::get_string(menu_handler_.board().get_team(side_num).proxy_controller()) + ")";
 	}
 
 	if(menu_handler_.board().get_team(side_num).is_network()) {
@@ -1992,8 +1992,8 @@ void console_handler::do_unit()
 	}
 
 	if(parameters[0] == "alignment") {
-		unit_type::ALIGNMENT alignment;
-		if(!alignment.parse(parameters[1])) {
+		auto alignment = unit_alignments::get_enum(parameters[1]);
+		if(!alignment) {
 			utils::string_map symbols;
 			symbols["alignment"] = get_arg(1);
 			command_failed(VGETTEXT(

@@ -308,7 +308,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = type.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(type.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
@@ -326,7 +326,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
 
-		str << type.alignment() << "\n";
+		str << unit_alignments::get_string(type.alignment()) << "\n";
 
 		str << "\n"; // Leave a blank line where traits would be
 
@@ -460,7 +460,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = u.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(u.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(

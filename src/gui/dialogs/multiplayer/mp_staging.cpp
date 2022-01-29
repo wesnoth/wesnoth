@@ -193,7 +193,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	const bool lock_team   = side->cfg()["team_lock"].to_bool(fls);
 	const bool lock_color  = side->cfg()["color_lock"].to_bool(fls);
 
-	const bool saved_game = connect_engine_.params().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME;
+	const bool saved_game = connect_engine_.params().saved_game == saved_game_mode::type::midgame;
 
 	//
 	// AI Algorithm

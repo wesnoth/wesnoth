@@ -43,11 +43,11 @@
 #include "mp_ui_alerts.hpp"
 #include "preferences/credentials.hpp"
 #include "saved_game.hpp"
+#include "side_controller.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
 #include "utils/scope_exit.hpp"
 #include "wesnothd_connection.hpp"
-#include "string_enums/side_controller.hpp"
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
@@ -312,9 +312,9 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const bool is_mp = state_.classification().is_normal_mp_game();
 		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
 		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const mp_game_settings::SAVED_GAME_MODE saved_game = level_.child("multiplayer")["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE);
+		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
-		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME);
+		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);

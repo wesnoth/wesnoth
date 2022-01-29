@@ -95,12 +95,12 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, local_mode_(local_mode)
 {
 	level_types_ = {
-		{ng::level::TYPE::SCENARIO, _("Scenarios")},
-		{ng::level::TYPE::CAMPAIGN, _("Multiplayer Campaigns")},
-		{ng::level::TYPE::SP_CAMPAIGN, _("Singleplayer Campaigns")},
-		{ng::level::TYPE::USER_MAP, _("Custom Maps")},
-		{ng::level::TYPE::USER_SCENARIO, _("Custom Scenarios")},
-		{ng::level::TYPE::RANDOM_MAP, _("Random Maps")},
+		{level_type::type::scenario, _("Scenarios")},
+		{level_type::type::campaign, _("Multiplayer Campaigns")},
+		{level_type::type::sp_campaign, _("Singleplayer Campaigns")},
+		{level_type::type::user_map, _("Custom Maps")},
+		{level_type::type::user_scenario, _("Custom Scenarios")},
+		{level_type::type::random_map, _("Random Maps")},
 	};
 
 	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
@@ -108,18 +108,12 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	}), level_types_.end());
 
-	rfm_types_ = {
-		mp_game_settings::RANDOM_FACTION_MODE::DEFAULT,
-		mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR,
-		mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR,
-	};
-
 	set_show_even_without_video(true);
 
 	create_engine_.init_active_mods();
 
 	create_engine_.get_state().clear();
-	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	create_engine_.get_state().classification().type = campaign_type::type::multiplayer;
 
 	// Need to set this in the constructor, pre_show() is too late
 	set_allow_plugin_skip(false);
@@ -181,7 +175,7 @@ void mp_create_game::pre_show(window& win)
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
 		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == ng::level::TYPE::from_int(preferences::level_type());
+			return info.first == *level_type::get_enum(preferences::level_type());
 		});
 
 		if(index != level_types_.end()) {
@@ -259,23 +253,19 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up random faction mode menu_button
 	//
+	static const std::array<t_string, random_faction_mode::size()> names {{_("Independent"), _("No Mirror"), _("No Ally Mirror")}};
+	static const std::array<t_string, random_faction_mode::size()> tooltips {{
+		_("Independent: Random factions assigned independently"),
+		_("No Mirror: No two players will get the same faction"),
+		_("No Ally Mirror: No two allied players will get the same faction")
+	}};
 	std::vector<config> rfm_options;
-	for(const auto& type : rfm_types_) {
-		// HACK: The labels are defined for the wesnoth textdomain in a header,
-		//       see mp_game_settings::RANDOM_FACTION_MODE in src/mp_game_settings.hpp
-		rfm_options.emplace_back("label",
-			translation::dsgettext("wesnoth", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
-		);
+	for(std::size_t i = 0; i < random_faction_mode::size(); i++) {
+		rfm_options.emplace_back("label", names[i]);
+		rfm_options[i]["tooltip"] = tooltips[i];
 	};
 
-	// Manually insert tooltips. Need to find a better way to do this
-	rfm_options[0]["tooltip"] = _("Independent: Random factions assigned independently");
-	rfm_options[1]["tooltip"] = _("No Mirror: No two players will get the same faction");
-	rfm_options[2]["tooltip"] = _("No Ally Mirror: No two allied players will get the same faction");
-
-	const int initial_index = std::distance(rfm_types_.begin(), std::find(rfm_types_.begin(), rfm_types_.end(),
-		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT))
-	);
+	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::random_faction_mode()).value_or(random_faction_mode::type::independent));
 
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 
@@ -388,7 +378,7 @@ void mp_create_game::pre_show(window& win)
 	}, true);
 
 	plugins_context_->set_callback("select_type",  [this](const config& cfg) {
-		create_engine_.set_current_level_type(ng::level::TYPE::string_to_enum(cfg["type"], ng::level::TYPE::SCENARIO)); }, true);
+		create_engine_.set_current_level_type(level_type::get_enum(cfg["type"].str()).value_or(level_type::type::scenario)); }, true);
 
 	plugins_context_->set_callback("select_era",   [this](const config& cfg) {
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
@@ -405,7 +395,7 @@ void mp_create_game::pre_show(window& win)
 			"icon", current_level.icon(),
 			"description", current_level.description(),
 			"allow_era_choice", current_level.allow_era_choice(),
-			"type", create_engine_.current_level_type(),
+			"type", level_type::get_string(create_engine_.current_level_type()),
 		};
 	});
 
@@ -413,7 +403,7 @@ void mp_create_game::pre_show(window& win)
 		const std::string id = cfg["id"].str();
 		return config {
 			"index", create_engine_.find_level_by_id(id).second,
-			"type", create_engine_.find_level_by_id(id).first,
+			"type", level_type::get_string(create_engine_.find_level_by_id(id).first),
 		};
 	});
 
@@ -584,7 +574,7 @@ void mp_create_game::update_games_list()
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
 }
 
-void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::string& level)
+void mp_create_game::display_games_of_type(level_type::type type, const std::string& level)
 {
 	create_engine_.set_current_level_type(type);
 
@@ -596,7 +586,7 @@ void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::stri
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
+		if(type == level_type::type::campaign || type == level_type::type::sp_campaign) {
 			item["label"] = game->icon();
 			data.emplace("game_icon", item);
 		}
@@ -618,7 +608,7 @@ void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::stri
 		}
 	}
 
-	const bool is_random_map = type == ng::level::TYPE::RANDOM_MAP;
+	const bool is_random_map = type == level_type::type::random_map;
 
 	find_widget<button>(get_window(), "random_map_regenerate", false).set_active(is_random_map);
 	find_widget<button>(get_window(), "random_map_settings", false).set_active(is_random_map);
@@ -654,7 +644,7 @@ void mp_create_game::update_details()
 	styled_widget& players = find_widget<styled_widget>(get_window(), "map_num_players", false);
 	styled_widget& map_size = find_widget<styled_widget>(get_window(), "map_size", false);
 
-	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
+	if(create_engine_.current_level_type() == level_type::type::random_map) {
 		// If the current random map doesn't have data, generate it
 		if(create_engine_.generator_assigned() &&
 			create_engine_.current_level().data()["map_data"].empty() &&
@@ -679,11 +669,11 @@ void mp_create_game::update_details()
 
 	show_description(create_engine_.current_level().description());
 
-	switch(create_engine_.current_level_type().v) {
-		case ng::level::TYPE::SCENARIO:
-		case ng::level::TYPE::USER_MAP:
-		case ng::level::TYPE::USER_SCENARIO:
-		case ng::level::TYPE::RANDOM_MAP: {
+	switch(create_engine_.current_level_type()) {
+		case level_type::type::scenario:
+		case level_type::type::user_map:
+		case level_type::type::user_scenario:
+		case level_type::type::random_map: {
 			ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&create_engine_.current_level());
 
 			assert(current_scenario);
@@ -704,8 +694,8 @@ void mp_create_game::update_details()
 
 			break;
 		}
-		case ng::level::TYPE::CAMPAIGN:
-		case ng::level::TYPE::SP_CAMPAIGN: {
+		case level_type::type::campaign:
+		case level_type::type::sp_campaign: {
 			ng::campaign* current_campaign = dynamic_cast<ng::campaign*>(&create_engine_.current_level());
 
 			assert(current_campaign);
@@ -856,16 +846,16 @@ void mp_create_game::post_show(window& window)
 
 	if(get_retval() == retval::OK) {
 		prefs::set_modifications(create_engine_.active_mods());
-		prefs::set_level_type(create_engine_.current_level_type().v);
+		prefs::set_level_type(static_cast<int>(create_engine_.current_level_type()));
 		prefs::set_level(create_engine_.current_level().id());
 		prefs::set_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 
-		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
-			create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+		if(create_engine_.current_level_type() == level_type::type::campaign ||
+			create_engine_.current_level_type() == level_type::type::sp_campaign) {
 			create_engine_.prepare_for_campaign();
-		} else if(create_engine_.current_level_type() == ng::level::TYPE::SCENARIO) {
+		} else if(create_engine_.current_level_type() == level_type::type::scenario) {
 			create_engine_.prepare_for_scenario();
 		} else {
 			// This means define= doesn't work for randomly generated scenarios
@@ -935,10 +925,11 @@ void mp_create_game::post_show(window& window)
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
 
-		config_engine_->set_random_faction_mode(rfm_types_[selected_rfm_index_]);
+		random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+		config_engine_->set_random_faction_mode(type);
 
 		// Since we don't have a field handling this option, we need to save the value manually
-		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
+		prefs::set_random_faction_mode(random_faction_mode::get_string(type));
 
 		// Save custom option settings
 		config_engine_->set_options(options_manager_->get_options_config());

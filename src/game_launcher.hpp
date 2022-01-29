@@ -122,7 +122,7 @@ private:
 	void start_wesnothd();
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
-	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
+	unit_test_result pass_victory_or_defeat(level_result::type res);
 
 	/**
 	 * Internal to the implementation of unit_test(). If a single instance of

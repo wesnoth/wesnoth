@@ -22,25 +22,13 @@
 
 #pragma once
 
+#include "level_result.hpp"
 #include "lua_jailbreak_exception.hpp"
-
-#include "utils/make_enum.hpp"
 
 #include <string>
 #include <exception>
 
 class config;
-
-MAKE_ENUM(LEVEL_RESULT,
-	(VICTORY,      "victory")
-	(DEFEAT,       "defeat")
-	(QUIT,         "quit")
-	(OBSERVER_END, "observer_end")
-	(TEST_NOT_SET, "result_not_set")
-	(TEST_PASS,    "pass")
-	(TEST_FAIL,    "fail")
-	(TEST_INVALID, "test_result_value_invalid")
-);
 
 /**
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.

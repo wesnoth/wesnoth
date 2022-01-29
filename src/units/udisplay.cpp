@@ -145,7 +145,7 @@ int move_unit_between(const map_location& a,
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit,"movement",a,b,step_num,
-			false,"",{0,0,0},unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
+			false,"",{0,0,0},strike_result::type::invalid,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();
 	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
@@ -531,9 +531,9 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	unit_animator animator;
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
-	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
+	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},strike_result::type::hit,attack,secondary_attack,0);
 	if(defender) {
-		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
+		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},strike_result::type::miss,secondary_attack,attack,0);
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -550,10 +550,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,true,"",{0,0,0},strike_result::type::invalid,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,true,"",{0,0,0},strike_result::type::invalid,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -580,11 +580,11 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},unit_animation::hit_type::KILL,attack,secondary_attack,0);
+	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},strike_result::type::kill,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
 	if(winner) {
 		animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",{0,0,0},
-			unit_animation::hit_type::KILL,secondary_attack,attack,0);
+			strike_result::type::kill,secondary_attack,attack,0);
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -637,13 +637,13 @@ void unit_attack(display * disp, game_board & board,
 	std::string text = number_and_text(damage, hit_text);
 	std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
 
-	unit_animation::hit_type hit_type;
+	strike_result::type hit_type;
 	if(damage >= defender.hitpoints()) {
-		hit_type = unit_animation::hit_type::KILL;
+		hit_type = strike_result::type::kill;
 	} else if(damage > 0) {
-		hit_type = unit_animation::hit_type::HIT;
+		hit_type = strike_result::type::hit;
 	}else {
-		hit_type = unit_animation::hit_type::MISS;
+		hit_type = strike_result::type::miss;
 	}
 
 	unit_animator animator;

@@ -33,7 +33,7 @@
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "string_enums/side_controller.hpp"
+#include "side_controller.hpp"
 
 #include <functional>
 #include <SDL2/SDL_timer.h>
