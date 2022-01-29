@@ -342,7 +342,8 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 
 	for (const config::any_child ab : this->abilities_.all_children_range())
 	{
-		bool active = ability_active(ab.key, ab.cfg, loc);
+		bool loc_is_unshrouded = display::get_singleton()->shrouded(loc) == false;
+		bool active = loc_is_unshrouded && ability_active(ab.key, ab.cfg, loc);
 		if (add_ability_tooltip(ab, gender_, res, active))
 		{
 			active_list.push_back(active);
