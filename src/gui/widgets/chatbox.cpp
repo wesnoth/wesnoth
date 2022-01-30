@@ -222,7 +222,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
-	const std::string before_message = log.get_label() == "" ? "" : "\n";
+	const std::string before_message = log.get_label().empty() ? "" : "\n";
 	const std::string new_text = formatter()
 		<< log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
 
