@@ -96,7 +96,7 @@ public:
 	void user_command();
 	void custom_command();
 	void ai_formula();
-	void clear_messages();
+	virtual void clear_messages() override;
 	std::vector<std::string> get_commands_list();
 
 	unit_map::iterator current_unit();
