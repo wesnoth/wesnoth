@@ -870,6 +870,7 @@ class fake_chat_handler : public events::chat_handler {
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
 	void send_to_server(const config&) {}
+	void clear_messages() {}
 };
 
 template<>
