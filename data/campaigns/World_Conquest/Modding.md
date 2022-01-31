@@ -209,3 +209,83 @@ Next, continue coding:
 
 ## How to make your own artifacts and have them added to World Conquest
 
+```ini
+[era]
+    # era code here
+
+    [world_conquest_data]
+        [artifact]
+            name= _ "Leather Bag of Herbal Stuff"
+            icon=items/leather-pack.png # dont add attack icons here, just what the item image here.
+            description= _ "heals +4 and regenerates +4"
+            info = _ "Some story about random Dune Alchemist dude deciding to pack his stuff in a bag and it got lost."
+            sound=heal.wav
+            [effect]
+                apply_to=remove_ability
+                [abilities]
+                    [heals]
+                        id=healing
+                    [/heals]
+                [/abilities]
+            [/effect]
+            [effect]
+                apply_to=new_ability
+                [abilities]
+                    {ABILITY_HEALS}
+                    {ABILITY_SELF_HEAL}
+                [/abilities]
+            [/effect]
+        [/artifact]
+    [/world_conquest_data]
+[/era]
+```
+
+## How to add your own trainers
+
+```ini
+[era]
+    # era code here
+
+    [world_conquest_data]
+        [trainer]
+            type=Blood Manipulator
+            advanced_type=Sangel
+            image=attacks/wail.png
+            name= _ "Blood Magic"
+            dialogue= "You have found me, mortals? Well...let us show your recruits some blood magic!"
+            [grade]
+            [/grade]
+            [grade]
+                {WCT_CHANCE_FEEDING 3}
+                {WCT_CHANCE_SP 2 MELEE DRAIN}
+                {WCT_CHANCE_SP 1 RANGED DRAIN}
+                {WCT_CHANCE_DARK_DEFENSE CAVE 7}
+                {WCT_CHANCE_DARK_DEFENSE MUSHROOM 6}
+                {WCT_CHANCE_XP 73 -10%}
+            [/grade]
+            [grade]
+                {WCT_CHANCE_FEEDING 7}
+                {WCT_CHANCE_ABILITY 2 REGENERATES}
+                {WCT_CHANCE_SP 4 MELEE DRAIN}
+                {WCT_CHANCE_SP 2 RANGED DRAIN}
+                {WCT_CHANCE_DARK_DEFENSE CAVE 16}
+                {WCT_CHANCE_DARK_DEFENSE MUSHROOM 13}
+                {WCT_CHANCE_XP 73 -20%}
+            [/grade]
+            [grade]
+                {WCT_CHANCE_FEEDING 12}
+                {WCT_CHANCE_ABILITY 5 REGENERATES}
+                {WCT_CHANCE_SP 6 MELEE DRAIN}
+                {WCT_CHANCE_SP 3 RANGED DRAIN}
+                {WCT_CHANCE_SP 1 MELEE SLOW}
+                {WCT_CHANCE_SP 1 RANGED SLOW}
+                {WCT_CHANCE_ARCANE_BOOST 1 MELEE}
+                {WCT_CHANCE_ARCANE_BOOST 1 RANGED}
+                {WCT_CHANCE_DARK_DEFENSE CAVE 29}
+                {WCT_CHANCE_DARK_DEFENSE MUSHROOM 21}
+                {WCT_CHANCE_XP 73 -30%}
+            [/grade]
+        [/trainer]
+    [/world_conquest_data]
+[/era]
+```
