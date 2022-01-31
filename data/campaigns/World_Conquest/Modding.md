@@ -75,7 +75,7 @@ Next, continue coding:
 ```ini
 #ifdef LOAD_WC2
 [resource]
-    id= world_conquest_era_resource_main
+    id= extended_era_resource_main
 
     # load the World Conquest era-specific Lua Code
     [lua]
@@ -157,5 +157,56 @@ Next, continue coding:
         [/hero_spawn_filter]
     [/world_conquest_data]
 [/resource]
+
+[era]
+    id=extended_conquest_era
+    name= _ "Extended Conquest Era"
+    require_era=yes
+
+    description= _ "This is a string"
+
+    {RANDOM_SIDE}
+
+    # This is what an MP side code should look like 
+    [multiplayer_side]
+        id= # ID of the faction
+        name= # name of the faction
+        # recruit=Drake Fighter,Dwarvish Fighter,Drake Burner,Dwarvish Thunderer,Saurian Augur,Dwarvish Ulfserker,Drake Clasher,Dwarvish Guardsman,Saurian Skirmisher,Poacher,Drake Glider,Footpad,Thief,Thief
+        recruit= # recruit list. For your own benefit, write the recruit list with pairs side by side
+                 #as not to be confused later on
+        image= # image of the faction
+        type=random
+        leader= Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper,Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior,Saurian Oracle,Saurian Soothsayer
+        random_leader= # list of leader ids which should be chosen if randomised
+        description= # description of the faction (you can skip this one)
+        [world_conquest_data]
+            commanders=Drakes,Knalgans
+            heroes=Loyalists_All,Northerners_All,Young Ogre
+            deserters=Rebels,Undead,Dune Burner
+            deserters_names={WC_STR_DUNE_BURNER}+", "+{WC_STR_REBELS}+{WC_STR_AND}+{WC_STR_THE_UNDEAD}
+            deserters_names={DESERTERS_NAMES}
+            # {WC_II_PAIR "Drake Fighter" "Dwarvish Fighter"}
+            # {WC_II_PAIR "Drake Burner" "Dwarvish Thunderer"}
+            # {WC_II_PAIR "Saurian Augur" "Dwarvish Ulfserker"}
+            # {WC_II_PAIR "Drake Clasher" "Dwarvish Guardsman"}
+            # {WC_II_PAIR "Saurian Skirmisher" "Poacher"}
+            # {WC_II_PAIR "Drake Glider" "Footpad"}
+            # {WC_II_PAIR "Thief" "Thief"}
+        [/world_conquest_data]
+    [/multiplayer_side]
+
+
+    {QUICK_4MP_LEADERS}
+    {TURNS_OVER_ADVANTAGE}
+
+    # load the main resource
+    # otherwise you will encounter errors
+    [load_resource]
+        id = extended_era_resource_main
+    [/load_resource]
+[/era]
 #endif
 ```
+
+## How to make your own artifacts and have them added to World Conquest
+
