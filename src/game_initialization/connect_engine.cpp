@@ -29,6 +29,7 @@
 #include "tod_manager.hpp"
 #include "team.hpp"
 #include "wesnothd_connection.hpp"
+#include "string_enums/side_controller.hpp"
 
 #include <array>
 #include <cstdlib>
@@ -50,11 +51,11 @@ static lg::log_domain log_network("network");
 namespace
 {
 const std::array<std::string, 5> controller_names {{
-	"human",
-	"human",
-	"ai",
-	"null",
-	"reserved"
+	side_controller::human,
+	side_controller::human,
+	side_controller::ai,
+	side_controller::none,
+	side_controller::reserved
 }};
 
 const std::set<std::string> children_to_swap {
@@ -877,7 +878,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		ERR_MP << "controller=<number> is deperecated\n";
 	}
 
-	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
 	}
@@ -886,12 +887,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	// Tweak the controllers.
 	if(parent_.state_.classification().is_scenario() && cfg_["controller"].blank()) {
-		cfg_["controller"] = "ai";
+		cfg_["controller"] = side_controller::ai;
 	}
 
-	if(cfg_["controller"] == "null") {
+	if(cfg_["controller"] == side_controller::none) {
 		set_controller(CNTR_EMPTY);
-	} else if(cfg_["controller"] == "ai") {
+	} else if(cfg_["controller"] == side_controller::ai) {
 		set_controller(CNTR_COMPUTER);
 	} else if(parent_.default_controller_ == CNTR_NETWORK && !reserved_for_.empty()) {
 		// Reserve a side for "current_player", unless the side
@@ -1249,20 +1250,20 @@ void side_engine::update_controller_options()
 
 	// Default options.
 	if(parent_.mp_metadata_) {
-		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
+		add_controller_option(CNTR_NETWORK, _("Network Player"), side_controller::human);
 	}
 
-	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
-	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
-	add_controller_option(CNTR_EMPTY, _("Nobody"), "null");
+	add_controller_option(CNTR_LOCAL, _("Local Player"), side_controller::human);
+	add_controller_option(CNTR_COMPUTER, _("Computer Player"), side_controller::ai);
+	add_controller_option(CNTR_EMPTY, _("Nobody"), side_controller::none);
 
 	if(!reserved_for_.empty()) {
-		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
+		add_controller_option(CNTR_RESERVED, _("Reserved"), side_controller::human);
 	}
 
 	// Connected users.
 	for(const std::string& user : parent_.connected_users()) {
-		add_controller_option(parent_.default_controller_, user, "human");
+		add_controller_option(parent_.default_controller_, user, side_controller::human);
 	}
 
 	update_current_controller_index();
@@ -1322,11 +1323,11 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 {
 	set_controller(CNTR_LOCAL);
 
-	if(controller_name == "ai") {
+	if(controller_name == side_controller::ai) {
 		set_controller(CNTR_COMPUTER);
 	}
 
-	if(controller_name == "null") {
+	if(controller_name == side_controller::none) {
 		set_controller(CNTR_EMPTY);
 	}
 

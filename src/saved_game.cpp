@@ -76,6 +76,7 @@
 #include "statistics.hpp"
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
+#include "string_enums/side_controller.hpp"
 
 #include <cassert>
 #include <iomanip>
@@ -688,7 +689,7 @@ void saved_game::cancel_orders()
 		// for humans "goto_x/y" is used for multi-turn-moves
 		// for the ai "goto_x/y" is a way for wml to order the ai to move a unit to a certain place.
 		// we want to cancel human order but not to break wml.
-		if(side["controller"] != "human" && side["controller"] != "network") {
+		if(side["controller"] != side_controller::human) {
 			continue;
 		}
 
@@ -703,14 +704,6 @@ void saved_game::unify_controllers()
 {
 	for(config& side : starting_point_.child_range("side")) {
 		side.remove_attribute("is_local");
-		//TODO: the old code below is probably not needed anymore
-		if(side["controller"] == "network") {
-			side["controller"] = "human";
-		}
-
-		if(side["controller"] == "network_ai") {
-			side["controller"] = "ai";
-		}
 	}
 }
 

@@ -52,9 +52,9 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 
 void editor_edit_side::pre_show(window& window)
 {
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_human", false, true), team::CONTROLLER::HUMAN);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_ai", false, true),    team::CONTROLLER::AI);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_null", false, true),  team::CONTROLLER::EMPTY);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_human", false, true), side_controller::type::HUMAN);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_ai", false, true),    side_controller::type::AI);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_null", false, true),  side_controller::type::NONE);
 
 	controller_group.set_member_states(controller_);
 

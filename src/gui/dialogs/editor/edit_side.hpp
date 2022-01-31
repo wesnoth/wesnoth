@@ -19,6 +19,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "team.hpp"
+#include "string_enums/side_controller.hpp"
 
 namespace gui2
 {
@@ -48,8 +49,8 @@ private:
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
-	team::CONTROLLER& controller_;
-	group<team::CONTROLLER> controller_group;
+	side_controller::type& controller_;
+	group<side_controller::type> controller_group;
 
 	team::SHARE_VISION& share_vision_;
 	group<team::SHARE_VISION> vision_group;

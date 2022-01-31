@@ -27,6 +27,7 @@
 #include "minimap.hpp"
 #include "saved_game.hpp"
 #include "wml_exception.hpp"
+#include "string_enums/side_controller.hpp"
 
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
@@ -110,7 +111,7 @@ void scenario::set_sides()
 				side["side"] = pos + 1;
 				side["team_name"] = "Team " + std::to_string(pos + 1);
 				side["canrecruit"] = true;
-				side["controller"] = "human";
+				side["controller"] = side_controller::human;
 			}
 		}
 
