@@ -171,9 +171,9 @@ Next, continue coding:
     [multiplayer_side]
         id= # ID of the faction
         name= # name of the faction
-        # recruit=Drake Fighter,Dwarvish Fighter,Drake Burner,Dwarvish Thunderer,Saurian Augur,Dwarvish Ulfserker,Drake Clasher,Dwarvish Guardsman,Saurian Skirmisher,Poacher,Drake Glider,Footpad,Thief,Thief
-        recruit= # recruit list. For your own benefit, write the recruit list with pairs side by side
-                 #as not to be confused later on
+        recruit=Drake Fighter,Dwarvish Fighter,Drake Burner,Dwarvish Thunderer,Saurian Augur,Dwarvish Ulfserker,Drake Clasher,Dwarvish Guardsman,Saurian Skirmisher,Poacher,Drake Glider,Footpad,Thief,Thief
+        # recruit list. For your own benefit, write the recruit list with pairs side by side
+        #as not to be confused later on
         image= # image of the faction
         type=random
         leader= Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper,Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior,Saurian Oracle,Saurian Soothsayer
@@ -184,14 +184,13 @@ Next, continue coding:
             heroes=Loyalists_All,Northerners_All,Young Ogre
             deserters=Rebels,Undead,Dune Burner
             deserters_names={WC_STR_DUNE_BURNER}+", "+{WC_STR_REBELS}+{WC_STR_AND}+{WC_STR_THE_UNDEAD}
-            deserters_names={DESERTERS_NAMES}
-            # {WC_II_PAIR "Drake Fighter" "Dwarvish Fighter"}
-            # {WC_II_PAIR "Drake Burner" "Dwarvish Thunderer"}
-            # {WC_II_PAIR "Saurian Augur" "Dwarvish Ulfserker"}
-            # {WC_II_PAIR "Drake Clasher" "Dwarvish Guardsman"}
-            # {WC_II_PAIR "Saurian Skirmisher" "Poacher"}
-            # {WC_II_PAIR "Drake Glider" "Footpad"}
-            # {WC_II_PAIR "Thief" "Thief"}
+            {WC_II_PAIR "Drake Fighter" "Dwarvish Fighter"}
+            {WC_II_PAIR "Drake Burner" "Dwarvish Thunderer"}
+            {WC_II_PAIR "Saurian Augur" "Dwarvish Ulfserker"}
+            {WC_II_PAIR "Drake Clasher" "Dwarvish Guardsman"}
+            {WC_II_PAIR "Saurian Skirmisher" "Poacher"}
+            {WC_II_PAIR "Drake Glider" "Footpad"}
+            {WC_II_PAIR "Thief" "Thief"}
         [/world_conquest_data]
     [/multiplayer_side]
 
