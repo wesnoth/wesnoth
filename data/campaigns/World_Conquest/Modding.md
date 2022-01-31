@@ -1,6 +1,8 @@
 # Modding World Conquest
 
-This section describes how to make eras/modifications to manipulate World Conquest elements
+This section describes how to make eras/modifications to manipulate World Conquest elements.
+
+## How to add an era's units to World Conquest's enemy selection pool
 
 > This file describes how to make your addon work well together with world conquest 2. In particular how to write an era that can be used together with world conquest ii.
 
@@ -59,4 +61,101 @@ This section describes how to make eras/modifications to manipulate World Conque
 		[/literal]
 	[/set_variables]
 [/event]
+```
+
+## How to make a WC-style era
+
+In your era's CFG file, code in the following:
+
+Let's assume I want to make a World Conquest era for the...Extended Era...
+
+We have done this to ensure the era follows the same code and functionality as the original World Conquest era.
+Next, continue coding:
+
+```ini
+#ifdef LOAD_WC2
+[resource]
+    id= world_conquest_era_resource_main
+
+    # load the World Conquest era-specific Lua Code
+    [lua]
+        code = " wesnoth.dofile('campaigns/World_Conquest//lua/era_main.lua') "
+    [/lua]
+
+    # this defines who the commanders, deserters and heroes
+    [world_conquest_data]
+        [hero_types]
+            [Aragwaithi] # Note this tag can be given any name (but maintain consistency)
+                name= _ "Aragwaithi"
+                types="Aragwaith Swordsman,Aragwaith Spearman,Aragwaith Adept,Aragwaith Archer"
+            [/Aragwaithi]
+            [Dark_Elves]
+                name= _ "Dark Elves"
+                types="Dark Elven Fighter,Dark Elven Hunter, Dark Elven Lizard Rider" # and so on...
+            [/Dark_Elves]
+            # Combined
+            # you need this bonus all since this is what WC sees when loading up the hero availability pool in bonus points.
+            [Bonus_All] # Notice how I added in the hero groups in. This is who it should be done.
+                types=Aragwaithi,Dark_Elves
+            [/Bonus_All]
+        [/hero_types]
+        ## array of [trait_extra]
+
+        # This is used to force assign the mentioned trait to certain units
+        # as compensation if the unit type is deemed weak (such as goblin spearman).
+        [trait_extra]
+            types=Walking Corpse
+            {WORLD_CONQUEST_II_TRAIT_LEGENDARY_ZOMBIE}
+        [/trait_extra]
+        [trait_extra]
+            types=Goblin Spearman
+            {WORLD_CONQUEST_II_TRAIT_LEGENDARY_GOBLIN}
+        [/trait_extra]
+        [trait_extra]
+            types=Orcish Assassin,Young Ogre,Ruffian,Woodsman
+            {WORLD_CONQUEST_II_TRAIT_EPIC}
+        [/trait_extra]
+        [trait_extra]
+            types=Ghoul,Poacher,Thief,Footpad,Saurian Skirmisher,Vampire Bat,Peasant,Dune Herbalist
+            {WORLD_CONQUEST_II_TRAIT_EXPERT}
+        [/trait_extra]
+        [trait_extra]
+            types=Elvish Archer,Elvish Shaman,Elvish Scout,Elvish Fighter
+            {TRAIT_DEXTROUS}
+        [/trait_extra]
+        [trait_extra]
+            types=Dwarvish Guardsman,Dwarvish Ulfserker,Dwarvish Thunderer,Dwarvish Scout
+            {TRAIT_HEALTHY}
+        [/trait_extra]
+        [trait_extra]
+            types=Naga Fighter,Wolf Rider,Orcish Grunt,Drake Glider,Dune Rover,Dune Rider
+            {TRAIT_STRONG}
+        [/trait_extra]
+        [trait_extra]
+            types=Spearman,Fencer,Cavalryman,Merman Fighter,Merman Hunter,Mermaid Initiate,Dune Burner,Thug
+            {TRAIT_RESILIENT}
+        [/trait_extra]
+        [trait_extra]
+            types=Heavy Infantryman,Bowman,Skeleton,Skeleton Archer,Saurian Augur,Troll Whelp,Orcish Archer
+            {TRAIT_FEARLESS}
+        [/trait_extra]
+        # This filters the following hero types
+        # to simply explain this...
+        # if your bonus point is next to mountains and cave walls and such, then these should be far away from
+        # watery bodies..thus, aquatice heroes should not be spawned in that case
+        [hero_spawn_filter]
+            types=Naga Fighter,Merman Fighter,Merman Hunter,Mermaid Initiate,Naga Dirkfang,Naga Guard
+            [filter_location]
+                [filter_radius]
+                    [not]
+                        terrain="M*,X*"
+                    [/not]
+                [/filter_radius]
+                terrain="W*,S*"
+                radius=2
+            [/filter_location]
+        [/hero_spawn_filter]
+    [/world_conquest_data]
+[/resource]
+#endif
 ```
