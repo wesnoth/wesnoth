@@ -735,7 +735,7 @@ bool game_launcher::load_game()
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
 
-	if(state_.is_mid_game_save() && load.data().show_replay) {
+	if(load.data().show_replay) {
 		statistics::clear_current_scenario();
 	}
 
