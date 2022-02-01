@@ -42,11 +42,6 @@
 #define DEBUG_THROW(id) throw id;
 #else
 
-// TODO: delete
-#ifdef __FreeBSD__
-#define __LONG_LONG_SUPPORTED
-#endif
-
 #include <optional>
 
 #include <cstdlib>
