@@ -20,6 +20,7 @@
 #include "gui/core/placer/vertical_list.hpp"
 
 #include <cassert>
+#include <stdexcept>
 
 namespace gui2
 {
@@ -32,7 +33,7 @@ placer_base* placer_base::build(const grow_direction::type grow_dir, const unsig
 		case grow_direction::type::vertical:
 			return new implementation::placer_vertical_list(parallel_items);
 		default:
-			throw "UNREACHABLE CODE REACHED"; // TODO: throw std::exception
+			throw std::runtime_error("UNREACHABLE CODE REACHED");
 	};
 }
 
