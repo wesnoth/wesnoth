@@ -4,9 +4,9 @@ This section describes how to make eras/modifications to manipulate World Conque
 
 ## How to add an era's units to World Conquest's enemy selection pool
 
-This file describes how to make your addon work well together with world conquest 2. In particular how to write an era that can be used together with world conquest ii.
+This file describes how to make your addon work well together with world conquest. In particular how to write an era that can be used together with world conquest.
 
-Making an era that works well together with world conquest ii, is quite easy: just add the `[world_conquest_data]` tag to your `[multiplayer_side]` tag just as the standard word conquest2 era does, important: your era may not have require_download=no for this to work. Furthermore if your era contains new unit types that are not mainline wesnoth, don't forget to put an additional `[world_conquest_data]` in `[era]` to describe which traits these unit types should get when they are selected as heroes (use this to compensate weaker unit types).
+Making an era that works well together with world conquest, is quite easy: just add the `[world_conquest_data]` tag to your `[multiplayer_side]` tag just as the standard world conquest era does, important: your era may not have require_download=no for this to work. Furthermore if your era contains new unit types that are not mainline wesnoth, don't forget to put an additional `[world_conquest_data]` in `[era]` to describe which traits these unit types should get when they are selected as heroes (use this to compensate weaker unit types).
 
 To make an era/modification that also changes the enemy army unit types, make sure to define the `wc2_init_enemy` event and use it to set the enemy_army variable that should contains the pool of 'armies' that the enemies are chosen from:
 
