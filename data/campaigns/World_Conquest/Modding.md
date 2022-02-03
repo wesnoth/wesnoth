@@ -4,19 +4,12 @@ This section describes how to make eras/modifications to manipulate World Conque
 
 ## How to add an era's units to World Conquest's enemy selection pool
 
-> This file describes how to make your addon work well together with world conquest 2. In particular how to write an era that can be used together with world conquest ii.
+This file describes how to make your addon work well together with world conquest 2. In particular how to write an era that can be used together with world conquest ii.
 
-> Making an era that works well together with world conquest ii, is quite
-> easy: just add the `[world_conquest_data]` tag to your `[multiplayer_side]` tag just as
-> the standard word conquest2 era does, important: your era may not have
-> require_download=no for this to work. Furthermore if your era contains
-> new unit types that are not mainline wesnoth, don't forget to put an additional
-> `[world_conquest_data]` in `[era]` to describe which traits these unit types should get
-> when they are selected as heroes (use this to compensate weaker unit types).
+Making an era that works well together with world conquest ii, is quite easy: just add the `[world_conquest_data]` tag to your `[multiplayer_side]` tag just as the standard word conquest2 era does, important: your era may not have require_download=no for this to work. Furthermore if your era contains new unit types that are not mainline wesnoth, don't forget to put an additional `[world_conquest_data]` in `[era]` to describe which traits these unit types should get when they are selected as heroes (use this to compensate weaker unit types).
 
-> To make an era/modification that also changes the enemy army unit types,
-> make sure to define the wc2_init_enemy event and use it to set the enemy_army
-> variable that should contains the pool of 'armies' that the enemies are chosen from:
+To make an era/modification that also changes the enemy army unit types, make sure to define the `wc2_init_enemy` event and use it to set the enemy_army variable that should contains the pool of 'armies' that the enemies are chosen from:
+
 ```ini
 [event]
 	name = "wc2_init_enemy"
@@ -95,7 +88,7 @@ Next, continue coding:
             [/Dark_Elves]
             # Combined
             # you need this bonus all since this is what WC sees when loading up the hero availability pool in bonus points.
-            [Bonus_All] # Notice how I added in the hero groups in. This is who it should be done.
+            [Bonus_All] # Notice how I added in the hero groups in. This is how it should be done.
                 types=Aragwaithi,Dark_Elves
             [/Bonus_All]
         [/hero_types]
@@ -142,7 +135,7 @@ Next, continue coding:
         # This filters the following hero types
         # to simply explain this...
         # if your bonus point is next to mountains and cave walls and such, then these should be far away from
-        # watery bodies..thus, aquatice heroes should not be spawned in that case
+        # watery bodies..thus, aquatic heroes should not be spawned in that case
         [hero_spawn_filter]
             types=Naga Fighter,Merman Fighter,Merman Hunter,Mermaid Initiate,Naga Dirkfang,Naga Guard
             [filter_location]
