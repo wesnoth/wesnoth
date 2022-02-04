@@ -55,7 +55,7 @@ configs = {
     {
         key = 'Lua.runtime.builtin',
         action = 'prop',
-        prop = 'debug'
+        prop = 'debug',
         value = 'disable',
     },
     {
