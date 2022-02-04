@@ -3,7 +3,7 @@ print("Loading map module...")
 
 ---Splits a terrain code into base and overlay
 ---@param code string
----@return string #The base terrain
+---@return string|nil #The base terrain, if any
 ---@return string|nil #The overlay, if any
 function wesnoth.map.split_terrain_code(code)
 	return table.unpack(code:split('^', {remove_empty = false}))
