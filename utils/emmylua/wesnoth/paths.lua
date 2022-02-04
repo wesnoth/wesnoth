@@ -2,8 +2,17 @@
 
 wesnoth.paths = {}
 
+---@class path_options
+---@field max_cost integer
+---@field ignore_units boolean
+---@field ignore_teleport boolean
+---@field viewing_side integer
+---@field width integer
+---@field height integer
+---@field include_borders boolean
+---@field calculate fun(x:integer, y:integer, cost:integer):integer
+
 ---Find a good path between two hexes
----@alias path_options {max_cost:integer, ignore_units:boolean, ignore_teleport:boolean, viewing_side:integer, width:integer, height:integer, include_borders:boolean, calculate:fun(x:integer, y:integer, cost:integer):integer}
 ---@param start location
 ---@param finish location
 ---@param options path_options
@@ -21,9 +30,15 @@ function wesnoth.paths.find_path(start, finish, options) end
 ---@return integer x, integer y
 function wesnoth.paths.find_vacant_hex(x, y, unit) end
 
+---@class reach_options
+---@field additional_turns integer
+---@field ignore_units boolean
+---@field ignore_teleport boolean
+---@field viewing_side integer
+
 ---Get all locations a unit can reach
 ---@param unit unit
----@param options {additional_turns:integer, ignore_units:boolean, ignore_teleport:boolean, viewing_side:integer}
+---@param options reach_options
 ---@return location[]
 function wesnoth.paths.find_reach(unit, options) end
 
@@ -32,10 +47,27 @@ function wesnoth.paths.find_reach(unit, options) end
 ---@return location[]
 function wesnoth.paths.find_vision_range(unit) end
 
+---@class cost_map_types
+---@field [1] integer x coordinate
+---@field [2] integer y coordinate
+---@field [3] integer side number
+---@field [4] string unit type name
+---@class cost_map_options
+---@field ignore_units boolean
+---@field ignore_teleport boolean
+---@field viewing_side integer
+---@field debug boolean
+---@field use_max_moves boolean
+---@class cost_map
+---@field [1] integer x coordinate
+---@field [2] integer y coordinate
+---@field [3] integer cost to reach tile
+---@field [4] integer number of units who can reach tile
+
 ---Build a cost map for the unit
 ---@param unit location|WML
----@param types? {[1]:integer, [2]:integer, [3]:integer, [4]:string} {x, y, side, unit_type}
----@param options? {ignore_units:boolean, ignore_teleport:boolean, viewing_side:integer, debug:boolean, use_max_moves:boolean}
+---@param types? cost_map_types
+---@param options? cost_map_options
 ---@param filter? WML
----@return {[1]: integer, [2]:integer, [3]:integer, [4]:integer} {x, y, cost, reach_count}
+---@return cost_map
 function wesnoth.paths.find_cost_map(unit, types, options, filter) end
