@@ -13,10 +13,11 @@ local _ = wesnoth.textdomain "wesnoth"
 ---@param level '1'|'2'|'3'|'4' deprecation level (1-4)
 ---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
 --- Set to nil if deprecation level is 1 or 4
----@param elem T The actual element being deprecated, ignored if level is 4.
+---@param elem T The actual element for the deprecation, ignored if level is 4.
 --- This can be the original, undeprecated element, but it does not have to be.
+--- It could also be a wrapper that presents a different API, for example.
 ---@param detail_msg? string An optional message to add to the deprecation message
----@return T elem_deprecated #A reference to the element, altered to trigger a deprecation message when used.
+---@return T elem_deprecated #A wrapper around the element, which triggers a deprecation message when used.
 --- If it is a function, the message is triggered the first time it is called.
 --- If it is a table, the message is triggered when a key is written or read on the table.
 function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem, detail_msg)
