@@ -35,7 +35,7 @@ function gui.show_menu(items, initial, markup) end
 
 ---Shows a message dialog.
 ---@param attributes gui_narration_params
----@param options? string[]|gui_narration_option_info
+---@param options? string[]|gui_narration_option_info[]
 ---@param text_input? gui_narration_text_params
 ---@return integer
 ---| '-2' #User pressed Escape to close the message

@@ -2,46 +2,46 @@
 
 ---Defines a single side in a scenario
 ---@class side : wesnoth.sides
----@param side integer
----@param side_name tstring
----@param saveid string
----@param flag string
----@param flag_icon string
----@param color string
----@param user_team_name tstring
----@param team_name string
----@param controller string
----@param is_local boolean
----@param gold integer
----@param village_gold integer
----@param village_support integer
----@param recall_cost integer
----@param base_income integer
----@param num_villages integer
----@param num_units integer
----@param total_upkeep integer
----@param expenses integer
----@param net_income integer
----@param total_income integer
----@param carryover_bonus integer
----@param carryover_percent number
----@param carryover_add boolean
----@param fog boolean
----@param shroud boolean
----@param share_vision "'all'"|"'shroud'"|"'none'"
----@param hidden boolean
----@param scroll_to_leader boolean
----@param suppress_end_turn_confirmation boolean
----@param persistent boolean
----@param defeat_condition string
----@param starting_location location
----@param recruit string[]
----@param faction string
----@param faction_name tstring
----@param chose_random boolean
----@param lost boolean
----@param variables table<string, WML>
----@param __cfg WMLTable
+---@field side integer
+---@field side_name tstring
+---@field saveid string
+---@field flag string
+---@field flag_icon string
+---@field color string
+---@field user_team_name tstring
+---@field team_name string
+---@field controller string
+---@field is_local boolean
+---@field gold integer
+---@field village_gold integer
+---@field village_support integer
+---@field recall_cost integer
+---@field base_income integer
+---@field num_villages integer
+---@field num_units integer
+---@field total_upkeep integer
+---@field expenses integer
+---@field net_income integer
+---@field total_income integer
+---@field carryover_bonus integer
+---@field carryover_percent number
+---@field carryover_add boolean
+---@field fog boolean
+---@field shroud boolean
+---@field share_vision "'all'"|"'shroud'"|"'none'"
+---@field hidden boolean
+---@field scroll_to_leader boolean
+---@field suppress_end_turn_confirmation boolean
+---@field persistent boolean
+---@field defeat_condition string
+---@field starting_location location
+---@field recruit string[]
+---@field faction string
+---@field faction_name tstring
+---@field chose_random boolean
+---@field lost boolean
+---@field variables table<string, WML>
+---@field __cfg WMLTable
 
 ---@class wesnoth.sides
 wesnoth.sides = {}

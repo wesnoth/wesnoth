@@ -5,8 +5,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	wesnoth.interface.select_unit = wesnoth.units.select
 
-	-- Fakes the move of a unit satisfying the given filter to position x, y.
-	-- Usable only during WML actions.
+	---Fakes the move of a unit satisfying the given filter to position x, y.
+	---Usable only during WML actions.
 	---@param filter WML
 	---@param to_x integer
 	---@param to_y integer

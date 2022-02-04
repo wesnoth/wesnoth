@@ -59,7 +59,7 @@ function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_w
 ---@field attack_num integer
 ---@field name string
 
----Construct a function that generates random namespace
+---Construct a function that generates random names
 ---@param type '"cfg"' The type of generator to create
 ---@param definition table<string, string|string[]> Definition rules for the generator
 ---@param chain_size integer The size of the Markov chain unit
@@ -114,20 +114,20 @@ function wesnoth.deprecated_message(element_name, level, version, detail_message
 ---@type table<string, fun(cfg:WML)>
 wesnoth.wml_actions = {}
 
----@type table<string, fun(cfg:WML):boolean
+---@type table<string, fun(cfg:WML):boolean>
 wesnoth.wml_conditionals = {}
 
----@type table<string, fun(unit:unit, cfg:WML)
+---@type table<string, fun(unit:unit, cfg:WML)>
 wesnoth.effects = {}
 
----@type table<string, fun(cfg:WML)
+---@type table<string, fun(cfg:WML)>
 wesnoth.custom_synced_commands = {}
 
 ---@class color
----@field r
----@field g
----@field b
----@field a
+---@field r integer
+---@field g integer
+---@field b integer
+---@field a integer
 ---@class color_range
 ---@field mid color
 ---@field min color
@@ -143,7 +143,7 @@ wesnoth.colors = {}
 ---@field id string
 ---@field weapon WMLTable
 ---@field second_weapon WMLTable
----@field damage_inflicted interger
+---@field damage_inflicted integer
 ---@field x1 integer
 ---@field y1 integer
 ---@field x2 integer

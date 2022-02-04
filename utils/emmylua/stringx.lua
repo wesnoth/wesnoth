@@ -3,6 +3,8 @@
 ---@class stringx : stringlib
 stringx = {}
 
+string = stringx
+
 ---Split a string into an array
 ---@param str string
 ---@param sep? string
