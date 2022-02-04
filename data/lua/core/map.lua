@@ -39,9 +39,10 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	-- A        A^       A^B      ^        ^B
 	-- implied mode:
 	-- both     base     both     overlay  overlay
-	
-	---Adjusts a terrain code to produce one that will replace the base terrain only
-	---@param code string A terrain code
+
+	---Adjusts a terrain code to produce one that will replace the base terrain only,
+	---when the adjusted code is assigned to a terrain hex on the map
+---@param code string A terrain code
 	---@return string #The adjusted terrain code
 	function wesnoth.map.replace_base(code)
 		local base, overlay = wesnoth.map.split_terrain_code(code)
@@ -54,7 +55,8 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 	end
 
-	---Adjusts a terrain code to produce one that will replace the overlay terrain only
+	---Adjusts a terrain code to produce one that will replace the overlay terrain only,
+	---when the adjusted code is assigned to a terrain hex on the map
 	---@param code string A terrain code
 	---@return string #The adjusted terrain code
 	function wesnoth.map.replace_overlay(code)
@@ -68,7 +70,8 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 	end
 
-	---Adjusts a terrain code to produce one that will replace both the base and overlay terrains
+	---Adjusts a terrain code to produce one that will replace both the base and overlay terrains,
+	---when the adjusted code is assigned to a terrain hex on the map
 	---@param code string A terrain code
 	---@return string #The adjusted terrain code
 	function wesnoth.map.replace_both(code)
