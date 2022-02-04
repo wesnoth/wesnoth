@@ -127,6 +127,8 @@ game::~game()
 		}
 
 		clear_history();
+	} catch(const boost::coroutines::detail::forced_unwind& e) {
+		ERR_GAME << "Caught forced_unwind in game destructor!\n";
 	} catch(...) {
 	}
 }
