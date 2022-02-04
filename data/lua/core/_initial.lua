@@ -9,18 +9,21 @@ local _ = wesnoth.textdomain "wesnoth"
 -- Marks a function or subtable as deprecated.
 ---@generic T
 ---@param elem_name string the full name of the element being deprecated (including the module)
----@param replacement string the name of the element that will replace it (including the module)
+---@param replacement_name string the name of the element that will replace it (including the module)
 ---@param level '1'|'2'|'3'|'4' deprecation level (1-4)
 ---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
 --- Set to nil if deprecation level is 1 or 4
----@param elem T The actual element being deprecated, ignored if level is 4
+---@param elem T The actual element being deprecated, ignored if level is 4.
+--- This can be the original, undeprecated element, but it does not have to be.
 ---@param detail_msg? string An optional message to add to the deprecation message
----@return T
-function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
+---@return T elem_deprecated #A reference to the element, altered to trigger a deprecation message when used.
+--- If it is a function, the message is triggered the first time it is called.
+--- If it is a table, the message is triggered when a key is written or read on the table.
+function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem, detail_msg)
 	if wesnoth.game_config.strict_lua then return nil end
 	local message = detail_msg or ''
-	if replacement then
-		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):vformat{replacement = replacement}
+	if replacement_name then
+		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):vformat{replacement = replacement_name}
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
@@ -56,7 +59,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		if type(old_mt) ~= "table" then
 			-- See https://github.com/wesnoth/wesnoth/issues/4584#issuecomment-555788446
 			wesnoth.log('warn', "Attempted to deprecate a table with a masked metatable: " ..
-				elem_name .. " -> " .. replacement .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
+				elem_name .. " -> " .. replacement_name .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
 			return elem
 		end
 		local mt = {}
@@ -80,7 +83,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		return setmetatable({}, mt)
 	else
 		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..
-			elem_name .. " -> " .. replacement .. ", where " .. elem_name .. " = " .. tostring(elem))
+			elem_name .. " -> " .. replacement_name .. ", which is " .. tostring(elem))
 	end
 	return elem
 end
