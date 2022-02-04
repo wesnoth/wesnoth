@@ -26,8 +26,8 @@ function gui.confirm(title, msg)
 end
 
 ---Displays a WML message box with attributes from attr and options from options.
----@param attr WML
----@param options string[]
+---@param attr WML The contents of a [message] tag, without any [option]s.
+---@param options string[]|gui_narration_option_info[] A list of options to show in the message box
 ---@return integer #the index of the selected option.
 function gui.get_user_choice(attr, options)
 	local result = 0
