@@ -244,7 +244,7 @@ int server_base::run() {
 		} catch(const boost::system::system_error& e) {
 			ERR_SERVER << "Caught system error exception from handler: " << e.code().message() << "\n";
 		} catch(const std::exception& e) {
-			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n";
+			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n" << boost::current_exception_diagnostic_information() << "\n";
 		}
 	}
 }
