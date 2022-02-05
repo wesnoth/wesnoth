@@ -8,13 +8,13 @@
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-09-07 11:59+0300\n"
+"PO-Revision-Date: 2022-02-02 15:06+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -8122,12 +8122,16 @@ msgid "Turn Countdown"
 msgstr "Обратный отсчет"
 
 #: src/save_index.cpp:262
+#, fuzzy
+#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/save_index.cpp:263
+#, fuzzy
+#| msgid "%a %b %e %H:%M:%S %Y"
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %e %H:%M:%S %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:283 src/savegame.cpp:588
@@ -8663,6 +8667,16 @@ msgstr "Скрыть план $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
+
+#~ msgid ""
+#~ "Similar to the 'fps' command, but also forces everything to redraw "
+#~ "instead of only things that have changed."
+#~ msgstr ""
+#~ "Схоже с командой «fps», но кроме того вызывает перерисовку всего, а не "
+#~ "только изменившихся сущностей."
+
+#~ msgid "%a %b %d %Y, %H:%M"
+#~ msgstr "%a %b %d %H:%M %Y"
 
 #, fuzzy
 #~| msgid "Overall"
@@ -10144,9 +10158,6 @@ msgstr "Настройки планировщика"
 
 #~ msgid "September"
 #~ msgstr "Сентябрь"
-
-#~ msgid "%a %b %e %H:%M:%S %Y"
-#~ msgstr "%a %b %e %H:%M:%S %Y"
 
 #~ msgid "%a %d %b %Y %H:%M:%S %z"
 #~ msgstr "%a %d %b %Y %H:%M:%S %z"

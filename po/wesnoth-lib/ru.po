@@ -11,13 +11,13 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-08-20 22:20+0300\n"
+"PO-Revision-Date: 2022-02-02 14:48+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -1966,6 +1966,21 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mountains'</italic> are steep enough that units often have "
+#| "to climb over obstacles to move.\n"
+#| "By this nature, they provide a considerable defensive bonus for most "
+#| "troops, but also severely impede any passage through them. Units burdened "
+#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
+#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
+#| "piscine bodies which also render them unable to climb steep inclines. "
+#| "Nagas are an exception due to their strong arms and rugged scales. Both "
+#| "dwarves and trolls are native to mountainous terrain, and have an easy "
+#| "time traversing them.\n"
+#| "\n"
+#| "Most units receive about 60% defense in mountains, whereas dwarves enjoy "
+#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1977,14 +1992,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"<italic>text='Горы'</italic> - это рельеф настолько крутой, что здесь бойцам "
+"<italic>text='Горы'</italic> — это рельеф настолько крутой, что здесь бойцам "
 "приходится взбираться на препятствия, чтобы преодолеть их.\n"
 "По своей природе, горы предоставляют значительный бонус к защите для "
 "большинства бойцов, но также значительно затрудняют любой путь через них. "
-"Большинство типов кавалерии даже не может зайти в горы, хотя эльфийская "
-"кавалерия и гоблинские волчьи наездники представляют исключение из этого "
-"правила. Гномы и тролли привычны к горной местности и могут двигаться по ней "
-"без замедления.\n"
+"Бойцы, обременённые тяжёлой бронёй, вроде веснотской кавалерии или ударных "
+"пехотинцев, даже не могут зайти в горы. Водяные расы и существа не могут "
+"взбираться по крутым склонам просто из-за строения своих тел. Наги, однако, "
+"исключение: их спасают крепкие руки и грубая чешуя. Гномы и тролли привыкли "
+"к горной местности и могут двигаться по ней без замедления.\n"
 "\n"
 "Большинство бойцов имеют уровень защиты в 60% в горах, а гномы получают 70%."
 
@@ -4485,8 +4501,10 @@ msgstr "Вербуется:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:289
+#, fuzzy
+#| msgid "Choose Your Leader"
 msgid "Choose Your Faction"
-msgstr "Выберите вашу фракцию"
+msgstr "Выберите лидера"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:314
@@ -5788,6 +5806,9 @@ msgid "timespan^expired"
 msgstr "прошло"
 
 #: src/formula/string_utils.cpp:300
+#, fuzzy
+#| msgid "timespan^$num year"
+#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgstr "$num год"
 
@@ -5796,6 +5817,9 @@ msgid "timespan^$num years"
 msgstr "$num лет"
 
 #: src/formula/string_utils.cpp:301
+#, fuzzy
+#| msgid "timespan^$num month"
+#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgstr "$num месяц"
 
@@ -5804,6 +5828,9 @@ msgid "timespan^$num months"
 msgstr "$num месяцев"
 
 #: src/formula/string_utils.cpp:302
+#, fuzzy
+#| msgid "timespan^$num week"
+#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgstr "$num неделя"
 
@@ -5812,6 +5839,9 @@ msgid "timespan^$num weeks"
 msgstr "$num недель"
 
 #: src/formula/string_utils.cpp:303
+#, fuzzy
+#| msgid "timespan^$num day"
+#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgstr "$num день"
 
@@ -5820,6 +5850,9 @@ msgid "timespan^$num days"
 msgstr "$num дней"
 
 #: src/formula/string_utils.cpp:304
+#, fuzzy
+#| msgid "timespan^$num hour"
+#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgstr "$num час"
 
@@ -5828,6 +5861,9 @@ msgid "timespan^$num hours"
 msgstr "$num часов"
 
 #: src/formula/string_utils.cpp:305
+#, fuzzy
+#| msgid "timespan^$num minute"
+#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgstr "$num минута"
 
@@ -5836,6 +5872,9 @@ msgid "timespan^$num minutes"
 msgstr "$num минут"
 
 #: src/formula/string_utils.cpp:306
+#, fuzzy
+#| msgid "timespan^$num second"
+#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgstr "$num секунда"
 
@@ -8096,6 +8135,26 @@ msgstr ""
 #~ msgstr ""
 #~ "Выберите, из какой версии Веснота импортировать Ваши данные.\n"
 #~ "Некоторые настройки не вступят в силу, пока Вы не перезапустите игру."
+
+#~ msgid "mainmenu_hotkeys^M"
+#~ msgstr "M"
+
+#~ msgid "%Y-%m-%d %I:%M %p"
+#~ msgstr "%d.%m.%Y %I:%M %p"
+
+#~ msgid "%Y-%m-%d %H:%M"
+#~ msgstr "%d.%m.%Y %H:%M"
+
+#~ msgid ""
+#~ "This game doesn't allow observers. Observe using moderator rights anyway?"
+#~ msgstr ""
+#~ "Игра не разрешает наблюдателей. Всё равно наблюдать за ней, используя "
+#~ "права модератора?"
+
+#~ msgid "This game is password protected. Join using moderator rights anyway?"
+#~ msgstr ""
+#~ "Игра защищена паролем. Вступить в неё всё равно, используя права "
+#~ "модератора?"
 
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Диалог входа на мультиплеерный сервер"
