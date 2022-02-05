@@ -7,6 +7,8 @@
    * Delfador’s Memoirs
      * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
      * S14: Smoother appearance of enemies and added dialogue (#6176)
+   * Sceptre of Fire
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart. 
    * The Rise of Wesnoth
      * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
    * Under the Burning Suns
