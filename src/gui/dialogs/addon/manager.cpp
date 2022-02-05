@@ -688,7 +688,8 @@ void addon_manager::apply_filters()
 	// In the small-screen layout, the text_box for the filter keeps keyboard focus even when the
 	// details panel is visible, which means this can be called when the list isn't visible. That
 	// causes problems both because find_widget can throw exceptions, but also because changing the
-	// filters can trigger on_addon_select and thus affect which add-on's details are shown.
+	// filters can hide the currently-shown add-on, triggering a different one to be selected in a
+	// way that would seem random unless the user realised that they were typing into a filter box.
 	//
 	// Quick workaround is to not process the new filter if the list isn't visible.
 	auto list = find_widget<addon_list>(get_window(), "addons", false, false);
@@ -971,15 +972,17 @@ static std::string format_addon_time(std::time_t time)
 
 void addon_manager::on_addon_select()
 {
-	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
+	widget* parent = get_window();
+	widget* parent_of_addons_list = parent;
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+		parent_of_addons_list = stk->get_layer_grid(0);
+	}
+
+	const addon_info* info = find_widget<addon_list>(parent_of_addons_list, "addons", false).get_selected_addon();
 
 	if(info == nullptr) {
 		return;
-	}
-
-	widget* parent = get_window();
-	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
-		parent = stk->get_layer_grid(1);
 	}
 
 	find_widget<drawing>(parent, "image", false).set_label(info->display_icon());
