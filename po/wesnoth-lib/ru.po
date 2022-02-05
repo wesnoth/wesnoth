@@ -11,13 +11,13 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2021-08-20 22:20+0300\n"
+"PO-Revision-Date: 2022-02-02 14:48+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -1966,19 +1966,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1993,14 +1980,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas dwarves enjoy 70%."
 msgstr ""
-"<italic>text='Горы'</italic> - это рельеф настолько крутой, что здесь бойцам "
+"<italic>text='Горы'</italic> — это рельеф настолько крутой, что здесь бойцам "
 "приходится взбираться на препятствия, чтобы преодолеть их.\n"
 "По своей природе, горы предоставляют значительный бонус к защите для "
 "большинства бойцов, но также значительно затрудняют любой путь через них. "
-"Большинство типов кавалерии даже не может зайти в горы, хотя эльфийская "
-"кавалерия и гоблинские волчьи наездники представляют исключение из этого "
-"правила. Гномы и тролли привычны к горной местности и могут двигаться по ней "
-"без замедления.\n"
+"Бойцы, обременённые тяжёлой бронёй, вроде веснотской кавалерии или ударных "
+"пехотинцев, даже не могут зайти в горы. Водяные расы и существа не могут "
+"взбираться по крутым склонам просто из-за строения своих тел. Наги, однако, "
+"исключение: их спасают крепкие руки и грубая чешуя. Гномы и тролли привыкли "
+"к горной местности и могут двигаться по ней без замедления.\n"
 "\n"
 "Большинство бойцов имеют уровень защиты в 60% в горах, а гномы получают 70%."
 
@@ -4523,10 +4511,8 @@ msgstr "Вербовки"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Выберите вашу фракцию"
+msgstr "Выберите лидера"
 
 #. [label]
 #. [widget]: id=name
@@ -4902,10 +4888,8 @@ msgstr "Доступно в редакторе"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5828,67 +5812,53 @@ msgstr "прошло"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num год"
-msgstr[1] "$num год"
-msgstr[2] "$num год"
+msgstr[1] "$num года"
+msgstr[2] "$num лет"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num месяц"
-msgstr[1] "$num месяц"
-msgstr[2] "$num месяц"
+msgstr[1] "$num месяца"
+msgstr[2] "$num месяцев"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num неделя"
-msgstr[1] "$num неделя"
-msgstr[2] "$num неделя"
+msgstr[1] "$num недели"
+msgstr[2] "$num недель"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num день"
-msgstr[1] "$num день"
-msgstr[2] "$num день"
+msgstr[1] "$num дня"
+msgstr[2] "$num дней"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num час"
-msgstr[1] "$num час"
-msgstr[2] "$num час"
+msgstr[1] "$num часа"
+msgstr[2] "$num часов"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num минута"
-msgstr[1] "$num минута"
-msgstr[2] "$num минута"
+msgstr[1] "$num минуты"
+msgstr[2] "$num минут"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num секунда"
-msgstr[1] "$num секунда"
-msgstr[2] "$num секунда"
+msgstr[1] "$num секунды"
+msgstr[2] "$num секунд"
 
 #: src/gui/core/canvas.cpp:511
 msgid "Image doesn't fit on canvas."
@@ -6248,12 +6218,12 @@ msgstr "Вы хотите удалить '$addon|'?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:960
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%d.%m.%Y %I:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6737,6 +6707,8 @@ msgstr "лобби"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Игра не разрешает наблюдателей. Всё равно наблюдать за ней, используя права "
+"модератора?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6749,6 +6721,7 @@ msgstr ""
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Игра защищена паролем. Вступить в неё всё равно, используя права модератора?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""

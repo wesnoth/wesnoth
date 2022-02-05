@@ -3,13 +3,13 @@
 # Fedor Khodkov <fedor76@istra.ru>, 2009-2014.
 # Olga Abramova <ilanacarra@gmail.com>, 2016.
 # catbegemot <Дискорд: catbegemot#6602>, 2020.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2021.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2021-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 18:02 UTC\n"
-"PO-Revision-Date: 2021-08-09 15:30+0300\n"
+"PO-Revision-Date: 2022-02-02 15:05+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Tutorial
@@ -34,10 +34,6 @@ msgstr "Обучение"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
@@ -57,8 +53,6 @@ msgstr "Выберите персонажа"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play?"
 msgid "Who do you want to play as?"
 msgstr "Кем бы вы хотели играть?"
 
@@ -153,41 +147,29 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"В данном введении вы играете за Конрада.\n"
-"Вы находитесь в цитадели, а Ваш наставник Делфадор — на восточном берегу "
-"реки. При наведении курсора на фигуру персонажа, в правой части экрана "
-"отобразятся параметры этого персонажа и его способности."
+"В данном введении вы играете за Конрада. Вы находитесь в цитадели, а Ваш "
+"наставник Делфадор — на восточном берегу реки. При наведении курсора на "
+"фигуру персонажа, в правой части экрана отобразятся параметры этого "
+"персонажа и его способности."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"В данном введении вы играете за Ли'сар.\n"
-"Вы находитесь в цитадели, а Ваш наставник Делфадор — на восточном берегу "
-"реки. При наведении курсора на фигуру персонажа, в правой части экрана "
-"отобразятся параметры этого персонажа и его способности."
+"В данном введении вы играете за Ли'сар. Вы находитесь в цитадели, а Ваш "
+"наставник Делфадор — на восточном берегу реки. При наведении курсора на "
+"фигуру персонажа, в правой части экрана отобразятся параметры этого "
+"персонажа и его способности."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
@@ -443,15 +425,6 @@ msgstr "Ходы"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "teams, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -461,13 +434,13 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
-"Каждый ход фракция получает очки для передвижения и действий. Как только вы "
-"сделали всё, что наметили на этот ход, нажмите кнопку <b>Конец хода</b> в "
-"правом нижнем углу экрана. Таким образом вы передадите право хода другим "
-"игрокам (или фракциям под контролем компьютера). Некоторые сценарии "
-"необходимо завершить за определённое число ходов. Количество совершённых "
-"ходов и их лимит для данного сценария можно увидеть рядом с пиктограммой "
-"флага в верхней части экрана."
+"Каждый ход стороны по очерёдности получают возможность совершить "
+"передвижения и действия. Как только вы сделали всё, что наметили на этот "
+"ход, нажмите кнопку <b>Конец хода</b> в правом нижнем углу экрана. Таким "
+"образом вы передадите право хода другим игрокам (или фракциям под контролем "
+"компьютера). Некоторые сценарии необходимо завершить за определённое число "
+"ходов. Количество совершённых ходов и их лимит для данного сценария можно "
+"увидеть рядом с пиктограммой флага в верхней части экрана."
 
 #. [event]
 #. [else]
@@ -608,13 +581,6 @@ msgstr "Вербовка"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. This scenario you have only one type "
-#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -624,7 +590,9 @@ msgid ""
 msgstr ""
 "Когда вы в <i>цитадели</i>, вы можете <i>нанимать</i> воинов на окружающих "
 "клетках замка. Для этого нажмите правую кнопку мышки, и выберите пункт "
-"<b>Вербовать</b>. Сейчас вы можете выбрать лишь один тип солдат: эльфийских "
+"<b>Вербовать</b>. Имейте в виду, что нанятые бойцы не смогут выполнять "
+"действия на том же ходу, когда их призвали — вам придётся подождать до "
+"следующего хода. Сейчас вы можете выбрать лишь один тип солдат: эльфийских "
 "воинов."
 
 #. [event]
@@ -685,10 +653,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -816,9 +780,6 @@ msgstr "Описание бойца"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -1087,20 +1048,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
-#| "teach you about recalling units, abilities and weapon specials, income "
-#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
-"С возвращением! Это вторая и финальная часть вашего обучения. Здесь вас "
+"С возвращением! Это вторая и последняя часть вашего обучения. Здесь вас "
 "обучат призывать воинов, способностям и особенностям оружия, доходам и "
-"содержанию воинов, движение на большие расстояния, тому, что такое зона "
-"контроля и влияния времени суток."
+"содержанию воинов, движению на большие расстояния, тому, что такое зона "
+"контроля и влияние времени суток."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
@@ -1122,12 +1078,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1141,12 +1091,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1281,16 +1225,6 @@ msgstr "Призыв"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
-#, fuzzy
-#| msgid ""
-#| "In addition to recruiting new units each scenario, you can also "
-#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
-#| "cost of 20 gold each. This allows you to build up a formidable army over "
-#| "the course of multiple scenarios by recalling your highest leveled troops "
-#| "or those with good combinations of traits and abilities. To recall a "
-#| "unit, right click while your leader stands on a keep and select the "
-#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
-#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1305,7 +1239,7 @@ msgstr ""
 "обойдётся вам в 20 золотых. Призывая наиболее опытных бойцов с удачным "
 "сочетанием характеристик и особенностей, за несколько сценариев вы сможете "
 "собрать мощную армию. Чтобы призвать бойца, нажмите правую кнопку мыши, "
-"когда ваш лидер находится в крепости, и выберите <i>призвать</i>. Однако, не "
+"когда ваш лидер находится в крепости, и выберите <i>призвать</i>. Однако не "
 "пренебрегайте наймом новых бойцов."
 
 #. [message]: speaker=Galdrad
@@ -1378,18 +1312,6 @@ msgstr "Особенности оружия"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1402,14 +1324,14 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Особенности оружия представляют собой модификаторы, усиливающие определённые "
-"атаки. Например, ведунья, атакуя противника заклятием Путы, может его "
+"атаки. Например, ведунья, атакуя противника заклятием «заплетает», может его "
 "замедлить. В таком случае, весь следующий ход он будет наносить только "
-"половину урона. Ещё одна особенность, Бьёт первым, позволяет упреждать "
+"половину урона. Ещё одна особенность — «бьёт первым» — позволяет упреждать "
 "удары, вне зависимости от того, кто является атакующим. А с особенностью "
-"Магия атака всегда имеет 70%-ый шанс попасть в цель.\n"
+"«магия» атака всегда имеет 70%-ый шанс попасть в цель.\n"
 "\n"
 "Полный список способностей и особенностей оружия, а также особенности "
-"бойцов, можно найти в меню Помощь (клавиша <b>F1</b>)."
+"бойцов, можно найти в меню «помощь» (клавиша <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
@@ -1440,12 +1362,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
-#, fuzzy
-#| msgid ""
-#| "You now have two healers. Your Druid can heal adjacent units by 8 "
-#| "hitpoints per turn compared to your Shaman's 4. However, each unit can "
-#| "only receive healing from one healer — a unit next to multiple healers is "
-#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
@@ -1870,10 +1786,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
@@ -1944,10 +1856,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
-#, fuzzy
-#| msgid ""
-#| "You’re venturing away from your keep. You might need recruit more units, "
-#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -2053,11 +1961,6 @@ msgstr "Условия победы"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
