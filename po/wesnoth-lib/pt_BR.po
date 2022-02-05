@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2021-12-24 15:51-0300\n"
+"PO-Revision-Date: 2022-01-27 13:14-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -1352,10 +1352,8 @@ msgstr "Bosque de Cogumelos"
 # File: data/core/terrain.cfg, line: 976
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1009
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Bosque de Cogumelos Iluminados"
+msgstr "Bosque de Cogumelos Iluminados Não Misturados"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -1371,6 +1369,13 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"editor^As sobreposições '^Uf' e '^Ufi' estão descontinuadas porque, apesar "
+"de graficamente mostrar uma sobreposição com um terreno por baixo, as "
+"estatísticas de defesa e movimento são puramente do terreno de fungos, "
+"ignorando o terreo que está por baixo. Recomenda-se substituí-las por '^Tf' "
+"e '^Tfi', que são visualmente idênticas e usam as estatísticas dos gráficos. "
+"Para hexágonos em que se queira apenas as estatísticas dos fungos, 'Tb' é um "
+"terreno base de cogumelo que pode ser usado com ou sem '^Tf' por cima."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -1384,6 +1389,11 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"As histórias dos anões descrevem diferentes tipos de cogumelos — com algumas "
+"espécies, a dificuldade em andar no chão esponjoso não possui nenhuma "
+"relação com o chão que está embaixo, mesmo quando este aina pode ser visto. "
+"A defesa e o custo de movimento desse terreno são puramente baseados nas "
+"estatísticas da unidade para <italic>text='Fungos'</italic>."
 
 #
 # File: data/core/terrain.cfg, line: 976
@@ -1391,10 +1401,8 @@ msgstr ""
 # File: data/core/terrain.cfg, line: 976
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Bosque de Cogumelos Iluminados"
+msgstr "Bosque de Cogumelos Iluminados Não Misturados"
 
 #
 # File: data/core/terrain.cfg, line: 976
@@ -1454,10 +1462,8 @@ msgstr ""
 # File: data/core/terrain.cfg, line: 987
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1099
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Caverna Rochosa"
+msgstr "Caverna Rochosa Terrosa"
 
 #
 # File: data/core/terrain.cfg, line: 999
@@ -2497,10 +2503,8 @@ msgstr "Castelo de Inverno Élfico"
 # File: data/core/terrain.cfg, line: 1720
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2153
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Castelo Anão"
+msgstr "Castelo Subterrâneo dos Anões"
 
 #
 # File: data/core/terrain.cfg, line: 1720
@@ -2517,10 +2521,8 @@ msgstr "Castelo Anão"
 # File: data/core/terrain.cfg, line: 1720
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2177
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Castelo Anão"
+msgstr "Castelo em Ruínas Anão"
 
 #
 # File: data/core/terrain.cfg, line: 1720
@@ -2528,10 +2530,8 @@ msgstr "Castelo Anão"
 # File: data/core/terrain.cfg, line: 1720
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2189
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Castelo Anão"
+msgstr "Castelo de Inverno dos Anões"
 
 #
 # File: data/core/terrain.cfg, line: 1731
@@ -3239,18 +3239,6 @@ msgstr "Fungos"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2991
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -3263,14 +3251,13 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Bosques de Cogumelos'</italic> são vastas florestas "
-"subterrâneas de cogumelos gigantes,\n"
-"que prosperam na úmidade e escuridão. A maioria das unidades tem dificuldade "
-"em atravessar o esponjoso solo coberto de pequenos fungos. O lado bom é que "
-"os largos talos dos fungos oferecem boa proteção. Tropas montadas, "
-"entretanto, movem-se com extrema dificuldade neste atoleiro, afetando em "
-"muito sua defesa. Mortos-vivos possuem afinidade natural com a decadência "
-"inerente dessas florestas, o que faz com que eles lutem bem nestes "
-"lugares. \n"
+"subterrâneas de cogumelos gigantes que prosperam na úmidade e escuridão. A "
+"maioria das unidades tem dificuldade em atravessar o esponjoso solo coberto "
+"de pequenos fungos. O lado bom é que os largos talos dos fungos oferecem boa "
+"proteção. Tropas montadas, entretanto, movem-se com extrema dificuldade "
+"neste atoleiro, afetando em muito sua defesa. Mortos-vivos possuem afinidade "
+"natural com a decadência inerente dessas florestas, o que faz com que eles "
+"lutem bem nestes lugares. \n"
 "\n"
 "A maioria das unidades possuem entre 50% e 60% de defesa nos bosques de "
 "cogumelos, sendo que cavalaria só possui 20%."
@@ -3346,17 +3333,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3046
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -3369,12 +3345,11 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 "<italic>text='Colinas'</italic> representam qualquer terreno relativamente "
-"acidentado,\n"
-"com declives e subidas suficientes para serem como proteção. Colinas são de "
-"difícil travessia para a maioria das unidades. Anões, trolls e orcs estão "
-"familiarizados com o terreno a ponto de navega-lo sem maiores dificuldades. "
-"Cavalaria tem tanta dificuldade em atravessar este terreno que qualquer "
-"proteção que poderiam vir a ter do terreno é negada.\n"
+"acidentado com declives e subidas suficientes para serem como proteção. "
+"Colinas são de difícil travessia para a maioria das unidades. Anões, trolls "
+"e orcs estão familiarizados com o terreno a ponto de navega-lo sem maiores "
+"dificuldades. Cavalaria tem tanta dificuldade em atravessar este terreno que "
+"qualquer proteção que poderiam vir a ter do terreno é negada.\n"
 "\n"
 "A maioria das unidades possuem 50% em colinas, já cavalaria normalmente fica "
 "limitada a 40%. Anões usufruem de 60% de defesa em colinas."
@@ -4640,7 +4615,7 @@ msgstr "Os resultados do combate continuam constantes após carregar o jogo"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "RNG Tendencioso (experimental)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
@@ -6843,10 +6818,8 @@ msgstr "Opções de Loggin"
 # File: data/core/terrain.cfg, line: 1553
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Cabana"
+msgstr "Domínio do Log"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
@@ -6962,10 +6935,8 @@ msgstr "No Saguão"
 # File: src/mapgen_dialog.cpp, line: 120
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Quando Jogador entrar:"
+msgstr "Quando Jogador entrar"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
@@ -7159,6 +7130,8 @@ msgstr "Partida com Facções Aleatórias:"
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
+"Permite embate entre facções espelhadas ao escolher a opção de facções "
+"aleatórias"
 
 #
 # File: data/gui/default/window/lobby_main.cfg, line: 178
@@ -8748,15 +8721,13 @@ msgstr "Mostrar esfera inimiga"
 # File: src/hotkeys.cpp, line: 117
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
-#, fuzzy
-#| msgid "Show enemy orb"
 msgid "Show disengaged orb"
-msgstr "Mostrar esfera inimiga"
+msgstr "Mostrar esfera de desengajar"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
 msgid "This uses the colors for partial and moved orbs."
-msgstr ""
+msgstr "Usa as cores para esferas parciais e movidas."
 
 #
 # File: src/hotkeys.cpp, line: 157
@@ -8812,6 +8783,12 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"stats dialog^Diferença entre o resultado real e o resultado esperado, em "
+"porcentagem.\n"
+"O primeiro número em parênteses é a quantidade de dano aos pontos de vida "
+"que se espera inflingir/receber.\n"
+"A soma (ou o resultado) dos dois números em parênteses é a quantidade de "
+"dano aos pontos de vida inflingida/recebida."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
@@ -8837,6 +8814,17 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"stats dialog^A probabilidade <i>a priori</i> de no máximo inflingir/receber "
+"essa quantidade de acertos, em porcentagem.\n"
+"\n"
+"Intuitivamente, essa é uma forma de medir como a sorte afetou um lado.\n"
+"Valores entre 0 e 50 sugerem que o número de acertos foi menor do que o "
+"esperado.\n"
+"Valores entre 50 e 100 sugerem que o número de acertos foi maior do que o "
+"esperado.\n"
+"\n"
+"Valores em verde indicam que o lado se saiu melhor do que o esperado.\n"
+"Valores em vermelho indicam que o lado se saiu pior do que o esperado."
 
 #
 # File: data/gui/default/window/lobby_main.cfg, line: 686
@@ -9229,12 +9217,10 @@ msgstr "Convocar unidade"
 
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 "Procure pelo nome da unidade, o tipo da unidade, o nível da unidade, ou a "
-"característica."
+"característica"
 
 #
 # File: src/hotkeys.cpp, line: 87
@@ -9372,11 +9358,12 @@ msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<caminho relativo>"
 
 #: src/filesystem.cpp:709 src/filesystem.cpp:730
-#, fuzzy
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
-msgstr "Usa caminhos absoluto."
+msgstr ""
+"Usa caminhos absoluto. Caminhos relativos estão descontinuados porque eles "
+"são interpretados em relação à $HOME"
 
 #
 # File: src/image.cpp, line: 421
@@ -9535,15 +9522,15 @@ msgstr "Imagem não cabe na tela."
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 #: src/gui/core/canvas.cpp:686
 msgid "Text has a font size of 0."
-msgstr "Texto tem um tamanho de fonte 0."
+msgstr "Tamanho de fonte do texto é 0."
 
 #: src/gui/core/canvas.cpp:835
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "A área possui tamanho negativo"
 
 #: src/gui/core/canvas.cpp:837
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "A área é maior do que a interface"
 
 #
 # File: src/gui/widgets/settings.cpp, line: 532
@@ -9615,16 +9602,16 @@ msgstr "Nenhuma grade definida."
 # File: src/gui/auxiliary/window_builder.cpp, line: 533
 # File: src/gui/auxiliary/window_builder.cpp, line: 533
 #: src/gui/core/window_builder.cpp:231
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "Uma linha precisa ter uma coluna."
+msgstr "Grid '$grid' row $row precisa ter ao menos uma coluna."
 
 #: src/gui/core/window_builder.cpp:243
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Grid '$grid' row $row possuem um número diferente de colunas ($found "
+"encontradas, $expected esperadas)"
 
 #
 # File: src/gui/dialogs/addon/filter_options.cpp, line: 187
@@ -9831,6 +9818,7 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"addon_tag^Modifica a aleatoriedade em combate ou remove-a por completo "
 
 #: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Survival"
@@ -10932,7 +10920,7 @@ msgstr "Independente: Facções aleatórias são atribuídas independentemente"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:273
 msgid "No Mirror: No two players will get the same faction"
-msgstr "Não espelhar: Jogadores não recebem facções idênticas"
+msgstr "Não Espelhar: Jogadores não recebem facções idênticas"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:274
 msgid "No Ally Mirror: No two allied players will get the same faction"
@@ -11136,6 +11124,12 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"stats dialog^Diferença entre o resultado real e o resultado esperado, em "
+"porcentagem.\n"
+"O primeiro número em parênteses é a quantidade de ataques acertados que se "
+"espera inflingir/receber.\n"
+"A soma (ou o resultado) dos dois números em parênteses é a quantidade de "
+"ataques acertados inflingidos/recebidos."
 
 #
 # File: src/hotkeys.cpp, line: 96
@@ -11216,12 +11210,12 @@ msgstr "Mortes"
 #: src/gui/dialogs/statistics_dialog.cpp:395
 #: src/gui/dialogs/statistics_dialog.cpp:402
 msgid "Inflicted"
-msgstr "Causadas"
+msgstr "Inflingidas"
 
 #: src/gui/dialogs/statistics_dialog.cpp:408
 #: src/gui/dialogs/statistics_dialog.cpp:415
 msgid "Taken"
-msgstr "Perdas"
+msgstr "Recebidas"
 
 #: src/gui/dialogs/statistics_dialog.cpp:456
 msgid "$count|× $name"
@@ -11356,16 +11350,12 @@ msgstr "<i>$name</i> entrou"
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 #: src/gui/widgets/chatbox.cpp:399
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"Conversa em sussurro com <i>“$name”</i> iniciada. Se você não quer receber "
-"mensagens desse usuário, digite <i>/ignore $name</i>"
+"Conversa privada com <i>“$name”</i> aberta. Se você não quer receber "
+"mensagens desse jogador, digite <i>/ignore $name</i>"
 
 #
 # File: src/gui/widgets/helper.cpp, line: 116
@@ -11939,10 +11929,8 @@ msgstr "Terminar o turno da unidade"
 # File: src/game_preferences_display.cpp, line: 221
 # File: src/game_preferences_display.cpp, line: 221
 #: src/hotkey/hotkey_command.cpp:85
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Rolar para Esquerda"
+msgstr "Rolar para o Líder"
 
 #
 # File: src/hotkeys.cpp, line: 77
@@ -13336,11 +13324,32 @@ msgstr ""
 "'$deprecated_key' será removido na versão $removal_version."
 
 #
+# File: src/hotkeys.cpp, line: 76
+# File: src/hotkeys.cpp, line: 76
+# File: src/hotkeys.cpp, line: 76
+#~ msgid "Leader:"
+#~ msgstr "Líder:"
+
+#
+# File: data/gui/default/window/unit_create.cfg, line: 67
+# File: data/gui/default/window/unit_create.cfg, line: 67
+# File: data/gui/default/window/unit_create.cfg, line: 67
+#~ msgid "Gender:"
+#~ msgstr "Gênero:"
+
+#
 # File: src/hotkeys.cpp, line: 94
 # File: src/hotkeys.cpp, line: 94
 # File: src/hotkeys.cpp, line: 94
 #~ msgid "Recruits:"
 #~ msgstr "Recruta:"
+
+#
+# File: src/hotkeys.cpp, line: 172
+# File: src/hotkeys.cpp, line: 172
+# File: src/hotkeys.cpp, line: 172
+#~ msgid "Starting position:"
+#~ msgstr "Posição Inicial:"
 
 #~ msgid "titlescreen_hotkeys^T"
 #~ msgstr "T"
@@ -13367,34 +13376,6 @@ msgstr ""
 #~ msgstr "$num segundos"
 
 #
-# File: src/hotkeys.cpp, line: 245
-# File: src/hotkeys.cpp, line: 245
-# File: src/hotkeys.cpp, line: 245
-#~ msgid "Start Tutorial"
-#~ msgstr "Iniciar Tutorial"
-
-#
-# File: src/hotkeys.cpp, line: 76
-# File: src/hotkeys.cpp, line: 76
-# File: src/hotkeys.cpp, line: 76
-#~ msgid "Leader:"
-#~ msgstr "Líder:"
-
-#
-# File: data/gui/default/window/unit_create.cfg, line: 67
-# File: data/gui/default/window/unit_create.cfg, line: 67
-# File: data/gui/default/window/unit_create.cfg, line: 67
-#~ msgid "Gender:"
-#~ msgstr "Gênero:"
-
-#
-# File: src/hotkeys.cpp, line: 172
-# File: src/hotkeys.cpp, line: 172
-# File: src/hotkeys.cpp, line: 172
-#~ msgid "Starting position:"
-#~ msgstr "Posição Inicial:"
-
-#
 # File: src/hotkeys.cpp, line: 126
 # File: src/hotkeys.cpp, line: 126
 # File: src/hotkeys.cpp, line: 126
@@ -13414,6 +13395,13 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 1458
 #~ msgid "$player has left the room"
 #~ msgstr "$player saiu da sala"
+
+#
+# File: src/hotkeys.cpp, line: 245
+# File: src/hotkeys.cpp, line: 245
+# File: src/hotkeys.cpp, line: 245
+#~ msgid "Start Tutorial"
+#~ msgstr "Iniciar Tutorial"
 
 #
 # File: data/gui/default/window/mp_login.cfg, line: 8
