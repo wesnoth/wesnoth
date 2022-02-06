@@ -27,7 +27,7 @@ ai = {}
 ---@field attacks {own:unit[], enemy:unit[]}
 ---@field avoid location[]
 ---@field leader_goal WMLTable
----@field recruitment_instructions 
+---@field recruitment_instructions
 ---@alias ai_aspects_recruitment_more string|integer
 ---@field recruitment_more ai_aspects_recruitment_more[]
 ---@field recruitment_pattern string[]
