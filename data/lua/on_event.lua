@@ -35,6 +35,7 @@ local function on_event(eventname, priority, fcn)
 	local handler
 	if type(priority) == "function" then
 		handler = priority
+		priority = 0
 	else
 		handler = fcn
 	end
