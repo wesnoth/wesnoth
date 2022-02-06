@@ -343,7 +343,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			end
 		end
 	}
-	
+
 	---@type table<string, WMLVariableProxy>
 	wml.variables_proxy = setmetatable({}, root_variable_mt)
 
