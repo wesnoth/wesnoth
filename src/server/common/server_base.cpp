@@ -541,7 +541,9 @@ template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr sock
 			}
 
 			while(queues[socket].size() > 0) {
-				coro_send_doc(socket, *(queues[socket].front()), yield);
+				boost::system::error_code error;
+				coro_send_doc(socket, *(queues[socket].front()), yield[error]);
+				check_error(error, socket);
 				queues[socket].pop();
 			}
 			queues.erase(socket);
