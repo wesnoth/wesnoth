@@ -21,9 +21,9 @@ wesnoth.game_events.on_event = function(eventname)
 end
 
 
----Handle an event
----@param eventname string
----@param priority? number
+---Register an event handler
+---@param eventname string The event to handle; can be a comma-separated list
+---@param priority? number Events execute in order of decreasing priority, and secondarily in order of adding
 ---@param fcn fun(ctx:event_context)
 local function on_event(eventname, priority, fcn)
 	if string.match(eventname, ",") then
