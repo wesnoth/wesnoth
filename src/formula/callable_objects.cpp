@@ -162,7 +162,20 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return att_->range().compare(att_callable->att_->range());
 	}
 
-	return att_->weapon_specials().compare(att_callable->att_->weapon_specials());
+	const auto self_specials = att_->specials().all_children_range();
+	const auto other_specials = att_callable->att_->specials().all_children_range();
+	if(self_specials.size() != other_specials.size()) {
+		return self_specials.size() < other_specials.size() ? -1 : 1;
+	}
+	for(std::size_t i = 0; i < self_specials.size(); ++i) {
+		const auto& s = self_specials[i].cfg["id"];
+		const auto& o = other_specials[i].cfg["id"];
+		if(s != o) {
+			return s.str().compare(o.str());
+		}
+	}
+
+	return 0;
 }
 
 unit_callable::unit_callable(const unit& u) : loc_(u.get_location()), u_(u)
