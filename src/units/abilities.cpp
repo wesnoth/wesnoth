@@ -918,6 +918,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
 		}
 	}
+	add_name_list(temp_string, weapon_abilities, checking_name, "");
 	if(self_){
 		weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
 		add_name_list(temp_string, weapon_abilities, checking_name, "Self: ");
