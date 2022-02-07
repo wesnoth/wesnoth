@@ -87,8 +87,8 @@ class tod_manager
 		 * Replace the time of day schedule
 		 */
 		void replace_schedule(const config& time_cfg);
-		void replace_schedule(const std::vector<time_of_day>& schedule);
-		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index);
+		void replace_schedule(const std::vector<time_of_day>& schedule, int inital_time=0);
+		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index, int inital_time=0);
 
 		void replace_area_locations(int index, const std::set<map_location>& locs);
 

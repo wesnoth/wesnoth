@@ -962,9 +962,9 @@ int game_lua_kernel::impl_schedule_set(lua_State *L)
 		config time_cfg = luaW_checkconfig(L, 3);
 		times[i] = time_of_day(time_cfg);
 		if(area_index < 0) {
-			tod_man().replace_schedule(times);
+			tod_man().replace_schedule(times, time_cfg["current_time"].to_int(0));
 		} else {
-			tod_man().replace_local_schedule(times, area_index);
+			tod_man().replace_local_schedule(times, area_index, time_cfg["current_time"].to_int(0));
 		}
 	} else {
 		const char* m = luaL_checkstring(L, 2);
