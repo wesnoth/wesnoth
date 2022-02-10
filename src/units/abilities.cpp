@@ -856,8 +856,8 @@ static void add_name(std::string& weapon_abilities, bool active, const config::a
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
  *
- * This excludes inactive specials if only_active is true. Whether or not a
- * special is active depends on the current context (see set_specials_context)
+ * Whether or not a special is active depends
+ * on the current context (see set_specials_context)
  * and the @a is_backstab parameter.
  */
 std::string attack_type::weapon_specials(bool is_backstab) const
