@@ -860,7 +860,7 @@ static void add_name(std::string& weapon_abilities, bool active, const config::a
  * special is active depends on the current context (see set_specials_context)
  * and the @a is_backstab parameter.
  */
-std::string attack_type::weapon_specials(bool only_active, bool is_backstab) const
+std::string attack_type::weapon_specials(bool is_backstab) const
 {
 	//log_scope("weapon_specials");
 	std::string res;
@@ -874,9 +874,9 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 			: default_value(sp.cfg, "name_inactive", "name").str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ", ";
-			if (only_active && !active) res += font::span_color(font::inactive_details_color);
+			if (!active) res += font::span_color(font::inactive_details_color);
 			res += name;
-			if (only_active && !active) res += "</span>";
+			if (!active) res += "</span>";
 		}
 	}
 	std::string weapon_abilities;
