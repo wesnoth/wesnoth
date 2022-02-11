@@ -21,7 +21,8 @@ enum class DEP_LEVEL : uint8_t { INDEFINITE = 1, PREEMPTIVE, FOR_REMOVAL, REMOVE
 
 /**
  * Prints a message to the deprecation log domain informing players that a given feature
- * has been deprecated.
+ * has been deprecated. May show the error in the in-game chat area, but has a mechanism
+ * to avoid repeatedly showing in-game messages to players who can't fix the issue.
  *
  * @param elem_name    The name of the feature to be deprecated.
  * @param level        The deprecation level. This indicates how long the feature will
@@ -43,3 +44,17 @@ std::string deprecated_message(const std::string& elem_name,
 		DEP_LEVEL level,
 		const class version_info& version,
 		const std::string& detail = "");
+
+/**
+ * Prints a message to the deprecation log domain informing players that a deprecated
+ * feature has been used along with a new feature, and that the compatibility code
+ * doesn't support that combination.
+ *
+ * For example, if a WML tag contains both a deprecated attribute and its replacement,
+ * the compatibilty code might use one, ignore the other, and log a message.
+ *
+ * @param elem_name    The name of the feature that's deprecated.
+ * @param modern_name  The new feature that can't be used with the deprecated one.
+ */
+void unsupported_combo_message(const std::string& elem_name,
+		const std::string& modern_name);

@@ -22,6 +22,7 @@
 
 #include "ai/manager.hpp"
 #include "color.hpp"
+#include "deprecation.hpp"
 #include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -268,6 +269,20 @@ void team::team_info::read(const config& cfg)
 
 void team::team_info::handle_legacy_share_vision(const config& cfg)
 {
+	// Either legacy setting overrides share_vision - it was that way in 1.13.1, and the eventual
+	// fix will be to remove the deprecated attributes, along with removing this legacy support.
+
+	// This block is just to show a warning if the old and new attributes are used together.
+	if(cfg.has_attribute("share_vision")) {
+		if(cfg.has_attribute("share_view")) {
+			unsupported_combo_message("[side]share_view=", "[side]share_vision=");
+		}
+		if(cfg.has_attribute("share_maps")) {
+			unsupported_combo_message("[side]share_maps=", "[side]share_vision=");
+		}
+	}
+
+	// Share_view and share_maps can't both be enabled, so share_view overrides share_maps.
 	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps")) {
 		if(cfg["share_view"].to_bool()) {
 			share_vision = team::SHARE_VISION::ALL;

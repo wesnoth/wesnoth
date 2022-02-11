@@ -87,3 +87,18 @@ std::string deprecated_message(
 
 	return message;
 }
+
+void unsupported_combo_message(const std::string& elem_name, const std::string& modern_name) {
+	if(lg::err().dont_log(log_deprecate)) {
+		return;
+	}
+
+	utils::string_map msg_params {{"elem", elem_name}, {"modern", modern_name}};
+	// TRANSLATORS: For example, "[side]share_view= ... with [side]share_vision="
+	std::string message = VGETTEXT("$elem has been deprecated, and can’t be used with $modern.", msg_params);
+
+	FORCE_LOG_TO(lg::err(), log_deprecate) << message << '\n';
+	if(preferences::get("show_deprecation", game_config::wesnoth_version.is_dev_version())) {
+		lg::log_to_chat() << message << '\n';
+	}
+}
