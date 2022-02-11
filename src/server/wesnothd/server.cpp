@@ -2187,8 +2187,7 @@ void server::stats_handler(const std::string& /*issuer_name*/,
 {
 	assert(out != nullptr);
 
-	*out << "Number of games = " << games().size() << "\nTotal number of users = " << player_connections_.size()
-		 << "\n";
+	*out << "Number of games = " << games().size() << "\nTotal number of users = " << player_connections_.size();
 }
 
 void server::metrics_handler(const std::string& /*issuer_name*/,
