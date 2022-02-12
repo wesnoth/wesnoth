@@ -879,14 +879,11 @@ std::string attack_type::weapon_specials(bool is_backstab) const
 	}
 	std::string temp_string;
 	std::set<std::string> checking_name;
-	if(self_){
-		weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
-		weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
-	}
-	if(other_){
-		weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name);
-		weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name);
-	}
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
+
+	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name);
+	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name);
 	if(!temp_string.empty() && !res.empty()) {
 		temp_string = ", \n" + temp_string;
 		res += temp_string;
@@ -919,30 +916,29 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
-	if(self_){
-		weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
-		add_name_list(temp_string, weapon_abilities, checking_name, "Owned: ");
 
-		weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
-		add_name_list(temp_string, weapon_abilities, checking_name, "Teached: ");
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Owned: ");
 
-		weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
-		add_name_list(temp_string, weapon_abilities, checking_name, "Teached (by an ennemy): ");
-	}
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Teached: ");
 
-	if(other_) {
-		if(other_attack_) {
-			for (const config::any_child sp : other_attack_->specials_.all_children_range()) {
-				if((checking_tags.count(sp.key) != 0)){
-					const bool active = other_attack_->special_active(sp.cfg, AFFECT_OTHER, sp.key);
-					add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
-				}
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Teached (by an ennemy): ");
+
+
+	if(other_attack_) {
+		for (const config::any_child sp : other_attack_->specials_.all_children_range()) {
+			if((checking_tags.count(sp.key) != 0)){
+				const bool active = other_attack_->special_active(sp.cfg, AFFECT_OTHER, sp.key);
+				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
 			}
 		}
-		weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
-		weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
-		add_name_list(temp_string, weapon_abilities, checking_name, "Inflicted (by opponent): ");
 	}
+	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Used by opponent: ");
+
 	return weapon_abilities;
 }
 
