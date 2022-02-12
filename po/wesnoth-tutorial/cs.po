@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2022-01-13 19:32+0100\n"
+"PO-Revision-Date: 2022-02-12 09:42+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -110,7 +110,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
 msgid "Destroy a fierce enemy"
-msgstr "Znič zuřivého nepřítele"
+msgstr "Zničíš zuřivého nepřítele"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
@@ -138,7 +138,7 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
-"Jedná se o dvoudílný tutoriál určený pro hráče, kteří jsou ve hře noví. "
+"Toto je dvoudílný tutoriál určený pro hráče, kteří jsou ve hře noví.\n"
 "Část 1 tě naučí základy pohybu, útočení, léčení a verbování. Nejprve si "
 "vybereš hrdinu (oba hrdinové hrají stejně)."
 
@@ -181,7 +181,7 @@ msgstr "Klikni na Lisar"
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
 "Stiskni <b>u</b> nebo použij menu pod pravým tlačítkem pro vrácení tvého "
-"posledního tahu."
+"posledního pohybu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
@@ -205,7 +205,7 @@ msgstr ""
 "kolo posunout. Posun o jedno políčko po rovném terénu obvykle stojí jeden "
 "pohybový bod. Pro přesun stačí jednoduše kliknout na Konráda a pak na místo "
 "určení. (Jestliže se přesuneš na nesprávné místo, můžeš stisknout <b>u</b> "
-"pro vrácení tahu.)"
+"pro vrácení pohybu.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
@@ -223,7 +223,7 @@ msgstr ""
 "kolo posunout. Posun o jedno políčko po rovném terénu obvykle stojí jeden "
 "pohybový bod. Pro přesun stačí jednoduše kliknout na Lisar a pak na místo "
 "určení. (Jestliže se přesuneš na nesprávné místo, můžeš stisknout <b>u</b> "
-"pro vrácení tahu.)"
+"pro vrácení pohybu.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:381
@@ -309,8 +309,8 @@ msgid ""
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Pro útok na panáka nejprve vyber útočníka (Konrád) a pak cíl (panák). Uvidíš "
-"podrobný přehled útoku. Až se připravíš, klikni na <b>Zaútočit</b>."
+"Pro útok na panáka nejprve vyber útočníka (Konráda) a pak cíl (panáka). "
+"Uvidíš podrobný přehled útoku. Až se připravíš, klikni na <b>Zaútočit</b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
@@ -319,13 +319,13 @@ msgid ""
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Pro útok na panáka nejprve vyber útočníka (Lisar) a pak cíl (panák). Uvidíš "
+"Pro útok na panáka nejprve vyber útočníka (Lisar) a pak cíl (panáka). Uvidíš "
 "podrobný přehled útoku. Až se připravíš, klikni na <b>Zaútočit</b>."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr "Nemůžeš ukončit své kolo, dokud jsi nezaútočil na panáka!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nezaútočil/a na panáka!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
@@ -367,7 +367,7 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep him safe!"
 msgstr ""
-"Malá zlatá koruna nad tvým vůdcem (Konrád) naznačuje, že je vůdcem tvé "
+"Malá zlatá koruna nad tvým vůdcem (Konrádem) naznačuje, že je vůdcem tvé "
 "strany. Ve většině scénářů prohraješ, když bude tvůj vůdce zabit. Zajisti, "
 "aby byl v bezpečí!"
 
@@ -443,7 +443,7 @@ msgstr "Ukonči své kolo"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o léčení!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil/a úlohu o léčení!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
@@ -461,9 +461,8 @@ msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"Máš na dosah dvě vesnice. Navštěvovat vesnice je dobrý nápad, a pokud "
-"ukončíš své kolo ve vesnici, na začátku příštího se vyléčíš. Tedy vzhůru do "
-"vesnice!"
+"Máš na dosah dvě vesnice. Navštěvovat vesnice je dobrý nápad. Pokud ukončíš "
+"své kolo ve vesnici, na začátku příštího se vyléčíš. Tedy vzhůru do vesnice!"
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
@@ -493,17 +492,17 @@ msgid ""
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"Zabral/a jsi vesnici! Teď tam vlají tvé barvy a byla přidána k celkovému "
-"počtu tvých vesnic (obrázek domečku na vrchu obrazovky ukazuje, kolik vesnic "
-"nyní ovládáš). Vesnice poskytují zlato potřebné pro verbování jednotek. "
-"Každé kolo získáš 2 zlaté a k tomu 1 zlatý za každou vesnici, kterou "
-"vlastníš."
+"Zabral/a jsi vesnici! Teď tam vlají tvé barvy. Vesnice byla přidána "
+"k celkovému počtu tvých vesnic (obrázek domečku na vrchu obrazovky ukazuje, "
+"kolik vesnic nyní ovládáš). Vesnice poskytují zlato potřebné pro verbování "
+"jednotek. Každé kolo získáš 2 zlaté a k tomu 1 zlatý za každou vesnici, "
+"kterou vlastníš."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o verbování!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil/a úlohu o verbování!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
@@ -541,7 +540,7 @@ msgid ""
 "have plenty of gold for that."
 msgstr ""
 "Skvělý nápad! Asi bude nejlepší nepokoušet se v tomto kole panáka napadnout. "
-"Místo toho by ses měl/a vrátit do tvrze a naverbovat dvě jednotky; máš na to "
+"Místo toho by ses měl/a vrátit do tvrze a naverbovat dvě jednotky. Máš na to "
 "spoustu zlata."
 
 #. [label]
@@ -576,8 +575,8 @@ msgstr ""
 "Kdykoliv jsi ve <i>tvrzi</i>, můžeš <i>verbovat</i> jednotky do políček "
 "hradu kolem ní kliknutím pravým tlačítkem a vybráním <b>Naverbovat</b>. "
 "Povšimni si, že nově naverbované jednotky nemohou v kole, ve kterém jsi je "
-"naverboval, nic dělat; budeš je moci použít příští kolo. V tomto scénáři máš "
-"na výběr pouze jeden druh jednotky: elfího bojovníka."
+"naverboval/a, nic dělat. Budeš je moci použít příští kolo. V tomto scénáři "
+"máš na výběr pouze jeden druh jednotky: elfího bojovníka."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
@@ -598,17 +597,17 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
-"Určitě prozkoumej <i>vlastnosti</i> tvých nových branců. Jsou uvedeny "
-"v postranním panelu pod jejich rasou. Vlastnosti mohou lehce ovlivnit, jak "
-"použiješ své oddíly. Například jednotky s vlastností <i>rychlý</i> se mohou "
-"každé kolo posunout o políčko navíc a jednotky s vlastností <i>chytrý</i> "
-"potřebují k postupu na další úroveň o 20 % méně zkušeností."
+"Určitě prozkoumej <i>vlastnosti</i> svých nových branců. Jsou uvedeny "
+"v postranním panelu pod jejich rasou. Vlastnosti mohou trochu ovlivnit, jak "
+"použiješ své jednotky. Například jednotky s vlastností <i>rychlý</i> se "
+"mohou každé kolo posunout o políčko navíc a jednotky s vlastností <i>chytrý</"
+"i> potřebují k postupu na další úroveň o 20 % méně zkušeností."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil úlohu o útočení!"
+msgstr "Nemůžeš ukončit své kolo, dokud jsi nedokončil/a úlohu o útočení!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
@@ -663,7 +662,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
 msgid "Attack the quintain with your fighters"
-msgstr "Zaútoč na panáka s tvými bojovníky"
+msgstr "Zaútoč na panáka se svými bojovníky"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
@@ -802,7 +801,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
 msgid "You had really better finish off that quintain."
-msgstr "Opravdu bys měl raději dorazit toho panáka."
+msgstr "Opravdu bys měl/a raději dorazit toho panáka."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
@@ -901,7 +900,7 @@ msgid ""
 "should be able to kill them one at a time."
 msgstr ""
 "Tito panáci útočí, pouze pokud jsi na vedlejším políčku. S trochou snahy bys "
-"měl být schopen zabít je jednoho po druhém."
+"je měl/a zvládnout zabít jednoho po druhém."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
@@ -936,10 +935,10 @@ msgid ""
 "to the next scenario in the campaign."
 msgstr ""
 "Po zprávě o tvém vítězství celá mapa zešedne, čímž ti dává najevo, že scénář "
-"skončil; tomu se říká <i>pokračující režim</i>. Stále budeš moci zkoumat "
-"poslední umístění a stav tvých oddílů a kterýchkoli přeživších nepřátel. Až "
-"skončíš, klikni na tlačítko <b>Ukončit scénář</b>, abys přešel do dalšího "
-"scénáře v tažení."
+"skončil. Tomu se říká <i>pokračující režim</i>. Stále budeš moci zkoumat "
+"poslední umístění a stav svých oddílů a kterýchkoli přeživších nepřátel. Až "
+"skončíš, klikni na tlačítko <b>Ukončit scénář</b>, aby ses dostal/a do "
+"dalšího scénáře v tažení."
 
 #. [scenario]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
@@ -1039,9 +1038,10 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
-"Vítej zpět! Toto je druhá část dvoudílného výcviku. Část 2 tě bude učit "
-"o povolávání jednotek, schopnostech a speciálních útocích, příjmu a údržbě, "
-"přesunu na větší vzdálenosti, oblastech kontroly a denní době."
+"Vítej zpět! Toto je druhá část dvoudílného výcviku.\n"
+"Část 2 tě bude učit o povolávání jednotek, schopnostech a speciálních "
+"útocích, příjmu a údržbě, přesunu na větší vzdálenosti, oblastech kontroly "
+"a denní době."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
@@ -1178,8 +1178,8 @@ msgid ""
 "to recruit a new one."
 msgstr ""
 "Vidím, že máš ze svého tréninku zkušené oddíly! Měl/a bys je <i>povolat</i>, "
-"abys začal/a bitvu se zkušenějšími jednotkami. Ačkoli, důkladně to rozmysli; "
-"jestliže má jednotka příliš málo zkušeností, může být lepší naverbovat novou."
+"abys začal/a bitvu se zkušenějšími jednotkami. Ačkoli, důkladně to rozmysli. "
+"Jestliže má jednotka příliš málo zkušeností, může být lepší naverbovat novou."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
@@ -1199,7 +1199,7 @@ msgid ""
 "have been of help against these orcs."
 msgstr ""
 "Naneštěstí žádné tvé oddíly nepřežily tvůj výcvik, takže budeš muset "
-"naverbovat nové jednotky. Kdybys měl nějaké zkušené oddíly, mohl bys je "
+"naverbovat nové jednotky. Kdybys měl/a nějaké zkušené oddíly, mohl/a bys je "
 "v tomto scénáři <i>povolat</i> k boji. Pomohlo by mít proti těmto skřetům "
 "zkušenější jednotky."
 
@@ -1224,7 +1224,7 @@ msgstr ""
 "To ti v průběhu mnoha scénářů umožní vybudovat hrozivé vojsko povoláváním "
 "oddílů na nejvyšších úrovních nebo těch s dobrými kombinacemi vlastností "
 "a schopností. Abys povolal/a jednotku, klikni pravým tlačítkem, zatímco tvůj "
-"velitel stojí v tvrzi, a vyber možnost <i>Přivolat</i>. Nezapomeň krom "
+"velitel stojí v tvrzi, a vyber možnost <i>Povolat</i>. Nezapomeň krom "
 "povolávání bývalých oddílů také naverbovat nové."
 
 #. [message]: speaker=Galdrad
@@ -1309,10 +1309,10 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Speciální útoky jsou zvlášť upravené útoky, které určité z nich činí "
+"Speciální útoky jsou zvlášť upravené útoky, které činí běžné útoky "
 "silnějšími. V tomto případě má šamanka při svém útoku zamotání zvláštnost "
 "zpomalení. Když tento útok úspěšně zasáhne nepřítele, na jedno kolo zmenší "
-"o polovinu zranění, která nepřátelé působí. Ostatní speciální útoky zahrnují "
+"o polovinu zranění, která nepřátelé působí. Další speciální útoky zahrnují "
 "první úder, který tomuto útoku umožňuje vždy zasáhnout první bez ohledu na "
 "to, kdo první zaútočí a magický, jež dává takovému útoku stálou 70% možnost "
 "zasáhnout.\n"
@@ -1421,7 +1421,7 @@ msgid ""
 "more income; there are some villages near the keep you can capture."
 msgstr ""
 "Ačkoli se žádná z tvých naverbovaných jednotek už nemůže pohnout, ty ještě "
-"můžeš. Potřebuješ vyšší příjem; blízko tvrze jsou nějaké vesnice, které "
+"můžeš. Potřebuješ vyšší příjem. Blízko tvrze jsou nějaké vesnice, které "
 "můžeš zabrat."
 
 #. [event]
@@ -1443,7 +1443,7 @@ msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
 "Zapomněl/a jsi naverbovat oddíly! Můžeš stisknout <b>u</b>, abys vrátil/a "
-"svůj poslední tah."
+"svůj poslední pohyb."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
@@ -1494,7 +1494,7 @@ msgid ""
 msgstr ""
 "Stavová tabulka podrobně zobrazuje současný stav a startovní podmínky stran. "
 "Mlha a zahalení tmou ovlivní, co v této tabulce můžeš vidět a strana může "
-"být občas skrytá; nicméně i tak je užitečné na začátku scénáře tuto tabulku "
+"být občas skrytá. Nicméně i tak je užitečné na začátku scénáře tuto tabulku "
 "prozkoumat. Můžeš se k ní dostat přes menu <b>Menu</b>."
 
 #. [else]
@@ -1504,7 +1504,7 @@ msgid ""
 "move."
 msgstr ""
 "Zapomněl/a jsi obsadit vesnici! Můžeš stisknout <b>u</b>, abys vrátil/a svůj "
-"poslední tah."
+"poslední pohyb."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1552,12 +1552,12 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
-"Možná. Avšak elfové (a skřeti) mají ve vodě špatnou <i>obranu</i>. Když se "
-"zkusíš pomalu brodit přes řeku, budeš zranitelnější; nepřítel bude mít 80% "
+"Možná. Avšak elfové (i skřeti) mají ve vodě špatnou <i>obranu</i>. Když se "
+"zkusíš pomalu brodit přes řeku, budeš zranitelnější. Nepřítel bude mít 80% "
 "šanci tě zasáhnout. Radím ti držet se mezi stromy a útočit na skřety odtud, "
-"jelikož elfové mají v lese dobrou obranu; na oplátku budou tví bojovníci "
+"jelikož elfové mají v lese dobrou obranu. Na oplátku budou tví bojovníci "
 "trpět jen 40% rizikem zásahu, zatímco šamanky a lučištníci se vystaví jen "
-"30% možnosti být zasaženi."
+"30% možnosti zasažení."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
@@ -1566,8 +1566,9 @@ msgid ""
 "our forces. It might do to send a few units to defend the banks, and the "
 "village there."
 msgstr ""
-"Nicméně na ten brod dávej pozor. Skřeti se mohou pokusit proklouznout okolo "
-"za naše oddíly. Může se poslat pár jednotek na obranu břehů a tamní vesnice."
+"Nicméně na ten brod dávej pozor. Skřeti se mohou pokusit tudy proklouznout "
+"za naše oddíly. Mohlo by stačit poslat pár jednotek na obranu břehů a tamní "
+"vesnice."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:614
@@ -1594,7 +1595,7 @@ msgid ""
 msgstr ""
 "Ten skřetí pěšák nám pořád brání v cestě. Nemá útoky na dálku, takže tví "
 "lučištníci by jej mohli zaměstnat, aniž by moc riskovali. Smůla je, že se "
-"tvoji lučištníci v tomto kole k němu nemůžou dostat, ale ty bys je neměl "
+"tvoji lučištníci v tomto kole k němu nemůžou dostat, ale ty bys je neměl/a "
 "nechat hnít! Přesuň je na takové místo, aby mohli zaútočit příští kolo. Na "
 "této straně řeky jsou také další vesnice. Měl/a bys je zajistit kvůli příjmu "
 "a léčení."
@@ -1717,7 +1718,7 @@ msgid ""
 msgstr ""
 "Ne. Jakmile se jednou dostaneš do blízkosti nepřátelské jednotky, jsi v její "
 "<i>oblasti kontroly</i> (ZoC) a nemůžeš se v tomto tahu posunout dále. Budeš "
-"muset zabít toho pěšáka, abys přesunul své jednotky na ostrov bez "
+"muset zabít toho pěšáka, abys přesunul/a své jednotky na ostrov bez "
 "zdlouhavého brodění vodou."
 
 #. [message]: speaker=narrator
@@ -1759,8 +1760,8 @@ msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Jestliže zrovna za tebou stojí jedna ze tvých šamanek, na začátku příštího "
-"kola tě vyléčí o 4 životy."
+"Jestliže zrovna za tebou stojí jedna z tvých šamanek, na začátku příštího "
+"kola tě vyléčí o 4 životy."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
@@ -1807,8 +1808,8 @@ msgid ""
 "multiple directions! Even though the orcs have low defense in water, they "
 "will overwhelm you with their numbers."
 msgstr ""
-"Buď opatrný: pokud stojíš na mostě, jsi vystaven útoku z více stran! "
-"Přestože se skřeti ve vodě špatně brání, tak tě přemůžou svým počtem."
+"Dávej pozor! Pokud stojíš na mostě, jsi vystaven/a útoku z více stran! "
+"Přestože se skřeti ve vodě špatně brání, přemůžou tě svým počtem."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:868
@@ -1819,8 +1820,8 @@ msgid ""
 "good defense."
 msgstr ""
 "Bravo! Vesnice na ostrově je naše. Můžeš použít stromy, abys vytvořil/a "
-"blokádu proti skřetům; bez brodění vodou mohou pouze přicházet přes most "
-"jeden za druhým a ty budeš bezpečně v terénu s dobrou obranou."
+"blokádu proti skřetům. Bez brodění vodou mohou přicházet jen přes most jeden "
+"za druhým a ty budeš bezpečně v terénu s dobrou obranou."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:880
@@ -1860,8 +1861,8 @@ msgid ""
 "choose will benefit from the village’s healing, too."
 msgstr ""
 "Potřebujeme obsadit tu vesnici, jinak ji brzy zaberou! Přesuň do ní nějakou "
-"jednotku, aby to již nemohl udělat nepřítel. Ať už vybereš kteroukoli, bude "
-"mít ve vesnici také výhodu léčení."
+"jednotku, aby to nemohl udělat nepřítel. Ať už vybereš kteroukoli, bude mít "
+"ve vesnici také výhodu léčení."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
@@ -2050,7 +2051,7 @@ msgid ""
 "but I hope you have a plan if I miss!"
 msgstr ""
 "Útočit se mnou je riskantní! Mohu zpomalit nepřítele svým útokem na dálku, "
-"ale doufám, že máš plán pro případ že minu!"
+"ale doufám, že máš plán pro případ, že minu!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1214
