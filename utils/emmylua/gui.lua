@@ -133,7 +133,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@field selected_index integer
 ---@field item_count integer
 
----A container widget that whose children all occupied the same space, overlayed on top of each other
+---A container widget whose children all occupy the same space, overlayed on top of each other
 ---@class stacked_widget : widget
 ---@field selected_index integer
 
@@ -150,6 +150,8 @@ function gui.add_widget_definition(type, id, content) end
 ---A slider
 ---@class slider : widget
 ---@field value integer
+---@field min_value integer
+---@field max_value integer
 ---@field on_modified fun()
 
 ---A progress bar
