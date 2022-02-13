@@ -11,7 +11,7 @@ function stringx.escaped_split(str, sep, esc)
 	return stringx.split(str, sep, {escape = esc, strip_spaces = true, remove_empty = true})
 end
 
----Split a string on a separator, skipping separatorss that are enclosed in quotes
+---Split a string on a separator, skipping separators that are enclosed in quotes
 ---@param str string string to split
 ---@param sep? string separator character
 ---@param left? string left quote characters

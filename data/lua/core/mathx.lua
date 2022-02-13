@@ -1,7 +1,7 @@
 --[========[Additional mathematical functions]========]
 print("Loading mathx module...")
 
----Pick a random choice from a list of value_second
+---Pick a random choice from a list of values
 ---@param possible_values string|table
 ---@param random_func fun(a:integer,b:integer):number
 ---@return number|string
