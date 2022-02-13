@@ -172,7 +172,7 @@ bool version_info::is_canonical() const {
 }
 
 bool version_info::is_dev_version() const {
-	return is_canonical() && is_odd(minor_version());
+	return is_odd(minor_version());
 }
 
 namespace {
