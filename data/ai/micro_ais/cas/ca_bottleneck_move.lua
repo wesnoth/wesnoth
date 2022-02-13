@@ -477,7 +477,9 @@ function ca_bottleneck_move:execution(cfg, data)
     else
         -- Don't want full move, as this might be stepping out of the way
         local cfg = { partial_move = true, weapon = BD_level_up_weapon }
-        AH.robust_move_and_attack(ai, BD_unit, BD_hex, BD_level_up_defender, cfg)
+        if BD_unit and BD_hex then
+            AH.robust_move_and_attack(ai, BD_unit, BD_hex, BD_level_up_defender, cfg)
+        end
     end
 
     -- Now delete almost everything
