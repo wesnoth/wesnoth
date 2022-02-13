@@ -10,6 +10,7 @@ local _ = wesnoth.textdomain "wesnoth"
 ---@generic T
 ---@param elem_name string the full name of the element being deprecated (including the module), to be shown in the deprecation message
 ---@param replacement_name string the name of the element that will replace it (including the module), to be shown in the deprecation message
+--- Can be nil if there is not replacement, though this should be an unlikely situation
 ---@param level '1'|'2'|'3'|'4' deprecation level (1-4)
 ---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
 --- Set to nil if deprecation level is 1 or 4
@@ -33,7 +34,7 @@ function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
 		-- Note: This message is duplicated in src/deprecation.cpp
-		-- Any changes should be mirrorred there.
+		-- Any changes should be mirrored there.
 		error((_"Invalid deprecation level $level (should be 1-4)"):vformat(err_params))
 	end
 	local msg_shown = false
