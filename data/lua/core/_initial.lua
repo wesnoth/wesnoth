@@ -15,7 +15,7 @@ local _ = wesnoth.textdomain "wesnoth"
 ---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
 --- Set to nil if deprecation level is 1 or 4
 --- Will be shown in the deprecation message
----@param elem T The actual element for the deprecation, ignored if level is 4.
+---@param elem T Implementation of the compatibility layer, ignored if level is 4.
 --- This can be the original, pre-deprecated element, but it does not have to be.
 --- It could also be a wrapper that presents a different API, for example.
 --- If deprecating a function, that would mean a wrapper function that calls the new API.
