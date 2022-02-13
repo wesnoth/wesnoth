@@ -181,6 +181,9 @@ wml.tag = setmetatable({}, create_tag_mt)
 
 -- These are slated to be moved to game kernel only
 
+---Returns the underlying WML table from a vconfig, without parsing.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
 ---@param cfg WML
 ---@return WMLTable
 function wml.literal(cfg)
@@ -191,6 +194,9 @@ function wml.literal(cfg)
 	end
 end
 
+---Returns a WML table from a vconfig, after parsing all variables.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
 ---@param cfg WML
 ---@return WMLTable
 function wml.parsed(cfg)
@@ -201,6 +207,9 @@ function wml.parsed(cfg)
 	end
 end
 
+---Returns WML table from a vconfig, without parsing, but with child tags still as vconfigs.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_literal(cfg)
@@ -211,6 +220,10 @@ function wml.shallow_literal(cfg)
 	end
 end
 
+---Returns a WML table from a vconfig, after parsing all top-level variables and with child tags still as vconfigs.
+---Top-level [insert_tag] will also be expanded.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_parsed(cfg)
