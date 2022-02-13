@@ -9,6 +9,7 @@
  ### Terrain
  ### Translations
  ### Units
+   * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
