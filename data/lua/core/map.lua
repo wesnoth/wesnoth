@@ -119,17 +119,17 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@class terrain_hex
 	---@field x integer
 	---@field y integer
-	---@field fogged boolean
-	---@field shrouded boolean
-	---@field team_label? string|tstring
-	---@field global_label? string|tstring
-	---@field label? string|tstring
-	---@field terrain string
-	---@field base_terrain string
-	---@field overlay_terrain string
-	---@field info terrain_info
-	---@field time_of_day time_of_day
-	---@field illuminated_time time_of_day
+	---@field fogged boolean Whether the hex is fogged
+	---@field shrouded boolean Whether the hex is shrouded
+	---@field team_label? string|tstring The label on this hex visible to the current team
+	---@field global_label? string|tstring The label on this hex visible to teams who don't have a team label there
+	---@field label? string|tstring The visible label on this hex
+	---@field terrain string The terrain code of the hex
+	---@field base_terrain string The terrain code without the overlay
+	---@field overlay_terrain string The overlay terrain code without the base
+	---@field info terrain_info The properties of this terrain
+	---@field time_of_day time_info The base time of day on this hex from the schedule
+	---@field illuminated_time time_info The time of day on this hex, adjusted for illumination effects
 	local hex_methods = {}
 	local hex_mt = {__metatable = 'terrain hex reference'}
 
