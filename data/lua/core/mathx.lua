@@ -2,7 +2,8 @@
 print("Loading mathx module...")
 
 ---Pick a random choice from a list of values
----@param possible_values string|table
+---@param possible_values string|table Either a comma-separated list of values (which can contain integer ranges like 2-7)
+---or an array of possible values (which can also contain integer ranges as subtables with {lo, hi} elements)
 ---@param random_func fun(a:integer,b:integer):number
 ---@return number|string
 function mathx.random_choice(possible_values, random_func)
