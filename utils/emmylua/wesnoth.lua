@@ -35,25 +35,25 @@ function wesnoth.log(logger, message, in_chat) end
 function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_weapon) end
 
 ---@class stats_evaluation
----@field poisoned number
----@field slowed number
----@field untouched number
+---@field poisoned number The chance to be poisoned as a number in [0,1].
+---@field slowed number The chance to be slowed as a number in [0,1].
+---@field untouched number The chance to receive no damage as a number in [0,1].
 ---@field average_hp number
----@field hp_chance number[]
+---@field hp_chance table<number, number> The chance to end the attack with a specific number of hit points. The key is the number of hit points, from 0 to max hitpoints. The value is the chance as a number in [0,1].
 
 ---@class weapon_evaluation
----@field num_blows integer
----@field damage integer
----@field chance_to_hit number
----@field poisons boolean
----@field slows boolean
----@field petrifies boolean
----@field plagues boolean
----@field plague_type string
+---@field num_blows integer The number of times the attack hits.
+---@field damage integer The damage the attack inflicts per hit.
+---@field chance_to_hit number The chance for the attack to hit.
+---@field poisons boolean Indicates whether the attack inflicts poison.
+---@field slows boolean Indicates whether the attack inflicts slow.
+---@field petrifies boolean Indicates whether the attack inflicts petrification.
+---@field plagues boolean Indicates whether the attack inflicts plague.
+---@field plague_type string If the attack inflicts plague, this specifies the unit type it is converted to.
 ---@field backstabs boolean
----@field rounds integer
----@field firststrike boolean
----@field drains boolean
+---@field rounds integer The number of rounds of combat.
+---@field firststrike boolean Indicates whether the attack always strikes first.
+---@field drains boolean Indicates whether the attack drains hit points.
 ---@field drain_constant integer
 ---@field drain_percent number
 ---@field attack_num integer
