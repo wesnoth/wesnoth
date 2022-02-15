@@ -4,6 +4,7 @@
  ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
+     * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
      * S14: Smoother appearance of enemies and added dialogue (#6176)
    * The Rise of Wesnoth
      * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
@@ -46,7 +47,7 @@
      * Remove the “formation” ability from the attack predictions dialog, as it was in a confusing location; its effect is still shown in the calculations and chance-to-hit percentage (PR #6326)
      * S02: Pinnacle Rock is now shown during dialogue (issue #6125)
      * S04: Improve dialogue about dark underground tunnels (PR #6345)
-     * S06b: 
+     * S06b:
        * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
        * Grog will not die as quick now (issue #6196 & #6197)
        * Hermit dialogue cannot be accidentally skipped now (issue #6196)
