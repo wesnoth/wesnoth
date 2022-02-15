@@ -59,14 +59,19 @@ function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_w
 ---@field attack_num integer
 ---@field name string
 
----Construct a function that generates random names
+---Construct a function that generates random names using a context-free grammar
 ---@param type '"cfg"' The type of generator to create
 ---@param definition table<string, string|string[]> Definition rules for the generator
----@param chain_size integer The size of the Markov chain unit
----@param max_length integer Maximum length of the generated names
 ---@return fun():string
----@overload fun(type:'"markov"', definition: string[], chain_size?: integer, max_length?: integer) : fun():string
 function wesnoth.name_generator(type, definition) end
+
+---Construct a function that generates random names using Markov chains
+---@param type '"markov"' The type of generator to create
+---@param definition string[] Sample names to be input to the generator
+---@param chain_size? integer The size of the Markov chain unit
+---@param max_length? integer Maximum length of the generated names
+---@return fun():string
+function wesnoth.name_generator(type, definition, chain_size, max_length) end
 
 ---Compile a WFL formula into a Lua function
 ---@param formula string A WFL formula
