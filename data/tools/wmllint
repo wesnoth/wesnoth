@@ -2219,9 +2219,7 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("#"): # FIXME: parse_attribute is confused.
-                pass
-            elif key.startswith("{"):
+            if key.startswith("{"):
                 pass
             elif in_name_generator:
                 pass

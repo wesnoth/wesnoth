@@ -157,13 +157,12 @@ def parse_attribute(line):
     where = line.find("=")
     leader = line[:where]
     after = line[where+1:]
-    after = after.lstrip()
     if re.search("\s#", after):
         where = len(re.split("\s+#", after)[0])
-        value = after[:where]
+        value = after[:where].lstrip()
         comment = after[where:]
     else:
-        value = after.rstrip()
+        value = after.strip()
         comment = ""
     # Return four fields: stripped key, part of line before value,
     # value, trailing whitespace and comment.
