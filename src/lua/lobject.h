@@ -145,7 +145,7 @@ typedef struct TValue {
 */
 typedef union StackValue {
   TValue val;
-  struct {
+  struct named_for_doxygen { /* When this is anonymous, Doxygen reports errors in an unrelated anonymous namespace */
     TValuefields;
     unsigned short delta;
   } tbclist;
