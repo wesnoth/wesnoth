@@ -274,6 +274,9 @@ def convertor(linefilter, arglist, exclude):
                     except bailout as e:
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
+                    except UnicodeDecodeError as e:
+                        os.remove(filename + ".out")
+                        print('wmlindent: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
                     except KeyboardInterrupt:
                         os.remove(filename + ".out")
                         print("wmlindent: %s interrupted" % filename, file=sys.stderr)
