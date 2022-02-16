@@ -2737,6 +2737,32 @@ def hack_syntax(filename, lines):
                 lines[i] = new_line + "\n"
             print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
                                                                             i+1))
+    # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
+    in_unit = False
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        if has_opening_tag(line, "unit"):
+            in_unit = True
+        elif "[/unit]" in line:
+            in_unit = False
+        if in_unit:
+            # once again, keep indentation and comments when replacing
+            m = re.match(r"(\s*)placement\s?=\s?(map_overwrite|map_passable|leader_passable)(.*)", line)
+            if m:
+                if m.group(2) == "map_overwrite":
+                    lines[i] = "{}placement=map{}\n{}overwrite=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_overwrite -> placement=map overwrite=yes'.format(filename,
+                                                                                                         i+1))
+                elif m.group(2) == "map_passable":
+                    lines[i] = "{}placement=map{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_passable -> placement=map passable=yes'.format(filename,
+                                                                                                       i+1))
+                elif m.group(2) == "leader_passable":
+                    lines[i] = "{}placement=leader{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=leader_passable -> placement=leader passable=yes'.format(filename,
+                                                                                                             i+1))
+
     # More syntax transformations would go here.
     return lines
 
