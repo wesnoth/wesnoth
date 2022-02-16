@@ -2829,8 +2829,12 @@ def translator(filename, mapxforms, textxform):
         with gzip.open(filename) as content:
             unmodified = content.readlines()
     else:
-        with codecs.open(filename, "r", "utf8") as content:
-            unmodified = content.readlines()
+        try:
+            with codecs.open(filename, "r", "utf8") as content:
+                unmodified = content.readlines()
+        except UnicodeDecodeError as e:
+            print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+            return
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
     map_only = filename.endswith(".map")
