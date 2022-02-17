@@ -174,19 +174,19 @@ function wesnoth.units.defense_on(unit, terrain) end
 ---@overload fun(unit:unit, damage_type:string, as_attacker?:boolean, x:integer, y:integer)
 function wesnoth.units.resistance_against(unit, damage_type, as_attacker, location) end
 
----Get the movement of a unit on a particular terrain
+---Get the movement cost of a unit on a particular terrain
 ---@param unit unit
 ---@param terrain string
 ---@return number
 function wesnoth.units.movement_on(unit, terrain) end
 
----Get the vision of a unit on a particular terrain
+---Get the vision cost of a unit on a particular terrain
 ---@param unit unit
 ---@param terrain string
 ---@return number
 function wesnoth.units.vision_on(unit, terrain) end
 
----Get the jamming of a unit on a particular terrain
+---Get the jamming cost of a unit on a particular terrain
 ---@param unit unit
 ---@param terrain string
 ---@return number

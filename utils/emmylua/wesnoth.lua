@@ -23,7 +23,7 @@ function wesnoth.textdomain(domain) end
 ---@overload fun(message:string, in_chat:boolean)
 function wesnoth.log(logger, message, in_chat) end
 
----Simulate combat between two units_MP
+---Simulate combat between two units
 ---@param attacker unit
 ---@param attacker_weapon integer
 ---@param defender unit
@@ -39,7 +39,7 @@ function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_w
 ---@field slowed number The chance to be slowed as a number in [0,1].
 ---@field untouched number The chance to receive no damage as a number in [0,1].
 ---@field average_hp number
----@field hp_chance table<number, number> The chance to end the attack with a specific number of hit points. The key is the number of hit points, from 0 to max hitpoints. The value is the chance as a number in [0,1].
+---@field hp_chance table<integer, number> The chance to end the attack with a specific number of hit points. The key is the number of hit points, from 0 to max hitpoints. The value is the chance as a number in [0,1].
 
 ---@class weapon_evaluation
 ---@field num_blows integer The number of times the attack hits.
@@ -76,7 +76,7 @@ function wesnoth.name_generator(type, definition, chain_size, max_length) end
 ---Compile a WFL formula into a Lua function
 ---@param formula string A WFL formula
 ---@return fun(variables:WML):any
-function wesnoth.compile_formula(formula, variables) end
+function wesnoth.compile_formula(formula) end
 
 ---Evaluate a WFL formula
 ---@param formula string A WFL formula

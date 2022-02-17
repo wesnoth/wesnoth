@@ -20,9 +20,6 @@
 ---@field tag string
 ---@field contents WML
 
----@type WMLTag
-local test = {"a", {}}
-
 ---@class wml
 ---@field all_variables WMLTable
 wml = {}
