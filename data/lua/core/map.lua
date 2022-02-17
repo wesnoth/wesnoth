@@ -164,7 +164,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			return self.x
 		elseif key == 2 then
 			return self.y
-		elseif type(key) ~= string or (#key > 0 and key[0] ~= '_') then
+		elseif type(key) ~= 'string' or (#key > 0 and key[0] ~= '_') then
 			return hex_methods[key]
 		end
 	end
