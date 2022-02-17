@@ -56,7 +56,7 @@ function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_w
 ---@field drains boolean Indicates whether the attack drains hit points.
 ---@field drain_constant integer
 ---@field drain_percent number
----@field attack_num integer
+---@field number integer
 ---@field name string
 
 ---Construct a function that generates random names using a context-free grammar
