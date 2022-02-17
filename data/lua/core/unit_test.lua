@@ -4,8 +4,9 @@
 if rawget(_G, 'unit_test') ~= nil then
 	print("Loading unit_test module...")
 
-	--! Causes the test to complete with a specific result.
-	--! This is mostly an internal detail but might very occasionally be useful to produce a result other than pass or fail
+	---Causes the test to complete with a specific result.
+	---This is mostly an internal detail but might very occasionally be useful to produce a result other than pass or fail
+	---@param result string
 	function unit_test.finish(result)
 		wesnoth.wml_actions.endlevel{
 			test_result = result,
@@ -13,23 +14,26 @@ if rawget(_G, 'unit_test') ~= nil then
 		}
 	end
 
-	--! End the test in unconditional failure
-	--! This does not immediately terminate the test; any assertions in the current event will still be run.
-	--! Without calling either succeed() or fail(), the test will never end.
-	--! This allows a test to run over multiple events and even multiple turns.
+	---End the test in unconditional failure
+	---This does not immediately terminate the test; any assertions in the current event will still be run.
+	---Without calling either succeed() or fail(), the test will never end.
+	---This allows a test to run over multiple events and even multiple turns.
 	function unit_test.fail()
 		unit_test.finish('fail')
 	end
 
-	--! End the test in success if all assertions passed, otherwise in failure
-	--! Without calling either succeed() or fail(), the test will never end.
-	--! This allows a test to run over multiple events and even multiple turns.
+	---End the test in success if all assertions passed, otherwise in failure
+	---Without calling either succeed() or fail(), the test will never end.
+	---This allows a test to run over multiple events and even multiple turns.
 	function unit_test.succeed()
 		unit_test.finish('pass')
 	end
 
-	--! Convert a value to a string for output
-	--! Strings are output quoted, all other types just use tostring
+	---Convert a value to a string for output
+	---Strings are output quoted, all other types just use tostring
+	---This exists to be overridden if a test needs custom output for some type
+	---@param val any
+	---@return string
 	function unit_test.tostring(val)
 		-- This exists so custom behaviour can be added for specific types if required.
 		if type(val) == 'string' then
@@ -39,7 +43,9 @@ if rawget(_G, 'unit_test') ~= nil then
 		return tostring(val)
 	end
 
-	--! Output a log message to the test output
+	---Output a log message to the test output, in the form "prefix: message"
+	---@param prefix string
+	---@param message string
 	function unit_test.log(prefix, message)
 		std_print(prefix .. ': ' .. message)
 	end
@@ -67,7 +73,9 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	})
 
-	--! Fail the test with a message unless the condition is true
+	---Fail the test with a message unless the condition is true
+	---@param condition boolean
+	---@param message string
 	function unit_test.assert(condition, message)
 		if not condition then
 			unit_test.log('Assertion failed', message)
@@ -75,7 +83,9 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless the function exits with any error
+	---Fail the test with a message unless the function exits with any error
+	---@param fcn function
+	---@param message string
 	function unit_test.assert_throws(fcn, message)
 		local result = pcall(fcn)
 		if result ~= false then
@@ -92,7 +102,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		return expect == have
 	end
 
-	--! Fail the test with a message unless the function exits with a specific error
+	---Fail the test with a message unless the function exits with a specific error
+	---@param expect_err any
+	---@param fcn function
+	---@param message string
 	function unit_test.assert_throws_with(expect_err, fcn, message)
 		local result, err = pcall(fcn)
 		if result ~= false or not match_error(expect_err, err) then
@@ -101,7 +114,9 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless the function exits with no errors
+	---Fail the test with a message unless the function exits with no errors
+	---@param fcn function
+	---@param message string
 	function unit_test.assert_nothrow(fcn, message)
 		local result, err = pcall(fcn)
 		if result ~= true then
@@ -111,7 +126,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a == b
+	---Fail the test with a message unless a == b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_equal(a, b, message)
 		if a ~= b then
 			local expr = ('expected %s == %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -120,7 +138,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a ~= b
+	---Fail the test with a message unless a ~= b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_not_equal(a, b, message)
 		if a == b then
 			local expr = ('expected %s ~= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -129,7 +150,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a > b
+	---Fail the test with a message unless a > b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_greater(a, b, message)
 		if a <= b then
 			local expr = ('expected %s > %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -138,7 +162,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a < b
+	---Fail the test with a message unless a < b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_less(a, b, message)
 		if a >= b then
 			local expr = ('expected %s < %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -147,7 +174,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a >= b
+	---Fail the test with a message unless a >= b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_greater_equal(a, b, message)
 		if a < b then
 			local expr = ('expected %s >= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -156,7 +186,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a <= b
+	---Fail the test with a message unless a <= b
+	---@param a any
+	---@param b any
+	---@param message string
 	function unit_test.assert_less_equal(a, b, message)
 		if a > b then
 			local expr = ('expected %s <= %s'):format(unit_test.tostring(a), unit_test.tostring(b))
@@ -165,7 +198,11 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless val is in the range [min, max]
+	---Fail the test with a message unless val is in the range [min, max]
+	---@param val number
+	---@param min number
+	---@param max number
+	---@param message string
 	function unit_test.assert_in_range(val, min, max, message)
 		if val < min or val > max then
 			local expr = ('expected %s <= %s <= %s'):format(unit_test.tostring(min), unit_test.tostring(val), unit_test.tostring(max))
@@ -174,8 +211,12 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless a == b within the tolerance
-	--! Intended for comparing real numbers
+	---Fail the test with a message unless a == b within the tolerance
+	---Intended for comparing real numbers
+	---@param a number
+	---@param b number
+	---@param tolerance number
+	---@param message string
 	function unit_test.assert_approx_equal(a, b, tolerance, message)
 		if math.abs(a - b) > tolerance then
 			local expr = ('expected %s == %s (within %s)'):format(unit_test.tostring(a), unit_test.tostring(b), unit_test.tostring(tolerance))
@@ -184,7 +225,10 @@ if rawget(_G, 'unit_test') ~= nil then
 		end
 	end
 
-	--! Fail the test with a message unless the source string contains the fragment as a substring
+	---Fail the test with a message unless the source string contains the fragment as a substring
+	---@param source string
+	---@param fragment string
+	---@param message string
 	function unit_test.assert_contains(source, fragment, message)
 		if not string.find(source, fragment, 1, true) then
 			unit_test.log('Assertion failed (' .. source .. ' contains ' .. fragment .. ')', message)

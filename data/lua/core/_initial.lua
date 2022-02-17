@@ -7,24 +7,34 @@ print("Loading Lua core files...")
 local _ = wesnoth.textdomain "wesnoth"
 
 -- Marks a function or subtable as deprecated.
--- Parameters:
----- elem_name: the full name of the element being deprecated (including the module)
----- replacement: the name of the element that will replace it (including the module)
----- level: deprecation level (1-4)
----- version: the version at which the element may be removed (level 2 or 3 only)
----- Set to nil if deprecation level is 1 or 4
----- elem: The actual element being deprecated, ignored if level is 4
----- detail_msg: An optional message to add to the deprecation message
-function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
+---@generic T
+---@param elem_name string the full name of the element being deprecated (including the module), to be shown in the deprecation message
+---@param replacement_name string the name of the element that will replace it (including the module), to be shown in the deprecation message
+--- Can be nil if there is not replacement, though this should be an unlikely situation
+---@param level '1'|'2'|'3'|'4' deprecation level (1-4)
+---@param version string|nil the version at which the element may be removed (level 2 or 3 only)
+--- Set to nil if deprecation level is 1 or 4
+--- Will be shown in the deprecation message
+---@param elem T Implementation of the compatibility layer, ignored if level is 4.
+--- This can be the original, pre-deprecated element, but it does not have to be.
+--- It could also be a wrapper that presents a different API, for example.
+--- If deprecating a function, that would mean a wrapper function that calls the new API.
+--- If deprecating a table, you would need to provide a table with __index and __newindex metamethods that call the new API.
+--- This is the only argument that affects the functionality of the resulting deprecation wrapper.
+---@param detail_msg? string An optional message to add to the deprecation message
+---@return T elem_deprecated #A wrapper around the element, which triggers a deprecation message when used.
+--- If it is a function, the message is triggered the first time it is called.
+--- If it is a table, the message is triggered when a key is written or read on the table.
+function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem, detail_msg)
 	if wesnoth.game_config.strict_lua then return nil end
 	local message = detail_msg or ''
-	if replacement then
-		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):vformat{replacement = replacement}
+	if replacement_name then
+		message = message .. " " .. (_"(Note: You should use $replacement instead in new code)"):vformat{replacement = replacement_name}
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
 		-- Note: This message is duplicated in src/deprecation.cpp
-		-- Any changes should be mirrorred there.
+		-- Any changes should be mirrored there.
 		error((_"Invalid deprecation level $level (should be 1-4)"):vformat(err_params))
 	end
 	local msg_shown = false
@@ -55,7 +65,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		if type(old_mt) ~= "table" then
 			-- See https://github.com/wesnoth/wesnoth/issues/4584#issuecomment-555788446
 			wesnoth.log('warn', "Attempted to deprecate a table with a masked metatable: " ..
-				elem_name .. " -> " .. replacement .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
+				elem_name .. " -> " .. replacement_name .. ", where getmetatable(" .. elem_name .. ") = " .. tostring(old_mt))
 			return elem
 		end
 		local mt = {}
@@ -79,7 +89,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		return setmetatable({}, mt)
 	else
 		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..
-			elem_name .. " -> " .. replacement .. ", where " .. elem_name .. " = " .. tostring(elem))
+			elem_name .. " -> " .. replacement_name .. ", which is " .. tostring(elem))
 	end
 	return elem
 end

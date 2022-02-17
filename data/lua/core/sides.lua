@@ -17,6 +17,10 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	}
 	setmetatable(wesnoth.sides, sides_mt)
 
+	-- Iterate over sides matching a filter
+	---@param filter WML
+	---@return fun(state:table)
+	---@return table state
 	function wesnoth.sides.iter(filter)
 		local function f(s)
 			local i = s.i
