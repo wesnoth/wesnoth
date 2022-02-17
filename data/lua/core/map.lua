@@ -92,7 +92,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		elseif key == 'overlay_terrain' then
 			return self.terrain:split('^', {remove_empty=false})[2]
 		elseif key == 'info' then
-			return wesnoth.get_terrain_info(wesnoth.current.map[self])
+			return wesnoth.terrain_types[wesnoth.current.map[self]]
 		elseif key == 'time_of_day' then
 			return wesnoth.schedule.get_time_of_day(self)
 		elseif key == 'illuminated_time' then
