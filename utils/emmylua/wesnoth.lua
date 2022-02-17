@@ -93,6 +93,12 @@ function wesnoth.eval_formula(formula, variables) end
 ---@field sep string|nil The character separating the suffix from the main version
 ---@field special string The version suffix
 
+---Parse a version
+---@param str string A version string to parse
+---@return version
+---@overload fun(major:integer, minor?:integer, revision?:integer, suffix?:string):version
+function wesnoth.version(str) end
+
 ---Construct a version
 ---@param str string A version string to parse
 ---@param major integer The major revision number
@@ -101,7 +107,7 @@ function wesnoth.eval_formula(formula, variables) end
 ---@param suffix string The suffix, including the separator character if any
 ---@return version
 ---@overload fun(major:integer, minor?:integer, revision?:integer, suffix?:string):version
-function wesnoth.version(str) end
+function wesnoth.version(major, minor, revision, suffix) end
 
 ---@return version #The current version of Wesnoth
 function wesnoth.current_version() end
