@@ -320,10 +320,16 @@ namespace {
  */
 bool game_state::can_recruit_from(const map_location& leader_loc, int side) const
 {
-	const gamemap& map = board_.map();
+	
+	const team* this_team = &board_.get_team(side);
+	bool is_human_team = this_team->is_human();
+	
+	if(!is_human_team) {
+		const gamemap& map = board_.map();
 
-	if(!map.is_keep(leader_loc)) {
-		return false;
+		if(!map.is_keep(leader_loc)) {
+			return false;
+		}
 	}
 
 	try {
@@ -334,7 +340,8 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side) cons
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
 		// that comes to pass, just return.
-		return false;
+		if(!is_human_team) { return false; }
+		else { return true; }
 	}
 }
 
@@ -352,14 +359,19 @@ bool game_state::can_recruit_from(const unit& leader) const
  */
 bool game_state::can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side) const
 {
+	const team* this_team = &board_.get_team(side);
+	bool is_human_team = this_team->is_human();
+	
 	const gamemap& map = board_.map();
 
 	if(!map.is_castle(recruit_loc)) {
 		return false;
 	}
 
-	if(!map.is_keep(leader_loc)) {
-		return false;
+	if(!is_human_team) {
+		if(!map.is_keep(leader_loc)) {
+			return false;
+		}
 	}
 
 	try {
@@ -387,7 +399,8 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
 		// that comes to pass, just return.
-		return false;
+		if(!is_human_team) { return false; }
+		else { return true; }
 	}
 }
 
@@ -398,13 +411,16 @@ bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_
 
 bool game_state::side_can_recruit_on(int side, map_location hex) const
 {
+	const team* this_team = &board_.get_team(side);
+	bool is_human_team = this_team->is_human();
+	
 	unit_map::const_iterator leader = board_.units().find(hex);
 	if ( leader != board_.units().end() ) {
 		return leader->can_recruit() && leader->side() == side && can_recruit_from(*leader);
 	} else {
 		// Look for a leader who can recruit on last_hex.
 		for ( leader = board_.units().begin(); leader != board_.units().end(); ++leader) {
-			if ( leader->can_recruit() && leader->side() == side && can_recruit_on(*leader, hex) ) {
+			if ( leader->can_recruit() && leader->side() == side && ( is_human_team || can_recruit_on(*leader, hex) )) {
 				return true;
 			}
 		}

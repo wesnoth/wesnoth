@@ -161,6 +161,9 @@ namespace { // Helpers for get_recalls()
 std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc)
 {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
+	
+	const team& this_team = resources::gameboard->get_team(side);
+	bool is_human_team = this_team.is_human();
 
 	std::vector<unit_const_ptr > result;
 
@@ -206,7 +209,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*u, recall_loc))
+			if (!is_human_team && !dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*u, recall_loc))
 				continue;
 			leader_in_place= true;
 
@@ -255,17 +258,21 @@ namespace { // Helpers for check_recall_location()
 		if ( !ufilt(recall_unit, map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
 
+		bool is_human_team = recall_team.is_human();
+		
 		// Make sure the unit is on a keep.
-		if ( !resources::gameboard->map().is_keep(recaller.get_location()) )
+		if (!is_human_team && !resources::gameboard->map().is_keep(recaller.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
-		// Make sure there is a permissible location to which to recruit.
 		map_location permissible = pathfind::find_vacant_castle(recaller);
-		if ( !permissible.valid() )
-			return RECRUIT_NO_VACANCY;
+		// Make sure there is a permissible location to which to recruit.
+		if(!is_human_team) {
+			if ( !permissible.valid() )
+				return RECRUIT_NO_VACANCY;
+		}
 
 		// See if the preferred location cannot be used.
-		if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recaller, preferred)) {
+		if (!is_human_team && !dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recaller, preferred)) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -384,18 +391,23 @@ namespace { // Helpers for check_recruit_location()
 			if ( !utils::contains(recruiter.recruits(), unit_type) )
 				return RECRUIT_NO_ABLE_LEADER;
 		}
+		
+		team& recruiter_team = (*resources::gameboard).get_team(recruiter.side());
+		bool is_human_team = recruiter_team.is_human();
 
 		// Make sure the unit is on a keep.
-		if ( !resources::gameboard->map().is_keep(recruiter.get_location()) )
+		if (!is_human_team && !resources::gameboard->map().is_keep(recruiter.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
-		// Make sure there is a permissible location to which to recruit.
 		map_location permissible = pathfind::find_vacant_castle(recruiter);
-		if ( !permissible.valid() )
-			return RECRUIT_NO_VACANCY;
+		// Make sure there is a permissible location to which to recruit.
+		if(!is_human_team) {
+			if ( !permissible.valid() )
+				return RECRUIT_NO_VACANCY;
+		}
 
 		// See if the preferred location cannot be used.
-		if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recruiter, preferred)) {
+		if (!is_human_team && !dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recruiter, preferred)) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -536,26 +548,29 @@ namespace { // Helpers for place_recruit()
 	 * Locates a leader on side @a side who can recruit at @a recruit_location.
 	 * A leader at @a recruited_from is chosen in preference to others.
 	 */
-	const map_location & find_recruit_leader(int side,
-		const map_location &recruit_location, const map_location &recruited_from)
-	{
-		const unit_map & units = resources::gameboard->units();
+const map_location & find_recruit_leader(int side,
+	const map_location &recruit_location, const map_location &recruited_from)
+{
+	team& recruiter_team = (*resources::gameboard).get_team(side);
+	bool is_human_team = recruiter_team.is_human();
+	
+	const unit_map & units = resources::gameboard->units();
 
-		// See if the preferred location is an option.
-		unit_map::const_iterator leader = units.find(recruited_from);
-		if (leader != units.end()  &&  leader->can_recruit()  &&
-			leader->side() == side && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location))
+	// See if the preferred location is an option.
+	unit_map::const_iterator leader = units.find(recruited_from);
+	if (leader != units.end()  &&  leader->can_recruit()  &&
+		leader->side() == side  &&  (!is_human_team || dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location)))
+		return leader->get_location();
+
+	// Check all units.
+	for (leader = units.begin(); leader != units.end(); ++leader)
+		if (leader->can_recruit() && leader->side() == side &&
+			(!is_human_team || dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location)))
 			return leader->get_location();
 
-		// Check all units.
-		for (leader = units.begin(); leader != units.end(); ++leader)
-			if (leader->can_recruit() && leader->side() == side &&
-				dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location))
-				return leader->get_location();
-
-		// No usable leader found.
-		return map_location::null_location();
-	}
+	// No usable leader found.
+	return map_location::null_location();
+}
 
 	/**
 	 * Tries to make @a un_it valid, and updates @a current_loc.
