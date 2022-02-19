@@ -15,18 +15,28 @@
      * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
    * World Conquest
      * Fixed artifacts "draining" HP on pick-up.
+     * Fix banner ability not stacking with leadership.
  ### Editor
  ### Multiplayer
+   * Fixed: already-installed add-ons not updating when joining a game that requires a new version (issue #6383).
+   * The MP lobby chat window now supports a `/clear` command (issue #3202).
  ### Lua API
    * Upgrade to Lua 5.4.4.
+   * Add inline documentation for pretty much everything and convert existing docs (PR #6483).
  ### Packaging
+   * Flatpak: updated freedesktop runtime version to 21.08 (issue #6497).
  ### Terrain
+   * New graphics variations for stone walls near snow and ice (PR #6487).
+   * The help browser shows special notes for healing terrains, castles and keeps (issue #6394).
  ### Translations
    * Updated translations: Czech, Italian, Portuguese (Brazil), Russian
  ### Units
+   * Improved the Saurian sprites (PR #6413).
  ### User interface
  ### WML Engine
+   * Fixed `[replace_schedule]`'s `current_time` attribute being ignored (issue #5757).
  ### Miscellaneous and Bug Fixes
+   * Hide the Plan Unit Advance modification from the single-player modifications list.
 
 ## Version 1.17.0
  ### Campaigns
