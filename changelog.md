@@ -11,7 +11,7 @@
      * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
    * World Conquest
      * Fixed artifacts "draining" HP on pick-up.
-     * Fixed Bezoar artifact being bugged and broken.  
+     * Fixed Bezoar artifact being bugged and broken.
  ### Editor
  ### Multiplayer
  ### Lua API
