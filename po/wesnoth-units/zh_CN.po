@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
 "PO-Revision-Date: 2021-04-18 16:48+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -48,6 +48,7 @@ msgstr "尾巴"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
@@ -55,6 +56,7 @@ msgstr "触须"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
 msgstr "墨汁"
@@ -75,8 +77,8 @@ msgstr "墨汁"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "狼牙棒"
 
@@ -242,9 +244,9 @@ msgstr "连枷"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -283,9 +285,9 @@ msgstr "剑"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -308,9 +310,9 @@ msgid "bow"
 msgstr "弓"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -344,7 +346,7 @@ msgstr "爪"
 msgid "saber"
 msgstr "轻剑"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -356,7 +358,7 @@ msgstr "轻剑"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -373,8 +375,8 @@ msgstr "轻剑"
 msgid "Walking Corpse"
 msgstr "行尸"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -406,8 +408,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -449,8 +451,8 @@ msgstr "触碰"
 msgid "club"
 msgstr "木棒"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -464,8 +466,8 @@ msgstr "上古巫妖"
 msgid "chill tempest"
 msgstr "冷冻风暴"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -477,8 +479,8 @@ msgstr "死灵法师"
 msgid "plague staff"
 msgstr "瘟疫法杖"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -489,14 +491,14 @@ msgstr "瘟疫法杖"
 msgid "curse"
 msgstr "诅咒"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -521,17 +523,19 @@ msgstr "诅咒"
 msgid "fangs"
 msgstr "尖牙"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:49
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -559,7 +563,6 @@ msgstr ""
 "意志的尸体中获得仆人和士兵。这些蹒跚而行的家伙们经常数量庞大，但是脆弱易碎。"
 "战斗的到来会唤醒他们，使得他们变得可怕得多。"
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -574,6 +577,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -592,8 +596,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "无魂怪"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -612,10 +616,9 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "狂血暴击"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
+#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -623,7 +626,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 "谁都不清楚“龙卫士”们得到这个称谓的具体缘由，只知道这名字是他们的矮人兄弟们起"
@@ -662,8 +665,8 @@ msgstr "匕首"
 msgid "dragonstaff"
 msgstr "龙枪"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -690,8 +693,8 @@ msgstr ""
 msgid "hammer"
 msgstr "锤"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -789,8 +792,8 @@ msgstr ""
 "线通常来说是根本不用考虑的作战方案；这不但收效甚微，简直就是自杀。这些矮人是"
 "白刃战的精英，他们可以像橡树一样一心一意地固守在土地上。"
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -803,8 +806,8 @@ msgstr ""
 "了在面对最压倒性的突击时，他们总是能够坚守阵地。在这样的部队面前丢失阵地是一"
 "件非常危险的事，因为不可能轻易地夺回它。"
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -826,10 +829,9 @@ msgstr ""
 msgid "thunderstick"
 msgstr "雷霆之枪"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
+#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -840,7 +842,7 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 "矮人雷霆卫士以他们古怪的武器著称于世，当他们发怒时这些由木头和铁片组成的棍子"
 "会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的Knalga矮人们最后宁愿把"
@@ -849,8 +851,8 @@ msgstr ""
 "\n"
 "虽然用“雷霆之枪”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得期待。"
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -863,16 +865,16 @@ msgstr ""
 "们使自己进入一种盲目的狂暴状态，在这种状态下他们无所畏惧，不感疼痛，也不会注"
 "意到自己所受的任何创伤。"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "矮人符文大师"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -890,8 +892,8 @@ msgstr ""
 "少。"
 
 # what is a shyde?
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1235,7 +1237,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "三叉戟"
 
@@ -1354,6 +1356,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "猛击"
 
@@ -2256,6 +2259,24 @@ msgstr "矮人狂战士"
 msgid "Dwarvish Dragonguard"
 msgstr "矮人龙卫士"
 
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+"谁都不清楚“龙卫士”们得到这个称谓的具体缘由，只知道这名字是他们的矮人兄弟们起"
+"的。有些人猜测这是因为他们的武器，那些喷射着火焰与死亡的奇怪的杖。另一些人则"
+"猜想，这是由于这种武器甚至对真正的龙都能构成威胁，如果在已知的世界中能再一次"
+"见到这样的东西的话。无论如何，正是这些武器使得矮人族伟大堡垒的守卫者们闻名于"
+"世，并且令人畏惧；这是些能将最强悍的武士一击必杀的武器。"
+
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
@@ -2413,6 +2434,27 @@ msgstr "矮人雷霆战士"
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "矮人雷霆卫士"
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+"矮人雷霆卫士以他们古怪的武器著称于世，当他们发怒时这些由木头和铁片组成的棍子"
+"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的Knalga矮人们最后宁愿把"
+"秘密带入坟墓，他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
+"些奇怪的黑色粉末放入他们武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
+"\n"
+"虽然用“雷霆之枪”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得期待。"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -4169,7 +4211,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Silver.cfg:25
 #, fuzzy
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr "银袍法师与他们的魔法体质协调一致，因而对非物理攻击有很高的抗性。"
 
@@ -4996,15 +5038,12 @@ msgid ""
 "boar is a challenge even to the best hunters."
 msgstr ""
 
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
-
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
 msgstr ""
 
 #. [unit_type]: id=Piglet, race=monster
@@ -5021,12 +5060,12 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5037,24 +5076,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5309,7 +5348,7 @@ msgstr "叮"
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
 msgstr "钳"
 
@@ -5397,10 +5436,8 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr "踢"
+msgid "hooves"
+msgstr ""
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
@@ -5464,7 +5501,8 @@ msgid "Black Stallion"
 msgstr ""
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 #, fuzzy
 msgid "female^Black Nightmare"
 msgstr "光明法师"
@@ -5586,7 +5624,7 @@ msgid "Rock Scorpion"
 msgstr "巨蝎"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -5596,7 +5634,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 #, fuzzy
 msgid "spray"
 msgstr "水浪"
@@ -5752,9 +5790,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "狼"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -5820,7 +5858,7 @@ msgid "chakri"
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
+#: data/core/units/nagas/Dirkfang.cfg:93
 #, fuzzy
 msgid "Nagini Dirkfang"
 msgstr "娜迦战士"
@@ -5883,8 +5921,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 #, fuzzy
 msgid "shield"
 msgstr "盾击"
@@ -5969,12 +6007,12 @@ msgid "curved blade"
 msgstr "战刃"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
+#: data/core/units/nagas/Ophidian.cfg:91
 #, fuzzy
 msgid "Nagini Ophidian"
 msgstr "娜迦忠勇武士"
@@ -5986,7 +6024,7 @@ msgid "Naga Ringcaster"
 msgstr "娜迦战士"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -5995,14 +6033,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
+#: data/core/units/nagas/Ringcaster.cfg:104
 #, fuzzy
 msgid "Nagini Ringcaster"
 msgstr "娜迦战士"
@@ -6032,7 +6070,7 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
+#: data/core/units/nagas/Sicarius.cfg:95
 #, fuzzy
 msgid "Nagini Sicarius"
 msgstr "娜迦武士"
@@ -6082,7 +6120,7 @@ msgid "Naga Zephyr"
 msgstr "娜迦战士"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -6124,7 +6162,7 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
+#: data/core/units/nagas/Zephyr.cfg:111
 #, fuzzy
 msgid "Nagini Zephyr"
 msgstr "娜迦战士"
@@ -6280,6 +6318,11 @@ msgstr ""
 #: data/core/units/orcs/Nightblade.cfg:25
 msgid "blade"
 msgstr "战刃"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "踢"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -6826,12 +6869,6 @@ msgstr "巨魔"
 #, fuzzy
 msgid "wc_variation^Boar"
 msgstr "蝙蝠"
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
@@ -7392,43 +7429,3 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "It is not clear why the Dragonguards are called what they are, a name "
-#~ "given by their dwarven brethren. Some speculate that the name comes from "
-#~ "their weapon of choice, these strange staves that belch fire and death. "
-#~ "Others have surmised that it is because such weapons would be a threat "
-#~ "against even a true Dragon, should such a thing be seen again in the "
-#~ "known world. Whatever the case, it is for these weapons that the "
-#~ "guardians of the great dwarven citadels are both renowned and feared; "
-#~ "weapons that have broken the mightiest of warriors with a single blow."
-#~ msgstr ""
-#~ "谁都不清楚“龙卫士”们得到这个称谓的具体缘由，只知道这名字是他们的矮人兄弟们"
-#~ "起的。有些人猜测这是因为他们的武器，那些喷射着火焰与死亡的奇怪的杖。另一些"
-#~ "人则猜想，这是由于这种武器甚至对真正的龙都能构成威胁，如果在已知的世界中能"
-#~ "再一次见到这样的东西的话。无论如何，正是这些武器使得矮人族伟大堡垒的守卫者"
-#~ "们闻名于世，并且令人畏惧；这是些能将最强悍的武士一击必杀的武器。"
-
-#, fuzzy
-#~ msgid ""
-#~ "The Dwarven Thunderguards are famed for their curious weaponry, these "
-#~ "strange staves of wood and iron that make a thunderous noise in their "
-#~ "anger. The machinations behind this weaponry are a mystery, a secret "
-#~ "taken to the grave by the dwarves of Knalga who wield them, and are "
-#~ "assumed to have even forged them. The most that is known are reports of "
-#~ "dwarves pouring a strange black dust into the mouth of their weapons, "
-#~ "which some say is a food to fuel the beast imprisoned within.\n"
-#~ "\n"
-#~ "Though a single shot from these ‘thundersticks’ can take several minutes "
-#~ "to prepare, the results are seen by the dwarves as being well worth the "
-#~ "wait."
-#~ msgstr ""
-#~ "矮人雷霆卫士以他们古怪的武器著称于世，当他们发怒时这些由木头和铁片组成的棍"
-#~ "子会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的Knalga矮人们最后宁"
-#~ "愿把秘密带入坟墓，他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮"
-#~ "人把一些奇怪的黑色粉末放入他们武器的入口，有人认为那是用来喂养关在里面的野"
-#~ "兽的。\n"
-#~ "\n"
-#~ "虽然用“雷霆之枪”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得期"
-#~ "待。"

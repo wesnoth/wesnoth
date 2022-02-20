@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth \- síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
-wesnothd \- Bitva o \fBWesnoth\fP \- síťový server pro hru více hráčů
+wesnothd\ – Bitva o \fBWesnoth\fP\ – síťový server pro hru více hráčů
 .
 .SH POUŽITÍ
 .
@@ -107,6 +107,10 @@ komprimovaný. Výchozí hodnotou je \fByes\fP.
 Počet povolených spojení z\ jedné IP adresy. \fB0\fP znamená nekonečno. (výchozí
 hodnota: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Zda bránit uživatelům, kteří nejsou registrováni použitým \fBuser_handler\fP,
+aby se přihlásili. (výchozí hodnota: false)
+.TP 
 \fBdisallow_names\fP
 Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky \fB*\fP
 a\ \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
@@ -156,22 +160,31 @@ nastaven, ukládání a načítání místností nebude aktivní.
 Určuje, zda bude server automaticky ukládat záznamy her. (výchozí hodnota:
 \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 Seznam čárkou oddělených řetězců verzí, které server přijímá. Podporovány
 jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná verze hry
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
-.TP 
-\fBdeny_unregistered_login\fP
-Zda bránit uživatelům, kteří nejsou registrováni použitým \fBuser_handler\fP,
-aby se přihlásili. (výchozí hodnota: false)
 .
 .SS "Globální značky:"
 .
 .P
-\fB[redirect]\fP Značka udávající server, na který bude přesměrován požadavek
-pro konkrétní verzi klienta.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -205,12 +218,12 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Dostupné klíče se liší
-podle toho, jaká obsluha uživatelů je klíčem \fBuser_handler\fP
-nastavena. Pokud v\ konfiguraci oddíl \fB[user_handler]\fP chybí, server poběží
-bez jakékoli služby pro registraci přezdívek. Všechny další tabulky, které
-jsou třeba, aby pracoval \fBforum_user_handler\fP, lze najít
-v\ table_definitions.sql v\ repozitáři zdrojových kódů Wesnothu.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

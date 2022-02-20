@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
 "PO-Revision-Date: 2017-04-14 21:41+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -29,7 +29,7 @@ msgstr "Výcvik hry Wesnoth"
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
+"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
 
@@ -39,28 +39,30 @@ msgid "Beginner"
 msgstr ""
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:21
+#: data/campaigns/tutorial/gui/character_selection.cfg:19
 msgid "Select Character"
 msgstr "Vyber si postavu"
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:32
-msgid "Who do you want to play?"
+#: data/campaigns/tutorial/gui/character_selection.cfg:30
+#, fuzzy
+#| msgid "Who do you want to play?"
+msgid "Who do you want to play as?"
 msgstr "Za koho chceš hrať?"
 
-#. [side]: type=Fighter, id=student
 #. [button]
-#: data/campaigns/tutorial/gui/character_selection.cfg:63
+#. [side]: type=Fighter, id=student
+#: data/campaigns/tutorial/gui/character_selection.cfg:61
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrád"
 
-#. [modify_side]
 #. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/gui/character_selection.cfg:72
-#: data/campaigns/tutorial/lua/character_selection.lua:21
+#. [modify_side]
+#: data/campaigns/tutorial/gui/character_selection.cfg:70
+#: data/campaigns/tutorial/lua/character_selection.lua:24
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -136,9 +138,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
+#| "and your mentor Delfador is on the east side of the river. You can move "
+#| "the mouse over a unit to see a summary of its abilities and stats on the "
+#| "right of the screen."
 msgid ""
-"For this tutorial, you are playing Konrad. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Konrad. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -148,9 +156,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
+#| "and your mentor Delfador is on the east side of the river. You can move "
+#| "the mouse over a unit to see a summary of its abilities and stats on the "
+#| "right of the screen."
 msgid ""
-"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Li’sar. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -373,8 +387,8 @@ msgstr "Mám ustúpiť?"
 msgid "female^Should I retreat?"
 msgstr "Mala by som ustúpiť?"
 
-#. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid "Good idea!"
@@ -446,10 +460,19 @@ msgstr "Kolá"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
+#, fuzzy
+#| msgid ""
+#| "Every turn, each side in a scenario gets a chance to make their move. "
+#| "Once you’ve completed everything you wish to do this turn, click on the "
+#| "<b>End Turn</b> button in the bottom right of the screen. The other "
+#| "teams, whether controlled by the AI or other human players, will then "
+#| "make their move. Some scenarios must be completed in a certain number of "
+#| "turns. You can see what turn it is, and any applicable turn limit, next "
+#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
-"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"Turn</b> button in the bottom right of the screen. The other sides, whether "
 "controlled by the AI or other human players, will then make their move. Some "
 "scenarios must be completed in a certain number of turns. You can see what "
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
@@ -462,33 +485,33 @@ msgstr ""
 "niektorých mapách v ťaženiach je potrebné zvíťaziť do špecifického počtu "
 "kôl. V hornej časti obrazovky môžeš vidieť aktuálne kolo, ako i limit."
 
-#. [else]
 #. [event]
+#. [else]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:621
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:809
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid "End your turn"
 msgstr "Ukonči kolo"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:644
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:655
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Au! Musím sa vyliečiť! Zostáva mi iba $student_hp bodov zdravia!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:656
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Au! Musím sa vyliečiť! Zostáva mi iba $student_hp bodov zdravia!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:661
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
@@ -498,27 +521,27 @@ msgstr ""
 "užitočné napríklad pri ustupovaní. Do dediny!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
 msgid "Village"
 msgstr "Dedina"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
 msgid "Move Konrad to a nearby village"
 msgstr "Presuň Konráda do neďalekej dediny"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:668
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 msgid "Move Li’sar to a nearby village"
 msgstr "Presuň Li'sar do neďalekej dediny"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:694
 msgid "Villages"
 msgstr "Dediny"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:696
 #, fuzzy
 #| msgid ""
 #| "You have captured a village! It now flies your colors and has been added "
@@ -538,13 +561,13 @@ msgstr ""
 "kolo dostaneš dve zlatky, plus jednu za každú dedinu, ktorú vlastníš."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:711
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:720
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -557,22 +580,22 @@ msgstr ""
 "tvojom prípade máš o  $student_hp_heal_amount bodov života viac."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
 msgid "Now, it’s time to summon some help against that quintain."
 msgstr "Je čas naverbovať pomoc na boj proti panákovi."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:730
 msgid "I’ll recruit some elves!"
 msgstr "Naverbujem si pár elfov!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
 msgid "female^I’ll recruit some elves!"
 msgstr "Naverbujem si pár elfov!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:736
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
@@ -582,32 +605,39 @@ msgstr ""
 "vrátiš do pevnosti, môžeš naverbovať dve jednotky. Máš na to hromadu zlata."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:741
 msgid "Keep"
 msgstr "Pevnosť"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
 msgid "Move Konrad to the keep"
 msgstr "Presuň Konráda do pevnosti"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:744
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
 msgid "Move Li’sar to the keep"
 msgstr "Presuň Li'sar do pevnosti"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
 msgid "Recruiting"
 msgstr "Verbovanie"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
+#, fuzzy
+#| msgid ""
+#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
+#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
+#| "Note that newly recruited units cannot act the turn you recruit them; you "
+#| "will be able to use them next turn. This scenario you have only one type "
+#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
 "newly recruited units cannot act the turn you recruit them; you will be able "
-"to use them next turn. This scenario you have only one type of unit to "
+"to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
 "Keď si v <i>pevnosti</i>, môžeš <i>verbovať</i> na hradné políčka okolo nej, "
@@ -617,17 +647,17 @@ msgstr ""
 "jeden druh jednotky: elfských vojakov."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
 msgid "Recruit two Elvish Fighters"
 msgstr "Naverbuj dvoch elfských vojakov"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:799
 msgid "Traits"
 msgstr "Vlastnosti"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:788
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:801
 #, fuzzy
 #| msgid ""
 #| "Be sure to examine the <i>traits</i> of your new recruits. They are "
@@ -650,13 +680,13 @@ msgstr ""
 "nápovede je kompletný zoznam vlastností."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:843
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -664,7 +694,7 @@ msgstr ""
 "zaútočím!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:840
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:853
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -673,33 +703,37 @@ msgstr ""
 "zaútočím!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Áno, ak jednotka neurobí žiadny pohyb po celý ťah, pomaly sa zotavuje zo "
 "zranení."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+#, fuzzy
+#| msgid ""
+#| "Before you send your fighters against the quintain, you should know they "
+#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
-"have two kinds of attack..."
+"have two kinds of attacks..."
 msgstr ""
 "Skôr ako pošleš svojich vojakov proti panákovi, vedz, že existujú dva druhy "
 "útoku..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Poviem im, aby používali ten, ktorý spôsobí väčšie zranenie!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:869
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Poviem im, aby používali ten, ktorý spôsobí väčšie zranenie!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:874
 #, fuzzy
 #| msgid ""
 #| "And which would that be? The sword (5×4) or the bow (3×3)? I suppose "
@@ -711,12 +745,12 @@ msgid ""
 msgstr "A ktorý to bude? Meč (5×4) alebo luk (3×3)? Myslím, že na to prídeš..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:877
 msgid "Attack the quintain with your fighters"
 msgstr "Napadni panáka svojimi vojakmi"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:888
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
@@ -727,7 +761,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:931
 #, fuzzy
 #| msgid ""
 #| "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</"
@@ -744,14 +778,14 @@ msgstr ""
 "bezpečnejší."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:935
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
 #, fuzzy
 #| msgid ""
 #| "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</"
@@ -769,7 +803,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
@@ -784,14 +818,14 @@ msgstr ""
 "Panák nemá žiaden útok na diaľku, iba nablízko, takže sa nemohol brániť."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:966
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:972
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
@@ -806,35 +840,38 @@ msgstr ""
 "Panák nemá žiaden útok na diaľku, iba nablízko, takže sa nemohol brániť."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:989
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Útoč ďalej, oboma elfami, kým panáka neporazíš!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1004
 msgid "Maybe you should recruit another elf?"
 msgstr "Nechceš si naverbovať ďalšieho elfa?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1014
 msgid "Unit Descriptions"
 msgstr "Popisy Jednotky"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
+#, fuzzy
+#| msgid ""
+#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Môžeš kliknúť pravým tlačidlom myši na jednu a pozrieť si podrobný <b>Popis "
 "Jednotky</b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1013
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
 msgid "Protect Your Troops"
 msgstr "Ochráň Svoje Jednotky"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1015
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1028
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -846,12 +883,12 @@ msgstr ""
 "úroveň."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1038
 msgid "Support"
 msgstr "Podpora"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -860,17 +897,17 @@ msgstr ""
 "navyše už bude stáť jednu zlatku za kolo."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
 msgid "You had really better finish off that quintain."
 msgstr "Toho panáka je potrebné poraziť čo najskôr."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
 msgid "Advancement"
 msgstr "Postupovanie"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1049
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -885,12 +922,12 @@ msgstr ""
 "úrovni 1."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1059
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1072
 msgid "Defenses"
 msgstr "Bráň sa tu"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 #, fuzzy
 #| msgid ""
 #| "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -916,22 +953,22 @@ msgstr ""
 "akom teréne (políčku) stojí jednotka."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1087
 msgid "Agh! This training is too much for me..."
 msgstr "Au! Tento tréning je na mňa príliš náročný..."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1088
 msgid "female^Agh! This training is too much for me..."
 msgstr "Au! Tento tréning je na mňa príliš náročný..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1124
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Panák je mŕtvy, páni, a ja mám viac skúseností! Som macher!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1116
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1129
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -940,7 +977,7 @@ msgstr ""
 "dostatok skúseností a zvýšia sa tým tvoje schopnosti."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1122
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1135
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -949,7 +986,7 @@ msgstr ""
 "ozajstná práca..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1127
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1140
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -958,12 +995,12 @@ msgstr ""
 "ozajstná práca..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1216
 msgid "Note"
 msgstr "Poznámka"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1205
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1218
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -972,7 +1009,7 @@ msgstr ""
 "ich zvládneš zlikvidovať jednu po druhej."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1227
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -981,7 +1018,7 @@ msgstr ""
 "skutočnej bitke?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1228
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -990,12 +1027,12 @@ msgstr ""
 "skutočnej bitke?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1244
 msgid "Victory"
 msgstr "Víťazstvo"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1233
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1246
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -1104,7 +1141,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
 msgid ""
-"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
@@ -1129,9 +1166,15 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
+#, fuzzy
+#| msgid ""
+#| "This is no game, Konrad! Orcs have encamped across the river. This is "
+#| "elven country; they are fools to enter here. We Elves are fast and hard "
+#| "to hit in forests. You must defeat their leader so they never threaten us "
+#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1142,9 +1185,15 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
+#, fuzzy
+#| msgid ""
+#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
+#| "elven country; they are fools to enter here. We Elves are fast and hard "
+#| "to hit in forests. You must defeat their leader so they never threaten us "
+#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1292,12 +1341,22 @@ msgstr "Privolávanie"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
+#, fuzzy
+#| msgid ""
+#| "In addition to recruiting new units each scenario, you can also "
+#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
+#| "cost of 20 gold each. This allows you to build up a formidable army over "
+#| "the course of multiple scenarios by recalling your highest leveled troops "
+#| "or those with good combinations of traits and abilities. To recall a "
+#| "unit, right click while your leader stands on a keep and select the "
+#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
+#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
 "gold each. This allows you to build up a formidable army over the course of "
 "multiple scenarios by recalling your highest leveled troops or those with "
-"good combinations of traits and abilities. To recall a unit, right click "
+"good combinations of traits and abilities. To recall a unit, right-click "
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
@@ -1407,7 +1466,7 @@ msgid ""
 "which allows that attack to always hit first no matter who attacks first, "
 "and Magical, which gives that attack a constant 70% chance to hit.\n"
 "\n"
-"A full list of abilities and weapons specials, along with traits, may be "
+"A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Niektoré jednotky majú špeciálne <i>schopnosti</i>. Na rozdiel od "
@@ -1454,7 +1513,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
-"per turn compared to your Shaman's 4. However, each unit can only receive "
+"per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
@@ -1896,9 +1955,13 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
+#, fuzzy
+#| msgid ""
+#| "If one of your Shamans stands just behind your wounded units, she will "
+#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
-"them each 4 hitpoints at the beginning of the next turn."
+"each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Áno. Ak bude tvoja šamanka stáť priamo za touto jednotkou na moste, bude ju "
 "liečiť o 4 body zdravia na začiatku nasledujúceho kola."
@@ -1970,9 +2033,13 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+#, fuzzy
+#| msgid ""
+#| "You’re venturing away from your keep. You might need recruit more units, "
+#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
-"You’re venturing away from your keep. You might need recruit more units, and "
-"I doubt the orc leader will let you use his! Careful!"
+"You’re venturing away from your keep. You might need to recruit more units, "
+"and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
 "Zostaň blízko pevnosti! Budeš potrebovať pevnosť na verbovanie ďalších "
 "jednotiek, a pochybujem, že ti veliteľ orkov dovolí použiť svoju!"
@@ -2087,8 +2154,8 @@ msgstr "Podmienky Víťazstva"
 #| "<b>Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Menu</b> menu."
+"conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
+"b> menu."
 msgstr ""
 "V tejto mape potrebuješ na výhru poraziť len vodcu orkov. Podmienky "
 "víťazstva pre konkrétny scenár sa nachádzajú aj v <b>hlavnom menu</b>."
@@ -2474,8 +2541,8 @@ msgstr ""
 msgid "Fighter"
 msgstr "Vojak"
 
-#. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2511,8 +2578,8 @@ msgstr ""
 msgid "Warrior"
 msgstr ""
 
-#. [unit_type]: id=Warrioress, race=human
 #. [unit_type]: id=Warrior, race=human
+#. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""

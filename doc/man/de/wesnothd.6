@@ -110,6 +110,10 @@ geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
+.TP 
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
 Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
@@ -164,22 +168,31 @@ geladen noch gespeichert.
 Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
 sollen. (Standard: \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
 zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
 Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS "Globale Elemente:"
 .
 .P
-\fB[redirect]\fP Ein Element, um bestimmte Programmversionen anzugeben, die auf
-einen anderen Server umgeleitet werden sollen.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -215,14 +228,12 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
-Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
-Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
-ist es nicht möglich, Nutzerauthentifizierung auf dem Server zu
-verwenden. Alle zusätzlichen Datenbanktabellen, welche für den
-\fBforum_user_handler\fP benötigt werden, können über die Datei
-table_definitions.sql angelegt werden, welche im Wesnoth Code\-Repository zu
-finden is.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

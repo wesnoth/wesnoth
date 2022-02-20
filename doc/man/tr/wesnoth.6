@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2021 wesnoth "Vesnot Savaşı"
+.TH WESNOTH 6 2022 wesnoth "Vesnot Savaşı"
 .
 .SH İSİM
 wesnoth \- Vesnot Savaşı, sırayla oynanan kurgusal bir strateji oyunu
@@ -96,21 +96,20 @@ edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız).
 bazı Lua hata ayıklama mekanizmalarını etkinleştirir.
 .TP 
 \fB\-\-strict\-lua\fP
-disallow deprecated Lua API calls
+kullanımı önerilmeyen Lua API çağrılarına izin verilmez
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+\fB\-D,\-\-diff\fP\fI\ sol\-dosya\fP\fB\ \fP\fIsağ\-dosya\fP
+iki WML dosyasının farkını gösterir; onları işleme sokmadan önce \fB\-p\fP ile
+çalıştırır. Farkları DiffWML olarak ya standart çıktıya ya da \fI\-\-output\fP
+ile belirtilen dosyaya çıktılar.
 .TP 
 \fB\-e[\fP\fIdosya\fP\fB],\ \-\-editor[\fP\fI=dosya\fP\fB]\fP
 oyun içi harita düzenleticisini doğrudan başlatır. \fIdosya\fP belirtilmezse
 \fB\-l\fP veya \fB\-\-load\fP kullanılmış varsayılır.
 .TP 
 \fB\-\-fps\fP
-displays the number of frames per second the game is currently running at in
-a corner of the screen as well as writes these values to a file in the
-userdata directory.
+oyunun o anda çalıştığı saniyedeki kare sayısını ekranın bir köşesinde
+görüntüler ve bu değerleri userdata dizinindeki bir dosyaya yazar.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 oyunu tam ekran çalıştırır.
@@ -187,7 +186,7 @@ oyunu GUI olmadan çalıştırır. Sadece \fB\-\-multiplayer\fP, \fB\-\-screensh
 \fB\-\-plugin\fP seçeneklerinden biri ile birlikte çalışır.
 .TP 
 \fB\-\-nobanner\fP
-suppress the startup banner.
+başlanıçta sancak gösterilmez.
 .TP 
 \fB\-\-nomusic\fP
 oyunu müziksiz çalıştırır.
@@ -199,8 +198,8 @@ kullanıldığında çalışır.
 \fB\-\-nosound\fP
 oyunu sesler ve müzikler olmaksızın çalıştırır.
 .TP 
-\fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+\fB\-\-output\fP\fI\ dosya\fP
+çıktılama belirtilen dosyaya yapılır. Fark alma işlemlerinde kullanılabilir.
 .TP 
 \fB\-\-password\fP\fI\ parola\fP
 \fIparola\fP bir sunucuya bağlanırken diğer tercihler yoksayılarak
@@ -212,10 +211,10 @@ yükler. \fB\-\-script\fP gibidir, ancak Lua dosyası, bir alt yordam olarak
 çalıştırılacak ve periyodik olarak güncellemelerle uyanacak bir işlev
 döndürmelidir.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+\fB\-P,\-\-patch\fP\fI\ ana_dosya\fP\fB\ \fP\fIyama\-dosyası\fP
+DiffWML yamasını WML dosyasına uygular; dosyaları önişleme sokmaz.  Yamanmış
+WML dosyasını ya standart çıktıya ya da \fI\-\-output\fP ile belirtilen dosyaya
+çıktılar.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ kaynak\-dosya/dizin\fP\fB\ \fP\fIhedef\-dizin\fP
 belirtilen bir dosya/dizini önceden işler. Her dosya için bir düz metin .cfg
@@ -298,8 +297,8 @@ birim sınaması olarak belirtilen deneme senaryosunu çalıştırır. Örtük o
 yüklenebilir. Güvenilmez betiklerle kullanmayın! Bu işlem Lua betiğine
 wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\-\-use\-schema\fP\fI\ dosya\-yolu\fP
+\fB\-V,\-\-validate\fP ile kullanmak için WML şemasını tanımlar.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ isim\fP
 kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta
@@ -329,23 +328,26 @@ kullanıcı verileri dizininin yolunu basar ve çıkar.
 bir sunucuya bağlanırken \fIkullanıcı\fP diğer tercihler yoksayılarak
 kullanılır.
 .TP 
-\fB\-\-validate\fP\fI\ path\fP
-validates a file against the WML schema.
+\fB\-\-validate\fP\fI\ dosya\-yolu\fP
+bir dosyayı WML şeması ile doğrular.
 .TP 
-\fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+\fB\-\-validate\-addon\fP\fI\ eklenti_kimliği\fP
+oynarken verilen eklentinin WML'sini doğrular.
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+oynarken verilen çekirdek WML'yi doğrular.
 .TP 
-\fB\-\-validate\-schema \ path\fP
-validates a file as a WML schema.
+\fB\-\-validate\-schema \ dosya\-yolu\fP
+dosyayı WML şeması olarak doğrular.
 .TP 
 \fB\-\-validcache\fP
 önbelleğin geçerli olduğu varsayılır. (tehlikeli)
 .TP 
 \fB\-v, \-\-version\fP
 sürüm numarasını gösterir ve çıkar.
+.TP 
+\fB\-\-simple\-version\fP
+sürüm numarasını gösterip çıkar.
 .TP 
 \fB\-w, \-\-windowed\fP
 oyunu pencereli kipte çalıştırır.
@@ -436,11 +438,11 @@ Bu kılavuz sayfası ilk defa Cyril Bouthors <cyril@bouthors.org>
 tarafından yazılmış ve Nilgün Belma Bugüner <nilgun@belgeler.org>
 tarafından Türkçeye çevrilmiştir.
 .br
-oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright  © 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

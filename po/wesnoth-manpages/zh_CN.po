@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
-"POT-Creation-Date: 2021-06-23 10:18+0300\n"
+"POT-Creation-Date: 2022-02-20 13:43+0300\n"
 "PO-Revision-Date: 2022-01-05 14:54+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1103,33 +1103,44 @@ msgstr "显示版本号并退出。"
 #. type: TP
 #: doc/man/wesnoth.6:419
 #, no-wrap
+msgid "B<--simple-version>"
+msgstr "B<--simple-version>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:422
+msgid "shows the version number and nothing else, then exits."
+msgstr "仅显示版本号而不显示其他信息，之后退出。"
+
+#. type: TP
+#: doc/man/wesnoth.6:422
+#, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 msgid "runs the game in windowed mode."
 msgstr "使用窗口模式进入游戏。"
 
 #. type: TP
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:427
+#: doc/man/wesnoth.6:430
 msgid "replays the game loaded with the B<--load> option."
 msgstr "通过和B<--load>选项一起使用，播放游戏录像。"
 
 #. type: SH
-#: doc/man/wesnoth.6:428
+#: doc/man/wesnoth.6:431
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "--multiplayer的额外选项"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -1139,25 +1150,25 @@ msgstr ""
 "数字替换。这个数字一般是1或者2，不过这取决于所选定场景中的玩家数量。"
 
 #. type: TP
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 #, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "为该阵营的AI控制者选择一个配置文件来读取。"
 
 #. type: TP
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 #, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1169,26 +1180,26 @@ msgstr ""
 "算法。可选值有：B<idle_ai> 和 B<experimental_ai>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 #, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
 msgstr "选择该阵营的控制者。可选值有：B<human>，B<ai>和B<null>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 #, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -1198,13 +1209,13 @@ msgstr ""
 "B<data/multiplayer/eras.cfg>文件中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1214,48 +1225,48 @@ msgstr ""
 "框。这也可以用来进行脚本化的性能基准测试。"
 
 #. type: TP
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 msgid "do not use map settings, use default values instead."
 msgstr "不使用地图设置，而使用默认值。"
 
 #. type: TP
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 #, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr "B<--label>I<\\ label>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 msgid "sets the I<label> for AIs."
 msgstr "设定AI的B<标签>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr "重复进行多人游戏I<value>次。最好与B<--nogui>同用于可脚本化的性能测试。"
 
 #. type: TP
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1265,26 +1276,26 @@ msgstr ""
 "况。这个选项应该只对自己设计AI的人比较有用。（目前还没有完整的文档）"
 
 #. type: TP
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "通过id选择多人游戏地图。默认地图id是B<multiplayer_The_Freelands>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1293,26 +1304,26 @@ msgstr ""
 "multiplayer.cfg文件中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:502
+#: doc/man/wesnoth.6:505
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
 msgstr "设置所选场景的回合数限制。默认无限制。"
 
 #. type: SH
-#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:259
+#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:274
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "退出状态码"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:508
+#: doc/man/wesnoth.6:511
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1322,7 +1333,7 @@ msgstr ""
 "退出状态码2代表命令行选项中有错误。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:518
+#: doc/man/wesnoth.6:521
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1337,18 +1348,18 @@ msgstr ""
 "noreplaycheck> 参数时才会返回。"
 
 #. type: SH
-#: doc/man/wesnoth.6:519 doc/man/wesnothd.6:263
+#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:278
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:522
+#: doc/man/wesnoth.6:525
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt> 编写。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:524
+#: doc/man/wesnoth.6:527
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1357,30 +1368,30 @@ msgstr ""
 "和 Soliton E<lt>soliton.de@gmail.comE<gt> 编辑。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:526
+#: doc/man/wesnoth.6:529
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "这个手册页最初由 Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:528 doc/man/wesnothd.6:270
+#: doc/man/wesnoth.6:531 doc/man/wesnothd.6:285
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "请访问官方主页：https://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:529 doc/man/wesnothd.6:271
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:286
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版权"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
+#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:289
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:538 doc/man/wesnothd.6:292
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1391,7 +1402,7 @@ msgstr ""
 "文翻译不具有法律效力，只有GPL英文原本才具有法律效力。"
 
 #. type: SH
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:278
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:293
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "参见"
@@ -1666,11 +1677,24 @@ msgstr "同一IP允许的连接数。B<0> 表示无限制。（默认值：B<5>�
 #. type: TP
 #: doc/man/wesnothd.6:124
 #, no-wrap
+msgid "B<deny_unregistered_login>"
+msgstr "B<deny_unregistered_login>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:129
+msgid ""
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
+msgstr "是否阻止没有通过B<user_handler>进行注册的用户登录。（默认：否）"
+
+#. type: TP
+#: doc/man/wesnothd.6:129
+#, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:131
+#: doc/man/wesnothd.6:136
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1682,13 +1706,13 @@ msgstr ""
 "*server*,ai,ai?,computer,human,network,player>。"
 
 #. type: TP
-#: doc/man/wesnothd.6:131
+#: doc/man/wesnothd.6:136
 #, no-wrap
 msgid "B<fifo_path>"
 msgstr "B<fifo_path>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:135
+#: doc/man/wesnothd.6:140
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1699,49 +1723,49 @@ msgstr ""
 "var/run/socket/wesnothd/socket>）。"
 
 #. type: TP
-#: doc/man/wesnothd.6:135
+#: doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:138
+#: doc/man/wesnothd.6:143
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr "B<messages_time_period>内允许的消息数。（默认值：B<4>）"
 
 #. type: TP
-#: doc/man/wesnothd.6:138
+#: doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:141
+#: doc/man/wesnothd.6:146
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr "消息泛滥检测的时间间隔（秒）。（默认值：B<10>秒）"
 
 #. type: TP
-#: doc/man/wesnothd.6:141
+#: doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:144
+#: doc/man/wesnothd.6:149
 msgid "The message of the day."
 msgstr "每日一言。"
 
 #. type: TP
-#: doc/man/wesnothd.6:144
+#: doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<new_room_policy>"
 msgstr "B<new_room_policy>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:147
+#: doc/man/wesnothd.6:152
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
 "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
@@ -1753,26 +1777,26 @@ msgstr ""
 "B<everyone>。"
 
 #. type: TP
-#: doc/man/wesnothd.6:147
+#: doc/man/wesnothd.6:152
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:150
+#: doc/man/wesnothd.6:155
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
 "用来获取管理员权限的密码（通过 B</query admin >I<password>来取得权限）。"
 
 #. type: TP
-#: doc/man/wesnothd.6:150
+#: doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<replay_save_path>"
 msgstr "B<replay_save_path>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:153
+#: doc/man/wesnothd.6:158
 msgid ""
 "The directory where the server stores game replays. (Don't forget the "
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
@@ -1782,13 +1806,13 @@ msgstr ""
 "wesnothd启动时的当前目录。"
 
 #. type: TP
-#: doc/man/wesnothd.6:153
+#: doc/man/wesnothd.6:158
 #, no-wrap
 msgid "B<restart_command>"
 msgstr "B<restart_command>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:156
+#: doc/man/wesnothd.6:161
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
@@ -1798,13 +1822,13 @@ msgstr ""
 "用。参见B<allow_remote_shutdown>设置。）"
 
 #. type: TP
-#: doc/man/wesnothd.6:156
+#: doc/man/wesnothd.6:161
 #, no-wrap
 msgid "B<room_save_file>"
 msgstr "B<room_save_file>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:159
+#: doc/man/wesnothd.6:164
 msgid ""
 "Path to a file where the room info should be stored. This file is read on "
 "server startup and written to later. If empty or not set, rooms are not "
@@ -1814,26 +1838,72 @@ msgstr ""
 "为空或者不设置，则房间不会被读取或保存。"
 
 #. type: TP
-#: doc/man/wesnothd.6:159
+#: doc/man/wesnothd.6:164
 #, no-wrap
 msgid "B<save_replays>"
 msgstr "B<save_replays>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:162
+#: doc/man/wesnothd.6:167
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr "设置服务器是否自动保存游戏录像。（默认值：B<false>）"
 
 #. type: TP
-#: doc/man/wesnothd.6:162
+#: doc/man/wesnothd.6:167
+#, no-wrap
+msgid "B<tls_enabled>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:170
+msgid "Enable use of TLS. If true, requires 3 following options to be set too."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:170
+#, no-wrap
+msgid "B<tls_fullchain>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:173
+msgid "TLS full certificate chain in .pem format"
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:173
+#, no-wrap
+msgid "B<tls_private_key>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:176
+msgid "private key for TLS in .pem format"
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:176
+#, no-wrap
+msgid "B<tls_dh>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:179
+msgid ""
+"TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
+"filename.pem 4096>"
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:179
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:166
+#: doc/man/wesnothd.6:183
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
@@ -1843,72 +1913,59 @@ msgstr ""
 "（默认为与服务器版本一致的wesnoth版本）"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:168
+#: doc/man/wesnothd.6:185
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "例如: B<versions_accepted=\"*\"> 允许所有版本连接。"
 
-#. type: TP
-#: doc/man/wesnothd.6:168
-#, no-wrap
-msgid "B<deny_unregistered_login>"
-msgstr "B<deny_unregistered_login>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:173
-msgid ""
-"Whether to prevent users who are not registered with the B<user_handler> "
-"being used from logging in. (default: false)"
-msgstr "是否阻止没有通过B<user_handler>进行注册的用户登录。（默认：否）"
-
 #. type: SS
-#: doc/man/wesnothd.6:174
+#: doc/man/wesnothd.6:186
 #, no-wrap
 msgid "Global tags:"
 msgstr "全局标签："
 
 #. type: Plain text
-#: doc/man/wesnothd.6:179
+#: doc/man/wesnothd.6:193
 #, fuzzy
 #| msgid ""
 #| "B<[redirect]> A tag to specify a server to redirect certain client "
 #| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
-"to."
+"to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务"
 "器上。如果没有设置B<versions_accepted>，那么此标签无效。"
 
 #. type: TP
-#: doc/man/wesnothd.6:180
+#: doc/man/wesnothd.6:194
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:197
 msgid "The address of the server to redirect to."
 msgstr "重定向到的服务器的地址。"
 
 #. type: TP
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:197
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:200
 msgid "The port to connect to."
 msgstr "应连接的端口。"
 
 #. type: TP
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:200
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:191
+#: doc/man/wesnothd.6:205
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1917,7 +1974,7 @@ msgstr ""
 "B<versions_accepted> 一样。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:195
+#: doc/man/wesnothd.6:209
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
@@ -1926,24 +1983,24 @@ msgstr ""
 "长度。"
 
 #. type: TP
-#: doc/man/wesnothd.6:196
+#: doc/man/wesnothd.6:210
 #, no-wrap
 msgid "B<name>"
 msgstr "B<name>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:213
 msgid "The name used to reference the ban time."
 msgstr "用于引用封禁时间的名字。"
 
 #. type: TP
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:213
 #, no-wrap
 msgid "B<time>"
 msgstr "B<time>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:207
+#: doc/man/wesnothd.6:221
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1956,7 +2013,7 @@ msgstr ""
 "（m）。例如：B<time=\\\"1D12h30m\\\"> 代表的是1天零12小时又30分钟的封禁。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:213
+#: doc/man/wesnothd.6:227
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1966,7 +2023,7 @@ msgstr ""
 "的请求转发到指定的服务器。与B<[redirect]>接受一样的主键。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:223
+#: doc/man/wesnothd.6:238
 #, fuzzy
 #| msgid ""
 #| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
@@ -1976,12 +2033,12 @@ msgstr ""
 #| "in the Wesnoth source repository. Requires mysql support enabled. For "
 #| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
-"B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no "
-"B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service. All additional tables that are "
-"needed for the B<forum_user_handler> to function can be found in "
-"table_definitions.sql in the Wesnoth source repository."
+"B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+"section is present in the configuration the server will run without any nick "
+"registration service. All additional tables that are needed for the "
+"B<forum_user_handler> to function can be found in table_definitions.sql in "
+"the Wesnoth source repository. Requires mysql support enabled. For cmake "
+"this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
 "B<[user_handler]> 配置用户数据处理器。如果配置中没有B<[user_handler]>小节，则"
 "服务器在运行中将不提供任何昵称注册服务。B<forum_user_handler>正常运作所需的额"
@@ -1989,57 +2046,57 @@ msgstr ""
 "对于cmake，请使用B<ENABLE_MYSQL>，而对于scons，请使用B<forum_user_handler>。"
 
 #. type: TP
-#: doc/man/wesnothd.6:224
+#: doc/man/wesnothd.6:239
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:242
 msgid "The hostname of the database server"
 msgstr "数据库服务器的主机名称"
 
 #. type: TP
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:242
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:245
 msgid "The name of the database"
 msgstr "数据库名称"
 
 #. type: TP
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:248
 msgid "The name of the user under which to log into the database"
 msgstr "用于登录数据库的用户名称"
 
 #. type: TP
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:251
 msgid "This user's password"
 msgstr "这个用户的密码"
 
 #. type: TP
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:254
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2048,50 +2105,50 @@ msgstr ""
 "phpbb3_users）。"
 
 #. type: TP
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:257
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr "用于保存wesnothd自有用户数据的表名。"
 
 #. type: TP
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<db_game_info_table>"
 msgstr "B<db_game_info_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:260
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr "用于保存wesnothd自有游戏数据的表名。"
 
 #. type: TP
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:260
 #, no-wrap
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:263
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr "用于保存wesnothd自有数据的表名，其中是与单场游戏中玩家相关的数据。"
 
 #. type: TP
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:263
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
 msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:266
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
@@ -2099,13 +2156,13 @@ msgstr ""
 "用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。"
 
 #. type: TP
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:266
 #, no-wrap
 msgid "B<db_user_group_table>"
 msgstr "B<db_user_group_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:269
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2115,19 +2172,19 @@ msgstr ""
 "prefixE<gt>_users_group（例如phpbb3_users_group）。"
 
 #. type: TP
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:269
 #, no-wrap
 msgid "B<mp_mod_group>"
 msgstr "B<mp_mod_group>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:257
+#: doc/man/wesnothd.6:272
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr "论坛用户组ID，该组将被视为拥有管理员权限。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:262
+#: doc/man/wesnothd.6:277
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2135,7 +2192,7 @@ msgstr ""
 "正常退出时状态码为0，此时服务器正常关闭。状态码2代表命令行选项中有错误。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:283
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2150,13 +2207,6 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:281
+#: doc/man/wesnothd.6:296
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#, no-wrap
-#~ msgid "B<--simple-version>"
-#~ msgstr "B<--simple-version>"
-
-#~ msgid "shows the version number and nothing else, then exits."
-#~ msgstr "仅显示版本号而不显示其他信息，之后退出。"
