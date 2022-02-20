@@ -11,6 +11,7 @@
      * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
    * World Conquest
      * Fixed artifacts "draining" HP on pick-up.
+     * Fix banner ability not stacking with leadership.
      * Fixed Bezoar artifact being bugged and broken.
  ### Editor
  ### Multiplayer
