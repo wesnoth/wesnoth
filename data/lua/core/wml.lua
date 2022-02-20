@@ -15,10 +15,15 @@ local function ensure_config(cfg)
 	return false
 end
 
---! Returns the first subtag of @a cfg with the given @a name.
---! If @a id is not nil, the "id" attribute of the subtag has to match too.
---! The function also returns the index of the subtag in the array.
---! Returns nil if no matching subtag is found
+-- Returns the first subtag of a WML table with the given name
+-- If id is not nil, the "id" attribute of the subtag has to match too.
+-- The function also returns the index of the subtag in the array.
+-- Returns nil if no matching subtag is found
+---@param cfg WML The WML table to search
+---@param name string The tag name to search for
+---@param id? string An optional id value to match
+---@return WML? #The tag contents
+---@return integer? #The index of the tag amongst _all_ child tags
 function wml.get_child(cfg, name, id)
 	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
@@ -29,10 +34,15 @@ function wml.get_child(cfg, name, id)
 	end
 end
 
---! Returns the nth subtag of @a cfg with the given @a name.
---! (Indices start at 1, as always with Lua.)
---! The function also returns the index of the subtag in the array.
---! Returns nil if no matching subtag is found
+-- Returns the nth subtag of a WML table with the given name.
+-- (Indices start at 1, as always with Lua.)
+-- The function also returns the index of the subtag in the array.
+-- Returns nil if no matching subtag is found
+---@param cfg WML The WML table to search
+---@param name string The tag name to search for
+---@param n integer The index of the child
+---@return WML? #The tag contents
+---@return integer? #The index of the tag amongst _all_ child tags
 function wml.get_nth_child(cfg, name, n)
 	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
@@ -43,10 +53,15 @@ function wml.get_nth_child(cfg, name, n)
 	end
 end
 
---! Returns the first subtag of @a cfg with the given @a name that matches the @a filter.
---! If @a name is omitted, any subtag can match regardless of its name.
---! The function also returns the index of the subtag in the array.
---! Returns nil if no matching subtag is found
+-- Returns the first subtag of a WML table with the given name that matches the filter.
+-- If the name is omitted, any subtag can match regardless of its name.
+-- The function also returns the index of the subtag in the array.
+-- Returns nil if no matching subtag is found
+---@overload fun(cfg:WML, filter:WML)
+---@param cfg WML The WML table to search
+---@param name? string Tag to search for.
+---@param filter WML A WML filter to match against
+---@return WML? #The WML table of the child tag
 function wml.find_child(cfg, name, filter)
 	ensure_config(cfg)
 	if filter == nil then
@@ -61,7 +76,9 @@ function wml.find_child(cfg, name, filter)
 	end
 end
 
---! Returns the number of attributes of the config
+-- Returns the number of attributes of the config
+---@param cfg WML
+---@return integer
 function wml.attribute_count(cfg)
 	ensure_config(cfg)
 	local count = 0
@@ -73,7 +90,10 @@ function wml.attribute_count(cfg)
 	return count
 end
 
---! Returns the number of subtags of @a with the given @a name.
+-- Returns the number of subtags of a WML table with the given name.
+---@param cfg WML
+---@param name string
+---@return integer
 function wml.child_count(cfg, name)
 	ensure_config(cfg)
 	local n = 0
@@ -85,7 +105,11 @@ function wml.child_count(cfg, name)
 	return n
 end
 
---! Returns an iterator over all the subtags of @a cfg with the given @a name.
+-- Returns an iterator over all the subtags of a WML table with the given name.
+---@param cfg WML
+---@param tag string
+---@return fun(state:any):WML
+---@return any state
 function wml.child_range(cfg, tag)
 	ensure_config(cfg)
 	local iter, state, i = ipairs(cfg)
@@ -100,7 +124,10 @@ function wml.child_range(cfg, tag)
 	return f, state
 end
 
---! Returns an array from the subtags of @a cfg with the given @a name
+-- Returns an array from the subtags of a WML table with the given name
+---@param cfg WML
+---@param tag string
+---@return WML[]
 function wml.child_array(cfg, tag)
 	ensure_config(cfg)
 	local result = {}
@@ -110,7 +137,9 @@ function wml.child_array(cfg, tag)
 	return result
 end
 
---! Removes the first matching child tag from @a cfg
+-- Removes the first matching child tag from a WML table
+---@param cfg WML The WML table to modify
+---@param tag string Name of the tag to remove
 function wml.remove_child(cfg, tag)
 	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
@@ -121,7 +150,9 @@ function wml.remove_child(cfg, tag)
 	end
 end
 
---! Removes all matching child tags from @a cfg
+-- Removes all matching child tags from a WML table
+---@param cfg WML The WML table to modify
+---@vararg string
 function wml.remove_children(cfg, ...)
 	for i = #cfg, 1, -1 do
 		for j = 1, select('#', ...) do
@@ -143,12 +174,18 @@ local create_tag_mt = {
 	end
 }
 
+---@type table<string, fun(cfg:WML):WMLTag
 wml.tag = setmetatable({}, create_tag_mt)
 
 --[========[Config / Vconfig Unified Handling]========]
 
 -- These are slated to be moved to game kernel only
 
+---Returns the underlying WML table from a vconfig, without parsing.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
+---@param cfg WML
+---@return WMLTable
 function wml.literal(cfg)
 	if type(cfg) == "userdata" then
 		return cfg.__literal
@@ -157,6 +194,11 @@ function wml.literal(cfg)
 	end
 end
 
+---Returns a WML table from a vconfig, after parsing all variables.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
+---@param cfg WML
+---@return WMLTable
 function wml.parsed(cfg)
 	if type(cfg) == "userdata" then
 		return cfg.__parsed
@@ -165,6 +207,11 @@ function wml.parsed(cfg)
 	end
 end
 
+---Returns WML table from a vconfig, without parsing, but with child tags still as vconfigs.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
+---@param cfg WML
+---@return WMLTable
 function wml.shallow_literal(cfg)
 	if type(cfg) == "userdata" then
 		return cfg.__shallow_literal
@@ -173,6 +220,12 @@ function wml.shallow_literal(cfg)
 	end
 end
 
+---Returns a WML table from a vconfig, after parsing all top-level variables and with child tags still as vconfigs.
+---Top-level [insert_tag] will also be expanded.
+---If passed a WML table, returns the same table unchanged.
+---Returns an empty table if passed nil.
+---@param cfg WML
+---@return WMLTable
 function wml.shallow_parsed(cfg)
 	if type(cfg) == "userdata" then
 		return cfg.__shallow_parsed
@@ -184,7 +237,8 @@ end
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--[========[WML error helper]========]
 
-	--! Interrupts the current execution and displays a chat message that looks like a WML error.
+	-- Interrupts the current execution and displays a chat message that looks like a WML error.
+	---@param m string The error message
 	function wml.error(m)
 		error("~wml:" .. m, 0)
 	end
@@ -192,6 +246,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--- Calling wml.fire isn't the same as calling wesnoth.wml_actions[name] due to the passed vconfig userdata
 	--- which also provides "constness" of the passed wml object from the point of view of the caller.
 	--- So please don't remove since it's not deprecated.
+	---@type fun(name:string, cfg?:WML)
+	---@type table<string, fun(cfg:WML)>
 	wml.fire = setmetatable({}, {
 		__metatable = "WML Actions",
 		__call = function(_, name, cfg)
@@ -234,6 +290,8 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	end
 
 	-- Get and set variables via wml.variables[variable_path]
+	---@alias WMLVariableProxy table<string, string|number|boolean|WMLTable>
+	---@type WMLVariableProxy
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
 		__index = function(_, key)
@@ -299,6 +357,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 	}
 
+	---@type table<string, WMLVariableProxy>
 	wml.variables_proxy = setmetatable({}, root_variable_mt)
 
 	--[========[Variable Array Access]========]
@@ -334,10 +393,13 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
 	end
 
+	---@alias WMLVariableContext nil|number|string|unit|side|table<string, WMLTable>
 	wml.array_access = {}
 
-	--! Fetches all the WML container variables with name @a var.
-	--! @returns a table containing all the variables (starting at index 1).
+	-- Fetches all the WML container variables with name var.
+	---@param var string Name of the variable to fetch
+	---@param context? WMLVariableContext Where to fetch the variable from
+	---@return WML[] #A table containing all the variables (starting at index 1).
 	function wml.array_access.get(var, context)
 		context = resolve_variable_context(context, "get_variable_array")
 		local result = {}
@@ -347,7 +409,11 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		return result
 	end
 
-	--! Puts all the elements of table @a t inside a WML container with name @a var.
+	-- Puts all the elements of the array inside a WML container with the given name.
+	---@param var string Name of the variable to store
+	---@param t WML[] An array of WML tables
+	---@param context? WMLVariableContext Where to store the variable
+	---@return WML[] #A table containing all the variables (starting at index 1)
 	function wml.array_access.set(var, t, context)
 		context = resolve_variable_context(context, "set_variable_array")
 		context.set(var)
@@ -356,10 +422,11 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		end
 	end
 
-	--! Creates proxies for all the WML container variables with name @a var.
-	--! This is similar to wml.array_access.get, except that the elements
-	--! can be used for writing too.
-	--! @returns a table containing all the variable proxies (starting at index 1).
+	-- Creates proxies for all the WML container variables with name @a var.
+	-- This is similar to wml.array_access.get, except that the elements
+	-- can be used for writing too.
+	---@param var string Name of the variable to fetch
+	---@return WMLVariableProxy[] #A table containing all the variable proxies (starting at index 1).
 	function wml.array_access.get_proxy(var)
 		local result = {}
 		for i = 1, wml.variables[var .. ".length"] do
@@ -369,6 +436,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	end
 
 	-- More convenient when accessing global variables
+	---@type table<string, WML[]>
 	wml.array_variables = setmetatable({}, {
 		__metatable = "WML variables",
 		__index = function(_, key)
@@ -431,6 +499,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	wesnoth.experimental = wesnoth.experimental or {}
 	wesnoth.experimental.wml = wesnoth.experimental.wml or {}
 
+	---@type table<string, table<string, WML>>
 	wesnoth.experimental.wml.global_vars = setmetatable({}, global_vars_mt)
 else
 	--[========[Backwards compatibility for wml.tovconfig]========]

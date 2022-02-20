@@ -51,6 +51,8 @@ local function value_to_text(obj)
 	end
 end
 
+---Convert an arbitrary value (especially a table) to a string for debugging
+---@return string
 function wesnoth.as_text(...)
 	local result = {}
 	local n = 1

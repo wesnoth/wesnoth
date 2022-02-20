@@ -1,10 +1,14 @@
 ## Version 1.17.0+dev
  ### Add-ons client
    * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485)
+   * Set the right default port number for the 1.17.x add-ons server.
  ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
+     * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
      * S14: Smoother appearance of enemies and added dialogue (#6176)
+   * Sceptre of Fire
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart.
    * The Rise of Wesnoth
      * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
    * Under the Burning Suns
@@ -15,15 +19,25 @@
      * Fixed Bezoar artifact being bugged and broken.
  ### Editor
  ### Multiplayer
+   * Fixed: already-installed add-ons not updating when joining a game that requires a new version (issue #6383).
+   * The MP lobby chat window now supports a `/clear` command (issue #3202).
  ### Lua API
+   * Upgrade to Lua 5.4.4.
+   * Add inline documentation for pretty much everything and convert existing docs (PR #6483).
  ### Packaging
+   * Flatpak: updated freedesktop runtime version to 21.08 (issue #6497).
  ### Terrain
+   * New graphics variations for stone walls near snow and ice (PR #6487).
+   * The help browser shows special notes for healing terrains, castles and keeps (issue #6394).
  ### Translations
    * Updated translations: Czech, Italian, Portuguese (Brazil), Russian
  ### Units
+   * Improved the Saurian sprites (PR #6413).
  ### User interface
  ### WML Engine
+   * Fixed `[replace_schedule]`'s `current_time` attribute being ignored (issue #5757).
  ### Miscellaneous and Bug Fixes
+   * Hide the Plan Unit Advance modification from the single-player modifications list.
 
 ## Version 1.17.0
  ### Campaigns
@@ -67,7 +81,7 @@
      * The Dark Assassin’s race is not revealed until uncloaked (issue #6213)
      * The Dust Devil’s XP bar is now blue (issue #6212)
    * Winds of Fate:
-     * New Drakes-centric Campaign added to mainline  
+     * New Drakes-centric Campaign added to mainline
    * World Conquest:
      * Fixed for Winged Scepter not giving the correct defence values
      * Corrected the attack icon of ice bow from a lightning bolt to an iceball
@@ -105,7 +119,7 @@
    * Removed support for writing BMP screenshots (PR #6206).
    * Password storage was fixed to work with multiple accounts (PR #6290)
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
-   * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346). 
+   * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
 
 ## Version 1.16.2
@@ -133,7 +147,7 @@
      * Remove the “formation” ability from the attack predictions dialog, as it was in a confusing location; its effect is still shown in the calculations and chance-to-hit percentage (PR #6326)
      * S02: Pinnacle Rock is now shown during dialogue (issue #6125)
      * S04: Improve dialogue about dark underground tunnels (PR #6345)
-     * S06b: 
+     * S06b:
        * Account for non-elvish units encountering Dwarf Sergeant (issue #6196)
        * Grog will not die as quick now (issue #6196 & #6197)
        * Hermit dialogue cannot be accidentally skipped now (issue #6196)

@@ -1,6 +1,6 @@
 # Lua for Wesnoth
 
-This document describes the process used to install Lua 5.4.2 for Wesnoth.
+This document describes the process used to install Lua 5.4.4 for Wesnoth.
 
 The goal of this process was, as much as possible, install clean, unchanged sources.
 Traditionally, Wesnoth maintainers have made changes directly to the Lua source kit.
@@ -21,25 +21,25 @@ And be sure you are working in a private branch.
         $ cd ~/wesnoth
         $ git checkout master
         $ git pull --rebase upstream master
-        $ git checkout -b Upgrade_to_Lua-5.4.2
+        $ git checkout -b Upgrade_to_Lua-5.4.4
 
 ## 2) Update Lua Source
 
 Download the current source kit from [the Lua maintainers](http://www.lua.org).
-For Lua 5.4.2, this was <http://www.lua.org/ftp/lua-5.4.2.tar.gz>.
+For Lua 5.4.4, this was <http://www.lua.org/ftp/lua-5.4.4.tar.gz>.
 The following presumes you are working on Unix.
 Windows is a bit more work, but generally follows the same process.
 
         $ cd ~
-        $ wget http://www.lua.org/ftp/lua-5.4.2.tar.gz
+        $ wget http://www.lua.org/ftp/lua-5.4.4.tar.gz
 
 Unpack into your home folder.
 
-        $ tar -zxf lua-5.4.2.tar.gz
+        $ tar -zxf lua-5.4.4.tar.gz
 
 Change into the Lua source folder.
 
-        $ cd ~/lua-5.4.2/src
+        $ cd ~/lua-5.4.4/src
 
 We do not need, or want, the Lua command line interpreter, the Lua compiler or the Makefile, so delete them.
 We compile using C++ so cannot allow the use of "C" linkage from the provided header.
@@ -83,7 +83,7 @@ Updating the project files for other target platforms is optional at this point.
 
         $ cd ~/wesnoth
         $ git add .
-        $ git commit -m 'Upgrade to Lua 5.4.2'
+        $ git commit -m 'Upgrade to Lua 5.4.4'
 
 ## 6) Apply official patches
 

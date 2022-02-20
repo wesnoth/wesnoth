@@ -5,9 +5,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	wesnoth.units.scroll_to = wesnoth.interface.scroll_to_hex
 
-	--! Modifies all the units satisfying the given @a filter.
-	--! @param vars key/value pairs that need changing.
-	--! @note Usable only during WML actions.
+	---Modifies all the units satisfying the given filter.
+	---@param filter WML A filter to select the units to modify
+	---@param vars table<string, boolean|string|number> key/value pairs that need changing.
 	function wesnoth.units.modify(filter, vars)
 		local units = wesnoth.units.find(filter)
 		for u in pairs(units) do
@@ -20,13 +20,20 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	end
 
+	---Find an attack on the unit that matches a filter
+	---@param unit unit The unit to search
+	---@param filter WML The filter to match
+	---@return unit_weapon|nil #The matching attack
+	---@return integer? #The index of the matching attack in the unit's attack list
 	function wesnoth.units.find_attack(unit, filter)
 		for i, atk in ipairs(unit.attacks) do
 			if atk:matches(filter) then return atk, i end
 		end
 	end
 
-	-- gets map and recalllist units.
+	---Finds both map and recall list units.
+	---@param filter WML A filter to select the units
+	---@return unit[]
 	function wesnoth.units.find(filter)
 		local res = wesnoth.units.find_on_map(filter)
 		for i, u in ipairs(wesnoth.units.find_on_recall(filter)) do
@@ -35,11 +42,15 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		return res
 	end
 
-	function wesnoth.units.chance_to_be_hit(...)
-		return 100 - wesnoth.units.defense_on(...)
+	---Get the chance for the unit to be hit
+	---@param unit unit The unit to test
+	---@param terrain string The terrain to test for
+	---@return number
+	function wesnoth.units.chance_to_be_hit(unit, terrain)
+		return 100 - wesnoth.units.defense_on(unit, terrain)
 	end
 
-	-- Deprecated function
+	---@deprecated
 	function wesnoth.units.resistance(...)
 		return 100 - wesnoth.units.resistance_against(...)
 	end

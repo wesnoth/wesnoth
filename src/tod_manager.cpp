@@ -290,17 +290,17 @@ void tod_manager::replace_schedule(const config& time_cfg)
 {
 	std::vector<time_of_day> new_scedule;
 	time_of_day::parse_times(time_cfg, new_scedule);
-	replace_schedule(new_scedule);
+	replace_schedule(new_scedule, time_cfg["current_time"].to_int(0));
 }
 
-void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
+void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int initial_time)
 {
 	if(times_.empty() || schedule.empty() || times_[currentTime_].lawful_bonus != schedule.front().lawful_bonus) {
 		has_tod_bonus_changed_ = true;
 	}
 
 	times_ = schedule;
-	currentTime_ = 0;
+	currentTime_ = initial_time;
 }
 
 void tod_manager::replace_area_locations(int area_index, const std::set<map_location>& locs)
@@ -310,7 +310,7 @@ void tod_manager::replace_area_locations(int area_index, const std::set<map_loca
 	has_tod_bonus_changed_ = true;
 }
 
-void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index)
+void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index, int initial_time)
 {
 	assert(area_index < static_cast<int>(areas_.size()));
 	area_time_of_day& area = areas_[area_index];
@@ -325,7 +325,7 @@ void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedul
 	}
 
 	area.times = schedule;
-	area.currentTime = 0;
+	area.currentTime = initial_time;
 }
 
 void tod_manager::set_area_id(int area_index, const std::string& id)

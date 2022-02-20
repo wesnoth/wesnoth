@@ -101,7 +101,7 @@ public:
 	/**
 	 * Possible errors.
 	 *
-	 * Returned by the @ref check function.
+	 * Returned by the @ref check_validity function.
 	 */
 	enum error
 	{

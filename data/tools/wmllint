@@ -2233,13 +2233,9 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("#"): # FIXME: parse_attribute is confused.
-                pass
-            elif key.startswith("{"):
+            if key.startswith("{"):
                 pass
             elif in_name_generator:
-                pass
-            elif key == 'letter': # May be led with _s for void
                 pass
             elif key in ('name', 'male_name', 'female_name', 'value'): # FIXME: check this someday
                 pass
@@ -2248,11 +2244,11 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key):
-                if markcheck and has_tr_mark and '""' in lines[i]:
+                if markcheck and has_tr_mark and not value:
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in lines[i] and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace('=', "=_ ", 1)
@@ -2751,6 +2747,32 @@ def hack_syntax(filename, lines):
                 lines[i] = new_line + "\n"
             print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
                                                                             i+1))
+    # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
+    in_unit = False
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        if has_opening_tag(line, "unit"):
+            in_unit = True
+        elif "[/unit]" in line:
+            in_unit = False
+        if in_unit:
+            # once again, keep indentation and comments when replacing
+            m = re.match(r"(\s*)placement\s?=\s?(map_overwrite|map_passable|leader_passable)(.*)", line)
+            if m:
+                if m.group(2) == "map_overwrite":
+                    lines[i] = "{}placement=map{}\n{}overwrite=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_overwrite -> placement=map overwrite=yes'.format(filename,
+                                                                                                         i+1))
+                elif m.group(2) == "map_passable":
+                    lines[i] = "{}placement=map{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_passable -> placement=map passable=yes'.format(filename,
+                                                                                                       i+1))
+                elif m.group(2) == "leader_passable":
+                    lines[i] = "{}placement=leader{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=leader_passable -> placement=leader passable=yes'.format(filename,
+                                                                                                             i+1))
+
     # More syntax transformations would go here.
     return lines
 
@@ -2817,8 +2839,12 @@ def translator(filename, mapxforms, textxform):
         with gzip.open(filename) as content:
             unmodified = content.readlines()
     else:
-        with codecs.open(filename, "r", "utf8") as content:
-            unmodified = content.readlines()
+        try:
+            with codecs.open(filename, "r", "utf8") as content:
+                unmodified = content.readlines()
+        except UnicodeDecodeError as e:
+            print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+            return
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
     map_only = filename.endswith(".map")

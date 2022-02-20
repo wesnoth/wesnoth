@@ -274,6 +274,9 @@ def convertor(linefilter, arglist, exclude):
                     except bailout as e:
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
+                    except UnicodeDecodeError as e:
+                        os.remove(filename + ".out")
+                        print('wmlindent: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
                     except KeyboardInterrupt:
                         os.remove(filename + ".out")
                         print("wmlindent: %s interrupted" % filename, file=sys.stderr)
@@ -302,11 +305,11 @@ def convertor(linefilter, arglist, exclude):
 
 def sigint_handler(signal, frame):
     """This function defines what happens when the SIGINT signal is encountered by pressing ctrl-c during runtime. 
-    When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 0, which refers to successful termination.
+    When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 1.
     This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
     """
     print ('Aborted by pressing ctrl-c')
-    sys.exit(0)
+    sys.exit(1)
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, sigint_handler)
