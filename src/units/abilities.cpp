@@ -22,6 +22,7 @@
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
 #include "game_board.hpp"
+#include "gettext.hpp"
 #include "global.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -845,7 +846,7 @@ static void add_name(std::string& temp_string, bool active, const std::string na
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += name;
+			temp_string += font::span_color(font::BUTTON_COLOR, name);
 		}
 	}
 }
@@ -949,7 +950,7 @@ void attack_type::weapon_specials_impl_self(std::string& temp_string, unit_const
 		for (const config::any_child sp : self->abilities().all_children_range()){
 			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp.key) != 0) : true;
 			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, sp.cfg, self, self_loc, whom, sp.key, leader_bool);
-			add_name(temp_string, active, font::span_color(font::BUTTON_COLOR, sp.cfg["name"].str()), checking_name);
+			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
 		}
 	}
 }
@@ -972,7 +973,7 @@ void attack_type::weapon_specials_impl_adj(std::string& temp_string, unit_const_
 				bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
 				bool affect_allies = (!affect_adjacents.empty()) ? sp.cfg[affect_adjacents].to_bool(default_bool) : true;
 				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, sp.cfg, self, *it, i, self_loc, whom, sp.key, leader_bool) && affect_allies;
-				add_name(temp_string, active, font::span_color(font::BUTTON_COLOR, sp.cfg["name"].str()), checking_name);
+				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
 			}
 		}
 	}
