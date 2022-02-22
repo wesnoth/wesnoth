@@ -788,8 +788,10 @@ void mouse_handler::select_or_action(bool browse)
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
 		lk->select_hex_callback(clicked_hex);
-		// The callback will typically modify clicked_hex, so make sure it's still valid
-		if(!pc_.get_map().on_board(clicked_hex)) return;
+		// The callback may modify clicked_hex, so make sure it's still valid
+		if(!pc_.get_map().on_board(clicked_hex)) {
+			return;
+		}
 	}
 
 	unit_map::iterator clicked_u = find_unit(clicked_hex);
