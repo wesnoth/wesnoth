@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 13:48+0300\n"
-"PO-Revision-Date: 2021-09-22 18:01+1000\n"
+"PO-Revision-Date: 2022-02-21 09:53+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5093,13 +5093,14 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"The cleansing waters of an oasis will heal the injured. The fiery ichor of "
+"the underworld hinders the flightless, while offering illumination in "
+"darkness to those that may fly above it."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― King Konrad, 536YW</i>"
+msgstr "<i>― Dominant Gorlack, 3YW</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5548,11 +5549,10 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "An error occurred while downloading the add-ons list from the server."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
-msgstr "Could not find an add-on matching id $addon_id on the add-on server."
+msgstr ""
+"Could not find add-ons matching the ids $addon_ids on the add-on server."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -6033,6 +6033,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
+"to advance to ‘$higher_level’; please ask the add-on author to use "
+"[modify_unit_type] instead."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6251,10 +6254,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Defeat enemy leader(s)"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Cannot find era $era"
+msgstr "Cannot find era '$era'"
 
 #: src/game_initialization/multiplayer.cpp:254
 msgid "Invalid address specified for multiplayer server"
@@ -6577,22 +6578,16 @@ msgid "No visible sides found."
 msgstr "No visible sides found."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
-#, fuzzy
-#| msgid "Selected user: "
 msgid "Selected Game"
-msgstr "Selected user:"
+msgstr "Selected Game"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
-#, fuzzy
-#| msgid "Game Lobby"
 msgid "Lobby"
-msgstr "Game Lobby"
+msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other Games"
-msgstr "Observe Game"
+msgstr "Other Games"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:31
 msgid "Match History — $player"
@@ -7135,6 +7130,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed."
 
 #: src/menu_events.cpp:1249
 msgid "Save game."
@@ -8046,17 +8043,13 @@ msgstr "Turn Countdown"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %d %b %I:%M %p %Y"
+msgstr "%a %d %b %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %d %b %H:%M %Y"
+msgstr "%a %d %b %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:279 src/savegame.cpp:588

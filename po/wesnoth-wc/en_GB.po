@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 10:48 UTC\n"
-"PO-Revision-Date: 2021-04-22 14:19+1000\n"
+"PO-Revision-Date: 2022-02-21 13:23+1100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -64,24 +64,18 @@ msgstr "Special advancement to Goblin Pillager enabled."
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "The Alliance"
+msgstr "The Artisans"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "The Alliance"
+msgstr "The Defiance"
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "The Horde"
+msgstr "The Marauders"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:7
 msgid "World Conquest"
@@ -198,7 +192,7 @@ msgstr "Map Settings"
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
 msgid " players: "
-msgstr ""
+msgstr " players: "
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
@@ -2377,16 +2371,6 @@ msgstr "Factions"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, "
@@ -2396,13 +2380,13 @@ msgid ""
 "The available heroes, deserters, and random leaders also depend on your "
 "factions; the items you can get do not depend on the faction you choose."
 msgstr ""
-"The World Conquest II era consists of factions that are built from pairs of "
-"mainline factions. One faction will have a healer available (Drakes, Rebels "
-"and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list "
-"is also organized in pairs so that sometimes you will have to recruit a "
-"different unit before you can recruit the units that you want. The available "
-"heroes, deserters, and random leaders also depend on your factions; the "
-"items you can get do not depend on the faction you choose."
+"The World Conquest era consists of factions that are built from pairs of "
+"mainline factions. One faction will have a healer available (Drakes, "
+"Dunefolk, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). "
+"The recruit list is also organized in pairs so that sometimes you will have "
+"to recruit a different unit before you can recruit the units that you want. "
+"The available heroes, deserters, and random leaders also depend on your "
+"factions; the items you can get do not depend on the faction you choose."
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
@@ -2970,13 +2954,10 @@ msgid "Root of the Elder Wose"
 msgstr "Root of the Elder Wose"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
-" Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
+" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
 msgid "Cruel spike"
@@ -3517,73 +3498,51 @@ msgid "World Conquest 3p"
 msgstr "World Conquest 3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "World Conquest 1p"
+msgstr "World Conquest 4p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-#, fuzzy
-#| msgid ""
-#| "A randomly generated campaign for 1 player. It has 6 level of "
-#| "difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"A randomly generated co-operative campaign for 2 players. It has 6 level of "
-"difficulties.\n"
+"A randomly generated co-operative campaign for 2 players. It has 6 levels of "
+"difficulty.\n"
 "(Expert level, 5 scenarios.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"A randomly generated co-operative campaign for 3 players. It has 6 level of "
-"difficulties.\n"
+"A randomly generated co-operative campaign for 3 players. It has 6 levels of "
+"difficulty.\n"
 "(Expert level, 5 scenarios.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"A randomly generated co-operative campaign for 2 players. It has 6 level of "
+"A randomly generated co-operative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
 msgid "WC"
-msgstr ""
+msgstr "WC"
 
 #~ msgid "Choose difficulty level:"
 #~ msgstr "Choose difficulty level:"
