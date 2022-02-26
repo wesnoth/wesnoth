@@ -77,7 +77,7 @@ static std::vector<char*> gArgs;
 - (IBAction) openChangelog:(id)sender
 {
 	(void) sender;
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/master/changelog.md"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/1.16/changelog.md"]];
 }
 
 /* Called when the internal event loop has just started running */
