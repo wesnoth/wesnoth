@@ -27,6 +27,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
+#include "preferences/credentials.hpp"
 #include "random.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -276,13 +277,16 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	config request_buf, response_buf;
 	config& request_body = request_buf.add_child("delete");
 
-	// the passphrase isn't provided, prompt for it
+	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
 	if(cfg["passphrase"].empty()) {
+		cfg["passphrase"] = preferences::password(host_, cfg["author"]);
 		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			config dummy;
 			config& error = dummy.add_child("error");
 			error["message"] = "Password not provided.";
 			return !update_last_error(dummy);
+		} else {
+			preferences::set_password(host_, cfg["author"], cfg["passphrase"]);
 		}
 	}
 

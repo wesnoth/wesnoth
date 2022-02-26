@@ -45,6 +45,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
@@ -852,10 +854,13 @@ void addon_manager::publish_addon(const addon_info& addon)
 		}
 	}
 
-	// the passphrase isn't provided, prompt for it
+	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
 	if(cfg["passphrase"].empty()) {
+		cfg["passphrase"] = preferences::password(preferences::campaign_server(), cfg["author"]);
 		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			return;
+		} else {
+			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
 	}
 
