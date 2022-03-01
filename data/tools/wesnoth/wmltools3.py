@@ -805,6 +805,7 @@ macro found in {}: {}".format(filename,
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
+        self.deprecated = []
         formals = []
         optional_formals = []
         state = "outside"
@@ -881,6 +882,8 @@ macro found in {}: {}".format(filename,
                                     if self.visible_from(defn, fn, n+1):
                                         defn.append(fn, n+1, args, optional_args)
                                         candidates.append(str(defn))
+                                        if defn.deprecated:
+                                            self.deprecated.append((name,Reference(ns,fn,n+1)))
                                 if len(candidates) > 1:
                                     print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))
                             if len(candidates) == 0:
