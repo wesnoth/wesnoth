@@ -90,7 +90,6 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("lost", t.lost());
 	return_bool_attrib("persistent", t.persistent());
 	return_bool_attrib("suppress_end_turn_confirmation", t.no_turn_confirmation());
-	return_string_attrib("share_vision", team_shared_vision::get_string(t.share_vision()));
 	return_bool_attrib("share_maps", t.share_maps());
 	return_bool_attrib("share_view", t.share_view());
 	return_bool_attrib("chose_random", t.chose_random());
