@@ -23,6 +23,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch
 
 ## Version 1.16.2
  ### Campaigns
