@@ -18,6 +18,9 @@
 
 #include "enum_base.hpp"
 
+namespace gui2
+{
+
 struct grow_direction_defines
 {
 	static constexpr const char* const horizontal = "horizontal";
@@ -26,3 +29,5 @@ struct grow_direction_defines
 	ENUM_AND_ARRAY(horizontal, vertical)
 };
 using grow_direction = string_enums::enum_base<grow_direction_defines>;
+
+}
