@@ -18,6 +18,9 @@
 
 #include "enum_base.hpp"
 
+namespace wfl
+{
+
 struct formula_variant_defines
 {
 	static constexpr const char* const null = "null";
@@ -31,3 +34,5 @@ struct formula_variant_defines
 	ENUM_AND_ARRAY(null, integer, decimal, object, list, string, map)
 };
 using formula_variant = string_enums::enum_base<formula_variant_defines>;
+
+}

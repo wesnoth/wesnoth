@@ -18,6 +18,9 @@
 
 #include "enum_base.hpp"
 
+namespace ai
+{
+
 struct ai_target_defines
 {
 	static constexpr const char* const village = "village";
@@ -31,3 +34,5 @@ struct ai_target_defines
 	ENUM_AND_ARRAY(village, leader, xplicit, threat, battle_aid, mass, support)
 };
 using ai_target = string_enums::enum_base<ai_target_defines>;
+
+}
