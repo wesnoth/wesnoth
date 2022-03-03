@@ -44,9 +44,9 @@
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
 
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-#include "lua/llimits.h"
+#include "nowarn/lualib.h"
+#include "nowarn/lauxlib.h"
+#include "nowarn/llimits.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)

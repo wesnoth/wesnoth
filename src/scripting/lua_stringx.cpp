@@ -23,8 +23,8 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
+#include "nowarn/lua.h"
+#include "nowarn/lauxlib.h"
 
 namespace lua_stringx {
 

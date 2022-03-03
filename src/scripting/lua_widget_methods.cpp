@@ -50,8 +50,8 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
+#include "nowarn/lauxlib.h"
+#include "nowarn/lua.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)

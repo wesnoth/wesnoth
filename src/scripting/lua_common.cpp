@@ -39,8 +39,8 @@
 #include <new>                          // for operator new
 #include <string>                       // for string, basic_string
 
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
+#include "nowarn/lauxlib.h"
+#include "nowarn/lua.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
