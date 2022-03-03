@@ -14,4 +14,5 @@ global=false
 unused=false
 -- excluded files due to using lua 5.4 syntax that currently gets flagged as a syntax error
 -- clear out once a newer Ubuntu LTS base is used for our docker images, which would then also have a newer luacheck available
-exclude_files={"data/lua/core/wml.lua","data/lua/wml-flow.lua","data/lua/wml/find_path.lua","data/lua/wml/harm_unit.lua","data/lua/wml/modify_unit.lua","data/lua/wml/random_placement.lua","data/lua/functional.lua"}
+-- leave the lua module exclusion however
+exclude_files={"data/lua/core/wml.lua","data/lua/wml-flow.lua","data/lua/wml/find_path.lua","data/lua/wml/harm_unit.lua","data/lua/wml/modify_unit.lua","data/lua/wml/random_placement.lua","data/lua/functional.lua","src/modules/lua/testes/*.lua"}
