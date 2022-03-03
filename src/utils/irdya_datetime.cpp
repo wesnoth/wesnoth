@@ -20,6 +20,8 @@
 
 #include <exception>
 
+using namespace utils;
+
 irdya_date irdya_date::read_date(const std::string& date)
 {
 	irdya_date date_result;
@@ -72,7 +74,7 @@ std::string irdya_date::to_string() const
 	return "";
 }
 
-bool operator<(const irdya_date& a, const irdya_date& b)
+bool utils::operator<(const irdya_date& a, const irdya_date& b)
 {
 	if(!b.is_valid()) {
 		return a.is_valid();
@@ -98,32 +100,32 @@ bool operator<(const irdya_date& a, const irdya_date& b)
 	}
 }
 
-bool operator>(const irdya_date& a, const irdya_date& b)
+bool utils::operator>(const irdya_date& a, const irdya_date& b)
 {
 	return b < a;
 }
 
-bool operator<=(const irdya_date& a, const irdya_date& b)
+bool utils::operator<=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a > b);
 }
 
-bool operator>=(const irdya_date& a, const irdya_date& b)
+bool utils::operator>=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a < b);
 }
 
-bool operator==(const irdya_date& a, const irdya_date& b)
+bool utils::operator==(const irdya_date& a, const irdya_date& b)
 {
 	return a.get_year() == b.get_year() && a.get_epoch() == b.get_epoch();
 }
 
-bool operator!=(const irdya_date& a, const irdya_date& b)
+bool utils::operator!=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a == b);
 }
 
-std::ostream& operator<<(std::ostream& s, const irdya_date& d)
+std::ostream& utils::operator<<(std::ostream& s, const irdya_date& d)
 {
 	s << d.to_string();
 	return s;

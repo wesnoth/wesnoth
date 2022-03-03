@@ -20,6 +20,12 @@
 #include <string>
 #include <vector>
 
+namespace utils
+{
+
+/**
+ * Calendar for handling and comparing dates using the common epoches of the storyline.
+ */
 class irdya_date
 {
 public:
@@ -70,3 +76,5 @@ bool operator==(const irdya_date& a, const irdya_date& b);
 bool operator!=(const irdya_date& a, const irdya_date& b);
 
 std::ostream& operator<<(std::ostream& s, const irdya_date& d);
+
+}

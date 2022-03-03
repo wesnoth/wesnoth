@@ -188,14 +188,14 @@ campaign::campaign(const config& data)
 	, max_players_(1)
 {
 	if(data.has_attribute("start_year")) {
-		dates_.first = irdya_date::read_date(data["start_year"]);
+		dates_.first = utils::irdya_date::read_date(data["start_year"]);
 		if(data.has_attribute("end_year")) {
-			dates_.second = irdya_date::read_date(data["end_year"]);
+			dates_.second = utils::irdya_date::read_date(data["end_year"]);
 		} else {
 			dates_.second = dates_.first;
 		}
 	} else if(data.has_attribute("year")) {
-		dates_.first = dates_.second = irdya_date::read_date(data["year"]);
+		dates_.first = dates_.second = utils::irdya_date::read_date(data["year"]);
 	}
 	set_metadata();
 }
