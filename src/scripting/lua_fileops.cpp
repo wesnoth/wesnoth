@@ -28,10 +28,6 @@
 #include <exception>
 #include <string>
 
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
-
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -264,7 +260,7 @@ public:
 		lua_filestream* lfs = static_cast<lua_filestream*>(data);
 
 		//int startpos = lfs->pistream_->tellg();
-		lfs->pistream_->read(lfs->buff_, LUAL_BUFFERSIZE);
+		lfs->pistream_->read(lfs->buff_, lual_buffersize);
 		//int newpos = lfs->pistream_->tellg();
 		*size = lfs->pistream_->gcount();
 #if 0
@@ -287,7 +283,7 @@ public:
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
-	char buff_[LUAL_BUFFERSIZE];
+	char buff_[lual_buffersize];
 	const std::unique_ptr<std::istream> pistream_;
 };
 

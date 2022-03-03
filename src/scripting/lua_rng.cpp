@@ -23,8 +23,8 @@
 #include <new>
 #include <string>
 
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
+#include "nowarn/lua.h"
+#include "nowarn/lauxlib.h"
 
 static lg::log_domain log_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_lua)

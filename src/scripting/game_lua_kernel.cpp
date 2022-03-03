@@ -122,8 +122,8 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
+#include "nowarn/lauxlib.h"                // for luaL_checkinteger, etc
+#include "nowarn/lua.h"                    // for lua_setfield, etc
 
 class CVideo;
 

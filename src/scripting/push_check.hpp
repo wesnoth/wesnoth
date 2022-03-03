@@ -17,11 +17,10 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_widget.hpp"
 
+#include "nowarn/lauxlib.h"
 #include "global.hpp"
 #include "tstring.hpp"
 #include "map/location.hpp"
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 #include <cassert>
 #include <string_view>

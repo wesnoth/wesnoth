@@ -30,8 +30,8 @@
 #include <string>
 #include <functional>
 
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
+#include "nowarn/lauxlib.h"
+#include "nowarn/lua.h"
 #include "scripting/push_check.hpp"
 #include "generators/default_map_generator_job.hpp"
 
