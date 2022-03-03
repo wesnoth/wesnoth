@@ -18,6 +18,9 @@
 #include "utils/irdya_datetime.hpp"
 #include <boost/test/unit_test.hpp>
 
+using irdya_date = utils::irdya_date;
+using wesnoth_epoch = utils::wesnoth_epoch;
+
 BOOST_AUTO_TEST_SUITE(test_irdya_datetime)
 
 BOOST_AUTO_TEST_CASE(test_irdya_date_parse) {

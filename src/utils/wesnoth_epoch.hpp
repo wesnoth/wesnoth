@@ -18,6 +18,12 @@
 
 #include "enum_base.hpp"
 
+namespace utils
+{
+
+/**
+ * Reference points for the dates that define the storyline's calendar.
+ */
 struct wesnoth_epoch_defines
 {
 	static constexpr const char* const before_wesnoth = "BW";
@@ -28,3 +34,5 @@ struct wesnoth_epoch_defines
 	ENUM_AND_ARRAY(before_wesnoth, wesnoth, before_fall, after_fall)
 };
 using wesnoth_epoch = string_enums::enum_base<wesnoth_epoch_defines>;
+
+}

@@ -246,7 +246,7 @@ public:
 		return min_players_ <= player_count && max_players_ >= player_count;
 	}
 
-	std::pair<irdya_date, irdya_date> dates() const
+	std::pair<utils::irdya_date, utils::irdya_date> dates() const
 	{
 		return dates_;
 	}
@@ -260,7 +260,7 @@ private:
 	std::string image_label_;
 	int min_players_;
 	int max_players_;
-	std::pair<irdya_date, irdya_date> dates_;
+	std::pair<utils::irdya_date, utils::irdya_date> dates_;
 };
 
 class create_engine
