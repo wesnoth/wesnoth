@@ -1,0 +1,30 @@
+{
+  "name": "wesnoth-map-diff",
+  "version": "0.0.1",
+  "description": "Visual map differ for Battle for Wesnoth",
+  "scripts": {
+    "build:dev": "tsc -p tsconfig-dev.json",
+    "build:prod": "tsc -p tsconfig-prod.json",
+    "test": "jest",
+    "lint": "eslint . --cache"
+  },
+  "author": "macabeus",
+  "license": "GNU GPL v2+",
+  "dependencies": {
+    "jimp": "0.16.1",
+    "parsimmon": "1.18.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-typescript": "7.16.7",
+    "@types/jest": "27.4.0",
+    "@types/parsimmon": "1.10.6",
+    "@typescript-eslint/eslint-plugin": "5.12.1",
+    "@typescript-eslint/parser": "5.12.1",
+    "eslint": "8.10.0",
+    "fast-check": "2.21.0",
+    "jest": "27.5.0",
+    "jest-fast-check": "1.0.2",
+    "typescript": "4.5.5"
+  }
+}
