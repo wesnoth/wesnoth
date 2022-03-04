@@ -260,7 +260,7 @@ public:
 		lua_filestream* lfs = static_cast<lua_filestream*>(data);
 
 		//int startpos = lfs->pistream_->tellg();
-		lfs->pistream_->read(lfs->buff_, lual_buffersize);
+		lfs->pistream_->read(lfs->buff_, luaL_buffersize);
 		//int newpos = lfs->pistream_->tellg();
 		*size = lfs->pistream_->gcount();
 #if 0
@@ -283,7 +283,7 @@ public:
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
-	char buff_[lual_buffersize];
+	char buff_[luaL_buffersize];
 	const std::unique_ptr<std::istream> pistream_;
 };
 
