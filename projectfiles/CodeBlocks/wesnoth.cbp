@@ -138,6 +138,7 @@
 		<Unit filename="../../src/addon/validation.hpp" />
 		<Unit filename="../../src/ai/actions.cpp" />
 		<Unit filename="../../src/ai/actions.hpp" />
+		<Unit filename="../../src/ai/ai_target.hpp" />
 		<Unit filename="../../src/ai/composite/ai.cpp" />
 		<Unit filename="../../src/ai/composite/ai.hpp" />
 		<Unit filename="../../src/ai/composite/aspect.cpp" />
@@ -220,6 +221,7 @@
 		<Unit filename="../../src/buffered_istream.hpp" />
 		<Unit filename="../../src/build_info.cpp" />
 		<Unit filename="../../src/build_info.hpp" />
+		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
@@ -253,6 +255,7 @@
 		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/cursor.cpp" />
 		<Unit filename="../../src/cursor.hpp" />
+		<Unit filename="../../src/defeat_condition.hpp" />
 		<Unit filename="../../src/deprecation.cpp" />
 		<Unit filename="../../src/deprecation.hpp" />
 		<Unit filename="../../src/desktop/apple_video.hpp" />
@@ -339,6 +342,7 @@
 		<Unit filename="../../src/editor/toolkit/brush.hpp" />
 		<Unit filename="../../src/editor/toolkit/editor_toolkit.cpp" />
 		<Unit filename="../../src/editor/toolkit/editor_toolkit.hpp" />
+		<Unit filename="../../src/enum_base.hpp" />
 		<Unit filename="../../src/events.cpp" />
 		<Unit filename="../../src/events.hpp" />
 		<Unit filename="../../src/exceptions.hpp" />
@@ -388,6 +392,7 @@
 		<Unit filename="../../src/formula/formula.cpp" />
 		<Unit filename="../../src/formula/formula.hpp" />
 		<Unit filename="../../src/formula/formula_fwd.hpp" />
+		<Unit filename="../../src/formula/formula_variant.hpp" />
 		<Unit filename="../../src/formula/function.cpp" />
 		<Unit filename="../../src/formula/function.hpp" />
 		<Unit filename="../../src/formula/function_gamestate.cpp" />
@@ -435,6 +440,7 @@
 		<Unit filename="../../src/game_events/pump.hpp" />
 		<Unit filename="../../src/game_events/wmi_manager.cpp" />
 		<Unit filename="../../src/game_events/wmi_manager.hpp" />
+		<Unit filename="../../src/game_initialization/component_availability.hpp" />
 		<Unit filename="../../src/game_initialization/configure_engine.cpp" />
 		<Unit filename="../../src/game_initialization/configure_engine.hpp" />
 		<Unit filename="../../src/game_initialization/connect_engine.cpp" />
@@ -445,6 +451,7 @@
 		<Unit filename="../../src/game_initialization/depcheck.hpp" />
 		<Unit filename="../../src/game_initialization/flg_manager.cpp" />
 		<Unit filename="../../src/game_initialization/flg_manager.hpp" />
+		<Unit filename="../../src/game_initialization/level_type.hpp" />
 		<Unit filename="../../src/game_initialization/lobby_data.cpp" />
 		<Unit filename="../../src/game_initialization/lobby_data.hpp" />
 		<Unit filename="../../src/game_initialization/lobby_info.cpp" />
@@ -455,6 +462,8 @@
 		<Unit filename="../../src/game_initialization/multiplayer.hpp" />
 		<Unit filename="../../src/game_initialization/playcampaign.cpp" />
 		<Unit filename="../../src/game_initialization/playcampaign.hpp" />
+		<Unit filename="../../src/game_initialization/random_faction_mode.hpp" />
+		<Unit filename="../../src/game_initialization/saved_game_mode.hpp" />
 		<Unit filename="../../src/game_initialization/singleplayer.cpp" />
 		<Unit filename="../../src/game_initialization/singleplayer.hpp" />
 		<Unit filename="../../src/game_launcher.cpp" />
@@ -717,8 +726,10 @@
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.hpp" />
+		<Unit filename="../../src/gui/grow_direction.hpp" />
 		<Unit filename="../../src/gui/gui.cpp" />
 		<Unit filename="../../src/gui/gui.hpp" />
+		<Unit filename="../../src/gui/sort_order.hpp" />
 		<Unit filename="../../src/gui/widgets/addon_list.cpp" />
 		<Unit filename="../../src/gui/widgets/addon_list.hpp" />
 		<Unit filename="../../src/gui/widgets/button.cpp" />
@@ -858,6 +869,7 @@
 		<Unit filename="../../src/key.hpp" />
 		<Unit filename="../../src/language.cpp" />
 		<Unit filename="../../src/language.hpp" />
+		<Unit filename="../../src/level_result.hpp" />
 		<Unit filename="../../src/lexical_cast.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
@@ -1046,6 +1058,7 @@
 		<Unit filename="../../src/scripting/lua_wml.hpp" />
 		<Unit filename="../../src/scripting/mapgen_lua_kernel.cpp" />
 		<Unit filename="../../src/scripting/mapgen_lua_kernel.hpp" />
+		<Unit filename="../../src/scripting/plugin_manager_status.hpp" />
 		<Unit filename="../../src/scripting/plugins/context.cpp" />
 		<Unit filename="../../src/scripting/plugins/context.hpp" />
 		<Unit filename="../../src/scripting/plugins/manager.cpp" />
@@ -1092,8 +1105,10 @@
 		<Unit filename="../../src/serialization/validator.hpp" />
 		<Unit filename="../../src/show_dialog.cpp" />
 		<Unit filename="../../src/show_dialog.hpp" />
+		<Unit filename="../../src/side_controller.hpp" />
 		<Unit filename="../../src/side_filter.cpp" />
 		<Unit filename="../../src/side_filter.hpp" />
+		<Unit filename="../../src/side_proxy_controller.hpp" />
 		<Unit filename="../../src/sound.cpp" />
 		<Unit filename="../../src/sound.hpp" />
 		<Unit filename="../../src/sound_music_track.cpp" />
@@ -1117,8 +1132,6 @@
 		<Unit filename="../../src/storyscreen/parser.hpp" />
 		<Unit filename="../../src/storyscreen/part.cpp" />
 		<Unit filename="../../src/storyscreen/part.hpp" />
-		<Unit filename="../../src/string_enums/enum_base.hpp" />
-		<Unit filename="../../src/string_enums/side_controller.hpp" />
 		<Unit filename="../../src/synced_checkup.cpp" />
 		<Unit filename="../../src/synced_checkup.hpp" />
 		<Unit filename="../../src/synced_commands.cpp" />
@@ -1133,6 +1146,7 @@
 		<Unit filename="../../src/team.hpp" />
 		<Unit filename="../../src/teambuilder.cpp" />
 		<Unit filename="../../src/teambuilder.hpp" />
+		<Unit filename="../../src/team_shared_vision.hpp" />
 		<Unit filename="../../src/terrain/builder.cpp" />
 		<Unit filename="../../src/terrain/builder.hpp" />
 		<Unit filename="../../src/terrain/filter.cpp" />
@@ -1165,6 +1179,7 @@
 		<Unit filename="../../src/units/animation_component.hpp" />
 		<Unit filename="../../src/units/attack_type.cpp" />
 		<Unit filename="../../src/units/attack_type.hpp" />
+		<Unit filename="../../src/units/conditional_type.hpp" />
 		<Unit filename="../../src/units/drawer.cpp" />
 		<Unit filename="../../src/units/drawer.hpp" />
 		<Unit filename="../../src/units/filter.cpp" />
@@ -1187,12 +1202,14 @@
 		<Unit filename="../../src/units/ptr.hpp" />
 		<Unit filename="../../src/units/race.cpp" />
 		<Unit filename="../../src/units/race.hpp" />
+		<Unit filename="../../src/units/strike_result.hpp" />
 		<Unit filename="../../src/units/types.cpp" />
 		<Unit filename="../../src/units/types.hpp" />
 		<Unit filename="../../src/units/udisplay.cpp" />
 		<Unit filename="../../src/units/udisplay.hpp" />
 		<Unit filename="../../src/units/unit.cpp" />
 		<Unit filename="../../src/units/unit.hpp" />
+		<Unit filename="../../src/units/unit_alignments.hpp" />
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
@@ -1212,6 +1229,7 @@
 		<Unit filename="../../src/utils/scope_list.hpp" />
 		<Unit filename="../../src/utils/smart_list.hpp" />
 		<Unit filename="../../src/utils/type_trait_aliases.hpp" />
+		<Unit filename="../../src/utils/wesnoth_epoch.hpp" />
 		<Unit filename="../../src/variable.cpp" />
 		<Unit filename="../../src/variable.hpp" />
 		<Unit filename="../../src/variable_info.cpp" />
