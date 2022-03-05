@@ -25,8 +25,7 @@
 
 #include <fstream>
 
-#include "nowarn/lua.h"
-#include "nowarn/lauxlib.h"
+#include "lua/lauxlib.h"
 
 namespace lua_wml {
 

@@ -19,9 +19,7 @@
 #include "random.hpp"
 #include "SDL2/SDL_timer.h" // for SDL_GetTicks
 
-#include "nowarn/lauxlib.h"
-#include "nowarn/lua.h"
-#include "nowarn/lualib.h"
+#include "lua/lauxlib.h"
 
 #include <cstdio>
 #include <cmath>

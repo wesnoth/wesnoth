@@ -22,10 +22,8 @@
 
 #include <string>
 #include <utility>
-#include <ciso646>   // for and
 
-#include "nowarn/lua.h"
-#include "nowarn/lauxlib.h"
+#include "lua/lauxlib.h"
 
 namespace lua_map_location {
 

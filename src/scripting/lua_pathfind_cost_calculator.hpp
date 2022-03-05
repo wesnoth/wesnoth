@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "nowarn/lua.h"
+#include "lua/lua.h"
 #include "map/location.hpp"
 #include "pathfind/pathfind.hpp"
 

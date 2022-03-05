@@ -23,8 +23,7 @@
 #include <string>
 #include <cstring>
 
-#include "nowarn/lua.h"
-#include "nowarn/lauxlib.h"
+#include "lua/lauxlib.h"
 
 /**
  * Implementation for a lua reference to a race,

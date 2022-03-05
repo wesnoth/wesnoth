@@ -16,8 +16,7 @@
 #include "scripting/lua_preferences.hpp"
 
 #include "config.hpp"
-#include "nowarn/lua.h"
-#include "nowarn/lauxlib.h"
+#include "lua/lauxlib.h"
 #include "preferences/general.hpp"
 #include "scripting/lua_common.hpp"
 

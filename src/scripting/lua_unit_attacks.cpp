@@ -24,8 +24,7 @@
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
 
-#include "nowarn/lauxlib.h"
-#include "nowarn/lua.h"                    // for lua_State, lua_settop, etc
+#include "lua/lauxlib.h"
 
 #include <type_traits>
 
