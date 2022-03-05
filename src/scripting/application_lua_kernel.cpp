@@ -50,9 +50,7 @@
 #include <boost/range/adaptors.hpp>
 #include <SDL2/SDL.h>
 
-#include "nowarn/lauxlib.h"
-#include "nowarn/lua.h"
-#include "nowarn/luaconf.h"
+#include "lua/lauxlib.h"
 
 struct lua_State;
 

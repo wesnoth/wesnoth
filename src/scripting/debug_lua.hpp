@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include "nowarn/lualib.h"
+#include "lua/lualib.h"
 
 void ds(lua_State *L, const bool verbose_table = true);
 

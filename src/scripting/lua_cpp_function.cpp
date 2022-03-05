@@ -20,8 +20,7 @@
 #include <sstream>
 #include <string>
 
-#include "nowarn/lauxlib.h"
-#include "nowarn/lua.h"
+#include "lua/lauxlib.h"
 #include "scripting/lua_common.hpp" // for new(L)
 
 static lg::log_domain log_scripting_lua("scripting/lua");

@@ -24,7 +24,7 @@
 #include "scripting/lua_common.hpp"
 #include "resources.hpp"
 
-#include "nowarn/lauxlib.h"
+#include "lua/lauxlib.h"
 
 namespace ai {
 

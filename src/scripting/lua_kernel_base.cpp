@@ -57,9 +57,8 @@
 #include <sstream>
 #include <vector>
 
-#include "nowarn/lauxlib.h"
-#include "nowarn/lua.h"
-#include "nowarn/lualib.h"
+#include "lua/lauxlib.h"
+#include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 static lg::log_domain log_user("scripting/lua/user");
