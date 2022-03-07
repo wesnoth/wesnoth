@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2021
+	Copyright (C) 2021 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
