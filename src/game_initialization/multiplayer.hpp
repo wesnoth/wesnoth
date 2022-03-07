@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
