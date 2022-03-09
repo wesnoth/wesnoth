@@ -26,7 +26,6 @@
 
 #include "help/help.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
@@ -40,7 +39,6 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
