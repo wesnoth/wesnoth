@@ -17,7 +17,6 @@
 #include "commandline_options.hpp"
 
 #include <boost/test/unit_test.hpp>
-#include <boost/assign.hpp>
 
 BOOST_AUTO_TEST_SUITE( cmdline_opts )
 

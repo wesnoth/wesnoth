@@ -24,6 +24,7 @@
 #include "map/map.hpp"
 
 #include <iomanip>
+#include <sstream>
 #include <unordered_set>
 
 color_range_map recolor_range(const color_range& new_range, const std::vector<color_t>& old_rgb)

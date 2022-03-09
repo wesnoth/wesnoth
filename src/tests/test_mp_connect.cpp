@@ -25,8 +25,6 @@
 #include "saved_game.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include <boost/assign.hpp>
-
 /* Definitions */
 
 class test_connect_engine : public ng::connect_engine {
