@@ -90,7 +90,7 @@ if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
 endif()
-	
+
 if(MSVC)
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
 	# silence an implicit bitshift conversion warning
@@ -185,7 +185,6 @@ if(ENABLE_GAME)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -232,7 +231,6 @@ if(ENABLE_TESTS)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -281,7 +279,6 @@ if(ENABLE_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -323,7 +320,6 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
