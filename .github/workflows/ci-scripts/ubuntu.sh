@@ -22,6 +22,7 @@ if [ "$IMAGE" == "steamrt" ]; then
 		mv steambuild.tar ~/steambuild-$version.tar
 elif [ "$IMAGE" == "mingw" ]; then
 		git archive --format=tar HEAD > wesnoth.tar
+		tar rf wesnoth.tar src/modules/
 		bzip2 -z wesnoth.tar
 		mv wesnoth.tar.bz2 ~/wesnoth-$version.tar.bz2
 		cd utils/dockerbuilds/
