@@ -59,6 +59,7 @@
 #include <array>
 #include <cmath>
 #include <iomanip>
+#include <numeric>
 #include <utility>
 
 #ifdef _WIN32

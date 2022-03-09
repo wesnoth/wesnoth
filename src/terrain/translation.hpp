@@ -21,7 +21,6 @@
 #include <boost/bimap.hpp>
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
-#include <boost/multi_array.hpp>
 
 #include "exceptions.hpp"
 #include "map/location.hpp"
