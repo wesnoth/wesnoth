@@ -50,6 +50,8 @@ created directory:
     $ tar xvjf wesnoth-<version>.tar.bz2
     $ cd wesnoth-<version>
 
+Alternatively, you can clone this git repository. Since Wesnoth uses submodules, when cloning you must add the `--recurse-submodules` option, or if you have already cloned the repository without using that option then you must run the command `git submodule update --init --recursive`.
+
 The following build systems are fully supported for compiling Wesnoth on Linux,
 *BSD, and other Unix-like platforms:
 
