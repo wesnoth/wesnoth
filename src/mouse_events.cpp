@@ -41,6 +41,7 @@
 #include "units/animation_component.hpp"
 #include "units/ptr.hpp"           // for unit_const_ptr
 #include "units/unit.hpp"          // for unit
+#include "utils/guard_value.hpp"
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 
@@ -777,7 +778,8 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 void mouse_handler::select_or_action(bool browse)
 {
 	// Save a copy of the hex in case the mouse moves in the middle of this handler
-	auto clicked_hex = last_hex_;
+	auto clicked_hex = last_hex_, attack_hex = previous_hex_;
+	auto saved_route = current_route_;
 	if(!pc_.get_map().on_board(clicked_hex)) {
 		tooltips::click(drag_from_x_, drag_from_y_);
 		return;
@@ -804,8 +806,9 @@ void mouse_handler::select_or_action(bool browse)
 	} else {
 		// There's a small chance the last hex has changed since this function began.
 		// Make sure the move applies to the hex that was originally clicked!
-		// TODO: Will this cause problems with previous_hex_?
-		last_hex_ = clicked_hex;
+		utils::guard_value clicked(last_hex_, clicked_hex);
+		utils::guard_value prev(previous_hex_, attack_hex);
+		utils::guard_value route(current_route_, saved_route);
 		move_action(browse);
 	}
 }
