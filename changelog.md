@@ -1,5 +1,6 @@
 ## Version 1.17.1+dev
  ### Add-ons client
+   * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
  ### Add-ons server
  ### Campaigns
  ### Editor
