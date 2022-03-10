@@ -1,6 +1,7 @@
 ## Version 1.16.2+dev
  ### Add-ons client
    * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485)
+   * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
  ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
