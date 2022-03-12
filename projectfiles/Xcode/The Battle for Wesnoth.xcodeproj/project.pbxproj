@@ -228,6 +228,9 @@
 		46EA7A4B258FDC6100043333 /* libboost_context-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; };
 		46EA7A4C258FDC8000043333 /* libboost_context-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; };
 		46EA7A4D258FDC8300043333 /* libboost_coroutine-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B8D258CD3B4004A80EF /* libboost_coroutine-mt.dylib */; };
+		46EB546027DD2FAD00D5CDE8 /* libwebp.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */; };
+		46EB546127DD2FAD00D5CDE8 /* libwebp.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */; };
+		46EB546227DD2FC800D5CDE8 /* libwebp.7.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
@@ -1403,6 +1406,7 @@
 				46406DEF230DA7190069492E /* libvorbis.0.dylib in Copy Frameworks */,
 				91B622101B76C0A600B00E0F /* libgmodule-2.0.0.dylib in Copy Frameworks */,
 				468A5BC2258CD8CD004A80EF /* libboost_program_options-mt.dylib in Copy Frameworks */,
+				46EB546227DD2FC800D5CDE8 /* libwebp.7.dylib in Copy Frameworks */,
 				91B622111B76C0A600B00E0F /* libgobject-2.0.0.dylib in Copy Frameworks */,
 				91B622121B76C0A600B00E0F /* libgraphite2.3.dylib in Copy Frameworks */,
 				468A5BC4258CD8D0004A80EF /* libboost_random-mt.dylib in Copy Frameworks */,
@@ -1600,6 +1604,7 @@
 		46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_attributes.cpp; sourceTree = "<group>"; };
 		46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_methods.cpp; sourceTree = "<group>"; };
 		46E2D99525022D46003D99F3 /* lua_ptr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
+		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = "lib/libwebp.7.dylib"; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
@@ -2866,6 +2871,7 @@
 				EC5C244918EF07B4001FA499 /* libpangoft2-1.0.0.dylib in Frameworks */,
 				464C0371228361B7007D2741 /* libvorbisfile.dylib in Frameworks */,
 				EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */,
+				46EB546027DD2FAD00D5CDE8 /* libwebp.7.dylib in Frameworks */,
 				EC5C244A18EF07B4001FA499 /* libpng16.16.dylib in Frameworks */,
 				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
 				4674EEA024CD207F007C18CE /* libgio-2.0.0.dylib in Frameworks */,
@@ -2933,6 +2939,7 @@
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
 				468A5B9C258CD3B5004A80EF /* libboost_thread-mt.dylib in Frameworks */,
 				4674EE9E24CD1EC1007C18CE /* libfribidi.0.dylib in Frameworks */,
+				46EB546127DD2FAD00D5CDE8 /* libwebp.7.dylib in Frameworks */,
 				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 				46515C322569CE0B00084CE2 /* libssl.1.1.dylib in Frameworks */,
 			);
@@ -3361,6 +3368,7 @@
 				464C0364228361B6007D2741 /* libvorbis.0.dylib */,
 				464C0369228361B7007D2741 /* libvorbisfile.dylib */,
 				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
+				46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
 				B5A5E3AD12132C790047782D /* lua */,
 				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
@@ -4792,7 +4800,7 @@
 				EC89A1201879D17D00A3B0B1 /* ltable.c */,
 				B5A5E3D612132C790047782D /* ltable.h */,
 				EC89A1211879D17D00A3B0B1 /* ltablib.c */,
-				EC89A1221879D17D00A3B0B1 /* ltm.cpp */,
+				EC89A1221879D17D00A3B0B1 /* ltm.c */,
 				B5A5E3D912132C790047782D /* ltm.h */,
 				B5A5E3DB12132C790047782D /* lua.h */,
 				B5A5E3DD12132C790047782D /* luaconf.h */,
