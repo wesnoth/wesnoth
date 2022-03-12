@@ -51,7 +51,11 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 		} else {
 			// We normally use the _info.cfg version instead.
 			t.installed_version = get_addon_version_info(id);
-			t.remote_version = *addon.versions.begin();
+			if(addon.versions.size() > 0) {
+				t.remote_version = *addon.versions.begin();
+			} else {
+				t.remote_version = version_info(0,0,0);
+			}
 		}
 
 		if(t.remote_version == t.installed_version) {
