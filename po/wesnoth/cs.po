@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 13:48+0300\n"
-"PO-Revision-Date: 2022-01-09 14:06+0100\n"
+"PO-Revision-Date: 2022-03-10 22:12+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5121,13 +5121,13 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"Očistné vody oázy uzdraví zraněné. Ohnivá krev podsvětí zastaví nelétavé, "
+"ale těm, kteří ji mohou přeletět, nabídne osvětlení v temnotách."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― král Konrád, 536 w. l.</i>"
+msgstr "<i>― vládce Gorlak, 3 w. l.</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5591,12 +5591,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
-"Na tomto serveru nejsou dostupné žádné aktualizace rozšíření $addon_id."
+"Na serveru s rozšířeními se nepodařilo najít rozšíření odpovídající "
+"identifikátorům $addon_ids."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -6082,6 +6081,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Chyba: [advancefrom] už nefunguje. Jednotky „$lower_level“ nebudou moci "
+"povýšit na „$higher_level“. Požádej prosím autora rozšíření, aby místo toho "
+"použil [modify_unit_type]."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6305,10 +6307,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Znič nepřátelské(ho) vůdce"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Nelze najít éru $era"
+msgstr "Nelze najít éru „$era“"
 
 #: src/game_initialization/multiplayer.cpp:254
 msgid "Invalid address specified for multiplayer server"
@@ -6637,22 +6637,16 @@ msgid "No visible sides found."
 msgstr "Nebyly nalezeny žádné viditelné strany."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
-#, fuzzy
-#| msgid "Save Game"
 msgid "Selected Game"
-msgstr "Uložit hru"
+msgstr "Vybraná hra"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
-#, fuzzy
-#| msgid "In lobby"
 msgid "Lobby"
-msgstr "V čekárně"
+msgstr "Čekárna"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
-#, fuzzy
-#| msgid "Save Game"
 msgid "Other Games"
-msgstr "Uložit hru"
+msgstr "Další hry"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:31
 msgid "Match History — $player"
@@ -7202,6 +7196,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Podobný příkazu „fps“, ale navíc vynutí překreslení všeho, ne jen věcí, "
+"které se změnily."
 
 #: src/menu_events.cpp:1249
 msgid "Save game."
@@ -8121,15 +8117,11 @@ msgstr "Čas na kolo"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %Y, %I:%M"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %Y, %H:%M"
 
@@ -8675,42 +8667,3 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
-
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr ""
-#~ "Některé typy terénu poskytují jedinečné bonusy jako léčení nebo osvětlení."
-
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Galun, velitel letky, 5 w. l.</i>"
-
-#~ msgid "<room>"
-#~ msgstr "<místnost>"
-
-#~ msgid "Join a room."
-#~ msgstr "Vstup do místnosti."
-
-#~ msgid "Part a room."
-#~ msgstr "Rozdělí místnost."
-
-#~ msgid "List room members."
-#~ msgstr "Vypíše hráče v místnosti."
-
-#~ msgid "List available rooms."
-#~ msgstr "Vypíše dostupné místnosti."
-
-#~ msgid "<room> <msg>"
-#~ msgstr "<místnost> <zpráva>"
-
-#~ msgid "Room message."
-#~ msgstr "Pošle zprávu pro celou místnost."
-
-#~ msgid "<room> <type> [value]"
-#~ msgstr "<místnost> <zpráva> [hodnota]"
-
-#~ msgid "Room query."
-#~ msgstr "Odešle místnosti dotaz."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Použij [modify_unit_type]\n"
