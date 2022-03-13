@@ -34,6 +34,7 @@
 			<Add option="-std=c++17" />
 			<Add option="-U__STRICT_ANSI__" />
 			<Add option="-include ../../src/wesnoth_lua_config.h" />
+			<Add option="-x c++" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Unit filename="../../src/modules/lua/lapi.c" />
