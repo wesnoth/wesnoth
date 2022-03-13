@@ -88,6 +88,8 @@ if(WIN32)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
 endif()
 
+set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
+
 # We explicitly want lua compiled as C++ version
 if(MSVC)
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
