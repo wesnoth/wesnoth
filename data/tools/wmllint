@@ -1000,6 +1000,10 @@ linechanges = (
         ("themes/unit_box/misc/time-schedules/default/schedule-underground-illum.png", "misc/time-schedules/schedule-underground-illum.png"),
         ("themes/unit_box/misc/time-schedules/default/tod-schedule-24hrs.png", "misc/time-schedules/tod-schedule-24hrs.png"),
 
+        # Changed in 1.17.2
+        # added support for WebP images and converted an image to this format
+        ("maps/background.jpg", "maps/background.webp"),
+
         )
 
 # helper function to reduce code duplication and allow easy checking
