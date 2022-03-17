@@ -24,48 +24,29 @@ jobs:
     - name: Get maps diff
       id: get-maps-diff
       run: |
-        cd ./utils/wesnoth-map-diff
-
-        ## Get Maps
-        git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
-
-        map_paths=($(git diff --name-only HEAD ${{ github.event.pull_request.base.sha }} | grep ".map$"))
-
-        for map_path in "${map_paths[@]}"
-        do
-          map_filename=$(basename "$map_path")
-          git show ${{ github.event.pull_request.base.sha }}:$map_path > $map_filename
-        done
-
-        ## Run map diff
-        diff_images=()
-
-        for map_path in "${map_paths[@]}"
-        do
-          map_filename=$(basename "$map_path")
-          output_filename=$(echo "$map_filename" | perl -pe 's/map$/png/')
-
-          node ./build/index.js "./$map_filename" "../../$map_path" "./$output_filename"
-
-          diff_images+=("$output_filename")
-        done
-
-        ## Compress images
         sudo apt-get install -y pngquant
-
-        for diff_image in "${diff_images[@]}"
-        do
-          pngquant "$diff_image" -o "$diff_image" --force
-        done
-
-        ## Write comment body
         comment_body=""
 
-        for i in "${!diff_images[@]}"
-        do
-          map_path=${map_paths[$i]}
-          diff_image=${diff_images[$i]}
+        cd ./utils/wesnoth-map-diff
 
+        ## Get maps changed
+        git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
+        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.base.sha }} | grep '\.map$')
+
+        for map_path in "${map_paths[@]}"
+        do
+          ## Get old map version
+          map_filename=${map_path##*/}
+          git show ${{ github.event.pull_request.base.sha }}:"$map_path" > "$map_filename"
+
+          ## Run map diff
+          diff_image=${map_filename%.map}.png
+          node ./build/index.js "./$map_filename" "../../$map_path" "./$diff_image"
+
+          ## Compress image
+          pngquant "$diff_image" -o "$diff_image" --force
+
+          ## Write comment body
           image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
             -F "image=@\"$diff_image\"" | jq ".data.link" -r)
 
