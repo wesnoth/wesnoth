@@ -30,8 +30,8 @@
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
-// To allow using some optional C++20 features (TODO: use the actual C++20 value once that's finalized)
-#if __cplusplus > 201703L
+// To allow using some optional C++20 features
+#if __cplusplus >= 202002L
 #define HAVE_CXX20
 #endif
 
