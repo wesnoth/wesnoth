@@ -17,6 +17,7 @@
 #include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
 #include "formula_variant.hpp"
+#include "utils/any.hpp"
 #include "utils/general.hpp"
 
 #include <functional>
@@ -27,7 +28,6 @@
 #include <utility>
 #include <vector>
 #include <boost/range/iterator_range.hpp>
-#include <boost/any.hpp>
 
 namespace wfl
 {
@@ -143,7 +143,7 @@ public:
 	/**
 	 * Creates an iterator pair that can be used for iteration.
 	 * For an iterable type, it should use the two-argument constructor of variant-iterator,
-	 * passing the underlying iterator as the boost::any parameter.
+	 * passing the underlying iterator as the utils::any parameter.
 	 *
 	 * This creates both the begin and end iterator, but the variant implementation
 	 * discards one of the two.
@@ -156,7 +156,7 @@ public:
 	 *
 	 * @param iter The opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual variant deref_iterator(const boost::any& iter) const;
+	virtual variant deref_iterator(const utils::any& iter) const;
 
 	/**
 	 * Implements the increment functionality of variant_iterator
@@ -164,7 +164,7 @@ public:
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual void iterator_inc(boost::any&) const {}
+	virtual void iterator_inc(utils::any&) const {}
 
 	/**
 	 * Implements the decrement functionality of variant_iterator
@@ -172,7 +172,7 @@ public:
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual void iterator_dec(boost::any&) const {}
+	virtual void iterator_dec(utils::any&) const {}
 
 	/**
 	 * Implements the equality functionality of variant_iterator
@@ -183,7 +183,7 @@ public:
 	 * The first parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 * The second parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const
+	virtual bool iterator_equals(const utils::any& /*first*/, const utils::any& /*second*/) const
 	{
 		return true;
 	}
@@ -340,11 +340,11 @@ public:
 	}
 
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
-	virtual variant deref_iterator(const boost::any& iter) const override;
+	virtual variant deref_iterator(const utils::any& iter) const override;
 
-	virtual void iterator_inc(boost::any& iter) const override;
-	virtual void iterator_dec(boost::any& iter) const override;
-	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const override
+	virtual void iterator_inc(utils::any& iter) const override;
+	virtual void iterator_dec(utils::any& iter) const override;
+	virtual bool iterator_equals(const utils::any& /*first*/, const utils::any& /*second*/) const override
 	{
 		return true; // TODO: implement
 	}
@@ -467,9 +467,9 @@ public:
 	// specializations and leave the deref function to the derived classes.
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
 
-	virtual void iterator_inc(boost::any&) const override;
-	virtual void iterator_dec(boost::any&) const override;
-	virtual bool iterator_equals(const boost::any& first, const boost::any& second) const override;
+	virtual void iterator_inc(utils::any&) const override;
+	virtual void iterator_dec(utils::any&) const override;
+	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
 protected:
 	using mod_func_t = std::function<std::string(const variant&)>;
@@ -510,7 +510,7 @@ public:
 		return type;
 	}
 
-	virtual variant deref_iterator(const boost::any&) const override;
+	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
 	virtual std::string to_string_detail(const variant_vector::value_type& container_val, mod_func_t mod_func) const override
@@ -536,7 +536,7 @@ public:
 		return type;
 	}
 
-	virtual variant deref_iterator(const boost::any&) const override;
+	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
 	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
