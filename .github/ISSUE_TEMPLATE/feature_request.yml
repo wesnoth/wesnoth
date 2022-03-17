@@ -4,23 +4,6 @@ labels: ['Enhancement']
 
 body:
   - type: textarea
-    id: info
-    attributes:
-      label: Game and System Information
-      description: |
-        - What version of the game are you running?
-        - Where did you download it from? (Steam, Mac App Store, our website, built from source, etc.)
-        - If you're using a custom build, what compiler did you use, and what commit did you build at?
-        - What OS are you running?
-      value: |
-        - **Version:**
-        - **Downloaded from:**
-        - **Build info:**
-        - **OS:**
-    validations:
-      required: true
-
-  - type: textarea
     id: description
     attributes:
       label: Describe the desired feature
