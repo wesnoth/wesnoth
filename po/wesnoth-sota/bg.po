@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 20:52 UTC\n"
-"PO-Revision-Date: 2021-04-29 14:46+0300\n"
-"Last-Translator: Стивън Генчев <stivun.genchev@abv.bg>\n"
+"PO-Revision-Date: 2021-12-13 16:38+0200\n"
+"Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: \n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -98,37 +98,37 @@ msgstr "Допълнителни изображения"
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
 msgid "Lvl 0"
-msgstr ""
+msgstr "Ниво 0"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
 msgid "Undead"
-msgstr ""
+msgstr "Немъртъв"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
 msgid "Traits"
-msgstr ""
+msgstr "Качества"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
 msgid "Attacks"
-msgstr ""
+msgstr "Атакува"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
 msgid "Choose a Corpse"
-msgstr ""
+msgstr "Изберете труп"
 
 #. [button]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
 msgid "Recruit"
-msgstr ""
+msgstr "Набиране"
 
 #. [button]: id=cancel
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
 msgid "Cancel"
-msgstr ""
+msgstr "Отказ"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -324,6 +324,9 @@ msgid ""
 "killed and not immediately raised as a corpse, its corpse type will be "
 "permanently added to the recruit list instead."
 msgstr ""
+"<span color='cyan'>Важна забележка: </span>По време на тази кампания, ако "
+"дадена единица загине и не бъде незабавно възкресена като труп, този труп ще "
+"бъде добавен към наборния списък за постоянно."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:327
@@ -450,7 +453,7 @@ msgid ""
 "  Temple\n"
 "of Healing"
 msgstr ""
-"Лечебен\n"
+" Лечебен\n"
 "храм"
 
 #. [event]
@@ -871,6 +874,15 @@ msgstr "Усмирение"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:25
+#, fuzzy
+#| msgid ""
+#| "22 III, 23 YW\n"
+#| "\n"
+#| "Research sometimes requires experiments, so I began.  I knew the bandit "
+#| "had intended to rob me, and once I had killed his beloved, he had "
+#| "intended to torture and kill me.  Now that I was in control, he was "
+#| "afraid and defensive, and while his hatred of me was unabated, his desire "
+#| "to live made him somewhat malleable."
 msgid ""
 "22 III, 23 YW\n"
 "\n"
@@ -880,9 +892,31 @@ msgid ""
 "and while his hatred of me was unabated, his desire to live made him "
 "somewhat malleable."
 msgstr ""
+"22 III, 23 УГ:\n"
+"\n"
+"Проучването понякога изисква експерименти, затова започнах. Знаех, че "
+"бандитът е искал да ме обере и, ако бях убил любимата му, щеше да ме измъчва "
+"и убие. Сега, когато контролът бе в моите ръце, той се страхуваше и се "
+"защитаваше. Макар че омразата му не стихваше, жаждата му за живот го правеше "
+"по-податлив."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
+#, fuzzy
+#| msgid ""
+#| "I passed him a wineskin, to put him at ease. He eyed me suspiciously, "
+#| "then took a sip, calculating my intentions. I then placed a portion of my "
+#| "gold resources on the table, and his eyes locked upon it.\n"
+#| "\n"
+#| "I then placed upon the table a ring stripped off the bandit named "
+#| "'Mossa', his beloved partner in crime.  His gaze shifted from the gold to "
+#| "the ring, and then quickly to my eyes.  Had he not been tied to the "
+#| "chair, he would have attacked me.\n"
+#| "\n"
+#| "I added more gold to the pile, but he didn't notice, he only glared at me "
+#| "with such hatred.  The hunger for vengeance radiated off of him like heat "
+#| "from a thousand suns - I could feel it more strongly than the fear or "
+#| "hunger from any of my pets..."
 msgid ""
 "I passed him a wineskin, to put him at ease. He eyed me suspiciously, then "
 "took a sip, calculating my intentions. I then placed a portion of my gold "
@@ -898,9 +932,34 @@ msgid ""
 "thousand suns — I could feel it more strongly than the fear or hunger from "
 "any of my pets..."
 msgstr ""
+"Подадох му мех с вино, за да се отпусне. Той ме огледа подозрително и отпи, "
+"докато премисляше намеренията ми. После поставих част от златото си на "
+"масата, което веднага привлече погледа му.\n"
+"\n"
+"Тогава на масата поставих и пръстен, свален от бандит на име 'Моса', "
+"неговата възлюбена престъпничка. Погледът му се премести от златото на "
+"пръстена, после скочи върху очите ми. Ако не беше завързан за стола, щеше да "
+"ме нападне.\n"
+"\n"
+"Добавих още злато към купчината, но той не забеляза това. Продължаваше да се "
+"взира в мен с омраза. Жаждата за отмъщение се излъчваше от него като "
+"излъчването на хиляда слънца - усещах го по-силно от страха или глада на "
+"питомниците ми."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
+#, fuzzy
+#| msgid ""
+#| "This rich vein into the life-force of the bandit was like nothing I had "
+#| "ever seen, but I knew enough to bend his hunger to my will. With further "
+#| "study, I may one day be able to stop it there, but today I could not: The "
+#| "single-minded hunger consumed the man, it was all I could do to control "
+#| "its direction!\n"
+#| "\n"
+#| "The bandit howled, thrashed, tore at his clothes and bindings, eventually "
+#| "digging into his own flesh.  Eventually, when all but the hunger had been "
+#| "flensed from his being, he calmed down.  Now hairless, bloody, naked, and "
+#| "unthinking, the bandit was unrecognizable as the man he once was."
 msgid ""
 "This rich vein into the life-force of the bandit was like nothing I had ever "
 "seen, but I knew enough to bend his hunger to my will. With further study, I "
@@ -913,6 +972,14 @@ msgid ""
 "flensed from his being, he calmed down. Now hairless, bloody, naked, and "
 "unthinking, the bandit was unrecognizable as the man he once was."
 msgstr ""
+"Този залеж от животворна сила в бандита беше непознат за мен, но аз знаех "
+"как да подчиня глада му на волята си. С повече опити, можех да го спра още "
+"тогава, но днес не можах: гладът погълна човека и аз не успях да го удържа!\n"
+"\n"
+"Бандитът се разкрещя, мяташе се, късаше си дрехите, докато най-после започна "
+"да раздира кожата си. Когато всичко, освен глада, бе изтръгнато от него, той "
+"се успокои. Той остана обезкосмен, окървавен, гол и немислещ, една останка "
+"от някогашният мъж."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:93
@@ -922,6 +989,10 @@ msgid ""
 "could. In some ways, this experiment was a failure, but the creature it "
 "created would be useful..."
 msgstr ""
+"Без съмнение останките на ума в главата му се противяха на това, в което се "
+"бе превърнал, но бандитът беше моя кукла и съших раните му доколкото можах. "
+"В някакъв смисъл, експериментът беше провал, но създаденото творение щеше да "
+"бъде полезно..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:100
@@ -2298,7 +2369,7 @@ msgstr "Бойното поле"
 #| msgid ""
 #| "11 IV, 23 YW\n"
 #| "\n"
-#| "Rastaban seems like an acceptable ally. He is quite different from the "
+#| "Ras-Tabahn seems like an acceptable ally. He is quite different from the "
 #| "stodgy teachers at the academy who were so full of themselves and loved "
 #| "to hear themselves talk. He also never once disparaged me for being a "
 #| "girl or even mentioned my hair. As long as he continues to respect me, "
@@ -2320,7 +2391,7 @@ msgstr ""
 "Академията, които се имат за голяма работа и са влюбени в гласовете си. Той "
 "нито веднъж не се опита да ме обезсърчи, задето съм момиче и дори не спомена "
 "косата ми. Стига да продължи да ме уважава, всичко ще бъде наред. А, ако не, "
-"аз съм заобиколена от останките на всички, които мислеха, че съм слаба."
+"аз съм заобиколена от останките на всички, които ме мислеха за слаба."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:27
@@ -3138,7 +3209,7 @@ msgstr "Грифони... гнездят по тези места. Трябва 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:363
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "Дааа. Опасссността, която усещах, е тук."
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:9
@@ -4032,12 +4103,12 @@ msgstr "Добра среща, Физзцарс. Сега тези създан�
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:588
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "Осссвен нашата мъжка твар ссс тях. Той ще дойде ссс нассс."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
 msgid "No! I will not return yet, I still have sssecrets to learn!"
-msgstr ""
+msgstr "Не! Все още имам тайни за иззучаване, не мога да сссе върна!"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
@@ -4402,24 +4473,24 @@ msgstr ""
 #. and some fly.
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:92
 msgid "All Corpses"
-msgstr ""
+msgstr "Всички трупове"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:104
 msgid "Choose this “unit” to get a list of available corpses."
-msgstr ""
+msgstr "Изберете тази \"единица\", за да получите списък с достъпните трупове."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:156
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
 msgid "Flying Corpse"
-msgstr ""
+msgstr "Летящ труп"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:204
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "Плаващ труп"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4525,32 +4596,36 @@ msgstr "Ще ми липсваш."
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
-msgstr ""
+msgstr "Сссега никога няма да науча как да увелича сссъщесствуването ссси."
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
+#, fuzzy
+#| msgid "I'm going to miss him."
 msgid "I’m going to miss him."
-msgstr ""
+msgstr "Той ще ми липсва."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "Колко жалко. Той беше полезен."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "Наистина, беше от полза."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "Да, ще ни липсва."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:375
+#, fuzzy
+#| msgid "Don't worry, my pet. I can save you."
 msgid "Don’t worry, my pet. I can save you."
-msgstr ""
+msgstr "Не се тревожи, любими. Аз ще те спася."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:431
@@ -4799,225 +4874,175 @@ msgstr "Полубездна"
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
 msgid "recruit^Flying Corpse (Bat)"
-msgstr ""
+msgstr "Летящ труп (Прилеп)"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise bat corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на прилепи!"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Rat)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Плъх)"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise rat corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на плъхове!"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Вълк)"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wolf corpses!"
-msgstr "Сега можете да наемате чококости!"
+msgstr "Вече можете да съживявате трупове на вълци!"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Human)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Човек)"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise human corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на хора!"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Ездач)"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise mounted corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на ездачи!"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Вълчи ездач)"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise wolf rider corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на ездачи на вълци!"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
 msgid "recruit^Swimming Corpse"
-msgstr ""
+msgstr "Плаващ труп"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:64
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise swimming corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате плаващи трупове!"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr ""
+msgstr "Ходещ труп (Саурианец)"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise saurian corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на саурианци!"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wose)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Уз)"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wose corpses!"
-msgstr "Сега можете да наемате чококости!"
+msgstr "Вече можете да съживявате трупове на узове!"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Goblin)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Гоблин)"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
-#, fuzzy
-#| msgid "You can now recruit ghouls!"
 msgid "You can now raise goblin corpses!"
-msgstr "Вече може да наемате гулове!"
+msgstr "Вече можете да съживявате трупове на гоблини!"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr ""
+msgstr "Ходещ труп (Грифон)"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise gryphon corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на грифони!"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Паяк)"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise spider corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на паяци!"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Troll)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Трол)"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise troll corpses!"
-msgstr "Вече можете да наемате призраци!"
+msgstr "Вече можете да съживявате трупове на тролове!"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Dwarf)"
-msgstr "Съживяване на Ходещ труп (8 злато)"
+msgstr "Ходещ труп (Джудже)"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
-#, fuzzy
-#| msgid "You can now recruit dark adepts!"
 msgid "You can now raise dwarf corpses!"
-msgstr "Сега можете да наемате Тъмни послушници!"
+msgstr "Вече можете да съживявате трупове на джуджета!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:372
 msgid "A lua error has occurred, and a corpse cannot be recruited."
-msgstr ""
+msgstr "Възникна грешка с програмния код и трупът не може да бъде нает."
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "HP: "
-msgstr ""
+msgstr "ТЖ: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "MP: "
-msgstr ""
+msgstr "ТД: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:24
 msgid "XP: "
-msgstr ""
+msgstr "ТО: "
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:89
 msgid "There are no corpses available."
-msgstr ""
+msgstr "Няма достъпни трупове."
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:97
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Нямате достатъчно злато, за да съживите тази единица."
+msgstr "Нямате достатъчно злато, за да наемете тази единица"
 
 #~ msgid "You can now recruit skeletons and skeleton archers!"
 #~ msgstr "Вече можете да наемете скелети и скелети-стрелци!"

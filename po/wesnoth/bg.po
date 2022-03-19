@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-16 21:00+0300\n"
-"PO-Revision-Date: 2021-07-01 16:12+0300\n"
-"Last-Translator: Стивън Генчев <stivun.genchev@abv.bg>\n"
+"PO-Revision-Date: 2022-03-16 16:54+0200\n"
+"Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Bookmarks: 811,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -137,16 +137,12 @@ msgstr "Показване на всички единици в помощния 
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:111
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Показване на всички единици в помощния прозорец (необходим е рестарт). Това "
-"не видоизменя списъка със срещнати единици"
+"Показване на всички единици в помощния прозорец (необходим е рестарт). "
+"Виждат се само единици, които са срещнати в играта."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:118
@@ -393,10 +389,8 @@ msgstr "Африкански превод"
 
 #. [about]
 #: data/core/about_i18n.cfg:26
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Гръцки превод"
+msgstr "Древно-гръцки превод"
 
 #. [about]
 #: data/core/about_i18n.cfg:34
@@ -460,7 +454,6 @@ msgstr "Английски (Великобритания) превод"
 
 #. [about]
 #: data/core/about_i18n.cfg:456
-#, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Превод на английски (Великобритания)"
 
@@ -662,9 +655,8 @@ msgstr "Виетнамски превод"
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
 #: data/core/about_i18n.cfg:1852
-#, fuzzy
 msgid "RACV’s Translation"
-msgstr "Превод на китайски"
+msgstr "Превод на валенсиански /Валенсия/"
 
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:6
@@ -790,7 +782,7 @@ msgstr "Малък щит"
 #. [item]: id=burial
 #: data/core/editor/items.cfg:168
 msgid "Burial"
-msgstr ""
+msgstr "Погребение"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:174

@@ -13,18 +13,15 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2007-08-21 17:39+0300\n"
-"Last-Translator: Denica <dmincheva2002@gmail.com>\n"
+"PO-Revision-Date: 2022-03-16 17:15+0200\n"
+"Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Bulgarian\n"
-"X-Poedit-Country: BULGARIA\n"
-"X-Poedit-Bookmarks: 811,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -1203,9 +1200,8 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:52
-#, fuzzy
 msgid "Green Isle"
-msgstr "Зелен"
+msgstr "Зеления остров"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
@@ -1316,7 +1312,7 @@ msgstr ""
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:106
 msgid "Elensefar"
-msgstr ""
+msgstr "Еленсефар"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -1416,9 +1412,8 @@ msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Планини"
+msgstr "Сърцатите планини"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:155
@@ -1431,7 +1426,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:160
 msgid "Far North"
-msgstr ""
+msgstr "Далечен север"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:161
@@ -1735,7 +1730,7 @@ msgstr ""
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Победа и загуба"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
@@ -3934,6 +3929,9 @@ msgid ""
 "Adds the specified amount to the current side’s gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Добавя избраното количество злато към златото на настоящата страна.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:776
@@ -4594,7 +4592,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "Поема"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -4626,10 +4624,8 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:566
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
-msgstr "бързак"
+msgstr "Първи удар"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:567
@@ -4676,45 +4672,33 @@ msgstr ""
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - първи час"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:230
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - втори час"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:242
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - трети час"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:254
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - четвърти час"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:266
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - пети час"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:278
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Втора стража"
+msgstr "Втора стража - шести час"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:302
@@ -6842,9 +6826,8 @@ msgid "Abilities: "
 msgstr "Умения: "
 
 #: src/help/help_topic_generators.cpp:498
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Умения: "
+msgstr "Ъпрейд на умения:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6901,8 +6884,6 @@ msgstr "Уклон: "
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:559
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Необходим опит: "
 
