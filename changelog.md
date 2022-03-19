@@ -11,7 +11,7 @@
    * Lua is now a submodule. (PR #6549)
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech
+   * Updated translations: British English, Bulgarian, Czech
  ### Units
  ### User interface
  ### WML Engine
