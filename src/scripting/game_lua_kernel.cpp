@@ -2375,11 +2375,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			loc = luaW_checklocation(L, -1);
 		}
 		if(luaW_tableget(L, 2, "halign")) {
-			const char* options[] = {"left", "center", "right"};
+			static const char* options[] = {"left", "center", "right"};
 			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
 		if(luaW_tableget(L, 2, "valign")) {
-			const char* options[] = {"top", "center", "bottom"};
+			static const char* options[] = {"top", "center", "bottom"};
 			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
 	}
@@ -2422,6 +2422,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			// The size * 1.5 adjustment avoids the text being cut off if placed at y = 0
 			// This is necessary because the text is positioned by the top edge but we want it to
 			// seem like it's positioned by the bottom edge.
+			// This wouldn't work for multiline text, but we don't expect that to be common in this API anyway.
 			y = rect.y + rect.h - loc.wml_y() - static_cast<int>(size * 1.5);
 			break;
 	}
