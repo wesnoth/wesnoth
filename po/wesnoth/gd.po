@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 13:48+0300\n"
+"POT-Creation-Date: 2022-03-20 06:46+0300\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -216,7 +216,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
 msgid "poisoned"
 msgstr "puinseanaichte"
 
@@ -259,7 +259,7 @@ msgid "blade"
 msgstr "lann"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
-#: src/units/alignment.hpp:23
+#: src/units/types.cpp:842
 msgid "chaotic"
 msgstr "coimeasgach"
 
@@ -300,7 +300,7 @@ msgid "impact"
 msgstr "bualadh"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
-#: src/units/alignment.hpp:21
+#: src/units/types.cpp:842
 msgid "lawful"
 msgstr "dligheach"
 
@@ -390,7 +390,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Luchd-taice measgaichte"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1823
 msgid "Bots"
 msgstr "Botaichean"
 
@@ -4142,31 +4142,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
 msgid "female^poisoned"
 msgstr "puinseanaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
 msgid "female^slowed"
 msgstr "maille oirre"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
 msgid "slowed"
 msgstr "maille air"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
 msgid "female^petrified"
 msgstr "na clach"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
 msgid "petrified"
 msgstr "na chlach"
 
@@ -4182,8 +4182,8 @@ msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3036
-#: src/scripting/game_lua_kernel.cpp:3071
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
+#: src/scripting/game_lua_kernel.cpp:3068
 msgid "input"
 msgstr "ion-chur"
 
@@ -5364,7 +5364,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "air taghadh àrdachaidh"
 
-#: src/actions/attack.cpp:603 src/actions/attack.cpp:1365
+#: src/actions/attack.cpp:604 src/actions/attack.cpp:1366
 msgid "An invalid attacker weapon got selected."
 msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
@@ -5474,19 +5474,19 @@ msgstr[3] "$friends aonad càirdeil air fàire"
 msgid "(press $hotkey to keep moving)"
 msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
-#: src/addon/client.cpp:77
+#: src/addon/client.cpp:78
 msgid "Connecting to $server_address|..."
 msgstr "A’ ceangal ri $server_address|…"
 
-#: src/addon/client.cpp:124
+#: src/addon/client.cpp:125
 msgid "Downloading list of add-ons..."
 msgstr "A’ luchdadh a-nuas liosta dhe na tuilleadain…"
 
-#: src/addon/client.cpp:145
+#: src/addon/client.cpp:146
 msgid "Requesting distribution terms..."
 msgstr "Ag iarraidh teirmichean an sgaoilidh…"
 
-#: src/addon/client.cpp:169
+#: src/addon/client.cpp:170
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5494,7 +5494,7 @@ msgstr ""
 "Tha is mì-dhligheach “$addon_id” aig an tuilleadan <i>$addon_title</i> is "
 "cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:181
+#: src/addon/client.cpp:182
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5502,7 +5502,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain sa bheil caractar mì-dhligheach aig an "
 "tuilleadan <i>$addon_title</i> is cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:189
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5519,7 +5519,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:200
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5529,28 +5529,28 @@ msgstr ""
 "san tuilleadan <i>$addon_title</i>. Feumaidh diofar eile seach litrichean "
 "mòra is beaga a bhith ann eadar ainmean."
 
-#: src/addon/client.cpp:215
+#: src/addon/client.cpp:216
 msgid "Requesting file index..."
 msgstr "Ag iarraidh inneacs nam faidhlichean…"
 
-#: src/addon/client.cpp:231
+#: src/addon/client.cpp:232
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "A’ cur pacaid ùrachaidh airson an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:252
+#: src/addon/client.cpp:253
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:295
+#: src/addon/client.cpp:299
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr ""
 "A’ toirt air falbh an tuilleadain <i>$addon_title</i> on fhrithealaiche…"
 
-#: src/addon/client.cpp:324
+#: src/addon/client.cpp:328
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "A’ luchdadh a-nuas an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:343 src/addon/client.cpp:369
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5558,7 +5558,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain mì-dhligheach aig an tuilleadan <i>$addon_title</"
 "i> is cha ghabh e stàladh."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:374
+#: src/addon/client.cpp:352 src/addon/client.cpp:378
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5567,11 +5567,11 @@ msgstr ""
 "nach eil diofar seach litrichean mòra is beaga. Dh’fhaoidte gun adhbharaich "
 "seo trioblaid."
 
-#: src/addon/client.cpp:407
+#: src/addon/client.cpp:411
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/addon/client.cpp:462
+#: src/addon/client.cpp:466
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5595,11 +5595,11 @@ msgstr[3] ""
 "stàlaichte agad ’s nach eil ri fhaighinn air an fhrithealaiche. A bheil thu "
 "airson leantainn air adhart?"
 
-#: src/addon/client.cpp:471
+#: src/addon/client.cpp:475
 msgid "Broken Dependencies"
 msgstr "Eisimeileachdan briste"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:515
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5619,11 +5619,11 @@ msgstr[3] ""
 "Cha b’ urrainn dhuinn na h-eisimeileachdan a leanas a stàladh. A bheil thu "
 "airson leantainn air adhart co-dhiù?"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:519
 msgid "Dependencies Installation Failed"
 msgstr "Dh’fhàillig le stàladh nan eisimeileachdan"
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:542
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5631,24 +5631,24 @@ msgstr ""
 "Tha an tuilleadan “$addon|” stàlaichte agad mar-thà agus tha fiosrachadh a "
 "bharrachd ’na bhroinn a chailleas tu ma leanas tu air adhart:"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:546
 msgid "Publishing information file (.pbl)"
 msgstr "Faidhle fiosrachadh an fhoillseachaidh (.pbl)"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:550
 msgid "Version control system (VCS) information"
 msgstr "Fiosrachadh siostam smachd nan tionndaidhean (VCS)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:554
 msgid "Do you really wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/addon/client.cpp:552 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Dearbhaich"
 
-#: src/addon/client.cpp:692
+#: src/addon/client.cpp:696
 msgid "Add-ons Manager"
 msgstr "Manaidsear nan tuilleadan"
 
@@ -6411,53 +6411,53 @@ msgstr "Gun_ainm"
 msgid "Reserved"
 msgstr "Glèidhte"
 
-#: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:664
+#: src/game_initialization/create_engine.cpp:75
+#: src/game_initialization/create_engine.cpp:665
 msgid "Map could not be loaded: "
 msgstr "Cha b’ urrainn dhuinn am mapa a luchdadh: "
 
-#: src/game_initialization/create_engine.cpp:78
+#: src/game_initialization/create_engine.cpp:79
 msgid "Map could not be loaded."
 msgstr "Cha b’ urrainn dhuinn am mapa a luchdadh."
 
-#: src/game_initialization/create_engine.cpp:95
+#: src/game_initialization/create_engine.cpp:96
 msgid "not available."
 msgstr "chan eil seo ri fhaighinn."
 
-#: src/game_initialization/create_engine.cpp:150
+#: src/game_initialization/create_engine.cpp:151
 msgid "Custom map."
 msgstr "Mapa gnàthaichte."
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:492
 msgid "Failed to resolve dependencies"
 msgstr "Cha deach leinn na h-eisimeileachdan fhuasgladh"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:492
 msgid "OK"
 msgstr "Ceart ma-thà"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:517
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 "Cha b’ urrainn dhuinn an cnàmh-sgeul a ghnìomhachadh. Tha eisimeileachdan a "
 "dhìth:"
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:571
+#: src/game_initialization/depcheck.cpp:694
 msgid "No compatible eras found."
 msgstr "Cha deach linn co-chòrdail a lorg."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:586
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 "Cha b’ urrainn dhuinn an linn a ghnìomhachadh. Tha eisimeileachdan a dhìth:"
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:639
+#: src/game_initialization/depcheck.cpp:731
 msgid "No compatible scenarios found."
 msgstr "Cha deach cnàmh-sgeul co-chòrdail a lorg"
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:668
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -6465,8 +6465,8 @@ msgstr ""
 "Chan eil na h-atharraichean uile co-chòrdail ri chèile. Thèid feadhainn "
 "dhiubh a chur à gnìomh."
 
-#: src/game_initialization/depcheck.hpp:315
-#: src/game_initialization/depcheck.hpp:327
+#: src/game_initialization/depcheck.hpp:309
+#: src/game_initialization/depcheck.hpp:321
 msgid "A component"
 msgstr "Co-phàirt"
 
@@ -7006,94 +7006,94 @@ msgstr "air"
 msgid "Reference to unknown topic: "
 msgstr "Iomradh dha chuspair nach aithne dhuinn: "
 
-#: src/help/help_impl.cpp:409
+#: src/help/help_impl.cpp:408
 msgid "Only available during a scenario."
 msgstr "Chan eil seo ri fhaighinn ach ann an cnàmh-sgeulan."
 
-#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
+#: src/help/help_impl.cpp:409 src/help/help_impl.cpp:445
 msgid "Time of Day Schedule"
 msgstr "Sgeideal àm dhen latha"
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:436
 msgid "Lawful Bonus:"
 msgstr "Duais dligheachd:"
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:437
 msgid "Neutral Bonus:"
 msgstr "Duais neodrachd:"
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:438
 msgid "Chaotic Bonus:"
 msgstr "Duais coimeasgachd:"
 
-#: src/help/help_impl.cpp:440
+#: src/help/help_impl.cpp:439
 msgid "Liminal Bonus:"
 msgstr "Duais stairsnich:"
 
-#: src/help/help_impl.cpp:441
+#: src/help/help_impl.cpp:440
 msgid "Schedule"
 msgstr "Sgeideal"
 
-#: src/help/help_impl.cpp:533
+#: src/help/help_impl.cpp:532
 msgid "<header>text='Units with this special attack'</header>"
 msgstr ""
 "<header>text='Aonadan aig a bheil an ionnsaigh shònraichte seo'</header>"
 
-#: src/help/help_impl.cpp:597
+#: src/help/help_impl.cpp:596
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Aonadan aig a bheil an comas seo'</header>"
 
-#: src/help/help_impl.cpp:627
+#: src/help/help_impl.cpp:626
 msgid "Era:"
 msgstr "Linn:"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 msgid "Factions"
 msgstr "Buidhnean"
 
-#: src/help/help_impl.cpp:683
+#: src/help/help_impl.cpp:682
 msgid "Races: "
 msgstr "Cinnidhean: "
 
-#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
+#: src/help/help_impl.cpp:691 src/help/help_impl.cpp:1055
 msgid "Alignments: "
 msgstr "Co-thaobhaidhean: "
 
-#: src/help/help_impl.cpp:699
+#: src/help/help_impl.cpp:698
 msgid "Leaders"
 msgstr "Ceannardan"
 
-#: src/help/help_impl.cpp:708
+#: src/help/help_impl.cpp:707
 msgid "Recruits"
 msgstr "Luchd air trusadh"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:769 src/units/types.cpp:488
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
-#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
+#: src/help/help_impl.cpp:773 src/help/help_impl.cpp:775
 msgid "Availability: "
 msgstr "Faotainneachd: "
 
-#: src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:773
 msgid "Must-have"
 msgstr "Glè chudromach"
 
-#: src/help/help_impl.cpp:776
+#: src/help/help_impl.cpp:775
 msgid "Unavailable"
 msgstr "Chan eil seo ri fhaighinn"
 
-#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
+#: src/help/help_impl.cpp:855 src/help/help_impl.cpp:1032
 msgid "race^Miscellaneous"
 msgstr "Measgaichte"
 
-#: src/help/help_impl.cpp:1056 src/reports.cpp:384
+#: src/help/help_impl.cpp:1055 src/reports.cpp:385
 msgid "Alignment: "
 msgstr "Co-thaobhadh: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1075
+#: src/help/help_impl.cpp:1074
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
@@ -7101,23 +7101,23 @@ msgstr ""
 "Seo buidhean de dh’aonadan agus ’s e <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref> a th’ annta uile"
 
-#: src/help/help_impl.cpp:1080
+#: src/help/help_impl.cpp:1079
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Fo-bhuidhnean de dh’aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1082
+#: src/help/help_impl.cpp:1081
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Buidhnean de dh’aonadan sa chinneadh seo'</header>"
 
-#: src/help/help_impl.cpp:1091
+#: src/help/help_impl.cpp:1090
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1093
+#: src/help/help_impl.cpp:1092
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Aonadan aig a’ chinneadh seo'</header>"
 
-#: src/help/help_impl.cpp:1414
+#: src/help/help_impl.cpp:1413
 msgid "corrupted original file"
 msgstr "faile tùsach coirbte"
 
@@ -7883,18 +7883,6 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "Chan eil arm feumail air an aonad seo."
 
-#: src/mp_game_settings.hpp:73
-msgid "Independent"
-msgstr "Neo-eisimeileach"
-
-#: src/mp_game_settings.hpp:74
-msgid "No Mirror"
-msgstr "Gun sgàthan"
-
-#: src/mp_game_settings.hpp:75
-msgid "No Ally Mirror"
-msgstr "Gun sgàthan caidreabhach"
-
 #: src/mp_ui_alerts.cpp:88
 msgid "A game ($name|, $scenario|) has been created"
 msgstr "Chaidh geama ($name|, $scenario|) a chruthachadh"
@@ -8094,31 +8082,31 @@ msgstr "Tha an geama deiseil."
 msgid "It is now $name|’s turn"
 msgstr "’S e an cuairt aig $name an-dràsta."
 
-#: src/playturn.cpp:279
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr "Thoir an smachd dhan chaidreabhach $player aca"
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:287
 msgid "Give control to observer $player"
 msgstr "Thoir an smachd dhan amharc $player"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "Cuir IF ’na àite"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "Cuir cluicheadair ionadail ’na àite"
 
-#: src/playturn.cpp:295
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr "Cuir an taobh ’na thàmh"
 
-#: src/playturn.cpp:296
+#: src/playturn.cpp:295
 msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
-#: src/playturn.cpp:300
+#: src/playturn.cpp:299
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8134,45 +8122,45 @@ msgstr "Fàg an-seo"
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fhàgail?"
 
-#: src/reports.cpp:173 src/savegame.cpp:430
+#: src/reports.cpp:174 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Ainm: "
 
-#: src/reports.cpp:194
+#: src/reports.cpp:195
 msgid "Type: "
 msgstr "Seòrsa: "
 
-#: src/reports.cpp:197
+#: src/reports.cpp:198
 msgid "Special Notes:"
 msgstr "Nòtaichean sònraichte:"
 
-#: src/reports.cpp:220
+#: src/reports.cpp:221
 msgid "Race: "
 msgstr "Cinneadh: "
 
-#: src/reports.cpp:239
+#: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "Taobh: <b>$side_name</b> ($color_name)"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:318
 msgid "Trait: "
 msgstr "Feart: "
 
-#: src/reports.cpp:340
+#: src/reports.cpp:341
 msgid "invisible: "
 msgstr "neo-fhaicsinneach: "
 
-#: src/reports.cpp:341
+#: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Tha an t-aonad seo neo-fhaicsinneach. Cha ghabh fhaicinn no ionnsaigh a "
 "thoirt air le aonadan nàmhad."
 
-#: src/reports.cpp:344
+#: src/reports.cpp:345
 msgid "slowed: "
 msgstr "maille air: "
 
-#: src/reports.cpp:345
+#: src/reports.cpp:346
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -8180,11 +8168,11 @@ msgstr ""
 "Chaidh maille a chur air an aonad seo. Cha dèan e ach leth-dhochann ann an "
 "ionnsaighean is cha ghluais e ach leth-shlighe."
 
-#: src/reports.cpp:348
+#: src/reports.cpp:349
 msgid "poisoned: "
 msgstr "puinseanaichte: "
 
-#: src/reports.cpp:349
+#: src/reports.cpp:350
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8199,149 +8187,149 @@ msgstr ""
 "Cha tèid aonadan a mharbhadh le puinnsean a-mhàin. Cha tèid na puingean-"
 "beatha aige nas ìsle na 1 PhBh."
 
-#: src/reports.cpp:352
+#: src/reports.cpp:353
 msgid "petrified: "
 msgstr "na clach: "
 
-#: src/reports.cpp:353
+#: src/reports.cpp:354
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Chaidh an t-aonad seo a thionndadh gu cloich. Chan urrainn dha gluasad no "
 "ionnsaigh a thoirt."
 
-#: src/reports.cpp:431
+#: src/reports.cpp:432
 msgid "Ability: "
 msgstr "Comas: "
 
-#: src/reports.cpp:433 src/reports.cpp:961
+#: src/reports.cpp:434 src/reports.cpp:962
 msgid " (inactive)"
 msgstr " (neo-ghnìomhach)"
 
-#: src/reports.cpp:496
+#: src/reports.cpp:497
 msgid "Resistances: "
 msgstr "Comasan-seasaimh: "
 
-#: src/reports.cpp:498
+#: src/reports.cpp:499
 msgid "(Att / Def)"
 msgstr "(Ionns / Dìon"
 
-#: src/reports.cpp:529
+#: src/reports.cpp:530
 msgid "Experience Modifier: "
 msgstr "Atharraichear eòlais: "
 
-#: src/reports.cpp:579
+#: src/reports.cpp:580
 msgid "Terrain: "
 msgstr "Cruth-tìre: "
 
-#: src/reports.cpp:596
+#: src/reports.cpp:597
 msgid "maximum^max."
 msgstr "as motha"
 
-#: src/reports.cpp:596
+#: src/reports.cpp:597
 msgid "minimum^min."
 msgstr "as lugha"
 
-#: src/reports.cpp:601
+#: src/reports.cpp:602
 msgid "Defense: "
 msgstr "Dìon: "
 
-#: src/reports.cpp:636 src/reports.cpp:637
+#: src/reports.cpp:637 src/reports.cpp:638
 msgid "vision:"
 msgstr "lèirsinn:"
 
-#: src/reports.cpp:641 src/reports.cpp:642
+#: src/reports.cpp:642 src/reports.cpp:643
 msgid "jamming:"
 msgstr "casg:"
 
-#: src/reports.cpp:671
+#: src/reports.cpp:672
 msgid "Movement Costs:"
 msgstr "Cosgais ghluasaid:"
 
-#: src/reports.cpp:796 src/reports.cpp:1050 src/reports.cpp:1062
+#: src/reports.cpp:797 src/reports.cpp:1051 src/reports.cpp:1063
 msgid "Weapon: "
 msgstr "Arm: "
 
-#: src/reports.cpp:797 src/reports.cpp:1051
+#: src/reports.cpp:798 src/reports.cpp:1052
 msgid "Damage: "
 msgstr "Dochann: "
 
-#: src/reports.cpp:801
+#: src/reports.cpp:802
 msgid "Base damage: "
 msgstr "Dochann bunasach: "
 
-#: src/reports.cpp:803 src/reports.cpp:837 src/reports.cpp:847
+#: src/reports.cpp:804 src/reports.cpp:838 src/reports.cpp:848
 msgid "With specials: "
 msgstr "Le feartan sònraichte: "
 
-#: src/reports.cpp:806
+#: src/reports.cpp:807
 msgid "Time of day: "
 msgstr "Àm dhen latha: "
 
-#: src/reports.cpp:810
+#: src/reports.cpp:811
 msgid "Leadership: "
 msgstr "Ceannardas: "
 
-#: src/reports.cpp:814
+#: src/reports.cpp:815
 msgid "Slowed: "
 msgstr "Maille air: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:819
 msgid "Attacks: "
 msgstr "Ionnsaighean: "
 
-#: src/reports.cpp:822
+#: src/reports.cpp:823
 msgid "Max swarm bonus: "
 msgstr "Duais sgaotha as motha: "
 
-#: src/reports.cpp:823 src/reports.cpp:842
+#: src/reports.cpp:824 src/reports.cpp:843
 msgid "Swarm: "
 msgstr "Sgaoth: "
 
-#: src/reports.cpp:824 src/reports.cpp:835 src/reports.cpp:846
+#: src/reports.cpp:825 src/reports.cpp:836 src/reports.cpp:847
 msgid "Base attacks: "
 msgstr "Ionnsaighean bunasach: "
 
-#: src/reports.cpp:830
+#: src/reports.cpp:831
 msgid "Specials: "
 msgstr "Sònraichte: "
 
-#: src/reports.cpp:840
+#: src/reports.cpp:841
 msgid "Subject to swarm: "
 msgstr "Cuspair sgaotha: "
 
-#: src/reports.cpp:867
+#: src/reports.cpp:868
 msgid "Weapon range: "
 msgstr "Astar an airm: "
 
-#: src/reports.cpp:868
+#: src/reports.cpp:869
 msgid "Damage type: "
 msgstr "Seòrsa dhe dhochann: "
 
-#: src/reports.cpp:869
+#: src/reports.cpp:870
 msgid "Damage versus: "
 msgstr "Dochann an aghaidh: "
 
-#: src/reports.cpp:928
+#: src/reports.cpp:929
 msgid "Accuracy:"
 msgstr "Pongalachd:"
 
-#: src/reports.cpp:933
+#: src/reports.cpp:934
 msgid "Parry:"
 msgstr "Cuir seachad:"
 
-#: src/reports.cpp:959
+#: src/reports.cpp:960
 msgid "Weapon special: "
 msgstr "Ionnsaigh shònraichte: "
 
-#: src/reports.cpp:1034
+#: src/reports.cpp:1035
 msgid "weapon^None"
 msgstr "Chan eil gin"
 
-#: src/reports.cpp:1063
+#: src/reports.cpp:1064
 msgid "Total damage"
 msgstr "Dochann iomlan"
 
-#: src/reports.cpp:1127
+#: src/reports.cpp:1128
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Ionnsaigh"
@@ -8350,43 +8338,43 @@ msgstr[2] "Ionnsaighean"
 msgstr[3] "Ionnsaighean"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1135
+#: src/reports.cpp:1136
 msgid "Remaining: $left/$max"
 msgstr "Air fhàgail: $left/$max"
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1140
 msgid "This unit can attack multiple times per turn."
 msgstr "’S urrainn dhan aonad seo iomadh ionnsaigh a thoirt gach cuairt."
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1232
 msgid "Time of day schedule:"
 msgstr "Sgeideal àm dhen latha:"
 
-#: src/reports.cpp:1280
+#: src/reports.cpp:1281
 msgid "Time of day:"
 msgstr "Àm dhen latha:"
 
-#: src/reports.cpp:1281 src/reports.cpp:1335
+#: src/reports.cpp:1282 src/reports.cpp:1336
 msgid "Lawful units: "
 msgstr "Aonadan dligheach: "
 
-#: src/reports.cpp:1283 src/reports.cpp:1337
+#: src/reports.cpp:1284 src/reports.cpp:1338
 msgid "Neutral units: "
 msgstr "Aonadan neodrach: "
 
-#: src/reports.cpp:1284 src/reports.cpp:1338
+#: src/reports.cpp:1285 src/reports.cpp:1339
 msgid "Chaotic units: "
 msgstr "Aonadan coimeasgach: "
 
-#: src/reports.cpp:1286 src/reports.cpp:1340
+#: src/reports.cpp:1287 src/reports.cpp:1341
 msgid "Liminal units: "
 msgstr "Aonadan stairsnich: "
 
-#: src/reports.cpp:1399
+#: src/reports.cpp:1400
 msgid "Turn Number"
 msgstr "Àireamh na cuairte"
 
-#: src/reports.cpp:1401
+#: src/reports.cpp:1402
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8394,34 +8382,34 @@ msgstr ""
 "Thig an geama gu crìch nuair a thèid e thairis air an àireamh dhe chuairtean "
 "a dh’innseas an dàrna àireamh."
 
-#: src/reports.cpp:1426
+#: src/reports.cpp:1427
 msgid "Gold"
 msgstr "Òr"
 
-#: src/reports.cpp:1426
+#: src/reports.cpp:1427
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "An uiread a dh’òr a tha ri làimh dhut an-dràsta gus ionadan a thrusadh ’s am "
 "feachd agad a chumail."
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1446
 msgid "The fraction of known villages that your side has captured."
 msgstr "A’ bhloigh dhe na bailtean aithnichte a cheannsaich do thaobh."
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1446
 msgid "Villages"
 msgstr "Bailtean"
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1451
 msgid "The total number of units on your side."
 msgstr "Àireamh shlàn nan aonadan ri do thaobh."
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1451
 msgid "Units"
 msgstr "Aonadan"
 
-#: src/reports.cpp:1460
+#: src/reports.cpp:1461
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8436,15 +8424,15 @@ msgstr ""
 "steach na bheir na bailtean dhut – is ciall dha seo an uiread a dh’òr a "
 "rachadh a thoirt air falbh uat nan robh thu air na bailtean uile a chall."
 
-#: src/reports.cpp:1460
+#: src/reports.cpp:1461
 msgid "Upkeep"
 msgstr "Beathachadh"
 
-#: src/reports.cpp:1497
+#: src/reports.cpp:1498
 msgid "Net Income"
 msgstr "Teachd a-steach lom"
 
-#: src/reports.cpp:1497
+#: src/reports.cpp:1498
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8453,23 +8441,23 @@ msgstr ""
 "cuairt, le aire air an teachd a-steach a gheibh thu o bhailtean fo do smachd "
 "agus pàigheadh a’ bheathachaidh."
 
-#: src/reports.cpp:1665
+#: src/reports.cpp:1666
 msgid "Observers:"
 msgstr "Amhairc:"
 
-#: src/reports.cpp:1707
+#: src/reports.cpp:1708
 msgid "Clock"
 msgstr "Cleoc"
 
-#: src/reports.cpp:1718
+#: src/reports.cpp:1719
 msgid "Battery"
 msgstr "Bataraidh"
 
-#: src/reports.cpp:1749
+#: src/reports.cpp:1750
 msgid "Countdown until your turn automatically ends."
 msgstr "Cunntadh sìos gus an dig do chuairt gu crìch gu fèin-obrachail."
 
-#: src/reports.cpp:1749
+#: src/reports.cpp:1750
 msgid "Turn Countdown"
 msgstr "Cunntas sìos cuairte"
 
@@ -8845,14 +8833,6 @@ msgstr "Bun-àm dhen latha"
 msgid "This Time of Day is only a Stub!"
 msgstr "Chan eil an t-àm dhen latha seo ach ’na bhun-àm!"
 
-#: src/units/alignment.hpp:22
-msgid "neutral"
-msgstr "neodrach"
-
-#: src/units/alignment.hpp:24
-msgid "liminal"
-msgstr "stairsnich"
-
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:444
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8938,31 +8918,39 @@ msgstr "Àrdachaidhean:"
 msgid "No advancement"
 msgstr "Gun àrdachadh"
 
+#: src/units/types.cpp:842
+msgid "liminal"
+msgstr "stairsnich"
+
+#: src/units/types.cpp:842
+msgid "neutral"
+msgstr "neodrach"
+
+#: src/units/types.cpp:843
+msgid "female^chaotic"
+msgstr "choimeasgach"
+
 #: src/units/types.cpp:843
 msgid "female^lawful"
 msgstr "dhligheach"
 
-#: src/units/types.cpp:844
-msgid "female^neutral"
-msgstr "neodrach"
-
-#: src/units/types.cpp:845
-msgid "female^chaotic"
-msgstr "choimeasgach"
-
-#: src/units/types.cpp:846
+#: src/units/types.cpp:843
 msgid "female^liminal"
 msgstr "stairsnich"
 
-#: src/units/unit.cpp:1855
+#: src/units/types.cpp:843
+msgid "female^neutral"
+msgstr "neodrach"
+
+#: src/units/unit.cpp:1858
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1864
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PB"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1874
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
@@ -8970,19 +8958,19 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1880
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> a lèirsinn"
 
-#: src/units/unit.cpp:1881
+#: src/units/unit.cpp:1884
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chasg"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1889
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE airson àrdachadh"
 
-#: src/units/unit.cpp:1890
+#: src/units/unit.cpp:1893
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8995,31 +8983,31 @@ msgstr[2] ""
 msgstr[3] ""
 "<span color=\"$color\">$number_or_percent</span> ionnsaigh gach cuairt"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1900
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> a chosgais ais-ghairm"
 
-#: src/units/unit.cpp:2338
+#: src/units/unit.cpp:2341
 msgid "$effect_description per level"
 msgstr "$effect_description gach leibheil"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:60
+#: src/utils/irdya_datetime.cpp:62
 msgid "$year BW"
 msgstr "$year RB"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:63
+#: src/utils/irdya_datetime.cpp:65
 msgid "$year YW"
 msgstr "$year BB"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:66
+#: src/utils/irdya_datetime.cpp:68
 msgid "$year BF"
 msgstr "$year RF"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:69
+#: src/utils/irdya_datetime.cpp:71
 msgid "$year AF"
 msgstr "$year BF"
 
@@ -9046,6 +9034,15 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid "Independent"
+#~ msgstr "Neo-eisimeileach"
+
+#~ msgid "No Mirror"
+#~ msgstr "Gun sgàthan"
+
+#~ msgid "No Ally Mirror"
+#~ msgstr "Gun sgàthan caidreabhach"
 
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 13:48+0300\n"
+"POT-Creation-Date: 2022-03-20 06:46+0300\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: \n"
@@ -211,7 +211,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
 msgid "poisoned"
 msgstr "venenita"
 
@@ -254,7 +254,7 @@ msgid "blade"
 msgstr "klingo"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:153
-#: src/units/alignment.hpp:23
+#: src/units/types.cpp:842
 msgid "chaotic"
 msgstr "kaosema"
 
@@ -295,7 +295,7 @@ msgid "impact"
 msgstr "frapo"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:174
-#: src/units/alignment.hpp:21
+#: src/units/types.cpp:842
 #, fuzzy
 msgid "lawful"
 msgstr "lojala"
@@ -389,7 +389,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Diversaj kontribuantoj"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1823
 msgid "Bots"
 msgstr "Robotoj"
 
@@ -3705,35 +3705,35 @@ msgstr ""
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
 #, fuzzy
 msgid "female^poisoned"
 msgstr "nemortinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
 #, fuzzy
 msgid "female^slowed"
 msgstr "lojala"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
 msgid "slowed"
 msgstr "malrapidiga"
 
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
 #, fuzzy
 msgid "female^petrified"
 msgstr "nemortinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1088
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
 msgid "petrified"
 msgstr ""
 
@@ -3751,8 +3751,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3036
-#: src/scripting/game_lua_kernel.cpp:3071
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
+#: src/scripting/game_lua_kernel.cpp:3068
 msgid "input"
 msgstr ""
 
@@ -4807,7 +4807,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Avancigitaj"
 
-#: src/actions/attack.cpp:603 src/actions/attack.cpp:1365
+#: src/actions/attack.cpp:604 src/actions/attack.cpp:1366
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Elektita ne valida erao"
@@ -4929,34 +4929,34 @@ msgstr[1] ""
 msgid "(press $hotkey to keep moving)"
 msgstr "(premu $hotkey por daŭrigi)"
 
-#: src/addon/client.cpp:77
+#: src/addon/client.cpp:78
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Mi aliĝas al servilo..."
 
-#: src/addon/client.cpp:124
+#: src/addon/client.cpp:125
 #, fuzzy
 msgid "Downloading list of add-ons..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:145
+#: src/addon/client.cpp:146
 msgid "Requesting distribution terms..."
 msgstr ""
 
-#: src/addon/client.cpp:169
+#: src/addon/client.cpp:170
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
 
-#: src/addon/client.cpp:181
+#: src/addon/client.cpp:182
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
 
-#: src/addon/client.cpp:189
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -4966,56 +4966,56 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:200
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
 
-#: src/addon/client.cpp:215
+#: src/addon/client.cpp:216
 msgid "Requesting file index..."
 msgstr ""
 
-#: src/addon/client.cpp:231
+#: src/addon/client.cpp:232
 #, fuzzy
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:252
+#: src/addon/client.cpp:253
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:295
+#: src/addon/client.cpp:299
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:324
+#: src/addon/client.cpp:328
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:343 src/addon/client.cpp:369
+#: src/addon/client.cpp:347 src/addon/client.cpp:373
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:374
+#: src/addon/client.cpp:352 src/addon/client.cpp:378
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
 
-#: src/addon/client.cpp:407
+#: src/addon/client.cpp:411
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Servilo anoncis erearon: \""
 
-#: src/addon/client.cpp:462
+#: src/addon/client.cpp:466
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5025,12 +5025,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:471
+#: src/addon/client.cpp:475
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Princino"
 
-#: src/addon/client.cpp:511
+#: src/addon/client.cpp:515
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5040,36 +5040,36 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:519
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:538
+#: src/addon/client.cpp:542
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:546
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:550
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:554
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "Ĉu vi volas savi vian ludon?"
 
-#: src/addon/client.cpp:552 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Konfirmi"
 
-#: src/addon/client.cpp:692
+#: src/addon/client.cpp:696
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5774,69 +5774,69 @@ msgstr ""
 msgid "Reserved"
 msgstr "Servilo:"
 
-#: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:664
+#: src/game_initialization/create_engine.cpp:75
+#: src/game_initialization/create_engine.cpp:665
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game_initialization/create_engine.cpp:78
+#: src/game_initialization/create_engine.cpp:79
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game_initialization/create_engine.cpp:95
+#: src/game_initialization/create_engine.cpp:96
 #, fuzzy
 msgid "not available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game_initialization/create_engine.cpp:150
+#: src/game_initialization/create_engine.cpp:151
 #, fuzzy
 #| msgid "Commands"
 msgid "Custom map."
 msgstr "Komandoj"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:492
 #, fuzzy
 msgid "Failed to resolve dependencies"
 msgstr "Princino"
 
-#: src/game_initialization/depcheck.cpp:491
+#: src/game_initialization/depcheck.cpp:492
 msgid "OK"
 msgstr "OK"
 
-#: src/game_initialization/depcheck.cpp:516
+#: src/game_initialization/depcheck.cpp:517
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:570
-#: src/game_initialization/depcheck.cpp:693
+#: src/game_initialization/depcheck.cpp:571
+#: src/game_initialization/depcheck.cpp:694
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "Neniu erao troveblas."
 
-#: src/game_initialization/depcheck.cpp:585
+#: src/game_initialization/depcheck.cpp:586
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:638
-#: src/game_initialization/depcheck.cpp:730
+#: src/game_initialization/depcheck.cpp:639
+#: src/game_initialization/depcheck.cpp:731
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
 msgstr "Ne estas difinitaj flankoj en reta ludo"
 
-#: src/game_initialization/depcheck.cpp:667
+#: src/game_initialization/depcheck.cpp:668
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
 
-#: src/game_initialization/depcheck.hpp:315
-#: src/game_initialization/depcheck.hpp:327
+#: src/game_initialization/depcheck.hpp:309
+#: src/game_initialization/depcheck.hpp:321
 msgid "A component"
 msgstr ""
 
@@ -6332,142 +6332,142 @@ msgstr "jes"
 msgid "Reference to unknown topic: "
 msgstr "Referenco al nekonata temo:"
 
-#: src/help/help_impl.cpp:409
+#: src/help/help_impl.cpp:408
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:410 src/help/help_impl.cpp:446
+#: src/help/help_impl.cpp:409 src/help/help_impl.cpp:445
 #, fuzzy
 msgid "Time of Day Schedule"
 msgstr "Tempo de diurno"
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:436
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:437
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Neŭtralaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:438
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:440
+#: src/help/help_impl.cpp:439
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/help/help_impl.cpp:441
+#: src/help/help_impl.cpp:440
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:533
+#: src/help/help_impl.cpp:532
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unuoj havantaj tiun specialan atakon'</header>"
 
-#: src/help/help_impl.cpp:597
+#: src/help/help_impl.cpp:596
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
 
-#: src/help/help_impl.cpp:627
+#: src/help/help_impl.cpp:626
 msgid "Era:"
 msgstr "Erao:"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 #, fuzzy
 msgid "Factions"
 msgstr "Frakcio"
 
-#: src/help/help_impl.cpp:683
+#: src/help/help_impl.cpp:682
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Raso:"
 
-#: src/help/help_impl.cpp:692 src/help/help_impl.cpp:1056
+#: src/help/help_impl.cpp:691 src/help/help_impl.cpp:1055
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Aparteneco:"
 
-#: src/help/help_impl.cpp:699
+#: src/help/help_impl.cpp:698
 #, fuzzy
 msgid "Leaders"
 msgstr "Komandanto:"
 
-#: src/help/help_impl.cpp:708
+#: src/help/help_impl.cpp:707
 msgid "Recruits"
 msgstr "Rekrutoj"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:769 src/units/types.cpp:488
 #, fuzzy
 msgid "No description available."
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/help/help_impl.cpp:774 src/help/help_impl.cpp:776
+#: src/help/help_impl.cpp:773 src/help/help_impl.cpp:775
 #, fuzzy
 msgid "Availability: "
 msgstr "Kapabloj:"
 
-#: src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:773
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:776
+#: src/help/help_impl.cpp:775
 #, fuzzy
 msgid "Unavailable"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/help/help_impl.cpp:856 src/help/help_impl.cpp:1033
+#: src/help/help_impl.cpp:855 src/help/help_impl.cpp:1032
 msgid "race^Miscellaneous"
 msgstr "Diversaj"
 
-#: src/help/help_impl.cpp:1056 src/reports.cpp:384
+#: src/help/help_impl.cpp:1055 src/reports.cpp:385
 msgid "Alignment: "
 msgstr "Aparteneco:"
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1075
+#: src/help/help_impl.cpp:1074
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1080
+#: src/help/help_impl.cpp:1079
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
 
-#: src/help/help_impl.cpp:1082
+#: src/help/help_impl.cpp:1081
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1091
+#: src/help/help_impl.cpp:1090
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1093
+#: src/help/help_impl.cpp:1092
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help/help_impl.cpp:1414
+#: src/help/help_impl.cpp:1413
 msgid "corrupted original file"
 msgstr ""
 
@@ -7205,18 +7205,6 @@ msgstr ""
 msgid "This unit has no usable weapons."
 msgstr "Neniu uzebla armilo"
 
-#: src/mp_game_settings.hpp:73
-msgid "Independent"
-msgstr ""
-
-#: src/mp_game_settings.hpp:74
-msgid "No Mirror"
-msgstr ""
-
-#: src/mp_game_settings.hpp:75
-msgid "No Ally Mirror"
-msgstr ""
-
 #: src/mp_ui_alerts.cpp:88
 msgid "A game ($name|, $scenario|) has been created"
 msgstr ""
@@ -7382,34 +7370,34 @@ msgstr "La ludo finiĝis."
 msgid "It is now $name|’s turn"
 msgstr "Nun movo de $name"
 
-#: src/playturn.cpp:279
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:287
 #, fuzzy
 msgid "Give control to observer $player"
 msgstr "Sendu nur al aliancanoj"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "Anstataŭu per komputilo"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "Anstataŭu per alia ludanto"
 
-#: src/playturn.cpp:295
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:296
+#: src/playturn.cpp:295
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Nuligu la ludon"
 
-#: src/playturn.cpp:300
+#: src/playturn.cpp:299
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -7427,16 +7415,16 @@ msgstr "Fino"
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas likvidi lin?"
 
-#: src/reports.cpp:173 src/savegame.cpp:430
+#: src/reports.cpp:174 src/savegame.cpp:430
 msgid "Name: "
 msgstr "Nomo:"
 
-#: src/reports.cpp:194
+#: src/reports.cpp:195
 #, fuzzy
 msgid "Type: "
 msgstr "Tipo"
 
-#: src/reports.cpp:197
+#: src/reports.cpp:198
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7448,33 +7436,33 @@ msgstr ""
 "\n"
 "Specialaj notoj:"
 
-#: src/reports.cpp:220
+#: src/reports.cpp:221
 msgid "Race: "
 msgstr "Raso:"
 
-#: src/reports.cpp:239
+#: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:317
+#: src/reports.cpp:318
 #, fuzzy
 msgid "Trait: "
 msgstr "Ecoj"
 
-#: src/reports.cpp:340
+#: src/reports.cpp:341
 msgid "invisible: "
 msgstr "nevidebla:"
 
-#: src/reports.cpp:341
+#: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Tiu ĉi milit-unuo estas nevidebla. Kontraŭlo povas ĝin nek vidi nek ataki."
 
-#: src/reports.cpp:344
+#: src/reports.cpp:345
 msgid "slowed: "
 msgstr "malrapidigita:"
 
-#: src/reports.cpp:345
+#: src/reports.cpp:346
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -7483,11 +7471,11 @@ msgstr ""
 "Tiu ĉi milit-unuo estis malrapidigita. Ĝi moviĝas per duona rapido, kaj en "
 "batalo havas unu atakon malpli."
 
-#: src/reports.cpp:348
+#: src/reports.cpp:349
 msgid "poisoned: "
 msgstr "venenigita:"
 
-#: src/reports.cpp:349
+#: src/reports.cpp:350
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7501,175 +7489,175 @@ msgstr ""
 "\n"
 "Veneno ne mortigos la milit-unuon. Kaj SP de milit-unuo ne falos sub 1."
 
-#: src/reports.cpp:352
+#: src/reports.cpp:353
 msgid "petrified: "
 msgstr ""
 
-#: src/reports.cpp:353
+#: src/reports.cpp:354
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Ĉi tiu milit-unuo ŝtoniĝis. Eblas nek moviĝi nek batali."
 
-#: src/reports.cpp:431
+#: src/reports.cpp:432
 #, fuzzy
 msgid "Ability: "
 msgstr "Kapabloj:"
 
-#: src/reports.cpp:433 src/reports.cpp:961
+#: src/reports.cpp:434 src/reports.cpp:962
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:496
+#: src/reports.cpp:497
 msgid "Resistances: "
 msgstr "Rezisto:"
 
-#: src/reports.cpp:498
+#: src/reports.cpp:499
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:529
+#: src/reports.cpp:530
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modifikatoro de spertoj:"
 
-#: src/reports.cpp:579
+#: src/reports.cpp:580
 #, fuzzy
 msgid "Terrain: "
 msgstr "Tereno"
 
-#: src/reports.cpp:596
+#: src/reports.cpp:597
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:596
+#: src/reports.cpp:597
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:601
+#: src/reports.cpp:602
 #, fuzzy
 msgid "Defense: "
 msgstr "Defendo"
 
-#: src/reports.cpp:636 src/reports.cpp:637
+#: src/reports.cpp:637 src/reports.cpp:638
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Versio:"
 
-#: src/reports.cpp:641 src/reports.cpp:642
+#: src/reports.cpp:642 src/reports.cpp:643
 #, fuzzy
 msgid "jamming:"
 msgstr "Mateno"
 
-#: src/reports.cpp:671
+#: src/reports.cpp:672
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Kosto de movo"
 
-#: src/reports.cpp:796 src/reports.cpp:1050 src/reports.cpp:1062
+#: src/reports.cpp:797 src/reports.cpp:1051 src/reports.cpp:1063
 #, fuzzy
 msgid "Weapon: "
 msgstr "Armilspecoj"
 
-#: src/reports.cpp:797 src/reports.cpp:1051
+#: src/reports.cpp:798 src/reports.cpp:1052
 #, fuzzy
 msgid "Damage: "
 msgstr "Damaĝo"
 
-#: src/reports.cpp:801
+#: src/reports.cpp:802
 #, fuzzy
 msgid "Base damage: "
 msgstr "Tuta damaĝo"
 
-#: src/reports.cpp:803 src/reports.cpp:837 src/reports.cpp:847
+#: src/reports.cpp:804 src/reports.cpp:838 src/reports.cpp:848
 #, fuzzy
 msgid "With specials: "
 msgstr "Armilspecoj"
 
-#: src/reports.cpp:806
+#: src/reports.cpp:807
 #, fuzzy
 msgid "Time of day: "
 msgstr "Tempo de diurno"
 
-#: src/reports.cpp:810
+#: src/reports.cpp:811
 #, fuzzy
 msgid "Leadership: "
 msgstr "Komandado"
 
-#: src/reports.cpp:814
+#: src/reports.cpp:815
 #, fuzzy
 msgid "Slowed: "
 msgstr "malrapidigita:"
 
-#: src/reports.cpp:818
+#: src/reports.cpp:819
 #, fuzzy
 msgid "Attacks: "
 msgstr "Atakanto"
 
-#: src/reports.cpp:822
+#: src/reports.cpp:823
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonifiko al maksima sano +"
 
-#: src/reports.cpp:823 src/reports.cpp:842
+#: src/reports.cpp:824 src/reports.cpp:843
 #, fuzzy
 msgid "Swarm: "
 msgstr "frapo"
 
-#: src/reports.cpp:824 src/reports.cpp:835 src/reports.cpp:846
+#: src/reports.cpp:825 src/reports.cpp:836 src/reports.cpp:847
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:830
+#: src/reports.cpp:831
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Speciale"
 
-#: src/reports.cpp:840
+#: src/reports.cpp:841
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:867
+#: src/reports.cpp:868
 msgid "Weapon range: "
 msgstr ""
 
-#: src/reports.cpp:868
+#: src/reports.cpp:869
 #, fuzzy
 msgid "Damage type: "
 msgstr "damaĝ-speco"
 
-#: src/reports.cpp:869
+#: src/reports.cpp:870
 #, fuzzy
 msgid "Damage versus: "
 msgstr "damaĝ-speco"
 
-#: src/reports.cpp:928
+#: src/reports.cpp:929
 #, fuzzy
 msgid "Accuracy:"
 msgstr "tuta damaĝo"
 
-#: src/reports.cpp:933
+#: src/reports.cpp:934
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:959
+#: src/reports.cpp:960
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armilspecoj"
 
-#: src/reports.cpp:1034
+#: src/reports.cpp:1035
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1063
+#: src/reports.cpp:1064
 msgid "Total damage"
 msgstr "Tuta damaĝo"
 
-#: src/reports.cpp:1127
+#: src/reports.cpp:1128
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7678,83 +7666,83 @@ msgstr[0] "Atakanto"
 msgstr[1] "Atakanto"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1135
+#: src/reports.cpp:1136
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1140
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Tio ĉi estas ne savita reta ludo"
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1232
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Tempo de diurno"
 
-#: src/reports.cpp:1280
+#: src/reports.cpp:1281
 #, fuzzy
 msgid "Time of day:"
 msgstr "Tempo de diurno"
 
-#: src/reports.cpp:1281 src/reports.cpp:1335
+#: src/reports.cpp:1282 src/reports.cpp:1336
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/reports.cpp:1283 src/reports.cpp:1337
+#: src/reports.cpp:1284 src/reports.cpp:1338
 msgid "Neutral units: "
 msgstr "Neŭtralaj milit-unuoj:"
 
-#: src/reports.cpp:1284 src/reports.cpp:1338
+#: src/reports.cpp:1285 src/reports.cpp:1339
 msgid "Chaotic units: "
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/reports.cpp:1286 src/reports.cpp:1340
+#: src/reports.cpp:1287 src/reports.cpp:1341
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/reports.cpp:1399
+#: src/reports.cpp:1400
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Movo"
 
-#: src/reports.cpp:1401
+#: src/reports.cpp:1402
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1426
+#: src/reports.cpp:1427
 msgid "Gold"
 msgstr "Oro"
 
-#: src/reports.cpp:1426
+#: src/reports.cpp:1427
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1446
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1445
+#: src/reports.cpp:1446
 msgid "Villages"
 msgstr "Vilaĝoj"
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1451
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1450
+#: src/reports.cpp:1451
 msgid "Units"
 msgstr "Milit-unuoj"
 
-#: src/reports.cpp:1460
+#: src/reports.cpp:1461
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7763,39 +7751,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1460
+#: src/reports.cpp:1461
 msgid "Upkeep"
 msgstr "Elspezoj"
 
-#: src/reports.cpp:1497
+#: src/reports.cpp:1498
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Enspezo"
 
-#: src/reports.cpp:1497
+#: src/reports.cpp:1498
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1665
+#: src/reports.cpp:1666
 msgid "Observers:"
 msgstr "Spektantoj:"
 
-#: src/reports.cpp:1707
+#: src/reports.cpp:1708
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1718
+#: src/reports.cpp:1719
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1749
+#: src/reports.cpp:1750
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1749
+#: src/reports.cpp:1750
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8158,15 +8146,6 @@ msgstr "Taga tempo"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/alignment.hpp:22
-msgid "neutral"
-msgstr "neŭtrala"
-
-#: src/units/alignment.hpp:24
-#, fuzzy
-msgid "liminal"
-msgstr "lojala"
-
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:444
 #, fuzzy
@@ -8260,38 +8239,47 @@ msgstr "Avancigitaj"
 msgid "No advancement"
 msgstr "Avancigitaj"
 
+#: src/units/types.cpp:842
+#, fuzzy
+msgid "liminal"
+msgstr "lojala"
+
+#: src/units/types.cpp:842
+msgid "neutral"
+msgstr "neŭtrala"
+
+#: src/units/types.cpp:843
+#, fuzzy
+msgid "female^chaotic"
+msgstr "mekanika"
+
 #: src/units/types.cpp:843
 #, fuzzy
 msgid "female^lawful"
 msgstr "lojala"
 
-# undead
-#: src/units/types.cpp:844
-#, fuzzy
-msgid "female^neutral"
-msgstr "nemortinta"
-
-#: src/units/types.cpp:845
-#, fuzzy
-msgid "female^chaotic"
-msgstr "mekanika"
-
-#: src/units/types.cpp:846
+#: src/units/types.cpp:843
 #, fuzzy
 msgid "female^liminal"
 msgstr "lojala"
 
-#: src/units/unit.cpp:1855
+# undead
+#: src/units/types.cpp:843
+#, fuzzy
+msgid "female^neutral"
+msgstr "nemortinta"
+
+#: src/units/unit.cpp:1858
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1864
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "por turno"
 
-#: src/units/unit.cpp:1871
+#: src/units/unit.cpp:1874
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8299,25 +8287,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "por turno"
 msgstr[1] "por turno"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1880
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "por turno"
 
-#: src/units/unit.cpp:1881
+#: src/units/unit.cpp:1884
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "por turno"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1889
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "por turno"
 
-#: src/units/unit.cpp:1890
+#: src/units/unit.cpp:1893
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8326,35 +8314,35 @@ msgid_plural ""
 msgstr[0] "por turno"
 msgstr[1] "por turno"
 
-#: src/units/unit.cpp:1897
+#: src/units/unit.cpp:1900
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "por turno"
 
-#: src/units/unit.cpp:2338
+#: src/units/unit.cpp:2341
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"
 msgstr "$attack_list|: $effect_description"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:60
+#: src/utils/irdya_datetime.cpp:62
 msgid "$year BW"
 msgstr ""
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:63
+#: src/utils/irdya_datetime.cpp:65
 msgid "$year YW"
 msgstr ""
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:66
+#: src/utils/irdya_datetime.cpp:68
 msgid "$year BF"
 msgstr ""
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:69
+#: src/utils/irdya_datetime.cpp:71
 msgid "$year AF"
 msgstr ""
 

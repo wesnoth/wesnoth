@@ -161,17 +161,18 @@ Určuje, zda bude server automaticky ukládat záznamy her. (výchozí hodnota:
 \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Povolit použití protokolu TLS. Je\-li \fBtrue\fP, je třeba nastavit také
+následující tři klíče.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+Úplný řetěz důvěry (certifikátů) pro TLS ve formátu PEM.
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+Soukromý klíč pro TLS ve formátu PEM.
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Parametry DH pro TLS jako soubor ve formátu PEM. Vytvořte pomocí příkazu
+\fBopenssl dhparam \-out jmeno_souboru.pem 4096\fP.
 .TP 
 \fBversions_accepted\fP
 Seznam čárkou oddělených řetězců verzí, které server přijímá. Podporovány
@@ -183,8 +184,8 @@ Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
 .SS "Globální značky:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Značka pro zadání serveru, na který se mají přesměrovat určité
+verze klientů. Nepoužije se, pokud není nastaven klíč \fBversions_accepted\fP.
 .RS
 .TP 
 \fBhost\fP
@@ -218,12 +219,12 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Pokud v\ konfiguraci oddíl
+\fB[user_handler]\fP chybí, server poběží bez jakékoli služby pro registraci
+přezdívek. Všechny další tabulky, které jsou třeba, aby pracoval
+\fBforum_user_handler\fP, lze najít v\ table_definitions.sql v\ repozitáři
+zdrojových kódů Wesnothu. Vyžaduje zapnutou podporu mysql. Pro cmake je to
+\fBENABLE_MYSQL\fP a\ pro scons je to \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
