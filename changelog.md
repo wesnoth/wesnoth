@@ -1,20 +1,11 @@
-## Version 1.17.1+dev
+## Version 1.17.2
  ### Add-ons client
    * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
  ### Packaging
    * SDL2_image now requires webp support be enabled. (PR #6392)
    * Lua is now a submodule. (PR #6549)
- ### Terrain
  ### Translations
    * Updated translations: British English, Bulgarian, Czech
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch
    * Webp images can now be used in mainline and in add-ons. (PR #6392)
