@@ -2317,32 +2317,33 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
 }
 
 /**
- * Arg 1: text info - "string" or {"string", [size = integer], [color = {r,g,b}|hex]}
- * Arg 2: optional duration info - integer, "infinity", or {duration = integer, fade_time = integer}
- * Arg 3: optional screen location, relative to screen centre
+ * Arg 1: text - string
+ * Arg 2: options table
+ * - size: font size
+ * - color: font color
+ * - duration: display duration (integer or the string "unlimited")
+ * - fade_time: duration of fade-out
+ * - x,y: screen offset
+ * - valign: vertical alignment and anchoring - "top", "center", or "bottom"
+ * - halign: horizontal alignment and anchoring - "left", "center", or "right"
  * Returns: label handle
  */
 int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 {
-	int first_arg = spawn ? 1 : 2;
-	t_string text;
+	t_string text = luaW_checktstring(L, 1);
 	int size = font::SIZE_SMALL;
 	color_t color = font::LABEL_COLOR;
-	if(!luaW_totstring(L, first_arg, text)) {
-		if(lua_type(L, first_arg) != LUA_TTABLE) {
-			return luaW_type_error(L, 1, "string or table");
-		}
-		if(!luaW_tableget(L, first_arg, "text")) {
-			lua_geti(L, first_arg, 1);
-			if(lua_isnoneornil(L, -1)) {
-				return luaL_argerror(L, 1, "string or table with string as first element");
-			}
-		}
-		text = luaW_checktstring(L, -1);
-		if(luaW_tableget(L, first_arg, "size")) {
+	int lifetime = 2'000, fadeout = 100;
+	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
+	// This is actually a relative screen location, but map_location already supports
+	// everything needed to read in a pair of coordinates.
+	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
+	map_location loc{0, 0, wml_loc()};
+	if(lua_istable(L, 2)) {
+		if(luaW_tableget(L, 2, "size")) {
 			size = luaL_checkinteger(L, -1);
 		}
-		if(luaW_tableget(L, first_arg, "color")) {
+		if(luaW_tableget(L, 2, "color")) {
 			if(lua_isstring(L, -1)) {
 				color = color_t::from_hex_string(lua_tostring(L, -1));
 			} else {
@@ -2355,50 +2356,32 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				color.b = vec[2];
 			}
 		}
-	}
-
-	int lifetime = 2'000, fadeout = 100;
-	// This is actually a centre-relative screen location, but map_location already supports
-	// everything needed to read in a pair of coordinates.
-	map_location loc{0, 0, wml_loc()};
-	bool found_location = false;
-	switch(lua_type(L, first_arg + 1)) {
-		case LUA_TNIL: case LUA_TNONE:
-			break;
-		case LUA_TTABLE:
-			if(luaW_tolocation(L, first_arg + 1, loc)) {
-				found_location = true;
-			} else {
-				fadeout = luaW_table_get_def(L, first_arg + 1, "fade_time", 100);
-				if(luaW_tableget(L, first_arg + 1, "duration")) {
-					int found_number;
-					lifetime = lua_tointegerx(L, -1, &found_number);
-					if(!found_number && !lua_isnil(L, -1)) {
-						auto value = luaW_tostring(L, -1);
-						if(value == "unlimited") {
-							lifetime = -1;
-						} else {
-							return luaL_argerror(L, first_arg + 1, "duration should be integer or 'unlimited'");
-						}
-					}
+		if(luaW_tableget(L, 2, "duration")) {
+			int found_number;
+			lifetime = lua_tointegerx(L, -1, &found_number);
+			if(!found_number) {
+				auto value = luaW_tostring(L, -1);
+				if(value == "unlimited") {
+					lifetime = -1;
+				} else {
+					return luaL_argerror(L, -1, "duration should be integer or 'unlimited'");
 				}
 			}
-			break;
-		case LUA_TNUMBER:
-			lifetime = lua_tointeger(L, first_arg + 1);
-			break;
-		case LUA_TSTRING:
-			if(luaW_tostring(L, first_arg + 1) == "unlimited") {
-				lifetime = -1;
-				break;
-			}
-			[[fallthrough]];
-		default:
-			return luaW_type_error(L, first_arg + 1, "integer or 'unlimited'");
-	}
-
-	if(!found_location && !lua_isnoneornil(L, first_arg + 2)) {
-		loc = luaW_checklocation(L, first_arg + 2);
+		}
+		if(luaW_tableget(L, 2, "fade_time")) {
+			fadeout = lua_tointeger(L, -1);
+		}
+		if(luaW_tableget(L, 2, "location")) {
+			loc = luaW_checklocation(L, -1);
+		}
+		if(luaW_tableget(L, 2, "halign")) {
+			const char* options[] = {"left", "center", "right"};
+			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+		}
+		if(luaW_tableget(L, 2, "valign")) {
+			const char* options[] = {"top", "center", "bottom"};
+			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+		}
 	}
 
 	int* handle = nullptr;
@@ -2416,12 +2399,34 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	}
 
 	const SDL_Rect& rect = game_display_->map_outside_area();
-	int x = rect.x + rect.w / 2 + loc.wml_x();
-	int y = rect.y + rect.h / 2 + loc.wml_y();
+	int x = 0, y = 0;
+	switch(alignment) {
+		case font::ALIGN::LEFT_ALIGN:
+			x = rect.x + loc.wml_x();
+			break;
+		case font::ALIGN::CENTER_ALIGN:
+			x = rect.x + rect.w / 2 + loc.wml_x();
+			break;
+		case font::ALIGN::RIGHT_ALIGN:
+			x = rect.x + rect.w - loc.wml_x();
+			break;
+	}
+	switch(vertical_alignment) {
+		case font::ALIGN::LEFT_ALIGN: // top
+			y = rect.y + loc.wml_y();
+			break;
+		case font::ALIGN::CENTER_ALIGN:
+			y = rect.y + rect.h / 2 + loc.wml_y();
+			break;
+		case font::ALIGN::RIGHT_ALIGN: // bottom
+			y = rect.y + rect.h - loc.wml_y() - size;
+			break;
+	}
 
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
+	flabel.set_alignment(alignment);
 	flabel.set_position(x, y);
 	flabel.set_lifetime(lifetime, fadeout);
 	flabel.set_clip_rect(rect);

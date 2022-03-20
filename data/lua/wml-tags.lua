@@ -768,26 +768,26 @@ end
 
 local wml_floating_label = {valid = false}
 function wml_actions.print(cfg)
-	local label_text, lifetime = {cfg.text}, {}
+	local options = {}
 	if wml_floating_label.valid then
 		wml_floating_label:remove()
 	end
 	if cfg.size then
-		label_text.size = cfg.size
+		options.size = cfg.size
 	end
 	if cfg.color then
-		label_text.color = stringx.split(cfg.color)
+		options.color = stringx.split(cfg.color)
 	elseif cfg.red or cfg.green or cfg.blue then
-		label_text.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
+		options.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
 	end
 	if cfg.duration then
-		lifetime.duration = cfg.duration
+		options.duration = cfg.duration
 	end
 	if cfg.fade_time then
-		lifetime.fade_time = cfg.fade_time
+		options.fade_time = cfg.fade_time
 	end
 
-	wml_floating_label = wesnoth.interface.add_overlay_text(label_text, lifetime)
+	wml_floating_label = wesnoth.interface.add_overlay_text(cfg.text, options)
 end
 
 function wml_actions.unsynced(cfg)
