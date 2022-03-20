@@ -2358,6 +2358,8 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	}
 
 	int lifetime = 2'000, fadeout = 100;
+	// This is actually a centre-relative screen location, but map_location already supports
+	// everything needed to read in a pair of coordinates.
 	map_location loc{0, 0, wml_loc()};
 	bool found_location = false;
 	switch(lua_type(L, first_arg + 1)) {
