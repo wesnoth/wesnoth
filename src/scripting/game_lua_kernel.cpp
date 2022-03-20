@@ -2419,6 +2419,9 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			y = rect.y + rect.h / 2 + loc.wml_y();
 			break;
 		case font::ALIGN::RIGHT_ALIGN: // bottom
+			// The size * 1.5 adjustment avoids the text being cut off if placed at y = 0
+			// This is necessary because the text is positioned by the top edge but we want it to
+			// seem like it's positioned by the bottom edge.
 			y = rect.y + rect.h - loc.wml_y() - static_cast<int>(size * 1.5);
 			break;
 	}
