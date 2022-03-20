@@ -2419,7 +2419,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			y = rect.y + rect.h / 2 + loc.wml_y();
 			break;
 		case font::ALIGN::RIGHT_ALIGN: // bottom
-			y = rect.y + rect.h - loc.wml_y() - size;
+			y = rect.y + rect.h - loc.wml_y() - static_cast<int>(size * 1.5);
 			break;
 	}
 
