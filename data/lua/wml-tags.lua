@@ -780,10 +780,6 @@ function wml_actions.print(cfg)
 	elseif cfg.red or cfg.green or cfg.blue then
 		label_text.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
 	end
-	local offset = nil
-	if cfg.x_offset or cfg.y_offset then
-		offset = {cfg.x_offset or 0, cfg.y_offset or 0}
-	end
 	if cfg.duration then
 		lifetime.duration = cfg.duration
 	end
@@ -791,7 +787,7 @@ function wml_actions.print(cfg)
 		lifetime.fade_time = cfg.fade_time
 	end
 
-	wml_floating_label = wesnoth.interface.add_overlay_text(label_text, lifetime, offset)
+	wml_floating_label = wesnoth.interface.add_overlay_text(label_text, lifetime)
 end
 
 function wml_actions.unsynced(cfg)
