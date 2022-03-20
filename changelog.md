@@ -1,3 +1,18 @@
+## Version 1.17.2+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.17.2
  ### Add-ons client
    * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
