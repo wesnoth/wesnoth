@@ -2335,7 +2335,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	color_t color = font::LABEL_COLOR;
 	int lifetime = 2'000, fadeout = 100;
 	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
-	// This is actually a relative screen location, but map_location already supports
+	// This is actually a relative screen location in pixels, but map_location already supports
 	// everything needed to read in a pair of coordinates.
 	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
 	map_location loc{0, 0, wml_loc()};
