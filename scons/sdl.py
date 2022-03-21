@@ -258,7 +258,7 @@ def CheckJPG(context):
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "attic/northlands.jpg").subst(test_program)
+        test_program2 = context.env.Clone(TESTFILE = "images/dialogs/addon_manager_bg.jpg").subst(test_program)
         (result, output) = context.TryRun(test_program2, ".c")
         if result:
             context.Result("yes")
