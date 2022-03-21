@@ -7,6 +7,7 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * New palisades terrain (^Eqp) and general fence terrain macros cleanup
  ### Translations
  ### Units
  ### User interface
