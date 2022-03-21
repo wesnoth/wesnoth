@@ -124,9 +124,9 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 			first = false;
 			ss << input.name << " ";
 
-			if(input.access == FORMULA_READ_WRITE) {
+			if(input.access == formula_access::read_write) {
 				ss << "(read-write) ";
-			} else if(input.access == FORMULA_WRITE_ONLY) {
+			} else if(input.access == formula_access::write_only) {
 				ss << "(writeonly) ";
 			}
 

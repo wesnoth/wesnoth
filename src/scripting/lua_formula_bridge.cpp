@@ -159,7 +159,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			obj->get_inputs(inputs);
 			lua_newtable(L);
 			for(const formula_input& attr : inputs) {
-				if(attr.access == FORMULA_WRITE_ONLY) {
+				if(attr.access == formula_access::write_only) {
 					continue;
 				}
 				lua_pushstring(L, attr.name.c_str());
