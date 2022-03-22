@@ -544,9 +544,11 @@ void playsingle_controller::linger()
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
-void playsingle_controller::end_turn_enable(bool enable)
+void playsingle_controller::end_turn_enable(bool /*enable*/)
 {
-	gui_->enable_menu("endturn", enable);
+	// TODO: this is really only needed to refresh the visual state of the buttons on each turn.
+	// It looks like we can put it in play_side_impl, but it definitely should be removed from
+	// here since other code already takes care of actually enabling/disabling the end turn button.
 	get_hotkey_command_executor()->set_button_state();
 }
 

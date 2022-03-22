@@ -473,12 +473,6 @@ public:
 	const theme::action* action_pressed();
 	const theme::menu*   menu_pressed();
 
-	/**
-	 * Finds the menu which has a given item in it,
-	 * and enables or disables it.
-	 */
-	void enable_menu(const std::string& item, bool enable);
-
 	void set_diagnostic(const std::string& msg);
 
 	/**

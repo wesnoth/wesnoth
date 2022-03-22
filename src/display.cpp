@@ -1755,24 +1755,6 @@ const theme::menu* display::menu_pressed()
 	return nullptr;
 }
 
-void display::enable_menu(const std::string& item, bool enable)
-{
-	for(auto menu = theme_.menus().begin(); menu != theme_.menus().end(); ++menu) {
-
-		const auto hasitem = std::find_if(menu->items().begin(), menu->items().end(),
-			[&item](const config& c) { return c["id"].str() == item; }
-		);
-
-		if(hasitem != menu->items().end()) {
-			const std::size_t index = std::distance(theme_.menus().begin(), menu);
-			if(index >= menu_buttons_.size()) {
-				continue;
-			}
-			menu_buttons_[index]->enable(enable);
-		}
-	}
-}
-
 void display::announce(const std::string& message, const color_t& color, const announce_options& options)
 {
 	if(options.discard_previous) {
