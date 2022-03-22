@@ -86,9 +86,6 @@ static map_location legacy_difference(const map_location& me, const map_location
  *
  */
 
-terrain_builder::building_ruleset terrain_builder::building_rules_;
-const game_config_view* terrain_builder::rules_cfg_ = nullptr;
-
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water)
 	: layer(layer)
 	, basex(x)
@@ -730,7 +727,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			// If an integer is given then assign that, but if a bool is given, then assign -1 if true and 0 if false
 			int random_start = variant["random_start"].to_bool(true) ? variant["random_start"].to_int(-1) : 0;
 
-			images.back().variants.push_back(rule_image_variant(name, variations, tod, has_flag, random_start));
+			images.back().variants.emplace_back(name, variations, tod, has_flag, random_start);
 		}
 
 		// Adds the main (default) variant of the image at the end,
@@ -740,7 +737,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		int random_start = img["random_start"].to_bool(true) ? img["random_start"].to_int(-1) : 0;
 
-		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
+		images.back().variants.emplace_back(name, variations, random_start);
 	}
 }
 
@@ -1093,7 +1090,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, con
 
 		if(!constraint.no_draw) {
 			for(const rule_image& img : constraint.images) {
-				btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
+				btile.images.emplace_back(&img, rand_seed);
 			}
 		}
 

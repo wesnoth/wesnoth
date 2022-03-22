@@ -60,7 +60,7 @@ public:
 	// Import all sides into the level.
 	void update_level();
 	// Updates the level and sends a diff to the clients.
-	void update_and_send_diff(bool update_time_of_day = false);
+	void update_and_send_diff();
 
 	bool can_start_game() const;
 	void start_game();

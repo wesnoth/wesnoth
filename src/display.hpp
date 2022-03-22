@@ -397,7 +397,6 @@ public:
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
-	static gui::button::TYPE string_to_button_type(const std::string& type);
 	void create_buttons();
 
 	void layout_buttons();
@@ -926,7 +925,17 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const std::array<drawing_layer, 4> layer_groups;
+		// FIXME: temporary method. Group splitting should be made
+		// public into the definition of drawing_layer
+		//
+		// The drawing is done per layer_group, the range per group is [low, high).
+		static inline const std::array layer_groups {
+			LAYER_TERRAIN_BG,
+			LAYER_UNIT_FIRST,
+			LAYER_UNIT_MOVE_DEFAULT,
+			// Make sure the movement doesn't show above fog and reachmap.
+			LAYER_REACHMAP
+		};
 
 	public:
 		drawing_buffer_key(const map_location &loc, drawing_layer layer);

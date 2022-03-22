@@ -839,8 +839,8 @@ bool unit_type::resistance_filter_matches(
 
 std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static const std::array<t_string, unit_alignments::size()> male_names {{_("lawful"), _("neutral"), _("chaotic"), _("liminal")}};
-	static const std::array<t_string, unit_alignments::size()> female_names {{_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")}};
+	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
+	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
 
 	if(gender == unit_race::FEMALE) {
 		return female_names[static_cast<int>(align)];
@@ -926,7 +926,7 @@ void patch_movetype(movetype& mt,
 
 		// These three need to follow movetype's fallback system, where values for
 		// movement costs are used for vision too.
-		const auto fallback_children = std::array<std::string, 3>{{"movement_costs", "vision_costs", "jamming_costs"}};
+		const std::array fallback_children {"movement_costs", "vision_costs", "jamming_costs"};
 		config cumulative_values;
 		for(const auto& x : fallback_children) {
 			if(mt_cfg.has_child(x)) {
@@ -943,7 +943,7 @@ void patch_movetype(movetype& mt,
 		}
 
 		// These don't need the fallback system
-		const auto child_names = std::array<std::string, 2>{{"defense", "resistance"}};
+		const std::array child_names {"defense", "resistance"};
 		for(const auto& x : child_names) {
 			if(mt_cfg.has_child(x)) {
 				const auto& subtag = mt_cfg.child(x);
@@ -1143,7 +1143,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			std::string alias;
 			int default_val;
 		};
-		const std::array<ter_defs_to_movetype, 4> terrain_info_tags{
+		const std::array terrain_info_tags{
 			ter_defs_to_movetype{{"movement_costs"}, {"movement"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"vision_costs"}, {"vision"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"jamming_costs"}, {"jamming"}, movetype::UNREACHABLE},

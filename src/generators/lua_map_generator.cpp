@@ -37,7 +37,7 @@ lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 	, generator_data_(cfg)
 {
 	lk_.load_core();
-	const std::array<std::string, 3> required {{"id", "config_name", "create_map"}};
+	const std::array required {"id", "config_name", "create_map"};
 	for(const std::string& req : required) {
 		if (!cfg.has_attribute(req)) {
 			if(req == "create_map" && cfg.has_attribute("create_scenario")) {

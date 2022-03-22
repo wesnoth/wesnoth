@@ -82,9 +82,13 @@ struct enum_base : public T
 	}
 };
 
-#define ENUM_AND_ARRAY(...) \
-	static constexpr std::size_t count = std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value; \
-	enum class type { __VA_ARGS__ }; \
-	static constexpr std::array<const char*, count> values{ __VA_ARGS__ };
+#define ENUM_AND_ARRAY(...)                                                                                            \
+	enum class type { __VA_ARGS__ };                                                                                   \
+                                                                                                                       \
+	/** Provide a variable template for an array of matching size. */                                                  \
+	template<typename T>                                                                                               \
+	using sized_array = std::array<T, std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value>;                 \
+                                                                                                                       \
+	static constexpr sized_array<const char*> values{__VA_ARGS__};
 
 } // namespace string_enums

@@ -4726,7 +4726,7 @@ void game_lua_kernel::set_game_display(game_display * gd) {
  * elsewhere (in the C++ code).
  * Any child tags not in this list will be passed to Lua's on_load event.
  */
-static const std::array<std::string, 24> handled_file_tags {{
+static const std::array handled_file_tags {
 	"color_palette",
 	"color_range",
 	"display",
@@ -4751,7 +4751,7 @@ static const std::array<std::string, 24> handled_file_tags {{
 	"tunnel",
 	"undo_stack",
 	"variables"
-}};
+};
 
 static bool is_handled_file_tag(const std::string& s)
 {
