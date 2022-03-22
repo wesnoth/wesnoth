@@ -253,12 +253,12 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up random faction mode menu_button
 	//
-	static const std::array<t_string, random_faction_mode::size()> names {{_("Independent"), _("No Mirror"), _("No Ally Mirror")}};
-	static const std::array<t_string, random_faction_mode::size()> tooltips {{
+	static const random_faction_mode::sized_array<t_string> names {_("Independent"), _("No Mirror"), _("No Ally Mirror")};
+	static const random_faction_mode::sized_array<t_string> tooltips {
 		_("Independent: Random factions assigned independently"),
 		_("No Mirror: No two players will get the same faction"),
 		_("No Ally Mirror: No two allied players will get the same faction")
-	}};
+	};
 	std::vector<config> rfm_options;
 	for(std::size_t i = 0; i < random_faction_mode::size(); i++) {
 		rfm_options.emplace_back("label", names[i]);
