@@ -1557,28 +1557,34 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
 	// Filter poison, plague, drain, first strike
-	if (tag_name == "drains" && other && other->get_state("undrainable")) {
+	bool bool_lambda = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker))) ? true : false;
+	unit_const_ptr lambda_unit = bool_lambda ? other : self;
+	const_attack_ptr lambda_attack = bool_lambda ? other_attack : self_attack;
+	map_location lambda_loc = bool_lambda ? other_loc : self_loc;
+	bool attacker = bool_lambda ? !is_attacker : is_attacker;
+
+	if (tag_name == "drains" && lambda_unit && lambda_unit->get_state("undrainable")) {
 		return false;
 	}
-	if (tag_name == "plague" && other &&
-		(other->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(other_loc))) {
+	if (tag_name == "plague" && lambda_unit &&
+		(lambda_unit->get_state("unplagueable") ||
+		 resources::gameboard->map().is_village(lambda_loc))) {
 		return false;
 	}
-	if (tag_name == "poison" && other &&
-		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
+	if (tag_name == "poison" && lambda_unit &&
+		(lambda_unit->get_state("unpoisonable") || lambda_unit->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->has_special_or_ability("firststrike")) {
+	if (tag_name == "firststrike" && attacker && lambda_attack &&
+		lambda_attack->has_special_or_ability("firststrike")) {
 		return false;
 	}
-	if (tag_name == "slow" && other &&
-		(other->get_state("unslowable") || other->get_state(unit::STATE_SLOWED))) {
+	if (tag_name == "slow" && lambda_unit &&
+		(lambda_unit->get_state("unslowable") || lambda_unit->get_state(unit::STATE_SLOWED))) {
 		return false;
 	}
-	if (tag_name == "petrifies" && other &&
-		other->get_state("unpetrifiable")) {
+	if (tag_name == "petrifies" && lambda_unit &&
+		lambda_unit->get_state("unpetrifiable")) {
 		return false;
 	}
 
