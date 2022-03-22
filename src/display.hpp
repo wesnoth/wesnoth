@@ -926,7 +926,17 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const std::array<drawing_layer, 4> layer_groups;
+		// FIXME: temporary method. Group splitting should be made
+		// public into the definition of drawing_layer
+		//
+		// The drawing is done per layer_group, the range per group is [low, high).
+		static inline const std::array layer_groups {
+			LAYER_TERRAIN_BG,
+			LAYER_UNIT_FIRST,
+			LAYER_UNIT_MOVE_DEFAULT,
+			// Make sure the movement doesn't show above fog and reachmap.
+			LAYER_REACHMAP
+		};
 
 	public:
 		drawing_buffer_key(const map_location &loc, drawing_layer layer);

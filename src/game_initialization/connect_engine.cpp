@@ -50,13 +50,13 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-const std::array<std::string, 5> controller_names {{
+const std::array controller_names {
 	side_controller::human,
 	side_controller::human,
 	side_controller::ai,
 	side_controller::none,
 	side_controller::reserved
-}};
+};
 
 const std::set<std::string> children_to_swap {
 	"village",
