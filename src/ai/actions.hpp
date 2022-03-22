@@ -425,7 +425,7 @@ const static std::string& get_error_name(int error_code);
 
 private:
 
-static std::map<int,std::string> error_names_;
+static const std::map<int, std::string> error_names_;
 
 };
 
