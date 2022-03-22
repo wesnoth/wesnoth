@@ -206,7 +206,7 @@ BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
 		{"'[']thing[']'", token_type::string_literal},
 		{"]", token_type::rsquare},
 	}};
-	for(const auto [str, type] : tokens) {
+	for(const auto& [str, type] : tokens) {
 		const token t = get_token(i1, i2);
 		assert(std::string(t.begin, t.end) == str);
 		assert(t.type == type);
