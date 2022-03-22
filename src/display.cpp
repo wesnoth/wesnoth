@@ -877,6 +877,30 @@ void display::layout_buttons()
 	}
 }
 
+namespace
+{
+gui::button::TYPE string_to_button_type(const std::string& type)
+{
+	if(type == "checkbox") {
+		return gui::button::TYPE_CHECK;
+	} else if(type == "image") {
+		return gui::button::TYPE_IMAGE;
+	} else if(type == "radiobox") {
+		return gui::button::TYPE_RADIO;
+	} else if(type == "turbo") {
+		return gui::button::TYPE_TURBO;
+	} else {
+		return gui::button::TYPE_PRESS;
+	}
+}
+
+const std::string& get_direction(std::size_t n)
+{
+	static const std::array<std::string, 6> dirs{"-n", "-ne", "-se", "-s", "-sw", "-nw"};
+	return dirs[n >= dirs.size() ? 0 : n];
+}
+} // namespace
+
 void display::create_buttons()
 {
 	std::vector<std::shared_ptr<gui::button>> menu_work;
@@ -947,23 +971,6 @@ void display::render_buttons()
 		btn->set_dirty(true);
 		btn->draw();
 	}
-}
-
-
-gui::button::TYPE display::string_to_button_type(const std::string& type)
-{
-	gui::button::TYPE res = gui::button::TYPE_PRESS;
-	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
-	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
-	else if (type == "radiobox") { res = gui::button::TYPE_RADIO; }
-	else if (type == "turbo") { res = gui::button::TYPE_TURBO; }
-	return res;
-}
-
-static const std::string& get_direction(std::size_t n)
-{
-	static const std::array<std::string, 6> dirs { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
-	return dirs[n >= dirs.size() ? 0 : n];
 }
 
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
