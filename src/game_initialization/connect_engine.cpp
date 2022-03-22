@@ -317,7 +317,7 @@ void connect_engine::update_level()
 	}
 }
 
-void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
+void connect_engine::update_and_send_diff()
 {
 	config old_level = level_;
 	update_level();
@@ -457,7 +457,7 @@ void connect_engine::start_game()
 	config lock("stop_updates");
 	mp::send_to_server(lock);
 
-	update_and_send_diff(true);
+	update_and_send_diff();
 
 	save_reserved_sides_information();
 
@@ -523,7 +523,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		side->resolve_random(rng);
 	} // end top-level loop
 
-	update_and_send_diff(true);
+	update_and_send_diff();
 
 	// Update sides with commandline parameters.
 	if(cmdline_opts.multiplayer_turns) {
