@@ -136,12 +136,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
-		fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 #if defined(__APPLE__) && defined(__MACH__)
 		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
 #endif
 	}
+#endif
+
+#ifdef __linux__
+	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
