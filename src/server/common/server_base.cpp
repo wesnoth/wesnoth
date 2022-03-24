@@ -116,13 +116,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
-	if(error) {
+	if(error && accepting_connections()) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
 	if(accepting_connections()) {
 		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+	} else {
+		return;
 	}
 
 #ifndef _WIN32
