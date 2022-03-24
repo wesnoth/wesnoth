@@ -359,7 +359,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
 	off_t offset { 0 };
-	std::size_t total_bytes_transferred { 0 };
+	//std::size_t total_bytes_transferred { 0 };
 
 	union DataSize
 	{
@@ -383,7 +383,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
 		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
-		total_bytes_transferred += *(yield.ec_) ? 0 : n;
+		//total_bytes_transferred += *(yield.ec_) ? 0 : n;
 
 		// Retry operation immediately if interrupted by signal.
 		if (*(yield.ec_) == boost::asio::error::interrupted)
