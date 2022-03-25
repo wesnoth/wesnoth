@@ -63,7 +63,6 @@
    * Made the Add-ons Manager search box less unwieldy on very small resolutions.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
-   * Reduced the size of Isar's Cross map background images.
 
 ## Version 1.16.0
  ### Campaigns
