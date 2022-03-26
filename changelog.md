@@ -11,7 +11,7 @@
  ### Terrain
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
  ### Translations
-   * Updated translations: British English
+   * Updated translations: British English, Italian
  ### Units
  ### User interface
  ### WML Engine
