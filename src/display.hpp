@@ -348,12 +348,6 @@ public:
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const;
 
-	/**
-	 * Determines whether a grid should be overlayed on the game board.
-	 * (to more clearly show where hexes are)
-	 */
-	void set_grid(const bool grid) { grid_ = grid; }
-
 	/** Getter for the x,y debug overlay on tiles */
 	bool get_draw_coordinates() const { return draw_coordinates_; }
 	/** Setter for the x,y debug overlay on tiles */
@@ -475,21 +469,7 @@ public:
 
 	void set_diagnostic(const std::string& msg);
 
-	/**
-	 * Set/Get whether 'turbo' mode is on.
-	 * When turbo mode is on, everything moves much faster.
-	 */
-	void set_turbo(const bool turbo) { turbo_ = turbo; }
-
 	double turbo_speed() const;
-
-	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
-
-	/** control unit idle animations and their frequency */
-	void set_idle_anim(bool ison) { idle_anim_ = ison; }
-	bool idle_anim() const { return idle_anim_; }
-	void set_idle_anim_rate(int rate);
-	double idle_anim_rate() const { return idle_anim_rate_; }
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos) const;
@@ -754,11 +734,8 @@ protected:
 	bool redrawMinimap_;
 	bool redraw_background_;
 	bool invalidateAll_;
-	bool grid_;
 	int diagnostic_label_;
 	bool panelsDrawn_;
-	double turbo_speed_;
-	bool turbo_;
 	bool invalidateGameStatus_;
 	const std::unique_ptr<map_labels> map_labels_;
 	reports * reports_object_;
@@ -1053,9 +1030,6 @@ private:
 	/** Count work done for the debug info displayed under fps */
 	int invalidated_hexes_;
 	int drawn_hexes_;
-
-	bool idle_anim_;
-	double idle_anim_rate_;
 
 	surface map_screenshot_surf_;
 

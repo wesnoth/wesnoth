@@ -97,7 +97,6 @@ editor_controller::editor_controller()
 void editor_controller::init_gui()
 {
 	gui_->change_display_context(&get_current_map_context());
-	preferences::set_preference_display_settings();
 	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());

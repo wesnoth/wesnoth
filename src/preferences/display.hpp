@@ -17,21 +17,13 @@
 
 #include <string>
 
-namespace preferences {
-	void set_preference_display_settings();
+namespace preferences
+{
+void set_color_cursors(bool value);
 
-	void set_turbo(bool ison);
-	void set_grid(bool ison);
-	void set_turbo_speed(double speed);
-	void set_color_cursors(bool value);
+bool show_standing_animations();
+void set_show_standing_animations(bool value);
 
-	// Control unit idle animations
-	void set_idle_anim(bool ison);
-	void set_idle_anim_rate(int rate);
-
-	bool show_standing_animations();
-	void set_show_standing_animations(bool value);
-
-	void show_wesnothd_server_search();
-	bool show_theme_dialog();
+void show_wesnothd_server_search();
+bool show_theme_dialog();
 } // end namespace preferences

@@ -85,20 +85,20 @@ namespace preferences {
 	void set_vsync(bool ison);
 
 	bool turbo();
-	void _set_turbo(bool ison);
+	void set_turbo(bool ison);
 
 	double turbo_speed();
-	void save_turbo_speed(const double speed);
+	void set_turbo_speed(const double speed);
 
 	int font_scaling();
 	void set_font_scaling(int scale);
 	int font_scaled(int size);
 
 	bool idle_anim();
-	void _set_idle_anim(const bool ison);
+	void set_idle_anim(const bool ison);
 
-	int idle_anim_rate();
-	void _set_idle_anim_rate(const int rate);
+	double idle_anim_rate();
+	void set_idle_anim_rate(const int rate);
 
 	std::string language();
 	void set_language(const std::string& s);
@@ -240,7 +240,7 @@ namespace preferences {
 	void set_ellipses(bool ison);
 
 	bool grid();
-	void _set_grid(bool ison);
+	void set_grid(bool ison);
 
 	bool confirm_load_save_from_different_version();
 

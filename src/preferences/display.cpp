@@ -42,62 +42,11 @@
 
 namespace preferences {
 
-void set_preference_display_settings()
-{
-	set_grid(grid());
-	set_turbo(turbo());
-	set_turbo_speed(turbo_speed());
-	set_color_cursors(preferences::get("color_cursors", true));
-}
-
-void set_turbo(bool ison)
-{
-	_set_turbo(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_turbo(ison);
-	}
-}
-
-void set_turbo_speed(double speed)
-{
-	save_turbo_speed(speed);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_turbo_speed(speed);
-	}
-}
-
-void set_grid(bool ison)
-{
-	_set_grid(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_grid(ison);
-	}
-}
-
 void set_color_cursors(bool value)
 {
 	_set_color_cursors(value);
 
 	cursor::set();
-}
-
-void set_idle_anim(bool ison) {
-	_set_idle_anim(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_idle_anim(ison);
-	}
-}
-
-void set_idle_anim_rate(int rate) {
-	_set_idle_anim_rate(rate);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_idle_anim_rate(rate);
-	}
 }
 
 bool show_standing_animations()

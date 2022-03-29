@@ -192,11 +192,8 @@ display::display(const display_context* dc,
 	, redrawMinimap_(false)
 	, redraw_background_(true)
 	, invalidateAll_(true)
-	, grid_(false)
 	, diagnostic_label_(0)
 	, panelsDrawn_(false)
-	, turbo_speed_(2)
-	, turbo_(false)
 	, invalidateGameStatus_(true)
 	, map_labels_(new map_labels(nullptr))
 	, reports_object_(&reports_object)
@@ -231,8 +228,6 @@ display::display(const display_context* dc,
 	, fps_handle_(0)
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
-	, idle_anim_(preferences::idle_anim())
-	, idle_anim_rate_(1.0)
 	, map_screenshot_surf_(nullptr)
 	, redraw_observers_()
 	, draw_coordinates_(false)
@@ -260,8 +255,6 @@ display::display(const display_context* dc,
 
 	fill_images_list(game_config::fog_prefix, fog_images_);
 	fill_images_list(game_config::shroud_prefix, shroud_images_);
-
-	set_idle_anim_rate(preferences::idle_anim_rate());
 
 	unsigned int tile_size = preferences::tile_size();
 	if(tile_size < MinZoom || tile_size > MaxZoom)
@@ -2377,21 +2370,16 @@ void display::bounds_check_position(int& xpos, int& ypos) const
 
 double display::turbo_speed() const
 {
-	bool res = turbo_;
+	bool res = preferences::turbo();
 	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
 		res = !res;
 	}
 
 	res |= screen_.faked();
 	if (res)
-		return turbo_speed_;
+		return preferences::turbo_speed();
 	else
 		return 1.0;
-}
-
-void display::set_idle_anim_rate(int rate)
-{
-	idle_anim_rate_ = std::pow(2.0, -rate/10.0);
 }
 
 void display::redraw_everything()
@@ -2584,7 +2572,7 @@ void display::draw_hex(const map_location& loc) {
 		num_images_fg = terrain_image_vector_.size();
 
 		// Draw the grid, if that's been enabled
-		if(grid_) {
+		if(preferences::grid()) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
 				image::get_image(grid_top, image::TOD_COLORED));
