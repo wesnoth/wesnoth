@@ -30,13 +30,13 @@
 #include <cassert>
 
 template<typename T>
-inline bool is_even(T num) { return num % 2 == 0; }
+constexpr bool is_even(T num) { return num % 2 == 0; }
 
 template<typename T>
-inline bool is_odd(T num) { return !is_even(num); }
+constexpr bool is_odd(T num) { return !is_even(num); }
 
 /** Guarantees portable results for division by 100; round half up, to the nearest integer. */
-inline int div100rounded(int num) {
+constexpr int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
 }
 
@@ -45,7 +45,7 @@ inline int div100rounded(int num) {
  * decrease it below min_sum.
  * (If base is already below the applicable limit, base will be returned.)
  */
-inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
+constexpr int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
 {
 	if(increment >= 0) {
 		return std::min(base + increment, std::max(base, max_sum));
@@ -59,7 +59,7 @@ inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
  * @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
  */
 template<typename T>
-inline T modulo(T num, int mod, T min = 0)
+constexpr T modulo(T num, int mod, T min = 0)
 {
 	assert(mod > 0);
 	T n = (num - min) % mod;
@@ -77,7 +77,7 @@ inline T modulo(T num, int mod, T min = 0)
  *  round (base_damage * bonus / divisor) to the closest integer,
  *  but up or down towards base_damage
  */
-inline int round_damage(int base_damage, int bonus, int divisor) {
+constexpr int round_damage(int base_damage, int bonus, int divisor) {
 	if (base_damage==0) return 0;
 	const int rounding = divisor / 2 - (bonus < divisor || divisor==1 ? 0 : 1);
 	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
@@ -103,7 +103,7 @@ bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp>>& ranges)
  * @returns the size, in bits, of an instance of type `T`.
  */
 template<typename T>
-inline std::size_t bit_width() {
+constexpr std::size_t bit_width() {
 	return sizeof(T) * std::numeric_limits<unsigned char>::digits;
 }
 
@@ -118,7 +118,7 @@ inline std::size_t bit_width() {
  * @returns the size, in bits, of an instance of type `T`.
  */
 template<typename T>
-inline std::size_t bit_width(const T&) {
+constexpr std::size_t bit_width(const T&) {
 	return sizeof(T) * std::numeric_limits<unsigned char>::digits;
 }
 
@@ -140,7 +140,7 @@ inline std::size_t bit_width(const T&) {
  * type.
  */
 template<typename N>
-inline unsigned int count_ones(N n) {
+constexpr unsigned int count_ones(N n) {
 	unsigned int r = 0;
 	while (n) {
 		n &= n-1;
@@ -151,7 +151,7 @@ inline unsigned int count_ones(N n) {
 
 // Support functions for `count_leading_zeros`.
 #if defined(__GNUC__) || defined(__clang__)
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		unsigned char n, std::size_t w) {
 	// Returns the result of the compiler built-in function, adjusted for
 	// the difference between the width, in bits, of the built-in
@@ -162,63 +162,63 @@ inline unsigned int count_leading_zeros_impl(
 		- static_cast<unsigned int>(
 			bit_width<unsigned int>() - w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		unsigned short int n, std::size_t w) {
 	return static_cast<unsigned int>(__builtin_clz(n))
 		- static_cast<unsigned int>(
 			bit_width<unsigned int>() - w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		unsigned int n, std::size_t w) {
 	return static_cast<unsigned int>(__builtin_clz(n))
 		- static_cast<unsigned int>(
 			bit_width<unsigned int>() - w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		unsigned long int n, std::size_t w) {
 	return static_cast<unsigned int>(__builtin_clzl(n))
 		- static_cast<unsigned int>(
 			bit_width<unsigned long int>() - w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		unsigned long long int n, std::size_t w) {
 	return static_cast<unsigned int>(__builtin_clzll(n))
 		- static_cast<unsigned int>(
 			bit_width<unsigned long long int>() - w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		char n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned char>(n), w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		signed char n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned char>(n), w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		signed short int n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned short int>(n), w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		signed int n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned int>(n), w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		signed long int n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned long int>(n), w);
 }
-inline unsigned int count_leading_zeros_impl(
+constexpr unsigned int count_leading_zeros_impl(
 		signed long long int n, std::size_t w) {
 	return count_leading_zeros_impl(
 		static_cast<unsigned long long int>(n), w);
 }
 #else
 template<typename N>
-inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
+constexpr unsigned int count_leading_zeros_impl(N n, std::size_t w) {
 	// Algorithm adapted from:
 	// <http://aggregate.org/MAGIC/#Leading%20Zero%20Count>
 	for (unsigned int shift = 1; shift < w; shift *= 2) {
@@ -249,7 +249,7 @@ inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
  * @see count_leading_ones()
  */
 template<typename N>
-inline unsigned int count_leading_zeros(N n) {
+constexpr unsigned int count_leading_zeros(N n) {
 #if defined(__GNUC__) || defined(__clang__)
 	// GCC’s `__builtin_clz` returns an undefined value when called with 0
 	// as argument.
@@ -295,7 +295,7 @@ inline unsigned int count_leading_zeros(N n) {
  * @see count_leading_zeros()
  */
 template<typename N>
-inline unsigned int count_leading_ones(N n) {
+constexpr unsigned int count_leading_ones(N n) {
 	// Explicitly specify the type for which to instantiate
 	// `count_leading_zeros` in case `~n` is of a different type.
 	return count_leading_zeros<N>(~n);
