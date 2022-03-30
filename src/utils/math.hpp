@@ -140,7 +140,7 @@ constexpr std::size_t bit_width(const T&) {
  * type.
  */
 template<typename N>
-inline unsigned int count_ones(N n) {
+constexpr unsigned int count_ones(N n) {
 	unsigned int r = 0;
 	while (n) {
 		n &= n-1;
