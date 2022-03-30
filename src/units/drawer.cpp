@@ -412,7 +412,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
 	if(unfilled < height && alpha >= multiply_by_256(0.3)) {
-		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
+		const uint8_t r_alpha = std::min<unsigned>(multiply_and_right_shift(alpha,255),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));

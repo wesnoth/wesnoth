@@ -317,8 +317,15 @@ constexpr int32_t multiply_by_256(double n)
 	return int32_t(n * 256);
 }
 
-/** IN: unsigned and int32_t - OUT: unsigned */
-# define fxpmult(x,y) (((x)*(y)) >> 8)
+/**
+ * @param n1 The first number to multiply.
+ * @param n2 The second number to multiply.
+ * @return The unsigned result of n1 * n2, then bitshifting the result to the right.
+ */
+constexpr unsigned multiply_and_right_shift(int32_t n1, int32_t n2)
+{
+	return static_cast<unsigned>((n1 * n2) >> 8);
+}
 
 /** IN: unsigned and int - OUT: int32_t */
 # define fxpdiv(x,y) (((x) << 8) / (y))
