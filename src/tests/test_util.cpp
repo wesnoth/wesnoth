@@ -54,8 +54,8 @@ static_assert(count_leading_zeros('\b') == bit_width<char>() - 4);
 static_assert(count_leading_zeros('\033') == bit_width<char>() - 5);
 static_assert(count_leading_zeros(' ') == bit_width<char>() - 6);
 
-static_assert(count_leading_ones(0) == 0);
-static_assert(count_leading_ones(1) == 0);
+static_assert(count_leading_ones(0u) == 0);
+static_assert(count_leading_ones(1u) == 0);
 static_assert(count_leading_ones(static_cast<uint8_t>(0xFF)) == 8);
 static_assert(count_leading_ones(static_cast<uint16_t>(0xFFFF)) == 16);
 static_assert(count_leading_ones(0xFFFFFFFFU) == 32);
