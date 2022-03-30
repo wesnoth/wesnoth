@@ -29,18 +29,6 @@ static_assert(bit_width(static_cast<uint16_t>(0)) == 16);
 static_assert(bit_width(static_cast<uint32_t>(0)) == 32);
 static_assert(bit_width(static_cast<uint64_t>(0)) == 64);
 
-static_assert(count_ones(0) == 0);
-static_assert(count_ones(1) == 1);
-static_assert(count_ones(2) == 1);
-static_assert(count_ones(3) == 2);
-static_assert(count_ones(4) == 1);
-static_assert(count_ones(5) == 2);
-static_assert(count_ones(6) == 2);
-static_assert(count_ones(7) == 3);
-static_assert(count_ones(8) == 1);
-static_assert(count_ones(9) == 2);
-static_assert(count_ones(12345) == 6);
-
 static_assert(count_leading_zeros(static_cast<uint8_t>(1)) == 7);
 static_assert(count_leading_zeros(static_cast<uint16_t>(1)) == 15);
 static_assert(count_leading_zeros(static_cast<uint32_t>(1)) == 31);
@@ -49,11 +37,16 @@ static_assert(count_leading_zeros(static_cast<uint8_t>(0xFF)) == 0);
 static_assert(count_leading_zeros(static_cast<unsigned int>(0)) == bit_width<unsigned int>());
 static_assert(count_leading_zeros(static_cast<unsigned long int>(0)) == bit_width<unsigned long int>());
 static_assert(count_leading_zeros(static_cast<unsigned long long int>(0)) == bit_width<unsigned long long int>());
+static_assert(count_leading_zeros(static_cast<uint16_t>(12345)) == 2); // 12345 == 0x3039
+static_assert(count_leading_zeros(static_cast<int16_t>(12345)) == 2); // 12345 == 0x3039
+static_assert(count_leading_zeros(uint8_t{0xff}) == 0);
 static_assert(count_leading_zeros('\0') == bit_width<char>());
 static_assert(count_leading_zeros('\b') == bit_width<char>() - 4);
 static_assert(count_leading_zeros('\033') == bit_width<char>() - 5);
 static_assert(count_leading_zeros(' ') == bit_width<char>() - 6);
 
+static_assert(count_leading_ones(0) == 0);
+static_assert(count_leading_ones(1) == 0);
 static_assert(count_leading_ones(0u) == 0);
 static_assert(count_leading_ones(1u) == 0);
 static_assert(count_leading_ones(static_cast<uint8_t>(0xFF)) == 8);
