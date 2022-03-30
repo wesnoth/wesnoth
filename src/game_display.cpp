@@ -108,7 +108,7 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 				if(old_mask != nullptr) {
-					const int32_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
+					const int32_t proportion = multiply_by_256(1.0) - fxpdiv(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1 = old_mask;
 				}

@@ -1272,7 +1272,7 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 				b = (*beg);
 				int d = (beg-limit)/nsurf->w;  // current depth in pixels
 				float a = alpha_base - d * alpha_delta;
-				int32_t amount = ftofxp(a<0?0:a);
+				int32_t amount = multiply_by_256(a<0?0:a);
 				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)),255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}

@@ -556,7 +556,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
 			src, image, facing_west, false,
-			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
+			multiply_by_256(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 

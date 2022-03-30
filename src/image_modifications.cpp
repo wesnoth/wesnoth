@@ -545,7 +545,7 @@ surface o_modification::operator()(const surface& src) const
 		return nullptr;
 	}
 
-	uint16_t amount = ftofxp(opacity_);
+	uint16_t amount = multiply_by_256(opacity_);
 
 	{
 		surface_lock lock(nsurf);

@@ -308,17 +308,20 @@ inline int rounded_division(int a, int b)
 	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
 }
 
-# define fxp_shift 8
-# define fxp_base (1 << fxp_shift)
-
-/** IN: float or int - OUT: int32_t */
-# define ftofxp(x) (int32_t((x) * fxp_base))
+/**
+ * @param n The number to multiply by 256.
+ * @return n * 256
+ */
+constexpr int32_t multiply_by_256(double n)
+{
+	return int32_t(n * 256);
+}
 
 /** IN: unsigned and int32_t - OUT: unsigned */
-# define fxpmult(x,y) (((x)*(y)) >> fxp_shift)
+# define fxpmult(x,y) (((x)*(y)) >> 8)
 
 /** IN: unsigned and int - OUT: int32_t */
-# define fxpdiv(x,y) (((x) << fxp_shift) / (y))
+# define fxpdiv(x,y) (((x) << 8) / (y))
 
 /** IN: int32_t - OUT: int */
-# define fxptoi(x) ( ((x)>0) ? ((x) >> fxp_shift) : (-((-(x)) >> fxp_shift)) )
+# define fxptoi(x) ( ((x)>0) ? ((x) >> 8) : (-((-(x)) >> 8)) )

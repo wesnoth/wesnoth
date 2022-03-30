@@ -309,7 +309,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
+		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? multiply_by_256(1.0): multiply_by_256(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -325,9 +325,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 		if (can_recruit) {
 			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
 			if(crown) {
-				//if(bar_alpha != ftofxp(1.0)) {
-				//	crown = adjust_surface_alpha(crown, bar_alpha);
-				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
 			}
@@ -403,13 +400,6 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		height = bar_loc.h;
 	}
 
-	//if(alpha != ftofxp(1.0)) {
-	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == nullptr) {
-	//		return;
-	//	}
-	//}
-
 	const std::size_t skip_rows = bar_loc.h - height;
 
 	SDL_Rect top {0, 0, surf->w, bar_loc.y};
@@ -421,7 +411,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
-	if(unfilled < height && alpha >= ftofxp(0.3)) {
+	if(unfilled < height && alpha >= multiply_by_256(0.3)) {
 		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
