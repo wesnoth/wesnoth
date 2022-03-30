@@ -1326,8 +1326,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
-		const game_config_view& game_config = game_config_manager::get()->game_config();
-		game_display_->set_theme(play_controller_.get_theme(game_config, value));
+		game_display_->set_theme(value);
 	);
 	modify_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead", gamedata().set_victory_music(std::move(value)));
