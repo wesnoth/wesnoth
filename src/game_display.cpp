@@ -65,9 +65,9 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
-		const config& theme_cfg,
+		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_cfg, level, false)
+	: display(&board, wb, reports_object, theme_id, level, false)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()

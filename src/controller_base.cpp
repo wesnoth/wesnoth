@@ -453,25 +453,3 @@ bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
 {
 	return true;
 }
-
-const config& controller_base::get_theme(const game_config_view& game_config, std::string theme_name)
-{
-	if(theme_name.empty()) {
-		theme_name = preferences::theme();
-	}
-
-	if(const config& c = game_config.find_child("theme", "id", theme_name)) {
-		return c;
-	}
-
-	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme." << std::endl;
-
-	if(const config& c = game_config.find_child("theme", "id", "Default")) {
-		return c;
-	}
-
-	ERR_DP << "Default theme not found." << std::endl;
-
-	static config empty;
-	return empty;
-}
