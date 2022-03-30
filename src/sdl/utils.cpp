@@ -227,8 +227,8 @@ surface scale_surface(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		int32_t xratio = fxpdiv(surf->w,w);
-		int32_t yratio = fxpdiv(surf->h,h);
+		int32_t xratio = left_shift_and_divide(surf->w,w);
+		int32_t yratio = left_shift_and_divide(surf->h,h);
 
 		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
@@ -351,8 +351,8 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		int32_t xratio = fxpdiv(surf->w,w);
-		int32_t yratio = fxpdiv(surf->h,h);
+		int32_t xratio = left_shift_and_divide(surf->w,w);
+		int32_t yratio = left_shift_and_divide(surf->h,h);
 
 		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {

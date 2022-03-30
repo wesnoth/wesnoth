@@ -385,8 +385,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 		bar_loc = unscaled_bar_loc;
 	else {
-		const int32_t xratio = fxpdiv(surf->w,bar_surf->w);
-		const int32_t yratio = fxpdiv(surf->h,bar_surf->h);
+		const int32_t xratio = left_shift_and_divide(surf->w,bar_surf->w);
+		const int32_t yratio = left_shift_and_divide(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
 			    fxptoi(unscaled_bar_loc. x * xratio)
 			  , fxptoi(unscaled_bar_loc. y * yratio + 127)

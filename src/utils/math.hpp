@@ -327,8 +327,15 @@ constexpr unsigned multiply_and_right_shift(int32_t n1, int32_t n2)
 	return static_cast<unsigned>((n1 * n2) >> 8);
 }
 
-/** IN: unsigned and int - OUT: int32_t */
-# define fxpdiv(x,y) (((x) << 8) / (y))
+/**
+ * @param n1 The numerator, which gets bit shifted left.
+ * @param n2 The divisor.
+ * @return n1 bit shifted left then divided by n1.
+ */
+constexpr int32_t left_shift_and_divide(int n1, int n2)
+{
+	return (n1 << 8) / n2;
+}
 
 /** IN: int32_t - OUT: int */
 # define fxptoi(x) ( ((x)>0) ? ((x) >> 8) : (-((-(x)) >> 8)) )
