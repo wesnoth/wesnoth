@@ -1567,9 +1567,9 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	if(blend_ratio != 0) {
 		surf = blend_surface(surf, blend_ratio, blendto);
 	}
-	if(alpha > multiply_by_256(1.0)) {
+	if(alpha > floating_to_fixed_point(1.0)) {
 		surf = brighten_image(surf, alpha);
-	} else if(alpha != multiply_by_256(1.0)) {
+	} else if(alpha != floating_to_fixed_point(1.0)) {
 		surf = surf.clone();
 		adjust_surface_alpha(surf, alpha);
 	}

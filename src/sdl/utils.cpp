@@ -227,15 +227,15 @@ surface scale_surface(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		int32_t xratio = left_shift_and_divide(surf->w,w);
-		int32_t yratio = left_shift_and_divide(surf->h,h);
+		int32_t xratio = fixed_point_divide(surf->w,w);
+		int32_t yratio = fixed_point_divide(surf->h,h);
 
 		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = right_shift(xsrc);
-				const int ysrcint = right_shift(ysrc);
+				const int xsrcint = fixed_point_to_int(xsrc);
+				const int ysrcint = fixed_point_to_int(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
@@ -351,15 +351,15 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		int32_t xratio = left_shift_and_divide(surf->w,w);
-		int32_t yratio = left_shift_and_divide(surf->h,h);
+		int32_t xratio = fixed_point_divide(surf->w,w);
+		int32_t yratio = fixed_point_divide(surf->h,h);
 
 		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = right_shift(xsrc);
-				const int ysrcint = right_shift(ysrc);
+				const int xsrcint = fixed_point_to_int(xsrc);
+				const int ysrcint = fixed_point_to_int(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
@@ -1070,9 +1070,9 @@ surface brighten_image(const surface &surf, int32_t amount)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				r = std::min<unsigned>(multiply_and_right_shift(r, amount),255);
-				g = std::min<unsigned>(multiply_and_right_shift(g, amount),255);
-				b = std::min<unsigned>(multiply_and_right_shift(b, amount),255);
+				r = std::min<unsigned>(fixed_point_multiply(r, amount),255);
+				g = std::min<unsigned>(fixed_point_multiply(g, amount),255);
+				b = std::min<unsigned>(fixed_point_multiply(b, amount),255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -1272,8 +1272,8 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 				b = (*beg);
 				int d = (beg-limit)/nsurf->w;  // current depth in pixels
 				float a = alpha_base - d * alpha_delta;
-				int32_t amount = multiply_by_256(a<0?0:a);
-				alpha = std::min<unsigned>(multiply_and_right_shift(alpha,amount),255);
+				int32_t amount = floating_to_fixed_point(a<0?0:a);
+				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount),255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

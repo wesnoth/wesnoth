@@ -253,7 +253,7 @@ void textbox::draw_contents()
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
-			adjust_surface_alpha(text_image_, multiply_by_256(0.3));
+			adjust_surface_alpha(text_image_, floating_to_fixed_point(0.3));
 			sdl_blit(text_image_, &src, surf, &dest);
 		}
 	}

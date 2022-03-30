@@ -137,7 +137,7 @@ surface floating_label::create_surface()
 			// dark background will darken the anti-aliased part.
 			// This 1.13 value seems to restore the brightness of version 1.4
 			// (where the text was blitted directly on screen)
-			adjust_surface_alpha(foreground, multiply_by_256(1.13));
+			adjust_surface_alpha(foreground, floating_to_fixed_point(1.13));
 
 			SDL_Rect r{border_, border_, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);

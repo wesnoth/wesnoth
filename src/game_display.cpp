@@ -108,13 +108,13 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 				if(old_mask != nullptr) {
-					const int32_t proportion = multiply_by_256(1.0) - left_shift_and_divide(i,niterations);
+					const int32_t proportion = floating_to_fixed_point(1.0) - fixed_point_divide(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
-					const int32_t proportion = left_shift_and_divide(i,niterations);
+					const int32_t proportion = fixed_point_divide(i,niterations);
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2 = new_mask;
 				}

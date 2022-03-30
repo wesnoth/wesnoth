@@ -309,7 +309,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? multiply_by_256(1.0): multiply_by_256(0.8);
+		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? floating_to_fixed_point(1.0): floating_to_fixed_point(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -385,13 +385,13 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 		bar_loc = unscaled_bar_loc;
 	else {
-		const int32_t xratio = left_shift_and_divide(surf->w,bar_surf->w);
-		const int32_t yratio = left_shift_and_divide(surf->h,bar_surf->h);
+		const int32_t xratio = fixed_point_divide(surf->w,bar_surf->w);
+		const int32_t yratio = fixed_point_divide(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
-			    right_shift(unscaled_bar_loc.x * xratio)
-			  , right_shift(unscaled_bar_loc.y * yratio + 127)
-			  , right_shift(unscaled_bar_loc.w * xratio + 255)
-			  , right_shift(unscaled_bar_loc.h * yratio + 255)
+			    fixed_point_to_int(unscaled_bar_loc.x * xratio)
+			  , fixed_point_to_int(unscaled_bar_loc.y * yratio + 127)
+			  , fixed_point_to_int(unscaled_bar_loc.w * xratio + 255)
+			  , fixed_point_to_int(unscaled_bar_loc.h * yratio + 255)
 		};
 		bar_loc = scaled_bar_loc;
 	}
@@ -411,8 +411,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
-	if(unfilled < height && alpha >= multiply_by_256(0.3)) {
-		const uint8_t r_alpha = std::min<unsigned>(multiply_and_right_shift(alpha,255),255);
+	if(unfilled < height && alpha >= floating_to_fixed_point(0.3)) {
+		const uint8_t r_alpha = std::min<unsigned>(fixed_point_multiply(alpha,255),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));

@@ -309,12 +309,11 @@ inline int rounded_division(int a, int b)
 }
 
 /**
- * @param n The number to multiply by 256.
- * @return n * 256
+ * Converts a double to a fixed point.
  */
-constexpr int32_t multiply_by_256(double n)
+constexpr int32_t floating_to_fixed_point(double n)
 {
-	return int32_t(n * 256);
+	return int32_t(n * (1 << 8));
 }
 
 /**
@@ -322,7 +321,7 @@ constexpr int32_t multiply_by_256(double n)
  * @param n2 The second number to multiply.
  * @return The unsigned result of n1 * n2, then bitshifting the result to the right.
  */
-constexpr unsigned multiply_and_right_shift(int32_t n1, int32_t n2)
+constexpr unsigned fixed_point_multiply(int32_t n1, int32_t n2)
 {
 	return static_cast<unsigned>((n1 * n2) >> 8);
 }
@@ -332,7 +331,7 @@ constexpr unsigned multiply_and_right_shift(int32_t n1, int32_t n2)
  * @param n2 The divisor.
  * @return n1 bit shifted left then divided by n1.
  */
-constexpr int32_t left_shift_and_divide(int n1, int n2)
+constexpr int32_t fixed_point_divide(int n1, int n2)
 {
 	return (n1 << 8) / n2;
 }
@@ -344,7 +343,7 @@ constexpr int32_t left_shift_and_divide(int n1, int n2)
  * @param n The number to bit shift right.
  * @return The result of the bit shift.
  */
-constexpr int right_shift(int32_t n)
+constexpr int fixed_point_to_int(int32_t n)
 {
 	if(n > 0)
 	{

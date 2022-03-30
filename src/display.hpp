@@ -848,7 +848,7 @@ public:
 	void render_image(int x, int y, const display::drawing_layer drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
-			int32_t alpha=multiply_by_256(1.0), color_t blendto = {0,0,0},
+			int32_t alpha=floating_to_fixed_point(1.0), color_t blendto = {0,0,0},
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
 
 	/**
