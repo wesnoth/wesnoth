@@ -388,10 +388,10 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const int32_t xratio = left_shift_and_divide(surf->w,bar_surf->w);
 		const int32_t yratio = left_shift_and_divide(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
-			    fxptoi(unscaled_bar_loc. x * xratio)
-			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
-			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255)
+			    right_shift(unscaled_bar_loc.x * xratio)
+			  , right_shift(unscaled_bar_loc.y * yratio + 127)
+			  , right_shift(unscaled_bar_loc.w * xratio + 255)
+			  , right_shift(unscaled_bar_loc.h * yratio + 255)
 		};
 		bar_loc = scaled_bar_loc;
 	}

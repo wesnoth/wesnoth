@@ -234,8 +234,8 @@ surface scale_surface(const surface &surf, int w, int h)
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = fxptoi(xsrc);
-				const int ysrcint = fxptoi(ysrc);
+				const int xsrcint = right_shift(xsrc);
+				const int ysrcint = right_shift(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
@@ -358,8 +358,8 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = fxptoi(xsrc);
-				const int ysrcint = fxptoi(ysrc);
+				const int xsrcint = right_shift(xsrc);
+				const int ysrcint = right_shift(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;

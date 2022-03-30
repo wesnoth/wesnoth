@@ -337,5 +337,21 @@ constexpr int32_t left_shift_and_divide(int n1, int n2)
 	return (n1 << 8) / n2;
 }
 
-/** IN: int32_t - OUT: int */
-# define fxptoi(x) ( ((x)>0) ? ((x) >> 8) : (-((-(x)) >> 8)) )
+/**
+ * If positive, just bit shift.
+ * Else, make positive, bit shift, then make negative again.
+ * 
+ * @param n The number to bit shift right.
+ * @return The result of the bit shift.
+ */
+constexpr int right_shift(int32_t n)
+{
+	if(n > 0)
+	{
+		return n >> 8;
+	}
+	else
+	{
+		return -(-n >> 8);
+	}
+}
