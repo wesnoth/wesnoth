@@ -80,13 +80,9 @@ class gamemap;
 class display : public video2::draw_layering
 {
 public:
-	display(const display_context* dc,
-		std::weak_ptr<wb::manager> wb,
-		reports& reports_object,
-		const std::string& theme_id,
-		const config& level,
-		bool auto_join = true);
-
+	display(const display_context * dc, std::weak_ptr<wb::manager> wb,
+			reports & reports_object,
+			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
 	/**
 	 * Returns the display object if a display object exists. Otherwise it returns nullptr.
@@ -380,7 +376,7 @@ public:
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
-	void set_theme(const std::string& new_theme);
+	void set_theme(config theme_cfg);
 
 	/**
 	 * Retrieves a pointer to a theme UI button.

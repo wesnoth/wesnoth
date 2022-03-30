@@ -36,7 +36,7 @@ public:
 	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const std::string& theme_id,
+			const config& theme_cfg,
 			const config& level);
 
 	~game_display();

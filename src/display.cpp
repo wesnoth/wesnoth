@@ -169,7 +169,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 display::display(const display_context* dc,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
-		const std::string& theme_id,
+		const config& theme_cfg,
 		const config& level,
 		bool auto_join)
 	: video2::draw_layering(auto_join)
@@ -183,7 +183,7 @@ display::display(const display_context* dc,
 	, xpos_(0)
 	, ypos_(0)
 	, view_locked_(false)
-	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), screen_.screen_area())
+	, theme_(theme_cfg, screen_.screen_area())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
@@ -288,9 +288,8 @@ display::~display()
 	resources::fake_units = nullptr;
 }
 
-void display::set_theme(const std::string& new_theme)
-{
-	theme_ = theme{theme::get_theme_config(new_theme), screen_.screen_area()};
+void display::set_theme(config theme_cfg) {
+	theme_ = theme(theme_cfg, screen_.screen_area());
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();

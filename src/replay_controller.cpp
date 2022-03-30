@@ -91,7 +91,7 @@ replay_controller::~replay_controller()
 }
 void replay_controller::add_replay_theme()
 {
-	const config& theme_cfg = theme::get_theme_config(controller_.theme());
+	const config &theme_cfg = controller_.get_theme(game_config_manager::get()->game_config(), controller_.theme());
 	if (const auto res = theme_cfg.optional_child("resolution"))
 	{
 		if (const auto replay_theme_cfg = res->optional_child("replay")) {

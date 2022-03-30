@@ -30,8 +30,8 @@ namespace wb {
 
 namespace editor {
 
-editor_display::editor_display(editor_controller& controller, reports& reports_object)
-	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, "editor", config())
+editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
+	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
 	, brush_locations_()
 	, controller_(controller)
 {
