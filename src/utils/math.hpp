@@ -339,7 +339,7 @@ constexpr int32_t fixed_point_divide(int n1, int n2)
 /**
  * If positive, just bit shift.
  * Else, make positive, bit shift, then make negative again.
- * 
+ *
  * @param n The number to bit shift right.
  * @return The result of the bit shift.
  */
