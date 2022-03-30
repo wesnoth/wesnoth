@@ -163,7 +163,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	// NOTE: when zooming and not moving the mouse, there are glitches.
 	// Since the optimal alpha factor is unknown, it has to be calculated
 	// on the fly, and caching the surfaces makes no sense yet.
-	static const fixed_t alpha = 196;
+	static const int32_t alpha = 196;
 	static const int size = image_fg->w;
 	static const int half_size = size / 2;
 	static const int quarter_size = size / 4;

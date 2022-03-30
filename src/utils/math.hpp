@@ -308,28 +308,17 @@ inline int rounded_division(int a, int b)
 	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
 }
 
-
-#if 1
-typedef int32_t fixed_t;
 # define fxp_shift 8
 # define fxp_base (1 << fxp_shift)
 
-/** IN: float or int - OUT: fixed_t */
-# define ftofxp(x) (fixed_t((x) * fxp_base))
+/** IN: float or int - OUT: int32_t */
+# define ftofxp(x) (int32_t((x) * fxp_base))
 
-/** IN: unsigned and fixed_t - OUT: unsigned */
+/** IN: unsigned and int32_t - OUT: unsigned */
 # define fxpmult(x,y) (((x)*(y)) >> fxp_shift)
 
-/** IN: unsigned and int - OUT: fixed_t */
+/** IN: unsigned and int - OUT: int32_t */
 # define fxpdiv(x,y) (((x) << fxp_shift) / (y))
 
-/** IN: fixed_t - OUT: int */
+/** IN: int32_t - OUT: int */
 # define fxptoi(x) ( ((x)>0) ? ((x) >> fxp_shift) : (-((-(x)) >> fxp_shift)) )
-
-#else
-typedef float fixed_t;
-# define ftofxp(x) (x)
-# define fxpmult(x,y) ((x)*(y))
-# define fxpdiv(x,y) (static_cast<float>(x) / static_cast<float>(y))
-# define fxptoi(x) ( static_cast<int>(x) )
-#endif

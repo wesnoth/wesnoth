@@ -1540,7 +1540,7 @@ void display::draw_text_in_hex(const map_location& loc,
 //TODO: convert this to use sdl::ttexture
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, surface image,
-		bool hreverse, bool greyscale, fixed_t alpha,
+		bool hreverse, bool greyscale, int32_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
 	if (image==nullptr)

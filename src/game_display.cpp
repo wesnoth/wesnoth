@@ -52,7 +52,7 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location,fixed_t> game_display::debugHighlights_;
+std::map<map_location, int> game_display::debugHighlights_;
 
 /**
  * Function to return 2 half-hex footsteps images for the given location.
@@ -108,13 +108,13 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 				if(old_mask != nullptr) {
-					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
+					const int32_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
-					const fixed_t proportion = fxpdiv(i,niterations);
+					const int32_t proportion = fxpdiv(i,niterations);
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2 = new_mask;
 				}

@@ -158,7 +158,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
  */
 surface recolor_image(surface surf, const color_range_map& map_rgb);
 
-surface brighten_image(const surface &surf, fixed_t amount);
+surface brighten_image(const surface &surf, int32_t amount);
 
 /** Get a portion of the screen.
  *  Send nullptr if the portion is outside of the screen.
@@ -170,7 +170,7 @@ surface brighten_image(const surface &surf, fixed_t amount);
  */
 surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
-void adjust_surface_alpha(surface& surf, fixed_t amount);
+void adjust_surface_alpha(surface& surf, int32_t amount);
 surface adjust_surface_alpha_add(const surface &surf, int amount);
 
 /** Applies a mask on a surface. */

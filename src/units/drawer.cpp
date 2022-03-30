@@ -309,7 +309,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const fixed_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
+		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -364,7 +364,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, fixed_t alpha) const
+		const color_t& col, int32_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
@@ -388,8 +388,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 		bar_loc = unscaled_bar_loc;
 	else {
-		const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
-		const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
+		const int32_t xratio = fxpdiv(surf->w,bar_surf->w);
+		const int32_t yratio = fxpdiv(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
 			    fxptoi(unscaled_bar_loc. x * xratio)
 			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
