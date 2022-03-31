@@ -1557,10 +1557,9 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
 	// Filter poison, plague, drain, first strike
-	bool bool_lambda = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker))) ? true : false;
-	unit_const_ptr lambda_unit = bool_lambda ? other : self;
-	const_attack_ptr lambda_attack = bool_lambda ? other_attack : self_attack;
-	bool attacker = bool_lambda ? !is_attacker : is_attacker;
+	bool bool_victim = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker))) ? true : false;
+	const_attack_ptr victim_attack = bool_victim ? other_attack : self_attack;
+	bool attacker = bool_victim ? !is_attacker : is_attacker;
 
 	if (tag_name == "drains" && other && other->get_state("undrainable")) {
 		return false;
@@ -1574,8 +1573,8 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "firststrike" && attacker && lambda_attack &&
-		lambda_attack->has_special_or_ability("firststrike")) {
+	if (tag_name == "firststrike" && attacker && victim_attack &&
+		victim_attack->has_special_or_ability("firststrike")) {
 		return false;
 	}
 	if (tag_name == "slow" && other &&
