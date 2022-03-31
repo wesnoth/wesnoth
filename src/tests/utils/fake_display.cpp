@@ -67,7 +67,7 @@ fake_display_manager::fake_display_manager()
 	, dummy_cfg2_()
 	, dummy_board_(dummy_cfg2_)
 	, main_event_context_()
-	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, dummy_cfg_, dummy_cfg_)
+	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
 }
 

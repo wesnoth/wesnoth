@@ -69,8 +69,6 @@ public:
 
 	virtual void play_slice(bool is_delay_enabled = true);
 
-	static const config& get_theme(const game_config_view& game_config, std::string theme_name);
-
 	void apply_keyboard_scroll(int x, int y);
 
 	void set_scroll_up(bool on)

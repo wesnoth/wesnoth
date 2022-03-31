@@ -37,7 +37,6 @@
 #include "log.hpp"
 #include "play_controller.hpp"
 #include "game_data.hpp"
-#include "game_config_manager.hpp"
 #include "resources.hpp"
 
 namespace preferences {
@@ -65,7 +64,7 @@ void set_show_standing_animations(bool value)
 
 bool show_theme_dialog()
 {
-	std::vector<theme_info> themes = theme::get_known_themes();
+	std::vector<theme_info> themes = theme::get_basic_theme_info();
 
 	if (themes.empty()) {
 		gui2::show_transient_message("",
@@ -87,8 +86,8 @@ bool show_theme_dialog()
 
 	if (action >= 0) {
 		preferences::set_theme(themes[action].id);
-		if(display::get_singleton() && resources::controller && resources::gamedata && resources::gamedata->get_theme().empty()) {
-			display::get_singleton()->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
+		if(display::get_singleton() && resources::gamedata && resources::gamedata->get_theme().empty()) {
+			display::get_singleton()->set_theme(themes[action].id);
 		}
 
 		return true;
