@@ -4725,40 +4725,38 @@ void game_lua_kernel::set_game_display(game_display * gd) {
  * elsewhere (in the C++ code).
  * Any child tags not in this list will be passed to Lua's on_load event.
  */
-static const std::array handled_file_tags {
-	"color_palette",
-	"color_range",
-	"display",
-	"end_level_data",
-	"era",
-	"event",
-	"generator",
-	"label",
-	"lua",
-	"map",
-	"menu_item",
-	"modification",
-	"modify_unit_type",
-	"music",
-	"options",
-	"side",
-	"sound_source",
-	"story",
-	"terrain_graphics",
-	"time",
-	"time_area",
-	"tunnel",
-	"undo_stack",
-	"variables"
-};
-
 static bool is_handled_file_tag(const std::string& s)
 {
-	for(const std::string& t : handled_file_tags) {
-		if (s == t) return true;
-	}
+	// Make sure this is sorted, since we binary_search!
+	using namespace std::literals::string_view_literals;
+	static const std::array handled_file_tags {
+		"color_palette"sv,
+		"color_range"sv,
+		"display"sv,
+		"end_level_data"sv,
+		"era"sv,
+		"event"sv,
+		"generator"sv,
+		"label"sv,
+		"lua"sv,
+		"map"sv,
+		"menu_item"sv,
+		"modification"sv,
+		"modify_unit_type"sv,
+		"music"sv,
+		"options"sv,
+		"side"sv,
+		"sound_source"sv,
+		"story"sv,
+		"terrain_graphics"sv,
+		"time"sv,
+		"time_area"sv,
+		"tunnel"sv,
+		"undo_stack"sv,
+		"variables"sv
+	};
 
-	return false;
+	return std::binary_search(handled_file_tags.begin(), handled_file_tags.end(), s);
 }
 
 /**

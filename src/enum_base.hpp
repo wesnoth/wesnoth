@@ -85,7 +85,7 @@ struct enum_base : public T
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
                                                                                                                        \
-	/** Provide a variable template for an array of matching size. */                                                  \
+	/** Provide a alias template for an array of matching size. */                                                     \
 	template<typename T>                                                                                               \
 	using sized_array = std::array<T, std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value>;                 \
                                                                                                                        \

@@ -890,7 +890,8 @@ gui::button::TYPE string_to_button_type(const std::string& type)
 
 const std::string& get_direction(std::size_t n)
 {
-	static const std::array<std::string, 6> dirs{"-n", "-ne", "-se", "-s", "-sw", "-nw"};
+	using namespace std::literals::string_literals;
+	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
 	return dirs[n >= dirs.size() ? 0 : n];
 }
 } // namespace

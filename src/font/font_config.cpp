@@ -83,11 +83,11 @@ bool check_font_file(std::string name) {
 
 namespace
 {
-
 #ifdef CAIRO_HAS_WIN32_FONT
 bool is_valid_font_file(const std::string& file)
 {
-	static const std::array font_exts { ".ttf", ".ttc", ".otf" };
+	using namespace std::literals::string_literals;
+	static const std::array font_exts { ".ttf"s, ".ttc"s, ".otf"s };
 
 	for(const std::string& ext : font_exts) {
 		if(filesystem::ends_with(file, ext)) {
