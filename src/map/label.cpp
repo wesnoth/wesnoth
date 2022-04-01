@@ -522,6 +522,11 @@ SDL_Rect terrain_label::get_rect() const
 	return rect;
 }
 
+static int scale_to_map_zoom(int val)
+{
+	return val * std::max(1.0, display::get_zoom_factor());
+}
+
 void terrain_label::draw()
 {
 	display* disp = display::get_singleton();
@@ -543,18 +548,19 @@ void terrain_label::draw()
 	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
 	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
 	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
-	const int yloc = disp->get_location_y(loc_nexty) - font::SIZE_NORMAL;
+	const int yloc = disp->get_location_y(loc_nexty) - scale_to_map_zoom(font::SIZE_NORMAL);
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by the scenario.
 	bool use_markup = color_ == font::LABEL_COLOR;
 
 	font::floating_label flabel(text_.str());
+	flabel.set_font_size(scale_to_map_zoom(font::SIZE_NORMAL));
 	flabel.set_color(color_);
 	flabel.set_position(xloc, yloc);
 	flabel.set_clip_rect(disp->map_outside_area());
-	flabel.set_width(font::SIZE_NORMAL * 13);
-	flabel.set_height(font::SIZE_NORMAL * 4);
+	flabel.set_width(scale_to_map_zoom(font::SIZE_NORMAL * 13));
+	flabel.set_height(scale_to_map_zoom(font::SIZE_NORMAL * 4));
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 	flabel.use_markup(use_markup);
 
