@@ -17,6 +17,7 @@
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "utils/general.hpp"
 
 #include <SDL2/SDL_events.h>
 
@@ -525,7 +526,7 @@ public:
 		} else if constexpr(is_text_input_event(E)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_text_input)
 		} else {
-			assert(false && "No matching signal queue found for event");
+			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
 		}
 	}
 
@@ -569,7 +570,7 @@ public:
 		} else if constexpr(is_text_input_event(E)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_text_input)
 		} else {
-			assert(false && "No matching signal queue found for event");
+			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
 		}
 	}
 
