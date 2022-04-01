@@ -635,24 +635,24 @@ void play_controller::enter_textbox()
 	case gui::TEXTBOX_SEARCH:
 		menu_handler_.do_search(str);
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_); // need to close that one after executing do_speak() !
+		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_command(str);
 		break;
 	case gui::TEXTBOX_AI:
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		ERR_DP << "unknown textbox mode" << std::endl;
 	}
 }
@@ -832,7 +832,7 @@ bool play_controller::have_keyboard_focus()
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
 	} else if(event.key.keysym.sym == SDLK_UP) {

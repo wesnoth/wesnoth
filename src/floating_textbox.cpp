@@ -38,7 +38,7 @@ namespace gui{
 		command_history_()
 	{}
 
-	void floating_textbox::close(game_display& gui)
+	void floating_textbox::close()
 	{
 		if(!active()) {
 			return;
@@ -52,7 +52,6 @@ namespace gui{
 		check_.reset(nullptr);
 		font::remove_floating_label(label_);
 		mode_ = TEXTBOX_NONE;
-		gui.invalidate_all();
 	}
 
 	void floating_textbox::update_location(game_display& gui)
@@ -109,7 +108,7 @@ namespace gui{
 	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label,
 		const std::string& check_label, bool checked, game_display& gui)
 	{
-		close(gui);
+		close();
 
 		label_string_ = label;
 		mode_ = mode;

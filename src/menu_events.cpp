@@ -1571,7 +1571,7 @@ void console_handler::do_droid()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_terrain()
@@ -1628,7 +1628,7 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_theme()
@@ -1690,7 +1690,7 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_controller()
