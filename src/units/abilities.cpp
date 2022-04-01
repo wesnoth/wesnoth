@@ -1556,11 +1556,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	temporary_facing self_facing(self, self_loc.get_relative_dir(other_loc));
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
-	// Filter poison, plague, drain, first strike
-	bool bool_victim = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker))) ? true : false;
-	const_attack_ptr victim_attack = bool_victim ? other_attack : self_attack;
-	bool attacker = bool_victim ? !is_attacker : is_attacker;
-
+	// Filter poison, plague, drain, slow, petrifies
 	if (tag_name == "drains" && other && other->get_state("undrainable")) {
 		return false;
 	}
@@ -1571,10 +1567,6 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	}
 	if (tag_name == "poison" && other &&
 		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
-		return false;
-	}
-	if (tag_name == "firststrike" && attacker && victim_attack &&
-		victim_attack->has_special_or_ability("firststrike")) {
 		return false;
 	}
 	if (tag_name == "slow" && other &&
@@ -1594,6 +1586,17 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
 	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
 	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
+
+	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
+	// the opponent if "whom" is the defender, otherwise this leads to infinite
+	// recursion.
+	if (tag_name == "firststrike") {
+		// True if "whom" corresponds to "self", false if "whom" is "other"
+		bool whom_is_self = (whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker));
+		bool whom_is_defender = whom_is_self ? !is_attacker : is_attacker;
+		if (whom_is_defender && att_weapon && att_weapon->has_special_or_ability("firststrike"))
+			return false;
+	}
 
 	// Filter the units involved.
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
