@@ -228,7 +228,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W001
+          key: W002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -281,7 +281,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W001
+          key: W002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
