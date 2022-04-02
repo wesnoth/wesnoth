@@ -238,7 +238,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
+          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
@@ -291,7 +291,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
+          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
