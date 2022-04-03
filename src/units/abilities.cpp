@@ -1588,8 +1588,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
-	// the opponent if "whom" is the defender, otherwise this leads to infinite
-	// recursion.
+	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
 	if (tag_name == "firststrike") {
 		// True if "whom" corresponds to "self", false if "whom" is "other"
 		bool whom_is_self = (whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker));
