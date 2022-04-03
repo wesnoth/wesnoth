@@ -1539,7 +1539,7 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 
 	// Filter poison, plague, drain, slow, petrifies
 	// True if "whom" corresponds to "self", false if "whom" is "other"
-	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker))) ? true : false;
+	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker)));
 	unit_const_ptr whom_is_unit = whom_is_self ? other : self;
 	map_location whom_is_loc = whom_is_self ? other_loc : self_loc;
 
