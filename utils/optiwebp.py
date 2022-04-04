@@ -90,8 +90,10 @@ for image_dir in image_dirs:
 
             initial_file = os.path.join(image_root, filename)
             webp_file = ""
-            if filetype != ".webp":
+            if filetype in (".jpg", ".png"):
                 webp_file = os.path.join(options.tempdir, filename)[:-3]+"webp"
+            elif filetype == ".jpeg":
+                webp_file = os.path.join(options.tempdir, filename)[:-4]+"webp"
             else:
                 webp_file = os.path.join(options.tempdir, filename)
 
@@ -125,8 +127,8 @@ final_total_size = 0
 
 try:
     with open("conversion-good.tsv", "w") as good_f, open("conversion-bad.tsv", "w") as bad_f:
-        good_f.write("filename,old_size,new_size,change_in_percent,change_in_bytes\n")
-        bad_f.write("filename,old_size,new_size,change_in_percent,change_in_bytes\n")
+        good_f.write("filename\told_size\tnew_size\tchange_in_percent\tchange_in_bytes\n")
+        bad_f.write("filename\told_size\tnew_size\tchange_in_percent\tchange_in_bytes\n")
 
         for filename, data in results_dict.items():
             line = "{filename}\t{old_size}\t{new_size}\t{change_in_percent}\t{change_in_bytes}\n".format(filename=filename, old_size=data["old_size"], new_size=data["new_size"], change_in_percent=data["change_in_percent"], change_in_bytes=data["change_in_bytes"])
