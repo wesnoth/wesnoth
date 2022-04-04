@@ -4,6 +4,8 @@
  ### Campaigns
    * Descent into Darkness
      * S08: Prevent Spectral Servant from picking up the book (issue #6576)
+   * Northern Rebirth
+     * S05a_01: Solve units getting stuck in the wall before the spider chamber (issue #6607)
  ### Editor
  ### Multiplayer
  ### Lua API
