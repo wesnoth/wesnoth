@@ -9,6 +9,8 @@
      * S14: Smoother appearance of enemies and added dialogue (#6176)
    * Descent into Darkness
      * S08: Prevent Spectral Servant from picking up the book (issue #6576)
+   * Northern Rebirth
+     * S05a_01: Solve units getting stuck in the wall before the spider chamber (issue #6607)
    * Sceptre of Fire
      * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart. 
    * The Rise of Wesnoth
