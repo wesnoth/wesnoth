@@ -5,19 +5,25 @@ Some notes on specific images and image groups follow:
 clasher-attack-mace.png
    Orphaned when the Drake Clasher lost this attack.
 
-keratur.png:
+keratur.png
    The original image for the uncloaked assassin in UtBS.  1.3-sized.
 
-ratheln.png:
+perrin.png
+   Originally from THoT. No longer used, removed for GitHub #6602.
+
+ratheln.png
    Originally from THoT. No longer used, removed in GitHub #6593.
 
-scepter_of_fire.png:
+righteous-flame-icon.png
+   Originally from THoT. No longer used, removed for GitHub #6602.
+
+scepter_of_fire.png
    Old story image of the Scepter, quite large.
 
-spider-lich.png:
+spider-lich.png
    Old unit image from UtBS.
 
-thain.png,thain2.png:
+thain.png,thain2.png
    Originally from SoF.  1.3-sized.
 
 units/fire-dragon-flying-*.png
