@@ -8,7 +8,6 @@
      * S05a_01:
         * Solve units getting stuck in the wall before the spider chamber (issue #6607)
         * Enhance dialogue between Tallin and Abhai (issue #6608)
-
  ### Editor
  ### Multiplayer
  ### Lua API
