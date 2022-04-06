@@ -1540,27 +1540,27 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	// Filter poison, plague, drain, slow, petrifies
 	// True if "whom" corresponds to "self", false if "whom" is "other"
 	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker)));
-	unit_const_ptr whom_is_unit = whom_is_self ? other : self;
-	map_location whom_is_loc = whom_is_self ? other_loc : self_loc;
+	unit_const_ptr whom_unit = whom_is_self ? other : self;
+	map_location whom_loc = whom_is_self ? other_loc : self_loc;
 
-	if (tag_name == "drains" && whom_is_unit && whom_is_unit->get_state("undrainable")) {
+	if (tag_name == "drains" && whom_unit && whom_unit->get_state("undrainable")) {
 		return false;
 	}
-	if (tag_name == "plague" && whom_is_unit &&
-		(whom_is_unit->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(whom_is_loc))) {
+	if (tag_name == "plague" && whom_unit &&
+		(whom_unit->get_state("unplagueable") ||
+		 resources::gameboard->map().is_village(whom_loc))) {
 		return false;
 	}
-	if (tag_name == "poison" && whom_is_unit &&
-		(whom_is_unit->get_state("unpoisonable") || whom_is_unit->get_state(unit::STATE_POISONED))) {
+	if (tag_name == "poison" && whom_unit &&
+		(whom_unit->get_state("unpoisonable") || whom_unit->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "slow" && whom_is_unit &&
-		(whom_is_unit->get_state("unslowable") || whom_is_unit->get_state(unit::STATE_SLOWED))) {
+	if (tag_name == "slow" && whom_unit &&
+		(whom_unit->get_state("unslowable") || whom_unit->get_state(unit::STATE_SLOWED))) {
 		return false;
 	}
-	if (tag_name == "petrifies" && whom_is_unit &&
-		whom_is_unit->get_state("unpetrifiable")) {
+	if (tag_name == "petrifies" && whom_unit &&
+		whom_unit->get_state("unpetrifiable")) {
 		return false;
 	}
 
