@@ -23,6 +23,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Reduced the size of Isar's Cross map background images.
+   * Resolve crash on systems using musl implementation of libc (issue #6603)
 
 ## Version 1.17.2
  ### Add-ons client
