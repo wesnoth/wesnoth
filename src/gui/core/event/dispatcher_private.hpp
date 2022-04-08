@@ -59,7 +59,7 @@ struct dispatcher_implementation
 		FUNCTION_QUEUE_CHECK(text_input)
 
 		else {
-			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for function");
+			static_assert(utils::dependent_false_v<F>, "No matching signal queue found for function");
 		}
 	}
 
