@@ -230,11 +230,9 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		item["label"] = leader["gold"];
 		data.emplace("leader_gold", item);
 
-		item["label"] = leader["units"];
+		// TRANSLATORS: "reserve" refers to units on the recall list
+		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"]}, {"reserve", leader["recall_units"]}});
 		data.emplace("leader_troops", item);
-
-		item["label"] = leader["recall_units"];
-		data.emplace("leader_reserves", item);
 
 		leader_list.add_row(data);
 	}
@@ -416,7 +414,6 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		str << _("Scenario start");
 	}
 
-	str << "\n" << _("Difficulty: ");
 	if(campaign_type_enum) {
 		switch (*campaign_type_enum) {
 		case campaign_type::type::scenario:
@@ -433,6 +430,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			// For the latter do not show the difficulty - even though it will be listed as
 			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
 			if (campaign != nullptr) {
+				str << "\n" << _("Difficulty: ");
 				try {
 					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
 					std::ostringstream ss;
@@ -444,19 +442,14 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 					str << string_table[cfg_summary["difficulty"]];
 				}
 			}
-			else {
-				str << "—";
-			}
 
 			break;
 		}
 		case campaign_type::type::tutorial:
 		case campaign_type::type::test:
-			str << "—";
 			break;
 		}
 	} else {
-		str << "—";
 	}
 
 	if(!cfg_summary["version"].empty()) {
