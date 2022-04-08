@@ -41,9 +41,9 @@ void register_window(const std::string& id)
 	}
 }
 
-registered_widget_map& registered_widget_types()
+std::map<std::string, registered_widget_parser>& registered_widget_types()
 {
-	static registered_widget_map result;
+	static std::map<std::string, registered_widget_parser> result;
 	return result;
 }
 
@@ -52,9 +52,9 @@ void register_widget(const std::string& type, widget_parser_t f, const char* key
 	registered_widget_types()[type] = {f, key};
 }
 
-widget_builder_map& widget_builder_lookup()
+std::map<std::string, widget_builder_func_t>& widget_builder_lookup()
 {
-	static widget_builder_map result;
+	static std::map<std::string, widget_builder_func_t> result;
 	return result;
 }
 

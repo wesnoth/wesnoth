@@ -111,14 +111,10 @@ struct registered_widget_parser
 	const char* key;
 };
 
-using registered_widget_map = std::map<std::string, registered_widget_parser>;
-
 /** Returns the list of registered widgets and their parsers. */
-registered_widget_map& registered_widget_types();
-
-using widget_builder_map = std::map<std::string, widget_builder_func_t>;
+std::map<std::string, registered_widget_parser>& registered_widget_types();
 
 /** Returns the list of registered widget builders. */
-widget_builder_map& widget_builder_lookup();
+std::map<std::string, widget_builder_func_t>& widget_builder_lookup();
 
 } // namespace gui2
