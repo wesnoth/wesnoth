@@ -78,6 +78,22 @@ function wesnoth.interface.add_chat_message(speaker, message) end
 ---Clear all messages in the onscreen chat
 function wesnoth.interface.clear_chat_messages() end
 
+---@alias horizontal_align "'left'"|"'center'"|"'right'"
+---@alias vertical_align "'top'"|"'center'"|"'bottom'"
+---@class overlay_text_options
+---@field size integer The default font size
+---@field color string|integer[] The default text colour as either a hex string or an RGB triple
+---@field duration integer|"'unlimited'" How long the text should be displayed, in milliseconds
+---@field fade_time integer If duration is not unlimited, this is how long it takes to fade out after the duration expires
+---@field location location The screen location of the text, relative to the specified anchor (default: center of the screen)
+---@field halign horizontal_align How the text should be anchored horizontally to the screen
+---@field valign vertical_align How the text should be anchored vertically to the screen
+
+---Add overlay text on the screen
+---@param text string|tstring The text to display. Supports Pango markup.
+---@param options overlay_text_options
+function wesnoth.interface.add_overlay_text(text, options) end
+
 ---Place an overlay image on a hex
 ---@param location location
 ---@param cfg WML
