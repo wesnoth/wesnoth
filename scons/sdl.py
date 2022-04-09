@@ -171,7 +171,7 @@ def CheckPNG(context):
     }
 \n
 '''
-    nodepath = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath.replace("\\", "\\\\")
+    nodepath = File("data/core/images/scons_conftest_images/end-n.png").rfile().abspath.replace("\\", "\\\\")
     test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
@@ -182,7 +182,7 @@ def CheckPNG(context):
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "images/buttons/button_normal/button_H22-pressed.png").subst(test_program)
+        test_program2 = context.env.Clone(TESTFILE = "data/core/images/scons_conftest_images/end-n.png").subst(test_program)
         (result, output) = context.TryRun(test_program2, ".c")
         if result:
             context.Result("yes")
@@ -209,7 +209,7 @@ def CheckWebP(context):
     }
 \n
 '''
-    nodepath = File("data/core/images/maps/background.webp").rfile().abspath.replace("\\", "\\\\")
+    nodepath = File("data/core/images/scons_conftest_images/end-n.webp").rfile().abspath.replace("\\", "\\\\")
     test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for WebP support in SDL... ")
     if context.env["host"]:
@@ -220,7 +220,7 @@ def CheckWebP(context):
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "data/core/images/maps/background.webp").subst(test_program)
+        test_program2 = context.env.Clone(TESTFILE = "data/core/images/scons_conftest_images/end-n.webp").subst(test_program)
         (result, output) = context.TryRun(test_program2, ".c")
         if result:
             context.Result("yes")
@@ -247,7 +247,7 @@ def CheckJPG(context):
     }
 \n
 '''
-    nodepath = File("attic/northlands.jpg").rfile().abspath.replace("\\", "\\\\")
+    nodepath = File("data/core/images/scons_conftest_images/end-n.jpg").rfile().abspath.replace("\\", "\\\\")
     test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
@@ -258,7 +258,7 @@ def CheckJPG(context):
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "images/dialogs/addon_manager_bg.jpg").subst(test_program)
+        test_program2 = context.env.Clone(TESTFILE = "data/core/images/scons_conftest_images/end-n.jpg").subst(test_program)
         (result, output) = context.TryRun(test_program2, ".c")
         if result:
             context.Result("yes")
