@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-03-20 06:46+0300\n"
-"PO-Revision-Date: 2022-03-03 00:20+0100\n"
+"PO-Revision-Date: 2022-04-02 16:17+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -896,7 +896,7 @@ msgstr ""
 "Nebezpečí vyplývající z pokusu o přechod <italic>text='lávy'</italic> je "
 "zřejmé. Tento terén může být překonán pouze jednotkami schopnými létat ve "
 "značné vzdálenosti nad ní. Ve věci pohybu je tedy láva identická s "
-"<ref>dst='terrain_unwalkable' text='neschůdným'</ref> terénem. Žhavá láva "
+"<ref>dst='terrain_unwalkable' text='neprůchodným'</ref> terénem. Žhavá láva "
 "také vytváří svit, osvětlující oblasti přímo nad ní. Tím poskytuje výhodu "
 "při útoku všem zákonným jednotkám a odnímá ji chaotickým."
 
@@ -908,22 +908,22 @@ msgstr "Vulkán"
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1236
 msgid "Regular Impassable Mountains"
-msgstr "Běžné neschůdné hory"
+msgstr "Běžné neprostupné hory"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1246
 msgid "Dry Impassable Mountains"
-msgstr "Vyprahlé neschůdné hory"
+msgstr "Vyprahlé neprostupné hory"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1257
 msgid "Snowy Impassable Mountains"
-msgstr "Zasněžené neschůdné hory"
+msgstr "Zasněžené neprostupné hory"
 
 #. [terrain_type]: id=cloud_desert
 #: data/core/terrain.cfg:1267
 msgid "Desert Impassable Mountains"
-msgstr "Pouštní neschůdné hory"
+msgstr "Pouštní neprostupné hory"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
@@ -1068,12 +1068,12 @@ msgstr "Otevřené dřevěné dveře"
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1584
 msgid "Impassable Overlay"
-msgstr "Neprůchozí překryv"
+msgstr "Neprostupný překryv"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1597
 msgid "Unwalkable Overlay"
-msgstr "Neprůchozí překryv"
+msgstr "Neprůchodný překryv"
 
 # nicota?
 #. [terrain_type]: id=void
@@ -2097,7 +2097,7 @@ msgstr ""
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:3177 data/core/terrain.cfg:3178
 msgid "Impassable"
-msgstr "Neprůchozí"
+msgstr "Neprostupný"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:3180
@@ -2117,7 +2117,7 @@ msgstr ""
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:3187 data/core/terrain.cfg:3188
 msgid "Unwalkable"
-msgstr "Neschůdný"
+msgstr "Neprůchodný"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:3190
@@ -2127,7 +2127,7 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"<italic>text='Neschůdný terén'</italic> zahrnuje rokliny a průrvy v zemi, "
+"<italic>text='Neprůchodný terén'</italic> zahrnuje rokliny a průrvy v zemi, "
 "vedoucí do neznámé hloubky. Nemohou tak být překročeny pěšky. Jsou známé pro "
 "příkré svahy, jejichž překonání může trvat dny. Co se týká herních "
 "vlastností, mohou být překonány pouze jednotkami schopnými létat."
@@ -2961,12 +2961,12 @@ msgstr "Neměnný"
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/window/editor_edit_label.cfg:216
 msgid "Visible in fog"
-msgstr "Viditelnost v mlze"
+msgstr "Viditelný v mlze"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/window/editor_edit_label.cfg:251
 msgid "Visible in shroud"
-msgstr "Viditelnost v rubáši"
+msgstr "Viditelný ve tmě"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -5910,7 +5910,7 @@ msgstr "Všechna rozšíření"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_view^Installed"
-msgstr "Nainstalované"
+msgstr "Nainstalovaná"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^Upgradable"
@@ -5918,11 +5918,11 @@ msgstr "Dostupná nová verze"
 
 #: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Publishable"
-msgstr "Publikovatelné"
+msgstr "Publikovatelná"
 
 #: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_view^Not Installed"
-msgstr "Nenainstalované"
+msgstr "Nenainstalovaná"
 
 #: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^Campaigns"
@@ -6762,15 +6762,15 @@ msgstr "Žádný věk nenalezen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "Independent"
-msgstr ""
+msgstr "Nezávislé"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Nezrcadlit spojence"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
 msgid "No Mirror"
-msgstr ""
+msgstr "Nezrcadlit"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:258
 msgid "Independent: Random factions assigned independently"
@@ -8104,63 +8104,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "By:"
-#~ msgstr "Od:"
-
-#~ msgid "Leader:"
-#~ msgstr "Vůdce:"
-
-#~ msgid "Gender:"
-#~ msgstr "Pohlaví:"
-
-#~ msgid "Recruits:"
-#~ msgstr "Rekruti:"
-
-#~ msgid "Starting position:"
-#~ msgstr "Startovní pozice:"
-
-#~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "M"
-
-#~ msgid "timespan^$num years"
-#~ msgstr "$num roky/roků"
-
-#~ msgid "timespan^$num months"
-#~ msgstr "$num měsíce/měsíců"
-
-#~ msgid "timespan^$num weeks"
-#~ msgstr "$num týdny/týdnů"
-
-#~ msgid "timespan^$num days"
-#~ msgstr "$num dny/dní"
-
-#~ msgid "timespan^$num hours"
-#~ msgstr "$num hodin(y)"
-
-#~ msgid "timespan^$num minutes"
-#~ msgstr "$num minut(y)"
-
-#~ msgid "timespan^$num seconds"
-#~ msgstr "$num vteřin(y)"
-
-#~ msgid "Selected Game"
-#~ msgstr "Vybraná hra"
-
-#~ msgid "Lobby"
-#~ msgstr "Čekárna"
-
-#~ msgid "Other Games"
-#~ msgstr "Ostatní hry"
-
-#~ msgid "Team:"
-#~ msgstr "Tým:"
-
-#~ msgid "$player has entered the room"
-#~ msgstr "$player vstoupil/a do místnosti"
-
-#~ msgid "$player has left the room"
-#~ msgstr "$player opustil/a místnost"
-
-#~ msgid "Start Tutorial"
-#~ msgstr "Spustit výcvik"

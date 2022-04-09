@@ -6,14 +6,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 10:48 UTC\n"
-"PO-Revision-Date: 2022-02-26 22:54+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2022-03-13 20:38+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
@@ -68,24 +69,18 @@ msgstr "Povolit speciální povýšení u goblina plenitele."
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "Aliance"
+msgstr "Cech"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "Aliance"
+msgstr "Vzbouřenci"
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "Horda"
+msgstr "Soldateska"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:7
 msgid "World Conquest"
@@ -2394,16 +2389,6 @@ msgstr "Frakce"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, "
@@ -3537,17 +3522,10 @@ msgid "World Conquest 3p"
 msgstr "Dobytí světa 3hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "Dobytí světa 1hr"
+msgstr "Dobytí světa 4hr"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-#, fuzzy
-#| msgid ""
-#| "A randomly generated campaign for 1 player. It has 6 level of "
-#| "difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
@@ -3557,11 +3535,6 @@ msgstr ""
 "(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
@@ -3572,11 +3545,6 @@ msgstr ""
 "(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
@@ -3587,38 +3555,16 @@ msgstr ""
 "(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Náhodně generované kooperativní tažení pro dva hráče. Lze nastavit 6 úrovní "
-"obtížnosti.\n"
+"Náhodně generované kooperativní tažení pro čtyři hráče. Lze nastavit 6 "
+"úrovní obtížnosti.\n"
 "(Úroveň expert, 5 scénářů.)"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
 msgid "WC"
 msgstr "DS"
-
-#~ msgid "Choose difficulty level:"
-#~ msgstr "Vyber obtížnost:"
-
-#~ msgid "Feedback"
-#~ msgstr "Zpětná vazba"
-
-#~ msgid ""
-#~ "For feedback please either post in the World Conquest II thread in the "
-#~ "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an "
-#~ "issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/"
-#~ "issues&gt;."
-#~ msgstr ""
-#~ "Svou zpětnou vazbu prosím napište do příspěvku vlákna World Conquest II "
-#~ "na oficiálním fóru Wesnoth (viz &lt;https://r.wesnoth.org/t39651&gt;) "
-#~ "nebo založte podnět v rámci GitHub (viz &lt;https://github.com/gfgtdf/"
-#~ "World_Conquest_II/issues&gt;)."

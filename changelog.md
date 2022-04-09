@@ -16,7 +16,7 @@
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
    * Rubble pile overlay terrain now connects with adjacent rubble piles
  ### Translations
-   * Updated translations: British English, French, Italian
+   * Updated translations: British English, Czech, French, Italian
  ### Units
  ### User interface
  ### WML Engine
