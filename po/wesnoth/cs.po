@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-16 21:00+0300\n"
-"PO-Revision-Date: 2022-01-09 13:53+0100\n"
+"PO-Revision-Date: 2022-03-20 15:01+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -3581,12 +3581,12 @@ msgstr "Zábradlí"
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:219
 msgid "Unwalkable"
-msgstr "Neschůdný"
+msgstr "Neprůchodný"
 
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:225
 msgid "Impassable"
-msgstr "Neschůdný"
+msgstr "Neprostupný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
@@ -4423,10 +4423,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Příkazy pro <b>verbování</b> a <b>přivolávání</b> je možno aktivovat i z "
-"menu po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně "
-"určit, kam umístit novou jednotku, což někdy může pomoci – například získat "
-"vesnici o tah dříve."
+"Příkazy pro <b>verbování</b> a <b>povolávání</b> je možno aktivovat i z menu "
+"po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně určit, "
+"kam umístit novou jednotku, což někdy může pomoci – například získat vesnici "
+"o tah dříve."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -4758,7 +4758,7 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Tvůj velitel může verbovat nebo přivolávat jednotky z kterékoli tvrze uvnitř "
+"Tvůj velitel může verbovat nebo povolávat jednotky z kterékoli tvrze uvnitř "
 "hradu, nejen z té, v které začínal. Tví spojenci mohou být ochotni uvolnit "
 "ti místo ve své tvrzi, abys odtamtud mohl verbovat. Můžeš dokonce dobýt "
 "nepřítelovu tvrz a verbovat z ní."
@@ -5008,7 +5008,7 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
-"Před propuštěním jednotek ze seznamu pro přivolání se raději rozmysli. "
+"Před propuštěním jednotek ze seznamu pro povolání se raději rozmysli. "
 "I kdyby jednotka neměla žádné zkušenosti, znalost jejích vlastností "
 "a možnost volby mají také svou cenu."
 
@@ -5075,7 +5075,7 @@ msgid ""
 "may be cheaper."
 msgstr ""
 "Cena za naverbování některých jednotek může přesáhnout obvyklý výdaj 20 "
-"zlatých za přivolání. Během tažení pokaždé ověř, zda přivolání jednotky "
+"zlatých za povolání. Během tažení pokaždé ověř, zda povolání jednotky "
 "stejného typu nemůže být levnější."
 
 #. [tip]
@@ -5191,15 +5191,15 @@ msgstr "Byla vybrána neplatná zbraň útočníka."
 
 #: src/actions/create.cpp:341
 msgid "You do not have a leader to recall with."
-msgstr "Nemáš vůdce, který by přivolával."
+msgstr "Nemáš vůdce, který by povolával."
 
 #: src/actions/create.cpp:345
 msgid "None of your leaders are able to recall that unit."
-msgstr "Tuto jednotku není schopen přivolat žádný ze Tvých vůdců."
+msgstr "Tuto jednotku není schopen povolat žádný ze tvých vůdců."
 
 #: src/actions/create.cpp:349
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "Musíš mít v tvrzi vůdce schopného přivolat tuto jednotku."
+msgstr "Musíš mít v tvrzi vůdce schopného povolat tuto jednotku."
 
 #: src/actions/create.cpp:353
 msgid "There are no vacant castle tiles in which to recall the unit."
@@ -5212,11 +5212,11 @@ msgstr "Nastala chyba, kterou nebylo možno rozeznat."
 
 #: src/actions/create.cpp:477
 msgid "You do not have a leader to recruit with."
-msgstr "Nemáš vůdce, který by verboval či přivolával."
+msgstr "Nemáš vůdce, se kterým bys mohl verbovat."
 
 #: src/actions/create.cpp:481
 msgid "None of your leaders are able to recruit this unit."
-msgstr "Tuto jednotku není schopen naverbovat žádný ze Tvých vůdců."
+msgstr "Tuto jednotku není schopen naverbovat žádný ze tvých vůdců."
 
 #: src/actions/create.cpp:485
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -7009,30 +7009,30 @@ msgstr "K naverbování této jednotky nemáš dost zlata."
 
 #: src/menu_events.cpp:375
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat."
+msgstr "Jsi oddělen od svých vojáků a nemůžeš je povolat."
 
 #: src/menu_events.cpp:396
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
-"Nelze přivolat jednotky.\n"
+"Nejsou dostupné žádné jednotky, které by šlo povolat.\n"
 "(Musíš mít zkušené jednotky, které přežily předchozí scénář.)"
 
 #: src/menu_events.cpp:400
 msgid "You currently can't recall at the highlighted location."
-msgstr "V tuto chvíli nelze ve vybraném umístění přivolávat."
+msgstr "V tuto chvíli nelze ve vybraném umístění povolávat."
 
 #: src/menu_events.cpp:412
 msgid "No unit recalled."
-msgstr "Žádná jednotka nebyla přivolána."
+msgstr "Žádná jednotka nebyla povolána."
 
 #: src/menu_events.cpp:429
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "K přivolání jednotky potřebuješ nejméně 1 zlaťák."
-msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáky."
-msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků."
+msgstr[0] "K povolání jednotky potřebuješ nejméně 1 zlaťák."
+msgstr[1] "K povolání jednotky potřebuješ nejméně $cost zlaťáky."
+msgstr[2] "K povolání jednotky potřebuješ nejméně $cost zlaťáků."
 
 #: src/menu_events.cpp:575
 msgid "You cannot end your turn yet!"
@@ -7516,7 +7516,7 @@ msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"Pokud má vůdce naplánováno verbování nebo přivolávání, nelze jím pohnout z "
+"Pokud má vůdce naplánováno verbování nebo povolávání, nelze jím pohnout z "
 "tvrze."
 
 #: src/mouse_events.cpp:1264
@@ -8595,7 +8595,7 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
 #: src/units/unit.cpp:1867
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "<span color=\"$color\">$number_or_percent</span> cena za přivolání"
+msgstr "<span color=\"$color\">$number_or_percent</span> cena za povolání"
 
 #: src/units/unit.cpp:2308
 msgid "$effect_description per level"
