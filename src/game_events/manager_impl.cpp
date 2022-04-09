@@ -34,6 +34,7 @@ static lg::log_domain log_event_handler("event_handler");
 
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
+#define DBG_WML LOG_STREAM(debug, log_wml)
 
 namespace game_events
 {
@@ -115,7 +116,8 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 
 	if(name.empty() && id.empty()) {
 		lg::log_to_chat() << "[event] is missing name or id field\n";
-		ERR_WML << "[event] is missing name or id field";
+		ERR_WML << "[event] is missing name or id field\n";
+		DBG_WML << "Content of that event:\n" << cfg.debug() << "\n";
 		return;
 	}
 
