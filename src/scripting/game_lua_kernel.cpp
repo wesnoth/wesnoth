@@ -2332,6 +2332,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 {
 	t_string text = luaW_checktstring(L, 1);
 	int size = font::SIZE_SMALL;
+	int width = 0;
 	color_t color = font::LABEL_COLOR;
 	int lifetime = 2'000, fadeout = 100;
 	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
@@ -2342,6 +2343,9 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	if(lua_istable(L, 2)) {
 		if(luaW_tableget(L, 2, "size")) {
 			size = luaL_checkinteger(L, -1);
+		}
+		if(luaW_tableget(L, 2, "max_width")) {
+			width = luaL_checkinteger(L, -1);
 		}
 		if(luaW_tableget(L, 2, "color")) {
 			if(lua_isstring(L, -1)) {
@@ -2398,17 +2402,28 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		font::remove_floating_label(*handle);
 	}
 
-	const SDL_Rect& rect = game_display_->map_outside_area();
+	SDL_Rect rect = game_display_->map_outside_area();
 	int x = 0, y = 0;
 	switch(alignment) {
 		case font::ALIGN::LEFT_ALIGN:
 			x = rect.x + loc.wml_x();
+			if(width > 0) {
+				rect.w = std::min(rect.w, width);
+			}
 			break;
 		case font::ALIGN::CENTER_ALIGN:
 			x = rect.x + rect.w / 2 + loc.wml_x();
+			if(width > 0) {
+				rect.w = std::min(rect.w, width);
+				rect.x = x - rect.w / 2;
+			}
 			break;
 		case font::ALIGN::RIGHT_ALIGN:
 			x = rect.x + rect.w - loc.wml_x();
+			if(width > 0) {
+				rect.x = (rect.x + rect.w) - std::min(rect.w, width);
+				rect.w = std::min(rect.w, width);
+			}
 			break;
 	}
 	switch(vertical_alignment) {

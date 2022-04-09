@@ -82,9 +82,10 @@ function wesnoth.interface.clear_chat_messages() end
 ---@alias vertical_align "'top'"|"'center'"|"'bottom'"
 ---@class overlay_text_options
 ---@field size integer The default font size
+---@field max_width integer The maximum width in which to display the text; if longer, it will be word-wrapped
 ---@field color string|integer[] The default text colour as either a hex string or an RGB triple
 ---@field duration integer|"'unlimited'" How long the text should be displayed, in milliseconds
----@field fade_time integer If duration is not unlimited, this is how long it takes to fade out after the duration expires
+---@field fade_time integer This is how long it takes to fade out when the label is removed, either explicitly or because the duration expired
 ---@field location location The screen location of the text, relative to the specified anchor (default: center of the screen)
 ---@field halign horizontal_align How the text should be anchored horizontally to the screen
 ---@field valign vertical_align How the text should be anchored vertically to the screen
