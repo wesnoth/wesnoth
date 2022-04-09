@@ -2333,7 +2333,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	t_string text = luaW_checktstring(L, 1);
 	int size = font::SIZE_SMALL;
 	int width = 0;
-	color_t color = font::LABEL_COLOR;
+	color_t color = font::LABEL_COLOR, bgcolor{0, 0, 0, 0};
 	int lifetime = 2'000, fadeout = 100;
 	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
 	// This is actually a relative screen location in pixels, but map_location already supports
@@ -2358,6 +2358,23 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				color.r = vec[0];
 				color.g = vec[1];
 				color.b = vec[2];
+			}
+		}
+		if(luaW_tableget(L, 2, "bgcolor")) {
+			if(lua_isstring(L, -1)) {
+				bgcolor = color_t::from_hex_string(lua_tostring(L, -1));
+			} else {
+				auto vec = lua_check<std::vector<int>>(L, -1);
+				if(vec.size() != 3) {
+					return luaL_error(L, "floating label background color should be a hex string or an array of 3 integers");
+				}
+				bgcolor.r = vec[0];
+				bgcolor.g = vec[1];
+				bgcolor.b = vec[2];
+				bgcolor.a = ALPHA_OPAQUE;
+			}
+			if(luaW_tableget(L, 2, "bgalpha")) {
+				bgcolor.a = luaL_checkinteger(L, -1);
 			}
 		}
 		if(luaW_tableget(L, 2, "duration")) {
@@ -2445,6 +2462,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
+	flabel.set_bg_color(bgcolor);
 	flabel.set_alignment(alignment);
 	flabel.set_position(x, y);
 	flabel.set_lifetime(lifetime, fadeout);

@@ -84,6 +84,8 @@ function wesnoth.interface.clear_chat_messages() end
 ---@field size integer The default font size
 ---@field max_width integer The maximum width in which to display the text; if longer, it will be word-wrapped
 ---@field color string|integer[] The default text colour as either a hex string or an RGB triple
+---@field bgcolor string|integer[] The default background colour as either a hex string or an RGB triple; the default is no background (fully transparent)
+---@field bgalpha integer Alpha value for the background, in the range [0,255]; defaults to 255 if a bgcolor is specified
 ---@field duration integer|"'unlimited'" How long the text should be displayed, in milliseconds
 ---@field fade_time integer This is how long it takes to fade out when the label is removed, either explicitly or because the duration expired
 ---@field location location The screen location of the text, relative to the specified anchor (default: center of the screen)
