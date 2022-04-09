@@ -1,34 +1,54 @@
 ## Version 1.16.2+dev
  ### Add-ons client
-   * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485)
-   * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
+   * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485).
+   * Add-on passwords that are not stored in the `_server.pbl` can now be stored in the same credentials file as multiplayer passwords (PR #6543).
  ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
      * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
-     * S14: Smoother appearance of enemies and added dialogue (#6176)
+     * S14: Smoother appearance of enemies and added dialogue (#6176).
    * Descent into Darkness
-     * S08: Prevent Spectral Servant from picking up the book (issue #6576)
+     * S08: Prevent Spectral Servant from picking up the book (issue #6576).
    * Northern Rebirth
-     * S05a_01: Solve units getting stuck in the wall before the spider chamber (issue #6607)
+     * S05a_01: Solve units getting stuck in the wall before the spider chamber (issue #6607).
    * Sceptre of Fire
-     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart. 
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart.
+     * Improvements and spelling corrections to the English prose text (PR #6177).
+   * Son of the Black Eye
+     * Improvements and spelling corrections to the English prose text (PR #6166).
    * The Rise of Wesnoth
-     * S22: Fixed the possibility of a misplaced dialogue when a bridge was broken (issue #6376)
+     * S22: Fixed the possibility of a misplaced dialogue when a bridge was broken (issue #6376).
    * Under the Burning Suns
-     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
+     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211).
+   * World Conquest
+     * Updated the modding instructions, helping add-on authors add extra factions etc.
  ### Editor
+   * Add documentation for the magenta D and special terrain overlays (PR #6460).
  ### Multiplayer
+   * Fixed updating add-ons when joining a game that requires a new version (issue #6383).
+   * Add a `/clear` command for the lobby-chat window.
  ### Lua API
  ### Packaging
+   * flatpak: update freedesktop runtime version to 21.08 (issue #6497).
  ### Terrain
+   * Better transition for Swamp to Icy Cobbles (PR #6491).
+   * New graphics variations for icy and rocky terrains.
+   * The help browser adds special notes for castles and healing terrains (PR #6461).
  ### Translations
    * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian
+   * Fixed the stats for Spanish being overwritten by the stats for Spanish (Latin American).
  ### Units
+   * Saurian sprites cleanup (PR #6450).
+   * Various small sprite updates for sea serpents and swamp lizards (PR #6452).
  ### User interface
+   * Mark the Plan Unit Advance mod as MP-only so it doesn't show up as available for campaigns.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
-   * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch
+   * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch.
+   * wmlxgettext’s old behavior of processing files in the order they’re given on the command line can be selected with the `--no-sort-by-file` option (PR #6586).
+   * Fixed a crash with "laststrike" (firststrike given to the opponent) weapon specials (issue #6575).
+   * Fixed a crash with locally-edited add-ons that had neither `_server.pbl` nor `_info.cfg` (issue #6389).
+   * Added more unit tests for weapon specials.
 
 ## Version 1.16.2
  ### Campaigns
