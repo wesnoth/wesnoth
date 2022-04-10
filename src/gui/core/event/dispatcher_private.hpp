@@ -66,7 +66,7 @@ struct dispatcher_implementation
 #undef FUNCTION_QUEUE_CHECK
 
 #define RUNTIME_EVENT_SIGNAL_CHECK(TYPE)                                                                               \
-	else if(is_##TYPE##_event(event)) {                                                                                \
+	else if(is_in_category(event, event_category::TYPE)) {                                                             \
 		return queue_check(dispatcher.signal_##TYPE##_queue_);                                                         \
 	}
 
@@ -85,7 +85,7 @@ struct dispatcher_implementation
 			return !queue_set.queue[event].empty(queue_type);
 		};
 
-		if(is_general_event(event)) {
+		if(is_in_category(event, event_category::general)) {
 			return queue_check(dispatcher.signal_queue_);
 		}
 
