@@ -35,146 +35,6 @@ class widget;
 
 namespace event
 {
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This helper is needed as a user can't supply the wrong kind of callback
- * functions to dispatcher::connect_signal. If a wrong callback would be send
- * it will never get called.
- *
- * This version is for callbacks without extra parameters.
- * NOTE some mouse functions like MOUSE_ENTER don't send the mouse coordinates
- * to the callback function so they are also in this category.
- */
-constexpr bool is_general_event(const ui_event event)
-{
-	return event == DRAW
-		|| event == CLOSE_WINDOW
-		|| event == MOUSE_ENTER
-		|| event == MOUSE_LEAVE
-		|| event == LEFT_BUTTON_DOWN
-		|| event == LEFT_BUTTON_UP
-		|| event == LEFT_BUTTON_CLICK
-		|| event == LEFT_BUTTON_DOUBLE_CLICK
-		|| event == MIDDLE_BUTTON_DOWN
-		|| event == MIDDLE_BUTTON_UP
-		|| event == MIDDLE_BUTTON_CLICK
-		|| event == MIDDLE_BUTTON_DOUBLE_CLICK
-		|| event == RIGHT_BUTTON_DOWN
-		|| event == RIGHT_BUTTON_UP
-		|| event == RIGHT_BUTTON_CLICK
-		|| event == RIGHT_BUTTON_DOUBLE_CLICK;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks with a coordinate as extra parameter.
- */
-constexpr bool is_mouse_event(const ui_event event)
-{
-	return event == SDL_VIDEO_RESIZE
-		|| event == SDL_MOUSE_MOTION
-		|| event == MOUSE_MOTION
-		|| event == SDL_LEFT_BUTTON_DOWN
-		|| event == SDL_LEFT_BUTTON_UP
-		|| event == SDL_MIDDLE_BUTTON_DOWN
-		|| event == SDL_MIDDLE_BUTTON_UP
-		|| event == SDL_RIGHT_BUTTON_DOWN
-		|| event == SDL_RIGHT_BUTTON_UP
-		|| event == SHOW_TOOLTIP
-		|| event == SHOW_HELPTIP
-		|| event == SDL_WHEEL_UP
-		|| event == SDL_WHEEL_DOWN
-		|| event == SDL_WHEEL_LEFT
-		|| event == SDL_WHEEL_RIGHT
-		|| event == SDL_TOUCH_UP
-		|| event == SDL_TOUCH_DOWN;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks with the keyboard values (these haven't been
- * determined yet).
- */
-constexpr bool is_keyboard_event(const ui_event event)
-{
-	return event == SDL_KEY_DOWN;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks of touch motion events.
- */
-constexpr bool is_touch_motion_event(const ui_event event)
-{
-	return event == SDL_TOUCH_MOTION;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks of touch gesture events.
- */
-constexpr bool is_touch_gesture_event(const ui_event event)
-{
-	return event == SDL_TOUCH_MULTI_GESTURE;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks with a sender aka notification messages. Like the
- * ones in set_event it has no extra parameters, but this version is only
- * send to the target and not using the pre and post queue.
- */
-constexpr bool is_notification_event(const ui_event event)
-{
-	return event == NOTIFY_REMOVAL
-		|| event == NOTIFY_MODIFIED
-		|| event == RECEIVE_KEYBOARD_FOCUS
-		|| event == LOSE_KEYBOARD_FOCUS
-		|| event == NOTIFY_REMOVE_TOOLTIP
-		|| event == SDL_ACTIVATE;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks with a sender aka notification messages.
- * Unlike the notifications this message is send through the chain. The event
- * is send from a widget all the way up to the window, who always is the
- * receiver of the message (unless somebody grabbed it before).
- */
-constexpr bool is_message_event(const ui_event event)
-{
-	return event == MESSAGE_SHOW_TOOLTIP
-		|| event == MESSAGE_SHOW_HELPTIP
-		|| event == REQUEST_PLACEMENT;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks of raw events.
- */
-constexpr bool is_raw_event_event(const ui_event event)
-{
-	return event == SDL_RAW_EVENT;
-}
-
-/**
- * Helper for catching use error of @ref dispatcher::connect_signal.
- *
- * This version is for callbacks of text input events.
- */
-constexpr bool is_text_input_event(const ui_event event)
-{
-	return event == SDL_TEXT_INPUT || event == SDL_TEXT_EDITING;
-}
-
 struct message;
 
 /**
@@ -195,14 +55,14 @@ using dispatcher_callback_func = std::function<void(widget&, const ui_event, boo
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_general_event.
+ * This is used for events in event_category::general.
  */
 using signal_function = dispatcher_callback_func<>;
 
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_mouse_event.
+ * This is used for events in event_category::mouse.
  *
  * Extra parameters:
  * 5. The x,y coordinate of the mouse when this event is fired.
@@ -212,7 +72,7 @@ using signal_mouse_function = dispatcher_callback_func<const point&>;
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_keyboard_event.
+ * This is used for events in event_category::keyboard.
  *
  * Extra parameters:
  * 5. The keycode of the key that triggered this event.
@@ -224,7 +84,7 @@ using signal_keyboard_function = dispatcher_callback_func<const SDL_Keycode, con
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_touch_motion_event.
+ * This is used for events in event_category::touch_motion.
  *
  * Extra parameters:
  * 5. Origin of the touch event, in x,y format.
@@ -235,7 +95,7 @@ using signal_touch_motion_function = dispatcher_callback_func<const point&, cons
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_touch_gesture_event.
+ * This is used for events in event_category::touch_gesture.
  *
  * Extra parameters: (TODO: document what these actually are)
  * 5. center
@@ -248,7 +108,7 @@ using signal_touch_gesture_function = dispatcher_callback_func<const point&, flo
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_notification_event.
+ * This is used for events in event_category::notification.
  *
  * Extra parameters:
  * 5. A dummy void* parameter which will always be nullptr, used to differentiate
@@ -259,7 +119,7 @@ using signal_notification_function = dispatcher_callback_func<void*>;
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_message_event.
+ * This is used for events in event_category::message.
  *
  * Extra parameters:
  * 5. The applicable data this event requires.
@@ -269,7 +129,7 @@ using signal_message_function = dispatcher_callback_func<const message&>;
 /**
  * Raw event callback function signature.
  *
- * This is used for events matching @ref is_raw_event_event.
+ * This is used for events in event_category::raw_event.
  *
  * Extra parameters:
  * 5. The raw SDL_Event.
@@ -279,7 +139,7 @@ using signal_raw_event_function = dispatcher_callback_func<const SDL_Event&>;
 /**
  * Callback function signature.
  *
- * This is used for events matching @ref is_text_input_event.
+ * This is used for eventsin event_category::text_input.
  *
  * Extra parameters:
  * 5. The text entered.
@@ -507,23 +367,23 @@ public:
 	template<ui_event E, typename F>
 	void connect_signal(const F& func, const queue_position position = back_child)
 	{
-		if constexpr(is_general_event(E)) {
+		if constexpr(is_in_category(E, event_category::general)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal)
-		} else if constexpr(is_mouse_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::mouse)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_mouse)
-		} else if constexpr(is_keyboard_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::keyboard)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_keyboard)
-		} else if constexpr(is_touch_motion_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::touch_motion)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_motion)
-		} else if constexpr(is_touch_gesture_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::touch_gesture)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_gesture)
-		} else if constexpr(is_notification_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::notification)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_notification)
-		} else if constexpr(is_message_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::message)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_message)
-		} else if constexpr(is_raw_event_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::raw_event)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_raw_event)
-		} else if constexpr(is_text_input_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::text_input)) {
 			VALIDATE_AND_ADD_TO_QUEUE(signal_text_input)
 		} else {
 			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
@@ -551,23 +411,23 @@ public:
 	template<ui_event E, typename F>
 	void disconnect_signal(const F& func, const queue_position position = back_child)
 	{
-		if constexpr(is_general_event(E)) {
+		if constexpr(is_in_category(E, event_category::general)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal)
-		} else if constexpr(is_mouse_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::mouse)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_mouse)
-		} else if constexpr(is_keyboard_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::keyboard)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_keyboard)
-		} else if constexpr(is_touch_motion_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::touch_motion)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_motion)
-		} else if constexpr(is_touch_gesture_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::touch_gesture)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_gesture)
-		} else if constexpr(is_notification_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::notification)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_notification)
-		} else if constexpr(is_message_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::message)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_message)
-		} else if constexpr(is_raw_event_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::raw_event)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_raw_event)
-		} else if constexpr(is_text_input_event(E)) {
+		} else if constexpr(is_in_category(E, event_category::text_input)) {
 			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_text_input)
 		} else {
 			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
