@@ -29,4 +29,4 @@ wesnoth.persistent_tags.hint_message.read = wesnoth.wml_actions.hint_message
 function wesnoth.persistent_tags.hint_message.write(add)
     add{message = hint_text}
 end
-    
+
