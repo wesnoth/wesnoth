@@ -42,11 +42,15 @@ public:
  * its own place value, we can have 24 categories since ui_event's underlying
  * type is 32 bits:
  *
- *             CATEGORY         EVENT
- *     |----------------------|-------|
- *     00000000000000000000000000000000
+ *                   USABLE CATEGORY BITS    NULL
+ *                |------------------------|--------|
+ *     MASK        000000000000000000000000 00000000
+ *
+ *                   ENCODED CATEGORY        EVENT
+ *                |------------------------|--------|
+ *     UI_EVENT    000000000000000000000000 00000000
  */
-enum class event_category {
+enum class event_category : uint32_t {
 	/**
 	 * Callbacks without extra parameters.
  	 * @note Some mouse events like MOUSE_ENTER don't send the mouse coordinates
