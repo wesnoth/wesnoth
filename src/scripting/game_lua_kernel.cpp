@@ -2320,10 +2320,13 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
  * Arg 1: text - string
  * Arg 2: options table
  * - size: font size
+ * - max_width: max width for word wrapping
  * - color: font color
+ * - bgcolor: background color
+ * - bgalpha: background opacity
  * - duration: display duration (integer or the string "unlimited")
  * - fade_time: duration of fade-out
- * - x,y: screen offset
+ * - location: screen offset
  * - valign: vertical alignment and anchoring - "top", "center", or "bottom"
  * - halign: horizontal alignment and anchoring - "left", "center", or "right"
  * Returns: label handle
