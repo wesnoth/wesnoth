@@ -82,7 +82,7 @@ function wesnoth.interface.clear_chat_messages() end
 ---@alias vertical_align "'top'"|"'center'"|"'bottom'"
 ---@class overlay_text_options
 ---@field size integer The default font size
----@field max_width integer The maximum width in which to display the text; if longer, it will be word-wrapped
+---@field max_width integer|string The maximum width in which to display the text, as either a pixel width or a percentage (a string ending in %); if longer, it will be word-wrapped
 ---@field color string|integer[] The default text colour as either a hex string or an RGB triple
 ---@field bgcolor string|integer[] The default background colour as either a hex string or an RGB triple; the default is no background (fully transparent)
 ---@field bgalpha integer Alpha value for the background, in the range [0,255]; defaults to 255 if a bgcolor is specified

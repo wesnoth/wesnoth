@@ -2336,6 +2336,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	t_string text = luaW_checktstring(L, 1);
 	int size = font::SIZE_SMALL;
 	int width = 0;
+	double width_ratio = 0;
 	color_t color = font::LABEL_COLOR, bgcolor{0, 0, 0, 0};
 	int lifetime = 2'000, fadeout = 100;
 	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
@@ -2348,7 +2349,20 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			size = luaL_checkinteger(L, -1);
 		}
 		if(luaW_tableget(L, 2, "max_width")) {
-			width = luaL_checkinteger(L, -1);
+			int found_number;
+			width = lua_tointegerx(L, -1, &found_number);
+			if(!found_number) {
+				auto value = luaW_tostring(L, -1);
+				try {
+					if(!value.empty() && value.back() == '%') {
+						value.remove_suffix(1);
+						width_ratio = std::stoi(std::string(value)) / 100.0;
+					} else throw std::invalid_argument(value.data());
+				} catch(std::invalid_argument&) {
+					return luaL_argerror(L, -1, "max_width should be integer or percentage");
+				}
+
+			}
 		}
 		if(luaW_tableget(L, 2, "color")) {
 			if(lua_isstring(L, -1)) {
@@ -2423,6 +2437,9 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	}
 
 	SDL_Rect rect = game_display_->map_outside_area();
+	if(width_ratio > 0) {
+		width = static_cast<int>(std::round(rect.w * width_ratio));
+	}
 	int x = 0, y = 0;
 	switch(alignment) {
 		case font::ALIGN::LEFT_ALIGN:
