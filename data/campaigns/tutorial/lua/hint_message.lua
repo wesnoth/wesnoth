@@ -9,8 +9,6 @@ function wesnoth.wml_actions.hint_message(cfg)
         hint_text = cfg.message
         if cfg.caption and cfg.caption ~= "" then
             hint_text = "<b><big>" .. cfg.caption .. "</big></b>\n" .. hint_text
-        else
-            hint_text = cfg.message
         end
         hint_message = wesnoth.interface.add_overlay_text(hint_text, {
             size = 18,
