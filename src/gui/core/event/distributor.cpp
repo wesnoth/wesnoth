@@ -370,9 +370,6 @@ struct data_pod
 	const ui_event button_up_event;
 	const ui_event button_click_event;
 	const ui_event button_double_click_event;
-
-	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
-	const int32_t mask;
 };
 
 constexpr std::array mouse_data{
@@ -383,7 +380,6 @@ constexpr std::array mouse_data{
 		LEFT_BUTTON_UP,
 		LEFT_BUTTON_CLICK,
 		LEFT_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_LMASK,
 	},
 	data_pod{
 		SDL_MIDDLE_BUTTON_DOWN,
@@ -392,7 +388,6 @@ constexpr std::array mouse_data{
 		MIDDLE_BUTTON_UP,
 		MIDDLE_BUTTON_CLICK,
 		MIDDLE_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_MMASK,
 	},
 	data_pod{
 		SDL_RIGHT_BUTTON_DOWN,
@@ -401,13 +396,12 @@ constexpr std::array mouse_data{
 		RIGHT_BUTTON_UP,
 		RIGHT_BUTTON_CLICK,
 		RIGHT_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_RMASK,
 	},
 };
 
 } // namespace
 
-template<BUTTON_INDEX I>
+template<std::size_t I>
 mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
@@ -434,16 +428,17 @@ mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position qu
 		queue_position);
 }
 
-template<BUTTON_INDEX I>
+template<std::size_t I>
 void mouse_button<I>::initialize_state(int32_t button_state)
 {
 	last_click_stamp_ = 0;
 	last_clicked_widget_ = nullptr;
 	focus_ = 0;
-	is_down_ = button_state & mouse_data[I].mask;
+	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
+	is_down_ = button_state & SDL_BUTTON(I + 1);
 }
 
-template<BUTTON_INDEX I>
+template<std::size_t I>
 void mouse_button<I>::signal_handler_sdl_button_down(const event::ui_event event, bool& handled,
 		const point& coordinate)
 {
@@ -496,7 +491,7 @@ void mouse_button<I>::signal_handler_sdl_button_down(const event::ui_event event
 	handled = true;
 }
 
-template<BUTTON_INDEX I>
+template<std::size_t I>
 void mouse_button<I>::signal_handler_sdl_button_up(const event::ui_event event, bool& handled,
 		const point& coordinate)
 {
@@ -554,7 +549,7 @@ void mouse_button<I>::signal_handler_sdl_button_up(const event::ui_event event, 
 	handled = true;
 }
 
-template<BUTTON_INDEX I>
+template<std::size_t I>
 void mouse_button<I>::mouse_button_click(widget* widget)
 {
 	uint32_t stamp = SDL_GetTicks();

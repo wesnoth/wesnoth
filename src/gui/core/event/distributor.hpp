@@ -155,9 +155,7 @@ private:
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-enum BUTTON_INDEX { BASE_LEFT = 0, BASE_MIDDLE = 1, BASE_RIGHT = 2 };
-
-template<BUTTON_INDEX I>
+template<std::size_t I>
 class mouse_button : public virtual mouse_motion
 {
 public:
@@ -205,9 +203,9 @@ private:
 
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-using mouse_button_left    = mouse_button<BASE_LEFT>;
-using mouse_button_middle  = mouse_button<BASE_MIDDLE>;
-using mouse_button_right   = mouse_button<BASE_RIGHT>;
+using mouse_button_left    = mouse_button<0>;
+using mouse_button_middle  = mouse_button<1>;
+using mouse_button_right   = mouse_button<2>;
 
 /**
  * The event handler class for the widget library.
