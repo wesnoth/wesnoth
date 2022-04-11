@@ -11,6 +11,7 @@
  ### Editor
  ### Multiplayer
  ### Lua API
+   * New wesnoth.interface.add_overlay_text function allows placing arbitrary floating text anywhere on the screen - like [print] but with more options
  ### Packaging
  ### Terrain
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
