@@ -155,7 +155,9 @@ private:
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template<typename T>
+enum BUTTON_INDEX { BASE_LEFT = 0, BASE_MIDDLE = 1, BASE_RIGHT = 2 };
+
+template<BUTTON_INDEX I>
 class mouse_button : public virtual mouse_motion
 {
 public:
@@ -201,59 +203,11 @@ private:
 	void mouse_button_click(widget* widget);
 };
 
-struct mouse_button_left_events
-{
-	static constexpr ui_event sdl_button_down_event = SDL_LEFT_BUTTON_DOWN;
-	static constexpr ui_event sdl_button_up_event = SDL_LEFT_BUTTON_UP;
-	static constexpr ui_event button_down_event = LEFT_BUTTON_DOWN;
-	static constexpr ui_event button_up_event = LEFT_BUTTON_UP;
-	static constexpr ui_event button_click_event = LEFT_BUTTON_CLICK;
-	static constexpr ui_event button_double_click_event = LEFT_BUTTON_DOUBLE_CLICK;
-
-	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
-	static constexpr int32_t mask = SDL_BUTTON_LMASK;
-
-	/** Used for debug messages. */
-	static inline const std::string name = "left";
-};
-
-struct mouse_button_middle_events
-{
-	static constexpr ui_event sdl_button_down_event = SDL_MIDDLE_BUTTON_DOWN;
-	static constexpr ui_event sdl_button_up_event = SDL_MIDDLE_BUTTON_UP;
-	static constexpr ui_event button_down_event = MIDDLE_BUTTON_DOWN;
-	static constexpr ui_event button_up_event = MIDDLE_BUTTON_UP;
-	static constexpr ui_event button_click_event = MIDDLE_BUTTON_CLICK;
-	static constexpr ui_event button_double_click_event = MIDDLE_BUTTON_DOUBLE_CLICK;
-
-	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
-	static constexpr int32_t mask = SDL_BUTTON_MMASK;
-
-	/** Used for debug messages. */
-	static inline const std::string name = "middle";
-};
-
-struct mouse_button_right_events
-{
-	static constexpr ui_event sdl_button_down_event = SDL_RIGHT_BUTTON_DOWN;
-	static constexpr ui_event sdl_button_up_event = SDL_RIGHT_BUTTON_UP;
-	static constexpr ui_event button_down_event = RIGHT_BUTTON_DOWN;
-	static constexpr ui_event button_up_event = RIGHT_BUTTON_UP;
-	static constexpr ui_event button_click_event = RIGHT_BUTTON_CLICK;
-	static constexpr ui_event button_double_click_event = RIGHT_BUTTON_DOUBLE_CLICK;
-
-	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
-	static constexpr int32_t mask = SDL_BUTTON_RMASK;
-
-	/** Used for debug messages. */
-	static inline const std::string name = "right";
-};
-
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-using mouse_button_left    = mouse_button<mouse_button_left_events>;
-using mouse_button_middle  = mouse_button<mouse_button_middle_events>;
-using mouse_button_right   = mouse_button<mouse_button_right_events>;
+using mouse_button_left    = mouse_button<BASE_LEFT>;
+using mouse_button_middle  = mouse_button<BASE_MIDDLE>;
+using mouse_button_right   = mouse_button<BASE_RIGHT>;
 
 /**
  * The event handler class for the widget library.
