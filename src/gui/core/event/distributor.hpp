@@ -48,7 +48,6 @@
 
 namespace gui2
 {
-
 class widget;
 
 namespace event
@@ -70,8 +69,7 @@ public:
 	 *
 	 * @param capture             Set or release the capturing.
 	 */
-	void capture_mouse( // widget* widget);
-			const bool capture = true);
+	void capture_mouse(const bool capture = true);
 
 protected:
 	/** The widget that currently has the mouse focus_. */
@@ -135,22 +133,14 @@ private:
 	void show_tooltip();
 
 	bool signal_handler_sdl_mouse_motion_entered_;
-	void signal_handler_sdl_mouse_motion(const event::ui_event event,
-										 bool& handled,
-										 const point& coordinate);
+	void signal_handler_sdl_mouse_motion(const event::ui_event event, bool& handled, const point& coordinate);
 
-	void signal_handler_sdl_touch_motion(const event::ui_event event,
-										 bool& handled,
-										 const point& coordinate,
-										 const point& distance);
+	void signal_handler_sdl_touch_motion(
+		const event::ui_event event, bool& handled, const point& coordinate, const point& distance);
 
-	void signal_handler_sdl_wheel(const event::ui_event event,
-								  bool& handled,
-								  const point& coordinate);
+	void signal_handler_sdl_wheel(const event::ui_event event, bool& handled, const point& coordinate);
 
-	void signal_handler_show_helptip(const event::ui_event event,
-									 bool& handled,
-									 const point& coordinate);
+	void signal_handler_show_helptip(const event::ui_event event, bool& handled, const point& coordinate);
 };
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
@@ -188,15 +178,10 @@ private:
 	bool is_down_;
 
 	bool signal_handler_sdl_button_down_entered_;
-	void signal_handler_sdl_button_down(const event::ui_event event,
-										bool& handled,
-										const point& coordinate);
+	void signal_handler_sdl_button_down(const event::ui_event event, bool& handled, const point& coordinate);
 
 	bool signal_handler_sdl_button_up_entered_;
-	void signal_handler_sdl_button_up(const event::ui_event event,
-									  bool& handled,
-									  const point& coordinate);
-
+	void signal_handler_sdl_button_up(const event::ui_event event, bool& handled, const point& coordinate);
 
 	void mouse_button_click(widget* widget);
 };
