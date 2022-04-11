@@ -155,29 +155,11 @@ private:
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-/**
- * Small helper metastruct to configure instances of mouse_button.
- */
-struct mouse_button_event_types
-{
-	ui_event sdl_button_down_event;
-	ui_event sdl_button_up_event;
-	ui_event button_down_event;
-	ui_event button_up_event;
-	ui_event button_click_event;
-	ui_event button_double_click_event;
-	/** Bitmask corresponding to this button's bit in SDL_GetMouseState's return value */
-	int32_t mask;
-	/** used for debug messages. */
-	std::string name;
-};
-
+template<std::size_t I>
 class mouse_button : public virtual mouse_motion
 {
 public:
-	mouse_button(const mouse_button_event_types& events,
-				  widget& owner,
-				  const dispatcher::queue_position queue_position);
+	mouse_button(widget& owner, const dispatcher::queue_position queue_position);
 
 	/**
 	 * Initializes the state of the button.
@@ -202,9 +184,6 @@ protected:
 	widget* focus_;
 
 private:
-	/** Which set of SDL events correspond to this button. */
-	const mouse_button_event_types events_;
-
 	/** Is the button down? */
 	bool is_down_;
 
@@ -222,8 +201,15 @@ private:
 	void mouse_button_click(widget* widget);
 };
 
+/***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
+
+using mouse_button_left    = mouse_button<0>;
+using mouse_button_middle  = mouse_button<1>;
+using mouse_button_right   = mouse_button<2>;
+
 /**
- * Three subclasses of mouse_button, so that the distributor class can inherit from them;
+ * The event handler class for the widget library.
+ *
  * C++ doesn't allow multiple inheritance to directly use more than one instance of a
  * superclass.
  *
@@ -231,41 +217,6 @@ private:
  * refactoring that would allow these multiple classes to be replaced with a simple
  * (distributor has-a std::array<mouse_button, 3>) relationship.
  */
-struct mouse_button_left : public mouse_button
-{
-	mouse_button_left(const mouse_button_event_types& events,
-				  widget& owner,
-				  const dispatcher::queue_position queue_position)
-	: mouse_motion(owner, queue_position)
-	, mouse_button(events, owner, queue_position)
-	{
-	}
-};
-struct mouse_button_middle : public mouse_button
-{
-	mouse_button_middle(const mouse_button_event_types& events,
-				  widget& owner,
-				  const dispatcher::queue_position queue_position)
-	: mouse_motion(owner, queue_position)
-	, mouse_button(events, owner, queue_position)
-	{
-	}
-};
-struct mouse_button_right : public mouse_button
-{
-	mouse_button_right(const mouse_button_event_types& events,
-				  widget& owner,
-				  const dispatcher::queue_position queue_position)
-	: mouse_motion(owner, queue_position)
-	, mouse_button(events, owner, queue_position)
-	{
-	}
-};
-
-/***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
-
-
-/** The event handler class for the widget library. */
 class distributor :
 	public mouse_button_left,
 	public mouse_button_middle,

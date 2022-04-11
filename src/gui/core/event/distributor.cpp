@@ -26,6 +26,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "sdl/userevent.hpp"
 
+#include <array>
 #include <functional>
 
 namespace gui2
@@ -69,8 +70,7 @@ private:
 
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
-mouse_motion::mouse_motion(widget& owner,
-							 const dispatcher::queue_position queue_position)
+mouse_motion::mouse_motion(widget& owner, const dispatcher::queue_position queue_position)
 	: mouse_focus_(nullptr)
 	, mouse_captured_(false)
 	, owner_(owner)
@@ -358,92 +358,88 @@ void mouse_motion::stop_hover_timer()
 
 #undef LOG_HEADER
 #define LOG_HEADER                                                             \
-	"distributor mouse button " << events_.name << " [" << owner_.id() << "]: "
+	"distributor mouse button " << I << " [" << owner_.id() << "]: "
 
-mouse_button::mouse_button(const mouse_button_event_types& events, widget& owner,
-		const dispatcher::queue_position queue_position)
+namespace
+{
+struct data_pod
+{
+	const ui_event sdl_button_down_event;
+	const ui_event sdl_button_up_event;
+	const ui_event button_down_event;
+	const ui_event button_up_event;
+	const ui_event button_click_event;
+	const ui_event button_double_click_event;
+};
+
+constexpr std::array mouse_data{
+	data_pod{
+		SDL_LEFT_BUTTON_DOWN,
+		SDL_LEFT_BUTTON_UP,
+		LEFT_BUTTON_DOWN,
+		LEFT_BUTTON_UP,
+		LEFT_BUTTON_CLICK,
+		LEFT_BUTTON_DOUBLE_CLICK,
+	},
+	data_pod{
+		SDL_MIDDLE_BUTTON_DOWN,
+		SDL_MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_DOWN,
+		MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_CLICK,
+		MIDDLE_BUTTON_DOUBLE_CLICK,
+	},
+	data_pod{
+		SDL_RIGHT_BUTTON_DOWN,
+		SDL_RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_DOWN,
+		RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_CLICK,
+		RIGHT_BUTTON_DOUBLE_CLICK,
+	},
+};
+
+} // namespace
+
+template<std::size_t I>
+mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
 	, last_clicked_widget_(nullptr)
 	, focus_(nullptr)
-	, events_(events)
 	, is_down_(false)
 	, signal_handler_sdl_button_down_entered_(false)
 	, signal_handler_sdl_button_up_entered_(false)
 {
-	// The connect_signal framework is currently using SFINAE checking to ensure that we only
-	// register mouse button signal handlers for mouse buttons. That causes us to need this
-	// hardcoded (either directly or by making mouse_button a templated class), the manual handling
-	// of the three cases here is the current progress on refactoring.
-	switch(events_.sdl_button_down_event) {
-	case event::SDL_LEFT_BUTTON_DOWN: {
-		owner_.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
-				std::bind(&mouse_button::signal_handler_sdl_button_down,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		owner_.connect_signal<event::SDL_LEFT_BUTTON_UP>(
-				std::bind(&mouse_button::signal_handler_sdl_button_up,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		break;
-	}
-	case event::SDL_MIDDLE_BUTTON_DOWN: {
-		owner_.connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
-				std::bind(&mouse_button::signal_handler_sdl_button_down,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		owner_.connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
-				std::bind(&mouse_button::signal_handler_sdl_button_up,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		break;
-	}
-	case event::SDL_RIGHT_BUTTON_DOWN: {
-		owner_.connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
-				std::bind(&mouse_button::signal_handler_sdl_button_down,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		owner_.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-				std::bind(&mouse_button::signal_handler_sdl_button_up,
-							this,
-							std::placeholders::_2,
-							std::placeholders::_3,
-							std::placeholders::_5),
-				queue_position);
-		break;
-	}
-	default: {
-		// There's exactly three instances of this class per instance of distributor, so this assert
-		// will be caught during the build-time-tests.
-		assert(!"Hardcoded assumption about button being LEFT / MIDDLE / RIGHT failed");
-	}
-	}
+	owner_.connect_signal<mouse_data[I].sdl_button_down_event>(
+		std::bind(&mouse_button::signal_handler_sdl_button_down,
+			this,
+			std::placeholders::_2,
+			std::placeholders::_3,
+			std::placeholders::_5),
+		queue_position);
+
+	owner_.connect_signal<mouse_data[I].sdl_button_up_event>(
+		std::bind(&mouse_button::signal_handler_sdl_button_up,
+			this,
+			std::placeholders::_2,
+			std::placeholders::_3,
+			std::placeholders::_5),
+		queue_position);
 }
 
-void mouse_button::initialize_state(int32_t button_state)
+template<std::size_t I>
+void mouse_button<I>::initialize_state(int32_t button_state)
 {
 	last_click_stamp_ = 0;
 	last_clicked_widget_ = nullptr;
 	focus_ = 0;
-	is_down_ = button_state & events_.mask;
+	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
+	is_down_ = button_state & SDL_BUTTON(I + 1);
 }
 
-void mouse_button::signal_handler_sdl_button_down(const event::ui_event event, bool& handled,
+template<std::size_t I>
+void mouse_button<I>::signal_handler_sdl_button_down(const event::ui_event event, bool& handled,
 		const point& coordinate)
 {
 	if(signal_handler_sdl_button_down_entered_) {
@@ -466,10 +462,10 @@ void mouse_button::signal_handler_sdl_button_down(const event::ui_event event, b
 	if(mouse_captured_) {
 		assert(mouse_focus_);
 		focus_ = mouse_focus_;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << events_.sdl_button_down_event << ".\n";
-		if(!owner_.fire(events_.sdl_button_down_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << events_.button_down_event << ".\n";
-			owner_.fire(events_.button_down_event, *mouse_focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".\n";
+		if(!owner_.fire(mouse_data[I].sdl_button_down_event, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".\n";
+			owner_.fire(mouse_data[I].button_down_event, *mouse_focus_);
 		}
 	} else {
 		widget* mouse_over = owner_.find_at(coordinate, true);
@@ -486,16 +482,17 @@ void mouse_button::signal_handler_sdl_button_down(const event::ui_event event, b
 		}
 
 		focus_ = mouse_over;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << events_.sdl_button_down_event << ".\n";
-		if(!owner_.fire(events_.sdl_button_down_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << events_.button_down_event << ".\n";
-			owner_.fire(events_.button_down_event, *focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".\n";
+		if(!owner_.fire(mouse_data[I].sdl_button_down_event, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".\n";
+			owner_.fire(mouse_data[I].button_down_event, *focus_);
 		}
 	}
 	handled = true;
 }
 
-void mouse_button::signal_handler_sdl_button_up(const event::ui_event event, bool& handled,
+template<std::size_t I>
+void mouse_button<I>::signal_handler_sdl_button_up(const event::ui_event event, bool& handled,
 		const point& coordinate)
 {
 	if(signal_handler_sdl_button_up_entered_) {
@@ -515,10 +512,10 @@ void mouse_button::signal_handler_sdl_button_up(const event::ui_event event, boo
 	is_down_ = false;
 
 	if(focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << events_.sdl_button_up_event << ".\n";
-		if(!owner_.fire(events_.sdl_button_up_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << events_.button_up_event << ".\n";
-			owner_.fire(events_.button_up_event, *focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_up_event << ".\n";
+		if(!owner_.fire(mouse_data[I].sdl_button_up_event, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_up_event << ".\n";
+			owner_.fire(mouse_data[I].button_up_event, *focus_);
 		}
 	}
 
@@ -552,22 +549,23 @@ void mouse_button::signal_handler_sdl_button_up(const event::ui_event event, boo
 	handled = true;
 }
 
-void mouse_button::mouse_button_click(widget* widget)
+template<std::size_t I>
+void mouse_button<I>::mouse_button_click(widget* widget)
 {
 	uint32_t stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp
 	   && last_clicked_widget_ == widget) {
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << events_.button_double_click_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_double_click_event << ".\n";
 
-		owner_.fire(events_.button_double_click_event, *widget);
+		owner_.fire(mouse_data[I].button_double_click_event, *widget);
 		last_click_stamp_ = 0;
 		last_clicked_widget_ = nullptr;
 
 	} else {
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << events_.button_click_event << ".\n";
-		owner_.fire(events_.button_click_event, *widget);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_click_event << ".\n";
+		owner_.fire(mouse_data[I].button_click_event, *widget);
 		last_click_stamp_ = stamp;
 		last_clicked_widget_ = widget;
 	}
@@ -578,50 +576,15 @@ void mouse_button::mouse_button_click(widget* widget)
 #undef LOG_HEADER
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
-namespace
-{
-
-const auto mouse_button_left_events = mouse_button_event_types {
-		SDL_LEFT_BUTTON_DOWN,
-		SDL_LEFT_BUTTON_UP,
-		LEFT_BUTTON_DOWN,
-		LEFT_BUTTON_UP,
-		LEFT_BUTTON_CLICK,
-		LEFT_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_LMASK,
-		"left"};
-
-const auto mouse_button_middle_events = mouse_button_event_types {
-		SDL_MIDDLE_BUTTON_DOWN,
-		SDL_MIDDLE_BUTTON_UP,
-		MIDDLE_BUTTON_DOWN,
-		MIDDLE_BUTTON_UP,
-		MIDDLE_BUTTON_CLICK,
-		MIDDLE_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_MMASK,
-		"middle"};
-
-const auto mouse_button_right_events = mouse_button_event_types {
-		SDL_RIGHT_BUTTON_DOWN,
-		SDL_RIGHT_BUTTON_UP,
-		RIGHT_BUTTON_DOWN,
-		RIGHT_BUTTON_UP,
-		RIGHT_BUTTON_CLICK,
-		RIGHT_BUTTON_DOUBLE_CLICK,
-		SDL_BUTTON_RMASK,
-		"right"};
-} // anonymous namespace
-
 /**
  * @todo Test whether the state is properly tracked when an input blocker is
  * used.
  */
-distributor::distributor(widget& owner,
-						   const dispatcher::queue_position queue_position)
+distributor::distributor(widget& owner,const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
-	, mouse_button_left(mouse_button_left_events, owner, queue_position)
-	, mouse_button_middle(mouse_button_middle_events, owner, queue_position)
-	, mouse_button_right(mouse_button_right_events, owner, queue_position)
+	, mouse_button_left(owner, queue_position)
+	, mouse_button_middle(owner, queue_position)
+	, mouse_button_right(owner, queue_position)
 	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {
