@@ -130,7 +130,7 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::NONE) {
+		if(preferences::save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {

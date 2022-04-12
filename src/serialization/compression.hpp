@@ -17,23 +17,20 @@
 
 #include <string>
 
-namespace compression {
-	enum format {
-		NONE,
-		GZIP,
-		BZIP2
-	};
+namespace compression
+{
+enum class format { none, gzip, bzip2 };
 
-	inline std::string format_extension(format compression_format)
-	{
-		switch(compression_format) {
-		case GZIP:
-			return ".gz";
-		case BZIP2:
-			return ".bz2";
-		case NONE:
-			return "";
-		}
+inline std::string format_extension(format compression_format)
+{
+	switch(compression_format) {
+	case format::gzip:
+		return ".gz";
+	case format::bzip2:
+		return ".bz2";
+	case format::none:
 		return "";
 	}
+	return "";
 }
+} // namespace compression

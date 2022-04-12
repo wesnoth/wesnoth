@@ -575,7 +575,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		return pass_victory_or_defeat(game_res);
 	}
 
-	savegame::replay_savegame save(state_, compression::NONE);
+	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
 	load_data_ = savegame::load_game_metadata{
