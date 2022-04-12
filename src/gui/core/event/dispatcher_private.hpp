@@ -229,7 +229,7 @@ build_event_chain<signal_message_function>(const ui_event event, widget* dispatc
 	std::vector<std::pair<widget*, ui_event>> result;
 
 	/* We only should add the parents of the widget to the chain. */
-	while(w = w->parent()) {
+	while((w = w->parent())) {
 		assert(w);
 
 		if(w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
