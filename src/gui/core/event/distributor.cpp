@@ -298,13 +298,12 @@ void mouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
 
-	if(styled_widget* control = dynamic_cast<styled_widget*>(mouse_focus_)) {
-		if(control->get_active()) {
-			owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
-		}
-
-		owner_.fire(NOTIFY_REMOVE_TOOLTIP, *mouse_focus_, nullptr);
+	styled_widget* control = dynamic_cast<styled_widget*>(mouse_focus_);
+	if(!control || control->get_active()) {
+		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 	}
+
+	owner_.fire(NOTIFY_REMOVE_TOOLTIP, *mouse_focus_, nullptr);
 
 	mouse_focus_ = nullptr;
 
