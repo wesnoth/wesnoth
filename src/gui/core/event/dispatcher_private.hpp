@@ -29,7 +29,7 @@ namespace gui2::event
 struct dispatcher_implementation
 {
 #define FUNCTION_QUEUE_CHECK(TYPE)                                                                                     \
-	else if constexpr(std::is_same_v<F, signal_##TYPE##>) {                                                            \
+	else if constexpr(std::is_same_v<F, signal_##TYPE>) {                                                              \
 		return dispatcher.signal_##TYPE##_queue_.queue[event];                                                         \
 	}
 

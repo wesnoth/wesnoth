@@ -346,10 +346,6 @@ public:
 		back_post_child
 	};
 
-	template<ui_event E, typename F>
-	static constexpr bool signal_matches = std::is_convertible_v<F,
-		std::remove_reference_t<decltype(std::declval<dispatcher>().get_signal_queue<get_event_category(E)>())>::callback>;
-
 	/**
 	 * Adds a callback to the appropriate queue based on event type.
 	 *
@@ -363,7 +359,6 @@ public:
 	template<ui_event E, typename F>
 	void connect_signal(const F& func, const queue_position position = back_child)
 	{
-		static_assert(signal_matches<E, F>, "connect_signal: function signature does not match");
 		get_signal_queue<get_event_category(E)>().connect_signal(E, position, func);
 	}
 
@@ -383,7 +378,6 @@ public:
 	template<ui_event E, typename F>
 	void disconnect_signal(const F& func, const queue_position position = back_child)
 	{
-		static_assert(signal_matches<E, F>, "disconnect_signal: function signature does not match");
 		get_signal_queue<get_event_category(E)>().disconnect_signal(E, position, func);
 	}
 
