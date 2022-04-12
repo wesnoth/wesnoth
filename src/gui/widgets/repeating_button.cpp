@@ -61,13 +61,13 @@ repeating_button::~repeating_button()
 }
 
 void repeating_button::connect_signal_mouse_left_down(
-		const event::signal_function& signal)
+		const event::signal& signal)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
 void repeating_button::disconnect_signal_mouse_left_down(
-		const event::signal_function& signal)
+		const event::signal& signal)
 {
 	disconnect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
