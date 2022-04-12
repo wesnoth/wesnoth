@@ -346,13 +346,9 @@ public:
 		back_post_child
 	};
 
-/** Helper macro to wrap the result of a macro concatnation in a string. */
-#define STR(RES) #RES
-
-#define VALIDATE_AND_ADD_TO_QUEUE(QUEUE)                                                                               \
-	static_assert(std::is_convertible_v<F, QUEUE##_function>,                                                          \
-		"connect_signal: function signature does not match " STR(QUEUE##_function));                                   \
-	QUEUE##_queue_.connect_signal(E, position, func);
+	template<ui_event E, typename F>
+	static constexpr bool signal_matches = std::is_convertible_v<F,
+		std::remove_reference_t<decltype(std::declval<dispatcher>().get_signal_queue<get_event_category(E)>())>::callback>;
 
 	/**
 	 * Adds a callback to the appropriate queue based on event type.
@@ -367,33 +363,9 @@ public:
 	template<ui_event E, typename F>
 	void connect_signal(const F& func, const queue_position position = back_child)
 	{
-		if constexpr(is_in_category(E, event_category::general)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal)
-		} else if constexpr(is_in_category(E, event_category::mouse)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_mouse)
-		} else if constexpr(is_in_category(E, event_category::keyboard)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_keyboard)
-		} else if constexpr(is_in_category(E, event_category::touch_motion)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_motion)
-		} else if constexpr(is_in_category(E, event_category::touch_gesture)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_touch_gesture)
-		} else if constexpr(is_in_category(E, event_category::notification)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_notification)
-		} else if constexpr(is_in_category(E, event_category::message)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_message)
-		} else if constexpr(is_in_category(E, event_category::raw_event)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_raw_event)
-		} else if constexpr(is_in_category(E, event_category::text_input)) {
-			VALIDATE_AND_ADD_TO_QUEUE(signal_text_input)
-		} else {
-			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
-		}
+		static_assert(signal_matches<E, F>, "connect_signal: function signature does not match");
+		get_signal_queue<get_event_category(E)>().connect_signal(E, position, func);
 	}
-
-#define VALIDATE_AND_REMOVE_FROM_QUEUE(QUEUE)                                                                          \
-	static_assert(std::is_convertible_v<F, QUEUE##_function>,                                                          \
-		"disconnect_signal: function signature does not match " STR(QUEUE##_function));                                \
-	QUEUE##_queue_.disconnect_signal(E, position, func);
 
 	/**
 	 * Removes a callback from the appropriate queue based on event type.
@@ -411,33 +383,9 @@ public:
 	template<ui_event E, typename F>
 	void disconnect_signal(const F& func, const queue_position position = back_child)
 	{
-		if constexpr(is_in_category(E, event_category::general)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal)
-		} else if constexpr(is_in_category(E, event_category::mouse)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_mouse)
-		} else if constexpr(is_in_category(E, event_category::keyboard)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_keyboard)
-		} else if constexpr(is_in_category(E, event_category::touch_motion)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_motion)
-		} else if constexpr(is_in_category(E, event_category::touch_gesture)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_touch_gesture)
-		} else if constexpr(is_in_category(E, event_category::notification)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_notification)
-		} else if constexpr(is_in_category(E, event_category::message)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_message)
-		} else if constexpr(is_in_category(E, event_category::raw_event)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_raw_event)
-		} else if constexpr(is_in_category(E, event_category::text_input)) {
-			VALIDATE_AND_REMOVE_FROM_QUEUE(signal_text_input)
-		} else {
-			static_assert(utils::dependent_false_v<E>, "No matching signal queue found for event");
-		}
+		static_assert(signal_matches<E, F>, "disconnect_signal: function signature does not match");
+		get_signal_queue<get_event_category(E)>().disconnect_signal(E, position, func);
 	}
-
-#undef VALIDATE_AND_ADD_TO_QUEUE
-#undef VALIDATE_AND_REMOVE_FROM_QUEUE
-
-#undef STR
 
 	/**
 	 * The behavior of the mouse events.
@@ -543,6 +491,7 @@ public:
 		{
 		}
 
+		using callback = T;
 		std::map<ui_event, signal_type<T>> queue;
 
 		void connect_signal(const ui_event event, const queue_position position, const T& signal)
@@ -678,6 +627,32 @@ private:
 
 	/** The registered hotkeys for this dispatcher. */
 	std::map<hotkey::HOTKEY_COMMAND, hotkey_function> hotkeys_;
+
+	template<event_category cat>
+	auto& get_signal_queue()
+	{
+		if constexpr(cat == event_category::general) {
+			return signal_queue_;
+		} else if constexpr(cat == event_category::mouse) { // Tee hee
+			return signal_mouse_queue_;
+		} else if constexpr(cat == event_category::keyboard) {
+			return signal_keyboard_queue_;
+		} else if constexpr(cat == event_category::touch_motion) {
+			return signal_touch_motion_queue_;
+		} else if constexpr(cat == event_category::touch_gesture) {
+			return signal_touch_gesture_queue_;
+		} else if constexpr(cat == event_category::notification) {
+			return signal_notification_queue_;
+		} else if constexpr(cat == event_category::message) {
+			return signal_message_queue_;
+		} else if constexpr(cat == event_category::raw_event) {
+			return signal_raw_event_queue_;
+		} else if constexpr(cat == event_category::text_input) {
+			return signal_text_input_queue_;
+		} else {
+			static_assert(utils::dependent_false_v<cat>, "No matching signal queue for category");
+		}
+	}
 };
 
 /***** ***** ***** ***** ***** Common helpers  ***** ***** ***** ***** *****/
