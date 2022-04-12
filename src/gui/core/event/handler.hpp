@@ -34,6 +34,8 @@ public:
 	~manager();
 };
 
+// clang-format off
+
 /**
  * Event category masks.
  *
@@ -89,11 +91,14 @@ enum class event_category : uint32_t {
 	raw_event         = 1u << 15,
 	text_input        = 1u << 16,
 };
+// clang-format on
 
 constexpr uint32_t encode_category(const uint32_t input, const event_category mask)
 {
 	return input | static_cast<uint32_t>(mask);
 }
+
+// clang-format off
 
 /**
  * The event sent to the dispatcher.
@@ -164,6 +169,7 @@ enum ui_event : uint32_t {
 
 	SDL_RAW_EVENT                  = encode_category(48, event_category::raw_event)
 };
+// clang-format on
 
 constexpr bool is_in_category(const ui_event event, const event_category mask)
 {

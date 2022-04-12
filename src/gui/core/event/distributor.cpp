@@ -414,6 +414,8 @@ mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position qu
 	, signal_handler_sdl_button_down_entered_(false)
 	, signal_handler_sdl_button_up_entered_(false)
 {
+	static_assert(I < mouse_data.size(), "Out-of-bounds mouse_button template index");
+
 	owner_.connect_signal<mouse_data[I].sdl_button_down_event>(
 		std::bind(&mouse_button::signal_handler_sdl_button_down,
 			this,

@@ -201,10 +201,6 @@ build_event_chain<signal_notification_function>(const ui_event event, widget* di
 	return {};
 }
 
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable : 4706)
-#endif
 /**
  * Build the event chain for signal_message_function.
  *
@@ -233,7 +229,7 @@ build_event_chain<signal_message_function>(const ui_event event, widget* dispatc
 	std::vector<std::pair<widget*, ui_event>> result;
 
 	/* We only should add the parents of the widget to the chain. */
-	while((w = w->parent())) {
+	while(w = w->parent()) {
 		assert(w);
 
 		if(w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
@@ -243,9 +239,6 @@ build_event_chain<signal_message_function>(const ui_event event, widget* dispatc
 
 	return result;
 }
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
 
 /**
  * Helper function for fire_event.
@@ -377,7 +370,7 @@ bool fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 		w = w->parent();
 		assert(w);
 
-		if((w->*wants_double_click)()) {
+		if(std::invoke(wants_double_click, w)) {
 			if(w->has_event(double_click, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 				event_chain.emplace_back(w, double_click);
 			}
@@ -388,7 +381,7 @@ bool fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 		}
 	}
 
-	if((wgt->*wants_double_click)()) {
+	if(std::invoke(wants_double_click, wgt)) {
 		return implementation::fire_event<T>(double_click, event_chain, d, wgt, std::forward<F>(params)...);
 	} else {
 		return implementation::fire_event<T>(click, event_chain, d, wgt, std::forward<F>(params)...);
