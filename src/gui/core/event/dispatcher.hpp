@@ -448,9 +448,7 @@ public:
 	template<class T>
 	struct signal_type
 	{
-		signal_type() : pre_child(), child(), post_child()
-		{
-		}
+		signal_type() = default;
 
 		std::list<T> pre_child;
 		std::list<T> child;
@@ -487,9 +485,10 @@ public:
 	template<class T>
 	struct signal_queue
 	{
-		signal_queue() : queue()
-		{
-		}
+		signal_queue() = default;
+
+		signal_queue(const signal_queue&) = delete;
+		signal_queue& operator=(const signal_queue&) = delete;
 
 		using callback = T;
 		std::map<ui_event, signal_type<T>> queue;
