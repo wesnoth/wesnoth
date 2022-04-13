@@ -89,7 +89,7 @@ private:
 	styled_widget* clock_;
 
 	/** The signal patched in the drawing routine. */
-	event::signal_function signal_;
+	event::signal signal_;
 
 	/** Helper struct to keep track of the time. */
 	struct time

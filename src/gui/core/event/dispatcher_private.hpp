@@ -29,14 +29,14 @@ namespace gui2::event
 struct dispatcher_implementation
 {
 #define FUNCTION_QUEUE_CHECK(TYPE)                                                                                     \
-	else if constexpr(std::is_same_v<F, signal_##TYPE##_function>) {                                                   \
+	else if constexpr(std::is_same_v<F, signal_##TYPE>) {                                                              \
 		return dispatcher.signal_##TYPE##_queue_.queue[event];                                                         \
 	}
 
 	/**
 	 * Returns the appropriate signal queue for an event by function signature.
 	 *
-	 * @tparam F                  For example, signal_function.
+	 * @tparam F                  For example, signal.
 	 * @param dispatcher          The dispatcher whose signal queue is used.
 	 * @param event               The event to get the signal for.
 	 *
@@ -45,7 +45,7 @@ struct dispatcher_implementation
 	template<typename F>
 	static auto& event_signal(dispatcher& dispatcher, const ui_event event)
 	{
-		if constexpr(std::is_same_v<F, signal_function>) {
+		if constexpr(std::is_same_v<F, signal>) {
 			return dispatcher.signal_queue_.queue[event];
 		}
 
@@ -181,7 +181,7 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 }
 
 /**
- * Build the event chain for signal_notification_function.
+ * Build the event chain for signal_notification.
  *
  * The notification is only send to the receiver it returns an empty chain.
  * Since the pre and post queues are unused, it validates whether they are
@@ -191,7 +191,7 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
  */
 template<>
 std::vector<std::pair<widget*, ui_event>>
-build_event_chain<signal_notification_function>(const ui_event event, widget* dispatcher, widget* w)
+build_event_chain<signal_notification>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
@@ -202,7 +202,7 @@ build_event_chain<signal_notification_function>(const ui_event event, widget* di
 }
 
 /**
- * Build the event chain for signal_message_function.
+ * Build the event chain for signal_message.
  *
  * This function expects that the widget sending it is also the receiver. This
  * assumption might change, but is valid for now. The function doesn't build an
@@ -220,7 +220,7 @@ build_event_chain<signal_notification_function>(const ui_event event, widget* di
  */
 template<>
 std::vector<std::pair<widget*, ui_event>>
-build_event_chain<signal_message_function>(const ui_event event, widget* dispatcher, widget* w)
+build_event_chain<signal_message>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
