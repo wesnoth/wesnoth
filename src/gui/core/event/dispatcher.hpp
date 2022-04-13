@@ -398,7 +398,7 @@ public:
 	 *
 	 * If after these tests no dispatcher is found the event is ignored.
 	 */
-	enum mouse_behavior {
+	enum class mouse_behavior {
 		all,
 		hit,
 		none

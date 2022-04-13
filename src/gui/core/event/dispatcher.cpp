@@ -27,7 +27,7 @@ namespace event
 /***** dispatcher class. *****/
 
 dispatcher::dispatcher()
-	: mouse_behavior_(all)
+	: mouse_behavior_(mouse_behavior::all)
 	, want_keyboard_input_(true)
 	, signal_queue_()
 	, signal_mouse_queue_()
