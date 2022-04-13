@@ -53,16 +53,12 @@ template<typename... T>
 using dispatcher_callback = std::function<void(widget&, const ui_event, bool&, bool&, T...)>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::general.
+ * Used for events in event_category::general.
  */
 using signal = dispatcher_callback<>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::mouse.
+ * Used for events in event_category::mouse.
  *
  * Extra parameters:
  * 5. The x,y coordinate of the mouse when this event is fired.
@@ -70,9 +66,7 @@ using signal = dispatcher_callback<>;
 using signal_mouse = dispatcher_callback<const point&>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::keyboard.
+ * Used for events in event_category::keyboard.
  *
  * Extra parameters:
  * 5. The keycode of the key that triggered this event.
@@ -82,9 +76,7 @@ using signal_mouse = dispatcher_callback<const point&>;
 using signal_keyboard = dispatcher_callback<const SDL_Keycode, const SDL_Keymod, const std::string&>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::touch_motion.
+ * Used for events in event_category::touch_motion.
  *
  * Extra parameters:
  * 5. Origin of the touch event, in x,y format.
@@ -93,9 +85,7 @@ using signal_keyboard = dispatcher_callback<const SDL_Keycode, const SDL_Keymod,
 using signal_touch_motion = dispatcher_callback<const point&, const point&>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::touch_gesture.
+ * Used for events in event_category::touch_gesture.
  *
  * Extra parameters: (TODO: document what these actually are)
  * 5. center
@@ -106,9 +96,7 @@ using signal_touch_motion = dispatcher_callback<const point&, const point&>;
 using signal_touch_gesture = dispatcher_callback<const point&, float, float, uint8_t>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::notification.
+ * Used for events in event_category::notification.
  *
  * Extra parameters:
  * 5. A dummy void* parameter which will always be nullptr, used to differentiate
@@ -117,9 +105,7 @@ using signal_touch_gesture = dispatcher_callback<const point&, float, float, uin
 using signal_notification = dispatcher_callback<void*>;
 
 /**
- * Callback function signature.
- *
- * This is used for events in event_category::message.
+ * Used for events in event_category::message.
  *
  * Extra parameters:
  * 5. The applicable data this event requires.
@@ -127,9 +113,7 @@ using signal_notification = dispatcher_callback<void*>;
 using signal_message = dispatcher_callback<const message&>;
 
 /**
- * Raw event callback function signature.
- *
- * This is used for events in event_category::raw_event.
+ * Used for events in event_category::raw_event.
  *
  * Extra parameters:
  * 5. The raw SDL_Event.
@@ -137,9 +121,7 @@ using signal_message = dispatcher_callback<const message&>;
 using signal_raw_event = dispatcher_callback<const SDL_Event&>;
 
 /**
- * Callback function signature.
- *
- * This is used for eventsin event_category::text_input.
+ * Used for eventsin event_category::text_input.
  *
  * Extra parameters:
  * 5. The text entered.
@@ -588,31 +570,31 @@ private:
 	 */
 	bool want_keyboard_input_;
 
-	/** Signal queue for callbacks in set_event. */
+	/** Signal queue for callbacks in event_category::general. */
 	signal_queue<signal> signal_queue_;
 
-	/** Signal queue for callbacks in set_event_mouse. */
+	/** Signal queue for callbacks in event_category::mouse. */
 	signal_queue<signal_mouse> signal_mouse_queue_;
 
-	/** Signal queue for callbacks in set_event_keyboard. */
+	/** Signal queue for callbacks in event_category::keyboard. */
 	signal_queue<signal_keyboard> signal_keyboard_queue_;
 
-	/** Signal queue for callbacks in set_event_touch. */
+	/** Signal queue for callbacks in event_category::touch_motion. */
 	signal_queue<signal_touch_motion> signal_touch_motion_queue_;
 
-	/** Signal queue for callbacks in set_event_touch. */
+	/** Signal queue for callbacks in event_category::touch_gesture. */
 	signal_queue<signal_touch_gesture> signal_touch_gesture_queue_;
 
-	/** Signal queue for callbacks in set_event_notification. */
+	/** Signal queue for callbacks in event_category::notification. */
 	signal_queue<signal_notification> signal_notification_queue_;
 
-	/** Signal queue for callbacks in set_event_message. */
+	/** Signal queue for callbacks in event_category::message. */
 	signal_queue<signal_message> signal_message_queue_;
 
-	/** Signal queue for callbacks in set_raw_event. */
+	/** Signal queue for callbacks in event_category::raw_event. */
 	signal_queue<signal_raw_event> signal_raw_event_queue_;
 
-	/** Signal queue for callbacks in set_event_text_input. */
+	/** Signal queue for callbacks in event_category::text_input. */
 	signal_queue<signal_text_input> signal_text_input_queue_;
 
 	/** Are we connected to the event handler. */
