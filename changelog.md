@@ -1,5 +1,6 @@
 ## Version 1.17.2+dev
  ### Add-ons client
+   * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the _server.pbl. (PR #5866)
  ### Add-ons server
  ### Campaigns
    * Descent into Darkness
