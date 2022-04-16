@@ -1,6 +1,6 @@
 ## Version 1.17.2+dev
  ### Add-ons client
-   * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the _server.pbl. (PR #5866)
+   * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the `_server.pbl`. (PR #5866)
  ### Add-ons server
  ### Campaigns
    * Descent into Darkness
@@ -9,10 +9,13 @@
      * S05a_01:
         * Solve units getting stuck in the wall before the spider chamber (issue #6607)
         * Enhance dialogue between Tallin and Abhai (issue #6608)
+   * Sceptre of Fire
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart (PR #6484).
+     * Improvements and spelling corrections to the English prose text (PR #6177).
  ### Editor
  ### Multiplayer
  ### Lua API
-   * New wesnoth.interface.add_overlay_text function allows placing arbitrary floating text anywhere on the screen - like [print] but with more options
+   * New `wesnoth.interface.add_overlay_text` function allows placing arbitrary floating text anywhere on the screen - like `[print]` but with more options (PR #5837).
  ### Packaging
  ### Terrain
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
@@ -21,10 +24,16 @@
    * Updated translations: British English, Czech, French, Italian
  ### Units
  ### User interface
+   * Map labels are scaled by zoom (PR #6604).
+   * Revamped the Game Load dialog.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Reduced the size of Isar's Cross map background images.
-   * Resolve crash on systems using musl implementation of libc (issue #6603)
+   * Resolve crash on systems using musl implementation of libc (issue #6603).
+   * Refactoring of the C++ GUI2 event dispatcher.
+   * Refactoring of the `display` class' theme initialization.
+   * Fixed a crash with "laststrike" (firststrike given to the opponent) weapon specials (issue #6575).
+   * Added more unit tests for weapon specials.
 
 ## Version 1.17.2
  ### Add-ons client
