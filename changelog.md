@@ -20,6 +20,7 @@
  ### Terrain
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
    * Rubble pile overlay terrain now connects with adjacent rubble piles
+   * Replace old-style terrain macros (PR #6606)
  ### Translations
    * Updated translations: British English, Czech, French, Italian
  ### Units
