@@ -25,6 +25,7 @@
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "sdl/input.hpp"
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -254,6 +255,9 @@ void CVideo::update_framebuffer()
 			drawingSurface->h
 		);
 	}
+
+	// Update sizes for input conversion.
+	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 }
 
 void CVideo::init_window()

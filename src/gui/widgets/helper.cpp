@@ -25,6 +25,7 @@
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
 #include "tstring.hpp"
+#include "sdl/input.hpp" // get_mouse_location
 
 #include <SDL2/SDL.h>
 
@@ -117,10 +118,7 @@ wfl::map_formula_callable get_screen_size_variables()
 
 point get_mouse_position()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-
-	return point(x, y);
+	return sdl::get_mouse_location();
 }
 
 std::string debug_truncate(const std::string& text)

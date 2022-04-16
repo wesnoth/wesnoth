@@ -24,6 +24,7 @@
 #include "editor/action/mouse/mouse_action_select.hpp"
 
 #include "game_config_view.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 namespace editor {
 
@@ -131,7 +132,7 @@ void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__ << "\n";
 	int x, y;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
 	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }

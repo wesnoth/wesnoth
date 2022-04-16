@@ -61,6 +61,7 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <functional>
 
@@ -551,7 +552,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
-				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
+				mouse_button_state_ = sdl::get_mouse_button_mask();
 				mouse_button_state_initialized = true;
 			}
 

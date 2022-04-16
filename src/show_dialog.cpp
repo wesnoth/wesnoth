@@ -27,6 +27,7 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -64,7 +65,7 @@ dialog_manager::~dialog_manager()
 {
 	is_in_dialog = reset_to;
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex, &mousey);
+	sdl::get_mouse_state(&mousex, &mousey);
 	SDL_Event pb_event;
 	pb_event.type = SDL_MOUSEMOTION;
 	pb_event.motion.state = 0;

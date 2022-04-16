@@ -24,6 +24,7 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -652,7 +653,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	}
 
 	int mousex, mousey;
-	const uint8_t mousebuttons = SDL_GetMouseState(&mousex,&mousey);
+	const uint8_t mousebuttons = sdl::get_mouse_state(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
 		grabmouse_ = false;
 	}
