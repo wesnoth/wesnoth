@@ -319,8 +319,16 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 
 void preferences_dialog::apply_pixel_scale()
 {
+	// Update pixel scale preference.
 	slider& ps_slider = find_widget<slider>(get_window(), "pixel_scale_slider", false);
 	set_pixel_scale(ps_slider.get_value());
+
+	// Update auto pixel scale preference.
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	set_auto_pixel_scale(auto_ps_toggle.get_value_bool());
+
+	// Update draw buffers, taking these into account.
 	CVideo::get_singleton().update_buffers();
 }
 
@@ -435,6 +443,11 @@ void preferences_dialog::post_build(window& window)
 	register_bool("auto_pixel_scale", true,
 		auto_pixel_scale, set_auto_pixel_scale,
 		[&](widget& w) { disable_widget_on_toggle_inverted<slider>(window, w, "pixel_scale_slider"); }, true);
+
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	connect_signal_mouse_left_click(auto_ps_toggle,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,

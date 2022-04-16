@@ -41,6 +41,9 @@ namespace preferences {
 	extern const int def_window_width;
 	extern const int def_window_height;
 
+	extern const int max_window_width;
+	extern const int max_window_height;
+
 	extern const int min_font_scaling;
 	extern const int max_font_scaling;
 

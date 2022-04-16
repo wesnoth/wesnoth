@@ -69,6 +69,9 @@ const int min_window_height = 540;
 const int def_window_width  = 1280;
 const int def_window_height = 720;
 
+const int max_window_width = 1920;
+const int max_window_height = 1080;
+
 const int min_font_scaling  = 80;
 const int max_font_scaling  = 150;
 

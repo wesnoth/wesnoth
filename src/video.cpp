@@ -196,19 +196,33 @@ void CVideo::update_framebuffer()
 
 	// Find max valid pixel scale at current window size.
 	point wsize(window->get_size());
-	int max_xscale = wsize.x / preferences::min_window_width;
-	int max_yscale = wsize.y / preferences::min_window_height;
-	int max_scale = std::min(max_xscale, max_yscale);
+	int max_scale = std::min(
+		wsize.x / preferences::min_window_width,
+		wsize.y / preferences::min_window_height);
 	max_scale = std::min(max_scale, preferences::max_pixel_scale);
 
-	// get desired pixel scale up to this max
-	int scale = std::min(max_scale, preferences::pixel_scale());
+	// Determine best pixel scale according to preference and window size
+	int scale = 1;
+	if (preferences::auto_pixel_scale()) {
+		// Try to match the default size (1280x720) but do not reduce below
+		int def_scale = std::min(
+			wsize.x / preferences::def_window_width,
+			wsize.y / preferences::def_window_height);
+		scale = std::min(max_scale, def_scale);
+		// Otherwise reduce to keep below the max window size (1920x1080).
+		int min_scale = std::min(
+			wsize.x / (preferences::max_window_width+1) + 1,
+			wsize.y / (preferences::max_window_height+1) + 1);
+		scale = std::max(scale, min_scale);
+	} else {
+		scale = std::min(max_scale, preferences::pixel_scale());
+	}
 
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
 	point osize(window->get_output_size());
 	if (lsize.x != wsize.x / scale || lsize.y != wsize.y / scale) {
-		if (scale < preferences::pixel_scale()) {
+		if (!preferences::auto_pixel_scale() && scale < preferences::pixel_scale()) {
 			LOG_DP << "reducing pixel scale from desired "
 				<< preferences::pixel_scale() << " to maximum allowable "
 				<< scale << std::endl;
