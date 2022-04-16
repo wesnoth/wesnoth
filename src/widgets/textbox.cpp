@@ -41,7 +41,7 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 	     edit_target_(nullptr)
 		,listening_(false)
 {
-	// static const SDL_Rect area = video.screen_area();
+	// static const SDL_Rect area = video.draw_area();
 	// const int height = font::pango_draw_text(nullptr,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
@@ -192,7 +192,7 @@ void textbox::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 
-	surface& surf = video().getSurface();
+	surface& surf = video().getDrawingSurface();
 
 	color_t c(0, 0, 0);
 
@@ -212,7 +212,7 @@ void textbox::draw_contents()
 		src.w = std::min<std::size_t>(loc.w,text_image_->w);
 		src.h = std::min<std::size_t>(loc.h,text_image_->h);
 		src.x = text_pos_;
-		SDL_Rect dest = video().screen_area();
+		SDL_Rect dest = video().draw_area();
 		dest.x = loc.x;
 		dest.y = loc.y;
 

@@ -31,6 +31,8 @@
 #include "game_version.hpp"
 #endif
 
+#include <SDL2/SDL_render.h> // SDL_Texture
+
 #include <cassert>
 #include <vector>
 
@@ -42,7 +44,7 @@ CVideo* CVideo::singleton_ = nullptr;
 
 namespace
 {
-surface frameBuffer = nullptr;
+surface drawingSurface = nullptr;
 bool fake_interactive = false;
 
 const unsigned MAGIC_DPI_SCALE_NUMBER = 96;
@@ -70,8 +72,8 @@ void trigger_full_redraw()
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = (*frameBuffer).h;
-	event.window.data2 = (*frameBuffer).w;
+	event.window.data1 = (*drawingSurface).h;
+	event.window.data2 = (*drawingSurface).w;
 
 	for(const auto& layer : draw_layers) {
 		layer->handle_window_event(event);
@@ -162,7 +164,7 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface& target(getSurface());
+	surface& target(getDrawingSurface());
 	SDL_Rect dst{x, y, 0, 0};
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
@@ -174,12 +176,12 @@ void CVideo::make_fake()
 	fake_screen_ = true;
 	refresh_rate_ = 1;
 
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
+	drawingSurface = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
+	drawingSurface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
 
 	fake_interactive = true;
 	refresh_rate_ = 1;
@@ -191,8 +193,67 @@ void CVideo::update_framebuffer()
 		return;
 	}
 
-	surface fb = SDL_GetWindowSurface(*window);
-	frameBuffer = fb;
+	// Update logical size if it doesn't match the current resolution and scale.
+	point lsize(window->get_logical_size());
+	point wsize(window->get_size());
+	point osize(window->get_output_size());
+	int scale = preferences::pixel_scale();
+	if (lsize.x != wsize.x / scale || lsize.y != wsize.y / scale) {
+		LOG_DP << "overriding logical size" << std::endl;
+		LOG_DP << "  old lsize: " << lsize << std::endl;
+		LOG_DP << "  old wsize: " << wsize << std::endl;
+		LOG_DP << "  old osize: " << osize << std::endl;
+		window->set_logical_size(osize.x / scale, osize.y / scale);
+		lsize = window->get_logical_size();
+		wsize = window->get_size();
+		osize = window->get_output_size();
+		LOG_DP << "  new lsize: " << lsize << std::endl;
+		LOG_DP << "  new wsize: " << wsize << std::endl;
+		LOG_DP << "  new osize: " << osize << std::endl;
+	}
+
+	// Update the drawing surface if required.
+	if (!drawingSurface
+		|| drawingSurface->w != wsize.x / preferences::pixel_scale()
+		|| drawingSurface->h != wsize.y / preferences::pixel_scale())
+	{
+		uint32_t format = window->pixel_format();
+		int bpp = SDL_BITSPERPIXEL(format);
+
+		// Free the old drawing surface.
+		if (drawingSurface) {
+			// Except it can still be in use... what should we do about that?
+			LOG_DP << "leaking old drawing surface" << std::endl;
+			//LOG_DP << "freeing old drawing surface" << std::endl;
+			//SDL_FreeSurface(drawingSurface);
+		}
+
+		// This should match the old system, and so shouldn't cause any
+		// problems that weren't there already.
+		LOG_DP << "creating " << bpp << "bpp drawing surface with format "
+			<< SDL_GetPixelFormatName(format) << std::endl;
+		drawingSurface = SDL_CreateRGBSurfaceWithFormat(
+			0,
+			wsize.x / preferences::pixel_scale(),
+			wsize.y / preferences::pixel_scale(),
+			bpp,
+			format
+		);
+
+		// Also update the drawing texture, with matching format and size.
+		if (drawing_texture_) {
+			LOG_DP << "destroying old drawing texture" << std::endl;
+			SDL_DestroyTexture(drawing_texture_);
+		}
+		LOG_DP << "creating drawing texture" << std::endl;
+		drawing_texture_ = SDL_CreateTexture(
+			*window.get(),
+			drawingSurface->format->format,
+			SDL_TEXTUREACCESS_STREAMING,
+			drawingSurface->w,
+			drawingSurface->h
+		);
+	}
 }
 
 void CVideo::init_window()
@@ -220,7 +281,11 @@ void CVideo::init_window()
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
+	// TODO: fix whatever is crashing the rendering context when accelerated
+	// We can force software rendering here,
+	// but if we don't specify anything SDL should choose correctly.
 	uint32_t renderer_flags = SDL_RENDERER_SOFTWARE;
+	//uint32_t renderer_flags = 0;
 	if(supports_vsync() && preferences::vsync()) {
 		LOG_DP << "VSYNC on\n";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
@@ -274,34 +339,32 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 	update_framebuffer();
 }
 
-SDL_Rect CVideo::screen_area(bool as_pixels) const
+SDL_Point CVideo::output_size() const
 {
-	if(!window) {
-		return {0, 0, frameBuffer->w, frameBuffer->h};
-	}
-
-	// First, get the renderer size in pixels.
-	SDL_Point size = window->get_output_size();
-
-	// Then convert the dimensions into screen coordinates, if applicable.
-	if(!as_pixels) {
-		auto [scale_x, scale_y] = get_dpi_scale_factor();
-
-		size.x /= scale_x;
-		size.y /= scale_y;
-	}
-
-	return {0, 0, size.x, size.y};
+	// As we are rendering to the drawingSurface, we should never need this.
+	return window->get_output_size();
 }
 
-int CVideo::get_width(bool as_pixels) const
+SDL_Rect CVideo::draw_area() const
 {
-	return screen_area(as_pixels).w;
+	return {0, 0, drawingSurface->w, drawingSurface->h};
 }
 
-int CVideo::get_height(bool as_pixels) const
+SDL_Rect CVideo::input_area() const
 {
-	return screen_area(as_pixels).h;
+	// This should always match draw_area.
+	SDL_Point p(window->get_logical_size());
+	return {0, 0, p.x, p.y};
+}
+
+int CVideo::get_width() const
+{
+	return drawingSurface->w;
+}
+
+int CVideo::get_height() const
+{
+	return drawingSurface->h;
 }
 
 void CVideo::delay(unsigned int milliseconds)
@@ -315,6 +378,25 @@ void CVideo::flip()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
+	}
+
+	if (drawingSurface && drawing_texture_) {
+		// Upload the drawing surface to the drawing texture.
+		void* pixels_out; // somewhere we can write raw pixel data to
+		int pitch; // the length of one row of pixels in bytes
+		SDL_LockTexture(drawing_texture_, nullptr, &pixels_out, &pitch);
+		if (pitch != drawingSurface->pitch) {
+			// If these don't match we are not gonna have a good time.
+			throw game::error("drawing surface and texture are incompatible");
+		}
+		size_t num_bytes = drawingSurface->h * pitch;
+		memcpy(pixels_out, drawingSurface->pixels, num_bytes);
+		SDL_UnlockTexture(drawing_texture_);
+
+		//SDL_UpdateTexture(drawing_texture_, nullptr, drawingSurface->pixels, drawingSurface->pitch);
+
+		// Copy the drawing texture to the render target.
+		SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
 	}
 
 	if(window) {
@@ -481,9 +563,9 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	return result;
 }
 
-surface& CVideo::getSurface()
+surface& CVideo::getDrawingSurface()
 {
-	return frameBuffer;
+	return drawingSurface;
 }
 
 point CVideo::current_resolution()

@@ -205,7 +205,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getDrawingSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
@@ -221,11 +221,11 @@ public:
 	 */
 
 	const SDL_Rect& minimap_area() const
-		{ return theme_.mini_map_location(screen_.screen_area()); }
+		{ return theme_.mini_map_location(screen_.draw_area()); }
 	const SDL_Rect& palette_area() const
-		{ return theme_.palette_location(screen_.screen_area()); }
+		{ return theme_.palette_location(screen_.draw_area()); }
 	const SDL_Rect& unit_image_area() const
-		{ return theme_.unit_image_location(screen_.screen_area()); }
+		{ return theme_.unit_image_location(screen_.draw_area()); }
 
 	/**
 	 * Returns the maximum area used for the map
@@ -244,7 +244,7 @@ public:
 	 * applied to it.
 	 */
 	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
-		max_map_area() : theme_.main_map_location(screen_.screen_area()); }
+		max_map_area() : theme_.main_map_location(screen_.draw_area()); }
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	static bool outside_area(const SDL_Rect& area, const int x,const int y);

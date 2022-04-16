@@ -201,7 +201,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	SDL_Rect bounds = video_.screen_area();
+	SDL_Rect bounds = video_.draw_area();
 	if(have_border_) {
 		bounds.x += left_->w;
 		bounds.y += top_->h;
@@ -297,9 +297,9 @@ void dialog_frame::draw_background()
 	}
 
 	if (dialog_style_.blur_radius) {
-		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
+		surface surf = ::get_surface_portion(video_.getDrawingSurface(), dim_.exterior);
 		surf = blur_surface(surf, dialog_style_.blur_radius);
-		sdl_blit(surf, nullptr, video_.getSurface(), &dim_.exterior);
+		sdl_blit(surf, nullptr, video_.getDrawingSurface(), &dim_.exterior);
 	}
 
 	if(bg_ == nullptr) {
@@ -314,14 +314,14 @@ void dialog_frame::draw_background()
 			SDL_Rect dst = src;
 			dst.x = dim_.interior.x + i;
 			dst.y = dim_.interior.y + j;
-			sdl_blit(bg_, &src, video_.getSurface(), &dst);
+			sdl_blit(bg_, &src, video_.getDrawingSurface(), &dst);
 		}
 	}
 }
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = CVideo::get_singleton().screen_area();
+	SDL_Rect rect = CVideo::get_singleton().draw_area();
 	return font::pango_draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL);
 }

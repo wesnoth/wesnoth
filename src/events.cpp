@@ -567,7 +567,7 @@ void pump()
 
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
-					SDL_Rect r = CVideo::get_singleton().screen_area();
+					SDL_Rect r = CVideo::get_singleton().input_area();
 
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
@@ -594,7 +594,7 @@ void pump()
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
 
-					SDL_Rect r = CVideo::get_singleton().screen_area();
+					SDL_Rect r = CVideo::get_singleton().input_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
 					touch_event.tfinger.type = touch_event.type;

@@ -870,7 +870,7 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 		 * can be seen in the title screen. So also use the not 32 bpp method
 		 * for this situation.
 		 */
-		if(surf != CVideo::get_singleton().getSurface() && surf.is_neutral()) {
+		if(surf != CVideo::get_singleton().getDrawingSurface() && surf.is_neutral()) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.

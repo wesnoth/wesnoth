@@ -51,13 +51,16 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	CVideo& vid = CVideo::get_singleton();
-	const SDL_Rect rect = vid.screen_area();
+	CVideo& video = CVideo::get_singleton();
+	const SDL_Rect rect = video.draw_area();
 
 	screen_width = rect.w;
 	screen_height = rect.h;
 
-	auto [scalew, scaleh] = vid.get_dpi_scale_factor();
+	// This should, perhaps, include the pixel scale multiplier.
+	// However i'm not sure what it is intended to be used for,
+	// and it doesn't appear to be currently used anywhere.
+	auto [scalew, scaleh] = video.get_dpi_scale_factor();
 	float avgscale = (scalew + scaleh)/2;
 	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 

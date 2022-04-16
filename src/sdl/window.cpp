@@ -164,6 +164,31 @@ int window::get_display_index()
 	return SDL_GetWindowDisplayIndex(window_);
 }
 
+void window::set_logical_size(int w, int h)
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderSetLogicalSize(r, w, h);
+}
+
+SDL_Point window::get_logical_size() const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	int w, h;
+	SDL_RenderGetLogicalSize(r, &w, &h);
+	return {w, h};
+}
+
+void window::get_logical_size(int& w, int& h) const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderGetLogicalSize(r, &w, &h);
+}
+
+uint32_t window::pixel_format()
+{
+	return pixel_format_;
+}
+
 window::operator SDL_Window*()
 {
 	return window_;

@@ -115,7 +115,7 @@ void surface_restorer::restore(const SDL_Rect& dst) const
 	SDL_Rect src = dst2;
 	src.x -= rect_.x;
 	src.y -= rect_.y;
-	sdl_blit(surface_, &src, target_->getSurface(), &dst2);
+	sdl_blit(surface_, &src, target_->getDrawingSurface(), &dst2);
 }
 
 void surface_restorer::restore() const
@@ -125,7 +125,7 @@ void surface_restorer::restore() const
 	}
 
 	SDL_Rect dst = rect_;
-	sdl_blit(surface_, nullptr, target_->getSurface(), &dst);
+	sdl_blit(surface_, nullptr, target_->getDrawingSurface(), &dst);
 }
 
 void surface_restorer::update()
@@ -133,7 +133,7 @@ void surface_restorer::update()
 	if(rect_.w <= 0 || rect_.h <= 0) {
 		surface_ = nullptr;
 	} else {
-		surface_ = ::get_surface_portion(target_->getSurface(),rect_);
+		surface_ = ::get_surface_portion(target_->getDrawingSurface(),rect_);
 	}
 }
 
