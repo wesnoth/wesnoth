@@ -761,12 +761,13 @@ void raise_process_event()
 
 void raise_resize_event()
 {
+	SDL_Point size = CVideo::get_singleton().window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
-	event.window.data1 = CVideo::get_singleton().get_width();
-	event.window.data2 = CVideo::get_singleton().get_height();
+	event.window.data1 = size.x;
+	event.window.data2 = size.y;
 
 	SDL_PushEvent(&event);
 }
@@ -860,6 +861,7 @@ void peek_for_resize()
 	for(int i = 0; i < num; ++i) {
 		if(events[i].type == SDL_WINDOWEVENT && events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
 			CVideo::get_singleton().update_framebuffer();
+			break;
 		}
 	}
 }

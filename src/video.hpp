@@ -121,6 +121,12 @@ public:
 
 	point current_resolution();
 
+	/**
+	 * Update buffers to match current resolution and pixel scale settings.
+	 * Also triggers a full redraw.
+	 */
+	void update_buffers();
+
 	/** Returns the list of available screen resolutions. */
 	std::vector<point> get_available_resolutions(const bool include_current = false);
 
@@ -129,6 +135,13 @@ public:
 	 * for most purposes. Use draw_area() in stead.
 	 */
 	SDL_Point output_size() const;
+
+	/**
+	 * Returns the size of the window in display units / screen coordinates.
+	 * This should match the value sent by window resize events, and also
+	 * those used for setting resolution.
+	 */
+	SDL_Point window_size() const;
 
 	/**
 	 * Returns the size and location of the current drawing area in pixels.

@@ -651,6 +651,12 @@ void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signa
 /** Disconnects a signal handler for a left mouse button click. */
 void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signal);
 
+/** Connects a signal handler for a left mouse button release. */
+void connect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal);
+
+/** Disconnects a signal handler for a left mouse button release. */
+void disconnect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal);
+
 /**
  * Connects a signal handler for a left mouse button double click.
  *

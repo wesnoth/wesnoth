@@ -179,6 +179,17 @@ void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal& si
 	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
+void connect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal)
+{
+	dispatcher.connect_signal<LEFT_BUTTON_UP>(signal);
+}
+
+void disconnect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal)
+{
+	dispatcher.disconnect_signal<LEFT_BUTTON_UP>(signal);
+}
+
+
 void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal& signal)
 {
 	dispatcher.connect_signal<LEFT_BUTTON_DOUBLE_CLICK>(signal, dispatcher::back_post_child);

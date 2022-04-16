@@ -194,12 +194,26 @@ void CVideo::update_framebuffer()
 		return;
 	}
 
+	// Find max valid pixel scale at current window size.
+	point wsize(window->get_size());
+	int max_xscale = wsize.x / preferences::min_window_width;
+	int max_yscale = wsize.y / preferences::min_window_height;
+	int max_scale = std::min(max_xscale, max_yscale);
+	max_scale = std::min(max_scale, preferences::max_pixel_scale);
+
+	// get desired pixel scale up to this max
+	int scale = std::min(max_scale, preferences::pixel_scale());
+
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
-	point wsize(window->get_size());
 	point osize(window->get_output_size());
-	int scale = preferences::pixel_scale();
 	if (lsize.x != wsize.x / scale || lsize.y != wsize.y / scale) {
+		if (scale < preferences::pixel_scale()) {
+			LOG_DP << "reducing pixel scale from desired "
+				<< preferences::pixel_scale() << " to maximum allowable "
+				<< scale << std::endl;
+		}
+		LOG_DP << "pixel scale: " << scale << std::endl;
 		LOG_DP << "overriding logical size" << std::endl;
 		LOG_DP << "  old lsize: " << lsize << std::endl;
 		LOG_DP << "  old wsize: " << wsize << std::endl;
@@ -215,8 +229,8 @@ void CVideo::update_framebuffer()
 
 	// Update the drawing surface if required.
 	if (!drawingSurface
-		|| drawingSurface->w != wsize.x / preferences::pixel_scale()
-		|| drawingSurface->h != wsize.y / preferences::pixel_scale())
+		|| drawingSurface->w != wsize.x / scale
+		|| drawingSurface->h != wsize.y / scale)
 	{
 		uint32_t format = window->pixel_format();
 		int bpp = SDL_BITSPERPIXEL(format);
@@ -235,8 +249,8 @@ void CVideo::update_framebuffer()
 			<< SDL_GetPixelFormatName(format) << std::endl;
 		drawingSurface = SDL_CreateRGBSurfaceWithFormat(
 			0,
-			wsize.x / preferences::pixel_scale(),
-			wsize.y / preferences::pixel_scale(),
+			wsize.x / scale,
+			wsize.y / scale,
 			bpp,
 			format
 		);
@@ -347,6 +361,11 @@ SDL_Point CVideo::output_size() const
 {
 	// As we are rendering to the drawingSurface, we should never need this.
 	return window->get_output_size();
+}
+
+SDL_Point CVideo::window_size() const
+{
+	return window->get_size();
 }
 
 SDL_Rect CVideo::draw_area() const
@@ -679,6 +698,7 @@ bool CVideo::set_resolution(const point& resolution)
 	}
 
 	// Change the saved values in preferences.
+	LOG_DP << "updating resolution to " << resolution << std::endl;
 	preferences::_set_resolution(resolution);
 	preferences::_set_maximized(false);
 
@@ -687,6 +707,27 @@ bool CVideo::set_resolution(const point& resolution)
 	events::raise_resize_event();
 
 	return true;
+}
+
+void CVideo::update_buffers()
+{
+	LOG_DP << "updating buffers" << std::endl;
+	// We could also double-check the resolution here.
+	/*if (preferences::resolution() != current_resolution()) {
+		LOG_DP << "updating resolution from " << current_resolution()
+			<< " to " << preferences::resolution() << std::endl;
+		set_window_mode(TO_RES, preferences::resolution());
+	}*/
+
+	update_framebuffer();
+
+	if(display* d = display::get_singleton()) {
+		d->redraw_everything();
+	}
+
+	// Push a window-resized event to the queue. This is necessary so various areas
+	// of the game (like GUI2) update properly with the new size.
+	events::raise_resize_event();
 }
 
 void CVideo::lock_flips(bool lock)

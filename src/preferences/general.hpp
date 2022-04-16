@@ -44,6 +44,9 @@ namespace preferences {
 	extern const int min_font_scaling;
 	extern const int max_font_scaling;
 
+	extern const int min_pixel_scale;
+	extern const int max_pixel_scale;
+
 	void write_preferences();
 
 	void set(const std::string& key, const std::string &value);

@@ -317,6 +317,14 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 		std::bind(volume_setter_on_change<vol_setter>, std::placeholders::_1));
 }
 
+void preferences_dialog::apply_pixel_scale()
+{
+	slider& ps_slider = find_widget<slider>(get_window(), "pixel_scale_slider", false);
+	set_pixel_scale(ps_slider.get_value());
+	CVideo::get_singleton().update_buffers();
+}
+
+
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -417,6 +425,11 @@ void preferences_dialog::post_build(window& window)
 	/* PIXEL SCALE */
 	register_integer("pixel_scale_slider", true,
 		pixel_scale, set_pixel_scale);
+
+	slider& ps_slider =
+		find_widget<slider>(&window, "pixel_scale_slider", false);
+	connect_signal_mouse_left_release(ps_slider,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
 
 	/* AUTOMATIC PIXEL SCALE */
 	register_bool("auto_pixel_scale", true,

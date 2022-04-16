@@ -64,7 +64,7 @@ namespace preferences {
  * Add any variables of similar type here.
  */
 const int min_window_width  = 800;
-const int min_window_height = 600;
+const int min_window_height = 540;
 
 const int def_window_width  = 1280;
 const int def_window_height = 720;
@@ -119,7 +119,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		_set_resolution(point(event.window.data1,event.window.data2));
+		_set_resolution(CVideo::get_singleton().window_size());
 
 		break;
 
