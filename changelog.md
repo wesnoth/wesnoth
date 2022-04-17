@@ -1,7 +1,6 @@
-## Version 1.17.2+dev
+## Version 1.17.3
  ### Add-ons client
    * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the `_server.pbl`. (PR #5866)
- ### Add-ons server
  ### Campaigns
    * Descent into Darkness
      * S08: Prevent Spectral Servant from picking up the book (issue #6576)
@@ -12,22 +11,17 @@
    * Sceptre of Fire
      * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart (PR #6484).
      * Improvements and spelling corrections to the English prose text (PR #6177).
- ### Editor
- ### Multiplayer
  ### Lua API
    * New `wesnoth.interface.add_overlay_text` function allows placing arbitrary floating text anywhere on the screen - like `[print]` but with more options (PR #5837).
- ### Packaging
  ### Terrain
    * New palisades terrain (^Eqp) and general fence terrain macros cleanup
    * Rubble pile overlay terrain now connects with adjacent rubble piles
    * Replace old-style terrain macros (PR #6606)
  ### Translations
    * Updated translations: British English, Czech, French, Italian
- ### Units
  ### User interface
    * Map labels are scaled by zoom (PR #6604).
    * Revamped the Game Load dialog.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Reduced the size of Isar's Cross map background images.
    * Resolve crash on systems using musl implementation of libc (issue #6603).
