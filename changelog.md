@@ -1,3 +1,18 @@
+## Version 1.17.3+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.17.3
  ### Add-ons client
    * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the `_server.pbl`. (PR #5866)
