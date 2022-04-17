@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -4039,7 +4039,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "El nivell d'obsolescència $level no és vàlid (ha de ser 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "El nivell d'obsolescència no és vàlid (ha de ser 1-4)"
 
@@ -4085,8 +4085,8 @@ msgstr "inguarible"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "entrada"
 
@@ -5366,19 +5366,19 @@ msgstr[1] "S'han vist $friends unitats amigues"
 msgid "(press $hotkey to keep moving)"
 msgstr "(premeu $hotkey per a seguir movent)"
 
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 msgid "Connecting to $server_address|..."
 msgstr "S'està connectant a $server_address|..."
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 msgid "Downloading list of add-ons..."
 msgstr "S'està descarregant la llista de complements..."
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "S'estan sol·licitant les condicions de distribució..."
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5386,7 +5386,7 @@ msgstr ""
 "El complement <i>$addon_title</i> té un identificador «$addon_id» no vàlid i "
 "no es pot publicar."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5394,7 +5394,7 @@ msgstr ""
 "El complement <i>$addon_title</i> té un fitxer o directori que conté "
 "caràcters no vàlids i no es pot publicar."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5410,7 +5410,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5420,31 +5420,37 @@ msgstr ""
 "de majúscules i minúscules. Els noms dels fitxers o directoris no poden ser "
 "versions de la mateixa cadena amb diferències de majúscules i minúscules."
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
+#: src/addon/client.cpp:223
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "S'estan sol·licitant les condicions de distribució..."
 
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "S'està enviant el complement <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "S'està enviant el complement <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "S'està eliminant el complement <i>$addon_title</i> del servidor..."
 
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "S'està descarregant el complement <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5452,7 +5458,7 @@ msgstr ""
 "El complement <i>$addon_title</i> té un nom de fitxer o directori no vàlid i "
 "no es pot publicar."
 
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5460,11 +5466,11 @@ msgstr ""
 "El complement <i>$addon_title</i> té noms de fitxer o directori amb "
 "conflictes de majúscules i minúscules. Això pot provocar problemes."
 
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "El servidor ha respost amb un error:"
 
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5478,11 +5484,11 @@ msgstr[1] ""
 "El complement seleccionat té les dependències següents, que no estan "
 "instal·lades o disponibles al servidor. Voleu continuar?"
 
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 msgid "Broken Dependencies"
 msgstr "Dependències trencades"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5493,11 +5499,11 @@ msgstr[0] "No s'ha pogut instal·lar la dependència següent. Voleu continuar?"
 msgstr[1] ""
 "No s'han pogut instal·lar les dependències següents. Voleu continuar?"
 
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "Ha fallat la instal·lació de les dependències"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5505,24 +5511,24 @@ msgstr ""
 "El complement «$addon|» ja està instal·lat i conté informació addicional que "
 "es perdrà definitivament si continueu:"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "S'està publicant el fitxer d'informació (. pbl)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "Informació del sistema de control de versions (VCS)"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 msgid "Do you really wish to continue?"
 msgstr "Segur que voleu continuar?"
 
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Confirma"
 
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 msgid "Add-ons Manager"
 msgstr "Gestor de complements"
 
@@ -5680,34 +5686,40 @@ msgid "Incorrect add-on passphrase."
 msgstr ""
 
 #: src/addon/validation.cpp:396
-msgid "Upload denied. Please contact the server administration for assistance."
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
 msgstr ""
 
 #: src/addon/validation.cpp:400
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr ""
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 #, fuzzy
 #| msgid "Invalid location"
 msgid "Invalid upload pack."
 msgstr "Ubicació no vàlida"
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 #, fuzzy
 #| msgid "Invalid tag name"
 msgid "Invalid add-on name."
 msgstr "Nom d'etiqueta invàlid"
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr ""
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5720,7 +5732,7 @@ msgid ""
 "end with '.'."
 msgstr ""
 
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> contains files or directories with case "
@@ -5736,83 +5748,94 @@ msgstr ""
 "de majúscules i minúscules. Els noms dels fitxers o directoris no poden ser "
 "versions de la mateixa cadena amb diferències de majúscules i minúscules."
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 #, fuzzy
 #| msgid "No add-ons to update"
 msgid "No add-on title specified."
 msgstr "No hi ha complements per actualitzar"
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr ""
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr ""
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 #, fuzzy
 #| msgid "No description available."
 msgid "No add-on description specified."
 msgstr "No hi ha disponible."
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr ""
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr ""
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 #, fuzzy
 #| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
 msgstr "Tipus d'unitat no vàlid"
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr ""
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr ""
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:503
-msgid "Unspecified server error."
-msgstr ""
-
-#: src/addon/validation.cpp:507
-msgid "Server is in read-only mode."
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
 msgstr ""
 
 #: src/addon/validation.cpp:511
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:515
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:519
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "No teniu cap complement instal·lat."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -7669,15 +7692,15 @@ msgstr "S'ha trobat un terreny amb cost de desplaçament inferior a 1."
 msgid "waiting for^a global variable"
 msgstr "s'està esperant^una variable global"
 
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "temps restant del torn actual"
 
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "hora local actual"
 
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7685,17 +7708,17 @@ msgstr ""
 "La partida està dessincronitzada. Potser no té gaire sentit continuar. Voleu "
 "desar la partida?"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "Detalls de l'error:"
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7704,7 +7727,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7714,11 +7737,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "No hi ha cap objectiu disponible"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2021-12-06 08:46-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -5180,7 +5180,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "$level nível deprecation inválido (deve ser 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nível deprecation inválido (deve ser 1-4)"
 
@@ -5269,8 +5269,8 @@ msgstr "incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "input"
 
@@ -7398,7 +7398,7 @@ msgstr "(aperte $hotkey para continuar o movimento)"
 # File: src/addon/client.cpp, line: 65
 # File: src/addon/client.cpp, line: 65
 # File: src/addon/client.cpp, line: 65
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 msgid "Connecting to $server_address|..."
 msgstr "Conectando ao $server_address|..."
 
@@ -7406,7 +7406,7 @@ msgstr "Conectando ao $server_address|..."
 # File: src/addon/client.cpp, line: 77
 # File: src/addon/client.cpp, line: 77
 # File: src/addon/client.cpp, line: 77
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 msgid "Downloading list of add-ons..."
 msgstr "Baixando a lista de add-ons..."
 
@@ -7414,7 +7414,7 @@ msgstr "Baixando a lista de add-ons..."
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "Solicitando os termos de distribuição..."
 
@@ -7422,7 +7422,7 @@ msgstr "Solicitando os termos de distribuição..."
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -7434,7 +7434,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -7442,7 +7442,7 @@ msgstr ""
 "O add-on <i>$addon_title</i> possui um arquivo ou diretório contendo um "
 "caractere inválido e por isto não pode ser publicado."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -7463,7 +7463,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -7473,11 +7473,17 @@ msgstr ""
 "nome (caixa alta ou baixa) dos arquivos ou diretórios não podem possuir "
 "versões diferentes do mesmo string."
 
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
 #
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:223
 msgid "Requesting file index..."
 msgstr "Solicitando index de arquivo..."
 
@@ -7485,7 +7491,7 @@ msgstr "Solicitando index de arquivo..."
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Enviando um pacote de atualização para o add-on <i>$addon_title</i>..."
 
@@ -7493,7 +7499,7 @@ msgstr "Enviando um pacote de atualização para o add-on <i>$addon_title</i>...
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando add-on <i>$addon_title</i>..."
 
@@ -7501,7 +7507,7 @@ msgstr "Enviando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 
@@ -7509,7 +7515,7 @@ msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Baixando add-on <i>$addon_title</i>..."
 
@@ -7517,7 +7523,7 @@ msgstr "Baixando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -7529,7 +7535,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -7553,7 +7559,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 328
 # File: src/addon/manager_ui.cpp, line: 333
 # File: src/addon/manager_ui.cpp, line: 815
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
@@ -7561,7 +7567,7 @@ msgstr "O servidor respondeu com um erro:"
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -7579,7 +7585,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 msgid "Broken Dependencies"
 msgstr "Dependências Quebradas"
 
@@ -7587,7 +7593,7 @@ msgstr "Dependências Quebradas"
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -7602,7 +7608,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "A instalação das dependências falharam"
 
@@ -7610,7 +7616,7 @@ msgstr "A instalação das dependências falharam"
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -7622,7 +7628,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "Arquivo de informação da publicação (.pbl)"
 
@@ -7630,7 +7636,7 @@ msgstr "Arquivo de informação da publicação (.pbl)"
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "Informação de versão de controle do sistema (VCS)"
 
@@ -7638,7 +7644,7 @@ msgstr "Informação de versão de controle do sistema (VCS)"
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 msgid "Do you really wish to continue?"
 msgstr "Você realmente deseja continuar?"
 
@@ -7655,7 +7661,7 @@ msgstr "Você realmente deseja continuar?"
 # File: src/addon/manager_ui.cpp, line: 304
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Confirmar"
@@ -7667,7 +7673,7 @@ msgstr "Confirmar"
 # File: src/addon/manager_ui.cpp, line: 682
 # File: src/addon/client.cpp, line: 300
 # File: src/addon/manager_ui.cpp, line: 682
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 msgid "Add-ons Manager"
 msgstr "Gerenciador de Add-ons"
 
@@ -7929,18 +7935,24 @@ msgid "Incorrect add-on passphrase."
 msgstr "Frase-passe incorreta para o add-on."
 
 #: src/addon/validation.cpp:396
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
+msgstr ""
+
+#: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 "Upload negado. Por favor entre em contato com a administração do server para "
 "obter ajuda."
 
-#: src/addon/validation.cpp:400
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 "Tentou-se fazer o upload de um pacote de atualização para um add-on "
 "inexistente."
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr "Nenhuma data sobre o add-on foi fornecida pelo cliente."
 
@@ -7948,7 +7960,7 @@ msgstr "Nenhuma data sobre o add-on foi fornecida pelo cliente."
 # File: src/menu_events.cpp, line: 3058
 # File: src/menu_events.cpp, line: 3057
 # File: src/menu_events.cpp, line: 3057
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 msgid "Invalid upload pack."
 msgstr "Pacote de envio inválido."
 
@@ -7959,15 +7971,15 @@ msgstr "Pacote de envio inválido."
 # File: src/serialization/parser.cpp, line: 218
 # File: src/serialization/parser.cpp, line: 170
 # File: src/serialization/parser.cpp, line: 218
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 msgid "Invalid add-on name."
 msgstr "Nome de add-on inválido."
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr "Formatando caractere no nome do add-on."
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -7993,7 +8005,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -8005,7 +8017,7 @@ msgstr ""
 "Nomes idênticos em um mesmo diretório não podem conter versões com caixas "
 "diferentes."
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "O nome do add-on contêm uma sequência UTF-8 inválida."
 
@@ -8013,15 +8025,15 @@ msgstr "O nome do add-on contêm uma sequência UTF-8 inválida."
 # File: src/loadscreen.cpp, line: 228
 # File: src/loadscreen.cpp, line: 228
 # File: src/loadscreen.cpp, line: 228
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 msgid "No add-on title specified."
 msgstr "Nenhum título para o add-on especificado."
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr "Não foi especificado um autor/maintainer para o add-on."
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr "Não foi especificada a versão do add-on."
 
@@ -8029,19 +8041,19 @@ msgstr "Não foi especificada a versão do add-on."
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
 # File: src/unit_types.cpp, line: 762
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 msgid "No add-on description specified."
 msgstr "Nenhuma descrição para o add-on especificada."
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr "Não foi especificado um e-mail para o autor/maintainer do add-on."
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr "Falta a frase-passe."
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr "Formatando caractere no título do add-on."
 
@@ -8049,31 +8061,37 @@ msgstr "Formatando caractere no título do add-on."
 # File: src/menu_events.cpp, line: 3045
 # File: src/menu_events.cpp, line: 3044
 # File: src/menu_events.cpp, line: 3044
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 msgid "Invalid or unspecified add-on type."
 msgstr "Tipo de add-on inválido ou não especificado."
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr "Número da versão não é maior do que o número da última versão enviada."
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr "O id do tópico de feedback não é um número."
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr "O tópico de feedback não existe."
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr "A informação de publicação do add-on contêm uma sequência UTF-8."
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
+msgstr ""
+
+#: src/addon/validation.cpp:511
 msgid "Unspecified server error."
 msgstr "Erro no servidor não especificado."
 
-#: src/addon/validation.cpp:507
+#: src/addon/validation.cpp:515
 msgid "Server is in read-only mode."
 msgstr "O server está no modo de somente leitura."
 
@@ -8081,15 +8099,20 @@ msgstr "O server está no modo de somente leitura."
 # File: src/addon/manager_ui.cpp, line: 941
 # File: src/addon/manager_ui.cpp, line: 941
 # File: src/addon/manager_ui.cpp, line: 941
-#: src/addon/validation.cpp:511
+#: src/addon/validation.cpp:519
 msgid "Corrupted server add-ons list."
 msgstr "Lista de server dos add-ons corrompida."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr "Lista de versão do add-on vazia no servidor."
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr "Falha de validação não especificada."
 
@@ -11450,7 +11473,7 @@ msgstr "uma variante global"
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "tempo restante para o turno atual"
 
@@ -11461,7 +11484,7 @@ msgstr "tempo restante para o turno atual"
 # File: src/replay_controller.cpp, line: 142
 # File: src/play_controller.cpp, line: 254
 # File: src/replay_controller.cpp, line: 142
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "hora local atual"
 
@@ -11469,7 +11492,7 @@ msgstr "hora local atual"
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -11484,17 +11507,17 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr "Aviso: ramificações da campanha não funcionando"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -11506,7 +11529,7 @@ msgstr[1] ""
 "Alguns dos próximos cenários estão faltando. Talvez você não tenha como "
 "terminar a campanha."
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -11521,7 +11544,7 @@ msgstr[1] ""
 "faltando:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Quando isso for consertado, você precisará reiniciar o cenário."
 
@@ -11529,7 +11552,7 @@ msgstr "Quando isso for consertado, você precisará reiniciar o cenário."
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "Nenhum objetivo disponível"
 

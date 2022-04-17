@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2021-07-19 01:34+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -3958,7 +3958,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "不正確的不維護等級：$level（應為1到4）"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "無效的廢棄等級（應為1-4）"
 
@@ -4004,8 +4004,8 @@ msgstr "不可治療"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "輸入"
 
@@ -5144,31 +5144,31 @@ msgstr[1] "發現$friends|個同盟單位"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按 $hotkey 鍵繼續移動）"
 
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 msgid "Connecting to $server_address|..."
 msgstr "正在連接到 $server_address|……"
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 msgid "Downloading list of add-ons..."
 msgstr "下載模組清單……"
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "請求來源……"
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr "此模組<i>$addon_title</i>使用無效的模組ID：$addon_id|，故無法發佈。"
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr "此模組<i>$addon_title</i>的檔案或資料夾包含無效的字元而無法發佈。"
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5183,7 +5183,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5192,33 +5192,39 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾有大小寫衝突。名稱相同但大小寫不同的檔"
 "案或資料夾，算是同樣的東西。"
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
+#: src/addon/client.cpp:223
 msgid "Requesting file index..."
 msgstr "請求檔案索引……"
 
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "正在傳送一個更新包給模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "正在傳送模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "正在從伺服器移除模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "正在下載模組<i>$addon_title</i>……"
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr "此模組<i>$addon_title</i>的檔案或資料夾名稱無效而無法安裝。"
 
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5226,11 +5232,11 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾的名稱大小寫衝突。這可能會導致錯誤發"
 "生。"
 
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "伺服器回應錯誤："
 
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5240,11 +5246,11 @@ msgid_plural ""
 msgstr[0] "這個模組必須依賴以下的相依模組，目前未安裝，你要安裝嗎？"
 msgstr[1] "這個模組必須依賴以下的相依模組，目前未安裝，你要安裝嗎？"
 
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 msgid "Broken Dependencies"
 msgstr "錯誤的相依項目"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5254,35 +5260,35 @@ msgid_plural ""
 msgstr[0] "以下的相依模組無法被安裝。你仍然想要繼續嗎？"
 msgstr[1] "以下的相依模組無法被安裝。你仍然想要繼續嗎？"
 
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "相依模組安裝失敗"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 "這個模組<i>$addon|</i>已經安裝且包含額外資訊，如果繼續將永久遺失相關資料："
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "發佈訊息檔 (.pbl)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "版本控制系統（VCS）資訊"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 msgid "Do you really wish to continue?"
 msgstr "你真的想要繼續嗎？"
 
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 msgid "Add-ons Manager"
 msgstr "模組管理員"
 
@@ -5433,30 +5439,36 @@ msgid "Incorrect add-on passphrase."
 msgstr "不正確的模組密碼短語。"
 
 #: src/addon/validation.cpp:396
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
+msgstr ""
+
+#: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr "上傳被拒。請聯絡伺服器管理員來取得協助。"
 
-#: src/addon/validation.cpp:400
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr "試圖為一個不存在的模組上傳一個更新包。"
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr "客戶端並未提供模組資料。"
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 msgid "Invalid upload pack."
 msgstr "無效的更新包。"
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 msgid "Invalid add-on name."
 msgstr "無效模組名稱。"
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr "格式化模組名稱中的字元。"
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5477,7 +5489,7 @@ msgstr ""
 "此外，名稱不能超過255個字元，也不能包含「..」，或者以「.」結尾。"
 
 # 原文敘述不清楚，不照原文翻譯。
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -5488,75 +5500,86 @@ msgstr ""
 "\n"
 "在同一個資料夾下，不可以有名稱相同但大小寫不同的檔案和資料夾。"
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "此模組名稱包含一個無效的UTF-8序列。"
 
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 msgid "No add-on title specified."
 msgstr "模組標題沒有被定義。"
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr "模組作者/維護者的名稱沒有被定義。"
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr "模組版本沒有被定義。"
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 msgid "No add-on description specified."
 msgstr "模組描述沒有被定義。"
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr "模組作者/維護者的電子郵件沒有被定義。"
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr "缺少密碼短語。"
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr "格式化模組標題中的字元。"
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 msgid "Invalid or unspecified add-on type."
 msgstr "無效或未定義的模組類型"
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr "版本號碼並未大於最新的上傳版本。"
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr "反饋主題ID不是一個數字。"
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr "反饋主題不存在。"
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr "模組發佈資訊包含無效的UTF-8序列。"
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
+msgstr ""
+
+#: src/addon/validation.cpp:511
 msgid "Unspecified server error."
 msgstr "未定義的伺服器錯誤。"
 
-#: src/addon/validation.cpp:507
+#: src/addon/validation.cpp:515
 msgid "Server is in read-only mode."
 msgstr "伺服器是唯讀模式。"
 
-#: src/addon/validation.cpp:511
+#: src/addon/validation.cpp:519
 msgid "Corrupted server add-ons list."
 msgstr "伺服器的模組清單毀損。"
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr "伺服器上的模組版本清單是空的。"
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr "未定義的驗證錯誤。"
 
@@ -7333,31 +7356,31 @@ msgstr "遇到消耗移動力小於1的地形。"
 msgid "waiting for^a global variable"
 msgstr "全域變數"
 
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "本回合剩餘時間"
 
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "目前本地時間"
 
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "這款遊戲無法同步下去，再繼續下去也不會多好玩，你想儲存遊戲嗎？"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "錯誤細節："
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr "警告：損壞的戰役分支"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7366,7 +7389,7 @@ msgid_plural ""
 msgstr[0] "下一個章節遺失了，你將不能完成這個戰役。"
 msgstr[1] "接下來有幾個可能的章節遺失了，你也許會不能完成這個戰役。"
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7376,11 +7399,11 @@ msgid_plural ""
 msgstr[0] "請回報以下的遺失章節給戰役的作者："
 msgstr[1] "請回報以下的遺失章節給戰役的作者："
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "一旦這個被修正了，你將需要重新啟動這個章節。"
 
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "無可用目標"
 

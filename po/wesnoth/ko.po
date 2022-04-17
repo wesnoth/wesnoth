@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -4041,7 +4041,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "잘못된 지원 중단 수준 $level (1-4이어야 함)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "잘못된 지원 중단 수준 (1-4이어야 함)"
 
@@ -4088,8 +4088,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "입력"
 
@@ -5333,23 +5333,23 @@ msgstr[0] "우호 유닛 × $friends 발견"
 msgid "(press $hotkey to keep moving)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "서버에 연결하는중..."
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "부가 기능 목록을 받는중..."
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "배포 조건 요청 중..."
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5357,7 +5357,7 @@ msgstr ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5365,7 +5365,7 @@ msgstr ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5381,7 +5381,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5391,37 +5391,43 @@ msgstr ""
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
+#: src/addon/client.cpp:223
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "배포 조건 요청 중..."
 
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "부가 기능 전송중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "부가 기능 전송중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "그 서버에서 부가 기능 제거중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "부가 기능 다운중: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5429,7 +5435,7 @@ msgstr ""
 "부가 기능 <i>$addon_title</i> 에 무효한 파일명 또는 디렉토리명이 포함되어 있"
 "어인스톨 할 수 없습니다."
 
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5437,11 +5443,11 @@ msgstr ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "서버가 오류로 응답함:"
 
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5452,12 +5458,12 @@ msgstr[0] ""
 "선택된 부가 기능은 아래의 부가 기능에 의존하고 있습니다.그러나, 그것들은 인스"
 "톨 되어 있지 않거나, 서버상에 존재하지 않습니다. 그래도 계속 하시겠어요?"
 
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "망가진 의존 관계"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5466,11 +5472,11 @@ msgid_plural ""
 "continue?"
 msgstr[0] "필요한 부가 기능을 설치 할 수 없습니다. 그래도 계속 하시겠습니까?"
 
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "Dependencies Installation Failed"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5478,25 +5484,25 @@ msgstr ""
 "'$addon|'는 인스톨이 완료되어 있으며, 추가 정보를 포함하고 있습니다. 이대로 "
 "계속하면, 이하의 추가 정보가 없어집니다."
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "공개 정보 파일 (.pbl)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "Version control system (VCS) information"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 #, fuzzy
 msgid "Do you really wish to continue?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "확인"
 
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5654,34 +5660,40 @@ msgid "Incorrect add-on passphrase."
 msgstr ""
 
 #: src/addon/validation.cpp:396
-msgid "Upload denied. Please contact the server administration for assistance."
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
 msgstr ""
 
 #: src/addon/validation.cpp:400
+msgid "Upload denied. Please contact the server administration for assistance."
+msgstr ""
+
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr ""
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 #, fuzzy
 #| msgid "Invalid location"
 msgid "Invalid upload pack."
 msgstr "무효한 장소"
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 #, fuzzy
 #| msgid "Invalid tag name"
 msgid "Invalid add-on name."
 msgstr "무효한 태그 이름입니다."
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr ""
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5694,7 +5706,7 @@ msgid ""
 "end with '.'."
 msgstr ""
 
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> contains files or directories with case "
@@ -5710,83 +5722,94 @@ msgstr ""
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 #, fuzzy
 #| msgid "No add-ons to update"
 msgid "No add-on title specified."
 msgstr "업데이트 할 추가 기능 없음"
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr ""
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr ""
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 #, fuzzy
 #| msgid "No objectives available"
 msgid "No add-on description specified."
 msgstr "가능한 목표 없음"
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr ""
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr ""
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr ""
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 #, fuzzy
 #| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
 msgstr "무효한 유닛 타입"
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr ""
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr ""
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 
-#: src/addon/validation.cpp:503
-msgid "Unspecified server error."
-msgstr ""
-
-#: src/addon/validation.cpp:507
-msgid "Server is in read-only mode."
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
 msgstr ""
 
 #: src/addon/validation.cpp:511
+msgid "Unspecified server error."
+msgstr ""
+
+#: src/addon/validation.cpp:515
+msgid "Server is in read-only mode."
+msgstr ""
+
+#: src/addon/validation.cpp:519
 #, fuzzy
 #| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
 msgstr "설치가 끝난 부가 기능이 없습니다."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr ""
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr ""
 
@@ -7735,15 +7758,15 @@ msgstr "필요 이동력이 1보다 작은 지형이 나타났습니다."
 msgid "waiting for^a global variable"
 msgstr "글로벌 변수"
 
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "이번 턴에 남은 시간"
 
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "현재 시간"
 
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7751,17 +7774,17 @@ msgstr ""
 "이 게임은 동기화 되지 않아서, 속행 불능이라고 생각됩니다.이 게임을 저장하시겠"
 "습니까?"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "상세 에러:"
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7769,7 +7792,7 @@ msgid_plural ""
 "finish this campaign."
 msgstr[0] ""
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7778,11 +7801,11 @@ msgid_plural ""
 "$unknown_list|"
 msgstr[0] ""
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "가능한 목표 없음"
 

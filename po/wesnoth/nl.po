@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2021-10-29 14:25+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -3986,7 +3986,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Ongeldig onafhankelijk niveau $level (zou 1-4 moeten zijn)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ongeldig onafhankelijk niveau (zou 1-4 moeten zijn)"
 
@@ -4032,8 +4032,8 @@ msgstr "ongeneesbaar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "input"
 
@@ -5299,19 +5299,19 @@ msgstr[1] "$friends bevriende eenheden in zicht"
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om verder te bewegen)"
 
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 msgid "Connecting to $server_address|..."
 msgstr "Bezig met verbinden met $server_address|..."
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 msgid "Downloading list of add-ons..."
 msgstr "Downloaden van de lijst met add-ons..."
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "Opvragen distributievoorwaarden..."
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5319,7 +5319,7 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een ongeldige id '$addon_id' en kan niet "
 "worden geïnstalleerd."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5327,7 +5327,7 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
 "kan niet worden gepubliceerd."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5344,7 +5344,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5354,27 +5354,33 @@ msgstr ""
 "bestemmingsconflicten. Bestands- of mapnamen mogen geen andere bestemming "
 "hebben dan dezelfde string."
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
+#: src/addon/client.cpp:223
 msgid "Requesting file index..."
 msgstr "Opvragen bestandsindex..."
 
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Verzenden van een updatepakket voor add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Verzenden van add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Verwijderen van add-on <i>$addon_title</i> van de server..."
 
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Downloaden van add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5382,7 +5388,7 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
 "kan niet worden geïnstalleerd."
 
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5390,11 +5396,11 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een bestands- of mapnaam met "
 "bestemmingsconflicten. Dit kan voor problemen zorgen."
 
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "De server antwoordde met een fout:"
 
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5409,11 +5415,11 @@ msgstr[1] ""
 "niet geïnstalleerd zijn of beschikbaar zijn op de server. Wilt u toch "
 "doorgaan?"
 
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 msgid "Broken Dependencies"
 msgstr "Gebroken Afhankelijkheden"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5427,11 +5433,11 @@ msgstr[1] ""
 "De volgende afhankelijkheden konden niet worden geïnstalleerd. Wil je nog "
 "steeds doorgaan?"
 
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "Installatie van Afhankelijkheden Mislukt"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5439,24 +5445,24 @@ msgstr ""
 "De add-on '$addon|' is al geïnstalleerd en bevat extra informatie die "
 "verloren gaat als je doorgaat:"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "Publiceer informatie bestand (.pbl)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "Versie controle systeem (VCS) informatie"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 msgid "Do you really wish to continue?"
 msgstr "Weet je zeker dat je wilt verdergaan?"
 
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Bevestigen"
 
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 msgid "Add-ons Manager"
 msgstr "Add-ons Beheerder"
 
@@ -5613,33 +5619,39 @@ msgid "Incorrect add-on passphrase."
 msgstr "Ongeldige add-on wachtwoordszin."
 
 #: src/addon/validation.cpp:396
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
+msgstr ""
+
+#: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 "Upload afgewezen. Neem contact op met de server administratie voor "
 "assistentie."
 
-#: src/addon/validation.cpp:400
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 "Het update-pakket kan niet worden geüpload want de add-on bestaat niet."
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr "De client heeft geen add-on data aangeleverd."
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 msgid "Invalid upload pack."
 msgstr "Ongeldig uploadpakket."
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 msgid "Invalid add-on name."
 msgstr "Ongeldige add-on naam."
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr "Ongeldig teken in add-on naam."
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5661,7 +5673,7 @@ msgstr ""
 "Daarnaast mogen namen niet langer zijn dan 255 tekens, geen '...' bevatten "
 "of eindigen met '.'."
 
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -5673,76 +5685,87 @@ msgstr ""
 "Bestands- of mapnamen mogen niet dezelfde tekst hebben, hoofdletters worden "
 "niet gezien als andere tekens."
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "De add-on naam bevat een ongeldige UTF-8 combinatie."
 
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 msgid "No add-on title specified."
 msgstr "Geen add-on titel benoemd."
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr "Naam van add-on maker/onderhouder is niet benoemd."
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr "Versie van add-on is niet benoemd."
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 msgid "No add-on description specified."
 msgstr "Geen add-on beschrijving benoemd."
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr "Email van add-on maker/onderhouders is niet benoemd."
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr "Paswoordzin ontbreekt."
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr "Ongeldig opmaakteken in add-on titel."
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 msgid "Invalid or unspecified add-on type."
 msgstr "Ongeldig of onbenoemd add-on type."
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr "Versienummer is niet hoger dan de laatst geüpdatete versie."
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr "Feedback onderwerp id is geen getal."
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr "Feedback onderwerp bestaat niet."
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 "De publiceer informatie van de add-on bevat een ongeldig UTF-8 combinatie."
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
+msgstr ""
+
+#: src/addon/validation.cpp:511
 msgid "Unspecified server error."
 msgstr "Onbekende serverfout."
 
-#: src/addon/validation.cpp:507
+#: src/addon/validation.cpp:515
 msgid "Server is in read-only mode."
 msgstr "Server is in de stand alleen-lezen."
 
-#: src/addon/validation.cpp:511
+#: src/addon/validation.cpp:519
 msgid "Corrupted server add-ons list."
 msgstr "Verkeerde server add-ons lijst."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr "Lege add-on versielijst op de server."
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr "Onbekende valideerfout."
 
@@ -7596,15 +7619,15 @@ msgstr "Terrein met bewegingskosten van minder dan 1 waargenomen."
 msgid "waiting for^a global variable"
 msgstr "een wereldwijde variabele"
 
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "tijd over voor de volgende beurt"
 
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "huidige lokale tijd"
 
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7612,17 +7635,17 @@ msgstr ""
 "Het spel is niet meer gesynchroniseerd. Het is mogelijk dat het niet veel "
 "zin meer heeft om verder te gaan. Wil je je spel opslaan?"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "Foutdetails:"
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr "Waarschuwing: ontbrekende delen van de veldtocht"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7634,7 +7657,7 @@ msgstr[1] ""
 "Een aantal van de volgende scenario's ontbreken, je zal deze veldtocht niet "
 "af kunnen maken."
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7648,11 +7671,11 @@ msgstr[1] ""
 "Geef de volgende missende scenario's door aan de veldtochtmaker:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Wanneer dit is opgelost, zal je de veldtocht opnieuw moeten starten."
 
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "Geen doelen beschikbaar"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 06:46+0300\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4135,7 +4135,7 @@ msgstr ""
 "1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:850
+#: data/lua/wml-tags.lua:870
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 "Chan eil leibheil an dì-mholaidh dligheach (bu chòir dha bhith eadar 1-4)"
@@ -4182,8 +4182,8 @@ msgstr "do-slànaichte"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3033
-#: src/scripting/game_lua_kernel.cpp:3068
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3215
+#: src/scripting/game_lua_kernel.cpp:3250
 msgid "input"
 msgstr "ion-chur"
 
@@ -5474,19 +5474,19 @@ msgstr[3] "$friends aonad càirdeil air fàire"
 msgid "(press $hotkey to keep moving)"
 msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
-#: src/addon/client.cpp:78
+#: src/addon/client.cpp:80
 msgid "Connecting to $server_address|..."
 msgstr "A’ ceangal ri $server_address|…"
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:127
 msgid "Downloading list of add-ons..."
 msgstr "A’ luchdadh a-nuas liosta dhe na tuilleadain…"
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:148
 msgid "Requesting distribution terms..."
 msgstr "Ag iarraidh teirmichean an sgaoilidh…"
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:172
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5494,7 +5494,7 @@ msgstr ""
 "Tha is mì-dhligheach “$addon_id” aig an tuilleadan <i>$addon_title</i> is "
 "cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:184
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5502,7 +5502,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain sa bheil caractar mì-dhligheach aig an "
 "tuilleadan <i>$addon_title</i> is cha ghabh fhoillseachadh."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:192
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5519,7 +5519,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:203
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5529,28 +5529,34 @@ msgstr ""
 "san tuilleadan <i>$addon_title</i>. Feumaidh diofar eile seach litrichean "
 "mòra is beaga a bhith ann eadar ainmean."
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:210
+msgid ""
+"The connection to the remote server is not secure. The add-on <i>"
+"$addon_title</i> cannot be uploaded."
+msgstr ""
+
+#: src/addon/client.cpp:223
 msgid "Requesting file index..."
 msgstr "Ag iarraidh inneacs nam faidhlichean…"
 
-#: src/addon/client.cpp:232
+#: src/addon/client.cpp:239
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "A’ cur pacaid ùrachaidh airson an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:253
+#: src/addon/client.cpp:260
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:299
+#: src/addon/client.cpp:306
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr ""
 "A’ toirt air falbh an tuilleadain <i>$addon_title</i> on fhrithealaiche…"
 
-#: src/addon/client.cpp:328
+#: src/addon/client.cpp:335
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "A’ luchdadh a-nuas an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:373
+#: src/addon/client.cpp:354 src/addon/client.cpp:380
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5558,7 +5564,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain mì-dhligheach aig an tuilleadan <i>$addon_title</"
 "i> is cha ghabh e stàladh."
 
-#: src/addon/client.cpp:352 src/addon/client.cpp:378
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5567,11 +5573,11 @@ msgstr ""
 "nach eil diofar seach litrichean mòra is beaga. Dh’fhaoidte gun adhbharaich "
 "seo trioblaid."
 
-#: src/addon/client.cpp:411
+#: src/addon/client.cpp:418
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/addon/client.cpp:466
+#: src/addon/client.cpp:473
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5595,11 +5601,11 @@ msgstr[3] ""
 "stàlaichte agad ’s nach eil ri fhaighinn air an fhrithealaiche. A bheil thu "
 "airson leantainn air adhart?"
 
-#: src/addon/client.cpp:475
+#: src/addon/client.cpp:482
 msgid "Broken Dependencies"
 msgstr "Eisimeileachdan briste"
 
-#: src/addon/client.cpp:515
+#: src/addon/client.cpp:522
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5619,11 +5625,11 @@ msgstr[3] ""
 "Cha b’ urrainn dhuinn na h-eisimeileachdan a leanas a stàladh. A bheil thu "
 "airson leantainn air adhart co-dhiù?"
 
-#: src/addon/client.cpp:519
+#: src/addon/client.cpp:526
 msgid "Dependencies Installation Failed"
 msgstr "Dh’fhàillig le stàladh nan eisimeileachdan"
 
-#: src/addon/client.cpp:542
+#: src/addon/client.cpp:549
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5631,24 +5637,24 @@ msgstr ""
 "Tha an tuilleadan “$addon|” stàlaichte agad mar-thà agus tha fiosrachadh a "
 "bharrachd ’na bhroinn a chailleas tu ma leanas tu air adhart:"
 
-#: src/addon/client.cpp:546
+#: src/addon/client.cpp:553
 msgid "Publishing information file (.pbl)"
 msgstr "Faidhle fiosrachadh an fhoillseachaidh (.pbl)"
 
-#: src/addon/client.cpp:550
+#: src/addon/client.cpp:557
 msgid "Version control system (VCS) information"
 msgstr "Fiosrachadh siostam smachd nan tionndaidhean (VCS)"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:561
 msgid "Do you really wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/addon/client.cpp:556 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:379
 msgid "Confirm"
 msgstr "Dearbhaich"
 
-#: src/addon/client.cpp:696
+#: src/addon/client.cpp:703
 msgid "Add-ons Manager"
 msgstr "Manaidsear nan tuilleadan"
 
@@ -5834,34 +5840,40 @@ msgid "Incorrect add-on passphrase."
 msgstr "Tha còd-faire an tuilleadain ceàrr."
 
 #: src/addon/validation.cpp:396
+msgid ""
+"Forum authentication was requested for a user that is not registered on the "
+"forums."
+msgstr ""
+
+#: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 "Chaidh an luchdadh suas a dhiùltadh. Cuir fios gu rianaire an fhrithealaiche "
 "airson taic."
 
-#: src/addon/validation.cpp:400
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr ""
 "Dh’fheuch thu ri pacaid ùrachaidh a luchdadh suas do thuilleadan nach eil "
 "ann."
 
-#: src/addon/validation.cpp:409
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr "Cha deach dàta an tuilleadain a thoirt seachad leis a’ chliant."
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 msgid "Invalid upload pack."
 msgstr "Pacaid luchdaidh suas mhì-dhligheach."
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 msgid "Invalid add-on name."
 msgstr "Ainm tuilleadain mì-dhligheach."
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr "Caractar fòrmataidh am broinn ainm an tuilleadain."
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5884,7 +5896,7 @@ msgstr ""
 "A bharrachd air sin, chan fhaod ainmean a bhith nas fhaide na 255 "
 "caractaran, “…” a bhith ’nam broinn no “.” air an deireadh."
 
-#: src/addon/validation.cpp:435
+#: src/addon/validation.cpp:439
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -5897,83 +5909,94 @@ msgstr ""
 "Feumaidh diofar eile seach litrichean mòra is beaga a bhith ann eadar "
 "ainmean san aon phasgan."
 
-#: src/addon/validation.cpp:441
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "Tha sreath UTF-8 mì-dhligheach ann an ainm an tuilleadain seo."
 
-#: src/addon/validation.cpp:450
+#: src/addon/validation.cpp:454
 msgid "No add-on title specified."
 msgstr "Cha deach tiotal an tuilleadain a thoirt seachad."
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr ""
 "Cha deach ainm ùghdair/neach-glèidhidh an tuilleadain a thoirt seachad."
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr "Cha deach tionndadh an tuilleadain a thoirt seachad."
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 msgid "No add-on description specified."
 msgstr "Cha deach tuairisgeul an tuilleadain a thoirt seachad."
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr ""
 "Cha deach post-d ùghdair/neach-glèidhidh an tuilleadain a thoirt seachad."
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr "Tha abairt-fhaire a dhìth."
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr "Tha caractar fòrmataidh am broinn tiotal an tuilleadain."
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 msgid "Invalid or unspecified add-on type."
 msgstr ""
 "Tha seòrsa mì-dhligheach air an tuilleadan no cha deach an seòrsa a "
 "shònrachadh."
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr ""
 "Chan eil àireamh an tionndaidh nas motha na an tionndadh mu dheireadh a "
 "chaidh a luchdadh suas."
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr "Chan eil id cuspair nam beachdan thugad ’na àireamh."
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr "Chan eil cuspair nam beachdan thugad ann."
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 "Tha sreath UTF-8 mì-dhligheach ann am fiosrachadh foillseachaidh an "
 "tuilleadain seo."
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:502
+msgid ""
+"The add-on's forum_auth attribute does not match what was previously "
+"uploaded."
+msgstr ""
+
+#: src/addon/validation.cpp:511
 msgid "Unspecified server error."
 msgstr "Mearachd choitcheann an fhrithealaiche."
 
-#: src/addon/validation.cpp:507
+#: src/addon/validation.cpp:515
 msgid "Server is in read-only mode."
 msgstr "Tha am frithealaiche sa mhodh leughaidh a-mhàin."
 
-#: src/addon/validation.cpp:511
+#: src/addon/validation.cpp:519
 msgid "Corrupted server add-ons list."
 msgstr "Tha liosta nan tuilleadan air an fhrithealaiche coirbte."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr "Tha liosta tionndadh nan tuilleadan falamh air an fhrithealaiche."
 
-#: src/addon/validation.cpp:525
+#: src/addon/validation.cpp:527
+msgid ""
+"This server does not support using the forum_auth attribute in your pbl."
+msgstr ""
+
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr "Fàilligeadh coitcheann leis an dearbhadh."
 
@@ -7927,15 +7950,15 @@ msgstr "Thachradh air cruth-tìre le cosgais ghluasaid nas lugha na 1."
 msgid "waiting for^a global variable"
 msgstr "air caochladair uile-choitcheann"
 
-#: src/play_controller.cpp:248
+#: src/play_controller.cpp:247
 msgid "time left for current turn"
 msgstr "àm air fhàgail airson na cuairte làithrich"
 
-#: src/play_controller.cpp:250
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "àm ionadail an-dràsta"
 
-#: src/play_controller.cpp:1076
+#: src/play_controller.cpp:1074
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7943,17 +7966,17 @@ msgstr ""
 "Chan eil an geama sioncronaichte gu ceart. ’S dòcha nach eil mòran cèill dhà "
 "leantainn air. A bheil thu airson an geama agad a shàbhaladh?"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1075
 msgid "Error details:"
 msgstr "Mion-fhiosrachaidh mearachd:"
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1257
 msgid "Warning: broken campaign branches"
 msgstr "Rabhadh: meuran iomairt briste"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1265
+#: src/play_controller.cpp:1263
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7972,7 +7995,7 @@ msgstr[3] ""
 "Tha cuid dhe na h-ath cnàmh-sgeulan a dhìth ma dh’fhaoidte agus is dòcha "
 "nach urrainn dhut an iomairt seo a chrìochnachadh."
 
-#: src/play_controller.cpp:1272
+#: src/play_controller.cpp:1270
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7992,13 +8015,13 @@ msgstr[3] ""
 "Cuir fios gu ùghdar na h-iomairte mu na cnàmh-sgeulan seo a tha a dhìth:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1276
+#: src/play_controller.cpp:1274
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 "Nuair a bhios seo air a chàradh, feumaidh tu an cnàmh-sgeul seo a "
 "thòiseachadh as ùr."
 
-#: src/play_controller.cpp:1456
+#: src/play_controller.cpp:1454
 msgid "No objectives available"
 msgstr "Chan eil amasan ri fhaighinn"
 
