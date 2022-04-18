@@ -191,7 +191,7 @@ public:
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
 			symbols["prefix"] = cmd_prefix_;
-			if (cmd_prefix_ == "/"){
+			if (!cmd_flag_){
 				symbols["help_command"] = cmd_prefix_ + "help";
 				symbols["command"] = cmd_prefix_ + get_cmd();
 			}
@@ -372,6 +372,11 @@ protected:
 	{
 		cmd_prefix_ = value;
 	}
+	// set command or message flag
+	static void set_cmd_flag(bool value)
+	{
+		cmd_flag_ = value;
+	}
 	virtual void register_command(const std::string& cmd,
 		command_handler h, const std::string& help = "",
 		const std::string& usage = "", const std::string& flags = "")
@@ -408,6 +413,7 @@ private:
 	static inline bool help_on_unknown_ = true;
 	static inline bool show_unavailable_ = false;
 	static inline std::string cmd_prefix_ {};
+	static inline bool cmd_flag_ = false;
 };
 
 }

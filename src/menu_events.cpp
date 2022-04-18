@@ -1219,6 +1219,7 @@ protected:
 		chmap::get_command("remove")->flags = "";  // clear network-only flag
 
 		chmap::set_cmd_prefix(":");
+		chmap::set_cmd_flag(true);
 
 		register_command("refresh", &console_handler::do_refresh, _("Refresh gui."));
 		register_command("droid", &console_handler::do_droid, _("Switch a side to/from AI control."),
