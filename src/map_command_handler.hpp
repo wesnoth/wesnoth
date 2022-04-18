@@ -324,7 +324,12 @@ protected:
 		utils::string_map symbols;
 		symbols["flags_description"] = get_flags_description();
 		symbols["list_of_commands"] = ss.str();
-		symbols["help_command"] = cmd_prefix_ + "help";
+        if (!cmd_flag_){
+            symbols["help_command"] = cmd_prefix_ + "help";
+        }
+        else{
+            symbols["help_command"] = "help";
+        }
 		print(_("help"), VGETTEXT("Available commands $flags_description:\n$list_of_commands", symbols));
 		print(_("help"), VGETTEXT("Type $help_command <command> for more info.", symbols));
 	}
@@ -335,7 +340,12 @@ protected:
 		const command* c = get_command(cmd);
 		if (c) {
 			std::stringstream ss;
-			ss << cmd_prefix_ << cmd;
+			if (!cmd_flag_){
+                ss << cmd_prefix_ << cmd;
+			}
+			else{
+                ss << cmd;
+			}
 			if (c->help.empty() && c->usage.empty()) {
 				ss << _(" No help available.");
 			}
@@ -343,7 +353,12 @@ protected:
 				ss << " - " << c->help << "\n";
 			}
 			if (!c->usage.empty()) {
-				ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
+                if (!cmd_flag_){
+                    ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
+                }
+                else{
+                    ss << _("Usage:") << " " << cmd << " " << c->usage << "\n";
+                }
 			}
 			const auto flags_description = get_command_flags_description(*c);
 			if (!flags_description.empty()) {
