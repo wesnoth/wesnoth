@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,7 +63,7 @@ public:
 			const map_location& loc, const std::string& event,
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
-			const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID,
+			const strike_result::type hit_type = strike_result::type::invalid,
 			const_attack_ptr attack=nullptr,const_attack_ptr second_attack = nullptr,
 			int swing_num =0);
 

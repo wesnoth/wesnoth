@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -1571,7 +1571,7 @@ void console_handler::do_droid()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_terrain()
@@ -1628,7 +1628,7 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_theme()
@@ -1690,7 +1690,7 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_controller()
@@ -1715,7 +1715,7 @@ void console_handler::do_controller()
 
 	std::string report = side_controller::get_string(menu_handler_.board().get_team(side_num).controller());
 	if(!menu_handler_.board().get_team(side_num).is_proxy_human()) {
-		report += " (" + menu_handler_.board().get_team(side_num).proxy_controller().to_string() + ")";
+		report += " (" + side_proxy_controller::get_string(menu_handler_.board().get_team(side_num).proxy_controller()) + ")";
 	}
 
 	if(menu_handler_.board().get_team(side_num).is_network()) {
@@ -1992,8 +1992,8 @@ void console_handler::do_unit()
 	}
 
 	if(parameters[0] == "alignment") {
-		unit_type::ALIGNMENT alignment;
-		if(!alignment.parse(parameters[1])) {
+		auto alignment = unit_alignments::get_enum(parameters[1]);
+		if(!alignment) {
 			utils::string_map symbols;
 			symbols["alignment"] = get_arg(1);
 			command_failed(VGETTEXT(

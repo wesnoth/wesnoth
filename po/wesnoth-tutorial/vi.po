@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
 "PO-Revision-Date: 2013-03-12 21:13+0800\n"
 "Last-Translator: Phạm Thành Nam\n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -32,7 +32,7 @@ msgstr "Hướng dẫn Wesnoth"
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first "
+"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
 
@@ -42,30 +42,30 @@ msgid "Beginner"
 msgstr ""
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:21
+#: data/campaigns/tutorial/gui/character_selection.cfg:19
 msgid "Select Character"
 msgstr ""
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:32
+#: data/campaigns/tutorial/gui/character_selection.cfg:30
 #, fuzzy
 #| msgid "Who would you like to play?"
-msgid "Who do you want to play?"
+msgid "Who do you want to play as?"
 msgstr "Bạn muốn điều khiển ai?"
 
-#. [side]: type=Fighter, id=student
 #. [button]
-#: data/campaigns/tutorial/gui/character_selection.cfg:63
+#. [side]: type=Fighter, id=student
+#: data/campaigns/tutorial/gui/character_selection.cfg:61
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [modify_side]
 #. [button]
 #. [lua]: wml_actions.select_character
-#: data/campaigns/tutorial/gui/character_selection.cfg:72
-#: data/campaigns/tutorial/lua/character_selection.lua:21
+#. [modify_side]
+#: data/campaigns/tutorial/gui/character_selection.cfg:70
+#: data/campaigns/tutorial/lua/character_selection.lua:24
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -156,8 +156,8 @@ msgstr ""
 #| "You are standing in the keep, and your mentor Delfador is on the east "
 #| "side of the river."
 msgid ""
-"For this tutorial, you are playing Konrad. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Konrad. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -173,8 +173,8 @@ msgstr ""
 #| "You are standing in the keep, and your mentor Delfador is on the east "
 #| "side of the river."
 msgid ""
-"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. You can move the "
+"For this tutorial, you are playing as Li’sar. You are standing on the keep, "
+"and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -389,8 +389,8 @@ msgstr "Cháu có nên rút lui không?"
 msgid "female^Should I retreat?"
 msgstr "Cháu có nên rút lui không?"
 
-#. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid "Good idea!"
@@ -460,42 +460,42 @@ msgstr ""
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
-"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"Turn</b> button in the bottom right of the screen. The other sides, whether "
 "controlled by the AI or other human players, will then make their move. Some "
 "scenarios must be completed in a certain number of turns. You can see what "
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
 
-#. [else]
 #. [event]
+#. [else]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:621
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:796
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:809
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid "End your turn"
 msgstr "Kết thúc lượt"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:644
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:642
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:655
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Ối! Cháu cần trị thương! Chỉ còn $student_hp máu!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:643
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:656
 #, fuzzy
 #| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Ối! Cháu cần trị thương! Chỉ còn $student_hp máu!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:648
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:661
 #, fuzzy
 #| msgid ""
 #| "There is a village on the other side of the river. Visiting villages is a "
@@ -508,31 +508,31 @@ msgstr ""
 "khi kết thúc lượt trong một ngôi làng, cháu sẽ được điều trị. Mau đến đó!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
 msgid "Village"
 msgstr "Làng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
 #, fuzzy
 #| msgid "Move Konrad to capture a village"
 msgid "Move Konrad to a nearby village"
 msgstr "Di chuyển Konrad để chiếm một ngôi làng"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:668
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 #, fuzzy
 #| msgid "Move Li’sar to capture a village"
 msgid "Move Li’sar to a nearby village"
 msgstr "Di chuyển Li’sar để chiếm một ngôi làng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:694
 msgid "Villages"
 msgstr "Làng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:696
 #, fuzzy
 #| msgid ""
 #| "You have captured a village! It now flies your flag and has been added to "
@@ -553,13 +553,13 @@ msgstr ""
 "sở hữu."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:711
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:720
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -568,7 +568,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
 #, fuzzy
 #| msgid ""
 #| "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
@@ -579,19 +579,19 @@ msgstr ""
 "giúp để chống lại hình nộm đó."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:730
 msgid "I’ll recruit some elves!"
 msgstr "Cháu sẽ tuyển một số thần tiên!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
 #, fuzzy
 #| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
 msgstr "Cháu sẽ tuyển một số thần tiên!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:736
 #, fuzzy
 #| msgid ""
 #| "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -605,27 +605,27 @@ msgstr ""
 "Cháu có nhiều vàng để thực hiện điều đó."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:728
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:741
 msgid "Keep"
 msgstr "Pháo đài"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
 msgid "Move Konrad to the keep"
 msgstr "Di chuyển Konrad đến pháo đài"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:744
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
 msgid "Move Li’sar to the keep"
 msgstr "Di chuyển Li’sar đến pháo đài"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:762
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
 msgid "Recruiting"
 msgstr "Tuyển quân"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
 #, fuzzy
 #| msgid ""
 #| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
@@ -635,7 +635,7 @@ msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
 "newly recruited units cannot act the turn you recruit them; you will be able "
-"to use them next turn. This scenario you have only one type of unit to "
+"to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
 "Khi bạn ở trên một <i>pháo đài</i>, bạn có thể <i>tuyển quân</i> vào các ô "
@@ -643,19 +643,19 @@ msgstr ""
 "Lần này bạn chỉ được cho một kiểu đơn vị để lựa chọn: đấu sĩ thần tiên."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:767
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
 #, fuzzy
 #| msgid "Left click on an Elvish Fighter"
 msgid "Recruit two Elvish Fighters"
 msgstr "Nhấn chuột trái vào một đấu sĩ thần tiên"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:799
 msgid "Traits"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:788
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:801
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -665,19 +665,19 @@ msgid ""
 msgstr ""
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:843
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr "Ơ, hình nộm vừa phục hồi 2 máu! Cháu cần tấn công nó thêm lần nữa!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:840
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:853
 #, fuzzy
 #| msgid ""
 #| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
@@ -687,40 +687,40 @@ msgid ""
 msgstr "Ơ, hình nộm vừa phục hồi 2 máu! Cháu cần tấn công nó thêm lần nữa!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:845
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Đúng vậy, nếu một đơn vị không làm gì trong một lượt, nó sẽ hồi máu từ từ."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
 #, fuzzy
 #| msgid ""
 #| "But before you send your fighters against the quintain, you should know "
 #| "they have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
-"have two kinds of attack..."
+"have two kinds of attacks..."
 msgstr ""
 "Nhưng trước khi cháu phái các đấu sĩ tấn công hình nộm, cháu nên biết họ có "
 "hai kiểu tấn công..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Cháu sẽ bảo họ sử dụng kiểu gây nhiều thiệt hại nhất!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:856
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:869
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Cháu sẽ bảo họ sử dụng kiểu gây nhiều thiệt hại nhất!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:861
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:874
 #, fuzzy
 #| msgid ""
 #| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
@@ -733,14 +733,14 @@ msgstr ""
 "Thế thì sẽ là gì nào? Kiếm (5-4) hay cung (3-3)? Ta nghĩ cháu sẽ tìm ra..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:864
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:877
 #, fuzzy
 #| msgid "Attack the orc with an Archer"
 msgid "Attack the quintain with your fighters"
 msgstr "Tấn công tên người thú bằng một cung thủ"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:888
 #, fuzzy
 #| msgid ""
 #| "You wouldn’t do anything stupid like charging that quintain yourself "
@@ -757,7 +757,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:931
 #, fuzzy
 #| msgid ""
 #| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
@@ -776,14 +776,14 @@ msgstr ""
 "Kết thúc lượt, sau đó tấn công lần nữa."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:935
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
 #, fuzzy
 #| msgid ""
 #| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
@@ -803,7 +803,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -819,14 +819,14 @@ msgstr ""
 "từ xa, chỉ có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:966
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:972
 #, fuzzy
 #| msgid ""
 #| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -842,35 +842,38 @@ msgstr ""
 "từ xa, chỉ có một đòn tấn công cận chiến, vì thế nó không thể tự bảo vệ."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:989
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Tiếp tục tấn công bằng cả hai thần tiên đến khi hình nộm bị tiêu diệt!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1004
 msgid "Maybe you should recruit another elf?"
 msgstr "Có lẽ cháu nên tuyển một thần tiên khác?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1014
 msgid "Unit Descriptions"
 msgstr "Mô tả đơn vị"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
+#, fuzzy
+#| msgid ""
+#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
-"You can right click on a unit to see a detailed <b>Unit Description</b>."
+"You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Bạn có thể nhấn chuột phải vào một đơn vị để xem <b>Mô tả đơn vị</b> chi "
 "tiết."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1013
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
 msgid "Protect Your Troops"
 msgstr "Bảo vệ quân lính của bạn"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1015
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1028
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -881,12 +884,12 @@ msgstr ""
 "có thể nâng cấp và trở nên mạnh mẽ hơn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1025
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1038
 msgid "Support"
 msgstr "Hỗ trợ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -895,17 +898,17 @@ msgstr ""
 "hạn đó, bạn phải trả phí cho mỗi đơn vị một lượng vàng mỗi lượt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1037
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
 msgid "You had really better finish off that quintain."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1047
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
 msgid "Advancement"
 msgstr "Nâng cấp"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1049
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
 #, fuzzy
 #| msgid ""
 #| "When a unit gains enough experience points (the <i>experience bar</i>, if "
@@ -927,12 +930,12 @@ msgstr ""
 "đơn vị cấp độ 1."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1059
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1072
 msgid "Defenses"
 msgstr "Phòng thủ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
 #, fuzzy
 #| msgid ""
 #| "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -959,22 +962,22 @@ msgstr ""
 "có cơ hội đánh trúng 70% bất kể địa hình mà đối thủ của nó chiếm."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1074
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1087
 msgid "Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1088
 msgid "female^Agh! This training is too much for me..."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1111
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1124
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Hình nộm đã bị tiêu diệt, và mình vừa giành được thêm kinh nghiệm!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1116
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1129
 #, fuzzy
 #| msgid ""
 #| "Yes, you gain experience through battle, especially by killing an "
@@ -991,7 +994,7 @@ msgstr ""
 "ta có việc thực sự cần làm..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1122
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1135
 #, fuzzy
 #| msgid ""
 #| " Now, Konrad, I will leave you with more dummies to practice on! After "
@@ -1004,7 +1007,7 @@ msgstr ""
 "có công việc thực sự cần làm..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1127
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1140
 #, fuzzy
 #| msgid ""
 #| " Now, Li’sar, I will leave you with more dummies to practice on! After "
@@ -1017,12 +1020,12 @@ msgstr ""
 "sẽ có công việc thực sự cần làm..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1203
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1216
 msgid "Note"
 msgstr "Ghi chú"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1205
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1218
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -1031,26 +1034,26 @@ msgstr ""
 "bạn có thể giết được chúng lần lượt từng con một."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1227
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1215
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1228
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1231
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1244
 msgid "Victory"
 msgstr "Chiến thắng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1233
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1246
 #, fuzzy
 #| msgid ""
 #| "After your victory notice, the map will be grayed out to indicate that "
@@ -1176,7 +1179,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
 msgid ""
-"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
@@ -1213,7 +1216,7 @@ msgstr ""
 #| "you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1232,7 +1235,7 @@ msgstr ""
 #| "you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
-"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
@@ -1366,7 +1369,7 @@ msgid ""
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
 "gold each. This allows you to build up a formidable army over the course of "
 "multiple scenarios by recalling your highest leveled troops or those with "
-"good combinations of traits and abilities. To recall a unit, right click "
+"good combinations of traits and abilities. To recall a unit, right-click "
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
@@ -1445,7 +1448,7 @@ msgid ""
 "which allows that attack to always hit first no matter who attacks first, "
 "and Magical, which gives that attack a constant 70% chance to hit.\n"
 "\n"
-"A full list of abilities and weapons specials, along with traits, may be "
+"A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 
@@ -1473,7 +1476,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
-"per turn compared to your Shaman's 4. However, each unit can only receive "
+"per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
@@ -1895,7 +1898,7 @@ msgstr ""
 #| "heal it at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
-"them each 4 hitpoints at the beginning of the next turn."
+"each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Đúng vậy. Nếu pháp sư của em đứng ngay sau đơn vị đó trên cầu, cô ấy sẽ điều "
 "trị cho đơn vị đó ở đầu lượt kế tiếp."
@@ -1965,8 +1968,8 @@ msgstr ""
 #| "Stay near the keep! You need to be on a keep to recruit more units, and I "
 #| "doubt the orc leader will let you use his!"
 msgid ""
-"You’re venturing away from your keep. You might need recruit more units, and "
-"I doubt the orc leader will let you use his! Careful!"
+"You’re venturing away from your keep. You might need to recruit more units, "
+"and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
 "Ở gần pháo đài! Em cần ở trên một pháo đài để tuyển thêm quân, và anh nghi "
 "ngờ khả năng tên đầu sỏ người thú sẽ để em sử dụng pháo đài của hắn!"
@@ -2069,8 +2072,8 @@ msgstr "Điều kiện chiến thắng"
 #| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Menu</b> menu."
+"conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
+"b> menu."
 msgstr ""
 "Trong màn chơi này, bạn chỉ cần đánh bại tên chỉ huy người thú để chiến "
 "thắng. (Điều kiện chiến thắng cho một màn chơi có trong <b>Mục tiêu màn "
@@ -2486,8 +2489,8 @@ msgstr ""
 msgid "Fighter"
 msgstr "Đấu sĩ"
 
-#. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2523,8 +2526,8 @@ msgstr ""
 msgid "Warrior"
 msgstr ""
 
-#. [unit_type]: id=Warrioress, race=human
 #. [unit_type]: id=Warrior, race=human
+#. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""

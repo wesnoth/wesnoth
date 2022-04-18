@@ -7,16 +7,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2007-04-10 22:16+0300\n"
-"Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
+"POT-Creation-Date: 2022-02-20 13:43+0300\n"
+"PO-Revision-Date: 2022-03-16 17:37+0200\n"
+"Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
-"Language: \n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 # type: TH
 #. type: TH
@@ -36,7 +36,7 @@ msgstr ""
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr "wesnoth"
+msgstr "Уеснот"
 
 # type: TH
 #. type: TH
@@ -1130,7 +1130,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:407
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "Валидира WML на дадения адд-он, който играете"
 
 # type: TP
 #. type: TP
@@ -1186,38 +1186,53 @@ msgstr "показва номера на версията и излиза."
 #. type: TP
 #: doc/man/wesnoth.6:419
 #, fuzzy, no-wrap
+msgid "B<--simple-version>"
+msgstr "B<-v>, B<--version>"
+
+# type: Plain text
+#. type: Plain text
+#: doc/man/wesnoth.6:422
+#, fuzzy
+#| msgid "shows the version number and exits."
+msgid "shows the version number and nothing else, then exits."
+msgstr "показва номера на версията и излиза."
+
+# type: TP
+#. type: TP
+#: doc/man/wesnoth.6:422
+#, fuzzy, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 msgid "runs the game in windowed mode."
 msgstr "пуска играта в прозорец."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:422
+#: doc/man/wesnoth.6:425
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:427
+#: doc/man/wesnoth.6:430
 msgid "replays the game loaded with the B<--load> option."
 msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:428
+#: doc/man/wesnoth.6:431
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Настройки за --multiplayer"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 #, fuzzy
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
@@ -1231,27 +1246,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:435
+#: doc/man/wesnoth.6:438
 #, fuzzy, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--sideE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:438
+#: doc/man/wesnoth.6:441
 #, fuzzy, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithmE<lt>числоE<gt>=стойност>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1261,14 +1276,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:451
 #, fuzzy, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controllerE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 #, fuzzy
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
@@ -1278,14 +1293,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:458
 #, fuzzy, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 #, fuzzy
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
@@ -1297,14 +1312,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:462
+#: doc/man/wesnoth.6:465
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 #, fuzzy
 #| msgid ""
 #| "exits once the scenario is over, without displaying victory/defeat dialog "
@@ -1320,37 +1335,37 @@ msgstr ""
 "тестване."
 
 #. type: TP
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:469
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 msgid "do not use map settings, use default values instead."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:472
 #, fuzzy, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr "B<--era=стойност>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 msgid "sets the I<label> for AIs."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:477
 #, fuzzy, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--era=стойност>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
@@ -1358,14 +1373,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:481
+#: doc/man/wesnoth.6:484
 #, fuzzy, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parmE<lt>числоE<gt>=name:стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 #, fuzzy
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
@@ -1379,14 +1394,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:490
+#: doc/man/wesnoth.6:493
 #, fuzzy, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 #, fuzzy
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
@@ -1396,14 +1411,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:497
 #, fuzzy, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--sideE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1413,14 +1428,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:502
 #, fuzzy, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns=стойност>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:502
+#: doc/man/wesnoth.6:505
 #, fuzzy
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
@@ -1428,13 +1443,13 @@ msgid ""
 msgstr "определя броят ходове в избраната мисия. Стандартно са \"50\"."
 
 #. type: SH
-#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:259
+#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:274
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:508
+#: doc/man/wesnoth.6:511
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1442,7 +1457,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:518
+#: doc/man/wesnoth.6:521
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1454,20 +1469,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:519 doc/man/wesnothd.6:263
+#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:278
 #, no-wrap
 msgid "AUTHOR"
 msgstr "АВТОР"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:522
+#: doc/man/wesnoth.6:525
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Написано от Дейвид Уайт  E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:524
+#: doc/man/wesnoth.6:527
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -1478,7 +1493,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:526
+#: doc/man/wesnoth.6:529
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -1488,7 +1503,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:528 doc/man/wesnothd.6:270
+#: doc/man/wesnoth.6:531 doc/man/wesnothd.6:285
 #, fuzzy
 #| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
@@ -1496,14 +1511,14 @@ msgstr "Посетете официалната страница: http://www.wes
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:529 doc/man/wesnothd.6:271
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:286
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "КОПИРАЙТ"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:274
+#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:289
 #, fuzzy
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
@@ -1511,7 +1526,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:538 doc/man/wesnothd.6:292
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1523,7 +1538,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:278
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:293
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "ВИЖТЕ СЪЩО"
@@ -1734,9 +1749,8 @@ msgstr "B<-v,\\ --verbose>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:94
-#, fuzzy
 msgid "turns debug logging on."
-msgstr "включва по-подробен дневник."
+msgstr "включва записването на грешки."
 
 # type: SH
 #. type: SH
@@ -1847,16 +1861,29 @@ msgid ""
 "(default: B<5>)"
 msgstr "Броят позволени връзки от един и същ IP адрес. (по подразбиране: 5)"
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:124
+#, no-wrap
+msgid "B<deny_unregistered_login>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:129
+msgid ""
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
+msgstr ""
+
+# type: TP
+#. type: TP
+#: doc/man/wesnothd.6:129
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:131
+#: doc/man/wesnothd.6:136
 #, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
@@ -1871,13 +1898,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:131
+#: doc/man/wesnothd.6:136
 #, fuzzy, no-wrap
 msgid "B<fifo_path>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:135
+#: doc/man/wesnothd.6:140
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1886,14 +1913,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:135
+#: doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:138
+#: doc/man/wesnothd.6:143
 #, fuzzy
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
@@ -1902,14 +1929,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:138
+#: doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:141
+#: doc/man/wesnothd.6:146
 #, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
@@ -1920,27 +1947,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:141
+#: doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:144
+#: doc/man/wesnothd.6:149
 msgid "The message of the day."
 msgstr "Съобщението на деня."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:144
+#: doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<new_room_policy>"
 msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:147
+#: doc/man/wesnothd.6:152
 msgid ""
 "Determines who can create new rooms on the server. Available values are "
 "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
@@ -1950,14 +1977,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:147
+#: doc/man/wesnothd.6:152
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:150
+#: doc/man/wesnothd.6:155
 #, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
@@ -1966,13 +1993,13 @@ msgstr ""
 "започва с  \"admin \"."
 
 #. type: TP
-#: doc/man/wesnothd.6:150
+#: doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<replay_save_path>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:153
+#: doc/man/wesnothd.6:158
 msgid ""
 "The directory where the server stores game replays. (Don't forget the "
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
@@ -1981,14 +2008,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:153
+#: doc/man/wesnothd.6:158
 #, no-wrap
 msgid "B<restart_command>"
 msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:156
+#: doc/man/wesnothd.6:161
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
@@ -1997,14 +2024,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:156
+#: doc/man/wesnothd.6:161
 #, no-wrap
 msgid "B<room_save_file>"
 msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:159
+#: doc/man/wesnothd.6:164
 msgid ""
 "Path to a file where the room info should be stored. This file is read on "
 "server startup and written to later. If empty or not set, rooms are not "
@@ -2012,28 +2039,74 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:159
+#: doc/man/wesnothd.6:164
 #, no-wrap
 msgid "B<save_replays>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:162
+#: doc/man/wesnothd.6:167
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
 
+#. type: TP
+#: doc/man/wesnothd.6:167
+#, no-wrap
+msgid "B<tls_enabled>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:170
+msgid "Enable use of TLS. If true, requires 3 following options to be set too."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:170
+#, no-wrap
+msgid "B<tls_fullchain>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:173
+msgid "TLS full certificate chain in .pem format"
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:173
+#, no-wrap
+msgid "B<tls_private_key>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:176
+msgid "private key for TLS in .pem format"
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:176
+#, no-wrap
+msgid "B<tls_dh>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:179
+msgid ""
+"TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
+"filename.pem 4096>"
+msgstr ""
+
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:162
+#: doc/man/wesnothd.6:179
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:166
+#: doc/man/wesnothd.6:183
 #, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
@@ -2046,77 +2119,68 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:168
+#: doc/man/wesnothd.6:185
 #, fuzzy
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "Пример: versions_accepted=\"*\" приема всяка версия."
 
-#. type: TP
-#: doc/man/wesnothd.6:168
-#, no-wrap
-msgid "B<deny_unregistered_login>"
-msgstr ""
-
-#. type: Plain text
-#: doc/man/wesnothd.6:173
-msgid ""
-"Whether to prevent users who are not registered with the B<user_handler> "
-"being used from logging in. (default: false)"
-msgstr ""
-
 # type: SS
 #. type: SS
-#: doc/man/wesnothd.6:174
+#: doc/man/wesnothd.6:186
 #, no-wrap
 msgid "Global tags:"
 msgstr "Глобални етикети:"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:179
+#: doc/man/wesnothd.6:193
+#, fuzzy
+#| msgid ""
+#| "B<[redirect]> A tag to specify a server to redirect certain client "
+#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
-"to."
+"to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Етикет, с който се определя сървър на който да се препращат "
 "клиенти с определени версии."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:180
+#: doc/man/wesnothd.6:194
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:197
 msgid "The address of the server to redirect to."
 msgstr "Адресът на сървъра на който да се препращат."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:197
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:200
 msgid "The port to connect to."
 msgstr "Порт за връзка."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:186
+#: doc/man/wesnothd.6:200
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:191
+#: doc/man/wesnothd.6:205
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -2126,7 +2190,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:195
+#: doc/man/wesnothd.6:209
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
@@ -2134,27 +2198,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:196
+#: doc/man/wesnothd.6:210
 #, fuzzy, no-wrap
 msgid "B<name>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:213
 msgid "The name used to reference the ban time."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:199
+#: doc/man/wesnothd.6:213
 #, no-wrap
 msgid "B<time>"
 msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:207
+#: doc/man/wesnothd.6:221
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -2165,7 +2229,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:213
+#: doc/man/wesnothd.6:227
 #, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
@@ -2177,38 +2241,38 @@ msgstr ""
 "като [redirect]."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:223
+#: doc/man/wesnothd.6:238
 msgid ""
-"B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no "
-"B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service. All additional tables that are "
-"needed for the B<forum_user_handler> to function can be found in "
-"table_definitions.sql in the Wesnoth source repository."
+"B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
+"section is present in the configuration the server will run without any nick "
+"registration service. All additional tables that are needed for the "
+"B<forum_user_handler> to function can be found in table_definitions.sql in "
+"the Wesnoth source repository. Requires mysql support enabled. For cmake "
+"this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:224
+#: doc/man/wesnothd.6:239
 #, fuzzy, no-wrap
 msgid "B<db_host>"
 msgstr "B<host>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:242
 msgid "The hostname of the database server"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:227
+#: doc/man/wesnothd.6:242
 #, fuzzy, no-wrap
 msgid "B<db_name>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:245
 #, fuzzy
 #| msgid "The message of the day."
 msgid "The name of the database"
@@ -2216,37 +2280,37 @@ msgstr "Съобщението на деня."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<db_user>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:248
 msgid "The name of the user under which to log into the database"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:233
+#: doc/man/wesnothd.6:248
 #, fuzzy, no-wrap
 msgid "B<db_password>"
 msgstr "B<passwd>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:251
 msgid "This user's password"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:236
+#: doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:254
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2254,63 +2318,63 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:239
+#: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:257
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<db_game_info_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:260
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:260
 #, no-wrap
 msgid "B<db_game_player_info_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:263
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:263
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:266
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:266
 #, no-wrap
 msgid "B<db_user_group_table>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:269
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2318,19 +2382,19 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:269
 #, no-wrap
 msgid "B<mp_mod_group>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:257
+#: doc/man/wesnothd.6:272
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:262
+#: doc/man/wesnothd.6:277
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2338,7 +2402,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:283
 #, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
@@ -2354,7 +2418,7 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:281
+#: doc/man/wesnothd.6:296
 #, fuzzy
 #| msgid "wesnoth"
 msgid "B<wesnoth>(6)"

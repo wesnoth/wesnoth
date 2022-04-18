@@ -19,7 +19,7 @@ order to build Wesnoth:
    * System
  * SDL2 libraries:
    * SDL2                      >= 2.0.8
-   * SDL2_image                >= 2.0.2 (with PNG and JPEG support)
+   * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
@@ -49,6 +49,8 @@ created directory:
 
     $ tar xvjf wesnoth-<version>.tar.bz2
     $ cd wesnoth-<version>
+
+Alternatively, you can clone this git repository. Since Wesnoth uses submodules, when cloning you must add the `--recurse-submodules` option, or if you have already cloned the repository without using that option then you must run the command `git submodule update --init --recursive`.
 
 The following build systems are fully supported for compiling Wesnoth on Linux,
 *BSD, and other Unix-like platforms:

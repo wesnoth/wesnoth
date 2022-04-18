@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -451,7 +451,7 @@ bool turbo()
 	return get("turbo", false);
 }
 
-void _set_turbo(bool ison)
+void set_turbo(bool ison)
 {
 	prefs["turbo"] = ison;
 }
@@ -461,7 +461,7 @@ double turbo_speed()
 	return prefs["turbo_speed"].to_double(2.0);
 }
 
-void save_turbo_speed(const double speed)
+void set_turbo_speed(const double speed)
 {
 	prefs["turbo_speed"] = speed;
 }
@@ -487,19 +487,19 @@ bool idle_anim()
 	return  get("idle_anim", true);
 }
 
-void _set_idle_anim(const bool ison)
+void set_idle_anim(const bool ison)
 {
 	prefs["idle_anim"] = ison;
 }
 
-int idle_anim_rate()
+double idle_anim_rate()
 {
-	return prefs["idle_anim_rate"];
+	return prefs["idle_anim_rate"].to_double(1.0);
 }
 
-void _set_idle_anim_rate(const int rate)
+void set_idle_anim_rate(const int rate)
 {
-	prefs["idle_anim_rate"] = rate;
+	prefs["idle_anim_rate"] = std::pow(2.0, -rate / 10.0);
 }
 
 std::string language()
@@ -537,7 +537,7 @@ bool grid()
 	return get("grid", false);
 }
 
-void _set_grid(bool ison)
+void set_grid(bool ison)
 {
 	preferences::set("grid", ison);
 }
@@ -976,14 +976,14 @@ void set_addon_manager_saved_order_name(const std::string& value)
 	set("addon_manager_saved_order_name", value);
 }
 
-SORT_ORDER addon_manager_saved_order_direction()
+sort_order::type addon_manager_saved_order_direction()
 {
-	return SORT_ORDER::string_to_enum(get("addon_manager_saved_order_direction"), SORT_ORDER::NONE);
+	return sort_order::get_enum(get("addon_manager_saved_order_direction")).value_or(sort_order::type::none);
 }
 
-void set_addon_manager_saved_order_direction(SORT_ORDER value)
+void set_addon_manager_saved_order_direction(sort_order::type value)
 {
-	set("addon_manager_saved_order_direction", SORT_ORDER::enum_to_string(value));
+	set("addon_manager_saved_order_direction", sort_order::get_string(value));
 }
 
 

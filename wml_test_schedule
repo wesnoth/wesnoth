@@ -93,6 +93,7 @@
 9 test_move_fail_6
 0 test_move_unit
 0 test_move_unit_in_circle
+0 test_move_unit_to_occupied_location
 0 sighted_on_move
 0 move_skip_no_sighted_no_share_vision
 0 move_skip_ally_sighted_no_share_vision
@@ -255,6 +256,7 @@
 0 test_time_area_prestart
 0 test_berzerk_firststrike
 0 feeding
+0 firststrike_and_laststrike
 0 backstab_active_with_accomplice_behind_bob
 0 backstab_inactive_with_triangular_formation
 0 backstab_inactive_with_statue_behind_bob
@@ -266,6 +268,7 @@
 0 swarm_disables_upgrades_with_abilities_adjacent_fail
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
+0 poison_opponent
 0 test_add_in_leadership_abilities
 0 test_sub_in_leadership_abilities
 0 unslowable_status_test
@@ -358,3 +361,5 @@
 0 lua_map_find
 0 mapgen_filter_range
 0 mapgen_filter_terrain
+0 simulate_combat_clone_adjacent
+0 simulate_combat_occupied

@@ -390,12 +390,18 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckLib("vorbisfile") & conf.CheckOgg()
     have_client_prereqs = have_client_prereqs & conf.CheckPNG()
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
-#    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
-#    have_client_prereqs = have_client_prereqs & conf.CheckGLEW()
+    have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+
+    if not File("#/src/modules/lua/.git").rfile().exists():
+        have_client_prereqs = False
+        Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+    else:
+        print("Lua submodule found.")
+
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
 

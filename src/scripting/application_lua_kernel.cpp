@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,8 +51,6 @@
 #include <SDL2/SDL.h>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"
 
 struct lua_State;
 
@@ -72,7 +70,7 @@ static int intf_describe_plugins(lua_State * L)
 		std::stringstream line;
 		line << i
 		     << ":\t"
-		     << plugins_manager::get()->get_status(i)
+		     << plugin_manager_status::get_string(plugins_manager::get()->get_status(i))
 		     << "\t\t"
 		     << plugins_manager::get()->get_name(i)
 		     << "\n";

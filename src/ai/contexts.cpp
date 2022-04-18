@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,6 +49,7 @@
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
 #include "units/unit.hpp"                  // for unit
+#include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"  // for attack_type, unit_type, etc
@@ -1031,11 +1032,11 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			// Considering the unit location would be too slow, we only apply the bonus granted by the global ToD
 			const int lawful_bonus = resources::tod_manager->get_time_of_day(attack_turn).lawful_bonus;
 			int tod_modifier = 0;
-			if(un.alignment() == unit_type::ALIGNMENT::LAWFUL) {
+			if(un.alignment() == unit_alignments::type::lawful) {
 				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::ALIGNMENT::CHAOTIC) {
+			} else if(un.alignment() == unit_alignments::type::chaotic) {
 				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_type::ALIGNMENT::LIMINAL) {
+			} else if(un.alignment() == unit_alignments::type::liminal) {
 				tod_modifier = -(std::abs(lawful_bonus));
 			}
 

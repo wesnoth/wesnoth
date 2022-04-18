@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,12 +16,12 @@
 #pragma once
 
 #include "display_context.hpp"
+#include "side_controller.hpp"
 #include "team.hpp"
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
-#include "string_enums/side_controller.hpp"
 
 #include <optional>
 #include <set>
@@ -153,7 +153,7 @@ public:
 
 	// Manipulator from playturn
 
-	void side_drop_to (int side_num, side_controller::type ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
+	void side_drop_to (int side_num, side_controller::type ctrl, side_proxy_controller::type proxy = side_proxy_controller::type::human);
 	void side_change_controller (int side_num, bool is_local, const std::string& pname, const std::string& controller_type);
 
 	// Manipulator from actionwml

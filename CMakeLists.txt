@@ -28,6 +28,12 @@ endfunction()
 # Options
 #
 
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
+	message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+else()
+	message("-- Lua submodule found.")
+endif()
+
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
 
@@ -417,7 +423,8 @@ if(NOT MSVC)
 # End setting profiler build options
 # #
 else()
-	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
+	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
+	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
 	add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")

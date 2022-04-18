@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -721,7 +721,7 @@ void preferences_dialog::post_build(window& window)
 	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
 	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
 
-	hotkey_list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, true);
+	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_add_hotkey", false), std::bind(
@@ -861,7 +861,7 @@ void preferences_dialog::default_hotkey_callback()
 
 	// Set up the list again and reselect the default sorting option.
 	listbox& hotkey_list = setup_hotkey_list();
-	hotkey_list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, true);
+	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
 
 	find_widget<multimenu_button>(get_window(), "hotkey_category_menu", false).reset_toggle_states();
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -106,7 +106,10 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::array<std::string, 4> fields {{"type","hitpoints","experience","side"}};
+
+		using namespace std::literals::string_literals;
+		static const std::array fields{"type"s, "hitpoints"s, "experience"s, "side"s};
+
 		for(const std::string& field : fields) {
 			if (u_cfg[field] != un[field]) {
 				errbuf << "ERROR IN FIELD '" << field << "' for unit at "

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,7 @@
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "string_enums/side_controller.hpp"
+#include "side_controller.hpp"
 
 #include <functional>
 #include <SDL2/SDL_timer.h>

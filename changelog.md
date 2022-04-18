@@ -1,8 +1,68 @@
-## Version 1.17.0+dev
+## Version 1.17.3+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+   * World Conquest
+     * Fixed Bezoar artifact being bugged and broken.
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.3
+ ### Add-ons client
+   * The `forum_auth` attribute now allows authenticating with your forum credentials, as well as no longer requiring the `passphrase` or `email` attributes be populated in the `_server.pbl`. (PR #5866)
+ ### Campaigns
+   * Descent into Darkness
+     * S08: Prevent Spectral Servant from picking up the book (issue #6576)
+   * Northern Rebirth
+     * S05a_01:
+        * Solve units getting stuck in the wall before the spider chamber (issue #6607)
+        * Enhance dialogue between Tallin and Abhai (issue #6608)
+   * Sceptre of Fire
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart (PR #6484).
+     * Improvements and spelling corrections to the English prose text (PR #6177).
+ ### Lua API
+   * New `wesnoth.interface.add_overlay_text` function allows placing arbitrary floating text anywhere on the screen - like `[print]` but with more options (PR #5837).
+ ### Terrain
+   * New palisades terrain (^Eqp) and general fence terrain macros cleanup
+   * Rubble pile overlay terrain now connects with adjacent rubble piles
+   * Replace old-style terrain macros (PR #6606)
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian
+ ### User interface
+   * Map labels are scaled by zoom (PR #6604).
+   * Revamped the Game Load dialog.
+ ### Miscellaneous and Bug Fixes
+   * Reduced the size of Isar's Cross map background images.
+   * Resolve crash on systems using musl implementation of libc (issue #6603).
+   * Refactoring of the C++ GUI2 event dispatcher.
+   * Refactoring of the `display` class' theme initialization.
+   * Fixed a crash with "laststrike" (firststrike given to the opponent) weapon specials (issue #6575).
+   * Added more unit tests for weapon specials.
+
+## Version 1.17.2
+ ### Add-ons client
+   * Add-on passwords that are not stored in the _server.pbl can now be stored in the same credentials file as multiplayer passwords. (PR #6543)
+ ### Packaging
+   * SDL2_image now requires webp support be enabled. (PR #6392)
+   * Lua is now a submodule. (PR #6549)
+ ### Translations
+   * Updated translations: British English, Bulgarian, Czech
+ ### Miscellaneous and Bug Fixes
+   * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch
+   * Webp images can now be used in mainline and in add-ons. (PR #6392)
+
+## Version 1.17.1
  ### Add-ons client
    * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485)
    * Set the right default port number for the 1.17.x add-ons server.
- ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
      * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
@@ -10,34 +70,15 @@
    * Sceptre of Fire
      * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart.
    * The Rise of Wesnoth
-     * S22: Fixed the possibility of a missplaced dialogue when a bridge was broken (issue #6376)
+     * S22: Fixed the possibility of a misplaced dialogue when a bridge was broken (issue #6376)
    * Under the Burning Suns
      * S08: Kromph and the Dust devil now trigger a critical event (issue #6211)
    * World Conquest
      * Fixed artifacts "draining" HP on pick-up.
-     * Fix banner ability not stacking with leadership.
-     * Fixed Bezoar artifact being bugged and broken.
- ### Editor
- ### Multiplayer
-   * Fixed: already-installed add-ons not updating when joining a game that requires a new version (issue #6383).
-   * The MP lobby chat window now supports a `/clear` command (issue #3202).
  ### Lua API
    * Upgrade to Lua 5.4.4.
-   * Add inline documentation for pretty much everything and convert existing docs (PR #6483).
- ### Packaging
-   * Flatpak: updated freedesktop runtime version to 21.08 (issue #6497).
- ### Terrain
-   * New graphics variations for stone walls near snow and ice (PR #6487).
-   * The help browser shows special notes for healing terrains, castles and keeps (issue #6394).
  ### Translations
    * Updated translations: Czech, Italian, Portuguese (Brazil), Russian
- ### Units
-   * Improved the Saurian sprites (PR #6413).
- ### User interface
- ### WML Engine
-   * Fixed `[replace_schedule]`'s `current_time` attribute being ignored (issue #5757).
- ### Miscellaneous and Bug Fixes
-   * Hide the Plan Unit Advance modification from the single-player modifications list.
 
 ## Version 1.17.0
  ### Campaigns

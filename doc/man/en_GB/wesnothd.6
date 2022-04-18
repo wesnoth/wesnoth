@@ -108,6 +108,10 @@ compressed form. Default value is \fByes\fP.
 The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
+.TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from
 wild\-card patterns are supported. See \fBglob\fP(7)  for more details.  Default
@@ -158,22 +162,31 @@ loaded and not saved.
 Defines whether the server will automatically save replays of
 games. (default: \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. \fB*\fP
 and \fB?\fP from wild\-card patterns are supported. (default is the
 corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fP accepts any version string.
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS "Global tags:"
 .
 .P
 \fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to.
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -207,12 +220,12 @@ connected client's requests to the specified server.  Accepts the same keys
 as \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service. All additional tables that are
-needed for the \fBforum_user_handler\fP to function can be found in
-table_definitions.sql in the Wesnoth source repository.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

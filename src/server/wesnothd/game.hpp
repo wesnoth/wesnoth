@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@
 #include "server/wesnothd/player.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
-#include "string_enums/side_controller.hpp"
+#include "side_controller.hpp"
 
 #include <map>
 #include <optional>

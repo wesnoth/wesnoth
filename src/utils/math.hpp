@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,13 +30,13 @@
 #include <cassert>
 
 template<typename T>
-inline bool is_even(T num) { return num % 2 == 0; }
+constexpr bool is_even(T num) { return num % 2 == 0; }
 
 template<typename T>
-inline bool is_odd(T num) { return !is_even(num); }
+constexpr bool is_odd(T num) { return !is_even(num); }
 
 /** Guarantees portable results for division by 100; round half up, to the nearest integer. */
-inline int div100rounded(int num) {
+constexpr int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
 }
 
@@ -45,7 +45,7 @@ inline int div100rounded(int num) {
  * decrease it below min_sum.
  * (If base is already below the applicable limit, base will be returned.)
  */
-inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
+constexpr int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
 {
 	if(increment >= 0) {
 		return std::min(base + increment, std::max(base, max_sum));
@@ -59,7 +59,7 @@ inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
  * @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
  */
 template<typename T>
-inline T modulo(T num, int mod, T min = 0)
+constexpr T modulo(T num, int mod, T min = 0)
 {
 	assert(mod > 0);
 	T n = (num - min) % mod;
@@ -77,7 +77,7 @@ inline T modulo(T num, int mod, T min = 0)
  *  round (base_damage * bonus / divisor) to the closest integer,
  *  but up or down towards base_damage
  */
-inline int round_damage(int base_damage, int bonus, int divisor) {
+constexpr int round_damage(int base_damage, int bonus, int divisor) {
 	if (base_damage==0) return 0;
 	const int rounding = divisor / 2 - (bonus < divisor || divisor==1 ? 0 : 1);
 	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
@@ -103,7 +103,7 @@ bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp>>& ranges)
  * @returns the size, in bits, of an instance of type `T`.
  */
 template<typename T>
-inline std::size_t bit_width() {
+constexpr std::size_t bit_width() {
 	return sizeof(T) * std::numeric_limits<unsigned char>::digits;
 }
 
@@ -118,115 +118,9 @@ inline std::size_t bit_width() {
  * @returns the size, in bits, of an instance of type `T`.
  */
 template<typename T>
-inline std::size_t bit_width(const T&) {
+constexpr std::size_t bit_width(const T&) {
 	return sizeof(T) * std::numeric_limits<unsigned char>::digits;
 }
-
-/**
- * Returns the quantity of `1` bits in `n` — i.e., `n`’s population count.
- *
- * Algorithm adapted from:
- * <https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan>
- *
- * This algorithm was chosen for relative simplicity, not for speed.
- *
- * @tparam N The type of `n`. This should be a fundamental integer type no
- * greater than `UINT_MAX` bits in width; if it is not, the return value is
- * undefined.
- *
- * @param n An integer upon which to operate.
- *
- * @returns the quantity of `1` bits in `n`, if `N` is a fundamental integer
- * type.
- */
-template<typename N>
-inline unsigned int count_ones(N n) {
-	unsigned int r = 0;
-	while (n) {
-		n &= n-1;
-		++r;
-	}
-	return r;
-}
-
-// Support functions for `count_leading_zeros`.
-#if defined(__GNUC__) || defined(__clang__)
-inline unsigned int count_leading_zeros_impl(
-		unsigned char n, std::size_t w) {
-	// Returns the result of the compiler built-in function, adjusted for
-	// the difference between the width, in bits, of the built-in
-	// function’s parameter’s type (which is `unsigned int`, at the
-	// smallest) and the width, in bits, of the input to this function, as
-	// specified at the call-site in `count_leading_zeros`.
-	return static_cast<unsigned int>(__builtin_clz(n))
-		- static_cast<unsigned int>(
-			bit_width<unsigned int>() - w);
-}
-inline unsigned int count_leading_zeros_impl(
-		unsigned short int n, std::size_t w) {
-	return static_cast<unsigned int>(__builtin_clz(n))
-		- static_cast<unsigned int>(
-			bit_width<unsigned int>() - w);
-}
-inline unsigned int count_leading_zeros_impl(
-		unsigned int n, std::size_t w) {
-	return static_cast<unsigned int>(__builtin_clz(n))
-		- static_cast<unsigned int>(
-			bit_width<unsigned int>() - w);
-}
-inline unsigned int count_leading_zeros_impl(
-		unsigned long int n, std::size_t w) {
-	return static_cast<unsigned int>(__builtin_clzl(n))
-		- static_cast<unsigned int>(
-			bit_width<unsigned long int>() - w);
-}
-inline unsigned int count_leading_zeros_impl(
-		unsigned long long int n, std::size_t w) {
-	return static_cast<unsigned int>(__builtin_clzll(n))
-		- static_cast<unsigned int>(
-			bit_width<unsigned long long int>() - w);
-}
-inline unsigned int count_leading_zeros_impl(
-		char n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned char>(n), w);
-}
-inline unsigned int count_leading_zeros_impl(
-		signed char n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned char>(n), w);
-}
-inline unsigned int count_leading_zeros_impl(
-		signed short int n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned short int>(n), w);
-}
-inline unsigned int count_leading_zeros_impl(
-		signed int n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned int>(n), w);
-}
-inline unsigned int count_leading_zeros_impl(
-		signed long int n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned long int>(n), w);
-}
-inline unsigned int count_leading_zeros_impl(
-		signed long long int n, std::size_t w) {
-	return count_leading_zeros_impl(
-		static_cast<unsigned long long int>(n), w);
-}
-#else
-template<typename N>
-inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
-	// Algorithm adapted from:
-	// <http://aggregate.org/MAGIC/#Leading%20Zero%20Count>
-	for (unsigned int shift = 1; shift < w; shift *= 2) {
-		n |= (n >> shift);
-	}
-	return static_cast<unsigned int>(w) - count_ones(n);
-}
-#endif
 
 /**
  * Returns the quantity of leading `0` bits in `n` — i.e., the quantity of
@@ -249,32 +143,19 @@ inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
  * @see count_leading_ones()
  */
 template<typename N>
-inline unsigned int count_leading_zeros(N n) {
-#if defined(__GNUC__) || defined(__clang__)
-	// GCC’s `__builtin_clz` returns an undefined value when called with 0
-	// as argument.
-	// [<http://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>]
-	if (n == 0) {
-		// Return the quantity of zero bits in `n` rather than
-		// returning that undefined value.
-		return static_cast<unsigned int>(bit_width(n));
+constexpr std::enable_if_t<std::is_integral_v<N>, unsigned int> count_leading_zeros(N n) {
+	const auto x = static_cast<std::make_unsigned_t<N>>(n);
+	constexpr decltype(x) mask{1};
+
+	unsigned int count{0};
+	for(int i = std::numeric_limits<decltype(mask)>::digits - 1; i >= 0; --i) {
+		if(x & (mask << i)) {
+			break;
+		}
+		++count;
 	}
-#endif
-	// Dispatch, on the static type of `n`, to one of the
-	// `count_leading_zeros_impl` functions.
-	return count_leading_zeros_impl(n, bit_width(n));
-	// The second argument to `count_leading_zeros_impl` specifies the
-	// width, in bits, of `n`.
-	//
-	// This is necessary because `n` may be widened (or, alas, shrunk),
-	// and thus the information of `n`’s true width may be lost.
-	//
-	// At least, this *was* necessary before there were so many overloads
-	// of `count_leading_zeros_impl`, but I’ve kept it anyway as an extra
-	// precautionary measure, that will (I hope) be optimized out.
-	//
-	// To be clear, `n` would only be shrunk in cases noted above as
-	// having an undefined result.
+
+	return count;
 }
 
 /**
@@ -295,7 +176,7 @@ inline unsigned int count_leading_zeros(N n) {
  * @see count_leading_zeros()
  */
 template<typename N>
-inline unsigned int count_leading_ones(N n) {
+constexpr unsigned int count_leading_ones(N n) {
 	// Explicitly specify the type for which to instantiate
 	// `count_leading_zeros` in case `~n` is of a different type.
 	return count_leading_zeros<N>(~n);
@@ -308,28 +189,49 @@ inline int rounded_division(int a, int b)
 	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
 }
 
+/**
+ * Converts a double to a fixed point.
+ */
+constexpr int32_t floating_to_fixed_point(double n)
+{
+	return int32_t(n * (1 << 8));
+}
 
-#if 1
-typedef int32_t fixed_t;
-# define fxp_shift 8
-# define fxp_base (1 << fxp_shift)
+/**
+ * @param n1 The first number to multiply.
+ * @param n2 The second number to multiply.
+ * @return The unsigned result of n1 * n2, then bitshifting the result to the right.
+ */
+constexpr unsigned fixed_point_multiply(int32_t n1, int32_t n2)
+{
+	return static_cast<unsigned>((n1 * n2) >> 8);
+}
 
-/** IN: float or int - OUT: fixed_t */
-# define ftofxp(x) (fixed_t((x) * fxp_base))
+/**
+ * @param n1 The numerator, which gets bit shifted left.
+ * @param n2 The divisor.
+ * @return n1 bit shifted left then divided by n1.
+ */
+constexpr int32_t fixed_point_divide(int n1, int n2)
+{
+	return (n1 << 8) / n2;
+}
 
-/** IN: unsigned and fixed_t - OUT: unsigned */
-# define fxpmult(x,y) (((x)*(y)) >> fxp_shift)
-
-/** IN: unsigned and int - OUT: fixed_t */
-# define fxpdiv(x,y) (((x) << fxp_shift) / (y))
-
-/** IN: fixed_t - OUT: int */
-# define fxptoi(x) ( ((x)>0) ? ((x) >> fxp_shift) : (-((-(x)) >> fxp_shift)) )
-
-#else
-typedef float fixed_t;
-# define ftofxp(x) (x)
-# define fxpmult(x,y) ((x)*(y))
-# define fxpdiv(x,y) (static_cast<float>(x) / static_cast<float>(y))
-# define fxptoi(x) ( static_cast<int>(x) )
-#endif
+/**
+ * If positive, just bit shift.
+ * Else, make positive, bit shift, then make negative again.
+ *
+ * @param n The number to bit shift right.
+ * @return The result of the bit shift.
+ */
+constexpr int fixed_point_to_int(int32_t n)
+{
+	if(n > 0)
+	{
+		return n >> 8;
+	}
+	else
+	{
+		return -(-n >> 8);
+	}
+}

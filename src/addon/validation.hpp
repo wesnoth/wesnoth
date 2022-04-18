@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -37,6 +37,7 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	SUCCESS						= 0x0,			/**< No error */
 	UNAUTHORIZED				= 0x1,			/**< Authentication failed */
 	DENIED						= 0x2,			/**< Upload denied */
+	USER_DOES_NOT_EXIST 		= 0x3, 			/**< Requested forum authentication for a user that doesn't exist on the forums */
 	UNEXPECTED_DELTA			= 0xD,			/**< Delta for a non-existent add-on */
 	//
 	// Structure errors
@@ -63,6 +64,7 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	INVALID_UTF8_ATTRIBUTE		= 0x2FF,		/**< Invalid UTF-8 sequence in add-on metadata */
 	BAD_FEEDBACK_TOPIC_ID       = 0x209,        /**< The provided topic ID for the addon's feedback forum thread is invalid */
 	FEEDBACK_TOPIC_ID_NOT_FOUND = 0x2A0,        /**< The provided topic ID for the addon's feedback forum thread wasn't found in the forum database */
+	AUTH_TYPE_MISMATCH 			= 0x2B0, 		/**< The addon's forum_auth value does not match its previously set value */
 	//
 	// Server errors
 	//
@@ -70,6 +72,7 @@ enum class ADDON_CHECK_STATUS : unsigned int
 	SERVER_READ_ONLY			= 0xF001,		/**< Server read-only mode on */
 	SERVER_ADDONS_LIST			= 0xF002,		/**< Corrupted server add-ons list */
 	SERVER_DELTA_NO_VERSIONS	= 0xF003,		/**< No versions to deltify against */
+	SERVER_FORUM_AUTH_DISABLED 	= 0xF004, 		/**< The remote add-ons server does not support forum authorization */
 };
 
 std::string addon_check_status_desc(unsigned int code);

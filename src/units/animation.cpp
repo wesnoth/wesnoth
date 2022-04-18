@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -347,16 +347,16 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	}
 
 	for(const auto& h : utils::split(cfg["hits"])) {
-		if(h == "yes" || h == "hit") {
-			hits_.push_back(hit_type::HIT);
+		if(h == "yes" || h == strike_result::hit) {
+			hits_.push_back(strike_result::type::hit);
 		}
 
-		if(h == "no" || h == "miss") {
-			hits_.push_back(hit_type::MISS);
+		if(h == "no" || h == strike_result::miss) {
+			hits_.push_back(strike_result::type::miss);
 		}
 
-		if(h == "yes" || h == "kill" ) {
-			hits_.push_back(hit_type::KILL);
+		if(h == "yes" || h == strike_result::kill ) {
+			hits_.push_back(strike_result::type::kill);
 		}
 	}
 
@@ -376,7 +376,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 }
 
 int unit_animation::matches(const display& disp, const map_location& loc, const map_location& second_loc,
-		unit_const_ptr my_unit, const std::string& event, const int value, hit_type hit, const_attack_ptr attack,
+		unit_const_ptr my_unit, const std::string& event, const int value, strike_result::type hit, const_attack_ptr attack,
 		const_attack_ptr second_attack, int value2) const
 {
 	int result = base_score_;
@@ -551,8 +551,8 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.back().event_ = { "defend" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),
 			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0});
-		animations.back().hits_.push_back(hit_type::HIT);
-		animations.back().hits_.push_back(hit_type::KILL);
+		animations.back().hits_.push_back(strike_result::type::hit);
+		animations.back().hits_.push_back(strike_result::type::kill);
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
@@ -789,7 +789,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				animations.emplace_back(tmp);
 
 				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
-				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
+				if(hit_type == "yes" || hit_type == strike_result::hit || hit_type == strike_result::kill) {
 					animations.back().add_frame(225, frame_builder()
 						.image(image_loc.get_filename() + image_loc.get_modifications())
 						.duration(225)
@@ -1163,7 +1163,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 
 	if(u_animation.hits_.size() > 0) {
 		std::vector<std::string> hits;
-		std::transform(u_animation.hits_.begin(), u_animation.hits_.end(), std::back_inserter(hits), unit_animation::hit_type::enum_to_string);
+		std::transform(u_animation.hits_.begin(), u_animation.hits_.end(), std::back_inserter(hits), strike_result::get_string);
 		outstream << "\thits=" << utils::join(hits) << '\n';
 	}
 
@@ -1301,7 +1301,7 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, bool with_bars
 		, const std::string& text
 		, const color_t text_color
-		, const unit_animation::hit_type hit_type
+		, const strike_result::type hit_type
 		, const_attack_ptr attack
 		, const_attack_ptr second_attack
 		, int value2)
@@ -1352,7 +1352,7 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 		, const map_location &src
 		, const map_location &dst
 		, const int value
-		, const unit_animation::hit_type hit_type
+		, const strike_result::type hit_type
 		, const_attack_ptr attack
 		, const_attack_ptr second_attack
 		, int value2) const
@@ -1369,7 +1369,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	, bool with_bars
 	, const std::string& text
 	, const color_t text_color
-	, const unit_animation::hit_type hit_type
+	, const strike_result::type hit_type
 	, const_attack_ptr attack
 	, const_attack_ptr second_attack
 	, int value2)

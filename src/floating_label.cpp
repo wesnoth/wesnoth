@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -137,7 +137,7 @@ surface floating_label::create_surface()
 			// dark background will darken the anti-aliased part.
 			// This 1.13 value seems to restore the brightness of version 1.4
 			// (where the text was blitted directly on screen)
-			adjust_surface_alpha(foreground, ftofxp(1.13));
+			adjust_surface_alpha(foreground, floating_to_fixed_point(1.13));
 
 			SDL_Rect r{border_, border_, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
@@ -272,6 +272,9 @@ void remove_floating_label(int handle, int fadeout)
 	if(i != labels.end()) {
 		if(fadeout > 0) {
 			i->second.set_lifetime(0, fadeout);
+			return;
+		} else if(fadeout < 0) {
+			i->second.set_lifetime(0, i->second.get_fade_time());
 			return;
 		}
 		labels.erase(i);

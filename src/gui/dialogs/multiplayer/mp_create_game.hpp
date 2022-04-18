@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,7 +36,7 @@ namespace dialogs
 
 class mp_create_game : public modal_dialog, private plugin_executor
 {
-	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
+	typedef std::pair<level_type::type, std::string> level_type_info;
 
 public:
 	mp_create_game(saved_game& state, bool local_mode);
@@ -60,23 +60,8 @@ private:
 
 	std::vector<level_type_info> level_types_;
 
-	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for the
-	 * config_engine and preferences setters, since menu_buttons aren't supported by field. Even if they
-	 * were, the above functions take a RANDOM_FACTION_MODE value, not an index. Even if we try to keep a
-	 * copy of the selected RFM type index in a int value and update it every time you perform a selection,
-	 * there's still the problem of getting an initial value from preferences, which again is provided as a
-	 * RANDOM_FACTION_MODE value. Comparing strings between the (translated) menu_button values in the WML and
-	 * the hardcoded (non-translated) RANDOM_FACTION_MODE string values stored in preferences is a horrible
-	 * way to do it and would break in any language other than English. Instead, we'll keep a vector and use
-	 * std::find to get the initial index. This method should also allow the values to eventually be translated,
-	 * since the string values don't come into consideration at all, save for populating the menu_button.
-	 *
-	 * - vultraz, 2016-08-21
-	 */
-	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
-
 	void update_games_list();
-	void display_games_of_type(ng::level::TYPE type, const std::string& level);
+	void display_games_of_type(level_type::type type, const std::string& level);
 
 	void show_generator_settings();
 	void regenerate_random_map();

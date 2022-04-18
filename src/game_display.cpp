@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,7 +52,7 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location,fixed_t> game_display::debugHighlights_;
+std::map<map_location, int> game_display::debugHighlights_;
 
 /**
  * Function to return 2 half-hex footsteps images for the given location.
@@ -65,9 +65,9 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
-		const config& theme_cfg,
+		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_cfg, level, false)
+	: display(&board, wb, reports_object, theme_id, level, false)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -108,13 +108,13 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 				if(old_mask != nullptr) {
-					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
+					const int32_t proportion = floating_to_fixed_point(1.0) - fixed_point_divide(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
-					const fixed_t proportion = fxpdiv(i,niterations);
+					const int32_t proportion = fixed_point_divide(i,niterations);
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2 = new_mask;
 				}

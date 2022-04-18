@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
 "PO-Revision-Date: 2022-01-05 16:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -123,20 +123,20 @@ msgstr ""
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:86
+#: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr "<span foreground='$side_color'>阵营$side_number</span>取得了优势。"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
 msgstr "阵营$side_number和$other_side_number势均力敌。"
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:96
+#: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
 msgstr "阵营$winners势均力敌。"
 
@@ -428,20 +428,20 @@ msgid "teamname^South"
 msgstr "南军"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 msgid "Defeat the enemy leader"
 msgstr "击败敌方首领"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr "大法师苏拉把你的军队传送到了这诡异的能量结点，并要求你作战以取悦她。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
@@ -449,7 +449,7 @@ msgstr ""
 "单位不能移动到有岩石界碑的格子中，但可以被征募到这种格子里，并移动出去。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -458,8 +458,8 @@ msgstr ""
 "时完成。"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
 msgstr "安瑟茂隆隆作响。"
 
@@ -1205,8 +1205,8 @@ msgstr ""
 "敌人的欢呼声，像从地面上升起的黑暗薄雾一般将你吞噬。如同鬼魂一般的轻烟吸走了"
 "你的意志，你明白了，自己在这片土地上的存在已经结束了。"
 
-#. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1954,19 +1954,19 @@ msgstr "这个极其重要的运输通道在韦诺的诸多最伟大的战斗中
 msgid "3p — Alirok Marsh"
 msgstr "3p — 埃尔洛克沼泽"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2368,8 +2368,8 @@ msgstr "在这混合了多种地形的地方，五支部队为争夺霸权而战
 msgid "5p — The Wilderlands"
 msgstr "5p — 蛮荒之地"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."

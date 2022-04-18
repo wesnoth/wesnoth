@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth \- síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
-wesnothd \- Bitva o \fBWesnoth\fP \- síťový server pro hru více hráčů
+wesnothd\ – Bitva o \fBWesnoth\fP\ – síťový server pro hru více hráčů
 .
 .SH POUŽITÍ
 .
@@ -107,6 +107,10 @@ komprimovaný. Výchozí hodnotou je \fByes\fP.
 Počet povolených spojení z\ jedné IP adresy. \fB0\fP znamená nekonečno. (výchozí
 hodnota: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Zda bránit uživatelům, kteří nejsou registrováni použitým \fBuser_handler\fP,
+aby se přihlásili. (výchozí hodnota: false)
+.TP 
 \fBdisallow_names\fP
 Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky \fB*\fP
 a\ \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
@@ -156,22 +160,32 @@ nastaven, ukládání a načítání místností nebude aktivní.
 Určuje, zda bude server automaticky ukládat záznamy her. (výchozí hodnota:
 \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Povolit použití protokolu TLS. Je\-li \fBtrue\fP, je třeba nastavit také
+následující tři klíče.
+.TP 
+\fBtls_fullchain\fP
+Úplný řetěz důvěry (certifikátů) pro TLS ve formátu PEM.
+.TP 
+\fBtls_private_key\fP
+Soukromý klíč pro TLS ve formátu PEM.
+.TP 
+\fBtls_dh\fP
+Parametry DH pro TLS jako soubor ve formátu PEM. Vytvořte pomocí příkazu
+\fBopenssl dhparam \-out jmeno_souboru.pem 4096\fP.
+.TP 
 \fBversions_accepted\fP
 Seznam čárkou oddělených řetězců verzí, které server přijímá. Podporovány
 jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná verze hry
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
-.TP 
-\fBdeny_unregistered_login\fP
-Zda bránit uživatelům, kteří nejsou registrováni použitým \fBuser_handler\fP,
-aby se přihlásili. (výchozí hodnota: false)
 .
 .SS "Globální značky:"
 .
 .P
-\fB[redirect]\fP Značka udávající server, na který bude přesměrován požadavek
-pro konkrétní verzi klienta.
+\fB[redirect]\fP Značka pro zadání serveru, na který se mají přesměrovat určité
+verze klientů. Nepoužije se, pokud není nastaven klíč \fBversions_accepted\fP.
 .RS
 .TP 
 \fBhost\fP
@@ -205,12 +219,12 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Dostupné klíče se liší
-podle toho, jaká obsluha uživatelů je klíčem \fBuser_handler\fP
-nastavena. Pokud v\ konfiguraci oddíl \fB[user_handler]\fP chybí, server poběží
-bez jakékoli služby pro registraci přezdívek. Všechny další tabulky, které
-jsou třeba, aby pracoval \fBforum_user_handler\fP, lze najít
-v\ table_definitions.sql v\ repozitáři zdrojových kódů Wesnothu.
+\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Pokud v\ konfiguraci oddíl
+\fB[user_handler]\fP chybí, server poběží bez jakékoli služby pro registraci
+přezdívek. Všechny další tabulky, které jsou třeba, aby pracoval
+\fBforum_user_handler\fP, lze najít v\ table_definitions.sql v\ repozitáři
+zdrojových kódů Wesnothu. Vyžaduje zapnutou podporu mysql. Pro cmake je to
+\fBENABLE_MYSQL\fP a\ pro scons je to \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

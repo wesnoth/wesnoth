@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,10 +35,10 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	while(true) {
 		ng::create_engine create_eng(state);
-		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
+		create_eng.set_current_level_type(level_type::type::sp_campaign);
 
 		const std::vector<ng::create_engine::level_ptr> campaigns =
-			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
+			create_eng.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
 		if(campaigns.empty()) {
 			gui2::show_error_message(_("No campaigns are available."));

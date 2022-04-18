@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -640,12 +640,12 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	}
 
 	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
-		if(dispatcher->get_mouse_behavior() == dispatcher::all) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
 		}
 
-		if(dispatcher->get_mouse_behavior() == dispatcher::none) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
 			continue;
 		}
 

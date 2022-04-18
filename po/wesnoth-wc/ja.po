@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:34+0000\n"
 "Last-Translator: tamanegi, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -65,6 +65,27 @@ msgstr "チョコボーンへの昇格が可能です"
 #: data/campaigns/World_Conquest/era/campaign/strings.cfg:34
 msgid "Special advancement to Goblin Pillager enabled."
 msgstr "ゴブリンの略奪兵への昇格が可能です"
+
+#. [multiplayer_side]: id=The_Artisans, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Artisans"
+msgstr "同盟"
+
+#. [multiplayer_side]: id=The_Defiance, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Defiance"
+msgstr "同盟"
+
+#. [multiplayer_side]: id=The_Marauders, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
+#, fuzzy
+#| msgid "The Horde"
+msgid "The Marauders"
+msgstr "大軍"
 
 #: data/campaigns/World_Conquest/era/factions/strings.cfg:7
 msgid "World Conquest"
@@ -127,14 +148,14 @@ msgstr "帝国"
 #. [label]: id=title
 #. [lua]: root_node.on_modified
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:246
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:236
 msgid "WoCopedia"
 msgstr "世界征服の手引き"
 
 #. [label]: id=title
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:47
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "設定"
 
@@ -180,17 +201,18 @@ msgstr "マップ設定"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
+msgid " players: "
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
 msgid " scenario: "
 msgstr " シナリオ： "
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
 msgstr " マップ： "
-
-#: data/campaigns/World_Conquest/lua/campaign/difficulty.lua:6
-msgid "Choose difficulty level:"
-msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -231,34 +253,34 @@ msgid "You are not using a WC2 faction."
 msgstr "「世界征服 II」の時代を使っていません。"
 
 #. [lua]: artifacts.give_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:146
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:148
 msgid "I cannot pick up that item."
 msgstr "私はこのアイテムを使えません。"
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:228
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:230
 msgid "Remind me what this item does"
 msgstr "アイテムの効果を確認する"
 
 #. [lua]: wesnoth.wml_actions.wc2_place_bonus
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:24
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:23
 msgid "place"
 msgstr "場所"
 
 #. [lua]: span_font_family
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:34
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:33
 msgid "$name's $type"
 msgstr "$name| の$type"
 
 #. [lua]: bonus.found_artifact
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:149
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:148
 msgid "Hey, I found some treasure!"
 msgstr "おい、宝を見つけたぞ！"
 
 #. [lua]: bonus.found_hero
 #. [lua]: bonus.found_training
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:164
-#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:196
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:163
+#: data/campaigns/World_Conquest/lua/game_mechanics/bonus.lua:195
 msgid "Someone is here!"
 msgstr "誰かいるぞ！"
 
@@ -1156,7 +1178,7 @@ msgstr "脱走兵"
 #. [lua]: gui.widget.add_invest_item
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:117
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
 msgid "Training"
 msgstr "トレーニング"
 
@@ -2192,18 +2214,18 @@ msgid "...fine. I guess."
 msgstr "……ああ、まあ良いんじゃないか。"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:25
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:24
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:26
 msgid "Game Mechanics"
 msgstr "ゲームの特殊設定"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:27
 msgid "<b>Gold</b>\n"
 msgstr "<b>ゴールド</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:28
 msgid ""
 "Carryover rate is 15% and split evenly among players. Negative amounts will "
 "not carry over. Early finish bonus is superior to village control, but it is "
@@ -2216,12 +2238,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
 msgid "<b>Autorecall</b>\n"
 msgstr "<b>自動召還</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
 msgid ""
 "Units with the <b>heroic</b> trait are recalled at the start of each "
 "scenario with no cost (up to castle size).\n"
@@ -2232,12 +2254,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
 msgid "<b>Recall Cost</b>\n"
 msgstr "<b>召還コスト</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
 msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
@@ -2246,12 +2268,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:33
 msgid "<b>Training</b>\n"
 msgstr "<b>トレーニング</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:34
 msgid ""
 "Every time you recruit a new unit, your training levels will be applied. If "
 "a unit gains training benefits, you can see them with the trait \"trained\". "
@@ -2266,12 +2288,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
 msgid "<b>Upkeep</b>\n"
 msgstr "<b>維持費</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
 msgid ""
 "Units with the <b>heroic</b> trait or holding any magic <b>item</b> have "
 "free upkeep.\n"
@@ -2282,12 +2304,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:37
 msgid "<b>Bonus Points</b>\n"
 msgstr "<b>ボーナスポイント</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:38
 msgid ""
 "In every scenario the game generates as many bonus points on the map as "
 "there are players in the game, the bonus points can be picked up by player "
@@ -2300,12 +2322,12 @@ msgstr ""
 "\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:39
 msgid "<b>Army discipline</b>\n"
 msgstr "<b>軍隊の訓練</b>\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:41
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:40
 msgid ""
 "At scenarios 1 to 3, for each training level players already own, trainers "
 "found have 2% to 4% chance to become advanced trainers (provide 2 levels). "
@@ -2318,20 +2340,7 @@ msgstr ""
 "ナーが優秀なトレーナーになり、必ず 2 レベル上げてくれます。\n"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
-msgid "Feedback"
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
-msgid ""
-"For feedback please either post in the World Conquest II thread in the "
-"official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue "
-"at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;."
-msgstr ""
-
-#. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:42
 msgid ""
 "Training improves newly recruited units, it has no effect on already "
 "recruited units. The following list shows all available training, the "
@@ -2342,12 +2351,12 @@ msgstr ""
 "たトレーニングについては緑で記述しています。"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid "Items"
 msgstr "アーティファクト"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:43
 msgid ""
 "Items can be given to units to make them stronger. You can get items in "
 "three ways: 1) By choosing an item as your starting bonus; 2) By finding it "
@@ -2363,20 +2372,30 @@ msgstr ""
 "ます。"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Factions"
 msgstr "陣営"
 
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:46
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
+#, fuzzy
+#| msgid ""
+#| "The World Conquest II era consists of factions that are built from pairs "
+#| "of mainline factions. One faction will have a healer available (Drakes, "
+#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
+#| "recruit list is also organized in pairs so that sometimes you will have "
+#| "to recruit a different unit before you can recruit the units that you "
+#| "want. The available heroes, deserters, and random leaders also depend on "
+#| "your factions; the items you can get do not depend on the faction you "
+#| "choose."
 msgid ""
-"The World Conquest II era consists of factions that are built from pairs of "
-"mainline factions. One faction will have a healer available (Drakes, Rebels "
-"and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list "
-"is also organized in pairs so that sometimes you will have to recruit a "
-"different unit before you can recruit the units that you want. The available "
-"heroes, deserters, and random leaders also depend on your factions; the "
-"items you can get do not depend on the faction you choose."
+"The World Conquest era consists of factions that are built from pairs of "
+"mainline factions. One faction will have a healer available (Drakes, "
+"Dunefolk, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). "
+"The recruit list is also organized in pairs so that sometimes you will have "
+"to recruit a different unit before you can recruit the units that you want. "
+"The available heroes, deserters, and random leaders also depend on your "
+"factions; the items you can get do not depend on the faction you choose."
 msgstr ""
 "世界征服 II の時代にはいくつかの陣営が含まれています。それらは基本的に標準の"
 "陣営を二つ組み合わせて作られています。一方はヒーラーを含む陣営（ドレーク、反"
@@ -2387,29 +2406,29 @@ msgstr ""
 "し、アーティファクトについては陣営によらず共通です。"
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:171
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
 msgid " (not available for enemies)"
 msgstr "(敵は利用できません)"
 
 #. [lua]: type_icon
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:172
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:170
 msgid " (not available for players)"
 msgstr "(プレイヤーは利用できません)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:138
+#: data/campaigns/World_Conquest/lua/map/main.lua:128
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "スタート"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:140
+#: data/campaigns/World_Conquest/lua/map/main.lua:130
 msgid "Scenario"
 msgstr "シナリオ"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:142
+#: data/campaigns/World_Conquest/lua/map/main.lua:132
 msgid "Final Battle"
 msgstr "最終戦"
 
@@ -2434,7 +2453,7 @@ msgid "Clayey"
 msgstr "粘土"
 
 #. [lua]: wct_map_3c_post_bunus_decoration
-#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:396
+#: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:389
 msgid "river^Delta"
 msgstr "三角州"
 
@@ -2474,18 +2493,18 @@ msgid "Wild"
 msgstr "原野"
 
 #. [lua]: world_conquest_tek_map_repaint_6d
-#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:473
+#: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:457
 msgid "Feudal"
 msgstr "封建領主"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:34
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:38
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:44
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:48
 msgid "To war! Prepare to defend yourselves!"
 msgstr "戦だ！準備は良いか！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:35
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:45
 msgid ""
 "Why do we fight amongst ourselves? We should band together and take the "
 "coast with our combined forces!"
@@ -2494,7 +2513,7 @@ msgstr ""
 "う！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:36
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:46
 msgid ""
 "You speak truly; together we can overpower the rest. After that, who knows? "
 "Together we could go on to conquer other lands across the sea!"
@@ -2503,51 +2522,51 @@ msgstr ""
 "あ、共に行こう！海の向こうの地までも征服するのだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:40
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:50
 msgid ""
 "Foolish upstarts. You will never defeat us! Come, my allies. Let us crush "
 "them!"
 msgstr "愚かな侵入者め。貴様等に我等は倒せん！集え、同志たちよ！奴等を潰すぞ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:41
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:51
 msgid "Yes! We will drive them into the sea!"
 msgstr "おう！奴等を海に追い返すぞ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:42
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
 msgid "Never fear! Your trusted friends stand beside you!"
 msgstr "恐れるな！お前たちの横には信頼できる友がいるのだから！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:44
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
 msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
 msgstr "我等の勝利だ！さあ、海を渡り次の地を征服するのだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:47
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:57
 msgid "Ahhh. Just look at these fertile lands, ripe for conquest!"
 msgstr "おおーー、なんという肥沃な土地！是非とも征服しなければ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:48
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
 msgid "What’s this?! Foreign invaders have set foot upon our shores!"
 msgstr "何だと？外部からの侵略者が我等の浜に入ったのか！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:49
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:59
 msgid ""
 "We’ll send them back to where they came from quick enough. All troops, to me!"
 msgstr "速やかに元の場所へ追い返すだけだ。皆、我に続け！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:51
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
 msgid "We win! Truly ours will be a glorious empire!"
 msgstr "勝ったぞ！われらが栄光ある帝国となる日も近いな！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
 msgid ""
 "Do not get hasty! To reach the great continents of the east we must subdue "
 "the savage coast of Moragdu, notorious for its corsairs, before we can "
@@ -2557,7 +2576,7 @@ msgstr ""
 "危険な浜辺を抑えねばならん。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
 msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
@@ -2566,14 +2585,14 @@ msgstr ""
 "は！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:55
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
 msgid ""
 "The time of prophecies is upon us! The destroyers have arrived from beyond "
 "the sea!"
 msgstr "予言の時が来たのだ！海を越え、破壊者が来た！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:56
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
 msgid ""
 "I don’t know what the lizard is babbling about, but we’ll sort these "
 "‘destroyers’ out quickly enough."
@@ -2582,12 +2601,12 @@ msgstr ""
 "ば良いのだろう。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:71
 msgid "Ready yourselves, men! The conquering hordes are upon us!"
 msgstr "準備しろ、野郎ども！侵略軍が来たぞ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
 msgid ""
 "Word has come to our island of your victories. Your army is impressive, but "
 "it will avail you not."
@@ -2596,12 +2615,12 @@ msgstr ""
 "通じない。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:63
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:73
 msgid "Indeed. You come this far, and no farther!"
 msgstr "まさに。ここまで来れても、この先には行けんぞ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
 msgid ""
 "Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
@@ -2610,22 +2629,22 @@ msgstr ""
 "じ、目の前の敵を討ち滅ぼすだけだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
 msgid "So be it. We stand squarely behind our allies."
 msgstr "好きにしろ。我等は仲間たちの後ろに立つのみだ。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
 msgid "You are not the only ones with allies! We’ll push on till the end!"
 msgstr "仲間がいるのはそっちだけじゃない！最後まで突き進むだけだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
 msgid "Onwards to the ships!"
 msgstr "さあ、船に乗り込め！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
 "wait until our forces regain their strength?"
@@ -2634,7 +2653,7 @@ msgstr ""
 "も相応に消耗している。ここらで少し待ち、力を回復させた方が良いのでは？"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
 msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
@@ -2642,7 +2661,7 @@ msgstr ""
 "最後の一押しだ！冬が来る前、我等に主導権がある今の内に遠征を完了しなければ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
 msgid ""
 "Finally we come to the shores of the last continent. Here at the edge of the "
 "world our empire shall be made complete."
@@ -2651,12 +2670,12 @@ msgstr ""
 "だ。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
 msgid "Never! Your mad quest ends here, tyrant."
 msgstr "そうはさせん！暴君よ、貴様等の狂った冒険もここまでだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:86
 msgid ""
 "All the peoples of the world stand against you. Though we would be enemies "
 "otherwise, we are united in our cause. We must stop you!"
@@ -2665,39 +2684,39 @@ msgstr ""
 "り合った。何としてもここで貴様達を止めてみせる！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:77
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:87
 msgid "No, not all of them. Today our full strength stands behind our allies!"
 msgstr ""
 "世界の全てが敵になったわけではない。今、我等の背にある大いなる力は我等の味方"
 "なのだから！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
 msgid "That’s it, our work is done here!"
 msgstr "やったぞ！これで仕事は終わりだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
 msgid "The whole world is now ours to command!"
 msgstr "これで世界は私たちのものだ！"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:81
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
 msgid "It was hard, but I almost regret the fun is over."
 msgstr "大変だったが、最大の楽しみが終わってしまったようにも感じるな。"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
 msgid "The End"
 msgstr "The End"
 
 #. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:38
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:37
 msgid "Enemies"
 msgstr "敵"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
 msgid "Allies"
 msgstr "友軍"
 
@@ -2948,7 +2967,7 @@ msgstr "老ウーズの根"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
 msgid ""
-" Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
+" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
@@ -3484,27 +3503,67 @@ msgid "World Conquest 3p"
 msgstr "世界征服 3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
+#, fuzzy
+#| msgid "World Conquest 1p"
+msgid "World Conquest 4p"
+msgstr "世界征服 1p"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+#, fuzzy
+#| msgid ""
+#| "A randomly generated campaign for 1 player. It has 6 level of "
+#| "difficulties.\n"
+#| "(Expert level, 5 scenarios.)"
 msgid ""
-"A randomly generated campaign for 1 player. It has 6 level of difficulties.\n"
+"A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 "１人用のランダム生成のキャンペーン。６つの難易度があります。\n"
 "(達人レベル、5 シナリオ)"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:18
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+#, fuzzy
+#| msgid ""
+#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
+#| "of difficulties.\n"
+#| "(Expert level, 5 scenarios.)"
 msgid ""
-"A randomly generated cooperative campaign for 2 players. It has 6 level of "
+"A randomly generated cooperative campaign for 2 players. It has 6 levels of "
+"difficulty.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+"２人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
+"(達人レベル、5 シナリオ)"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
+#, fuzzy
+#| msgid ""
+#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
+#| "of difficulties.\n"
+#| "(Expert level, 5 scenarios.)"
+msgid ""
+"A randomly generated cooperative campaign for 3 players. It has 6 levels of "
+"difficulty.\n"
+"(Expert level, 5 scenarios.)"
+msgstr ""
+"３人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
+"(達人レベル、5 シナリオ)"
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#, fuzzy
+#| msgid ""
+#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
+#| "of difficulties.\n"
+#| "(Expert level, 5 scenarios.)"
+msgid ""
+"A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
 "２人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
 "(達人レベル、5 シナリオ)"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:22
-msgid ""
-"A randomly generated cooperative campaign for 3 players. It has 6 level of "
-"difficulties.\n"
-"(Expert level, 5 scenarios.)"
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
+msgid "WC"
 msgstr ""
-"３人用の協力型ランダム生成キャンペーン。６つの難易度があります。\n"
-"(達人レベル、5 シナリオ)"

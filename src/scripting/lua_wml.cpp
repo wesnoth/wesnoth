@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 
 #include <fstream>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 namespace lua_wml {

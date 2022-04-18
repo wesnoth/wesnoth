@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -860,8 +860,8 @@ private:
 	bool draw_border_;
 
 	/** Parsed terrain rules. Cached between instances */
-	static building_ruleset building_rules_;
+	static inline building_ruleset building_rules_{};
 
 	/** Config used to parse global terrain rules */
-	static const game_config_view* rules_cfg_;
+	static const inline game_config_view* rules_cfg_ = nullptr;
 };

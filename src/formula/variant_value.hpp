@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,9 @@
 
 #include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
+#include "formula_variant.hpp"
+#include "utils/any.hpp"
 #include "utils/general.hpp"
-#include "utils/make_enum.hpp"
 
 #include <functional>
 #include <iostream>
@@ -27,24 +28,12 @@
 #include <utility>
 #include <vector>
 #include <boost/range/iterator_range.hpp>
-#include <boost/any.hpp>
 
 namespace wfl
 {
 class variant_value_base;
 class variant_iterator;
 class variant;
-
-/** The various types the variant class is designed to handle */
-MAKE_ENUM(VARIANT_TYPE,
-	(TYPE_NULL,     "null")
-	(TYPE_INT,      "int")
-	(TYPE_DECIMAL,  "decimal")
-	(TYPE_CALLABLE, "object")
-	(TYPE_LIST,     "list")
-	(TYPE_STRING,   "string")
-	(TYPE_MAP,      "map")
-);
 
 using variant_vector = std::vector<variant>;
 using variant_map_raw = std::map<variant, variant>;
@@ -145,16 +134,16 @@ public:
 	}
 
 	/** Returns the id of the variant type */
-	virtual const VARIANT_TYPE& get_type() const
+	virtual const formula_variant::type& get_type() const
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_NULL;
+		static formula_variant::type type = formula_variant::type::null;
 		return type;
 	}
 
 	/**
 	 * Creates an iterator pair that can be used for iteration.
 	 * For an iterable type, it should use the two-argument constructor of variant-iterator,
-	 * passing the underlying iterator as the boost::any parameter.
+	 * passing the underlying iterator as the utils::any parameter.
 	 *
 	 * This creates both the begin and end iterator, but the variant implementation
 	 * discards one of the two.
@@ -167,7 +156,7 @@ public:
 	 *
 	 * @param iter The opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual variant deref_iterator(const boost::any& iter) const;
+	virtual variant deref_iterator(const utils::any& iter) const;
 
 	/**
 	 * Implements the increment functionality of variant_iterator
@@ -175,7 +164,7 @@ public:
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual void iterator_inc(boost::any&) const {}
+	virtual void iterator_inc(utils::any&) const {}
 
 	/**
 	 * Implements the decrement functionality of variant_iterator
@@ -183,7 +172,7 @@ public:
 	 *
 	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual void iterator_dec(boost::any&) const {}
+	virtual void iterator_dec(utils::any&) const {}
 
 	/**
 	 * Implements the equality functionality of variant_iterator
@@ -194,7 +183,7 @@ public:
 	 * The first parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 * The second parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
-	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const
+	virtual bool iterator_equals(const utils::any& /*first*/, const utils::any& /*second*/) const
 	{
 		return true;
 	}
@@ -259,9 +248,9 @@ public:
 		return string_cast();
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_INT;
+		static formula_variant::type type = formula_variant::type::integer;
 		return type;
 	}
 };
@@ -300,9 +289,9 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_DECIMAL;
+		static formula_variant::type type = formula_variant::type::decimal;
 		return type;
 	}
 
@@ -344,18 +333,18 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_CALLABLE;
+		static formula_variant::type type = formula_variant::type::object;
 		return type;
 	}
 
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
-	virtual variant deref_iterator(const boost::any& iter) const override;
+	virtual variant deref_iterator(const utils::any& iter) const override;
 
-	virtual void iterator_inc(boost::any& iter) const override;
-	virtual void iterator_dec(boost::any& iter) const override;
-	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const override
+	virtual void iterator_inc(utils::any& iter) const override;
+	virtual void iterator_dec(utils::any& iter) const override;
+	virtual bool iterator_equals(const utils::any& /*first*/, const utils::any& /*second*/) const override
 	{
 		return true; // TODO: implement
 	}
@@ -410,9 +399,9 @@ public:
 		return string_ < value_ref_cast<variant_string>(other).string_;
 	}
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_STRING;
+		static formula_variant::type type = formula_variant::type::string;
 		return type;
 	}
 
@@ -478,9 +467,9 @@ public:
 	// specializations and leave the deref function to the derived classes.
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
 
-	virtual void iterator_inc(boost::any&) const override;
-	virtual void iterator_dec(boost::any&) const override;
-	virtual bool iterator_equals(const boost::any& first, const boost::any& second) const override;
+	virtual void iterator_inc(utils::any&) const override;
+	virtual void iterator_dec(utils::any&) const override;
+	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
 protected:
 	using mod_func_t = std::function<std::string(const variant&)>;
@@ -515,13 +504,13 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_LIST;
+		static formula_variant::type type = formula_variant::type::list;
 		return type;
 	}
 
-	virtual variant deref_iterator(const boost::any&) const override;
+	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
 	virtual std::string to_string_detail(const variant_vector::value_type& container_val, mod_func_t mod_func) const override
@@ -541,13 +530,13 @@ public:
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE& get_type() const override
+	virtual const formula_variant::type& get_type() const override
 	{
-		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_MAP;
+		static formula_variant::type type = formula_variant::type::map;
 		return type;
 	}
 
-	virtual variant deref_iterator(const boost::any&) const override;
+	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
 	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;

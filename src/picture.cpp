@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -768,7 +768,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 static surface get_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, TOD_COLORED));
-	return brighten_image(image, ftofxp(game_config::hex_brightening));
+	return brighten_image(image, floating_to_fixed_point(game_config::hex_brightening));
 }
 
 /** translate type to a simpler one when possible */
@@ -782,7 +782,7 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 
 		break;
 	case BRIGHTENED:
-		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0)) {
+		if(game_config::hex_brightening == 1.0) {
 			type = TOD_COLORED;
 		}
 

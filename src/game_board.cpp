@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,16 +126,16 @@ void game_board::check_victory(bool& continue_level,
 	for(const unit& i : units()) {
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
 		const team& tm = get_team(i.side());
-		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
-		if(i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
+		DBG_EE << "That team's defeat condition is: " << defeat_condition::get_string(tm.defeat_cond()) << std::endl;
+		if(i.can_recruit() && tm.defeat_cond() == defeat_condition::type::no_leader_left) {
 			not_defeated.insert(i.side());
-		} else if(tm.defeat_condition() == team::DEFEAT_CONDITION::NO_UNITS) {
+		} else if(tm.defeat_cond() == defeat_condition::type::no_units_left) {
 			not_defeated.insert(i.side());
 		}
 	}
 
 	for(team& tm : teams_) {
-		if(tm.defeat_condition() == team::DEFEAT_CONDITION::NEVER) {
+		if(tm.defeat_cond() == defeat_condition::type::never) {
 			not_defeated.insert(tm.side());
 		}
 
@@ -218,7 +218,7 @@ unit* game_board::get_visible_unit(const map_location& loc, const team& current_
 	return &*ui;
 }
 
-void game_board::side_drop_to(int side_num, side_controller::type ctrl, team::PROXY_CONTROLLER proxy)
+void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_proxy_controller::type proxy)
 {
 	team& tm = get_team(side_num);
 
@@ -264,18 +264,18 @@ void game_board::side_change_controller(
 
 bool game_board::team_is_defeated(const team& t) const
 {
-	switch(t.defeat_condition().v) {
-	case team::DEFEAT_CONDITION::ALWAYS:
+	switch(t.defeat_cond()) {
+	case defeat_condition::type::always:
 		return true;
-	case team::DEFEAT_CONDITION::NO_LEADER:
+	case defeat_condition::type::no_leader_left:
 		return !units_.find_leader(t.side()).valid();
-	case team::DEFEAT_CONDITION::NO_UNITS:
+	case defeat_condition::type::no_units_left:
 		for(const unit& u : units_) {
 			if(u.side() == t.side())
 				return false;
 		}
 		return true;
-	case team::DEFEAT_CONDITION::NEVER:
+	case defeat_condition::type::never:
 	default:
 		return false;
 	}

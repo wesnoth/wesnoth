@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -256,6 +256,12 @@ public:
 	 * @param out Where to output the results.
 	 */
 	void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's email address from the phpbb forum database.
+	 */
+	std::string get_user_email(const std::string& user);
 
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */

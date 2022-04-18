@@ -161,7 +161,7 @@ set -x
 cd "$INT"
 
 # HACK: help scons find autorevision from the source dir.
-mkdir -p utils/; ln -sf $SOURCE/utils/autorevision utils/
+mkdir -p utils/; ln -sf "$SOURCE"/utils/autorevision.sh utils/
 
 CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" \
 scons \

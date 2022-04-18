@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -450,7 +450,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::none);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::none);
 	set_want_keyboard_input(false);
 
 	show_mode_ = show_mode::tooltip;
@@ -472,7 +472,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::hit);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::hit);
 
 	show_mode_ = show_mode::modeless;
 

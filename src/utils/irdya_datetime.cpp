@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,8 @@
 #include "tstring.hpp"
 
 #include <exception>
+
+using namespace utils;
 
 irdya_date irdya_date::read_date(const std::string& date)
 {
@@ -41,10 +43,10 @@ irdya_date irdya_date::read_date(const std::string& date)
 
 	std::size_t epoch_start = date.find_first_not_of(' ', year_end);
 	if(epoch_start == std::string::npos) {
-		date_result.epoch = EPOCH::WESNOTH;
+		date_result.epoch = wesnoth_epoch::type::wesnoth;
 	} else {
 		std::size_t epoch_end = date.find_first_of(' ', epoch_start);
-		date_result.epoch = EPOCH::string_to_enum(date.substr(epoch_start, epoch_end - epoch_start), EPOCH::WESNOTH);
+		date_result.epoch = wesnoth_epoch::get_enum(date.substr(epoch_start, epoch_end - epoch_start)).value_or(wesnoth_epoch::type::wesnoth);
 	}
 
 	return date_result;
@@ -54,17 +56,17 @@ std::string irdya_date::to_string() const
 {
 	utils::string_map args {{"year", std::to_string(year)}};
 
-	switch(epoch.v) {
-	case EPOCH::BEFORE_WESNOTH:
+	switch(epoch) {
+	case wesnoth_epoch::type::before_wesnoth:
 		// TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 		return VGETTEXT("$year BW", args);
-	case EPOCH::WESNOTH:
+	case wesnoth_epoch::type::wesnoth:
 		// TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 		return VGETTEXT("$year YW", args);
-	case EPOCH::BEFORE_FALL:
+	case wesnoth_epoch::type::before_fall:
 		// TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 		return VGETTEXT("$year BF", args);
-	case EPOCH::AFTER_FALL:
+	case wesnoth_epoch::type::after_fall:
 		// TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 		return VGETTEXT("$year AF", args);
 	}
@@ -72,7 +74,7 @@ std::string irdya_date::to_string() const
 	return "";
 }
 
-bool operator<(const irdya_date& a, const irdya_date& b)
+bool utils::operator<(const irdya_date& a, const irdya_date& b)
 {
 	if(!b.is_valid()) {
 		return a.is_valid();
@@ -82,50 +84,48 @@ bool operator<(const irdya_date& a, const irdya_date& b)
 		return false;
 	}
 
-	if(a.get_epoch().v < b.get_epoch().v) {
+	if(a.get_epoch() < b.get_epoch()) {
 		return true;
 	}
 
-	if(a.get_epoch().v > b.get_epoch().v) {
+	if(a.get_epoch() > b.get_epoch()) {
 		return false;
 	}
 
-	using EPOCH = irdya_date::EPOCH;
-
 	// The BW and BF epochs count backward, much like BCE
-	if(a.get_epoch() == EPOCH::BEFORE_WESNOTH || a.get_epoch() == EPOCH::BEFORE_FALL) {
+	if(a.get_epoch() == wesnoth_epoch::type::before_wesnoth || a.get_epoch() == wesnoth_epoch::type::before_fall) {
 		return (a.get_year() > b.get_year());
 	} else {
 		return (a.get_year() < b.get_year());
 	}
 }
 
-bool operator>(const irdya_date& a, const irdya_date& b)
+bool utils::operator>(const irdya_date& a, const irdya_date& b)
 {
 	return b < a;
 }
 
-bool operator<=(const irdya_date& a, const irdya_date& b)
+bool utils::operator<=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a > b);
 }
 
-bool operator>=(const irdya_date& a, const irdya_date& b)
+bool utils::operator>=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a < b);
 }
 
-bool operator==(const irdya_date& a, const irdya_date& b)
+bool utils::operator==(const irdya_date& a, const irdya_date& b)
 {
 	return a.get_year() == b.get_year() && a.get_epoch() == b.get_epoch();
 }
 
-bool operator!=(const irdya_date& a, const irdya_date& b)
+bool utils::operator!=(const irdya_date& a, const irdya_date& b)
 {
 	return !(a == b);
 }
 
-std::ostream& operator<<(std::ostream& s, const irdya_date& d)
+std::ostream& utils::operator<<(std::ostream& s, const irdya_date& d)
 {
 	s << d.to_string();
 	return s;

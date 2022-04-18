@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -110,7 +110,7 @@ pane::pane(const implementation::builder_pane& builder)
 	, items_()
 	, item_builder_(builder.item_definition)
 	, item_id_generator_(0)
-	, placer_(placer_base::build(builder.grow_direction, builder.parallel_items))
+	, placer_(placer_base::build(builder.grow_dir, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
@@ -375,8 +375,7 @@ namespace implementation
 
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
-	, grow_direction(
-			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
+	, grow_dir(*grow_direction::get_enum(cfg["grow_direction"].str()))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {

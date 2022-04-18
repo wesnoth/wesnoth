@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Sergey Popov <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -116,13 +116,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
-	if(error) {
+	if(error && accepting_connections()) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
 		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
 	if(accepting_connections()) {
 		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+	} else {
+		return;
 	}
 
 #ifndef _WIN32
@@ -134,12 +136,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
-		fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 #if defined(__APPLE__) && defined(__MACH__)
 		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
 #endif
 	}
+#endif
+
+#ifdef __linux__
+	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";

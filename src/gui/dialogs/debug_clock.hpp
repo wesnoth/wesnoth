@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -89,7 +89,7 @@ private:
 	styled_widget* clock_;
 
 	/** The signal patched in the drawing routine. */
-	event::signal_function signal_;
+	event::signal signal_;
 
 	/** Helper struct to keep track of the time. */
 	struct time

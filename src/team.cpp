@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,9 +143,9 @@ team::team_info::team_info()
 	, objectives_changed(false)
 	, controller()
 	, is_local(true)
-	, defeat_condition(team::DEFEAT_CONDITION::NO_LEADER)
-	, proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN)
-	, share_vision(team::SHARE_VISION::ALL)
+	, defeat_cond(defeat_condition::type::no_leader_left)
+	, proxy_controller(side_proxy_controller::type::human)
+	, share_vision(team_shared_vision::type::all)
 	, disallow_observers(false)
 	, allow_player(false)
 	, chose_random(false)
@@ -186,7 +186,7 @@ void team::team_info::read(const config& cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = cfg["defeat_condition"].to_enum<team::DEFEAT_CONDITION>(team::DEFEAT_CONDITION::NO_LEADER);
+	defeat_cond = defeat_condition::get_enum(cfg["defeat_condition"].str()).value_or(defeat_condition::type::no_leader_left);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -243,37 +243,37 @@ void team::team_info::read(const config& cfg)
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 	}
 
-	controller = side_controller::get_enum(cfg["controller"].str()).value_or(side_controller::type::AI);
+	controller = side_controller::get_enum(cfg["controller"].str()).value_or(side_controller::type::ai);
 
 	// TODO: Why do we read disallow observers differently when controller is empty?
-	if(controller == side_controller::type::NONE) {
+	if(controller == side_controller::type::none) {
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 
 	// override persistence flag if it is explicitly defined in the config
 	// by default, persistence of a team is set depending on the controller
-	persistent = cfg["persistent"].to_bool(this->controller == side_controller::type::HUMAN);
+	persistent = cfg["persistent"].to_bool(this->controller == side_controller::type::human);
 
 	//========================================================
 	// END OF MESSY CODE
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
-	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
+	share_vision = team_shared_vision::get_enum(cfg["share_vision"].str()).value_or(team_shared_vision::type::all);
 	handle_legacy_share_vision(cfg);
 
-	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << share_vision << ".\n";
+	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << team_shared_vision::get_string(share_vision) << ".\n";
 }
 
 void team::team_info::handle_legacy_share_vision(const config& cfg)
 {
 	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps")) {
 		if(cfg["share_view"].to_bool()) {
-			share_vision = team::SHARE_VISION::ALL;
+			share_vision = team_shared_vision::type::all;
 		} else if(cfg["share_maps"].to_bool(true)) {
-			share_vision = team::SHARE_VISION::SHROUD;
+			share_vision = team_shared_vision::type::shroud;
 		} else {
-			share_vision = team::SHARE_VISION::NONE;
+			share_vision = team_shared_vision::type::none;
 		}
 	}
 }
@@ -304,13 +304,13 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = defeat_condition;
+	cfg["defeat_condition"] = defeat_condition::get_string(defeat_cond);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = side_controller::get_string(controller);
 	cfg["recruit"] = utils::join(can_recruit);
-	cfg["share_vision"] = share_vision;
+	cfg["share_vision"] = team_shared_vision::get_string(share_vision);
 
 	cfg["color"] = color;
 	cfg["persistent"] = persistent;
@@ -589,16 +589,16 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		return;
 	}
 
-	if(new_controller == side_controller::type::NONE && resources::controller->current_side() == this->side()) {
+	if(new_controller == side_controller::type::none && resources::controller->current_side() == this->side()) {
 		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
 		return;
 	}
 
 	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
-	if(!side_controller::get_enum(choice["controller"])) {
+	if(!side_controller::get_enum(choice["controller"].str())) {
 		WRN_NG << "Received an invalid controller string from the server" << choice["controller"] << std::endl;
 	} else {
-		new_controller = side_controller::get_enum(choice["controller"]);
+		new_controller = side_controller::get_enum(choice["controller"].str());
 	}
 
 	if(!resources::controller->is_replay()) {

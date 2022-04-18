@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	by Martin Hrubý <hrubymar10@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Dominic Bolin <dominic.bolin@exong.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1537,29 +1537,30 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	temporary_facing self_facing(self, self_loc.get_relative_dir(other_loc));
 	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
 
-	// Filter poison, plague, drain, first strike
-	if (tag_name == "drains" && other && other->get_state("undrainable")) {
+	// Filter poison, plague, drain, slow, petrifies
+	// True if "whom" corresponds to "self", false if "whom" is "other"
+	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker)));
+	unit_const_ptr them = whom_is_self ? other : self;
+	map_location their_loc = whom_is_self ? other_loc : self_loc;
+
+	if (tag_name == "drains" && them && them->get_state("undrainable")) {
 		return false;
 	}
-	if (tag_name == "plague" && other &&
-		(other->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(other_loc))) {
+	if (tag_name == "plague" && them &&
+		(them->get_state("unplagueable") ||
+		 resources::gameboard->map().is_village(their_loc))) {
 		return false;
 	}
-	if (tag_name == "poison" && other &&
-		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
+	if (tag_name == "poison" && them &&
+		(them->get_state("unpoisonable") || them->get_state(unit::STATE_POISONED))) {
 		return false;
 	}
-	if (tag_name == "firststrike" && !is_attacker && other_attack &&
-		other_attack->has_special_or_ability("firststrike")) {
+	if (tag_name == "slow" && them &&
+		(them->get_state("unslowable") || them->get_state(unit::STATE_SLOWED))) {
 		return false;
 	}
-	if (tag_name == "slow" && other &&
-		(other->get_state("unslowable") || other->get_state(unit::STATE_SLOWED))) {
-		return false;
-	}
-	if (tag_name == "petrifies" && other &&
-		other->get_state("unpetrifiable")) {
+	if (tag_name == "petrifies" && them &&
+		them->get_state("unpetrifiable")) {
 		return false;
 	}
 
@@ -1571,6 +1572,14 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
 	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
 	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
+
+	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
+	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
+	if (tag_name == "firststrike") {
+		bool whom_is_defender = whom_is_self ? !is_attacker : is_attacker;
+		if (whom_is_defender && att_weapon && att_weapon->has_special_or_ability("firststrike"))
+			return false;
+	}
 
 	// Filter the units involved.
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))

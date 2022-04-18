@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
-#include "gui/widgets/pane.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -38,8 +37,6 @@
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
-
-using SORT_ORDER = preferences::SORT_ORDER;
 
 namespace gui2
 {
@@ -596,20 +593,20 @@ void listbox::order_by_column(unsigned column, widget& widget)
 
 	for(auto& pair : orders_) {
 		if(pair.first != nullptr && pair.first != &selectable) {
-			pair.first->set_value(preferences::SORT_ORDER::NONE);
+			pair.first->set_value(static_cast<unsigned int>(sort_order::type::none));
 		}
 	}
 
-	SORT_ORDER order {static_cast<SORT_ORDER::type>(selectable.get_value())};
+	sort_order::type order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
 
-	if(static_cast<unsigned int>(order.v) > orders_[column].second.size()) {
+	if(static_cast<unsigned int>(order) > orders_[column].second.size()) {
 		return;
 	}
 
-	if(order == SORT_ORDER::NONE) {
+	if(order == sort_order::type::none) {
 		order_by(std::less<unsigned>());
 	} else {
-		order_by(orders_[column].second[order.v - 1]);
+		order_by(orders_[column].second[static_cast<unsigned int>(order) - 1]);
 	}
 
 	if(callback_order_change_ != nullptr) {
@@ -652,7 +649,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
 	// order. This is necessary since the widget's value is used to determine the order in
 	// @ref order_by_column in lieu of a direction being passed directly.
-	w.set_value(static_cast<int>(sort_by.second.v));
+	w.set_value(static_cast<int>(sort_by.second));
 
 	order_by_column(sort_by.first, dynamic_cast<widget&>(w));
 
@@ -665,20 +662,21 @@ const listbox::order_pair listbox::get_active_sorting_option()
 {
 	for(unsigned int column = 0; column < orders_.size(); ++column) {
 		selectable_item* w = orders_[column].first;
+		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
 
-		if(w && w->get_value() != SORT_ORDER::NONE) {
-			return std::pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
+		if(w && sort != sort_order::type::none) {
+			return std::pair(column, sort);
 		}
 	}
 
-	return std::pair(-1, SORT_ORDER::NONE);
+	return std::pair(-1, sort_order::type::none);
 }
 
 void listbox::mark_as_unsorted()
 {
 	for(auto& pair : orders_) {
 		if(pair.first != nullptr) {
-			pair.first->set_value(SORT_ORDER::NONE);
+			pair.first->set_value(static_cast<unsigned int>(sort_order::type::none));
 		}
 	}
 }

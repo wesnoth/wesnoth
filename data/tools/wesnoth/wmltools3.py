@@ -11,13 +11,13 @@ import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 
 map_extensions   = ("map", "mask")
-image_extensions = ("png", "jpg", "jpeg")
+image_extensions = ("png", "jpg", "jpeg", "webp")
 sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
 misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
-image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g)(?=(~.*)?)"
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g|webp)(?=(~.*)?)"
 
 class Substitution(object):
     __slots__ = ["sub", "start", "end"]
@@ -805,6 +805,7 @@ macro found in {}: {}".format(filename,
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
+        self.deprecated = []
         formals = []
         optional_formals = []
         state = "outside"
@@ -881,6 +882,8 @@ macro found in {}: {}".format(filename,
                                     if self.visible_from(defn, fn, n+1):
                                         defn.append(fn, n+1, args, optional_args)
                                         candidates.append(str(defn))
+                                        if defn.deprecated:
+                                            self.deprecated.append((name,Reference(ns,fn,n+1)))
                                 if len(candidates) > 1:
                                     print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))
                             if len(candidates) == 0:

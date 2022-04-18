@@ -78,9 +78,6 @@ GetSources("libwesnoth" wesnoth_game_sources)
 GetSources("libwesnoth_core" wesnoth_core_sources)
 GetSources("wesnoth" wesnoth_sources)
 
-# We explicitly want lua compiled as C++ version, so this line is required:
-set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
-
 # Inject a header into the Lua sources for Wesnoth-specific changes
 # makedepend won't see it so we have to specifically add it as a dependency.
 file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
@@ -90,20 +87,23 @@ if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
 endif()
-	
+
+set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
+
+# We explicitly want lua compiled as C++ version
 if(MSVC)
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
 	# silence an implicit bitshift conversion warning
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334")
+	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334 /TP")
 else()
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
+	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -x c++ -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	# silence a Clang specific warning due to extra parenthesis in if statements
 	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
 	# silence a Clang specific warning when compiling the lua code
-	set_property(SOURCE SOURCE ${lua_sources}	APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
+	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
 endif()
 
 # On apple only
@@ -185,7 +185,6 @@ if(ENABLE_GAME)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -232,7 +231,6 @@ if(ENABLE_TESTS)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -281,7 +279,6 @@ if(ENABLE_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
@@ -323,7 +320,6 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale

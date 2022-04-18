@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -127,11 +127,11 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 		try {
 			tokens.push_back(tk::get_token(i1,i2));
 
-			tk::TOKEN_TYPE current_type = tokens.back().type;
+			tk::token_type current_type = tokens.back().type;
 
-			if(current_type == tk::TOKEN_WHITESPACE)  {
+			if(current_type == tk::token_type::whitespace)  {
 				tokens.pop_back();
-			} else if(current_type == tk::TOKEN_COMMENT) {
+			} else if(current_type == tk::token_type::comment) {
 				// Since we can have multiline comments, let's see how many EOL are within it
 				int counter = 0;
 
@@ -144,16 +144,16 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 
 				files.back().second += counter;
 				tokens.pop_back();
-			} else if(current_type == tk::TOKEN_EOL) {
+			} else if(current_type == tk::token_type::eol) {
 				files.back().second++;
 				tokens.pop_back();
-			} else if((current_type == tk::TOKEN_KEYWORD) && (std::string(tokens.back().begin, tokens.back().end) == "fai")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "fai")) {
 				fai_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::TOKEN_KEYWORD) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")) {
 				wfl_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::TOKEN_KEYWORD) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")) {
 				if(files.size() > 1) {
 					files.pop_back();
 					filenames_it = filenames.find(files.back().first);
@@ -162,7 +162,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 				} else {
 					throw formula_error("Unexpected 'faiend' found", "", "", 0);
 				}
-			} else if((current_type == tk::TOKEN_KEYWORD) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")) {
+			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")) {
 				if(files.size() > 1) {
 					files.pop_back();
 					filenames_it = filenames.find(files.back().first);
@@ -172,7 +172,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 					throw formula_error("Unexpected 'wflend' found", "", "", 0);
 				}
 			} else if(fai_keyword || wfl_keyword) {
-				if(current_type == tk::TOKEN_STRING_LITERAL) {
+				if(current_type == tk::token_type::string_literal) {
 					std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
 
@@ -506,10 +506,10 @@ public:
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
-		add_input(inputs, "size", FORMULA_READ_WRITE);
-		add_input(inputs, "empty", FORMULA_READ_WRITE);
-		add_input(inputs, "first", FORMULA_READ_WRITE);
-		add_input(inputs, "last", FORMULA_READ_WRITE);
+		add_input(inputs, "size", formula_access::read_write);
+		add_input(inputs, "empty", formula_access::read_write);
+		add_input(inputs, "first", formula_access::read_write);
+		add_input(inputs, "last", formula_access::read_write);
 	}
 
 	variant get_value(const std::string& key) const
@@ -546,8 +546,8 @@ public:
 
 	void get_inputs(formula_input_vector& inputs) const
 	{
-		add_input(inputs, "size", FORMULA_READ_WRITE);
-		add_input(inputs, "empty", FORMULA_READ_WRITE);
+		add_input(inputs, "size", formula_access::read_write);
+		add_input(inputs, "empty", formula_access::read_write);
 
 		for(const auto& v : map_) {
 			// variant_iterator does not implement operator->,
@@ -1107,21 +1107,21 @@ static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::
 {
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
-	if(i1->type == tk::TOKEN_LPARENS) {
+	if(i1->type == tk::token_type::lparens) {
 		++i1;
 	} else {
 		throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 	}
 
-	while((i1-> type != tk::TOKEN_RPARENS) && (i1 != i2)) {
-		if(i1->type == tk::TOKEN_IDENTIFIER) {
+	while((i1-> type != tk::token_type::rparens) && (i1 != i2)) {
+		if(i1->type == tk::token_type::identifier) {
 			if(std::string((i1+1)->begin, (i1+1)->end) == "*") {
 				res->push_back(std::string(i1->begin, i1->end) + std::string("*"));
 				++i1;
 			} else {
 				res->push_back(std::string(i1->begin, i1->end));
 			}
-		} else if(i1->type == tk::TOKEN_COMMA) {
+		} else if(i1->type == tk::token_type::comma) {
 			//do nothing
 		} else {
 			throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
@@ -1130,7 +1130,7 @@ static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::
 		++i1;
 	}
 
-	if(i1->type != tk::TOKEN_RPARENS) {
+	if(i1->type != tk::token_type::rparens) {
 		throw formula_error("Invalid function definition", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 	}
 
@@ -1144,11 +1144,11 @@ static void parse_args(const tk::token* i1, const tk::token* i2,
 	int parens = 0;
 	const tk::token* beg = i1;
 	while(i1 != i2) {
-		if(i1->type == tk::TOKEN_LPARENS || i1->type == tk::TOKEN_LSQUARE ) {
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare ) {
 			++parens;
-		} else if(i1->type == tk::TOKEN_RPARENS || i1->type == tk::TOKEN_RSQUARE ) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare ) {
 			--parens;
-		} else if(i1->type == tk::TOKEN_COMMA && !parens) {
+		} else if(i1->type == tk::token_type::comma && !parens) {
 			res->push_back(parse_expression(beg, i1, symbols));
 			beg = i1+1;
 		}
@@ -1170,11 +1170,11 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 	const tk::token* beg = i1;
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 	while(i1 != i2) {
-		if(i1->type == tk::TOKEN_LPARENS || i1->type == tk::TOKEN_LSQUARE) {
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare) {
 			++parens;
-		} else if(i1->type == tk::TOKEN_RPARENS || i1->type == tk::TOKEN_RSQUARE) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare) {
 			--parens;
-		} else if(i1->type == tk::TOKEN_POINTER && !parens ) {
+		} else if(i1->type == tk::token_type::pointer && !parens ) {
 			if(!check_pointer) {
 				check_pointer = true;
 				res->push_back(parse_expression(beg, i1, symbols));
@@ -1182,7 +1182,7 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 			} else {
 				throw formula_error("Too many '->' operators found", tokens_to_string(begin,end - 1), *i1->filename, i1->line_number);
 			}
-		} else if(i1->type == tk::TOKEN_COMMA && !parens ) {
+		} else if(i1->type == tk::token_type::comma && !parens ) {
 			if(check_pointer)
 				check_pointer = false;
 			else {
@@ -1209,12 +1209,12 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_t
 	std::string var_name;
 
 	while(i1 != i2) {
-		if(i1->type == tk::TOKEN_LPARENS || i1->type == tk::TOKEN_LSQUARE) {
+		if(i1->type == tk::token_type::lparens || i1->type == tk::token_type::lsquare) {
 			++parens;
-		} else if(i1->type == tk::TOKEN_RPARENS || i1->type == tk::TOKEN_RSQUARE) {
+		} else if(i1->type == tk::token_type::rparens || i1->type == tk::token_type::rsquare) {
 			--parens;
 		} else if(!parens) {
-			if(i1->type == tk::TOKEN_COMMA) {
+			if(i1->type == tk::token_type::comma) {
 				if(var_name.empty()) {
 					throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 						tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
@@ -1223,11 +1223,11 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_t
 				(*res)[var_name] = parse_expression(beg, i1, symbols);
 				beg = i1+1;
 				var_name = "";
-			} else if(i1->type == tk::TOKEN_OPERATOR) {
+			} else if(i1->type == tk::token_type::operator_token) {
 				std::string op_name(i1->begin, i1->end);
 
 				if(op_name == "=") {
-					if(beg->type != tk::TOKEN_IDENTIFIER) {
+					if(beg->type != tk::token_type::identifier) {
 						if(i1 == original_i1_cached) {
 							throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 								tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
@@ -1275,7 +1275,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 
 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
-	if(i1->type == tk::TOKEN_KEYWORD && (i1 + 1)->type == tk::TOKEN_IDENTIFIER) {
+	if(i1->type == tk::token_type::keyword && (i1 + 1)->type == tk::token_type::identifier) {
 		if(std::string(i1->begin, i1->end) == "def") {
 			++i1;
 			const std::string formula_name = std::string(i1->begin, i1->end);
@@ -1284,7 +1284,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 			parse_function_args(++i1, i2, &args);
 
 			const tk::token* beg = i1;
-			while((i1 != i2) && (i1->type != tk::TOKEN_SEMICOLON)) {
+			while((i1 != i2) && (i1->type != tk::token_type::semicolon)) {
 				++i1;
 			}
 
@@ -1313,11 +1313,11 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 	bool operator_group = false;
 
 	for(const tk::token* i = i1; i != i2; ++i) {
-		if(i->type == tk::TOKEN_LPARENS || i->type == tk::TOKEN_LSQUARE) {
+		if(i->type == tk::token_type::lparens || i->type == tk::token_type::lsquare) {
 			++parens;
-		} else if(i->type == tk::TOKEN_RPARENS || i->type == tk::TOKEN_RSQUARE) {
+		} else if(i->type == tk::token_type::rparens || i->type == tk::token_type::rsquare) {
 			--parens;
-		} else if(parens == 0 && i->type == tk::TOKEN_OPERATOR) {
+		} else if(parens == 0 && i->type == tk::token_type::operator_token) {
 			if((!operator_group ) && (op == nullptr || operator_precedence(*op) >= operator_precedence(*i))) {
 				// Need special exception for exponentiation to be right-associative
 				if(*i->begin != '^' || op == nullptr || *op->begin != '^') {
@@ -1331,29 +1331,29 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 	}
 
 	if(op == nullptr) {
-		if(i1->type == tk::TOKEN_LPARENS && (i2-1)->type == tk::TOKEN_RPARENS) {
+		if(i1->type == tk::token_type::lparens && (i2-1)->type == tk::token_type::rparens) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if((i2-1)->type == tk::TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
+		} else if((i2-1)->type == tk::token_type::rsquare) { //check if there is [ ] : either a list/map definition, or a operator
 			// First, a special case for an empty map
-			if(i2 - i1 == 3 && i1->type == tk::TOKEN_LSQUARE && (i1+1)->type == tk::TOKEN_POINTER) {
+			if(i2 - i1 == 3 && i1->type == tk::token_type::lsquare && (i1+1)->type == tk::token_type::pointer) {
 				return std::make_shared<map_expression>(std::vector<expression_ptr>());
 			}
 
 			const tk::token* tok = i2-2;
 			int square_parens = 0;
 			bool is_map = false;
-			while ((tok->type != tk::TOKEN_LSQUARE || square_parens) && tok != i1) {
-				if(tok->type == tk::TOKEN_RSQUARE) {
+			while ((tok->type != tk::token_type::lsquare || square_parens) && tok != i1) {
+				if(tok->type == tk::token_type::rsquare) {
 					square_parens++;
-				} else if(tok->type == tk::TOKEN_LSQUARE) {
+				} else if(tok->type == tk::token_type::lsquare) {
 					square_parens--;
-				} else if((tok->type == tk::TOKEN_POINTER) && !square_parens ) {
+				} else if((tok->type == tk::token_type::pointer) && !square_parens ) {
 					is_map = true;
 				}
 				--tok;
 			}
 
-			if(tok->type == tk::TOKEN_LSQUARE) {
+			if(tok->type == tk::token_type::lsquare) {
 				if(tok == i1) {
 					// Create a list or a map
 					std::vector<expression_ptr> args;
@@ -1378,16 +1378,16 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 				}
 			}
 		} else if(i2 - i1 == 1) {
-			if(i1->type == tk::TOKEN_KEYWORD) {
+			if(i1->type == tk::token_type::keyword) {
 				if(std::string(i1->begin, i1->end) == "functions") {
 					return std::make_shared<function_list_expression>(symbols);
 				}
-			} else if(i1->type == tk::TOKEN_IDENTIFIER) {
+			} else if(i1->type == tk::token_type::identifier) {
 				return std::make_shared<identifier_expression>(std::string(i1->begin, i1->end));
-			} else if(i1->type == tk::TOKEN_INTEGER) {
+			} else if(i1->type == tk::token_type::integer) {
 				int n = std::stoi(std::string(i1->begin, i1->end));
 				return std::make_shared<integer_expression>(n);
-			} else if(i1->type == tk::TOKEN_DECIMAL) {
+			} else if(i1->type == tk::token_type::decimal) {
 				tk::iterator dot = i1->begin;
 				while(*dot != '.') {
 					++dot;
@@ -1413,19 +1413,19 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 				}
 
 				return std::make_shared<decimal_expression>(n, f);
-			} else if(i1->type == tk::TOKEN_STRING_LITERAL) {
+			} else if(i1->type == tk::token_type::string_literal) {
 				return std::make_shared<string_expression>(std::string(i1->begin + 1, i1->end - 1));
 			}
-		} else if(i1->type == tk::TOKEN_IDENTIFIER &&
-		          (i1+1)->type == tk::TOKEN_LPARENS &&
-				  (i2-1)->type == tk::TOKEN_RPARENS)
+		} else if(i1->type == tk::token_type::identifier &&
+		          (i1+1)->type == tk::token_type::lparens &&
+				  (i2-1)->type == tk::token_type::rparens)
 		{
 			const tk::token* function_call_begin = i1, *function_call_end = i2;	// These are used for error reporting
 			int nleft = 0, nright = 0;
 			for(const tk::token* i = i1; i != i2; ++i) {
-				if(i->type == tk::TOKEN_LPARENS) {
+				if(i->type == tk::token_type::lparens) {
 					++nleft;
-				} else if(i->type == tk::TOKEN_RPARENS) {
+				} else if(i->type == tk::token_type::rparens) {
 					++nright;
 				}
 			}

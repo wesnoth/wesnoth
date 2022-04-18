@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "display.hpp"
 #include "map/map.hpp"
 #include "preferences/display.hpp"
+#include "preferences/general.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
@@ -26,7 +27,7 @@
 #include <set>
 
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
+		const map_location& second_loc,const int value,const strike_result::type hit,
 		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
@@ -99,7 +100,6 @@ void unit_animation_component::set_selecting()
 void unit_animation_component::start_animation (int start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
-	const display * disp =  display::get_singleton();
 	if (!animation) {
 		if (state == STATE_STANDING)
 			state_ = state;
@@ -116,9 +116,9 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (disp->idle_anim()) {
+	if (preferences::idle_anim()) {
 		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp->idle_anim_rate());
+			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
 	} else {
 		next_idling_ = INT_MAX;
 	}
@@ -140,9 +140,9 @@ void unit_animation_component::refresh()
 	if (get_current_animation_tick() > next_idling_ + 1000)
 	{
 		// prevent all units animating at the same time
-		if (disp.idle_anim()) {
+		if (preferences::idle_anim()) {
 			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp.idle_anim_rate());
+				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
 		} else {
 			next_idling_ = INT_MAX;
 		}

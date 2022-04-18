@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -34,16 +34,16 @@ static lg::log_domain log_config("config");
 
 config_writer::config_writer(std::ostream& out, compression::format compress)
 	: filter_()
-	, out_ptr_(compress ? &filter_ : &out) // ternary indirection creates a temporary
+	, out_ptr_(compress != compression::format::none ? &filter_ : &out) // ternary indirection creates a temporary
 	, out_(*out_ptr_) // now MSVC will allow binding to the reference member
 	, compress_(compress)
 	, level_(0)
 	, textdomain_(PACKAGE)
 {
-	if(compress_ == compression::GZIP) {
+	if(compress_ == compression::format::gzip) {
 		filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(9)));
 		filter_.push(out);
-	} else if(compress_ == compression::BZIP2) {
+	} else if(compress_ == compression::format::bzip2) {
 		filter_.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
 		filter_.push(out);
 	}
@@ -53,11 +53,11 @@ config_writer::config_writer(std::ostream& out, bool compress, int level)
 	: filter_()
 	, out_ptr_(compress ? &filter_ : &out) // ternary indirection creates a temporary
 	, out_(*out_ptr_) // now MSVC will allow binding to the reference member
-	, compress_(compress ? compression::GZIP : compression::NONE)
+	, compress_(compress ? compression::format::gzip : compression::format::none)
 	, level_(0)
 	, textdomain_(PACKAGE)
 {
-	if(compress_) {
+	if(compress_ != compression::format::none) {
 		if(level >= 0) {
 			filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(level)));
 		} else {
@@ -71,7 +71,7 @@ config_writer::config_writer(std::ostream& out, bool compress, int level)
 config_writer::~config_writer()
 {
 	// we only need this for gzip but we also do it for bz2 for unification.
-	if(compress_ == compression::GZIP || compress_ == compression::BZIP2) {
+	if(compress_ == compression::format::gzip || compress_ == compression::format::bzip2) {
 		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
 		out_ << "\n";
 	}

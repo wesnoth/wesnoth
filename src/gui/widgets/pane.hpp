@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -209,7 +209,7 @@ struct builder_pane : public builder_widget
 
 	virtual widget* build(const replacements_map& replacements) const override;
 
-	placer_base::grow_direction grow_direction;
+	grow_direction::type grow_dir;
 
 	unsigned parallel_items;
 

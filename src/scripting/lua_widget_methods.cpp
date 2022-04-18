@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -51,7 +51,6 @@
 #include <vector>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)

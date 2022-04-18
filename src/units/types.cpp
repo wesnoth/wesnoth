@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,7 +30,6 @@
 #include "units/animation.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"
-#include "utils/make_enum.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -141,7 +140,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, do_not_list_()
 	, advances_to_()
 	, experience_needed_(0)
-	, alignment_(unit_type::ALIGNMENT::NEUTRAL)
+	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
 	, possible_traits_()
 	, genders_()
@@ -271,8 +270,7 @@ void unit_type::build_help_index(
 
 	adjust_profile(profile_);
 
-	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
-	alignment_.parse(cfg["alignment"].str());
+	alignment_ = unit_alignments::get_enum(cfg["alignment"].str()).value_or(unit_alignments::type::neutral);
 
 	for(int i = 0; i < 2; ++i) {
 		if(gender_types_[i]) {
@@ -350,7 +348,7 @@ void unit_type::build_help_index(
 			possible_traits_.clear();
 		} else {
 			for(const config& t : race_->additional_traits()) {
-				if(alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
+				if(alignment_ != unit_alignments::type::neutral || t["id"] != "fearless")
 					possible_traits_.add_child("trait", t);
 			}
 		}
@@ -839,30 +837,16 @@ bool unit_type::resistance_filter_matches(
 
 /** Implementation detail of unit_type::alignment_description */
 
-MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
-	(LAWFUL,         N_("female^lawful"))
-	(FEMALE_NEUTRAL, N_("female^neutral"))
-	(CHAOTIC       , N_("female^chaotic"))
-	(LIMINAL,        N_("female^liminal"))
-)
-
-std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
+std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count,
-		"ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
-
-	assert(align.valid());
-
-	std::string str = std::string();
+	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
+	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
 
 	if(gender == unit_race::FEMALE) {
-		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
-		str = fem.to_string();
+		return female_names[static_cast<int>(align)];
 	} else {
-		str = align.to_string();
+		return male_names[static_cast<int>(align)];
 	}
-
-	return translation::sgettext(str.c_str());
 }
 
 /* ** unit_type_data ** */
@@ -942,7 +926,7 @@ void patch_movetype(movetype& mt,
 
 		// These three need to follow movetype's fallback system, where values for
 		// movement costs are used for vision too.
-		const auto fallback_children = std::array<std::string, 3>{{"movement_costs", "vision_costs", "jamming_costs"}};
+		const std::array fallback_children {"movement_costs", "vision_costs", "jamming_costs"};
 		config cumulative_values;
 		for(const auto& x : fallback_children) {
 			if(mt_cfg.has_child(x)) {
@@ -959,7 +943,7 @@ void patch_movetype(movetype& mt,
 		}
 
 		// These don't need the fallback system
-		const auto child_names = std::array<std::string, 2>{{"defense", "resistance"}};
+		const std::array child_names {"defense", "resistance"};
 		for(const auto& x : child_names) {
 			if(mt_cfg.has_child(x)) {
 				const auto& subtag = mt_cfg.child(x);
@@ -1159,7 +1143,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			std::string alias;
 			int default_val;
 		};
-		const std::array<ter_defs_to_movetype, 4> terrain_info_tags{
+		const std::array terrain_info_tags{
 			ter_defs_to_movetype{{"movement_costs"}, {"movement"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"vision_costs"}, {"vision"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"jamming_costs"}, {"jamming"}, movetype::UNREACHABLE},

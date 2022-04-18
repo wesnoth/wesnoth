@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,7 +56,7 @@ public:
 	 *
 	 * @param signal              The signal to connect.
 	 */
-	void connect_signal_mouse_left_down(const event::signal_function& signal);
+	void connect_signal_mouse_left_down(const event::signal& signal);
 
 	/**
 	 * Disconnects a signal handler for a left mouse button down.
@@ -65,7 +65,7 @@ public:
 	 *                            as send to the connect call.
 	 */
 	void
-	disconnect_signal_mouse_left_down(const event::signal_function& signal);
+	disconnect_signal_mouse_left_down(const event::signal& signal);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -79,13 +79,13 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from clickable_item. */
-	virtual void connect_click_handler(const event::signal_function& signal) override
+	virtual void connect_click_handler(const event::signal& signal) override
 	{
 		connect_signal_mouse_left_down(signal);
 	}
 
 	/** Inherited from clickable_item. */
-	virtual void disconnect_click_handler(const event::signal_function& signal) override
+	virtual void disconnect_click_handler(const event::signal& signal) override
 	{
 		disconnect_signal_mouse_left_down(signal);
 	}

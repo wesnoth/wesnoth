@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,8 +56,10 @@ unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_i
  */
 void recall_list_manager::erase_if_matches_id(const std::string &unit_id)
 {
+	// using unit_id as reference has potential to cause a crash if the underlying unit becomes invald
+	// https://github.com/wesnoth/wesnoth/issues/6603
 	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; }),
+		[unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; }),
 	                       recall_list_.end());
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -434,7 +434,7 @@ bool game_launcher::init_lua_script()
 void game_launcher::set_test(const std::string& id)
 {
 	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
+	state_.classification().type = campaign_type::type::test;
 	state_.classification().campaign_define = "TEST";
 	state_.classification().era_id = "era_default";
 
@@ -553,11 +553,11 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 {
 	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
-	LEVEL_RESULT game_res = LEVEL_RESULT::TEST_FAIL;
+	level_result::type game_res = level_result::type::fail;
 	try {
 		campaign_controller ccontroller(state_, true);
 		game_res = ccontroller.play_game();
-		if(game_res == LEVEL_RESULT::TEST_FAIL) {
+		if(game_res == level_result::type::fail) {
 			if(lg::broke_strict()) {
 				return unit_test_result::BROKE_STRICT_TEST_FAIL;
 			} else {
@@ -575,7 +575,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		return pass_victory_or_defeat(game_res);
 	}
 
-	savegame::replay_savegame save(state_, compression::NONE);
+	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
 	load_data_ = savegame::load_game_metadata{
@@ -602,15 +602,15 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	return pass_victory_or_defeat(game_res);
 }
 
-game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(LEVEL_RESULT res)
+game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(level_result::type res)
 {
-	if(res == LEVEL_RESULT::DEFEAT) {
+	if(res == level_result::type::defeat) {
 		if(lg::broke_strict()) {
 			return unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT;
 		} else {
 			return unit_test_result::TEST_FAIL_BY_DEFEAT;
 		}
-	} else if(res == LEVEL_RESULT::VICTORY) {
+	} else if(res == level_result::type::victory) {
 		if(lg::broke_strict()) {
 			return unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY;
 		} else {
@@ -645,8 +645,8 @@ bool game_launcher::play_render_image_mode()
 		return true;
 	}
 
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+	state_.classification().type = campaign_type::type::multiplayer;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
 
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
@@ -679,7 +679,7 @@ bool game_launcher::load_game()
 {
 	assert(game_config_manager::get());
 
-	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
@@ -753,7 +753,7 @@ bool game_launcher::load_game()
 bool game_launcher::new_campaign()
 {
 	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
+	state_.classification().type = campaign_type::type::scenario;
 	play_replay_ = false;
 
 	return sp::select_campaign(state_, jump_to_campaign_);

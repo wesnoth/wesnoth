@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -68,8 +68,6 @@ public:
 	virtual ~controller_base();
 
 	virtual void play_slice(bool is_delay_enabled = true);
-
-	static const config& get_theme(const game_config_view& game_config, std::string theme_name);
 
 	void apply_keyboard_scroll(int x, int y);
 
