@@ -387,7 +387,9 @@ protected:
 	{
 		cmd_prefix_ = value;
 	}
-	// set command or message flag
+	//sets the "cmd_flag_" flag as "true" when "cmd_prefix_" is in command
+	//line mode and to "false" when "cmd_prefix_" is in message line mode.
+	//The "help" message's symbols depend on the flag's value.
 	static void set_cmd_flag(bool value)
 	{
 		cmd_flag_ = value;
