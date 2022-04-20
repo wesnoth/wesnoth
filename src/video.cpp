@@ -249,18 +249,11 @@ void CVideo::update_framebuffer()
 		uint32_t format = window->pixel_format();
 		int bpp = SDL_BITSPERPIXEL(format);
 
-		// Free the old drawing surface.
-		if (drawingSurface) {
-			// Except it can still be in use... what should we do about that?
-			LOG_DP << "leaking old drawing surface" << std::endl;
-			//LOG_DP << "freeing old drawing surface" << std::endl;
-			//SDL_FreeSurface(drawingSurface);
-		}
-
 		// This should match the old system, and so shouldn't cause any
 		// problems that weren't there already.
 		LOG_DP << "creating " << bpp << "bpp drawing surface with format "
 			<< SDL_GetPixelFormatName(format) << std::endl;
+		// Note: "surface" destructor automatically frees the old surface
 		drawingSurface = SDL_CreateRGBSurfaceWithFormat(
 			0,
 			wsize.x / scale,
