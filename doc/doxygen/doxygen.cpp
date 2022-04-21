@@ -29,7 +29,7 @@
 
 <tr>
 <td valign="top">
-	@image html portraits/humans/mage.png
+	@image html portraits/humans/mage.webp
 </td>
 <td>
 	<h3>Reference</h3>
