@@ -14,6 +14,7 @@
    * Sceptre of Fire
      * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart.
      * Improvements and spelling corrections to the English prose text (PR #6177).
+     * S9: Allow Grypon Riders to complete the scenario (issue #6332)
    * Son of the Black Eye
      * Improvements and spelling corrections to the English prose text (PR #6166).
    * The Rise of Wesnoth
