@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Sceptre of Fire
+     * S9: Allow Grypon Riders to complete the scenario (issue #6332)
  ### Editor
  ### Multiplayer
  ### Lua API
