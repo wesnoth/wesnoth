@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-04-17 03:24+0300\n"
-"PO-Revision-Date: 2021-09-17 06:17+0200\n"
-"Last-Translator: Clemence <.>\n"
+"PO-Revision-Date: 2022-04-17 21:06+0200\n"
+"Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5676,9 +5676,6 @@ msgstr ""
 "depuis le serveur."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -5802,10 +5799,11 @@ msgstr ""
 #: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr ""
+"L'identifiant du sujet sur le forum pour les retours doit être un nombre."
 
 #: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "Le sujet sur le forum pour les retours n'existe pas."
 
 #: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
@@ -6422,8 +6420,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "Tuez tous les chefs ennemis"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "Ère « $era » introuvable"
 
@@ -7329,6 +7325,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+" Similaire à la commande 'fps' mais forçant aussi un rafraîchissement "
+"complet plutôt que limité à ce qui a changé."
 
 #: src/menu_events.cpp:1249
 msgid "Save game."
@@ -8246,16 +8244,12 @@ msgstr "Compte à rebours des tours"
 # En français c'est "nom du jour, jour, mois"
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %I:%M %p %Y"
 
 # En français c'est "nom du jour, jour, mois"
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %H:%M %Y"
 
@@ -8803,15 +8797,6 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options du tableau blanc"
 
-#~ msgid "Independent"
-#~ msgstr "Indépendant"
-
-#~ msgid "No Mirror"
-#~ msgstr "Pas de miroir"
-
-#~ msgid "No Ally Mirror"
-#~ msgstr "Pas de miroir allié"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -8821,6 +8806,18 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>- Galun, Chef de la Nuée, 5 ap. W.</i>"
+
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Utilise [modify_unit_type]\n"
+
+#~ msgid "Independent"
+#~ msgstr "Indépendant"
+
+#~ msgid "No Mirror"
+#~ msgstr "Pas de miroir"
+
+#~ msgid "No Ally Mirror"
+#~ msgstr "Pas de miroir allié"
 
 #~ msgid "<room>"
 #~ msgstr "<salon>"
@@ -8848,9 +8845,6 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "Room query."
 #~ msgstr "Requête de salon."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Utilise [modify_unit_type]\n"
 
 #~ msgid "drains 20%"
 #~ msgstr "drain"
