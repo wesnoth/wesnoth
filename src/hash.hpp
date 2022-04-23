@@ -62,14 +62,6 @@ public:
 	virtual std::string hex_digest() const override;
 };
 
-class sha1 : public hash_digest<20>
-{
-public:
-	explicit sha1(const std::string& input);
-	virtual std::string base64_digest() const override;
-	virtual std::string hex_digest() const override;
-};
-
 class bcrypt : public hash_digest<BCRYPT_HASHSIZE, char>
 {
 	bcrypt() {}
