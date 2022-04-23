@@ -57,9 +57,8 @@ void update_screen_size_variables()
 	screen_width = rect.w;
 	screen_height = rect.h;
 
-	// This should, perhaps, include the pixel scale multiplier.
-	// However i'm not sure what it is intended to be used for,
-	// and it doesn't appear to be currently used anywhere.
+	// Use of screen_pitch_microns should probably be deprecated, as physical
+	// DPI is not an accurate method of determining perceptual pixel size.
 	auto [scalew, scaleh] = video.get_dpi_scale_factor();
 	float avgscale = (scalew + scaleh)/2;
 	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
