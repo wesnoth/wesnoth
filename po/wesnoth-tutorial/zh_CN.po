@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # CloudiDust <cloudidust@gmail.com>, 2010.
@@ -10,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
-"PO-Revision-Date: 2022-01-07 09:08+0800\n"
+"POT-Creation-Date: 2022-01-02 18:02 UTC\n"
+"PO-Revision-Date: 2022-04-22 16:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -34,10 +36,6 @@ msgstr "教程"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first-time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
@@ -55,8 +53,6 @@ msgstr "选择角色"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play as?"
 msgid "Who do you want to play as?"
 msgstr "你要扮演谁？"
 
@@ -150,12 +146,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing as Konrad. You are standing on the "
-#| "keep, and your mentor Delfador is on the east side of the river. You can "
-#| "move the mouse over a unit to see a summary of its abilities and stats on "
-#| "the right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -167,12 +157,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing as Li’sar. You are standing on the "
-#| "keep, and your mentor Delfador is on the east side of the river. You can "
-#| "move the mouse over a unit to see a summary of its abilities and stats on "
-#| "the right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -215,8 +199,8 @@ msgid ""
 msgstr ""
 "当你的鼠标在单位上方悬停或选中单位（此处为科纳德）时，他可以移动到的位置会高"
 "亮显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动"
-"的格子数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点"
-"击目的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
+"的格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击"
+"目的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
@@ -230,8 +214,8 @@ msgid ""
 msgstr ""
 "当你的鼠标在单位上方悬停或选中单位（此处为莉莎）时，她可以移动到的位置会高亮"
 "显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的"
-"格子数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击"
-"目的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
+"格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击目"
+"的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:381
@@ -417,15 +401,6 @@ msgstr "回合"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "sides, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -571,13 +546,6 @@ msgstr "征募"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. For this scenario, you have only one "
-#| "type of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -585,8 +553,8 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"任何时候，只要你在<b>城堡主楼</b>上，你就可以在其四周的城堡格子里进行<b>征募"
-"</b>，只需要右击格子并且选择<b>征募</b>即可。注意，新征募的单位在你征募他们的"
+"任何时候，只要你在<b>城堡主楼</b>上，你就可以在其四周的城堡格里进行<b>征募</"
+"b>，只需要右击城堡格并且选择<b>征募</b>即可。注意，新征募的单位在你征募他们的"
 "那一回合不能行动。在下一回合你将可以使用他们。在此场景中你只有一种类型的单位"
 "可以选择：精灵战士。"
 
@@ -639,10 +607,6 @@ msgstr "是的，如果一个单位在一回合内什么都没有做，它将会
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attacks..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -764,9 +728,6 @@ msgstr "单位描述"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr "你可以右击一个单位来查看详细的<b>单位描述</b>。."
@@ -1020,12 +981,6 @@ msgstr "在征募部队并占领一个村庄之前，不能结束回合！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is the second part of the two-part tutorial. Part 2 "
-#| "will teach you about recalling units, abilities and weapon specials, "
-#| "income and upkeep, long-distance movement, zone of control, and time of "
-#| "day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
@@ -1050,12 +1005,6 @@ msgstr "呵，伽德拉德！德法多有没有召唤些别的什么来揍我？
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1068,12 +1017,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1196,16 +1139,6 @@ msgstr "召回"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
-#, fuzzy
-#| msgid ""
-#| "In addition to recruiting new units each scenario, you can also "
-#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
-#| "cost of 20 gold each. This allows you to build up a formidable army over "
-#| "the course of multiple scenarios by recalling your highest leveled troops "
-#| "or those with good combinations of traits and abilities. To recall a "
-#| "unit, right-click while your leader stands on a keep and select the "
-#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
-#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1288,18 +1221,6 @@ msgstr "武器特攻"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapon specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1345,12 +1266,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
-#, fuzzy
-#| msgid ""
-#| "You now have two healers. Your Druid can heal adjacent units by 8 "
-#| "hitpoints per turn compared to your Shaman’s 4. However, each unit can "
-#| "only receive healing from one healer — a unit next to multiple healers is "
-#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
@@ -1707,10 +1622,10 @@ msgid ""
 "prevent stronger enemies from reaching key locations, such as villages, even "
 "if you have limited manpower."
 msgstr ""
-"紧邻一个单位的六个格子组成了它的<b>控制区域<b>。当敌方单位进入那些格子时，他"
-"们在该回合将无法继续移动。（有一个例外，拥有<b>散兵</b>能力的单位不受控制区域"
-"的影响。）这可以用于封锁强敌的行动，让他们不能接近诸如村庄一类的关键位置，哪"
-"怕你人手不足也是如此。"
+"紧邻一个单位的六个六角格组成了它的<b>控制区域<b>。当敌方单位进入那些六角格"
+"时，他们在该回合将无法继续移动。（有一个例外，拥有<b>散兵</b>能力的单位不受控"
+"制区域的影响。）这可以用于封锁强敌的行动，让他们不能接近诸如村庄一类的关键位"
+"置，哪怕你人手不足也是如此。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
@@ -1741,10 +1656,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal each of them 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
@@ -1813,10 +1724,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
-#, fuzzy
-#| msgid ""
-#| "You’re venturing away from your keep. You might need to recruit more "
-#| "units, and I doubt the orc leader will let you use his! Careful!"
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -1918,11 +1825,6 @@ msgstr "胜利条件"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Objectives</b> in the "
-#| "<b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
@@ -2086,7 +1988,7 @@ msgstr "高级单位是很强大，但并不是无敌的。我们会想念你的
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1318
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
-msgstr "失去一位治疗师是对整支军队的打击！保证她们处在敌人的攻击范围之外！"
+msgstr "失去一位医者是对整支军队的打击！保证她们处在敌人的攻击范围之外！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1332

@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 # Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
@@ -8,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
-"POT-Creation-Date: 2021-11-09 03:45+0300\n"
-"PO-Revision-Date: 2022-01-05 16:12+0800\n"
+"POT-Creation-Date: 2022-01-16 13:30+0300\n"
+"PO-Revision-Date: 2022-04-22 16:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -847,12 +849,13 @@ msgstr "缩小后的战场全地图"
 msgid ""
 "Current hex position (x-coordinate, y-coordinate), defense and movement of "
 "the currently selected unit on the marked hex"
-msgstr "当前格子位置（X坐标，Y坐标），当前选中的单位在所指格子上的防御和移动力"
+msgstr ""
+"当前六角格位置（X坐标，Y坐标），当前选中的单位在所指六角格上的防御和移动力"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:476
 msgid "Current hex type"
-msgstr "当前格子类型"
+msgstr "当前六角格类型"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:481
@@ -887,11 +890,11 @@ msgid ""
 "start to build your army to conquer the enemy."
 msgstr ""
 "在场景或者战役刚开始的时候您只会拥有少量的单位。其中之一是您的指挥官（有小皇"
-"冠标记）。指挥官通常被放置在城堡中的一个特殊格子上，这个格子称为主楼。只要当"
-"您的指挥官站在主楼上（不单是您自己的主楼，也可以是您所占领的任何一个敌军城堡"
-"的主楼）并且拥有足够金币时，您就可以为您的军队征募单位。在之后的场景中您可以"
-"召回在先前的场景中存活的富有经验的单位。以此为开端，您就可以开始建立您的军队"
-"并征服敌人了。"
+"冠标记）。指挥官通常被放置在城堡中的一个特殊六角格上，此格称为主楼。只要当您"
+"的指挥官站在主楼上（不单是您自己的主楼，也可以是您所占领的任何一个敌军城堡的"
+"主楼）并且拥有足够金币时，您就可以为您的军队征募单位。在之后的场景中您可以召"
+"回在先前的场景中存活的富有经验的单位。以此为开端，您就可以开始建立您的军队并"
+"征服敌人了。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:506
@@ -2321,13 +2324,13 @@ msgid ""
 "top of a unit&#8217;s energy bar provide a quick way to see which of your "
 "units have already moved or can move further in the current turn."
 msgstr ""
-"单击一个单位将显示出它本回合可以移动到的所有位置，而不能移动到的格子将变暗"
+"单击一个单位将显示出它本回合可以移动到的所有位置，而不能移动到的六角格将变暗"
 "（按数字键2－7可以用类似的方式显示出对应回合数可以移动到的位置）。在此模式"
-"下，把光标移到一个格子上会出现您的单位移动到此格所要经过的路径，以及有关您的"
-"单位在此格上的防御加成的附加信息。此外，如果单位到达此格需要一个以上的回合"
-"时，也将显示出所需的回合数。如果您不想移动本单位，可以选择其他单位（点击新单"
-"位，或者使用<literal>n</literal>/<literal>N</literal>键），或者在地图的任意位"
-"置上右击（在Mac上是按住Command并点击）以取消此模式。单位能量条顶部的<link "
+"下，把光标移到六角格上会出现您的单位移动到此格所要经过的路径，以及有关您的单"
+"位在此格上的防御加成的附加信息。此外，如果单位到达此格需要一个以上的回合时，"
+"也将显示出所需的回合数。如果您不想移动本单位，可以选择其他单位（点击新单位，"
+"或者使用<literal>n</literal>/<literal>N</literal>键），或者在地图的任意位置上"
+"右击（在Mac上是按住Command并点击）以取消此模式。单位能量条顶部的<link "
 "linkend=\"orbs\">状态球</link>让您可以快速查看在本回合中哪些单位已经移动过"
 "了，而哪些还可以继续移动。"
 
@@ -2344,7 +2347,7 @@ msgid ""
 "by selecting that unit and choosing a new destination or clicking the unit "
 "again to cancel the <emphasis>goto</emphasis>."
 msgstr ""
-"如果您要移动选中的单位，只需单击要移动到的格子，您的单位就会向着那个位置移"
+"如果您要移动选中的单位，只需单击要移动到的六角格，您的单位就会向着那个位置移"
 "动。如果所选的目的地在本回合内无法到达，则在本回合中单位会移动到离目的地尽可"
 "能近的地方，并进入<emphasis>前往目的地模式</emphasis>。在<emphasis>前往目的地"
 "模式</emphasis>下，您的单位在接下来的几个回合中会自动移动到目的地。在您的下个"
@@ -2368,9 +2371,9 @@ msgid ""
 "reflected in both the path that is displayed for your unit and the hexes it "
 "may move to on the current turn."
 msgstr ""
-"大多数的单位都会产生“控制区域”，该区域会影响您的单位所能到达的格子以及它所选"
-"择的路径。这些限制将自动反映在移动您的单位时所显示的路径以及它在当前回合所能"
-"到达的格子上。"
+"大多数的单位都会产生“控制区域”，该区域会影响您的单位所能到达的六角格以及它所"
+"选择的路径。这些限制将自动反映在移动您的单位时所显示的路径以及它在当前回合所"
+"能到达的六角格上。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1592
@@ -2835,7 +2838,7 @@ msgid ""
 msgstr ""
 "巨魔和树人可以通过再生能力自然回复。他们如果负伤了，每回合将自动恢复8点生命"
 "值。注意，因为所有单位每回合最多只能通过治疗恢复8点生命值，所以巨魔和树人进入"
-"村庄里或者站在治疗师身边也得不到任何额外的好处。"
+"村庄里或者站在医者身边也得不到任何额外的好处。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1866
@@ -2991,9 +2994,9 @@ msgid ""
 "control into account. Thus you can check that your near death unit, which is "
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
-"在“行动”菜单里，您可以选择“显示敌方移动范围”来高亮所有对手实际能到达的格子。"
-"这个命令考虑了您的控制区域的影响。这样您就可以检查并确保您在战线后方的濒死单"
-"位因为敌人无法接近而确实无法被攻击到。"
+"在“行动”菜单里，您可以选择“显示敌方移动范围”来高亮所有对手实际能到达的六角"
+"格。这个命令考虑了您的控制区域的影响。这样您就可以检查并确保您在战线后方的濒"
+"死单位因为敌人无法接近而确实无法被攻击到。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1956
@@ -3008,7 +3011,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1961
 msgid "Shield with your zone of control (ZOC)"
-msgstr "通过控制区域（ZOC）进行防御"
+msgstr "通过控制区域进行防御"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1962
@@ -3018,9 +3021,9 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
-"每个1级或以上的单位都会在周围的全部6个格子中维持控制区域。这意味着当敌人移动"
-"到这6个相邻区块中的任何一个时，就会被迫停下来，并结束移动阶段（只有拥有少见的"
-"散兵能力的敌人才能忽略控制区域）。"
+"每个1级或以上的单位都会在周围的全部6个六角格中维持控制区域。这意味着当敌人移"
+"动到这6个相邻区块中的任何一个时，就会被迫停下来，并结束移动阶段（只有拥有少见"
+"的散兵能力的敌人才能忽略控制区域）。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1966
@@ -3113,7 +3116,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2002
 msgid "Note that your units can pass through hexes containing your own troops."
-msgstr "注意，您的单位可以穿越被您自己的部队占据的格子。"
+msgstr "注意，您的单位可以穿越被您自己的部队占据的六角格。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2005
@@ -3127,7 +3130,7 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the "
 "enemy&#8217;s counterstrikes will be less likely to do damage."
 msgstr ""
-"尽量把您的部队布置在防御率高的格子内，而让敌人处在防御率低的地形上。这样一"
+"尽量把您的部队布置在防御率高的六角格内，而让敌人处在防御率低的地形上。这样一"
 "来，敌人的反击造成伤害的几率会变小。"
 
 #. type: Content of: <book><chapter><section><section><simpara>

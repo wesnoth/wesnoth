@@ -1,14 +1,16 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # sylecn <sylecn@gmail.com>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
-"POT-Creation-Date: 2022-02-20 13:43+0300\n"
-"PO-Revision-Date: 2022-01-05 14:54+0800\n"
+"POT-Creation-Date: 2022-04-17 03:24+0300\n"
+"PO-Revision-Date: 2022-04-22 16:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -1925,10 +1927,6 @@ msgstr "全局标签："
 
 #. type: Plain text
 #: doc/man/wesnothd.6:193
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
@@ -2024,14 +2022,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:238
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
-#| "section is present in the configuration the server will run without any "
-#| "nick registration service. All additional tables that are needed for the "
-#| "B<forum_user_handler> to function can be found in table_definitions.sql "
-#| "in the Wesnoth source repository. Requires mysql support enabled. For "
-#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
