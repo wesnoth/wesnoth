@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-16 21:00+0300\n"
-"PO-Revision-Date: 2021-09-17 06:17+0200\n"
-"Last-Translator: Clemence <.>\n"
+"PO-Revision-Date: 2022-04-17 21:06+0200\n"
+"Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5786,10 +5786,11 @@ msgstr ""
 #: src/addon/validation.cpp:486
 msgid "Feedback topic id is not a number."
 msgstr ""
+"L'identifiant du sujet sur le forum pour les retours doit être un nombre."
 
 #: src/addon/validation.cpp:490
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "Le sujet sur le forum pour les retours n'existe pas."
 
 #: src/addon/validation.cpp:494
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
@@ -7276,6 +7277,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+" Similaire à la commande 'fps' mais forçant aussi un rafraîchissement "
+"complet plutôt que limité à ce qui a changé."
 
 #: src/menu_events.cpp:1250
 msgid "Save game."
@@ -8205,16 +8208,12 @@ msgstr "Compte à rebours des tours"
 # En français c'est "nom du jour, jour, mois"
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %I:%M %p %Y"
 
 # En français c'est "nom du jour, jour, mois"
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %H:%M %Y"
 
