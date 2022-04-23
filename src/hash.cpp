@@ -29,18 +29,15 @@ extern "C" {
 
 #ifndef __APPLE__
 
-#include <openssl/sha.h>
 #include <openssl/md5.h>
 
 static_assert(utils::md5::DIGEST_SIZE == MD5_DIGEST_LENGTH, "Constants mismatch");
-static_assert(utils::sha1::DIGEST_SIZE == SHA_DIGEST_LENGTH, "Constants mismatch");
 
 #else
 
 #include <CommonCrypto/CommonDigest.h>
 
 static_assert(utils::md5::DIGEST_SIZE == CC_MD5_DIGEST_LENGTH, "Constants mismatch");
-static_assert(utils::sha1::DIGEST_SIZE == CC_SHA1_DIGEST_LENGTH, "Constants mismatch");
 
 #endif
 
@@ -120,28 +117,6 @@ std::string md5::hex_digest() const
 }
 
 std::string md5::base64_digest() const
-{
-	return encode_hash<DIGEST_SIZE>(hash);
-}
-
-sha1::sha1(const std::string& str)
-{
-#ifndef __APPLE__
-	SHA_CTX hasher;
-	SHA1_Init(&hasher);
-	SHA1_Update(&hasher, str.data(), str.size());
-	SHA1_Final(hash.data(), &hasher);
-#else
-	CC_MD5(str.data(), static_cast<CC_LONG>(str.size()), hash.data());
-#endif
-}
-
-std::string sha1::hex_digest() const
-{
-	return hexencode_hash<DIGEST_SIZE>(hash);
-}
-
-std::string sha1::base64_digest() const
 {
 	return encode_hash<DIGEST_SIZE>(hash);
 }

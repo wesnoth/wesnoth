@@ -179,7 +179,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		// Use a hash for a shorter display of the defines.
 		const std::string fname = cache_path + "/" +
 								  cache_file_prefix_ +
-								  utils::sha1(defines_string.str()).hex_digest();
+								  utils::md5(defines_string.str()).hex_digest();
 		const std::string fname_checksum = fname + ".checksum" + extension;
 
 		filesystem::file_tree_checksum dir_checksum;
