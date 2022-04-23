@@ -36,7 +36,7 @@
    * New graphics variations for icy and rocky terrains.
    * The help browser adds special notes for castles and healing terrains (PR #6461).
  ### Translations
-   * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, French, Italian, Portuguese (Brazil), Russian
    * Fixed the stats for Spanish being overwritten by the stats for Spanish (Latin American).
  ### Units
    * Saurian sprites cleanup (PR #6450).

@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -14,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2022-01-13 13:30+0800\n"
+"PO-Revision-Date: 2022-04-22 16:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -412,22 +414,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr "绘制单个格子。"
+msgstr "绘制单格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr "一次绘制七个格子。"
+msgstr "一次绘制七格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr "一次绘制十九个格子。"
+msgstr "一次绘制十九格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr "绘制一直线上的三个格子。"
+msgstr "绘制一直线上的三格。"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -481,12 +483,12 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
-"选择一组格子，与菜单栏下的剪切、复制和填充选择区域按钮一起使用。\n"
+"选择一组六角格，与菜单栏下的剪切、复制和填充选择区域按钮一起使用。\n"
 "\n"
 "<bold>text='键盘修饰符'</bold>\n"
 "\n"
-"• Shift+鼠标点击：“魔杖”模式，选择鼠标光标下的格子，以及相同地形类型的相邻格"
-"子。\n"
+"• Shift+鼠标点击：“魔杖”模式，选择鼠标光标下的六角格，以及相同地形类型的相邻"
+"六角格。\n"
 "• Control+鼠标点击：取消选择。\n"
 "\n"
 "<bold>text='笔刷大小'</bold>\n"
@@ -496,22 +498,22 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr "选择单个格子。"
+msgstr "选择单格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr "一次选择七个格子。"
+msgstr "一次选择七格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr "一次选择十九个格子。"
+msgstr "一次选择十九格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr "选择一直线上的三个格子。"
+msgstr "选择一直线上的三格。"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
@@ -535,8 +537,8 @@ msgid ""
 msgstr ""
 "旋转、翻转和粘贴剪贴板中的地形\n"
 "\n"
-"可以使用<ref>dst='editor_tool_select' text='选择工具'</ref>将格子剪切或复制到"
-"剪贴板。\n"
+"可以使用<ref>dst='editor_tool_select' text='选择工具'</ref>将六角格剪切或复制"
+"到剪贴板。\n"
 "\n"
 "粘贴工具会显示剪贴板中内容的轮廓，可以用鼠标点击来粘贴。显示的内容只有轮廓，"
 "但可以用撤销功能来纠正错误，该功能绑定在Control+Z键上，同时也绑定在和游戏中的"
@@ -607,8 +609,9 @@ msgstr ""
 "此工具用于设置各阵营首领的默认起始位置，以及具名的特殊位置。在<ref>dst='..."
 "editor_mode_terrain' text='地形编辑器'</ref>和<ref>dst='..."
 "editor_mode_scenario' text='场景编辑器'</ref>模式下，这两种类型的位置都启用"
-"了。位置名称在编辑器调色板中显示为一个列表，点击地图将把该名称放置于一个格子"
-"上。每个位置只能放在一个格子上，而且编辑器只允许每个格子上最多有一个位置。\n"
+"了。位置名称在编辑器调色板中显示为一个列表，点击地图将把该名称放置于六角格"
+"上。每个位置只能放在一个六角格上，而且编辑器只允许每个六角格上最多有一个位"
+"置。\n"
 "\n"
 "要添加具名的特殊位置，请点击编辑器调色板底部的“添加”，并输入名称。这些名称必"
 "须以字母开头，可以包含数字和下划线。\n"
@@ -623,7 +626,7 @@ msgstr ""
 "\n"
 "<bold>text='键盘修饰符'</bold>\n"
 "\n"
-" •Control+鼠标点击已经含有位置的格子：选择该格子中的位置，用于在下次鼠标点击"
+" •Control+鼠标点击已经含有位置的六角格：选择该格中的位置，用于在下次鼠标点击"
 "时进行放置，与在编辑器调色板中选择该位置等价。"
 
 #. [topic]: id=editor_tool_label
@@ -672,7 +675,8 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
-"物品工具可以放置风车、书柜和巨石等装饰物。多个物品可以放置在同一个格子上。\n"
+"物品工具可以放置风车、书柜和巨石等装饰物。多个物品可以放置在同一个六角格"
+"上。\n"
 "\n"
 "<bold>text='注意：'</bold>此工具不支持删除已经放置的物品，也不支持撤销。目前"
 "只能通过编辑生成的WML文件来修复错误。\n"
@@ -732,7 +736,7 @@ msgstr ""
 "\n"
 "• 左键单击将放置单位。\n"
 "• 左键拖放将移动已放置的单位。\n"
-"• 当格子中包含单位时，各种操作将被添加到该格子的右键菜单中。\n"
+"• 当六角格中包含单位时，各种操作将被添加到该格的右键菜单中。\n"
 "\n"
 "这个工具只在场景模式中可用。它会将WML的<italic>text='[unit]'</italic>标签添加"
 "到适当的<italic>text='[side]'</italic>下。"
@@ -772,12 +776,12 @@ msgstr ""
 "的id，以创建可以用于此类过滤器的贴片组。（Wiki上有关于标准位置过滤器这一概念"
 "的详细说明。）例如：\n"
 "\n"
-"• 为此组格子指定本地时区\n"
-"• 筛选出当角色移动到其上时会触发事件的格子组\n"
+"• 为此组六角格指定本地时区\n"
+"• 筛选出当角色移动到其上时会触发事件的六角格组\n"
 "\n"
 "如何使用此工具：\n"
 "\n"
-"- 使用<ref>dst='editor_tool_select' text='select tool'</ref>选择格子。\n"
+"- 使用<ref>dst='editor_tool_select' text='select tool'</ref>选择六角格。\n"
 "- 在“区域”菜单中，选择“添加新区域”\n"
 "- 然后在“区域”菜单中，选择“保存选中范围到区域”\n"
 "- 然后在“区域”菜单中，选择“重命名所选区域”并为该区域选择名称。\n"
@@ -895,8 +899,7 @@ msgstr ""
 "• 与游戏中完全一致的地图渲染\n"
 "\n"
 "地图在游戏中的样子不会和编辑器中的完全一样，因为这取决于地形规则。例如，当许"
-"多山地格子聚集在一起时，地形规则会试图将它们组合成山脉和横跨多个格子的大图"
-"形。\n"
+"多山地格聚集在一起时，地形规则会试图将它们组合成山脉和横跨多格的大图形。\n"
 "\n"
 "• 事件处理器和脚本\n"
 "\n"
@@ -1393,20 +1396,20 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
-"韦诺历法中的每年都由12个月组成。这些月份依次是：\n"
+"韦诺历法中每年都由12个月组成。这些月份依次是：\n"
 "\n"
-"银白之火\n"
-"血色之月\n"
-"散播之种\n"
-"深埋之根\n"
-"斯克莱尔之花\n"
-"荆棘之女\n"
-"巅峰之星\n"
-"温燃之火\n"
-"静止之种\n"
-"死神之月\n"
-"维格拉斯之花\n"
-"黯黑之火\n"
+"白火月\n"
+"渗血月\n"
+"播种月\n"
+"深根月\n"
+"星华月\n"
+"棘女月\n"
+"峰星月\n"
+"燃火月\n"
+"静种月\n"
+"死神月\n"
+"冰华月\n"
+"黑火月\n"
 "\n"
 
 #. [section]: id=geography
@@ -2151,7 +2154,7 @@ msgstr ""
 "<ref>dst='movement' text='控制区域'</ref>和<ref>dst='time_of_day' text='时"
 "段'</ref>）的熟习程度。而“难度”表明了战役中的场景对一位老手会有多大挑战：难度"
 "越高，胜利之前的阻碍会越多，而要克服阻碍则需要更高超的游玩技术。例如，在更高"
-"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格子，诸如此类。"
+"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格，诸如此类。"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2232,9 +2235,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"如果你是右击城堡格子后选择征募的，那么新的单位将出现在该格内。否则，新兵将出"
-"现在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在"
-"招募时，你的总花费不能超出你所拥有的金币数量。"
+"如果你是右击城堡格后选择征募的，那么新的单位将出现在该格内。否则，新兵将出现"
+"在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在招"
+"募时，你的总花费不能超出你所拥有的金币数量。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2253,10 +2256,10 @@ msgstr ""
 "游戏开始时，每一阵营都有一位首领在城堡主楼里。在战斗开始时，以及战斗过程中，"
 "你需要征募<ref>dst='..units' text='单位'</ref>到你的部队里。要想征募单位，你"
 "的首领（例如<bold>text='王座继承人'</bold>战役中的科纳德）必须位于"
-"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格子上。而后你可以在菜单中选"
-"择<bold>text='征募'</bold>或右键点击一个格子并选择<bold>text='征募'</bold>。"
-"此时会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单"
-"位可以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
+"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格上。而后你可以在菜单中选择"
+"<bold>text='征募'</bold>或右键点击六角格并选择<bold>text='征募'</bold>。此时"
+"会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单位可"
+"以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -2569,8 +2572,8 @@ msgstr ""
 "\n"
 "\n"
 "移动时，你还需要记住<bold>text='控制区域'</bold>这一概念。每个单位都会在紧邻"
-"自身的格子中产生控制区域，敌军若进入那些格子，将立即无法继续移动。学习如何利"
-"用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
+"自身的六角格中产生控制区域，敌军若进入那些六角格，将立即无法继续移动。学习如"
+"何利用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
 "text='散兵'</ref>可以忽略控制区域的影响。"
 
 #. [topic]: id=movement
@@ -2621,8 +2624,8 @@ msgstr ""
 "之后，你将总是能看见该位置。<bold>text='战争迷雾'</bold>只会隐藏单位，以及村"
 "庄的归属（除了属于你或者你的盟友的村庄之外）。当迷雾附近有你的单位时，它会暂"
 "时消失，而当他们离去后则会再次笼罩。黑幕和迷雾都可以被单位所清除。单位清除黑"
-"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈格"
-"子（忽略控制区域和敌方单位的影响）。\n"
+"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈六"
+"角格（忽略控制区域和敌方单位的影响）。\n"
 "\n"
 "通常你可以撤销单位的移动，只要没有发生会产生随机结果的事件即可，比如战斗和征"
 "募（大多数单位被征募时都会获得随机的特质）。为了探索被隐藏的地形而清除黑幕或"
@@ -3833,7 +3836,7 @@ msgstr ""
 "\n"
 "\n"
 "最后，陆上单位通常不能居住在水中村庄里。因此水中村庄不能为这些单位提供村庄的"
-"防御和移动加成，而是仅仅被视为普通的水地形格子。\n"
+"防御和移动加成，而是仅仅被视为普通的水地形格。\n"
 "\n"
 "\n"
 
@@ -3848,8 +3851,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并检视（在默认主题下）于右上角显示的地形类型图标，就可以看"
-"到该格对应的混合地形是由什么基本地形组成的了。"
+"将鼠标移动到六角格上并检视（在默认主题下）于右上角显示的地形类型图标，就可以"
+"看到该格对应的混合地形是由什么基本地形组成的了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:577
@@ -3863,8 +3866,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并按下快捷键，或右击并从上下文中选择<bold>text='地形描述'</"
-"bold>，你就可以看到混合地形所产生的效果了。"
+"将鼠标移动到六角格上并按下快捷键，或右击并从上下文中选择<bold>text='地形描"
+"述'</bold>，你就可以看到混合地形所产生的效果了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:579
@@ -6322,7 +6325,7 @@ msgstr ""
 "<header>text='魔法'</header>\n"
 "虽然精灵与传说中的仙灵是根本不同的生物，但他们的魔法与仙灵有某种联系，是他们"
 "异常敏锐的感觉以及长寿的源泉。精灵的魔法分为两种不同的路径，一种侧重于操纵世"
-"俗或自然世界，另一种则侧重于奥术位面的占卜。物质变换术是更常见的那一种，比奥"
+"俗或物质世界，另一种则侧重于奥术位面的占卜。物质变换术是更常见的那一种，比奥"
 "术界的对立流派有更明显的效果。虽然精灵的自然魔法不适合战斗，但这种利用大地能"
 "量来进行滋养与守护的强大力量，是精灵拥有高效的治疗能力以及精灵森林美丽而充满"
 "活力的主要原因。\n"
@@ -6340,13 +6343,13 @@ msgstr ""
 "\n"
 "<header>text='社会'</header>\n"
 "精灵社会大致分为三个派系：负责保卫森林的准军事派系，通常担任工匠和艺术家的和"
-"平平民，以及保持精灵与仙灵联系的治疗师和秘术师。负责管理这些不同派系的是贵"
-"族，他们被视为更广泛的社会秩序的公仆，而不是其人民的严格统治者。挑选这些贵族"
-"的过程在不同的精灵议会中有所不同，韦弥尔的管理评议会——卡·利安——是选举产生的，"
-"而林塔尼尔的贵族通常是继承的。\n"
+"平平民，以及保持精灵与仙灵联系的医者和秘术师。负责管理这些不同派系的是贵族，"
+"他们被视为更广泛的社会秩序的公仆，而不是其人民的严格统治者。挑选这些贵族的过"
+"程在不同的精灵议会中有所不同，韦弥尔的管理评议会——卡·利安——是选举产生的，而林"
+"塔尼尔的贵族通常是继承的。\n"
 "\n"
 "在纷争时期，指挥层级会适时而变，普通贵族会听命于更有战争意识的元帅。根据传"
-"统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的魔女来推动权力的交接。"
+"统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的女附魔师来推动权力的交接。"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -6473,18 +6476,6 @@ msgstr "马"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses. While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -6501,7 +6492,7 @@ msgstr ""
 "欣欣向荣。\n"
 "\n"
 "马是许多文明的重要组成部分，因此，有许多以马为中心的神话和故事也就不足为奇。"
-"翼马、人马混血种以及幽灵马都被写进了历史，尽管很少有人真能说自己见过这些东"
+"翼马、人马混血种以及幽灵马都被写进了历史，尽管很少有人真能宣称自己见过这类东"
 "西。"
 
 #. [race]: id=human

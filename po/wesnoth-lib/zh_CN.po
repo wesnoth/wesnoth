@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
@@ -11,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2022-01-05 14:47+0800\n"
+"PO-Revision-Date: 2022-04-22 16:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -1674,7 +1676,7 @@ msgstr ""
 "\n"
 "不论是对于陆上还是海上的通行者而言，桥梁都提供了最大的方便。就游戏逻辑而言，"
 "桥梁可以视为草地或者其下的浅水，以对其上单位的防御和移动力的加成较大者为准。"
-"需要注意的是，水中单位和陆上单位不能同时占据同一个桥梁格子。"
+"需要注意的是，水中单位和陆上单位不能同时占据同一个桥梁格。"
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1910,28 +1912,13 @@ msgid ""
 msgstr ""
 "<bold>text='城堡'</bold>代表了所有永久性的防御工事。\n"
 "几乎所有的单位驻守在城堡中时都能获得防御加成，而且大多数单位在城堡中都能全速"
-"移动。城堡的防御能力通过其中驻扎的守军来体现，如果城堡上的格子中并不是个个都"
-"有单位驻扎，那么敌人可以轻松溜进来，享受和城堡中所有单位同样的防御加成。\n"
+"移动。城堡的防御能力通过其中驻扎的守军来体现，如果城堡上的六角格中并不是个个"
+"都有单位驻扎，那么敌人可以轻松溜进来，享受和城堡中所有单位同样的防御加成。\n"
 "\n"
 "大多数单位在城堡中拥有大约60%的防御率。"
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1946,8 +1933,7 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas dwarves enjoy 70%."
 msgstr ""
-"<bold>text='山岭'</bold>非常陡峭，单位们常常得翻越重重的障碍才能在其上移"
-"动。\n"
+"<bold>text='山岭'</bold>非常陡峭，单位常常得翻越重重的障碍才能在其上移动。\n"
 "正因为如此，山岭为大多数部队提供了可观的防御加成，但也严重阻碍了一切行军。身"
 "负重甲的单位，例如韦诺骑兵和重装步兵，干脆不能进入山岭地形。水生种族和生物，"
 "例如人鱼，由于有着鱼一般的身躯，便也不能爬上陡坡。娜迦则是例外，那是因为他们"
@@ -7157,11 +7143,11 @@ msgstr "取消"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Select Hex"
-msgstr "选择格子"
+msgstr "选择六角格"
 
 #: src/hotkey/hotkey_command.cpp:76
 msgid "Deselect Hex"
-msgstr "取消选择格子"
+msgstr "取消选择六角格"
 
 #: src/hotkey/hotkey_command.cpp:77
 msgid "Move/Attack"
@@ -7636,7 +7622,7 @@ msgstr "默认笔刷"
 
 #: src/hotkey/hotkey_command.cpp:218
 msgid "Single Tile"
-msgstr "单个格子"
+msgstr "单个图块"
 
 #: src/hotkey/hotkey_command.cpp:219
 msgid "Radius One"
@@ -7757,7 +7743,7 @@ msgstr "刷新图像缓存"
 
 #: src/hotkey/hotkey_command.cpp:255
 msgid "Draw Hex Coordinates"
-msgstr "绘制格子坐标"
+msgstr "绘制六角格坐标"
 
 #: src/hotkey/hotkey_command.cpp:256
 msgid "Draw Terrain Codes"
