@@ -45,7 +45,7 @@ class hash_digest : public hash_base
 protected:
 	std::array<T, sz> hash;
 public:
-	static const int DIGEST_SIZE = sz;
+	static const unsigned int DIGEST_SIZE = sz;
 	std::array<T, sz> raw_digest() const {return hash;}
 };
 
