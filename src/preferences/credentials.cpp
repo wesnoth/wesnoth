@@ -26,7 +26,7 @@
 #include <memory>
 
 #ifndef __APPLE__
-#include <openssl/rc4.h>
+#include <openssl/evp.h>
 #else
 #include <CommonCrypto/CommonCryptor.h>
 #endif
@@ -270,18 +270,17 @@ static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& k
 {
 	secure_buffer result(text.size(), '\0');
 #ifndef __APPLE__
-	RC4_KEY cipher_key;
-	RC4_set_key(&cipher_key, key.size(), key.data());
-	const std::size_t block_size = key.size();
-	const std::size_t blocks = text.size() / block_size;
-	const std::size_t extra = text.size() % block_size;
-	for(std::size_t i = 0; i < blocks * block_size; i += block_size) {
-		RC4(&cipher_key, block_size, text.data() + i, result.data() + i);
-	}
-	if(extra) {
-		std::size_t i = blocks * block_size;
-		RC4(&cipher_key, extra, text.data() + i, result.data() + i);
-	}
+	int outlen;
+	int tmplen;
+
+	EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+
+	// TODO: use EVP_EncryptInit_ex2 once openssl 3.0 is more widespread
+	EVP_EncryptInit_ex(ctx, EVP_rc4(), NULL, key.data(), NULL);
+	EVP_EncryptUpdate(ctx, result.data(), &outlen, text.data(), text.size());
+	EVP_EncryptFinal_ex(ctx, result.data() + outlen, &tmplen);
+
+	EVP_CIPHER_CTX_free(ctx);
 #else
 	size_t outWritten = 0;
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
