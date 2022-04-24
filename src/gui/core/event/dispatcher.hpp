@@ -420,6 +420,30 @@ public:
 		return want_keyboard_input_;
 	}
 
+	/**
+	 * Registers a hotkey.
+	 *
+	 * @todo add a static function register_global_hotkey.
+	 *
+	 * Once that's done execute_hotkey will first try to execute a global
+	 * hotkey and if that fails tries the hotkeys in this dispatcher.
+	 *
+	 * @param id                  The hotkey to register.
+	 * @param function            The callback function to call.
+	 */
+	void register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function);
+
+	/**
+	 * Executes a hotkey.
+	 *
+	 * @param id                  The hotkey to execute.
+	 *
+	 * @returns                   true if the hotkey is handled, false
+	 *                            otherwise.
+	 */
+	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+
+private:
 	/** Helper struct to generate the various signal types. */
 	template<class T>
 	struct signal_type
@@ -472,32 +496,33 @@ public:
 		void connect_signal(const ui_event event, const queue_position position, const T& signal)
 		{
 			switch(position) {
-				case front_pre_child:
-					queue[event].pre_child.push_front(signal);
-					break;
-				case back_pre_child:
-					queue[event].pre_child.push_back(signal);
-					break;
+			case front_pre_child:
+				queue[event].pre_child.push_front(signal);
+				break;
+			case back_pre_child:
+				queue[event].pre_child.push_back(signal);
+				break;
 
-				case front_child:
-					queue[event].child.push_front(signal);
-					break;
-				case back_child:
-					queue[event].child.push_back(signal);
-					break;
+			case front_child:
+				queue[event].child.push_front(signal);
+				break;
+			case back_child:
+				queue[event].child.push_back(signal);
+				break;
 
-				case front_post_child:
-					queue[event].post_child.push_front(signal);
-					break;
-				case back_post_child:
-					queue[event].post_child.push_back(signal);
-					break;
+			case front_post_child:
+				queue[event].post_child.push_front(signal);
+				break;
+			case back_post_child:
+				queue[event].post_child.push_back(signal);
+				break;
 			}
 		}
 
 		void disconnect_signal(const ui_event event, const queue_position position, const T& signal)
 		{
-			signal_type<T>& signal_queue = queue[event];
+			// This is std::function<T>::target_type()
+			const auto predicate = [&signal](const T& element) { return signal.target_type() == element.target_type(); };
 
 			/* The function doesn't differentiate between front and back position so fall
 			 * down from front to back.
@@ -507,54 +532,27 @@ public:
 			 * - vultraz, 2017-05-02
 			 */
 			switch(position) {
-				case front_pre_child:
-				case back_pre_child: {
-					signal_queue.pre_child.remove_if(
-						[&signal](T& element) { return signal.target_type() == element.target_type(); }
-					);
-				} break;
+			case front_pre_child:
+				[[fallthrough]];
+			case back_pre_child:
+				queue[event].pre_child.remove_if(predicate);
+				break;
 
-				case front_child:
-				case back_child: {
-					signal_queue.child.remove_if(
-						[&signal](T& element) { return signal.target_type() == element.target_type(); }
-					);
-				} break;
+			case front_child:
+				[[fallthrough]];
+			case back_child:
+				queue[event].child.remove_if(predicate);
+				break;
 
-				case front_post_child:
-				case back_post_child: {
-					signal_queue.post_child.remove_if(
-						[&signal](T& element) { return signal.target_type() == element.target_type(); }
-					);
-				} break;
+			case front_post_child:
+				[[fallthrough]];
+			case back_post_child:
+				queue[event].post_child.remove_if(predicate);
+				break;
 			}
 		}
 	};
 
-	/**
-	 * Registers a hotkey.
-	 *
-	 * @todo add a static function register_global_hotkey.
-	 *
-	 * Once that's done execute_hotkey will first try to execute a global
-	 * hotkey and if that fails tries the hotkeys in this dispatcher.
-	 *
-	 * @param id                  The hotkey to register.
-	 * @param function            The callback function to call.
-	 */
-	void register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function);
-
-	/**
-	 * Executes a hotkey.
-	 *
-	 * @param id                  The hotkey to execute.
-	 *
-	 * @returns                   true if the hotkey is handled, false
-	 *                            otherwise.
-	 */
-	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
-
-private:
 	/** The mouse behavior for the dispatcher. */
 	mouse_behavior mouse_behavior_;
 
