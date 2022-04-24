@@ -29,9 +29,7 @@ extern "C" {
 
 #ifndef __APPLE__
 
-#include <openssl/md5.h>
-
-static_assert(utils::md5::DIGEST_SIZE == MD5_DIGEST_LENGTH, "Constants mismatch");
+#include <openssl/evp.h>
 
 #else
 
@@ -68,10 +66,19 @@ namespace utils {
 md5::md5(const std::string& input) {
 
 #ifndef __APPLE__
-	MD5_CTX md5_worker;
-	MD5_Init(&md5_worker);
-	MD5_Update(&md5_worker, input.data(), input.size());
-	MD5_Final(hash.data(), &md5_worker);
+	EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
+	unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
+	assert(utils::md5::DIGEST_SIZE == md5_digest_len);
+
+	// MD5_Init
+	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
+
+	// MD5_Update
+	EVP_DigestUpdate(mdctx, input.c_str(), input.size());
+
+	// MD5_Final
+	EVP_DigestFinal_ex(mdctx, hash.data(), &md5_digest_len);
+	EVP_MD_CTX_free(mdctx);
 #else
 	CC_MD5(input.data(), static_cast<CC_LONG>(input.size()), hash.data());
 #endif
