@@ -9,6 +9,9 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * new terrain variations
+     * `Rrd` for desert road/cobbles - just a recolor, but has some different transitions than normal the roads
+     * `^Bsa*` for snowy stone bridge
  ### Translations
    * Updated translations: British English, Chinese (Simplified), French
  ### Units
