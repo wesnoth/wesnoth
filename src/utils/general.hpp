@@ -34,10 +34,9 @@ inline constexpr bool decayed_is_same = std::is_same_v<std::decay_t<T1>, std::de
 
 /**
  * Workaround for the fact that static_assert(false) is invalid.
- * See https://devblogs.microsoft.com/oldnewthing/20200311-00/?p=103553
  */
-template<typename>
-inline constexpr bool dependent_false_v = false;
+template<bool flag = false>
+void static_assert_false() { static_assert(flag); }
 
 namespace detail
 {
