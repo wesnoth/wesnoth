@@ -93,6 +93,7 @@ void trigger_full_redraw()
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
+	, drawing_texture_(nullptr)
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
