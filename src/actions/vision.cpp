@@ -238,11 +238,11 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	// Clear the border as well as the board, so that the half-hexes
 	// at the edge can also be cleared of fog/shroud.
 	if ( map.on_board_with_border(loc) ) {
-		// Both functions should be executed so don't use || which
-		// uses short-cut evaluation.
-		// (This is different than the return value because shared vision does
-		// not apply here.)
-		if ( tm.clear_shroud(loc) | tm.clear_fog(loc) ) {
+		// Both functions should be executed so don't use || which uses short-cut evaluation.
+		// (This is different than the return value because shared vision does not apply here.)
+		bool clear_shroud = tm.clear_shroud(loc);
+		bool clear_fog = tm.clear_fog(loc);
+		if ( clear_shroud || clear_fog ) {
 			// If we are near a corner, the corner might also need to be cleared.
 			// This happens at the lower-left corner and at either the upper- or
 			// lower- right corner (depending on the width).
