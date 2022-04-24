@@ -171,12 +171,24 @@ enum ui_event : uint32_t {
 };
 // clang-format on
 
+/**
+ * Checks if a given event is in a given category.
+ *
+ * @note Even though all events currently have only one category bitflag set, this function
+ * works correctly if they ever have multiple flags set, unlike @ref get_event_category.
+ */
 constexpr bool is_in_category(const ui_event event, const event_category mask)
 {
 	const uint32_t asu32 = static_cast<uint32_t>(mask);
 	return (event & asu32) == asu32;
 }
 
+/**
+ * Returns the category of a given event.
+ *
+ * @note Since each event has only *one* category flag set, it is safe to simply do an
+ * equality check with this result, which would return the same as @ref is_in_category.
+ */
 constexpr event_category get_event_category(const ui_event event)
 {
 	// Zero-out the first 8 bits since those encode the ui_event value, which we don't want.
