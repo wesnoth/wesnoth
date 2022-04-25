@@ -28,46 +28,19 @@ namespace gui2::event
 {
 struct dispatcher_implementation
 {
-#define FUNCTION_QUEUE_CHECK(TYPE)                                                                                     \
-	else if constexpr(std::is_same_v<F, signal_##TYPE>) {                                                              \
-		return dispatcher.signal_##TYPE##_queue_.queue[event];                                                         \
-	}
-
 	/**
-	 * Returns the appropriate signal queue for an event by function signature.
+	 * Returns the appropriate signal queue for an event by category.
 	 *
-	 * @tparam F                  For example, signal.
+	 * @tparam C                  For example, general.
 	 * @param dispatcher          The dispatcher whose signal queue is used.
 	 * @param event               The event to get the signal for.
 	 *
-	 * @returns                   The signal of the type dispatcher::signal_type<F>
+	 * @returns                   The signal of the type dispatcher::signal_type<T>
 	 */
-	template<typename F>
+	template<event_category C>
 	static auto& event_signal(dispatcher& dispatcher, const ui_event event)
 	{
-		if constexpr(std::is_same_v<F, signal>) {
-			return dispatcher.signal_queue_.queue[event];
-		}
-
-		FUNCTION_QUEUE_CHECK(mouse)
-		FUNCTION_QUEUE_CHECK(keyboard)
-		FUNCTION_QUEUE_CHECK(touch_motion)
-		FUNCTION_QUEUE_CHECK(touch_gesture)
-		FUNCTION_QUEUE_CHECK(notification)
-		FUNCTION_QUEUE_CHECK(message)
-		FUNCTION_QUEUE_CHECK(raw_event)
-		FUNCTION_QUEUE_CHECK(text_input)
-
-		else {
-			static_assert(utils::dependent_false_v<F>, "No matching signal queue found for function");
-		}
-	}
-
-#undef FUNCTION_QUEUE_CHECK
-
-#define RUNTIME_EVENT_SIGNAL_CHECK(TYPE)                                                                               \
-	else if(is_in_category(event, event_category::TYPE)) {                                                             \
-		return queue_check(dispatcher.signal_##TYPE##_queue_);                                                         \
+		return dispatcher.get_signal_queue<C>().queue[event];
 	}
 
 	/**
@@ -85,23 +58,30 @@ struct dispatcher_implementation
 			return !queue_set.queue[event].empty(queue_type);
 		};
 
-		if(is_in_category(event, event_category::general)) {
+		// We can't just use get_signal_queue since there's no way to know the event at compile time.
+		switch(get_event_category(event)) {
+		case event_category::general:
 			return queue_check(dispatcher.signal_queue_);
+		case event_category::mouse:
+			return queue_check(dispatcher.signal_mouse_queue_);
+		case event_category::keyboard:
+			return queue_check(dispatcher.signal_keyboard_queue_);
+		case event_category::touch_motion:
+			return queue_check(dispatcher.signal_touch_motion_queue_);
+		case event_category::touch_gesture:
+			return queue_check(dispatcher.signal_touch_gesture_queue_);
+		case event_category::notification:
+			return queue_check(dispatcher.signal_notification_queue_);;
+		case event_category::message:
+			return queue_check(dispatcher.signal_message_queue_);
+		case event_category::raw_event:
+			return queue_check(dispatcher.signal_raw_event_queue_);
+		case event_category::text_input:
+			return queue_check(dispatcher.signal_text_input_queue_);
+		default:
+			throw std::invalid_argument("Event is not categorized");
 		}
-
-		RUNTIME_EVENT_SIGNAL_CHECK(mouse)
-		RUNTIME_EVENT_SIGNAL_CHECK(keyboard)
-		RUNTIME_EVENT_SIGNAL_CHECK(touch_motion)
-		RUNTIME_EVENT_SIGNAL_CHECK(touch_gesture)
-		RUNTIME_EVENT_SIGNAL_CHECK(notification)
-		RUNTIME_EVENT_SIGNAL_CHECK(message)
-		RUNTIME_EVENT_SIGNAL_CHECK(raw_event)
-		RUNTIME_EVENT_SIGNAL_CHECK(text_input)
-
-		return false;
 	}
-
-#undef RUNTIME_EVENT_SIGNAL_CHECK
 };
 
 namespace implementation
@@ -155,7 +135,7 @@ namespace implementation
  *                                * container 1
  *                                * dispatcher
  */
-template<typename T>
+template<event_category C>
 std::vector<std::pair<widget*, ui_event>>
 build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 {
@@ -191,7 +171,7 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
  */
 template<>
 std::vector<std::pair<widget*, ui_event>>
-build_event_chain<signal_notification>(const ui_event event, widget* dispatcher, widget* w)
+build_event_chain<event_category::notification>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
@@ -220,7 +200,7 @@ build_event_chain<signal_notification>(const ui_event event, widget* dispatcher,
  */
 template<>
 std::vector<std::pair<widget*, ui_event>>
-build_event_chain<signal_message>(const ui_event event, widget* dispatcher, widget* w)
+build_event_chain<event_category::message>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
@@ -246,7 +226,7 @@ build_event_chain<signal_message>(const ui_event event, widget* dispatcher, widg
  * This is called with the same parameters as fire_event except for the
  * event_chain, which contains the widgets with the events to call for them.
  */
-template<typename T, typename... F>
+template<event_category C, typename... F>
 bool fire_event(const ui_event event,
 	const std::vector<std::pair<widget*, ui_event>>& event_chain,
 	widget* dispatcher,
@@ -258,7 +238,7 @@ bool fire_event(const ui_event event,
 
 	/***** ***** ***** Pre ***** ***** *****/
 	for(const auto& [chain_target, chain_event] : utils::reversed_view(event_chain)) {
-		const auto& signal = dispatcher_implementation::event_signal<T>(*chain_target, chain_event);
+		const auto& signal = dispatcher_implementation::event_signal<C>(*chain_target, chain_event);
 
 		for(const auto& pre_func : signal.pre_child) {
 			pre_func(*dispatcher, chain_event, handled, halt, std::forward<F>(params)...);
@@ -276,7 +256,7 @@ bool fire_event(const ui_event event,
 
 	/***** ***** ***** Child ***** ***** *****/
 	if(w->has_event(event, dispatcher::child)) {
-		const auto& signal = dispatcher_implementation::event_signal<T>(*w, event);
+		const auto& signal = dispatcher_implementation::event_signal<C>(*w, event);
 
 		for(const auto& func : signal.child) {
 			func(*dispatcher, event, handled, halt, std::forward<F>(params)...);
@@ -294,7 +274,7 @@ bool fire_event(const ui_event event,
 
 	/***** ***** ***** Post ***** ***** *****/
 	for(const auto& [chain_target, chain_event] : event_chain) {
-		const auto& signal = dispatcher_implementation::event_signal<T>(*chain_target, chain_event);
+		const auto& signal = dispatcher_implementation::event_signal<C>(*chain_target, chain_event);
 
 		for(const auto& post_func : signal.post_child) {
 			post_func(*dispatcher, chain_event, handled, halt, std::forward<F>(params)...);
@@ -326,7 +306,7 @@ bool fire_event(const ui_event event,
  * @pre                           d != nullptr
  * @pre                           w != nullptr
  *
- * @tparam T                      The signal type of the event to handle.
+ * @tparam C                      The category of the event to handle.
  * @tparam F                      The parameter pack type.
  *
  *
@@ -338,7 +318,7 @@ bool fire_event(const ui_event event,
  *
  * @returns                       Whether or not the event was handled.
  */
-template<typename T, typename... F>
+template<event_category C, typename... F>
 bool fire_event(const ui_event event, dispatcher* d, widget* w, F&&... params)
 {
 	assert(d);
@@ -347,15 +327,14 @@ bool fire_event(const ui_event event, dispatcher* d, widget* w, F&&... params)
 	widget* dispatcher_w = dynamic_cast<widget*>(d);
 
 	std::vector<std::pair<widget*, ui_event>> event_chain =
-		implementation::build_event_chain<T>(event, dispatcher_w, w);
+		implementation::build_event_chain<C>(event, dispatcher_w, w);
 
-	return implementation::fire_event<T>(event, event_chain, dispatcher_w, w, std::forward<F>(params)...);
+	return implementation::fire_event<C>(event, event_chain, dispatcher_w, w, std::forward<F>(params)...);
 }
 
 template<ui_event click,
 	ui_event double_click,
 	bool (event_executor::*wants_double_click)() const,
-	typename T,
 	typename... F>
 bool fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 {
@@ -382,9 +361,11 @@ bool fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 	}
 
 	if(std::invoke(wants_double_click, wgt)) {
-		return implementation::fire_event<T>(double_click, event_chain, d, wgt, std::forward<F>(params)...);
+		constexpr auto C = get_event_category(double_click);
+		return implementation::fire_event<C>(double_click, event_chain, d, wgt, std::forward<F>(params)...);
 	} else {
-		return implementation::fire_event<T>(click, event_chain, d, wgt, std::forward<F>(params)...);
+		constexpr auto C = get_event_category(click);
+		return implementation::fire_event<C>(click, event_chain, d, wgt, std::forward<F>(params)...);
 	}
 }
 

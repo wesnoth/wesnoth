@@ -70,27 +70,27 @@ bool dispatcher::fire(const ui_event event, widget& target)
 {
 	assert(is_in_category(event, event_category::general));
 	switch(event) {
-		case LEFT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_left_double_click, signal>(this, &target);
+	case LEFT_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_left_double_click>(this, &target);
 
-		case MIDDLE_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_middle_double_click, signal>(this, &target);
+	case MIDDLE_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_middle_double_click>(this, &target);
 
-		case RIGHT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_right_double_click, signal>(this, &target);
+	case RIGHT_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_right_double_click>(this, &target);
 
-		default:
-			return fire_event<signal>(event, this, &target);
+	default:
+		return fire_event<event_category::general>(event, this, &target);
 	}
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
 	assert(is_in_category(event, event_category::mouse));
-	return fire_event<signal_mouse>(event, this, &target, coordinate);
+	return fire_event<event_category::mouse>(event, this, &target, coordinate);
 }
 
 bool dispatcher::fire(const ui_event event,
@@ -100,43 +100,43 @@ bool dispatcher::fire(const ui_event event,
 		const std::string& unicode)
 {
 	assert(is_in_category(event, event_category::keyboard));
-	return fire_event<signal_keyboard>(event, this, &target, key, modifier, unicode);
+	return fire_event<event_category::keyboard>(event, this, &target, key, modifier, unicode);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
 	assert(is_in_category(event, event_category::touch_motion));
-	return fire_event<signal_touch_motion>(event, this, &target, pos, distance);
+	return fire_event<event_category::touch_motion>(event, this, &target, pos, distance);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
 	assert(is_in_category(event, event_category::touch_gesture));
-	return fire_event<signal_touch_gesture>(event, this, &target, center, dTheta, dDist, numFingers);
+	return fire_event<event_category::touch_gesture>(event, this, &target, center, dTheta, dDist, numFingers);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
 	assert(is_in_category(event, event_category::raw_event));
-	return fire_event<signal_raw_event>(event, this, &target, sdlevent);
+	return fire_event<event_category::raw_event>(event, this, &target, sdlevent);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const std::string& text, int32_t start, int32_t len)
 {
 	assert(is_in_category(event, event_category::text_input));
-	return fire_event<signal_text_input>(event, this, &target, text, start, len);
+	return fire_event<event_category::text_input>(event, this, &target, text, start, len);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
 	assert(is_in_category(event, event_category::notification));
-	return fire_event<signal_notification>(event, this, &target, nullptr);
+	return fire_event<event_category::notification>(event, this, &target, nullptr);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 {
 	assert(is_in_category(event, event_category::message));
-	return fire_event<signal_message>(event, this, &target, msg);
+	return fire_event<event_category::message>(event, this, &target, msg);
 }
 
 void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function)
