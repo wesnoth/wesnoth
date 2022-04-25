@@ -17,6 +17,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.3

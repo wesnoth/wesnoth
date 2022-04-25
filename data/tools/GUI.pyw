@@ -624,20 +624,12 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.freeze_variable=BooleanVar()
-        self.freeze_check=Checkbutton(self.options_frame,
-                                      text="Ignore newlines in messages",
-                                      variable=self.freeze_variable)
-        self.freeze_check.grid(row=4,
-                               column=0,
-                               sticky=W,
-                               padx=10)
         self.skip_variable=BooleanVar()
         self.skip_core=Checkbutton(self.options_frame,
                                    text="Skip core directory",
                                    variable=self.skip_variable,
                                    command=self.skip_core_dir_callback)
-        self.skip_core.grid(row=5,
+        self.skip_core.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
@@ -1201,8 +1193,6 @@ Please select a directory or disable the "Skip core directory" option""")
             wmllint_command_string.append("--known")
         if self.wmllint_tab.spell_variable.get():
             wmllint_command_string.append("--nospellcheck")
-        if self.wmllint_tab.freeze_variable.get():
-            wmllint_command_string.append("--stringfreeze")
         if not self.wmllint_tab.skip_variable.get():
             wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists

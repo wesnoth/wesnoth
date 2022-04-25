@@ -2260,8 +2260,7 @@ to be called on their own".format(filename, num))
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
                           % (filename, i+1))
-                    if not stringfreeze:
-                        lines[i] = sentence_end.sub(" ", lines[i])
+                    lines[i] = sentence_end.sub(" ", lines[i])
                 if capitalization_error.search(lines[i]):
                     print('"%s", line %d: probable capitalization or punctuation error' \
                           % (filename, i+1))
@@ -3314,8 +3313,7 @@ to all sides.""")
 scenarios, etc.""")
     parser.add_argument("-S", "--nospellcheck", action="store_false",
                         help="Suppress spellchecking")
-    parser.add_argument("-Z", "--stringfreeze", action="store_true",
-                        help="Suppress repair attempts of newlines in messages")
+    # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
@@ -3331,7 +3329,6 @@ directory.""")
     dryrun = namespace.dryrun
     missingside = namespace.missing
     revert = namespace.revert
-    stringfreeze = namespace.stringfreeze
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
