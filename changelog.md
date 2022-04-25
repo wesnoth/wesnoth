@@ -51,6 +51,7 @@
    * Fixed a crash with locally-edited add-ons that had neither `_server.pbl` nor `_info.cfg` (issue #6389).
    * Added more unit tests for weapon specials.
    * Resolve crash on systems using musl implementation of libc (issue #6603)
+   * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
 
 ## Version 1.16.2
  ### Campaigns
