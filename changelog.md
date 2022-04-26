@@ -19,6 +19,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
+   * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
 
 ## Version 1.17.3
  ### Add-ons client
