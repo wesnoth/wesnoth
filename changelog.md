@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * S07a: Hide side 2 without spoiling it (issue #4145)
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
  ### Editor
