@@ -18,7 +18,6 @@
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
-#   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
 #   * unknown unit types in recruitment lists
 #   * double space after punctuation in translatable strings.
@@ -122,11 +121,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# A special comment "# wmllint: notecheck off" will disable checking unit types
-# for consistency between abilities/weapon specials and usage of special notes
-# macros in their descriptions.
-# The comment "# wmllint: notecheck on" will re-enable this check.
-#
 # A special comment "# wmllint: deathcheck off" will disable the check whether
 # dying units speak in their death events.
 # The comment "# wmllint: deathcheck on" will re-enable this check.
@@ -147,13 +141,6 @@
 # numerical sequence. However, if a side is defined in a macro the comment
 # "#wmllint: skip-side" is needed where the macro is used in order to allow
 # wmllint to account for it properly.
-#
-# A comment of the form
-#
-# #wmllint: match {ABILITY_FOO} with {NOTE_FOO}
-#
-# will declare an ability macro and a special-notes macro to be tied
-# together for reference-checking purposes.
 #
 # In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
 # without a ZoC are automatically handled by the C++ engine. wmllint warns if such
@@ -1122,12 +1109,6 @@ def standard_unit_filter():
 
 # Sanity checking
 
-# Associations for the ability sanity checks.
-# Please note that a special note can be associated with multiple abilities
-# but any given ability can be associated with only one special note
-# Some notes are handled directly in the global_sanity_check() function
-notepairs = []
-
 # This dictionary will pair macros with the characters they recall or create,
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
@@ -1499,33 +1480,16 @@ def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
 
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
-    # Sanity-check abilities and traits against notes macros.
-    # Note: This check is disabled on units derived via [base_unit].
-    # Also, build dictionaries of unit movement types and races
+    # Build dictionaries of unit movement types and races
     in_unit_type = None
-    notecheck = True
-    trait_note = dict(notepairs)
-    # it's possible that a note might be associated with two abilities
-    # use a multimap-like data structure for this reason
-    note_trait = defaultdict(list) # {p[1]:p[0] for p in notepairs}
-    for pair in notepairs:
-        note_trait[pair[1]].append(pair[0])
     unit_id = ""
     base_unit = ""
     for nav in WmllintIterator(lines, filename):
-        if "wmllint: notecheck off" in nav.text:
-            notecheck = False
-            continue
-        elif "wmllint: notecheck on" in nav.text:
-            notecheck = True
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
             unit_level = None
             base_unit = ""
-            traits = []
-            notes = []
-            has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
             unit_usage = ""
@@ -1551,44 +1515,18 @@ def global_sanity_check(filename, lines):
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
-                missing_notes = []
-                for trait in traits:
-                    tn = trait_note[trait]
-                    if tn not in notes and tn not in missing_notes:
-                        missing_notes.append(tn)
-                missing_traits = []
-                for note in notes:
-                    for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
-                        if nt in traits:
-                            break
-                    else: # this is done only if there isn't at least one trait matching the note
-                        for nt in note_trait[note]:
-                            if nt not in missing_traits:
-                                missing_traits.append(nt)
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
-                if notecheck and missing_notes:
-                    print('"%s", line %d: unit %s is missing notes %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_notes)))
-                if missing_traits:
-                    print('"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_traits)))
-                if notecheck and not (notes or traits) and has_special_notes:
-                    print('"%s", line %d: unit %s has superfluous {NOTE_*}' \
-                         % (filename, in_unit_type, unit_id))
                 if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print('"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id))
             in_unit_type = None
-            traits = []
-            notes = []
             unit_id = ""
             unit_level = None
             base_unit = ""
-            has_special_notes = False
             unit_race = None
             unit_usage = ""
             temp_movetypes = []
@@ -1627,16 +1565,6 @@ def global_sanity_check(filename, lines):
                         temp_advances.append((filename, nav.lineno + 1, advancements))
             except TypeError:
                 pass
-            precomment = nav.text
-            if '#' in nav.text:
-                precomment = nav.text[:nav.text.find("#")]
-            if "{NOTE" in precomment:
-                has_special_notes = True
-            for (p, q) in notepairs:
-                if p in precomment:
-                    traits.append(p)
-                if q in precomment:
-                    notes.append(q)
 
     # Sanity-check all the [event] tags
     global_sanity_check_events(filename, lines)
@@ -3040,14 +2968,6 @@ def translator(filename, mapxforms, textxform):
                 in_lua_code = True
             if in_lua_code and re.match(r".*?>>\s*$", destringed):
                 in_lua_code = False
-            if "wmllint: match" in comment:
-                comment = comment.strip()
-                try:
-                    fields = comment.split("match ", 1)[1].split(" with ", 1)
-                    if len(fields) == 2:
-                        notepairs.append((fields[0], fields[1]))
-                except IndexError:
-                    pass
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print('"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack))
