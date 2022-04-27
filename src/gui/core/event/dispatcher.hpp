@@ -623,7 +623,7 @@ private:
 		} else if constexpr(cat == event_category::text_input) {
 			return signal_text_input_queue_;
 		} else {
-			static_assert(utils::dependent_false_v<cat>, "No matching signal queue for category");
+			static_assert(utils::dependent_false_v<decltype(cat)>, "No matching signal queue for category");
 		}
 	}
 };
