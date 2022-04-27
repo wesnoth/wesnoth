@@ -4,7 +4,7 @@
  ### Campaigns
    * Eastern Invasion
      * S07a: 
-       * Hide side 2 without spoiling it (issue #4145)
+       * Better handling for side 2 (issue #4145)
        * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
