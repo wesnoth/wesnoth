@@ -4,6 +4,8 @@
  ### Campaigns
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
+   * Under the Burning Suns
+     * S5: Enforce encounter with the Cloaked Figure (issue #6364)
  ### Editor
  ### Multiplayer
  ### Lua API
