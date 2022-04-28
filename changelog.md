@@ -5,6 +5,7 @@
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
  ### Editor
+   * Added some missing terrain groupings (issue #6643)
  ### Multiplayer
  ### Lua API
  ### Packaging
