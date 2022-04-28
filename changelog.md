@@ -25,6 +25,7 @@
      * Updated the modding instructions, helping add-on authors add extra factions etc.
  ### Editor
    * Add documentation for the magenta D and special terrain overlays (PR #6460).
+   * Added some missing terrain groupings (issue #6643)
  ### Multiplayer
    * Fixed updating add-ons when joining a game that requires a new version (issue #6383).
    * Add a `/clear` command for the lobby-chat window.
