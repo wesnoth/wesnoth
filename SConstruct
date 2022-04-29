@@ -350,9 +350,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL(require_version = '2.0.8') & \
-            conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
-            conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+            conf.CheckSDL2('2.0.8') & \
+            conf.CheckSDL2Mixer() & \
+            conf.CheckSDL2Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
