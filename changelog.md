@@ -53,6 +53,7 @@
    * Resolve crash on systems using musl implementation of libc (issue #6603)
    * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
    * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
+   * Resolved title screen flashing during the loading screen (issue #2395)
 
 ## Version 1.16.2
  ### Campaigns
