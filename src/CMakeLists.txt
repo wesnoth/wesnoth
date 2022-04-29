@@ -67,7 +67,7 @@ if(NOT MSVC)
 endif()
 
 if(HISTORY_FOUND)
-	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
+	set(game-external-libs ${game-external-libs} History::History)
 endif()
 
 # get source lists
