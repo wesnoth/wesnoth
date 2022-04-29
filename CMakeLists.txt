@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.14)
 project(wesnoth)
 
 include(CheckCXXCompilerFlag)
+include(CTest)
 
 # use our own version of FindBoost.cmake and other Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
