@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 03:24+0300\n"
+"POT-Creation-Date: 2022-04-29 14:42-0500\n"
 "PO-Revision-Date: 2021-07-19 01:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -50,7 +50,7 @@ msgstr "預設AI（RCA）使用替代的招募邏輯"
 #. [terrain_type]: id=fence_iron
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
-#: data/core/terrain.cfg:490 data/core/terrain.cfg:500
+#: data/core/terrain.cfg:500 data/core/terrain.cfg:510
 msgid "Fence"
 msgstr "圍籬"
 
@@ -65,7 +65,7 @@ msgstr "隨機"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3124 data/core/terrain.cfg:3125
+#: data/core/terrain.cfg:3174 data/core/terrain.cfg:3175
 msgid "Deep Water"
 msgstr "深水"
 
@@ -89,7 +89,7 @@ msgstr "熱帶型深水"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3083 data/core/terrain.cfg:3084
+#: data/core/terrain.cfg:3133 data/core/terrain.cfg:3134
 msgid "Shallow Water"
 msgstr "淺水"
 
@@ -132,8 +132,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3039
-#: data/core/terrain.cfg:3040
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3089
+#: data/core/terrain.cfg:3090
 msgid "Coastal Reef"
 msgstr "沿海礁石"
 
@@ -156,7 +156,7 @@ msgstr "熱帶型礁石"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:136 data/core/terrain.cfg:147
-#: data/core/terrain.cfg:3067 data/core/terrain.cfg:3068
+#: data/core/terrain.cfg:3117 data/core/terrain.cfg:3118
 msgid "Swamp"
 msgstr "沼澤"
 
@@ -224,13 +224,15 @@ msgstr "乾旱土地"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=road_clean
+#. [terrain_type]: id=road_desert
 #. [terrain_type]: id=stone_path
 #. [terrain_type]: id=road_icy
 #. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:239 data/core/terrain.cfg:250
 #: data/core/terrain.cfg:260 data/core/terrain.cfg:270
-#: data/core/terrain.cfg:1000 data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:280 data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:1020
 msgid "Road"
 msgstr "道路"
 
@@ -254,38 +256,45 @@ msgstr ""
 msgid "Clean Gray Cobbles"
 msgstr "乾淨的卵石路"
 
-#. [terrain_type]: id=stone_path
+#. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:261
+#, fuzzy
+#| msgid "Desert Castle"
+msgid "Desert Cobbles"
+msgstr "沙漠城堡"
+
+#. [terrain_type]: id=stone_path
+#: data/core/terrain.cfg:271
 msgid "Overgrown Cobbles"
 msgstr "雜草叢生的卵石路"
 
 #. [terrain_type]: id=road_icy
-#: data/core/terrain.cfg:271
+#: data/core/terrain.cfg:281
 msgid "Icy Cobbles"
 msgstr "冰凍的卵石路"
 
 #. [terrain_type]: id=ice
-#: data/core/terrain.cfg:284
+#: data/core/terrain.cfg:294
 msgid "Ice"
 msgstr "冰面"
 
 #. [terrain_type]: id=snow
-#: data/core/terrain.cfg:293
+#: data/core/terrain.cfg:303
 msgid "Snow"
 msgstr "雪地"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:306
+#: data/core/terrain.cfg:316
 msgid "Desert"
 msgstr "沙漠"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:307
+#: data/core/terrain.cfg:317
 msgid "Desert Sands"
 msgstr "沙漠細沙"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:311
+#: data/core/terrain.cfg:321
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -296,18 +305,18 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:317 data/core/terrain.cfg:3026
+#: data/core/terrain.cfg:327 data/core/terrain.cfg:3076
 msgid "Sand"
 msgstr "沙地"
 
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:318
+#: data/core/terrain.cfg:328
 msgid "Beach Sands"
 msgstr "沙灘"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:322 data/core/terrain.cfg:3030
+#: data/core/terrain.cfg:332 data/core/terrain.cfg:3080
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -322,12 +331,12 @@ msgstr ""
 "大多數的單位在沙地上的防禦只有20%至40%。"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:330
+#: data/core/terrain.cfg:340
 msgid "Oasis"
 msgstr "綠洲"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:339
+#: data/core/terrain.cfg:349
 msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
@@ -336,119 +345,119 @@ msgstr ""
 "成。"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:345
+#: data/core/terrain.cfg:355
 msgid "Rubble"
 msgstr "碎石"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:355
+#: data/core/terrain.cfg:365
 msgid "Crater"
 msgstr "沙坑"
 
 #. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:370
+#: data/core/terrain.cfg:380
 msgid "Mixed Flowers"
 msgstr "花朵"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:379
+#: data/core/terrain.cfg:389
 msgid "Farmland"
 msgstr "農田"
 
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:388
+#: data/core/terrain.cfg:398
 msgid "Stones"
 msgstr "石頭"
 
 #. [terrain_type]: id=snowbits_small
-#: data/core/terrain.cfg:397
+#: data/core/terrain.cfg:407
 msgid "Snowbits"
 msgstr "雪堆"
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:406
+#: data/core/terrain.cfg:416
 msgid "Small Mushrooms"
 msgstr "小蘑菇"
 
 #. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:415
+#: data/core/terrain.cfg:425
 msgid "Mushroom Farm"
 msgstr "蘑菇田"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:424
+#: data/core/terrain.cfg:434
 msgid "Desert Plants"
 msgstr "沙漠植物"
 
 #. [terrain_type]: id=desert_plants_sans_bones
-#: data/core/terrain.cfg:433
+#: data/core/terrain.cfg:443
 msgid "Desert Plants without Bones"
 msgstr "沒有屍骨的沙漠植物"
 
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:442
+#: data/core/terrain.cfg:452
 msgid "Windmill"
 msgstr "風車"
 
 #. [terrain_type]: id=campfire
-#: data/core/terrain.cfg:451
+#: data/core/terrain.cfg:461
 msgid "Campfire"
 msgstr "營火"
 
 #. [terrain_type]: id=wallfire
-#: data/core/terrain.cfg:461
+#: data/core/terrain.cfg:471
 msgid "Sconce"
 msgstr "燭台"
 
 #. [terrain_type]: id=brazier
-#: data/core/terrain.cfg:471
+#: data/core/terrain.cfg:481
 msgid "Brazier"
 msgstr "火盆"
 
 #. [terrain_type]: id=brazier-lit
-#: data/core/terrain.cfg:480
+#: data/core/terrain.cfg:490
 msgid "Lit Brazier"
 msgstr "點燃的火盆"
 
 #. [terrain_type]: id=fence_iron
-#: data/core/terrain.cfg:501
+#: data/core/terrain.cfg:511
 msgid "Iron Fence"
 msgstr "鋼鐵圍籬"
 
 #. [terrain_type]: id=fence_palisade
-#: data/core/terrain.cfg:511
+#: data/core/terrain.cfg:521
 msgid "Palisade"
 msgstr ""
 
 #. [terrain_type]: id=fence_palisade
-#: data/core/terrain.cfg:512
+#: data/core/terrain.cfg:522
 #, fuzzy
 #| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
 msgstr "木橋"
 
 #. [terrain_type]: id=sand_drifts
-#: data/core/terrain.cfg:521
+#: data/core/terrain.cfg:531
 msgid "Stones with Sand Drifts"
 msgstr "礫石"
 
 #. [terrain_type]: id=water-lilies
-#: data/core/terrain.cfg:530
+#: data/core/terrain.cfg:540
 msgid "Water Lilies"
 msgstr "睡蓮"
 
 #. [terrain_type]: id=water-lilies-flower
-#: data/core/terrain.cfg:540
+#: data/core/terrain.cfg:550
 msgid "Flowering Water Lilies"
 msgstr "盛開的睡蓮"
 
 #. [terrain_type]: id=detritus_trash
-#: data/core/terrain.cfg:551
+#: data/core/terrain.cfg:561
 msgid "Trash"
 msgstr "垃圾"
 
 #. [terrain_type]: id=detritus_bones
-#: data/core/terrain.cfg:560
+#: data/core/terrain.cfg:570
 msgid "Remains"
 msgstr "殘骸"
 
@@ -456,24 +465,24 @@ msgstr "殘骸"
 #. [terrain_type]: id=great_tree_snowy
 #. [terrain_type]: id=great_tree_dead
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:573 data/core/terrain.cfg:574
-#: data/core/terrain.cfg:585 data/core/terrain.cfg:597
-#: data/core/terrain.cfg:609
+#: data/core/terrain.cfg:583 data/core/terrain.cfg:584
+#: data/core/terrain.cfg:595 data/core/terrain.cfg:607
+#: data/core/terrain.cfg:619
 msgid "Great Tree"
 msgstr "大樹"
 
 #. [terrain_type]: id=great_tree_snowy
-#: data/core/terrain.cfg:586
+#: data/core/terrain.cfg:596
 msgid "Snowy Great Tree"
 msgstr "雪地裡的大樹"
 
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:598
+#: data/core/terrain.cfg:608
 msgid "Dead Great Tree"
 msgstr "枯萎的大樹"
 
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:610
+#: data/core/terrain.cfg:620
 msgid "Dead Great Oak Tree"
 msgstr "枯萎的大橡樹"
 
@@ -493,90 +502,90 @@ msgstr "枯萎的大橡樹"
 #. [terrain_type]: id=mixed_forest_winter
 #. [terrain_type]: id=mixed_forest_winter_snow
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:621 data/core/terrain.cfg:633
-#: data/core/terrain.cfg:645 data/core/terrain.cfg:657
-#: data/core/terrain.cfg:669 data/core/terrain.cfg:681
-#: data/core/terrain.cfg:693 data/core/terrain.cfg:705
-#: data/core/terrain.cfg:717 data/core/terrain.cfg:729
-#: data/core/terrain.cfg:741 data/core/terrain.cfg:753
-#: data/core/terrain.cfg:765 data/core/terrain.cfg:777
-#: data/core/terrain.cfg:789 data/core/terrain.cfg:3150
-#: data/core/terrain.cfg:3151
+#: data/core/terrain.cfg:631 data/core/terrain.cfg:643
+#: data/core/terrain.cfg:655 data/core/terrain.cfg:667
+#: data/core/terrain.cfg:679 data/core/terrain.cfg:691
+#: data/core/terrain.cfg:703 data/core/terrain.cfg:715
+#: data/core/terrain.cfg:727 data/core/terrain.cfg:739
+#: data/core/terrain.cfg:751 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:775 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:799 data/core/terrain.cfg:3200
+#: data/core/terrain.cfg:3201
 msgid "Forest"
 msgstr "森林"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:622
+#: data/core/terrain.cfg:632
 msgid "Tropical Forest"
 msgstr "熱帶林"
 
 #. [terrain_type]: id=rainforest
-#: data/core/terrain.cfg:634
+#: data/core/terrain.cfg:644
 msgid "Rainforest"
 msgstr "雨林"
 
 #. [terrain_type]: id=palm_desert_forest
-#: data/core/terrain.cfg:646
+#: data/core/terrain.cfg:656
 msgid "Palm Forest"
 msgstr "棕櫚樹林"
 
 #. [terrain_type]: id=palm_forest
-#: data/core/terrain.cfg:658
+#: data/core/terrain.cfg:668
 msgid "Dense Palm Forest"
 msgstr "棕櫚密林"
 
 #. [terrain_type]: id=savanna_forest
-#: data/core/terrain.cfg:670
+#: data/core/terrain.cfg:680
 msgid "Savanna"
 msgstr "稀樹草原"
 
 #. [terrain_type]: id=pine_forest
-#: data/core/terrain.cfg:682
+#: data/core/terrain.cfg:692
 msgid "Pine Forest"
 msgstr "松樹林"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:694
+#: data/core/terrain.cfg:704
 msgid "Snowy Pine Forest"
 msgstr "雪地裡的松樹林"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:706
+#: data/core/terrain.cfg:716
 msgid "Summer Deciduous Forest"
 msgstr "夏季落葉林"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:718
+#: data/core/terrain.cfg:728
 msgid "Fall Deciduous Forest"
 msgstr "秋季落葉林"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:730
+#: data/core/terrain.cfg:740
 msgid "Winter Deciduous Forest"
 msgstr "冬季落葉林"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:742
+#: data/core/terrain.cfg:752
 msgid "Snowy Deciduous Forest"
 msgstr "雪地裡的落葉林"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:754
+#: data/core/terrain.cfg:764
 msgid "Summer Mixed Forest"
 msgstr "夏季混合林"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:766
+#: data/core/terrain.cfg:776
 msgid "Fall Mixed Forest"
 msgstr "秋季混合林"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:778
+#: data/core/terrain.cfg:788
 msgid "Winter Mixed Forest"
 msgstr "冬季混合林"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:790
+#: data/core/terrain.cfg:800
 msgid "Snowy Mixed Forest"
 msgstr "雪地裡的混合林"
 
@@ -584,29 +593,29 @@ msgstr "雪地裡的混合林"
 #. [terrain_type]: id=hills_dry
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:805 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:835 data/core/terrain.cfg:3054
-#: data/core/terrain.cfg:3055
+#: data/core/terrain.cfg:815 data/core/terrain.cfg:825
+#: data/core/terrain.cfg:845 data/core/terrain.cfg:3104
+#: data/core/terrain.cfg:3105
 msgid "Hills"
 msgstr "丘陵"
 
 #. [terrain_type]: id=hills_regular
-#: data/core/terrain.cfg:806
+#: data/core/terrain.cfg:816
 msgid "Regular Hills"
 msgstr "丘陵"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:816
+#: data/core/terrain.cfg:826
 msgid "Dry Hills"
 msgstr "乾燥的丘陵"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:825
+#: data/core/terrain.cfg:835
 msgid "Dunes"
 msgstr "沙丘"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:836
+#: data/core/terrain.cfg:846
 msgid "Snow Hills"
 msgstr "雪丘"
 
@@ -619,123 +628,123 @@ msgstr "雪丘"
 #. [terrain_type]: id=cloud_snow
 #. [terrain_type]: id=cloud_desert
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:850 data/core/terrain.cfg:860
-#: data/core/terrain.cfg:870 data/core/terrain.cfg:881
-#: data/core/terrain.cfg:1246 data/core/terrain.cfg:1256
-#: data/core/terrain.cfg:1267 data/core/terrain.cfg:1277
-#: data/core/terrain.cfg:3110 data/core/terrain.cfg:3111
+#: data/core/terrain.cfg:860 data/core/terrain.cfg:870
+#: data/core/terrain.cfg:880 data/core/terrain.cfg:891
+#: data/core/terrain.cfg:1256 data/core/terrain.cfg:1266
+#: data/core/terrain.cfg:1277 data/core/terrain.cfg:1287
+#: data/core/terrain.cfg:3160 data/core/terrain.cfg:3161
 msgid "Mountains"
 msgstr "山脈"
 
 #. [terrain_type]: id=regular_mountains
-#: data/core/terrain.cfg:851
+#: data/core/terrain.cfg:861
 msgid "Regular Mountains"
 msgstr "山脈"
 
 #. [terrain_type]: id=dry_mountains
-#: data/core/terrain.cfg:861
+#: data/core/terrain.cfg:871
 msgid "Dry Mountains"
 msgstr "乾燥的山嶺"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:871
+#: data/core/terrain.cfg:881
 msgid "Snowy Mountains"
 msgstr "雪山"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:892
 msgid "Desert Mountains"
 msgstr "沙漠的山嶺"
 
 #. [terrain_type]: id=regular_stone_floor
 #. [terrain_type]: id=ancient_stone_floor
-#: data/core/terrain.cfg:893 data/core/terrain.cfg:903
+#: data/core/terrain.cfg:903 data/core/terrain.cfg:913
 msgid "Stone Floor"
 msgstr "石頭地板"
 
 #. [terrain_type]: id=regular_stone_floor
-#: data/core/terrain.cfg:896
+#: data/core/terrain.cfg:906
 msgid "Basic Stone Floor"
 msgstr "簡單的石頭地板"
 
 #. [terrain_type]: id=ancient_stone_floor
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:916
 msgid "Ancient Stone Floor"
 msgstr "古老的石頭地板"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:913 data/core/terrain.cfg:923
-#: data/core/terrain.cfg:933
+#: data/core/terrain.cfg:923 data/core/terrain.cfg:933
+#: data/core/terrain.cfg:943
 msgid "Rug"
 msgstr "地毯"
 
 #. [terrain_type]: id=rug_floor
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:926
 msgid "Royal Rug"
 msgstr "皇室地毯"
 
 #. [terrain_type]: id=rug2_floor
-#: data/core/terrain.cfg:926
+#: data/core/terrain.cfg:936
 msgid "Normal Rug"
 msgstr "普通地毯"
 
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:936
+#: data/core/terrain.cfg:946
 msgid "Cave Rug"
 msgstr "洞穴地毯"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:943
+#: data/core/terrain.cfg:953
 msgid "Wooden Floor"
 msgstr "木質地板"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:946
+#: data/core/terrain.cfg:956
 msgid "Basic Wooden Floor"
 msgstr "簡單木頭地板"
 
 #. [terrain_type]: id=old_wood_floor
-#: data/core/terrain.cfg:953 data/core/terrain.cfg:956
+#: data/core/terrain.cfg:963 data/core/terrain.cfg:966
 msgid "Old Wooden Floor"
 msgstr "老舊木質地板"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:969
+#: data/core/terrain.cfg:979
 msgid "Lit"
 msgstr "光芒"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:970
+#: data/core/terrain.cfg:980
 msgid "Beam of Light"
 msgstr "光束"
 
 #. [terrain_type]: id=cave_floor
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:980 data/core/terrain.cfg:990
-#: data/core/terrain.cfg:3011 data/core/terrain.cfg:3012
+#: data/core/terrain.cfg:990 data/core/terrain.cfg:1000
+#: data/core/terrain.cfg:3061 data/core/terrain.cfg:3062
 msgid "Cave"
 msgstr "洞穴"
 
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:981
+#: data/core/terrain.cfg:991
 msgid "Cave Floor"
 msgstr "洞穴地面"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:991
+#: data/core/terrain.cfg:1001
 msgid "Earthy Cave Floor"
 msgstr "帶泥土的洞穴地面"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:1001
+#: data/core/terrain.cfg:1011
 msgid "Dark Flagstones"
 msgstr "深色石頭路"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:1011
+#: data/core/terrain.cfg:1021
 msgid "Cave Path"
 msgstr "洞穴道路"
 
@@ -743,14 +752,14 @@ msgstr "洞穴道路"
 #. [terrain_type]: id=fungus_beam_old
 #. [terrain_type]: id=fungus_grove
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1020 data/core/terrain.cfg:1039
-#: data/core/terrain.cfg:1059 data/core/terrain.cfg:1060
-#: data/core/terrain.cfg:1071
+#: data/core/terrain.cfg:1030 data/core/terrain.cfg:1049
+#: data/core/terrain.cfg:1069 data/core/terrain.cfg:1070
+#: data/core/terrain.cfg:1081
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [terrain_type]: id=fungus_grove_old
-#: data/core/terrain.cfg:1021
+#: data/core/terrain.cfg:1031
 msgid "Non-mixed Mushroom Grove"
 msgstr "純種蘑菇林"
 
@@ -759,7 +768,7 @@ msgstr "純種蘑菇林"
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
-#: data/core/terrain.cfg:1029 data/core/terrain.cfg:1049
+#: data/core/terrain.cfg:1039 data/core/terrain.cfg:1059
 msgid ""
 "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -774,7 +783,7 @@ msgstr ""
 #. [terrain_type]: id=fungus_beam_old
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
-#: data/core/terrain.cfg:1032 data/core/terrain.cfg:1052
+#: data/core/terrain.cfg:1042 data/core/terrain.cfg:1062
 msgid ""
 "Dwarven tales describe different types of mushrooms — with some types the "
 "difficulty of walking on the spongy floor has no relation to the ground "
@@ -787,30 +796,30 @@ msgstr ""
 "基於單位對<italic>text='蘑菇林'</italic>的適性。"
 
 #. [terrain_type]: id=fungus_beam_old
-#: data/core/terrain.cfg:1040
+#: data/core/terrain.cfg:1050
 msgid "Lit Non-mixed Mushroom Grove"
 msgstr "有光芒的純種蘑菇林"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1072
+#: data/core/terrain.cfg:1082
 msgid "Lit Mushroom Grove"
 msgstr "有光芒的蘑菇林"
 
 #. [terrain_type]: id=fungus_floor
-#: data/core/terrain.cfg:1084 data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1094 data/core/terrain.cfg:1095
 msgid "Mycelium"
 msgstr "菌絲"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1094 data/core/terrain.cfg:1095
-#: data/core/terrain.cfg:1110
+#: data/core/terrain.cfg:1104 data/core/terrain.cfg:1105
+#: data/core/terrain.cfg:1120
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1100 data/core/terrain.cfg:1116
+#: data/core/terrain.cfg:1110 data/core/terrain.cfg:1126
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -834,15 +843,15 @@ msgstr ""
 "有時洞穴也會被<italic>text='照亮'</italic>。"
 
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1111
+#: data/core/terrain.cfg:1121
 msgid "Earthy Rockbound Cave"
 msgstr "岩石洞穴"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:1128 data/core/terrain.cfg:1140
-#: data/core/terrain.cfg:1153
+#: data/core/terrain.cfg:1138 data/core/terrain.cfg:1150
+#: data/core/terrain.cfg:1163
 msgid "Mine Rail"
 msgstr "礦道鐵軌"
 
@@ -850,38 +859,38 @@ msgstr "礦道鐵軌"
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1171 data/core/terrain.cfg:1182
-#: data/core/terrain.cfg:1193 data/core/terrain.cfg:1204
+#: data/core/terrain.cfg:1181 data/core/terrain.cfg:1192
+#: data/core/terrain.cfg:1203 data/core/terrain.cfg:1214
 msgid "Chasm"
 msgstr "深坑"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1172
+#: data/core/terrain.cfg:1182
 msgid "Regular Chasm"
 msgstr "深坑"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1183
+#: data/core/terrain.cfg:1193
 msgid "Earthy Chasm"
 msgstr "泥地深坑"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1194
+#: data/core/terrain.cfg:1204
 msgid "Ethereal Abyss"
 msgstr "無盡深淵"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1205
+#: data/core/terrain.cfg:1215
 msgid "Lava Chasm"
 msgstr "熔岩深坑"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1217 data/core/terrain.cfg:1218
+#: data/core/terrain.cfg:1227 data/core/terrain.cfg:1228
 msgid "Lava"
 msgstr "熔岩"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1224
+#: data/core/terrain.cfg:1234
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -897,52 +906,52 @@ msgstr ""
 "單位的攻擊力並且降低渾沌單位的加成。"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1231
+#: data/core/terrain.cfg:1241
 msgid "Volcano"
 msgstr "火山口"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1247
+#: data/core/terrain.cfg:1257
 msgid "Regular Impassable Mountains"
 msgstr "高不可攀的山脈"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1267
 msgid "Dry Impassable Mountains"
 msgstr "乾燥且高不可攀的山脈"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1268
+#: data/core/terrain.cfg:1278
 msgid "Snowy Impassable Mountains"
 msgstr "雪地裡高不可攀的山脈"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1278
+#: data/core/terrain.cfg:1288
 msgid "Desert Impassable Mountains"
 msgstr "沙漠裡高不可攀的山脈"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1288 data/core/terrain.cfg:1310
-#: data/core/terrain.cfg:1324
+#: data/core/terrain.cfg:1298 data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1334
 msgid "Cave Wall"
 msgstr "洞穴牆壁"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1289
+#: data/core/terrain.cfg:1299
 msgid "Natural Cave Wall"
 msgstr "天然的洞穴牆壁"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1299 data/core/terrain.cfg:1300
-#: data/core/terrain.cfg:1360
+#: data/core/terrain.cfg:1309 data/core/terrain.cfg:1310
+#: data/core/terrain.cfg:1370
 msgid "Mine Wall"
 msgstr "礦道牆壁"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1321
 msgid "Natural Earthy Cave Wall"
 msgstr "洞穴泥牆壁"
 
@@ -950,58 +959,58 @@ msgstr "洞穴泥牆壁"
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1337 data/core/terrain.cfg:1347
-#: data/core/terrain.cfg:1382 data/core/terrain.cfg:1393
+#: data/core/terrain.cfg:1347 data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1392 data/core/terrain.cfg:1403
 msgid "Stone Wall"
 msgstr "石牆"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1358
 msgid "Lit Stone Wall"
 msgstr "點燈的石牆"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1361
+#: data/core/terrain.cfg:1371
 msgid "Straight Mine Wall"
 msgstr "礦道直牆壁"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1371
+#: data/core/terrain.cfg:1381
 msgid "Interior Wall"
 msgstr "室內牆壁"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1372
+#: data/core/terrain.cfg:1382
 msgid "Straight White Wall"
 msgstr "白色直牆壁"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1383
+#: data/core/terrain.cfg:1393
 msgid "Clean Stone Wall"
 msgstr "乾淨的石牆"
 
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1404
 msgid "Ancient Stone Wall"
 msgstr "古老的石牆"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1414
 msgid "Catacombs Wall"
 msgstr "墓穴牆壁"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1415
 msgid "Catacombs Stone Wall"
 msgstr "墓穴石牆"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1415
+#: data/core/terrain.cfg:1425
 msgid "Overgrown Wall"
 msgstr "雜草叢生的牆"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1416
+#: data/core/terrain.cfg:1426
 msgid "Overgrown Stone Wall"
 msgstr "雜草叢生的石牆"
 
@@ -1011,17 +1020,17 @@ msgstr "雜草叢生的石牆"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1432 data/core/terrain.cfg:1445
-#: data/core/terrain.cfg:1459 data/core/terrain.cfg:1516
-#: data/core/terrain.cfg:1528 data/core/terrain.cfg:1541
+#: data/core/terrain.cfg:1442 data/core/terrain.cfg:1455
+#: data/core/terrain.cfg:1469 data/core/terrain.cfg:1526
+#: data/core/terrain.cfg:1538 data/core/terrain.cfg:1551
 msgid "Gate"
 msgstr "大門"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1446
-#: data/core/terrain.cfg:1460
+#: data/core/terrain.cfg:1443 data/core/terrain.cfg:1456
+#: data/core/terrain.cfg:1470
 msgid "Rusty Gate"
 msgstr "生鏽的大門"
 
@@ -1031,49 +1040,49 @@ msgstr "生鏽的大門"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1473 data/core/terrain.cfg:1486
-#: data/core/terrain.cfg:1500 data/core/terrain.cfg:1554
-#: data/core/terrain.cfg:1566 data/core/terrain.cfg:1579
+#: data/core/terrain.cfg:1483 data/core/terrain.cfg:1496
+#: data/core/terrain.cfg:1510 data/core/terrain.cfg:1564
+#: data/core/terrain.cfg:1576 data/core/terrain.cfg:1589
 msgid "Door"
 msgstr "門"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1474 data/core/terrain.cfg:1487
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1484 data/core/terrain.cfg:1497
+#: data/core/terrain.cfg:1511
 msgid "Wooden Door"
 msgstr "木門"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1517 data/core/terrain.cfg:1529
-#: data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1527 data/core/terrain.cfg:1539
+#: data/core/terrain.cfg:1552
 msgid "Open Rusty Gate"
 msgstr "打開的生鏽大門"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1555 data/core/terrain.cfg:1567
-#: data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1565 data/core/terrain.cfg:1577
+#: data/core/terrain.cfg:1590
 msgid "Open Wooden Door"
 msgstr "打開的木門"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1595
+#: data/core/terrain.cfg:1605
 msgid "Impassable Overlay"
 msgstr "無法通行的覆蓋層"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1608
+#: data/core/terrain.cfg:1618
 msgid "Unwalkable Overlay"
 msgstr "無法步行的覆蓋層"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1620 data/core/terrain.cfg:2940
+#: data/core/terrain.cfg:1630 data/core/terrain.cfg:2990
 msgid "Void"
 msgstr "無"
 
@@ -1108,172 +1117,172 @@ msgstr "無"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1636 data/core/terrain.cfg:1649
-#: data/core/terrain.cfg:1662 data/core/terrain.cfg:1675
-#: data/core/terrain.cfg:1690 data/core/terrain.cfg:1703
-#: data/core/terrain.cfg:1718 data/core/terrain.cfg:1731
-#: data/core/terrain.cfg:1746 data/core/terrain.cfg:1759
-#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1785
-#: data/core/terrain.cfg:1798 data/core/terrain.cfg:1811
-#: data/core/terrain.cfg:1824 data/core/terrain.cfg:1837
-#: data/core/terrain.cfg:1850 data/core/terrain.cfg:1863
-#: data/core/terrain.cfg:1876 data/core/terrain.cfg:1889
-#: data/core/terrain.cfg:1904 data/core/terrain.cfg:1917
-#: data/core/terrain.cfg:1930 data/core/terrain.cfg:1943
-#: data/core/terrain.cfg:1956 data/core/terrain.cfg:1969
-#: data/core/terrain.cfg:1982 data/core/terrain.cfg:1997
-#: data/core/terrain.cfg:2010 data/core/terrain.cfg:2028
-#: data/core/terrain.cfg:3175 data/core/terrain.cfg:3176
+#: data/core/terrain.cfg:1646 data/core/terrain.cfg:1659
+#: data/core/terrain.cfg:1672 data/core/terrain.cfg:1685
+#: data/core/terrain.cfg:1700 data/core/terrain.cfg:1713
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1756 data/core/terrain.cfg:1769
+#: data/core/terrain.cfg:1782 data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1808 data/core/terrain.cfg:1821
+#: data/core/terrain.cfg:1834 data/core/terrain.cfg:1847
+#: data/core/terrain.cfg:1860 data/core/terrain.cfg:1873
+#: data/core/terrain.cfg:1886 data/core/terrain.cfg:1899
+#: data/core/terrain.cfg:1914 data/core/terrain.cfg:1927
+#: data/core/terrain.cfg:1940 data/core/terrain.cfg:1953
+#: data/core/terrain.cfg:1966 data/core/terrain.cfg:1979
+#: data/core/terrain.cfg:1992 data/core/terrain.cfg:2007
+#: data/core/terrain.cfg:2020 data/core/terrain.cfg:2038
+#: data/core/terrain.cfg:3225 data/core/terrain.cfg:3226
 msgid "Village"
 msgstr "村莊"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1637
+#: data/core/terrain.cfg:1647
 msgid "Adobe Village"
 msgstr "磚造村莊"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1650
+#: data/core/terrain.cfg:1660
 msgid "Ruined Adobe Village"
 msgstr "荒廢的磚造村莊"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1663
+#: data/core/terrain.cfg:1673
 msgid "Desert Tent Village"
 msgstr "沙漠中的帳篷"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1676
+#: data/core/terrain.cfg:1686
 msgid "Tent Village"
 msgstr "帳篷村莊"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1691
+#: data/core/terrain.cfg:1701
 msgid "Orcish Village"
 msgstr "半獸人村莊"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1704
+#: data/core/terrain.cfg:1714
 msgid "Snowy Orcish Village"
 msgstr "雪地裡的半獸人村莊"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1719
+#: data/core/terrain.cfg:1729
 msgid "Snowy Elven Village"
 msgstr "雪地裡的精靈村莊"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1732
+#: data/core/terrain.cfg:1742
 msgid "Elven Village"
 msgstr "精靈村莊"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1757
 msgid "Cottage"
 msgstr "農舍"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1770
 msgid "Snowy Cottage"
 msgstr "雪地裡的農舍"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1773
+#: data/core/terrain.cfg:1783
 msgid "Ruined Cottage"
 msgstr "荒廢的農舍"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1786
+#: data/core/terrain.cfg:1796
 msgid "Human City"
 msgstr "人類的城鎮"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1799
+#: data/core/terrain.cfg:1809
 msgid "Windmill Village"
 msgstr "風車村莊"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1812
+#: data/core/terrain.cfg:1822
 msgid "Snowy Human City"
 msgstr "雪地裡的人類城鎮"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1825
+#: data/core/terrain.cfg:1835
 msgid "Ruined Human City"
 msgstr "荒廢的人類城鎮"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1838
+#: data/core/terrain.cfg:1848
 msgid "Hill Stone Village"
 msgstr "山石村莊"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1861
 msgid "Snowy Hill Stone Village"
 msgstr "雪地裡的山石村莊"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1874
 msgid "Ruined Hill Stone Village"
 msgstr "荒廢的山石村莊"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1877
+#: data/core/terrain.cfg:1887
 msgid "Tropical Village"
 msgstr "熱帶村莊"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1890
+#: data/core/terrain.cfg:1900
 msgid "Drake Village"
 msgstr "龍族村莊"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1905
+#: data/core/terrain.cfg:1915
 msgid "Cave Village"
 msgstr "洞穴村莊"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1918
+#: data/core/terrain.cfg:1928
 msgid "Dwarven Village"
 msgstr "矮人村莊"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1931
+#: data/core/terrain.cfg:1941
 msgid "Hut"
 msgstr "小屋"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1944
+#: data/core/terrain.cfg:1954
 msgid "Snowy Hut"
 msgstr "雪地裡的小屋"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1957
+#: data/core/terrain.cfg:1967
 msgid "Log Cabin"
 msgstr "木屋"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1970
+#: data/core/terrain.cfg:1980
 msgid "Snowy Log Cabin"
 msgstr "雪地裡的木屋"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1983
+#: data/core/terrain.cfg:1993
 msgid "Igloo"
 msgstr "雪屋"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1998
+#: data/core/terrain.cfg:2008
 msgid "Swamp Village"
 msgstr "沼澤村莊"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2011
+#: data/core/terrain.cfg:2021
 msgid "Merfolk Village"
 msgstr "人魚村莊"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2012
+#: data/core/terrain.cfg:2022
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1293,7 +1302,7 @@ msgstr ""
 "人魚跟納迦族在水下村莊擁有60%的防禦，但陸地單位的防禦通常會很低。"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2029
+#: data/core/terrain.cfg:2039
 msgid "Village Overlay"
 msgstr "村莊覆蓋層"
 
@@ -1302,19 +1311,19 @@ msgstr "村莊覆蓋層"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2046
-#: data/core/terrain.cfg:2057 data/core/terrain.cfg:2069
-#: data/core/terrain.cfg:2274 data/core/terrain.cfg:2286
+#: data/core/terrain.cfg:2055 data/core/terrain.cfg:2056
+#: data/core/terrain.cfg:2067 data/core/terrain.cfg:2079
+#: data/core/terrain.cfg:2284 data/core/terrain.cfg:2296
 msgid "Encampment"
 msgstr "營地"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2068
 msgid "Ruined Encampment"
 msgstr "荒廢的營地"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2070
+#: data/core/terrain.cfg:2080
 msgid "Snowy Encampment"
 msgstr "雪地裡的營地"
 
@@ -1333,69 +1342,69 @@ msgstr "雪地裡的營地"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2081 data/core/terrain.cfg:2093
-#: data/core/terrain.cfg:2105 data/core/terrain.cfg:2117
-#: data/core/terrain.cfg:2128 data/core/terrain.cfg:2140
-#: data/core/terrain.cfg:2152 data/core/terrain.cfg:2164
-#: data/core/terrain.cfg:2176 data/core/terrain.cfg:2188
-#: data/core/terrain.cfg:2200 data/core/terrain.cfg:2250
-#: data/core/terrain.cfg:2299 data/core/terrain.cfg:2615
-#: data/core/terrain.cfg:3094 data/core/terrain.cfg:3095
+#: data/core/terrain.cfg:2091 data/core/terrain.cfg:2103
+#: data/core/terrain.cfg:2115 data/core/terrain.cfg:2127
+#: data/core/terrain.cfg:2138 data/core/terrain.cfg:2150
+#: data/core/terrain.cfg:2162 data/core/terrain.cfg:2174
+#: data/core/terrain.cfg:2186 data/core/terrain.cfg:2198
+#: data/core/terrain.cfg:2210 data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2309 data/core/terrain.cfg:2625
+#: data/core/terrain.cfg:3144 data/core/terrain.cfg:3145
 msgid "Castle"
 msgstr "城堡"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2082
+#: data/core/terrain.cfg:2092
 msgid "Orcish Castle"
 msgstr "半獸人城堡"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2104
 msgid "Snowy Orcish Castle"
 msgstr "雪地裡的半獸人城堡"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2106
+#: data/core/terrain.cfg:2116
 msgid "Human Castle"
 msgstr "人類城堡"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2128
 msgid "Snowy Human Castle"
 msgstr "雪地裡的人類城堡"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2129
+#: data/core/terrain.cfg:2139
 msgid "Elven Castle"
 msgstr "精靈城堡"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2141
+#: data/core/terrain.cfg:2151
 msgid "Elven Castle Ruin"
 msgstr "荒廢的精靈城堡"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2153
+#: data/core/terrain.cfg:2163
 msgid "Winter Elven Castle"
 msgstr "冬季精靈城堡"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2165
+#: data/core/terrain.cfg:2175
 msgid "Dwarven Underground Castle"
 msgstr "矮人地下城堡"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2177
+#: data/core/terrain.cfg:2187
 msgid "Dwarven Castle"
 msgstr "矮人城堡"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2189
+#: data/core/terrain.cfg:2199
 msgid "Dwarven Castle Ruins"
 msgstr "荒廢的矮人城堡"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2201
+#: data/core/terrain.cfg:2211
 msgid "Winter Dwarven Castle"
 msgstr "冬季矮人城堡"
 
@@ -1403,48 +1412,48 @@ msgstr "冬季矮人城堡"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2212 data/core/terrain.cfg:2224
-#: data/core/terrain.cfg:2237 data/core/terrain.cfg:2262
+#: data/core/terrain.cfg:2222 data/core/terrain.cfg:2234
+#: data/core/terrain.cfg:2247 data/core/terrain.cfg:2272
 msgid "Ruined Castle"
 msgstr "荒廢的城堡"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2213
+#: data/core/terrain.cfg:2223
 msgid "Ruined Human Castle"
 msgstr "荒廢的人類城堡"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2225
+#: data/core/terrain.cfg:2235
 msgid "Sunken Human Ruin"
 msgstr "沉沒的人類城堡"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2238
+#: data/core/terrain.cfg:2248
 msgid "Swamp Human Ruin"
 msgstr "沼澤裡的人類城堡"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2251
+#: data/core/terrain.cfg:2261
 msgid "Desert Castle"
 msgstr "沙漠城堡"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2263
+#: data/core/terrain.cfg:2273
 msgid "Ruined Desert Castle"
 msgstr "荒廢的沙漠城堡"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2275
+#: data/core/terrain.cfg:2285
 msgid "Troll Encampment"
 msgstr "巨魔營地"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2287
+#: data/core/terrain.cfg:2297
 msgid "Aquatic Encampment"
 msgstr "水中營地"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2300
+#: data/core/terrain.cfg:2310
 msgid "Aquatic Castle"
 msgstr "水中城堡"
 
@@ -1453,24 +1462,24 @@ msgstr "水中城堡"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2316 data/core/terrain.cfg:2340
-#: data/core/terrain.cfg:2353 data/core/terrain.cfg:2574
-#: data/core/terrain.cfg:2587
+#: data/core/terrain.cfg:2326 data/core/terrain.cfg:2350
+#: data/core/terrain.cfg:2363 data/core/terrain.cfg:2584
+#: data/core/terrain.cfg:2597
 msgid "Encampment Keep"
 msgstr "營地主堡"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2328
+#: data/core/terrain.cfg:2338
 msgid "Ruined Encampment Keep"
 msgstr "荒廢的營地主堡"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2341
+#: data/core/terrain.cfg:2351
 msgid "Tall Encampment Keep"
 msgstr "高聳的營地主堡"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2354
+#: data/core/terrain.cfg:2364
 msgid "Snowy Encampment Keep"
 msgstr "雪地裡的營地主堡"
 
@@ -1488,68 +1497,68 @@ msgstr "雪地裡的營地主堡"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2366 data/core/terrain.cfg:2379
-#: data/core/terrain.cfg:2392 data/core/terrain.cfg:2405
-#: data/core/terrain.cfg:2418 data/core/terrain.cfg:2431
-#: data/core/terrain.cfg:2444 data/core/terrain.cfg:2457
-#: data/core/terrain.cfg:2470 data/core/terrain.cfg:2483
-#: data/core/terrain.cfg:2496 data/core/terrain.cfg:2548
-#: data/core/terrain.cfg:2600 data/core/terrain.cfg:2628
+#: data/core/terrain.cfg:2376 data/core/terrain.cfg:2389
+#: data/core/terrain.cfg:2402 data/core/terrain.cfg:2415
+#: data/core/terrain.cfg:2428 data/core/terrain.cfg:2441
+#: data/core/terrain.cfg:2454 data/core/terrain.cfg:2467
+#: data/core/terrain.cfg:2480 data/core/terrain.cfg:2493
+#: data/core/terrain.cfg:2506 data/core/terrain.cfg:2558
+#: data/core/terrain.cfg:2610 data/core/terrain.cfg:2638
 msgid "Keep"
 msgstr "主堡"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2367
+#: data/core/terrain.cfg:2377
 msgid "Orcish Keep"
 msgstr "半獸人主堡"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2380
+#: data/core/terrain.cfg:2390
 msgid "Snowy Orcish Keep"
 msgstr "雪地裡的半獸人主堡"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2393
+#: data/core/terrain.cfg:2403
 msgid "Human Castle Keep"
 msgstr "人類主堡"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2406
+#: data/core/terrain.cfg:2416
 msgid "Snowy Human Castle Keep"
 msgstr "雪地裡的人類主堡"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2419
+#: data/core/terrain.cfg:2429
 msgid "Elven Castle Keep"
 msgstr "精靈主堡"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2432
+#: data/core/terrain.cfg:2442
 msgid "Elven Keep Ruin"
 msgstr "荒廢的精靈主堡"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2445
+#: data/core/terrain.cfg:2455
 msgid "Winter Elven Keep"
 msgstr "冬季精靈主堡"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2458
+#: data/core/terrain.cfg:2468
 msgid "Dwarven Underground Keep"
 msgstr "矮人地下主堡"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2471
+#: data/core/terrain.cfg:2481
 msgid "Dwarven Castle Keep"
 msgstr "矮人主堡"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2484
+#: data/core/terrain.cfg:2494
 msgid "Dwarven Ruin Keep"
 msgstr "荒廢的矮人主堡"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2497
+#: data/core/terrain.cfg:2507
 msgid "Winter Dwarven Keep"
 msgstr "冬季矮人主堡"
 
@@ -1557,58 +1566,58 @@ msgstr "冬季矮人主堡"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2509 data/core/terrain.cfg:2522
-#: data/core/terrain.cfg:2535 data/core/terrain.cfg:2561
+#: data/core/terrain.cfg:2519 data/core/terrain.cfg:2532
+#: data/core/terrain.cfg:2545 data/core/terrain.cfg:2571
 msgid "Ruined Keep"
 msgstr "荒廢的主堡"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2510
+#: data/core/terrain.cfg:2520
 msgid "Ruined Human Castle Keep"
 msgstr "荒廢的人類主堡"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2523
+#: data/core/terrain.cfg:2533
 msgid "Sunken Human Castle Keep"
 msgstr "沈沒的人類主堡"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2536
+#: data/core/terrain.cfg:2546
 msgid "Swamp Human Castle Keep"
 msgstr "沼澤裡的人類主堡"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2549
+#: data/core/terrain.cfg:2559
 msgid "Desert Keep"
 msgstr "沙漠主堡"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2562
+#: data/core/terrain.cfg:2572
 msgid "Ruined Desert Keep"
 msgstr "荒廢的沙漠主堡"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2575
+#: data/core/terrain.cfg:2585
 msgid "Aquatic Encampment Keep"
 msgstr "水中營地主堡"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2588
+#: data/core/terrain.cfg:2598
 msgid "Troll Encampment Keep"
 msgstr "巨魔營地主堡"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2601
+#: data/core/terrain.cfg:2611
 msgid "Aquatic Keep"
 msgstr "水中主堡"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2616
+#: data/core/terrain.cfg:2626
 msgid "Castle Overlay"
 msgstr "城堡覆蓋層"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2629
+#: data/core/terrain.cfg:2639
 msgid "Keep Overlay"
 msgstr "主堡覆蓋層"
 
@@ -1621,6 +1630,9 @@ msgstr "主堡覆蓋層"
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
+#. [terrain_type]: id=snow_stone_bridge
+#. [terrain_type]: id=snow_stone_bridgediag1
+#. [terrain_type]: id=snow_stone_bridgediag2
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
@@ -1633,30 +1645,31 @@ msgstr "主堡覆蓋層"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2647 data/core/terrain.cfg:2662
-#: data/core/terrain.cfg:2675 data/core/terrain.cfg:2688
-#: data/core/terrain.cfg:2700 data/core/terrain.cfg:2713
-#: data/core/terrain.cfg:2728 data/core/terrain.cfg:2740
-#: data/core/terrain.cfg:2753 data/core/terrain.cfg:2768
-#: data/core/terrain.cfg:2780 data/core/terrain.cfg:2794
-#: data/core/terrain.cfg:2811 data/core/terrain.cfg:2825
-#: data/core/terrain.cfg:2839 data/core/terrain.cfg:2853
-#: data/core/terrain.cfg:2867 data/core/terrain.cfg:2881
-#: data/core/terrain.cfg:2895 data/core/terrain.cfg:2909
-#: data/core/terrain.cfg:2923
+#: data/core/terrain.cfg:2657 data/core/terrain.cfg:2672
+#: data/core/terrain.cfg:2685 data/core/terrain.cfg:2698
+#: data/core/terrain.cfg:2710 data/core/terrain.cfg:2723
+#: data/core/terrain.cfg:2738 data/core/terrain.cfg:2750
+#: data/core/terrain.cfg:2763 data/core/terrain.cfg:2778
+#: data/core/terrain.cfg:2790 data/core/terrain.cfg:2803
+#: data/core/terrain.cfg:2818 data/core/terrain.cfg:2830
+#: data/core/terrain.cfg:2844 data/core/terrain.cfg:2861
+#: data/core/terrain.cfg:2875 data/core/terrain.cfg:2889
+#: data/core/terrain.cfg:2903 data/core/terrain.cfg:2917
+#: data/core/terrain.cfg:2931 data/core/terrain.cfg:2945
+#: data/core/terrain.cfg:2959 data/core/terrain.cfg:2973
 msgid "Bridge"
 msgstr "橋樑"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2648 data/core/terrain.cfg:2663
-#: data/core/terrain.cfg:2676
+#: data/core/terrain.cfg:2658 data/core/terrain.cfg:2673
+#: data/core/terrain.cfg:2686
 msgid "Wooden Bridge"
 msgstr "木橋"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2654
+#: data/core/terrain.cfg:2664
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1680,89 +1693,99 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2689 data/core/terrain.cfg:2701
-#: data/core/terrain.cfg:2714
+#: data/core/terrain.cfg:2699 data/core/terrain.cfg:2711
+#: data/core/terrain.cfg:2724
 msgid "Rotting Bridge"
 msgstr "損壞的橋樑"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2729 data/core/terrain.cfg:2741
-#: data/core/terrain.cfg:2754
+#: data/core/terrain.cfg:2739 data/core/terrain.cfg:2751
+#: data/core/terrain.cfg:2764
 msgid "Basic Stone Bridge"
+msgstr "石橋"
+
+#. [terrain_type]: id=snow_stone_bridge
+#. [terrain_type]: id=snow_stone_bridgediag1
+#. [terrain_type]: id=snow_stone_bridgediag2
+#: data/core/terrain.cfg:2779 data/core/terrain.cfg:2791
+#: data/core/terrain.cfg:2804
+#, fuzzy
+#| msgid "Basic Stone Bridge"
+msgid "Snowy Stone Bridge"
 msgstr "石橋"
 
 # Cave在這裡是指材質，也就是跟洞穴地板一樣材質的橋樑。因為不知道怎麼翻，就沒翻出來了。
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2769 data/core/terrain.cfg:2781
-#: data/core/terrain.cfg:2795
+#: data/core/terrain.cfg:2819 data/core/terrain.cfg:2831
+#: data/core/terrain.cfg:2845
 msgid "Cave Chasm Bridge"
 msgstr "深坑上的橋樑"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2812 data/core/terrain.cfg:2826
-#: data/core/terrain.cfg:2840
+#: data/core/terrain.cfg:2862 data/core/terrain.cfg:2876
+#: data/core/terrain.cfg:2890
 msgid "Hanging Bridge"
 msgstr "吊橋"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2854 data/core/terrain.cfg:2868
-#: data/core/terrain.cfg:2882
+#: data/core/terrain.cfg:2904 data/core/terrain.cfg:2918
+#: data/core/terrain.cfg:2932
 msgid "Stone Chasm Bridge"
 msgstr "深坑上的石橋"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2896 data/core/terrain.cfg:2910
-#: data/core/terrain.cfg:2924
+#: data/core/terrain.cfg:2946 data/core/terrain.cfg:2960
+#: data/core/terrain.cfg:2974
 msgid "Plank Bridge"
 msgstr "獨木橋"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2941
+#: data/core/terrain.cfg:2991
 msgid "Off Map"
 msgstr "移除地圖"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2951
+#: data/core/terrain.cfg:3001
 msgid "Fake Map Border"
 msgstr "偽地圖邊緣"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:2962 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3012 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
 msgstr "戰場黑幕"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:2973
+#: data/core/terrain.cfg:3023
 msgid "Fake Shroud"
 msgstr "偽黑幕"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:2984 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:3034 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "戰爭迷霧"
 
 # 蘑菇林的英文應是「Mushroom groves」，但這個條目是用於蘑菇林的群組，所以直接翻成蘑菇林。
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2999 data/core/terrain.cfg:3000
+#: data/core/terrain.cfg:3049 data/core/terrain.cfg:3050
 msgid "Fungus"
 msgstr "蘑菇林"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3003
+#: data/core/terrain.cfg:3053
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1782,7 +1805,7 @@ msgstr ""
 "大多數的單位在蘑菇群中有50%至60%的防禦，但騎乘單位只有20%。"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3014
+#: data/core/terrain.cfg:3064
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1812,12 +1835,12 @@ msgstr ""
 "大多數的單位在洞穴中有20%至40%的防禦，矮人則有50%。"
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3077
 msgid "Sands"
 msgstr "沙地"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3044
+#: data/core/terrain.cfg:3094
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1834,7 +1857,7 @@ msgstr ""
 "人魚跟納迦族在礁石地形都有70%的防禦。"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3058
+#: data/core/terrain.cfg:3108
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1854,7 +1877,7 @@ msgstr ""
 "大多數的單位在丘陵有50%的防禦，騎乘單位回避率被限制在40%，矮人則享有60%。"
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3072
+#: data/core/terrain.cfg:3122
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1874,7 +1897,7 @@ msgstr ""
 "大多數的單位在沼澤只有30%的防禦。人魚、納迦族及蜥蜴人則都享有60%。"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3085
+#: data/core/terrain.cfg:3135
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1895,7 +1918,7 @@ msgstr ""
 "大多數的單位在淺水只有20%至30%的防禦，而人魚和納迦族則享有60%。"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3100
+#: data/core/terrain.cfg:3150
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1914,7 +1937,7 @@ msgstr ""
 "大多數的單位在城堡中都有60%的防禦。"
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3114
+#: data/core/terrain.cfg:3164
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mountains'</italic> are steep enough that units often have "
@@ -1950,7 +1973,7 @@ msgstr ""
 "大多數的單位在山脈上都有60%的防禦，而矮人則享有70%。"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3126
+#: data/core/terrain.cfg:3176
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1965,7 +1988,7 @@ msgstr ""
 "人魚和納迦族在深水區有50%的防禦，且可以全速移動。"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3137 data/core/terrain.cfg:3138
+#: data/core/terrain.cfg:3187 data/core/terrain.cfg:3188
 msgid "Flat"
 msgstr "平地"
 
@@ -1975,7 +1998,7 @@ msgstr "平地"
 # 在草原上是非常容易移動的，但掩蔽性相對來的少。通常，草原是乘騎單位或是一些靈活的單位最適合戰鬥的地方。
 # 大多數的單位在草原都有30%至40%的防禦。
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3139
+#: data/core/terrain.cfg:3189
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -1994,7 +2017,7 @@ msgstr ""
 "大多數的單位在平地都有30%至40%的防禦。"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3152
+#: data/core/terrain.cfg:3202
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2021,7 +2044,7 @@ msgstr ""
 "精靈斥侯也有。而矮人在森林只有30%的防禦。"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3162 data/core/terrain.cfg:3163
+#: data/core/terrain.cfg:3212 data/core/terrain.cfg:3213
 msgid "Frozen"
 msgstr "冰雪"
 
@@ -2032,7 +2055,7 @@ msgstr "冰雪"
 # 大多數的單位在凍原上只能緩慢移動，而且難以進行防禦。另外，就算水中單位可以在水裡呼吸，他們也無法在冰下游泳。
 # 大多數的單位在凍原只有20%至40%的防禦。
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3165
+#: data/core/terrain.cfg:3215
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2050,7 +2073,7 @@ msgstr ""
 "大多數的單位在覆蓋著冰雪的平地上只有20%至40%的防禦。"
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3178
+#: data/core/terrain.cfg:3228
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2071,12 +2094,12 @@ msgstr ""
 "大多數的單位在村莊都有50%至60%的防禦，騎乘單位則只有40%。"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3188 data/core/terrain.cfg:3189
+#: data/core/terrain.cfg:3238 data/core/terrain.cfg:3239
 msgid "Impassable"
 msgstr "無法通行"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3191
+#: data/core/terrain.cfg:3241
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2088,12 +2111,12 @@ msgstr ""
 "的高度飛越山峰，甚至連暴躁的巨魔也無法粉碎那厚厚的石牆。"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3198 data/core/terrain.cfg:3199
+#: data/core/terrain.cfg:3248 data/core/terrain.cfg:3249
 msgid "Unwalkable"
 msgstr "無法步行"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3201
+#: data/core/terrain.cfg:3251
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2105,12 +2128,12 @@ msgstr ""
 "飛行單位能過通過此地形。"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3208 data/core/terrain.cfg:3209
+#: data/core/terrain.cfg:3258 data/core/terrain.cfg:3259
 msgid "Rails"
 msgstr "鐵軌"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3211
+#: data/core/terrain.cfg:3261
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr "<italic>text='鐵軌'</italic>大部分都被矮人拿來運輸礦石用。"
@@ -6877,7 +6900,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
-#: src/gui/dialogs/title_screen.cpp:438
+#: src/gui/dialogs/title_screen.cpp:444
 msgid "Choose Test"
 msgstr "選擇測試"
 
