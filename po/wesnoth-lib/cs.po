@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-04-29 14:42-0500\n"
-"PO-Revision-Date: 2022-04-02 16:17+0200\n"
+"PO-Revision-Date: 2022-04-21 22:33+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -431,14 +431,12 @@ msgstr "Železný plot"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:521
 msgid "Palisade"
-msgstr ""
+msgstr "Palisáda"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:522
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Dřevěný most"
+msgstr "Dřevěná palisáda"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:531
@@ -4508,7 +4506,7 @@ msgstr "Žena"
 #: data/gui/window/mp_faction_select.cfg:217
 #: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Recruits"
-msgstr "Naverbováno"
+msgstr "Verbuje"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
@@ -6430,7 +6428,7 @@ msgstr "Wesnoth $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "činné: $active, záloha: $reserve"
 
 #: src/gui/dialogs/game_load.cpp:283
 msgid "The selected file is corrupt: "
@@ -8129,12 +8127,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Gold Left:"
-#~ msgstr "Zbývající zlato:"
-
-#~ msgid "Active Troops:"
-#~ msgstr "Aktivních jednotek:"
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "Rezervních jednotek:"
