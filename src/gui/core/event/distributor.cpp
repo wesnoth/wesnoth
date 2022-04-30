@@ -25,6 +25,7 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/userevent.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <array>
 #include <functional>
@@ -529,7 +530,7 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	if(mouse_captured_) {
 		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK;
 
-		if((SDL_GetMouseState(nullptr, nullptr) & mask) == 0) {
+		if((sdl::get_mouse_button_mask() & mask) == 0) {
 			mouse_captured_ = false;
 		}
 
@@ -662,7 +663,7 @@ distributor::~distributor()
 
 void distributor::initialize_state()
 {
-	const uint32_t button_state = SDL_GetMouseState(nullptr, nullptr);
+	const uint32_t button_state = sdl::get_mouse_button_mask();
 
 	mouse_button_left::initialize_state(button_state);
 	mouse_button_middle::initialize_state(button_state);

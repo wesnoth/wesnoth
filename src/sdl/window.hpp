@@ -169,6 +169,24 @@ public:
 
 	int get_display_index();
 
+	/**
+	 * Sets the desired size of the rendering surface. Input event coordinates
+	 * will be scaled as if the window were also of this size. For best
+	 * results this should be an integer fraction of the window size.
+	 *
+	 * This is a wrapper for SDL_RenderSetLogicalSize.
+	 *
+	 * @param w              Width of the window's rendering surface
+	 * @param h              Height of the window's rendering surface
+	 */
+	void set_logical_size(int w, int h);
+
+	SDL_Point get_logical_size() const;
+	void get_logical_size(int& w, int& h) const;
+
+	/** The current pixel format of the renderer. */
+	uint32_t pixel_format();
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**

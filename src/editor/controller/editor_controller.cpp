@@ -54,6 +54,7 @@
 #include "units/animation_component.hpp"
 #include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <functional>
 
@@ -1258,10 +1259,10 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		// last_undo is a non-owning pointer. Although it could have other uses, it seems to be
 		// mainly (only?) used for printing debugging information.
 		auto last_undo = get_current_map_context().last_undo_action();
-		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
+		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(1)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
-		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
+		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(3)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}

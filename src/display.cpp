@@ -183,7 +183,7 @@ display::display(const display_context* dc,
 	, xpos_(0)
 	, ypos_(0)
 	, view_locked_(false)
-	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), screen_.screen_area())
+	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), screen_.draw_area())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
@@ -248,7 +248,7 @@ display::display(const display_context* dc,
 	read(level.child_or_empty("display"));
 
 	if(screen_.non_interactive()
-		&& (screen_.getSurface() != nullptr
+		&& (screen_.getDrawingSurface() != nullptr
 		&& screen_.faked())) {
 		screen_.lock_updates(true);
 	}
@@ -290,7 +290,7 @@ display::~display()
 
 void display::set_theme(const std::string& new_theme)
 {
-	theme_ = theme{theme::get_theme_config(new_theme), screen_.screen_area()};
+	theme_ = theme{theme::get_theme_config(new_theme), screen_.draw_area()};
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
@@ -779,7 +779,7 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		return screen_.getSurface().clone();
+		return screen_.getDrawingSurface().clone();
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
@@ -843,7 +843,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning menu buttons...\n";
 	for(const auto& menu : theme_.menus()) {
 		if(auto b = find_menu_button(menu.get_id())) {
-			const SDL_Rect& loc = menu.location(screen_.screen_area());
+			const SDL_Rect& loc = menu.location(screen_.draw_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -854,7 +854,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning action buttons...\n";
 	for(const auto& action : theme_.actions()) {
 		if(auto b = find_action_button(action.get_id())) {
-			const SDL_Rect& loc = action.location(screen_.screen_area());
+			const SDL_Rect& loc = action.location(screen_.draw_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -1318,15 +1318,15 @@ void display::flip()
 		return;
 	}
 
-	surface& frameBuffer = video().getSurface();
+	surface& drawingSurface = video().getDrawingSurface();
 
-	font::draw_floating_labels(frameBuffer);
+	font::draw_floating_labels(drawingSurface);
 	events::raise_volatile_draw_event();
 
 	video().flip();
 
 	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(frameBuffer);
+	font::undraw_floating_labels(drawingSurface);
 }
 
 // frametime is in milliseconds
@@ -1405,7 +1405,7 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 
 	surface surf(image::get_image(panel.image()));
 
-	const SDL_Rect screen = video.screen_area();
+	const SDL_Rect screen = video.draw_area();
 	SDL_Rect& loc = panel.location(screen);
 
 	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
@@ -1426,7 +1426,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	const std::string& text = label.text();
 	const color_t text_color = label.font_rgb_set() ? label.font_rgb() : font::NORMAL_COLOR;
 	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(video.screen_area());
+	SDL_Rect& loc = label.location(video.draw_area());
 
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon));
@@ -1448,7 +1448,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
-	surface& screen(screen_.getSurface());
+	surface& screen(screen_.getDrawingSurface());
 
 	/*
 	 * The minimap is also a panel, force it to update its contents.
@@ -1764,7 +1764,7 @@ void display::draw_minimap()
 		}
 	}
 
-	const surface& screen(screen_.getSurface());
+	const surface& screen(screen_.getDrawingSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
 	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
@@ -1821,7 +1821,7 @@ void display::draw_minimap()
 	};
 
 	for(const auto& r : outline_parts) {
-		SDL_FillRect(screen_.getSurface(), &r, 0x00FFFFFF);
+		SDL_FillRect(screen_.getDrawingSurface(), &r, 0x00FFFFFF);
 	}
 }
 
@@ -1873,7 +1873,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		SDL_FillRect(screen_.getSurface(), &r, col.to_argb_bytes());
+		SDL_FillRect(screen_.getDrawingSurface(), &r, col.to_argb_bytes());
 	}
 }
 
@@ -1923,7 +1923,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		surface& screen(screen_.getSurface());
+		surface& screen(screen_.getDrawingSurface());
 
 		SDL_Rect dstrect = map_area();
 		dstrect.x += diff_x;
@@ -2380,7 +2380,7 @@ void display::redraw_everything()
 
 	tooltips::clear_tooltips();
 
-	theme_.set_resolution(screen_.screen_area());
+	theme_.set_resolution(screen_.draw_area());
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
@@ -2734,13 +2734,13 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		sdl_blit(img,&visible_area,screen_.getSurface(),&target);
+		sdl_blit(img, &visible_area, screen_.getDrawingSurface(), &target);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img = scale_surface(img,rect.w,rect.h);
 		}
 
-		sdl_blit(img,nullptr,screen_.getSurface(),&target);
+		sdl_blit(img, nullptr, screen_.getDrawingSurface(), &target);
 	}
 }
 
@@ -2772,7 +2772,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(screen_.screen_area());
+	const SDL_Rect &new_rect = item->location(screen_.draw_area());
 	surface &surf = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 
@@ -2785,7 +2785,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	report = *new_cfg;
 
 	if (surf) {
-		sdl_blit(surf, nullptr, screen_.getSurface(), &rect);
+		sdl_blit(surf, nullptr, screen_.getDrawingSurface(), &rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
@@ -2799,7 +2799,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf = get_surface_portion(screen_.getSurface(), rect);
+			surf = get_surface_portion(screen_.getDrawingSurface(), rect);
 			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}

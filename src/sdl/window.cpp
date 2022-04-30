@@ -15,6 +15,7 @@
 
 #include "sdl/surface.hpp"
 #include "sdl/window.hpp"
+#include "sdl/input.hpp"
 
 #include "sdl/exception.hpp"
 
@@ -69,6 +70,9 @@ window::window(const std::string& title,
 
 	fill(0,0,0);
 
+	// Now that we have a window and renderer we can scale input correctly.
+	update_input_dimensions(get_logical_size(), get_size());
+
 	render();
 }
 
@@ -82,6 +86,7 @@ window::~window()
 void window::set_size(const int w, const int h)
 {
 	SDL_SetWindowSize(window_, w, h);
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 SDL_Point window::get_size()
@@ -108,21 +113,25 @@ void window::center()
 void window::maximize()
 {
 	SDL_MaximizeWindow(window_);
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 void window::to_window()
 {
 	SDL_SetWindowFullscreen(window_, 0);
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 void window::restore()
 {
 	SDL_RestoreWindow(window_);
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 void window::full_screen()
 {
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -157,11 +166,39 @@ uint32_t window::get_flags()
 void window::set_minimum_size(int min_w, int min_h)
 {
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+	// Can this change the size of the window?
+	update_input_dimensions(get_logical_size(), get_size());
 }
 
 int window::get_display_index()
 {
 	return SDL_GetWindowDisplayIndex(window_);
+}
+
+void window::set_logical_size(int w, int h)
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderSetLogicalSize(r, w, h);
+	update_input_dimensions(get_logical_size(), get_size());
+}
+
+SDL_Point window::get_logical_size() const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	int w, h;
+	SDL_RenderGetLogicalSize(r, &w, &h);
+	return {w, h};
+}
+
+void window::get_logical_size(int& w, int& h) const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderGetLogicalSize(r, &w, &h);
+}
+
+uint32_t window::pixel_format()
+{
+	return pixel_format_;
 }
 
 window::operator SDL_Window*()

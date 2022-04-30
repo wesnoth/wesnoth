@@ -141,7 +141,7 @@ SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const colo
 {
 	static surface null_surf{};
 
-	return pango_draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, text, x, y, use_tooltips, style);
+	return pango_draw_text(gui != nullptr ? gui->getDrawingSurface() : null_surf, area, size, color, text, x, y, use_tooltips, style);
 }
 
 SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)

@@ -109,7 +109,7 @@ static void launch_lua_console()
 
 static void make_screenshot()
 {
-	surface screenshot = CVideo::get_singleton().getSurface().clone();
+	surface screenshot = CVideo::get_singleton().getDrawingSurface().clone();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");

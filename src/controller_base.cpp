@@ -29,6 +29,7 @@
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -65,7 +66,7 @@ void controller_base::long_touch_callback(int x, int y)
 	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
 		int x_now;
 		int y_now;
-		uint32_t mouse_state = SDL_GetMouseState(&x_now, &y_now);
+		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
 		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
@@ -398,7 +399,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().video().screen_area());
+		const SDL_Rect& menu_loc = m->location(get_display().video().draw_area());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
@@ -406,7 +407,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const SDL_Rect& action_loc = a->location(get_display().video().screen_area());
+		const SDL_Rect& action_loc = a->location(get_display().video().draw_area());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;
@@ -421,7 +422,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	bool was_scrolling = scrolling_;
 
 	int mousex, mousey;
-	uint8_t mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+	uint8_t mouse_flags = sdl::get_mouse_state(&mousex, &mousey);
 
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 

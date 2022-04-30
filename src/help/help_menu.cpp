@@ -19,6 +19,7 @@
 #include "help/help_impl.hpp"                // for section, topic, topic_list, etc
 #include "sound.hpp"                    // for play_UI_sound
 #include "wml_separators.hpp"           // for IMG_TEXT_SEPARATOR, etc
+#include "sdl/input.hpp"                // for get_mouse_state
 
 #include <algorithm>                    // for find
 #include <iostream>                     // for basic_ostream, operator<<, etc
@@ -157,7 +158,7 @@ int help_menu::process()
 {
 	int res = menu::process();
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	sdl::get_mouse_state(&mousex, &mousey);
 
 	if (!visible_items_.empty() &&
             static_cast<std::size_t>(res) < visible_items_.size()) {

@@ -71,6 +71,12 @@ void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 	find_widget<W>(&window, id, false).set_active(dynamic_cast<selectable_item&>(w).get_value_bool());
 }
 
+template<typename W>
+void disable_widget_on_toggle_inverted(window& window, widget& w, const std::string& id)
+{
+	find_widget<W>(&window, id, false).set_active(!dynamic_cast<selectable_item&>(w).get_value_bool());
+}
+
 // Ensure the specified index is between 0 and one less than the max
 // number of pager layers (since get_layer_count returns one-past-end).
 int index_in_pager_range(const int first, const stacked_widget& pager)
@@ -311,6 +317,22 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 		std::bind(volume_setter_on_change<vol_setter>, std::placeholders::_1));
 }
 
+void preferences_dialog::apply_pixel_scale()
+{
+	// Update pixel scale preference.
+	slider& ps_slider = find_widget<slider>(get_window(), "pixel_scale_slider", false);
+	set_pixel_scale(ps_slider.get_value());
+
+	// Update auto pixel scale preference.
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	set_auto_pixel_scale(auto_ps_toggle.get_value_bool());
+
+	// Update draw buffers, taking these into account.
+	CVideo::get_singleton().update_buffers();
+}
+
+
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -407,6 +429,25 @@ void preferences_dialog::post_build(window& window)
 
 	connect_signal_notify_modified(res_list,
 		std::bind(&preferences_dialog::handle_res_select, this));
+
+	/* PIXEL SCALE */
+	register_integer("pixel_scale_slider", true,
+		pixel_scale, set_pixel_scale);
+
+	slider& ps_slider =
+		find_widget<slider>(&window, "pixel_scale_slider", false);
+	connect_signal_mouse_left_release(ps_slider,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
+
+	/* AUTOMATIC PIXEL SCALE */
+	register_bool("auto_pixel_scale", true,
+		auto_pixel_scale, set_auto_pixel_scale,
+		[&](widget& w) { disable_widget_on_toggle_inverted<slider>(window, w, "pixel_scale_slider"); }, true);
+
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	connect_signal_mouse_left_click(auto_ps_toggle,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -985,6 +1026,7 @@ void preferences_dialog::pre_show(window& window)
 
 	gui2::bind_status_label<slider>(&window, "max_saves_slider");
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
+	gui2::bind_status_label<slider>(&window, "pixel_scale_slider");
 
 	//gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
 	//	return s.get_value_label() + "%";
