@@ -218,7 +218,7 @@ public:
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.

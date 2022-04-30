@@ -405,7 +405,7 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
