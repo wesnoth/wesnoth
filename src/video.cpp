@@ -475,6 +475,15 @@ sdl::window* CVideo::get_window()
 	return window.get();
 }
 
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(window) {
+		return *window;
+	} else {
+		return nullptr;
+	}
+}
+
 std::string CVideo::current_driver()
 {
 	const char* const drvname = SDL_GetCurrentVideoDriver();
