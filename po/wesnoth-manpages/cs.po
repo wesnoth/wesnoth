@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2022-01-10 19:15+0100\n"
+"PO-Revision-Date: 2022-04-11 20:32+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -130,7 +130,7 @@ msgstr ""
 #: doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgstr "B<--bunzip2>I<\\ soubor_se_hrou.bz2>"
+msgstr "B<--bunzip2>I<\\ vstupní_soubor.bz2>"
 
 # type: Plain text
 #. type: Plain text
@@ -139,15 +139,15 @@ msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
-"dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu bzip2 a "
-"uloží jej bez koncovky .bz2. Následně je I<soubor_se_hrou.bz2> smazán."
+"dekomprimuje soubor, který by měl být ve formátu bzip2, a uloží jej bez "
+"přípony .bz2. Původní I<vstupní_soubor.bz2> bude odstraněn."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
 #, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
-msgstr "B<--bzip2>I<\\ soubor_se_hrou>"
+msgstr "B<--bzip2>I<\\ vstupní_soubor>"
 
 # type: Plain text
 #. type: Plain text
@@ -156,8 +156,8 @@ msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu bzip2 a uloží "
-"jej jako I<soubor_se_hrou>.bz2 a odstraní I<soubor_se_hrou>."
+"zkomprimuje soubor do formátu bzip2, uloží jej jako I<vstupní_soubor>.bz2 "
+"a odstraní I<vstupní_soubor>."
 
 #. type: TP
 #: doc/man/wesnoth.6:61
