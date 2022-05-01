@@ -137,14 +137,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
-{
-	static surface null_surf{};
-
-	return pango_draw_text(gui != nullptr ? gui->getDrawingSurface() : null_surf, area, size, color, text, x, y, use_tooltips, style);
-}
-
-SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();
 
@@ -169,9 +162,8 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
 
 	SDL_Rect res = { x, y, s->w, s->h };
 
-	if(dst) {
-		SDL_Rect src = { 0, 0, s->w, s->h };
-		sdl_blit(s, &src, dst, &res);
+	if(video) {
+		video->blit_surface(s, &res);
 	}
 
 	if(ellipsized && use_tooltips) {

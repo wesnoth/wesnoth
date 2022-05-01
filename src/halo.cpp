@@ -228,18 +228,17 @@ bool halo_impl::effect::render()
 		return false;
 	}
 
-	surface& screen = disp->get_screen_surface();
-
-	const clip_rect_setter clip_setter(screen, &clip_rect);
+	// TODO: highdpi - this is going to be broken - fix
+	const clip_rect_setter clip_setter(disp->video().getDrawingSurface(), &clip_rect);
 	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
 		SDL_Rect rect2 = rect_;
-		buffer_ = get_surface_portion(screen,rect2);
+		buffer_ = get_surface_portion(disp->video().getDrawingSurface(), rect2);
 	} else {
 		SDL_Rect rect2 = rect_;
-		sdl_copy_portion(screen,&rect2,buffer_,nullptr);
+		sdl_copy_portion(disp->video().getDrawingSurface(), &rect2, buffer_, nullptr);
 	}
 
-	sdl_blit(surf_,nullptr,screen,&rect);
+	disp->video().blit_surface(surf_, &rect);
 
 	return true;
 }
@@ -259,10 +258,8 @@ void halo_impl::effect::unrender()
 		return;
 	}
 
-	surface& screen = disp->get_screen_surface();
-
 	SDL_Rect clip_rect = disp->map_outside_area();
-	const clip_rect_setter clip_setter(screen, &clip_rect);
+	const clip_rect_setter clip_setter(disp->video().getDrawingSurface(), &clip_rect);
 
 	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate
@@ -272,8 +269,7 @@ void halo_impl::effect::unrender()
 	const int xpos = x_ + screenx - surf_->w/2;
 	const int ypos = y_ + screeny - surf_->h/2;
 
-	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
-	sdl_blit(buffer_,nullptr,screen,&rect);
+	disp->video().blit_surface(xpos, ypos, buffer_);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const

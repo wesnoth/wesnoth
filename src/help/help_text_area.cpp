@@ -537,8 +537,7 @@ void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 	bg_restore();
-	surface& screen = video().getDrawingSurface();
-	clip_rect_setter clip_rect_set(screen, &loc);
+	clip_rect_setter clip_rect_set(video().getDrawingSurface(), &loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
 		dst.y -= get_position();
@@ -554,16 +553,17 @@ void help_text_area::draw_contents()
 						it->rect.h - i * 2
 					};
 
+					// TODO: highdpi - fix
 					// SDL 2.0.10's render batching changes result in the
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
-					SDL_FillRect(screen, &draw_rect, 0);
+					SDL_FillRect(video().getDrawingSurface(), &draw_rect, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			sdl_blit(it->surf, nullptr, screen, &dst);
+			video().blit_surface(it->surf, &dst);
 		}
 	}
 }

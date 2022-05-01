@@ -838,6 +838,8 @@ void canvas::blit(SDL_Rect rect)
 		return;
 	}
 
+	CVideo& video = CVideo::get_singleton();
+
 	VALIDATE(rect.w >= 0 && rect.h >= 0, _("Area to draw has negative size"));
 	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
 		_("Area to draw is larger than widget size"));
@@ -851,7 +853,7 @@ void canvas::blit(SDL_Rect rect)
 	// From those, as the first column is off-screen:
 	// rect_clipped_to_parent={0, 2, 329, 440}
 	// area_to_draw={1, 0, 329, 440}
-	SDL_Rect parent {0, 0, surf->w, surf->h};
+	SDL_Rect parent {0, 0, video.get_width(), video.get_height()};
 	SDL_Rect rect_clipped_to_parent;
 	if(!SDL_IntersectRect(&rect, &parent, &rect_clipped_to_parent)) {
 		DBG_GUI_D << "Area to draw is completely outside parent.\n";
@@ -866,13 +868,15 @@ void canvas::blit(SDL_Rect rect)
 
 	draw(area_to_draw);
 
+	// TODO: highdpi - reenable blur
+#if 0
 	if(blur_depth_) {
 		/*
 		 * If the surf is the video surface the blurring seems to stack, this
 		 * can be seen in the title screen. So also use the not 32 bpp method
 		 * for this situation.
 		 */
-		if(surf != CVideo::get_singleton().getDrawingSurface() && surf.is_neutral()) {
+		if(surf != video.getDrawingSurface() && surf.is_neutral()) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.
@@ -882,6 +886,7 @@ void canvas::blit(SDL_Rect rect)
 			sdl_blit(s, nullptr, surf, &r);
 		}
 	}
+#endif
 
 	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that
 	// scrolling by a single pixel will force a complete redraw. I tested rendering a few of the off-screen lines too,
@@ -894,7 +899,7 @@ void canvas::blit(SDL_Rect rect)
 	assert(area_to_draw.y == view_bounds_.y);
 	assert(area_to_draw.w == view_bounds_.w);
 	assert(area_to_draw.h == view_bounds_.h);
-	sdl_blit(viewport_, nullptr, surf, &rect_clipped_to_parent);
+	video.blit_surface(rect.x, rect.y, viewport_);
 }
 
 void canvas::parse_cfg(const config& cfg)

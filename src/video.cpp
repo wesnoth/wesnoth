@@ -511,7 +511,7 @@ void CVideo::render_screen()
 	}
 
 	if (drawingSurface && drawing_texture_) {
-		render_low_res();
+		//render_low_res();
 	}
 
 	if(window) {

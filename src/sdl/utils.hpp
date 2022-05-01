@@ -27,9 +27,11 @@
 #include <map>
 #include <string>
 
+class CVideo;
+
 version_info sdl_get_version();
 
-inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
@@ -324,5 +326,5 @@ uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int
 
 // blit the image on the center of the rectangle
 // and a add a colored background
-void draw_centered_on_background(surface surf, const SDL_Rect& rect,
-	const color_t& color, surface target);
+void draw_centered_on_background(surface& surf, const SDL_Rect& rect,
+	const color_t& color, CVideo& video);

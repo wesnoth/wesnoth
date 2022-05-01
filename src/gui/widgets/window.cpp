@@ -579,8 +579,9 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		// restore area
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-			font::undraw_floating_labels(video_.getDrawingSurface());
+			video_.blit_surface(rect.x, rect.y, restorer_);
+			// TODO: highdpi - reimplement / fix this
+			//font::undraw_floating_labels(video_.getDrawingSurface());
 		}
 		throw;
 	}
@@ -590,8 +591,9 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	// restore area
 	if(restore_) {
 		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-		font::undraw_floating_labels(video_.getDrawingSurface());
+		video_.blit_surface(rect.x, rect.y, restorer_);
+		// TODO: highdpi - reimplement / fix this
+		//font::undraw_floating_labels(video_.getDrawingSurface());
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
@@ -609,8 +611,6 @@ void window::draw()
 		return;
 	}
 
-	surface& drawing_surface = video_.getDrawingSurface();
-
 	/***** ***** Layout and get dirty list ***** *****/
 	if(need_layout_) {
 		// Restore old surface. In the future this phase will not be needed
@@ -618,7 +618,7 @@ void window::draw()
 		// doesn't work yet we need to undraw the window.
 		if(restore_ && restorer_) {
 			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, drawing_surface, &rect);
+			video_.blit_surface(rect.x, rect.y, restorer_);
 		}
 
 		layout();
@@ -629,11 +629,13 @@ void window::draw()
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		if(is_toplevel_) {
-			font::draw_floating_labels(drawing_surface);
+			// TODO: highdpi - reimplement / fix this
+			//font::draw_floating_labels(drawing_surface);
 		}
 
 		if(restore_) {
-			restorer_ = get_surface_portion(drawing_surface, rect);
+			// TODO: highdpi - reimplement / fix this
+			restorer_ = get_surface_portion(video_.getDrawingSurface(), rect);
 		}
 
 		// Need full redraw so only set ourselves dirty.
@@ -687,7 +689,7 @@ void window::draw()
 		dirty_list_.clear();
 		dirty_list_.emplace_back(1, this);
 #else
-		clip_rect_setter clip(drawing_surface, &dirty_rect);
+		clip_rect_setter clip(video_.getDrawingSurface(), &dirty_rect);
 #endif
 
 		/*
@@ -734,7 +736,7 @@ void window::draw()
 		// Restore.
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, drawing_surface, &rect);
+			video_.blit_surface(rect.x, rect.y, restorer_);
 		}
 
 		// Background.
@@ -778,8 +780,7 @@ void window::undraw()
 {
 	if(restore_ && restorer_) {
 		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-		// Since the old area might be bigger than the new one, invalidate it.
+		video_.blit_surface(rect.x, rect.y, restorer_);
 	}
 }
 

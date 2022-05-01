@@ -22,6 +22,7 @@
 #include "sdl/rect.hpp"
 #include "color.hpp"
 #include "xBRZ/xbrz.hpp"
+#include "video.hpp" // only needed for draw_centered_on_background, consider removing
 
 #include <algorithm>
 #include <cassert>
@@ -2131,6 +2132,8 @@ void blit_surface(const surface& surf,
 	}
 }
 
+// TODO: highdpi - this will break as soon as things start rendering with textures.
+// fix shouldn't be too hard - just pull pixels from the render target, not the drawing surface.
 surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
 	if (src == nullptr) {
@@ -2246,8 +2249,9 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	return res;
 }
 
-void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color, surface target)
+void draw_centered_on_background(surface& surf, const SDL_Rect& rect, const color_t& color, CVideo& video)
 {
+	surface& target = video.getDrawingSurface();
 	clip_rect_setter clip_setter(target, &rect);
 
 	uint32_t col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
@@ -2258,7 +2262,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 	if (surf != nullptr) {
 		r.x = rect.x + (rect.w-surf->w)/2;
 		r.y = rect.y + (rect.h-surf->h)/2;
-		sdl_blit(surf, nullptr, target, &r);
+		video.blit_surface(surf, &r);
 	}
 }
 

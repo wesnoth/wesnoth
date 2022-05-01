@@ -198,7 +198,7 @@ void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 void container_base::impl_draw_children(int x_offset, int y_offset)
 {
 	assert(get_visible() == widget::visibility::visible
-		   && grid_.get_visible() == widget::visibility::visible);
+	       && grid_.get_visible() == widget::visibility::visible);
 
 	grid_.draw_children(x_offset, y_offset);
 }
