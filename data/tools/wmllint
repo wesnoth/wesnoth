@@ -2690,8 +2690,8 @@ def hack_syntax(filename, lines):
         precomment = re.split(r'\s#', lines[i], 1)[0]
         comment = lines[i][len(precomment):]
         if '\\' in precomment:
-            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
-                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|webp|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|webp|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
                 fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
                 precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
                 print('"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
