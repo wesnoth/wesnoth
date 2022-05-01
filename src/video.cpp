@@ -26,6 +26,7 @@
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 #include "sdl/input.hpp"
+#include "sdl/texture.hpp"
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -164,13 +165,32 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 	}
 }
 
-void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
+void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
+{
+	sdl_blit(surf, nullptr, getDrawingSurface(), dst);
+	render_low_res(dst);
+}
+
+void CVideo::blit_surface(int x, int y, const surface& surf)
+{
+	SDL_Rect dst{x, y, 0, 0};
+	blit_surface(surf, &dst);
+}
+
+void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* srcrect, const SDL_Rect* clip_rect)
 {
 	surface& target(getDrawingSurface());
 	SDL_Rect dst{x, y, 0, 0};
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
 	sdl_blit(surf, srcrect, target, &dst);
+	// dst gets updated by SDL_BlitSurface to reflect clipping etc.
+	render_low_res(&dst);
+}
+
+void CVideo::blit_texture(texture& tex, SDL_Rect* dst_rect, SDL_Rect* src_rect)
+{
+	SDL_RenderCopy(*window.get(), tex, src_rect, dst_rect);
 }
 
 void CVideo::make_fake()
@@ -276,6 +296,8 @@ void CVideo::update_framebuffer()
 			drawingSurface->w,
 			drawingSurface->h
 		);
+		// Always use alpha blending.
+		SDL_SetTextureBlendMode(drawing_texture_, SDL_BLENDMODE_BLEND);
 	}
 
 	// Update sizes for input conversion.
@@ -402,6 +424,86 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
+SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
+{
+	if (r) {
+		return sdl::intersect_rects(*r, draw_area());
+	} else {
+		return draw_area();
+	}
+}
+
+SDL_Rect CVideo::to_output(const SDL_Rect& r) const
+{
+	int s = output_size().x / get_width();
+	return {s*r.x, s*r.y, s*r.w, s*r.h};
+}
+
+void CVideo::render_low_res()
+{
+	if (!drawingSurface) {
+		throw game::error("trying to render with no drawingSurface");
+	}
+	if (!drawing_texture_) {
+		throw game::error("trying to render with no drawing_texture_");
+	}
+	// Upload the drawing surface to the drawing texture.
+	void* pixels_out; // somewhere we can write raw pixel data to
+	int pitch; // the length of one row of pixels in bytes
+	SDL_LockTexture(drawing_texture_, nullptr, &pixels_out, &pitch);
+	if (pitch != drawingSurface->pitch) {
+		// If these don't match we are not gonna have a good time.
+		throw game::error("drawing surface and texture are incompatible");
+	}
+	// The pitch and pixel format should be the same,
+	// so we can just copy the whole chunk of memory directly.
+	size_t num_bytes = drawingSurface->h * pitch;
+	memcpy(pixels_out, drawingSurface->pixels, num_bytes);
+	SDL_UnlockTexture(drawing_texture_);
+
+	// Copy the whole drawing texture to the render target.
+	SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
+}
+
+void CVideo::render_low_res(SDL_Rect* src_rect)
+{
+	if (!drawingSurface) {
+		throw game::error("trying to render with no drawingSurface");
+	}
+	if (!drawing_texture_) {
+		throw game::error("trying to render with no drawing_texture_");
+	}
+
+	SDL_Rect r = clip_to_draw_area(src_rect);
+	uint8_t bytes_per_pixel = SDL_BYTESPERPIXEL(drawingSurface->format->format);
+
+	// Upload the drawing surface to the drawing texture.
+	void* pixels_out; // somewhere we can write raw pixel data to
+	int pitch; // the length of one row of pixels in bytes
+	SDL_LockTexture(drawing_texture_, &r, &pixels_out, &pitch);
+	if (pitch != drawingSurface->pitch) {
+		// If these don't match we are not gonna have a good time.
+		throw game::error("drawing surface and texture are incompatible");
+	}
+	char* pixels_in = static_cast<char*>(drawingSurface->pixels);
+	pixels_in += (r.x * bytes_per_pixel) + (r.y * pitch);
+	size_t row_bytes = r.w * bytes_per_pixel;
+	for (int y = 0; y < r.h; ++y) {
+		size_t row_offset = y * pitch;
+		memcpy(
+			static_cast<char*>(pixels_out) + row_offset,
+			pixels_in + row_offset,
+			row_bytes
+		);
+	}
+	SDL_UnlockTexture(drawing_texture_);
+
+	// Copy the drawing texture to the render target.
+	// SDL will adapt the destination rect coordinates automatically
+	// in high-dpi contexts, thanks to set_logical_size().
+	SDL_RenderCopy(*window.get(), drawing_texture_, &r, &r);
+}
+
 void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
@@ -409,25 +511,11 @@ void CVideo::render_screen()
 	}
 
 	if (drawingSurface && drawing_texture_) {
-		// Upload the drawing surface to the drawing texture.
-		void* pixels_out; // somewhere we can write raw pixel data to
-		int pitch; // the length of one row of pixels in bytes
-		SDL_LockTexture(drawing_texture_, nullptr, &pixels_out, &pitch);
-		if (pitch != drawingSurface->pitch) {
-			// If these don't match we are not gonna have a good time.
-			throw game::error("drawing surface and texture are incompatible");
-		}
-		size_t num_bytes = drawingSurface->h * pitch;
-		memcpy(pixels_out, drawingSurface->pixels, num_bytes);
-		SDL_UnlockTexture(drawing_texture_);
-
-		//SDL_UpdateTexture(drawing_texture_, nullptr, drawingSurface->pixels, drawingSurface->pitch);
-
-		// Copy the drawing texture to the render target.
-		SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
+		render_low_res();
 	}
 
 	if(window) {
+		// TODO: rename this to "present"
 		window->render();
 	}
 }

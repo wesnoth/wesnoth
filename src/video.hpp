@@ -24,6 +24,7 @@
 #include <memory>
 
 class surface;
+class texture;
 struct point;
 struct SDL_Texture;
 
@@ -182,6 +183,20 @@ public:
 	std::pair<float, float> get_dpi_scale_factor() const;
 
 	/**
+	 * Clip a rectangle to the drawing area.
+	 *
+	 * This does not change the original
+	 * @param r                   The SDL_Rect to clip.
+	 * @returns                   The new clipped SDL_Rect.
+	 */
+	SDL_Rect clip_to_draw_area(const SDL_Rect* r) const;
+
+	/**
+	 * Convert coordinates in draw space to coordinates in render space.
+	 */
+	SDL_Rect to_output(const SDL_Rect& draw_space_rect) const;
+
+	/**
 	 * Tests whether the given flags are currently set on the SDL window.
 	 *
 	 * @param flags               The flags to test, OR'd together.
@@ -210,17 +225,77 @@ public:
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
 	/**
-	 * Copies an area of a surface to the drawing surface.
+	 * Draws a surface at the given location.
+	 *
+	 * The w and h members of dst are ignored, but will be updated
+	 * to reflect the final draw extents including clipping.
+	 *
+	 * The surface will be rendered in game-native resolution,
+	 * and all coordinates are given in this context.
+	 *
+	 * @param surf                The surface to draw.
+	 * @param dst                 Where to draw the surface. w and h are ignored, but will be updated to reflect the final draw extents including clipping.
+	 */
+	void blit_surface(const surface& surf, SDL_Rect* dst);
+
+	/**
+	 * Draws a surface at the given coordinates.
+	 *
+	 * The surface will be rendered in game-native resolution,
+	 * and all coordinates are given in this context.
 	 *
 	 * @param x                   The x coordinate at which to draw.
 	 * @param y                   The y coordinate at which to draw.
 	 * @param surf                The surface to draw.
-	 * @param srcrect             The area of the surface to draw. This defaults to nullptr,
-	 *                            which implies the entire thing.
-	 * @param clip_rect           The clipping rect. If not null, the surface will only be drawn
+	 */
+	void blit_surface(int x, int y, const surface& surf);
+
+	/**
+	 * Draws an area of a surface at the given location.
+	 *
+	 * The surface will be rendered in game-native resolution,
+	 * and all coordinates are given in this context.
+	 *
+	 * @param x                   The x coordinate at which to draw.
+	 * @param y                   The y coordinate at which to draw.
+	 * @param surf                The surface to draw.
+	 * @param srcrect             The area of the surface to draw. If null, the entire surface is drawn.
+	 * @param clip_rect           The clipping area. If not null, the surface will only be drawn
 	 *                            within the bounds of the given rectangle.
 	 */
-	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
+	void blit_surface(int x, int y, const surface& surf, const SDL_Rect* srcrect, const SDL_Rect* clip_rect);
+
+	/**
+	 * Draws a texture, or part of a texture, at the given location.
+	 *
+	 * The portion of the texture to be drawn will be scaled to fill
+	 * the target rectangle.
+	 *
+	 * This version takes coordinates in game-native resolution,
+	 * which may be lower than the final output resolution in high-dpi
+	 * contexts or if pixel scaling is used. The texture will be copied
+	 * in high-resolution if possible.
+	 *
+	 * @param tex           The texture to be copied / drawn.
+	 * @param dstrect       The target location to copy the texture to,
+	 *                      in low-resolution game-native drawing coordinates.
+	 *                      If null, this fills the entire render target.
+	 * @param srcrect       The portion of the texture to copy.
+	 *                      If null, this copies the entire texture.
+	 */
+	void blit_texture(texture& tex, SDL_Rect* dstrect = nullptr, SDL_Rect* srcrect = nullptr);
+
+	/**
+	 * Render a portion of the low-resolution drawing surface.
+	 *
+	 * @param src_rect      The portion of the drawing surface to render, in draw-space coordinates. If null, the entire drawing surface is rendered.
+	 */
+	void render_low_res(SDL_Rect* src_rect);
+
+	/**
+	 * Render the entire low-resolution drawing surface.
+	 */
+	void render_low_res();
 
 	/** Renders the screen. Should normally not be called directly! */
 	void render_screen();
