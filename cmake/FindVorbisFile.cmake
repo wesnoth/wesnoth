@@ -36,27 +36,13 @@ http://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFil
 set(VORBISFILE_SEARCH_PATHS
 	~/Library/Frameworks
 	/Library/Frameworks
-    /usr/local
+	/usr/local
 	/usr
 	/sw # Fink
 	/opt/local # DarwinPorts
 	/opt/csw # Blastwave
 	/opt
 )
-
-# Map MSVC version to the installation folder name
-set(MSVC_YEAR_NAME)
-if(MSVC_VERSION GREATER 1599)		# >= 1600
-	set(MSVC_YEAR_NAME VS2010)
-elseif(MSVC_VERSION GREATER 1499)	# >= 1500
-	set(MSVC_YEAR_NAME VS2008)
-elseif(MSVC_VERSION GREATER 1399)	# >= 1400
-	set(MSVC_YEAR_NAME VS2005)
-elseif(MSVC_VERSION GREATER 1299)	# >= 1300
-	set(MSVC_YEAR_NAME VS2003)
-elseif(MSVC_VERSION GREATER 1199)	# >= 1200
-	set(MSVC_YEAR_NAME VS6)
-endif()
 
 find_path(VORBISFILE_INCLUDE_DIR
 	NAMES vorbis/vorbisfile.h
@@ -79,9 +65,6 @@ find_library(VORBISFILE_LIBRARY
 	PATH_SUFFIXES
 		lib
 		lib64
-		win32/VorbisFile_Dynamic_Release
-		"Win32/${MSVC_YEAR_NAME}/x64/Release"
-		"Win32/${MSVC_YEAR_NAME}/Win32/Release"
 	PATHS ${VORBISFILE_SEARCH_PATHS}
 )
 
@@ -96,9 +79,6 @@ find_library(VORBISFILE_LIBRARY_DEBUG
 	PATH_SUFFIXES
 		lib
 		lib64
-		win32/VorbisFile_Dynamic_Debug
-		"Win32/${MSVC_YEAR_NAME}/x64/Debug"
-		"Win32/${MSVC_YEAR_NAME}/Win32/Debug"
 	PATHS ${VORBISFILE_SEARCH_PATHS}
 )
 
@@ -111,14 +91,9 @@ if(NOT VORBISFILE_LIBRARY_DEBUG)
 			$ENV{VORBISFILE_PATH}
 			$ENV{VORBISDIR}
 			$ENV{VORBIS_PATH}
-		PATH_SUFFIXES
-			win32/VorbisFile_Dynamic_Debug
-			"Win32/${MSVC_YEAR_NAME}/x64/Debug"
-			"Win32/${MSVC_YEAR_NAME}/Win32/Debug"
 		PATHS ${VORBISFILE_SEARCH_PATHS}
 	)
 endif()
-
 
 if(VORBISFILE_LIBRARY)
 	if(VORBISFILE_LIBRARY_DEBUG)
