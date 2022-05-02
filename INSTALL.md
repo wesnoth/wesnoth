@@ -8,7 +8,7 @@ later, or a version of Clang with equivalent support.
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries             >= 1.65.0
+ * Boost libraries             >= 1.66.0
      Most headers plus the following binary libs:
    * Filesystem
    * Locale
@@ -56,7 +56,7 @@ The following build systems are fully supported for compiling Wesnoth on Linux,
 *BSD, and other Unix-like platforms:
 
  * SCons >= 0.98.3
- * CMake >= 2.8.5
+ * CMake >= 3.14
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
