@@ -540,6 +540,16 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	return s;
 }
 
+surface CVideo::read_pixels_low_res(SDL_Rect* r)
+{
+	surface s = read_pixels(r);
+	if (r) {
+		return scale_surface(s, r->w, r->h);
+	} else {
+		return scale_surface(s, get_width(), get_height());
+	}
+}
+
 texture CVideo::read_texture(SDL_Rect* r)
 {
 	return texture(read_pixels(r));

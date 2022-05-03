@@ -2786,7 +2786,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf = get_surface_portion(screen_.getDrawingSurface(), rect);
+			surf = screen_.read_pixels_low_res(&rect);
 			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}

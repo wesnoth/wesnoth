@@ -331,6 +331,14 @@ public:
 	surface read_pixels(SDL_Rect* r = nullptr);
 
 	/**
+	 * The same as read_pixels, but returns a low-resolution surface
+	 * suitable for use with the old drawing system.
+	 *
+	 * This should be considered deprecated, and phased out ASAP.
+	 */
+	surface read_pixels_low_res(SDL_Rect* r = nullptr);
+
+	/**
 	 * Copy a portion of the render target to another texture.
 	 *
 	 * This area is specified in draw coordinates, not render coordinates.
