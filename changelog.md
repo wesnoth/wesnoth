@@ -4,6 +4,8 @@
  ### Campaigns
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
+   * Under the Burning Suns
+     * S8: Spawned units will now be unable to be blocked into walls (PR #6677)
  ### Editor
  ### Multiplayer
  ### Lua API
@@ -21,6 +23,7 @@
    * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
    * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
    * Resolved title screen flashing during the loading screen (issue #2395)
+   * Added the {PASSABLE_HEX} macro to core and deleted it from TRoW S19 (PR #6677)
 
 ## Version 1.17.3
  ### Add-ons client
