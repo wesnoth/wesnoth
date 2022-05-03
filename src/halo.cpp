@@ -66,7 +66,7 @@ private:
 
 	int x_, y_, w_, h_;
 	texture tex_, buffer_;
-	SDL_Rect rect_;
+	SDL_Rect rect_, buffer_pos_;
 
 	/** The location of the center of the halo. */
 	map_location loc_;
@@ -147,6 +147,7 @@ halo_impl::effect::effect(display * screen, int xpos, int ypos, const animated<i
 	tex_(),
 	buffer_(),
 	rect_(sdl::empty_rect),
+	buffer_pos_(sdl::empty_rect),
 	loc_(loc),
 	overlayed_hexes_(),
 	disp(screen)
@@ -237,8 +238,8 @@ bool halo_impl::effect::render()
 	// TODO: highdpi - texture clip
 	const clip_rect_setter clip_setter(disp->video().getDrawingSurface(), &clip_rect);
 
-	SDL_Rect rect2 = rect_;
-	buffer_ = disp->video().read_texture(&rect2);
+	buffer_pos_ = rect_;
+	buffer_ = disp->video().read_texture(&buffer_pos_);
 
 	disp->video().blit_texture(tex_, &rect);
 
@@ -270,9 +271,11 @@ void halo_impl::effect::unrender()
 
 	const int xpos = x_ + screenx - w_/2;
 	const int ypos = y_ + screeny - h_/2;
-	const SDL_Rect dst = {xpos, ypos, w_, h_};
 
-	disp->video().blit_texture(buffer_, &dst);
+	buffer_pos_.x += xpos - rect_.x;
+	buffer_pos_.y += ypos - rect_.y;
+
+	disp->video().blit_texture(buffer_, &buffer_pos_);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const
