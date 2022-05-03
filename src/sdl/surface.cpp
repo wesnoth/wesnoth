@@ -132,8 +132,7 @@ void surface_restorer::update()
 	if(rect_.w <= 0 || rect_.h <= 0) {
 		surface_ = nullptr;
 	} else {
-		// TODO: highdpi - this will break, fix
-		surface_ = ::get_surface_portion(target_->getDrawingSurface(),rect_);
+		surface_ = target_->read_pixels_low_res(&rect_);
 	}
 }
 
