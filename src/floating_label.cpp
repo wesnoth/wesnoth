@@ -191,9 +191,8 @@ void floating_label::draw(int time)
 	SDL_Rect draw_rect = {pos.x, pos.y, draw_size_.x, draw_size_.y};
 	buf_pos_ = draw_rect;
 
-	// TODO: highdpi - texture clip
 	CVideo& video = CVideo::get_singleton();
-	const clip_rect_setter clip_setter(video.getDrawingSurface(), &clip_rect_);
+	auto clipper = video.set_clip(clip_rect_);
 
 	// Read buf_ back from the screen.
 	// buf_pos_ will be intersected with the drawing area,
@@ -247,9 +246,8 @@ void floating_label::undraw()
 		return;
 	}
 
-	// TODO: highdpi - texture clip
 	CVideo& video = CVideo::get_singleton();
-	//const clip_rect_setter clip_setter(video.getDrawingSurface(), &clip_rect_);
+	auto clipper = video.set_clip(clip_rect_);
 	video.blit_texture(buf_, &buf_pos_);
 }
 

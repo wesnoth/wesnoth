@@ -235,8 +235,7 @@ bool halo_impl::effect::render()
 		return false;
 	}
 
-	// TODO: highdpi - texture clip
-	const clip_rect_setter clip_setter(disp->video().getDrawingSurface(), &clip_rect);
+	auto clipper = disp->video().set_clip(clip_rect);
 
 	buffer_pos_ = rect_;
 	buffer_ = disp->video().read_texture(&buffer_pos_);
@@ -262,7 +261,7 @@ void halo_impl::effect::unrender()
 	}
 
 	SDL_Rect clip_rect = disp->map_outside_area();
-	const clip_rect_setter clip_setter(disp->video().getDrawingSurface(), &clip_rect);
+	auto clipper = disp->video().set_clip(clip_rect);
 
 	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate

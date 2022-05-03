@@ -1266,7 +1266,7 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.sort();
 
 	SDL_Rect clip_rect = map_area();
-	clip_rect_setter set_clip_rect(screen_.getDrawingSurface(), &clip_rect);
+	auto clipper = screen_.set_clip(clip_rect);
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -1476,7 +1476,7 @@ static void draw_background(CVideo& screen_, const SDL_Rect& area, const std::st
 	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
 	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
 
-	clip_rect_setter set_clip_rect(screen_.getDrawingSurface(), &area);
+	auto clipper = screen_.set_clip(area);
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
 			screen_.blit_surface(w_off, h_off, background);
@@ -1752,7 +1752,7 @@ void display::draw_minimap()
 		}
 	}
 
-	clip_rect_setter clip_setter(screen_.getDrawingSurface(), &area);
+	auto clipper = screen_.set_clip(area);
 
 	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
 	draw_centered_on_background(minimap_, area, back_color, screen_);
@@ -2485,7 +2485,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	clip_rect_setter set_clip_rect(screen_.getDrawingSurface(), &clip_rect);
+	auto clipper = screen_.set_clip(clip_rect);
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);

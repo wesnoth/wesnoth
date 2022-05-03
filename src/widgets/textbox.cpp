@@ -235,7 +235,7 @@ void textbox::draw_contents()
 						, right - startx
 						, line_height_);
 
-				const clip_rect_setter clipper(video().getDrawingSurface(), &loc);
+				auto clipper = video().set_clip(loc);
 
 				color_t c2(0, 0, 160, 140);
 				sdl::fill_rectangle(rect, c2);

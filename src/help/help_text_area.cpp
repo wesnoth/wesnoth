@@ -537,7 +537,7 @@ void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 	bg_restore();
-	clip_rect_setter clip_rect_set(video().getDrawingSurface(), &loc);
+	auto clipper = video().set_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
 		dst.y -= get_position();
