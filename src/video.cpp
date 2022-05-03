@@ -405,7 +405,7 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
@@ -473,6 +473,15 @@ void CVideo::clear_screen()
 sdl::window* CVideo::get_window()
 {
 	return window.get();
+}
+
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(window) {
+		return *window;
+	} else {
+		return nullptr;
+	}
 }
 
 std::string CVideo::current_driver()

@@ -23,7 +23,7 @@ function wml_actions.select_character()
 			id = unit.id,
 			name = _"Li’sar",
 			unrenamable = true,
-			profile = "portraits/lisar.png",
+			profile = "portraits/lisar.webp",
 			canrecruit = true,
 			facing = unit.facing,
 		}, unit.x, unit.y )

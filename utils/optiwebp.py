@@ -41,9 +41,51 @@ if subprocess.run(["cwebp", "-version"], stdout=subprocess.DEVNULL).returncode !
     sys.exit(1)
 
 image_dirs = [
-    os.path.join("data", "core", "images"),
-    os.path.join("data", "campaigns"),
-    "images"
+    os.path.join("data", "campaigns", "Dead_Water", "images", "maps"),
+    os.path.join("data", "campaigns", "Dead_Water", "images", "portraits"),
+    os.path.join("data", "campaigns", "Delfadors_Memoirs", "images", "story"),
+    os.path.join("data", "campaigns", "Delfadors_Memoirs", "images", "portraits"),
+    os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "maps"),
+    os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "portraits"),
+    os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "story"),
+    os.path.join("data", "campaigns", "Eastern_Invasion", "images", "portraits"),
+    os.path.join("data", "campaigns", "Eastern_Invasion", "images", "maps"),
+    os.path.join("data", "campaigns", "Heir_To_The_Throne", "images", "portraits"),
+    os.path.join("data", "campaigns", "Heir_To_The_Throne", "images", "maps"),
+    os.path.join("data", "campaigns", "Heir_To_The_Throne", "images", "story"),
+    os.path.join("data", "campaigns", "Legend_of_Wesmere", "images", "story"),
+    os.path.join("data", "campaigns", "Legend_of_Wesmere", "images", "portraits"),
+    os.path.join("data", "campaigns", "Legend_of_Wesmere", "images", "l10n"),
+    os.path.join("data", "campaigns", "Liberty", "images", "portraits"),
+    os.path.join("data", "campaigns", "Liberty", "images", "maps"),
+    os.path.join("data", "campaigns", "Liberty", "images", "story"),
+    os.path.join("data", "campaigns", "Northern_Rebirth", "images", "maps"),
+    os.path.join("data", "campaigns", "Northern_Rebirth", "images", "portraits"),
+    os.path.join("data", "campaigns", "Sceptre_of_Fire", "images", "maps"),
+    os.path.join("data", "campaigns", "Sceptre_of_Fire", "images", "portraits"),
+    os.path.join("data", "campaigns", "Secrets_of_the_Ancients", "images", "story"),
+    os.path.join("data", "campaigns", "Secrets_of_the_Ancients", "images", "portraits"),
+    os.path.join("data", "campaigns", "Son_Of_The_Black_Eye", "images", "maps"),
+    os.path.join("data", "campaigns", "Son_Of_The_Black_Eye", "images", "portraits"),
+    os.path.join("data", "campaigns", "The_Hammer_of_Thursagan", "images", "maps"),
+    os.path.join("data", "campaigns", "The_Hammer_of_Thursagan", "images", "portraits"),
+    os.path.join("data", "campaigns", "The_Rise_Of_Wesnoth", "images", "maps"),
+    os.path.join("data", "campaigns", "The_Rise_Of_Wesnoth", "images", "portraits"),
+    os.path.join("data", "campaigns", "The_Rise_Of_Wesnoth", "images", "story"),
+    os.path.join("data", "campaigns", "The_South_Guard", "images", "portraits"),
+    os.path.join("data", "campaigns", "The_South_Guard", "images", "maps"),
+    os.path.join("data", "campaigns", "The_South_Guard", "images", "story"),
+    os.path.join("data", "campaigns", "tutorial", "images", "portraits"),
+    os.path.join("data", "campaigns", "Two_Brothers", "images", "maps"),
+    os.path.join("data", "campaigns", "Two_Brothers", "images", "portraits"),
+    os.path.join("data", "campaigns", "Two_Brothers", "images", "story"),
+    os.path.join("data", "campaigns", "Under_the_Burning_Suns", "images", "portraits"),
+    os.path.join("data", "campaigns", "Winds_of_Fate", "images", "portraits"),
+    os.path.join("data", "campaigns", "Winds_of_Fate", "images", "maps"),
+    os.path.join("data", "campaigns", "Winds_of_Fate", "images", "story"),
+    os.path.join("data", "core", "images", "maps"),
+    os.path.join("data", "core", "images", "story"),
+    os.path.join("data", "core", "images", "portraits")
 ]
 
 results_dict = {}
@@ -90,8 +132,10 @@ for image_dir in image_dirs:
 
             initial_file = os.path.join(image_root, filename)
             webp_file = ""
-            if filetype != ".webp":
+            if filetype in (".jpg", ".png"):
                 webp_file = os.path.join(options.tempdir, filename)[:-3]+"webp"
+            elif filetype == ".jpeg":
+                webp_file = os.path.join(options.tempdir, filename)[:-4]+"webp"
             else:
                 webp_file = os.path.join(options.tempdir, filename)
 
@@ -125,8 +169,8 @@ final_total_size = 0
 
 try:
     with open("conversion-good.tsv", "w") as good_f, open("conversion-bad.tsv", "w") as bad_f:
-        good_f.write("filename,old_size,new_size,change_in_percent,change_in_bytes\n")
-        bad_f.write("filename,old_size,new_size,change_in_percent,change_in_bytes\n")
+        good_f.write("filename\told_size\tnew_size\tchange_in_percent\tchange_in_bytes\n")
+        bad_f.write("filename\told_size\tnew_size\tchange_in_percent\tchange_in_bytes\n")
 
         for filename, data in results_dict.items():
             line = "{filename}\t{old_size}\t{new_size}\t{change_in_percent}\t{change_in_bytes}\n".format(filename=filename, old_size=data["old_size"], new_size=data["new_size"], change_in_percent=data["change_in_percent"], change_in_bytes=data["change_in_bytes"])

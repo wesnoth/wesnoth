@@ -19,6 +19,8 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
+#include <SDL2/SDL_render.h>
+
 #include <memory>
 
 class surface;
@@ -78,6 +80,9 @@ public:
 
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
+
+	/** Returns a pointer to the underlying window's renderer. */
+	SDL_Renderer* get_renderer();
 
 	bool has_window()
 	{
@@ -218,7 +223,7 @@ public:
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.

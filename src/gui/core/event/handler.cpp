@@ -598,7 +598,7 @@ void sdl_event_handler::draw()
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo::get_singleton().flip();
+		CVideo::get_singleton().render_screen();
 	}
 }
 

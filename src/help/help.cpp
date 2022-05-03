@@ -262,7 +262,7 @@ void show_with_toplevel(const section &toplevel_sec,
 					return;
 				}
 			}
-			video.flip();
+			video.render_screen();
 			CVideo::delay(10);
 		}
 	}

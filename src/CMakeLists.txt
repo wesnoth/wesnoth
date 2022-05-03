@@ -16,7 +16,6 @@ endif()
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
-include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR})
 if(NOT MSVC)
 	include_directories(SYSTEM ${SDL2_INCLUDE_DIRS})
 	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIRS})
@@ -54,7 +53,7 @@ set(game-external-libs
 	${common-external-libs}
 	${PANGOCAIRO_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-	${VORBISFILE_LIBRARIES}
+	VorbisFile::VorbisFile
 )
 
 if(NOT MSVC)
