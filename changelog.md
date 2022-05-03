@@ -4,6 +4,8 @@
  ### Campaigns
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
+   * Under the Burning Suns
+     * S8: Fixed replay OOS on victory event (issue #6267)
  ### Editor
  ### Multiplayer
  ### Lua API
