@@ -51,6 +51,10 @@ texture::texture(SDL_Texture* txt)
 texture::texture(const surface& surf)
 	: texture_(nullptr)
 {
+	if (surf->w == 0 && surf->h == 0) {
+		return;
+	}
+
 	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
 	if(!renderer) {
 		return;
