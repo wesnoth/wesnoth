@@ -870,12 +870,9 @@ void canvas::blit(SDL_Rect rect)
 	draw(area_to_draw);
 
 	if(blur_depth_) {
-		// TODO: highdpi - this does not appear to be doing the correct thing
-		surface s = video.read_pixels(&rect);
+		surface s = video.read_pixels_low_res(&rect);
 		s = blur_surface(s, blur_depth_);
-		// blit as texture, for high-dpi surfaces
-		texture t(s);
-		video.blit_texture(t, &rect);
+		video.blit_surface(s, &rect);
 	}
 
 	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that

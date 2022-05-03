@@ -297,14 +297,12 @@ void dialog_frame::draw_background()
 		restorer_ = new surface_restorer(&video_, dim_.exterior);
 	}
 
-	// TODO: highdpi - implement blur
-#if 0
 	if (dialog_style_.blur_radius) {
-		surface surf = ::get_surface_portion(video_.getDrawingSurface(), dim_.exterior);
+		SDL_Rect r = dim_.exterior;
+		surface surf = video_.read_pixels_low_res(&r);
 		surf = blur_surface(surf, dialog_style_.blur_radius);
-		sdl_blit(surf, nullptr, video_.getDrawingSurface(), &dim_.exterior);
+		video_.blit_surface(surf, &r);
 	}
-#endif
 
 	if(bg_ == nullptr) {
 		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
