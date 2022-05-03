@@ -283,7 +283,7 @@ public:
 	 * @param srcrect       The portion of the texture to copy.
 	 *                      If null, this copies the entire texture.
 	 */
-	void blit_texture(texture& tex, SDL_Rect* dstrect = nullptr, SDL_Rect* srcrect = nullptr);
+	void blit_texture(texture& tex, const SDL_Rect* dstrect = nullptr, const SDL_Rect* srcrect = nullptr);
 
 	/**
 	 * Render a portion of the low-resolution drawing surface.

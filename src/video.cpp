@@ -188,7 +188,7 @@ void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* src
 	render_low_res(&dst);
 }
 
-void CVideo::blit_texture(texture& tex, SDL_Rect* dst_rect, SDL_Rect* src_rect)
+void CVideo::blit_texture(texture& tex, const SDL_Rect* dst_rect, const SDL_Rect* src_rect)
 {
 	SDL_RenderCopy(*window.get(), tex, src_rect, dst_rect);
 }
