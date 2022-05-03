@@ -145,6 +145,11 @@ bool CVideo::non_interactive() const
 	return fake_interactive ? false : (window == nullptr);
 }
 
+bool CVideo::surface_initialized() const
+{
+	return drawingSurface != nullptr;
+}
+
 void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 {
 	if(event.type == SDL_WINDOWEVENT) {
@@ -168,6 +173,18 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 	}
 }
 
+int CVideo::fill(
+	const SDL_Rect& area,
+	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	int e = SDL_SetRenderDrawColor(*window, r, g, b, a);
+	if (e) {
+		return e;
+	} else {
+		return SDL_RenderFillRect(*window, &area);
+	}
+}
+
 void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
 {
 	// Ensure alpha gets transferred as well
@@ -175,7 +192,7 @@ void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
 	SDL_GetSurfaceBlendMode(surf, &b);
 	SDL_SetSurfaceBlendMode(surf, SDL_BLENDMODE_NONE);
 
-	sdl_blit(surf, nullptr, getDrawingSurface(), dst);
+	sdl_blit(surf, nullptr, drawingSurface, dst);
 	render_low_res(dst);
 
 	// Reset the blend mode to whatever it originally was
@@ -195,11 +212,10 @@ void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* src
 	SDL_GetSurfaceBlendMode(surf, &b);
 	SDL_SetSurfaceBlendMode(surf, SDL_BLENDMODE_NONE);
 
-	surface& target(getDrawingSurface());
 	SDL_Rect dst{x, y, 0, 0};
 
-	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
-	sdl_blit(surf, srcrect, target, &dst);
+	const clip_rect_setter clip_setter(drawingSurface, clip_rect, clip_rect != nullptr);
+	sdl_blit(surf, srcrect, drawingSurface, &dst);
 	// dst gets updated by SDL_BlitSurface to reflect clipping etc.
 	render_low_res(&dst);
 
@@ -794,11 +810,6 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	result.erase(std::unique(result.begin(), result.end()), result.end());
 
 	return result;
-}
-
-surface& CVideo::getDrawingSurface()
-{
-	return drawingSurface;
 }
 
 point CVideo::current_resolution()

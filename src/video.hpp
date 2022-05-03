@@ -74,6 +74,8 @@ public:
 
 	bool non_interactive() const;
 
+	bool surface_initialized() const;
+
 	/***** ***** ***** ***** Window-related functions ***** ***** ****** *****/
 
 	/** Initializes a new SDL window instance, taking into account any preiously saved states. */
@@ -225,6 +227,18 @@ public:
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
 	/**
+	 * Fills an area with the given colour.
+	 *
+	 * @param rect      The area to fill, in drawing coordinates.
+	 * @param r         The red   component of the fill colour, 0-255.
+	 * @param g         The green component of the fill colour, 0-255.
+	 * @param b         The blue  component of the fill colour, 0-255.
+	 * @param a         The alpha component of the fill colour, 0-255.
+	 * @returns         0 on success, a negative SDL error code on failure.
+	 */
+	int fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
+	/**
 	 * Draws a surface at the given location.
 	 *
 	 * The w and h members of dst are ignored, but will be updated
@@ -308,9 +322,6 @@ public:
 
 	/** Clear the screen contents */
 	void clear_screen();
-
-	/** Returns a reference to the drawing surface. */
-	surface& getDrawingSurface();
 
 	/**
 	 * Copy back a portion of the render target that is already drawn.

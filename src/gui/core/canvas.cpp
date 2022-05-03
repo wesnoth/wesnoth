@@ -845,8 +845,6 @@ void canvas::blit(SDL_Rect rect)
 	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
 		_("Area to draw is larger than widget size"));
 
-	surface& surf = CVideo::get_singleton().getDrawingSurface();
-
 	// If the widget is partly off-screen, this might get called with
 	// surf width=1000, height=1000
 	// rect={-1, 2, 330, 440}

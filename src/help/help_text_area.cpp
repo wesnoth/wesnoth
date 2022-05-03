@@ -558,7 +558,7 @@ void help_text_area::draw_contents()
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
-					SDL_FillRect(video().getDrawingSurface(), &draw_rect, 0);
+					video().fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}

@@ -247,9 +247,10 @@ display::display(const display_context* dc,
 
 	read(level.child_or_empty("display"));
 
-	if(screen_.non_interactive()
-		&& (screen_.getDrawingSurface() != nullptr
-		&& screen_.faked())) {
+	if (screen_.non_interactive()
+		&& screen_.surface_initialized()
+		&& screen_.faked())
+	{
 		screen_.lock_updates(true);
 	}
 
@@ -779,7 +780,7 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		return screen_.getDrawingSurface().clone();
+		return screen_.read_pixels();
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
@@ -1630,7 +1631,7 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		SDL_FillRect(screen_.getDrawingSurface(), &clip_rect, 0x00000000);
+		screen_.fill(clip_rect, 0, 0, 0, 0);
 		draw_background(screen_, clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
@@ -1808,7 +1809,7 @@ void display::draw_minimap()
 	};
 
 	for(const auto& r : outline_parts) {
-		SDL_FillRect(screen_.getDrawingSurface(), &r, 0x00FFFFFF);
+		screen_.fill(r, 255, 255, 255, 0);
 	}
 }
 
@@ -1860,7 +1861,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		SDL_FillRect(screen_.getDrawingSurface(), &r, col.to_argb_bytes());
+		screen_.fill(r, col.r, col.g, col.b, col.a);
 	}
 }
 
@@ -1910,8 +1911,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		surface& screen(screen_.getDrawingSurface());
-
 		SDL_Rect dstrect = map_area();
 		dstrect.x += diff_x;
 		dstrect.y += diff_y;
@@ -1921,10 +1920,9 @@ bool display::scroll(int xmove, int ymove, bool force)
 		srcrect.x -= diff_x;
 		srcrect.y -= diff_y;
 
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen, &srcrect, screen, &dstrect);
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
-		screen_.render_low_res(&dstrect);
+		// TODO: highdpi - This is gross and should be replaced
+		texture t = screen_.read_texture(&srcrect);
+		screen_.blit_texture(t, &dstrect);
 	}
 
 	if(diff_y != 0) {

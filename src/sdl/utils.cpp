@@ -2251,13 +2251,11 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 
 void draw_centered_on_background(surface& surf, const SDL_Rect& rect, const color_t& color, CVideo& video)
 {
-	surface& target = video.getDrawingSurface();
 	auto clipper = video.set_clip(rect);
 
-	uint32_t col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
-	sdl::fill_surface_rect(target, &r, col);
+	video.fill(r, color.r, color.g, color.b, color.a);
 
 	if (surf != nullptr) {
 		r.x = rect.x + (rect.w-surf->w)/2;
