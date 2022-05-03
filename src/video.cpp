@@ -216,6 +216,11 @@ void CVideo::update_framebuffer()
 		return;
 	}
 
+	// Non-integer scales are not currently supported.
+	// This option makes things neater when window size is not a perfect
+	// multiple of logical size, which can happen when manually resizing.
+	SDL_RenderSetIntegerScale(*window, SDL_TRUE);
+
 	// Find max valid pixel scale at current window size.
 	point wsize(window->get_size());
 	int max_scale = std::min(
@@ -265,8 +270,8 @@ void CVideo::update_framebuffer()
 
 	// Update the drawing surface if required.
 	if (!drawingSurface
-		|| drawingSurface->w != wsize.x / scale
-		|| drawingSurface->h != wsize.y / scale)
+		|| drawingSurface->w != lsize.x
+		|| drawingSurface->h != lsize.y)
 	{
 		uint32_t format = window->pixel_format();
 		int bpp = SDL_BITSPERPIXEL(format);
