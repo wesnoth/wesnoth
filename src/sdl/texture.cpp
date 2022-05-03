@@ -73,6 +73,13 @@ void texture::finalize()
 	set_texture_blend_mode(*this, SDL_BLENDMODE_BLEND);
 }
 
+void texture::set_alpha_mod(uint8_t alpha)
+{
+	if (texture_) {
+		SDL_SetTextureAlphaMod(texture_.get(), alpha);
+	}
+}
+
 void texture::reset()
 {
 	if(texture_) {
