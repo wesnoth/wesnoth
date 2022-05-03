@@ -581,7 +581,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 			SDL_Rect rect = get_rectangle();
 			video_.blit_surface(rect.x, rect.y, restorer_);
 			// TODO: highdpi - reimplement / fix this
-			//font::undraw_floating_labels(video_.getDrawingSurface());
+			font::undraw_floating_labels();
 		}
 		throw;
 	}
@@ -593,7 +593,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_Rect rect = get_rectangle();
 		video_.blit_surface(rect.x, rect.y, restorer_);
 		// TODO: highdpi - reimplement / fix this
-		//font::undraw_floating_labels(video_.getDrawingSurface());
+		font::undraw_floating_labels();
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
@@ -630,7 +630,7 @@ void window::draw()
 		// as restore point.
 		if(is_toplevel_) {
 			// TODO: highdpi - reimplement / fix this
-			//font::draw_floating_labels(drawing_surface);
+			font::draw_floating_labels();
 		}
 
 		if(restore_) {
