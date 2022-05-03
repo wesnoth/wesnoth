@@ -313,6 +313,42 @@ public:
 	surface& getDrawingSurface();
 
 	/**
+	 * Copy back a portion of the render target that is already drawn.
+	 *
+	 * This area is specified in draw coordinates, not render coordinates.
+	 * Thus the size of the retrieved surface may not match the size of r.
+	 *
+	 * If not null, r will be automatically clipped to the drawing area.
+	 *
+	 * Note: This is a very slow function! Its use should be phased out
+	 * for everything except maybe screenshots.
+	 *
+	 * @param r       The portion of the render target to retrieve, in
+	 *                draw coordinates.
+	 *                If not null, this will be modified to reflect the
+	 *                portion of the draw area that has been returned.
+	 */
+	surface read_pixels(SDL_Rect* r = nullptr);
+
+	/**
+	 * Copy a portion of the render target to another texture.
+	 *
+	 * This area is specified in draw coordinates, not render coordinates.
+	 * Thus the size of the retrieved texture may not match the size of r.
+	 *
+	 * If not null, r will be automatically clipped to the drawing area.
+	 *
+	 * Note: This is a very slow function! Its use should be phased out
+	 * for everything except maybe screenshots.
+	 *
+	 * @param r       The portion of the render target to retrieve, in
+	 *                draw coordinates.
+	 *                If not null, this will be modified to reflect the
+	 *                portion of the draw area that has been returned.
+	 */
+	texture read_texture(SDL_Rect* r = nullptr);
+
+	/**
 	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
 	 * be hidden from the user's view.
 	 *

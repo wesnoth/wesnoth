@@ -41,6 +41,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
+#define DBG_DP LOG_STREAM(debug, log_display)
 
 CVideo* CVideo::singleton_ = nullptr;
 
@@ -518,6 +519,30 @@ void CVideo::render_screen()
 		// TODO: rename this to "present"
 		window->render();
 	}
+}
+
+surface CVideo::read_pixels(SDL_Rect* r)
+{
+	SDL_Rect d = draw_area();
+	SDL_Rect r_clipped = d;
+	if (r) {
+		r_clipped = sdl::intersect_rects(*r, d);
+		if (r_clipped != *r) {
+			DBG_DP << "modifying pixel read area\n"
+			       << "  from " << *r << "\n"
+			       << "    to " << r_clipped << std::endl;
+			*r = r_clipped;
+		}
+	}
+	SDL_Rect o = to_output(r_clipped);
+	surface s(o.w, o.h);
+	SDL_RenderReadPixels(*window, &o, s->format->format, s->pixels, s->pitch);
+	return s;
+}
+
+texture CVideo::read_texture(SDL_Rect* r)
+{
+	return texture(read_pixels(r));
 }
 
 void CVideo::lock_updates(bool value)
