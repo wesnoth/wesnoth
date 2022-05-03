@@ -32,6 +32,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -868,25 +869,14 @@ void canvas::blit(SDL_Rect rect)
 
 	draw(area_to_draw);
 
-	// TODO: highdpi - reenable blur
-#if 0
 	if(blur_depth_) {
-		/*
-		 * If the surf is the video surface the blurring seems to stack, this
-		 * can be seen in the title screen. So also use the not 32 bpp method
-		 * for this situation.
-		 */
-		if(surf != video.getDrawingSurface() && surf.is_neutral()) {
-			blur_surface(surf, rect, blur_depth_);
-		} else {
-			// Can't directly blur the surface if not 32 bpp.
-			SDL_Rect r = rect;
-			surface s = get_surface_portion(surf, r);
-			s = blur_surface(s, blur_depth_);
-			sdl_blit(s, nullptr, surf, &r);
-		}
+		// TODO: highdpi - this does not appear to be doing the correct thing
+		surface s = video.read_pixels(&rect);
+		s = blur_surface(s, blur_depth_);
+		// blit as texture, for high-dpi surfaces
+		texture t(s);
+		video.blit_texture(t, &rect);
 	}
-#endif
 
 	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that
 	// scrolling by a single pixel will force a complete redraw. I tested rendering a few of the off-screen lines too,
