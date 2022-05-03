@@ -101,6 +101,8 @@ CVideo::CVideo(FAKE_TYPES type)
 	, updated_locked_(0)
 	, flip_locked_(0)
 	, refresh_rate_(0)
+	, offset_x_(0)
+	, offset_y_(0)
 {
 	assert(!singleton_);
 	singleton_ = this;
@@ -266,6 +268,9 @@ void CVideo::update_framebuffer()
 		LOG_DP << "  new lsize: " << lsize << std::endl;
 		LOG_DP << "  new wsize: " << wsize << std::endl;
 		LOG_DP << "  new osize: " << osize << std::endl;
+		float sx, sy;
+		SDL_RenderGetScale(*window, &sx, &sy);
+		LOG_DP << "  render scale: " << sx << ", " << sy << std::endl;
 	}
 
 	// Update the drawing surface if required.
@@ -308,6 +313,17 @@ void CVideo::update_framebuffer()
 
 	// Update sizes for input conversion.
 	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
+
+	// If we are using pixel scale, and also have a window of awkward size,
+	// there may be a very slight offset in real pixels.
+	// SDL doesn't provide any way of retrieving this offset,
+	// so we just have to base our calculation on known behaviour.
+	offset_x_ = (osize.x - (scale * lsize.x)) / 2;
+	offset_y_ = (osize.y - (scale * lsize.y)) / 2;
+	if (offset_x_ || offset_y_) {
+		LOG_DP << "render target viewport offset: "
+		       << offset_x_ << ", " << offset_y_ << std::endl;
+	}
 }
 
 void CVideo::init_window()
@@ -541,6 +557,10 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	}
 	SDL_Rect o = to_output(r_clipped);
 	surface s(o.w, o.h);
+	// the draw-space viewport may be slightly offset on the render target,
+	// if the scale doesn't match precisely with the window size.
+	o.x += offset_x_;
+	o.y += offset_y_;
 	SDL_RenderReadPixels(*window, &o, s->format->format, s->pixels, s->pitch);
 	return s;
 }

@@ -453,6 +453,7 @@ private:
 	int updated_locked_;
 	int flip_locked_;
 	int refresh_rate_;
+	int offset_x_, offset_y_;
 };
 
 /** An object which will lock the display for the duration of its lifetime. */
