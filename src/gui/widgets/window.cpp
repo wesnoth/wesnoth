@@ -57,6 +57,7 @@
 #include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -579,7 +580,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		// restore area
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
-			video_.blit_surface(rect.x, rect.y, restorer_);
+			video_.blit_texture(restorer_, &rect);
 			// TODO: highdpi - reimplement / fix this
 			font::undraw_floating_labels();
 		}
@@ -591,7 +592,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	// restore area
 	if(restore_) {
 		SDL_Rect rect = get_rectangle();
-		video_.blit_surface(rect.x, rect.y, restorer_);
+		video_.blit_texture(restorer_, &rect);
 		// TODO: highdpi - reimplement / fix this
 		font::undraw_floating_labels();
 	}
@@ -618,7 +619,7 @@ void window::draw()
 		// doesn't work yet we need to undraw the window.
 		if(restore_ && restorer_) {
 			SDL_Rect rect = get_rectangle();
-			video_.blit_surface(rect.x, rect.y, restorer_);
+			video_.blit_texture(restorer_, &rect);
 		}
 
 		layout();
@@ -635,7 +636,7 @@ void window::draw()
 
 		if(restore_) {
 			// TODO: highdpi - reimplement / fix this
-			restorer_ = get_surface_portion(video_.getDrawingSurface(), rect);
+			restorer_ = video_.read_texture(&rect);
 		}
 
 		// Need full redraw so only set ourselves dirty.
@@ -736,7 +737,7 @@ void window::draw()
 		// Restore.
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
-			video_.blit_surface(rect.x, rect.y, restorer_);
+			video_.blit_texture(restorer_, &rect);
 		}
 
 		// Background.
@@ -780,7 +781,7 @@ void window::undraw()
 {
 	if(restore_ && restorer_) {
 		SDL_Rect rect = get_rectangle();
-		video_.blit_surface(rect.x, rect.y, restorer_);
+		video_.blit_texture(restorer_, &rect);
 	}
 }
 
