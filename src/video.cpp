@@ -170,8 +170,16 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 
 void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
 {
+	// Ensure alpha gets transferred as well
+	SDL_BlendMode b;
+	SDL_GetSurfaceBlendMode(surf, &b);
+	SDL_SetSurfaceBlendMode(surf, SDL_BLENDMODE_NONE);
+
 	sdl_blit(surf, nullptr, getDrawingSurface(), dst);
 	render_low_res(dst);
+
+	// Reset the blend mode to whatever it originally was
+	SDL_SetSurfaceBlendMode(surf, b);
 }
 
 void CVideo::blit_surface(int x, int y, const surface& surf)
@@ -182,6 +190,11 @@ void CVideo::blit_surface(int x, int y, const surface& surf)
 
 void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* srcrect, const SDL_Rect* clip_rect)
 {
+	// Ensure alpha gets transferred as well
+	SDL_BlendMode b;
+	SDL_GetSurfaceBlendMode(surf, &b);
+	SDL_SetSurfaceBlendMode(surf, SDL_BLENDMODE_NONE);
+
 	surface& target(getDrawingSurface());
 	SDL_Rect dst{x, y, 0, 0};
 
@@ -189,6 +202,9 @@ void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* src
 	sdl_blit(surf, srcrect, target, &dst);
 	// dst gets updated by SDL_BlitSurface to reflect clipping etc.
 	render_low_res(&dst);
+
+	// Reset the input surface blend mode to whatever it originally was
+	SDL_SetSurfaceBlendMode(surf, b);
 }
 
 void CVideo::blit_texture(texture& tex, const SDL_Rect* dst_rect, const SDL_Rect* src_rect)
@@ -293,6 +309,8 @@ void CVideo::update_framebuffer()
 			bpp,
 			format
 		);
+		// Always transfer verbatim to the drawing texture.
+		SDL_SetSurfaceBlendMode(drawingSurface, SDL_BLENDMODE_NONE);
 
 		// Also update the drawing texture, with matching format and size.
 		if (drawing_texture_) {
@@ -307,7 +325,7 @@ void CVideo::update_framebuffer()
 			drawingSurface->w,
 			drawingSurface->h
 		);
-		// Always use alpha blending.
+		// Always use alpha blending to render.
 		SDL_SetTextureBlendMode(drawing_texture_, SDL_BLENDMODE_BLEND);
 	}
 
