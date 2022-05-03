@@ -370,6 +370,55 @@ public:
 
 	void lock_flips(bool);
 
+	/** A class to manage automatic restoration of the clipping region.
+	 *
+	 * While this can be constructed on its own, it is usually easier to
+	 * use the CVideo::set_clip() member function.
+	 */
+	class clip_setter
+	{
+	public:
+		clip_setter(CVideo& video, const SDL_Rect& clip)
+			: video_(video), old_clip_()
+		{
+			old_clip_ = video_.get_clip();
+			video_.force_clip(clip);
+		}
+
+		~clip_setter()
+		{
+			video_.force_clip(old_clip_);
+		}
+	private:
+		CVideo& video_;
+		SDL_Rect old_clip_;
+	};
+
+	/**
+	 * Set the clipping area. All draw calls will be clipped to this region.
+	 *
+	 * The clipping area is specified in draw-space coordinates.
+	 *
+	 * The returned object will reset the clipping area when it is destroyed,
+	 * so it should be kept in scope until drawing is complete.
+	 *
+	 * @param clip          The clipping region in draw-space coordinates.
+	 * @returns             A clip_setter object. When this object is destroyed
+	 *                      the clipping region will be restored to whatever
+	 *                      it was before this call.
+	 */
+	clip_setter set_clip(const SDL_Rect& clip);
+
+	/**
+	 * Set the clipping area, without any provided way of setting it back.
+	 *
+	 * @param clip          The clipping area, in draw-space coordinates.
+	 */
+	void force_clip(const SDL_Rect& clip);
+
+	/** Get the current clipping area, in draw coordinates. */
+	SDL_Rect get_clip() const;
+
 	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
 
 	/**

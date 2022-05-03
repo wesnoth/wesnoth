@@ -446,6 +446,32 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
+CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
+{
+	return CVideo::clip_setter(*this, clip);
+}
+
+void CVideo::force_clip(const SDL_Rect& clip)
+{
+	// Set the clipping area both on the drawing surface,
+	SDL_SetClipRect(drawingSurface, &clip);
+	// and on the render target.
+	if (SDL_RenderSetClipRect(get_renderer(), &clip)) {
+		throw game::error("failed to set render clip rect");
+	}
+}
+
+SDL_Rect CVideo::get_clip() const
+{
+	if (!drawingSurface) {
+		return sdl::empty_rect;
+	}
+
+	SDL_Rect r_draw;
+	SDL_GetClipRect(drawingSurface, &r_draw);
+	return r_draw;
+}
+
 SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
 {
 	if (r) {
