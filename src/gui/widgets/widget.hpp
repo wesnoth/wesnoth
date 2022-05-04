@@ -552,7 +552,6 @@ public:
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
@@ -568,7 +567,6 @@ public:
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
@@ -585,7 +583,6 @@ public:
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
