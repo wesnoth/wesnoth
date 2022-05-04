@@ -112,10 +112,9 @@ void matrix::layout_initialize(const bool full_initialization)
 	content_.layout_initialize(full_initialization);
 }
 
-void
-matrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void matrix::impl_draw_children(int x_offset, int y_offset)
 {
-	content_.draw_children(frame_buffer, x_offset, y_offset);
+	content_.draw_children(x_offset, y_offset);
 }
 
 void matrix::layout_children()
