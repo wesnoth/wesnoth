@@ -1116,7 +1116,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error in command line: " << e.what() << '\n';
 		error_exit(1);
 	} catch(const CVideo::error& e) {
-		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
+		std::cerr << "Video system error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const font::error& e) {
 		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";

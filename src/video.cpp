@@ -127,7 +127,7 @@ void CVideo::initSDL()
 
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << std::endl;
-		throw CVideo::error();
+		throw error("Video initialization failed");
 	}
 }
 
@@ -491,7 +491,7 @@ void CVideo::force_clip(const SDL_Rect& clip)
 	SDL_SetClipRect(drawingSurface, &clip);
 	// and on the render target.
 	if (SDL_RenderSetClipRect(get_renderer(), &clip)) {
-		throw game::error("failed to set render clip rect");
+		throw error("Failed to set render clip rect");
 	}
 }
 
@@ -524,10 +524,10 @@ SDL_Rect CVideo::to_output(const SDL_Rect& r) const
 void CVideo::render_low_res()
 {
 	if (!drawingSurface) {
-		throw game::error("trying to render with no drawingSurface");
+		throw error("Trying to render with no drawingSurface");
 	}
 	if (!drawing_texture_) {
-		throw game::error("trying to render with no drawing_texture_");
+		throw error("Trying to render with no drawing_texture_");
 	}
 	// Upload the drawing surface to the drawing texture.
 	void* pixels_out; // somewhere we can write raw pixel data to
@@ -535,7 +535,7 @@ void CVideo::render_low_res()
 	SDL_LockTexture(drawing_texture_, nullptr, &pixels_out, &pitch);
 	if (pitch != drawingSurface->pitch) {
 		// If these don't match we are not gonna have a good time.
-		throw game::error("drawing surface and texture are incompatible");
+		throw error("Drawing surface and texture are incompatible");
 	}
 	// The pitch and pixel format should be the same,
 	// so we can just copy the whole chunk of memory directly.
@@ -550,10 +550,10 @@ void CVideo::render_low_res()
 void CVideo::render_low_res(SDL_Rect* src_rect)
 {
 	if (!drawingSurface) {
-		throw game::error("trying to render with no drawingSurface");
+		throw error("Trying to render with no drawingSurface");
 	}
 	if (!drawing_texture_) {
-		throw game::error("trying to render with no drawing_texture_");
+		throw error("Trying to render with no drawing_texture_");
 	}
 
 	SDL_Rect r = clip_to_draw_area(src_rect);
@@ -565,7 +565,7 @@ void CVideo::render_low_res(SDL_Rect* src_rect)
 	SDL_LockTexture(drawing_texture_, &r, &pixels_out, &pitch);
 	if (pitch != drawingSurface->pitch) {
 		// If these don't match we are not gonna have a good time.
-		throw game::error("drawing surface and texture are incompatible");
+		throw error("Drawing surface and texture are incompatible");
 	}
 	char* pixels_in = static_cast<char*>(drawingSurface->pixels);
 	pixels_in += (r.x * bytes_per_pixel) + (r.y * pitch);

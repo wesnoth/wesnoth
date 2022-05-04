@@ -455,10 +455,8 @@ public:
 
 	struct error : public game::error
 	{
-		error()
-			: game::error("Video initialization failed")
-		{
-		}
+		error() : game::error("unspecified video subsystem error") {}
+		error(const std::string& msg) : game::error(msg) {}
 	};
 
 	/** Type that can be thrown as an exception to quit to desktop. */
