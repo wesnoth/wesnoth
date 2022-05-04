@@ -742,12 +742,12 @@ void window::draw()
 			itor != item.end();
 			++itor) {
 
-			(**itor).draw_background(drawing_surface, 0, 0);
+			(**itor).draw_background(0, 0);
 		}
 
 		// Children.
 		if(!item.empty()) {
-			item.back()->draw_children(drawing_surface, 0, 0);
+			item.back()->draw_children(0, 0);
 		}
 
 		// Foreground.
@@ -755,7 +755,7 @@ void window::draw()
 			ritor != item.rend();
 			++ritor) {
 
-			(**ritor).draw_foreground(drawing_surface, 0, 0);
+			(**ritor).draw_foreground(0, 0);
 			(**ritor).set_is_dirty(false);
 		}
 	}

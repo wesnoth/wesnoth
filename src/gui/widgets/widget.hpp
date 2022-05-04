@@ -558,7 +558,7 @@ public:
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_background(int x_offset, int y_offset);
 
 	/**
 	 * Draws the children of a widget.
@@ -574,7 +574,7 @@ public:
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_children(int x_offset, int y_offset);
 
 	/**
 	 * Draws the foreground of the widget.
@@ -591,36 +591,25 @@ public:
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_foreground(int x_offset, int y_offset);
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background(surface& /*frame_buffer*/)
+	virtual void impl_draw_background()
 	{
 	}
-	virtual void impl_draw_background(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+
+	virtual void impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+	virtual void impl_draw_children(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
