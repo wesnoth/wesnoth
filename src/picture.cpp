@@ -39,6 +39,7 @@
 #include <boost/functional/hash_fwd.hpp>
 
 #include <set>
+#include <mutex>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -154,6 +155,9 @@ namespace
 {
 image::locator::locator_finder_t locator_finder;
 
+// Use this for anything that may modify an image cache from a thread
+std::mutex cache_mutex_;
+
 /** Definition of all image maps */
 image::image_cache images_, scaled_to_zoom_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
 		brightened_images_;
@@ -221,6 +225,7 @@ static int last_index_ = 0;
 
 void flush_cache()
 {
+	std::lock_guard<std::mutex> locker(cache_mutex_);
 	{
 		images_.flush();
 		hexed_images_.flush();
@@ -691,6 +696,7 @@ manager::~manager()
 void set_color_adjustment(int r, int g, int b)
 {
 	if(r != red_adjust || g != green_adjust || b != blue_adjust) {
+		std::lock_guard<std::mutex> locker(cache_mutex_);
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
@@ -705,6 +711,7 @@ void set_color_adjustment(int r, int g, int b)
 void set_zoom(unsigned int amount)
 {
 	if(amount != zoom) {
+		std::lock_guard<std::mutex> locker(cache_mutex_);
 		zoom = amount;
 		tod_colored_images_.flush();
 		brightened_images_.flush();
@@ -991,6 +998,8 @@ surface reverse_image(const surface& surf)
 	if(surf == nullptr) {
 		return surface(nullptr);
 	}
+
+	std::lock_guard<std::mutex> locker(cache_mutex_);
 
 	const auto itor = reversed_images_.find(surf);
 	if(itor != reversed_images_.end()) {

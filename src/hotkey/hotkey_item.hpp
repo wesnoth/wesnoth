@@ -21,6 +21,7 @@
 #include <vector>
 #include <string>
 #include <boost/algorithm/string.hpp>
+#include <mutex>
 
 class game_config_view;
 class config;
@@ -34,8 +35,29 @@ typedef std::shared_ptr<hotkey_base> hotkey_ptr;
 typedef std::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
 typedef std::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
 
+/**
+ * A threadsafe mutex wrapper for iterating over a hotkey_list.
+ *
+ * This should likely be moved to another file.
+ */
+template <typename T, typename I>
+class mutex_wrapper_iterable
+{
+public:
+	mutex_wrapper_iterable(T& to_wrap, std::mutex& mtx)
+		: wrapped_(to_wrap), mtx_(mtx)
+		{ mtx_.lock(); }
+	~mutex_wrapper_iterable() { mtx_.unlock(); }
+	I begin() const { return wrapped_.begin(); }
+	I end() const { return wrapped_.end(); }
+private:
+	T& wrapped_;
+	std::mutex& mtx_;
+};
+
 typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
 typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;
+typedef mutex_wrapper_iterable<hotkey_list, hotkey_list_iter> threadsafe_hotkey_list;
 
 /**
  * This is the base class for hotkey event matching.
@@ -401,7 +423,7 @@ void reset_default_hotkeys();
 /**
  * Returns the list of hotkeys.
  */
-const hotkey_list& get_hotkeys();
+const threadsafe_hotkey_list get_hotkeys();
 
 /**
  * Unset the command bindings for all hotkeys matching the command.

@@ -113,16 +113,12 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	game_config::load_config(game_config().child("game_config"));
 
-	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
-	// can cause a crash by accessing the list of hotkeys while it's being modified.
-	events::call_in_main_thread([this]() {
-		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
-
-		// Load the standard hotkeys, then apply any player customizations.
-		hotkey::load_hotkeys(game_config(), true);
-		preferences::load_hotkeys();
-	});
+	// Hotkey functions are now threadsafe, and may block.
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
+	// Load the standard hotkeys, then apply any player customizations.
+	hotkey::load_hotkeys(game_config(), true);
+	preferences::load_hotkeys();
 
 	// TODO: consider making this part of preferences::manager in some fashion
 	preferences::init_advanced_manager(game_config());
@@ -705,11 +701,8 @@ void game_config_manager::load_game_config_for_game(
 		throw;
 	}
 
-	// This needs to be done in the main thread since this function (load_game_config_for_game)
-	// might be called from a loading screen worker thread (and currently is, in fact). If the
-	// image cache is purged from the worker thread, there's a possibility for a data race where
-	// the main thread accesses the image cache and the worker thread simultaneously clears it.
-	events::call_in_main_thread([]() { image::flush_cache(); });
+	// This has its own internal mutex, so we can safely call it.
+	image::flush_cache();
 }
 
 void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)

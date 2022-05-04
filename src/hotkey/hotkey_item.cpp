@@ -28,6 +28,7 @@
 #include <SDL2/SDL.h>
 #include <key.hpp>
 #include <serialization/unicode.hpp>
+#include <mutex>
 
 
 static lg::log_domain log_config("config");
@@ -36,9 +37,13 @@ static lg::log_domain log_config("config");
 #define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
 
+using std::lock_guard, std::mutex;
+
 namespace hotkey {
 
 hotkey_list hotkeys_;
+std::mutex hotkeys_mutex_;
+
 game_config_view default_hotkey_cfg_;
 
 namespace {
@@ -327,6 +332,7 @@ void hotkey_keyboard::save_helper(config &item) const
 
 bool has_hotkey_item(const std::string& command)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	for (hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == command) {
 			return true;
@@ -349,6 +355,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 
 void del_hotkey(hotkey_ptr item)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
 	}
@@ -356,7 +363,6 @@ void del_hotkey(hotkey_ptr item)
 
 void add_hotkey(const hotkey_ptr item)
 {
-
 	if (item == hotkey_ptr()) {
 		return;
 	}
@@ -364,6 +370,7 @@ void add_hotkey(const hotkey_ptr item)
 	scope_changer scope_ch;
 	set_active_scopes(hotkey::get_hotkey_command(item->get_command()).scope);
 
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(
 			std::remove_if(hotkeys_.begin(), hotkeys_.end(), [item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); }),
@@ -371,11 +378,11 @@ void add_hotkey(const hotkey_ptr item)
 	}
 
 	hotkeys_.push_back(item);
-
 }
 
 void clear_hotkeys(const std::string& command)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	for (hotkey::hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == command)
 		{
@@ -389,11 +396,13 @@ void clear_hotkeys(const std::string& command)
 
 void clear_hotkeys()
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	hotkeys_.clear();
 }
 
 const hotkey_ptr get_hotkey(const SDL_Event &event)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	for (hotkey_ptr item : hotkeys_) {
 		if (item->matches(event)) {
 			return item;
@@ -423,6 +432,7 @@ void load_hotkeys(const game_config_view& cfg, bool set_as_default)
 
 void reset_default_hotkeys()
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
 	hotkeys_.clear();
 
 	if (!default_hotkey_cfg_.child_range("hotkey").empty()) {
@@ -432,13 +442,15 @@ void reset_default_hotkeys()
 	}
 }
 
-const hotkey_list& get_hotkeys()
+const threadsafe_hotkey_list get_hotkeys()
 {
-	return hotkeys_;
+	return threadsafe_hotkey_list(hotkeys_, hotkeys_mutex_);
 }
 
 void save_hotkeys(config& cfg)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
+
 	cfg.clear_children("hotkey");
 
 	for (hotkey_ptr item : hotkeys_) {
@@ -451,6 +463,8 @@ void save_hotkeys(config& cfg)
 
 std::string get_names(const std::string& id)
 {
+	lock_guard<mutex> lock(hotkeys_mutex_);
+
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
 	for (const hotkey::hotkey_ptr& item : hotkeys_) {
