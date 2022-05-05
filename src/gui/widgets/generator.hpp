@@ -28,8 +28,6 @@ struct builder_grid;
 class generator_base;
 class grid;
 
-using generator_ptr = std::shared_ptr<generator_base>;
-
 /**
  * Abstract base class for the generator.
  *
@@ -70,7 +68,7 @@ public:
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
 	 */
-	static generator_ptr build(const bool has_minimum,
+	static std::unique_ptr<generator_base>  build(const bool has_minimum,
 							  const bool has_maximum,
 							  const placement placement,
 							  const bool select);

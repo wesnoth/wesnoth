@@ -64,9 +64,7 @@ struct pane_implementation
 			return nullptr;
 		}
 
-		for(auto item : pane->items_)
-		{
-
+		for(auto& item : pane->items_) {
 			if(item.item_grid->get_visible() == widget::visibility::invisible) {
 				continue;
 			}
@@ -93,9 +91,7 @@ struct pane_implementation
 	static utils::const_clone_ptr<grid, W>
 	get_grid(W pane, const unsigned id)
 	{
-		for(auto item : pane->items_)
-		{
-
+		for(auto& item : pane->items_) {
 			if(item.id == id) {
 				return item.item_grid.get();
 			}
@@ -121,7 +117,7 @@ pane::pane(const implementation::builder_pane& builder)
 unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	item item { item_id_generator_++, tags, std::dynamic_pointer_cast<grid>(item_builder_->build()) };
+	item item{item_id_generator_++, tags, std::unique_ptr<grid>{static_cast<grid*>(item_builder_->build().release())}};
 
 	item.item_grid->set_parent(this);
 
@@ -135,7 +131,7 @@ unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 		}
 	}
 
-	items_.push_back(item);
+	items_.push_back(std::move(item));
 
 	event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
@@ -376,14 +372,14 @@ builder_pane::builder_pane(const config& cfg)
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-widget_ptr builder_pane::build() const
+std::unique_ptr<widget> builder_pane::build() const
 {
 	return build(replacements_map());
 }
 
-widget_ptr builder_pane::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_pane::build(const replacements_map& /*replacements*/) const
 {
-	return std::make_shared<pane>(*this);
+	return std::make_unique<pane>(*this);
 }
 
 } // namespace implementation

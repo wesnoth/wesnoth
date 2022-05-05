@@ -649,7 +649,7 @@ void preferences_dialog::post_build(window& window)
 				setter_widget->set_value_range(option.cfg["min"].to_int(), option.cfg["max"].to_int());
 				setter_widget->set_step_size(option.cfg["step"].to_int(1));
 
-				details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", std::move(setter_widget), true);
 
 				slider& slide = find_widget<slider>(&details_grid, "setter", false);
 
@@ -693,7 +693,7 @@ void preferences_dialog::post_build(window& window)
 				auto setter_widget = build_single_widget_instance<menu_button>();
 				setter_widget->set_id("setter");
 
-				details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", std::move(setter_widget), true);
 
 				menu_button& menu = find_widget<menu_button>(&details_grid, "setter", false);
 
@@ -716,7 +716,7 @@ void preferences_dialog::post_build(window& window)
 				auto value_widget = build_single_widget_instance<image>();
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
-				main_grid->swap_child("value", value_widget, true);
+				main_grid->swap_child("value", std::move(value_widget), true);
 
 				break;
 			}

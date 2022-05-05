@@ -96,9 +96,9 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 	assert(grid_);
 }
 
-widget_ptr builder_scrollbar_panel::build() const
+std::unique_ptr<widget> builder_scrollbar_panel::build() const
 {
-	auto panel = std::make_shared<scrollbar_panel>(*this);
+	auto panel = std::make_unique<scrollbar_panel>(*this);
 
 	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -131,7 +131,7 @@ widget_ptr builder_scrollbar_panel::build() const
 			}
 
 			auto widget = grid_->widgets[x * cols + y]->build();
-			content_grid->set_child(widget,
+			content_grid->set_child(std::move(widget),
 									x,
 									y,
 									grid_->flags[x * cols + y],

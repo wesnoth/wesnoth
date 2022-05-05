@@ -66,7 +66,7 @@ struct scrollbar_container_implementation
 		W* result = scrollbar_container.container_base::find_at(coordinate,
 															 must_be_active);
 
-		if(result == scrollbar_container.content_.get()) {
+		if(result == scrollbar_container.content_) {
 			return scrollbar_container.content_grid_->find_at(coordinate,
 															  must_be_active);
 		}

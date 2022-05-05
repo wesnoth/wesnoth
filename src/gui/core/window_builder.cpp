@@ -137,7 +137,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 }
 
-widget_ptr build_single_widget_instance_helper(const std::string& type, const config& cfg)
+std::unique_ptr<widget> build_single_widget_instance_helper(const std::string& type, const config& cfg)
 {
 	const auto& iter = widget_builder_lookup().find(type);
 	VALIDATE(iter != widget_builder_lookup().end(), "Invalid widget type '" + type + "'");
@@ -265,16 +265,16 @@ builder_grid::builder_grid(const config& cfg)
 	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols << " columns.\n";
 }
 
-widget_ptr builder_grid::build() const
+std::unique_ptr<widget> builder_grid::build() const
 {
-	auto result = std::make_shared<grid>();
+	auto result = std::make_unique<grid>();
 	build(*result);
 	return result;
 }
 
-widget_ptr builder_grid::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_grid::build(const replacements_map& replacements) const
 {
-	auto result = std::make_shared<grid>();
+	auto result = std::make_unique<grid>();
 	build(*result, replacements);
 	return result;
 }
@@ -303,10 +303,10 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 
 			if(replacements) {
 				auto widget = widgets[i]->build(replacements.value());
-				grid.set_child(widget, x, y, flags[i], border_size[i]);
+				grid.set_child(std::move(widget), x, y, flags[i], border_size[i]);
 			} else {
 				auto widget = widgets[i]->build();
-				grid.set_child(widget, x, y, flags[i], border_size[i]);
+				grid.set_child(std::move(widget), x, y, flags[i], border_size[i]);
 			}
 		}
 	}

@@ -477,10 +477,10 @@ private:
 	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	grid_ptr content_grid_;
+	std::unique_ptr<grid> content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
-	std::shared_ptr<spacer> content_;
+	spacer* content_;
 
 	/**
 	 * Cache for the visible area for the content.

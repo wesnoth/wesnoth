@@ -30,7 +30,7 @@ namespace implementation
 struct builder_multi_page;
 }
 
-using generator_ptr = std::shared_ptr<class generator_base>;
+class generator_base;
 
 /**
  * @ingroup GUIWidgetWML
@@ -200,18 +200,18 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
+	 * @param generator           Generator for the list
 	 * @param page_data           The initial data to fill the widget with.
 	 */
-	void finalize(const std::vector<string_map>& page_data);
+	void finalize(std::unique_ptr<generator_base> generator, const std::vector<string_map>& page_data);
 
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when it's grid is
-	 * freed.
+	 * of the scrollbar_container super class and freed when it's grid is freed.
 	 */
-	generator_ptr generator_;
+	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
 	builder_grid_map page_builders_;
@@ -256,7 +256,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	builder_grid_map builders;
 

@@ -76,7 +76,7 @@ static void connect_signals(
 }
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, std::unique_ptr<gui2::widget> widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
@@ -84,7 +84,7 @@ static void add_widget(gui2::grid& grid
 	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
-	grid.set_child(widget
+	grid.set_child(std::move(widget)
 			, row
 			, column
 			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
@@ -131,12 +131,12 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	gui2::grid *child_grid = new gui2::grid(1, 1);
-	add_widget(grid, child_grid, "level 1", 0, 0);
+	auto child_grid = std::make_unique<gui2::grid>(1, 1);
+	add_widget(grid, std::move(child_grid), "level 1", 0, 0);
 	connect_signals(sstr, *child_grid);
 
-	gui2::widget *child = new gui2::grid(1, 1);
-	add_widget(*child_grid, child, "level 2", 0, 0);
+	auto child = std::make_unique<gui2::grid>(1, 1);
+	add_widget(*child_grid, std::move(child), "level 2", 0, 0);
 	connect_signals(sstr, *child);
 
 	/** @todo Add the rest of the events. */

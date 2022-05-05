@@ -32,7 +32,7 @@ namespace implementation
 struct builder_stacked_widget;
 }
 
-using generator_ptr = std::shared_ptr<class generator_base>;
+class generator_base;
 
 /**
  * @ingroup GUIWidgetWML
@@ -130,17 +130,16 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param widget_builders     The builder to build the contents of the
-	 *                            widget.
+	 * @param generator           Generator for the list
+	 * @param widget_builders     The builder to build the contents of the widget.
 	 */
-	void finalize(const std::vector<builder_grid>& widget_builders);
+	void finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders);
 
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when its grid is
-	 * freed.
+	 * of the scrollbar_container super class and freed when its grid is freed.
 	 *
 	 * NOTE: the generator is initialized with has_minimum (first arg) as false,
 	 * which seems a little counter-intuitive at first. After all, shouldn't the
@@ -153,7 +152,7 @@ private:
 	 * In that case, the generator would not allow the interim state where no layer
 	 * before the new chosen layer is reached in the loop.
 	 */
-	generator_ptr generator_;
+	generator_base* generator_;
 
 	/**
 	 * The number of the current selected layer.
@@ -215,7 +214,7 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid> stack;

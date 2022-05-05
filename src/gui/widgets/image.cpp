@@ -122,9 +122,9 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget_ptr builder_image::build() const
+std::unique_ptr<widget> builder_image::build() const
 {
-	auto widget = std::make_shared<image>(*this);
+	auto widget = std::make_unique<image>(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
 			  << definition << "'.\n";

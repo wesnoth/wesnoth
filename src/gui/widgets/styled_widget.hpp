@@ -545,7 +545,7 @@ public:
 
 	using builder_widget::build;
 
-	virtual widget_ptr build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

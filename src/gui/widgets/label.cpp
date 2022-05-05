@@ -256,9 +256,9 @@ builder_label::builder_label(const config& cfg)
 {
 }
 
-widget_ptr builder_label::build() const
+std::unique_ptr<widget> builder_label::build() const
 {
-	auto lbl = std::make_shared<label>(*this);
+	auto lbl = std::make_unique<label>(*this);
 
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);

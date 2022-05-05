@@ -207,14 +207,14 @@ void drop_down_menu::pre_show(window& window)
 				}));
 			}
 
-			mi_grid.swap_child("icon", std::static_pointer_cast<widget>(checkbox), false);
+			mi_grid.swap_child("icon", std::move(checkbox), false);
 		}
 
 		if(entry.image) {
 			auto img = build_single_widget_instance<image>();
 			img->set_label(*entry.image);
 
-			mi_grid.swap_child("label", img, false);
+			mi_grid.swap_child("label", std::move(img), false);
 		}
 	}
 

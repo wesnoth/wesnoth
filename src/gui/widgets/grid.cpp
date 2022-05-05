@@ -67,7 +67,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget_ptr widget,
+void grid::set_child(std::unique_ptr<widget> widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -89,7 +89,7 @@ void grid::set_child(widget_ptr widget,
 	// copy data
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
-	cell.set_widget(widget);
+	cell.set_widget(std::move(widget));
 
 	// make sure the new child is valid before deferring
 	if(gui2::widget* w = cell.get_widget()) {
@@ -97,26 +97,26 @@ void grid::set_child(widget_ptr widget,
 	}
 }
 
-widget_ptr grid::swap_child(const std::string& id,
-		widget_ptr w,
+std::unique_ptr<widget> grid::swap_child(const std::string& id,
+		std::unique_ptr<widget> w,
 		const bool recurse,
 		widget* new_parent)
 {
 	assert(w);
 
-	for(auto & child : children_)
-	{
+	std::vector<grid*> child_grids{};
+
+	for(auto& child : children_) {
 		if(child.id() != id) {
-
 			if(recurse) {
-				// decent in the nested grids.
-				grid* g = dynamic_cast<grid*>(child.get_widget());
-				if(g) {
-
-					widget_ptr old = g->swap_child(id, w, true);
-					if(old) {
-						return old;
-					}
+				// Descend into nested grids. We don't handle recursion here for two reasons:
+				// First, it's more likely the widget we're looking for is on the same level
+				// as the grid. There's no need to hastily recurse. Second, since we take the
+				// widget to swap in as a unique_ptr, to call this recursively we would have
+				// to move it "down" a level for the child grid's swap_child invocation, and
+				// thus it would be null here once execution returned to this level.
+				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
+					child_grids.push_back(g);
 				}
 			}
 
@@ -124,7 +124,7 @@ widget_ptr grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		widget_ptr old = child.free_widget();
+		auto old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -132,8 +132,14 @@ widget_ptr grid::swap_child(const std::string& id,
 		w->set_parent(this);
 		w->set_visible(old->get_visible());
 
-		child.set_widget(w);
+		child.set_widget(std::move(w));
 		return old;
+	}
+
+	for(grid* g : child_grids) {
+		if(auto old = g->swap_child(id, std::move(w), true)) {
+			return old;
+		}
 	}
 
 	return nullptr;
@@ -1105,10 +1111,10 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget_ptr widget)
+void set_single_child(grid& grid, std::unique_ptr<widget> widget)
 {
 	grid.set_rows_cols(1, 1);
-	grid.set_child(widget,
+	grid.set_child(std::move(widget),
 				   0,
 				   0,
 				   grid::HORIZONTAL_GROW_SEND_TO_CLIENT

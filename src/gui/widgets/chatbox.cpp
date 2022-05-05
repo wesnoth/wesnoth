@@ -671,9 +671,9 @@ builder_chatbox::builder_chatbox(const config& cfg)
 {
 }
 
-widget_ptr builder_chatbox::build() const
+std::unique_ptr<widget> builder_chatbox::build() const
 {
-	auto widget = std::make_shared<chatbox>(*this);
+	auto widget = std::make_unique<chatbox>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

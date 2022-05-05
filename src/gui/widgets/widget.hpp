@@ -814,6 +814,4 @@ public:
 	virtual iteration::walker_base* create_walker() = 0;
 };
 
-using widget_ptr = std::shared_ptr<widget>;
-
 } // namespace gui2

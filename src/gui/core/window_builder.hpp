@@ -55,9 +55,9 @@ struct builder_widget
 	{
 	}
 
-	virtual widget_ptr build() const = 0;
+	virtual std::unique_ptr<widget> build() const = 0;
 
-	virtual widget_ptr build(const replacements_map& replacements) const = 0;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
@@ -91,7 +91,7 @@ builder_widget_ptr create_widget_builder(const config& cfg);
  * @returns                       A shared_ptr of the base widget type containing
  *                                the newly built widget.
  */
-widget_ptr build_single_widget_instance_helper(const std::string& type, const config& cfg);
+std::unique_ptr<widget> build_single_widget_instance_helper(const std::string& type, const config& cfg);
 
 /**
  * Builds a single widget instance of the given type with the specified attributes.
@@ -110,9 +110,10 @@ widget_ptr build_single_widget_instance_helper(const std::string& type, const co
  *                                newly build widget.
  */
 template<typename T>
-std::shared_ptr<T> build_single_widget_instance(const config& cfg = {})
+std::unique_ptr<T> build_single_widget_instance(const config& cfg = {})
 {
-	return std::dynamic_pointer_cast<T>(build_single_widget_instance_helper(T::type(), cfg));
+	static_assert(std::is_base_of_v<widget, T>, "Type is not a widget type");
+	return std::unique_ptr<T>{ static_cast<T*>(build_single_widget_instance_helper(T::type(), cfg).release()) };
 }
 
 struct builder_grid : public builder_widget
@@ -136,10 +137,10 @@ struct builder_grid : public builder_widget
 	std::vector<builder_widget_ptr> widgets;
 
 	/** Inherited from @ref builder_widget. */
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	/** Inherited from @ref builder_widget. */
-	virtual widget_ptr build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	void build(grid& grid, optional_replacements replacements = std::nullopt) const;
 };

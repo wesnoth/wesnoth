@@ -264,7 +264,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 };

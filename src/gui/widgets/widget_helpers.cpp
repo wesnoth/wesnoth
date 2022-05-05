@@ -22,7 +22,7 @@
 
 namespace gui2
 {
-void swap_grid(grid* g, grid* content_grid,widget_ptr widget, const std::string& id)
+void swap_grid(grid* g, grid* content_grid, std::unique_ptr<widget> widget, const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -44,7 +44,7 @@ void swap_grid(grid* g, grid* content_grid,widget_ptr widget, const std::string&
 	assert(parent_grid);
 
 	// Replace the child.
-	auto old = parent_grid->swap_child(id, widget, false);
+	auto old = parent_grid->swap_child(id, std::move(widget), false);
 	assert(old);
 }
 }

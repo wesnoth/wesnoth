@@ -96,7 +96,7 @@ public:
 	virtual iteration::walker_base* create_walker() override;
 
 private:
-	widget_ptr widget_;
+	std::unique_ptr<widget> widget_;
 };
 
 // }---------- BUILDER -----------{
@@ -108,9 +108,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
-	virtual widget_ptr build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	builder_widget_ptr widget_;
 };

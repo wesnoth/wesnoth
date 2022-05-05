@@ -81,7 +81,7 @@ private:
 	 *
 	 * The widget is owned by container_base (the base class).
 	 */
-	widget_ptr widget_;
+	widget* widget_;
 
 	/**
 	 * Finishes the building initialization of the widget.
@@ -127,7 +127,7 @@ struct builder_size_lock : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	typed_formula<unsigned> width_;
 	typed_formula<unsigned> height_;

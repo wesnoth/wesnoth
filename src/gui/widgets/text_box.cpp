@@ -428,9 +428,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-widget_ptr builder_text_box::build() const
+std::unique_ptr<widget> builder_text_box::build() const
 {
-	auto widget = std::make_shared<text_box>(*this);
+	auto widget = std::make_unique<text_box>(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);

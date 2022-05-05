@@ -47,10 +47,12 @@ class pane : public widget
 public:
 	struct item
 	{
+		item(item&&) = default;
+
 		unsigned id;
 		std::map<std::string, std::string> tags;
 
-		grid_ptr item_grid;
+		std::unique_ptr<grid> item_grid;
 	};
 
 	typedef std::function<bool(const item&, const item&)> compare_functor_t;
@@ -199,9 +201,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	virtual widget_ptr build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
-	virtual widget_ptr build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	grow_direction::type grow_dir;
 

@@ -129,9 +129,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget_ptr builder_panel::build() const
+std::unique_ptr<widget> builder_panel::build() const
 {
-	auto widget = std::make_shared<panel>(*this);
+	auto widget = std::make_unique<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

@@ -177,9 +177,9 @@ builder_button::builder_button(const config& cfg)
 {
 }
 
-widget_ptr builder_button::build() const
+std::unique_ptr<widget> builder_button::build() const
 {
-	auto widget = std::make_shared<button>(*this);
+	auto widget = std::make_unique<button>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

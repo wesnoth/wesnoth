@@ -118,9 +118,9 @@ builder_drawing::builder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-widget_ptr builder_drawing::build() const
+std::unique_ptr<widget> builder_drawing::build() const
 {
-	auto widget = std::make_shared<drawing>(*this);
+	auto widget = std::make_unique<drawing>(*this);
 
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 

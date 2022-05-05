@@ -48,12 +48,9 @@ REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
 listbox::listbox(const implementation::builder_styled_widget& builder,
 		const generator_base::placement placement,
-		builder_grid_ptr list_builder,
-		const bool has_minimum,
-		const bool has_maximum,
-		const bool select)
+		builder_grid_ptr list_builder)
 	: scrollbar_container(builder, type())
-	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
+	, generator_(nullptr)
 	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(list_builder)
 	, need_layout_(false)
@@ -541,14 +538,13 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void listbox::finalize(builder_grid_const_ptr header,
+void listbox::finalize(std::unique_ptr<generator_base> generator,
+		builder_grid_const_ptr header,
 		builder_grid_const_ptr footer,
 		const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
-
-	assert(generator_);
 
 	if(header) {
 		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
@@ -580,8 +576,12 @@ void listbox::finalize(builder_grid_const_ptr header,
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
-	generator_->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
-	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	generator->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
+	swap_grid(nullptr, content_grid(), std::move(generator), "_list_grid");
 }
 
 void listbox::order_by_column(unsigned column, widget& widget)
@@ -798,9 +798,9 @@ builder_listbox::builder_listbox(const config& cfg)
 	}
 }
 
-widget_ptr builder_listbox::build() const
+std::unique_ptr<widget> builder_listbox::build() const
 {
-	auto widget = std::make_shared<listbox>(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, list_builder);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -812,7 +812,8 @@ widget_ptr builder_listbox::build() const
 
 	widget->init_grid(*conf->grid);
 
-	widget->finalize(header, footer, list_data);
+	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, true);
+	widget->finalize(std::move(generator), header, footer, list_data);
 
 	return widget;
 }
@@ -840,9 +841,9 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	}
 }
 
-widget_ptr builder_horizontal_listbox::build() const
+std::unique_ptr<widget> builder_horizontal_listbox::build() const
 {
-	auto widget = std::make_shared<listbox>(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, list_builder);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -854,7 +855,8 @@ widget_ptr builder_horizontal_listbox::build() const
 
 	widget->init_grid(*conf->grid);
 
-	widget->finalize(nullptr, nullptr, list_data);
+	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
+	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
 
 	return widget;
 }
@@ -882,9 +884,9 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	}
 }
 
-widget_ptr builder_grid_listbox::build() const
+std::unique_ptr<widget> builder_grid_listbox::build() const
 {
-	auto widget = std::make_shared<listbox>(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
+	auto widget = std::make_unique<listbox>(*this, generator_base::table, list_builder);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -896,7 +898,8 @@ widget_ptr builder_grid_listbox::build() const
 
 	widget->init_grid(*conf->grid);
 
-	widget->finalize(nullptr, nullptr, list_data);
+	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::table, true);
+	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
 
 	return widget;
 }

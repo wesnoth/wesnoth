@@ -231,9 +231,9 @@ builder_matrix::builder_matrix(const config& cfg)
 	}
 }
 
-widget_ptr builder_matrix::build() const
+std::unique_ptr<widget> builder_matrix::build() const
 {
-	return std::make_shared<matrix>(*this);
+	return std::make_unique<matrix>(*this);
 }
 
 } // namespace implementation

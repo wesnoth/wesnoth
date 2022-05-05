@@ -228,9 +228,9 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 {
 }
 
-widget_ptr builder_toggle_button::build() const
+std::unique_ptr<widget> builder_toggle_button::build() const
 {
-	auto widget = std::make_shared<toggle_button>(*this);
+	auto widget = std::make_unique<toggle_button>(*this);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));

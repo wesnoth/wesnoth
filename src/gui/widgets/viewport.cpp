@@ -182,14 +182,14 @@ builder_viewport::builder_viewport(const config& cfg)
 {
 }
 
-widget_ptr builder_viewport::build() const
+std::unique_ptr<widget> builder_viewport::build() const
 {
 	return build(replacements_map());
 }
 
-widget_ptr builder_viewport::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_viewport::build(const replacements_map& replacements) const
 {
-	return std::make_shared<viewport>(*this, replacements);
+	return std::make_unique<viewport>(*this, replacements);
 }
 
 } // namespace implementation
