@@ -189,23 +189,28 @@ public:
 			}
 		}
 		else if (help_on_unknown_) {
+			utils::string_map symbols;
 		    // Get the input command on a string
-            std::string string_user = get_cmd();
+            std::string string_user_ = get_cmd();
+            // Get all commands (even if disallowed)
+            std::vector<std::string> command_list_ = get_commands_list();
             // Initiate the command_proposal symbol so it does not appear if no
             // candidate is found.
             symbols["command_proposal"] = "";
-            // Recursively compare the input with every command (including alias)
-            for (int i = 0; i < command_alias_map_.length; i++) {
-                int distance = 0; // string_approximate_distance(string_user, command_alias_map_[i]);
-                int string_length = max(string_user.length, command_alias_map_[i].length);
+            // Compare the input with every command (excluding alias)
+            for (typename command_map::value_type i : command_map_) {
+                int distance_ = 10; // string_approximate_distance(string_user_, command_list_[i]);
                 // A third of the letters or less are wrong (e.g. 1 in a 4 letter cmd, 2 in a 6 letter cmd).
-                if (distance*100/string_length < 34){
-                    symbols["command_proposal"] = " did you mean" + command_alias_map_[i] + "?";
+                if (distance_*100/string_user_.length() < 34){
+                    symbols["command_proposal"] = " did you mean" + i.first + "?";
                     // If a good enough candidate is found, exit the loop.
                     break;
                 }
+                else{
+                    symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first;
+                    print("help", VGETTEXT("DEBUG: $DEBUG_STRINGS.", symbols));
+                }
             }
-			utils::string_map symbols;
 			symbols["command"] = get_cmd();
 			symbols["help_command"] = cmd_prefix_ + "help";
 			print("help", VGETTEXT("Unknown command '$command',$command_proposal try $help_command "
