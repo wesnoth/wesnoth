@@ -17,7 +17,6 @@ include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
 if(NOT MSVC)
-	include_directories(SYSTEM ${SDL2_INCLUDE_DIRS})
 	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIRS})
 	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIRS})
 endif()
@@ -59,7 +58,6 @@ set(game-external-libs
 if(NOT MSVC)
 	set(game-external-libs
 		${game-external-libs}
-		${SDL2_LIBRARIES}
 		${SDL2IMAGE_LIBRARIES}
 		${SDL2MIXER_LIBRARIES}
 	)
@@ -248,10 +246,10 @@ if(ENABLE_GAME)
 		Boost::locale
 		Boost::filesystem
 		Fontconfig::Fontconfig
+		SDL2::SDL2
+		SDL2::SDL2main
 	)
 	if(MSVC)
-		target_link_libraries(wesnoth SDL2::SDL2)
-		target_link_libraries(wesnoth SDL2::SDL2main)
 		target_link_libraries(wesnoth SDL2::SDL2_image)
 		target_link_libraries(wesnoth SDL2::SDL2_mixer)
 	endif()
@@ -295,10 +293,10 @@ if(ENABLE_TESTS)
 		Boost::filesystem
 		Boost::unit_test_framework
 		Fontconfig::Fontconfig
+		SDL2::SDL2
+		SDL2::SDL2main
 	)
 	if(MSVC)
-		target_link_libraries(boost_unit_tests SDL2::SDL2)
-		target_link_libraries(boost_unit_tests SDL2::SDL2main)
 		target_link_libraries(boost_unit_tests SDL2::SDL2_image)
 		target_link_libraries(boost_unit_tests SDL2::SDL2_mixer)
 	endif()
