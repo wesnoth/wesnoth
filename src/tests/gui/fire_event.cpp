@@ -81,7 +81,7 @@ static void add_widget(gui2::grid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(std::move(widget)
