@@ -131,20 +131,24 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	auto child_grid = std::make_unique<gui2::grid>(1, 1);
-	add_widget(grid, std::move(child_grid), "level 1", 0, 0);
-	connect_signals(sstr, *child_grid);
+	auto g1 = std::make_unique<gui2::grid>(1, 1);
+	gui2::grid* g1_ptr = g1.get();
 
-	auto child = std::make_unique<gui2::grid>(1, 1);
-	add_widget(*child_grid, std::move(child), "level 2", 0, 0);
-	connect_signals(sstr, *child);
+	add_widget(grid, std::move(g1), "level 1", 0, 0);
+	connect_signals(sstr, *g1_ptr);
+
+	auto g2 = std::make_unique<gui2::grid>(1, 1);
+	gui2::grid* g2_ptr = g2.get();
+
+	add_widget(*g1_ptr, std::move(g2), "level 2", 0, 0);
+	connect_signals(sstr, *g2_ptr);
 
 	/** @todo Add the rest of the events. */
 	sstr.str("");
-	grid.fire(gui2::event::DRAW, *child);
+	grid.fire(gui2::event::DRAW, *g2_ptr);
 	validate_draw(sstr);
 
 	sstr.str("");
-	grid.fire(gui2::event::RIGHT_BUTTON_DOWN, *child);
+	grid.fire(gui2::event::RIGHT_BUTTON_DOWN, *g2_ptr);
 	validate_right_button_down(sstr);
 }
