@@ -140,9 +140,9 @@ public:
 	 * @param recurse             Do we want to decent into the child grids.
 	 * @param new_parent          The new parent for the swapped out widget.
 	 *
-	 * returns                    The widget which got removed (the parent of
-	 *                            the widget is cleared). If no widget found
-	 *                            and thus not replace nullptr will returned.
+	 * @returns                   The widget which got removed (the parent of
+	 *                            the widget is cleared), or @ref w if no matching
+	 *                            widget was found.
 	 */
 	std::unique_ptr<widget> swap_child(const std::string& id,
 					std::unique_ptr<widget> w,

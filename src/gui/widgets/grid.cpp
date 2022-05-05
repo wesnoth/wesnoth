@@ -104,19 +104,21 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 {
 	assert(w);
 
-	std::vector<grid*> child_grids{};
-
 	for(auto& child : children_) {
 		if(child.id() != id) {
 			if(recurse) {
-				// Descend into nested grids. We don't handle recursion here for two reasons:
-				// First, it's more likely the widget we're looking for is on the same level
-				// as the grid. There's no need to hastily recurse. Second, since we take the
-				// widget to swap in as a unique_ptr, to call this recursively we would have
-				// to move it "down" a level for the child grid's swap_child invocation, and
-				// thus it would be null here once execution returned to this level.
 				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
-					child_grids.push_back(g);
+					// Save the current value of `w` before we recurse. If a match is found in
+					// a child grid, the old widget will be returned and won't match.
+					widget* current_w = w.get();
+
+					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w) {
+						return res;
+					} else {
+						// Since `w` was moved "down" a level, it will be null once we return to
+						// this invocation. Re-assign it so we don't crash below.
+						w = std::move(res);
+					}
 				}
 			}
 
@@ -136,13 +138,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		return old;
 	}
 
-	for(grid* g : child_grids) {
-		if(auto old = g->swap_child(id, std::move(w), true)) {
-			return old;
-		}
-	}
-
-	return nullptr;
+	return w;
 }
 
 void grid::remove_child(const unsigned row, const unsigned col)
