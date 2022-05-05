@@ -386,6 +386,9 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
                 }
                 // CHANGE (no need to do anything, next letter MAY be successful).
                 approximate_distance++;
+                if(approximate_distance > 2){
+                    break;
+                }
             }
         }
     }

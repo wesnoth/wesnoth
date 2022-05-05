@@ -199,9 +199,12 @@ public:
             symbols["command_proposal"] = "";
             // Compare the input with every command (excluding alias)
             for (typename command_map::value_type i : command_map_) {
-                int distance_ = 10; // string_approximate_distance(string_user_, command_list_[i]);
-                // A third of the letters or less are wrong (e.g. 1 in a 4 letter cmd, 2 in a 6 letter cmd).
-                if (distance_*100/string_user_.length() < 34){
+                // No need to test cases that would fail
+                if((string_user_.length() - i.first.length() < 2) && (string_user_.length() - i.first.length() > -2)) {
+                    int distance_ = approximate_string_distance(string_user_, i.first);
+                }
+                // Maximum of two errors for any word, maximum of one error until six letter-words.
+                if (distance_ < 2 && string_user_.length() < 6 || distance_ < 3){
                     symbols["command_proposal"] = " did you mean" + i.first + "?";
                     // If a good enough candidate is found, exit the loop.
                     break;
