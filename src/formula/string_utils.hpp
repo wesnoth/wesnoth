@@ -129,3 +129,16 @@ std::string vngettext_impl(const char* domain,
 
 #define VNGETTEXT(msgid, msgid_plural, count, ...) \
 	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
+
+/**
+ * Approximately calculates the distance between two strings
+ *
+ * Inspired in the Levenshtein distance, but made simpler
+ * to avoid using recursion and wasting resources.
+ *
+ * The consequence is that the function gets "lost"
+ * after two consecutive differences.
+ */
+
+int approximate_string_distance(const std::string &str_1, const std::string &str_2);
+

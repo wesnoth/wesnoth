@@ -356,3 +356,38 @@ std::string vngettext_impl(const char* domain,
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
+
+int approximate_string_distance(const std::string &str_1, const std::string &str_2)
+{
+    int approximate_distance = 0;
+    if(str_1.length() == 0) {
+        return str_2.length();
+    }
+    else if(str_2.length() == 0) {
+        return str_1.length();
+    }
+    else {
+        int Lmax = std::max(str_1.length(),str_2.length());
+        int j = 0;
+        for(int i = 0 ; i < Lmax ; i++) {
+            if(str_1[i] != str_2[j]){
+                //SWAP
+                if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]){
+                    // No need to test the next letter
+                    i++;j++;
+                }
+                //ADDITION
+                else if (str_1[i+1] == str_2[j]){
+                    j--;
+                }
+                //DELETION
+                else if (str_1[i] == str_2[j+1]){
+                    i--;
+                }
+                // CHANGE (no need to do anything, next letter MAY be successful).
+                approximate_distance++;
+            }
+        }
+    }
+    return approximate_distance;
+}

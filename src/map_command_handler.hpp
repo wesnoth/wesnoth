@@ -207,7 +207,7 @@ public:
                     break;
                 }
                 else{
-                    symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first + " " +std::to_string(distance_);
+                    symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first + " " + std::to_string(distance_);
                     print("help", VGETTEXT("DEBUG: $DEBUG_STRINGS.", symbols));
                 }
             }
