@@ -463,9 +463,9 @@ builder_addon_list::builder_addon_list(const config& cfg)
 	}
 }
 
-widget* builder_addon_list::build() const
+std::unique_ptr<widget> builder_addon_list::build() const
 {
-	addon_list* widget = new addon_list(*this);
+	auto widget = std::make_unique<addon_list>(*this);
 
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
 		"' with definition '" << definition << "'.\n";

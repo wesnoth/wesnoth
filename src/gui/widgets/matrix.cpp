@@ -88,11 +88,6 @@ matrix::matrix(const implementation::builder_matrix& builder)
 	pane_ = find_widget<pane>(&content_, "pane", false, true);
 }
 
-matrix* matrix::build(const implementation::builder_matrix& builder)
-{
-	return new matrix(builder);
-}
-
 unsigned
 matrix::create_item(const std::map<std::string, string_map>& item_data,
 					 const std::map<std::string, std::string>& tags)
@@ -236,9 +231,9 @@ builder_matrix::builder_matrix(const config& cfg)
 	}
 }
 
-widget* builder_matrix::build() const
+std::unique_ptr<widget> builder_matrix::build() const
 {
-	return matrix::build(*this);
+	return std::make_unique<matrix>(*this);
 }
 
 } // namespace implementation

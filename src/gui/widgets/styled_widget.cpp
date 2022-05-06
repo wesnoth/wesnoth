@@ -607,7 +607,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

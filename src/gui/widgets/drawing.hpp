@@ -149,7 +149,7 @@ struct builder_drawing : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	/** The width of the widget. */
 	typed_formula<unsigned> width;

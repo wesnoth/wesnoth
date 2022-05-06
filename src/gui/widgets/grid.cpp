@@ -67,7 +67,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget* widget,
+void grid::set_child(std::unique_ptr<widget> widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -89,32 +89,35 @@ void grid::set_child(widget* widget,
 	// copy data
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
-	cell.set_widget(widget);
-	if(cell.get_widget()) {
-		// make sure the new child is valid before deferring
-		cell.get_widget()->set_parent(this);
+	cell.set_widget(std::move(widget));
+
+	// make sure the new child is valid before deferring
+	if(gui2::widget* w = cell.get_widget()) {
+		w->set_parent(this);
 	}
 }
 
 std::unique_ptr<widget> grid::swap_child(const std::string& id,
-						   widget* w,
-						   const bool recurse,
-						   widget* new_parent)
+		std::unique_ptr<widget> w,
+		const bool recurse,
+		widget* new_parent)
 {
 	assert(w);
 
-	for(auto & child : children_)
-	{
+	for(auto& child : children_) {
 		if(child.id() != id) {
-
 			if(recurse) {
-				// decent in the nested grids.
-				grid* g = dynamic_cast<grid*>(child.get_widget());
-				if(g) {
+				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
+					// Save the current value of `w` before we recurse. If a match is found in
+					// a child grid, the old widget will be returned and won't match.
+					widget* current_w = w.get();
 
-					std::unique_ptr<widget> old = g->swap_child(id, w, true);
-					if(old) {
-						return old;
+					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w) {
+						return res;
+					} else {
+						// Since `w` was moved "down" a level, it will be null once we return to
+						// this invocation. Re-assign it so we don't crash below.
+						w = std::move(res);
 					}
 				}
 			}
@@ -123,7 +126,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		std::unique_ptr<widget> old = child.free_widget();
+		auto old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -131,11 +134,11 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		w->set_parent(this);
 		w->set_visible(old->get_visible());
 
-		child.set_widget(w);
+		child.set_widget(std::move(w));
 		return old;
 	}
 
-	return nullptr;
+	return w;
 }
 
 void grid::remove_child(const unsigned row, const unsigned col)
@@ -1104,10 +1107,10 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget* widget)
+void set_single_child(grid& grid, std::unique_ptr<widget> widget)
 {
 	grid.set_rows_cols(1, 1);
-	grid.set_child(widget,
+	grid.set_child(std::move(widget),
 				   0,
 				   0,
 				   grid::HORIZONTAL_GROW_SEND_TO_CLIENT

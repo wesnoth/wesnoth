@@ -199,13 +199,13 @@ public:
 		grid_.set_rows_cols(rows, cols);
 	}
 
-	void set_child(widget* widget,
+	void set_child(std::unique_ptr<widget> widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,
 				   const unsigned border_size)
 	{
-		grid_.set_child(widget, row, col, flags, border_size);
+		grid_.set_child(std::move(widget), row, col, flags, border_size);
 	}
 
 	void set_row_grow_factor(const unsigned row, const unsigned factor)

@@ -100,7 +100,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override
+	virtual std::unique_ptr<widget> build() const override
 	{
 		return nullptr;
 	}
@@ -1138,7 +1138,7 @@ namespace
  */
 void window_swap_grid(grid* g,
 			   grid* content_grid,
-			   widget* widget,
+			   std::unique_ptr<widget> widget,
 			   const std::string& id)
 {
 	assert(content_grid);
@@ -1157,11 +1157,11 @@ void window_swap_grid(grid* g,
 		assert(parent_grid);
 	}
 	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		grandparent_grid->swap_child(id, widget, false);
+		grandparent_grid->swap_child(id, std::move(widget), false);
 	} else if(container_base* c
 			  = dynamic_cast<container_base*>(parent_grid->parent())) {
 
-		c->get_grid().swap_child(id, widget, true);
+		c->get_grid().swap_child(id, std::move(widget), true);
 	} else {
 		assert(false);
 	}

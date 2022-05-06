@@ -56,7 +56,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	if(const auto opt = get_tree_view().get_node_definition(id)) {
 		const auto& node_definition = **opt;
 
-		node_definition.builder->build(&grid_);
+		node_definition.builder->build(grid_);
 		init_grid(&grid_, data);
 
 		if(parent_node_ && parent_node_->toggle_) {
