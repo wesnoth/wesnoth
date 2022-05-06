@@ -124,13 +124,6 @@ void load_game_prefs()
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	if(!preferences::get("remember_timer_settings", false)) {
-		preferences::erase("mp_countdown_init_time");
-		preferences::erase("mp_countdown_reservoir_time");
-		preferences::erase("mp_countdown_turn_bonus");
-		preferences::erase("mp_countdown_action_bonus");
-	}
-
 	// We save the password encrypted now. Erase any saved passwords in the prefs file.
 	preferences::erase("password");
 	preferences::erase("password_is_wrapped");
