@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 #    woptipng - attempts to reduce PNGs in size using several other tools
 #    Copyright (C) 2016  Matthias Krüger
