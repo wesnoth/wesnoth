@@ -1129,46 +1129,6 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.
- * This differs slightly from the standard swap_grid utility, so it's defined by itself here.
- */
-void window_swap_grid(grid* g,
-			   grid* content_grid,
-			   std::unique_ptr<widget> widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-		assert(parent_grid);
-	}
-	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		grandparent_grid->swap_child(id, std::move(widget), false);
-	} else if(container_base* c
-			  = dynamic_cast<container_base*>(parent_grid->parent())) {
-
-		c->get_grid().swap_child(id, std::move(widget), true);
-	} else {
-		assert(false);
-	}
-}
-
-} // namespace
-
 void window::redraw_windows_on_top() const
 {
 	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
@@ -1182,7 +1142,24 @@ void window::redraw_windows_on_top() const
 
 void window::finalize(const builder_grid& content_grid)
 {
-	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
+	auto widget = content_grid.build();
+	assert(widget);
+
+	static const std::string id = "_window_content_grid";
+
+	// Make sure the new child has same id.
+	widget->set_id(id);
+
+	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	assert(parent_grid);
+
+	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
+		grandparent_grid->swap_child(id, std::move(widget), false);
+	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())) {
+		c->get_grid().swap_child(id, std::move(widget), true);
+	} else {
+		assert(false);
+	}
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
