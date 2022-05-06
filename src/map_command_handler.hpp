@@ -200,11 +200,11 @@ public:
             int distance_ = 0;
             // Compare the input with every command (excluding alias)
             for (typename command_map::value_type i : command_map_) {
-                // No need to test cases that would fail
-                if((string_user_.length() <= i.first.length() + 2) && (string_user_.length() >= i.first.length() - 2) && is_enabled(i.second)) {
+                // No need to test commands that are not enabled
+                if(is_enabled(i.second)) {
                     distance_ = approximate_string_distance(string_user_, i.first);
-                    // Maximum of two errors for any word, maximum of one error until six letter-words.
-                    if ((distance_ < 2 && string_user_.length() < 6) || distance_ < 3){
+                    // Maximum of a third of the letters are wrong
+                    if (distance_*100/std::min(string_user_.length(),i.first.length()) < 34){
                         symbols["command_proposal"] = " did you mean '" + i.first + "'?";
                         // If a good enough candidate is found, exit the loop.
                         break;

@@ -369,12 +369,7 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
     else {
         int Lmax = 0;
         int j = 0;
-        if (str_1.length() >= str_2.length()){
-            Lmax = str_1.length();
-        }
-        else{
-            Lmax = str_2.length();
-        }
+        Lmax = std::max(str_1.length(),str_2.length());
         for(int i = 0 ; i < Lmax ; i++) {
             if(str_1[i] != str_2[j]){
                 //SWAP
@@ -392,7 +387,7 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
                 }
                 // CHANGE (no need to do anything, next letter MAY be successful).
                 approximate_distance++;
-                if(approximate_distance > 2){
+                if(approximate_distance*100/std::min(str_1.length(),str_2.length()) > 33){
                     break;
                 }
             }
