@@ -7,5 +7,6 @@ where YEAR(game.START_TIME) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
   and game.INSTANCE_UUID = player.INSTANCE_UUID
   and game.GAME_ID = player.GAME_ID
   and player.USER_ID != -1
+  and player.CLIENT_SOURCE != ''
 group by GAME_DATE, player.CLIENT_SOURCE
 order by GAME_DATE, player.CLIENT_SOURCE
