@@ -367,8 +367,14 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
         return str_1.length();
     }
     else {
-        int Lmax = std::max(str_1.length(),str_2.length());
+        int Lmax = 0;
         int j = 0;
+        if (str_1.length() >= str_2.length()){
+            Lmax = str_1.length();
+        }
+        else{
+            Lmax = str_2.length();
+        }
         for(int i = 0 ; i < Lmax ; i++) {
             if(str_1[i] != str_2[j]){
                 //SWAP
@@ -390,6 +396,7 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
                     break;
                 }
             }
+            j++;
         }
     }
     return approximate_distance;

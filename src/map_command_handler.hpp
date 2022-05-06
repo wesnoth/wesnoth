@@ -194,24 +194,25 @@ public:
             std::string string_user_ = get_cmd();
             // Get all commands (even if disallowed)
             std::vector<std::string> command_list_ = get_commands_list();
-            // Initiate the command_proposal symbol so it does not appear if no
-            // candidate is found.
+            // Initialize the distance and the command_proposal symbol so it
+            // does not appear if no candidate is found.
             symbols["command_proposal"] = "";
+            int distance_ = 0;
             // Compare the input with every command (excluding alias)
             for (typename command_map::value_type i : command_map_) {
                 // No need to test cases that would fail
-                if((string_user_.length() - i.first.length() < 2) && (string_user_.length() - i.first.length() > -2)) {
-                    int distance_ = approximate_string_distance(string_user_, i.first);
-                }
-                // Maximum of two errors for any word, maximum of one error until six letter-words.
-                if (distance_ < 2 && string_user_.length() < 6 || distance_ < 3){
-                    symbols["command_proposal"] = " did you mean" + i.first + "?";
-                    // If a good enough candidate is found, exit the loop.
-                    break;
-                }
-                else{
-                    symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first + " " + std::to_string(distance_);
-                    print("help", VGETTEXT("DEBUG: $DEBUG_STRINGS.", symbols));
+                if((string_user_.length() <= i.first.length() + 2) && (string_user_.length() >= i.first.length() - 2) && is_enabled(i.second)) {
+                    distance_ = approximate_string_distance(string_user_, i.first);
+                    // Maximum of two errors for any word, maximum of one error until six letter-words.
+                    if ((distance_ < 2 && string_user_.length() < 6) || distance_ < 3){
+                        symbols["command_proposal"] = " did you mean " + i.first + "?";
+                        // If a good enough candidate is found, exit the loop.
+                        break;
+                    }
+                    else{
+                        symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first + " " + std::to_string(distance_);
+                        print("help", VGETTEXT("DEBUG: $DEBUG_STRINGS.", symbols));
+                    }
                 }
             }
 			symbols["command"] = get_cmd();
