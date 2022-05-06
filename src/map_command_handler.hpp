@@ -205,13 +205,9 @@ public:
                     distance_ = approximate_string_distance(string_user_, i.first);
                     // Maximum of two errors for any word, maximum of one error until six letter-words.
                     if ((distance_ < 2 && string_user_.length() < 6) || distance_ < 3){
-                        symbols["command_proposal"] = " did you mean " + i.first + "?";
+                        symbols["command_proposal"] = " did you mean '" + i.first + "'?";
                         // If a good enough candidate is found, exit the loop.
                         break;
-                    }
-                    else{
-                        symbols["DEBUG_STRINGS"] = string_user_ + " " + i.first + " " + std::to_string(distance_);
-                        print("help", VGETTEXT("DEBUG: $DEBUG_STRINGS.", symbols));
                     }
                 }
             }
