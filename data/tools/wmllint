@@ -1444,8 +1444,7 @@ def is_translatable(key):
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
-mainline = ("An_Orcish_Incursion",
-            "Dead_Water",
+mainline = ("Dead_Water",
             "Delfadors_Memoirs",
             "Descent_Into_Darkness",
             "Eastern_Invasion",
@@ -1462,6 +1461,8 @@ mainline = ("An_Orcish_Incursion",
             "tutorial",
             "Two_Brothers",
             "Under_the_Burning_Suns",
+            "Winds_of_Fate",
+            "World_Conquest",
             )
 
 spellcheck_these = (\
