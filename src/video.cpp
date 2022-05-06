@@ -307,11 +307,8 @@ void CVideo::init_window()
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
-	// TODO: fix whatever is crashing the rendering context when accelerated
-	// We can force software rendering here,
-	// but if we don't specify anything SDL should choose correctly.
-	uint32_t renderer_flags = SDL_RENDERER_SOFTWARE;
-	//uint32_t renderer_flags = 0;
+	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
+
 	if(supports_vsync() && preferences::vsync()) {
 		LOG_DP << "VSYNC on\n";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
