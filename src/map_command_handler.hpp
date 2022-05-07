@@ -191,20 +191,18 @@ public:
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
 		    // Get the input command on a string
-            std::string string_user_ = get_cmd();
-            // Get all commands (even if disallowed)
-            std::vector<std::string> command_list_ = get_commands_list();
+            std::string string_user = get_cmd();
             // Initialize the distance and the command_proposal symbol so it
             // does not appear if no candidate is found.
             symbols["command_proposal"] = "";
-            int distance_ = 0;
+            int distance = 0;
             // Compare the input with every command (excluding alias)
-            for (typename command_map::value_type i : command_map_) {
+            for(typename command_map::value_type i : command_map_) {
                 // No need to test commands that are not enabled
                 if(is_enabled(i.second)) {
-                    distance_ = approximate_string_distance(string_user_, i.first);
+                    distance = edit_distance_approx(string_user, i.first);
                     // Maximum of a third of the letters are wrong
-                    if (distance_*100/std::min(string_user_.length(),i.first.length()) < 34){
+                    if (distance * 100 / std::min(string_user.length(), i.first.length()) < 34){
                         symbols["command_proposal"] = " did you mean '" + i.first + "'?";
                         // If a good enough candidate is found, exit the loop.
                         break;

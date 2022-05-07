@@ -357,9 +357,9 @@ std::string vngettext_impl(const char* domain,
 	return msg;
 }
 
-int approximate_string_distance(const std::string &str_1, const std::string &str_2)
+int edit_distance_approx(const std::string &str_1, const std::string &str_2)
 {
-    int approximate_distance = 0;
+    int edit_distance = 0;
     if(str_1.length() == 0) {
         return str_2.length();
     }
@@ -367,32 +367,31 @@ int approximate_string_distance(const std::string &str_1, const std::string &str
         return str_1.length();
     }
     else {
-        int Lmax = 0;
         int j = 0;
-        Lmax = std::max(str_1.length(),str_2.length());
-        for(int i = 0 ; i < Lmax ; i++) {
+        int len_max = std::max(str_1.length(), str_2.length());
+        for(int i = 0; i < len_max; i++) {
             if(str_1[i] != str_2[j]){
                 //SWAP
-                if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]){
+                if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]) {
                     // No need to test the next letter
                     i++;j++;
                 }
                 //ADDITION
-                else if (str_1[i+1] == str_2[j]){
+                else if (str_1[i+1] == str_2[j]) {
                     j--;
                 }
                 //DELETION
-                else if (str_1[i] == str_2[j+1]){
+                else if (str_1[i] == str_2[j+1]) {
                     i--;
                 }
                 // CHANGE (no need to do anything, next letter MAY be successful).
-                approximate_distance++;
-                if(approximate_distance*100/std::min(str_1.length(),str_2.length()) > 33){
+                edit_distance++;
+                if(edit_distance * 100 / std::min(str_1.length(), str_2.length()) > 33) {
                     break;
                 }
             }
             j++;
         }
     }
-    return approximate_distance;
+    return edit_distance;
 }

@@ -138,7 +138,10 @@ std::string vngettext_impl(const char* domain,
  *
  * The consequence is that the function gets "lost"
  * after two consecutive differences.
+ *
+ * @param str_1 First string to compare
+ * @param str_2 Second string to compare
  */
 
-int approximate_string_distance(const std::string &str_1, const std::string &str_2);
+int edit_distance_approx(const std::string &str_1, const std::string &str_2);
 
