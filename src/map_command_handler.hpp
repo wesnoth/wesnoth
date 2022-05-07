@@ -192,18 +192,18 @@ public:
 			utils::string_map symbols;
 		    // Get the input command on a string
             std::string string_user = get_cmd();
-            // Initialize the distance and the command_proposal symbol so it
-            // does not appear if no candidate is found.
-            symbols["command_proposal"] = "";
+            // Initialize the distance and the command proposal bool
             int distance = 0;
+            bool has_command_proposal = false;
             // Compare the input with every command (excluding alias)
             for(typename command_map::value_type i : command_map_) {
                 // No need to test commands that are not enabled
                 if(is_enabled(i.second)) {
                     distance = edit_distance_approx(string_user, i.first);
                     // Maximum of a third of the letters are wrong
-                    if (distance * 100 / std::min(string_user.length(), i.first.length()) < 34){
-                        symbols["command_proposal"] = " did you mean '" + i.first + "'?";
+                    if(distance * 100 / std::min(string_user.length(), i.first.length()) < 34) {
+                        symbols["command_proposal"] = i.first;
+                        has_command_proposal = true;
                         // If a good enough candidate is found, exit the loop.
                         break;
                     }
@@ -211,8 +211,15 @@ public:
             }
 			symbols["command"] = get_cmd();
 			symbols["help_command"] = cmd_prefix_ + "help";
-			print("help", VGETTEXT("Unknown command '$command',$command_proposal try $help_command "
-				"for a list of available commands.", symbols));
+			// If a proposal for a command is found, print it
+			if(has_command_proposal) {
+                print("help", VGETTEXT("Unknown command '$command', did you mean '$command_proposal'? try $help_command "
+                    "for a list of available commands.", symbols));
+			}
+			else {
+                print("help", VGETTEXT("Unknown command '$command', try $help_command "
+                    "for a list of available commands.", symbols));
+			}
 		}
 	}
 

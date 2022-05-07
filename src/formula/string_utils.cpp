@@ -370,18 +370,18 @@ int edit_distance_approx(const std::string &str_1, const std::string &str_2)
         int j = 0;
         int len_max = std::max(str_1.length(), str_2.length());
         for(int i = 0; i < len_max; i++) {
-            if(str_1[i] != str_2[j]){
+            if(str_1[i] != str_2[j]) {
                 //SWAP
                 if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]) {
                     // No need to test the next letter
                     i++;j++;
                 }
                 //ADDITION
-                else if (str_1[i+1] == str_2[j]) {
+                else if(str_1[i+1] == str_2[j]) {
                     j--;
                 }
                 //DELETION
-                else if (str_1[i] == str_2[j+1]) {
+                else if(str_1[i] == str_2[j+1]) {
                     i--;
                 }
                 // CHANGE (no need to do anything, next letter MAY be successful).
