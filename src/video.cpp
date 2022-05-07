@@ -387,7 +387,7 @@ void CVideo::init_window()
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
 
-	if(supports_vsync() && preferences::vsync()) {
+	if(/*supports_vsync() &&*/ preferences::vsync()) {
 		LOG_DP << "VSYNC on\n";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
