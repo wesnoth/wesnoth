@@ -359,39 +359,39 @@ std::string vngettext_impl(const char* domain,
 
 int edit_distance_approx(const std::string &str_1, const std::string &str_2)
 {
-    int edit_distance = 0;
-    if(str_1.length() == 0) {
-        return str_2.length();
-    }
-    else if(str_2.length() == 0) {
-        return str_1.length();
-    }
-    else {
-        int j = 0;
-        int len_max = std::max(str_1.length(), str_2.length());
-        for(int i = 0; i < len_max; i++) {
-            if(str_1[i] != str_2[j]) {
-                //SWAP
-                if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]) {
-                    // No need to test the next letter
-                    i++;j++;
-                }
-                //ADDITION
-                else if(str_1[i+1] == str_2[j]) {
-                    j--;
-                }
-                //DELETION
-                else if(str_1[i] == str_2[j+1]) {
-                    i--;
-                }
-                // CHANGE (no need to do anything, next letter MAY be successful).
-                edit_distance++;
-                if(edit_distance * 100 / std::min(str_1.length(), str_2.length()) > 33) {
-                    break;
-                }
-            }
-            j++;
-        }
-    }
-    return edit_distance;
+	int edit_distance = 0;
+	if(str_1.length() == 0) {
+		return str_2.length();
+	}
+	else if(str_2.length() == 0) {
+		return str_1.length();
+	}
+	else {
+		int j = 0;
+		int len_max = std::max(str_1.length(), str_2.length());
+		for(int i = 0; i < len_max; i++) {
+			if(str_1[i] != str_2[j]) {
+				//SWAP
+				if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]) {
+					// No need to test the next letter
+					i++;j++;
+				}
+				//ADDITION
+				else if(str_1[i+1] == str_2[j]) {
+					j--;
+				}
+				//DELETION
+				else if(str_1[i] == str_2[j+1]) {
+					i--;
+				}
+				// CHANGE (no need to do anything, next letter MAY be successful).
+				edit_distance++;
+				if(edit_distance * 100 / std::min(str_1.length(), str_2.length()) > 33) {
+					break;
+				}
+			}
+			j++;
+		}
+	}
+	return edit_distance;
 }
