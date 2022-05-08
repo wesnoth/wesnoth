@@ -10,7 +10,6 @@ echo "CXX: $CXX"
 echo "CXX_STD: $CXX_STD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
-echo "CACHE_DIR: $CACHE_DIR"
 
 # set the fake display for unit tests
 export DISPLAY=:99.0
@@ -83,29 +82,18 @@ elif [ "$IMAGE" == "flatpak" ]; then
 # flatpak-builder doesn't support this
 # therefore manually move stuff between where flatpak needs it and where CI caching can see it
     rm -R .flatpak-builder/*
-    cp -R "$CACHE_DIR"/. .flatpak-builder/
     jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-CI"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
-    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
+    flatpak-builder --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
     EXIT_VAL=$?
-    rm -R "$CACHE_DIR"/*
-    cp -R .flatpak-builder/. "$CACHE_DIR"/
-    chmod -R 777 "$CACHE_DIR"/
     exit $EXIT_VAL
 else
     if [ "$TOOL" == "cmake" ]; then
-        export CCACHE_MAXSIZE=3000M
-        export CCACHE_COMPILERCHECK=content
-        export CCACHE_DIR="$CACHE_DIR"
-
         cmake -DCMAKE_BUILD_TYPE="$CFG" -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
               -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true \
-              -DCXX_STD="$CXX_STD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache . || exit 1
+              -DCXX_STD="$CXX_STD" . || exit 1
         make conftests || exit 1
         make VERBOSE=1 -j2
         EXIT_VAL=$?
-
-        ccache -s
-        ccache -z
     else
         scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
             ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
@@ -140,8 +128,5 @@ if [ -f "errors.log" ]; then
     error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
     cat errors.log
 fi
-
-mv wesnoth "$CACHE_DIR"/wesnoth
-mv wesnothd "$CACHE_DIR"/wesnothd
 
 exit $EXIT_VAL
