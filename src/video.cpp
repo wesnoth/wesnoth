@@ -178,10 +178,10 @@ int CVideo::fill(
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	int e = SDL_SetRenderDrawColor(*window, r, g, b, a);
-	if (e) {
-		return e;
-	} else {
+	if (e == 0) {
 		return SDL_RenderFillRect(*window, &area);
+	} else {
+		return e;
 	}
 }
 
