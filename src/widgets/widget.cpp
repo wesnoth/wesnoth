@@ -240,7 +240,6 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	// TODO: highdpi - this is ugly
 	auto clipper = video().set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	if (needs_restore_) {
@@ -253,7 +252,6 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& rect) const
 {
-	// TODO: highdpi - this is ugly
 	auto clipper = video().set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),

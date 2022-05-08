@@ -553,7 +553,6 @@ void help_text_area::draw_contents()
 						it->rect.h - i * 2
 					};
 
-					// TODO: highdpi - fix
 					// SDL 2.0.10's render batching changes result in the
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,

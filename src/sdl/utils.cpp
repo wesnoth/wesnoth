@@ -2132,8 +2132,6 @@ void blit_surface(const surface& surf,
 	}
 }
 
-// TODO: highdpi - this will break as soon as things start rendering with textures.
-// fix shouldn't be too hard - just pull pixels from the render target, not the drawing surface.
 surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
 	if (src == nullptr) {

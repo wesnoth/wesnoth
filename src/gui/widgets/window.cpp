@@ -581,7 +581,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
 			video_.blit_texture(restorer_, &rect);
-			// TODO: highdpi - reimplement / fix this
 			font::undraw_floating_labels();
 		}
 		throw;
@@ -593,7 +592,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	if(restore_) {
 		SDL_Rect rect = get_rectangle();
 		video_.blit_texture(restorer_, &rect);
-		// TODO: highdpi - reimplement / fix this
 		font::undraw_floating_labels();
 	}
 
@@ -630,12 +628,10 @@ void window::draw()
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		if(is_toplevel_) {
-			// TODO: highdpi - reimplement / fix this
 			font::draw_floating_labels();
 		}
 
 		if(restore_) {
-			// TODO: highdpi - reimplement / fix this
 			restorer_ = video_.read_texture(&rect);
 		}
 

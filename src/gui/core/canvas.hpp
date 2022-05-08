@@ -112,7 +112,6 @@ public:
 	 * pre-blitting functions.
 	 *
 	 * @param rect                Where to blit to, in drawing coordinates.
-surface.)
 	 */
 	void blit(SDL_Rect rect);
 
