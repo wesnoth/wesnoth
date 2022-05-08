@@ -190,18 +190,27 @@ public:
 		}
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
-			// Get the input command on a string
+			// Get the input command on a string.
 			std::string string_user = get_cmd();
-			// Initialize the distance and the command proposal bool
+			// Initialize the variables.
+			// Edit distance variable.
 			int distance = 0;
+			// Minimum length of the two compared strings.
+			int len_min = 0;
+			// Bool used to show the command proposal if it exists.
 			bool has_command_proposal = false;
-			// Compare the input with every command (excluding alias)
+			// Compare the input with every command (excluding alias).
 			for(typename command_map::value_type i : command_map_) {
-				// No need to test commands that are not enabled
+				// No need to test commands that are not enabled.
 				if(is_enabled(i.second)) {
+                    // Get the edit distance between input and each command.
 					distance = edit_distance_approx(string_user, i.first);
-					// Maximum of a third of the letters are wrong
-					if(distance * 100 / std::min(string_user.length(), i.first.length()) < 34) {
+                    // Get the minimum length between the strings.
+                    len_min = std::min(string_user.length(), i.first.length());
+					// Maximum of a third of the letters are wrong. The ratio
+					// between the edit distance and the minimum length, multiplied
+					// by a hundred gives us the  percentage of errors.
+					if(distance * 100 / len_min < 34) {
 						symbols["command_proposal"] = i.first;
 						has_command_proposal = true;
 						// If a good enough candidate is found, exit the loop.
