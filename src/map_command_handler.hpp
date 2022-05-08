@@ -200,18 +200,18 @@ public:
 			// Bool used to show the command proposal if it exists.
 			bool has_command_proposal = false;
 			// Compare the input with every command (excluding alias).
-			for(typename command_map::value_type i : command_map_) {
+			for(const auto& [key, index] : command_map_) {
 				// No need to test commands that are not enabled.
-				if(is_enabled(i.second)) {
-                    // Get the edit distance between input and each command.
-					distance = edit_distance_approx(string_user, i.first);
-                    // Get the minimum length between the strings.
-                    len_min = std::min(string_user.length(), i.first.length());
+				if(is_enabled(index)) {
+					// Get the edit distance between input and each command.
+					distance = edit_distance_approx(string_user, key);
+					// Get the minimum length between the strings.
+					len_min = std::min(string_user.length(), key.length());
 					// Maximum of a third of the letters are wrong. The ratio
 					// between the edit distance and the minimum length, multiplied
 					// by a hundred gives us the  percentage of errors.
 					if(distance * 100 / len_min < 34) {
-						symbols["command_proposal"] = i.first;
+						symbols["command_proposal"] = key;
 						has_command_proposal = true;
 						// If a good enough candidate is found, exit the loop.
 						break;
