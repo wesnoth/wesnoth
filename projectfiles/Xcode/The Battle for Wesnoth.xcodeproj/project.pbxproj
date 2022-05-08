@@ -822,6 +822,7 @@
 		91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
 		91A41F901CA22A98008B10D5 /* libreadline.8.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91AF556D281101C4007A7652 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF556C281101C3007A7652 /* input.cpp */; };
+		91AF55B02827588B007A7652 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55AF2827588B007A7652 /* texture.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1605,7 +1606,7 @@
 		46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_attributes.cpp; sourceTree = "<group>"; };
 		46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_methods.cpp; sourceTree = "<group>"; };
 		46E2D99525022D46003D99F3 /* lua_ptr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
-		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = "lib/libwebp.7.dylib"; sourceTree = "<group>"; };
+		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = lib/libwebp.7.dylib; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
@@ -2135,6 +2136,8 @@
 		91A214E41CAD618700927AEA /* gettext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gettext.hpp; sourceTree = "<group>"; };
 		91AF556B281101C3007A7652 /* input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = input.hpp; sourceTree = "<group>"; };
 		91AF556C281101C3007A7652 /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
+		91AF55AE2827588B007A7652 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		91AF55AF2827588B007A7652 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		91B621801B766ED500B00E0F /* buffered_istream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buffered_istream.hpp; sourceTree = "<group>"; };
 		91B621811B766F1900B00E0F /* carryover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carryover.hpp; sourceTree = "<group>"; };
 		91B621821B766FD200B00E0F /* display_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = display_context.hpp; sourceTree = "<group>"; };
@@ -4172,6 +4175,8 @@
 				91AF556B281101C3007A7652 /* input.hpp */,
 				EC669C251DFC95AF00172EED /* surface.cpp */,
 				467D9DF5205EC3DA00FA2FC4 /* surface.hpp */,
+				91AF55AF2827588B007A7652 /* texture.cpp */,
+				91AF55AE2827588B007A7652 /* texture.hpp */,
 				467D9DF0205EC3D200FA2FC4 /* userevent.hpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
@@ -5604,6 +5609,7 @@
 				91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */,
 				46F92DB12174F6A300602C1C /* wml_message.cpp in Sources */,
 				46F92E832174F6A400602C1C /* grid.cpp in Sources */,
+				91AF55B02827588B007A7652 /* texture.cpp in Sources */,
 				91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */,
 				91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */,
 				46F92D912174F6A300602C1C /* gui_definition.cpp in Sources */,
