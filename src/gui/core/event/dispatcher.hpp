@@ -623,8 +623,7 @@ private:
 		} else if constexpr(cat == event_category::text_input) {
 			return signal_text_input_queue_;
 		} else {
-			// "No matching signal queue for category"
-			utils::static_assert_false();
+			static_assert(utils::dependent_false_v<decltype(cat)>, "No matching signal queue for category");
 		}
 	}
 };
@@ -649,6 +648,12 @@ void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signa
 
 /** Disconnects a signal handler for a left mouse button click. */
 void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signal);
+
+/** Connects a signal handler for a left mouse button release. */
+void connect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal);
+
+/** Disconnects a signal handler for a left mouse button release. */
+void disconnect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal);
 
 /**
  * Connects a signal handler for a left mouse button double click.

@@ -56,7 +56,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	if(const auto opt = get_tree_view().get_node_definition(id)) {
 		const auto& node_definition = **opt;
 
-		node_definition.builder->build(&grid_);
+		node_definition.builder->build(grid_);
 		init_grid(&grid_, data);
 
 		if(parent_node_ && parent_node_->toggle_) {
@@ -631,18 +631,16 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void tree_view_node::impl_draw_children(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void tree_view_node::impl_draw_children(int x_offset, int y_offset)
 {
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children(x_offset, y_offset);
 
 	if(is_folded()) {
 		return;
 	}
 
 	for(auto& node : children_) {
-		node->impl_draw_children(frame_buffer, x_offset, y_offset);
+		node->impl_draw_children(x_offset, y_offset);
 	}
 }
 

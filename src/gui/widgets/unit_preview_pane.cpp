@@ -622,9 +622,9 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-widget* builder_unit_preview_pane::build() const
+std::unique_ptr<widget> builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane(*this);
+	auto widget = std::make_unique<unit_preview_pane>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

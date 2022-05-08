@@ -41,8 +41,14 @@ namespace preferences {
 	extern const int def_window_width;
 	extern const int def_window_height;
 
+	extern const int max_window_width;
+	extern const int max_window_height;
+
 	extern const int min_font_scaling;
 	extern const int max_font_scaling;
+
+	extern const int min_pixel_scale;
+	extern const int max_pixel_scale;
 
 	void write_preferences();
 
@@ -74,6 +80,12 @@ namespace preferences {
 
 	point resolution();
 	void _set_resolution(const point& res);
+
+	int pixel_scale();
+	void set_pixel_scale(const int scale);
+
+	bool auto_pixel_scale();
+	void set_auto_pixel_scale(bool choice);
 
 	bool maximized();
 	void _set_maximized(bool ison);

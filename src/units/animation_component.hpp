@@ -59,7 +59,7 @@ public:
 		unit_halo_() {}
 
 	/** Chooses an appropriate animation from the list of known animations. */
-	const unit_animation* choose_animation(const display& disp,
+	const unit_animation* choose_animation(
 			const map_location& loc, const std::string& event,
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,

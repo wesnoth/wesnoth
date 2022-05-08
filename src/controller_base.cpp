@@ -29,6 +29,7 @@
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -43,6 +44,9 @@ controller_base::controller_base()
 	, scroll_down_(false)
 	, scroll_left_(false)
 	, scroll_right_(false)
+	, last_scroll_tick_(0)
+	, scroll_carry_x_(0.0)
+	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
 	, last_mouse_is_touch_(false)
 	, long_touch_timer_(0)
@@ -62,7 +66,7 @@ void controller_base::long_touch_callback(int x, int y)
 	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
 		int x_now;
 		int y_now;
-		uint32_t mouse_state = SDL_GetMouseState(&x_now, &y_now);
+		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
 		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
@@ -273,7 +277,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		|| preferences::get("scroll_when_mouse_outside", true);
 
 	int scroll_speed = preferences::scroll_speed();
-	int dx = 0, dy = 0;
+	double dx = 0.0, dy = 0.0;
 
 	int scroll_threshold = preferences::mouse_scroll_enabled()
 		? preferences::mouse_scroll_threshold()
@@ -285,28 +289,41 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		}
 	}
 
+	// Scale scroll distance according to time passed
+	uint32_t tick_now = SDL_GetTicks();
+	// If we weren't previously scrolling, start small.
+	int dt = 1;
+	if (scrolling_) {
+		dt = tick_now - last_scroll_tick_;
+	}
+	// scroll_speed is in percent. Ticks are in milliseconds.
+	// Let's assume the maximum speed (100) moves 50 hexes per second,
+	// i.e. 3600 pixels per 1000 ticks.
+	double scroll_amount = double(dt) * 0.036 * double(scroll_speed);
+	last_scroll_tick_ = tick_now;
+
 	// Apply keyboard scrolling
-	dy -= scroll_up_    * scroll_speed;
-	dy += scroll_down_  * scroll_speed;
-	dx -= scroll_left_  * scroll_speed;
-	dx += scroll_right_ * scroll_speed;
+	dy -= scroll_up_    * scroll_amount;
+	dy += scroll_down_  * scroll_amount;
+	dx -= scroll_left_  * scroll_amount;
+	dx += scroll_right_ * scroll_amount;
 
 	// Scroll if mouse is placed near the edge of the screen
 	if(mouse_in_window) {
 		if(mousey < scroll_threshold) {
-			dy -= scroll_speed;
+			dy -= scroll_amount;
 		}
 
 		if(mousey > get_display().video().get_height() - scroll_threshold) {
-			dy += scroll_speed;
+			dy += scroll_amount;
 		}
 
 		if(mousex < scroll_threshold) {
-			dx -= scroll_speed;
+			dx -= scroll_amount;
 		}
 
 		if(mousex > get_display().video().get_width() - scroll_threshold) {
-			dx += scroll_speed;
+			dx += scroll_amount;
 		}
 	}
 
@@ -322,7 +339,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 			if(sdl::point_in_rect(mousex, mousey, rect) && mh_base.scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
-				const double speed = 0.04 * std::sqrt(static_cast<double>(scroll_speed));
+				const double speed = 0.01 * scroll_amount;
 				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
@@ -340,7 +357,27 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		}
 	}
 
-	return get_display().scroll(dx, dy);
+	// If nothing is scrolling, just return.
+	if (!dx && !dy) {
+		return false;
+	}
+
+	// If we are continuing a scroll, carry over any subpixel movement.
+	if (scrolling_) {
+		dx += scroll_carry_x_;
+		dy += scroll_carry_y_;
+	}
+	int dx_int = int(dx);
+	int dy_int = int(dy);
+	scroll_carry_x_ = dx - double(dx_int);
+	scroll_carry_y_ = dy - double(dy_int);
+
+	// Scroll the display
+	get_display().scroll(dx_int, dy_int);
+
+	// Even if the integer parts are both zero, we are still scrolling.
+	// The subpixel amounts will add up.
+	return true;
 }
 
 void controller_base::play_slice(bool is_delay_enabled)
@@ -362,7 +399,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().video().screen_area());
+		const SDL_Rect& menu_loc = m->location(get_display().video().draw_area());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
@@ -370,7 +407,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const SDL_Rect& action_loc = a->location(get_display().video().screen_area());
+		const SDL_Rect& action_loc = a->location(get_display().video().draw_area());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;
@@ -385,7 +422,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	bool was_scrolling = scrolling_;
 
 	int mousex, mousey;
-	uint8_t mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+	uint8_t mouse_flags = sdl::get_mouse_state(&mousex, &mousey);
 
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 

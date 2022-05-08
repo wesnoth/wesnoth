@@ -16,7 +16,6 @@ endif()
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
-include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR})
 if(NOT MSVC)
 	include_directories(SYSTEM ${SDL2_INCLUDE_DIRS})
 	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIRS})
@@ -54,7 +53,7 @@ set(game-external-libs
 	${common-external-libs}
 	${PANGOCAIRO_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-	${VORBISFILE_LIBRARIES}
+	VorbisFile::VorbisFile
 )
 
 if(NOT MSVC)
@@ -67,7 +66,7 @@ if(NOT MSVC)
 endif()
 
 if(HISTORY_FOUND)
-	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
+	set(game-external-libs ${game-external-libs} History::History)
 endif()
 
 # get source lists
@@ -141,6 +140,65 @@ if(ENABLE_DISPLAY_REVISION)
 
 	add_dependencies(wesnoth-revision wesnoth-revision_dummy)
 	set_source_files_properties(game_config.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
+endif()
+
+########### Conf Tests ###########
+
+if(NOT MSVC)
+	# test for SDL2
+	add_executable(sdl2 conftests/sdl2.cpp)
+	set_target_properties(sdl2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2 ${game-external-libs})
+	# cmake checks the version elsewhere already, but scons uses this, which is why the three arguments for major.minor.patchlevel are 0 here
+	add_test(NAME SDL2_SUPPORT COMMAND sdl2 0 0 0)
+
+	# test for SDL2_image
+	add_executable(sdl2_image conftests/sdl2_image.cpp)
+	set_target_properties(sdl2_image PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_image ${game-external-libs})
+	add_test(NAME SDL2_IMAGE_SUPPORT COMMAND sdl2_image)
+
+	# test for SDL2_mixer
+	add_executable(sdl2_mixer conftests/sdl2_mixer.cpp)
+	set_target_properties(sdl2_mixer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_mixer ${game-external-libs})
+	add_test(NAME SDL2_MIXER_SUPPORT COMMAND sdl2_mixer)
+
+	# test for JPG support in SDL2
+	add_executable(sdl2_jpg conftests/sdl2_jpg.cpp)
+	set_target_properties(sdl2_jpg PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_jpg ${game-external-libs})
+	add_test(NAME SDL2_JPG_SUPPORT COMMAND sdl2_jpg "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.jpg")
+
+	# test for PNG support in SDL2
+	add_executable(sdl2_png conftests/sdl2_png.cpp)
+	set_target_properties(sdl2_png PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_png ${game-external-libs})
+	add_test(NAME SDL2_PNG_SUPPORT COMMAND sdl2_png "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.png")
+
+	# test for WEBP support in SDL2
+	add_executable(sdl2_webp conftests/sdl2_webp.cpp)
+	set_target_properties(sdl2_webp PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_webp ${game-external-libs})
+	add_test(NAME SDL2_WEBP_SUPPORT COMMAND sdl2_webp "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.webp")
+
+	# test for audio support in SDL2
+	add_executable(sdl2_audio conftests/sdl2_audio.cpp)
+	set_target_properties(sdl2_audio PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_audio ${game-external-libs})
+	add_test(NAME SDL2_AUDIO_SUPPORT COMMAND sdl2_audio "${CMAKE_SOURCE_DIR}/data/core/music/main_menu.ogg")
+
+	add_custom_target(conftests
+		COMMAND ${CMAKE_COMMAND} -E env "SDL_AUDIODRIVER=dummy" ${CMAKE_CTEST_COMMAND}
+		DEPENDS
+			sdl2
+			sdl2_image
+			sdl2_mixer
+			sdl2_jpg
+			sdl2_png
+			sdl2_webp
+			sdl2_audio
+	)
 endif()
 
 ########### Wesnoth ###############

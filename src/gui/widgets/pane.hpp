@@ -47,22 +47,20 @@ class pane : public widget
 public:
 	struct item
 	{
+		item(item&&) = default;
 
 		unsigned id;
 		std::map<std::string, std::string> tags;
 
-		grid* item_grid;
+		std::unique_ptr<grid> item_grid;
 	};
 
 	typedef std::function<bool(const item&, const item&)> compare_functor_t;
 
 	typedef std::function<bool(const item&)> filter_functor_t;
 
-private:
-	explicit pane(const implementation::builder_pane& builder);
-
 public:
-	static pane* build(const implementation::builder_pane& builder);
+	explicit pane(const implementation::builder_pane& builder);
 
 	/**
 	 * Creates a new item.
@@ -77,9 +75,7 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children(int x_offset, int y_offset) override;
 
 	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
@@ -205,9 +201,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	grow_direction::type grow_dir;
 

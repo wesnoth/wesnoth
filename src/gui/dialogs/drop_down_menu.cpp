@@ -196,7 +196,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
-			toggle_button* checkbox = build_single_widget_instance<toggle_button>();
+			auto checkbox = build_single_widget_instance<toggle_button>();
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 
@@ -207,14 +207,14 @@ void drop_down_menu::pre_show(window& window)
 				}));
 			}
 
-			mi_grid.swap_child("icon", checkbox, false);
+			mi_grid.swap_child("icon", std::move(checkbox), false);
 		}
 
 		if(entry.image) {
-			image* img = build_single_widget_instance<image>();
+			auto img = build_single_widget_instance<image>();
 			img->set_label(*entry.image);
 
-			mi_grid.swap_child("label", img, false);
+			mi_grid.swap_child("label", std::move(img), false);
 		}
 	}
 

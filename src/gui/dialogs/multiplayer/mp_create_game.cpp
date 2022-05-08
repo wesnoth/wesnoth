@@ -290,9 +290,15 @@ void mp_create_game::pre_show(window& win)
 	bind_status_label<slider>(&win, action_bonus_->id());
 
 	//
+	// Timer reset button
+	//
+	connect_signal_mouse_left_click(
+		find_widget<button>(&win, "reset_timer_defaults", false),
+		std::bind(&mp_create_game::reset_timer_settings, this));
+
+	//
 	// Disable certain settings if we're playing a local game.
 	//
-
 	if(local_mode_) {
 		find_widget<text_box>(&win, "game_name", false).set_active(false);
 		find_widget<text_box>(&win, "game_password", false).set_active(false);
@@ -754,6 +760,8 @@ void mp_create_game::update_map_settings()
 	reservoir_      ->widget_set_enabled(window, time_limit, false);
 	action_bonus_   ->widget_set_enabled(window, time_limit, false);
 
+	find_widget<button>(&window, "reset_timer_defaults", false).set_active(time_limit);
+
 	if(use_map_settings) {
 		fog_       ->set_widget_value(window, config_engine_->fog_game_default());
 		shroud_    ->set_widget_value(window, config_engine_->shroud_game_default());
@@ -803,6 +811,22 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 		find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
 	}
+}
+
+void mp_create_game::reset_timer_settings()
+{
+	// This allows the defaults to be returned by the pref getters below
+	preferences::erase("mp_countdown_init_time");
+	preferences::erase("mp_countdown_reservoir_time");
+	preferences::erase("mp_countdown_turn_bonus");
+	preferences::erase("mp_countdown_action_bonus");
+
+	auto& w = *get_window();
+
+	init_turn_limit_->set_widget_value(w, preferences::countdown_init_time());
+	turn_bonus_->set_widget_value(w, preferences::countdown_turn_bonus());
+	reservoir_->set_widget_value(w, preferences::countdown_reservoir_time());
+	action_bonus_->set_widget_value(w, preferences::countdown_action_bonus());
 }
 
 bool mp_create_game::dialog_exit_hook(window& /*window*/)
