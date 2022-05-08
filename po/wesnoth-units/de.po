@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-02 18:03 UTC\n"
+"POT-Creation-Date: 2022-05-08 01:42 UTC\n"
 "PO-Revision-Date: 2022-02-10 21:21+0100\n"
 "Last-Translator: s1m0n#1701\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -538,8 +538,8 @@ msgstr "Fänge"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -6010,12 +6010,13 @@ msgid "tusk"
 msgstr "Stoßzahn"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
 msgstr "Frischling"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -6027,12 +6028,12 @@ msgstr ""
 "um es zu beschützen."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr "Sumpfechse"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -6049,7 +6050,7 @@ msgstr ""
 "scheuen nicht davor zurück, ihre Vorfahren zu rächen."
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
@@ -6060,17 +6061,17 @@ msgstr ""
 "wenn sie angreift."
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr "Lauern"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr "Lauern"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -6371,7 +6372,7 @@ msgstr "Stachel"
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
 msgstr "Scheren"
 
@@ -6459,9 +6460,15 @@ msgstr "Braunes Pferd"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Bay horses are defined more by their coloration than their size or "
+#| "temperment, and can be found anywhere from the battlefield to the farm to "
+#| "the wild plains and woodlands. Though an unencumbered horse will tend to "
+#| "flee if possible, they will fight back with a powerful kick when cornered."
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
-"temperment, and can be found anywhere from the battlefield to the farm to "
+"temperament, and can be found anywhere from the battlefield to the farm to "
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
@@ -6552,7 +6559,8 @@ msgstr "Schwarzer Hengst"
 
 # Black Night - Mare - ist ein englischer Kalauer auf das Wort Stute.
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
 msgstr "Schwarze Stute"
 
@@ -6705,7 +6713,7 @@ msgid "Rock Scorpion"
 msgstr "Felsskorpion"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -6723,7 +6731,7 @@ msgstr ""
 "dass diese Skorpione existieren, auch wenn es nur wenige Beweise gibt."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
 msgstr "Sprühnebel"
 
@@ -7058,9 +7066,17 @@ msgstr "Naga-Ehrengarde"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
+#, fuzzy
+#| msgid ""
+#| "The elite naga guards are a rigid barrier to any invaders of a naga "
+#| "stronghold. They have powerful stikes and, like the lesser Shield Guard, "
+#| "they are difficult to dislodge from their posts because of effective use "
+#| "of a shield in melee techniques. This tactic does nothing against ranged "
+#| "attacks, but the nagas can usually seek better terrain advantage in such "
+#| "situations."
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
-"stronghold. They have powerful stikes and, like the lesser Shield Guard, "
+"stronghold. They have powerful strikes and, like the lesser Shield Guard, "
 "they are difficult to dislodge from their posts because of effective use of "
 "a shield in melee techniques. This tactic does nothing against ranged "
 "attacks, but the nagas can usually seek better terrain advantage in such "

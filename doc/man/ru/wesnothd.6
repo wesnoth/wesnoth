@@ -170,8 +170,9 @@ restart (перезагрузка) запросы будут проигнори�
 .SS "Глобальные тэги:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP тэг, указывающий сервер, на который следует перенаправить
+определенные версии клиента. Не используется, если не выставлено
+\fBversions_accepted\fP.
 .RS
 .TP 
 \fBhost\fP
@@ -205,12 +206,13 @@ to. Is not used if \fBversions_accepted\fP is not set.
 ключи, что и \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Настройка блока работы с пользователями. Если секции
+\fB[user_handler]\fP в конфигурационном файле нет, сервер запустится без службы
+регистрации ников. Все дополнительные таблицы, необходимые для работы
+\fBforum_user_handler\fP, можно найти в файле table_definitions.sql, что
+находится в репозитории исходного кода Веснота. Требует включенную поддержку
+MySQL. В cmake она включается при помощи \fBENABLE_MYSQL\fP, а в scons \-
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

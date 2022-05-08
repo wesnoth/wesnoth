@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 23:52+0300\n"
+"POT-Creation-Date: 2022-05-08 04:42+0300\n"
 "PO-Revision-Date: 2022-04-17 21:08+0200\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -196,7 +196,7 @@ msgid "cures"
 msgstr "guérison"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Défense"
 
@@ -314,7 +314,7 @@ msgid "regenerates"
 msgstr "régénération"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
 msgstr "Résistances"
 
@@ -341,7 +341,7 @@ msgid "steadfast"
 msgstr "inébranlable"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
 msgstr "Attaques"
 
@@ -378,13 +378,13 @@ msgstr "Éditeur de carte et de scénario"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 msgid "Terrain Editor"
 msgstr "Éditeur de terrain"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 msgid "Scenario Editor"
 msgstr "Éditeur de scénario"
 
@@ -657,13 +657,117 @@ msgstr ""
 "italic>, etc  — utilisez seulement le numéro, sans « Player » devant le "
 "numéro."
 
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Deprecated Terrain"
+msgstr "Terrain de base : "
+
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
+
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr "Outil nommage"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -687,12 +791,12 @@ msgstr ""
 "italic> de WML."
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
 msgstr "Outil objet (outil de mise en scène)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -718,12 +822,12 @@ msgstr ""
 "utilisant les tag <italic>text='[item]'</italic> de WML."
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr "Outil de village"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -748,12 +852,12 @@ msgstr ""
 "camp voulu (<italic>text='[side]'</italic>)."
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr "Outil d'unité"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -778,12 +882,12 @@ msgstr ""
 "italic>)."
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr "Aires nommées"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -832,12 +936,12 @@ msgstr ""
 "d'autres fins que le changement de temps dans certaines aires."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr "Gestionnaire de listes de lecture"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -852,12 +956,12 @@ msgstr ""
 "<italic>text='[music]'</italic> au scénario."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr "Éditeur de carte/scénario"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -918,7 +1022,7 @@ msgstr ""
 "gestionnaire de listes de lecture'</ref> pour la musique."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -966,7 +1070,7 @@ msgstr ""
 "terrains."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -991,7 +1095,7 @@ msgstr ""
 "de la boite de dialogue \"Créer une partie\" du mode multijoueur"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1004,7 +1108,7 @@ msgstr ""
 "propose pas de scripter les évènements du scénario."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1022,7 +1126,7 @@ msgstr ""
 "• En mode terrain seul, les menus « Aires » et « Camp » sont grisés."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:277
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1049,14 +1153,30 @@ msgstr ""
 "fichier .map)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:342
+#, fuzzy
+#| msgid ""
+#| "<header>text='The files: .map and .cfg'</header>\n"
+#| "\n"
+#| "The map editor saves exactly one file, either a .map (for terrain mode) "
+#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
+#| "inside the .cfg file; there is no separate .map file. If you start "
+#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "file might remain, but this is not updated by the scenario editor.\n"
+#| "\n"
+#| "Loading a .cfg file has different results depending on the contents of "
+#| "the .cfg file. For .cfg files that were created by the scenario editor, "
+#| "it will open the .cfg in the scenario editor. However, for .cfg files "
+#| "that use a separate .map file (which can't be created by the scenario "
+#| "editor), the editor may follow the link and open the corresponding .map "
+#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -1084,12 +1204,12 @@ msgstr ""
 "choisi directement."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
 msgstr "Utilisation d'un fichier séparé pour les évènements WML"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1191,12 +1311,12 @@ msgstr ""
 "charger le fichier"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:336
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr "Utilisation de l'éditeur de masque"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:337
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1206,12 +1326,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:345
+#: data/core/editor/help.cfg:402
 msgid "ToD and Schedule Editor"
 msgstr "Éditeur temporel"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:346
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1233,13 +1353,13 @@ msgstr ""
 "ref>."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:357
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr "Palette de l'éditeur"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1268,34 +1388,34 @@ msgstr ""
 "Exemples :"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:364
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
 msgstr "Affiche tous les types de terrains"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
 msgstr "Affiche uniquement les terrains de type eau"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
 msgstr "Affiche uniquement les villages"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr "Format des cartes Wesnoth"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Wesnoth enregistre ses cartes dans des fichiers textes avec un format "
 "lisible par un humain."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:381
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1355,7 +1475,7 @@ msgstr ""
 "préprocesseur."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1391,7 +1511,7 @@ msgstr ""
 "(E) dans le menu « Fenêtre »."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1413,7 +1533,7 @@ msgstr ""
 "la main."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:406
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -2094,8 +2214,8 @@ msgstr "Déroulement du jeu"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "Traits"
 
@@ -5786,7 +5906,8 @@ msgstr "La longue nuit (3)"
 msgid "The Long Dark (4)"
 msgstr "La longue nuit (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
 msgid "Special Notes:"
 msgstr "Notes spéciales :"
 
@@ -6610,6 +6731,73 @@ msgstr "Dracans"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#| "armor- and weapon-smithing, but neither know nor need other science and "
+#| "culture besides this. Nonetheless, the few implements they do fashion are "
+#| "almost unrivaled in quality, only matched by those produced in the finest "
+#| "Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#| "Death in battle is the most preferred way for a drake to leave this "
+#| "world. Unlike the elder members of other races, drakes naturally grow "
+#| "more aggressive and reckless towards the ends of their natural lives, "
+#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6627,7 +6815,7 @@ msgid ""
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -8172,164 +8360,201 @@ msgstr "Aide"
 msgid "Parse error when parsing help text:"
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide : "
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr "Le meilleur"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr "Le pire"
 
-#: src/help/help_topic_generators.cpp:157
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
+msgstr ""
+
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr ""
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr ""
+
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
 msgstr "Terrain de base : "
 
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:214
 msgid "Movement properties: "
 msgstr "Coût des mouvements : "
 
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
 msgstr "Caractéristiques de défense : "
 
-#: src/help/help_topic_generators.cpp:261
+#: src/help/help_topic_generators.cpp:298
 msgid "Level"
 msgstr "Niveau"
 
-#: src/help/help_topic_generators.cpp:322
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
 msgstr "Évolue à partir de : "
 
-#: src/help/help_topic_generators.cpp:324
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances to: "
 msgstr "Évolue en : "
 
-#: src/help/help_topic_generators.cpp:353
+#: src/help/help_topic_generators.cpp:390
 msgid "Base unit: "
 msgstr "Unité de base : "
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:395
 msgid "Base units: "
 msgstr "Unités de base : "
 
-#: src/help/help_topic_generators.cpp:376
+#: src/help/help_topic_generators.cpp:413
 msgid "Variations: "
 msgstr "Variantes : "
 
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
 msgstr "Divers"
 
-#: src/help/help_topic_generators.cpp:402
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
 msgstr "Race : "
 
-#: src/help/help_topic_generators.cpp:472
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
 msgstr "Capacités : "
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
 msgstr "Mise à jour des capacités : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:528
+#: src/help/help_topic_generators.cpp:565
 msgid "HP:"
 msgstr "PV : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:569
 msgid "Moves:"
 msgstr "Déplacements : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
 msgstr "Vision : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:580
 msgid "Jamming:"
 msgstr "Brouillage : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:548
+#: src/help/help_topic_generators.cpp:585
 msgid "Cost:"
 msgstr "Coût : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:589
 msgid "Alignment:"
 msgstr "Alignement : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:596
 msgid "Required XP:"
 msgstr "Expérience requise : "
 
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
 msgstr "Attaques"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
 msgstr "Nom"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
 msgstr "Portée"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
 msgstr "Spécial"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
 msgstr "Type d'attaque"
 
-#: src/help/help_topic_generators.cpp:668
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
 msgstr "Résistance"
 
-#: src/help/help_topic_generators.cpp:697
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "Modifications dues au terrain"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Coût des mouvements"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "Limite défensive"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Coût de la vision"
 
-#: src/help/help_topic_generators.cpp:716
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Coût du brouillage"
 
