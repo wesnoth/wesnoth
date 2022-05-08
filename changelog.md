@@ -16,7 +16,7 @@
      * `Rrd` for desert road/cobbles - just a recolor, but has some different transitions than the normal roads
      * `^Bsa*` for snowy stone bridge
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Czech, French
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Italian
  ### Units
  ### User interface
    * Added integer scaling options for the entire UI.
