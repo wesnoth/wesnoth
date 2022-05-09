@@ -190,22 +190,16 @@ public:
 		}
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
-			// Get the input command on a string.
 			std::string string_user = get_cmd();
-			// Initialize the variables.
-			// Edit distance variable.
 			int distance = 0;
 			// Minimum length of the two compared strings.
 			int len_min = 0;
-			// Bool used to show the command proposal if it exists.
 			bool has_command_proposal = false;
 			// Compare the input with every command (excluding alias).
 			for(const auto& [key, index] : command_map_) {
 				// No need to test commands that are not enabled.
 				if(is_enabled(index)) {
-					// Get the edit distance between input and each command.
 					distance = edit_distance_approx(string_user, key);
-					// Get the minimum length between the strings.
 					len_min = std::min(string_user.length(), key.length());
 					// Maximum of a third of the letters are wrong. The ratio
 					// between the edit distance and the minimum length, multiplied
