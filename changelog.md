@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * S5: Enforce encounter with the Cloaked Figure (issue #6364)
  ### Editor
  ### Multiplayer
  ### Lua API
