@@ -5,6 +5,7 @@
    * Sceptre of Fire
      * S9: Allow Grypon Riders to complete the scenario (issue #6332)
    * Under the Burning Suns
+     * S5: Enforce encounter with the Cloaked Figure (issue #6364)
      * S8: Spawned units will now be unable to be blocked into walls (PR #6677)
  ### Editor
    * Added some missing terrain groupings (issue #6643)
