@@ -178,6 +178,18 @@ public:
 	 */
 	int get_height() const;
 
+	/**
+	 * Get the current active pixel scale multiplier.
+	 * This is equal to output_size() / draw_area().
+	 * Currently it is always integer, and the same in both dimensions.
+	 *
+	 * This may differ from preferences::pixel_scale() in some cases,
+	 * For example if the window is too small to fit the desired scale.
+	 *
+	 * @returns     The currently active pixel scale multiplier.
+	 */
+	int get_pixel_scale() const { return pixel_scale_; }
+
 	/** The current game screen dpi. */
 	std::pair<float, float> get_dpi() const;
 
@@ -512,6 +524,7 @@ private:
 	int flip_locked_;
 	int refresh_rate_;
 	int offset_x_, offset_y_;
+	int pixel_scale_;
 };
 
 /** An object which will lock the display for the duration of its lifetime. */

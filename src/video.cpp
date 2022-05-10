@@ -103,6 +103,7 @@ CVideo::CVideo(FAKE_TYPES type)
 	, refresh_rate_(0)
 	, offset_x_(0)
 	, offset_y_(0)
+	, pixel_scale_(1)
 {
 	assert(!singleton_);
 	singleton_ = this;
@@ -278,6 +279,8 @@ void CVideo::update_framebuffer()
 	} else {
 		scale = std::min(max_scale, preferences::pixel_scale());
 	}
+	// Cache it for easy access.
+	pixel_scale_ = scale;
 
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
