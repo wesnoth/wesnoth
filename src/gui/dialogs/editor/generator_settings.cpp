@@ -75,7 +75,7 @@ void generator_settings::pre_show(window& window)
 
 void generator_settings::adjust_minimum_size_by_players()
 {
-	const int extra_size = (players_->get_widget_value(*get_window()) - 2) * extra_size_per_player;
+	const int extra_size = (players_->get_widget_value() - 2) * extra_size_per_player;
 
 	const auto update_dimension_slider = [&](field_integer* field) {
 		slider& w = dynamic_cast<slider&>(*field->get_widget());

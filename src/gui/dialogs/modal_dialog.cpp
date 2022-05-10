@@ -104,7 +104,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields(*window_, (retval_ == retval::OK || always_save_fields_));
+	finalize_fields((retval_ == retval::OK || always_save_fields_));
 
 	post_show(*window_);
 
@@ -122,6 +122,16 @@ void modal_dialog::set_retval(int retval)
 	if(window_) {
 		window_->set_retval(retval);
 	}
+}
+
+template<typename T, typename... Args>
+T* modal_dialog::register_field(Args&&... args)
+{
+	static_assert(std::is_base_of_v<field_base, T>, "Type is not a field type");
+	auto field = std::make_unique<T>(std::forward<Args>(args)...);
+	T* res = field.get();
+	fields_.push_back(std::move(field));
+	return res;
 }
 
 field_bool* modal_dialog::register_bool(
@@ -249,7 +259,7 @@ void modal_dialog::init_fields(window& window)
 	for(auto& field : fields_)
 	{
 		field->attach_to_window(window);
-		field->widget_init(window);
+		field->widget_init();
 	}
 
 	if(!focus_.empty()) {
@@ -259,12 +269,12 @@ void modal_dialog::init_fields(window& window)
 	}
 }
 
-void modal_dialog::finalize_fields(window& window, const bool save_fields)
+void modal_dialog::finalize_fields(const bool save_fields)
 {
 	for(auto& field : fields_)
 	{
 		if(save_fields) {
-			field->widget_finalize(window);
+			field->widget_finalize();
 		}
 		field->detach_from_window();
 	}
