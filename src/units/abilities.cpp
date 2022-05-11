@@ -919,10 +919,10 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	add_name_list(temp_string, weapon_abilities, checking_name, "Owned: ");
 
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
-	add_name_list(temp_string, weapon_abilities, checking_name, "Teached: ");
+	add_name_list(temp_string, weapon_abilities, checking_name, "Taught:: ");
 
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
-	add_name_list(temp_string, weapon_abilities, checking_name, "Teached (by an ennemy): ");
+	add_name_list(temp_string, weapon_abilities, checking_name, "Taught: (by an enemy): ");
 
 
 	if(other_attack_) {

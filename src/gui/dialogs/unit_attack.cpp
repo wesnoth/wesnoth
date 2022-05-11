@@ -141,7 +141,7 @@ void unit_attack::pre_show(window& window)
 			attw_specials_cth = " " + attw_specials_cth;
 		}
 		if(!attw_specials_others.empty()) {
-			attw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Others aspect: ")+"</b>") + "\n" + ("<i>"+attw_specials_others+"</i>");
+			attw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+attw_specials_others+"</i>");
 		}
 		if(!defw_specials.empty()) {
 			defw_specials = " " + defw_specials;
@@ -156,7 +156,7 @@ void unit_attack::pre_show(window& window)
 			defw_specials_cth = " " + defw_specials_cth;
 		}
 		if(!defw_specials_others.empty()) {
-			defw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Others aspect: ")+"</b>") + "\n" + ("<i>"+defw_specials_others+"</i>");
+			defw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+defw_specials_others+"</i>");
 		}
 
 		std::stringstream attacker_stats, defender_stats, attacker_tooltip, defender_tooltip;
