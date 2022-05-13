@@ -99,7 +99,7 @@ private:
 
 	static loading_screen* singleton_;
 
-	std::function<void()> load_func_;
+	std::vector<std::function<void()>> load_funcs_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
 
@@ -113,6 +113,8 @@ private:
 	using stage_map = std::map<loading_stage, t_string>;
 	stage_map visible_stages_;
 	stage_map::const_iterator current_visible_stage_;
+
+	bool running_;
 };
 
 } // namespace dialogs
