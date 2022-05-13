@@ -82,7 +82,28 @@ public:
 	static void display(std::function<void()> f);
 	static bool displaying() { return singleton_ != nullptr; }
 
+	/**
+	 * Report what is being loaded to the loading screen.
+	 *
+	 * Also processes any pending events and draw calls.
+	 *
+	 * This should be called before commencing each loading stage.
+	 *
+	 * @param stage     Which loading stage the caller is about to perform.
+	 */
 	static void progress(loading_stage stage = loading_stage::none);
+
+	/**
+	 * Indicate to the player that loading is progressing.
+	 *
+	 * Calling this function is necessary to allow loading screen animations
+	 * to run, and input events to be processed. It should be placed
+	 * inside any loading loops that may take significant time.
+	 *
+	 * There is an internal guard against acting too frequently, so there
+	 * should be little need to limit calls to this function.
+	 */
+	static void spin();
 
 private:
 	virtual const std::string& window_id() const override;
