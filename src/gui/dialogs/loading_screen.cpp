@@ -37,6 +37,7 @@
 #include <functional>
 
 static lg::log_domain log_loadscreen("loadscreen");
+#define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define ERR_LS LOG_STREAM(err, log_loadscreen)
 #define WRN_LS LOG_STREAM(warn, log_loadscreen)
 
@@ -73,7 +74,7 @@ REGISTER_DIALOG(loading_screen)
 loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
-	: load_func_(f)
+	: load_funcs_{f}
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
@@ -82,6 +83,7 @@ loading_screen::loading_screen(std::function<void()> f)
 	, current_stage_(loading_stage::none)
 	, visible_stages_()
 	, current_visible_stage_()
+	, running_(false)
 {
 	for(const auto& [stage, description] : stage_names) {
 		visible_stages_[stage] = t_string(description, "wesnoth-lib") + "...";
@@ -97,16 +99,6 @@ void loading_screen::pre_show(window& window)
 	window.set_escape_disabled(true);
 
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
-
-	if(load_func_) {
-		// Run the load function in its own thread.
-		try {
-			worker_result_ = std::async(std::launch::async, load_func_);
-		} catch(const std::system_error& e) {
-			ERR_LS << "Failed to create worker thread: " << e.what() << "\n";
-			throw;
-		}
-	}
 
 	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
 	animation_ = find_widget<drawing>(&window, "animation", false, true);
@@ -125,20 +117,33 @@ void loading_screen::progress(loading_stage stage)
 {
 	if(singleton_ && stage != loading_stage::none) {
 		singleton_->current_stage_.store(stage, std::memory_order_release);
+		// Allow display to update, close events to be handled, etc.
+		events::raise_draw_event();
+		events::pump();
 	}
 }
 
+// This will be run inside the window::show() loop.
 void loading_screen::process(events::pump_info&)
 {
-	using namespace std::chrono_literals;
+	if (load_funcs_.empty()) {
+		return;
+	}
 
-	if(!load_func_ || worker_result_.wait_for(0ms) == std::future_status::ready) {
-		// The worker returns void, so this is only to handle any exceptions thrown from the worker.
-		// worker_result_.valid() will return false after.
-		if(worker_result_.valid()) {
-			worker_result_.get();
-		}
+	// Do not automatically recurse.
+	if (running_) { return; }
+	running_ = true;
 
+	// Run the loading function.
+	auto func = load_funcs_.back();
+	load_funcs_.pop_back();
+	LOG_LS << "Executing loading screen worker function." << std::endl;
+	func();
+
+	running_ = false;
+
+	// If there's nothing more to do, close.
+	if (load_funcs_.empty()) {
 		get_window()->close();
 	}
 }
@@ -172,28 +177,17 @@ void loading_screen::draw_callback()
 
 loading_screen::~loading_screen()
 {
-	/* If the worker thread is running, exit the application to prevent memory corruption.
-	 * TODO: this is still not optimal. The main problem is that this code assumes that this
-	 * happened because the window was closed, which is not necessarily the case (other
-	 * possibilities might be a 'dialog doesn't fit on screen' exception caused by resizing
-	 * the window).
-	 */
-	if(worker_result_.valid()) {
-#if defined(_LIBCPP_VERSION) || defined(__MINGW32__)
-		std::_Exit(0);
-#else
-		std::quick_exit(0);
-#endif
-	}
-
+	LOG_LS << "Loading screen destroyed." << std::endl;
 	singleton_ = nullptr;
 }
 
 void loading_screen::display(std::function<void()> f)
 {
 	if(singleton_ || CVideo::get_singleton().faked()) {
+		LOG_LS << "Directly executing loading function." << std::endl;
 		f();
 	} else {
+		LOG_LS << "Creating new loading screen." << std::endl;
 		loading_screen(f).show();
 	}
 }
