@@ -2977,6 +2977,23 @@ def hack_syntax(filename, lines):
             print('"{}", line {}: removed SOUND:SLOW'.format(filename,
                                                                             i+1))
 
+    # handle removal of {SOUND:POISON}
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        m = re.match(r"(\s*)\{SOUND:POISON\}(.*)", line)
+        if m:
+            new_line = m.group(1) + m.group(2).lstrip()
+            if new_line.isspace():
+                # only empty spaces, make the line blank
+                # don't remove the line to not alter the other for cycles
+                lines[i] = "\n"
+            else:
+                # keep indentation and comments
+                lines[i] = new_line + "\n"
+            print('"{}", line {}: removed SOUND:POISON'.format(filename,
+                                                                            i+1))
+
     # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
     in_unit = False
     for i, line in enumerate(lines):
