@@ -67,6 +67,8 @@ static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::download_lobby_data, N_("Downloading lobby data") },
 };
 
+namespace { int last_spin_ = 0; }
+
 namespace gui2::dialogs
 {
 REGISTER_DIALOG(loading_screen)
@@ -120,6 +122,17 @@ void loading_screen::progress(loading_stage stage)
 		// Allow display to update, close events to be handled, etc.
 		events::raise_draw_event();
 		events::pump();
+	}
+}
+
+void loading_screen::spin()
+{
+	// Restrict actual update rate.
+	int elapsed = SDL_GetTicks() - last_spin_;
+	if (singleton_ && (elapsed > 10 || elapsed < 0)) {
+		events::raise_draw_event();
+		events::pump();
+		last_spin_ = SDL_GetTicks();
 	}
 }
 
