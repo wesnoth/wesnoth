@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-01-09 01:05+0100\n"
+"PO-Revision-Date: 2022-05-09 22:32+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -44,7 +44,7 @@ msgstr "Formato Gzip"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Compressione predefinita (più veloce)"
+msgstr "Compressione predefinita, più veloce"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
@@ -54,12 +54,12 @@ msgstr "Formato Bzip2"
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "Compressione migliore (più lenta)"
+msgstr "Compressione migliore, più lenta"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "Nessuna compressione"
+msgstr "Nessuna"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -6153,6 +6153,10 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Errore: [advancefrom] non funziona più. Unità di livello ‘$lower_level’ non "
+"saranno in grado di avanzare al livello ‘$higher_level’; si prega di "
+"chiedere all’autore dell’estensione di utilizzare [modify_unit_type] al suo "
+"posto."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
