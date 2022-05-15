@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2019-01-26 18:06+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -2290,10 +2290,12 @@ msgstr ""
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
+#. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
+#: data/gui/window/mp_create_game.cfg:457
 #: data/gui/window/preferences/02_hotkeys.cfg:279
 #: data/gui/window/select_orb_colors.cfg:129
 msgid "Defaults"
@@ -2418,7 +2420,7 @@ msgid "Authenticate"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1019
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2586,7 +2588,7 @@ msgstr "Aktualizované:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:566
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:572
 msgid "No description available."
 msgstr "Nie je dostupný popis."
 
@@ -3261,7 +3263,7 @@ msgstr "Zvoľte generátor mapy:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:877
+#: data/gui/window/mp_create_game.cfg:906
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Settings"
 msgstr "Nastavenia"
@@ -3504,7 +3506,7 @@ msgstr "Dátum"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:898
+#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:927
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Load Game"
 msgstr "Načítaj hru"
@@ -3824,7 +3826,7 @@ msgstr "Nastavenia generátora mapy"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:683
+#: data/gui/window/mp_create_game.cfg:712
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:151
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -4473,130 +4475,130 @@ msgid "Randomize the starting time of day"
 msgstr "Začne v náhodnom čase dňa"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:434
+#: data/gui/window/mp_create_game.cfg:442
 msgid "Time Limit"
 msgstr "Časový limit"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:435
+#: data/gui/window/mp_create_game.cfg:443
 msgid "Enable custom time limits"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Initial Limit"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Turn Bonus"
 msgstr "Bonus za kolo"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Reservoir"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Action Bonus"
 msgstr "Bonus za akciu"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
+#: data/gui/window/mp_create_game.cfg:562 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
 msgid "General"
 msgstr "Všeobecné"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:546
+#: data/gui/window/mp_create_game.cfg:575
 msgid "Custom Options"
 msgstr "Vlastné možnosti"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:559
+#: data/gui/window/mp_create_game.cfg:588
 msgid "Game Settings"
 msgstr "Nastavenia hry"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:702
+#: data/gui/window/mp_create_game.cfg:731
 msgid "Any"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:835
+#: data/gui/window/mp_create_game.cfg:864
 msgid "Random map options: "
 msgstr "Náhodné možnosti mapy: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:856
+#: data/gui/window/mp_create_game.cfg:885
 msgid "Regenerate"
 msgstr "Pregenerovať"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Assign sides to players at random"
 msgstr "Prirať strany hráčom náhodne"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Shuffle Sides"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Observers"
 msgstr "Pozorovatelia"
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Strict Synchronization"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Private Replay"
 msgstr "Ulož záznam"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Whether the replay will be publicly available"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:986
 msgid "Name of game:"
 msgstr "Názov hry:"
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1033
 #, fuzzy
 #| msgid ""
 #| "Set the password that people wanting to join your game as players must "
@@ -5001,7 +5003,7 @@ msgstr "Klávesa"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:767
+#: src/gui/dialogs/preferences_dialog.cpp:808
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -5014,7 +5016,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:768
+#: src/gui/dialogs/preferences_dialog.cpp:809
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -5027,7 +5029,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:769
+#: src/gui/dialogs/preferences_dialog.cpp:810
 msgid "mainmenu_hotkeys^M"
 msgstr ""
 
@@ -5047,44 +5049,66 @@ msgid "Clear Hotkey"
 msgstr "Zmaž klávesu"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:20
+#: data/gui/window/preferences/03_display.cfg:22
 msgid "Resolution:"
 msgstr "Rozlíšenie:"
 
+#. [label]: id=help_text
+#: data/gui/window/preferences/03_display.cfg:46
+msgid "Pixel scale multiplier:"
+msgstr ""
+
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:32
+#: data/gui/window/preferences/03_display.cfg:80
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the game resolution"
 msgstr "Nastav frekvenciu"
 
+#. [slider]: id=pixel_scale_slider
+#: data/gui/window/preferences/03_display.cfg:94
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:48
+#: data/gui/window/preferences/03_display.cfg:109
 msgid "Full screen"
 msgstr "Celá obrazovka"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:49
+#: data/gui/window/preferences/03_display.cfg:110
 msgid "Toggle between fullscreen and window mode"
 msgstr ""
 
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:121
+msgid "Automatic pixel scale multiplier"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:122
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:68
+#: data/gui/window/preferences/03_display.cfg:144
 msgid "Show floating labels"
 msgstr "Ukázať pohyblivé nápisy"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:69
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Show damage and healing amounts above a unit"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:82
+#: data/gui/window/preferences/03_display.cfg:158
 msgid "Show team colors"
 msgstr "Tímové farby"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:83
+#: data/gui/window/preferences/03_display.cfg:159
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5093,104 +5117,104 @@ msgstr ""
 "strane patrí"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:98
+#: data/gui/window/preferences/03_display.cfg:174
 msgid "Show grid"
 msgstr "Ukázať mriežku"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:99
+#: data/gui/window/preferences/03_display.cfg:175
 #, fuzzy
 #| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:114
+#: data/gui/window/preferences/03_display.cfg:190
 msgid "Animate map"
 msgstr "Animovať mapu"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:115
+#: data/gui/window/preferences/03_display.cfg:191
 msgid "Display animated terrain graphics"
 msgstr "Zobraziť animovanú grafiku terénu"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:128
+#: data/gui/window/preferences/03_display.cfg:204
 #, fuzzy
 #| msgid "Animate map"
 msgid "Animate water"
 msgstr "Animovať mapu"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:129
+#: data/gui/window/preferences/03_display.cfg:205
 #, fuzzy
 #| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
 msgstr "Zobraziť animovanú grafiku terénu"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:142
+#: data/gui/window/preferences/03_display.cfg:218
 msgid "Show unit standing animations"
 msgstr "Zobrazovať animácie nečinných jednotiek"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:143
+#: data/gui/window/preferences/03_display.cfg:219
 #, fuzzy
 #| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Nepretržite animovať stojace jednotky na bojisku"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:161
+#: data/gui/window/preferences/03_display.cfg:237
 msgid "Show unit idle animations"
 msgstr "Animovať nečinné jednotky"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:162
+#: data/gui/window/preferences/03_display.cfg:238
 msgid "Play short random animations for idle units"
 msgstr "Prehrať náhodnú krátku animáciu pre nečinné jednotky"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:185
+#: data/gui/window/preferences/03_display.cfg:261
 msgid "Frequency:"
 msgstr "Frekvencia:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:201
+#: data/gui/window/preferences/03_display.cfg:277
 msgid "Set the frequency of unit idle animations"
 msgstr "Nastav frekvenciu animácie nečinných jednotiek"
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:351
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:288
+#: data/gui/window/preferences/03_display.cfg:364
 msgid "Limit FPS"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:365
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:304
+#: data/gui/window/preferences/03_display.cfg:380
 msgid "Theme"
 msgstr "Téma"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:305
+#: data/gui/window/preferences/03_display.cfg:381
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the in-game theme"
@@ -5826,7 +5850,7 @@ msgstr "Verbuj"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Chyba"
@@ -5838,23 +5862,23 @@ msgstr "Chyba"
 msgid "Details:"
 msgstr "Detaily:"
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:273
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:279
+#: src/build_info.cpp:280
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:295
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:332 src/desktop/version.cpp:126
+#: src/build_info.cpp:333 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -6061,10 +6085,10 @@ msgstr "Prepojená '$id' skupina má viac definícií."
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:127
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
-#: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
-#: src/gui/widgets/toggle_panel.cpp:326 src/gui/widgets/tree_view.cpp:280
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:322 src/gui/widgets/tree_view.cpp:283
 #: src/gui/widgets/unit_preview_pane.cpp:609
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
@@ -6965,28 +6989,28 @@ msgstr ""
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:512
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:518
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:714
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:720
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:831
 msgid "The selected game has no sides!"
 msgstr ""
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
@@ -7029,35 +7053,35 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:161
 msgid "friend"
 msgstr "priateľ"
 
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr "ignorovaný"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 msgid "Invalid username"
 msgstr "Neplatné používateľské meno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:282
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Zobraziť a meniť zoznam priateľov a ignorovaných hráčov"
 
-#: src/gui/dialogs/preferences_dialog.cpp:803
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:844
+#: src/gui/dialogs/preferences_dialog.cpp:914
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:834
+#: src/gui/dialogs/preferences_dialog.cpp:875
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -7069,15 +7093,15 @@ msgstr ""
 "\"$hotkey_sequence|\" je používaná \"$old_hotkey_action|\". Chceš ju "
 "predefinovať na \"$new_hotkey_action|\"?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Reassign Hotkey"
 msgstr "Predefinovať klávesovú skratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všetky klávesové skratky boli nastavené na štandardné hodnoty."
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "Hotkeys Reset"
 msgstr "Zrušiť klávesové skratky"
 
@@ -7247,7 +7271,7 @@ msgstr ""
 "Šepkanie s hráčom <i>\"$name\"</i> spustené. Ak nechceš ďalej dostávať "
 "správy od tohto hráča, napíš <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:98
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
@@ -7263,22 +7287,22 @@ msgstr ""
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:222
+#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musí mať rovnaký počet stĺpcov ako 'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/listbox.cpp:873 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:836
-#: src/gui/widgets/listbox.cpp:878
+#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:880
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' musí obsahovať jeden riadok."
 
-#: src/gui/widgets/multi_page.cpp:198
+#: src/gui/widgets/multi_page.cpp:197
 msgid "No page defined."
 msgstr "Nebola definovaná žiadna stránka."
 
@@ -7301,15 +7325,15 @@ msgstr[2] ""
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:382
+#: src/gui/widgets/pane.cpp:373
 msgid "Need at least 1 parallel item."
 msgstr "Vyžaduje sa aspoň jeden súbežný predmet."
 
-#: src/gui/widgets/size_lock.cpp:87
+#: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
 msgstr "Neplatná veľkosť."
 
-#: src/gui/widgets/size_lock.cpp:122
+#: src/gui/widgets/size_lock.cpp:124
 #, fuzzy
 #| msgid "No list defined."
 msgid "No widget defined."
@@ -7319,25 +7343,25 @@ msgstr "Nebol definovaný žiadny zoznam."
 msgid "The number of value_labels and values don't match."
 msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 
-#: src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/stacked_widget.cpp:243
 #, fuzzy
 #| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Nebol definovaný žiadny zásobník."
 
-#: src/gui/widgets/styled_widget.cpp:608
+#: src/gui/widgets/styled_widget.cpp:601
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Našiel sa objekt s pomôckou bez tipu pod myšou."
 
-#: src/gui/widgets/tree_view.cpp:300
+#: src/gui/widgets/tree_view.cpp:303
 msgid "No nodes defined for a tree view."
 msgstr "Neboli definované žiadne uzly pre stromový pohľad."
 
-#: src/gui/widgets/tree_view.cpp:335
+#: src/gui/widgets/tree_view.cpp:338
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]id 'root' je rezervovaný pre implementáciu."
 
-#: src/gui/widgets/tree_view.cpp:339
+#: src/gui/widgets/tree_view.cpp:342
 msgid "No node defined."
 msgstr "Nebol definovaný žiadny uzol."
 
@@ -8265,11 +8289,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:874
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:883
+#: src/preferences/game.cpp:876
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

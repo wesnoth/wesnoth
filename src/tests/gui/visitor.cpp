@@ -47,7 +47,7 @@ static void test_control(T&& control)
 {
 	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
-	const std::unique_ptr<gui2::iteration::walker_base> visitor(control.create_walker());
+	const auto visitor = control.create_walker();
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
 
@@ -100,7 +100,7 @@ static void test_grid()
 	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
 	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
 
-	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
+	const auto visitor = grid.create_walker();
 
 	/***** LABEL 1,1 *****/
 

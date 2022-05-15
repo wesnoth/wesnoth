@@ -19,10 +19,7 @@
 
 #include "gui/widgets/grid.hpp"
 
-namespace gui2
-{
-
-namespace iteration
+namespace gui2::iteration
 {
 
 /** A walker for a @ref gui2::grid. */
@@ -66,6 +63,4 @@ private:
 	gui2::grid::iterator itor_;
 };
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration

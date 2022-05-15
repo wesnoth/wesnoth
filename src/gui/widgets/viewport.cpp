@@ -17,6 +17,7 @@
 
 #include "gui/widgets/viewport.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "config.hpp"
 #include "utils/const_clone.hpp"
@@ -163,7 +164,7 @@ bool viewport::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* viewport::create_walker()
+iteration::walker_ptr viewport::create_walker()
 {
 	/**
 	 * @todo Implement properly.

@@ -78,12 +78,8 @@ inline void animated<T>::start_animation(int start_time, bool cycles)
 	started_ = true;
 	last_update_tick_ = get_current_animation_tick();
 	acceleration_ = 1.0; // assume acceleration is 1, this will be fixed at first update_last_draw_time
-	start_tick_ = last_update_tick_ + static_cast<int>((starting_frame_time_ - start_time) / acceleration_);
-
+	start_tick_ = last_update_tick_ + (starting_frame_time_ - start_time);
 	cycles_ = cycles;
-	if(acceleration_ <= 0) {
-		acceleration_ = 1;
-	}
 	current_frame_key_ = 0;
 	force_next_update_ = !frames_.empty();
 }
@@ -129,8 +125,9 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 		}
 	}
 
-	if(get_current_frame_end_time() < get_animation_time() && // catch up
-			get_current_frame_end_time() < get_end_time()) {  // don't go after the end
+	const int current_frame_end_time = get_current_frame_end_time();
+	// catch up && don't go after the end
+	if(current_frame_end_time < get_animation_time() && current_frame_end_time < get_end_time()) {
 		current_frame_key_++;
 	}
 }
@@ -223,7 +220,7 @@ inline int animated<T>::get_animation_time() const
 	}
 
 	int time = tick_to_time(last_update_tick_);
-	if (time > max_animation_time_ && max_animation_time_ > 0) {
+	if(time > max_animation_time_ && max_animation_time_ > 0) {
 		return max_animation_time_;
 	}
 	return time;
@@ -386,8 +383,8 @@ template<typename T>
 inline void animated<T>::set_end_time(int new_ending_time)
 {
 	int last_start_time = starting_frame_time_;
-	typename std::vector<frame>::iterator current_frame = frames_.begin();
-	while(last_start_time < new_ending_time && current_frame != frames_.end()) {
+	auto current_frame = frames_.cbegin();
+	while(last_start_time < new_ending_time && current_frame != frames_.cend()) {
 		last_start_time += current_frame->duration_;
 		++current_frame;
 	}

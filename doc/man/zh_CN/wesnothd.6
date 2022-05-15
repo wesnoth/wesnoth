@@ -156,8 +156,8 @@ filename.pem 4096\fP
 .SS 全局标签：
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP
+这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。如果没有设置\fBversions_accepted\fP，那么此标签无效。
 .RS
 .TP 
 \fBhost\fP
@@ -186,12 +186,8 @@ to. Is not used if \fBversions_accepted\fP is not set.
 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP
+配置用户数据处理器。如果配置中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。\fBforum_user_handler\fP正常运作所需的额外数据表可以在韦诺源代码库的table_definitions.sql中找到。需要启用mysql支持。对于cmake，请使用\fBENABLE_MYSQL\fP，而对于scons，请使用\fBforum_user_handler\fP。
 .RS
 .TP 
 \fBdb_host\fP
