@@ -23,16 +23,7 @@
 #include <iostream>
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace policy
-{
-
-namespace order
+namespace gui2::iteration::policy::order
 {
 
 template <bool VW, bool VG, bool VC>
@@ -331,10 +322,4 @@ private:
 	std::vector<iteration::walker_ptr> stack_;
 };
 
-} // namespace order
-
-} // namespace policy
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::policy::order

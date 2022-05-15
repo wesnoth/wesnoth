@@ -19,10 +19,7 @@
 
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
+namespace gui2::iteration
 {
 
 tree_node::tree_node(gui2::tree_view_node& node, tree_view_node::node_children_vector& children)
@@ -91,6 +88,4 @@ gui2::widget* tree_node::get(const level level)
 	return nullptr;
 }
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration

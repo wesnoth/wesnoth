@@ -19,12 +19,7 @@
 
 #include "gui/widgets/tree_view_node.hpp"
 
-namespace gui2
-{
-
-class tree_view_node;
-
-namespace iteration
+namespace gui2::iteration
 {
 
 /** A walker for a @ref gui2::tree_view_node. */
@@ -69,6 +64,4 @@ private:
 	tree_view_node::node_children_vector::iterator itor_;
 };
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration
