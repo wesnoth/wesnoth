@@ -173,7 +173,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	node_children_vector& children()
 	{

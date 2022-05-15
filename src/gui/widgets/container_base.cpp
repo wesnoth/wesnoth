@@ -17,6 +17,7 @@
 
 #include "gui/widgets/container_base.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -259,6 +260,11 @@ void container_base::set_active(const bool active)
 bool container_base::disable_click_dismiss() const
 {
 	return styled_widget::disable_click_dismiss() && grid_.disable_click_dismiss();
+}
+
+iteration::walker_ptr container_base::create_walker()
+{
+	return nullptr;
 }
 
 void container_base::init_grid(const builder_grid& grid_builder)
