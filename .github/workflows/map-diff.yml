@@ -30,8 +30,8 @@ jobs:
         cd ./utils/wesnoth-map-diff
 
         ## Get maps changed
-        git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
-        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.base.sha }} | grep '\.map$')
+        git fetch --depth=1 origin ${{ github.event.pull_request.head.sha }}
+        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.head.sha }} | grep '\.map$')
 
         for map_path in "${map_paths[@]}"
         do
