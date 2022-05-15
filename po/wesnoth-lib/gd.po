@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2245,10 +2245,12 @@ msgstr ""
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
+#. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
+#: data/gui/window/mp_create_game.cfg:457
 #: data/gui/window/preferences/02_hotkeys.cfg:279
 #: data/gui/window/select_orb_colors.cfg:129
 msgid "Defaults"
@@ -2371,7 +2373,7 @@ msgid "Authenticate"
 msgstr "Dearbh"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1019
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2541,7 +2543,7 @@ msgstr "Air ùrachadh:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:566
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:572
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
@@ -3203,7 +3205,7 @@ msgstr "Tagh gineadair mapa:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:877
+#: data/gui/window/mp_create_game.cfg:906
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Settings"
 msgstr "Roghainnean"
@@ -3453,7 +3455,7 @@ msgstr "Ceann-latha"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:898
+#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:927
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Load Game"
 msgstr "Luchdaich geama"
@@ -3782,7 +3784,7 @@ msgstr "Roghainnean gineadair mapa"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:683
+#: data/gui/window/mp_create_game.cfg:712
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:151
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -4406,128 +4408,128 @@ msgid "Randomize the starting time of day"
 msgstr "Tòisich le àm dhen latha air thuaiream"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:434
+#: data/gui/window/mp_create_game.cfg:442
 msgid "Time Limit"
 msgstr "Crìoch-ama"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:435
+#: data/gui/window/mp_create_game.cfg:443
 msgid "Enable custom time limits"
 msgstr "Cuir an comas crìochan-ama gnàthaichte"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Initial Limit"
 msgstr "Crìoch tòiseachaidh"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "An ùine as fhaide ceadaichte airson a’ chiad cuairte (diogan)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Time for general tasks each turn (seconds)"
 msgstr "An ùine airson saothair choitcheann gach cuairt (diogan)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Turn Bonus"
 msgstr "Duais cuairte"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Longest time possible for any turn (seconds)"
 msgstr "An ùine as fhaide a tha ceadaichte airson cuairte sam bith (diogan)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Reservoir"
 msgstr "Tasgadh"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Action Bonus"
 msgstr "Duais gnìomha"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Time for each attack, recruit, and capture"
 msgstr "Ùine airson gach ionnsaigh, trusadh, is glacadh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
+#: data/gui/window/mp_create_game.cfg:562 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
 msgid "General"
 msgstr "Coitcheann"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:546
+#: data/gui/window/mp_create_game.cfg:575
 msgid "Custom Options"
 msgstr "Gnàthaichte"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:559
+#: data/gui/window/mp_create_game.cfg:588
 msgid "Game Settings"
 msgstr "An geama"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:702
+#: data/gui/window/mp_create_game.cfg:731
 msgid "Any"
 msgstr "Sam bith"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:835
+#: data/gui/window/mp_create_game.cfg:864
 msgid "Random map options: "
 msgstr "Roghainnean tuaireamach: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:856
+#: data/gui/window/mp_create_game.cfg:885
 msgid "Regenerate"
 msgstr "Ath-ghin"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Assign sides to players at random"
 msgstr "Ainmich taobh nan cluicheadairean air thuaiream"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Shuffle Sides"
 msgstr "Measgaich na taobhan"
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Allow users who are not playing to watch the game"
 msgstr "Leig le cleachdaichean nach eil a’ cluiche coimhead air a’ gheama"
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Observers"
 msgstr "Amhairc"
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Strict Synchronization"
 msgstr "Sioncronachadh teann"
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Stricter checks for out-of-sync errors"
 msgstr "Dearbhadh nas teinne a thaobh mearachdan call sioncronachaidh"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Private Replay"
 msgstr "Ath-chluiche phrìobhaideach"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Whether the replay will be publicly available"
 msgstr "Co-dhiù am bi ath-chluiche ri faighinn gu poblach gus nach bi"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:986
 msgid "Name of game:"
 msgstr "Ainm a’ gheama:"
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1033
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
@@ -4922,7 +4924,7 @@ msgstr "Grad-iuchraichean"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:767
+#: src/gui/dialogs/preferences_dialog.cpp:808
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4935,7 +4937,7 @@ msgstr "Ri fhaighinn sa gheama"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:768
+#: src/gui/dialogs/preferences_dialog.cpp:809
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4948,7 +4950,7 @@ msgstr "Ri fhaighinn san deasaiche"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:769
+#: src/gui/dialogs/preferences_dialog.cpp:810
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -4968,42 +4970,64 @@ msgid "Clear Hotkey"
 msgstr "Falamhaich a’ ghrad-iuchair"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:20
+#: data/gui/window/preferences/03_display.cfg:22
 msgid "Resolution:"
 msgstr "Dùmhlachd-bhreacaidh:"
 
+#. [label]: id=help_text
+#: data/gui/window/preferences/03_display.cfg:46
+msgid "Pixel scale multiplier:"
+msgstr ""
+
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:32
+#: data/gui/window/preferences/03_display.cfg:80
 msgid "Change the game resolution"
 msgstr "Atharraich dùmhlachd-bhreacaidh a’ gheama"
 
+#. [slider]: id=pixel_scale_slider
+#: data/gui/window/preferences/03_display.cfg:94
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:48
+#: data/gui/window/preferences/03_display.cfg:109
 msgid "Full screen"
 msgstr "Làn-sgrìn"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:49
+#: data/gui/window/preferences/03_display.cfg:110
 msgid "Toggle between fullscreen and window mode"
 msgstr "Thoir leum eadar modh làn-sgrìn ’s uinneige"
 
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:121
+msgid "Automatic pixel scale multiplier"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:122
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:68
+#: data/gui/window/preferences/03_display.cfg:144
 msgid "Show floating labels"
 msgstr "Seall leubailean fleòdragain"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:69
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Show damage and healing amounts above a unit"
 msgstr "Seall an uiread dhe dhochann is slànachadh os cionn aonad"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:82
+#: data/gui/window/preferences/03_display.cfg:158
 msgid "Show team colors"
 msgstr "Seall dathan an sgioba"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:83
+#: data/gui/window/preferences/03_display.cfg:159
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5012,86 +5036,86 @@ msgstr ""
 "shealltainn"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:98
+#: data/gui/window/preferences/03_display.cfg:174
 msgid "Show grid"
 msgstr "Seall griod"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:99
+#: data/gui/window/preferences/03_display.cfg:175
 msgid "Overlay a grid over the map"
 msgstr "Tar-chòmhdaich griod air a’ mhapa"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:114
+#: data/gui/window/preferences/03_display.cfg:190
 msgid "Animate map"
 msgstr "Beòthaich mapa"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:115
+#: data/gui/window/preferences/03_display.cfg:191
 msgid "Display animated terrain graphics"
 msgstr "Seall grafaigeachd le beòthachadh airson crutha-thìre"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:128
+#: data/gui/window/preferences/03_display.cfg:204
 msgid "Animate water"
 msgstr "Beòthaich uisge"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:129
+#: data/gui/window/preferences/03_display.cfg:205
 msgid "Display animated water graphics (can be slow)"
 msgstr ""
 "Seall grafaigeachd le beòthachadh airson uisge (faodaidh e maille a chur air "
 "a’ gheama)"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:142
+#: data/gui/window/preferences/03_display.cfg:218
 msgid "Show unit standing animations"
 msgstr "Seall beòthachadh seasaimh nan aonadan"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:143
+#: data/gui/window/preferences/03_display.cfg:219
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Seall beòthachadh gun sgur airson aonadan ’nan seasamh air a’ bhlàr"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:161
+#: data/gui/window/preferences/03_display.cfg:237
 msgid "Show unit idle animations"
 msgstr "Seall beòthachadh nan aonadan air tàmh"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:162
+#: data/gui/window/preferences/03_display.cfg:238
 msgid "Play short random animations for idle units"
 msgstr "Cluich beòthachadh goirid air thuaiream airson aonadan nach dèan dad"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:185
+#: data/gui/window/preferences/03_display.cfg:261
 msgid "Frequency:"
 msgstr "Tricead:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:201
+#: data/gui/window/preferences/03_display.cfg:277
 msgid "Set the frequency of unit idle animations"
 msgstr "Tag an tricead aig beòthachadh nan aonadan nach dèan dad"
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:351
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:288
+#: data/gui/window/preferences/03_display.cfg:364
 msgid "Limit FPS"
 msgstr "Cuingich na FPS"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:365
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
@@ -5101,12 +5125,12 @@ msgstr ""
 "thòiseachadh gus a chur an sàs)"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:304
+#: data/gui/window/preferences/03_display.cfg:380
 msgid "Theme"
 msgstr "Ùrlar"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:305
+#: data/gui/window/preferences/03_display.cfg:381
 msgid "Change the in-game theme"
 msgstr "Atharraich ùrlar a’ gheama"
 
@@ -5743,7 +5767,7 @@ msgstr "Trus"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Mearachd"
@@ -5755,23 +5779,23 @@ msgstr "Mearachd"
 msgid "Details:"
 msgstr "Fiosrachadh: "
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:273
 msgid "feature^Lua console completion"
 msgstr "Coileanadh consoil Lua"
 
-#: src/build_info.cpp:279
+#: src/build_info.cpp:280
 msgid "feature^D-Bus notifications back end"
 msgstr "Backend nam brathan D-Bus"
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^Win32 notifications back end"
 msgstr "Backend nam brathan Win32"
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:295
 msgid "feature^Cocoa notifications back end"
 msgstr "Backend nam brathan Cocoa"
 
-#: src/build_info.cpp:332 src/desktop/version.cpp:126
+#: src/build_info.cpp:333 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr "<chan eil fhios>"
 
@@ -6010,10 +6034,10 @@ msgstr "Tha iomadh mìneachadh aig a’ bhuidheann ceangailte “$id|.”"
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:127
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
-#: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
-#: src/gui/widgets/toggle_panel.cpp:326 src/gui/widgets/tree_view.cpp:280
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:322 src/gui/widgets/tree_view.cpp:283
 #: src/gui/widgets/unit_preview_pane.cpp:609
 msgid "No grid defined."
 msgstr "Cha deach griod a mhìneachadh."
@@ -6942,28 +6966,28 @@ msgstr ""
 "Gun sgàthan nan caidreabhach: Chan fhaigh dà chluicheadair caidreabhach an "
 "aon bhuidheann"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:512
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:518
 msgid "No eras available for this game."
 msgstr "Chan eil linn ri fhaighinn airson a’ gheama seo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:714
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:720
 msgid "number of players^$min to $max"
 msgstr "$min gu $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:831
 msgid "The selected game has no sides!"
 msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game cannot be created."
 msgstr "Cha ghabh an geama a thagh thu a chruthachadh."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Choose Starting Scenario"
 msgstr "Tagh an cnàmh-sgeul tòiseachaidh"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Select at which point to begin this campaign."
 msgstr "Tagh càit an tòisich an iomairt seo."
 
@@ -7000,33 +7024,33 @@ msgstr "A’ feitheamh gus an tagh na cluicheadairean na buidhnean…"
 msgid "The End"
 msgstr "A’ Chrìoch"
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:161
 msgid "friend"
 msgstr "caraid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr "neo-shuim"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr "Cha deach ainm-cleachdaiche a shònrachadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 msgid "Invalid username"
 msgstr "Ainm cleachdaiche mì-dhligheach"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:282
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:803
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:844
+#: src/gui/dialogs/preferences_dialog.cpp:914
 msgid "No hotkey selected"
 msgstr "Cha deach grad-iuchair a thaghadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:834
+#: src/gui/dialogs/preferences_dialog.cpp:875
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7035,16 +7059,16 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach bhunaiteach."
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 
@@ -7216,7 +7240,7 @@ msgstr ""
 "eil thu airson teachdaireachdan fhaighinn on chluicheadair seo, sgrìobh <i>/"
 "ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:98
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Cha deach am widget “$id” riatanach a mhìneachadh."
 
@@ -7233,24 +7257,24 @@ msgstr "Am fosgail thu an ceangal?"
 msgid "Copied link!"
 msgstr "Chaidh lethbhreac dhen cheangal a dhèanamh!"
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:222
+#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Feumaidh an aon àireamh dhe chuilbh a bhith aig “list_data” ’s a tha aig an "
 "“list_definition.”"
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/listbox.cpp:873 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Cha deach liosta a mhìneachadh."
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:836
-#: src/gui/widgets/listbox.cpp:878
+#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:880
 msgid "A 'list_definition' should contain one row."
 msgstr "Bu chòir do ràgh a bhith ann an “list_definition.”"
 
-#: src/gui/widgets/multi_page.cpp:198
+#: src/gui/widgets/multi_page.cpp:197
 msgid "No page defined."
 msgstr "Cha deach duilleag a mhìneachadh."
 
@@ -7274,15 +7298,15 @@ msgstr[3] "$excess eile"
 msgid "multimenu^None Selected"
 msgstr "Gun taghadh"
 
-#: src/gui/widgets/pane.cpp:382
+#: src/gui/widgets/pane.cpp:373
 msgid "Need at least 1 parallel item."
 msgstr "Tha feum air co-dhiù 1 nì co-shìnte."
 
-#: src/gui/widgets/size_lock.cpp:87
+#: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
 msgstr "Meud mì-dhligheach."
 
-#: src/gui/widgets/size_lock.cpp:122
+#: src/gui/widgets/size_lock.cpp:124
 msgid "No widget defined."
 msgstr "Cha deach widget a mhìneachadh."
 
@@ -7290,23 +7314,23 @@ msgstr "Cha deach widget a mhìneachadh."
 msgid "The number of value_labels and values don't match."
 msgstr "Cha cho-fhreagair an àireamh dhe value_labels is luachan."
 
-#: src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/stacked_widget.cpp:243
 msgid "No stack layers defined."
 msgstr "Cha deach stac bhreathan a mhìneachadh."
 
-#: src/gui/widgets/styled_widget.cpp:608
+#: src/gui/widgets/styled_widget.cpp:601
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Chaidh widget le gliocas-cobharach ach às aonais gliocas-sgrìn a lorg."
 
-#: src/gui/widgets/tree_view.cpp:300
+#: src/gui/widgets/tree_view.cpp:303
 msgid "No nodes defined for a tree view."
 msgstr "Cha deach nòdan a mhìneachadh airson sealladh craoibhe."
 
-#: src/gui/widgets/tree_view.cpp:335
+#: src/gui/widgets/tree_view.cpp:338
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "Tha [node]id “root” glèidhte airson an toirt gu buil."
 
-#: src/gui/widgets/tree_view.cpp:339
+#: src/gui/widgets/tree_view.cpp:342
 msgid "No node defined."
 msgstr "Cha deach nòd a mhìneachadh."
 
@@ -8219,11 +8243,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Lorg aplacaid frihealaiche"
 
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:874
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:883
+#: src/preferences/game.cpp:876
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

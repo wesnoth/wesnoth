@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2022-03-16 17:03+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
@@ -2158,10 +2158,12 @@ msgstr ""
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
+#. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
+#: data/gui/window/mp_create_game.cfg:457
 #: data/gui/window/preferences/02_hotkeys.cfg:279
 #: data/gui/window/select_orb_colors.cfg:129
 #, fuzzy
@@ -2287,7 +2289,7 @@ msgid "Authenticate"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1019
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2457,7 +2459,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:566
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:572
 msgid "No description available."
 msgstr ""
 
@@ -3167,7 +3169,7 @@ msgstr "Генератор на карти"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:877
+#: data/gui/window/mp_create_game.cfg:906
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
 msgid "Settings"
@@ -3431,7 +3433,7 @@ msgstr "Поставяне"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:898
+#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:927
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Load Game"
 msgstr "Зареждане"
@@ -3774,7 +3776,7 @@ msgstr "Настройки на генераторът"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:683
+#: data/gui/window/mp_create_game.cfg:712
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:151
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -4449,61 +4451,61 @@ msgid "Randomize the starting time of day"
 msgstr ""
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:434
+#: data/gui/window/mp_create_game.cfg:442
 msgid "Time Limit"
 msgstr ""
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:435
+#: data/gui/window/mp_create_game.cfg:443
 msgid "Enable custom time limits"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Initial Limit"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 #, fuzzy
 msgid "Turn Bonus"
 msgstr "Край на хода"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Reservoir"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 #, fuzzy
 msgid "Action Bonus"
 msgstr "Действие"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
+#: data/gui/window/mp_create_game.cfg:562 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
 #, fuzzy
@@ -4511,73 +4513,73 @@ msgid "General"
 msgstr "Генериране на нова карта"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:546
+#: data/gui/window/mp_create_game.cfg:575
 #, fuzzy
 msgid "Custom Options"
 msgstr "Действие"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:559
+#: data/gui/window/mp_create_game.cfg:588
 #, fuzzy
 msgid "Game Settings"
 msgstr "Настройка на горещите клавиши"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:702
+#: data/gui/window/mp_create_game.cfg:731
 msgid "Any"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:835
+#: data/gui/window/mp_create_game.cfg:864
 msgid "Random map options: "
 msgstr ""
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:856
+#: data/gui/window/mp_create_game.cfg:885
 #, fuzzy
 msgid "Regenerate"
 msgstr "Генериране на нова карта"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Assign sides to players at random"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Shuffle Sides"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Observers"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Strict Synchronization"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 #, fuzzy
 msgid "Private Replay"
 msgstr "Запис"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Whether the replay will be publicly available"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:986
 msgid "Name of game:"
 msgstr ""
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1033
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
@@ -4978,7 +4980,7 @@ msgstr "Горещи клавиши"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:767
+#: src/gui/dialogs/preferences_dialog.cpp:808
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -4991,7 +4993,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:768
+#: src/gui/dialogs/preferences_dialog.cpp:809
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -5004,7 +5006,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:769
+#: src/gui/dialogs/preferences_dialog.cpp:810
 msgid "mainmenu_hotkeys^M"
 msgstr ""
 
@@ -5027,46 +5029,68 @@ msgid "Clear Hotkey"
 msgstr "Смяна на горещия клавиш"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:20
+#: data/gui/window/preferences/03_display.cfg:22
 #, fuzzy
 msgid "Resolution:"
 msgstr "Избор на резолюция"
 
+#. [label]: id=help_text
+#: data/gui/window/preferences/03_display.cfg:46
+msgid "Pixel scale multiplier:"
+msgstr ""
+
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:32
+#: data/gui/window/preferences/03_display.cfg:80
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the game resolution"
 msgstr "Настройка на честота на дискретизация "
 
+#. [slider]: id=pixel_scale_slider
+#: data/gui/window/preferences/03_display.cfg:94
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:48
+#: data/gui/window/preferences/03_display.cfg:109
 #, fuzzy
 msgid "Full screen"
 msgstr "Цял екран"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:49
+#: data/gui/window/preferences/03_display.cfg:110
 msgid "Toggle between fullscreen and window mode"
 msgstr ""
 
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:121
+msgid "Automatic pixel scale multiplier"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:122
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:68
+#: data/gui/window/preferences/03_display.cfg:144
 msgid "Show floating labels"
 msgstr "Показване на летящи надписи"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:69
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Show damage and healing amounts above a unit"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:82
+#: data/gui/window/preferences/03_display.cfg:158
 msgid "Show team colors"
 msgstr "Показване цветовете на отборите"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:83
+#: data/gui/window/preferences/03_display.cfg:159
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5075,102 +5099,102 @@ msgstr ""
 "страна е"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:98
+#: data/gui/window/preferences/03_display.cfg:174
 msgid "Show grid"
 msgstr "Мрежа"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:99
+#: data/gui/window/preferences/03_display.cfg:175
 #, fuzzy
 #| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Покриване картата с координатна мрежа"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:114
+#: data/gui/window/preferences/03_display.cfg:190
 #, fuzzy
 msgid "Animate map"
 msgstr "Генериране на нова карта"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:115
+#: data/gui/window/preferences/03_display.cfg:191
 msgid "Display animated terrain graphics"
 msgstr ""
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:128
+#: data/gui/window/preferences/03_display.cfg:204
 #, fuzzy
 msgid "Animate water"
 msgstr "Генериране на нова карта"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:129
+#: data/gui/window/preferences/03_display.cfg:205
 msgid "Display animated water graphics (can be slow)"
 msgstr ""
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:142
+#: data/gui/window/preferences/03_display.cfg:218
 #, fuzzy
 msgid "Show unit standing animations"
 msgstr "Прескачане на анимацията"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:143
+#: data/gui/window/preferences/03_display.cfg:219
 msgid "Continuously animate standing units on the battlefield"
 msgstr ""
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:161
+#: data/gui/window/preferences/03_display.cfg:237
 #, fuzzy
 msgid "Show unit idle animations"
 msgstr "Прескачане на анимацията"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:162
+#: data/gui/window/preferences/03_display.cfg:238
 msgid "Play short random animations for idle units"
 msgstr ""
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:185
+#: data/gui/window/preferences/03_display.cfg:261
 msgid "Frequency:"
 msgstr ""
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:201
+#: data/gui/window/preferences/03_display.cfg:277
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:351
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:288
+#: data/gui/window/preferences/03_display.cfg:364
 msgid "Limit FPS"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:365
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:304
+#: data/gui/window/preferences/03_display.cfg:380
 msgid "Theme"
 msgstr "Тема"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:305
+#: data/gui/window/preferences/03_display.cfg:381
 #, fuzzy
 #| msgid "Change the sample rate"
 msgid "Change the in-game theme"
@@ -5819,7 +5843,7 @@ msgstr "Набор"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Грешка"
@@ -5831,23 +5855,23 @@ msgstr "Грешка"
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:273
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:279
+#: src/build_info.cpp:280
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:295
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:332 src/desktop/version.cpp:126
+#: src/build_info.cpp:333 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -6048,10 +6072,10 @@ msgstr ""
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:127
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
-#: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
-#: src/gui/widgets/toggle_panel.cpp:326 src/gui/widgets/tree_view.cpp:280
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:322 src/gui/widgets/tree_view.cpp:283
 #: src/gui/widgets/unit_preview_pane.cpp:609
 msgid "No grid defined."
 msgstr ""
@@ -6970,28 +6994,28 @@ msgstr ""
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:512
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:518
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:714
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:720
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:831
 msgid "The selected game has no sides!"
 msgstr ""
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 msgid "The selected game cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
@@ -7030,53 +7054,53 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:161
 #, fuzzy
 msgid "friend"
 msgstr "Списък с приятели"
 
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #, fuzzy
 msgid "Invalid username"
 msgstr "Добавяне на потребител"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:282
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Преглед и редакция на списъка с приятелите и черният списък"
 
-#: src/gui/dialogs/preferences_dialog.cpp:803
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:844
+#: src/gui/dialogs/preferences_dialog.cpp:914
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:834
+#: src/gui/dialogs/preferences_dialog.cpp:875
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:881
 #, fuzzy
 #| msgid "Save Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Запис"
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
@@ -7250,7 +7274,7 @@ msgid ""
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:98
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
@@ -7266,23 +7290,23 @@ msgstr ""
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:222
+#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/listbox.cpp:873 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
 #, fuzzy
 msgid "No list defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:836
-#: src/gui/widgets/listbox.cpp:878
+#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:880
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:198
+#: src/gui/widgets/multi_page.cpp:197
 #, fuzzy
 msgid "No page defined."
 msgstr "Създаването на картата се провали."
@@ -7305,16 +7329,16 @@ msgstr[1] ""
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:382
+#: src/gui/widgets/pane.cpp:373
 msgid "Need at least 1 parallel item."
 msgstr ""
 
-#: src/gui/widgets/size_lock.cpp:87
+#: src/gui/widgets/size_lock.cpp:89
 #, fuzzy
 msgid "Invalid size."
 msgstr "Добавяне на потребител"
 
-#: src/gui/widgets/size_lock.cpp:122
+#: src/gui/widgets/size_lock.cpp:124
 #, fuzzy
 msgid "No widget defined."
 msgstr "Създаването на картата се провали."
@@ -7323,24 +7347,24 @@ msgstr "Създаването на картата се провали."
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/stacked_widget.cpp:243
 #, fuzzy
 msgid "No stack layers defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/styled_widget.cpp:608
+#: src/gui/widgets/styled_widget.cpp:601
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:300
+#: src/gui/widgets/tree_view.cpp:303
 msgid "No nodes defined for a tree view."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:335
+#: src/gui/widgets/tree_view.cpp:338
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:339
+#: src/gui/widgets/tree_view.cpp:342
 #, fuzzy
 msgid "No node defined."
 msgstr "Създаването на картата се провали."
@@ -8360,11 +8384,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:874
 msgid "[%H:%M]"
 msgstr ""
 
-#: src/preferences/game.cpp:883
+#: src/preferences/game.cpp:876
 msgid "[%I:%M %p]"
 msgstr ""
 
