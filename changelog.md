@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * S1: Fixed campfire not having a sound (issue #5766)
  ### Editor
  ### Multiplayer
  ### Lua API
