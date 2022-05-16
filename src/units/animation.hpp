@@ -23,7 +23,6 @@
 #include "units/ptr.hpp"
 #include "units/strike_result.hpp"
 
-class display;
 class unit;
 
 class unit_animation
@@ -37,7 +36,7 @@ public:
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const display& disp, const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "",
+	int matches(const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "",
 		const int value = 0, strike_result::type hit = strike_result::type::invalid, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr,
 		int value2 = 0) const;
 

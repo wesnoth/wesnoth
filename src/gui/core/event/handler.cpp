@@ -458,7 +458,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize({event.window.data1, event.window.data2});
+					video_resize(point(video.get_width(), video.get_height()));
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -479,7 +479,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
 							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
 			}
@@ -487,21 +487,21 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERUP:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
 									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
 			}
@@ -598,7 +598,7 @@ void sdl_event_handler::draw()
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo::get_singleton().flip();
+		CVideo::get_singleton().render_screen();
 	}
 }
 

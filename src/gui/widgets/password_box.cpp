@@ -121,9 +121,9 @@ builder_password_box::builder_password_box(const config& cfg)
 {
 }
 
-widget* builder_password_box::build() const
+std::unique_ptr<widget> builder_password_box::build() const
 {
-	password_box* widget = new password_box(*this);
+	auto widget = std::make_unique<password_box>(*this);
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.

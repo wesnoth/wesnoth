@@ -78,7 +78,6 @@ game_display::game_display(game_board& board,
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
 {
-	video().clear_screen();
 }
 
 game_display::~game_display()

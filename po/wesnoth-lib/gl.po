@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 03:24+0300\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2018-05-16 07:08+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -70,7 +70,7 @@ msgstr ""
 #. [terrain_type]: id=fence_iron
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
-#: data/core/terrain.cfg:490 data/core/terrain.cfg:500
+#: data/core/terrain.cfg:500 data/core/terrain.cfg:510
 msgid "Fence"
 msgstr "Valo"
 
@@ -87,7 +87,7 @@ msgstr "Aleatorio"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3124 data/core/terrain.cfg:3125
+#: data/core/terrain.cfg:3174 data/core/terrain.cfg:3175
 msgid "Deep Water"
 msgstr "Auga profunda"
 
@@ -111,7 +111,7 @@ msgstr "Auga profunda tropical"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3083 data/core/terrain.cfg:3084
+#: data/core/terrain.cfg:3133 data/core/terrain.cfg:3134
 msgid "Shallow Water"
 msgstr "Auga pouco profunda"
 
@@ -156,8 +156,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3039
-#: data/core/terrain.cfg:3040
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3089
+#: data/core/terrain.cfg:3090
 msgid "Coastal Reef"
 msgstr "Arrecife costeiro"
 
@@ -180,7 +180,7 @@ msgstr "Arrecife costeiro tropical"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:136 data/core/terrain.cfg:147
-#: data/core/terrain.cfg:3067 data/core/terrain.cfg:3068
+#: data/core/terrain.cfg:3117 data/core/terrain.cfg:3118
 msgid "Swamp"
 msgstr "Braña"
 
@@ -248,13 +248,15 @@ msgstr "Terra seca"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=road_clean
+#. [terrain_type]: id=road_desert
 #. [terrain_type]: id=stone_path
 #. [terrain_type]: id=road_icy
 #. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:239 data/core/terrain.cfg:250
 #: data/core/terrain.cfg:260 data/core/terrain.cfg:270
-#: data/core/terrain.cfg:1000 data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:280 data/core/terrain.cfg:1010
+#: data/core/terrain.cfg:1020
 msgid "Road"
 msgstr "Camiño"
 
@@ -279,40 +281,47 @@ msgstr ""
 msgid "Clean Gray Cobbles"
 msgstr "Lousado gris claro"
 
-#. [terrain_type]: id=stone_path
+#. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:261
+#, fuzzy
+#| msgid "Desert Castle"
+msgid "Desert Cobbles"
+msgstr "Castelo do deserto"
+
+#. [terrain_type]: id=stone_path
+#: data/core/terrain.cfg:271
 msgid "Overgrown Cobbles"
 msgstr "Lousado con herba"
 
 #. [terrain_type]: id=road_icy
-#: data/core/terrain.cfg:271
+#: data/core/terrain.cfg:281
 #, fuzzy
 #| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
 msgstr "Lousado gris claro"
 
 #. [terrain_type]: id=ice
-#: data/core/terrain.cfg:284
+#: data/core/terrain.cfg:294
 msgid "Ice"
 msgstr "Xeo"
 
 #. [terrain_type]: id=snow
-#: data/core/terrain.cfg:293
+#: data/core/terrain.cfg:303
 msgid "Snow"
 msgstr "Neve"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:306
+#: data/core/terrain.cfg:316
 msgid "Desert"
 msgstr "Deserto"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:307
+#: data/core/terrain.cfg:317
 msgid "Desert Sands"
 msgstr "Area do deserto"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:311
+#: data/core/terrain.cfg:321
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Deserts'</italic> have a somewhat different composition "
@@ -329,18 +338,18 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:317 data/core/terrain.cfg:3026
+#: data/core/terrain.cfg:327 data/core/terrain.cfg:3076
 msgid "Sand"
 msgstr "Area"
 
 #. [terrain_type]: id=sand_beach
-#: data/core/terrain.cfg:318
+#: data/core/terrain.cfg:328
 msgid "Beach Sands"
 msgstr "Area de praia"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:322 data/core/terrain.cfg:3030
+#: data/core/terrain.cfg:332 data/core/terrain.cfg:3080
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -358,12 +367,12 @@ msgstr ""
 "A maioría das unidades teñen entre un 20% e un 40% de defensa na area."
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:330
+#: data/core/terrain.cfg:340
 msgid "Oasis"
 msgstr "Oasis"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:339
+#: data/core/terrain.cfg:349
 msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
@@ -372,123 +381,123 @@ msgstr ""
 "estivesen nunha vila, pero non fornecen ingresos ou vantaxe defensiva."
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:345
+#: data/core/terrain.cfg:355
 msgid "Rubble"
 msgstr "Cascallos"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:355
+#: data/core/terrain.cfg:365
 msgid "Crater"
 msgstr "Cráter"
 
 #. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:370
+#: data/core/terrain.cfg:380
 msgid "Mixed Flowers"
 msgstr "Flores varias"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:379
+#: data/core/terrain.cfg:389
 msgid "Farmland"
 msgstr "Cultivo"
 
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:388
+#: data/core/terrain.cfg:398
 msgid "Stones"
 msgstr "Pedras"
 
 #. [terrain_type]: id=snowbits_small
-#: data/core/terrain.cfg:397
+#: data/core/terrain.cfg:407
 #, fuzzy
 #| msgid "Snow"
 msgid "Snowbits"
 msgstr "Neve"
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:406
+#: data/core/terrain.cfg:416
 msgid "Small Mushrooms"
 msgstr "Algúns cogomelos"
 
 #. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:415
+#: data/core/terrain.cfg:425
 msgid "Mushroom Farm"
 msgstr "Cultivo de cogomelos"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:424
+#: data/core/terrain.cfg:434
 msgid "Desert Plants"
 msgstr "Vexetación do deserto"
 
 #. [terrain_type]: id=desert_plants_sans_bones
-#: data/core/terrain.cfg:433
+#: data/core/terrain.cfg:443
 msgid "Desert Plants without Bones"
 msgstr "Vexetación do deserto sen ósos"
 
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:442
+#: data/core/terrain.cfg:452
 msgid "Windmill"
 msgstr "Muíño de vento"
 
 #. [terrain_type]: id=campfire
-#: data/core/terrain.cfg:451
+#: data/core/terrain.cfg:461
 msgid "Campfire"
 msgstr "Fogueira"
 
 #. [terrain_type]: id=wallfire
-#: data/core/terrain.cfg:461
+#: data/core/terrain.cfg:471
 msgid "Sconce"
 msgstr "Candelabro"
 
 #. [terrain_type]: id=brazier
-#: data/core/terrain.cfg:471
+#: data/core/terrain.cfg:481
 msgid "Brazier"
 msgstr "Braseiro"
 
 #. [terrain_type]: id=brazier-lit
-#: data/core/terrain.cfg:480
+#: data/core/terrain.cfg:490
 msgid "Lit Brazier"
 msgstr "Braseiro aceso"
 
 #. [terrain_type]: id=fence_iron
-#: data/core/terrain.cfg:501
+#: data/core/terrain.cfg:511
 #, fuzzy
 #| msgid "Fence"
 msgid "Iron Fence"
 msgstr "Valo"
 
 #. [terrain_type]: id=fence_palisade
-#: data/core/terrain.cfg:511
+#: data/core/terrain.cfg:521
 msgid "Palisade"
 msgstr ""
 
 #. [terrain_type]: id=fence_palisade
-#: data/core/terrain.cfg:512
+#: data/core/terrain.cfg:522
 #, fuzzy
 #| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
 msgstr "Ponte de madeira"
 
 #. [terrain_type]: id=sand_drifts
-#: data/core/terrain.cfg:521
+#: data/core/terrain.cfg:531
 msgid "Stones with Sand Drifts"
 msgstr "Rochas e moreas de area"
 
 #. [terrain_type]: id=water-lilies
-#: data/core/terrain.cfg:530
+#: data/core/terrain.cfg:540
 msgid "Water Lilies"
 msgstr "Auga con lirios"
 
 #. [terrain_type]: id=water-lilies-flower
-#: data/core/terrain.cfg:540
+#: data/core/terrain.cfg:550
 msgid "Flowering Water Lilies"
 msgstr "Auga con lirios en flor"
 
 #. [terrain_type]: id=detritus_trash
-#: data/core/terrain.cfg:551
+#: data/core/terrain.cfg:561
 msgid "Trash"
 msgstr "Lixo"
 
 #. [terrain_type]: id=detritus_bones
-#: data/core/terrain.cfg:560
+#: data/core/terrain.cfg:570
 msgid "Remains"
 msgstr "Restos"
 
@@ -496,26 +505,26 @@ msgstr "Restos"
 #. [terrain_type]: id=great_tree_snowy
 #. [terrain_type]: id=great_tree_dead
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:573 data/core/terrain.cfg:574
-#: data/core/terrain.cfg:585 data/core/terrain.cfg:597
-#: data/core/terrain.cfg:609
+#: data/core/terrain.cfg:583 data/core/terrain.cfg:584
+#: data/core/terrain.cfg:595 data/core/terrain.cfg:607
+#: data/core/terrain.cfg:619
 msgid "Great Tree"
 msgstr "Árbore grande"
 
 #. [terrain_type]: id=great_tree_snowy
-#: data/core/terrain.cfg:586
+#: data/core/terrain.cfg:596
 #, fuzzy
 #| msgid "Great Tree"
 msgid "Snowy Great Tree"
 msgstr "Árbore grande"
 
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:598
+#: data/core/terrain.cfg:608
 msgid "Dead Great Tree"
 msgstr "Árbore grande morta"
 
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:610
+#: data/core/terrain.cfg:620
 #, fuzzy
 #| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
@@ -537,90 +546,90 @@ msgstr "Árbore grande morta"
 #. [terrain_type]: id=mixed_forest_winter
 #. [terrain_type]: id=mixed_forest_winter_snow
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:621 data/core/terrain.cfg:633
-#: data/core/terrain.cfg:645 data/core/terrain.cfg:657
-#: data/core/terrain.cfg:669 data/core/terrain.cfg:681
-#: data/core/terrain.cfg:693 data/core/terrain.cfg:705
-#: data/core/terrain.cfg:717 data/core/terrain.cfg:729
-#: data/core/terrain.cfg:741 data/core/terrain.cfg:753
-#: data/core/terrain.cfg:765 data/core/terrain.cfg:777
-#: data/core/terrain.cfg:789 data/core/terrain.cfg:3150
-#: data/core/terrain.cfg:3151
+#: data/core/terrain.cfg:631 data/core/terrain.cfg:643
+#: data/core/terrain.cfg:655 data/core/terrain.cfg:667
+#: data/core/terrain.cfg:679 data/core/terrain.cfg:691
+#: data/core/terrain.cfg:703 data/core/terrain.cfg:715
+#: data/core/terrain.cfg:727 data/core/terrain.cfg:739
+#: data/core/terrain.cfg:751 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:775 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:799 data/core/terrain.cfg:3200
+#: data/core/terrain.cfg:3201
 msgid "Forest"
 msgstr "Bosque"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:622
+#: data/core/terrain.cfg:632
 msgid "Tropical Forest"
 msgstr "Selva tropical"
 
 #. [terrain_type]: id=rainforest
-#: data/core/terrain.cfg:634
+#: data/core/terrain.cfg:644
 msgid "Rainforest"
 msgstr "Selva"
 
 #. [terrain_type]: id=palm_desert_forest
-#: data/core/terrain.cfg:646
+#: data/core/terrain.cfg:656
 msgid "Palm Forest"
 msgstr "Bosque de palmeiras"
 
 #. [terrain_type]: id=palm_forest
-#: data/core/terrain.cfg:658
+#: data/core/terrain.cfg:668
 msgid "Dense Palm Forest"
 msgstr "Bosque de palmeiras denso"
 
 #. [terrain_type]: id=savanna_forest
-#: data/core/terrain.cfg:670
+#: data/core/terrain.cfg:680
 msgid "Savanna"
 msgstr "Sabana"
 
 #. [terrain_type]: id=pine_forest
-#: data/core/terrain.cfg:682
+#: data/core/terrain.cfg:692
 msgid "Pine Forest"
 msgstr "Bosque de piñeiros"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:694
+#: data/core/terrain.cfg:704
 msgid "Snowy Pine Forest"
 msgstr "Bosque de piñeiros nevado"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:706
+#: data/core/terrain.cfg:716
 msgid "Summer Deciduous Forest"
 msgstr "Bosque caducifolio no verán"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:718
+#: data/core/terrain.cfg:728
 msgid "Fall Deciduous Forest"
 msgstr "Bosque caducifolio no outono"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:730
+#: data/core/terrain.cfg:740
 msgid "Winter Deciduous Forest"
 msgstr "Bosque caducifolio no inverno"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:742
+#: data/core/terrain.cfg:752
 msgid "Snowy Deciduous Forest"
 msgstr "Bosque caducifolio nevado"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:754
+#: data/core/terrain.cfg:764
 msgid "Summer Mixed Forest"
 msgstr "Bosque frondoso no verán"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:766
+#: data/core/terrain.cfg:776
 msgid "Fall Mixed Forest"
 msgstr "Bosque frondoso no outono"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:778
+#: data/core/terrain.cfg:788
 msgid "Winter Mixed Forest"
 msgstr "Bosque frondoso no inverno"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:790
+#: data/core/terrain.cfg:800
 msgid "Snowy Mixed Forest"
 msgstr "Bosque frondoso nevado"
 
@@ -628,29 +637,29 @@ msgstr "Bosque frondoso nevado"
 #. [terrain_type]: id=hills_dry
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:805 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:835 data/core/terrain.cfg:3054
-#: data/core/terrain.cfg:3055
+#: data/core/terrain.cfg:815 data/core/terrain.cfg:825
+#: data/core/terrain.cfg:845 data/core/terrain.cfg:3104
+#: data/core/terrain.cfg:3105
 msgid "Hills"
 msgstr "Outeiros"
 
 #. [terrain_type]: id=hills_regular
-#: data/core/terrain.cfg:806
+#: data/core/terrain.cfg:816
 msgid "Regular Hills"
 msgstr "Outeiros normais"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:816
+#: data/core/terrain.cfg:826
 msgid "Dry Hills"
 msgstr "Outeiros secos"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:825
+#: data/core/terrain.cfg:835
 msgid "Dunes"
 msgstr "Dunas"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:836
+#: data/core/terrain.cfg:846
 msgid "Snow Hills"
 msgstr "Outeiros nevados"
 
@@ -663,47 +672,47 @@ msgstr "Outeiros nevados"
 #. [terrain_type]: id=cloud_snow
 #. [terrain_type]: id=cloud_desert
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:850 data/core/terrain.cfg:860
-#: data/core/terrain.cfg:870 data/core/terrain.cfg:881
-#: data/core/terrain.cfg:1246 data/core/terrain.cfg:1256
-#: data/core/terrain.cfg:1267 data/core/terrain.cfg:1277
-#: data/core/terrain.cfg:3110 data/core/terrain.cfg:3111
+#: data/core/terrain.cfg:860 data/core/terrain.cfg:870
+#: data/core/terrain.cfg:880 data/core/terrain.cfg:891
+#: data/core/terrain.cfg:1256 data/core/terrain.cfg:1266
+#: data/core/terrain.cfg:1277 data/core/terrain.cfg:1287
+#: data/core/terrain.cfg:3160 data/core/terrain.cfg:3161
 msgid "Mountains"
 msgstr "Montañas"
 
 #. [terrain_type]: id=regular_mountains
-#: data/core/terrain.cfg:851
+#: data/core/terrain.cfg:861
 msgid "Regular Mountains"
 msgstr "Montañas normais"
 
 #. [terrain_type]: id=dry_mountains
-#: data/core/terrain.cfg:861
+#: data/core/terrain.cfg:871
 msgid "Dry Mountains"
 msgstr "Montañas secas"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:871
+#: data/core/terrain.cfg:881
 msgid "Snowy Mountains"
 msgstr "Montañas nevadas"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:892
 msgid "Desert Mountains"
 msgstr "Montañas desertas"
 
 #. [terrain_type]: id=regular_stone_floor
 #. [terrain_type]: id=ancient_stone_floor
-#: data/core/terrain.cfg:893 data/core/terrain.cfg:903
+#: data/core/terrain.cfg:903 data/core/terrain.cfg:913
 msgid "Stone Floor"
 msgstr "Chan de pedra"
 
 #. [terrain_type]: id=regular_stone_floor
-#: data/core/terrain.cfg:896
+#: data/core/terrain.cfg:906
 msgid "Basic Stone Floor"
 msgstr "Chan de pedra básico"
 
 #. [terrain_type]: id=ancient_stone_floor
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:916
 #, fuzzy
 #| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
@@ -712,76 +721,76 @@ msgstr "Chan de pedra"
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:913 data/core/terrain.cfg:923
-#: data/core/terrain.cfg:933
+#: data/core/terrain.cfg:923 data/core/terrain.cfg:933
+#: data/core/terrain.cfg:943
 msgid "Rug"
 msgstr "Alfombra"
 
 #. [terrain_type]: id=rug_floor
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:926
 msgid "Royal Rug"
 msgstr "Alfombra real"
 
 #. [terrain_type]: id=rug2_floor
-#: data/core/terrain.cfg:926
+#: data/core/terrain.cfg:936
 msgid "Normal Rug"
 msgstr "Alfombra normal"
 
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:936
+#: data/core/terrain.cfg:946
 msgid "Cave Rug"
 msgstr "Alfombra de cova"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:943
+#: data/core/terrain.cfg:953
 msgid "Wooden Floor"
 msgstr "Chan de madeira"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:946
+#: data/core/terrain.cfg:956
 msgid "Basic Wooden Floor"
 msgstr "Chan de madeira básico"
 
 #. [terrain_type]: id=old_wood_floor
-#: data/core/terrain.cfg:953 data/core/terrain.cfg:956
+#: data/core/terrain.cfg:963 data/core/terrain.cfg:966
 msgid "Old Wooden Floor"
 msgstr "Chan de madeira vella"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:969
+#: data/core/terrain.cfg:979
 msgid "Lit"
 msgstr "Luz"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:970
+#: data/core/terrain.cfg:980
 msgid "Beam of Light"
 msgstr "Raiola"
 
 #. [terrain_type]: id=cave_floor
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:980 data/core/terrain.cfg:990
-#: data/core/terrain.cfg:3011 data/core/terrain.cfg:3012
+#: data/core/terrain.cfg:990 data/core/terrain.cfg:1000
+#: data/core/terrain.cfg:3061 data/core/terrain.cfg:3062
 msgid "Cave"
 msgstr "Cova"
 
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:981
+#: data/core/terrain.cfg:991
 msgid "Cave Floor"
 msgstr "Chan de cova"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:991
+#: data/core/terrain.cfg:1001
 msgid "Earthy Cave Floor"
 msgstr "Chan de cova terroso"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:1001
+#: data/core/terrain.cfg:1011
 msgid "Dark Flagstones"
 msgstr "Lousas escuras"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:1011
+#: data/core/terrain.cfg:1021
 msgid "Cave Path"
 msgstr "Camiño de cova"
 
@@ -789,14 +798,14 @@ msgstr "Camiño de cova"
 #. [terrain_type]: id=fungus_beam_old
 #. [terrain_type]: id=fungus_grove
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1020 data/core/terrain.cfg:1039
-#: data/core/terrain.cfg:1059 data/core/terrain.cfg:1060
-#: data/core/terrain.cfg:1071
+#: data/core/terrain.cfg:1030 data/core/terrain.cfg:1049
+#: data/core/terrain.cfg:1069 data/core/terrain.cfg:1070
+#: data/core/terrain.cfg:1081
 msgid "Mushroom Grove"
 msgstr "Colonia de cogomelos"
 
 #. [terrain_type]: id=fungus_grove_old
-#: data/core/terrain.cfg:1021
+#: data/core/terrain.cfg:1031
 #, fuzzy
 #| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
@@ -806,7 +815,7 @@ msgstr "Colonia de cogomelos alumada"
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
-#: data/core/terrain.cfg:1029 data/core/terrain.cfg:1049
+#: data/core/terrain.cfg:1039 data/core/terrain.cfg:1059
 msgid ""
 "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -821,7 +830,7 @@ msgstr ""
 #. [terrain_type]: id=fungus_beam_old
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
-#: data/core/terrain.cfg:1032 data/core/terrain.cfg:1052
+#: data/core/terrain.cfg:1042 data/core/terrain.cfg:1062
 msgid ""
 "Dwarven tales describe different types of mushrooms — with some types the "
 "difficulty of walking on the spongy floor has no relation to the ground "
@@ -831,32 +840,32 @@ msgid ""
 msgstr ""
 
 #. [terrain_type]: id=fungus_beam_old
-#: data/core/terrain.cfg:1040
+#: data/core/terrain.cfg:1050
 #, fuzzy
 #| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
 msgstr "Colonia de cogomelos alumada"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1072
+#: data/core/terrain.cfg:1082
 msgid "Lit Mushroom Grove"
 msgstr "Colonia de cogomelos alumada"
 
 #. [terrain_type]: id=fungus_floor
-#: data/core/terrain.cfg:1084 data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1094 data/core/terrain.cfg:1095
 msgid "Mycelium"
 msgstr ""
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1094 data/core/terrain.cfg:1095
-#: data/core/terrain.cfg:1110
+#: data/core/terrain.cfg:1104 data/core/terrain.cfg:1105
+#: data/core/terrain.cfg:1120
 msgid "Rockbound Cave"
 msgstr "Cova rochosa"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1100 data/core/terrain.cfg:1116
+#: data/core/terrain.cfg:1110 data/core/terrain.cfg:1126
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
@@ -898,7 +907,7 @@ msgstr ""
 "ref>."
 
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1111
+#: data/core/terrain.cfg:1121
 #, fuzzy
 #| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
@@ -907,8 +916,8 @@ msgstr "Cova rochosa"
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:1128 data/core/terrain.cfg:1140
-#: data/core/terrain.cfg:1153
+#: data/core/terrain.cfg:1138 data/core/terrain.cfg:1150
+#: data/core/terrain.cfg:1163
 msgid "Mine Rail"
 msgstr "Raís de mina"
 
@@ -916,38 +925,38 @@ msgstr "Raís de mina"
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1171 data/core/terrain.cfg:1182
-#: data/core/terrain.cfg:1193 data/core/terrain.cfg:1204
+#: data/core/terrain.cfg:1181 data/core/terrain.cfg:1192
+#: data/core/terrain.cfg:1203 data/core/terrain.cfg:1214
 msgid "Chasm"
 msgstr "Abismo"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1172
+#: data/core/terrain.cfg:1182
 msgid "Regular Chasm"
 msgstr "Abismo normal"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1183
+#: data/core/terrain.cfg:1193
 msgid "Earthy Chasm"
 msgstr "Abismo terroso"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1194
+#: data/core/terrain.cfg:1204
 msgid "Ethereal Abyss"
 msgstr "Abismo etéreo"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1205
+#: data/core/terrain.cfg:1215
 msgid "Lava Chasm"
 msgstr "Abismo de lava"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1217 data/core/terrain.cfg:1218
+#: data/core/terrain.cfg:1227 data/core/terrain.cfg:1228
 msgid "Lava"
 msgstr "Lava"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1224
+#: data/core/terrain.cfg:1234
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -966,52 +975,52 @@ msgstr ""
 "bonificación ofensiva das unidades caóticas."
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1231
+#: data/core/terrain.cfg:1241
 msgid "Volcano"
 msgstr "Volcán"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1247
+#: data/core/terrain.cfg:1257
 msgid "Regular Impassable Mountains"
 msgstr "Montañas infranqueábeis normais"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1267
 msgid "Dry Impassable Mountains"
 msgstr "Montañas secas infranqueábeis"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1268
+#: data/core/terrain.cfg:1278
 msgid "Snowy Impassable Mountains"
 msgstr "Montañas infranqueábeis nevadas"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1278
+#: data/core/terrain.cfg:1288
 msgid "Desert Impassable Mountains"
 msgstr "Montañas infranqueábeis do deserto"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1288 data/core/terrain.cfg:1310
-#: data/core/terrain.cfg:1324
+#: data/core/terrain.cfg:1298 data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1334
 msgid "Cave Wall"
 msgstr "Parede de cova"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1289
+#: data/core/terrain.cfg:1299
 msgid "Natural Cave Wall"
 msgstr "Parede de cova natural"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1299 data/core/terrain.cfg:1300
-#: data/core/terrain.cfg:1360
+#: data/core/terrain.cfg:1309 data/core/terrain.cfg:1310
+#: data/core/terrain.cfg:1370
 msgid "Mine Wall"
 msgstr "Parede de mina"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1321
 msgid "Natural Earthy Cave Wall"
 msgstr "Parede de cova terrosa natural"
 
@@ -1019,66 +1028,66 @@ msgstr "Parede de cova terrosa natural"
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1337 data/core/terrain.cfg:1347
-#: data/core/terrain.cfg:1382 data/core/terrain.cfg:1393
+#: data/core/terrain.cfg:1347 data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1392 data/core/terrain.cfg:1403
 msgid "Stone Wall"
 msgstr "Muro de pedra"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1358
 msgid "Lit Stone Wall"
 msgstr "Muro de pedra alumado"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1361
+#: data/core/terrain.cfg:1371
 msgid "Straight Mine Wall"
 msgstr "Parede recta de mina"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1371
+#: data/core/terrain.cfg:1381
 msgid "Interior Wall"
 msgstr "Parede interior"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1372
+#: data/core/terrain.cfg:1382
 msgid "Straight White Wall"
 msgstr "Parede recta branca"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1383
+#: data/core/terrain.cfg:1393
 msgid "Clean Stone Wall"
 msgstr "Muro de pedra limpo"
 
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1404
 #, fuzzy
 #| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
 msgstr "Muro de pedra alumado"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1414
 #, fuzzy
 #| msgid "Cave Wall"
 msgid "Catacombs Wall"
 msgstr "Parede de cova"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1415
 #, fuzzy
 #| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
 msgstr "Muro de pedra limpo"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1415
+#: data/core/terrain.cfg:1425
 #, fuzzy
 #| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
 msgstr "Lousado con herba"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1416
+#: data/core/terrain.cfg:1426
 #, fuzzy
 #| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
@@ -1090,17 +1099,17 @@ msgstr "Muro de pedra limpo"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1432 data/core/terrain.cfg:1445
-#: data/core/terrain.cfg:1459 data/core/terrain.cfg:1516
-#: data/core/terrain.cfg:1528 data/core/terrain.cfg:1541
+#: data/core/terrain.cfg:1442 data/core/terrain.cfg:1455
+#: data/core/terrain.cfg:1469 data/core/terrain.cfg:1526
+#: data/core/terrain.cfg:1538 data/core/terrain.cfg:1551
 msgid "Gate"
 msgstr "Cancela"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1446
-#: data/core/terrain.cfg:1460
+#: data/core/terrain.cfg:1443 data/core/terrain.cfg:1456
+#: data/core/terrain.cfg:1470
 msgid "Rusty Gate"
 msgstr "Cancela oxidada"
 
@@ -1110,49 +1119,49 @@ msgstr "Cancela oxidada"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1473 data/core/terrain.cfg:1486
-#: data/core/terrain.cfg:1500 data/core/terrain.cfg:1554
-#: data/core/terrain.cfg:1566 data/core/terrain.cfg:1579
+#: data/core/terrain.cfg:1483 data/core/terrain.cfg:1496
+#: data/core/terrain.cfg:1510 data/core/terrain.cfg:1564
+#: data/core/terrain.cfg:1576 data/core/terrain.cfg:1589
 msgid "Door"
 msgstr "Porta"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1474 data/core/terrain.cfg:1487
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1484 data/core/terrain.cfg:1497
+#: data/core/terrain.cfg:1511
 msgid "Wooden Door"
 msgstr "Porta de madeira"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1517 data/core/terrain.cfg:1529
-#: data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1527 data/core/terrain.cfg:1539
+#: data/core/terrain.cfg:1552
 msgid "Open Rusty Gate"
 msgstr "Cancela oxidada aberta"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1555 data/core/terrain.cfg:1567
-#: data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1565 data/core/terrain.cfg:1577
+#: data/core/terrain.cfg:1590
 msgid "Open Wooden Door"
 msgstr "Porta de madeira aberta"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1595
+#: data/core/terrain.cfg:1605
 msgid "Impassable Overlay"
 msgstr "Revestimento infranqueábel"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1608
+#: data/core/terrain.cfg:1618
 msgid "Unwalkable Overlay"
 msgstr "Revestimento intransitábel"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1620 data/core/terrain.cfg:2940
+#: data/core/terrain.cfg:1630 data/core/terrain.cfg:2990
 msgid "Void"
 msgstr "Baleiro"
 
@@ -1187,173 +1196,173 @@ msgstr "Baleiro"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1636 data/core/terrain.cfg:1649
-#: data/core/terrain.cfg:1662 data/core/terrain.cfg:1675
-#: data/core/terrain.cfg:1690 data/core/terrain.cfg:1703
-#: data/core/terrain.cfg:1718 data/core/terrain.cfg:1731
-#: data/core/terrain.cfg:1746 data/core/terrain.cfg:1759
-#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1785
-#: data/core/terrain.cfg:1798 data/core/terrain.cfg:1811
-#: data/core/terrain.cfg:1824 data/core/terrain.cfg:1837
-#: data/core/terrain.cfg:1850 data/core/terrain.cfg:1863
-#: data/core/terrain.cfg:1876 data/core/terrain.cfg:1889
-#: data/core/terrain.cfg:1904 data/core/terrain.cfg:1917
-#: data/core/terrain.cfg:1930 data/core/terrain.cfg:1943
-#: data/core/terrain.cfg:1956 data/core/terrain.cfg:1969
-#: data/core/terrain.cfg:1982 data/core/terrain.cfg:1997
-#: data/core/terrain.cfg:2010 data/core/terrain.cfg:2028
-#: data/core/terrain.cfg:3175 data/core/terrain.cfg:3176
+#: data/core/terrain.cfg:1646 data/core/terrain.cfg:1659
+#: data/core/terrain.cfg:1672 data/core/terrain.cfg:1685
+#: data/core/terrain.cfg:1700 data/core/terrain.cfg:1713
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1756 data/core/terrain.cfg:1769
+#: data/core/terrain.cfg:1782 data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1808 data/core/terrain.cfg:1821
+#: data/core/terrain.cfg:1834 data/core/terrain.cfg:1847
+#: data/core/terrain.cfg:1860 data/core/terrain.cfg:1873
+#: data/core/terrain.cfg:1886 data/core/terrain.cfg:1899
+#: data/core/terrain.cfg:1914 data/core/terrain.cfg:1927
+#: data/core/terrain.cfg:1940 data/core/terrain.cfg:1953
+#: data/core/terrain.cfg:1966 data/core/terrain.cfg:1979
+#: data/core/terrain.cfg:1992 data/core/terrain.cfg:2007
+#: data/core/terrain.cfg:2020 data/core/terrain.cfg:2038
+#: data/core/terrain.cfg:3225 data/core/terrain.cfg:3226
 msgid "Village"
 msgstr "Vila"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1637
+#: data/core/terrain.cfg:1647
 msgid "Adobe Village"
 msgstr "Vila de adobe"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1650
+#: data/core/terrain.cfg:1660
 msgid "Ruined Adobe Village"
 msgstr "Vila de adobe en ruínas"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1663
+#: data/core/terrain.cfg:1673
 msgid "Desert Tent Village"
 msgstr "Tenda no deserto"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1676
+#: data/core/terrain.cfg:1686
 msgid "Tent Village"
 msgstr "Tenda"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1691
+#: data/core/terrain.cfg:1701
 msgid "Orcish Village"
 msgstr "Vila dos orcos"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1704
+#: data/core/terrain.cfg:1714
 msgid "Snowy Orcish Village"
 msgstr "Vila dos orcos nevada"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1719
+#: data/core/terrain.cfg:1729
 msgid "Snowy Elven Village"
 msgstr "Vila dos elfos nevada"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1732
+#: data/core/terrain.cfg:1742
 msgid "Elven Village"
 msgstr "Vila dos elfos"
 
 # Empregando «vivenda» como termo oposto a «casa» (vivenda máis grande ou superior).
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1757
 msgid "Cottage"
 msgstr "Casa"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1760
+#: data/core/terrain.cfg:1770
 msgid "Snowy Cottage"
 msgstr "Casa nevada"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1773
+#: data/core/terrain.cfg:1783
 msgid "Ruined Cottage"
 msgstr "Casa en ruínas"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1786
+#: data/core/terrain.cfg:1796
 msgid "Human City"
 msgstr "Cidade dos humanos"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1799
+#: data/core/terrain.cfg:1809
 msgid "Windmill Village"
 msgstr "Vila cun muíño de vento"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1812
+#: data/core/terrain.cfg:1822
 msgid "Snowy Human City"
 msgstr "Cidade dos humanos nevada"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1825
+#: data/core/terrain.cfg:1835
 msgid "Ruined Human City"
 msgstr "Cidade dos humanos en ruínas"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1838
+#: data/core/terrain.cfg:1848
 msgid "Hill Stone Village"
 msgstr "Vila de pedra elevada"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1861
 msgid "Snowy Hill Stone Village"
 msgstr "Vila de pedra elevada nevada"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1874
 msgid "Ruined Hill Stone Village"
 msgstr "Vila de pedra elevada en ruínas"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1877
+#: data/core/terrain.cfg:1887
 msgid "Tropical Village"
 msgstr "Vila tropical"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1890
+#: data/core/terrain.cfg:1900
 msgid "Drake Village"
 msgstr "Vila dos draconiáns"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1905
+#: data/core/terrain.cfg:1915
 msgid "Cave Village"
 msgstr "Vila de cova"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1918
+#: data/core/terrain.cfg:1928
 msgid "Dwarven Village"
 msgstr "Vila dos ananos"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1931
+#: data/core/terrain.cfg:1941
 msgid "Hut"
 msgstr "Cabana"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1944
+#: data/core/terrain.cfg:1954
 msgid "Snowy Hut"
 msgstr "Cabana nevada"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1957
+#: data/core/terrain.cfg:1967
 msgid "Log Cabin"
 msgstr "Cabana de madeira"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1970
+#: data/core/terrain.cfg:1980
 msgid "Snowy Log Cabin"
 msgstr "Cabana de madeira nevada"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1983
+#: data/core/terrain.cfg:1993
 msgid "Igloo"
 msgstr "Iglú"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1998
+#: data/core/terrain.cfg:2008
 msgid "Swamp Village"
 msgstr "Vila lamacenta"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2011
+#: data/core/terrain.cfg:2021
 msgid "Merfolk Village"
 msgstr "Vila dos sirénidos"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2012
+#: data/core/terrain.cfg:2022
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1377,7 +1386,7 @@ msgstr ""
 "mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2029
+#: data/core/terrain.cfg:2039
 msgid "Village Overlay"
 msgstr "Revestimento de vila"
 
@@ -1386,19 +1395,19 @@ msgstr "Revestimento de vila"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2046
-#: data/core/terrain.cfg:2057 data/core/terrain.cfg:2069
-#: data/core/terrain.cfg:2274 data/core/terrain.cfg:2286
+#: data/core/terrain.cfg:2055 data/core/terrain.cfg:2056
+#: data/core/terrain.cfg:2067 data/core/terrain.cfg:2079
+#: data/core/terrain.cfg:2284 data/core/terrain.cfg:2296
 msgid "Encampment"
 msgstr "Campamento"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2068
 msgid "Ruined Encampment"
 msgstr "Campamento en ruínas"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2070
+#: data/core/terrain.cfg:2080
 msgid "Snowy Encampment"
 msgstr "Campamento nevado"
 
@@ -1417,75 +1426,75 @@ msgstr "Campamento nevado"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2081 data/core/terrain.cfg:2093
-#: data/core/terrain.cfg:2105 data/core/terrain.cfg:2117
-#: data/core/terrain.cfg:2128 data/core/terrain.cfg:2140
-#: data/core/terrain.cfg:2152 data/core/terrain.cfg:2164
-#: data/core/terrain.cfg:2176 data/core/terrain.cfg:2188
-#: data/core/terrain.cfg:2200 data/core/terrain.cfg:2250
-#: data/core/terrain.cfg:2299 data/core/terrain.cfg:2615
-#: data/core/terrain.cfg:3094 data/core/terrain.cfg:3095
+#: data/core/terrain.cfg:2091 data/core/terrain.cfg:2103
+#: data/core/terrain.cfg:2115 data/core/terrain.cfg:2127
+#: data/core/terrain.cfg:2138 data/core/terrain.cfg:2150
+#: data/core/terrain.cfg:2162 data/core/terrain.cfg:2174
+#: data/core/terrain.cfg:2186 data/core/terrain.cfg:2198
+#: data/core/terrain.cfg:2210 data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2309 data/core/terrain.cfg:2625
+#: data/core/terrain.cfg:3144 data/core/terrain.cfg:3145
 msgid "Castle"
 msgstr "Castelo"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2082
+#: data/core/terrain.cfg:2092
 msgid "Orcish Castle"
 msgstr "Castelo dos orcos"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2104
 msgid "Snowy Orcish Castle"
 msgstr "Castelo dos orcos nevado"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2106
+#: data/core/terrain.cfg:2116
 msgid "Human Castle"
 msgstr "Castelo dos humanos"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2128
 msgid "Snowy Human Castle"
 msgstr "Castelo dos humanos nevado"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2129
+#: data/core/terrain.cfg:2139
 msgid "Elven Castle"
 msgstr "Castelo dos elfos"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2141
+#: data/core/terrain.cfg:2151
 msgid "Elven Castle Ruin"
 msgstr "Castelo dos elfos en ruínas"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2153
+#: data/core/terrain.cfg:2163
 #, fuzzy
 #| msgid "Elven Castle"
 msgid "Winter Elven Castle"
 msgstr "Castelo dos elfos"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2165
+#: data/core/terrain.cfg:2175
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
 msgstr "Castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2177
+#: data/core/terrain.cfg:2187
 msgid "Dwarven Castle"
 msgstr "Castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2189
+#: data/core/terrain.cfg:2199
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
 msgstr "Castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2201
+#: data/core/terrain.cfg:2211
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
@@ -1495,48 +1504,48 @@ msgstr "Castelo dos ananos"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2212 data/core/terrain.cfg:2224
-#: data/core/terrain.cfg:2237 data/core/terrain.cfg:2262
+#: data/core/terrain.cfg:2222 data/core/terrain.cfg:2234
+#: data/core/terrain.cfg:2247 data/core/terrain.cfg:2272
 msgid "Ruined Castle"
 msgstr "Castelo en ruínas"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2213
+#: data/core/terrain.cfg:2223
 msgid "Ruined Human Castle"
 msgstr "Castelo dos humanos en ruínas"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2225
+#: data/core/terrain.cfg:2235
 msgid "Sunken Human Ruin"
 msgstr "Ruína dos humanos somerxida"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2238
+#: data/core/terrain.cfg:2248
 msgid "Swamp Human Ruin"
 msgstr "Ruína dos humanos lamacenta"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2251
+#: data/core/terrain.cfg:2261
 msgid "Desert Castle"
 msgstr "Castelo do deserto"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2263
+#: data/core/terrain.cfg:2273
 msgid "Ruined Desert Castle"
 msgstr "Castelo do deserto en ruínas"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2275
+#: data/core/terrain.cfg:2285
 msgid "Troll Encampment"
 msgstr "Campamento de trolles"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2287
+#: data/core/terrain.cfg:2297
 msgid "Aquatic Encampment"
 msgstr "Campamento acuático"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2300
+#: data/core/terrain.cfg:2310
 msgid "Aquatic Castle"
 msgstr "Castelo acuático"
 
@@ -1545,24 +1554,24 @@ msgstr "Castelo acuático"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2316 data/core/terrain.cfg:2340
-#: data/core/terrain.cfg:2353 data/core/terrain.cfg:2574
-#: data/core/terrain.cfg:2587
+#: data/core/terrain.cfg:2326 data/core/terrain.cfg:2350
+#: data/core/terrain.cfg:2363 data/core/terrain.cfg:2584
+#: data/core/terrain.cfg:2597
 msgid "Encampment Keep"
 msgstr "Torre dun campamento"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2328
+#: data/core/terrain.cfg:2338
 msgid "Ruined Encampment Keep"
 msgstr "Torre dun campamento en ruínas"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2341
+#: data/core/terrain.cfg:2351
 msgid "Tall Encampment Keep"
 msgstr "Torre dun campamento elevado"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2354
+#: data/core/terrain.cfg:2364
 msgid "Snowy Encampment Keep"
 msgstr "Torre dun campamento nevada"
 
@@ -1580,74 +1589,74 @@ msgstr "Torre dun campamento nevada"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2366 data/core/terrain.cfg:2379
-#: data/core/terrain.cfg:2392 data/core/terrain.cfg:2405
-#: data/core/terrain.cfg:2418 data/core/terrain.cfg:2431
-#: data/core/terrain.cfg:2444 data/core/terrain.cfg:2457
-#: data/core/terrain.cfg:2470 data/core/terrain.cfg:2483
-#: data/core/terrain.cfg:2496 data/core/terrain.cfg:2548
-#: data/core/terrain.cfg:2600 data/core/terrain.cfg:2628
+#: data/core/terrain.cfg:2376 data/core/terrain.cfg:2389
+#: data/core/terrain.cfg:2402 data/core/terrain.cfg:2415
+#: data/core/terrain.cfg:2428 data/core/terrain.cfg:2441
+#: data/core/terrain.cfg:2454 data/core/terrain.cfg:2467
+#: data/core/terrain.cfg:2480 data/core/terrain.cfg:2493
+#: data/core/terrain.cfg:2506 data/core/terrain.cfg:2558
+#: data/core/terrain.cfg:2610 data/core/terrain.cfg:2638
 msgid "Keep"
 msgstr "Torre"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2367
+#: data/core/terrain.cfg:2377
 msgid "Orcish Keep"
 msgstr "Torre dos orcos"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2380
+#: data/core/terrain.cfg:2390
 msgid "Snowy Orcish Keep"
 msgstr "Torre dos orcos nevada"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2393
+#: data/core/terrain.cfg:2403
 msgid "Human Castle Keep"
 msgstr "Torre de castelo dos humanos"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2406
+#: data/core/terrain.cfg:2416
 msgid "Snowy Human Castle Keep"
 msgstr "Torre de castelo dos humanos nevado"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2419
+#: data/core/terrain.cfg:2429
 msgid "Elven Castle Keep"
 msgstr "Torre de castelo dos elfos"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2432
+#: data/core/terrain.cfg:2442
 msgid "Elven Keep Ruin"
 msgstr "Torre dos elfos en ruínas"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2445
+#: data/core/terrain.cfg:2455
 #, fuzzy
 #| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
 msgstr "Torre dos elfos en ruínas"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2458
+#: data/core/terrain.cfg:2468
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
 msgstr "Torre de castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2471
+#: data/core/terrain.cfg:2481
 msgid "Dwarven Castle Keep"
 msgstr "Torre de castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2484
+#: data/core/terrain.cfg:2494
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
 msgstr "Torre de castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2497
+#: data/core/terrain.cfg:2507
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
@@ -1657,58 +1666,58 @@ msgstr "Torre de castelo dos ananos"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2509 data/core/terrain.cfg:2522
-#: data/core/terrain.cfg:2535 data/core/terrain.cfg:2561
+#: data/core/terrain.cfg:2519 data/core/terrain.cfg:2532
+#: data/core/terrain.cfg:2545 data/core/terrain.cfg:2571
 msgid "Ruined Keep"
 msgstr "Torre en ruínas"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2510
+#: data/core/terrain.cfg:2520
 msgid "Ruined Human Castle Keep"
 msgstr "Torre de castelo dos humanos en ruínas"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2523
+#: data/core/terrain.cfg:2533
 msgid "Sunken Human Castle Keep"
 msgstr "Torre de castelo dos humanos somerxido"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2536
+#: data/core/terrain.cfg:2546
 msgid "Swamp Human Castle Keep"
 msgstr "Torre de castelo dos humanos lamacento"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2549
+#: data/core/terrain.cfg:2559
 msgid "Desert Keep"
 msgstr "Torre do deserto"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2562
+#: data/core/terrain.cfg:2572
 msgid "Ruined Desert Keep"
 msgstr "Torre do deserto en ruínas"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2575
+#: data/core/terrain.cfg:2585
 msgid "Aquatic Encampment Keep"
 msgstr "Torre dun campamento acuático"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2588
+#: data/core/terrain.cfg:2598
 msgid "Troll Encampment Keep"
 msgstr "Torre dun campamento de trolles"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2601
+#: data/core/terrain.cfg:2611
 msgid "Aquatic Keep"
 msgstr "Torre acuática"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2616
+#: data/core/terrain.cfg:2626
 msgid "Castle Overlay"
 msgstr "Revestimento de castelo"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2629
+#: data/core/terrain.cfg:2639
 msgid "Keep Overlay"
 msgstr "Revestimento de torre"
 
@@ -1721,6 +1730,9 @@ msgstr "Revestimento de torre"
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
+#. [terrain_type]: id=snow_stone_bridge
+#. [terrain_type]: id=snow_stone_bridgediag1
+#. [terrain_type]: id=snow_stone_bridgediag2
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
@@ -1733,30 +1745,31 @@ msgstr "Revestimento de torre"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2647 data/core/terrain.cfg:2662
-#: data/core/terrain.cfg:2675 data/core/terrain.cfg:2688
-#: data/core/terrain.cfg:2700 data/core/terrain.cfg:2713
-#: data/core/terrain.cfg:2728 data/core/terrain.cfg:2740
-#: data/core/terrain.cfg:2753 data/core/terrain.cfg:2768
-#: data/core/terrain.cfg:2780 data/core/terrain.cfg:2794
-#: data/core/terrain.cfg:2811 data/core/terrain.cfg:2825
-#: data/core/terrain.cfg:2839 data/core/terrain.cfg:2853
-#: data/core/terrain.cfg:2867 data/core/terrain.cfg:2881
-#: data/core/terrain.cfg:2895 data/core/terrain.cfg:2909
-#: data/core/terrain.cfg:2923
+#: data/core/terrain.cfg:2657 data/core/terrain.cfg:2672
+#: data/core/terrain.cfg:2685 data/core/terrain.cfg:2698
+#: data/core/terrain.cfg:2710 data/core/terrain.cfg:2723
+#: data/core/terrain.cfg:2738 data/core/terrain.cfg:2750
+#: data/core/terrain.cfg:2763 data/core/terrain.cfg:2778
+#: data/core/terrain.cfg:2790 data/core/terrain.cfg:2803
+#: data/core/terrain.cfg:2818 data/core/terrain.cfg:2830
+#: data/core/terrain.cfg:2844 data/core/terrain.cfg:2861
+#: data/core/terrain.cfg:2875 data/core/terrain.cfg:2889
+#: data/core/terrain.cfg:2903 data/core/terrain.cfg:2917
+#: data/core/terrain.cfg:2931 data/core/terrain.cfg:2945
+#: data/core/terrain.cfg:2959 data/core/terrain.cfg:2973
 msgid "Bridge"
 msgstr "Ponte"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2648 data/core/terrain.cfg:2663
-#: data/core/terrain.cfg:2676
+#: data/core/terrain.cfg:2658 data/core/terrain.cfg:2673
+#: data/core/terrain.cfg:2686
 msgid "Wooden Bridge"
 msgstr "Ponte de madeira"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2654
+#: data/core/terrain.cfg:2664
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1785,87 +1798,97 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2689 data/core/terrain.cfg:2701
-#: data/core/terrain.cfg:2714
+#: data/core/terrain.cfg:2699 data/core/terrain.cfg:2711
+#: data/core/terrain.cfg:2724
 msgid "Rotting Bridge"
 msgstr "Ponte de madeira podre"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2729 data/core/terrain.cfg:2741
-#: data/core/terrain.cfg:2754
+#: data/core/terrain.cfg:2739 data/core/terrain.cfg:2751
+#: data/core/terrain.cfg:2764
 msgid "Basic Stone Bridge"
+msgstr "Ponte de pedra"
+
+#. [terrain_type]: id=snow_stone_bridge
+#. [terrain_type]: id=snow_stone_bridgediag1
+#. [terrain_type]: id=snow_stone_bridgediag2
+#: data/core/terrain.cfg:2779 data/core/terrain.cfg:2791
+#: data/core/terrain.cfg:2804
+#, fuzzy
+#| msgid "Basic Stone Bridge"
+msgid "Snowy Stone Bridge"
 msgstr "Ponte de pedra"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2769 data/core/terrain.cfg:2781
-#: data/core/terrain.cfg:2795
+#: data/core/terrain.cfg:2819 data/core/terrain.cfg:2831
+#: data/core/terrain.cfg:2845
 msgid "Cave Chasm Bridge"
 msgstr "Ponte abismal dunha cova"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2812 data/core/terrain.cfg:2826
-#: data/core/terrain.cfg:2840
+#: data/core/terrain.cfg:2862 data/core/terrain.cfg:2876
+#: data/core/terrain.cfg:2890
 msgid "Hanging Bridge"
 msgstr "Ponte colgante"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2854 data/core/terrain.cfg:2868
-#: data/core/terrain.cfg:2882
+#: data/core/terrain.cfg:2904 data/core/terrain.cfg:2918
+#: data/core/terrain.cfg:2932
 msgid "Stone Chasm Bridge"
 msgstr "Ponte abismal de pedra"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2896 data/core/terrain.cfg:2910
-#: data/core/terrain.cfg:2924
+#: data/core/terrain.cfg:2946 data/core/terrain.cfg:2960
+#: data/core/terrain.cfg:2974
 msgid "Plank Bridge"
 msgstr "Ponte de táboas"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2941
+#: data/core/terrain.cfg:2991
 msgid "Off Map"
 msgstr "Fóra do mapa"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2951
+#: data/core/terrain.cfg:3001
 msgid "Fake Map Border"
 msgstr "Bordo falso de mapa"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:2962 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3012 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
 msgstr "Manto do descoñecido"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:2973
+#: data/core/terrain.cfg:3023
 msgid "Fake Shroud"
 msgstr "Manto falso do descoñecido"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:2984 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:3034 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "Néboa da guerra"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2999 data/core/terrain.cfg:3000
+#: data/core/terrain.cfg:3049 data/core/terrain.cfg:3050
 msgid "Fungus"
 msgstr "Cogomelos"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3003
+#: data/core/terrain.cfg:3053
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
@@ -1902,7 +1925,7 @@ msgstr ""
 "de cogomelos, mentres que a cabalería só recibe un 20%."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3014
+#: data/core/terrain.cfg:3064
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Cave'</italic> terrain represents any underground cavern "
@@ -1959,12 +1982,12 @@ msgstr ""
 "covas, mentres que os ananos gozan dun 50% de defensa."
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3077
 msgid "Sands"
 msgstr "Areas"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3044
+#: data/core/terrain.cfg:3094
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1983,7 +2006,7 @@ msgstr ""
 "Os sirénidos e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3058
+#: data/core/terrain.cfg:3108
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
@@ -2017,7 +2040,7 @@ msgstr ""
 "mentres que a cabalería está limitada ao 40%, e os ananos gozan dun 60%."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3072
+#: data/core/terrain.cfg:3122
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -2040,7 +2063,7 @@ msgstr ""
 "sirénidos, os nagas e mailos saurios, que adoitan gozar do 60%."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3085
+#: data/core/terrain.cfg:3135
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2065,7 +2088,7 @@ msgstr ""
 "pouco profundas, mentres que os nagas e os sirénidos gozan dun 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3100
+#: data/core/terrain.cfg:3150
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2088,7 +2111,7 @@ msgstr ""
 "A maioría das unidades teñen arredor dun 60% de defensa nun castelo."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3114
+#: data/core/terrain.cfg:3164
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mountains'</italic> are steep enough that units often have "
@@ -2128,7 +2151,7 @@ msgstr ""
 "mentres que os ananos gozan dun 70%."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3126
+#: data/core/terrain.cfg:3176
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2146,12 +2169,12 @@ msgstr ""
 "total liberdade de movemento."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3137 data/core/terrain.cfg:3138
+#: data/core/terrain.cfg:3187 data/core/terrain.cfg:3188
 msgid "Flat"
 msgstr "Chaira"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3139
+#: data/core/terrain.cfg:3189
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2172,7 +2195,7 @@ msgstr ""
 "Case todas as unidades teñen entre un 30% e un 40% de defensa nas chairas."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3152
+#: data/core/terrain.cfg:3202
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2206,12 +2229,12 @@ msgstr ""
 "defensa nos bosques."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3162 data/core/terrain.cfg:3163
+#: data/core/terrain.cfg:3212 data/core/terrain.cfg:3213
 msgid "Frozen"
 msgstr "Conxelado"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3165
+#: data/core/terrain.cfg:3215
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2231,7 +2254,7 @@ msgstr ""
 "terreos xeados."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3178
+#: data/core/terrain.cfg:3228
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2255,12 +2278,12 @@ msgstr ""
 "que a cabalería só recibe un 40%."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3188 data/core/terrain.cfg:3189
+#: data/core/terrain.cfg:3238 data/core/terrain.cfg:3239
 msgid "Impassable"
 msgstr "Infranqueábel"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3191
+#: data/core/terrain.cfg:3241
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2275,12 +2298,12 @@ msgstr ""
 "as grosas paredes de pedra."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3198 data/core/terrain.cfg:3199
+#: data/core/terrain.cfg:3248 data/core/terrain.cfg:3249
 msgid "Unwalkable"
 msgstr "Intransitábel"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3201
+#: data/core/terrain.cfg:3251
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2293,12 +2316,12 @@ msgstr ""
 "do xogo, só as unidades capaces de voar poden cruzar estes terreos."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3208 data/core/terrain.cfg:3209
+#: data/core/terrain.cfg:3258 data/core/terrain.cfg:3259
 msgid "Rails"
 msgstr "Raís"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3211
+#: data/core/terrain.cfg:3261
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2326,10 +2349,12 @@ msgstr ""
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
+#. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
+#: data/gui/window/mp_create_game.cfg:457
 #: data/gui/window/preferences/02_hotkeys.cfg:279
 #: data/gui/window/select_orb_colors.cfg:129
 msgid "Defaults"
@@ -2455,7 +2480,7 @@ msgid "Authenticate"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1019
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2624,7 +2649,7 @@ msgstr "Actualización:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:566
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:572
 msgid "No description available."
 msgstr "Sen descrición."
 
@@ -3307,7 +3332,7 @@ msgstr "Escolle un xerador de mapas:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:877
+#: data/gui/window/mp_create_game.cfg:906
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Settings"
 msgstr "Configuración"
@@ -3561,7 +3586,7 @@ msgstr "Data"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:898
+#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:927
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Load Game"
 msgstr "Cargar unha partida"
@@ -3888,7 +3913,7 @@ msgstr "Preferencias do mapa aleatorio"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:683
+#: data/gui/window/mp_create_game.cfg:712
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:151
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -4567,71 +4592,71 @@ msgstr ""
 "Seleccionar de maneira aleatoria o momento do día no que comeza a partida."
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:434
+#: data/gui/window/mp_create_game.cfg:442
 msgid "Time Limit"
 msgstr "Usar límites de tempo personalizados."
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:435
+#: data/gui/window/mp_create_game.cfg:443
 msgid "Enable custom time limits"
 msgstr "Activar o uso de tempos límite personalizados."
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Initial Limit"
 msgstr "Límite inicial"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Tempo máximo permitido para a primeira quenda, en segundos."
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Tempo para tarefas xerais cada quenda, en segundos."
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Turn Bonus"
 msgstr "Bonificación por rolda"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Tempo máximo posíbel por rolda, en segundos."
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Reservoir"
 msgstr "Reserva"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Action Bonus"
 msgstr "Bonificación por acción"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Time for each attack, recruit, and capture"
 msgstr "Tempo para cada ataque, recrutamento e captura."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
+#: data/gui/window/mp_create_game.cfg:562 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
 msgid "General"
 msgstr "Xeral"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:546
+#: data/gui/window/mp_create_game.cfg:575
 msgid "Custom Options"
 msgstr "Opcións personalizadas"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:559
+#: data/gui/window/mp_create_game.cfg:588
 msgid "Game Settings"
 msgstr "Configuración da partida"
 
@@ -4639,62 +4664,62 @@ msgstr "Configuración da partida"
 #
 # O texto substitúese por un número cando se está a filtrar a lista de escenarios que xogar en base ao número de xogadores que permiten, e aparece esta cadea cando non se filtra.
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:702
+#: data/gui/window/mp_create_game.cfg:731
 msgid "Any"
 msgstr "Todo"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:835
+#: data/gui/window/mp_create_game.cfg:864
 msgid "Random map options: "
 msgstr "Opcións de mapa aleatorio:"
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:856
+#: data/gui/window/mp_create_game.cfg:885
 msgid "Regenerate"
 msgstr "Xerar de novo"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Assign sides to players at random"
 msgstr "Escoller os bandos dos xogadores de xeito aleatorio."
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Shuffle Sides"
 msgstr "Bandos aleatorios."
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permitir que usuarios que non participen poidan ver a partida."
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Observers"
 msgstr "Permitir observadores."
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Strict Synchronization"
 msgstr "Sincronización estrita."
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 "Realizar comprobacións estritas cando se produzan erros de desincronización."
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Private Replay"
 msgstr "Gardar a repetición"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Whether the replay will be publicly available"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:986
 msgid "Name of game:"
 msgstr "Nome da partida:"
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1033
 #, fuzzy
 #| msgid ""
 #| "Set the password that people wanting to join your game as players must "
@@ -5102,7 +5127,7 @@ msgstr "Atallo"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:767
+#: src/gui/dialogs/preferences_dialog.cpp:808
 msgid "game_hotkeys^G"
 msgstr "P"
 
@@ -5116,7 +5141,7 @@ msgstr "Dispoñíbel nas partidas."
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:768
+#: src/gui/dialogs/preferences_dialog.cpp:809
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5130,7 +5155,7 @@ msgstr "Dispoñíbel no editor."
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:769
+#: src/gui/dialogs/preferences_dialog.cpp:810
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -5152,42 +5177,64 @@ msgid "Clear Hotkey"
 msgstr "Eliminar o atallo"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:20
+#: data/gui/window/preferences/03_display.cfg:22
 msgid "Resolution:"
 msgstr "Resolución:"
 
+#. [label]: id=help_text
+#: data/gui/window/preferences/03_display.cfg:46
+msgid "Pixel scale multiplier:"
+msgstr ""
+
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:32
+#: data/gui/window/preferences/03_display.cfg:80
 msgid "Change the game resolution"
 msgstr "Cambiar a resolución do xogo."
 
+#. [slider]: id=pixel_scale_slider
+#: data/gui/window/preferences/03_display.cfg:94
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:48
+#: data/gui/window/preferences/03_display.cfg:109
 msgid "Full screen"
 msgstr "Pantalla completa."
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:49
+#: data/gui/window/preferences/03_display.cfg:110
 msgid "Toggle between fullscreen and window mode"
 msgstr "Alternar entre pantalla completa e modo de xanela."
 
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:121
+msgid "Automatic pixel scale multiplier"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:122
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:68
+#: data/gui/window/preferences/03_display.cfg:144
 msgid "Show floating labels"
 msgstr "Mostrar etiquetas flotantes."
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:69
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Show damage and healing amounts above a unit"
 msgstr "Mostrar as cantidades de dano e sandación sobre as unidades."
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:82
+#: data/gui/window/preferences/03_display.cfg:158
 msgid "Show team colors"
 msgstr "Mostrar as cores dos equipos."
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:83
+#: data/gui/window/preferences/03_display.cfg:159
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5195,90 +5242,90 @@ msgstr ""
 "Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence."
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:98
+#: data/gui/window/preferences/03_display.cfg:174
 msgid "Show grid"
 msgstr "Mostrar a grade."
 
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:99
+#: data/gui/window/preferences/03_display.cfg:175
 msgid "Overlay a grid over the map"
 msgstr "Superpoñer unha grade sobre o mapa."
 
 # Accesible dende:
 # «Configuración → Visualización».
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:114
+#: data/gui/window/preferences/03_display.cfg:190
 msgid "Animate map"
 msgstr "Mostrar as animacións do mapa."
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:115
+#: data/gui/window/preferences/03_display.cfg:191
 msgid "Display animated terrain graphics"
 msgstr "Mostrar imaxes animadas para o terreo."
 
 # Accesible dende:
 # «Configuración → Visualización».
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:128
+#: data/gui/window/preferences/03_display.cfg:204
 msgid "Animate water"
 msgstr "Mostrar as animacións da auga."
 
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:129
+#: data/gui/window/preferences/03_display.cfg:205
 msgid "Display animated water graphics (can be slow)"
 msgstr "Mostrar imaxes animadas para a auga (pode empeorar o rendemento)."
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:142
+#: data/gui/window/preferences/03_display.cfg:218
 msgid "Show unit standing animations"
 msgstr "Mostrar as animacións das unidades quedas."
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:143
+#: data/gui/window/preferences/03_display.cfg:219
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Animar continuamente as unidades quedas do campo de batalla."
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:161
+#: data/gui/window/preferences/03_display.cfg:237
 msgid "Show unit idle animations"
 msgstr "Mostrar as animacións das unidades que non estean facendo nada."
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:162
+#: data/gui/window/preferences/03_display.cfg:238
 msgid "Play short random animations for idle units"
 msgstr ""
 "Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada."
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:185
+#: data/gui/window/preferences/03_display.cfg:261
 msgid "Frequency:"
 msgstr "Frecuencia:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:201
+#: data/gui/window/preferences/03_display.cfg:277
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 "Definir a frecuencia das animacións das unidades que non estean a facer nada."
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:351
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:288
+#: data/gui/window/preferences/03_display.cfg:364
 msgid "Limit FPS"
 msgstr "Limitar os FPS"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:365
 #, fuzzy
 #| msgid ""
 #| "Disabling this increases CPU usage to 100% but may slightly improve "
@@ -5291,12 +5338,12 @@ msgstr ""
 "lixeiramente o rendemento en grandes resolucións"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:304
+#: data/gui/window/preferences/03_display.cfg:380
 msgid "Theme"
 msgstr "Tema"
 
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:305
+#: data/gui/window/preferences/03_display.cfg:381
 msgid "Change the in-game theme"
 msgstr "Cambiar o tema das partidas."
 
@@ -5917,7 +5964,7 @@ msgstr "Recrutar"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Houbo un erro"
@@ -5929,23 +5976,23 @@ msgstr "Houbo un erro"
 msgid "Details:"
 msgstr "Detalles:"
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:273
 msgid "feature^Lua console completion"
 msgstr "Completamento da consola de Lua"
 
-#: src/build_info.cpp:279
+#: src/build_info.cpp:280
 msgid "feature^D-Bus notifications back end"
 msgstr "Infraestrutura de notificacións de D-Bus"
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^Win32 notifications back end"
 msgstr "Infraestrutura de notificacións de Win32"
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:295
 msgid "feature^Cocoa notifications back end"
 msgstr "Infraestrutura de notificacións de Cocoa"
 
-#: src/build_info.cpp:332 src/desktop/version.cpp:126
+#: src/build_info.cpp:333 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -6147,10 +6194,10 @@ msgstr "O grupo ligado «$id|» ten múltiples definicións."
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:127
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
-#: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
-#: src/gui/widgets/toggle_panel.cpp:326 src/gui/widgets/tree_view.cpp:280
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:322 src/gui/widgets/tree_view.cpp:283
 #: src/gui/widgets/unit_preview_pane.cpp:609
 msgid "No grid defined."
 msgstr "Non se definiu ningunha grade."
@@ -7100,30 +7147,30 @@ msgstr ""
 "Non repetir aliados: a cada xogador dun mesmo bando se lle asignará unha "
 "facción distinta."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:512
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:518
 msgid "No eras available for this game."
 msgstr "Non hai eras dispoñíbeis para esta partida."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:714
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:720
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:831
 msgid "The selected game has no sides!"
 msgstr "A partida seleccionada non ten bandos!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 #, fuzzy
 #| msgid "The selected game has no sides!"
 msgid "The selected game cannot be created."
 msgstr "A partida seleccionada non ten bandos!"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Choose Starting Scenario"
 msgstr "Seleccionar o escenario inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Select at which point to begin this campaign."
 msgstr "Seleccionar o punto desde o que comezar a campaña."
 
@@ -7165,35 +7212,35 @@ msgid "The End"
 msgstr "Fin"
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:161
 msgid "friend"
 msgstr "(amigo)"
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr "(ignorado)"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr "Non se indicou un nome de usuario."
 
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 msgid "Invalid username"
 msgstr "O nome de usuario non é válido."
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:282
 msgid "Not on friends or ignore lists"
 msgstr "Nin amigo nin ignorado."
 
-#: src/gui/dialogs/preferences_dialog.cpp:803
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:844
+#: src/gui/dialogs/preferences_dialog.cpp:914
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:834
+#: src/gui/dialogs/preferences_dialog.cpp:875
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7201,15 +7248,15 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» emprégase para «<b>$old_hotkey_action|</b>».\n"
 "Queres que pase a estar asignado a «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Reassign Hotkey"
 msgstr "Cambiar a acción do atallo"
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr "Restablecéronse todos os atallos aos seus valores predeterminados."
 
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "Hotkeys Reset"
 msgstr "Restablecemento dos atallos"
 
@@ -7287,7 +7334,7 @@ msgid "Screenshot"
 msgstr "Facer unha captura do xogo"
 
 # Non o vin no contexto.
-#: src/gui/dialogs/title_screen.cpp:438
+#: src/gui/dialogs/title_screen.cpp:444
 msgid "Choose Test"
 msgstr "Seleccionar a proba"
 
@@ -7379,7 +7426,7 @@ msgstr ""
 "Iniciouse unha conversa privada con «$name|». Se non queres recibir mensaxes "
 "deste usuario, executa a orde «/ignore $name».\n"
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:98
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non se definiu o trebello obrigatorio «$id|»."
 
@@ -7399,24 +7446,24 @@ msgstr "Copiouse a ligazón."
 msgid "Copied link!"
 msgstr "Copiouse a ligazón."
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:222
+#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "«list_data» (datos da lista) debe ter o mesmo número de columnas que "
 "«list_definition» (definición da lista)."
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/listbox.cpp:873 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Non se definiu ningunha lista."
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:836
-#: src/gui/widgets/listbox.cpp:878
+#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:880
 msgid "A 'list_definition' should contain one row."
 msgstr "Toda «list_definition» (definición de lista) debería conter unha fila."
 
-#: src/gui/widgets/multi_page.cpp:198
+#: src/gui/widgets/multi_page.cpp:197
 msgid "No page defined."
 msgstr "Non se definiu ningunha páxina."
 
@@ -7439,16 +7486,16 @@ msgstr[1] "$excess máis"
 msgid "multimenu^None Selected"
 msgstr "Non se seleccionou ningunha."
 
-#: src/gui/widgets/pane.cpp:382
+#: src/gui/widgets/pane.cpp:373
 msgid "Need at least 1 parallel item."
 msgstr "Necesítase polo menos un elemento en paralelo."
 
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/widgets/size_lock.cpp:87
+#: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
 msgstr "Tamaño incorrecto."
 
-#: src/gui/widgets/size_lock.cpp:122
+#: src/gui/widgets/size_lock.cpp:124
 msgid "No widget defined."
 msgstr "Non se definiu ningún trebello."
 
@@ -7458,23 +7505,23 @@ msgstr ""
 "Os números de «value_labels» (etiquetas de valores) e «values» (valores) non "
 "coinciden."
 
-#: src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/stacked_widget.cpp:243
 msgid "No stack layers defined."
 msgstr "Non se definiu ningunha capa da morea."
 
-#: src/gui/widgets/styled_widget.cpp:608
+#: src/gui/widgets/styled_widget.cpp:601
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Atopouse un trebello con axuda pero sen explicación."
 
-#: src/gui/widgets/tree_view.cpp:300
+#: src/gui/widgets/tree_view.cpp:303
 msgid "No nodes defined for a tree view."
 msgstr "Non se definiu ningún nodo para unha vista de árbore."
 
-#: src/gui/widgets/tree_view.cpp:335
+#: src/gui/widgets/tree_view.cpp:338
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "O [node]id (identificador do nodo) «root» está reservado."
 
-#: src/gui/widgets/tree_view.cpp:339
+#: src/gui/widgets/tree_view.cpp:342
 msgid "No node defined."
 msgstr "Non se definiu ningún nodo."
 
@@ -8420,11 +8467,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Atopar o aplicativo de servidor"
 
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:874
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:883
+#: src/preferences/game.cpp:876
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

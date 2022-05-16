@@ -64,13 +64,19 @@ namespace preferences {
  * Add any variables of similar type here.
  */
 const int min_window_width  = 800;
-const int min_window_height = 600;
+const int min_window_height = 540;
 
 const int def_window_width  = 1280;
 const int def_window_height = 720;
 
+const int max_window_width = 1920;
+const int max_window_height = 1080;
+
 const int min_font_scaling  = 80;
 const int max_font_scaling  = 150;
+
+const int min_pixel_scale = 1;
+const int max_pixel_scale = 4;
 
 class prefs_event_handler : public events::sdl_handler {
 public:
@@ -116,7 +122,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		_set_resolution(point(event.window.data1,event.window.data2));
+		_set_resolution(CVideo::get_singleton().window_size());
 
 		break;
 
@@ -404,6 +410,27 @@ point resolution()
 		std::max<unsigned>(x_res, min_window_width),
 		std::max<unsigned>(y_res, min_window_height)
 	);
+}
+
+int pixel_scale()
+{
+	// For now this has a minimum value of 1 and a maximum of 4.
+	return std::max<int>(std::min<int>(prefs["pixel_scale"].to_int(1), max_pixel_scale), min_pixel_scale);
+}
+
+void set_pixel_scale(const int scale)
+{
+	prefs["pixel_scale"] = std::clamp(scale, min_pixel_scale, max_pixel_scale);
+}
+
+bool auto_pixel_scale()
+{
+	return get("auto_pixel_scale", true);
+}
+
+void set_auto_pixel_scale(bool choice)
+{
+	prefs["auto_pixel_scale"] = choice;
 }
 
 bool maximized()

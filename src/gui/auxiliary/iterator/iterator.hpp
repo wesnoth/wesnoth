@@ -24,10 +24,7 @@
 
 #include "gui/auxiliary/iterator/policy_order.hpp"
 
-namespace gui2
-{
-
-namespace iteration
+namespace gui2::iteration
 {
 
 /**
@@ -118,6 +115,4 @@ using top_down_iterator = iterator<policy::order::top_down<visit_self, visit_int
 template<bool visit_self, bool visit_internal, bool visit_child>
 using bottom_up_iterator = iterator<policy::order::bottom_up<visit_self, visit_internal, visit_child>>;
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration

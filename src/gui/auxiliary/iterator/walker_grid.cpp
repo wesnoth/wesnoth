@@ -19,10 +19,7 @@
 
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
+namespace gui2::iteration
 {
 
 grid::grid(gui2::grid& grid)
@@ -91,6 +88,4 @@ gui2::widget* grid::get(const level level)
 	return nullptr;
 }
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration

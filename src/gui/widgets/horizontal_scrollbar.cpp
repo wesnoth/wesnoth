@@ -144,9 +144,9 @@ builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
 {
 }
 
-widget* builder_horizontal_scrollbar::build() const
+std::unique_ptr<widget> builder_horizontal_scrollbar::build() const
 {
-	horizontal_scrollbar* widget = new horizontal_scrollbar(*this);
+	auto widget = std::make_unique<horizontal_scrollbar>(*this);
 
 	widget->finalize_setup();
 

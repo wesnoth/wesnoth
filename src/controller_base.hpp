@@ -189,6 +189,12 @@ protected:
 	bool scroll_down_;
 	bool scroll_left_;
 	bool scroll_right_;
+	/* When the last scroll tick was processed */
+	uint32_t last_scroll_tick_;
+	/* Sub-pixel movement left over from a previous scroll tick.
+	 * This is added to the next scroll tick, if scrolling continues. */
+	double scroll_carry_x_;
+	double scroll_carry_y_;
 
 private:
 	/* A separate class for listening key-up events.

@@ -191,7 +191,7 @@ public:
 private:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
+	void set_page_builders(const builder_grid_map& page_builders)
 	{
 		assert(!page_builders.empty());
 		page_builders_ = page_builders;
@@ -200,26 +200,24 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
+	 * @param generator           Generator for the list
 	 * @param page_data           The initial data to fill the widget with.
 	 */
-	void finalize(const std::vector<string_map>& page_data);
+	void finalize(std::unique_ptr<generator_base> generator, const std::vector<string_map>& page_data);
 
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when it's grid is
-	 * freed.
+	 * of the scrollbar_container super class and freed when it's grid is freed.
 	 */
 	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	std::map<std::string, builder_grid_const_ptr> page_builders_;
+	builder_grid_map page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -258,9 +256,9 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
-	std::map<std::string, builder_grid_const_ptr> builders;
+	builder_grid_map builders;
 
 	/**
 	 * Multi page data.

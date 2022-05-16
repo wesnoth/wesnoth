@@ -41,6 +41,7 @@
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 #include <functional>
 #include <optional>
@@ -184,7 +185,7 @@ int show_story(lua_State* L) {
 int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
 	SDL_Rect pos {1,1,1,1};
-	SDL_GetMouseState(&pos.x, &pos.y);
+	sdl::get_mouse_state(&pos.x, &pos.y);
 
 	int initial = -1;
 	bool markup = false;

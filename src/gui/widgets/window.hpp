@@ -425,6 +425,11 @@ public:
 		callback_next_draw_ = func;
 	}
 
+	void set_suspend_drawing(bool s = true)
+	{
+		suspend_drawing_ = s;
+	}
+
 	enum class show_mode {
 		none,
 		modal,

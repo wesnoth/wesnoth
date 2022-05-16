@@ -865,7 +865,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	const SDL_Rect& area = video().screen_area();
+	const SDL_Rect& area = video().draw_area();
 	const SDL_Rect& loc = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
@@ -992,7 +992,7 @@ void menu::draw()
 	bg_restore();
 
 	clip_rect_setter clipping_rect =
-			clip_rect_setter(video().getSurface(), clip_rect(), clip_rect() != nullptr);
+			clip_rect_setter(video().getDrawingSurface(), clip_rect(), clip_rect() != nullptr);
 
 	draw_contents();
 
@@ -1078,18 +1078,18 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 
 	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
 
-	const SDL_Rect& screen_area = video().screen_area();
+	const SDL_Rect& draw_area = video().draw_area();
 
-	if(res.x > screen_area.w) {
+	if(res.x > draw_area.w) {
 		return sdl::empty_rect;
-	} else if(res.x + res.w > screen_area.w) {
-		res.w = screen_area.w - res.x;
+	} else if(res.x + res.w > draw_area.w) {
+		res.w = draw_area.w - res.x;
 	}
 
-	if(res.y > screen_area.h) {
+	if(res.y > draw_area.h) {
 		return sdl::empty_rect;
-	} else if(res.y + res.h > screen_area.h) {
-		res.h = screen_area.h - res.y;
+	} else if(res.y + res.h > draw_area.h) {
+		res.h = draw_area.h - res.y;
 	}
 
 	//only insert into the cache if the menu's co-ordinates have

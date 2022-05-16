@@ -132,9 +132,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iteration::walker_base* styled_widget::create_walker()
+iteration::walker_ptr styled_widget::create_walker()
 {
-	return new iteration::walker::widget(*this);
+	return std::make_unique<iteration::walker::widget>(*this);
 }
 
 point styled_widget::get_config_minimum_size() const
@@ -431,22 +431,15 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background(surface& frame_buffer,
-									int x_offset,
-									int y_offset)
+void styled_widget::impl_draw_background(int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
 
-	get_canvas(get_state()).blit(frame_buffer,
-							 calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(get_state()).blit(calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+void styled_widget::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 {
 	/* DO NOTHING */
 }
@@ -614,7 +607,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

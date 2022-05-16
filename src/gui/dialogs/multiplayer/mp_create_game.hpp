@@ -114,6 +114,8 @@ private:
 	void update_details();
 	void update_map_settings();
 
+	void reset_timer_settings();
+
 	/**
 	 * Dialog exit hook to bring up the difficulty dialog when starting a campaign.
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire

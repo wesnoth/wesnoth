@@ -375,11 +375,12 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	play_offscreen_ = cfg["offscreen"].to_bool(true);
 }
 
-int unit_animation::matches(const display& disp, const map_location& loc, const map_location& second_loc,
+int unit_animation::matches(const map_location& loc, const map_location& second_loc,
 		unit_const_ptr my_unit, const std::string& event, const int value, strike_result::type hit, const_attack_ptr attack,
 		const_attack_ptr second_attack, int value2) const
 {
 	int result = base_score_;
+	const display& disp = *display::get_singleton();
 
 	if(!event.empty() && !event_.empty()) {
 		if(std::find(event_.begin(), event_.end(), event) == event_.end()) {
@@ -1308,15 +1309,13 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 {
 	if(!animated_unit) return;
 
-	display* disp = display::get_singleton();
-
 	anim_elem tmp;
 	tmp.my_unit = std::move(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
 	tmp.with_bars= with_bars;
-	tmp.animation = tmp.my_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2);
+	tmp.animation = tmp.my_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
 
 	if(!tmp.animation) return;
 
@@ -1357,8 +1356,7 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 		, const_attack_ptr second_attack
 		, int value2) const
 {
-	display* disp = display::get_singleton();
-	return (animated_unit && animated_unit->anim_comp().choose_animation(*disp, src, event, dst, value, hit_type, attack, second_attack, value2));
+	return (animated_unit && animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2));
 }
 
 void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
@@ -1376,11 +1374,10 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 {
 	if(!animated_unit) return;
 
-	display* disp = display::get_singleton();
 	if(animated_unit->anim_comp().get_animation() &&
 		!animated_unit->anim_comp().get_animation()->animation_finished_potential() &&
 		 animated_unit->anim_comp().get_animation()->matches(
-			*disp, src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
+			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
 		anim_elem tmp;
 		tmp.my_unit = animated_unit;

@@ -49,13 +49,13 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 void mp_login::load_password() const
 {
 	text_box& pwd = find_widget<text_box>(get_window(), "password", false);
-	pwd.set_value(preferences::password(host_, username_->get_widget_value(*get_window())));
+	pwd.set_value(preferences::password(host_, username_->get_widget_value()));
 }
 
 void mp_login::save_password() const
 {
 	password_box& pwd = find_widget<password_box>(get_window(), "password", false);
-	preferences::set_password(host_, username_->get_widget_value(*get_window()), pwd.get_real_value());
+	preferences::set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)

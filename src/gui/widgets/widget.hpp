@@ -36,7 +36,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -552,13 +552,12 @@ public:
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_background(int x_offset, int y_offset);
 
 	/**
 	 * Draws the children of a widget.
@@ -568,13 +567,12 @@ public:
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_children(int x_offset, int y_offset);
 
 	/**
 	 * Draws the foreground of the widget.
@@ -585,42 +583,30 @@ public:
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_foreground(int x_offset, int y_offset);
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background(surface& /*frame_buffer*/)
+	virtual void impl_draw_background()
 	{
 	}
-	virtual void impl_draw_background(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+
+	virtual void impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+	virtual void impl_draw_children(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
@@ -825,7 +811,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	virtual iteration::walker_ptr create_walker() = 0;
 };
 
 } // namespace gui2

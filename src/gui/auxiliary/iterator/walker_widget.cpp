@@ -21,13 +21,7 @@
 
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace walker
+namespace gui2::iteration::walker
 {
 
 widget::widget(gui2::widget& widget) : widget_(&widget)
@@ -84,8 +78,4 @@ gui2::widget* widget::get(const level level)
 	return nullptr;
 }
 
-} //  namespace walker
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::walker

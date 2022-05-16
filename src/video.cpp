@@ -25,11 +25,14 @@
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "sdl/input.hpp"
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
 #include "game_version.hpp"
 #endif
+
+#include <SDL2/SDL_render.h> // SDL_Texture
 
 #include <cassert>
 #include <vector>
@@ -42,7 +45,7 @@ CVideo* CVideo::singleton_ = nullptr;
 
 namespace
 {
-surface frameBuffer = nullptr;
+surface drawingSurface = nullptr;
 bool fake_interactive = false;
 
 const unsigned MAGIC_DPI_SCALE_NUMBER = 96;
@@ -70,8 +73,8 @@ void trigger_full_redraw()
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = (*frameBuffer).h;
-	event.window.data2 = (*frameBuffer).w;
+	event.window.data1 = (*drawingSurface).h;
+	event.window.data2 = (*drawingSurface).w;
 
 	for(const auto& layer : draw_layers) {
 		layer->handle_window_event(event);
@@ -90,6 +93,7 @@ void trigger_full_redraw()
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
+	, drawing_texture_(nullptr)
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
@@ -162,7 +166,7 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface& target(getSurface());
+	surface& target(getDrawingSurface());
 	SDL_Rect dst{x, y, 0, 0};
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
@@ -174,12 +178,12 @@ void CVideo::make_fake()
 	fake_screen_ = true;
 	refresh_rate_ = 1;
 
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
+	drawingSurface = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
+	drawingSurface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
 
 	fake_interactive = true;
 	refresh_rate_ = 1;
@@ -191,8 +195,91 @@ void CVideo::update_framebuffer()
 		return;
 	}
 
-	surface fb = SDL_GetWindowSurface(*window);
-	frameBuffer = fb;
+	// Find max valid pixel scale at current window size.
+	point wsize(window->get_size());
+	int max_scale = std::min(
+		wsize.x / preferences::min_window_width,
+		wsize.y / preferences::min_window_height);
+	max_scale = std::min(max_scale, preferences::max_pixel_scale);
+
+	// Determine best pixel scale according to preference and window size
+	int scale = 1;
+	if (preferences::auto_pixel_scale()) {
+		// Try to match the default size (1280x720) but do not reduce below
+		int def_scale = std::min(
+			wsize.x / preferences::def_window_width,
+			wsize.y / preferences::def_window_height);
+		scale = std::min(max_scale, def_scale);
+		// Otherwise reduce to keep below the max window size (1920x1080).
+		int min_scale = std::min(
+			wsize.x / (preferences::max_window_width+1) + 1,
+			wsize.y / (preferences::max_window_height+1) + 1);
+		scale = std::max(scale, min_scale);
+	} else {
+		scale = std::min(max_scale, preferences::pixel_scale());
+	}
+
+	// Update logical size if it doesn't match the current resolution and scale.
+	point lsize(window->get_logical_size());
+	point osize(window->get_output_size());
+	if (lsize.x != wsize.x / scale || lsize.y != wsize.y / scale) {
+		if (!preferences::auto_pixel_scale() && scale < preferences::pixel_scale()) {
+			LOG_DP << "reducing pixel scale from desired "
+				<< preferences::pixel_scale() << " to maximum allowable "
+				<< scale << std::endl;
+		}
+		LOG_DP << "pixel scale: " << scale << std::endl;
+		LOG_DP << "overriding logical size" << std::endl;
+		LOG_DP << "  old lsize: " << lsize << std::endl;
+		LOG_DP << "  old wsize: " << wsize << std::endl;
+		LOG_DP << "  old osize: " << osize << std::endl;
+		window->set_logical_size(osize.x / scale, osize.y / scale);
+		lsize = window->get_logical_size();
+		wsize = window->get_size();
+		osize = window->get_output_size();
+		LOG_DP << "  new lsize: " << lsize << std::endl;
+		LOG_DP << "  new wsize: " << wsize << std::endl;
+		LOG_DP << "  new osize: " << osize << std::endl;
+	}
+
+	// Update the drawing surface if required.
+	if (!drawingSurface
+		|| drawingSurface->w != wsize.x / scale
+		|| drawingSurface->h != wsize.y / scale)
+	{
+		uint32_t format = window->pixel_format();
+		int bpp = SDL_BITSPERPIXEL(format);
+
+		// This should match the old system, and so shouldn't cause any
+		// problems that weren't there already.
+		LOG_DP << "creating " << bpp << "bpp drawing surface with format "
+			<< SDL_GetPixelFormatName(format) << std::endl;
+		// Note: "surface" destructor automatically frees the old surface
+		drawingSurface = SDL_CreateRGBSurfaceWithFormat(
+			0,
+			wsize.x / scale,
+			wsize.y / scale,
+			bpp,
+			format
+		);
+
+		// Also update the drawing texture, with matching format and size.
+		if (drawing_texture_) {
+			LOG_DP << "destroying old drawing texture" << std::endl;
+			SDL_DestroyTexture(drawing_texture_);
+		}
+		LOG_DP << "creating drawing texture" << std::endl;
+		drawing_texture_ = SDL_CreateTexture(
+			*window.get(),
+			drawingSurface->format->format,
+			SDL_TEXTUREACCESS_STREAMING,
+			drawingSurface->w,
+			drawingSurface->h
+		);
+	}
+
+	// Update sizes for input conversion.
+	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 }
 
 void CVideo::init_window()
@@ -220,7 +307,8 @@ void CVideo::init_window()
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
-	uint32_t renderer_flags = SDL_RENDERER_SOFTWARE;
+	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
+
 	if(supports_vsync() && preferences::vsync()) {
 		LOG_DP << "VSYNC on\n";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
@@ -274,34 +362,37 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 	update_framebuffer();
 }
 
-SDL_Rect CVideo::screen_area(bool as_pixels) const
+SDL_Point CVideo::output_size() const
 {
-	if(!window) {
-		return {0, 0, frameBuffer->w, frameBuffer->h};
-	}
-
-	// First, get the renderer size in pixels.
-	SDL_Point size = window->get_output_size();
-
-	// Then convert the dimensions into screen coordinates, if applicable.
-	if(!as_pixels) {
-		auto [scale_x, scale_y] = get_dpi_scale_factor();
-
-		size.x /= scale_x;
-		size.y /= scale_y;
-	}
-
-	return {0, 0, size.x, size.y};
+	// As we are rendering to the drawingSurface, we should never need this.
+	return window->get_output_size();
 }
 
-int CVideo::get_width(bool as_pixels) const
+SDL_Point CVideo::window_size() const
 {
-	return screen_area(as_pixels).w;
+	return window->get_size();
 }
 
-int CVideo::get_height(bool as_pixels) const
+SDL_Rect CVideo::draw_area() const
 {
-	return screen_area(as_pixels).h;
+	return {0, 0, drawingSurface->w, drawingSurface->h};
+}
+
+SDL_Rect CVideo::input_area() const
+{
+	// This should always match draw_area.
+	SDL_Point p(window->get_logical_size());
+	return {0, 0, p.x, p.y};
+}
+
+int CVideo::get_width() const
+{
+	return drawingSurface->w;
+}
+
+int CVideo::get_height() const
+{
+	return drawingSurface->h;
 }
 
 void CVideo::delay(unsigned int milliseconds)
@@ -311,10 +402,29 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
+	}
+
+	if (drawingSurface && drawing_texture_) {
+		// Upload the drawing surface to the drawing texture.
+		void* pixels_out; // somewhere we can write raw pixel data to
+		int pitch; // the length of one row of pixels in bytes
+		SDL_LockTexture(drawing_texture_, nullptr, &pixels_out, &pitch);
+		if (pitch != drawingSurface->pitch) {
+			// If these don't match we are not gonna have a good time.
+			throw game::error("drawing surface and texture are incompatible");
+		}
+		size_t num_bytes = drawingSurface->h * pitch;
+		memcpy(pixels_out, drawingSurface->pixels, num_bytes);
+		SDL_UnlockTexture(drawing_texture_);
+
+		//SDL_UpdateTexture(drawing_texture_, nullptr, drawingSurface->pixels, drawingSurface->pitch);
+
+		// Copy the drawing texture to the render target.
+		SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
 	}
 
 	if(window) {
@@ -360,6 +470,15 @@ void CVideo::clear_screen()
 sdl::window* CVideo::get_window()
 {
 	return window.get();
+}
+
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(window) {
+		return *window;
+	} else {
+		return nullptr;
+	}
 }
 
 std::string CVideo::current_driver()
@@ -418,6 +537,10 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 {
 	auto dpi = get_dpi();
 	if(dpi.first != 0.0f && dpi.second != 0.0f) {
+		// adjust for pixel scale
+		SDL_Point wsize = window_size();
+		dpi.first /= wsize.x / get_width();
+		dpi.second /= wsize.y / get_height();
 		return { dpi.first / MAGIC_DPI_SCALE_NUMBER, dpi.second / MAGIC_DPI_SCALE_NUMBER };
 	}
 	// Assume a scale factor of 1.0 if the screen dpi is currently unknown.
@@ -481,9 +604,9 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	return result;
 }
 
-surface& CVideo::getSurface()
+surface& CVideo::getDrawingSurface()
 {
-	return frameBuffer;
+	return drawingSurface;
 }
 
 point CVideo::current_resolution()
@@ -593,6 +716,7 @@ bool CVideo::set_resolution(const point& resolution)
 	}
 
 	// Change the saved values in preferences.
+	LOG_DP << "updating resolution to " << resolution << std::endl;
 	preferences::_set_resolution(resolution);
 	preferences::_set_maximized(false);
 
@@ -601,6 +725,27 @@ bool CVideo::set_resolution(const point& resolution)
 	events::raise_resize_event();
 
 	return true;
+}
+
+void CVideo::update_buffers()
+{
+	LOG_DP << "updating buffers" << std::endl;
+	// We could also double-check the resolution here.
+	/*if (preferences::resolution() != current_resolution()) {
+		LOG_DP << "updating resolution from " << current_resolution()
+			<< " to " << preferences::resolution() << std::endl;
+		set_window_mode(TO_RES, preferences::resolution());
+	}*/
+
+	update_framebuffer();
+
+	if(display* d = display::get_singleton()) {
+		d->redraw_everything();
+	}
+
+	// Push a window-resized event to the queue. This is necessary so various areas
+	// of the game (like GUI2) update properly with the new size.
+	events::raise_resize_event();
 }
 
 void CVideo::lock_flips(bool lock)

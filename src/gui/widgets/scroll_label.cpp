@@ -200,9 +200,9 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 {
 }
 
-widget* builder_scroll_label::build() const
+std::unique_ptr<widget> builder_scroll_label::build() const
 {
-	scroll_label* widget = new scroll_label(*this);
+	auto widget = std::make_unique<scroll_label>(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

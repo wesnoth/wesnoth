@@ -46,13 +46,9 @@ class viewport : public widget
 {
 	friend struct viewport_implementation;
 
-private:
+public:
 	viewport(const implementation::builder_viewport& builder,
 			  const builder_widget::replacements_map& replacements);
-
-public:
-	static viewport* build(const implementation::builder_viewport& builder,
-							const builder_widget::replacements_map& replacements);
 
 	~viewport();
 
@@ -63,9 +59,7 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children(int x_offset, int y_offset) override;
 
 	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
@@ -99,12 +93,10 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 private:
-	widget& widget_;
-
-	bool owns_widget_;
+	std::unique_ptr<widget> widget_;
 };
 
 // }---------- BUILDER -----------{
@@ -116,9 +108,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	builder_widget_ptr widget_;
 };

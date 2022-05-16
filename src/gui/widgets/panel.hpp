@@ -74,14 +74,10 @@ public:
 
 private:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -127,7 +123,7 @@ struct builder_panel : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	builder_grid_ptr grid;
 };

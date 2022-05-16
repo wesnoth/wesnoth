@@ -25,10 +25,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace gui2
-{
-
-namespace iteration
+namespace gui2::iteration
 {
 
 /**
@@ -67,6 +64,4 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(range_error)
 };
 
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration

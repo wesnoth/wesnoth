@@ -25,6 +25,7 @@ namespace gui2
 {
 struct builder_grid;
 
+class generator_base;
 class grid;
 
 /**
@@ -58,7 +59,7 @@ public:
 	 * @param has_minimum         Does one item need to be selected?
 	 * @param has_maximum         Is one the maximum number of items that can
 	 *                            be selected?
-	 * @param placement           The placement of the grids, see tplacement
+	 * @param placement           The placement of the grids, see placement
 	 *                            for more info.
 	 * @param select              If a grid is selected, what should happen?
 	 *                            If true the grid is selected, if false the
@@ -67,7 +68,7 @@ public:
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
 	 */
-	static generator_base* build(const bool has_minimum,
+	static std::unique_ptr<generator_base>  build(const bool has_minimum,
 							  const bool has_maximum,
 							  const placement placement,
 							  const bool select);
@@ -280,9 +281,7 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override = 0;
+	virtual void impl_draw_children(int x_offset, int y_offset) override = 0;
 
 protected:
 	/** See @ref widget::child_populate_dirty_list. */
