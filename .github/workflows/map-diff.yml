@@ -37,7 +37,7 @@ jobs:
         do
           ## Get old map version
           map_filename=${map_path##*/}
-          git show ${{ github.event.pull_request.base.sha }}:"$map_path" > "$map_filename"
+          git show ${{ github.event.pull_request.head.sha }}:"$map_path" > "$map_filename"
 
           ## Run map diff
           diff_image=${map_filename%.map}.png
