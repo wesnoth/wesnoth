@@ -38,7 +38,8 @@ namespace gui2
 {
 
 grid::grid(const unsigned rows, const unsigned cols)
-	: rows_(rows)
+	: widget()
+	, rows_(rows)
 	, cols_(cols)
 	, row_height_()
 	, col_width_()
