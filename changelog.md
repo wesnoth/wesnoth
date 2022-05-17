@@ -56,6 +56,7 @@
    * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
    * Resolved title screen flashing during the loading screen (issue #2395)
    * Fixed erratic keyboard and mouse scroll speed (issue #3607)
+   * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
 
 ## Version 1.16.2
  ### Campaigns
