@@ -22,6 +22,7 @@
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
 #include "game_board.hpp"
+#include "gettext.hpp"
 #include "global.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -834,24 +835,18 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 /**
  * static used in weapon_specials (bool only_active, bool is_backstab) and
  * @return a string and a set_string for the weapon_specials function below.
- * @param[in,out] weapon_abilities the string modified and returned
+ * @param[in,out] temp_string the string modified and returned
  * @param[in] active the boolean for determine if @name can be added or not
- * @param[in] sp reference to ability to check
+ * @param[in] name string who must be or not added
  * @param[in,out] checking_name the reference for checking if @name already added
  */
-static void add_name(std::string& weapon_abilities, bool active, const config::any_child sp, std::set<std::string>& checking_name, bool affect_adjacent)
+static void add_name(std::string& temp_string, bool active, const std::string name, std::set<std::string>& checking_name)
 {
 	if (active) {
-		const std::string& name = sp.cfg["name"].str();
-
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
-			if (!weapon_abilities.empty()) weapon_abilities += ", ";
-			if (affect_adjacent) {
-				weapon_abilities += sp.cfg["affect_enemies"].to_bool() ? font::span_color(font::BAD_COLOR, name) : font::span_color(font::GOOD_COLOR, name);
-			} else {
-				weapon_abilities += font::span_color(font::BUTTON_COLOR, name);
-			}
+			if (!temp_string.empty()) temp_string += ", ";
+			temp_string += font::span_color(font::BUTTON_COLOR, name);
 		}
 	}
 }
@@ -883,35 +878,102 @@ std::string attack_type::weapon_specials(bool is_backstab) const
 			if (!active) res += "</span>";
 		}
 	}
-	std::string weapon_abilities;
+	std::string temp_string;
 	std::set<std::string> checking_name;
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, {}, "affect_allies");
+	if(!temp_string.empty() && !res.empty()) {
+		temp_string = ", \n" + temp_string;
+		res += temp_string;
+	} else if (!temp_string.empty()){
+		res = temp_string;
+	}
+	return res;
+}
+
+static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string from_str)
+{
+	if(!temp_string.empty()){
+		temp_string = translation::dsgettext("wesnoth", from_str.c_str()) + temp_string;
+		weapon_abilities += (!weapon_abilities.empty() && !temp_string.empty()) ? "\n" : "";
+		weapon_abilities += temp_string;
+		temp_string.clear();
+		checking_name.clear();
+	}
+}
+
+std::string attack_type::weapon_specials_value(const std::set<std::string> checking_tags) const
+{
+	//log_scope("weapon_specials_value");
+	std::string temp_string, weapon_abilities;
+	std::set<std::string> checking_name;
+	for (const config::any_child sp : specials_.all_children_range()) {
+		if((checking_tags.count(sp.key) != 0)){
+			const bool active = special_active(sp.cfg, AFFECT_SELF, sp.key);
+			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+		}
+	}
+	add_name_list(temp_string, weapon_abilities, checking_name, "");
+
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Owned: ");
+
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Taught: ");
+
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Taught: (by an enemy): ");
+
+
+	if(other_attack_) {
+		for (const config::any_child sp : other_attack_->specials_.all_children_range()) {
+			if((checking_tags.count(sp.key) != 0)){
+				const bool active = other_attack_->special_active(sp.cfg, AFFECT_OTHER, sp.key);
+				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+			}
+		}
+	}
+	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	add_name_list(temp_string, weapon_abilities, checking_name, "Used by opponent: ");
+
+	return weapon_abilities;
+}
+
+void attack_type::weapon_specials_impl_self(std::string& temp_string, unit_const_ptr self, const_attack_ptr self_attack, const_attack_ptr other_attack, const map_location& self_loc, AFFECTS whom,
+                                     std::set<std::string>& checking_name, const std::set<std::string>& checking_tags, bool leader_bool)
+{
+	if(self){
+		for (const config::any_child sp : self->abilities().all_children_range()){
+			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp.key) != 0) : true;
+			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, sp.cfg, self, self_loc, whom, sp.key, leader_bool);
+			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+		}
+	}
+}
+
+void attack_type::weapon_specials_impl_adj(std::string& temp_string, unit_const_ptr self, const_attack_ptr self_attack, const_attack_ptr other_attack, const map_location& self_loc, AFFECTS whom,
+                                     std::set<std::string>& checking_name, const std::set<std::string>& checking_tags, const std::string& affect_adjacents, bool leader_bool)
+{
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
-	if(self_){
-		for (const config::any_child sp : self_->abilities().all_children_range()){
-			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
-			add_name(weapon_abilities, active, sp, checking_name, false);
-		}
-		const auto adjacent = get_adjacent_tiles(self_loc_);
+	if(self){
+		const auto adjacent = get_adjacent_tiles(self_loc);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if (it == units.end() || it->incapacitated())
 				continue;
-			if(&*it == self_.get())
+			if(&*it == self.get())
 				continue;
 			for (const config::any_child sp : it->abilities().all_children_range()){
-				const bool active = check_adj_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, *it, i, self_loc_, AFFECT_SELF, sp.key);
-				add_name(weapon_abilities, active, sp, checking_name, true);
+				bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp.key) != 0) : true;
+				bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
+				bool affect_allies = (!affect_adjacents.empty()) ? sp.cfg[affect_adjacents].to_bool(default_bool) : true;
+				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, sp.cfg, self, *it, i, self_loc, whom, sp.key, leader_bool) && affect_allies;
+				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
 			}
 		}
 	}
-	if(!weapon_abilities.empty() && !res.empty()) {
-		weapon_abilities = ", \n" + weapon_abilities;
-		res += weapon_abilities;
-	} else if (!weapon_abilities.empty()){
-		res = weapon_abilities;
-	}
-	return res;
 }
 
 
