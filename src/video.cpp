@@ -539,8 +539,8 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 	if(dpi.first != 0.0f && dpi.second != 0.0f) {
 		// adjust for pixel scale
 		SDL_Point wsize = window_size();
-		dpi.first /= wsize.x / get_width();
-		dpi.second /= wsize.y / get_height();
+		dpi.first *= float(get_width()) / wsize.x;
+		dpi.second *= float(get_height()) / wsize.y;
 		return { dpi.first / MAGIC_DPI_SCALE_NUMBER, dpi.second / MAGIC_DPI_SCALE_NUMBER };
 	}
 	// Assume a scale factor of 1.0 if the screen dpi is currently unknown.
