@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -227,15 +227,15 @@ surface scale_surface(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		fixed_t xratio = fxpdiv(surf->w,w);
-		fixed_t yratio = fxpdiv(surf->h,h);
+		int32_t xratio = fixed_point_divide(surf->w,w);
+		int32_t yratio = fixed_point_divide(surf->h,h);
 
-		fixed_t ysrc = ftofxp(0.0);
+		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			fixed_t xsrc = ftofxp(0.0);
+			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = fxptoi(xsrc);
-				const int ysrcint = fxptoi(ysrc);
+				const int xsrcint = fixed_point_to_int(xsrc);
+				const int ysrcint = fixed_point_to_int(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
@@ -268,12 +268,12 @@ surface scale_surface(const surface &surf, int w, int h)
 				// than lower left, and 100:1 more influential
 				// than lower right.
 
-				const fixed_t e = 0x000000FF & xsrc;
-				const fixed_t s = 0x000000FF & ysrc;
-				const fixed_t n = 0xFF - s;
+				const int32_t e = 0x000000FF & xsrc;
+				const int32_t s = 0x000000FF & ysrc;
+				const int32_t n = 0xFF - s;
 				// Not called "w" to avoid hiding a function parameter
 				// (would cause a compiler warning in MSVC2015 with /W4)
-				const fixed_t we = 0xFF - e;
+				const int32_t we = 0xFF - e;
 
 				pix[0] = *src_word;              // northwest
 				pix[1] = *(src_word + dx);       // northeast
@@ -351,15 +351,15 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		fixed_t xratio = fxpdiv(surf->w,w);
-		fixed_t yratio = fxpdiv(surf->h,h);
+		int32_t xratio = fixed_point_divide(surf->w,w);
+		int32_t yratio = fixed_point_divide(surf->h,h);
 
-		fixed_t ysrc = ftofxp(0.0);
+		int32_t ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			fixed_t xsrc = ftofxp(0.0);
+			int32_t xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = fxptoi(xsrc);
-				const int ysrcint = fxptoi(ysrc);
+				const int xsrcint = fixed_point_to_int(xsrc);
+				const int ysrcint = fixed_point_to_int(ysrc);
 
 				const uint32_t* const src_word = src_pixels + ysrcint*surf->w + xsrcint;
 				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
@@ -383,10 +383,10 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				// the graphics origin is actually
 				// somewhere else.
 
-				const fixed_t east = 0x000000FF & xsrc;
-				const fixed_t south = 0x000000FF & ysrc;
-				const fixed_t north = 0xFF - south;
-				const fixed_t west = 0xFF - east;
+				const int32_t east = 0x000000FF & xsrc;
+				const int32_t south = 0x000000FF & ysrc;
+				const int32_t north = 0xFF - south;
+				const int32_t west = 0xFF - east;
 
 				pix[0] = *src_word;              // northwest
 				pix[1] = *(src_word + dx);       // northeast
@@ -1042,7 +1042,7 @@ surface recolor_image(surface surf, const color_range_map& map_rgb)
 	return nsurf;
 }
 
-surface brighten_image(const surface &surf, fixed_t amount)
+surface brighten_image(const surface &surf, int32_t amount)
 {
 	if(surf == nullptr) {
 		return nullptr;
@@ -1070,9 +1070,9 @@ surface brighten_image(const surface &surf, fixed_t amount)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				r = std::min<unsigned>(static_cast<unsigned>(fxpmult(r, amount)),255);
-				g = std::min<unsigned>(static_cast<unsigned>(fxpmult(g, amount)),255);
-				b = std::min<unsigned>(static_cast<unsigned>(fxpmult(b, amount)),255);
+				r = std::min<unsigned>(fixed_point_multiply(r, amount),255);
+				g = std::min<unsigned>(fixed_point_multiply(g, amount),255);
+				b = std::min<unsigned>(fixed_point_multiply(b, amount),255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -1084,7 +1084,7 @@ surface brighten_image(const surface &surf, fixed_t amount)
 	return nsurf;
 }
 
-void adjust_surface_alpha(surface& surf, fixed_t amount)
+void adjust_surface_alpha(surface& surf, int32_t amount)
 {
 	if(surf == nullptr) {
 		return;
@@ -1272,37 +1272,13 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 				b = (*beg);
 				int d = (beg-limit)/nsurf->w;  // current depth in pixels
 				float a = alpha_base - d * alpha_delta;
-				fixed_t amount = ftofxp(a<0?0:a);
-				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)),255);
+				int32_t amount = floating_to_fixed_point(a<0?0:a);
+				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount),255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
 			++beg;
 		}
-
-/*
-		for(int y = submerge_height; y < nsurf->h; ++y) {
-			uint32_t* cur = beg + y * nsurf->w;
-			uint32_t* row_end = beg + (y+1) * nsurf->w;
-			float d = y * 1.0 / depth;
-			double a = 0.2;//std::max<double>(0, (1-d)*0.3);
-			fixed_t amount = ftofxp(a);
-			while(cur != row_end) {
-				uint8_t alpha = (*cur) >> 24;
-
-				if(alpha) {
-					uint8_t r, g, b;
-					r = (*cur) >> 16;
-					g = (*cur) >> 8;
-					b = (*cur);
-					alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
-					*cur = (alpha << 24) + (r << 16) + (g << 8) + b;
-				}
-
-				++cur;
-			}
-		}*/
-
 	}
 
 	return nsurf;

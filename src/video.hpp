@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,13 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
+#include <SDL2/SDL_render.h>
+
 #include <memory>
 
 class surface;
 struct point;
+struct SDL_Texture;
 
 namespace sdl
 {
@@ -78,6 +81,9 @@ public:
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
 
+	/** Returns a pointer to the underlying window's renderer. */
+	SDL_Renderer* get_renderer();
+
 	bool has_window()
 	{
 		return get_window() != nullptr;
@@ -120,22 +126,54 @@ public:
 
 	point current_resolution();
 
+	/**
+	 * Update buffers to match current resolution and pixel scale settings.
+	 * Also triggers a full redraw.
+	 */
+	void update_buffers();
+
 	/** Returns the list of available screen resolutions. */
 	std::vector<point> get_available_resolutions(const bool include_current = false);
 
 	/**
-	 * Returns the current window renderer area, either in pixels or screen coordinates.
-	 *
-	 * @param as_pixels           Whether to return the area in pixels (default true) or
-	 *                            DPI-independent (DIP) screen coordinates.
+	 * Returns the size of the final render target. This is irrelevant
+	 * for most purposes. Use draw_area() in stead.
 	 */
-	SDL_Rect screen_area(bool as_pixels = true) const;
+	SDL_Point output_size() const;
 
-	/** Returns the window renderer width in pixels or screen coordinates. */
-	int get_width(bool as_pixels = true) const;
+	/**
+	 * Returns the size of the window in display units / screen coordinates.
+	 * This should match the value sent by window resize events, and also
+	 * those used for setting resolution.
+	 */
+	SDL_Point window_size() const;
 
-	/** Returns the window renderer height in pixels or in screen coordinates. */
-	int get_height(bool as_pixels = true) const;
+	/**
+	 * Returns the size and location of the current drawing area in pixels.
+	 * This will usually be an SDL_Rect indicating the full drawing surface.
+	 */
+	SDL_Rect draw_area() const;
+
+	/**
+	 * Returns the size and location of the window's input area in pixels.
+	 * We use SDL_RendererSetLogicalSize to ensure this always matches
+	 * draw_area(), but for clarity there are two separate functions.
+	 */
+	SDL_Rect input_area() const;
+
+	/**
+	 * Returns the width of the drawing surface in pixels.
+	 * Input coordinates are automatically scaled to correspond,
+	 * so this also indicates the width of the input surface.
+	 */
+	int get_width() const;
+
+	/**
+	 * Returns the height of the drawing surface in pixels.
+	 * Input coordinates are automatically scaled to correspond,
+	 * so this also indicates the height of the input surface.
+	 */
+	int get_height() const;
 
 	/** The current game screen dpi. */
 	std::pair<float, float> get_dpi() const;
@@ -172,20 +210,20 @@ public:
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
 	/**
-	 * Draws a surface directly onto the screen framebuffer.
+	 * Copies an area of a surface to the drawing surface.
 	 *
 	 * @param x                   The x coordinate at which to draw.
 	 * @param y                   The y coordinate at which to draw.
 	 * @param surf                The surface to draw.
 	 * @param srcrect             The area of the surface to draw. This defaults to nullptr,
 	 *                            which implies the entire thing.
-	 * @param clip_rect           The clippin rect. If not null, the surface will only be drawn
+	 * @param clip_rect           The clipping rect. If not null, the surface will only be drawn
 	 *                            within the bounds of the given rectangle.
 	 */
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.
@@ -196,8 +234,8 @@ public:
 	/** Clear the screen contents */
 	void clear_screen();
 
-	/** Returns a reference to the framebuffer. */
-	surface& getSurface();
+	/** Returns a reference to the drawing surface. */
+	surface& getDrawingSurface();
 
 	/**
 	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
@@ -262,6 +300,9 @@ private:
 
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
+
+	/** The drawing texture. */
+	SDL_Texture* drawing_texture_;
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();

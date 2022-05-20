@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "help/help_browser.hpp"
 #include <iostream>                     // for operator<<, basic_ostream, etc
-#include <SDL2/SDL_mouse.h>                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
 #include "font/constants.hpp"           // for relative_size
 #include "gettext.hpp"                  // for _
@@ -25,6 +24,7 @@
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for log_scope
 #include "sdl/rect.hpp"
+#include "sdl/input.hpp"                // for get_mouse_state
 
 class CVideo;
 struct SDL_Rect;
@@ -97,7 +97,7 @@ void help_browser::process_event()
 {
 	CKey key;
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	sdl::get_mouse_state(&mousex,&mousey);
 
 	// Fake focus functionality for the menu, only process it if it has focus.
 	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
@@ -193,7 +193,7 @@ void help_browser::handle_event(const SDL_Event &event)
 void help_browser::update_cursor()
 {
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	sdl::get_mouse_state(&mousex,&mousey);
 	const std::string ref = text_area_.ref_at(mousex, mousey);
 	if (!ref.empty() && !ref_cursor_) {
 		cursor::set(cursor::HYPERLINK);

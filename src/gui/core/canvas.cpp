@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -829,7 +829,7 @@ void canvas::draw(const SDL_Rect& area_to_draw, bool force)
 	is_dirty_ = false;
 }
 
-void canvas::blit(surface& surf, SDL_Rect rect)
+void canvas::blit(SDL_Rect rect)
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
@@ -841,6 +841,8 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 	VALIDATE(rect.w >= 0 && rect.h >= 0, _("Area to draw has negative size"));
 	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
 		_("Area to draw is larger than widget size"));
+
+	surface& surf = CVideo::get_singleton().getDrawingSurface();
 
 	// If the widget is partly off-screen, this might get called with
 	// surf width=1000, height=1000
@@ -870,7 +872,7 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 		 * can be seen in the title screen. So also use the not 32 bpp method
 		 * for this situation.
 		 */
-		if(surf != CVideo::get_singleton().getSurface() && surf.is_neutral()) {
+		if(surf != CVideo::get_singleton().getDrawingSurface() && surf.is_neutral()) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,9 +52,10 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include <optional>
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
+
+#include <optional>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -1585,14 +1586,14 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
-	unit_abilities::effect leader_effect(abil, 0, false);
+	unit_abilities::effect leader_effect(abil, 0, false, nullptr, true);
 	return leader_effect.get_composite_value();
 }
 
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
-		unit_type::ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
@@ -1601,7 +1602,7 @@ int combat_modifier(const unit_map& units,
 }
 
 int combat_modifier(const time_of_day& effective_tod,
-		unit_type::ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
@@ -1609,21 +1610,21 @@ int combat_modifier(const time_of_day& effective_tod,
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus());
 }
 
-int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus)
+int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, bool is_fearless, int max_liminal_bonus)
 {
 	int bonus;
 
-	switch(alignment.v) {
-	case unit_type::ALIGNMENT::LAWFUL:
+	switch(alignment) {
+	case unit_alignments::type::lawful:
 		bonus = lawful_bonus;
 		break;
-	case unit_type::ALIGNMENT::NEUTRAL:
+	case unit_alignments::type::neutral:
 		bonus = 0;
 		break;
-	case unit_type::ALIGNMENT::CHAOTIC:
+	case unit_alignments::type::chaotic:
 		bonus = -lawful_bonus;
 		break;
-	case unit_type::ALIGNMENT::LIMINAL:
+	case unit_alignments::type::liminal:
 		bonus = std::max(0, max_liminal_bonus-std::abs(lawful_bonus));
 		break;
 	default:

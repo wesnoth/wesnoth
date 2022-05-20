@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -386,7 +386,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 
-	auto order = std::pair(0, preferences::SORT_ORDER::ASCENDING);
+	auto order = std::pair(0, sort_order::type::ascending);
 	list.set_active_sorting_option(order);
 }
 
@@ -463,9 +463,9 @@ builder_addon_list::builder_addon_list(const config& cfg)
 	}
 }
 
-widget* builder_addon_list::build() const
+std::unique_ptr<widget> builder_addon_list::build() const
 {
-	addon_list* widget = new addon_list(*this);
+	auto widget = std::make_unique<addon_list>(*this);
 
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
 		"' with definition '" << definition << "'.\n";

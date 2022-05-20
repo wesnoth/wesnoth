@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,14 +29,14 @@ struct callable_die_subscriber {
 	virtual ~callable_die_subscriber() {}
 };
 
-enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
+enum class formula_access { read_only, write_only, read_write };
 
 struct formula_input {
-	explicit formula_input(const std::string& name, FORMULA_ACCESS_TYPE access = FORMULA_READ_WRITE)
+	explicit formula_input(const std::string& name, formula_access access = formula_access::read_write)
 		: name(name), access(access) {}
 
 	std::string name;
-	FORMULA_ACCESS_TYPE access;
+	formula_access access;
 };
 
 using formula_input_vector = std::vector<formula_input>;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -129,3 +129,19 @@ std::string vngettext_impl(const char* domain,
 
 #define VNGETTEXT(msgid, msgid_plural, count, ...) \
 	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
+
+/**
+ * Approximately calculates the distance between two strings
+ *
+ * Inspired in the Levenshtein distance, but made simpler
+ * to avoid using recursion and wasting resources.
+ *
+ * The consequence is that the function gets "lost"
+ * after two consecutive differences.
+ *
+ * @param str_1 First string to compare
+ * @param str_2 Second string to compare
+ */
+
+int edit_distance_approx(const std::string &str_1, const std::string &str_2);
+

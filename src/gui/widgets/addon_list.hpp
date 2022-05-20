@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -135,7 +135,7 @@ public:
 	void add_list_to_keyboard_chain();
 
 	/** Sets up a callback that will be called when the player changes the sorting order. */
-	void set_callback_order_change(std::function<void(unsigned, preferences::SORT_ORDER)> callback) {
+	void set_callback_order_change(std::function<void(unsigned, sort_order::type)> callback) {
 		get_listbox().set_callback_order_change(callback);
 	}
 
@@ -217,7 +217,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	widget::visibility install_status_visibility_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,13 +17,7 @@
 
 #include "gui/auxiliary/iterator/walker.hpp"
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace walker
+namespace gui2::iteration::walker
 {
 
 /** A walker for a @ref gui2::styled_widget. */
@@ -51,8 +45,4 @@ private:
 	gui2::widget* widget_;
 };
 
-} //  namespace walker
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::walker

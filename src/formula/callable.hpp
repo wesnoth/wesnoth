@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -133,7 +133,7 @@ protected:
 		return variant(tmp);
 	}
 
-	static inline void add_input(formula_input_vector& inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
+	static inline void add_input(formula_input_vector& inputs, const std::string& key, formula_access access_type = formula_access::read_only)
 	{
 		inputs.emplace_back(key, access_type);
 	}
@@ -301,7 +301,7 @@ private:
 		}
 
 		for(const auto& i : values_) {
-			add_input(inputs, i.first, FORMULA_READ_WRITE);
+			add_input(inputs, i.first, formula_access::read_write);
 		}
 	}
 

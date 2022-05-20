@@ -402,7 +402,7 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = 'recall'
 			ucfg.y = 'recall'
 		end
-		utils.vwriter.write(writer, u.__cfg)
+		utils.vwriter.write(writer, ucfg)
 		if kill_units then u:erase() end
 	end
 end
@@ -766,8 +766,28 @@ function wml_actions.redraw(cfg)
 	wesnoth.redraw(cfg, clear_shroud)
 end
 
+local wml_floating_label = {valid = false}
 function wml_actions.print(cfg)
-	wesnoth.print(cfg)
+	local options = {}
+	if wml_floating_label.valid then
+		wml_floating_label:remove()
+	end
+	if cfg.size then
+		options.size = cfg.size
+	end
+	if cfg.color then
+		options.color = stringx.split(cfg.color)
+	elseif cfg.red or cfg.green or cfg.blue then
+		options.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
+	end
+	if cfg.duration then
+		options.duration = cfg.duration
+	end
+	if cfg.fade_time then
+		options.fade_time = cfg.fade_time
+	end
+
+	wml_floating_label = wesnoth.interface.add_overlay_text(cfg.text, options)
 end
 
 function wml_actions.unsynced(cfg)

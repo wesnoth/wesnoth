@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -159,7 +159,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			const double value = threat/static_cast<double>(threats.size());
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
-				targets.emplace_back(*i,value,target::TYPE::THREAT);
+				targets.emplace_back(*i,value,ai_target::type::threat);
 			}
 		}
 	}
@@ -196,7 +196,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 						enemy *= 1.7;
 						double our = power_projection(*t, friends_dstsrc);
 						double value = village_value * our / enemy;
-						add_target(target(*t, value, target::TYPE::SUPPORT));
+						add_target(target(*t, value, ai_target::type::support));
 					}
 				}
 			}
@@ -207,7 +207,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
 					<< " distance: " << leader_distance << '\n';
-				targets.emplace_back(*t,value,target::TYPE::VILLAGE);
+				targets.emplace_back(*t,value,ai_target::type::village);
 			}
 		}
 	}
@@ -223,7 +223,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			    && !u->invisible(u->get_location())) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
-				targets.emplace_back(u->get_location(), get_leader_value(), target::TYPE::LEADER);
+				targets.emplace_back(u->get_location(), get_leader_value(), ai_target::type::leader);
 			}
 		}
 

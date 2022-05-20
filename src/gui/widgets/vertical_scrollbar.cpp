@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -134,9 +134,9 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 {
 }
 
-widget* builder_vertical_scrollbar::build() const
+std::unique_ptr<widget> builder_vertical_scrollbar::build() const
 {
-	vertical_scrollbar* widget = new vertical_scrollbar(*this);
+	auto widget = std::make_unique<vertical_scrollbar>(*this);
 
 	widget->finalize_setup();
 

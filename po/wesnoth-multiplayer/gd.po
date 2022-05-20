@@ -1,13 +1,14 @@
+#
 # Translators:
-# GunChleoc, 2018
+# GunChleoc, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-01-13 11:49+0000\n"
-"Last-Translator: GunChleoc, 2018\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-01-13 19:27+0000\n"
+"Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -30,7 +31,7 @@ msgstr "Air thuaiream"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:53
 msgid "Default"
-msgstr "Tùsail"
+msgstr "Bunaiteach"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:54
@@ -38,8 +39,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
-"An linn tùsail airson Wesnoth sa mhodh ioma-chluicheadair. Tha sia buidhnean "
-"’na lùib agus meidh air san fharsaingeachd."
+"An linn bunaiteach airson Wesnoth sa mhodh ioma-chluicheadair. Tha sia "
+"buidhnean ’na lùib agus meidh air san fharsaingeachd."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:75
@@ -60,7 +61,7 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr "Tùsail + Muinntir na Gainmhich"
+msgstr "Bunaiteach + Muinntir na Gainmhich"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
@@ -72,7 +73,7 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"Seo na buidhnean on linn tùsail agus buidheann a bharrachd. Cleachdaidh "
+"Seo na buidhnean on linn bhunaiteach agus buidheann a bharrachd. Cleachdaidh "
 "muinntir na Gainmhich an cruth-tìre gu cùramach agus bheir iad ionnsaigh co-"
 "òrdanaichte air a’ chiaradh no a’ chamhanach.\n"
 "\n"
@@ -104,58 +105,51 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Taobh %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>Taobh $side_number</"
+"span>: Chailleadh a h-uile aonad"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Taobh %d</span>:  Sgòr teachd a-steach = "
-"%d  Sgòr aonadan = %d  Buinn òr = %d"
+"<span foreground='$side_color'>Taobh $side_number</span>:  Sgòr an teachd a-"
+"steach = $income  Sgòr aonaid = $units  Òr = $gold\n"
+"Iomlan: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
+#: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "Tha a’ bhuannachd aig <span foreground='%s'>taobh %d</span>."
+msgstr ""
+"Tha a’ bhuannachd aig <span foreground='$side_color'>taobh $side_number</"
+"span>."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
+#: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Geama ionnann eadar taobh %s is taobh %d."
+msgstr "Tha na taobhan $side_number agus $other_side_number co-ionnann."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
+#: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
-msgstr "Geama ionnann eadar taobh %s is taobh %d."
+msgstr "Tha na taobhan $winners co-ionnann."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Cuairtean deiseil"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -182,7 +176,7 @@ msgstr ""
 "nas lugha na na dràcan agus thàinig iad o shliochd eile. Gluaisidh buidheann "
 "nan dràcan glè luath ach chan eil dìon math aca agus feumaidh tu ro-"
 "innleachd a chleachdadh leotha a tha annasach am measg buidhnean an "
-"<ref>text='linn thùsail' dst='..era_era_default'</ref>."
+"<ref>text='linn bhunaitich' dst='..era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
@@ -264,13 +258,13 @@ msgstr ""
 "cuideam air a’ choisridh ach le taic chudromach aig astar o na boghadairean "
 "is draoidhean aca."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Tuathaich"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
@@ -356,7 +350,7 @@ msgstr ""
 "dhraoidheachd dhubh thoirmisgte seo a chleachdadh, chan eil lùths air "
 "fhàgail dhaibh idir gus ionnsaighean dlùtha a thoirt. ’S e buidheann glè "
 "ionnsaigheach a tha sna Closaich agus am measg buidhnean an <ref>text='linn "
-"tùsail' dst='..era_era_default'</ref>, is iadsan am buidheann a tha as "
+"bhunaitich' dst='..era_era_default'</ref>, is iadsan am buidheann a tha as "
 "cumhachdaiche air an oidhche."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
@@ -470,13 +464,13 @@ msgid "teamname^South"
 msgstr "Deas"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 msgid "Defeat the enemy leader"
 msgstr "Thoir buaidh air a’ cheannard nàmhad"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
@@ -485,7 +479,7 @@ msgstr ""
 "i ort gun doir thu tlachd dhi le sabaid."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
@@ -494,7 +488,7 @@ msgstr ""
 "faodaidh tu an trusadh ann agus gluasad air falbh o na sia-cheàrnaich ud."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -503,8 +497,8 @@ msgstr ""
 "bhlàr aonachadh. Bidh sin coileanta às dèidh cuairt 6."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
 msgstr "Tha am maodal adhair a’ toirt grunnsgal."
 
@@ -1120,7 +1114,7 @@ msgstr ""
 "is ma mhaireas tu beò. Air feadh a’ gheama, atharraichidh cruth na tìre le "
 "buaidhean sìde.\n"
 "\n"
-"An aire: Bidh rèiteachadh tùsail a’ mhapa a dhìth ort ach an obraich an "
+"An aire: Bidh rèiteachadh bunaiteach a’ mhapa a dhìth ort ach an obraich an "
 "cnàmh-sgeul seo gu ceart."
 
 #. [side]
@@ -1282,8 +1276,8 @@ msgstr ""
 "thoil air falbh, tha e a’ tighinn a-steach ort gun do dh’fhalbh d’ àm san "
 "tìr seo."
 
-#. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1566,75 +1560,20 @@ msgstr ""
 "a-nis."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
 "Isle of Mists is played. The waves appear at somewhat regular intervals. The "
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
-"Is d’ amas gum mair thu beò is gun cuir thu às dha na h-ionnsaighean leis na "
-"h-aonadan air an gintinn is dha na àrd-nàimhdean deireannach.\n"
-"\n"
-"Thèid na h-ionnsaighean a ghintinn air thuaiream is bidh iad eadar-"
-"dhealaichte gach turas a chluicheas tu Ro-aithris dhorcha.\n"
-"\n"
-"Nochdaidh iad air oirean tuath, deas is iar a’ mhapa ged a thig a’ mhòr "
-"chuid dhiubh bhon oir iar. Tha beàrnan caran cothromach eadar na h-"
-"ionnsaighean.\n"
-"\n"
-"Atharraichidh an t-sìde air thuaiream cuideachd, a’ toirt buaidh air co-"
-"dhealbhachd a’ mhapa.\n"
-"\n"
-"\n"
-"<b>Chaidh Ro-aithris dhorcha a dhèanamh le:</b>\n"
-"\n"
-"<span color='green'>jb:</span>\n"
-"• co-dhealbhachd mapa, buidhnean dhe dh’ionnsaighean, bun-bheachd a’ chnàmh-"
-"sgeòil\n"
-"\n"
-"<span color='green'>Rhuvaen:</span>\n"
-"• Prògramachadh WML"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2chl – Coille dhubh (maireachdainn)"
+msgstr "2chl – Eilean a’ cheò (maireachdainn)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1643,43 +1582,29 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"’S e cnàmh-segul maireachdainn beò a th’ anns a’ choille duibh airson aonar "
-"no sgiobaidhean dhe dhithis an aghaidh aonadan IF a thèid a ghintinn air "
-"thuaiream. Bheir thu buaidh ma chuireas tu às dhan a h-uile ionnsaigh nàmhad "
-"is ma mhaireas tu beò. Air feadh a’ gheama, atharraichidh cruth na tìre le "
-"buaidhean sìde.\n"
-"\n"
-"An aire: Bidh rèiteachadh tùsail a’ mhapa a dhìth ort ach an obraich an "
-"cnàmh-sgeul seo gu ceart."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Biastan"
+msgstr "Luchd-ionnsaighe"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Meadhan"
+msgstr "Luchd-dìona"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Daingean slànachaidh"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Ro-aithris dhorcha – cnàmh-sgeul mairsinn beò air thuaiream"
+msgstr "Eilean a’ cheò – cnàmh-sgeul mairsinn beò air thuaiream"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1702,14 +1627,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"Ugh! Ciamar as urrainn dha bhith? Air mo cheannsachadh leis na borbairean a "
-"tha seo! Chuir mo dhiathan an cùil rium …"
+msgstr "Ciamar as urrainn dha bhith? Chuir mo dhiathan an cùil rium…"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1729,17 +1648,12 @@ msgstr ""
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"Tha an fheadhainn mu dheireadh is as cumhachdaiche dhe na creutairean seo "
-"cha mhòr air tighinn thugainn. Saoilidh mi ma gheibh sinn cuidhteas dhiubh "
-"ri àm gun tèid an latha leinn."
+"Tha an fheadhainn mu dheireadh is as cumhachdaiche dhe ar nàimhdean oirnn. "
+"Ma gheibh sinn cuidhteas dhiubh ri àm, thèid an latha leinn."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
@@ -1753,7 +1667,7 @@ msgstr ""
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Am bàthadh"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2123,19 +2037,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3cl – Boglach Ailiorok"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2354,7 +2268,7 @@ msgstr "Ear-thuath"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "Cuir dealbh a’ chùlaibh à comas"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2363,6 +2277,7 @@ msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
 msgstr ""
+"Seall raon bàn taobh a-muigh a’ mhapa seach an t-eilean air fleòd le creagan."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
@@ -2557,8 +2472,8 @@ msgstr ""
 msgid "5p — The Wilderlands"
 msgstr "5cl – Na tìrean fàs"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2590,10 +2505,8 @@ msgstr "Biastan"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
-#, fuzzy
-#| msgid "Defeat the enemy leaders"
 msgid "Defeat all enemy leaders"
-msgstr "Thoir buaidh air na ceannardan nàmhad"
+msgstr "Thoir buaidh air a h&#8209;uile ceannard nàmhad"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
@@ -2962,11 +2875,3 @@ msgid ""
 msgstr ""
 "Deuchainn-luathais Bheasnaid, cleachd --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Grand total: <b>%d</b>"
-#~ msgstr "Iomlan: <b>%d</b>"
-
-#, fuzzy
-#~| msgid "Defeat all enemy leaders"
-#~ msgid "Defeat enemy leader(s)"
-#~ msgstr "Thoir buaidh air a h&#8209;uile ceannard nàmhad"

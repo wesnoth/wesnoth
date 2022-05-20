@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 #include "commandline_options.hpp"
 
 #include <boost/test/unit_test.hpp>
-#include <boost/assign.hpp>
 
 BOOST_AUTO_TEST_SUITE( cmdline_opts )
 

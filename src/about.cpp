@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,6 +31,7 @@ namespace about
 {
 namespace
 {
+
 credits_data parsed_credits_data;
 std::map<std::string, std::vector<std::string>> images_campaigns;
 std::vector<std::string> images_general;
@@ -38,9 +39,7 @@ std::vector<std::string> images_general;
 void gather_images(const config& from, std::vector<std::string>& to)
 {
 	const auto& im = utils::parenthetical_split(from["images"], ',');
-	if(!im.empty()) {
-		to.insert(to.end(), im.begin(), im.end());
-	}
+	to.insert(to.end(), im.begin(), im.end());
 }
 
 } // namespace
@@ -106,8 +105,12 @@ std::optional<credits_data::const_iterator> get_campaign_credits(const std::stri
 
 std::vector<std::string> get_background_images(const std::string& campaign)
 {
-	if(!campaign.empty() && !images_campaigns[campaign].empty()) {
-		return images_campaigns[campaign];
+	if(campaign.empty()) {
+		return images_general;
+	}
+
+	if(const auto it = images_campaigns.find(campaign); it != images_campaigns.cend()) {
+		return it->second;
 	}
 
 	return images_general;

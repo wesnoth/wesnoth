@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -90,6 +90,8 @@ private:
 
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
 	void initialize_sound_option_group(const std::string& id_suffix);
+
+	void apply_pixel_scale();
 
 	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -126,7 +126,7 @@ void unit_create::pre_show(window& window)
 	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
 	// Select the first entry on sort if no previous selection was provided.
-	list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, choice_.empty());
+	list.set_active_sorting_option({0, sort_order::type::ascending}, choice_.empty());
 
 	list_item_clicked();
 }

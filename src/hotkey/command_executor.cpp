@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,6 +33,7 @@
 #include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 #include <functional>
 
@@ -421,7 +422,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
 	if (submenu) {
 		int y,x;
-		SDL_GetMouseState(&x,&y);
+		sdl::get_mouse_state(&x,&y);
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);

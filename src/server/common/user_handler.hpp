@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -78,6 +78,9 @@ public:
 
 	/** Returns the forum user id for the given username */
 	virtual long get_forum_id(const std::string& name) = 0;
+
+	/** Returns the user's email from the forum database */
+	virtual std::string get_user_email(const std::string& user) = 0;
 
 	/** Returns true if the specified user account is usable for logins. */
 	virtual bool user_is_active(const std::string& name) = 0;

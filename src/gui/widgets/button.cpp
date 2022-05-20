@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -177,9 +177,9 @@ builder_button::builder_button(const config& cfg)
 {
 }
 
-widget* builder_button::build() const
+std::unique_ptr<widget> builder_button::build() const
 {
-	button* widget = new button(*this);
+	auto widget = std::make_unique<button>(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

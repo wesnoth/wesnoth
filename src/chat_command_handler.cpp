@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -133,6 +133,10 @@ void chat_command_handler::do_info() {
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
 	chat_handler_.send_to_server(data);
+}
+
+void chat_command_handler::do_clear_messages() {
+	chat_handler_.clear_messages();
 }
 
 }

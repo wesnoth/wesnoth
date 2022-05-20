@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -181,6 +181,10 @@ std::string fuh::user_info(const std::string& name) {
 
 std::string fuh::get_hashed_password_from_db(const std::string& user) {
 	return conn_.get_user_string(db_users_table_, "user_password", user);
+}
+
+std::string fuh::get_user_email(const std::string& user) {
+	return conn_.get_user_string(db_users_table_, "user_email", user);
 }
 
 std::time_t fuh::get_lastlogin(const std::string& user) {

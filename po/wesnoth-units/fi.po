@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units-fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2012-01-18 00:29+0200\n"
-"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-01-16 17:39+0200\n"
+"Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -46,6 +46,7 @@ msgstr "häntä"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
@@ -53,6 +54,7 @@ msgstr "lonkerot"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
 msgstr "muste"
@@ -73,8 +75,8 @@ msgstr "muste"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "helanuija"
 
@@ -240,9 +242,9 @@ msgstr "varsta"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -281,9 +283,9 @@ msgstr "miekka"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -306,9 +308,9 @@ msgid "bow"
 msgstr "jousi"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -327,7 +329,7 @@ msgstr "jousi"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "kynnet"
@@ -340,9 +342,9 @@ msgstr "kynnet"
 #: data/core/units/humans/Loyalist_Fencer.cfg:59
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
 msgid "saber"
-msgstr "sapeli"
+msgstr "säilä"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -354,7 +356,7 @@ msgstr "sapeli"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -371,8 +373,8 @@ msgstr "sapeli"
 msgid "Walking Corpse"
 msgstr "Elävä kuollut"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -405,8 +407,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -442,14 +444,14 @@ msgstr "kosketus"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
 msgstr "puunuija"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -463,8 +465,8 @@ msgstr "Muinainen kuolonherra"
 msgid "chill tempest"
 msgstr "jäämyrsky"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -476,8 +478,8 @@ msgstr "Pimeyden herra"
 msgid "plague staff"
 msgstr "ruttosauva"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -488,14 +490,14 @@ msgstr "ruttosauva"
 msgid "curse"
 msgstr "kirous"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -520,17 +522,19 @@ msgstr "kirous"
 msgid "fangs"
 msgstr "torahampaat"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -561,7 +565,6 @@ msgstr ""
 "taistelukokemus voi kuitenkin herättää heidät, tehden heistä paljon "
 "pelottavampia."
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -576,6 +579,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -594,8 +598,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "Sieluton"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -616,10 +620,18 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "taiston hurma"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
+#, fuzzy
+#| msgid ""
+#| "It is not clear why the Dragonguards are called what they are, a name "
+#| "given by their dwarven brethren. Some speculate that the name comes from "
+#| "their weapon of choice, these strange staves that belch fire and death. "
+#| "Others have surmised that it is because such weapons would be a threat "
+#| "against even a true Dragon, should such a thing be seen again in the "
+#| "known world. Whatever the case, it is for these weapons that the "
+#| "guardians of the great Dwarven citadels are both renowned and feared; "
+#| "weapons that have broken the mightiest of warriors with a single blow."
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -627,7 +639,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 "On epäselvää, miksi kääpiöt kutsuvat lohikäärmekaartia juuri tällä nimellä. "
@@ -668,8 +680,8 @@ msgstr "tikari"
 msgid "dragonstaff"
 msgstr "lohikäärmesauva"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -697,8 +709,8 @@ msgstr ""
 msgid "hammer"
 msgstr "vasara"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -787,14 +799,6 @@ msgstr "piilukirves"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the singleminded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -807,8 +811,8 @@ msgstr ""
 "itsemurhaa. Nämä kääpiöt ovat lähitaistelun mestareita ja he voivat pitää "
 "maastonkohtaa hallussaan yhtä jääräpäisesti kuin vanha tammi."
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -817,14 +821,14 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
-"Kokemuksen ja koulutuksen houkutus muuttaa vartijat arvoikkaiksi sotilaiksi. "
+"Kokemuksen ja koulutuksen houkutus muuttaa vartijat arvokkaiksi sotilaiksi. "
 "Nämä kaartilaiset on varustettu taitoihinsa sopivasti ja he voivat puolustaa "
 "aluettaan kaikkea paitsi aivan kuolettavimpia hyökkäyksiä vastaan. On "
-"erittäin vaarallista menettää jalansija näille kääpiöille – ilman "
-"erikoisjoukkoja ei helpolla saa aluetta uudelleen kontrolliin."
+"erittäin vaarallista menettää jalansija näille kääpiöille, sillä ilman "
+"lisäjoukkoja, on alue vaikea saada takaisin hallintaan."
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -848,10 +852,21 @@ msgstr ""
 msgid "thunderstick"
 msgstr "ukkoskeppi"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
+#, fuzzy
+#| msgid ""
+#| "The Dwarven Thunderguards are famed for their curious weaponry, these "
+#| "strange staves of wood and iron that make a thunderous noise in their "
+#| "anger. The machinations behind this weaponry are a mystery, a secret "
+#| "taken to the grave by the dwarves of Knalga who wield them, and are "
+#| "assumed to have even forged them. The most that is known are reports of "
+#| "dwarves pouring a strange black dust into the mouth of their weapons, "
+#| "which some say is a food to fuel the beast imprisoned within.\n"
+#| "\n"
+#| "Though a single shot from these ‘thundersticks’ can take several minutes "
+#| "to prepare, the results are seen by the Dwarves as being well worth the "
+#| "wait."
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -862,7 +877,7 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 "Ukkosvartijat ovat kuuluisia erikoisista aseistaan, oudoista puu- ja "
 "rautasauvoista, jotka tulistuessaan jylisevät rajuilman lailla. Näiden "
@@ -874,8 +889,8 @@ msgstr ""
 "Vaikka yhtä laukausta näistä ”ukkoskepeistä” saattaa joutua valmistelemaan "
 "monta minuuttia, tulokset ovat kääpiöiden mielestä hyvinkin sen arvoisia."
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -888,16 +903,16 @@ msgstr ""
 "heistä hurjimpia taistelussa: kun he hyökkäävät, he taistelevat kuolemaan "
 "saakka – joko itsensä tai vihollisensa."
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Riimuherra"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -914,8 +929,8 @@ msgstr ""
 "olisivat pelottavia ja niiden kanssa lähes voittamattomia, koska riimut "
 "saavat vihollisten iskut tekemään vähemmän vauriota kuin mitä voisi odottaa."
 
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -937,7 +952,7 @@ msgstr "peitsi"
 #: data/core/units/dunefolk/Spearguard.cfg:42
 #: data/core/units/dunefolk/Spearmaster.cfg:45
 msgid "shield bash"
-msgstr ""
+msgstr "kilpi-isku"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
@@ -970,7 +985,7 @@ msgstr "survonta"
 #: data/core/units/dunefolk/Harrier.cfg:43
 #: data/core/units/dunefolk/Strider.cfg:43
 msgid "bolas"
-msgstr ""
+msgstr "bolat"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:36
@@ -1111,7 +1126,7 @@ msgstr ""
 "hylänneet kyntensä ja vaihtaneet keihäät ja miekat hilpareihin, ajatellen, "
 "että liikkuvuuden menetys massiivisen terän  raa'asta voimasta on reilu "
 "hinta maksettavaksi. Heidän käyttämä tiivis levyhaarniska suojaa heitä hyvin "
-"aseilta, jotka muuten livahtaisivat helposti suomujen väliin. "
+"aseilta, jotka muuten livahtaisivat helposti suomujen väliin."
 
 #. [special_note]
 #: data/core/units/drakes/Arbiter.cfg:19
@@ -1119,6 +1134,8 @@ msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Muihin draakkeihin verrattuna, Draakkituomarilla on korkeampi vastustus "
+"'lävistäville' hyökkäyksille."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1188,8 +1205,8 @@ msgstr ""
 "harvat ja valitut saavat riittävästi voimaa ja taitoa päästäkseen "
 "korkeimmalle tasolle ilman kaatumista taistelussa. Vaikka muut draakkikastit "
 "voivatkin halveerata taistelijakastia, he varmistavat aina, ettei muita ole "
-"läsnä; Draakkimestarit suojelevat kiihkeästi kaltaistensa kunniaa, eikä "
-"kukaan vie heiltä sitä oikeutta. "
+"läsnä. Draakkimestarit suojelevat kiihkeästi kaltaistensa kunniaa, eikä "
+"kukaan vie heiltä sitä oikeutta."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:27
@@ -1246,7 +1263,7 @@ msgstr ""
 "Iskusotureiden kasti on ainoa, jonka sallitaan rikkoa keihäillä "
 "taistelemisen tabu. He käyttävät niitä perinteisten metallikynsiensä ohella. "
 "Tämän vuoksi he ovat erinomaisia \"ratkomaan\" territorioiden välisiä "
-"selkkauksia ja soveltamaan heimonsa lakeja. "
+"selkkauksia ja soveltamaan heimonsa lakeja."
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
@@ -1274,7 +1291,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "kolmikärki"
 
@@ -1352,13 +1369,6 @@ msgstr "Liekkidraakki"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Respected for the heat of their flame and revered for their charisma, "
-#| "Flares aspire to become great leaders of their people, both in war and "
-#| "peace. Though a small isolated tribe will sometimes accept a Flare as a "
-#| "leader, they are more often seen leading small war parties or mediating "
-#| "disputes with a subtle hand."
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and in peace. "
@@ -1410,6 +1420,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "läimäys"
 
@@ -1465,14 +1476,6 @@ msgstr "Taivasdraakki"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1484,8 +1487,7 @@ msgstr ""
 "symboli, joka on hopeoitu kunnioittaakseen heidän yhteyttä taivaisiin. "
 "Metsästysretkien johtajina he ovat pitkiä aikoja poissa kotoa. Jokainen "
 "yrittää tuoda kotiinsa niin paljon riistaa, kuin mahdollista, kilpaillakseen "
-"heimonsa kunniasta - ja ehkä aivan laatuajasta jonkun tarkoin vartioidun "
-"naispuolisen draakin kanssa."
+"heimonsa kunniasta."
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1532,7 +1534,7 @@ msgstr ""
 "pukeutuminen johtuu ylpeydestä, jota he roolistaan draakkiyhteiskunnassa "
 "tuntevat, sillä ei ole mitään seremoniallista arvoa. Heidän kömpelö "
 "pronssilevypanssari on draakkiahjojen vahvinta työtä - ja heidän hilparinsa "
-"voivat halkaista ihmisen kahtia. "
+"voivat halkaista ihmisen kahtia."
 
 #. [special_note]
 #: data/core/units/drakes/Warden.cfg:20
@@ -1540,6 +1542,8 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Muihin draakkeihin verrattuna, Draakkikaartilaisella on korkeampi vastustus "
+"'lävistäville' hyökkäyksille."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1565,10 +1569,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Alchemist"
-msgstr "Draakkimestari"
+msgstr "Dyynialkemisti"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1583,16 +1585,25 @@ msgid ""
 "much so that almost every caravan will hire or train a few alchemists to "
 "maintain a reasonable level of threat at all times."
 msgstr ""
+"Dyyniläisille alkemia on enemmänkin fytologian jatke ja vähemmän filosofian "
+"tai tieteen muoto. Kun muut heidän veljeskunnassaan keskittyvät yrttien "
+"lääke- ja parantamistarkoituksiin, käyttävät monet alkemistit erilaisia "
+"kasveja ja luonnossa esiintyviä aineita tappavien myrkkyjen valmistamiseen. "
+"Vaikka tämä taito on hyödyllinen vahvojen vihollisten heikentämiseen, muut "
+"dyyniläiset pitävät tätä taitoa tehokkaana vakoilu- ja salamurhakeinona. "
+"Samaan aikaan tällainen työkalu tarjoaa suuren poliittisen edun, niin "
+"suuren, että melkein jokainen karavaani palkkaa tai kouluttaa muutaman "
+"alkemistin ylläpitääkseen kohtuullisen uhkatason kaikkina aikoina."
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "puhallusputki"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
 msgid "Dune Apothecary"
-msgstr ""
+msgstr "Dyyniapteekkari"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:25
@@ -1609,13 +1620,22 @@ msgid ""
 "these men possess a special role in supporting the remedial arts of their "
 "kind."
 msgstr ""
+"Jopa rauhan aikana, aiheuttavat infektio ja loukkaantuminen ahdinkoa "
+"ankarissa aavikon hiekoissa. Siksi dyyniläisten parantajat tarvitsevat "
+"laajaa tietoa yrteistä ja lääkkeistä verrattuna muiden rotujen parantajiin. "
+"Heidän taikuuden puute yhdistettynä autiomaan niukkaan kasvillisuuteen "
+"aiheuttaa suuria vaikeuksia hoitaa, niitä lukuisia vaivoja ja myrkkyjä, "
+"jotka vaivaavat dyynikansaa. Apteekkarit ovat tyypillisesti enemmän "
+"matkustaneempia ja viisaampia kuin vähemmän kokeneet toverinsa "
+"veljeskunnassaan, mutta heidän todellinen taitonsa piilee monimutkaisessa "
+"tehtävässään arvokkaiden lääkekasvien hoitamisessa. Dyyniläisillä ei ole "
+"keinoja parantaa ilman näitä tarvittavia materiaaleja, joten apteekkareilla "
+"on erityinen rooli dyynikansan lääkistemisen tukemisessa."
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Blademaster"
-msgstr "Draakkimestari"
+msgstr "Dyynimiekkamestari"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:21
@@ -1651,10 +1671,8 @@ msgstr "sapeli"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:8
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Burner"
-msgstr "Polttodraakki"
+msgstr "Dyynipolttaja"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:21
@@ -1672,21 +1690,17 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "tervapommi"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "female^Dune Burner"
-msgstr "Polttodraakki"
+msgstr "Dyynipolttaja"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Elvish Captain"
 msgid "Dune Captain"
-msgstr "Haltiakapteeni"
+msgstr "Dyynikapteeni"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1704,7 +1718,7 @@ msgstr ""
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
 msgid "Dune Cataphract"
-msgstr ""
+msgstr "Dyynikatafrakti"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:23
@@ -1731,14 +1745,12 @@ msgstr ""
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
 msgid "composite bow"
-msgstr ""
+msgstr "komposiittijousi"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:8
-#, fuzzy
-#| msgid "Dwarvish Explorer"
 msgid "Dune Explorer"
-msgstr "Kääpiötutkimusmatkailija"
+msgstr "Dyynitutkimusmatkailija"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:20
@@ -1754,10 +1766,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Falconer"
-msgstr "Pimeyden rouva"
+msgstr "Dyynihaukkametsästäjä"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -1779,15 +1789,13 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "falcon"
-msgstr "Vanha velho"
+msgstr "haukka"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
-msgstr ""
+msgstr "Dyynitulitaistelija"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:22
@@ -1806,19 +1814,17 @@ msgstr ""
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "liekinheitin"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
-msgstr ""
+msgstr "Dyynitulitaistelija"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Dune Harrier"
-msgstr "Draakkisoturi"
+msgstr "Dyynijäljittäjä"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:25
@@ -1837,10 +1843,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
-#, fuzzy
-#| msgid "Duelist"
 msgid "Dune Herbalist"
-msgstr "Kaksintaistelija"
+msgstr "Dyyniparantaja"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:25
@@ -1861,10 +1865,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Dune Horse Archer"
-msgstr "Jousiörkki"
+msgstr "Dyynihevosjousimies"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:21
@@ -1880,10 +1882,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Luminary"
-msgstr "Polttodraakki"
+msgstr "Dyynitaitaja"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1906,7 +1906,7 @@ msgstr ""
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
 msgid "Dune Marauder"
-msgstr ""
+msgstr "Dyyniryöväri"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:31
@@ -1933,10 +1933,8 @@ msgstr "soihtu"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dune Paragon"
-msgstr "Rakuuna"
+msgstr ""
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1971,10 +1969,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:11
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Raider"
-msgstr "Hukkaratsastaja"
+msgstr "Dyynirosvo"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:30
@@ -1991,10 +1987,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Rider"
-msgstr "Hukkaratsastaja"
+msgstr "Dyyniratsastaja"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:21
@@ -2013,7 +2007,7 @@ msgstr ""
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
 msgid "Dune Rover"
-msgstr ""
+msgstr "Dyynikulkija"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:20
@@ -2031,7 +2025,7 @@ msgstr ""
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
-msgstr ""
+msgstr "Dyynipolttaja"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:22
@@ -2047,17 +2041,13 @@ msgstr ""
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Scorcher"
-msgstr "Pimeyden rouva"
+msgstr "Dyynipolttaja"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Dune Skirmisher"
-msgstr "Sauriaanitaistelija"
+msgstr "Dyynitaistelija"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:21
@@ -2075,10 +2065,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "female^Dune Sky Hunter"
-msgstr "Polttodraakki"
+msgstr "Dyynitaivasmetsästäjä"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -2103,10 +2091,11 @@ msgstr ""
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
 msgid "Dune Soldier"
-msgstr ""
+msgstr "Dyynisotilas"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
+#, fuzzy
 msgid ""
 "While most Dunefolk castes serve an additional practical purpose beyond only "
 "direct warfare, cities and caravans usually train a group of soldiers "
@@ -2117,11 +2106,19 @@ msgid ""
 "spaced pattern, allowing them to assault and overwhelm clustered enemy lines "
 "by engaging them in quasi-single combat."
 msgstr ""
+"Vaikka useimmat dyyniläisten säädyt palvelevat muutakin käytännön "
+"tarkoitusta kuin suoraa sodankäyntiä, kaupungit ja karavaanit kouluttavat "
+"yleensä sotilaita, jotka ovat täysin omistautuneet sotilaallisiin "
+"tarkoituksiin. Harjoittelemalla taitojaan miekkailussa, nämä soturit oppivat "
+"navigoimaan hankalia taisteluita lähietäisyydeltä ja päihittäen vihollisensa "
+"lähitaistelun avulla. Tyypillinen dyyniläisten muodostelma hyödyntää tätä "
+"taitoa asettamalla sotilaita erilleen, jolloin he voivat hyökätä ja kaataa "
+"ryhmittyneet vihollislinjat taistelemalla yksittäin yhtä vi"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
 msgid "Dune Spearguard"
-msgstr ""
+msgstr "Dyynikeihäsvartija"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:20
@@ -2140,10 +2137,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Spearmaster"
-msgstr "Draakkimestari"
+msgstr "Dyynikeihäsmestari"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:21
@@ -2170,10 +2165,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
-#, fuzzy
-#| msgid "female^Fugitive"
 msgid "female^Dune Strider"
-msgstr "Karkuritar"
+msgstr "Dyynikulkija"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
@@ -2193,8 +2186,9 @@ msgstr ""
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
+#, fuzzy
 msgid "Dune Sunderer"
-msgstr ""
+msgstr "Dyyniesiratsastaja"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
@@ -2212,10 +2206,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
-#, fuzzy
-#| msgid "Swordsman"
 msgid "Dune Swordsman"
-msgstr "Miekkamies"
+msgstr "Dyynimiekkamies"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:20
@@ -2245,10 +2237,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Warmaster"
-msgstr "Draakkimestari"
+msgstr "Dyynisotaherra"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:24
@@ -2266,10 +2256,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Wayfarer"
-msgstr "Draakkimestari"
+msgstr "Dyynivaeltaja"
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:21
@@ -2307,10 +2295,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Windbolt"
-msgstr "Hukkaratsastaja"
+msgstr "Dyynilähettiläs"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
@@ -2329,10 +2315,8 @@ msgstr ""
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Wyvern Rider"
-msgstr "Aarnikotkaratsastaja"
+msgstr "Lentoliskoratsastaja"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2362,6 +2346,26 @@ msgstr "Hurmoskääpiö"
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "Lohikäärmekaartilainen"
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+"On epäselvää, miksi kääpiöt kutsuvat lohikäärmekaartia juuri tällä nimellä. "
+"Jotkut arvelevat, että nimi tulee heidän asevalinnastaan, erikoisista "
+"sauvoista, jotka sylkevät tulta ja kuolemaa. Toiset arvelevat, että "
+"tällainen ase olisi uhka jopa oikealle lohikäärmelle, jos sellaisen kohtaisi "
+"tunnetussa maailmassa. Oli miten oli, suurten kääpiölinnoitusten vartijat "
+"ovat tunnettuja ja pelättyjä juuri aseidensa takia. Ne ovat nimittäin "
+"kaataneet mahtavimpiakin sotureita yhdellä iskulla."
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
@@ -2485,14 +2489,6 @@ msgstr "Järkkymätön kääpiö"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the singleminded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -2524,6 +2520,10 @@ msgid ""
 "in the heat of battle, and their mastery of both battleaxe and warhammer "
 "make them imposing foes indeed."
 msgstr ""
+"Knalgan ahjojen vahvimmilla panssareilla varustetut Rautapaidat ovat "
+"kääpiöarmeijoiden etujoukko. He ovat tunnettuja kestävyydestään taistelussa, "
+"ja sekä taistelukirveen että sotavasaran hallinta tekee heistä todella "
+"vaikuttavia vihollisia."
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
@@ -2534,6 +2534,30 @@ msgstr "Ukkoskääpiö"
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Ukkosvartija"
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+"Ukkosvartijat ovat kuuluisia erikoisista aseistaan, oudoista puu- ja "
+"rautasauvoista, jotka tulistuessaan jylisevät rajuilman lailla. Näiden "
+"aseiden toiminta on mysteeri, salaisuus, jonka niitä käyttävät Knalgan "
+"kääpiöt vievät mukanaan hautaansa. Se mitä tiedetään on että kääpiöt "
+"kaatavat näiden aseiden suuhun omituista mustaa pölyä, jonka jotkut "
+"väittävät ruokkivan sisälle vangittua petoa. \n"
+"\n"
+"Vaikka yhtä laukausta näistä ”ukkoskepeistä” saattaa joutua valmistelemaan "
+"monta minuuttia, tulokset ovat kääpiöiden mielestä hyvinkin sen arvoisia."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -2547,6 +2571,7 @@ msgstr "Jousihaltia"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:19
+#, fuzzy
 msgid ""
 "As primarily foragers and hunters, most elves learn to become proficient "
 "archers from a young age. Besides being only a practical skill, archery is "
@@ -2557,6 +2582,9 @@ msgid ""
 "Elvish archers are still effective combatants, especially when fighting from "
 "the safety of their forests."
 msgstr ""
+"Useimmat haltiat ovat ensisijaisesti keräilijöitä ja metsästäjiä, ja he "
+"oppivat taitaviksi jousiampujiksi jo nuorella iällä. Käytännön taidon "
+"lisäksi, jousiammunta on myös vapaa-ajan ja kilpailujen"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -2570,17 +2598,6 @@ msgstr "Haltiasissi"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The curious name of the elvish ‘Avengers’ comes from a tactic often "
-#| "employed by these master rangers. The enemy is allowed to break through a "
-#| "feint defense, and when the vulnerable troops behind the front line "
-#| "follow, these archers break cover and attack, cutting the supply lines "
-#| "and surrounding the enemy in one fell stroke.\n"
-#| "\n"
-#| "This has, at times, been interpreted as a form of vengeance for their "
-#| "brethren lost earlier in the battle. Although not so base in design, it "
-#| "is not at all inaccurate."
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -2591,14 +2608,13 @@ msgid ""
 "in design, it is not at all inaccurate."
 msgstr ""
 "Sissit ovat samoojien mestareita ja käyttävät usein samaa menestyksellistä "
-"taktiikkaa: vihollisen sallitaan läpäistä heikko puolustuslinja ja kun "
+"taktiikkaa. Vihollisen sallitaan läpäistä heikko puolustuslinja ja kun "
 "etulinjan takaiset haavoittuvaiset joukot seuraavat, nämä jousimiehet "
 "poistuvat suojista ja hyökkäävät, murtaen huoltolinjat ja saartaen "
-"vihollisen samalla.\n"
-"\n"
-"Tätä on silloin tällöin tulkittu kostoksi heidän taistelussa kaatuneiden "
-"veljiensä puolesta, ja siksi sissejä nimitetäänkin joskus myös ”kostajiksi”. "
-"Vaikkei kyse ole välttämättä tästä, ei tämä arvio aina ole väärä."
+"vihollisen samalla. Tätä on silloin tällöin tulkittu kostoksi heidän "
+"taistelussa kaatuneiden veljiensä puolesta, ja siksi sissejä nimitetäänkin "
+"joskus myös ”kostajiksi”. Vaikkei kyse ole välttämättä tästä, ei tämä arvio "
+"aina ole väärä."
 
 #. [special_note]
 #: data/core/units/elves/Avenger.cfg:22
@@ -2606,6 +2622,8 @@ msgid ""
 "Elvish Avengers are well-traveled and adept at traversing harsh terrains "
 "like sand, water, and mountains."
 msgstr ""
+"Haltiasissit ovat hyvin kokeneita ja varustettu kulkemaan karussakin "
+"maastossa kuten, vuoristoissa, vesistöissä ja hiekassa."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2629,6 +2647,15 @@ msgid ""
 "often observed to lead through camaraderie and amicability, but still "
 "command great respect from their kin."
 msgstr ""
+"Haltiakapteenit komentavat yleensä partioita ja varuskuntia, jotka "
+"vartioivat haltioiden alueiden laajoja metsiä. Toisin kuin muiden rotujen "
+"johtajat, he ovat taitavimpia navigoimaan pienissä yhteenotoissa suurempien "
+"taistelujen sijaan, ja ovat erityisen taitavia puolustavassa ohjauksessa. "
+"Kapteenit johtavat yleensä pieniä ryhmiä, jotka pysyvät yhdessä pitkiä "
+"aikoja, jolloin he voivat henkilökohtaisesti ohjata ja ystävystyä "
+"joukkoihinsa. Heidän havaitaan usein johtavan toveruudella ja "
+"ystävällisyydellä, mutta silti he herättävät suurta kunnioitusta muilta "
+"haltioilta."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
@@ -2649,6 +2676,17 @@ msgid ""
 "their whole lives refining their prowess with the blade, these elves are "
 "exceptionally dangerous and should never be underestimated."
 msgstr ""
+"Haltiat ovat tyypillisesti luonteeltaan rauhallisia ja useimmat hyökkäävät "
+"vain kostoksi heille kohdistetuista väärinkäytöksistä. Jotkut haltiat "
+"kuitenkin etsivät tarkoituksella taistelua, tarkoituksellisesti tai muuten, "
+"omaksi ilokseen. Jatkuvan taistelun kautta nämä soturit joko oppivat hiomaan "
+"miekkamiestaitojaan tasolle, joka ylittää useimmat ikäisensä, tai hukkuvat "
+"lähitaistelun epävakaaseen kiihkoon. Ne, jotka pystyvät selviytymään, "
+"kasvavat lopulta tarpeeksi taitaviksi valloittamaan taistelukentät kokonaan "
+"ja heistä tulee todellisia sodan mestareita, kun he armottomasti leikkaavat "
+"vihollistensa läpi. Nämä haltiat ovat viettäneet koko elämänsä terän "
+"hallinnan parantamiseen, joten ne ovat poikkeuksellisen vaarallisia, eikä "
+"niitä pidä koskaan aliarvioida."
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -2670,6 +2708,18 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+"Jotkut haltiat päättävät syventää yhteyttään aineelliseen maailmaan, mikä "
+"parantaa heidän jo ennestään voimakkaita kykyjään edistää ja manipuloida "
+"luonnollisia energioita. Ehkä näiden druidien taikuuden merkittävin vaikutus "
+"on heidän säilyttämiensä syvissä metsissä vallitseva voimakas liikkeen "
+"tunne. Haltijametsissä vaeltavat ulkopuoliset puhuvat usein takertuneista "
+"juurista ja viiniköynnöksistä, jotka liikkuvat lähes yhtä nopeasti kuin "
+"soturin marssivauhti, tai ikivanhojen puiden narisevasta laahustamisesta, "
+"vaeltaen kokonaisia leirejä yhdessä yössä. Metsästä ja maasta tulee melkein "
+"kuin toisiinsa liittyvä kokonaisuus, joka elää ja hengittää kuin yksi "
+"massiivinen organismi. Kukoistaessaan druidien huolellisen hoidossa, metsä "
+"sytyttää vuorostaan heidän taikuutensa vahvistaen symbioottisesti näiden "
+"haltioiden jo ennestään voimakkaita voimia."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
@@ -2684,6 +2734,7 @@ msgstr "Haltialumoojatar"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
+#, fuzzy
 msgid ""
 "In the context of Elven magic, the notion of enchanting is a little bit "
 "misleading since it almost always refers to manipulation of an object’s "
@@ -2696,6 +2747,17 @@ msgid ""
 "well-regarded by most of their kin and sometimes called upon for guidance "
 "especially in unusual or peculiar matters."
 msgstr ""
+"Haltioiden taikuuden yhteydessä käsitys lumoamisesta on hieman "
+"harhaanjohtava, koska se viittaa melkein aina esineen olemuksen "
+"manipulointiin ennustamisen tai oivalluksen tarkoituksessa. Suosikki "
+"lumoutujien joukossa on heidän luonnollisen ympäristönsä imeytyminen "
+"arkaanisen hengityksen kanssa, mikä tuottaa salaisia lehtoja, jotka ovat "
+"ruumiillisen ja eteerisen maailman risteyksessä. Näitä salaperäisiä piiriä "
+"pitävät heidän yhtä arvoituksellinen huoltajansa, jotka pitävät enimmäkseen "
+"itsensä poissa uteliailta katseilta. Vaikka he ovat melko pidättymättömiä ja "
+"epäsosiaalisia, useimmat sukulaisistaan pitävät nämä tontut hyvin, ja joskus "
+"heitä pyydetään opastamaan erityisesti epätavallisissa tai erikoisissa "
+"asioissa."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
@@ -2720,6 +2782,13 @@ msgid ""
 "react and counter. Most elves can learn the basics of swordplay relatively "
 "quickly and will readily pick up the blade when confronted with battle."
 msgstr ""
+"Haltioiden joukossa miekkailua harjoittavat yleisimmin vartijat ja "
+"rajavartijat, jotka toimivat ensisijaisesti metsien vartijoina ja toisinaan "
+"pieninä ryhminä tunkeutumaan muille alueille. Haltioiden miekkailu tunnetaan "
+"painottamisestaan nopeisiin ja ketteriin iskuihin, jotka tuottavat vähemmän "
+"voimaa kuin ihmis- tai örkisoturit, mutta jättävät myös vähemmän aikaa "
+"reagoida ja torjua. Useimmat haltiat voivat oppia miekkailun perusteet "
+"suhteellisen nopeasti ja tarttuvat helposti terään taistelussa."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
@@ -2728,6 +2797,7 @@ msgstr "Haltiasankari"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
+#, fuzzy
 msgid ""
 "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly meaning "
 "‘one who has sacrificed in defense’ or ‘one transfigured by experience’. "
@@ -2744,6 +2814,21 @@ msgid ""
 "service, such a status is not one often sought after by the majority of "
 "Elvenkind."
 msgstr ""
+"Taitavia haltiasotureita kutsutaan joskus nimellä \"Sárcan\", mikä "
+"tarkoittaa karkeasti \"hän, joka on uhrannut puolustaessaan\" tai "
+"\"kokemuksen muuttama\". Ihmiskielellä karkeasti käännettynä nimi "
+"\"Haltiasankari\", osoittaa jonkin verran arvovaltaa, mutta sen tarkoitus ei "
+"ole ylistää asemaa. Haltiasankarit ovat niitä, jotka ovat selviytyneet "
+"useista sodista ja eläneet kauemmin kuin monet aiemmissa taisteluissa "
+"kaatuneet ystävänsä. Taistelukentän harvojen yksinäisten selviytyjien "
+"joukossa nämä taistelussa paatuneet sotilaat ovat tietoisia sodan lukuisista "
+"julmuuksista. Örkit ja ihmiset polttavat ja tuhoavat heidän kotinsa "
+"metsissä, kääpiöt ryöstävät kaatuneiden arvoesineitä, nekromantit "
+"kasvattavat omia tovereitaan taistelemaan heitä vastaan ​​tai jopa heidän "
+"omiaan teurastamaan viattomia ilman huolenpitoa tai armoa. Vaikka haltiat "
+"ymmärtävät sotilaallisen voiman välttämättömyyden ja kunnioittavat "
+"\"Sárcanetia\" sankareina palveluksestaan, tällaista asemaa ei usein haeta "
+"haltioiden enemmistön taholta."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -3166,6 +3251,16 @@ msgid ""
 "to goblins, recognize that picking a fight with the rider is also picking a "
 "fight with jaws that strike faster than a sword, and almost as hard."
 msgstr ""
+"Taistelukokemus ei vahvista ainoastaan ratsun ja ratsastajan taistelukykyä, "
+"vaan myös vahvistaa heidän välistä sidettä. Vaikka ihmisritari voi ratsastaa "
+"eri ratsuilla taisteluun, \"Hiisiritari\" viittaa hiiteen ja suteen yhdessä "
+"yhtenä yksikkönä, uskollisina toisilleen loppuun asti.\n"
+"\n"
+"Örkkien joukossa ratsastajia kohdellaan hiisiä korkeampana luokkana, vaikka "
+"ne olisivat erotettuja ratsuistaan. Örkkisotilaat, vaikka tuntevat olevansa "
+"hiisiä parempia, ymmärtävät kuitenkin, että taistelu ratsastajaa vastaan on "
+"myös taistelu leukoja vastaan, jotka iskevät nopeammin kuin miekka ja "
+"melkein yhtä kovaa."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -3181,7 +3276,7 @@ msgid ""
 "rally for defense or reprisal."
 msgstr ""
 "Jotkut hiidet kouluttavat tulen pelon pois susistaan. Ryöstöretkillä nämä "
-"hiidet ovat kantava voima: ne polttavat uhrien kodit ja viljan ja kantavat "
+"hiidet ovat kantava voima. Ne polttavat uhrien kodit ja viljan ja kantavat "
 "verkkoja häiritäkseen niitä, jotka järjestäytyvät puolustukseen tai "
 "kostoiskuun."
 
@@ -3228,6 +3323,13 @@ msgid ""
 "fodder against an enemy of their larger siblings' choosing while equipped "
 "with only the crudest of spears."
 msgstr ""
+"Jokaisessa rodussa on aina niitä yksilöitä, jotka huonon onnen seurauksena "
+"syntyvät paljon pienemmiksi ja heikommiksi kuin muut lajitoverinsa. Örkeillä "
+"tällaiset tapahtumat ovat kuitenkin poikkeuksellisen yleisiä, sillä "
+"jokaisessa pentueessa syntyy yleensä näitä useita. Nämä \"Hiisinä\" tunnetut "
+"olennot elävät melkein aina lyhyen, julman elämän, joista useimmiten vain "
+"keihäillä varustettuina käytetään nuolenruokana isompien örkkien valitsemaa "
+"vihollista vastaan."
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
@@ -3236,19 +3338,6 @@ msgstr "Susiratsastaja"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
-#, fuzzy
-#| msgid ""
-#| "No one is quite sure how the practice of taming and riding wolves came "
-#| "into being, but the advantages of it for a goblin are obvious. Goblins "
-#| "are smaller and much weaker than their orcish kin, and are often tasked "
-#| "to the most dangerous and unwanted parts of a fight. Any who can manage "
-#| "to win themselves a mount have a much safer, and daresay, more amusing "
-#| "role in combat.\n"
-#| "\n"
-#| "Wolves, likely, could never support the weight of a man in plate, but a "
-#| "goblin in leather armor is a simple load to bear. Quite unlike horses, "
-#| "these mounts have a rather easy time traversing the mountains, though "
-#| "water and woods will still slow them down."
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are much "
@@ -3262,8 +3351,8 @@ msgid ""
 "though water and woods will still slow them down."
 msgstr ""
 "Kukaan ei ole varma, miten susien kouluttaminen ja ratsastaminen alkoi, "
-"mutta hiidelle siitä seuraavat hyödyt ovat itsestäänselviä. Hiidet ovat "
-"paljon pienempiä ja heikompia kuin örkit, ja  heidät useimmiten käsketään "
+"mutta hiidelle siitä seuraavat hyödyt ovat itsestään selviä. Hiidet ovat "
+"paljon pienempiä ja heikompia kuin örkit, ja heidät useimmiten käsketään "
 "vaarallisimpiin ja inhottavimpiin osiin taisteluissa. Jokainen, joka pystyy "
 "hankkimaan itselleen ratsun, saa paljon helpomman ja jopa viihdyttävämmän "
 "roolin taistelussa.\n"
@@ -3404,24 +3493,6 @@ msgstr "Pyhä ritari"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "    \n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -3441,10 +3512,10 @@ msgid ""
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 "Pyhät ritarit, ritareista hyveellisimmät, ovat vannoneet voimansa, eivät "
-"kuninkaalle tai kruunulle, vaan ihanteelle itselleen – ritarillisuudelle ja "
+"kuninkaalle tai kruunulle, vaan ihanteelle itselleen, ritarillisuudelle ja "
 "tunnolliseselle hyvien asioiden hoitamiselle. He palvelevat maailman "
 "armeijoissa, mutta heidän ensisijainen lojaaliutensa usein kuuluu omille "
-"ryhmilleen: salaisille luostarimaisille järjestöille, jotka ylittävät "
+"ryhmilleen. Salaisille luostarimaisille järjestöille, jotka ylittävät "
 "poliittiset ja kulttuuriset rajat. Joskus hallitsijat ovat hyvin varuillaan "
 "heidän kanssaan, sillä pyhän ritarin lojaalius on vain niin vahvaa kuin "
 "läänin näennäinen hyveellisyys. Tämä on johtanut monia salailevia ja "
@@ -3512,12 +3583,6 @@ msgstr "Ratsumestari"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
@@ -3673,6 +3738,13 @@ msgid ""
 "in ornate plate armor and granted some of the finest weaponry that human "
 "craftsmen can offer."
 msgstr ""
+"Armeijansa johtajina kenraalit ovat vastuussa suurten tai tärkeiden alueiden "
+"suojelusta valtakunnissa, joille he ovat vannoneet uskollisuutta. Sotimiseen "
+"kokeneet kenraalit voivat ohjata uusimmatkin värvätyt iskemään strategisesti "
+"mahdottomia todennäköisyyksiä vastaan ja selviämään voittajina. Aateliston "
+"sekä tavallisten kansalaisten tunnustamina, kenraaleilla on koristeellinen "
+"levypanssari ja heille on myönnetty hienoimpia aseita, joita käsityöläiset "
+"voivat tarjota."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -3732,6 +3804,8 @@ msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
+"Muihin uskollisiin verrattuna, hilparimiehillä on suurempi vastustus "
+"\"lävistäviin\" hyökkäyksiin."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3942,16 +4016,6 @@ msgstr "Kuninkaankaartilainen"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
-#| "any of the higher nobility, they function as bodyguards, and partly as a "
-#| "badge of office for their employers. A special force of Royal Guards is "
-#| "stationed at the capitol, guarding the palace grounds and the royal "
-#| "family. Because of their trusted relationship to their superiors, they, "
-#| "rather than mercenaries, are often deployed on missions of crucial "
-#| "import. Their reliability and mastery of close combat are their best "
-#| "assets, for which they are well-renowned."
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
 "any of the higher nobility, they function as bodyguards, and partly as a "
@@ -3964,12 +4028,12 @@ msgid ""
 msgstr ""
 "Kuninkaan kaarti valitaan Wesnothin parhaista miekkamiehistä. He palvelevat "
 "korkeinta aatelistoa ja toimivat henkivartijoina ja arvomerkkinä "
-"työnantajilleen. Erityinen joukko kuninkaanaartia on sijoitettu "
-"pääkaupunkiin, jossa he vahtivat palatsia ja kuninkaallista perhettä. He "
-"nauttivat ylempiensä luottamusta ja tämän takia heitä, ei palkkasotureita, "
-"käytetään usein tärkeimmissä tehtävissä. Heidän luotettavuutensa ja "
-"lähitaistelutaitonsa ovat heidän tärkeimpiä kykyjään, ja niistä "
-"heidättunnetaan."
+"työnantajilleen. Kuninkaankaartin erikoisjoukko on sijoitettu pääkaupunkiin, "
+"jossa he vahtivat palatsia ja kuninkaallista perhettä. He nauttivat "
+"ylempiensä luottamusta ja tämän takia heitä, ei palkkasotureita, käytetään "
+"usein tärkeimmissä tehtävissä. Heidän luotettavuutensa ja "
+"lähitaistelutaitonsa ovat heidän tärkeimpiä kykyjään, ja niistä heidät "
+"tunnetaan."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:22
@@ -3990,11 +4054,6 @@ msgstr "Kersantti"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Sergeant is a low-ranking officer in the ranks of an army. Though "
-#| "academically trained, he will need some experience in the field before "
-#| "his leadership is sound and acknowledged."
 msgid ""
 "Sergeants are low-ranking officers of human armies. Though academically "
 "trained, they need some experience in the field before their leadership is "
@@ -4002,9 +4061,11 @@ msgid ""
 "combat means they can more effectively rouse civilians and peasants in "
 "trying situations."
 msgstr ""
-"Kersantti on kuninkaallisen armeijan upseeri. Vaikka hän on akatemiassa "
-"koulutettu, hän tarvitsee vielä jonkin verran kokemusta, ennen kuin häntä "
-"kuunnellaan taistelussa. "
+"Kersantit ovat kuninkaallisen armeijan upseereita. Vaikka heidät on "
+"akatemiassa koulutettu, tarvitsevat he vielä jonkin verran kokemusta, ennen "
+"kuin heidän johtajuutta ja kokemusta arvostetaan taistelussa. Silti heidän "
+"ahkera olemuksensa ja taistelukokemuksensa ansiosta he pystyvät tehokkaammin "
+"nostattamaan siviilejä ja talonpoikia haastavissa tilanteissa."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -4345,8 +4406,12 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
+#, fuzzy
+#| msgid ""
+#| "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and "
+#| "are highly resistant to non-physical damage."
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
 "Hopeavelhot ovat hyvin tottuneita heidän maagiseen luonteeseensa ja ovat "
@@ -4632,10 +4697,10 @@ msgid ""
 "their colleagues."
 msgstr ""
 "Jotkut miehet ilman tiettyjä kykyjä eivät voi, tai eivät halua, elää "
-"rehellisesti. Ne jotka yrittävät ylittää aidan matalimasta kohdasta, ovat "
+"rehellisesti. Ne jotka yrittävät ylittää aidan matalimmasta kohdasta, ovat "
 "tunnettuja 'Räyhääjinä'. Tarpeeksi suurella määrällä onnea ja kokemusta he "
 "joskus onnistuvat välttämään tiesulut, jotka odottavat suurinta osaa heidän "
-"tovereistaan. "
+"tovereistaan."
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -4671,7 +4736,7 @@ msgid "Thug"
 msgstr "Korsto"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -4692,12 +4757,6 @@ msgstr "Talonpoika"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Peasants are the backbone of the rural economy, and the soldiers of last "
-#| "resort. While not warlike by nature, they will stubbornly defend their "
-#| "homes. However, if you’re hurling peasants at your foes, you’re clearly "
-#| "out of superior forces."
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -4706,9 +4765,11 @@ msgid ""
 "only on the field of battle under the most desperate situations."
 msgstr ""
 "Talonpojat ovat maaseudun talouden selkäranka ja sotilaita vain viime "
-"hädässä. He eivät ole luonteeltaan sotaisia mutta puolustavat kotejaan "
-"tarvittaessa itsepäisesti. Jos talonpoikia heitetään vihollisen niskaan, on "
-"selvää että paremmat joukot ovat loppuneet."
+"hädässä. He eivät ole luonteeltaan sotaisia, mutta puolustavat kotejaan "
+"tarvittaessa itsepäisesti. Heidän koulutuksen ja kurin puute tekee heistä "
+"huonoja pitämään taistelulinjoja, ja heidän turvautuminen maanviljely "
+"työkaluihin aseina, kertoo että he ovat taistelukentällä vain "
+"epätoivoisimpina hetkinä."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:32
@@ -4722,6 +4783,7 @@ msgstr "Kuninkaallinen taistelija"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:25
+#, fuzzy
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
 "in the combat arts, partly out of tradition from when their ancestors made "
@@ -4730,6 +4792,11 @@ msgid ""
 "of moving in heavy armor, and can maneuver across the battlefield much "
 "faster than their gilded plate would suggest."
 msgstr ""
+"Ihmisten aateliston kuninkaat ja prinssit kouluttautuvat myös "
+"perusteellisesti taistelulajeihin, osittain perinteestä, jolloin heidän esi-"
+"isänsä hankkivat rikkautensa sodassa. Sonnustautuneena niin taidokkaasti "
+"tehtyihin haarniskoihin, sytyttäen kateutta jopa osassa kääpiö sepistä, nämä "
+"aateliset ovat hyvin "
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -4843,7 +4910,7 @@ msgstr ""
 "motiivinsa ovat välillä epätavallisia, ja he vähää välittävät "
 "kuninkaallisista asetuksista, jos ylipäänsä saavat kuulla niistä lainkaan. "
 "Samoojia voi värvätä, mutta heihin törmää yhtä varmasti niin maantierosvojen "
-"palkkaamana kuin kuninkaankin palveluksessa. "
+"palkkaamana kuin kuninkaankin palveluksessa."
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
@@ -5189,14 +5256,6 @@ msgstr "Merenmieskeihästäjä"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Archery is little favored by the mermen, for whom use of javelins serves "
-#| "a similar function. Though thrown javelins are of little use under the "
-#| "water, they are extremely effective at the surface, where their weight "
-#| "allows them to plunge several feet below the water while retaining enough "
-#| "momentum to wreak damage. They are also useful in melee, even deep under "
-#| "the surface, which is something that certainly cannot be said of arrows."
 msgid ""
 "Archery is little favored by the merfolk, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -5206,11 +5265,11 @@ msgid ""
 "which is something that certainly cannot be said of arrows."
 msgstr ""
 "Jousiammunta ei juurikaan ole merenmiesten suosiossa, sillä keihäänheitto "
-"palvelee heille samaa tarkoitusta. Vaikka heittokeihäät veden alla varsin "
-"vähän käytetäänkin, ne ovat erittäin hyödyllisiä pinnalla, jossa niiden "
-"paino sallii niiden lentää muutamia metrejä veden alle liikkuen yhä "
-"tarpeeksi lujaa vahingoittaakseen. Ne ovat hyödyllisiä myös lähitaistelussa, "
-"jopa syvällä pinnan alla, mitä ei varmasti voi sanoa nuolista."
+"palvelee heille samaa tarkoitusta. Vaikka heittokeihäitä veden alla vähän "
+"käytetäänkin, ne ovat erittäin hyödyllisiä pinnalla, jossa niiden paino "
+"sallii niiden lentää muutamia metrejä veden alle liikkuen yhä tarpeeksi "
+"lujaa vahingoittaakseen. Ne ovat hyödyllisiä myös lähitaistelussa, jopa "
+"syvällä pinnan alla, mitä ei varmasti voi sanoa nuolista."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -5219,11 +5278,6 @@ msgstr "Tritoni"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Tritons are combat masters of the sea. Skilled in use of the trident, "
-#| "Tritons easily defeat any enemy foolish enough to wander into their "
-#| "preferred environment."
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -5233,7 +5287,9 @@ msgid ""
 msgstr ""
 "Tritonit ovat meren taistelumestareita. Kolmikärjellään tritonit voittavat "
 "helposti kaikki viholliset, jotka hölmöinä tulevan heidän "
-"ominaisympäristöönsä."
+"ominaisympäristöönsä. Heidän edistynyt aseittensa hallinta sallii niiden "
+"monimuotoisen käytön, ja kokeneimmat heistä käyttävät enemmän hilparia "
+"muistuttavia aseita, kuin yksinkertaisia keihäitä."
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -5251,10 +5307,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant"
-msgstr "Jättiläisrotta"
+msgstr "Jättiläismuurahainen"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:19
@@ -5267,7 +5321,7 @@ msgstr ""
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "Luolakarhu"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -5277,11 +5331,15 @@ msgid ""
 "hearing, but poor eyesight. When a rival predator, or some other threat, "
 "gets too close, a bear will reliably attack."
 msgstr ""
+"Luolakarhut ovat suuria, voimakkaita petoja, joilla on terävät kynnet ja "
+"suuret hampaat. Pimeissä luolissa liikkumiseen sopeutuneina, niillä on "
+"terävä haju- ja kuuloaisti, mutta huono näkö. Kun kilpaileva petoeläin tai "
+"jokin muu uhka tulee liian lähelle, karhu hyökkää varmasti päälle."
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "Metsävillisika"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -5290,38 +5348,43 @@ msgid ""
 "A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
 "boar is a challenge even to the best hunters."
 msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
+"Villisikojen ikääntyessä niiden lukuisat ennestään mahtavat hampaat kasvavat "
+"pidemmiksi. Täysikasvuinen, kesytetty villisika on arvokas voimavara "
+"jokaiselle maanviljelijälle, mutta vihainen villisika on haaste "
+"parhaimmallekkin metsästäjille."
 
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
-msgstr ""
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
+msgstr "torahammas"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
-msgstr ""
+msgstr "Porsas"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
+"Nuoret porsaat ovat uteliaita, mutta eivät yhtä äkkipikaisia kuin heidän "
+"vanhempansa, jokseenkin vähemmän haastavia taistelussa. Mutta harvoin löytyy "
+"porsasta, jolla ei ole suojelevaa aikuista karjua."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5332,24 +5395,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5360,34 +5423,24 @@ msgstr ""
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
-#, fuzzy
-#| msgid "Cuttle Fish"
 msgid "Cuttlefish"
 msgstr "Mustekala"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cuttle Fish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Cuttlefish are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"Mustekalat ovat jättimäisiä mereneläviä. Ne tarraavat vihollisiinsa "
+"Mustekalat ovat jättimäisiä mereneläviä. Ne tarraavat vastustajiinsa "
 "lonkeroilla tai sylkevät myrkyllistä mustettu kauempaa. Paras tapa selvitä "
 "hengissä näiltä otuksilta on pysyä rannalla."
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "Elder Falcon"
-msgstr "Vanha velho"
+msgstr "Vanhempi haukka"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
@@ -5397,20 +5450,22 @@ msgid ""
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy’s head."
 msgstr ""
+"Vanhimmat haukat kantavat paljastavia arpia isäntiensä suojelemisesta, ja "
+"heidän ruumiinsa on todiste toistuvista sukelluksista taisteluiden "
+"pyörteisiin. Vahvempia ja nopeampia kuin nuoremmat sukulaisensa, ja huhutaan "
+"että he iskevät riittävällä voimalla poistaakseen vihollisen pään."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/core/units/monsters/Elder_Falcon.cfg:27
 #: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
 msgid "beak"
-msgstr ""
+msgstr "nokka"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "Falcon"
-msgstr "Vanha velho"
+msgstr "Haukka"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:19
@@ -5420,13 +5475,15 @@ msgid ""
 "foes on the battlefield, and their great speed is a boon to scouting out the "
 "land."
 msgstr ""
+"Aatelisten statussymboleina haukat ovat arvokasta omaisuutta, jota "
+"tavallisesti käytetään urheilussa. Samoja tekniikoita käytetään vihollisten "
+"repimiseen ja raastamiseen taistelukentällä, ja niiden suuri nopeus on "
+"siunaus maaston tiedustelussa."
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant"
-msgstr "Lohikäärme"
+msgstr "Tulimuurahainen"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
@@ -5436,6 +5493,11 @@ msgid ""
 "as scavengers, a burrow of fire ants can become aggressive when provoked and "
 "have even been known to attack small groups of threatening troops."
 msgstr ""
+"Pieni kokoinen, mutta suurina määränä tappavia. Tulimuurahaisilla on lujat "
+"leuat ja epätavallinen kyky synnyttää tulta. Vaikka nämä olennot "
+"tyypillisesti toimivat raadonsyöjinä, tulimuurahaisten kuoppa voi muuttua "
+"aggressiivisiksi provosoituessaan ja niiden tiedetään jopa hyökkäävän "
+"pienien uhkaavien joukkojen kimppuun."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
@@ -5506,12 +5568,6 @@ msgstr "tulihenkäys"
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
 #, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
@@ -5543,19 +5599,15 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
-#, fuzzy
-#| msgid "fire claws"
 msgid "ice claw"
-msgstr "tulikynnet"
+msgstr "jääkynnet"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Stoat"
-msgstr "Jättiläisrotta"
+msgstr "Jättiläiskärppä"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr ""
@@ -5620,7 +5672,7 @@ msgstr "piikki"
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
 msgstr "sakset"
 
@@ -5706,17 +5758,14 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
+msgid "hooves"
 msgstr ""
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
 #, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "Valkea velho"
+msgstr "Valkea hevonen"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -5776,18 +5825,15 @@ msgid "Black Stallion"
 msgstr ""
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
-#, fuzzy
-#| msgid "female^Mage of Light"
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
-msgstr "Valon velhotar"
+msgstr ""
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "Suurvelho"
+msgstr "Suurhevonen"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -5801,7 +5847,7 @@ msgstr ""
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "Jäävyötiäinen"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -5816,7 +5862,7 @@ msgstr ""
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "Suuri jäävyötiäinen"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -5830,7 +5876,7 @@ msgstr ""
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "Jinni"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -5851,9 +5897,8 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
 #, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "salama"
+msgstr "aavikko salama"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5873,7 +5918,7 @@ msgstr ""
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "Rok-lintu"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:19
@@ -5893,13 +5938,11 @@ msgstr ""
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "Jättiskorpioni"
+msgstr "Kallioskorpioni"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -5909,16 +5952,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
-#, fuzzy
-#| msgid "water spray"
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
-msgstr "vesiryöppy"
+msgstr "suihkaisu"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "Pillerinpyörittäjä"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -5938,10 +5979,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "piikit"
+msgstr "sarvi"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -5959,13 +5998,19 @@ msgid ""
 "even to the elite merfolk warriors, and are the reason they seldom inhabit "
 "waters far from the shore."
 msgstr ""
+"Merikäärmeet herättävät pelkoa ja kunnioitusta kalastajissa ja merimiehissä, "
+"ja niitä pidetään kansanperinnön mukaan usein meren vihaisina jumaluuksina. "
+"Nämä vaikeaselittäiset olennot, jotka pystyvät tuhoamaan laivoja "
+"vaivattomasti, joilla on näennäisesti loputon vahvuus ja elinvoima, ovat "
+"tuhoisia ja säälimättömiä kaikille, jotka yrittävät taistella niitä vastaan. "
+"Yleensä syvällä meressä asuvat merikäärmeet ovat vaarallisia jopa eliitille "
+"merenväen sotureille, josta syystä he asuvat harvoin vesillä kaukana "
+"rannasta."
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "Suurvelho"
+msgstr "Jättimerihevonen"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -5977,6 +6022,14 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"Merihevoset ovat erilaisia kaloja, joilla on hevosen kaltainen pää, mutta "
+"niillä ei ole todellista yhteyttä hevoseläimiin. Useimmat merihevoset ovat "
+"pieniä, ujoja olentoja, jotka syövät hyönteisiä ja vastaavia pieniä "
+"saaliita, mutta jättimerihevoset ovat riittävän suuria uhkaamaan "
+"varomattomia matkailijoita. Tämä suuri lajike voi sylkeä vettä riittävällä "
+"voimalla tainnuttaakseen pienen eläimen, ja sillä on paksu, luinen "
+"levypanssari, mutta kuten kaikki merihevoset, se on hidas uimari eikä pysty "
+"liikkumaan maalla."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -6017,6 +6070,12 @@ msgid ""
 "being caught and dragged underwater to face whatever beast the tentacles are "
 "attached to."
 msgstr ""
+"Nämä lonkerot ovat aaltojen alla piilevän suuremman hirviön ulokkeita. Ne "
+"eivät selvästikään pysty uskaltautumaan kauas vedestä eivätkä ole kovin "
+"uhkaavia yksittäin huolimatta kyvystään parantaa vammat nopeasti. Monet ovat "
+"kuitenkin ymmärrettävästi epäröineet lähestyä, koska pelkäävät jäävänsä "
+"kiinni ja vetäytyvänsä veden alle kohtaamaan mitä tahansa petoa, johon "
+"lonkerot ovat kiinnittyneet."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
@@ -6039,10 +6098,11 @@ msgstr ""
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
-msgstr ""
+msgstr "Villilentolisko"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
+#, fuzzy
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6055,15 +6115,25 @@ msgid ""
 "behavior may be an adaptation to the harsh desert environments they often "
 "inhabit."
 msgstr ""
+"Lentoliskot ovat suuria matelijoita, jotka muistuttavat lohikäärmeitä, mutta "
+"eivät ole älykkäitä taikaolentoja. Ei kuitenkaan kannata aliarvioida niitä "
+"villeinä petoina, joista ei olisi harmia ohikulkijalle, sillä ne ovat "
+"nopeita ja vaarallisia nälkäisinä tai uhattuina.\n"
+"\n"
+"Lentoliskot ovat sosiaalisia olentoja, jotka usein liikkuvat pareittain tai "
+"pienissä ryhmissä. Niiden metsästys tapoja ja ruokavaliota on vaikea "
+"kartoittaa, sillä ne työskentelevät usein pienempien eläinten kanssa, jotka "
+"voivat olla potentiaalinen saalis. Tämä outo käyttäytyminen voi olla "
+"sopeutumista ankariin aavikkoympäristöihin, joissa ne usein elävät."
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "Susi"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6100,11 +6170,18 @@ msgid ""
 "encounter with their bare fists. This is enough to keep even the doubtful "
 "from venturing too far onto the mountains they are said to inhabit."
 msgstr ""
+"Vain vähän tiedetään Lumimiehistä, näistä ihmismäisistä olennoista, joiden "
+"sanotaan elävän eristyksissä lumen peittämillä vuorilla. Harvat väittävät "
+"nähneensä sellaisen, ja monet epäilevät niiden olemassaoloa. Useimmat ovat "
+"kuitenkin samaa mieltä useista seikoista. Vaikka Lumimiehet ovat hitaita ja "
+"yksinkertaisia, ne ovat äärimmäisen sitkeitä ja ne voivat tappaa kaiken mitä "
+"kohtaavat paljailla nyrkkeillään. Tämä riittää estämään epäileväistenkin "
+"uskaltautumista liian kauas vuorille, joissa heidän sanotaan asuvansa."
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
-msgstr ""
+msgstr "Nagapistäjä"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
@@ -6119,17 +6196,16 @@ msgid ""
 "it comes time to engage in warfare."
 msgstr ""
 
+# Onko oikeaa käännöstä olemassa? -styxnix, 2021
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "chakri"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
-#, fuzzy
-#| msgid "Nagini Fighter"
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
-msgstr "Nagataistelija"
+msgstr "Naginipistäjä"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -6155,14 +6231,12 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:49
 msgid "Nagini Fighter"
-msgstr "Nagataistelija"
+msgstr "Naginitaistelija"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "Kuninkaankaartilainen"
+msgstr "Nagavartija"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6176,10 +6250,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "Nagataistelija"
+msgstr "Nagaeliittivartija"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -6193,17 +6265,16 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
-msgstr ""
+msgstr "kilpi"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
 #, fuzzy
-#| msgid "Drake Slasher"
 msgid "Naga Shield Guard"
-msgstr "Draakkivartija"
+msgstr "Nagakilpivartija"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -6217,7 +6288,7 @@ msgstr ""
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr "Myrmidoni"
+msgstr "Nagamyrmidoni"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
@@ -6237,7 +6308,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:48
 msgid "Nagini Myrmidon"
-msgstr "Myrmidonitar"
+msgstr "Naginimyrmidonitar"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:50
@@ -6256,10 +6327,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:4
-#, fuzzy
-#| msgid "Naga Myrmidon"
 msgid "Naga Ophidian"
-msgstr "Myrmidoni"
+msgstr "Nagakeihästäjä"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
@@ -6280,32 +6349,26 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
-#, fuzzy
-#| msgid "war blade"
 msgid "curved blade"
-msgstr "sotakalpa"
+msgstr "käyräsapeli"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
-#, fuzzy
-#| msgid "Naga Myrmidon"
+#: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
-msgstr "Myrmidoni"
+msgstr "Naginikeihästäjä"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "Nagataistelija"
+msgstr "Nagarengastaja"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -6314,25 +6377,21 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
-msgstr ""
+msgstr "chakrami"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
-msgstr "Nagataistelija"
+msgstr "Naginirengastaja"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Sicarius"
-msgstr "Nagataistelija"
+msgstr "Nagaseivästäjä"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -6353,11 +6412,9 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
-#, fuzzy
-#| msgid "Nagini Warrior"
+#: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
-msgstr "Nagasoturi"
+msgstr "Naginiseivästäjä"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -6405,13 +6462,11 @@ msgstr ""
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "Nagataistelija"
+msgstr "Nagapuhaltaja"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -6453,11 +6508,9 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
-msgstr "Nagataistelija"
+msgstr "Naginipuhaltaja"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -6514,6 +6567,14 @@ msgid ""
 "brethren to finish off on the frontlines. While typically poorly equipped "
 "themselves, these orcs can nonetheless be quite effective in large numbers."
 msgstr ""
+"Vaikka jousia pidetään joskus pelkurimaisena aseistuksena örkkien "
+"keskuudessa, örkkien pragmaattinen sodankäynnin luonne saa aikaan näiden "
+"aseiden suuren käytön, ja ne sopivat hyvin pienikokoisille tai "
+"hentorakenteisille. Jousiörkkien suosima taktiikka on liekehtivien nuolien "
+"käyttö kaaoksen kylvämiseen vihollislinjojen keskelle, pehmentäen kovia "
+"vastustajia isompien ja vahvempien örkkien viimeisteltäväksi. Vaikka nämä "
+"örkit ovat tyypillisesti huonosti varusteltuja, ne voivat silti olla "
+"tehokkaita suurina joukkoina."
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -6531,6 +6592,13 @@ msgid ""
 "same weapon is readily turned to espionage and assassination, a commonplace "
 "occurrence between feuding orcish clans or even within a single clan itself."
 msgstr ""
+"Vaikka monet örkit pitävät raakaa voimaa parhaana toimintatapanaan, heidän "
+"sodankäyntinsä erittäin käytännöllinen luonne kannustaa raakoja taktiikoita, "
+"joita muut liittoumat yleensä paheksuvat. Myrkky on yksi örkkien strategian "
+"tukipilareista, ja sitä käytetään runsaasti taistelukentällä pehmentämään "
+"kovia vastustajia ja lamauttamaan vihollisen joukot ilman suoran hyökkäyksen "
+"riskiä. Samaa asetta käytetään helposti salamurhaamisessa, joka on yleistä "
+"riitauttavien orkkiklaanien välillä tai jopa saman klaanin sisällä."
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
@@ -6547,6 +6615,13 @@ msgid ""
 "with more easily handled crossbows. Simplistic but potent, these weapons can "
 "still be deadly even when handled roughly by inexperienced warriors."
 msgstr ""
+"Huolimatta siitä, että useimmat örkit pitävät taistelukykyä erittäin "
+"tärkeänä, hyvin harvoilla heimoilla on minkäänlaista muodollista "
+"järjestäytynyttä taistelukoulutusta. Tästä johtuen örkkijousimiehet ovat "
+"melko tehottomia käyttämään ihmisiltä tai haltioilta varastettuja "
+"pitkäjousia, vaan mieluummin aseistautuvat helpommin käsiteltävillä "
+"varsijousilla. Nämä yksinkertaiset mutta tehokkaat aseet voivat silti olla "
+"tappavia, vaikka kokemattomat soturit käsittelevätkin niitä karkeasti."
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -6564,6 +6639,13 @@ msgid ""
 "overcome. What makes an orcish horde most threatening, however, is the sheer "
 "numbers in which these fighters can be fielded."
 msgstr ""
+"Todelliset örkit tunnetaan raa'asta voimastaan ja julmuudestaan sekä "
+"taipumuksestaan aggressiiviseen taisteluun. Nämä ominaisuudet tarkoittavat, "
+"että jopa kokemattomimmat ja huonosti varustetut örkkisotilaat voivat olla "
+"haastavia käsitellä taistelukentällä. Yksi örkki pystyy antamaan itse julman "
+"raskaita iskuja ja voi ottaa suuren määrän iskuja vastineeksi ennen omaa "
+"tuhoaan. Se mikä örkkilaumasta tekee uhkaavimman, on kuitenkin suuri määrä, "
+"joita näitä taistelijoita voidaan taisteluun asettaa."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -6572,13 +6654,6 @@ msgstr "Örkkipäällikkö"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-#| "bands. They carry a crossbow out of necessity, but are much more skilled "
-#| "with the sword. These orcs are powerful fighters, but they also have a "
-#| "certain rapport with their kin, especially goblins, and can inspire them "
-#| "to fight with uncharacteristic boldness."
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. Although not necessarily possessed of the same loyalty-inspiring "
@@ -6587,17 +6662,15 @@ msgid ""
 "fight with uncharacteristic boldness."
 msgstr ""
 "Erityisen juonikkailla örkeillä on taipumusta päätyä joukkojen johtajiksi. "
-"He kantavat varsijousta olosuhteiden pakosta, mutta ovat paljon "
-"taidokkaampia miekan kanssa. Kaiken kaikkiaan he ovat voimakkaita "
-"taistelijoita, mutta heillä on myös hyvät välit hiisiin, joita he pystyvät "
-"yllyttämään epätyypillisen uskaliaisiin hyökkäyksiin."
+"Vaikka näillä örkeillä ei välttämättä ole samaa uskollisuutta inspiroivaa "
+"karismaa, jota ihmiset tai haltiat arvostavat, nämä örkit luovat usein "
+"tietyn yhteisymmärryksen muihin örkkeihin, ja erityisesti peikkoihin. He "
+"voivat inspiroida joukkojaan taistelemaan uskomattomalla pelottomuudella."
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
-#, fuzzy
-#| msgid "Orcish Leader"
 msgid "Orcish Nightblade"
-msgstr "Örkkipäällikkö"
+msgstr "Örkkipalkkamurhaaja"
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:21
@@ -6612,13 +6685,25 @@ msgid ""
 "the cover of darkness. A contract with a nightblade is almost always a death "
 "sentence to the victim, making said expertise well worth its high price."
 msgstr ""
+"Kokeneimmat örkkien salamurhaajat toimivat tavallisesti palkkasotureina, "
+"jotka ovat erikoistuneet \"sisäisten konfliktien ratkaisemiseen\" ja "
+"osallistuvat harvoin laajempiin taisteluihin. Hätkähdyttävän taitavia ja "
+"työssään taistelun karkaistuina nämä örkit harvoin vannovat uskollisuutensa "
+"jollekin tietylle heimolle, vaan tarjoavat palvelujaan sille, joka tarjoaa "
+"eniten. Kun sopimus on tehty ja tarvittavat tarvikkeet hankittu, "
+"salamurhaaja iskee nopeasti ja äänettömästi kohteeseensa ja eliminoi heidät "
+"hiljaa pimeyden varjossa. Sopimus örkkipalkkamurhaajan kanssa on lähes aina "
+"kuolemantuomio uhrille, joten asiantuntemus on korkean hintansa arvoinen."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:25
-#, fuzzy
-#| msgid "war blade"
 msgid "blade"
-msgstr "sotakalpa"
+msgstr "kalpa"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr ""
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -6636,6 +6721,13 @@ msgid ""
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
+"Yleinen väärinkäsitys örkkiklaanien hierarkiasta on, että örkit arvostavat "
+"vain raakaa voimaa. Vaikka pienemmän örkkijoukon johtaja voi olla heistä "
+"vahvin taistelija, suuren heimon hallitsijalla on vaikea tehtävä tukahduttaa "
+"sisäisiä riitoja ja taisteluja, eli jotain mitä ei voida saavuttaa pelkällä "
+"voimalla. Tällainen örkki on väistämättä ovelin ja tarkkaavaisin ikäistensä "
+"keskuudessa ja on voittanut muiden örkkien kunnioituksen johtajuudella eikä "
+"pakottamisella."
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -6655,6 +6747,15 @@ msgid ""
 "precisely what gives rise to these ruthless soldiers, rightly dubbed "
 "‘Slayers’ by their enemies."
 msgstr ""
+"Taitavat örkkimurhaajat ovat yllättävän ketteriä peitejoukkoja, jotka "
+"saavuttavat suuren ketteryyden luopumalla örkkien raskaasta panssarista. "
+"Heidän suosikkiaseensa, myrkky, arvostellaan usein häijynä työkaluna, joka "
+"ei sovellu tyypillisen sodankäynnin vakiintuneisiin tapoihin. Useimmat örkit "
+"eivät kuitenkaan tunnista tällaisia sodan lakeja ja pyrkivät saavuttamaan "
+"voiton millä tahansa tarpeellisella tavalla. Tappiota, pidetään yleensä "
+"suurimpana mahdollisena häpeänä, syystä riippumatta. Örkkien sodan julma "
+"luonne synnyttää juuri nämä häikäilemättömät sotilaat, joita viholliset "
+"kutsuvat oikeutetusti \"Surmaajiksi\"."
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -6663,18 +6764,6 @@ msgstr "Rautajousiörkki"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’; a "
-#| "much more intricate device, complete with a hand-turned cranequin to re-"
-#| "cock the weapon, and often with a multi-ply arc, of laminate wood or "
-#| "bone, driving the projectile. Such a device is much easier to work with, "
-#| "and much more powerful than simpler crossbows; it is also completely "
-#| "beyond orcish manufacture.\n"
-#| "\n"
-#| "Orcs prize any such weapons they can manage to plunder, and they "
-#| "invariably end up in the hands of their strongest and most cunning "
-#| "archers."
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’, a "
 "much more intricate device complete with a hand-turned cranequin to recock "
@@ -6719,11 +6808,22 @@ msgid ""
 "rapidly dissolves back into individual clans once the strength of its "
 "leadership is extinguished."
 msgstr ""
+"Vaikka örkit ovat yleensä melko heimoluonteisia, joskus syntyy tilanne, joka "
+"pakottaa useita klaaneja yhdistämään voimansa yhden voimakkaan valtiaan "
+"alle. Aseman vuoksi sellaisella örkillä täytyy olla sekä voimaa että "
+"oveluutta johtaakseen suurta soturilaumaa, ja jolla on lähes poikkeuksetta "
+"luontainen karisma, joka on poikkeuksellinen harvinaisuus lajissaan. Polku "
+"tällaiseen asemaan on monipuolinen; Joskus voimakas heimo voi valloittaa "
+"pienempiä ja ottaa lyödyt soturit riveihinsä, kun taas muut olosuhteet "
+"vaativat shamaanien neuvoston nimittämisen, jossa valtiaasta tulee "
+"väliaikainen, mutta muodollinen arvonimi. Kummassakin tapauksessa "
+"sotapäällikkö on lauman kriittinen tukikohta, joka hajoaa nopeasti takaisin "
+"yksittäisiksi klaaneiksi, kun sen johtajuuden voima on sammunut."
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr "Örkkisotaherra"
+msgstr "Örkkisotapäällikkö"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:18
@@ -6741,6 +6841,18 @@ msgid ""
 "for a warlord’s downfall when his skills wane with age and another powerful "
 "warrior arises to take his place."
 msgstr ""
+"Vaikka valta ei olekaan ylivallan loppu örkkiklaanissa, se on ehdottomasti "
+"edellytys muiden örkkien kunnioituksen ja tottelevaisuuden ansaitsemiselle. "
+"Sotapäällikkö on useimmiten heimonsa vahvin taistelija, joka ansaitsee ja "
+"säilyttää asemansa saavuttamalla kerta toisensa jälkeen voiton "
+"tavoittelevista haastajista. Tämä saattaa taisteluissa antaa tällaisen örkin "
+"toimia heimopäällikkönä, joka valvoo klaaninsa päivittäistä toimintaa sekä "
+"ohjaa pienempiä sotureita, kun on verenvuodatuksen aika. Vaikka useimmat "
+"sotapäälliköt ovat tyypillisesti ovelia ja erittäin taitavia sodankäynnissä, "
+"he ansaitsevat vain ihailua taistelutaidoistaan, koska heiltä puuttuu tietoa "
+"tai karismaa johtaakseen taistelun ulkopuolella. Ajan myötä tästä puutteesta "
+"tulee yleensä syy sotapäällikön kaatumiseen, kun hänen taitonsa heikkenevät "
+"iän myötä ja toinen voimakas soturi nousee hänen tilalleen."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -6758,11 +6870,16 @@ msgid ""
 "fighters, who lack the training and finesse to act on more complex "
 "strategies."
 msgstr ""
+"Örkkien miekkailu keskittyy lähes aina hyökkäämiseen ja hyödyntäen "
+"luonnollista kestävyyttään kestääkseen vastustajiaan pelkän sitkeyden "
+"avulla. Kokeneemmat örkisoturit nähdään yleisesti luopunen kilven käytöstä "
+"ja sen sijaan käyttävän kahta miekkaa, aiheuttaen mahdollisimman paljon "
+"vahinkoa lähitaistelualussa. Vaikka taktiikka on melko julma, se on silti "
+"varsin tehokas näille taistelijoille, joilla ei ole koulutusta ja taitoa "
+"toimia monimutkaisempien strategioiden mukaan."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
 msgstr "Sauriaanisoturi"
 
@@ -6777,13 +6894,13 @@ msgid ""
 "take advantage of the smallest gap in an enemy line, and have the prowess to "
 "make the enemy regret tactical mistakes."
 msgstr ""
-"Sauriaanit ovat kevytjalkaisia, ja pystyvät liikkumaan maastossa, joka usein "
-"häiritsee heidän vastustajiaan. Kun tämä taito on yhdistetään heidän "
-"kokemukseensa, voimaansa ja varustukseensa, heidän sotureista voi tulla "
-"varsin uhkaava taistelussa, suurelti koska heitä on paljon vaikeampi "
-"motittaa kuin muita vastustajia. Jopa panssaroidut sauriaanisoturit voivat "
-"hyödyntää pienintäkin rakoa vastustajan linjassa ja kykenevät urheasti "
-"toimien saamaan vastustajan katumaan taktisia virheitään."
+"Sauriaanit ovat kevytjalkaisia, ja pystyvät liikkumaan sellaisessa "
+"maastossa, joka usein häiritsee heidän vastustajiaan. Kun tämä taito "
+"yhdistetään heidän kokemukseensa, voimaansa ja varustukseensa, heidän "
+"sotureista voi tulla varsin uhkaavia taisteluissa. Myös siitä syystä, että "
+"heitä on paljon vaikeampi motittaa taistelussa kuin muita vastustajia. Jopa "
+"panssaroidut sauriaanisoturit voivat hyödyntää pienintäkin rakoa vastustajan "
+"linjassa ja kykenevät saamaan vastustajan katumaan taktisia virheitään."
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -6804,8 +6921,6 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
 msgstr "Sauriaanisissi"
 
@@ -6849,8 +6964,6 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Saurian Skirmisher"
 msgstr "Sauriaanitaistelija"
 
@@ -7090,16 +7203,6 @@ msgstr "Kuolonsyöjä"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these fratures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -7110,137 +7213,127 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
-"Kuolonsyöjä, tai ‘Kuoleman ahmija’, on hirviömäinen ja pyylevä, jonka "
-"yhdennäköisyys ihmiseen on vain häilyvä. Ne vaikuttavat melko mädäntyneiltä "
-"ilkeämielisessä liikkumiskyvyssään; ne yleisesti kantavat sairauksia ja "
-"myrkkyjä veressään, ja niiden lemu hakee vertaistaan. Luultavasti "
-"järkyttävin fakta niissä on se, miten ne on jotenkin tehty elävistä "
-"ihmisistä – prosessi, josta ei oikeastaan tiedetä mitään, mutta mikä ei voi "
-"olla muuta kuin painajaismaista."
+"Kuolonsyöjä, tai ‘Kuoleman ahmija’, on hirviömäinen pyylevä otus, jonka "
+"yhdennäköisyys ihmiseen on vain häilyvä. Ne näyttävät mädäntyneiltä, vaikka "
+"pystyvätkin liikkumaan. Ne yleisesti kantavat sairauksia ja myrkkyjä "
+"veressään, ja niiden lemu hakee vertaistaan. Luultavasti järkyttävin asia "
+"niissä on se, miten ne on jotenkin tehty elävistä ihmisistä. Prosessi, josta "
+"ei oikeastaan tiedetä mitään, mutta mikä ei voi olla muuta kuin "
+"painajaismaista."
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:117
 #: data/core/units/undead/Corpse_Walking.cfg:116
 msgid "wc_variation^Drake"
-msgstr ""
+msgstr "Draakki"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:132
 #: data/core/units/undead/Corpse_Walking.cfg:131
 msgid "wc_variation^Dwarf"
-msgstr ""
+msgstr "Kääpiö"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:144
 msgid "wc_variation^Falcon"
-msgstr ""
+msgstr "Haukka"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
 #: data/core/units/undead/Corpse_Walking.cfg:178
 msgid "wc_variation^Goblin"
-msgstr ""
+msgstr "Hiisi"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "wc_variation^Horse"
-msgstr "Jättiskorpioni"
+msgstr "Hevonen"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
 #: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Mounted"
-msgstr ""
+msgstr "Ratsastava"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:207
 #: data/core/units/undead/Corpse_Walking.cfg:229
 msgid "wc_variation^Beast-Rider"
-msgstr ""
+msgstr "Petoratsastaja"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:216
 #: data/core/units/undead/Corpse_Walking.cfg:188
 msgid "wc_variation^Gryphon"
-msgstr ""
+msgstr "Aarnikotka"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:239
 #: data/core/units/undead/Corpse_Walking.cfg:238
 msgid "wc_variation^Rat"
-msgstr ""
+msgstr "Rotta"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:256
 #: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Saurian"
-msgstr ""
+msgstr "Sauriaani"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "wc_variation^Scorpion"
-msgstr "Jättiskorpioni"
+msgstr "Skorpioni"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
 #: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "wc_variation^Spider"
-msgstr ""
+msgstr "Hämähäkki"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:284
 #: data/core/units/undead/Corpse_Walking.cfg:283
 msgid "wc_variation^Serpent"
-msgstr ""
+msgstr "Vesihirviö"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
 #: data/core/units/undead/Corpse_Walking.cfg:302
 msgid "wc_variation^Swimmer"
-msgstr ""
+msgstr "Uimari"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:321
 #: data/core/units/undead/Corpse_Walking.cfg:320
 msgid "wc_variation^Troll"
-msgstr ""
+msgstr "Peikko"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
 msgid "wc_variation^Boar"
-msgstr ""
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
+msgstr "Villisika"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
 #: data/core/units/undead/Corpse_Walking.cfg:342
 msgid "wc_variation^Wose"
-msgstr ""
+msgstr "Puupaimen"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:355
 #: data/core/units/undead/Corpse_Walking.cfg:354
 msgid "wc_variation^Wolf"
-msgstr ""
+msgstr "Susi"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:368
 #: data/core/units/undead/Corpse_Walking.cfg:367
 msgid "wc_variation^Bat"
-msgstr ""
+msgstr "Lepakko"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:18
@@ -7255,6 +7348,9 @@ msgid ""
 "that the rise of an Ancient Lich has not led to the shadows ruling the world "
 "for the rest of time."
 msgstr ""
+"Kuolonherra, joka saavuttaa tarpeeksi voimaa kuolemattomuutensa aikana, "
+"tulee sellainen, joka voi värjätä sielut epätoivolla ja kylvää tuhoa "
+"kaikkialla maailmassa."
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
@@ -7263,18 +7359,6 @@ msgstr "Pimeyden tuntija"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
-#, fuzzy
-#| msgid ""
-#| "female^To attract any practitioners, the lure of black magic must be a "
-#| "great prize indeed, for anyone caught practicing the art in the civilized "
-#| "world is subject to a death sentence. And yet there are those who pursue "
-#| "this art, for the prize offered is nothing less than immortality. Hidden "
-#| "away in secret cults, or initiated into the dark orders of the "
-#| "underworld, the training which these fanatics must endure often drives "
-#| "them to exhaustion and enfeeblement.\n"
-#| "\n"
-#| "In such condition, their only weapon is the craft they have so committed "
-#| "themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -7292,8 +7376,8 @@ msgstr ""
 "on kuolemantuomio väistämätön. Kuitenkin on niitä, jotka tätä taitoa "
 "harjoittavat, sillä palkinto, joka tarjotaan, on kuolemattomuus. "
 "Piiloutuneina salaisiin kultteihin tai kutsuttuina alamaailman pimeisiin "
-"järjestöihin, näiden fanaatikkojen koulutus ajaa heidät usein surkeaan "
-"tilaan. \n"
+"järjestöihin, näiden fanaatikkojen koulutus ajaa heidät usein uupumukseen ja "
+"heikkouteen. \n"
 "\n"
 "Sellaisessa kunnossa heidän ainoa aseensa on taito, jonka oppimiseen he ovat "
 "omistautuneet."
@@ -7392,18 +7476,6 @@ msgstr "Kuolonherra"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:22
-#, fuzzy
-#| msgid ""
-#| "A lich is the physical embodiment of black magic’s first goal: the quest "
-#| "to achieve immortality. Though a great deal is sacrificed in the rebirth, "
-#| "in becoming a lich one cheats death of that which truly gives it terror. "
-#| "For it is the mind that is retained, and the spirit which follows, though "
-#| "the body may wither away.\n"
-#| "\n"
-#| "It is not known, save perhaps by the inner circles of necromancy, whether "
-#| "life is prolonged indefinitely or simply extended. But the fact that this "
-#| "question can be raised at all, testifies to the magnitude of what their "
-#| "order has achieved."
 msgid ""
 "A lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7416,7 +7488,7 @@ msgid ""
 "question can be raised at all is a testament to the magnitude of what their "
 "order has achieved."
 msgstr ""
-"Kuolonherra on ensimmäisen mustan magian tavoitteen ruumillistuma, "
+"Kuolonherra on ensimmäisen mustan magian tavoitteen ruumiillistuma, "
 "kuolemattomuuden saavuttanut. Jälleensyntymässään kuolleiden herra huijaa "
 "kuolemaa, ainoaa asiaa joka sitä todella pelottaa. Mieli ja henki säästyvät, "
 "vaikka ruumis saattaa kuihtua pois. \n"
@@ -7476,14 +7548,6 @@ msgstr "Luun ampuja"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Of a dark sorcerer’s creations, some take more strongly to the false life "
-#| "given them. The potency of their un-life is given equipment to match; "
-#| "archers, in particular, are often outfitted with a truly vile arsenal. "
-#| "Their quivers are filled with shafts made not of wood, but of the bones "
-#| "of their victims. It follows that they are dubbed simply ‘Bone-Shooters’ "
-#| "by their unfortunate enemies."
 msgid ""
 "Of a dark sorcerer’s creations, some take more strongly to the false life "
 "given them. The potency of their unlife is given equipment to match; "
@@ -7492,12 +7556,12 @@ msgid ""
 "victims. It follows that they are dubbed simply ‘Bone-Shooters’ by their "
 "unfortunate enemies."
 msgstr ""
-"Pimeyden noidan luomuksista jotkut ottavat vale-elämän tiukemmin "
+"Pimeyden noidan luomuksista, jotkut ottavat vale-elämän tiukemmin "
 "otteeseensa. Heidän epäelämänsä mahdollisuudet ovat varustettu täsmäämään "
-"heitä: juosiampujia, varustettuna täydellisen halpamaisella arsenaalilla. "
-"Näiden olentojen nuoliviinejä ei ole täytetty puusta vaan uhrien luusta "
-"tehdyillä nuolilla. Epäonniset viholliset kutsuvat näitä olentoja "
-"yksinkertaisesti 'luun ampujiksi'."
+"heitä. Jousiampujat, eritoten, ovat varustettu täydellisen halpamaisella "
+"arsenaalilla. Näiden olentojen nuoliviinejä ei ole täytetty puusta, vaan "
+"uhrien luusta tehdyillä nuolilla. Epäonniset viholliset kutsuvat näitä "
+"olentoja yksinkertaisesti 'luun ampujiksi'."
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -7750,16 +7814,6 @@ msgstr "Muinainen puupaimen"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:17
-#, fuzzy
-#| msgid ""
-#| "There is a curious story of a farmer who had a great oak in his lawn, a "
-#| "tree which had stood when his father first broke the soil on that land, "
-#| "and under which his family had many memories. It was thus a shock to him, "
-#| "one morning, when he awoke to find it somehow spirited away, with nothing "
-#| "but a bare patch of earth where it once stood.\n"
-#| "\n"
-#| "Such encounters are all that is known of what are presumably the most "
-#| "ancient of woses."
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -7777,7 +7831,8 @@ msgstr ""
 "huomasi, että puu oli jotenkin hävinnyt, oli vain tyhjä kaistale maata "
 "siinä, missä puu oli ollut. \n"
 "\n"
-"Tällaisia kohtaamisia enempää ei näistä muinaisimmista puupaimenista tiedetä."
+"Tällaisia kohtaamisia enempää ei näistä mahdollisesti muinaisimmista "
+"puupaimenista tiedetä."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:49
@@ -7850,14 +7905,12 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "Nuori puupaimen"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "Peikkoshamaani"
+msgstr "Puupaimenshamaani"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
@@ -7865,6 +7918,14 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
+"Nämä puupaimenet pystyvät komentamaan metsän kasveja ja köynnöksiä "
+"pidättelemään vihollisiaan."
+
+#~ msgid "Bite"
+#~ msgstr "puraisu"
+
+#~ msgid "Tusk"
+#~ msgstr "syksyhammas"
 
 #, fuzzy
 #~| msgid "faerie fire"

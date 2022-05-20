@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-arm-release, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-intel-release, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -48,7 +48,6 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=true
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   ubuntu-2004-cmake-clang-debug:
@@ -70,7 +69,6 @@ jobs:
           export CXX_STD=17
           export CFG=debug
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
 
@@ -93,7 +91,6 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
       - name: Upload
@@ -122,15 +119,20 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-      - name: Upload
+      - name: Upload 1
         uses: actions/upload-artifact@v2
         with:
-          name: Source-And-Windows-Installer
+          name: Source
           path: |
             ~/wesnoth-*.tar.bz2
+
+      - name: Upload 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Installer
+          path: |
             ~/wesnoth-*-win64.exe
 
   flatpak:
@@ -152,7 +154,6 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
@@ -174,7 +175,6 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   macos-intel-debug:
@@ -188,10 +188,9 @@ jobs:
       - name: macOS Intel Debug
         run: |
           export CFG=Debug
-          export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
 
-  macos-arm-release:
+  macos-intel-release:
     runs-on: macos-11.0
 
     steps:
@@ -199,14 +198,11 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: macOS ARM Release
+      - name: macOS Intel Release
         run: |
           export CFG=Release
-          export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
 
-# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
-# this will create a brand new cache and recompile the vcpkg dependencies from scratch
   windows-debug:
     runs-on: windows-2019
 
@@ -214,15 +210,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        id: windows-N009
-        uses: actions/cache@v2
-        with:
-          path: |
-            D:/a/wesnoth/vcpkg
-            D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -232,7 +219,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
+          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
@@ -254,6 +241,12 @@ jobs:
           rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
           MSBuild.exe wesnoth.sln -p:Configuration=Debug
 
+# seems to work, but with the debug SDL libraries it's so slow that it times out even with a limit of 300 seconds
+#      - name: Run WML unit tests
+#        shell: cmd
+#        run: |
+#          python run_wml_tests -v -g -c -t 300 -p D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
+
   windows-release:
     runs-on: windows-2019
 
@@ -261,15 +254,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
-
-      - name: Cache object files
-        id: windows-N009
-        uses: actions/cache@v2
-        with:
-          path: |
-            D:/a/wesnoth/vcpkg
-            D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: windows-N009
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -279,7 +263,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
+          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake

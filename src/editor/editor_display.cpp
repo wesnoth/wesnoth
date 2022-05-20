@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,8 +30,8 @@ namespace wb {
 
 namespace editor {
 
-editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
-	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
+editor_display::editor_display(editor_controller& controller, reports& reports_object)
+	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, "editor", config())
 	, brush_locations_()
 	, controller_(controller)
 {

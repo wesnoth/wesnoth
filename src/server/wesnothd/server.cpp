@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -294,7 +294,7 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 
 	if(games().empty()) {
 		process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
-		throw server_shutdown("graceful shutdown timeout");
+		BOOST_THROW_EXCEPTION(server_shutdown("graceful shutdown timeout"));
 	} else {
 		timer_.expires_from_now(std::chrono::seconds(1));
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
@@ -317,7 +317,7 @@ void server::handle_lan_server_shutdown(const boost::system::error_code& error)
 	if(error)
 		return;
 
-	throw server_shutdown("lan server shutdown");
+	BOOST_THROW_EXCEPTION(server_shutdown("lan server shutdown"));
 }
 
 void server::setup_fifo()
@@ -1690,9 +1690,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				for(const auto& content : addon->children("content")) {
 					unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
 					if(rows_inserted == 0) {
-						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ <<"', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'\n";
+						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'\n";
 					}
 				}
+			}
+			if(m.children("addon").size() == 0) {
+				WRN_SERVER << "Game content info missing for game with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', named '" << g.name() << "'\n";
 			}
 
 			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
@@ -1760,9 +1763,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.level().root().apply_diff(*scenario_diff);
 		const simple_wml::node* cfg_change = scenario_diff->child("change_child");
 
-		// it is very likeley that the diff changes a side so this check isn't that important.
-		// Note that [side] is not at toplevel but inside [scenario] or [snapshot]
-		if(cfg_change /** && cfg_change->child("side") */) {
+		if(cfg_change) {
 			g.update_side_data();
 		}
 
@@ -2091,7 +2092,7 @@ void server::shut_down_handler(
 	}
 
 	if(parameters == "now") {
-		throw server_shutdown("shut down by admin command");
+		BOOST_THROW_EXCEPTION(server_shutdown("shut down by admin command"));
 	} else {
 		// Graceful shut down.
 		graceful_restart = true;
@@ -2183,8 +2184,7 @@ void server::stats_handler(const std::string& /*issuer_name*/,
 {
 	assert(out != nullptr);
 
-	*out << "Number of games = " << games().size() << "\nTotal number of users = " << player_connections_.size()
-		 << "\n";
+	*out << "Number of games = " << games().size() << "\nTotal number of users = " << player_connections_.size();
 }
 
 void server::metrics_handler(const std::string& /*issuer_name*/,

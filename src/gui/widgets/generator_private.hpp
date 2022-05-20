@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "gui/widgets/generator.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -735,7 +736,7 @@ public:
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
 		child* item = new child;
-		list_builder.build(&item->child_grid);
+		list_builder.build(item->child_grid);
 
 		init(&item->child_grid, item_data, callback);
 
@@ -827,7 +828,7 @@ public:
 	}
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override
+	virtual void impl_draw_children(int x_offset, int y_offset) override
 	{
 		assert(this->get_visible() == widget::visibility::visible);
 
@@ -837,7 +838,7 @@ public:
 			child* item = items_[index].get();
 
 			if(item->child_grid.get_visible() == widget::visibility::visible && item->shown) {
-				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children(x_offset, y_offset);
 			}
 		}
 	}
@@ -880,7 +881,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
+	virtual iteration::walker_ptr create_walker() override
 	{
 		return nullptr;
 	}

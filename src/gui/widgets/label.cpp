@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -256,9 +256,9 @@ builder_label::builder_label(const config& cfg)
 {
 }
 
-widget* builder_label::build() const
+std::unique_ptr<widget> builder_label::build() const
 {
-	label* lbl = new label(*this);
+	auto lbl = std::make_unique<label>(*this);
 
 	const auto conf = lbl->cast_config_to<label_definition>();
 	assert(conf);

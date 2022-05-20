@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -40,7 +40,7 @@ class playsingle_controller : public play_controller
 public:
 	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 
-	LEVEL_RESULT play_scenario(const config& level);
+	level_result::type play_scenario(const config& level);
 	void play_scenario_init();
 	void play_scenario_main_loop();
 

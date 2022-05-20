@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,13 +17,12 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/widget.hpp"
 
 #include <cassert>
 
 namespace gui2
 {
-void swap_grid(grid* g, grid* content_grid, widget* widget, const std::string& id)
+void swap_grid(grid* g, grid* content_grid, std::unique_ptr<widget> widget, const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -45,7 +44,7 @@ void swap_grid(grid* g, grid* content_grid, widget* widget, const std::string& i
 	assert(parent_grid);
 
 	// Replace the child.
-	auto old = parent_grid->swap_child(id, widget, false);
+	auto old = parent_grid->swap_child(id, std::move(widget), false);
 	assert(old);
 }
 }

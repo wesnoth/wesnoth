@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -82,7 +82,8 @@ public:
 	bool has_special(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
+	std::string weapon_specials(bool is_backstab=false) const;
+	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
@@ -150,6 +151,41 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true, const std::string& filter_self ="filter_self") const;
 
+/** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
+	 * @param[in,out] temp_string the string modified and returned
+	 * @param[in] self the unit checked.
+	 * @param[in] self_attack the attack used by unit checked in this function.
+	 * @param[in] other_attack the attack used by opponent to unit checked.
+	 * @param[in] self_loc location of the unit checked.
+	 * @param[in] whom determine if unit affected or not by special ability.
+	 * @param[in,out] checking_name the reference for checking if a name is already added
+	 * @param[in] checking_tags the reference for checking if special ability type can be used
+	 * @param[in] leader_bool If true, [leadership] abilities are checked.
+	 */
+	static void weapon_specials_impl_self(
+		std::string& temp_string,
+		unit_const_ptr self,
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const map_location& self_loc,
+		AFFECTS whom,
+		std::set<std::string>& checking_name,
+		const std::set<std::string>& checking_tags={},
+		bool leader_bool=false
+	);
+
+	static void weapon_specials_impl_adj(
+		std::string& temp_string,
+		unit_const_ptr self,
+		const_attack_ptr self_attack,
+		const_attack_ptr other_attack,
+		const map_location& self_loc,
+		AFFECTS whom,
+		std::set<std::string>& checking_name,
+		const std::set<std::string>& checking_tags={},
+		const std::string& affect_adjacents="",
+		bool leader_bool=false
+	);
 	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a tag_name is active.
 	 * @param self_attack the attack used by unit checked in this function.

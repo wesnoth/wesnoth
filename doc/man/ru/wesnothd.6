@@ -110,6 +110,10 @@ restart (перезагрузка) запросы будут проигнори�
 Число разрешенных подключений от одного IP\-адреса. \fB0\fP значит \-
 неограниченно. (по умолчанию: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Запретить ли пользователям, которые не зарегистрированы через используемый
+\fBuser_handler\fP, вход в систему. (по умолчанию: false \- не запрещать)
+.TP 
 \fBdisallow_names\fP
 Имена/ники, не принимаемые сервером. Поддерживаются групповые шаблоны \fB*\fP и
 \fB?\fP. Подробности см. \fBglob\fP(7). Значения по умолчанию (используются, если
@@ -157,21 +161,30 @@ restart (перезагрузка) запросы будут проигнори�
 \fBsave_replays\fP
 Определяет будет ли сервер сохранять повторы игр (по умолчанию: \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 Список версий принимаемых сервером, разделенные запятыми. Поддерживаются
 \fB*\fP и \fB?\fP в качестве группового символа.
 .br
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS "Глобальные тэги:"
 .
 .P
-\fB[redirect]\fP тэг, указывающий перенаправление на сервер для определенной
-версии клиента.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -205,51 +218,51 @@ being used from logging in. (default: false)
 ключи, что и \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Настройка блока работы с пользователями. Доступные ключи
-зависят от того, какой именно блок задан ключом \fBuser_handler\fP. Если секции
-\fB[user_handler]\fP в конфигурационном файле нет, сервер запустится без службы
-регистрации ников. Все дополнительные таблицы, необходимые для работы
-\fBforum_user_handler\fP, можно найти в файле table_definitions.sql, что
-находится в репозитории исходного кода Веснота.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+Имя хоста сервера базы данных
 .TP 
 \fBdb_name\fP
-The name of the database
+Имя базы данных
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+Имя пользователя для входа в базу данных
 .TP 
 \fBdb_password\fP
-This user's password
+Пароль пользвателя
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее
+всего, это <префикс\-таблицы>_users (т.е. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+Название таблицы, в которой wesnothd сохранит свои данные об играх.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+Название таблицы, в которой wesnothd сохранит свои данные об играх.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+Название таблицы, в которой wesnothd сохранит свои данные о пользователях в
+игре.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+Название таблицы, в которой wesnothd сохранит свои данные о модификациях,
+используемых в игре.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Название таблицы, где Ваш phpbb форум хранит данные о группах
+пользователей. Скорее всего это <префикс\-таблицы>_user_group
+(т.е. phpbb3_user_group).
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+Идентификатор группы пользователей форума, имеющих полномочия модератора.
 .RE
 .
 .SH "КОД ВЫХОДА"
@@ -270,7 +283,7 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2021 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

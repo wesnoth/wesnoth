@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,6 @@
 #include "deprecation.hpp"
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -337,7 +336,7 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("advances_to", u.advances_to());
 
 	if(strcmp(m, "alignment") == 0) {
-		lua_push(L, u.alignment());
+		lua_push(L, unit_alignments::get_string(u.alignment()));
 		return 1;
 	}
 
@@ -461,7 +460,7 @@ static int impl_unit_set(lua_State *L)
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
 	if(strcmp(m, "alignment") == 0) {
-		u.set_alignment(lua_check<UNIT_ALIGNMENT>(L, 3));
+		u.set_alignment(lua_enum_check<unit_alignments>(L, 3));
 		return 0;
 	}
 

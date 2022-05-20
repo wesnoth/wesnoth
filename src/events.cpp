@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -567,7 +567,7 @@ void pump()
 
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
-					SDL_Rect r = CVideo::get_singleton().screen_area();
+					SDL_Rect r = CVideo::get_singleton().input_area();
 
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
@@ -594,7 +594,7 @@ void pump()
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
 
-					SDL_Rect r = CVideo::get_singleton().screen_area();
+					SDL_Rect r = CVideo::get_singleton().input_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
 					touch_event.tfinger.type = touch_event.type;
@@ -761,12 +761,13 @@ void raise_process_event()
 
 void raise_resize_event()
 {
+	SDL_Point size = CVideo::get_singleton().window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
-	event.window.data1 = CVideo::get_singleton().get_width();
-	event.window.data2 = CVideo::get_singleton().get_height();
+	event.window.data1 = size.x;
+	event.window.data2 = size.y;
 
 	SDL_PushEvent(&event);
 }
@@ -860,6 +861,7 @@ void peek_for_resize()
 	for(int i = 0; i < num; ++i) {
 		if(events[i].type == SDL_WINDOWEVENT && events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
 			CVideo::get_singleton().update_framebuffer();
+			break;
 		}
 	}
 }

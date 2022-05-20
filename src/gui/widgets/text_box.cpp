@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -428,9 +428,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-widget* builder_text_box::build() const
+std::unique_ptr<widget> builder_text_box::build() const
 {
-	text_box* widget = new text_box(*this);
+	auto widget = std::make_unique<text_box>(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);

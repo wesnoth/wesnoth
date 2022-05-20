@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,12 @@
 #import "SDL.h"
 #import "SDLMain.h"
 #include <vector>
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 101200
+#define NSEventTypeKeyDown NSKeyDown
+#define NSEventTypeKeyUp NSKeyUp
+#define NSEventModifierFlagCommand NSCommandKeyMask
+#endif
 
 extern "C" int wesnoth_main(int argc, char **argv);
 static std::vector<char*> gArgs;

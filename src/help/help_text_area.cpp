@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -537,7 +537,7 @@ void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 	bg_restore();
-	surface& screen = video().getSurface();
+	surface& screen = video().getDrawingSurface();
 	clip_rect_setter clip_rect_set(screen, &loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;

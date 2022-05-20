@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -545,7 +545,7 @@ surface o_modification::operator()(const surface& src) const
 		return nullptr;
 	}
 
-	uint16_t amount = ftofxp(opacity_);
+	uint32_t amount = floating_to_fixed_point(opacity_);
 
 	{
 		surface_lock lock(nsurf);
@@ -561,7 +561,7 @@ surface o_modification::operator()(const surface& src) const
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)), 255);
+				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount), 255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

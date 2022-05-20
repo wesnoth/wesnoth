@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Jyrki Vesterinen <sandgtx@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,8 +73,10 @@ void size_lock::finalize(const builder_widget& widget_builder)
 {
 	set_rows_cols(1u, 1u);
 
-	widget_ = widget_builder.build();
-	set_child(widget_, 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
+	auto widget = widget_builder.build();
+	widget_ = widget.get();
+
+	set_child(std::move(widget), 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
 }
 
 point size_lock::calculate_best_size() const
@@ -123,9 +125,9 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	content_ = create_widget_builder(cfg.child("widget"));
 }
 
-widget* builder_size_lock::build() const
+std::unique_ptr<widget> builder_size_lock::build() const
 {
-	size_lock* widget = new size_lock(*this);
+	auto widget = std::make_unique<size_lock>(*this);
 
 	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
 

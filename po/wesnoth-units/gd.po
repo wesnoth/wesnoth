@@ -1,12 +1,14 @@
+#
 # Translators:
-# GunChleoc, 2017
+# GunChleoc, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-01-13 16:24+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -41,6 +43,7 @@ msgstr "earball"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
@@ -48,6 +51,7 @@ msgstr "greimiche"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
 msgstr "inc"
@@ -68,8 +72,8 @@ msgstr "inc"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "màs"
 
@@ -235,9 +239,9 @@ msgstr "sùist"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -276,9 +280,9 @@ msgstr "claidheamh"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -301,9 +305,9 @@ msgid "bow"
 msgstr "bogha"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -322,7 +326,7 @@ msgstr "bogha"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "spògan"
@@ -337,7 +341,7 @@ msgstr "spògan"
 msgid "saber"
 msgstr "claidheamh crom"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -349,7 +353,7 @@ msgstr "claidheamh crom"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -366,8 +370,8 @@ msgstr "claidheamh crom"
 msgid "Walking Corpse"
 msgstr "Corp Coisiche"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -401,8 +405,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -438,14 +442,14 @@ msgstr "beantainn"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
 msgstr "steabhag"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -459,8 +463,8 @@ msgstr "Corp àrsaidh"
 msgid "chill tempest"
 msgstr "gailleann fhuaraidh"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -472,8 +476,8 @@ msgstr "Marbh-dhraoidh"
 msgid "plague staff"
 msgstr "bata plàighe"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -484,14 +488,14 @@ msgstr "bata plàighe"
 msgid "curse"
 msgstr "mallachd"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -516,17 +520,19 @@ msgstr "mallachd"
 msgid "fangs"
 msgstr "tosgan"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -551,7 +557,6 @@ msgid ""
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -566,6 +571,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -584,8 +590,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "Gun anam"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -602,10 +608,8 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "mire-chatha"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -613,7 +617,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 
@@ -647,8 +651,8 @@ msgstr "biodag"
 msgid "dragonstaff"
 msgstr "bata-dràgoin"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -672,8 +676,8 @@ msgstr ""
 msgid "hammer"
 msgstr "òrd"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -765,8 +769,8 @@ msgid ""
 "can hold a patch of earth with the single-minded tenacity of an oak."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -776,8 +780,8 @@ msgid ""
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -796,10 +800,8 @@ msgstr ""
 msgid "thunderstick"
 msgstr "bata-tàirnich"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -810,11 +812,11 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -824,16 +826,16 @@ msgid ""
 "they receive."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Maighstir rùn-litreach troiche"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -846,8 +848,8 @@ msgid ""
 "than would be expected."
 msgstr ""
 
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1161,7 +1163,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "muirgheadh"
 
@@ -1258,6 +1260,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "slàr"
 
@@ -1366,10 +1369,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Dune Blademaster"
 msgid "Dune Alchemist"
-msgstr "Maighstir-lanna-gainmhich"
+msgstr "Cumasgair-gainmhich"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1388,7 +1389,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "gunna-sèididh"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
@@ -1446,7 +1447,7 @@ msgstr ""
 #: data/core/units/dunefolk/Soldier.cfg:26
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
-msgstr ""
+msgstr "claidheamh-crom"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:8
@@ -1469,21 +1470,17 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "boma tearra"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "female^Dune Burner"
 msgstr "Losgaire-gainmhich"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Dune Cataphract"
 msgid "Dune Captain"
-msgstr "Cataphrag-gainmhich"
+msgstr "Caiptean-gainmhich"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1549,10 +1546,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "female^Dune Falconer"
-msgstr "Dàthair-gainmhich"
+msgstr "Seabhagair-gainmhich"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -1574,10 +1569,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
-#, fuzzy
-#| msgid "Falcon"
 msgid "falcon"
-msgstr "Seabhag"
+msgstr "seabhag"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
@@ -1601,19 +1594,15 @@ msgstr ""
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "tilgear-lasaidh"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
-#, fuzzy
-#| msgid "Dune Firetrooper"
 msgid "female^Dune Firetrooper"
 msgstr "Trùpair-teine-gainmhich"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
-#, fuzzy
-#| msgid "Dune Harrier"
 msgid "female^Dune Harrier"
 msgstr "Creachadair-gainmhich"
 
@@ -1656,10 +1645,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "Dune Horse Archer"
-msgstr "Dàthair-gainmhich"
+msgstr "Boghadair eachraidh-ghainmhich"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:21
@@ -1675,10 +1662,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "Dune Luminary"
-msgstr "Losgaire-gainmhich"
+msgstr "Soillsichear-gainmhich"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1728,10 +1713,8 @@ msgstr "leus"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
-#, fuzzy
-#| msgid "Dune Marauder"
 msgid "Dune Paragon"
-msgstr "Spùinneadair-gainmhich"
+msgstr "Paragon-gainmhich"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1838,15 +1821,11 @@ msgstr ""
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "female^Dune Scorcher"
 msgstr "Dàthair-gainmhich"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Dune Skirmisher"
 msgid "female^Dune Skirmisher"
 msgstr "Streupaire-gainmhich"
 
@@ -1866,10 +1845,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "female^Dune Sky Hunter"
-msgstr "Losgaire-gainmhich"
+msgstr "Speur-shealgair-gainmhich"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -1889,7 +1866,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:150
 msgid "eagle"
-msgstr ""
+msgstr "iolaire"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
@@ -1959,10 +1936,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
-#, fuzzy
-#| msgid "Dune Swiftrider"
 msgid "female^Dune Strider"
-msgstr "Luath-mharcaiche-gainmhich"
+msgstr "Ceumaiche-gainmhich"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
@@ -2023,12 +1998,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:26
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "buille claidheimh-chruim làidir"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "gearradh claidheimh-chruim cothromach"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2051,10 +2026,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
-#, fuzzy
-#| msgid "Dune Warmaster"
 msgid "Dune Wayfarer"
-msgstr "Maighstir-cogaidh-gainmhich"
+msgstr "Taistealach-gainmhich"
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:21
@@ -2092,10 +2065,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
-#, fuzzy
-#| msgid "Dune Windrider"
 msgid "Dune Windbolt"
-msgstr "Gaoth-mharcaiche-gainmhich"
+msgstr "Bolta-gaoithe-gainmhich"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
@@ -2114,10 +2085,8 @@ msgstr ""
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Wyvern Rider"
-msgstr "Marcaiche Iolair-leòmhainn"
+msgstr "Marcaiche nathrach sgiathach"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2142,6 +2111,19 @@ msgstr "Troich bhoile"
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "Geàrd-dràgoin troiche"
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
@@ -2275,6 +2257,21 @@ msgstr "Tàirneanaiche troiche"
 msgid "Dwarvish Thunderguard"
 msgstr "Geàrd-tàirnich troiche"
 
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
@@ -2310,17 +2307,6 @@ msgstr "Dìoghaltair-sìthe"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The curious name of the elvish ‘Avengers’ comes from a tactic often "
-#| "employed by these master rangers. The enemy is allowed to break through a "
-#| "feint defense, and when the vulnerable troops behind the front line "
-#| "follow, these archers break cover and attack, cutting the supply lines "
-#| "and surrounding the enemy in one fell stroke.\n"
-#| "\n"
-#| "This has, at times, been interpreted as a form of vengeance for their "
-#| "brethren lost earlier in the battle. Although not so base in design, it "
-#| "is not at all inaccurate."
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -2330,16 +2316,6 @@ msgid ""
 "vengeance for their brethren lost earlier in the battle. While not so base "
 "in design, it is not at all inaccurate."
 msgstr ""
-"Thàinig an t-ainm annasach air na dìoghaltairean-sìthe bho innleachd a "
-"chleachdas na sàr-shealgairean seo gu tric. Leigidh iad air an nàmhaid "
-"briseadh tro dhìon mas fhìor is nuair a leanas na saighdearan as laige às an "
-"dèidh bhon chùlaibh, thig na boghadairean seo a-mach bhon chòmhdach is bheir "
-"iad ionnsaigh orra, a’ bacadh slighean an t-solair is a’ cuairteachadh an "
-"nàmhad le aon bhuille eagalach.\n"
-"\n"
-"Aig amannan, bheachdaichte air mar sheòrsa dhe dhìoghaltas airson nan co-"
-"dhalta a chaill iad na bu tràithe air a’ bhlàr. Ged nach e seo a bhiodh "
-"fainear dhaibh, chan eil e fada cearr."
 
 #. [special_note]
 #: data/core/units/elves/Avenger.cfg:22
@@ -2954,19 +2930,6 @@ msgstr "Marcaiche madaidh"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
-#, fuzzy
-#| msgid ""
-#| "No one is quite sure how the practice of taming and riding wolves came "
-#| "into being, but the advantages of it for a goblin are obvious. Goblins "
-#| "are smaller and much weaker than their orcish kin, and are often tasked "
-#| "to the most dangerous and unwanted parts of a fight. Any who can manage "
-#| "to win themselves a mount have a much safer, and daresay, more amusing "
-#| "role in combat.\n"
-#| "\n"
-#| "Wolves, likely, could never support the weight of a man in plate, but a "
-#| "goblin in leather armor is a simple load to bear. Quite unlike horses, "
-#| "these mounts have a rather easy time traversing the mountains, though "
-#| "water and woods will still slow them down."
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are much "
@@ -2979,17 +2942,6 @@ msgid ""
 "horses, these mounts have a rather easy time traversing the mountains, "
 "though water and woods will still slow them down."
 msgstr ""
-"Chan eilear cinnteach cuine a thòisicheadh air madaidhean-allaidh a "
-"challachadh is a’ marcachadh orra, ach tha am buaidh dha na bòcain "
-"follaiseach. Tha bòcain nas lugha is mòran nas laige na an cinneadh deamhain "
-"is thèid an cur dhan phàirt as cunnartaiche is neo-thaitniche air a’ bhlàr. "
-"Bidh pàirt nas sàbhailte is, abramaid, nas èibhinne aig an fheadhainn a nì a "
-"chùis air munnta a lorg.\n"
-"\n"
-"Tha e cha mhòr cinnteach nach fhulaingeadh madadh-allaidh duine le armachd "
-"meatailt air le truimead, ach tha bòcan le armachd leathair aotrom gu leòr "
-"dhaibh. Seach mar a tha each, tha na munntaichean seo làn comasach dol thar "
-"nam beann ged a chuireas uisge no coille maille orra fhathast."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -3870,11 +3822,9 @@ msgstr ""
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
-"Tha draoidhean airgid air dòigh leis an nàdar draoidheach aca is tha comas-"
-"seasaimh àrd aca an aghaidh dochainn neo-chorporra."
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:163
@@ -4166,7 +4116,7 @@ msgid "Thug"
 msgstr "Burraidh"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -4412,13 +4362,6 @@ msgstr "Saighdear-mara"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
-#, fuzzy
-#| msgid ""
-#| "With their towering shields, the Merman Hoplites form the elite guard of "
-#| "the watery realm. Their powerful armor and rigid discipline allow them to "
-#| "hold a steadfast line in the maelstrom of battle. In times of "
-#| "desperation, they can even do so on land, though not nearly as well as a "
-#| "creature with legs."
 msgid ""
 "With their heavy armor and shields, the Merman Hoplites form the elite guard "
 "of the watery realm. Their powerful style of defensive combat and rigid "
@@ -4426,11 +4369,6 @@ msgid ""
 "In times of desperation, they can even do so on land, though not nearly as "
 "well as a creature with legs."
 msgstr ""
-"Leis na sgiathan mòra aca, ’s e an geàrd barraichte aig na h-uisgeachan a "
-"th’ anns na saighdearan-mara. Leigidh an armachd treun is smachd teann aca "
-"leotha loidhne sheasmhach a chumail ann am bùrach a’ bhlàir. Ri amannan "
-"èiginneach, nì iad seo fiù ’s air an tìr ged nach eil iad a cheart cho "
-"comasach air ’s a tha creutairean air a bheil casan."
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -4439,22 +4377,12 @@ msgstr "Sealgair-mara"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The skills employed by mermen in spear-fishing are easily translated into "
-#| "warfare, especially against those who are not at home in the water. In "
-#| "times of need, many mermen of that occupation will volunteer to swell the "
-#| "ranks of their military."
 msgid ""
 "The skills employed by merfolk in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
 "of need, many merfolk of that occupation will volunteer to swell the ranks "
 "of their military."
 msgstr ""
-"Gabhaidh na sgilean aig na daoine-mara a shealgas èisg le sleagh cur gu feum "
-"aig àm cogaidh, gu h-àraidh an aghaidh na feadhna nach dèan an dachaigh san "
-"uisge. Ri àm èiginneach, thèid mòran dhe na sealgairean-mara ud ’nan "
-"saighdearan gu saor-thoileach gus cur ris an fheachd."
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
@@ -4479,24 +4407,12 @@ msgstr "Gathadair-mara"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Those mermen who master the art of the javelin can become nearly as "
-#| "effective as an archer — though the heft of their weapons impedes their "
-#| "range, the impact of one is considerably greater. In the water, the "
-#| "mobility of the mermen more than makes up for this when facing foes who "
-#| "cannot swim."
 msgid ""
 "Those merfolk who master the art of the javelin can become nearly as "
 "effective as an archer — though the heft of their weapons impedes their "
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the merfolk more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Fàsaidh an sluagh-mara a bheir dòighean a’ ghatha gu ìre cha mhòr cho "
-"èifeachdach a bhios boghadairean – ged nach eil an aon astar aig na h-airm "
-"aca air sàilleibh an cuideim, buailidh iad mòran nas treasa. San uisge, "
-"bheir an gluasad clis aca buannachd dhaibh an aghaidh nàimhdean aig nach eil "
-"snàmh."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -4565,14 +4481,6 @@ msgstr "Sleaghair-mara"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Archery is little favored by the mermen, for whom use of javelins serves "
-#| "a similar function. Though thrown javelins are of little use under the "
-#| "water, they are extremely effective at the surface, where their weight "
-#| "allows them to plunge several feet below the water while retaining enough "
-#| "momentum to wreak damage. They are also useful in melee, even deep under "
-#| "the surface, which is something that certainly cannot be said of arrows."
 msgid ""
 "Archery is little favored by the merfolk, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -4581,12 +4489,6 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"Chan eil an sluagh-mara ro measail air boghadaireachd is cleachdaidh iad "
-"gathan ’na àite. Ged nach dèan gathan a thilgeas tu fon uisge mòran feum, "
-"tha iad uabhasach èifeachdach air an uachdar is leigidh an cuideam leotha "
-"tighinn a-steach grunn throighean dhan uisge fhad ’s a chumas iad astar gu "
-"leòr gus dochann a dhèanamh. Nì iad feum ann an ionnsaighean dlùtha "
-"cuideachd eadhon san uisge domhainn, rud nach dèanadh saighdean."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -4625,10 +4527,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant"
-msgstr "Radan fuamhaireil"
+msgstr "Mòr-sheangan"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:19
@@ -4641,7 +4541,7 @@ msgstr ""
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "Mathan uamha"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -4655,7 +4555,7 @@ msgstr ""
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "Torc coille"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -4665,24 +4565,22 @@ msgid ""
 "boar is a challenge even to the best hunters."
 msgstr ""
 
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
-
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
-msgstr ""
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
+msgstr "tosg"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
-msgstr ""
+msgstr "Uircean"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -4690,12 +4588,12 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
-msgstr ""
+msgstr "Laghairt boglaich"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -4706,24 +4604,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
-msgstr ""
+msgstr "liùgair boglaich"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
-msgstr ""
+msgstr "liùgair boglaich"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -4731,13 +4629,16 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"’S urrainn don aonad seo fhalach sa bhoglach ach nach faic na nàimhdean e.\n"
+"\n"
+"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e sa bhoglach ach "
+"nuair a bhios aonad aig an nàmhaid dìreach ri thaobh. Caillidh a’ chiad "
+"aonad nàmhad a chì e a h-uile gluasad a bhiodh air fhàgail dha."
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
-#, fuzzy
-#| msgid "Cuttle Fish"
 msgid "Cuttlefish"
-msgstr "Gubarnach"
+msgstr "Giobanach"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
@@ -4754,13 +4655,12 @@ msgstr "Seann-sheabhag"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
-#, fuzzy
 msgid ""
 "Elder Falcons bear the telltale scars of veteran warriors from protecting "
 "their masters, their bodies proof of repeated dives into a swirling melee. "
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy’s head."
-msgstr " "
+msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -4785,10 +4685,8 @@ msgstr ""
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant"
-msgstr "Dràgon teine"
+msgstr "Seangan teine"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
@@ -4801,10 +4699,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
-#, fuzzy
-#| msgid "fireball"
 msgid "fire"
-msgstr "bàla-teine"
+msgstr "teine"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -4848,10 +4744,8 @@ msgstr "spògan-teine"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "anail theine"
+msgstr "Uabhas teine"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
@@ -4864,10 +4758,8 @@ msgstr ""
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Frost Stoat"
-msgstr "Radan fuamhaireil"
+msgstr "Neas reòthaidh"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
@@ -4882,22 +4774,18 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
-#, fuzzy
-#| msgid "fire claws"
 msgid "ice claw"
-msgstr "spògan-teine"
+msgstr "spòg deighe"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Stoat"
-msgstr "Radan fuamhaireil"
+msgstr "Mòr-neas"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
-msgstr ""
+msgstr "Cha mholamaid am mòr-neas tuilleadh, cleachd neas reòthaidh."
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -4959,19 +4847,19 @@ msgstr "gathan"
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
 msgstr "greimir"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "scuttler"
-msgstr ""
+msgstr "ruideilear"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr ""
+msgstr "Ruideilear-gainmhich"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
@@ -5023,7 +4911,7 @@ msgstr "eige"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "Each donn"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -5039,17 +4927,13 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr "breabadh"
+msgid "hooves"
+msgstr "cruidhean"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "Draoidh geal"
+msgstr "Each geal"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -5062,10 +4946,8 @@ msgstr ""
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:140
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "Buidseach dubh"
+msgstr "Each dorcha"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
@@ -5079,21 +4961,19 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:179
 #: data/core/units/monsters/Horse_Black.cfg:50
 msgid "whinny"
-msgstr ""
+msgstr "sitrich"
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:214
 #: data/core/units/monsters/Horse.cfg:218
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "Ban-eòlach dhubh"
+msgstr "Each dorcha"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "Each dubh"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -5106,21 +4986,18 @@ msgstr ""
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
-msgstr ""
+msgstr "Àigeach dubh"
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
-#, fuzzy
-#| msgid "female^Mage of Light"
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
-msgstr "Ban-draoidh shoillse"
+msgstr "Trom-laighe dhubh"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "Sàr-dhraoidh"
+msgstr "Each mòr"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -5134,7 +5011,7 @@ msgstr ""
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "Màilleach-deighe"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -5149,7 +5026,7 @@ msgstr ""
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "Màilleach-deighe mòr"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -5163,7 +5040,7 @@ msgstr ""
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "Jinn"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -5179,14 +5056,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "sgal-gaoithe fàsaich"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "dealanach"
+msgstr "dealanach fàsaich"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5206,7 +5081,7 @@ msgstr ""
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "Ruch"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:19
@@ -5226,13 +5101,11 @@ msgstr ""
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "Sgairp fhuamhaireil"
+msgstr "Sgairp creige"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -5242,16 +5115,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
-#, fuzzy
-#| msgid "water spray"
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
-msgstr "smùid na mara"
+msgstr "steall"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "Scarab adharcach"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -5271,10 +5142,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "bioran"
+msgstr "adharc"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -5295,10 +5164,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "Sàr-dhraoidh"
+msgstr "Each-uisge mòr"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -5369,7 +5236,7 @@ msgstr ""
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
-msgstr ""
+msgstr "Nathair sgiathach fhiadhaich"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
@@ -5391,9 +5258,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Madadh-allaidh"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -5431,7 +5298,7 @@ msgstr ""
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
-msgstr ""
+msgstr "Biodag-fhiacaill Naga"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
@@ -5449,14 +5316,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "cearcallan"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
-#, fuzzy
-#| msgid "Nagini Fighter"
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
-msgstr "Cathach naigini"
+msgstr "Biodag-fhiacaill Naigini"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -5488,10 +5353,8 @@ msgstr "Cathach naigini"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "Geàrd rìoghail"
+msgstr "Geàrd Naga"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -5505,10 +5368,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "Cathach naga"
+msgstr "Àrd-gheàrd Naga"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -5522,19 +5383,15 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
-msgstr "bualadh sgèithe"
+msgstr "sgiath"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Shield Guard"
-msgstr "Cathach naga"
+msgstr "Geàrd-sgèithe Naga"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -5577,10 +5434,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:4
-#, fuzzy
-#| msgid "Naga Myrmidon"
 msgid "Naga Ophidian"
-msgstr "Sàr-lannair naga"
+msgstr "Nathair Naga"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
@@ -5601,32 +5456,26 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
-#, fuzzy
-#| msgid "war blade"
 msgid "curved blade"
-msgstr "lann-chogaidh"
+msgstr "lann chrom"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
-msgstr ""
+msgstr "jarid"
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
-#, fuzzy
-#| msgid "Naga Myrmidon"
+#: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
-msgstr "Sàr-lannair naga"
+msgstr "Nathair Naigini"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "Cathach naga"
+msgstr "Tilgeir-cearcaill Naga"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -5635,25 +5484,21 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
-msgstr ""
+msgstr "cearcall"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
-msgstr "Cathach naga"
+msgstr "Tilgeir-cearcaill Naigini"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Sicarius"
-msgstr "Cathach naga"
+msgstr "Sicarius Naga"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -5674,11 +5519,9 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
-#, fuzzy
-#| msgid "Nagini Warrior"
+#: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
-msgstr "Laoch naigini"
+msgstr "Sicarius Naigini"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -5714,13 +5557,11 @@ msgstr ""
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "Cathach naga"
+msgstr "Zephyr Naga"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -5762,11 +5603,9 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
-msgstr "Cathach naga"
+msgstr "Zephyr Naigini"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -5906,6 +5745,11 @@ msgstr ""
 msgid "blade"
 msgstr "lann"
 
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "breabadh"
+
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
@@ -6024,10 +5868,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
-msgstr "Fàthaiche laghairt"
+msgstr "Fàthaiche Laghairt"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:18
@@ -6056,10 +5898,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
-msgstr "Dì-neartaichear laghairt"
+msgstr "Dì-neartaichear Laghairt"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:19
@@ -6089,10 +5929,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Dune Skirmisher"
 msgid "female^Saurian Skirmisher"
-msgstr "Streupaire-gainmhich"
+msgstr "Streupaire Laghairt"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -6336,10 +6174,8 @@ msgstr "Troich"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Falcon"
-msgstr "Ialtag"
+msgstr "Seabhag"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
@@ -6350,10 +6186,8 @@ msgstr "Bòcan"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Horse"
-msgstr "Gille-dubh"
+msgstr "Each"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
@@ -6364,10 +6198,8 @@ msgstr "Marcaiche"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:207
 #: data/core/units/undead/Corpse_Walking.cfg:229
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Beast-Rider"
-msgstr "Ialtag"
+msgstr "Marcaiche bèist"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:216
@@ -6378,10 +6210,8 @@ msgstr "Iolair-leòmhainn"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:239
 #: data/core/units/undead/Corpse_Walking.cfg:238
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Rat"
-msgstr "Ialtag"
+msgstr "Radan"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:256
@@ -6392,26 +6222,20 @@ msgstr "Laghairt"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
-#, fuzzy
-#| msgid "wc_variation^Saurian"
 msgid "wc_variation^Scorpion"
-msgstr "Laghairt"
+msgstr "Sgairp"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
 #: data/core/units/undead/Corpse_Walking.cfg:274
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Spider"
-msgstr "Snàmhaiche"
+msgstr "Damhan-allaidh"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:284
 #: data/core/units/undead/Corpse_Walking.cfg:283
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Serpent"
-msgstr "Snàmhaiche"
+msgstr "Nathair"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
@@ -6428,16 +6252,8 @@ msgstr "Athach"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Boar"
-msgstr "Ialtag"
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
+msgstr "Torc"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
@@ -6892,14 +6708,12 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "Fiùran Gille-duibh"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "Seuman athaich"
+msgstr "Seuman Gille-duibh"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
@@ -6907,420 +6721,3 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
-
-#, fuzzy
-#~| msgid "faerie fire"
-#~ msgid "desert fire"
-#~ msgstr "teine-sìthe"
-
-#, fuzzy
-#~| msgid "wc_variation^Wose"
-#~ msgid "wc_variation^Tusker"
-#~ msgstr "Gille-dubh"
-
-#~ msgid ""
-#~ "Amongst orcs, bows are often regarded as a cowardly weapon; but even "
-#~ "orcs, especially youths and those of slight build, are pragmatic enough "
-#~ "to use them in spite of this. Orcish archers are seldom well equipped, "
-#~ "and have no semblance of training. Even as poorly handled as they are, "
-#~ "their weapons can still be quite deadly, and the wielders thereof rarely "
-#~ "march alone."
-#~ msgstr ""
-#~ "Am measg nan deamhan, thathar a’ beachdachadh air a’ bhogha mar arm "
-#~ "gealtach gu tric, ach tha fiù ’s na deamhain, gu h-àraidh an fheadhainn "
-#~ "òga is tana, ciallach gu leòr gus a chleachdadh. Chan eil uidheamachd "
-#~ "mhath aig boghadairean deamhain ach ainneamh is chan fhaigh iad trèanadh "
-#~ "sam bith. Co-dhiù no co-dheth, faodaidh na airm aca a bhith gu math "
-#~ "cunnartach fhathast is droch sheans gu bheil na deamhain a chleachdas iad "
-#~ "’nan aonar."
-
-#~ msgid ""
-#~ "Though some consider it cowardly to use, poison is a weapon favored by "
-#~ "orcs, especially those weak of frame. Orcish assassins, who use it on "
-#~ "throwing knives, are typically frail by orcish standards, although "
-#~ "surprisingly nimble. Though rarely the ones who deal the killing blow, "
-#~ "their tactics are a considerable aid to their larger and more brutal kin."
-#~ msgstr ""
-#~ "Ged a bhiodh cuid a’ smaoineachadh air puinnsean mar arm gealtach, ’s "
-#~ "fearr leis na deamhain e, gu h-àraidh an fheadhainn nach eil treun. Tha "
-#~ "a’ mhòrchuid dhe na foill-mhurtairean a chleachdas air sgianan tilgeil e "
-#~ "breòite am measg nan deamhan ged a tha iad iongantach sùbailte. Ged nach "
-#~ "e iadsan a bheir seachdad am buille marbhtach mar as trice, cuiridh iad "
-#~ "taic mhòr leis an innleachd aca dhan cuideachd nas motha is nas brùideile."
-
-#~ msgid ""
-#~ "Orcish crossbows are crude imitations of human or dwarvish design; a "
-#~ "crossbow of any make, though, is a fairly potent device. The orcs "
-#~ "privileged enough to wield them are capable warriors, and what they lack "
-#~ "in finesse, they make up for in numbers."
-#~ msgstr ""
-#~ "Chan e ach droch lethbhreacan dhen fheadhainn aig a’ chinne-daonna is na "
-#~ "sìthichean a th’ anns na crois-bhoghachan aig na deamhain. ’S e inneal "
-#~ "reusanta neartmhor a bhios anns gach crois-bhogha co-dhiù ge b’ e dè cho "
-#~ "math ’s a tha e. Tha na deamhain a tha sochairichte gu leòr ach am faigh "
-#~ "iad fear ’nan deagh ghaisgich is ma tha seòltachd a dhìth ort, bidh gu "
-#~ "leòr dhiubh ann."
-
-#~ msgid ""
-#~ "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
-#~ "enemies. Slayers are fast on their feet, and quite nimble in combat, "
-#~ "although they achieve that end by forgoing armor. Their weapon of choice, "
-#~ "poison, is a vicious tool, and its common use on the battlefield is often "
-#~ "the real cause of orcish supremacy."
-#~ msgstr ""
-#~ "Cuiridh an nàimhdean ‘marbhaiche’ air foill-mhurtairean nan deamhan as "
-#~ "motha no as comasaiche. Tha marbhaichean luath air an casan is sùbailte "
-#~ "gu leòr leis an sabaid ged a bhuineas iad seo le dìth armachd. Is am "
-#~ "puinnsean an t-arm as fhearr leotha a tha na uidheamachd aingidh agus ’s "
-#~ "e cleachdadh a’ phuinnsein an t-adhbhar as cumanta gun tèid an latha "
-#~ "leotha."
-
-#~ msgid ""
-#~ "From time to time, an orc will arise who has a natural charisma and "
-#~ "command over his ilk. If he is also strong and cunning enough to survive "
-#~ "early leadership struggles, he will inevitably find himself leading a "
-#~ "great horde of warriors, and he will also inevitably cause a great deal "
-#~ "of trouble for the civilized races of the world. The surest way to "
-#~ "disperse such a host is to slay this rare orc who can hold it together."
-#~ msgstr ""
-#~ "Bho àm gu àm, èirigh deamhan aig a bheil spionnadh is ùghdarras nàdarra "
-#~ "air a sheòrsa. Ma tha e cuideachd làidir is glic gu leòr gus mairsinn beò "
-#~ "tro na còmhstrithean ceannardais tràtha, bidh buidheann mòr dhe "
-#~ "shaighdearan aige air a cheann thall is cuiridh e dragh mhòr air "
-#~ "cinnidhean sìobhalta an t-saoghail gun teagamh sam bith. An dòigh as "
-#~ "cinntiche gus feachd dhen leithid a sgaoileadh, ’s e marbhadh an deamhain "
-#~ "ainneimh seo a chumadh ri chèile iad."
-
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "Chan eil an draoidheachd aig na sìthichean-coille freagarrach dhan chath "
-#~ "ach tha i èifeachdach co-dhiù. Thig luaths air na coilltean sa bhios iad "
-#~ "beò le facal is bheir iad buille air an fheadhainn a chuireas an sìth ann "
-#~ "an cunnart.\n"
-#~ "\n"
-#~ "’S e slànachadh a’ chiad chomas aig na draoidhean agus tha an sgil seo as "
-#~ "adhbhar gun urramaich am muinntir iad."
-
-#~ msgid ""
-#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
-#~ "humans are almost universally incapable of understanding it, let alone "
-#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
-#~ "though it can be said that they are revered by their people, very little "
-#~ "can be said about their actual function or purpose within that society."
-#~ msgstr ""
-#~ "Tha draoidheachd nan sìthichean gu tur eadar-dhealaichte bho "
-#~ "dhraoidheachd na cinne-daonna air ìre nach gabh i tuigsinn le daoine sam "
-#~ "bith cha mhòr is gun ghuth air a cleachdadh. San aon dòigh, tha an "
-#~ "fheadhainn a chleachdas i rùnach. Ged a dh’urramaicheas am muinntir iad, "
-#~ "chan urrainnear mòran a ràdh mun dreachd a th’ aca sa choimhearsnachd."
-
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "Gheibh ceannardan nan sìthichean dìlseachd nàdarra le am muinntir air "
-#~ "nach b’ urrainn dha cheannardan nan cinnidhean eile a bhith ach farmadach "
-#~ "agus buannaichidh iad an dìlseachd seo le sàr-ghliocas is tuigse. Ged a "
-#~ "tha e socair sèimh air amannan sìthe, ’s e cùis dhrùidhteach a th’ anns "
-#~ "an àrd-mhorair-shìthe fheargach."
-
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "Taghaidh na sìthichean na ceannardan aca a rèir an seòltachd is co-"
-#~ "fhaireachdainn ri meidh nan lùths uile-choitcheann; ’s e an t-earalas a "
-#~ "dhìonas iad ri amannan mì-chinnteach. Gheibh iad dìlseachd sheasmhach "
-#~ "leis am muinntir mar thoradh air an rìoghachd chothromach agus ’s e seo "
-#~ "an tabhartas as motha a b’ urrainn tighearna iarraidh."
-
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "Tha comas draoidheachd aig sìthichean bho thùs. Bheir seo dàimh ris an t-"
-#~ "saoghal nàdarra dhaibh a ghairmeas iad mar chaidreabhach air a’ bhlàr. "
-#~ "Math dh’fhaoidte gun tèid nàimhdean a shiubhlas sna coilltean aca amladh "
-#~ "le freumhan is am bacadh leis an talamh fhèin air a bheil iad ’nan "
-#~ "seasamh.\n"
-#~ "\n"
-#~ "Tha comas slànachaidh annasach aig na sìthichean cuideachd a tha air leth "
-#~ "feumail air a’ bhlàr."
-
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "Faodaidh dìlseachd dha shlighe nan sìthichean maighdeann-shìthe a "
-#~ "thionndadh ’na creutair a bhuineas dhan dà thaobh an ceann ùine. Fo "
-#~ "stiùireadh cumhachd nach tuigear ach glè bheag, taisbeanaidh luchd-"
-#~ "glèidhidh àlainn seo aig coilltean nan sìthichean an grinneas is "
-#~ "dìomhaireachd a th’ aig am muinntir."
-
-#~ msgid ""
-#~ "The world of faerie is far more potent than the corporeal world. Simply "
-#~ "bringing some of this world into our own can have violent results. This "
-#~ "is well-understood by the elves, although rarely used with malicious "
-#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
-#~ "strength.\n"
-#~ "\n"
-#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
-#~ "and certainly are capable of acting the part."
-#~ msgstr ""
-#~ "Tha an saoghal-sìthe mòran nas neartmhoire na an saoghal corporra. "
-#~ "Faodaidh toradh fiadhaich a bhith an lùib ma tharraingear fiù ’s pìos "
-#~ "beag dheth dhan t-saoghal againn fhèin. Tha làn-tuigse aig na sìthichean "
-#~ "air seo ged nach cleachd iad e le droch rùn ach ainneamh: tha e glè "
-#~ "dhoirbh seo a dhèanamh is tha droch chliù air an seòrsa cleachdaidh seo "
-#~ "dhe an neart.\n"
-#~ "\n"
-#~ "Cuiridh na cinnidhean eile ‘bana-bhuidseach’ air an fheadhainn a bhios "
-#~ "comasach air seo agus cuiridh iad an dearbh dhòigh orra ma thogras iad."
-
-#~ msgid ""
-#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
-#~ "powers. Legends concerning these have given other races a healthy fear of "
-#~ "the elves."
-#~ msgstr ""
-#~ "Ged nach faicear gu tric iad, bidh deò-shìthe seòlta ’na mhaighstir an dà "
-#~ "chuid air an nàdar-sìthe is corporra. Tha cumhachdan mìorbhaileach is aig "
-#~ "amannan eagalach aca. Tha naidheachdan mu na cumhachdan aca air eagal "
-#~ "fallainn ro na sìthichean a chur air na cinnidhean eile."
-
-#~ msgid "Dune Ranger"
-#~ msgstr "Maor-gainmhich"
-
-#~ msgid "Dune Swiftrider"
-#~ msgstr "Luath-mharcaiche-gainmhich"
-
-#~ msgid "Saurian Skirmisher"
-#~ msgstr "Streupaire laghairt"
-
-#~ msgid "naphtha attack"
-#~ msgstr "steall teine"
-
-#~ msgid "fire arrow"
-#~ msgstr "saighead teine"
-
-#, fuzzy
-#~ msgid ""
-#~ "Harriers hold themselves to a higher standard than the ranks of the "
-#~ "Skirmishers from which they ascended. Not content to merely draw the "
-#~ "enemy out, they combine their speed with an aggression that sends the "
-#~ "Harriers dancing through the ranks of the enemy, swords ripping and "
-#~ "tearing at those around them. "
-#~ msgstr " "
-
-#~ msgid "Dune Piercer"
-#~ msgstr "Sàthadair-gainmhich"
-
-#, fuzzy
-#~| msgid "Young Ogre"
-#~ msgid "Young Roc"
-#~ msgstr "Duin’-itheach òg"
-
-#~ msgid ""
-#~ "Elves have always had a reputation for archery, a skill that, for many "
-#~ "reasons, comes naturally to them. Even the frail of body can be deadly "
-#~ "with a bow in hand, and in times of war, many will take up this weapon. "
-#~ "Though their relative inexperience with combat leaves them somewhat "
-#~ "vulnerable, their natural grace ensures that they can best any of "
-#~ "humanity’s fresh recruits."
-#~ msgstr ""
-#~ "Bha cliù aig na sìthichean air boghadaireachd a-riamh is thig an sgil seo "
-#~ "dhaibh gu nàdarra air iomadh adhbhar. Bidh fiù ’s an fheadhainn bhreòite "
-#~ "fìor chunnartach le bogha ’na làimh is gabhaidh mòran ris an airm seo ri "
-#~ "àm cogaidh. Ged a bhios iad caran so-leònta air sàilleibh dìth eòlais a "
-#~ "thaobh catha, nì iad a’ chùis air fear air ùr-thrusadh na cinne-daonna "
-#~ "sam bith le taic an loinne nàdarra."
-
-#~ msgid ""
-#~ "Elves, unlike many other races, will quickly acknowledge and follow any "
-#~ "of their peers who have experience in combat. In this they differ greatly "
-#~ "from humanity, for whom leadership is often a matter of coercion and "
-#~ "intimidation. The combination of their willingness to accept the wisdom "
-#~ "of their leaders, and the tendency to choose leaders of merit is one of "
-#~ "the quiet strengths of the elves."
-#~ msgstr ""
-#~ "Eu-coltach ri cinnidhean eile, bidh sìthichean gu math toilichte "
-#~ "leantainn gu saor-thoileach air an fheadhainn aig a bheil eòlas cogaidh. "
-#~ "’S e diofar mòr a th’ ann eatarra is an cinne-daonna a chleachdas "
-#~ "èigneachadh is smàdadh gu tric gus ceannardas fhaighinn. Is aon dhe na "
-#~ "neartan aig na sìthichean gun gabh iad ri gliocas an ceannardan is gu "
-#~ "bheil iad buailteach ri feadhainn àraidh a thaghadh."
-
-#~ msgid ""
-#~ "Those few elves who deliberately hone themselves into weapons of war "
-#~ "become something which belies the peace-loving reputation of their race. "
-#~ "Dedication and skill are matched with purity of form, and the result is "
-#~ "swordsmanship to which few can compare. Even their archery, treated as a "
-#~ "secondary pursuit, is masterfully executed."
-#~ msgstr ""
-#~ "Cuiridh na sìthichean ainneamh a dh’obraicheas gu cruaidh gus an "
-#~ "tionndadh fhèin ’nan airm cogaidh mealladh air cliù nan sìthichean mar "
-#~ "chreutairean sìtheil. Co-fhreagraidh an dìlseachd is sgil ri glaine an "
-#~ "fhoirm agus ’s e claidheamhaireachd gun choimeas a th’ anns an toradh. "
-#~ "Tha fiù ’s a’ bhoghadaireachd aca a dh’ionnsaicheas iad mar dàrna chleas "
-#~ "air ìre maighstireil."
-
-#~ msgid ""
-#~ "Elves are not warlike by nature, but in times of need, their natural "
-#~ "grace and agility serve them well, as does their skillful craftsmanship. "
-#~ "An elf can grasp the basics of swordsmanship and archery in a time "
-#~ "uncannily short by the standards of other races, and put them to "
-#~ "effective use on the battlefield."
-#~ msgstr ""
-#~ "Ged nach eil na sìthichean cogail bho thùs, nì an an loinne is cliseachd "
-#~ "nàdarra feum dhaibh ri amannan èiginneach mar a nì an ceàrd sgileil. "
-#~ "Tuigidh sìthiche ciamar a chleachdas e claidheamh is bogha gu fìor-luath "
-#~ "an coimeas ri cinnidhean eile is gheibh e feum asta gu èifeachdach air a’ "
-#~ "bhlàr."
-
-#~ msgid ""
-#~ "Elves, though not warlike by nature, are swift to learn; a relatively "
-#~ "small amount of experience will turn an elf from a competent fighter into "
-#~ "a master of combat. Those who are honored as heroes are strong with both "
-#~ "sword and bow, and their skill once acquired does not fade for lack of "
-#~ "practice."
-#~ msgstr ""
-#~ "Ged nach eil sìthichean cogail bho thùs, ionnsaichidh iad gu luath. Chan "
-#~ "eil ach beagan eòlais a dhìth ach an tèid sìthiche a tha ’na ghaisgeach "
-#~ "comasach ’na mhaighstir air a bhlàr. Tha an fheadhainn a tha urramaichte "
-#~ "mar laoich làidir an dà chuid le claidheamh is bogha agus cha chaill iad "
-#~ "na sgilean a th’ aca le dìth cleachdaidh."
-
-#~ msgid ""
-#~ "The nobility of the elves are possessed of merit to match their standing "
-#~ "in society. Elvish Lords are the wisest and strongest of their people, "
-#~ "and are fearsome in their command of magic."
-#~ msgstr ""
-#~ "Tha uaislean nan sìthichean àraidh air an inbhe a th’ aca sa "
-#~ "choimhearsnachd. ’S e an fheadhainn as glice is as treasa dhiubh a th’ "
-#~ "anns na morairean-sìthe is tha an smachd air draoidheachd eagalach."
-
-#~ msgid ""
-#~ "Elves are wondrously keen-sighted, a gift which contributes to their "
-#~ "mastery of the bow. An elf practiced at archery can hit targets that a "
-#~ "man couldn’t even see, and can nock a second arrow almost as soon as the "
-#~ "first is let fly. Realizing this prodigious skill does come with one "
-#~ "cost, that being a lack of practice with the sword."
-#~ msgstr ""
-#~ "Tha lèirsinn iongantach math aig na sìthichean is cuiridh seo ris an "
-#~ "comas leis a’ bhogha. ’S urrainn do shìthiche aig a bheil deagh "
-#~ "chleachdadh leis a’ bhogha bualadh air amasan nach fhaiceadh duine fiù ’s "
-#~ "bidh saighead eile ullaichte aca cho luath ’s a bhios an dàrna saighead "
-#~ "air sgèith. Co-dhiù, gus an sgil seo a ghleusadh chan eil ùine air "
-#~ "fhàgail dhaibh gus cleachdadh gu leòr fhaighinn leis a’ chlaidheamh."
-
-#~ msgid ""
-#~ "The longevity and natural intelligence of elves make them apt for "
-#~ "military matters, enough even to counter their general distaste for war. "
-#~ "Elves remember things much more clearly than humankind, and can often "
-#~ "intuit what others can only be trained to do. Certainly, on those rare "
-#~ "occasions when an elf sets his mind to war, the strategy that results is "
-#~ "often the work of a master."
-#~ msgstr ""
-#~ "Cuiridh am beò fada is an gliocas nàdarra comas air cùisean cogaidh dha "
-#~ "na sìthichean, comas gu leòr ach an caill iad an gràin choitcheann an "
-#~ "aghaidh a’ chogaidh. Tha cuimhne nas soilleire aig sìthichean na aig a’ "
-#~ "chinne-daonna is thig rudan gu nàdarra dhaibh far am biodh trèanadh a "
-#~ "dhìth air càch. Mar as trice, ’s e toradh aig obair maighstir a th’ anns "
-#~ "an innleachd a chruthaicheas sìthiche sna h-amannan ainneamh a chuireas e "
-#~ "inntinn air a’ chogadh."
-
-#~ msgid ""
-#~ "Though a man might spend years in the forest, he will never shake the "
-#~ "feeling that he is a guest in a realm of which he is not truly a part. "
-#~ "With elves, this is quite reversed. Any elf that studies the lore of the "
-#~ "woods rapidly becomes a master of them. This, combined with a "
-#~ "considerable skill at archery and swordsmanship, is very useful in "
-#~ "warfare."
-#~ msgstr ""
-#~ "Fiù ’s nan cuireadh duine bliadhnaichean seachad sa choille, bhiodh e "
-#~ "fhathast a’ faireachdainn nach b’ e ach aoigh a bhiodh ann an roinn gun a "
-#~ "bhith ’na fhìor-phàirt dheth. Le sìthichean, ’s e an taobh eile a tha "
-#~ "fìor. Thèid gach sìthiche a dh’ionnsaicheas seanchas nan coilltean ’na "
-#~ "mhaighstir gu luath. Còmhla ris na deagh sgilean aca air boghadaireachd "
-#~ "is claidheamhaireachd, tha seo glè fheumail ann an cogadh."
-
-#~ msgid ""
-#~ "The master horsemen of the elves are able to move through forests at a "
-#~ "speed which would be suicidal for any human. Awe of the rider is quite "
-#~ "justified — but questions have also been raised about the stock of the "
-#~ "horses, for the feats they perform seem almost supernatural.\n"
-#~ "\n"
-#~ "This combination of incredible mobility and potent combat strength is one "
-#~ "of the greatest assets the elves possess in warfare."
-#~ msgstr ""
-#~ "’S urrainn dha na marcaichean maighstir aig na sìthichean gluasad tro "
-#~ "choilltean air astar a bhiodh marbhtach do gach duine. Tha na marcaichean "
-#~ "’nan cùis dhrùidhteach – ach chaidh cnuasadh cuideachd air dè seòrsa dhe "
-#~ "dh’eich a th’ aca oir tha coltas cha mhòr os-nàdarra air na cleasan a nì "
-#~ "iad.\n"
-#~ "\n"
-#~ "’S e am measgachadh seo dhe ghluasad iongantach is neart sabaide treun a "
-#~ "tha ’na bhuannachd mhòr dha na sìthichean air a bhlàr."
-
-#~ msgid ""
-#~ "The horsemen of the wood elves have some skill with bow and sword, but "
-#~ "their true skill lies in their horsemanship. Even other elves are "
-#~ "impressed by their uncanny speed in the woods, and their ability to dart "
-#~ "through the thick of the forest with nary a scratch. They may be the only "
-#~ "cavalry in existence that fares better in the woods than on open ground."
-#~ msgstr ""
-#~ "Tha marcaichean nan sìthichean coille comasach gu leòr air a’ chlaidheamh "
-#~ "is a’ bhogha, ach ’s e na sgilean marcachd aca a th’ anns a’ phrìomh sgil "
-#~ "aca. Tha iongnadh fiù ’s air sìthichean eile air dè cho luath ’s a "
-#~ "ghluaiseas iad tron choille is mar a sgiabas iad tro choille thiugh gun "
-#~ "sgrìob fhulang. ’S math dh’fhaoidte gur iadsan an aon eachraidh a bhios "
-#~ "nas comasaiche sa choille na air talamh fosgailte."
-
-#~ msgid ""
-#~ "There was a legend of an elf who stopped an arrow by shooting it out of "
-#~ "the air with one of his own. It is a testament to the skill of the elves "
-#~ "that such a story could be taken seriously. The sharpshooters of the "
-#~ "elves have, quite simply, mastered the art of archery."
-#~ msgstr ""
-#~ "Tha seann naidheachd ann mu shìthiche a chuir stad air saighead ’ga "
-#~ "bualadh san adhar le saighead aige fhèin. ’S e tiomnadh air sgil nan "
-#~ "sìthichean a th’ ann gun creideadh duine ann an sgeulachdan dhen leithid. "
-#~ "’S e maighstirean na boghadaireachd a th’ anns na sàr-ghiomanaich aig na "
-#~ "sìthichean gu simplidh."
-
-#~ msgid ""
-#~ "The Goblin ‘Knights’ have little in common with the men who share that "
-#~ "title, and the title is bestowed in mockery by their enemies. The "
-#~ "similarity is simply that they are the elite of the wolf riders, likely "
-#~ "promoted to their position by their success in some audacious raid.\n"
-#~ "\n"
-#~ "The wolves they are given are bred for speed and strength, making them "
-#~ "quite dangerous in combat."
-#~ msgstr ""
-#~ "Chan eil mòran an cumantas eadar ‘ridirean’ bòcain is na daoine aig a "
-#~ "bheil an aon tiotail oir chaidh an tiotail seo a chur orra mar mhagadh "
-#~ "leis an nàimhdean. Is an cumantas gur iadsan na h-uaislean am measg nam "
-#~ "marcaichean madaidh is thathar an dùil gun deach àrdachadh le "
-#~ "soirbheachas ann an creachadh dàna air choireigin.\n"
-#~ "\n"
-#~ "Tha na madaidhean-allaidh a thèid a thoirt leotha air an sìolradh airson "
-#~ "luaths is neart is tha iad cunnartach gu leòr air a bhlàr."

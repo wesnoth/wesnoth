@@ -8,13 +8,13 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2021.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-06-26 18:39+0200\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-01-21 13:08+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [attack]: type=impact
@@ -50,6 +50,7 @@ msgstr "coda"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
@@ -57,6 +58,7 @@ msgstr "tentacolo"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
 msgstr "inchiostro"
@@ -77,8 +79,8 @@ msgstr "inchiostro"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "mazza"
 
@@ -244,9 +246,9 @@ msgstr "mazzafrusto"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -285,9 +287,9 @@ msgstr "spada"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -310,9 +312,9 @@ msgid "bow"
 msgstr "arco"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -331,7 +333,7 @@ msgstr "arco"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "artigli"
@@ -346,7 +348,7 @@ msgstr "artigli"
 msgid "saber"
 msgstr "sciabola"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -358,7 +360,7 @@ msgstr "sciabola"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -375,8 +377,8 @@ msgstr "sciabola"
 msgid "Walking Corpse"
 msgstr "Morto Vivente"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -409,8 +411,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -446,14 +448,14 @@ msgstr "tocco"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
 msgstr "clava"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -467,8 +469,8 @@ msgstr "Lich Antico"
 msgid "chill tempest"
 msgstr "tempesta gelida"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -480,8 +482,8 @@ msgstr "Negromante"
 msgid "plague staff"
 msgstr "bastone del contagio"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -492,14 +494,14 @@ msgstr "bastone del contagio"
 msgid "curse"
 msgstr "maledizione"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -524,17 +526,19 @@ msgstr "maledizione"
 msgid "fangs"
 msgstr "zanne"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -564,7 +568,6 @@ msgstr ""
 "spesso in gruppi numerosi, ma sono deboli; tuttavia, il solo rumore della "
 "battaglia li può risvegliare, rendendoli di gran lunga più spaventosi."
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -579,6 +582,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -597,8 +601,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "Senz’anima"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -619,10 +623,8 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "furia berserker"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -630,7 +632,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 "Non è chiaro il motivo per cui le guardie del drago abbiano questo nome, "
@@ -673,8 +675,8 @@ msgstr "pugnale"
 msgid "dragonstaff"
 msgstr "asta del drago"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -702,8 +704,8 @@ msgstr ""
 msgid "hammer"
 msgstr "martello"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -808,8 +810,8 @@ msgstr ""
 "inefficace. Questi nani sono i signori delle mischie e possono tenere un "
 "fazzoletto di terra con la stessa risolutezza e tenacia di una quercia."
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -825,8 +827,8 @@ msgstr ""
 "pericoloso cedere anche un solo metro ad una di queste unità, perché poi non "
 "sarà facile strapparglielo da sotto i piedi."
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -852,10 +854,8 @@ msgid "thunderstick"
 msgstr "bastone tonante"
 
 # "to fire a gun in anger", nel gergo militare inglese, sta per "sparare in battaglia/in missione" e quant'altro; opposto a "in play" ("in corso d'addestramento") [NdBonta-Kun]
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -866,7 +866,7 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 "Le guardie del tuono sono famose per i loro curiosi armamenti, degli strani "
 "bastoni di legno e di ferro che producono un rumore fragoroso sul campo di "
@@ -881,8 +881,8 @@ msgstr ""
 "diversi minuti per la preparazione, i nani ritengono che i risultati ben "
 "ripaghino l’attesa."
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -896,16 +896,16 @@ msgstr ""
 "furia cieca, durante la quale non sentono paura né dolore, e non tengono "
 "conto delle ferite ricevute."
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Nano Maestro delle Rune"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -925,8 +925,8 @@ msgstr ""
 "dall’invincibilità, in quanto le loro rune fanno sì che gli attacchi fisici "
 "dei loro nemici causino meno danni del solito."
 
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1297,7 +1297,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "tridente"
 
@@ -1432,6 +1432,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "colpo"
 
@@ -2724,6 +2725,28 @@ msgstr "Nano Berserker"
 msgid "Dwarvish Dragonguard"
 msgstr "Nano Guardia del Drago"
 
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+"Non è chiaro il motivo per cui le guardie del drago abbiano questo nome, "
+"assegnato dai loro compagni nani. Alcuni ritengono che tale nome derivi "
+"dalle loro armi preferite, degli strani bastoni che sputano fuoco e "
+"dispensano morte; altri suppongono che nasca dal fatto che tali armi "
+"sarebbero una minaccia anche per un vero dragone, nel caso in cui una simile "
+"creatura facesse nuovamente la sua comparsa nel mondo conosciuto. Qualunque "
+"sia la risposta, è grazie a queste armi che i guardiani delle imponenti "
+"cittadelle dei nani sono rinomati e al contempo temuti: si tratta di armi "
+"che sono riuscite ad abbattere i guerrieri più potenti in un sol colpo."
+
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
@@ -2902,6 +2925,34 @@ msgstr "Nano Tonante"
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Nano Guardia del Tuono"
+
+# "to fire a gun in anger", nel gergo militare inglese, sta per "sparare in battaglia/in missione" e quant'altro; opposto a "in play" ("in corso d'addestramento") [NdBonta-Kun]
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+"Le guardie del tuono sono famose per i loro curiosi armamenti, degli strani "
+"bastoni di legno e di ferro che producono un rumore fragoroso sul campo di "
+"battaglia. I meccanismi alla base di questi armamenti sono un mistero, un "
+"segreto che i nani di Knalga (che li impugnano e che presumibilmente li "
+"hanno pure forgiati) portano con sé nella tomba. La maggior parte di quanto "
+"noto al riguardo si limita a dicerie che vedrebbero i nani versare una "
+"strana polvere nera nelle bocche delle loro armi: qualcuno afferma che essa "
+"sia il cibo che nutre le bestie imprigionate al loro interno.\n"
+"\n"
+"Nonostante un singolo colpo di questi “bastoni tonanti” possa richiedere "
+"diversi minuti per la preparazione, i nani ritengono che i risultati ben "
+"ripaghino l’attesa."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -5015,11 +5066,15 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
+#, fuzzy
+#| msgid ""
+#| "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and "
+#| "are highly resistant to non-physical damage."
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
-" I maghi argentati si trovano in notevole sintonia con la propria natura "
+"I maghi argentati si trovano in notevole sintonia con la propria natura "
 "magica e sono altamente resistenti ai danni non fisici."
 
 #. [female]
@@ -5358,7 +5413,7 @@ msgid "Thug"
 msgstr "Scagnozzo"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -5959,24 +6014,22 @@ msgstr ""
 "prezioso per qualsiasi agricoltore, ma un cinghiale selvatico infuriato è "
 "pericoloso anche per il migliore dei cacciatori."
 
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr "Morso"
-
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
-msgstr "Zanna"
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
+msgstr "zanna"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
 msgstr "Cinghialetto"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -5988,12 +6041,12 @@ msgstr ""
 "protettivo che lo sorveglia."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr "Lucertola delle Paludi"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -6010,7 +6063,7 @@ msgstr ""
 "minaccioso \"su due zampe\" e non esitano a vendicare i loro antenati."
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
@@ -6019,17 +6072,17 @@ msgstr ""
 "maggior parte del suo corpo sott’acqua."
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr "agguato nella palude"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr "agguato nella palude"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -6237,12 +6290,12 @@ msgstr ""
 msgid "ice claw"
 msgstr "artigli di ghiaccio"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
 msgid "Giant Stoat"
 msgstr "Ermellino Gigante"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr ""
@@ -6320,7 +6373,7 @@ msgstr "aculeo"
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
 msgstr "chele"
 
@@ -6408,12 +6461,6 @@ msgstr "Cavallo Baio"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Bay horses are defined more by their coloration than their size or "
-#| "temperment, and can be found anywhere from the battlefield to the farm to "
-#| "the wild plains and woodlands. Though an unencumbered horse will tend to "
-#| "flee if possible, they will fight back with a powerful kick when cornered."
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
@@ -6431,10 +6478,8 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr "calcio"
+msgid "hooves"
+msgstr "zoccoli"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
@@ -6506,7 +6551,8 @@ msgid "Black Stallion"
 msgstr "Stallone Nero"
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
 msgstr "Incubo Nero"
 
@@ -6664,7 +6710,7 @@ msgid "Rock Scorpion"
 msgstr "Scorpione delle rocce"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -6681,7 +6727,7 @@ msgstr ""
 "soffio aereo venefico."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
 msgstr "spruzzo"
 
@@ -6873,9 +6919,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Lupo"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6956,7 +7002,7 @@ msgid "chakri"
 msgstr "chakri"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
 msgstr "Nagini Dirkfang"
 
@@ -7016,14 +7062,6 @@ msgstr "Naga Guardiano Supremo"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
-#, fuzzy
-#| msgid ""
-#| "The elite naga guards are a rigid barrier to any invaders of a naga "
-#| "stronghold. They have powerful stikes and, like the lesser Shield Guard, "
-#| "they are difficult to dislodge from their posts because of effective use "
-#| "of a shield in melee techniques. This tactic does nothing against ranged "
-#| "attacks, but the nagas can usually seek better terrain advantage in such "
-#| "situations."
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
@@ -7041,8 +7079,8 @@ msgstr ""
 "a loro favorevole."
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
 msgstr "colpo di scudo"
 
@@ -7147,12 +7185,12 @@ msgid "curved blade"
 msgstr "lama curva"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
 msgstr "jarid"
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
+#: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
 msgstr "Naga Serpentino"
 
@@ -7162,7 +7200,7 @@ msgid "Naga Ringcaster"
 msgstr "Naga Lancianelli"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -7177,14 +7215,14 @@ msgstr ""
 
 # cerchio, in lingua indiana Telugu
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
 msgstr "chakram"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
+#: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
 msgstr "Nagini Lancianelli"
 
@@ -7226,7 +7264,7 @@ msgstr ""
 "o sviare un attacco nel momento critico."
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
+#: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
 msgstr "Nagini Sicaria"
 
@@ -7280,7 +7318,7 @@ msgid "Naga Zephyr"
 msgstr "Naga Zefiro"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -7361,7 +7399,7 @@ msgstr ""
 "migliorato con punte e lame più piccole.\n"
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
+#: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
 msgstr "Nagini Zefiro"
 
@@ -7559,6 +7597,11 @@ msgstr ""
 #: data/core/units/orcs/Nightblade.cfg:25
 msgid "blade"
 msgstr "lama"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "calcio"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -8195,12 +8238,6 @@ msgid "wc_variation^Boar"
 msgstr "Cinghiale"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr "zanna"
-
-#. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
 #: data/core/units/undead/Corpse_Walking.cfg:342
 msgid "wc_variation^Wose"
@@ -8830,1065 +8867,8 @@ msgstr ""
 "Questi wose sono in grado di controllare le piante delle foreste, possono "
 "quindi ostacolare i loro nemici con viticci e rampicanti."
 
-# fuoco del deserto non mi convince... ma non c'è descrizione...
-#~ msgid "desert fire"
-#~ msgstr "arsura"
-
-#~ msgid "Tusk Charge"
-#~ msgstr "Carica"
-
-#~ msgid "Lorem ipsem ..."
-#~ msgstr "Lorem ipsem ..."
-
-# gorer dovrebbe venire da "to gore" , incornare
-#~ msgid "Gorer"
-#~ msgstr "Cinghiale"
-
-#~ msgid "Tusklet"
-#~ msgstr "Cinghialetto"
-
-#~ msgid ""
-#~ "Young tuskers are as notoriously bad-tempered as the adults of the "
-#~ "species, if a little less of a challenge. But woe betide the unfortunate "
-#~ "who comes between a Tusklet and its parents."
-#~ msgstr ""
-#~ "I piccoli cinghiali condividono con gli adulti della specie il notorio "
-#~ "cattivo temperamento, anche se un po’ meno difficili da cacciare. Ma guai "
-#~ "allo sfortunato che si frappone fra un cinghialetto e i suoi genitori."
-
-#~ msgid "wc_variation^Tusker"
-#~ msgstr "Cinghiale"
-
-#~ msgid ""
-#~ "Amongst orcs, bows are often regarded as a cowardly weapon; but even "
-#~ "orcs, especially youths and those of slight build, are pragmatic enough "
-#~ "to use them in spite of this. Orcish archers are seldom well equipped, "
-#~ "and have no semblance of training. Even as poorly handled as they are, "
-#~ "their weapons can still be quite deadly, and the wielders thereof rarely "
-#~ "march alone."
-#~ msgstr ""
-#~ "Tra gli orchi l’arco è spesso considerato un’arma da codardi, ma persino "
-#~ "loro, specialmente i giovani e i più mingherlini, sono abbastanza "
-#~ "pragmatici da utilizzarli nonostante tutto. Gli orchi arcieri sono di "
-#~ "rado ben equipaggiati e non hanno alcuna parvenza di addestramento. Anche "
-#~ "se maneggiate con poca maestria, le loro armi possono rivelarsi comunque "
-#~ "assai micidiali e raramente coloro che le usano avanzano isolati."
-
-#~ msgid ""
-#~ "Though some consider it cowardly to use, poison is a weapon favored by "
-#~ "orcs, especially those weak of frame. Orcish assassins, who use it on "
-#~ "throwing knives, are typically frail by orcish standards, although "
-#~ "surprisingly nimble. Though rarely the ones who deal the killing blow, "
-#~ "their tactics are a considerable aid to their larger and more brutal kin."
-#~ msgstr ""
-#~ "Sebbene alcuni considerino il suo uso un atto di codardia, il veleno è "
-#~ "una delle armi preferite dagli orchi, specialmente da quelli di debole "
-#~ "costituzione. Gli orchi assassini, che lo applicano sui coltelli da "
-#~ "lancio, sono generalmente deboli per gli standard orcheschi, ma al "
-#~ "contempo sorprendentemente agili. Anche se raramente sono loro a "
-#~ "infliggere il colpo di grazia, le loro tattiche si rivelano di "
-#~ "considerevole aiuto per i loro compagni più grossi e brutali."
-
-#~ msgid ""
-#~ "Orcish crossbows are crude imitations of human or dwarvish design; a "
-#~ "crossbow of any make, though, is a fairly potent device. The orcs "
-#~ "privileged enough to wield them are capable warriors, and what they lack "
-#~ "in finesse, they make up for in numbers."
-#~ msgstr ""
-#~ "Le balestre degli orchi sono rozze imitazioni di quelle progettate da "
-#~ "uomini e nani; nonostante ciò, una balestra è un dispositivo assai "
-#~ "potente, di qualunque fatta sia. Gli orchi privilegiati a tal punto da "
-#~ "poterle imbracciare sono guerrieri capaci e compensano con la forza dei "
-#~ "numeri la loro mancanza di accuratezza."
-
-#~ msgid ""
-#~ "A blade in the dark, dripping with poison — for many orcish warlords the "
-#~ "last thing they see. Due to their high fees, orcish nightblades "
-#~ "specialize in “resolving internal conflicts” and are rarely seen on the "
-#~ "battlefield. Practice makes perfect, and few can rival them in that "
-#~ "regard: they have long lost count of their victims, though that "
-#~ "admittedly isn’t too hard for an orc with only ten fingers."
-#~ msgstr ""
-#~ "Una lama nell’oscurità, intrisa di veleno: per numerosi signori della "
-#~ "guerra orcheschi, si tratta dell’ultima cosa che i loro occhi vedranno in "
-#~ "vita. Per via del loro soldo elevato, gli orchi lamaoscura si "
-#~ "specializzano nella “risoluzione dei conflitti interni” e si possono "
-#~ "scorgere di rado sul campo di battaglia. La pratica conduce alla "
-#~ "perfezione e ben pochi possono rivaleggiare con loro sotto tale aspetto: "
-#~ "essi hanno perso da tempo immemore il conto delle loro vittime, anche se "
-#~ "bisogna ammettere che la cosa non è poi così difficile per un orco con "
-#~ "sole dieci dita."
-
-#~ msgid ""
-#~ "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
-#~ "enemies. Slayers are fast on their feet, and quite nimble in combat, "
-#~ "although they achieve that end by forgoing armor. Their weapon of choice, "
-#~ "poison, is a vicious tool, and its common use on the battlefield is often "
-#~ "the real cause of orcish supremacy."
-#~ msgstr ""
-#~ "Gli orchi assassini più possenti o più abili vengono chiamati "
-#~ "“massacratori” dai loro nemici. I massacratori si muovono rapidamente e "
-#~ "sono assai agili in battaglia, ma devono rinunciare all’armatura per "
-#~ "arrivare a tanto. La loro arma preferita, il veleno, è molto insidiosa: "
-#~ "il suo uso comune sul campo di battaglia è spesso la vera causa della "
-#~ "supremazia degli orchi."
-
-#~ msgid ""
-#~ "From time to time, an orc will arise who has a natural charisma and "
-#~ "command over his ilk. If he is also strong and cunning enough to survive "
-#~ "early leadership struggles, he will inevitably find himself leading a "
-#~ "great horde of warriors, and he will also inevitably cause a great deal "
-#~ "of trouble for the civilized races of the world. The surest way to "
-#~ "disperse such a host is to slay this rare orc who can hold it together."
-#~ msgstr ""
-#~ "Di tanto in tanto emerge un orco dal carisma innato e con naturali "
-#~ "capacità di comando sulla sua gente. Se si rivela anche tanto forte e "
-#~ "autoritario da sopravvivere alle prime battaglie per la supremazia, "
-#~ "finirà inevitabilmente per ritrovarsi a capo di una grande orda di "
-#~ "guerrieri e causerà altrettanto inevitabilmente un sacco di guai alle "
-#~ "razze civilizzate del mondo. Il modo più sicuro per disperdere una simile "
-#~ "forza è eliminare questo raro esemplare di orco in grado di mantenerla "
-#~ "compatta."
-
-#~ msgid ""
-#~ "In a race where might is the be-all end-all of supremacy and respect, the "
-#~ "orcs who achieve victory time and time again become the rulers of much "
-#~ "greater orcish tribes. Wearing the most ornate armor they plunder from "
-#~ "their enemies, the Orcish Warlords are true champions of battle, their "
-#~ "mastery of the blade able to match even the finest from vaunted elvish "
-#~ "and human schools of swordsmen. They even have practice with the bow, "
-#~ "their usage of this ordinarily cowardly weapon offset by the sheer "
-#~ "admiration their warriors have for them. However, the Warlords lack the "
-#~ "insight for strategy and leading charisma of some of the more cunning "
-#~ "orcs, and so the hordes they lead often fall simply due to their "
-#~ "inability to truly lead."
-#~ msgstr ""
-#~ "All’interno di una razza in cui il potere è essenziale per ottenere la "
-#~ "supremazia e il rispetto, gli orchi che passano di vittoria in vittoria "
-#~ "assurgono al rango di sovrani delle tribù orchesche più grandi. Con "
-#~ "indosso le armature più finemente decorate, saccheggiate dai loro nemici, "
-#~ "i Signori della guerra sono dei veri propri campioni in battaglia. La "
-#~ "loro maestria nell’utilizzo della spada li rende in grado di rivaleggiare "
-#~ "perfino con i miglio spadaccini delle più decantate scuole di spada degli "
-#~ "elfi e degli uomini.  Sanno anche maneggiare l’arco, e l’uso di questa "
-#~ "arma, solitamente considerata per vigliacchi, è azzerato dalla assoluta "
-#~ "ammirazione che i guerrieri hanno nei loro confronti. Comunque, ad un "
-#~ "signore della guerra mancano la visione strategica e il carisma del "
-#~ "condottiero, posseduti soltanto da alcuni degli orchi più abili, e di "
-#~ "fatto spesso le orde che guidano cadono semplicemente per la loro "
-#~ "inabilità nel condurre le truppe."
-
-#~ msgid ""
-#~ "Orcish Warriors are those orcs who have proved their strength on the "
-#~ "battlefield, choosing to display their skill by fighting with a sword in "
-#~ "each hand. Their prowess in battle has gained them the respect of other "
-#~ "orcs, and they will typically be seen ordering lesser bands of raiders. "
-#~ "Despite their position, they rarely possess the commanding skills held by "
-#~ "the leaders of other armies."
-#~ msgstr ""
-#~ "Gli orchi guerrieri sono quelli che hanno dato prova della loro forza sul "
-#~ "campo di battaglia, scegliendo di dare sfoggio delle proprie capacità "
-#~ "combattendo con una spada per mano. Il loro valore in battaglia ha fatto "
-#~ "guadagnare loro la stima e il rispetto degli altri orchi, ed è abbastanza "
-#~ "comune vederli a capo di piccole bande di razziatori. A dispetto del loro "
-#~ "rango, possiedono di rado le capacità di comando detenute dai condottieri "
-#~ "di altri eserciti."
-
-#~ msgid ""
-#~ "The curious name of the Elvish ‘Avengers’ comes from a tactic often "
-#~ "employed by these master rangers. The enemy is allowed to break through a "
-#~ "feint defense and when the vulnerable troops behind the front line "
-#~ "follow, these archers break cover and attack, cutting supply lines and "
-#~ "surrounding the enemy in one fell stroke. This has, at times, been "
-#~ "interpreted as a form of vengeance for their brethren lost earlier in the "
-#~ "battle. While not so base in design, it is not at all inaccurate.\n"
-#~ "\n"
-#~ "Even more than other elves, Avengers are a part of the realm of the "
-#~ "forests, spending most of their time living among the arboreal creatures "
-#~ "and learning the hidden secrets in the woods. As the keepers of nature, "
-#~ "these elves have the propensity to explore the wilds even beyond the "
-#~ "boundaries of the forests and are adept at traversing rough terrains like "
-#~ "mountains and deserts. Even in such unfamiliar territories, Avengers are "
-#~ "already powerful combatants; in their homes in the trees, they are nigh "
-#~ "unassailable, capable of assassinating enemies from the shadows with "
-#~ "little chance of retaliation. It is this ability which instills the most "
-#~ "fear into any invading army, for fighting a force that can barely be "
-#~ "tracked or seen in the forests leaves very little room for counterattack "
-#~ "and customarily results in crushing defeat."
-#~ msgstr ""
-#~ "Il curioso nome di “Vendicatori” proviene da una tecnica spesso "
-#~ "utilizzata da questi maestri ranger. Si permette al nemico di penetrare "
-#~ "attraverso una finta difesa e quando le truppe più deboli avanzano in "
-#~ "prima linea, questi arcieri escono allo scoperto ed attaccano, tagliando "
-#~ "le linee di rifornimento e circondando il nemico in un colpo solo. "
-#~ "Questo, a volte, è stato interpretato come una forma di vendetta per i "
-#~ "loro fratelli morti poco prima in battaglia. Sebbene non sia "
-#~ "completamente esatto, questa interpretazione non è del tutto inaccurata.\n"
-#~ "\n"
-#~ "I Vendicatori sono parte del regno delle foreste più di ogni altro elfo e "
-#~ "spendono la maggior parte del loro tempo vivendo tra le creature arboree, "
-#~ "apprendendo i loro più intimi segreti nei boschi. In quanto protettori "
-#~ "della natura, questi elfi hanno la tendenza ad esplorare le terre "
-#~ "selvagge ben oltre i confini delle foreste e sono abili ad attraversare "
-#~ "terreni accidentati come montagne e deserti. Anche in territori così poco "
-#~ "familiari per un elfo, i vendicatori rimangono dei potenti combattenti, "
-#~ "quando sono nelle loro naturali dimore tra gli alberi, sono quasi "
-#~ "inattaccabili, capaci di assassinare in nemici dalle ombre con poche "
-#~ "possibilità di essere attaccati. Questa è l’abilità che instilla più "
-#~ "paura in una armata di invasione, perché combattere un nemico che può "
-#~ "essere a malapena tracciato o visto nei boschi lascia pochissimo spazio "
-#~ "per un contrattacco e si traduce solitamente in una sonora sconfitta."
-
-#~ msgid ""
-#~ "Compared to other elves, Elvish Avengers have superior movement and "
-#~ "defense on sand, shallow water, and mountains."
-#~ msgstr ""
-#~ "Rispetto agli altri elfi, i Vendicatori hanno una capacità di movimento "
-#~ "superiore sui terreni sabbiosi, acque poco profonde e montagne."
-
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "La magia degli elfi silvani mal si adatta al combattimento, ma è tuttavia "
-#~ "efficace. Le foreste in cui essi vivono possono essere risvegliate con un "
-#~ "semplice comando e scagliarsi contro quelli che ne minacciano la pace.\n"
-#~ "\n"
-#~ "La principale abilità delle driadi risiede nella capacità di guarire le "
-#~ "ferite ed è per questo che sono rispettate dalla loro gente."
-
-#~ msgid ""
-#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
-#~ "humans are almost universally incapable of understanding it, let alone "
-#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
-#~ "though it can be said that they are revered by their people, very little "
-#~ "can be said about their actual function or purpose within that society."
-#~ msgstr ""
-#~ "La magia degli elfi è completamente diversa da quella degli uomini, a tal "
-#~ "punto che questi ultimi sono quasi totalmente incapaci di comprenderla e "
-#~ "tanto meno di usarla. Di riflesso, coloro che la padroneggiano sono "
-#~ "altrettanto enigmatici; sebbene si possa dire che siano rispettati dalla "
-#~ "loro gente, ben poco ci è noto riguardo alla loro reale funzione o scopo "
-#~ "all’interno della loro società."
-
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "I condottieri degli elfi suscitano nella loro gente una lealtà istintiva "
-#~ "che i signori delle altre razze invidiano, ottenuta grazie alla loro "
-#~ "saggezza e lucidità. Silenzioso e contemplativo in tempo di pace, un gran "
-#~ "signore degli elfi nel pieno della sua collera dà vita ad uno spettacolo "
-#~ "impressionante."
-
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "Gli elfi scelgono i loro condottieri per la loro saggezza e la loro "
-#~ "sensibilità all’equilibrio delle forze universali; la lungimiranza è ciò "
-#~ "che li ha protetti nei periodi d’incertezza. Il loro regno giusto è "
-#~ "ricompensato dalla fedeltà costante del loro popolo, che è il dono più "
-#~ "grande che qualsiasi signore possa chiedere."
-
-#~ msgid ""
-#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#~ "Despite the peaceful nature of their people, their experience makes them "
-#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
-#~ "as mounted archers — in fact, most would be hard pressed to equal it "
-#~ "standing on solid ground.\n"
-#~ "\n"
-#~ "The speed of these soldiers allows the elves to strike when and where "
-#~ "they choose when fighting on their home ground, a fact that has saved "
-#~ "many of their number from death."
-#~ msgstr ""
-#~ "Le avanguardie degli elfi vengono addestrate come corrieri reali del "
-#~ "regno degli elfi. A dispetto della natura pacifica del loro popolo, "
-#~ "l’esperienza di queste unità le rende pressoché letali in combattimento. "
-#~ "Nessun uomo si è mai avvicinato alla loro abilità nell’uso dell’arco a "
-#~ "cavallo – a dire il vero, molti di loro troverebbero difficile "
-#~ "eguagliarli anche coi piedi ben saldi a terra.\n"
-#~ "\n"
-#~ "La velocità di questi soldati consente agli elfi di colpire quando e dove "
-#~ "vogliono, quando la battaglia infuria sul proprio territorio: ciò ha "
-#~ "salvato molti di loro dalla morte."
-
-#~ msgid ""
-#~ "Compared to other elves, Elvish Rangers have superior movement and "
-#~ "defense on sand, shallow water, and mountains."
-#~ msgstr ""
-#~ "Rispetto agli altri elfi, i Ranger hanno un fattore di movimento ed una "
-#~ "difesa maggiore su terreni di tipo sabbioso, acque poco profonde e "
-#~ "montagna."
-
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "Essendo in parte fatati per natura, gli elfi hanno un’innata propensione "
-#~ "per la magia. Questa trova realizzazione nella loro affinità con il mondo "
-#~ "naturale, che essi possono richiamare come alleato in battaglia. I nemici "
-#~ "che sconfinano nelle loro foreste possono d’un tratto ritrovarsi "
-#~ "intrappolati tra le radici e intralciati dallo stesso terreno su cui si "
-#~ "trovano.\n"
-#~ "\n"
-#~ "Anche l’abilità di guarire le ferite tipica delle elfe è degna di nota e "
-#~ "preziosa in battaglia."
-
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "La devozione verso il proprio lato fatato può infine trasformare una "
-#~ "fanciulla elfica in una creatura che appartiene ad entrambi i mondi. "
-#~ "Guidate da una forza assai poco compresa, queste bellissime protettrici "
-#~ "delle foreste degli elfi incarnano la grazia e l’alone di mistero che "
-#~ "circonda il loro popolo."
-
-#~ msgid ""
-#~ "The world of faerie is far more potent than the corporeal world. Simply "
-#~ "bringing some of this world into our own can have violent results. This "
-#~ "is well-understood by the elves, although rarely used with malicious "
-#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
-#~ "strength.\n"
-#~ "\n"
-#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
-#~ "and certainly are capable of acting the part."
-#~ msgstr ""
-#~ "Il mondo delle fate è molto più potente di quello corporeo: portarne "
-#~ "anche solo una parte nel nostro mondo può dar luogo a risultati violenti. "
-#~ "Gli elfi lo sanno bene, nonostante sfruttino di rado la cosa con cattive "
-#~ "intenzioni; fare ciò non è semplice, poiché si tratta di un uso assai "
-#~ "malvisto della loro forza.\n"
-#~ "\n"
-#~ "Le elfe in grado di fare ciò sono rozzamente definite “streghe” dalle "
-#~ "altre razze; di sicuro sono in grado di ricoprire tale ruolo."
-
-#~ msgid ""
-#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
-#~ "powers. Legends concerning these have given other races a healthy fear of "
-#~ "the elves."
-#~ msgstr ""
-#~ "Le sagge silfidi, che si vedono di rado, sono padrone delle loro due "
-#~ "nature, quella fatata e quella ordinaria. Sono dotate di meravigliosi e a "
-#~ "volte terrificanti poteri: le leggende che ne parlano hanno diffuso tra "
-#~ "le altre razze un timore reverenziale nei confronti degli elfi."
-
-#~ msgid "Dune Ranger"
-#~ msgstr "Ranger delle Dune"
-
-#~ msgid "Dune Swiftrider"
-#~ msgstr "Tiratore delle Dune"
-
-#~ msgid ""
-#~ "Any orc who can keep a large tribe from feuding and in-fighting is often "
-#~ "unusually intelligent and commanding, and is inevitably very strong as "
-#~ "well. They are skilled with both sword and crossbow, but their real "
-#~ "talent lies in their rare ability to rally other orcs to battle, to give "
-#~ "orders that are followed not out of fear, but loyalty."
-#~ msgstr ""
-#~ "Un orco in grado di mantenere una grande tribù lontana dalle faide e "
-#~ "dalle lotte intestine è spesso insolitamente intelligente e autoritario, "
-#~ "nonché inevitabilmente molto forte. Tali orchi sono esperti nell’uso sia "
-#~ "della spada che della balestra, ma il loro vero talento risiede nella "
-#~ "loro rara abilità di guidare gli altri orchi in battaglia ed impartire "
-#~ "ordini che vengono eseguiti non per paura, ma per fedeltà."
-
-#~ msgid "Saurian Skirmisher"
-#~ msgstr "Sauro incursore"
-
-#~ msgid ""
-#~ "Some men excel at medicine the way others do at strength of arms, and the "
-#~ "Apothecaries are those whose knowledge is without peer outside of the "
-#~ "Dunefolk. Their remedies can not only heal wounds but remove infection "
-#~ "and poison as well, often to the disbelief of the injured. Hardened by "
-#~ "years of travels, many are able to treat themselves."
-#~ msgstr ""
-#~ "Alcuni uomini eccellono nell’arte della medicina nello stesso modo in cui "
-#~ "altri si affidano alla forza delle armi e gli Apotecari sono quelli con "
-#~ "una conoscenza ineguagliata al di fuori del Popolo delle Dune. I loro "
-#~ "rimedi non solo riescono a guarire le ferite, ma sono anche in grado di "
-#~ "rimuovere le infezioni e gli effetti del veleno, spesso tra l’incredulità "
-#~ "delle unità ferite. Temprati da anni di spostamenti, molti di loro sono "
-#~ "in grado di curare a se stessi."
-
-#~ msgid ""
-#~ "Distinguished for their bravery and skill, Blademasters are the leaders "
-#~ "among the Dunefolk's ranks. Their exploits are well known among their "
-#~ "cohorts, inspiring soldiers to fight for their cause. Despite this, they "
-#~ "are often found leading from the front, taking down their foes with sword "
-#~ "and shield."
-#~ msgstr ""
-#~ "Celebri per il loro coraggio e le loro abilità, i Maestri di lame sono i "
-#~ "comandanti delle armate del Popolo delle Dune. Le loro imprese sono ben "
-#~ "note tra i plotoni sotto il loro comando e ispirano i soldati a "
-#~ "combattere per la loro causa. Nonostante ciò, spesso li si può trovare in "
-#~ "prima linea a guidare le loro truppe e ad abbattere i loro nemici a colpi "
-#~ "di spada e scudo."
-
-#~ msgid ""
-#~ "Utilizing various resources found in the Dunefolk domain, a highly "
-#~ "flammable substance can be made. The Burners are those charged with "
-#~ "making and carrying this dangerous mixture into battle. While the use of "
-#~ "fire in warfare is not a novel concept, the effectiveness of their work "
-#~ "is."
-#~ msgstr ""
-#~ "Utilizzando alcune risorse reperibili nei possedimenti del Popolo delle "
-#~ "Dune, si può fare una sostanza infiammabile. Gli Inceneritori sono gli "
-#~ "incaricati della fabbricazione e del trasporto in battaglia di questa "
-#~ "pericolosa mistura. Mentre l’uso del fuoco in battaglia non è un concetto "
-#~ "nuovo, l’effettività del loro lavoro lo è."
-
-# veniva usato non solo contro le navi, ma anche contro fanti e cavalieri.
-# Idea di bzame (dal W.I.F.)
-#~ msgid "naphtha attack"
-#~ msgstr "fuoco greco"
-
-#~ msgid "fire arrow"
-#~ msgstr "freccia infuocata"
-
-#~ msgid ""
-#~ "The Cataphract are eminent horsemen, amassing titles and accolades that "
-#~ "are as distinguishing for them as the scrollwork on their armor. Having "
-#~ "honed their skill with a lance in years of battle, the Cataphract are an "
-#~ "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
-#~ "do not deter these riders in the slightest, and the displaced air of a "
-#~ "descending mace is the last sound they hear."
-#~ msgstr ""
-#~ "I Catafratti sono elementi di spicco della cavalleria, accumulatori di "
-#~ "titoli e onorificenze caratteristici tanto quanto gli ornamenti sulle "
-#~ "loro armature. Avendo perfezionato la loro abilità nell’uso della lancia "
-#~ "pesante in anni di battaglie, i Catafratti sono un’inarrestabile forza "
-#~ "della natura. I nemici in rotta scoprono ben presto che le colline non "
-#~ "ostacolano affatto questi cavalieri, e l’ultimo suono che riescono a "
-#~ "sentire è lo spostamento d’aria dovuto alla mazza che cala sulle loro "
-#~ "teste."
-
-#~ msgid ""
-#~ "Explorers are often utilized as heavy scouts, no longer just probing the "
-#~ "enemy but conducting raids on the supply lines or eliminating patrols. "
-#~ "Often away from the main body of the army for long periods of time, "
-#~ "Explorers have no issue pilfering these supplies, and so they tend to be "
-#~ "more well-equipped than most."
-#~ msgstr ""
-#~ "I Razziatori sono spesso impiegati come esploratori pesanti, non più "
-#~ "impegnati semplicemente a sondare i movimenti del nemico, ma anche a "
-#~ "condurre scorribande lungo le linee di rifornimento o ad eliminare le "
-#~ "pattuglie nemiche. Spesso lontani per lunghi periodi di tempo dal corpo "
-#~ "principale dell’esercito, i Razziatori non si fanno problemi a rubare le "
-#~ "risorse necessarie, perciò tendono ad essere equipaggiati meglio rispetto "
-#~ "alla maggior parte degli esploratori."
-
-#~ msgid ""
-#~ "Scorchers who have shut out the world for their experiments are given the "
-#~ "title of Firetrooper, as both a sign of respect and of fear. No longer "
-#~ "cognizant of the value of life, Firetroopers are caught up in the power "
-#~ "of their caged fire and likely to test their latest naphtha jar at the "
-#~ "first opportunity."
-#~ msgstr ""
-#~ "Ai Piromani che si sono isolati dal resto del mondo per condurre i propri "
-#~ "esperimenti viene assegnato il titolo onorifico di Incendiario, in segno "
-#~ "di rispetto e di timore allo stesso tempo. Non più consci del valore "
-#~ "della vita, gli Incendiari delle Dune sono ormai concentrati sulla "
-#~ "potenza delle fiamme che convogliano sui nemici e non vedono l’ora di "
-#~ "testare alla prima occasione utile la loro giara di nafta appena riempita."
-
-#~ msgid ""
-#~ "Harriers hold themselves to a higher standard than the ranks of the "
-#~ "Skirmishers from which they ascended. Not content to merely draw the "
-#~ "enemy out, they combine their speed with an aggression that sends the "
-#~ "Harriers dancing through the ranks of the enemy, swords ripping and "
-#~ "tearing at those around them. "
-#~ msgstr ""
-#~ "Gli Assaltatori si considerano truppe di livello superiore rispetto agli "
-#~ "Incursori, dai cui ranghi sono ascesi al loro nuovo grado. Non paghi di "
-#~ "far uscire semplicemente i nemici dalle loro posizioni, gli Assaltatori "
-#~ "combinano la loro velocità con un’aggressività tale da farli danzare "
-#~ "letteralmente tra le fila nemiche, menando fendenti di spada che lacerano "
-#~ "e dilaniano gli avversari intorno a loro. "
-
-#~ msgid ""
-#~ "Herbalists are learned individuals who have given up their urban life in "
-#~ "order to assist the Dunefolk armies in their travels. Their motivations "
-#~ "are many; some look to it as an adventure or as a steady source of pay, "
-#~ "while others feel it to be a duty to their society. Regardless, "
-#~ "Herbalists are highly respected by all. They are trained with the "
-#~ "advanced medical techniques and possess a potent clutch of medicines and "
-#~ "herbs, which allows them to quickly heal even the most gravely wounded "
-#~ "allies."
-#~ msgstr ""
-#~ "Gli Erboristi sono individui specializzati che hanno abbandonato la loro "
-#~ "vita in città per assistere le armate del Popolo delle Dune nel corso dei "
-#~ "loro spostamenti. Numerose sono le loro motivazioni: alcuni vedono la "
-#~ "loro scelta come un’avventura o come una fonte di denaro costante, mentre "
-#~ "altri la ritengono un debito nei confronti della propria società. Ad ogni "
-#~ "modo, gli Erboristi sono profondamente rispettati da tutti. Sono "
-#~ "addestrati nell’uso delle tecniche di medicina avanzata e sono muniti di "
-#~ "una borsa con medicine ed erbe, che consentono loro di guarire in fretta "
-#~ "anche gli alleati feriti in modo più grave."
-
-#~ msgid ""
-#~ "Those Raiders who prove to be particularly skilled are formed into units "
-#~ "of Marauders, which are often used to raid enemy depots and towns for "
-#~ "supplies. This greater autonomy often means that these horsemen are gone "
-#~ "for weeks at a time, returning to camp only for supplies and to pass on "
-#~ "news of their exploits."
-#~ msgstr ""
-#~ "I Cacciatori che si dimostrano particolarmente abili vanno ad ingrossare "
-#~ "le fila dei Predoni, spesso impiegati per razziare i depositi e le città "
-#~ "nemiche alla ricerca di rifornimenti. La loro accresciuta autonomia fa "
-#~ "spesso in modo che questi cavallerizzi si allontanino anche per intere "
-#~ "settimane, facendo ritorno al proprio accampamento solo per rifornirsi e "
-#~ "per comunicare le notizie delle loro imprese."
-
-#~ msgid "Dune Piercer"
-#~ msgstr "Lanciere delle Dune"
-
-#~ msgid ""
-#~ "The Piercer understand the psychological impact of a charging horse, and "
-#~ "reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
-#~ "Piercer at the charge with lance in hand is often impetus enough to break "
-#~ "men. On the rare occurrences that their charge fails to rout their foe, "
-#~ "the Piercer ride into the resulting melee with their maces in hand, "
-#~ "trusting their armor to keep them safe."
-#~ msgstr ""
-#~ "I Lancieri capiscono bene quale impatto psicologico possa avere una "
-#~ "carica a cavallo e rafforzano questa convinzione vestendosi in armatura "
-#~ "pesante. Maestoso già a riposo, un Lanciere in piena carica, lancia in "
-#~ "resta, ha sovente un impeto tale da fare a pezzi un uomo. Nei rari casi "
-#~ "in cui la loro carica non riesca a sgominare i nemici, i Lancieri si "
-#~ "gettano a capofitto nella mischia che ne consegue con la mazza in pugno, "
-#~ "confidando nella protezione della loro armatura."
-
-#~ msgid ""
-#~ "Those horsemen who are not skilled enough to join the ranks of the "
-#~ "Sunderers or quick enough with a bow for the Swiftriders are instead "
-#~ "placed with the Raiders. Far from being a sign of failure, the Raiders "
-#~ "were created as a mounted counterpart to the Explorers, supporting the "
-#~ "foot troops with mace or bow as needed. Raiders are often used to draw "
-#~ "enemies into a position where they will be surrounded and crushed by "
-#~ "Sunderers."
-#~ msgstr ""
-#~ "Tutti quei cavallerizzi che non hanno le abilità necessarie per unirsi ai "
-#~ "ranghi degli Impalatori, né la rapidità nel tiro con l’arco dei Tiratori "
-#~ "confluiscono invece nelle fila dei Cacciatori. Ben lungi dall’essere un "
-#~ "simbolo di fallimento, i Cacciatori furono ideati come controparte a "
-#~ "cavallo dei Razziatori per supportare le truppe di fanteria con la mazza "
-#~ "o l’arco in caso di necessità. I Cacciatori sono spesso impiegati per "
-#~ "attirare i nemici in una posizione in cui verranno poi circondati e "
-#~ "massacrati dagli Impalatori."
-
-#~ msgid ""
-#~ "Rangers are the elite of the Explorers, engaging in constant hit and run "
-#~ "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-#~ "prefer to coordinate multiple attacks at the same time, sending foes "
-#~ "running from their arrows only to be cut down by their axes. Given their "
-#~ "penchant for taking on only the most daring missions, Rangers are often "
-#~ "heroes to the common troopers, an image they do not try to dissuade."
-#~ msgstr ""
-#~ "I Ranger costituiscono l’élite degli Razziatori e si prodigano in "
-#~ "costanti attacchi del tipo “mordi e fuggi” contro gli eserciti nemici. "
-#~ "Agili come gazzelle e forti come arieti, preferiscono coordinare attacchi "
-#~ "multipli in simultanea, lasciando che i nemici fuggano dalle loro frecce "
-#~ "per venire abbattuti dalle loro asce. Data la loro propensione ad "
-#~ "intraprendere solo le missioni a più alto rischio, i Ranger vengono "
-#~ "spesso visti come eroi dalle truppe ordinarie, e loro stessi non cercano "
-#~ "neppure di distogliere da loro tale immagine."
-
-#~ msgid ""
-#~ "Riders are excellent horsemen, able to shoot from horseback better than "
-#~ "most men can manage from foot. Disdaining the use of heavy armor, Riders "
-#~ "use their superior speed and agility to circle and harass their foes, "
-#~ "whittling down their numbers with relentless arrows."
-#~ msgstr ""
-#~ "Gli Arcieri a cavallo sono eccellenti cavallerizzi in grado di lanciare "
-#~ "frecce a cavallo più accuratamente di quanto riescano a fare molti uomini "
-#~ "a piedi. Disdegnando l’uso dell’armatura pesante, gli Arcieri a cavallo "
-#~ "sfruttano la loro velocità e la loro agilità superiori alla media per "
-#~ "circondare e tormentare i loro avversari, riducendone le schiere grazie "
-#~ "alle loro implacabili frecce."
-
-#~ msgid ""
-#~ "Scorchers spend so much time experimenting with their weapons that they "
-#~ "smell constantly of ash and flame. Regarded with wariness by their fellow "
-#~ "troops, Scorchers can be easily located in battle by the cleared charred "
-#~ "area around them, a testament to the success of their experiments."
-#~ msgstr ""
-#~ "I Piromani trascorrono così tanto tempo a sperimentare le loro armi da "
-#~ "emanare un costante odore di fuoco e cenere. Trattati con diffidenza "
-#~ "dalle truppe loro alleate, i Piromani possono essere individuati "
-#~ "facilmente in battaglia per via dell’area carbonizzata e rasa al suolo "
-#~ "intorno a loro, che costituisce la prova del successo dei loro "
-#~ "esperimenti."
-
-#~ msgid ""
-#~ "Those Rovers who are proficient at scouting are elevated into the ranks "
-#~ "of the Skirmishers. Discarding their bow, Skirmishers focus on developing "
-#~ "their swiftness of foot to allow them to flow in and out of combat. They "
-#~ "are often used to harry the flanks of opposing forces, and it is said to "
-#~ "be easier to catch the wind in your hand than to catch a Skirmisher."
-#~ msgstr ""
-#~ "I Vagabondi più competenti nell’esplorazione vengono elevati al rango di "
-#~ "Incursore. Messo da parte l’arco, gli Incursori si concentrano nello "
-#~ "sviluppo dei loro agili movimenti a piedi, che permettono loro di "
-#~ "riversarsi in battaglia e uscirne in fretta e per questo vengono spesso "
-#~ "impiegati per infastidire i fianchi delle forze nemiche. Si dice che sia "
-#~ "più facile stringere il vento in una mano che catturare un Incursore."
-
-#~ msgid ""
-#~ "The Soldier forms the backbone of any Dunefolk foot advance. Many come "
-#~ "from noble or military families, and have spent most of their lives "
-#~ "training their craft. Given their intense focus on swordplay, they are "
-#~ "often sent against fortified enemy positions to create a breach for the "
-#~ "remaining troops to exploit. The sight of Soldiers on the march, shields "
-#~ "high, has caused many a defender to worry about the strength of their "
-#~ "walls."
-#~ msgstr ""
-#~ "I Guerrieri costituiscono la colonna portante della fanteria del Popolo "
-#~ "delle Dune durante le sue avanzate. Molti di loro provengono da famiglie "
-#~ "di nobili o di soldati e hanno trascorso gran parte della loro vita "
-#~ "addestrandosi nella loro arte. Vista la loro intensa specializzazione "
-#~ "nell’arte della spada, sono sovente inviati contro le posizioni "
-#~ "fortificate dei nemici per creare una breccia che le truppe rimanenti "
-#~ "possano sfruttare. La vista di un esercito di Guerrieri in marcia a scudi "
-#~ "levati ha fatto sì che più di un difensore temesse per la tenuta delle "
-#~ "sue mura."
-
-#~ msgid ""
-#~ "Although the Dunefolk armies are known for their astonishing mobility and "
-#~ "fierce attack, they can be able defenders. Spearguard excel at holding "
-#~ "their ground, keeping opponents at bay with long, razor sharp spears. "
-#~ "Their preferred strategy is to gradually wear down enemies, until they "
-#~ "can be defeated in a vicious counter stroke."
-#~ msgstr ""
-#~ "Nonostante le armate del Popolo delle Dune siano note per la loro "
-#~ "sorprendente mobilità e i loro feroci attacchi, possono rivelarsi valide "
-#~ "anche come truppe da difesa. I Difensori eccellono nella tenuta delle "
-#~ "proprie posizioni, poiché mantengono lontani i nemici grazie alle loro "
-#~ "lunghe lance affilate come rasoi. La loro strategia preferita consiste "
-#~ "nel logorare gradualmente i nemici fino a sconfiggerli con un violento "
-#~ "contrattacco."
-
-#~ msgid ""
-#~ "Spread across the Dunefolk's lands are lonely towers and garrisons that "
-#~ "provide shelter to caravans and locals from bandits and monsters. These "
-#~ "bastions are defended by the most determined of soldiers, who have often "
-#~ "faced off against overwhelming odds only to repel the invaders. In an "
-#~ "army they can be trusted to hold any position or line, long after lesser "
-#~ "soldiers and men have fled in terror."
-#~ msgstr ""
-#~ "Disseminate per le terre del Popolo delle Dune si ergono torri e "
-#~ "guarnigioni solitarie, che offrono alle carovane e alla gente del luogo "
-#~ "un riparo dalle scorribande di mostri e banditi. Questi bastioni sono "
-#~ "difesi dai più determinati tra i soldati, che spesso si sono rivelati in "
-#~ "grado di respingere gli invasori contro ogni probabilità avversa. "
-#~ "All’interno dell’esercito, ci si affida a loro per mantenere una "
-#~ "posizione o tenere unita una linea dopo che uomini e soldati di grado "
-#~ "inferiore sono fuggiti in preda al terrore."
-
-#~ msgid ""
-#~ "Those Piercers who distinguish themselves in battle are given the "
-#~ "opportunity to prove themselves worthy of becoming a Sunderer. Those who "
-#~ "pass the trial are given the traditional barding for their horse, "
-#~ "distinguishing them from the rest of the Dunefolk cavalry. Consummate "
-#~ "horsemen, the Sunderers have long claimed they need only a single lance "
-#~ "strike to kill a man."
-#~ msgstr ""
-#~ "Ai Lancieri che si sono distinti in battaglia viene data l’opportunità di "
-#~ "mostrarsi degni del titolo di Squartatori. A coloro che superano la prova "
-#~ "viene data in premio la tradizionale bardatura per il cavallo, che li "
-#~ "distingue dal resto della cavalleria del Popolo delle Dune. Esperti "
-#~ "nell’arte equestre, gli Squartatori sostengono da tempo di essere in "
-#~ "grado di uccidere un uomo con un solo colpo della propria lancia."
-
-#~ msgid ""
-#~ "Riders who demonstrate exceptional skill with the bow are made into "
-#~ "Swiftriders, spending hours every day practicing and building a rapport "
-#~ "with their steed. This has made them the fastest riders in the Dunefolk "
-#~ "armies, and a wise Warmaster uses this to their advantage."
-#~ msgstr ""
-#~ "Gli Arcieri a cavallo delle che mostrano un’eccezionale abilità nel tiro "
-#~ "con l’arco assurgono al rango di Tiratore e ogni giorno trascorrono molte "
-#~ "ore ad addestrarsi e a costruire un solido rapporto con il loro "
-#~ "destriero. Questo li ha resi i cavalieri più veloci nelle armate del "
-#~ "Popolo delle Dune: un Condottiero saggio è in grado di sfruttare la cosa "
-#~ "a proprio vantaggio."
-
-#~ msgid ""
-#~ "Armed with their sword and shield, Swordsman are warriors of some renown "
-#~ "among the Dunefolk armies. They have further refined their combat arts, "
-#~ "adding a powerful shield bash to knock back unsuspecting enemies. Though "
-#~ "few in number, their presence can be decisive in dislodging even the most "
-#~ "hardened redoubt."
-#~ msgstr ""
-#~ "Armati di spada e scudo, i Veterani sono guerrieri assai rinomati tra le "
-#~ "armate del Popolo delle Dune. Hanno raffinato ulteriormente la propria "
-#~ "arte del combattimento, aggiungendovi un potente colpo di scudo per "
-#~ "respingere gli ignari nemici. Pur in numero ristretto, la loro presenza "
-#~ "può rivelarsi decisiva nel far cadere anche l’avamposto più resistente."
-
-#~ msgid ""
-#~ "Among every generation, a warrior elevates himself above his peers and "
-#~ "foes; They seem to be able to alter the destiny of the world themselves. "
-#~ "Often given the name Warmaster, these individuals are celebrated for "
-#~ "their strength and skill. Their travels and travails are told endlessly "
-#~ "around the campfire with the reverent tones of those that speak of living "
-#~ "legends."
-#~ msgstr ""
-#~ "In ogni generazione vi è un guerriero che si eleva al di sopra dei suoi "
-#~ "pari e dei suoi nemici: questi guerrieri appaiono in grado di alterare da "
-#~ "soli il destino del mondo intero. Tali individui, a cui viene spesso "
-#~ "assegnato il titolo di Condottiero, sono celebri per la loro forza e le "
-#~ "loro abilità. I loro viaggi e le loro fatiche vengono narrati senza sosta "
-#~ "attorno al fuoco di ogni accampamento, col tono reverenziale di chi sta "
-#~ "parlando di leggende viventi."
-
-#~ msgid ""
-#~ "The elite of the Swiftriders are the Windriders, horse archers of such "
-#~ "speed and dexterity that rumors are always spread that they have elven "
-#~ "blood. Irritated at such mystical nonsense, the Windriders can frequently "
-#~ "be found demonstrating their exceptional skill at the forefront of "
-#~ "battle, riding with great speed through the lines of battle to rain "
-#~ "arrows down upon the enemy."
-#~ msgstr ""
-#~ "L’élite dei Tiratori è costituita dai Saettatori, cavallerizzi arcieri "
-#~ "dotati di una velocità e una destrezza tali da far da sempre rumoreggiare "
-#~ "che abbiano sangue elfico. Irritati nel sentire tali assurdità mistiche, "
-#~ "i Saettatori si possono trovare di frequente in prima linea nel corso "
-#~ "della battaglia mentre danno sfoggio delle loro eccezionali abilità, "
-#~ "cavalcando a gran velocità attraverso le linee degli eserciti per far "
-#~ "piovere le loro frecce sui nemici."
-
-#~ msgid ""
-#~ "The Goblin ‘Knights’ have little in common with the men who share that "
-#~ "title, and the title is bestowed in mockery by their enemies. The "
-#~ "similarity is simply that they are the elite of the wolf riders, likely "
-#~ "promoted to their position by their success in some audacious raid.\n"
-#~ "\n"
-#~ "The wolves they are given are bred for speed and strength, making them "
-#~ "quite dangerous in combat."
-#~ msgstr ""
-#~ "I “cavalieri” goblin hanno ben poco in comune con gli uomini insigniti "
-#~ "del medesimo titolo: esso viene donato loro dai nemici in segno di "
-#~ "scherno. La somiglianza risiede semplicemente nel fatto che essi "
-#~ "rappresentano i migliori cavalcatori di lupi, verosimilmente promossi al "
-#~ "loro grado attuale per i successi ottenuti in qualche temeraria "
-#~ "incursione.\n"
-#~ "\n"
-#~ "I lupi a loro assegnati vengono selezionati per la loro velocità e la "
-#~ "loro forza, che li rendono assai pericolosi in combattimento."
-
-#~ msgid ""
-#~ "Elves have always had a reputation for archery, a skill that, for many "
-#~ "reasons, comes naturally to them. Even the frail of body can be deadly "
-#~ "with a bow in hand, and in times of war, many will take up this weapon. "
-#~ "Though their relative inexperience with combat leaves them somewhat "
-#~ "vulnerable, their natural grace ensures that they can best any of "
-#~ "humanity’s fresh recruits."
-#~ msgstr ""
-#~ "Gli elfi sono sempre stati famosi per la loro bravura nel maneggiare "
-#~ "l’arco, un’abilità che, per molte ragioni, viene loro naturale. Anche un "
-#~ "corpo così gracile può risultare letale con un arco in mano: in tempo di "
-#~ "guerra sono in molti a impugnare tale arma. Nonostante la loro relativa "
-#~ "mancanza di esperienza nei combattimenti li renda per un certo verso "
-#~ "vulnerabili, la loro grazia naturale permette loro di primeggiare sulle "
-#~ "giovani reclute umane."
-
-#~ msgid ""
-#~ "Elves, unlike many other races, will quickly acknowledge and follow any "
-#~ "of their peers who have experience in combat. In this they differ greatly "
-#~ "from humanity, for whom leadership is often a matter of coercion and "
-#~ "intimidation. The combination of their willingness to accept the wisdom "
-#~ "of their leaders, and the tendency to choose leaders of merit is one of "
-#~ "the quiet strengths of the elves."
-#~ msgstr ""
-#~ "Gli elfi, a differenza di molte altre razze, riconoscono e seguono "
-#~ "immediatamente i loro pari che hanno esperienza di combattimento. In ciò "
-#~ "sono enormemente diversi dagli uomini, per i quali il comando è spesso "
-#~ "una questione di coercizione e intimidazione. La combinazione tra la loro "
-#~ "disponibilità ad accettare i saggi consigli dei loro condottieri e la "
-#~ "tendenza a scegliere dei condottieri di valore è uno dei punti di forza "
-#~ "nascosti degli elfi."
-
-#~ msgid ""
-#~ "Those few elves who deliberately hone themselves into weapons of war "
-#~ "become something which belies the peace-loving reputation of their race. "
-#~ "Dedication and skill are matched with purity of form, and the result is "
-#~ "swordsmanship to which few can compare. Even their archery, treated as a "
-#~ "secondary pursuit, is masterfully executed."
-#~ msgstr ""
-#~ "Quei pochi elfi che si trasformano deliberatamente in armi da guerra "
-#~ "diventano qualcosa che smentisce la reputazione pacifica della loro "
-#~ "razza. La dedizione e l’abilità di questi elfi sono eguagliate dalla "
-#~ "purezza della forma: il risultato è una maestria nel maneggiare la spada "
-#~ "che ben pochi possono eguagliare. Anche il tiro con l’arco, considerato "
-#~ "una sorta di occupazione secondaria, viene eseguito in modo magistrale."
-
-#~ msgid ""
-#~ "Elves are not warlike by nature, but in times of need, their natural "
-#~ "grace and agility serve them well, as does their skillful craftsmanship. "
-#~ "An elf can grasp the basics of swordsmanship and archery in a time "
-#~ "uncannily short by the standards of other races, and put them to "
-#~ "effective use on the battlefield."
-#~ msgstr ""
-#~ "Gli elfi non sono bellicosi per natura, ma in caso di necessità la loro "
-#~ "naturale grazia e la loro agilità si rivelano risorse utili, così come la "
-#~ "loro abilità di artigiani. Un elfo può imparare le basi dell’uso della "
-#~ "spada e dell’arco in un tempo incredibilmente breve per gli standard "
-#~ "delle altre razze e impiegarle con efficacia sul campo di battaglia."
-
-#~ msgid ""
-#~ "Elves, though not warlike by nature, are swift to learn; a relatively "
-#~ "small amount of experience will turn an elf from a competent fighter into "
-#~ "a master of combat. Those who are honored as heroes are strong with both "
-#~ "sword and bow, and their skill once acquired does not fade for lack of "
-#~ "practice."
-#~ msgstr ""
-#~ "Gli elfi, seppure non bellicosi per natura, imparano in fretta: basta un "
-#~ "grado relativamente basso di esperienza per trasformare un elfo da buon "
-#~ "combattente a maestro di battaglia. Coloro che vengono celebrati come "
-#~ "eroi sono forti sia con la spada che con l’arco e le loro abilità, una "
-#~ "volta acquisite, non decadono per mancanza di pratica."
-
-#~ msgid ""
-#~ "The nobility of the elves are possessed of merit to match their standing "
-#~ "in society. Elvish Lords are the wisest and strongest of their people, "
-#~ "and are fearsome in their command of magic."
-#~ msgstr ""
-#~ "I nobili elfici sono dotati di meriti che si confanno alla loro posizione "
-#~ "nella società. I signori degli elfi sono i più forti e saggi tra la loro "
-#~ "gente e incutono timore quando padroneggiano la magia."
-
-#~ msgid ""
-#~ "Elves are wondrously keen-sighted, a gift which contributes to their "
-#~ "mastery of the bow. An elf practiced at archery can hit targets that a "
-#~ "man couldn’t even see, and can nock a second arrow almost as soon as the "
-#~ "first is let fly. Realizing this prodigious skill does come with one "
-#~ "cost, that being a lack of practice with the sword."
-#~ msgstr ""
-#~ "Gli elfi possiedono una vista straordinariamente acuta, un dono che "
-#~ "contribuisce alla loro maestria nel tiro con l’arco. Un elfo addestrato "
-#~ "nell’uso dell’arco può colpire bersagli che un uomo non è nemmeno in "
-#~ "grado di vedere e può incoccare una seconda freccia mentre la prima è "
-#~ "ancora in volo. Dar fondo a tale prodigiosa abilità ha il suo prezzo, "
-#~ "consistente nella mancanza di pratica con la spada."
-
-#~ msgid ""
-#~ "The longevity and natural intelligence of elves make them apt for "
-#~ "military matters, enough even to counter their general distaste for war. "
-#~ "Elves remember things much more clearly than humankind, and can often "
-#~ "intuit what others can only be trained to do. Certainly, on those rare "
-#~ "occasions when an elf sets his mind to war, the strategy that results is "
-#~ "often the work of a master."
-#~ msgstr ""
-#~ "La longevità e la naturale intelligenza degli elfi, sufficienti anche a "
-#~ "contrastare la loro generale avversione per la guerra, li rendono adatti "
-#~ "per le questioni militari. Gli elfi ricordano le cose più chiaramente "
-#~ "rispetto agli uomini e possono spesso intuire ciò che altri possono "
-#~ "essere solo addestrati a fare. Certamente, in quelle rare occasioni in "
-#~ "cui un elfo si concentra sulla guerra, la strategia che ne risulta è "
-#~ "spesso un’opera maestra."
-
-#~ msgid ""
-#~ "Though a man might spend years in the forest, he will never shake the "
-#~ "feeling that he is a guest in a realm of which he is not truly a part. "
-#~ "With elves, this is quite reversed. Any elf that studies the lore of the "
-#~ "woods rapidly becomes a master of them. This, combined with a "
-#~ "considerable skill at archery and swordsmanship, is very useful in "
-#~ "warfare."
-#~ msgstr ""
-#~ "Anche trascorrendo anni nella foresta, un uomo non riuscirà mai a "
-#~ "scacciare la sensazione di essere ospite di un luogo che non gli "
-#~ "appartiene veramente. Con gli elfi avviene il contrario. Un elfo che "
-#~ "studi la dottrina delle foreste ne diventa rapidamente un maestro: "
-#~ "abbinato ad una considerevole abilità nell’uso dell’arco e della spada, "
-#~ "ciò si rivela molto utile in battaglia."
-
-#~ msgid ""
-#~ "The master horsemen of the elves are able to move through forests at a "
-#~ "speed which would be suicidal for any human. Awe of the rider is quite "
-#~ "justified — but questions have also been raised about the stock of the "
-#~ "horses, for the feats they perform seem almost supernatural.\n"
-#~ "\n"
-#~ "This combination of incredible mobility and potent combat strength is one "
-#~ "of the greatest assets the elves possess in warfare."
-#~ msgstr ""
-#~ "I più grandi elfi cavalieri sono in grado di muoversi attraverso le "
-#~ "foreste ad una velocità che sarebbe un suicidio per qualunque essere "
-#~ "umano. La soggezione nei confronti di tali cavalieri è decisamente "
-#~ "giustificata; si sono però sollevati anche dubbi sulla natura dei loro "
-#~ "cavalli, poiché le imprese da loro compiute paiono quasi soprannaturali.\n"
-#~ "\n"
-#~ "Questa combinazione di incredibile mobilità e di grande forza nel "
-#~ "combattimento è una delle maggiori doti che gli elfi possiedono in "
-#~ "battaglia."
-
-#~ msgid ""
-#~ "The horsemen of the wood elves have some skill with bow and sword, but "
-#~ "their true skill lies in their horsemanship. Even other elves are "
-#~ "impressed by their uncanny speed in the woods, and their ability to dart "
-#~ "through the thick of the forest with nary a scratch. They may be the only "
-#~ "cavalry in existence that fares better in the woods than on open ground."
-#~ msgstr ""
-#~ "I cavallerizzi degli elfi silvani sono abili sia con la spada che con "
-#~ "l’arco, ma la loro vera abilità risiede nel cavalcare. Persino gli altri "
-#~ "elfi sono impressionati dalla loro incredibile velocità nei boschi e "
-#~ "dalla loro abilità di guizzare tra il folto della foresta senza neanche "
-#~ "un graffio. Essi sono forse gli unici cavalieri esistenti che si muovono "
-#~ "meglio nelle foreste piuttosto che negli spazi aperti."
-
-#~ msgid ""
-#~ "There was a legend of an elf who stopped an arrow by shooting it out of "
-#~ "the air with one of his own. It is a testament to the skill of the elves "
-#~ "that such a story could be taken seriously. The sharpshooters of the "
-#~ "elves have, quite simply, mastered the art of archery."
-#~ msgstr ""
-#~ "Un’antica leggenda narra di un elfo che fermò una freccia in volo "
-#~ "deviandone la traiettoria colpendola con una delle sue. Il fatto che un "
-#~ "simile racconto sia risultato credibile è una testimonianza dell’abilità "
-#~ "degli elfi. Gli elfi maestri di tiro hanno semplicemente una completa "
-#~ "padronanza del tiro con l’arco."
-
-#~ msgid ""
-#~ "Champions among their fellow troops, the dwarven sentinels form the "
-#~ "bulwark of their battle lines. Leading a direct assault against a line "
-#~ "that they fortify, is often out of the question; it tends toward being "
-#~ "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#~ "the melee, and can hold a patch of earth with the singleminded tenacity "
-#~ "of an oak."
-#~ msgstr ""
-#~ "Campioni tra i loro compagni di battaglia, i nani sentinella formano il "
-#~ "nocciolo duro delle loro linee di combattimento. Sferrare un assalto "
-#~ "diretto contro una linea rinsaldata dalla loro presenza è sovente fuori "
-#~ "discussione, poiché tenderebbe a trattarsi più di un suicidio che di una "
-#~ "semplice manovra inefficace. Questi nani sono i signori delle mischie e "
-#~ "possono tenere un fazzoletto di terra con la stessa risolutezza e tenacia "
-#~ "di una quercia."
-
-#~ msgid ""
-#~ "In any litter of orcs, several are born much smaller and weaker than the "
-#~ "rest. These runts are called ‘Goblins’ and are looked down on by the rest "
-#~ "of their kin. In battle, these are given the most meager of equipment, "
-#~ "and are used as a soak-off force to give the Warlords time to prepare the "
-#~ "real assault.\n"
-#~ "\n"
-#~ "Some speculate that the existence of these creatures is the beginning of "
-#~ "a failure of the orcish bloodline, though no one knows enough of their "
-#~ "history to state anything conclusive."
-#~ msgstr ""
-#~ "In ogni figliata di orchi, alcuni nascono molto più piccoli e deboli "
-#~ "rispetto agli altri: questi cuccioli d’orco vengono chiamati “goblin” e "
-#~ "sono disprezzati dalla loro razza. In battaglia essi ricevono il più "
-#~ "misero degli equipaggiamenti e vengono impiegati come forza-cuscinetto "
-#~ "per consentire ai signori della guerra di preparare il vero attacco.\n"
-#~ "\n"
-#~ "Alcuni ipotizzano che l’esistenza di queste creature costituisca l’inizio "
-#~ "della decadenza della stirpe degli orchi; tuttavia, nessuno conosce la "
-#~ "loro storia a tal punto da poter affermare qualcosa di definitivo."
-
-#~ msgid "Arif"
-#~ msgstr "Guerriero Arif"
-
-#~ msgid "Batal"
-#~ msgstr "Guerrigliero Batal"
-
-#~ msgid "Faris"
-#~ msgstr "Cavaliere Faris"
-
-#~ msgid "Ghazi"
-#~ msgstr "Veterano Ghazi"
-
-#~ msgid "Hadaf"
-#~ msgstr "Nomade Hadaf"
-
-#~ msgid "Hakim"
-#~ msgstr "Saggio Hakim"
-
-#~ msgid "Jawal"
-#~ msgstr "Saettatore Jawal"
-
-#~ msgid "Jundi"
-#~ msgstr "Soldato Jundi"
-
-#~ msgid "Khaiyal"
-#~ msgstr "Lanciere Khaiyal"
-
-#~ msgid "Khalid"
-#~ msgstr "Condottiero Khalid"
-
-#~ msgid "Mighwar"
-#~ msgstr "Assaltatore Mighwar"
-
-#~ msgid "Monawish"
-#~ msgstr "Incursore Monawish"
-
-#~ msgid "Mudafi"
-#~ msgstr "Difensore Mudafi"
-
-#~ msgid "Mufariq"
-#~ msgstr "Catafratto Mufariq"
-
-#~ msgid "Muharib"
-#~ msgstr "Razziatore Muharib"
-
-#~ msgid "Naffat"
-#~ msgstr "Lanciafiamme Naffat"
-
-#~ msgid ""
-#~ "Naffat are a necessary evil in the ranks of Khalifate armies, utilizing "
-#~ "fire to burn down enemy fortifications and sow terror among their ranks. "
-#~ "While the use of fire in warfare is not a novel concept, the flames of "
-#~ "the Naffat have proven disturbingly difficult for their enemies to "
-#~ "extinguish."
-#~ msgstr ""
-#~ "I lanciafiamme Naffat sono un male necessario nei ranghi delle armate del "
-#~ "Califfato, poiché utilizzano il fuoco per radere al suolo le "
-#~ "fortificazioni dei nemici e seminare il terrore tra le loro fila. "
-#~ "Nonostante l’uso del fuoco come arma bellica non sia una novità, le "
-#~ "fiamme scagliate dai lanciafiamme Naffat si rivelano terribilmente "
-#~ "difficili da estinguere da parte dei loro nemici."
-
-#~ msgid "Qanas"
-#~ msgstr "Cacciatore Qanas"
-
-#~ msgid "Qatif-al-nar"
-#~ msgstr "Piromane Qatif-al-nar"
-
-#~ msgid "Rami"
-#~ msgstr "Arciere a cavallo Rami"
-
-#~ msgid "Rasikh"
-#~ msgstr "Baluardo Rasikh"
-
-#~ msgid "Saree"
-#~ msgstr "Tiratore Saree"
-
-#~ msgid "Shuja"
-#~ msgstr "Comandante Shuja"
-
-#~ msgid "Tabib"
-#~ msgstr "Venerabile Tabib"
-
-#~ msgid "Tineen"
-#~ msgstr "Incendiario Tineen"
-
-#~ msgid "knife"
-#~ msgstr "coltello"
+#~ msgid "Bite"
+#~ msgstr "Morso"
+
+#~ msgid "Tusk"
+#~ msgstr "Zanna"

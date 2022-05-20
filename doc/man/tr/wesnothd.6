@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Vesnot Savaşı çok oyunculu ağ sunucusu"
+.TH WESNOTHD 6 2022 wesnothd "Vesnot Savaşı çok oyunculu ağ sunucusu"
 .
 .SH İSİM
 .
@@ -109,6 +109,10 @@ belirler. Öntanımlı değer \fByes\fP'tir.
 Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
 gelir. (\fB5\fP öntanımlıdır)
 .TP 
+\fBdeny_unregistered_login\fP
+Kullanılmakta olan \fBuser_handler\fP bölümünde kayıtlı olmayan kullanıcıların
+oturum açmasının engellenip engellenmeyeceği (öntanımlı: false)
+.TP 
 \fBdisallow_names\fP
 sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp
 karakterlerinden \fB*\fP ve \fB?\fP desteklenmektedir. Daha ayrıntılı bilgi için
@@ -159,22 +163,31 @@ saklanmaz.
 Sunucunun oyun tekrarlarını özdevinimli olarak kaydedip kaydetmeyeceğini
 belirler. (Öntanımlı değeri: \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
-listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve
-\fB?\fPdesteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
+listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve \fB?\fP
+desteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
 .br
 Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir.
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS "Genel etiketler:"
 .
 .P
-\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceği sunucuların
-belirtildiği etiket.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -208,52 +221,54 @@ istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
 etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .RE
 .P
-\fB[user_handler]\fP Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek
-anahtarlar \fBuser_handler\fP anahtarı ile hangi kullanıcı işlemcisinin
-tanımlandığına bağlıdır. \fB[user_handler]\fP bölümü yapılandırmada yoksa
-sunucu herhangi bir kullanıcı kayıt hizmeti olmadan
-çalışacaktır. \fBforum_user_handler\fP'ın çalışması için gereken tüm ek
-tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında
-bulunabilir.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+Veritabanı sunucusunun konak adı
 .TP 
 \fBdb_name\fP
-The name of the database
+Veritabanı adı
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+Veritabanına oturum açacak kullanıcının adı
 .TP 
 \fBdb_password\fP
-This user's password
+Bu kullanıcının parolası
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbb forumlarınızın kullanıcı verilerini saklayacağı tablonun ismi. Bu
+tablo genellikle şöyle belirtilir: <tablo\-öneki>_users (örnek:
+phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+wesnothd uygulamasının kullanıcılar hakkındaki kendi verilerini kaydedeceği
+tablonun adı.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+wesnothd uygulamasının oyunlar hakkındaki kendi verilerini kaydedeceği
+tablonun adı.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+wesnothd uygulamasının bir oyundaki oyuncular hakkındaki kendi verilerini
+kaydedeceği tablonun adı.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+wesnothd uygulamasının bir oyunda yapılan değişiklikler hakkında kendi
+verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+phpbb forumlarınızdaki kullanıcıların grup verilerinin saklanacağı tablonun
+ismi. Bu tablo genellikle şöyle belirtilir:
+<tablo\-öneki>_users_group (örnek: phpbb3_users_group).
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+Yönetme yetkisine sahip olduğu kabul edilecek forum grubunun kimliği.
 .RE
 .
 .SH "ÇIKIŞ DURUMU"
@@ -271,11 +286,11 @@ sayfası ilk defa Cyril Bouthors <cyril@bouthors.org> tarafından
 yazılmış Nilgün Belma Bugüner <nilgun@belgeler.org> tarafından
 Türkçeye çevrilmiştir.
 .br
-oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright  © 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

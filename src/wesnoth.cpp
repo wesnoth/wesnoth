@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -535,7 +535,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(right.get_diff(left));
 		if(os != &std::cout) delete os;
 		return 0;
@@ -552,7 +552,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(base);
 		if(os != &std::cout) delete os;
 		return 0;

@@ -311,7 +311,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -350,9 +350,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL(require_version = '2.0.8') & \
-            conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
-            conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+            conf.CheckSDL2('2.0.8') & \
+            conf.CheckSDL2Mixer() & \
+            conf.CheckSDL2Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
@@ -390,12 +390,18 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckLib("vorbisfile") & conf.CheckOgg()
     have_client_prereqs = have_client_prereqs & conf.CheckPNG()
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
-#    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
-#    have_client_prereqs = have_client_prereqs & conf.CheckGLEW()
+    have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+
+    if not File("#/src/modules/lua/.git").rfile().exists():
+        have_client_prereqs = False
+        Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+    else:
+        print("Lua submodule found.")
+
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
 
@@ -636,6 +642,9 @@ for env in [test_env, client_env, env]:
         env.Append(FRAMEWORKS = "Security")         # commonCrypto (after OpenSSL replacement on Mac)
         env.Append(FRAMEWORKS = "IOKit")            # IOKit
         env.Append(FRAMEWORKS = "CoreGraphics")     # CoreGraphics
+
+    if env["PLATFORM"] == 'sunos':
+        env.Append(LINKFLAGS = "-lsocket")
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")

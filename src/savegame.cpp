@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -323,7 +323,7 @@ bool loadgame::load_multiplayer_game()
 
 	// We want to verify the game classification before setting the data, so we don't check on
 	// gamestate_.classification() and instead construct a game_classification object manually.
-	if(game_classification(load_data_.load_config).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	if(game_classification(load_data_.load_config).type != campaign_type::type::multiplayer) {
 		gui2::show_transient_error_message(_("This is not a multiplayer save."));
 		return false;
 	}

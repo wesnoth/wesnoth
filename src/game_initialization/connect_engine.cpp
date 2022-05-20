@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mt_rng.hpp"
+#include "side_controller.hpp"
 #include "tod_manager.hpp"
 #include "team.hpp"
 #include "wesnothd_connection.hpp"
@@ -49,13 +50,13 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-const std::array<std::string, 5> controller_names {{
-	"human",
-	"human",
-	"ai",
-	"null",
-	"reserved"
-}};
+const std::array controller_names {
+	side_controller::human,
+	side_controller::human,
+	side_controller::ai,
+	side_controller::none,
+	side_controller::reserved
+};
 
 const std::set<std::string> children_to_swap {
 	"village",
@@ -85,7 +86,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	}
 
 	const bool is_mp = state_.classification().is_normal_mp_game();
-	force_lock_settings_ = (state.mp_settings().saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) && scenario()["force_lock_settings"].to_bool(!is_mp);
+	force_lock_settings_ = (state.mp_settings().saved_game != saved_game_mode::type::midgame) && scenario()["force_lock_settings"].to_bool(!is_mp);
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -316,7 +317,7 @@ void connect_engine::update_level()
 	}
 }
 
-void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
+void connect_engine::update_and_send_diff()
 {
 	config old_level = level_;
 	update_level();
@@ -398,14 +399,14 @@ void connect_engine::start_game()
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
-		if(params_.random_faction_mode != mp_game_settings::RANDOM_FACTION_MODE::DEFAULT) {
+		if(params_.mode != random_faction_mode::type::independent) {
 			for(side_engine_ptr side2 : side_engines_) {
 				if(!side2->flg().is_random_faction()) {
-					switch(params_.random_faction_mode.v) {
-						case mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR:
+					switch(params_.mode) {
+						case random_faction_mode::type::no_mirror:
 							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							break;
-						case mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR:
+						case random_faction_mode::type::no_ally_mirror:
 							if(side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
 								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							}
@@ -456,7 +457,7 @@ void connect_engine::start_game()
 	config lock("stop_updates");
 	mp::send_to_server(lock);
 
-	update_and_send_diff(true);
+	update_and_send_diff();
 
 	save_reserved_sides_information();
 
@@ -522,7 +523,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		side->resolve_random(rng);
 	} // end top-level loop
 
-	update_and_send_diff(true);
+	update_and_send_diff();
 
 	// Update sides with commandline parameters.
 	if(cmdline_opts.multiplayer_turns) {
@@ -843,8 +844,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, ai_algorithm_()
 	, chose_random_(cfg["chose_random"].to_bool(false))
 	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
-	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME)
-	, allow_changes_(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
+	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game == saved_game_mode::type::midgame)
+	, allow_changes_(parent_.params_.saved_game != saved_game_mode::type::midgame && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
 	, color_options_(game_config::default_colors)
 	//TODO: what should we do if color_ is out of range?
@@ -877,7 +878,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		ERR_MP << "controller=<number> is deperecated\n";
 	}
 
-	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
 	}
@@ -886,12 +887,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	// Tweak the controllers.
 	if(parent_.state_.classification().is_scenario() && cfg_["controller"].blank()) {
-		cfg_["controller"] = "ai";
+		cfg_["controller"] = side_controller::ai;
 	}
 
-	if(cfg_["controller"] == "null") {
+	if(cfg_["controller"] == side_controller::none) {
 		set_controller(CNTR_EMPTY);
-	} else if(cfg_["controller"] == "ai") {
+	} else if(cfg_["controller"] == side_controller::ai) {
 		set_controller(CNTR_COMPUTER);
 	} else if(parent_.default_controller_ == CNTR_NETWORK && !reserved_for_.empty()) {
 		// Reserve a side for "current_player", unless the side
@@ -970,7 +971,7 @@ config side_engine::new_config() const
 	res["side"] = index_ + 1;
 
 	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
@@ -1015,7 +1016,7 @@ config side_engine::new_config() const
 		// AI algorithm, we do nothing. Otherwise we add the chosen AI and if this
 		// is a saved game, we also remove the old stages from the AI config.
 		if(ai_algorithm_ != "use_saved") {
-			if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+			if(parent_.params_.saved_game == saved_game_mode::type::midgame) {
 				for (config &ai_config : res.child_range("ai")) {
 					ai_config.clear_children("stage");
 				}
@@ -1047,7 +1048,7 @@ config side_engine::new_config() const
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		// Find a config where a default leader is and set a new type and gender values for it.
 		config* leader = &res;
 
@@ -1131,7 +1132,7 @@ config side_engine::new_config() const
 	}
 
 
-	if(parent_.params_.use_map_settings && parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.use_map_settings && parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		if(cfg_.has_attribute("name")){
 			res["name"] = cfg_["name"];
 		}
@@ -1195,7 +1196,7 @@ bool side_engine::available_for_user(const std::string& name) const
 
 void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
-	if(parent_.params_.saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game == saved_game_mode::type::midgame) {
 		return;
 	}
 
@@ -1214,7 +1215,7 @@ void side_engine::reset()
 	set_waiting_to_choose_status(false);
 	set_controller(parent_.default_controller_);
 
-	if(parent_.params_.saved_game != mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
+	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		flg_.set_current_faction(0);
 	}
 }
@@ -1249,20 +1250,20 @@ void side_engine::update_controller_options()
 
 	// Default options.
 	if(parent_.mp_metadata_) {
-		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
+		add_controller_option(CNTR_NETWORK, _("Network Player"), side_controller::human);
 	}
 
-	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
-	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
-	add_controller_option(CNTR_EMPTY, _("Nobody"), "null");
+	add_controller_option(CNTR_LOCAL, _("Local Player"), side_controller::human);
+	add_controller_option(CNTR_COMPUTER, _("Computer Player"), side_controller::ai);
+	add_controller_option(CNTR_EMPTY, _("Nobody"), side_controller::none);
 
 	if(!reserved_for_.empty()) {
-		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
+		add_controller_option(CNTR_RESERVED, _("Reserved"), side_controller::human);
 	}
 
 	// Connected users.
 	for(const std::string& user : parent_.connected_users()) {
-		add_controller_option(parent_.default_controller_, user, "human");
+		add_controller_option(parent_.default_controller_, user, side_controller::human);
 	}
 
 	update_current_controller_index();
@@ -1322,11 +1323,11 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 {
 	set_controller(CNTR_LOCAL);
 
-	if(controller_name == "ai") {
+	if(controller_name == side_controller::ai) {
 		set_controller(CNTR_COMPUTER);
 	}
 
-	if(controller_name == "null") {
+	if(controller_name == side_controller::none) {
 		set_controller(CNTR_EMPTY);
 	}
 

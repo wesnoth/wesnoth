@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,13 +61,13 @@ repeating_button::~repeating_button()
 }
 
 void repeating_button::connect_signal_mouse_left_down(
-		const event::signal_function& signal)
+		const event::signal& signal)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
 void repeating_button::disconnect_signal_mouse_left_down(
-		const event::signal_function& signal)
+		const event::signal& signal)
 {
 	disconnect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
@@ -195,9 +195,9 @@ builder_repeating_button::builder_repeating_button(const config& cfg)
 {
 }
 
-widget* builder_repeating_button::build() const
+std::unique_ptr<widget> builder_repeating_button::build() const
 {
-	repeating_button* widget = new repeating_button(*this);
+	auto widget = std::make_unique<repeating_button>(*this);
 
 	DBG_GUI_G << "Window builder: placed repeating button '" << id
 			  << "' with definition '" << definition << "'.\n";

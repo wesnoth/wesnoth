@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,16 +23,7 @@
 #include <iostream>
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace policy
-{
-
-namespace order
+namespace gui2::iteration::policy::order
 {
 
 template <bool VW, bool VG, bool VC>
@@ -49,8 +40,7 @@ public:
 	{
 		TST_GUI_I << "Constructor: ";
 		while(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::exchange(root_, visit_child::get(*root_)->create_walker()));
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 
@@ -63,13 +53,6 @@ public:
 
 	~bottom_up()
 	{
-		delete root_;
-		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
-			itor != stack_.end();
-			++itor) {
-
-			delete *itor;
-		}
 	}
 
 	bool at_end() const
@@ -136,9 +119,7 @@ public:
 				TST_GUI_I << " Finished iteration.\n";
 				return false;
 			} else {
-				delete root_;
-
-				root_ = stack_.back();
+				root_ = std::move(stack_.back());
 				stack_.pop_back();
 				TST_GUI_I << " Up '" << operator*().id() << "'.";
 			}
@@ -163,8 +144,7 @@ public:
 		}
 
 		while(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::exchange(root_, visit_child::get(*root_)->create_walker()));
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 		TST_GUI_I << " Visit '" << operator*().id() << "'.\n";
@@ -193,9 +173,9 @@ public:
 	}
 
 private:
-	iteration::walker_base* root_;
+	iteration::walker_ptr root_;
 
-	std::vector<iteration::walker_base*> stack_;
+	std::vector<iteration::walker_ptr> stack_;
 };
 
 template <bool VW, bool VG, bool VC>
@@ -214,13 +194,6 @@ public:
 
 	~top_down()
 	{
-		delete root_;
-		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
-			itor != stack_.end();
-			++itor) {
-
-			delete *itor;
-		}
 	}
 
 	bool at_end() const
@@ -290,8 +263,7 @@ public:
 		}
 
 		if(!visit_child::at_end(*root_)) {
-			stack_.push_back(root_);
-			root_ = visit_child::get(*root_)->create_walker();
+			stack_.push_back(std::exchange(root_, visit_child::get(*root_)->create_walker()));
 
 			assert(root_);
 			assert(!at_end());
@@ -328,9 +300,7 @@ private:
 	bool up()
 	{
 		while(!stack_.empty()) {
-			delete root_;
-
-			root_ = stack_.back();
+			root_ = std::move(stack_.back());
 			stack_.pop_back();
 			TST_GUI_I << " Up widget '" << operator*().id() << "'. Iterate:";
 			switch(visit_child::next(*root_)) {
@@ -347,15 +317,9 @@ private:
 		return true;
 	}
 
-	iteration::walker_base* root_;
+	iteration::walker_ptr root_;
 
-	std::vector<iteration::walker_base*> stack_;
+	std::vector<iteration::walker_ptr> stack_;
 };
 
-} // namespace order
-
-} // namespace policy
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::policy::order

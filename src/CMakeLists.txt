@@ -13,14 +13,13 @@ if(ENABLE_MYSQL)
 endif()
 
 ## some includes ##
-include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS})
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS})
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR})
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS})
-include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR})
-include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR})
+if(NOT MSVC)
+	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIRS})
+	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIRS})
+endif()
 
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
@@ -33,32 +32,39 @@ include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 link_directories(
 	${PANGOCAIRO_LIBRARY_DIRS}
-	${FONTCONFIG_LIBRARY_DIRS}
 	${LIBDBUS_LIBRARY_DIRS}
 )
 
 set(common-external-libs ${ICU_DATA_LIBRARY} ${ICU_I18N_LIBRARY} ${ICU_UC_LIBRARY})
-if(WIN32)
+if(MSVC)
 	set(common-external-libs ${common-external-libs} shlwapi.lib winmm.lib crypt32.lib)
 elseif(MINGW)
-	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm)
+	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm crypt32)
 elseif(APPLE)
 	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif()
 
+if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
+	set(common-external-libs ${common-external-libs} socket)
+endif()
+
 set(game-external-libs
 	${common-external-libs}
-	${SDL2_LIBRARY}
-	${SDL2_IMAGE_LIBRARY}
-	${SDL2_MIXER_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
-	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-	${VORBISFILE_LIBRARIES}
+	VorbisFile::VorbisFile
 )
 
+if(NOT MSVC)
+	set(game-external-libs
+		${game-external-libs}
+		${SDL2IMAGE_LIBRARIES}
+		${SDL2MIXER_LIBRARIES}
+	)
+endif()
+
 if(HISTORY_FOUND)
-	set(game-external-libs ${game-external-libs} ${HISTORY_LIBRARY})
+	set(game-external-libs ${game-external-libs} History::History)
 endif()
 
 # get source lists
@@ -69,9 +75,6 @@ GetSources("libwesnoth" wesnoth_game_sources)
 GetSources("libwesnoth_core" wesnoth_core_sources)
 GetSources("wesnoth" wesnoth_sources)
 
-# We explicitly want lua compiled as C++ version, so this line is required:
-set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
-
 # Inject a header into the Lua sources for Wesnoth-specific changes
 # makedepend won't see it so we have to specifically add it as a dependency.
 file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
@@ -80,19 +83,24 @@ set_source_files_properties(${lua_sources} PROPERTIES OBJECT_DEPENDS ${wesnoth_l
 if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
-	
+endif()
+
+set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
+
+# We explicitly want lua compiled as C++ version
+if(MSVC)
 	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
 	# silence an implicit bitshift conversion warning
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334")
+	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334 /TP")
 else()
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
+	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -x c++ -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	# silence a Clang specific warning due to extra parenthesis in if statements
 	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
 	# silence a Clang specific warning when compiling the lua code
-	set_property(SOURCE SOURCE ${lua_sources}	APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
+	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
 endif()
 
 # On apple only
@@ -132,6 +140,65 @@ if(ENABLE_DISPLAY_REVISION)
 	set_source_files_properties(game_config.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
 endif()
 
+########### Conf Tests ###########
+
+if(NOT MSVC)
+	# test for SDL2
+	add_executable(sdl2 conftests/sdl2.cpp)
+	set_target_properties(sdl2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2 ${game-external-libs})
+	# cmake checks the version elsewhere already, but scons uses this, which is why the three arguments for major.minor.patchlevel are 0 here
+	add_test(NAME SDL2_SUPPORT COMMAND sdl2 0 0 0)
+
+	# test for SDL2_image
+	add_executable(sdl2_image conftests/sdl2_image.cpp)
+	set_target_properties(sdl2_image PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_image ${game-external-libs})
+	add_test(NAME SDL2_IMAGE_SUPPORT COMMAND sdl2_image)
+
+	# test for SDL2_mixer
+	add_executable(sdl2_mixer conftests/sdl2_mixer.cpp)
+	set_target_properties(sdl2_mixer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_mixer ${game-external-libs})
+	add_test(NAME SDL2_MIXER_SUPPORT COMMAND sdl2_mixer)
+
+	# test for JPG support in SDL2
+	add_executable(sdl2_jpg conftests/sdl2_jpg.cpp)
+	set_target_properties(sdl2_jpg PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_jpg ${game-external-libs})
+	add_test(NAME SDL2_JPG_SUPPORT COMMAND sdl2_jpg "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.jpg")
+
+	# test for PNG support in SDL2
+	add_executable(sdl2_png conftests/sdl2_png.cpp)
+	set_target_properties(sdl2_png PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_png ${game-external-libs})
+	add_test(NAME SDL2_PNG_SUPPORT COMMAND sdl2_png "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.png")
+
+	# test for WEBP support in SDL2
+	add_executable(sdl2_webp conftests/sdl2_webp.cpp)
+	set_target_properties(sdl2_webp PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_webp ${game-external-libs})
+	add_test(NAME SDL2_WEBP_SUPPORT COMMAND sdl2_webp "${CMAKE_SOURCE_DIR}/data/core/images/scons_conftest_images/end-n.webp")
+
+	# test for audio support in SDL2
+	add_executable(sdl2_audio conftests/sdl2_audio.cpp)
+	set_target_properties(sdl2_audio PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
+	target_link_libraries(sdl2_audio ${game-external-libs})
+	add_test(NAME SDL2_AUDIO_SUPPORT COMMAND sdl2_audio "${CMAKE_SOURCE_DIR}/data/core/music/main_menu.ogg")
+
+	add_custom_target(conftests
+		COMMAND ${CMAKE_COMMAND} -E env "SDL_AUDIODRIVER=dummy" ${CMAKE_CTEST_COMMAND}
+		DEPENDS
+			sdl2
+			sdl2_image
+			sdl2_mixer
+			sdl2_jpg
+			sdl2_png
+			sdl2_webp
+			sdl2_audio
+	)
+endif()
+
 ########### Wesnoth ###############
 
 add_library(wesnoth-common STATIC ${wesnoth_core_sources})
@@ -142,7 +209,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	add_library(wesnoth-widgets STATIC ${wesnoth_widget-sources})
 	if(APPLE)
 		set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
-	elseif(NOT WIN32)
+	elseif(NOT MSVC)
 		set(WIDGETS_LIB -Wl,--whole-archive wesnoth-widgets -Wl,--no-whole-archive)
 	else()
 		# handled by /WHOLEARCHIVE below
@@ -153,7 +220,9 @@ endif()
 if(ENABLE_GAME)
 	if(WIN32)
 		add_executable(wesnoth WIN32 wesnoth.cpp ../packaging/windows/wesnoth.rc)
-		target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		if(MSVC)
+			target_link_options(wesnoth PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
+		endif()
 	elseif(APPLE)
 		add_executable(wesnoth wesnoth.cpp macosx/SDLMain.mm)
 	else()
@@ -172,12 +241,19 @@ if(ENABLE_GAME)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		Fontconfig::Fontconfig
+		SDL2::SDL2
+		SDL2::SDL2main
 	)
+	if(MSVC)
+		target_link_libraries(wesnoth SDL2::SDL2_image)
+		target_link_libraries(wesnoth SDL2::SDL2_mixer)
+	endif()
+
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(wesnoth wesnoth-revision)
 	endif()
@@ -195,7 +271,7 @@ if(ENABLE_TESTS)
 	GetSources("boost_unit_tests" boost_tests_sources)
 	add_executable(boost_unit_tests ${boost_tests_sources})
 
-	if(WIN32)
+	if(MSVC)
 		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
 	endif()
 
@@ -211,13 +287,20 @@ if(ENABLE_TESTS)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
 		Boost::unit_test_framework
+		Fontconfig::Fontconfig
+		SDL2::SDL2
+		SDL2::SDL2main
 	)
+	if(MSVC)
+		target_link_libraries(boost_unit_tests SDL2::SDL2_image)
+		target_link_libraries(boost_unit_tests SDL2::SDL2_mixer)
+	endif()
+
 	if(ENABLE_DISPLAY_REVISION)
 		add_dependencies(boost_unit_tests wesnoth-revision)
 	endif()
@@ -252,13 +335,12 @@ if(ENABLE_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
 	)
-	if(WIN32)
+	if(MSVC)
 		target_link_options(wesnothd PRIVATE /WX)
 	endif()
 
@@ -294,13 +376,12 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::program_options
 		Boost::regex
 		Boost::system
-		Boost::thread
 		Boost::random
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
 	)
-	if(WIN32)
+	if(MSVC)
 		target_link_options(campaignd PRIVATE /WX)
 	endif()
 

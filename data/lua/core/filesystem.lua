@@ -2,6 +2,7 @@
 --[========[File Handling]========]
 print("Loading filesystem module...")
 
+---Valid asset types, used as the type argument for have_asset and resolve_asset
 filesystem.asset_type = {
     IMAGE = 'images',
     SOUND = 'sounds',

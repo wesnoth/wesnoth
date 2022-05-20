@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -870,6 +870,7 @@ class fake_chat_handler : public events::chat_handler {
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
 	void send_to_server(const config&) {}
+	void clear_messages() {}
 };
 
 template<>

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,6 +33,7 @@
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "side_controller.hpp"
 
 #include <functional>
 #include <SDL2/SDL_timer.h>
@@ -210,7 +211,7 @@ void game_state::init(const config& level, play_controller & pc)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
-			if (controller == "human" && side["is_local"].to_bool(true)) {
+			if (controller == side_controller::human && side["is_local"].to_bool(true)) {
 				first_human_team_ = team_num;
 			}
 		}
@@ -459,7 +460,7 @@ void game_state::add_side_wml(config cfg)
 {
 	cfg["side"] = board_.teams().size() + 1;
 	//if we want to also allow setting the controller we must update the server code.
-	cfg["controller"] = "null";
+	cfg["controller"] = side_controller::none;
 	//TODO: is this it? are there caches which must be cleared?
 	board_.teams().emplace_back();
 	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());

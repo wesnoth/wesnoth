@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,12 +21,13 @@
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "overlay.hpp"
+#include "side_controller.hpp"
 #include "sound_music_track.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
-#include <optional>
 
+#include <optional>
 #include <vector>
 class game_config_view;
 
@@ -44,8 +45,8 @@ struct editor_team_info {
 	int village_support;
 	bool fog;
 	bool shroud;
-	team::SHARE_VISION share_vision;
-	team::CONTROLLER controller;
+	team_shared_vision::type share_vision;
+	side_controller::type controller;
 	bool no_leader;
 	bool hidden;
 };

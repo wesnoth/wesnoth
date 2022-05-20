@@ -5,16 +5,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# GunChleoc, 2020
+# GunChleoc, 2021
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2021-06-14 09:33+0100\n"
-"Last-Translator: GunChleoc, 2020\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"PO-Revision-Date: 2022-01-13 19:14+0000\n"
+"Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Fon talamh"
@@ -68,10 +68,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " Tha comas-slànachaidh bunasach air an aonad seo."
+msgstr ""
+"Tha comas bunasach a thaobh slànachadh is cur maille air sgrèidheadh aig an "
+"aonad seo."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -103,34 +103,21 @@ msgstr ""
 "\n"
 "Gheibh aonad fo chùram an t-slànaigheir seo suas gu 8 PB sa chuairt air neo "
 "thèid stad a chur air puinsean fad cuairte.\n"
-"Cha ghabh aonad air puinseanachadh leigheas le slànaighear is feumaidh e "
+"Cha ghabh aonad air puinnseanachadh leigheas le slànaighear is feumaidh e "
 "cùram a shireadh ann am baile no le aonad lighiche."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "slànachadh +4"
+msgstr "slànachadh +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "slànachadh +4"
+msgstr "slànachadh +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -143,23 +130,19 @@ msgstr ""
 "Cuiridh an t-aonad seo eòlas luibheanach is draoidheach còmhla gus aonadan a "
 "shlànachadh nas luaithe na b’ urrainneadh air a’ bhlàr gu h-àbhaisteach.\n"
 "\n"
-"Gheibh aonad fo chùram an t-slànaigheir seo suas gu 8 PB sa chuairt air neo "
+"Gheibh aonad fo chùram an t-slànaigheir seo suas gu 12 PB sa chuairt air neo "
 "thèid stad a chur air puinsean fad cuairte.\n"
-"Cha ghabh aonad air puinseanachadh leigheas le slànaighear is feumaidh e "
+"Cha ghabh aonad air puinnseanachadh leigheas le slànaighear is feumaidh e "
 "cùram a shireadh ann am baile no le aonad lighiche."
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh is "
-"an leigheas bho phuinsean."
+"Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh, "
+"maille a chur air sgrèidheadh is an leigheas bho phuinsean."
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -181,11 +164,11 @@ msgstr "cùl-shàthadh"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
 msgid "Castle"
-msgstr ""
+msgstr "Caisteal"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
 msgid "Cave"
-msgstr ""
+msgstr "Uamh"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
@@ -208,9 +191,9 @@ msgid "cures"
 msgstr "leigheas"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
-msgstr ""
+msgstr "Dìon"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
@@ -246,22 +229,20 @@ msgid "+1 max HP"
 msgstr "+1 de PB as motha"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-#, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "ciad bhuille"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Flat"
-msgstr ""
+msgstr "Rèidh"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
 msgid "Forest"
-msgstr ""
+msgstr "Coille"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
 msgid "Frozen"
-msgstr ""
+msgstr "Reòthte"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
@@ -271,7 +252,7 @@ msgstr "fallain"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
 msgid "Hills"
-msgstr ""
+msgstr "Cnuic"
 
 #. [illuminates]: id=illumination
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
@@ -299,7 +280,7 @@ msgstr "gìomanach"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Badan balgain-bhuachair"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
@@ -311,7 +292,6 @@ msgstr "stalc-oidhche"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "plàigh"
 
@@ -328,13 +308,13 @@ msgid "regenerates"
 msgstr "ath-ghintinn"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:662
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
-msgstr ""
+msgstr "Comasan-seasaimh"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
 msgid "Sand"
-msgstr ""
+msgstr "Gainmhich"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
@@ -349,16 +329,15 @@ msgid "slows"
 msgstr "maille"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "seasmhach"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
-msgstr ""
+msgstr "Buillean"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
@@ -368,7 +347,7 @@ msgstr "bàthadh"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
 msgid "Swamp"
-msgstr ""
+msgstr "Boglach"
 
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
@@ -384,7 +363,7 @@ msgstr "closach"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"
-msgstr ""
+msgstr "Baile"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -393,13 +372,13 @@ msgstr "Deasaiche nam mapa ’s nan cnàmh-sgeulan"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 msgid "Terrain Editor"
 msgstr "Deasaiche crutha-thìre"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 msgid "Scenario Editor"
 msgstr "Deasaiche chnàmh-sgeulan"
 
@@ -591,13 +570,117 @@ msgid ""
 "the editor palette."
 msgstr ""
 
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Deprecated Terrain"
+msgstr "Cruth-tìre bunasach: "
+
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
+
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr "Inneal nan leubail"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -611,12 +694,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
 msgstr "Inneal nan nithean (sgeadachadh)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -631,12 +714,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr "Inneal seilbheadaireachd baile"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -651,12 +734,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr "Inneal aonaid"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -671,12 +754,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr "Raointean ainmichte"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -703,12 +786,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr "Manaidsear na liosta-cluiche"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -718,12 +801,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr "Deasaiche mapa/chnàmh-sgeulan"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -755,7 +838,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -781,7 +864,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -796,7 +879,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -805,7 +888,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -816,7 +899,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:277
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -831,14 +914,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:342
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -850,12 +933,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
 msgstr "Cleachd faidhle fa leth airson tachartasan WML"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -908,12 +991,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:336
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr "Cleachdadh masg an deasaiche"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:337
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -923,12 +1006,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:345
+#: data/core/editor/help.cfg:402
 msgid "ToD and Schedule Editor"
 msgstr "Deasaiche ama an latha ’s nan sgeideal"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:346
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -941,13 +1024,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:357
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr "Pailead an deasaiche"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -963,34 +1046,34 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:364
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
 msgstr "Seall gach seòrsa de chruth-tìre"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
-msgstr "Na seall uisge"
+msgstr "Na seall ach uisge"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
 msgstr "Na seall ach bailtean"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:377
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr "Fòrmat nam mapaichean Bheasnaidh"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Glèidhidh Beasnad na mapaichean aige ann am faidhlichean teacsa luim a "
 "ghabhas leughadh le daoine."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1021,7 +1104,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1041,7 +1124,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:401
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1054,7 +1137,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:405
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1075,14 +1158,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Fada fon talamh"
 
-#. [time]: id=indoors
 #. [editor_times]: id=indoors
+#. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Taobh a-staigh"
@@ -1095,18 +1178,18 @@ msgstr "Leabhar mòr-eòlais"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Cruinn-eòlas'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Mìosachan'</ref>\n"
+"<ref>dst='..geography' text='Cruinn-eòlas'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Mìosachan"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1272,59 +1355,6 @@ msgstr "An Rìoghachd Bheasnaid"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1723,8 +1753,8 @@ msgstr "A’ cluiche a’ gheama"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:438
-#: src/help/help_topic_generators.cpp:461
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "Feartan"
 
@@ -2577,16 +2607,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Linntean agus buidhnean ioma-chluicheadair'</header>"
+msgstr "<header>text='Ioma-chluicheadair is neo-dhèanamh'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2752,6 +2774,9 @@ msgid ""
 "\n"
 "<header>text='Unlikely reasons'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Adhbharan ainneamh'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
@@ -3084,7 +3109,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Cruinnean is eileapsan"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3114,26 +3139,18 @@ msgid ""
 "<italic>text='Under the Burning Suns'</italic>.\n"
 "• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
 "turn.\n"
-"    • During the ally’s own turn, their units will be shown with the green/"
-"yellow/red/white colors; however their moves, and the corresponding orb "
-"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
-"and Fog of War'</ref>.\n"
+"    • During the ally’s own turn, their units will be shown with the colors "
+"showing whether the units can still move and attack; however their moves, "
+"and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Eiteanan'</header>"
+msgstr "<header>text='Eileapsan'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3159,7 +3176,7 @@ msgstr ""
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Crùin is comharran dìlseachd"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -3201,17 +3218,6 @@ msgstr "Àm dhen latha"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -3229,8 +3235,8 @@ msgstr ""
 "is -25% dheth air an latha.\n"
 "– Tha aonadan <bold>text='neodrach'</bold> coma mu dhèidhinn an ama dhen "
 "latha\n"
-"– Nì aonadan <bold>text='stairsnich'</bold> -25% de dhochann an dà chuid air "
-"an oidhche is air an latha."
+"– Nì aonadan <bold>text='stairsnich'</bold> +25% de dhochann rè na "
+"camhanaich."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
@@ -3749,7 +3755,7 @@ msgstr ""
 "Gus sealltainn cò na crutha-tìre bunasach a tha cruth-tìre measgaichte "
 "stèidhichte air, cuir an luchag air an t-sia-cheàrnach aige agus thoir sùil "
 "air ìomhaigheagan a’ chrutha-thìre taobh deas aig a’ bharr (seo far a bheil "
-"e aig an ùrlar tùsail)."
+"e aig an ùrlar bhunaiteach)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:577
@@ -3955,7 +3961,7 @@ msgstr ""
 "Ri linn cluiche a’ gheama, co-obraichidh caochladh de chinnidhean an t-"
 "saoghail ann am buidhnean. Chaidh buidhnean a chur ri chèile le cuspair "
 "coitcheann ’s le meidh eatorra; mar eisimpleir, gheibh thu na prìomh "
-"bhuidhnean aig Beasnad san linn tùsail.\n"
+"bhuidhnean aig Beasnad san linn bhunaiteach.\n"
 "\n"
 "Sa mhodh <italic>text='Ioma-chluicheadair'</italic>, ’s urrainn dhut linn a "
 "thaghadh nuair a chruthaicheas tu geama ùr agus ’s urrainn dha na "
@@ -3999,7 +4005,7 @@ msgstr ""
 "\n"
 "’S e sgriobtaichean roghainneil a tha sna tuilleadain a bhios neo-"
 "eisimeileach bho chnàmh-sgeul no iomairt agus as urrainn dha na riaghailtean "
-"tùsail atharrachadh ann an iomadh dòigh. ’S urrainn dhut atharraichean a "
+"bunaiteach atharrachadh ann an iomadh dòigh. ’S urrainn dhut atharraichean a "
 "thaghadh ’s a rèiteachadh nuair a chruthaicheas tu geama ùr."
 
 #. [topic]: id=using_addons
@@ -4163,7 +4169,7 @@ msgstr "Àitheantan choitcheann"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:679 data/core/help.cfg:721 data/core/help.cfg:759
+#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -4180,6 +4186,19 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed.\n"
+"\n"
+msgstr ""
+"\n"
+"Tha seo coltach ris an àithne “fps” ach èignichidh e ath-tharraing air a h-"
+"uile rud seach air na nithean a dh’atharraich a-mhàin.\n"
+"\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:684
+msgid ""
+"\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
@@ -4188,7 +4207,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -4205,7 +4224,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:688
+#: data/core/help.cfg:691
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -4218,7 +4237,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4229,24 +4248,16 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
+#: data/core/help.cfg:697
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
 "values to a file in the userdata directory.\n"
 "\n"
 msgstr ""
-"\n"
-"Toglaich taisbeanadh nam frèam gach diog làithreach.\n"
-"\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:697
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4258,7 +4269,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4270,7 +4281,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4281,7 +4292,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4292,7 +4303,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4303,7 +4314,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4312,12 +4323,12 @@ msgstr ""
 "Sàbhail an geama is fàg an cnàmh-sgeul (gun mo bhrodadh)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:723
 msgid "Multiplayer Commands"
 msgstr "Àitheantan ioma-chluicheadair"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -4334,7 +4345,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4357,7 +4368,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:732
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4370,7 +4381,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4383,7 +4394,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4399,7 +4410,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4414,7 +4425,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4428,7 +4439,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4439,7 +4450,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4454,7 +4465,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4466,12 +4477,12 @@ msgstr ""
 "cleachdaiche air am mùchadh fhalamhachadh."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:761
 msgid "Debug Mode Commands"
 msgstr "Àitheantan a’ mhodh dhì-bhugachaidh"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4484,7 +4495,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4496,7 +4507,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4507,7 +4518,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4519,7 +4530,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4530,7 +4541,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4541,7 +4552,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4552,7 +4563,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4563,7 +4574,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4576,7 +4587,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4645,52 +4656,39 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Nì an t-aonad fèin-shlànachadh de 8 PB sa chuairt. Ma tha e puinseanaichte, "
+"Nì an t-aonad fèin-shlànachadh de 8 PB sa chuairt. Ma tha e puinnseanaichte, "
 "bheir e am puinsean air falbh an àite an t-slànachaidh."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "ath-ghintinn"
+msgstr "ath-ghintinn +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "ath-ghintinn"
+msgstr "ath-ghintinn +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Nì an t-aonad fèin-shlànachadh de 8 PB sa chuairt. Ma tha e puinseanaichte, "
+"Nì an t-aonad fèin-shlànachadh de 4 PB sa chuairt. Ma tha e puinnseanaichte, "
 "bheir e am puinsean air falbh an àite an t-slànachaidh."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Tha ath-ghintinn aig an aonad seo is slànaichidh e an-còmhnaidh mar an robh "
-"e ann am baile."
+"Nì an t-aonad seo fèin-shlànachadh gach cuairt ged nach buannaich e an t-"
+"uiread a gheibheadh e ann am baile."
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "seasmhach"
 
@@ -4706,45 +4704,32 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "fiaradh"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "ceannardas"
+msgstr "fiaradh"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" Ma tha nàmhaid an amais an taobh mu choinneamh an amais nuair a bheir an t-"
-"aonad seo ionnsaigh, faodaidh an t-aonad seo cùl-shàthadh a dhèanamh is "
-"dochann dùbailte adhbharachadh a’ snàgadh gu cùlaibh an nàmhad aige."
+"Ma tha nàmhaid an amais an taobh mu choinneamh an amais, faodaidh an t-aonad "
+"seo a h-aire a chur air fhiaradh is an teans bualaidh aice ìsleachadh le 20%."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" Ma tha nàmhaid an amais an taobh mu choinneamh an amais nuair a bheir an t-"
-"aonad seo ionnsaigh, faodaidh an t-aonad seo cùl-shàthadh a dhèanamh is "
-"dochann dùbailte adhbharachadh a’ snàgadh gu cùlaibh an nàmhad aige."
+"Ma tha nàmhaid an amais an taobh mu choinneamh an amais nuair a bheir an t-"
+"aonad seo ionnsaigh, faodaidh an t-aonad seo a h-aire a chur air fhiaradh is "
+"an teans bualaidh aice ìsleachadh."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -4754,21 +4739,15 @@ msgstr "ceannardas"
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better.\n"
+"This unit can lead other troops in battle.\n"
 "\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
+"All adjacent lower-level units from the same side deal 25% more damage for "
+"each difference in level."
 msgstr ""
-"Tha ùghdarras aig an aonad seo air na h-aonadan agad fhèin is a tha faisg "
-"air ach an sabaid iad nas fhearr.\n"
+"Stiùirichidh an t-aonad seo saighdearan eile air a’ bhlàr.\n"
 "\n"
-"Nì na h-aonadan ri thaobh aig a bheil rang nas lugha barrachd dochainn sa "
-"chath. Nuair a bhios aonad dìreach ri taobh aonaid aig a bheil ceannardas is "
-"rang nas àirde, nì e 25% a bharrachd de dhochann airson gach rang de dhiofar "
-"eadar e fhèin is an t-aonad aig a bheil ceannardas."
+"Nì gach aonad ìosal an aon taoibh a tha mu chuairt 25% dhe dhochann a "
+"bharrachd do gach diofar an leibheilean."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -4842,24 +4821,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
 msgid "burrow"
-msgstr ""
+msgstr "cladhadh"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "slaodach"
+msgstr "cladhadh"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4868,11 +4838,14 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"’S urrainn don aonad seo fhalach sa choille ach nach faic na nàimhdean e.\n"
+"’S urrainn don aonad seo fhalach sa choille no ghainmheach ma tha e ’na "
+"thàmh (’s e seo nach do ghluais e fad cuairte) ach nach faic na nàimhdean "
+"e.\n"
 "\n"
-"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e sa choille ach "
-"nuair a bhios aonad aig an nàmhaid dìreach ri thaobh. Caillidh a’ chiad "
-"aonad nàmhad a chì e a h-uile gluasad a bhiodh air fhàgail dha."
+"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e ’na thàmh sa "
+"choille no gainmhich ach nuair a bhios aonad aig an nàmhaid dìreach ri "
+"thaobh. Caillidh a’ chiad aonad nàmhad a chì e a h-uile gluasad a bhiodh air "
+"fhàgail dha."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:325
@@ -4976,7 +4949,7 @@ msgstr ""
 "obraich seo an aghaidh aonadan closach no ann am baile."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -5024,20 +4997,16 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "dì-threòradh"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
 msgstr ""
-"Nuair a bheir an t-aonad ionnsaigh, bidh seans de 60% air a char as lugha "
-"ann gum buail e gu soirbheachail."
+"Nuair a bhios an t-aonad ’ga dhìon fhèin, ìslichidh seo seans an nàmhaid gum "
+"buail e air le 10%."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -5045,6 +5014,8 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Ìslichidh ceàrd-dìona an aonaid seo an seans gun soirbhich le ionnsaigh "
+"nàmhad."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5086,7 +5057,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "ceapadh"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
@@ -5094,12 +5065,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Cuiridh an ionnsaigh seo seasamh dìonach math air an aonad agus ceapaidh e "
+"cuid dhen dochann a bheireadh buille nàmhad air."
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"’S urrainn dhan aonad seo buillean an nàmhad a bhacadh ach nach fhulaing e "
+"uiread a dhochann nuair a thèid bualadh air."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -5326,345 +5301,235 @@ msgstr "An dorchadas fada (3)"
 msgid "The Long Dark (4)"
 msgstr "An dorchadas fada (4)"
 
-#: data/core/macros/special-notes.cfg:12
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
+#: data/core/macros/special-notes.cfg:10
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Tha comas-seasaimh neo-àbhaisteach aig spioradan an aghaidh dochainn is "
+"Tha comas-seasaimh neo-àbhaisteach aig spioradan an aghaidh dochainn is "
 "gluaisidh iad gu slaodach thar uisgeachan fosgailte."
 
-#: data/core/macros/special-notes.cfg:15
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
+#: data/core/macros/special-notes.cfg:13
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Nì an ionnsaigh dhìomhair aig an aonad seo droch dhochann air creutairean "
+"Nì an ionnsaigh dhìomhair aig an aonad seo droch dhochann air creutairean "
 "draoidheach is fiù ’s cuid dheth air creutairean àbhaisteach."
 
-#: data/core/macros/special-notes.cfg:22
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
+#: data/core/macros/special-notes.cfg:20
 msgid "This unit is capable of basic healing."
-msgstr " Tha comas-slànachaidh bunasach air an aonad seo."
+msgstr "Tha comas-slànachaidh bunasach air an aonad seo."
 
-#: data/core/macros/special-notes.cfg:25
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
+#: data/core/macros/special-notes.cfg:23
 msgid "This unit is capable of rapid healing."
-msgstr " Tha comas-slànachaidh luath air an aonad seo."
+msgstr "Tha comas-slànachaidh luath air an aonad seo."
 
-#: data/core/macros/special-notes.cfg:28
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
+#: data/core/macros/special-notes.cfg:26
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh is "
-"an leigheas bho phuinsean."
+"Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh is an "
+"leigheas bho phuinsean."
 
-#: data/core/macros/special-notes.cfg:31
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Tha an t-aonad seo comasach air na buaidhean aig puinsean a thoirt air "
-"falbh bho aonadan mu chuairt."
+"Tha an t-aonad seo comasach air na buaidhean aig puinsean a thoirt air falbh "
+"bho aonadan mu chuairt."
 
-#: data/core/macros/special-notes.cfg:34
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Tha ath-ghintinn aig an aonad seo is slànaichidh e an-còmhnaidh mar an robh "
+"Tha ath-ghintinn aig an aonad seo is slànaichidh e an-còmhnaidh mar an robh "
 "e ann am baile."
 
-#: data/core/macros/special-notes.cfg:37
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
+#: data/core/macros/special-notes.cfg:35
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" Lùghdaichidh seasmhachd an aonaid seo an dochann bho cuid a "
-"dh’ionnsaighean, ach a-mhàin nuair a bhios e a’ dìon."
+"Lùghdaichidh seasmhachd an aonaid seo an dochann bho cuid a dh’ionnsaighean, "
+"ach a-mhàin nuair a bhios e a’ dìon."
 
-#: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
+#: data/core/macros/special-notes.cfg:38
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Leigidh an ceannardas aig an aonad seo leis na h-aonadan mu chuairt a "
-"leanas an aon taobh barrachd dochainn a thoirt seachad ann an sabaid, ged "
-"nach obraich seo ach do dh’aonadan air ìre ìosal."
+"Leigidh an ceannardas aig an aonad seo leis na h-aonadan mu chuairt a leanas "
+"an aon taobh barrachd dochainn a thoirt seachad ann an sabaid, ged nach "
+"obraich seo ach do dh’aonadan air ìre ìosal."
 
-#: data/core/macros/special-notes.cfg:43
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Tha an t-aonad seo eòlach air streupaireachd is faodaidh e raon-smachd a "
+"Tha an t-aonad seo eòlach air streupaireachd is faodaidh e raon-smachd a "
 "nàimhdean fhàgail don dàrna taobh is gluasad mu thimcheall orra gun bhacadh."
 
-#: data/core/macros/special-notes.cfg:46
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
+#: data/core/macros/special-notes.cfg:44
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr " Cuiridh soillseachadh solas a bharrachd air na raointean mun cuairt."
+msgstr "Cuiridh soillseachadh solas a bharrachd air na raointean mun cuairt."
 
-#: data/core/macros/special-notes.cfg:49
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
+#: data/core/macros/special-notes.cfg:47
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" ’S urrainn don aonad seo gluasad a chleachdadh gus tele-phortadh eadar dà "
+"’S urrainn don aonad seo gluasad a chleachdadh gus tele-phortadh eadar dà "
 "bhaile falamh a tha fo ùghdarras an taobh aige."
 
-#: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Ann an coilltean, air sàilleibh a sgil fàtha chan fhaic nàimhdean an t-"
-"aonad seo mus eil e dìreach ri an taobh no mus tàinig e am follais le "
-"ionnsaigh."
+"Ann an coilltean, air sàilleibh a sgil fàtha chan fhaic nàimhdean an t-aonad "
+"seo mus eil e dìreach ri an taobh no mus tàinig e am follais le ionnsaigh."
 
-#: data/core/macros/special-notes.cfg:55
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
+#: data/core/macros/special-notes.cfg:53
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr " ’S urrainn dhan aonad seo falach air an oidhche gun lorgan air."
+msgstr "’S urrainn dhan aonad seo falach air an oidhche gun lorgan air."
 
-#: data/core/macros/special-notes.cfg:58
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" ’S urrainn don aonad seo falach ann am bailtean (ach bailtean uisge) is a "
+"’S urrainn don aonad seo falach ann am bailtean (ach bailtean uisge) is a "
 "chumail neo-mhothaichte le a nàimhdean ach an fheadhainn dìreach ri thaobh."
 
-#: data/core/macros/special-notes.cfg:61
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" ’S urrainn don aonad seo a ghluasad ann an uisge domhainn is chan fhaic "
+"’S urrainn don aonad seo a ghluasad ann an uisge domhainn is chan fhaic "
 "duine e, gun fheum air adhar bhon uachdar."
 
-#: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Gheibh an t-aonad seo 1 phuing-bheatha as motha a bharrachd gach turas a "
+"Gheibh an t-aonad seo 1 phuing-bheatha as motha a bharrachd gach turas a "
 "mharbhas e aonad beò."
 
-#: data/core/macros/special-notes.cfg:67
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Gach turas a ghabhas an t-aonad seo mire-chatha, leanaidh e air a’ toirt "
+"Gach turas a ghabhas an t-aonad seo mire-chatha, leanaidh e air a’ toirt "
 "ionnsaigh gus am bi e fhèin no a nàmhaid marbh."
 
-#: data/core/macros/special-notes.cfg:70
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Ma tha nàmhaid an amais an taobh mu choinneamh an amais nuair a bheir an t-"
+"Ma tha nàmhaid an amais an taobh mu choinneamh an amais nuair a bheir an t-"
 "aonad seo ionnsaigh, faodaidh an t-aonad seo cùl-shàthadh a dhèanamh is "
 "dochann dùbailte adhbharachadh a’ snàgadh gu cùlaibh an nàmhad aige."
 
-#: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Èiridh an fheadhainn a chailleas am beatha don phlàigh a-rithist ’nan "
+"Èiridh an fheadhainn a chailleas am beatha don phlàigh a-rithist ’nan "
 "closach mura h-eil iad ’nan seasamh ann am baile."
 
-#: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Tha an t-aonad seo comasach air maille a thoirt air a nàimhdean gus nach "
+"Tha an t-aonad seo comasach air maille a thoirt air a nàimhdean gus nach "
 "bhith ach leth-phàirt den astar is dochann ionnsaighe aca gu deireadh na "
 "cuairte."
 
-#: data/core/macros/special-notes.cfg:79
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Nì an comas gus an fheadhainn beò a reòthadh an t-aonad seo glè chunnartach."
+"Nì an comas gus an fheadhainn beò a reòthadh an t-aonad seo glè chunnartach."
 
-#: data/core/macros/special-notes.cfg:82
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" Leigidh gìomanachd an aonaid seo leis nàimhdean a bhualadh le deagh sheans, "
+"Leigidh gìomanachd an aonaid seo leis nàimhdean a bhualadh le deagh sheans, "
 "ach a-mhàin nuair a bheir e fhèin ionnsaigh."
 
-#: data/core/macros/special-notes.cfg:85
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Tha ionnsaighean draoidheach aig an aonad seo aig a bheil an-còmhnaidh "
-"deagh sheans bualaidh air an nàmhaid."
+"Tha ionnsaighean draoidheach aig an aonad seo aig a bheil an-còmhnaidh deagh "
+"sheans bualaidh air an nàmhaid."
 
-#: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Caillidh ionnsaighean sgaotha an aonaid seo pàirt den cumhachd aca nuair a "
+"Caillidh ionnsaighean sgaotha an aonaid seo pàirt den cumhachd aca nuair a "
 "thèid a bhuill a leònadh."
 
-#: data/core/macros/special-notes.cfg:91
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Le ionnsaigh brùchdaidh, nì is gheibh thu dà uimhir de dhochann. Cha toir "
+"Le ionnsaigh brùchdaidh, nì is gheibh thu dà uimhir de dhochann. Cha toir "
 "seo buaidh air dìoladh dìona."
 
-#: data/core/macros/special-notes.cfg:94
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
+#: data/core/macros/special-notes.cfg:92
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-" Ann an sabaid, ’s urrainn dhan aonad seo beatha a shùgh air falbh bho "
+"Ann an sabaid, ’s urrainn dhan aonad seo beatha a shùgh air falbh bho "
 "ìobairtean gus e fhèin a shlànachadh."
 
-#: data/core/macros/special-notes.cfg:97
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
+#: data/core/macros/special-notes.cfg:95
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-" Leigidh faide an airm aig an aonaid seo leis bualadh an toiseach ann an "
-"cath dlùth, fiù ’s nuair a bhios e ’ga dhìon fhèin."
+"Leigidh faide an airm aig an aonaid seo leis bualadh an toiseach ann an cath "
+"dlùth, fiù ’s nuair a bhios e ’ga dhìon fhèin."
 
-#: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
+#: data/core/macros/special-notes.cfg:98
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Gabhaidh na h-ìobairtean aig puinsean an aonaid seo dochann gu cunbhalach "
+"Gabhaidh na h-ìobairtean aig puinsean an aonaid seo dochann gu cunbhalach "
 "gus tèid an leigheas ann am baile no le aonad aig a bheil leigheas."
 
-#: data/core/macros/special-notes.cfg:103
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
+#: data/core/macros/special-notes.cfg:101
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-" Tha cuingeachadh dìona air an aonad seo a thaobh cruthan-tìre sònraichte – "
+"Tha cuingeachadh dìona air an aonad seo a thaobh cruthan-tìre sònraichte – "
 "chan fhaigh e rangachadh dìona nas motha air cruthan-tìre measgaichte aig "
 "bheil cruthan-tìre dhen leithid."
+
+#: data/core/macros/special-notes.cfg:116
+#: src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
+msgid "Special Notes:"
+msgstr "Nòtaichean sònraichte:"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6273,6 +6138,73 @@ msgstr "Dràic"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#| "armor- and weapon-smithing, but neither know nor need other science and "
+#| "culture besides this. Nonetheless, the few implements they do fashion are "
+#| "almost unrivaled in quality, only matched by those produced in the finest "
+#| "Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#| "Death in battle is the most preferred way for a drake to leave this "
+#| "world. Unlike the elder members of other races, drakes naturally grow "
+#| "more aggressive and reckless towards the ends of their natural lives, "
+#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6282,15 +6214,13 @@ msgid ""
 "quickly. However, their sheer weight and bulk limits their flight ability "
 "somewhat, making them ungainly in the air. Where possible, they make use of "
 "terrain features such as hills, mountains and trees as launch points in "
-"order to gain greater height and speed. Fortunately for their enemies, they "
-"are still quite clumsy creatures and surprisingly slow in combat. This, "
-"combined with their large size, renders them easy targets for those who dare "
-"attack them.\n"
+"order to gain greater height and speed. Fortunately for their enemies, their "
+"large size renders them easy targets for those who dare attack them.\n"
 "\n"
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -6321,11 +6251,10 @@ msgid ""
 "in quality, only matched by those produced in the finest Dwarvish "
 "foundries.\n"
 "\n"
-"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-"Death in battle is the most preferred way for a drake to leave this world. "
-"Unlike the elder members of other races, drakes naturally grow more "
-"aggressive and reckless towards the ends of their natural lives, perhaps to "
-"help ensure their place in the heroic legends of their kind.\n"
+"Drakes hatch from eggs and may live naturally for several decades, although "
+"some have been known to survive for longer. However, death in battle is the "
+"most preferred way for a drake to leave this world. As such, most drakes do "
+"not live to see the end of their natural lifespan.\n"
 "\n"
 "<header>text='Geography'</header>\n"
 "Drakes originated from an archipelago of volcanic islands called "
@@ -6722,35 +6651,29 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Gille-dubh"
+msgstr "Each"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ban-duin’-itheach"
+msgstr "Each"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Gillean-dubha"
+msgstr "Eich"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
-"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"to sturdy draught horses or agile stock horses. While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
 "the wild, alongside their wild brethren.\n"
 "\n"
 "Horses have been an important part of many civilizations, so it is not "
-"surprising that there are many myths and stories centered around them.  "
+"surprising that there are many myths and stories centered around them. "
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
@@ -7389,6 +7312,43 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"’S e creutairean àrsaidh a th’ anns na athaich, aon de na slòigh as sine air "
+"a bheil sin eòlach a tha a’ fuireach air a’ Mhòr-thìr Fharsaing. Iad iad "
+"mòr, slaodach is caran dùr is bith beathannan uabhasach fada aca ann an "
+"uamhan domhainn no air mullach nan àrd-bheann. Tha bith annasach ’nam broinn "
+"a chumas beò is a shlànaicheas iad. Mar thoradh air seo, tha am beathannan "
+"gu tur eadar-dhealaichte bho bheatha creutair sam bith eile. Chan eil mòran "
+"a dhìth air athaich: chan eil iad feumach ach air beagan bìdh is uisge is "
+"mar sin chan eil iad an toir air dad ach an dìon iad iad fhèin bhon "
+"fheadhainn a bheireadh ionnsaigh orra. Mar sin, chan eil mòran dragh orra is "
+"cuiridh iad seachad am beatha ’nan cadal no a’ meòmhrachadh. Tha dàimh "
+"iongantach aca ris an t-saoghal nàdarra. Chan eil iad dàimheach ri "
+"creutairean beò mar a tha na sìthichean ach seadh ris an talamh is a’ "
+"chloich. Tha iad caran feòrachail a thaobh an t-saoghail timcheall orra is "
+"’s toil le cuid a chuileanan òga siubhal is an saoghal fhaicinn. Nuair a "
+"dh’fhàsas athach nas sine, fàsaidh e nas maille is caillidh e ùidh san "
+"àrainneachd is cumaidh e seachad barrachd ùine ’na chadal ann an oisean "
+"socair na h-uamha dachaigh aige. Rè ùine, thèid a bodhaig ’na h-ìomhaigh "
+"cloiche nuair a theannas am bàs air.\n"
+"\n"
+"Cha chreid mòran nach e ach sluagh eile de bhiastan borba a th’ anns na h-"
+"athaich. Sgaoilidh na deamhain am bheachd meallta cumanta seo air sgàth ’s "
+"gun cuidich am beachd seo gun gabh na h-athaich sna h-airm aca. Bhon a tha "
+"iad caran dùr is cha tuig iad dòighean nan sluagh eile no chan urrainn "
+"dhaibh fiù ’s an aithneachadh bho càch a chèile, bidh e furasta do buidheann "
+"de dheamhain mar as trice gun dearbh iad air buidheann de dh’athaich gun "
+"toireadh iad taic dhaibh gus dìoghaltas a ghabhail an aghaidh na feadhna a "
+"shealg iad roimhe. Innsidh na deamhain don fheadhainn air an ùr-thrusadh an "
+"uairsin cò air a bu chòir iad ionnsaigh a thoirt is ’s e nàmhaid nan "
+"deamhain a bhios ann, nàmhaid nan athach ann no às. Mar sin, cuiridh iad ri "
+"nàimhdean nan athach air am mealladh. Is na troichean na nàimhdean as "
+"cumanta aig na h-athaich is tha an nàimhdeas air a mhairsinn bho linntean "
+"mòra.\n"
+"\n"
+"<header>text='Cruinn-eòlas'</header>\n"
+"Bha athaich a’ fuireach ann am beanntan na Mòr-thìre Farsaing mus tàinig na "
+"troichean ann. Chithear athaich gu tric air a’ mhonadh gu tuath is ear air "
+"Beasnad agus àite sam bith a shiubhlas buidhnean de dheamhan."
 
 #. [race]: id=undead
 #: data/core/units.cfg:376
@@ -7408,31 +7368,6 @@ msgstr "Closaich"
 #. [race]: id=undead
 #: data/core/units.cfg:379
 #, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7612,345 +7547,214 @@ msgstr ""
 "gun diù air tachartasan ann an saoghail càich agus cha ghluais e mus tig an "
 "àm an saoghal nàdarra agus na coilltean-dachaigh aige a dhìon."
 
-#: src/help/help.cpp:212
+#: src/help/help.cpp:213
 msgid "Close"
 msgstr "Dùin"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:216
 msgid "Help"
-msgstr ""
+msgstr "Cobhair"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
+#: src/help/help.cpp:270 src/help/help.cpp:274
 msgid "Parse error when parsing help text:"
-msgstr "Mearachd parsaidh le parsadh an teacsa taice: "
+msgstr "Mearachd parsaidh le parsadh an teacsa taice:"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
-msgstr ""
+msgstr "An fheadhainn as fhearr à"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
+msgstr "An fheadhainn as miosa à"
+
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:156
-#, fuzzy
-#| msgid "Terrains"
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr ""
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr ""
+
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
-msgstr "Cruthan-tìre"
+msgstr "Cruth-tìre bunasach: "
 
-#: src/help/help_topic_generators.cpp:176
+#: src/help/help_topic_generators.cpp:214
 msgid "Movement properties: "
-msgstr ""
+msgstr "Buadhan gluasaid: "
 
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
-msgstr ""
+msgstr "Buadhan dìona: "
 
-#: src/help/help_topic_generators.cpp:260
+#: src/help/help_topic_generators.cpp:298
 msgid "Level"
-msgstr ""
+msgstr "Rang"
 
-#: src/help/help_topic_generators.cpp:321
-#, fuzzy
-#| msgid "Advancement"
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
-msgstr "Àrdachadh"
+msgstr "Àrdaichidh e bho: "
 
-#: src/help/help_topic_generators.cpp:323
-#, fuzzy
-#| msgid "Advancement"
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances to: "
-msgstr "Àrdachadh"
+msgstr "Àrdaichidh e gu: "
 
-#: src/help/help_topic_generators.cpp:352
+#: src/help/help_topic_generators.cpp:390
 msgid "Base unit: "
-msgstr ""
+msgstr "Aonad bunasach: "
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:395
 msgid "Base units: "
-msgstr ""
+msgstr "Aonadan bunasach: "
 
-#: src/help/help_topic_generators.cpp:375
+#: src/help/help_topic_generators.cpp:413
 msgid "Variations: "
-msgstr ""
+msgstr "Caochlaidhean: "
 
-#: src/help/help_topic_generators.cpp:399
-#, fuzzy
-#| msgid "race^Merman"
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
-msgstr "Duine-mara"
+msgstr "Measgaichte"
 
-#: src/help/help_topic_generators.cpp:401
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
-msgstr ""
+msgstr "Cinneadh: "
 
-#: src/help/help_topic_generators.cpp:471
-#, fuzzy
-#| msgid "Abilities"
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
-msgstr "Comasan"
+msgstr "Comasan: "
 
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "Àrdachadh chomasan: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:565
 msgid "HP:"
-msgstr ""
+msgstr "PB:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:569
 msgid "Moves:"
-msgstr ""
+msgstr "Gluasadan:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
-msgstr ""
+msgstr "Lèirsinn:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:542
+#: src/help/help_topic_generators.cpp:580
 msgid "Jamming:"
-msgstr ""
+msgstr "Casg:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:547
+#: src/help/help_topic_generators.cpp:585
 msgid "Cost:"
-msgstr ""
+msgstr "Cosgais:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:551
+#: src/help/help_topic_generators.cpp:589
 msgid "Alignment:"
-msgstr ""
+msgstr "Co-thaobhadh:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:596
 msgid "Required XP:"
-msgstr ""
+msgstr "Feum air PE:"
 
-#: src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"An aire gu sònraichte:"
-
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Ionnsaighean"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
-msgstr ""
+msgstr "Ainm"
 
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
-msgstr ""
+msgstr "Astar"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
-msgstr ""
+msgstr "Seòrsa"
 
-#: src/help/help_topic_generators.cpp:584
-#, fuzzy
-#| msgid "Weapon Specials"
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
-msgstr "Ionnsaighean sònraichte"
+msgstr "Sònraichte"
 
-#: src/help/help_topic_generators.cpp:666
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
-msgstr ""
+msgstr "Seòrsa na h-ionnsaighe"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
-msgstr ""
+msgstr "Comas-seasaimh"
 
-#: src/help/help_topic_generators.cpp:696
-#, fuzzy
-#| msgid "Terrain Editor"
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
-msgstr "Deasaiche crutha-thìre"
+msgstr "Atharraichearan crutha-thìre"
 
-#: src/help/help_topic_generators.cpp:700
-#, fuzzy
-#| msgid "Terrains"
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
-msgstr "Cruthan-tìre"
+msgstr "Cruth-tìre"
 
-#: src/help/help_topic_generators.cpp:702
-#, fuzzy
-#| msgid "Movement"
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
-msgstr "Gluasad"
+msgstr "Cosgais ghluasaid"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
-msgstr ""
+msgstr "An dìon as motha"
 
-#: src/help/help_topic_generators.cpp:711
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
-msgstr ""
+msgstr "Cosgais lèirsinne"
 
-#: src/help/help_topic_generators.cpp:715
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
-msgstr ""
-
-#~ msgid "Orbs"
-#~ msgstr "Cruinnichean"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "Tha cruinne os cionn a’ bhàir-lùiths a chì thu ri taobh gach aonaid. "
-#~ "Airson aonadan fo do smachd, tha an cruinne seo:"
-
-#~ msgid " green if it hasn’t moved this turn,"
-#~ msgstr " uaine mura h-eil an t-aonad air gluasad sa chuairt seo,"
-
-#~ msgid " yellow if it has moved, but could still move further or attack, or"
-#~ msgstr ""
-#~ " buidhe ma tha e air gluasad, ach ma tha gluasad no ionnsaigh air fhàgail "
-#~ "dha, no"
-
-#~ msgid ""
-#~ " red if it can no longer move or attack, or the user ended the unit’s "
-#~ "turn."
-#~ msgstr ""
-#~ " dearg mura ’s urrainn dha gluasad no ionnsaigh a thoirt tuilleadh, no ma "
-#~ "chuir an cleachdaiche crìoch air cuairt an aonaid."
-
-#~ msgid " blue if the unit is an ally you do not control."
-#~ msgstr " gorm mas e caidreabhach a th’ ann air nach eil smachd agad."
-
-#~ msgid " Enemy units have no orb on top of their energy bar."
-#~ msgstr " Chan eil cruinne os cionn a’ bhàir-lùiths aig aonadan nàmhad."
-
-#~ msgid ""
-#~ "\n"
-#~ "Set or toggle player on side between human and AI player. The player/"
-#~ "client who controls that side needs to issue this command. If no second "
-#~ "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
-#~ "AI controller. If it is ‘off’ set a human controller. Defaults to the "
-#~ "currently active side if no parameter is supplied.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Suidhich no toglaich cluicheadair aig an taobh <italic>text='side'</"
-#~ "italic> eadar cluicheadair daonna is IF. Feumaidh an cluicheadair/cliant "
-#~ "aig a bheil smachd air an taobh sin an àithne a chur seachad. Mur cuir "
-#~ "thu am paramadair mu dheireadh ann, toglaichidh seo eadar duine is IF. "
-#~ "Mas e “on” a th’ ann, suidhichidh seo smachdaichear IF. Mas e “off” a th’ "
-#~ "ann, suidhichidh seo smachdaichear daonna. Thèid an taobh a bhios "
-#~ "gnìomhach aig an àm a chleachdadh mur sònraich thu paramadair.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
-#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
-#~ "Wesmere in the northwest, and the great northern woods of which the "
-#~ "Lintanir Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "An coimeas ris a’ chinne-daonna, tha sìthichean beagan nas àirde is nas "
-#~ "sùbailte ach chan eil iad cho bunanta. Tha na cluasan aca rud beag "
-#~ "biorach is tha craiceann is falt bàn orra mar as trice. ’S e am beatha "
-#~ "fada aig na sìthichean an diofar as fhollaisiche eatorra is a’ chinne-"
-#~ "daonna – bidh a’ mhòrchuid dhiubh beò fad dà linn gu leth mura faigh iad "
-#~ "bàs le tinneas, tubaist no cogadh. Fhad ’s a tha comas draoidheach "
-#~ "iongantach aig cuid dhiubh a mhaireas beò fiù ’s linn nas fhaide, fàsaidh "
-#~ "a’ mhòrchuid de na sìthichean breòite nuair a bhios iad eadar 250 is 300 "
-#~ "bliadhna a dh’aois is caochlaidh iad gu luath (an dèidh bliadhna no dhà) "
-#~ "an uair sin.\n"
-#~ "\n"
-#~ "Tha co-dhiù beagan draoidheachd am broinn gach sìthiche gu nàdarra. Ged "
-#~ "nach bi a’ mhòrchuid dhiubh comasach air a cleachdadh a rèir an toil "
-#~ "fhèin, bheir a làthaireachd mothachadh geur is beatha fada dhaibh. Tha "
-#~ "tàlantan co-cheangailte ri draoidheachd aig mòran shìthichean a leithid "
-#~ "gìomanachd no teòmachd a leigeas leotha gnìomhan a choileanadh a bhiodh "
-#~ "iongantach don chinne-daonna. Faodaidh na sìthichean a dh’ionnsaicheas "
-#~ "mar a chleachdar a’ chumhachd seo ann an dòighean nas fharsainge fàs "
-#~ "eagalach math oirre. Roghnaichidh mòran dhiubh an tàlant aca a "
-#~ "chleachdadh gus càch a shlànachadh.\n"
-#~ "\n"
-#~ "Fàsaidh cuid de na sìthichean a ghabhas slighe na draoidheachd so-leònta "
-#~ "an aghaidh làthaireachd iarrainn fhuair is faodaidh gun tèid fiù ’s an "
-#~ "losg leis. Tha beul-aithris nan sìthichean ag innse dhuinn gum biodh seo "
-#~ "nas cumanta bho chionn aimsir.\n"
-#~ "\n"
-#~ "Cuiridh na sìthichean mòran den ùine aca seachad a’ toirt gleus air na "
-#~ "sgilean is tàlantan aca. Obraichidh an fheadhainn aig nach eil comas "
-#~ "draoidheachd air na sgilean corporra aca. Mar thoradh air seo, tha na "
-#~ "sìthichean uabhasach math air boghadaireachd is ’s e seo am modh cogaidh "
-#~ "as cudromaiche a th’ aca, ’s dòcha. Bidh bogha aig a’ mhòrchuid a "
-#~ "shaighdearan is chan eil cinneadh sam bith eile cho luath is amaiseach "
-#~ "leis an cuid boghadaireachd. Tha gràdh mòr aig a h-uile sìthiche air an "
-#~ "nàdar neo-mhillte. Gu tric, bidh iad mì-chofhurtail ann an àiteachan "
-#~ "fosgailte gun lusan. Tha a’ mhòrchuid dhiubh a’ fuireach ann an coilltean "
-#~ "na Mòr-thire Farsainge; ann an Coille Aidhean san iar-dheas, ann an "
-#~ "Coille Loch Bheasa san iar-thuath is sna coilltean mòra an taoibh "
-#~ "thuaith, Coille Liontainir ’nam measg.\n"
-#~ "\n"
-#~ "’S e an cinneadh as sine air an tìr-mhòr a th’ anns na sìthichean seach "
-#~ "na h-athaich ’s dòcha. Cha ghabh aois chinnteach a chur air a’ mhòrchuid "
-#~ "de na tuineachaidhean aca ach tha mòran dhiubh nas sine na mìle bliadhna "
-#~ "gun teagamh."
-
-#~ msgid "This race does not have a description yet."
-#~ msgstr "Chan eil tuairisgeul airson a’ chinnidh seo ann fhathast."
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Cobhair aig Strì Bheasnaid"
+msgstr "Cosgais caisg"

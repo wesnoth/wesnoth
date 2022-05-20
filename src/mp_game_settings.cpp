@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -54,8 +54,8 @@ mp_game_settings::mp_game_settings() :
 	allow_observers(true),
 	private_replay(false),
 	shuffle_sides(false),
-	saved_game(SAVED_GAME_MODE::NONE),
-	random_faction_mode(RANDOM_FACTION_MODE::DEFAULT),
+	saved_game(saved_game_mode::type::no),
+	mode(random_faction_mode::type::independent),
 	options(),
 	addons()
 {}
@@ -85,8 +85,8 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, allow_observers(cfg["observer"].to_bool())
 	, private_replay(cfg["private_replay"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
-	, saved_game(cfg["savegame"].to_enum<SAVED_GAME_MODE>(SAVED_GAME_MODE::NONE))
-	, random_faction_mode(cfg["random_faction_mode"].to_enum<RANDOM_FACTION_MODE>(RANDOM_FACTION_MODE::DEFAULT))
+	, saved_game(saved_game_mode::get_enum(cfg["savegame"].str()).value_or(saved_game_mode::type::no))
+	, mode(random_faction_mode::get_enum(cfg["random_faction_mode"].str()).value_or(random_faction_mode::type::independent))
 	, options(cfg.child_or_empty("options"))
 	, addons()
 {
@@ -124,8 +124,8 @@ config mp_game_settings::to_config() const
 	cfg["observer"] = allow_observers;
 	cfg["private_replay"] = private_replay;
 	cfg["shuffle_sides"] = shuffle_sides;
-	cfg["random_faction_mode"] = random_faction_mode;
-	cfg["savegame"] = saved_game;
+	cfg["random_faction_mode"] = random_faction_mode::get_string(mode);
+	cfg["savegame"] = saved_game_mode::get_string(saved_game);
 	cfg.add_child("options", options);
 
 	for(auto& p : addons) {

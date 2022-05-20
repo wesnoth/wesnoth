@@ -98,6 +98,9 @@ wesnothd をデーモンとして実行する。
 \fBconnections_allowed\fP
 同じ IP から許可される接続数。 \fB0\fP は無限大を意味する。(既定値: \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+\fBuser_handler\fP に登録されていないユーザーのログインを拒否する。（デフォルト：false）
+.TP 
 \fBdisallow_names\fP
 サーバーによって受けつけられない名前やニックネーム。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
 を参照。既定の値(何も指定されなかった際に使用される)は
@@ -136,20 +139,30 @@ wesnothd をデーモンとして実行する。
 \fBsave_replays\fP
 サーバーが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 カンマで区切られた、サーバーに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
 wesnoth のバージョンに一致する)
 .br
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS グローバルタグ:
 .
 .P
-\fB[redirect]\fP クライアントのバージョンでリダイレクトするサーバーを指定するためのタグ。
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -179,49 +192,48 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 \fB[redirect]\fP と同じキーを受けつける。
 .RE
 .P
-\fB[user_handler]\fP でユーザーハンドラを指定する。利用可能なキーは \fBuser_handler\fP
-キーに設定されているユーザーハンドラによって変化する。もし \fB[user_handler]\fP
-セクションが設定中に存在しなければ、サーバーはニックネーム登録サービスなしで実行される。\fBforum_user_handler\fP
-の動作に必要とされるすべての追加テーブルは、Wesnoth のソースリポジトリの table_definitions.sql で見つけることができる。
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+データベースサーバーのホスト名
 .TP 
 \fBdb_name\fP
-The name of the database
+データベース名
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+データベースにログインするユーザーの名前
 .TP 
 \fBdb_password\fP
-This user's password
+ユーザーのパスワード
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbbフォーラムがユーザーデータを保存するテーブル名。<table\-prefix>_users
+（例：phpbb3_users）である可能性が高い。
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+ユーザーに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+ゲームに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+ゲーム内プレイヤーに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+ゲームで使用されるMODに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+ユーザーグループデータをphpbbフォーラムが保存するテーブル名。<table\-prefix>_user_group
+（例：phpbb3_user_group）である可能性が高い
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+モデレーション権限を持つフォーラムグループのID。
 .RE
 .
 .SH 終了ステータス

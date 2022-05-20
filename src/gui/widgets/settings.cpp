@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,13 +51,15 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	CVideo& vid = CVideo::get_singleton();
-	const SDL_Rect rect = vid.screen_area();
+	CVideo& video = CVideo::get_singleton();
+	const SDL_Rect rect = video.draw_area();
 
 	screen_width = rect.w;
 	screen_height = rect.h;
 
-	auto [scalew, scaleh] = vid.get_dpi_scale_factor();
+	// Use of screen_pitch_microns should probably be deprecated, as physical
+	// DPI is not an accurate method of determining perceptual pixel size.
+	auto [scalew, scaleh] = video.get_dpi_scale_factor();
 	float avgscale = (scalew + scaleh)/2;
 	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -425,7 +425,7 @@ const static std::string& get_error_name(int error_code);
 
 private:
 
-static std::map<int,std::string> error_names_;
+static const std::map<int, std::string> error_names_;
 
 };
 

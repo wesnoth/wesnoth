@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -599,7 +599,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config::attribute_value* v = cfg.get("alignment")) {
 		set_attr_changed(UA_ALIGNMENT);
-		alignment_.parse(v->str());
+		auto new_align = unit_alignments::get_enum(v->str());
+		if(new_align) {
+			alignment_ = *new_align;
+		}
 	}
 
 	// Adjust the unit's defense, movement, vision, jamming, resistances, and
@@ -1540,7 +1543,7 @@ void unit::write(config& cfg, bool write_all) const
 		cfg["level"] = level_;
 	}
 	if(write_all || get_attr_changed(UA_ALIGNMENT)) {
-		cfg["alignment"] = alignment_.to_string();
+		cfg["alignment"] = unit_alignments::get_string(alignment_);
 	}
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
@@ -2205,9 +2208,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			}
 		}
 	} else if(apply_to == "alignment") {
-		unit_type::ALIGNMENT new_align;
-		if(new_align.parse(effect["set"])) {
-			set_alignment(new_align);
+		auto new_align = unit_alignments::get_enum(effect["set"].str());
+		if(new_align) {
+			set_alignment(*new_align);
 		}
 	} else if(apply_to == "max_attacks") {
 		const std::string& increase = effect["increase"];

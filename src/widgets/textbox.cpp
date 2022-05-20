@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,7 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -41,7 +42,7 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 	     edit_target_(nullptr)
 		,listening_(false)
 {
-	// static const SDL_Rect area = video.screen_area();
+	// static const SDL_Rect area = video.draw_area();
 	// const int height = font::pango_draw_text(nullptr,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
@@ -192,7 +193,7 @@ void textbox::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 
-	surface& surf = video().getSurface();
+	surface& surf = video().getDrawingSurface();
 
 	color_t c(0, 0, 0);
 
@@ -212,7 +213,7 @@ void textbox::draw_contents()
 		src.w = std::min<std::size_t>(loc.w,text_image_->w);
 		src.h = std::min<std::size_t>(loc.h,text_image_->h);
 		src.x = text_pos_;
-		SDL_Rect dest = video().screen_area();
+		SDL_Rect dest = video().draw_area();
 		dest.x = loc.x;
 		dest.y = loc.y;
 
@@ -253,7 +254,7 @@ void textbox::draw_contents()
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
-			adjust_surface_alpha(text_image_, ftofxp(0.3));
+			adjust_surface_alpha(text_image_, floating_to_fixed_point(0.3));
 			sdl_blit(text_image_, &src, surf, &dest);
 		}
 	}
@@ -652,7 +653,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	}
 
 	int mousex, mousey;
-	const uint8_t mousebuttons = SDL_GetMouseState(&mousex,&mousey);
+	const uint8_t mousebuttons = sdl::get_mouse_state(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
 		grabmouse_ = false;
 	}

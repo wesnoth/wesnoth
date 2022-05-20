@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -129,7 +129,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, time_limit()
 	, vacant_slots()
 	, current_turn(0)
-	, reloaded(game["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE) != mp_game_settings::SAVED_GAME_MODE::NONE)
+	, reloaded(saved_game_mode::get_enum(game["savegame"].str()).value_or(saved_game_mode::type::no) != saved_game_mode::type::no)
 	, started(false)
 	, fog(game["mp_fog"].to_bool())
 	, shroud(game["mp_shroud"].to_bool())

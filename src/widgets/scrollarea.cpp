@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,7 @@
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
 #include "video.hpp"
-
+#include "sdl/input.hpp" // get_mouse_state
 
 namespace gui {
 
@@ -156,7 +156,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 	if (event.type == SDL_MOUSEWHEEL) {
 		const SDL_MouseWheelEvent &ev = event.wheel;
 		int x, y;
-		SDL_GetMouseState(&x, &y);
+		sdl::get_mouse_state(&x, &y);
 		if (sdl::point_in_rect(x, y, inner_location())) {
 			if (ev.y > 0) {
 				scrollbar_.scroll_up();
@@ -171,7 +171,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 
 	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
-		SDL_Rect r = video().screen_area();
+		SDL_Rect r = video().draw_area();
 		auto tx = static_cast<int>(event.tfinger.x * r.w);
 		auto ty = static_cast<int>(event.tfinger.y * r.h);
 		auto dy = static_cast<int>(event.tfinger.dy * r.h);

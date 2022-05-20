@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -230,11 +230,9 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		item["label"] = leader["gold"];
 		data.emplace("leader_gold", item);
 
-		item["label"] = leader["units"];
+		// TRANSLATORS: "reserve" refers to units on the recall list
+		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"]}, {"reserve", leader["recall_units"]}});
 		data.emplace("leader_troops", item);
-
-		item["label"] = leader["recall_units"];
-		data.emplace("leader_reserves", item);
 
 		leader_list.add_row(data);
 	}
@@ -364,10 +362,11 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 	const std::string& campaign_type = cfg_summary["campaign_type"];
 	const std::string campaign_id = cfg_summary["campaign"];
+	auto campaign_type_enum = campaign_type::get_enum(campaign_type);
 
-	try {
-		switch(game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v) {
-			case game_classification::CAMPAIGN_TYPE::SCENARIO: {
+	if(campaign_type_enum) {
+		switch(*campaign_type_enum) {
+			case campaign_type::type::scenario: {
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
 					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
@@ -391,17 +390,17 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				}
 				break;
 			}
-			case game_classification::CAMPAIGN_TYPE::MULTIPLAYER:
+			case campaign_type::type::multiplayer:
 				str << _("Multiplayer");
 				break;
-			case game_classification::CAMPAIGN_TYPE::TUTORIAL:
+			case campaign_type::type::tutorial:
 				str << _("Tutorial");
 				break;
-			case game_classification::CAMPAIGN_TYPE::TEST:
+			case campaign_type::type::test:
 				str << _("Test scenario");
 				break;
 		}
-	} catch(const bad_enum_cast&) {
+	} else {
 		str << campaign_type;
 	}
 
@@ -415,11 +414,10 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		str << _("Scenario start");
 	}
 
-	str << "\n" << _("Difficulty: ");
-	try {
-		switch (game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v) {
-		case game_classification::CAMPAIGN_TYPE::SCENARIO:
-		case game_classification::CAMPAIGN_TYPE::MULTIPLAYER: {
+	if(campaign_type_enum) {
+		switch (*campaign_type_enum) {
+		case campaign_type::type::scenario:
+		case campaign_type::type::multiplayer: {
 			const config* campaign = nullptr;
 			if (!campaign_id.empty()) {
 				if (const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
@@ -432,6 +430,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			// For the latter do not show the difficulty - even though it will be listed as
 			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
 			if (campaign != nullptr) {
+				str << "\n" << _("Difficulty: ");
 				try {
 					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
 					std::ostringstream ss;
@@ -443,20 +442,14 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 					str << string_table[cfg_summary["difficulty"]];
 				}
 			}
-			else {
-				str << "—";
-			}
 
 			break;
 		}
-		case game_classification::CAMPAIGN_TYPE::TUTORIAL:
-		case game_classification::CAMPAIGN_TYPE::TEST:
-			str << "—";
+		case campaign_type::type::tutorial:
+		case campaign_type::type::test:
 			break;
 		}
-	}
-	catch (const bad_enum_cast&) {
-		str << "—";
+	} else {
 	}
 
 	if(!cfg_summary["version"].empty()) {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -124,13 +124,13 @@ ip_mask parse_ip(const std::string& ip)
 	if (split_ip.size() > 4) throw banned::error("Malformed ip address: " + ip);
 
 	unsigned int shift = 4*8; // start shifting from the highest byte
-	unsigned int mask = 0xFF000000;
+	//unsigned int mask = 0xFF000000;
 	const unsigned int complete_part_mask = 0xFF;
 	auto part = split_ip.begin();
 	bool wildcard = false;
 	do {
 		shift -= 8;
-		mask >>= 8;
+		//mask >>= 8;
 		if(part == split_ip.end()) {
 			if(!wildcard)
 				throw banned::error("Malformed ip address: '" + ip + "'");

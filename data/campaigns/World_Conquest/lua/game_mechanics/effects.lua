@@ -92,7 +92,7 @@ function wesnoth.effects.wc2_min_defense(u, cfg)
 	local defense_new = {}
 	local defense_old = wml.parsed(wml.get_child(cfg, "defense"))
 	for k,v in pairs(defense_old) do
-		if type(k) == "string" and type(v) == "number" and wesnoth.units.defense_on(u, terrain_map[k] or "") >= v then
+		if type(k) == "string" and type(v) == "number" and wesnoth.units.chance_to_be_hit(u, terrain_map[k] or "") >= v then
 			defense_new[k] = v
 		end
 	end

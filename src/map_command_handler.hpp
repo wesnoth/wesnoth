@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -199,12 +199,35 @@ public:
 				symbols["help_command"] = "help";
 				symbols["command"] = get_cmd();
 			}
-			if (get_cmd().find(cmd_prefix_) == 0 && get_command(get_cmd().erase(0,cmd_prefix_.length()))){
-				print("help", VGETTEXT("Unknown command '$command', remove '$prefix' or try '$help_command' "
+			std::string string_user = get_cmd();
+			int distance = 0;
+			// Minimum length of the two compared strings.
+			int len_min = 0;
+			bool has_command_proposal = false;
+			// Compare the input with every command (excluding alias).
+			for(const auto& [key, index] : command_map_) {
+				// No need to test commands that are not enabled.
+				if(is_enabled(index)) {
+					distance = edit_distance_approx(string_user, key);
+					len_min = std::min(string_user.length(), key.length());
+					// Maximum of a third of the letters are wrong. The ratio
+					// between the edit distance and the minimum length, multiplied
+					// by a hundred gives us the  percentage of errors.
+					if(distance * 100 / len_min < 34) {
+						symbols["command_proposal"] = key;
+						has_command_proposal = true;
+						// If a good enough candidate is found, exit the loop.
+						break;
+					}
+				}
+			}
+			// If a proposal for a command is found, print it
+			if(has_command_proposal) {
+				print("help", VGETTEXT("Unknown command '$command', did you mean '$command_proposal'? try $help_command "
 					"for a list of available commands.", symbols));
 			}
-			else{
-				print("help", VGETTEXT("Unknown command '$command', try '$help_command' "
+			else {
+				print("help", VGETTEXT("Unknown command '$command', try $help_command "
 					"for a list of available commands.", symbols));
 			}
 		}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,6 +28,7 @@
 #include "sound.hpp"
 #include "video.hpp"
 #include "addon/manager.hpp"
+#include "sdl/point.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -579,7 +580,12 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	}
 
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
-	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
+	fmt.insert("Window size", geometry_to_string(
+		video.current_resolution().x, video.current_resolution().y));
+	fmt.insert("Game canvas size", geometry_to_string(
+		video.get_width(), video.get_height()));
+	fmt.insert("Final render target size", geometry_to_string(
+		video.output_size().x, video.output_size().y));
 	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
 	fmt.insert("Screen dots per inch", dpi_report);
 	fmt.insert("Screen dpi scale factor", scale_report);

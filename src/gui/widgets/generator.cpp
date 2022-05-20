@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1108,16 +1108,16 @@ static_assert(false, "GUI2/Generator: GENERATE_PLACEMENT already defined!");
 #define GENERATE_PLACEMENT                                                                                             \
 	switch(placement) {                                                                                                \
 	case generator_base::horizontal_list:                                                                              \
-		result = new generator<minimum, maximum, policy::placement::horizontal_list, select_action>;                   \
+		result = std::make_unique<generator<minimum, maximum, policy::placement::horizontal_list, select_action>>();   \
 		break;                                                                                                         \
 	case generator_base::vertical_list:                                                                                \
-		result = new generator<minimum, maximum, policy::placement::vertical_list, select_action>;                     \
+		result = std::make_unique<generator<minimum, maximum, policy::placement::vertical_list, select_action>>();     \
 		break;                                                                                                         \
 	case generator_base::table:                                                                                        \
-		result = new generator<minimum, maximum, policy::placement::table, select_action>;                             \
+		result = std::make_unique<generator<minimum, maximum, policy::placement::table, select_action>>();             \
 		break;                                                                                                         \
 	case generator_base::independent:                                                                                  \
-		result = new generator<minimum, maximum, policy::placement::independent, select_action>;                       \
+		result = std::make_unique<generator<minimum, maximum, policy::placement::independent, select_action>>();       \
 		break;                                                                                                         \
 	default:                                                                                                           \
 		assert(false);                                                                                                 \
@@ -1163,10 +1163,10 @@ static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 	}
 #endif
 
-generator_base* generator_base::build(
+std::unique_ptr<generator_base>  generator_base::build(
 		const bool has_minimum, const bool has_maximum, const placement placement, const bool select)
 {
-	generator_base* result = nullptr;
+	std::unique_ptr<generator_base> result = nullptr;
 	GENERATE_BODY;
 	return result;
 }

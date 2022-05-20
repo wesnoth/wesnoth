@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 
 namespace gui2
 {
@@ -367,7 +368,7 @@ SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
 	return result;
 }
 
-void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_background(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
@@ -375,16 +376,16 @@ void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
+		clip_rect_setter clip(CVideo::get_singleton().getDrawingSurface(), &clipping_rectangle);
 		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
+		impl_draw_background(x_offset, y_offset);
 	} else {
 		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
+		impl_draw_background(x_offset, y_offset);
 	}
 }
 
-void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_children(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
@@ -392,14 +393,14 @@ void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_children(frame_buffer, x_offset, y_offset);
+		clip_rect_setter clip(CVideo::get_singleton().getDrawingSurface(), &clipping_rectangle);
+		impl_draw_children(x_offset, y_offset);
 	} else {
-		impl_draw_children(frame_buffer, x_offset, y_offset);
+		impl_draw_children(x_offset, y_offset);
 	}
 }
 
-void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_foreground(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
@@ -407,10 +408,10 @@ void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
+		clip_rect_setter clip(CVideo::get_singleton().getDrawingSurface(), &clipping_rectangle);
+		impl_draw_foreground(x_offset, y_offset);
 	} else {
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
+		impl_draw_foreground(x_offset, y_offset);
 	}
 }
 

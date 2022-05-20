@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -194,10 +194,10 @@ void show_with_toplevel(const section &toplevel_sec,
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	SDL_Rect screen_area = video.screen_area();
+	SDL_Rect draw_area = video.draw_area();
 
-	const int width  = std::min<int>(font::relative_size(1200), screen_area.w - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), screen_area.h - font::relative_size(150));
+	const int width  = std::min<int>(font::relative_size(1200), draw_area.w - font::relative_size(20));
+	const int height = std::min<int>(font::relative_size(850), draw_area.h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);
@@ -206,8 +206,8 @@ void show_with_toplevel(const section &toplevel_sec,
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {
-		xloc = screen_area.w / 2 - width / 2;
-		yloc = screen_area.h / 2 - height / 2;
+		xloc = draw_area.w / 2 - width / 2;
+		yloc = draw_area.h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
 	gui::button close_button_(video, _("Close"));
@@ -262,7 +262,7 @@ void show_with_toplevel(const section &toplevel_sec,
 					return;
 				}
 			}
-			video.flip();
+			video.render_screen();
 			CVideo::delay(10);
 		}
 	}

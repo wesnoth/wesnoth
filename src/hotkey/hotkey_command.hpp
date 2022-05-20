@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -97,7 +97,6 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__RELOAD_WML,
 	TITLE_SCREEN__NEXT_TIP,
 	TITLE_SCREEN__PREVIOUS_TIP,
-	TITLE_SCREEN__TUTORIAL,
 	TITLE_SCREEN__CAMPAIGN,
 	TITLE_SCREEN__MULTIPLAYER,
 	TITLE_SCREEN__ADDONS,

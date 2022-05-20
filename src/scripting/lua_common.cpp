@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,6 @@
 #include <string>                       // for string, basic_string
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";

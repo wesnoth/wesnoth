@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -69,6 +69,12 @@ template<typename W>
 void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 {
 	find_widget<W>(&window, id, false).set_active(dynamic_cast<selectable_item&>(w).get_value_bool());
+}
+
+template<typename W>
+void disable_widget_on_toggle_inverted(window& window, widget& w, const std::string& id)
+{
+	find_widget<W>(&window, id, false).set_active(!dynamic_cast<selectable_item&>(w).get_value_bool());
 }
 
 // Ensure the specified index is between 0 and one less than the max
@@ -311,6 +317,22 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 		std::bind(volume_setter_on_change<vol_setter>, std::placeholders::_1));
 }
 
+void preferences_dialog::apply_pixel_scale()
+{
+	// Update pixel scale preference.
+	slider& ps_slider = find_widget<slider>(get_window(), "pixel_scale_slider", false);
+	set_pixel_scale(ps_slider.get_value());
+
+	// Update auto pixel scale preference.
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	set_auto_pixel_scale(auto_ps_toggle.get_value_bool());
+
+	// Update draw buffers, taking these into account.
+	CVideo::get_singleton().update_buffers();
+}
+
+
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -407,6 +429,25 @@ void preferences_dialog::post_build(window& window)
 
 	connect_signal_notify_modified(res_list,
 		std::bind(&preferences_dialog::handle_res_select, this));
+
+	/* PIXEL SCALE */
+	register_integer("pixel_scale_slider", true,
+		pixel_scale, set_pixel_scale);
+
+	slider& ps_slider =
+		find_widget<slider>(&window, "pixel_scale_slider", false);
+	connect_signal_mouse_left_release(ps_slider,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
+
+	/* AUTOMATIC PIXEL SCALE */
+	register_bool("auto_pixel_scale", true,
+		auto_pixel_scale, set_auto_pixel_scale,
+		[&](widget& w) { disable_widget_on_toggle_inverted<slider>(window, w, "pixel_scale_slider"); }, true);
+
+	toggle_button& auto_ps_toggle =
+		find_widget<toggle_button>(get_window(), "auto_pixel_scale", false);
+	connect_signal_mouse_left_click(auto_ps_toggle,
+		std::bind(&preferences_dialog::apply_pixel_scale, this));
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -602,13 +643,13 @@ void preferences_dialog::post_build(window& window)
 			}
 
 			case avp::avd_type::SLIDER: {
-				slider* setter_widget = build_single_widget_instance<slider>(config {"definition", "minimal"});
+				auto setter_widget = build_single_widget_instance<slider>(config {"definition", "minimal"});
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
 				setter_widget->set_value_range(option.cfg["min"].to_int(), option.cfg["max"].to_int());
 				setter_widget->set_step_size(option.cfg["step"].to_int(1));
 
-				details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", std::move(setter_widget), true);
 
 				slider& slide = find_widget<slider>(&details_grid, "setter", false);
 
@@ -649,10 +690,10 @@ void preferences_dialog::post_build(window& window)
 					selected = 0;
 				}
 
-				menu_button* setter_widget = build_single_widget_instance<menu_button>();
+				auto setter_widget = build_single_widget_instance<menu_button>();
 				setter_widget->set_id("setter");
 
-				details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", std::move(setter_widget), true);
 
 				menu_button& menu = find_widget<menu_button>(&details_grid, "setter", false);
 
@@ -672,10 +713,10 @@ void preferences_dialog::post_build(window& window)
 			case avp::avd_type::SPECIAL: {
 				//main_grid->remove_child("setter");
 
-				image* value_widget = build_single_widget_instance<image>();
+				auto value_widget = build_single_widget_instance<image>();
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
-				main_grid->swap_child("value", value_widget, true);
+				main_grid->swap_child("value", std::move(value_widget), true);
 
 				break;
 			}
@@ -721,7 +762,7 @@ void preferences_dialog::post_build(window& window)
 	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
 	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
 
-	hotkey_list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, true);
+	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_add_hotkey", false), std::bind(
@@ -861,7 +902,7 @@ void preferences_dialog::default_hotkey_callback()
 
 	// Set up the list again and reselect the default sorting option.
 	listbox& hotkey_list = setup_hotkey_list();
-	hotkey_list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, true);
+	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
 
 	find_widget<multimenu_button>(get_window(), "hotkey_category_menu", false).reset_toggle_states();
 }
@@ -985,6 +1026,7 @@ void preferences_dialog::pre_show(window& window)
 
 	gui2::bind_status_label<slider>(&window, "max_saves_slider");
 	gui2::bind_status_label<slider>(&window, "turbo_slider");
+	gui2::bind_status_label<slider>(&window, "pixel_scale_slider");
 
 	//gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
 	//	return s.get_value_label() + "%";

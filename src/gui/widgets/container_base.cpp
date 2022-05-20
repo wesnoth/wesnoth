@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "gui/widgets/container_base.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -195,14 +196,12 @@ void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void container_base::impl_draw_children(surface& frame_buffer,
-									 int x_offset,
-									 int y_offset)
+void container_base::impl_draw_children(int x_offset, int y_offset)
 {
 	assert(get_visible() == widget::visibility::visible
 		   && grid_.get_visible() == widget::visibility::visible);
 
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children(x_offset, y_offset);
 }
 
 void container_base::layout_children()
@@ -263,13 +262,18 @@ bool container_base::disable_click_dismiss() const
 	return styled_widget::disable_click_dismiss() && grid_.disable_click_dismiss();
 }
 
+iteration::walker_ptr container_base::create_walker()
+{
+	return nullptr;
+}
+
 void container_base::init_grid(const builder_grid& grid_builder)
 {
 	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 
 	assert(grid_.get_rows() == 0 && grid_.get_cols() == 0);
 
-	grid_builder.build(&grid_);
+	grid_builder.build(grid_);
 }
 
 point container_base::border_space() const

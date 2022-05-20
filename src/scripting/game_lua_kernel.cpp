@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -57,7 +57,6 @@
 #include "game_events/pump.hpp"         // for queued_event
 #include "preferences/game.hpp"         // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
 #include "map/label.hpp"
 #include "map/location.hpp"             // for map_location
@@ -123,8 +122,7 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 class CVideo;
 
@@ -269,9 +267,8 @@ static int impl_add_animation(lua_State* L)
 	unit& u = *up;
 	std::string which = luaL_checkstring(L, 3);
 
-	using hit_type = unit_animation::hit_type;
 	std::string hits_str = luaL_checkstring(L, 4);
-	hit_type hits = hit_type::string_to_enum(hits_str, hit_type::INVALID);
+	strike_result::type hits = strike_result::get_enum(hits_str).value_or(strike_result::type::invalid);
 
 	map_location dest;
 	int v1 = 0, v2 = 0;
@@ -1293,8 +1290,8 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", classification.campaign_type.to_string());
-	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", campaign_type::get_string(classification.type));
+	if(classification.type==campaign_type::type::multiplayer) {
 		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
 			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
@@ -1329,8 +1326,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
-		const game_config_view& game_config = game_config_manager::get()->game_config();
-		game_display_->set_theme(play_controller_.get_theme(game_config, value));
+		game_display_->set_theme(value);
 	);
 	modify_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead", gamedata().set_victory_music(std::move(value)));
@@ -1357,7 +1353,7 @@ static int impl_end_level_data_get(lua_State* L)
 	return_bool_attrib("proceed_to_next_level", data.proceed_to_next_level);
 	return_bool_attrib("is_victory", data.is_victory);
 	return_bool_attrib("is_loss", !data.is_victory);
-	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
+	return_cstring_attrib("result", data.is_victory ? level_result::victory : "loss"); // to match wesnoth.end_level()
 	return_string_attrib("test_result", data.test_result);
 	return_cfg_attrib("__cfg", data.to_config_full());
 
@@ -1458,14 +1454,14 @@ static int impl_mp_settings_get(lua_State* L)
 		return_bool_attrib("allow_observers", settings.allow_observers);
 		return_bool_attrib("private_replay", settings.private_replay);
 		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
-		return_string_attrib("random_faction_mode", settings.random_faction_mode.to_string());
+		return_string_attrib("random_faction_mode", random_faction_mode::get_string(settings.mode));
 		return_cfgref_attrib("options", settings.options);
 		if(strcmp(m, "savegame") == 0) {
 			auto savegame = settings.saved_game;
-			if(savegame == mp_game_settings::SAVED_GAME_MODE::NONE) {
+			if(savegame == saved_game_mode::type::no) {
 				lua_pushboolean(L, false);
 			} else {
-				lua_push(L, savegame.to_string());
+				lua_push(L, saved_game_mode::get_string(savegame));
 			}
 			return 1;
 		}
@@ -1555,7 +1551,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	}
 
 	const game_classification& classification = play_controller_.get_classification();
-	return_string_attrib("type", classification.campaign_type.to_string());
+	return_string_attrib("type", campaign_type::get_string(classification.type));
 	return_string_attrib("difficulty", classification.difficulty);
 	return_bool_attrib("show_credits", classification.end_credits);
 	return_tstring_attrib("end_text", classification.end_text);
@@ -1643,8 +1639,8 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.replay_save = cfg["replay_save"].to_bool(true);
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
-		data.is_victory = cfg["result"] == "victory";
-		data.test_result = cfg["test_result"].str(LEVEL_RESULT::enum_to_string(LEVEL_RESULT::TEST_NOT_SET));
+		data.is_victory = cfg["result"] == level_result::victory;
+		data.test_result = cfg["test_result"].str(level_result::result_not_set);
 		play_controller_.set_end_level_data(data);
 
 		return 1;
@@ -2284,47 +2280,230 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	return 1;
 }
 
-int game_lua_kernel::intf_print(lua_State *L) {
-	vconfig cfg(luaW_checkvconfig(L, 1));
+const char* labelKey = "floating label";
 
-	// Remove any old message.
-	static int floating_label = 0;
-	if (floating_label)
-		font::remove_floating_label(floating_label);
+static int* luaW_check_floating_label(lua_State* L, int idx)
+{
+	return reinterpret_cast<int*>(luaL_checkudata(L, idx, labelKey));
+}
 
-	// Display a message on-screen
-	std::string text = cfg["text"];
-	if(text.empty() || !game_display_)
-		return 0;
+static int impl_floating_label_getmethod(lua_State* L)
+{
+	const char* m = luaL_checkstring(L, 2);
+	return_bool_attrib("valid", *luaW_check_floating_label(L, 1) != 0);
+	return luaW_getmetafield(L, 1, m);
+}
 
-	int size = cfg["size"].to_int(font::SIZE_SMALL);
-	int lifetime;
-	if(cfg["duration"] == "unlimited") {
-		lifetime = -1;
+int game_lua_kernel::intf_remove_floating_label(lua_State* L)
+{
+	int* handle = luaW_check_floating_label(L, 1);
+	int fade = luaL_optinteger(L, 2, -1);
+	if(*handle != 0) {
+		// Passing -1 as the second argument means it uses the fade time that was set when the label was created
+		font::remove_floating_label(*handle, fade);
+	}
+	*handle = 0;
+	return 0;
+}
+
+int game_lua_kernel::intf_move_floating_label(lua_State* L)
+{
+	int* handle = luaW_check_floating_label(L, 1);
+	if(*handle != 0) {
+		font::move_floating_label(*handle, luaL_checknumber(L, 2), luaL_checknumber(L, 3));
+	}
+	return 0;
+}
+
+/**
+ * Arg 1: text - string
+ * Arg 2: options table
+ * - size: font size
+ * - max_width: max width for word wrapping
+ * - color: font color
+ * - bgcolor: background color
+ * - bgalpha: background opacity
+ * - duration: display duration (integer or the string "unlimited")
+ * - fade_time: duration of fade-out
+ * - location: screen offset
+ * - valign: vertical alignment and anchoring - "top", "center", or "bottom"
+ * - halign: horizontal alignment and anchoring - "left", "center", or "right"
+ * Returns: label handle
+ */
+int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
+{
+	t_string text = luaW_checktstring(L, 1);
+	int size = font::SIZE_SMALL;
+	int width = 0;
+	double width_ratio = 0;
+	color_t color = font::LABEL_COLOR, bgcolor{0, 0, 0, 0};
+	int lifetime = 2'000, fadeout = 100;
+	font::ALIGN alignment = font::ALIGN::CENTER_ALIGN, vertical_alignment = font::ALIGN::CENTER_ALIGN;
+	// This is actually a relative screen location in pixels, but map_location already supports
+	// everything needed to read in a pair of coordinates.
+	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
+	map_location loc{0, 0, wml_loc()};
+	if(lua_istable(L, 2)) {
+		if(luaW_tableget(L, 2, "size")) {
+			size = luaL_checkinteger(L, -1);
+		}
+		if(luaW_tableget(L, 2, "max_width")) {
+			int found_number;
+			width = lua_tointegerx(L, -1, &found_number);
+			if(!found_number) {
+				auto value = luaW_tostring(L, -1);
+				try {
+					if(!value.empty() && value.back() == '%') {
+						value.remove_suffix(1);
+						width_ratio = std::stoi(std::string(value)) / 100.0;
+					} else throw std::invalid_argument(value.data());
+				} catch(std::invalid_argument&) {
+					return luaL_argerror(L, -1, "max_width should be integer or percentage");
+				}
+
+			}
+		}
+		if(luaW_tableget(L, 2, "color")) {
+			if(lua_isstring(L, -1)) {
+				color = color_t::from_hex_string(lua_tostring(L, -1));
+			} else {
+				auto vec = lua_check<std::vector<int>>(L, -1);
+				if(vec.size() != 3) {
+					return luaL_error(L, "floating label text color should be a hex string or an array of 3 integers");
+				}
+				color.r = vec[0];
+				color.g = vec[1];
+				color.b = vec[2];
+			}
+		}
+		if(luaW_tableget(L, 2, "bgcolor")) {
+			if(lua_isstring(L, -1)) {
+				bgcolor = color_t::from_hex_string(lua_tostring(L, -1));
+			} else {
+				auto vec = lua_check<std::vector<int>>(L, -1);
+				if(vec.size() != 3) {
+					return luaL_error(L, "floating label background color should be a hex string or an array of 3 integers");
+				}
+				bgcolor.r = vec[0];
+				bgcolor.g = vec[1];
+				bgcolor.b = vec[2];
+				bgcolor.a = ALPHA_OPAQUE;
+			}
+			if(luaW_tableget(L, 2, "bgalpha")) {
+				bgcolor.a = luaL_checkinteger(L, -1);
+			}
+		}
+		if(luaW_tableget(L, 2, "duration")) {
+			int found_number;
+			lifetime = lua_tointegerx(L, -1, &found_number);
+			if(!found_number) {
+				auto value = luaW_tostring(L, -1);
+				if(value == "unlimited") {
+					lifetime = -1;
+				} else {
+					return luaL_argerror(L, -1, "duration should be integer or 'unlimited'");
+				}
+			}
+		}
+		if(luaW_tableget(L, 2, "fade_time")) {
+			fadeout = lua_tointeger(L, -1);
+		}
+		if(luaW_tableget(L, 2, "location")) {
+			loc = luaW_checklocation(L, -1);
+		}
+		if(luaW_tableget(L, 2, "halign")) {
+			static const char* options[] = {"left", "center", "right"};
+			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+		}
+		if(luaW_tableget(L, 2, "valign")) {
+			static const char* options[] = {"top", "center", "bottom"};
+			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+		}
+	}
+
+	int* handle = nullptr;
+	if(spawn) {
+		// Creating a new label, allocate a new handle
+		handle = new(L)int();
 	} else {
-		lifetime = cfg["duration"].to_int(5000);
+		// First argument is the label handle
+		handle = luaW_check_floating_label(L, 1);
+	}
+	int handle_idx = lua_gettop(L);
+
+	if(*handle != 0) {
+		font::remove_floating_label(*handle);
 	}
 
-	color_t color = font::LABEL_COLOR;
-
-	if(!cfg["color"].empty()) {
-		color = color_t::from_rgb_string(cfg["color"]);
-	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
-		color = color_t(cfg["red"], cfg["green"], cfg["blue"]);
+	SDL_Rect rect = game_display_->map_outside_area();
+	if(width_ratio > 0) {
+		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}
-
-	const SDL_Rect& rect = game_display_->map_outside_area();
+	int x = 0, y = 0;
+	switch(alignment) {
+		case font::ALIGN::LEFT_ALIGN:
+			x = rect.x + loc.wml_x();
+			if(width > 0) {
+				rect.w = std::min(rect.w, width);
+			}
+			break;
+		case font::ALIGN::CENTER_ALIGN:
+			x = rect.x + rect.w / 2 + loc.wml_x();
+			if(width > 0) {
+				rect.w = std::min(rect.w, width);
+				rect.x = x - rect.w / 2;
+			}
+			break;
+		case font::ALIGN::RIGHT_ALIGN:
+			x = rect.x + rect.w - loc.wml_x();
+			if(width > 0) {
+				rect.x = (rect.x + rect.w) - std::min(rect.w, width);
+				rect.w = std::min(rect.w, width);
+			}
+			break;
+	}
+	switch(vertical_alignment) {
+		case font::ALIGN::LEFT_ALIGN: // top
+			y = rect.y + loc.wml_y();
+			break;
+		case font::ALIGN::CENTER_ALIGN:
+			y = rect.y + rect.h / 2 + loc.wml_y();
+			break;
+		case font::ALIGN::RIGHT_ALIGN: // bottom
+			// The size * 1.5 adjustment avoids the text being cut off if placed at y = 0
+			// This is necessary because the text is positioned by the top edge but we want it to
+			// seem like it's positioned by the bottom edge.
+			// This wouldn't work for multiline text, but we don't expect that to be common in this API anyway.
+			y = rect.y + rect.h - loc.wml_y() - static_cast<int>(size * 1.5);
+			break;
+	}
 
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
-	flabel.set_position(rect.x + rect.w/2, rect.y + rect.h/2);
-	flabel.set_lifetime(lifetime);
+	flabel.set_bg_color(bgcolor);
+	flabel.set_alignment(alignment);
+	flabel.set_position(x, y);
+	flabel.set_lifetime(lifetime, fadeout);
 	flabel.set_clip_rect(rect);
 
-	floating_label = font::add_floating_label(flabel);
-
-	return 0;
+	*handle = font::add_floating_label(flabel);
+	lua_settop(L, handle_idx);
+	if(luaL_newmetatable(L, labelKey)) {
+		// Initialize the metatable
+		static const luaL_Reg methods[] = {
+			{"remove", &dispatch<&game_lua_kernel::intf_remove_floating_label>},
+			{"move", &dispatch<&game_lua_kernel::intf_move_floating_label>},
+			{"replace", &dispatch2<&game_lua_kernel::intf_set_floating_label, false>},
+			{"__index", &impl_floating_label_getmethod},
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, methods, 0);
+		luaW_table_set(L, -1, "__metatable", std::string(labelKey));
+	}
+	lua_setmetatable(L, handle_idx);
+	lua_settop(L, handle_idx);
+	return 1;
 }
 
 void game_lua_kernel::put_unit_helper(const map_location& loc)
@@ -4306,7 +4485,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
-		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
@@ -4537,6 +4715,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"end_turn", &dispatch<&game_lua_kernel::intf_end_turn>},
 		{"get_viewing_side", &intf_get_viewing_side},
 		{"add_chat_message", &dispatch<&game_lua_kernel::intf_message>},
+		{"add_overlay_text", &dispatch2<&game_lua_kernel::intf_set_floating_label, true>},
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
@@ -4729,40 +4908,38 @@ void game_lua_kernel::set_game_display(game_display * gd) {
  * elsewhere (in the C++ code).
  * Any child tags not in this list will be passed to Lua's on_load event.
  */
-static const std::array<std::string, 24> handled_file_tags {{
-	"color_palette",
-	"color_range",
-	"display",
-	"end_level_data",
-	"era",
-	"event",
-	"generator",
-	"label",
-	"lua",
-	"map",
-	"menu_item",
-	"modification",
-	"modify_unit_type",
-	"music",
-	"options",
-	"side",
-	"sound_source",
-	"story",
-	"terrain_graphics",
-	"time",
-	"time_area",
-	"tunnel",
-	"undo_stack",
-	"variables"
-}};
-
 static bool is_handled_file_tag(const std::string& s)
 {
-	for(const std::string& t : handled_file_tags) {
-		if (s == t) return true;
-	}
+	// Make sure this is sorted, since we binary_search!
+	using namespace std::literals::string_view_literals;
+	static const std::array handled_file_tags {
+		"color_palette"sv,
+		"color_range"sv,
+		"display"sv,
+		"end_level_data"sv,
+		"era"sv,
+		"event"sv,
+		"generator"sv,
+		"label"sv,
+		"lua"sv,
+		"map"sv,
+		"menu_item"sv,
+		"modification"sv,
+		"modify_unit_type"sv,
+		"music"sv,
+		"options"sv,
+		"side"sv,
+		"sound_source"sv,
+		"story"sv,
+		"terrain_graphics"sv,
+		"time"sv,
+		"time_area"sv,
+		"tunnel"sv,
+		"undo_stack"sv,
+		"variables"sv
+	};
 
-	return false;
+	return std::binary_search(handled_file_tags.begin(), handled_file_tags.end(), s);
 }
 
 /**

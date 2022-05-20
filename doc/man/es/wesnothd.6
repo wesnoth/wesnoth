@@ -111,6 +111,10 @@ comprimido. Activado por defecto (\fByes\fP).
 El número máximo de conexiones permitidas desde la misma IP. \fB0\fP significa
 infinitas. (Por defecto: \fB5\fP.)
 .TP 
+\fBdeny_unregistered_login\fP
+Para evitar que los usuarios que no están registrados con \fBuser_handler\fP
+sean usados para acceder. (predeterminado: false)
+.TP 
 \fBdisallow_names\fP
 Nombres/ápodos rechazados por el servidor. \fB*\fP y \fB?\fP sirven de
 comodines. Vea \fBglob\fP(7) para más detalles. Los valores por defecto
@@ -164,22 +168,31 @@ ruta está vacía o ausente, no se cargarán ni almacenarán salones.
 Define si el servidor almacenará automáticamente las repeticiones de las
 partidas. (Por defecto: \fBfalse\fP.)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 Una lista separada por comas de patrones de números de versión que serán
 admitidos por el servidor. \fB*\fP y \fB?\fP sirven de comodines. (Por defecto es
 la versión de Wesnoth correspondiente al servidor.)
 .br
 Ejemplo: \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
-.TP 
-\fBdeny_unregistered_login\fP
-Para evitar que los usuarios que no están registrados con \fBuser_handler\fP
-sean usados para acceder. (predeterminado: false)
 .
 .SS "Etiquetas globales:"
 .
 .P
-\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
-redirigirán ciertas versiones de clientes.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -213,13 +226,12 @@ reenvíe las solicitudes de los clientes conectados al servidor
 especificado.  Acepta las mismas opciones que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura el servicio de usuarios. Las opciones
-disponibles varían según cual servicio ha sido activado con la opción
-\fBuser_handler\fP. Si no hay ninguna sección \fB[user_handler]\fP en la
-configuración, el servidor funcionará sin ningún servicio de registro de
-usuarios. Todas las tablas adicionales que se necesitan para que funcione
-\fBforum_user_handler\fP pueden encontrarse en table_definitions.sql en el
-repositorio de fuentes de Wesnoth.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP

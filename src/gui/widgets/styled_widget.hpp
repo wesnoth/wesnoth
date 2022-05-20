@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -113,7 +113,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -453,20 +453,16 @@ public:
 	 *
 	 * 2) Having a static type getter allows the type string to be fetched without
 	 *    constructing an instance of the widget. A good example of this usecase is
-	 *    in build_single_widget_and_cast_to.
+	 *    in build_single_widget_instance.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
@@ -549,7 +545,7 @@ public:
 
 	using builder_widget::build;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

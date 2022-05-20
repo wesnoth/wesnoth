@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,7 +56,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	if(const auto opt = get_tree_view().get_node_definition(id)) {
 		const auto& node_definition = **opt;
 
-		node_definition.builder->build(&grid_);
+		node_definition.builder->build(grid_);
 		init_grid(&grid_, data);
 
 		if(parent_node_ && parent_node_->toggle_) {
@@ -631,18 +631,16 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void tree_view_node::impl_draw_children(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void tree_view_node::impl_draw_children(int x_offset, int y_offset)
 {
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children(x_offset, y_offset);
 
 	if(is_folded()) {
 		return;
 	}
 
 	for(auto& node : children_) {
-		node->impl_draw_children(frame_buffer, x_offset, y_offset);
+		node->impl_draw_children(x_offset, y_offset);
 	}
 }
 
@@ -894,9 +892,9 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 	}
 }
 
-iteration::walker_base* tree_view_node::create_walker()
+iteration::walker_ptr tree_view_node::create_walker()
 {
-	return new gui2::iteration::tree_node(*this, children_);
+	return std::make_unique<gui2::iteration::tree_node>(*this, children_);
 }
 
 } // namespace gui2

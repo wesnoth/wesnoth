@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -228,9 +228,9 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 {
 }
 
-widget* builder_toggle_button::build() const
+std::unique_ptr<widget> builder_toggle_button::build() const
 {
-	toggle_button* widget = new toggle_button(*this);
+	auto widget = std::make_unique<toggle_button>(*this);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -109,7 +109,7 @@ static void launch_lua_console()
 
 static void make_screenshot()
 {
-	surface screenshot = CVideo::get_singleton().getSurface().clone();
+	surface screenshot = CVideo::get_singleton().getDrawingSurface().clone();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
@@ -259,6 +259,9 @@ void title_screen::pre_show(window& win)
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
 		try{
 			if(game_.new_campaign()) {
+				// Suspend drawing of the title screen,
+				// so it doesn't flicker in between loading screens.
+				win.set_suspend_drawing(true);
 				win.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
@@ -277,6 +280,9 @@ void title_screen::pre_show(window& win)
 	//
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
+			// Suspend drawing of the title screen,
+			// so it doesn't flicker in between loading screens.
+			win.set_suspend_drawing(true);
 			win.set_retval(LAUNCH_GAME);
 		}
 	});

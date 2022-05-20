@@ -107,10 +107,7 @@ libwesnoth_client = client_env.Library("wesnoth-client", wesnoth_client_sources)
 #---lua---
 lua_sources = GetSources("lua")
 
-env_lua = env.Clone(
-    CCCOM = env["CXXCOM"],
-    CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
-    CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
+env_lua = env.Clone(CPPPATH = ["$CPPPATH", Dir(".").srcnode()], CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 
 env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow"))
 # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
@@ -124,6 +121,7 @@ if env_lua["enable_lto"] == True:
 
 env_lua["wesnoth_lua_config"] = File("#/src/wesnoth_lua_config.h").rfile()
 env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config"))
+env_lua.Append(CCFLAGS = Split("-x c++"))
 
 objs_lua = env_lua.Object(lua_sources)
 for obj in objs_lua:

@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -10,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2019-09-23 22:44+0800\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-04-22 16:54+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -48,6 +50,7 @@ msgstr "尾巴"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
@@ -55,6 +58,7 @@ msgstr "触须"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
 msgstr "墨汁"
@@ -75,8 +79,8 @@ msgstr "墨汁"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
 msgstr "狼牙棒"
 
@@ -242,9 +246,9 @@ msgstr "连枷"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -283,9 +287,9 @@ msgstr "剑"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -308,9 +312,9 @@ msgid "bow"
 msgstr "弓"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -329,7 +333,7 @@ msgstr "弓"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "爪"
@@ -344,7 +348,7 @@ msgstr "爪"
 msgid "saber"
 msgstr "轻剑"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -356,7 +360,7 @@ msgstr "轻剑"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -371,10 +375,10 @@ msgstr "轻剑"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:298
 #: data/core/units/undead/Corpse_Walking.cfg:75
 msgid "Walking Corpse"
-msgstr "行尸"
+msgstr "陆行僵尸"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -383,8 +387,9 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one’s "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
-"行尸是在黑魔法下重新活动起来的死者的躯壳。虽然它们对受过训练的士兵而言不算是"
-"很大的威胁，但若看到原来的同志变成行尸的一员，至少说也是非常恐怖的事情。"
+"陆行僵尸是在黑魔法下重新活动起来的死者的躯壳。虽然它们对受过训练的士兵而言不"
+"算是很大的威胁，但若看到原来的同志变成陆行僵尸的一员，至少说也是非常恐怖的事"
+"情。"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -406,8 +411,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -443,14 +448,14 @@ msgstr "触碰"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
 msgstr "木棒"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
@@ -464,8 +469,8 @@ msgstr "上古巫妖"
 msgid "chill tempest"
 msgstr "冷冻风暴"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -477,8 +482,8 @@ msgstr "死灵法师"
 msgid "plague staff"
 msgstr "瘟疫法杖"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -489,14 +494,14 @@ msgstr "瘟疫法杖"
 msgid "curse"
 msgstr "诅咒"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -521,17 +526,19 @@ msgstr "诅咒"
 msgid "fangs"
 msgstr "尖牙"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -559,7 +566,6 @@ msgstr ""
 "意志的尸体中获得仆人和士兵。这些蹒跚而行的家伙们经常数量庞大，但是脆弱易碎。"
 "战斗的到来会唤醒他们，使得他们变得可怕得多。"
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -574,6 +580,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -592,8 +599,8 @@ msgstr ""
 msgid "Soulless"
 msgstr "无魂怪"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -612,10 +619,8 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "狂血暴击"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -623,14 +628,14 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 "谁都不清楚“龙卫士”们得到这个称谓的具体缘由，只知道这名字是他们的矮人兄弟们起"
 "的。有些人猜测这是因为他们的武器，那些喷射着火焰与死亡的奇怪的杖。另一些人则"
-"猜想，这是由于这种武器甚至对真正的龙都能构成威胁，如果在已知的世界中能再一次"
-"见到这样的东西的话。无论如何，正是这些武器使得矮人族伟大堡垒的守卫者们闻名于"
-"世，并且令人畏惧；这是些能将最强悍的武士一击必杀的武器。"
+"猜想，这是由于这种武器甚至对真正的龙都能构成威胁——如果在已知的世界中能再一次"
+"见到龙的话。无论如何，正是这些武器使得矮人族伟大堡垒的守卫者们闻名于世，并且"
+"令人畏惧——这是些能将最强悍的武士一击必杀的武器。"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:24
@@ -662,8 +667,8 @@ msgstr "匕首"
 msgid "dragonstaff"
 msgstr "龙枪"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -690,8 +695,8 @@ msgstr ""
 msgid "hammer"
 msgstr "锤"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -789,8 +794,8 @@ msgstr ""
 "线通常来说是根本不用考虑的作战方案；这不但收效甚微，简直就是自杀。这些矮人是"
 "白刃战的精英，他们可以像橡树一样一心一意地固守在土地上。"
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -803,8 +808,8 @@ msgstr ""
 "了在面对最压倒性的突击时，他们总是能够坚守阵地。在这样的部队面前丢失阵地是一"
 "件非常危险的事，因为不可能轻易地夺回它。"
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -824,12 +829,10 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:73
 #: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
-msgstr "雷霆之枪"
+msgstr "雷霆棍"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -840,17 +843,18 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
-"矮人雷霆卫士以他们古怪的武器著称于世，当他们发怒时这些由木头和铁片组成的棍子"
-"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的Knalga矮人们最后宁愿把"
-"秘密带入坟墓，他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
-"些奇怪的黑色粉末放入他们武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
+"矮人雷霆卫士以他们古怪的武器闻名于世，当他们发怒时这些由木头和铁片组成的棍子"
+"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔伽矮人们最后宁愿把"
+"秘密带进坟墓。他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
+"些奇怪的黑色粉末放进这些武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
 "\n"
-"虽然用“雷霆之枪”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得期待。"
+"虽然用“雷霆棍”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得这一等"
+"待。"
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -863,16 +867,16 @@ msgstr ""
 "们使自己进入一种盲目的狂暴状态，在这种状态下他们无所畏惧，不感疼痛，也不会注"
 "意到自己所受的任何创伤。"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "矮人符文大师"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -890,8 +894,8 @@ msgstr ""
 "少。"
 
 # what is a shyde?
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1087,7 +1091,7 @@ msgstr ""
 msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
-msgstr ""
+msgstr "与其他龙人相比，龙人仲裁者对“穿刺”攻击的抗性更高。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -1234,7 +1238,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "三叉戟"
 
@@ -1282,7 +1286,7 @@ msgstr ""
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr "熔火之心"
+msgstr "龙人熔火之心"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:18
@@ -1353,6 +1357,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
 msgstr "猛击"
 
@@ -1403,14 +1408,6 @@ msgstr "天空龙战士"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The lightweight ceramic armor that the Sky Drakes wear is a symbol of "
-#| "their rank, glazed silver to honor their connection to the air. As "
-#| "leaders of the hunt, they are often away from their homes for long "
-#| "periods of time. Each tries to bring as much game home as possible, "
-#| "competing to gain the respect of their tribe and, just possibly, time "
-#| "with one of the closely-guarded drake females."
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1418,10 +1415,9 @@ msgid ""
 "tries to bring as much game home as possible, competing to gain the respect "
 "of their tribe."
 msgstr ""
-"天空龙战士所穿的轻装陶瓷铠甲是等级的标志，其上镶嵌着白银，以对他们与天空的联"
-"结表示敬意。作为狩猎行动的首领，他们经常会在很长的时间内远离家园。每一位天空"
-"龙战士都会尽力捕捉尽可能多的猎物并带回家，为获得部落的尊敬而互相竞争，如果可"
-"能的话，还能与那些被重重护卫的龙人女性之一约会。"
+"天空龙战士所穿的轻装陶瓷铠甲是等级的标志，其上镶嵌着白银，以示对他们与天空的"
+"联系的尊敬。作为狩猎行动的首领，他们经常会长时间远离家园。每一位天空龙战士都"
+"会尽力捕捉尽可能多的猎物并带回家，为获得部落的尊敬而互相竞争。"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1470,7 +1466,7 @@ msgstr ""
 msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
-msgstr ""
+msgstr "与其他龙人相比，龙人守望者对“穿刺”攻击的抗性更高。"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1494,10 +1490,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Dune Blademaster"
 msgid "Dune Alchemist"
-msgstr "沙丘剑圣"
+msgstr "沙丘炼金师"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1512,11 +1506,17 @@ msgid ""
 "much so that almost every caravan will hire or train a few alchemists to "
 "maintain a reasonable level of threat at all times."
 msgstr ""
+"对沙丘游民来说，炼金术与其说是一种哲学或科学，不如说是草药师所从事的植物学的"
+"延伸。然而，与他们的兄弟们专注于草药的医学治疗效用不同，许多炼金师利用各种植"
+"物和自然产生的毒液来调制致命的毒药。虽然这种技艺在削弱强硬敌人时很有用，但其"
+"他沙丘游民却很谨慎地将其视为一种有效的间谍和暗杀手段。同时，这样的工具也带来"
+"了巨大的政治优势，以至于几乎每个商队都会雇佣或训练一些炼金师，以便在任何时候"
+"都能有效地威慑他人。"
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "吹箭"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
@@ -1538,6 +1538,12 @@ msgid ""
 "these men possess a special role in supporting the remedial arts of their "
 "kind."
 msgstr ""
+"即使没有战斗，感染和受伤也是严酷的沙漠中常见的困境。与其他种族的医者相比，沙"
+"丘游民的医者尤其需要大量的草药和医学知识。由于缺乏魔法能力，再加上沙漠中植物"
+"稀少，导致他们在治疗困扰沙丘人民的大量疾病和中毒时遇到很大困难。与他们经验不"
+"足的兄弟相比，药剂师通常更富学识，而且游历广泛，但他们真正地能力在于“照料宝贵"
+"的药用植物”这一复杂的任务。如果没有必要的材料，沙丘游民就没有办法进行治疗，因"
+"此在支撑族人的治疗技艺方面，这些人具有特殊的作用。"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:8
@@ -1566,6 +1572,17 @@ msgid ""
 "offensive swordsmanship and are capable of subverting even the strongest "
 "fortifications."
 msgstr ""
+"沙丘游民的剑客们以玩一种叫做“拉卡德挑战”的游戏而闻名，在这种游戏中，拉卡德——"
+"有好几把剑那么长的厚实的芦苇——被像标枪一样投向他们，而他们则试图在半空中将芦"
+"苇纵向劈开。这个游戏的诀窍在于，芦苇并不是圆形对称的：大部分茎秆相当坚硬，但"
+"纵截面上有一条细线是比较柔软而容易切割的。即使对一位富有经验的剑客来说，纵向"
+"劈开整条拉卡德也是一项非凡的成就，因为需要精确瞄准才能使刀刃与芦苇的软肋对"
+"齐。然而，对一位真正的剑术大师而言，快速连续劈开几根拉卡德乃是稀松平常之事，"
+"有些人甚至能一剑同时劈开两三根芦苇。\n"
+"\n"
+"这游戏在真正的战斗中有更实际的意义。无论战士多么行踪不定或装备精良，在面对剑"
+"圣时，防御似乎很少起作用。这些武士无疑是进攻性剑术的大师，甚至能够颠覆最坚固"
+"的防御工事。"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Blademaster.cfg:29
@@ -1574,7 +1591,7 @@ msgstr ""
 #: data/core/units/dunefolk/Soldier.cfg:26
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
-msgstr ""
+msgstr "弯刀"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:8
@@ -1593,25 +1610,25 @@ msgid ""
 "applicability of such a substance to warfare and regularly employ fire "
 "spouting weapons to sow chaos among their enemies."
 msgstr ""
+"穿越沙漠时，沙地上夜间降临的冰冷是一种经常被遗忘的危险。为了应对这种情况，沙"
+"丘游民通常会利用椮巴树高度易燃的树液，少量椮巴树叶会缓慢而温和地燃烧，可以提"
+"供适度的热量和照明。然而，大量椮巴树液十分易燃，燃烧起来非常猛烈。沙丘游民很"
+"快意识到这种物质在战争中很是有用，并经常使用喷火武器在敌群种制造混乱。"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "焦油炸弹"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "female^Dune Burner"
 msgstr "沙丘灼烧者"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Dune Cataphract"
 msgid "Dune Captain"
-msgstr "沙丘重甲骑兵"
+msgstr "沙丘队长"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1625,11 +1642,16 @@ msgid ""
 "for most soldiers, but they still readily follow the expert tactical "
 "direction of their captains."
 msgstr ""
+"传统上，队长来自贵族或军人家庭，是大多数沙丘游民排的核心。队长通常是根据血统"
+"而不是功绩来选拔的，因此许多军官剑术不佳，但在战术上仍受过适当的训练。他们的"
+"能力主要在于将部队引向战略上有利的位置，而不是直接提高他们的士气。对于大多数"
+"士兵来说，这样的指挥官的存在很少能激发他们的斗志，但他们仍然很乐意听从队长的"
+"专业战术指导。"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
 msgid "Dune Cataphract"
-msgstr "沙丘重甲骑兵"
+msgstr "沙丘重装骑"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:23
@@ -1646,6 +1668,13 @@ msgid ""
 "these riders in the slightest, and the displaced air of a descending mace is "
 "the last sound they hear."
 msgstr ""
+"重装骑是杰出的骑手，他们的坐骑不具备速度和耐力，而是拥有巨大的力量。这些武士"
+"手持长矛和他们标志性的马刀，通常是主攻后的二次攻击力量。当敌军已经在与侧翼的"
+"剑士缠斗并被削弱后，可能会见到的可怕景象之一，便是一群重装骑排成一排，长枪准"
+"备就绪。在沙丘游民的队伍中将出现一个缺口，而在仅仅一次冲锋中，这些强大的骑兵"
+"便将直接刺穿敌人的阵型，一举造成致命的打击。那些试图逃离的人很快发现，无论是"
+"沙子还是山丘，都丝毫不能阻挡这些骑手的脚步，而挥下的狼牙棒的呼呼风声，是他们"
+"最后听到的声音。"
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
@@ -1674,13 +1703,16 @@ msgid ""
 "longer act only as scouts for probing enemies, but are skilled enough to be "
 "effective flankers or potent shock attackers."
 msgstr ""
+"在空旷的沙漠中缓慢移动的商队是强盗或掠夺者的主要目标。为了保护自己，沙丘游民"
+"雇佣了特殊的武士来侦察并击退潜在的威胁。在这样做的时候，这些迅捷的战士不仅保"
+"护了他们脆弱的商队，而且还会偷窃本该是掠夺方的物资为己所用。当受雇参战时，探"
+"险家们不再仅仅作为探测敌人的侦察兵，他们的技能熟练到可以成为有效的侧卫或强大"
+"的奇袭者。"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "female^Dune Falconer"
-msgstr "沙丘焦燃者"
+msgstr "沙丘驯隼师"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -1699,18 +1731,24 @@ msgid ""
 "the least, forcing them to abandon their efforts on offense in order to "
 "defend themselves properly."
 msgstr ""
+"虽然在沙丘游民中很受尊重，但正确训练猛禽所需的时间很长，能力要求很高，故驯隼"
+"术相对罕见。驯隼师通常将他们的技艺用于运动或狩猎，尤其是在空旷的沙丘上侦察猎"
+"物和水源。同样的智慧在战时也很有用——若是可以说服驯隼师将他们的珍贵宠物用于战"
+"斗目的的话。\n"
+"\n"
+"在战斗中，隼可以帮助主人，用锋利的爪子攻击敌人，也可以上升到高空，在头顶盘"
+"旋，在敌人转移注意力时发动攻击。让战士的注意力分散到两个目标上，至少可以说是"
+"相当消耗精力的，这迫使他们放弃进攻，以适当地保护自己。"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
-#, fuzzy
-#| msgid "Falcon"
 msgid "falcon"
-msgstr "猎鹰"
+msgstr "隼"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
-msgstr "沙丘狂炎兵"
+msgstr "沙丘火炎兵"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:22
@@ -1724,26 +1762,27 @@ msgid ""
 "of choice. The resulting destruction is more than enough to justify the use "
 "of such a hazardous chemical."
 msgstr ""
+"使用非常特殊的蒸馏过程提炼椮巴树液后，就有可能生产出极其易燃的挥发油，其燃烧"
+"甚至比用于提炼的原生树液还要猛烈。当然，由于其高度可燃的性质，这种物质是非常"
+"危险的。因为伤到自己的可能性非常大，大多数人不敢使用这种物质，但也有少数胆大"
+"的人拿起以纯挥发油为燃料的火焰喷射器作为他们的首选武器。由此产生的破坏足以证"
+"明使用这种危险化学品的合理性。"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "火焰喷射器"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
-#, fuzzy
-#| msgid "Dune Firetrooper"
 msgid "female^Dune Firetrooper"
-msgstr "沙丘狂炎兵"
+msgstr "沙丘火炎兵"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
-#, fuzzy
-#| msgid "Dune Harrier"
 msgid "female^Dune Harrier"
-msgstr "沙丘侵掠者"
+msgstr "沙丘鹞骑"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:25
@@ -1759,6 +1798,12 @@ msgid ""
 "thrust of spears is often enough to severely cripple the target, allowing "
 "the main Dunefolk force to close in and finish the job."
 msgstr ""
+"虽然鹞骑在阻碍敌军方面可以发挥类似迅骑的作用，但他们的绰号实际上是来自于他们"
+"驯养的鹞鹰，这些飞禽用于保持与沙丘游民大部队的联系。鹞骑最常见于敌后行动，他"
+"们的任务常常是提供关于敌方部队动向的有用情报，这一点优势就足以让大多数沙丘游"
+"民军队靠策略击败敌人。然而，当时机成熟时，这些敏捷的武士会聚集在一起，对被削"
+"弱的补给线后方或侧翼发动进攻。长毛的刺击紧接着一连串的弹雨，往往足以使目标严"
+"重瘫痪，从而让沙丘游民的主力部队能够接近并完成任务。"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
@@ -1781,13 +1826,19 @@ msgid ""
 "of the various flora and fauna that supply their work. Hardened by their "
 "travels, many of these men are even able to heal themselves."
 msgstr ""
+"作为负责照顾沙丘游民中的病人和伤员的人，草药师既拥有治疗各种疾病的医学技能，"
+"也拥有寻找和收集恢复性草药的技能。他们的动机多种多样：有些人把它当作冒险或是"
+"稳定的报酬来源，而有些人则认为这是一种社会责任。不管是什么原因，这些医者都是"
+"沙丘游民社会的宝贵组成部分。他们在战斗中或在沙漠中旅行时进行快速治疗的能力尤"
+"其有用。\n"
+"\n"
+"即使在游牧的沙丘游民之中，草药师的旅行次数也可说是很多，他们是为了寻找各种植"
+"物和动物来为自己的工作提供原料。经过旅行的磨练，其中许多人甚至能够治疗自己。"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "Dune Horse Archer"
-msgstr "沙丘焦燃者"
+msgstr "沙丘骑射手"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:21
@@ -1800,13 +1851,15 @@ msgid ""
 "long-ranged arrows is of great use to maintain communication among the "
 "Dunefolk armies."
 msgstr ""
+"虽然数量相对较少，但确有一些骑手喜欢把箭术作为自己的主要战斗技术。这些骑手行"
+"动敏捷，难以捉摸，他们善于用箭矢骚扰机动力较差的敌人，并从远处击杀逃亡之敌。"
+"虽然通常不会进行渗透或间谍训练，但这些骑手用远程箭矢传递信息的能力对维持沙丘"
+"游民军队之间的联系起到了很大作用。"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "Dune Luminary"
-msgstr "沙丘灼烧者"
+msgstr "沙丘渊博者"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1825,6 +1878,14 @@ msgid ""
 "proven, but the fact remains that some Luminaries seem to hold much more "
 "influence than their abilities should afford."
 msgstr ""
+"从表面上看，并不完全清楚渊博者与沙丘游民的其他医者有什么区别。当然，与普通的"
+"草药师或药剂师相比，渊博者可能学识更丰富，旅行更多，战斗技巧更熟练，但通常，"
+"这种差异充其量也是有限的。尽管如此，“渊博者”是授予沙丘游民种最高等级的医者团"
+"体的正式头衔，让这些人获得了最大的尊重和最深的嫉妒。\n"
+"\n"
+"有猜测认为，在渊博者之中存在一个秘密团体。这些所谓的 “卓越者”囤积了大量的禁忌"
+"知识，并暗中为许多沙丘游民领袖提供建议。这件事从来没被证实，但事实是，一些渊"
+"博者拥有的影响力，似乎比他们的能力所能支撑的影响力要大得多。"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
@@ -1846,6 +1907,13 @@ msgid ""
 "For this reason, they are sometimes hired by small armies or wealthier "
 "caravans as a deterrent to unwanted raids."
 msgstr ""
+"有些人发现自己很适合作为劫掠骑来生活，甚至可能与志同道合的人组成自己的部落。"
+"这些骑手经常在沙漠中游荡，寻找不小心的旅行者或脆弱的商队，他们以搜刮和偷窃为"
+"生。劫掠者没有特别的专长，既不是最强壮的武士，也不是最灵巧的弓箭手，但由于强"
+"大的机动性，仍然是沙漠中最危险的敌人之一。掠袭者的一次经过协调的进攻可以在对"
+"手反应过来之前消灭中等规模的营地，而游击战术让他们在面对蛮力无法战胜的强敌时"
+"有可能取得胜利。出于这个原因，他们有时会被小型军队或较富裕的商队雇佣，以遏制"
+"（其他人的）劫掠。"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
@@ -1856,10 +1924,8 @@ msgstr "火炬"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
-#, fuzzy
-#| msgid "Dune Marauder"
 msgid "Dune Paragon"
-msgstr "沙丘掠袭骑"
+msgstr "沙丘典范"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1886,6 +1952,19 @@ msgid ""
 "acuity who may then be considered as candidates to lead the next generation "
 "of Dunefolk."
 msgstr ""
+"在许多沙丘游民城邦中，挑选下一代领袖的程序是一个漫长的过程，需要花费很多年时"
+"间。在每一代中，贵族中一些特别有天赋的年轻人被挑选出来进行特别辅导。吃饭、睡"
+"觉、训练，这些战士学习剑术，直到如生活和呼吸一般自然——剑术不但是他们自身的延"
+"伸，更是会成为他们的核心身份。从青春期开始，十年的高强度训练为最后的测试铺平"
+"道路，即这些战士之间一对一的生死决斗。当尘埃落定，过程结束时，还剩下八个人。"
+"这些人被授予“卡”的称号，或统称为“卡莱”。\n"
+"\n"
+"在沙丘游民之中，虽然伟大的领袖被要求掌握剑术，但统治阶层必须知道的东西远远不"
+"只是单纯的剑术。艰苦的操练之后，他们通常要在沙漠中漫游数年，或者把心思全部用"
+"在科学上。这样做的目的是为了找到一条自我激励的启蒙之路。不管是哪种情况，在第"
+"二个训练期结束时，剩下的卡莱将返回，并向当前统治阶层的长老们展示他们的知识。"
+"那些被认为拥有资质的人将被称为典范，是力量强大、思维敏锐的战士，他们将被认为"
+"是下一代沙丘游民领袖的候选人。"
 
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Paragon.cfg:42
@@ -1909,6 +1988,11 @@ msgid ""
 "Dunefolk, capable of outpacing nearly anything they might encounter in the "
 "sandy deserts."
 msgstr ""
+"虽然很少在有组织的军队里存在，但劫掠骑是游牧的沙丘游民的支柱，他们经常在夜间"
+"伏击对手的商队和营地。在这些情况下，力量并不重要。最重要的是速度——在最短的时"
+"间内迅速出击并制造尽可能多的混乱，这些骑手能够在闪电战中进退自如，而不必担心"
+"遭到反击。劫掠骑是沙丘游民中速度最快的，比他们在沙漠中可能遇到的几乎任何东西"
+"都快。"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -1928,6 +2012,11 @@ msgid ""
 "is what allows these horsemen to be so effective and versatile out on the "
 "rolling dunes."
 msgstr ""
+"沙丘游民是著名的马匹饲养者，他们饲养了许多不同品种的坐骑以满足不同的目的。那"
+"些被用来做苦力的马是力量型的品种，而那些用于旅行或商队的马是耐力型的品种。而"
+"在战争方面，各种特征混合通常是最好的，尽管轻易而快速地穿越沙地的能力是最重要"
+"的。这些马的骑手主要是作为侦察兵和信使，或者偶尔在被削弱地战线上作为支持力"
+"量。机动性这一关键特征让这些骑手能够在起伏的沙丘上如此高效而全能。"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
@@ -1936,14 +2025,6 @@ msgstr "沙丘浪游者"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Rovers in many ways represent the ideal Dunefolk unit; flexible, mobile, "
-#| "equally effective in defense and offense as well as in ranged or close "
-#| "combat. They are most comfortable operating in terrain and environments "
-#| "common to them; the deserts and hills of their southern lands. Moreover "
-#| "they fight best at dawn or dusk, corresponding to the time when desert "
-#| "temperatures are the most reasonable."
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -1954,9 +2035,11 @@ msgid ""
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
-"在许多方面，浪游者都是沙丘游民单位的理想代表：灵活，机动，攻守兼备，远近全"
-"能。他们习于在南方的沙漠和山丘中进行作战，那正是他们最熟悉的地形与环境。此"
-"外，他们最擅长在清晨或者傍晚战斗，因为在沙漠中那是温度最合适的时间。"
+"浪游者起源于空旷沙漠上的漫游者，是最为均衡的沙丘游民单位的代表：灵活，机动，"
+"攻守兼备，远近全能。他们是经验丰富的猎人和追踪者，是沙漠和丘陵之中坚强的住"
+"民，他们把那些地方叫做家园。虽然缺少作为正规部队的训练，但这些浪游者用于生存"
+"的技能，轻而易举地便能用于战争。他们最擅长在清晨或者傍晚战斗的特性，是因为在"
+"沙漠中，那些是温度最合适于居住的时段。"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
@@ -1974,18 +2057,18 @@ msgid ""
 "in their work, these archers relish igniting great swaths of flame on the "
 "battlefield, though this sometimes also results in unintended friendly fire."
 msgstr ""
+"焦燃者的名字不是来自于他们对敌方方阵的破坏，而是来自于他们自己被烧焦的外表。"
+"由于无休止地试验自己的装备，大多数焦燃者不可避免地会在某一刻超出界限，并被浸"
+"泡着他们的武器的极易挥发的椮巴树液烧伤。他们将烧伤视为工作带来的骄傲。这些弓"
+"箭手很喜欢在战场上点燃大面积的火焰，尽管这有时也会导致意外的友军误伤。"
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
-#, fuzzy
-#| msgid "Dune Scorcher"
 msgid "female^Dune Scorcher"
 msgstr "沙丘焦燃者"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Dune Skirmisher"
 msgid "female^Dune Skirmisher"
 msgstr "沙丘散兵"
 
@@ -2002,13 +2085,16 @@ msgid ""
 "assassinating key units, or pincering an enemy formation into a "
 "disadvantageous position."
 msgstr ""
+"散兵在空旷的沙地上出生和长大，他们已经习惯了严酷、干旱的沙漠高温与荒凉的地"
+"形。哪怕与其他沙丘游民相比，这些游牧者在不稳定的沙丘上都非同寻常地敏捷，这使"
+"他们能够轻松地保护牧群并在荒原上狩猎。当应用于战斗时，同样的敏捷让他们既能溜"
+"过敌人的防线，又能避开各种形式的攻击。这些技能使散兵成为高效的潜入破坏者，能"
+"够切断逃跑路线和补给线，暗杀关键单位，或将敌人方阵包夹在不利位置。"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
-#, fuzzy
-#| msgid "Dune Burner"
 msgid "female^Dune Sky Hunter"
-msgstr "沙丘灼烧者"
+msgstr "沙丘天空猎手"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -2024,11 +2110,19 @@ msgid ""
 "tools for combat, the eagles can live for up to a few decades and are often "
 "precious companions to their dunefolk partners."
 msgstr ""
+"沙漠雕常常被误认为是年轻的鹏鸟，它们是威严的大型猛禽，其攻击性臭名昭著，几乎"
+"不可能被驯服。在野外，雕以大型猎物为食，例如狼、小马，据说还有调皮的小孩子。"
+"这些生物的力量使它们非常难以对付，只有最熟练的驯雕人才敢于接近它们。如果驯隼"
+"人真的成功了，那么鸟和猎人之间的关系并不是主人和宠物的关系，而更像是两个平等"
+"者之间的相互牵绊。雕不仅是战斗工具，它们可以活上几十年，往往是它们的沙丘游民"
+"搭档的宝贵伙伴。"
 
+# Eagle：雕
+# Hawk：鹰
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:150
 msgid "eagle"
-msgstr ""
+msgstr "雕"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
@@ -2047,6 +2141,11 @@ msgid ""
 "spaced pattern, allowing them to assault and overwhelm clustered enemy lines "
 "by engaging them in quasi-single combat."
 msgstr ""
+"大多数沙丘游民阶层在直接战争之外都有额外的实际作用，但城市和商队通常会训练一"
+"批完全致力于军事目的的士兵。通过密集的练习来磨练剑术技能，这些武士在近距离的"
+"棘手战斗中游刃有余并掌控敌人。典型的沙丘游民方阵会利用这种适应性，将士兵按照"
+"互相间隔开的模式排布，使他们能够通过与敌人的准单兵作战来突击并全面压倒集群之"
+"敌。"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
@@ -2067,6 +2166,12 @@ msgid ""
 "combat than their sword-wielding brethren, they are highly skilled with "
 "spear and shield and more than capable of repelling most advances."
 msgstr ""
+"任何战斗中双方的进退，都取决于不同程度的进攻与防御能力。毫无疑问，沙丘游民重"
+"视进攻，并通常将大部分精力放在训练熟练的剑客上。然而，在任何一支战士队伍中，"
+"都有一小部分士兵选择放弃剑术，转而担任防御者这一重要角色。矛卫守卫着关键的补"
+"给线和有利地点，他们最常被安排在主要战线的稍后位置，作为支援力量或对侧翼攻击"
+"的遏制力量。虽然这些战士往往比他们挥舞着剑的兄弟们更少进行直接战斗，但他们能"
+"够熟练使用长矛和盾牌，足以击退大多数进攻。"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
@@ -2095,11 +2200,21 @@ msgid ""
 "distinction, it is still a modicum of recognition for those who were "
 "prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
+"在沙丘游民军队中，领导每次进攻的剑术大师们获得了最高的声望。虽然那些舞矛举盾"
+"的战士因战斗中的表现而受到了表彰，但除此以外，他们在很大程度上被遗忘了。他们"
+"通常在战斗中扮演最不受欢迎的角色，没有荣耀也得不到认可。当沙丘游民进攻失败，"
+"必须撤退时，通常会留下一排矛卫来抵御反击。虽然进行了很强的防御，但盾牌阵线不"
+"可避免地会被压倒，大部分的防御者都会被战火吞噬。如果有人设法活下来，并设法回"
+"到了正在休养生息的军队，那他往往会因为没有坚守阵地并与其他无名的兄弟们一起死"
+"去而遭到训斥。然而，在受到轻微的责备后，战士会被重新接纳，并带着他来之不易的"
+"经验参加下一场战斗。\n"
+"\n"
+"那些成功从沙丘游民用于掩护撤退的近乎自杀的防御战中返回的矛卫，被同伴们称为“矛"
+"圣”。这不是正式头衔，也算不上什么赞美或者荣誉，但这仍然是对那些准备为保护他们"
+"的兄弟而作为无名烈士牺牲的人的一种适当认可。"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
-#, fuzzy
-#| msgid "Dune Swiftrider"
 msgid "female^Dune Strider"
 msgstr "沙丘迅骑"
 
@@ -2118,6 +2233,13 @@ msgid ""
 "striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
+"沙丘游民的进攻力量总是被一个主要缺点抑制：有组织的沙丘游民军队的行动往往相当"
+"缓慢。正因为如此，敌军往往能够重新集结并召集援军，在这种情况下，第二次进攻就"
+"变得困难得多了。为了解决这个问题，迅骑将他们简陋的弹弓换成了沉重的绳球，使他"
+"们能够从侧面拖住撤退的队伍，防止其顺利逃脱。同样的战术也可以应用于相反的情"
+"况，也就是沙丘游民撤退时。进军的敌军将被阻碍，让受伤的沙丘游民战士有时间休"
+"整。这种战术的危险之处在于，尽管迅骑难以捉摸，但他们在正面战斗中相当脆弱，如"
+"果暴露在外，他们便很容易被击倒。"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
@@ -2137,6 +2259,11 @@ msgid ""
 "enough skill at archery to weaken enemy forces or pick off fleeing "
 "stragglers."
 msgstr ""
+"在众多不同类型的沙丘骑兵中，有一些人最喜欢在战斗最激烈之处进行疯狂的肉搏战。"
+"裂断骑携带近战狼牙棒，是结实而强壮的战士。他们的作战倾向和技能让他们能够在多"
+"次遭遇战中存活。虽然不是特别有创造力或特殊的战士，但这样的骑手从各方面说都不"
+"是无能的——即使只是一小群裂断骑，也足以靠纯粹的力量突破大多数敌人的防线。在有"
+"需要的情况下，这些骑士的箭术也足以削弱敌方军力或挑掉逃跑的散兵游勇。"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
@@ -2158,16 +2285,22 @@ msgid ""
 "accuracy, a contingent of of swordsmen is enough to crack even the sternest "
 "of defenses."
 msgstr ""
+"在大型军队的直接冲突中，沙丘游民通常会遇到密密麻麻的“盾墙”或重兵把守的敌人阵"
+"地。要打击这些高度组织化的战线是相当有挑战性的——敌人的阵型中，可能只在盾牌和"
+"盔甲之间留有极小又稍纵即逝的空隙，同时，沙丘游民也会受到长矛刺击和投射物打击"
+"等反击威胁。因此，沙丘游民的剑术非常强调力量，更重要的是强调精确度。一位战士"
+"可能只有发现一次攻击敌人的机会，而一位有经验的剑士更有可能抓住机会并攻击成"
+"功。剑士们将攻击的精准度磨练到几乎非自然的程度，那甚至足以破解最严密的防御。"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:26
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "强力弯刀打击"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "平衡弯刀砍击"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2187,13 +2320,17 @@ msgid ""
 "rather than formal training. Said to be a veteran of a thousand battles, a "
 "warmaster is an expert leader that should never be underestimated."
 msgstr ""
+"与其他沙丘游民指挥官形成直接对比的是，许多高级将领都非常注重鼓舞他们的部队并"
+"保持高昂的士气。战帅们经常出现在战斗的最前线，与他们的士兵一起战斗和流血。虽"
+"然这些指挥官通常把更精细的战略细节留给低衔的队长们决定，但他们肯定也是有能力"
+"的战术家。许多战斗都是靠别出心裁、出其不意的策略赢下的。而这些策略往往是战斗"
+"经验而非正式训练的创造性副产品。战帅们据说是身经百战的老兵，他们是永远不该被"
+"低估的熟练领导者。"
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
-#, fuzzy
-#| msgid "Dune Warmaster"
 msgid "Dune Wayfarer"
-msgstr "沙丘战帅"
+msgstr "沙丘旅人"
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:21
@@ -2228,11 +2365,29 @@ msgid ""
 "the other Wayfarers again. My tale might not be that impressive to them, but "
 "at least it is an improvement over my previous encounter with the wyvern...”"
 msgstr ""
+"来自沙丘守望者巴拉的日记：\n"
+"\n"
+"“……今天是第六天了。在沙漠中追赶了六天，没有睡觉，没有休息......但我也不需要。"
+"血眼大鹏抢走了我太多的牧群，供它贪婪地享用。我必须在商队饿死之前把它干掉。我"
+"已经追了它那么远，不管它再逃得多远，我都会跟着。\n"
+"\n"
+"……该死！那畜生离我只有几百步远，但太阳却照到了我的眼睛！我有几箭射中了这讨厌"
+"东西，但只够让它减速。不过，它似乎比我累得更快。如果幸运的话，我会在它到达山"
+"区之前赶上它。\n"
+"\n"
+"……第十一天。在那畜生落到山坡上后，我把它逼到了角落里。但我没想到还有另外三只"
+"大鹏。大鹏在肉搏战中十分凶猛。要打一只已经不简单了，但同时打四只？我很庆幸自"
+"己带了第二把斧头，否则在那场战斗中我就会受重伤。而现在，我正等着腿上纱布下的"
+"血凝固，然后再返回去杀掉最后两只。也许那时我终于会有时间吃饭和休息了。\n"
+"\n"
+"……连我自己都感到惊讶，我在二十一天的探险中几乎走过了北方沙丘的一半。商队需要"
+"近三个月的时间才能走完这些，但我想，前因后果确实会让我的这段旅程变得情有可原"
+"一点。好的一面是，这次旅途上我搞到了一些盐渍大鹏肉，这对孩子们来说应该是很受"
+"用的。能再次见到其他一些旅人，也是件好事。我的故事对他们来说可能并不那么令人"
+"印象深刻，但至少比我之前与双足飞龙的遭遇要好……”"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
-#, fuzzy
-#| msgid "Dune Windrider"
 msgid "Dune Windbolt"
 msgstr "沙丘风骑"
 
@@ -2250,13 +2405,17 @@ msgid ""
 "able to otherwise. Having honed their craft to its apex, windbolts are the "
 "undisputed masters of ranged combat among the Dunefolk."
 msgstr ""
+"相比较而言，骑射在一些方面带来了更多挑战，这很少有人能够克服。著名的风骑与其"
+"他弓箭手的区别在于，他们不仅能掌控这些难点，而且还能将其转化为优势。由于利用"
+"了骏马的巨大速度，风骑在骑马时其实比站在地上时更强。骑在马背上时的额外动势为"
+"他们本已有力的射击提供了额外助力。通过曲线骑行，这些弓箭手能够弯曲箭的轨迹，"
+"射中其他方法无法射中的目标。风骑将他们的技艺磨练到了极致，他们是沙丘游民中无"
+"可争议的远程战斗大师。"
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Wyvern Rider"
-msgstr "狮鹫骑手"
+msgstr "双足飞龙骑手"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2278,12 +2437,30 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr "矮人狂战士"
+msgstr "矮人狂熊战士"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "矮人龙卫士"
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+"谁都不清楚“龙卫士”们得到这个称谓的具体缘由，只知道这名字是他们的矮人兄弟们起"
+"的。有些人猜测这是因为他们的武器，那些喷射着火焰与死亡的奇怪的杖。另一些人则"
+"猜想，这是由于这种武器甚至对真正的龙都能构成威胁——如果在已知的世界中能再一次"
+"见到龙的话。无论如何，正是这些武器使得矮人族伟大堡垒的守卫者们闻名于世，并且"
+"令人畏惧——这是些能将最强悍的武士一击必杀的武器。"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
@@ -2398,14 +2575,6 @@ msgstr "矮人哨卫"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the single-minded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the dwarven sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -2415,8 +2584,9 @@ msgid ""
 "with the single-minded tenacity of an oak."
 msgstr ""
 "矮人哨卫是矮人部队中的佼佼者，他们组成了战线上的堡垒。正面攻击由他们维持的防"
-"线通常来说是根本不用考虑的作战方案；这不但收效甚微，简直就是自杀。这些矮人是"
-"白刃战的精英，他们可以像橡树一样一心一意地固守在土地上。"
+"线，通常来说是根本不用考虑的作战方案。这不止是收效甚微，简直就是自杀。这些矮"
+"人身穿最强的纳尔伽铠甲，是肉搏战大师。他们可以像橡树一样一心一意地固守一片"
+"地。"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -2450,10 +2620,32 @@ msgstr "矮人雷霆战士"
 msgid "Dwarvish Thunderguard"
 msgstr "矮人雷霆卫士"
 
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+"矮人雷霆卫士以他们古怪的武器闻名于世，当他们发怒时这些由木头和铁片组成的棍子"
+"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔伽矮人们最后宁愿把"
+"秘密带进坟墓。他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
+"些奇怪的黑色粉末放进这些武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
+"\n"
+"虽然用“雷霆棍”攻击一次需要准备好几分钟，不过矮人们认为其效果绝对值得这一等"
+"待。"
+
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr "矮人双手斧战士"
+msgstr "矮人狂狼战士"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -2499,13 +2691,17 @@ msgid ""
 "vengeance for their brethren lost earlier in the battle. While not so base "
 "in design, it is not at all inaccurate."
 msgstr ""
+"精灵“复仇者”的奇特名字来自于这些游侠大师经常采用的一种战术。允许敌人突破佯装"
+"的防线，当前线后方的脆弱部队跟上时，这些弓箭手就会跳出掩护，发动攻击，切断补"
+"给线并一举包围敌人。一种有时会使用的解释是，这是为早先战斗中失去的弟兄们进行"
+"复仇的一种形式。虽说原本并不是这样的设计，但这个说法也并不是毫不准确。"
 
 #. [special_note]
 #: data/core/units/elves/Avenger.cfg:22
 msgid ""
 "Elvish Avengers are well-traveled and adept at traversing harsh terrains "
 "like sand, water, and mountains."
-msgstr ""
+msgstr "精灵复仇者们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
@@ -2519,17 +2715,6 @@ msgstr "精灵队长"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:25
-#, fuzzy
-#| msgid ""
-#| "Elvish captains usually lead patrols and command garrisons that stand "
-#| "guard over the vast forests in elvish territory. Unlike leaders from "
-#| "other races, they are mostly proficient at navigating small skirmishes "
-#| "rather than large-scale battles, and are especially skilled at defensive "
-#| "maneuvering. Captains typically command small units that remain together "
-#| "for extended periods of time, allowing them to personally mentor and "
-#| "befriend their troops. They are often observed to lead through "
-#| "camaraderie and amicability, but still command great respect from their "
-#| "kin."
 msgid ""
 "Elvish captains usually command patrols and garrisons that stand guard over "
 "the vast forests in elvish territory. Unlike leaders from other races, they "
@@ -2541,30 +2726,18 @@ msgid ""
 "command great respect from their kin."
 msgstr ""
 "精灵队长通常领导巡逻队，以及指挥在精灵领地上的广阔森林里站岗的驻军。与其他种"
-"族的领袖不同，他们大多擅长指挥小规模的冲突,，而不是大规模的战斗，并且他们特别"
-"擅长防御机动。队长通常指挥长时间在一起的小股部队, 使他们能够亲自指导自己的部"
-"队并和属下成为朋友。人们经常观察到他们的领导风格充满着同志间的友爱，但他们仍"
-"然能得到同胞的极大尊重。"
+"族的领袖不同，他们最擅长指挥小规模的遭遇战，而不是大规模的战斗，并且他们特别"
+"擅长防御机动。队长通常指挥长时间在一起的小股部队，使他们能够亲自指导属下，并"
+"和属下成为朋友。人们经常观察到他们的领导风格中充满着同志间的友爱，但他们仍然"
+"能得到同胞的极大尊重。"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "精灵斗士"
+msgstr "精灵冠军"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Elves are typically peaceable by nature and most will attack only in "
-#| "retaliation for some wrongdoing wrought upon them. However, there are "
-#| "some elves who revel in the glory of battle and deliberately seek combat—"
-#| "purposeful or otherwise—for their own enjoyment. Naturally, most of these "
-#| "warriors live short lives devoted to honing their swordsmanship in an "
-#| "effort to conquer the battlegrounds: only the most talented thereof are "
-#| "capable of surviving constant combat and earning the title of ‘Champion’. "
-#| "Having spent their whole lives refining their prowess with the blade, "
-#| "these elves are exceptionally dangerous and should never be "
-#| "underestimated."
 msgid ""
 "Elves are typically peaceable by nature and most will attack only in "
 "retaliation for some wrongdoing wrought upon them. However, there are some "
@@ -2577,11 +2750,12 @@ msgid ""
 "their whole lives refining their prowess with the blade, these elves are "
 "exceptionally dangerous and should never be underestimated."
 msgstr ""
-"精灵通常天性和平，大多数精灵只会在对遭受的不当行为进行反击时，才会有攻击行"
-"为。然而，有一些精灵会在战斗的荣耀中狂欢，会故意为了享受而寻求战斗——不管是有"
-"目的还是没目的。自然地，这些战士中的大多数都很短命，他们一生致力于磨练剑术以"
-"征服战场：只有最有才华的战士才有能力在不断的战斗中幸存，并获得“斗士”的称号。"
-"这些精灵花了一辈子的时间完善自己使剑的能力，他们异常危险，永远不该被低估。"
+"精灵通常天性和平，大多数精灵只会在遭到不当对待而反击时，才会有攻击行为。然"
+"而，有一些精灵会故意为了享受而追求战斗——不管是有目的的战斗还是无目的的战斗。"
+"通过不断的战斗，这些战士要么能将剑术磨练到远超绝大部分同僚的水准，要么会在狂"
+"乱的白刃战中殒命。那些坚持下来的战士，最终会拥有足以征服整个战场的技能，成为"
+"名副其实的战场冠军，无情地斩杀敌人。这些精灵花了一辈子的时间完善自己地剑术，"
+"他们异常危险，永远不该被低估。"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
@@ -2603,6 +2777,13 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+"一些精灵选择加深他们与肉体世界的联系，从而增强他们已经很强大的培养和操纵自然"
+"能量的能力。也许这些德鲁伊的魔法最显著的效果是他们所保护的深山林地中明显的运"
+"动感。徘徊在精灵森林中的外来者经常说到缠绕在一起的树根和藤蔓，它们的移动速度"
+"几乎和战士的行军速度一样快，或者古树吱吱嘎嘎的晃动，一晚上就能穿过整个营地。"
+"森林和大地几乎成为一个相连的实体，像一个巨大的有机体一样生活和呼吸。当森林在"
+"德鲁伊们的精心照料下茁壮成长时，它反过来点燃了他们的魔法，共生地增强了这些精"
+"灵们已然拥有的强大力量。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
@@ -2613,7 +2794,7 @@ msgstr "诱捕"
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr "精灵魔女"
+msgstr "精灵女附魔师"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -2629,6 +2810,12 @@ msgid ""
 "well-regarded by most of their kin and sometimes called upon for guidance "
 "especially in unusual or peculiar matters."
 msgstr ""
+"在精灵魔法中，“附魔”这一表述有些误导，因为它几乎总是特指“为了占卜或洞察而操纵"
+"物体的本质”。在女附魔师中很受欢迎的一种行为，是用奥术的气息熏陶周遭的自然环"
+"境，产生存在于肉体世界与超凡世界之间的秘密小树林。这些神秘的领地由同样神秘的"
+"看守人看管，她们大多独来独往，远离窥视。虽然这些精灵相当拘谨，不善交际，但她"
+"们受到大多数同族的尊重。她们有时还会被请来提供指导，特别是在不寻常或特殊的事"
+"情上。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
@@ -2665,23 +2852,6 @@ msgstr "精灵英雄"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly "
-#| "meaning ‘one who has sacrificed in defense’ or ‘one transfigured by "
-#| "experience’. Often translated to ‘Elvish Heroes’ in the human tongue, "
-#| "this name does indicate some level of esteem and prestige, but is not "
-#| "used to glorify the position that these elves hold. Elvish Heroes are "
-#| "those who have survived numerous wars and have outlived many of their "
-#| "friends who fell in prior battles. They have seen all manner of atrocity "
-#| "committed by all races, be it orcs and humans ravaging the natural beauty "
-#| "of the forests, or even their own kind, other elves who are not above "
-#| "slaughtering innocent people out of pride and vengeance. Many years of "
-#| "fighting naturally make these swordsmen highly skilled in melee combat, "
-#| "but the hardships and destruction wrought by war take a great toll on "
-#| "both mind and body. While the Elves realize the necessity of military "
-#| "strength and honor the ‘Sárcanet’ as heroes for their service, such a "
-#| "status is not one often sought after by the majority of Elvenkind."
 msgid ""
 "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly meaning "
 "‘one who has sacrificed in defense’ or ‘one transfigured by experience’. "
@@ -2699,19 +2869,18 @@ msgid ""
 "Elvenkind."
 msgstr ""
 "成就卓著的精灵战士有时被称为“萨坎”，大意是“在防守中牺牲的人”或“被经验改变的"
-"人”。这个名字经常被翻译成人类语言中的“精灵英雄”，它确实代表了一定程度的尊重和"
-"声望，但并不是用来美化这些精灵所保有的地位。精灵英雄是那些在无数战争中幸存下"
-"来的人, 他们比在以前的战斗中倒下的许多朋友都活得长。他们看到了所有种族所犯下"
-"的各种暴行，不论是破坏森林的自然风光的兽人和人类，还是他们自己的同类，会出于"
-"傲慢和复仇心而屠杀无辜人民的精灵。多年的战斗很自然地让这些剑客非常熟习于近"
-"战,，但战争造成的艰辛和破坏对身心都造成了巨大的损失。虽然精灵们意识到了军事力"
-"量的必要性，并将“萨卡内特”视作为本族服务的英雄来尊重，但这样的地位并不是大多"
-"数精灵所追求的。"
+"人”。这个名字经常被翻译成人类语言中的“精灵英雄”，它确实代表了一定程度的声望，"
+"但并不是用来美化这些精灵所保有的地位。精灵英雄是在无数战争中幸存下来的，他们"
+"比在之前的战斗中倒下的许多朋友都活得长。他们常常是战场上的极少数幸存者之一，"
+"目睹了种种战争暴行——把他们的森林家园烧成平地的兽人和人类，从死者身上偷走珍贵"
+"宝物的矮人，让他们的同伴苏生并攻击他们的死灵法师，甚至还有毫无怜悯地屠杀无辜"
+"者的，他们自己的同类。虽然精灵们意识到了军事力量的必要性，并因“萨卡内特”的贡"
+"献而将他们视为英雄，但这样的地位并不是大多数精灵所追求的。"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr "高阶精灵领主"
+msgstr "精灵高领主"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:18
@@ -2733,6 +2902,17 @@ msgid ""
 "lords is invaluable for maintaining the prosperity of Elvish rule, whether "
 "or not they sit at the top of the chain of command."
 msgstr ""
+"虽然精灵魔法的双重性在肉体世界和奥术世界的明显区隔之中表现得最为强烈，但同样"
+"的分歧也反映在精灵的贵族团体中。大多数领主与女附魔师紧密联系，其部分原因是他"
+"们使用仙灵之火，从而将自己与洞察和毁灭方面联系起来。虽然直觉与智慧不同，但领"
+"主的直觉通常受到尊重，而他的愤怒则令人畏惧。这一点只会随着年龄的增长而变得更"
+"加真确，因为时间会让精灵的头脑和感官变得更加敏锐。\n"
+"\n"
+"外人认为存在一个“高领主”组成的上层阶级。这通常是个谬论，出现这一谬论的原因"
+"是，这些富有经验的精灵在感知和力量方面都有很大的差距。实际上，精灵的统治体系"
+"在不同的领地之间是不同的，在和平与战争时期也是不同的。唯一可以确定的是，无论"
+"这些领主是不是位于指挥链条的顶端，他们的睿智在维持精灵的繁荣统治方面都是非常"
+"宝贵的。"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
@@ -2754,6 +2934,13 @@ msgid ""
 "peacekeepers, holding high authority during times of amity and taking a "
 "lesser role in times of war."
 msgstr ""
+"精灵领地的贵族女领主们通常与精灵魔法的尘世方面紧密相连，她们与智慧以及保护有"
+"关。她们被委托维护很多更受崇敬的精灵传统，因此在维护精灵们著名的森林圣地的宁"
+"静和自然奇迹方面，她们发挥了很大的作用。她们与自己的对应面也就是领主是不同"
+"的。许多领主通过奥术来获得强大的个人洞察力，而大多数女领主将她们的力量分散到"
+"自己所引导的社会团体中，这往往使得她们的个人能力遭到一些损失。出于这个原因，"
+"她们最常担任的是外交官和维和人员，在友好时期拥有很高的权威，而在战争时期则扮"
+"演较次要的角色。"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -2762,31 +2949,6 @@ msgstr "精灵领主"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Succession among the Elvish nobility is a highly structured process "
-#| "determined by a number of stringent constraints. The future leaders of "
-#| "the elves have the difficult task of governing the three-fold aspects of "
-#| "Elvish society: warriors and rangers who defend the forests, peaceable "
-#| "civilians who shy away from combat altogether, and the collective group "
-#| "of healers and mystics who study the art of faerie magic. Being able to "
-#| "reconcile the differences between these factions and effectively lead "
-#| "their people requires considerable personal merit and a deep "
-#| "understanding of all elves, be they warrior, mystic, or pacifist.\n"
-#| "\n"
-#| "Many elves begin training in archery and swordsmanship from a young age, "
-#| "and especially promising adolescent boys of appropriate lineage are "
-#| "selected to study under Enchantresses who have mastered the mystic arts. "
-#| "Since the nature of faerie magic lends itself more to female elves than "
-#| "to male elves, only the most talented learn to temper the volatile way of "
-#| "the faerie and connect themselves to the world of the arcane. Those who "
-#| "prove their personal mettle in swordsmanship and sorcery must then learn "
-#| "to apply their newfound powers wisely, for violent conflict is something "
-#| "never to be taken lightly, and just because a battle can be won does not "
-#| "mean it should be fought in the first place. Reconciling potent combat "
-#| "prowess with diplomatic restraint is difficult for most, but those who "
-#| "can do so are granted the title of Lord and become the next generation of "
-#| "Elvish leadership."
 msgid ""
 "Succession among the Elvish nobility is a complex process that varies "
 "somewhat between the different enclaves of Elvenkind. Typically, the future "
@@ -2806,19 +2968,15 @@ msgid ""
 "an absolute one, and they are expected to lead more by diplomacy and wisdom "
 "rather than force."
 msgstr ""
-"精灵贵族之间的继承是一个高度结构化的过程, 由一些严格的限制决定。精灵未来的领"
-"袖们面临着管理精灵社会三重方面的艰巨任务：保卫森林的战士和游侠，完全回避战斗"
-"的和平平民，以及研究仙境魔法的治疗者和秘术师的集体。要调和这些派别之间的分歧"
-"并有效地领导人民需要相当多的个人优点和对所有精灵的深刻理解，无论是战士、秘术"
-"师还是和平主义者。\n"
+"精灵贵族的继承是复杂的过程，在精灵的不同领地之间有一定的差异。通常情况下，精"
+"灵的未来领袖要负责管理精灵社会的三个方面：保卫森林的战士和游侠，完全回避战斗"
+"的和平平民，以及研究仙灵魔法的医者和秘术师的集体。要调和这些派别之间的分歧并"
+"有效地领导人民，需要相当强的个人能力和对各类精灵的深刻洞察。为此，领主通常是"
+"唯一被允许学习仙灵魔法的男性精灵，而传统上只有女性萨满才能学习这些。\n"
 "\n"
-"许多精灵从小就开始训练射箭和剑术，特别有前途而血统适当的少年会被选中，在掌握"
-"秘术的魔女手下学习。仙境魔法的本质决定它更适合女性精灵而不是男性精灵，因此只"
-"有最有才华的人才能学会如何控制不稳定的仙境之道，并将自己与奥术的世界联系起"
-"来。那些在剑术和巫术方面证明了自己的个人才能的人，必须学会明智地运用自己新得"
-"到的力量，因为暴力冲突是永远不能随意对待的。仅仅因为一场战斗可以打赢，并不意"
-"味这场战斗就该发生。对大多数人来说，将强大的战斗能力与外交克制相协调是很困难"
-"的，但能够做到这一点的人将被授予领主头衔，并成为下一代的精灵领袖。"
+"虽然有些领地，如北部的林塔尼尔丛林，通过血统来保持贵族地位，但其他的领地，如"
+"强大的韦弥尔精灵，在每个新世代都会选举新的领主。在这两种情况下，贵族的地位都"
+"很少是绝对的，人们期望他们通过交涉和智慧而不是武力来领导。"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -2827,18 +2985,6 @@ msgstr "精灵精准射手"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Elves have an intimate connection to the world of faerie, which innately "
-#| "imbues them with a small amount of magic and grants them highly acute "
-#| "senses. This, combined with years of hunting in the deep forests, makes "
-#| "the elves incredibly keen-sighted, a gift which contributes greatly to "
-#| "their mastery of the bow. An elf practiced at archery is capable of "
-#| "hitting a pinhole-sized target from hundreds of paces away and can shoot "
-#| "quickly and precisely enough to split falling branches. Of course, "
-#| "training the body to keep up with the eyes is no easy feat, and realizing "
-#| "this prodigious skill does come with the cost of weakness in close "
-#| "quarters."
 msgid ""
 "Elves have an intimate connection to the world of faerie, which innately "
 "imbues them with highly acute senses and incredibly keen vision. This, "
@@ -2849,12 +2995,11 @@ msgid ""
 "training the body to keep up with the eyes is no easy feat, and realizing "
 "this prodigious skill does come with the cost of weakness in close quarters."
 msgstr ""
-"精灵与仙境世界有着密切的联系，这天生就给他们注入了少量的魔法,，赋予了他们高度"
-"敏锐的感官。这一点，再加上多年在森林深处狩猎，使精灵的视觉令人难以置信的敏"
-"锐。这一礼赠对他们对弓的熟习帮助极大。熟习射术的精灵能够从数百步外击中只有小"
-"孔大小的目标，并且能够快速而精确地射击，其快速和精确程度足以击裂掉落的树枝。"
-"当然，要把身体训练到能跟上眼睛，并不是一件容易的事情。意识到这种惊人的技能确"
-"实存在着近战孱弱的代价，也不是一件容易的事情。"
+"精灵与仙灵世界有着密切的联系，这使得他们天生具有高度敏锐的感官和难以置信的眼"
+"光。这一点，再加上多年在森林深处狩猎，极大地促进了精灵对弓的熟习。精通射术的"
+"精灵能够从几十步外击中只有针孔大小的目标，并能快速而精确地射击，足以在半空中"
+"劈开掉落的树枝。当然，要把身体训练到能跟上眼睛，并不是易事。意识到这种惊人的"
+"技能确实存在着近战孱弱的代价，也不是易事。"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:38
@@ -2876,20 +3021,6 @@ msgstr "精灵元帅"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Elves are not often the instigators of open war, but will not shy away "
-#| "when the time comes to do battle. Of course, blindly engaging in combat "
-#| "without any strategy or tactic is foolish, and so the elves maintain a "
-#| "small number of strategically-minded commanders at all times. Selected "
-#| "from the most talented captains, marshals undergo extensive training in "
-#| "various military styles, including those of the humans and orcs. They are "
-#| "brilliant, unorthodox strategists who excel at breaking down large "
-#| "battlefronts into smaller skirmishes, transforming ordinary campaigns "
-#| "into dispersed guerrilla warfare. Engaging elves in their own homes is "
-#| "always a daunting task for any invasion force, and it is precisely "
-#| "because of the skillful maneuvering of the marshals that manage the "
-#| "protection of their people."
 msgid ""
 "Elves are not often the instigators of open war, but will not shy away when "
 "the time comes to do battle. To this end, they maintain a small number of "
@@ -2902,18 +3033,17 @@ msgid ""
 "task for any invasion force, precisely because of the skillful maneuvering "
 "of the marshals who are entrusted with the protection of their people."
 msgstr ""
-"精灵并不常常是公开战争的发起者，但他们在战斗之时不会回避。当然，盲目地在没有"
-"任何战略或战术的情况下投入战斗是愚蠢的，因此精灵们在任何时候都保有一小群有战"
-"略头脑的指挥官。从最有才华的队长之中挑选出来的元帅接受了各种军事风格的大量训"
-"练，其中包括了人类和兽人的军事风格。他们是杰出的非正统战略家，擅长将大型战线"
-"分解成较小的冲突线，将普通战役转变为分散的游击战。在精灵自己的家园与他们作"
-"战，对任何入侵部队来说都是一项艰巨的任务，这正是因为负责保护精灵族人的元帅们"
-"的巧妙操作。"
+"精灵并不常是公开战争的发起者，但他们并不会回避战斗。为此，精灵们总是保有一小"
+"群有战略头脑的元帅。从最有才华的巡逻队长之中挑选出来的指挥官们接受了各种军事"
+"风格的大量训练，其中包括了人类和兽人的军事风格。他们是杰出的非正统战略家，擅"
+"长将大型战线分解成较小的冲突线，将普通战役转变为分散的游击战。在精灵自己的家"
+"园与他们作战，对任何入侵部队来说都是一项艰巨的任务，这正是因为负责保护精灵族"
+"人的元帅们的巧妙策略。"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "精灵骑卫兵"
+msgstr "精灵先锋骑卫"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:19
@@ -2948,26 +3078,30 @@ msgid ""
 "The truth of this tale, one can only surmise, but doubtless, Outriders the "
 "fastest do comprise."
 msgstr ""
+"昔有一精灵，贝兰是为名，欲之遥远地，御马而独行。\n"
+"一十三日夜，日夜不经停，何处可小憩，湖边仙子居。\n"
+"“彼方有果木，叶茂散芳馨，娜娅吾好友，汝可见得清？”\n"
+"欢呼又雀跃，骏马且嘶鸣，满心欣又喜，足下正趯趯。\n"
+"霎时大风起，狂暴乱无匹，有声便入耳，飘渺若灵气。\n"
+"“且慢且止停，尔尔小精灵，吾林与吾果，恕吾不汝予。”\n"
+"“吾与吾爱马，身心俱已疲，料汝定有知，且容吾休憩！”\n"
+"“汝身乏又累，吾确知分明，若要得吾助，相逐定吾心。”\n"
+"贝兰便应允，共赴果木下，云飞伴风啸，人马似莫及。\n"
+"岂曰莫能及，人马疾如电，转瞬越劲风，竟无声一点。\n"
+"时如驹过隙，灵仙两相逐，及至果木下，贝兰胜当先。\n"
+"仙子誉精灵，恩泽被同胞，人马便离去，永沐仙赦免。\n"
+"\n"
+"逸闻真伪，止能度之，精灵先锋，皆有迅足。"
 
+# 在”灼热双日之下“战役中，单位”Quenoth Ranger“的描述中特别提到，把这些奎诺单位称为”Ranger“并不准确，因为”Quenoth Ranger“和曾经拥有同样“Ranger”头衔的那些“自然探险家”并没有多少相同之处。
+# 为了在中文中体现出这种“不合适”，“Ranger”的译文必须含有“自然探险家”要素。因此，其译文从“游侠”改为“巡林者”。
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "精灵游侠"
+msgstr "精灵巡林者"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The silent watchers of the forests, rangers are masters of stealth and "
-#| "reconnaissance. Many are explorers and loners, preferring to travel alone "
-#| "along the paths between the towering trees and among the unspoiled "
-#| "natural beauty of their homes, of which they are fiercely protective. "
-#| "While they possess considerable skill in both blade and bow, rangers are "
-#| "a little less adept at fighting other warriors on even terms, preferring "
-#| "instead to ambush their enemies from the shadows in the woods. A surprise "
-#| "attack from rangers can cripple even a force many times their size, and "
-#| "attacking armies often choose to withdraw rather than risk a game of "
-#| "guerrilla warfare with rangers in the forests."
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
 "and reconnaissance. Many are explorers and loners, preferring to wander "
@@ -2979,19 +3113,19 @@ msgid ""
 "their size and will often compel attacking armies to withdraw rather than "
 "risk a game of prolonged guerrilla warfare in the forests."
 msgstr ""
-"游侠是森林中沉默的守望者，匿踪和侦察的大师。许多游侠是探险家和孤独者，他们喜"
-"欢独自沿着高耸的树木之间的小路旅行，也喜欢在家园里未被破坏的自然美景之中旅"
-"行。他们对这美丽家园的保护欲极强。虽然在使用刃器和弓箭方面都有很高的造诣，但"
-"游侠并不太善于在平等条件下与其他武士作战。他们更愿意从树林的阴影中伏击敌人。"
-"游侠的突然袭击甚至能使一支规模大许多倍的部队瘫痪。进攻的军队往往会选择撤退，"
-"而不是去冒与森林中的游侠进行游击战的风险。"
+"巡林者是森林中沉默的守望者，匿踪与侦察的大师。许多巡林者是孤独的探险家，他们"
+"喜欢独自在高耸树木之间穿行，这些树木保护着他们家园的自然美景。他们对这美丽家"
+"园的保护欲极强。虽然在使用刃器和弓箭方面都有很高的造诣，但巡林者并不太擅长在"
+"平等条件下与其他战士对战。他们更愿意在树林的阴影中伏击敌人。巡林者的突然袭击"
+"甚至能使一支规模大许多倍的部队瘫痪。进攻的军队往往会选择撤退，而不是冒风险去"
+"与森林中的巡林者进行长期游击战。"
 
 #. [special_note]
 #: data/core/units/elves/Ranger.cfg:21
 msgid ""
 "Elvish Rangers are well-traveled and adept at traversing harsh terrains like "
 "sand, water, and mountains."
-msgstr ""
+msgstr "精灵游侠们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:95
@@ -3005,21 +3139,6 @@ msgstr "精灵骑手"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:21
-#, fuzzy
-#| msgid ""
-#| "The prevalence of guerrilla tactics in Elven strategy results in great "
-#| "emphasis on maintaining highly mobile units capable of fighting on an "
-#| "adaptable battlefront. This style of warfare requires rapid communication "
-#| "between small skirmish groups and the ability to quickly transfer troops "
-#| "between combat zones. Experienced Elvish riders know this well and thus "
-#| "devote most of their time to improving their horsemanship rather than "
-#| "their individual fighting skills. The speed at which they travel through "
-#| "the forest would be suicidal for any other cavalry, and they are "
-#| "tenacious enough to ride for as much as two or three days at a time "
-#| "without resting. While the intelligence and communication these horsemen "
-#| "provide is invaluable to Elven tactics, the lack of combat prowess and "
-#| "front line engagement means that Elvish riders are the oft unsung heroes "
-#| "of war, left supporting their brethren from the back lines."
 msgid ""
 "The prevalence of guerrilla tactics in Elven strategy results in great "
 "emphasis on maintaining highly mobile units capable of fighting on an "
@@ -3035,13 +3154,13 @@ msgid ""
 "these riders are the oft unsung heroes of war, left supporting their "
 "brethren from the back lines."
 msgstr ""
-"游击战术在精灵战略中的盛行，使得他们非常重视维持高度机动的部队，这些部队能够"
-"在多变的战线上作战。这种战争方式需要小股部队之间的快速沟通，以及在战区之间快"
-"速调动部队的能力。经验丰富的精灵骑手们对此十分了解，因此他们的大部分时间都花"
-"在了提升马术，而不是个人的战斗技能上。他们穿越森林的速度对任何其他骑兵来说都"
-"是自杀，而他们顽强到可以在不休息的情况下一次骑行两三天。虽然这些骑手提供的情"
-"报和通信对精灵战术来说是无价的，但战斗力和前线作战经验的缺乏，意味着精灵骑手"
-"常常留在后防线上支持他们的兄弟，是战争中的无名英雄。"
+"游击战术在精灵战略中盛行，这使得他们非常重视维持高度机动的部队，这些部队能在"
+"多变的战线上作战。这种战争方式需要小股部队之间的迅速沟通，以及在战区之间快速"
+"调动部队的能力。经验丰富的精灵骑手们对此十分了解，因此他们的大部分时间都花在"
+"了提升马术上，而不是在个人战斗技能上。他们穿越森林之迅速，对其他任何骑兵来说"
+"都是自杀，而他们顽强到可以在不休息的情况下连续骑行两三天。虽然这些骑手提供的"
+"情报和通信是极其宝贵的，但他们缺乏战斗力和前线作战经验，这意味着精灵骑手常常"
+"留在后防线上支持他们的弟兄，往往是战争中的无名英雄。"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
@@ -3050,20 +3169,6 @@ msgstr "精灵侦察兵"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Although the equines bred by the wood elves are much faster and far more "
-#| "agile than regular horses, they tend to be more fickle and harder to "
-#| "master. It takes many years to train an Elven pony, but once tamed, they "
-#| "are among the most loyal and devoted mounts. These unique horses allow "
-#| "Elvish horsemen to ride at extreme speeds through thick forests with nary "
-#| "a scratch and outpace most other cavalry on open ground. Though these "
-#| "riders possess some skill in wielding swords and bows, their greatest "
-#| "effectiveness comes from their ability to scout and outmaneuver enemy "
-#| "forces rather than engage in combat directly. Elvish scouts are most "
-#| "often used as messengers and support units and are adept at quickly "
-#| "transferring information between patrols and skirmish groups, whom they "
-#| "also reinforce when necessary."
 msgid ""
 "Although the equines bred by the wood elves are much faster and more agile "
 "than regular horses, they tend to be quite a bit harder to master. It takes "
@@ -3076,13 +3181,12 @@ msgid ""
 "support units and are adept at quickly transferring information between "
 "patrols, whom they also reinforce when necessary."
 msgstr ""
-"虽然木精灵培育的马比普通的马更快更敏捷，但它们往往也更善变更难驾驭。训练一匹"
-"精灵小马需要很多年，但一旦驯服，它们就是最忠诚、最敬业的坐骑之一。这些独特的"
-"马可以让精灵骑手以极快的速度在茂密的森林中骑行而几乎不会有擦伤，而在空地上，"
-"精灵骑手的速度快过大多数其他骑兵。虽然这些骑手掌握了一些使剑用弓的技能,，但他"
-"们最大的效用来自于侦察敌军并比敌军更快机动的能力，而不是直接与敌军作战的能"
-"力。精灵侦察兵通常被用作信使和支援单位，善于在巡逻队和小股部队之间迅速传递信"
-"息，必要时他们也会作为这些部队的援军。"
+"虽然木精灵培育的马比普通的马更快更敏捷，但它们往往也更难驾驭一些。训练浮躁的"
+"小马需要很多年，但一旦驯服，它们就是最忠诚的坐骑之一。这些独特的马可以让精灵"
+"骑手在空地上的速度快过大多数其他骑兵，甚至可以让他们在茂密的森林中全速疾驰。"
+"虽然这些骑手掌握了一些使剑用弓的技能，但他们最大的功用来自于侦察敌军并比敌军"
+"更快机动的能力。精灵侦察兵通常被用作信使或支援单位，擅长在各个巡逻队之间迅速"
+"传递信息，必要时他们也会成为这些部队的援军。"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -3101,6 +3205,11 @@ msgid ""
 "peaceful by nature, these shamans rarely engage in combat, instead using "
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
+"只要稍加训练，精灵与生俱来的对自然界的亲和力就可以被引导到影响物理位面的物质"
+"魔法中。这一流派的萨满最常使用技能来照顾与她们的力量相连的大自然。她们的家园"
+"周围那异常茂盛而青翠的森林，便是照顾的结果。同样的魔法也使她们在治疗技艺方面"
+"具有非凡而众所周知的能力。这些萨满天性虔诚和平，很少参与战斗，而是用自己的魔"
+"法指挥大地本身来阻碍敌人，或让他们无法作乱。"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -3109,17 +3218,6 @@ msgstr "精灵神射手"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Though not a formal title, ‘Sharpshooter’ is the epithet given to the "
-#| "most gifted Elvish marksmen. These expert archers are capable of feats "
-#| "that, even by Elven standards, border on miraculous: they have the "
-#| "precision to split incoming arrows midair and can loose a second arrow "
-#| "before the first hits, all while maintaining enough power to damage steel "
-#| "armor. A single volley of their arrows is enough to bring down a knight "
-#| "on horseback, and even heavily-armored infantry will survive few "
-#| "additional shots. The sharpshooters of the elves have honed their art to "
-#| "its highest form and are the undisputed masters of archery."
 msgid ""
 "Though not a formal title, ‘Sharpshooter’ is the epithet given to the most "
 "gifted Elvish marksmen. These expert archers are capable of feats that, even "
@@ -3132,11 +3230,11 @@ msgid ""
 "the undisputed masters of archery."
 msgstr ""
 "虽然不是正式头衔，但“神射手”是赋予最有天赋的精灵精准射手的绰号。这些老练的弓"
-"箭手的壮举，即使按照精灵的标准也近乎奇迹：他们的射击之精确，可以在半空中击裂"
+"箭手的壮举，即使按照精灵的标准也近乎奇迹：他们的射击之精确，可以在半空中劈开"
 "来袭的箭支，他们可以在第一箭命中前就射出第二支箭，与此同时还能让箭支保持足够"
-"的力量来击伤钢甲。他们的一次齐射就足以击倒马背上的骑士，甚至重甲步兵也不能在"
-"再多一两次射击之下存活。精灵神射手已将他们的技艺磨练到了极致，是无可争辩的射"
-"术大师。"
+"的力量来击伤全装板甲。他们的一次齐射就足以击倒马背上的骑士，甚至重甲步兵要是"
+"再挨一两下也无法存活。精灵神射手已将他们的技艺磨练到了极致，是无可争辩的箭术"
+"大师。"
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:81
@@ -3155,6 +3253,11 @@ msgid ""
 "for true faerie or ‘forest spirits’, these stewards of the forests epitomize "
 "their people’s mysterious connection with the natural order."
 msgstr ""
+"随着精灵少女越来越多地与自然纠缠在一起，大地的精华开始改造她的身体。风仙子背"
+"上长出的蝴蝶翅膀是她与仙灵联系的直接表现，赋予她特有的既宁静又恐怖的空灵气"
+"质。风仙子是俗世的大师，由鲜为人知的力量引导，但却受到同族的极大尊重。她们经"
+"常被误认为是真正的仙灵或“森林之灵”，这些森林的管理者是他们的人民与自然秩序的"
+"神秘联系的缩影。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
@@ -3181,11 +3284,17 @@ msgid ""
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
+"精灵的魔法分为两种不同的路径，一种侧重于操纵世俗或物质世界，另一种则侧重于奥"
+"术位面的占卜。后者作为一种难以控制的力量，甚至难以被其大多数修行者所理解。精"
+"灵们通常并不追求这种力量。掌握奥术的人在研究其流派的不稳定性质时面临着巨大风"
+"险，并很快学会尊重其技艺的破坏性力量。这种破坏性最常表现为“仙灵之火”的喷发，"
+"这是精灵女巫最容易掌握的技能之一。虽然奥术火焰是奥术的相当肤浅的应用形式，但"
+"精灵们还是高度重视，并小心翼翼地利用它。"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr "青空仙灵"
+msgstr "精灵风仙子"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -3206,6 +3315,15 @@ msgid ""
 "‘reflection pools’ and steer them is one of her greatest — and most feared — "
 "abilities."
 msgstr ""
+"贤者一般的风仙子在深不可测的方面具有巨大的力量，她们是操纵世俗和奥术世界之间"
+"桥梁的大师。长年累月地窥视超凡的领域，削弱了这些精灵观察物理世界的能力。作为"
+"回报，他们被赋予了一种抽象的视觉，获得了观察现实本质的一个甚至几个不同方面的"
+"能力。就像一面破碎的镜子的许多碎片一样，物质世界的无数断裂那许多不同的面上反"
+"射出奥术的光芒。仔细的练习可以让人跟随这些光的股线从一个窗格来到另一个窗格，"
+"观察到物理现实的结果是如何随着自由意志的每一个选择而演变。虽然通常不可能直接"
+"编织这些线，但若找到位面中对奥术位面反射最强烈的位置，并在那些位置略施小计，"
+"那么间接操纵是可行的。找到并控制这些“反射池”的能力，是风仙子最伟大的——也是最"
+"令人恐惧的——能力之一。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:41
@@ -3280,6 +3398,13 @@ msgid ""
 "to goblins, recognize that picking a fight with the rider is also picking a "
 "fight with jaws that strike faster than a sword, and almost as hard."
 msgstr ""
+"战斗经验不仅增强了坐骑和骑手的战斗力，而且加强了他们之间的牵绊。虽然人类骑士"
+"可能骑着不同的骏马投入战斗，但“地精骑士”这个称谓却把地精和狼二者整体视为一个"
+"单位。他们彼此极度忠诚，几乎到了过分的程度。\n"
+"\n"
+"在兽人中，骑手被视为高于地精的阶级，即使他们与坐骑分离时也是如此。兽人咕噜兵"
+"虽然感觉自己比地精更胜一筹，但他们同时也认识到，和骑手打架，也就意味着和那些"
+"像剑一样快，也几乎一样狠的嘴的拥有者打架。"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -3351,7 +3476,6 @@ msgstr "狼骑手"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are much "
@@ -3366,11 +3490,11 @@ msgid ""
 msgstr ""
 "没人能确定驯服狼并以它们为坐骑的实践是怎么开始的，但这一实践对地精的好处显而"
 "易见。他们比自己的兽人同胞矮小，又脆弱得多，而且还常常承担着战斗中最危险最没"
-"人想做的部分。能获得一头坐骑的地精在战斗中的角色会更安全，而且猜想起来，也更"
-"有意思。\n"
+"人想做的部分。能驯服一头坐骑的地精在战斗中会更安全。\n"
 "\n"
-"类似地，狼永远不能承受一个穿着板甲的人的重量，但是搭载穿着皮甲的地精则毫无问"
-"题。不像马那样，狼能在山岭中迅速穿行，尽管水和森林还是会减慢他们的速度。"
+"虽然没几头狼在承受着一个真兽人的体重的情况下还能站得起来，但迅捷地承载一个地"
+"精则在很多狼的能力范围之内。不像马那样，狼能在山岭中迅速穿行，尽管水和森林还"
+"是会减慢他们的速度。"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -3516,7 +3640,7 @@ msgstr ""
 "团。统治者有时对他们很提防，因为圣骑士的忠心是以君主们自身显而易见的品德为限"
 "的。居心叵测的人因此造谣中伤或者驱散这些团体，或者更少见的情况是，他们靠着精"
 "心策划的诡计让这些忠贞不二的圣骑士为他们服务。\n"
-"    \n"
+"\n"
 "通常来说，完全的圣骑士不像统帅军队的“高阶骑士”那般令人畏惧，但他们也仍然是一"
 "等一的战士。此外，他们的智慧和虔诚赋予了这些武士僧侣们奇特的力量：同魔法的或"
 "非自然的事物战斗时，圣骑士非常强大，而且他们中的绝大部分人都会一些医术，有治"
@@ -3564,24 +3688,18 @@ msgstr ""
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr "近卫骑兵"
+msgstr "弩骑士"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback. Their combination of striking power and mobility is fearsome; "
-#| "and they have a reputation for dash and aggressiveness to match it. The "
-#| "daring deeds of Cavaliers are the subject of many a tale and song."
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
 "Their combination of striking power and mobility is fearsome, and they have "
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
-"近卫骑兵是在马背上使用剑和十字弩的高手。他们的打击力与机动性的结合令人畏惧，"
-"与之相应的是横冲直撞与充满侵略性的形象。他们无畏的战功也被许多传说和歌曲所传"
+"弩骑士是在马背上使用剑和十字弩的高手。他们的打击力与机动性的结合令人畏惧，与"
+"之相应的是横冲直撞与充满侵略性的形象。他们无畏的战功也被许多传说和歌曲所传"
 "颂。"
 
 #. [attack]: type=pierce
@@ -3772,7 +3890,7 @@ msgstr ""
 msgid ""
 "Compared to other loyalists, Halberdiers have a higher resistance to "
 "‘pierce’ attacks."
-msgstr ""
+msgstr "与其他保王党人相比，戟兵对“穿刺”攻击的抗性更高。"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -3903,7 +4021,7 @@ msgstr ""
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr "卫队士官"
+msgstr "剑术大师"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:18
@@ -3953,7 +4071,7 @@ msgstr ""
 msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
-msgstr ""
+msgstr "与其他保王党人相比，长矛兵对“穿刺”攻击的抗性更高。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:34
@@ -3963,7 +4081,7 @@ msgstr "长矛"
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr "皇家卫兵"
+msgstr "侍卫"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
@@ -3977,23 +4095,23 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"皇家卫兵是从韦诺最好的剑士里选出来的。他们服务于高等贵族，担任保镖，并在一定"
-"程度上成为主人公职的象征。一支由皇家卫兵组成的特种部队驻扎在国会大厦，负责保"
-"卫皇宫和皇室成员。由于与上级之间的信任关系，常常是他们，而不是雇佣兵，被赋予"
-"至关重要的使命。他们的近战技艺高超，值得信赖，这是他们最大的资本，也是他们的"
-"名声所在。"
+"侍卫是从韦诺最好的剑士里选出来的。他们服务于高等贵族，担任保镖，并在一定程度"
+"上成为雇主的公职的象征。一支由侍卫组成的特种部队驻扎在首都，负责保卫王宫和王"
+"室成员。由于与上级之间的信任关系，常常是他们，而不是雇佣兵，被赋予至关重要的"
+"使命。他们值得信赖且近战技艺高超，这是他们最大的资本，也是他们声名远扬的原"
+"因。"
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:22
 msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
-msgstr ""
+msgstr "与其他保王党人相比，侍卫对“刃器”和“冲击”攻击的抗性更高。"
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movement points."
-msgstr ""
+msgstr "与其他保王党人相比，侍卫拥有更多的移动点。"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -4081,7 +4199,7 @@ msgstr ""
 msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
-msgstr ""
+msgstr "与其他保王党人相比，剑士对“刃器”和“冲击”攻击的抗性更高。"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -4169,7 +4287,7 @@ msgstr ""
 msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
-msgstr ""
+msgstr "与其他法师相比，大法师对“火焰”攻击的抗性更高。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:47
@@ -4206,7 +4324,7 @@ msgstr "闪电"
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr "高阶大法师"
+msgstr "伟大法师"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:19
@@ -4223,11 +4341,11 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
-"凡是有可能获得高阶大法师称号的人都几乎是其所处时代的传奇。城镇传令员们被迫意"
-"识到，在使用这一头衔时必须慎而又慎。这一头衔所必须的品德，由当时最重要的法师"
-"们组成的评议会小心谨慎地决定。而要授予这一头衔，则必须由大多数人投票通过才"
-"行。无论如何，任何被严肃地提名授予高阶大法师称号的人，都是毋庸置疑的魔法大"
-"师，他们在技艺上压倒了大多数同僚。\n"
+"凡是有可能获得伟大法师称号的人都几乎是其所处时代的传奇。城镇传令员们被迫意识"
+"到，在使用这一头衔时必须慎而又慎。这一头衔所必须的品德，由当时最重要的法师们"
+"组成的评议会小心谨慎地决定。而要授予这一头衔，则必须由大多数人投票通过才行。"
+"无论如何，任何被严肃地提名授予伟大法师称号的人，都是毋庸置疑的魔法大师，他们"
+"在技艺上压倒了大多数同僚。\n"
 "\n"
 "虽然他们不是武士，但不管怎样，当他们在战斗中使用自己的能力时，别的士兵们常常"
 "站在一旁看着，内心充满着敬畏。"
@@ -4237,12 +4355,12 @@ msgstr ""
 msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
-msgstr ""
+msgstr "与其他法师相比，伟大法师对“火焰”攻击的抗性更高。"
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:90
 msgid "female^Great Mage"
-msgstr "高阶大法师"
+msgstr "伟大法师"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
@@ -4278,7 +4396,7 @@ msgstr ""
 msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
-msgstr ""
+msgstr "与其他法师相比，红袍法师对“火焰”攻击的抗性更高。"
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:98
@@ -4326,7 +4444,7 @@ msgstr ""
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr "银袍法师与他们的魔法体质协调一致，因而对非物理攻击有很高的抗性。"
 
@@ -4365,7 +4483,7 @@ msgstr ""
 msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
-msgstr ""
+msgstr "与其他法师相比，白袍法师对“奥术”攻击的抗性更高。"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:105
@@ -4397,7 +4515,7 @@ msgstr ""
 msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
-msgstr ""
+msgstr "与其他法师相比，光明法师对“奥术”攻击的抗性更高。"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:102
@@ -4432,7 +4550,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:24
 #: data/core/units/humans/Royal_Warrior.cfg:29
 msgid "morning star"
-msgstr "晨星之锤"
+msgstr "晨星锤"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
@@ -4537,7 +4655,7 @@ msgstr "亡命徒"
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr "拦路强盗"
+msgstr "车匪"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:19
@@ -4548,9 +4666,9 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
-"拦路强盗们阴险的暴力行为令他们臭名昭著。他们随时准备为出价最高的人卖命，带领"
-"着一帮小弟和雇主的敌人作战。他们通常在人烟稀少的公路上或者死寂的夜晚里发动袭"
-"击，在这类遭遇战方面的经验使得他们成为白刃战中的致命对手。"
+"车匪们阴险的暴力行为令他们臭名昭著。他们随时准备为出价最高的人卖命，带领着一"
+"帮小弟和雇主的敌人作战。他们通常在人烟稀少的公路上或者死寂的夜晚里发动袭击，"
+"在这类遭遇战方面的经验使得他们成为白刃战中的致命对手。"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -4627,7 +4745,7 @@ msgid "Thug"
 msgstr "暴徒"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -4859,7 +4977,6 @@ msgstr "人鱼缠绕者"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
-#, fuzzy
 msgid ""
 "Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
 "collect the fish, and clubs to finish the kill. Both of these tools have "
@@ -4873,12 +4990,12 @@ msgid ""
 "combat."
 msgstr ""
 "人鱼倾向于在捕鱼时同时使用渔网和大棒：渔网用来聚集鱼群，而大棒用来把鱼打死。"
-"这两种工具都用在了战争中，而且确实很有效，以致于专长于使用它们的辅工们被特意"
-"派上了战场。\n"
+"这两种工具都用在了战争中，而且确实很有效，以至于擅长使用它们的辅工们被特意派"
+"上了战场。\n"
 "\n"
-"人鱼经常发现自己与陆居的敌人们陷入僵持状态：人鱼们在水中太强，而在陆地上又太"
-"弱以至于无力发起任何进攻。渔网是这一杠杆上的关键点：如果没有它们，人鱼们在陆"
-"地上完全不能进行有效的追击，而且在肉搏战中也会处于严重的劣势。"
+"人鱼经常与陆居敌人陷入僵持状态：人鱼在水中太强，而在陆地上又太弱，无力发起任"
+"何进攻。此时渔网的影响便很关键：如果没有它们，人鱼们在陆地上就完全不能有效追"
+"击，而在肉搏战中也会处于严重的劣势。"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -4906,13 +5023,6 @@ msgstr "人鱼重甲兵"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
-#, fuzzy
-#| msgid ""
-#| "With their towering shields, the Merman Hoplites form the elite guard of "
-#| "the watery realm. Their powerful armor and rigid discipline allow them to "
-#| "hold a steadfast line in the maelstrom of battle. In times of "
-#| "desperation, they can even do so on land, though not nearly as well as a "
-#| "creature with legs."
 msgid ""
 "With their heavy armor and shields, the Merman Hoplites form the elite guard "
 "of the watery realm. Their powerful style of defensive combat and rigid "
@@ -4920,9 +5030,9 @@ msgid ""
 "In times of desperation, they can even do so on land, though not nearly as "
 "well as a creature with legs."
 msgstr ""
-"人鱼重甲兵装备着高耸的盾牌，是水世界里的精英卫兵。强力的铠甲和严明的军纪使得"
-"他们在狂暴的战争中能组织坚韧的战线。在绝境中，他们在陆地上也能组成这样的防"
-"线，当然了，效果就不能和长了腿的生物相比了。"
+"人鱼重甲兵装备重甲坚盾，是水世界的精英卫兵。强力的防御型作战风格和严明的军纪"
+"使他们在极度混乱的战斗中能坚守防线。在绝境中，他们在陆地上也能如此，但效果比"
+"长了腿的生物差一些。"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -4931,7 +5041,6 @@ msgstr "人鱼猎手"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:18
-#, fuzzy
 msgid ""
 "The skills employed by merfolk in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -4969,14 +5078,13 @@ msgstr "人鱼标枪兵"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:18
-#, fuzzy
 msgid ""
 "Those merfolk who master the art of the javelin can become nearly as "
 "effective as an archer — though the heft of their weapons impedes their "
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the merfolk more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"掌握了掷标枪技术的人鱼几乎就像弓箭手一样高效——虽然他们武器沉重，影响了射程，"
+"掌握了掷标枪技术的人鱼几乎就像弓箭手一样高效——虽然他们武器的重量影响了射程，"
 "但造成的伤害也明显大得多。在水中，人鱼的机动性完全弥补了这种不足，特别是在对"
 "付不会游泳的敌人的时候。"
 
@@ -4987,7 +5095,6 @@ msgstr "人鱼布网者"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
-#, fuzzy
 msgid ""
 "Fishing, as practiced by merfolk, is largely a matter of chasing schools of "
 "fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
@@ -5002,13 +5109,13 @@ msgid ""
 "since they were already quite deadly."
 msgstr ""
 "对人鱼们来说，捕鱼在很大程度上就是把大群的鱼驱赶到早已布好的网中，而后用形似"
-"船桨的大棒将猎物打死。有些人鱼即兴发挥，把这东西用在士兵们身上，实践证明这是"
-"很有效的。绝大部分陆栖生物哪怕只是站在齐腰深的水中，就已经觉得很不适应了，要"
-"是被捕到网中的话，那更是叫天不应叫地不灵。\n"
+"船桨的大棒将猎物打死。有些人鱼即兴发挥，把这东西用在士兵身上，实践证明这很有"
+"效。绝大部分陆栖生物哪怕只是站在齐腰深的水中，就已经很不适应了，要是被捕到网"
+"中，那更是叫天不应叫地不灵。\n"
 "\n"
-"这种战法的高效性使得人鱼们开发出了更小更轻的网，可以向空中抛掷。这些网在捕鱼"
-"时很无用，但在作战或者捕捉过于接近岸边的猎物时则很有效。大棒也用于战斗，却几"
-"乎没有从捕鱼方面借鉴什么，因为它们已经足够致命了。"
+"这种战法的高效性促使人鱼开发出更小却更重的网，这种网可以向空中抛掷。它们在捕"
+"鱼时很无用，但在作战或者捕捉过于接近岸边的猎物时则很有用。大棒也用于战斗，却"
+"几乎没有从捕鱼方面借鉴什么，因为它们已经足够致命了。"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -5067,7 +5174,6 @@ msgstr "人鱼矛兵"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
-#, fuzzy
 msgid ""
 "Archery is little favored by the merfolk, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -5076,9 +5182,10 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"人鱼不谙射术，而使用与弓箭功能相当的标枪。虽然投掷标枪在水下几乎没什么用，在"
-"水面上却非常有效，因为标枪沉重，可以射入水中数尺而保持杀伤力。矛在白刃战中也"
-"很有用，即使是在深水中也是如此，而对于弓箭就不能下同样的结论了。"
+"人鱼不谙箭术，而是使用标枪来实现类似弓箭的效果。虽然投掷标枪在水下几乎没什么"
+"用，但在水面上却非常有效。因为标枪很沉重，射入水中数尺之后，它的冲力还是足以"
+"造成伤害。标枪在白刃战中也很有用，即使是在深水中也是如此，而弓箭当然就不行"
+"了。"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -5105,7 +5212,6 @@ msgstr "人鱼武士"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:17
-#, fuzzy
 msgid ""
 "Mermen Warriors form the core of merfolk armies. They wield their tridents "
 "with a skill and diligence impressive even compared to the soldiers of other "
@@ -5113,15 +5219,13 @@ msgid ""
 "any who try to match them in their homes can attest."
 msgstr ""
 "人鱼武士组成了人鱼军队的核心。他们挥舞三叉戟时展现出的技艺与投入，哪怕是与其"
-"他种族的士兵们相比，也是十分惊人的。但考虑到在水下战斗时有多困难，这就加倍惊"
-"人了。任何试图在他们的家园和他们势均力敌对抗的人都能为这一点作证。"
+"他种族的士兵们相比，也是十分惊人的。但考虑到在水下战斗有多困难，这就加倍惊人"
+"了。任何试图在他们的家园与他们势均力敌地对抗的人都能为这一点作证。"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant"
-msgstr "巨鼠"
+msgstr "巨蚁"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:19
@@ -5130,11 +5234,13 @@ msgid ""
 "earth to the tops of tall mountains. Though normally not hostile, they can "
 "bite at close range."
 msgstr ""
+"巨蚁在各种环境中都很常见，无论是地下深处的洞穴里还是高耸的山顶上。虽然通常不"
+"表现出敌意，但当有人靠近时它们还是会咬人的。"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "穴居熊"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -5144,11 +5250,13 @@ msgid ""
 "hearing, but poor eyesight. When a rival predator, or some other threat, "
 "gets too close, a bear will reliably attack."
 msgstr ""
+"穴居熊是大型而强力的野兽，有利爪和大牙。它们善于在黑暗洞穴中漫游，有敏锐的嗅"
+"觉和听觉，但视力不佳。当敌对的捕食者或其他威胁过于接近时，熊肯定会攻击他们。"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "林地野猪"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -5157,38 +5265,41 @@ msgid ""
 "A mature, tamed boar is a valuable asset to any farmer, but an angry wild "
 "boar is a challenge even to the best hunters."
 msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
+"随着野猪年龄的增长，它们本来就很厉害的牙齿变得更长、更多。一头成熟而被驯服的"
+"野猪对任何农民来说都是一笔宝贵的财富，但一头愤怒的野猪甚至对最好的猎人来说也"
+"是一种挑战。"
 
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
-msgstr ""
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
+msgstr "长牙"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
-msgstr ""
+msgstr "小猪"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
+"小猪好奇心强，但和父母一样脾气不好，只是在战斗中没父母那样有挑战性罢了。但"
+"是，很少会发现没被保护欲很强的成年野猪保护着的小猪。"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
-msgstr ""
+msgstr "沼泽蜥蜴"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5197,26 +5308,30 @@ msgid ""
 "adopted a ‘two legs bad’ outlook and do not hesitate to avenge their "
 "ancestors."
 msgstr ""
+"沼泽是充满活力的环境，但往往对人类或兽人并不友好。沼泽蜥蜴是比较明显的危害之"
+"一，它们有着强大的下颚和覆甲的表皮。尽管这些蜥蜴外貌原始，但它们并不愚蠢，在"
+"世世代代都因为皮而被捕猎后，它们有了“两条腿坏坏”的观点，并会毫不犹豫地为祖先"
+"报仇。"
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
-msgstr ""
+msgstr "此单位可以在沼泽水中移动而不被发现，其身体大部分淹没在水中。"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
-msgstr ""
+msgstr "沼泽潜伏"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
-msgstr ""
+msgstr "沼泽潜伏"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5224,22 +5339,18 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"此单位可以隐藏在沼泽中，不被敌人发现。\n"
+"\n"
+"当此单位在沼泽中时，敌方单位无法看到它，除非有敌方单位在它旁边。任何首先发现"
+"此单位的敌方单位都会立即失去其所有剩余的移动点数。"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
-#, fuzzy
-#| msgid "Cuttle Fish"
 msgid "Cuttlefish"
 msgstr "乌贼"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cuttle Fish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Cuttlefish are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
@@ -5251,25 +5362,19 @@ msgstr ""
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
-msgstr "年长猎鹰"
+msgstr "年长猎隼"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Elder Falcons bear the telltale scars of veteran warriors from protecting "
-#| "their masters, their bodies proof of repeated dives into a swirling "
-#| "melee. Stronger and faster than their younger kin, they are rumored to "
-#| "hit with enough force to remove an enemy's head. "
 msgid ""
 "Elder Falcons bear the telltale scars of veteran warriors from protecting "
 "their masters, their bodies proof of repeated dives into a swirling melee. "
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy’s head."
 msgstr ""
-"年长猎鹰身上密布的伤疤述说着这些沙场老兵忠心护主的故事，它们身上尽是反复的俯"
-"冲战斗留下的痕迹。这些年长猎鹰比他们年幼的同族更为迅捷与强壮，有传言说他们的"
-"冲击甚至足以令敌人身首分离。 "
+"年长猎隼身上密布的伤疤述说着这些沙场老兵忠心护主的故事，它们身上尽是反复的俯"
+"冲肉搏留下的痕迹。这些年长猎隼比他们年幼的同族更为迅捷与强壮，有传言说他们的"
+"冲击甚至足以令敌人身首分离。"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -5281,7 +5386,7 @@ msgstr "喙"
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:4
 msgid "Falcon"
-msgstr "猎鹰"
+msgstr "猎隼"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:19
@@ -5291,15 +5396,13 @@ msgid ""
 "foes on the battlefield, and their great speed is a boon to scouting out the "
 "land."
 msgstr ""
-"猎鹰被看作贵族社会地位的象征，它们主要被驯养来作为狩猎消遣的助手。同样的狩猎"
+"猎隼被看作贵族社会地位的象征，它们主要被驯养来作为狩猎消遣的助手。同样的狩猎"
 "技巧也被用来在战场上撕裂敌人，并且它们极高的速度在战地侦察中极为有用。"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant"
-msgstr "烈火巨龙"
+msgstr "火蚁"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
@@ -5309,18 +5412,19 @@ msgid ""
 "as scavengers, a burrow of fire ants can become aggressive when provoked and "
 "have even been known to attack small groups of threatening troops."
 msgstr ""
+"火蚁很小，但数量多时却很致命，它们拥有凶猛的尖牙和不寻常的造火能力。虽然这些"
+"生物通常是作为食腐动物存在，但一窝火蚁在受到挑衅时会变得很有攻击性，已知它们"
+"会攻击有威胁的小规模部队。"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
-#, fuzzy
-#| msgid "fireball"
 msgid "fire"
-msgstr "火球"
+msgstr "火焰"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
-msgstr "烈火巨龙"
+msgstr "火龙"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:23
@@ -5336,13 +5440,13 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
-"巨龙是传说中的生物，一般来说只会在幻想故事中出现。它们非常稀少，如果不是因为"
-"历史上的事件——巨龙独力摧毁了一个又一个城市与村镇——那它们也许将仅仅被认为是一"
-"个神话。传奇故事中对于巨龙破坏力的描述很明确：无比的力量，速度，超自然的狡"
-"诈，以及最最重要的——它们体内燃烧的恐怖火焰。\n"
+"龙是传说中的生物，一般来说只会在幻想故事中出现。它们非常稀少，如果不是因为历"
+"史上的事件——龙独力摧毁了一个又一个城市与村镇——那它们也许将仅仅被认为是一个神"
+"话。传奇故事中对于龙的破坏力描述很明确：无比的力量，速度，超自然的狡诈，以及"
+"最最重要的——它们体内燃烧的恐怖火焰。\n"
 "\n"
-"与巨龙作战被认为是世界上最危险的事情，只有那些蠢货，或者最勇敢的骑士们才会挑"
-"战巨龙的威严。"
+"与龙作战被认为是世界上最危险的事情，只有那些蠢货，或者最勇敢的骑士们才会挑战"
+"龙的威严。"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
@@ -5369,36 +5473,25 @@ msgstr "火焰爪"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "火焰吐息"
+msgstr "火焰幽魂"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
 "their bidding. The odd armor they wear hints at a former life or creator, "
 "but whatever ancient civilization was involved has been lost to history."
 msgstr ""
-"烈火卫士是烟与火之魂。没有人确知他们从何而来，但有时他们会被强大的法师召唤过"
-"来作为仆从。在没有被控制时，他们喜欢在熔岩池中嬉戏，也非常乐于燃尽一切可以碰"
-"到的东西。"
+"火焰幽魂是烟与火之魂。没有人确知它们从何而来，但有时他们会被强大的法师召唤过"
+"来为他们服务。它们身穿的奇怪铠甲暗示了它们死前的生活或是它们的创造者，但与它"
+"们有关的古代文明，都已经消失在历史中了。"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Frost Stoat"
-msgstr "巨鼠"
+msgstr "霜鼬"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
@@ -5410,25 +5503,25 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
+"霜鼬是一种狡猾的小动物，主要存在于北陆的冰冻地区，尽管它们可以在任何地方生"
+"存。它们最独特的特征是冰冷的前爪，这与其他野生动物都不同。这些鼬鼠通常会捡食"
+"垃圾或猎杀较小的动物，但它们的领地意识很强，已知年轻的成年霜鼬会攻击较大的入"
+"侵者，包括人类和兽人。"
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
-#, fuzzy
-#| msgid "fire claws"
 msgid "ice claw"
-msgstr "火焰爪"
+msgstr "冰爪"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Stoat"
-msgstr "巨鼠"
+msgstr "巨鼬"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
-msgstr ""
+msgstr "巨鼬已经过时，请使用霜鼬。"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -5489,25 +5582,25 @@ msgstr "一只普通的蝎子就够危险了——而一只如人一般巨大的
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
-msgstr "叮"
+msgstr "蛰刺"
 
 #. [attack]: type=impact
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
-msgstr "钳"
+msgstr "钳击"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "scuttler"
-msgstr ""
+msgstr "凿击"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr ""
+msgstr "凿沙兽"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
@@ -5516,6 +5609,8 @@ msgid ""
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
 "attack unwary travelers, especially when startled."
 msgstr ""
+"这些小动物以沙丘为家，是凡间生物和元素兽的奇怪结合。虽然通常很胆小，但凿沙兽"
+"有时会攻击不小心的旅行者，尤其是在受到惊吓时。"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
@@ -5524,16 +5619,6 @@ msgstr "巨蝎幼体"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:27
-#, fuzzy
-#| msgid ""
-#| "One of the most potent known venoms is that of the monstrous scorpions of "
-#| "the frontier. Fetching a high price by assassins and apothecaries alike, "
-#| "this venom is often seen as a quick way to make coin, alluring bold "
-#| "hunters to venture into the wilderness to harvest it. However, even in a "
-#| "juvenile state, these scorpions can deliver deadly stings and are faster "
-#| "than most men. What's worse is that they can live in rather large nests, "
-#| "and angering a seemingly lone scorpion can lead to swarms of them "
-#| "crawling up from the ground — quickly turning the hunter into the hunted."
 msgid ""
 "One of the most potent known venoms is that of the monstrous scorpions of "
 "the frontier. Fetching a high price by assassins and apothecaries alike, "
@@ -5547,11 +5632,12 @@ msgid ""
 "carapace is very resistant to normal blade strikes or piercing attacks, but "
 "can be broken with heavy blows."
 msgstr ""
-"已知毒性最强的毒物之一，便是边疆怪物巨蝎的毒素。不论是刺客还是药剂师都高价购"
-"买此种毒素。因此，其贩卖也被视作赚快钱的方式，引来勇敢的猎人冒险前往野地进行"
-"收集。然而，即使是幼年状态的巨蝎也可以使用剧毒的蛰刺，而且比大多数人行动更迅"
+"已知毒性最强的毒物之一便是边疆怪物巨蝎的毒素。不论是刺客还是药剂师都高价购买"
+"此种毒素。因此，其贩卖也被视作赚快钱的方式，引来勇敢的猎人冒险前往野地进行收"
+"集。然而，即使是幼年状态的巨蝎也可以使用剧毒的蛰刺，而且比大多数人行动更迅"
 "速。更糟糕的是，它们会生活在相当大的巢穴中，激怒一只看起来落单的巨蝎会把一群"
-"巨蝎从地底下引出来——很快便会把猎人变成猎物。"
+"巨蝎从地底下引出来——很快便会把猎人变成猎物。它们被随着年龄越变越硬的甲壳保"
+"护，耐性也越来越强。这甲壳能够抵抗普通的刃器和穿刺攻击，但重击可以击碎它。"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
@@ -5576,7 +5662,7 @@ msgstr "蛛网"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "赤骏"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -5586,23 +5672,22 @@ msgid ""
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
+"赤骏主要是根据是颜色而非大小或脾气来区分的。从战场到农场再到野外的平原和林"
+"地，在任何地方都可以看到它们。尽管没有被包围的马若是可能便会倾向于逃跑，但它"
+"们被逼无奈时也会用强有力的踢击来反击。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr "踢"
+msgid "hooves"
+msgstr "踢击"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "白袍法师"
+msgstr "素骏"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -5612,13 +5697,14 @@ msgid ""
 "As if blessed by the faerie world, they have a grace and agility not found "
 "in their more common relatives."
 msgstr ""
+"有些马的颜色是白色，它们仅仅就是白色的马而已。但存在一种特殊的品种，只在野外"
+"森林中发现过，那就是素骏。它们仿佛受到仙灵世界的祝福，拥有更常见的亲属所没有"
+"的优雅和敏捷。"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:140
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "黑暗巫师"
+msgstr "黯骏"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
@@ -5627,26 +5713,26 @@ msgid ""
 "civilized races. They leave no signs of their passage, but they have been "
 "noticed scouting camps and outposts during the night."
 msgstr ""
+"黯骏是野生动物，但它们似乎对文明种族有种奇怪的兴趣。它们行动时没有留下过任何"
+"痕迹，但人们注意到它们在夜间侦查营地和前哨。"
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse.cfg:179
 #: data/core/units/monsters/Horse_Black.cfg:50
 msgid "whinny"
-msgstr ""
+msgstr "嘶鸣"
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:214
 #: data/core/units/monsters/Horse.cfg:218
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "黑暗狂徒"
+msgstr "黯骏"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "乌骏"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -5655,25 +5741,24 @@ msgid ""
 "their eyes and the unnerving, unnatural sound of their calls suggest they "
 "are malevolent spirits."
 msgstr ""
+"乌骏的真实性质无法辨别，但它们眼中燃烧的火焰，以及那令人不安的不自然的叫声，"
+"表明它们是恶灵。"
 
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
-msgstr ""
+msgstr "乌骁"
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
-#, fuzzy
-#| msgid "female^Mage of Light"
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
-msgstr "光明法师"
+msgstr "乌魇"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "高阶大法师"
+msgstr "巨駥"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -5683,11 +5768,13 @@ msgid ""
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
+"巨駥比一般的驯化马要大得多，但尽管外观相似，它们却是野生动物。固执且通常好斗"
+"的性格使它们很难被驯服，尽管许多傲慢的王子或军阀曾尝试过，但都失败了。"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "冰莫纳兽"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -5698,11 +5785,15 @@ msgid ""
 "places they do not belong. Despite this, efforts to study and domesticate "
 "them have failed, as they die soon after capture."
 msgstr ""
+"冰莫纳兽是北方冻土的一种奇怪野兽，最准确地说，这是一种大型的、覆甲的地面松"
+"鼠。即使是在比较温和的气候下，它们的外甲上也会积累霜雪。大多数冰莫纳兽都很好"
+"奇，经常误入它们不该去的地方。尽管如此，研究和驯化它们的努力还是失败了，因为"
+"它们在被抓后很快就会死亡。"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "大冰莫纳兽"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -5712,11 +5803,14 @@ msgid ""
 "climate is warm and dry. Some Icemonax grow to be quite large and powerful, "
 "guarding their smaller, younger kin."
 msgstr ""
+"冰莫纳兽是北方冻土的一种奇怪野兽，最准确地说，这是一种大型的、覆甲的地面松"
+"鼠。即使在温暖而干燥的气候下，它们的外甲上也会积累冰雪。一些冰莫纳兽会成长得"
+"很大很强，守护着它们小而年轻的亲属。"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "巨灵"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -5728,18 +5822,20 @@ msgid ""
 "felt the Jinn were watching over them, driving off malign forces of the "
 "night."
 msgstr ""
+"巨灵是神秘的灵体，就目前所知，它们与死者的灵魂没有联系。经常可以从远处看到它"
+"们在沙漠中的丘陵以及沙丘上漂移，但却无法近距离观察它们。几乎所有记录下来的遭"
+"遇中，巨灵都有敌意，但也有一些实例中，旅行者觉得巨灵在守望他们，赶走了夜间的"
+"邪恶势力。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "沙漠气浪"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
-#| msgid "lightning"
 msgid "desert lightning"
-msgstr "闪电"
+msgstr "沙漠闪电"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -5762,7 +5858,7 @@ msgstr ""
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "鹏鸟"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:19
@@ -5779,16 +5875,20 @@ msgid ""
 "aid to a traveler in need, usually in exchange for a small trinket or shiny "
 "bauble."
 msgstr ""
+"在远离人类城市的大沙漠的山脉中，有时可以发现被称为鹏鸟的大型猛禽飞快地掠过沙"
+"地，搜寻猎物。鹏鸟尽管体型庞大，但喜欢隐居，其他有智慧的种族很少遇到它们。这"
+"种避世的本性把它们提升到了接近神话般的地位，特别是在沙漠的游牧民族之中。\n"
+"\n"
+"与其他鸟类，如隼或雕不同，独立而聪慧的鹏鸟几乎是不可驯服的。偶尔，鹏鸟会向有"
+"需要的旅行者提供帮助，通常是为了换取一个小饰品或闪亮的小玩意。"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "巨蝎"
+msgstr "岩蝎"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -5796,18 +5896,19 @@ msgid ""
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
 msgstr ""
+"岩蝎曾出现在车匪和醉汉的故事中，但很少有证据证明它们真的存在。它们被描述为擅"
+"于隐蔽的怪物，拥有坚硬的岩石表皮和锋利的结晶螯。与大多数蝎子不同的是，它们不"
+"是用毒刺进行刺击来释放毒素，而是用挥发性的毒汁流来喷射它们的敌人。"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
-#, fuzzy
-#| msgid "water spray"
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
-msgstr "水浪"
+msgstr "喷射"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "有角圣甲虫"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -5815,6 +5916,7 @@ msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
+"此单位可以钻到松散的泥土、沙子或树叶下面，如果不改变位置，就能隐藏自己。"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
@@ -5824,18 +5926,19 @@ msgid ""
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
+"有角圣甲虫是大而粗犷的昆虫，可以长到相当大，因此，当它们决定攻击时，就会成为"
+"威胁。它们的主要攻击手段是头上长出的大而尖锐的角。由于大体型、大外甲还有大"
+"角，它们不能飞行。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "荆棘"
+msgstr "角"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr "海巨蛇"
+msgstr "海蛇"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
@@ -5848,18 +5951,16 @@ msgid ""
 "even to the elite merfolk warriors, and are the reason they seldom inhabit "
 "waters far from the shore."
 msgstr ""
-"海巨蛇令渔民和水手心生敬畏，经常在民间传说中以愤怒的海神形象出现。它们可以轻"
-"易地摧毁船只，似乎拥有无穷的力量与活力，这些灵活的海怪对任何试图与它们作战的"
-"人而言，都是十分坚韧而充满毁灭性的。海巨蛇通常生活在深海之中，甚至对精锐的人"
-"鱼战士而言，它们都能带来很大的压力。它们也是人鱼们很少在远离海岸的水中居住的"
-"原因。"
+"海蛇令渔民和水手心生敬畏，经常在民间传说中以愤怒的海神形象出现。它们可以轻易"
+"地摧毁船只，似乎拥有无穷的力量与活力，这些灵活的海怪对任何试图与它们作战的人"
+"而言，都是十分坚韧而充满毁灭性的。海巨蛇通常生活在深海之中，甚至对精锐的人鱼"
+"战士而言，它们都能带来很大的压力。它们也是人鱼们很少在远离海岸的水中居住的原"
+"因。"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Seahorse"
-msgstr "高阶大法师"
+msgstr "大海马"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -5871,6 +5972,10 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"海马是一种具有类似马的头部的鱼类，但它们与马类并没有真正的联系。大多数海马都"
+"是小而害羞的生物，吃虫子和类似的小猎物，但大海马大到足以威胁到不够警惕的旅行"
+"者。这一大型品种吐水时的力量足以使小动物眩晕，并且它们拥有厚实的骨质板甲。但"
+"与所有海马一样，它游得很慢，而且不能在陆地上移动。"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -5935,7 +6040,7 @@ msgstr ""
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
-msgstr ""
+msgstr "野生双足飞龙"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
@@ -5951,15 +6056,22 @@ msgid ""
 "behavior may be an adaptation to the harsh desert environments they often "
 "inhabit."
 msgstr ""
+"双足飞龙是与龙相似的大型爬行动物，但并不是那种聪慧的魔法生物。然而，它们只是"
+"野兽这一事实，不应让任何遇到它们的旅行者忽视威胁，因为它们在受到威胁或饥饿时"
+"速度很快，也很凶猛。\n"
+"\n"
+"双足飞龙是社会性生物，通常成对或成群旅行。很难搞清楚它们的狩猎模式和饮食，因"
+"为它们经常与那些看起来是潜在猎物的小动物合作。这种奇怪的行为可能是它们对自己"
+"经常居住的恶劣沙漠环境的一种适应方式。"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "狼"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6004,7 +6116,7 @@ msgstr ""
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
-msgstr ""
+msgstr "娜迦刃牙武士"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
@@ -6018,18 +6130,21 @@ msgid ""
 "by the northern Naga warriors, these fighters are nonetheless effective when "
 "it comes time to engage in warfare."
 msgstr ""
+"与他们北方的兄弟们专注于近战的风格相比，南部水域的年轻娜迦更喜欢在靠近猎物之"
+"前先在远处削弱他们。他们投掷的小型“查克里”（刃环）可以带在手腕上或腰带上，不"
+"会造成阻碍。虽然在水下，任何击杀最后通常都得在近距离完成，但混合战斗风格往往"
+"使他们活得够久，足以学习并改进。有时，这些战士被北方娜迦战士视为懦弱，但当需"
+"要参战时，他们还是很高效的战士。"
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "查克里刃环"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
-#, fuzzy
-#| msgid "Nagini Fighter"
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
-msgstr "娜迦战士"
+msgstr "娜迦刃牙武士"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -6057,10 +6172,8 @@ msgstr "娜迦战士"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Naga Guard"
-msgstr "皇家卫兵"
+msgstr "娜迦卫士"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -6071,13 +6184,15 @@ msgid ""
 "mercenary activities. They are said to have a strong code of honor, though "
 "like all things naga, it is mostly a mystery to outsiders."
 msgstr ""
+"在战场上，娜迦倾向于重视敏捷和优雅，但速度较慢、身体较强壮的娜迦在保卫重要阵"
+"地方面则发挥着关键作用。这些卫兵并不常能见到，因为他们不参与突袭或佣兵活动。"
+"据说他们有很强的荣誉准则，尽管像所有与娜迦有关的事物一样，对外人来说这基本上"
+"是个谜。"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga High Guard"
-msgstr "娜迦战士"
+msgstr "娜迦高阶卫士"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -6089,21 +6204,21 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
+"对入侵娜迦要塞的任何人而言，精英娜迦卫士都是一道刚硬的屏障。他们的攻击很强"
+"力，并且，他们与较弱的坚盾卫士一样能在近战中高效地使盾，故而很难从岗位上引开"
+"他们。这种战术对远程攻击毫无作用，但在这种情况下，娜迦通常可以寻找更好的地形"
+"优势。"
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
-#, fuzzy
-#| msgid "shield bash"
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
 msgstr "盾击"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Shield Guard"
-msgstr "娜迦战士"
+msgstr "娜迦坚盾卫士"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -6113,6 +6228,8 @@ msgid ""
 "nothing against ranged attacks, but the nagas can usually seek better "
 "terrain advantage in such situations."
 msgstr ""
+"资深的娜迦卫士能在近战中能高效地使盾，故而很难从岗位上引开他们。这种战术对远"
+"程攻击毫无作用，但在这种情况下，娜迦通常可以寻找更好的地形优势。"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -6152,10 +6269,8 @@ msgstr ""
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:4
-#, fuzzy
-#| msgid "Naga Myrmidon"
 msgid "Naga Ophidian"
-msgstr "娜迦忠勇武士"
+msgstr "娜迦蛇身武士"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
@@ -6173,62 +6288,63 @@ msgid ""
 "encourage a healthy amount of competition among the surface factions, "
 "ensuring their services are valued by one tribe or another."
 msgstr ""
+"经验丰富的南方娜迦战士经常会作为佣兵谋生，他们通常被邻近的沙漠游民雇佣来控制"
+"海岸线附近的关键水路。由于经常与敌人的骑兵对抗，蛇身武士淘汰了他们年轻时使用"
+"的环刃，而拿起了可以刺击的“贾里德”，这是一种小标枪。娜迦在其上加上了从沉船压"
+"舱物中收获的铅，因而这种标枪变得更加致命。虽然他们与富有的雇主一般都很友好，"
+"但这种友好不该被误认为是忠诚。蛇身武士因在每个航运季节开始时都会在敌对的城邦"
+"派别之间轻易改换雇主而出名，在这种时节，来自水路的安保需求是最多的。作为一个"
+"群体，这些娜迦鼓励地表派别之间的健康竞争，以确保他们的服务总会被某一个部落所"
+"重视。"
 
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
-#, fuzzy
-#| msgid "war blade"
 msgid "curved blade"
-msgstr "战刃"
+msgstr "弯刃"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
-msgstr ""
+msgstr "贾里德标枪"
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
-#, fuzzy
-#| msgid "Naga Myrmidon"
+#: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
-msgstr "娜迦忠勇武士"
+msgstr "娜迦蛇身武士"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
-msgstr "娜迦战士"
+msgstr "娜迦刃环使"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
 "are useful for throwing, but the rejected blades make a good fist-load "
 "weapon, similar to a sharp-bladed tekko or knuckleduster."
 msgstr ""
+"“查克拉姆”是一种比“查克里”更大的刃环，是南部娜迦和他们著名的刃环使的标志性武"
+"器。平衡良好的“查克拉姆”很适合于投掷，但收起的刀片让它成为了一种很好的拳击武"
+"器，类似于安装了锋利刀片的拳甲或是指虎。"
 
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
-msgstr ""
+msgstr "查克拉姆刃环"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
-msgstr "娜迦战士"
+msgstr "娜迦刃环使"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Sicarius"
-msgstr "娜迦战士"
+msgstr "娜迦影刃武士"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -6247,13 +6363,19 @@ msgid ""
 "for they can anticipate many enemy strikes, and use their heavy, curved "
 "blade to deflect or distract at the critical moment."
 msgstr ""
+"虽然他们有时还是会成为潜在的沙丘游民盟友的佣兵，但娜迦影刃武士更多时候是在担"
+"任贸易线路和靠近水路的资源床的守护者。只要支付适当的费用或用适当的货物来交"
+"换，影刃武士就会保证旅途安全，或让买家免费获得其领土上的宝贵物资。但要是被惹"
+"毛了，那他们就会成为可怕的敌人，这并不是因为他们个人的战斗力，而是因为他们可"
+"以召集众多盟友来平息任何潜在的滋扰。尽管在必要的时候，这些经验丰富的佣兵完全"
+"是很有力的战士，但他们非常清楚，赚钱的最好方法是不让自己处于危险之中。当发现"
+"自己确实处于危险之中时，他们就会很好地利用自己的狡猾来预见到敌人的许多攻击，"
+"并在关键时刻使用他们沉重的弯刀来偏转对方的攻击或分散其注意力。"
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
-#, fuzzy
-#| msgid "Nagini Warrior"
+#: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
-msgstr "娜迦武士"
+msgstr "娜迦影刃武士"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -6295,13 +6417,11 @@ msgstr ""
 
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
-#, fuzzy
-#| msgid "Naga Fighter"
 msgid "Naga Zephyr"
-msgstr "娜迦战士"
+msgstr "娜迦灵风武士"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -6341,13 +6461,38 @@ msgid ""
 "thrown blade, this doesn't mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
+"南部娜迦常常会讲述一个关于风灵泽弗拉和风之兵器查克拉姆的有趣故事。\n"
+"\n"
+"在遥远的过去，有一位拥有传奇般技艺的查克拉姆使用者。据说他可以用疾风般的劈砍"
+"断开大海，在一百名敌人近身之前就将他们全部干掉，以及让一千支箭偏转而不被任何"
+"一支射中。他的名字叫希尔利克斯，即暴风雨。他是一位战士，他的傲慢和他的才能一"
+"般大。他总是非常乐意向所有愿意观看他表演的人夸耀自己的能力。然后有一天，他在"
+"向一帮年轻的女娜迦们炫耀自己时，选择了一棵神圣的阿勒奈树作为目标。\n"
+"\n"
+"看着，\"他大吼一声，把树直接劈成两半。\n"
+"\n"
+"在那一刻，一阵大风包围了他，风灵的声音在他耳边回响：\"你认为自己很强大，可以"
+"杀死我无能的后代？虽然你的确拥有天赋，但凡人不应轻视引导他们的神灵。\n"
+"\n"
+"他反驳说：'来吧，风灵。我不害怕。任何武器，或者钢铁，或者水，又或者风，都不能"
+"抵挡我的刃环。\n"
+"\n"
+"风旋转得越来越快，一股狂风的洪流在愤怒的旋涡中不断飞旋。他感到自己被从地面上"
+"抬起，以巨大的速度旋转，完全无力地任由泽弗拉的愤怒摆布。他惊恐地抬起脸，放开"
+"他的刃环，却突然在旋转的暴风中看到了它——查克拉姆环刃正飞旋着，其轨迹与风本身"
+"一模一样。\n"
+"\n"
+"风暴来得快，去得也快，留下希尔利克斯看着他破损的武器陷入沉思。许多天后，当他"
+"终于回到自己的家中时，他宣布了自己的新名字：泽法，一位向风效忠的武士，因他的"
+"武器在风中飞舞。\n"
+"\n"
+"虽然在古老传说的驱使下，追随泽法遗志的精英武士们专注于投掷刃环，但这并不意味"
+"着他们在肉搏战中很弱，因为不平衡的查克拉姆可以用尖刺和小刀片来加强。\n"
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
-#, fuzzy
-#| msgid "Naga Fighter"
+#: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
-msgstr "娜迦战士"
+msgstr "娜迦灵风武士"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -6373,7 +6518,7 @@ msgstr "剁肉刀"
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr "食人魔幼兽"
+msgstr "幼年食人魔"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:20
@@ -6382,8 +6527,8 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
-"幼年的食人魔有时会被人捕获，并被投入军中进行训练。他们无法熟练地使用武器，不"
-"过他们强大的力量弥补了这一缺点。"
+"还在幼年时，食人魔有时会被捕获，并被投入军中进行训练。他们无法熟练使用武器，"
+"不过他们强大的力量弥补了这一缺点。"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -6401,6 +6546,10 @@ msgid ""
 "brethren to finish off on the frontlines. While typically poorly equipped "
 "themselves, these orcs can nonetheless be quite effective in large numbers."
 msgstr ""
+"虽然弓在兽人中有时被认为是懦弱的武器，但兽人对战争的使用主义态度让他们经常使"
+"用这些很适合身材矮小者的武器。兽人弓箭手最喜欢的战术是使用火焰箭在敌方阵线中"
+"制造混乱，削弱顽强的对手，让他们的大块头而强壮的兄弟们在前线完成击杀。虽然这"
+"些兽人自身通常装备很差，但在人数众多的情况下还是相当高效的。"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -6418,6 +6567,11 @@ msgid ""
 "same weapon is readily turned to espionage and assassination, a commonplace "
 "occurrence between feuding orcish clans or even within a single clan itself."
 msgstr ""
+"虽然许多兽人喜欢用蛮力作为行动方式，但他们高度实用主义的战争风格中，鼓励使用"
+"其他派系通常不赞成的残酷战术。毒药是兽人战略的主要支柱之一，被广泛用于在战场"
+"上削弱强硬对手，在不冒直接进攻风险的情况下废掉敌军。同样的武器也很容易被用于"
+"间谍和暗杀行动，这在互相争斗的兽人部族间，甚至在同一个部族内部都是很常见的事"
+"情。"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
@@ -6434,22 +6588,18 @@ msgid ""
 "with more easily handled crossbows. Simplistic but potent, these weapons can "
 "still be deadly even when handled roughly by inexperienced warriors."
 msgstr ""
+"尽管大多数兽人非常重视战斗力，但很少有部落在战争技艺方面接受过任何形式的正式"
+"训练。正因为如此，兽人射手在使用从人类或精灵弓箭手那里偷来的长弓时相当不给"
+"力，而更喜欢用更容易操作的弩来武装自己。这些武器简单而有力，即使被没有经验的"
+"战士粗暴地操作时，也是致命的。"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr "兽人步兵"
+msgstr "兽人咕噜兵"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Orcish Grunts are the mainstay of the orcish forces, made up of the "
-#| "biggest and strongest orcs the clan can muster, given the most basic of "
-#| "equipment and thrown into the field. Even these basic recruits can be "
-#| "dangerous, as the larger orcs are naturally strong and can survive many "
-#| "injuries before falling. What makes an orcish horde most threatening, "
-#| "however, is the sheer numbers in which these fighters can be fielded."
 msgid ""
 "True orcs are well known for their raw strength and ferocity, as well as "
 "their propensity toward aggressive combat. These traits mean that even the "
@@ -6459,25 +6609,18 @@ msgid ""
 "overcome. What makes an orcish horde most threatening, however, is the sheer "
 "numbers in which these fighters can be fielded."
 msgstr ""
-"兽人步兵是兽人军队的主力，由部落所能集结的最大最强壮的兽人组成。他们会拿到最"
-"基本的装备，而后就被扔到战场上。就算是这些装备简陋的新兵也很危险，因为大兽人"
-"天生强壮，在倒下之前可以承受很多伤。然而，兽人部落之所以最有威胁，是因为可以"
-"上战场的兽人步兵的数量十分庞大。"
+"真兽人因蛮力和残忍而闻名，同样出名的还有他们对侵略性作战的癖好。这些特质意味"
+"着，就算是经验最为缺乏而装备最为简陋的咕噜兵，在战场上也不容易对付。单单一个"
+"兽人自己，出手便很野蛮很重，而反过来，他在被击败之前可以承受很多攻击。然而，"
+"兽人部落之所以最有威胁，是因为可以上战场的咕噜兵的数量十分庞大。"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr "兽人领袖"
+msgstr "兽人首领"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-#| "bands. They carry a crossbow out of necessity, but are much more skilled "
-#| "with the sword. These orcs are powerful fighters, but they also have a "
-#| "certain rapport with their kin, especially goblins, and can inspire them "
-#| "to fight with uncharacteristic boldness."
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. Although not necessarily possessed of the same loyalty-inspiring "
@@ -6485,10 +6628,9 @@ msgid ""
 "certain rapport with their kin, especially goblins, and can inspire them to "
 "fight with uncharacteristic boldness."
 msgstr ""
-"那些非同一般地狡猾的兽人经常会发现自己成为了武士团的领袖。出于需要，他们会携"
-"带一把十字弩，但他们却更加擅长于剑术。这些兽人是强大的战士，但他们和族人之间"
-"同时也有着某种默契。特别是对地精而言，领袖们能够激励他们违背本性，去疯狂大胆"
-"地战斗。"
+"那些非同一般地狡猾的兽人经常会成为武士帮的首领。尽管他们并不一定具有人类和精"
+"灵非常看重的让人们想要效忠的魅力，但他们和族人，特别是地精之间常常有着某种默"
+"契。首领能够激励地精们一反常态，去大胆地战斗。"
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
@@ -6508,11 +6650,21 @@ msgid ""
 "the cover of darkness. A contract with a nightblade is almost always a death "
 "sentence to the victim, making said expertise well worth its high price."
 msgstr ""
+"最老练的兽人刺客通常作为雇佣兵，专长于“解决内部冲突”，而很少参与大规模的战"
+"斗。这些兽人技艺惊人，并在战斗中多有磨砺，他们很少效忠于任一个特定的部落，而"
+"是向出价最高方提供服务。一旦达成协议并获得必要的物资，刺客就会迅速而无声地攻"
+"击他的目标，在黑暗的掩护下悄悄消灭他们。与夜刃签订的合同几乎都相当于对受害者"
+"的死刑判决，这让上述专业技能值得其高价。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:25
 msgid "blade"
-msgstr "战刃"
+msgstr "利刃"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "踢击"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -6530,6 +6682,10 @@ msgid ""
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
+"关于兽人部族的等级制度，一个常见的误解是认为兽人只重视蛮力。尽管较小的兽人部"
+"队的首领可能是他们中最强壮的战士，但大部落的统治者面临着困难的任务，那就是扼"
+"制内斗——这可不是只靠武力就能做到的。这样的兽人不可避免地会是同僚之中最精明而"
+"最富洞察力的，他们通过领导力而不是胁迫来赢得兄弟们的尊重。"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -6549,6 +6705,11 @@ msgid ""
 "precisely what gives rise to these ruthless soldiers, rightly dubbed "
 "‘Slayers’ by their enemies."
 msgstr ""
+"技艺高超的兽人刺客是出乎意料地灵活的隐蔽行动部队，他们放弃了兄弟们的重甲，而"
+"变得极为敏捷。他们选择的武器，毒药，经常被批评是不适合典型战争中既定规则的恶"
+"毒工具。然而，大多数兽人不承认这种战斗规则，并不择手段地赢得胜利。不管是什么"
+"原因，失败通常都被视为最大的耻辱。兽人所进行的全面战争之残酷，正是产生这些无"
+"情士兵的原因，他们被敌人正确地称为“杀手”。"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -6557,18 +6718,6 @@ msgstr "兽人重弩手"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’; a "
-#| "much more intricate device, complete with a hand-turned cranequin to re-"
-#| "cock the weapon, and often with a multi-ply arc, of laminate wood or "
-#| "bone, driving the projectile. Such a device is much easier to work with, "
-#| "and much more powerful than simpler crossbows; it is also completely "
-#| "beyond orcish manufacture.\n"
-#| "\n"
-#| "Orcs prize any such weapons they can manage to plunder, and they "
-#| "invariably end up in the hands of their strongest and most cunning "
-#| "archers."
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or ‘slurbow’, a "
 "much more intricate device complete with a hand-turned cranequin to recock "
@@ -6580,13 +6729,12 @@ msgid ""
 "Orcs prize any such weapons they can manage to procure, and they invariably "
 "end up in the hands of their most cunning archers."
 msgstr ""
-"最基本的十字弩设计逐渐发展成了强弩或者说“重装十字弩”：这是一种复杂得多的装"
-"置，有一个手摇的绞弦器用于重新装填，一般还配备了以多层复合的木头或骨头制成的"
-"多重弓弦，用于发射弩箭。这种装置和简易的十字弩相比较，更容易操作而且强大得"
-"多；当然，它也远远不是兽人的工艺所能制造的。\n"
+"最基本的十字弩设计逐渐发展成了强弩或者说“重装十字弩”。这是一种比普通弩复杂得"
+"多的装置，有一个手摇的绞弦器用于重新装填，一般还配备了以多层复合的木头或骨头"
+"制成的多重弓弦，用于发射弩箭。这种装置和更简易的十字弩相比，更容易操作而且强"
+"大得多。它也不是兽人通常能制造的。\n"
 "\n"
-"兽人珍视所有他们设法抢来的这类武器，最终它们都会落到最强壮和狡诈的兽人弓箭手"
-"手里。"
+"兽人珍视所有他们设法获得的这类武器，最终它们都会落到最狡诈的兽人射手手里。"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
@@ -6609,6 +6757,13 @@ msgid ""
 "rapidly dissolves back into individual clans once the strength of its "
 "leadership is extinguished."
 msgstr ""
+"虽然兽人在本质上相当倾向于部落化，但时不时地会出现一种情况，促使几个部族在一"
+"位强大的君主治下联合起来。这一地位意味着这一名兽人必须既强壮又狡猾，这样才能"
+"领导一个巨大的战士部落。他们几乎无一例外地拥有内在的魅力，这在他们的同类中是"
+"非常罕见的。获得这种地位的途径是多种多样的：有时，一个强大的部落可能会征服较"
+"小的部落，并将被打败的战士吸收到他们的队伍中；而在其他情况下，君主需要由萨满"
+"评议会任命，此时，君主成为一个临时的但正式的头衔。无论在哪种情况下，战争酋长"
+"都是部落的关键所在，一旦首领被消灭，大部落就会迅速解体，变回一个个部族。"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -6631,11 +6786,18 @@ msgid ""
 "for a warlord’s downfall when his skills wane with age and another powerful "
 "warrior arises to take his place."
 msgstr ""
+"虽然力量不是兽人部族中至高无上的全部，但它肯定是赢得其他兽人尊重和服从的先决"
+"条件。一名军阀通常是他的部落中最强的战士，他一次又一次战胜有抱负的挑战者来获"
+"得并保持自己的地位。这种强大的战斗力使这种兽人可以担任部落酋长，监督部族的日"
+"常事务，并在需要流血之时指挥下位的战士。虽然通常来说很狡猾，也高度精通战争之"
+"道，但大多数军阀只因他们的战斗技巧而赢得敬佩，而缺乏在战斗之外进行领导的知识"
+"或魅力。随着时间的推移，当一名军阀的技能随着年龄的增长而减弱，而另一名强大的"
+"战士上位来取而代之时，这种缺陷通常便会成为军阀倒台的原因。"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr "兽人武士"
+msgstr "兽人战士"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:17
@@ -6648,11 +6810,13 @@ msgid ""
 "fighters, who lack the training and finesse to act on more complex "
 "strategies."
 msgstr ""
+"兽人的剑术几乎完全集中在进攻上，利用他们天生的耐力，通过纯粹的韧性来比他们的"
+"对手坚持得更久。因此，更为老练的兽人战士通常会选择放弃盾牌，而是带着两把刀，"
+"在近战范围内与敌人交手。虽然这一战术相当粗暴，但对这些战士来说仍然很是有效。"
+"他们缺乏训练和技巧，无法采用更复杂的策略。"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
 msgstr "蜥蜴人伏击士"
 
@@ -6690,8 +6854,6 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
 msgstr "蜥蜴人侧击士"
 
@@ -6730,10 +6892,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Dune Skirmisher"
 msgid "female^Saurian Skirmisher"
-msgstr "沙丘散兵"
+msgstr "蜥蜴人散兵"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -6905,7 +7065,7 @@ msgstr ""
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
 msgid "Ghast"
-msgstr "邪灵食尸鬼"
+msgstr "食尸妖鬼"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:19
@@ -6917,10 +7077,10 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
-"邪灵食尸鬼是从人类最原初的噩梦中浮现出来的造物。和它们的低等亲戚——食尸鬼和死"
-"灵食尸鬼——不同的是，在吃掉受害者的身体之前，邪灵食尸鬼可没有等待他们因中毒而"
-"死的耐心。它们直接使用自己巨大的嘴进行攻击，试图从敌手身上生生地撕下肉来。一"
-"旦对手被击败，它们就吃掉尸体的剩余部分，在这个过程中，它们会变得更强大。"
+"食尸妖鬼是从人类最原初的噩梦中浮现出来的造物。和它们的低等亲戚——食尸鬼和食尸"
+"恶鬼——不同的是，在吃掉受害者的身体之前，食尸妖鬼可没有等待他们因中毒而死的耐"
+"心。它们直接使用自己巨大的嘴进行攻击，试图从敌手身上生生地撕下肉来。一旦对手"
+"被击败，它们就吃掉尸体的剩余部分，在这个过程中，它们会变得更强大。"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -6949,20 +7109,10 @@ msgstr ""
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr "死灵食尸鬼"
+msgstr "食尸恶鬼"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these fratures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -6973,11 +7123,11 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
-"死灵食尸鬼，或者说‘死尸吞噬者’，是怪物一样的一团肥胖的东西，和人的形状只有一"
-"点粗糙的相似。他们看上去已经腐烂，尽管还是能够移动；他们血液里充斥着疾病与致"
-"命的毒素，还有相得益彰的恶臭。但是关于这些怪物最让人反胃的事实是——这只有对那"
-"些能够察觉到他们身上丑恶魔法的踪迹的人来说才是清晰可见的——他们是通过某种方式"
-"用活着的人体组成的。关于这一过程，人们几乎一无所知，但那一定是如同梦魇一般。"
+"食尸恶鬼，或者说“死尸吞噬者”，是怪物一样的一团肥胖的东西，和人的形状只有一点"
+"粗糙的相似。它们看上去已经腐烂，尽管还是能够移动。它们的血液里充斥着疾病与致"
+"命的毒素，还有相应的恶臭。但是关于这些怪物最让人反胃的事实是——这只有对那些能"
+"够察觉到它们身上丑恶魔法的踪迹的人来说才清晰可见——它们是通过某种方式用活人制"
+"造出来的。关于这一过程，人们几乎一无所知，但那一定是如同梦魇一般。"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:117
@@ -6994,10 +7144,8 @@ msgstr "矮人"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Falcon"
-msgstr "蝙蝠"
+msgstr "猎隼"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
@@ -7008,10 +7156,8 @@ msgstr "地精"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Horse"
-msgstr "树人"
+msgstr "马"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
@@ -7022,10 +7168,8 @@ msgstr "骑手"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:207
 #: data/core/units/undead/Corpse_Walking.cfg:229
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Beast-Rider"
-msgstr "蝙蝠"
+msgstr "兽骑士"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:216
@@ -7036,10 +7180,8 @@ msgstr "狮鹫"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:239
 #: data/core/units/undead/Corpse_Walking.cfg:238
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Rat"
-msgstr "蝙蝠"
+msgstr "鼠"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:256
@@ -7050,26 +7192,20 @@ msgstr "蜥蜴人"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
-#, fuzzy
-#| msgid "wc_variation^Saurian"
 msgid "wc_variation^Scorpion"
-msgstr "蜥蜴人"
+msgstr "蝎"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
 #: data/core/units/undead/Corpse_Walking.cfg:274
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Spider"
-msgstr "泳者"
+msgstr "蜘蛛"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:284
 #: data/core/units/undead/Corpse_Walking.cfg:283
-#, fuzzy
-#| msgid "wc_variation^Swimmer"
 msgid "wc_variation^Serpent"
-msgstr "泳者"
+msgstr "海蛇"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
@@ -7086,16 +7222,8 @@ msgstr "巨魔"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Boar"
-msgstr "蝙蝠"
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
+msgstr "野猪"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
@@ -7310,14 +7438,6 @@ msgstr "枯骨射手"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Of a dark sorcerer’s creations, some take more strongly to the false life "
-#| "given them. The potency of their un-life is given equipment to match; "
-#| "archers, in particular, are often outfitted with a truly vile arsenal. "
-#| "Their quivers are filled with shafts made not of wood, but of the bones "
-#| "of their victims. It follows that they are dubbed simply ‘Bone-Shooters’ "
-#| "by their unfortunate enemies."
 msgid ""
 "Of a dark sorcerer’s creations, some take more strongly to the false life "
 "given them. The potency of their unlife is given equipment to match; "
@@ -7326,10 +7446,9 @@ msgid ""
 "victims. It follows that they are dubbed simply ‘Bone-Shooters’ by their "
 "unfortunate enemies."
 msgstr ""
-"黑暗巫师的造物中，有一部分得到了更加强大的虚假生命，也得到了与自己的死后力量"
-"相配的武器。特别是弓箭手，通常装备着非常卑鄙的武器。它们的箭袋中的箭不是木制"
-"的，而是由受害者的骨头所制成。那些倒霉的敌人因而简单地给它们起了“枯骨射手”的"
-"绰号。"
+"黑暗巫师的造物中，有一部分得到了更加强大的虚假生命，也得到了与死后力量相配的"
+"武器。特别是弓箭手，通常会装备非常卑鄙的武器。它们箭袋中的箭不是木制的，而是"
+"由受害者的骨头制成。因而，它们的不幸的敌人简单地给它们起了“枯骨射手”的绰号。"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -7466,8 +7585,8 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
-"一旦陷入妖法的黑幕之中，一个被困住的灵魂就如同吹入船帆的风。这被诅咒的容器变"
-"成了唯命是从的仆人，它们可以被派给任何任务，只要它们的主人乐意就行。"
+"一旦陷入妖法的黑幕之中，被困住的灵魂就如同吹入船帆的风。这被诅咒的容器变成了"
+"唯命是从的仆人，它们可以被派给任何任务，只要它们的主人乐意就行。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:69
@@ -7649,590 +7768,16 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "树人幼体"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "巨魔萨满"
+msgstr "树人萨满"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
 msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
-msgstr ""
-
-#, fuzzy
-#~| msgid "faerie fire"
-#~ msgid "desert fire"
-#~ msgstr "仙境之火"
-
-#, fuzzy
-#~| msgid "wc_variation^Wose"
-#~ msgid "wc_variation^Tusker"
-#~ msgstr "树人"
-
-#~ msgid ""
-#~ "Amongst orcs, bows are often regarded as a cowardly weapon; but even "
-#~ "orcs, especially youths and those of slight build, are pragmatic enough "
-#~ "to use them in spite of this. Orcish archers are seldom well equipped, "
-#~ "and have no semblance of training. Even as poorly handled as they are, "
-#~ "their weapons can still be quite deadly, and the wielders thereof rarely "
-#~ "march alone."
-#~ msgstr ""
-#~ "在兽人中，弓箭常常被认为是懦夫使用的武器；但是即使是兽人，特别是年轻的和体"
-#~ "型瘦小的兽人，也会足够务实而使用它们，而不去管这些言论。兽人弓箭手几乎总是"
-#~ "没有好装备，并且没有受过像样的训练。即使如此，他们的武器仍然可以致命，更何"
-#~ "况他们很少独自行动。"
-
-#~ msgid ""
-#~ "Though some consider it cowardly to use, poison is a weapon favored by "
-#~ "orcs, especially those weak of frame. Orcish assassins, who use it on "
-#~ "throwing knives, are typically frail by orcish standards, although "
-#~ "surprisingly nimble. Though rarely the ones who deal the killing blow, "
-#~ "their tactics are a considerable aid to their larger and more brutal kin."
-#~ msgstr ""
-#~ "有些人认为使用毒药是懦夫的行为，但兽人却很喜欢——特别是那些体格弱小的兽人。"
-#~ "兽人刺客就喜欢在飞刀上涂上毒药。以兽人的标准来说，他们通常很脆弱，虽然令人"
-#~ "惊讶地敏捷。尽管很少能给予敌人致命一击，但他们的战术对体格更健壮、性格更残"
-#~ "暴的同族却是很有用的支援。"
-
-#~ msgid ""
-#~ "Orcish crossbows are crude imitations of human or dwarvish design; a "
-#~ "crossbow of any make, though, is a fairly potent device. The orcs "
-#~ "privileged enough to wield them are capable warriors, and what they lack "
-#~ "in finesse, they make up for in numbers."
-#~ msgstr ""
-#~ "兽人的十字弩是对人类或者矮人的武器设计的粗糙仿制品；尽管如此，无论是用什么"
-#~ "东西做出来的，十字弩总是威力相当强大的武器。有权使用这种武器的兽人都是称职"
-#~ "的战士，而对于技巧方面的不足，他们会用数量来弥补。"
-
-#~ msgid ""
-#~ "A blade in the dark, dripping with poison — for many orcish warlords the "
-#~ "last thing they see. Due to their high fees, orcish nightblades "
-#~ "specialize in “resolving internal conflicts” and are rarely seen on the "
-#~ "battlefield. Practice makes perfect, and few can rival them in that "
-#~ "regard: they have long lost count of their victims, though that "
-#~ "admittedly isn’t too hard for an orc with only ten fingers."
-#~ msgstr ""
-#~ "暗影之中滴落着毒液的利刃——对很多兽人军阀而言，这是他们所见到的最后一样东"
-#~ "西。由于高昂的费用，专精于“解决内部冲突”的兽人夜刃很少能在战场上见到。熟能"
-#~ "生巧，而很少有人能在这方面与他们比肩：他们早就已经数不清自己杀掉多少受害者"
-#~ "了，虽然得承认，对只有十个指头的兽人而言，“数不清”并不是很难的。"
-
-#~ msgid ""
-#~ "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
-#~ "enemies. Slayers are fast on their feet, and quite nimble in combat, "
-#~ "although they achieve that end by forgoing armor. Their weapon of choice, "
-#~ "poison, is a vicious tool, and its common use on the battlefield is often "
-#~ "the real cause of orcish supremacy."
-#~ msgstr ""
-#~ "体格更强、技艺更高的兽人刺客被敌人称作“杀手”。杀手能快速移动，在战斗中很灵"
-#~ "活，不过这是以舍弃铠甲作为代价的。他们选择的武器是剧烈的毒药，而往往正是毒"
-#~ "药的频繁使用才铸就了兽人在战场上的至高优势。"
-
-#~ msgid ""
-#~ "From time to time, an orc will arise who has a natural charisma and "
-#~ "command over his ilk. If he is also strong and cunning enough to survive "
-#~ "early leadership struggles, he will inevitably find himself leading a "
-#~ "great horde of warriors, and he will also inevitably cause a great deal "
-#~ "of trouble for the civilized races of the world. The surest way to "
-#~ "disperse such a host is to slay this rare orc who can hold it together."
-#~ msgstr ""
-#~ "有些时候，会出现一个对自己的部族有着超凡魅力和控制力的兽人。如果他同时足够"
-#~ "强壮和狡诈，足以撑过早期的领导权之争，那么他不可避免地会发现自己正在领导着"
-#~ "一大群勇猛的战士，同样，他也会不可避免地对这世界上的文明种族造成巨大的麻"
-#~ "烦。要解决这样一支军队，最可靠的办法就是杀死这个可以将这军队凝聚在一起的稀"
-#~ "有兽人。"
-
-#~ msgid ""
-#~ "In a race where might is the be-all end-all of supremacy and respect, the "
-#~ "orcs who achieve victory time and time again become the rulers of much "
-#~ "greater orcish tribes. Wearing the most ornate armor they plunder from "
-#~ "their enemies, the Orcish Warlords are true champions of battle, their "
-#~ "mastery of the blade able to match even the finest from vaunted elvish "
-#~ "and human schools of swordsmen. They even have practice with the bow, "
-#~ "their usage of this ordinarily cowardly weapon offset by the sheer "
-#~ "admiration their warriors have for them. However, the Warlords lack the "
-#~ "insight for strategy and leading charisma of some of the more cunning "
-#~ "orcs, and so the hordes they lead often fall simply due to their "
-#~ "inability to truly lead."
-#~ msgstr ""
-#~ "在一个只有力量才意味着霸权，只有力量才意味着尊敬的种族里，一次又一次获胜的"
-#~ "兽人会成为大得多的兽人部落的统治者。兽人军阀身着他们从敌人那里掠夺来的最华"
-#~ "丽的铠甲，他们是战斗中真正的一流武士，他们对剑术的掌握，甚至可以匹敌最负盛"
-#~ "名的精灵与人类剑术流派的剑士们。他们甚至还练习用弓，这通常来说是懦夫使用的"
-#~ "武器，但他们属下的武士们对他们十分仰慕，以至于会对这武器不以为意。然而，军"
-#~ "阀们缺乏那些更加狡猾的兽人的战略直觉和领袖魅力，所以他们领导的部落经常仅仅"
-#~ "因为他们无法真正地进行领导而失败。"
-
-#~ msgid ""
-#~ "Orcish Warriors are those orcs who have proved their strength on the "
-#~ "battlefield, choosing to display their skill by fighting with a sword in "
-#~ "each hand. Their prowess in battle has gained them the respect of other "
-#~ "orcs, and they will typically be seen ordering lesser bands of raiders. "
-#~ "Despite their position, they rarely possess the commanding skills held by "
-#~ "the leaders of other armies."
-#~ msgstr ""
-#~ "兽人武士是在战场上证明了自己力量的兽人，他们选择通过两手各持一把剑进行战斗"
-#~ "的方式来展现自己的技能。他们因战斗中的英勇而赢得了其他兽人的尊敬，因此也常"
-#~ "能看到他们支使着小股劫掠队。虽然身居指挥之位，但他们却很少拥有其他军队的领"
-#~ "导者们所拥有的指挥技能。"
-
-#~ msgid ""
-#~ "The curious name of the Elvish ‘Avengers’ comes from a tactic often "
-#~ "employed by these master rangers. The enemy is allowed to break through a "
-#~ "feint defense and when the vulnerable troops behind the front line "
-#~ "follow, these archers break cover and attack, cutting supply lines and "
-#~ "surrounding the enemy in one fell stroke. This has, at times, been "
-#~ "interpreted as a form of vengeance for their brethren lost earlier in the "
-#~ "battle. While not so base in design, it is not at all inaccurate.\n"
-#~ "\n"
-#~ "Even more than other elves, Avengers are a part of the realm of the "
-#~ "forests, spending most of their time living among the arboreal creatures "
-#~ "and learning the hidden secrets in the woods. As the keepers of nature, "
-#~ "these elves have the propensity to explore the wilds even beyond the "
-#~ "boundaries of the forests and are adept at traversing rough terrains like "
-#~ "mountains and deserts. Even in such unfamiliar territories, Avengers are "
-#~ "already powerful combatants; in their homes in the trees, they are nigh "
-#~ "unassailable, capable of assassinating enemies from the shadows with "
-#~ "little chance of retaliation. It is this ability which instills the most "
-#~ "fear into any invading army, for fighting a force that can barely be "
-#~ "tracked or seen in the forests leaves very little room for counterattack "
-#~ "and customarily results in crushing defeat."
-#~ msgstr ""
-#~ "精灵”复仇者“这个奇怪的名字来自于这些游侠大师经常使用的战术。他们允许敌人突"
-#~ "破佯装的防御, 当最前线后面的脆弱部队紧跟随前锋行进时，这些弓箭手将解除伪装"
-#~ "并进攻，用一次凶猛的攻击切断补给线并风包围敌人。这种战术有时被理解为对他们"
-#~ "为之前的战斗中失去的弟兄所施行的报复。虽然说这种战术并不是基于报复来设计"
-#~ "的，但这种说法倒也不是完全不准确。\n"
-#~ "\n"
-#~ "相比其他精灵，复仇者更是森林的一部分，他们大部分时间都和树栖生物生活在一"
-#~ "起, 并学习树林中隐藏的秘密。作为大自然的守护者, 这些精灵偏爱探索甚至远在森"
-#~ "林边界之外的荒野，也善于穿越像山脉和沙漠这样粗糙的地形。即使在这样陌生的地"
-#~ "区, 复仇者也已是强大的战士；在森林中的家园里, 他们几乎是无懈可击的。他们能"
-#~ "够从阴影中暗杀敌人，而敌人却几乎没有还手之力。正是这种能力让各种入侵的军队"
-#~ "都最为感到恐惧，因为这是在与一支几乎无法在森林里追踪或看到的部队作战。这几"
-#~ "乎没有留下反击的空间，也常常会导致压倒性的失败。"
-
-#~ msgid ""
-#~ "The magic of the wood-elves is poorly suited for combat, but effective "
-#~ "nonetheless. The forests in which they thrive can become quickened by a "
-#~ "word of command, and will lash out at those who threaten their peace.\n"
-#~ "\n"
-#~ "The chief ability of Druids lies in healing, and it is for this skill "
-#~ "that they are revered by their people."
-#~ msgstr ""
-#~ "木精灵所掌握的魔法不适合战斗，但还是很有效果。她们的一句命令就能让自己所居"
-#~ "住的森林苏醒过来，去狠狠鞭打那些威胁她们和平的家伙。\n"
-#~ "\n"
-#~ "她们的主要能力是治疗，德鲁伊们正是由于这种能力而被族人们敬重。"
-
-#~ msgid ""
-#~ "The magic of the elves is wholly unlike that of humanity, so much so that "
-#~ "humans are almost universally incapable of understanding it, let alone "
-#~ "using it. Likewise, those who are masters of it are equally enigmatic; "
-#~ "though it can be said that they are revered by their people, very little "
-#~ "can be said about their actual function or purpose within that society."
-#~ msgstr ""
-#~ "精灵的魔法与人类的完全不同，以至于人类几乎完全无法理解，更别提使用了。同样"
-#~ "地，擅长于精灵魔法的大师与她们使用的魔法一样神秘：虽然可以肯定她们的族人很"
-#~ "敬重她们，但她们在自己的社会里扮演什么样的角色却鲜为人知。"
-
-#~ msgid ""
-#~ "The leaders of elvenkind command an instinctive loyalty from their people "
-#~ "that rulers of other races can only envy, and earn it with great "
-#~ "mindfulness and wisdom. Quiet and contemplative in times of peace, a High "
-#~ "Lord in the full of his wrath is an awesome sight indeed."
-#~ msgstr ""
-#~ "精灵们的领袖拥有子民们近乎本能的忠诚。这是其他种族的统治者们只能嫉妒的忠"
-#~ "诚，是靠伟大的觉察力和智慧而得到的。尽管在和平时期常常处于平静与沉思之中，"
-#~ "可高阶精灵领主一旦被激怒，那景象就十分令人敬畏了。"
-
-#~ msgid ""
-#~ "Elves choose their leaders for their wisdom and sensitivity to the "
-#~ "balance of universal forces; foresight is what has protected them in "
-#~ "times of uncertainty. Their just reign is rewarded by the unflagging "
-#~ "fealty of their people, which is the greatest gift for which any ruler "
-#~ "could ask."
-#~ msgstr ""
-#~ "精灵选择领袖时，倚重的是他们的智慧，以及对宇宙之力平衡之道的敏感。当不确定"
-#~ "的情形出现时，正是领袖们的先见之明保护了他们。精灵们以无限的忠诚来回报他们"
-#~ "公正的统治，这是任何一个统治者所能祈求的最好礼物。"
-
-#~ msgid ""
-#~ "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-#~ "Despite the peaceful nature of their people, their experience makes them "
-#~ "quite deadly in combat. Only the most dedicated exceed these elves’ skill "
-#~ "as mounted archers — in fact, most would be hard pressed to equal it "
-#~ "standing on solid ground.\n"
-#~ "\n"
-#~ "The speed of these soldiers allows the elves to strike when and where "
-#~ "they choose when fighting on their home ground, a fact that has saved "
-#~ "many of their number from death."
-#~ msgstr ""
-#~ "精灵骑卫兵是精灵王国的皇家信使。尽管精灵天性爱好和平，经验却让他们能征善"
-#~ "战。他们在马背上使用弓箭的技术无人可比——事实上，大多数人就是站在坚实的平地"
-#~ "上也很难比过他们。\n"
-#~ "\n"
-#~ "这些士兵速度很快，使得精灵们在自己的家园作战时能够自由地选择打击的时间与地"
-#~ "点。这种技能使得他们中的许多人避开了死亡的命运。"
-
-#~ msgid ""
-#~ "Being partly faerie in nature, elves have an inherent capability for "
-#~ "magic. This is realized in their affinity with the natural world, which "
-#~ "they can call upon as an ally in combat. Enemies wandering in their "
-#~ "forests may soon find themselves entangled by roots and hindered by the "
-#~ "very ground they stand on.\n"
-#~ "\n"
-#~ "The healing abilities of the elves are also remarkable, and of capital "
-#~ "use in battle."
-#~ msgstr ""
-#~ "这些精灵天生就是半个仙子，有着与生俱来的魔法能力。她们与大自然非常亲近，能"
-#~ "运用自然力量来战斗。在森林里游荡的敌人们很快会发觉自己被树根所缠绕，被脚下"
-#~ "的大地所阻碍。\n"
-#~ "\n"
-#~ "这些精灵的治疗能力也很出色，在战斗中的用处很大。"
-
-#~ msgid ""
-#~ "Devotion to the path of faerie may eventually transform an elf maiden "
-#~ "into a creature of both worlds. Guided by a power which is little "
-#~ "understood, these beautiful stewards of the elven forests epitomize the "
-#~ "grace and mystery of their people."
-#~ msgstr ""
-#~ "如若献身于仙子之路，一位精灵少女最终会成为穿梭于仙境与凡间的生灵。她们受到"
-#~ "一种几乎无法解释的自然力量的指引，这些精灵森林的美丽守护者，是她的族人们的"
-#~ "优雅与神秘的化身。"
-
-#~ msgid ""
-#~ "The world of faerie is far more potent than the corporeal world. Simply "
-#~ "bringing some of this world into our own can have violent results. This "
-#~ "is well-understood by the elves, although rarely used with malicious "
-#~ "intent; doing so is no easy task, and is a very ill-regarded use of their "
-#~ "strength.\n"
-#~ "\n"
-#~ "Those able to do so are roughly titled as ‘sorceresses’ by other races; "
-#~ "and certainly are capable of acting the part."
-#~ msgstr ""
-#~ "仙境的力量比凡间的强大很多。仅仅只是将仙境的一点点力量导入凡间就可能会导致"
-#~ "很暴烈的后果。精灵们对此有深刻的理解，却很少怀着恶意使用它们：要这么做并非"
-#~ "易事，而且还被看作是对力量极不正当的运用。\n"
-#~ "\n"
-#~ "能够如此运用仙境力量的人通常被其他种族大略地称为“女巫”，她们的能力也确实配"
-#~ "得上这个称号。"
-
-#~ msgid ""
-#~ "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-#~ "mundane natures. They are possessed of wondrous, and sometimes terrifying "
-#~ "powers. Legends concerning these have given other races a healthy fear of "
-#~ "the elves."
-#~ msgstr ""
-#~ "很少有人能见到青空仙灵。这些贤明的精灵是同时掌握自身仙力与凡力的大师，拥有"
-#~ "着惊人而有时令人惊恐的力量。关于这些力量的传说使得其他种族对精灵们心怀敬畏"
-#~ "之情。"
-
-#~ msgid "Dune Ranger"
-#~ msgstr "沙丘游侠"
-
-#~ msgid "Dune Swiftrider"
-#~ msgstr "沙丘迅骑"
-
-#~ msgid ""
-#~ "Any orc who can keep a large tribe from feuding and in-fighting is often "
-#~ "unusually intelligent and commanding, and is inevitably very strong as "
-#~ "well. They are skilled with both sword and crossbow, but their real "
-#~ "talent lies in their rare ability to rally other orcs to battle, to give "
-#~ "orders that are followed not out of fear, but loyalty."
-#~ msgstr ""
-#~ "任何可以保持一个庞大部落不陷入纠纷和内战的兽人都往往是非常智慧而有威信的，"
-#~ "当然他们也必然非常强壮。他们对剑和十字弩都很擅长，不过其真正的才干却是少见"
-#~ "的领导能力，能够将兽人们集合起来战斗。他们发出的命令被遵从并不是因为恐惧，"
-#~ "而是因为忠诚。"
-
-#~ msgid "Saurian Skirmisher"
-#~ msgstr "蜥蜴人散击士"
-
-#~ msgid ""
-#~ "Some men excel at medicine the way others do at strength of arms, and the "
-#~ "Apothecaries are those whose knowledge is without peer outside of the "
-#~ "Dunefolk. Their remedies can not only heal wounds but remove infection "
-#~ "and poison as well, often to the disbelief of the injured. Hardened by "
-#~ "years of travels, many are able to treat themselves."
-#~ msgstr ""
-#~ "有的人像别人专长于力量那样精于医术，而药剂师对于医药的知识在沙丘游民之外无"
-#~ "人能及。他们的药物不仅能够治愈伤口，还能消除感染和解毒。其药效之神奇往往让"
-#~ "伤者感到难以置信。他们中的许多人因长年的旅行而变得坚韧，能够处理好自身的伤"
-#~ "病。"
-
-#~ msgid ""
-#~ "Distinguished for their bravery and skill, Blademasters are the leaders "
-#~ "among the Dunefolk's ranks. Their exploits are well known among their "
-#~ "cohorts, inspiring soldiers to fight for their cause. Despite this, they "
-#~ "are often found leading from the front, taking down their foes with sword "
-#~ "and shield."
-#~ msgstr ""
-#~ "剑圣因为勇气和技巧而受众人仰慕，他们是沙丘游民军队中的领导者。他们的光辉事"
-#~ "迹广为同袍们所熟知，激励着士兵们为他们卖命。尽管如此，他们仍然常常在作战时"
-#~ "身先士卒，以剑盾击倒他们的敌人。"
-
-#~ msgid ""
-#~ "Utilizing various resources found in the Dunefolk domain, a highly "
-#~ "flammable substance can be made. The Burners are those charged with "
-#~ "making and carrying this dangerous mixture into battle. While the use of "
-#~ "fire in warfare is not a novel concept, the effectiveness of their work "
-#~ "is."
-#~ msgstr ""
-#~ "使用沙丘游民疆域中的各种资源，可以制造出一种非常易燃的物质。灼烧者便是领命"
-#~ "制造此种混合物，并将它们带上战场的人。虽说在战争中使用火攻并不是什么新鲜概"
-#~ "念，但他们的火攻的有效性却是很新鲜的。"
-
-#~ msgid "naphtha attack"
-#~ msgstr "油火攻击"
-
-#~ msgid "fire arrow"
-#~ msgstr "火焰箭"
-
-#~ msgid ""
-#~ "The Cataphract are eminent horsemen, amassing titles and accolades that "
-#~ "are as distinguishing for them as the scrollwork on their armor. Having "
-#~ "honed their skill with a lance in years of battle, the Cataphract are an "
-#~ "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
-#~ "do not deter these riders in the slightest, and the displaced air of a "
-#~ "descending mace is the last sound they hear."
-#~ msgstr ""
-#~ "重甲骑兵是杰出的马师，积攒着如同他们铠甲上的漩涡纹饰那般别致耀眼的头衔和赞"
-#~ "誉。长年的战斗让重甲骑兵磨练出了一手使枪的绝技，这让他们成为了一只不可阻挡"
-#~ "的力量。逃窜的敌人们很快就发现山丘丝毫不能对这些骑手构成障碍，然后便在铁锤"
-#~ "的破风声中被结果了性命。"
-
-#~ msgid ""
-#~ "Explorers are often utilized as heavy scouts, no longer just probing the "
-#~ "enemy but conducting raids on the supply lines or eliminating patrols. "
-#~ "Often away from the main body of the army for long periods of time, "
-#~ "Explorers have no issue pilfering these supplies, and so they tend to be "
-#~ "more well-equipped than most."
-#~ msgstr ""
-#~ "探险者常被用作重装侦察兵。他们不再仅仅侦查敌人，还会洗劫敌人的补给线或者歼"
-#~ "灭敌人的巡逻队。因为常常长时间待在敌后，探险者毫不介意窃取敌人的物资，因此"
-#~ "他们常常拥有比大多数人更好的装备。"
-
-#~ msgid ""
-#~ "Scorchers who have shut out the world for their experiments are given the "
-#~ "title of Firetrooper, as both a sign of respect and of fear. No longer "
-#~ "cognizant of the value of life, Firetroopers are caught up in the power "
-#~ "of their caged fire and likely to test their latest naphtha jar at the "
-#~ "first opportunity."
-#~ msgstr ""
-#~ "那些排除了世俗之扰，完全投身进自己的实验的焦燃者，会获得“狂炎兵”的称号，这"
-#~ "同时代表着尊敬与恐惧。狂炎兵们已不再意识到生命的价值，他们被笼中火焰的力量"
-#~ "所迷摄，不愿放过任何一个测试他们最新式燃烧罐的机会。"
-
-#~ msgid ""
-#~ "Harriers hold themselves to a higher standard than the ranks of the "
-#~ "Skirmishers from which they ascended. Not content to merely draw the "
-#~ "enemy out, they combine their speed with an aggression that sends the "
-#~ "Harriers dancing through the ranks of the enemy, swords ripping and "
-#~ "tearing at those around them. "
-#~ msgstr ""
-#~ "侵掠者进阶自散兵，他们以更高的标准要求自己。侵掠者不满足于仅仅牵制住敌人，"
-#~ "他们将速度与侵略性结合，在敌阵中跳起血肉横飞的剑舞。 "
-
-#~ msgid ""
-#~ "Herbalists are learned individuals who have given up their urban life in "
-#~ "order to assist the Dunefolk armies in their travels. Their motivations "
-#~ "are many; some look to it as an adventure or as a steady source of pay, "
-#~ "while others feel it to be a duty to their society. Regardless, "
-#~ "Herbalists are highly respected by all. They are trained with the "
-#~ "advanced medical techniques and possess a potent clutch of medicines and "
-#~ "herbs, which allows them to quickly heal even the most gravely wounded "
-#~ "allies."
-#~ msgstr ""
-#~ "草药师是博学者，他们为了协助出征的军队放弃了自己的市民生活。个中的动机有许"
-#~ "多，有的人追求冒险或一份稳定的收入，而另一些人则受到了信仰的感召。无论如"
-#~ "何，草药师受到所有人的高度敬仰。他们受过深入的医术训练，并且手握丰富的药材"
-#~ "资源，因此即使是受伤最严重的友军也能被他们快速治愈。"
-
-#~ msgid ""
-#~ "Those Raiders who prove to be particularly skilled are formed into units "
-#~ "of Marauders, which are often used to raid enemy depots and towns for "
-#~ "supplies. This greater autonomy often means that these horsemen are gone "
-#~ "for weeks at a time, returning to camp only for supplies and to pass on "
-#~ "news of their exploits."
-#~ msgstr ""
-#~ "那些在战斗中表现出高超技巧的劫掠骑们被编入了掠袭骑的行列，他们被用来洗劫敌"
-#~ "人的仓库与城镇以谋取给养。更大的自主权常常意味着这些骑兵们常常一出征就是数"
-#~ "周，仅仅为了补给物资和报告功绩才返回营地。"
-
-#~ msgid "Dune Piercer"
-#~ msgstr "沙丘穿刺骑"
-
-#~ msgid ""
-#~ "The Piercer understand the psychological impact of a charging horse, and "
-#~ "reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
-#~ "Piercer at the charge with lance in hand is often impetus enough to break "
-#~ "men. On the rare occurrences that their charge fails to rout their foe, "
-#~ "the Piercer ride into the resulting melee with their maces in hand, "
-#~ "trusting their armor to keep them safe."
-#~ msgstr ""
-#~ "穿刺骑明白冲锋的马匹对敌军心理上的冲击，并通过身着重甲来增强这种震撼感。傲"
-#~ "立时魁梧威严，持枪冲锋的穿刺骑所携的冲击力常常足以令敌人散架。在极少数穿刺"
-#~ "骑的冲锋没能击溃敌人的情境中，他们会纵马迎敌持锤而战，信赖身上的铁铠能保障"
-#~ "自己的安全。"
-
-#~ msgid ""
-#~ "Those horsemen who are not skilled enough to join the ranks of the "
-#~ "Sunderers or quick enough with a bow for the Swiftriders are instead "
-#~ "placed with the Raiders. Far from being a sign of failure, the Raiders "
-#~ "were created as a mounted counterpart to the Explorers, supporting the "
-#~ "foot troops with mace or bow as needed. Raiders are often used to draw "
-#~ "enemies into a position where they will be surrounded and crushed by "
-#~ "Sunderers."
-#~ msgstr ""
-#~ "那些既不足以凭借技巧加入裂断骑又不具备迅骑所必须的迅捷与弓术的骑师就会被编"
-#~ "入劫掠骑的行列。这并不意味着他们就是失败者，恰恰相反，劫掠骑是作为马背上的"
-#~ "探险者而组建的，能够视需要以铁锤或弓箭为步兵提供辅助。劫掠骑常被用来将敌人"
-#~ "诱入裂断骑的包围网，然后让裂断骑们来将敌人碾碎。"
-
-#~ msgid ""
-#~ "Rangers are the elite of the Explorers, engaging in constant hit and run "
-#~ "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-#~ "prefer to coordinate multiple attacks at the same time, sending foes "
-#~ "running from their arrows only to be cut down by their axes. Given their "
-#~ "penchant for taking on only the most daring missions, Rangers are often "
-#~ "heroes to the common troopers, an image they do not try to dissuade."
-#~ msgstr ""
-#~ "游侠是探险者中的精英，善于采用不间断的打了就跑战术侵扰敌军。他们迅捷如风，"
-#~ "勇猛如虎，能够协调一致地同时发动多重打击。以弓箭驱赶敌人，再以战斧将他们砍"
-#~ "倒。游侠热衷于接受最勇敢的任务，因此总被军人们视为英雄，他们也有意识地维护"
-#~ "着这样的形象。"
-
-#~ msgid ""
-#~ "Riders are excellent horsemen, able to shoot from horseback better than "
-#~ "most men can manage from foot. Disdaining the use of heavy armor, Riders "
-#~ "use their superior speed and agility to circle and harass their foes, "
-#~ "whittling down their numbers with relentless arrows."
-#~ msgstr ""
-#~ "骑手是优秀的骑师，他们在马背上射箭能够比许多人站在地上射得还准。骑手不愿使"
-#~ "用重甲，他们利用自己的高速和灵活去包围和不断骚扰敌人，用无情的箭雨削减敌人"
-#~ "的数量。"
-
-#~ msgid ""
-#~ "Scorchers spend so much time experimenting with their weapons that they "
-#~ "smell constantly of ash and flame. Regarded with wariness by their fellow "
-#~ "troops, Scorchers can be easily located in battle by the cleared charred "
-#~ "area around them, a testament to the success of their experiments."
-#~ msgstr ""
-#~ "焦燃者花费了太多时间试验他们的武器，以致于他们身上一直散发着一股灰烬和火焰"
-#~ "的味道。他们总被同袍们以谨慎的眼光看待。根据战场上的焦土痕迹，人们很容易就"
-#~ "能在战场上确定他们的位置。那是他们实验成功的有力证据。"
-
-#~ msgid ""
-#~ "Those Rovers who are proficient at scouting are elevated into the ranks "
-#~ "of the Skirmishers. Discarding their bow, Skirmishers focus on developing "
-#~ "their swiftness of foot to allow them to flow in and out of combat. They "
-#~ "are often used to harry the flanks of opposing forces, and it is said to "
-#~ "be easier to catch the wind in your hand than to catch a Skirmisher."
-#~ msgstr ""
-#~ "那些拥有娴熟侦察能力的浪游者会被提拔进散兵的行列。散兵放弃了弓术，专心训练"
-#~ "出迅捷的脚力，借此灵活的在战斗中迎敌和脱出。他们主要被派来包抄敌军的侧翼，"
-#~ "据说捕捉游击士的难度的难度甚于以手捉风。"
-
-#~ msgid ""
-#~ "The Soldier forms the backbone of any Dunefolk foot advance. Many come "
-#~ "from noble or military families, and have spent most of their lives "
-#~ "training their craft. Given their intense focus on swordplay, they are "
-#~ "often sent against fortified enemy positions to create a breach for the "
-#~ "remaining troops to exploit. The sight of Soldiers on the march, shields "
-#~ "high, has caused many a defender to worry about the strength of their "
-#~ "walls."
-#~ msgstr ""
-#~ "沙丘士兵在任何沙丘游民的步战前出部队中都是骨干。他们大多来自贵族或者军事家"
-#~ "庭，并且花费了大半辈子修习武艺。因为他们高超的剑技，他们常被派去负责攻坚"
-#~ "战，为其余部队打开突破口。当看到沙丘士兵高举着盾牌进军时，守军们常常不禁担"
-#~ "忧起他们的城墙是否足够坚固。"
-
-#~ msgid ""
-#~ "Although the Dunefolk armies are known for their astonishing mobility and "
-#~ "fierce attack, they can be able defenders. Spearguard excel at holding "
-#~ "their ground, keeping opponents at bay with long, razor sharp spears. "
-#~ "Their preferred strategy is to gradually wear down enemies, until they "
-#~ "can be defeated in a vicious counter stroke."
-#~ msgstr ""
-#~ "尽管沙丘游民军队以他们惊人的移动力和猛烈的攻击力而著称，但他们也能成为干练"
-#~ "的防守方。矛卫擅于固守阵线，用尖利的长矛让敌人无法近身。他们喜好的策略是把"
-#~ "敌人耗到筋疲力竭，再以犀利的反击解决战斗。"
-
-#~ msgid ""
-#~ "Spread across the Dunefolk's lands are lonely towers and garrisons that "
-#~ "provide shelter to caravans and locals from bandits and monsters. These "
-#~ "bastions are defended by the most determined of soldiers, who have often "
-#~ "faced off against overwhelming odds only to repel the invaders. In an "
-#~ "army they can be trusted to hold any position or line, long after lesser "
-#~ "soldiers and men have fled in terror."
-#~ msgstr ""
-#~ "沙丘游民的土地上分布着孤立的高塔与要塞，它们负责为商队和当地居民提供防护，"
-#~ "以抵御盗贼和怪物的袭扰。这些堡垒由意志最坚定的士兵们保卫着，他们为了抵御入"
-#~ "侵者常常不得不在压倒性的逆境中作战。在军队中，可以放心地将守卫任何位置或战"
-#~ "线的任务交给他们。即使友军们早已在恐惧中溃逃，他们仍然能够坚守住自己的位"
-#~ "置。"
-
-#~ msgid ""
-#~ "Those Piercers who distinguish themselves in battle are given the "
-#~ "opportunity to prove themselves worthy of becoming a Sunderer. Those who "
-#~ "pass the trial are given the traditional barding for their horse, "
-#~ "distinguishing them from the rest of the Dunefolk cavalry. Consummate "
-#~ "horsemen, the Sunderers have long claimed they need only a single lance "
-#~ "strike to kill a man."
-#~ msgstr ""
-#~ "那些在战斗中脱颖而出的穿刺者被给予机会在试炼中证明自己，通过试炼者将成为裂"
-#~ "断者。他们被授予传统的马铠，这使他们在沙丘游民骑兵之中与众不同。裂断者堪称"
-#~ "完美的骑兵，他们一直宣称毙敌只需要长枪一击就够了。"
-
-#~ msgid ""
-#~ "Riders who demonstrate exceptional skill with the bow are made into "
-#~ "Swiftriders, spending hours every day practicing and building a rapport "
-#~ "with their steed. This has made them the fastest riders in the Dunefolk "
-#~ "armies, and a wise Warmaster uses this to their advantage."
-#~ msgstr ""
-#~ "那些展现出了高人一等的弓术的骑手会被编入迅骑。他们每天会花费许多个小时用来"
-#~ "练习，以和胯下的坐骑建立默契。这让迅骑成为了沙丘游民军队中最迅捷的骑手。一"
-#~ "位睿智的战帅会充分利用这一点。"
-
-#~ msgid ""
-#~ "Armed with their sword and shield, Swordsman are warriors of some renown "
-#~ "among the Dunefolk armies. They have further refined their combat arts, "
-#~ "adding a powerful shield bash to knock back unsuspecting enemies. Though "
-#~ "few in number, their presence can be decisive in dislodging even the most "
-#~ "hardened redoubt."
-#~ msgstr ""
-#~ "剑士在沙丘游民军队中小有名望，他们是以剑盾和信仰作为武装的战士。他们精进了"
-#~ "自己的战斗技巧，在格斗中加入了强力的盾击以击倒无备之敌。尽管剑士人数稀少，"
-#~ "但只要他们出手，再难攻的碉堡也不再话下。"
-
-#~ msgid ""
-#~ "Among every generation, a warrior elevates himself above his peers and "
-#~ "foes; They seem to be able to alter the destiny of the world themselves. "
-#~ "Often given the name Warmaster, these individuals are celebrated for "
-#~ "their strength and skill. Their travels and travails are told endlessly "
-#~ "around the campfire with the reverent tones of those that speak of living "
-#~ "legends."
-#~ msgstr ""
-#~ "在每代人里总会涌现出一位超越所有同袍与敌人的卓越武士，他们看上去能够仅凭一"
-#~ "己之力改变世界的命运。这些人以力量和武技著称，常常被冠上“战帅”的尊名。他们"
-#~ "的游历与磨难被人们以崇拜的口吻在篝火旁不绝传颂。"
-
-#~ msgid ""
-#~ "The elite of the Swiftriders are the Windriders, horse archers of such "
-#~ "speed and dexterity that rumors are always spread that they have elven "
-#~ "blood. Irritated at such mystical nonsense, the Windriders can frequently "
-#~ "be found demonstrating their exceptional skill at the forefront of "
-#~ "battle, riding with great speed through the lines of battle to rain "
-#~ "arrows down upon the enemy."
-#~ msgstr ""
-#~ "迅骑中的精锐便是风骑，他们是兼具高超的速度与灵活性的骑射手，以致于流言总说"
-#~ "他们身上流淌着精灵之血。也许是被这种带有神秘感的无稽之谈激怒了吧，风骑在战"
-#~ "斗中总是跻身前线，展示高超的战斗技巧。如疾风般穿行在战线间，将矢雨浇在敌人"
-#~ "的身上。"
+msgstr "这些树人会指挥森林植物，例如藤蔓来阻碍敌人。"

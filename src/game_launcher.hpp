@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -122,7 +122,7 @@ private:
 	void start_wesnothd();
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
-	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
+	unit_test_result pass_victory_or_defeat(level_result::type res);
 
 	/**
 	 * Internal to the implementation of unit_test(). If a single instance of

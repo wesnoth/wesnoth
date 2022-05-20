@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,20 +14,24 @@
 
 #pragma once
 
-#include "utils/make_enum.hpp"
+#include "utils/wesnoth_epoch.hpp"
 
 #include <ostream>
 #include <string>
 #include <vector>
 
+namespace utils
+{
+
+/**
+ * Calendar for handling and comparing dates using the common epoches of the storyline.
+ */
 class irdya_date
 {
 public:
-	MAKE_ENUM(EPOCH, (BEFORE_WESNOTH, "BW")(WESNOTH, "YW")(BEFORE_FALL, "BF")(AFTER_FALL, "AF"))
-
 	irdya_date() = default;
 
-	irdya_date(EPOCH epoch, unsigned year)
+	irdya_date(wesnoth_epoch::type epoch, unsigned year)
 		: epoch(epoch)
 		, year(year)
 	{
@@ -35,7 +39,7 @@ public:
 
 	static irdya_date read_date(const std::string& date);
 
-	EPOCH get_epoch() const
+	wesnoth_epoch::type get_epoch() const
 	{
 		return epoch;
 	}
@@ -55,7 +59,7 @@ public:
 	std::string to_string() const;
 
 private:
-	EPOCH epoch;
+	wesnoth_epoch::type epoch;
 
 	unsigned int year = 0;
 
@@ -72,3 +76,5 @@ bool operator==(const irdya_date& a, const irdya_date& b);
 bool operator!=(const irdya_date& a, const irdya_date& b);
 
 std::ostream& operator<<(std::ostream& s, const irdya_date& d);
+
+}

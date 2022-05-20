@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-06-06 14:11+0300\n"
-"Last-Translator: Стивън Генчев <stivun.genchev@abv.bg>\n"
+"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"PO-Revision-Date: 2022-03-16 17:31+0200\n"
+"Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -379,8 +379,8 @@ msgstr "Надвийте вражеските водачи"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:391
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:715
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:205
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:418
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:550
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:419
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:551
 msgid "Death of Tallin"
 msgstr "Смъртта на Талин"
 
@@ -390,17 +390,23 @@ msgid ""
 "This challenger has made the orcs careless — I managed to sneak in and filch "
 "the key to the storerooms. Come with me lads, and grab some weapons! Let "
 "them hack at each other, we can use this as our chance to get rid of this "
-"scum once and for all. Who's with me?"
+"scum once and for all. Who’s with me?"
 msgstr ""
-"Този съперник е направил орките немарливи - успях да се вмъкна и да свия "
+"Този претендент е оставил орките си немарливи - успях да се вмъкна и да свия "
 "ключовете към хранилищата. Елате с мен, момчета и си вземете оръжия! Нека те "
 "да се колят, а ние ще използваме тази възможност, за да се отървем от тях. "
 "Кой е с мен?"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:240
+#, fuzzy
+#| msgid ""
+#| "Brave words, Tallin, but if I didn't know you better I'd say you were "
+#| "moon-touched. These are not weapons, just pitchforks and hunting bows. We "
+#| "have no armor, no training. Are we supposed to beat them with bad breath "
+#| "and colorful language?"
 msgid ""
-"Brave words, Tallin, but if I didn't know you better I'd say you were moon-"
+"Brave words, Tallin, but if I didn’t know you better I’d say you were moon-"
 "touched. These are not weapons, just pitchforks and hunting bows. We have no "
 "armor, no training. Are we supposed to beat them with bad breath and "
 "colorful language?"
@@ -595,11 +601,13 @@ msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr ""
+"Звук на барабани и рогове отекна в планините. Огромна оркска армия "
+"наближава! "
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
 msgid ""
-"If only we were faster escaping into the mines this wouldn't have happened. "
+"If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
 msgstr ""
 
@@ -610,9 +618,15 @@ msgstr "Гъмжащите пещери"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Ill-armed and untrained though they were, the people of Dwarven Doors "
+#| "rose against the Orcs. Although their losses had been tremendous, never "
+#| "once did they break or falter. In the end, the orcish host was smashed "
+#| "and the survivors sent scurrying for their lives."
 msgid ""
 "Ill-armed and untrained though they were, the people of Dwarven Doors rose "
-"against the Orcs. Although their losses had been tremendous, never once did "
+"against the orcs. Although their losses had been tremendous, never once did "
 "they break or falter. In the end, the orcish host was smashed and the "
 "survivors sent scurrying for their lives."
 msgstr ""
@@ -719,14 +733,14 @@ msgstr ""
 "Хората бързо събраха каквито оръжия и храна намериха и се впуснаха в мрака "
 "на пещерите."
 
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll Hero, id=Bor
-#. [side]: type=Troll Rocklobber, id=Oof
-#. [side]: type=Troll Hero, id=Glu
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
 #. [side]: type=Troll Warrior, id=Thung
 #. [side]
+#. [side]: type=Troll Warrior, id=Tor
+#. [side]: type=Troll Hero, id=Bor
+#. [side]: type=Troll Rocklobber, id=Oof
+#. [side]: type=Troll Hero, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:159
@@ -1150,17 +1164,17 @@ msgstr ""
 "Хамел."
 
 #. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:904
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1322
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2304
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2422
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2476
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2521
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1320
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2337
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2455
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2509
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2554
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:611
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:903
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:902
 msgid "Very well."
 msgstr "Много добре."
 
@@ -1302,13 +1316,13 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1144
 msgid ""
-"Without eating or sleeping for days, Tallin's men begin to fall one by one."
+"Without eating or sleeping for days, Tallin’s men begin to fall one by one."
 msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1149
 msgid ""
-"We were too slow in finding the dwarves. I don't think we can fight for much "
+"We were too slow in finding the dwarves. I don’t think we can fight for much "
 "longer!"
 msgstr ""
 
@@ -1354,8 +1368,8 @@ msgstr ""
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:91
-msgid "And I, don't forget me!"
-msgstr "И не забравяйте за мен!"
+msgid "And I, don’t forget me!"
+msgstr "И не забравяйте мен!"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:96
@@ -1598,7 +1612,7 @@ msgstr "Надвийте вълчите ездачи"
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:96
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:203
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:562
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:563
 msgid "Death of Hamel"
 msgstr "Смъртта на Хамел"
 
@@ -1706,7 +1720,7 @@ msgstr "Хелиан"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:377
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:384
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:201
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:546
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:547
 msgid "Defeat the enemy leaders"
 msgstr "Надвийте вражеските водачи"
 
@@ -2311,9 +2325,9 @@ msgstr ""
 "Моля ви се, това беше дреболия. Да забравим дълговете; нека бъдем съюзници в "
 "борбата за Северните земи."
 
-#. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:625
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:737
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:275
@@ -2409,9 +2423,13 @@ msgstr "А, така. Я да видим накъде води този туне
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:805
+#, fuzzy
+#| msgid ""
+#| "Wow! That’s incredible. Now I understand why the bag of bones kept you "
+#| "guys in jail; he just simply couldn’t kill you!"
 msgid ""
-"Wow! That’s incredible. Now I understand why the bag of bones kept you guys "
-"in jail; he just simply couldn’t kill you!"
+"Wow! That’s incredible. Now I understand why the bag of bones kept you in "
+"jail; he just simply couldn’t kill you!"
 msgstr ""
 "Уау! Невероятно. Сега разбирам защо кокалестия ви е държал оковани; не е "
 "могъл просто да ви убие!"
@@ -2438,26 +2456,26 @@ msgid "This should help."
 msgstr "Това ще свърши работа."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:889
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:934
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:888
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:933
 msgid "Uh... where... am... I...?"
 msgstr "Ъх... къде... се... намирам...?"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:894
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:893
 msgid ""
 "You are in the dungeons of Malifor. These brave people have just released "
 "you."
 msgstr "В тъмниците на Малифор. Тези смели мъже току що те освободиха."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:899
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:944
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:898
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:943
 msgid "... Thanks."
 msgstr "...Благодаря."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:904
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:903
 msgid ""
 "No problem. Sister Thera, you take care of her. If she wants to join us she "
 "would make a powerful ally."
@@ -2466,13 +2484,13 @@ msgstr ""
 "бъде могъщ съюзник."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:909
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:954
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:908
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:953
 msgid "Yes, I would... like to join... you Lord Tallin."
 msgstr "Да, искам... да ви придружа... сър Талин."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:914
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:913
 msgid ""
 "Just Tallin; I am no lord. But gee, that sure is some powerful spell you "
 "used on her, Thera. She’s looking better already."
@@ -2481,22 +2499,22 @@ msgstr ""
 "Тера. Изглежда все по-добре."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:919
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:918
 msgid "And I feel better too. Now let’s get back at that disgusting skeleton."
 msgstr "И се чувствам по-добре. Сега да си го върнем на онзи противен скелет."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:925
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:924
 msgid "I wish we had some healers with us; I’ll try to help her as best I can."
 msgstr "Де да имахме лечители със себе си; ще й помогна колкото мога."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:939
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:938
 msgid "You are in the dungeons of Malifor. We have just released you."
 msgstr "Ти си в подземията на Малифор. Току що те освободихме."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:949
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:948
 msgid ""
 "No problem. Just take it easy. If you would like to join us your help could "
 "mean life or death for a lot of us."
@@ -2505,12 +2523,12 @@ msgstr ""
 "ни избави от сигурна смърт."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:959
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:958
 msgid "Just Tallin, I am no lord. And you are looking better already."
 msgstr "Само Талин, аз не съм рицар. Но ти изглеждаш по-добре."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:982
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:980
 msgid ""
 "Oh, just a few tricks I know, otherwise I probably would be dead by now. But "
 "let’s get back at that disgusting skeleton."
@@ -2519,42 +2537,42 @@ msgstr ""
 "отмъстим на противния скелет."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:989
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:987
 msgid "Why did the bag of bones capture you in the first place?"
 msgstr "А защо гадния скелет те е оковал, знаеш ли?"
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:994
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:992
 msgid "Because he thought I was pretty."
 msgstr "Защото ме смяташе за хубава."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1000
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:998
 msgid "That old skeleton? Geez, what a nutcase."
 msgstr "Онзи дъртак? Леле, бива си го."
 
 #. [message]: speaker=Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1005
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1003
 msgid "You’re telling me."
 msgstr "Не ми напомняй."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1033
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1031
 msgid "Holy cow! What did I just let out of that cage! Look out everyone."
 msgstr "Майчице! Вижте какво извадих от онази клетка! Пазете се."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1038
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1036
 msgid "Oooooh, cool, it’s a drake!"
 msgstr "Ооооо, страхотно - това е змей!"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1043
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1041
 msgid "(<i>Whimper</i>)"
 msgstr "(<i>Хленч</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1048
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1046
 msgid ""
 "Bright Gods, such a fierce creature whimpering! What the heck have they done "
 "to it?"
@@ -2562,42 +2580,42 @@ msgstr ""
 "Светли богове! Такова свирепо създание да хленчи! Какво ли са му сторили?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1053
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1051
 msgid "The bastards!"
 msgstr "Проклетниците!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1064
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1062
 msgid "Probably another one of Malifor’s experiments."
 msgstr "Сигурно Малифор е експериментирал върху него."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1069
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1067
 msgid "I don’t know, see if it talks."
 msgstr "Не знам, провери дали говори."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1076
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1074
 msgid "Hey, big guy. We aren’t gonna hurt you. We wanna be your friends."
 msgstr "Хей, великане. Няма да те нараним. Искаме да бъдем твой приятели."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1081
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1079
 msgid "... Not... going... to... hurt... me?"
 msgstr "...Няма... да... ме... нараните?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1086
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1084
 msgid "Hey, it talks!"
 msgstr "Хей, то говори!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1091
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1089
 msgid "It’s a ‘he’, and yes, they’re actually very intelligent creatures."
 msgstr "Това е \"той\" и разбира се - те са много разумни създания."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1096
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1094
 msgid ""
 "Hush! I am trying to talk to him. Nope, we’ll never hurt you. But if you "
 "want to you can hurt some skeletons."
@@ -2606,93 +2624,93 @@ msgstr ""
 "искаш, може да нараниш няколко скелета."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1101
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1099
 msgid "Skeletons! GRRRR!!"
 msgstr "Скелети! ГРРРРР!!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1106
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1104
 msgid "Look out! He is ready to go! Hey, is that smoke coming out of his ears?"
 msgstr "Пазете се! Той е готов! Хей, пушек ли излиза от ушите му?"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1120
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1118
 msgid "ROOOAARR!"
 msgstr "РОООААРР!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1125
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1123
 msgid ""
 "Whoa! Maybe he isn’t so friendly after all... or at least to some things."
 msgstr "Уау! Може би не е чак толкова дружелюбен... поне за някои неща."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1141
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1139
 msgid ""
 "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel, either "
 "friend or foe."
 msgstr "(<i>Въздъх</i>) Нищо няма в този тунел, нито добро, нито зло."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1165
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1163
 msgid "The Treasury"
 msgstr "Съкровищницата"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1170
-msgid "The Treasury! Cool, let’s go loot some booty!"
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1168
+msgid "The Treasury! Excellent, let’s clean out the gold!"
 msgstr "Съкровищницата! Страхотно, да съберем малко плячка!"
 
 #. [message]: role=Treasury Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1203
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1201
 msgid "Intruders! Get them!"
 msgstr "Натрапници! Хванете ги!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1208
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1206
 msgid "Bring it on!"
 msgstr "Само се опитайте!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1253
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1251
 msgid "There are at least several hundred gold coins in here!"
 msgstr "Тука има поне неколкостотин жълтици!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1255
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1253
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr "Бездруго не мисля, че на немъртвите ще им трябват."
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1257
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1255
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr ""
 "Хората ни биха могли да си престроят домовете десетократно с парите оттук."
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1259
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1257
 msgid "We’re rich!"
 msgstr "Ние сме богати!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1261
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1259
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr "Защо ли скелетите имат толкова много злато тук?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1287
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1285
 msgid ""
 "The Rod of Justice! What in the world is it doing all the way down here?"
 msgstr "Жезълът на правосъдието! Какво ли прави тук, от всички места?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1292
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1290
 msgid "What do you have there, Abhai?"
 msgstr "Какво си намери, Абхай?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1297
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1295
 msgid ""
 "This is the Great Rod of Justice, my boy. It was an ancient artifact even "
 "when I was young. They say it was crafted by the Great Gods themselves, and "
@@ -2710,12 +2728,20 @@ msgstr ""
 "справедливост, а земите им не били връхлитани от война или други злини."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1302
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1300
+#, fuzzy
+#| msgid ""
+#| "Well, if you don’t mind me saying — that certainly isn’t the state of "
+#| "affairs now. Knalga lies in ruins, orcs ravage the surface, and these "
+#| "dark and evil creatures haunt the underground passages. In the meantime, "
+#| "Wesnoth is said to be ruled by the wicked and cruel queen Asheviere, "
+#| "while the rightful heir must have long since perished in his vain quest "
+#| "for the Sceptre of Fire."
 msgid ""
 "Well, if you don’t mind me saying — that certainly isn’t the state of "
 "affairs now. Knalga lies in ruins, orcs ravage the surface, and these dark "
 "and evil creatures haunt the underground passages. In the meantime, Wesnoth "
-"is said to be ruled by the wicked and cruel queen Asheviere, while the "
+"is said to be ruled by the wicked and cruel Queen Asheviere, while the "
 "rightful heir must have long since perished in his vain quest for the "
 "Sceptre of Fire."
 msgstr ""
@@ -2726,7 +2752,7 @@ msgstr ""
 "търсене на Огнения Скиптър."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1307
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1305
 msgid ""
 "Ahh, with the Rod of Justice down here it is to be expected. Come Tallin, "
 "either you or one of your trusted men must wield this staff and bring peace "
@@ -2737,12 +2763,12 @@ msgstr ""
 "справедливостта по света."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1312
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1310
 msgid "Why can’t you wield it, Abhai?"
 msgstr "А защо не го носиш ти, Абхай?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1317
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1315
 msgid ""
 "I am a creature of the past, and thus my time to wield it is long gone. This "
 "is your era, Tallin, and thus it is your responsibility to see to it that "
@@ -2755,7 +2781,7 @@ msgstr ""
 "защото времето изтича."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1346
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1344
 msgid ""
 "An elegantly carved sceptre rests at the bottom of the chest. Precious "
 "jewels glitter across its surface, and it exudes a great aura of power."
@@ -2764,12 +2790,12 @@ msgstr ""
 "по дължината му и той излъчва голяма сила."
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1348
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1346
 msgid "rod of justice^Take it"
 msgstr "Вземи го"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1352
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1350
 msgid ""
 "This thing is... incredible! What is such a powerful artifact doing hidden "
 "all the way back here?"
@@ -2778,17 +2804,17 @@ msgstr ""
 "долу?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1362
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1360
 msgid "That’s... that’s the Rod of Justice!"
 msgstr "Това... това е Жезълът на справедливостта!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1367
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1365
 msgid "Do you know anything about it, Camerin?"
 msgstr "Знаеш ли нещо за него, Камерин?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1372
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1370
 msgid ""
 "I don’t think there is a person alive who knows anything more solid than "
 "rumors and legends. There are very few people who even knows it exists!"
@@ -2797,12 +2823,12 @@ msgstr ""
 "Малцина знаят, че изобщо съществува!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1377
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1375
 msgid "How did you come to know of it?"
 msgstr "А ти откъде знаеш за него?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1382
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1380
 msgid ""
 "Some of the most ancient elvish legends make some vague mention of this "
 "artifact. But beyond that..."
@@ -2811,7 +2837,7 @@ msgstr ""
 "Ала това е всичко..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1387
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1385
 msgid ""
 "Interesting. I wonder who — or what — could have created such a powerful "
 "artifact. There must be one heck of a story behind this thing."
@@ -2820,12 +2846,12 @@ msgstr ""
 "история."
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1400
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1398
 msgid "Rod of Justice"
 msgstr "Жезълът на справедливостта"
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1403
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1401
 msgid ""
 "A magical staff of tremendous power and unknown origin. Although the full "
 "extent of its power has not been fathomed, there are a few features about it "
@@ -2842,57 +2868,57 @@ msgstr ""
 "жертва живота си в името на справедливостта, може да го използва."
 
 #. [effect]: type=fire
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1412
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1410
 msgid "rod of justice"
 msgstr "жезъл на справедливостта"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1492
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1490
 msgid "rod of justice^Leave it"
 msgstr "Остави го"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1519
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1517
 msgid "The Great Chamber"
 msgstr "Великата зала"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1524
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1522
 msgid "‘The Great Chamber’? Hmmm, wonder what that could be."
 msgstr "\"Великата зала\"? Хммм, това ще бъде интересно."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1541
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1539
 msgid "Halt! You’re not allowed to be here! Authorized undead only!"
 msgstr "Стойте! Нямате право да бъдете тук! Само упълномощени немъртви!"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1564
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1562
 msgid "Dulcatas"
 msgstr "Дулкат"
 
 #. [unit]: type=Dwarvish Thunderguard, id=Antolos
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1576
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1574
 msgid "Antolos"
 msgstr "Антолос"
 
 #. [unit]: type=Dwarvish Fighter, id=Varem
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1588
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1586
 msgid "Varem"
 msgstr "Варем"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1599
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1597
 msgid "Halt! Who goes there? Friend or foe?"
 msgstr "Стой! Кой е там? Приятел или враг?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1604
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1602
 msgid "Depends. Are you loyal to Malifor?"
 msgstr "Зависи. В служба ли сте на Малифор?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1609
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1607
 msgid ""
 "Never! If you ha’ been sent by Malifor, then know that we will never yield! "
 "Come and meet your death!"
@@ -2901,7 +2927,7 @@ msgstr ""
 "срещнете смъртта си!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1614
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1612
 msgid ""
 "Hold! We aren’t friends of Malifor in the least. Rather, we have come to "
 "destroy him."
@@ -2909,17 +2935,17 @@ msgstr ""
 "Чакайте! Изобщо не сме приятели на Малифор. Напротив, искаме да го победим."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1619
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1617
 msgid "Finally! You don’t know how long we have been waiting for this day."
 msgstr "Най-после! Представа си нямате откога чакаме да чуем това."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1624
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1622
 msgid "How did you get here and how long have you been here?"
 msgstr "Как попаднахте тук долу и от колко време?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1629
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1627
 msgid ""
 "We were originally prisoners of Malifor, but we tunneled out and escaped. "
 "Since then, we have eked out a precarious survival on what we have been able "
@@ -2929,12 +2955,12 @@ msgstr ""
 "борим за живота си с каквото можем да откраднем или плячкосаме от Малифор."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1634
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1632
 msgid "By now you have tunnels all through this place."
 msgstr "Но вие имате тунели водещи навсякъде."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1639
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1637
 msgid ""
 "Aye. That seemingly blank wall to the south there is actually a hidden "
 "entrance to the treasury."
@@ -2943,50 +2969,50 @@ msgstr ""
 "съкровищницата."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1644
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1642
 msgid "Awesome, let’s go!"
 msgstr "Страхотно, да вървим!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1660
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1658
 msgid "Here we go."
 msgstr "Да вървим."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1702
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1700
 msgid ""
 "So this is the Great Chamber, eh? Doesn’t look like there is much to see "
 "here."
 msgstr "Това е Великата зала, а? Не изглежда особено впечатляващо."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1710
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1708
 msgid "The ground shakes."
 msgstr "Земята се разтресе."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1715
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1713
 msgid "Perhaps I spoke too soon..."
 msgstr "Май че избързах..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1732
-msgid "What is this? Out retreat is cut off!"
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1764
+msgid "What is this? Our retreat is cut off!"
 msgstr "Какво се случва? Пътят ни обратно е отрязан!"
 
 #. [message]: type=Giant Spider
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1773
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1805
 msgid "Hsssss"
 msgstr "Хссссс"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1778
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1810
 msgid "‘Great Chamber’, my foot! This is a death chamber!"
 msgstr "\"Велика зала\", друг път! Това е смъртоносен капан!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1797
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2366
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1829
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2399
 msgid ""
 "Hmmm. The wall appears weak here. I think there might be something on the "
 "other side."
@@ -2996,31 +3022,31 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1811
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2407
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1843
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2440
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:573
 msgid "There we go."
 msgstr "Да вървим."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1836
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1868
 msgid "Malifor the Great’s Study"
 msgstr "Кабинетът на Малифор Великият"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1841
-msgid "There we go! This way, guys!"
-msgstr "Ето ни! Насам, хора!"
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1873
+msgid "There we go! This way!"
+msgstr "Ето! Насам, хора!"
 
 #. [message]: role=Study Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1859
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1891
 msgid ""
 "They are attacking the master’s study! We must stop them! Call the reserves!"
 msgstr ""
 "Те нападат кабинета на господаря! Трябва да ги спрем! Извикайте резервите!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1887
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1919
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
@@ -3029,24 +3055,24 @@ msgstr ""
 "за Вашия не-живот."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1892
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1924
 msgid ""
 "Interesting. It seems like someone really doesn’t want us going down this "
 "tunnel."
 msgstr "Интересно. Някой наистина не иска да минаваме през този тунел."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1910
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1942
 msgid "Intruders? Capture them and throw them in with the toxic waste!"
 msgstr "Натрапници? Хванете ги и ги вкарайте в токсичните отпадъци!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1942
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1974
 msgid "A section of wall slides away."
 msgstr "Част от стената се отмества."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1951
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1983
 msgid ""
 "Holy water! For a certainty, those skeletons won’t like us getting our hands "
 "on this stuff. But that’s probably why they kept them back here in the first "
@@ -3056,7 +3082,7 @@ msgstr ""
 "до нещо такова. Но вероятно точно това ги е държало настрана."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1965
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1997
 msgid ""
 "Warning! These bottles contain toxic waste. Causes disintegration on contact."
 msgstr ""
@@ -3064,22 +3090,22 @@ msgstr ""
 "дезинтеграция."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1970
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2002
 msgid "(<i>rolls eyes</i>) Oh, the hazardous life of a skeleton."
 msgstr "(<i>Върти очи</i>) О, какъв опасен живот водят скелетите."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1985
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2017
 msgid "Hey, an underground lake."
 msgstr "Хей, подземно езеро."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2002
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2034
 msgid "Ack! What are those things!"
 msgstr "Ах! Какви са тези неща!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2012
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2044
 msgid ""
 "Oh yeah, those things. Watch out, they are the arms of some sort of "
 "underwater creature. They’ll try to pummel you to death, then drag you under "
@@ -3089,7 +3115,7 @@ msgstr ""
 "Ще ви смачкат до смърт, а после ще ви завлекат под водата за вечеря."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2017
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2049
 msgid ""
 "Then how do we get past? I can see that the passage continues to both the "
 "north and south and we haven’t found Malifor yet..."
@@ -3098,7 +3124,7 @@ msgstr ""
 "още не сме открили Малифор..."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2022
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2054
 msgid ""
 "Creatures of that type regenerate over time; it’s doubtful we can destroy it "
 "completely. But if we destroy its arms we’ll be relatively safe until they "
@@ -3108,69 +3134,76 @@ msgstr ""
 "ако съсечем ръцете, ще бъдем в безопасност, докато се възстановят."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2027
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2059
 msgid "Let’s get to it, then."
 msgstr "Да се залавяме тогава."
 
 #. [unit]: type=Wraith, id=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2051
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2083
 msgid "Abhai"
 msgstr "Абхай"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2060
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2092
 msgid "AH! A ghost!"
 msgstr "А! Призрак!"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2065
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2097
 msgid "Who are you that dares to venture down these tunnels?"
 msgstr "Кои сте вие и как сте дръзнали да слизате по тези тунели?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2070
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2102
 msgid "I... I am one of Tallin’s men..."
 msgstr "Аз... Аз съм от хората на Талин..."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2075
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2107
 msgid "Who is this ‘Tallin’?"
 msgstr "А кой е този \"Талин\"?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2080
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2112
 msgid "That would be me."
 msgstr "Това съм аз."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2085
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2117
 msgid "What is your purpose in coming here?"
 msgstr "С каква цел сте тук?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2090
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2122
 msgid "We seek the destruction of the lich Malifor."
 msgstr "Искаме да победим лича Малифор."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2095
-msgid ""
-"(<i>pales if possible</i>) Malifor...! Finally someone here in force to deal "
-"with that menace!"
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2127
+#, fuzzy
+#| msgid ""
+#| "(<i>pales if possible</i>) Malifor...! Finally someone here in force to "
+#| "deal with that menace!"
+msgid "Malifor...! Finally someone here in force to deal with that menace!"
 msgstr ""
 "(<i>пребледнява доколкото може</i>) Малифор...! Най-после някой силен ще "
 "победи този злодей!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2100
+#. "this spirit" is referring to the Ghost named Abhai.
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2133
+#, fuzzy
+#| msgid ""
+#| "Can you tell us where he is? And, if I may ask, who are — or rather, were "
+#| "— you?"
 msgid ""
-"Can you tell us where he is? And, if I may ask, who are — or rather, were — "
-"you?"
+"<i>Did this spirit get even paler?</i> Can you tell us where he is? And, if "
+"I may ask, who are — or rather, were — you?"
 msgstr ""
 "Знаете ли къде е той? И ако мога да попитам кой - или какво, сте били... Вие?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2105
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2138
 msgid ""
 "I am Lord Abhai, the ruler... once... of a great kingdom far to the west. In "
 "time, as all men do, I grew old and passed to the Land of the Dead. I know "
@@ -3183,12 +3216,12 @@ msgstr ""
 "свят от могъща сила."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2110
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2143
 msgid "Let me guess. Malifor?"
 msgstr "Нека да позная - Малифор?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2115
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2148
 msgid ""
 "Indeed. He was once a great sorcerer, but he coveted wealth and power. To "
 "gain his ends, he allied himself with the Lich-Lords, and from them he "
@@ -3213,7 +3246,7 @@ msgstr ""
 "страхуват от него, затова не ме и закачат."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2120
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2153
 msgid ""
 "I am afraid times have changed much. Our first king, Haldric I, fled the "
 "Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
@@ -3226,17 +3259,17 @@ msgstr ""
 "Джевиан и основа кралството Уеснот. Но това беше преди векове."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2125
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2158
 msgid "So... much time has passed indeed."
 msgstr "Толкова... много време е изминало."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2130
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2163
 msgid "Would you join us to defeat this evil creature?"
 msgstr "Ще ни помогнете ли да надвием това зло създание?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2136
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2169
 msgid ""
 "Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
@@ -3245,7 +3278,7 @@ msgstr ""
 "живеем... тоест, да умрем спокойно."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2141
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2174
 msgid ""
 "Keep following these flooded tunnels. I think they might lead you directly "
 "to Malifor."
@@ -3254,17 +3287,17 @@ msgstr ""
 "Малифор."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2146
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2179
 msgid "Great. Forward, men!"
 msgstr "Чудесно. Напред, хора!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2165
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2198
 msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
 msgstr "Ъгх, труп. Леле, (<i>задавя се</i>) как смърди!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2178
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2211
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
@@ -3273,7 +3306,7 @@ msgstr ""
 "ненужните тела?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2192
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2225
 msgid ""
 "Just great, I am cold, wet, and tired and what have we here? Another dead "
 "body. This place is starting to get on my nerves!"
@@ -3282,27 +3315,27 @@ msgstr ""
 "Това място започва да ми лази по нервите!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2208
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2241
 msgid "Hold it, people, there’s something just ahead!"
 msgstr "Стойте, всички! Напред има нещо!"
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2229
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2262
 msgid "(<i>sniff</i>) I smell humans."
 msgstr "(<i>Души</i>) Надушвам хора."
 
 #. [message]: type=Naga Fighter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2234
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2267
 msgid "You are just plain deaf. I heard them coming a mile off."
 msgstr "Но пък не чуваш нищо. Аз ги чух отдавна."
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2239
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2272
 msgid "Ahh, shut up. Let’s go kill them."
 msgstr "О, я млъквай. Да ги избием."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2272
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2305
 msgid ""
 "It looks like this is it. Here is the door to Malifor’s study. Are we all "
 "ready for this?"
@@ -3310,77 +3343,77 @@ msgstr "Това трябва да е - вратата към кабинета �
 
 #. [option]
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2274
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2328
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2307
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2361
 msgid "Get those doors open!"
 msgstr "Отворете вратите!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2289
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2322
 msgid "Let’s go!"
 msgstr "Да вървим!"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2300
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2418
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2517
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2333
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2451
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2550
 msgid "Just wait a sec."
 msgstr "Почакайте малко."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2371
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2404
 msgid "Anything you can’t handle?"
 msgstr "Нещо извън силите ни?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2376
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2409
 msgid "Nope. Should I open it?"
 msgstr "Не. Да я отворя ли?"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2378
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2458
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2411
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2491
 msgid "Go for it!"
 msgstr "Давай!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2446
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2546
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2479
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2579
 msgid "Hey, check this out, it looks like some sort of lever."
 msgstr "Хей, я вижте, това прилича на ръчка."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2451
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2484
 msgid "Throw it and see what it does."
 msgstr "Дръпни я и да видим какво прави."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2456
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2489
 msgid "Should I throw it?"
 msgstr "Да я задействам ли?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2466
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2499
 msgid "Nothing. That door is not moving."
 msgstr "Нищо. Вратата не помръдва."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2471
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2504
 msgid "Why don’t you try ‘knocking’?"
 msgstr "Защо не опиташ да почукаш?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2502
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2535
 msgid "Anybody home?"
 msgstr "Има ли някой вкъщи?"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2597
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2630
 msgid "You wretched vermin, I have had it with you! Guards!"
 msgstr "Проклети гризачи, омръзна ми от вас! Стража!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2621
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2654
 msgid ""
 "You invaded my kingdom, drove me from my mines, raided my dungeon, and "
 "plundered my treasury. Your audacity ends here!"
@@ -3389,7 +3422,7 @@ msgstr ""
 "подземията и плячкосахте съкровищницата ми. Безочието ви приключва сега!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2634
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2667
 msgid ""
 "You are wrong, Malifor, for you shall be the one who is destroyed. You are "
 "cruel, merciless and a terror to all that lives. The world will be a better "
@@ -3399,7 +3432,7 @@ msgstr ""
 "кошмар за всичко живо. Светът ще е по-добро място без теб!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2639
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2672
 msgid ""
 "To feed your greed and hunger you have terrorized all that is good. You have "
 "disturbed the rest of the brave defenders of Knalga. Now, your evil reign "
@@ -3409,7 +3442,7 @@ msgstr ""
 "на смелите защитници на Кналга. Сега злото ти ще бъде приключено."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2644
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2677
 msgid ""
 "Fools! Don’t think it’s so easy to kill me. Your corpses shall all soon be "
 "serving me. Fall on them, my hordes!"
@@ -3418,57 +3451,57 @@ msgstr ""
 "ги, орди мой!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2682
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2715
 msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
 msgstr "ХАХАХАХА, СМЪРТТА НЯМА ВЛАСТ НАД МЕН, ГЛУПАЦИ!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2687
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2720
 msgid "Well, blades don’t work."
 msgstr "Ами, остриетата ни са безполезни."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2697
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2730
 msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
 msgstr "ХАХАХАХА, ВАШАТА ГЛУПОСТ СТРАХОТНО МЕ ЗАБАВЛЯВА!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2702
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2735
 msgid "Geez, how are we going to kill him? This weapon is ineffective!"
 msgstr "Леле, как ще го надвием? Това оръжие нищо не върши!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2712
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2745
 msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
 msgstr "СКОРО ЩЕ МИ СЛУЖИТЕ, ДРЕБНИ СМЪРТНИ!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2717
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2750
 msgid "That blasted skeleton! Even fire has no effect on him!"
 msgstr "Този проклет скелет! Дори огъня не му влияе!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2722
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2755
 msgid "Let’s try using something different on him."
 msgstr "Да опитаме нещо различно."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2737
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2770
 msgid "AAAAAAHHHHHH!"
 msgstr "ААААААААХХХХ!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2742
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2775
 msgid "I see now. It is impossible to destroy him by ordinary means."
 msgstr "Сега разбирам. Не е възможно да го надвием по обичайния начин."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2747
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2780
 msgid "Then how are we going to destroy him? Surely there must be a way."
 msgstr "Тогава какво ще правим? Трябва да има начин."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2752
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2785
 msgid ""
 "Yes, I think there is, but only myself or Thera have the means to do it. "
 "Come on Thera, let’s destroy that old skeleton."
@@ -3477,33 +3510,33 @@ msgstr ""
 "дъртия скелет."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2757
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2790
 msgid "Yeah, I can’t wait to get my hands on that bastard!"
 msgstr "Да, нямам търпение да пипна проклетника!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2762
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2795
 msgid "That was very unladylike of you."
 msgstr "Колко неженствено от твоя страна."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2767
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2800
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:451
 msgid "(<i>Giggle</i>) Sorry."
 msgstr "(<i>Кикот</i>) Съжалявам."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2784
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2817
 msgid "AHHHH! YOU BLASTED MAGE!"
 msgstr "ААААХХ! ПРОКЛЕТ МАГЬОСНИК!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2789
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2822
 msgid "Good. We finally got him. He is dissolving."
 msgstr "Чудесно. Хванахме го и той се разлага."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2794
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2827
 msgid ""
 "Curses on you you blasted mages, curses on you you blasted dwarves, curses "
 "on you you blasted humans, and CURSES ON YOU YOU BLASTED TALLIN! MAY YOUR "
@@ -3516,12 +3549,12 @@ msgstr ""
 "ПОРАЗЯТ! ДАНО…"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2799
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2832
 msgid "May you shut your ugly mouth and hurry up and die."
 msgstr "Дано си затвориш голямата оста и пукнеш по-бързо."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2804
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2837
 msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
@@ -3530,22 +3563,22 @@ msgstr ""
 "ПРЕВЪРНЕТЕ В ДРЪГЛИВИ СТАРЧОЦИ! ДАНО..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2819
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2852
 msgid "Finally! He has been reduced to dust."
 msgstr "Най-после, свършено е с него."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2824
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2857
 msgid "At last! Victory is ours! Good work, men!"
 msgstr "Най после победихме! Добра работа на всички!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2829
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2862
 msgid "So, where to now, Tallin?"
 msgstr "Е, Талин, сега накъде?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2834
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2867
 msgid ""
 "Now, let’s get back to the dwarves and see what progress they have made in "
 "forging us weapons."
@@ -3838,19 +3871,19 @@ msgstr ""
 msgid "Knalgans"
 msgstr "Кналганци"
 
+#. [side]
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Atul
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
 #. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]
 #. [side]: type=Orcish Warlord, id=Ar'Muff
 #. [side]: type=Orcish Warlord, id=Calter
 #. [side]: type=Orcish Warlord, id=Halter
-#. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:110
@@ -3919,10 +3952,10 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:232
 msgid ""
 "Khazg tried and failed, and if you repeat his folly you will soon join him "
-"in the land of the dead!"
+"in the Land of the Dead!"
 msgstr ""
-"Казг се опита и се издъни, а ти повтаряш грешките му и затова скоро ще "
-"загинеш!"
+"Казг се опита и се издъни, ако ти повтариш грешките му, скоро ще те пратя в "
+"земите на мъртвите!"
 
 #. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:238
@@ -4301,8 +4334,13 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:57
+#, fuzzy
+#| msgid ""
+#| "You can count the Elves out. They are a selfish lot, only interested in "
+#| "themselves. They would only aid us if something drastic happened to them "
+#| "and they needed our help. What about Wesnoth?"
 msgid ""
-"You can count the Elves out. They are a selfish lot, only interested in "
+"You can count the elves out. They are a selfish lot, only interested in "
 "themselves. They would only aid us if something drastic happened to them and "
 "they needed our help. What about Wesnoth?"
 msgstr ""
@@ -4321,9 +4359,14 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:61
+#, fuzzy
+#| msgid ""
+#| "The last news we heard of them was years ago when Prince Konrad passed "
+#| "through here. At that time the evil queen Asheviere was ruling, and it "
+#| "was said that she was in alliance with the orcs."
 msgid ""
 "The last news we heard of them was years ago when Prince Konrad passed "
-"through here. At that time the evil queen Asheviere was ruling, and it was "
+"through here. At that time the evil Queen Asheviere was ruling, and it was "
 "said that she was in alliance with the orcs."
 msgstr ""
 "Последният път, когато получихме някакви новини от тях беше преди години, "
@@ -4546,11 +4589,11 @@ msgid "Liches"
 msgstr "Личове"
 
 #. [side]: type=Ancient Lich, id=Ro'Arthian
-#. [modify_side]
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:247
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:382
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:383
 msgid "Ro’Arthian"
 msgstr "Ро'Артян"
 
@@ -4558,7 +4601,7 @@ msgstr "Ро'Артян"
 #. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:261
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:273
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:463
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:464
 msgid "Ro’Sothian"
 msgstr "Ро'Сотян"
 
@@ -4878,22 +4921,22 @@ msgid "Back to jail, my friend."
 msgstr "Обратно в клетката, друже."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:740
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:739
 msgid "Ro’Arthian, are you ready to talk yet?"
 msgstr "Ро'Артян, готов ли си да говориш с нас сега?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:745
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:744
 msgid "Fine, you trespassers. What do you want?"
 msgstr "Добре, нарушители. Какво искате?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:750
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:749
 msgid "Well... First, why don’t you tell us what <i>you</i> want?"
 msgstr "Ами... Първо ни кажи какво <i>ти</i> искаш?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:755
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:754
 msgid ""
 "What do <i>I</i> want? I’ll tell you what I want! I want the stinking "
 "carcasses of you, all your henchmen and those dwarvish vermin off my land! "
@@ -4904,17 +4947,17 @@ msgstr ""
 "да не се <i>връщате</i>!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:760
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:759
 msgid "So basically, you want to be left alone in peace. Right?"
 msgstr "Накратко казано, искаш да бъдеш оставен на мира. Така ли е?"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:765
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:764
 msgid "Wow! Someone <i>finally</i> figured it out!"
 msgstr "Уау! <i>Най-после</i> някой загря!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:770
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:769
 msgid ""
 "All right! Listen, then. Right now we have very little power to grant your "
 "request. We are simply a band of peasants fighting for the freedom of our "
@@ -4924,7 +4967,7 @@ msgstr ""
 "сме просто шепа селяни, които се борят за свободата си."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:775
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:774
 msgid ""
 "But when we defeat the orcish host, re-establish Knalga, and bring law and "
 "order into these Northlands, we will have gained some authority by right of "
@@ -4934,7 +4977,7 @@ msgstr ""
 "Северните земи, ще сме си завоювали малко власт."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:780
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:779
 msgid ""
 "When that time comes, I hereby make a solemn oath: no man or dwarf shall "
 "ever set foot on your land without your leave. If any of my men violates "
@@ -4946,7 +4989,7 @@ msgstr ""
 "наказан със смърт. Ще мога да уговоря същото и с Хамел."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:785
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:784
 msgid ""
 "In order for that to come about, we must crush the orcish host. But we can’t "
 "do that without your help. Will you join us?"
@@ -4955,7 +4998,7 @@ msgstr ""
 "без помощта ти. Ще ни помогнеш ли?"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:790
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:789
 msgid ""
 "Think of it, Ro’Arthian, it is a fair bargain. If you don’t agree to "
 "Tallin’s proposal, the endless war you two wage with the dwarves will never "
@@ -4967,17 +5010,17 @@ msgstr ""
 "време обитаваш тези планини. Време е ти и брат ти да си отпочинете."
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:794
 msgid "Hrmph. What do you think, brother?"
 msgstr "Хъмпф. Какво мислиш, братко?"
 
 #. [message]: speaker=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:828
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:827
 msgid "(<i>Shrugs</i>) I don’t think we have any other choice left."
 msgstr "(<i>Вдига рамене</i>) Мисля, че нямаме друг избор."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:833
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:832
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
@@ -4992,7 +5035,7 @@ msgstr ""
 "i>"
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:838
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:837
 msgid ""
 "Very well, Tallin. We accept under the terms that your people will forever "
 "leave us in peace after this."
@@ -5001,7 +5044,7 @@ msgstr ""
 "мира после."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:843
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:842
 msgid ""
 "Ro’Arthian, I am not of royal blood, but I am a man of my word. I will "
 "uphold the oath I have given even at the cost of my life."
@@ -5010,12 +5053,12 @@ msgstr ""
 "клетвата си, дори да ми струва живота."
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:848
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:847
 msgid "Very well. The orcish hosts shall feel our wrath!"
 msgstr "Така да бъде. Орките ще изпитат гнева ни!"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:853
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:852
 msgid ""
 "Wait a second, Tallin. Are you saying that we should abandon our homeland to "
 "these wretched mages?!"
@@ -5023,19 +5066,19 @@ msgstr ""
 "Почакай, Талин. Наистина ли ще изоставим родината си на тези проклети "
 "магове?!"
 
-#. [message]: speaker=Eryssa
-#. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:858
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:857
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1060
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:522
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1000
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1001
 msgid "(<i>Snicker</i>)"
 msgstr "(<i>Кикот</i>)"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:863
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:862
 msgid ""
 "Chief Stalrag, it is said that to save a family, we should be willing to "
 "sacrifice one person; to save a town we should be willing to sacrifice a "
@@ -5046,12 +5089,12 @@ msgstr ""
 "спасим нация, трябва да жертваме град."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:868
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:867
 msgid "Now, Stalrag, it is up to you. Do you want to save Knalga or not?"
 msgstr "Ти решаваш сега, Сталраг. Искаш ли да спасиш Кналга, или не?"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:873
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:872
 msgid ""
 "Well Tallin, if you put it that way... We don’t like it, but if that’s what "
 "is needed to save Knalga, we shall do it."
@@ -5060,7 +5103,7 @@ msgstr ""
 "Кналга, ще приемем."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:878
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:877
 msgid ""
 "Thank you, Stalrag. I am sure that the sacrifice of you and your people will "
 "always be remembered."
@@ -5069,26 +5112,26 @@ msgstr ""
 "вечно."
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:883
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:882
 msgid "(<i>Mumbles</i>) Yeah, great compensation..."
 msgstr "(<i>Мърмо</i>) Да, чудна компенсация..."
 
 #. [message]: speaker=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:888
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:887
 msgid ""
-"I have the power to control many creatures, such as Gryphons, Trolls and "
-"Ogres. So while I am with you they shall be at your command."
+"I have the power to control many creatures, such as gryphons, trolls and "
+"ogres. So while I am with you they shall be at your command."
 msgstr ""
 "Имам власт над множество създания, като грифони, тролове и оугъри. Докато ви "
 "помагам, те са под ваша команда."
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:893
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:892
 msgid "The Shinsplitters will be at your service, Tallin."
 msgstr "Пищялотрошачите също ще ти служат, Талин."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:898
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:897
 msgid ""
 "My thanks, Stalrag and Ro’Arthian. However, I have sufficient forces under "
 "my control presently and I think that merging our forces will just create "
@@ -5100,7 +5143,7 @@ msgstr ""
 "полза, но по-добре запазете троловете и оугърите си, докато ни потрябват."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:908
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:907
 msgid ""
 "Great. Now let’s get back to the caves and start planning the best way teach "
 "those orcs a lesson they will never forget!"
@@ -5109,12 +5152,12 @@ msgstr ""
 "на добър урок!"
 
 #. [message]: speaker=Stalrag
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1012
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1011
 msgid "Farewell, my friends. I now go to join my fallen brethren."
 msgstr "Сбогом, приятели. Връщам се при мъртвите си другари."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1017
+#: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1016
 msgid ""
 "No! If Stalrag dies now none of his men will follow us. We are finished."
 msgstr ""
@@ -5254,7 +5297,7 @@ msgstr ""
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:54
 msgid ""
-"But you do have a point, Stalrag, That ransom will buy more troops and "
+"But you do have a point, Stalrag. That ransom will buy more troops and "
 "weapons for the orcs, worse news for us."
 msgstr ""
 "Но ти си прав, Сталраг. Ако получат откупа, орките ще го използват, за да си "
@@ -5306,8 +5349,12 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:66
+#, fuzzy
+#| msgid ""
+#| "Kenning the way of orcs, belike they’d kill the princess, especially if "
+#| "it seems the rescue ha’ any chance of succeeding."
 msgid ""
-"Kenning the way of orcs, belike they’d kill the princess, especially if it "
+"Kenning the way of orcs, belike they’d kill the Princess, especially if it "
 "seems the rescue ha’ any chance of succeeding."
 msgstr ""
 "Като ги знам орките, най-вероятно ще убият принцесата, особено ако изглежда, "
@@ -5378,9 +5425,14 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:80
+#, fuzzy
+#| msgid ""
+#| "Elves are deeply honor-bound, especially in matters that touch their kin. "
+#| "If we rescue the princess, I am certain the deed will not go without "
+#| "reward."
 msgid ""
 "Elves are deeply honor-bound, especially in matters that touch their kin. If "
-"we rescue the princess, I am certain the deed will not go without reward."
+"we rescue the Princess, I am certain the deed will not go without reward."
 msgstr ""
 "Елфите много държат на честта си, особено що се отнася до родовите им дела. "
 "Ако спасим принцесата, със сигурност ще ни се отблагодарят."
@@ -5412,7 +5464,7 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:88
-msgid "Then to arms, men! For Knalga and the princess!"
+msgid "Then to arms, men! For Knalga and the Princess!"
 msgstr "Тогава на оръжие, всички! За Кналга и принцесата!"
 
 #. [side]: type=Orcish Warlord, id=Atul
@@ -5438,8 +5490,8 @@ msgstr "Оцелейте колкото се може по-дълго"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:395
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:719
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:209
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:422
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:554
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:423
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:555
 msgid "Death of Ro’Arthian"
 msgstr "Смъртта на Ро'Артян"
 
@@ -5449,8 +5501,8 @@ msgstr "Смъртта на Ро'Артян"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:399
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:723
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:213
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:426
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:558
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:427
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:559
 msgid "Death of Ro’Sothian"
 msgstr "Смъртта на Ро'Сотян"
 
@@ -5515,22 +5567,26 @@ msgstr ""
 msgid "INTRUDERS! KILL THEM!!"
 msgstr "НАШЕСТВЕНИЦИ! ИЗБИЙТЕ ГИ!!"
 
-#. [modify_side]
 #. [unit]: type=Elvish Sorceress, id=Eryssa
+#. [modify_side]
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:385
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:119
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:369
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:415
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:370
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:416
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:192
 msgid "Eryssa"
 msgstr "Ериса"
 
 #. [message]: race=orc
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:397
+#, fuzzy
+#| msgid ""
+#| "The intruders are breaking in! Get to the walls and defend the fortress! "
+#| "And where did that Elvish Princess go?"
 msgid ""
 "The intruders are breaking in! Get to the walls and defend the fortress! And "
-"where did that Elvish Princess go?"
+"where did that elvish princess go?"
 msgstr ""
 "Нашествениците са нахлули! Всички по стените, за да защитим крепостта! А "
 "къде се е дянала елфическата принцеса?"
@@ -5593,7 +5649,7 @@ msgstr "Смъртта на Ериса"
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:184
 msgid ""
-"After rescuing the princess, Tallin and his allies quickly withdrew into the "
+"After rescuing the Princess, Tallin and his allies quickly withdrew into the "
 "caves."
 msgstr ""
 "След като спасиха принцесата, Талин и другарите му бързо се оттеглиха в "
@@ -5675,7 +5731,7 @@ msgstr "Уха!"
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:249
 msgid ""
 "Then they scrounged up bows and cudgels from the dead orcs, and marched into "
-"the caves and broke the Dwarves out from their encirclement by the undead "
+"the caves and broke the dwarves out from their encirclement by the undead "
 "and trolls."
 msgstr ""
 "След това се сдобили с лъкове и тояги от мъртвите орки и навлезли в "
@@ -6006,9 +6062,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:35
+#, fuzzy
+#| msgid ""
+#| "Upon arriving there something seemed to be wrong. Instead of being hailed "
+#| "boisterously by the Dwarves as they usually were, they were met by silent "
+#| "guards with downcast eyes."
 msgid ""
 "Upon arriving there something seemed to be wrong. Instead of being hailed "
-"boisterously by the Dwarves as they usually were, they were met by silent "
+"boisterously by the dwarves as they usually were, they were met by silent "
 "guards with downcast eyes."
 msgstr ""
 "Щом пристигнаха установиха, че нещо не е наред. Вместо да бъдат посрещнати "
@@ -6165,8 +6226,13 @@ msgstr "Успяхте ли да ги догоните?"
 
 #. [else]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:98
+#, fuzzy
+#| msgid ""
+#| "This isn’t looking good. Not only do we fail to get the princess but now "
+#| "we lost all of our gold! Seriously Hamel, I don’t know if we’re gonna "
+#| "make it."
 msgid ""
-"This isn’t looking good. Not only do we fail to get the princess but now we "
+"This isn’t looking good. Not only do we fail to get the Princess but now we "
 "lost all of our gold! Seriously Hamel, I don’t know if we’re gonna make it."
 msgstr ""
 "Това не е добре. Не само, че не успяхме да спасим принцесата, а сега "
@@ -6509,8 +6575,8 @@ msgstr "Затваряй си устата, пъзливецо!"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Помогнете на Талин да надвие вражеските водачи"
 
-#. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:767
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1078
@@ -6638,8 +6704,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:954
+#, fuzzy
+#| msgid ""
+#| "Tell the princess to get off her high horse and stop acting like such a "
+#| "priss!"
 msgid ""
-"Tell the princess to get off her high horse and stop acting like such a "
+"Tell the Princess to get off her high horse and stop acting like such a "
 "priss!"
 msgstr ""
 "Кажете на принцесата да слезе малко на земята и да престане да се държи като "
@@ -6717,7 +6787,9 @@ msgstr "Сигурен съм, че ще успееш, Талин. Прецен�
 
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1055
-msgid "If you guys are quite finished exchanging pleasantries..."
+#, fuzzy
+#| msgid "If you guys are quite finished exchanging pleasantries..."
+msgid "If you lot are quite finished exchanging pleasantries..."
 msgstr "Ако сте приключили с учтивостите..."
 
 #. [message]: speaker=Ro'Arthian
@@ -6737,7 +6809,7 @@ msgstr "Да. Всички, напред!"
 #. [modify_side]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1090
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:134
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:433
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:434
 msgid "Sisal"
 msgstr "Сисал"
 
@@ -7289,11 +7361,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:79
+#, fuzzy
+#| msgid ""
+#| "Sobbing against Tallin’s chest, Eryssa told him of the many ways Hidel "
+#| "had cherished and warded her since the hour of her birth. How he had "
+#| "comforted her childhood hurts; how in later years, he had guided her in "
+#| "the green paths of the forest, and taught her the deep mysteries of Elven-"
+#| "kind."
 msgid ""
 "Sobbing against Tallin’s chest, Eryssa told him of the many ways Hidel had "
 "cherished and warded her since the hour of her birth. How he had comforted "
 "her childhood hurts; how in later years, he had guided her in the green "
-"paths of the forest, and taught her the deep mysteries of Elven-kind."
+"paths of the forest, and taught her the deep mysteries of elven-kind."
 msgstr ""
 "Подпряла глава на гърдите на Талин, Ериса му разказа колко щедър и добър е "
 "бил Хидел с нея от момента на раждането й. Как я е успокоявал, като дете, а "
@@ -7384,17 +7463,17 @@ msgid "Ha’Tuil"
 msgstr "Ха'Туил"
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:414
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:415
 msgid "Defeat the orcs"
 msgstr "Надвийте орките"
 
 #. [note]
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:433
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:434
 msgid "You will not receive any gold if Sisal dies."
 msgstr "Няма да получите никакво злато, ако Сисал загине."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:449
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:450
 msgid ""
 "After making haste through the forest for most of a watch, the party arrived "
 "at the battle scene."
@@ -7403,28 +7482,28 @@ msgstr ""
 "битката."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:454
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:455
 msgid "Sisal, how do you fare?"
 msgstr "Сисал, как се справяте тук?"
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:459
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:460
 msgid "Your Highness! You are here! How fares Hidel?"
 msgstr "Ваше Височество, Вие сте тук! Как е Хидел!?"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:464
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:465
 msgid "(<i>Sheds a tear</i>)"
 msgstr "(<i>Насълзява се</i>)"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:469
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:470
 msgid "Hidel... died a hero’s death, one worthy to be sung forever."
 msgstr ""
 "Хидел… се би и загина геройски, а смъртта му е достойна за вечна слава."
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:474
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:475
 msgid ""
 "The dung-spawned bastards! Verily, Tallin, had it not been for Hidel we "
 "would all be dead and Rakshas would be gleefully counting his gold."
@@ -7433,7 +7512,7 @@ msgstr ""
 "всички щяхме да сме мъртви, а Ракшас, щеше да се радва на златото ни."
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:479
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:480
 msgid ""
 "Hidel and a handful of elves held off the orcs for more than an hour. That "
 "was enough time for us to make off with the gold and rally here at these "
@@ -7443,12 +7522,12 @@ msgstr ""
 "време, за да избягаме със златото и да се укрием в тези руини."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:484
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:485
 msgid "So you have the gold?"
 msgstr "Значи златото е у вас?"
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:489
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:490
 msgid ""
 "We have the gold, and now we shall have the blood of these orcs! IN HIDEL’S "
 "NAME!"
@@ -7456,7 +7535,7 @@ msgstr ""
 "Взехме златото, а сега ще източим и кръвта на тия орки! В ИМЕТО НА ХИДЕЛ!"
 
 #. [message]: id=Ha'Tuil
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:496
 msgid ""
 "Grrr, Ha’Tuil has never failed in his mission. I will soon lay your severed "
 "heads at the feet of the Master!"
@@ -7465,7 +7544,7 @@ msgstr ""
 "глави пред Господаря!"
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:500
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:501
 msgid ""
 "You will eat cold steel and whimper your way to hell, foul wretch of an orc!"
 msgstr ""
@@ -7473,12 +7552,12 @@ msgstr ""
 "отрепка!"
 
 #. [message]: id=Ha'Tuil
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:513
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:514
 msgid "Argh! I have failed!"
 msgstr "Аргх! Провалих се!"
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:518
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:519
 msgid ""
 "Cheer up — you won’t have to live with your failure for long... (<i>Snicker</"
 "i>)"
@@ -7487,23 +7566,23 @@ msgstr ""
 "(<i>усмихва се зловещо</i>)"
 
 #. [message]: id=Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:533
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1056
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:534
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1057
 msgid "Ahhhh! Farewell, friends. I now go to join Hidel."
 msgstr "Аааа! Сбогом, приятели. Сега и аз се присъединявам към Хидел."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:538
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:539
 msgid "Sisal! Noooo!"
 msgstr "Сисал! Нееее!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:543
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:544
 msgid "Haha! We got the gold now!"
 msgstr "Хаха! Пипнахме златото!"
 
 #. [message]: id=Ha'Tuil
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:548
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:549
 msgid ""
 "Hahaha! Mission accomplished! I’ll send a wolf to the Master to deliver the "
 "gold. Now let’s crush the rest of this scum!"
@@ -7512,7 +7591,7 @@ msgstr ""
 "вълк. Да смажем остатъка от тая паплач!"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:560
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:561
 msgid ""
 "I don’t think so, you bastard orcs! That gold belongs to us. Besides, we now "
 "have a few scores to settle with you. Take them, troops — I want no orc left "
@@ -7522,7 +7601,7 @@ msgstr ""
 "вас някои сметки. Прегазете ги, войни, да не остане жив орк!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:574
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:575
 msgid ""
 "Thanks to Hidel and the elves, we have recovered our gold. Now let’s run "
 "down Rakshas and settle up with him once and for all."
@@ -7531,7 +7610,7 @@ msgstr ""
 "след Ракшас и да приключим с него най-после."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:580
+#: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:581
 msgid ""
 "Hidel’s death was a grievous loss; our thirst for vengeance must do what the "
 "stolen gold cannot. Now let’s run down Rakshas and settle up with him once "
@@ -7612,7 +7691,7 @@ msgid "Halter"
 msgstr "Холтър"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:604
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:605
 msgid ""
 "The group that went to the north was led by Krash and his drake friends."
 msgstr ""
@@ -7620,7 +7699,7 @@ msgstr ""
 "змейови другари."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:624
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:625
 msgid ""
 "The group that went to the north was led by Ro’Arthian and was composed of "
 "trolls, ogres and some selected mages."
@@ -7629,7 +7708,7 @@ msgstr ""
 "оугъри и няколко избрани магьосници."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:662
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:663
 msgid ""
 "Eryssa and the remaining elves, eager to avenge Hidel, went south, while "
 "Tallin himself led the western group."
@@ -7638,7 +7717,7 @@ msgstr ""
 "застана начело на западната група."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:699
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:700
 #, fuzzy
 #| msgid ""
 #| "Eryssa and the remaining elves, eager to avenge Hidel, went south, while "
@@ -7651,7 +7730,7 @@ msgstr ""
 "застана начело на западната група."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:720
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:721
 msgid ""
 "Ro’Arthian’s brother, Ro’Sothian, went south with another crew of trolls, "
 "ogres and mages. Tallin himself led the western group."
@@ -7660,31 +7739,31 @@ msgstr ""
 "оугъри и магьосници. Талин поведе западната група."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:771
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:772
 msgid "A few short hours later all the groups converged on the fortress."
 msgstr "Няколко часа по-късно всички войски се събраха край крепостта."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:809
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:810
 msgid ""
 "Rakshas! You have evaded me for the last time. Now come out and die like a "
 "man!"
 msgstr "Ракшас! За последно бягаш от мен. Покажи се и умри като мъж!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:813
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:814
 msgid "What the...? How did he get here?"
 msgstr "Какво по...! Този как дойде тук?"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:822
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:823
 msgid ""
 "We have crushed and scattered your entire eastern flank, and now it’s your "
 "turn!"
 msgstr "Смазахме и разпиляхме целия ти източен фланг. Сега е твой ред!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:826
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:827
 msgid ""
 "You slimy little elf! So you have joined hands with these humans, have you? "
 "Very well, both of you shall soon be dead!"
@@ -7693,7 +7772,7 @@ msgstr ""
 "заедно ще умрете!"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:830
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:831
 msgid ""
 "Good luck, you monster. You are cut off and surrounded. We shall kill you "
 "and feed your carcass to the vultures and wild beasts."
@@ -7702,7 +7781,7 @@ msgstr ""
 "зверове и лешоядите с плътта ти."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:834
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:835
 msgid ""
 "Hahahahah! You fools, do you not see that you are right in the heart of "
 "orcish territory, surrounded yourselves! Why, at this very moment my entire "
@@ -7714,26 +7793,26 @@ msgstr ""
 "издухат като слама!"
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:840
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:841
 msgid ""
 "We have crushed and scattered your entire eastern flank, buddy, and now it’s "
 "your turn!"
 msgstr "Смазахме и разпиляхме целия ти източен фланг, друже. Сега е твой ред!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:844
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:845
 msgid ""
 "Argh, you frustrating little vermin! I am going to pluck your eyeballs out "
 "and..."
 msgstr "Аргх, вие малки досадни гризачи! Ще ви извадя очните ябълки и..."
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:848
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:849
 msgid "We don’t have any eyeballs, you idiot!"
 msgstr "Нямаме очни ябълки, тъпако!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:853
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:854
 msgid ""
 "PAH! You fools, know that you shall soon be outnumbered and surrounded. At "
 "this very moment my entire western army is marching this way. They will soon "
@@ -7744,17 +7823,17 @@ msgstr ""
 "слама!"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:907
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:908
 msgid "Will they, now?"
 msgstr "О, нима?"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:911
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:912
 msgid "<i>What</i>?!"
 msgstr "<i>Какво</i>?!"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:915
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:916
 msgid ""
 "Your western army has been slaughtered, Rakshas, and <i>you</i> will soon "
 "join them!"
@@ -7762,57 +7841,57 @@ msgstr ""
 "Западната ти армия е избита, Ракшас. Скоро и с <i>теб</i> ще се случи същото!"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:919
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:920
 msgid "But... but... how can this be?"
 msgstr "Но... но... как е възможно?"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:923
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:924
 msgid "It’s called ‘The End’, foul orc. Forward! FOR KNALGA!!"
 msgstr "Нарича се \"Краят\", противен орк. Напред! В ИМЕТО НА КНАЛГА!!"
 
 #. [message]: id=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:927
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:928
 msgid "FOR FRIENDSHIP!!"
 msgstr "В ИМЕТО НА ПРИЯТЕЛСТВОТО!!"
 
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:931
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:932
 msgid "FOR PEACE!!"
 msgstr "В ИМЕТО НА МИРА!"
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:935
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:936
 msgid "FOR FUN!"
 msgstr "В ИМЕТО НА ЗАБАВЛЕНИЕТО!"
 
 #. [message]: id=Eryssa,Sisal
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:939
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:940
 msgid "FOR HIDEL!!"
 msgstr "В ИМЕТО НА ХИДЕЛ!!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:943
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:944
 msgid "FOR DWARVEN DOORS!!"
 msgstr "В ИМЕТО НА ДЖУДЖЕШКИ ВРАТИ!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:947
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:948
 msgid "FOR THE FREE PEOPLES OF THE NORTH! FALL ON THEM, MEN!!"
 msgstr "ЗА СВОБОДНИТЕ НАРОДИ НА ЦЕЛИЯ СЕВЕР! СМАЧКАЙТЕ ГИ!!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:956
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:957
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr "Майко мила, вижте колко орки излизат от тази крепост."
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:960
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:961
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
 msgstr "Тъй си е. При това не са какви да е орки, а закоравели ветерани!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:964
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:965
 msgid ""
 "Yeah. Obviously this is going to take some time. If necessary we can sit "
 "tight in our fortifications and besiege them until they starve!"
@@ -7821,40 +7900,40 @@ msgstr ""
 "си, докато умрат от глад!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:976
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:977
 msgid ""
 "Die, you murderous beast! No longer shall you terrorize the people of the "
 "North."
 msgstr "Умри, противен звяр! Вече няма да тормозиш народите на Севера."
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:980
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:981
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr ""
 "Сега ще разбереш какво се случва с всеки, който обиди джуджетата на Кналга."
 
 #. [message]: id=Eryssa,Sisal,Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:984
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:985
 msgid "Or the elves of the Northern Forests."
 msgstr "Или елфите на Северните гори."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:988
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:989
 msgid "Or the humans of Dwarven Doors."
 msgstr "Или хората от Джуджешки Врати."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:992
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:993
 msgid "(<i>Gurgle</i>) No...! This... cannot... be... happening... to... me..."
 msgstr "(<i>Задав</i>) Не...! Това... не може... да... ми... се случва..."
 
 #. [message]: id=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:996
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:997
 msgid "Such were the last words of Rakshas the great!"
 msgstr "Какви достойни думи от Ракшас Великия!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1009
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1010
 msgid ""
 "At last! Rakshas has been slain, and the orcish host has been crushed. Peace "
 "and prosperity will come to the Northlands once again!"
@@ -7863,7 +7942,7 @@ msgstr ""
 "отново ще възтържествуват из Северните земи!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1013
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1014
 msgid ""
 "At these words all the allied forces gave out a combined and thunderous "
 "cheer. Their long ordeal was finally over."
@@ -7872,13 +7951,13 @@ msgstr ""
 "изпитания приключиха."
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1018
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1019
 msgid "(<i>Small voice lost in the uproar</i>) Awww, is it over already?"
 msgstr "(<i>Малък глас насред еуфорията</i>) Ееее, приключи ли вече?"
 
 #. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1035
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1036
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:494
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:506
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:530
@@ -7886,14 +7965,14 @@ msgid "Argh!"
 msgstr "Аргх!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1039
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1040
 msgid ""
 "Hamel! Blast it, without the dwarves to hold the western flank we are as "
 "good as defeated."
 msgstr "Хамел! Проклятие, без джуджетата на западния фланг сме изгубени."
 
 #. [message]: id=Eryssa,Elenia
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1060
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1061
 msgid "Sisal! Noooo! Not you too!"
 msgstr "Сисал! Нееее! Не и ти!"
 
@@ -8015,10 +8094,15 @@ msgstr ""
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:134
+#, fuzzy
+#| msgid ""
+#| "This body would not claim sovereignty over any peoples or lands, but "
+#| "exist only to suppress warfare and raiding in the lands south and east of "
+#| "the Great Ocean, north of Wesnoth and west of the Elvish Forests."
 msgid ""
 "This body would not claim sovereignty over any peoples or lands, but exist "
 "only to suppress warfare and raiding in the lands south and east of the "
-"Great Ocean, north of Wesnoth and west of the Elvish Forests."
+"Great Ocean, north of Wesnoth and west of the elvish forests."
 msgstr ""
 "Този съвет няма да управлява земите ни, а ще съществува с единствената цел "
 "да потиска военните конфликти и нападенията в земите на изток и юг от "
@@ -8222,9 +8306,13 @@ msgstr "(<i>Усмихва се</i>) Възможно е..."
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:271
+#, fuzzy
+#| msgid ""
+#| "You have been a valuable ally and a great friend, Elenia. Go with our "
+#| "blessing, and convey to the Elves our intentions and the hope of peace."
 msgid ""
 "You have been a valuable ally and a great friend, Elenia. Go with our "
-"blessing, and convey to the Elves our intentions and the hope of peace."
+"blessing, and convey to the elves our intentions and the hope of peace."
 msgstr ""
 "Ти беше ценен съюзник и добра приятелка, Еления. Приеми благословията ни и "
 "отнеси на елфите новината за нашите намерения и надеждата ни за мир."
@@ -8302,8 +8390,13 @@ msgstr "Значи предпочиташ да се върнеш вкъщи?"
 
 #. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:331
+#, fuzzy
+#| msgid ""
+#| "Yes. The dead should stay in the land of the dead. It is against the laws "
+#| "of nature for it to be otherwise. There is just one problem; Malifor "
+#| "forced me into this body and I don’t know how to get out of it."
 msgid ""
-"Yes. The dead should stay in the land of the dead. It is against the laws of "
+"Yes. The dead should stay in the Land of the Dead. It is against the laws of "
 "nature for it to be otherwise. There is just one problem; Malifor forced me "
 "into this body and I don’t know how to get out of it."
 msgstr ""

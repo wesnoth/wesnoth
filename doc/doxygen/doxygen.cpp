@@ -14,34 +14,34 @@
 
 @mainpage Developer Documentation
 
-	<table border="0">
-	<tr>
-	<td valign="top">
-		@image html wesnoth-icon.png
-	</td>
-	<td>
-		<h3>Howto</h3>
-		@li @ref get_involved
-		@li @ref howto_document
+<table border="0">
+<tr>
+<td valign="top">
+	@image html wesnoth-icon.png
+</td>
+<td>
+	<h3>Howto</h3>
+	@li @ref get_involved
+	@li @ref howto_document
 
-	</td>
-	</tr>
+</td>
+</tr>
 
-	<tr>
-	<td valign="top">
-		@image html portraits/humans/mage.png
-	</td>
-	<td>
-		<h3>Reference</h3>
-		@li <a href="namespaces.html">Namespaces</a>
-		@li @ref unnamed_namespace
-		@li <a href="hierarchy.html">Classes</a>
-		@li <a href="files.html">Source Files</a>
-		@li <a href="todo.html">Todo</a>
-		@li <a href="deprecated.html">Deprecated</a>
-	</td>
-	</tr>
-	</table>
+<tr>
+<td valign="top">
+	@image html portraits/humans/mage.webp
+</td>
+<td>
+	<h3>Reference</h3>
+	@li <a href="namespaces.html">Namespaces</a>
+	@li @ref unnamed_namespace
+	@li <a href="hierarchy.html">Classes</a>
+	@li <a href="files.html">Source Files</a>
+	@li <a href="todo.html">Todo</a>
+	@li <a href="deprecated.html">Deprecated</a>
+</td>
+</tr>
+</table>
 
 */
 

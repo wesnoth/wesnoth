@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include <algorithm>
 
 #include "serialization/string_utils.hpp"
+#include "game_initialization/component_availability.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "utils/general.hpp"
@@ -69,9 +70,9 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	DBG_MP << "Initializing the dependency manager" << std::endl;
 
 	for(const config& cfg : gamecfg.child_range("modification")) {
-		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::HYBRID);
+		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::hybrid);
 
-		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
+		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];
@@ -85,9 +86,9 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	}
 
 	for(const config& cfg : gamecfg.child_range("era")) {
-		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::MP);
+		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::mp);
 
-		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
+		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,7 +74,7 @@ private:
 	/** draw a health/xp bar of a unit */
 	void draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, fixed_t alpha) const;
+		const color_t& col, int32_t alpha) const;
 
 	/**
 	 * Finds the start and end rows on the energy bar image.

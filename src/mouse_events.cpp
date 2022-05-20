@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -43,8 +43,8 @@
 #include "units/unit.hpp"          // for unit
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
+#include "sdl/input.hpp" // for get_mouse_state
 
-#include <SDL2/SDL_mouse.h> // for SDL_GetMouseState
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
 #include <ostream>     // for operator<<, basic_ostream, etc
@@ -101,7 +101,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 {
 	// Frankensteining from mouse_motion(), as it has a lot in common, but a lot of differences too.
 	// Copy-pasted from everywhere. TODO: generalize the two.
-	SDL_GetMouseState(&x,&y);
+	sdl::get_mouse_state(&x,&y);
 
 	// This is from mouse_handler_base::mouse_motion_default()
 	tooltips::process(x, y);
@@ -130,7 +130,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	int my = drag_from_y_;
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
-			SDL_GetMouseState(&mx, &my);
+			sdl::get_mouse_state(&mx, &my);
 			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
 										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
 			if(drag_distance > drag_threshold()*drag_threshold()) {
@@ -143,7 +143,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	const auto found_unit = find_unit(selected_hex_);
 	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
-		SDL_GetMouseState(&mx, &my);
+		sdl::get_mouse_state(&mx, &my);
 
 		if(sdl::point_in_rect(x, y, gui().map_area())) {
 			int dx = drag_from_x_ - mx;
@@ -158,6 +158,9 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// now copy-pasting mouse_handler::mouse_motion()
 
+	// Note for anyone reconciling this code with the version in mouse_handler::mouse_motion:
+	// commit 27a40a82aeea removed the game_board& board from mouse_motion, but didn't update
+	// the corresponding code here in touch_motion.
 	game_board & board = pc_.gamestate().board_;
 
 	if(new_hex == map_location::null_location())
@@ -335,14 +338,21 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		else
 			un.reset();
 	} //end planned unit map scope
+}
 
+void mouse_handler::show_reach_for_unit(const unit_ptr& un)
+{
 	if( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 		 !gui().fogged(un->get_location()))
 	{
-		if (un->side() == side_num_) {
-			//unit is on our team, show path if the unit has one
+		// If the unit has a path set and is either ours or allied then show the path.
+		//
+		// Exception: allied AI sides' moves are still hidden, on the assumption that
+		// campaign authors won't want to leak goto_x,goto_y tricks to the player.
+		if(!viewing_team().is_enemy(un->side()) && !pc_.get_teams()[un->side() - 1].is_ai()) {
+			//unit is on our team or an allied team, show path if the unit has one
 			const map_location go_to = un->get_goto();
-			if(board.map().on_board(go_to)) {
+			if(pc_.get_map().on_board(go_to)) {
 				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
@@ -369,7 +379,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		unselected_paths_ = true;
 		gui().highlight_reach(current_paths_);
 	}
-
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
@@ -379,7 +388,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// to highlight all the hexes where the mouse passed.
 	// Also, sometimes it seems to have one *very* obsolete
 	// and isolated mouse motion event when using drag&drop
-	SDL_GetMouseState(&x, &y); // <-- modify x and y
+	sdl::get_mouse_state(&x, &y); // <-- modify x and y
 
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
 		return;
@@ -563,43 +572,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		}
 	} /*end planned unit map scope*/
 
-	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
-		/*
-		 * Only process unit if toggler not preventing normal unit
-		 * processing. This can happen e.g. if, after activating 'show
-		 * [best possible] enemy movements' through the UI menu, the
-		 * mouse cursor lands on a hex with unit in it.
-		 */
-		if(!preventing_units_highlight_) {
-			if(un->side() == side_num_) {
-				// unit is on our team, show path if the unit has one
-				const map_location go_to = un->get_goto();
-				if(pc_.get_map().on_board(go_to)) {
-					pathfind::marked_route route;
-					{ // start planned unit map scope
-						wb::future_map_if_active raii;
-						route = get_route(un.get(), go_to, current_team());
-					} // end planned unit map scope
-					gui().set_route(&route);
-				}
-				over_route_ = true;
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			} else {
-				// unit under cursor is not on our team
-				// Note: planned unit map must be activated after this is done,
-				// since the future state includes changes to units' movement.
-				unit_movement_resetter move_reset(*un);
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			}
-
-			unselected_paths_ = true;
-			gui().highlight_reach(current_paths_);
-
-		}
+	/*
+	 * Only highlight unit's reach if toggler not preventing normal unit
+	 * processing. This can happen e.g. if, after activating 'show
+	 * [best possible] enemy movements' through the UI menu, the
+	 * mouse cursor lands on a hex with unit in it.
+	 */
+	if(!preventing_units_highlight_) {
+		show_reach_for_unit(un);
 	}
 
 	if(!un && preventing_units_highlight_) {
@@ -649,7 +629,7 @@ const map_location mouse_handler::hovered_hex() const
 {
 	int x = -1;
 	int y = -1;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 	return gui_->hex_clicked_on(x, y);
 }
 

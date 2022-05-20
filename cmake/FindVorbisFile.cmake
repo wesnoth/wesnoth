@@ -1,17 +1,42 @@
-# Locate VorbisFile
-# This module defines XXX_FOUND, XXX_INCLUDE_DIRS and XXX_LIBRARIES standard variables
-#
-# $VORBISDIR is an environment variable that would
-# correspond to the ./configure --prefix=$VORBISDIR
-# used in building Vorbis.
+#[=======================================================================[.rst:
+FindVorbisFile
+--------------
 
-# Copied from
-# http://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFile.cmake
+Find the VorbisFile includes and library.
 
-SET(VORBISFILE_SEARCH_PATHS
+Environment
+^^^^^^^^^^^
+
+$ENV{VORBISDIR} is an environment variable that would correspond to
+the `./configure --prefix=$VORBISDIR` used in building Vorbis.
+
+
+IMPORTED Targets
+^^^^^^^^^^^^^^^^
+
+This module defines the `IMPORTED` target ``VorbisFile::VorbisFile``, if
+VorbisFile has been found.
+
+Result Variables
+^^^^^^^^^^^^^^^^
+
+This module defines the following variables:
+
+	VORBISFILE_FOUND         - True if VorbisFile found.
+	VORBISFILE_INCLUDE_DIR   - Where to find vorbis/vorbisfile.h.
+	VORBISFILE_LIBRARIES     - Libraries when using VorbisFile.
+
+Inspiration
+^^^^^^^^^^^
+
+http://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFile.cmake
+
+#]=======================================================================]
+
+set(VORBISFILE_SEARCH_PATHS
 	~/Library/Frameworks
 	/Library/Frameworks
-    /usr/local
+	/usr/local
 	/usr
 	/sw # Fink
 	/opt/local # DarwinPorts
@@ -19,78 +44,78 @@ SET(VORBISFILE_SEARCH_PATHS
 	/opt
 )
 
-SET(MSVC_YEAR_NAME)
-IF (MSVC_VERSION GREATER 1599)		# >= 1600
-	SET(MSVC_YEAR_NAME VS2010)
-ELSEIF(MSVC_VERSION GREATER 1499)	# >= 1500
-	SET(MSVC_YEAR_NAME VS2008)
-ELSEIF(MSVC_VERSION GREATER 1399)	# >= 1400
-	SET(MSVC_YEAR_NAME VS2005)
-ELSEIF(MSVC_VERSION GREATER 1299)	# >= 1300
-	SET(MSVC_YEAR_NAME VS2003)
-ELSEIF(MSVC_VERSION GREATER 1199)	# >= 1200
-	SET(MSVC_YEAR_NAME VS6)
-ENDIF()
-
-FIND_PATH(VORBISFILE_INCLUDE_DIR
+find_path(VORBISFILE_INCLUDE_DIR
 	NAMES vorbis/vorbisfile.h
 	HINTS
-	$ENV{VORBISFILEDIR}
-	$ENV{VORBISFILE_PATH}
-	$ENV{VORBISDIR}
-	$ENV{VORBIS_PATH}
-	PATH_SUFFIXES include
-	PATHS ${VORBISFILE_SEARCH_PATHS}
-)
-
-FIND_LIBRARY(VORBISFILE_LIBRARY
-	NAMES vorbisfile libvorbisfile
-	HINTS
-	$ENV{VORBISFILEDIR}
-	$ENV{VORBISFILE_PATH}
-	$ENV{VORBISDIR}
-	$ENV{VORBIS_PATH}
-	PATH_SUFFIXES lib lib64 win32/VorbisFile_Dynamic_Release "Win32/${MSVC_YEAR_NAME}/x64/Release" "Win32/${MSVC_YEAR_NAME}/Win32/Release"
-	PATHS ${VORBISFILE_SEARCH_PATHS}
-)
-
-# First search for d-suffixed libs
-FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG
-	NAMES vorbisfiled vorbisfile_d libvorbisfiled libvorbisfile_d
-	HINTS
-	$ENV{VORBISFILEDIR}
-	$ENV{VORBISFILE_PATH}
-	$ENV{VORBISDIR}
-	$ENV{VORBIS_PATH}
-	PATH_SUFFIXES lib lib64 win32/VorbisFile_Dynamic_Debug "Win32/${MSVC_YEAR_NAME}/x64/Debug" "Win32/${MSVC_YEAR_NAME}/Win32/Debug"
-	PATHS ${VORBISFILE_SEARCH_PATHS}
-)
-
-IF(NOT VORBISFILE_LIBRARY_DEBUG)
-	# Then search for non suffixed libs if necessary, but only in debug dirs
-	FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG
-		NAMES vorbisfile libvorbisfile
-		HINTS
 		$ENV{VORBISFILEDIR}
 		$ENV{VORBISFILE_PATH}
 		$ENV{VORBISDIR}
 		$ENV{VORBIS_PATH}
-		PATH_SUFFIXES win32/VorbisFile_Dynamic_Debug "Win32/${MSVC_YEAR_NAME}/x64/Debug" "Win32/${MSVC_YEAR_NAME}/Win32/Debug"
+	PATH_SUFFIXES include
+	PATHS ${VORBISFILE_SEARCH_PATHS}
+)
+
+find_library(VORBISFILE_LIBRARY
+	NAMES vorbisfile libvorbisfile
+	HINTS
+		$ENV{VORBISFILEDIR}
+		$ENV{VORBISFILE_PATH}
+		$ENV{VORBISDIR}
+		$ENV{VORBIS_PATH}
+	PATH_SUFFIXES
+		lib
+		lib64
+	PATHS ${VORBISFILE_SEARCH_PATHS}
+)
+
+# First search for d-suffixed libs
+find_library(VORBISFILE_LIBRARY_DEBUG
+	NAMES vorbisfiled vorbisfile_d libvorbisfiled libvorbisfile_d
+	HINTS
+		$ENV{VORBISFILEDIR}
+		$ENV{VORBISFILE_PATH}
+		$ENV{VORBISDIR}
+		$ENV{VORBIS_PATH}
+	PATH_SUFFIXES
+		lib
+		lib64
+	PATHS ${VORBISFILE_SEARCH_PATHS}
+)
+
+if(NOT VORBISFILE_LIBRARY_DEBUG)
+	# Then search for non suffixed libs if necessary, but only in debug dirs
+	find_library(VORBISFILE_LIBRARY_DEBUG
+		NAMES vorbisfile libvorbisfile
+		HINTS
+			$ENV{VORBISFILEDIR}
+			$ENV{VORBISFILE_PATH}
+			$ENV{VORBISDIR}
+			$ENV{VORBIS_PATH}
 		PATHS ${VORBISFILE_SEARCH_PATHS}
 	)
-ENDIF()
+endif()
 
+if(VORBISFILE_LIBRARY)
+	if(VORBISFILE_LIBRARY_DEBUG)
+		set(VORBISFILE_LIBRARIES optimized "${VORBISFILE_LIBRARY}" debug "${VORBISFILE_LIBRARY_DEBUG}")
+	else()
+		set(VORBISFILE_LIBRARIES "${VORBISFILE_LIBRARY}") # Could add "general" keyword, but it is optional
+	endif()
+endif()
 
-IF(VORBISFILE_LIBRARY)
-	IF(VORBISFILE_LIBRARY_DEBUG)
-		SET(VORBISFILE_LIBRARIES optimized "${VORBISFILE_LIBRARY}" debug "${VORBISFILE_LIBRARY_DEBUG}")
-	ELSE()
-		SET(VORBISFILE_LIBRARIES "${VORBISFILE_LIBRARY}")		# Could add "general" keyword, but it is optional
-	ENDIF()
-ENDIF()
-
-# handle the QUIETLY and REQUIRED arguments and set XXX_FOUND to TRUE if all listed variables are TRUE
-INCLUDE(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(VorbisFile DEFAULT_MSG VORBISFILE_LIBRARIES VORBISFILE_INCLUDE_DIR)
+# handle the QUIETLY and REQUIRED arguments and set VORBISFILE_FOUND to TRUE if all listed variables are TRUE
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(VorbisFile DEFAULT_MSG VORBISFILE_LIBRARIES VORBISFILE_INCLUDE_DIR)
 
 mark_as_advanced(VORBISFILE_INCLUDE_DIR VORBISFILE_LIBRARIES VORBISFILE_LIBRARY VORBISFILE_LIBRARY_DEBUG)
+
+if(VORBISFILE_FOUND AND (NOT TARGET VorbisFile::VorbisFile))
+	add_library(VorbisFile::VorbisFile UNKNOWN IMPORTED)
+	set_target_properties(VorbisFile::VorbisFile PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${VORBISFILE_INCLUDE_DIR}")
+	if(VORBISFILE_LIBRARY_DEBUG)
+		set_target_properties(VorbisFile::VorbisFile PROPERTIES IMPORTED_LOCATION_DEBUG "${VORBISFILE_LIBRARY_DEBUG}")
+		set_target_properties(VorbisFile::VorbisFile PROPERTIES IMPORTED_LOCATION_RELEASE "${VORBISFILE_LIBRARY}")
+	endif()
+	# for the rest of build types
+	set_target_properties(VorbisFile::VorbisFile PROPERTIES IMPORTED_LOCATION "${VORBISFILE_LIBRARY}")
+endif()

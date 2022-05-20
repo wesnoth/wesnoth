@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,8 +35,7 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 game_classification::game_classification(const config& cfg)
 	: label(cfg["label"])
 	, version(cfg["version"])
-	, campaign_type(
-		cfg["campaign_type"].to_enum<game_classification::CAMPAIGN_TYPE>(game_classification::CAMPAIGN_TYPE::SCENARIO))
+	, type(campaign_type::get_enum(cfg["campaign_type"].str()).value_or(campaign_type::type::scenario))
 	, campaign_define(cfg["campaign_define"])
 	, campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"]))
 	, scenario_define(cfg["scenario_define"])
@@ -61,7 +60,7 @@ config game_classification::to_config() const
 	config cfg;
 	cfg["label"] = label;
 	cfg["version"] = game_config::wesnoth_version.str();
-	cfg["campaign_type"] = campaign_type.to_string();
+	cfg["campaign_type"] = campaign_type::get_string(type);
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["scenario_define"] = scenario_define;
@@ -85,14 +84,14 @@ config game_classification::to_config() const
 std::string game_classification::get_tagname() const
 {
 	if(is_multiplayer()) {
-		return campaign.empty() ? "multiplayer" : "scenario";
+		return campaign.empty() ? campaign_type::multiplayer : campaign_type::scenario;
 	}
 
 	if(is_tutorial()) {
-		return "scenario";
+		return campaign_type::scenario;
 	}
 
-	return campaign_type.to_string();
+	return campaign_type::get_string(type);
 }
 
 namespace
@@ -118,9 +117,9 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 	std::set<std::string> loaded_resources;
 	std::set<std::string> res;
 
-	std::transform(active_mods.begin(), active_mods.end(), std::back_inserter(mods),
-		[](const std::string& id) { return modevents_entry("modification", id); }
-	);
+	for(const auto& mod : active_mods) {
+		mods.emplace_back("modification", mod);
+	}
 
 	// We don't want the error message below if there is no era (= if this is a sp game).
 	if(!era_id.empty()) {
@@ -150,8 +149,16 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 			for (const config& load_res : cfg.child_range("load_resource")) {
 				mods.emplace_back("resource", load_res["id"].str());
 			}
+		} else {
+			ERR_NG << "Unable to find config for content " << current.id << " of type " << current.type;
 		}
 		mods.pop_front( );
 	}
+
+	DBG_NG << "Active content for game set to:" << std::endl;
+	for(const std::string& mod : res) {
+		DBG_NG << mod << std::endl;
+	}
+
 	return res;
 }

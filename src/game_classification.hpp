@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "utils/make_enum.hpp"
+#include "campaign_type.hpp"
 
 #include <vector>
 #include <set>
@@ -34,13 +34,7 @@ public:
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */
-	MAKE_ENUM (CAMPAIGN_TYPE,			 /**< Type of the game - campaign, multiplayer etc. */
-		(SCENARIO, 	"scenario")
-		(MULTIPLAYER, 	"multiplayer")
-		(TEST,		"test")
-		(TUTORIAL,	"tutorial")
-	)
-	CAMPAIGN_TYPE campaign_type;
+	campaign_type::type type;
 	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
 	std::string scenario_define;                     /**< If there is a define the scenario uses to customize data */
@@ -72,21 +66,21 @@ public:
 
 	bool is_scenario() const
 	{
-		return campaign_type == CAMPAIGN_TYPE::SCENARIO;
+		return type == campaign_type::type::scenario;
 	}
 
 	bool is_multiplayer() const
 	{
-		return campaign_type == CAMPAIGN_TYPE::MULTIPLAYER;
+		return type == campaign_type::type::multiplayer;
 	}
 
 	bool is_test() const
 	{
-		return campaign_type == CAMPAIGN_TYPE::TEST;
+		return type == campaign_type::type::test;
 	}
 
 	bool is_tutorial() const
 	{
-		return campaign_type == CAMPAIGN_TYPE::TUTORIAL;
+		return type == campaign_type::type::tutorial;
 	}
 };

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Fix_Xcode_Dependencies
-# Martin Hrubý (hrubymar10), 2016 - 2020
+# Martin Hrubý (hrubymar10), 2016 - 2020, 2022
 # Victor Sergienko (singalen), 2018
 #
 
@@ -39,7 +39,7 @@ time_interval_to_string() {
 }
 
 get_mcs() {
-  git clone -b "universal_libs_support" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-universal_libs_support"
+  git clone -b "1.17" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-1.17"
 }
 ###/Functions
 
@@ -72,25 +72,25 @@ if [ -d "MacCompileStuff-master" ]; then
   rm -rf MacCompileStuff-master
 fi
 
-if ! [ -d "MacCompileStuff-universal_libs_support" ]; then
+if ! [ -d "MacCompileStuff-1.17" ]; then
   get_mcs
 else
-  cd "MacCompileStuff-universal_libs_support"
+  cd "MacCompileStuff-1.17"
   git pull --depth 5
   if ! [ $? -eq 0 ]; then
     echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
     cd ".."
-    rm -rf "MacCompileStuff-universal_libs_support"
+    rm -rf "MacCompileStuff-1.17"
     get_mcs
   fi
 fi
 cd "${MY_PATH}"
 
 rm -rf "Headers"
-ln -s "temp/MacCompileStuff-universal_libs_support/Headers"
+ln -s "temp/MacCompileStuff-1.17/Headers"
 
 rm -rf "lib"
-ln -s "temp/MacCompileStuff-universal_libs_support/lib"
+ln -s "temp/MacCompileStuff-1.17/lib"
 
 echo "==> DONE ..."
 echo

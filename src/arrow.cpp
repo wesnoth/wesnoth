@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,6 +51,7 @@ void arrow::hide()
 {
 	if(hidden_)
 		return;
+
 	hidden_ = true;
 
 	if(display* disp = display::get_singleton()) {
@@ -63,6 +64,7 @@ void arrow::show()
 {
 	if(!hidden_)
 		return;
+
 	hidden_ = false;
 
 	if(display* disp = display::get_singleton()) {
@@ -146,10 +148,7 @@ void arrow::draw_hex(const map_location& hex)
 
 bool arrow::valid_path(const arrow_path_t& path)
 {
-	if (path.size() >= 2)
-		return true;
-	else
-		return false;
+	return (path.size() >= 2);
 }
 
 void arrow::update_symbols()

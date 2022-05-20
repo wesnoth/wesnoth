@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -309,7 +309,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const fixed_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
+		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? floating_to_fixed_point(1.0): floating_to_fixed_point(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -325,9 +325,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 		if (can_recruit) {
 			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
 			if(crown) {
-				//if(bar_alpha != ftofxp(1.0)) {
-				//	crown = adjust_surface_alpha(crown, bar_alpha);
-				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
 			}
@@ -364,7 +361,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, fixed_t alpha) const
+		const color_t& col, int32_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
@@ -388,13 +385,13 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 		bar_loc = unscaled_bar_loc;
 	else {
-		const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
-		const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
+		const int32_t xratio = fixed_point_divide(surf->w,bar_surf->w);
+		const int32_t yratio = fixed_point_divide(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
-			    fxptoi(unscaled_bar_loc. x * xratio)
-			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
-			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255)
+			    fixed_point_to_int(unscaled_bar_loc.x * xratio)
+			  , fixed_point_to_int(unscaled_bar_loc.y * yratio + 127)
+			  , fixed_point_to_int(unscaled_bar_loc.w * xratio + 255)
+			  , fixed_point_to_int(unscaled_bar_loc.h * yratio + 255)
 		};
 		bar_loc = scaled_bar_loc;
 	}
@@ -402,13 +399,6 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if(height > static_cast<std::size_t>(bar_loc.h)) {
 		height = bar_loc.h;
 	}
-
-	//if(alpha != ftofxp(1.0)) {
-	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == nullptr) {
-	//		return;
-	//	}
-	//}
 
 	const std::size_t skip_rows = bar_loc.h - height;
 
@@ -421,8 +411,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
-	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
+	if(unfilled < height && alpha >= floating_to_fixed_point(0.3)) {
+		const uint8_t r_alpha = std::min<unsigned>(fixed_point_multiply(alpha,255),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));

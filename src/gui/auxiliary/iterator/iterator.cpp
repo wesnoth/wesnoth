@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,17 +17,9 @@
 
 #include "gui/auxiliary/iterator/iterator.hpp"
 
-namespace gui2
+namespace gui2::iteration
 {
-
-namespace iteration
-{
-
-
-} // namespace iteration
-
-} // namespace gui2
-
+} // namespace gui2::iteration
 
 /**
  * @page gui2_iterator GUI2 Iterator.

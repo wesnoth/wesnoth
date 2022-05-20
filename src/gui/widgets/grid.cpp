@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,7 +38,8 @@ namespace gui2
 {
 
 grid::grid(const unsigned rows, const unsigned cols)
-	: rows_(rows)
+	: widget()
+	, rows_(rows)
 	, cols_(cols)
 	, row_height_()
 	, col_width_()
@@ -67,7 +68,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget* widget,
+void grid::set_child(std::unique_ptr<widget> widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -89,32 +90,35 @@ void grid::set_child(widget* widget,
 	// copy data
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
-	cell.set_widget(widget);
-	if(cell.get_widget()) {
-		// make sure the new child is valid before deferring
-		cell.get_widget()->set_parent(this);
+	cell.set_widget(std::move(widget));
+
+	// make sure the new child is valid before deferring
+	if(gui2::widget* w = cell.get_widget()) {
+		w->set_parent(this);
 	}
 }
 
 std::unique_ptr<widget> grid::swap_child(const std::string& id,
-						   widget* w,
-						   const bool recurse,
-						   widget* new_parent)
+		std::unique_ptr<widget> w,
+		const bool recurse,
+		widget* new_parent)
 {
 	assert(w);
 
-	for(auto & child : children_)
-	{
+	for(auto& child : children_) {
 		if(child.id() != id) {
-
 			if(recurse) {
-				// decent in the nested grids.
-				grid* g = dynamic_cast<grid*>(child.get_widget());
-				if(g) {
+				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
+					// Save the current value of `w` before we recurse. If a match is found in
+					// a child grid, the old widget will be returned and won't match.
+					widget* current_w = w.get();
 
-					std::unique_ptr<widget> old = g->swap_child(id, w, true);
-					if(old) {
-						return old;
+					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w) {
+						return res;
+					} else {
+						// Since `w` was moved "down" a level, it will be null once we return to
+						// this invocation. Re-assign it so we don't crash below.
+						w = std::move(res);
 					}
 				}
 			}
@@ -123,7 +127,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		std::unique_ptr<widget> old = child.free_widget();
+		auto old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -131,11 +135,11 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		w->set_parent(this);
 		w->set_visible(old->get_visible());
 
-		child.set_widget(w);
+		child.set_widget(std::move(w));
 		return old;
 	}
 
-	return nullptr;
+	return w;
 }
 
 void grid::remove_child(const unsigned row, const unsigned col)
@@ -697,9 +701,9 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* grid::create_walker()
+iteration::walker_ptr grid::create_walker()
 {
-	return new gui2::iteration::grid(*this);
+	return std::make_unique<gui2::iteration::grid>(*this);
 }
 
 void grid::set_rows(const unsigned rows)
@@ -991,7 +995,7 @@ void grid::layout(const point& origin)
 	}
 }
 
-void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void grid::impl_draw_children(int x_offset, int y_offset)
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
@@ -1020,9 +1024,9 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 			continue;
 		}
 
-		widget->draw_background(frame_buffer, x_offset, y_offset);
-		widget->draw_children(frame_buffer, x_offset, y_offset);
-		widget->draw_foreground(frame_buffer, x_offset, y_offset);
+		widget->draw_background(x_offset, y_offset);
+		widget->draw_children(x_offset, y_offset);
+		widget->draw_foreground(x_offset, y_offset);
 		widget->set_is_dirty(false);
 	}
 }
@@ -1104,10 +1108,10 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget* widget)
+void set_single_child(grid& grid, std::unique_ptr<widget> widget)
 {
 	grid.set_rows_cols(1, 1);
-	grid.set_child(widget,
+	grid.set_child(std::move(widget),
 				   0,
 				   0,
 				   grid::HORIZONTAL_GROW_SEND_TO_CLIENT

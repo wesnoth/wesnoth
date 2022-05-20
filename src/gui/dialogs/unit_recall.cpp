@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -53,8 +53,8 @@ namespace gui2::dialogs
 {
 
 // Index 2 is by-level
-static listbox::order_pair sort_last    {-1, preferences::SORT_ORDER::NONE};
-static listbox::order_pair sort_default { 2, preferences::SORT_ORDER::DESCENDING};
+static listbox::order_pair sort_last    {-1, sort_order::type::none};
+static listbox::order_pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 

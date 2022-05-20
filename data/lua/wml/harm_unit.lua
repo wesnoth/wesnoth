@@ -186,7 +186,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if variable then
-				wml.variables[string.format("%s[%d]", variable, index - 1)] = { harm_amount = damage }
+				wml.variables[string.format("%s[%d]", variable, index - 1)] = { id = unit_to_harm.id, harm_amount = damage }
 			end
 
 			-- both units may no longer be alive at this point, so double check

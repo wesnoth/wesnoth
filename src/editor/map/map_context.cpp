@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -528,7 +528,7 @@ config map_context::to_config()
 		side["side"] = side_num;
 		side["hidden"] = t->hidden();
 
-		side["controller"] = t->controller();
+		side["controller"] = side_controller::get_string(t->controller());
 		side["no_leader"] = t->no_leader();
 
 		side["team_name"] = t->team_name();
@@ -539,7 +539,7 @@ config map_context::to_config()
 
 		side["fog"] = t->uses_fog();
 		side["shroud"] = t->uses_shroud();
-		side["share_vision"] = t->share_vision();
+		side["share_vision"] = team_shared_vision::get_string(t->share_vision());
 
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();

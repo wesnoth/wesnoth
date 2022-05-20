@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -423,6 +423,11 @@ public:
 	void set_callback_next_draw(std::function<void()> func)
 	{
 		callback_next_draw_ = func;
+	}
+
+	void set_suspend_drawing(bool s = true)
+	{
+		suspend_drawing_ = s;
 	}
 
 	enum class show_mode {

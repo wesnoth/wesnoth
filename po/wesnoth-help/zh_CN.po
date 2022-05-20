@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -11,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 11:42-0400\n"
-"PO-Revision-Date: 2020-08-10 20:12+0800\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"PO-Revision-Date: 2022-04-22 16:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,11 +24,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "地下"
@@ -65,10 +67,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " 此单位能够简单疗伤。"
+msgstr "此单位有基本的疗伤能力，并能减缓脱水。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -103,29 +103,16 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "疗伤+4"
+msgstr "疗伤+12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "疗伤+4"
+msgstr "疗伤+12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -138,19 +125,15 @@ msgstr ""
 "此单位将魔法与草药混合使用以在战场上对单位进行疗伤，比通常可能的速度快得"
 "多。\n"
 "\n"
-"此疗伤者所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
+"此疗伤者所治疗的单位每回合最多能恢复12点生命值，或阻止毒药在该回合发作。\n"
 "中毒的单位不能由疗伤者疗毒，只能进入村庄疗毒，或者由拥有疗毒能力的单位疗毒。"
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
-msgstr " 此单位能够对周围的单位进行疗伤，并解除中毒状态。"
+msgstr "此单位可以对周围的单位疗伤，减缓脱水，并疗毒。"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -172,11 +155,11 @@ msgstr "背刺"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
 msgid "Castle"
-msgstr ""
+msgstr "城堡"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
 msgid "Cave"
-msgstr ""
+msgstr "洞穴"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
@@ -199,9 +182,9 @@ msgid "cures"
 msgstr "疗毒"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
-msgstr ""
+msgstr "防御"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
@@ -236,22 +219,20 @@ msgid "+1 max HP"
 msgstr "+1最大生命值"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-#, fuzzy
-#| msgid "first strike"
 msgid "firststrike"
 msgstr "先制"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Flat"
-msgstr ""
+msgstr "平原"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
 msgid "Forest"
-msgstr ""
+msgstr "森林"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
 msgid "Frozen"
-msgstr ""
+msgstr "冻原"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
@@ -261,7 +242,7 @@ msgstr "康健"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
 msgid "Hills"
-msgstr ""
+msgstr "丘陵"
 
 #. [illuminates]: id=illumination
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
@@ -289,7 +270,7 @@ msgstr "精准"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "蘑菇林"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
@@ -301,7 +282,6 @@ msgstr "夜遁"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-#: data/scenario-test.cfg:407
 msgid "plague"
 msgstr "瘟疫"
 
@@ -318,13 +298,13 @@ msgid "regenerates"
 msgstr "再生"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:662
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
-msgstr ""
+msgstr "抗性"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
 msgid "Sand"
-msgstr ""
+msgstr "沙地"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
@@ -339,16 +319,15 @@ msgid "slows"
 msgstr "减速"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130 data/scenario-test.cfg:367
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "坚定"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
-msgstr ""
+msgstr "打击次数"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
@@ -358,7 +337,7 @@ msgstr "潜水"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
 msgid "Swamp"
-msgstr ""
+msgstr "沼泽"
 
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
@@ -374,7 +353,7 @@ msgstr "亡灵"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"
-msgstr ""
+msgstr "村庄"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -383,17 +362,15 @@ msgstr "地图与场景编辑器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 msgid "Terrain Editor"
 msgstr "地形编辑器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
-#, fuzzy
-#| msgid "Map/Scenario Editor"
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 msgid "Scenario Editor"
-msgstr "地图/场景编辑器"
+msgstr "场景编辑器"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -419,26 +396,40 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"在地图上绘制地形贴片。\n"
+"\n"
+"绘画工具会使用笔刷尺寸和地形调色板设定。\n"
+"\n"
+"<bold>text='键盘修饰符'</bold>\n"
+"\n"
+"• Shift+鼠标点击：如果选择了基础地形，则改变基础地形而不改变覆盖层。如果选择"
+"了覆盖层，则改变覆盖层而不改变基础地形。\n"
+"• Control+鼠标点击：选择鼠标光标下的地形，与在地形调色板上选择该地形等价（同"
+"时拾取基础地形和覆盖层）。\n"
+"\n"
+"<bold>text='画笔大小'</bold>\n"
+"\n"
+"选定的笔刷尺寸会改变工具的大小："
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "绘制单格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "一次绘制七格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "一次绘制十九格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "绘制一直线上的三格。"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -460,6 +451,16 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"用不同的地形填充连续的地形区域。\n"
+"\n"
+"填充工具会使用地形调色板设定。\n"
+"\n"
+"<bold>text='键盘修饰符'</bold>\n"
+"\n"
+"• Shift+鼠标点击：如果选择了基础地形，则改变基础地形而不改变覆盖层。如果选择"
+"了覆盖层，则改变覆盖层而不改变基础地形。\n"
+"• Control+鼠标点击：选择鼠标光标下的地形，与在地形调色板上选择该地形等价（同"
+"时拾取基础和覆盖层）。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
@@ -482,31 +483,42 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"选择一组六角格，与菜单栏下的剪切、复制和填充选择区域按钮一起使用。\n"
+"\n"
+"<bold>text='键盘修饰符'</bold>\n"
+"\n"
+"• Shift+鼠标点击：“魔杖”模式，选择鼠标光标下的六角格，以及相同地形类型的相邻"
+"六角格。\n"
+"• Control+鼠标点击：取消选择。\n"
+"\n"
+"<bold>text='笔刷大小'</bold>\n"
+"\n"
+"选定的笔刷尺寸会改变工具的大小："
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "选择单格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "一次选择七格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "一次选择十九格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "选择一直线上的三格。"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "剪贴板和粘贴工具"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -523,33 +535,41 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"旋转、翻转和粘贴剪贴板中的地形\n"
+"\n"
+"可以使用<ref>dst='editor_tool_select' text='选择工具'</ref>将六角格剪切或复制"
+"到剪贴板。\n"
+"\n"
+"粘贴工具会显示剪贴板中内容的轮廓，可以用鼠标点击来粘贴。显示的内容只有轮廓，"
+"但可以用撤销功能来纠正错误，该功能绑定在Control+Z键上，同时也绑定在和游戏中的"
+"撤销功能相同的键位上。\n"
+"\n"
+"粘贴工具也有一些剪贴板操作功能："
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "顺时针旋转60°。"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "逆时针旋转60°。"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "水平翻转"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "垂直翻转"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "如何配置起始位置"
+msgstr "起始位置工具"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -584,14 +604,142 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"定义各阵营首领的的起始位置。\n"
+"\n"
+"此工具用于设置各阵营首领的默认起始位置，以及具名的特殊位置。在<ref>dst='..."
+"editor_mode_terrain' text='地形编辑器'</ref>和<ref>dst='..."
+"editor_mode_scenario' text='场景编辑器'</ref>模式下，这两种类型的位置都启用"
+"了。位置名称在编辑器调色板中显示为一个列表，点击地图将把该名称放置于六角格"
+"上。每个位置只能放在一个六角格上，而且编辑器只允许每个六角格上最多有一个位"
+"置。\n"
+"\n"
+"要添加具名的特殊位置，请点击编辑器调色板底部的“添加”，并输入名称。这些名称必"
+"须以字母开头，可以包含数字和下划线。\n"
+"\n"
+"通过点击“添加”并输入数字，例如“10”，可以在一张地图上添加9个以上的队伍。UI中会"
+"将该队伍自动显示为 \"玩家10\"。\n"
+"\n"
+"具名位置可以在WML中使用标准位置过滤器的<italic>text='location_id='</italic>来"
+"访问。玩家起始位置也可以在WML中使用<italic>text='location_id=1'</italic>，"
+"<italic>text='location_id=2'</italic>等来访问——只使用数字，而不在数字前面添"
+"加“玩家”。\n"
+"\n"
+"<bold>text='键盘修饰符'</bold>\n"
+"\n"
+" •Control+鼠标点击已经含有位置的六角格：选择该格中的位置，用于在下次鼠标点击"
+"时进行放置，与在编辑器调色板中选择该位置等价。"
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Deprecated Terrain"
+msgstr "基础地形："
+
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr "标签工具"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -603,14 +751,22 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"在地图上放置文字标签。\n"
+"\n"
+"• 左键单击将打开对话框，以创建新标签或编辑现有标签。\n"
+"• 右键单击可以删除。\n"
+"• 鼠标左键拖放可以移动标签。\n"
+"\n"
+"此工具只在场景模式中可用。装饰物则使用WML的<italic>text='[label]'</italic>标"
+"签在场景中实现。"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "物品工具（景色工具）"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -623,14 +779,22 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"物品工具可以放置风车、书柜和巨石等装饰物。多个物品可以放置在同一个六角格"
+"上。\n"
+"\n"
+"<bold>text='注意：'</bold>此工具不支持删除已经放置的物品，也不支持撤销。目前"
+"只能通过编辑生成的WML文件来修复错误。\n"
+"\n"
+"此工具只在场景模式中可用。装饰物不是地形的一部分，而是使用WML的"
+"<italic>text='[item]'</italic>标签在场景中实现。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr "村庄所有权工具"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -643,14 +807,23 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"此工具在剧情开始时分配村庄的所有权。村庄必须首先用"
+"<ref>dst='editor_tool_paint' text='绘制工具'</ref>放置在地形上。\n"
+"\n"
+"• 左键单击将把村庄分配到当前选择的阵营。\n"
+"• 右键单击将把村庄重新设置为无主状态。\n"
+"\n"
+"此工具只在场景模式中可用。所有权信息是通过在WML中适当的"
+"<italic>text='[side]'</italic>标签中添加<italic>text='[village]'</italic>标签"
+"来存储的。"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr "单位工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -663,14 +836,22 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"放置属于当前选择的阵营的单位。\n"
+"\n"
+"• 左键单击将放置单位。\n"
+"• 左键拖放将移动已放置的单位。\n"
+"• 当六角格中包含单位时，各种操作将被添加到该格的右键菜单中。\n"
+"\n"
+"这个工具只在场景模式中可用。它会将WML的<italic>text='[unit]'</italic>标签添加"
+"到适当的<italic>text='[side]'</italic>下。"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr "具名区域"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -695,14 +876,31 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"此工具在WML脚本的标准位置过滤器的<italic>text='area='</italic>属性中使用区域"
+"的id，以创建可以用于此类过滤器的贴片组。（Wiki上有关于标准位置过滤器这一概念"
+"的详细说明。）例如：\n"
+"\n"
+"• 为此组六角格指定本地时区\n"
+"• 筛选出当角色移动到其上时会触发事件的六角格组\n"
+"\n"
+"如何使用此工具：\n"
+"\n"
+"- 使用<ref>dst='editor_tool_select' text='select tool'</ref>选择六角格。\n"
+"- 在“区域”菜单中，选择“添加新区域”\n"
+"- 然后在“区域”菜单中，选择“保存选中范围到区域”\n"
+"- 然后在“区域”菜单中，选择“重命名所选区域”并为该区域选择名称。\n"
+"\n"
+"此工具只在场景模式中可用。它将WML的<italic>text='[time_area]'</italic>标签添"
+"加到场景中。虽然标签名字暗示了时间，但它现在更通用，可用于其他目的，而不需要"
+"改变该区域的时段安排。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr "播放列表管理器"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -710,14 +908,18 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"显示编辑器中已知的音乐曲目列表，并含有用于启用这些曲目的切换框。\n"
+"\n"
+"此工具只在场景模式中可用。它会将WML的<italic>text='[music]'</italic>标签添加"
+"到场景中。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr "地图/场景编辑器"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -747,9 +949,32 @@ msgid ""
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
 "text='playlist manager'</ref> for the music."
 msgstr ""
+"韦诺的地图和场景编辑器允许用户创建和编辑地图。韦诺的所有场景都在这些地图上发"
+"生。它还提供了一套有限的功能来设置基本场景。\n"
+"\n"
+"编辑器可以从标题界面的<bold>文本='地图编辑器'</bold>选项中启动。\n"
+"\n"
+"<header>text='编辑模式'</header>\n"
+"\n"
+"编辑器有两种操作模式：地形模式和场景模式。\n"
+"\n"
+"<ref>dst='..editor_mode_terrain' text='地形模式'</ref>类似于一个简单的绘图应"
+"用，有<ref>dst='editor_tool_paint' text='绘制'</ref>、"
+"<ref>dst='editor_tool_fill' text='填充'</ref>、<ref>dst='editor_tool_select' "
+"text='选择（和复制）'</ref>以及<ref>dst='editor_tool_paste' text='粘贴'</ref>"
+"等工具。它也有工具用于设置首领的'<ref>dst='editor_tool_starting' text='起始位"
+"置'</ref>。\n"
+"\n"
+"<ref>dst='..editor_mode_scenario' text='场景模式'</ref>，除了地形模式中的工具"
+"外，还增加了对添加<ref>dst='editor_tool_label' text='标签'</ref>、"
+"<ref>dst='editor_tool_scenery' text='场景物品'</ref>、"
+"<ref>dst='editor_tool_unit' text='单位'</ref>的支持，而不只是对添加首领的支"
+"持。此外，也支持在场景开始时指定<ref>dst='editor_tool_village' text='村庄所有"
+"权'</ref>。还有一个<ref>dst='editor_playlist' text='播放列表管理器'</ref>用于"
+"音乐。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -773,9 +998,25 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='你得*不*到的东西'</header>\n"
+"\n"
+"• 与游戏中完全一致的地图渲染\n"
+"\n"
+"地图在游戏中的样子不会和编辑器中的完全一样，因为这取决于地形规则。例如，当许"
+"多山地格聚集在一起时，地形规则会试图将它们组合成山脉和横跨多格的大图形。\n"
+"\n"
+"• 事件处理器和脚本\n"
+"\n"
+"此编辑器不是用于帮助你编写场景中的事件处理器的工具。\n"
+"\n"
+"• 无限的向后兼容性\n"
+"\n"
+"此编辑器可以加载旧版本韦诺中的大部分地图，但不是全部。通常可以支持1.3.2及以后"
+"版本的地图，除非它们使用的地形不再存在于韦诺主线中。若地图来自于自身含有附加"
+"地形的附加组件，则需要该附加组件将自身的附加地形信息告知编辑器。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -788,18 +1029,28 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"地形编辑器的功能类似于一个简单的绘图应用。\n"
+"\n"
+"右侧边栏从上到下包含迷你地图、工具箱（见每个工具的单独页面）、工具选项和"
+"<ref>dst='editor_palette' text='调色板'</ref>。\n"
+"\n"
+"当使用“地图另存为”并保存到默认目录时，生成的地图可以在多人游戏“创建游戏”对话"
+"框的“自定义地图”游戏类型中找到。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"场景编辑器模式增加了对一些与地图有关的WML特性的支持，如区域和场景物品。在大多"
+"数场景中，仍然需要使用另外的工具编写额外的WML。场景编辑器不支持对场景中的事件"
+"编写脚本。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -808,9 +1059,15 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='检查编辑器是否处于场景模式'</header>\n"
+"\n"
+"你可以通过查看菜单栏来检查编辑器处于哪个模式。\n"
+"\n"
+"• 在场景模式下“区域”和“阵营”菜单是启用的。\n"
+"• 在纯地形模式下，“区域”和“阵营”菜单是灰色的。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:277
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -823,16 +1080,41 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='进入场景模式'</header>\n"
+"\n"
+"要在场景模式下开启一张新地图，请选择“文件 ”菜单中的“新场景”。\n"
+"\n"
+"如果你正在地形模式下编辑地图，请使用“文件”菜单中的“场景另存为”，这将切换到场"
+"景模式。\n"
+"\n"
+"要载入在场景编辑器中创建的地图，请使用“文件”菜单中的“载入地图”，并选择.cfg文"
+"件（不是.map文件）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:342
+#, fuzzy
+#| msgid ""
+#| "<header>text='The files: .map and .cfg'</header>\n"
+#| "\n"
+#| "The map editor saves exactly one file, either a .map (for terrain mode) "
+#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
+#| "inside the .cfg file; there is no separate .map file. If you start "
+#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "file might remain, but this is not updated by the scenario editor.\n"
+#| "\n"
+#| "Loading a .cfg file has different results depending on the contents of "
+#| "the .cfg file. For .cfg files that were created by the scenario editor, "
+#| "it will open the .cfg in the scenario editor. However, for .cfg files "
+#| "that use a separate .map file (which can't be created by the scenario "
+#| "editor), the editor may follow the link and open the corresponding .map "
+#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -842,14 +1124,25 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='文件：.map和.cfg'</header>\n"
+"\n"
+"地图编辑器只保存一个文件，要么是.map（用于地形模式），要么是.cfg（用于场景模"
+"式）。在场景模式下，地形图被保存在.cfg文件中，而没有单独的.map文件。如果你在"
+"地形模式下开始编辑，然后切换到场景模式，那么旧的.map文件可能会保留下来，但场"
+"景编辑器不会更新这个文件。\n"
+"\n"
+"载入.cfg文件会产生不同的结果，这取决于.cfg文件的内容。对于由场景编辑器创建的."
+"cfg文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件"
+"不能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相"
+"应的.map，就像在文件选择器中选择了.map文件一样。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "为WML事件使用单独的文件"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -900,14 +1193,56 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"当加载.cfg文件时，场景编辑器能解析由场景编辑器创建的文件，但对手工编辑过的文"
+"件可能存在解析上的困难。\n"
+"\n"
+"由场景编辑器创建的文件省略了开头的[scenario]和结尾的[/scenario]标签。如果你正"
+"在创建战役（或其他附加组件），那么需要添加这些标签。在"
+"<ref>dst='editor_map_format' text='地图文件格式'</ref>文档中有更多关于这方面"
+"的细节。\n"
+"\n"
+"一种典型的工作流如下：创建一个单独的WML文件，这个文件也是以.cfg为扩展名的，文"
+"件中使用WML预处理器来包含编辑器创建的文件。这个单独的文件同时包含了[scenario]"
+"标签和全部手工编辑的WML（如事件）。使用这一工作流时，附加组件的文件结构可能是"
+"这样的：\n"
+"\n"
+"<header>text='针对韦诺1.14'</header>\n"
+"\n"
+"• _main.cfg：\n"
+"  ◦ 使用 \"{./scenarios}\"来包含“scenarios”目录\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ 这是由场景编辑器创建的文件\n"
+"• scenarios/01_Forest.cfg，此文件不使用典型的[scenario]标签开头，而是包含这四"
+"行：\n"
+"  ◦ [scenario]\n"
+"  ◦  {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"其中前三行在[scenario]标签内插入场景编辑器生成的文件。第四行的'+'号意味着两个"
+"场景标签将被合并，第二个标签中的属性将覆盖第一个标签中的属性。\n"
+"\n"
+"<header>text='1.16及以后'</header>\n"
+"\n"
+"如果你的附加组件只用于1.16及以后的版本中，则可以通过map_file载入.cfg文件，这"
+"些新功能可以避免在.cfg文件中重复附加组件的名字。\n"
+"\n"
+"• _main.cfg：\n"
+"  ◦ 使用“[binary_path]”将附加组件目录添加到二进制文件路径中，这样一"
+"来，“map_file”将搜索“maps”目录\n"
+"  ◦ 使用“{./scenarios}”来包含“scenarios”目录\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ 这是由场景编辑器创建的文件\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦ 在[scenario]元素中，使用“map_file=\"map_from_01.cfg”来加载该文件"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:336
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr "编辑器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:337
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -915,14 +1250,12 @@ msgstr "遮罩可以用于基础地图上，以便于在多个发生于同一位
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:345
-#, fuzzy
-#| msgid "Time Schedule Editor"
+#: data/core/editor/help.cfg:402
 msgid "ToD and Schedule Editor"
-msgstr "时间日程编辑器"
+msgstr "时段和日程编辑器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:346
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -933,15 +1266,21 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"这个位于屏幕右上方的按钮用于访问时段预览和日程编辑器。\n"
+"\n"
+"在地形模式中，它显示不同时段对应的着色效果下的地图。\n"
+"\n"
+"在情景模式中，此按钮用于访问日程编辑器，该编辑器可编辑各"
+"<ref>dst='editor_named_area' text='时间区域'</ref>的自有日程表。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:357
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr "编辑器调色板"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -955,34 +1294,42 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"编辑器调色板包含了可作用于当前选择的工具的项目。例如，绘制工具将显示所有可用"
+"地形的完整列表，而单位工具将提供可用单位的列表。当使用起始位置工具时，调色板"
+"会变成 \"玩家1\"、\"玩家2 \"等的列表。\n"
+"\n"
+"<bold>text='过滤器'</bold>\n"
+"\n"
+"调色板具有过滤功能，可以只显示可用项目的一个子集——这是调色板顶部四个按钮中最"
+"左边的一个，其图形会根据选择的内容而改变。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:364
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "显示所有类型的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
-msgstr ""
+msgstr "只显示水地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
-msgstr ""
+msgstr "只显示村庄"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:377
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr "韦诺地图格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
-msgstr ""
+msgstr "韦诺将其地图存储在人类可读的纯文本文件中。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1011,9 +1358,28 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='原生'</header>\n"
+"\n"
+"地图文件由多行带逗号分隔的地形代码字符串组成。地图语法提供的唯一非地形信息是"
+"由<ref>dst='editor_tool_starting' text='起始位置工具'</ref>创建的位置集。这些"
+"文件可以用通用的文本编辑器（如记事本）进行编辑。\n"
+"\n"
+"这些文件可以直接用于多人游戏，玩家的数量由起始位置的数量自动决定。保存在默认"
+"目录下时，可以在多人游戏“创建游戏”对话框的“自定义地图”游戏类型中找到该地图。"
+"可能需要刷新缓存（在标题界面上按F5）后，新创建的地图才会出现。\n"
+"\n"
+"这些文件可以在场景的.cfg文件中使用，而场景的WML则提供额外的信息，如队伍、自定"
+"义事件和复杂的阵营设置。在.cfg文件中加载地图文件时，可以选择以下任一种语"
+"法：\n"
+"\n"
+"- map_file=maps/01_First_Map.map <bold>text='——自韦诺1.14起支持'</bold>\n"
+"- map_data=\"{maps/01_First_Map.map}\"<bold>text='—— WML预处理器的包含指令'</"
+"bold>\n"
+"\n"
+"优先使用<italic>text='map_file'</italic>语法，而不是预处理器包含。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1031,9 +1397,21 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='嵌入'</header>\n"
+"\n"
+"地图数据可以作为场景的.cfg文件的一部分，直接存储在<italic>text='map_data'</"
+"italic>属性中。换句话说，就是直接写在“预处理器包含”方法中"
+"\"{maps/01_First_Map.map}\"的位置。\n"
+"\n"
+"<header>text='在地形模式中使用嵌入格式'</header>\n"
+"\n"
+"如果你正在编辑地图，并且并没有使用场景模式，那么在编辑器中打开文件之前，可以"
+"很容易地将数据转移到原生地图文件中。建议进行这种转换——编辑器支持编辑map_data"
+"的内容，而不触动文件中的其他内容，但这是很少使用的代码。以这种方式打开的地图"
+"在“窗口”菜单中被标记为（E）。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:401
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1044,9 +1422,15 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='由场景编辑器创建的文件'</header>\n"
+"\n"
+"在场景模式中，编辑器将数据保存为内嵌地图数据的.cfg文件。当加载.cfg文件时，场"
+"景编辑器能解析由场景编辑器自己创建的文件，但对那些被手工编辑过的文件可能存在"
+"解析上的困难。通过<ref>dst='editor_separate_events_file' text='使用单独的.cfg"
+"文件'</ref>来存储手工编辑的部分，这一问题可以解决。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:405
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1066,15 +1450,27 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='哪些场景文件使用[scenario]标签'</header>\n"
+"\n"
+"由场景编辑器创建的文件中含有WML场景元素应该包含的内容，但不包括开头的"
+"[scenario]和结尾的[/scenario]标签。对于用户数据文件夹的editor/scenarios子文件"
+"夹中的每个.cfg文件，游戏会自动尝试从其中加载场景，以包括在“自定义场景”列表中"
+"——加载失败的文件会被忽略。在此文件夹中，每个文件都是一个单独的项目——未能被解"
+"析为场景的文件会被忽略，而且文件中不能包含[scenario][/scenario]标签。\n"
+"\n"
+"当场景是战役或其他附加组件的一部分时，情况则相反。通常情况下，每个场景都有自"
+"己的.cfg文件，但这不必要——一个附加组件中的所有WML都会被预处理器合并，无论附加"
+"组件是否被写成多个独立的文件都无所谓。引擎需要[scenario]...[/scenario]（或"
+"[multiplayer]...[/multiplayer]）标签来知道哪些WML是哪个场景的一部分。"
 
-#. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "深层地下"
 
-#. [time]: id=indoors
 #. [editor_times]: id=indoors
+#. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "室内"
@@ -1083,22 +1479,22 @@ msgstr "室内"
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr "韦诺大百科"
+msgstr "大百科"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='地理'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='历法'</ref>\n"
+"<ref>dst='..geography' text='地理'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "历法"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1120,6 +1516,21 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"韦诺历法中每年都由12个月组成。这些月份依次是：\n"
+"\n"
+"白火月\n"
+"渗血月\n"
+"播种月\n"
+"深根月\n"
+"星华月\n"
+"棘女月\n"
+"峰星月\n"
+"燃火月\n"
+"静种月\n"
+"死神月\n"
+"冰华月\n"
+"黑火月\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1258,59 +1669,6 @@ msgstr "韦诺王国"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1661,8 +2019,8 @@ msgstr "游戏玩法"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:438
-#: src/help/help_topic_generators.cpp:461
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "特质"
 
@@ -1916,7 +2274,7 @@ msgstr ""
 "<ref>dst='movement' text='控制区域'</ref>和<ref>dst='time_of_day' text='时"
 "段'</ref>）的熟习程度。而“难度”表明了战役中的场景对一位老手会有多大挑战：难度"
 "越高，胜利之前的阻碍会越多，而要克服阻碍则需要更高超的游玩技术。例如，在更高"
-"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格子，诸如此类。"
+"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格，诸如此类。"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -1997,9 +2355,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"如果你是右击城堡格子后选择征募的，那么新的单位将出现在该格内。否则，新兵将出"
-"现在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在"
-"招募时，你的总花费不能超出你所拥有的金币数量。"
+"如果你是右击城堡格后选择征募的，那么新的单位将出现在该格内。否则，新兵将出现"
+"在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在招"
+"募时，你的总花费不能超出你所拥有的金币数量。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2018,10 +2376,10 @@ msgstr ""
 "游戏开始时，每一阵营都有一位首领在城堡主楼里。在战斗开始时，以及战斗过程中，"
 "你需要征募<ref>dst='..units' text='单位'</ref>到你的部队里。要想征募单位，你"
 "的首领（例如<bold>text='王座继承人'</bold>战役中的科纳德）必须位于"
-"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格子上。而后你可以在菜单中选"
-"择<bold>text='征募'</bold>或右键点击一个格子并选择<bold>text='征募'</bold>。"
-"此时会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单"
-"位可以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
+"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格上。而后你可以在菜单中选择"
+"<bold>text='征募'</bold>或右键点击六角格并选择<bold>text='征募'</bold>。此时"
+"会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单位可"
+"以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -2334,8 +2692,8 @@ msgstr ""
 "\n"
 "\n"
 "移动时，你还需要记住<bold>text='控制区域'</bold>这一概念。每个单位都会在紧邻"
-"自身的格子中产生控制区域，敌军若进入那些格子，将立即无法继续移动。学习如何利"
-"用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
+"自身的六角格中产生控制区域，敌军若进入那些六角格，将立即无法继续移动。学习如"
+"何利用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
 "text='散兵'</ref>可以忽略控制区域的影响。"
 
 #. [topic]: id=movement
@@ -2386,8 +2744,8 @@ msgstr ""
 "之后，你将总是能看见该位置。<bold>text='战争迷雾'</bold>只会隐藏单位，以及村"
 "庄的归属（除了属于你或者你的盟友的村庄之外）。当迷雾附近有你的单位时，它会暂"
 "时消失，而当他们离去后则会再次笼罩。黑幕和迷雾都可以被单位所清除。单位清除黑"
-"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈格"
-"子（忽略控制区域和敌方单位的影响）。\n"
+"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈六"
+"角格（忽略控制区域和敌方单位的影响）。\n"
 "\n"
 "通常你可以撤销单位的移动，只要没有发生会产生随机结果的事件即可，比如战斗和征"
 "募（大多数单位被征募时都会获得随机的特质）。为了探索被隐藏的地形而清除黑幕或"
@@ -2398,16 +2756,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='多人游戏时代与阵营'</header>"
+msgstr "<header>text='多人游戏与撤销'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2419,23 +2769,18 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"在多人游戏中，已经发送至网络的棋步是不能撤销的。游戏会延迟发送数据，试图保留"
+"你的撤销能力。当与队友讨论时，请记住，其他玩家通常看到的是最后一次战斗或揭开"
+"迷雾时的场景快照。聊天信息和地图标签会被立即发送，然而它们并不会导致可撤销的"
+"动作被发送。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
 msgid "Save-loading"
-msgstr "保存和加载"
+msgstr "存档-载入大法"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2443,23 +2788,13 @@ msgid ""
 "recommend against reloading merely to try the same strategy again while "
 "hoping for better luck."
 msgstr ""
-"随机数是韦诺的一部分，攻击可能会失败，单位可能会因运气不佳而死亡。这是游戏中"
-"可以预见的内容。游戏的设计目标之一，是一位足够熟练的玩家应该能够在困难难度"
-"下，完成所有主线战役，而无需存取游戏存档。回到上一个回合并尝试不同的策略，是"
-"本游戏的学习过程的一部分。但我们建议，读取存档后不要只是重复相同的策略并期望"
-"这一回的运气能好一点儿。"
+"随机数是韦诺的一部分，攻击可能会失败，单位可能会因运气不佳而死亡——这些都是预"
+"期中游戏的组成部分。回到上一个回合并尝试不同的策略，是本游戏的学习过程的一部"
+"分。但我们建议在读取存档后，不要只是重复相同的策略并期望这一回的运气能好一点"
+"儿。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2467,9 +2802,7 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
-"\n"
-"游戏的挑战之一在于找出保护你的英雄的手段。小风险会迅速累积成大风险：如果你有"
+"游戏的挑战之一在于找到保护你的英雄的手段。小风险会迅速累积成大风险：如果你有"
 "五个重要单位，而且每个单位每回合只有1%的死亡几率，你可以<bold>text='期望'</"
 "bold>大约每20回合会有一个重要单位死亡。因此，你很少能在重要单位不死亡的前提下"
 "通过场景。"
@@ -2484,6 +2817,10 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"你的非英雄单位遇到的风险也会由小变大。虽然故事和对话通常旨在让你与你的部队建"
+"立一些情感联系，但游戏机制却鼓励你记住这只是一个游戏——除了在未来的场景中无法"
+"召回他们之外，让这些单位死亡很少会遭致任何惩罚。你应该根据之后想召回什么部"
+"队，在战斗计划中进行风险分配。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
@@ -2494,22 +2831,16 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"游戏的各个难度级别是在“玩家不会使用存档-载入大法”的假设下进行平衡的。在主线战"
+"役中，较高的难度通常包含更多的敌人，因此也有更多的经验值。这导致在进行平衡"
+"时，是假设玩家能够训练足够的部队来补充一些二级或三级单位的损失的。"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "That said, it’s a game; the best way to play it is whichever way gives "
-#| "you the most enjoyment."
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
-msgstr ""
-"\n"
-"\n"
-"虽说如此，但这是个游戏；最好的玩法就是你最享受的玩法。"
+msgstr "虽说如此，但这是个游戏。最好的玩法就是你最享受的玩法。"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
@@ -2600,21 +2931,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. At all but the "
-#| "easiest difficulties, campaigns assume that you will have some "
-#| "<italic>text='carryover gold'</italic> and some advanced units on your "
-#| "<italic>text='recall list.'</italic> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your advanced units and "
-#| "much of your gold, the following scenario may be very difficult to beat, "
-#| "even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<italic>text='some'</italic> losses are expected, particularly at higher "
-#| "difficulties.)"
 msgid ""
 "\n"
 "\n"
@@ -2631,12 +2947,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• 在前一个场景中勉强取胜。除了最简单的难度以外，战役假定你有一些从上个场景中"
-"<bold>text='结转的金币'</bold>，同时在你的<bold>text='召回列表'</bold>上有一"
-"些高级单位。（这些概念在教程中有介绍。）如果你赢得了一个场景，但失去了大多数"
-"高级单位和大部分金币，那么在下一个场景里就很难取胜了，即使对一位很有经验的玩"
-"家来说也是如此。如果发现自己处于这种情况下，那可以尝试回退一两个场景，赢得更"
-"有说服力一些，或改成更简单的难度来游玩。（但是，请记住，可以预料到总会有"
+"• 在前一个场景中勉强取胜。战役通常假定你有一些从上个场景中<bold>text='结转的"
+"金币'</bold>，同时在你的<bold>text='召回列表'</bold>中有一些有一定经验的单"
+"位。（这些概念在教程中有介绍。）如果你赢得了一个场景，但失去了大多数高级单位"
+"和大部分金币，那么或许在下一个场景里就很难取胜了。即使对一位很有经验的玩家来"
+"说也是如此。如果发现自己处于这种情况下，那可以尝试回退一两个场景，赢得更有说"
+"服力一些，或改成更简单的难度来游玩。（但是，请记住，预期中总是会有"
 "<bold>text='一些'</bold>损失的，特别是在高难度下。）"
 
 #. [topic]: id=whylost
@@ -3002,7 +3318,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "状态球与椭圆"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3010,6 +3326,8 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"在一些单位的能量条上方有彩色的指示器，由一个彩色的球体组成（有时还有"
+"<ref>dst='crowns' text='王冠'</ref>）。"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3032,26 +3350,37 @@ msgid ""
 "<italic>text='Under the Burning Suns'</italic>.\n"
 "• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
 "turn.\n"
-"    • During the ally’s own turn, their units will be shown with the green/"
-"yellow/red/white colors; however their moves, and the corresponding orb "
-"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
-"and Fog of War'</ref>.\n"
+"    • During the ally’s own turn, their units will be shown with the colors "
+"showing whether the units can still move and attack; however their moves, "
+"and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"状态球显示该单位是否可以移动或攻击。状态和它们的标准颜色是：\n"
+"• <bold>text='绿色'</bold>表示单位在本回合还没有移动也还没有攻击。\n"
+"• <bold>text='黄色'</bold>表示单位已经移动（或攻击）过，并且仍然可以攻击。它"
+"也可能还能进一步移动。\n"
+"• <bold>text='红色'</bold>表示单位在本回合既不能进一步移动也不能再次攻击"
+"时。\n"
+"    • 红色也用于“结束单位回合”命令之后，以及，\n"
+"    • 当单位处于多回合移动中（被命令移动到当前回合移动范围之外）时。\n"
+"• <bold>text='红色和黄色'</bold>表示单位已经移动（或攻击）过，仍然可以进一步"
+"移动，但不能再攻击。\n"
+"    • 这一状态可能由于战役特定的事件或能力而出现，例如战役<bold>text='灼烧双"
+"日之下'</bold>中的<bold>text='脱战'</bold>能力。\n"
+"• <bold>文本='蓝色'</bold>表示友军单位，但在该友军自己的回合内则不使用蓝色"
+"球。\n"
+"    • 在友军自己的回合中，他们的单位的状态球会显示单位是否还能移动和攻击，但"
+"是他们的行动，以及状态球的对应变化会延迟显示，正如<ref>dst='shroud_and_fog' "
+"text='战场黑幕和战争迷雾'</ref>中所解释的一样。\n"
+"• 敌方单位通常没有状态球，但是可以在高级首选项“自定义状态球颜色”中启用敌方状"
+"态球。"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='核心'</header>"
+msgstr "<header>text='状态椭圆'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3059,6 +3388,8 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"每个单位下面的地面上都用其队伍颜色画有一个形状。这被称为“状态椭圆”，尽管有些"
+"单位的“椭圆”并不是椭圆形的。"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3073,11 +3404,19 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"• 大多数单位拥有一个圆形的状态椭圆。\n"
+"• 可以发起征募的单位则拥有一颗七芒星。\n"
+"• <ref>dst='crowns' text='英雄单位'</ref>拥有一颗较小的七芒星，这些单位不能发"
+"起征募。\n"
+"• 没有<ref>dst='movement' text='控制区域'</ref>的单位的状态椭圆是破碎而只有轮"
+"廓的。\n"
+"• 有些战役以零级首领开始。这些单位可以发起征募，但没有控制区域，他们的七芒星"
+"是破碎而只有轮廓的。"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "王冠和忠诚标记"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -3086,6 +3425,8 @@ msgid ""
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"有些单位的<ref>dst='orbs' text='状态球'</ref>上叠加了一个额外标记，在其"
+"<ref>dst='orbs' text='状态椭圆'</ref>上也有一个相应的形状："
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
@@ -3111,6 +3452,22 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• 首领拥有<bold>text='金冠'</bold>。\n"
+"• 英雄拥有<bold>text='蓝银冠'</bold>。\n"
+"• 可消耗的首领拥有<bold>text='银冠'</bold>。\n"
+"• <ref>dst='traits_loyal' text='忠诚单位'</ref>拥有<bold>text='忠诚图标'</"
+"bold>。\n"
+"\n"
+"在这些类别中，只有首领是内建在基本游戏规则中的。其他的则存在于战役中，这些角"
+"色构成了叙事的一部分。与他们有关的确切规则是由包含这些角色的战役设定的，而战"
+"役设定可能会偏离以下标准期望：\n"
+"\n"
+"• 任何英雄的死亡都会导致立即失败。\n"
+"• 虽然可消耗的首领能够发起征募，但他们的死亡并不会导致立即失败。\n"
+"• 所有这些单位都拥有忠诚特质的主要优点，即他们不需要花费维护费用。\n"
+"• 失去这些单位中的任何一个，都会造成战役剩余时间内的劣势——假如战役没有立即结"
+"束的话。\n"
+"• 这些单位永远不会作为随机征募的对象出现。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -3119,17 +3476,6 @@ msgstr "时段"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -3145,7 +3491,7 @@ msgstr ""
 "• <bold>text='守序'</bold>单位昼间伤害+25%，夜间伤害−25%。\n"
 "• <bold>text='混沌'</bold>单位夜间伤害+25%，昼间伤害−25%。\n"
 "• <bold>text='中立'</bold>单位不受时段的影响。\n"
-"• <bold>text='边缘'</bold>单位在昼间和夜间的伤害都−25%。"
+"• <bold>text='边缘'</bold>单位在晨昏时段伤害+25%。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
@@ -3609,8 +3955,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"最后，陆上单位通常不能居住在水中村庄里。因此水中村庄不能向这些单位提供村庄的"
-"防御和移动加成，而是仅仅被视为普通的水地形格子。\n"
+"最后，陆上单位通常不能居住在水中村庄里。因此水中村庄不能为这些单位提供村庄的"
+"防御和移动加成，而是仅仅被视为普通的水地形格。\n"
 "\n"
 "\n"
 
@@ -3625,8 +3971,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并检视（在默认主题下）于右上角显示的地形类型图标，就可以看"
-"到该格对应的混合地形是由什么基本地形组成的了。"
+"将鼠标移动到六角格上并检视（在默认主题下）于右上角显示的地形类型图标，就可以"
+"看到该格对应的混合地形是由什么基本地形组成的了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:577
@@ -3640,8 +3986,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并按下快捷键，或右击并从上下文中选择<bold>text='地形描述'</"
-"bold>，你就可以看到混合地形所产生的效果了。"
+"将鼠标移动到六角格上并按下快捷键，或右击并从上下文中选择<bold>text='地形描"
+"述'</bold>，你就可以看到混合地形所产生的效果了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:579
@@ -3997,7 +4343,7 @@ msgstr "常规命令"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:679 data/core/help.cfg:721 data/core/help.cfg:759
+#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -4011,6 +4357,18 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed.\n"
+"\n"
+msgstr ""
+"\n"
+"类似于“fps”命令，但同时也会强制进行全局重绘，而不是只重绘有变化的部分。\n"
+"\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:684
+msgid ""
+"\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
@@ -4019,7 +4377,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -4034,7 +4392,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:688
+#: data/core/help.cfg:691
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -4045,9 +4403,15 @@ msgid ""
 "supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"将阵营控制权在人类和AI之间切换。第二个参数可以是“off”，以使该阵营处于人类控制"
+"之下；“on”，以观察AI的行动；或“full”，使AI的回合变得和另一个玩家的回合相似"
+"（即不能观察其行动）。如果没有提供第二个参数，则将在“on”和“off”之间切换。如果"
+"没有提供参数，默认为切换当前活动阵营的控制权。\n"
+"\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4058,12 +4422,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
+#: data/core/help.cfg:697
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4071,11 +4430,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"开/关“每秒帧数”（FPS）的显示。\n"
+"开/关“每秒帧数”（FPS）的显示。并将这些值写入用户数据目录中的一个文件里。\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:697
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4086,7 +4445,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4097,7 +4456,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4108,7 +4467,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4119,7 +4478,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4130,7 +4489,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4139,12 +4498,12 @@ msgstr ""
 "保存游戏并退出场景（无确认提示）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:723
 msgid "Multiplayer Commands"
 msgstr "多人游戏命令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -4159,7 +4518,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4178,7 +4537,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:732
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4190,7 +4549,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4202,7 +4561,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4216,7 +4575,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4230,7 +4589,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4242,7 +4601,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4253,7 +4612,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4266,7 +4625,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4276,12 +4635,12 @@ msgstr ""
 "对一个指定的观察者取消禁言。如果没有指定用户名，则解禁所有被禁言的观察者。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:761
 msgid "Debug Mode Commands"
 msgstr "调试模式命令"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4293,7 +4652,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4304,7 +4663,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4315,7 +4674,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4326,7 +4685,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4337,7 +4696,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4348,7 +4707,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4359,7 +4718,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4370,7 +4729,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4382,7 +4741,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4448,44 +4807,31 @@ msgstr ""
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "再生"
+msgstr "再生+4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "再生"
+msgstr "再生+4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"此单位可以每回合回复自身8点生命值。如果中了毒，那么就疗毒，而不是疗伤。"
+"此单位可以每回合回复自身4点生命值。如果中了毒，那么就疗毒，而不是疗伤。"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
-msgstr " 此单位能够再生，这让它可以治疗自己，就像一直驻扎在村庄里一样。"
+msgstr "此单位能够治疗自己，但效果不如驻扎在村庄里时的治疗效果。"
 
 #. [resistance]: id=steadfast
-#. [resistance]: id=melee_steadfast
-#: data/core/macros/abilities.cfg:131 data/scenario-test.cfg:368
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "坚定"
 
@@ -4500,43 +4846,31 @@ msgstr "当进行防御时，此单位具有双倍抗性，最高50%。此单位
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "分神"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "领导"
+msgstr "分神"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" 如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
-"后并背刺之，造成双倍伤害。"
+"如果敌人被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以让目标分神，让"
+"其命中率下降20%。"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" 如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
-"后并背刺之，造成双倍伤害。"
+"如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以让目标分神，让"
+"其命中率下降。"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -4546,19 +4880,14 @@ msgstr "领导"
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better.\n"
+"This unit can lead other troops in battle.\n"
 "\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
+"All adjacent lower-level units from the same side deal 25% more damage for "
+"each difference in level."
 msgstr ""
-"此单位可以领导相邻的己方单位，使他们更高效地战斗。\n"
+"此单位可以在战斗中领导其他部队。\n"
 "\n"
-"相邻的等级比领导者低的己方单位将在战斗中造成更大的伤害。当有领导者与比他等级"
-"低的己方单位相邻时，这些单位的攻击将比平时多造成25%乘以其与领导者等级之差的伤"
-"害。"
+"同一阵营中所有相邻的比此单位低级的单位，每相差一个等级，就会多造成25%的伤害。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -4627,24 +4956,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
 msgid "burrow"
-msgstr ""
+msgstr "潜地"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "缓慢"
+msgstr "潜地"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4653,10 +4973,11 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"此单位可以隐藏在森林里，不会被敌人发觉。\n"
+"此单位若在休息（在一回合中没有行动），则可以隐藏在森林或沙地里，不会被敌方发"
+"觉。\n"
 "\n"
-"当此单位在森林里时，敌人看不见他，除非敌方有单位与他相邻。第一个发现此单位的"
-"敌方单位将立刻丧失其剩余的全部行动点数。"
+"当此单位在森林或沙地里休息时，敌方看不见他，除非敌方有单位与他相邻。第一个发"
+"现此单位的敌方单位将立刻丧失其剩余的全部移动点数。"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:325
@@ -4752,7 +5073,7 @@ msgstr ""
 "位，并与进行瘟疫攻击的单位属于同一阵营。这对亡灵或在村庄中的单位不起作用。"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442 data/scenario-test.cfg:408
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4788,30 +5109,26 @@ msgstr "此攻击将使目标石化，也就是把他变成石头。被石化的
 #: data/core/macros/abilities.cfg:476
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr "当用于进攻时，此攻击至少有60%的几率会命中。"
+msgstr "当用于进攻时，此攻击总是至少有60%的几率会命中。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "偏转"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "当用于进攻时，此攻击至少有60%的几率会命中。"
+msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
-msgstr ""
+msgstr "此单位的防御技巧减少了敌方的攻击成功率。"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -4849,20 +5166,20 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "吸收"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
-msgstr ""
+msgstr "此攻击使单位处于良好的防御体势，可以吸收敌人攻击造成的部分伤害。"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
+msgstr "此单位可以格挡敌人的打击，使其被击中时受到的伤害减少。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -5086,310 +5403,197 @@ msgstr "长夜(3)"
 msgid "The Long Dark (4)"
 msgstr "长夜(4)"
 
-#: data/core/macros/special-notes.cfg:12
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
+#: data/core/macros/special-notes.cfg:10
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
-msgstr " 亡魂们对伤害具有相当不寻常的抗性，但在开阔的水面上移动得很慢。"
+msgstr "亡魂们对伤害具有相当不寻常的抗性，但在开阔的水面上移动得很慢。"
 
-#: data/core/macros/special-notes.cfg:15
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
+#: data/core/macros/special-notes.cfg:13
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
-msgstr ""
-" 此单位的奥术攻击对魔法造物将造成巨大的伤害，对某些凡间的生物也是如此。"
+msgstr "此单位的奥术攻击对魔法造物将造成巨大的伤害，对某些凡间的生物也是如此。"
 
-#: data/core/macros/special-notes.cfg:22
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
+#: data/core/macros/special-notes.cfg:20
 msgid "This unit is capable of basic healing."
-msgstr " 此单位能够简单疗伤。"
+msgstr "此单位能够简单疗伤。"
 
-#: data/core/macros/special-notes.cfg:25
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
+#: data/core/macros/special-notes.cfg:23
 msgid "This unit is capable of rapid healing."
-msgstr " 此单位能够迅速疗伤。"
+msgstr "此单位能够迅速疗伤。"
 
-#: data/core/macros/special-notes.cfg:28
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
+#: data/core/macros/special-notes.cfg:26
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
-msgstr " 此单位能够对周围的单位进行疗伤，并解除中毒状态。"
+msgstr "此单位能够为周围的单位疗伤，并解除中毒状态。"
 
-#: data/core/macros/special-notes.cfg:31
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " 此单位能够解除周围单位的中毒状态。"
+msgstr "此单位能够解除周围单位的中毒状态。"
 
-#: data/core/macros/special-notes.cfg:34
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
-msgstr " 此单位能够再生，这让它可以治疗自己，就像一直驻扎在村庄里一样。"
+msgstr "此单位能够再生，这让它能够像一直驻扎在村庄里一样得到治疗。"
 
-#: data/core/macros/special-notes.cfg:37
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
+#: data/core/macros/special-notes.cfg:35
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" 此单位的坚忍不拔使得它遭到某些攻击时受到的伤害下降，但这只在防御时有效。"
+"此单位的坚忍不拔使得它遭到某些攻击时受到的伤害下降，但这只在防御时有效。"
 
-#: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
+#: data/core/macros/special-notes.cfg:38
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" 此单位的领导能力使得相邻的本方单位在战斗中造成更多的伤害，虽然这只对比此单位"
-"等级低的单位有效。"
+"此单位的领导能力使得相邻的本阵营单位在战斗中造成更多的伤害，虽然这只对比此单"
+"位等级低的单位有效。"
 
-#: data/core/macros/special-notes.cfg:43
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" 此单位的散兵作战能力使其能够忽视敌人的控制区域，因而能毫无阻碍地在他们附近移"
+"此单位的散兵作战能力使其能够忽略敌方控制区域，因而能毫无阻碍地在他们身边移"
 "动。"
 
-#: data/core/macros/special-notes.cfg:46
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
+#: data/core/macros/special-notes.cfg:44
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr " 照明能力会提升相邻区域的明亮程度。"
+msgstr "照明能力会提升相邻区域的明亮程度。"
 
-#: data/core/macros/special-notes.cfg:49
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
+#: data/core/macros/special-notes.cfg:47
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" 此单位可以花费一次移动机会，在任意两个属于此单位所属阵营的无人驻守的村庄之间"
-"传送。"
+"此单位可以花费一次移动机会，在任意两个属于本阵营的无人驻守的村庄之间传送。"
 
-#: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" 在树林中，此单位的伏击技能让敌人无法察觉到其存在，除非敌人与其紧邻。此单位在"
-"攻击时也会暴露自己。"
+"在树林中，此单位的伏击技能让敌人无法察觉到其存在，除非敌人与其紧邻，或者此单"
+"位在攻击时暴露了自己。"
 
-#: data/core/macros/special-notes.cfg:55
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
+#: data/core/macros/special-notes.cfg:53
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr " 此单位能够在夜晚隐匿身形，不留蛛丝马迹。"
+msgstr "此单位能够在夜晚隐匿身形，不留蛛丝马迹。"
 
-#: data/core/macros/special-notes.cfg:58
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" 此单位可以隐藏在村庄里（水中村庄除外）而不会被敌人发觉，除了那些与它相邻的敌"
+"此单位可以隐藏在村庄里（水中村庄除外）而不会被敌人发觉，除了那些与它相邻的敌"
 "人之外。"
 
-#: data/core/macros/special-notes.cfg:61
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
-msgstr " 此单位可以在深水中移动而不被发现，它不需要呼吸水面上的空气。"
+msgstr "此单位不需要呼吸水面上的空气，可以在深水中移动而不被发现。"
 
-#: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr " 此单位每杀死一个活体单位就会获得1点额外的最大生命值。"
+msgstr "此单位每杀死一个活体单位，其最大生命值就会增加1点。"
 
-#: data/core/macros/special-notes.cfg:67
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
-msgstr ""
-" 无论何时，只要此单位使用狂暴攻击，就将不停战斗，直到它或者它的对手被杀死。"
+msgstr "无论何时，只要此单位使用狂暴攻击，就将不停战斗，直到自己或敌方死亡。"
 
-#: data/core/macros/special-notes.cfg:70
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" 如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
+"如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
 "后并背刺之，造成双倍伤害。"
 
-#: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr " 因瘟疫而丧生的敌人将重生为亡灵，除非他们在村庄里。"
+msgstr "因瘟疫而丧生的敌人将重生为亡灵，除非他们在丧生前驻扎在村庄里。"
 
-#: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" 此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到本回合结束。"
+"此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到他们的回合结束。"
 
-#: data/core/macros/special-notes.cfg:79
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr " 把活人变成石头的能力使得此单位变得极其危险。"
+msgstr "把活人变成石头的能力使得此单位变得极其危险。"
 
-#: data/core/macros/special-notes.cfg:82
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
-msgstr ""
-" 此单位的精准射术让它有很高的几率命中被瞄准的敌人，但只有在进攻时有效。"
+msgstr "此单位的精准射术让它有很高的几率命中被瞄准的敌人，但只有在进攻时有效。"
 
-#: data/core/macros/special-notes.cfg:85
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
-msgstr " 此单位拥有魔法攻击，该攻击总是有很高的几率能命中对手。"
+msgstr "此单位拥有魔法攻击，该攻击总是有很高的几率能命中对手。"
 
-#: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr " 当此单位的成员受伤时，他们的成群攻击就不那么致命了。"
+msgstr "当此单位的成员受伤时，他们的成群攻击就不那么致命了。"
 
-#: data/core/macros/special-notes.cfg:91
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
-msgstr " 冲锋攻击将使得输出与受到的伤害都加倍。这不会影响防御时反击的杀伤力。"
+msgstr "冲锋攻击时，输出和受到的伤害都加倍。防守反击则不受此影响。"
 
-#: data/core/macros/special-notes.cfg:94
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
+#: data/core/macros/special-notes.cfg:92
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
-msgstr " 在作战时，此单位能够从受害者身上吸取生命以补充自己的体力。"
+msgstr "作战时，此单位能够从受害者身上吸取生命以补充自己的体力。"
 
-#: data/core/macros/special-notes.cfg:97
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
+#: data/core/macros/special-notes.cfg:95
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
-msgstr " 此单位的武器很长，使得他在近战中可以先发制人，甚至在防御时也是如此。"
+msgstr "此单位的武器长度使得他在近战中可以先发制人，甚至在防御时也是如此。"
 
-#: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
+#: data/core/macros/special-notes.cfg:98
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" 此单位的毒素的受害者们将持续地受到伤害，直到他们在城镇中疗毒，或者被拥有疗毒"
-"能力的单位疗毒。"
+"此单位的毒素的受害者们将持续受到伤害，直到他们在城镇中疗毒，或者被拥有疗毒能"
+"力的单位疗毒为止。"
 
-#: data/core/macros/special-notes.cfg:103
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
+#: data/core/macros/special-notes.cfg:101
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-" 此单位在某些地形类型上有防御力上限——在以这些地形类型为基本类型的混合地形上，"
-"它不能获得更高的防御值。"
+"此单位在某些地形类型上有防御力上限——在以这些地形类型为基本类型的混合地形上，"
+"此单位不能获得更高的防御值。"
+
+#: data/core/macros/special-notes.cfg:116
+#: src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
+msgid "Special Notes:"
+msgstr "特别备注："
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5943,6 +6147,73 @@ msgstr "龙人"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#| "armor- and weapon-smithing, but neither know nor need other science and "
+#| "culture besides this. Nonetheless, the few implements they do fashion are "
+#| "almost unrivaled in quality, only matched by those produced in the finest "
+#| "Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#| "Death in battle is the most preferred way for a drake to leave this "
+#| "world. Unlike the elder members of other races, drakes naturally grow "
+#| "more aggressive and reckless towards the ends of their natural lives, "
+#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5952,15 +6223,13 @@ msgid ""
 "quickly. However, their sheer weight and bulk limits their flight ability "
 "somewhat, making them ungainly in the air. Where possible, they make use of "
 "terrain features such as hills, mountains and trees as launch points in "
-"order to gain greater height and speed. Fortunately for their enemies, they "
-"are still quite clumsy creatures and surprisingly slow in combat. This, "
-"combined with their large size, renders them easy targets for those who dare "
-"attack them.\n"
+"order to gain greater height and speed. Fortunately for their enemies, their "
+"large size renders them easy targets for those who dare attack them.\n"
 "\n"
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -5991,11 +6260,10 @@ msgid ""
 "in quality, only matched by those produced in the finest Dwarvish "
 "foundries.\n"
 "\n"
-"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-"Death in battle is the most preferred way for a drake to leave this world. "
-"Unlike the elder members of other races, drakes naturally grow more "
-"aggressive and reckless towards the ends of their natural lives, perhaps to "
-"help ensure their place in the heroic legends of their kind.\n"
+"Drakes hatch from eggs and may live naturally for several decades, although "
+"some have been known to survive for longer. However, death in battle is the "
+"most preferred way for a drake to leave this world. As such, most drakes do "
+"not live to see the end of their natural lifespan.\n"
 "\n"
 "<header>text='Geography'</header>\n"
 "Drakes originated from an archipelago of volcanic islands called "
@@ -6227,6 +6495,47 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"与人类相比，精灵有点高，更敏捷，但不那么壮实。他们有略微尖尖的耳朵，苍白的皮"
+"肤，以及通常是金色的头发。人类和精灵的差异之中，很少有比“精灵异常地长寿”更明"
+"显的了——除非被疾病、事故或战争夺去生命，否则大多数精灵至少能活满两个世纪。虽"
+"然有实例表明一些拥有高度魔法天赋的精灵可以活得更久，但大多数精灵在250至300岁"
+"之间的某个时刻便开始变得身体虚弱，并在此后迅速去世。\n"
+"\n"
+"大多数精灵对未受破坏的大自然有着强烈的喜爱，而在开放而没有植被的地方则感到不"
+"适。他们主要生活在泰陆的森林里：西南的艾森从林，西北的韦弥尔，以及北部的大森"
+"林。林塔尼尔森林是大森林最南端的边缘部分。\n"
+"\n"
+"精灵是泰陆上最古老的种族，巨魔可能是个例外。他们的许多定居点无疑已经存在了几"
+"个千年，已无法可靠地确定建立日期。\n"
+"\n"
+"<header>text='魔法'</header>\n"
+"虽然精灵与传说中的仙灵是根本不同的生物，但他们的魔法与仙灵有某种联系，是他们"
+"异常敏锐的感觉以及长寿的源泉。精灵的魔法分为两种不同的路径，一种侧重于操纵世"
+"俗或物质世界，另一种则侧重于奥术位面的占卜。物质变换术是更常见的那一种，比奥"
+"术界的对立流派有更明显的效果。虽然精灵的自然魔法不适合战斗，但这种利用大地能"
+"量来进行滋养与守护的强大力量，是精灵拥有高效的治疗能力以及精灵森林美丽而充满"
+"活力的主要原因。\n"
+"\n"
+"那些走上秘术师道路的人也受到其他精灵的尊敬，但他们的动机和能力往往不为教团以"
+"外的精灵所了解。一些在秘术师道路上走得很远的精灵，会表现出更多类似于仙灵的特"
+"征。他们会获得非凡的洞察力和寿命，但也会变得对冷铁过敏，甚至会被烧伤。\n"
+"\n"
+"<header>text='文化'</header>\n"
+"精灵们花了很多时间来磨练他们的天赋和技能。不擅长魔法技艺的精灵通常会把时间用"
+"于磨练身体技能，这通常是为了运动目的。因此，精灵擅长射箭。这是一种很容易就能"
+"有效地应用于战争的技艺。精灵也是著名的音乐家，尤其擅长小型合奏中的吹奏和弹拨"
+"弦乐器。例如，艾森丛林的伊奥利安竖琴是用精灵紫杉树的优质木材制作的，因其柔和"
+"的音质而成为传奇。\n"
+"\n"
+"<header>text='社会'</header>\n"
+"精灵社会大致分为三个派系：负责保卫森林的准军事派系，通常担任工匠和艺术家的和"
+"平平民，以及保持精灵与仙灵联系的医者和秘术师。负责管理这些不同派系的是贵族，"
+"他们被视为更广泛的社会秩序的公仆，而不是其人民的严格统治者。挑选这些贵族的过"
+"程在不同的精灵议会中有所不同，韦弥尔的管理评议会——卡·利安——是选举产生的，而林"
+"塔尼尔的贵族通常是继承的。\n"
+"\n"
+"在纷争时期，指挥层级会适时而变，普通贵族会听命于更有战争意识的元帅。根据传"
+"统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的女附魔师来推动权力的交接。"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -6338,38 +6647,39 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "树人"
+msgstr "马"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "食人魔"
+msgstr "马"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "树人"
+msgstr "马"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
-"to sturdy draught horses or agile stock horses.  While they are more fragile "
+"to sturdy draught horses or agile stock horses. While they are more fragile "
 "than many beasts, their speed and cunning allow feral horses to thrive in "
 "the wild, alongside their wild brethren.\n"
 "\n"
 "Horses have been an important part of many civilizations, so it is not "
-"surprising that there are many myths and stories centered around them.  "
+"surprising that there are many myths and stories centered around them. "
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"驯养的马有许多体型和尺寸，从强大的战争冲锋马，到结实的挽马，或是敏捷的牧畜"
+"马。虽然比许多野兽更脆弱，但烈马的速度和狡猾让它们在野外和自己的野生弟兄一道"
+"欣欣向荣。\n"
+"\n"
+"马是许多文明的重要组成部分，因此，有许多以马为中心的神话和故事也就不足为奇。"
+"翼马、人马混血种以及幽灵马都被写进了历史，尽管很少有人真能宣称自己见过这类东"
+"西。"
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -6471,65 +6781,6 @@ msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid ""
-#| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
-#| "claim to the river valleys and oases of the Sandy Wastes. How they came "
-#| "to inhabit this far corner of the Great Continent is unknown. Their "
-#| "legends tell of many long and perilous travels through far-flung lands, "
-#| "but the true origin of their people is a topic of endless and heated "
-#| "debate among even the most erudite of their scholars.\n"
-#| "\n"
-#| "Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
-#| "proudly in the largest fertile regions. Skilled artisans, fine smiths, "
-#| "and wealthy merchants form the backbone of the urban economy. Each of "
-#| "these cities also enjoys a degree of independence less common in the more "
-#| "centralized nations to the north, many even maintaining their own "
-#| "standing armies. In times of need, however, each and all rally to a "
-#| "higher authority designated to protect the superior interest of the "
-#| "nation.\n"
-#| "\n"
-#| "Those who have not settled in these urban centers still adhere to the "
-#| "lifestyle of their ancestors, roaming the dunes and leading their herds "
-#| "from one watering hole to another. They are most active during the early "
-#| "hours of dawn and the onset of dusk, when the wastelands are neither too "
-#| "hot nor too cold. Their skill at moving through the sands is excellent "
-#| "even by Dunefolk standards. Although sometimes regarded with contempt by "
-#| "their city counterparts, they provide an invaluable service as mobile, "
-#| "light troops in war, or as escorts for trading caravans during times of "
-#| "peace.\n"
-#| "\n"
-#| "The Dunefolk’s inclination towards trade and exploration has allowed "
-#| "their cities to amass immense fortunes, a fact regarded both with "
-#| "admiration and envy by other races. Mutual interests have fostered "
-#| "cordial relations with neighboring Naga tribes, but more secretive races "
-#| "such as Drakes and Elves have always considered Dunefolk expeditions to "
-#| "be too intrusive, especially when they venture close to territorial "
-#| "boundaries. It is not uncommon for caravans to fall prey to troll "
-#| "ambushes in the mountains, something that has given rise to countless "
-#| "tales of unimaginable treasure amassed in hidden caves.\n"
-#| "\n"
-#| "As a result of living in hostile environments for centuries, the Dunefolk "
-#| "have developed rational methods of enquiry through which they continue to "
-#| "improve their understanding of the world. Their study of herbal medicine "
-#| "keeps their warriors and workers fresh and healthy. Their knowledge of "
-#| "alchemy allows them to tame fire and wield it as a deadly weapon in "
-#| "battle. At the same time, this analytical mindset has distanced them from "
-#| "magical arts; to the rational mind, magic is uncontrollable, "
-#| "unpredictable, and hence unreliable. For this reason, the Dunefolk "
-#| "especially loathe the perversions of necromancy and the dark arts, even "
-#| "more so than other races.\n"
-#| "\n"
-#| "The Dunefolk’s inquisitive and explorative nature does not preclude "
-#| "military strength. Not only do they field nimble light troops, "
-#| "cataphracts, and heavily armored infantry, but their keen knowledge of "
-#| "technology grants them a decisive advantage over their opponents. When "
-#| "facing the Dunefolk in battle, however, the most fearsome sight is "
-#| "certainly their deployment of ferocious and bizarre beasts. From the "
-#| "majestic Roc to the imposing Wyvern, their synergy with these creatures "
-#| "allows for great versatility in combat. The origins of this tradition "
-#| "likely lie in the heritage of the Dunefolk’s distant past in the exotic "
-#| "far corners of Irdya."
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6587,7 +6838,7 @@ msgid ""
 msgstr ""
 "沙丘游民是已被遗忘的游牧文明的分支，他们以沙之荒原的河谷与绿洲为领地。没人知"
 "道他们是怎么会到泰陆的这一偏僻角落定居的。他们的传说之中，讲到了很多穿越遥远"
-"之地的漫长而危险的旅程，但即使在他们最为博学的学者之间，关于0这一民族真正起源"
+"之地的漫长而危险的旅程，但即使在他们最为博学的学者之间，关于这一民族真正起源"
 "的辩论，仍然是火热而没有尽头的。\n"
 "\n"
 "不论他们源自何方，沙丘游民都欣欣向荣。熙熙攘攘的城市在最大最丰饶的区域傲立。"
@@ -7051,44 +7302,6 @@ msgstr "巨魔"
 
 #. [race]: id=troll
 #: data/core/units.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by "
-#| "orcish successes in persuading trolls to join their armies. Because they "
-#| "are rather simple and do not understand the ways of other races or "
-#| "sometimes cannot even tell them apart, it is usually easy for an orcish "
-#| "band to convince a group of trolls that by joining them they get to exact "
-#| "revenge on those that have before hunted them. These new recruits are "
-#| "then directed to attack whoever the orcs themselves are currently in "
-#| "conflict with, whether previously a foe of the trolls or not, "
-#| "accumulating even more enemies for the misled trolls. The most common "
-#| "enemy of trolls are dwarves, and the animosity between these two races is "
-#| "ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7137,12 +7350,12 @@ msgstr ""
 "里睡觉，直到身体缓慢地变成无生命的石像，他们也就最终逝去了。\n"
 "\n"
 "巨魔常常被很多人认为不过是又一个野蛮的怪物种族而已。这种常见的误解顽固不化的"
-"原因之一，是兽人总会劝说巨魔加入他们的军队。巨魔的思维很简单，不理解其他种族"
-"的生存之道，有时甚至都不能把他们区分开来，因此兽人战团想要说服巨魔通常是很容"
-"易的。而巨魔们也就相信，加入兽人部队之后就可以向那些曾经追捕过自己的人复仇"
-"了。接着这些新兵就被派去攻击任何正与兽人们起冲突的人，不管他们原本是不是巨魔"
-"的敌人。于是对被误导的巨魔来说，敌人越来越多了。巨魔们最常见的敌人是矮人，这"
-"两个种族之间的敌意可以上溯到上古时期。\n"
+"原因之一，是兽人常常能成功劝说巨魔加入他们的军队。巨魔的思维很简单，不理解其"
+"他种族的生存之道，有时甚至都不能把他们区分开来，因此兽人战团想要说服巨魔通常"
+"是很容易的。而巨魔们也就相信，加入兽人部队之后就可以向那些曾经追捕过自己的人"
+"复仇了。接着这些新兵就被派去攻击任何正与兽人们起冲突的人，不管他们原本是不是"
+"巨魔的敌人。于是对被误导的巨魔来说，敌人越来越多了。巨魔们最常见的敌人是矮"
+"人，这两个种族之间的敌意可以上溯到上古时期。\n"
 "\n"
 "<header>text='地理'</header>\n"
 "在矮人们移居到泰陆的山脉里之前，巨魔们就已经在这些地方定居了。巨魔在韦诺北方"
@@ -7165,32 +7378,6 @@ msgstr "亡灵"
 
 #. [race]: id=undead
 #: data/core/units.cfg:379
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7227,11 +7414,14 @@ msgid ""
 msgstr ""
 "亡灵事实上并不是一个单一的种族，尽管经常被当成是这样。几乎任何死去的生物都可"
 "以被一个足够强大的死灵法师唤起并成为亡灵。亡灵基本上是非自然而没有心智的存"
-"在，只听从创造它们的人的命令，从不会质疑，也不懂得思考。死灵术的重要秘密之"
-"一，就是在死灵法师并没有持续地施法的情况下，这些存在是如何维持自身的。亡灵生"
-"物不需要死灵法师的持续关注、具体操纵或者维持，但可以自动地按照主人的命令来行"
-"动。只有在很少见的情况下，也许是每过几个月，死灵法师才需要才维护一次他创造出"
-"来的东西。\n"
+"在，只听从创造它们的人的命令，从不会质疑，也不懂得思考。死灵术的不可思议之"
+"一，便是在死灵法师并没有持续地施法的情况下，这些存在是如何维持自身的。大多数"
+"黑暗法师并不会持续关注与维护自己的创造物，而是赋予它们一些自主权，让它们自动"
+"地按照给出的命令来行动。不过，在不受约束的情况下，有些亡灵的自主意识变得很"
+"强，会脱离主人的控制，甚至与主人为敌。因此，低级亡灵需要周期性的维护，而更强"
+"的亡灵更是如此，尤其是强大的灵魂或是死亡骑士——它们拥有很强的内在意志。在这些"
+"情况下，死灵术变成了法师与仆从之间的意志对抗。死灵法师必须在控制仆从和赋予它"
+"们自由意志之间维持微妙的平衡——仆从的自由意志是它们自身力量的来源。\n"
 "\n"
 "死灵术几乎只有人类才会研习。就连有魔法倾向的种族，比如精灵和人鱼的传说中，都"
 "几乎没有他们的族人研习黑魔法的记载。有人推测说，死灵术需要非常好的适应能力以"
@@ -7350,775 +7540,212 @@ msgstr ""
 "像个哨兵那样一动不动的站着，坐看一个个世纪流逝。他们对于文明世界中的事情丝毫"
 "不感兴趣，只有到了需要保卫自然和守护森林家园的时候他们才会参和进来。"
 
-#: src/help/help.cpp:212
+#: src/help/help.cpp:213
 msgid "Close"
 msgstr "关闭"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:216
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
+#: src/help/help.cpp:270 src/help/help.cpp:274
 msgid "Parse error when parsing help text:"
 msgstr "分析帮助文本时出现分析错误："
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
-msgstr ""
+msgstr "最佳"
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
+msgstr "最差"
+
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:156
-#, fuzzy
-#| msgid "Terrains"
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr ""
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr ""
+
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
-msgstr "地形"
+msgstr "基础地形："
 
-#: src/help/help_topic_generators.cpp:176
+#: src/help/help_topic_generators.cpp:214
 msgid "Movement properties: "
-msgstr ""
+msgstr "移动特性："
 
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
-msgstr ""
+msgstr "防御特性："
 
-#: src/help/help_topic_generators.cpp:260
+#: src/help/help_topic_generators.cpp:298
 msgid "Level"
-msgstr ""
+msgstr "等级"
 
-#: src/help/help_topic_generators.cpp:321
-#, fuzzy
-#| msgid "Advancement"
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
-msgstr "升级"
+msgstr "升级自："
 
-#: src/help/help_topic_generators.cpp:323
-#, fuzzy
-#| msgid "Advancement"
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances to: "
-msgstr "升级"
+msgstr "升级为："
 
-#: src/help/help_topic_generators.cpp:352
+#: src/help/help_topic_generators.cpp:390
 msgid "Base unit: "
-msgstr ""
+msgstr "基础单位："
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:395
 msgid "Base units: "
-msgstr ""
+msgstr "基础单位："
 
-#: src/help/help_topic_generators.cpp:375
+#: src/help/help_topic_generators.cpp:413
 msgid "Variations: "
-msgstr ""
+msgstr "变种："
 
-#: src/help/help_topic_generators.cpp:399
-#, fuzzy
-#| msgid "race^Merman"
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
-msgstr "人鱼"
+msgstr "杂项"
 
-#: src/help/help_topic_generators.cpp:401
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
-msgstr ""
+msgstr "种族："
 
-#: src/help/help_topic_generators.cpp:471
-#, fuzzy
-#| msgid "Abilities"
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
-msgstr "能力"
+msgstr "能力："
 
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "能力升级："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:565
 msgid "HP:"
-msgstr ""
+msgstr "生命："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:569
 msgid "Moves:"
-msgstr ""
+msgstr "移动："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
-msgstr ""
+msgstr "视野："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:542
+#: src/help/help_topic_generators.cpp:580
 msgid "Jamming:"
-msgstr ""
+msgstr "干扰："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:547
+#: src/help/help_topic_generators.cpp:585
 msgid "Cost:"
-msgstr ""
+msgstr "费用："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:551
+#: src/help/help_topic_generators.cpp:589
 msgid "Alignment:"
-msgstr ""
+msgstr "立场："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:596
 msgid "Required XP:"
-msgstr ""
+msgstr "所需经验："
 
-#: src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"特别提示："
-
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "攻击手段"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
-msgstr ""
+msgstr "名称"
 
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
-msgstr ""
+msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
-#: src/help/help_topic_generators.cpp:584
-#, fuzzy
-#| msgid "Weapon Specials"
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
-msgstr "武器特效"
+msgstr "特攻"
 
-#: src/help/help_topic_generators.cpp:666
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
-msgstr ""
+msgstr "攻击类型"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
-msgstr ""
+msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:696
-#, fuzzy
-#| msgid "Terrain Editor"
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
-msgstr "地形编辑器"
+msgstr "地形修正"
 
-#: src/help/help_topic_generators.cpp:700
-#, fuzzy
-#| msgid "Terrains"
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:702
-#, fuzzy
-#| msgid "Movement"
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
-msgstr "移动"
+msgstr "移动消耗"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
-msgstr ""
+msgstr "防御上限"
 
-#: src/help/help_topic_generators.cpp:711
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
-msgstr ""
+msgstr "视野消耗"
 
-#: src/help/help_topic_generators.cpp:715
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
-msgstr ""
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "韦诺之战帮助"
-
-#, fuzzy
-#~| msgid " green if it hasn’t moved this turn,"
-#~ msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-#~ msgstr " 绿色：表明此单位本回合还没有移动过，"
-
-#, fuzzy
-#~| msgid " yellow if it has moved, but could still move further or attack, or"
-#~ msgid ""
-#~ "• <bold>text='Yellow'</bold> if it has moved, but could still move "
-#~ "further or attack."
-#~ msgstr " 黄色：表明此单位移动过，但还可以继续移动或攻击，或者"
-
-#~ msgid "TODO"
-#~ msgstr "TODO"
-
-#~ msgid "Item Tool"
-#~ msgstr "物品工具"
-
-#, fuzzy
-#~| msgid ""
-#~| "Named Areas are sets of gamefields which can be addressed during "
-#~| "scenario scripting by a given name.\n"
-#~| "\n"
-#~| "It can be used to abstract between the implementation of an effect and "
-#~| "the map specific setting.\n"
-#~| "This is a very powerful mechanism since it allows generic scenario "
-#~| "codings working with different maps providing the needed named locations."
-#~ msgid ""
-#~ "This tool can create [time_area]s, unlike the name suggests these do not "
-#~ "need to have a specific time zone assigned to them.\n"
-#~ "    [time_area]s are sets of tiles which can be addressed during scenario "
-#~ "scripting by their id. [time_area]s can optionally have a custom\n"
-#~ "    time zone assigned to them. The simplest way to address a [time_area] "
-#~ "via scenario scripting is the `area=` attribute in standard location "
-#~ "filters.\n"
-#~ "\n"
-#~ "This tool can be used to abstract between the implementation of an effect "
-#~ "and the map specific setting.\n"
-#~ "This is a very powerful mechanism since it allows generic scenario code "
-#~ "to work with different maps providing the needed named locations."
-#~ msgstr ""
-#~ "具名区域是在场景脚本中，可以用给定的名称来称呼的游戏区域。\n"
-#~ "\n"
-#~ "具名区域可以用于在效果实现和地图特定设置之间进行抽象。\n"
-#~ "这是非常强大的机制，因为它允许通用的场景代码在不同的地图上运作，只需地图提"
-#~ "供了所需的具名区域即可。"
-
-#~ msgid ""
-#~ "Saves a list of music tracks defining a random playlist to the scenario.\n"
-#~ "\n"
-#~ "Have a look at the addon server for easy to use additional music tracks."
-#~ msgstr ""
-#~ "此处保存了一份音轨列表，该列表即为场景所使用的随机播放列表。\n"
-#~ "\n"
-#~ "去附加组件服务器上浏览一番，可以找到易用的附加音轨。"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-#~| "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-#~| "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-#~| "• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if "
-#~| "it needs a topic on its own\n"
-#~| "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
-#~ msgid ""
-#~ "<header>text='Basic Concepts'</header>\n"
-#~ "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
-#~ "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-#~ "• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-#~ "• The clipboard is described in the <ref>dst='editor_tool_paste' "
-#~ "text='Paste Tool'</ref>"
-#~ msgstr ""
-#~ "\n"
-#~ "• <ref>dst='editor_modes' text='编辑模式'</ref>\n"
-#~ "• <ref>dst='editor_toolkit' text='编辑器工具箱'</ref>\n"
-#~ "• <ref>dst='editor_palette' text='编辑器调色板'</ref>\n"
-#~ "• <ref>dst='editor_brush' text='编辑器笔刷'</ref> TODO: 不确定是否需要单列"
-#~ "主题\n"
-#~ "• <ref>dst='editor_clipboard' text='编辑器剪贴板'</ref>"
-
-#~ msgid "Editing Modes"
-#~ msgstr "编辑模式"
-
-#~ msgid "Editor Tools"
-#~ msgstr "编辑器工具"
-
-#, fuzzy
-#~| msgid ""
-#~| "The editor provides several tools for editing your maps and scenarios. "
-#~| "At all times, one of the editor tools is active. The active tool's "
-#~| "context determines the content of the editor palette and context menu.\n"
-#~| "\n"
-#~| "These following tools are provided:\n"
-#~| "\n"
-#~| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#~| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-#~| "\n"
-#~ msgid ""
-#~ "The editor provides several tools for editing your maps and scenarios. At "
-#~ "all times, one of the editor tools is active. The active tool’s context "
-#~ "determines the content of the editor palette and context menu.\n"
-#~ "\n"
-#~ "These tools are available in both terrain-only mode and scenario mode:\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_starting' text='Starting Locations Tool'</ref>\n"
-#~ "\n"
-#~ "These tools are only available in scenario mode:\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#~ "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>"
-#~ msgstr ""
-#~ "此编辑器提供了一些用于编辑你的地图和场景的工具。在任意时刻，都会有一个编辑"
-#~ "器工具处于激活状态。当前激活的工具的上下文决定了编辑器调色板和上下文菜单的"
-#~ "内容。\n"
-#~ "\n"
-#~ "编辑器中提供了以下工具：\n"
-#~ "\n"
-#~ "• <ref>dst='editor_tool_paint' text='绘制工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_fill'  text='填充工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_select' text='选取工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_paste' text='粘贴工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_starting' text='起始工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_label' text='标签工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_item' text='物品工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_soundsource' text='声源工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_village' text='村庄工具'</ref>\n"
-#~ "• <ref>dst='editor_tool_unit' text='单位工具'</ref>\n"
-#~ "\n"
-
-#~ msgid "Soundsource Tool"
-#~ msgstr "声源工具"
-
-#~ msgid ""
-#~ "Places Soundsources on your maps!\n"
-#~ "\n"
-#~ "This tool has not been implemented yet."
-#~ msgstr ""
-#~ "把声源放置在你的地图上！\n"
-#~ "\n"
-#~ "此工具尚未实现。"
-
-#~ msgid "Orbs"
-#~ msgstr "行动状态球"
-
-#~ msgid ""
-#~ "On top of the energy bar shown next to each unit of yours is an orb. For "
-#~ "units you control, this orb is:"
-#~ msgstr ""
-#~ "在你的每一个单位的能量条上方是一个行动状态球。对于你所控制的单位，行动状态"
-#~ "球有以下状态："
-
-#~ msgid ""
-#~ " red if it can no longer move or attack, or the user ended the unit’s "
-#~ "turn."
-#~ msgstr " 黑色：表明此单位不能继续移动或攻击，或玩家结束了其回合。"
-
-#~ msgid " blue if the unit is an ally you do not control."
-#~ msgstr " 蓝色：表明此单位是你所不能控制的友军。"
-
-#~ msgid " Enemy units have no orb on top of their energy bar."
-#~ msgstr " 敌方单位的能量条上方没有行动状态球。"
-
-# can someone explain this to me in other words? i have not seen this in real multiplayer yet
-#~ msgid ""
-#~ "\n"
-#~ "Set or toggle player on side between human and AI player. The player/"
-#~ "client who controls that side needs to issue this command. If no second "
-#~ "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
-#~ "AI controller. If it is ‘off’ set a human controller. Defaults to the "
-#~ "currently active side if no parameter is supplied.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "设置或开关某一阵营由人类玩家或者AI玩家来控制。这条命令需要由控制该阵营的玩"
-#~ "家/客户端来发出。如果不指定第二个参数，则在人类和AI之间切换。如果第二个参"
-#~ "数是“on”，则设置为AI控制。如果第二个参数是“off”，则设置为玩家控制。如果不"
-#~ "指定参数，则默认为当前活动的阵营。\n"
-#~ "\n"
-
-#~ msgid "Editor Brush"
-#~ msgstr "编辑笔刷"
-
-#~ msgid "Terrain Clipboard"
-#~ msgstr "地形剪贴板"
-
-#~ msgid ""
-#~ "Paint terrain tiles on the map.\n"
-#~ "\n"
-#~ "The paint tool utilizes the brushes and the terrain palette."
-#~ msgstr ""
-#~ "在地图上绘制地形块。\n"
-#~ "\n"
-#~ "绘图工具使用笔刷和地形调色板。"
-
-#~ msgid ""
-#~ "Fill continuous regions of terrain with a different one!\n"
-#~ "\n"
-#~ "The fill tool utilizes the terrain palette."
-#~ msgstr ""
-#~ "将连续的地形区域填充为另一种地形！\n"
-#~ "\n"
-#~ "填充工具使用地形调色板。"
-
-#~ msgid ""
-#~ "Selects a set of hex fields. The best tool ever!\n"
-#~ "\n"
-#~ "This tool utilizes the brushes."
-#~ msgstr "选中一组六角格区域。史上最棒的工具！此工具使用笔刷。"
-
-#~ msgid "Paste Tool"
-#~ msgstr "粘贴工具"
-
-#~ msgid "Paste the terrain in the clipboard"
-#~ msgstr "粘贴剪贴板中的地形"
-
-#~ msgid "Starting Tool"
-#~ msgstr "起始工具"
-
-#~ msgid ""
-#~ "Defines the side leader starting position\n"
-#~ "\n"
-#~ "This tool sets the side leaders' default starting locations, and named "
-#~ "special locations."
-#~ msgstr ""
-#~ "定义阵营首领的起始位置\n"
-#~ "\n"
-#~ "此工具可设置阵营首领的默认起始位置以及具名的特殊位置。"
-
-#~ msgid ""
-#~ "Wesnoth's Map and Scenario Editor allows users to create and edit the "
-#~ "maps on which every Wesnoth scenario takes place. It also provides a "
-#~ "limited set of features for setting up a basic scenario.\n"
-#~ "\n"
-#~ "The editor can be launched from the <italic>text='Map Editor'</italic>"
-#~ msgstr ""
-#~ "韦诺的地图与场景编辑器允许用户创建及编辑地图。韦诺的每幕场景都是在这些地图"
-#~ "上发生的。它也提供了能够搭建基本场景的功能有限的特性。\n"
-#~ "\n"
-#~ "编辑器可以通过点击标题画面中的<bold>text='地图编辑器'</bold>来"
-
-#~ msgid ""
-#~ " option at the title screen.\n"
-#~ "\n"
-#~ "<header>text='What you get'</header>"
-#~ msgstr ""
-#~ "启动。\n"
-#~ "\n"
-#~ "<header>text='你将得到'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "• <ref>dst='editor_terrain' text='Terrain Editor'</ref>\n"
-#~ "An easy to use map editor, similar to simple paint applications.\n"
-#~ "\n"
-#~ "• Scenario Editor\n"
-#~ "\n"
-#~ "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "• <ref>dst='editor_terrain' text='地形编辑器'</ref>\n"
-#~ "一个易用的地图编辑器，与简单的绘图程序类似。\n"
-#~ "\n"
-#~ "• 场景编辑器\n"
-#~ "\n"
-#~ "• <ref>dst='editor_playlist' text='播放列表管理器'</ref>"
-
-#~ msgid ""
-#~ "\n"
-#~ "Predefine the scenario's music track playlist.\n"
-#~ "\n"
-#~ "• Time Schedule Editor\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "预定义场景的音轨播放列表。\n"
-#~ "\n"
-#~ "• 时间日程编辑器\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "• What-you-see-is-what-you-get\n"
-#~ "The editor is not a WYSIWYG application.\n"
-#~ "\n"
-#~ "Because which exact graphic tile represents a terrain in the map depends "
-#~ "on all terrain rules loaded (which is different between the editor and "
-#~ "each other use case) the map won't look exactly the same.\n"
-#~ "\n"
-#~ "• Event handlers and scripting\n"
-#~ "The editor is not a tool to help you scripting the scenario's event "
-#~ "handlers.\n"
-#~ "\n"
-#~ "• Infinite Backwards Compatibility\n"
-#~ "The editor can't load maps from versions prior to 1.10.\n"
-#~ "TODO is that true?\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "• 所见即所得\n"
-#~ "此编辑器不是一个所见即所得的应用。\n"
-#~ "\n"
-#~ "代表地形的具体图形是由所载入的所有地形规则共同决定的（编辑器中使用的规则与"
-#~ "其他场合下的规则不同），因此实际地图与编辑器中的地图看起来不会完全一样。\n"
-#~ "\n"
-#~ "• 事件处理器与脚本\n"
-#~ "此编辑器不是用于协助你编写场景中事件处理器脚本的工具。\n"
-#~ "\n"
-#~ "• 无穷的后向兼容性\n"
-#~ "此编辑器不能读取1.10以前版本的地图。\n"
-#~ "TODO 这是真的吗？\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Pure Map Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='纯地图模式'</header>"
-
-#~ msgid "The editor features two separate modes of operation:"
-#~ msgstr "编辑器有两种不同的工作模式："
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Allows only the composing of the terrain map itself and the definition of "
-#~ "leader starting positions."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "仅允许进行地形图本身的组合以及对首领起始位置的定义。"
-
-#~ msgid ""
-#~ "\n"
-#~ "How the information is saved depends on the loaded file:\n"
-#~ "\n"
-#~ "<bold>text='Native'</bold>"
-#~ msgstr ""
-#~ "\n"
-#~ "信息的保存方式由所读取的文件决定：\n"
-#~ "\n"
-#~ "<bold>text='本地'</bold>"
-
-#~ msgid ""
-#~ "\n"
-#~ "A new map or file containing only the arguments to the map_data "
-#~ "attribute.\n"
-#~ "\n"
-#~ "The produced map can be played in the “User Maps” game type at the create "
-#~ "multiplayer game dialog if saved to the default directory.\n"
-#~ "\n"
-#~ "<bold>text='Embedded'</bold>"
-#~ msgstr ""
-#~ "\n"
-#~ "一个新的地图或文件，仅包括传入map_data属性的参数。\n"
-#~ "\n"
-#~ "如果保存进了默认目录，那么产生的地图可以在创建多人游戏对话框的“用户地图”游"
-#~ "戏类型中选择游玩。\n"
-#~ "\n"
-#~ "<bold>text='嵌入'</bold>"
-
-#~ msgid ""
-#~ "\n"
-#~ "Scenario files containing a valid map_data attribute (not a file include) "
-#~ "will be opened in this submode. The editor replaces only the content of "
-#~ "map_data and leaves everything else in the scenario untouched. Maps "
-#~ "opened this way are marked [e] in the Maps menu."
-#~ msgstr ""
-#~ "\n"
-#~ "包含有有效的map_data属性（而不是采用直接引入文件的方式）的场景文件将在此子"
-#~ "模式中打开。编辑器仅会替换map_data的内容，而不会触碰场景中的所有其他部分。"
-#~ "通过此方式打开的地图在地图菜单中以[e]标注。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Scenario Mode'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='场景模式'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The Scenario mode allows several extra tools to be used, such as the Unit "
-#~ "tool. At least one side must be defined in order to use these tools, "
-#~ "however.\n"
-#~ "\n"
-#~ "In this mode, terrain data is stored in the map_data attribute and saved "
-#~ "into a file with any applicable WML."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "场景模式中允许使用几种额外工具，例如单位工具。然而，要定义至少一个阵营之"
-#~ "后，才能使用这些工具。\n"
-#~ "\n"
-#~ "在此模式中，地形数据存储在map_data属性里，并和所有适用的WML一起，存储到一"
-#~ "个文件中。"
-
-#~ msgid ""
-#~ "The terrain editor's functionality is covered by the "
-#~ "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
-#~ "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
-#~ msgstr ""
-#~ "地形编辑器的功能由<ref>dst='editor_tool_paint' text='绘制'</ref>和"
-#~ "<ref>dst='editor_tool_fill' text='填充工具'</ref>提供。"
-
-#~ msgid ""
-#~ "The editor palette contains the applicable items you may use with the "
-#~ "currently selected tool. For example, the Paint tool will display a full "
-#~ "list of all available terrains, and the unit tool will provide a list of "
-#~ "available units."
-#~ msgstr ""
-#~ "编辑器调色板包含了可与当前选定的工具配合使用的项。例如，绘制工具会显示所有"
-#~ "可用地形的完整列表，而单位工具则会提供可用单位的列表。"
-
-#~ msgid ""
-#~ "Wesnoth stores its maps in human readable plain text files.\n"
-#~ "\n"
-#~ "A map file consists of rows with comma separated terrain code strings. "
-#~ "The files can be edited with a general purpose text editor like notepad.\n"
-#~ "\n"
-#~ "The only additional information provided by the map syntax are the "
-#~ "starting positions of the scenario's sides.\n"
-#~ "\n"
-#~ "Additional information, such as teams, custom events, and complex side "
-#~ "setups still need to be manually coded in WML."
-#~ msgstr ""
-#~ "韦诺将其地图存储在人类可读的纯文本文件中。\n"
-#~ "\n"
-#~ "地图文件由多列逗号分隔的地形代码字符串组成。这些文件可以使用通用的文本编辑"
-#~ "器，例如记事本来编辑。\n"
-#~ "\n"
-#~ "地图语法中唯一提供的额外信息是场景中各阵营的起始位置。\n"
-#~ "\n"
-#~ "额外信息，例如队伍、自定义事件以及复杂的阵营设置等，仍然需要使用WML手动编"
-#~ "码。"
-
-#~ msgid "Scenario Format"
-#~ msgstr "场景格式"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The following points are under discussion on the forums. At least for the "
-#~ "1.15.x series before 1.16.0 please assume that the forum threads are more "
-#~ "authoritative than the text on this page."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "论坛上正在讨论以下几点内容。至少对于1.16.0发布之前的1.15.x系列，请假定论坛"
-#~ "上的讨论串比本页上的文本更具有权威性。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "In the mainline campaigns, on hard:\n"
-#~ "• A sufficiently skilled player will have a good chance to win each "
-#~ "scenario on the first time that they see that scenario, without "
-#~ "foreknowledge of what will happen.\n"
-#~ "• This assumes that the player picks up all of the clues given in the "
-#~ "dialogue.\n"
-#~ "• There are more experience points available than on easy, and the player "
-#~ "will be able to train enough troops to cope with losing some L2 or L3 "
-#~ "units."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "在主线战役中，困难难度下：\n"
-#~ "• 一个足够熟练的玩家将有很大的概率初见即赢下每一个场景，而无需事先知道会发"
-#~ "生什么。\n"
-#~ "• 其中，假定玩家会注意到对话中给出的所有线索。\n"
-#~ "• 相比简单难度有更多的经验点数可用， 玩家将能够训练足够多的部队，就算失去"
-#~ "一些二级或三级单位也能够应对。"
-
-#~ msgid ""
-#~ "Compared to humans, elves are somewhat taller, more agile but less "
-#~ "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
-#~ "Few differences between humans and elves are more pronounced than the "
-#~ "Elves’ unusually long life — most, unless claimed by illness, accident or "
-#~ "war, live a full two and a half centuries. While some elves possessing a "
-#~ "high magical aptitude have been known to live an additional full century, "
-#~ "most elves begin to grow physically frail at some point between 250 and "
-#~ "300 years of age and pass away rapidly (generally within a year or two) "
-#~ "thereafter.\n"
-#~ "\n"
-#~ "Elves are naturally imbued with magic to a small degree. Though most are "
-#~ "unable to channel it directly, its latent presence gives them their keen "
-#~ "senses and long life. Many elves have magic-driven talents such as "
-#~ "marksmanship or stealth, allowing them to achieve tasks that most normal "
-#~ "beings would find astonishing. Those elves that learn to wield this power "
-#~ "in more general ways can become truly formidable in its use. Many choose "
-#~ "to use their gift to heal others.\n"
-#~ "\n"
-#~ "A few elves, venturing far down the paths of magic and mysticism, become "
-#~ "sensitive to the presence of cold iron and can even be burned by it. "
-#~ "Elvish legend hints that this was more common in the far past.\n"
-#~ "\n"
-#~ "Elves spend much of their time honing their talents and skills. Those not "
-#~ "adept at the magical arts typically devote their time honing their "
-#~ "physical skills. As a result, elves excel at archery, which is perhaps "
-#~ "their most important method of warfare. Most elvish troops carry a bow "
-#~ "and no other race can rival their archers in speed and accuracy. All "
-#~ "elves also share an intense affection for unspoiled nature. They often "
-#~ "feel uncomfortable in open, unvegetated spaces. They live primarily in "
-#~ "the forests of the Great Continent; the Aethenwood in the southwest, "
-#~ "Wesmere in the northwest, and the great northern woods of which the "
-#~ "Lintanir Forest is the southernmost edge.\n"
-#~ "\n"
-#~ "Elves are the eldest race of the continent, with the possible exception "
-#~ "of trolls. Many of their settlements cannot be reliably dated, "
-#~ "undoubtedly having existed for over a millennium."
-#~ msgstr ""
-#~ "相较于人类，精灵长得较高一些，行动更为敏捷，但是体格不如人类壮硕。他们有对"
-#~ "尖长的耳朵，肤色较白，而且通常一头金发。精灵与人类之间的最大差别莫过于他们"
-#~ "拥有非比寻常的寿命——除非死于疾病、意外或者战争，他们整整可以活两百五十年。"
-#~ "大部分精灵活到出生后250年到300年间就开始迅速虚弱死亡（一般在一两年内），不"
-#~ "过据了解一些拥有高魔法资质的精灵可以再多活一个世纪。\n"
-#~ "\n"
-#~ "精灵天生就有微弱的魔力，虽然大部分的精灵不会直接运用魔法，但这潜藏的魔力也"
-#~ "会赋予他们灵敏的知觉以及极长的寿命。许多精灵拥有着魔法所产生的天赋，例如高"
-#~ "超的射术或者匿踪能力，使他们能够完成令大多数生物惊讶的任务。那些学习将这些"
-#~ "力量用于更通用的场合的精灵们会在这方面变得十分强大。很多精灵选择将这个天赋"
-#~ "用于治疗他人。\n"
-#~ "\n"
-#~ "有少数精灵，因为在魔法与秘术的道路上走得太远，竟变得对冰冷的铁器十分敏感，"
-#~ "甚至会被这些铁器烫伤。精灵族的传说暗示说，在遥远的过去，这种情况要常见得"
-#~ "多。\n"
-#~ "\n"
-#~ "精灵们花很多时间来打磨他们的天赋与技能，不擅魔法的就将时间都花在锻炼身体技"
-#~ "能上。因而精灵擅长射术，这可能是他们在战争中最重要的战斗方式。大多数精灵士"
-#~ "兵都会携带一把弓，不论是在速度还是在精准度方面，没有任何一个其他种族可以跟"
-#~ "精灵部队的弓箭手匹敌。所有的精灵都对没有被破坏的自然世界有种强烈的情感，在"
-#~ "空旷而没有高大植被的地带里他们常常会觉得很不适应。精灵主要居住在泰陆的森林"
-#~ "中，像是西南边的艾森丛林，西北边的韦弥尔，以及以林塔尼尔森林为最南端的南部"
-#~ "大森林地区。\n"
-#~ "\n"
-#~ "也许除了巨魔以外，精灵是这片上最古老的种族。他们的许多定居点都无法确定究竟"
-#~ "有多少年的历史，但毋庸置疑地都已经存在了超过一千年。"
-
-#~ msgid "This race does not have a description yet."
-#~ msgstr "此种族暂时还没有描述。"
+msgstr "干扰消耗"

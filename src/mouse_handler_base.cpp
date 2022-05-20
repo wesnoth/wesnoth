@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -22,6 +22,7 @@
 #include "preferences/general.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -92,7 +93,7 @@ void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, c
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
 	int x, y;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 	mouse_motion(x, y, browse, true, loc);
 }
 
@@ -108,7 +109,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		// if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((SDL_GetMouseState(nullptr, nullptr) & (SDL_BUTTON(SDL_BUTTON_LEFT) | SDL_BUTTON(SDL_BUTTON_MIDDLE))) != 0);
+		minimap_scrolling_ = ((sdl::get_mouse_button_mask() & (SDL_BUTTON(SDL_BUTTON_LEFT) | SDL_BUTTON(SDL_BUTTON_MIDDLE))) != 0);
 		if(minimap_scrolling_) {
 			const map_location& loc = gui().minimap_location_on(x, y);
 			if(loc.valid()) {
@@ -133,7 +134,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	int my = drag_from_y_;
 
 	if(is_dragging() && !dragging_started_) {
-		Uint32 mouse_state = dragging_left_ || dragging_right_ ? SDL_GetMouseState(&mx, &my) : 0;
+		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
 #ifdef MOUSE_TOUCH_EMULATION
 		if(dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
 			// Monkey-patch touch controls again to make them look like left button.
@@ -311,7 +312,7 @@ void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
 void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
 	int x, y;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 
 	int movex = scrollx * preferences::scroll_speed();
 	int movey = scrolly * preferences::scroll_speed();
@@ -361,7 +362,7 @@ void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 void mouse_handler_base::init_dragging(bool& dragging_flag)
 {
 	dragging_flag = true;
-	SDL_GetMouseState(&drag_from_x_, &drag_from_y_);
+	sdl::get_mouse_state(&drag_from_x_, &drag_from_y_);
 	drag_from_hex_ = gui().hex_clicked_on(drag_from_x_, drag_from_y_);
 }
 

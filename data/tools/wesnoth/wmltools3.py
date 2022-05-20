@@ -11,13 +11,13 @@ import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 
 map_extensions   = ("map", "mask")
-image_extensions = ("png", "jpg", "jpeg")
+image_extensions = ("png", "jpg", "jpeg", "webp")
 sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
 misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
-image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g)(?=(~.*)?)"
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g|webp)(?=(~.*)?)"
 
 class Substitution(object):
     __slots__ = ["sub", "start", "end"]
@@ -157,13 +157,12 @@ def parse_attribute(line):
     where = line.find("=")
     leader = line[:where]
     after = line[where+1:]
-    after = after.lstrip()
     if re.search("\s#", after):
         where = len(re.split("\s+#", after)[0])
-        value = after[:where]
+        value = after[:where].lstrip()
         comment = after[where:]
     else:
-        value = after.rstrip()
+        value = after.strip()
         comment = ""
     # Return four fields: stripped key, part of line before value,
     # value, trailing whitespace and comment.
@@ -806,6 +805,7 @@ macro found in {}: {}".format(filename,
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
+        self.deprecated = []
         formals = []
         optional_formals = []
         state = "outside"
@@ -882,6 +882,8 @@ macro found in {}: {}".format(filename,
                                     if self.visible_from(defn, fn, n+1):
                                         defn.append(fn, n+1, args, optional_args)
                                         candidates.append(str(defn))
+                                        if defn.deprecated:
+                                            self.deprecated.append((name,Reference(ns,fn,n+1)))
                                 if len(candidates) > 1:
                                     print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))
                             if len(candidates) == 0:
@@ -910,7 +912,7 @@ macro found in {}: {}".format(filename,
                                     # it as a reference to everything the substitutions
                                     # could potentially match.
                                     elif '{' in name or '@' in name:
-                                        pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
+                                        pattern = re.sub(r"(\{[^}]*\}|@R[0-5]|@V)", '.*', name)
                                         key = self.mark_matching_resources(pattern, fn,n+1)
                                         if key:
                                             self.fileref[key].append(fn, n+1)

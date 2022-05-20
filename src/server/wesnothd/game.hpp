@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,7 @@
 #include "server/wesnothd/player.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
-#include "utils/make_enum.hpp"
+#include "side_controller.hpp"
 
 #include <map>
 #include <optional>
@@ -36,12 +36,6 @@ class server;
 class game
 {
 public:
-	MAKE_ENUM(CONTROLLER,
-		(HUMAN, "human")
-		(AI, "ai")
-		(EMPTY, "null")
-	);
-
 	game(wesnothd::server& server, player_connections& player_connections,
 			player_iterator host,
 			const std::string& name = "",
@@ -661,7 +655,7 @@ private:
 	 * change and a subsequent update_side_data() call makes it actually
 	 * happen.
 	 * First we look for a side where save_id= or current_player= matches the
-	 * new user's name then we search for the first controller="network" side.
+	 * new user's name then we search for the first controller=human or reserved side.
 	 *
 	 * @param user The player taking a side.
 	 * @return True if the side was taken, false otherwise.
@@ -835,7 +829,7 @@ private:
 	side_vector sides_;
 
 	/** A vector containiner the controller type for each side. */
-	std::vector<CONTROLLER> side_controllers_;
+	std::vector<side_controller::type> side_controllers_;
 
 	/** Number of sides in the current scenario. */
 	int nsides_;

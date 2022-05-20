@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -101,7 +101,7 @@ public:
 	/**
 	 * Possible errors.
 	 *
-	 * Returned by the @ref check function.
+	 * Returned by the @ref check_validity function.
 	 */
 	enum error
 	{

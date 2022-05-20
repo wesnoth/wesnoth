@@ -97,21 +97,20 @@ https://wiki.wesnoth.org/CommandMode/ru дальнейших сведений о
 включить некоторые механизмы отладки Lua
 .TP 
 \fB\-\-strict\-lua\fP
-disallow deprecated Lua API calls
+запретить устаревшие вызовы Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+\fB\-D,\-\-diff\fP\fI\ левый файл\fP\fB\ \fP\fIправый файл\fP
+сравнивает два WML\-файла (см. команду diff) без предварительной обработки
+(если нужна, используйте сначала команду \fB\-p\fP). Помещает разницу в виде
+DiffWML в стандартный вывод или в файл, указанный \fI\-\-output\fP.
 .TP 
 \fB\-e[\fP\fIфайл\fP\fB],\ \-\-editor[\fP\fI=файл\fP\fB]\fP
 запускает редактор карт напрямую. Если задан \fIфайл\fP, действует равноценно
 \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-displays the number of frames per second the game is currently running at in
-a corner of the screen as well as writes these values to a file in the
-userdata directory.
+отображать в углу экрана число кадров в секунду, а также сохранять эти
+значения в файл из папки пользовательских данных.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 запустить игру в полноэкранном режиме.
@@ -190,7 +189,7 @@ userdata directory.
 с \fB\-\-multiplayer\fP или \fB\-\-plugin\fP.
 .TP 
 \fB\-\-nobanner\fP
-suppress the startup banner.
+не показывать загрузочный экран.
 .TP 
 \fB\-\-nomusic\fP
 запустить игру без музыки.
@@ -202,8 +201,9 @@ suppress the startup banner.
 \fB\-\-nosound\fP
 запустить игру без звука и музыки.
 .TP 
-\fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+\fB\-\-output\fP\fI\ файл\fP
+настроить вывод в указанный файл. Применимо к операциям взятия разницы
+(diff).
 .TP 
 \fB\-\-password\fP\fI\ пароль\fP
 использовать \fIпароль\fP при соединении с сервером, игнорируя другие
@@ -215,10 +215,10 @@ output to the specified file. Applicable to diffing operations.
 вернуть функцию, которую можно запустить в качестве сопрограммы и время от
 времени пробуждать обновлениями.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+\fB\-P,\-\-patch\fP\fI\ исходный файл\fP\fB\ \fP\fIфайл патча\fP
+применяет патч DiffWML к WML\-файлу; ни один из этих файлов предварительно не
+проверяется.  Выводит WML с применёнными к нему правками через стандартный
+вывод или в файл, указанный \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ исходный файл/каталог\fP\fB\ \fP\fIцелевой каталог\fP
 запустить препоцессор для заданного файла или каталога. Для каждого файла в
@@ -303,8 +303,8 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 Действие предоставляет lua такие же привилегии, как у исполняемого файла
 wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\-\-use\-schema\fP\fI\ путь\fP
+устанавливает шаблон WML, используемый \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ имя\fP
 установить папку с пользовательскими настройками в подпапку \fIимя\fP каталога
@@ -334,23 +334,26 @@ Games"), задайте абсолютный путь. Помимо этого, 
 использовать \fIимя пользователя\fP при соединении с сервером, игнорируя другие
 предпочтения.
 .TP 
-\fB\-\-validate\fP\fI\ path\fP
-validates a file against the WML schema.
+\fB\-\-validate\fP\fI\ путь\fP
+проверяет файл на соответствие шаблону WML.
 .TP 
-\fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+\fB\-\-validate\-addon\fP\fI\ id_аддона\fP
+проверяет WML выбранного аддона во время вашей игры.
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+проверяет WML ядра во время вашей игры.
 .TP 
-\fB\-\-validate\-schema \ path\fP
-validates a file as a WML schema.
+\fB\-\-validate\-schema \ путь\fP
+проверяет, является ли файл шаблоном WML.
 .TP 
 \fB\-\-validcache\fP
 предполагает, что кэш правильный. (опасно)
 .TP 
 \fB\-v, \-\-version\fP
 вывести номер версии и выйти.
+.TP 
+\fB\-\-simple\-version\fP
+только вывести номер версии и выйти.
 .TP 
 \fB\-w, \-\-windowed\fP
 запускать игру в оконном режиме.
@@ -445,7 +448,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2021 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

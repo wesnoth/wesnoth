@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -123,13 +123,6 @@ void load_game_prefs()
 {
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
-
-	if(!preferences::get("remember_timer_settings", false)) {
-		preferences::erase("mp_countdown_init_time");
-		preferences::erase("mp_countdown_reservoir_time");
-		preferences::erase("mp_countdown_turn_bonus");
-		preferences::erase("mp_countdown_action_bonus");
-	}
 
 	// We save the password encrypted now. Erase any saved passwords in the prefs file.
 	preferences::erase("password");
@@ -861,17 +854,17 @@ compression::format save_compression_format()
 	// "yes" was used in 1.11.7 and earlier; the compress_saves
 	// option used to be a toggle for gzip in those versions.
 	if(choice.empty() || choice == "gzip" || choice == "yes") {
-		return compression::GZIP;
+		return compression::format::gzip;
 	} else if(choice == "bzip2") {
-		return compression::BZIP2;
+		return compression::format::bzip2;
 	} else if(choice == "none" || choice == "no") { // see above
-		return compression::NONE;
+		return compression::format::none;
 	} /*else*/
 
 	// In case the preferences file was created by a later version
 	// supporting some algorithm we don't; although why would anyone
 	// playing a game need more algorithms, really...
-	return compression::GZIP;
+	return compression::format::gzip;
 }
 
 std::string get_chat_timestamp(const std::time_t& t)

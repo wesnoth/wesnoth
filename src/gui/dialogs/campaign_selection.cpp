@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -149,7 +149,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 {
 	using level_ptr = ng::create_engine::level_ptr;
 
-	auto levels = engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
+	auto levels = engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
 	switch(order) {
 	case RANK: // Already sorted by rank
@@ -313,7 +313,7 @@ void campaign_selection::pre_show(window& window)
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
 
-	for(const auto& level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN)) {
+	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
 		const config& campaign = level->data();
 
 		/*** Add tree item ***/

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -43,6 +43,7 @@
 #include "mp_ui_alerts.hpp"
 #include "preferences/credentials.hpp"
 #include "saved_game.hpp"
+#include "side_controller.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
 #include "utils/scope_exit.hpp"
@@ -134,7 +135,19 @@ bool mp_join_game::fetch_game_config()
 		state_.classification() = game_classification(level_);
 
 		// Make sure that we have the same config as host, if possible.
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		std::string scenario_id = state_.get_scenario_id();
+		// since add-ons are now only enabled when used, the scenario ID may still not be known
+		// so check in the MP info sent from the server for the scenario ID if that's the case
+		if(scenario_id == "") {
+			for(const auto& addon : level_.child("multiplayer").child_range("addon")) {
+				for(const auto& content : addon.child_range("content")) {
+					if(content["type"] == "scenario") {
+						scenario_id = content["id"].str();
+					}
+				}
+			}
+		}
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), scenario_id);
 	}
 
 	game_config::add_color_info(game_config_view::wrap(get_scenario()));
@@ -153,13 +166,13 @@ bool mp_join_game::fetch_game_config()
 	for(const config& side : get_scenario().child_range("side")) {
 		// TODO: it can happen that the scenario specifies that the controller
 		//       of a side should also gain control of another side.
-		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
+		if(side["controller"] == side_controller::reserved && side["current_player"] == preferences::login()) {
 			side_choice = &side;
 			side_num_choice = side_num_counter;
 			break;
 		}
 
-		if(side["controller"] == "human" && side["player_id"].empty()) {
+		if(side["controller"] == side_controller::human && side["player_id"].empty()) {
 			if(!side_choice) { // Found the first empty side
 				side_choice = &side;
 				side_num_choice = side_num_counter;
@@ -206,15 +219,15 @@ static std::string generate_user_description(const config& side)
 	const std::string reservation = side["current_player"].str();
 	const std::string owner = side["player_id"].str();
 
-	if(controller_type == "ai") {
+	if(controller_type == side_controller::ai) {
 		return _("Computer Player");
-	} else if(controller_type == "null") {
+	} else if(controller_type == side_controller::none) {
 		return _("Empty slot");
-	} else if(controller_type == "reserved") {
+	} else if(controller_type == side_controller::reserved) {
 		return VGETTEXT("Reserved for $playername", {{"playername", reservation}});
 	} else if(owner.empty()) {
 		return _("Vacant slot");
-	} else if(controller_type == "human" || controller_type == "network") {
+	} else if(controller_type == side_controller::human) {
 		return owner;
 	} else {
 		return _("empty");
@@ -299,9 +312,9 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const bool is_mp = state_.classification().is_normal_mp_game();
 		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
 		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const mp_game_settings::SAVED_GAME_MODE saved_game = level_.child("multiplayer")["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE);
+		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
-		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME);
+		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);

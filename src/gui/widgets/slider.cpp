@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -339,9 +339,9 @@ builder_slider::builder_slider(const config& cfg)
 	}
 }
 
-widget* builder_slider::build() const
+std::unique_ptr<widget> builder_slider::build() const
 {
-	slider* widget = new slider(*this);
+	auto widget = std::make_unique<slider>(*this);
 
 	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);

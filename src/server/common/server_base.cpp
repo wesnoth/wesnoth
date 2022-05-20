@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Sergey Popov <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -109,20 +109,22 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		}
 	} catch(const boost::system::system_error& e) {
 		ERR_SERVER << "Exception when trying to bind port: " << e.code().message() << "\n";
-		throw server_shutdown("Port binding failed", e.code());
+		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
 
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
-	if(error) {
+	if(error && accepting_connections()) {
 		ERR_SERVER << "Accept failed: " << error.message() << "\n";
-		throw server_shutdown("Accept failed", error);
+		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
 	if(accepting_connections()) {
 		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+	} else {
+		return;
 	}
 
 #ifndef _WIN32
@@ -139,6 +141,10 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
 #endif
 	}
+#endif
+
+#ifdef __linux__
+	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
@@ -243,7 +249,7 @@ int server_base::run() {
 		} catch(const boost::system::system_error& e) {
 			ERR_SERVER << "Caught system error exception from handler: " << e.code().message() << "\n";
 		} catch(const std::exception& e) {
-			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n";
+			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n" << boost::current_exception_diagnostic_information() << "\n";
 		}
 	}
 }
@@ -358,7 +364,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
 	off_t offset { 0 };
-	std::size_t total_bytes_transferred { 0 };
+	//std::size_t total_bytes_transferred { 0 };
 
 	union DataSize
 	{
@@ -382,7 +388,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
 		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
-		total_bytes_transferred += *(yield.ec_) ? 0 : n;
+		//total_bytes_transferred += *(yield.ec_) ? 0 : n;
 
 		// Retry operation immediately if interrupted by signal.
 		if (*(yield.ec_) == boost::asio::error::interrupted)
@@ -540,7 +546,9 @@ template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr sock
 			}
 
 			while(queues[socket].size() > 0) {
-				coro_send_doc(socket, *(queues[socket].front()), yield);
+				boost::system::error_code error;
+				coro_send_doc(socket, *(queues[socket].front()), yield[error]);
+				check_error(error, socket);
 				queues[socket].pop();
 			}
 			queues.erase(socket);

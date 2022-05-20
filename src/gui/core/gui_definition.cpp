@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -57,20 +57,18 @@ gui_definition::gui_definition(const config& cfg)
 	//
 
 	/** Parse widget definitions of each registered type. */
-	for(auto& widget_type : registered_widget_types()) {
-		const std::string& type_id = widget_type.first;
+	for(const auto& [type_id, widget_parser] : registered_widget_types()) {
+		auto& def_map = widget_types[type_id];
 
-		gui_definition::widget_definition_map_t& def_map = widget_types[type_id];
-
-		const std::string key =	widget_type.second.key
-			? widget_type.second.key
+		const std::string key =	widget_parser.key
+			? widget_parser.key
 			: type_id + "_definition";
 
 		bool found_default_def = false;
 
 		for(const config& definition : cfg.child_range(key)) {
 			// Run the static parser to get a definition ptr.
-			styled_widget_definition_ptr def_ptr = widget_type.second.parser(definition);
+			styled_widget_definition_ptr def_ptr = widget_parser.parser(definition);
 
 			const std::string& def_id = def_ptr->id;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -63,6 +63,8 @@ protected:
 	virtual void user_relation_changed(const std::string& name);
 
 	void change_logging(const std::string& data);
+
+	virtual void clear_messages() = 0;
 
 	friend class chat_command_handler;
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@ namespace editor {
 class editor_display : public display
 {
 public:
-	editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg);
+	editor_display(editor_controller& controller, reports& reports_object);
 
 	bool in_editor() const override { return true; }
 
