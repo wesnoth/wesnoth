@@ -29,6 +29,7 @@ REGISTER_DIALOG(hotkey_bind)
 hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 	: hotkey_id_(hotkey_id)
 	, new_binding_()
+	, input_text_()
 {
 	set_restore(true);
 }
@@ -43,7 +44,11 @@ void hotkey_bind::pre_show(window& window)
 void hotkey_bind::sdl_event_callback(const SDL_Event &event)
 {
 	if (hotkey::is_hotkeyable_event(event)) {
-		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
+		new_binding_ = hotkey::create_hotkey(hotkey_id_, event, input_text_);
+	} else {
+		if (event.type == SDL_TEXTINPUT) {
+			input_text_ = std::string(event.text.text);
+		}
 	}
 	if(new_binding_) {
 		set_retval(retval::OK);

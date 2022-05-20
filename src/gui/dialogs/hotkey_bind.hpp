@@ -39,6 +39,8 @@ private:
 
 	hotkey::hotkey_ptr new_binding_;
 
+	std::string input_text_;
+
 	void sdl_event_callback(const SDL_Event& event);
 
 	virtual const std::string& window_id() const override;
