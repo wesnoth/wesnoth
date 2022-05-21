@@ -10,11 +10,13 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: French
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
+
 ## Version 1.17.4
  ### Campaigns
    * Sceptre of Fire
