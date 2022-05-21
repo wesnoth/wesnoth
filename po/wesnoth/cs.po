@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
-"PO-Revision-Date: 2022-04-25 22:43+0200\n"
+"PO-Revision-Date: 2022-05-18 20:29+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5345,11 +5345,11 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
-"Spojení na vzdálený server není zabezpečené. Nelze nahrát rozšíření <i>"
-"$addon_title</i>."
+"Spojení na vzdálený server není zabezpečené. Nelze nahrát rozšíření "
+"<i>$addon_title</i>."
 
 #: src/addon/client.cpp:223
 msgid "Requesting file index..."
@@ -6316,16 +6316,16 @@ msgstr "žádný"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je <b>"
-"$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
+"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je "
+"<b>$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Vaše verze <i>$addon</i> je nekompatibilní. Máte verzi <b>$local_ver</b> a "
 "hostitel má verzi <b>$host_ver</b>."
@@ -6924,15 +6924,12 @@ msgid "This command is currently unavailable."
 msgstr "Tento příkaz nelze momentálně použít."
 
 #: src/map_command_handler.hpp:219
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"Neznámý příkaz „$command“, zkus $help_command pro seznam dostupných příkazů."
+"Neznámý příkaz „$command“, myslel jsi „$command_proposal“? Zkus "
+"$help_command pro seznam dostupných příkazů."
 
 #: src/map_command_handler.hpp:223
 msgid ""

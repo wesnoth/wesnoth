@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
-"PO-Revision-Date: 2022-04-21 22:33+0200\n"
+"PO-Revision-Date: 2022-05-20 20:59+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -259,10 +259,8 @@ msgstr "Čisté šedé kočičí hlavy"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:261
-#, fuzzy
-#| msgid "Desert Castle"
 msgid "Desert Cobbles"
-msgstr "Pouštní hrad"
+msgstr "Pouštní kočičí hlavy"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:271
@@ -1726,17 +1724,15 @@ msgstr "Dřevěný hnijící most"
 #: data/core/terrain.cfg:2739 data/core/terrain.cfg:2751
 #: data/core/terrain.cfg:2764
 msgid "Basic Stone Bridge"
-msgstr "Kamenný základní most"
+msgstr "Základní kamenný most"
 
 #. [terrain_type]: id=snow_stone_bridge
 #. [terrain_type]: id=snow_stone_bridgediag1
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2779 data/core/terrain.cfg:2791
 #: data/core/terrain.cfg:2804
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Kamenný základní most"
+msgstr "Zasněžený kamenný most"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -2592,7 +2588,7 @@ msgstr "Vyber rozšíření k odstranění."
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
-msgstr "Odstraň"
+msgstr "Odstranit"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
@@ -4916,7 +4912,7 @@ msgstr "Rozlišení:"
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:46
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Násobitel velikosti bodů:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:80
@@ -4929,6 +4925,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Nastavit globální násobitel velikosti bodů. Násobitel velikosti bodů 2 "
+"způsobí, že vše bude vypadat dvakrát větší."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:109
@@ -4943,12 +4941,13 @@ msgstr "Přepnout mezi režimem celé obrazovky a režimem okna"
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:121
 msgid "Automatic pixel scale multiplier"
-msgstr ""
+msgstr "Automatický násobitel velikosti bodů"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:122
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Automaticky vybrat násobitel velikosti bodů podle stávajícího rozlišení"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:144
@@ -6920,8 +6919,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</b>"
-"\".\n"
+"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</"
+"b>\".\n"
 "Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:881
