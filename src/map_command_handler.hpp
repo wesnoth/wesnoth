@@ -190,7 +190,6 @@ public:
 		}
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
-			symbols["prefix"] = cmd_prefix_;
 			if(!cmd_flag_) {
 				symbols["help_command"] = cmd_prefix_ + "help";
 				symbols["command"] = cmd_prefix_ + get_cmd();
