@@ -4,6 +4,9 @@
  ### Campaigns
    * Eastern Invasion
      * S1: Fixed campfire not having a sound (issue #5766)
+     * S07a:
+       * Better handling for side 2 (issue #4145)
+       * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
  ### Editor
  ### Multiplayer
  ### Lua API
