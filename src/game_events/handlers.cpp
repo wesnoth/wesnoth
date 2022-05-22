@@ -278,22 +278,61 @@ private:
 	wfl::formula formula_;
 };
 
+static std::unique_ptr<event_filter> make_filter(const std::string& key, const vconfig& contents)
+{
+	if(key == "filter_condition") {
+		return std::make_unique<filter_condition>(contents);
+	} else if(key == "filter_side") {
+		return std::make_unique<filter_side>(contents);
+	} else if(key == "filter") {
+		return std::make_unique<filter_unit>(contents, true);
+	} else if(key == "filter_attack") {
+		return std::make_unique<filter_attack>(contents, true);
+	} else if(key == "filter_second") {
+		return std::make_unique<filter_unit>(contents, false);
+	} else if(key == "filter_second_attack") {
+		return std::make_unique<filter_attack>(contents, false);
+	}
+	return nullptr;
+}
+
+/**
+ * This is a dynamic wrapper for any filter type, specified via [insert_tag].
+ * It loads the filter contents from a variable and forwards it to the appropriate filter class.
+ */
+struct filter_dynamic : public event_filter {
+	filter_dynamic(const std::string& tag, const std::string& var) : tag_(tag), var_(var) {}
+	bool operator()(const queued_event& event_info) const override
+	{
+		variable_access_const variable(var_, resources::gamedata->get_variables());
+		if(!variable.exists_as_container()) return false;
+		if(auto filter = make_filter(tag_, vconfig(variable.as_container()))) {
+			return (*filter)(event_info);
+		}
+		return false;
+	}
+	void serialize(config& cfg) const override
+	{
+		auto tag = cfg.add_child("insert_tag");
+		tag["name"] = tag_;
+		tag["variable"] = var_;
+	}
+	bool can_serialize() const override
+	{
+		return true;
+	}
+private:
+	std::string tag_, var_;
+};
+
 void event_handler::read_filters(const config &cfg)
 {
 	for(auto filter : cfg.all_children_range()) {
 		vconfig vcfg(filter.cfg);
-		if(filter.key == "filter_condition") {
-			add_filter(std::make_unique<filter_condition>(vcfg));
-		} else if(filter.key == "filter_side") {
-			add_filter(std::make_unique<filter_side>(vcfg));
-		} else if(filter.key == "filter") {
-			add_filter(std::make_unique<filter_unit>(vcfg, true));
-		} else if(filter.key == "filter_attack") {
-			add_filter(std::make_unique<filter_attack>(vcfg, true));
-		} else if(filter.key == "filter_second") {
-			add_filter(std::make_unique<filter_unit>(vcfg, false));
-		} else if(filter.key == "filter_second_attack") {
-			add_filter(std::make_unique<filter_attack>(vcfg, false));
+		if(auto filter_ptr = make_filter(filter.key, vcfg)) {
+			add_filter(std::move(filter_ptr));
+		} else if(filter.key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {
+			add_filter(std::make_unique<filter_dynamic>(vcfg["name"], vcfg["variable"]));
 		}
 	}
 	if(cfg.has_attribute("filter_formula")) {
