@@ -1970,21 +1970,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3164
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -4493,8 +4478,6 @@ msgstr "雇用"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Leader"
 msgid "Choose Your Leader"
 msgstr "リーダー選択"
 
@@ -5823,57 +5806,36 @@ msgstr "期限切れ"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num 年"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num ヵ月"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num 週間"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num 日"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num 時間"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num 分"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num 秒"
@@ -8150,6 +8112,9 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
+#~ msgid "By:"
+#~ msgstr "作者："
+
 #~ msgid "Gold Left:"
 #~ msgstr "所持ゴールド："
 
@@ -8159,76 +8124,6 @@ msgstr ""
 #~ msgid "Reserve Troops:"
 #~ msgstr "召還可能ユニット："
 
-#~ msgid "By:"
-#~ msgstr "作者："
-
-#, fuzzy
-#~| msgid "Leader"
-#~ msgid "Leader:"
-#~ msgstr "リーダー"
-
-#, fuzzy
-#~| msgid "<b>Gender:</b>"
-#~ msgid "Gender:"
-#~ msgstr "<b>性別：</b>"
-
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruits:"
-#~ msgstr "雇用"
-
-#, fuzzy
-#~| msgid "Starting Positions Tool"
-#~ msgid "Starting position:"
-#~ msgstr "開始地点ツール"
-
-#, fuzzy
-#~| msgid "editor_hotkeys^E"
-#~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "エ"
-
-#, fuzzy
-#~| msgid "timespan^$num year"
-#~| msgid_plural "timespan^$num years"
-#~ msgid "timespan^$num years"
-#~ msgstr "$num 年"
-
-#, fuzzy
-#~| msgid "timespan^$num month"
-#~| msgid_plural "timespan^$num months"
-#~ msgid "timespan^$num months"
-#~ msgstr "$num ヵ月"
-
-#, fuzzy
-#~| msgid "timespan^$num week"
-#~| msgid_plural "timespan^$num weeks"
-#~ msgid "timespan^$num weeks"
-#~ msgstr "$num 週間"
-
-#, fuzzy
-#~| msgid "timespan^$num day"
-#~| msgid_plural "timespan^$num days"
-#~ msgid "timespan^$num days"
-#~ msgstr "$num 日"
-
-#, fuzzy
-#~| msgid "timespan^$num hour"
-#~| msgid_plural "timespan^$num hours"
-#~ msgid "timespan^$num hours"
-#~ msgstr "$num 時間"
-
-#, fuzzy
-#~| msgid "timespan^$num minute"
-#~| msgid_plural "timespan^$num minutes"
-#~ msgid "timespan^$num minutes"
-#~ msgstr "$num 分"
-
-#, fuzzy
-#~| msgid "timespan^$num second"
-#~| msgid_plural "timespan^$num seconds"
-#~ msgid "timespan^$num seconds"
-#~ msgstr "$num 秒"
-
 #~ msgid "Selected Game"
 #~ msgstr "選択中のゲーム"
 
@@ -8237,13 +8132,3 @@ msgstr ""
 
 #~ msgid "Other Games"
 #~ msgstr "他のゲーム"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Team:"
-#~ msgstr "チーム"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Start Tutorial"
-#~ msgstr "チュートリアル"

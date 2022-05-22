@@ -5,8 +5,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2022
 # k konami, 2022
+# RatArmy, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: k konami, 2022\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -5298,8 +5298,8 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
 #: src/addon/client.cpp:223
@@ -5528,9 +5528,6 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "サーバーからのアドオン一覧のダウンロード中にエラーが発生しました。"
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -6043,6 +6040,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"エラー： [advancefrom] タグは機能しなくなりました。 「$lower_level」 のユニッ"
+"トは 「$higher_level」 にレベルアップできません。代わりに [modify_unit_type] "
+"タグを使用するよう、アドオン作者に依頼してください。"
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6236,17 +6236,17 @@ msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "ホスト側がアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。"
-"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>"
-"$host_ver</b> です。"
+"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは "
+"<b>$host_ver</b> です。"
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "あなたはアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。あ"
 "なたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>$host_ver</"
@@ -6257,8 +6257,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "敵のリーダー（達）を倒す"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "時代「 $era 」が存在しません"
 
@@ -8037,15 +8035,11 @@ msgstr "ターンのカウントダウン"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%Y年%m月%d日（%a）%l:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%Y年%m月%d日（%a）%H:%M"
 
@@ -8569,15 +8563,6 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#~ msgid "Independent"
-#~ msgstr "完全ランダム"
-
-#~ msgid "No Mirror"
-#~ msgstr "ミラーマッチ防止"
-
-#~ msgid "No Ally Mirror"
-#~ msgstr "同盟ミラー防止"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -8586,15 +8571,11 @@ msgstr "行動予定オプション"
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>― Galun-飛族の指導者 Galun、Wesnoth 暦 5 年</i>"
 
-#, fuzzy
-#~| msgid "not available."
-#~ msgid "List available rooms."
-#~ msgstr "不明です。"
+#~ msgid "Independent"
+#~ msgstr "完全ランダム"
 
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Room message."
-#~ msgstr "チャットメッセージ"
+#~ msgid "No Mirror"
+#~ msgstr "ミラーマッチ防止"
 
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Use [modify_unit_type]\n"
+#~ msgid "No Ally Mirror"
+#~ msgstr "同盟ミラー防止"
