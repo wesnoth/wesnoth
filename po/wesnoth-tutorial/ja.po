@@ -1,7 +1,7 @@
 #
 # Translators:
 # RatArmy, 2021
-# h22, 2021
+# h22, 2022
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 18:02 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:33+0000\n"
-"Last-Translator: h22, 2021\n"
+"Last-Translator: h22, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -35,6 +35,8 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
+"チュートリアルで Wesnoth の基本的なプレイ方法を学びましょう。初めてプレイする"
+"人に推奨されています。"
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
@@ -49,7 +51,7 @@ msgstr "キャラクター選択"
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
 msgid "Who do you want to play as?"
-msgstr ""
+msgstr "どのキャラクターでプレイしますか？"
 
 #. [button]
 #. [side]: type=Fighter, id=student
@@ -149,6 +151,10 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
+"このチュートリアルでは、あなたは Konrad となりプレイします。Konrad は主塔の上"
+"にいます。そして、Konrad の師匠、Delfador は川の東岸にいます。マウスカーソル"
+"をユニット（マップ上のキャラクター）上に重ねると、ユニットの能力などが画面の"
+"右側に表示されます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
@@ -158,6 +164,9 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
+"このチュートリアルでは、あなたは Li’sar としてプレイします。Li’sar は主塔の上"
+"にいます。そして、Li’sar の師匠、Delfador は川の東岸にいます。マウスカーソル"
+"をユニット上に重ねると、ユニットの能力などが画面の右側に表示されます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
@@ -416,6 +425,11 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
+"毎ターン、それぞれの陣営には行動の機会が与えられます。すべての移動や攻撃を終"
+"えたのなら、画面右下にある<b>ターン終了</b>のボタンを押しましょう。すると、AI"
+"や他のプレイヤーに操作されている陣営にターンが移ります。一部のシナリオでは、"
+"最大のターン数（ターン制限）が決められています。画面上部にある旗のアイコンの"
+"隣を見れば、現在のターンとターン制限を確認できます。"
 
 #. [event]
 #. [else]
@@ -557,6 +571,11 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
+"あなたが<i>主塔</i>にいれば、いつでもユニットを<i>雇用</i>することができま"
+"す。周りにある城ヘクスを右クリックして<b>雇用</b>を選択してください。しかし、"
+"新しく雇用したユニットはそのターンの間は行動できません。行動できるようになる"
+"のは次のターンからです。このシナリオでは、あなたはエルフの戦士のみを雇用する"
+"ことができます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
@@ -615,6 +634,8 @@ msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
 msgstr ""
+"おぬしの戦士たちをクィンティンに向かわせる前に、攻撃には2種類あることを知る必"
+"要があるじゃろう..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
@@ -737,6 +758,7 @@ msgstr "ユニット解説"
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
+"ユニットを右クリックして詳細な<b>ユニットの解説</b>を見ることができます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
@@ -997,6 +1019,9 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"おかえりなさい！　これは、２パートから成るチュートリアルの２パート目です。"
+"パート II では、ユニットの召還、能力と特殊武器、収入と維持費、長距離移動、支"
+"配領域（ZOC）、時刻について学べます。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
@@ -1024,6 +1049,10 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
+"Konrad、これは訓練ではありません！オークが川の向こう側で野営しています。ここ"
+"はエルフ領であるにもかかわらず、奴らは愚かにも侵入してきたのです。我々エルフ"
+"は森の中では機動力、回避率ともに向上するというのに。二度と我々を脅かすことが"
+"無いようにオークのリーダーを倒さなければなりません。私が補佐いたしましょう。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
@@ -1033,6 +1062,10 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
+" Li’sar、これは訓練ではありません！オークが川の向こう側で野営しています。ここ"
+"はエルフ領であるにもかかわらず、奴らは愚かにも侵入してきたのです。我々エルフ"
+"は森の中では機動力、回避率ともに向上するというのに。二度と我々を脅かすことが"
+"無いようにオークのリーダーを倒さなければなりません。私が補佐いたしましょう。"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
@@ -1168,6 +1201,12 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
+"各シナリオにおいては、新しいユニットの雇用に加え、以前のシナリオで生き残った"
+"歴戦のユニットを20ゴールドの費用で<i>召還</i>することが可能です。高レベルのユ"
+"ニットや特性と能力の組み合わせが良いユニットを召還することで、複数のシナリオ"
+"に渡って強力な軍隊を編成することができます。ユニットを召還するには、リーダー"
+"が主塔にいる時に付近の城ヘクスを右クリックして<i>召還</i>を選択してください。"
+"古参兵を召還するだけでなく、新兵を雇用することも忘れないでください。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:299
@@ -1252,6 +1291,13 @@ msgid ""
 "A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"特殊武器はある攻撃をより強力にするものです。今回のケースでは、呪術師は巻きつ"
+"き攻撃に遅化の効果を持っています。この攻撃を受けた敵は、1ターンの間攻撃力が半"
+"分になります。他の特殊武器の例を挙げると、先制は相手から攻撃をしかけられたと"
+"しても先に攻撃を開始し、魔法は必ず70%の命中率となります。\n"
+"\n"
+"能力と特殊武器の一覧については、特性と同様にヘルプを参照してください。（デ"
+"フォルトのホットキーは<b>F1</b>です）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
@@ -1290,6 +1336,11 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"現在、あなたの陣営には2人のヒーラーがいます。呪術師の回復の力が4であるのに対"
+"し、ドルイド僧は隣接するユニットのHPを1ターンに8回復させることができます。し"
+"かしながら、個々のユニットが回復を受けられるのは1人のヒーラーからのみです。あ"
+"るユニットが複数のヒーラーに隣接している場合、最もレベルが高いヒーラーから回"
+"復を受けることになります。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
@@ -1701,6 +1752,8 @@ msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
+"もし呪術師が負傷したユニットの隣にいれば、次のターンの開始時に各ユニットのHP"
+"を4回復してくれます。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
@@ -1767,6 +1820,8 @@ msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
+"主塔から離れ過ぎるのは危険です。増援を呼ぶ必要があるかもしれませんし、オーク"
+"のリーダーが自らの主塔を明け渡すとは思えません。気をつけてください！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
@@ -1874,6 +1929,8 @@ msgid ""
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
 "b> menu."
 msgstr ""
+"このシナリオでは、オークのリーダーを倒すことによってのみ勝利することができま"
+"す。シナリオの勝利条件は<b>メニュー</b>の<b>目標</b>から確認できます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021

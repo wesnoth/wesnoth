@@ -5,8 +5,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2022
 # k konami, 2022
+# RatArmy, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: k konami, 2022\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -6014,6 +6014,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"エラー： [advancefrom] タグは機能しなくなりました。 「$lower_level」 のユニッ"
+"トは 「$higher_level」 にレベルアップできません。代わりに [modify_unit_type] "
+"タグを使用するよう、アドオン作者に依頼してください。"
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6207,17 +6210,17 @@ msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "ホスト側がアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。"
-"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>"
-"$host_ver</b> です。"
+"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは "
+"<b>$host_ver</b> です。"
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "あなたはアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。あ"
 "なたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>$host_ver</"
@@ -8515,6 +8518,3 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Use [modify_unit_type]\n"
