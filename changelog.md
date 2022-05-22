@@ -2,6 +2,10 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * S07a:
+       * Better handling for side 2 (issue #4145)
+       * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
    * Under the Burning Suns
      * S5: Enforce encounter with the Cloaked Figure (issue #6364)
  ### Editor
