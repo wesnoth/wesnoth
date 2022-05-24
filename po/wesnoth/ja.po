@@ -5,17 +5,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2022
 # k konami, 2022
+# RatArmy, 2022
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: k konami, 2022\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -232,7 +232,7 @@ msgstr "ゴールドの引き継ぎ："
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:338
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:367
 msgid "Notes:"
 msgstr "メモ："
 
@@ -3943,7 +3943,7 @@ msgstr "いいえ"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:633
+#: src/hotkey/command_executor.cpp:634
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
@@ -5298,8 +5298,8 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
 #: src/addon/client.cpp:223
@@ -5528,9 +5528,6 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "サーバーからのアドオン一覧のダウンロード中にエラーが発生しました。"
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -6043,6 +6040,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"エラー： [advancefrom] タグは機能しなくなりました。 「$lower_level」 のユニッ"
+"トは 「$higher_level」 にレベルアップできません。代わりに [modify_unit_type] "
+"タグを使用するよう、アドオン作者に依頼してください。"
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6236,17 +6236,17 @@ msgstr "なし"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "ホスト側がアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。"
-"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>"
-"$host_ver</b> です。"
+"あなたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは "
+"<b>$host_ver</b> です。"
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "あなたはアドオン（<i>$addon</i>）の互換性の無いバージョンを使用しています。あ"
 "なたのバージョンは <b>$local_ver</b>で、ホスト側のバージョンは <b>$host_ver</"
@@ -6257,8 +6257,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "敵のリーダー（達）を倒す"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "時代「 $era 」が存在しません"
 
@@ -6766,15 +6764,15 @@ msgstr "<header>text='この種族のユニット'</header>"
 msgid "corrupted original file"
 msgstr "不正なオリジナルファイル"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Do you really want to surrender the game?"
 msgstr "降参しますか？"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Surrender"
 msgstr "降参"
 
-#: src/hotkey/command_executor.cpp:809
+#: src/hotkey/command_executor.cpp:810
 msgid "Map-Screenshot"
 msgstr "マップのスクリーンショット"
 
@@ -6842,7 +6840,19 @@ msgstr "南西"
 msgid "This command is currently unavailable."
 msgstr "このコマンドは現在使用できません。"
 
-#: src/map_command_handler.hpp:195
+#: src/map_command_handler.hpp:219
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
+msgid ""
+"Unknown command '$command', did you mean '$command_proposal'? try "
+"$help_command for a list of available commands."
+msgstr ""
+"「$command」は未知のコマンドです。利用可能なコマンドの一覧は $help_command で"
+"表示できます。"
+
+#: src/map_command_handler.hpp:223
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -6850,11 +6860,11 @@ msgstr ""
 "「$command」は未知のコマンドです。利用可能なコマンドの一覧は $help_command で"
 "表示できます。"
 
-#: src/map_command_handler.hpp:211
+#: src/map_command_handler.hpp:240
 msgid "Error:"
 msgstr "エラー："
 
-#: src/map_command_handler.hpp:217
+#: src/map_command_handler.hpp:246
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -6865,7 +6875,7 @@ msgstr ""
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
 #. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
-#: src/map_command_handler.hpp:222
+#: src/map_command_handler.hpp:251
 msgid ""
 "[all|<command>]\n"
 "“all” = overview of all commands, <command> = name of a specific command "
@@ -6875,11 +6885,11 @@ msgstr ""
 "“all” = 全コマンドの概要, <command> = 特定のコマンド名（コマンドの詳細を表"
 "示）"
 
-#: src/map_command_handler.hpp:267
+#: src/map_command_handler.hpp:296
 msgid "Missing argument $arg_id"
 msgstr "引数 $arg_id が足りません"
 
-#: src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:344
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -6887,26 +6897,26 @@ msgstr ""
 "利用可能なコマンド $flags_description：\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:315 src/map_command_handler.hpp:316
-#: src/map_command_handler.hpp:346
+#: src/map_command_handler.hpp:344 src/map_command_handler.hpp:345
+#: src/map_command_handler.hpp:375
 msgid "help"
 msgstr "help"
 
-#: src/map_command_handler.hpp:316
+#: src/map_command_handler.hpp:345
 msgid "Type $help_command <command> for more info."
 msgstr "詳細を確認するには、$help_command <command>を入力してください。"
 
-#: src/map_command_handler.hpp:327
+#: src/map_command_handler.hpp:356
 msgid " No help available."
 msgstr "ヘルプはありません。"
 
-#: src/map_command_handler.hpp:333
+#: src/map_command_handler.hpp:362
 msgid "Usage:"
 msgstr "使用方法："
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
-#: src/map_command_handler.hpp:344
+#: src/map_command_handler.hpp:373
 msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] "エイリアス："
@@ -8025,15 +8035,11 @@ msgstr "ターンのカウントダウン"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%Y年%m月%d日（%a）%l:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%Y年%m月%d日（%a）%H:%M"
 
@@ -8557,15 +8563,6 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#~ msgid "Independent"
-#~ msgstr "完全ランダム"
-
-#~ msgid "No Mirror"
-#~ msgstr "ミラーマッチ防止"
-
-#~ msgid "No Ally Mirror"
-#~ msgstr "同盟ミラー防止"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -8574,15 +8571,11 @@ msgstr "行動予定オプション"
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>― Galun-飛族の指導者 Galun、Wesnoth 暦 5 年</i>"
 
-#, fuzzy
-#~| msgid "not available."
-#~ msgid "List available rooms."
-#~ msgstr "不明です。"
+#~ msgid "Independent"
+#~ msgstr "完全ランダム"
 
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Room message."
-#~ msgstr "チャットメッセージ"
+#~ msgid "No Mirror"
+#~ msgstr "ミラーマッチ防止"
 
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Use [modify_unit_type]\n"
+#~ msgid "No Ally Mirror"
+#~ msgstr "同盟ミラー防止"

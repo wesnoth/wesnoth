@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-02-20 13:43+0300\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -1002,9 +1002,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "ユーザー設定ディレクトリを $HOME 下または Windows の「My Documents\\eMy "
 "Games」下の I<name> に設定する。設定ディレクトリのパスを$HOME や 「My "
@@ -1991,10 +1991,6 @@ msgstr "グローバルタグ:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:193
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
@@ -2090,14 +2086,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:238
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
-#| "section is present in the configuration the server will run without any "
-#| "nick registration service. All additional tables that are needed for the "
-#| "B<forum_user_handler> to function can be found in table_definitions.sql "
-#| "in the Wesnoth source repository. Requires mysql support enabled. For "
-#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "

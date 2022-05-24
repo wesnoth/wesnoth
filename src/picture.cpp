@@ -42,6 +42,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
 
 static lg::log_domain log_config("config");
@@ -457,8 +458,21 @@ static void add_localized_overlay(const std::string& ovr_file, surface& orig_sur
 static surface load_image_file(const image::locator& loc)
 {
 	surface res;
+	const std::string& name = loc.get_filename();
 
-	std::string location = filesystem::get_binary_file_location("images", loc.get_filename());
+	std::string location = filesystem::get_binary_file_location("images", name);
+
+	// Many images have been converted from PNG to WEBP format,
+	// but the old filename may still be saved in savegame files etc.
+	// If the file does not exist in ".png" format, also try ".webp".
+	if(location.empty() && filesystem::ends_with(name, ".png")) {
+		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
+		location = filesystem::get_binary_file_location("images", webp_name);
+		if(!location.empty()) {
+			WRN_DP << "Replaced missing '" << name << "' with found '"
+			       << webp_name << "'." << std::endl;
+		}
+	}
 
 	{
 		if(!location.empty()) {
@@ -481,9 +495,9 @@ static surface load_image_file(const image::locator& loc)
 		}
 	}
 
-	if(!res && !loc.get_filename().empty()) {
-		ERR_DP << "could not open image '" << loc.get_filename() << "'" << std::endl;
-		if(game_config::debug && loc.get_filename() != game_config::images::missing)
+	if(!res && !name.empty()) {
+		ERR_DP << "could not open image '" << name << "'" << std::endl;
+		if(game_config::debug && name != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
 	}
 

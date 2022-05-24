@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -237,7 +237,7 @@ msgstr "Òr a bheir thu leat:"
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:338
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:367
 msgid "Notes:"
 msgstr "An aire:"
 
@@ -4096,7 +4096,7 @@ msgstr "Chan eil"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:633
+#: src/hotkey/command_executor.cpp:634
 msgid "Screenshot"
 msgstr "Glacadh-sgrìn"
 
@@ -7144,15 +7144,15 @@ msgstr "<header>text='Aonadan aig a’ chinneadh seo'</header>"
 msgid "corrupted original file"
 msgstr "faile tùsach coirbte"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Do you really want to surrender the game?"
 msgstr "A bheil thu cinnteach gu bheil thu airson an geama a ghèilleadh?"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Surrender"
 msgstr "Gèill"
 
-#: src/hotkey/command_executor.cpp:809
+#: src/hotkey/command_executor.cpp:810
 msgid "Map-Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
@@ -7220,7 +7220,19 @@ msgstr "Iar-dheas"
 msgid "This command is currently unavailable."
 msgstr "Chan eil an àithne seo ri fhaighinn an-dràsta."
 
-#: src/map_command_handler.hpp:195
+#: src/map_command_handler.hpp:219
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
+msgid ""
+"Unknown command '$command', did you mean '$command_proposal'? try "
+"$help_command for a list of available commands."
+msgstr ""
+"Àithne ‘$command’ nach aithne dhuinn, feuch $help_command airson liosta dhe "
+"àitheantan a tha ri am faighinn."
+
+#: src/map_command_handler.hpp:223
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -7228,11 +7240,11 @@ msgstr ""
 "Àithne ‘$command’ nach aithne dhuinn, feuch $help_command airson liosta dhe "
 "àitheantan a tha ri am faighinn."
 
-#: src/map_command_handler.hpp:211
+#: src/map_command_handler.hpp:240
 msgid "Error:"
 msgstr "Mearachd:"
 
-#: src/map_command_handler.hpp:217
+#: src/map_command_handler.hpp:246
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7244,7 +7256,7 @@ msgstr ""
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
 #. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
-#: src/map_command_handler.hpp:222
+#: src/map_command_handler.hpp:251
 msgid ""
 "[all|<command>]\n"
 "“all” = overview of all commands, <command> = name of a specific command "
@@ -7254,11 +7266,11 @@ msgstr ""
 "“all” = foir-shealladh air na h-àitheantan uile, <command> = ainm àithne "
 "sònraichte (heibh thu barrachd fiosrachaidh)"
 
-#: src/map_command_handler.hpp:267
+#: src/map_command_handler.hpp:296
 msgid "Missing argument $arg_id"
 msgstr "Argamaid $arg_id a dhìth"
 
-#: src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:344
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7266,26 +7278,26 @@ msgstr ""
 "Àitheantan ri fhaighinn $flags_description:\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:315 src/map_command_handler.hpp:316
-#: src/map_command_handler.hpp:346
+#: src/map_command_handler.hpp:344 src/map_command_handler.hpp:345
+#: src/map_command_handler.hpp:375
 msgid "help"
 msgstr "Cobhair"
 
-#: src/map_command_handler.hpp:316
+#: src/map_command_handler.hpp:345
 msgid "Type $help_command <command> for more info."
 msgstr "Feuch ri $help_command <àithne> airson barrachd fiosrachaidh."
 
-#: src/map_command_handler.hpp:327
+#: src/map_command_handler.hpp:356
 msgid " No help available."
 msgstr " Chan eil cobhair ri fhaighinn."
 
-#: src/map_command_handler.hpp:333
+#: src/map_command_handler.hpp:362
 msgid "Usage:"
 msgstr "Cleachdadh:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
-#: src/map_command_handler.hpp:344
+#: src/map_command_handler.hpp:373
 msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] "Alias:"

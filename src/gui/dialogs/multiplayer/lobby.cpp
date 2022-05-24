@@ -954,22 +954,22 @@ void mp_lobby::game_filter_init()
 	});
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
-		return filter_friends_->get_widget_value(*get_window()) ? info.has_friends == true : true;
+		return filter_friends_->get_widget_value() ? info.has_friends == true : true;
 	});
 
 	// Unlike the friends filter, this is an inclusion filter (do we want to also show
 	// games with blocked players) rather than an exclusion filter (do we want to show
 	// only games with friends).
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
-		return filter_ignored_->get_widget_value(*get_window()) == false ? info.has_ignored == false : true;
+		return filter_ignored_->get_widget_value() == false ? info.has_ignored == false : true;
 	});
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
-		return filter_slots_->get_widget_value(*get_window()) ? info.vacant_slots > 0 : true;
+		return filter_slots_->get_widget_value() ? info.vacant_slots > 0 : true;
 	});
 
 	lobby_info_.set_game_filter_invert(
-		[this](bool val) { return filter_invert_->get_widget_value(*get_window()) ? !val : val; });
+		[this](bool val) { return filter_invert_->get_widget_value() ? !val : val; });
 }
 
 void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)

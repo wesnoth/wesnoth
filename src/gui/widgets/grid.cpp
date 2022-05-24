@@ -38,7 +38,8 @@ namespace gui2
 {
 
 grid::grid(const unsigned rows, const unsigned cols)
-	: rows_(rows)
+	: widget()
+	, rows_(rows)
 	, cols_(cols)
 	, row_height_()
 	, col_width_()
@@ -700,9 +701,9 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* grid::create_walker()
+iteration::walker_ptr grid::create_walker()
 {
-	return new gui2::iteration::grid(*this);
+	return std::make_unique<gui2::iteration::grid>(*this);
 }
 
 void grid::set_rows(const unsigned rows)

@@ -255,11 +255,11 @@ void CVideo::update_framebuffer()
 	// multiple of logical size, which can happen when manually resizing.
 	SDL_RenderSetIntegerScale(*window, SDL_TRUE);
 
-	// Find max valid pixel scale at current window size.
-	point wsize(window->get_size());
+	// Find max valid pixel scale at current output size.
+	point osize(window->get_output_size());
 	int max_scale = std::min(
-		wsize.x / preferences::min_window_width,
-		wsize.y / preferences::min_window_height);
+		osize.x / preferences::min_window_width,
+		osize.y / preferences::min_window_height);
 	max_scale = std::min(max_scale, preferences::max_pixel_scale);
 
 	// Determine best pixel scale according to preference and window size
@@ -267,13 +267,13 @@ void CVideo::update_framebuffer()
 	if (preferences::auto_pixel_scale()) {
 		// Try to match the default size (1280x720) but do not reduce below
 		int def_scale = std::min(
-			wsize.x / preferences::def_window_width,
-			wsize.y / preferences::def_window_height);
+			osize.x / preferences::def_window_width,
+			osize.y / preferences::def_window_height);
 		scale = std::min(max_scale, def_scale);
 		// Otherwise reduce to keep below the max window size (1920x1080).
 		int min_scale = std::min(
-			wsize.x / (preferences::max_window_width+1) + 1,
-			wsize.y / (preferences::max_window_height+1) + 1);
+			osize.x / (preferences::max_window_width+1) + 1,
+			osize.y / (preferences::max_window_height+1) + 1);
 		scale = std::max(scale, min_scale);
 	} else {
 		scale = std::min(max_scale, preferences::pixel_scale());
@@ -281,8 +281,8 @@ void CVideo::update_framebuffer()
 
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
-	point osize(window->get_output_size());
-	if (lsize.x != wsize.x / scale || lsize.y != wsize.y / scale) {
+	point wsize(window->get_size());
+	if (lsize.x != osize.x / scale || lsize.y != osize.y / scale) {
 		if (!preferences::auto_pixel_scale() && scale < preferences::pixel_scale()) {
 			LOG_DP << "reducing pixel scale from desired "
 				<< preferences::pixel_scale() << " to maximum allowable "
@@ -320,8 +320,8 @@ void CVideo::update_framebuffer()
 		// Note: "surface" destructor automatically frees the old surface
 		drawingSurface = SDL_CreateRGBSurfaceWithFormat(
 			0,
-			wsize.x / scale,
-			wsize.y / scale,
+			lsize.x,
+			lsize.y,
 			bpp,
 			format
 		);
@@ -747,8 +747,8 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 	if(dpi.first != 0.0f && dpi.second != 0.0f) {
 		// adjust for pixel scale
 		SDL_Point wsize = window_size();
-		dpi.first /= wsize.x / get_width();
-		dpi.second /= wsize.y / get_height();
+		dpi.first *= float(get_width()) / wsize.x;
+		dpi.second *= float(get_height()) / wsize.y;
 		return { dpi.first / MAGIC_DPI_SCALE_NUMBER, dpi.second / MAGIC_DPI_SCALE_NUMBER };
 	}
 	// Assume a scale factor of 1.0 if the screen dpi is currently unknown.

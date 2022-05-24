@@ -36,7 +36,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -811,7 +811,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	virtual iteration::walker_ptr create_walker() = 0;
 };
 
 } // namespace gui2

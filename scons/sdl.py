@@ -96,22 +96,27 @@ def CheckSDL2Mixer(context):
 def CheckOgg(context):
     context.env["ENV"]["SDL_AUDIODRIVER"] = "dummy"
 
-    cpp_file = File("src/conftests/sdl2_audio.cpp").rfile().abspath
-    if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_audio.cpp"
+    cpp_file = File("src/conftests/sdl2_audio.cpp").rfile().get_contents().decode()
 
-    ogg_file = File("data/core/music/main_menu.ogg").rfile().abspath
-    if not os.path.isfile(ogg_file):
-        ogg_file = "data/core/music/main_menu.ogg"
+    # file1 (absolute path) works most places
+    # file2 (relative path) is required for msys2 on windows
+    # both need to be executed since just checking for the file's existence isn't enough
+    # python in the msys2 shell will find the absolute path, but the actual windows executable doesn't understand absolute unix-style paths
+    ogg_file1 = File("data/core/music/main_menu.ogg").rfile().abspath
+    ogg_file2 = "data/core/music/main_menu.ogg"
 
-    with open(cpp_file, 'r') as file:
-        test_program = file.read().replace("argv[1]", "\""+ogg_file+"\"")
+    context.Message("Checking for audio support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
 
-        context.Message("Checking for audio support in SDL... ")
-        if context.env["host"]:
-            context.Result("n/a (cross-compile)")
-            return True
-        (result, output) = context.TryRun(test_program, ".cpp")
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+ogg_file1+"\""), ".cpp")
+
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+ogg_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -120,22 +125,23 @@ def CheckOgg(context):
             return False
 
 def CheckPNG(context):
-    cpp_file = File("src/conftests/sdl2_png.cpp").rfile().abspath
-    if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_png.cpp"
+    cpp_file = File("src/conftests/sdl2_png.cpp").rfile().get_contents().decode()
 
-    img_file = File("data/core/images/scons_conftest_images/end-n.png").rfile().abspath
-    if not os.path.isfile(img_file):
-        img_file = "data/core/images/scons_conftest_images/end-n.png"
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.png").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.png"
 
-    with open(cpp_file, 'r') as file:
-        test_program = file.read().replace("argv[1]", "\""+img_file+"\"")
+    context.Message("Checking for PNG support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
 
-        context.Message("Checking for PNG support in SDL... ")
-        if context.env["host"]:
-            context.Result("n/a (cross-compile)")
-            return True
-        (result, output) = context.TryRun(test_program, ".cpp")
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -144,22 +150,23 @@ def CheckPNG(context):
             return False
 
 def CheckWebP(context):
-    cpp_file = File("src/conftests/sdl2_webp.cpp").rfile().abspath
-    if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_webp.cpp"
+    cpp_file = File("src/conftests/sdl2_webp.cpp").rfile().get_contents().decode()
 
-    img_file = File("data/core/images/scons_conftest_images/end-n.webp").rfile().abspath
-    if not os.path.isfile(img_file):
-        img_file = "data/core/images/scons_conftest_images/end-n.webp"
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.webp").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.webp"
 
-    with open(cpp_file, 'r') as file:
-        test_program = file.read().replace("argv[1]", "\""+img_file+"\"")
+    context.Message("Checking for WEBP support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
 
-        context.Message("Checking for WEBP support in SDL... ")
-        if context.env["host"]:
-            context.Result("n/a (cross-compile)")
-            return True
-        (result, output) = context.TryRun(test_program, ".cpp")
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -168,22 +175,23 @@ def CheckWebP(context):
             return False
 
 def CheckJPG(context):
-    cpp_file = File("src/conftests/sdl2_jpg.cpp").rfile().abspath
-    if not os.path.isfile(cpp_file):
-        cpp_file = "src/conftests/sdl2_jpg.cpp"
+    cpp_file = File("src/conftests/sdl2_jpg.cpp").rfile().get_contents().decode()
 
-    img_file = File("data/core/images/scons_conftest_images/end-n.jpg").rfile().abspath
-    if not os.path.isfile(img_file):
-        img_file = "data/core/images/scons_conftest_images/end-n.jpg"
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.jpg").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.jpg"
 
-    with open(cpp_file, 'r') as file:
-        test_program = file.read().replace("argv[1]", "\""+img_file+"\"")
+    context.Message("Checking for JPG support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
 
-        context.Message("Checking for JPG support in SDL... ")
-        if context.env["host"]:
-            context.Result("n/a (cross-compile)")
-            return True
-        (result, output) = context.TryRun(test_program, ".cpp")
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True

@@ -190,7 +190,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(builder_grid(c));
+	grid = std::make_shared<builder_grid>(c);
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));

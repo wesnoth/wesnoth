@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -252,7 +252,7 @@ msgstr "Ouro carregado:"
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:338
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:367
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -3989,7 +3989,7 @@ msgstr "Não"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:633
+#: src/hotkey/command_executor.cpp:634
 msgid "Screenshot"
 msgstr "Captura do ecrã"
 
@@ -7378,19 +7378,19 @@ msgstr "<header>text='Unidades desta raça'</header>"
 msgid "corrupted original file"
 msgstr "ficheiro original corrompido"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "Tens mesmo a certeza de que queres sair?"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 #, fuzzy
 #| msgid "We surrender!"
 msgid "Surrender"
 msgstr "Rendemos-nos!"
 
-#: src/hotkey/command_executor.cpp:809
+#: src/hotkey/command_executor.cpp:810
 msgid "Map-Screenshot"
 msgstr "Captura do mapa"
 
@@ -7477,7 +7477,20 @@ msgid "This command is currently unavailable."
 msgstr "Este comando está atualmente indisponível."
 
 #
-#: src/map_command_handler.hpp:195
+#: src/map_command_handler.hpp:219
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
+msgid ""
+"Unknown command '$command', did you mean '$command_proposal'? try "
+"$help_command for a list of available commands."
+msgstr ""
+"Comando ‘$command|’ desconhecido, tenta $help_command para uma lista de "
+"comandos disponíveis."
+
+#
+#: src/map_command_handler.hpp:223
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -7486,12 +7499,12 @@ msgstr ""
 "comandos disponíveis."
 
 #
-#: src/map_command_handler.hpp:211
+#: src/map_command_handler.hpp:240
 msgid "Error:"
 msgstr "Erro:"
 
 #
-#: src/map_command_handler.hpp:217
+#: src/map_command_handler.hpp:246
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7502,7 +7515,7 @@ msgstr ""
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
 #. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
-#: src/map_command_handler.hpp:222
+#: src/map_command_handler.hpp:251
 msgid ""
 "[all|<command>]\n"
 "“all” = overview of all commands, <command> = name of a specific command "
@@ -7510,12 +7523,12 @@ msgid ""
 msgstr ""
 
 #
-#: src/map_command_handler.hpp:267
+#: src/map_command_handler.hpp:296
 msgid "Missing argument $arg_id"
 msgstr "Argumento em falta $arg_id"
 
 #
-#: src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:344
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7524,29 +7537,29 @@ msgstr ""
 "$list_of_commands"
 
 #
-#: src/map_command_handler.hpp:315 src/map_command_handler.hpp:316
-#: src/map_command_handler.hpp:346
+#: src/map_command_handler.hpp:344 src/map_command_handler.hpp:345
+#: src/map_command_handler.hpp:375
 msgid "help"
 msgstr "ajuda"
 
 #
-#: src/map_command_handler.hpp:316
+#: src/map_command_handler.hpp:345
 msgid "Type $help_command <command> for more info."
 msgstr "Escreva $help_command <comando> para mais informações."
 
 #
-#: src/map_command_handler.hpp:327
+#: src/map_command_handler.hpp:356
 msgid " No help available."
 msgstr " Nenhuma ajuda disponível."
 
 #
-#: src/map_command_handler.hpp:333
+#: src/map_command_handler.hpp:362
 msgid "Usage:"
 msgstr "Uso:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
-#: src/map_command_handler.hpp:344
+#: src/map_command_handler.hpp:373
 msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] ""

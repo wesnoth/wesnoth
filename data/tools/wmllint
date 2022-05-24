@@ -223,6 +223,13 @@ aliaschanges = (
     ("Vi",   "Vt"),
     )
 
+# Deprecated lines that ought to be removed globally. Suppressed by noconvert.
+obsolete_lines = (
+    "{MAGENTA_IS_THE_TEAM_COLOR}",
+    "{SOUND:SLOW}",
+    "{SOUND:POISON}",
+    )
+
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
@@ -968,6 +975,9 @@ linechanges = (
         ("Dune Piercer", "Dune Rider"),
         ("Naga Slasher", "Naga Dirkfang"),
         ("Naga Bladewhirler", "Naga Ophidian"),
+
+        # monster unit ID changes during 1.15.x cycle
+        ("Giant Stoat", "Frost Stoat"),
 
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
@@ -2944,13 +2954,19 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
-    # handle removal of {MAGENTA_IS_THE_TEAM_COLOR}
+    # handle removal of obsolete lines without replacement
+    # obsolete_lines contains normal strings, so re.escape is needed to embed them into this regex
+    obsolete_re = re.compile(r"(\s*)(" + "|".join([re.escape(l) for l in obsolete_lines]) + r")(.*)")
     for i, line in enumerate(lines):
         if "no-syntax-rewrite" in line:
             break
-        m = re.match(r"(\s*)\{MAGENTA_IS_THE_TEAM_COLOR\}(.*)", line)
+        if "wmllint: noconvert" in line:
+            continue
+        m = obsolete_re.match(line)
         if m:
-            new_line = m.group(1) + m.group(2).lstrip()
+            # match group 1 is the indentation
+            # match group 3 contains everything after the removed part (like comments)
+            new_line = m.group(1) + m.group(3).lstrip()
             if new_line.isspace():
                 # only empty spaces, make the line blank
                 # don't remove the line to not alter the other for cycles
@@ -2958,8 +2974,8 @@ def hack_syntax(filename, lines):
             else:
                 # keep indentation and comments
                 lines[i] = new_line + "\n"
-            print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
-                                                                            i+1))
+            # match group 2 contains the removed part
+            print('"{}", line {}: removed {}'.format(filename, i+1, m.group(2)))
     # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
     in_unit = False
     for i, line in enumerate(lines):

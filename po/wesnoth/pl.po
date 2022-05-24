@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2021-07-11 17:02+0200\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: none\n"
@@ -231,7 +231,7 @@ msgstr "Przenoszone złoto:"
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:338
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:367
 msgid "Notes:"
 msgstr "Uwagi:"
 
@@ -3948,7 +3948,7 @@ msgstr "Nie"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:633
+#: src/hotkey/command_executor.cpp:634
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -6867,15 +6867,15 @@ msgstr "<header>text='Jednostki tej rasy'</header>"
 msgid "corrupted original file"
 msgstr "uszkodzony plik oryginalny"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Do you really want to surrender the game?"
 msgstr "Czy na pewno poddać tę grę?"
 
-#: src/hotkey/command_executor.cpp:396
+#: src/hotkey/command_executor.cpp:397
 msgid "Surrender"
 msgstr "Poddanie się"
 
-#: src/hotkey/command_executor.cpp:809
+#: src/hotkey/command_executor.cpp:810
 msgid "Map-Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -6943,7 +6943,19 @@ msgstr "Południowy zachód"
 msgid "This command is currently unavailable."
 msgstr "To polecenie jest w tej chwili niedostępne."
 
-#: src/map_command_handler.hpp:195
+#: src/map_command_handler.hpp:219
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
+msgid ""
+"Unknown command '$command', did you mean '$command_proposal'? try "
+"$help_command for a list of available commands."
+msgstr ""
+"Nieznane polecenie „$command” — wpisz $help_command, aby zobaczyć listę "
+"dostępnych poleceń."
+
+#: src/map_command_handler.hpp:223
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -6951,11 +6963,11 @@ msgstr ""
 "Nieznane polecenie „$command” — wpisz $help_command, aby zobaczyć listę "
 "dostępnych poleceń."
 
-#: src/map_command_handler.hpp:211
+#: src/map_command_handler.hpp:240
 msgid "Error:"
 msgstr "Błąd:"
 
-#: src/map_command_handler.hpp:217
+#: src/map_command_handler.hpp:246
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -6966,7 +6978,7 @@ msgstr ""
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
 #. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
-#: src/map_command_handler.hpp:222
+#: src/map_command_handler.hpp:251
 msgid ""
 "[all|<command>]\n"
 "“all” = overview of all commands, <command> = name of a specific command "
@@ -6976,11 +6988,11 @@ msgstr ""
 "“all” = podgląd wszystkich komend, <komenda> = nazwa konkretnej komenty "
 "(podaje więcej szczegółów)"
 
-#: src/map_command_handler.hpp:267
+#: src/map_command_handler.hpp:296
 msgid "Missing argument $arg_id"
 msgstr "Brakujący argument $arg_id"
 
-#: src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:344
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -6988,26 +7000,26 @@ msgstr ""
 "Dostępne polecenia $flags_description:\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:315 src/map_command_handler.hpp:316
-#: src/map_command_handler.hpp:346
+#: src/map_command_handler.hpp:344 src/map_command_handler.hpp:345
+#: src/map_command_handler.hpp:375
 msgid "help"
 msgstr "pomoc"
 
-#: src/map_command_handler.hpp:316
+#: src/map_command_handler.hpp:345
 msgid "Type $help_command <command> for more info."
 msgstr "Wpisz $help_command <polecenie>, aby uzyskać więcej informacji."
 
-#: src/map_command_handler.hpp:327
+#: src/map_command_handler.hpp:356
 msgid " No help available."
 msgstr " Brak dostępnej pomocy."
 
-#: src/map_command_handler.hpp:333
+#: src/map_command_handler.hpp:362
 msgid "Usage:"
 msgstr "Składnia:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
-#: src/map_command_handler.hpp:344
+#: src/map_command_handler.hpp:373
 msgid "command^Alias:"
 msgid_plural "Aliases:"
 msgstr[0] "Alias:"

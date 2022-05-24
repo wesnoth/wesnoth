@@ -34,8 +34,6 @@
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err, log_config)
 
-using acquaintances_map = std::map<std::string, preferences::acquaintance>;
-
 namespace
 {
 bool message_private_on = false;
@@ -46,7 +44,7 @@ std::set<t_translation::terrain_code> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string>> history_map;
 
-acquaintances_map acquaintances;
+std::map<std::string, preferences::acquaintance> acquaintances;
 
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
@@ -234,15 +232,10 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
-	auto [iter, success] = acquaintances.emplace(nick, new_entry);
-
-	if(!success) {
-		iter->second = new_entry;
-	}
+	auto [iter, added_new] = acquaintances.insert_or_assign(nick, new_entry);
 
 	save_acquaintances();
-
-	return std::pair(&iter->second, success);
+	return std::pair(&iter->second, added_new);
 }
 
 bool remove_acquaintance(const std::string& nick)

@@ -222,9 +222,9 @@ void custom_tod::color_slider_callback()
 {
 	time_of_day& current_tod = times_[current_tod_];
 
-	current_tod.color.r = color_field_r_->get_widget_value(*get_window());
-	current_tod.color.g = color_field_g_->get_widget_value(*get_window());
-	current_tod.color.b = color_field_b_->get_widget_value(*get_window());
+	current_tod.color.r = color_field_r_->get_widget_value();
+	current_tod.color.g = color_field_g_->get_widget_value();
+	current_tod.color.b = color_field_b_->get_widget_value();
 
 	update_tod_display();
 }
@@ -281,9 +281,9 @@ void custom_tod::update_selected_tod_info()
 
 	find_widget<slider>(get_window(), "lawful_bonus", false).set_value(current_tod.lawful_bonus);
 
-	color_field_r_->set_widget_value(*get_window(), current_tod.color.r);
-	color_field_g_->set_widget_value(*get_window(), current_tod.color.g);
-	color_field_b_->set_widget_value(*get_window(), current_tod.color.b);
+	color_field_r_->set_widget_value(current_tod.color.r);
+	color_field_g_->set_widget_value(current_tod.color.g);
+	color_field_b_->set_widget_value(current_tod.color.b);
 
 	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
 	find_widget<label>(get_window(), "tod_number", false).set_label(new_index_str);

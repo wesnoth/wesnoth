@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-lib)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-29 14:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2018-04-24 11:58+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -2615,10 +2615,12 @@ msgstr ""
 #
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
+#. [button]: id=reset_timer_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
+#: data/gui/window/mp_create_game.cfg:457
 #: data/gui/window/preferences/02_hotkeys.cfg:279
 #: data/gui/window/select_orb_colors.cfg:129
 msgid "Defaults"
@@ -2748,7 +2750,7 @@ msgstr ""
 
 #
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:990
+#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1019
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2932,7 +2934,7 @@ msgstr "Atualizado:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:566
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:572
 msgid "No description available."
 msgstr "Descrição não disponível."
 
@@ -3665,7 +3667,7 @@ msgstr "Escolha o gerador de mapas aleatório:"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:877
+#: data/gui/window/mp_create_game.cfg:906
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Settings"
 msgstr "Configurações"
@@ -3951,7 +3953,7 @@ msgstr "Data"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
-#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:898
+#: data/gui/window/game_load.cfg:317 data/gui/window/mp_create_game.cfg:927
 #: src/hotkey/hotkey_command.cpp:103
 msgid "Load Game"
 msgstr "Continuar uma Partida"
@@ -4304,7 +4306,7 @@ msgstr "Configurações do Gerador do Mapa"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:683
+#: data/gui/window/mp_create_game.cfg:712
 #: data/gui/window/mp_create_game/default_resolution.cfg:132
 #: data/gui/window/mp_create_game/small_resolution.cfg:151
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:137
@@ -5023,59 +5025,59 @@ msgstr "Tempo inicial aleatório"
 
 #
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:434
+#: data/gui/window/mp_create_game.cfg:442
 msgid "Time Limit"
 msgstr "Limite de tempo"
 
 #. [toggle_button]: id=time_limit
-#: data/gui/window/mp_create_game.cfg:435
+#: data/gui/window/mp_create_game.cfg:443
 msgid "Enable custom time limits"
 msgstr "Liga o limite de tempo de turnos"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Initial Limit"
 msgstr "Limite Inicial"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:451
+#: data/gui/window/mp_create_game.cfg:480
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Tempo máximo permitido para o primeiro turno (em segundos)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Tempo para tarefas genéricas em cada turno (em segundos)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:453
+#: data/gui/window/mp_create_game.cfg:482
 msgid "Turn Bonus"
 msgstr "Bónus por Turno"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Tempo máximo permitido para qualquer turno (em segundos)"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:455
+#: data/gui/window/mp_create_game.cfg:484
 msgid "Reservoir"
 msgstr "Reservatório"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Action Bonus"
 msgstr "Bónus de Ação"
 
 #. [grid]
-#: data/gui/window/mp_create_game.cfg:457
+#: data/gui/window/mp_create_game.cfg:486
 msgid "Time for each attack, recruit, and capture"
 msgstr "Tempo para cada ataque, recrutamento, e captura"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
-#: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
+#: data/gui/window/mp_create_game.cfg:562 data/gui/window/preferences.cfg:292
 #: data/gui/window/preferences/05_multiplayer.cfg:402
 #: data/gui/window/server_info.cfg:181 src/hotkey/hotkey_command.cpp:39
 msgid "General"
@@ -5083,75 +5085,75 @@ msgstr "General"
 
 #
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:546
+#: data/gui/window/mp_create_game.cfg:575
 msgid "Custom Options"
 msgstr "Opções próprios"
 
 #
 #. [widget]: id=tab_label
-#: data/gui/window/mp_create_game.cfg:559
+#: data/gui/window/mp_create_game.cfg:588
 msgid "Game Settings"
 msgstr "Configurações da partida"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:702
+#: data/gui/window/mp_create_game.cfg:731
 msgid "Any"
 msgstr "Qualquer"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:835
+#: data/gui/window/mp_create_game.cfg:864
 msgid "Random map options: "
 msgstr "Opções do mapa aleatório: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:856
+#: data/gui/window/mp_create_game.cfg:885
 msgid "Regenerate"
 msgstr "Regeneração"
 
 #
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Assign sides to players at random"
 msgstr "Atribuir os lados para os jogadores de forma aleatória"
 
-#: data/gui/window/mp_create_game.cfg:929
+#: data/gui/window/mp_create_game.cfg:958
 msgid "Shuffle Sides"
 msgstr "Embaralhar equipas"
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permite a utilizadores que não estão a jogar observar a partida"
 
-#: data/gui/window/mp_create_game.cfg:933
+#: data/gui/window/mp_create_game.cfg:962
 msgid "Observers"
 msgstr "Observadores"
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Strict Synchronization"
 msgstr "Sincronização Estrita"
 
-#: data/gui/window/mp_create_game.cfg:937
+#: data/gui/window/mp_create_game.cfg:966
 msgid "Stricter checks for out-of-sync errors"
 msgstr "Verificações mais rigorosas para erros de dessincronização"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Private Replay"
 msgstr "Guardar Revisão"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:970
 msgid "Whether the replay will be publicly available"
 msgstr ""
 
 #
 #. [label]
-#: data/gui/window/mp_create_game.cfg:957
+#: data/gui/window/mp_create_game.cfg:986
 msgid "Name of game:"
 msgstr "Nome da partida:"
 
 #
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1004
+#: data/gui/window/mp_create_game.cfg:1033
 #, fuzzy
 #| msgid ""
 #| "Set the password that people wanting to join your game as players must "
@@ -5601,7 +5603,7 @@ msgstr "Atalhos"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:767
+#: src/gui/dialogs/preferences_dialog.cpp:808
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -5616,7 +5618,7 @@ msgstr "Amigos no Jogo"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:768
+#: src/gui/dialogs/preferences_dialog.cpp:809
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5629,7 +5631,7 @@ msgstr "Disponível no editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:769
+#: src/gui/dialogs/preferences_dialog.cpp:810
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -5656,47 +5658,69 @@ msgstr "Apagar o Atalho"
 
 #
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:20
+#: data/gui/window/preferences/03_display.cfg:22
 msgid "Resolution:"
 msgstr "Resolução:"
 
+#. [label]: id=help_text
+#: data/gui/window/preferences/03_display.cfg:46
+msgid "Pixel scale multiplier:"
+msgstr ""
+
 #
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:32
+#: data/gui/window/preferences/03_display.cfg:80
 msgid "Change the game resolution"
 msgstr "Modifica a Resolução"
 
+#. [slider]: id=pixel_scale_slider
+#: data/gui/window/preferences/03_display.cfg:94
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
 #
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:48
+#: data/gui/window/preferences/03_display.cfg:109
 msgid "Full screen"
 msgstr "Ecrã Inteiro"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:49
+#: data/gui/window/preferences/03_display.cfg:110
 msgid "Toggle between fullscreen and window mode"
 msgstr "Alterna ecrã inteiro/em janela"
 
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:121
+msgid "Automatic pixel scale multiplier"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/window/preferences/03_display.cfg:122
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
 #
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:68
+#: data/gui/window/preferences/03_display.cfg:144
 msgid "Show floating labels"
 msgstr "Mostrar Etiquetas Flutuantes"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:69
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Show damage and healing amounts above a unit"
 msgstr "Mostrar a quantidade de dano e cura a cima da unidade"
 
 #
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:82
+#: data/gui/window/preferences/03_display.cfg:158
 msgid "Show team colors"
 msgstr "Mostrar Cores das Equipas"
 
 #
 #. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:83
+#: data/gui/window/preferences/03_display.cfg:159
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -5706,95 +5730,95 @@ msgstr ""
 
 #
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:98
+#: data/gui/window/preferences/03_display.cfg:174
 msgid "Show grid"
 msgstr "Mostrar Grelha"
 
 #
 #. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:99
+#: data/gui/window/preferences/03_display.cfg:175
 msgid "Overlay a grid over the map"
 msgstr "Sobrepõe uma grelha sobre o mapa"
 
 #
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:114
+#: data/gui/window/preferences/03_display.cfg:190
 msgid "Animate map"
 msgstr "Animar Mapa"
 
 #
 #. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:115
+#: data/gui/window/preferences/03_display.cfg:191
 msgid "Display animated terrain graphics"
 msgstr "Exibir gráficos animados de terreno"
 
 #
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:128
+#: data/gui/window/preferences/03_display.cfg:204
 msgid "Animate water"
 msgstr "Animar Água"
 
 #
 #. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:129
+#: data/gui/window/preferences/03_display.cfg:205
 msgid "Display animated water graphics (can be slow)"
 msgstr "Exibir gráficos animados da água (pode atrasar o computador)"
 
 #
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:142
+#: data/gui/window/preferences/03_display.cfg:218
 msgid "Show unit standing animations"
 msgstr "Mostra animações das unidades"
 
 #
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:143
+#: data/gui/window/preferences/03_display.cfg:219
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Animar continuamente unidades no campo de batalha"
 
 #
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:161
+#: data/gui/window/preferences/03_display.cfg:237
 msgid "Show unit idle animations"
 msgstr "Mostra animações de unidades inativas"
 
 #
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:162
+#: data/gui/window/preferences/03_display.cfg:238
 msgid "Play short random animations for idle units"
 msgstr "Executar pequenas animações aleatórias para unidades ociosas"
 
 #
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:185
+#: data/gui/window/preferences/03_display.cfg:261
 msgid "Frequency:"
 msgstr "Frequência:"
 
 #
 #. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:201
+#: data/gui/window/preferences/03_display.cfg:277
 msgid "Set the frequency of unit idle animations"
 msgstr "Configura a frequência das animações de unidades inativas"
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:274
+#: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:275
+#: data/gui/window/preferences/03_display.cfg:351
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:288
+#: data/gui/window/preferences/03_display.cfg:364
 msgid "Limit FPS"
 msgstr "Limitar FPS"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:289
+#: data/gui/window/preferences/03_display.cfg:365
 #, fuzzy
 #| msgid ""
 #| "Disabling this increases CPU usage to 100% but may slightly improve "
@@ -5808,13 +5832,13 @@ msgstr ""
 
 #
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:304
+#: data/gui/window/preferences/03_display.cfg:380
 msgid "Theme"
 msgstr "Tema"
 
 #
 #. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:305
+#: data/gui/window/preferences/03_display.cfg:381
 msgid "Change the in-game theme"
 msgstr "Mostra o tema visual do jogo"
 
@@ -6496,7 +6520,7 @@ msgstr "Recrutar"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Erro"
@@ -6509,23 +6533,23 @@ msgstr "Erro"
 msgid "Details:"
 msgstr "Detalhes:"
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:273
 msgid "feature^Lua console completion"
 msgstr "Console Lua Concluído"
 
-#: src/build_info.cpp:279
+#: src/build_info.cpp:280
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus notificações de back end"
 
-#: src/build_info.cpp:288
+#: src/build_info.cpp:289
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 notificações de back end"
 
-#: src/build_info.cpp:294
+#: src/build_info.cpp:295
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notificações de back end"
 
-#: src/build_info.cpp:332 src/desktop/version.cpp:126
+#: src/build_info.cpp:333 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr ""
 
@@ -6749,10 +6773,10 @@ msgstr "O grupo vinculado '$id' tem múltiplas definições."
 #
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
+#: src/gui/widgets/multi_page.cpp:178 src/gui/widgets/panel.cpp:127
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
-#: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
-#: src/gui/widgets/toggle_panel.cpp:326 src/gui/widgets/tree_view.cpp:280
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:322 src/gui/widgets/tree_view.cpp:283
 #: src/gui/widgets/unit_preview_pane.cpp:609
 msgid "No grid defined."
 msgstr "Nenhuma grade definida"
@@ -7771,32 +7795,32 @@ msgstr "Não espelhar: Jogadores não recebem facções idênticas"
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "Não Espelhar Aliados: Aliados não recebem facções idênticas"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:512
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:518
 msgid "No eras available for this game."
 msgstr "Não existem eras disponíveis para esta partida"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:714
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:720
 #, fuzzy
 #| msgid "Number of players: "
 msgid "number of players^$min to $max"
 msgstr "Número de jogadores:"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:811
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:831
 msgid "The selected game has no sides!"
 msgstr "A partida selecionada não tem qualquer equipa!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
 #, fuzzy
 #| msgid "The selected game has no sides!"
 msgid "The selected game cannot be created."
 msgstr "A partida selecionada não tem qualquer equipa!"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Choose Starting Scenario"
 msgstr "Escolha o cenário inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:890
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:910
 msgid "Select at which point to begin this campaign."
 msgstr "Selecione onde deseja começar esta campanha."
 
@@ -7837,36 +7861,36 @@ msgid "The End"
 msgstr "Fim"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:161
 msgid "friend"
 msgstr "amigo"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:166
 msgid "ignored"
 msgstr "ignorados"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:220
+#: src/gui/dialogs/preferences_dialog.cpp:277
 msgid "No username specified"
 msgstr "Nenhum nome de usuário especificado"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:235
 msgid "Invalid username"
 msgstr "Nome inválido"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:282
 msgid "Not on friends or ignore lists"
 msgstr "Nem na lista de amigos ou ignorados"
 
-#: src/gui/dialogs/preferences_dialog.cpp:803
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:844
+#: src/gui/dialogs/preferences_dialog.cpp:914
 msgid "No hotkey selected"
 msgstr "Nenhum atalho selecionado"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:834
+#: src/gui/dialogs/preferences_dialog.cpp:875
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7875,17 +7899,17 @@ msgstr ""
 "Desejas repor-o para “<b>$new_hotkey_action|</b>”?"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Reassign Hotkey"
 msgstr "Reconfigurar Atalhos"
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr "Todos os atalhos com o seu valor predefinido."
 
 #
-#: src/gui/dialogs/preferences_dialog.cpp:857
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "Hotkeys Reset"
 msgstr "Restabelecer Atalhos"
 
@@ -8057,7 +8081,7 @@ msgstr ""
 "Sessão discreta com <i>“$name”</i> iniciada. Se não quiser receber mensagens "
 "deste usuário, escreva <i>/ignore $name</i>\n"
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:98
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Campo obrigatório '$id' não foi definido."
 
@@ -8077,26 +8101,26 @@ msgid "Copied link!"
 msgstr "Link copiado!"
 
 #
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:222
+#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:221
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'lista_data' tem de ter o mesmo número de colunas que a 'list_definition'."
 
 #
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/listbox.cpp:873 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
+#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Nenhuma lista definida."
 
 #
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:836
-#: src/gui/widgets/listbox.cpp:878
+#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
+#: src/gui/widgets/listbox.cpp:880
 msgid "A 'list_definition' should contain one row."
 msgstr "Uma “list_definition” deve conter uma coluna."
 
 #
-#: src/gui/widgets/multi_page.cpp:198
+#: src/gui/widgets/multi_page.cpp:197
 msgid "No page defined."
 msgstr "Nenhuma página definida."
 
@@ -8121,17 +8145,17 @@ msgid "multimenu^None Selected"
 msgstr "Nenhum Selecionado"
 
 #
-#: src/gui/widgets/pane.cpp:382
+#: src/gui/widgets/pane.cpp:373
 msgid "Need at least 1 parallel item."
 msgstr "É necessário pelo menos um item em paralelo."
 
 #
-#: src/gui/widgets/size_lock.cpp:87
+#: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
 msgstr "Tamanho inválido."
 
 #
-#: src/gui/widgets/size_lock.cpp:122
+#: src/gui/widgets/size_lock.cpp:124
 #, fuzzy
 #| msgid "No list defined."
 msgid "No widget defined."
@@ -8143,29 +8167,29 @@ msgid "The number of value_labels and values don't match."
 msgstr "O número dos value_labels e valores não coincidem."
 
 #
-#: src/gui/widgets/stacked_widget.cpp:241
+#: src/gui/widgets/stacked_widget.cpp:243
 #, fuzzy
 #| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Nenhum ataque definido."
 
 #
-#: src/gui/widgets/styled_widget.cpp:608
+#: src/gui/widgets/styled_widget.cpp:601
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Encontrado um item com uma ajuda mas sem uma dica."
 
 #
-#: src/gui/widgets/tree_view.cpp:300
+#: src/gui/widgets/tree_view.cpp:303
 msgid "No nodes defined for a tree view."
 msgstr "Nenhum nó definido para visualização de árvore."
 
 #
-#: src/gui/widgets/tree_view.cpp:335
+#: src/gui/widgets/tree_view.cpp:338
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "a ID 'root' deste [nó] é reservado para implementação futura."
 
 #
-#: src/gui/widgets/tree_view.cpp:339
+#: src/gui/widgets/tree_view.cpp:342
 msgid "No node defined."
 msgstr "Nenhum nó definido."
 
@@ -9139,12 +9163,12 @@ msgid "Find Server Application"
 msgstr "Encontre o aplicativo do servidor"
 
 #
-#: src/preferences/game.cpp:881
+#: src/preferences/game.cpp:874
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
 #
-#: src/preferences/game.cpp:883
+#: src/preferences/game.cpp:876
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

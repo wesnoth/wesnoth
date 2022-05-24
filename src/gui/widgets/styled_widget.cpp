@@ -132,9 +132,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iteration::walker_base* styled_widget::create_walker()
+iteration::walker_ptr styled_widget::create_walker()
 {
-	return new iteration::walker::widget(*this);
+	return std::make_unique<iteration::walker::widget>(*this);
 }
 
 point styled_widget::get_config_minimum_size() const
@@ -530,7 +530,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 			utils::string_map symbols;
 			symbols["hotkey"] = hotkey::get_names(
 					hotkey::hotkey_command::get_command_by_command(
-							hotkey::GLOBAL__HELPTIP).command);
+							hotkey::GLOBAL__HELPTIP).id);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
 									 settings::has_helptip_message, &symbols);

@@ -10,7 +10,6 @@ echo "CXX: $CXX"
 echo "CXX_STD: $CXX_STD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
-echo "CACHE_DIR: $CACHE_DIR"
 
 version=$(grep '#define VERSION' src/wesconfig.h | cut -d\" -f2)
 echo "Found version: $version"
@@ -38,8 +37,7 @@ else
 		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH" .
 
 		docker run --cap-add=ALL --privileged \
-				--volume ~/build-cache:"$CACHE_DIR" \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
-				--env CXX_STD --env CFG --env LTO --env CACHE_DIR \
+				--env CXX_STD --env CFG --env LTO \
 				wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
 fi

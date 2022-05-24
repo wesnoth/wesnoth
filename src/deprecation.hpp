@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <string>
 
 /** See https://wiki.wesnoth.org/CompatibilityStandards for more info. */

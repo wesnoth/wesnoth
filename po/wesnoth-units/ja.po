@@ -1,13 +1,14 @@
 #
 # Translators:
 # h22, 2021
+# k konami, 2022
 # RatArmy, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 03:46 UTC\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:34+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -326,7 +327,7 @@ msgstr "弓"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "かぎ爪"
@@ -441,7 +442,7 @@ msgstr "接触"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
@@ -4760,10 +4761,6 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
-#| msgid ""
-#| "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and "
-#| "are highly resistant to non-physical damage."
 msgid ""
 "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
@@ -5103,7 +5100,7 @@ msgid "Thug"
 msgstr "悪党"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -5944,12 +5941,12 @@ msgstr ""
 msgid "ice claw"
 msgstr "氷の爪"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
 msgid "Giant Stoat"
 msgstr "巨大オコジョ"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr ""
@@ -6113,19 +6110,13 @@ msgstr "鹿毛馬"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Bay horses are defined more by their coloration than their size or "
-#| "temperment, and can be found anywhere from the battlefield to the farm to "
-#| "the wild plains and woodlands. Though an unencumbered horse will tend to "
-#| "flee if possible, they will fight back with a powerful kick when cornered."
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
-"鹿毛馬（Bay Horse）であるかどうかは大きさや気質よりも体色で判断され。戦場から"
+"鹿毛馬（Bay Horse）であるかどうかは大きさや気質よりも体色で判断され、戦場から"
 "農場、自然の平地や森など至る所で見つかります。係累の無い馬は可能であれば逃走"
 "を図り、追い詰められれば強力なキックで抵抗するでしょう。"
 
@@ -6686,14 +6677,6 @@ msgstr "ナーガの精鋭衛兵"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
-#, fuzzy
-#| msgid ""
-#| "The elite naga guards are a rigid barrier to any invaders of a naga "
-#| "stronghold. They have powerful stikes and, like the lesser Shield Guard, "
-#| "they are difficult to dislodge from their posts because of effective use "
-#| "of a shield in melee techniques. This tactic does nothing against ranged "
-#| "attacks, but the nagas can usually seek better terrain advantage in such "
-#| "situations."
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
@@ -6702,9 +6685,9 @@ msgid ""
 "attacks, but the nagas can usually seek better terrain advantage in such "
 "situations."
 msgstr ""
-"ナーガの精鋭衛兵（Naga High Guard）はナーガの要塞の強固な障壁です。彼らは強力"
-"な打撃を放つことができ、下位の盾衛兵と同様に、盾を用いた格闘技術に長けている"
-"ため防衛拠点から排除するのは困難です。この戦術は遠方からの攻撃には意味を成し"
+"ナーガの精鋭衛兵（Naga High Guard）はナーガの要塞の強固な障壁となります。彼ら"
+"は強力な打撃を放つことができます。下位の盾衛兵と同様、盾を用いた近接格闘技術"
+"に長けていて、持ち場から離すことは困難です。この戦術は遠距離戦には意味を成し"
 "ませんが、そのような状況であればナーガはより良いアドバンテージが得られる地形"
 "を探すでしょう。"
 

@@ -208,15 +208,13 @@ enum HOTKEY_CATEGORY {
 	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-using category_name_map_t = std::map<HOTKEY_CATEGORY, std::string>;
-
 /**
  * Returns the map of hotkey categories and their display names.
  *
  * These aren't translated and need be converted to a t_string before
  * being displayed to the player.
  */
-const category_name_map_t& get_category_names();
+const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
 
 /** Returns a list of all the hotkeys belonging to the given category. */
 std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category);
@@ -224,26 +222,10 @@ std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category);
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
 /**
- * Do not use this outside hotkeys.cpp.
  * hotkey_command uses t_string which might cause bugs when used at program startup,
  * so use this for the master hotkey list (and only there).
  */
-struct hotkey_command_temp
-{
-	HOTKEY_COMMAND id;
-
-	std::string command;
-
-	/** description, tooltip are untranslated */
-	std::string description;
-
-	bool hidden;
-
-	hk_scopes scope;
-	HOTKEY_CATEGORY category;
-
-	std::string tooltip;
-};
+struct hotkey_command_temp;
 
 /**
  * Stores all information related to functions that can be bound to hotkeys.
@@ -253,23 +235,20 @@ struct hotkey_command
 {
 	hotkey_command() = delete;
 
-	/** Constuct a new command from a temporary static hotkey object. */
+	/** Constructs a new command from a temporary static hotkey object. */
 	hotkey_command(const hotkey_command_temp& temp_command);
 
+	/** @todo: remove this with c++20. We can use aggregate initialization with emplace_back.*/
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 
 	hotkey_command(const hotkey_command&) = default;
 	hotkey_command& operator=(const hotkey_command&) = default;
 
-	/**
-	 * the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
-	 * there is some inconstancy with that names in this file.
-	 * This binds the command to a function. Does not need to be unique.
-	 */
-	HOTKEY_COMMAND id;
+	/** The command associated with this hotkey. Does not need to be unique. */
+	HOTKEY_COMMAND command;
 
-	/** The command is unique. */
-	std::string command;
+	/** The unique ID. */
+	std::string id;
 
 	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
 	t_string description;

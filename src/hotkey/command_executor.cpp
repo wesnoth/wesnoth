@@ -72,7 +72,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 {
 	// hotkey release handling
 	if (release) {
-		switch(cmd.id) {
+		switch(cmd.command) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
 				scroll_up(false);
@@ -94,7 +94,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// handling of hotkeys which activate even on hold events
-	switch(cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_REPEAT_RECRUIT:
 			repeat_recruit();
 			return true;
@@ -119,7 +119,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// hotkey press handling
-	switch(cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -626,7 +626,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 		return; // none of the commands here respond to a key release
     }
 
-	switch (command.command->id) {
+	switch(command.command->command) {
 		case HOTKEY_FULLSCREEN:
 			CVideo::get_singleton().toggle_fullscreen();
 			break;
@@ -664,7 +664,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			}
 			break;
 		default:
-			DBG_G << "command_executor: unknown command number " << command.command->id << ", ignoring.\n";
+			DBG_G << "command_executor: unknown command number " << command.command->command << ", ignoring.\n";
 			break;
 	}
 }
@@ -709,7 +709,7 @@ void command_executor_default::set_button_state()
 			if (!can_execute) continue;
 			enabled = true;
 
-			ACTION_STATE state = get_action_state(command_obj.id, -1);
+			ACTION_STATE state = get_action_state(command_obj.command, -1);
 			switch (state) {
 			case ACTION_SELECTED:
 			case ACTION_ON:

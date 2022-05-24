@@ -146,10 +146,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
-	{
-		return nullptr;
-	}
+	virtual iteration::walker_ptr create_walker() override;
 
 	/**
 	 * Initializes and builds the grid.
