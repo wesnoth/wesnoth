@@ -755,7 +755,7 @@ void preferences_dialog::post_build(window& window)
 	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
 
 	// Hotkey column
-	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->command); });
+	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->id); });
 
 	// Scope columns
 	hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
@@ -815,14 +815,14 @@ listbox& preferences_dialog::setup_hotkey_list()
 		}
 		visible_hotkeys_.push_back(&hotkey_item);
 
-		if(filesystem::file_exists(game_config::path + "/images/icons/action/" + hotkey_item.command + "_25.png")) {
-			row_icon = "icons/action/" + hotkey_item.command + "_25.png~CROP(3,3,18,18)";
+		if(filesystem::file_exists(game_config::path + "/images/icons/action/" + hotkey_item.id + "_25.png")) {
+			row_icon = "icons/action/" + hotkey_item.id + "_25.png~CROP(3,3,18,18)";
 		} else {
 			row_icon = default_icon;
 		}
 
 		row_action = hotkey_item.description;
-		row_hotkey = hotkey::get_names(hotkey_item.command);
+		row_hotkey = hotkey::get_names(hotkey_item.id);
 
 		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME]      ? text_game_feature_on : "";
 		row_is_g_markup = "true";
@@ -847,7 +847,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 
-	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
+	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.id);
 	bind_dlg.show();
 
 	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
@@ -867,7 +867,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	hotkey::scope_changer scope_restorer;
 	hotkey::set_active_scopes(hotkey_item.scope);
 
-	if(oldhk && oldhk->get_command() == hotkey_item.command) {
+	if(oldhk && oldhk->get_command() == hotkey_item.id) {
 		return;
 	}
 
@@ -889,7 +889,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	// We need to recalculate all hotkey names in because we might have removed a hotkey from another command.
 	for(std::size_t i = 0; i < hotkeys.get_item_count(); ++i) {
 		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
-		find_widget<label>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));
+		find_widget<label>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.id));
 	}
 }
 
@@ -916,8 +916,8 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	}
 
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
-	hotkey::clear_hotkeys(hotkey_item.command);
-	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
+	hotkey::clear_hotkeys(hotkey_item.id);
+	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.id));
 }
 
 void preferences_dialog::hotkey_filter_callback() const

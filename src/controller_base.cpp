@@ -452,7 +452,7 @@ void controller_base::show_menu(
 		const std::string& id = c["id"];
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
+		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.command))) {
 			items.emplace_back("id", id);
 		}
 	}

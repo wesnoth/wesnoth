@@ -36,9 +36,9 @@ namespace hotkey
 {
 struct hotkey_command_temp
 {
-	HOTKEY_COMMAND id;
+	HOTKEY_COMMAND command;
 
-	std::string_view command;
+	std::string_view id;
 
 	/** description, tooltip are untranslated */
 	std::string_view description;
@@ -392,10 +392,10 @@ bool remove_wml_hotkey(const std::string& id)
 {
 	const hotkey::hotkey_command& command = get_hotkey_command(id);
 
-	if(command.id == hotkey::HOTKEY_NULL) {
+	if(command.command == hotkey::HOTKEY_NULL) {
 		LOG_G << "remove_wml_hotkey: command with id=" + id + " doesn't exist\n";
 		return false;
-	} else if(command.id != hotkey::HOTKEY_WML) {
+	} else if(command.command != hotkey::HOTKEY_WML) {
 		LOG_G << "remove_wml_hotkey: command with id=" + id + " cannot be removed because it is no wml menu hotkey\n";
 		return false;
 	} else {
@@ -405,7 +405,7 @@ bool remove_wml_hotkey(const std::string& id)
 		// the end, since this function is used to removed WML hotkeys, which are added after
 		// the built-ins.
 		for(auto itor = known_hotkeys.rbegin(); itor != known_hotkeys.rend(); ++itor) {
-			if(itor->command == id) {
+			if(itor->id == id) {
 				known_hotkeys.erase(std::next(itor).base());
 				break;
 			}
@@ -415,7 +415,7 @@ bool remove_wml_hotkey(const std::string& id)
 		command_map.clear();
 
 		for(std::size_t index = 0; index < known_hotkeys.size(); ++index) {
-			command_map[known_hotkeys[index].command] = index;
+			command_map[known_hotkeys[index].id] = index;
 		}
 
 		return true;
@@ -424,7 +424,7 @@ bool remove_wml_hotkey(const std::string& id)
 
 bool has_hotkey_command(const std::string& id)
 {
-	return get_hotkey_command(id).id != hotkey::HOTKEY_NULL;
+	return get_hotkey_command(id).command != hotkey::HOTKEY_NULL;
 }
 
 void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey)
@@ -459,11 +459,11 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 }
 
 hotkey_command::hotkey_command(const hotkey_command_temp& temp_command)
-	: id(temp_command.id)
-	, command(temp_command.command)
+	: command(temp_command.command)
+	, id(temp_command.id)
 	, description(std::string(temp_command.description), "wesnoth-lib")
 	, hidden(temp_command.hidden)
-	, toggle(toggle_commands.count(temp_command.id) > 0)
+	, toggle(toggle_commands.count(temp_command.command) > 0)
 	, scope(temp_command.scope)
 	, category(temp_command.category)
 	, tooltip(std::string(temp_command.tooltip), "wesnoth-lib")
@@ -478,8 +478,8 @@ hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd,
 		hotkey::hk_scopes scop,
 		hotkey::HOTKEY_CATEGORY cat,
 		const t_string& toolt)
-	: id(cmd)
-	, command(id_)
+	: command(cmd)
+	, id(id_)
 	, description(desc)
 	, hidden(hid)
 	, toggle(tog)
@@ -496,10 +496,11 @@ const hotkey_command& hotkey_command::null_command()
 
 bool hotkey_command::null() const
 {
-	if(id == HOTKEY_NULL || command == "null") {
+	if(command == HOTKEY_NULL || id == "null") {
 		const hotkey_command& null_cmd = null_command();
 
-		if(id == null_cmd.id && command == null_cmd.command && scope == null_cmd.scope && description == null_cmd.description) {
+		if(command == null_cmd.command && id == null_cmd.id && scope == null_cmd.scope
+			&& description == null_cmd.description) {
 			return true;
 		} else {
 			ERR_G << "the hotkey command seems to be the null command but it is not 100% sure. This shouldn't happen";
@@ -513,7 +514,7 @@ bool hotkey_command::null() const
 const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
 {
 	for(hotkey_command& cmd : known_hotkeys) {
-		if(cmd.id == command) {
+		if(cmd.command == command) {
 			return cmd;
 		}
 	}
@@ -533,8 +534,8 @@ const hotkey_command& get_hotkey_null()
 
 void delete_all_wml_hotkeys()
 {
-	while(known_hotkeys.back().id == hotkey::HOTKEY_WML) {
-		command_map.erase(known_hotkeys.back().command);
+	while(known_hotkeys.back().command == hotkey::HOTKEY_WML) {
+		command_map.erase(known_hotkeys.back().id);
 
 		known_hotkeys.pop_back();
 	}
@@ -570,10 +571,10 @@ void init_hotkey_commands()
 		auto& h = known_hotkeys.emplace_back(cmd);
 
 		// Note the known_hotkeys index associated with this command.
-		command_map[h.command] = i++;
+		command_map[h.id] = i++;
 
 		// Record this hotkey's id in the appropriate category list.
-		hotkeys_by_category[h.category].push_back(h.id);
+		hotkeys_by_category[h.category].push_back(h.command);
 	}
 }
 
@@ -584,7 +585,7 @@ void clear_hotkey_commands()
 
 HOTKEY_COMMAND get_id(const std::string& command)
 {
-	return get_hotkey_command(command).id;
+	return get_hotkey_command(command).command;
 }
 
 const std::map<HOTKEY_CATEGORY, std::string>& get_category_names()

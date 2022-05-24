@@ -244,15 +244,11 @@ struct hotkey_command
 	hotkey_command(const hotkey_command&) = default;
 	hotkey_command& operator=(const hotkey_command&) = default;
 
-	/**
-	 * the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
-	 * there is some inconstancy with that names in this file.
-	 * This binds the command to a function. Does not need to be unique.
-	 */
-	HOTKEY_COMMAND id;
+	/** The command associated with this hotkey. Does not need to be unique. */
+	HOTKEY_COMMAND command;
 
-	/** The command is unique. */
-	std::string command;
+	/** The unique ID. */
+	std::string id;
 
 	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
 	t_string description;
