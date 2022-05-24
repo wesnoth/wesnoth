@@ -28,6 +28,7 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class button;
+class drawing;
 class image;
 class label;
 class tree_view;
@@ -77,7 +78,7 @@ protected:
 private:
 	utils::optional_reference<const unit_type> current_type_;
 
-	image* icon_type_;
+	drawing* icon_type_;
 	image* icon_race_;
 	image* icon_alignment_;
 

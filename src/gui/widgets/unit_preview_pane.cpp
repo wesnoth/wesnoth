@@ -20,6 +20,7 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -73,7 +74,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<image>(this, "type_image", false, false);
+	icon_type_              = find_widget<drawing>(this, "type_image", false, false);
 	icon_race_              = find_widget<image>(this, "type_race", false, false);
 	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
 
@@ -281,7 +282,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -426,7 +427,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}
