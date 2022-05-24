@@ -991,10 +991,13 @@ void menu::draw()
 
 	bg_restore();
 
-	clip_rect_setter clipping_rect =
-			clip_rect_setter(video().getDrawingSurface(), clip_rect(), clip_rect() != nullptr);
-
-	draw_contents();
+	const SDL_Rect* clip = clip_rect();
+	if (clip) {
+		auto clipper = video().set_clip(*clip);
+		draw_contents();
+	} else {
+		draw_contents();
+	}
 
 	set_dirty(false);
 }

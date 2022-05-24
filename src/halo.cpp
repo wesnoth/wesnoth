@@ -25,6 +25,7 @@
 #include "halo.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/texture.hpp"
 
 #include <iostream>
 
@@ -63,9 +64,9 @@ private:
 
 	ORIENTATION orientation_;
 
-	int x_, y_;
-	surface surf_, buffer_;
-	SDL_Rect rect_;
+	int x_, y_, w_, h_;
+	texture tex_, buffer_;
+	SDL_Rect rect_, buffer_pos_;
 
 	/** The location of the center of the halo. */
 	map_location loc_;
@@ -141,9 +142,12 @@ halo_impl::effect::effect(display * screen, int xpos, int ypos, const animated<i
 	orientation_(orientation),
 	x_(0),
 	y_(0),
-	surf_(nullptr),
-	buffer_(nullptr),
+	w_(0),
+	h_(0),
+	tex_(),
+	buffer_(),
 	rect_(sdl::empty_rect),
+	buffer_pos_(sdl::empty_rect),
 	loc_(loc),
 	overlayed_hexes_(),
 	disp(screen)
@@ -163,7 +167,7 @@ void halo_impl::effect::set_location(int x, int y)
 	if (new_x != x_ || new_y != y_) {
 		x_ = new_x;
 		y_ = new_y;
-		buffer_ = nullptr;
+		buffer_.reset();
 		overlayed_hexes_.clear();
 	}
 }
@@ -192,24 +196,27 @@ bool halo_impl::effect::render()
 	}
 
 	images_.update_last_draw_time();
-	surf_ = image::get_image(current_image(),image::SCALED_TO_ZOOM);
-	if(surf_ == nullptr) {
+	surface surf = image::get_image(current_image(),image::SCALED_TO_ZOOM);
+	if(surf == nullptr) {
 		return false;
 	}
 	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
-		surf_ = image::reverse_image(surf_);
+		surf = image::reverse_image(surf);
 	}
 	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
-		surf_ = flop_surface(surf_);
+		surf = flop_surface(surf);
 	}
+	w_ = surf->w;
+	h_ = surf->h;
+	tex_ = texture(surf);
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());
 
-	const int xpos = x_ + screenx - surf_->w/2;
-	const int ypos = y_ + screeny - surf_->h/2;
+	const int xpos = x_ + screenx - w_/2;
+	const int ypos = y_ + screeny - h_/2;
 
-	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
+	SDL_Rect rect {xpos, ypos, w_, h_};
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_outside_area();
 
@@ -224,29 +231,23 @@ bool halo_impl::effect::render()
 	}
 
 	if(sdl::rects_overlap(rect,clip_rect) == false) {
-		buffer_ = nullptr;
+		buffer_.reset();
 		return false;
 	}
 
-	surface& screen = disp->get_screen_surface();
+	auto clipper = disp->video().set_clip(clip_rect);
 
-	const clip_rect_setter clip_setter(screen, &clip_rect);
-	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
-		SDL_Rect rect2 = rect_;
-		buffer_ = get_surface_portion(screen,rect2);
-	} else {
-		SDL_Rect rect2 = rect_;
-		sdl_copy_portion(screen,&rect2,buffer_,nullptr);
-	}
+	buffer_pos_ = rect_;
+	buffer_ = disp->video().read_texture(&buffer_pos_);
 
-	sdl_blit(surf_,nullptr,screen,&rect);
+	disp->video().blit_texture(tex_, &rect);
 
 	return true;
 }
 
 void halo_impl::effect::unrender()
 {
-	if (!surf_ || !buffer_) {
+	if (tex_ == nullptr || buffer_ == nullptr) {
 		return;
 	}
 
@@ -259,21 +260,21 @@ void halo_impl::effect::unrender()
 		return;
 	}
 
-	surface& screen = disp->get_screen_surface();
-
 	SDL_Rect clip_rect = disp->map_outside_area();
-	const clip_rect_setter clip_setter(screen, &clip_rect);
+	auto clipper = disp->video().set_clip(clip_rect);
 
 	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());
 
-	const int xpos = x_ + screenx - surf_->w/2;
-	const int ypos = y_ + screeny - surf_->h/2;
+	const int xpos = x_ + screenx - w_/2;
+	const int ypos = y_ + screeny - h_/2;
 
-	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
-	sdl_blit(buffer_,nullptr,screen,&rect);
+	buffer_pos_.x += xpos - rect_.x;
+	buffer_pos_.y += ypos - rect_.y;
+
+	disp->video().blit_texture(buffer_, &buffer_pos_);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const

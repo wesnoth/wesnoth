@@ -247,9 +247,10 @@ display::display(const display_context* dc,
 
 	read(level.child_or_empty("display"));
 
-	if(screen_.non_interactive()
-		&& (screen_.getDrawingSurface() != nullptr
-		&& screen_.faked())) {
+	if (screen_.non_interactive()
+		&& screen_.surface_initialized()
+		&& screen_.faked())
+	{
 		screen_.lock_updates(true);
 	}
 
@@ -779,7 +780,7 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		return screen_.getDrawingSurface().clone();
+		return screen_.read_pixels();
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
@@ -1266,8 +1267,7 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.sort();
 
 	SDL_Rect clip_rect = map_area();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	auto clipper = screen_.set_clip(clip_rect);
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -1284,14 +1284,9 @@ void display::drawing_buffer_commit()
 
 	for(const blit_helper& blit : drawing_buffer_) {
 		for(const surface& surf : blit.surf()) {
-			// Note that dstrect can be changed by sdl_blit
-			// and so a new instance should be initialized
-			// to pass to each call to sdl_blit.
-			SDL_Rect dstrect{blit.x(), blit.y(), 0, 0};
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect* srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h) ? &srcrect : nullptr;
-			sdl_blit(surf, srcrectArg, screen, &dstrect);
-			// NOTE: the screen part should already be marked as 'to update'
+			screen_.blit_surface(blit.x(), blit.y(), surf, srcrectArg, nullptr);
 		}
 	}
 	drawing_buffer_clear();
@@ -1318,15 +1313,13 @@ void display::flip()
 		return;
 	}
 
-	surface& drawingSurface = video().getDrawingSurface();
-
-	font::draw_floating_labels(drawingSurface);
+	font::draw_floating_labels();
 	events::raise_volatile_draw_event();
 
 	video().render_screen();
 
 	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(drawingSurface);
+	font::undraw_floating_labels();
 }
 
 // frametime is in milliseconds
@@ -1419,7 +1412,7 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	}
 }
 
-static void draw_label(CVideo& video, surface target, const theme::label& label)
+static void draw_label(CVideo& video, const theme::label& label)
 {
 	//log_scope("draw label");
 
@@ -1435,7 +1428,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 				surf = scale_surface(surf,loc.w,loc.h);
 			}
 
-			sdl_blit(surf,nullptr,target,&loc);
+			video.blit_surface(surf, &loc);
 		}
 
 		if(text.empty() == false) {
@@ -1448,8 +1441,6 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
-	surface& screen(screen_.getDrawingSurface());
-
 	/*
 	 * The minimap is also a panel, force it to update its contents.
 	 * This is required when the size of the minimap has been modified.
@@ -1461,13 +1452,13 @@ void display::draw_all_panels()
 	}
 
 	for(const auto& label : theme_.labels()) {
-		draw_label(video(), screen, label);
+		draw_label(video(), label);
 	}
 
 	render_buttons();
 }
 
-static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
+static void draw_background(CVideo& screen_, const SDL_Rect& area, const std::string& image)
 {
 	// No background image, just fill in black.
 	if(image.empty()) {
@@ -1486,10 +1477,10 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
 	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
 
+	auto clipper = screen_.set_clip(area);
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = sdl::create_rect(w_off, h_off, 0, 0);
-			sdl_blit(background, nullptr, screen, &clip);
+			screen_.blit_surface(w_off, h_off, background);
 		}
 	}
 }
@@ -1640,10 +1631,8 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		const surface& screen = get_screen_surface();
-		clip_rect_setter set_clip_rect(screen, &clip_rect);
-		SDL_FillRect(screen, &clip_rect, 0x00000000);
-		draw_background(screen, clip_rect, theme_.border().background_image);
+		screen_.fill(clip_rect, 0, 0, 0, 0);
+		draw_background(screen_, clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
 		// Force a full map redraw
@@ -1764,11 +1753,10 @@ void display::draw_minimap()
 		}
 	}
 
-	const surface& screen(screen_.getDrawingSurface());
-	clip_rect_setter clip_setter(screen, &area);
+	auto clipper = screen_.set_clip(area);
 
 	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color, screen);
+	draw_centered_on_background(minimap_, area, back_color, screen_);
 
 	//update the minimap location for mouse and units functions
 	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
@@ -1821,7 +1809,7 @@ void display::draw_minimap()
 	};
 
 	for(const auto& r : outline_parts) {
-		SDL_FillRect(screen_.getDrawingSurface(), &r, 0x00FFFFFF);
+		screen_.fill(r, 255, 255, 255, 0);
 	}
 }
 
@@ -1873,7 +1861,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		SDL_FillRect(screen_.getDrawingSurface(), &r, col.to_argb_bytes());
+		screen_.fill(r, col.r, col.g, col.b, col.a);
 	}
 }
 
@@ -1923,8 +1911,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		surface& screen(screen_.getDrawingSurface());
-
 		SDL_Rect dstrect = map_area();
 		dstrect.x += diff_x;
 		dstrect.y += diff_y;
@@ -1934,9 +1920,9 @@ bool display::scroll(int xmove, int ymove, bool force)
 		srcrect.x -= diff_x;
 		srcrect.y -= diff_y;
 
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen, &srcrect, screen, &dstrect);
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
+		// TODO: highdpi - This is gross and should be replaced
+		texture t = screen_.read_texture(&srcrect);
+		screen_.blit_texture(t, &dstrect);
 	}
 
 	if(diff_y != 0) {
@@ -2497,8 +2483,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	auto clipper = screen_.set_clip(clip_rect);
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
@@ -2734,13 +2719,13 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		sdl_blit(img, &visible_area, screen_.getDrawingSurface(), &target);
+		screen_.blit_surface(target.x, target.y, img, &visible_area, nullptr);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img = scale_surface(img,rect.w,rect.h);
 		}
 
-		sdl_blit(img, nullptr, screen_.getDrawingSurface(), &target);
+		screen_.blit_surface(img, &target);
 	}
 }
 
@@ -2785,7 +2770,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	report = *new_cfg;
 
 	if (surf) {
-		sdl_blit(surf, nullptr, screen_.getDrawingSurface(), &rect);
+		screen_.blit_surface(surf, &rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
@@ -2799,7 +2784,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf = get_surface_portion(screen_.getDrawingSurface(), rect);
+			surf = screen_.read_pixels_low_res(&rect);
 			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}

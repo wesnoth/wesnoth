@@ -537,8 +537,7 @@ void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 	bg_restore();
-	surface& screen = video().getDrawingSurface();
-	clip_rect_setter clip_rect_set(screen, &loc);
+	auto clipper = video().set_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
 		dst.y -= get_position();
@@ -558,12 +557,12 @@ void help_text_area::draw_contents()
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
-					SDL_FillRect(screen, &draw_rect, 0);
+					video().fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			sdl_blit(it->surf, nullptr, screen, &dst);
+			video().blit_surface(it->surf, &dst);
 		}
 	}
 }

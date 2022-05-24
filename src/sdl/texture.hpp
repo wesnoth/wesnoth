@@ -58,6 +58,9 @@ public:
 		return info(*this);
 	}
 
+	/** Sets the texture's alpha modifier. */
+	void set_alpha_mod(uint8_t alpha);
+
 	/** Releases ownership of the managed texture and resets the ptr to null. */
 	void reset();
 

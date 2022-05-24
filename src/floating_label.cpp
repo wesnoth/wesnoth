@@ -45,10 +45,11 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 #if 0
 	: img_(),
 #else
-	: surf_(surf)
-	, buf_(nullptr)
+	: tex_()
+	, buf_()
 	, buf_pos_()
 #endif
+	, draw_size_()
 	, fadeout_(0)
 	, time_start_(0)
 	, text_(text)
@@ -70,6 +71,10 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
 {
+	if (surf.get()) {
+		tex_ = texture(surf);
+		draw_size_ = {surf->w, surf->h};
+	}
 }
 
 void floating_label::move(double xmove, double ymove)
@@ -90,9 +95,10 @@ int floating_label::xpos(std::size_t width) const
 	return xpos;
 }
 
-surface floating_label::create_surface()
+bool floating_label::create_texture()
 {
-	if(!surf_) {
+	if(tex_ == nullptr) {
+		DBG_FT << "creating floating label texture" << std::endl;
 		font::pango_text& text = font::get_text_renderer();
 
 		text.set_link_aware(false)
@@ -117,7 +123,7 @@ surface floating_label::create_surface()
 
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
-			return nullptr;
+			return false;
 		}
 
 		// combine foreground text with its background
@@ -127,7 +133,9 @@ surface floating_label::create_surface()
 
 			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
-				return surf_ = foreground;
+				tex_ = texture(foreground);
+				draw_size_ = {foreground->w, foreground->h};
+				return tex_ != nullptr;
 			}
 
 			uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
@@ -143,7 +151,8 @@ surface floating_label::create_surface()
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
-			surf_ = background;
+			tex_ = texture(background);
+			draw_size_ = {background->w, background->h};
 		} else {
 			// background is blurred shadow of the text
 			surface background(foreground->w + 4, foreground->h + 4);
@@ -154,46 +163,47 @@ surface floating_label::create_surface()
 
 			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				return surf_ = foreground;
+				tex_ = texture(foreground);
+				draw_size_ = {foreground->w, foreground->h};
+				return tex_ != nullptr;
 			}
 			sdl_blit(foreground, nullptr, background, &r);
-			surf_ = background;
+			tex_ = texture(background);
+			draw_size_ = {background->w, background->h};
 		}
 	}
 
-	return surf_;
+	return tex_ != nullptr;
 }
 
-void floating_label::draw(int time, surface screen)
+void floating_label::draw(int time)
 {
 	if(!visible_) {
-		buf_ = nullptr;
+		buf_.reset();
 		return;
 	}
 
-	if(screen == nullptr) {
+	if (!create_texture()) {
 		return;
-	}
-
-	create_surface();
-	if(surf_ == nullptr) {
-		return;
-	}
-
-	if(buf_ == nullptr) {
-		buf_ = surface(surf_->w, surf_->h);
-		if(buf_ == nullptr) {
-			return;
-		}
 	}
 
 	SDL_Point pos = get_loc(time);
-	buf_pos_ = sdl::create_rect(pos.x, pos.y, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	//important: make a copy of buf_pos_ because sdl_blit modifies dst_rect.
-	SDL_Rect rect = buf_pos_;
-	sdl_copy_portion(screen, &rect, buf_, nullptr);
-	sdl_blit(get_surface(time), nullptr, screen, &rect);
+	SDL_Rect draw_rect = {pos.x, pos.y, draw_size_.x, draw_size_.y};
+	buf_pos_ = draw_rect;
+
+	CVideo& video = CVideo::get_singleton();
+	auto clipper = video.set_clip(clip_rect_);
+
+	// Read buf_ back from the screen.
+	// buf_pos_ will be intersected with the drawing area,
+	// so might not match draw_rect after this.
+	buf_ = video.read_texture(&buf_pos_);
+
+	// Fade the label out according to the time.
+	tex_.set_alpha_mod(get_alpha(time));
+
+	// Apply the label texture to the screen.
+	video.blit_texture(tex_, &draw_rect);
 }
 
 void floating_label::set_lifetime(int lifetime, int fadeout)
@@ -208,33 +218,37 @@ SDL_Point floating_label::get_loc(int time)
 {
 	int time_alive = get_time_alive(time);
 	return {
-		static_cast<int>(time_alive * xmove_ + xpos(surf_->w)),
+		static_cast<int>(time_alive * xmove_ + xpos(draw_size_.x)),
 		static_cast<int>(time_alive * ymove_ + ypos_)
- 	};
+	};
 }
 
-surface floating_label::get_surface(int time)
+uint8_t floating_label::get_alpha(int time)
 {
 	if(lifetime_ >= 0 && fadeout_ > 0) {
 		int time_alive = get_time_alive(time);
-		if(time_alive >= lifetime_ && surf_ != nullptr) {
+		if(time_alive >= lifetime_ && tex_ != nullptr) {
 			// fade out moving floating labels
-			int alpha_add = -255 * (time_alive - lifetime_) / fadeout_;
-			return adjust_surface_alpha_add(surf_, alpha_add);
+			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
+			if (alpha_sub >= 255) {
+				return 0;
+			} else {
+				return 255 - alpha_sub;
+			}
 		}
 	}
-	return surf_;
+	return 255;
 }
 
-void floating_label::undraw(surface screen)
+void floating_label::undraw()
 {
-	if(screen == nullptr || buf_ == nullptr) {
+	if(buf_ == nullptr) {
 		return;
 	}
 
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	SDL_Rect rect = buf_pos_;
-	sdl_blit(buf_, nullptr, screen, &rect);
+	CVideo& video = CVideo::get_singleton();
+	auto clipper = video.set_clip(clip_rect_);
+	video.blit_texture(buf_, &buf_pos_);
 }
 
 int add_floating_label(const floating_label& flabel)
@@ -297,9 +311,9 @@ SDL_Rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
-		const surface surf = i->second.create_surface();
-		if(surf != nullptr) {
-			return {0, 0, surf->w, surf->h};
+		if (i->second.create_texture()) {
+			SDL_Point size = i->second.get_draw_size();
+			return {0, 0, size.x, size.y};
 		}
 	}
 	return sdl::empty_rect;
@@ -325,7 +339,7 @@ floating_label_context::~floating_label_context()
 	label_contexts.pop();
 }
 
-void draw_floating_labels(surface screen)
+void draw_floating_labels()
 {
 	if(label_contexts.empty()) {
 		return;
@@ -338,12 +352,12 @@ void draw_floating_labels(surface screen)
 	// are displayed over earlier added labels.
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		if(context.count(i->first) > 0) {
-			i->second.draw(time, screen);
+			i->second.draw(time);
 		}
 	}
 }
 
-void undraw_floating_labels(surface screen)
+void undraw_floating_labels()
 {
 	if(label_contexts.empty()) {
 		return;
@@ -356,7 +370,7 @@ void undraw_floating_labels(surface screen)
 	//into the exact state it started in.
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
 		if(context.count(i->first) > 0) {
-			i->second.undraw(screen);
+			i->second.undraw();
 		}
 	}
 

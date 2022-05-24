@@ -193,8 +193,6 @@ void textbox::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 
-	surface& surf = video().getDrawingSurface();
-
 	color_t c(0, 0, 0);
 
 	double& alpha = focus(nullptr) ? alpha_focus_ : alpha_;
@@ -237,7 +235,7 @@ void textbox::draw_contents()
 						, right - startx
 						, line_height_);
 
-				const clip_rect_setter clipper(surf, &loc);
+				auto clipper = video().set_clip(loc);
 
 				color_t c2(0, 0, 160, 140);
 				sdl::fill_rectangle(rect, c2);
@@ -248,14 +246,14 @@ void textbox::draw_contents()
 		}
 
 		if(enabled()) {
-			sdl_blit(text_image_, &src, surf, &dest);
+			video().blit_surface(dest.x, dest.y, text_image_, &src, nullptr);
 		} else {
 			// HACK: using 30% opacity allows white text to look as though it is grayed out,
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
 			adjust_surface_alpha(text_image_, floating_to_fixed_point(0.3));
-			sdl_blit(text_image_, &src, surf, &dest);
+			video().blit_surface(dest.x, dest.y, text_image_, &src, nullptr);
 		}
 	}
 

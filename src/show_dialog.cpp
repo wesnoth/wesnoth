@@ -298,9 +298,10 @@ void dialog_frame::draw_background()
 	}
 
 	if (dialog_style_.blur_radius) {
-		surface surf = ::get_surface_portion(video_.getDrawingSurface(), dim_.exterior);
+		SDL_Rect r = dim_.exterior;
+		surface surf = video_.read_pixels_low_res(&r);
 		surf = blur_surface(surf, dialog_style_.blur_radius);
-		sdl_blit(surf, nullptr, video_.getDrawingSurface(), &dim_.exterior);
+		video_.blit_surface(surf, &r);
 	}
 
 	if(bg_ == nullptr) {
@@ -315,7 +316,7 @@ void dialog_frame::draw_background()
 			SDL_Rect dst = src;
 			dst.x = dim_.interior.x + i;
 			dst.y = dim_.interior.y + j;
-			sdl_blit(bg_, &src, video_.getDrawingSurface(), &dst);
+			video_.blit_surface(dst.x, dst.y, bg_, &src, nullptr);
 		}
 	}
 }
