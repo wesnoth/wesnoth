@@ -560,6 +560,10 @@ void CVideo::render_low_res(SDL_Rect* src_rect)
 	}
 
 	SDL_Rect r = clip_to_draw_area(src_rect);
+	if(SDL_RectEmpty(&r)) {
+		return;
+	}
+
 	uint8_t bytes_per_pixel = SDL_BYTESPERPIXEL(drawingSurface->format->format);
 
 	// Upload the drawing surface to the drawing texture.
