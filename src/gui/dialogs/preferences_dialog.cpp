@@ -114,15 +114,9 @@ preferences_dialog::preferences_dialog(const PREFERENCE_VIEW initial_view)
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
-	, cat_names_()
+	, visible_categories_()
 	, initial_index_(pef_view_map[initial_view])
 {
-	for(const auto& name : hotkey::get_category_names()) {
-		// Don't include categories with no hotkeys
-		if(!hotkey::get_hotkeys_by_category(name.first).empty()) {
-			cat_names_[name.first] = t_string(name.second, "wesnoth-lib");
-		}
-	}
 }
 
 // Helper function to refresh resolution list
@@ -734,15 +728,7 @@ void preferences_dialog::post_build(window& window)
 	// HOTKEYS PANEL
 	//
 
-	std::vector<config> hotkey_category_entries;
-	for(const auto& name : cat_names_) {
-		hotkey_category_entries.emplace_back("label", name.second, "checkbox", false);
-	}
-
 	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
-
-	hotkey_menu.set_values(hotkey_category_entries);
-
 	connect_signal_notify_modified(hotkey_menu,
 		std::bind(&preferences_dialog::hotkey_filter_callback, this));
 
@@ -784,55 +770,73 @@ void preferences_dialog::post_build(window& window)
 
 listbox& preferences_dialog::setup_hotkey_list()
 {
-	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
-
 	std::map<std::string, string_map> row_data;
 
-	t_string& row_icon =   row_data["img_icon"]["label"];
+	t_string& row_icon   = row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];
 	t_string& row_hotkey = row_data["lbl_hotkey"]["label"];
 
-	t_string& row_is_g        = row_data["lbl_is_game"]["label"];
-	t_string& row_is_g_markup = row_data["lbl_is_game"]["use_markup"];
-	t_string& row_is_e        = row_data["lbl_is_editor"]["label"];
-	t_string& row_is_e_markup = row_data["lbl_is_editor"]["use_markup"];
-	t_string& row_is_m        = row_data["lbl_is_mainmenu"]["label"];
-	t_string& row_is_m_markup = row_data["lbl_is_mainmenu"]["use_markup"];
+	t_string& row_is_g   = row_data["lbl_is_game"]["label"];
+	t_string& row_is_e   = row_data["lbl_is_editor"]["label"];
+	t_string& row_is_m   = row_data["lbl_is_mainmenu"]["label"];
 
 	listbox& hotkey_list = find_widget<listbox>(get_window(), "list_hotkeys", false);
 
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
+	visible_categories_.clear();
+
+	//
+	// Main hotkeys list
+	//
 
 	// These translated initials should match those used in data/gui/window/preferences/02_hotkeys.cfg
-	std::string text_game_feature_on = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
-	std::string text_editor_feature_on = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
-	std::string text_mainmenu_feature_on = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
+	const std::string gh = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
+	const std::string eh = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
+	const std::string mh = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
 
 	for(const auto& hotkey_item : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {
 			continue;
 		}
+
 		visible_hotkeys_.push_back(&hotkey_item);
+		visible_categories_.insert(hotkey_item.category);
 
 		if(filesystem::file_exists(game_config::path + "/images/icons/action/" + hotkey_item.id + "_25.png")) {
 			row_icon = "icons/action/" + hotkey_item.id + "_25.png~CROP(3,3,18,18)";
-		} else {
-			row_icon = default_icon;
 		}
 
 		row_action = hotkey_item.description;
 		row_hotkey = hotkey::get_names(hotkey_item.id);
 
-		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME]      ? text_game_feature_on : "";
-		row_is_g_markup = "true";
-		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR]    ? text_editor_feature_on : "";
-		row_is_e_markup = "true";
-		row_is_m = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? text_mainmenu_feature_on : "";
-		row_is_m_markup = "true";
+		if(hotkey_item.scope[hotkey::SCOPE_GAME]) {
+			row_is_g = gh;
+		}
+
+		if(hotkey_item.scope[hotkey::SCOPE_EDITOR]) {
+			row_is_e = eh;
+		}
+
+		if(hotkey_item.scope[hotkey::SCOPE_MAIN_MENU]) {
+			row_is_m = mh;
+		}
 
 		hotkey_list.add_row(row_data);
 	}
+
+	//
+	// Filter options
+	//
+
+	const auto& cat_names = hotkey::get_category_names();
+	std::vector<config> filter_ops;
+
+	for(const hotkey::HOTKEY_CATEGORY& cat : visible_categories_) {
+		filter_ops.emplace_back("label", t_string{cat_names.at(cat), "wesnoth-lib"}, "checkbox", false);
+	}
+
+	find_widget<multimenu_button>(get_window(), "hotkey_category_menu", false).set_values(filter_ops);
 
 	return hotkey_list;
 }
@@ -903,8 +907,6 @@ void preferences_dialog::default_hotkey_callback()
 	// Set up the list again and reselect the default sorting option.
 	listbox& hotkey_list = setup_hotkey_list();
 	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
-
-	find_widget<multimenu_button>(get_window(), "hotkey_category_menu", false).reset_toggle_states();
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
@@ -930,39 +932,41 @@ void preferences_dialog::hotkey_filter_callback() const
 
 	std::string text = name_filter.get_value();
 
+	// Nothing selected. It means that *all* categories are shown.
 	if(toggle_states.none()) {
-		// Nothing selected. It means that *all* categories are shown.
 		toggle_states = ~toggle_states;
 	}
 
 	for(std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
-		unsigned index = 0;
-
-		const std::string description = visible_hotkeys_[h]->description.str();
-
 		// Default to true if there is no filter text
 		bool found = true;
 
 		if(!text.empty()) {
+			const std::string description = visible_hotkeys_[h]->description.str();
+
 			for(const auto& word : utils::split(text, ' ')) {
 				found = translation::ci_search(description, word);
+
+				// No match, we're excluding this hotkey
 				if(!found) {
 					break;
 				}
 			}
 		}
 
+		unsigned cat_index = 0;
+
 		// Filter categories
-		for(const auto& name : cat_names_) {
-			if(visible_hotkeys_[h]->category == name.first) {
+		for(const hotkey::HOTKEY_CATEGORY& cat : visible_categories_) {
+			if(visible_hotkeys_[h]->category == cat) {
 				break;
 			} else {
-				++index;
+				++cat_index;
 			}
 		}
 
-		if(index < toggle_states.size() && found) {
-			res[h] = toggle_states[index];
+		if(cat_index < toggle_states.size() && found) {
+			res[h] = toggle_states[cat_index];
 		} else {
 			res[h] = false;
 		}
