@@ -216,9 +216,6 @@ enum HOTKEY_CATEGORY {
  */
 const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
 
-/** Returns a list of all the hotkeys belonging to the given category. */
-std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category);
-
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
 /**
