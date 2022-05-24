@@ -805,22 +805,16 @@ listbox& preferences_dialog::setup_hotkey_list()
 
 		if(filesystem::file_exists(game_config::path + "/images/icons/action/" + hotkey_item.id + "_25.png")) {
 			row_icon = "icons/action/" + hotkey_item.id + "_25.png~CROP(3,3,18,18)";
+		} else {
+			row_icon = "";
 		}
 
 		row_action = hotkey_item.description;
 		row_hotkey = hotkey::get_names(hotkey_item.id);
 
-		if(hotkey_item.scope[hotkey::SCOPE_GAME]) {
-			row_is_g = gh;
-		}
-
-		if(hotkey_item.scope[hotkey::SCOPE_EDITOR]) {
-			row_is_e = eh;
-		}
-
-		if(hotkey_item.scope[hotkey::SCOPE_MAIN_MENU]) {
-			row_is_m = mh;
-		}
+		row_is_g = hotkey_item.scope[hotkey::SCOPE_GAME]      ? gh : "";
+		row_is_e = hotkey_item.scope[hotkey::SCOPE_EDITOR]    ? eh : "";
+		row_is_m = hotkey_item.scope[hotkey::SCOPE_MAIN_MENU] ? mh : "";
 
 		hotkey_list.add_row(row_data);
 	}
