@@ -96,6 +96,7 @@ void trigger_full_redraw()
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
 	, drawing_texture_(nullptr)
+	, render_texture_(nullptr)
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
@@ -251,6 +252,9 @@ void CVideo::update_framebuffer()
 		return;
 	}
 
+	// Make sure we're getting values from the native window.
+	SDL_SetRenderTarget(*window, nullptr);
+
 	// Non-integer scales are not currently supported.
 	// This option makes things neater when window size is not a perfect
 	// multiple of logical size, which can happen when manually resizing.
@@ -348,6 +352,32 @@ void CVideo::update_framebuffer()
 		SDL_SetTextureBlendMode(drawing_texture_, SDL_BLENDMODE_BLEND);
 	}
 
+	// Build or update the current render texture.
+	if (render_texture_) {
+		int w, h;
+		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
+		if (w != osize.x || h != osize.y) {
+			// Delete it and let it be recreated.
+			LOG_DP << "destroying old render texture" << std::endl;
+			SDL_DestroyTexture(render_texture_);
+			render_texture_ = nullptr;
+		}
+	}
+	if (!render_texture_) {
+		LOG_DP << "creating offscreen render texture" << std::endl;
+		render_texture_ = SDL_CreateTexture(
+			*window,
+			drawingSurface->format->format,
+			SDL_TEXTUREACCESS_TARGET,
+			osize.x, osize.y
+		);
+	}
+
+	// Assign the render texture now. It will be used for all drawing.
+	SDL_SetRenderTarget(*window, render_texture_);
+	// It also resets the rendering scale, so set logical size once more.
+	window->set_logical_size(lsize.x, lsize.y);
+
 	// Update sizes for input conversion.
 	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 
@@ -397,6 +427,10 @@ void CVideo::init_window()
 
 	// Initialize window
 	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
+
+	// It is assumed that this function is only ever called once.
+	// If that is no longer true, then you should clean things up.
+	assert(!render_texture_ && !drawing_texture_);
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
@@ -520,7 +554,7 @@ SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
 
 SDL_Rect CVideo::to_output(const SDL_Rect& r) const
 {
-	int s = output_size().x / get_width();
+	int s = get_pixel_scale();
 	return {s*r.x, s*r.y, s*r.w, s*r.h};
 }
 
@@ -599,13 +633,22 @@ void CVideo::render_screen()
 		return;
 	}
 
-	if (drawingSurface && drawing_texture_) {
-		//render_low_res();
-	}
-
 	if(window) {
-		// TODO: rename this to "present"
-		window->render();
+		// Reset the render target to the window.
+		SDL_SetRenderTarget(*window, nullptr);
+
+		// Copy the render texture to the window.
+		SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
+
+		// Finalize and display the frame.
+		SDL_RenderPresent(*window);
+
+		// Reset the render target to the render texture.
+		SDL_SetRenderTarget(*window, render_texture_);
+
+		// SDL resets the logical size when setting a render texture target,
+		// so we also have to reset that every time.
+		window->set_logical_size(get_width(), get_height());
 	}
 }
 

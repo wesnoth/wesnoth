@@ -493,6 +493,9 @@ private:
 	/** The drawing texture. */
 	SDL_Texture* drawing_texture_;
 
+	/** The current offscreen render target. */
+	SDL_Texture* render_texture_;
+
 	/** Initializes the SDL video subsystem. */
 	void initSDL();
 
