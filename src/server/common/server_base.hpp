@@ -78,6 +78,8 @@ struct server_shutdown : public game::error
  */
 class server_base
 {
+	template<class SocketPtr> void send_doc_queued(SocketPtr socket, std::unique_ptr<simple_wml::document>& doc_ptr, boost::asio::yield_context yield);
+
 public:
 	server_base(unsigned short port, bool keep_alive);
 	virtual ~server_base() {}

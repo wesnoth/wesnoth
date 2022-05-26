@@ -534,24 +534,29 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<socket_ptr>(socket_ptr socket, boost::asio::yield_context yield);
 template std::unique_ptr<simple_wml::document> server_base::coro_receive_doc<tls_socket_ptr>(tls_socket_ptr socket, boost::asio::yield_context yield);
 
+template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, std::unique_ptr<simple_wml::document>& doc_ptr, boost::asio::yield_context yield)
+{
+	static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
+
+	queues[socket].push(std::move(doc_ptr));
+	if(queues[socket].size() > 1) {
+		return;
+	}
+
+	while(queues[socket].size() > 0) {
+		boost::system::error_code error;
+		coro_send_doc(socket, *(queues[socket].front()), yield[error]);
+		check_error(error, socket);
+		queues[socket].pop();
+	}
+	queues.erase(socket);
+}
+
 template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr socket, simple_wml::document& doc)
 {
 	boost::asio::spawn(
 		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
-			static std::map<SocketPtr, std::queue<std::unique_ptr<simple_wml::document>>> queues;
-
-			queues[socket].push(std::move(doc_ptr));
-			if(queues[socket].size() > 1) {
-				return;
-			}
-
-			while(queues[socket].size() > 0) {
-				boost::system::error_code error;
-				coro_send_doc(socket, *(queues[socket].front()), yield[error]);
-				check_error(error, socket);
-				queues[socket].pop();
-			}
-			queues.erase(socket);
+			send_doc_queued(socket, doc_ptr, yield);
 		}
 	);
 }
