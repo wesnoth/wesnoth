@@ -350,21 +350,6 @@ scope_changer::~scope_changer()
 	}
 }
 
-void deactivate_all_scopes()
-{
-	scope_active.reset();
-}
-
-void set_scope_active(scope s, bool set)
-{
-	scope_active[s] = set;
-}
-
-void set_active_scopes(hk_scopes s)
-{
-	scope_active = s;
-}
-
 bool is_scope_active(scope s)
 {
 	assert(s < SCOPE_COUNT);

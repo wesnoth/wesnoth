@@ -301,9 +301,6 @@ const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 /** returns the hotkey_command with the given name */
 const hotkey_command& get_hotkey_command(const std::string& command);
 
-void deactivate_all_scopes();
-void set_scope_active(scope s, bool set = true);
-void set_active_scopes(hk_scopes s);
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
