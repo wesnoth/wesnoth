@@ -15,31 +15,20 @@
 
 #include "hotkey/hotkey_manager.hpp"
 
-#include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 
-
-namespace hotkey {
+namespace hotkey
+{
 
 manager::manager()
-{
-	init();
-}
-
-void manager::init()
 {
 	init_hotkey_commands();
 }
 
-void manager::wipe()
+manager::~manager()
 {
 	clear_hotkeys();
 }
 
-manager::~manager()
-{
-	wipe();
-}
-
-
-}
+} // namespace hotkey
