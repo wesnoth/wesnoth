@@ -331,18 +331,23 @@ hk_scopes scope_active(0);
 
 scope_changer::scope_changer()
 	: prev_scope_active_(scope_active)
+	, restore_(true)
 {
 }
 
-scope_changer::scope_changer(hk_scopes new_scopes)
+scope_changer::scope_changer(hk_scopes new_scopes, bool restore)
 	: prev_scope_active_(scope_active)
+	, restore_(restore)
 {
 	scope_active = new_scopes;
 }
 
 scope_changer::~scope_changer()
 {
-	scope_active = prev_scope_active_;
+	// TODO: evaluate whether we need non-restore behavior in the game_config_manager
+	if(restore_) {
+		scope_active = prev_scope_active_;
+	}
 }
 
 void deactivate_all_scopes()

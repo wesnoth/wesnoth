@@ -89,8 +89,7 @@ namespace test_utils {
 			unit_types.set_config(game_config_view_.merged_children_view("units"));
 
 			game_config::load_config(cfg_.child("game_config"));
-			hotkey::deactivate_all_scopes();
-			hotkey::set_scope_active(hotkey::SCOPE_GAME);
+			const hotkey::scope_changer hk_scope{hotkey::SCOPE_GAME, false};
 
 			hotkey::load_hotkeys(game_config_view_);
 			paths_manager_.set_paths(game_config_view_);

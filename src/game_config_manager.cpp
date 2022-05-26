@@ -28,7 +28,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/wml_error.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -116,8 +115,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
 	// can cause a crash by accessing the list of hotkeys while it's being modified.
 	events::call_in_main_thread([this]() {
-		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
+		const hotkey::scope_changer hk_scope{hotkey::SCOPE_MAIN_MENU, false};
 
 		// Load the standard hotkeys, then apply any player customizations.
 		hotkey::load_hotkeys(game_config(), true);
