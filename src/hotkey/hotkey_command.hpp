@@ -298,9 +298,6 @@ const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 /** returns the hotkey_command with the given name */
 const hotkey_command& get_hotkey_command(const std::string& command);
 
-/** returns the hotkey_command that is treated as null. */
-const hotkey_command& get_hotkey_null();
-
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 void set_active_scopes(hk_scopes s);
@@ -331,11 +328,5 @@ private:
 	std::function<void()> cleanup_{};
 };
 
-const std::string& get_description(const std::string& command);
-const std::string& get_tooltip(const std::string& command);
-
 void init_hotkey_commands();
-
-/** returns get_hotkey_command(command).id */
-HOTKEY_COMMAND get_id(const std::string& command);
 }

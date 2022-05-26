@@ -372,7 +372,7 @@ const hotkey_command& get_hotkey_command(const std::string& command)
 	try {
 		return registered_hotkeys.at(command);
 	} catch(const std::out_of_range&) {
-		return get_hotkey_null();
+		return hotkey_command::null_command();
 	}
 }
 
@@ -460,7 +460,7 @@ hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd,
 
 const hotkey_command& hotkey_command::null_command()
 {
-	return get_hotkey_null();
+	return registered_hotkeys.at("null");
 }
 
 bool hotkey_command::null() const
@@ -488,27 +488,8 @@ const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMM
 		}
 	}
 
-	ERR_G << " \"get_command_by_command\" returned get_hotkey_null() because no hotkey_command had the requested "
-			 "number:"
-		  << command;
-
-	return get_hotkey_null();
-}
-
-const hotkey_command& get_hotkey_null()
-{
-	return registered_hotkeys.at("null");
-}
-
-const std::string& get_description(const std::string& command)
-{
-	return get_hotkey_command(command).description;
-}
-
-const std::string& get_tooltip(const std::string& command)
-{
-	// The null hotkey_command has the "" tooltip
-	return get_hotkey_command(command).tooltip;
+	ERR_G << "No hotkey with requested command '" << command << "' found. Returning null hotkey.";
+	return hotkey_command::null_command();
 }
 
 void init_hotkey_commands()
@@ -519,11 +500,6 @@ void init_hotkey_commands()
 		// Initialize the full hotkey from the temp data.
 		registered_hotkeys.try_emplace(cmd.id, cmd);
 	}
-}
-
-HOTKEY_COMMAND get_id(const std::string& command)
-{
-	return get_hotkey_command(command).command;
 }
 
 const std::map<HOTKEY_CATEGORY, std::string>& get_category_names()

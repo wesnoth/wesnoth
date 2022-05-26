@@ -821,7 +821,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
-		return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
+		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
 	}
 
 	return false;

@@ -461,7 +461,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
-	const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(command);
+	const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(command).command;
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
@@ -498,7 +498,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		config& item = items[i];
 
 		const std::string& item_id = item["id"];
-		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item_id);
+		const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(item_id).command;
 
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(disp, item_id, i));
@@ -510,7 +510,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		if(menu) {
 			item["label"] = menu->title();
 		} else if(hk != hotkey::HOTKEY_NULL) {
-			std::string desc = hotkey::get_description(item_id);
+			std::string desc = hotkey::get_hotkey_command(item_id).description;
 			if(hk == HOTKEY_ENDTURN) {
 				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
 				if (b) {

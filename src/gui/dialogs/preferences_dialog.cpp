@@ -872,8 +872,8 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	if(oldhk && oldhk->get_command() != "null") {
 		const std::string text = VGETTEXT("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", {
 			{"hotkey_sequence",   oldhk->get_name()},
-			{"old_hotkey_action", hotkey::get_description(oldhk->get_command())},
-			{"new_hotkey_action", hotkey::get_description(newhk->get_command())}
+			{"old_hotkey_action", hotkey::get_hotkey_command(oldhk->get_command()).description},
+			{"new_hotkey_action", hotkey::get_hotkey_command(newhk->get_command()).description}
 		});
 
 		const int res = gui2::show_message(_("Reassign Hotkey"), text, gui2::dialogs::message::yes_no_buttons, true);
