@@ -70,6 +70,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	: item_id_(id)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
+	, hotkey_record_()
 	, image_(cfg["image"].str())
 	, description_(cfg["description"].t_str())
 	, needs_select_(cfg["needs_select"].to_bool(false))
@@ -92,6 +93,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	: item_id_(id)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
+	, hotkey_record_()
 	, image_()
 	, description_()
 	, needs_select_(false)
@@ -106,7 +108,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
-	hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+	hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	// Apply WML.
 	update(definition);
@@ -189,7 +191,7 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 	}
 }
 
-void wml_menu_item::finish_handler() const
+void wml_menu_item::finish_handler()
 {
 	if(!command_.empty()) {
 		assert(resources::game_events);
@@ -198,11 +200,11 @@ void wml_menu_item::finish_handler() const
 
 	// Hotkey support
 	if(use_hotkey_) {
-		hotkey::remove_wml_hotkey(hotkey_id_);
+		hotkey_record_.reset();
 	}
 }
 
-void wml_menu_item::init_handler() const
+void wml_menu_item::init_handler()
 {
 	// If this menu item has a [command], add a handler for it.
 	if(!command_.empty()) {
@@ -212,7 +214,7 @@ void wml_menu_item::init_handler() const
 
 	// Hotkey support
 	if(use_hotkey_) {
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 	}
 }
 
@@ -321,15 +323,15 @@ void wml_menu_item::update(const vconfig& vcfg)
 
 	if(use_hotkey_ && !old_use_hotkey) {
 		// The hotkey needs to be enabled.
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	} else if(use_hotkey_ && hotkey_updated) {
 		// The hotkey needs to be updated.
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	} else if(!use_hotkey_ && old_use_hotkey) {
 		// The hotkey needs to be disabled.
-		hotkey::remove_wml_hotkey(hotkey_id_);
+		hotkey_record_.reset();
 	}
 }
 

@@ -21,7 +21,10 @@
 #pragma once
 
 #include "config.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "variable.hpp"
+
+#include <optional>
 
 class filter_context;
 class game_data;
@@ -103,10 +106,10 @@ public:
 	void fire_event(const map_location& event_hex, const game_data& data) const;
 
 	/** Removes the implicit event handler for an inlined [command]. */
-	void finish_handler() const;
+	void finish_handler();
 
 	/** Initializes the implicit event handler for an inlined [command]. */
-	void init_handler() const;
+	void init_handler();
 
 	/**
 	 * The text to put in a menu for this item.
@@ -149,6 +152,9 @@ private:
 
 	/** The id for this item's hotkey; based on the item's id. */
 	const std::string hotkey_id_;
+
+	/** Controls the lifetime of the associate hotkey's hotkey_command. */
+	std::optional<hotkey::wml_hotkey_record> hotkey_record_;
 
 	/** The image to display in the menu next to this item's description. */
 	std::string image_;

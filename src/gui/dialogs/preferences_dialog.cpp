@@ -795,7 +795,7 @@ listbox& preferences_dialog::setup_hotkey_list()
 	const std::string eh = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
 	const std::string mh = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
 
-	for(const auto& hotkey_item : hotkey::get_hotkey_commands()) {
+	for(const auto& [id, hotkey_item] : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {
 			continue;
 		}

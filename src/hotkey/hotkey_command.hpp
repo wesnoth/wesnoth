@@ -19,6 +19,7 @@
 #include "tstring.hpp"
 
 #include <bitset>
+#include <functional>
 #include <list>
 #include <map>
 #include <vector>
@@ -292,7 +293,7 @@ private:
  * returns a container that contains all currently active hotkey_commands.
  * everything that wants a hotkey, must be in this container
  */
-const std::vector<hotkey_command>& get_hotkey_commands();
+const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
 /** returns the hotkey_command with the given name */
 const hotkey_command& get_hotkey_command(const std::string& command);
@@ -308,23 +309,30 @@ bool is_scope_active(hk_scopes s);
 
 bool has_hotkey_command(const std::string& id);
 
-/**
- * adds a new wml hotkey to the list, but only if there is no hotkey with that id yet on the list.
- * the object that is created here will be deleted in "delete_all_wml_hotkeys()"
- */
-void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey);
+class wml_hotkey_record
+{
+public:
+	wml_hotkey_record() = default;
 
-/** deletes all wml hotkeys, should be called after a game has ended */
-void delete_all_wml_hotkeys();
-/** removes a wml hotkey with the given id, returns true if the deletion was successful */
-bool remove_wml_hotkey(const std::string& id);
+	/** Registers (or reassigns, if one already exists) a hotkey_command for a WML hotkey with the given ID. */
+	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);
+
+	~wml_hotkey_record()
+	{
+		if(cleanup_) {
+			cleanup_();
+		}
+	}
+
+private:
+	/** Handles removing the associated hotkey_command on this object's destruction. */
+	std::function<void()> cleanup_{};
+};
 
 const std::string& get_description(const std::string& command);
 const std::string& get_tooltip(const std::string& command);
 
 void init_hotkey_commands();
-
-void clear_hotkey_commands();
 
 /** returns get_hotkey_command(command).id */
 HOTKEY_COMMAND get_id(const std::string& command);

@@ -324,11 +324,7 @@ const std::set<HOTKEY_COMMAND> toggle_commands {
 };
 
 // Contains copies of master_hotkey_list and all current active wml menu hotkeys
-// TODO: Maybe known_hotkeys is not a fitting name anymore.
-std::vector<hotkey::hotkey_command> known_hotkeys;
-
-// Index map for known_hotkeys. Since known_hotkeys begins with master_hotkey_list, they are also indexes for master_hotkey_list.
-std::map<std::string, std::size_t> command_map;
+std::map<std::string_view, hotkey::hotkey_command> registered_hotkeys;
 
 hk_scopes scope_active(0);
 } // end anon namespace
@@ -373,51 +369,16 @@ bool is_scope_active(hk_scopes s)
 
 const hotkey_command& get_hotkey_command(const std::string& command)
 {
-	if(command_map.find(command) == command_map.end()) {
+	try {
+		return registered_hotkeys.at(command);
+	} catch(const std::out_of_range&) {
 		return get_hotkey_null();
 	}
-
-	return known_hotkeys[command_map[command]];
 }
 
-const std::vector<hotkey_command>& get_hotkey_commands()
+const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands()
 {
-	return known_hotkeys;
-}
-
-// Returns whether a hotkey was deleted.
-bool remove_wml_hotkey(const std::string& id)
-{
-	const hotkey::hotkey_command& command = get_hotkey_command(id);
-
-	if(command.command == hotkey::HOTKEY_NULL) {
-		LOG_G << "remove_wml_hotkey: command with id=" + id + " doesn't exist\n";
-		return false;
-	} else if(command.command != hotkey::HOTKEY_WML) {
-		LOG_G << "remove_wml_hotkey: command with id=" + id + " cannot be removed because it is no wml menu hotkey\n";
-		return false;
-	} else {
-		LOG_G << "removing wml hotkey with id=" + id + "\n";
-
-		// Iterate in reverse since it's almost certain the appropriate hotkey will be near
-		// the end, since this function is used to removed WML hotkeys, which are added after
-		// the built-ins.
-		for(auto itor = known_hotkeys.rbegin(); itor != known_hotkeys.rend(); ++itor) {
-			if(itor->id == id) {
-				known_hotkeys.erase(std::next(itor).base());
-				break;
-			}
-		}
-
-		// command_map might be all wrong now, so we need to rebuild.
-		command_map.clear();
-
-		for(std::size_t index = 0; index < known_hotkeys.size(); ++index) {
-			command_map[known_hotkeys[index].id] = index;
-		}
-
-		return true;
-	}
+	return registered_hotkeys;
 }
 
 bool has_hotkey_command(const std::string& id)
@@ -425,23 +386,22 @@ bool has_hotkey_command(const std::string& id)
 	return get_hotkey_command(id).command != hotkey::HOTKEY_NULL;
 }
 
-void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey)
+wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey)
+	: cleanup_()
 {
 	if(id == "null") {
 		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.\n";
 		return;
 	}
 
-	if(has_hotkey_command(id)) {
-		LOG_G << "Hotkey with id '" << id << "' already exists. Deleting the old hotkey_command.\n";
-		remove_wml_hotkey(id);
+	const auto& [iter, inserted] = registered_hotkeys.insert_or_assign(
+		id, hotkey_command{hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string("")});
+
+	if(inserted) {
+		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
+	} else {
+		LOG_G << "Hotkey with id '" << id << "' already exists and was reassigned.\n";
 	}
-
-	DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
-
-	known_hotkeys.emplace_back(hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string(""));
-
-	command_map[id] = known_hotkeys.size() - 1;
 
 	if(!default_hotkey.empty() && !has_hotkey_item(id)) {
 		hotkey::hotkey_ptr new_item = hotkey::load_from_config(default_hotkey);
@@ -454,6 +414,9 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 			ERR_CF << "failed to add default hotkey with id=" + id;
 		}
 	}
+
+	// Record the cleanup handler
+	cleanup_ = [i = iter] { registered_hotkeys.erase(i); };
 }
 
 hotkey_command::hotkey_command(const hotkey_command_temp& temp_command)
@@ -511,7 +474,7 @@ bool hotkey_command::null() const
 
 const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
 {
-	for(hotkey_command& cmd : known_hotkeys) {
+	for(auto& [id, cmd] : registered_hotkeys) {
 		if(cmd.command == command) {
 			return cmd;
 		}
@@ -526,17 +489,7 @@ const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMM
 
 const hotkey_command& get_hotkey_null()
 {
-	// It is the last entry in that array, and the indexes in master_hotkey_list and known_hotkeys are the same.
-	return known_hotkeys[master_hotkey_list.size() - 1];
-}
-
-void delete_all_wml_hotkeys()
-{
-	while(known_hotkeys.back().command == hotkey::HOTKEY_WML) {
-		command_map.erase(known_hotkeys.back().id);
-
-		known_hotkeys.pop_back();
-	}
+	return registered_hotkeys.at("null");
 }
 
 const std::string& get_description(const std::string& command)
@@ -552,27 +505,12 @@ const std::string& get_tooltip(const std::string& command)
 
 void init_hotkey_commands()
 {
-	known_hotkeys.clear();
+	registered_hotkeys.clear();
 
-	// Reserve enough space for the built-in hotkeys and 20 extra spaces for WML hotkeys. This is
-	// to avoid reallocation of this huge vector when any of the latter are added. 20 is honestly
-	// overkill, since there's really no reason to ever have near that many hotkey-enabled WML menu
-	// items, but it doesn't cost us anything to have extra.
-	known_hotkeys.reserve(master_hotkey_list.size() + 20);
-
-	std::size_t i = 0;
 	for(const hotkey_command_temp& cmd : master_hotkey_list) {
 		// Initialize the full hotkey from the temp data.
-		auto& h = known_hotkeys.emplace_back(cmd);
-
-		// Note the known_hotkeys index associated with this command.
-		command_map[h.id] = i++;
+		registered_hotkeys.try_emplace(cmd.id, cmd);
 	}
-}
-
-void clear_hotkey_commands()
-{
-	command_map.clear();
 }
 
 HOTKEY_COMMAND get_id(const std::string& command)
