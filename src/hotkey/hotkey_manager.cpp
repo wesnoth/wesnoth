@@ -33,9 +33,7 @@ void manager::init()
 
 void manager::wipe()
 {
-	clear_hotkey_commands();
 	clear_hotkeys();
-	delete_all_wml_hotkeys();
 }
 
 manager::~manager()
