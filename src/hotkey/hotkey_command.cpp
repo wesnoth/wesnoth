@@ -394,13 +394,14 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 		return;
 	}
 
-	const auto& [iter, inserted] = registered_hotkeys.insert_or_assign(
-		id, hotkey_command{hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string("")});
+	const auto& [iter, inserted] = registered_hotkeys.try_emplace(
+		id, hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string(""));
 
 	if(inserted) {
 		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
 	} else {
-		LOG_G << "Hotkey with id '" << id << "' already exists and was reassigned.\n";
+		LOG_G << "Hotkey with id '" << id << "' already exists.\n";
+		return;
 	}
 
 	if(!default_hotkey.empty() && !has_hotkey_item(id)) {
@@ -417,6 +418,13 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 
 	// Record the cleanup handler
 	cleanup_ = [i = iter] { registered_hotkeys.erase(i); };
+}
+
+wml_hotkey_record::~wml_hotkey_record()
+{
+	if(cleanup_) {
+		cleanup_();
+	}
 }
 
 hotkey_command::hotkey_command(const hotkey_command_temp& temp_command)

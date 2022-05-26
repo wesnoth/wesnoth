@@ -236,7 +236,7 @@ struct hotkey_command
 	/** Constructs a new command from a temporary static hotkey object. */
 	hotkey_command(const hotkey_command_temp& temp_command);
 
-	/** @todo: remove this with c++20. We can use aggregate initialization with emplace_back.*/
+	/** @todo: see if we can remove this with c++20. Aggregate initialization with try_emplace?*/
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 
 	hotkey_command(const hotkey_command&) = default;
@@ -309,20 +309,22 @@ bool is_scope_active(hk_scopes s);
 
 bool has_hotkey_command(const std::string& id);
 
+/**
+ * RAII helper class to control the lifetime of a WML hotkey_command.
+ */
 class wml_hotkey_record
 {
 public:
 	wml_hotkey_record() = default;
 
-	/** Registers (or reassigns, if one already exists) a hotkey_command for a WML hotkey with the given ID. */
+	/** Don't allow copying so objects don't get erased early. */
+	wml_hotkey_record(const wml_hotkey_record&) = delete;
+	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
+
+	/** Registers a hotkey_command for a WML hotkey with the given ID if one does not already exist. */
 	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);
 
-	~wml_hotkey_record()
-	{
-		if(cleanup_) {
-			cleanup_();
-		}
-	}
+	~wml_hotkey_record();
 
 private:
 	/** Handles removing the associated hotkey_command on this object's destruction. */
