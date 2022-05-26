@@ -921,7 +921,7 @@ void _set_color_cursors(bool value)
 
 void load_hotkeys()
 {
-	hotkey::load_hotkeys(game_config_view::wrap(prefs), false);
+	hotkey::load_custom_hotkeys(game_config_view::wrap(prefs));
 }
 
 void save_hotkeys()

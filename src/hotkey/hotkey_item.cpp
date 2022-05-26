@@ -395,21 +395,26 @@ const hotkey_ptr get_hotkey(const SDL_Event& event)
 	return std::make_shared<hotkey_void>();
 }
 
-void load_hotkeys(const game_config_view& cfg, bool set_as_default)
+void load_default_hotkeys(const game_config_view& cfg)
 {
+	hotkey_list new_hotkeys;
 	for(const config& hk : cfg.child_range("hotkey")) {
-		hotkey_ptr item = load_from_config(hk);
-		if(!set_as_default) {
-			item->unset_default();
-		}
-
-		if(!item->null()) {
-			add_hotkey(item);
+		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+			new_hotkeys.push_back(std::move(item));
 		}
 	}
 
-	if(set_as_default) {
-		default_hotkey_cfg_ = cfg;
+	default_hotkey_cfg_ = cfg;
+	hotkeys_.swap(new_hotkeys);
+}
+
+void load_custom_hotkeys(const game_config_view& cfg)
+{
+	for(const config& hk : cfg.child_range("hotkey")) {
+		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+			item->unset_default();
+			add_hotkey(item);
+		}
 	}
 }
 
@@ -418,7 +423,7 @@ void reset_default_hotkeys()
 	hotkeys_.clear();
 
 	if(!default_hotkey_cfg_.child_range("hotkey").empty()) {
-		load_hotkeys(default_hotkey_cfg_, true);
+		load_default_hotkeys(default_hotkey_cfg_);
 	} else {
 		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!" << std::endl;
 	}

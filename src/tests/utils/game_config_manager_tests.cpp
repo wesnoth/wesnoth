@@ -91,7 +91,7 @@ namespace test_utils {
 			game_config::load_config(cfg_.child("game_config"));
 			const hotkey::scope_changer hk_scope{hotkey::SCOPE_GAME, false};
 
-			hotkey::load_hotkeys(game_config_view_);
+			hotkey::load_default_hotkeys(game_config_view_);
 			paths_manager_.set_paths(game_config_view_);
 			font::load_font_config();
 

@@ -118,7 +118,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 		const hotkey::scope_changer hk_scope{hotkey::SCOPE_MAIN_MENU, false};
 
 		// Load the standard hotkeys, then apply any player customizations.
-		hotkey::load_hotkeys(game_config(), true);
+		hotkey::load_default_hotkeys(game_config());
 		preferences::load_hotkeys();
 	});
 

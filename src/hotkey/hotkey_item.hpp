@@ -385,13 +385,19 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event);
 const hotkey_ptr get_hotkey(const SDL_Event &event);
 
 /**
- * Iterates through all hotkeys present in the config struct and creates and adds
- * them to the hotkey list.
- * @param cfg The config struct to load from.
- * @param set_as_default Indicates whether the config struct should be treated as the
- * default game settings.
+ * Registers all hotkeys present in this config.
+ *
+ * @param cfg    The config to load from. This is saved and is used again when
+ *               @ref reset_default_hotkeys is called.
  */
-void load_hotkeys(const game_config_view& cfg, bool set_as_default = false);
+void load_default_hotkeys(const game_config_view& cfg);
+
+/**
+ * Registers all hotkeys present in this config, overwriting any matching default hotkeys.
+ *
+ * @param cfg    The config to load from.
+ */
+void load_custom_hotkeys(const game_config_view& cfg);
 
 /**
  * Reset all hotkeys to the defaults.
