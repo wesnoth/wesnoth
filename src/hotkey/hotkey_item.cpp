@@ -24,9 +24,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#include <SDL2/SDL.h>
 #include <boost/algorithm/string.hpp>
-#include <boost/algorithm/string/join.hpp>
 
 #include <functional>
 
@@ -276,6 +274,12 @@ void hotkey_mouse::save_helper(config& item) const
 	if(button_ != 0) {
 		item["button"] = button_;
 	}
+}
+
+void hotkey_keyboard::set_text(const std::string& text)
+{
+	text_ = text;
+	boost::algorithm::to_lower(text_);
 }
 
 const std::string hotkey_keyboard::get_name_helper() const

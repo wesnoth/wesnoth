@@ -21,9 +21,9 @@
 #include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 
 #include <array>
+#include <set>
 #include <string_view>
 
 static lg::log_domain log_config("config");
@@ -37,18 +37,11 @@ namespace hotkey
 struct hotkey_command_temp
 {
 	HOTKEY_COMMAND command;
-
 	std::string_view id;
-
-	/** description, tooltip are untranslated */
 	std::string_view description;
-
 	bool hidden;
-
 	hk_scopes scope;
-
 	HOTKEY_CATEGORY category;
-
 	std::string_view tooltip;
 };
 

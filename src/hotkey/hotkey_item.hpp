@@ -16,26 +16,19 @@
 #pragma once
 
 #include <SDL2/SDL_events.h>
-#include <SDL2/SDL.h>
 #include <memory>
 #include <vector>
 #include <string>
-#include <boost/algorithm/string.hpp>
 
 class game_config_view;
 class config;
 namespace hotkey {
 
-/* forward declarations */
-class hotkey_base;
-class hotkey_mouse;
-class hotkey_keyboard;
-typedef std::shared_ptr<hotkey_base> hotkey_ptr;
-typedef std::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
-typedef std::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
+typedef std::shared_ptr<class hotkey_base> hotkey_ptr;
+typedef std::shared_ptr<class hotkey_mouse> hotkey_mouse_ptr;
+typedef std::shared_ptr<class hotkey_keyboard> hotkey_keyboard_ptr;
 
 typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
-typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;
 
 /**
  * This is the base class for hotkey event matching.
@@ -253,11 +246,7 @@ public:
 		keycode_ = keycode;
 	}
 
-	void set_text(const std::string& text)
-	{
-		text_ = text;
-		boost::algorithm::to_lower(text_);
-	}
+	void set_text(const std::string& text);
 
 	/**
 	 * Checks whether this hotkey has been set to a sensible value.
