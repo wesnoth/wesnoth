@@ -356,8 +356,7 @@ void add_hotkey(const hotkey_ptr item)
 		return;
 	}
 
-	scope_changer scope_ch;
-	set_active_scopes(hotkey::get_hotkey_command(item->get_command()).scope);
+	const scope_changer scope_ch{hotkey::get_hotkey_command(item->get_command()).scope};
 
 	if(!hotkeys_.empty()) {
 		hotkeys_.erase(std::remove_if(hotkeys_.begin(), hotkeys_.end(),

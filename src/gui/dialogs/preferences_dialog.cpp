@@ -862,8 +862,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 		}
 	}
 
-	hotkey::scope_changer scope_restorer;
-	hotkey::set_active_scopes(hotkey_item.scope);
+	const hotkey::scope_changer scope_restorer{hotkey_item.scope};
 
 	if(oldhk && oldhk->get_command() == hotkey_item.id) {
 		return;

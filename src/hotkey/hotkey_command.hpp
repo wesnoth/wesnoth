@@ -281,9 +281,11 @@ struct hotkey_command
 	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
-class scope_changer {
+class scope_changer
+{
 public:
 	scope_changer();
+	scope_changer(hk_scopes new_scopes);
 	~scope_changer();
 private:
 	hk_scopes prev_scope_active_;

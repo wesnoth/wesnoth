@@ -334,6 +334,12 @@ scope_changer::scope_changer()
 {
 }
 
+scope_changer::scope_changer(hk_scopes new_scopes)
+	: prev_scope_active_(scope_active)
+{
+	scope_active = new_scopes;
+}
+
 scope_changer::~scope_changer()
 {
 	scope_active = prev_scope_active_;
