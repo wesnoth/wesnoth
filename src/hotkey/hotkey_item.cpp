@@ -108,7 +108,7 @@ const std::string hotkey_base::get_name() const
 
 bool hotkey_base::bindings_equal(hotkey_ptr other)
 {
-	if(other == hotkey_ptr()) {
+	if(other == nullptr) {
 		return false;
 	}
 
@@ -308,8 +308,8 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_mouse_ptr other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
-	if(other_m == hotkey_mouse_ptr()) {
+	auto other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
+	if(other_m == nullptr) {
 		return false;
 	}
 
@@ -325,7 +325,7 @@ void hotkey_keyboard::save_helper(config& item) const
 
 bool has_hotkey_item(const std::string& command)
 {
-	for(hotkey_ptr item : hotkeys_) {
+	for(const hotkey_ptr& item : hotkeys_) {
 		if(item->get_command() == command) {
 			return true;
 		}
@@ -335,8 +335,8 @@ bool has_hotkey_item(const std::string& command)
 
 bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_keyboard_ptr other_k = std::dynamic_pointer_cast<hotkey_keyboard>(other);
-	if(other_k == hotkey_keyboard_ptr()) {
+	auto other_k = std::dynamic_pointer_cast<hotkey_keyboard>(other);
+	if(other_k == nullptr) {
 		return false;
 	}
 
@@ -352,7 +352,7 @@ void del_hotkey(hotkey_ptr item)
 
 void add_hotkey(const hotkey_ptr item)
 {
-	if(item == hotkey_ptr()) {
+	if(item == nullptr) {
 		return;
 	}
 
@@ -369,7 +369,7 @@ void add_hotkey(const hotkey_ptr item)
 
 void clear_hotkeys(const std::string& command)
 {
-	for(hotkey::hotkey_ptr item : hotkeys_) {
+	for(hotkey::hotkey_ptr& item : hotkeys_) {
 		if(item->get_command() == command) {
 			if(item->is_default()) {
 				item->disable();
@@ -387,12 +387,12 @@ void clear_hotkeys()
 
 const hotkey_ptr get_hotkey(const SDL_Event& event)
 {
-	for(hotkey_ptr item : hotkeys_) {
+	for(const hotkey_ptr& item : hotkeys_) {
 		if(item->matches(event)) {
 			return item;
 		}
 	}
-	return hotkey_ptr(new hotkey_void());
+	return std::make_shared<hotkey_void>();
 }
 
 void load_hotkeys(const game_config_view& cfg, bool set_as_default)
@@ -433,7 +433,7 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for(hotkey_ptr item : hotkeys_) {
+	for(hotkey_ptr& item : hotkeys_) {
 		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
 		}
