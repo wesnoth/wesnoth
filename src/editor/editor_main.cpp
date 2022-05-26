@@ -32,9 +32,7 @@ EXIT_STATUS start(const std::string& filename /* = "" */,
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
-		hotkey::scope_changer h_;
-		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
+		const hotkey::scope_changer h{hotkey::SCOPE_EDITOR};
 		editor_controller editor;
 		if (!filename.empty() && filesystem::file_exists (filename)) {
 			if (filesystem::is_directory(filename)) {

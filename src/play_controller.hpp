@@ -417,7 +417,7 @@ private:
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
-	hotkey::scope_changer scope_;
+	const hotkey::scope_changer scope_;
 
 protected:
 	mutable bool ignore_replay_errors_;
