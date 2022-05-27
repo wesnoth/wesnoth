@@ -39,6 +39,13 @@ enum scope {
 	SCOPE_COUNT,
 };
 
+// For some reason std::bitset::operator| is not constexpr, so we'll construct the bitset with these values
+// FIXME: unify these with the enum above. Right now these are the proper bitmasks to initialize a bitset,
+// while the values above are used as indices to access the bits of the bitset.
+constexpr uint32_t scope_game   = 1 << SCOPE_GAME;
+constexpr uint32_t scope_editor = 1 << SCOPE_EDITOR;
+constexpr uint32_t scope_main   = 1 << SCOPE_MAIN_MENU;
+
 enum HOTKEY_COMMAND {
 	HOTKEY_CYCLE_UNITS, HOTKEY_CYCLE_BACK_UNITS,
 	HOTKEY_UNIT_HOLD_POSITION,

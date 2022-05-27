@@ -63,11 +63,6 @@ const std::map<HOTKEY_CATEGORY, std::string> category_names {
 	{ HKCAT_CUSTOM,     N_("Custom WML Commands") },
 };
 
-// For some reason std::bitset::operator| is not constexpr, so we'll construct the bitset with these values
-constexpr uint32_t scope_game   = 1 << SCOPE_GAME;
-constexpr uint32_t scope_editor = 1 << SCOPE_EDITOR;
-constexpr uint32_t scope_main   = 1 << SCOPE_MAIN_MENU;
-
 //
 // All static hotkeys.
 //
