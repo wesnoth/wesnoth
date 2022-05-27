@@ -165,8 +165,6 @@ location_palette::location_palette(editor_display &gui, const game_config_view& 
 		, item_size_(20)
 		//TODO avoid magic number
 		, item_space_(20 + 3)
-		, palette_y_(0)
-		, palette_x_(0)
 		, items_start_(0)
 		, selected_item_()
 		, items_()
@@ -213,13 +211,14 @@ void location_palette::hide(bool hidden)
 
 bool location_palette::scroll_up()
 {
-	int decrement = 1;
-	if(items_start_ >= decrement) {
-		items_start_ -= decrement;
-		draw();
-		return true;
+	bool scrolled = false;
+	if(can_scroll_up()) {
+		--items_start_;
+		scrolled = true;
+		set_dirty(true);
 	}
-	return false;
+	draw();
+	return scrolled;
 }
 bool location_palette::can_scroll_up()
 {
@@ -233,12 +232,9 @@ bool location_palette::can_scroll_down()
 
 bool location_palette::scroll_down()
 {
-	bool end_reached = (!(items_start_ + num_visible_items() + 1 <= num_items()));
 	bool scrolled = false;
-
-	// move downwards
-	if(!end_reached) {
-		items_start_ += 1;
+	if(can_scroll_down()) {
+		++items_start_;
 		scrolled = true;
 		set_dirty(true);
 	}
@@ -248,8 +244,6 @@ bool location_palette::scroll_down()
 
 void location_palette::adjust_size(const SDL_Rect& target)
 {
-	palette_x_ = target.x;
-	palette_y_ = target.y;
 	const int button_height = 22;
 	const int button_y = 30;
 	int bottom = target.y + target.h;
@@ -291,9 +285,26 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
-	if(items_fitting > 0 && num_visible_items() != items_fitting) {
-		location_palette_item lpi(disp_.video(), this);
-		buttons_.resize(items_fitting, lpi);
+	if(items_fitting > 0) {
+		// Items may be added dynamically via add_item(), so this creates all the buttons that
+		// fit in the space, even if some of them will be hidden until more items are added.
+		// This simplifies the scrolling code in add_item.
+		const std::size_t buttons_needed = items_fitting;
+		if(buttons_.size() != buttons_needed) {
+			location_palette_item lpi(disp_.video(), this);
+			buttons_.resize(buttons_needed, lpi);
+		}
+	}
+
+	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
+	// because adjust_size() also handles moving left and right when the window's width is changed.
+	SDL_Rect dstrect;
+	dstrect.w = target.w - 10;
+	dstrect.h = item_size_ + 2;
+	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+		dstrect.x = target.x;
+		dstrect.y = target.y + i * item_space_;
+		buttons_[i].set_location(dstrect);
 	}
 
 	set_location(target);
@@ -312,11 +323,11 @@ void location_palette::select_item(const std::string& item_id)
 	help_handle_ = disp_.video().set_help_string(get_help_string());
 }
 
-int location_palette::num_items()
+std::size_t location_palette::num_items()
 {
 	return items_.size();
 }
-int location_palette::num_visible_items()
+std::size_t location_palette::num_visible_items()
 {
 	return buttons_.size();
 }
@@ -329,57 +340,49 @@ bool location_palette::is_selected_item(const std::string& id)
 void location_palette::draw_contents()
 {
 	toolkit_.set_mouseover_overlay(disp_);
-	int y = palette_y_;
-	const int x = palette_x_;
-	const int starting = items_start_;
-	int ending = std::min<int>(starting + num_visible_items(), num_items());
-	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
-	if (upscroll_button)
-		upscroll_button->enable(starting != 0);
-	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
-	if (downscroll_button)
-		downscroll_button->enable(ending != num_items());
 
-	if (button_goto_) {
+	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
+	// get triggered when handling mouse-wheel scrolling. Therefore duplicate that functionality here.
+	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
+	if(upscroll_button)
+		upscroll_button->enable(can_scroll_up());
+	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
+	if(downscroll_button)
+		downscroll_button->enable(can_scroll_down());
+
+	if(button_goto_) {
 		button_goto_->set_dirty(true);
 	}
-	if (button_add_) {
+	if(button_add_) {
 		button_add_->set_dirty(true);
 	}
-	if (button_delete_) {
+	if(button_delete_) {
 		button_delete_->set_dirty(true);
 	}
-	for (int i = 0, size = num_visible_items(); i < size; i++) {
-
-		location_palette_item & tile = buttons_[i];
+	for(std::size_t i = 0; i < num_visible_items(); ++i) {
+		const auto item_index = items_start_ + i;
+		location_palette_item& tile = buttons_[i];
 
 		tile.hide(true);
 
-		if (i >= ending) {
-			//We want to hide all following buttons so we cannot use break here.
+		// If we've scrolled to the end of the list, or if there aren't many items, leave the button hidden
+		if(item_index >= num_items()) {
+			// We want to hide all following buttons so we cannot use break here.
 			continue;
 		}
 
-		const std::string item_id = items_[starting + i];
+		const std::string item_id = items_[item_index];
 
+		// These could have tooltips, but currently don't. Adding their hex co-ordinates would be an option,
+		// and for player starts adding the raw ID next might be good.
 		std::stringstream tooltip_text;
 
-		SDL_Rect dstrect;
-		dstrect.x = x;
-		dstrect.y = y;
-		dstrect.w = location().w - 10;
-		dstrect.h = item_size_ + 2;
-
-		tile.set_location(dstrect);
 		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_id(item_id);
 		tile.set_selected(is_selected_item(item_id));
 		tile.set_dirty(true);
 		tile.hide(false);
 		tile.draw();
-
-		// Adjust location
-		y += item_space_;
 	}
 }
 
@@ -413,7 +416,8 @@ static bool loc_id_comp(const std::string& lhs, const std::string& rhs) {
 
 void location_palette::add_item(const std::string& id)
 {
-	int pos;
+	decltype(items_)::difference_type pos;
+
 	// Insert the new ID at the sorted location, unless it's already in the list
 	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
 	if(itor == items_.begin() || *(itor - 1) != id) {
@@ -422,13 +426,25 @@ void location_palette::add_item(const std::string& id)
 		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;
-	if(num_visible_items() == 0) {
-		items_start_ = 0;
-	} else {
-		items_start_ = std::max(pos - num_visible_items() + 1, items_start_);
-		items_start_ = std::min(pos, items_start_);
+
+	// pos will always be positive because begin() was used as the first arg of std::distance(),
+	// but we need this (or casts) to prevent warnings about signed/unsigned comparisons.
+	const std::size_t unsigned_pos = pos;
+
+	// Scroll if necessary so that the new item is visible
+	if(unsigned_pos < items_start_ || unsigned_pos >= items_start_ + num_visible_items()) {
+		if(unsigned_pos < num_visible_items()) {
+			items_start_ = 0;
+		} else if(unsigned_pos + num_visible_items() > num_items()) {
+			// This can't underflow, because unsigned_pos < num_items() and the
+			// previous conditional block would have been entered instead.
+			items_start_ = num_items() - num_visible_items();
+		} else {
+			items_start_ = unsigned_pos - num_visible_items() / 2;
+		}
 	}
-	adjust_size(location());
+
+	// No need to call adjust_size(), because initialisation creates all possible buttons even when num_visible_items() > num_items().
 }
 
 } // end namespace editor
