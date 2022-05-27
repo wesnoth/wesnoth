@@ -110,8 +110,9 @@ bool hotkey_base::bindings_equal(hotkey_ptr other)
 		return false;
 	}
 
-	hk_scopes scopematch
-		= hotkey::get_hotkey_command(get_command()).scope & hotkey::get_hotkey_command(other->get_command()).scope;
+	const hk_scopes scopematch =
+		hotkey::get_hotkey_command(get_command()).scope &
+		hotkey::get_hotkey_command(other->get_command()).scope;
 
 	if(scopematch.none()) {
 		return false;
@@ -354,19 +355,18 @@ void del_hotkey(hotkey_ptr item)
 	}
 }
 
-void add_hotkey(const hotkey_ptr item)
+void add_hotkey(hotkey_ptr item)
 {
-	if(item == nullptr) {
-		return;
-	}
+	if(item) {
+		auto iter = std::find_if(hotkeys_.begin(), hotkeys_.end(),
+			[&item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); });
 
-	if(!hotkeys_.empty()) {
-		hotkeys_.erase(std::remove_if(hotkeys_.begin(), hotkeys_.end(),
-			[item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); }),
-			hotkeys_.end());
+		if(iter != hotkeys_.end()) {
+			iter->swap(item);
+		} else {
+			hotkeys_.push_back(std::move(item));
+		}
 	}
-
-	hotkeys_.push_back(item);
 }
 
 void clear_hotkeys(const std::string& command)

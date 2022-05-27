@@ -350,7 +350,7 @@ bool has_hotkey_item(const std::string& command);
  * Add a hotkey to the list of hotkeys.
  * @param item The item to add.
  */
-void add_hotkey(const hotkey_ptr item);
+void add_hotkey(hotkey_ptr item);
 
 /**
  * Remove a hotkey from the list of hotkeys
