@@ -27,6 +27,7 @@ class surface;
 class texture;
 struct point;
 struct SDL_Texture;
+struct color_t;
 
 namespace sdl
 {
@@ -251,6 +252,50 @@ public:
 	int fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
 	/**
+	 * Fill an area.
+	 *
+	 * Uses the current drawing colour set by set_draw_color().
+	 * Coordinates are given in draw space.
+	 *
+	 * @param rect      The area to fill, in drawing coordinates.
+	 * @returns         0 on success, a negative SDL error code on failure.
+	 */
+	int fill(const SDL_Rect& rect);
+
+	/**
+	 * Draw a rectangle.
+	 *
+	 * Uses the current drawing colour set by set_draw_color().
+	 * Coordinates are given in draw space.
+	 *
+	 * @param rect      The rectangle to draw, in drawing coordinates.
+	 */
+	void draw_rect(const SDL_Rect& rect);
+
+	/**
+	 * Draw a line.
+	 *
+	 * Uses the current drawing colour set by set_draw_color().
+	 * Coordinates are given in draw space.
+	 *
+	 * @param from_x    The X coordinate of the start point, in draw space.
+	 * @param from_y    The Y coordinate of the start point, in draw space.
+	 * @param to_x      The X coordinate of the end point, in draw space.
+	 * @param to_y      The Y coordinate of the end point, in draw space.
+	 */
+	void draw_line(int from_x, int from_y, int to_x, int to_y);
+
+	/** Draw a set of points. */
+	void draw_points(const std::vector<SDL_Point>& points);
+
+	/** Draw a single point. */
+	void draw_point(int x, int y);
+
+	/** Set the draw colour used by for draw_line(), draw_points(), etc. */
+	void set_draw_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+	void set_draw_color(color_t c);
+
+	/**
 	 * Draws a surface at the given location.
 	 *
 	 * The w and h members of dst are ignored, but will be updated
@@ -309,7 +354,7 @@ public:
 	 * @param srcrect       The portion of the texture to copy.
 	 *                      If null, this copies the entire texture.
 	 */
-	void blit_texture(texture& tex, const SDL_Rect* dstrect = nullptr, const SDL_Rect* srcrect = nullptr);
+	void blit_texture(const texture& tex, const SDL_Rect* dstrect = nullptr, const SDL_Rect* srcrect = nullptr);
 
 	/**
 	 * Render a portion of the low-resolution drawing surface.
