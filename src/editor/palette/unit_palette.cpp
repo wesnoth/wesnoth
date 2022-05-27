@@ -39,10 +39,8 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 			continue;
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
-		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
 		// Add the unit to the default group
 		group_map_["all"].push_back(i.second.id());
-		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 	}
 
 	for(const race_map::value_type &i : unit_types.races()) {
