@@ -21,6 +21,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/base64.hpp"
 #include "filesystem.hpp"
+#include "utils/scope_exit.hpp"
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -543,13 +544,12 @@ template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, st
 		return;
 	}
 
+	ON_SCOPE_EXIT(this, socket) { queues.erase(socket); };
+
 	while(queues[socket].size() > 0) {
-		boost::system::error_code error;
-		coro_send_doc(socket, *(queues[socket].front()), yield[error]);
-		check_error(error, socket);
-		queues[socket].pop();
+		coro_send_doc(socket, *(queues[socket].front()), yield);
+		ON_SCOPE_EXIT(this, socket) { queues[socket].pop(); };
 	}
-	queues.erase(socket);
 }
 
 template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr socket, simple_wml::document& doc)
