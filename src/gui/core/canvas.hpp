@@ -25,6 +25,7 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
 
@@ -62,17 +63,16 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param canvas          The resulting image will be blitted upon this
-		 *                        canvas.
-		 * @param renderer        The SDL_Renderer to use.
-		 * @param view_bounds     Part of the shape to render - this is the location of @a canvas
-		 *                        within the coordinates of the shape.
+		 * @param video             The current CVideo instance.
+		 * @param portion_to_draw   The portion of the shape to draw, in canvas-local coordinates
+		 * @param draw_location     The location of the canvas on the screen, in draw coordinates.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  const SDL_Rect& view_bounds,
+		virtual void draw(CVideo& video,
+		                  const SDL_Rect& portion_to_draw,
+		                  const SDL_Rect& draw_location,
 		                  wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
@@ -98,11 +98,13 @@ public:
 	 * Internal part of the blit() function - prepares the contents of the internal viewport_
 	 * surface, reallocating that surface if necessary.
 	 *
-	 * @param area_to_draw        Currently-visible part of the widget, any area outside here won't be blitted to the parent.
+	 * @param area_to_draw        Currently-visible part of the widget, in widget-local coordinates.
+	 *                            Any area outside here won't be blitted to the parent.
+	 * @param draw_location       Where to draw the widget on the screen, in draw coordinates.
 	 * @param force               If the canvas isn't dirty it isn't redrawn
 	 *                            unless force is set to true.
 	 */
-	void draw(const SDL_Rect& area_to_draw, const bool force = false);
+	void draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, const bool force = false);
 
 	public:
 	/**
@@ -113,7 +115,7 @@ public:
 	 *
 	 * @param rect                Where to blit to, in drawing coordinates.
 	 */
-	void blit(SDL_Rect rect);
+	void blit(SDL_Rect rect, bool force = false);
 
 	/**
 	 * Sets the config.
@@ -124,7 +126,6 @@ public:
 	void set_cfg(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
-		invalidate_cache();
 		parse_cfg(cfg);
 	}
 
@@ -144,7 +145,6 @@ public:
 	{
 		w_ = width;
 		set_is_dirty(true);
-		invalidate_cache();
 	}
 
 	unsigned get_width() const
@@ -156,7 +156,6 @@ public:
 	{
 		h_ = height;
 		set_is_dirty(true);
-		invalidate_cache();
 	}
 
 	unsigned get_height() const
@@ -168,7 +167,6 @@ public:
 	{
 		variables_.add(key, std::move(value));
 		set_is_dirty(true);
-		invalidate_cache();
 	}
 
 	void set_is_dirty(const bool is_dirty)
@@ -190,21 +188,14 @@ private:
 	 */
 	unsigned blur_depth_;
 
-	/** Width of the canvas (the full size, not limited to the view_bounds_). */
+	/** Blurred background texture. */
+	texture blur_texture_;
+
+	/** The full width of the canvas. */
 	unsigned w_;
 
-	/** Height of the canvas (the full size, not limited to the view_bounds_). */
+	/** The full height of the canvas. */
 	unsigned h_;
-
-	/** The surface we draw all items on. */
-	surface viewport_;
-
-	/**
-	 * The placement and size of viewport_ in the coordinates of this widget; value is not useful when bool(viewport_) is false.
-	 *
-	 * For large widgets, a small viewport_ may be used that contains only the currently-visible part of the widget.
-	 */
-	SDL_Rect view_bounds_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
@@ -227,11 +218,6 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
-
-	void invalidate_cache()
-	{
-		viewport_ = nullptr;
-	}
 };
 
 } // namespace gui2

@@ -44,11 +44,6 @@ namespace
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
-static void set_renderer_color(SDL_Renderer* renderer, color_t color)
-{
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-}
-
 /**
  * Draws a line on a surface.
  *
@@ -62,27 +57,24 @@ static void set_renderer_color(SDL_Renderer* renderer, color_t color)
  * @param x2              The end x coordinate of the line to draw.
  * @param y2              The end y coordinate of the line to draw.
  */
-static void draw_line(surface& canvas,
-					  SDL_Renderer* renderer,
-					  color_t color,
-					  unsigned x1,
-					  unsigned y1,
-					  const unsigned x2,
-					  unsigned y2)
+static void draw_line(
+	CVideo& video,
+	color_t color,
+	unsigned x1,
+	unsigned y1,
+	const unsigned x2,
+	unsigned y2)
 {
-	unsigned w = canvas->w;
+	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1
+	          << " to " << x2 << ',' << y2 << ".\n";
 
-	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1 << " to " << x2
-			  << ',' << y2 << " canvas width " << w << " canvas height "
-			  << canvas->h << ".\n";
-
-	set_renderer_color(renderer, color);
+	video.set_draw_color(color);
 
 	if(x1 == x2 && y1 == y2) {
 		// Handle single-pixel lines properly
-		SDL_RenderDrawPoint(renderer, x1, y1);
+		video.draw_point(x1, y1);
 	} else {
-		SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+		video.draw_line(x1, y1, x2, y2);
 	}
 }
 
@@ -100,20 +92,15 @@ static void draw_line(surface& canvas,
  * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
 template<unsigned int octants = 0xff>
-static void draw_circle(surface& canvas,
-						SDL_Renderer* renderer,
-						color_t color,
-						const int x_center,
-						const int y_center,
-						const int radius)
+static void draw_circle(
+	CVideo& video,
+	color_t color,
+	const int x_center,
+	const int y_center,
+	const int radius)
 {
-	unsigned w = canvas->w;
-
 	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
-
-	set_renderer_color(renderer, color);
+			  << " with radius " << radius << ".\n";
 
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
@@ -143,9 +130,11 @@ static void draw_circle(surface& canvas,
 		}
 	}
 
-	SDL_RenderDrawPoints(renderer, points.data(), points.size());
+	video.set_draw_color(color);
+	video.draw_points(points);
 }
 
+// TODO: highdpi - move to general drawing function library
 /**
  * Draws a filled circle on a surface.
  *
@@ -160,20 +149,17 @@ static void draw_circle(surface& canvas,
  * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
 template<unsigned int octants = 0xff>
-static void fill_circle(surface& canvas,
-						SDL_Renderer* renderer,
-						color_t color,
-						const int x_center,
-						const int y_center,
-						const int radius)
+static void fill_circle(
+	CVideo& video,
+	color_t color,
+	const int x_center,
+	const int y_center,
+	const int radius)
 {
-	unsigned w = canvas->w;
-
 	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
+			  << " with radius " << radius << ".\n";
 
-	set_renderer_color(renderer, color);
+	video.set_draw_color(color);
 
 	int d = -static_cast<int>(radius);
 	int x = radius;
@@ -182,15 +168,15 @@ static void fill_circle(surface& canvas,
 	while(!(y > x)) {
 		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
 		// The slope of the line is always 1 or -1 in this case.
-		if(octants & 0x04) SDL_RenderDrawLine(renderer, x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
-		if(octants & 0x02) SDL_RenderDrawLine(renderer, x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
-		if(octants & 0x20) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
-		if(octants & 0x40) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
+		if(octants & 0x04) video.draw_line(x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
+		if(octants & 0x02) video.draw_line(x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
+		if(octants & 0x20) video.draw_line(x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
+		if(octants & 0x40) video.draw_line(x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
 
-		if(octants & 0x08) SDL_RenderDrawLine(renderer, x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
-		if(octants & 0x01) SDL_RenderDrawLine(renderer, x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
-		if(octants & 0x10) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
-		if(octants & 0x80) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
+		if(octants & 0x08) video.draw_line(x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
+		if(octants & 0x01) video.draw_line(x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
+		if(octants & 0x10) video.draw_line(x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
+		if(octants & 0x80) video.draw_line(x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
 
 		d += 2 * y + 1;
 		++y;
@@ -221,10 +207,10 @@ line_shape::line_shape(const config& cfg)
 	}
 }
 
-void line_shape::draw(surface& canvas,
-				 SDL_Renderer* renderer,
-				 const SDL_Rect& view_bounds,
-				 wfl::map_formula_callable& variables)
+void line_shape::draw(CVideo& video,
+	const SDL_Rect& portion_to_draw,
+	const SDL_Rect& draw_location,
+	wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -232,21 +218,18 @@ void line_shape::draw(surface& canvas,
 	 * flag or do the calculation in a separate routine.
 	 */
 
-	const unsigned x1 = x1_(variables) - view_bounds.x;
-	const unsigned y1 = y1_(variables) - view_bounds.y;
-	const unsigned x2 = x2_(variables) - view_bounds.x;
-	const unsigned y2 = y2_(variables) - view_bounds.y;
+	const unsigned x1 = draw_location.x + x1_(variables) - portion_to_draw.x;
+	const unsigned y1 = draw_location.y + y1_(variables) - portion_to_draw.y;
+	const unsigned x2 = draw_location.x + x2_(variables) - portion_to_draw.x;
+	const unsigned y2 = draw_location.y + y2_(variables) - portion_to_draw.y;
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2
-			  << " within bounds {" << view_bounds.x << ", " << view_bounds.y
-			  << ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
+			  << " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
+			  << ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
 
 	// @todo FIXME respect the thickness.
 
-	// lock the surface
-	surface_lock locker(canvas);
-
-	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
+	draw_line(video, color_(variables), x1, y1, x2, y2);
 }
 
 /***** ***** ***** Base class for rectangular shapes ***** ***** *****/
@@ -317,42 +300,44 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	}
 }
 
-void rectangle_shape::draw(surface& canvas,
-					  SDL_Renderer* renderer,
-					  const SDL_Rect& view_bounds,
-					  wfl::map_formula_callable& variables)
+void rectangle_shape::draw(CVideo& video,
+	const SDL_Rect& portion_to_draw,
+	const SDL_Rect& draw_location,
+	wfl::map_formula_callable& variables)
 {
-	const auto rects = calculate_rects(view_bounds, variables);
+	const auto rects = calculate_rects(portion_to_draw, variables);
 	if(rects.empty) {
 		return;
 	}
-
-	surface_lock locker(canvas);
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
-		set_renderer_color(renderer, fill_color);
+		video.set_draw_color(fill_color);
 		auto area = rects.unclipped_around_viewport;
+		area.x += draw_location.x;
+		area.y += draw_location.y;
 		area.x += border_thickness_;
 		area.y += border_thickness_;
 		area.w -= 2 * border_thickness_;
 		area.h -= 2 * border_thickness_;
 
-		SDL_RenderFillRect(renderer, &area);
+		video.fill(area);
 	}
 
 	// Draw the border
-	set_renderer_color(renderer, border_color_(variables));
+	video.set_draw_color(border_color_(variables));
 	for(int i = 0; i < border_thickness_; ++i) {
 		auto dimensions = rects.unclipped_around_viewport;
+		dimensions.x += draw_location.x;
+		dimensions.y += draw_location.y;
 		dimensions.x += i;
 		dimensions.y += i;
 		dimensions.w -= 2 * i;
 		dimensions.h -= 2 * i;
 
-		SDL_RenderDrawRect(renderer, &dimensions);
+		video.draw_rect(dimensions);
 	}
 }
 
@@ -376,61 +361,55 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	}
 }
 
-void round_rectangle_shape::draw(surface& canvas,
-	SDL_Renderer* renderer,
-	const SDL_Rect& view_bounds,
+void round_rectangle_shape::draw(CVideo& video,
+	const SDL_Rect& portion_to_draw,
+	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
 {
-	const auto rects = calculate_rects(view_bounds, variables);
-	const int x = rects.unclipped_around_viewport.x;
-	const int y = rects.unclipped_around_viewport.y;
+	// TODO: highdpi - need to double check this
+	const auto rects = calculate_rects(portion_to_draw, variables);
+	const int x = draw_location.x + rects.unclipped_around_viewport.x;
+	const int y = draw_location.y + rects.unclipped_around_viewport.y;
 	const int w = rects.unclipped_around_viewport.w;
 	const int h = rects.unclipped_around_viewport.h;
 	const int r = r_(variables);
 
 	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
 		<< " height "
-		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
-		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
-
-	surface_lock locker(canvas);
+		<< " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
+		<< ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null() && w && h) {
-		set_renderer_color(renderer, fill_color);
-		static const int count = 3;
-		SDL_Rect area[count] {
-			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
-			{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2},
-			{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_},
-		};
+		video.set_draw_color(fill_color);
 
-		SDL_RenderFillRects(renderer, area, count);
+		video.fill({x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
+		video.fill({x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
+		video.fill({x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
 
-		fill_circle<0xc0>(canvas, renderer, fill_color, x + r,     y + r,     r);
-		fill_circle<0x03>(canvas, renderer, fill_color, x + w - r, y + r,     r);
-		fill_circle<0x30>(canvas, renderer, fill_color, x + r,     y + h - r, r);
-		fill_circle<0x0c>(canvas, renderer, fill_color, x + w - r, y + h - r, r);
+		fill_circle<0xc0>(video, fill_color, x + r,     y + r,     r);
+		fill_circle<0x03>(video, fill_color, x + w - r, y + r,     r);
+		fill_circle<0x30>(video, fill_color, x + r,     y + h - r, r);
+		fill_circle<0x0c>(video, fill_color, x + w - r, y + h - r, r);
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
+	video.set_draw_color(border_color);
 	for(int i = 0; i < border_thickness_; ++i) {
-		set_renderer_color(renderer, border_color);
+		video.draw_line(x + r, y + i,     x + w - r, y + i);
+		video.draw_line(x + r, y + h - i, x + w - r, y + h - i);
 
-		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
-		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
+		video.draw_line(x + i,     y + r, x + i,     y + h - r);
+		video.draw_line(x + w - i, y + r, x + w - i, y + h - r);
 
-		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
-		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
-
-		draw_circle<0xc0>(canvas, renderer, border_color, x + r,     y + r,     r - i);
-		draw_circle<0x03>(canvas, renderer, border_color, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(canvas, renderer, border_color, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(canvas, renderer, border_color, x + w - r, y + h - r, r - i);
+		draw_circle<0xc0>(video, border_color, x + r,     y + r,     r - i);
+		draw_circle<0x03>(video, border_color, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(video, border_color, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(video, border_color, x + w - r, y + h - r, r - i);
 	}
 }
 
@@ -451,10 +430,10 @@ circle_shape::circle_shape(const config& cfg)
 	}
 }
 
-void circle_shape::draw(surface& canvas,
-				   SDL_Renderer* renderer,
-				   const SDL_Rect& view_bounds,
-				   wfl::map_formula_callable& variables)
+void circle_shape::draw(CVideo& video,
+	const SDL_Rect& portion_to_draw,
+	const SDL_Rect& draw_location,
+	wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -462,25 +441,22 @@ void circle_shape::draw(surface& canvas,
 	 * extra flag or do the calculation in a separate routine.
 	 */
 
-	const int x = x_(variables) - view_bounds.x;
-	const int y = y_(variables) - view_bounds.y;
+	const int x = draw_location.x + x_(variables) - portion_to_draw.x;
+	const int y = draw_location.y + y_(variables) - portion_to_draw.y;
 	const unsigned radius = radius_(variables);
 
 	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius
-		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
-		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
-
-	// lock the surface
-	surface_lock locker(canvas);
+		<< " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
+		<< ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
-		fill_circle(canvas, renderer, fill_color, x, y, radius);
+		fill_circle(video, fill_color, x, y, radius);
 	}
 
 	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(canvas, renderer, border_color, x, y, radius - i);
+		draw_circle(video, border_color, x, y, radius - i);
 	}
 }
 
@@ -514,10 +490,30 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 	);
 }
 
-void image_shape::draw(surface& canvas,
-				  SDL_Renderer* /*renderer*/,
-				  const SDL_Rect& view_bounds,
-				  wfl::map_formula_callable& variables)
+// TODO: highdpi - move this elsewhere - need some place for generic drawing routines (not sdl/utils.cpp - more closely related to CVideo stuff)
+static void draw_tiled(CVideo& video, const texture& tex, const SDL_Rect& dest, bool centered)
+{
+	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res to ensure consistency of the result.
+	// TODO: highdpi - does this ever need to clip the source texture? It doesn't seem so
+
+	auto texinfo = tex.get_info();
+
+	const int xoff = centered ? (dest.w - texinfo.w) / 2 : 0;
+	const int yoff = centered ? (dest.h - texinfo.h) / 2 : 0;
+
+	// Just blit the image however many times is necessary.
+	SDL_Rect tempdest{dest.x - xoff, dest.y - yoff, texinfo.w, texinfo.h};
+	for (; tempdest.y < dest.y + dest.h; tempdest.y += texinfo.h) {
+		for (tempdest.x = dest.x - xoff; tempdest.x < dest.x + dest.w; tempdest.x += texinfo.w) {
+			video.blit_texture(tex, &tempdest);
+		}
+	}
+}
+
+void image_shape::draw(CVideo& video,
+	const SDL_Rect& /*portion_to_draw*/,
+	const SDL_Rect& draw_location,
+	wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -537,120 +533,82 @@ void image_shape::draw(surface& canvas,
 	 * The locator might return a different surface for every call so we can't
 	 * cache the output, also not if no formula is used.
 	 */
-	surface tmp(image::get_image(image::locator(name)));
+	// TODO: highdpi - get_image should return a texture, not a surface
+	texture tex(image::get_image(image::locator(name)));
+	texture::info texinfo = tex.get_info();
 
-	if(!tmp) {
+	// TODO: highdpi - better texture validity check
+	if(texinfo.w == 0 || texinfo.h == 0) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
-	image_ = tmp;
-	assert(image_);
-	src_clip_ = {0, 0, image_->w, image_->h};
+	// TODO: highdpi - this is never used, why is it set?
+	src_clip_ = {0, 0, texinfo.w, texinfo.h};
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", wfl::variant(image_->w));
-	local_variables.add("image_original_height", wfl::variant(image_->h));
+	local_variables.add("image_original_width", wfl::variant(texinfo.w));
+	local_variables.add("image_original_height", wfl::variant(texinfo.h));
 
-	unsigned w = w_(local_variables);
+	int w = w_(local_variables);
 	dimension_validation(w, name, "w");
 
-	unsigned h = h_(local_variables);
+	int h = h_(local_variables);
 	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
-	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : texinfo.w));
+	local_variables.add("image_height", wfl::variant(h ? h : texinfo.h));
 
+	// TODO: highdpi - why are these called "clip"?
 	const unsigned clip_x = x_(local_variables);
 	const unsigned clip_y = y_(local_variables);
 
+	// TODO: highdpi - what are these for? They are never used anywhere else.
 	local_variables.add("clip_x", wfl::variant(clip_x));
 	local_variables.add("clip_y", wfl::variant(clip_y));
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::variant(variables.fake_ptr())
+		.execute_variant(actions_formula_.evaluate(local_variables));
 
-	// Copy the data to local variables to avoid overwriting the originals.
-	SDL_Rect src_clip = src_clip_;
-	surface surf;
+	// If w or h is 0, assume it means the whole image.
+	if (!w) { w = texinfo.w; }
+	if (!h) { h = texinfo.h; }
 
-	// Test whether we need to scale and do the scaling if needed.
-	if ((w == 0) && (h == 0)) {
-		surf = image_;
+	// The image is to be placed at (x,y,w,h) in widget space.
+	int x = clip_x;
+	int y = clip_y;
+	// Convert this to draw space.
+	x += draw_location.x;
+	y += draw_location.y;
+	const SDL_Rect adjusted_draw_loc{x, y, w, h};
+
+	// The clipping area should already be set by canvas::draw(),
+	// so there's no need to set it here.
+
+	// TODO: highdpi - vertical_mirror_ - just needs a RenderCopyEx wrapper in CVideo
+
+	// What to do with the image depends on whether we need to tile it or not.
+	switch (resize_mode_) {
+	case (resize_mode::tile):
+		draw_tiled(video, tex, adjusted_draw_loc, false);
+		break;
+	case (resize_mode::tile_center):
+		draw_tiled(video, tex, adjusted_draw_loc, true);
+		break;
+	case (resize_mode::stretch):
+	case (resize_mode::scale):
+	case (resize_mode::scale_sharp):
+		// TODO: highdpi - examine the necessity of doing this here. It is better to set the filtering mode per-texture, rather than per-draw.
+		// TODO: highdpi - texture API to set filtering mode, if actually needed
+		// TODO: highdpi - set texture filtering here, if this is desirable
+		// TODO: highdpi - is there any real difference between scale and stretch?
+		video.blit_texture(tex, &adjusted_draw_loc);
+		break;
+	default:
+		ERR_GUI_D << "Image: unrecognized resize mode." << std::endl;
+		break;
 	}
-	else { // assert((w != 0) || (h != 0))
-		if(w == 0 && resize_mode_ == resize_mode::stretch) {
-			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
-					  << image_->h << " to a height of " << h << ".\n";
-
-			surf = stretch_surface_vertical(image_, h);
-			w = image_->w;
-		}
-		else if(h == 0 && resize_mode_ == resize_mode::stretch) {
-			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-					  << ',' << image_->h << " to a width of " << w
-					  << ".\n";
-
-			surf = stretch_surface_horizontal(image_, w);
-			h = image_->h;
-		}
-		else {
-			if(w == 0) {
-				w = image_->w;
-			}
-			if(h == 0) {
-				h = image_->h;
-			}
-			if(resize_mode_ == resize_mode::tile) {
-				DBG_GUI_D << "Image: tiling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				surf = tile_surface(image_, w, h, false);
-			} else if(resize_mode_ == resize_mode::tile_center) {
-				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				surf = tile_surface(image_, w, h, true);
-			} else {
-				if(resize_mode_ == resize_mode::stretch) {
-					ERR_GUI_D << "Image: failed to stretch image, "
-								 "fall back to scaling.\n";
-				}
-
-				DBG_GUI_D << "Image: scaling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				if(resize_mode_ == resize_mode::scale_sharp) {
-					surf = scale_surface_sharp(image_, w, h);
-				} else {
-					surf = scale_surface_legacy(image_, w, h);
-				}
-			}
-		}
-		src_clip.w = w;
-		src_clip.h = h;
-	}
-
-	// Calculate the destination, clip it to the view_bounds, and then change both
-	// src_clip and dst_on_view_bounds to view_bounds' coordinate system.
-	const SDL_Rect dst_on_widget = sdl::create_rect(clip_x, clip_y, src_clip.w, src_clip.h);
-	SDL_Rect dst_on_view_bounds;
-	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &dst_on_view_bounds)) {
-		DBG_GUI_D << "Image: completely outside view_bounds\n";
-		return;
-	}
-	dst_on_view_bounds.x -= view_bounds.x;
-	dst_on_view_bounds.y -= view_bounds.y;
-	src_clip.x += view_bounds.x;
-	src_clip.y += view_bounds.y;
-	src_clip.w = dst_on_view_bounds.w;
-	src_clip.h = dst_on_view_bounds.h;
-
-	if(vertical_mirror_(local_variables)) {
-		surf = flip_surface(surf);
-	}
-
-	blit_surface(surf, &src_clip, canvas, &dst_on_view_bounds);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -699,10 +657,10 @@ text_shape::text_shape(const config& cfg)
 	}
 }
 
-void text_shape::draw(surface& canvas,
-				 SDL_Renderer* /*renderer*/,
-				 const SDL_Rect& view_bounds,
-				 wfl::map_formula_callable& variables)
+void text_shape::draw(CVideo& video,
+	const SDL_Rect& area_to_draw,
+	const SDL_Rect& draw_location,
+	wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -717,45 +675,65 @@ void text_shape::draw(surface& canvas,
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
+	const int pixel_scale = video.get_pixel_scale();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
 		.set_link_color(link_color_(variables))
 		.set_text(text, text_markup_(variables));
 
+	// TODO: highdpi - determine how the font interface should work. Probably the way it is used here is fine. But the pixel scaling could theoretically be abstracted.
 	text_renderer.set_family_class(font_family_)
-		.set_font_size(font_size_(variables))
+		.set_font_size(font_size_(variables) * pixel_scale)
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
 		.set_foreground_color(color_(variables))
-		.set_maximum_width(maximum_width_(variables))
-		.set_maximum_height(maximum_height_(variables), true)
+		.set_maximum_width(maximum_width_(variables) * pixel_scale)
+		.set_maximum_height(maximum_height_(variables) * pixel_scale, true)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_);
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", wfl::variant(text_renderer.get_width()));
-	local_variables.add("text_height", wfl::variant(text_renderer.get_height()));
+	// Translate text width and height back to draw-space, rounding up.
+	local_variables.add("text_width", wfl::variant(
+		(text_renderer.get_width() + pixel_scale - 1) / pixel_scale
+	));
+	local_variables.add("text_height", wfl::variant(
+		(text_renderer.get_height() + pixel_scale - 1) / pixel_scale
+	));
 
-	const auto rects = calculate_rects(view_bounds, local_variables);
+	const auto rects = calculate_rects(area_to_draw, local_variables);
 
 	if(rects.empty) {
-		DBG_GUI_D << "Text: Clipping to view_bounds resulted in an empty intersection, nothing to do.\n";
+		DBG_GUI_D << "Text: Clipping to area_to_draw resulted in an empty intersection, nothing to do.\n";
 		return;
 	}
 
-	surface& surf = text_renderer.render(rects.clip_in_shape);
-	if(surf->w == 0) {
+	// TODO: highdpi - cache this.
+	// TODO: highdpi - font system should return texture, not surface.
+	// TODO: highdpi - this should not be preclipped.
+	SDL_Rect clip_in = rects.clip_in_shape;
+	clip_in.x *= pixel_scale;
+	clip_in.y *= pixel_scale;
+	clip_in.w *= pixel_scale;
+	clip_in.h *= pixel_scale;
+	texture tex(text_renderer.render(clip_in));
+	if(tex.get_info().w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
-	// Blit the clipped region - this needs a non-const copy of the rect
-	auto dst_in_viewport = rects.dst_in_viewport;
-	blit_surface(surf, nullptr, canvas, &dst_in_viewport);
+	// Final output - texture is preclipped, so just place it appropriately.
+	// TODO: highdpi - don't use preclipped texture, rather set clip area.
+	SDL_Rect text_draw_location = draw_location;
+	text_draw_location.x += rects.dst_in_viewport.x;
+	text_draw_location.y += rects.dst_in_viewport.y;
+	text_draw_location.w = rects.dst_in_viewport.w;
+	text_draw_location.h = rects.dst_in_viewport.h;
+	video.blit_texture(tex, &text_draw_location);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -765,8 +743,6 @@ canvas::canvas()
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
-	, viewport_()
-	, view_bounds_{0, 0, 0, 0}
 	, variables_()
 	, functions_()
 	, is_dirty_(true)
@@ -778,21 +754,17 @@ canvas::canvas(canvas&& c) noexcept
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, viewport_(std::move(c.viewport_))
-	, view_bounds_(std::move(c.view_bounds_))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 	, is_dirty_(c.is_dirty_)
 {
 }
 
-void canvas::draw(const SDL_Rect& area_to_draw, bool force)
+void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!viewport_ || !SDL_RectEquals(&view_bounds_, &area_to_draw)) {
-		DBG_GUI_D << "Canvas: redrawing because the cached view_bounds no longer fits.\n";
-		invalidate_cache();
-	} else if(!is_dirty_ && !force) {
+
+	if(!is_dirty_ && !force) {
 		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
@@ -803,34 +775,31 @@ void canvas::draw(const SDL_Rect& area_to_draw, bool force)
 		variables_.add("height", wfl::variant(h_));
 	}
 
-	auto renderer = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> {nullptr, &SDL_DestroyRenderer};
+	CVideo& video = CVideo::get_singleton();
 
-	if(viewport_ && view_bounds_.w == area_to_draw.w && view_bounds_.h == area_to_draw.h) {
-		DBG_GUI_D << "Canvas: use cached canvas.\n";
-		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
-		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 0);
-		SDL_RenderClear(renderer.get());
-	} else {
-		DBG_GUI_D << "Canvas: create new empty canvas.\n";
-		viewport_ = surface(area_to_draw.w, area_to_draw.h);
-		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
+	// Set clipping area from area_to_draw.
+	SDL_Rect clip_area = area_to_draw;
+	clip_area.x += draw_location.x;
+	clip_area.y += draw_location.y;
+	auto clipper = video.set_clip(clip_area);
+
+	// Draw background.
+	if (blur_depth_ && blur_texture_) {
+		video.blit_texture(blur_texture_, &draw_location, &area_to_draw);
 	}
-	view_bounds_ = area_to_draw;
-	SDL_SetRenderDrawBlendMode(renderer.get(), SDL_BLENDMODE_BLEND);
 
 	// draw items
 	for(auto& shape : shapes_) {
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
-		shape->draw(viewport_, renderer.get(), view_bounds_, variables_);
+		// TODO: highdpi - check if child routines benefit from knowing area_to_draw
+		shape->draw(video, area_to_draw, draw_location, variables_);
 	}
-
-	SDL_RenderPresent(renderer.get());
 
 	is_dirty_ = false;
 }
 
-void canvas::blit(SDL_Rect rect)
+void canvas::blit(SDL_Rect rect, bool force)
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
@@ -858,6 +827,14 @@ void canvas::blit(SDL_Rect rect)
 		DBG_GUI_D << "Area to draw is completely outside parent.\n";
 		return;
 	}
+	// TODO: highdpi - it is assumed this will never move after blit
+	if(blur_depth_ && !blur_texture_) {
+		// Cache a blurred image of whatever is underneath.
+		surface s = video.read_pixels_low_res(&rect);
+		s = blur_surface(s, blur_depth_);
+		blur_texture_ = texture(s);
+	}
+
 	SDL_Rect area_to_draw {
 		std::max(0, -rect.x),
 		std::max(0, -rect.y),
@@ -865,26 +842,9 @@ void canvas::blit(SDL_Rect rect)
 		rect_clipped_to_parent.h
 	};
 
-	draw(area_to_draw);
-
-	if(blur_depth_) {
-		surface s = video.read_pixels_low_res(&rect);
-		s = blur_surface(s, blur_depth_);
-		video.blit_surface(s, &rect);
-	}
-
-	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that
-	// scrolling by a single pixel will force a complete redraw. I tested rendering a few of the off-screen lines too,
-	// however it didn't seem to be an optimisation - the dirty flag was already set on each such redraw, triggering a
-	// complete redraw.
-	//
-	// If you try to re-add this overdraw, the nullptr below will need to be replaced with
-	// {area_to_draw.x - view_bounds_.x, area_to_draw.y - view_bounds_.y, area_to_draw.w, area_to_draw.h};
-	assert(area_to_draw.x == view_bounds_.x);
-	assert(area_to_draw.y == view_bounds_.y);
-	assert(area_to_draw.w == view_bounds_.w);
-	assert(area_to_draw.h == view_bounds_.h);
-	video.blit_surface(rect.x, rect.y, viewport_);
+	// `area_to_draw` is the portion of the widget to render,
+	// `rect` is the offset to render at.
+	draw(area_to_draw, rect, force);
 }
 
 void canvas::parse_cfg(const config& cfg)
