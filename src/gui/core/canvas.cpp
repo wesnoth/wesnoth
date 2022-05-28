@@ -472,6 +472,7 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
+	// TODO: highdpi - this is NOT vertical mirroring, but horizontal. rename.
 	, vertical_mirror_(cfg["vertical_mirror"])
 	, actions_formula_(cfg["actions"], &functions)
 {
@@ -586,7 +587,7 @@ void image_shape::draw(CVideo& video,
 	// The clipping area should already be set by canvas::draw(),
 	// so there's no need to set it here.
 
-	// TODO: highdpi - vertical_mirror_ - just needs a RenderCopyEx wrapper in CVideo
+	// TODO: highdpi - vertical_mirror_ - just needs a RenderCopyEx wrapper in CVideo. Also note that it is NOT for vertical mirroring, but horizontal.
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch (resize_mode_) {

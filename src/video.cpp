@@ -187,6 +187,8 @@ int CVideo::fill(
 	}
 }
 
+// TODO: highdpi - move all these drawing functions to a separate interface
+
 int CVideo::fill(const SDL_Rect& area)
 {
 	return SDL_RenderFillRect(*window, &area);
@@ -552,6 +554,8 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
+// TODO: highdpi - separate drawing interface should also handle clipping
+
 CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
 {
 	return CVideo::clip_setter(*this, clip);
@@ -593,6 +597,7 @@ SDL_Rect CVideo::to_output(const SDL_Rect& r) const
 	return {s*r.x, s*r.y, s*r.w, s*r.h};
 }
 
+// TODO: highdpi - deprecate
 void CVideo::render_low_res()
 {
 	if (!drawingSurface) {
@@ -619,6 +624,7 @@ void CVideo::render_low_res()
 	SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
 }
 
+// TODO: highdpi - deprecate
 void CVideo::render_low_res(SDL_Rect* src_rect)
 {
 	if (!drawingSurface) {
@@ -667,6 +673,10 @@ void CVideo::render_screen()
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
 	}
+
+	// Note: this is not thread-safe.
+	// Drawing functions should not be called while this is active.
+	// SDL renderer usage is not thread-safe anyway, so this is fine.
 
 	if(window) {
 		// Reset the render target to the window.
