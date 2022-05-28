@@ -45,7 +45,7 @@ terrain_layers::terrain_layers(display_t& disp, const map_location& loc)
 
 void terrain_layers::pre_show(window& window)
 {
-    //
+	//
 	// List terrain flags
 	//
 	std::vector<std::string> flags(tile_->flags.begin(), tile_->flags.end());
@@ -84,6 +84,7 @@ void terrain_layers::pre_show(window& window)
 		const int tz = game_config::tile_size;
 		SDL_Rect r {0,0,tz,tz};
 
+		// TODO: highdpi - maybe this needs width and height accessors? The surface here isn't even used.
 		surface surf = image::get_image(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses

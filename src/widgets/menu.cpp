@@ -24,6 +24,7 @@
 #include "picture.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -929,12 +930,13 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
-					if(sort_img != nullptr && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const std::size_t sort_x = xpos + widths[i] - sort_img->w - padding;
-						const std::size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
-						video().blit_surface(sort_x,sort_y,sort_img);
+					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
+					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= rect.h) {
+						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
+						const int sort_y = rect.y + rect.h/2 - sort_tex.h()/2;
+						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
+						video().blit_texture(sort_tex, &dest);
 					}
 				}
 

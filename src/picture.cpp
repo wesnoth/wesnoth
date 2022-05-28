@@ -30,6 +30,7 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 
 #include <SDL2/SDL_image.h>
 
@@ -495,7 +496,7 @@ static surface load_image_file(const image::locator& loc)
 	if(!res && !name.empty()) {
 		ERR_DP << "could not open image '" << name << "'" << std::endl;
 		if(game_config::debug && name != game_config::images::missing)
-			return get_image(game_config::images::missing, UNSCALED);
+			return get_surface(game_config::images::missing, UNSCALED);
 	}
 
 	return res;
@@ -503,7 +504,7 @@ static surface load_image_file(const image::locator& loc)
 
 static surface load_image_sub_file(const image::locator& loc)
 {
-	surface surf = get_image(loc.get_filename(), UNSCALED);
+	surface surf = get_surface(loc.get_filename(), UNSCALED);
 	if(surf == nullptr) {
 		return nullptr;
 	}
@@ -733,7 +734,7 @@ void set_zoom(unsigned int amount)
 
 static surface get_hexed(const locator& i_locator)
 {
-	surface image(get_image(i_locator, UNSCALED));
+	surface image(get_surface(i_locator, UNSCALED));
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
 	surface res = mask_surface(image, get_hexmask(), &is_empty, i_locator.get_filename());
@@ -743,7 +744,7 @@ static surface get_hexed(const locator& i_locator)
 
 static surface get_scaled_to_hex(const locator& i_locator)
 {
-	surface img = get_image(i_locator, HEXED);
+	surface img = get_surface(i_locator, HEXED);
 	// return scale_surface(img, zoom, zoom);
 
 	if(img) {
@@ -756,7 +757,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 
 static surface get_tod_colored(const locator& i_locator)
 {
-	surface img = get_image(i_locator, SCALED_TO_HEX);
+	surface img = get_surface(i_locator, SCALED_TO_HEX);
 	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
@@ -765,7 +766,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	assert(zoom != tile_size);
 	assert(tile_size != 0);
 
-	surface res(get_image(i_locator, UNSCALED));
+	surface res(get_surface(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(res) {
 		return scale_surface_nn(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
@@ -776,7 +777,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 
 static surface get_brightened(const locator& i_locator)
 {
-	surface image(get_image(i_locator, TOD_COLORED));
+	surface image(get_surface(i_locator, TOD_COLORED));
 	return brighten_image(image, floating_to_fixed_point(game_config::hex_brightening));
 }
 
@@ -822,7 +823,7 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 	return type;
 }
 
-surface get_image(const image::locator& i_locator, TYPE type)
+surface get_surface(const image::locator& i_locator, TYPE type)
 {
 	surface res;
 
@@ -895,6 +896,18 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
+// TODO: highdpi - actually implement this. Will require determining what needs to retain only surface caches, what needs to keep both surface and texture caches, and what needs to keep only texture handles.
+texture get_texture(const image::locator& i_locator, TYPE type)
+{
+	// This is obviously not ideal.
+	return texture(get_surface(i_locator, type));
+}
+
+surface get_image(const image::locator& i_locator, TYPE type)
+{
+	return get_surface(i_locator, type);
+}
+
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
 	surface res;
@@ -929,7 +942,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	// not cached yet, generate it
 	switch(type) {
 	case HEXED:
-		res = get_image(i_locator, HEXED);
+		res = get_surface(i_locator, HEXED);
 		res = apply_light(res, ls);
 		break;
 	case SCALED_TO_HEX:
@@ -950,7 +963,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 surface get_hexmask()
 {
 	static const image::locator terrain_mask(game_config::images::terrain_mask);
-	return get_image(terrain_mask, UNSCALED);
+	return get_surface(terrain_mask, UNSCALED);
 }
 
 bool is_in_hex(const locator& i_locator)
@@ -960,7 +973,7 @@ bool is_in_hex(const locator& i_locator)
 		if(i_locator.in_cache(in_hex_info_)) {
 			result = i_locator.locate_in_cache(in_hex_info_);
 		} else {
-			const surface image(get_image(i_locator, UNSCALED));
+			const surface image(get_surface(i_locator, UNSCALED));
 
 			bool res = in_mask_surface(image, get_hexmask());
 
@@ -979,7 +992,7 @@ bool is_in_hex(const locator& i_locator)
 bool is_empty_hex(const locator& i_locator)
 {
 	if(!i_locator.in_cache(is_empty_hex_)) {
-		const surface surf = get_image(i_locator, HEXED);
+		const surface surf = get_surface(i_locator, HEXED);
 		// emptiness of terrain image is checked during hex cut
 		// so, maybe in cache now, let's recheck
 		if(!i_locator.in_cache(is_empty_hex_)) {
@@ -1067,7 +1080,7 @@ bool precached_file_exists(const std::string& file)
 
 save_result save_image(const locator& i_locator, const std::string& filename)
 {
-	return save_image(get_image(i_locator), filename);
+	return save_image(get_surface(i_locator), filename);
 }
 
 save_result save_image(const surface& surf, const std::string& filename)

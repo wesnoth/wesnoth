@@ -75,7 +75,6 @@ protected:
 
 private:
 	SDL_Rect grip_area() const;
-	surface mid_scaled_, groove_scaled_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
 	STATE state_;

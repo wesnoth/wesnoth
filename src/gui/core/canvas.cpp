@@ -535,8 +535,7 @@ void image_shape::draw(CVideo& video,
 	 * The locator might return a different surface for every call so we can't
 	 * cache the output, also not if no formula is used.
 	 */
-	// TODO: highdpi - get_image should return a texture, not a surface
-	texture tex(image::get_image(image::locator(name)));
+	texture tex(image::get_texture(image::locator(name)));
 
 	// TODO: highdpi - better texture validity check
 	if(tex.w() == 0 || tex.h() == 0) {

@@ -197,7 +197,7 @@ bool halo_impl::effect::render()
 
 	images_.update_last_draw_time();
 	// TODO: highdpi - no prescaling
-	tex_ = texture(image::get_image(current_image(),image::SCALED_TO_ZOOM));
+	tex_ = image::get_texture(current_image(),image::SCALED_TO_ZOOM);
 	if(!tex_) {
 		return false;
 	}

@@ -55,6 +55,8 @@ SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 	return res;
 }
 
+// TODO: highdpi - remove drawing functions from here. This file should deal with rectangles, not drawing.
+
 void draw_rectangle(const SDL_Rect& rect, const color_t& color)
 {
 	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();

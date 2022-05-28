@@ -21,6 +21,7 @@
 #include <unordered_map>
 
 class surface;
+class texture;
 
 /**
  * Functions to load and save images from/to disk.
@@ -240,12 +241,36 @@ enum TYPE
 };
 
 /**
- * Caches and returns an image.
+ * [DEPRECATED] Caches and returns an image.
+ *
+ * This function is deprecated. Use get_texture or get_surface in stead.
  *
  * @param i_locator            Image path.
  * @param type                 Rendering format.
  */
 surface get_image(const locator& i_locator, TYPE type = UNSCALED);
+
+/**
+ * Returns an image surface suitable for software manipulation.
+ *
+ * The equivalent get_texture() function should generally be preferred.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ */
+surface get_surface(const locator& i_locator, TYPE type = UNSCALED);
+
+/**
+ * Returns an image texture suitable for hardware-accelerated rendering.
+ *
+ * Texture pointers are not unique, and will be cached and retained
+ * until no longer needed. Users of the returned texture do not have to
+ * worry about texture management.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ */
+texture get_texture(const locator& i_locator, TYPE type = UNSCALED);
 
 /**
  * Caches and returns an image with a lightmap applied to it.
