@@ -24,6 +24,7 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
+#include "draw.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
@@ -579,8 +580,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 		// restore area
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			video_.blit_texture(restorer_, &rect);
+			draw::blit(restorer_, get_rectangle());
 			font::undraw_floating_labels();
 		}
 		throw;
@@ -590,8 +590,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 	// restore area
 	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		video_.blit_texture(restorer_, &rect);
+		draw::blit(restorer_, get_rectangle());
 		font::undraw_floating_labels();
 	}
 
@@ -616,8 +615,7 @@ void window::draw()
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
 		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			video_.blit_texture(restorer_, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		layout();
@@ -732,8 +730,7 @@ void window::draw()
 
 		// Restore.
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			video_.blit_texture(restorer_, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		// Background.
@@ -776,8 +773,7 @@ void window::draw()
 void window::undraw()
 {
 	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		video_.blit_texture(restorer_, &rect);
+		draw::blit(restorer_, get_rectangle());
 	}
 }
 

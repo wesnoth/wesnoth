@@ -17,6 +17,7 @@
 
 #include "widgets/menu.hpp"
 
+#include "draw.hpp"
 #include "game_config.hpp"
 #include "font/standard_colors.hpp"
 #include "language.hpp"
@@ -799,7 +800,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, c
 	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(rect, c);
+	draw::fill(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -889,9 +890,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			};
 
 			if(highlight_heading_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,77});
+				draw::fill(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,26});
+				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -936,7 +937,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
 						const int sort_y = rect.y + rect.h/2 - sort_tex.h()/2;
 						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
-						video().blit_texture(sort_tex, &dest);
+						draw::blit(sort_tex, dest);
 					}
 				}
 

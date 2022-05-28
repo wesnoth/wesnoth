@@ -22,7 +22,6 @@
 #include "sdl/rect.hpp"
 #include "color.hpp"
 #include "xBRZ/xbrz.hpp"
-#include "video.hpp" // only needed for draw_centered_on_background, consider removing
 
 #include <algorithm>
 #include <cassert>
@@ -2245,21 +2244,6 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	res.w = nsurf->w - res.x - n;
 
 	return res;
-}
-
-void draw_centered_on_background(surface& surf, const SDL_Rect& rect, const color_t& color, CVideo& video)
-{
-	auto clipper = video.set_clip(rect);
-
-	//TODO: only draw background outside the image
-	SDL_Rect r = rect;
-	video.fill(r, color.r, color.g, color.b, color.a);
-
-	if (surf != nullptr) {
-		r.x = rect.x + (rect.w-surf->w)/2;
-		r.y = rect.y + (rect.h-surf->h)/2;
-		video.blit_surface(surf, &r);
-	}
 }
 
 SDL_Color color_t::to_sdl() const {

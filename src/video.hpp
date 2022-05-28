@@ -239,64 +239,9 @@ public:
 
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
-	/**
-	 * Fills an area with the given colour.
-	 *
-	 * @param rect      The area to fill, in drawing coordinates.
-	 * @param r         The red   component of the fill colour, 0-255.
-	 * @param g         The green component of the fill colour, 0-255.
-	 * @param b         The blue  component of the fill colour, 0-255.
-	 * @param a         The alpha component of the fill colour, 0-255.
-	 * @returns         0 on success, a negative SDL error code on failure.
-	 */
-	int fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
 	/**
-	 * Fill an area.
-	 *
-	 * Uses the current drawing colour set by set_draw_color().
-	 * Coordinates are given in draw space.
-	 *
-	 * @param rect      The area to fill, in drawing coordinates.
-	 * @returns         0 on success, a negative SDL error code on failure.
-	 */
-	int fill(const SDL_Rect& rect);
-
-	/**
-	 * Draw a rectangle.
-	 *
-	 * Uses the current drawing colour set by set_draw_color().
-	 * Coordinates are given in draw space.
-	 *
-	 * @param rect      The rectangle to draw, in drawing coordinates.
-	 */
-	void draw_rect(const SDL_Rect& rect);
-
-	/**
-	 * Draw a line.
-	 *
-	 * Uses the current drawing colour set by set_draw_color().
-	 * Coordinates are given in draw space.
-	 *
-	 * @param from_x    The X coordinate of the start point, in draw space.
-	 * @param from_y    The Y coordinate of the start point, in draw space.
-	 * @param to_x      The X coordinate of the end point, in draw space.
-	 * @param to_y      The Y coordinate of the end point, in draw space.
-	 */
-	void draw_line(int from_x, int from_y, int to_x, int to_y);
-
-	/** Draw a set of points. */
-	void draw_points(const std::vector<SDL_Point>& points);
-
-	/** Draw a single point. */
-	void draw_point(int x, int y);
-
-	/** Set the draw colour used by for draw_line(), draw_points(), etc. */
-	void set_draw_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-	void set_draw_color(color_t c);
-
-	/**
-	 * Draws a surface at the given location.
+	 * [DEPRECATED] Draws a surface at the given location.
 	 *
 	 * The w and h members of dst are ignored, but will be updated
 	 * to reflect the final draw extents including clipping.
@@ -304,16 +249,22 @@ public:
 	 * The surface will be rendered in game-native resolution,
 	 * and all coordinates are given in this context.
 	 *
+	 * WARNING: This function is deprecated and will be removed.
+	 * Use draw::blit() in stead.
+	 *
 	 * @param surf                The surface to draw.
 	 * @param dst                 Where to draw the surface. w and h are ignored, but will be updated to reflect the final draw extents including clipping.
 	 */
 	void blit_surface(const surface& surf, SDL_Rect* dst);
 
 	/**
-	 * Draws a surface at the given coordinates.
+	 * [DEPRECATED] Draws a surface at the given coordinates.
 	 *
 	 * The surface will be rendered in game-native resolution,
 	 * and all coordinates are given in this context.
+	 *
+	 * WARNING: This function is deprecated and will be removed.
+	 * Use draw::blit() in stead.
 	 *
 	 * @param x                   The x coordinate at which to draw.
 	 * @param y                   The y coordinate at which to draw.
@@ -322,10 +273,13 @@ public:
 	void blit_surface(int x, int y, const surface& surf);
 
 	/**
-	 * Draws an area of a surface at the given location.
+	 * [DEPRECATED] Draws an area of a surface at the given location.
 	 *
 	 * The surface will be rendered in game-native resolution,
 	 * and all coordinates are given in this context.
+	 *
+	 * WARNING: This function is deprecated and will be removed.
+	 * Use draw::blit() in stead.
 	 *
 	 * @param x                   The x coordinate at which to draw.
 	 * @param y                   The y coordinate at which to draw.
@@ -335,49 +289,6 @@ public:
 	 *                            within the bounds of the given rectangle.
 	 */
 	void blit_surface(int x, int y, const surface& surf, const SDL_Rect* srcrect, const SDL_Rect* clip_rect);
-
-	/**
-	 * Draws a texture, or part of a texture, at the given location.
-	 *
-	 * The portion of the texture to be drawn will be scaled to fill
-	 * the target rectangle.
-	 *
-	 * This version takes coordinates in game-native resolution,
-	 * which may be lower than the final output resolution in high-dpi
-	 * contexts or if pixel scaling is used. The texture will be copied
-	 * in high-resolution if possible.
-	 *
-	 * @param tex           The texture to be copied / drawn.
-	 * @param dstrect       The target location to copy the texture to,
-	 *                      in low-resolution game-native drawing coordinates.
-	 *                      If null, this fills the entire render target.
-	 * @param srcrect       The portion of the texture to copy.
-	 *                      If null, this copies the entire texture.
-	 */
-	void blit_texture(const texture& tex, const SDL_Rect* dstrect = nullptr, const SDL_Rect* srcrect = nullptr);
-
-	/**
-	 * Draws a texture, or part of a texture, at the given location,
-	 * also mirroring/flipping the texture horizontally and/or vertically.
-	 *
-	 * Calling this function with no explicit parameters will flip the
-	 * texture horizontally.
-	 *
-	 * @param tex               The texture to be copied / drawn.
-	 * @param flip_horizontal   Whether to flip/mirror the texture horizontally.
-	 * @param flip_vertical     Whether to flip/mirror the texture vertically.
-	 * @param dstrect           The target location to copy the texture to,
-	 *                          in low-resolution game-native drawing coordinates.
-	 *                          If null, this fills the entire render target.
-	 * @param srcrect           The portion of the texture to copy.
-	 *                          If null, this copies the entire texture.
-	 */
-	void blit_texture_flipped(
-		const texture& tex,
-		bool flip_horizontal = true,
-		bool flip_vertical = false,
-		const SDL_Rect* dst_rect = nullptr,
-		const SDL_Rect* src_rect = nullptr);
 
 	/**
 	 * Render a portion of the low-resolution drawing surface.

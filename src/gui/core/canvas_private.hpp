@@ -77,8 +77,7 @@ public:
 	 */
 	explicit line_shape(const config& cfg);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 
@@ -189,8 +188,7 @@ public:
 	 */
 	explicit rectangle_shape(const config& cfg);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 
@@ -240,8 +238,7 @@ public:
 	 */
 	explicit round_rectangle_shape(const config& cfg);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 
@@ -299,8 +296,7 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 
@@ -351,8 +347,7 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 
@@ -445,8 +440,7 @@ public:
 	 */
 	explicit text_shape(const config& cfg);
 
-	void draw(CVideo& video,
-	          const SDL_Rect& portion_to_draw,
+	void draw(const SDL_Rect& portion_to_draw,
 	          const SDL_Rect& draw_location,
 	          wfl::map_formula_callable& variables) override;
 

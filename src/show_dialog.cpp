@@ -17,6 +17,7 @@
 
 #include "show_dialog.hpp"
 
+#include "draw.hpp"
 #include "floating_label.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
@@ -257,58 +258,49 @@ void dialog_frame::draw_border()
 	const SDL_Rect& i = dim_.interior;
 	const SDL_Rect& e = dim_.exterior;
 
-	SDL_Rect dest;
-
 	if(top_) {
-		dest = {i.x, e.y, i.w, top_.h()};
-		video_.blit_texture(top_, &dest);
+		draw::blit(top_, {i.x, e.y, i.w, top_.h()});
 	}
 
 	if(bot_) {
-		dest = {i.x, i.y + i.h, i.w, bot_.h()};
-		video_.blit_texture(bot_, &dest);
+		draw::blit(bot_, {i.x, i.y + i.h, i.w, bot_.h()});
 	}
 
 	if(left_) {
-		dest = {e.x, i.y, left_.w(), i.h};
-		video_.blit_texture(left_, &dest);
+		draw::blit(left_, {e.x, i.y, left_.w(), i.h});
 	}
 
 	if(right_) {
-		dest = {i.x + i.w, i.y, right_.w(), i.h};
-		video_.blit_texture(right_, &dest);
+		draw::blit(right_, {i.x + i.w, i.y, right_.w(), i.h});
 	}
 
 	if(!top_left_ || !bot_left_ || !top_right_ || !bot_right_) {
 		return;
 	}
 
-	dest = {i.x - left_.w(), i.y - top_.h(), top_left_.w(), top_left_.h()};
-	video_.blit_texture(top_left_, &dest);
+	draw::blit(top_left_,
+		{i.x - left_.w(), i.y - top_.h(), top_left_.w(), top_left_.h()});
 
-	dest = {
+	draw::blit(bot_left_, {
 		i.x - left_.w(),
 		i.y + i.h + bot_.h() - bot_left_.h(),
 		bot_left_.w(),
 		bot_left_.h()
-	};
-	video_.blit_texture(bot_left_, &dest);
+	});
 
-	dest = {
+	draw::blit(top_right_, {
 		i.x + i.w + right_.w() - top_right_.w(),
 		i.y - top_.h(),
 		top_right_.w(),
 		top_right_.h(),
-	};
-	video_.blit_texture(top_right_, &dest);
+	});
 
-	dest = {
+	draw::blit(bot_right_, {
 		i.x + i.w + right_.w() - bot_right_.w(),
 		i.y + i.h + bot_.h() - bot_right_.h(),
 		bot_right_.w(),
 		bot_right_.h()
-	};
-	video_.blit_texture(bot_right_, &dest);
+	});
 }
 
 void dialog_frame::clear_background()
@@ -345,7 +337,7 @@ void dialog_frame::draw_background()
 			SDL_Rect dst = src;
 			dst.x = dim_.interior.x + i;
 			dst.y = dim_.interior.y + j;
-			video_.blit_texture(bg_, &dst);
+			draw::blit(bg_, dst);
 		}
 	}
 }

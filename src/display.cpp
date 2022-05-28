@@ -21,6 +21,7 @@
 #include "arrow.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
@@ -1462,7 +1463,7 @@ static void draw_background(CVideo& screen_, const SDL_Rect& area, const std::st
 {
 	// No background image, just fill in black.
 	if(image.empty()) {
-		sdl::fill_rectangle(area, color_t(0, 0, 0));
+		draw::fill(area, 0, 0, 0);
 		return;
 	}
 
@@ -1632,7 +1633,7 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		screen_.fill(clip_rect, 0, 0, 0, 0);
+		draw::fill(clip_rect, 0, 0, 0);
 		draw_background(screen_, clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
@@ -1745,32 +1746,42 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(),
+	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
+		minimap_ = texture(image::getMinimap(area.w, area.h, get_map(),
 			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
-			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
-		if(minimap_ == nullptr) {
+			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr));
+		if(!minimap_) {
 			return;
 		}
 	}
 
+	// TODO: highdpi - does this really need to set a clipping area?
 	auto clipper = screen_.set_clip(area);
 
-	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color, screen_);
+	// Draw the minimap background.
+	draw::fill(area, 31, 31, 23);
+	// The above could be optimized to draw only the non-covered part.
+
+	// Draw the minimap.
+	if (minimap_) {
+		SDL_Rect r = area;
+		r.x += (r.w - minimap_.w())/2;
+		r.y += (r.h - minimap_.h())/2;
+		draw::blit(minimap_, r);
+	}
 
 	//update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_->h) / 2;
-	minimap_location_.w = minimap_->w;
-	minimap_location_.h = minimap_->h;
+	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
+	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
+	minimap_location_.w = minimap_.w();
+	minimap_location_.h = minimap_.h();
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_->w / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_->h / (get_map().h()*hex_size());
+	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
+	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1798,6 +1809,8 @@ void display::draw_minimap()
 	// no render clipping rectangle set operaton was queued,
 	// so let's not use the render API to draw the rectangle.
 
+	// TODO: highdpi - is the above still relevant?
+
 	const SDL_Rect outline_parts[] = {
 		// top
 		{ outline_rect.x,                      outline_rect.y,                  outline_rect.w, 1              },
@@ -1810,7 +1823,7 @@ void display::draw_minimap()
 	};
 
 	for(const auto& r : outline_parts) {
-		screen_.fill(r, 255, 255, 255, 0);
+		draw::fill(r, 255, 255, 255);
 	}
 }
 
@@ -1862,7 +1875,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		screen_.fill(r, col.r, col.g, col.b, col.a);
+		draw::fill(r, col.r, col.g, col.b, col.a);
 	}
 }
 
@@ -1923,7 +1936,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 		// TODO: highdpi - This is gross and should be replaced
 		texture t = screen_.read_texture(&srcrect);
-		screen_.blit_texture(t, &dstrect);
+		draw::blit(t, dstrect);
 	}
 
 	if(diff_y != 0) {

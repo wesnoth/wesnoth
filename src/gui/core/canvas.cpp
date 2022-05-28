@@ -23,14 +23,14 @@
 #include "gui/core/canvas.hpp"
 #include "gui/core/canvas_private.hpp"
 
+#include "draw.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
-#include "picture.hpp"
-
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "picture.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "video.hpp"
@@ -43,40 +43,6 @@ namespace
 {
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
-
-/**
- * Draws a line on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The color of the line to draw.
- * @param x1              The start x coordinate of the line to draw.
- * @param y1              The start y coordinate of the line to draw.
- * @param x2              The end x coordinate of the line to draw.
- * @param y2              The end y coordinate of the line to draw.
- */
-static void draw_line(
-	CVideo& video,
-	color_t color,
-	unsigned x1,
-	unsigned y1,
-	const unsigned x2,
-	unsigned y2)
-{
-	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1
-	          << " to " << x2 << ',' << y2 << ".\n";
-
-	video.set_draw_color(color);
-
-	if(x1 == x2 && y1 == y2) {
-		// Handle single-pixel lines properly
-		video.draw_point(x1, y1);
-	} else {
-		video.draw_line(x1, y1, x2, y2);
-	}
-}
 
 /**
  * Draws a circle on a surface.
@@ -93,7 +59,6 @@ static void draw_line(
  */
 template<unsigned int octants = 0xff>
 static void draw_circle(
-	CVideo& video,
 	color_t color,
 	const int x_center,
 	const int y_center,
@@ -130,8 +95,8 @@ static void draw_circle(
 		}
 	}
 
-	video.set_draw_color(color);
-	video.draw_points(points);
+	draw::set_color(color);
+	draw::points(points);
 }
 
 // TODO: highdpi - move to general drawing function library
@@ -150,7 +115,6 @@ static void draw_circle(
  */
 template<unsigned int octants = 0xff>
 static void fill_circle(
-	CVideo& video,
 	color_t color,
 	const int x_center,
 	const int y_center,
@@ -159,7 +123,7 @@ static void fill_circle(
 	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
 			  << " with radius " << radius << ".\n";
 
-	video.set_draw_color(color);
+	draw::set_color(color);
 
 	int d = -static_cast<int>(radius);
 	int x = radius;
@@ -168,15 +132,15 @@ static void fill_circle(
 	while(!(y > x)) {
 		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
 		// The slope of the line is always 1 or -1 in this case.
-		if(octants & 0x04) video.draw_line(x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
-		if(octants & 0x02) video.draw_line(x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
-		if(octants & 0x20) video.draw_line(x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
-		if(octants & 0x40) video.draw_line(x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
+		if(octants & 0x04) draw::line(x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
+		if(octants & 0x02) draw::line(x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
+		if(octants & 0x20) draw::line(x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
+		if(octants & 0x40) draw::line(x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
 
-		if(octants & 0x08) video.draw_line(x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
-		if(octants & 0x01) video.draw_line(x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
-		if(octants & 0x10) video.draw_line(x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
-		if(octants & 0x80) video.draw_line(x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
+		if(octants & 0x08) draw::line(x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
+		if(octants & 0x01) draw::line(x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
+		if(octants & 0x10) draw::line(x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
+		if(octants & 0x80) draw::line(x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
 
 		d += 2 * y + 1;
 		++y;
@@ -207,7 +171,7 @@ line_shape::line_shape(const config& cfg)
 	}
 }
 
-void line_shape::draw(CVideo& video,
+void line_shape::draw(
 	const SDL_Rect& portion_to_draw,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -229,7 +193,7 @@ void line_shape::draw(CVideo& video,
 
 	// @todo FIXME respect the thickness.
 
-	draw_line(video, color_(variables), x1, y1, x2, y2);
+	draw::line(x1, y1, x2, y2, color_(variables));
 }
 
 /***** ***** ***** Base class for rectangular shapes ***** ***** *****/
@@ -300,7 +264,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	}
 }
 
-void rectangle_shape::draw(CVideo& video,
+void rectangle_shape::draw(
 	const SDL_Rect& portion_to_draw,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -314,7 +278,7 @@ void rectangle_shape::draw(CVideo& video,
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
-		video.set_draw_color(fill_color);
+		draw::set_color(fill_color);
 		auto area = rects.unclipped_around_viewport;
 		area.x += draw_location.x;
 		area.y += draw_location.y;
@@ -323,11 +287,11 @@ void rectangle_shape::draw(CVideo& video,
 		area.w -= 2 * border_thickness_;
 		area.h -= 2 * border_thickness_;
 
-		video.fill(area);
+		draw::fill(area);
 	}
 
 	// Draw the border
-	video.set_draw_color(border_color_(variables));
+	draw::set_color(border_color_(variables));
 	for(int i = 0; i < border_thickness_; ++i) {
 		auto dimensions = rects.unclipped_around_viewport;
 		dimensions.x += draw_location.x;
@@ -337,7 +301,7 @@ void rectangle_shape::draw(CVideo& video,
 		dimensions.w -= 2 * i;
 		dimensions.h -= 2 * i;
 
-		video.draw_rect(dimensions);
+		draw::rect(dimensions);
 	}
 }
 
@@ -361,7 +325,7 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	}
 }
 
-void round_rectangle_shape::draw(CVideo& video,
+void round_rectangle_shape::draw(
 	const SDL_Rect& portion_to_draw,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -383,33 +347,33 @@ void round_rectangle_shape::draw(CVideo& video,
 
 	// Fill the background, if applicable
 	if(!fill_color.null() && w && h) {
-		video.set_draw_color(fill_color);
+		draw::set_color(fill_color);
 
-		video.fill({x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
-		video.fill({x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
-		video.fill({x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
+		draw::fill({x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
+		draw::fill({x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
+		draw::fill({x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
 
-		fill_circle<0xc0>(video, fill_color, x + r,     y + r,     r);
-		fill_circle<0x03>(video, fill_color, x + w - r, y + r,     r);
-		fill_circle<0x30>(video, fill_color, x + r,     y + h - r, r);
-		fill_circle<0x0c>(video, fill_color, x + w - r, y + h - r, r);
+		fill_circle<0xc0>(fill_color, x + r,     y + r,     r);
+		fill_circle<0x03>(fill_color, x + w - r, y + r,     r);
+		fill_circle<0x30>(fill_color, x + r,     y + h - r, r);
+		fill_circle<0x0c>(fill_color, x + w - r, y + h - r, r);
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
-	video.set_draw_color(border_color);
+	draw::set_color(border_color);
 	for(int i = 0; i < border_thickness_; ++i) {
-		video.draw_line(x + r, y + i,     x + w - r, y + i);
-		video.draw_line(x + r, y + h - i, x + w - r, y + h - i);
+		draw::line(x + r, y + i,     x + w - r, y + i);
+		draw::line(x + r, y + h - i, x + w - r, y + h - i);
 
-		video.draw_line(x + i,     y + r, x + i,     y + h - r);
-		video.draw_line(x + w - i, y + r, x + w - i, y + h - r);
+		draw::line(x + i,     y + r, x + i,     y + h - r);
+		draw::line(x + w - i, y + r, x + w - i, y + h - r);
 
-		draw_circle<0xc0>(video, border_color, x + r,     y + r,     r - i);
-		draw_circle<0x03>(video, border_color, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(video, border_color, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(video, border_color, x + w - r, y + h - r, r - i);
+		draw_circle<0xc0>(border_color, x + r,     y + r,     r - i);
+		draw_circle<0x03>(border_color, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(border_color, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(border_color, x + w - r, y + h - r, r - i);
 	}
 }
 
@@ -430,7 +394,7 @@ circle_shape::circle_shape(const config& cfg)
 	}
 }
 
-void circle_shape::draw(CVideo& video,
+void circle_shape::draw(
 	const SDL_Rect& portion_to_draw,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -451,12 +415,12 @@ void circle_shape::draw(CVideo& video,
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
-		fill_circle(video, fill_color, x, y, radius);
+		fill_circle(fill_color, x, y, radius);
 	}
 
 	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(video, border_color, x, y, radius - i);
+		draw_circle(border_color, x, y, radius - i);
 	}
 }
 
@@ -491,28 +455,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 	);
 }
 
-// TODO: highdpi - move this elsewhere - need some place for generic drawing routines (not sdl/utils.cpp - more closely related to CVideo stuff)
-static void draw_tiled(CVideo& video, const texture& tex, const SDL_Rect& dest, bool centered)
-{
-	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res to ensure consistency of the result.
-	// TODO: highdpi - does this ever need to clip the source texture? It doesn't seem so
-
-	const int xoff = centered ? (dest.w - tex.w()) / 2 : 0;
-	const int yoff = centered ? (dest.h - tex.h()) / 2 : 0;
-
-	// Just blit the image however many times is necessary.
-	SDL_Rect tempdest{dest.x - xoff, dest.y - yoff, tex.w(), tex.h()};
-	for (; tempdest.y < dest.y + dest.h; tempdest.y += tex.h()) {
-		for (tempdest.x = dest.x - xoff;
-		     tempdest.x < dest.x + dest.w;
-		     tempdest.x += tex.w())
-		{
-			video.blit_texture(tex, &tempdest);
-		}
-	}
-}
-
-void image_shape::draw(CVideo& video,
+void image_shape::draw(
 	const SDL_Rect& /*portion_to_draw*/,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -591,10 +534,10 @@ void image_shape::draw(CVideo& video,
 	// What to do with the image depends on whether we need to tile it or not.
 	switch (resize_mode_) {
 	case (resize_mode::tile):
-		draw_tiled(video, tex, adjusted_draw_loc, false);
+		draw::tiled(tex, adjusted_draw_loc, false);
 		break;
 	case (resize_mode::tile_center):
-		draw_tiled(video, tex, adjusted_draw_loc, true);
+		draw::tiled(tex, adjusted_draw_loc, true);
 		break;
 	case (resize_mode::stretch):
 	case (resize_mode::scale):
@@ -603,7 +546,7 @@ void image_shape::draw(CVideo& video,
 		// TODO: highdpi - texture API to set filtering mode, if actually needed
 		// TODO: highdpi - set texture filtering here, if this is desirable
 		// TODO: highdpi - is there any real difference between scale and stretch?
-		video.blit_texture(tex, &adjusted_draw_loc);
+		draw::blit(tex, adjusted_draw_loc);
 		break;
 	default:
 		ERR_GUI_D << "Image: unrecognized resize mode." << std::endl;
@@ -657,7 +600,7 @@ text_shape::text_shape(const config& cfg)
 	}
 }
 
-void text_shape::draw(CVideo& video,
+void text_shape::draw(
 	const SDL_Rect& area_to_draw,
 	const SDL_Rect& draw_location,
 	wfl::map_formula_callable& variables)
@@ -673,6 +616,8 @@ void text_shape::draw(CVideo& video,
 		DBG_GUI_D << "Text: no text to render, leave.\n";
 		return;
 	}
+
+	CVideo& video = CVideo::get_singleton();
 
 	font::pango_text& text_renderer = font::get_text_renderer();
 	const int pixel_scale = video.get_pixel_scale();
@@ -733,7 +678,7 @@ void text_shape::draw(CVideo& video,
 	text_draw_location.y += rects.dst_in_viewport.y;
 	text_draw_location.w = rects.dst_in_viewport.w;
 	text_draw_location.h = rects.dst_in_viewport.h;
-	video.blit_texture(tex, &text_draw_location);
+	draw::blit(tex, text_draw_location);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -785,7 +730,7 @@ void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, b
 
 	// Draw background.
 	if (blur_depth_ && blur_texture_) {
-		video.blit_texture(blur_texture_, &draw_location, &area_to_draw);
+		draw::blit(blur_texture_, draw_location, area_to_draw);
 	}
 
 	// draw items
@@ -793,7 +738,7 @@ void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, b
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
 		// TODO: highdpi - check if child routines benefit from knowing area_to_draw
-		shape->draw(video, area_to_draw, draw_location, variables_);
+		shape->draw(area_to_draw, draw_location, variables_);
 	}
 
 	is_dirty_ = false;

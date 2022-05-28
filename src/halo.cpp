@@ -21,6 +21,7 @@
 
 #include "animated.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -235,14 +236,11 @@ bool halo_impl::effect::render()
 	buffer_ = disp->video().read_texture(&buffer_pos_);
 
 	if (orientation_ == NORMAL) {
-		disp->video().blit_texture(tex_, &rect);
+		draw::blit(tex_, rect);
 	} else {
-		disp->video().blit_texture_flipped(
-			tex_,
+		draw::flipped(tex_, rect,
 			orientation_ == HREVERSE || orientation_ == HVREVERSE,
-			orientation_ == VREVERSE || orientation_ == HVREVERSE,
-			&rect
-		);
+			orientation_ == VREVERSE || orientation_ == HVREVERSE);
 	}
 
 	return true;
@@ -277,7 +275,7 @@ void halo_impl::effect::unrender()
 	buffer_pos_.x += xpos - rect_.x;
 	buffer_pos_.y += ypos - rect_.y;
 
-	disp->video().blit_texture(buffer_, &buffer_pos_);
+	draw::blit(buffer_, buffer_pos_);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const

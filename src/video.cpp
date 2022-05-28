@@ -175,55 +175,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 	}
 }
 
-int CVideo::fill(
-	const SDL_Rect& area,
-	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-{
-	int e = SDL_SetRenderDrawColor(*window, r, g, b, a);
-	if (e == 0) {
-		return SDL_RenderFillRect(*window, &area);
-	} else {
-		return e;
-	}
-}
-
-// TODO: highdpi - move all these drawing functions to a separate interface
-
-int CVideo::fill(const SDL_Rect& area)
-{
-	return SDL_RenderFillRect(*window, &area);
-}
-
-void CVideo::set_draw_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-{
-	SDL_SetRenderDrawColor(*window, r, g, b, a);
-}
-
-void CVideo::set_draw_color(color_t c)
-{
-	SDL_SetRenderDrawColor(*window, c.r, c.g, c.b, c.a);
-}
-
-void CVideo::draw_line(int from_x, int from_y, int to_x, int to_y)
-{
-	SDL_RenderDrawLine(*window, from_x, from_y, to_x, to_y);
-}
-
-void CVideo::draw_points(const std::vector<SDL_Point>& points)
-{
-	SDL_RenderDrawPoints(*window, points.data(), points.size());
-}
-
-void CVideo::draw_point(int x, int y)
-{
-	SDL_RenderDrawPoint(*window, x, y);
-}
-
-void CVideo::draw_rect(const SDL_Rect& rect)
-{
-	SDL_RenderDrawRect(*window, &rect);
-}
-
 void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
 {
 	// Ensure alpha gets transferred as well
@@ -260,24 +211,6 @@ void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* src
 
 	// Reset the input surface blend mode to whatever it originally was
 	SDL_SetSurfaceBlendMode(surf, b);
-}
-
-void CVideo::blit_texture(const texture& tex, const SDL_Rect* dst_rect, const SDL_Rect* src_rect)
-{
-	SDL_RenderCopy(*window.get(), tex, src_rect, dst_rect);
-}
-
-void CVideo::blit_texture_flipped(
-	const texture& tex,
-	bool flip_horizontal,
-	bool flip_vertical,
-	const SDL_Rect* dst_rect,
-	const SDL_Rect* src_rect)
-{
-	SDL_RendererFlip flip =
-		flip_horizontal ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE
-		| flip_vertical ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
-	SDL_RenderCopyEx(*window, tex, src_rect, dst_rect, 0.0, nullptr, flip);
 }
 
 void CVideo::make_fake()

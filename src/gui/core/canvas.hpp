@@ -24,7 +24,6 @@
 #include "config.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
@@ -63,15 +62,13 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param video             The current CVideo instance.
 		 * @param portion_to_draw   The portion of the shape to draw, in canvas-local coordinates
 		 * @param draw_location     The location of the canvas on the screen, in draw coordinates.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(CVideo& video,
-		                  const SDL_Rect& portion_to_draw,
+		virtual void draw(const SDL_Rect& portion_to_draw,
 		                  const SDL_Rect& draw_location,
 		                  wfl::map_formula_callable& variables) = 0;
 
@@ -95,8 +92,7 @@ public:
 
 	private:
 	/**
-	 * Internal part of the blit() function - prepares the contents of the internal viewport_
-	 * surface, reallocating that surface if necessary.
+	 * Internal part of the blit() function - does the actual drawing.
 	 *
 	 * @param area_to_draw        Currently-visible part of the widget, in widget-local coordinates.
 	 *                            Any area outside here won't be blitted to the parent.

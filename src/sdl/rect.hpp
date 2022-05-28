@@ -90,22 +90,6 @@ SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
 
 /**
- * Draw a rectangle outline.
- *
- * @param rect                    The dimensions of the rectangle.
- * @param color                   The color of the rectangle.
- */
-void draw_rectangle(const SDL_Rect& rect, const color_t& color);
-
-/**
- * Draws a filled rectangle.
- *
- * @param rect                    The dimensions of the rectangle.
- * @param color                   The color of the rectangle.
- */
-void fill_rectangle(const SDL_Rect& rect, const color_t& color);
-
-/**
  * Fill a rectangle on a given surface. Alias for SDL_FillRect.
  *
  * @param dst                     The surface to operate on.

@@ -16,6 +16,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp"
 #include "widgets/scrollbar.hpp"
 #include "picture.hpp"
 #include "sdl/input.hpp" // get_mouse_state
@@ -205,17 +206,17 @@ void scrollbar::draw_contents()
 
 	// Draw scrollbar "groove"
 	const color_t c{0, 0, 0, uint8_t(255 * 0.35)};
-	sdl::fill_rectangle(groove, c);
+	draw::fill(groove, c);
 
 	// Draw scrollbar "grip"
 	SDL_Rect dest{grip.x, grip.y, top_img.w(), top_img.h()};
-	video().blit_texture(top_img, &dest);
+	draw::blit(top_img, dest);
 
 	dest = {dest.x, dest.y + top_img.h(), mid_img.w(), mid_height};
-	video().blit_texture(mid_img, &dest);
+	draw::blit(mid_img, dest);
 
 	dest = {dest.x, dest.y + mid_height, bot_img.w(), bot_img.h()};
-	video().blit_texture(bot_img, &dest);
+	draw::blit(bot_img, dest);
 }
 
 void scrollbar::handle_event(const SDL_Event& event)

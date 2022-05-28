@@ -17,6 +17,7 @@
 
 #include "widgets/button.hpp"
 
+#include "draw.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -360,7 +361,7 @@ void button::draw_contents()
 	}
 	*/
 
-	video().blit_texture(image, &dest);
+	draw::blit(image, dest);
 
 	if (overlayImage_) {
 		texture& overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
@@ -385,7 +386,7 @@ void button::draw_contents()
 		// TODO: highdpi - should this be the whole button? Like... WTF? Previously these weren't scaled at all, so... maybe? Or maybe not? IT IS A MYSTERY
 		dest.w = overlay.w();
 		dest.h = overlay.h();
-		video().blit_texture(overlay, &dest);
+		draw::blit(overlay, dest);
 	}
 
 	if (type_ != TYPE_IMAGE){

@@ -16,13 +16,14 @@
 #include "help/help_text_area.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "game_config.hpp"              // for debug
+#include "draw.hpp"                     // for blit, fill
 #include "font/sdl_ttf_compat.hpp"
+#include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "lexical_cast.hpp"
-#include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
-#include "preferences/general.hpp"              // for font_scaled
+#include "picture.hpp"                  // for get_image
+#include "preferences/general.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
@@ -565,12 +566,12 @@ void help_text_area::draw_contents()
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
 					// TODO: highdpi - is the above still relevant?
-					video().fill(draw_rect, 0, 0, 0, 0);
+					draw::fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			video().blit_texture(it->tex, &dst);
+			draw::blit(it->tex, dst);
 		}
 	}
 }
