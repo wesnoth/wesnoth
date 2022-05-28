@@ -99,12 +99,12 @@ struct enum_base : public T
 #else
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-	static constexpr std::array<const char*, std::tuple_size_v<decltype(std::make_tuple(__VA_ARGS__))>> values{        \
-		__VA_ARGS__};                                                                                                  \
                                                                                                                        \
 	/** Provide a alias template for an array of matching size. */                                                     \
 	template<typename T>                                                                                               \
-	using sized_array = std::array<T, values.size()>;
+	using sized_array = std::array<T, std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value>;                 \
+                                                                                                                       \
+	static constexpr sized_array<const char*> values{__VA_ARGS__};
 #endif
 
 } // namespace string_enums
