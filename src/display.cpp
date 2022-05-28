@@ -1530,7 +1530,8 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	surface surf(image);
 
 	if(hreverse) {
-		surf = image::reverse_image(surf);
+		// TODO: highdpi - well this will get removed in due process anyway
+		surf = flip_surface(surf);
 	}
 	if(vreverse) {
 		surf = flop_surface(surf);

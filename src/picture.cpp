@@ -177,8 +177,6 @@ std::map<std::string, bool> image_existence_map;
 // directories where we already cached file existence
 std::set<std::string> precached_dirs;
 
-std::map<surface, surface> reversed_images_;
-
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 unsigned int zoom = tile_size;
@@ -236,7 +234,6 @@ void flush_cache()
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
 		mini_highlighted_terrain_cache.clear();
-		reversed_images_.clear();
 		image_existence_map.clear();
 		precached_dirs.clear();
 	}
@@ -712,7 +709,6 @@ void set_color_adjustment(int r, int g, int b)
 		brightened_images_.flush();
 		lit_images_.flush();
 		lit_scaled_images_.flush();
-		reversed_images_.clear();
 	}
 }
 
@@ -722,7 +718,6 @@ void set_zoom(unsigned int amount)
 		zoom = amount;
 		tod_colored_images_.flush();
 		brightened_images_.flush();
-		reversed_images_.clear();
 
 		// We keep these caches if:
 		// we use default zoom (it doesn't need those)
@@ -998,28 +993,6 @@ bool is_empty_hex(const locator& i_locator)
 	}
 
 	return i_locator.locate_in_cache(is_empty_hex_);
-}
-
-surface reverse_image(const surface& surf)
-{
-	if(surf == nullptr) {
-		return surface(nullptr);
-	}
-
-	const auto itor = reversed_images_.find(surf);
-	if(itor != reversed_images_.end()) {
-		// sdl_add_ref(itor->second);
-		return itor->second;
-	}
-
-	const surface rev(flip_surface(surf));
-	if(rev == nullptr) {
-		return surface(nullptr);
-	}
-
-	reversed_images_.emplace(surf, rev);
-	// sdl_add_ref(rev);
-	return rev;
 }
 
 bool exists(const image::locator& i_locator)

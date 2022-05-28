@@ -208,8 +208,7 @@ struct manager
  *
  * In particular this affects TOD_COLORED and BRIGHTENED images, as well as
  * images with lightmaps applied. Changing the previous values automatically
- * invalidates all cached images of those types. It also invalidates the
- * internal cache used by reverse_image() (FIXME?).
+ * invalidates all cached images of those types.
  */
 void set_color_adjustment(int r, int g, int b);
 
@@ -274,14 +273,6 @@ bool is_in_hex(const locator& i_locator);
  * the hex-masked version if necessary.
  */
 bool is_empty_hex(const locator& i_locator);
-
-/**
- * Horizontally flips an image.
- *
- * The input MUST have originally been returned from an image namespace function.
- * Returned images have the same semantics as those obtained from get_image().
- */
-surface reverse_image(const surface& surf);
 
 /**
  * Returns @a true if the given image actually exists, without loading it.

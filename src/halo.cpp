@@ -196,19 +196,15 @@ bool halo_impl::effect::render()
 	}
 
 	images_.update_last_draw_time();
-	surface surf = image::get_image(current_image(),image::SCALED_TO_ZOOM);
-	if(surf == nullptr) {
+	// TODO: highdpi - no prescaling
+	tex_ = texture(image::get_image(current_image(),image::SCALED_TO_ZOOM));
+	if(!tex_) {
 		return false;
 	}
-	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
-		surf = image::reverse_image(surf);
-	}
-	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
-		surf = flop_surface(surf);
-	}
-	w_ = surf->w;
-	h_ = surf->h;
-	tex_ = texture(surf);
+	// TODO: highdpi - better access to texture width and height
+	auto texinfo = tex_.get_info();
+	w_ = texinfo.w;
+	h_ = texinfo.h;
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());
@@ -240,7 +236,16 @@ bool halo_impl::effect::render()
 	buffer_pos_ = rect_;
 	buffer_ = disp->video().read_texture(&buffer_pos_);
 
-	disp->video().blit_texture(tex_, &rect);
+	if (orientation_ == NORMAL) {
+		disp->video().blit_texture(tex_, &rect);
+	} else {
+		disp->video().blit_texture_flipped(
+			tex_,
+			orientation_ == HREVERSE || orientation_ == HVREVERSE,
+			orientation_ == VREVERSE || orientation_ == HVREVERSE,
+			&rect
+		);
+	}
 
 	return true;
 }
