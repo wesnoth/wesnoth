@@ -267,6 +267,19 @@ void CVideo::blit_texture(const texture& tex, const SDL_Rect* dst_rect, const SD
 	SDL_RenderCopy(*window.get(), tex, src_rect, dst_rect);
 }
 
+void CVideo::blit_texture_flipped(
+	const texture& tex,
+	bool flip_horizontal,
+	bool flip_vertical,
+	const SDL_Rect* dst_rect,
+	const SDL_Rect* src_rect)
+{
+	SDL_RendererFlip flip =
+		flip_horizontal ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE
+		| flip_vertical ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+	SDL_RenderCopyEx(*window, tex, src_rect, dst_rect, 0.0, nullptr, flip);
+}
+
 void CVideo::make_fake()
 {
 	fake_screen_ = true;

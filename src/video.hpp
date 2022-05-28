@@ -357,6 +357,29 @@ public:
 	void blit_texture(const texture& tex, const SDL_Rect* dstrect = nullptr, const SDL_Rect* srcrect = nullptr);
 
 	/**
+	 * Draws a texture, or part of a texture, at the given location,
+	 * also mirroring/flipping the texture horizontally and/or vertically.
+	 *
+	 * Calling this function with no explicit parameters will flip the
+	 * texture horizontally.
+	 *
+	 * @param tex               The texture to be copied / drawn.
+	 * @param flip_horizontal   Whether to flip/mirror the texture horizontally.
+	 * @param flip_vertical     Whether to flip/mirror the texture vertically.
+	 * @param dstrect           The target location to copy the texture to,
+	 *                          in low-resolution game-native drawing coordinates.
+	 *                          If null, this fills the entire render target.
+	 * @param srcrect           The portion of the texture to copy.
+	 *                          If null, this copies the entire texture.
+	 */
+	void blit_texture_flipped(
+		const texture& tex,
+		bool flip_horizontal = true,
+		bool flip_vertical = false,
+		const SDL_Rect* dst_rect = nullptr,
+		const SDL_Rect* src_rect = nullptr);
+
+	/**
 	 * Render a portion of the low-resolution drawing surface.
 	 *
 	 * @param src_rect      The portion of the drawing surface to render, in draw-space coordinates. If null, the entire drawing surface is rendered.
