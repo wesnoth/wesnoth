@@ -90,7 +90,7 @@ struct enum_base : public T
 
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-	static constexpr std::array values{__VA_ARGS__};                                                                   \
+	static constexpr inline std::array values{__VA_ARGS__};                                                            \
                                                                                                                        \
 	/** Provide a alias template for an array of matching size. */                                                     \
 	template<typename T>                                                                                               \
