@@ -677,7 +677,7 @@ bool locator::file_exists() const
 		: !filesystem::get_binary_file_location("images", val_.filename_).empty();
 }
 
-surface load_from_disk(const locator& loc)
+static surface load_from_disk(const locator& loc)
 {
 	switch(loc.get_type()) {
 	case locator::FILE:

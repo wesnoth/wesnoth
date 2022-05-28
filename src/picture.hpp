@@ -150,8 +150,6 @@ private:
 	value val_;
 };
 
-surface load_from_disk(const locator& loc);
-
 typedef cache_type<surface> image_cache;
 typedef cache_type<bool> bool_cache;
 
