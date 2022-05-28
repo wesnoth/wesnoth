@@ -28,10 +28,10 @@ namespace string_enums
  * The number of enum values must match the number of elements in the @a values array.
  * The values the @a values array must be unique.
  */
-template<typename T>
-struct enum_base : public T
+template<typename Definition>
+struct enum_base : public Definition
 {
-	using enum_type = typename T::type;
+	using enum_type = typename Definition::type;
 
 	// check that all implementations of this are scoped enums
 	// TODO: C++23 std::is_scoped_enum
@@ -45,7 +45,7 @@ struct enum_base : public T
 	 */
 	static std::string get_string(enum_type key)
 	{
-		return std::string{T::values[static_cast<int>(key)]};
+		return std::string{Definition::values[static_cast<int>(key)]};
 	}
 
 	/**
@@ -57,7 +57,7 @@ struct enum_base : public T
 	static constexpr std::optional<enum_type> get_enum(const std::string_view value)
 	{
 		for(unsigned int i = 0; i < size(); i++) {
-			if(value == T::values[i]) {
+			if(value == Definition::values[i]) {
 				return static_cast<enum_type>(i);
 			}
 		}
@@ -84,27 +84,23 @@ struct enum_base : public T
 	 */
 	static constexpr std::size_t size()
 	{
-		return T::values.size();
+		return Definition::values.size();
 	}
+
+	/** Provide a alias template for an array of matching size. */
+	template<typename T>
+	using sized_array = std::array<T, size()>;
 };
 
-#ifndef MINGW
+#ifndef __MINGW64__
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-	static constexpr std::array values{__VA_ARGS__};                                                                   \
-                                                                                                                       \
-	/** Provide a alias template for an array of matching size. */                                                     \
-	template<typename T>                                                                                               \
-	using sized_array = std::array<T, values.size()>;
+	static constexpr std::array values{__VA_ARGS__};
 #else
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-                                                                                                                       \
-	/** Provide a alias template for an array of matching size. */                                                     \
-	template<typename T>                                                                                               \
-	using sized_array = std::array<T, std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value>;                 \
-                                                                                                                       \
-	static constexpr sized_array<const char*> values{__VA_ARGS__};
+	static constexpr sized_array<const char*, std::tuple_size_v<decltype(std::make_tuple(__VA_ARGS__))>>               \
+		values{__VA_ARGS__};
 #endif
 
 } // namespace string_enums
