@@ -99,7 +99,7 @@ struct enum_base : public Definition
 #else
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-	static constexpr std::array<const char*, std::tuple_size_v<decltype(std::make_tuple(__VA_ARGS__))>>                \
+	static constexpr std::array<std::string_view, std::tuple_size_v<decltype(std::make_tuple(__VA_ARGS__))>>           \
 		values{__VA_ARGS__};
 #endif
 
