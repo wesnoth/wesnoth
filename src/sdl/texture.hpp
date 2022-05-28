@@ -80,9 +80,9 @@ public:
 		return texture_.get();
 	}
 
-	bool null() const
+	explicit operator bool() const
 	{
-		return texture_ == nullptr;
+		return texture_ != nullptr;
 	}
 
 private:

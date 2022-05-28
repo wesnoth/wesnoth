@@ -247,7 +247,7 @@ bool halo_impl::effect::render()
 
 void halo_impl::effect::unrender()
 {
-	if (tex_ == nullptr || buffer_ == nullptr) {
+	if (tex_ || buffer_) {
 		return;
 	}
 
