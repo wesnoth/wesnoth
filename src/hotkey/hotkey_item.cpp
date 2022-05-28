@@ -36,16 +36,14 @@ static lg::log_domain log_config("config");
 
 namespace hotkey
 {
+namespace
+{
 hotkey_list hotkeys_;
 game_config_view default_hotkey_cfg_;
 
-namespace
-{
 const int TOUCH_MOUSE_INDEX = 255;
-const char TOUCH_MOUSE_STRING[] = "255";
-}; // namespace
 
-static unsigned int sdl_get_mods()
+unsigned int sdl_get_mods()
 {
 	unsigned int mods;
 	mods = SDL_GetModState();
@@ -72,6 +70,7 @@ static unsigned int sdl_get_mods()
 
 	return mods;
 }
+}; // namespace
 
 const std::string hotkey_base::get_name() const
 {
@@ -198,11 +197,11 @@ hotkey_ptr load_from_config(const config& cfg)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 
-	const std::string& mouse_cfg = cfg["mouse"];
+	const config::attribute_value& mouse_cfg = cfg["mouse"];
 	if(!mouse_cfg.empty()) {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		if(mouse_cfg == TOUCH_MOUSE_STRING) {
+		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
 			mouse->set_button(TOUCH_MOUSE_INDEX);
 		} else {
 			mouse->set_button(cfg["button"].to_int());
