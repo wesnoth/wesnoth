@@ -201,10 +201,8 @@ bool halo_impl::effect::render()
 	if(!tex_) {
 		return false;
 	}
-	// TODO: highdpi - better access to texture width and height
-	auto texinfo = tex_.get_info();
-	w_ = texinfo.w;
-	h_ = texinfo.h;
+	w_ = tex_.w();
+	h_ = tex_.h();
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());

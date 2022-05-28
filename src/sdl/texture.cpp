@@ -39,17 +39,20 @@ void cleanup_texture(SDL_Texture* t)
 
 texture::texture()
 	: texture_(nullptr)
+	, w_(0)
+	, h_(0)
 {
 }
 
 texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
 {
+	SDL_QueryTexture(txt, nullptr, nullptr, &w_, &h_);
 	finalize();
 }
 
 texture::texture(const surface& surf)
-	: texture_(nullptr)
+	: texture()
 {
 	if (surf->w == 0 && surf->h == 0) {
 		return;
@@ -64,12 +67,14 @@ texture::texture(const surface& surf)
 	if(!texture_) {
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError() << std::endl;
 	}
+
+	w_ = surf->w; h_ = surf->h;
 }
 
-texture::texture(int w, int h, SDL_TextureAccess access)
-	: texture_(nullptr)
+texture::texture(int width, int height, SDL_TextureAccess access)
+	: texture_()
 {
-	reset(w, h, access);
+	reset(width, height, access);
 }
 
 void texture::finalize()
@@ -89,9 +94,10 @@ void texture::reset()
 	if(texture_) {
 		texture_.reset();
 	}
+	w_ = 0; h_ = 0;
 }
 
-void texture::reset(int w, int h, SDL_TextureAccess access)
+void texture::reset(int width, int height, SDL_TextureAccess access)
 {
 	// No-op if texture is null.
 	reset();
@@ -101,10 +107,12 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 		return;
 	}
 
-	texture_.reset(SDL_CreateTexture(renderer, default_texture_format, access, w, h), &cleanup_texture);
+	texture_.reset(SDL_CreateTexture(renderer, default_texture_format, access, width, height), &cleanup_texture);
 	if(!texture_) {
 		ERR_SDL << "When creating texture: " << SDL_GetError() << std::endl;
 	}
+
+	w_ = width; h_ = height;
 
 	finalize();
 }
@@ -112,11 +120,14 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 void texture::assign(SDL_Texture* t)
 {
 	texture_.reset(t, &cleanup_texture);
+	SDL_QueryTexture(t, nullptr, nullptr, &w_, &h_);
 }
 
 texture& texture::operator=(texture&& t)
 {
 	texture_ = std::move(t.texture_);
+	w_ = t.w_;
+	h_ = t.h_;
 	return *this;
 }
 

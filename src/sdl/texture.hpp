@@ -58,6 +58,12 @@ public:
 		return info(*this);
 	}
 
+	/** The width of the texture, in pixels. */
+	int w() const { return w_; }
+
+	/** The height of the texture, in pixels. */
+	int h() const { return h_; }
+
 	/** Sets the texture's alpha modifier. */
 	void set_alpha_mod(uint8_t alpha);
 
@@ -65,7 +71,7 @@ public:
 	void reset();
 
 	/** Releases ownership of the managed texture and creates a new one. */
-	void reset(int w, int h, SDL_TextureAccess access);
+	void reset(int width, int height, SDL_TextureAccess access);
 
 	/** Replaces ownership of the managed texture with the given one. */
 	void assign(SDL_Texture* t);
@@ -89,4 +95,5 @@ private:
 	void finalize();
 
 	std::shared_ptr<SDL_Texture> texture_;
+	int w_, h_;
 };

@@ -497,15 +497,16 @@ static void draw_tiled(CVideo& video, const texture& tex, const SDL_Rect& dest, 
 	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res to ensure consistency of the result.
 	// TODO: highdpi - does this ever need to clip the source texture? It doesn't seem so
 
-	auto texinfo = tex.get_info();
-
-	const int xoff = centered ? (dest.w - texinfo.w) / 2 : 0;
-	const int yoff = centered ? (dest.h - texinfo.h) / 2 : 0;
+	const int xoff = centered ? (dest.w - tex.w()) / 2 : 0;
+	const int yoff = centered ? (dest.h - tex.h()) / 2 : 0;
 
 	// Just blit the image however many times is necessary.
-	SDL_Rect tempdest{dest.x - xoff, dest.y - yoff, texinfo.w, texinfo.h};
-	for (; tempdest.y < dest.y + dest.h; tempdest.y += texinfo.h) {
-		for (tempdest.x = dest.x - xoff; tempdest.x < dest.x + dest.w; tempdest.x += texinfo.w) {
+	SDL_Rect tempdest{dest.x - xoff, dest.y - yoff, tex.w(), tex.h()};
+	for (; tempdest.y < dest.y + dest.h; tempdest.y += tex.h()) {
+		for (tempdest.x = dest.x - xoff;
+		     tempdest.x < dest.x + dest.w;
+		     tempdest.x += tex.w())
+		{
 			video.blit_texture(tex, &tempdest);
 		}
 	}
@@ -536,20 +537,19 @@ void image_shape::draw(CVideo& video,
 	 */
 	// TODO: highdpi - get_image should return a texture, not a surface
 	texture tex(image::get_image(image::locator(name)));
-	texture::info texinfo = tex.get_info();
 
 	// TODO: highdpi - better texture validity check
-	if(texinfo.w == 0 || texinfo.h == 0) {
+	if(tex.w() == 0 || tex.h() == 0) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
 	// TODO: highdpi - this is never used, why is it set?
-	src_clip_ = {0, 0, texinfo.w, texinfo.h};
+	src_clip_ = {0, 0, tex.w(), tex.h()};
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", wfl::variant(texinfo.w));
-	local_variables.add("image_original_height", wfl::variant(texinfo.h));
+	local_variables.add("image_original_width", wfl::variant(tex.w()));
+	local_variables.add("image_original_height", wfl::variant(tex.h()));
 
 	int w = w_(local_variables);
 	dimension_validation(w, name, "w");
@@ -557,8 +557,8 @@ void image_shape::draw(CVideo& video,
 	int h = h_(local_variables);
 	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", wfl::variant(w ? w : texinfo.w));
-	local_variables.add("image_height", wfl::variant(h ? h : texinfo.h));
+	local_variables.add("image_width", wfl::variant(w ? w : tex.w()));
+	local_variables.add("image_height", wfl::variant(h ? h : tex.h()));
 
 	// TODO: highdpi - why are these called "clip"?
 	const unsigned clip_x = x_(local_variables);
@@ -573,8 +573,8 @@ void image_shape::draw(CVideo& video,
 		.execute_variant(actions_formula_.evaluate(local_variables));
 
 	// If w or h is 0, assume it means the whole image.
-	if (!w) { w = texinfo.w; }
-	if (!h) { h = texinfo.h; }
+	if (!w) { w = tex.w(); }
+	if (!h) { h = tex.h(); }
 
 	// The image is to be placed at (x,y,w,h) in widget space.
 	int x = clip_x;
@@ -721,7 +721,7 @@ void text_shape::draw(CVideo& video,
 	clip_in.w *= pixel_scale;
 	clip_in.h *= pixel_scale;
 	texture tex(text_renderer.render(clip_in));
-	if(tex.get_info().w == 0) {
+	if(tex.w() == 0 || tex.h() == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
