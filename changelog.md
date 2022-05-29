@@ -1,8 +1,7 @@
-## Version 1.16.2+dev
+## Version 1.16.3
  ### Add-ons client
    * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485).
    * Add-on passwords that are not stored in the `_server.pbl` can now be stored in the same credentials file as multiplayer passwords (PR #6543).
- ### Add-ons server
  ### Campaigns
    * Delfador’s Memoirs
      * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
@@ -29,7 +28,6 @@
  ### Multiplayer
    * Fixed updating add-ons when joining a game that requires a new version (issue #6383).
    * Add a `/clear` command for the lobby-chat window.
- ### Lua API
  ### Packaging
    * flatpak: update freedesktop runtime version to 21.08 (issue #6497).
  ### Terrain
@@ -44,7 +42,6 @@
    * Various small sprite updates for sea serpents and swamp lizards (PR #6452).
  ### User interface
    * Mark the Plan Unit Advance mod as MP-only so it doesn't show up as available for campaigns.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch.
    * wmlxgettext’s old behavior of processing files in the order they’re given on the command line can be selected with the `--no-sort-by-file` option (PR #6586).
