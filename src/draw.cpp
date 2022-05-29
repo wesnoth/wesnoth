@@ -129,6 +129,96 @@ void draw::point(int x, int y)
 	SDL_RenderDrawPoint(renderer(), x, y);
 }
 
+void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
+{
+	draw::set_color(c);
+	draw::circle(cx, cy, r, octants);
+}
+
+void draw::circle(int cx, int cy, int r, uint8_t octants)
+{
+	// Algorithm based on
+	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
+	// version of 2011.02.07.
+	int d = -r;
+	int x = r;
+	int y = 0;
+
+	std::vector<SDL_Point> points;
+
+	while(!(y > x)) {
+		if(octants & 0x04) points.push_back({cx + x, cy + y});
+		if(octants & 0x02) points.push_back({cx + x, cy - y});
+		if(octants & 0x20) points.push_back({cx - x, cy + y});
+		if(octants & 0x40) points.push_back({cx - x, cy - y});
+
+		if(octants & 0x08) points.push_back({cx + y, cy + x});
+		if(octants & 0x01) points.push_back({cx + y, cy - x});
+		if(octants & 0x10) points.push_back({cx - y, cy + x});
+		if(octants & 0x80) points.push_back({cx - y, cy - x});
+
+		d += 2 * y + 1;
+		++y;
+		if(d > 0) {
+			d += -2 * x + 2;
+			--x;
+		}
+	}
+
+	draw::points(points);
+}
+
+void draw::disc(int cx, int cy, int r, const color_t& c, uint8_t octants)
+{
+	draw::set_color(c);
+	draw::disc(cx, cy, r, octants);
+}
+
+void draw::disc(int cx, int cy, int r, uint8_t octants)
+{
+	int d = -r;
+	int x = r;
+	int y = 0;
+
+	while(!(y > x)) {
+		// I use the formula of Bresenham's line algorithm
+		// to determine the boundaries of a segment.
+		// The slope of the line is always 1 or -1 in this case.
+		if(octants & 0x04)
+			// x2 - 1 = y2 - (cy + 1) + cx
+			draw::line(cx + x, cy + y + 1, cx + y + 1, cy + y + 1);
+		if(octants & 0x02)
+			// x2 - 1 = cy - y2 + cx
+			draw::line(cx + x, cy - y, cx + y + 1, cy - y);
+		if(octants & 0x20)
+			// x2 + 1 = (cy + 1) - y2 + (cx - 1)
+			draw::line(cx - x - 1, cy + y + 1, cx - y - 2, cy + y + 1);
+		if(octants & 0x40)
+			// x2 + 1 = y2 - cy + (cx - 1)
+			draw::line(cx - x - 1, cy - y, cx - y - 2, cy - y);
+
+		if(octants & 0x08)
+			// y2 = x2 - cx + (cy + 1)
+			draw::line(cx + y, cy + x + 1, cx + y, cy + y + 1);
+		if(octants & 0x01)
+			// y2 = cx - x2 + cy
+			draw::line(cx + y, cy - x, cx + y, cy - y);
+		if(octants & 0x10)
+			// y2 = (cx - 1) - x2 + (cy + 1)
+			draw::line(cx - y - 1, cy + x + 1, cx - y - 1, cy + y + 1);
+		if(octants & 0x80)
+			// y2 = x2 - (cx - 1) + cy
+			draw::line(cx - y - 1, cy - x, cx - y - 1, cy - y);
+
+		d += 2 * y + 1;
+		++y;
+		if(d > 0) {
+			d += -2 * x + 2;
+			--x;
+		}
+	}
+}
+
 
 /*******************/
 /* texture drawing */

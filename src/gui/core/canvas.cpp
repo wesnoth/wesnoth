@@ -39,121 +39,6 @@
 namespace gui2
 {
 
-namespace
-{
-
-/***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
-
-/**
- * Draws a circle on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The border color of the circle to draw.
- * @param x_center        The x coordinate of the center of the circle to draw.
- * @param y_center        The y coordinate of the center of the circle to draw.
- * @param radius          The radius of the circle to draw.
- * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
- */
-template<unsigned int octants = 0xff>
-static void draw_circle(
-	color_t color,
-	const int x_center,
-	const int y_center,
-	const int radius)
-{
-	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << ".\n";
-
-	// Algorithm based on
-	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
-	// version of 2011.02.07.
-	int d = -static_cast<int>(radius);
-	int x = radius;
-	int y = 0;
-
-	std::vector<SDL_Point> points;
-
-	while(!(y > x)) {
-		if(octants & 0x04) points.push_back({x_center + x, y_center + y});
-		if(octants & 0x02) points.push_back({x_center + x, y_center - y});
-		if(octants & 0x20) points.push_back({x_center - x, y_center + y});
-		if(octants & 0x40) points.push_back({x_center - x, y_center - y});
-
-		if(octants & 0x08) points.push_back({x_center + y, y_center + x});
-		if(octants & 0x01) points.push_back({x_center + y, y_center - x});
-		if(octants & 0x10) points.push_back({x_center - y, y_center + x});
-		if(octants & 0x80) points.push_back({x_center - y, y_center - x});
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
-	}
-
-	draw::set_color(color);
-	draw::points(points);
-}
-
-// TODO: highdpi - move to general drawing function library
-/**
- * Draws a filled circle on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The fill color of the circle to draw.
- * @param x_center        The x coordinate of the center of the circle to draw.
- * @param y_center        The y coordinate of the center of the circle to draw.
- * @param radius          The radius of the circle to draw.
- * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
- */
-template<unsigned int octants = 0xff>
-static void fill_circle(
-	color_t color,
-	const int x_center,
-	const int y_center,
-	const int radius)
-{
-	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << ".\n";
-
-	draw::set_color(color);
-
-	int d = -static_cast<int>(radius);
-	int x = radius;
-	int y = 0;
-
-	while(!(y > x)) {
-		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
-		// The slope of the line is always 1 or -1 in this case.
-		if(octants & 0x04) draw::line(x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
-		if(octants & 0x02) draw::line(x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
-		if(octants & 0x20) draw::line(x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
-		if(octants & 0x40) draw::line(x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
-
-		if(octants & 0x08) draw::line(x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
-		if(octants & 0x01) draw::line(x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
-		if(octants & 0x10) draw::line(x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
-		if(octants & 0x80) draw::line(x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
-	}
-}
-
-} // namespace
-
-
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 line_shape::line_shape(const config& cfg)
@@ -353,10 +238,10 @@ void round_rectangle_shape::draw(
 		draw::fill({x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
 		draw::fill({x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
 
-		fill_circle<0xc0>(fill_color, x + r,     y + r,     r);
-		fill_circle<0x03>(fill_color, x + w - r, y + r,     r);
-		fill_circle<0x30>(fill_color, x + r,     y + h - r, r);
-		fill_circle<0x0c>(fill_color, x + w - r, y + h - r, r);
+		draw::disc(x + r,     y + r,     r, 0xc0);
+		draw::disc(x + w - r, y + r,     r, 0x03);
+		draw::disc(x + r,     y + h - r, r, 0x30);
+		draw::disc(x + w - r, y + h - r, r, 0x0c);
 	}
 
 	const color_t border_color = border_color_(variables);
@@ -370,10 +255,10 @@ void round_rectangle_shape::draw(
 		draw::line(x + i,     y + r, x + i,     y + h - r);
 		draw::line(x + w - i, y + r, x + w - i, y + h - r);
 
-		draw_circle<0xc0>(border_color, x + r,     y + r,     r - i);
-		draw_circle<0x03>(border_color, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(border_color, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(border_color, x + w - r, y + h - r, r - i);
+		draw::circle(x + r,     y + r,     r - i, 0xc0);
+		draw::circle(x + w - r, y + r,     r - i, 0x03);
+		draw::circle(x + r,     y + h - r, r - i, 0x30);
+		draw::circle(x + w - r, y + h - r, r - i, 0x0c);
 	}
 }
 
@@ -415,12 +300,12 @@ void circle_shape::draw(
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
-		fill_circle(fill_color, x, y, radius);
+		draw::disc(x, y, radius, fill_color);
 	}
 
 	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(border_color, x, y, radius - i);
+		draw::circle(x, y, radius - i, border_color);
 	}
 }
 

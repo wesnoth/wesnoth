@@ -138,6 +138,46 @@ void points(const std::vector<SDL_Point>& points);
 /** Draw a single point. */
 void point(int x, int y);
 
+// TODO: enum for common octant choices - nice but not necessary
+/**
+ * Draw a circle of the given colour.
+ *
+ * Only the outline of the circle is drawn. To draw a filled circle,
+ * use draw::disc().
+ *
+ * The octants bitfield can be used to draw only certain octants
+ * of the circle, resulting in one or more arcs.
+ *
+ * If no colour is specified, the current drawing colour will be used.
+ *
+ * @param x         The x coordinate of the center of the circle.
+ * @param y         The y coordinate of the center of the circle.
+ * @param r         The radius of the circle.
+ * @param c         The colour of the circle.
+ * @param octants   A bitfield indicating which octants to draw,
+ *                  starting at twelve o'clock and moving clockwise.
+ */
+void circle(int x, int y, int r, const color_t& c, uint8_t octants = 0xff);
+void circle(int x, int y, int r, uint8_t octants = 0xff);
+
+/**
+ * Draw a solid disc of the given colour.
+ *
+ * The octants bitfield can be used to draw only certain octants
+ * of the disc, resulting in one or more filled wedges.
+ *
+ * If no colour is specified, the current drawing colour will be used.
+ *
+ * @param x         The x coordinate of the center of the circle.
+ * @param y         The y coordinate of the center of the circle.
+ * @param r         The radius of the circle.
+ * @param c         The colour of the circle.
+ * @param octants   A bitfield indicating which octants to draw,
+ *                  starting at twelve o'clock and moving clockwise.
+ */
+void disc(int x, int y, int r, const color_t& c, uint8_t octants = 0xff);
+void disc(int x, int y, int r, uint8_t octants = 0xff);
+
 
 /*******************/
 /* texture drawing */
