@@ -1746,6 +1746,8 @@ void display::draw_minimap()
 		return;
 	}
 
+	// TODO: highdpi - high DPI minimap
+	// TODO: highdpi - is this the best place to convert to texture?
 	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
 		minimap_ = texture(image::getMinimap(area.w, area.h, get_map(),
 			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
@@ -1760,21 +1762,17 @@ void display::draw_minimap()
 
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
-	// The above could be optimized to draw only the non-covered part.
 
-	// Draw the minimap.
-	if (minimap_) {
-		SDL_Rect r = area;
-		r.x += (r.w - minimap_.w())/2;
-		r.y += (r.h - minimap_.h())/2;
-		draw::blit(minimap_, r);
-	}
-
-	//update the minimap location for mouse and units functions
+	// Update the minimap location for mouse and units functions
 	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
 	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
 	minimap_location_.w = minimap_.w();
 	minimap_location_.h = minimap_.h();
+
+	// Draw the minimap.
+	if (minimap_) {
+		draw::blit(minimap_, minimap_location_);
+	}
 
 	draw_minimap_units();
 
@@ -1809,22 +1807,8 @@ void display::draw_minimap()
 	// no render clipping rectangle set operaton was queued,
 	// so let's not use the render API to draw the rectangle.
 
-	// TODO: highdpi - is the above still relevant?
-
-	const SDL_Rect outline_parts[] = {
-		// top
-		{ outline_rect.x,                      outline_rect.y,                  outline_rect.w, 1              },
-		// bottom
-		{ outline_rect.x,                      outline_rect.y + outline_rect.h, outline_rect.w, 1              },
-		// left
-		{ outline_rect.x,                      outline_rect.y,                  1,              outline_rect.h },
-		// right
-		{ outline_rect.x + outline_rect.w - 1, outline_rect.y,                  1,              outline_rect.h },
-	};
-
-	for(const auto& r : outline_parts) {
-		draw::fill(r, 255, 255, 255);
-	}
+	// TODO: highdpi - is the above still relevant? It doesn't seem to be.
+	draw::rect(outline_rect, 255, 255, 255);
 }
 
 void display::draw_minimap_units()
