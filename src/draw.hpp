@@ -295,8 +295,15 @@ void flipped(const texture& tex, bool flip_h = true, bool flip_v = false);
  * @param dst       The region to fill, in draw space.
  * @param centered  If true the tiled texture will be centered.
  *                  If false, it will align at the top-left.
+ * @param mirrored  If true the texture will be mirrored in such a way that
+ *                  adjacent tiles always share a common edge. This can look
+ *                  better for images that are not perfect tiles.
  */
-void tiled(const texture& tex, const SDL_Rect& dst, bool centered = false);
+void tiled(const texture& tex,
+	const SDL_Rect& dst,
+	bool centered = false,
+	bool mirrored = false
+);
 
 
 } // namespace draw

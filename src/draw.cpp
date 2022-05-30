@@ -241,6 +241,15 @@ void draw::blit(const texture& tex)
 }
 
 
+static SDL_RendererFlip get_flip(bool flip_h, bool flip_v)
+{
+	// This should be easier than it is.
+	return static_cast<SDL_RendererFlip>(
+		static_cast<int>(flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE)
+		| static_cast<int>(flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE)
+	);
+}
+
 void draw::flipped(
 	const texture& tex,
 	const SDL_Rect& dst,
@@ -248,9 +257,7 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
-	SDL_RendererFlip flip =
-		flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE
-		| flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, &src, &dst, 0.0, nullptr, flip);
 }
 
@@ -260,22 +267,19 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
-	SDL_RendererFlip flip =
-		flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE
-		| flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, &dst, 0.0, nullptr, flip);
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 {
-	SDL_RendererFlip flip =
-		flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE
-		| flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
 }
 
 
-void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered)
+void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
+	bool mirrored)
 {
 	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res to ensure consistency of the result.
 	// TODO: highdpi - does this ever need to clip the source texture? It doesn't seem so
@@ -284,10 +288,16 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered)
 	const int yoff = centered ? (dst.h - tex.h()) / 2 : 0;
 
 	// Just blit the image however many times is necessary.
+	bool vf = false;
 	SDL_Rect t{dst.x - xoff, dst.y - yoff, tex.w(), tex.h()};
-	for (; t.y < dst.y + dst.h; t.y += tex.h()) {
-		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += tex.w()) {
-			draw::blit(tex, t);
+	for (; t.y < dst.y + dst.h; t.y += t.h, vf = !vf) {
+		bool hf = false;
+		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
+			if (mirrored) {
+				draw::flipped(tex, t, hf, vf);
+			} else {
+				draw::blit(tex, t);
+			}
 		}
 	}
 }

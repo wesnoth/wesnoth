@@ -413,26 +413,18 @@ void image_shape::draw(
 
 	// TODO: highdpi - clipping?
 
-	if (mirror_(variables) && (resize_mode_ == resize_mode::tile
-	             || resize_mode_ == resize_mode::tile_center)) {
-		// Not difficult to implement, but will anyone ever use it?
-		WRN_GUI_D << "mirrored tiling images unimplemented" << std::endl;
-	}
-
 	// What to do with the image depends on whether we need to tile it or not.
 	switch (resize_mode_) {
 	case (resize_mode::tile):
-		draw::tiled(tex, adjusted_draw_loc, false);
+		draw::tiled(tex, adjusted_draw_loc, false, mirror_(variables));
 		break;
 	case (resize_mode::tile_center):
-		draw::tiled(tex, adjusted_draw_loc, true);
+		draw::tiled(tex, adjusted_draw_loc, true, mirror_(variables));
 		break;
 	case (resize_mode::stretch):
 	case (resize_mode::scale):
 	case (resize_mode::scale_sharp):
-		// TODO: highdpi - examine the necessity of doing this here. It is better to set the filtering mode per-texture, rather than per-draw.
-		// TODO: highdpi - texture API to set filtering mode, if actually needed
-		// TODO: highdpi - set texture filtering here, if this is desirable
+		// TODO: highdpi - SDL requires that filtering mode be set per-texture, at texture creation. This will require either texture caches according to filtering mode, or an overhaul in how filtering type is requested so that the filter mode is specified as part of image loading, not image drawing.
 		// TODO: highdpi - is there any real difference between scale and stretch?
 		if (mirror_(variables)) {
 			draw::flipped(tex, adjusted_draw_loc);
