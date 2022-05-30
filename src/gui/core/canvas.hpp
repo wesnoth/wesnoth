@@ -27,6 +27,7 @@
 #include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
+class point;
 
 namespace gui2
 {
@@ -97,10 +98,8 @@ public:
 	 * @param area_to_draw        Currently-visible part of the widget, in widget-local coordinates.
 	 *                            Any area outside here won't be blitted to the parent.
 	 * @param draw_location       Where to draw the widget on the screen, in draw coordinates.
-	 * @param force               If the canvas isn't dirty it isn't redrawn
-	 *                            unless force is set to true.
 	 */
-	void draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, const bool force = false);
+	void draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location);
 
 	public:
 	/**
@@ -111,7 +110,7 @@ public:
 	 *
 	 * @param rect                Where to blit to, in drawing coordinates.
 	 */
-	void blit(SDL_Rect rect, bool force = false);
+	void blit(SDL_Rect rect);
 
 	/**
 	 * Sets the config.
@@ -135,23 +134,14 @@ public:
 		parse_cfg(cfg);
 	}
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
+	/** Update WFL size variables. */
+	void update_size_variables();
 
-	void set_width(const unsigned width)
-	{
-		w_ = width;
-		set_is_dirty(true);
-	}
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	unsigned get_width() const
 	{
 		return w_;
-	}
-
-	void set_height(const unsigned height)
-	{
-		h_ = height;
-		set_is_dirty(true);
 	}
 
 	unsigned get_height() const
@@ -159,15 +149,17 @@ public:
 		return h_;
 	}
 
+	void set_size(const point& size);
+
 	void set_variable(const std::string& key, wfl::variant&& value)
 	{
 		variables_.add(key, std::move(value));
-		set_is_dirty(true);
 	}
 
-	void set_is_dirty(const bool is_dirty)
+	// TODO: highdpi - find everywhere that is calling this, and determine why.
+	void set_is_dirty(bool)
 	{
-		is_dirty_ = is_dirty;
+		update_size_variables();
 	}
 
 private:
@@ -198,9 +190,6 @@ private:
 
 	/** Action function definitions for the canvas. */
 	wfl::action_function_symbol_table functions_;
-
-	/** The dirty state of the canvas. */
-	bool is_dirty_;
 
 	/**
 	 * Parses a config object.

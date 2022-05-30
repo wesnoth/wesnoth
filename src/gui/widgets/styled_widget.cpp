@@ -268,8 +268,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// resize canvasses
 	for(auto & canvas : canvases_)
 	{
-		canvas.set_width(size.x);
-		canvas.set_height(size.y);
+		canvas.set_size(size);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
@@ -437,7 +436,7 @@ void styled_widget::impl_draw_background(int x_offset, int y_offset)
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
 
-	get_canvas(get_state()).blit(calculate_blitting_rectangle(x_offset, y_offset), get_is_dirty());
+	get_canvas(get_state()).blit(calculate_blitting_rectangle(x_offset, y_offset));
 }
 
 void styled_widget::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)

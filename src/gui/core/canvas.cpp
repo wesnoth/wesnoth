@@ -31,6 +31,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "picture.hpp"
+#include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "video.hpp"
@@ -411,8 +412,7 @@ void image_shape::draw(
 	y += draw_location.y;
 	const SDL_Rect adjusted_draw_loc{x, y, w, h};
 
-	// The clipping area should already be set by canvas::draw(),
-	// so there's no need to set it here.
+	// TODO: highdpi - clipping?
 
 	// TODO: highdpi - vertical_mirror_ - just needs a RenderCopyEx wrapper in CVideo. Also note that it is NOT for vertical mirroring, but horizontal.
 
@@ -575,7 +575,6 @@ canvas::canvas()
 	, h_(0)
 	, variables_()
 	, functions_()
-	, is_dirty_(true)
 {
 }
 
@@ -586,32 +585,15 @@ canvas::canvas(canvas&& c) noexcept
 	, h_(c.h_)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
-	, is_dirty_(c.is_dirty_)
 {
 }
 
-void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, bool force)
+// TODO: highdpi - draw location specification needs to be completely reworked
+void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
 
-	if(!is_dirty_ && !force) {
-		DBG_GUI_D << "Canvas: nothing to draw.\n";
-		return;
-	}
-
-	if(is_dirty_) {
-		get_screen_size_variables(variables_);
-		variables_.add("width", wfl::variant(w_));
-		variables_.add("height", wfl::variant(h_));
-	}
-
-	CVideo& video = CVideo::get_singleton();
-
-	// Set clipping area from area_to_draw.
-	SDL_Rect clip_area = area_to_draw;
-	clip_area.x += draw_location.x;
-	clip_area.y += draw_location.y;
-	auto clipper = video.set_clip(clip_area);
+	// TODO: highdpi - clipping?
 
 	// Draw background.
 	if (blur_depth_ && blur_texture_) {
@@ -625,11 +607,9 @@ void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location, b
 		// TODO: highdpi - check if child routines benefit from knowing area_to_draw
 		shape->draw(area_to_draw, draw_location, variables_);
 	}
-
-	is_dirty_ = false;
 }
 
-void canvas::blit(SDL_Rect rect, bool force)
+void canvas::blit(SDL_Rect rect)
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
@@ -674,7 +654,7 @@ void canvas::blit(SDL_Rect rect, bool force)
 
 	// `area_to_draw` is the portion of the widget to render,
 	// `rect` is the offset to render at.
-	draw(area_to_draw, rect, force);
+	draw(area_to_draw, rect);
 }
 
 void canvas::parse_cfg(const config& cfg)
@@ -721,6 +701,20 @@ void canvas::parse_cfg(const config& cfg)
 			assert(false);
 		}
 	}
+}
+
+void canvas::update_size_variables()
+{
+	get_screen_size_variables(variables_);
+	variables_.add("width", wfl::variant(w_));
+	variables_.add("height", wfl::variant(h_));
+}
+
+void canvas::set_size(const point& size)
+{
+	w_ = size.x;
+	h_ = size.y;
+	update_size_variables();
 }
 
 void canvas::clear_shapes(const bool force)
