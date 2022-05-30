@@ -322,8 +322,7 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
-	// TODO: highdpi - this is NOT vertical mirroring, but horizontal. rename.
-	, vertical_mirror_(cfg["vertical_mirror"])
+	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
 	, actions_formula_(cfg["actions"], &functions)
 {
 	const std::string& debug = (cfg["debug"]);
@@ -414,7 +413,11 @@ void image_shape::draw(
 
 	// TODO: highdpi - clipping?
 
-	// TODO: highdpi - vertical_mirror_ - just needs a RenderCopyEx wrapper in CVideo. Also note that it is NOT for vertical mirroring, but horizontal.
+	if (mirror_(variables) && (resize_mode_ == resize_mode::tile
+	             || resize_mode_ == resize_mode::tile_center)) {
+		// Not difficult to implement, but will anyone ever use it?
+		WRN_GUI_D << "mirrored tiling images unimplemented" << std::endl;
+	}
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch (resize_mode_) {
@@ -431,7 +434,11 @@ void image_shape::draw(
 		// TODO: highdpi - texture API to set filtering mode, if actually needed
 		// TODO: highdpi - set texture filtering here, if this is desirable
 		// TODO: highdpi - is there any real difference between scale and stretch?
-		draw::blit(tex, adjusted_draw_loc);
+		if (mirror_(variables)) {
+			draw::flipped(tex, adjusted_draw_loc);
+		} else {
+			draw::blit(tex, adjusted_draw_loc);
+		}
 		break;
 	default:
 		ERR_GUI_D << "Image: unrecognized resize mode." << std::endl;

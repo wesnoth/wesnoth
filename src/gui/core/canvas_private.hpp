@@ -395,7 +395,7 @@ private:
 	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
+	typed_formula<bool> mirror_;
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
