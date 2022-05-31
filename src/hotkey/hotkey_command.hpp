@@ -292,7 +292,7 @@ class scope_changer
 {
 public:
 	scope_changer();
-	scope_changer(hk_scopes new_scopes, bool restore = true);
+	explicit scope_changer(hk_scopes new_scopes, bool restore = true);
 	~scope_changer();
 private:
 	hk_scopes prev_scope_active_;
