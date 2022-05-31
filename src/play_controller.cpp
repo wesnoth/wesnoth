@@ -169,7 +169,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
-	, scope_(hotkey::SCOPE_GAME)
+	, scope_(hotkey::scope_game)
 	, ignore_replay_errors_(false)
 	, player_type_changed_(false)
 {
