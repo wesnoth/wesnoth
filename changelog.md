@@ -7,6 +7,8 @@
      * S07a:
        * Better handling for side 2 (issue #4145)
        * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
+   * Northern Rebirth
+     * S1: Fixed Al'Tar confusing an orc for a slave (issue #6735)
  ### Editor
  ### Multiplayer
  ### Lua API
