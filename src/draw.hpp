@@ -184,7 +184,7 @@ void disc(int x, int y, int r, uint8_t octants = 0xff);
 /*******************/
 
 
-/**
+/*
  * Draws an SDL surface at the given location.
  *
  * The w and h members of dst are ignored, but will be updated
@@ -201,7 +201,7 @@ void disc(int x, int y, int r, uint8_t octants = 0xff);
  */
 //void blit(const surface& surf, SDL_Rect* dst);
 
-/**
+/*
  * Draws a surface at the given coordinates.
  *
  * The surface will be rendered in game-native resolution, a.k.a.
@@ -216,7 +216,7 @@ void disc(int x, int y, int r, uint8_t octants = 0xff);
  */
 //void blit(const surface& surf, int x, int y);
 
-/**
+/*
  * Draws an area of a surface at the given location.
  *
  * The surface will be rendered in game-native resolution,

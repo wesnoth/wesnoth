@@ -54,6 +54,10 @@ texture::texture(SDL_Texture* txt)
 texture::texture(const surface& surf)
 	: texture()
 {
+	if (!surf) {
+		return;
+	}
+
 	if (surf->w == 0 && surf->h == 0) {
 		return;
 	}
