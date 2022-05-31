@@ -534,6 +534,16 @@ CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
 	return CVideo::clip_setter(*this, clip);
 }
 
+CVideo::clip_setter CVideo::reduce_clip(const SDL_Rect& clip)
+{
+	SDL_Rect c = get_clip();
+	if (c == sdl::empty_rect) {
+		return CVideo::clip_setter(*this, clip);
+	} else {
+		return CVideo::clip_setter(*this, sdl::intersect_rects(clip, c));
+	}
+}
+
 void CVideo::force_clip(const SDL_Rect& clip)
 {
 	// Set the clipping area both on the drawing surface,

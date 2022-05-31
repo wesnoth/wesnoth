@@ -248,7 +248,7 @@ bool halo_impl::effect::render()
 
 void halo_impl::effect::unrender()
 {
-	if (tex_ || buffer_) {
+	if (!tex_ || !buffer_) {
 		return;
 	}
 

@@ -281,8 +281,10 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	bool mirrored)
 {
-	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res to ensure consistency of the result.
-	// TODO: highdpi - does this ever need to clip the source texture? It doesn't seem so
+	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res. To draw in higher res, width and height would have to be specified.
+
+	// Reduce clip to dst.
+	auto clipper = CVideo::get_singleton().reduce_clip(dst);
 
 	const int xoff = centered ? (dst.w - tex.w()) / 2 : 0;
 	const int yoff = centered ? (dst.h - tex.h()) / 2 : 0;

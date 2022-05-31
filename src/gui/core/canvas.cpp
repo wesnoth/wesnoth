@@ -157,17 +157,24 @@ void rectangle_shape::draw(
 {
 	const auto rects = calculate_rects(portion_to_draw, variables);
 	if(rects.empty) {
+		DBG_GUI_D << "Rectangle: nothing to draw" << std::endl;
 		return;
 	}
 
 	const color_t fill_color = fill_color_(variables);
+	const color_t border_color = border_color_(variables);
+	SDL_Rect r = rects.unclipped_around_viewport;
+	r.x += draw_location.x;
+	r.y += draw_location.y;
+
+	DBG_GUI_D << "Rectangle: draw at " << r
+		<< " with bounds " << portion_to_draw << std::endl;
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
+		DBG_GUI_D << "fill " << fill_color << std::endl;
 		draw::set_color(fill_color);
-		auto area = rects.unclipped_around_viewport;
-		area.x += draw_location.x;
-		area.y += draw_location.y;
+		SDL_Rect area = r;
 		area.x += border_thickness_;
 		area.y += border_thickness_;
 		area.w -= 2 * border_thickness_;
@@ -177,11 +184,11 @@ void rectangle_shape::draw(
 	}
 
 	// Draw the border
-	draw::set_color(border_color_(variables));
+	draw::set_color(border_color);
+	DBG_GUI_D << "border thickness " << border_thickness_
+		<< ", colour " << border_color << std::endl;
 	for(int i = 0; i < border_thickness_; ++i) {
-		auto dimensions = rects.unclipped_around_viewport;
-		dimensions.x += draw_location.x;
-		dimensions.y += draw_location.y;
+		SDL_Rect dimensions = r;
 		dimensions.x += i;
 		dimensions.y += i;
 		dimensions.w -= 2 * i;

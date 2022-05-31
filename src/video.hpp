@@ -416,6 +416,14 @@ public:
 	clip_setter set_clip(const SDL_Rect& clip);
 
 	/**
+	 * Set the clipping area to the intersection of the current clipping
+	 * area and the given rectangle.
+	 *
+	 * Otherwise acts as set_clip().
+	 */
+	clip_setter reduce_clip(const SDL_Rect& clip);
+
+	/**
 	 * Set the clipping area, without any provided way of setting it back.
 	 *
 	 * @param clip          The clipping area, in draw-space coordinates.
