@@ -18,9 +18,11 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/texture.hpp"
 
 #include <SDL2/SDL_render.h>
 
+#include <cassert>
 #include <memory>
 
 class surface;
@@ -372,6 +374,8 @@ public:
 
 	void lock_flips(bool);
 
+	/***** ***** ***** ***** State management ***** ***** ****** *****/
+
 	/** A class to manage automatic restoration of the clipping region.
 	 *
 	 * While this can be constructed on its own, it is usually easier to
@@ -420,6 +424,67 @@ public:
 
 	/** Get the current clipping area, in draw coordinates. */
 	SDL_Rect get_clip() const;
+
+	/** A class to manage automatic restoration of the render target.
+	 *
+	 * While this can be constructed on its own, it is usually easier to
+	 * use the CVideo::set_render_target() member function.
+	 */
+	class render_target_setter
+	{
+	public:
+		explicit render_target_setter(CVideo& video, const texture& t)
+			: video_(video), last_target_(nullptr)
+		{
+			// Validate we can render to this texture.
+			assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
+
+			last_target_ = video_.get_render_target();
+			video_.force_render_target(t);
+		}
+
+		~render_target_setter()
+		{
+			video_.force_render_target(last_target_);
+		}
+
+	private:
+		CVideo& video_;
+		SDL_Texture* last_target_;
+	};
+
+	/**
+	 * Set the given texture as the active render target.
+	 *
+	 * All draw calls will draw to this texture until the returned object
+	 * goes out of scope. Do not retain the render_target_setter longer
+	 * than necessary.
+	 *
+	 * The provided texture must have been created with the
+	 * SDL_TEXTUREACCESS_TARGET access mode.
+	 *
+	 * @param t     The new render target. This must be a texture created
+	 *              with SDL_TEXTUREACCESS_TARGET.
+	 * @returns     A render_target_setter object. When this object is
+	 *              destroyed the render target will be restored to
+	 *              whatever it was before this call.
+	 */
+	render_target_setter set_render_target(const texture& t);
+
+	/**
+	 * Set the render target, without any provided way of setting it back.
+	 *
+	 * @param t     The new render target. This must be a texture created
+	 *              with SDL_TEXTUREACCESS_TARGET, or NULL to indicate
+	 *              the underlying window.
+	 */
+	void force_render_target(SDL_Texture* t);
+
+	/** Get the current render target.
+	 *
+	 * Returns NULL if the render target is the underlying window.
+	 */
+	SDL_Texture* get_render_target();
 
 	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
 

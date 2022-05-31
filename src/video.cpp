@@ -500,6 +500,28 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
+CVideo::render_target_setter CVideo::set_render_target(const texture& t)
+{
+	return CVideo::render_target_setter(*this, t);
+}
+
+void CVideo::force_render_target(SDL_Texture* t)
+{
+	SDL_SetRenderTarget(get_renderer(), t);
+
+	// The scale factor gets reset when the render target changes,
+	// so make sure it gets set back appropriately.
+	if (t == nullptr || t == render_texture_) {
+		// TODO: highdpi - sort out who owns this
+		window->set_logical_size(get_width(), get_height());
+	}
+}
+
+SDL_Texture* CVideo::get_render_target()
+{
+	return SDL_GetRenderTarget(get_renderer());
+}
+
 // TODO: highdpi - separate drawing interface should also handle clipping
 
 CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
@@ -510,7 +532,11 @@ CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
 void CVideo::force_clip(const SDL_Rect& clip)
 {
 	// Set the clipping area both on the drawing surface,
-	SDL_SetClipRect(drawingSurface, &clip);
+	if (clip == sdl::empty_rect) {
+		SDL_SetClipRect(drawingSurface, nullptr);
+	} else {
+		SDL_SetClipRect(drawingSurface, &clip);
+	}
 	// and on the render target.
 	if (SDL_RenderSetClipRect(get_renderer(), &clip)) {
 		throw error("Failed to set render clip rect");
@@ -519,13 +545,13 @@ void CVideo::force_clip(const SDL_Rect& clip)
 
 SDL_Rect CVideo::get_clip() const
 {
-	if (!drawingSurface) {
-		return sdl::empty_rect;
-	}
+	SDL_Rect clip;
+	SDL_RenderGetClipRect(*window, &clip);
 
-	SDL_Rect r_draw;
-	SDL_GetClipRect(drawingSurface, &r_draw);
-	return r_draw;
+	if (clip == sdl::empty_rect) {
+		return draw_area();
+	}
+	return clip;
 }
 
 SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const

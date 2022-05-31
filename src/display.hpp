@@ -1034,8 +1034,6 @@ private:
 	int invalidated_hexes_;
 	int drawn_hexes_;
 
-	surface map_screenshot_surf_;
-
 	std::vector<std::function<void(display&)>> redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
