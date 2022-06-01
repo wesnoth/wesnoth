@@ -699,7 +699,7 @@ protected:
 					const std::string& timeid,
 					TERRAIN_TYPE terrain_type);
 
-	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
+	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
@@ -777,15 +777,14 @@ protected:
 
 private:
 
-	// This surface must be freed by the caller
-	surface get_flag(const map_location& loc);
+	texture get_flag(const map_location& loc);
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator>> flags_;
 
 	// This vector is a class member to avoid repeated memory allocations in get_terrain_images(),
 	// which turned out to be a significant bottleneck while profiling.
-	std::vector<surface> terrain_image_vector_;
+	std::vector<texture> terrain_image_vector_;
 
 public:
 	/**
@@ -887,12 +886,12 @@ protected:
 	 *       for every hex in the row
 	 *         ...
 	 *
-	 * * Surfaces are rendered per level in a map.
+	 * * textures are rendered per level in a map.
 	 * * Per level the items are rendered per location these locations are
 	 *   stored in the drawing order required for units.
-	 * * every location has a vector with surfaces, each with its own screen
+	 * * every location has a vector with textures, each with its own screen
 	 *   coordinate to render at.
-	 * * every vector element has a vector with surfaces to render.
+	 * * every vector element has a vector with textures to render.
 	 */
 	class drawing_buffer_key
 	{
@@ -922,38 +921,38 @@ protected:
 	{
 	public:
 		// We don't want to copy this.
-		// It's expensive when done frequently due to the surface vector.
+		// It's expensive when done frequently due to the texture vector.
 		blit_helper(const blit_helper&) = delete;
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const surface& surf,
+				const SDL_Rect& dest, const texture& tex,
 				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(1, surf), clip_(clip),
+			: dest_(dest), tex_(1, tex), clip_(clip),
 			key_(loc, layer)
 		{}
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const std::vector<surface>& surf,
+				const SDL_Rect& dest, const std::vector<texture>& tex,
 				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(surf), clip_(clip),
+			: dest_(dest), tex_(tex), clip_(clip),
 			key_(loc, layer)
 		{}
 
-		int x() const { return x_; }
-		int y() const { return y_; }
-		const std::vector<surface> &surf() const { return surf_; }
+		const SDL_Rect& dest() const { return dest_; }
+		const std::vector<texture> &tex() const { return tex_; }
 		const SDL_Rect &clip() const { return clip_; }
 
 		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
 	private:
-		int x_;                      /**< x screen coordinate to render at. */
-		int y_;                      /**< y screen coordinate to render at. */
-		std::vector<surface> surf_;  /**< surface(s) to render. */
-		SDL_Rect clip_;              /**<
-									  * The clipping area of the source if
-									  * omitted the entire source is used.
-									  */
+		/** The location on screen to draw to, in drawing coordinates. */
+		SDL_Rect dest_;
+		/** One or more textures to render. */
+		std::vector<texture> tex_;
+		/** The portion of the source texture to use.
+		  * If omitted, the entire source is used. */
+		SDL_Rect clip_;
+		/** Allows ordering of draw calls by layer and location. */
 		drawing_buffer_key key_;
 	};
 
@@ -967,18 +966,18 @@ public:
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
-	 * @param x                  The x coordinate.
-	 * @param y                  The y coordinate.
-	 * @param surf               The surface to use.
+	 * @param dest               The target destination on screen,
+	 *                           in drawing coordinates.
+	 * @param tex               The texture to use.
 	 * @param clip
 	 */
 	void drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, int x, int y, const surface& surf,
+			const map_location& loc, const SDL_Rect& dest, const texture& tex,
 			const SDL_Rect &clip = SDL_Rect());
 
 	void drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, int x, int y,
-			const std::vector<surface> &surf,
+			const map_location& loc, const SDL_Rect& dest,
+			const std::vector<texture> &tex,
 			const SDL_Rect &clip = SDL_Rect());
 
 protected:

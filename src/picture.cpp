@@ -960,6 +960,15 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	return res;
 }
 
+texture get_lighted_texture(
+	const image::locator& i_locator,
+	const light_string& ls,
+	TYPE type)
+{
+	// TODO: highdpi - actually implement
+	return texture(get_lighted_image(i_locator, ls, type));
+}
+
 surface get_hexmask()
 {
 	static const image::locator terrain_mask(game_config::images::terrain_mask);

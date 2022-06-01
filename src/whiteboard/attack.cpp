@@ -190,6 +190,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 
 void attack::draw_hex(const map_location& hex)
 {
+	// TODO: highdpi - this indent is unnecessary
 	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
 	{
 		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
@@ -204,17 +205,25 @@ void attack::draw_hex(const map_location& hex)
 		{
 			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
 			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
+			const texture& tex = image::get_texture(
+				"whiteboard/attack-indicator-src-" + direction_text + ".png",
+				image::SCALED_TO_HEX);
+			const SDL_Rect dest{xpos, ypos, tex.w(), tex.h()};
 
-			display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
+			display::get_singleton()->drawing_buffer_add(
+				layer, get_dest_hex(), dest, tex);
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
 			int xpos = display::get_singleton()->get_location_x(target_hex_);
 			int ypos = display::get_singleton()->get_location_y(target_hex_);
+			const texture& tex = image::get_texture(
+				"whiteboard/attack-indicator-dst-" + direction_text + ".png",
+				image::SCALED_TO_HEX);
+			const SDL_Rect dest{xpos, ypos, tex.w(), tex.h()};
 
-			display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
+			display::get_singleton()->drawing_buffer_add(
+				layer, target_hex_, dest, tex);
 		}
 	}
 }

@@ -136,6 +136,7 @@ void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 
 void suppose_dead::draw_hex(const map_location& hex)
 {
+	// TODO: highdpi - this indent is unnecessary
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
@@ -143,8 +144,10 @@ void suppose_dead::draw_hex(const map_location& hex)
 
 		int xpos = display::get_singleton()->get_location_x(loc_);
 		int ypos = display::get_singleton()->get_location_y(loc_);
-		display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
-				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+		const texture& tex = image::get_texture("whiteboard/suppose_dead.png",
+			image::SCALED_TO_HEX);
+		const SDL_Rect dest{xpos, ypos, tex.w(), tex.h()};
+		display::get_singleton()->drawing_buffer_add(layer, loc_, dest, tex);
 	}
 }
 

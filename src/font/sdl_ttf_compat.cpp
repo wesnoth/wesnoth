@@ -15,9 +15,11 @@
 
 #include "font/sdl_ttf_compat.hpp"
 
+#include "draw.hpp"
 #include "font/standard_colors.hpp"
 #include "log.hpp"
 #include "sdl/point.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tooltips.hpp"
@@ -42,7 +44,7 @@ pango_text& private_renderer()
 
 }
 
-surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup, int max_width)
+texture pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup, int max_width)
 {
 	auto& ptext = private_renderer();
 
@@ -55,7 +57,7 @@ surface pango_render_text(const std::string& text, int size, const color_t& colo
 		 .set_maximum_width(max_width)
 		 .set_ellipse_mode(max_width > 0 ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE);
 
-	return ptext.render().clone();
+	return texture(ptext.render());
 }
 
 std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style)
@@ -137,6 +139,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
+// TODO: highdpi - cache results, especially size checks
 SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();
@@ -163,7 +166,7 @@ SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const co
 	SDL_Rect res = { x, y, s->w, s->h };
 
 	if(video) {
-		video->blit_surface(s, &res);
+		draw::blit(texture(s), res);
 	}
 
 	if(ellipsized && use_tooltips) {

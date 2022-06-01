@@ -82,7 +82,7 @@ private:
 	//the cursor should be inverted every 500 ms.
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
-	surface text_image_;
+	texture text_image_;
 
 	bool wrap_;
 
@@ -107,7 +107,7 @@ private:
 
 	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
-	surface add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
+	texture add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 

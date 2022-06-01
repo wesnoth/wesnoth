@@ -30,13 +30,14 @@
 #include "font/text.hpp"
 
 class CVideo;
+class texture;
 
 namespace font {
 
 /**
- * Returns a SDL surface containing the rendered text.
+ * Returns a SDL texture containing the rendered text.
  */
-surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style = font::pango_text::STYLE_NORMAL, bool use_markup = false, int max_width = -1);
+texture pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style = font::pango_text::STYLE_NORMAL, bool use_markup = false, int max_width = -1);
 
 /**
  * Determine the width and height of a line of text given a certain font size.

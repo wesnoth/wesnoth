@@ -280,6 +280,7 @@ texture get_texture(const locator& i_locator, TYPE type = UNSCALED);
  * @param type                 This should be either HEXED or SCALED_TO_HEX.
  */
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+texture get_lighted_texture(const image::locator& i_locator, const light_string& ls, TYPE type);
 
 /**
  * Retrieves the standard hexagonal tile mask.

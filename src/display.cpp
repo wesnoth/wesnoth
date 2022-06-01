@@ -376,10 +376,10 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 	}
 }
 
-surface display::get_flag(const map_location& loc)
+texture display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
-		return surface(nullptr);
+		return texture();
 	}
 
 	for (const team& t : dc_->teams()) {
@@ -389,11 +389,11 @@ surface display::get_flag(const map_location& loc)
 			flag.update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
 				flag.get_current_frame() : flag.get_first_frame();
-			return image::get_image(image_flag, image::TOD_COLORED);
+			return image::get_texture(image_flag, image::TOD_COLORED);
 		}
 	}
 
-	return surface(nullptr);
+	return texture();
 }
 
 void display::set_team(std::size_t teamindex, bool show_everything)
@@ -960,7 +960,7 @@ void display::render_buttons()
 	}
 }
 
-std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
@@ -1034,12 +1034,12 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 	}
 
-	// now get the surfaces
-	std::vector<surface> res;
+	// now get the textures
+	std::vector<texture> res;
 
 	for(const std::string& name : names) {
-		if(surface surf = image::get_image(name, image_type)) {
-			res.push_back(std::move(surf));
+		if(texture tex = image::get_texture(name, image_type)) {
+			res.push_back(std::move(tex));
 		}
 	}
 
@@ -1179,38 +1179,38 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-			surface surf;
+			texture tex;
 			const bool off_map = (image.get_filename() == off_map_name
 				|| image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
 			if(off_map) {
-				surf = image::get_image(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::SCALED_TO_HEX);
 			} else if(lt.empty()) {
-				surf = image::get_image(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::SCALED_TO_HEX);
 			} else {
-				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
+				tex = image::get_lighted_texture(image, lt, image::SCALED_TO_HEX);
 			}
 
-			if(surf) {
-				terrain_image_vector_.push_back(std::move(surf));
+			if(tex) {
+				terrain_image_vector_.push_back(std::move(tex));
 			}
 		}
 	}
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
-		const map_location& loc, int x, int y, const surface& surf,
+		const map_location& loc, const SDL_Rect& dest, const texture& tex,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
-		const map_location& loc, int x, int y,
-		const std::vector<surface> &surf,
+		const map_location& loc, const SDL_Rect& dest,
+		const std::vector<texture> &tex,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
 }
 
 enum {
@@ -1270,8 +1270,7 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
-	SDL_Rect clip_rect = map_area();
-	auto clipper = screen_.set_clip(clip_rect);
+	auto clipper = screen_.set_clip(map_area());
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -1286,11 +1285,15 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
+	// TODO: highdpi - perhaps it might be desirable to optionally apply colour and alpha modifiers here?
 	for(const blit_helper& blit : drawing_buffer_) {
-		for(const surface& surf : blit.surf()) {
-			SDL_Rect srcrect = blit.clip();
-			SDL_Rect* srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h) ? &srcrect : nullptr;
-			screen_.blit_surface(blit.x(), blit.y(), surf, srcrectArg, nullptr);
+		for(const texture& tex : blit.tex()) {
+			const SDL_Rect& src = blit.clip();
+			if (src != sdl::empty_rect) {
+				draw::blit(tex, blit.dest(), src);
+			} else {
+				draw::blit(tex, blit.dest());
+			}
 		}
 	}
 	drawing_buffer_clear();
@@ -1501,23 +1504,27 @@ void display::draw_text_in_hex(const map_location& loc,
 
 	const std::size_t font_sz = static_cast<std::size_t>(font_size * get_zoom_factor());
 
-	surface text_surf = font::pango_render_text(text, font_sz, color);
-	surface back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
-	const int x = get_location_x(loc) - text_surf->w/2
+	// TODO: highdpi - perhaps this could be a single texture with colour mod, in stead of rendering twice?
+	texture text_surf = font::pango_render_text(text, font_sz, color);
+	texture back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
+	const int x = get_location_x(loc) - text_surf.w()/2
 	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_surf->h/2
+	const int y = get_location_y(loc) - text_surf.h()/2
 	              + static_cast<int>(y_in_hex* hex_size());
+	const int w = text_surf.w();
+	const int h = text_surf.h();
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, loc, x + dx, y + dy, back_surf);
+				const SDL_Rect dest{x + dx, y + dy, w, h};
+				drawing_buffer_add(layer, loc, dest, back_surf);
 			}
 		}
 	}
-	drawing_buffer_add(layer, loc, x, y, text_surf);
+	drawing_buffer_add(layer, loc, {x, y, w, h}, text_surf);
 }
 
-//TODO: convert this to use sdl::ttexture
+//TODO: highdpi - convert this to use sdl::texture
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, int32_t alpha,
@@ -1560,12 +1567,16 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		return;
 	}
 
+	// TODO: highdpi - fix. Probably move all this alpha stuff to image::, so it doesn't have to be recalculated.
+	texture tex(surf);
+
 	if(submerged > 0.0) {
 		// divide the surface into 2 parts
 		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
 		const int depth = surf->h - submerge_height;
 		SDL_Rect srcrect {0, 0, surf->w, submerge_height};
-		drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+		SDL_Rect dest = {x, y, surf->w, submerge_height};
+		drawing_buffer_add(drawing_layer, loc, dest, tex, srcrect);
 
 		if(submerge_height != surf->h) {
 			//the lower part will be transparent
@@ -1576,13 +1587,15 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 
 			srcrect.y = submerge_height;
 			srcrect.h = surf->h-submerge_height;
-			y += submerge_height;
+			dest.y += submerge_height;
+			dest.h = srcrect.h;
 
-			drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+			drawing_buffer_add(drawing_layer, loc, dest, tex, srcrect);
 		}
 	} else {
 		// simple blit
-		drawing_buffer_add(drawing_layer, loc, x, y, surf);
+		SDL_Rect dest = {x, y, surf->w, surf->h};
+		drawing_buffer_add(drawing_layer, loc, dest, tex);
 	}
 }
 void display::select_hex(map_location hex)
@@ -2523,6 +2536,8 @@ void display::draw_hex(const map_location& loc)
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
+	const int zoom = int(zoom_);
+	SDL_Rect dest{xpos, ypos, zoom, zoom};
 
 	int num_images_fg = 0;
 	int num_images_bg = 0;
@@ -2530,21 +2545,21 @@ void display::draw_hex(const map_location& loc)
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		get_terrain_images(loc, tod.id, BACKGROUND); // updates terrain_image_vector_
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, terrain_image_vector_);
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, terrain_image_vector_);
 		num_images_bg = terrain_image_vector_.size();
 
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, terrain_image_vector_);
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, terrain_image_vector_);
 		num_images_fg = terrain_image_vector_.size();
 
 		// Draw the grid, if that's been enabled
 		if(preferences::grid()) {
 			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_image(grid_top, image::TOD_COLORED));
+			drawing_buffer_add(LAYER_GRID_TOP, loc, dest,
+				image::get_texture(grid_top, image::TOD_COLORED));
 			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_image(grid_bottom, image::TOD_COLORED));
+			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, dest,
+				image::get_texture(grid_bottom, image::TOD_COLORED));
 		}
 	}
 
@@ -2569,9 +2584,9 @@ void display::draw_hex(const map_location& loc)
 					}
 					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
-						const surface surf = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_image(ov.image, lt, image::SCALED_TO_HEX) : image::get_image(ov.image, image::SCALED_TO_HEX);
-						drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+							image::get_lighted_texture(ov.image, lt, image::SCALED_TO_HEX) : image::get_texture(ov.image, image::SCALED_TO_HEX);
+						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}
 			}
@@ -2580,24 +2595,26 @@ void display::draw_hex(const map_location& loc)
 
 	if(!shrouded(loc)) {
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, get_flag(loc));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+		// TODO: highdpi - don't convert these every time, this is terrible
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask1));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask2));
 	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
-			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest,
+			image::get_texture(tod_hex_mask,image::SCALED_TO_HEX));
 	}
 
 	// Paint mouseover overlays
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
 			&& mouseover_hex_overlay_ != nullptr) {
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
+		// TODO: highdpi - texture, yes this is terrible
+		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, dest, texture(mouseover_hex_overlay_));
 	}
 
 	// Paint arrows
@@ -2614,77 +2631,86 @@ void display::draw_hex(const map_location& loc)
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
 		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(shroud_image, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
+			image::get_texture(shroud_image, image_type));
 	} else if(fogged(loc)) {
 		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(fog_image, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
+			image::get_texture(fog_image, image_type));
 	}
 
 	if(!shrouded(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, get_fog_shroud_images(loc, image_type));
 	}
 
 	if (on_map) {
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - this is just a fill, some way of better passing this as a command to the drawing buffer perhaps?
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_terrain_codes_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
 			if (draw_num_of_bitmaps_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - see above
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - see above
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_coordinates_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			}
 			if (draw_terrain_codes_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 	}
 
 	if(debug_foreground) {
-		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
-			image::get_image("terrain/foreground.png", image_type));
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, dest,
+			image::get_texture("terrain/foreground.png", image_type));
 	}
 
 }
