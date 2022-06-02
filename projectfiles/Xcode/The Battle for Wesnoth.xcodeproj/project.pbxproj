@@ -823,6 +823,7 @@
 		91A41F901CA22A98008B10D5 /* libreadline.8.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91AF556D281101C4007A7652 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF556C281101C3007A7652 /* input.cpp */; };
 		91AF55B02827588B007A7652 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55AF2827588B007A7652 /* texture.cpp */; };
+		91AF55DF2848472F007A7652 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55DE2848472F007A7652 /* draw.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -2138,6 +2139,8 @@
 		91AF556C281101C3007A7652 /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
 		91AF55AE2827588B007A7652 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		91AF55AF2827588B007A7652 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		91AF55DD2848472E007A7652 /* draw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
+		91AF55DE2848472F007A7652 /* draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
 		91B621801B766ED500B00E0F /* buffered_istream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buffered_istream.hpp; sourceTree = "<group>"; };
 		91B621811B766F1900B00E0F /* carryover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carryover.hpp; sourceTree = "<group>"; };
 		91B621821B766FD200B00E0F /* display_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = display_context.hpp; sourceTree = "<group>"; };
@@ -3087,6 +3090,8 @@
 				91B621821B766FD200B00E0F /* display_context.hpp */,
 				B5599A990EC62181008DD061 /* display.cpp */,
 				B5599A980EC62181008DD061 /* display.hpp */,
+				91AF55DE2848472F007A7652 /* draw.cpp */,
+				91AF55DD2848472E007A7652 /* draw.hpp */,
 				B5599FF60EC8FE2E008DD061 /* editor */,
 				B5599A970EC62181008DD061 /* events.cpp */,
 				B5599A960EC62181008DD061 /* events.hpp */,
@@ -5122,6 +5127,7 @@
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated.cpp in Sources */,
 				F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */,
+				91AF55DF2848472F007A7652 /* draw.cpp in Sources */,
 				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,
 				B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */,
 				B59F96E71034791200A57C1A /* aspect_attacks.cpp in Sources */,
