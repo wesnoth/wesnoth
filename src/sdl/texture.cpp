@@ -126,7 +126,12 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 void texture::assign(SDL_Texture* t)
 {
 	texture_.reset(t, &cleanup_texture);
-	SDL_QueryTexture(t, nullptr, nullptr, &w_, &h_);
+	if (t) {
+		SDL_QueryTexture(t, nullptr, nullptr, &w_, &h_);
+	} else {
+		w_ = 0;
+		h_ = 0;
+	}
 }
 
 texture& texture::operator=(texture&& t)
@@ -143,5 +148,7 @@ texture::info::info(SDL_Texture* t)
 	, w(0)
 	, h(0)
 {
-	SDL_QueryTexture(t, &format, &access, &w, &h);
+	if (t) {
+		SDL_QueryTexture(t, &format, &access, &w, &h);
+	}
 }
