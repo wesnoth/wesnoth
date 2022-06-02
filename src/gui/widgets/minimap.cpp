@@ -17,6 +17,7 @@
 
 #include "gui/widgets/minimap.hpp"
 
+#include "draw.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -26,7 +27,6 @@
 #include "map/exception.hpp"
 #include "sdl/rect.hpp"
 #include "../../minimap.hpp" // We want the file in src/
-#include "video.hpp"
 
 #include <functional>
 
@@ -95,12 +95,12 @@ static bool operator<(const key_type& lhs, const key_type& rhs)
 /** Value type for the cache. */
 struct value_type
 {
-	value_type(const surface& surf) : surf(surf), age(1)
+	value_type(const texture& tex) : tex(tex), age(1)
 	{
 	}
 
 	/** The cached image. */
-	const surface surf;
+	const texture tex;
 
 	/**
 	 * The age of the image.
@@ -168,7 +168,7 @@ bool minimap::disable_click_dismiss() const
 	return false;
 }
 
-const surface minimap::get_image(const int w, const int h) const
+const texture minimap::get_image(const int w, const int h) const
 {
 	const key_type key(w, h, map_data_);
 	tcache::iterator itor = cache.find(key);
@@ -178,7 +178,7 @@ const surface minimap::get_image(const int w, const int h) const
 		std::cerr << '+';
 #endif
 		itor->second.age++;
-		return itor->second.surf;
+		return itor->second.tex;
 	}
 
 	if(cache.size() >= cache_max_size) {
@@ -188,12 +188,12 @@ const surface minimap::get_image(const int w, const int h) const
 	try
 	{
 		const gamemap map(map_data_);
-		const surface surf = image::getMinimap(w, h, map, nullptr, nullptr, true);
-		cache.emplace(key, value_type(surf));
+		const texture tex = texture(image::getMinimap(w, h, map, nullptr, nullptr, true));
+		cache.emplace(key, value_type(tex));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
 #endif
-		return surf;
+		return tex;
 	}
 	catch(const incorrect_map_format_error& e)
 	{
@@ -202,7 +202,7 @@ const surface minimap::get_image(const int w, const int h) const
 		std::cerr << 'X';
 #endif
 	}
-	return nullptr;
+	return texture();
 }
 
 void minimap::impl_draw_background(int x_offset, int y_offset)
@@ -217,9 +217,9 @@ void minimap::impl_draw_background(int x_offset, int y_offset)
 	SDL_Rect rect = calculate_blitting_rectangle(x_offset, y_offset);
 	assert(rect.w > 0 && rect.h > 0);
 
-	const ::surface surf = get_image(rect.w, rect.h);
-	if(surf) {
-		CVideo::get_singleton().blit_surface(rect.x, rect.y, surf);
+	const texture tex = get_image(rect.w, rect.h);
+	if(tex) {
+		draw::blit(tex, rect);
 	}
 }
 

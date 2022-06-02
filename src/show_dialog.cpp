@@ -32,6 +32,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define ERR_G  LOG_STREAM(err, lg::general)
 
 namespace {
@@ -320,7 +321,9 @@ void dialog_frame::draw_background()
 		SDL_Rect r = dim_.exterior;
 		surface surf = video_.read_pixels_low_res(&r);
 		surf = blur_surface(surf, dialog_style_.blur_radius);
-		video_.blit_surface(surf, &r);
+		// TODO: highdpi - converting this to texture every time is not ideal, but i also suspect this is not actually used anywhere, and all this is slated for removal anyway.
+		WRN_DP << "deprecated very slow blur" << std::endl;
+		draw::blit(texture(surf), r);
 	}
 
 	if (!bg_) {
