@@ -19,6 +19,7 @@
 
 #include "exceptions.hpp"
 #include "editor/palette/common_palette.hpp"
+#include "sdl/texture.hpp"
 
 namespace gui {
 
@@ -55,8 +56,7 @@ public:
 	virtual void enable(bool new_val=true) override;
 	void release();
 
-	void set_item_image(
-			const surface& image)
+	void set_item_image(const texture& image)
 	{
 		itemImage_ = image;
 	}
@@ -82,7 +82,7 @@ private:
 
 	void calculate_size();
 
-	surface baseImage_, touchedBaseImage_, activeBaseImage_,
+	texture baseImage_, touchedBaseImage_, activeBaseImage_,
 		itemImage_,
 	//	normalImage_, activeImage_,
 		pressedDownImage_, pressedUpImage_, pressedBothImage_,

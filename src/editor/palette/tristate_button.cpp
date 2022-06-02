@@ -17,12 +17,13 @@
 
 #include "editor/palette/tristate_button.hpp"
 
+#include "draw.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: highdpi - only needed for widget constructor
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -32,17 +33,28 @@ namespace gui {
 tristate_button::tristate_button(CVideo& video,
 		editor::tristate_palette* palette,
 		std::string button_image_name,
-		const bool auto_join) :
-				widget(video, auto_join),
-				baseImage_(nullptr), touchedBaseImage_(nullptr), activeBaseImage_(nullptr),
-				itemImage_(nullptr),
-				pressedDownImage_(nullptr), pressedUpImage_(nullptr), pressedBothImage_(nullptr),
-				pressedBothActiveImage_(nullptr), pressedDownActiveImage_(nullptr), pressedUpActiveImage_(nullptr),
-				touchedDownImage_(nullptr), touchedUpImage_(nullptr), touchedBothImage_(nullptr),
-				textRect_(),
-				state_(NORMAL), pressed_(false),
-				base_height_(0), base_width_(0),
-				palette_(palette), item_id_()
+		const bool auto_join)
+	: widget(video, auto_join)
+	, baseImage_()
+	, touchedBaseImage_()
+	, activeBaseImage_()
+	, itemImage_()
+	, pressedDownImage_()
+	, pressedUpImage_()
+	, pressedBothImage_()
+	, pressedBothActiveImage_()
+	, pressedDownActiveImage_()
+	, pressedUpActiveImage_()
+	, touchedDownImage_()
+	, touchedUpImage_()
+	, touchedBothImage_()
+	, textRect_()
+	, state_(NORMAL)
+	, pressed_(false)
+	, base_height_(0)
+	, base_width_(0)
+	, palette_(palette)
+	, item_id_()
 {
 
 	if (button_image_name.empty()) {
@@ -50,32 +62,32 @@ tristate_button::tristate_button(CVideo& video,
 	}
 
 	baseImage_ =
-			image::get_image(button_image_name + "base.png");
+		image::get_texture(button_image_name + "base.png");
 	activeBaseImage_ =
-			image::get_image(button_image_name + "base-active.png");
+		image::get_texture(button_image_name + "base-active.png");
 	touchedBaseImage_ =
-			image::get_image(button_image_name + "base-touched.png");
+		image::get_texture(button_image_name + "base-touched.png");
 
 	touchedBothImage_ =
-			image::get_image(button_image_name + "border-touched-both.png");
+		image::get_texture(button_image_name + "border-touched-both.png");
 	touchedUpImage_ =
-			image::get_image(button_image_name + "border-touched-up.png");
+		image::get_texture(button_image_name + "border-touched-up.png");
 	touchedDownImage_ =
-			image::get_image(button_image_name + "border-touched-down.png");
+		image::get_texture(button_image_name + "border-touched-down.png");
 
 	pressedUpImage_ =
-			image::get_image(button_image_name + "border-pressed-up.png");
+		image::get_texture(button_image_name + "border-pressed-up.png");
 	pressedDownImage_ =
-			image::get_image(button_image_name + "border-pressed-down.png");
+		image::get_texture(button_image_name + "border-pressed-down.png");
 	pressedBothImage_ =
-			image::get_image(button_image_name + "border-pressed-both.png");
+		image::get_texture(button_image_name + "border-pressed-both.png");
 
 	pressedUpActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-up.png");
+		image::get_texture(button_image_name + "border-active-pressed-up.png");
 	pressedDownActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-down.png");
+		image::get_texture(button_image_name + "border-active-pressed-down.png");
 	pressedBothActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-both.png");
+		image::get_texture(button_image_name + "border-active-pressed-both.png");
 
 	//TODO
 //	if (button_image.null()) {
@@ -83,8 +95,9 @@ tristate_button::tristate_button(CVideo& video,
 //		throw error();
 //	}
 
-	base_height_ = baseImage_->h;
-	base_width_  = baseImage_->w;
+	// TODO: highdpi - set this some better way
+	base_height_ = baseImage_.h();
+	base_width_  = baseImage_.w();
 
 }
 
@@ -154,12 +167,10 @@ void tristate_button::enable(bool new_val) {
 	}
 }
 
-void tristate_button::draw_contents() {
-
-	surface image(nullptr);
-
-	surface overlay(nullptr);
-	surface base = baseImage_;
+void tristate_button::draw_contents()
+{
+	texture overlay;
+	texture base = baseImage_;
 
 	switch (state_) {
 
@@ -212,26 +223,19 @@ void tristate_button::draw_contents() {
 		break;
 	}
 
-	image = base;
-
+	// Draw the button base.
 	const SDL_Rect& loc = location();
+	draw::blit(base, loc);
 
-	surface scaled_item = scale_surface(itemImage_, 36, 36);
+	// Draw the item.
+	// TODO: highdpi - no idea why this is offset by 1, or why it's hardcoded as 36x36. But that's how it was previously, so that's how it still is.
+	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
+	draw::blit(itemImage_, magic);
 
-	surface nbase = base.clone();
-
-	//TODO avoid magic numbers
-	SDL_Rect r {1, 1, 0, 0};
-	sdl_blit(scaled_item, nullptr, nbase, &r);
-
+	// Draw the button overlay, if any.
 	if (overlay) {
-		sdl_blit(overlay, nullptr, nbase, nullptr);
+		draw::blit(overlay, loc);
 	}
-
-	bg_restore();
-
-	image = nbase;
-	video().blit_surface(loc.x, loc.y, image);
 }
 
 //TODO move to widget
