@@ -988,23 +988,6 @@ private:
 		this->set_is_dirty(true);
 	}
 
-	struct calculate_order_helper
-	{
-		const order_func& order_func_;
-		const child_list& items_;
-
-		calculate_order_helper(const order_func& order_func, const child_list& items)
-			: order_func_(order_func)
-			, items_(items)
-		{
-		}
-
-		bool operator()(std::size_t a, std::size_t b)
-		{
-			return order_func_(a, b);
-		}
-	};
-
 	virtual unsigned get_ordered_index(unsigned index) const override
 	{
 		assert(index < items_.size());
@@ -1031,7 +1014,7 @@ private:
 			}
 
 			if(order_func_) {
-				std::stable_sort(order_.begin(), order_.end(), calculate_order_helper(order_func_, items_));
+				std::stable_sort(order_.begin(), order_.end(), order_func_);
 			}
 
 			for(std::size_t i = 0; i < order_.size(); ++i) {
