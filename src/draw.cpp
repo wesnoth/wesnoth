@@ -227,16 +227,19 @@ void draw::disc(int cx, int cy, int r, uint8_t octants)
 
 void draw::blit(const texture& tex, const SDL_Rect& dst, const SDL_Rect& src)
 {
+	if (!tex) { return; }
 	SDL_RenderCopy(renderer(), tex, &src, &dst);
 }
 
 void draw::blit(const texture& tex, const SDL_Rect& dst)
 {
+	if (!tex) { return; }
 	SDL_RenderCopy(renderer(), tex, nullptr, &dst);
 }
 
 void draw::blit(const texture& tex)
 {
+	if (!tex) { return; }
 	SDL_RenderCopy(renderer(), tex, nullptr, nullptr);
 }
 
@@ -257,6 +260,7 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
+	if (!tex) { return; }
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, &src, &dst, 0.0, nullptr, flip);
 }
@@ -267,12 +271,14 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
+	if (!tex) { return; }
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, &dst, 0.0, nullptr, flip);
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 {
+	if (!tex) { return; }
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
 }
@@ -281,6 +287,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	bool mirrored)
 {
+	if (!tex) { return; }
 	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res. To draw in higher res, width and height would have to be specified.
 
 	// Reduce clip to dst.
