@@ -701,8 +701,6 @@ protected:
 
 	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
-	void draw_image_for_report(surface& img, SDL_Rect& rect);
-
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
@@ -753,7 +751,7 @@ protected:
 
 	// Not set by the initializer:
 	std::map<std::string, SDL_Rect> reportRects_;
-	std::map<std::string, surface> reportSurfaces_;
+	std::map<std::string, texture> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	std::set<map_location> invalidated_;

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "sdl/texture.hpp" // for surface_restorer. Remove that, then remove this
 #include "utils/const_clone.hpp"
 
 #include <SDL2/SDL.h>
@@ -130,7 +131,7 @@ struct surface_restorer
 private:
 	class CVideo* target_;
 	SDL_Rect rect_;
-	surface surface_;
+	texture surface_;
 };
 
 /**

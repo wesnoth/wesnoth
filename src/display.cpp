@@ -1403,20 +1403,27 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
 
-	surface surf(image::get_image(panel.image()));
-
+	// TODO: highdpi - draw area should probably be moved to new drawing API
 	const SDL_Rect screen = video.draw_area();
 	SDL_Rect& loc = panel.location(screen);
 
-	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
-			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
+	DBG_DP << "panel location: " << loc << std::endl;
 
-	if(surf) {
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf = tile_surface(surf,loc.w,loc.h);
-		}
-		video.blit_surface(loc.x, loc.y, surf);
+	if (panel.image().empty()) {
+		DBG_DP << "no panel image given" << std::endl;
+		return;
 	}
+
+	texture tex(image::get_texture(panel.image()));
+	if (!tex) {
+		ERR_DP << "failed to load panel texture ("
+			<< "id: " << panel.get_id()
+			<< ", image: " << panel.image()
+			<< ")" << std::endl;
+		return;
+	}
+
+	draw::tiled(tex, loc);
 }
 
 static void draw_label(CVideo& video, const theme::label& label)
@@ -1429,14 +1436,7 @@ static void draw_label(CVideo& video, const theme::label& label)
 	SDL_Rect& loc = label.location(video.draw_area());
 
 	if(icon.empty() == false) {
-		surface surf(image::get_image(icon));
-		if(surf) {
-			if(surf->w > loc.w || surf->h > loc.h) {
-				surf = scale_surface(surf,loc.w,loc.h);
-			}
-
-			video.blit_surface(surf, &loc);
-		}
+		draw::blit(image::get_texture(icon), loc);
 
 		if(text.empty() == false) {
 			tooltips::add_tooltip(loc,text);
@@ -1463,33 +1463,6 @@ void display::draw_all_panels()
 	}
 
 	render_buttons();
-}
-
-static void draw_background(CVideo& screen_, const SDL_Rect& area, const std::string& image)
-{
-	// No background image, just fill in black.
-	if(image.empty()) {
-		draw::fill(area, 0, 0, 0);
-		return;
-	}
-
-	const surface background(image::get_image(image));
-	if(!background) {
-		return;
-	}
-
-	const unsigned int width = background->w;
-	const unsigned int height = background->h;
-
-	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
-	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
-
-	auto clipper = screen_.set_clip(area);
-	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
-		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			screen_.blit_surface(w_off, h_off, background);
-		}
-	}
 }
 
 void display::draw_text_in_hex(const map_location& loc,
@@ -1650,7 +1623,10 @@ void display::draw_init()
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
 		draw::fill(clip_rect, 0, 0, 0);
-		draw_background(screen_, clip_rect, theme_.border().background_image);
+		draw::tiled(
+			image::get_texture(theme_.border().background_image),
+			clip_rect
+		);
 		redraw_background_ = false;
 
 		// Force a full map redraw
@@ -2719,11 +2695,11 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 	return image::TOD_COLORED;
 }
 
-/*void display::draw_sidebar() {
-
-}*/
-
-void display::draw_image_for_report(surface& img, SDL_Rect& rect)
+// TODO: highdpi - why is there all this faff to deal with textures that are fill of transparency? Just don't make your textures full of transparency. This should not be a thing.
+// Usage of this function has been removed.
+// If this turns out to raise no problems, remove the function too.
+#if 0
+void display::draw_image_for_report(surface& img, const SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transparent_portion(img);
 	SDL_Rect target = rect;
@@ -2755,6 +2731,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		screen_.blit_surface(img, &target);
 	}
 }
+#endif
 
 /**
  * Redraws the specified report (if anything has changed).
@@ -2765,7 +2742,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_name] = nullptr;
+		reportSurfaces_[report_name].reset();
 		return;
 	}
 
@@ -2785,34 +2762,37 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_.draw_area());
-	surface &surf = reportSurfaces_[report_name];
+	texture &tex = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (surf && rect == new_rect && report == *new_cfg) {
+	if (tex && rect == new_rect && report == *new_cfg) {
 		return;
 	}
 
 	// Update the config in reports_.
 	report = *new_cfg;
 
-	if (surf) {
-		screen_.blit_surface(surf, &rect);
+	// TODO: highdpi - should this really be drawn if rect != new_rect? That's how the old code was.
+	if (tex) {
+		draw::blit(tex, rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
-	if (!surf || new_rect != rect)
+	if (!tex || new_rect != rect)
 	{
-		surf = nullptr;
+		tex.reset();
 		rect = new_rect;
+
+		// TODO: highdpi - i have no idea why this is neccesary, as the only report backgrounds i have seen were just black. Maybe it can just stop doing this?
 
 		// If the rectangle is present, and we are blitting text,
 		// then we need to backup the surface.
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf = screen_.read_pixels_low_res(&rect);
-			if (reportSurfaces_[report_name] == nullptr) {
+			tex = texture(screen_.read_pixels_low_res(&rect));
+			if (!reportSurfaces_[report_name]) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
@@ -2858,6 +2838,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		{
 			if (used_ellipsis) goto skip_element;
 
+			// TODO: highdpi - high dpi text
 			// Draw a text element.
 			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
@@ -2877,12 +2858,13 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 				.set_characters_per_line(0);
 
-			surface s = text.render();
+			// TODO: highdpi - don't convert this here
+			texture s = texture(text.render());
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
 			config::const_child_iterator ee = elements.begin();
-			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
+			if (!eol && rect.w - (x - rect.x + s.w()) < minimal_text &&
 				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
@@ -2890,18 +2872,19 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				s = text.render();
+				// TODO: highdpi - don't convert this here
+				s = texture(text.render());
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;
 				ellipsis_area.y = y;
-				ellipsis_area.w = s->w;
-				ellipsis_area.h = s->h;
+				ellipsis_area.w = s.w();
+				ellipsis_area.h = s.h();
 			}
 
-			screen_.blit_surface(x, y, s);
-			area.w = s->w;
-			area.h = s->h;
+			area.w = s.w();
+			area.h = s.h();
+			draw::blit(s, area);
 			if (area.h > tallest) {
 				tallest = area.h;
 			}
@@ -2918,22 +2901,25 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw an image element.
-			surface img(image::get_image(t));
+			texture img(image::get_texture(t));
 
 			if (!img) {
 				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
 				continue;
 			}
 
-			if (area.w < img->w && image_count) {
+			// TODO: highdpi - set size independently of image
+			if (area.w < img.w() && image_count) {
 				// We have more than one image, and this one doesn't fit.
-				img = image::get_image(game_config::images::ellipsis);
+				img = image::get_texture(game_config::images::ellipsis);
 				used_ellipsis = true;
 			}
 
-			if (img->w < area.w) area.w = img->w;
-			if (img->h < area.h) area.h = img->h;
-			draw_image_for_report(img, area);
+			if (img.w() < area.w) area.w = img.w();
+			if (img.h() < area.h) area.h = img.h();
+			// TODO: highdpi - this was crazy so i nixed it
+			//draw_image_for_report(img, area);
+			draw::blit(img, area);
 
 			++image_count;
 			if (area.h > tallest) {
