@@ -59,7 +59,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 {
 }
 
-grid& listbox::add_row(const string_map& item, const int index)
+grid& listbox::add_row(const widget_item& item, const int index)
 {
 	assert(generator_);
 	grid& row = generator_->create_item(index, *list_builder_, item, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
@@ -69,7 +69,7 @@ grid& listbox::add_row(const string_map& item, const int index)
 	return row;
 }
 
-grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
+grid& listbox::add_row(const widget_data& data, const int index)
 {
 	assert(generator_);
 	grid& row = generator_->create_item(index, *list_builder_, data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
@@ -541,7 +541,7 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 void listbox::finalize(std::unique_ptr<generator_base> generator,
 		builder_grid_const_ptr header,
 		builder_grid_const_ptr footer,
-		const std::vector<std::map<std::string, string_map>>& list_data)
+		const std::vector<widget_data>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
@@ -734,9 +734,9 @@ listbox_definition::resolution::resolution(const config& cfg)
 
 namespace implementation
 {
-static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const unsigned int req_cols)
+static std::vector<widget_data> parse_list_data(const config& data, const unsigned int req_cols)
 {
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	for(const auto& row : data.child_range("row")) {
 		auto cols = row.child_range("column");

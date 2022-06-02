@@ -146,11 +146,11 @@ void mp_lobby::post_build(window& win)
 
 namespace
 {
-void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& map)
+void modify_grid_with_data(grid* grid, const widget_data& map)
 {
 	for(const auto& v : map) {
 		const std::string& key = v.first;
-		const string_map& strmap = v.second;
+		const widget_item& strmap = v.second;
 
 		widget* w = grid->find(key, false);
 		if(!w) {
@@ -379,10 +379,10 @@ void mp_lobby::update_visible_games()
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
-std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
+widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["use_markup"] = "true";
 

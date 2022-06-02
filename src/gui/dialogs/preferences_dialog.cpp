@@ -146,10 +146,10 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 	res_list.set_values(options, current_res);
 }
 
-std::map<std::string, string_map> preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
+widget_data preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	std::string image = "friend.png";
 	std::string descriptor = _("friend");
@@ -598,7 +598,7 @@ void preferences_dialog::post_build(window& window)
 
 	listbox& advanced = find_widget<listbox>(&window, "advanced_prefs", false);
 
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	for(const auto& option : adv_preferences_) {
 		const std::string& pref_name = option.field;
@@ -770,7 +770,7 @@ void preferences_dialog::post_build(window& window)
 
 listbox& preferences_dialog::setup_hotkey_list()
 {
-	std::map<std::string, string_map> row_data;
+	widget_data row_data;
 
 	t_string& row_icon   = row_data["img_icon"]["label"];
 	t_string& row_action = row_data["lbl_desc"]["label"];

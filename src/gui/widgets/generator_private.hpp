@@ -512,7 +512,7 @@ struct selection : public virtual generator_base
 	 *                            in the grid is (de)selected.
 	 */
 	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const std::function<void(widget&)>& callback);
 };
 
@@ -535,7 +535,7 @@ struct show : public virtual generator_base
 	 *                            should be nullptr.
 	 */
 	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const std::function<void(widget&)>& callback);
 };
 
@@ -718,10 +718,10 @@ public:
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
 			const builder_grid& list_builder,
-			const string_map& item_data,
+			const widget_item& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 
 		data.emplace("", item_data);
 		return create_item(index, list_builder, data, callback);
@@ -730,7 +730,7 @@ public:
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
 			const builder_grid& list_builder,
-			const std::map<std::string /* widget id */, string_map>& item_data,
+			const widget_data& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
@@ -760,7 +760,7 @@ public:
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
 			const builder_grid& list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map>>& data,
+			const std::vector<widget_data>& data,
 			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
@@ -769,7 +769,7 @@ public:
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
 			const builder_grid& list_builder,
-			const std::vector<string_map>& data,
+			const std::vector<widget_item>& data,
 			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
@@ -1100,8 +1100,7 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+	void init(grid* grid, const widget_data& data,
 			const std::function<void(widget&)>& callback)
 	{
 		assert(grid);

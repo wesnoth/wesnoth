@@ -47,7 +47,7 @@ public:
 			const std::string& id,
 			tree_view_node* parent_node,
 			tree_view& parent_tree_view,
-			const std::map<std::string /* widget id */, string_map>& data);
+			const widget_data& data);
 
 	~tree_view_node();
 
@@ -67,7 +67,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 */
 	tree_view_node& add_child(const std::string& id,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const int index = -1)
 	{
 		return add_child_impl(std::make_shared<tree_view_node>(id, this, get_tree_view(), data), index);
@@ -82,7 +82,7 @@ public:
 	 * @param data                A vector of the data to provide to the tree_node_view's constructor.
 	 * @return                    A vector of pointers to the newly created nodes.
 	 */
-	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data);
+	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<widget_data>& data);
 
 	/**
 	 * Adds a previously-constructed node as a child of this node at the given position.
@@ -112,7 +112,7 @@ public:
 	 */
 	tree_view_node&
 	add_sibling(const std::string& id,
-				const std::map<std::string /* widget id */, string_map>& data)
+				const widget_data& data)
 	{
 		assert(!is_root_node());
 		return parent_node().add_child(id, data);
@@ -335,7 +335,7 @@ private:
 
 	void
 	init_grid(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data);
+			  const widget_data& data);
 
 	/**
 	 * Returns the control_type of the @ref tree_view_node.

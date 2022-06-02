@@ -91,7 +91,7 @@ void stacked_widget::finalize(std::unique_ptr<generator_base> generator, const s
 	generator_ = generator.get();
 	assert(generator_);
 
-	string_map empty_data;
+	widget_item empty_data;
 	for(const auto & builder : widget_builders) {
 		generator->create_item(-1, builder, empty_data, nullptr);
 	}

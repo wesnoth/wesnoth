@@ -73,8 +73,8 @@ void terrain_layers::pre_show(window& window)
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc_cut = img.get_loc();
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << (ri->is_background() ? "B ": "F ") << order).str();
 		data.emplace("index", item);

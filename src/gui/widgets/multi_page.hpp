@@ -66,7 +66,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const string_map& item);
+	grid& add_page(const widget_item& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -83,7 +83,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const string_map& item);
+	grid& add_page(const std::string& type, int insert_pos, const widget_item& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -102,7 +102,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const widget_data& data);
 
 	/**
 	 * Adds single page to the grid.
@@ -126,7 +126,7 @@ public:
 	 *
 	 * @returns                   The grid of the newly added page.
 	 */
-	grid& add_page(const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::string& type, int insert_pos, const widget_data& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -203,7 +203,7 @@ private:
 	 * @param generator           Generator for the list
 	 * @param page_data           The initial data to fill the widget with.
 	 */
-	void finalize(std::unique_ptr<generator_base> generator, const std::vector<string_map>& page_data);
+	void finalize(std::unique_ptr<generator_base> generator, const std::vector<widget_item>& page_data);
 
 	/**
 	 * Contains a pointer to the generator.
@@ -266,7 +266,7 @@ struct builder_multi_page : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, t_string>> data;
+	std::vector<widget_item> data;
 };
 
 } // namespace implementation

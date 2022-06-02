@@ -91,7 +91,7 @@ private:
 
 	void apply_pixel_scale();
 
-	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
+	widget_data get_friends_list_row_data(const preferences::acquaintance& entry);
 
 	void add_friend_list_entry(const bool is_friend, text_box& textbox);
 	void remove_friend_list_entry(listbox& friends_list, text_box& textbox);

@@ -177,7 +177,7 @@ public:
 	 */
 	virtual grid& create_item(const int index,
 							   const builder_grid& list_builder,
-							   const string_map& item_data,
+							   const widget_item& item_data,
 							   const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -201,7 +201,7 @@ public:
 	virtual grid&
 	create_item(const int index,
 				const builder_grid& list_builder,
-				const std::map<std::string /* widget id */, string_map>& data,
+				const widget_data& data,
 				const std::function<void(widget&)>& callback) = 0;
 
 	/**
@@ -221,7 +221,7 @@ public:
 	 */
 	virtual void create_items(const int index,
 							  const builder_grid& list_builder,
-							  const std::vector<string_map>& data,
+							  const std::vector<widget_item>& data,
 							  const std::function<void(widget&)>& callback)
 			= 0;
 
@@ -243,8 +243,7 @@ public:
 	virtual void create_items(
 			const int index,
 			const builder_grid& list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map>>&
-					data,
+			const std::vector<widget_data>& data,
 			const std::function<void(widget&)>& callback) = 0;
 
 	typedef std::function<bool (unsigned, unsigned)> order_func;

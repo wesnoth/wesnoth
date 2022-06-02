@@ -78,7 +78,7 @@ public:
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
 	 */
-	virtual void set_members(const string_map& data);
+	virtual void set_members(const widget_item& data);
 
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 

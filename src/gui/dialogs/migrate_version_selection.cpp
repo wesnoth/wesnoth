@@ -69,8 +69,8 @@ void migrate_version_selection::pre_show(window& window)
 	listbox& version_list = find_widget<listbox>(&window, "versions_listbox", false);
 
 	for(const auto& version : versions_) {
-		std::map<std::string, string_map> data;
-		string_map item_label;
+		widget_data data;
+		widget_item item_label;
 
 		item_label["label"] = version;
 		data["version_label"] = item_label;

@@ -35,7 +35,7 @@ namespace gui2
 tree_view_node::tree_view_node(const std::string& id,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 	: widget()
 	, parent_node_(parent_node)
 	, tree_view_(&parent_tree_view)
@@ -182,7 +182,7 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 	return node;
 }
 
-std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data)
+std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<widget_data>& data)
 {
 	std::vector<std::shared_ptr<gui2::tree_view_node>> nodes;
 	clear();
@@ -689,7 +689,7 @@ void tree_view_node::signal_handler_label_left_button_click(const event::ui_even
 	get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
-void tree_view_node::init_grid(grid* g, const std::map<std::string /* widget id */, string_map>& data)
+void tree_view_node::init_grid(grid* g, const widget_data& data)
 {
 	assert(g);
 

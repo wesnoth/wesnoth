@@ -167,8 +167,8 @@ void drop_down_menu::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	for(const auto& entry : items_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		//
 		// These widgets can be initialized here since they don't require widget type swapping.

@@ -25,10 +25,13 @@
 
 class surface;
 
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+/* Data format used by styled_widget::set_members to set settings for a single widget. */
+using widget_item = std::map<std::string, t_string>;
+
+/* Indexes multiple @ref widget_item maps by widget ID. */
+using widget_data = std::map<std::string, widget_item>;
 
 struct builder_widget;
 class window;

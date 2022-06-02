@@ -320,8 +320,8 @@ void campaign_selection::pre_show(window& window)
 		add_campaign_to_tree(campaign);
 
 		/*** Add detail item ***/
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = campaign["description"];
 		item["use_markup"] = "true";
@@ -379,8 +379,8 @@ void campaign_selection::pre_show(window& window)
 void campaign_selection::add_campaign_to_tree(const config& campaign) const
 {
 	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = campaign["icon"];
 	data.emplace("icon", item);

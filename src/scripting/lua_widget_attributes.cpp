@@ -66,7 +66,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 		int n = list->get_item_count();
 		if(i > n) {
 			for(; n < i; ++n) {
-				list->add_row(utils::string_map());
+				list->add_row(gui2::widget_item{});
 			}
 		}
 		return list->get_row_grid(i - 1);
@@ -74,7 +74,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 		int n = multi_page->get_page_count();
 		if(i > n) {
 			for(; n < i; ++n) {
-				multi_page->add_page(utils::string_map());
+				multi_page->add_page(gui2::widget_item{});
 			}
 		}
 		return &multi_page->page_grid(i - 1);

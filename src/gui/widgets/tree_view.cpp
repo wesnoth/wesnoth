@@ -55,7 +55,7 @@ tree_view::~tree_view()
 }
 
 tree_view_node& tree_view::add_node(
-		const std::string& id, const std::map<std::string /* widget id */, string_map>& data, const int index)
+	const std::string& id, const widget_data& data, const int index)
 {
 	return get_root_node().add_child(id, data, index);
 }
@@ -171,7 +171,7 @@ void tree_view::finalize_setup()
 	// Inherited.
 	scrollbar_container::finalize_setup();
 
-	auto root = std::make_unique<tree_view_node>(root_node_id, nullptr, *this, std::map<std::string, string_map>{});
+	auto root = std::make_unique<tree_view_node>(root_node_id, nullptr, *this, widget_data{});
 	root_node_ = root.get();
 
 	assert(content_grid());

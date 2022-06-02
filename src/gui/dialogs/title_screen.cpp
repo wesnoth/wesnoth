@@ -213,8 +213,8 @@ void title_screen::pre_show(window& win)
 			WRN_CF << "There are no tips of day available." << std::endl;
 		}
 		for(const auto& tip : tips)	{
-			string_map widget;
-			std::map<std::string, string_map> page;
+			widget_item widget;
+			widget_data page;
 
 			widget["use_markup"] = "true";
 

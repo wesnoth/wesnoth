@@ -106,7 +106,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 				if(readonly) {
 					throw std::invalid_argument("index out of range");
 				}
-				utils::string_map dummy;
+				gui2::widget_item dummy;
 				for(; n < v; ++n) {
 					list->add_row(dummy);
 				}
@@ -122,7 +122,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 				if(readonly) {
 					throw std::invalid_argument("index out of range");
 				}
-				utils::string_map dummy;
+				gui2::widget_item dummy;
 				for(; n < v; ++n) {
 					multi_page->add_page(dummy);
 				}
@@ -363,7 +363,7 @@ static int intf_add_item_of_type(lua_State* L)
 	if(lua_isnumber(L, 3)) {
 		insert_pos = luaL_checkinteger(L, 3);
 	}
-	static const std::map<std::string, string_map> data;
+	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
 		res = &twn->add_child(node_type, data, insert_pos);
@@ -390,7 +390,7 @@ static int intf_add_dialog_item(lua_State* L)
 
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 	gui2::widget* res = nullptr;
-	static const std::map<std::string, string_map> data;
+	static const gui2::widget_data data;
 
 	if(gui2::listbox* lb = dynamic_cast<gui2::listbox*>(w)) {
 		res = &lb->add_row(data);

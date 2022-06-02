@@ -184,8 +184,8 @@ void unit_attack::pre_show(window& window)
 			<< translation::dsgettext("wesnoth", "Chance to hit: ") << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
 			<< defw_specials_others;
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["use_markup"] = "true";
 
