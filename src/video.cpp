@@ -390,9 +390,7 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
-#ifdef __APPLE__
 	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
-#endif
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
