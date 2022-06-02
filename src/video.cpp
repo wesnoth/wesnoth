@@ -645,7 +645,21 @@ surface CVideo::read_pixels(SDL_Rect* r)
 		WRN_DP << "trying to read pixels with no window" << std::endl;
 		return surface();
 	}
-	SDL_Rect d = draw_area();
+	SDL_Rect d;
+
+	// Get the full target area.
+	SDL_Texture* target = SDL_GetRenderTarget(*window);
+	const bool default_target = !target || target == render_texture_;
+	if (default_target) {
+		d = draw_area();
+	} else {
+		// Assume it's a custom render target.
+		int w, h;
+		SDL_QueryTexture(target, nullptr, nullptr, &w, &h);
+		d = {0, 0, w, h};
+	}
+
+	// Intersect with the given rect.
 	SDL_Rect r_clipped = d;
 	if (r) {
 		r_clipped = sdl::intersect_rects(*r, d);
@@ -656,12 +670,24 @@ surface CVideo::read_pixels(SDL_Rect* r)
 			*r = r_clipped;
 		}
 	}
-	SDL_Rect o = to_output(r_clipped);
+
+	// Convert the rect to output coordinates, if necessary.
+	SDL_Rect o;
+	if (default_target) {
+		o = to_output(r_clipped);
+	} else {
+		// r assumed to already be in output space.
+		o = r_clipped;
+	}
+
+	// Create surface and read pixels
 	surface s(o.w, o.h);
-	// the draw-space viewport may be slightly offset on the render target,
-	// if the scale doesn't match precisely with the window size.
-	o.x += offset_x_;
-	o.y += offset_y_;
+	if (default_target) {
+		// the draw-space viewport may be slightly offset on the render target,
+		// if the scale doesn't match precisely with the window size.
+		o.x += offset_x_;
+		o.y += offset_y_;
+	}
 	SDL_RenderReadPixels(*window, &o, s->format->format, s->pixels, s->pitch);
 	return s;
 }

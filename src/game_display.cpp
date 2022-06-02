@@ -268,7 +268,7 @@ void game_display::draw_hex(const map_location& loc)
 		return;
 	}
 
-	if(on_map && loc == mouseoverHex_) {
+	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != nullptr ) {

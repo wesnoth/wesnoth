@@ -84,7 +84,7 @@ void editor_display::draw_hex(const map_location& loc)
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 	display::draw_hex(loc);
-	if (map().on_board_with_border(loc)) {
+	if (map().on_board_with_border(loc) && !map_screenshot_) {
 		if (map().in_selection(loc)) {
 			const texture& tex = image::get_texture(
 				"editor/selection-overlay.png", image::TOD_COLORED);
