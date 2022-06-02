@@ -152,6 +152,7 @@ private:
 };
 
 typedef cache_type<surface> image_cache;
+typedef cache_type<texture> texture_cache;
 typedef cache_type<bool> bool_cache;
 
 typedef std::map<t_translation::terrain_code, surface> mini_terrain_cache_map;
@@ -240,6 +241,8 @@ enum TYPE
 	BRIGHTENED
 };
 
+enum class scale_quality { nearest, linear };
+
 /**
  * [DEPRECATED] Caches and returns an image.
  *
@@ -271,6 +274,8 @@ surface get_surface(const locator& i_locator, TYPE type = UNSCALED);
  * @param type                 Rendering format.
  */
 texture get_texture(const locator& i_locator, TYPE type = UNSCALED);
+
+texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type = UNSCALED);
 
 /**
  * Caches and returns an image with a lightmap applied to it.

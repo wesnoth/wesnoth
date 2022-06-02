@@ -30,6 +30,7 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/render_utils.hpp"
 #include "sdl/texture.hpp"
 
 #include <SDL2/SDL_image.h>
@@ -159,6 +160,16 @@ image::locator::locator_finder_t locator_finder;
 /** Definition of all image maps */
 image::image_cache images_, scaled_to_zoom_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
 		brightened_images_;
+
+/**
+ * Texture caches.
+ * Note that the latter two are temporary and should be removed once we have OGL and shader support.
+ */
+using texture_cache_map = std::map<image::scale_quality, image::texture_cache>;
+
+texture_cache_map textures_;
+texture_cache_map textures_hexed_;
+texture_cache_map texture_tod_colored_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -896,13 +907,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
-// TODO: highdpi - actually implement this. Will require determining what needs to retain only surface caches, what needs to keep both surface and texture caches, and what needs to keep only texture handles.
-texture get_texture(const image::locator& i_locator, TYPE type)
-{
-	// This is obviously not ideal.
-	return texture(get_surface(i_locator, type));
-}
-
 surface get_image(const image::locator& i_locator, TYPE type)
 {
 	return get_surface(i_locator, type);
@@ -1113,6 +1117,273 @@ save_result save_image(const surface& surf, const std::string& filename)
 	}
 
 	return save_result::unsupported_format;
+}
+
+/*
+ * TEXTURE INTERFACE ======================================================================
+ *
+ * I'm keeping this separate from the surface-based handling above since the two approaches
+ * are so different. Might move this to a file of its own in the future.
+ */
+namespace
+{
+/** Sets the texture scale quality hint. Must be called *before* creating textures! */
+void set_scale_quality_pre_texture_creation(scale_quality quality)
+{
+	static const std::string n_scale_str = "nearest";
+	static const std::string l_scale_str = "linear";
+
+	set_texture_scale_quality(quality == scale_quality::nearest ? n_scale_str : l_scale_str);
+}
+
+/** Loads a new texture directly from disk. */
+texture create_texture_from_file(const image::locator& loc)
+{
+	texture res;
+
+	// We need the window renderer to load the texture.
+	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
+	if(!renderer) {
+		return res;
+	}
+
+	std::string location = filesystem::get_binary_file_location("images", loc.get_filename());
+
+	if(!location.empty()) {
+#if 0
+		// Check if there is a localized image.
+		const std::string loc_location = get_localized_path(location);
+		if(!loc_location.empty()) {
+			location = loc_location;
+		}
+#endif
+
+		// TODO: if we need to use SDL_RWops we should use IMG_LoadTexture_RW here instead.
+		{
+			res.assign(IMG_LoadTexture(renderer, location.c_str()));
+		}
+
+		// TODO: decide what to do about this.
+#if 0
+		// If there was no standalone localized image, check if there is an overlay.
+		if(!res.null() && loc_location.empty()) {
+			const std::string ovr_location = get_localized_path(location, "--overlay");
+			if(!ovr_location.empty()) {
+				add_localized_overlay(ovr_location, res);
+			}
+		}
+#endif
+	}
+
+	if(!res && !loc.get_filename().empty()) {
+		ERR_DP << "Could not load texture for image '" << loc.get_filename() << "'" << std::endl;
+
+		// Also decide what to do here.
+#if 0
+		if(game_config::debug && loc.get_filename() != game_config::images::missing) {
+			return get_texture(game_config::images::missing, UNSCALED);
+		}
+#endif
+	}
+
+	return res;
+}
+
+/**
+ * Handle IPF manipulation. Since we don't have shaders yet, we need to use the surface
+ * modification code for now. It appears each result is saved in the relevant cache,
+ * so this should hopefully only result in a small slowdown when first processing the
+ * results.
+ */
+texture create_texture_from_sub_file(const image::locator& loc)
+{
+	surface surf = get_image(loc.get_filename(), UNSCALED);
+	if(surf == nullptr) {
+		return texture();
+	}
+
+	modification_queue mods = modification::decode(loc.get_modifications());
+
+	while(!mods.empty()) {
+		modification* mod = mods.top();
+
+		try {
+			surf = (*mod)(surf);
+		} catch(const image::modification::imod_exception& e) {
+			std::ostringstream ss;
+			ss << "\n";
+
+			for(const std::string& mod2 : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod2 << "\n";
+			}
+
+			ERR_CFG << "Failed to apply a modification to an image:\n"
+					<< "Image: " << loc.get_filename() << "\n"
+					<< "Modifications: " << ss.str() << "\n"
+					<< "Error: " << e.message << "\n";
+		}
+
+		// NOTE: do this *after* applying the mod or you'll get crashes!
+		mods.pop();
+	}
+
+#if 0
+	if(loc.get_loc().valid()) {
+		SDL_Rect srcrect = sdl::create_rect(
+			((tile_size * 3) / 4)                           *  loc.get_loc().x,
+			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
+			  tile_size,
+			  tile_size
+		);
+
+		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
+			srcrect.x += surf->w / 2 - loc.get_center_x();
+			srcrect.y += surf->h / 2 - loc.get_center_y();
+		}
+
+		// cut and hex mask, but also check and cache if empty result
+		surface cut(cut_surface(surf, srcrect));
+		bool is_empty = false;
+		surf = mask_surface(cut, get_hexmask(), &is_empty);
+
+		// discard empty images to free memory
+		if(is_empty) {
+			// Safe because those images are only used by terrain rendering
+			// and it filters them out.
+			// A safer and more general way would be to keep only one copy of it
+			surf = nullptr;
+		}
+
+		loc.add_to_cache(is_empty_hex_, is_empty);
+	}
+#endif
+
+	return texture(surf);
+}
+
+/**
+ * Small wrapper for creating a texture after applying a specific type of surface op.
+ * Won't be necessary once we get shader support.
+ */
+texture create_texture_post_surface_op(const image::locator& i_locator, TYPE type)
+{
+	surface surf = get_image(i_locator, type);
+	if(!surf) {
+		return texture();
+	}
+
+	return texture(surf);
+}
+
+texture create_texture_from_disk(const locator& loc)
+{
+	switch(loc.get_type()) {
+	case locator::FILE:
+		if(loc.is_data_uri()){
+			return texture(load_image_data_uri(loc));
+		} else {
+			return create_texture_from_file(loc);
+		}
+	case locator::SUB_FILE:
+		return create_texture_from_sub_file(loc);
+	default:
+		return texture();
+	}
+}
+
+} // namespace
+
+texture get_texture(const image::locator& i_locator, TYPE type)
+{
+	return get_texture(i_locator, scale_quality::nearest, type);
+}
+
+/** Returns a texture for the corresponding image. */
+texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type)
+{
+	texture res;
+
+	if(i_locator.is_void()) {
+		return res;
+	}
+
+	// FIXME
+	//type = simplify_type(i_locator, type);
+
+	//
+	// Select the appropriate cache. We don't need caches for every single image types,
+	// since some types can be handled by render-time operations.
+	//
+	texture_cache* cache = nullptr;
+
+	switch(type) {
+	case HEXED:
+		cache = &textures_hexed_[quality];
+		break;
+	case TOD_COLORED:
+		cache = &texture_tod_colored_[quality];
+		break;
+	default:
+		cache = &textures_[quality];
+	}
+
+	//
+	// Now attempt to find a cached texture. If found, return it.
+	//
+	bool in_cache = i_locator.in_cache(*cache);
+
+	if(in_cache) {
+		res = i_locator.locate_in_cache(*cache);
+		return res;
+	}
+
+	//
+	// No texture was cached. In that case, create a new one. The explicit cases require special
+	// handling with surfaces in order to generate the desired effect. This shouldn't be the case
+	// once we get OGL and shader support.
+	//
+	set_scale_quality_pre_texture_creation(quality);
+
+	switch(type) {
+	case TOD_COLORED:
+	case HEXED:
+		res = create_texture_post_surface_op(i_locator, type);
+		break;
+	default:
+		res = create_texture_from_disk(i_locator);
+	}
+
+	// If the texture is null at this point, return without any further action (like caching).
+	if(!res) {
+		return res;
+	}
+
+	//
+	// Apply the appropriate render flags. (TODO)
+	//
+#if 0
+	switch(type) {
+	case SCALED_TO_ZOOM:
+
+		break;
+	case SCALED_TO_HEX:
+
+		break;
+	case BRIGHTENED:
+
+		break;
+	default:
+		// Ignore other types.
+		break;
+	}
+#endif
+
+	//
+	// And finally add the texture to the cache.
+	//
+	i_locator.add_to_cache(*cache, res);
+
+	return res;
 }
 
 } // end namespace image
