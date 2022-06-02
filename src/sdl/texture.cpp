@@ -47,7 +47,9 @@ texture::texture()
 texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
 {
-	SDL_QueryTexture(txt, nullptr, nullptr, &w_, &h_);
+	if (txt) {
+		SDL_QueryTexture(txt, nullptr, nullptr, &w_, &h_);
+	}
 	finalize();
 }
 
