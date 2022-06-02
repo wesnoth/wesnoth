@@ -18,6 +18,7 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/point.hpp"
 #include "sdl/texture.hpp"
 
 #include <SDL2/SDL_render.h>
@@ -27,7 +28,6 @@
 
 class surface;
 class texture;
-struct point;
 struct SDL_Texture;
 struct color_t;
 
@@ -240,69 +240,6 @@ public:
 	}
 
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
-
-
-	/**
-	 * [DEPRECATED] Draws a surface at the given location.
-	 *
-	 * The w and h members of dst are ignored, but will be updated
-	 * to reflect the final draw extents including clipping.
-	 *
-	 * The surface will be rendered in game-native resolution,
-	 * and all coordinates are given in this context.
-	 *
-	 * WARNING: This function is deprecated and will be removed.
-	 * Use draw::blit() in stead.
-	 *
-	 * @param surf                The surface to draw.
-	 * @param dst                 Where to draw the surface. w and h are ignored, but will be updated to reflect the final draw extents including clipping.
-	 */
-	void blit_surface(const surface& surf, SDL_Rect* dst);
-
-	/**
-	 * [DEPRECATED] Draws a surface at the given coordinates.
-	 *
-	 * The surface will be rendered in game-native resolution,
-	 * and all coordinates are given in this context.
-	 *
-	 * WARNING: This function is deprecated and will be removed.
-	 * Use draw::blit() in stead.
-	 *
-	 * @param x                   The x coordinate at which to draw.
-	 * @param y                   The y coordinate at which to draw.
-	 * @param surf                The surface to draw.
-	 */
-	void blit_surface(int x, int y, const surface& surf);
-
-	/**
-	 * [DEPRECATED] Draws an area of a surface at the given location.
-	 *
-	 * The surface will be rendered in game-native resolution,
-	 * and all coordinates are given in this context.
-	 *
-	 * WARNING: This function is deprecated and will be removed.
-	 * Use draw::blit() in stead.
-	 *
-	 * @param x                   The x coordinate at which to draw.
-	 * @param y                   The y coordinate at which to draw.
-	 * @param surf                The surface to draw.
-	 * @param srcrect             The area of the surface to draw. If null, the entire surface is drawn.
-	 * @param clip_rect           The clipping area. If not null, the surface will only be drawn
-	 *                            within the bounds of the given rectangle.
-	 */
-	void blit_surface(int x, int y, const surface& surf, const SDL_Rect* srcrect, const SDL_Rect* clip_rect);
-
-	/**
-	 * Render a portion of the low-resolution drawing surface.
-	 *
-	 * @param src_rect      The portion of the drawing surface to render, in draw-space coordinates. If null, the entire drawing surface is rendered.
-	 */
-	void render_low_res(SDL_Rect* src_rect);
-
-	/**
-	 * Render the entire low-resolution drawing surface.
-	 */
-	void render_low_res();
 
 	/** Renders the screen. Should normally not be called directly! */
 	void render_screen();
@@ -579,6 +516,7 @@ private:
 	int flip_locked_;
 	int refresh_rate_;
 	int offset_x_, offset_y_;
+	point logical_size_;
 	int pixel_scale_;
 };
 
