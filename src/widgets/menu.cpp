@@ -17,6 +17,7 @@
 
 #include "widgets/menu.hpp"
 
+#include "draw.hpp"
 #include "game_config.hpp"
 #include "font/standard_colors.hpp"
 #include "language.hpp"
@@ -24,6 +25,7 @@
 #include "picture.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -798,7 +800,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, c
 	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(rect, c);
+	draw::fill(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -888,9 +890,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			};
 
 			if(highlight_heading_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,77});
+				draw::fill(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,26});
+				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -929,12 +931,13 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
-					if(sort_img != nullptr && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const std::size_t sort_x = xpos + widths[i] - sort_img->w - padding;
-						const std::size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
-						video().blit_surface(sort_x,sort_y,sort_img);
+					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
+					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= rect.h) {
+						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
+						const int sort_y = rect.y + rect.h/2 - sort_tex.h()/2;
+						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
+						draw::blit(sort_tex, dest);
 					}
 				}
 

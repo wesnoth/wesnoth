@@ -29,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 #include <functional>
 
@@ -267,8 +268,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// resize canvasses
 	for(auto & canvas : canvases_)
 	{
-		canvas.set_width(size.x);
-		canvas.set_height(size.y);
+		canvas.set_size(size);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
@@ -455,6 +455,11 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		? text_maximum_width_
 		: maximum_size.x;
 
+	// Fonts will be rendered at full output resolution,
+	// so the pixel scale multiplier must be taken into account.
+	CVideo& video = CVideo::get_singleton();
+	const int pixel_scale = video.get_pixel_scale();
+
 	/*
 	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
 	 * canvas class. Instead, this just leverages the pango text rendering engine to
@@ -464,10 +469,10 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		.set_link_aware(get_link_aware())
 		.set_link_color(get_link_color())
 		.set_family_class(config_->text_font_family)
-		.set_font_size(get_text_font_size())
+		.set_font_size(get_text_font_size() * pixel_scale)
 		.set_font_style(config_->text_font_style)
 		.set_alignment(text_alignment_)
-		.set_maximum_width(maximum_width)
+		.set_maximum_width(maximum_width * pixel_scale)
 		.set_ellipse_mode(get_text_ellipse_mode())
 		.set_characters_per_line(get_characters_per_line())
 		.set_text(label_, use_markup_);
@@ -491,19 +496,25 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "renderer size: " << renderer_.get_size() << "\n\n"
 		<< std::noboolalpha;
 
-	const point border(config_->text_extra_width, config_->text_extra_height);
+	const point border(config_->text_extra_width * pixel_scale,
+	                   config_->text_extra_height * pixel_scale);
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		maximum_size = point(config_->max_width, config_->max_height);
+		maximum_size = point(config_->max_width * pixel_scale,
+		                     config_->max_height * pixel_scale);
 
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 	}
 
 	// Get the resulting size.
 	point size = renderer_.get_size() + border;
+
+	// Translate it back to draw space, rounding up.
+	size.x = (size.x + pixel_scale - 1) / pixel_scale;
+	size.y = (size.y + pixel_scale - 1) / pixel_scale;
 
 	if(size.x < minimum_size.x) {
 		size.x = minimum_size.x;

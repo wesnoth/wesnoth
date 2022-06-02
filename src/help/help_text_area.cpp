@@ -16,14 +16,16 @@
 #include "help/help_text_area.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "game_config.hpp"              // for debug
+#include "draw.hpp"                     // for blit, fill
 #include "font/sdl_ttf_compat.hpp"
+#include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "lexical_cast.hpp"
-#include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
-#include "preferences/general.hpp"              // for font_scaled
+#include "picture.hpp"                  // for get_image
+#include "preferences/general.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
+#include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
 #include "video.hpp"                    // for CVideo
 
@@ -72,11 +74,11 @@ void help_text_area::show_topic(const topic &t)
 }
 
 
-help_text_area::item::item(surface surface, int x, int y, const std::string& _text,
+help_text_area::item::item(const texture& _tex, int x, int y, const std::string& _text,
 						   const std::string& reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
-	surf(surface),
+	tex(_tex),
 	text(_text),
 	ref_to(reference_to),
 	floating(_floating), box(_box),
@@ -84,14 +86,14 @@ help_text_area::item::item(surface surface, int x, int y, const std::string& _te
 {
 	rect.x = x;
 	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
-help_text_area::item::item(surface surface, int x, int y, bool _floating,
+help_text_area::item::item(const texture& _tex, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
-	surf(surface),
+	tex(_tex),
 	text(""),
 	ref_to(""),
 	floating(_floating),
@@ -99,8 +101,8 @@ help_text_area::item::item(surface surface, int x, int y, bool _floating,
 {
 	rect.x = x;
 	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
 void help_text_area::set_items()
@@ -113,9 +115,11 @@ void help_text_area::set_items()
 	// Add the title item.
 	const std::string show_title =
 		font::pango_line_ellipsize(shown_topic_->title, title_size, inner_location().w);
-	surface surf = font::pango_render_text(show_title, title_size, font::NORMAL_COLOR, font::pango_text::STYLE_BOLD);
-	if (surf != nullptr) {
-		add_item(item(surf, 0, 0, show_title));
+	// TODO: highdpi - pango textures
+	texture tex(font::pango_render_text(show_title, title_size,
+		font::NORMAL_COLOR, font::pango_text::STYLE_BOLD));
+	if (tex) {
+		add_item(item(tex, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
 		contents_height_ = title_spacing_;
 		down_one_line();
@@ -351,9 +355,13 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 			down_one_line();
 		}
 		else {
-			surface surf = font::pango_render_text(first_part, scaled_font_size, color, font::pango_text::FONT_STYLE(state));
-			if (surf)
-				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+			// TODO: highdpi - pango textures
+			texture tex(font::pango_render_text(first_part,
+				scaled_font_size, color, font::pango_text::FONT_STYLE(state)));
+			if (tex) {
+				add_item(item(tex, curr_loc_.first, curr_loc_.second,
+					first_part, ref_dst));
+			}
 		}
 		if (parts.size() > 1) {
 
@@ -383,15 +391,15 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 void help_text_area::add_img_item(const std::string& path, const std::string& alignment,
 								  const bool floating, const bool box)
 {
-	surface surf(image::get_image(path));
-	if (!surf)
+	texture tex(image::get_texture(path));
+	if (!tex)
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
 		WRN_DP << "Floating image with align HERE, aligning left." << std::endl;
 		align = LEFT;
 	}
-	const int width = surf->w + (box ? box_width * 2 : 0);
+	const int width = tex.w() + (box ? box_width * 2 : 0);
 	int xpos;
 	int ypos = curr_loc_.second;
 	int text_width = inner_location().w;
@@ -422,7 +430,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 		else {
 			ypos = get_y_for_floating_img(width, xpos, ypos);
 		}
-		add_item(item(surf, xpos, ypos, floating, box, align));
+		add_item(item(tex, xpos, ypos, floating, box, align));
 	}
 }
 
@@ -557,12 +565,13 @@ void help_text_area::draw_contents()
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
-					video().fill(draw_rect, 0, 0, 0, 0);
+					// TODO: highdpi - is the above still relevant?
+					draw::fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			video().blit_surface(it->surf, &dst);
+			draw::blit(it->tex, dst);
 		}
 	}
 }

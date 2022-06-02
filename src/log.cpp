@@ -283,7 +283,7 @@ void scope_logger::do_log_exit() noexcept
 	auto output = debug()(domain_, false, true);
 	output.set_indent(indent);
 	if(timestamp) output.enable_timestamp();
-	output | formatter() << "} END: " << str_ << " (took " << ticks << "ms)\n";
+	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)\n";
 }
 
 std::stringstream& log_to_chat()

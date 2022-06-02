@@ -41,6 +41,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define DBG_DP LOG_STREAM(debug, log_display)
 
 CVideo* CVideo::singleton_ = nullptr;
@@ -175,18 +176,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 	}
 }
 
-int CVideo::fill(
-	const SDL_Rect& area,
-	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-{
-	int e = SDL_SetRenderDrawColor(*window, r, g, b, a);
-	if (e == 0) {
-		return SDL_RenderFillRect(*window, &area);
-	} else {
-		return e;
-	}
-}
-
 void CVideo::blit_surface(const surface& surf, SDL_Rect* dst)
 {
 	// Ensure alpha gets transferred as well
@@ -223,11 +212,6 @@ void CVideo::blit_surface(int x, int y, const surface& surf, const SDL_Rect* src
 
 	// Reset the input surface blend mode to whatever it originally was
 	SDL_SetSurfaceBlendMode(surf, b);
-}
-
-void CVideo::blit_texture(texture& tex, const SDL_Rect* dst_rect, const SDL_Rect* src_rect)
-{
-	SDL_RenderCopy(*window.get(), tex, src_rect, dst_rect);
 }
 
 void CVideo::make_fake()
@@ -495,6 +479,10 @@ SDL_Rect CVideo::draw_area() const
 
 SDL_Rect CVideo::input_area() const
 {
+	if(!window) {
+		WRN_DP << "requesting input area with no window" << std::endl;
+		return draw_area();
+	}
 	// This should always match draw_area.
 	SDL_Point p(window->get_logical_size());
 	return {0, 0, p.x, p.y};
@@ -517,16 +505,57 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
+CVideo::render_target_setter CVideo::set_render_target(const texture& t)
+{
+	return CVideo::render_target_setter(*this, t);
+}
+
+void CVideo::force_render_target(SDL_Texture* t)
+{
+	SDL_SetRenderTarget(get_renderer(), t);
+
+	// The scale factor gets reset when the render target changes,
+	// so make sure it gets set back appropriately.
+	if (t == nullptr || t == render_texture_) {
+		// TODO: highdpi - sort out who owns this
+		window->set_logical_size(get_width(), get_height());
+	}
+}
+
+SDL_Texture* CVideo::get_render_target()
+{
+	return SDL_GetRenderTarget(get_renderer());
+}
+
+// TODO: highdpi - separate drawing interface should also handle clipping
+
 CVideo::clip_setter CVideo::set_clip(const SDL_Rect& clip)
 {
 	return CVideo::clip_setter(*this, clip);
 }
 
+CVideo::clip_setter CVideo::reduce_clip(const SDL_Rect& clip)
+{
+	SDL_Rect c = get_clip();
+	if (c == sdl::empty_rect) {
+		return CVideo::clip_setter(*this, clip);
+	} else {
+		return CVideo::clip_setter(*this, sdl::intersect_rects(clip, c));
+	}
+}
+
 void CVideo::force_clip(const SDL_Rect& clip)
 {
 	// Set the clipping area both on the drawing surface,
-	SDL_SetClipRect(drawingSurface, &clip);
+	if (clip == sdl::empty_rect) {
+		SDL_SetClipRect(drawingSurface, nullptr);
+	} else {
+		SDL_SetClipRect(drawingSurface, &clip);
+	}
 	// and on the render target.
+	if (!window) {
+		return;
+	}
 	if (SDL_RenderSetClipRect(get_renderer(), &clip)) {
 		throw error("Failed to set render clip rect");
 	}
@@ -534,13 +563,17 @@ void CVideo::force_clip(const SDL_Rect& clip)
 
 SDL_Rect CVideo::get_clip() const
 {
-	if (!drawingSurface) {
+	if (!window) {
 		return sdl::empty_rect;
 	}
 
-	SDL_Rect r_draw;
-	SDL_GetClipRect(drawingSurface, &r_draw);
-	return r_draw;
+	SDL_Rect clip;
+	SDL_RenderGetClipRect(*window, &clip);
+
+	if (clip == sdl::empty_rect) {
+		return draw_area();
+	}
+	return clip;
 }
 
 SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
@@ -558,8 +591,13 @@ SDL_Rect CVideo::to_output(const SDL_Rect& r) const
 	return {s*r.x, s*r.y, s*r.w, s*r.h};
 }
 
+// TODO: highdpi - deprecate
 void CVideo::render_low_res()
 {
+	if (!window) {
+		WRN_DP << "trying to render with no window" << std::endl;
+		return;
+	}
 	if (!drawingSurface) {
 		throw error("Trying to render with no drawingSurface");
 	}
@@ -584,8 +622,13 @@ void CVideo::render_low_res()
 	SDL_RenderCopy(*window.get(), drawing_texture_, nullptr, nullptr);
 }
 
+// TODO: highdpi - deprecate
 void CVideo::render_low_res(SDL_Rect* src_rect)
 {
+	if (!window) {
+		WRN_DP << "trying to render with no window" << std::endl;
+		return;
+	}
 	if (!drawingSurface) {
 		throw error("Trying to render with no drawingSurface");
 	}
@@ -633,6 +676,10 @@ void CVideo::render_screen()
 		return;
 	}
 
+	// Note: this is not thread-safe.
+	// Drawing functions should not be called while this is active.
+	// SDL renderer usage is not thread-safe anyway, so this is fine.
+
 	if(window) {
 		// Reset the render target to the window.
 		SDL_SetRenderTarget(*window, nullptr);
@@ -654,6 +701,10 @@ void CVideo::render_screen()
 
 surface CVideo::read_pixels(SDL_Rect* r)
 {
+	if (!window) {
+		WRN_DP << "trying to read pixels with no window" << std::endl;
+		return surface();
+	}
 	SDL_Rect d = draw_area();
 	SDL_Rect r_clipped = d;
 	if (r) {
@@ -677,6 +728,10 @@ surface CVideo::read_pixels(SDL_Rect* r)
 
 surface CVideo::read_pixels_low_res(SDL_Rect* r)
 {
+	if (!window) {
+		WRN_DP << "trying to read pixels with no window" << std::endl;
+		return surface();
+	}
 	surface s = read_pixels(r);
 	if (r) {
 		return scale_surface(s, r->w, r->h);

@@ -16,6 +16,7 @@
 #include "floating_label.hpp"
 
 #include "display.hpp"
+#include "draw.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
 #include "video.hpp"
@@ -203,7 +204,7 @@ void floating_label::draw(int time)
 	tex_.set_alpha_mod(get_alpha(time));
 
 	// Apply the label texture to the screen.
-	video.blit_texture(tex_, &draw_rect);
+	draw::blit(tex_, draw_rect);
 }
 
 void floating_label::set_lifetime(int lifetime, int fadeout)
@@ -248,7 +249,7 @@ void floating_label::undraw()
 
 	CVideo& video = CVideo::get_singleton();
 	auto clipper = video.set_clip(clip_rect_);
-	video.blit_texture(buf_, &buf_pos_);
+	draw::blit(buf_, buf_pos_);
 }
 
 int add_floating_label(const floating_label& flabel)

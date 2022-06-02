@@ -77,10 +77,9 @@ public:
 	 */
 	explicit line_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
@@ -189,10 +188,9 @@ public:
 	 */
 	explicit rectangle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	/**
@@ -240,10 +238,9 @@ public:
 	 */
 	explicit round_rectangle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<int> r_; /**< The radius of the corners. */
@@ -299,10 +296,9 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
@@ -351,10 +347,9 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
@@ -362,11 +357,13 @@ private:
 			w_,			   /**< The width of the image. */
 			h_;			   /**< The height of the image. */
 
+	// TODO: highdpi - none of these cached items are ever used. Why is this here?
+
 	/** Contains the size of the image. */
 	SDL_Rect src_clip_;
 
 	/** The image is cached in this surface. */
-	surface image_;
+	texture image_;
 
 	/**
 	 * Name of the image.
@@ -398,7 +395,7 @@ private:
 	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
+	typed_formula<bool> mirror_;
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
@@ -443,10 +440,9 @@ public:
 	 */
 	explicit text_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(const SDL_Rect& portion_to_draw,
+	          const SDL_Rect& draw_location,
+	          wfl::map_formula_callable& variables) override;
 
 private:
 	/** The text font family. */

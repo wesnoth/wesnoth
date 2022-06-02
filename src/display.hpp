@@ -60,6 +60,7 @@ namespace wb {
 #include "time_of_day.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -590,7 +591,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
+	void recalculate_minimap() {minimap_.reset(); redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.
@@ -730,7 +731,7 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	surface minimap_;
+	texture minimap_;
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
 	bool redraw_background_;
@@ -756,6 +757,7 @@ protected:
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	std::set<map_location> invalidated_;
+	// TODO: highdpi - texture
 	surface mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
@@ -1031,8 +1033,6 @@ private:
 	/** Count work done for the debug info displayed under fps */
 	int invalidated_hexes_;
 	int drawn_hexes_;
-
-	surface map_screenshot_surf_;
 
 	std::vector<std::function<void(display&)>> redraw_observers_;
 

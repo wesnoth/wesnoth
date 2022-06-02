@@ -17,17 +17,16 @@
 
 #include "editor/palette/location_palette.hpp"
 
-#include "gettext.hpp"
-#include "font/sdl_ttf_compat.hpp"
-#include "font/standard_colors.hpp"
-#include "tooltips.hpp"
-
+#include "draw.hpp"
 #include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
+#include "font/sdl_ttf_compat.hpp"
+#include "font/standard_colors.hpp"
+#include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
-
-#include "formula/string_utils.hpp"
+#include "tooltips.hpp"
 
 #include <boost/regex.hpp>
 
@@ -60,10 +59,10 @@ public:
 	void draw_contents() override
 	{
 		if (state_.mouseover) {
-			sdl::fill_rectangle(location(), {200, 200, 200, 26});
+			draw::fill(location(), 200, 200, 200, 26);
 		}
 		if (state_.selected) {
-			sdl::draw_rectangle(location(), {255, 255, 255, 255});
+			draw::rect(location(), 255, 255, 255, 255);
 		}
 		font::pango_draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}

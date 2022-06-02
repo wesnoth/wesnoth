@@ -45,6 +45,7 @@ static int intf_get_image_size(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	image::locator img(m);
 	if(!img.file_exists()) return 0;
+	// TODO: highdpi - image width/height accessor
 	surface s = get_image(img);
 	lua_pushinteger(L, s->w);
 	lua_pushinteger(L, s->h);

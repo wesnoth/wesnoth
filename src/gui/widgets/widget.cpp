@@ -15,6 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -529,11 +530,11 @@ void widget::draw_debug_border()
 			/* DO NOTHING */
 			break;
 		case debug_border::outline:
-			sdl::draw_rectangle(r, debug_border_color_);
+			draw::rect(r, debug_border_color_);
 			break;
 
 		case debug_border::fill:
-			sdl::fill_rectangle(r, debug_border_color_);
+			draw::fill(r, debug_border_color_);
 			break;
 
 		default:
@@ -554,11 +555,11 @@ widget::draw_debug_border(int x_offset, int y_offset)
 			break;
 
 		case debug_border::outline:
-			sdl::draw_rectangle(r, debug_border_color_);
+			draw::rect(r, debug_border_color_);
 			break;
 
 		case debug_border::fill:
-			sdl::fill_rectangle(r, debug_border_color_);
+			draw::fill(r, debug_border_color_);
 			break;
 
 		default:

@@ -19,6 +19,7 @@
 
 #include "exceptions.hpp"
 
+#include "sdl/texture.hpp"
 
 namespace gui {
 
@@ -99,7 +100,7 @@ private:
 
 	std::string label_text_;
 
-	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
+	texture image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;

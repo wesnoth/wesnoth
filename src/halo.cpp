@@ -21,6 +21,7 @@
 
 #include "animated.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -196,19 +197,13 @@ bool halo_impl::effect::render()
 	}
 
 	images_.update_last_draw_time();
-	surface surf = image::get_image(current_image(),image::SCALED_TO_ZOOM);
-	if(surf == nullptr) {
+	// TODO: highdpi - no prescaling
+	tex_ = image::get_texture(current_image(),image::SCALED_TO_ZOOM);
+	if(!tex_) {
 		return false;
 	}
-	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
-		surf = image::reverse_image(surf);
-	}
-	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
-		surf = flop_surface(surf);
-	}
-	w_ = surf->w;
-	h_ = surf->h;
-	tex_ = texture(surf);
+	w_ = tex_.w();
+	h_ = tex_.h();
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());
@@ -240,14 +235,20 @@ bool halo_impl::effect::render()
 	buffer_pos_ = rect_;
 	buffer_ = disp->video().read_texture(&buffer_pos_);
 
-	disp->video().blit_texture(tex_, &rect);
+	if (orientation_ == NORMAL) {
+		draw::blit(tex_, rect);
+	} else {
+		draw::flipped(tex_, rect,
+			orientation_ == HREVERSE || orientation_ == HVREVERSE,
+			orientation_ == VREVERSE || orientation_ == HVREVERSE);
+	}
 
 	return true;
 }
 
 void halo_impl::effect::unrender()
 {
-	if (tex_ == nullptr || buffer_ == nullptr) {
+	if (!tex_ || !buffer_) {
 		return;
 	}
 
@@ -274,7 +275,7 @@ void halo_impl::effect::unrender()
 	buffer_pos_.x += xpos - rect_.x;
 	buffer_pos_.y += ypos - rect_.y;
 
-	disp->video().blit_texture(buffer_, &buffer_pos_);
+	draw::blit(buffer_, buffer_pos_);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const

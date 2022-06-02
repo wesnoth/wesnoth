@@ -57,11 +57,12 @@ void update_screen_size_variables()
 	screen_width = rect.w;
 	screen_height = rect.h;
 
+	// TODO: highdpi - remove usage
 	// Use of screen_pitch_microns should probably be deprecated, as physical
 	// DPI is not an accurate method of determining perceptual pixel size.
-	auto [scalew, scaleh] = video.get_dpi_scale_factor();
-	float avgscale = (scalew + scaleh)/2;
-	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
+	//auto [scalew, scaleh] = video.get_dpi_scale_factor();
+	//float avgscale = (scalew + scaleh)/2;
+	//screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;

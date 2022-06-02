@@ -56,6 +56,7 @@ private:
 
 	virtual const std::string& get_id(const t_translation::terrain_code& terrain);
 
+	// TODO: highdpi - texture
 	virtual void draw_item(const t_translation::terrain_code& terrain, surface& item_image, std::stringstream& tooltip_text);
 
 };

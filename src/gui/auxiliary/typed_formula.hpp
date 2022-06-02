@@ -159,7 +159,7 @@ operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_tabl
 	wfl::variant v = wfl::formula(*formula_, functions).evaluate(variables);
 	const T& result = execute(v);
 
-	LOG_GUI_D << "Formula: execute '" << *formula_ << "' result '" << result << "'.\n";
+	DBG_GUI_D << "Formula: execute '" << *formula_ << "' result '" << result << "'.\n";
 
 	return result;
 }

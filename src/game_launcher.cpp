@@ -332,7 +332,7 @@ bool game_launcher::init_video()
 	video_->set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
-	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
+	surface icon(image::get_surface("icons/icon-game.png", image::UNSCALED));
 	if(icon != nullptr) {
 		video_->set_window_icon(icon);
 	}

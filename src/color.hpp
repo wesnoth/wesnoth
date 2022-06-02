@@ -245,7 +245,7 @@ inline std::ostream& operator<<(std::ostream& s, const color_t& c)
 	s << static_cast<int>(c.r) << " "
 	  << static_cast<int>(c.g) << " "
 	  << static_cast<int>(c.b) << " "
-	  << static_cast<int>(c.a) << std::endl;
+	  << static_cast<int>(c.a);
 
 	return s;
 }

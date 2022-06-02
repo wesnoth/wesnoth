@@ -21,6 +21,7 @@
 #include <unordered_map>
 
 class surface;
+class texture;
 
 /**
  * Functions to load and save images from/to disk.
@@ -150,8 +151,6 @@ private:
 	value val_;
 };
 
-surface load_from_disk(const locator& loc);
-
 typedef cache_type<surface> image_cache;
 typedef cache_type<bool> bool_cache;
 
@@ -210,8 +209,7 @@ struct manager
  *
  * In particular this affects TOD_COLORED and BRIGHTENED images, as well as
  * images with lightmaps applied. Changing the previous values automatically
- * invalidates all cached images of those types. It also invalidates the
- * internal cache used by reverse_image() (FIXME?).
+ * invalidates all cached images of those types.
  */
 void set_color_adjustment(int r, int g, int b);
 
@@ -243,12 +241,36 @@ enum TYPE
 };
 
 /**
- * Caches and returns an image.
+ * [DEPRECATED] Caches and returns an image.
+ *
+ * This function is deprecated. Use get_texture or get_surface in stead.
  *
  * @param i_locator            Image path.
  * @param type                 Rendering format.
  */
 surface get_image(const locator& i_locator, TYPE type = UNSCALED);
+
+/**
+ * Returns an image surface suitable for software manipulation.
+ *
+ * The equivalent get_texture() function should generally be preferred.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ */
+surface get_surface(const locator& i_locator, TYPE type = UNSCALED);
+
+/**
+ * Returns an image texture suitable for hardware-accelerated rendering.
+ *
+ * Texture pointers are not unique, and will be cached and retained
+ * until no longer needed. Users of the returned texture do not have to
+ * worry about texture management.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ */
+texture get_texture(const locator& i_locator, TYPE type = UNSCALED);
 
 /**
  * Caches and returns an image with a lightmap applied to it.
@@ -276,14 +298,6 @@ bool is_in_hex(const locator& i_locator);
  * the hex-masked version if necessary.
  */
 bool is_empty_hex(const locator& i_locator);
-
-/**
- * Horizontally flips an image.
- *
- * The input MUST have originally been returned from an image namespace function.
- * Returned images have the same semantics as those obtained from get_image().
- */
-surface reverse_image(const surface& surf);
 
 /**
  * Returns @a true if the given image actually exists, without loading it.

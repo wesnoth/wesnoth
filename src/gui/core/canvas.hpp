@@ -24,9 +24,10 @@
 #include "config.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
+struct point;
 
 namespace gui2
 {
@@ -62,17 +63,14 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param canvas          The resulting image will be blitted upon this
-		 *                        canvas.
-		 * @param renderer        The SDL_Renderer to use.
-		 * @param view_bounds     Part of the shape to render - this is the location of @a canvas
-		 *                        within the coordinates of the shape.
+		 * @param portion_to_draw   The portion of the shape to draw, in canvas-local coordinates
+		 * @param draw_location     The location of the canvas on the screen, in draw coordinates.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  const SDL_Rect& view_bounds,
+		virtual void draw(const SDL_Rect& portion_to_draw,
+		                  const SDL_Rect& draw_location,
 		                  wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
@@ -95,14 +93,13 @@ public:
 
 	private:
 	/**
-	 * Internal part of the blit() function - prepares the contents of the internal viewport_
-	 * surface, reallocating that surface if necessary.
+	 * Internal part of the blit() function - does the actual drawing.
 	 *
-	 * @param area_to_draw        Currently-visible part of the widget, any area outside here won't be blitted to the parent.
-	 * @param force               If the canvas isn't dirty it isn't redrawn
-	 *                            unless force is set to true.
+	 * @param area_to_draw        Currently-visible part of the widget, in widget-local coordinates.
+	 *                            Any area outside here won't be blitted to the parent.
+	 * @param draw_location       Where to draw the widget on the screen, in draw coordinates.
 	 */
-	void draw(const SDL_Rect& area_to_draw, const bool force = false);
+	void draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location);
 
 	public:
 	/**
@@ -124,7 +121,6 @@ public:
 	void set_cfg(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
-		invalidate_cache();
 		parse_cfg(cfg);
 	}
 
@@ -138,25 +134,14 @@ public:
 		parse_cfg(cfg);
 	}
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
+	/** Update WFL size variables. */
+	void update_size_variables();
 
-	void set_width(const unsigned width)
-	{
-		w_ = width;
-		set_is_dirty(true);
-		invalidate_cache();
-	}
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	unsigned get_width() const
 	{
 		return w_;
-	}
-
-	void set_height(const unsigned height)
-	{
-		h_ = height;
-		set_is_dirty(true);
-		invalidate_cache();
 	}
 
 	unsigned get_height() const
@@ -164,16 +149,17 @@ public:
 		return h_;
 	}
 
+	void set_size(const point& size);
+
 	void set_variable(const std::string& key, wfl::variant&& value)
 	{
 		variables_.add(key, std::move(value));
-		set_is_dirty(true);
-		invalidate_cache();
 	}
 
-	void set_is_dirty(const bool is_dirty)
+	// TODO: highdpi - find everywhere that is calling this, and determine why.
+	void set_is_dirty(bool)
 	{
-		is_dirty_ = is_dirty;
+		update_size_variables();
 	}
 
 private:
@@ -190,30 +176,20 @@ private:
 	 */
 	unsigned blur_depth_;
 
-	/** Width of the canvas (the full size, not limited to the view_bounds_). */
+	/** Blurred background texture. */
+	texture blur_texture_;
+
+	/** The full width of the canvas. */
 	unsigned w_;
 
-	/** Height of the canvas (the full size, not limited to the view_bounds_). */
+	/** The full height of the canvas. */
 	unsigned h_;
-
-	/** The surface we draw all items on. */
-	surface viewport_;
-
-	/**
-	 * The placement and size of viewport_ in the coordinates of this widget; value is not useful when bool(viewport_) is false.
-	 *
-	 * For large widgets, a small viewport_ may be used that contains only the currently-visible part of the widget.
-	 */
-	SDL_Rect view_bounds_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
 
 	/** Action function definitions for the canvas. */
 	wfl::action_function_symbol_table functions_;
-
-	/** The dirty state of the canvas. */
-	bool is_dirty_;
 
 	/**
 	 * Parses a config object.
@@ -227,11 +203,6 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
-
-	void invalidate_cache()
-	{
-		viewport_ = nullptr;
-	}
 };
 
 } // namespace gui2

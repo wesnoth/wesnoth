@@ -21,6 +21,7 @@
 #include "arrow.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
@@ -70,6 +71,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
 #define DBG_DP LOG_STREAM(debug, log_display)
 
@@ -228,7 +230,6 @@ display::display(const display_context* dc,
 	, fps_handle_(0)
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
-	, map_screenshot_surf_(nullptr)
 	, redraw_observers_()
 	, draw_coordinates_(false)
 	, draw_terrain_codes_(false)
@@ -780,43 +781,46 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
+		LOG_DP << "taking ordinary screenshot" << std::endl;
 		return screen_.read_pixels();
-	} else {
-		if (get_map().empty()) {
-			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
-			return nullptr;
-		}
-
-		SDL_Rect area = max_map_area();
-		map_screenshot_surf_ = surface(area.w, area.h);
-
-		if (map_screenshot_surf_ == nullptr) {
-			// Memory problem ?
-			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
-			return nullptr;
-		}
-
-		// back up the current map view position and move to top-left
-		int old_xpos = xpos_;
-		int old_ypos = ypos_;
-		xpos_ = 0;
-		ypos_ = 0;
-
-		// we reroute render output to the screenshot surface and invalidate all
-		map_screenshot_= true;
-		invalidateAll_ = true;
-		DBG_DP << "draw() with map_screenshot\n";
-		draw(true,true);
-
-		// restore normal rendering
-		map_screenshot_= false;
-		xpos_ = old_xpos;
-		ypos_ = old_ypos;
-
-		// Clear map_screenshot_surf_ and return a new surface that contains the same data
-		surface surf(std::move(map_screenshot_surf_));
-		return surf;
 	}
+
+	if (get_map().empty()) {
+		ERR_DP << "No map loaded, cannot create a map screenshot.\n";
+		return nullptr;
+	}
+
+	// back up the current map view position and move to top-left
+	int old_xpos = xpos_;
+	int old_ypos = ypos_;
+	xpos_ = 0;
+	ypos_ = 0;
+
+	// Reroute render output to a separate texture until the end of scope.
+	SDL_Rect area = max_map_area();
+	if (area.w > 1 << 16 || area.h > 1 << 16) {
+		WRN_DP << "Excessively large map screenshot area" << std::endl;
+	}
+	LOG_DP << "creating " << area.w << " by " << area.h
+	       << " texture for map screenshot" << std::endl;
+	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
+	auto target_setter = video().set_render_target(output_texture);
+	auto clipper = video().set_clip(area);
+
+	map_screenshot_ = true;
+	invalidateAll_ = true;
+
+	DBG_DP << "draw() call for map screenshot\n";
+	draw(true, true);
+
+	map_screenshot_ = false;
+
+	// Restore map viewport position
+	xpos_ = old_xpos;
+	ypos_ = old_ypos;
+
+	// Read rendered pixels back as an SDL surface.
+	return video().read_pixels();
 }
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
@@ -1462,7 +1466,7 @@ static void draw_background(CVideo& screen_, const SDL_Rect& area, const std::st
 {
 	// No background image, just fill in black.
 	if(image.empty()) {
-		sdl::fill_rectangle(area, color_t(0, 0, 0));
+		draw::fill(area, 0, 0, 0);
 		return;
 	}
 
@@ -1530,7 +1534,8 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	surface surf(image);
 
 	if(hreverse) {
-		surf = image::reverse_image(surf);
+		// TODO: highdpi - well this will get removed in due process anyway
+		surf = flip_surface(surf);
 	}
 	if(vreverse) {
 		surf = flop_surface(surf);
@@ -1631,7 +1636,7 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		screen_.fill(clip_rect, 0, 0, 0, 0);
+		draw::fill(clip_rect, 0, 0, 0);
 		draw_background(screen_, clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
@@ -1744,32 +1749,40 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(),
+	// TODO: highdpi - high DPI minimap
+	// TODO: highdpi - is this the best place to convert to texture?
+	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
+		minimap_ = texture(image::getMinimap(area.w, area.h, get_map(),
 			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
-			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
-		if(minimap_ == nullptr) {
+			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr));
+		if(!minimap_) {
 			return;
 		}
 	}
 
+	// TODO: highdpi - does this really need to set a clipping area?
 	auto clipper = screen_.set_clip(area);
 
-	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color, screen_);
+	// Draw the minimap background.
+	draw::fill(area, 31, 31, 23);
 
-	//update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_->h) / 2;
-	minimap_location_.w = minimap_->w;
-	minimap_location_.h = minimap_->h;
+	// Update the minimap location for mouse and units functions
+	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
+	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
+	minimap_location_.w = minimap_.w();
+	minimap_location_.h = minimap_.h();
+
+	// Draw the minimap.
+	if (minimap_) {
+		draw::blit(minimap_, minimap_location_);
+	}
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_->w / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_->h / (get_map().h()*hex_size());
+	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
+	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1797,20 +1810,8 @@ void display::draw_minimap()
 	// no render clipping rectangle set operaton was queued,
 	// so let's not use the render API to draw the rectangle.
 
-	const SDL_Rect outline_parts[] = {
-		// top
-		{ outline_rect.x,                      outline_rect.y,                  outline_rect.w, 1              },
-		// bottom
-		{ outline_rect.x,                      outline_rect.y + outline_rect.h, outline_rect.w, 1              },
-		// left
-		{ outline_rect.x,                      outline_rect.y,                  1,              outline_rect.h },
-		// right
-		{ outline_rect.x + outline_rect.w - 1, outline_rect.y,                  1,              outline_rect.h },
-	};
-
-	for(const auto& r : outline_parts) {
-		screen_.fill(r, 255, 255, 255, 0);
-	}
+	// TODO: highdpi - is the above still relevant? It doesn't seem to be.
+	draw::rect(outline_rect, 255, 255, 255);
 }
 
 void display::draw_minimap_units()
@@ -1861,7 +1862,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		screen_.fill(r, col.r, col.g, col.b, col.a);
+		draw::fill(r, col.r, col.g, col.b, col.a);
 	}
 }
 
@@ -1922,7 +1923,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 		// TODO: highdpi - This is gross and should be replaced
 		texture t = screen_.read_texture(&srcrect);
-		screen_.blit_texture(t, &dstrect);
+		draw::blit(t, dstrect);
 	}
 
 	if(diff_y != 0) {

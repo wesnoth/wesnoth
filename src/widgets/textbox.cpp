@@ -19,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "draw.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
@@ -185,7 +186,7 @@ void textbox::draw_cursor(int pos) const
 				, location().h
 		};
 
-		sdl::fill_rectangle(rect, {255, 255, 255, 255});
+		draw::fill(rect, 255, 255, 255, 255);
 	}
 }
 
@@ -198,7 +199,7 @@ void textbox::draw_contents()
 	double& alpha = focus(nullptr) ? alpha_focus_ : alpha_;
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(loc, c);
+	draw::fill(loc, c);
 
 	SDL_Rect src;
 
@@ -235,10 +236,10 @@ void textbox::draw_contents()
 						, right - startx
 						, line_height_);
 
+				// TODO: highdpi - this seems excessive
 				auto clipper = video().set_clip(loc);
 
-				color_t c2(0, 0, 160, 140);
-				sdl::fill_rectangle(rect, c2);
+				draw::fill(rect, 0, 0, 160, 140);
 
 				starty += int(line_height_);
 				startx = 0;

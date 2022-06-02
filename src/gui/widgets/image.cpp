@@ -44,6 +44,7 @@ image::image(const implementation::builder_image& builder)
 
 point image::calculate_best_size() const
 {
+	// TODO: highdpi - image width / height accessors. The surface is unnecessary.
 	surface image(::image::get_image(::image::locator(get_label())));
 
 	if(!image) {

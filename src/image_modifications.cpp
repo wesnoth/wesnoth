@@ -1023,7 +1023,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	message << "~BLIT():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new blit_modification(surf, x, y);
 }
@@ -1056,7 +1056,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	message << "~MASK():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new mask_modification(surf, x, y);
 }
@@ -1069,7 +1069,7 @@ REGISTER_MOD_PARSER(L, args)
 		return nullptr;
 	}
 
-	surface surf = get_image(args);
+	surface surf = get_surface(args);
 
 	return new light_modification(surf);
 }
