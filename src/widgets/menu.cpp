@@ -757,10 +757,14 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			surface const img = get_item_image(image_name);
-			if(img != nullptr) {
-				res.w += img->w;
-				res.h = std::max<int>(img->h, res.h);
+			// TODO: highdpi - image size accessor, yet again
+			const texture img = image::get_texture(image_name);
+			if(img) {
+				int w = img.w();
+				int h = img.h();
+				adjust_image_bounds(w, h);
+				res.w += w;
+				res.h = std::max<int>(h, res.h);
 			}
 		}
 		else {
@@ -905,15 +909,18 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
-				const surface img = style_->get_item_image(image_name);
+				const texture img = image::get_texture(image_name);
+				int img_w = img.w();
+				int img_h = img.h();
+				style_->adjust_image_bounds(img_w, img_h);
 				const int remaining_width = max_width_ < 0 ? area.w :
 				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
-				if(img != nullptr && img->w <= remaining_width
-				&& rect.y + img->h < area.h) {
-					const std::size_t y = rect.y + (rect.h - img->h)/2;
-					const std::size_t w = img->w + 5;
+				if(img && img_w <= remaining_width
+				&& rect.y + img_h < area.h) {
+					const std::size_t y = rect.y + (rect.h - img_h)/2;
+					const std::size_t w = img_w + 5;
 					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					video().blit_surface(x,y,img);
+					draw::blit(img, {int(x), int(y), img_w, img_h});
 					if(!lang_rtl)
 						xpos += w;
 					column.w -= w;
