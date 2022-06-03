@@ -44,7 +44,7 @@ namespace settings
  */
 extern unsigned screen_width;
 extern unsigned screen_height;
-extern unsigned screen_pitch_microns; /* Pixel pitch in microns */
+extern const unsigned screen_pitch_microns; /* Deprecated, do not use */
 
 /**
  * The offset between the left edge of the screen and the gamemap.

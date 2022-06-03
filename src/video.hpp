@@ -196,12 +196,6 @@ public:
 	 */
 	int get_pixel_scale() const { return pixel_scale_; }
 
-	/** The current game screen dpi. */
-	std::pair<float, float> get_dpi() const;
-
-	/** The current scale factor on High-DPI screens. */
-	std::pair<float, float> get_dpi_scale_factor() const;
-
 	/**
 	 * Clip a rectangle to the drawing area.
 	 *

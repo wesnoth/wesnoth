@@ -302,6 +302,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 /* RAII state manipulation */
 /***************************/
 
+
 draw::clip_setter::clip_setter(const SDL_Rect& clip)
 	: c_()
 {

@@ -738,44 +738,6 @@ bool CVideo::window_has_flags(uint32_t flags) const
 	return (window->get_flags() & flags) != 0;
 }
 
-std::pair<float, float> CVideo::get_dpi() const
-{
-	float hdpi, vdpi;
-	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
-#ifdef TARGET_OS_OSX
-		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
-		// multiplied by screen's scale factor. This part of code reverts
-		// this multiplication.
-		//
-		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
-
-		if(sdl_get_version() >= version_info{2, 0, 12}) {
-			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
-			hdpi /= scale_factor;
-			vdpi /= scale_factor;
-		}
-#endif
-		return { hdpi, vdpi };
-	}
-	// SDL doesn't know the screen dpi, there's a configuration issue, or we
-	// don't have a window yet.
-	return { 0.0f, 0.0f };
-}
-
-std::pair<float, float> CVideo::get_dpi_scale_factor() const
-{
-	auto dpi = get_dpi();
-	if(dpi.first != 0.0f && dpi.second != 0.0f) {
-		// adjust for pixel scale
-		SDL_Point wsize = window_size();
-		dpi.first *= float(get_width()) / wsize.x;
-		dpi.second *= float(get_height()) / wsize.y;
-		return { dpi.first / MAGIC_DPI_SCALE_NUMBER, dpi.second / MAGIC_DPI_SCALE_NUMBER };
-	}
-	// Assume a scale factor of 1.0 if the screen dpi is currently unknown.
-	return { 1.0f, 1.0f };
-}
-
 std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 {
 	std::vector<point> result;
