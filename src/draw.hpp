@@ -322,7 +322,8 @@ public:
 	~render_target_setter();
 
 private:
-	SDL_Texture* t_;
+	SDL_Texture* target_;
+	SDL_Rect viewport_;
 };
 
 /**

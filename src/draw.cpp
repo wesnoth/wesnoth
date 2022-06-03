@@ -356,18 +356,22 @@ SDL_Rect draw::get_clip()
 
 
 draw::render_target_setter::render_target_setter(const texture& t)
-	: t_(nullptr)
+	: target_(nullptr)
+	, viewport_()
 {
 	// Validate we can render to this texture.
 	assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
 
-	t_ = CVideo::get_singleton().get_render_target();
+	target_ = CVideo::get_singleton().get_render_target();
+	SDL_RenderGetViewport(renderer(), &viewport_);
+
 	CVideo::get_singleton().force_render_target(t);
 }
 
 draw::render_target_setter::~render_target_setter()
 {
-	CVideo::get_singleton().force_render_target(t_);
+	CVideo::get_singleton().force_render_target(target_);
+	SDL_RenderSetViewport(renderer(), &viewport_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)
