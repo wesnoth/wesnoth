@@ -15,7 +15,11 @@ echo "LTO: $LTO"
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
-error() { printf '%s\n' "$*"; }
+red=$(tput setaf 1)
+reset=$(tput sgr0)
+# print given message in red
+error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
+# print given message and exit
 die() { error "$*"; exit 1; }
 
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
