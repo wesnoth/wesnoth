@@ -263,6 +263,15 @@ public:
 	 */
 	std::string get_user_email(const std::string& user);
 
+	/**
+	 * Increments the download count for this add-on for the specific version.
+	 *
+	 * @param instance_version The version of campaignd the add-on was uploaded to.
+	 * @param id The add-on's ID (aka directory name).
+	 * @param version The version of the add-on being downloaded. May not be the most recent version.
+	 */
+	void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;

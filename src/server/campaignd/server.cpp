@@ -1196,6 +1196,9 @@ void server::handle_request_campaign(const server::request& req)
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		addon["downloads"] = 1 + addon["downloads"].to_int();
 		mark_dirty(name);
+		if(user_handler_) {
+			user_handler_->db_update_addon_download_count(server_id_, name, to);
+		}
 	}
 }
 
