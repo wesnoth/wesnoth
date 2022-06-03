@@ -187,6 +187,10 @@ std::string fuh::get_user_email(const std::string& user) {
 	return conn_.get_user_string(db_users_table_, "user_email", user);
 }
 
+void fuh::db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version) {
+	return conn_.update_addon_download_count(instance_version, id, version);
+}
+
 std::time_t fuh::get_lastlogin(const std::string& user) {
 	return std::time_t(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
 }

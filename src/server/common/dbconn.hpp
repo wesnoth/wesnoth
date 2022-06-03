@@ -174,6 +174,11 @@ class dbconn
 		 */
 		void get_ips_for_user(const std::string& username, std::ostringstream* out);
 
+		/**
+		 * @see forum_user_handler::db_update_addon_download_count().
+		 */
+		void update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
+
 	private:
 		/**
 		 * The account used to connect to the database.

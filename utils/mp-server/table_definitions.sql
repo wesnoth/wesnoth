@@ -134,6 +134,7 @@ create table game_content_info
 -- FORUM_AUTH: whether forum authentication is to be used when uploading
 -- UPLOADED_ON: when the addon was uploaded
 -- FEEDBACK_TOPIC: the forum topic ID where feedback for the addon can be posted, 0 if not set
+-- DOWNLOAD_COUNT: the number of times the add-on has been downloaded by players (does not count downloads from https://addons.wesnoth.org)
 create table addon_info
 (
     INSTANCE_VERSION VARCHAR(255) NOT NULL,
@@ -144,6 +145,7 @@ create table addon_info
     FORUM_AUTH       BIT(1) NOT NULL,
     UPLOADED_ON      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
+    DOWNLOAD_COUNT   INT UNSIGNED NOT NULL DEFAULT 0,
     PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
