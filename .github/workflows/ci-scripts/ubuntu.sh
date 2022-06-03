@@ -36,7 +36,7 @@ else
 
 		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH" .
 
-		docker run --cap-add=ALL --privileged \
+		docker run --tty --cap-add=ALL --privileged \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
 				--env CXX_STD --env CFG --env LTO \
 				wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
