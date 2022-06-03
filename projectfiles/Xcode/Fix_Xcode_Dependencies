@@ -7,23 +7,15 @@
 
 ###Functions
 time_interval_to_string() {
-  local START=$1
-  local END=$2
+  local duration=$(($2 - $1)) days hours minutes seconds
 
-  declare -i timestamp
-  declare -i days
-  declare -i hours
-  declare -i minutes
-  declare -i seconds
-  timestamp=$END-$START
-
-  days=$timestamp/60/60/24
-  hours=$((($timestamp-($days*60*60*24))/60/60))
-  minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
-  seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
-  if [ $days -eq 0 ]; then
-    if [ $hours -eq 0 ]; then
-      if [ $minutes -eq 0 ]; then
+  days=$((duration/60/60/24))
+  hours=$((duration%(60*60*24)/60/60))
+  minutes=$((duration%(60*60)/60))
+  seconds=$((duration%60))
+  if ((days == 0)); then
+    if ((hours == 0)); then
+      if ((minutes == 0)); then
         echo "==> Operation took $seconds seconds ..."
       else
         echo "==> Operation took $minutes minutes and $seconds seconds ..."
