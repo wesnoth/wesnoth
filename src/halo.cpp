@@ -230,7 +230,7 @@ bool halo_impl::effect::render()
 		return false;
 	}
 
-	auto clipper = disp->video().set_clip(clip_rect);
+	auto clipper = draw::set_clip(clip_rect);
 
 	buffer_pos_ = rect_;
 	buffer_ = disp->video().read_texture(&buffer_pos_);
@@ -262,7 +262,7 @@ void halo_impl::effect::unrender()
 	}
 
 	SDL_Rect clip_rect = disp->map_outside_area();
-	auto clipper = disp->video().set_clip(clip_rect);
+	auto clipper = draw::set_clip(clip_rect);
 
 	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate

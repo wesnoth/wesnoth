@@ -303,6 +303,8 @@ public:
 	 */
 	texture read_texture(SDL_Rect* r = nullptr);
 
+	/***** ***** ***** ***** State management ***** ***** ****** *****/
+
 	/**
 	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
 	 * be hidden from the user's view.
@@ -317,113 +319,12 @@ public:
 
 	void lock_flips(bool);
 
-	/***** ***** ***** ***** State management ***** ***** ****** *****/
-
-	/** A class to manage automatic restoration of the clipping region.
-	 *
-	 * While this can be constructed on its own, it is usually easier to
-	 * use the CVideo::set_clip() member function.
-	 */
-	class clip_setter
-	{
-	public:
-		clip_setter(CVideo& video, const SDL_Rect& clip)
-			: video_(video), old_clip_()
-		{
-			old_clip_ = video_.get_clip();
-			video_.force_clip(clip);
-		}
-
-		~clip_setter()
-		{
-			video_.force_clip(old_clip_);
-		}
-	private:
-		CVideo& video_;
-		SDL_Rect old_clip_;
-	};
-
-	/**
-	 * Set the clipping area. All draw calls will be clipped to this region.
-	 *
-	 * The clipping area is specified in draw-space coordinates.
-	 *
-	 * The returned object will reset the clipping area when it is destroyed,
-	 * so it should be kept in scope until drawing is complete.
-	 *
-	 * @param clip          The clipping region in draw-space coordinates.
-	 * @returns             A clip_setter object. When this object is destroyed
-	 *                      the clipping region will be restored to whatever
-	 *                      it was before this call.
-	 */
-	clip_setter set_clip(const SDL_Rect& clip);
-
-	/**
-	 * Set the clipping area to the intersection of the current clipping
-	 * area and the given rectangle.
-	 *
-	 * Otherwise acts as set_clip().
-	 */
-	clip_setter reduce_clip(const SDL_Rect& clip);
-
-	/**
-	 * Set the clipping area, without any provided way of setting it back.
-	 *
-	 * @param clip          The clipping area, in draw-space coordinates.
-	 */
-	void force_clip(const SDL_Rect& clip);
-
-	/** Get the current clipping area, in draw coordinates. */
-	SDL_Rect get_clip() const;
-
-	/** A class to manage automatic restoration of the render target.
-	 *
-	 * While this can be constructed on its own, it is usually easier to
-	 * use the CVideo::set_render_target() member function.
-	 */
-	class render_target_setter
-	{
-	public:
-		explicit render_target_setter(CVideo& video, const texture& t)
-			: video_(video), last_target_(nullptr)
-		{
-			// Validate we can render to this texture.
-			assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
-
-			last_target_ = video_.get_render_target();
-			video_.force_render_target(t);
-		}
-
-		~render_target_setter()
-		{
-			video_.force_render_target(last_target_);
-		}
-
-	private:
-		CVideo& video_;
-		SDL_Texture* last_target_;
-	};
-
-	/**
-	 * Set the given texture as the active render target.
-	 *
-	 * All draw calls will draw to this texture until the returned object
-	 * goes out of scope. Do not retain the render_target_setter longer
-	 * than necessary.
-	 *
-	 * The provided texture must have been created with the
-	 * SDL_TEXTUREACCESS_TARGET access mode.
-	 *
-	 * @param t     The new render target. This must be a texture created
-	 *              with SDL_TEXTUREACCESS_TARGET.
-	 * @returns     A render_target_setter object. When this object is
-	 *              destroyed the render target will be restored to
-	 *              whatever it was before this call.
-	 */
-	render_target_setter set_render_target(const texture& t);
-
 	/**
 	 * Set the render target, without any provided way of setting it back.
+	 *
+	 * End-users should not use this function directly. In stead use
+	 * draw::set_render_target(), which returns a setter object which
+	 * will automatically restore the render target upon leaving scope.
 	 *
 	 * @param t     The new render target. This must be a texture created
 	 *              with SDL_TEXTUREACCESS_TARGET, or NULL to indicate

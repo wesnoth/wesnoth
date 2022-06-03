@@ -15,6 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp" // for set_clip
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"
@@ -240,7 +241,7 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	auto clipper = video().set_clip(clip_ ? clip_rect_ : video().draw_area());
+	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	if (needs_restore_) {
 		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
@@ -252,7 +253,7 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& rect) const
 {
-	auto clipper = video().set_clip(clip_ ? clip_rect_ : video().draw_area());
+	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
@@ -274,7 +275,7 @@ void widget::draw()
 	bg_restore();
 
 	if (clip_) {
-		auto clipper = video().set_clip(clip_rect_);
+		auto clipper = draw::set_clip(clip_rect_);
 		draw_contents();
 	} else {
 		draw_contents();

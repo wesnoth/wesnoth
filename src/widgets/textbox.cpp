@@ -218,7 +218,7 @@ void textbox::draw_contents()
 						, line_height_);
 
 				// TODO: highdpi - this seems excessive
-				auto clipper = video().set_clip(loc);
+				auto clipper = draw::set_clip(loc);
 
 				draw::fill(rect, 0, 0, 160, 140);
 

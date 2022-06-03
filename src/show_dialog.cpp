@@ -331,7 +331,7 @@ void dialog_frame::draw_background()
 		return;
 	}
 
-	auto clipper = video_.set_clip(dim_.interior);
+	auto clipper = draw::set_clip(dim_.interior);
 	for(int i = 0; i < dim_.interior.w; i += bg_.w()) {
 		for(int j = 0; j < dim_.interior.h; j += bg_.h()) {
 			SDL_Rect src {0,0,0,0};

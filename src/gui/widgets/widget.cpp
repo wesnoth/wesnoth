@@ -376,7 +376,7 @@ void widget::draw_background(int x_offset, int y_offset)
 	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
-		auto clipper = CVideo::get_singleton().set_clip(clipping_rectangle);
+		auto clipper = draw::set_clip(clipping_rectangle);
 		draw_debug_border(x_offset, y_offset);
 		impl_draw_background(x_offset, y_offset);
 	} else {
@@ -392,7 +392,7 @@ void widget::draw_children(int x_offset, int y_offset)
 	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
-		auto clipper = CVideo::get_singleton().set_clip(clipping_rectangle);
+		auto clipper = draw::set_clip(clipping_rectangle);
 		impl_draw_children(x_offset, y_offset);
 	} else {
 		impl_draw_children(x_offset, y_offset);
@@ -406,7 +406,7 @@ void widget::draw_foreground(int x_offset, int y_offset)
 	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
-		auto clipper = CVideo::get_singleton().set_clip(clipping_rectangle);
+		auto clipper = draw::set_clip(clipping_rectangle);
 		impl_draw_foreground(x_offset, y_offset);
 	} else {
 		impl_draw_foreground(x_offset, y_offset);

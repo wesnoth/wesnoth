@@ -192,12 +192,12 @@ void floating_label::draw(int time)
 	SDL_Rect draw_rect = {pos.x, pos.y, draw_size_.x, draw_size_.y};
 	buf_pos_ = draw_rect;
 
-	CVideo& video = CVideo::get_singleton();
-	auto clipper = video.set_clip(clip_rect_);
+	auto clipper = draw::set_clip(clip_rect_);
 
 	// Read buf_ back from the screen.
 	// buf_pos_ will be intersected with the drawing area,
 	// so might not match draw_rect after this.
+	CVideo& video = CVideo::get_singleton();
 	buf_ = video.read_texture(&buf_pos_);
 
 	// Fade the label out according to the time.
@@ -247,8 +247,7 @@ void floating_label::undraw()
 		return;
 	}
 
-	CVideo& video = CVideo::get_singleton();
-	auto clipper = video.set_clip(clip_rect_);
+	auto clipper = draw::set_clip(clip_rect_);
 	draw::blit(buf_, buf_pos_);
 }
 

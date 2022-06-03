@@ -24,8 +24,8 @@
 #include <cassert>
 #include <functional>
 
-// The render_target_setter class has been moved to CVideo.
-// To obtain one, use CVideo::set_render_target().
+// The render_target_setter class has been moved to draw.hpp.
+// To obtain one, use draw::set_render_target().
 //class render_target_setter
 
 using sdl_rect_getter = void (*)(SDL_Renderer*, SDL_Rect*);

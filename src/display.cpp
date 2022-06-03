@@ -804,8 +804,8 @@ surface display::screenshot(bool map_screenshot)
 	LOG_DP << "creating " << area.w << " by " << area.h
 	       << " texture for map screenshot" << std::endl;
 	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
-	auto target_setter = video().set_render_target(output_texture);
-	auto clipper = video().set_clip(area);
+	auto target_setter = draw::set_render_target(output_texture);
+	auto clipper = draw::set_clip(area);
 
 	map_screenshot_ = true;
 	dirty_ = true;
@@ -1274,7 +1274,7 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
-	auto clipper = screen_.set_clip(map_area());
+	auto clipper = draw::set_clip(map_area());
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -1754,7 +1754,7 @@ void display::draw_minimap()
 	}
 
 	// TODO: highdpi - does this really need to set a clipping area?
-	auto clipper = screen_.set_clip(area);
+	auto clipper = draw::set_clip(area);
 
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
@@ -2479,7 +2479,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	auto clipper = screen_.set_clip(clip_rect);
+	auto clipper = draw::set_clip(clip_rect);
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);

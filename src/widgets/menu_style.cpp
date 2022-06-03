@@ -155,7 +155,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 			texture image;
 			SDL_Rect area;
 			// TODO: highdpi - move clip API to draw.cpp, this is the last usage of video here
-			auto clipper = menu_ref.video().set_clip(rect);
+			auto clipper = draw::set_clip(rect);
 			area.x = rect.x;
 			area.y = rect.y;
 

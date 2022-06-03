@@ -684,7 +684,7 @@ void window::draw()
 		dirty_list_.clear();
 		dirty_list_.emplace_back(1, this);
 #else
-		auto clipper = video_.set_clip(dirty_rect);
+		auto clipper = draw::set_clip(dirty_rect);
 #endif
 
 		/*

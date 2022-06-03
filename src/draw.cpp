@@ -15,6 +15,7 @@
 #include "draw.hpp"
 
 #include "color.hpp"
+#include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "video.hpp"
@@ -276,7 +277,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res. To draw in higher res, width and height would have to be specified.
 
 	// Reduce clip to dst.
-	auto clipper = CVideo::get_singleton().reduce_clip(dst);
+	auto clipper = draw::reduce_clip(dst);
 
 	const int xoff = centered ? (dst.w - tex.w()) / 2 : 0;
 	const int yoff = centered ? (dst.h - tex.h()) / 2 : 0;
@@ -294,4 +295,81 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 			}
 		}
 	}
+}
+
+
+/***************************/
+/* RAII state manipulation */
+/***************************/
+
+draw::clip_setter::clip_setter(const SDL_Rect& clip)
+	: c_()
+{
+	c_ = draw::get_clip();
+	draw::force_clip(clip);
+}
+
+draw::clip_setter::~clip_setter()
+{
+	draw::force_clip(c_);
+}
+
+draw::clip_setter draw::set_clip(const SDL_Rect& clip)
+{
+	return draw::clip_setter(clip);
+}
+
+draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
+{
+	SDL_Rect c = draw::get_clip();
+	if (c == sdl::empty_rect) {
+		return draw::clip_setter(clip);
+	} else {
+		return draw::clip_setter(sdl::intersect_rects(clip, c));
+	}
+}
+
+void draw::force_clip(const SDL_Rect& clip)
+{
+	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
+	if (!renderer()) { return; }
+	SDL_RenderSetClipRect(renderer(), &clip);
+}
+
+SDL_Rect draw::get_clip()
+{
+	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
+	if (!renderer()) {
+		return sdl::empty_rect;
+	}
+
+	SDL_Rect clip;
+	SDL_RenderGetClipRect(renderer(), &clip);
+
+	if (clip == sdl::empty_rect) {
+		// TODO: highdpi - fix this in the case of render to texture
+		return CVideo::get_singleton().draw_area();
+	}
+	return clip;
+}
+
+
+draw::render_target_setter::render_target_setter(const texture& t)
+	: t_(nullptr)
+{
+	// Validate we can render to this texture.
+	assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
+
+	t_ = CVideo::get_singleton().get_render_target();
+	CVideo::get_singleton().force_render_target(t);
+}
+
+draw::render_target_setter::~render_target_setter()
+{
+	CVideo::get_singleton().force_render_target(t_);
+}
+
+draw::render_target_setter draw::set_render_target(const texture& t)
+{
+	return draw::render_target_setter(t);
 }

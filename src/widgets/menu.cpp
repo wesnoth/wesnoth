@@ -1003,7 +1003,7 @@ void menu::draw()
 
 	const SDL_Rect* clip = clip_rect();
 	if (clip) {
-		auto clipper = video().set_clip(*clip);
+		auto clipper = draw::set_clip(*clip);
 		draw_contents();
 	} else {
 		draw_contents();

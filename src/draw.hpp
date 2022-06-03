@@ -35,6 +35,7 @@
 struct color_t;
 class surface;
 class texture;
+struct SDL_Texture;
 
 namespace draw
 {
@@ -254,6 +255,93 @@ void tiled(const texture& tex,
 	bool centered = false,
 	bool mirrored = false
 );
+
+
+/***************************/
+/* RAII state manipulation */
+/***************************/
+
+
+/** A class to manage automatic restoration of the clipping region.
+ *
+ * While this can be constructed on its own, it is usually easier to
+ * use the draw::set_clip() utility function.
+ */
+class clip_setter
+{
+public:
+	explicit clip_setter(const SDL_Rect& clip);
+	~clip_setter();
+private:
+	SDL_Rect c_;
+};
+
+/**
+ * Set the clipping area. All draw calls will be clipped to this region.
+ *
+ * The clipping area is specified in draw-space coordinates.
+ *
+ * The returned object will reset the clipping area when it is destroyed,
+ * so it should be kept in scope until drawing is complete.
+ *
+ * @param clip          The clipping region in draw-space coordinates.
+ * @returns             A clip_setter object. When this object is destroyed
+ *                      the clipping region will be restored to whatever
+ *                      it was before this call.
+ */
+clip_setter set_clip(const SDL_Rect& clip);
+
+/**
+ * Set the clipping area to the intersection of the current clipping
+ * area and the given rectangle.
+ *
+ * Otherwise acts as set_clip().
+ */
+clip_setter reduce_clip(const SDL_Rect& clip);
+
+/**
+ * Set the clipping area, without any provided way of setting it back.
+ *
+ * @param clip          The clipping area, in draw-space coordinates.
+ */
+void force_clip(const SDL_Rect& clip);
+
+/** Get the current clipping area, in draw coordinates. */
+SDL_Rect get_clip();
+
+
+/** A class to manage automatic restoration of the render target.
+ *
+ * While this can be constructed on its own, it is usually easier to
+ * use the draw::set_render_target() utility function.
+ */
+class render_target_setter
+{
+public:
+	explicit render_target_setter(const texture& t);
+	~render_target_setter();
+
+private:
+	SDL_Texture* t_;
+};
+
+/**
+ * Set the given texture as the active render target.
+ *
+ * All draw calls will draw to this texture until the returned object
+ * goes out of scope. Do not retain the render_target_setter longer
+ * than necessary.
+ *
+ * The provided texture must have been created with the
+ * SDL_TEXTUREACCESS_TARGET access mode.
+ *
+ * @param t     The new render target. This must be a texture created
+ *              with SDL_TEXTUREACCESS_TARGET.
+ * @returns     A render_target_setter object. When this object is
+ *              destroyed the render target will be restored to
+ *              whatever it was before this call.
+ */
+render_target_setter set_render_target(const texture& t);
 
 
 } // namespace draw
