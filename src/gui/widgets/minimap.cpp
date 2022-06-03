@@ -69,158 +69,31 @@ unsigned minimap::get_state() const
 	return 0;
 }
 
-/** Key type for the cache. */
-struct key_type
-{
-	key_type(const int w, const int h, const std::string& map_data)
-		: w(w), h(h), map_data(map_data)
-	{
-	}
-
-	/** Width of the image. */
-	const int w;
-
-	/** Height of the image. */
-	const int h;
-
-	/** The data used to generate the image. */
-	const std::string map_data;
-};
-
-static bool operator<(const key_type& lhs, const key_type& rhs)
-{
-	return std::tie(lhs.w, lhs.h, lhs.map_data) < std::tie(rhs.w, rhs.h, rhs.map_data);
-}
-
-/** Value type for the cache. */
-struct value_type
-{
-	value_type(const texture& tex) : tex(tex), age(1)
-	{
-	}
-
-	/** The cached image. */
-	const texture tex;
-
-	/**
-	 * The age of the image.
-	 *
-	 * Every time an image is used its age is increased by one. Once the cache
-	 * is full 25% of the cache is emptied. This is done by halving the age of
-	 * the items in the cache and then erase the 25% with the lowest age. If
-	 * items have the same age their order is unspecified.
-	 */
-	unsigned age;
-};
-
-/**
- * Maximum number of items in the cache (multiple of 4).
- *
- * No testing on the optimal number is done, just seems a nice number.
- */
-static const size_t cache_max_size = 100;
-
-/** The cache. */
-typedef std::map<key_type, value_type> tcache;
-static tcache cache;
-
-static bool compare(const std::pair<unsigned, tcache::iterator>& lhs,
-					const std::pair<unsigned, tcache::iterator>& rhs)
-{
-	return lhs.first < rhs.first;
-}
-
-static void shrink_cache()
-{
-#ifdef DEBUG_MINIMAP_CACHE
-	std::cerr << "\nShrink cache from " << cache.size();
-#else
-	DBG_GUI_D << "Shrinking the minimap cache.\n";
-#endif
-
-	std::vector<std::pair<unsigned, tcache::iterator>> items;
-	for(tcache::iterator itor = cache.begin(); itor != cache.end(); ++itor) {
-
-		itor->second.age /= 2;
-		items.emplace_back(itor->second.age, itor);
-	}
-
-	std::partial_sort(items.begin(),
-					  items.begin() + cache_max_size / 4,
-					  items.end(),
-					  compare);
-
-	for(std::vector<std::pair<unsigned, tcache::iterator>>::iterator vitor
-		= items.begin();
-		vitor < items.begin() + cache_max_size / 4;
-		++vitor) {
-
-		cache.erase(vitor->second);
-	}
-
-#ifdef DEBUG_MINIMAP_CACHE
-	std::cerr << " to " << cache.size() << ".\n";
-#endif
-}
-
 bool minimap::disable_click_dismiss() const
 {
 	return false;
 }
 
-const texture minimap::get_image(const int w, const int h) const
+void minimap::set_map_data(const std::string& map_data)
 {
-	const key_type key(w, h, map_data_);
-	tcache::iterator itor = cache.find(key);
-
-	if(itor != cache.end()) {
-#ifdef DEBUG_MINIMAP_CACHE
-		std::cerr << '+';
-#endif
-		itor->second.age++;
-		return itor->second.tex;
-	}
-
-	if(cache.size() >= cache_max_size) {
-		shrink_cache();
-	}
-
-	try
-	{
-		const gamemap map(map_data_);
-		const texture tex = texture(image::getMinimap(w, h, map, nullptr, nullptr, true));
-		cache.emplace(key, value_type(tex));
-#ifdef DEBUG_MINIMAP_CACHE
-		std::cerr << '-';
-#endif
-		return tex;
-	}
-	catch(const incorrect_map_format_error& e)
-	{
-		ERR_CF << "Error while loading the map: " << e.message << '\n';
-#ifdef DEBUG_MINIMAP_CACHE
-		std::cerr << 'X';
-#endif
-	}
-	return texture();
-}
-
-void minimap::impl_draw_background(int x_offset, int y_offset)
-{
-	DBG_GUI_D << LOG_HEADER << " size "
-			  << calculate_blitting_rectangle(x_offset, y_offset) << ".\n";
-
-	if(map_data_.empty()) {
+	if(map_data == map_data_) {
 		return;
 	}
 
-	SDL_Rect rect = calculate_blitting_rectangle(x_offset, y_offset);
-	assert(rect.w > 0 && rect.h > 0);
+	map_data_ = map_data;
 
-	const texture tex = get_image(rect.w, rect.h);
-	if(tex) {
-		// get_image returns a pre-sized texture maintaining aspect ratio.
-		draw::blit(tex, {rect.x, rect.y, tex.w(), tex.h()});
+	try {
+		map_ = std::make_unique<gamemap>(map_data_);
+	} catch(const incorrect_map_format_error& e) {
+		map_.reset(nullptr);
+		ERR_CF << "Error while loading the map: " << e.message << '\n';
+	}
+}
+
+void minimap::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
+{
+	if(map_) {
+		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
 	}
 }
 
