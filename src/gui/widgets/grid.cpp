@@ -995,7 +995,7 @@ void grid::layout(const point& origin)
 	}
 }
 
-void grid::impl_draw_children(int x_offset, int y_offset)
+void grid::impl_draw_children()
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
@@ -1024,9 +1024,9 @@ void grid::impl_draw_children(int x_offset, int y_offset)
 			continue;
 		}
 
-		widget->draw_background(x_offset, y_offset);
-		widget->draw_children(x_offset, y_offset);
-		widget->draw_foreground(x_offset, y_offset);
+		widget->draw_background();
+		widget->draw_children();
+		widget->draw_foreground();
 		widget->set_is_dirty(false);
 	}
 }

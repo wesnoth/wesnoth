@@ -523,42 +523,29 @@ public:
 	/**
 	 * Calculates the blitting rectangle of the widget.
 	 *
-	 * The blitting rectangle is the entire widget rectangle, but offsetted for
-	 * drawing position.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * The blitting rectangle is the entire widget rectangle.
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset, const int y_offset) const;
+	SDL_Rect calculate_blitting_rectangle() const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
-	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
-	 * needs offset parameters.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * @ref redraw_action::partly.
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset, const int y_offset) const;
+	SDL_Rect calculate_clipping_rectangle() const;
 
 	/**
 	 * Draws the background of a widget.
 	 *
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(int x_offset, int y_offset);
+	void draw_background();
 
 	/**
 	 * Draws the children of a widget.
@@ -567,13 +554,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(int x_offset, int y_offset);
+	void draw_children();
 
 	/**
 	 * Draws the foreground of the widget.
@@ -583,13 +565,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
-	 *
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(int x_offset, int y_offset);
+	void draw_foreground();
 
 private:
 	/** See @ref draw_background. */
@@ -597,17 +574,13 @@ private:
 	{
 	}
 
-	virtual void impl_draw_background(int /*x_offset*/, int /*y_offset*/)
-	{
-	}
-
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(int /*x_offset*/, int /*y_offset*/)
+	virtual void impl_draw_children()
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
+	virtual void impl_draw_foreground()
 	{
 	}
 
@@ -715,7 +688,6 @@ private:
 	color_t debug_border_color_;
 
 	void draw_debug_border();
-	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 

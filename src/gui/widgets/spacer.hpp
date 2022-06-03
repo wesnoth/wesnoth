@@ -87,7 +87,7 @@ private:
 	bool fills_available_space();
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(int x_offset, int y_offset) override;
+	virtual void impl_draw_background() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
