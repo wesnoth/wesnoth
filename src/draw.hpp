@@ -184,56 +184,6 @@ void disc(int x, int y, int r, uint8_t octants = 0xff);
 /*******************/
 
 
-/*
- * Draws an SDL surface at the given location.
- *
- * The w and h members of dst are ignored, but will be updated
- * to reflect the final draw extents including clipping.
- *
- * The surface will be rendered in game-native resolution,
- * and all coordinates are given in this context.
- *
- * WARNING: This function will likely be deprecated in the future.
- * variants using textures should be preferred in all cases.
- *
- * @param surf                The surface to draw.
- * @param dst                 Where to draw the surface. w and h are ignored, but will be updated to reflect the final draw extents including clipping.
- */
-//void blit(const surface& surf, SDL_Rect* dst);
-
-/*
- * Draws a surface at the given coordinates.
- *
- * The surface will be rendered in game-native resolution, a.k.a.
- * draw space, and all coordinates are given in this context.
- *
- * WARNING: This function will likely be deprecated in the future.
- * variants using textures should be preferred in all cases.
- *
- * @param surf                The surface to draw.
- * @param x                   The x coordinate of the top-left corner.
- * @param y                   The y coordinate of the top-left corner.
- */
-//void blit(const surface& surf, int x, int y);
-
-/*
- * Draws an area of a surface at the given location.
- *
- * The surface will be rendered in game-native resolution,
- * and all coordinates are given in this context.
- *
- * WARNING: This function will likely be deprecated in the future.
- * variants using textures should be preferred in all cases.
- *
- * @param surf                The surface to draw.
- * @param x                   The x coordinate at which to draw.
- * @param y                   The y coordinate at which to draw.
- * @param srcrect             The area of the surface to draw. If null, the entire surface is drawn.
- * @param clip_rect           The clipping area. If not null, the surface will only be drawn
- *                            within the bounds of the given rectangle.
- */
-//void blit(const surface& surf, int x, int y, const SDL_Rect* src, const SDL_Rect* clip);
-
 /**
  * Draws a texture, or part of a texture, at the given location.
  *

@@ -93,21 +93,6 @@ void draw::rect(const SDL_Rect& rect, const color_t& c)
 	draw::rect(rect, c.r, c.g, c.b, c.a);
 }
 
-// TODO: highdpi - canvas previously had code which special cased single-point lines. Is this necessary?
-/* this was the code of draw_line() in canvas.cpp:
-	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1
-	          << " to " << x2 << ',' << y2 << ".\n";
-
-	draw::set_color(color);
-
-	if(x1 == x2 && y1 == y2) {
-		// Handle single-pixel lines properly
-		draw::point(x1, y1);
-	} else {
-		draw::line(x1, y1, x2, y2);
-	}
-*/
-
 void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
