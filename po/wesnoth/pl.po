@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-29 13:14+0300\n"
-"PO-Revision-Date: 2021-07-11 17:02+0200\n"
-"Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
+"PO-Revision-Date: 2022-06-03 18:16+0200\n"
+"Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [multiplayer_side]: id=Custom
@@ -5588,13 +5588,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Wystąpił błąd komunikacji z serwerem podczas ładowania listy dodatków"
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
 "Na tym serwerze nie znaleziono dodatku o identyfikatorze pasującym do "
-"$addon_id."
+"$addon_ids."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -6092,6 +6090,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Błąd: tag [advancefrom] już nie jest obsługiwany. Jednostki typu "
+"'$lower_level' nie będą mogły awansować do typu ‘$higher_level’. Poproś "
+"autora dodatku, żeby zamiast tego zastosował tag [modify_unit_type]."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6295,16 +6296,16 @@ msgstr "limit czasu"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Gospodarz ma dodatek w niewłaściwej wersji <i>$addon</i>. Ich wersja to <b>"
-"$host_ver</b>, a twoja to <b>$local_ver</b>."
+"Gospodarz ma dodatek w niewłaściwej wersji <i>$addon</i>. Ich wersja to "
+"<b>$host_ver</b>, a twoja to <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Twoja wersja dodatku <i>$addon</i> nie pasuje. Masz wersję <b>$local_ver</"
 "b>, a gospodarz gry ma wersję <b>$host_ver</b>."
@@ -6314,10 +6315,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Pokonaj przywódców wroga"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Era $era nieznaleziona"
+msgstr "Era '$era' nie została znaleziona"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -7201,6 +7200,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Podobne do polecenia \"fps\", ale wymusza ponowne narysowanie ekranu, a nie "
+"tylko tego, co się zmieniło"
 
 #: src/menu_events.cpp:1250
 msgid "Save game."
@@ -8124,17 +8125,13 @@ msgstr "Odliczanie czasu tury"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:280
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %d %b %Y %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %Y %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:302 src/savegame.cpp:588
@@ -8677,8 +8674,50 @@ msgstr "Ukryj plany gracza $player"
 msgid "Whiteboard Options"
 msgstr "Opcje planowania"
 
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Użyj [modify_unit_type]\n"
+#~ msgid ""
+#~ "The cleansing waters of an oasis will heal the injured. The fiery ichor "
+#~ "of the underworld hinders the flightless, while offering illumination in "
+#~ "darkness to those that may fly above it."
+#~ msgstr ""
+#~ "Oczyszczające wody oazy leczą rannych. Ognisty ichor podziemi blokuje "
+#~ "tych, którzy nie potrafią latać, lecz oświetla ciemności tym, którzy "
+#~ "potrafią."
+
+#, fuzzy
+#~ msgid "<i>― Dominant Gorlack, 3YW</i>"
+#~ msgstr "<i>― Dominujący Gorlack, 3 r. e.W.</i>"
+
+#~ msgid ""
+#~ "The connection to the remote server is not secure. The add-on "
+#~ "<i>$addon_title</i> cannot be uploaded."
+#~ msgstr ""
+#~ "Połączenie do serwera zdalnego nie jest bezpieczne. Dodatek "
+#~ "<i>$addon_title</i> nie może zostać przesłany na serwer."
+
+#~ msgid ""
+#~ "Forum authentication was requested for a user that is not registered on "
+#~ "the forums."
+#~ msgstr ""
+#~ "Zażądano logowania przez forum dla użytkownika, który nie jest "
+#~ "zarejestrowany na forum."
+
+#~ msgid ""
+#~ "The add-on's forum_auth attribute does not match what was previously "
+#~ "uploaded."
+#~ msgstr "Atrybut forum_auth tego dodatku nie zgadza się z poprzednią wersją."
+
+#~ msgid ""
+#~ "This server does not support using the forum_auth attribute in your pbl."
+#~ msgstr "Ten serwer nie wspiera atrybutu forum_auth w pliku pbl."
+
+#~ msgid "Selected Game"
+#~ msgstr "Wybrana gra:"
+
+#~ msgid "Lobby"
+#~ msgstr "Poczekalnia"
+
+#~ msgid "Other Games"
+#~ msgstr "Inne gry"
 
 #~ msgid "<room>"
 #~ msgstr "<pokój>"
@@ -8706,6 +8745,9 @@ msgstr "Opcje planowania"
 
 #~ msgid "Room query."
 #~ msgstr "Zapytanie w pokoju."
+
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Użyj [modify_unit_type]\n"
 
 #, fuzzy
 #~| msgid "drains"
@@ -10155,12 +10197,6 @@ msgstr "Opcje planowania"
 #~ msgid "Password Required"
 #~ msgstr "Wymagane hasło"
 
-#~ msgid "Game Lobby"
-#~ msgstr "Poczekalnia"
-
-#~ msgid "Observe Game"
-#~ msgstr "Obserwuj grę"
-
 #~ msgid "Join Game"
 #~ msgstr "Dołącz do gry"
 
@@ -10225,9 +10261,6 @@ msgstr "Opcje planowania"
 #~| msgid "No compatible eras found."
 #~ msgid "Incompatible user-made content."
 #~ msgstr "Nie znaleziono żadnych kompatybilnych er."
-
-#~ msgid "Selected user: "
-#~ msgstr "Wybrany użytkownik:"
 
 #~ msgid "$sender is messaging you, and you accept whispers from friends only."
 #~ msgstr ""
@@ -14399,8 +14432,8 @@ msgstr "Opcje planowania"
 #~ "\n"
 #~ "Ustawienie lub przełączenie gracza kontrolującego daną stronę (człowiek/"
 #~ "komputer). Polecenie musi wydać gracz/klient kontrolujący daną stronę. "
-#~ "Drugi parametr może mieć wartość \"on\" (komputer) lub \"off"
-#~ "\" (człowiek). Jeśli drugi parametr nie zostanie podany, polecenie "
+#~ "Drugi parametr może mieć wartość \"on\" (komputer) lub "
+#~ "\"off\" (człowiek). Jeśli drugi parametr nie zostanie podany, polecenie "
 #~ "przełącza między komputerem a człowiekiem. Jeśli wartość parametru nie "
 #~ "zostanie podana, domyślną przyjmowana jest strona aktualnie aktywna.\n"
 #~ "\n"
