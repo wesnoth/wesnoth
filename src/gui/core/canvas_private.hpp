@@ -332,14 +332,6 @@ private:
 	typed_formula<unsigned> w_; /**< The width of the image. */
 	typed_formula<unsigned> h_; /**< The height of the image. */
 
-	// TODO: highdpi - none of these cached items are ever used. Why is this here?
-
-	/** Contains the size of the image. */
-	SDL_Rect src_clip_;
-
-	/** The image is cached in this surface. */
-	texture image_;
-
 	/**
 	 * Name of the image.
 	 *
