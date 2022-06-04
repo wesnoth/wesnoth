@@ -267,6 +267,13 @@ public:
 		return static_cast<double>(zoom_) / static_cast<double>(game_config::tile_size);
 	}
 
+	/** Scale the width and height of a rect by the current zoom factor */
+	static SDL_Rect scaled_to_zoom(const SDL_Rect& r)
+	{
+		const double zf = get_zoom_factor();
+		return {r.x, r.y, int(r.w*zf), int(r.h*zf)};
+	}
+
 	/**
 	 * given x,y co-ordinates of an onscreen pixel, will return the
 	 * location of the hex that this pixel corresponds to.
@@ -846,7 +853,7 @@ public:
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
 	void render_image(int x, int y, const display::drawing_layer drawing_layer,
-			const map_location& loc, surface image,
+			const map_location& loc, const image::locator& i_locator,
 			bool hreverse=false, bool greyscale=false,
 			int32_t alpha=floating_to_fixed_point(1.0), color_t blendto = {0,0,0},
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);

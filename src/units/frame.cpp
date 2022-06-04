@@ -514,9 +514,10 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		image_loc = image::locator(current_data.image, current_data.image_mod);
 	}
 
+	// TODO: highdpi - now only used for w/h. are these even necessary? If so add accessor to image:: to get only these without returning the whole surface.
 	surface image;
 	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image=image::get_image(image_loc, image::SCALED_TO_ZOOM);
+		image = image::get_image(image_loc, image::SCALED_TO_ZOOM);
 	}
 
 	const int d2 = display::get_singleton()->hex_size() / 2;
@@ -555,7 +556,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 		display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
-			src, image, facing_west, false,
+			src, image_loc, facing_west, false,
 			floating_to_fixed_point(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}

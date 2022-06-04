@@ -142,7 +142,7 @@ void arrow::draw_hex(const map_location& hex)
 	{
 		display* disp = display::get_singleton();
 		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
-					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
+					hex, symbols_map_[hex]);
 	}
 }
 

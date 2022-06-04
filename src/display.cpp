@@ -1501,80 +1501,102 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, {x, y, w, h}, text_surf);
 }
 
-//TODO: highdpi - convert this to use sdl::texture
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
-		const map_location& loc, surface image,
+		const map_location& loc, const image::locator& i_locator,
 		bool hreverse, bool greyscale, int32_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	if (image==nullptr)
+	// TODO: highdpi - w/h accessors
+	surface base_image_surface(image::get_surface(i_locator));
+	if (base_image_surface == nullptr) {
 		return;
-
-	SDL_Rect image_rect {x, y, image->w, image->h};
-	SDL_Rect clip_rect = map_area();
-	if (!sdl::rects_overlap(image_rect, clip_rect))
-		return;
-
-	surface surf(image);
-
-	if(hreverse) {
-		// TODO: highdpi - well this will get removed in due process anyway
-		surf = flip_surface(surf);
 	}
-	if(vreverse) {
-		surf = flop_surface(surf);
-	}
+	const int image_height = base_image_surface->h;
+	const int image_width = base_image_surface->w;
 
-	if(greyscale) {
-		surf = greyscale_image(surf);
-	}
-
-	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto);
-	}
-	if(alpha > floating_to_fixed_point(1.0)) {
-		surf = brighten_image(surf, alpha);
-	} else if(alpha != floating_to_fixed_point(1.0)) {
-		surf = surf.clone();
-		adjust_surface_alpha(surf, alpha);
-	}
-
-	if(surf == nullptr) {
-		ERR_DP << "surface lost..." << std::endl;
+	// TODO: highdpi - are x,y correct here?
+	SDL_Rect dest = scaled_to_zoom({x, y, image_width, image_height});
+	if (!sdl::rects_overlap(dest, map_area())) {
 		return;
 	}
 
-	// TODO: highdpi - fix. Probably move all this alpha stuff to image::, so it doesn't have to be recalculated.
-	texture tex(surf);
+	// For now, we add to the existing IPF modifications for the image.
+	std::string new_modifications;
 
-	if(submerged > 0.0) {
-		// divide the surface into 2 parts
-		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
-		const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect {0, 0, surf->w, submerge_height};
-		SDL_Rect dest = {x, y, surf->w, submerge_height};
-		drawing_buffer_add(drawing_layer, loc, dest, tex, srcrect);
+	if (greyscale) {
+		new_modifications += "~GS()";
+	}
 
-		if(submerge_height != surf->h) {
-			//the lower part will be transparent
-			float alpha_base = 0.3f; // 30% alpha at surface of water
-			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
-			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
-
-			srcrect.y = submerge_height;
-			srcrect.h = surf->h-submerge_height;
-			dest.y += submerge_height;
-			dest.h = srcrect.h;
-
-			drawing_buffer_add(drawing_layer, loc, dest, tex, srcrect);
+	if (blend_ratio > 0.0) {
+		new_modifications += "~BLEND(";
+		new_modifications += std::to_string(blendto.r);
+		new_modifications += ",";
+		new_modifications += std::to_string(blendto.g);
+		new_modifications += ",";
+		new_modifications += std::to_string(blendto.b);
+		new_modifications += ",";
+		// reduce blend_ratio precision to avoid caching too many options.
+		if (blend_ratio >= 1.0) {
+			new_modifications += "1.0";
+		} else {
+			new_modifications += "0.";
+			new_modifications += std::to_string(int(100*blend_ratio));
 		}
-	} else {
-		// simple blit
-		SDL_Rect dest = {x, y, surf->w, surf->h};
-		drawing_buffer_add(drawing_layer, loc, dest, tex);
+		new_modifications += ")";
 	}
+
+	// TODO: This is not what alpha means. Don't frivolously overload it.
+	// TODO: highdpi - perhaps this can be done by blitting twice, once in additive blend mode
+	// Note: this may not be identical to the original calculation,
+	// which was to multiply the RGB values by (alpha/255).
+	// But for now it looks close enough.
+	if(alpha > floating_to_fixed_point(1.0)) {
+		const std::string brighten_string = std::to_string((alpha - 255)/2);
+		new_modifications += "~CS(";
+		new_modifications += brighten_string;
+		new_modifications += ",";
+		new_modifications += brighten_string;
+		new_modifications += ",";
+		new_modifications += brighten_string;
+		new_modifications += ")";
+	}
+
+	// general formula for submerged alpha:
+	//   if (y > WATERLINE)
+	//   then min(max(alpha_mod, 0), 1) * alpha
+	//   else alpha
+	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
+	// formula variables: x, y, red, green, blue, alpha, width, height
+	// full WFL string:
+	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
+	// where DL = submersion line in pixels from top of image
+	//       AB = base alpha proportion at submersion line (30%)
+	//       AD = proportional alpha delta per pixel (1.5%)
+	if (submerged > 0.0) {
+		const int submersion_line = image_height * (1.0 - submerged);
+		const std::string sl_string = std::to_string(submersion_line);
+		new_modifications += "~ADJUST_ALPHA(if(y>";
+		new_modifications += sl_string;
+		new_modifications += ",clamp((0.3-(y-";
+		new_modifications += sl_string;
+		new_modifications += ")*0.015),0,1)*alpha,alpha))";
+	}
+
+	texture tex;
+	if (!new_modifications.empty()) {
+		const image::locator modified_locator(
+			i_locator.get_filename(),
+			i_locator.get_modifications() + new_modifications
+		);
+		tex = image::get_texture(modified_locator);
+	} else {
+		tex = image::get_texture(i_locator);
+	}
+
+	// TODO: highdpi - flipping and alpha modification need to be propagated from hreverse, vreverse, alpha
+	drawing_buffer_add(drawing_layer, loc, dest, tex);
 }
+
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
