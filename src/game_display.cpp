@@ -99,8 +99,9 @@ void game_display::new_turn()
 
 		if(old_tod.image_mask != tod.image_mask) {
 			// TODO: highdpi - textures
-			surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
-			surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
+			// TODO: highdpi - make sure these are scaled correctly
+			surface old_mask(image::get_image(old_tod.image_mask,image::HEXED));
+			surface new_mask(image::get_image(tod.image_mask,image::HEXED));
 
 			const int niterations = static_cast<int>(10/turbo_speed());
 			const int frame_time = 30;
@@ -276,24 +277,24 @@ void game_display::draw_hex(const map_location& loc)
 		}
 		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::HEXED));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)", image::HEXED));
 		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
 			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::HEXED));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::HEXED));
 		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
 			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>green)", image::HEXED));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)", image::HEXED));
 		} else {
 			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)", image::HEXED));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::HEXED));
 		}
 	}
 
@@ -306,7 +307,7 @@ void game_display::draw_hex(const map_location& loc)
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
 		drawing_buffer_add(LAYER_REACHMAP, loc, dest,
-				image::get_texture(unreachable,image::SCALED_TO_HEX));
+				image::get_texture(unreachable,image::HEXED));
 	}
 
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
@@ -323,10 +324,10 @@ void game_display::draw_hex(const map_location& loc)
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
-			image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+			image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED));
 	} else if (on_map && loc == attack_indicator_dst_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
-			image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+			image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED));
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
@@ -340,7 +341,7 @@ void game_display::draw_hex(const map_location& loc)
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
 		drawing_buffer_add(LAYER_SELECTED_HEX, loc, dest,
-				image::get_texture(selected, image::SCALED_TO_HEX));
+				image::get_texture(selected, image::HEXED));
 	}
 
 	// Show def% and turn to reach info
@@ -433,17 +434,17 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			if (w->second.invisible) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/hidden.png", image::SCALED_TO_HEX));
+					image::get_texture("misc/hidden.png", image::HEXED));
 			}
 
 			if (w->second.zoc) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/zoc.png", image::SCALED_TO_HEX));
+					image::get_texture("misc/zoc.png", image::HEXED));
 			}
 
 			if (w->second.capture) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/capture.png", image::SCALED_TO_HEX));
+					image::get_texture("misc/capture.png", image::HEXED));
 			}
 
 			//we display turn info only if different from a simple last "1"
@@ -487,6 +488,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
+// TODO: highdpi - make sure the result of this gets scaled where it's used
 std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 {
 	std::vector<texture> res;
@@ -528,7 +530,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
 			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-			teleport = image::get_texture(teleport_image, image::SCALED_TO_HEX);
+			teleport = image::get_texture(teleport_image, image::HEXED);
 			continue;
 		}
 
@@ -546,7 +548,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate;
 
-		res.push_back(image::get_texture(image, image::SCALED_TO_HEX));
+		res.push_back(image::get_texture(image, image::HEXED));
 	}
 
 	// we draw teleport image (if any) in last

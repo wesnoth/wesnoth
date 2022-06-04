@@ -158,7 +158,7 @@ namespace
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
+image::image_cache images_, hexed_images_, tod_colored_images_,
 		brightened_images_;
 
 /**
@@ -178,7 +178,7 @@ image::bool_cache in_hex_info_;
 image::bool_cache is_empty_hex_;
 
 // caches storing the different lighted cases for each image
-image::lit_cache lit_images_, lit_scaled_images_;
+image::lit_cache lit_images_;
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
 
@@ -236,10 +236,8 @@ void flush_cache()
 		images_.flush();
 		hexed_images_.flush();
 		tod_colored_images_.flush();
-		scaled_to_hex_images_.flush();
 		brightened_images_.flush();
 		lit_images_.flush();
-		lit_scaled_images_.flush();
 		in_hex_info_.flush();
 		is_empty_hex_.flush();
 		mini_terrain_cache.clear();
@@ -719,7 +717,6 @@ void set_color_adjustment(int r, int g, int b)
 		tod_colored_images_.flush();
 		brightened_images_.flush();
 		lit_images_.flush();
-		lit_scaled_images_.flush();
 	}
 }
 
@@ -734,8 +731,6 @@ void set_zoom(unsigned int amount)
 		// we use default zoom (it doesn't need those)
 		// or if they are already at the wanted zoom.
 		if(zoom != tile_size && zoom != cached_zoom) {
-			scaled_to_hex_images_.flush();
-			lit_scaled_images_.flush();
 			cached_zoom = zoom;
 		}
 	}
@@ -751,22 +746,9 @@ static surface get_hexed(const locator& i_locator)
 	return res;
 }
 
-static surface get_scaled_to_hex(const locator& i_locator)
-{
-	surface img = get_surface(i_locator, HEXED);
-	// return scale_surface(img, zoom, zoom);
-
-	if(img) {
-		return scale_surface_nn(img, zoom, zoom);
-	}
-
-	return surface(nullptr);
-
-}
-
 static surface get_tod_colored(const locator& i_locator)
 {
-	surface img = get_surface(i_locator, SCALED_TO_HEX);
+	surface img = get_surface(i_locator, HEXED);
 	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
@@ -792,12 +774,6 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 
 	if(type == TOD_COLORED) {
 		if(red_adjust == 0 && green_adjust == 0 && blue_adjust == 0) {
-			type = SCALED_TO_HEX;
-		}
-	}
-
-	if(type == SCALED_TO_HEX) {
-		if(zoom == tile_size) {
 			type = HEXED;
 		}
 	}
@@ -834,9 +810,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	case HEXED:
 		imap = &hexed_images_;
 		break;
-	case SCALED_TO_HEX:
-		imap = &scaled_to_hex_images_;
-		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
 		break;
@@ -864,9 +837,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	case HEXED:
 		res = get_hexed(i_locator);
 		break;
-	case SCALED_TO_HEX:
-		res = get_scaled_to_hex(i_locator);
-		break;
 	case BRIGHTENED:
 		res = get_brightened(i_locator);
 		break;
@@ -891,15 +861,8 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 		return res;
 	}
 
-	if(type == SCALED_TO_HEX && zoom == tile_size) {
-		type = HEXED;
-	}
-
 	// select associated cache
 	lit_cache* imap = &lit_images_;
-	if(type == SCALED_TO_HEX) {
-		imap = &lit_scaled_images_;
-	}
 
 	// if no light variants yet, need to add an empty map
 	if(!i_locator.in_cache(*imap)) {
@@ -920,11 +883,6 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	case HEXED:
 		res = get_surface(i_locator, HEXED);
 		res = apply_light(res, ls);
-		break;
-	case SCALED_TO_HEX:
-		// we light before scaling to reuse the unscaled cache
-		res = get_lighted_image(i_locator, ls, HEXED);
-		res = scale_surface_nn(res, zoom, zoom);
 		break;
 	default:
 		break;

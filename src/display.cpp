@@ -1050,6 +1050,7 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
+// TODO: highdpi - verify these get scaled correctly
 void display::get_terrain_images(const map_location& loc, const std::string& timeid, TERRAIN_TYPE terrain_type)
 {
 	terrain_image_vector_.clear();
@@ -1188,11 +1189,11 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 				|| image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
 			if(off_map) {
-				tex = image::get_texture(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::HEXED);
 			} else if(lt.empty()) {
-				tex = image::get_texture(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::HEXED);
 			} else {
-				tex = image::get_lighted_texture(image, lt, image::SCALED_TO_HEX);
+				tex = image::get_lighted_texture(image, lt, image::HEXED);
 			}
 
 			if(tex) {
@@ -2589,7 +2590,7 @@ void display::draw_hex(const map_location& loc)
 					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
 						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_texture(ov.image, lt, image::SCALED_TO_HEX) : image::get_texture(ov.image, image::SCALED_TO_HEX);
+							image::get_lighted_texture(ov.image, lt, image::HEXED) : image::get_texture(ov.image, image::HEXED);
 						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}
@@ -2611,7 +2612,7 @@ void display::draw_hex(const map_location& loc)
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask2));
 	} else if(!tod_hex_mask.empty()) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest,
-			image::get_texture(tod_hex_mask,image::SCALED_TO_HEX));
+			image::get_texture(tod_hex_mask,image::HEXED));
 	}
 
 	// Paint mouseover overlays

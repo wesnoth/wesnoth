@@ -232,9 +232,7 @@ enum TYPE
 	UNSCALED,
 	/** Standard hexagonal tile mask applied, removing portions that don't fit. */
 	HEXED,
-	/** Image rescaled to fit into a hexagonal tile according to the zoom settings. */
-	SCALED_TO_HEX,
-	/** Same as SCALED_TO_HEX, but with Time of Day color tint applied. */
+	/** Same as HEXED, but with Time of Day color tint applied. */
 	TOD_COLORED,
 	/** Same as TOD_COLORED, but also brightened. */
 	BRIGHTENED

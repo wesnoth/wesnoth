@@ -142,12 +142,13 @@ void suppose_dead::draw_hex(const map_location& hex)
 		//@todo: Possibly use a different layer
 		const display::drawing_layer layer = display::LAYER_ARROWS;
 
-		int xpos = display::get_singleton()->get_location_x(loc_);
-		int ypos = display::get_singleton()->get_location_y(loc_);
-		const texture& tex = image::get_texture("whiteboard/suppose_dead.png",
-			image::SCALED_TO_HEX);
-		const SDL_Rect dest{xpos, ypos, tex.w(), tex.h()};
-		display::get_singleton()->drawing_buffer_add(layer, loc_, dest, tex);
+		auto disp = display::get_singleton();
+		int x = disp->get_location_x(loc_);
+		int y = disp->get_location_y(loc_);
+		const texture& tex = image::get_texture(
+			"whiteboard/suppose_dead.png", image::HEXED);
+		const SDL_Rect dest = disp->scaled_to_zoom({x, y, tex.w(), tex.h()});
+		disp->drawing_buffer_add(layer, loc_, dest, tex);
 	}
 }
 

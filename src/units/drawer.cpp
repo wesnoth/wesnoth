@@ -401,7 +401,9 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	// TODO: highdpi - most of this function can be completely annihilated.
 	// TODO: highdpi - can't convert these to textures because calculate_energy_bar is insane. Fix.
-	surface surf(image::get_image(image,image::SCALED_TO_HEX));
+	surface surf = scale_surface_nn(
+		image::get_image(image, image::HEXED),
+		disp.hex_size(), disp.hex_size());
 
 	// We use UNSCALED because scaling (and bilinear interpolation)
 	// is bad for calculate_energy_bar.
