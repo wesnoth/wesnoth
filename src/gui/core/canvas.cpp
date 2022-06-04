@@ -253,8 +253,6 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, src_clip_()
-	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
@@ -305,9 +303,6 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
-
-	// TODO: highdpi - this is never used, why is it set?
-	src_clip_ = {0, 0, tex.w(), tex.h()};
 
 	wfl::map_formula_callable local_variables(variables);
 	local_variables.add("image_original_width", wfl::variant(tex.w()));
