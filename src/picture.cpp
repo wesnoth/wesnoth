@@ -158,7 +158,7 @@ namespace
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_, scaled_to_zoom_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
+image::image_cache images_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
 		brightened_images_;
 
 /**
@@ -236,7 +236,6 @@ void flush_cache()
 		images_.flush();
 		hexed_images_.flush();
 		tod_colored_images_.flush();
-		scaled_to_zoom_.flush();
 		scaled_to_hex_images_.flush();
 		brightened_images_.flush();
 		lit_images_.flush();
@@ -735,7 +734,6 @@ void set_zoom(unsigned int amount)
 		// we use default zoom (it doesn't need those)
 		// or if they are already at the wanted zoom.
 		if(zoom != tile_size && zoom != cached_zoom) {
-			scaled_to_zoom_.flush();
 			scaled_to_hex_images_.flush();
 			lit_scaled_images_.flush();
 			cached_zoom = zoom;
@@ -772,20 +770,6 @@ static surface get_tod_colored(const locator& i_locator)
 	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
-static surface get_scaled_to_zoom(const locator& i_locator)
-{
-	assert(zoom != tile_size);
-	assert(tile_size != 0);
-
-	surface res(get_surface(i_locator, UNSCALED));
-	// For some reason haloes seems to have invalid images, protect against crashing
-	if(res) {
-		return scale_surface_nn(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
-	}
-
-	return surface(nullptr);
-}
-
 static surface get_brightened(const locator& i_locator)
 {
 	surface image(get_surface(i_locator, TOD_COLORED));
@@ -796,12 +780,6 @@ static surface get_brightened(const locator& i_locator)
 static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 {
 	switch(type) {
-	case SCALED_TO_ZOOM:
-		if(zoom == tile_size) {
-			type = UNSCALED;
-		}
-
-		break;
 	case BRIGHTENED:
 		if(game_config::hex_brightening == 1.0) {
 			type = TOD_COLORED;
@@ -853,9 +831,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	case TOD_COLORED:
 		imap = &tod_colored_images_;
 		break;
-	case SCALED_TO_ZOOM:
-		imap = &scaled_to_zoom_;
-		break;
 	case HEXED:
 		imap = &hexed_images_;
 		break;
@@ -885,9 +860,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		break;
 	case TOD_COLORED:
 		res = get_tod_colored(i_locator);
-		break;
-	case SCALED_TO_ZOOM:
-		res = get_scaled_to_zoom(i_locator);
 		break;
 	case HEXED:
 		res = get_hexed(i_locator);
@@ -977,6 +949,16 @@ surface get_hexmask()
 {
 	static const image::locator terrain_mask(game_config::images::terrain_mask);
 	return get_surface(terrain_mask, UNSCALED);
+}
+
+point get_image_size(const locator& i_locator)
+{
+	const surface s(get_surface(i_locator));
+	if (s != nullptr) {
+		return {s->w, s->h};
+	} else {
+		return {0, 0};
+	}
 }
 
 bool is_in_hex(const locator& i_locator)

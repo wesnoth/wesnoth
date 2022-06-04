@@ -757,11 +757,10 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			// TODO: highdpi - image size accessor, yet again
-			const texture img = image::get_texture(image_name);
-			if(img) {
-				int w = img.w();
-				int h = img.h();
+			const point image_size = image::get_image_size(image_name);
+			if (image_size.x && image_size.y) {
+				int w = image_size.x;
+				int h = image_size.y;
 				adjust_image_bounds(w, h);
 				res.w += w;
 				res.h = std::max<int>(h, res.h);

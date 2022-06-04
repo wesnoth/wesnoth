@@ -55,13 +55,12 @@ scrollbar::scrollbar(CVideo &video)
 	, full_height_(0)
 	, scroll_rate_(1)
 {
-	// TODO: highdpi - image width / height accessors
-	static const surface img(image::get_image(scrollbar_mid));
+	const point img_size(image::get_image_size(scrollbar_mid));
 
-	if (img != nullptr) {
-		set_width(img->w);
+	if (img_size.x && img_size.y) {
+		set_width(img_size.x);
 		// this is a bit rough maybe
-		minimum_grip_height_ = 2 * img->h;
+		minimum_grip_height_ = 2 * img_size.y;
 	}
 }
 

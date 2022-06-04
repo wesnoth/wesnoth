@@ -84,8 +84,7 @@ void terrain_layers::pre_show(window& window)
 		const int tz = game_config::tile_size;
 		SDL_Rect r {0,0,tz,tz};
 
-		// TODO: highdpi - maybe this needs width and height accessors? The surface here isn't even used.
-		surface surf = image::get_image(img.get_filename());
+		const point img_size = image::get_image_size(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
 		if(loc_cut.valid()) {
@@ -98,8 +97,8 @@ void terrain_layers::pre_show(window& window)
 			};
 
 			if(img.get_center_x() >= 0 && img.get_center_y() >= 0) {
-				r.x += surf->w / 2 - img.get_center_x();
-				r.y += surf->h / 2 - img.get_center_y();
+				r.x += img_size.x / 2 - img.get_center_x();
+				r.y += img_size.y / 2 - img.get_center_y();
 			}
 		}
 
@@ -108,7 +107,7 @@ void terrain_layers::pre_show(window& window)
 		// Cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
 		// TODO: ^ eh? what limitations?
-		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,surf->w,surf->h});
+		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,img_size.x,img_size.y});
 		if(r2.w > 0 && r2.h > 0) {
 			image_steam
 				<< "~BLIT(" << name

@@ -514,10 +514,9 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		image_loc = image::locator(current_data.image, current_data.image_mod);
 	}
 
-	// TODO: highdpi - now only used for w/h. are these even necessary? If so add accessor to image:: to get only these without returning the whole surface.
-	surface image;
+	point image_size {0, 0};
 	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image = image::get_image(image_loc, image::SCALED_TO_ZOOM);
+		image_size = image::get_image_size(image_loc);
 	}
 
 	const int d2 = display::get_singleton()->hex_size() / 2;
@@ -526,7 +525,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
 	const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
-	if(image != nullptr) {
+	if(image_size.x && image_size.y) {
 		bool facing_west = (
 			direction == map_location::NORTH_WEST ||
 			direction == map_location::SOUTH_WEST);
@@ -539,8 +538,8 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(!current_data.auto_hflip) { facing_west = false; }
 		if(!current_data.auto_vflip) { facing_north = true; }
 
-		int my_x = x + current_data.x * disp_zoom - image->w / 2;
-		int my_y = y + current_data.y * disp_zoom - image->h / 2;
+		int my_x = x + disp_zoom * (current_data.x - image_size.x / 2);
+		int my_y = y + disp_zoom * (current_data.y - image_size.y / 2);
 
 		if(facing_west) {
 			my_x -= current_data.directional_x * disp_zoom;
@@ -679,16 +678,10 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 	} else {
 		int w = 0, h = 0;
 
-		{
-			surface image;
-			if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-				image = image::get_image(image_loc, image::SCALED_TO_ZOOM);
-			}
-
-			if(image != nullptr) {
-				w = image->w;
-				h = image->h;
-			}
+		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
+			const point s = image::get_image_size(image_loc);
+			w = s.x;
+			h = s.y;
 		}
 
 		if(w != 0 || h != 0) {

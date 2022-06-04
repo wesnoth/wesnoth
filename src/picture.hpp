@@ -22,6 +22,7 @@
 
 class surface;
 class texture;
+struct point;
 
 /**
  * Functions to load and save images from/to disk.
@@ -229,8 +230,6 @@ enum TYPE
 {
 	/** Unmodified original-size image. */
 	UNSCALED,
-	/** Image rescaled according to the zoom settings. */
-	SCALED_TO_ZOOM,
 	/** Standard hexagonal tile mask applied, removing portions that don't fit. */
 	HEXED,
 	/** Image rescaled to fit into a hexagonal tile according to the zoom settings. */
@@ -291,6 +290,14 @@ texture get_lighted_texture(const image::locator& i_locator, const light_string&
  * Retrieves the standard hexagonal tile mask.
  */
 surface get_hexmask();
+
+/**
+ * Returns the width and height of an image.
+ *
+ * If the image is not yet in the surface cache, it will be loaded and cached.
+ *
+ */
+point get_image_size(const locator& i_locator);
 
 /**
  * Checks if an image fits into a single hex.

@@ -94,6 +94,11 @@ SDL_Rect unit_drawer::scaled_to_zoom(const SDL_Rect& r) const
 	return {r.x, r.y, int(r.w*zoom_factor), int(r.h*zoom_factor)};
 }
 
+point unit_drawer::scaled_to_zoom(const point& p) const
+{
+	return {int(p.x*zoom_factor), int(p.y*zoom_factor)};
+}
+
 void unit_drawer::redraw_unit (const unit & u) const
 {
 	unit_animation_component & ac = u.anim_comp();
@@ -279,10 +284,11 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int xoff;
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
-			// TODO: highdpi - w/h accessors, and this is probably very wrong
-			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = !unit_img ? 0 : (hex_size - unit_img->w)/2;
-			yoff = !unit_img ? 0 : (hex_size - unit_img->h)/2;
+			const point s = scaled_to_zoom(
+				image::get_image_size(u.default_anim_image())
+			);
+			xoff = !s.x ? 0 : (hex_size - s.x)/2;
+			yoff = !s.y ? 0 : (hex_size - s.x)/2;
 		}
 		else {
 			xoff = cfg_offset_x.to_int();
