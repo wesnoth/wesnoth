@@ -197,13 +197,12 @@ bool halo_impl::effect::render()
 	}
 
 	images_.update_last_draw_time();
-	// TODO: highdpi - no prescaling
-	tex_ = image::get_texture(current_image(),image::SCALED_TO_ZOOM);
+	tex_ = image::get_texture(current_image());
 	if(!tex_) {
 		return false;
 	}
-	w_ = tex_.w();
-	h_ = tex_.h();
+	w_ = int(tex_.w() * disp->get_zoom_factor());
+	h_ = int(tex_.h() * disp->get_zoom_factor());
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
 	const int screeny = disp->get_location_y(map_location::ZERO());

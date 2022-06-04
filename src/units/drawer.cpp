@@ -89,6 +89,11 @@ unit_drawer::unit_drawer(display & thedisp) :
 	assert(disp.team_valid());
 }
 
+SDL_Rect unit_drawer::scaled_to_zoom(const SDL_Rect& r) const
+{
+	return {r.x, r.y, int(r.w*zoom_factor), int(r.h*zoom_factor)};
+}
+
 void unit_drawer::redraw_unit (const unit & u) const
 {
 	unit_animation_component & ac = u.anim_comp();
@@ -244,21 +249,25 @@ void unit_drawer::redraw_unit (const unit & u) const
 			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_texture(image::locator(ellipse_top), image::SCALED_TO_ZOOM);
-			ellipse_front = image::get_texture(image::locator(ellipse_bot), image::SCALED_TO_ZOOM);
+			ellipse_back = image::get_texture(image::locator(ellipse_top));
+			ellipse_front = image::get_texture(image::locator(ellipse_bot));
 		}
 	}
 	if (ellipse_back != nullptr) {
-		const SDL_Rect dest{xsrc, ysrc +adjusted_params.y-ellipse_floating,
-			ellipse_back.w(), ellipse_back.h()};
+		const SDL_Rect dest = scaled_to_zoom({
+			xsrc, ysrc + adjusted_params.y - ellipse_floating,
+			ellipse_back.w(), ellipse_back.h()
+		});
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			dest, ellipse_back);
 	}
 
 	if (ellipse_front != nullptr) {
-		const SDL_Rect dest{xsrc, ysrc +adjusted_params.y-ellipse_floating,
-			ellipse_front.w(), ellipse_front.h()};
+		const SDL_Rect dest = scaled_to_zoom({
+			xsrc, ysrc + adjusted_params.y - ellipse_floating,
+			ellipse_front.w(), ellipse_front.h()
+		});
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			dest, ellipse_front);
@@ -270,6 +279,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int xoff;
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
+			// TODO: highdpi - w/h accessors, and this is probably very wrong
 			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
 			xoff = !unit_img ? 0 : (hex_size - unit_img->w)/2;
 			yoff = !unit_img ? 0 : (hex_size - unit_img->h)/2;
@@ -302,9 +312,11 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 
 		if(orb_img != nullptr) {
-			texture orb(image::get_texture(*orb_img, image::SCALED_TO_ZOOM));
-			const SDL_Rect dest{xsrc + xoff, ysrc + yoff + adjusted_params.y,
-				orb.w(), orb.h()};
+			const texture orb(image::get_texture(*orb_img));
+			const SDL_Rect dest = scaled_to_zoom({
+				xsrc + xoff, ysrc + yoff + adjusted_params.y,
+				orb.w(), orb.h()
+			});
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, orb);
 		}
 
@@ -329,22 +341,24 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 
 		if (can_recruit) {
-			const texture& crown = image::get_texture(
-				u.leader_crown(), image::SCALED_TO_ZOOM);
+			const texture crown(image::get_texture(u.leader_crown()));
 			if(crown) {
-				const SDL_Rect dest{xsrc+xoff, ysrc+yoff+adjusted_params.y,
-					crown.w(), crown.h()};
+				const SDL_Rect dest = scaled_to_zoom({
+					xsrc + xoff, ysrc + yoff + adjusted_params.y,
+					crown.w(), crown.h()
+				});
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, dest, crown);
 			}
 		}
 
 		for(const std::string& ov : u.overlays()) {
-			const texture& ov_img = image::get_texture(ov,
-				image::SCALED_TO_ZOOM);
+			const texture ov_img(image::get_texture(ov));
 			if(ov_img) {
-				const SDL_Rect dest{xsrc+xoff, ysrc+yoff+adjusted_params.y,
-					ov_img.w(), ov_img.h()};
+				const SDL_Rect dest = scaled_to_zoom({
+					xsrc + xoff, ysrc + yoff + adjusted_params.y,
+					ov_img.w(), ov_img.h()
+				});
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, dest, ov_img);
 			}
