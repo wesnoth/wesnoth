@@ -29,12 +29,12 @@ elif [ "$IMAGE" == "mingw" ]; then
 		cd mingwbuild
 		mv ./wesnoth*-win64.exe ~/wesnoth-$version-win64.exe
 else
-# create temp docker file to pull the pre-created images
-		echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
-		echo COPY ./ /home/wesnoth-CI/ >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
-		echo WORKDIR /home/wesnoth-CI >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
-
-		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH" .
+		# pull the pre-created image
+		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f - . <<-EOF
+			FROM wesnoth/wesnoth:$IMAGE-$BRANCH
+			COPY ./ /home/wesnoth-CI/
+			WORKDIR /home/wesnoth-CI
+		EOF
 
 		docker run --tty --cap-add=ALL --privileged \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \

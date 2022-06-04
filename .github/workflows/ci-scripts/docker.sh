@@ -50,8 +50,6 @@ checkindent() {
 }
 
 EXIT_VAL=-1
-# remove temp dockerfile so it doesn't get picked up by `git status`
-rm utils/dockerbuilds/CI/Dockerfile-CI-${IMAGE}-master
 
 if [ "$NLS" == "only" ]; then
     export LANGUAGE=en_US.UTF-8
