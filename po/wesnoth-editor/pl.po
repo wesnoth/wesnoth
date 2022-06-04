@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:26+0300\n"
-"PO-Revision-Date: 2020-11-02 12:06+0100\n"
-"Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
+"PO-Revision-Date: 2022-06-03 18:16+0200\n"
+"Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /usr/local/wesnoth\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #. [brush]: id=brush-1
@@ -124,7 +124,7 @@ msgstr "specjalne"
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr "Żadna"
+msgstr "Brak"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
@@ -484,30 +484,30 @@ msgstr "Usuń"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Left-click: "
-msgstr ""
+msgstr "LPM: "
 
 #: src/editor/palette/terrain_palettes.cpp:233
 msgid "Right-click: "
-msgstr ""
+msgstr "PPM: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:238
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + LPM: rysuj tylko nakładkę terenu"
 
 #: src/editor/palette/terrain_palettes.cpp:240
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + LPM: rysuj tylko teren bazowy"
 
 #: src/editor/palette/terrain_palettes.cpp:243
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + kliknięcie: skopiuj teren"
 
 #: src/editor/palette/terrain_palettes.cpp:245
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + kliknięcie: skopiuj teren"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:93
 msgid "Clipboard support not found, contact your packager"
@@ -579,8 +579,8 @@ msgstr "Wybierz"
 #~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
 #~ msgstr ""
 #~ "Używaj lewego/prawego przycisku myszy do rysowania terenu na pierwszym/"
-#~ "drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową. Ctrl"
-#~ "+kliknięcie umożliwia pobranie próbki terenu pod kursorem."
+#~ "drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową. "
+#~ "Ctrl+kliknięcie umożliwia pobranie próbki terenu pod kursorem."
 
 #~ msgid ""
 #~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
