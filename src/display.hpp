@@ -931,21 +931,26 @@ protected:
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
 				const SDL_Rect& dest, const texture& tex,
-				const SDL_Rect& clip)
-			: dest_(dest), tex_(1, tex), clip_(clip),
-			key_(loc, layer)
+				const SDL_Rect& clip, bool hflip=false, bool vflip=false,
+				uint8_t alpha_mod=SDL_ALPHA_OPAQUE)
+			: dest_(dest), tex_(1, tex), clip_(clip), hflip_(hflip),
+			vflip_(vflip), alpha_mod_(alpha_mod), key_(loc, layer)
 		{}
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
 				const SDL_Rect& dest, const std::vector<texture>& tex,
-				const SDL_Rect& clip)
-			: dest_(dest), tex_(tex), clip_(clip),
-			key_(loc, layer)
+				const SDL_Rect& clip, bool hflip=false, bool vflip=false,
+				uint8_t alpha_mod=SDL_ALPHA_OPAQUE)
+			: dest_(dest), tex_(tex), clip_(clip), hflip_(hflip),
+			vflip_(vflip), alpha_mod_(alpha_mod), key_(loc, layer)
 		{}
 
 		const SDL_Rect& dest() const { return dest_; }
 		const std::vector<texture> &tex() const { return tex_; }
 		const SDL_Rect &clip() const { return clip_; }
+		uint8_t alpha_mod() const { return alpha_mod_; }
+		bool hflip() const { return hflip_; }
+		bool vflip() const { return vflip_; }
 
 		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
@@ -957,6 +962,13 @@ protected:
 		/** The portion of the source texture to use.
 		  * If omitted, the entire source is used. */
 		SDL_Rect clip_;
+		/** Whether to mirror horizontally on draw */
+		bool hflip_;
+		/** Whether to mirror vertically on draw */
+		bool vflip_;
+		/** An alpha modifier to apply when drawing. 0-255. */
+		uint8_t alpha_mod_;
+		// TODO: highdpi - colour mod? blend mode? rotation?
 		/** Allows ordering of draw calls by layer and location. */
 		drawing_buffer_key key_;
 	};
@@ -978,12 +990,14 @@ public:
 	 */
 	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, const SDL_Rect& dest, const texture& tex,
-			const SDL_Rect &clip = SDL_Rect());
+			const SDL_Rect &clip = SDL_Rect(), bool hflip=false,
+			bool vflip=false, uint8_t alpha_mod=SDL_ALPHA_OPAQUE);
 
 	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, const SDL_Rect& dest,
 			const std::vector<texture> &tex,
-			const SDL_Rect &clip = SDL_Rect());
+			const SDL_Rect &clip = SDL_Rect(), bool hflip=false,
+			bool vflip=false, uint8_t alpha_mod=SDL_ALPHA_OPAQUE);
 
 protected:
 

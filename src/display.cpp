@@ -1205,17 +1205,21 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, const SDL_Rect& dest, const texture& tex,
-		const SDL_Rect &clip)
+		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
 {
-	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	drawing_buffer_.emplace_back(
+		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
+	);
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, const SDL_Rect& dest,
 		const std::vector<texture> &tex,
-		const SDL_Rect &clip)
+		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
 {
-	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	drawing_buffer_.emplace_back(
+		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
+	);
 }
 
 enum {
@@ -1292,12 +1296,21 @@ void display::drawing_buffer_commit()
 
 	// TODO: highdpi - perhaps it might be desirable to optionally apply colour and alpha modifiers here?
 	for(const blit_helper& blit : drawing_buffer_) {
-		for(const texture& tex : blit.tex()) {
+		for(texture tex : blit.tex()) {
 			const SDL_Rect& src = blit.clip();
+			const uint8_t alpha_mod = blit.alpha_mod();
+			const bool hflip = blit.hflip();
+			const bool vflip = blit.vflip();
+			if (alpha_mod != SDL_ALPHA_OPAQUE) {
+				tex.set_alpha_mod(alpha_mod);
+			}
 			if (src != sdl::empty_rect) {
-				draw::blit(tex, blit.dest(), src);
+				draw::flipped(tex, blit.dest(), src, hflip, vflip);
 			} else {
-				draw::blit(tex, blit.dest());
+				draw::flipped(tex, blit.dest(), hflip, vflip);
+			}
+			if (alpha_mod != SDL_ALPHA_OPAQUE) {
+				tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
 			}
 		}
 	}
@@ -1592,7 +1605,9 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	}
 
 	// TODO: highdpi - flipping and alpha modification need to be propagated from hreverse, vreverse, alpha
-	drawing_buffer_add(drawing_layer, loc, dest, tex);
+	const uint8_t alpha_mod = std::clamp(alpha, 0, 255);
+	drawing_buffer_add(drawing_layer, loc, dest, tex, sdl::empty_rect,
+		hreverse, vreverse, alpha_mod);
 }
 
 void display::select_hex(map_location hex)
