@@ -1507,16 +1507,13 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		bool hreverse, bool greyscale, int32_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	// TODO: highdpi - w/h accessors
-	surface base_image_surface(image::get_surface(i_locator));
-	if (base_image_surface == nullptr) {
+	const point image_size = image::get_image_size(i_locator);
+	if (!image_size.x || !image_size.y) {
 		return;
 	}
-	const int image_height = base_image_surface->h;
-	const int image_width = base_image_surface->w;
 
 	// TODO: highdpi - are x,y correct here?
-	SDL_Rect dest = scaled_to_zoom({x, y, image_width, image_height});
+	SDL_Rect dest = scaled_to_zoom({x, y, image_size.x, image_size.y});
 	if (!sdl::rects_overlap(dest, map_area())) {
 		return;
 	}
@@ -1574,7 +1571,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	//       AB = base alpha proportion at submersion line (30%)
 	//       AD = proportional alpha delta per pixel (1.5%)
 	if (submerged > 0.0) {
-		const int submersion_line = image_height * (1.0 - submerged);
+		const int submersion_line = image_size.y * (1.0 - submerged);
 		const std::string sl_string = std::to_string(submersion_line);
 		new_modifications += "~ADJUST_ALPHA(if(y>";
 		new_modifications += sl_string;
