@@ -315,8 +315,8 @@ void render_minimap(unsigned dst_w,
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale << std::endl;
 
-	const std::size_t map_width  = map.w() * scale * 3 / 4;
-	const std::size_t map_height = map.h() * scale;
+	const std::size_t map_width  = std::max(0, map.w()) * scale * 3 / 4;
+	const std::size_t map_height = std::max(0, map.h()) * scale;
 
 	// Gets a destination rect for drawing at the given coordinates.
 	// We need a balanced shift up and down of the hexes.
