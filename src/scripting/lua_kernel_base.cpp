@@ -596,17 +596,39 @@ static int intf_object_dir(lua_State* L)
 		return std::max(max, next.size());
 	});
 	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
-	static const size_t MAX_WIDTH = 80, COL_PADDING = 3;
-	size_t n_cols = (MAX_WIDTH + COL_PADDING) / (max_len + COL_PADDING);
-	size_t col_width = max_len + COL_PADDING;
+	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
+	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
+	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
 	size_t n_rows = ceil(keys.size() / double(n_cols));
 	for(size_t i = 0; i < n_rows; i++) {
 		std::ostringstream line;
 		line.fill(' ');
 		line.setf(std::ios::left);
 		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
-			line.width(col_width);
-			line << keys[j + i * n_cols];
+			std::string suffix = " ";
+			auto type = lua_getfield(L, 1, keys[j + i * n_cols].c_str());
+			if(type == LUA_TTABLE) {
+				suffix = "†";
+			} else if(type == LUA_TFUNCTION) {
+				suffix = "ƒ";
+			} else if(type == LUA_TUSERDATA) {
+				lua_getglobal(L, "getmetatable");
+				lua_pushvalue(L, -2);
+				lua_call(L, 1, 1);
+				if(lua_type(L, -1) == LUA_TSTRING) {
+					auto meta = lua_check<std::string>(L, -1);
+					if(meta == "function") {
+						suffix = "ƒ";
+					}
+				}
+				lua_pop(L, 1);
+			}
+			lua_pop(L, 1);
+			suffix = " " + suffix;
+			// This weird calculation is because width counts in bytes, not code points
+			// Since the suffix is a Unicode character, that messes up the alignment
+			line.width(col_width - SUFFIX_PADDING + suffix.size());
+			line << (keys[j + i * n_cols] + suffix) << std::flush;
 		}
 		lua_pushvalue(L, fcn_idx);
 		lua_push(L, line.str());
