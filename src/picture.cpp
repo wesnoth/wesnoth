@@ -42,10 +42,11 @@
 
 #include <set>
 
-static lg::log_domain log_display("display");
-#define ERR_DP LOG_STREAM(err, log_display)
-#define WRN_DP LOG_STREAM(warn, log_display)
-#define LOG_DP LOG_STREAM(info, log_display)
+static lg::log_domain log_image("image");
+#define ERR_IMG LOG_STREAM(err, log_image)
+#define WRN_IMG LOG_STREAM(warn, log_image)
+#define LOG_IMG LOG_STREAM(info, log_image)
+#define DBG_IMG LOG_STREAM(debug, log_image)
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err, log_config)
@@ -280,7 +281,7 @@ void locator::parse_arguments()
 		if(!parsed.good) {
 			std::string_view view{ fn };
 			std::string_view stripped = view.substr(0, view.find(","));
-			ERR_DP << "Invalid data URI: " << stripped << std::endl;
+			ERR_IMG << "Invalid data URI: " << stripped << std::endl;
 		}
 
 		val_.is_data_uri_ = true;
@@ -478,8 +479,8 @@ static surface load_image_file(const image::locator& loc)
 		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
 		if(!location.empty()) {
-			WRN_DP << "Replaced missing '" << name << "' with found '"
-			       << webp_name << "'." << std::endl;
+			WRN_IMG << "Replaced missing '" << name << "' with found '"
+			        << webp_name << "'." << std::endl;
 		}
 	}
 
@@ -505,7 +506,7 @@ static surface load_image_file(const image::locator& loc)
 	}
 
 	if(!res && !name.empty()) {
-		ERR_DP << "could not open image '" << name << "'" << std::endl;
+		ERR_IMG << "could not open image '" << name << "'" << std::endl;
 		if(game_config::debug && name != game_config::images::missing)
 			return get_surface(game_config::images::missing, UNSCALED);
 	}
@@ -586,21 +587,21 @@ static surface load_image_data_uri(const image::locator& loc)
 	if(!parsed.good) {
 		std::string_view fn = loc.get_filename();
 		std::string_view stripped = fn.substr(0, fn.find(","));
-		ERR_DP << "Invalid data URI: " << stripped << std::endl;
+		ERR_IMG << "Invalid data URI: " << stripped << std::endl;
 	} else if(parsed.mime.substr(0, 5) != "image") {
-		ERR_DP << "Data URI not of image MIME type: " << parsed.mime << std::endl;
+		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime << std::endl;
 	} else {
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
 		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size()), &SDL_FreeRW};
 
 		if(image_data.empty()) {
-			ERR_DP << "Invalid encoding in data URI" << std::endl;
+			ERR_IMG << "Invalid encoding in data URI" << std::endl;
 		} else if(parsed.mime == "image/png") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
 		} else {
-			ERR_DP << "Invalid image MIME type: " << parsed.mime << std::endl;
+			ERR_IMG << "Invalid image MIME type: " << parsed.mime << std::endl;
 		}
 	}
 
@@ -822,11 +823,16 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	}
 
 	// return the image if already cached
-	bool tmp = i_locator.in_cache(*imap);
+	if (i_locator.in_cache(*imap)) {
+		return i_locator.locate_in_cache(*imap);
+	}
 
-	if(tmp) {
-		surface result = i_locator.locate_in_cache(*imap);
-		return result;
+	if (i_locator.get_modifications().empty()) {
+		DBG_IMG << "surface cache miss: " << i_locator.get_filename()
+			<< std::endl;
+	} else {
+		DBG_IMG << "surface cache miss: " << i_locator.get_filename()
+			<< "+" << i_locator.get_modifications() << std::endl;
 	}
 
 	// not cached, generate it
@@ -882,6 +888,14 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 		}
 	}
 
+	if (i_locator.get_modifications().empty()) {
+		DBG_IMG << "lit surface cache miss: " << i_locator.get_filename()
+			<< std::endl;
+	} else {
+		DBG_IMG << "lit surface cache miss: " << i_locator.get_filename()
+			<< "+" << i_locator.get_modifications() << std::endl;
+	}
+
 	// not cached yet, generate it
 	res = get_surface(i_locator, HEXED);
 	res = apply_light(res, ls);
@@ -915,6 +929,14 @@ texture get_lighted_texture(
 		if(lvi != lvar.end()) {
 			return lvi->second;
 		}
+	}
+
+	if (i_locator.get_modifications().empty()) {
+		DBG_IMG << "lit texture cache miss: " << i_locator.get_filename()
+			<< std::endl;
+	} else {
+		DBG_IMG << "lit texture cache miss: " << i_locator.get_filename()
+			<< "+" << i_locator.get_modifications() << std::endl;
 	}
 
 	// not cached yet, generate it
@@ -1066,14 +1088,14 @@ save_result save_image(const surface& surf, const std::string& filename)
 	}
 
 	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
-		LOG_DP << "Writing a JPG image to " << filename << std::endl;
+		LOG_IMG << "Writing a JPG image to " << filename << std::endl;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
 	if(filesystem::ends_with(filename, ".png")) {
-		LOG_DP << "Writing a PNG image to " << filename << std::endl;
+		LOG_IMG << "Writing a PNG image to " << filename << std::endl;
 
 		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
@@ -1143,6 +1165,14 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	if(in_cache) {
 		res = i_locator.locate_in_cache(*cache);
 		return res;
+	}
+
+	if (i_locator.get_modifications().empty()) {
+		DBG_IMG << "texture cache miss: " << i_locator.get_filename()
+			<< std::endl;
+	} else {
+		DBG_IMG << "texture cache miss: " << i_locator.get_filename()
+			<< "+" << i_locator.get_modifications() << std::endl;
 	}
 
 	//
