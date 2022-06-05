@@ -159,8 +159,7 @@ namespace
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_, hexed_images_, tod_colored_images_,
-		brightened_images_;
+image::image_cache images_, hexed_images_, tod_colored_images_;
 
 /**
  * Texture caches.
@@ -195,7 +194,6 @@ std::set<std::string> precached_dirs;
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 unsigned int zoom = tile_size;
-unsigned int cached_zoom = 0;
 
 const std::string data_uri_prefix = "data:";
 struct parsed_data_URI{
@@ -239,7 +237,6 @@ void flush_cache()
 		images_.flush();
 		hexed_images_.flush();
 		tod_colored_images_.flush();
-		brightened_images_.flush();
 		lit_images_.flush();
 		lit_textures_.flush();
 		in_hex_info_.flush();
@@ -719,7 +716,6 @@ void set_color_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		tod_colored_images_.flush();
-		brightened_images_.flush();
 		lit_images_.flush();
 		lit_textures_.flush();
 	}
@@ -727,18 +723,8 @@ void set_color_adjustment(int r, int g, int b)
 
 void set_zoom(unsigned int amount)
 {
-	if(amount != zoom) {
-		zoom = amount;
-		tod_colored_images_.flush();
-		brightened_images_.flush();
-
-		// We keep these caches if:
-		// we use default zoom (it doesn't need those)
-		// or if they are already at the wanted zoom.
-		if(zoom != tile_size && zoom != cached_zoom) {
-			cached_zoom = zoom;
-		}
-	}
+	// This no longer has to do anything fancy.
+	zoom = amount;
 }
 
 static surface get_hexed(const locator& i_locator)
@@ -757,26 +743,9 @@ static surface get_tod_colored(const locator& i_locator)
 	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
-static surface get_brightened(const locator& i_locator)
-{
-	surface image(get_surface(i_locator, TOD_COLORED));
-	return brighten_image(image, floating_to_fixed_point(game_config::hex_brightening));
-}
-
 /** translate type to a simpler one when possible */
 static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 {
-	switch(type) {
-	case BRIGHTENED:
-		if(game_config::hex_brightening == 1.0) {
-			type = TOD_COLORED;
-		}
-
-		break;
-	default:
-		break;
-	}
-
 	if(type == TOD_COLORED) {
 		if(red_adjust == 0 && green_adjust == 0 && blue_adjust == 0) {
 			type = HEXED;
@@ -815,9 +784,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 	case HEXED:
 		imap = &hexed_images_;
 		break;
-	case BRIGHTENED:
-		imap = &brightened_images_;
-		break;
 	default:
 		return res;
 	}
@@ -846,9 +812,6 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		break;
 	case HEXED:
 		res = get_hexed(i_locator);
-		break;
-	case BRIGHTENED:
-		res = get_brightened(i_locator);
 		break;
 	default:
 		return res;

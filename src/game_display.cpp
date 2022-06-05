@@ -260,8 +260,6 @@ void game_display::draw_hex(const map_location& loc)
 	const int zoom = int(zoom_);
 	const SDL_Rect dest{xpos, ypos, zoom, zoom};
 
-//	image::TYPE image_type = get_image_type(loc);
-
 	display::draw_hex(loc);
 
 	if(cursor::get() == cursor::WAIT) {

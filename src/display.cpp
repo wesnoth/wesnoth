@@ -2550,7 +2550,6 @@ void display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
 	const int zoom = int(zoom_);
@@ -2650,15 +2649,15 @@ void display::draw_hex(const map_location& loc)
 		// to shroud the half-hexes too
 		const std::string& shroud_image = get_variant(shroud_images_, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
-			image::get_texture(shroud_image, image_type));
+			image::get_texture(shroud_image, image::TOD_COLORED));
 	} else if(fogged(loc)) {
 		const std::string& fog_image = get_variant(fog_images_, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
-			image::get_texture(fog_image, image_type));
+			image::get_texture(fog_image, image::TOD_COLORED));
 	}
 
 	if(!shrouded(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, get_fog_shroud_images(loc, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, get_fog_shroud_images(loc, image::TOD_COLORED));
 	}
 
 	if (on_map) {
@@ -2728,13 +2727,9 @@ void display::draw_hex(const map_location& loc)
 
 	if(debug_foreground) {
 		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, dest,
-			image::get_texture("terrain/foreground.png", image_type));
+			image::get_texture("terrain/foreground.png", image::TOD_COLORED));
 	}
 
-}
-
-image::TYPE display::get_image_type(const map_location& /*loc*/) {
-	return image::TOD_COLORED;
 }
 
 // TODO: highdpi - why is there all this faff to deal with textures that are fill of transparency? Just don't make your textures full of transparency. This should not be a thing.

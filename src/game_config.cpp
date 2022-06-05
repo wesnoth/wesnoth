@@ -78,6 +78,7 @@ std::vector<unsigned int> zoom_levels {36, 72, 144};
 //
 double hp_bar_scaling  = 0.666;
 double xp_bar_scaling  = 0.5;
+// TODO: highdpi - remove hex_brightening? it is and was not actually used
 double hex_brightening = 1.25;
 
 //

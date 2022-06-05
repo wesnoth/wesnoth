@@ -688,11 +688,6 @@ protected:
 	virtual void draw_hex(const map_location& loc);
 
 	/**
-	 * @returns the image type to be used for the passed hex
-	 */
-	virtual image::TYPE get_image_type(const map_location& loc);
-
-	/**
 	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */

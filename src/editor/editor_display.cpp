@@ -71,15 +71,6 @@ void editor_display::pre_draw()
 {
 }
 
-// TODO: highdpi - remove BRIGHTENED?
-image::TYPE editor_display::get_image_type(const map_location& loc)
-{
-	if (map().in_selection(loc)) {
-		return image::BRIGHTENED;
-	}
-	return image::TOD_COLORED;
-}
-
 void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);

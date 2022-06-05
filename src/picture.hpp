@@ -211,7 +211,7 @@ struct manager
 /**
  * Changes Time of Day color tint for all applicable image types.
  *
- * In particular this affects TOD_COLORED and BRIGHTENED images, as well as
+ * In particular this affects TOD_COLORED images, as well as
  * images with lightmaps applied. Changing the previous values automatically
  * invalidates all cached images of those types.
  */
@@ -236,8 +236,6 @@ enum TYPE
 	HEXED,
 	/** Same as HEXED, but with Time of Day color tint applied. */
 	TOD_COLORED,
-	/** Same as TOD_COLORED, but also brightened. */
-	BRIGHTENED
 };
 
 enum class scale_quality { nearest, linear };
