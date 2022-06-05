@@ -1193,7 +1193,7 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			} else if(lt.empty()) {
 				tex = image::get_texture(image, image::HEXED);
 			} else {
-				tex = image::get_lighted_texture(image, lt, image::HEXED);
+				tex = image::get_lighted_texture(image, lt);
 			}
 
 			if(tex) {
@@ -2602,7 +2602,7 @@ void display::draw_hex(const map_location& loc)
 					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
 						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_texture(ov.image, lt, image::HEXED) : image::get_texture(ov.image, image::HEXED);
+							image::get_lighted_texture(ov.image, lt) : image::get_texture(ov.image, image::HEXED);
 						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}

@@ -179,8 +179,10 @@ image::bool_cache is_empty_hex_;
 
 // caches storing the different lighted cases for each image
 image::lit_cache lit_images_;
+image::lit_texture_cache lit_textures_;
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
+image::lit_texture_variants texture_lightmaps_;
 
 // const int cache_version_ = 0;
 
@@ -238,6 +240,7 @@ void flush_cache()
 		tod_colored_images_.flush();
 		brightened_images_.flush();
 		lit_images_.flush();
+		lit_textures_.flush();
 		in_hex_info_.flush();
 		is_empty_hex_.flush();
 		mini_terrain_cache.clear();
@@ -657,7 +660,7 @@ static surface apply_light(surface surf, const light_string& ls)
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
-			surface lts = image::get_lighted_image(lm_img[sls[0]], sls, HEXED);
+			surface lts = image::get_lighted_image(lm_img[sls[0]], sls);
 
 			// first image will be the base where we blit the others
 			if(lightmap == nullptr) {
@@ -717,6 +720,7 @@ void set_color_adjustment(int r, int g, int b)
 		tod_colored_images_.flush();
 		brightened_images_.flush();
 		lit_images_.flush();
+		lit_textures_.flush();
 	}
 }
 
@@ -854,7 +858,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return get_surface(i_locator, type);
 }
 
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
+surface get_lighted_image(const image::locator& i_locator, const light_string& ls)
 {
 	surface res;
 	if(i_locator.is_void()) {
@@ -879,14 +883,8 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	}
 
 	// not cached yet, generate it
-	switch(type) {
-	case HEXED:
-		res = get_surface(i_locator, HEXED);
-		res = apply_light(res, ls);
-		break;
-	default:
-		break;
-	}
+	res = get_surface(i_locator, HEXED);
+	res = apply_light(res, ls);
 
 	// record the lighted surface in the corresponding variants cache
 	i_locator.access_in_cache(*imap)[ls] = res;
@@ -896,11 +894,36 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 
 texture get_lighted_texture(
 	const image::locator& i_locator,
-	const light_string& ls,
-	TYPE type)
+	const light_string& ls)
 {
-	// TODO: highdpi - actually implement
-	return texture(get_lighted_image(i_locator, ls, type));
+	if(i_locator.is_void()) {
+		return texture();
+	}
+
+	// select associated cache
+	lit_texture_cache* imap = &lit_textures_;
+
+	// if no light variants yet, need to add an empty map
+	if(!i_locator.in_cache(*imap)) {
+		i_locator.add_to_cache(*imap, lit_texture_variants());
+	}
+
+	// need access to add it if not found
+	{ // enclose reference pointing to data stored in a changing vector
+		const lit_texture_variants& lvar = i_locator.locate_in_cache(*imap);
+		auto lvi = lvar.find(ls);
+		if(lvi != lvar.end()) {
+			return lvi->second;
+		}
+	}
+
+	// not cached yet, generate it
+	texture tex(get_lighted_image(i_locator, ls));
+
+	// record the lighted texture in the corresponding variants cache
+	i_locator.access_in_cache(*imap)[ls] = tex;
+
+	return tex;
 }
 
 surface get_hexmask()

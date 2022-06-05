@@ -178,9 +178,11 @@ typedef std::basic_string<signed char> light_string;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
 typedef std::map<light_string, surface> lit_variants;
+typedef std::map<light_string, texture> lit_texture_variants;
 
 /** Lit variants for each locator. */
 typedef cache_type<lit_variants> lit_cache;
+typedef cache_type<lit_texture_variants> lit_texture_cache;
 
 /**
  * Returns the light_string for one light operation.
@@ -277,12 +279,13 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 /**
  * Caches and returns an image with a lightmap applied to it.
  *
+ * Images will always be HEXED type.
+ *
  * @param i_locator            Image path.
  * @param ls                   Light map to apply to the image.
- * @param type                 This should be either HEXED or SCALED_TO_HEX.
  */
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
-texture get_lighted_texture(const image::locator& i_locator, const light_string& ls, TYPE type);
+surface get_lighted_image(const image::locator& i_locator, const light_string& ls);
+texture get_lighted_texture(const image::locator& i_locator, const light_string& ls);
 
 /**
  * Retrieves the standard hexagonal tile mask.
