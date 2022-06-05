@@ -108,6 +108,56 @@ void texture::set_alpha_mod(uint8_t alpha)
 	}
 }
 
+uint8_t texture::get_alpha_mod()
+{
+	if (!texture_) {
+		return 0;
+	}
+	uint8_t a;
+	SDL_GetTextureAlphaMod(texture_.get(), &a);
+	return a;
+}
+
+void texture::set_color_mod(color_t c)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_.get(), c.r, c.g, c.b);
+	}
+}
+void texture::set_color_mod(uint8_t r, uint8_t g, uint8_t b)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_.get(), r, g, b);
+	}
+}
+
+color_t texture::get_color_mod()
+{
+	if (!texture_) {
+		return {0,0,0};
+	}
+	color_t c;
+	SDL_GetTextureColorMod(texture_.get(), &c.r, &c.g, &c.b);
+	return c;
+}
+
+void texture::set_blend_mode(SDL_BlendMode b)
+{
+	if (texture_) {
+		SDL_SetTextureBlendMode(texture_.get(), b);
+	}
+}
+
+SDL_BlendMode texture::get_blend_mode()
+{
+	if (!texture_) {
+		return SDL_BLENDMODE_NONE;
+	}
+	SDL_BlendMode b;
+	SDL_GetTextureBlendMode(texture_.get(), &b);
+	return b;
+}
+
 void texture::reset()
 {
 	if(texture_) {
