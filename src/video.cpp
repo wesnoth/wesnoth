@@ -50,8 +50,6 @@ namespace
 {
 bool fake_interactive = false;
 point fake_size = {0, 0};
-
-const unsigned MAGIC_DPI_SCALE_NUMBER = 96;
 }
 
 namespace video2
