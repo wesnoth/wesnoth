@@ -508,10 +508,7 @@ void text_shape::draw(
 		return;
 	}
 
-	CVideo& video = CVideo::get_singleton();
-
 	font::pango_text& text_renderer = font::get_text_renderer();
-	const int pixel_scale = video.get_pixel_scale();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
@@ -520,25 +517,23 @@ void text_shape::draw(
 
 	// TODO: highdpi - determine how the font interface should work. Probably the way it is used here is fine. But the pixel scaling could theoretically be abstracted.
 	text_renderer.set_family_class(font_family_)
-		.set_font_size(font_size_(variables) * pixel_scale)
+		.set_font_size(font_size_(variables))
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
 		.set_foreground_color(color_(variables))
-		.set_maximum_width(maximum_width_(variables) * pixel_scale)
-		.set_maximum_height(maximum_height_(variables) * pixel_scale, true)
+		.set_maximum_width(maximum_width_(variables))
+		.set_maximum_height(maximum_height_(variables), true)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_);
 
 	wfl::map_formula_callable local_variables(variables);
+	const auto [tw, th] = text_renderer.get_size();
+
 	// Translate text width and height back to draw-space, rounding up.
-	local_variables.add("text_width", wfl::variant(
-		(text_renderer.get_width() + pixel_scale - 1) / pixel_scale
-	));
-	local_variables.add("text_height", wfl::variant(
-		(text_renderer.get_height() + pixel_scale - 1) / pixel_scale
-	));
+	local_variables.add("text_width", wfl::variant(tw));
+	local_variables.add("text_height", wfl::variant(th));
 
 	const auto rects = calculate_rects(area_to_draw, local_variables);
 
@@ -547,23 +542,23 @@ void text_shape::draw(
 		return;
 	}
 
-	// TODO: highdpi - cache this.
-	// TODO: highdpi - font system should return texture, not surface.
-	// TODO: highdpi - this should not be preclipped.
+	// Source region for high-dpi text needs to have pixel scale applied.
+	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
 	SDL_Rect clip_in = rects.clip_in_shape;
 	clip_in.x *= pixel_scale;
 	clip_in.y *= pixel_scale;
 	clip_in.w *= pixel_scale;
 	clip_in.h *= pixel_scale;
-	texture tex(text_renderer.render(clip_in));
-	if(tex.w() == 0 || tex.h() == 0) {
-		DBG_GUI_D << "Text: Rendering '" << text
-				  << "' resulted in an empty canvas, leave.\n";
+
+	// Render the currently visible portion of text
+	// TODO: highdpi - it would be better to render this all, but some things currently have far too much text. Namely the credits screen.
+	texture tex = text_renderer.render_texture(clip_in);
+	if(!tex) {
+		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
-	// Final output - texture is preclipped, so just place it appropriately.
-	// TODO: highdpi - don't use preclipped texture, rather set clip area.
+	// Final output - place clipped texture appropriately
 	SDL_Rect text_draw_location = draw_location;
 	text_draw_location.x += rects.dst_in_viewport.x;
 	text_draw_location.x += rects.clip_in_shape.x;

@@ -50,7 +50,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, buf_()
 	, buf_pos_()
 #endif
-	, draw_size_()
 	, fadeout_(0)
 	, time_start_(0)
 	, text_(text)
@@ -74,7 +73,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 {
 	if (surf.get()) {
 		tex_ = texture(surf);
-		draw_size_ = {surf->w, surf->h};
 	}
 }
 
@@ -135,7 +133,6 @@ bool floating_label::create_texture()
 			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
 				tex_ = texture(foreground);
-				draw_size_ = {foreground->w, foreground->h};
 				return tex_ != nullptr;
 			}
 
@@ -153,7 +150,6 @@ bool floating_label::create_texture()
 			sdl_blit(foreground, nullptr, background, &r);
 
 			tex_ = texture(background);
-			draw_size_ = {background->w, background->h};
 		} else {
 			// background is blurred shadow of the text
 			surface background(foreground->w + 4, foreground->h + 4);
@@ -165,13 +161,16 @@ bool floating_label::create_texture()
 			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
 				tex_ = texture(foreground);
-				draw_size_ = {foreground->w, foreground->h};
 				return tex_ != nullptr;
 			}
 			sdl_blit(foreground, nullptr, background, &r);
 			tex_ = texture(background);
-			draw_size_ = {background->w, background->h};
 		}
+
+		// adjust high-dpi text display scale
+		const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
+		tex_.set_draw_width(tex_.w() / pixel_scale);
+		tex_.set_draw_height(tex_.h() / pixel_scale);
 	}
 
 	return tex_ != nullptr;
@@ -189,7 +188,7 @@ void floating_label::draw(int time)
 	}
 
 	SDL_Point pos = get_loc(time);
-	SDL_Rect draw_rect = {pos.x, pos.y, draw_size_.x, draw_size_.y};
+	SDL_Rect draw_rect = {pos.x, pos.y, tex_.w(), tex_.h()};
 	buf_pos_ = draw_rect;
 
 	auto clipper = draw::set_clip(clip_rect_);
@@ -219,7 +218,7 @@ SDL_Point floating_label::get_loc(int time)
 {
 	int time_alive = get_time_alive(time);
 	return {
-		static_cast<int>(time_alive * xmove_ + xpos(draw_size_.x)),
+		static_cast<int>(time_alive * xmove_ + xpos(tex_.w())),
 		static_cast<int>(time_alive * ymove_ + ypos_)
 	};
 }
