@@ -55,7 +55,7 @@ scrollbar::scrollbar(CVideo &video)
 	, full_height_(0)
 	, scroll_rate_(1)
 {
-	const point img_size(image::get_image_size(scrollbar_mid));
+	const point img_size(image::get_size(scrollbar_mid));
 
 	if (img_size.x && img_size.y) {
 		set_width(img_size.x);

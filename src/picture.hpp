@@ -295,7 +295,7 @@ surface get_hexmask();
  * If the image is not yet in the surface cache, it will be loaded and cached.
  *
  */
-point get_image_size(const locator& i_locator);
+point get_size(const locator& i_locator);
 
 /**
  * Checks if an image fits into a single hex.

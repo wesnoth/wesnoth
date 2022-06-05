@@ -757,7 +757,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			const point image_size = image::get_image_size(image_name);
+			const point image_size = image::get_size(image_name);
 			if (image_size.x && image_size.y) {
 				int w = image_size.x;
 				int h = image_size.y;

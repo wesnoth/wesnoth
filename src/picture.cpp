@@ -909,7 +909,7 @@ surface get_hexmask()
 	return get_surface(terrain_mask, UNSCALED);
 }
 
-point get_image_size(const locator& i_locator)
+point get_size(const locator& i_locator)
 {
 	const surface s(get_surface(i_locator));
 	if (s != nullptr) {

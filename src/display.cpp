@@ -1520,7 +1520,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		bool hreverse, bool greyscale, int32_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	const point image_size = image::get_image_size(i_locator);
+	const point image_size = image::get_size(i_locator);
 	if (!image_size.x || !image_size.y) {
 		return;
 	}

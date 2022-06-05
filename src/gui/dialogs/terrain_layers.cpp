@@ -84,7 +84,7 @@ void terrain_layers::pre_show(window& window)
 		const int tz = game_config::tile_size;
 		SDL_Rect r {0,0,tz,tz};
 
-		const point img_size = image::get_image_size(img.get_filename());
+		const point img_size = image::get_size(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
 		if(loc_cut.valid()) {

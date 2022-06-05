@@ -285,7 +285,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
 			const point s = scaled_to_zoom(
-				image::get_image_size(u.default_anim_image())
+				image::get_size(u.default_anim_image())
 			);
 			xoff = !s.x ? 0 : (hex_size - s.x)/2;
 			yoff = !s.y ? 0 : (hex_size - s.x)/2;

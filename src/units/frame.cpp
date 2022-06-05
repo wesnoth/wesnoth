@@ -516,7 +516,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	point image_size {0, 0};
 	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image_size = image::get_image_size(image_loc);
+		image_size = image::get_size(image_loc);
 	}
 
 	const int d2 = display::get_singleton()->hex_size() / 2;
@@ -679,7 +679,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 		int w = 0, h = 0;
 
 		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
-			const point s = image::get_image_size(image_loc);
+			const point s = image::get_size(image_loc);
 			w = s.x;
 			h = s.y;
 		}

@@ -46,7 +46,7 @@ static int intf_get_image_size(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	image::locator img(m);
 	if(!img.file_exists()) return 0;
-	const point s = get_image_size(img);
+	const point s = get_size(img);
 	lua_pushinteger(L, s.x);
 	lua_pushinteger(L, s.y);
 	return 2;
