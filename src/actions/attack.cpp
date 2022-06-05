@@ -1625,7 +1625,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 		bonus = -lawful_bonus;
 		break;
 	case unit_alignments::type::liminal:
-		bonus = std::max(0, max_liminal_bonus-std::abs(lawful_bonus));
+		bonus = max_liminal_bonus-std::abs(lawful_bonus);
 		break;
 	default:
 		bonus = 0;
