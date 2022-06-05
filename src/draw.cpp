@@ -355,6 +355,45 @@ SDL_Rect draw::get_clip()
 }
 
 
+draw::viewport_setter::viewport_setter(const SDL_Rect& view)
+	: v_()
+{
+	v_ = draw::get_viewport();
+	draw::force_viewport(view);
+}
+
+draw::viewport_setter::~viewport_setter()
+{
+	draw::force_viewport(v_);
+}
+
+draw::viewport_setter draw::set_viewport(const SDL_Rect& viewport)
+{
+	return draw::viewport_setter(viewport);
+}
+
+void draw::force_viewport(const SDL_Rect& viewport)
+{
+	SDL_RenderSetViewport(renderer(), &viewport);
+}
+
+SDL_Rect draw::get_viewport()
+{
+	if (!renderer()) {
+		return sdl::empty_rect;
+	}
+
+	SDL_Rect viewport;
+	SDL_RenderGetViewport(renderer(), &viewport);
+
+	if (viewport == sdl::empty_rect) {
+		// TODO: highdpi - fix this in the case of render to texture
+		return CVideo::get_singleton().draw_area();
+	}
+	return viewport;
+}
+
+
 draw::render_target_setter::render_target_setter(const texture& t)
 	: target_(nullptr)
 	, viewport_()

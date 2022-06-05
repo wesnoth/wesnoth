@@ -310,6 +310,63 @@ void force_clip(const SDL_Rect& clip);
 SDL_Rect get_clip();
 
 
+/** A class to manage automatic restoration of the viewport region.
+ *
+ * While this can be constructed on its own, it is usually easier to
+ * use the draw::set_viewport() utility function.
+ */
+class viewport_setter
+{
+public:
+	explicit viewport_setter(const SDL_Rect& viewport);
+	~viewport_setter();
+private:
+	SDL_Rect v_;
+};
+
+/**
+ * Set the viewport. Drawing operations will have their coordinates
+ * adjusted to the viewport.
+ *
+ * The top-left corner of the viewport will be interpreted as (0,0) in
+ * draw space coordinates while the returned object is in scope.
+ *
+ * The new viewport is specified in absolute coordinates, relative to the
+ * full drawing surface.
+ *
+ * The returned object will reset the viewport when it is destroyed, so
+ * it should be kept in scope until viewport-relative drawing is complete.
+ *
+ * @param viewport      The new viewport region, relative to the current
+ *                      viewport.
+ * @param clip          If true, the clipping region will also be set to
+ *                      the new viewport.
+ * @returns             A viewport_setter object. When this object is
+ *                      destroyed the viewport will be restored to whatever
+ *                      it was before this call.
+ */
+viewport_setter set_viewport(const SDL_Rect&);
+
+/**
+ * Set the viewport, without any provided way of setting it back.
+ *
+ * The new viewport is specified in absolute coordinates, relative to the
+ * full drawing surface.
+ *
+ * @param viewport      The viewport, in absolute draw-space coordinates.
+ *                      If null, the viewport is reset to the full draw area.
+ */
+void force_viewport(const SDL_Rect&);
+
+/**
+ * Get the current viewport.
+ *
+ * @returns             The current viewport, in the coordinate space of
+ *                      the original drawing surface
+ */
+SDL_Rect get_viewport();
+
+
 /** A class to manage automatic restoration of the render target.
  *
  * While this can be constructed on its own, it is usually easier to
