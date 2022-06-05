@@ -270,11 +270,11 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 }
 
 
+// TODO: highdpi - maybe expose this mirrored mode to WML somehow
 void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	bool mirrored)
 {
 	if (!tex) { return; }
-	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res. To draw in higher res, width and height would have to be specified.
 
 	// Reduce clip to dst.
 	auto clipper = draw::reduce_clip(dst);
@@ -292,6 +292,38 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 				draw::flipped(tex, t, hf, vf);
 			} else {
 				draw::blit(tex, t);
+			}
+		}
+	}
+}
+
+void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
+	bool centered, bool mirrored)
+{
+	if (!tex) { return; }
+
+	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
+
+	// Reduce clip to dst.
+	auto clipper = draw::reduce_clip(dst);
+
+	const auto info = tex.get_info();
+	const float w = float(info.w) / float(pixel_scale);
+	const float h = float(info.h) / float(pixel_scale);
+	const float xoff = centered ? (dst.w - w) / 2 : 0.0f;
+	const float yoff = centered ? (dst.h - h) / 2 : 0.0f;
+
+	// Just blit the image however many times is necessary.
+	bool vf = false;
+	SDL_FRect t{dst.x - xoff, dst.y - yoff, w, h};
+	for (; t.y < dst.y + dst.h; t.y += t.h, vf = !vf) {
+		bool hf = false;
+		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
+			if (mirrored) {
+				SDL_RendererFlip flip = get_flip(hf, vf);
+				SDL_RenderCopyExF(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
+			} else {
+				SDL_RenderCopyF(renderer(), tex, nullptr, &t);
 			}
 		}
 	}

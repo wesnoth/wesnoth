@@ -238,6 +238,8 @@ void flipped(const texture& tex, bool flip_h = true, bool flip_v = false);
 /**
  * Tile a texture to fill a region.
  *
+ * This function tiles the texture in draw-space.
+ *
  * The texture may be aligned either with its center at the center
  * of the region, or with its top-left corner at the top-left corner
  * of the region.
@@ -251,6 +253,17 @@ void flipped(const texture& tex, bool flip_h = true, bool flip_v = false);
  *                  better for images that are not perfect tiles.
  */
 void tiled(const texture& tex,
+	const SDL_Rect& dst,
+	bool centered = false,
+	bool mirrored = false
+);
+
+/** Tile a texture to fill a region.
+ *
+ * This function tiles the texture in output space. It is otherwise
+ * identical to draw::tiled().
+ */
+void tiled_highres(const texture& tex,
 	const SDL_Rect& dst,
 	bool centered = false,
 	bool mirrored = false

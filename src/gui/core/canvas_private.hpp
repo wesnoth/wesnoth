@@ -386,6 +386,7 @@ private:
 		stretch,
 		tile,
 		tile_center,
+		tile_highres,
 	};
 
 	/** Converts a string to a resize mode. */

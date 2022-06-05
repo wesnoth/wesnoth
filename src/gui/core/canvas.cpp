@@ -431,6 +431,9 @@ void image_shape::draw(
 	case (resize_mode::tile_center):
 		draw::tiled(tex, adjusted_draw_loc, true, mirror_(variables));
 		break;
+	case resize_mode::tile_highres:
+		draw::tiled_highres(tex, adjusted_draw_loc, false, mirror_(variables));
+		break;
 	case resize_mode::stretch:
 		// Stretching is identical to scaling in terms of handling.
 		// Is this intended? That's what previous code was doing.
@@ -456,6 +459,8 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return resize_mode::tile;
 	} else if(resize_mode == "tile_center") {
 		return resize_mode::tile_center;
+	} else if(resize_mode == "tile_highres") {
+		return resize_mode::tile_highres;
 	} else if(resize_mode == "stretch") {
 		return resize_mode::stretch;
 	} else if(resize_mode == "scale_sharp") {
