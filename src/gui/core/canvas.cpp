@@ -366,14 +366,17 @@ void image_shape::draw(
 		return;
 	}
 
-	/*
-	 * The locator might return a different surface for every call so we can't
-	 * cache the output, also not if no formula is used.
-	 */
-	texture tex(image::get_texture(image::locator(name)));
+	// Texture filtering mode must be set on texture creation,
+	// so check whether we need smooth scaling or not here.
+	image::scale_quality scale_quality = image::scale_quality::nearest;
+	if (resize_mode_ == resize_mode::stretch
+		|| resize_mode_ == resize_mode::scale)
+	{
+		scale_quality = image::scale_quality::linear;
+	}
+	texture tex = image::get_texture(image::locator(name), scale_quality);
 
-	// TODO: highdpi - better texture validity check
-	if(tex.w() == 0 || tex.h() == 0) {
+	if(!tex) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
@@ -428,12 +431,14 @@ void image_shape::draw(
 	case (resize_mode::tile_center):
 		draw::tiled(tex, adjusted_draw_loc, true, mirror_(variables));
 		break;
-	case (resize_mode::stretch):
-	case (resize_mode::scale):
-	case (resize_mode::scale_sharp):
-		// TODO: highdpi - SDL requires that filtering mode be set per-texture, at texture creation. This will require either texture caches according to filtering mode, or an overhaul in how filtering type is requested so that the filter mode is specified as part of image loading, not image drawing.
-		// TODO: highdpi - is there any real difference between scale and stretch?
-		if (mirror_(variables)) {
+	case resize_mode::stretch:
+		// Stretching is identical to scaling in terms of handling.
+		// Is this intended? That's what previous code was doing.
+	case resize_mode::scale:
+		// Filtering mode is set on texture creation above.
+		// Handling is otherwise identical to sharp scaling.
+	case resize_mode::scale_sharp:
+		if(mirror_(variables)) {
 			draw::flipped(tex, adjusted_draw_loc);
 		} else {
 			draw::blit(tex, adjusted_draw_loc);
