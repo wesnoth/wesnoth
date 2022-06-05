@@ -197,7 +197,7 @@ class tod_manager
 			has_cfg_liminal_bonus_ = true;
 		}
 		void reset_max_liminal_bonus() {
-			liminal_bonus_ = calculate_best_liminal_bonus(times());
+			liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times()));
 			has_cfg_liminal_bonus_ = false;
 		}
 	private:

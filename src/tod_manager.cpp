@@ -55,7 +55,7 @@ tod_manager::tod_manager(const config& scenario_cfg)
 	}
 
 	time_of_day::parse_times(scenario_cfg, times_);
-	liminal_bonus_ = calculate_best_liminal_bonus(times_);
+	liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times_));
 
 	if(scenario_cfg.has_attribute("liminal_bonus")) {
 		liminal_bonus_ = scenario_cfg["liminal_bonus"].to_int(liminal_bonus_);
