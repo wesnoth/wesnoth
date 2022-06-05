@@ -517,6 +517,7 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 			std::copy(dir_keys.begin(), dir_keys.end(), std::back_inserter(keys));
 			break;
 	}
+	lua_pop(L, 1);
 }
 
 /**
@@ -525,6 +526,8 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
  * - For a table, all keys defined in the table
  * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
  * - The output of the __dir metafunction
+ * - Filtering out any keys beginning with two underscores
+ * - Filtering out any keys for which object[key].__deprecated exists and is true
  * The list is then sorted alphabetically and formatted into columns.
  * - Arg 1: Any object
  * - Arg 3: (optional) Function to use for output; defaults to _G.print
@@ -570,7 +573,25 @@ static int intf_object_dir(lua_State* L)
 	}
 	// Sort and remove any duplicates
 	std::sort(keys.begin(), keys.end());
-	keys.erase(std::unique(keys.begin(), keys.end()), keys.end());
+	auto final = std::unique(keys.begin(), keys.end());
+	final = std::remove_if(keys.begin(), final, [L](const std::string& key) {
+		if(key.compare(0, 2, "__") == 0) {
+			return true;
+		}
+		auto type = lua_getfield(L, 1, key.c_str());
+		if(type == LUA_TTABLE) {
+			lua_pushliteral(L, "__deprecated");
+			if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
+				auto deprecated = luaW_toboolean(L, -1);
+				lua_pop(L, 2);
+				return deprecated;
+			}
+			lua_pop(L, 1);
+		}
+		lua_pop(L, 1);
+		return false;
+	});
+	keys.erase(final, keys.end());
 	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
 		return std::max(max, next.size());
 	});
