@@ -339,13 +339,11 @@ private:
  *
  * @param viewport      The new viewport region, relative to the current
  *                      viewport.
- * @param clip          If true, the clipping region will also be set to
- *                      the new viewport.
  * @returns             A viewport_setter object. When this object is
  *                      destroyed the viewport will be restored to whatever
  *                      it was before this call.
  */
-viewport_setter set_viewport(const SDL_Rect&);
+viewport_setter set_viewport(const SDL_Rect& viewport);
 
 /**
  * Set the viewport, without any provided way of setting it back.
@@ -356,7 +354,7 @@ viewport_setter set_viewport(const SDL_Rect&);
  * @param viewport      The viewport, in absolute draw-space coordinates.
  *                      If null, the viewport is reset to the full draw area.
  */
-void force_viewport(const SDL_Rect&);
+void force_viewport(const SDL_Rect& viewport);
 
 /**
  * Get the current viewport.

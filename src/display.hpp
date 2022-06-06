@@ -981,7 +981,11 @@ public:
 	 * @param dest               The target destination on screen,
 	 *                           in drawing coordinates.
 	 * @param tex               The texture to use.
-	 * @param clip
+	 * @param clip              The portion of the source texture to use.
+	 * @param hflip             If true, flip the image horizontally.
+	 * @param vflip             If true, flip the image vertically.
+	 * @param alpha_mod         An alpha modifier to apply - multiplies
+	 *                          texture alpha by this value when drawing.
 	 */
 	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, const SDL_Rect& dest, const texture& tex,
