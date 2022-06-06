@@ -486,7 +486,6 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-// TODO: highdpi - make sure the result of this gets scaled where it's used
 std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 {
 	std::vector<texture> res;

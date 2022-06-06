@@ -375,7 +375,6 @@ void textbox::update_text_cache(bool changed, const color_t& color)
 	cursor_pos_ = cursor_x - text_pos_;
 
 	if (text_image_) {
-		// TODO: highdpi - does this need pixel scale compensation?
 		set_full_size(text_image_.h());
 		set_shown_size(location().h);
 	}
