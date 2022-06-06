@@ -188,43 +188,44 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	move::remove_temp_modifier(unit_map);
 }
 
+// Draws the attack indicator.
 void attack::draw_hex(const map_location& hex)
 {
-	// TODO: highdpi - this indent is unnecessary
-	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
+	if (hex != get_dest_hex() && hex != target_hex_) {
+		return;
+	}
+
+	//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+	//or a dedicated layer
+	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+
+	//calculate direction (valid for both hexes)
+	std::string direction_text = map_location::write_direction(
+			get_dest_hex().get_relative_dir(target_hex_));
+
+	if (hex == get_dest_hex()) //add symbol to attacker hex
 	{
-		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
-		//or a dedicated layer
-		const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+		auto disp = display::get_singleton();
+		int x = disp->get_location_x(get_dest_hex());
+		int y = disp->get_location_y(get_dest_hex());
+		const texture t = image::get_texture(
+			"whiteboard/attack-indicator-src-" + direction_text + ".png",
+			image::HEXED);
+		const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-		//calculate direction (valid for both hexes)
-		std::string direction_text = map_location::write_direction(
-				get_dest_hex().get_relative_dir(target_hex_));
+		disp->drawing_buffer_add(layer, get_dest_hex(), dest, t);
+	}
+	else if (hex == target_hex_) //add symbol to defender hex
+	{
+		auto disp = display::get_singleton();
+		int x = disp->get_location_x(target_hex_);
+		int y = disp->get_location_y(target_hex_);
+		const texture t = image::get_texture(
+			"whiteboard/attack-indicator-dst-" + direction_text + ".png",
+			image::HEXED);
+		const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-		if (hex == get_dest_hex()) //add symbol to attacker hex
-		{
-			auto disp = display::get_singleton();
-			int x = disp->get_location_x(get_dest_hex());
-			int y = disp->get_location_y(get_dest_hex());
-			const texture t = image::get_texture(
-				"whiteboard/attack-indicator-src-" + direction_text + ".png",
-				image::HEXED);
-			const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
-
-			disp->drawing_buffer_add(layer, get_dest_hex(), dest, t);
-		}
-		else if (hex == target_hex_) //add symbol to defender hex
-		{
-			auto disp = display::get_singleton();
-			int x = disp->get_location_x(target_hex_);
-			int y = disp->get_location_y(target_hex_);
-			const texture t = image::get_texture(
-				"whiteboard/attack-indicator-dst-" + direction_text + ".png",
-				image::HEXED);
-			const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
-
-			disp->drawing_buffer_add(layer, target_hex_, dest, t);
-		}
+		disp->drawing_buffer_add(layer, target_hex_, dest, t);
 	}
 }
 

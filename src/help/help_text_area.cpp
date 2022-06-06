@@ -113,9 +113,8 @@ void help_text_area::set_items()
 	curr_loc_.second = 0;
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
-	const std::string show_title =
-		font::pango_line_ellipsize(shown_topic_->title, title_size, inner_location().w);
-	// TODO: highdpi - pango textures
+	const std::string show_title = font::pango_line_ellipsize(
+		shown_topic_->title, title_size, inner_location().w);
 	texture tex(font::pango_render_text(show_title, title_size,
 		font::NORMAL_COLOR, font::pango_text::STYLE_BOLD));
 	if (tex) {
@@ -355,7 +354,6 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 			down_one_line();
 		}
 		else {
-			// TODO: highdpi - pango textures
 			texture tex(font::pango_render_text(first_part,
 				scaled_font_size, color, font::pango_text::FONT_STYLE(state)));
 			if (tex) {

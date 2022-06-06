@@ -1608,7 +1608,6 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		tex = image::get_texture(i_locator);
 	}
 
-	// TODO: highdpi - flipping and alpha modification need to be propagated from hreverse, vreverse, alpha
 	const uint8_t alpha_mod = std::clamp(alpha, 0, 255);
 	drawing_buffer_add(drawing_layer, loc, dest, tex, sdl::empty_rect,
 		hreverse, vreverse, alpha_mod);
@@ -2878,7 +2877,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		{
 			if (used_ellipsis) goto skip_element;
 
-			// TODO: highdpi - high dpi text
 			// Draw a text element.
 			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
@@ -2911,7 +2909,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				// TODO: highdpi - don't convert this here
 				s = text.render_texture();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
