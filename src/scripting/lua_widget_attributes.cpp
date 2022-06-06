@@ -574,4 +574,47 @@ int impl_widget_set(lua_State* L)
 	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str << "\n";
 	return luaL_argerror(L, 2, "invalid modifiable property of widget");
 }
+
+int impl_widget_dir(lua_State* L)
+{
+	gui2::widget& w = luaW_checkwidget(L, 1);
+	std::vector<std::string> keys;
+	// Add any readable keys
+	for(const auto& [key, funcs] : getters) {
+		if(key == "value_compat") continue;
+		for(const auto& func : funcs) {
+			if(func(L, w, true)){
+				keys.push_back(key);
+				break;
+			}
+		}
+	}
+	// Add any writable keys
+	for(const auto& [key, funcs] : setters) {
+		if(key == "value_compat") continue;
+		if(key == "callback") continue;
+		for(const auto& func : funcs) {
+			if(func(L, 0, w, true)){
+				keys.push_back(key);
+				break;
+			}
+		}
+	}
+	// Add any nested widget IDs
+	using iter_t = gui2::iteration::top_down_iterator<true, true, true>;
+	for(auto child = iter_t(w); !child.at_end(); child.next()) {
+		const auto& key = child->id();
+		if(!key.empty() && key != w.id()) {
+			keys.push_back(key);
+		}
+	}
+	// Add the gui.widget methods
+	luaW_getglobal(L, "dir");
+	luaW_getglobal(L, "gui", "widget");
+	lua_call(L, 1, 1);
+	auto methods = lua_check<std::vector<std::string>>(L, -1);
+	keys.insert(keys.end(), methods.begin(), methods.end());
+	lua_push(L, keys);
+	return 1;
+}
 }

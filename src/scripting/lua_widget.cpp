@@ -197,6 +197,8 @@ namespace lua_widget {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, lua_widget::impl_widget_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, lua_widget::impl_widget_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushcfunction(L, impl_widget_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushstring(L, widgetKey);
