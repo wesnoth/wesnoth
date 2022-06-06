@@ -520,6 +520,49 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 	lua_pop(L, 1);
 }
 
+// These two are separate functions so I can use a protected call on it to catch errors.
+static int impl_is_deprecated(lua_State* L)
+{
+	auto key = luaL_checkstring(L, 2);
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		lua_pushliteral(L, "__deprecated");
+		if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
+			auto deprecated = luaW_toboolean(L, -1);
+			lua_pushboolean(L, deprecated);
+			return 1;
+		}
+		lua_pop(L, 1);
+	}
+	lua_pushboolean(L, false);
+	return 1;
+}
+
+static int impl_get_dir_suffix(lua_State*L)
+{
+	auto key = luaL_checkstring(L, 2);
+	std::string suffix = " ";
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		suffix = "†";
+	} else if(type == LUA_TFUNCTION) {
+		suffix = "ƒ";
+	} else if(type == LUA_TUSERDATA) {
+		lua_getglobal(L, "getmetatable");
+		lua_pushvalue(L, -2);
+		lua_call(L, 1, 1);
+		if(lua_type(L, -1) == LUA_TSTRING) {
+			auto meta = lua_check<std::string>(L, -1);
+			if(meta == "function") {
+				suffix = "ƒ";
+			}
+		}
+	}
+	suffix = " " + suffix;
+	lua_pushlstring(L, suffix.c_str(), suffix.size());
+	return 1;
+}
+
 /**
  * Prints out a list of keys available in an object.
  * A list of keys is gathered from the following sources:
@@ -578,17 +621,20 @@ static int intf_object_dir(lua_State* L)
 		if(key.compare(0, 2, "__") == 0) {
 			return true;
 		}
-		auto type = lua_getfield(L, 1, key.c_str());
-		if(type == LUA_TTABLE) {
-			lua_pushliteral(L, "__deprecated");
-			if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
-				auto deprecated = luaW_toboolean(L, -1);
-				lua_pop(L, 2);
-				return deprecated;
-			}
-			lua_pop(L, 1);
+		int save_top = lua_gettop(L);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		// Exclude deprecated elements
+		// Some keys may be write-only, which would raise an exception here
+		// In that case we just ignore it and assume not deprecated
+		// (the __dir metamethod would be responsible for excluding deprecated write-only keys)
+		lua_pushcfunction(L, impl_is_deprecated);
+		lua_pushvalue(L, 1);
+		lua_push(L, key);
+		if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+			return luaW_toboolean(L, -1);
 		}
-		lua_pop(L, 1);
 		return false;
 	});
 	keys.erase(final, keys.end());
@@ -605,30 +651,23 @@ static int intf_object_dir(lua_State* L)
 		line.fill(' ');
 		line.setf(std::ios::left);
 		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
-			std::string suffix = " ";
-			auto type = lua_getfield(L, 1, keys[j + i * n_cols].c_str());
-			if(type == LUA_TTABLE) {
-				suffix = "†";
-			} else if(type == LUA_TFUNCTION) {
-				suffix = "ƒ";
-			} else if(type == LUA_TUSERDATA) {
-				lua_getglobal(L, "getmetatable");
-				lua_pushvalue(L, -2);
-				lua_call(L, 1, 1);
-				if(lua_type(L, -1) == LUA_TSTRING) {
-					auto meta = lua_check<std::string>(L, -1);
-					if(meta == "function") {
-						suffix = "ƒ";
-					}
-				}
-				lua_pop(L, 1);
+			int save_top = lua_gettop(L);
+			ON_SCOPE_EXIT(&) {
+				lua_settop(L, save_top);
+			};
+			lua_pushcfunction(L, impl_get_dir_suffix);
+			lua_pushvalue(L, 1);
+			const auto& key = keys[j + i * n_cols];
+			lua_pushlstring(L, key.c_str(), key.size());
+			std::string suffix = " !"; // Exclamation mark to indicate an error
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+				suffix = luaL_checkstring(L, -1);
 			}
-			lua_pop(L, 1);
-			suffix = " " + suffix;
 			// This weird calculation is because width counts in bytes, not code points
 			// Since the suffix is a Unicode character, that messes up the alignment
 			line.width(col_width - SUFFIX_PADDING + suffix.size());
-			line << (keys[j + i * n_cols] + suffix) << std::flush;
+			// Concatenate key and suffix beforehand so they share the same field width.
+			line << (key + suffix) << std::flush;
 		}
 		lua_pushvalue(L, fcn_idx);
 		lua_push(L, line.str());
