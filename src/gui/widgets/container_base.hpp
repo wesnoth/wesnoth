@@ -143,8 +143,6 @@ public:
 
 	/**
 	 * See @ref widget::create_walker.
-	 *
-	 * @todo Implement properly.
 	 */
 	virtual iteration::walker_ptr create_walker() override;
 

@@ -198,6 +198,7 @@ public:
 
 	bool at_end() const
 	{
+		if(!root_) return true;
 		return visit_widget::at_end(*root_) && visit_grid::at_end(*root_)
 			   && visit_child::at_end(*root_);
 	}
@@ -266,8 +267,8 @@ public:
 			stack_.push_back(std::exchange(root_, visit_child::get(*root_)->create_walker()));
 
 			assert(root_);
-			assert(!at_end());
 			TST_GUI_I << " Down and visit '" << operator*().id() << "'.\n";
+			if(at_end()) up();
 			return true;
 		}
 

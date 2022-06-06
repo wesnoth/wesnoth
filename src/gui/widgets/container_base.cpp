@@ -17,7 +17,7 @@
 
 #include "gui/widgets/container_base.hpp"
 
-#include "gui/auxiliary/iterator/walker.hpp"
+#include "gui/auxiliary/iterator/walker_container.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -264,7 +264,7 @@ bool container_base::disable_click_dismiss() const
 
 iteration::walker_ptr container_base::create_walker()
 {
-	return nullptr;
+	return std::make_unique<gui2::iteration::container>(*this);
 }
 
 void container_base::init_grid(const builder_grid& grid_builder)

@@ -137,6 +137,11 @@ public:
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
+	
+	/**
+	 * See @ref widget::create_walker.
+	 */
+	virtual iteration::walker_ptr create_walker() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

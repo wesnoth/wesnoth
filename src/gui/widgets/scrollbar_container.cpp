@@ -18,6 +18,7 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker_scrollbar_container.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
@@ -514,6 +515,11 @@ bool scrollbar_container::disable_click_dismiss() const
 {
 	assert(content_grid_);
 	return container_base::disable_click_dismiss() || content_grid_->disable_click_dismiss();
+}
+
+iteration::walker_ptr scrollbar_container::create_walker()
+{
+	return std::make_unique<gui2::iteration::scrollbar_container>(*this);
 }
 
 bool scrollbar_container::content_resize_request(const bool force_sizing)

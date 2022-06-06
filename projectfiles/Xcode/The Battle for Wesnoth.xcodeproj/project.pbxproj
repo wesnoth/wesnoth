@@ -824,6 +824,10 @@
 		91AF556D281101C4007A7652 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF556C281101C3007A7652 /* input.cpp */; };
 		91AF55B02827588B007A7652 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55AF2827588B007A7652 /* texture.cpp */; };
 		91AF55DF2848472F007A7652 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55DE2848472F007A7652 /* draw.cpp */; };
+		91AF564F284D8A8B007A7652 /* walker_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5649284D88DA007A7652 /* walker_container.cpp */; };
+		91AF5654284D90ED007A7652 /* walker_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5649284D88DA007A7652 /* walker_container.cpp */; };
+		91AF565B284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */; };
+		91AF565C284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -2141,6 +2145,10 @@
 		91AF55AF2827588B007A7652 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		91AF55DD2848472E007A7652 /* draw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
 		91AF55DE2848472F007A7652 /* draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
+		91AF5649284D88DA007A7652 /* walker_container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = walker_container.cpp; sourceTree = "<group>"; };
+		91AF564A284D88DA007A7652 /* walker_container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = walker_container.hpp; sourceTree = "<group>"; };
+		91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = walker_scrollbar_container.cpp; sourceTree = "<group>"; };
+		91AF565A284D9251007A7652 /* walker_scrollbar_container.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = walker_scrollbar_container.hpp; sourceTree = "<group>"; };
 		91B621801B766ED500B00E0F /* buffered_istream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buffered_istream.hpp; sourceTree = "<group>"; };
 		91B621811B766F1900B00E0F /* carryover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carryover.hpp; sourceTree = "<group>"; };
 		91B621821B766FD200B00E0F /* display_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = display_context.hpp; sourceTree = "<group>"; };
@@ -3773,8 +3781,12 @@
 				46F92D0A2174F6A300602C1C /* iterator.hpp */,
 				46F92D072174F6A300602C1C /* policy_order.hpp */,
 				46F92D032174F6A300602C1C /* policy_visit.hpp */,
+				91AF5649284D88DA007A7652 /* walker_container.cpp */,
+				91AF564A284D88DA007A7652 /* walker_container.hpp */,
 				46F92D052174F6A300602C1C /* walker_grid.cpp */,
 				46F92D0C2174F6A300602C1C /* walker_grid.hpp */,
+				91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */,
+				91AF565A284D9251007A7652 /* walker_scrollbar_container.hpp */,
 				46F92D012174F6A300602C1C /* walker_tree_node.cpp */,
 				46F92D082174F6A300602C1C /* walker_tree_node.hpp */,
 				46F92D092174F6A300602C1C /* walker_widget.cpp */,
@@ -5347,6 +5359,7 @@
 				46F92EDC2174FD9900602C1C /* scrollarea.cpp in Sources */,
 				ECA1E0F21A1271AC00426E00 /* lua_gui2.cpp in Sources */,
 				46F92D872174F6A300602C1C /* horizontal_list.cpp in Sources */,
+				91AF564F284D8A8B007A7652 /* walker_container.cpp in Sources */,
 				EC5401851EBE0C4500AE66EE /* display.cpp in Sources */,
 				46F92C1E2174F5D700602C1C /* help.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
@@ -5481,6 +5494,7 @@
 				B559986C0EC616B3008DD061 /* SDLMain.mm in Sources */,
 				EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */,
 				B5599B030EC62181008DD061 /* map_settings.cpp in Sources */,
+				91AF565B284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */,
 				46F92C1A2174F5D700602C1C /* help_text_area.cpp in Sources */,
 				46F92DC12174F6A300602C1C /* game_version_dialog.cpp in Sources */,
 				ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */,
@@ -5802,6 +5816,7 @@
 				46F92EE42174FDA600602C1C /* menu.cpp in Sources */,
 				91E356691CACC6E000774252 /* mouse_events.cpp in Sources */,
 				91E3566A1CACC6E000774252 /* mouse_handler_base.cpp in Sources */,
+				91AF565C284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */,
 				46F92EEB2174FDAB00602C1C /* widget.cpp in Sources */,
 				91E3566B1CACC6E000774252 /* movetype.cpp in Sources */,
 				91E3566C1CACC6E000774252 /* mp_game_settings.cpp in Sources */,
@@ -6084,6 +6099,7 @@
 				91A214FA1CAD66B900927AEA /* hotkey_manager.cpp in Sources */,
 				46F92D802174F6A300602C1C /* static_registry.cpp in Sources */,
 				91A214FB1CAD66CC00927AEA /* picture.cpp in Sources */,
+				91AF5654284D90ED007A7652 /* walker_container.cpp in Sources */,
 				91A214FC1CAD66CC00927AEA /* image_modifications.cpp in Sources */,
 				4649B88420288DFB00827CFB /* game.cpp in Sources */,
 				46F92E322174F6A400602C1C /* custom_tod.cpp in Sources */,
