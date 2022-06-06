@@ -15,6 +15,7 @@
 
 #include "gui/core/canvas.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
+#include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -106,51 +107,85 @@ static gui2::widget* find_child_by_name(gui2::widget& w, const std::string& m)
     return w.find(m, false);
 }
 
-using tgetters = std::map<std::string, std::vector<std::function<bool(lua_State*, gui2::widget&)>>>;
+using tgetters = std::map<std::string, std::vector<std::function<bool(lua_State*, gui2::widget&, bool)>>>;
 static tgetters getters;
 
-using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*, int, gui2::widget&)>>>;
+using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*, int, gui2::widget&, bool)>>>;
 static tsetters setters;
 
+template<typename widget_type, typename value_type>
+struct widget_getter
+{
+	virtual value_type get(lua_State* L, widget_type& w) const = 0;
+	virtual ~widget_getter() = default;
+};
+
+template<typename widget_type, typename value_type>
+struct widget_setter
+{
+	virtual void set(lua_State* L, widget_type& w, const value_type& value) const = 0;
+	virtual ~widget_setter() = default;
+};
+
+template<typename widget_type, typename value_type, typename action_type, bool setter>
+void register_widget_attribute(const char* name)
+{
+	utils::split_foreach(name, ',', 0, [](std::string_view name_part) {
+		using map_type = std::conditional_t<setter, tsetters, tgetters>;
+		using list_type = typename map_type::mapped_type;
+		using callback_type = typename list_type::value_type;
+		map_type* map;
+		callback_type fcn;
+		if constexpr(setter) {
+			map = &setters;
+			fcn = [action = action_type()](lua_State* L, int idx, gui2::widget& w, bool nop) {
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+					if(!nop) action.set(L, *pw, lua_check<value_type>(L, idx));
+					return true;
+				}
+				return false;
+			};
+		} else {
+			map = &getters;
+			fcn = [action = action_type()](lua_State* L, gui2::widget& w, bool nop) {
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+					if(!nop) lua_push(L, action.get(L, *pw));
+					return true;
+				}
+				return false;
+			};
+		}
+		list_type& list = (*map)[std::string(name_part)];
+		list.push_back(fcn);
+	});
+}
+
 #define WIDGET_GETTER4(name, value_type, widgt_type, id) \
-/* use a class member for L to surpress unused parameter wanring */ \
-struct BOOST_PP_CAT(getter_, id) { value_type do_it(widgt_type& w); lua_State* L; }; \
+struct BOOST_PP_CAT(getter_, id) : public widget_getter<widgt_type, value_type> { \
+	value_type get(lua_State* L, widgt_type& w) const override; \
+}; \
 struct BOOST_PP_CAT(getter_adder_, id) { \
 	BOOST_PP_CAT(getter_adder_, id) () \
 	{ \
-		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
-			getters[std::string(name_part)].push_back([](lua_State* L, gui2::widget& w) { \
-				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					lua_push(L, BOOST_PP_CAT(getter_, id){L}.do_it(*pw)); \
-					return true; \
-				} \
-				return false; \
-			}); \
-		}); \
+		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(getter_, id), false>(name); \
 	} \
 }; \
 static BOOST_PP_CAT(getter_adder_, id) BOOST_PP_CAT(getter_adder_instance_, id) ; \
-value_type BOOST_PP_CAT(getter_, id)::do_it(widgt_type& w)
+value_type BOOST_PP_CAT(getter_, id)::get([[maybe_unused]] lua_State* L, widgt_type& w) const
 
 
 #define WIDGET_SETTER4(name, value_type, widgt_type, id) \
-struct BOOST_PP_CAT(setter_, id) { void do_it(widgt_type& w, const value_type& value); lua_State* L; }; \
+struct BOOST_PP_CAT(setter_, id) : public widget_setter<widgt_type, value_type> { \
+	void set(lua_State* L, widgt_type& w, const value_type& value) const override; \
+}; \
 struct BOOST_PP_CAT(setter_adder_, id) { \
 	BOOST_PP_CAT(setter_adder_, id) ()\
 	{ \
-		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
-			setters[std::string(name_part)].push_back([](lua_State* L, int idx, gui2::widget& w) { \
-				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					BOOST_PP_CAT(setter_, id){L}.do_it(*pw, lua_check<value_type>(L, idx)); \
-					return true; \
-				} \
-				return false; \
-			}); \
-		}); \
+		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(setter_, id), true>(name); \
 	} \
 }; \
 static BOOST_PP_CAT(setter_adder_, id) BOOST_PP_CAT(setter_adder_instance_, id); \
-void BOOST_PP_CAT(setter_, id)::do_it(widgt_type& w, const value_type& value)
+void BOOST_PP_CAT(setter_, id)::set([[maybe_unused]] lua_State* L, widgt_type& w, const value_type& value) const
 
 
 /**
@@ -501,7 +536,7 @@ int impl_widget_get(lua_State* L)
 	tgetters::iterator it = getters.find(std::string(str));
 	if(it != getters.end()) {
 		for(const auto& func : it->second) {
-			if(func(L, w)) {
+			if(func(L, w, false)) {
 				return 1;
 			}
 		}
@@ -526,7 +561,7 @@ int impl_widget_set(lua_State* L)
 	tsetters::iterator it = setters.find(std::string(str));
 	if(it != setters.end()) {
 		for(const auto& func : it->second) {
-			if(func(L, 3, w)) {
+			if(func(L, 3, w, false)) {
 				return 0;
 			}
 		}
