@@ -126,6 +126,13 @@ static int impl_color_get(lua_State *L)
 	return 0;
 }
 
+static int impl_color_dir(lua_State* L)
+{
+	static const std::vector<std::string> keys{"min", "max", "mid", "minimap", "pango_color"};
+	lua_push(L, keys);
+	return 1;
+}
+
 static int impl_color_set(lua_State *L)
 {
 	return luaL_argerror(L, 2, "color objects canot be modified");
@@ -160,6 +167,8 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_color_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_color_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "color range");
 		lua_setfield(L, -2, "__metatable");
 
