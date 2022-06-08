@@ -572,7 +572,7 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	fmt.insert("Window size", geometry_to_string(
 		video.current_resolution().x, video.current_resolution().y));
 	fmt.insert("Game canvas size", geometry_to_string(
-		video.get_width(), video.get_height()));
+		video.draw_area().w, video.draw_area().h));
 	fmt.insert("Final render target size", geometry_to_string(
 		video.output_size().x, video.output_size().y));
 	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));

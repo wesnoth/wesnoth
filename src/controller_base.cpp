@@ -314,7 +314,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 			dy -= scroll_amount;
 		}
 
-		if(mousey > get_display().video().get_height() - scroll_threshold) {
+		if(mousey > get_display().video().draw_area().h - scroll_threshold) {
 			dy += scroll_amount;
 		}
 
@@ -322,7 +322,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 			dx -= scroll_amount;
 		}
 
-		if(mousex > get_display().video().get_width() - scroll_threshold) {
+		if(mousex > get_display().video().draw_area().w - scroll_threshold) {
 			dx += scroll_amount;
 		}
 	}

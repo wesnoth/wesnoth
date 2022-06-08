@@ -122,8 +122,6 @@ public:
 
 	bool supports_vsync() const;
 
-	bool set_resolution(const unsigned width, const unsigned height);
-
 	/**
 	 * Set the window resolution.
 	 *
@@ -169,20 +167,6 @@ public:
 	 * draw_area(), but for clarity there are two separate functions.
 	 */
 	SDL_Rect input_area() const;
-
-	/**
-	 * Returns the width of the drawing surface in pixels.
-	 * Input coordinates are automatically scaled to correspond,
-	 * so this also indicates the width of the input surface.
-	 */
-	int get_width() const;
-
-	/**
-	 * Returns the height of the drawing surface in pixels.
-	 * Input coordinates are automatically scaled to correspond,
-	 * so this also indicates the height of the input surface.
-	 */
-	int get_height() const;
 
 	/**
 	 * Get the current active pixel scale multiplier.
@@ -375,13 +359,10 @@ public:
 	};
 
 private:
-	static CVideo* singleton_;
+	static inline CVideo* singleton_ = nullptr;
 
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
-
-	/** The drawing texture. */
-	SDL_Texture* drawing_texture_;
 
 	/** The current offscreen render target. */
 	SDL_Texture* render_texture_;

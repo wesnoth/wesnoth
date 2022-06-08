@@ -644,7 +644,7 @@ void canvas::blit(SDL_Rect rect)
 	// From those, as the first column is off-screen:
 	// rect_clipped_to_parent={0, 2, 329, 440}
 	// area_to_draw={1, 0, 329, 440}
-	SDL_Rect parent {0, 0, video.get_width(), video.get_height()};
+	SDL_Rect parent {0, 0, video.draw_area().w, video.draw_area().h};
 	SDL_Rect rect_clipped_to_parent;
 	if(!SDL_IntersectRect(&rect, &parent, &rect_clipped_to_parent)) {
 		DBG_GUI_D << "Area to draw is completely outside parent.\n";
