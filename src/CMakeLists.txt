@@ -41,7 +41,7 @@ if(MSVC)
 elseif(MINGW)
 	set(common-external-libs ${common-external-libs} wsock32 ws2_32 shlwapi winmm crypt32)
 elseif(APPLE)
-	set(common-external-libs ${common-external-libs} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
+	set(common-external-libs ${common-external-libs} ${APPKIT_LIBRARY} ${FOUNDATION_LIBRARY} ${IOKIT_LIBRARY} ${SECURITY_LIBRARY})
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
