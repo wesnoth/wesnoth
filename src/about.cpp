@@ -12,7 +12,6 @@
 
 	See the COPYING file for more details.
 */
-lkmasckjanscjkansc kajnsc kjascn;
 
 #include "about.hpp"
 
