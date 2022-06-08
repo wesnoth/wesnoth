@@ -1142,8 +1142,8 @@ int main(int argc, char** argv)
 	} catch(const sdl::exception& e) {
 		std::cerr << e.what();
 		error_exit(1);
-	} catch(const game::error&) {
-		// A message has already been displayed.
+	} catch(const game::error& e) {
+		std::cerr << "Game error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
