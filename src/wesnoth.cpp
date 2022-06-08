@@ -1110,7 +1110,7 @@ int main(int argc, char** argv)
 			}
 		}
 
-		throw game::error("break horribly");
+		assert(1 == 0);
 		const int res = do_gameloop(args);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
