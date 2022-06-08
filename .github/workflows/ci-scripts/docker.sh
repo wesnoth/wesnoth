@@ -25,17 +25,17 @@ die() { error "$*"; exit 1; }
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
 execute() {
     local message=$1; shift
-    printf 'Executing %s\n' "$message"
+    printf '\e[1mExecuting %s\n\e[0m' "$message"
     if "$@"; then
         : # success
     else
         EXIT_VAL=$?
-        echo "********** !FAILURE! **********"
-        echo "********** !FAILURE! **********"
-        echo "********** !FAILURE! **********"
-        echo "********** !FAILURE! **********"
-        echo "********** !FAILURE! **********"
-        error "$message failed! ($*)"
+        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        error "\e[1m$message failed! ($*)\e[0m"
     fi
 }
 
