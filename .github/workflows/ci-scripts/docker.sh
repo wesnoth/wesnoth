@@ -92,7 +92,7 @@ else
     if [ "$TOOL" == "cmake" ]; then
         cmake -DCMAKE_BUILD_TYPE="$CFG" -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
               -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true \
-              -DCXX_STD="$CXX_STD" . || exit 1
+              -DFORCE_COLOR_OUTPUT=true -DCXX_STD="$CXX_STD" . || exit 1
         make conftests || exit 1
         make VERBOSE=1 -j2
         EXIT_VAL=$?
@@ -100,7 +100,7 @@ else
         scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
             ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
             extra_flags_config="-pipe" strict=true forum_user_handler=true \
-            nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
+            nls="$NLS" enable_lto="$LTO" force_color=true jobs=2 --debug=time
         EXIT_VAL=$?
     fi
 fi
