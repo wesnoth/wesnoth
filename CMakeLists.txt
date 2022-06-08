@@ -73,6 +73,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(OpenSSL 1.0 REQUIRED)
 
 if(APPLE)
+	find_library(APPKIT_LIBRARY AppKit REQUIRED)
+	find_library(FOUNDATION_LIBRARY Foundation REQUIRED)
 	find_library(IOKIT_LIBRARY IOKit REQUIRED)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
