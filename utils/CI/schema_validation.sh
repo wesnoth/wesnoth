@@ -10,7 +10,7 @@ function validate_core()
     
     ./wesnoth --validate data/_main.cfg &> temp.log || SUCCESS="No"
     if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
+        echo -e "\e[1;31m$NAME failed validation!\e[0m"
         cat temp.log
         rm temp.log
     fi
@@ -32,7 +32,7 @@ function validate_misc()
     
     ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines=$DEFINE &> temp.log || SUCCESS="No"
     if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
+        echo -e "\e[1;31m$NAME failed validation!\e[0m"
         cat temp.log
         rm temp.log
     fi
@@ -54,7 +54,7 @@ function validate_schema()
     
     ./wesnoth --data-dir=. --validate-schema=data/schema/$FILE.cfg &> temp.log || SUCCESS="No"
     if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
+        echo -e "\e[1;31m$NAME failed validation!\e[0m"
         cat temp.log
         rm temp.log
     fi
@@ -83,7 +83,7 @@ function validate_campaign()
             ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines=$DEFINE,$DIFFICULTY &> temp.log || SUCCESS="No"
             
             if [ "$SUCCESS" == "No" ]; then
-                echo "$NAME failed $DIFFICULTY validation!"
+                echo -e "\e[1;31m$NAME failed $DIFFICULTY validation!\e[0m"
                 cat temp.log
             fi
             
