@@ -36,9 +36,9 @@ else
 			WORKDIR /home/wesnoth-CI
 		EOF
 
-		# note: something in the update-po4a-manual step hangs when building the xml (po4a-translate) and --tty is used
+		[[ $NLS == only ]] || tty=1  # something in the update-po4a-manual step hangs when building the xml (po4a-translate) and --tty is used
 
-		docker run --cap-add=ALL --privileged \
+		docker run ${tty+--tty} --cap-add=ALL --privileged \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
 				--env CXX_STD --env CFG --env LTO --env CLICOLOR_FORCE \
 				wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
