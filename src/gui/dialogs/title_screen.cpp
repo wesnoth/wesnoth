@@ -146,8 +146,6 @@ static void debug_tooltip(window& /*window*/, bool& handled, const point& coordi
 
 void title_screen::pre_show(window& win)
 {
-	throw game::error("just some random error");
-
 	win.set_click_dismiss(false);
 	win.set_enter_disabled(true);
 	win.set_escape_disabled(true);

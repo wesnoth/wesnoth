@@ -12,7 +12,7 @@
 
 	See the COPYING file for more details.
 */
-lkansc lkma sc;
+
 #include "about.hpp"
 
 #include "config.hpp"
