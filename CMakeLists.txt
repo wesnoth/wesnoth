@@ -154,6 +154,7 @@ option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and 
 option(ENABLE_LTO "Sets Link Time Optimization for Release builds" OFF)
 option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC" OFF)
 option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
+option(FORCE_COLOR_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
@@ -214,6 +215,16 @@ if(NOT MSVC)
 		set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=${SANITIZE}")
 		# manually disable some optimizations to get better stacktraces if sanitizers are used
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
+	endif()
+
+### Force colour output (for example for Ninja, or piped CI)
+
+	if(FORCE_COLOR_OUTPUT)
+		if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+			set(COMPILER_FLAGS "${COMPILER_FLAGS} -fdiagnostics-color=always")
+		elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+			set(COMPILER_FLAGS "${COMPILER_FLAGS} -fcolor-diagnostics")
+		endif()
 	endif()
 
 ### Set the final compiler flags.
