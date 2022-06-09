@@ -105,6 +105,7 @@ namespace randomness
 	 */
 	int rng::get_random_int_in_range_zero_to(int max)
 	{
+		assert(1 == 0);
 		assert(max >= 0);
 		return static_cast<int> (next_random() % (static_cast<uint32_t>(max)+1));
 	}
