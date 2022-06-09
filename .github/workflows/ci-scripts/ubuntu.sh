@@ -40,6 +40,6 @@ else
 
 		docker run ${tty+--tty} --cap-add=ALL --privileged \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
-				--env CXX_STD --env CFG --env LTO \
+				--env CXX_STD --env CFG --env LTO --env CLICOLOR_FORCE \
 				wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
 fi
