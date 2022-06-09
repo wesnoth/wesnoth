@@ -895,6 +895,10 @@ const std::string& get_direction(std::size_t n)
 
 void display::create_buttons()
 {
+	if(screen_.faked()) {
+		return;
+	}
+
 	menu_buttons_.clear();
 	action_buttons_.clear();
 
@@ -2054,7 +2058,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(screen_.update_locked()) {
+	if(screen_.update_locked() || screen_.faked()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2414,7 +2418,7 @@ void display::draw(bool update, bool force)
 {
 	//	log_scope("display::draw");
 
-	if(screen_.update_locked()) {
+	if(screen_.update_locked() || screen_.faked()) {
 		return;
 	}
 
