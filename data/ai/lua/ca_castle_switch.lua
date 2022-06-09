@@ -99,6 +99,11 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         return 0
     end
 
+    -- Also need to check that the stored leader has not been killed
+    if data.CS_leader and not data.CS_leader.valid then
+        data.CS_leader, data.CS_leader_target = nil, nil
+    end
+
     local avoid_map = AH.get_avoid_map(ai, nil, true)
 
     if data.CS_leader and wesnoth.sides[wesnoth.current.side].gold >= AH.get_cheapest_recruit_cost(data.CS_leader)
