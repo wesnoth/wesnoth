@@ -100,7 +100,7 @@ function wesnoth.type(value)
 		local m = getmetatable(value)
 		if type(m) == 'string' then
 			return m
-		elseif type(m.__name) == 'string' then
+		elseif type(m) == 'table' and type(m.__name) == 'string' then
 			return m.__name
 		end
 	end
