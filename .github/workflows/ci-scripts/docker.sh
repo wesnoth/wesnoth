@@ -123,7 +123,7 @@ execute "Whitespace and WML indentation check" checkindent
 execute "Doxygen check" ./utils/CI/doxygen-check.sh
 execute "WML tests" ./run_wml_tests -g -c -t 20
 execute "Play tests" ./utils/CI/play_test_executor.sh
-execute "MP tests" ./utils/CI/play_test_executor.sh
+execute "MP tests" ./utils/CI/mp_test_executor.sh
 execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then
