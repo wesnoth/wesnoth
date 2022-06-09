@@ -49,6 +49,7 @@ CVideo* CVideo::singleton_ = nullptr;
 namespace
 {
 bool fake_interactive = false;
+point fake_size = {0, 0};
 
 const unsigned MAGIC_DPI_SCALE_NUMBER = 96;
 }
@@ -184,17 +185,67 @@ void CVideo::make_fake()
 	refresh_rate_ = 1;
 }
 
-void CVideo::make_test_fake(const unsigned /*width*/, const unsigned /*height*/)
+void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-	// TODO: highdpi - make an actual window?
-
 	fake_interactive = true;
 	refresh_rate_ = 1;
+
+	if (window) {
+		set_resolution(width, height);
+	} else {
+		fake_size = {int(width), int(height)};
+		init_fake_window();
+	}
+}
+
+void CVideo::update_framebuffer_fake()
+{
+	if (!window) {
+		return;
+	}
+
+	// TODO: code unduplication
+	// Build or update the current render texture.
+	if (render_texture_) {
+		int w, h;
+		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
+		if (w != fake_size.x || h != fake_size.y) {
+			// Delete it and let it be recreated.
+			LOG_DP << "destroying old render texture" << std::endl;
+			SDL_DestroyTexture(render_texture_);
+			render_texture_ = nullptr;
+		}
+	}
+	if (!render_texture_) {
+		LOG_DP << "creating offscreen render texture" << std::endl;
+		render_texture_ = SDL_CreateTexture(
+			*window,
+			window->pixel_format(),
+			SDL_TEXTUREACCESS_TARGET,
+			fake_size.x, fake_size.y
+		);
+		LOG_DP << "updated render target to " << fake_size.x
+			<< "x" << fake_size.y << std::endl;
+	}
+
+	pixel_scale_ = 1;
+	logical_size_ = fake_size;
+
+	// The render texture is always the render target in this case.
+	SDL_SetRenderTarget(*window, render_texture_);
+
+	// TODO: is there any need to update input dimensions?
+	//sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 }
 
 void CVideo::update_framebuffer()
 {
 	if(!window) {
+		return;
+	}
+
+	if (fake_interactive) {
+		update_framebuffer_fake();
 		return;
 	}
 
@@ -301,6 +352,29 @@ void CVideo::update_framebuffer()
 	}
 }
 
+void CVideo::init_fake_window()
+{
+	LOG_DP << "creating fake window " << fake_size.x
+		<< "x" << fake_size.y << std::endl;
+
+	uint32_t window_flags = 0;
+	window_flags |= SDL_WINDOW_HIDDEN;
+	// The actual window won't be used, as we'll be rendering to texture.
+
+	uint32_t renderer_flags = 0;
+	renderer_flags |= SDL_RENDERER_TARGETTEXTURE;
+	// All we need is to be able to render to texture.
+
+	window.reset(new sdl::window(
+		"", 0, 0, fake_size.x, fake_size.y,
+		window_flags, renderer_flags
+	));
+
+	event_handler_.join_global();
+
+	update_framebuffer_fake();
+}
+
 void CVideo::init_window()
 {
 	// Position
@@ -360,6 +434,15 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 		return;
 	}
 
+	if(fake_interactive) {
+		if(mode == TO_RES) {
+			LOG_DP << "resizing fake resolution to " << size << std::endl;
+			fake_size = size;
+			update_framebuffer_fake();
+		}
+		return;
+	}
+
 	switch(mode) {
 	case TO_FULLSCREEN:
 		window->full_screen();
@@ -387,12 +470,18 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 
 SDL_Point CVideo::output_size() const
 {
+	if (fake_interactive) {
+		return fake_size;
+	}
 	// As we are rendering via an abstraction, we should never need this.
 	return window->get_output_size();
 }
 
 SDL_Point CVideo::window_size() const
 {
+	if (fake_interactive) {
+		return fake_size;
+	}
 	return window->get_size();
 }
 
@@ -406,6 +495,9 @@ SDL_Rect CVideo::input_area() const
 	if(!window) {
 		WRN_DP << "requesting input area with no window" << std::endl;
 		return draw_area();
+	}
+	if (fake_interactive) {
+		return {0, 0, fake_size.x, fake_size.y};
 	}
 	// This should always match draw_area.
 	SDL_Point p(window->get_logical_size());
@@ -437,6 +529,10 @@ CVideo::render_target_setter CVideo::set_render_target(const texture& t)
 void CVideo::force_render_target(SDL_Texture* t)
 {
 	SDL_SetRenderTarget(get_renderer(), t);
+
+	if (fake_interactive) {
+		return;
+	}
 
 	// The scale factor gets reset when the render target changes,
 	// so make sure it gets set back appropriately.
@@ -512,6 +608,11 @@ SDL_Rect CVideo::to_output(const SDL_Rect& r) const
 void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
+		return;
+	}
+
+	if(fake_interactive) {
+		// No need to present anything in this case
 		return;
 	}
 
@@ -758,11 +859,17 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 
 point CVideo::current_resolution()
 {
+	if (fake_interactive) {
+		return fake_size;
+	}
 	return point(window->get_size()); // Convert from plain SDL_Point
 }
 
 bool CVideo::is_fullscreen() const
 {
+	if (fake_interactive) {
+		return true;
+	}
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 
@@ -771,6 +878,7 @@ bool CVideo::supports_vsync() const
 	return sdl_get_version() >= version_info{2, 0, 17};
 }
 
+// TODO: highdpi - this should not be here.
 int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
@@ -818,6 +926,10 @@ void CVideo::clear_all_help_strings()
 
 void CVideo::set_fullscreen(bool ison)
 {
+	if (fake_interactive) {
+		return;
+	}
+
 	if(window && is_fullscreen() != ison) {
 		const point& res = preferences::resolution();
 

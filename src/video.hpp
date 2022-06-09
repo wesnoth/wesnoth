@@ -83,7 +83,10 @@ public:
 
 	/** Initializes a new SDL window instance, taking into account any preiously saved states. */
 	void init_window();
+private:
+	void init_fake_window();
 
+public:
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
 
@@ -249,7 +252,10 @@ public:
 	 * This needs to be invoked immediately after a resize event or the game will crash.
 	 */
 	void update_framebuffer();
+private:
+	void update_framebuffer_fake();
 
+public:
 	/** Clear the screen contents */
 	void clear_screen();
 
