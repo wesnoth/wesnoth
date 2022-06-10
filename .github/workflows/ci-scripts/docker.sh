@@ -16,6 +16,7 @@ export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
 red=$(tput setaf 1)
+blue=$(tput setaf 4)
 reset=$(tput sgr0)
 # print given message in red
 error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
@@ -25,20 +26,16 @@ die() { error "$*"; exit 1; }
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
 execute() {
     local message=$1; shift
-    echo
-    echo -e "\e[1;34m -~=+=~-  ${message//?/-}\e[0m"
-    echo -e "\e[1;34mExecuting $message\e[0m"
-    echo -e "\e[1;34m -~=+=~-  ${message//?/-}\e[0m"
-    echo
+    printf '\n%s -~=+=~-  %s\nExecuting %s\n -~=+=~-  %s%s\n\n' "$blue" "${message//?/-}" "$message" "${message//?/-}" "$reset"
     if "$@"; then
         : # success
     else
         EXIT_VAL=$?
-        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
-        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
-        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
-        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
-        echo -e "\e[1;31m********** !FAILURE! **********\e[0m"
+        error '********** !FAILURE! **********'
+        error '********** !FAILURE! **********'
+        error '********** !FAILURE! **********'
+        error '********** !FAILURE! **********'
+        error '********** !FAILURE! **********'
         echo
         error "$message failed! ($*)"
         echo
