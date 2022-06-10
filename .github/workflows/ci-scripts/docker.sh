@@ -16,7 +16,7 @@ export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
 
 red=$(tput setaf 1)
-blue=$(tput setaf 4)
+blue=$(tput bold; tput setaf 4)
 reset=$(tput sgr0)
 # print given message in red
 error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
