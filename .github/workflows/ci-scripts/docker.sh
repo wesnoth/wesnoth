@@ -18,6 +18,7 @@ export DISPLAY=:99.0
 red=$(tput setaf 1)
 blue=$(tput bold; tput setaf 4)
 reset=$(tput sgr0)
+print() { printf '%s%s%s\n' "$blue" "$*" "$reset"; }
 # print given message in red
 error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
 # print given message and exit
@@ -26,7 +27,11 @@ die() { error "$*"; exit 1; }
 # print given message ($1) and execute given command; sets EXIT_VAL on failure
 execute() {
     local message=$1; shift
-    printf '\n%s -~=+=~-  %s\nExecuting %s\n -~=+=~-  %s%s\n\n' "$blue" "${message//?/-}" "$message" "${message//?/-}" "$reset"
+    echo
+    print " -~=+=~-  ${message//?/-}"
+    print "Executing $message"
+    print " -~=+=~-  ${message//?/-}"
+    echo
     if "$@"; then
         : # success
     else
@@ -130,7 +135,12 @@ execute "MP tests" ./utils/CI/mp_test_executor.sh
 execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then
-    error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
+    echo
+    error '***'
+    error '*'
+    error '* Errors reported in wml unit tests, here is errors.log...'
+    error '*'
+    error '***'
     cat errors.log
 fi
 
