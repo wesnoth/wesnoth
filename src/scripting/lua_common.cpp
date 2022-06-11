@@ -268,6 +268,17 @@ static int impl_vconfig_get(lua_State *L)
 	return 1;
 }
 
+static int impl_vconfig_dir(lua_State* L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	std::vector<std::string> attributes;
+	for(const auto& [key, value] : v->get_config().attribute_range()) {
+		attributes.push_back(key);
+	}
+	lua_push(L, attributes);
+	return 1;
+}
+
 /**
  * Returns the number of a child of a vconfig object.
  */
@@ -469,6 +480,7 @@ std::string register_vconfig_metatable(lua_State *L)
 	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
+		{ "__dir",          &impl_vconfig_dir},
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
 		{ "__ipairs",       &impl_vconfig_ipairs},
@@ -681,6 +693,12 @@ static int impl_namedtuple_get(lua_State* L)
 	return 0;
 }
 
+static int impl_namedtuple_dir(lua_State* L)
+{
+	luaL_getmetafield(L, 1, "__names");
+	return 1;
+}
+
 static int impl_namedtuple_tostring(lua_State* L)
 {
 	std::vector<std::string> elems;
@@ -700,6 +718,7 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 	lua_createtable(L, 0, 4);
 	static luaL_Reg callbacks[] = {
 		{ "__index", &impl_namedtuple_get },
+		{ "__dir", &impl_namedtuple_dir },
 		{ "__tostring", &impl_namedtuple_tostring },
 		{ nullptr, nullptr }
 	};
