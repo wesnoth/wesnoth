@@ -112,8 +112,8 @@ function methods:get(...)
 end
 
 ---Add a location to the set
----@overload fun(x:integer, y:integer, value?:any)
----@overload fun(loc:location, value?:any)
+---@overload fun(set:location_set, x:integer, y:integer, value?:any)
+---@overload fun(set:location_set, loc:location, value?:any)
 function methods:insert(...)
 	local loc, n = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -124,7 +124,7 @@ end
 
 ---Remove a location from the set
 ---@overload fun(x:integer, y:integer)
----@overload fun(loc:location:unit)
+---@overload fun(loc:location|unit)
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then

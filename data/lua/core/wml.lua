@@ -174,7 +174,7 @@ local create_tag_mt = {
 	end
 }
 
----@type table<string, fun(cfg:WML):WMLTag
+---@type table<string, fun(cfg:WML):WMLTag>
 wml.tag = setmetatable({}, create_tag_mt)
 
 --[========[Config / Vconfig Unified Handling]========]

@@ -5,6 +5,8 @@
 ---@field side integer
 ai = {}
 
+---@alias ai_aspects_recruitment_more string|integer
+
 ---@class ai.aspects
 ---@field aggression number
 ---@field caution number
@@ -27,8 +29,7 @@ ai = {}
 ---@field attacks {own:unit[], enemy:unit[]}
 ---@field avoid location[]
 ---@field leader_goal WMLTable
----@field recruitment_instructions
----@alias ai_aspects_recruitment_more string|integer
+---@field recruitment_instructions WMLTable
 ---@field recruitment_more ai_aspects_recruitment_more[]
 ---@field recruitment_pattern string[]
 ---@field recruitment_save_gold WMLTable
@@ -125,7 +126,7 @@ function ai.recall(unit_id, at) end
 
 ---Check if recalling a unit is possible
 ---@param unit_id string
----@param a?t location
+---@param at? location
 ---@return ai_result
 function ai.check_recall(unit_id, at) end
 

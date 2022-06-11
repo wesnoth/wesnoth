@@ -186,7 +186,7 @@ local known_operators = {
 ---@generic T
 ---@param input T[]
 ---@param operator string|fun(a:T, b:T):T
----@param identity T
+---@param identity? T
 ---@return T
 function functional.reduce(input, operator, ...)
 	local f <const> = known_operators[operator] or operator
