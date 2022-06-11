@@ -15,7 +15,10 @@
 ---| "'sw'"
 ---| "'se'"
 
----@class terrain_map
+---@class wesnoth.map
+wesnoth.map = {}
+
+---@class terrain_map : wesnoth.map
 ---@field width integer
 ---@field height integer
 ---@field playable_width integer
