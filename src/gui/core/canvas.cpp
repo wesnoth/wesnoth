@@ -566,7 +566,9 @@ void text_shape::draw(
 	// TODO: highdpi - don't use preclipped texture, rather set clip area.
 	SDL_Rect text_draw_location = draw_location;
 	text_draw_location.x += rects.dst_in_viewport.x;
+	text_draw_location.x += rects.clip_in_shape.x;
 	text_draw_location.y += rects.dst_in_viewport.y;
+	text_draw_location.y += rects.clip_in_shape.y;
 	text_draw_location.w = rects.dst_in_viewport.w;
 	text_draw_location.h = rects.dst_in_viewport.h;
 	draw::blit(tex, text_draw_location);
