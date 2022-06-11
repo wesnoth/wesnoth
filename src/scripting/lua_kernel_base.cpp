@@ -123,6 +123,13 @@ static int impl_version_get(lua_State* L)
 	return 0;
 }
 
+static int impl_version_dir(lua_State* L)
+{
+	static const std::vector<std::string> fields{"major", "minor", "revision", "is_canonical", "special", "sep"};
+	lua_push(L, fields);
+	return 1;
+}
+
 /**
  * Destroy a version
  */
@@ -176,6 +183,7 @@ static int intf_make_version(lua_State* L)
 	if(luaL_newmetatable(L, Version)) {
 		static const luaL_Reg metafuncs[] {
 			{ "__index", &impl_version_get },
+			{ "__dir", &impl_version_dir },
 			{ "__tostring", &impl_version_tostring },
 			{ "__lt", &impl_version_compare<VERSION_COMP_OP::OP_LESS> },
 			{ "__le", &impl_version_compare<VERSION_COMP_OP::OP_LESS_OR_EQUAL> },
