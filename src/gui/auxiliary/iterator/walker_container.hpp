@@ -29,7 +29,7 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param grid                The grid which the walker is attached to.
+	 * @param container                The grid which the walker is attached to.
 	 */
 	explicit container(gui2::container_base& container);
 
