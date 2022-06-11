@@ -120,6 +120,11 @@ bool floating_label::create_texture()
 
 		surface foreground = text.render();
 
+		// Pixel scaling is necessary as we are manipulating the raw surface
+		const int ps = CVideo::get_singleton().get_pixel_scale();
+		// For consistent results we must also enlarge according to zoom
+		const int sf = ps * display::get_singleton()->get_zoom_factor();
+
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
 			return false;
@@ -128,7 +133,7 @@ bool floating_label::create_texture()
 		// combine foreground text with its background
 		if(bgalpha_ != 0) {
 			// background is a dark tooltip box
-			surface background(foreground->w + border_ * 2, foreground->h + border_ * 2);
+			surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
@@ -145,18 +150,18 @@ bool floating_label::create_texture()
 			// (where the text was blitted directly on screen)
 			adjust_surface_alpha(foreground, floating_to_fixed_point(1.13));
 
-			SDL_Rect r{border_, border_, 0, 0};
+			SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
 			tex_ = texture(background);
 		} else {
 			// background is blurred shadow of the text
-			surface background(foreground->w + 4, foreground->h + 4);
+			surface background(foreground->w + 4*sf, foreground->h + 4*sf);
 			sdl::fill_surface_rect(background, nullptr, 0);
-			SDL_Rect r{2, 2, 0, 0};
+			SDL_Rect r{2*sf, 2*sf, 0, 0};
 			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background);
+			background = shadow_image(background, sf);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
@@ -168,9 +173,8 @@ bool floating_label::create_texture()
 		}
 
 		// adjust high-dpi text display scale
-		const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
-		tex_.set_draw_width(tex_.w() / pixel_scale);
-		tex_.set_draw_height(tex_.h() / pixel_scale);
+		tex_.set_draw_width(tex_.w() / ps);
+		tex_.set_draw_height(tex_.h() / ps);
 	}
 
 	return tex_ != nullptr;

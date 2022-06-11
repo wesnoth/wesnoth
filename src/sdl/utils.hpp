@@ -143,7 +143,7 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 surface alpha_to_greyscale(const surface & surf);
 surface wipe_alpha(const surface & surf);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(const surface &surf);
+surface shadow_image(const surface &surf, int scale = 1);
 
 enum channel { RED, GREEN, BLUE, ALPHA };
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a);
