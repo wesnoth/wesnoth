@@ -137,7 +137,7 @@ static int impl_color_set(lua_State *L)
 {
 	return luaL_argerror(L, 2, "color objects canot be modified");
 }
-	
+
 static int impl_colors_dir(lua_State* L)
 {
 	std::vector<std::string> all_colours;

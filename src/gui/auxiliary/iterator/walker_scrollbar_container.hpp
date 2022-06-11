@@ -53,7 +53,7 @@ private:
 	 * gui2::iteration::walker_base::widget level has been visited.
 	 */
 	gui2::widget* widget_;
-	
+
 	/**
 	 * Whether the grid has been yielded
 	 *
