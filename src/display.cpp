@@ -1493,8 +1493,10 @@ void display::draw_text_in_hex(const map_location& loc,
 {
 	if (text.empty()) return;
 
-	const std::size_t font_sz = static_cast<std::size_t>(font_size * get_zoom_factor());
+	const double zf = get_zoom_factor();
+	const int font_sz = int(font_size * zf);
 
+	// TODO: highdpi - use the same processing as floating_label::create_texture() and cache the effect result so it doesn't constantly rerender the same thing.
 	// TODO: highdpi - perhaps this could be a single texture with colour mod, in stead of rendering twice?
 	texture text_surf = font::pango_render_text(text, font_sz, color);
 	texture back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
@@ -1507,8 +1509,9 @@ void display::draw_text_in_hex(const map_location& loc,
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
-				const SDL_Rect dest{x + dx, y + dy, w, h};
-				drawing_buffer_add(layer, loc, dest, back_surf);
+				const SDL_Rect dest{int(x + dx*zf), int(y + dy*zf), w, h};
+				drawing_buffer_add(layer, loc, dest, back_surf,
+					SDL_Rect(), false, false, 128);
 			}
 		}
 	}
