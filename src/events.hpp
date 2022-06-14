@@ -126,6 +126,9 @@ void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
+// whether the currently executing thread is the main thread.
+bool is_in_main_thread();
+
 void call_in_main_thread(const std::function<void (void)>& f);
 
 //event_context objects control the handler objects that SDL events are sent
