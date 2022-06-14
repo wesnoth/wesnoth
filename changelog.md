@@ -22,6 +22,7 @@
  ### Miscellaneous and Bug Fixes
    * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
+   * Fixed transparency of submerged units when zoomed (issue #3746)
 
 ## Version 1.17.4
  ### Campaigns
