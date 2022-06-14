@@ -102,6 +102,9 @@ public:
 	 *
 	 * There is an internal guard against acting too frequently, so there
 	 * should be little need to limit calls to this function.
+	 *
+	 * If a loading screen is not currently being shown, this function does
+	 * nothing.
 	 */
 	static void spin();
 
