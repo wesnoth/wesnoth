@@ -127,9 +127,14 @@ void loading_screen::progress(loading_stage stage)
 
 void loading_screen::spin()
 {
+	// If we're not showing a loading screen, do nothing.
+	if (!singleton_) {
+		return;
+	}
+
 	// Restrict actual update rate.
 	int elapsed = SDL_GetTicks() - last_spin_;
-	if (singleton_ && (elapsed > 10 || elapsed < 0)) {
+	if (elapsed > 10 || elapsed < 0) {
 		events::raise_draw_event();
 		events::pump();
 		last_spin_ = SDL_GetTicks();
