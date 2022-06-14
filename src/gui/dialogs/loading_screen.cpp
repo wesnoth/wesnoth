@@ -132,6 +132,11 @@ void loading_screen::spin()
 		return;
 	}
 
+	// If we're not the main thread, do nothing.
+	if (!events::is_in_main_thread()) {
+		return;
+	}
+
 	// Restrict actual update rate.
 	int elapsed = SDL_GetTicks() - last_spin_;
 	if (elapsed > 10 || elapsed < 0) {
