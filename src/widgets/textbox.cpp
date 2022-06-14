@@ -227,6 +227,11 @@ void textbox::draw_contents()
 			}
 		}
 
+		// text may be rendered at high dpi, scale source clip accordingly
+		const int ps = video().get_pixel_scale();
+		src.x *= ps; src.y *= ps; src.w *= ps; src.h *= ps;
+		// TODO: highdpi - consider sizing source clip in draw coordinates, now that textures have a draw-space w/h? That would work here.
+
 		if(enabled()) {
 			draw::blit(text_image_, dest, src);
 		} else {
