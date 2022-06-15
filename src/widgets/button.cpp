@@ -289,7 +289,7 @@ void button::enable(bool new_val)
 
 void button::draw_contents()
 {
-	texture& image = image_;
+	texture image = image_;
 
 	int offset = 0;
 	switch(state_) {
@@ -364,7 +364,7 @@ void button::draw_contents()
 	draw::blit(image, dest);
 
 	if (overlayImage_) {
-		texture& overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
+		texture overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
 
 		if (overlayPressedImage_) {
 			switch (state_) {
