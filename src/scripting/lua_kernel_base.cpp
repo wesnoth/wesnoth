@@ -528,7 +528,7 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 	lua_pop(L, 1);
 }
 
-// These two are separate functions so I can use a protected call on it to catch errors.
+// This is a separate function so I can use a protected call on it to catch errors.
 static int impl_is_deprecated(lua_State* L)
 {
 	auto key = luaL_checkstring(L, 2);
@@ -546,6 +546,7 @@ static int impl_is_deprecated(lua_State* L)
 	return 1;
 }
 
+// This is also a separate function so I can use a protected call on it to catch errors.
 static int impl_get_dir_suffix(lua_State*L)
 {
 	auto key = luaL_checkstring(L, 2);
@@ -581,12 +582,12 @@ static int impl_get_dir_suffix(lua_State*L)
  * - Filtering out any keys for which object[key].__deprecated exists and is true
  * The list is then sorted alphabetically and formatted into columns.
  * - Arg 1: Any object
- * - Arg 3: (optional) Function to use for output; defaults to _G.print
+ * - Arg 2: (optional) Function to use for output; defaults to _G.print
  */
 static int intf_object_dir(lua_State* L)
 {
 	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
-	if(!lua_isfunction(L, -1)) {
+	if(!lua_isfunction(L, 2)) {
 		luaW_getglobal(L, "print");
 	}
 	int fcn_idx = lua_gettop(L);

@@ -138,7 +138,7 @@ static int impl_color_set(lua_State *L)
 	return luaL_argerror(L, 2, "color objects canot be modified");
 }
 
-static int impl_colors_dir(lua_State* L)
+static int impl_colors_table_dir(lua_State* L)
 {
 	std::vector<std::string> all_colours;
 	for(const auto& [key, value] : game_config::team_rgb_range) {
@@ -181,7 +181,7 @@ namespace lua_colors {
 		lua_createtable(L, 0, 2);
 		lua_pushcfunction(L, impl_get_color);
 		lua_setfield(L, -2, "__index");
-		lua_pushcfunction(L, impl_colors_dir);
+		lua_pushcfunction(L, impl_colors_table_dir);
 		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "colors table");
 		lua_setfield(L, -2, "__metatable");
