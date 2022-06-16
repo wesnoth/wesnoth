@@ -293,9 +293,9 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 	const hotkey_command& command = get_hotkey_command(get_command());
 
 	if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
-		&& (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
+		&& (mods == KMOD_NONE || mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
 	) {
-		return event.key.keysym.sym == keycode_ && mods == mod_;
+		return (event.key.keysym.sym == keycode_ || (SDL_GetScancodeFromName(SDL_GetKeyName(event.key.keysym.sym)) == SDL_SCANCODE_UNKNOWN && SDL_GetKeyFromName(SDL_GetScancodeName(event.key.keysym.scancode)) == keycode_)) && mods == mod_;
 	}
 
 	if(event.type == SDL_TEXTINPUT && !command.toggle) {
@@ -304,7 +304,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
 		}
-		return text_ == text && utf8::size(std::string(event.text.text)) == 1 && mods == mod_;
+		return utf8::size(text) == 1 && text_ == text && mods == mod_;
 	}
 
 	return false;
