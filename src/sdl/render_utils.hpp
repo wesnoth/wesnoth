@@ -129,5 +129,5 @@ inline void set_texture_blend_mode(texture& t, SDL_BlendMode mode)
  */
 inline void set_texture_scale_quality(const std::string& value)
 {
-	SDL_SetHintWithPriority(SDL_HINT_RENDER_SCALE_QUALITY, value.c_str(), SDL_HINT_OVERRIDE);
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, value.c_str());
 }
