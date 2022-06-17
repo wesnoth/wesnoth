@@ -54,7 +54,7 @@ texture::texture(SDL_Texture* txt)
 	}
 }
 
-texture::texture(const surface& surf)
+texture::texture(const surface& surf, bool linear_interpolation)
 	: texture()
 {
 	if (!surf) {
@@ -69,6 +69,10 @@ texture::texture(const surface& surf)
 	if(!renderer) {
 		return;
 	}
+
+	// Filtering mode must be set before texture creation.
+	const char* scale_quality = linear_interpolation ? "linear" : "nearest";
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, scale_quality);
 
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {

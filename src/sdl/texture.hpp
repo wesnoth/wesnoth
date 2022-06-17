@@ -36,8 +36,17 @@ public:
 	/** Assigns the given texture to this one. */
 	explicit texture(SDL_Texture* txt);
 
-	/** Construct a texture from a surface. */
-	explicit texture(const surface& surf);
+	/**
+	 * Construct a texture from a surface.
+	 *
+	 * @param surf                  The surface to copy.
+	 * @param linear_interpolation  If true this texture will use linear
+	 *                              interpolation when drawing. Otherwise
+	 *                              nearest-neighbour interpolation is used.
+	 *                              This does not affect texture creation,
+	 *                              only later application.
+	 */
+	explicit texture(const surface& surf, bool linear_interpolation = false);
 
 	/** Construct a texture of the specified size and access type. */
 	texture(int w, int h, SDL_TextureAccess access);
