@@ -757,10 +757,6 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushnil(L);
 	lua_setglobal(L, "loadfile");
 
-	// Add dir()
-	lua_pushcfunction(L, intf_object_dir);
-	lua_setglobal(L, "dir");
-
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
 	push_error_handler(L);
@@ -786,6 +782,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "get_language",             &intf_get_language             },
 		{ "version",                  &intf_make_version       },
 		{ "current_version",          &intf_current_version    },
+		{ "print_attributes",         &intf_object_dir         },
 		{ nullptr, nullptr }
 	};
 
@@ -903,6 +900,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_getglobal(L, "_G");
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
+	lua_pushcfunction(L, intf_object_dir);
+	lua_setfield(L, -2, "dir");
 	lua_setfield(L, LUA_REGISTRYINDEX, Interp);
 
 	// Loading ilua:
