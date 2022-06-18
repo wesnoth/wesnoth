@@ -625,8 +625,8 @@ static int intf_object_dir(lua_State* L)
 	}
 	// Sort and remove any duplicates
 	std::sort(keys.begin(), keys.end());
-	auto final = std::unique(keys.begin(), keys.end());
-	final = std::remove_if(keys.begin(), final, [L](const std::string& key) {
+	auto new_end = std::unique(keys.begin(), keys.end());
+	new_end = std::remove_if(keys.begin(), new_end, [L](const std::string& key) {
 		if(key.compare(0, 2, "__") == 0) {
 			return true;
 		}
@@ -646,7 +646,7 @@ static int intf_object_dir(lua_State* L)
 		}
 		return false;
 	});
-	keys.erase(final, keys.end());
+	keys.erase(new_end, keys.end());
 	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
 		return std::max(max, next.size());
 	});
