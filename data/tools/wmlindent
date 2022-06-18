@@ -103,6 +103,29 @@ class bailout(Exception):
         self.lineno = lineno
         self.msg = msg
 
+def strip_comment(line, in_string):
+    """
+    Strip a trailing comment from a line, if present.
+    Allows for unbalanced quotes, where comment characters are literal.
+    """
+    if not line:
+        return line
+    split = line.split('"')
+    result = split[0]
+    if not in_string and '#' in result:
+        return result.split('#')[0].rstrip();
+    split.pop(0)
+    for component in split:
+        in_string = not in_string
+        result += '"'
+        # If we end up outside a string and there's a comment, we're done
+        if not in_string and '#' in component:
+            result += component.split('#')[0]
+            break
+        else:
+            result += component
+    return result.rstrip()
+
 def reindent(name, infp, outfp):
     "Reindent WML."
     dostrip = True
@@ -208,10 +231,7 @@ def reindent(name, infp, outfp):
             instring = False
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
-        if dostrip:
-            eligible = re.split("\s#", transformed)[0]
-        else:
-            eligible = transformed
+        eligible = strip_comment(transformed, not dostrip)
         if dostrip and "<<" in eligible and not ">>" in eligible.split("<<", 1)[1]:
             dostrip = False
             in_lua = True
@@ -228,7 +248,7 @@ def reindent(name, infp, outfp):
             lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
     if indent_level != 0 and seen_wml:
-        print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
+        print('wmlindent: "%s". line %d: end of file with indent nonzero (%d).' % (name, countlines, indent_level), file=sys.stderr)
 
 def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
