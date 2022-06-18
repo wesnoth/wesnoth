@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2021-07-19 02:00+0800\n"
+"PO-Revision-Date: 2022-05-31 09:41+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [time]: id=underground
@@ -621,7 +621,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "編輯器地形覆蓋層圖形"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -631,6 +631,9 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"地圖在編輯器中的通常與它們在遊戲中的看起來相似。有一些例外情況，那就是在編輯"
+"器中使用了不同的圖形。此處描述的所有覆蓋層都可以在地形調色盤的「特殊」群組中"
+"找到。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -649,7 +652,19 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='移動覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> 無法"
+"通過(Impassable)和無法行走(Unwalkable)\n"
+"\n"
+"雖然在編輯器中很容易注意到，但它們在遊戲中是不可見的，因此它們建立的混合地形"
+"看起來像基本地形。它們會建立一個混合地形，移動消耗分別設置為「無法通過」或"
+"「無法行走」。"
 
+# 不照翻。
+# 不確定這裡的blocked是什麼意思。
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
@@ -671,6 +686,19 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='主堡/城堡覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"加入主堡/城堡覆蓋層到可以通過的格子上能允許單位被招募到這個格子上。主堡能允許"
+"首領在上面進行招募。\n"
+"\n"
+"這些可以被加到無法通過的格子上來連接城堡到一個看起來被分割（透過無法通過的"
+"牆）的主堡。用它也可以做到建立出一個主堡和塔樓間有綠地的風格的城堡，然而這個"
+"需要連接的格子被佔用以防單位被招募到它們上面。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -684,6 +712,12 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='村莊覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"這個可以將任意的基本地形轉成村莊，提供收入和治療。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -696,14 +730,19 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='假的戰場黑幕'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"假的戰場黑幕看起來像未被探索過的區域，即便在章節中戰場黑幕被禁用且玩家的單位"
+"可以看到這個格子。"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "基礎地形："
+msgstr "廢棄地形"
 
+# 不照翻。
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
@@ -721,6 +760,17 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>桃紅「D」（廢棄用）\n"
+"\n"
+"被廢棄的地形代碼會顯示出這個。舉例來說：\n"
+"• <ref>dst='terrain_fungus_grove_old' text='代碼為「^Uf」的純種蘑菇林地形'</"
+"ref>,\n"
+"• 代碼為「Xol」的點燃的石牆，這個被廢棄是因為有幾個牆現在支援「^Efs」壁燈裝"
+"飾。\n"
+"\n"
+"這些地形的幫助頁面也許只有在編輯器內會顯示額外的文字，描述廢棄原因以及建議的"
+"替代作法。"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:186
@@ -1081,22 +1131,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:342
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -3373,32 +3407,6 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "The orbs show whether the unit can move or attack. The statuses and their "
-#| "standard colors are:\n"
-#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
-#| "turn.\n"
-#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-#| "attack. It might still be able to move further too.\n"
-#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
-#| "this turn.\n"
-#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
-#| "    • when a unit is in the middle of a multi-turn move (has been told to "
-#| "move further than it can in the current turn).\n"
-#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-#| "still move further, but it can no longer attack.\n"
-#| "    • This can happen due to campaign-specific events or abilities, for "
-#| "example the <italic>text='disengage'</italic> ability in the campaign "
-#| "<italic>text='Under the Burning Suns'</italic>.\n"
-#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
-#| "own turn.\n"
-#| "    • During the ally’s own turn, their units will be shown with the "
-#| "green/yellow/red/white colors; however their moves, and the corresponding "
-#| "orb changes, are delayed as explained in <ref>dst='shroud_and_fog' "
-#| "text='Shroud and Fog of War'</ref>.\n"
-#| "• Enemy units normally don’t have orbs, however these can be enabled in "
-#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3437,9 +3445,9 @@ msgstr ""
 "    • 這個可能會是戰役特製的事件或是技能，例如<italic>text='在灼燒的太陽下'</"
 "italic>戰役的<italic>text='脫離'</italic>技能。\n"
 "• <bold>text='藍色'</bold>：表示同盟陣營的單位。\n"
-"    • 在同盟陣營自己的回合中，他們的單位的狀態球會顯示綠色/黃色/紅色/白色。他"
-"們的移動，以及對應的狀態球變化，則在<ref>dst='shroud_and_fog' text='戰場黑幕"
-"與戰爭迷霧'</ref>頁面中被解釋。\n"
+"    • 在同盟陣營自己的回合中，他們的單位的狀態球會顯示顏色來表示這些單位是否"
+"仍可以移動和攻擊。他們的移動，以及對應的狀態球變化，則在"
+"<ref>dst='shroud_and_fog' text='戰場黑幕與戰爭迷霧'</ref>頁面中被解釋。\n"
 "• • 敵人的單位通常沒有狀態球，不過它可以在進階設定的「自訂狀態球顏色」中被啟"
 "用。"
 
@@ -3814,6 +3822,7 @@ msgstr ""
 msgid "License"
 msgstr "授權"
 
+# 由於是中文，句子最後不加空格。
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
 msgid ""
@@ -4445,6 +4454,9 @@ msgid ""
 "of only things that have changed.\n"
 "\n"
 msgstr ""
+"\n"
+"與「fps」指令類似，但它同時強制所有東西重新繪製，而不是只有發生改變的那些。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:684
@@ -4973,6 +4985,9 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"這個單位可以在戰鬥中領導其它部隊。\n"
+"\n"
+"所有相鄰的較低等級的同盟單位每差一個等級，他的攻擊就能多造成25%的傷害。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -6242,73 +6257,6 @@ msgstr "龍族"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — dominant who rules the society with an iron fist. Every "
-#| "drake is expected to earn their place in the strict hierarchy, to obey "
-#| "their superiors and command their inferiors. Entry to the ruling elite is "
-#| "only possible through challenging and defeating a superior in single "
-#| "combat, which is the way the hierarchy within the elite itself is "
-#| "established. The use of deception of any kind towards any fellow drake "
-#| "is, without exception, seen as cowardly and unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
-#| "armor- and weapon-smithing, but neither know nor need other science and "
-#| "culture besides this. Nonetheless, the few implements they do fashion are "
-#| "almost unrivaled in quality, only matched by those produced in the finest "
-#| "Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-#| "Death in battle is the most preferred way for a drake to leave this "
-#| "world. Unlike the elder members of other races, drakes naturally grow "
-#| "more aggressive and reckless towards the ends of their natural lives, "
-#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6765,18 +6713,6 @@ msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses.  While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7684,7 +7620,7 @@ msgstr "最差於"
 #: src/help/help_topic_generators.cpp:162
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
-msgstr ""
+msgstr "村莊允許任何單位駐守進來以進行治療或是治癒毒素。"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -7695,28 +7631,34 @@ msgid ""
 msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
-msgstr[0] ""
+msgstr[0] "這個地形允許單位治癒毒素，或是恢復 1 點生命值。"
 msgstr[1] ""
+"這個地形允許單位治癒毒素，或是恢復 $amount hitpoints 點生命值，就像是駐守在一"
+"個村莊裡。"
 
+# 為了解釋更淺顯易懂一些，不照翻。
 #: src/help/help_topic_generators.cpp:174
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
-msgstr ""
+msgstr "這個地形是一個城堡，單位可以從相鄰的主堡被招募到這個格子上。"
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:178
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
-msgstr ""
+msgstr "這個地形是一個主堡，首領可以在這個格子上招募單位到相鄰的城堡格子上。"
 
+# 為了解釋更淺顯易懂一些，不照翻。
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:181
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"這個不尋常的主堡可以讓首領站在上面時進行招募，但是不允許首領在相鄰的主堡上將"
+"單位招募到這個格子上。"
 
 #: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "

@@ -16,7 +16,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Polish, Finnish
+   * Updated translations: Arabic, Chinese (Traditional), Polish, Finnish
  ### Units
  ### User interface
  ### WML Engine
