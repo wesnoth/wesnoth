@@ -9,6 +9,7 @@ from functools import total_ordering
 import collections, codecs
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
+import enum
 
 map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg", "webp")
@@ -539,6 +540,13 @@ class Reference:
             return self.filename
     __repr__ = __str__
 
+class States(enum.Enum):
+    OUTSIDE = enum.auto()
+    MACRO_HEADER = enum.auto()
+    EXTERNAL_DOCSTRING = enum.auto()
+    MACRO_OPTIONAL_ARGUMENT = enum.auto()
+    MACRO_BODY = enum.auto()
+
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
     file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
@@ -590,7 +598,7 @@ class CrossRef:
         current_docstring = None
         try:
             with codecs.open(filename, "r", "utf8") as dfp:
-                state = "outside"
+                state = States.OUTSIDE
                 latch_unit = in_base_unit = in_theme = False
                 for (n, line) in enumerate(dfp):
                     if self.warnlevel > 1:
@@ -657,9 +665,9 @@ class CrossRef:
                             if name in temp_docstrings:
                                 here.docstring += temp_docstrings[name]
                                 del temp_docstrings[name]
-                            state = "macro_header"
+                            state = States.MACRO_HEADER
                         continue
-                    if state in ('outside', 'external_docstring'):
+                    if state in (States.OUTSIDE, States.EXTERNAL_DOCSTRING):
                         # allow starting new docstrings even one after another
                         m = re.match(r"\s*# wmlscope: docstring (\w+)", line)
                         if m:
@@ -672,9 +680,9 @@ class CrossRef:
                                                                                                   n+1),
                                       file=sys.stderr)
                             temp_docstrings[current_docstring] = ""
-                            state = "external_docstring"
+                            state = States.EXTERNAL_DOCSTRING
                             continue
-                    if state == 'external_docstring':
+                    if state == States.EXTERNAL_DOCSTRING:
                         # stop collecting the docstring on the first non-comment line (even if it's empty)
                         # if the line starts with a #define or another docstring directive
                         # it'll be handled in the blocks above
@@ -682,8 +690,8 @@ class CrossRef:
                             temp_docstrings[current_docstring] += line.lstrip()[1:]
                         else:
                             current_docstring = None
-                            state = 'outside'
-                    elif state != 'outside' and line.strip().endswith("#enddef"):
+                            state = States.OUTSIDE
+                    elif state != States.OUTSIDE and line.strip().endswith("#enddef"):
                         here.hash.update(line.encode("utf8"))
                         here.hash = here.hash.digest()
                         if name in self.xref:
@@ -701,17 +709,17 @@ class CrossRef:
                         if name not in self.xref:
                             self.xref[name] = []
                         self.xref[name].append(here)
-                        state = "outside"
-                    elif state == "macro_header" and line.strip():
+                        state = States.OUTSIDE
+                    elif state == States.MACRO_HEADER and line.strip():
                         if line.strip().startswith("#arg"):
-                            state = "macro_optional_argument"
+                            state = States.MACRO_OPTIONAL_ARGUMENT
                             here.optional_args.append(line.strip().split()[1])
                         elif line.strip()[0] != "#":
-                            state = "macro_body"
-                    elif state == "macro_optional_argument" and "#endarg" in line:
-                        state = "macro_header"
+                            state = States.MACRO_BODY
+                    elif state == States.MACRO_OPTIONAL_ARGUMENT and "#endarg" in line:
+                        state = States.MACRO_HEADER
                         continue
-                    if state == "macro_header":
+                    if state == States.MACRO_HEADER:
                         # Ignore macro header commends that are pragmas
                         if ("wmlscope" in line) or ("wmllint:" in line):
                             continue
@@ -733,7 +741,7 @@ class CrossRef:
                                 print("Deprecation line not matched found in {}, line {}".format(filename, n+1), file=sys.stderr)
                         else:
                             here.docstring += line.lstrip()[1:]
-                    if state in ("macro_header", "macro_optional_argument", "macro_body"):
+                    if state in (States.MACRO_HEADER, States.MACRO_OPTIONAL_ARGUMENT, States.MACRO_BODY):
                         here.hash.update(line.encode("utf8"))
                     elif line.strip().startswith("#undef"):
                         tokens = line.split()
@@ -743,7 +751,7 @@ class CrossRef:
                         else:
                             print("%s: unbalanced #undef on %s" \
                                   % (Reference(namespace, filename, n+1), name))
-                    if state == 'outside':
+                    if state == States.OUTSIDE:
                         if '[unit_type]' in line:
                             latch_unit = True
                         elif '[/unit_type]' in line:
@@ -812,7 +820,7 @@ class CrossRef:
         self.deprecated = []
         formals = []
         optional_formals = []
-        state = "outside"
+        state = States.OUTSIDE
         if self.warnlevel >=2 or progress:
             print("*** Beginning reference-gathering pass...")
         for (ns, fn) in all_in:
@@ -933,7 +941,7 @@ class CrossRef:
                                         if not key:
                                             self.missing.append((name, Reference(ns,fn,n+1)))
                             # Notice implicit references through attacks
-                            if state == "outside":
+                            if state == States.OUTSIDE:
                                 if "[attack]" in line:
                                     beneath = 0
                                     attack_name = default_icon = None
