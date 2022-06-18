@@ -573,30 +573,17 @@ static int impl_get_dir_suffix(lua_State*L)
 }
 
 /**
- * Prints out a list of keys available in an object.
- * A list of keys is gathered from the following sources:
- * - For a table, all keys defined in the table
- * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
- * - The output of the __dir metafunction
- * - Filtering out any keys beginning with two underscores
- * - Filtering out any keys for which object[key].__deprecated exists and is true
- * The list is then sorted alphabetically and formatted into columns.
- * - Arg 1: Any object
- * - Arg 2: (optional) Function to use for output; defaults to _G.print
+ * This function does the actual work of grabbing all the attribute names.
+ * It's a separate function so that it can be used by tab-completion as well.
  */
-static int intf_object_dir(lua_State* L)
+std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 {
-	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
-	if(!lua_isfunction(L, 2)) {
-		luaW_getglobal(L, "print");
-	}
-	int fcn_idx = lua_gettop(L);
 	std::vector<std::string> keys;
-	if(lua_istable(L, 1)) {
+	if(lua_istable(L, idx)) {
 		// Walk the metatable chain (as long as __index is a table)...
 		// If we reach an __index that's a function, check for a __dir metafunction.
 		int save_top = lua_gettop(L);
-		lua_pushvalue(L, 1);
+		lua_pushvalue(L, idx);
 		ON_SCOPE_EXIT(&) {
 			lua_settop(L, save_top);
 		};
@@ -618,15 +605,15 @@ static int intf_object_dir(lua_State* L)
 			lua_pop(L, 1);
 			dir_meta_helper(L, keys);
 		}
-	} else if(lua_isuserdata(L, 1) && !lua_islightuserdata(L, 1)) {
-		lua_pushvalue(L, 1);
+	} else if(lua_isuserdata(L, idx) && !lua_islightuserdata(L, idx)) {
+		lua_pushvalue(L, idx);
 		dir_meta_helper(L, keys);
 		lua_pop(L, 1);
 	}
 	// Sort and remove any duplicates
 	std::sort(keys.begin(), keys.end());
 	auto new_end = std::unique(keys.begin(), keys.end());
-	new_end = std::remove_if(keys.begin(), new_end, [L](const std::string& key) {
+	new_end = std::remove_if(keys.begin(), new_end, [L, idx](const std::string& key) {
 		if(key.compare(0, 2, "__") == 0) {
 			return true;
 		}
@@ -639,7 +626,7 @@ static int intf_object_dir(lua_State* L)
 		// In that case we just ignore it and assume not deprecated
 		// (the __dir metamethod would be responsible for excluding deprecated write-only keys)
 		lua_pushcfunction(L, impl_is_deprecated);
-		lua_pushvalue(L, 1);
+		lua_pushvalue(L, idx);
 		lua_push(L, key);
 		if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
 			return luaW_toboolean(L, -1);
@@ -647,6 +634,29 @@ static int intf_object_dir(lua_State* L)
 		return false;
 	});
 	keys.erase(new_end, keys.end());
+	return keys;
+}
+
+/**
+ * Prints out a list of keys available in an object.
+ * A list of keys is gathered from the following sources:
+ * - For a table, all keys defined in the table
+ * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
+ * - The output of the __dir metafunction
+ * - Filtering out any keys beginning with two underscores
+ * - Filtering out any keys for which object[key].__deprecated exists and is true
+ * The list is then sorted alphabetically and formatted into columns.
+ * - Arg 1: Any object
+ * - Arg 2: (optional) Function to use for output; defaults to _G.print
+ */
+static int intf_object_dir(lua_State* L)
+{
+	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
+	if(!lua_isfunction(L, 2)) {
+		luaW_getglobal(L, "print");
+	}
+	int fcn_idx = lua_gettop(L);
+	auto keys = luaW_get_attributes(L, 1);
 	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
 		return std::max(max, next.size());
 	});
