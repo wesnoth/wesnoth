@@ -15,7 +15,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Czech, Finnish, French, Japanese, Polish
+   * Updated translations: Arabic, Chinese (Traditional), Czech, Finnish, French, Japanese, Polish
  ### Units
  ### User interface
    * High-DPI font and image rendering is now enabled across the entire UI.

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
-"PO-Revision-Date: 2021-07-19 01:49+0800\n"
+"PO-Revision-Date: 2022-05-30 15:52+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -1938,19 +1938,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3164
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2469,7 +2456,7 @@ msgstr "選擇這個模組版本"
 #. [label]
 #: data/gui/window/addon_manager.cfg:489
 msgid "Website:"
-msgstr "網站"
+msgstr "網站："
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:627
@@ -3576,7 +3563,7 @@ msgstr "儲存遊戲："
 #. [grid]
 #: data/gui/window/game_version.cfg:135
 msgid "Add-ons:"
-msgstr "模組"
+msgstr "模組："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:137
@@ -4185,7 +4172,7 @@ msgstr "更改控制者"
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "選擇或是輸入一個多人伺服器的位址"
+msgstr "選擇或是輸入一個多人伺服器的位址。"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -4460,10 +4447,8 @@ msgstr "招募"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "選擇你的派系"
+msgstr "選擇你的首領"
 
 #. [label]
 #. [widget]: id=name
@@ -4829,10 +4814,8 @@ msgstr "地圖編輯器中可使用"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:810
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5770,56 +5753,42 @@ msgstr "過期"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num 年"
 msgstr[1] "$num 年"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num 月"
 msgstr[1] "$num 月"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num 週"
 msgstr[1] "$num 週"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num 天"
 msgstr[1] "$num 天"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num 小時"
 msgstr[1] "$num 小時"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num 分"
 msgstr[1] "$num 分"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num 秒"
@@ -6175,13 +6144,17 @@ msgstr "你真的想要移除「$addon|」？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
+#, fuzzy
+#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:964
+#, fuzzy
+#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6656,7 +6629,7 @@ msgstr "大廳"
 #: src/gui/dialogs/multiplayer/lobby.cpp:819
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
-msgstr ""
+msgstr "這個遊戲被密碼保護。仍然要用管理員權限觀察嗎？"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:832
 msgid ""
@@ -6668,7 +6641,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:853
 msgid "This game is password protected. Join using moderator rights anyway?"
-msgstr ""
+msgstr "這個遊戲被密碼保護。仍然要用管理員權限加入嗎？"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
@@ -8048,6 +8021,9 @@ msgstr ""
 "按鍵「$deprecated_key|」已經被更名為「$key|」。「$deprecated_key|」將在"
 "$removal_version|版本中被移除。"
 
+#~ msgid "By:"
+#~ msgstr "作者："
+
 #~ msgid "Gold Left:"
 #~ msgstr "剩餘金幣："
 
@@ -8057,20 +8033,17 @@ msgstr ""
 #~ msgid "Reserve Troops:"
 #~ msgstr "後備單位數："
 
-#~ msgid "By:"
-#~ msgstr "作者："
+#~ msgid "Selected Game"
+#~ msgstr "選擇的遊戲"
 
-#~ msgid "Leader:"
-#~ msgstr "首領："
+#~ msgid "Lobby"
+#~ msgstr "大廳"
 
-#~ msgid "Gender:"
-#~ msgstr "性別："
+#~ msgid "Other Games"
+#~ msgstr "其它遊戲"
 
 #~ msgid "Recruits:"
 #~ msgstr "招募："
-
-#~ msgid "Starting position:"
-#~ msgstr "起始位置："
 
 #~ msgid "titlescreen_hotkeys^T"
 #~ msgstr "T"
@@ -8096,17 +8069,8 @@ msgstr ""
 #~ msgid "timespan^$num seconds"
 #~ msgstr "$num 秒"
 
-#~ msgid "Selected Game"
-#~ msgstr "選擇的遊戲"
-
-#~ msgid "Lobby"
-#~ msgstr "大廳"
-
-#~ msgid "Other Games"
-#~ msgstr "其它遊戲"
-
-#~ msgid "Team:"
-#~ msgstr "隊伍："
+#~ msgid "Start Tutorial"
+#~ msgstr "開始新手教學"
 
 #~ msgid "$player has entered the room"
 #~ msgstr "$player|已進入房間"
@@ -8114,8 +8078,17 @@ msgstr ""
 #~ msgid "$player has left the room"
 #~ msgstr "$player|已離開房間"
 
-#~ msgid "Start Tutorial"
-#~ msgstr "開始新手教學"
+#~ msgid "Leader:"
+#~ msgstr "首領："
+
+#~ msgid "Gender:"
+#~ msgstr "性別："
+
+#~ msgid "Starting position:"
+#~ msgstr "起始位置："
+
+#~ msgid "Team:"
+#~ msgstr "隊伍："
 
 #~ msgid "Add-on upload authentication dialog"
 #~ msgstr "模組上傳驗證對話框"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
-"PO-Revision-Date: 2021-07-19 01:34+0800\n"
+"PO-Revision-Date: 2022-05-31 22:57+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -5194,8 +5194,8 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
 #: src/addon/client.cpp:223
@@ -5423,9 +5423,6 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "從伺服器下載模組清單的時候發生錯誤。"
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr "無法在這個伺服器找到ID為「$addon_ids|」的模組。"
@@ -5799,7 +5796,7 @@ msgstr "韋諾之戰"
 msgid "Invalid Color"
 msgstr "無效的顔色"
 
-# 這邊是用於遊戲存檔的列表上的時間。盡量讓格式統一，雖然遊戲本身設計是根據現在時間和錄影時間來調整顯示的格式……
+# 這邊是用於遊戲存檔的列表上的時間。儘量讓格式統一，雖然遊戲本身設計是根據現在時間和錄影時間來調整顯示的格式……
 #. TRANSLATORS: 24-hour time, eg '13:59'
 #: src/format_time_summary.cpp:48
 msgid "%H:%M"
@@ -5911,6 +5908,8 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"錯誤：[advancefrom]不再可用。「$lower_level|」單位將不能升級為"
+"「$higher_level|」。請詢問模組的作者，讓他改為使用[modify_unit_type]。"
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6107,27 +6106,25 @@ msgstr "無"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"與房長的<i>$addon</i>版本不相容。他使用<b>$host_ver</b>版，而你使用<b>"
-"$local_ver</b>版。"
+"與房長的<i>$addon</i>版本不相容。他使用<b>$host_ver</b>版，而你使用"
+"<b>$local_ver</b>版。"
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用<b>"
-"$host_ver</b>版。"
+"與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用"
+"<b>$host_ver</b>版。"
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
 msgstr "擊敗敵方首領"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
 msgstr "無法找到時代：$era"
 
@@ -6993,6 +6990,7 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"與「fps」指令類似，但它同時強制所有東西重新繪製，而不是只有發生改變的那些。"
 
 #: src/menu_events.cpp:1249
 msgid "Save game."
@@ -7849,15 +7847,11 @@ msgstr "回合倒數"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
@@ -8382,6 +8376,14 @@ msgstr "對$player|隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
+#~ msgid ""
+#~ "Some types of terrain give unique bonuses, such as healing or "
+#~ "illumination."
+#~ msgstr "有些地形提供額外的獎勵，像是治療或是照明。"
+
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>― 蓋倫 飛行領袖，6 YW</i>"
+
 #~ msgid "Independent"
 #~ msgstr "獨立"
 
@@ -8391,13 +8393,8 @@ msgstr "白板選項"
 #~ msgid "No Ally Mirror"
 #~ msgstr "無盟友鏡像"
 
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr "有些地形提供額外的獎勵，像是治療或是照明。"
-
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― 蓋倫 飛行領袖，6 YW</i>"
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "使用 [modify_unit_type]\n"
 
 #~ msgid "<room>"
 #~ msgstr "<房間>"
@@ -8425,9 +8422,6 @@ msgstr "白板選項"
 
 #~ msgid "Room query."
 #~ msgstr "房間查詢。"
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "使用 [modify_unit_type]\n"
 
 #~ msgid "Group players in lobby"
 #~ msgstr "在大廳組隊"
