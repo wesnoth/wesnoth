@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2018-05-16 07:10+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -235,10 +235,16 @@ msgstr ""
 # Dwarven Doors=Portas dos Ananos FIXADO
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "Os que seguiron foron anos escuros, xeracións de humanos medraron na "
@@ -564,17 +570,17 @@ msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "Ah! Trolles! As covas están cheas de trolles!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:346
 msgid "<i>Yes</i>! We did it! We are free!"
 msgstr "<i>Si</i>! Conseguímolo! Somos libres!"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:367
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:358
 msgid "Khrulg"
 msgstr "Crulú"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:375
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:366
 msgid ""
 "Garrugch failed in mission, but Al’tar dead by peasant slaves. Better tell "
 "the Master."
@@ -583,12 +589,12 @@ msgstr ""
 "contar amo."
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:380
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:371
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "Amo precisar máis carne para lobos. Labregos ser boa carne."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:404
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
@@ -597,7 +603,7 @@ msgstr ""
 "Alzarémonos unha e outra vez ata que consigamos vingarnos por fin de vós!"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:416
 msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Bah! Roñóns, encadeade de novo ao resto desta chusma de labregos."
 
@@ -607,39 +613,65 @@ msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "Que carall… (<i>gorgolexando</i>) Asasinado… polos… escravos?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
 msgid "(<i>Stab</i>)"
 msgstr "(<i>puñalada</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "Que carall… (<i>gorgolexando</i>) Asasinado… polos… escravos?"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#, fuzzy
+#| msgid "(<i>Smash</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "(<i>Golpe forte</i>)"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:465
 msgid "Ugh!"
 msgstr "Agh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:481
 msgid "Not a very bright one, was he?"
 msgstr "Non era moi espelido, va que non?"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:501
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:518
 msgid "No! I have failed in my mission!"
 msgstr "Non! Non cumprín a miña misión!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:530
 msgid "Mission? What mission?"
 msgstr "Misión? Que misión?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:538
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:543
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
@@ -10558,9 +10590,6 @@ msgstr "Ardian"
 
 #~ msgid "Then it’s time to fight!"
 #~ msgstr "Entón é a hora de loitar!"
-
-#~ msgid "(<i>Smash</i>)"
-#~ msgstr "(<i>Golpe forte</i>)"
 
 #~ msgid "Clear the caves (Bonus)"
 #~ msgstr "Asegura as covas (bonificación)."

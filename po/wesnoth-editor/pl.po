@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 17:26+0300\n"
+"POT-Creation-Date: 2022-06-19 09:03-0500\n"
 "PO-Revision-Date: 2022-06-03 18:16+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -410,7 +410,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Gracz $side_num"
 
@@ -450,62 +450,62 @@ msgstr "Zapisanie mapy nie powiodło się: $msg"
 msgid "(Unknown Group)"
 msgstr "(Nieznana grupa)"
 
-#: src/editor/palette/editor_palettes.cpp:285
+#: src/editor/palette/editor_palettes.cpp:295
 msgid "(non-core)"
 msgstr "(niestandardowe)"
 
-#: src/editor/palette/editor_palettes.cpp:286
+#: src/editor/palette/editor_palettes.cpp:296
 msgid "Will not work in game without extra care."
 msgstr "Nie będzie działać w grze bez dodatkowego przystosowania."
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:250
 msgid "Go To"
 msgstr "Idź do"
 
-#: src/editor/palette/location_palette.cpp:264
+#: src/editor/palette/location_palette.cpp:257
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:259
 msgid "New Location Identifier"
 msgstr "Nowy identyfikator lokacji"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:266
 msgid "Error"
 msgstr "Błąd"
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:267
 msgid "Invalid location id"
 msgstr "Nieprawidłowy identyfikator lokacji"
 
-#: src/editor/palette/location_palette.cpp:281
+#: src/editor/palette/location_palette.cpp:274
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/editor/palette/terrain_palettes.cpp:232
+#: src/editor/palette/terrain_palettes.cpp:230
 msgid "Left-click: "
 msgstr "LPM: "
 
-#: src/editor/palette/terrain_palettes.cpp:233
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "Right-click: "
 msgstr "PPM: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
-#: src/editor/palette/terrain_palettes.cpp:238
+#: src/editor/palette/terrain_palettes.cpp:236
 msgid "Shift + left-click: paint overlay layer only"
 msgstr "Shift + LPM: rysuj tylko nakładkę terenu"
 
-#: src/editor/palette/terrain_palettes.cpp:240
+#: src/editor/palette/terrain_palettes.cpp:238
 msgid "Shift + left-click: paint base layer only"
 msgstr "Shift + LPM: rysuj tylko teren bazowy"
 
-#: src/editor/palette/terrain_palettes.cpp:243
+#: src/editor/palette/terrain_palettes.cpp:241
 msgid "Cmd + click: copy terrain"
 msgstr "Cmd + kliknięcie: skopiuj teren"
 
-#: src/editor/palette/terrain_palettes.cpp:245
+#: src/editor/palette/terrain_palettes.cpp:243
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + kliknięcie: skopiuj teren"
 
@@ -579,8 +579,8 @@ msgstr "Wybierz"
 #~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
 #~ msgstr ""
 #~ "Używaj lewego/prawego przycisku myszy do rysowania terenu na pierwszym/"
-#~ "drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową. "
-#~ "Ctrl+kliknięcie umożliwia pobranie próbki terenu pod kursorem."
+#~ "drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową. Ctrl"
+#~ "+kliknięcie umożliwia pobranie próbki terenu pod kursorem."
 
 #~ msgid ""
 #~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "

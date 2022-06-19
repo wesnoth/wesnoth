@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2022-05-30 18:45+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -193,10 +193,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "黑暗的歲月過去了，人類好幾代成長於奴隸制度下，幾乎忘了他們的祖先曾經是自由的"
@@ -257,8 +263,9 @@ msgid ""
 "was gone."
 msgstr ""
 "如同其迅速地開始，事情也快速地結束。康拉德到達通往隧道的入口，並引導他的人馬"
-"進入。接著，他最後一次回過身面對農民，高舉他的劍致敬並道別，他向他們大喊：<i>"
-"「牢牢地抓住你們的希望，因為在某一天，你們將獲得自由！」</i> 然後，他離開了。"
+"進入。接著，他最後一次回過身面對農民，高舉他的劍致敬並道別，他向他們大喊："
+"<i>「牢牢地抓住你們的希望，因為在某一天，你們將獲得自由！」</i> 然後，他離開"
+"了。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:76
@@ -483,29 +490,29 @@ msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "啊啊啊！巨魔！這些洞穴大量滋生著巨魔！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:346
 msgid "<i>Yes</i>! We did it! We are free!"
 msgstr "<i>太好了</i>！我們辦到了！我們自由了！"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:367
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:358
 msgid "Khrulg"
 msgstr "柯魯爾格"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:375
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:366
 msgid ""
 "Garrugch failed in mission, but Al’tar dead by peasant slaves. Better tell "
 "the Master."
 msgstr "加魯奇的任務失敗了，奧塔爾也死於農奴之手。最好告訴主人。"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:380
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:371
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "主人需要更多餵狼的肉。農民是好肉。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:404
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
@@ -514,7 +521,7 @@ msgstr ""
 "從我們的土地把你們這些污漬清掉，完成我們的復仇！"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:416
 msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "呸！小的們，把那些剩下來的農夫賤民綁回去。"
 
@@ -524,40 +531,66 @@ msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "搞什……？（<i>咯咯</i>）被……奴隸……殺了？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
 msgid "(<i>Stab</i>)"
 msgstr "（<i>刺</i>）"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "搞什……？（<i>咯咯</i>）被……奴隸……殺了？"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#, fuzzy
+#| msgid "(<i>Stab</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "（<i>刺</i>）"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:465
 msgid "Ugh!"
 msgstr "呃啊！"
 
 # 這句話不好直翻。
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:481
 msgid "Not a very bright one, was he?"
 msgstr "他並不怎麼聰明，對吧？"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:501
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:518
 msgid "No! I have failed in my mission!"
 msgstr "不！我的任務失敗了！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:530
 msgid "Mission? What mission?"
 msgstr "任務？什麼任務？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:538
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr "戰鼓和號角的聲音迴盪在山坡上。一支龐大的半獸人軍隊逼近了！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:543
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
