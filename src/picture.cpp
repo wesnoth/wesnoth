@@ -1074,18 +1074,6 @@ save_result save_image(const surface& surf, const std::string& filename)
  * scale quality set before creation. All other handling is done by
  * get_surface.
  */
-namespace
-{
-/** Sets the texture scale quality hint. Must be called *before* creating textures! */
-void set_scale_quality_pre_texture_creation(scale_quality quality)
-{
-	static const std::string n_scale_str = "nearest";
-	static const std::string l_scale_str = "linear";
-
-	set_texture_scale_quality(quality == scale_quality::nearest ? n_scale_str : l_scale_str);
-}
-
-} // namespace
 
 texture get_texture(const image::locator& i_locator, TYPE type)
 {
@@ -1143,10 +1131,10 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	// handling with surfaces in order to generate the desired effect. This shouldn't be the case
 	// once we get OGL and shader support.
 	//
-	set_scale_quality_pre_texture_creation(quality);
 
-	// Get it from the surface cache.
-	res = texture(get_surface(i_locator, type));
+	// Get it from the surface cache, also setting the desired scale quality.
+	const bool linear_scaling = quality == scale_quality::linear ? true : false;
+	res = texture(get_surface(i_locator, type), linear_scaling);
 
 	// Cache the texture.
 	i_locator.add_to_cache(*cache, res);
