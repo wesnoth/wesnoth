@@ -1,6 +1,4 @@
-## Version 1.17.4+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.5
  ### Campaigns
    * Eastern Invasion
      * S1: Fixed campfire not having a sound (issue #5766)
@@ -9,17 +7,10 @@
        * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
    * Northern Rebirth
      * S1: Fixed Al'Tar confusing an orc for a slave (issue #6735)
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, Chinese (Traditional), Czech, Finnish, French, Japanese, Polish
- ### Units
  ### User interface
    * High-DPI font and image rendering is now enabled across the entire UI.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
