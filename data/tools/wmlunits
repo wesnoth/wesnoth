@@ -34,18 +34,6 @@ def copy_images():
                               "unit_tree/menu.js"),
                  options.output)
 
-def shell(com):
-    #print(com)
-    p = subprocess.Popen(com,
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE,
-                         shell=True)
-    out, err = p.communicate()
-    #if out: sys.stdout.write(out)
-    #if err: sys.stdout.write(err)
-
-    return p.returncode
-
 def shell_out(com):
     p = subprocess.Popen(com,
                          stdout=subprocess.PIPE,
@@ -53,17 +41,11 @@ def shell_out(com):
     out, err = p.communicate()
     return out
 
-def bash(name):
-    return "'" + name.replace("'", "'\\''") + "'"
-
 def move(f, t, name):
+    if os.path.exists(os.path.join(f, name + ".cfg")):
+        shutil.move(os.path.join(f, name + ".cfg"), t)
 
-    if os.path.exists(f + "/" + name + ".cfg"):
-        com = "mv " + f + "/" + bash(name + ".cfg") + " " + t + "/"
-        shell(com)
-
-    com = "mv " + f + "/" + bash(name) + " " + t + "/"
-    return shell(com)
+    shutil.move(os.path.join(f, name), t)
 
 _info = {}
 def get_info(addon):
@@ -446,7 +428,11 @@ def batch_process():
         if name == "mainline":
             worked = True
         else:
-            worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+            try:
+                move(options.addons, options.config_dir + "/data/add-ons", name)
+                worked = True
+            except FileNotFoundError:
+                worked = False
             for d in addon.get("dependencies", []):
                 move(options.addons, options.config_dir + "/data/add-ons", d)
         d = options.output + "/" + name
