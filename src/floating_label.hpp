@@ -81,7 +81,7 @@ public:
 	bool create_texture();
 
 	/** Return the size of the label in drawing coordinates */
-	SDL_Point get_draw_size() const { return draw_size_; }
+	SDL_Point get_draw_size() const { return {tex_.w(), tex_.h()}; }
 
 	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
 
@@ -100,7 +100,6 @@ private:
 	uint8_t get_alpha(int time);
 	texture tex_, buf_;
 	SDL_Rect buf_pos_;
-	SDL_Point draw_size_;
 	int fadeout_;
 	int time_start_;
 	std::string text_;

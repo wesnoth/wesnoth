@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:02 UTC\n"
 "PO-Revision-Date: 2021-10-27 09:43+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: \n"
@@ -97,37 +97,37 @@ msgid "Additional Artwork"
 msgstr ""
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:106
 msgid "Lvl 0"
 msgstr ""
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:128
 msgid "Undead"
 msgstr ""
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:171
 msgid "Traits"
 msgstr ""
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:205
 msgid "Attacks"
 msgstr ""
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:271
 msgid "Choose a Corpse"
 msgstr ""
 
 #. [button]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:337
 msgid "Recruit"
 msgstr ""
 
 #. [button]: id=cancel
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:343
 msgid "Cancel"
 msgstr ""
 
@@ -3800,160 +3800,110 @@ msgstr ""
 msgid "Show Sails and Rigging"
 msgstr ""
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:19
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:15
 msgid "Grave"
 msgstr ""
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:20
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:16
 msgid "Grave Overlay"
 msgstr ""
 
-#. [terrain_type]: id=znot_here
 #. [terrain_type]: id=not_here
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:31
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:27
 msgid "Not Here Overlay"
 msgstr ""
 
-#. [terrain_type]: id=zcrystal
 #. [terrain_type]: id=crystal
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:50
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:46
 msgid "Crystal Caves"
 msgstr ""
 
-#. [terrain_type]: id=zpassageway
 #. [terrain_type]: id=passageway
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:60
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:56
 msgid "Passageway"
 msgstr ""
 
-#. [terrain_type]: id=zgate_open
-#. [terrain_type]: id=zgate_closed
 #. [terrain_type]: id=gate_open
 #. [terrain_type]: id=gate_closed
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:69
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:65
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:75
 msgid "Gate"
 msgstr ""
 
-#. [terrain_type]: id=zweb
 #. [terrain_type]: id=web
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:89
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:85
 msgid "Spiderweb"
 msgstr ""
 
-#. [terrain_type]: id=zgraveyard-fence-top
 #. [terrain_type]: id=graveyard-fence-top
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:99
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:95
 msgid "Fence-Top"
 msgstr ""
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:104
 msgid "Fence"
 msgstr ""
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:105
 msgid "Fence-Bottom"
 msgstr ""
 
-#. [terrain_type]: id=zship--forecastle
 #. [terrain_type]: id=ship--forecastle
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:128
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:124
 msgid "Ship Forecastle"
 msgstr ""
 
-#. [terrain_type]: id=zship--main-deck
 #. [terrain_type]: id=ship--main-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:141
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:137
 msgid "Ship Main Deck"
 msgstr ""
 
-#. [terrain_type]: id=zship--poop-deck
 #. [terrain_type]: id=ship--poop-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:151
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:147
 msgid "Ship Poop Deck"
 msgstr ""
 
-#. [terrain_type]: id=zship--hull
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--hull
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:164
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:256
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:274
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:252
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:270
 msgid "Ship Hull"
 msgstr ""
 
-#. [terrain_type]: id=zship--rigging-and-sails
 #. [terrain_type]: id=ship--rigging-and-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:173
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:169
 msgid "Ship Rigging and Sails"
 msgstr ""
 
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:182
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:178
 msgid "Ship Railing"
 msgstr ""
 
-#. [terrain_type]: id=zship--bits-and-pieces
 #. [terrain_type]: id=ship--bits-and-pieces
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:191
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:187
 msgid "Ship Pieces"
 msgstr ""
 
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:200
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:196
 msgid "Ship Lower Deck"
 msgstr ""
 
-#. [terrain_type]: id=zship--lower-deck-edge
 #. [terrain_type]: id=ship--lower-deck-edge
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:209
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:205
 msgid "Ship Lower Deck Edge"
 msgstr ""
 
-#. [terrain_type]: id=zship--forecastle
-#. [terrain_type]: id=ship--main-deck
-#. [terrain_type]: id=zship--poop-deck
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--forecastle
+#. [terrain_type]: id=ship--main-deck
 #. [terrain_type]: id=ship--poop-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:220
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:233
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:243
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:305
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:216
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:229
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:239
@@ -3961,23 +3911,17 @@ msgstr ""
 msgid "Ship"
 msgstr ""
 
-#. [terrain_type]: id=zfull-void
 #. [terrain_type]: id=full-void
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:327
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:323
 msgid "Full Void"
 msgstr ""
 
-#. [terrain_type]: id=zfull-void-overlay
 #. [terrain_type]: id=full-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:337
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:333
 msgid "Void Overlay"
 msgstr ""
 
-#. [terrain_type]: id=zhalf-void-overlay
 #. [terrain_type]: id=half-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:347
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:343
 msgid "Half Void"
 msgstr ""

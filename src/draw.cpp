@@ -15,6 +15,7 @@
 #include "draw.hpp"
 
 #include "color.hpp"
+#include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
@@ -22,6 +23,12 @@
 
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
+
+static lg::log_domain log_draw("draw");
+#define DBG_D LOG_STREAM(debug, log_draw)
+#define WRN_D LOG_STREAM(warn, log_draw)
+
+using std::endl;
 
 static SDL_Renderer* renderer()
 {
@@ -36,6 +43,8 @@ void draw::fill(
 	const SDL_Rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
+	DBG_D << "fill " << area
+	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderFillRect(renderer(), &area);
 }
@@ -54,32 +63,41 @@ void draw::fill(const SDL_Rect& area, const color_t& c)
 
 void draw::fill(const SDL_Rect& area)
 {
+	DBG_D << "fill " << area << endl;
 	SDL_RenderFillRect(renderer(), &area);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
+	DBG_D << "set color "
+	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b)
 {
+	DBG_D << "set color "
+	      << " [" << r << ',' << g << ',' << b << ']' << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, SDL_ALPHA_OPAQUE);
 }
 
 void draw::set_color(const color_t& c)
 {
+	DBG_D << "set color " << c << endl;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 }
 
 void draw::rect(const SDL_Rect& rect)
 {
+	DBG_D << "rect " << rect << endl;
 	SDL_RenderDrawRect(renderer(), &rect);
 }
 
 void draw::rect(const SDL_Rect& rect,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
+	DBG_D << "rect " << rect
+	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderDrawRect(renderer(), &rect);
 }
@@ -96,22 +114,29 @@ void draw::rect(const SDL_Rect& rect, const color_t& c)
 
 void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
+	DBG_D << "line from (" << from_x << ',' << from_y
+	      << ") to (" << to_x << ',' << to_y << ')' << endl;
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
 void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 {
+	DBG_D << "line from (" << from_x << ',' << from_y
+	      << ") to (" << to_x << ',' << to_y
+	      << ") with colour " << c << endl;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
 void draw::points(const std::vector<SDL_Point>& points)
 {
+	DBG_D << points.size() << " points" << endl;
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
 }
 
 void draw::point(int x, int y)
 {
+	DBG_D << "point (" << x << ',' << y << ')' << endl;
 	SDL_RenderDrawPoint(renderer(), x, y);
 }
 
@@ -123,6 +148,9 @@ void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
 
 void draw::circle(int cx, int cy, int r, uint8_t octants)
 {
+	DBG_D << "circle (" << cx << ',' << cy
+	      << ") -> " << r << ", oct " << int(octants) << endl;
+
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
 	// version of 2011.02.07.
@@ -162,6 +190,9 @@ void draw::disc(int cx, int cy, int r, const color_t& c, uint8_t octants)
 
 void draw::disc(int cx, int cy, int r, uint8_t octants)
 {
+	DBG_D << "disc (" << cx << ',' << cy
+	      << ") -> " << r << ", oct " << int(octants) << endl;
+
 	int d = -r;
 	int x = r;
 	int y = 0;
@@ -213,19 +244,25 @@ void draw::disc(int cx, int cy, int r, uint8_t octants)
 
 void draw::blit(const texture& tex, const SDL_Rect& dst, const SDL_Rect& src)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null blit" << endl; return; }
+	DBG_D << "blit " << dst << " from " << src << endl;
+
 	SDL_RenderCopy(renderer(), tex, &src, &dst);
 }
 
 void draw::blit(const texture& tex, const SDL_Rect& dst)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null blit" << endl; return; }
+	DBG_D << "blit " << dst << endl;
+
 	SDL_RenderCopy(renderer(), tex, nullptr, &dst);
 }
 
 void draw::blit(const texture& tex)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null blit" << endl; return; }
+	DBG_D << "blit" << endl;
+
 	SDL_RenderCopy(renderer(), tex, nullptr, nullptr);
 }
 
@@ -246,7 +283,10 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null flipped" << endl; return; }
+	DBG_D << "flipped (" << flip_h << '|' << flip_v
+	      << ") to " << dst << " from " << src << endl;
+
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, &src, &dst, 0.0, nullptr, flip);
 }
@@ -257,24 +297,31 @@ void draw::flipped(
 	bool flip_h,
 	bool flip_v)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null flipped" << endl; return; }
+	DBG_D << "flipped (" << flip_h << '|' << flip_v
+	      << ") to " << dst << endl;
+
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, &dst, 0.0, nullptr, flip);
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 {
-	if (!tex) { return; }
+	if (!tex) { DBG_D << "null flipped" << endl; return; }
+	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')' << endl;
+
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
 }
 
 
+// TODO: highdpi - maybe expose this mirrored mode to WML somehow
 void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	bool mirrored)
 {
-	if (!tex) { return; }
-	// TODO: highdpi - should this draw at full res? Or game res? For now it's using game res. To draw in higher res, width and height would have to be specified.
+	if (!tex) { DBG_D << "null tiled" << endl; return; }
+	DBG_D << "tiled (" << centered << '|' << mirrored
+	      << ") " << dst << endl;
 
 	// Reduce clip to dst.
 	auto clipper = draw::reduce_clip(dst);
@@ -292,6 +339,40 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 				draw::flipped(tex, t, hf, vf);
 			} else {
 				draw::blit(tex, t);
+			}
+		}
+	}
+}
+
+void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
+	bool centered, bool mirrored)
+{
+	if (!tex) { DBG_D << "null tiled_highres" << endl; return; }
+	DBG_D << "tiled_highres (" << centered << '|' << mirrored
+	      << ") " << dst << endl;
+
+	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
+
+	// Reduce clip to dst.
+	auto clipper = draw::reduce_clip(dst);
+
+	const auto info = tex.get_info();
+	const float w = float(info.w) / float(pixel_scale);
+	const float h = float(info.h) / float(pixel_scale);
+	const float xoff = centered ? (dst.w - w) / 2 : 0.0f;
+	const float yoff = centered ? (dst.h - h) / 2 : 0.0f;
+
+	// Just blit the image however many times is necessary.
+	bool vf = false;
+	SDL_FRect t{dst.x - xoff, dst.y - yoff, w, h};
+	for (; t.y < dst.y + dst.h; t.y += t.h, vf = !vf) {
+		bool hf = false;
+		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
+			if (mirrored) {
+				SDL_RendererFlip flip = get_flip(hf, vf);
+				SDL_RenderCopyExF(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
+			} else {
+				SDL_RenderCopyF(renderer(), tex, nullptr, &t);
 			}
 		}
 	}
@@ -333,7 +414,12 @@ draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
 void draw::force_clip(const SDL_Rect& clip)
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
-	if (!renderer()) { return; }
+	if (!renderer()) {
+		WRN_D << "trying to force clip will null renderer" << endl;
+		return;
+	}
+	DBG_D << "forcing clip to " << clip << endl;
+
 	SDL_RenderSetClipRect(renderer(), &clip);
 }
 
@@ -374,12 +460,19 @@ draw::viewport_setter draw::set_viewport(const SDL_Rect& viewport)
 
 void draw::force_viewport(const SDL_Rect& viewport)
 {
+	if (!renderer()) {
+		WRN_D << "trying to force viewport will null renderer" << endl;
+		return;
+	}
+	DBG_D << "forcing viewport to " << viewport << endl;
+
 	SDL_RenderSetViewport(renderer(), &viewport);
 }
 
 SDL_Rect draw::get_viewport()
 {
 	if (!renderer()) {
+		WRN_D << "no renderer available to get viewport" << endl;
 		return sdl::empty_rect;
 	}
 
@@ -401,6 +494,11 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	// Validate we can render to this texture.
 	assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
 
+	if (!renderer()) {
+		WRN_D << "can't set render target with null renderer" << endl;
+		return;
+	}
+
 	target_ = CVideo::get_singleton().get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
 
@@ -409,11 +507,17 @@ draw::render_target_setter::render_target_setter(const texture& t)
 
 draw::render_target_setter::~render_target_setter()
 {
+	if (!renderer()) {
+		WRN_D << "can't reset render target with null renderer" << endl;
+		return;
+	}
 	CVideo::get_singleton().force_render_target(target_);
 	SDL_RenderSetViewport(renderer(), &viewport_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)
 {
+	DBG_D << "setting render target to "
+	      << t.w() << 'x' << t.h() << " texture" << endl;
 	return draw::render_target_setter(t);
 }

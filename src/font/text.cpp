@@ -32,6 +32,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/general.hpp"
+#include "video.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -63,6 +64,7 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
+	, pixel_scale_(1)
 	, surface_dirty_(true)
 	, rendered_viewport_()
 	, surface_buffer_()
@@ -91,35 +93,69 @@ pango_text::pango_text()
 	cairo_font_options_destroy(fo);
 }
 
+texture pango_text::render_texture(const SDL_Rect& viewport)
+{
+	return with_draw_scale(texture(render(viewport)));
+}
+
+texture pango_text::render_texture()
+{
+	return with_draw_scale(texture(render()));
+}
+
 surface& pango_text::render(const SDL_Rect& viewport)
 {
+	update_pixel_scale(); // TODO: this should be in recalculate()
+	recalculate();
 	rerender(viewport);
 	return surface_;
 }
 
 surface& pango_text::render()
 {
+	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
 	auto viewport = SDL_Rect{0, 0, rect_.x + rect_.width, rect_.y + rect_.height};
 	rerender(viewport);
 	return surface_;
 }
 
-int pango_text::get_width() const
+int pango_text::get_width()
 {
 	return this->get_size().x;
 }
 
-int pango_text::get_height() const
+int pango_text::get_height()
 {
 	return this->get_size().y;
 }
 
-point pango_text::get_size() const
+texture pango_text::with_draw_scale(const texture& t) const
 {
+	auto info = t.get_info();
+	texture res(t);
+	res.set_draw_width(to_draw_scale(info.w));
+	res.set_draw_height(to_draw_scale(info.h));
+	return res;
+}
+
+int pango_text::to_draw_scale(int i) const
+{
+	return (i + pixel_scale_ - 1) / pixel_scale_;
+}
+
+point pango_text::to_draw_scale(const point& p) const
+{
+	// Round up, rather than truncating.
+	return {to_draw_scale(p.x), to_draw_scale(p.y)};
+}
+
+point pango_text::get_size()
+{
+	update_pixel_scale(); // TODO: this should be in recalculate()
 	this->recalculate();
 
-	return point(rect_.width, rect_.height);
+	return to_draw_scale({rect_.width, rect_.height});
 }
 
 bool pango_text::is_truncated() const
@@ -191,7 +227,7 @@ point pango_text::get_cursor_position(
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
 
-	return point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+	return to_draw_scale({PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y)});
 }
 
 std::size_t pango_text::get_maximum_length() const
@@ -328,11 +364,12 @@ pango_text& pango_text::set_family_class(font::family_class fclass)
 	return *this;
 }
 
-pango_text& pango_text::set_font_size(const unsigned font_size)
+pango_text& pango_text::set_font_size(unsigned font_size)
 {
-	unsigned int actual_size = preferences::font_scaled(font_size);
-	if(actual_size != font_size_) {
-		font_size_ = actual_size;
+	font_size = preferences::font_scaled(font_size) * pixel_scale_;
+
+	if(font_size != font_size_) {
+		font_size_ = font_size;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
 	}
@@ -363,6 +400,8 @@ pango_text& pango_text::set_foreground_color(const color_t& color)
 
 pango_text& pango_text::set_maximum_width(int width)
 {
+	width *= pixel_scale_;
+
 	if(width <= 0) {
 		width = -1;
 	}
@@ -390,6 +429,8 @@ pango_text& pango_text::set_characters_per_line(const unsigned characters_per_li
 
 pango_text& pango_text::set_maximum_height(int height, bool multiline)
 {
+	height *= pixel_scale_;
+
 	if(height <= 0) {
 		height = -1;
 		multiline = false;
@@ -506,11 +547,36 @@ int pango_text::get_max_glyph_height() const
 	pango_font_metrics_unref(m);
 	g_object_unref(f);
 
-	return ceil(pango_units_to_double(ascent + descent));
+	return ceil(pango_units_to_double(ascent + descent) / pixel_scale_);
+}
+
+void pango_text::update_pixel_scale()
+{
+	const int ps = CVideo::get_singleton().get_pixel_scale();
+	if (ps == pixel_scale_) {
+		return;
+	}
+
+	font_size_ = (font_size_ / pixel_scale_) * ps;
+
+	if (maximum_width_ != -1) {
+		maximum_width_ = (maximum_width_ / pixel_scale_) * ps;
+	}
+
+	if (maximum_height_ != -1) {
+		maximum_height_ = (maximum_height_ / pixel_scale_) * ps;
+	}
+
+	calculation_dirty_ = true;
+	pixel_scale_ = ps;
 }
 
 void pango_text::recalculate() const
 {
+	// TODO: clean up this "const everything then mutable everything" mess.
+	// update_pixel_scale() should go in here. But it can't. Because things
+	// are declared const which are not const.
+
 	if(calculation_dirty_) {
 		assert(layout_ != nullptr);
 

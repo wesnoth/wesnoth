@@ -217,6 +217,15 @@ jobs:
         with:
           submodules: "recursive"
 
+      - name: Cache object files
+        id: windows-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            D:/a/wesnoth/vcpkg
+            D:/a/wesnoth/wesnoth/vcpkg_installed
+          key: win-cache-0001
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
@@ -225,7 +234,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
+          git checkout b49b2bdf22559c89eddbf29a29621a1dc6929320
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
@@ -261,6 +270,15 @@ jobs:
         with:
           submodules: "recursive"
 
+      - name: Cache object files
+        id: windows-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            D:/a/wesnoth/vcpkg
+            D:/a/wesnoth/wesnoth/vcpkg_installed
+          key: win-cache-0001
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
@@ -269,7 +287,7 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout 01d6f6ff1e5332b926099f0c23bda996940ad4e8
+          git checkout b49b2bdf22559c89eddbf29a29621a1dc6929320
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake

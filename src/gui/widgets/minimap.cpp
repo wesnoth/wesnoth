@@ -219,7 +219,8 @@ void minimap::impl_draw_background(int x_offset, int y_offset)
 
 	const texture tex = get_image(rect.w, rect.h);
 	if(tex) {
-		draw::blit(tex, rect);
+		// get_image returns a pre-sized texture maintaining aspect ratio.
+		draw::blit(tex, {rect.x, rect.y, tex.w(), tex.h()});
 	}
 }
 

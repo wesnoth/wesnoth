@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 14:27 UTC\n"
-"PO-Revision-Date: 2021-07-19 01:51+0800\n"
+"PO-Revision-Date: 2022-06-01 02:03+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -40,7 +40,7 @@ msgstr "預設"
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
-msgstr "韋諾多人遊戲的標準時代，共有六種派系，整理來說是平衡的。"
+msgstr "韋諾多人遊戲的標準時代，共有六種派系，整體來說是平衡的。"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:75
@@ -104,7 +104,7 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='$side_color'>陣營 %side_number</"
+"<span strikethrough='true' foreground='$side_color'>陣營 $side_number</"
 "span>：已經失去所有單位"
 
 #. [lua]: f
@@ -115,15 +115,16 @@ msgid ""
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>陣營 %side_number</span>：收入得分 = "
-"%income  單位得分 = %units  金幣 = %gold"
+"<span foreground='$side_color'>陣營 $side_number</span>：收入得分 = $income  "
+"單位得分 = $units  金幣 = $gold\n"
+"總得分：<b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>陣營 %side_number</span> 取得了優勢。"
+msgstr "<span foreground='$side_color'>陣營 $side_number</span> 取得了優勢。"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
@@ -1542,7 +1543,7 @@ msgstr ""
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr "讓我們替即將來臨的戰鬥做好準備吧！"
+msgstr "讓我們替即將來臨的戰鬥做好準備吧。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
@@ -2178,7 +2179,7 @@ msgstr "西南"
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^Northeast"
-msgstr "東南"
+msgstr "東北"
 
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67

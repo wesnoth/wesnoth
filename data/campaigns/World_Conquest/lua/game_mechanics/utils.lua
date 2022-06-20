@@ -28,7 +28,7 @@ end
 function wc2_utils.pick_random(str, generator)
 	local s2 = wml.variables[str]
 	if s2 ~= nil or generator then
-		local array = s2 and stringx.split(s2 or "") or {}
+		local array = s2 and stringx.split(s2) or {}
 		if #array == 0 and generator then
 			array = generator()
 		end

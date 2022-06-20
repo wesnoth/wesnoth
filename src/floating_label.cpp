@@ -50,7 +50,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, buf_()
 	, buf_pos_()
 #endif
-	, draw_size_()
 	, fadeout_(0)
 	, time_start_(0)
 	, text_(text)
@@ -74,7 +73,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 {
 	if (surf.get()) {
 		tex_ = texture(surf);
-		draw_size_ = {surf->w, surf->h};
 	}
 }
 
@@ -122,6 +120,11 @@ bool floating_label::create_texture()
 
 		surface foreground = text.render();
 
+		// Pixel scaling is necessary as we are manipulating the raw surface
+		const int ps = CVideo::get_singleton().get_pixel_scale();
+		// For consistent results we must also enlarge according to zoom
+		const int sf = ps * display::get_singleton()->get_zoom_factor();
+
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
 			return false;
@@ -130,12 +133,11 @@ bool floating_label::create_texture()
 		// combine foreground text with its background
 		if(bgalpha_ != 0) {
 			// background is a dark tooltip box
-			surface background(foreground->w + border_ * 2, foreground->h + border_ * 2);
+			surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
 				tex_ = texture(foreground);
-				draw_size_ = {foreground->w, foreground->h};
 				return tex_ != nullptr;
 			}
 
@@ -148,30 +150,31 @@ bool floating_label::create_texture()
 			// (where the text was blitted directly on screen)
 			adjust_surface_alpha(foreground, floating_to_fixed_point(1.13));
 
-			SDL_Rect r{border_, border_, 0, 0};
+			SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
 			tex_ = texture(background);
-			draw_size_ = {background->w, background->h};
 		} else {
 			// background is blurred shadow of the text
-			surface background(foreground->w + 4, foreground->h + 4);
+			surface background(foreground->w + 4*sf, foreground->h + 4*sf);
 			sdl::fill_surface_rect(background, nullptr, 0);
-			SDL_Rect r{2, 2, 0, 0};
+			SDL_Rect r{2*sf, 2*sf, 0, 0};
 			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background);
+			background = shadow_image(background, sf);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
 				tex_ = texture(foreground);
-				draw_size_ = {foreground->w, foreground->h};
 				return tex_ != nullptr;
 			}
 			sdl_blit(foreground, nullptr, background, &r);
 			tex_ = texture(background);
-			draw_size_ = {background->w, background->h};
 		}
+
+		// adjust high-dpi text display scale
+		tex_.set_draw_width(tex_.w() / ps);
+		tex_.set_draw_height(tex_.h() / ps);
 	}
 
 	return tex_ != nullptr;
@@ -189,7 +192,7 @@ void floating_label::draw(int time)
 	}
 
 	SDL_Point pos = get_loc(time);
-	SDL_Rect draw_rect = {pos.x, pos.y, draw_size_.x, draw_size_.y};
+	SDL_Rect draw_rect = {pos.x, pos.y, tex_.w(), tex_.h()};
 	buf_pos_ = draw_rect;
 
 	auto clipper = draw::set_clip(clip_rect_);
@@ -219,7 +222,7 @@ SDL_Point floating_label::get_loc(int time)
 {
 	int time_alive = get_time_alive(time);
 	return {
-		static_cast<int>(time_alive * xmove_ + xpos(draw_size_.x)),
+		static_cast<int>(time_alive * xmove_ + xpos(tex_.w())),
 		static_cast<int>(time_alive * ymove_ + ypos_)
 	};
 }

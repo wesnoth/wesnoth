@@ -18,6 +18,7 @@
 #include "wesnothd_connection.hpp"
 
 #include "gettext.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "tls_root_store.hpp"
@@ -56,6 +57,8 @@ struct mptest_log
 
 using boost::system::error_code;
 using boost::system::system_error;
+
+using namespace std::chrono_literals; // s, ms, etc
 
 // main thread
 wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
@@ -274,9 +277,18 @@ void wesnothd_connection::wait_for_handshake()
 
 	try {
 		// TODO: make this duration customizable. Should default to 1 minute.
-		const std::chrono::seconds timeout { 60 };
+		auto timeout = 60s;
 
-		switch(auto future = handshake_finished_.get_future(); future.wait_for(timeout)) {
+		auto future = handshake_finished_.get_future();
+		for(auto time = 0ms;
+			future.wait_for(10ms) == std::future_status::timeout
+				&& time < timeout;
+			time += 10ms)
+		{
+			gui2::dialogs::loading_screen::spin();
+		}
+
+		switch(future.wait_for(0ms)) {
 		case std::future_status::ready:
 			// This is a void future, so this just serves to re-throw any system_error exceptions
 			// stored by the worker thread. Additional handling occurs in the catch block below.
@@ -542,7 +554,11 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 {
 	{
 		std::unique_lock<std::mutex> lock(recv_queue_mutex_);
-		recv_queue_lock_.wait(lock, [this]() { return has_data_received(); });
+		while(!recv_queue_lock_.wait_for(
+		      lock, 10ms, [this]() { return has_data_received(); }))
+		{
+			gui2::dialogs::loading_screen::spin();
+		}
 	}
 
 	return receive_data(data);

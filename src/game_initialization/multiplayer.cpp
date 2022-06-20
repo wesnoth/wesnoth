@@ -186,47 +186,31 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 
-			std::promise<void> received_initial_gamelist;
+			config data;
 
-			network_worker = std::thread([this, &received_initial_gamelist]() {
-				config data;
+			while(!stop) {
+				connection->wait_and_receive_data(data);
 
-				while(!stop) {
-					connection->wait_and_receive_data(data);
+				if(const auto error = data.optional_child("error")) {
+					throw wesnothd_error((*error)["message"]);
+				}
 
-					if(const auto error = data.optional_child("error")) {
-						throw wesnothd_error((*error)["message"]);
-					}
+				else if(data.has_child("gamelist")) {
+					this->lobby_info.process_gamelist(data);
+					break;
+				}
 
-					else if(data.has_child("gamelist")) {
-						this->lobby_info.process_gamelist(data);
+				else if(const auto gamelist_diff = data.optional_child("gamelist_diff")) {
+					this->lobby_info.process_gamelist_diff(*gamelist_diff);
+				}
 
-						try {
-							received_initial_gamelist.set_value();
-							// TODO: only here while we transition away from dialog-bound timer-based handling
-							return;
-						} catch(const std::future_error& e) {
-							if(e.code() == std::future_errc::promise_already_satisfied) {
-								// We only need this for the first gamelist
-							}
-						}
-					}
-
-					else if(const auto gamelist_diff = data.optional_child("gamelist_diff")) {
-						this->lobby_info.process_gamelist_diff(*gamelist_diff);
-					}
-
-					else {
-						// No special actions to take. Pass the data on to the network handlers.
-						for(const auto& handler : process_handlers) {
-							handler(data);
-						}
+				else {
+					// No special actions to take. Pass the data on to the network handlers.
+					for(const auto& handler : process_handlers) {
+						handler(data);
 					}
 				}
-			});
-
-			// Wait at the loading screen until the initial gamelist has been processed
-			received_initial_gamelist.get_future().wait();
+			}
 		});
 	}
 

@@ -441,7 +441,7 @@ std::size_t menu::max_items_onscreen() const
 		return std::size_t(max_items_);
 	}
 
-	const std::size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (max_height_ == -1 ? (video().draw_area().h*66)/100 : max_height_) - heading_height();
 
 	std::vector<int> heights;
 	std::size_t n;

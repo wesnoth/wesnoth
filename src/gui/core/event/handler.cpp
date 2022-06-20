@@ -458,7 +458,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize(point(video.get_width(), video.get_height()));
+					video_resize(point(video.draw_area().w, video.draw_area().h));
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:

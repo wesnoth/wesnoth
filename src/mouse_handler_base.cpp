@@ -180,7 +180,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			minimap_scrolling_ = false;
 
 			if (!dragging_started_ && touch_timestamp > 0) {
-				time_t dt = clock() - touch_timestamp;
+				clock_t dt = clock() - touch_timestamp;
 				if (dt > CLOCKS_PER_SEC * 3 / 10) {
 					right_click(event.x, event.y, browse); // show_menu_ = true;
 				}

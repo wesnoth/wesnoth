@@ -19,6 +19,7 @@
 #include <memory>
 
 class surface;
+struct point;
 
 /**
  * Wrapper class to encapsulate creation and management of an SDL_Texture.
@@ -35,8 +36,17 @@ public:
 	/** Assigns the given texture to this one. */
 	explicit texture(SDL_Texture* txt);
 
-	/** Construct a texture from a surface. */
-	explicit texture(const surface& surf);
+	/**
+	 * Construct a texture from a surface.
+	 *
+	 * @param surf                  The surface to copy.
+	 * @param linear_interpolation  If true this texture will use linear
+	 *                              interpolation when drawing. Otherwise
+	 *                              nearest-neighbour interpolation is used.
+	 *                              This does not affect texture creation,
+	 *                              only later application.
+	 */
+	explicit texture(const surface& surf, bool linear_interpolation = false);
 
 	/** Construct a texture of the specified size and access type. */
 	texture(int w, int h, SDL_TextureAccess access);
@@ -58,11 +68,33 @@ public:
 		return info(*this);
 	}
 
-	/** The width of the texture, in pixels. */
+	/**
+	 * The draw-space width of the texture, in pixels.
+	 *
+	 * This will usually be the real texture width in pixels, but may
+	 * differ in some situations. For high-DPI text, for example,
+	 * it will usually be equal to get_info().w / pixel_scale.
+	 */
 	int w() const { return w_; }
 
-	/** The height of the texture, in pixels. */
+	/**
+	 * The draw-space height of the texture, in pixels.
+	 *
+	 * This will usually be the real texture height in pixels, but may
+	 * differ in some situations. For high-DPI text, for example,
+	 * it will usually be equal to get_info().h / pixel_scale.
+	 */
 	int h() const { return h_; }
+
+	/** Set the intended width of the texture, in draw-space. */
+	void set_draw_width(int w) { w_ = w; }
+
+	/** Set the intended height of the texture, in draw-space. */
+	void set_draw_height(int h) { h_ = h; }
+
+	/** Set the intended size of the texture, in draw-space. */
+	void set_draw_size(int w, int h) { w_ = w; h_ = h; }
+	void set_draw_size(const point& p);
 
 	/** Sets the texture's alpha modifier. */
 	void set_alpha_mod(uint8_t alpha);

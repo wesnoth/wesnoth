@@ -864,13 +864,13 @@ surface wipe_alpha(const surface &surf)
 }
 
 
-surface shadow_image(const surface &surf)
+surface shadow_image(const surface &surf, int scale)
 {
 	if(surf == nullptr)
 		return nullptr;
 
 	// we blur it, and reuse the neutral surface created by the blur function
-	surface nsurf (blur_alpha_surface(surf, 2));
+	surface nsurf (blur_alpha_surface(surf, 2*scale));
 
 	if(nsurf == nullptr) {
 		std::cerr << "failed to blur the shadow surface\n";

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2022-01-13 14:20+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -206,14 +206,14 @@ msgstr ""
 "Airson do ghluasad mu dheireadh a neo-dhèanamh, brùth air <b>u</b> no dèan "
 "briogadh deas airson clàr-taice."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:368
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:364
 msgid "Movement"
 msgstr "Gluasad"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -231,8 +231,8 @@ msgstr ""
 "ùidhe agad. (’S urrainn dhut brùthadh air <b>u</b> gus gluasad a neo-"
 "dhèanamh ma ghluais thu dhan àite chearr.)"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -251,66 +251,66 @@ msgstr ""
 "dhèanamh ma ghluais thu dhan àite chearr.)"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:381
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:375
 msgid "Move Konrad next to Delfador"
 msgstr "Gluais Conall ri taobh Dheilfeadair"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:383
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:377
 msgid "Move Li’sar next to Delfador"
 msgstr "Gluais Li’sar ri taobh Dheilfeadair"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:394
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Sin sibh, a Dheilfeadair! An dàinig an t-àm gus gabhail air rudeigin?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:401
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:395
 msgid "female^Good morning, Delfador! Is it time to attack things?"
 msgstr "Sin sibh, a Dheilfeadair! An dàinig an t-àm gus gabhail air rudeigin?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
 msgid "Um, well..."
 msgstr "Uill uill…"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr ""
 "An do lorg sibh deamhan ris am b’ urrainn dhomh sabaid, an do lorg? No "
 "athach?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
 msgstr ""
 "An do lorg sibh deamhan ris am b’ urrainn dhomh sabaid, an do lorg? No "
 "athach?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Ist! Gairmidh mi nàmhaid dhut…"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:489
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:483
 msgid "... this quintain!"
 msgstr "… an dumaidh seo!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:494
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:488
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Dumaidh? ’Eil sibh ag iarraidh gun sabaidinn an aghaidh caochaige?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:489
 msgid "female^A quintain? You want me to fight a dummy?"
 msgstr "Dumaidh? ’Eil sibh ag iarraidh gun sabaidinn an aghaidh caochaige?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:501
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:495
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
@@ -319,7 +319,7 @@ msgstr ""
 "reusanta cinnteach gun dèan thu a’ chùis air."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:506
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:500
 msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
@@ -327,14 +327,14 @@ msgstr ""
 "Tha $student_hp phuing-bheatha is claidheamh agad, a nigheann-uasail. Tha mi "
 "reusanta cinnteach gun dèan thu a’ chùis air."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:520
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:506
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:511
 msgid "Attacking"
 msgstr "Ionnsaighean"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:507
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -344,8 +344,8 @@ msgstr ""
 "toiseach is an uair sin an t-amas (an dumaidh). Chì thu tuairisgeul na h-"
 "ionnsaighe. Briog air <b>Thoir ionnsaigh</b> nuair a bhios tu ullamh."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:512
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -356,47 +356,47 @@ msgstr ""
 "ionnsaighe. Briog air <b>Thoir ionnsaigh</b> nuair a bhios tu ullamh."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:517
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr ""
 "Chan urrainn dhut crìoch a chur air a’ chuairt agad mus dug thu ionnsaigh "
 "air a’ chaochag!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:531
 msgid "Hey! This quintain fights back!"
 msgstr "Hè! Tha comas sabaide aig an dumaidh seo!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:546
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:536
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Na can rium, ‘s dòcha gum bu chòir dhuinn tòiseachadh le doileig."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:551
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:541
 msgid "Should I retreat?"
 msgstr "An dèan mi cùlachadh?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:542
 msgid "female^Should I retreat?"
 msgstr "An dèan mi cùlachadh?"
 
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:547
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
 msgid "Good idea!"
 msgstr "Deagh bheachd!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:563
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:570
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:552
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 msgid "Crowns"
 msgstr "Crùin"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:565
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:553
 msgid ""
 "The tiny golden crown above your leader (Konrad) indicates he is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -406,8 +406,8 @@ msgstr ""
 "ceannard an taoibh a th’ ann. Sa mhòrchuid a chnàmh-sgeulan, caillidh tu ma "
 "gheibh do cheannard bàs. Dèan cinnteach gun cum thu sàbhailte e!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:572
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:558
 msgid ""
 "The tiny golden crown above your leader (Li’sar) indicates she is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -418,7 +418,7 @@ msgstr ""
 "gheibh do cheannard bàs. Dèan cinnteach gun cum thu sàbhailte i!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:599
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:585
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -427,12 +427,12 @@ msgstr ""
 "ionnsaigh air an dumaidh. Gheibh esan cothrom ort a-nis."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:604
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:590
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Na can rium gu bheil <i>a’ chaochag</i> a’ faighinn cuairt?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:595
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
@@ -443,13 +443,13 @@ msgstr ""
 "na puingean-beatha agad bho $student_hp gu $($student_hp-15) puing-bheatha. "
 "Ullaich!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:616
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:601
 msgid "Turns"
 msgstr "Cuairtean"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:602
 #, fuzzy
 #| msgid ""
 #| "Every turn, each side in a scenario gets a chance to make their move. "
@@ -479,15 +479,15 @@ msgstr ""
 
 #. [event]
 #. [else]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:621
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:701
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:809
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:605
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:683
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:787
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:498
 msgid "End your turn"
 msgstr "Cuir crìoch air a’ chuairt agad"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:644
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:628
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
@@ -495,21 +495,21 @@ msgstr ""
 "air an leasan mun t-slànachadh!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:655
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:639
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Oich! Tha mi feumach air slànachadh! Chan eil ach $student_hp puingean-"
 "beatha air fhàgail dhomh!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:656
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:640
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Oich! Tha slànachadh a dhìth orm! Chan eil ach $student_hp puingean-beatha "
 "air fhàgail dhomh!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:661
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:645
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
@@ -519,27 +519,27 @@ msgstr ""
 "dhiubh, gheibh thu slànachadh. Dèan air baile!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:666
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:650
 msgid "Village"
 msgstr "Baile"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:663
 msgid "Move Konrad to a nearby village"
 msgstr "Gluais Conall gu baile faisg air."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:665
 msgid "Move Li’sar to a nearby village"
 msgstr "Gluais Li’sar gu baile faisg oirre."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:694
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:677
 msgid "Villages"
 msgstr "Bailtean"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:696
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:678
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -553,7 +553,7 @@ msgstr ""
 "bharrachd airson gach baile a th’ agad."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:711
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:693
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
@@ -561,7 +561,7 @@ msgstr ""
 "air an leasan mun trusadh!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:720
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:702
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -574,23 +574,23 @@ msgstr ""
 "Fhuair thu $student_hp_heal_amount dhiubh air ais an turas seo."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
 msgid "Now, it’s time to summon some help against that quintain."
 msgstr ""
 "Nise, thàinig an t-àm gus cuideachadh fhaighinn an aghaidh an dumaidh ud."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:730
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
 msgid "I’ll recruit some elves!"
 msgstr "Trusaidh mi sìthichean!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:713
 msgid "female^I’ll recruit some elves!"
 msgstr "Trusaidh mi sìthichean!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:736
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
@@ -601,27 +601,27 @@ msgstr ""
 "agad gus seo a dhèanamh."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:741
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
 msgid "Keep"
 msgstr "Daingean"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:737
 msgid "Move Konrad to the keep"
 msgstr "Gluais Conall dhan daingean"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:739
 msgid "Move Li’sar to the keep"
 msgstr "Gluais Li’sar dhan daingean"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:756
 msgid "Recruiting"
 msgstr "Trusadh"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
 #, fuzzy
 #| msgid ""
 #| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
@@ -644,17 +644,17 @@ msgstr ""
 "An Cathach Sìthiche."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:760
 msgid "Recruit two Elvish Fighters"
 msgstr "Trus dithis chathach-sìthe"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:799
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:778
 msgid "Traits"
 msgstr "Feartan"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:801
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:779
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -670,7 +670,7 @@ msgstr ""
 "20% as lugha de dh’eòlas airson an ath-rang a ruigsinn."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:843
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:821
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
@@ -678,7 +678,7 @@ msgstr ""
 "air an leasan mun ionnsaigh!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:830
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -686,7 +686,7 @@ msgstr ""
 "gabhail air sa bhad!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:853
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:831
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -695,14 +695,14 @@ msgstr ""
 "gabhail air sa bhad!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:836
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Aidh, mura dèan aonad gnìomh sam bith fad cuairte, gheibh e slànachadh beag "
 "air bheag."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:841
 #, fuzzy
 #| msgid ""
 #| "Before you send your fighters against the quintain, you should know they "
@@ -715,17 +715,17 @@ msgstr ""
 "sheòrsa dhe dh’ionnsaigh aca…"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:868
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:846
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Innsidh mi dhaibh gun cleachd iad an tè a nì barrachd dochainn!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:869
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:847
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Innsidh mi dhaibh gun cleachd iad an tè a nì barrachd dochainn!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:874
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
@@ -736,12 +736,12 @@ msgstr ""
 "le 3 ionnsaighean)? Saoilidh mi gum faigh thu a-mach…"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:877
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
 msgid "Attack the quintain with your fighters"
 msgstr "Thoir ionnsaigh air an dumaidh leis na Cathaich agad"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:888
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:866
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
@@ -753,7 +753,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:931
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:909
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -767,7 +767,7 @@ msgstr ""
 "shàbhalaiche dhut."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:935
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:913
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
@@ -777,7 +777,7 @@ msgstr ""
 "dochann nan ionnsaighean dlùtha aige."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:919
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -792,7 +792,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:940
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -804,7 +804,7 @@ msgstr ""
 "dhìon fhèin."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:966
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:944
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
@@ -814,7 +814,7 @@ msgstr ""
 "nan ionnsaighean astair aige."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:972
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:950
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -826,23 +826,23 @@ msgstr ""
 "dhìon fhèin."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:989
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:967
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Thoir ionnsaigh leis an dà shìthiche gus an cuir thu crìoch air an dumaidh!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1004
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:982
 msgid "Maybe you should recruit another elf?"
 msgstr "’S dòcha gum bu chòir dhut sìthiche eile a thrusadh?"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1014
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
 msgid "Unit Descriptions"
 msgstr "Tuairisgeulan nan aonadan"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1016
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:992
 #, fuzzy
 #| msgid ""
 #| "You can right-click on a unit to see a detailed <b>Unit Description</b>."
@@ -852,13 +852,13 @@ msgstr ""
 "’S urrainn dhut briogadh deas a dhèanamh air aonad gus <b>Tuairisgeul an "
 "aonaid</b> mionaideach fhaicinn."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1026
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
 msgid "Protect Your Troops"
 msgstr "Dìon na saighdearan agad"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1028
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1002
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -869,13 +869,13 @@ msgstr ""
 "aig a bheil na <i>puingean eòlais (PE)</i> as motha ach an coisinn iad "
 "rangan is am fàs iad nas cumhachdaiche."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1038
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1011
 msgid "Support"
 msgstr "Taic"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1012
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -884,17 +884,17 @@ msgstr ""
 "gach aonad bonn òir sa chuairt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1022
 msgid "You had really better finish off that quintain."
 msgstr "Bu chòir dhut crìoch a chur air an dumaidh ud."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1031
 msgid "Advancement"
 msgstr "Àrdachadh"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1062
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1032
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -909,13 +909,13 @@ msgstr ""
 "dhe chosgaisean an lùib aonadan an dàrna rang na an lùib aonadan a’ chiad "
 "rang."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1072
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
 msgid "Defenses"
 msgstr "Dìon"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1075
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1043
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -935,22 +935,22 @@ msgstr ""
 "bi na h-amasan aca."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1087
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1055
 msgid "Agh! This training is too much for me..."
 msgstr "Iochd! Tha an trèanadh seo cus dhomh…"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1088
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1056
 msgid "female^Agh! This training is too much for me..."
 msgstr "Iochd! Tha an trèanadh seo cus dhomh…"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1124
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1092
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Chaidh an dumaidh a mhilleadh is fhuair mi eòlas a bharrachd!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1129
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1097
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -959,7 +959,7 @@ msgstr ""
 "air nàmhaid. Ma gheibh thu eòlas gu leòr, fàsaidh tu nas cumhachdaiche."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1135
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1103
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -968,7 +968,7 @@ msgstr ""
 "fhaighinn! An dèidh seo, bidh dearbh-obair againn ri dèanamh…"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1140
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1108
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -977,12 +977,12 @@ msgstr ""
 "fhaighinn! An dèidh seo, bidh dearbh-obair againn ri dèanamh…"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1216
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1184
 msgid "Note"
 msgstr "An aire"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1218
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1186
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -991,7 +991,7 @@ msgstr ""
 "taobh. Ma tha thu faiceallach, nì thu a’ chùis orra fear mu seach."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1227
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1195
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -1000,7 +1000,7 @@ msgstr ""
 "dearbh-bhlàr a-nis?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1228
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1196
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -1008,13 +1008,13 @@ msgstr ""
 "Uill, saoilidh mi gu bheil mi agaibh a-nis. Tiugainn! An dèan mi sabaid air "
 "dearbh-bhlàr a-nis?"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1244
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1211
 msgid "Victory"
 msgstr "Buaidh"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1246
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1212
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -1324,13 +1324,13 @@ msgstr ""
 "sabaid san chnàmh-sgeul seo. Bhiodh aonadan eòlach ’nam buannachd an aghaidh "
 "nan deamhan seo."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:291
 msgid "Recalling"
 msgstr "Ais-ghairm"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:294
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
 #, fuzzy
 #| msgid ""
 #| "In addition to recruiting new units each scenario, you can also "
@@ -1360,7 +1360,7 @@ msgstr ""
 "a bharrachd air ais-ghairm nan seann-ghaisgeach."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:299
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:297
 msgid ""
 "You also have two new types of units to recruit this scenario: Elvish "
 "Archers and Elvish Shamans. I’ll tell you more about them when you recruit "
@@ -1374,19 +1374,19 @@ msgstr ""
 
 #. [event]
 #. [on_undo]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:302
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:520
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:562
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:300
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:551
 msgid "Recruit or recall your troops"
 msgstr "Trus no ais-ghairm saighdearan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:316
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:314
 msgid "Elvish Shaman"
 msgstr "Ban-seuman-shìthe"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:317
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:315
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
@@ -1400,12 +1400,12 @@ msgstr ""
 "bhoghadairean, mar sin thoir an aire nuair a chuireas tu air a’ bhlàr i."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:320
 msgid "The <i>Heal</i> Ability"
 msgstr "Am comas <i>slànachaidh</i>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
 msgid ""
 "At the start of each turn, allied units adjacent to a Shaman will recover 4 "
 "hitpoints, which is only half of the amount that a village would provide. "
@@ -1427,12 +1427,12 @@ msgstr ""
 "a’ gheama</i> dhen chobhair (grad-iuchair bhunaiteach: <b>F1</b>)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:329
 msgid "Weapon Specials"
 msgstr "Ionnsaighean sònraichte"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
 #, fuzzy
 #| msgid ""
 #| "Weapon specials are special attack modifiers that make certain attacks "
@@ -1470,14 +1470,14 @@ msgstr ""
 "chobhair (grad-iuchair bhunaiteach: <b>F1</b>)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:372
 msgid "Multiple Healers"
 msgstr "Iomadh slànaighear"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:365
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 msgid ""
 "You now have two healers. However, each unit can only receive healing from "
 "one healer — a unit will still only be healed 4 hitpoints per turn even when "
@@ -1498,7 +1498,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
 #, fuzzy
 #| msgid ""
 #| "You now have two healers. Your Druid can heal adjacent units by 8 "
@@ -1518,12 +1518,12 @@ msgstr ""
 "shlànachadh leis an tè as àirde rang."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:383
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
 msgid "Healers and Villages"
 msgstr "Slànaighearan ’s bailtean"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:384
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:382
 msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
@@ -1532,7 +1532,7 @@ msgstr ""
 "thaobh."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:386
 msgid ""
 "Having more than one healer allows them to heal each other or to cover "
 "separate areas of the battlefield. It can also allow better tactical "
@@ -1546,12 +1546,12 @@ msgstr ""
 "nas fheàrr an slànaighear a ghluasad seach an t-aonad leòinte mar as trice."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:401
 msgid "Elvish Archer"
 msgstr "Boghadair-sìthe"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:404
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:402
 msgid ""
 "Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
 "has strong ranged attacks. It’s useful to attack enemy units with strong "
@@ -1566,7 +1566,7 @@ msgstr ""
 "frith-ionnsaigh."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:430
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
 msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
@@ -1575,7 +1575,7 @@ msgstr ""
 "ach chan eil iad math air ionnsaigh a thoirt."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:441
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
 msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
@@ -1586,19 +1586,19 @@ msgstr ""
 
 #. [event]
 #. [on_undo]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:444
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:575
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:564
 msgid "Capture a village"
 msgstr "Gabh baile."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:447
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:445
 msgid "You still have to capture a village!"
 msgstr "Feumaidh tu baile a ghabhail fhathast!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:479
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:555
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:477
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:544
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
@@ -1606,12 +1606,12 @@ msgstr ""
 "a neo-dhèanamh a’ ghluasaid mu dheireadh agad."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:480
 msgid "You still have to recruit troops!"
 msgstr "Feumaidh tu aonadan a thrusadh fhathast!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:490
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:488
 msgid ""
 "Excellent! As Delfador mentioned earlier, each captured village will support "
 "one unit and provide you with 1 extra gold per turn."
@@ -1619,13 +1619,13 @@ msgstr ""
 "Glè mhath! Mar a thuirt Deilfeadar roimhe, cuiridh gach baile a tha leatsa "
 "taic ri aonad agus bheir e bonn òir a bharrachd dhut gach cuairt."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:495
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
 msgid "Income and Upkeep"
 msgstr "Teachd a-steach is beathachadh"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:497
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:493
 msgid ""
 "Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted from that. You can support as many levels worth "
@@ -1640,27 +1640,8 @@ msgstr ""
 "bharrachd. Thoir an aire on a chailleas tu òr gach cuairt nuair a bhios cus "
 "aonadan agad!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:502
-msgid "Status Table"
-msgstr "Clàr na staide"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:504
-msgid ""
-"The Status Table details the sides’ current status and starting conditions. "
-"Fog and shroud will affect what you can see in this table, and occasionally "
-"a side may be hidden; however, it is still useful to check this table when a "
-"scenario begins. You can access it in the <b>Menu</b> menu."
-msgstr ""
-"Seallaidh clàr na staide staid làithreach na taobhan agus na cumhan "
-"tòiseachaidh. Bidh buaidh aig sgleò is ceò a chogaidh air na chì thu air a’ "
-"chlàr seo agus dh’fhaoidte gu bheil taobh falaichte gu tur; gidheadh, tha e "
-"feumail sùil a thoirt air a’ chlàr aig toiseach cnàmh-sgeòil. Gheibh thu "
-"greim air sa phrìomh-<b>chlàr-taice</b>."
-
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:568
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
@@ -1669,7 +1650,7 @@ msgstr ""
 "neo-dhèanamh a’ ghluasaid mu dheireadh agad."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
 msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
@@ -1679,7 +1660,7 @@ msgstr ""
 "feachd aige fhèin a thrusadh."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:592
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
 msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
@@ -1689,7 +1670,7 @@ msgstr ""
 "air feachd aige fhèin a thrusadh."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:598
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
 msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
@@ -1698,7 +1679,7 @@ msgstr ""
 "ruigsinn gu dìomhair agus cur às dha gu luath."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:599
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
 msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
@@ -1707,7 +1688,7 @@ msgstr ""
 "ruigsinn gu dìomhair agus cur às dha gu luath."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1725,7 +1706,7 @@ msgstr ""
 "bualadh air Ban-seuman no Boghadair."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:598
 msgid ""
 "However, keep an eye on that ford. The orcs may try to sneak around behind "
 "our forces. It might do to send a few units to defend the banks, and the "
@@ -1736,7 +1717,7 @@ msgstr ""
 "null gus am bruach agus am baile ud thall a dhìon?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:614
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:603
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
@@ -1744,7 +1725,7 @@ msgstr ""
 "oirre."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:615
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
 msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
@@ -1753,7 +1734,7 @@ msgstr ""
 "oirre."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:618
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
 msgid ""
 "That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
 "your archers should be able to engage him with little risk. Unfortunately, "
@@ -1769,13 +1750,15 @@ msgstr ""
 "cothrom ionnsaighe an ath-chuairt. Tha bailtean eile taobh thall na h-aibhne "
 "cuideachd. Bu chòir dhut an gabhail airson teachd a-steach is slànachadh."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:622
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
 msgid "Long-distance Movement"
 msgstr "Gluasad fad às"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:624
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:993
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1786,7 +1769,7 @@ msgstr ""
 "mheud cuairt a bheir e an t-àite ud ruigsinn."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:629
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:616
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
@@ -1794,7 +1777,7 @@ msgstr ""
 "barrachd aonadan."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:630
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
@@ -1803,7 +1786,7 @@ msgstr ""
 "barrachd aonadan."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:636
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:623
 msgid ""
 "You’ve learned well, Konrad. It is indeed a good idea to keep your leader "
 "safe and protected and in range of your keep early in the game. The tide of "
@@ -1816,7 +1799,7 @@ msgstr ""
 "a bhith fad air falbh o chothrom foirlionaidh."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:641
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
 msgid ""
 "You’ve learned well, Li’sar. It is indeed a good idea to keep your leader "
 "safe and protected and in range of your keep early in the game. The tide of "
@@ -1829,12 +1812,12 @@ msgstr ""
 "a bhith fad air falbh o chothrom foirlionaidh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:711
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
 msgid "The tutorial isn’t meant to be this difficult"
 msgstr "Chan eil fainear dhan t-oideachadh seo a bhith cho doirbh sin"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:700
 msgid ""
 "The orc on the island was supposed to move over the bridge, so that he could "
 "be attacked by several elves at once. Something’s broken the scripted event, "
@@ -1849,13 +1832,13 @@ msgstr ""
 "\n"
 "An dèan thu aithris air a’ bhuga?"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "Tracking Enemy Movement"
 msgstr "A’ cumail sùil air gluasadan an nàmhad"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:728
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
@@ -1866,24 +1849,24 @@ msgstr ""
 "nàmhad</b> sa chlàr-taice <b>Gnìomhan</b>."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:731
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:716
 msgid "We must occupy that island before the Wolf Riders reach it!"
 msgstr ""
 "Feumaidh sinn an t-eilean ud a ghabhail mus ruig na Marcaichean Madaidh e!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:721
 msgid "Can’t we just move around the orcs?"
 msgstr "Nach urrainn dhuinn gluasad seachad air na deamhain gu simplidh?"
 
 #. [message]: speaker=student
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:738
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:723
 msgid "female^Can’t we just move around the orcs?"
 msgstr "Nach urrainn dhuinn gluasad seachad air na deamhain gu simplidh?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:751
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn. To move your troops onto that island "
@@ -1895,12 +1878,12 @@ msgstr ""
 "slaodach tron uisge, feumaidh tu am Madagan a mharbhadh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:755
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
 msgid "Zone of Control"
 msgstr "Raon-smachd"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:757
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
 msgid ""
 "The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
 "When an enemy unit enters those hexes, they cannot move any further that "
@@ -1918,7 +1901,7 @@ msgstr ""
 "agad gann no lapach."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:778
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:763
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -1930,7 +1913,7 @@ msgstr ""
 "ghluasad nas fhaisge air airson na h-ath chuairte."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:783
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
@@ -1939,7 +1922,7 @@ msgstr ""
 "beatha aig toiseach na h-ath chuairte."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1951,7 +1934,7 @@ msgstr ""
 "h-ath chuairte."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
 #, fuzzy
 #| msgid ""
 #| "If one of your Shamans stands just behind your wounded units, she will "
@@ -1964,7 +1947,7 @@ msgstr ""
 "gach fear dhiubh le 4 puingean-beatha aig toiseach na h-ath chuairte."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:815
 msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
@@ -1974,7 +1957,7 @@ msgstr ""
 "a’ bhàis air!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:831
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:816
 msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
@@ -1984,7 +1967,7 @@ msgstr ""
 "a’ bhàis air!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:852
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:837
 msgid ""
 "Be careful! If you stand on the bridge you are exposed to attack from "
 "multiple directions! Even though the orcs have low defense in water, they "
@@ -1995,7 +1978,7 @@ msgstr ""
 "san uisge, cuiridh iad às dhut on a tha grunn dhiubh ann."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:868
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
 msgid ""
 "Well done! The island village is ours. You can use the trees to set up a "
 "blockade against the orcs; they can only come across the bridge one by one "
@@ -2009,7 +1992,7 @@ msgstr ""
 "math dhut."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:880
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:865
 msgid ""
 "Don’t forget about that last village near the channel. The orcs will capture "
 "it if they try to sneak around via the ford! It will be hard to dislodge "
@@ -2020,7 +2003,7 @@ msgstr ""
 "fhaighinn dhiubh an uairsin."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:897
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:882
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
@@ -2031,7 +2014,7 @@ msgstr ""
 "Till agus fuirich gus an doir iadsan ionnsaigh ort!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:908
 #, fuzzy
 #| msgid ""
 #| "You’re venturing away from your keep. You might need to recruit more "
@@ -2044,8 +2027,15 @@ msgstr ""
 "thrusadh agus cha chreid mi gun leig ceannard nan deamhan leat an fheadhainn "
 "aigesan a chleachdadh! Thoir an aire!"
 
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
+msgid ""
+"When moving a unit, the percentages shown are the unit’s defense on that "
+"hex. The higher the number, the less likely they are to get hit."
+msgstr ""
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:940
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -2056,7 +2046,7 @@ msgstr ""
 "buannachd às an t-slànachadh cuideachd."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:946
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -2072,13 +2062,13 @@ msgstr ""
 "<i>neodrach</i>, ’s e seo nach dèan an t-àm dhen latha diofar sam bith "
 "dhaibh."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:950
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
 msgid "Time of Day"
 msgstr "Àm dhen latha"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:952
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -2095,8 +2085,8 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:977
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:971
 msgid ""
 "Remember to retreat your wounded units to villages. Shamans can only heal 4 "
 "hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
@@ -2123,13 +2113,13 @@ msgstr ""
 "slànachadh sam bith a gheibh e o bhaile no slànaighear agus tillidh seo 10 "
 "puingean-beatha dha gach cuairt air a char as àirde."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
 msgid "Tracking Unused Units"
 msgstr "A’ lorg aonadan gun chleachdadh"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1002
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -2144,13 +2134,49 @@ msgstr ""
 "Mura h-eil <b>n</b> a’ taghadh aonad ùr tuilleadh, tha e sàbhailte a bhith "
 "a’ cur crìoch air a’ chuairt."
 
-#. [message]: speaker=narrator
+#. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+msgid "Status Table"
+msgstr "Clàr na staide"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+msgid ""
+"The Status Table details the sides’ current status and starting conditions. "
+"Fog and shroud will affect what you can see in this table, and occasionally "
+"a side may be hidden; however, it is still useful to check this table when a "
+"scenario begins. You can access it in the <b>Menu</b> menu."
+msgstr ""
+"Seallaidh clàr na staide staid làithreach na taobhan agus na cumhan "
+"tòiseachaidh. Bidh buaidh aig sgleò is ceò a chogaidh air na chì thu air a’ "
+"chlàr seo agus dh’fhaoidte gu bheil taobh falaichte gu tur; gidheadh, tha e "
+"feumail sùil a thoirt air a’ chlàr aig toiseach cnàmh-sgeòil. Gheibh thu "
+"greim air sa phrìomh-<b>chlàr-taice</b>."
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
+msgid "Speeding Up Animations"
+msgstr "Luathachadh nam beòthachaidhean"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
+msgid ""
+"Holding down <b>shift</b> will make the animations for moving and fighting "
+"quicker. The <b>acceleration factor</b> can be set, and turned on by "
+"default, in the <b>Preferences</b> menu’s <b>General</b> tab."
+msgstr ""
+"Ma chumas tu <b>shift</b> sìos, nì sin na beòthachaidhean air a’ ghluasad ’s "
+"na còmhragan nas luaithe. Gabhaidh <b>factar an luathachaidh</b> a "
+"shuidheachadh ’s a chur an comas a ghnàth ann an taba <b>Coitcheann</b> aig "
+"clàr-taice nan <b>Roghainnean</b>."
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
 msgid "Victory Conditions"
 msgstr "Cumhachan buaidhe"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1012
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1029
 #, fuzzy
 #| msgid ""
 #| "In this scenario, you only need to defeat the orc leader to win. Victory "
@@ -2165,45 +2191,28 @@ msgstr ""
 "deamhan. Chì thu na cumhachdan buaidhe airson cnàmh-sgeòil fo <b>Amasan</b> "
 "sa phrìomh-<p>chlàr-taice</b>."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1021
-msgid "Speeding Up Animations"
-msgstr "Luathachadh nam beòthachaidhean"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1023
-msgid ""
-"Holding down <b>shift</b> will make the animations for moving and fighting "
-"quicker. The <b>acceleration factor</b> can be set, and turned on by "
-"default, in the <b>Preferences</b> menu’s <b>General</b> tab."
-msgstr ""
-"Ma chumas tu <b>shift</b> sìos, nì sin na beòthachaidhean air a’ ghluasad ’s "
-"na còmhragan nas luaithe. Gabhaidh <b>factar an luathachaidh</b> a "
-"shuidheachadh ’s a chur an comas a ghnàth ann an taba <b>Coitcheann</b> aig "
-"clàr-taice nan <b>Roghainnean</b>."
-
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1038
 msgid "Hurry up and defeat the orcs before they become entrenched!"
 msgstr "Greas ort is cuir às dha na deamhain mus bi iad daingnichte!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1060
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid "I have enough gold to recruit more units!"
 msgstr "Tha òr gu leòr agam gus barrachd aonadan a thrusadh!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1061
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1067
 msgid "female^I have enough gold to recruit more units!"
 msgstr "Tha òr gu leòr agam gus barrachd aonadan a thrusadh!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1071
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1076
 msgid "Recruit the Right Units"
 msgstr "Bi glic mu thrusadh nan aonadan"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1077
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -2213,7 +2222,7 @@ msgstr ""
 "ceannard nan deamhan."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1112
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1116
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
@@ -2222,7 +2231,7 @@ msgstr ""
 "a-steach dhan choille bi e doirbh cuidhteas fhaighinn dhiubh."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1152
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1156
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -2231,7 +2240,7 @@ msgstr ""
 "gus rang fhaighinn! Na leig leis bàsachadh!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1174
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1178
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -2240,7 +2249,7 @@ msgstr ""
 "dùil. Slànaichidh am baile e gach cuairt is bheir e dìon math dha."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1185
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1189
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -2250,7 +2259,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1198
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1202
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -2260,7 +2269,7 @@ msgstr ""
 "planaichean agad air dè nì thu mura bhuail mi e."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1214
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1218
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
@@ -2274,12 +2283,12 @@ msgstr ""
 "eòlas."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1218
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1222
 msgid "You have almost finished the tutorial"
 msgstr "Cha mhòr nach do choilean thu an t-oideachadh"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1220
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
 msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
@@ -2289,7 +2298,7 @@ msgstr ""
 "ruaig air Trag."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1246
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1250
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
@@ -2298,7 +2307,7 @@ msgstr ""
 "aige. Cha bhiodh e fada mus rachadh àrdachadh dhan ath-rang."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1252
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
@@ -2307,7 +2316,7 @@ msgstr ""
 "aice. Cha bhiodh e fada mus rachadh a h-àrdachadh dhan ath-rang."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1281
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1285
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
@@ -2316,7 +2325,7 @@ msgstr ""
 "as eòlaiche againn air a char as lugha!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1287
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
@@ -2325,7 +2334,7 @@ msgstr ""
 "as eòlaiche againn air a char as lugha!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1304
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
@@ -2334,7 +2343,7 @@ msgstr ""
 "’gad ionndrainn, $unit.name|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1318
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1322
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -2342,7 +2351,7 @@ msgstr ""
 "falbh bhon nàmhaid iad!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1332
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1336
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -2352,7 +2361,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1346
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1350
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -2369,7 +2378,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1360
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1364
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -2384,7 +2393,7 @@ msgstr ""
 "còmhnaidh."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1374
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1378
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
@@ -2398,7 +2407,7 @@ msgstr ""
 "fhaighinn dhe dh’aonadan dìonta."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1375
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1379
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
@@ -2412,7 +2421,7 @@ msgstr ""
 "fhaighinn dhe dh’aonadan dìonta."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1388
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1392
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
@@ -2424,7 +2433,7 @@ msgstr ""
 "dìreach ri mo thaobh."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1389
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1393
 msgid ""
 "female^Advancing a level has fully healed me! I am good with both bow and "
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
@@ -2436,7 +2445,7 @@ msgstr ""
 "dìreach ri mo thaobh."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1403
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1407
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Leadership</i>. I do less damage myself "
@@ -2451,7 +2460,7 @@ msgstr ""
 "mi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1416
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
 "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
@@ -2464,7 +2473,7 @@ msgstr ""
 "sabaid nas fhearr a th' agam!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1429
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1433
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2477,7 +2486,7 @@ msgstr ""
 "a chur air na deamhain le barrachd dochainn orra!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1430
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1434
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2490,33 +2499,33 @@ msgstr ""
 "a chur air na deamhain le barrachd dochainn orra!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1443
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr ""
 "Thug thu ro fhada! Chan fhaigh sinn cuidhteas dhe na deamhain seo gu bràth "
 "tuilleadh a-nis!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1455
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1459
 msgid "That... was foolish. Next time I should be more careful."
 msgstr ""
 "Nach… gòrach a bha sin. Bu chòir dhomh a bhith nas fhaiceallaiche an ath-"
 "thuras."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1456
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1460
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr ""
 "Nach… gòrach a bha sin. Bu chòir dhomh a bhith nas fhaiceallaiche an ath-"
 "thuras."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1474
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
 msgid "Agh! Who will guide you to victory now?"
 msgstr "Iochd! Cò stiùireas dhan bhuaidh sibh a-nis?"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1489
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1493
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2528,7 +2537,7 @@ msgstr ""
 "mholamaid gun toisich thu leatha-se."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1494
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1498
 msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."

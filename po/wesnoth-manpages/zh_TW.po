@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 13:43+0300\n"
-"PO-Revision-Date: 2021-07-19 01:50+0800\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"PO-Revision-Date: 2022-05-30 16:00+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. type: TH
@@ -970,9 +970,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "在 $HOME 或「我的文件\\我的遊戲」(Windows)底下設定使用者配置目錄為 I<name> 。"
 "你也可以為配置目錄設定一個在 $HOME 或「我的文件\\我的遊戲」之外的絕對路徑。"
@@ -1102,15 +1102,12 @@ msgstr "顯示版本號碼並退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:419
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:422
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
 msgstr "顯示版本號碼並退出。"
 
@@ -1933,15 +1930,12 @@ msgstr "全域標籤："
 
 #. type: Plain text
 #: doc/man/wesnothd.6:193
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
-"B<[redirect]> 一個用來設定指定的客戶端版本要重新導向到哪個伺服器的標簽。"
+"B<[redirect]> 一個用來設定指定的客戶端版本要重新導向到哪個伺服器的標簽。如果 "
+"B<versions_accepted> 沒有設定就不會被使用。"
 
 #. type: TP
 #: doc/man/wesnothd.6:194
@@ -2029,14 +2023,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:238
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2045,10 +2031,11 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> 配置使用者處理程序。可使用的鍵值取決於通過 B<user_handler> "
-"鍵值設置的用戶處理程序是哪一個。如果配置中沒有 B<[user_handler]> 區塊，伺服器"
-"將以不提供任何暱稱註冊服務的方式來運行。所有額外的 B<forum_user_handler> 所需"
-"要用來運行的表格可以在韋諾的原始碼倉庫中的 table_definitions.sql 中被找到。"
+"B<[user_handler]> 配置使用者處理程序。如果配置中沒有 B<[user_handler]> 區塊，"
+"伺服器將以不提供任何暱稱註冊服務的方式來運行。所有額外的 "
+"B<forum_user_handler> 所需要用來運行的表格可以在韋諾的原始碼倉庫中的 "
+"table_definitions.sql 中被找到。需要啟用 MySQL 支援，以 cmake 來說要使用 "
+"B<ENABLE_MYSQL>；以 scons 來說要使用 B<forum_user_handler>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:239
@@ -2106,8 +2093,8 @@ msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"phpbb 論壇中存放使用者資料的表格名稱。很可能是 E<lt>table-"
-"prefixE<gt>_users（例如：phpbb3_users）。"
+"phpbb 論壇中存放使用者資料的表格名稱。很可能是 E<lt>table-prefixE<gt>_users"
+"（例如：phpbb3_users）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:254

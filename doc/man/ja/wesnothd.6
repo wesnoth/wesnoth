@@ -161,8 +161,8 @@ wesnoth のバージョンに一致する)
 .SS グローバルタグ:
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP 特定クライアントバージョンのリダイレクト先サーバーを指定するタグ。\fBversions_accepted\fP
+が指定されていない場合には使用されない。
 .RS
 .TP 
 \fBhost\fP
@@ -192,12 +192,11 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 \fB[redirect]\fP と同じキーを受けつける。
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP ユーザーハンドラを設定する。\fB[user_handler]\fP
+セクションが設定に存在しなければ、サーバーはニックネーム登録サービスなしで動作する。\fBforum_user_handler\fP
+の動作に必要なすべての追加テーブルはWesnothソースリポジトリの中の table_definitions.sql
+で確認可能。mysqlのサポートが有効化されている必要があり、cmake の場合は \fBENABLE_MYSQL\fP 、scons の場合は
+\fBforum_user_handler.\fP でサポートを有効化できる。
 .RS
 .TP 
 \fBdb_host\fP

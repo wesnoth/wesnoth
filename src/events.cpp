@@ -470,9 +470,16 @@ static bool remove_on_resize(const SDL_Event& a)
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const std::thread::id main_thread = std::this_thread::get_id();
 
+// this should probably be elsewhere, but as the main thread is already
+// being tracked here, this went here.
+bool is_in_main_thread()
+{
+	return std::this_thread::get_id() == main_thread;
+}
+
 void pump()
 {
-	if(std::this_thread::get_id() != main_thread) {
+	if(!is_in_main_thread()) {
 		// Can only call this on the main thread!
 		return;
 	}
@@ -868,7 +875,7 @@ void peek_for_resize()
 
 void call_in_main_thread(const std::function<void(void)>& f)
 {
-	if(std::this_thread::get_id() == main_thread) {
+	if(is_in_main_thread()) {
 		// nothing special to do if called from the main thread.
 		f();
 		return;

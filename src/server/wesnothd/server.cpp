@@ -1035,8 +1035,6 @@ template<class SocketPtr> bool server::authenticate(
 
 			// This name exists and the password was neither empty nor incorrect
 			registered = true;
-
-			// Reset the random seed
 			user_handler_->user_logged_in(username);
 		}
 	}

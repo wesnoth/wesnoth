@@ -15,6 +15,7 @@
 #include "sdl/texture.hpp"
 
 #include "log.hpp"
+#include "sdl/point.hpp"
 #include "sdl/render_utils.hpp"
 #include "sdl/surface.hpp"
 #include "video.hpp"
@@ -53,7 +54,7 @@ texture::texture(SDL_Texture* txt)
 	}
 }
 
-texture::texture(const surface& surf)
+texture::texture(const surface& surf, bool linear_interpolation)
 	: texture()
 {
 	if (!surf) {
@@ -68,6 +69,10 @@ texture::texture(const surface& surf)
 	if(!renderer) {
 		return;
 	}
+
+	// Filtering mode must be set before texture creation.
+	const char* scale_quality = linear_interpolation ? "linear" : "nearest";
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, scale_quality);
 
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {
@@ -88,6 +93,12 @@ void texture::finalize()
 	if (texture_) {
 		set_texture_blend_mode(*this, SDL_BLENDMODE_BLEND);
 	}
+}
+
+void texture::set_draw_size(const point& p)
+{
+	w_ = p.x;
+	h_ = p.y;
 }
 
 void texture::set_alpha_mod(uint8_t alpha)
