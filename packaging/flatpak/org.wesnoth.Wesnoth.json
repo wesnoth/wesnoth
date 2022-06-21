@@ -65,7 +65,7 @@
                 "/share/applications/wesnoth_editor.desktop"
             ],
             "build-commands": [
-                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app ccache=true --debug=time install wesnoth wesnothd"
+                "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app enable_lto=true ccache=true --debug=time install wesnoth wesnothd"
 	    ],
             "sources": [
                 {
