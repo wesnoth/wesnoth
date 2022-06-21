@@ -882,8 +882,13 @@ function ca_recruit_rushers:evaluation(cfg, data, filter_own)
     if AH.print_eval() then AH.print_ts('     - Evaluating recruit_rushers CA:') end
 
     if (recruit_data.turn ~= wesnoth.current.turn) then
+        if cfg.reset_cache_each_turn then
+            recruit_data = {}
+        else
+            recruit_data.recruit = nil
+        end
+
         recruit_data.turn = wesnoth.current.turn
-        recruit_data.recruit = nil
     end
 
     -- Check if leader is on keep
