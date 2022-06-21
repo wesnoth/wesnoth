@@ -16,7 +16,7 @@ local M = wesnoth.map
 local LS = wesnoth.require "location_set"
 
 math.randomseed(os.time())
-local recruit_data = {}
+local recruit_data = { turn = wesnoth.current.turn }
 
 
 local function ca_castle_switch()
@@ -876,6 +876,11 @@ local ca_recruit_rushers = {}
 function ca_recruit_rushers:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'recruit_rushers'
     if AH.print_eval() then AH.print_ts('     - Evaluating recruit_rushers CA:') end
+
+    if (recruit_data.turn ~= wesnoth.current.turn) then
+        recruit_data.turn = wesnoth.current.turn
+        recruit_data.recruit = nil
+    end
 
     -- Check if leader is on keep
     local leader = wesnoth.units.find_on_map {
