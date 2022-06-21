@@ -665,7 +665,7 @@ end
 
 function wml_actions.set_menu_item(cfg)
 	wesnoth.interface.set_menu_item(cfg.id, cfg)
-	wesnoth.game_events.add(cfg.id, wml_actions.command, true)
+	wesnoth.game_events.add_menu(cfg.id, wml_actions.command)
 end
 
 function wml_actions.place_shroud(cfg)
@@ -730,9 +730,7 @@ function wml_actions.event(cfg)
 		wesnoth.deprecated_message("[event]remove=yes", 2, "1.17.0", "Use [remove_event] instead of [event]remove=yes")
 		wml_actions.remove_event(cfg)
 	else
-		local delay = cfg.delayed_variable_substitution
-		if delay == nil then delay = true end
-		wesnoth.game_events.add(delay, cfg)
+		wesnoth.game_events.add_wml(cfg)
 	end
 end
 
