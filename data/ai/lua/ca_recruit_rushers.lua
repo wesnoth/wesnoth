@@ -423,7 +423,7 @@ end
 local function get_test_units()
     local test_units, num_recruits = {}, 0
     local movetypes = {}
-    for x,id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for id in pairs(recruit_data.recruit_types) do
         local custom_movement = wml.get_child(wesnoth.unit_types[id].__cfg, "movement_costs")
         local movetype = wesnoth.unit_types[id].__cfg.movement_type
         if custom_movement
@@ -451,7 +451,7 @@ end
 local function get_village_target(leader, data)
     -- Only consider villages reachable by our fastest unit
     local fastest_unit_speed = 0
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         if wesnoth.unit_types[recruit_id].max_moves > fastest_unit_speed then
             fastest_unit_speed = wesnoth.unit_types[recruit_id].max_moves
         end
@@ -705,7 +705,7 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
 
     local recruitable_units = {}
 
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         -- Count number of units with the same attack type. Used to avoid recruiting too many of the same unit
         local attack_types = 0
         local recruit_count = 0
@@ -804,7 +804,7 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
         level_count[level] = (level_count[level] or 0) + 1
     end
     local min_recruit_level, max_recruit_level = math.huge, -math.huge
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         local level = wesnoth.unit_types[recruit_id].level
         if (level < min_recruit_level) then min_recruit_level = level end
         if (level > max_recruit_level) then max_recruit_level = level end
@@ -823,7 +823,7 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
         unit_deficit[i] = high_level_fraction ^ (i - min_recruit_level) * n_units - n_units_this_level
     end
 
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         local level_bonus = 0
         local level = wesnoth.unit_types[recruit_id].level
         if (level > min_recruit_level) and (unit_deficit[level] > 0) then
@@ -903,6 +903,14 @@ function ca_recruit_rushers:evaluation(cfg, data, filter_own)
         return 0
     end
 
+    recruit_data.recruit_types = {}
+    for _,unit_type in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+        recruit_data.recruit_types[unit_type] = true
+    end
+    for _,unit_type in ipairs(leader.extra_recruit) do
+        recruit_data.recruit_types[unit_type] = true
+    end
+
     -- Check for space to recruit a unit
     get_current_castle(leader, recruit_data)
     local no_space = true
@@ -961,14 +969,14 @@ function ca_recruit_rushers:execution(cfg, data, filter_own)
     local poisoner_count = 0.1 -- Number of units with a poison attack (set to slightly > 0 because we divide by it later)
     local poisonable_count = 0 -- Number of units that the opponents control that are hurt by poison
     local recruit_count = {}
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         recruit_count[recruit_id] = #(AH.get_live_units { side = wesnoth.current.side, type = recruit_id, canrecruit = 'no' })
     end
 
     for i, unit_type in ipairs(enemy_types) do
         enemy_type_count = enemy_type_count + 1
         local poison_vulnerable = false
-        for j, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+        for recruit_id in pairs(recruit_data.recruit_types) do
             local analysis = analyze_enemy_unit(unit_type, recruit_id)
 
             if not recruit_effectiveness[recruit_id] then
@@ -1010,7 +1018,7 @@ function ca_recruit_rushers:execution(cfg, data, filter_own)
             poisonable_count = poisonable_count + enemy_counts[unit_type]
         end
     end
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         -- Count the number of units with the poison ability
         -- This could be wrong if all the units on the enemy side are immune to poison, but since poison has no effect then anyway it doesn't matter
         if recruit_effectiveness[recruit_id].poison_damage > 0 then
@@ -1021,7 +1029,7 @@ function ca_recruit_rushers:execution(cfg, data, filter_own)
     -- This works perfectly unless some of the enemy recruits cannot be poisoned.
     -- However, there is no problem with this since poison is generally less useful in such situations and subtracting them too discourages such recruiting
     local poison_modifier = math.max(0, math.min(((poisonable_count-recruit_data.recruit.possible_enemy_recruit_count) / (poisoner_count*5)), 1))^2
-    for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+    for recruit_id in pairs(recruit_data.recruit_types) do
         -- Ensure effectiveness and vulnerability are positive.
         -- Negative values imply that drain is involved and the amount drained is very high
         if recruit_effectiveness[recruit_id].damage <= 0 then
