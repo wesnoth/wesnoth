@@ -241,6 +241,9 @@ void flush_cache()
 		lit_textures_.flush();
 		in_hex_info_.flush();
 		is_empty_hex_.flush();
+		textures_.clear();
+		textures_hexed_.clear();
+		texture_tod_colored_.clear();
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
 		mini_highlighted_terrain_cache.clear();
@@ -718,6 +721,7 @@ void set_color_adjustment(int r, int g, int b)
 		tod_colored_images_.flush();
 		lit_images_.flush();
 		lit_textures_.flush();
+		texture_tod_colored_.clear();
 	}
 }
 
