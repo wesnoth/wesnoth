@@ -357,6 +357,18 @@ locator& locator::operator=(const locator& a)
 	return *this;
 }
 
+std::ostream& operator<<(std::ostream& s, const locator& l)
+{
+	s << l.get_filename();
+	if(!l.get_modifications().empty()) {
+		if(l.get_modifications()[0] != '~') {
+			s << '~';
+		}
+		s << l.get_modifications();
+	}
+	return s;
+}
+
 locator::value::value()
 	: type_(NONE)
 	, is_data_uri_(false)
@@ -789,6 +801,7 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		imap = &hexed_images_;
 		break;
 	default:
+		WRN_IMG << "get_surface called with unknown image type" << std::endl;
 		return res;
 	}
 
@@ -797,13 +810,7 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		return i_locator.locate_in_cache(*imap);
 	}
 
-	if (i_locator.get_modifications().empty()) {
-		DBG_IMG << "surface cache miss: " << i_locator.get_filename()
-			<< std::endl;
-	} else {
-		DBG_IMG << "surface cache miss: " << i_locator.get_filename()
-			<< "+" << i_locator.get_modifications() << std::endl;
-	}
+	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator << std::endl;
 
 	// not cached, generate it
 	switch(type) {
@@ -818,7 +825,7 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		res = get_hexed(i_locator);
 		break;
 	default:
-		return res;
+		throw game::error("get_surface somehow lost image type?");
 	}
 
 	i_locator.add_to_cache(*imap, res);
@@ -855,13 +862,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 		}
 	}
 
-	if (i_locator.get_modifications().empty()) {
-		DBG_IMG << "lit surface cache miss: " << i_locator.get_filename()
-			<< std::endl;
-	} else {
-		DBG_IMG << "lit surface cache miss: " << i_locator.get_filename()
-			<< "+" << i_locator.get_modifications() << std::endl;
-	}
+	DBG_IMG << "lit surface cache miss: " << i_locator << std::endl;
 
 	// not cached yet, generate it
 	res = get_surface(i_locator, HEXED);
@@ -898,13 +899,7 @@ texture get_lighted_texture(
 		}
 	}
 
-	if (i_locator.get_modifications().empty()) {
-		DBG_IMG << "lit texture cache miss: " << i_locator.get_filename()
-			<< std::endl;
-	} else {
-		DBG_IMG << "lit texture cache miss: " << i_locator.get_filename()
-			<< "+" << i_locator.get_modifications() << std::endl;
-	}
+	DBG_IMG << "lit texture cache miss: " << i_locator << std::endl;
 
 	// not cached yet, generate it
 	texture tex(get_lighted_image(i_locator, ls));
@@ -1122,13 +1117,7 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 		return res;
 	}
 
-	if (i_locator.get_modifications().empty()) {
-		DBG_IMG << "texture cache miss: " << i_locator.get_filename()
-			<< std::endl;
-	} else {
-		DBG_IMG << "texture cache miss: " << i_locator.get_filename()
-			<< "+" << i_locator.get_modifications() << std::endl;
-	}
+	DBG_IMG << "texture cache [" << type << "] miss: " << i_locator << std::endl;
 
 	//
 	// No texture was cached. In that case, create a new one. The explicit cases require special
