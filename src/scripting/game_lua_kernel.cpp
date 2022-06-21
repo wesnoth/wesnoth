@@ -3725,96 +3725,102 @@ static std::string read_event_name(lua_State* L, int idx)
  * filter: Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
  * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
  * action: The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
- * OR
- * Arg 1: Event to handle, as a string or list of strings; or menu item ID if this is a menu item
- * Arg 2: The function to call when the event triggers
- * Arg 3: True if this is a menu item
- * OR
- * Arg 1: A boolean - whether to delay variable substitution
- * Arg 2: A full event specification as a WML config
  */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
 	game_events::manager & man = *game_state_.events_manager_;
+	using namespace std::literals;
+	std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
+	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
+	if(luaW_tableget(L, 1, "name")) {
+		name = read_event_name(L, -1);
+	}
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	if(new_handler.valid()) {
+		bool has_lua_filter = false;
+		new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
 
-	if(lua_isboolean(L, 1)) {
-		bool delayed_variable_substitution = luaW_toboolean(L, 1);
-		vconfig cfg(luaW_checkvconfig(L, 2));
-		if(delayed_variable_substitution) {
-			man.add_event_handler_from_wml(cfg.get_config(), *this);
-		} else {
-			man.add_event_handler_from_wml(cfg.get_parsed_config(), *this);
-		}
-	} else if(lua_isstring(L, 1)) {
-		bool is_menu_item = luaW_toboolean(L, 3), repeat = true;
-		std::string name = read_event_name(L, 1), id;
-		if(is_menu_item) {
-			id = name;
-			name = "menu item " + name;
-		}
-		auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
-		if(new_handler.valid()) {
-			// An event with empty arguments is not added, so set some dummy arguments
-			new_handler->set_arguments(config{"__quick_lua_event", true});
-			new_handler->set_event_ref(save_wml_event(2), has_preloaded_);
-		}
-	} else if(lua_istable(L, 1)) {
-		using namespace std::literals;
-		std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
-		bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
-		if(luaW_tableget(L, 1, "name")) {
-			name = read_event_name(L, -1);
-		}
-		auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
-		if(new_handler.valid()) {
-			bool has_lua_filter = false;
-			new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
-
-			if(luaW_tableget(L, 1, "filter")) {
-				int filterIdx = lua_gettop(L);
-				config filters;
-				if(!luaW_toconfig(L, filterIdx, filters)) {
-					if(lua_isfunction(L, filterIdx)) {
-						int fcnIdx = lua_absindex(L, -1);
-						new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
-						has_lua_filter = true;
-					} else {
-						if(luaW_tableget(L, filterIdx, "condition")) {
-							filters.add_child("filter_condition", luaW_checkconfig(L, -1));
-						}
-						if(luaW_tableget(L, filterIdx, "side")) {
-							filters.add_child("filter_side", luaW_checkconfig(L, -1));
-						}
-						if(luaW_tableget(L, filterIdx, "unit")) {
-							filters.add_child("filter", luaW_checkconfig(L, -1));
-						}
-						if(luaW_tableget(L, filterIdx, "attack")) {
-							filters.add_child("filter_attack", luaW_checkconfig(L, -1));
-						}
-						if(luaW_tableget(L, filterIdx, "second_unit")) {
-							filters.add_child("filter_second", luaW_checkconfig(L, -1));
-						}
-						if(luaW_tableget(L, filterIdx, "second_attack")) {
-							filters.add_child("filter_second_attack", luaW_checkconfig(L, -1));
-						}
+		if(luaW_tableget(L, 1, "filter")) {
+			int filterIdx = lua_gettop(L);
+			config filters;
+			if(!luaW_toconfig(L, filterIdx, filters)) {
+				if(lua_isfunction(L, filterIdx)) {
+					int fcnIdx = lua_absindex(L, -1);
+					new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
+					has_lua_filter = true;
+				} else {
+					if(luaW_tableget(L, filterIdx, "condition")) {
+						filters.add_child("filter_condition", luaW_checkconfig(L, -1));
+					}
+					if(luaW_tableget(L, filterIdx, "side")) {
+						filters.add_child("filter_side", luaW_checkconfig(L, -1));
+					}
+					if(luaW_tableget(L, filterIdx, "unit")) {
+						filters.add_child("filter", luaW_checkconfig(L, -1));
+					}
+					if(luaW_tableget(L, filterIdx, "attack")) {
+						filters.add_child("filter_attack", luaW_checkconfig(L, -1));
+					}
+					if(luaW_tableget(L, filterIdx, "second_unit")) {
+						filters.add_child("filter_second", luaW_checkconfig(L, -1));
+					}
+					if(luaW_tableget(L, filterIdx, "second_attack")) {
+						filters.add_child("filter_second_attack", luaW_checkconfig(L, -1));
 					}
 				}
-				new_handler->read_filters(filters);
 			}
-
-			if(luaW_tableget(L, 1, "action")) {
-				new_handler->set_event_ref(save_wml_event(-1), has_preloaded_);
-			} else {
-				if(has_lua_filter) {
-					// This just sets the appropriate flags so the engine knows it cannot be serialized.
-					// The register_wml_event call will override the actual event_ref so just pass LUA_NOREF here.
-					new_handler->set_event_ref(LUA_NOREF, has_preloaded_);
-				}
-				new_handler->register_wml_event(*this);
-			}
+			new_handler->read_filters(filters);
 		}
+
+		if(luaW_tableget(L, 1, "action")) {
+			new_handler->set_event_ref(save_wml_event(-1), has_preloaded_);
+		} else {
+			if(has_lua_filter) {
+				// This just sets the appropriate flags so the engine knows it cannot be serialized.
+				// The register_wml_event call will override the actual event_ref so just pass LUA_NOREF here.
+				new_handler->set_event_ref(LUA_NOREF, has_preloaded_);
+			}
+			new_handler->register_wml_event(*this);
+		}
+	}
+	return 0;
+}
+
+/** Add a new event handler
+ * Arg 1: Event to handle, as a string or list of strings; or menu item ID if this is a menu item
+ * Arg 2: The function to call when the event triggers
+ */
+template<bool is_menu_item>
+int game_lua_kernel::intf_add_event_simple(lua_State *L)
+{
+	game_events::manager & man = *game_state_.events_manager_;
+	bool repeat = true;
+	std::string name = read_event_name(L, 1), id;
+	if(is_menu_item) {
+		id = name;
+		name = "menu item " + name;
+	}
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	if(new_handler.valid()) {
+		// An event with empty arguments is not added, so set some dummy arguments
+		new_handler->set_arguments(config{"__quick_lua_event", true});
+		new_handler->set_event_ref(save_wml_event(2), has_preloaded_);
+	}
+	return 0;
+}
+
+/** Add a new event handler
+ * Arg: A full event specification as a WML config
+ */
+int game_lua_kernel::intf_add_event_wml(lua_State *L)
+{
+	game_events::manager & man = *game_state_.events_manager_;
+	vconfig cfg(luaW_checkvconfig(L, 1));
+	bool delayed_variable_substitution = cfg["delayed_variable_substitution"].to_bool(true);
+	if(delayed_variable_substitution) {
+		man.add_event_handler_from_wml(cfg.get_config(), *this);
 	} else {
-		return luaW_type_error(L, 1, "boolean, string, or table");
+		man.add_event_handler_from_wml(cfg.get_parsed_config(), *this);
 	}
 	return 0;
 }
@@ -4960,6 +4966,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	cmd_log_ << "Adding game_events module...\n";
 	static luaL_Reg const event_callbacks[] {
 		{ "add", &dispatch<&game_lua_kernel::intf_add_event> },
+		{ "add_repeating", &dispatch<&game_lua_kernel::intf_add_event_simple<false>> },
+		{ "add_menu", &dispatch<&game_lua_kernel::intf_add_event_simple<true>> },
+		{ "add_wml", &dispatch<&game_lua_kernel::intf_add_event_wml> },
 		{ "remove", &dispatch<&game_lua_kernel::intf_remove_event> },
 		{ "fire", &dispatch2<&game_lua_kernel::intf_fire_event, false> },
 		{ "fire_by_id", &dispatch2<&game_lua_kernel::intf_fire_event, true> },

@@ -68,7 +68,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		-- wesnoth.set_menu_item added both the menu item and the event that it triggers
 		-- wesnoth.interface.set_menu_item only adds the menu item
 		wesnoth.interface.set_menu_item(id, cfg)
-		wesnoth.game_events.add(cfg.id, wesnoth.wml_actions.command, true)
+		wesnoth.game_events.add_menu(cfg.id, wesnoth.wml_actions.command)
 	end)
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
 	-- Event handlers don't have a separate module Lua file so dump those here
