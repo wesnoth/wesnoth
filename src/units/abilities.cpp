@@ -833,7 +833,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 }
 
 /**
- * static used in weapon_specials (bool only_active, bool is_backstab) and
+ * static used in weapon_specials (bool only_active) and
  * @return a string and a set_string for the weapon_specials function below.
  * @param[in,out] temp_string the string modified and returned
  * @param[in] active the boolean for determine if @name can be added or not
@@ -857,15 +857,14 @@ static void add_name(std::string& temp_string, bool active, const std::string na
  *
  * Whether or not a special is active depends
  * on the current context (see set_specials_context)
- * and the @a is_backstab parameter.
  */
-std::string attack_type::weapon_specials(bool is_backstab) const
+std::string attack_type::weapon_specials() const
 {
 	//log_scope("weapon_specials");
 	std::string res;
 	for (const config::any_child sp : specials_.all_children_range())
 	{
-		const bool active = special_active(sp.cfg, AFFECT_EITHER, sp.key, is_backstab);
+		const bool active = special_active(sp.cfg, AFFECT_EITHER, sp.key);
 
 		const std::string& name =
 			active
@@ -1097,12 +1096,12 @@ attack_type::specials_context_t::specials_context_t(attack_type::specials_contex
  *   min_attacks + (max_attacks - min_attacks) * (current hp) / (max hp)
  * c.f. swarm_blows()
  */
-void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
+void attack_type::modified_attacks(unsigned & min_attacks,
                                    unsigned & max_attacks) const
 {
 	// Apply [attacks].
 	unit_abilities::effect attacks_effect(get_specials_and_abilities("attacks"),
-	                                      num_attacks(), is_backstab, shared_from_this());
+	                                      num_attacks(), shared_from_this());
 	int attacks_value = attacks_effect.get_composite_value();
 
 	if ( attacks_value < 0 ) {
@@ -1124,9 +1123,9 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 /**
  * Returns the damage per attack of this weapon, considering specials.
  */
-int attack_type::modified_damage(bool is_backstab) const
+int attack_type::modified_damage() const
 {
-	unit_abilities::effect dmg_effect(get_specials_and_abilities("damage"), damage(), is_backstab, shared_from_this());
+	unit_abilities::effect dmg_effect(get_specials_and_abilities("damage"), damage(), shared_from_this());
 	int damage_value = dmg_effect.get_composite_value();
 	return damage_value;
 }
@@ -1252,7 +1251,7 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	if(self_) {
 		abil_list.append((*self_).get_abilities(ability, self_loc_));
 		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, true, "filter_student")) {
+			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, "filter_student")) {
 				i = abil_list.erase(i);
 			} else {
 				++i;
@@ -1263,7 +1262,7 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	if(other_) {
 		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
 		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, "filter_student")) {
+			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, "filter_student")) {
 				i = abil_other_list.erase(i);
 			} else {
 				++i;
@@ -1308,7 +1307,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			overwrite_either = true;
 			break;
 		}
-		if(overwrite_special_affects(*i.ability_cfg) && (special_active(*i.ability_cfg, AFFECT_SELF, ability, true, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true, "filter_student"))) {
+		if(overwrite_special_affects(*i.ability_cfg) && (special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student"))) {
 			overwrite_self = true;
 		}
 	}
@@ -1320,7 +1319,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			if(filter_self == "filter_student"){
 				overwrite = overwrite_special_affects(*i->ability_cfg);
 			}
-			if(!overwrite && (special_active(*i->ability_cfg, AFFECT_SELF, ability, true, filter_self) || special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, true, filter_self))) {
+			if(!overwrite && (special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self) || special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, filter_self))) {
 				i = temp_list.erase(i);
 			} else {
 				++i;
@@ -1332,7 +1331,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			if(filter_self == "filter_student"){
 				overwrite = overwrite_special_affects(*i->ability_cfg);
 			}
-			if(!overwrite && special_active(*i->ability_cfg, AFFECT_SELF, ability, true, filter_self)) {
+			if(!overwrite && special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self)) {
 				i = temp_list.erase(i);
 			} else {
 				++i;
@@ -1400,7 +1399,7 @@ bool attack_type::check_self_abilities_impl(const_attack_ptr self_attack, const_
 		}
 	}
 	if((*u).checking_tags().count(tag_name) != 0){
-		if((*u).get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true, "filter_student")) {
+		if((*u).get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, "filter_student")) {
 			return true;
 		}
 	}
@@ -1420,7 +1419,7 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
 		}
 	}
 	if((*u).checking_tags().count(tag_name) != 0){
-		if((*u).get_adj_ability_bool(special, tag_name, dir, loc, from) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true, "filter_student")) {
+		if((*u).get_adj_ability_bool(special, tag_name, dir, loc, from) && special_active_impl(self_attack, other_attack, special, whom, tag_name, "filter_student")) {
 			return true;
 		}
 	}
@@ -1541,9 +1540,9 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 //end of emulate weapon special functions.
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab, const std::string& filter_self) const
+                                 const std::string& filter_self) const
 {
-	return special_active_impl(shared_from_this(), other_attack_, special, whom, tag_name, include_backstab, filter_self);
+	return special_active_impl(shared_from_this(), other_attack_, special, whom, tag_name, filter_self);
 }
 
 /**
@@ -1554,9 +1553,6 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  * @param special           a weapon special WML structure
  * @param whom              specifies which combatant we care about
  * @param tag_name          tag name of the special config
- * @param include_backstab  false if backstab specials should not be active
- *                              (usually true since backstab is usually accounted
- *                              for elsewhere)
  *  @param filter_self      the filter to use
  */
 bool attack_type::special_active_impl(
@@ -1565,7 +1561,6 @@ bool attack_type::special_active_impl(
 	const config& special,
 	AFFECTS whom,
 	const std::string& tag_name,
-	bool include_backstab,
 	const std::string& filter_self)
 {
 	assert(self_attack || other_attack);
@@ -1573,10 +1568,6 @@ bool attack_type::special_active_impl(
 	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
 	//log_scope("special_active");
 
-	// Backstab check
-	if ( !include_backstab )
-		if ( special["backstab"].to_bool() )
-			return false;
 
 	// Does this affect the specified unit?
 	if ( whom == AFFECT_SELF ) {
@@ -1766,7 +1757,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr att, bool is_cumulable) :
+effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, bool is_cumulable) :
 	effect_list_(),
 	composite_value_(0)
 {
@@ -1787,8 +1778,6 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 			deprecated_message("backstab= in weapon specials", DEP_LEVEL::FOR_REMOVAL, {1, 19, 0}, "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
 		}
 
-		if (!backstab && cfg["backstab"].to_bool())
-			continue;
 		if (!filter_base_matches(cfg, def))
 			continue;
 

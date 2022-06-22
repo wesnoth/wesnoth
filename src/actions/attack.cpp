@@ -82,8 +82,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const_attack_ptr opp_weapon,
-		const unit_map& units)
+		const_attack_ptr opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -94,7 +93,6 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	, petrifies(false)
 	, plagues(false)
 	, poisons(false)
-	, backstab_pos(false)
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
@@ -149,7 +147,6 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
 	petrifies = !opp.get_state("unpetrifiable") && weapon->has_special_or_ability("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
-	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
 
 	firststrike = weapon->has_special_or_ability("firststrike");
@@ -180,7 +177,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials_and_abilities("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
+	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
 	cth = cth_effects.get_composite_value();
 
 
@@ -191,7 +188,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage(backstab_pos);
+	int base_damage = weapon->modified_damage();
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
@@ -221,19 +218,19 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	if(drains) {
 		unit_ability_list drain_specials = weapon->get_specials_and_abilities("drains");
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos, weapon);
+		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
 		drain_percent = drain_percent_effects.get_composite_value();
 	}
 
 	// Add heal_on_hit (the drain constant)
 	unit_ability_list heal_on_hit_specials = weapon->get_specials_and_abilities("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos, weapon);
+	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 
 	drains = drain_constant || drain_percent;
 
 	// Compute the number of blows and handle swarm.
-	weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+	weapon->modified_attacks(swarm_min, swarm_max);
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
 }
@@ -255,7 +252,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	, petrifies(false)
 	, plagues(false)
 	, poisons(false)
-	, backstab_pos(false)
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
@@ -326,12 +322,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	cth = std::clamp(cth, 0, 100);
 
 	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
+	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
 	cth = cth_effects.get_composite_value();
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
-	int base_damage = weapon->modified_damage(backstab_pos);
+	int base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	damage_multiplier
 			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"), 0);
@@ -344,19 +340,19 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		unit_ability_list drain_specials = weapon->get_specials("drains");
 
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos, weapon);
+		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
 		drain_percent = drain_percent_effects.get_composite_value();
 	}
 
 	// Add heal_on_hit (the drain constant)
 	unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos, weapon);
+	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 
 	drains = drain_constant || drain_percent;
 
 	// Compute the number of blows and handle swarm.
-	weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+	weapon->modified_attacks(swarm_min, swarm_max);
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
 }
@@ -372,8 +368,7 @@ battle_context::battle_context(
 		int a_wep_index,
 		nonempty_unit_const_ptr defender,
 		const map_location& d_loc,
-		int d_wep_index,
-		const unit_map& units)
+		int d_wep_index)
 	: attacker_stats_()
 	, defender_stats_()
 	, attacker_combatant_()
@@ -385,8 +380,8 @@ battle_context::battle_context(
 	const_attack_ptr a_wep(a_wep_uindex < attacker->attacks().size() ? attacker->attacks()[a_wep_index].shared_from_this() : nullptr);
 	const_attack_ptr d_wep(d_wep_uindex < defender->attacks().size() ? defender->attacks()[d_wep_index].shared_from_this() : nullptr);
 
-	attacker_stats_.reset(new battle_context_unit_stats(attacker, a_loc, a_wep_index, true , defender, d_loc, d_wep, units));
-	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep, units));
+	attacker_stats_.reset(new battle_context_unit_stats(attacker, a_loc, a_wep_index, true , defender, d_loc, d_wep));
+	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep));
 }
 
 void battle_context::simulate(const combatant* prev_def)
@@ -430,16 +425,16 @@ battle_context::battle_context(const unit_map& units,
 
 	if(attacker_weapon == -1) {
 		*this = choose_attacker_weapon(
-			n_attacker, n_defender, units, attacker_loc, defender_loc, harm_weight, prev_def
+			n_attacker, n_defender, attacker_loc, defender_loc, harm_weight, prev_def
 		);
 	}
 	else if(defender_weapon == -1) {
 		*this = choose_defender_weapon(
-			n_attacker, n_defender, attacker_weapon, units, attacker_loc, defender_loc, prev_def
+			n_attacker, n_defender, attacker_weapon, attacker_loc, defender_loc, prev_def
 		);
 	}
 	else {
-		*this = battle_context(n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon, units);
+		*this = battle_context(n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon);
 	}
 
 	assert(attacker_stats_);
@@ -540,7 +535,6 @@ bool battle_context::better_combat(const combatant& us_a,
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
 		nonempty_unit_const_ptr defender,
-		const unit_map& units,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,
@@ -556,7 +550,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		if(att.attack_weight() <= 0) {
 			continue;
 		}
-		battle_context bc = choose_defender_weapon(attacker, defender, i, units, attacker_loc, defender_loc, prev_def);
+		battle_context bc = choose_defender_weapon(attacker, defender, i, attacker_loc, defender_loc, prev_def);
 		//choose_defender_weapon will always choose the weapon that disabels the attackers weapon if possible.
 		if(bc.attacker_stats_->disable) {
 			continue;
@@ -565,7 +559,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	}
 
 	if(choices.empty()) {
-		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1, units);
+		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1);
 	}
 
 	if(choices.size() == 1) {
@@ -587,7 +581,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		return std::move(*best_choice);
 	}
 	else {
-		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1, units);
+		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1);
 	}
 }
 
@@ -595,7 +589,6 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr attacker,
 		nonempty_unit_const_ptr defender,
 		unsigned attacker_weapon,
-		const unit_map& units,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		const combatant* prev_def)
@@ -604,7 +597,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attacker->attacks()[attacker_weapon];
-	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1, units); };
+	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
@@ -614,7 +607,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 			//no need to calculate the battle_context here.
 			continue;
 		}
-		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i, units);
+		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i);
 
 		if(bc.defender_stats_->disable) {
 			continue;
@@ -1600,7 +1593,7 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
-	unit_abilities::effect leader_effect(abil, 0, false, nullptr, true);
+	unit_abilities::effect leader_effect(abil, 0, nullptr, true);
 	return leader_effect.get_composite_value();
 }
 

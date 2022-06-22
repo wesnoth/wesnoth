@@ -39,7 +39,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, bool backstab, const_attack_ptr attacker = const_attack_ptr(), bool is_cumulable=false);
+		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), bool is_cumulable = false);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;
