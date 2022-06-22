@@ -568,7 +568,7 @@ public:
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p);
+	void remove_children(config_key_type key, std::function<bool(const config&)> p = [](config){return true;});
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
