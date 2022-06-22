@@ -167,6 +167,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 	known_aspects_(),
 	advancements_(),
 	aggression_(),
+	allow_ally_villages_(),
 	aspects_(),
 	attacks_(),
 	avoid_(),
@@ -213,6 +214,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 	add_known_aspect("advancements", advancements_);
 	add_known_aspect("aggression",aggression_);
+	add_known_aspect("allow_ally_villages",allow_ally_villages_);
 	add_known_aspect("attacks",attacks_);
 	add_known_aspect("avoid",avoid_);
 	add_known_aspect("caution",caution_);
@@ -512,6 +514,14 @@ double readonly_context_impl::get_aggression() const
 		return aggression_->get();
 	}
 	return 0;
+}
+
+bool readonly_context_impl::get_allow_ally_villages() const
+{
+	if (allow_ally_villages_) {
+		return allow_ally_villages_->get();
+	}
+	return false;
 }
 
 const aspect_map& readonly_context_impl::get_aspects() const

@@ -304,6 +304,10 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_aggression()*1000,variant::DECIMAL_VARIANT);
 
+	} else if(key == "allow_ally_villages")
+	{
+		return visit_helper(get_allow_ally_villages());
+
 	} else if(key == "avoid")
 	{
 		std::set<map_location> av_locs;
