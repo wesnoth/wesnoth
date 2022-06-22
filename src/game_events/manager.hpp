@@ -73,6 +73,9 @@ public:
 
 	void add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type = std::string());
 
+	// Normally non-serializable events are skipped when serializing (with a warning).
+	// If include_nonserializable is true, the game attempts to serialize them anyway.
+	// This will produce output that kind of looks like the event but would not deserialize to the same event.
 	void write_events(config& cfg, bool include_nonserializable=false) const;
 
 	using event_func_t = std::function<void(game_events::manager&, handler_ptr&)>;
