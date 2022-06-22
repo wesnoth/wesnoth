@@ -633,6 +633,16 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 
 	luaW_toconfig(L, pos, data);
 
+	// Support WML names for some common data
+	if(data.has_child("primary_attack")) {
+		data.add_child("first", data.child("primary_attack"));
+		data.remove_children("primary_attack");
+	}
+	if(data.has_child("secondary_attack")) {
+		data.add_child("second", data.child("secondary_attack"));
+		data.remove_children("secondary_attack");
+	}
+
 	bool b = false;
 
 	if (by_id) {
