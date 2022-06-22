@@ -184,7 +184,11 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 			assert(!eh->disabled());
 		}
 
-		eh->write_config(cfg.add_child("event"), include_nonserializable);
+		config event_cfg;
+		eh->write_config(event_cfg, include_nonserializable);
+		if(!event_cfg.empty()) {
+			cfg.add_child("event", std::move(event_cfg));
+		}
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
