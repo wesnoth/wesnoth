@@ -173,7 +173,14 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                             and (owner ~= wesnoth.current.side)
                             and (not wesnoth.sides.is_enemy(wesnoth.current.side, owner))
                         then
-                            heal_amount = 0
+                            -- If allow_ally_villages is true, injured units are allowed to take ally villages.
+                            -- However, they should do so with lower priority, which we do by halving the heal and cure amounts.
+                            if ai.aspects.allow_ally_villages then
+                                heal_amount = heal_amount / 2
+                                curing = 1
+                            else
+                                heal_amount = 0
+                            end
                         else
                             curing = 2
                         end
