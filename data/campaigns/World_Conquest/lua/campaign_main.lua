@@ -1,7 +1,7 @@
 -- the main file for the WC2 mp campaign
 
 T = wml.tag
-on_event = wesnoth.require("on_event")
+on_event = wesnoth.game_events.add_repeating
 
 
 wesnoth.dofile("./game_mechanics/_load.lua")

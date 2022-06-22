@@ -1,6 +1,6 @@
 local _ = wesnoth.textdomain 'wesnoth-multiplayer'
 local T = wml.tag
-local on_event = wesnoth.require("on_event")
+local on_event = wesnoth.game_events.add_repeating
 
 local random_spawns = {
 	{

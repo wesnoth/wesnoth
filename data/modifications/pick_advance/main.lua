@@ -1,6 +1,6 @@
 -- << pick_advance/main.lua
 
-local on_event = wesnoth.require "on_event"
+local on_event = wesnoth.game_events.add_repeating
 local F = wesnoth.require "functional"
 local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
