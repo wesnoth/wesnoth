@@ -74,7 +74,6 @@ void dump(const battle_context_unit_stats& stats)
 	   << "\n" << "drains:         " << stats.drains
 	   << "\n" << "petrifies:      " << stats.petrifies
 	   << "\n" << "poisons:        " << stats.poisons
-	   << "\n" << "backstab_pos:   " << stats.backstab_pos
 	   << "\n" << "swarm:          " << stats.swarm
 	   << "\n" << "firststrike:    " << stats.firststrike
 	   << std::noboolalpha

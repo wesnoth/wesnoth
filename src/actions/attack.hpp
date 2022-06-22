@@ -60,10 +60,6 @@ struct battle_context_unit_stats
 	bool petrifies;          /**< Attack petrifies opponent when it hits. */
 	bool plagues;            /**< Attack turns opponent into a zombie when fatal. */
 	bool poisons;            /**< Attack poisons opponent when it hits. */
-	bool backstab_pos;       /**<
-	                           * True if the attacker is in *position* to backstab the defender (this is used to
-	                           * determine whether to apply the backstab bonus in case the attacker has backstab).
-	                           */
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */
@@ -90,8 +86,7 @@ struct battle_context_unit_stats
 			bool attacking,
 			nonempty_unit_const_ptr opp,
 			const map_location& opp_loc,
-			const_attack_ptr opp_weapon,
-			const unit_map& units);
+			const_attack_ptr opp_weapon);
 
 	/** Used by AI for combat analysis, and by statistics_dialog */
 	battle_context_unit_stats(const unit_type* u_type,
@@ -138,7 +133,6 @@ struct battle_context_unit_stats
 		, petrifies(false)
 		, plagues(false)
 		, poisons(false)
-		, backstab_pos(false)
 		, swarm(do_swarm)
 		, firststrike(first)
 		, disable(false)
@@ -231,12 +225,10 @@ private:
 			int attacker_weapon,
 			nonempty_unit_const_ptr defender,
 			const map_location& defender_loc,
-			int defender_weapon,
-			const unit_map& units);
+			int defender_weapon);
 
 	static battle_context choose_attacker_weapon(nonempty_unit_const_ptr attacker,
 			nonempty_unit_const_ptr defender,
-			const unit_map& units,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,
@@ -245,7 +237,6 @@ private:
 	static battle_context choose_defender_weapon(nonempty_unit_const_ptr attacker,
 			nonempty_unit_const_ptr defender,
 			unsigned attacker_weapon,
-			const unit_map& units,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			const combatant* prev_def);

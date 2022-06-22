@@ -762,7 +762,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage(false);
+		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
@@ -782,7 +782,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 		unsigned base_attacks = at.num_attacks();
 		unsigned min_attacks, max_attacks;
-		at.modified_attacks(false, min_attacks, max_attacks);
+		at.modified_attacks(min_attacks, max_attacks);
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
 		color_t dmg_color = font::weapon_color;
