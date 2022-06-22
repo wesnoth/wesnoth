@@ -27,6 +27,7 @@
    * Updated translations: Arabic, Chinese (Traditional), Czech, Finnish, French, Japanese, Polish
  ### User interface
    * High-DPI font and image rendering is now enabled across the entire UI.
+   * Resolved broken layout in some low-resolution configurations (issue #5620, #6544)
  ### Miscellaneous and Bug Fixes
    * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
