@@ -3701,6 +3701,9 @@ struct lua_event_filter : public game_events::event_filter
 	{
 		lk.clear_wml_event(ref_);
 	}
+	void serialize(config& cfg) const override {
+		cfg.add_child("filter_lua")["code"] = "<function>";
+	}
 private:
 	game_lua_kernel& lk;
 	int ref_;

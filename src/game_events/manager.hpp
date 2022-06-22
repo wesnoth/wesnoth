@@ -73,7 +73,7 @@ public:
 
 	void add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type = std::string());
 
-	void write_events(config& cfg) const;
+	void write_events(config& cfg, bool include_nonserializable=false) const;
 
 	using event_func_t = std::function<void(game_events::manager&, handler_ptr&)>;
 	void execute_on_events(const std::string& event_id, event_func_t func);

@@ -165,7 +165,7 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 	}
 }
 
-void manager::write_events(config& cfg) const
+void manager::write_events(config& cfg, bool include_nonserializable) const
 {
 	for(const handler_ptr& eh : event_handlers_->get_active()) {
 		if(!eh || eh->is_menu_item()) {
@@ -184,7 +184,7 @@ void manager::write_events(config& cfg) const
 			assert(!eh->disabled());
 		}
 
-		eh->write_config(cfg.add_child("event"));
+		eh->write_config(cfg.add_child("event"), include_nonserializable);
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);

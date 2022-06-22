@@ -101,7 +101,10 @@ public:
 		return !first_time_only_;
 	}
 
-	void write_config(config& cfg) const;
+	// Normally non-serializable events are skipped when serializing (with a warning).
+	// If include_nonserializable is true, the game attempts to serialize them anyway.
+	// This will produce output that kind of looks like the event but would not deserialize to the same event.
+	void write_config(config& cfg, bool include_nonserializable = false) const;
 
 	void set_repeatable(bool repeat = true)
 	{
