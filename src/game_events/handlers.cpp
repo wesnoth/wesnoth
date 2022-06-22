@@ -122,7 +122,7 @@ bool event_handler::filter_event(const queued_event& ev) const
 	});
 }
 
-void event_handler::write_config(config &cfg) const
+void event_handler::write_config(config &cfg, bool include_nonserializable) const
 {
 	if(disabled_) {
 		WRN_NG << "Tried to serialize disabled event, skipping";
@@ -131,24 +131,33 @@ void event_handler::write_config(config &cfg) const
 	static const char* log_append_preload = " - this will not break saves since it was registered during or before preload\n";
 	static const char* log_append_postload = " - this will break saves because it was registered after preload\n";
 	if(is_lua_) {
-		static const char* log = "Skipping serialization of an event with action bound to Lua code";
-		if(has_preloaded_){
-			WRN_NG << log << log_append_postload;
-			lg::log_to_chat() << log << log_append_postload;
+		if(include_nonserializable) {
+			cfg["nonserializable"] = true;
+			cfg.add_child("lua")["code"] = "<function>";
 		} else {
-			LOG_NG << log << log_append_preload;
+			static const char* log = "Skipping serialization of an event with action bound to Lua code";
+			if(has_preloaded_){
+				WRN_NG << log << log_append_postload;
+				lg::log_to_chat() << log << log_append_postload;
+			} else {
+				LOG_NG << log << log_append_preload;
+			}
+			return;
 		}
-		return;
 	}
 	if(!std::all_of(filters_.begin(), filters_.end(), std::mem_fn(&event_filter::can_serialize))) {
-		static const char* log = "Skipping serialization of an event with filter bound to Lua code";
-		if(has_preloaded_) {
-			WRN_NG << log << log_append_postload;
-			lg::log_to_chat() << log << log_append_postload;
+		if(include_nonserializable) {
+			cfg["nonserializable"] = true;
 		} else {
-			LOG_NG << log << log_append_preload;
+			static const char* log = "Skipping serialization of an event with filter bound to Lua code";
+			if(has_preloaded_) {
+				WRN_NG << log << log_append_postload;
+				lg::log_to_chat() << log << log_append_postload;
+			} else {
+				LOG_NG << log << log_append_preload;
+			}
+			return;
 		}
-		return;
 	}
 	if(!types_.empty()) cfg["name"] = types_;
 	if(!id_.empty()) cfg["id"] = id_;
