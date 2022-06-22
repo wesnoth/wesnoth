@@ -19,6 +19,7 @@
    * Updated translations: Arabic, Chinese (Traditional), Polish, Finnish
  ### Units
  ### User interface
+   * Resolved broken layout in some low-resolution configurations (issue #5620, #6544)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
