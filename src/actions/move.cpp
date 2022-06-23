@@ -363,7 +363,7 @@ namespace { // Private helpers for move_unit()
 		, real_end_(begin_)
 		// Unit information:
 		, move_it_(resources::gameboard->units().find(*begin_))
-		, orig_side_(( assert(move_it_ != resources::gameboard->units().end()), move_it_->side() ))
+		, orig_side_(( static_cast<void>(assert(move_it_ != resources::gameboard->units().end())), move_it_->side() ))
 		, orig_moves_(move_it_->movement_left())
 		, orig_dir_(move_it_->facing())
 		, goto_( is_ai_move() ? move_it_->get_goto() : route.back() )

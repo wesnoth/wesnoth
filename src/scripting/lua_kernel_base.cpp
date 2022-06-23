@@ -576,7 +576,7 @@ static int impl_get_dir_suffix(lua_State*L)
  * This function does the actual work of grabbing all the attribute names.
  * It's a separate function so that it can be used by tab-completion as well.
  */
-std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
+static std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 {
 	std::vector<std::string> keys;
 	if(lua_istable(L, idx)) {

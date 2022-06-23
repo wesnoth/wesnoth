@@ -338,7 +338,7 @@ void mp_create_game::pre_show(window& win)
 #define UPDATE_ATTRIBUTE(field, convert) \
 	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(cfg[#field].convert()); } } while(false) \
 
-	plugins_context_->set_callback("update_settings", [this, &win](const config& cfg) {
+	plugins_context_->set_callback("update_settings", [this](const config& cfg) {
 		UPDATE_ATTRIBUTE(turns, to_int);
 		UPDATE_ATTRIBUTE(gold, to_int);
 		UPDATE_ATTRIBUTE(support, to_int);

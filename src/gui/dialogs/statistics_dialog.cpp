@@ -159,9 +159,9 @@ void statistics_dialog::add_damage_row(
 	item["label"] = type;
 	data.emplace("damage_type", item);
 
-	const int shift = statistics::stats::decimal_shift;
+	static const int shift = statistics::stats::decimal_shift;
 
-	const auto damage_str = [shift](long long damage, long long expected) {
+	const auto damage_str = [](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
 		write_actual_and_expected(str, damage, static_cast<double>(shifted) * 0.1);
