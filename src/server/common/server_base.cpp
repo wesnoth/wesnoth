@@ -544,11 +544,11 @@ template<class SocketPtr> void server_base::send_doc_queued(SocketPtr socket, st
 		return;
 	}
 
-	ON_SCOPE_EXIT(this, socket) { queues.erase(socket); };
+	ON_SCOPE_EXIT(socket) { queues.erase(socket); };
 
 	while(queues[socket].size() > 0) {
 		coro_send_doc(socket, *(queues[socket].front()), yield);
-		ON_SCOPE_EXIT(this, socket) { queues[socket].pop(); };
+		ON_SCOPE_EXIT(socket) { queues[socket].pop(); };
 	}
 }
 
