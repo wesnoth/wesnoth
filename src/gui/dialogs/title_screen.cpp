@@ -440,7 +440,7 @@ void title_screen::hotkey_callback_select_tests()
 
 	std::sort(options.begin(), options.end());
 
-	gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+	gui2::dialogs::simple_item_selector dlg(_("Choose Test Scenario"), "", options);
 	dlg.show();
 
 	int choice = dlg.selected_index();

@@ -294,7 +294,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ TITLE_SCREEN__CORES, "title_screen__cores", N_("Manage Cores"), false	, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, scope_main, HKCAT_GENERAL, "" },
-	{ TITLE_SCREEN__TEST, "title_screen__test", N_("Start Test Scenario"), false	, scope_main, HKCAT_GENERAL, "" },
+	{ TITLE_SCREEN__TEST, "title_screen__test", N_("Choose Test Scenario"), false	, scope_main, HKCAT_GENERAL, "" },
 
 	{ GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 
