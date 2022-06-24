@@ -265,11 +265,13 @@ const std::string holder::get_ai_overview()
 	auto plsk = this->ai_->get_passive_leader_shares_keep();
 	// In order to display booleans as yes/no rather than 1/0 or true/false
 	config cfg;
+	cfg["allow_ally_villages"] = this->ai_->get_allow_ally_villages();
 	cfg["simple_targeting"] = this->ai_->get_simple_targeting();
 	cfg["support_villages"] = this->ai_->get_support_villages();
 	std::stringstream s;
 	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
+	s << "allow_ally_villages:  " << cfg["allow_ally_villages"] << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
