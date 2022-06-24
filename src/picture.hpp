@@ -239,6 +239,7 @@ enum TYPE
 	HEXED,
 	/** Same as HEXED, but with Time of Day color tint applied. */
 	TOD_COLORED,
+	NUM_TYPES // Equal to the number of types specified above
 };
 
 enum class scale_quality { nearest, linear };
@@ -258,10 +259,14 @@ surface get_image(const locator& i_locator, TYPE type = UNSCALED);
  *
  * The equivalent get_texture() function should generally be preferred.
  *
+ * Surfaces will be cached for repeat access, unless skip_cache is set.
+ *
  * @param i_locator            Image path.
  * @param type                 Rendering format.
+ * @param skip_cache           Skip adding the result to the surface cache.
  */
-surface get_surface(const locator& i_locator, TYPE type = UNSCALED);
+surface get_surface(const locator& i_locator, TYPE type = UNSCALED,
+	bool skip_cache = false);
 
 /**
  * Returns an image texture suitable for hardware-accelerated rendering.
@@ -270,12 +275,19 @@ surface get_surface(const locator& i_locator, TYPE type = UNSCALED);
  * until no longer needed. Users of the returned texture do not have to
  * worry about texture management.
  *
+ * If caching is disabled via @a skip_cache, texture memory will be
+ * automatically freed once the returned object and all other linked
+ * textures (if any) are destroyed.
+ *
  * @param i_locator            Image path.
  * @param type                 Rendering format.
+ * @param skip_cache           Skip adding the result to the surface cache.
  */
-texture get_texture(const locator& i_locator, TYPE type = UNSCALED);
+texture get_texture(const locator& i_locator, TYPE type = UNSCALED,
+	bool skip_cache = false);
 
-texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type = UNSCALED);
+texture get_texture(const image::locator& i_locator, scale_quality quality,
+	TYPE type = UNSCALED, bool skip_cache = false);
 
 /**
  * Caches and returns an image with a lightmap applied to it.
@@ -296,10 +308,13 @@ surface get_hexmask();
 /**
  * Returns the width and height of an image.
  *
- * If the image is not yet in the surface cache, it will be loaded and cached.
+ * If the image is not yet in the surface cache, it will be loaded and cached
+ * unless skip_cache is explicitly set.
  *
+ * @param i_locator            Image path.
+ * @param skip_cache           If true, do not cache the image if loaded.
  */
-point get_size(const locator& i_locator);
+point get_size(const locator& i_locator, bool skip_cache = false);
 
 /**
  * Checks if an image fits into a single hex.

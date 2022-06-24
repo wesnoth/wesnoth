@@ -40,6 +40,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash_fwd.hpp>
 
+#include <array>
 #include <set>
 
 static lg::log_domain log_image("image");
@@ -183,6 +184,11 @@ image::lit_texture_cache lit_textures_;
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
 image::lit_texture_variants texture_lightmaps_;
+
+// diagnostics for tracking skipped cache impact
+std::array<image::bool_cache,image::TYPE::NUM_TYPES> skipped_cache_;
+int duplicate_loads_ = 0;
+int total_loads_ = 0;
 
 // const int cache_version_ = 0;
 
@@ -743,9 +749,9 @@ void set_zoom(unsigned int amount)
 	zoom = amount;
 }
 
-static surface get_hexed(const locator& i_locator)
+static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 {
-	surface image(get_surface(i_locator, UNSCALED));
+	surface image(get_surface(i_locator, UNSCALED, skip_cache));
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
 	surface res = mask_surface(image, get_hexmask(), &is_empty, i_locator.get_filename());
@@ -753,9 +759,9 @@ static surface get_hexed(const locator& i_locator)
 	return res;
 }
 
-static surface get_tod_colored(const locator& i_locator)
+static surface get_tod_colored(const locator& i_locator, bool skip_cache = false)
 {
-	surface img = get_surface(i_locator, HEXED);
+	surface img = get_surface(i_locator, HEXED, skip_cache);
 	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
@@ -778,7 +784,10 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type)
 	return type;
 }
 
-surface get_surface(const image::locator& i_locator, TYPE type)
+surface get_surface(
+	const image::locator& i_locator,
+	TYPE type,
+	bool skip_cache)
 {
 	surface res;
 
@@ -819,16 +828,33 @@ surface get_surface(const image::locator& i_locator, TYPE type)
 		res = load_from_disk(i_locator);
 		break;
 	case TOD_COLORED:
-		res = get_tod_colored(i_locator);
+		res = get_tod_colored(i_locator, skip_cache);
 		break;
 	case HEXED:
-		res = get_hexed(i_locator);
+		res = get_hexed(i_locator, skip_cache);
 		break;
 	default:
 		throw game::error("get_surface somehow lost image type?");
 	}
 
-	i_locator.add_to_cache(*imap, res);
+	bool_cache& skip = skipped_cache_[type];
+	if(i_locator.in_cache(skip) && i_locator.locate_in_cache(skip))
+	{
+		DBG_IMG << "duplicate load: " << i_locator
+			<< " [" << type << "]"
+			<< " (" << duplicate_loads_ << "/" << total_loads_ << " total)"
+			<< std::endl;
+		++duplicate_loads_;
+	}
+	++total_loads_;
+
+	if(skip_cache) {
+		DBG_IMG << "surface cache [" << type << "] skip: "
+			<< i_locator << std::endl;
+		i_locator.add_to_cache(skip, true);
+	} else {
+		i_locator.add_to_cache(*imap, res);
+	}
 
 	return res;
 }
@@ -916,9 +942,9 @@ surface get_hexmask()
 	return get_surface(terrain_mask, UNSCALED);
 }
 
-point get_size(const locator& i_locator)
+point get_size(const locator& i_locator, bool skip_cache)
 {
-	const surface s(get_surface(i_locator));
+	const surface s(get_surface(i_locator, UNSCALED, skip_cache));
 	if (s != nullptr) {
 		return {s->w, s->h};
 	} else {
@@ -1074,13 +1100,13 @@ save_result save_image(const surface& surf, const std::string& filename)
  * get_surface.
  */
 
-texture get_texture(const image::locator& i_locator, TYPE type)
+texture get_texture(const image::locator& i_locator, TYPE type, bool skip_cache)
 {
-	return get_texture(i_locator, scale_quality::nearest, type);
+	return get_texture(i_locator, scale_quality::nearest, type, skip_cache);
 }
 
 /** Returns a texture for the corresponding image. */
-texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type)
+texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE type, bool skip_cache)
 {
 	texture res;
 
@@ -1127,10 +1153,20 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 
 	// Get it from the surface cache, also setting the desired scale quality.
 	const bool linear_scaling = quality == scale_quality::linear ? true : false;
-	res = texture(get_surface(i_locator, type), linear_scaling);
+	if(i_locator.get_modifications().empty()) {
+		// skip cache if we're loading plain files with no modifications
+		res = texture(get_surface(i_locator, type, true), linear_scaling);
+	} else {
+		res = texture(get_surface(i_locator, type, skip_cache), linear_scaling);
+	}
 
 	// Cache the texture.
-	i_locator.add_to_cache(*cache, res);
+	if(skip_cache) {
+		DBG_IMG << "texture cache [" << type << "] skip: "
+			<< i_locator << std::endl;
+	} else {
+		i_locator.add_to_cache(*cache, res);
+	}
 
 	return res;
 }
