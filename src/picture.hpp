@@ -68,6 +68,7 @@ public:
 	locator(const locator& a, const std::string& mods = "");
 	locator(const char* filename);
 	locator(const std::string& filename);
+	locator(const char* filename, const char* modifications);
 	locator(const std::string& filename, const std::string& modifications);
 	locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
 
@@ -127,6 +128,7 @@ private:
 		value();
 		value(const char *filename);
 		value(const std::string& filename);
+		value(const char *filename, const char* modifications);
 		value(const std::string& filename, const std::string& modifications);
 		value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 

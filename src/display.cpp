@@ -210,7 +210,7 @@ display::display(const display_context* dc,
 	, menu_buttons_()
 	, action_buttons_()
 	, invalidated_()
-	, mouseover_hex_overlay_(nullptr)
+	, mouseover_hex_overlay_()
 	, tod_hex_mask1(nullptr)
 	, tod_hex_mask2(nullptr)
 	, fog_images_()
@@ -2630,11 +2630,14 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	// Paint mouseover overlays
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-			&& !map_screenshot_
-			&& mouseover_hex_overlay_ != nullptr) {
-		// TODO: highdpi - texture, yes this is terrible
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, dest, texture(mouseover_hex_overlay_));
+	if(loc == mouseoverHex_
+		&& (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+		&& !map_screenshot_
+		&& bool(mouseover_hex_overlay_))
+	{
+		const uint8_t alpha = 196;
+		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, dest,
+			mouseover_hex_overlay_, SDL_Rect(), false, false, alpha);
 	}
 
 	// Paint arrows

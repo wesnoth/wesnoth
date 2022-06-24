@@ -135,7 +135,8 @@ protected:
 	/**
 	 * Helper function for derived classes that need a active-terrain mouse overlay
 	 */
-	void set_terrain_mouse_overlay(editor_display& disp, const t_translation::terrain_code & fg,
+	void set_terrain_mouse_overlay(editor_display& disp,
+		const t_translation::terrain_code & fg,
 		const t_translation::terrain_code & bg);
 
 	/**

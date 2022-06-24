@@ -40,22 +40,15 @@ std::unique_ptr<editor_action> mouse_action_village::up_right(editor_display& di
 
 void mouse_action_village::set_mouse_overlay(editor_display& disp)
 {
-	surface image60 = image::get_image("icons/action/editor-tool-village_60.png");
-
-	//TODO avoid hardcoded hex field size
-	surface image(72,72);
-
-	SDL_Rect r {6, 6, 0, 0};
-	sdl_blit(image60, nullptr, image, &r);
-
-	uint8_t alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(
+		image::get_texture(
+			// center 60px icon on blank hex template
+			image::locator(
+				"misc/blank-hex.png",
+				"~BLIT(icons/action/editor-tool-village_60.png,6,6)"
+			)
+		)
+	);
 }
 
 
