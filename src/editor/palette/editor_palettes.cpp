@@ -283,10 +283,9 @@ void editor_palette<Item>::draw_contents()
 		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
-		surface item_image(nullptr);
+		texture item_base, item_overlay;
 		std::stringstream tooltip_text;
-		// TODO: highdpi - does this need to draw onto a surface? or can it return a texture?
-		draw_item((*item).second, item_image, tooltip_text);
+		setup_item((*item).second, item_base, item_overlay, tooltip_text);
 
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
@@ -298,8 +297,7 @@ void editor_palette<Item>::draw_contents()
 		}
 
 		tile.set_tooltip_string(tooltip_text.str());
-		// TODO: highdpi - not sure if this is the best place to create the texture
-		tile.set_item_image(texture(item_image));
+		tile.set_item_image(item_base, item_overlay);
 		tile.set_item_id(item_id);
 
 //		if (get_id((*item).second) == selected_bg_item_

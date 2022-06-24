@@ -102,7 +102,13 @@ private:
 
 	std::size_t active_group_index();
 
-	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
+	/** Setup item image and tooltip. */
+	virtual void setup_item(
+		const Item& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	) = 0;
 
 	virtual const std::string& get_id(const Item& item) = 0;
 

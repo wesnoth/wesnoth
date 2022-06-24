@@ -56,7 +56,11 @@ void item_palette::setup(const game_config_view& cfg)
 	}
 }
 
-void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text)
+void item_palette::setup_item(
+	const overlay& item,
+	texture& base_image,
+	texture& /*overlay_image*/,
+	std::stringstream& tooltip_text)
 {
 	std::stringstream filename;
 	filename << item.image;
@@ -64,19 +68,15 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 		filename << item.halo;
 	}
 
-	image = image::get_image(filename.str());
-	if(image == nullptr) {
+	base_image = image::get_texture(filename.str());
+	if(!base_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
-		image = image::get_image(game_config::images::missing);
-		if(image == nullptr) {
+		base_image = image::get_texture(game_config::images::missing);
+		if(!base_image) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
-	}
-
-	if(image->w != item_size_ || image->h != item_size_) {
-		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << item.name;

@@ -30,10 +30,10 @@ class tristate_button : public widget
 public:
 
 	struct error : public game::error {
-        error()
-            : game::error("GUI1 tristate button error")
-            {}
-    };
+		error()
+			: game::error("GUI1 tristate button error")
+			{}
+	};
 
 	enum PRESSED_STATE { LEFT, RIGHT, BOTH, NONE };
 
@@ -56,9 +56,10 @@ public:
 	virtual void enable(bool new_val=true) override;
 	void release();
 
-	void set_item_image(const texture& image)
+	void set_item_image(const texture& base, const texture& over = texture())
 	{
-		itemImage_ = image;
+		itemBaseImage_ = base;
+		itemOverlayImage_ = over;
 	}
 
 	void set_item_id(const std::string& id) {
@@ -83,7 +84,7 @@ private:
 	void calculate_size();
 
 	texture baseImage_, touchedBaseImage_, activeBaseImage_,
-		itemImage_,
+		itemBaseImage_, itemOverlayImage_,
 	//	normalImage_, activeImage_,
 		pressedDownImage_, pressedUpImage_, pressedBothImage_,
 		pressedBothActiveImage_, pressedDownActiveImage_, pressedUpActiveImage_,

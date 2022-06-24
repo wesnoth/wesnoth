@@ -38,7 +38,8 @@ tristate_button::tristate_button(CVideo& video,
 	, baseImage_()
 	, touchedBaseImage_()
 	, activeBaseImage_()
-	, itemImage_()
+	, itemBaseImage_()
+	, itemOverlayImage_()
 	, pressedDownImage_()
 	, pressedUpImage_()
 	, pressedBothImage_()
@@ -56,6 +57,7 @@ tristate_button::tristate_button(CVideo& video,
 	, palette_(palette)
 	, item_id_()
 {
+	// TODO: highdpi - there seem to be higher-quality 74-px versions of these available, but as that's not actually an integer multiple of 38... this is not a straight swap
 
 	if (button_image_name.empty()) {
 		button_image_name = "buttons/button_selectable/button_selectable_38_";
@@ -228,9 +230,12 @@ void tristate_button::draw_contents()
 	draw::blit(base, loc);
 
 	// Draw the item.
-	// TODO: highdpi - no idea why this is offset by 1, or why it's hardcoded as 36x36. But that's how it was previously, so that's how it still is.
+	// TODO: don't hardcode an implicit reliance on 38 pixel buttons
 	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
-	draw::blit(itemImage_, magic);
+	draw::blit(itemBaseImage_, magic);
+	if (itemOverlayImage_) {
+		draw::blit(itemOverlayImage_, magic);
+	}
 
 	// Draw the button overlay, if any.
 	if (overlay) {

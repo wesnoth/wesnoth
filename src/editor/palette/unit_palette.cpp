@@ -69,25 +69,25 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 	}
 }
 
-void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
-
+void unit_palette::setup_item(
+	const unit_type& u,
+	texture& base_image,
+	texture& /*overlay_image*/,
+	std::stringstream& tooltip_text)
+{
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
 			 << team::get_side_color_id(gui_.viewing_side()) << ')';
 
-	image = image::get_image(filename.str());
-	if(image == nullptr) {
+	base_image = image::get_texture(filename.str());
+	if(!base_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
-		image = image::get_image(game_config::images::missing);
-		if(image == nullptr) {
+		base_image = image::get_texture(game_config::images::missing);
+		if(!base_image) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
-	}
-
-	if(image->w != item_size_ || image->h != item_size_) {
-		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << u.type_name();

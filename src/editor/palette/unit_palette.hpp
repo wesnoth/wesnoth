@@ -48,7 +48,12 @@ public:
 private:
 	virtual const std::string& get_id(const unit_type& terrain);
 
-	virtual void draw_item(const unit_type& terrain, surface& image, std::stringstream& tooltip_text);
+	virtual void setup_item(
+		const unit_type& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	);
 
 	virtual bool is_selected_bg_item(const std::string& id);
 
