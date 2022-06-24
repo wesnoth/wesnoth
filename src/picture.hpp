@@ -180,11 +180,11 @@ extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 typedef std::basic_string<signed char> light_string;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-typedef std::map<light_string, surface> lit_variants;
+typedef std::map<light_string, surface> lit_surface_variants;
 typedef std::map<light_string, texture> lit_texture_variants;
 
 /** Lit variants for each locator. */
-typedef cache_type<lit_variants> lit_cache;
+typedef cache_type<lit_surface_variants> lit_surface_cache;
 typedef cache_type<lit_texture_variants> lit_texture_cache;
 
 /**

@@ -179,10 +179,10 @@ image::bool_cache in_hex_info_;
 image::bool_cache is_empty_hex_;
 
 // caches storing the different lighted cases for each image
-image::lit_cache lit_images_;
+image::lit_surface_cache lit_surfaces_;
 image::lit_texture_cache lit_textures_;
 // caches storing each lightmap generated
-image::lit_variants lightmaps_;
+image::lit_surface_variants surface_lightmaps_;
 image::lit_texture_variants texture_lightmaps_;
 
 // diagnostics for tracking skipped cache impact
@@ -243,7 +243,7 @@ void flush_cache()
 		cache.flush();
 	}
 	{ // TODO: there is no need to scope this but i don't want to reindent during other changes
-		lit_images_.flush();
+		lit_surfaces_.flush();
 		lit_textures_.flush();
 		in_hex_info_.flush();
 		is_empty_hex_.flush();
@@ -656,8 +656,8 @@ static surface apply_light(surface surf, const light_string& ls)
 
 	// check if the lightmap is already cached or need to be generated
 	surface lightmap = nullptr;
-	auto i = lightmaps_.find(ls);
-	if(i != lightmaps_.end()) {
+	auto i = surface_lightmaps_.find(ls);
+	if(i != surface_lightmaps_.end()) {
 		lightmap = i->second;
 	} else {
 		// build all the paths for lightmap sources
@@ -691,7 +691,7 @@ static surface apply_light(surface surf, const light_string& ls)
 		}
 
 		// cache the result
-		lightmaps_[ls] = lightmap;
+		surface_lightmaps_[ls] = lightmap;
 	}
 
 	// apply the final lightmap
@@ -737,7 +737,7 @@ void set_color_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		surfaces_[TOD_COLORED].flush();
-		lit_images_.flush();
+		lit_surfaces_.flush();
 		lit_textures_.flush();
 		texture_tod_colored_.clear();
 	}
@@ -862,16 +862,16 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	}
 
 	// select associated cache
-	lit_cache* imap = &lit_images_;
+	lit_surface_cache* imap = &lit_surfaces_;
 
 	// if no light variants yet, need to add an empty map
 	if(!i_locator.in_cache(*imap)) {
-		i_locator.add_to_cache(*imap, lit_variants());
+		i_locator.add_to_cache(*imap, lit_surface_variants());
 	}
 
 	// need access to add it if not found
 	{ // enclose reference pointing to data stored in a changing vector
-		const lit_variants& lvar = i_locator.locate_in_cache(*imap);
+		const lit_surface_variants& lvar = i_locator.locate_in_cache(*imap);
 		auto lvi = lvar.find(ls);
 		if(lvi != lvar.end()) {
 			return lvi->second;
