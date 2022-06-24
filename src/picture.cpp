@@ -153,14 +153,13 @@ void locator::add_to_cache(cache_type<T>& cache, const T& data) const
 		cache.get_element(index_) = cache_item<T>(data);
 	}
 }
-}
 
 namespace
 {
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-std::array<image::surface_cache,image::TYPE::NUM_TYPES> surfaces_;
+std::array<surface_cache, NUM_TYPES> surfaces_;
 
 /**
  * Texture caches.
@@ -186,7 +185,7 @@ image::lit_surface_variants surface_lightmaps_;
 image::lit_texture_variants texture_lightmaps_;
 
 // diagnostics for tracking skipped cache impact
-std::array<image::bool_cache,image::TYPE::NUM_TYPES> skipped_cache_;
+std::array<bool_cache, NUM_TYPES> skipped_cache_;
 int duplicate_loads_ = 0;
 int total_loads_ = 0;
 
@@ -229,8 +228,6 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 
 } // end anon namespace
 
-namespace image
-{
 mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
 mini_terrain_cache_map mini_highlighted_terrain_cache;
