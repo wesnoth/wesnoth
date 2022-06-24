@@ -160,7 +160,7 @@ namespace
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_, hexed_images_, tod_colored_images_;
+std::array<image::surface_cache,image::TYPE::NUM_TYPES> surfaces_;
 
 /**
  * Texture caches.
@@ -239,10 +239,10 @@ static int last_index_ = 0;
 
 void flush_cache()
 {
-	{
-		images_.flush();
-		hexed_images_.flush();
-		tod_colored_images_.flush();
+	for(surface_cache cache : surfaces_) {
+		cache.flush();
+	}
+	{ // TODO: there is no need to scope this but i don't want to reindent during other changes
 		lit_images_.flush();
 		lit_textures_.flush();
 		in_hex_info_.flush();
@@ -736,7 +736,7 @@ void set_color_adjustment(int r, int g, int b)
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
-		tod_colored_images_.flush();
+		surfaces_[TOD_COLORED].flush();
 		lit_images_.flush();
 		lit_textures_.flush();
 		texture_tod_colored_.clear();
@@ -797,26 +797,16 @@ surface get_surface(
 
 	type = simplify_type(i_locator, type);
 
-	image_cache* imap;
 	// select associated cache
-	switch(type) {
-	case UNSCALED:
-		imap = &images_;
-		break;
-	case TOD_COLORED:
-		imap = &tod_colored_images_;
-		break;
-	case HEXED:
-		imap = &hexed_images_;
-		break;
-	default:
+	if(type >= NUM_TYPES) {
 		WRN_IMG << "get_surface called with unknown image type" << std::endl;
 		return res;
 	}
+	surface_cache& imap = surfaces_[type];
 
 	// return the image if already cached
-	if (i_locator.in_cache(*imap)) {
-		return i_locator.locate_in_cache(*imap);
+	if (i_locator.in_cache(imap)) {
+		return i_locator.locate_in_cache(imap);
 	}
 
 	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator << std::endl;
@@ -853,7 +843,7 @@ surface get_surface(
 			<< i_locator << std::endl;
 		i_locator.add_to_cache(skip, true);
 	} else {
-		i_locator.add_to_cache(*imap, res);
+		i_locator.add_to_cache(imap, res);
 	}
 
 	return res;

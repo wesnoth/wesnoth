@@ -155,7 +155,7 @@ private:
 // write a readable representation of a locator, mostly for debugging
 std::ostream& operator<<(std::ostream&, const locator&);
 
-typedef cache_type<surface> image_cache;
+typedef cache_type<surface> surface_cache;
 typedef cache_type<texture> texture_cache;
 typedef cache_type<bool> bool_cache;
 
