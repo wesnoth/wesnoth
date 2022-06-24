@@ -5452,7 +5452,7 @@ bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_eve
 	if(lua_isnil(L, -1)) return false;
 	luaW_pushvconfig(L, args);
 	queued_event_context dummy(&ev, queued_events_);
-	if(protected_call(1, out ? 1 : 0)) {
+	if(luaW_pcall(L, 1, out ? 1 : 0, true)) {
 		if(out) {
 			*out = luaW_toboolean(L, -1);
 			lua_pop(L, 1);
