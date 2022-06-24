@@ -1,3 +1,5 @@
+wesnoth.deprecated_message('ai/lua/generic_recruit_engine.lua', 3, '1.19', 'All its functionality has been moved to ai/lua/ca_recruit_rushers.lua which can now be used directly.')
+
 return {
     -- init parameters:
     -- ai_cas: an object reference to store the CAs and associated data
