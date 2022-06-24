@@ -64,7 +64,7 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
                 local regen_amount = 0
                 if abilities then
                     for regen in wml.child_range(abilities, "regenerate") do
-                        if regen.value > regen_amount then
+                        if (regen.value or 0) > regen_amount then
                             regen_amount = regen.value
                         end
                     end
