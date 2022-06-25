@@ -393,7 +393,7 @@ void CVideo::init_window()
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
 
-	if(/*supports_vsync() &&*/ preferences::vsync()) {
+	if(preferences::vsync()) {
 		LOG_DP << "VSYNC on\n";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
@@ -783,7 +783,7 @@ bool CVideo::is_fullscreen() const
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 
-bool CVideo::supports_vsync() const
+bool CVideo::supports_software_vsync() const
 {
 	return sdl_get_version() >= version_info{2, 0, 17};
 }

@@ -120,7 +120,13 @@ public:
 
 	bool is_fullscreen() const;
 
-	bool supports_vsync() const;
+	/**
+	 * Only recent versions of SDL support vsync with the software renderer.
+	 * This is irrelevant now as we're using hardware rendering exclusively.
+	 * I recommend removing this function entirely after several months,
+	 * when it has become clear that the software renderer won't be needed.
+	 */
+	bool supports_software_vsync() const;
 
 	/**
 	 * Set the window resolution.
