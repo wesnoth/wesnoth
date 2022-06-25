@@ -9,6 +9,7 @@
    * Increased minimum required version of SDL to 2.0.10.
  ### Terrain
  ### Translations
+   * Updated translations: Arabic
  ### Units
  ### User interface
  ### WML Engine
