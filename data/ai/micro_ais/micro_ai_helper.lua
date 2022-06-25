@@ -296,6 +296,61 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
             CA_cfg[k_name] = cfg[k_name]
         end
     end
+
+    -- Check whether there are invalid keys in the [micro_ai] tag
+    for k in pairs(cfg) do
+        if (not showed_deprecation_message[cfg.ai_type]) -- otherwise this produces false positives
+           and  (k ~= 'side') and (k ~= 'ai_type') and (k ~= 'action')
+           and (k ~= 'ca_id') and (k ~= 'ca_score') and (type(k) ~= 'number')
+        then
+            local is_invalid = true
+            for k_name in pairs(required_keys) do
+                if (k == k_name) then
+                    is_invalid = false
+                    break
+                end
+            end
+            if is_invalid then
+                for k_name in pairs(optional_keys) do
+                    if (k == k_name) then
+                        is_invalid = false
+                        break
+                    end
+                end
+            end
+            if is_invalid then
+                local str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: " .. k
+                warn(str)
+                std_print(str .. ' (see Lua console for stack trace)')
+            end
+        end
+    end
+
+    -- Check whether there are invalid tags in the [micro_ai] tag
+    for _,t in ipairs(cfg) do
+        -- [filter] is always added to [micro_ai] tags inside a unit's [ai] tag,
+        -- whether the specific MAI supports it or not
+        if (not showed_deprecation_message[cfg.ai_type]) and (t[1] ~= 'filter') then
+            local is_invalid = true
+            for k_name in pairs(required_keys) do
+                if (t[1] == k_name) then
+                    is_invalid = false
+                    break
+                end
+            end
+            if is_invalid then
+                for k_name in pairs(optional_keys) do
+                    if (t[1] == k_name) then
+                        is_invalid = false
+                        break
+                    end
+                end
+            end
+            if is_invalid then
+                str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: [" .. t[1] .. "]"
+                warn(str)
+                std_print(str .. ' (see Lua console for stack trace)')
+            end
         end
     end
 
