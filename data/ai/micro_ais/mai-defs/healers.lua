@@ -1,6 +1,8 @@
 
 function wesnoth.micro_ais.healer_support(cfg)
-	local optional_keys = { "aggression", "injured_units_only", "max_threats", "[filter]", "[filter_second]" }
+	local optional_keys = { aggression = 'float', injured_units_only = 'boolean',
+	    max_threats = 'integer', filter = 'tag', filter_second = 'tag'
+	}
 	-- Scores for this AI need to be hard-coded, it does not work otherwise
 	local CA_parms = {
 		ai_id = 'mai_healer',

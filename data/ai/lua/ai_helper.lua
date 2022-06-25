@@ -667,7 +667,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
         if loc then
             return loc
         else
-            wml.error("Named location does not exist: " .. loc_id)
+            wml.error("Named location does not exist: " .. loc_id .. " " .. (required_for or ''))
         end
     end
 
@@ -676,7 +676,7 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
     local x, y = cfg[param_x], cfg[param_y]
     if x and y then
         if not wesnoth.current.map:on_board(x, y) then
-            wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y)
+            wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y .. " " .. (required_for or ''))
         end
 
         return { x, y }
@@ -702,7 +702,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
         for _,loc_id in ipairs(loc_ids) do
             local tmp_cfg = {}
             tmp_cfg[param_loc] = loc_id
-            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg, required_for)
             table.insert(locs, loc)
         end
         return locs
@@ -722,7 +722,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
             local tmp_cfg = {}
             tmp_cfg[param_x] = tonumber(x)
             tmp_cfg[param_y] = tonumber(ys[i])
-            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg)
+            local loc = ai_helper.get_named_loc_xy(param_core, tmp_cfg, required_for)
             table.insert(locs, loc)
         end
         return locs
