@@ -403,7 +403,7 @@ public:
 		if(endindex > 0) {
 			// NOTE: currently this is only called from as_range_visitor_base<vi_policy_create>
 			// Based on that assumption we use vi_policy_create::get_child_at here instead of making this
-            // a class template.
+			// a class template.
 			vi_policy_create::get_child_at(child, key, endindex - 1);
 		}
 

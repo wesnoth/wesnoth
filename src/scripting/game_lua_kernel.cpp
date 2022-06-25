@@ -475,7 +475,7 @@ int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
  * Gets all the units matching a given filter.
  * - Arg 1: optional table containing a filter
  * - Arg 2: optional location (to find all units that would match on that location)
-                  OR unit (to find all units that would match adjacent to that unit)
+ *          OR unit (to find all units that would match adjacent to that unit)
  * - Ret 1: table containing full userdata with __index pointing to
  *          impl_unit_get and __newindex pointing to impl_unit_set.
  */

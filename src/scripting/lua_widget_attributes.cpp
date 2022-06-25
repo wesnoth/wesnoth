@@ -62,8 +62,8 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
-    assert(i > 0);
-    if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
+	assert(i > 0);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
 		int n = list->get_item_count();
 		if(i > n) {
 			for(; n < i; ++n) {
@@ -104,7 +104,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 
 static gui2::widget* find_child_by_name(gui2::widget& w, const std::string& m)
 {
-    return w.find(m, false);
+	return w.find(m, false);
 }
 
 using tgetters = std::map<std::string, std::vector<std::function<bool(lua_State*, gui2::widget&, bool)>>>;

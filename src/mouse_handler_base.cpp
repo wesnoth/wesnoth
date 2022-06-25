@@ -268,7 +268,7 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 	(void) event;
 	return false;
 #else
-    if(event.which == SDL_TOUCH_MOUSEID) {
+	if(event.which == SDL_TOUCH_MOUSEID) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_RIGHT

@@ -233,8 +233,8 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 				= dynamic_cast<const class scrollbar_container*>(widget);
 
 		if(scrollbar_container) {
-			widget_generate_info(
-            out, scrollbar_container->content_grid_.get(), id + "_C", true);
+			widget_generate_info(out,
+				scrollbar_container->content_grid_.get(), id + "_C", true);
 			out << "\t" << id << " -> " << id << "_C"
 				<< " [label=\"(content)\"];\n";
 		}
@@ -318,7 +318,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "active=" << control->get_active() << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
-        << "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
+		<< "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "drawing action=" << static_cast<int>(control->get_drawing_action()) << '\n'
 		<< "</td></tr>\n"
@@ -403,7 +403,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-            const widget* widget = grid->get_widget(row, col);
+			const widget* widget = grid->get_widget(row, col);
 			assert(widget);
 
 			widget_generate_info(

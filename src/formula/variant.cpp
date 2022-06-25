@@ -164,7 +164,7 @@ variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
 }
 
 variant::variant(const std::vector<variant>& vec)
-    : value_((std::make_shared<variant_list>(vec)))
+	: value_((std::make_shared<variant_list>(vec)))
 {
 	assert(value_.get());
 }

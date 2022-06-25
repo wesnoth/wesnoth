@@ -29,11 +29,11 @@
 
 namespace t_translation {
 
-    /**
-     * Return the maximum allowed map size (in either dimension),
-     * the maximum map area is, therefore, this value squared.
-     */
-    int max_map_size();
+	/**
+	 * Return the maximum allowed map size (in either dimension),
+	 * the maximum map area is, therefore, this value squared.
+	 */
+	int max_map_size();
 
 	typedef uint32_t ter_layer;
 	const ter_layer WILDCARD = 0x2A000000;
@@ -116,7 +116,7 @@ namespace t_translation {
 	/**  Contains an x and y coordinate used for starting positions in maps. */
 	using coordinate = map_location;
 
-    // Exception thrown if there's an error with the terrain.
+	// Exception thrown if there's an error with the terrain.
 	// Note: atm most thrown result in a crash, but I like
 	// an uncatched exception better than an assert.
 	struct error : public game::error {
@@ -154,7 +154,7 @@ namespace t_translation {
 	extern const terrain_code STAR;	// *
 	extern const terrain_code BASE;	// references the base terrain in movement/defense aliases
 
-    extern const ter_match ALL_OFF_MAP;
+	extern const ter_match ALL_OFF_MAP;
 	extern const ter_match ALL_FORESTS;
 	extern const ter_match ALL_HILLS;
 	extern const ter_match ALL_MOUNTAINS; //excluding impassable mountains
@@ -163,23 +163,23 @@ namespace t_translation {
 	/**
 	 * Reads a single terrain from a string.
 	 *
-	 * @param str		The string which should contain 1 terrain code;
-                                        the new format of a terrain code
-	 *				is 2 to 4 characters in the set
+	 * @param str       The string which should contain 1 terrain code;
+	 *                  the new format of a terrain code
+	 *                  is 2 to 4 characters in the set
 	 *@verbatim
-	 *				[a-Z][A-Z]/|\_
+	 *                  [a-Z][A-Z]/|\_
 	 *@endverbatim
-	 *				The underscore is intended for internal use.
-	 *				Other letters and characters are not validated but
-	 *				users of these letters can get nasty surprises.
-	 *				The * is used as wildcard in some cases.
-	 *				The terrain code can be two groups separated by a caret,
-	 *				the first group is the base terrain,
-	 *				the second the overlay terrain.
+	 *                  The underscore is intended for internal use.
+	 *                  Other letters and characters are not validated but
+	 *                  users of these letters can get nasty surprises.
+	 *                  The * is used as wildcard in some cases.
+	 *                  The terrain code can be two groups separated by a caret,
+	 *                  the first group is the base terrain,
+	 *                  the second the overlay terrain.
 	 *
-	 * @param filler	if there's no layer this value will be used as the second layer
+	 * @param filler    if there's no layer this value will be used as the second layer
 	 *
-	 * @return			A single terrain code
+	 * @return          A single terrain code
 	 */
 	terrain_code read_terrain_code(std::string_view str, const ter_layer filler = NO_LAYER);
 

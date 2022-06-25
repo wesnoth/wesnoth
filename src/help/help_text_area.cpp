@@ -283,7 +283,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		jump_to = to;
 	}
 	if (jump_to != 0 && static_cast<int>(jump_to) <
-            get_max_x(curr_loc_.first, curr_row_height_)) {
+			get_max_x(curr_loc_.first, curr_row_height_)) {
 
 		curr_loc_.first = jump_to;
 	}

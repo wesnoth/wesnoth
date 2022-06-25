@@ -88,7 +88,7 @@ bool stage_unit_formulas::do_play_stage()
 				units_with_formulas.insert( wfl::unit_formula_pair( i, priority ) );
 			}
 		}
-        }
+	}
 
 	for(wfl::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{

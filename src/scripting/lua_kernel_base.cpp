@@ -1182,7 +1182,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
-    }
+	}
 	// stack is now [packagename] [wesnoth] [package] [results]
 
 	lua_pushvalue(L, 1);

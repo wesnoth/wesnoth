@@ -411,7 +411,7 @@ schema_self_validator::schema_self_validator()
 	, type_nesting_()
 	, condition_nesting_()
 {
-       defined_types_.insert("t_string");
+	defined_types_.insert("t_string");
 }
 
 

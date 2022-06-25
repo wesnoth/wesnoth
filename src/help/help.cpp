@@ -130,8 +130,8 @@ help_manager::~help_manager()
 	game_cfg = nullptr;
 	default_toplevel.clear();
 	hidden_sections.clear();
-    // These last numbers must be reset so that the content is regenerated.
-    // Upon next start.
+	// These last numbers must be reset so that the content is regenerated.
+	// Upon next start.
 	last_num_encountered_units = -1;
 	last_num_encountered_terrains = -1;
 }
@@ -218,14 +218,15 @@ void show_with_toplevel(const section &toplevel_sec,
 	f.layout(xloc, yloc, width, height);
 	f.draw();
 
-    // Find all unit_types that have not been constructed yet and fill in the information
-    // needed to create the help topics
+	// Find all unit_types that have not been constructed yet and fill in the information
+	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
-	    last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0) {
+		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+		last_debug_state != game_config::debug ||
+		last_num_encountered_units < 0)
+	{
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = preferences::encountered_units().size();
 		last_num_encountered_terrains = preferences::encountered_terrains().size();

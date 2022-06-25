@@ -2186,7 +2186,7 @@ void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, b
 
 void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
-			      double add_spacing, bool force)
+                              double add_spacing, bool force)
 {
 	std::vector<map_location> locs;
 	locs.push_back(loc1);

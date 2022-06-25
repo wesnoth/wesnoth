@@ -141,7 +141,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 void write_preferences()
 {
 #ifndef _WIN32
-    bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
+	bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
 #endif
 
 	try {
@@ -154,13 +154,11 @@ void write_preferences()
 	preferences::save_credentials();
 
 #ifndef _WIN32
-    if(!prefs_file_existed) {
-
-        if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
+	if(!prefs_file_existed) {
+		if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
 			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
-        }
-
-    }
+		}
+	}
 #endif
 }
 

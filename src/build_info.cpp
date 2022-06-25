@@ -291,7 +291,7 @@ version_table_manager::version_table_manager()
 #endif
 
 #ifdef __APPLE__
-    // Always compiled in.
+	// Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
 	features.back().enabled = true;
 #endif /* __APPLE__ */

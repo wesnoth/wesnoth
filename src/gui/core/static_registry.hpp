@@ -104,10 +104,10 @@ std::set<std::string>& registered_window_types();
 
 struct registered_widget_parser
 {
-    /** The widget definition WML parser function. */
+	/** The widget definition WML parser function. */
 	widget_parser_t parser;
 
-    /** The tag containing the definition WML. */
+	/** The tag containing the definition WML. */
 	const char* key;
 };
 

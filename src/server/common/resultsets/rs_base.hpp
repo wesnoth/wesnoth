@@ -18,8 +18,8 @@
 
 class rs_base
 {
-    public:
-        rs_base(){}
-		virtual ~rs_base(){}
-        virtual void read(mariadb::result_set_ref rslt) =0;
+public:
+	rs_base() {}
+	virtual ~rs_base() {}
+	virtual void read(mariadb::result_set_ref rslt) = 0;
 };

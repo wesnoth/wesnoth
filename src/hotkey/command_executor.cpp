@@ -624,7 +624,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 
 	if (!command.press) {
 		return; // none of the commands here respond to a key release
-    }
+	}
 
 	switch(command.command->command) {
 		case HOTKEY_FULLSCREEN:

@@ -411,10 +411,10 @@ void load_config(const config &v)
 	server_list.clear();
 
 	for(const config& server : v.child_range("server")) {
-        server_info sinf;
-        sinf.name = server["name"].str();
-        sinf.address = server["address"].str();
-        server_list.push_back(sinf);
+		server_info sinf;
+		sinf.name = server["name"].str();
+		sinf.address = server["address"].str();
+		server_list.push_back(sinf);
 	}
 
 	if(const config& s = v.child("sounds")) {

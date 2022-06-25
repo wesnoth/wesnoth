@@ -173,8 +173,9 @@ bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
 	return check_names_legal_internal(dir, "", badlist);
 }
 
-bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist){
-    return check_case_insensitive_duplicates_internal(dir, "", badlist);
+bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist)
+{
+	return check_case_insensitive_duplicates_internal(dir, "", badlist);
 }
 
 ADDON_TYPE get_addon_type(const std::string& str)

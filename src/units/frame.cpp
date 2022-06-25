@@ -780,7 +780,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 
 	/**
 	 * The engine provides a string for "petrified" and "team color" modifications.
-     * Note that image_mod is the complete modification and halo_mod is only the TC part.
+	 * Note that image_mod is the complete modification and halo_mod is only the TC part.
 	 */
 	result.image_mod = current_val.image_mod + animation_val.image_mod;
 	if(primary) {

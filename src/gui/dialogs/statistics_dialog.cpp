@@ -39,15 +39,15 @@
 // TODO duplicated from attack_predictions.cpp
 static std::string get_probability_string(const double prob)
 {
-       std::ostringstream ss;
+	std::ostringstream ss;
 
-       if(prob > 0.9995) {
-               ss << "100";
-       } else {
-               ss << std::fixed << std::setprecision(1) << 100.0 * prob;
-       }
+	if(prob > 0.9995) {
+		ss << "100";
+	} else {
+		ss << std::fixed << std::setprecision(1) << 100.0 * prob;
+	}
 
-       return ss.str();
+	return ss.str();
 }
 
 namespace gui2::dialogs

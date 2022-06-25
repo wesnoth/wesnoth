@@ -78,8 +78,8 @@ public:
 
 	pango_text();
 
-    pango_text(const pango_text &) = delete;
-    pango_text & operator = (const pango_text &) = delete;
+	pango_text(const pango_text &) = delete;
+	pango_text & operator = (const pango_text &) = delete;
 
 	/**
 	 * Returns the rendered text as a texture.
@@ -299,12 +299,12 @@ private:
 	bool link_aware_;
 
 	/**
-     * The color to render links in.
-     *
-     * Links are formatted using pango &lt;span> as follows:
-     *
-     * &lt;span underline="single" color=" + link_color_ + ">
-     */
+	 * The color to render links in.
+	 *
+	 * Links are formatted using pango &lt;span> as follows:
+	 *
+	 * &lt;span underline="single" color=" + link_color_ + ">
+	 */
 	color_t link_color_;
 
 	/** The font family class used. */

@@ -940,8 +940,16 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	return weapon_abilities;
 }
 
-void attack_type::weapon_specials_impl_self(std::string& temp_string, unit_const_ptr self, const_attack_ptr self_attack, const_attack_ptr other_attack, const map_location& self_loc, AFFECTS whom,
-                                     std::set<std::string>& checking_name, const std::set<std::string>& checking_tags, bool leader_bool)
+void attack_type::weapon_specials_impl_self(
+	std::string& temp_string,
+	unit_const_ptr self,
+	const_attack_ptr self_attack,
+	const_attack_ptr other_attack,
+	const map_location& self_loc,
+	AFFECTS whom,
+	std::set<std::string>& checking_name,
+	const std::set<std::string>& checking_tags,
+	bool leader_bool)
 {
 	if(self){
 		for (const config::any_child sp : self->abilities().all_children_range()){
@@ -952,8 +960,17 @@ void attack_type::weapon_specials_impl_self(std::string& temp_string, unit_const
 	}
 }
 
-void attack_type::weapon_specials_impl_adj(std::string& temp_string, unit_const_ptr self, const_attack_ptr self_attack, const_attack_ptr other_attack, const map_location& self_loc, AFFECTS whom,
-                                     std::set<std::string>& checking_name, const std::set<std::string>& checking_tags, const std::string& affect_adjacents, bool leader_bool)
+void attack_type::weapon_specials_impl_adj(
+	std::string& temp_string,
+	unit_const_ptr self,
+	const_attack_ptr self_attack,
+	const_attack_ptr other_attack,
+	const map_location& self_loc,
+	AFFECTS whom,
+	std::set<std::string>& checking_name,
+	const std::set<std::string>& checking_tags,
+	const std::string& affect_adjacents,
+	bool leader_bool)
 {
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
@@ -988,13 +1005,14 @@ void attack_type::weapon_specials_impl_adj(std::string& temp_string, unit_const_
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  * @param[in]  other_attack  The attack used by the other unit.
  */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
-                                       const_attack_ptr other_attack,
-									   unit_const_ptr self,
-                                       unit_const_ptr other,
-                                       const map_location& unit_loc,
-                                       const map_location& other_loc,
-                                       bool attacking)
+attack_type::specials_context_t::specials_context_t(
+	const attack_type& weapon,
+	const_attack_ptr other_attack,
+	unit_const_ptr self,
+	unit_const_ptr other,
+	const map_location& unit_loc,
+	const map_location& other_loc,
+	bool attacking)
 	: parent(weapon.shared_from_this())
 {
 	weapon.self_ = self;
@@ -1541,8 +1559,14 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  *                              for elsewhere)
  *  @param filter_self      the filter to use
  */
-bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, AFFECTS whom, const std::string& tag_name,
-                                 bool include_backstab, const std::string& filter_self)
+bool attack_type::special_active_impl(
+	const_attack_ptr self_attack,
+	const_attack_ptr other_attack,
+	const config& special,
+	AFFECTS whom,
+	const std::string& tag_name,
+	bool include_backstab,
+	const std::string& filter_self)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;

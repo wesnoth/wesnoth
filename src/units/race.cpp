@@ -113,7 +113,7 @@ unit_race::unit_race(const config& cfg) :
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
-    return name_generator_[gender]->generate();
+	return name_generator_[gender]->generate();
 }
 
 const name_generator& unit_race::generator(unit_race::GENDER gender) const
@@ -133,7 +133,7 @@ const config::const_child_itors &unit_race::additional_traits() const
 
 const config::const_child_itors &unit_race::additional_topics() const
 {
-  return topics_;
+	return topics_;
 }
 
 unsigned int unit_race::num_traits() const { return ntraits_; }

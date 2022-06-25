@@ -2010,29 +2010,29 @@ void blit_surface(const surface& surf,
 		src_rect.h = srcrect->h;
 
 		if (src_rect.x < 0) {
-            if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
-                return;
+			if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
+				return;
 			dst_rect.x -= src_rect.x;
 			dst_rect.w += src_rect.x;
 			src_rect.w += src_rect.x;
 			src_rect.x = 0;
 		}
 		if (src_rect.y < 0) {
-            if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
-                return;
+			if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
+				return;
 			dst_rect.y -= src_rect.y;
 			dst_rect.h += src_rect.y;
 			src_rect.h += src_rect.y;
 			src_rect.y = 0;
 		}
 		if (src_rect.x + src_rect.w > surf->w) {
-            if (src_rect.x >= surf->w)
-                return;
+			if (src_rect.x >= surf->w)
+				return;
 			src_rect.w = surf->w - src_rect.x;
 		}
 		if (src_rect.y + src_rect.h > surf->h) {
-            if (src_rect.y >= surf->h)
-                return;
+			if (src_rect.y >= surf->h)
+				return;
 			src_rect.h = surf->h - src_rect.y;
 		}
 	}

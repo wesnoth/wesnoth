@@ -334,7 +334,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations,
 		bool see_all
-          ) const
+	) const
 {
 
 	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {

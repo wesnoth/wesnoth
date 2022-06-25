@@ -754,10 +754,10 @@ void create_engine::init_all_levels()
 
 	// Sort sp campaigns by rank.
 	std::stable_sort(sp_campaigns.begin(), sp_campaigns.end(),
-        [](const create_engine::level_ptr& a, const create_engine::level_ptr& b) {
+		[](const create_engine::level_ptr& a, const create_engine::level_ptr& b) {
 			return a->data()["rank"].to_int(1000) < b->data()["rank"].to_int(1000);
 		}
-    );
+	);
 }
 
 void create_engine::init_extras(const MP_EXTRA extra_type)
@@ -813,7 +813,7 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type_unfilter
 
 std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level_type::type type) const
 {
-    auto& g_list = type_map_.at(type);
+	auto& g_list = type_map_.at(type);
 
 	std::vector<level_ptr> levels;
 	for(std::size_t level : g_list.games_filtered) {

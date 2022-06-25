@@ -103,7 +103,7 @@ surface scale_surface_nn(const surface & surf, int w, int h);
 surface scale_surface(const surface &surf, int w, int h);
 
 /** Scale a surface using simple bilinear filtering (discarding rgb from source
-    pixels with 0 alpha)
+ *  pixels with 0 alpha)
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.

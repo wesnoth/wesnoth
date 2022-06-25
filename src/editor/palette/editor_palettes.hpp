@@ -180,17 +180,17 @@ protected:
 	 * Index of the item at the top-left of the visible area, used for scrolling up and down.
 	 */
 	std::size_t items_start_;
-    std::set<std::string> non_core_items_;
+	std::set<std::string> non_core_items_;
 
 private:
 	std::string active_group_;
 	std::string selected_fg_item_;
 	std::string selected_bg_item_;
 
-    editor_toolkit& toolkit_;
-    std::vector<gui::tristate_button> buttons_;
+	editor_toolkit& toolkit_;
+	std::vector<gui::tristate_button> buttons_;
 
-    int help_handle_;
+	int help_handle_;
 };
 
 

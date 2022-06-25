@@ -600,7 +600,9 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const_attack_ptr secondary_attack,
-                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds,
+                 int swing, const std::string& hit_text, int drain_amount,
+                 const std::string& att_text,
+                 const std::vector<std::string>* extra_hit_sounds,
                  bool attacking)
 {
 	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {

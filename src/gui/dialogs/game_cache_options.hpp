@@ -45,10 +45,10 @@ public:
 	game_cache_options();
 
 	/**
-     * The display function.
+	 * The display function.
 	 *
 	 * See @ref modal_dialog for more information.
-     */
+	 */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(game_cache_options)
 
 private:

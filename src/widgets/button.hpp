@@ -52,10 +52,10 @@ class button : public widget
 {
 public:
 	struct error : public game::error {
-        error()
-            : game::error("GUI1 button error")
-            {}
-    };
+		error()
+			: game::error("GUI1 button error")
+			{}
+	};
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
@@ -64,7 +64,7 @@ public:
 
 	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
-		   const bool auto_join=true, std::string overlay_image="", int font_size = -1);
+	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
