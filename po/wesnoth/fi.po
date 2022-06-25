@@ -6,12 +6,13 @@
 # Samu Voutilainen <smar@smar.fi>, 2010.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
 # TheCoolPenguin <penguinsarecool1110@gmail.com>, 2020.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-29 13:14+0300\n"
-"PO-Revision-Date: 2021-08-01 20:21+0300\n"
+"PO-Revision-Date: 2022-06-22 17:53+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "\"\"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -969,7 +970,7 @@ msgstr "Hieno keihäs"
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:402
 msgid "Magic Staff"
-msgstr "Taikasauva"
+msgstr "Lumottu kävelysauva"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:408
@@ -5579,11 +5580,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Tapahtui virhe ladattaessa listaa lisäosista palvelimelta."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
-msgstr "Ei löytynyt lisäosaa joka täsmää id $addon_id lisäosapalvelimella."
+msgstr ""
+"Ei löytynyt lisäosia, jotka täsmäävät tunnisteita $addon_ids "
+"lisäosapalvelimella."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -6066,6 +6067,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Virhe: [advancefrom] ei toimi enään. '$lower_level' yksiköt eivät voi "
+"kehittyä '$higher_level'; pyydä lisäosan kehittäjää käyttämään mieluummin "
+"[modify_unit_type]."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6283,10 +6287,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Kukista vihollisjohtaja(t)"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Aikakautta $era ei löydy"
+msgstr "Aikakautta '$era' ei löydy"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -7158,6 +7160,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Samankaltainen kuin \"fps\" komento, pakottaa uudelleen piirtämään kaiken, "
+"vain muuttuneiden asioiden sijasta."
 
 #: src/menu_events.cpp:1250
 msgid "Save game."
@@ -8081,9 +8085,8 @@ msgstr "%a %b %d %I.%M %p %Y"
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:282
 #, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H.%M %Y"
+msgstr "%a %b %d %V, %T:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:302 src/savegame.cpp:588
@@ -8615,8 +8618,156 @@ msgstr "Piilota pelaajan $player suunnitelmat"
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
 
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Käytä [modify_unit_type]\n"
+#~ msgid "Small Axe"
+#~ msgstr "Pieni kirves"
+
+#~ msgid "Throwing Axe"
+#~ msgstr "Heittokirves"
+
+#~ msgid "Branch"
+#~ msgstr "Oksa"
+
+#~ msgid "Bare Branch"
+#~ msgstr "Paljas oksa"
+
+#~ msgid "Lit Brazier"
+#~ msgstr "Sytytetty hiilipannu"
+
+#~ msgid "Closed Chest"
+#~ msgstr "Suljettu arkku"
+
+#~ msgid "Open Chest"
+#~ msgstr "Avoin arkku"
+
+#~ msgid "Club"
+#~ msgstr "Nuija"
+
+#~ msgid "Open Coffin"
+#~ msgstr "Avattu ruumisarkku"
+
+#~ msgid "Crossbow"
+#~ msgstr "Varsijousi"
+
+#~ msgid "Dagger"
+#~ msgstr "Tikari"
+
+#~ msgid "Poison Dagger"
+#~ msgstr "Myrkkytikari"
+
+#~ msgid "Poison Dagger (clean)"
+#~ msgstr "Myrkkytikari (puhdas)"
+
+#~ msgid "Unenchanted Flaming Sword"
+#~ msgstr "Lumoamaton liekehtivä miekka"
+
+#~ msgid "Hammer"
+#~ msgstr "Vasara"
+
+#~ msgid "Dark Key"
+#~ msgstr "Tumma avain"
+
+#~ msgid "Mace"
+#~ msgstr "Nuija"
+
+#~ msgid "Bone Necklace"
+#~ msgstr "Luukaulakoru"
+
+#~ msgid "Stone Necklace"
+#~ msgstr "Kivikaulakoru"
+
+#~ msgid "Sling"
+#~ msgstr "Linko"
+
+#~ msgid "Spear"
+#~ msgstr "Keihäs"
+
+#~ msgid "Javelin"
+#~ msgstr "Heittokeihäs"
+
+#~ msgid "Druid Staff"
+#~ msgstr "Drudinsauva"
+
+#~ msgid "Magic Wand"
+#~ msgstr "Taikasauva"
+
+#~ msgid "Plain Staff"
+#~ msgstr "Tavallinen sauva"
+
+#~ msgid "Holy Sword"
+#~ msgstr "Pyhämiekka"
+
+#~ msgid "Short Sword"
+#~ msgstr "Lyhytmiekka"
+
+#~ msgid "Wraith Sword"
+#~ msgstr "Haamumiekka"
+
+#~ msgid "Ankh Talisman"
+#~ msgstr "Ankh-talismaani"
+
+#~ msgid "Bone Talisman"
+#~ msgstr "Luutalismaani"
+
+#~ msgid "Stone Talisman"
+#~ msgstr "Kivitalismaani"
+
+#~ msgid "Thunderstick"
+#~ msgstr "Ukkoskeppi"
+
+#~ msgid "Lit Torch"
+#~ msgstr "Sytytetty soihtu"
+
+#~ msgid "Unlit Torch"
+#~ msgstr "Sytyttämätön soihtu"
+
+#~ msgid "Ruined Temple"
+#~ msgstr "Tuhoutunut temppeli"
+
+#~ msgid "<i>― Dominant Gorlack, 3YW</i>"
+#~ msgstr "<i>― Hallitsija Gorlack, 3 WV</i>"
+
+#~ msgid ""
+#~ "The connection to the remote server is not secure. The add-on "
+#~ "<i>$addon_title</i> cannot be uploaded."
+#~ msgstr ""
+#~ "Yhteys etäpalvelimeen ei ole suojattu. Lisäosaa <i>$addon_title</i> ei "
+#~ "voida lähettää."
+
+#~ msgid ""
+#~ "Forum authentication was requested for a user that is not registered on "
+#~ "the forums."
+#~ msgstr ""
+#~ "Foorumi-todennus lähetettiin käyttäjälle, joka ei ole rekisteröitynyt "
+#~ "foorumeille."
+
+#~ msgid ""
+#~ "The add-on's forum_auth attribute does not match what was previously "
+#~ "uploaded."
+#~ msgstr ""
+#~ "Lisäosan \"forum_auth\" atribuutti ei vastaa sitä, mitä aiemmin on "
+#~ "lähetetty."
+
+#~ msgid ""
+#~ "This server does not support using the forum_auth attribute in your pbl."
+#~ msgstr ""
+#~ "Tämä palvelin ei tue \"forum_auth\" atribuutin käyttöä sinun pbl-"
+#~ "tiedostossa."
+
+#~ msgid "Selected Game"
+#~ msgstr "Valittu peli:"
+
+#~ msgid "Lobby"
+#~ msgstr "Aula"
+
+#~ msgid "Other Games"
+#~ msgstr "Muut pelit"
+
+#~ msgid ""
+#~ "Unknown command '$command', did you mean '$command_proposal'? try "
+#~ "$help_command for a list of available commands."
+#~ msgstr ""
+#~ "Komentoa '$command' ei tunnistettu, käytä komentoa '$command_proposal' "
+#~ "jos haluat listan mahdollisista komennoista."
 
 #~ msgid "<room>"
 #~ msgstr "<huone>"
@@ -8644,6 +8795,9 @@ msgstr "Valkotaulun asetukset"
 
 #~ msgid "Room query."
 #~ msgstr "Huoneen jono."
+
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Käytä [modify_unit_type]\n"
 
 #~ msgid "Group players in lobby"
 #~ msgstr "Ryhmitä pelaajat aulassa"
@@ -9770,12 +9924,6 @@ msgstr "Valkotaulun asetukset"
 #~ msgid "Password Required"
 #~ msgstr "Salasana vaaditaan"
 
-#~ msgid "Game Lobby"
-#~ msgstr "Pelin aula"
-
-#~ msgid "Observe Game"
-#~ msgstr "Tarkkaile"
-
 #~ msgid "Join Game"
 #~ msgstr "Liity peliin"
 
@@ -9840,9 +9988,6 @@ msgstr "Valkotaulun asetukset"
 #~| msgid "No eras found."
 #~ msgid "Incompatible user-made content."
 #~ msgstr "Ei löydettyjä aikakausia."
-
-#~ msgid "Selected user: "
-#~ msgstr "Valittu käyttäjä:"
 
 #, fuzzy
 #~| msgid "Accept whispers from friends only"

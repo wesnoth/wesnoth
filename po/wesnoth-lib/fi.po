@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2021-10-22 23:24+0300\n"
-"Last-Translator: Juhana Uuttu <rexroom@sci.fi>\n"
+"PO-Revision-Date: 2022-06-24 15:45+0300\n"
+"Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -165,9 +165,8 @@ msgstr "suo"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:137
-#, fuzzy
 msgid "Swamp Water Reed"
-msgstr "kaislikko"
+msgstr "Suokaislikko"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:148
@@ -370,10 +369,8 @@ msgstr "kiviä"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:396
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "lunta"
+msgstr "lumikasoja"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:405
@@ -4273,10 +4270,8 @@ msgstr "Käytä kartan asetuksia"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Käytä kartan asetuksia"
+msgstr "Käytä skenaario kohtaisia asetuksia"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
@@ -4315,8 +4310,6 @@ msgstr "Tukea kylästä"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
 msgstr "Kokemusmuuttuja"
 
@@ -4363,7 +4356,6 @@ msgstr "Salli mukautetut aikarajat"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
-#, fuzzy
 msgid "Initial Limit"
 msgstr "Alustava raja"
 
@@ -4389,7 +4381,6 @@ msgstr "Pisin mahdollinen aika joka vuorolla (sekunteja)"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
-#, fuzzy
 msgid "Reservoir"
 msgstr "Reservi"
 
@@ -4476,10 +4467,6 @@ msgstr "Pelin nimi:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1004
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr "Aseta salasana joka vaaditaan peliin haluavilta pelaajilta"
@@ -4516,10 +4503,8 @@ msgstr "Värväykset"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Valitse ryhmäsi"
+msgstr "Valitse johtajasi"
 
 #. [label]
 #. [widget]: id=name
@@ -4778,8 +4763,6 @@ msgstr "Piilota liittolaisten suunnitelmat"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:143
-#, fuzzy
-#| msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "Piilota liittolaisten suunnittelutila moninpeleissä"
 
@@ -5323,7 +5306,6 @@ msgstr "Vahinko"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:558
-#, fuzzy
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -5438,7 +5420,6 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
 msgid "Center"
 msgstr "Keskitä"
 
@@ -5829,60 +5810,46 @@ msgstr "päättynyt"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num vuosi"
-msgstr[1] "$num vuosi"
+msgstr[1] "$num vuodet"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num kuukausi"
-msgstr[1] "$num kuukausi"
+msgstr[1] "$num kuukaudet"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num viikko"
-msgstr[1] "$num viikko"
+msgstr[1] "$num viikot"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num päivä"
-msgstr[1] "$num päivä"
+msgstr[1] "$num päivät"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num tunti"
-msgstr[1] "$num tunti"
+msgstr[1] "$num tunnit"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minuutti"
-msgstr[1] "$num minuutti"
+msgstr[1] "$num minuutit"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num sekuntti"
-msgstr[1] "$num sekuntti"
+msgstr[1] "$num sekuntit"
 
 #: src/gui/core/canvas.cpp:511
 msgid "Image doesn't fit on canvas."
@@ -7152,8 +7119,6 @@ msgid "The number of value_labels and values don't match."
 msgstr "Kenttien value_labels ja values arvot eivät täsmää."
 
 #: src/gui/widgets/stacked_widget.cpp:241
-#, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Pinoa ei ole määritetty."
 
@@ -7326,7 +7291,6 @@ msgstr "Valitse/Liikuta/Hyökkää"
 
 # Kosketa mitä?
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
 msgid "Touch"
 msgstr "Kosketa"
 
@@ -7746,7 +7710,6 @@ msgid "Can Recruit"
 msgstr "Voi värvätä"
 
 #: src/hotkey/hotkey_command.cpp:202
-#, fuzzy
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Vaihda yksikön värväysattribuutti."
 
@@ -7767,12 +7730,10 @@ msgid "Loyal"
 msgstr "Uskollinen"
 
 #: src/hotkey/hotkey_command.cpp:209
-#, fuzzy
 msgid "Toggle Minimap Unit Coding"
 msgstr "Vaihda minikartan yksikkökoodaus"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Vaihda minikartan maastokoodaus"
 
@@ -7898,7 +7859,6 @@ msgid "Update Terrain Transitions"
 msgstr "Päivitä maaston siirtymät"
 
 #: src/hotkey/hotkey_command.cpp:248
-#, fuzzy
 msgid "Toggle Terrain Transition Update"
 msgstr "Vaihda maastonsiirtymien päivittely"
 
@@ -8089,16 +8049,12 @@ msgid "[%I:%M %p]"
 msgstr "[%I.%M %p]"
 
 #: src/terrain/translation.cpp:713
-#, fuzzy
-#| msgid ""
-#| "A terrain with a string with more than 4 characters has been found, the "
-#| "affected terrain is :"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is:"
 msgstr ""
 "Yli neljän merkin pituinen maastoheksa on löydetty, tämä vaikuttaa "
-"seuraavaan maastoon :"
+"seuraavaan maastoon:"
 
 #: src/wml_exception.cpp:66
 msgid ""
@@ -8139,8 +8095,46 @@ msgstr ""
 "'$deprecated_key' on uudelleennimetty: '$key'. Avain '$deprecated_key' "
 "poistetaan versiossa $removal_version."
 
+#~ msgid "Kelp Forest"
+#~ msgstr "Merilevämetsä"
+
+#~ msgid "Rocky Sands"
+#~ msgstr "Kivinen hietikko"
+
+#, fuzzy
+#~| msgid "Wooden Bridge"
+#~ msgid "Wooden Palisade"
+#~ msgstr "puusilta"
+
+#, fuzzy
+#~| msgid "Drake Village"
+#~ msgid "Snowy Drake Village"
+#~ msgstr "draakkien kylä"
+
+#, fuzzy
+#~| msgid "Basic Stone Bridge"
+#~ msgid "Snowy Stone Bridge"
+#~ msgstr "tavallinen kivisilta"
+
+#~ msgid "controller^Reserved"
+#~ msgstr "Varattu"
+
+#, fuzzy
+#~| msgid "Desert Castle"
+#~ msgid "Desert Cobbles"
+#~ msgstr "aavikkolinna"
+
+#~ msgid "Leader:"
+#~ msgstr "Johtaja:"
+
+#~ msgid "Gender:"
+#~ msgstr "Sukupuoli:"
+
 #~ msgid "Recruits:"
 #~ msgstr "Värväykset:"
+
+#~ msgid "Starting position:"
+#~ msgstr "Aloituspaikka:"
 
 #~ msgid "titlescreen_hotkeys^T"
 #~ msgstr "T"
@@ -8166,8 +8160,8 @@ msgstr ""
 #~ msgid "timespan^$num seconds"
 #~ msgstr "$num sekunttia"
 
-#~ msgid "Start Tutorial"
-#~ msgstr "Aloita opastuskierros"
+#~ msgid "Team:"
+#~ msgstr "Joukkue:"
 
 #~ msgid "$player has entered the room"
 #~ msgstr "$player on saapunut huoneeseen"
@@ -8175,17 +8169,8 @@ msgstr ""
 #~ msgid "$player has left the room"
 #~ msgstr "$player on poistunut huoneesta"
 
-#~ msgid "Leader:"
-#~ msgstr "Johtaja:"
-
-#~ msgid "Gender:"
-#~ msgstr "Sukupuoli:"
-
-#~ msgid "Starting position:"
-#~ msgstr "Aloituspaikka:"
-
-#~ msgid "Team:"
-#~ msgstr "Joukkue:"
+#~ msgid "Start Tutorial"
+#~ msgstr "Aloita opastuskierros"
 
 #~ msgid "Multiplayer server login dialog"
 #~ msgstr "Moninpelipalvelimen sisäänkirjautumisikkuna"
