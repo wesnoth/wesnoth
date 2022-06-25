@@ -6,12 +6,13 @@
 # Samu Voutilainen <smar@smar.fi>, 2010.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
 # TheCoolPenguin <penguinsarecool1110@gmail.com>, 2020.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-06-19 09:02-0500\n"
-"PO-Revision-Date: 2021-08-01 20:21+0300\n"
+"PO-Revision-Date: 2022-06-22 17:53+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "\"\"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -712,12 +713,12 @@ msgstr "Kirves"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:72
 msgid "Small Axe"
-msgstr ""
+msgstr "Pieni kirves"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Heittokirves"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -791,12 +792,12 @@ msgstr "Laatikko"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:198
 msgid "Branch"
-msgstr ""
+msgstr "Oksa"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr ""
+msgstr "Paljas oksa"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
@@ -805,10 +806,8 @@ msgstr "Hiilipannu"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Hiilipannu"
+msgstr "Sytytetty hiilipannu"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -828,16 +827,12 @@ msgstr "Häkki"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "Suljettu arkku"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Avoin arkku"
 
@@ -859,7 +854,7 @@ msgstr "Vihreä viitta"
 #. [item]: id=club
 #: data/core/editor/items.cfg:278
 msgid "Club"
-msgstr ""
+msgstr "Nuija"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:284
@@ -869,32 +864,28 @@ msgstr "Suljettu ruumisarkku"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Suljettu ruumisarkku"
+msgstr "Avattu ruumisarkku"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
 msgid "Crossbow"
-msgstr ""
+msgstr "Varsijousi"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
 msgid "Dagger"
-msgstr ""
+msgstr "Tikari"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Myrkky"
+msgstr "Myrkkytikari"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Myrkkytikari (puhdas)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:321
@@ -908,10 +899,8 @@ msgstr "Liekehtivä miekka"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Liekehtivä miekka"
+msgstr "Lumoamaton liekehtivä miekka"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -949,10 +938,8 @@ msgstr "Viljapaisti"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Riimuinen vasara"
+msgstr "Vasara"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:399
@@ -973,10 +960,8 @@ msgstr "Avain"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Tummanpunainen"
+msgstr "Tumma avain"
 
 # Reppu vai laukku?
 #. [item]: id=leather-pack
@@ -987,21 +972,17 @@ msgstr "Nahkareppu"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:435
 msgid "Mace"
-msgstr ""
+msgstr "Nuija"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Ankh-kaulakoru"
+msgstr "Luukaulakoru"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Ankh-kaulakoru"
+msgstr "Kivikaulakoru"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1094,14 +1075,12 @@ msgstr "Tulivaltikka"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:555
 msgid "Sling"
-msgstr ""
+msgstr "Linko"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Hieno keihäs"
+msgstr "Keihäs"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1112,7 +1091,7 @@ msgstr "Hieno keihäs"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:579
 msgid "Javelin"
-msgstr ""
+msgstr "Heittokeihäs"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1122,30 +1101,24 @@ msgstr "Sauva"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Taikasauva"
+msgstr "Drudinsauva"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
 #: data/core/editor/items.cfg:603 data/core/editor/items.cfg:609
 msgid "Magic Staff"
-msgstr "Taikasauva"
+msgstr "Lumottu kävelysauva"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
 msgstr "Taikasauva"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Taikasauva"
+msgstr "Tavallinen sauva"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:627
@@ -1174,56 +1147,48 @@ msgstr "Miekka"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Miekka"
+msgstr "Pyhämiekka"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Miekka"
+msgstr "Lyhytmiekka"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Liekehtivä miekka"
+msgstr "Haamumiekka"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Ankh-talismaani"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Luutalismaani"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Kivilaatta"
+msgstr "Kivitalismaani"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
 msgid "Thunderstick"
-msgstr ""
+msgstr "Ukkoskeppi"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr ""
+msgstr "Sytytetty soihtu"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Sytyttämätön soihtu"
 
 # Konteksti?
 #. [item_group]: id=scenery
@@ -1416,10 +1381,8 @@ msgstr "Temppeli"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Tuhoutunut teltta"
+msgstr "Tuhoutunut temppeli"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1087
@@ -5369,10 +5332,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― Kuningas Konrad, WV 536</i>"
+msgstr "<i>― Hallitsija Gorlack, 3 WV</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5584,9 +5545,11 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
+"Yhteys etäpalvelimeen ei ole suojattu. Lisäosaa <i>$addon_title</i> ei voida "
+"lähettää."
 
 #: src/addon/client.cpp:223
 msgid "Requesting file index..."
@@ -5822,11 +5785,11 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Tapahtui virhe ladattaessa listaa lisäosista palvelimelta."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
-msgstr "Ei löytynyt lisäosaa joka täsmää id $addon_id lisäosapalvelimella."
+msgstr ""
+"Ei löytynyt lisäosia, jotka täsmäävät tunnisteita $addon_ids "
+"lisäosapalvelimella."
 
 #: src/addon/validation.cpp:388
 msgid "Success."
@@ -5841,6 +5804,8 @@ msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr ""
+"Foorumi-todennus lähetettiin käyttäjälle, joka ei ole rekisteröitynyt "
+"foorumeille."
 
 #: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -5957,6 +5922,7 @@ msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"Lisäosan \"forum_auth\" atribuutti ei vastaa sitä, mitä aiemmin on lähetetty."
 
 #: src/addon/validation.cpp:511
 msgid "Unspecified server error."
@@ -5978,6 +5944,7 @@ msgstr "Tyhjä lisäosien versiolista palvelimessa."
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
+"Tämä palvelin ei tue \"forum_auth\" atribuutin käyttöä sinun pbl-tiedostossa."
 
 #: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
@@ -6326,6 +6293,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Virhe: [advancefrom] ei toimi enään. '$lower_level' yksiköt eivät voi "
+"kehittyä '$higher_level'; pyydä lisäosan kehittäjää käyttämään mieluummin "
+"[modify_unit_type]."
 
 #: src/game_config_manager.cpp:575
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6524,16 +6494,16 @@ msgstr "rajaton"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "Isännän versio <i>$addon</i>-lisäosasta on yhteensopimaton. Hänellä on "
 "versio <b>$host_ver</b> kun sinulla on versio <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Sinun versiosi <i>$addon</i>-lisäosasta on yhteensopimaton. Sinulla on "
 "versio <b>$local_ver</b> kun isännällä on versio <b>$host_ver</b>."
@@ -6543,10 +6513,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Kukista vihollisjohtaja(t)"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Aikakautta $era ei löydy"
+msgstr "Aikakautta '$era' ei löydy"
 
 #: src/game_initialization/multiplayer.cpp:238
 msgid "Invalid address specified for multiplayer server"
@@ -6871,22 +6839,16 @@ msgid "No visible sides found."
 msgstr "Näkyviä osapuolia ei löytynyt."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
-#, fuzzy
-#| msgid "Selected user: "
 msgid "Selected Game"
-msgstr "Valittu käyttäjä:"
+msgstr "Valittu peli:"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
-#, fuzzy
-#| msgid "Game Lobby"
 msgid "Lobby"
-msgstr "Pelin aula"
+msgstr "Aula"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other Games"
-msgstr "Tarkkaile"
+msgstr "Muut pelit"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:31
 msgid "Match History — $player"
@@ -7135,16 +7097,12 @@ msgid "This command is currently unavailable."
 msgstr "Et voi käyttää tätä komentoa nyt."
 
 #: src/map_command_handler.hpp:219
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"Komentoa '$command' ei tunnistettu, käytä komentoa $help_command jos haluat "
-"listan mahdollisista komennoista."
+"Komentoa '$command' ei tunnistettu, käytä komentoa '$command_proposal' jos "
+"haluat listan mahdollisista komennoista."
 
 #: src/map_command_handler.hpp:223
 msgid ""
@@ -7448,6 +7406,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Samankaltainen kuin \"fps\" komento, pakottaa uudelleen piirtämään kaiken, "
+"vain muuttuneiden asioiden sijasta."
 
 #: src/menu_events.cpp:1249
 msgid "Save game."
@@ -8359,9 +8319,8 @@ msgstr "%a %b %d %I.%M %p %Y"
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
 #, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H.%M %Y"
+msgstr "%a %b %d %V, %T:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:279 src/savegame.cpp:588

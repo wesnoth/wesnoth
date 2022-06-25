@@ -2,12 +2,13 @@
 # Translation of wesnoth-tutorial to Finnish
 # Niklas Laxström <niklas.laxstrom+kdetrans@gmail.com>, 2007.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-06-19 14:03 UTC\n"
-"PO-Revision-Date: 2021-10-29 05:04+0300\n"
+"PO-Revision-Date: 2022-06-24 21:45+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -30,10 +31,6 @@ msgstr "Tutoriaali"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
@@ -53,8 +50,6 @@ msgstr "Valitse hahmo"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play?"
 msgid "Who do you want to play as?"
 msgstr "Kenellä haluaisit pelata?"
 
@@ -152,12 +147,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -170,12 +159,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -439,15 +422,6 @@ msgstr "Vuorot"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:602
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "teams, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -603,13 +577,6 @@ msgstr "Värvääminen"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:757
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. This scenario you have only one type "
-#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -619,7 +586,9 @@ msgid ""
 msgstr ""
 "Aina kun olet <i>linnakkeessa</i>, voit <i>värvätä</i> yksiköitä sitä "
 "ympäröiviin linnaruutuihin napsauttamalla hiiren oikeaa painiketta ja "
-"valitsemalla <b>Värvää</b>. Tässä skenaariossa sinulla on valittavana vain "
+"valitsemalla <b>Värvää</b>. Huomioi että vasta värvätyt yksiköt eivät voi "
+"liikkua tai hyökätä sillä vuorolla kun ne on värvätty, joten voit käyttää "
+"niitä vasta ensi vuorolla. Tässä skenaariossa sinulla on valittavana vain "
 "yksi yksikkö, haltiasoturi."
 
 #. [event]
@@ -681,10 +650,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:841
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -821,9 +786,6 @@ msgstr "Yksikköjen kuvaukset"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:992
-#, fuzzy
-#| msgid ""
-#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -1097,11 +1059,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
-#| "teach you about recalling units, abilities and weapon specials, income "
-#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
@@ -1132,32 +1089,20 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"Tämä ei ole leikkiä, Konrad! Örkit ovat leiriytyneet joen toiselle puolelle. "
-"Tämä on haltioiden maata. Ne olivat hölmöjä tullessaan tänne, sillä me "
-"haltiat olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava "
-"heidän johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä "
-"neuvon sinua."
+"Tämä ei ole leikkiä Konrad! Örkit ovat leiriytyneet joen toiselle puolelle. "
+"Tämä on haltioiden maata. Ne ovat hölmöjä tullessaan tänne, sillä me haltiat "
+"olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava heidän "
+"johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä neuvon "
+"sinua."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1165,10 +1110,10 @@ msgid ""
 "will advise you."
 msgstr ""
 "Tämä ei ole leikkiä Li'sar! Örkit ovat leiriytyneet joen toiselle puolelle. "
-"Tämä on haltioiden maata. Ne olivat hölmöjä tullessaan tänne, sillä me "
-"haltiat olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava "
-"heidän johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä "
-"neuvon sinua."
+"Tämä on haltioiden maata. Ne ovat hölmöjä tullessaan tänne, sillä me haltiat "
+"olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava heidän "
+"johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä neuvon "
+"sinua."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
@@ -1296,16 +1241,6 @@ msgstr "Kutsuminen"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
-#, fuzzy
-#| msgid ""
-#| "In addition to recruiting new units each scenario, you can also "
-#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
-#| "cost of 20 gold each. This allows you to build up a formidable army over "
-#| "the course of multiple scenarios by recalling your highest leveled troops "
-#| "or those with good combinations of traits and abilities. To recall a "
-#| "unit, right click while your leader stands on a keep and select the "
-#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
-#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1316,7 +1251,7 @@ msgid ""
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
 "Uusien yksiköiden värväämisen lisäksi voit myös <i>kutsua</i> kokeneempia "
-"veteraaneja edellisistä skenaarioista, 20 kultapalan hinnalla. Voit rakentaa "
+"veteraaneja edellisistä skenaarioista 20 kultapalan hinnalla. Voit rakentaa "
 "mahtavan armeijan monen skenaarion aikana kutsumalla korkeatasoisimpia "
 "joukkojasi tai niitä, joilla on hyvät piirteet ja erikoistaidot. Kutsuaksesi "
 "veteraaniyksikön, napsauta hiiren oikealla näppäimellä linnaa, kun "
@@ -1396,18 +1331,6 @@ msgstr "Hyökkäystaidot"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1457,20 +1380,14 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
-#, fuzzy
-#| msgid ""
-#| "You now have two healers. Your Druid can heal adjacent units by 8 "
-#| "hitpoints per turn compared to your Shaman's 4. However, each unit can "
-#| "only receive healing from one healer — a unit next to multiple healers is "
-#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
-"Nyt sinulla on kaksi parantajaa. Haltiadruidisi voi parantaa haavoittunutta "
-"yksikköä 8 elämäpisteen verran, kun taas haltiashamaani vain 4 "
+"Nyt sinulla on kaksi parantajaa. Haltiadruidisi voi parantaa haavoittuneita "
+"yksiköitä 8 elämäpisteen verran, kun taas haltiashamaani vain 4 "
 "elämäpistettä. Jokainen yksikkö voi saada parannusta vain yhdeltä "
 "parantajalta. Monen parantajan vieressä olevaa yksikköä parantaa vain "
 "edistynein parantaja."
@@ -1886,16 +1803,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"Jos shamaanisi on haavoittuneen yksikön vieressä, se hoivaa sitä 4 "
-"elämäpistettä seuraavan vuoron alussa."
+"Jos shamaanisi on haavoittuneiden yksiköiden vieressä, se hoivaa jokaista "
+"niistä 4 elämäpistettä seuraavan vuoron alussa."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:815
@@ -1962,10 +1875,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:908
-#, fuzzy
-#| msgid ""
-#| "You’re venturing away from your keep. You might need recruit more units, "
-#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -2116,11 +2025,6 @@ msgstr "Voittoehdot"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1029
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
