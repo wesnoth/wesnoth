@@ -87,9 +87,44 @@ void draw::set_color(const color_t& c)
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 }
 
+/** Some versions of SDL have a bad rectangle drawing implementation. */
+static bool sdl_bad_at_rects()
+{
+	// This could be done once at program start and cached,
+	// but it isn't all that heavy.
+	SDL_version ver;
+	SDL_GetVersion(&ver);
+	if (ver.major > 2 || ver.minor > 0) {
+		return false;
+	}
+	if (ver.patch >= 15 && ver.patch < 18) {
+		return true;
+	}
+	return false;
+}
+
+/** For some SDL versions, draw rectangles as lines. */
+static void draw_rect_as_lines(const SDL_Rect& rect)
+{
+	// w and h indicate the final pixel width/height of the box.
+	// This is 1 greater than the difference in corner coordinates.
+	if (rect.w <= 0 || rect.h <= 0) {
+		return;
+	}
+	int x2 = rect.x + rect.w - 1;
+	int y2 = rect.y + rect.h - 1;
+	draw::line(rect.x, rect.y, x2, rect.y);
+	draw::line(rect.x, rect.y, rect.x, y2);
+	draw::line(x2, rect.y, x2, y2);
+	draw::line(rect.x, y2, x2, y2);
+}
+
 void draw::rect(const SDL_Rect& rect)
 {
 	DBG_D << "rect " << rect << endl;
+	if (sdl_bad_at_rects()) {
+		return draw_rect_as_lines(rect);
+	}
 	SDL_RenderDrawRect(renderer(), &rect);
 }
 
@@ -99,6 +134,9 @@ void draw::rect(const SDL_Rect& rect,
 	DBG_D << "rect " << rect
 	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
+	if (sdl_bad_at_rects()) {
+		return draw_rect_as_lines(rect);
+	}
 	SDL_RenderDrawRect(renderer(), &rect);
 }
 
