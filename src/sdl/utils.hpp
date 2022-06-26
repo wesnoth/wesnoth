@@ -29,7 +29,20 @@
 
 class CVideo;
 
-version_info sdl_get_version();
+namespace sdl
+{
+
+/** Returns the runtime SDL version. */
+version_info get_version();
+
+/**
+ * Returns true if the runtime SDL version is at or greater than the
+ * specified version, false otherwise.
+ */
+bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
+
+} // namespace sdl
+
 
 inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);

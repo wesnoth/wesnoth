@@ -31,11 +31,25 @@
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
 
-version_info sdl_get_version()
+version_info sdl::get_version()
 {
 	SDL_version sdl_version;
 	SDL_GetVersion(&sdl_version);
 	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+}
+
+bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
+{
+	SDL_version ver;
+	SDL_GetVersion(&ver);
+	if(ver.major < major) return false;
+	if(ver.major > major) return true;
+	// major version equal
+	if(ver.minor < minor) return false;
+	if(ver.minor > minor) return true;
+	// major and minor version equal
+	if(ver.patch < patch) return false;
+	return true;
 }
 
 surface stretch_surface_horizontal(

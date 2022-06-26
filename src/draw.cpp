@@ -92,12 +92,7 @@ static bool sdl_bad_at_rects()
 {
 	// This could be done once at program start and cached,
 	// but it isn't all that heavy.
-	SDL_version ver;
-	SDL_GetVersion(&ver);
-	if (ver.major > 2 || ver.minor > 0) {
-		return false;
-	}
-	if (ver.patch >= 15 && ver.patch < 18) {
+	if (sdl::runtime_at_least(2,0,15) && !sdl::runtime_at_least(2,0,18)) {
 		return true;
 	}
 	return false;

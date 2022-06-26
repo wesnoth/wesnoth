@@ -785,7 +785,7 @@ bool CVideo::is_fullscreen() const
 
 bool CVideo::supports_software_vsync() const
 {
-	return sdl_get_version() >= version_info{2, 0, 17};
+	return sdl::runtime_at_least(2, 0, 17);
 }
 
 // TODO: highdpi - this should not be here.
