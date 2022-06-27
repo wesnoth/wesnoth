@@ -531,8 +531,7 @@ public:
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_blitting_rectangle(const int x_offset, const int y_offset) const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
@@ -546,8 +545,7 @@ public:
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_clipping_rectangle(const int x_offset, const int y_offset) const;
 
 	/**
 	 * Draws the background of a widget.

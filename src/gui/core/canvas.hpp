@@ -63,15 +63,11 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param portion_to_draw   The portion of the shape to draw, in canvas-local coordinates
-		 * @param draw_location     The location of the canvas on the screen, in draw coordinates.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(const SDL_Rect& portion_to_draw,
-		                  const SDL_Rect& draw_location,
-		                  wfl::map_formula_callable& variables) = 0;
+		virtual void draw(wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{
@@ -91,26 +87,13 @@ public:
 	canvas& operator=(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
 
-	private:
-	/**
-	 * Internal part of the blit() function - does the actual drawing.
-	 *
-	 * @param area_to_draw        Currently-visible part of the widget, in widget-local coordinates.
-	 *                            Any area outside here won't be blitted to the parent.
-	 * @param draw_location       Where to draw the widget on the screen, in draw coordinates.
-	 */
-	void draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location);
-
-	public:
 	/**
 	 * Draw the canvas' shapes onto the screen.
 	 *
 	 * It makes sure the image on the canvas is up to date. Also executes the
 	 * pre-blitting functions.
-	 *
-	 * @param rect                Where to blit to, in drawing coordinates.
 	 */
-	void blit(SDL_Rect rect);
+	void draw();
 
 	/**
 	 * Sets the config.
