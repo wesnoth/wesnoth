@@ -236,23 +236,21 @@ static int last_index_ = 0;
 
 void flush_cache()
 {
-	for(surface_cache cache : surfaces_) {
+	for(surface_cache& cache : surfaces_) {
 		cache.flush();
 	}
-	{ // TODO: there is no need to scope this but i don't want to reindent during other changes
-		lit_surfaces_.flush();
-		lit_textures_.flush();
-		in_hex_info_.flush();
-		is_empty_hex_.flush();
-		textures_.clear();
-		textures_hexed_.clear();
-		texture_tod_colored_.clear();
-		mini_terrain_cache.clear();
-		mini_fogged_terrain_cache.clear();
-		mini_highlighted_terrain_cache.clear();
-		image_existence_map.clear();
-		precached_dirs.clear();
-	}
+	lit_surfaces_.flush();
+	lit_textures_.flush();
+	in_hex_info_.flush();
+	is_empty_hex_.flush();
+	textures_.clear();
+	textures_hexed_.clear();
+	texture_tod_colored_.clear();
+	mini_terrain_cache.clear();
+	mini_fogged_terrain_cache.clear();
+	mini_highlighted_terrain_cache.clear();
+	image_existence_map.clear();
+	precached_dirs.clear();
 	/* We can't reset last_index_, since some locators are still alive
 	   when using :refresh. That would cause them to point to the wrong
 	   images. Not resetting the variable causes a memory leak, though. */
