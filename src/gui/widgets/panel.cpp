@@ -65,18 +65,16 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(int x_offset, int y_offset)
+void panel::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(0).blit(calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(0).draw();
 }
 
-void panel::impl_draw_foreground(int x_offset, int y_offset)
+void panel::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(1).blit(calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(1).draw();
 }
 
 point panel::border_space() const

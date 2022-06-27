@@ -57,10 +57,7 @@ line_shape::line_shape(const config& cfg)
 	}
 }
 
-void line_shape::draw(
-	const SDL_Rect& portion_to_draw,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void line_shape::draw(wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -68,67 +65,16 @@ void line_shape::draw(
 	 * flag or do the calculation in a separate routine.
 	 */
 
-	const unsigned x1 = draw_location.x + x1_(variables) - portion_to_draw.x;
-	const unsigned y1 = draw_location.y + y1_(variables) - portion_to_draw.y;
-	const unsigned x2 = draw_location.x + x2_(variables) - portion_to_draw.x;
-	const unsigned y2 = draw_location.y + y2_(variables) - portion_to_draw.y;
+	const unsigned x1 = x1_(variables);
+	const unsigned y1 = y1_(variables);
+	const unsigned x2 = x2_(variables);
+	const unsigned y2 = y2_(variables);
 
-	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2
-			  << " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
-			  << ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
+	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2 << ".\n";
 
 	// @todo FIXME respect the thickness.
 
 	draw::line(x1, y1, x2, y2, color_(variables));
-}
-
-/***** ***** ***** Base class for rectangular shapes ***** ***** *****/
-
-rect_bounded_shape::rect_bounded_shape(const config& cfg)
-	: shape(cfg)
-	, x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
-{
-}
-
-rect_bounded_shape::calculated_rects rect_bounded_shape::calculate_rects(const SDL_Rect& view_bounds, wfl::map_formula_callable& variables) const
-{
-	// Formulas are recalculated every draw cycle, even if there hasn't been a resize.
-
-	const unsigned x = x_(variables);
-	const unsigned y = y_(variables);
-	const unsigned w = w_(variables);
-	const unsigned h = h_(variables);
-
-	const auto dst_on_widget = sdl::create_rect(x, y, w, h);
-
-	SDL_Rect clip_on_widget;
-	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &clip_on_widget)) {
-		DBG_GUI_D << "Text: Clipping view_bounds resulted in an empty intersection, nothing to do.\n";
-		return {true, dst_on_widget, {}, {}, {}, {}};
-	}
-
-	auto unclipped_around_viewport = dst_on_widget;
-	unclipped_around_viewport.x -= view_bounds.x;
-	unclipped_around_viewport.y -= view_bounds.y;
-
-	auto clip_in_shape = clip_on_widget;
-	clip_in_shape.x -= x;
-	clip_in_shape.y -= y;
-
-	auto dst_in_viewport = clip_on_widget;
-	dst_in_viewport.x -= view_bounds.x;
-	dst_in_viewport.y -= view_bounds.y;
-
-	DBG_GUI_D << "Calculate_rects: from " << x << ',' << y << " width " << w << " height " << h << "\n"
-			  << " view_bounds {" << view_bounds.x << ", " << view_bounds.y << ", "
-			  << view_bounds.w << ", " << view_bounds.h << "}.\n"
-			  << " dst_in_viewport {" << dst_in_viewport.x << ", " << dst_in_viewport.y << ", "
-			  << dst_in_viewport.w << ", " << dst_in_viewport.h << "}.\n";
-
-	return {false, dst_on_widget, clip_on_widget, clip_in_shape, unclipped_around_viewport, dst_in_viewport};
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -150,49 +96,43 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	}
 }
 
-void rectangle_shape::draw(
-	const SDL_Rect& portion_to_draw,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const auto rects = calculate_rects(portion_to_draw, variables);
-	if(rects.empty) {
-		DBG_GUI_D << "Rectangle: nothing to draw" << std::endl;
-		return;
-	}
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
 
 	const color_t fill_color = fill_color_(variables);
-	const color_t border_color = border_color_(variables);
-	SDL_Rect r = rects.unclipped_around_viewport;
-	r.x += draw_location.x;
-	r.y += draw_location.y;
-
-	DBG_GUI_D << "Rectangle: draw at " << r
-		<< " with bounds " << portion_to_draw << std::endl;
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
 		DBG_GUI_D << "fill " << fill_color << std::endl;
 		draw::set_color(fill_color);
-		SDL_Rect area = r;
-		area.x += border_thickness_;
-		area.y += border_thickness_;
-		area.w -= 2 * border_thickness_;
-		area.h -= 2 * border_thickness_;
+
+		const SDL_Rect area {
+			x +  border_thickness_,
+			y +  border_thickness_,
+			w - (border_thickness_ * 2),
+			h - (border_thickness_ * 2)
+		};
 
 		draw::fill(area);
 	}
+
+	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	draw::set_color(border_color);
 	DBG_GUI_D << "border thickness " << border_thickness_
 		<< ", colour " << border_color << std::endl;
 	for(int i = 0; i < border_thickness_; ++i) {
-		SDL_Rect dimensions = r;
-		dimensions.x += i;
-		dimensions.y += i;
-		dimensions.w -= 2 * i;
-		dimensions.h -= 2 * i;
+		const SDL_Rect dimensions {
+			x + i,
+			y + i,
+			w - (i * 2),
+			h - (i * 2)
+		};
 
 		draw::rect(dimensions);
 	}
@@ -218,23 +158,15 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	}
 }
 
-void round_rectangle_shape::draw(
-	const SDL_Rect& portion_to_draw,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void round_rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	// TODO: highdpi - need to double check this
-	const auto rects = calculate_rects(portion_to_draw, variables);
-	const int x = draw_location.x + rects.unclipped_around_viewport.x;
-	const int y = draw_location.y + rects.unclipped_around_viewport.y;
-	const int w = rects.unclipped_around_viewport.w;
-	const int h = rects.unclipped_around_viewport.h;
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
 	const int r = r_(variables);
 
-	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
-		<< " height "
-		<< " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
-		<< ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
+	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w << " height " << h << ".\n";
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -256,6 +188,7 @@ void round_rectangle_shape::draw(
 
 	// Draw the border
 	draw::set_color(border_color);
+
 	for(int i = 0; i < border_thickness_; ++i) {
 		draw::line(x + r, y + i,     x + w - r, y + i);
 		draw::line(x + r, y + h - i, x + w - r, y + h - i);
@@ -287,10 +220,7 @@ circle_shape::circle_shape(const config& cfg)
 	}
 }
 
-void circle_shape::draw(
-	const SDL_Rect& portion_to_draw,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void circle_shape::draw(wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -298,13 +228,11 @@ void circle_shape::draw(
 	 * extra flag or do the calculation in a separate routine.
 	 */
 
-	const int x = draw_location.x + x_(variables) - portion_to_draw.x;
-	const int y = draw_location.y + y_(variables) - portion_to_draw.y;
+	const int x = x_(variables);
+	const int y = y_(variables);
 	const unsigned radius = radius_(variables);
 
-	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius
-		<< " within bounds {" << portion_to_draw.x << ", " << portion_to_draw.y
-		<< ", " << portion_to_draw.w << ", " << portion_to_draw.h << "}.\n";
+	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".\n";
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
@@ -347,10 +275,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 	);
 }
 
-void image_shape::draw(
-	const SDL_Rect& /*portion_to_draw*/,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void image_shape::draw(wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -406,33 +331,24 @@ void image_shape::draw(
 	local_variables.add("clip_y", wfl::variant(clip_y));
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr())
-		.execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
 	// If w or h is 0, assume it means the whole image.
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
 
-	// The image is to be placed at (x,y,w,h) in widget space.
-	int x = clip_x;
-	int y = clip_y;
-	// Convert this to draw space.
-	x += draw_location.x;
-	y += draw_location.y;
-	const SDL_Rect adjusted_draw_loc{x, y, w, h};
-
-	// TODO: highdpi - clipping?
+	const SDL_Rect dst_rect { static_cast<int>(clip_x), static_cast<int>(clip_y), w, h };
 
 	// What to do with the image depends on whether we need to tile it or not.
-	switch (resize_mode_) {
-	case (resize_mode::tile):
-		draw::tiled(tex, adjusted_draw_loc, false, mirror_(variables));
+	switch(resize_mode_) {
+	case resize_mode::tile:
+		draw::tiled(tex, dst_rect, false, mirror_(variables));
 		break;
-	case (resize_mode::tile_center):
-		draw::tiled(tex, adjusted_draw_loc, true, mirror_(variables));
+	case resize_mode::tile_center:
+		draw::tiled(tex, dst_rect, true, mirror_(variables));
 		break;
 	case resize_mode::tile_highres:
-		draw::tiled_highres(tex, adjusted_draw_loc, false, mirror_(variables));
+		draw::tiled_highres(tex, dst_rect, false, mirror_(variables));
 		break;
 	case resize_mode::stretch:
 		// Stretching is identical to scaling in terms of handling.
@@ -442,9 +358,9 @@ void image_shape::draw(
 		// Handling is otherwise identical to sharp scaling.
 	case resize_mode::scale_sharp:
 		if(mirror_(variables)) {
-			draw::flipped(tex, adjusted_draw_loc);
+			draw::flipped(tex, dst_rect);
 		} else {
-			draw::blit(tex, adjusted_draw_loc);
+			draw::blit(tex, dst_rect);
 		}
 		break;
 	default:
@@ -467,8 +383,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return resize_mode::scale_sharp;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
-			ERR_GUI_E << "Invalid resize mode '" << resize_mode
-					  << "' falling back to 'scale'.\n";
+			ERR_GUI_E << "Invalid resize mode '" << resize_mode << "' falling back to 'scale'.\n";
 		}
 		return resize_mode::scale;
 	}
@@ -501,10 +416,7 @@ text_shape::text_shape(const config& cfg)
 	}
 }
 
-void text_shape::draw(
-	const SDL_Rect& area_to_draw,
-	const SDL_Rect& draw_location,
-	wfl::map_formula_callable& variables)
+void text_shape::draw(wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -525,7 +437,6 @@ void text_shape::draw(
 		.set_link_color(link_color_(variables))
 		.set_text(text, text_markup_(variables));
 
-	// TODO: highdpi - determine how the font interface should work. Probably the way it is used here is fine. But the pixel scaling could theoretically be abstracted.
 	text_renderer.set_family_class(font_family_)
 		.set_font_size(font_size_(variables))
 		.set_font_style(font_style_)
@@ -545,16 +456,22 @@ void text_shape::draw(
 	local_variables.add("text_width", wfl::variant(tw));
 	local_variables.add("text_height", wfl::variant(th));
 
-	const auto rects = calculate_rects(area_to_draw, local_variables);
+	const int x = x_(local_variables);
+	const int y = y_(local_variables);
+	const int w = w_(local_variables);
+	const int h = h_(local_variables);
+	SDL_Rect dst_rect{x, y, w, h};
 
-	if(rects.empty) {
-		DBG_GUI_D << "Text: Clipping to area_to_draw resulted in an empty intersection, nothing to do.\n";
-		return;
-	}
+	// Get the visible portion of text.
+	SDL_Rect visible = sdl::intersect_rects(draw::get_clip(), dst_rect);
+
+	// Get the source region of text for clipping.
+	SDL_Rect clip_in = visible;
+	clip_in.x -= x;
+	clip_in.y -= y;
 
 	// Source region for high-dpi text needs to have pixel scale applied.
 	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
-	SDL_Rect clip_in = rects.clip_in_shape;
 	clip_in.x *= pixel_scale;
 	clip_in.y *= pixel_scale;
 	clip_in.w *= pixel_scale;
@@ -568,15 +485,8 @@ void text_shape::draw(
 		return;
 	}
 
-	// Final output - place clipped texture appropriately
-	SDL_Rect text_draw_location = draw_location;
-	text_draw_location.x += rects.dst_in_viewport.x;
-	text_draw_location.x += rects.clip_in_shape.x;
-	text_draw_location.y += rects.dst_in_viewport.y;
-	text_draw_location.y += rects.clip_in_shape.y;
-	text_draw_location.w = rects.dst_in_viewport.w;
-	text_draw_location.h = rects.dst_in_viewport.h;
-	draw::blit(tex, text_draw_location);
+	// TODO: highdpi - this /should/ be fine. But, in some cases (Credits) the maximum viewport height is exceeded. This is bad, but at least it shows something and doesn't crash.
+	draw::blit(tex, visible);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -601,28 +511,7 @@ canvas::canvas(canvas&& c) noexcept
 {
 }
 
-// TODO: highdpi - draw location specification needs to be completely reworked
-void canvas::draw(const SDL_Rect& area_to_draw, const SDL_Rect& draw_location)
-{
-	log_scope2(log_gui_draw, "Canvas: drawing.");
-
-	// TODO: highdpi - clipping?
-
-	// Draw background.
-	if (blur_depth_ && blur_texture_) {
-		draw::blit(blur_texture_, draw_location, area_to_draw);
-	}
-
-	// draw items
-	for(auto& shape : shapes_) {
-		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
-
-		// TODO: highdpi - check if child routines benefit from knowing area_to_draw
-		shape->draw(area_to_draw, draw_location, variables_);
-	}
-}
-
-void canvas::blit(SDL_Rect rect)
+void canvas::draw()
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
@@ -631,43 +520,26 @@ void canvas::blit(SDL_Rect rect)
 		return;
 	}
 
-	CVideo& video = CVideo::get_singleton();
-
-	VALIDATE(rect.w >= 0 && rect.h >= 0, _("Area to draw has negative size"));
-	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
-		_("Area to draw is larger than widget size"));
-
-	// If the widget is partly off-screen, this might get called with
-	// surf width=1000, height=1000
-	// rect={-1, 2, 330, 440}
-	//
-	// From those, as the first column is off-screen:
-	// rect_clipped_to_parent={0, 2, 329, 440}
-	// area_to_draw={1, 0, 329, 440}
-	SDL_Rect parent {0, 0, video.draw_area().w, video.draw_area().h};
-	SDL_Rect rect_clipped_to_parent;
-	if(!SDL_IntersectRect(&rect, &parent, &rect_clipped_to_parent)) {
-		DBG_GUI_D << "Area to draw is completely outside parent.\n";
-		return;
-	}
 	// TODO: highdpi - it is assumed this will never move after blit
 	if(blur_depth_ && !blur_texture_) {
 		// Cache a blurred image of whatever is underneath.
-		surface s = video.read_pixels_low_res(&rect);
+		SDL_Rect rect = draw::get_viewport();
+		surface s = CVideo::get_singleton().read_pixels_low_res(&rect);
 		s = blur_surface(s, blur_depth_);
 		blur_texture_ = texture(s);
 	}
 
-	SDL_Rect area_to_draw {
-		std::max(0, -rect.x),
-		std::max(0, -rect.y),
-		rect_clipped_to_parent.w,
-		rect_clipped_to_parent.h
-	};
+	// Draw blurred background.
+	// TODO: highdpi - this should be able to be removed at some point with shaders
+	if(blur_depth_ && blur_texture_) {
+		draw::blit(blur_texture_);
+	}
 
-	// `area_to_draw` is the portion of the widget to render,
-	// `rect` is the offset to render at.
-	draw(area_to_draw, rect);
+	// Draw items
+	for(auto& shape : shapes_) {
+		const lg::scope_logger inner_scope_logging_object__{log_gui_draw, "Canvas: draw shape."};
+		shape->draw(variables_);
+	}
 }
 
 void canvas::parse_cfg(const config& cfg)
