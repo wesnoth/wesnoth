@@ -43,8 +43,7 @@ void draw::fill(
 	const SDL_Rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "fill " << area
-	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
+	DBG_D << "fill " << area << " (" << color_t{r,g,b,a} << ")" << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderFillRect(renderer(), &area);
 }
@@ -418,15 +417,18 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 
 
 draw::clip_setter::clip_setter(const SDL_Rect& clip)
-	: c_()
+	: c_(draw::get_clip()), clip_enabled_(draw::clip_enabled())
 {
-	c_ = draw::get_clip();
 	draw::force_clip(clip);
 }
 
 draw::clip_setter::~clip_setter()
 {
-	draw::force_clip(c_);
+	if (clip_enabled_) {
+		draw::force_clip(c_);
+	} else {
+		draw::disable_clip();
+	}
 }
 
 draw::clip_setter draw::set_clip(const SDL_Rect& clip)
@@ -436,12 +438,11 @@ draw::clip_setter draw::set_clip(const SDL_Rect& clip)
 
 draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
 {
-	SDL_Rect c = draw::get_clip();
-	if (c == sdl::empty_rect) {
+	if (!draw::clip_enabled()) {
 		return draw::clip_setter(clip);
-	} else {
-		return draw::clip_setter(sdl::intersect_rects(clip, c));
 	}
+	SDL_Rect c = draw::get_clip();
+	return draw::clip_setter(sdl::intersect_rects(clip, c));
 }
 
 void draw::force_clip(const SDL_Rect& clip)
@@ -463,27 +464,73 @@ SDL_Rect draw::get_clip()
 		return sdl::empty_rect;
 	}
 
-	SDL_Rect clip;
-	SDL_RenderGetClipRect(renderer(), &clip);
-
-	if (clip == sdl::empty_rect) {
+	if (!SDL_RenderIsClipEnabled(renderer())) {
 		// TODO: highdpi - fix this in the case of render to texture
+		// TODO: highdpi - fix this for viewports
 		return CVideo::get_singleton().draw_area();
 	}
+
+	SDL_Rect clip;
+	SDL_RenderGetClipRect(renderer(), &clip);
 	return clip;
+}
+
+bool draw::clip_enabled()
+{
+	if (!renderer()) {
+		return false;
+	}
+	return SDL_RenderIsClipEnabled(renderer());
+}
+
+void draw::disable_clip()
+{
+	if (!renderer()) {
+		return;
+	}
+	SDL_RenderSetClipRect(renderer(), nullptr);
+	DBG_D << "clip disabled" << endl;
+}
+
+bool draw::null_clip()
+{
+	if (!renderer()) {
+		return true;
+	}
+	if (!SDL_RenderIsClipEnabled(renderer())) {
+		return false;
+	}
+	SDL_Rect clip;
+	SDL_RenderGetClipRect(renderer(), &clip);
+	return clip.w <= 0 || clip.h <= 0;
 }
 
 
 draw::viewport_setter::viewport_setter(const SDL_Rect& view)
-	: v_()
+	: v_(), c_(), clip_enabled_(draw::clip_enabled())
 {
 	v_ = draw::get_viewport();
 	draw::force_viewport(view);
+	if (clip_enabled_) {
+		c_ = draw::get_clip();
+		// adjust clip for difference in viewport position
+		SDL_Rect c_view = {
+			c_.x + v_.x - view.x,
+			c_.y + v_.y - view.y,
+			c_.w, c_.h
+		};
+		draw::force_clip(c_view);
+	}
 }
 
 draw::viewport_setter::~viewport_setter()
 {
 	draw::force_viewport(v_);
+	if (clip_enabled_) {
+		draw::force_clip(c_);
+	} else {
+		draw::disable_clip();
+	}
 }
 
 draw::viewport_setter draw::set_viewport(const SDL_Rect& viewport)

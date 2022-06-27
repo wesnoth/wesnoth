@@ -277,8 +277,10 @@ void tiled_highres(const texture& tex,
 
 /** A class to manage automatic restoration of the clipping region.
  *
- * While this can be constructed on its own, it is usually easier to
- * use the draw::set_clip() utility function.
+ * This can be constructed on its own, or one of the utility functions
+ * set_clip() and reduce_clip() can be used. Constructing a clip_setter
+ * or using set_clip() will completely override the current clipping area.
+ * To intersect with the current clipping area in stead, use reduce_clip().
  */
 class clip_setter
 {
@@ -287,6 +289,7 @@ public:
 	~clip_setter();
 private:
 	SDL_Rect c_;
+	bool clip_enabled_;
 };
 
 /**
@@ -319,14 +322,37 @@ clip_setter reduce_clip(const SDL_Rect& clip);
  */
 void force_clip(const SDL_Rect& clip);
 
-/** Get the current clipping area, in draw coordinates. */
+/**
+ * Get the current clipping area, in draw coordinates.
+ *
+ * The clipping area is interpreted relative to the current viewport.
+ *
+ * If clipping is disabled, this will return the full drawing area.
+ */
 SDL_Rect get_clip();
+
+/** Whether clipping is enabled. */
+bool clip_enabled();
+
+/** Disable clipping. To enable clipping, use set_clip() or force_clip(). */
+void disable_clip();
+
+/**
+ * Whether the current clipping region will disallow drawing.
+ *
+ * This returns true for any clipping region with negative or zero width
+ * or height.
+ */
+bool null_clip();
 
 
 /** A class to manage automatic restoration of the viewport region.
  *
- * While this can be constructed on its own, it is usually easier to
- * use the draw::set_viewport() utility function.
+ * This will also translate the current clipping region into the space
+ * of the viewport, if a clipping region is set.
+ *
+ * This can be constructed on its own, or the draw::set_viewport()
+ * utility function can be used.
  */
 class viewport_setter
 {
@@ -335,6 +361,8 @@ public:
 	~viewport_setter();
 private:
 	SDL_Rect v_;
+	SDL_Rect c_;
+	bool clip_enabled_;
 };
 
 /**
