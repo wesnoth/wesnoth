@@ -3780,6 +3780,9 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 					if(luaW_tableget(L, filterIdx, "second_attack")) {
 						filters.add_child("filter_second_attack", luaW_checkconfig(L, -1));
 					}
+					if(luaW_tableget(L, filterIdx, "formula")) {
+						filters["filter_formula"] = luaL_checkstring(L, -1);
+					}
 				}
 			}
 			new_handler->read_filters(filters);
