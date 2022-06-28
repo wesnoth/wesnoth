@@ -18,15 +18,16 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 
 #include "config.hpp"
+#include "deprecation.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
+#include "game_version.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "preferences/game.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
-#include "deprecation.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)

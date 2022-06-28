@@ -14,6 +14,7 @@
 
 #include "sdl/surface.hpp"
 
+#include "color.hpp"
 #include "draw.hpp" // for surface_restorer. Remove that then remove this.
 #include "sdl/rect.hpp"
 #include "video.hpp" // for surface_restorer. Remove that then remove this.

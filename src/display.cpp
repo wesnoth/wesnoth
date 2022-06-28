@@ -19,6 +19,7 @@
  */
 
 #include "arrow.hpp"
+#include "color.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "draw.hpp"
@@ -28,6 +29,7 @@
 #include "font/text.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "language.hpp"
@@ -39,7 +41,8 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "color.hpp"
+#include "sdl/utils.hpp" // fill_surface_rect
+#include "show_dialog.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -51,8 +54,6 @@
 #include "units/drawer.hpp"
 #include "units/orb_status.hpp"
 #include "whiteboard/manager.hpp"
-#include "show_dialog.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 
 #include <SDL2/SDL_image.h>
 

@@ -26,6 +26,7 @@
 #include "picture.hpp"
 #include "preferences/game.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/utils.hpp" // scale_surface_nn, fill_surface_rect
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"

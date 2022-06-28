@@ -37,6 +37,7 @@
 #include "font/standard_colors.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
+#include "sdl/utils.hpp"
 #include "tod_manager.hpp"
 #include "color.hpp"
 #include "synced_context.hpp"

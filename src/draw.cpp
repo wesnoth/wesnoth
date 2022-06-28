@@ -19,6 +19,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
+#include "sdl/utils.hpp" // sdl::runtime_at_least
 #include "video.hpp"
 
 #include <SDL2/SDL_rect.h>

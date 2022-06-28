@@ -18,6 +18,7 @@
 #include "color.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+#include "sdl/utils.hpp" // floating_to_fixed_point
 #include "sound.hpp"
 
 static lg::log_domain log_engine("engine");

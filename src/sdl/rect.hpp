@@ -20,11 +20,9 @@
  * Contains the SDL_Rect helper code.
  */
 
-#include "utils.hpp"
+#include "sdl/point.hpp"
 
 #include <SDL2/SDL_rect.h>
-
-struct point;
 
 namespace sdl
 {
@@ -88,18 +86,6 @@ SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
  * @return                        The union of rect1 and rect2.
  */
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
-
-/**
- * Fill a rectangle on a given surface. Alias for SDL_FillRect.
- *
- * @param dst                     The surface to operate on.
- * @param dst_rect                The rectangle to fill.
- * @param color                   Color of the rectangle.
- */
-inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const uint32_t color)
-{
-	SDL_FillRect(dst, dst_rect, color);
-}
 
 } // namespace sdl
 

@@ -27,6 +27,7 @@
 #include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "gettext.hpp"
+#include "utils/math.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>

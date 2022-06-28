@@ -34,6 +34,7 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
+#include "sdl/utils.hpp" // blur_surface
 #include "video.hpp"
 #include "wml_exception.hpp"
 

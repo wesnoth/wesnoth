@@ -18,6 +18,8 @@
 #include "sdl/window.hpp"
 #include "video.hpp"
 
+#include <iostream>
+
 namespace sdl
 {
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
