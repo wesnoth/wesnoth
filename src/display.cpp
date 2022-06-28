@@ -2477,14 +2477,10 @@ void display::draw(bool update, bool force)
 
 	draw_init();
 	pre_draw();
-	// invalidate all that needs to be invalidated
+	// invalidate animated terrain, units and haloes
 	invalidate_animations();
 
 	if(!get_map().empty()) {
-		/*
-		 * draw_invalidated() also invalidates the halos, so also needs to be
-		 * ran if invalidated_.empty() == true.
-		 */
 		if(!invalidated_.empty()) {
 			draw_invalidated();
 			invalidated_.clear();
@@ -3118,6 +3114,8 @@ void display::invalidate_animations()
 			new_inval |= u->anim_comp().invalidate(*this);
 		}
 	} while(new_inval);
+
+	halo_man_->unrender(invalidated_);
 }
 
 void display::reset_standing_animations()
