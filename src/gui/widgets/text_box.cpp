@@ -1,22 +1,22 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/text_box.hpp"
 
-#include "font/sdl_ttf.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
@@ -278,7 +278,6 @@ void text_box::update_offsets()
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
-	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
 	text_height_ = font::get_max_height(get_text_font_size());
 
 	wfl::map_formula_callable variables;
@@ -429,9 +428,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-widget* builder_text_box::build() const
+std::unique_ptr<widget> builder_text_box::build() const
 {
-	text_box* widget = new text_box(*this);
+	auto widget = std::make_unique<text_box>(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);

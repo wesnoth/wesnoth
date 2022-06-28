@@ -1,15 +1,15 @@
 --! #textdomain wesnoth
 
-example_ca = {}
+local example_ca = {}
 
 function example_ca:evaluation()
-    wesnoth.message("External CA evaluation says hi.")
+    wesnoth.interface.add_chat_message("External CA evaluation says hi.")
 
     return 10000
 end
 
 function example_ca:execution()
-    wesnoth.message("External CA execution attacks.")
+    wesnoth.interface.add_chat_message("External CA execution attacks.")
 
     -- Note that there is no check whether these attacks are possible.
     -- The CA will therefore be blacklisted the second time it gets called.

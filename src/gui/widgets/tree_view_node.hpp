@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -35,8 +36,7 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using ptr_t = std::shared_ptr<tree_view_node>;
-	using node_children_vector = std::vector<ptr_t>;
+	using node_children_vector = std::vector<std::shared_ptr<tree_view_node>>;
 
 	bool operator==(const tree_view_node& node)
 	{
@@ -47,7 +47,7 @@ public:
 			const std::string& id,
 			tree_view_node* parent_node,
 			tree_view& parent_tree_view,
-			const std::map<std::string /* widget id */, string_map>& data);
+			const widget_data& data);
 
 	~tree_view_node();
 
@@ -67,11 +67,22 @@ public:
 	 *                            0 == begin, -1 == end.
 	 */
 	tree_view_node& add_child(const std::string& id,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const int index = -1)
 	{
 		return add_child_impl(std::make_shared<tree_view_node>(id, this, get_tree_view(), data), index);
 	}
+
+	/**
+	 * Replaces all children of this tree with new children.
+	 * The motivation here is to provide a way to add multiple children without calculating the trees size for each child added.
+	 * This is a waste of time since the results of that resizing will be immediately thrown out except for the final child added.
+	 *
+	 * @param id                  The id of the node definition to use for the new nodes.
+	 * @param data                A vector of the data to provide to the tree_node_view's constructor.
+	 * @return                    A vector of pointers to the newly created nodes.
+	 */
+	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<widget_data>& data);
 
 	/**
 	 * Adds a previously-constructed node as a child of this node at the given position.
@@ -80,7 +91,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	tree_view_node& add_child(ptr_t new_node, const int index = -1)
+	tree_view_node& add_child(std::shared_ptr<tree_view_node> new_node, const int index = -1)
 	{
 		new_node->parent_node_ = this;
 		return add_child_impl(std::move(new_node), index);
@@ -101,7 +112,7 @@ public:
 	 */
 	tree_view_node&
 	add_sibling(const std::string& id,
-				const std::map<std::string /* widget id */, string_map>& data)
+				const widget_data& data)
 	{
 		assert(!is_root_node());
 		return parent_node().add_child(id, data);
@@ -109,7 +120,7 @@ public:
 
 private:
 	/** Implementation detail for @ref add_child. */
-	tree_view_node& add_child_impl(ptr_t&& new_node, const int index);
+	tree_view_node& add_child_impl(std::shared_ptr<tree_view_node>&& new_node, const int index);
 
 public:
 	/**
@@ -162,7 +173,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	node_children_vector& children()
 	{
@@ -313,9 +324,7 @@ private:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::ui_event event);
@@ -326,7 +335,7 @@ private:
 
 	void
 	init_grid(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data);
+			  const widget_data& data);
 
 	/**
 	 * Returns the control_type of the @ref tree_view_node.

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_config.hpp"
@@ -43,6 +44,7 @@ std::string default_preferences_path = DEFAULT_PREFS_PATH;
 #else
 std::string default_preferences_path = "";
 #endif
+bool check_migration = false;
 
 std::string wesnoth_program_dir;
 
@@ -76,6 +78,7 @@ std::vector<unsigned int> zoom_levels {36, 72, 144};
 //
 double hp_bar_scaling  = 0.666;
 double xp_bar_scaling  = 0.5;
+// TODO: highdpi - remove hex_brightening? it is and was not actually used
 double hex_brightening = 1.25;
 
 //
@@ -91,6 +94,8 @@ const std::string observer_team_name = "observer";
 const std::size_t max_loop = 65536;
 
 std::vector<server_info> server_list;
+
+bool allow_insecure = false;
 
 //
 // Gamestate flags
@@ -408,10 +413,10 @@ void load_config(const config &v)
 	server_list.clear();
 
 	for(const config& server : v.child_range("server")) {
-        server_info sinf;
-        sinf.name = server["name"].str();
-        sinf.address = server["address"].str();
-        server_list.push_back(sinf);
+		server_info sinf;
+		sinf.name = server["name"].str();
+		sinf.address = server["address"].str();
+		server_list.push_back(sinf);
 	}
 
 	if(const config& s = v.child("sounds")) {

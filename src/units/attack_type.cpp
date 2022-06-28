@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -42,6 +43,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
@@ -142,7 +146,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
 		bool found = false;
 		for(auto& special : filter_special) {
-			if(attack.get_special_bool(special, true)) {
+			if(attack.has_special(special, true)) {
 				found = true;
 				break;
 			}
@@ -154,7 +158,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
-			if(attack.get_special_bool(special, true, true, false)) {
+			if(attack.has_special(special, true, true, false)) {
 				found = true;
 				break;
 			}
@@ -168,7 +172,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
 		for(auto& special : filter_special_active) {
-			if(attack.get_special_bool(special, false)) {
+			if(attack.has_special(special, false)) {
 				found = true;
 				break;
 			}
@@ -180,7 +184,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id_active) {
-			if(attack.bool_ability(special, true, false)) {
+			if(attack.has_special_or_ability(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -192,7 +196,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
-			if(attack.get_special_bool(special, true, false)) {
+			if(attack.has_special(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -204,7 +208,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type_active) {
-			if(attack.bool_ability(special, false)) {
+			if(attack.has_special_or_ability(special, false)) {
 				found = true;
 				break;
 			}
@@ -222,7 +226,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				return false;
 			}
 		} catch(const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			lg::log_to_chat() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			ERR_WML << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
 		}
@@ -241,7 +246,7 @@ bool attack_type::matches_filter(const config& filter) const
 	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for (const config::any_child &condition : filter.all_children_range() )
+	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
@@ -316,7 +321,7 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for (const config::any_child &vp : specials_.all_children_range()) {
+		for (const config::any_child vp : specials_.all_children_range()) {
 			std::vector<std::string>::const_iterator found_id =
 				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
 			if (found_id == dsl.end()) {
@@ -336,7 +341,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const config::any_child &value : set_specials.all_children_range()) {
+		for(const config::any_child value : set_specials.all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
 	}
@@ -439,7 +444,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				std::stoi(increase_damage),
-				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_damage.empty()) {
@@ -457,7 +462,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> strike",
 				"<span color=\"$color\">$number_or_percent</span> strikes",
 				std::stoi(increase_attacks),
-				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_attacks.empty()) {
@@ -480,7 +485,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
-				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_parry.empty()) {
@@ -494,7 +499,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent</span> parry",
-				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_movement.empty()) {
@@ -512,7 +517,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> movement point",
 				"<span color=\"$color\">$number_or_percent</span> movement points",
 				std::stoi(increase_movement),
-				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		*description = utils::format_conjunct_list("", desc);

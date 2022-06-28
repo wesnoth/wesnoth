@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -610,8 +611,8 @@ namespace { // Helpers for place_recruit()
 }// anonymous namespace
 //Used by recalls and recruits
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-    int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
-    bool wml_triggered)
+	int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
+	bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";

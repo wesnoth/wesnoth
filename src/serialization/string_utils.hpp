@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -175,17 +177,20 @@ std::vector< std::string > parenthetical_split(
  *
  * Examples:
  *
- * INPUT:   ("a[1-3](1,[5,6,7]),b[8,9]", ",")
+ * INPUT:   ("a[1~3](1,[5,6,7]),b[8,9]", ",")
  * RETURNS: {"a1(1,5)", "a2(1,6)", "a3(1,7)", "b8", "b9"}
  *
- * INPUT:   ("abc[07-10]")
+ * INPUT:   ("abc[07~10]")
  * RETURNS: {"abc07", "abc08", "abc09", "abc10"}
  *
- * INPUT:   ("a[1,2]b[3-4]:c[5,6]")
+ * INPUT:   ("a[1,2]b[3~4]:c[5,6]")
  * RETURNS: {"a1b3:c5", "a2b4:c6"}
  *
- * INPUT:   ("abc[3,1].png")
+ * INPUT:   ("abc[3~1].png")
  * RETURNS: {"abc3.png", "abc2.png", "abc1.png"}
+ *
+ * INPUT:   ("abc[3,1].png")
+ * RETURNS: {"abc3.png", "abc1.png"}
  *
  * INPUT:   ("abc[de,xyz]")
  * RETURNS: {"abcde", "abcxyz"}
@@ -365,6 +370,14 @@ bool word_match(const std::string& message, const std::string& word);
  * '+' as one or more characters, and '?' as any one character.
  */
 bool wildcard_string_match(const std::string& str, const std::string& match);
+
+/**
+ * Converts '*' to '%' and optionally escapes '_'.
+ *
+ * @param str The original string.
+ * @param underscores Whether to escape underscore characters as well.
+ */
+void to_sql_wildcards(std::string& str, bool underscores = true);
 
 /**
  * Check if the username contains only valid characters.

@@ -1,26 +1,26 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include "movetype.hpp"
-
+#include "units/unit_alignments.hpp"
 #include "units/id.hpp"
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
-#include "units/alignment.hpp"
 #include "utils/variant.hpp"
 
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -449,10 +449,7 @@ public:
 	}
 
 	/** The unit's special notes. */
-	const std::vector<t_string>& unit_special_notes() const
-	{
-		return special_notes_;
-	}
+	std::vector<t_string> unit_special_notes() const;
 
 	/** The gender of this unit. */
 	unit_race::GENDER gender() const
@@ -465,13 +462,13 @@ public:
 	 *
 	 * This affects the time of day during which this unit's attacks do the most damage.
 	 */
-	UNIT_ALIGNMENT alignment() const
+	unit_alignments::type alignment() const
 	{
 		return alignment_;
 	}
 
 	/** Sets the alignment of this unit. */
-	void set_alignment(UNIT_ALIGNMENT alignment)
+	void set_alignment(unit_alignments::type alignment)
 	{
 		set_attr_changed(UA_ALIGNMENT);
 		alignment_ = alignment;
@@ -1868,7 +1865,7 @@ private:
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
-	UNIT_ALIGNMENT alignment_;
+	unit_alignments::type alignment_;
 
 	std::string flag_rgb_;
 	std::string image_mods_;

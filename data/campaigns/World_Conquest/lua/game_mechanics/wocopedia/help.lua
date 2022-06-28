@@ -1,5 +1,5 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local dialog = wc2_wiki_dialog
+local dialog_wml = wml.load "campaigns/World_Conquest/gui/help_dialog.cfg"
 
 local function make_caption(text)
 	return ("<big><b>%s</b></big>"):format(text)
@@ -16,11 +16,10 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 	local show_help_factions = cfg.show_factions ~= false
 	local show_help_artifacts = cfg.show_artifacts ~= false
 	local show_help_settings = cfg.show_settings ~= false
-	local show_help_feedback = cfg.show_feedback ~= false
 	-- maps the treeview rows to pagenumber in the help page.
 	local index_map = {}
 
-	local current_side = wesnoth.get_viewing_side()
+	local current_side = wesnoth.interface.get_viewing_side()
 	local preshow = function(dialog)
 		local str_cat_mechnics = _ "Game Mechanics"
 		local str_des_mechnics = cfg.mechanics_text or
@@ -40,10 +39,9 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			_ "<b>Army discipline</b>\n" ..
 			_ "At scenarios 1 to 3, for each training level players already own, trainers found have 2% to 4% chance to become advanced trainers (provide 2 levels). Becomes irrelevant from scenario 4 onwards because all trainers will always be advanced.\n\n" ..
 			""
-		local str_cat_feedback, str_des_feedback = help_page_text( _ "Feedback", _ "For feedback please either post in the World Conquest II thread in the official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/issues&gt;.")
 		local str_cat_training, str_des_training = help_page_text( _ "Training", _ "Training improves newly recruited units, it has no effect on already recruited units. The following list shows all available training, the training you currently have is marked in green.")
 		local str_cat_items, str_des_items = help_page_text( _ "Items", _ "Items can be given to units to make them stronger. You can get items in three ways: 1) By choosing an item as your starting bonus; 2) By finding it on a map in a bonus point; 3) By dropping from enemies in later scenarios. Note, however, that not all units can pick up all items.")
-		local str_cat_era, str_des_era = help_page_text( _ "Factions" , _ "The World Conquest II era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose.")
+		local str_cat_era, str_des_era = help_page_text( _ "Factions" , _ "The World Conquest era consists of factions that are built from pairs of mainline factions. One faction will have a healer available (Drakes, Dunefolk, Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The recruit list is also organized in pairs so that sometimes you will have to recruit a different unit before you can recruit the units that you want. The available heroes, deserters, and random leaders also depend on your factions; the items you can get do not depend on the faction you choose.")
 		local str_cat_settings = _ "Settings"
 
 		local root_node = dialog:find("treeview_topics")
@@ -73,17 +71,17 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 		-- add general training topic.
 		if show_help_training then
-			local node, page = root_node:add_help_page {
+			local node, root_page = root_node:add_help_page {
 				title = str_cat_training
 			}
-			page.label_content.marked_up_text = str_des_training
+			root_page.label_content.marked_up_text = str_des_training
 			-- add specific training pages
 			for i = 1, #wc2_training.get_list() do
 				local current_level = wc2_training.get_level(current_side, i)
 				local trainer = wc2_training.get_trainer(i)
 
 
-				local subnode, page = node:add_help_page {
+				local subnode, sub_page = node:add_help_page {
 					title = trainer.name,
 					page_type = "training",
 					node_type = "subcategory",
@@ -96,14 +94,14 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 						desc.message = "<span color='#00FF00'>" .. desc.message .. "</span>"
 					end
 
-					local page_element = page.treeview_details:add_item_of_type("training_details")
+					local page_element = sub_page.treeview_details:add_item_of_type("training_details")
 					page_element.training_caption.marked_up_text = desc.caption
 					page_element.training_description.marked_up_text = desc.message
 				end
 
 				set_description(1)
 				for j = 2, #trainer.grade - 1, 1 do
-					page.treeview_details:add_item_of_type("seperator")
+					sub_page.treeview_details:add_item_of_type("seperator")
 					set_description(j)
 				end
 			end
@@ -119,29 +117,29 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				end
 			end
 			---- add general factions topic ----
-			local era_wml = wesnoth.game_config.era
+			local era_wml = wesnoth.scenario.era
 
-			local node, page = root_node:add_help_page {
+			local node, root_page = root_node:add_help_page {
 				title = str_cat_era
 			}
 
-			page.label_content.marked_up_text = str_des_era
+			root_page.label_content.marked_up_text = str_des_era
 
 			for i, faction_info in ipairs(wc2_era.factions_wml) do
 				local faction_wml = wml.get_child(era_wml, "multiplayer_side", faction_info.id)
 
-				local subnode, page = node:add_help_page {
+				local subnode, sub_page = node:add_help_page {
 					title = faction_info.name,
 					page_type = "faction",
 					node_type = "subcategory",
 				}
 
 				for p_wml in wml.child_range(faction_info, "pair") do
-					local p = stringx.split(p_wml.types)
+					local p = stringx.split(p_wml.types or "")
 					local ut1 = wesnoth.unit_types[p[1]] or error("invald unit type" .. tostring(p[1]))
 					local ut2 = wesnoth.unit_types[p[2]] or error("invald unit type" .. tostring(p[2]))
 
-					local page_element = page.treeview_recruits:add_item_of_type("recruit_pair")
+					local page_element = sub_page.treeview_recruits:add_item_of_type("recruit_pair")
 					page_element.label1.marked_up_text = ut1.name
 					page_element.image1.label = type_icon(ut1)
 					page_element.label2.marked_up_text = ut2.name
@@ -149,20 +147,20 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 
 				end
 
-				page.label_deserters.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.deserters))
-				page.label_commanders.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.commanders))
-				page.label_heroes.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.heroes, true))
+				sub_page.label_deserters.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.deserters))
+				sub_page.label_commanders.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.commanders))
+				sub_page.label_heroes.marked_up_text = wesnoth.format_conjunct_list("", wc2_era.expand_hero_names(faction_info.heroes, true))
 
 				if faction_wml then
 					local random_leaders = {}
-					for i,v in ipairs(stringx.split(faction_wml.random_leader)) do
+					for j,v in ipairs(stringx.split(faction_wml.random_leader or "")) do
 						table.insert(random_leaders, wesnoth.unit_types[v].name)
 					end
 					random_leaders = wesnoth.format_conjunct_list("", random_leaders)
 
-					page.label_random_leaders.marked_up_text = random_leaders
+					sub_page.label_random_leaders.marked_up_text = random_leaders
 				else
-					page.title_random_leaders.visible = false
+					sub_page.title_random_leaders.visible = false
 				end
 			end
 		end
@@ -219,13 +217,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				wc2_utils.global_vars.skip_pickup_dialog = not page.checkbox_show_pickup_confirmation.selected
 			end
 		end
-		if show_help_feedback then
-			local node, page = root_node:add_help_page {
-				title = str_cat_feedback,
-			}
-			page.label_content.marked_up_text = str_des_feedback
-
-		end
 
 		root_node:focus()
 
@@ -237,7 +228,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 		end
 	end
 
-	gui.show_dialog(dialog, preshow)
+	gui.show_dialog(wml.get_child(dialog_wml, 'resolution'), preshow)
 end
 
 wc2_utils.menu_item {

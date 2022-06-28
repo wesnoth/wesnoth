@@ -8,7 +8,7 @@ local dropping = {}
 
 dropping.remove_current_item = function()
 	local ec = wesnoth.current.event_context
-	
+
 	wesnoth.interface.remove_item(ec.x1, ec.y1, dropping.current_item.name)
 	dropping.item_taken = true
 end

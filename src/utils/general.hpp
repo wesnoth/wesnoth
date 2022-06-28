@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2003 - 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -23,13 +24,20 @@ inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolow
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
 /**
- * Equivalent to as @c std::is_same_v except it uses the decayed form of V.
+ * Equivalent to as @c std::is_same_v except both types are passed through std::decay first.
  *
  * @tparam T1    The first type to compare.
- * @tparam T2    The second type to compare. This will be passed through @c std::decay .
+ * @tparam T2    The second type to compare.
  */
 template<typename T1, typename T2>
-inline constexpr bool decayed_is_same = std::is_same_v<T1, std::decay_t<T2>>;
+inline constexpr bool decayed_is_same = std::is_same_v<std::decay_t<T1>, std::decay_t<T2>>;
+
+/**
+ * Workaround for the fact that static_assert(false) is invalid.
+ * See https://devblogs.microsoft.com/oldnewthing/20200311-00/?p=103553
+ */
+template<typename>
+inline constexpr bool dependent_false_v = false;
 
 namespace detail
 {

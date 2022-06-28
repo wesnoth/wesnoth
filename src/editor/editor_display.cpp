@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/controller/editor_controller.hpp"
@@ -28,8 +30,8 @@ namespace wb {
 
 namespace editor {
 
-editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
-	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
+editor_display::editor_display(editor_controller& controller, reports& reports_object)
+	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, "editor", config())
 	, brush_locations_()
 	, controller_(controller)
 {
@@ -69,29 +71,24 @@ void editor_display::pre_draw()
 {
 }
 
-image::TYPE editor_display::get_image_type(const map_location& loc)
-{
-	if (map().in_selection(loc)) {
-		return image::BRIGHTENED;
-	}
-	return image::TOD_COLORED;
-}
-
 void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 	display::draw_hex(loc);
-	if (map().on_board_with_border(loc)) {
+	if (map().on_board_with_border(loc) && !map_screenshot_) {
 		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
+			const texture tex = image::get_texture(
+				"editor/selection-overlay.png", image::TOD_COLORED);
+			SDL_Rect dest = scaled_to_zoom({xpos, ypos, tex.w(), tex.h()});
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, tex);
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_image(brush, image::SCALED_TO_HEX));
+			const texture tex = image::get_texture(brush, image::HEXED);
+			SDL_Rect dest = scaled_to_zoom({xpos, ypos, tex.w(), tex.h()});
+			drawing_buffer_add(LAYER_SELECTED_HEX, loc, dest, tex);
 		}
 	}
 }

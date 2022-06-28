@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-intel-release, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -48,40 +48,10 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=true
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  ubuntu-2004-scons-clang-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=scons
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=17
-          export CFG=debug
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh master
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-Clang-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-2004-cmake-clang-release:
+  ubuntu-2004-cmake-clang-debug:
     runs-on: ubuntu-20.04
 
     steps:
@@ -98,62 +68,11 @@ jobs:
           export CC=clang
           export CXX=clang++
           export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-  ubuntu-2004-cmake-gcc-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=cmake
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
           export CFG=debug
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-GCC-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-1804:
-    runs-on: ubuntu-18.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 18.04
-        run: |
-          export BRANCH=master
-          export IMAGE=1804
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
 
   steam-runtime:
     runs-on: ubuntu-20.04
@@ -174,8 +93,15 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Steam-Linux
+          path: |
+            ~/steambuild-*.tar
 
   mingw:
     runs-on: ubuntu-20.04
@@ -196,8 +122,22 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: Source
+          path: |
+            ~/wesnoth-*.tar.bz2
+
+      - name: Upload 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Installer
+          path: |
+            ~/wesnoth-*-win64.exe
 
   flatpak:
     runs-on: ubuntu-20.04
@@ -218,7 +158,7 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
@@ -240,24 +180,10 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-intel-master-release:
-    runs-on: macos-10.15
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS Intel Release
-        run: |
-          export CFG=Release
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-
-  macos-intel-master-debug:
+  macos-intel-debug:
     runs-on: macos-10.15
 
     steps:
@@ -268,84 +194,21 @@ jobs:
       - name: macOS Intel Debug
         run: |
           export CFG=Debug
-          export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-Intel-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
 
-#  macos-arm-master-release:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Release
-#        run: |
-#          export CFG=Release
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-
-#  macos-arm-master-debug:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Debug
-#        run: |
-#          export CFG=Debug
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-#      - name: Upload
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: macOS-ARM-Debug
-#          path: |
-#            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
-
-# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
-# this will create a brand new cache and recompile the vcpkg dependencies from scratch
-  windows-release:
-    runs-on: windows-2019
+  macos-intel-release:
+    runs-on: macos-11.0
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: windows-release-cache-master
-        with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
+      - name: macOS Intel Release
+        run: |
+          export CFG=Release
+          ./.github/workflows/ci-scripts/macos.sh
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: DOS1
-        shell: cmd
-        run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
-          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-      - name: DOS2
-        shell: cmd
-        run: |
-          %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-logic:x64-windows boost-format:x64-windows boost-scope-exit:x64-windows boost-circular-buffer:x64-windows boost-ptr-container:x64-windows
-      - name: DOS3
-        shell: cmd
-        run: |
-          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
   windows-debug:
     runs-on: windows-2019
 
@@ -355,36 +218,97 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
+        id: windows-cache
         uses: actions/cache@v2
-        env:
-          cache-name: windows-debug-cache-master
         with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
+          path: |
+            D:/a/wesnoth/vcpkg
+            D:/a/wesnoth/wesnoth/vcpkg_installed
+          key: win-cache-0001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
-      - name: DOS1
+      - name: Build vcpkg
         shell: cmd
         run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
-          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-      - name: DOS2
-        shell: cmd
-        run: |
-          %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-logic:x64-windows boost-format:x64-windows boost-scope-exit:x64-windows boost-circular-buffer:x64-windows boost-ptr-container:x64-windows
-      - name: DOS3
-        shell: cmd
-        run: |
-          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
-      - name: Upload
-        uses: actions/upload-artifact@v2
+          git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          git checkout b49b2bdf22559c89eddbf29a29621a1dc6929320
+          D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.9
         with:
-          name: Windows-Debug
+          cmake-version: '3.20'
+
+      - name: Use cmake
+        run: |
+          cmake --version
+          cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+
+# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
+# otherwise the job was failing when trying to write a .obj file
+# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
+      - name: Build wesnoth
+        shell: cmd
+        run: |
+          rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
+          MSBuild.exe wesnoth.sln -p:Configuration=Debug
+
+# seems to work, but with the debug SDL libraries it's so slow that it times out even with a limit of 300 seconds
+#      - name: Run WML unit tests
+#        shell: cmd
+#        run: |
+#          python run_wml_tests -v -g -c -t 300 -p D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
+
+  windows-release:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Cache object files
+        id: windows-cache
+        uses: actions/cache@v2
+        with:
           path: |
-            D:/a/wesnoth/wesnoth/wesnoth.exe
-            D:/a/wesnoth/wesnoth/wesnothd.exe
-            D:/a/wesnoth/wesnoth/wesnoth.pdb
-            D:/a/wesnoth/wesnoth/wesnothd.pdb
+            D:/a/wesnoth/vcpkg
+            D:/a/wesnoth/wesnoth/vcpkg_installed
+          key: win-cache-0001
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Build vcpkg
+        shell: cmd
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          git checkout b49b2bdf22559c89eddbf29a29621a1dc6929320
+          D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.9
+        with:
+          cmake-version: '3.20'
+
+      - name: Use cmake
+        run: |
+          cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+
+# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
+# otherwise the job was failing when trying to write a .obj file
+# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
+      - name: Build wesnoth
+        shell: cmd
+        run: |
+          rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
+          MSBuild.exe wesnoth.sln -p:Configuration=Release
+
+      - name: Run WML unit tests
+        shell: cmd
+        run: |
+          python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/Release/wesnoth.exe

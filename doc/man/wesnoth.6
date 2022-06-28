@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 .\"
 .
-.TH WESNOTH 6 "2018" "wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "2021" "wesnoth" "Battle for Wesnoth"
 .
 .SH NAME
 wesnoth \- Battle for Wesnoth, a turn-based fantasy strategy game
@@ -122,7 +122,8 @@ is specified, equivalent to
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
-at, in a corner of the screen.
+at in a corner of the screen as well as writes these values to a file
+in the userdata directory.
 .TP
 .B -f, --fullscreen
 runs the game in full screen mode.
@@ -225,6 +226,9 @@ or
 .B --screenshot
 or
 .BR --plugin .
+.TP
+.B --nobanner
+suppress the startup banner.
 .TP
 .B --nomusic
 runs the game without music.
@@ -413,6 +417,9 @@ assumes that the cache is valid. (dangerous)
 .B -v, --version
 shows the version number and exits.
 .TP
+.B --simple-version
+shows the version number and nothing else, then exits.
+.TP
 .B -w, --windowed
 runs the game in windowed mode.
 .TP
@@ -524,7 +531,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2018 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2021 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

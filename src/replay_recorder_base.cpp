@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "replay_recorder_base.hpp"
@@ -95,9 +96,9 @@ config& replay_recorder_base::insert_command(int index)
 
 void replay_recorder_base::append_config(const config& data)
 {
-	if(const config& upload_log = data.child("upload_log"))
+	if(const auto upload_log = data.optional_child("upload_log"))
 	{
-		upload_log_ = upload_log;
+		upload_log_ = upload_log.value();
 	}
 	for(const config& command : data.child_range("command"))
 	{
@@ -107,9 +108,9 @@ void replay_recorder_base::append_config(const config& data)
 
 void replay_recorder_base::append_config(config& data)
 {
-	if(config& upload_log = data.child("upload_log"))
+	if(auto upload_log = data.optional_child("upload_log"))
 	{
-		upload_log_.swap(upload_log);
+		upload_log_.swap(upload_log.value());
 	}
 	for(config& command : data.child_range("command"))
 	{

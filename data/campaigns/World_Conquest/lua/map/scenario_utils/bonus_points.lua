@@ -5,9 +5,9 @@
 ---- place them                                       ----
 ----------------------------------------------------------
 
-function random_placement(locs, num_items, min_distance, command)
+function random_placement(locs, orig_num_items, min_distance, command)
 	local distance = min_distance or 0
-	local num_items = num_items or 1
+	local num_items = orig_num_items or 1
 	local allow_less = true
 	local math_abs = math.abs
 	local size = #locs
@@ -17,21 +17,20 @@ function random_placement(locs, num_items, min_distance, command)
 				print("placed only " .. i .. " items")
 				return
 			else
-				helper.wml_error("[random_placement] failed to place items. only " .. i .. " items were placed")
+				wml.error("[random_placement] failed to place items. only " .. i .. " items were placed")
 			end
 		end
-		local index = wesnoth.random(size)
+		local index = mathx.random(size)
 		local point = locs[index]
 
 		command(point, i)
-		if distance < 0 then
-			-- optimisation: nothing to do for distance < 0
-		elseif distance == 0 then
+		-- optimisation: nothing to do for distance < 0
+		if distance == 0 then
 			-- optimisation: for distance = 0 we just need to remove the element at index
 			-- optimisation: swapping elements and storing size in an extra variable is faster than table.remove(locs, j)
 			locs[index] = locs[size]
 			size = size - 1
-		else
+		elseif distance > 0 then
 			-- the default case and the main reason why this was implemented.
 			for j = size, 1, -1 do
 				local x1 = locs[j][1]
@@ -65,7 +64,7 @@ function random_placement(locs, num_items, min_distance, command)
 end
 
 function get_f_wct_bonus_location_filter(map)
-	local scenario_num = wesnoth.get_variable("wc2_scenario") or 1
+	local scenario_num = wml.variables.wc2_scenario or 1
 	return f.all(
 		f.terrain("G*,Hh,Uu,Uh,Dd,Ds,R*,Mm,Md,Ss,Hd,Hhd,Ww,Wwt,Wwg,Ds^Esd,Ur"),
 		--no adjacent to village, deep water, chasm or walls
@@ -152,7 +151,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 		}
 	}
 	for i,v in ipairs(terrain_to_scenery) do
-		for j,str in ipairs(stringx.split(v.terrain)) do
+		for j,str in ipairs(stringx.split(v.terrain or "")) do
 			if str == terrain then
 				scenery = v.scenery
 				goto intial_list_screated
@@ -163,7 +162,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 
 	local function matches_location(f)
 		local filter_object = wesnoth.map.filter(f, filter_extra)
-		return #map:get_locations(filter_object, {loc}) > 0
+		return #map:find(filter_object, {loc}) > 0
 	end
 
 	-- chance of rock cairn on isolated hills
@@ -191,7 +190,7 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 			f.terrain("G*"),
 			f.adjacent(f.terrain("Ss")),
 			f.adjacent(f.terrain("Hh^*,Ha^*")),
-			f.adjacent(f.terrain("G*^F*,A*^F*,G*^Uf"))
+			f.adjacent(f.terrain("G*^F*,A*^F*,G*^Tf"))
 		)) then
 
 		scenery = scenery .. "," .. "temple_green_g,temple_green_g,temple_green_g,temple_green_g2,temple_green_g2"
@@ -283,18 +282,6 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 				f.terrain("R*")
 			)) then
 			scenery = "well_g,temple,tent2_g,tent1,village,monolith3,burial"
-		end
-	end
-	-- TODO: bring back?
-	if false then
-		if theme == "wild" then
-			if matches_location(
-				f.all(
-					f.find_in_wml("map_data.road_in_cave")
-				)) then
-
-				scenery = "altar,bones,rock_cairn,well,monolith2,monolith3,tent1"
-			end
 		end
 	end
 	if theme == "volcanic" then
@@ -389,9 +376,8 @@ function wct_bonus_chose_scenery(loc, theme, filter_extra)
 
 		scenery = scenery .. "," .. "oak_dead,oak_dead,oak_dead,oak_dead,oak_dead2,oak_dead2,oak_dead2,oak_dead2"
 	end
-	::final_pick::
 	-- pick random scenery value from our list
-	local res = helper.rand(scenery)
+	local res = mathx.random_choice(scenery)
 	wesnoth.log("debug", "scenery:" ..  res .. " from " .. scenery)
 	return res
 end
@@ -399,10 +385,12 @@ end
 
 function world_conquest_tek_bonus_points(theme)
 	local res = {}
-	local scenario_num = wesnoth.get_variable("wc2_scenario") or 1
+	local scenario_num = wml.variables.wc2_scenario or 1
+    -- wc2_player_count is not available for the first scenario, place bonus points for 3 players
+	local player_num =  wml.variables.wc2_player_count or 3
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
-	local possible_locs = map:get_locations(f_wct_bonus_location_filter)
+	local possible_locs = map:find(f_wct_bonus_location_filter)
 	function place_item(loc)
 		scenery = wct_bonus_chose_scenery(loc, theme, { oceanic = oceanic })
 		table.insert(prestart_event, wml.tag.wc2_place_bonus {
@@ -412,6 +400,6 @@ function world_conquest_tek_bonus_points(theme)
 		})
 		table.insert(res, loc)
 	end
-	random_placement(possible_locs, 3, 9 + scenario_num, place_item)
+	random_placement(possible_locs, player_num, 9 + scenario_num, place_item)
 	return res
 end

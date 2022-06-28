@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2012-02-18 18:00-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Faoi Thalamh"
@@ -31,13 +31,13 @@ msgstr "Faoi Thalamh"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "cneasú +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "cneasú +4"
 
@@ -53,21 +53,31 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#, fuzzy
+#| msgid " This unit is capable of basic healing."
+msgid "This unit is capable of basic healing and slowing dehydration."
+msgstr "Is féidir leis an t-aonad seo bunchneasú."
+
+#. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:71
-#: data/core/macros/abilities.cfg:28
+#: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "cneasú +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
-#: data/core/macros/abilities.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "cneasú +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -79,21 +89,21 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
 #, fuzzy
 #| msgid "heals +4"
 msgid "heals +12"
 msgstr "cneasú +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:63
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
 #, fuzzy
 #| msgid "female^heals +4"
 msgid "female^heals +12"
 msgstr "cneasú +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -102,6 +112,13 @@ msgid ""
 "poison from taking effect for that turn.\n"
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
+msgstr ""
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+msgid ""
+"This unit is capable of healing those around it, slowing dehydration, and "
+"curing them of poison."
 msgstr ""
 
 #. [trait]: id=healthy
@@ -113,13 +130,13 @@ msgstr "cneasú ar Chaileins +4"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
-#: data/core/macros/abilities.cfg:250
+#: data/core/macros/abilities.cfg:282
 msgid "ambush"
 msgstr "luíochán"
 
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:410
 msgid "backstab"
 msgstr "sá sa droim"
 
@@ -133,13 +150,13 @@ msgstr "Uaimh"
 
 #. [damage]: id=charge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:468
+#: data/core/macros/abilities.cfg:528
 msgid "charge"
 msgstr "ruathar"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:309
+#: data/core/macros/abilities.cfg:343
 msgid "concealment"
 msgstr "ceilt"
 
@@ -147,18 +164,18 @@ msgstr "ceilt"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:137
-#: data/core/macros/abilities.cfg:47
+#: data/core/macros/abilities.cfg:61
 msgid "cures"
 msgstr "leigheas"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Cosaint"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:481
+#: data/core/macros/abilities.cfg:555
 msgid "drains"
 msgstr "draenáil"
 
@@ -170,13 +187,13 @@ msgstr "neamheaglach"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:384
 msgid "feeding"
 msgstr "beathú"
 
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:386
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -215,25 +232,25 @@ msgstr "Cnocán"
 
 #. [illuminates]: id=illumination
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
-#: data/core/macros/abilities.cfg:205
+#: data/core/macros/abilities.cfg:235
 msgid "illuminates"
 msgstr "soilsiú"
 
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
-#: data/core/macros/abilities.cfg:171
+#: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "ceannas"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:446
+#: data/core/macros/abilities.cfg:504
 msgid "magical"
 msgstr "draíochtúil"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
-#: data/core/macros/abilities.cfg:433
+#: data/core/macros/abilities.cfg:475
 msgid "marksman"
 msgstr "aimsitheoir"
 
@@ -243,31 +260,31 @@ msgstr "Garrán Beacáin"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
-#: data/core/macros/abilities.cfg:290 data/core/macros/abilities.cfg:291
+#: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "seilg oíche"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:391 data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "plá"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
-#: data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:577
 msgid "poison"
 msgstr "nimh"
 
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:104
-#: data/core/macros/abilities.cfg:70
+#: data/core/macros/abilities.cfg:94
 msgid "regenerates"
 msgstr "athginiúnach"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:662
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
 msgstr "Friotaíochtaí"
 
@@ -277,30 +294,30 @@ msgstr "Gaineamh"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
-#: data/core/macros/abilities.cfg:190
+#: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
 msgstr "scirmiseoir"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:453
 msgid "slows"
 msgstr "moilliú"
 
 #. [resistance]: id=steadfast
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:104
+#: data/core/macros/abilities.cfg:130
 msgid "steadfast"
 msgstr "storrúil"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
 msgstr "Buailtí"
 
 #. [hides]: id=submerge
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:363
 msgid "submerge"
 msgstr "tum"
 
@@ -310,7 +327,7 @@ msgstr "Corcach"
 
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
-#: data/core/macros/abilities.cfg:219
+#: data/core/macros/abilities.cfg:250
 msgid "teleport"
 msgstr "teileapórtáil"
 
@@ -331,7 +348,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:257
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -339,7 +356,7 @@ msgstr "Maolaitheoirí Tír-raonta"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -533,13 +550,117 @@ msgid ""
 "the editor palette."
 msgstr ""
 
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Terrain"
+msgid "Deprecated Terrain"
+msgstr "Tír-raon"
+
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
+
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -553,12 +674,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -573,12 +694,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -593,12 +714,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -613,12 +734,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -645,12 +766,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -660,12 +781,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -693,15 +814,11 @@ msgid ""
 "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
 "and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music.\n"
-"\n"
-"<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> Improving "
-"it is one of the main blockers for the 1.16 release, however in 1.14 its "
-"quality is far below that of the game and the terrain mode."
+"text='playlist manager'</ref> for the music."
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:238
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -727,7 +844,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -742,7 +859,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -751,7 +868,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:272
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -762,7 +879,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:279
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -777,14 +894,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:287
+#: data/core/editor/help.cfg:342
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -796,12 +913,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:299
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:300
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -854,12 +971,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -867,14 +984,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:347
+#: data/core/editor/help.cfg:402
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "Tráth an Lae"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:348
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -887,13 +1004,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:361
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -909,32 +1026,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:367
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:368
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:382
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -965,7 +1082,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:395
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -985,7 +1102,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -998,7 +1115,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:407
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1019,14 +1136,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [time]: id=deep_underground
 #. [editor_times]: id=deep_underground
+#. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Domhain faoi Talamh"
 
-#. [time]: id=indoors
 #. [editor_times]: id=indoors
+#. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Istigh"
@@ -1423,9 +1540,9 @@ msgstr "Imirt-chluiche"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:529
-#: src/help/help_topic_generators.cpp:438
-#: src/help/help_topic_generators.cpp:461
+#: data/core/help.cfg:29 data/core/help.cfg:531
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "Tréithe"
 
@@ -1455,19 +1572,19 @@ msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:544
+#: data/core/help.cfg:70 data/core/help.cfg:546
 msgid "Terrains"
 msgstr "Tír-raonta"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:597
+#: data/core/help.cfg:78 data/core/help.cfg:599
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:670
+#: data/core/help.cfg:84 data/core/help.cfg:672
 msgid "Commands"
 msgstr "Orduithe"
 
@@ -2428,10 +2545,10 @@ msgid ""
 "<italic>text='Under the Burning Suns'</italic>.\n"
 "• <bold>text='Blue'</bold> for allied units, except during that ally’s own "
 "turn.\n"
-"    • During the ally’s own turn, their units will be shown with the green/"
-"yellow/red/white colors; however their moves, and the corresponding orb "
-"changes, are delayed as explained in <ref>dst='shroud_and_fog' text='Shroud "
-"and Fog of War'</ref>.\n"
+"    • During the ally’s own turn, their units will be shown with the colors "
+"showing whether the units can still move and attack; however their moves, "
+"and the corresponding orb changes, are delayed as explained in "
+"<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
@@ -2537,47 +2654,43 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [time]: id=dawn
 #. [topic]: id=time_of_day
+#. [time]: id=dawn
 #. [time]: id=dawn_hour
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
-#: data/core/macros/schedules.cfg:290 data/test/maps/pathfind_1.cfg:64
+#: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Breacadh"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
-#: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Maidin"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
-#: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Tráthnóna"
 
-#. [time]: id=dusk
 #. [topic]: id=time_of_day
+#. [time]: id=dusk
 #. [time]: id=dusk_hour
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
-#: data/core/macros/schedules.cfg:411 data/test/maps/pathfind_1.cfg:97
+#: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Breacdhorcha"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
-#: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "An Chéad Oíche"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
-#: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "An Dara Oíche"
 
@@ -2732,7 +2845,7 @@ msgid "License"
 msgstr "Ceadúnas"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:531
+#: data/core/help.cfg:533
 msgid ""
 "\n"
 "\n"
@@ -2743,7 +2856,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:531
+#: data/core/help.cfg:533
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2752,7 +2865,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:533
+#: data/core/help.cfg:535
 msgid ""
 "\n"
 "\n"
@@ -2763,7 +2876,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:535
+#: data/core/help.cfg:537
 msgid ""
 "\n"
 "\n"
@@ -2777,7 +2890,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:547
 msgid ""
 "\n"
 "\n"
@@ -2786,14 +2899,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:547
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:549
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2809,7 +2922,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:549
+#: data/core/help.cfg:551
 msgid ""
 "\n"
 "\n"
@@ -2820,7 +2933,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:553
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "\n"
@@ -2830,7 +2943,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:555
+#: data/core/help.cfg:557
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2846,7 +2959,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:557
+#: data/core/help.cfg:559
 msgid ""
 "\n"
 "\n"
@@ -2860,7 +2973,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:563
 msgid ""
 "\n"
 "\n"
@@ -2875,7 +2988,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "\n"
@@ -2886,7 +2999,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:569
+#: data/core/help.cfg:571
 msgid ""
 "\n"
 "\n"
@@ -2897,7 +3010,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:573
+#: data/core/help.cfg:575
 msgid ""
 "\n"
 "\n"
@@ -2907,7 +3020,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:577
 msgid ""
 "\n"
 "\n"
@@ -2918,7 +3031,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:577
+#: data/core/help.cfg:579
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2934,7 +3047,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:579
+#: data/core/help.cfg:581
 msgid ""
 "\n"
 "\n"
@@ -2944,7 +3057,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:581
+#: data/core/help.cfg:583
 msgid ""
 "\n"
 "\n"
@@ -2955,7 +3068,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:583
+#: data/core/help.cfg:585
 msgid ""
 "\n"
 "\n"
@@ -2964,7 +3077,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:585
+#: data/core/help.cfg:587
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2981,7 +3094,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:598
+#: data/core/help.cfg:600
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2990,12 +3103,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:610
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:609
+#: data/core/help.cfg:611
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3011,14 +3124,14 @@ msgstr ""
 "<header>text=Damáiste</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:609
+#: data/core/help.cfg:611
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:611
+#: data/core/help.cfg:613
 msgid ""
 "\n"
 "\n"
@@ -3029,7 +3142,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:613
+#: data/core/help.cfg:615
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
@@ -3039,7 +3152,7 @@ msgid ""
 msgstr "<header>text='Aonaid leis an ionsaí speisialta seo'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:615
+#: data/core/help.cfg:617
 msgid ""
 "\n"
 "\n"
@@ -3049,7 +3162,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:619
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3065,7 +3178,7 @@ msgstr ""
 "<header>text='Ord agus Líon na mBuailtí'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:619
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "\n"
@@ -3080,7 +3193,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:623
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "\n"
@@ -3089,7 +3202,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:625
+#: data/core/help.cfg:627
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3105,7 +3218,7 @@ msgstr ""
 "<header>text='Ord agus Líon na mBuailtí'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:627
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "\n"
@@ -3115,7 +3228,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:629
+#: data/core/help.cfg:631
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3131,7 +3244,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "\n"
@@ -3145,7 +3258,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:635
+#: data/core/help.cfg:637
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3161,7 +3274,7 @@ msgstr ""
 "<header>text='Seans a Bualadh'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:637
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "\n"
@@ -3173,12 +3286,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:648
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:647
+#: data/core/help.cfg:649
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3204,12 +3317,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:660
+#: data/core/help.cfg:662
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:661
+#: data/core/help.cfg:663
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3223,7 +3336,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:676
+#: data/core/help.cfg:678
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3232,7 +3345,7 @@ msgstr "Orduithe ginearálta"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:677 data/core/help.cfg:719 data/core/help.cfg:757
+#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3241,7 +3354,16 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:679
+#: data/core/help.cfg:681
+msgid ""
+"\n"
+"Similar to the 'fps' command, but also forces everything to redraw instead "
+"of only things that have changed.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:684
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3252,7 +3374,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:682
+#: data/core/help.cfg:687
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3262,7 +3384,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:686
+#: data/core/help.cfg:691
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -3275,7 +3397,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3283,15 +3405,16 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:697
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Toggle the display of the current frames per second. Also writes these "
+"values to a file in the userdata directory.\n"
 "\n"
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3299,7 +3422,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:698
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3307,7 +3430,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:706
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3315,7 +3438,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:709
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3326,7 +3449,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:712
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3337,21 +3460,21 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:715
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:718
+#: data/core/help.cfg:723
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Orduithe Ilimreora"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:721
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3361,7 +3484,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:724
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3374,7 +3497,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:727
+#: data/core/help.cfg:732
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3383,7 +3506,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:730
+#: data/core/help.cfg:735
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3392,7 +3515,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:733
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3402,7 +3525,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:736
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3412,7 +3535,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:739
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3421,7 +3544,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:742
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3429,7 +3552,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:745
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3438,7 +3561,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:748
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3446,14 +3569,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:761
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Orduithe mhód dífhabhtúcháin"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3462,7 +3585,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3470,7 +3593,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:765
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3478,7 +3601,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:768
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3486,7 +3609,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:771
+#: data/core/help.cfg:776
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3494,7 +3617,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:774
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3502,7 +3625,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:777
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3513,7 +3636,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:780
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3521,7 +3644,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:783
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3530,14 +3653,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:786
+#: data/core/help.cfg:791
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/core/macros/abilities.cfg:12
+#: data/core/macros/abilities.cfg:11
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -3548,7 +3671,7 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=healing
-#: data/core/macros/abilities.cfg:30
+#: data/core/macros/abilities.cfg:37
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -3560,117 +3683,129 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:48
+#: data/core/macros/abilities.cfg:62
 msgid "female^cures"
 msgstr "leigheas"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:49
+#: data/core/macros/abilities.cfg:63
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:71
+#: data/core/macros/abilities.cfg:95
 msgid "female^regenerates"
 msgstr "athginiúnach"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:72
+#: data/core/macros/abilities.cfg:96
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:83
+#: data/core/macros/abilities.cfg:108
 #, fuzzy
 #| msgid "regenerates"
 msgid "regenerates +4"
 msgstr "athginiúnach"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:84
+#: data/core/macros/abilities.cfg:109
 #, fuzzy
 #| msgid "female^regenerates"
 msgid "female^regenerates +4"
 msgstr "athginiúnach"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:85
+#: data/core/macros/abilities.cfg:110
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
 
+#. [regenerate]: id=regenerates
+#: data/core/macros/abilities.cfg:111
+msgid ""
+"This unit heals itself each turn, though not as much as if stationed in a "
+"village."
+msgstr ""
+
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:105
+#: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "storrúil"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:106
+#: data/core/macros/abilities.cfg:132
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:118
+#: data/core/macros/abilities.cfg:145
 msgid "diversion"
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:119
+#: data/core/macros/abilities.cfg:146
 #, fuzzy
 #| msgid "female^leadership"
 msgid "female^diversion"
 msgstr "ceannas"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:120
+#: data/core/macros/abilities.cfg:147
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
 
+#. [chance_to_hit]: id=diversion
+#: data/core/macros/abilities.cfg:148
+msgid ""
+"If there is an enemy of the target on the opposite side of the target while "
+"attacking it, this unit diverts the target's attention and reduces its "
+"chance to hit."
+msgstr ""
+
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:172
+#: data/core/macros/abilities.cfg:200
 msgid "female^leadership"
 msgstr "ceannas"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:173
+#: data/core/macros/abilities.cfg:201
 msgid ""
-"This unit can lead your own units that are next to it, making them fight "
-"better.\n"
+"This unit can lead other troops in battle.\n"
 "\n"
-"Adjacent own units of lower level will do more damage in battle. When a unit "
-"adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
+"All adjacent lower-level units from the same side deal 25% more damage for "
+"each difference in level."
 msgstr ""
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:191
+#: data/core/macros/abilities.cfg:220
 msgid "female^skirmisher"
 msgstr "scirmiseoir"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:192
+#: data/core/macros/abilities.cfg:221
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:236
 msgid "female^illuminates"
 msgstr "soilsiú"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:237
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3680,24 +3815,24 @@ msgid ""
 msgstr ""
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:220
+#: data/core/macros/abilities.cfg:251
 msgid "female^teleport"
 msgstr "teileapórtáil"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:221
+#: data/core/macros/abilities.cfg:252
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:251
+#: data/core/macros/abilities.cfg:283
 msgid "female^ambush"
 msgstr "luíochán"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:252
+#: data/core/macros/abilities.cfg:284
 #, fuzzy
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -3715,19 +3850,19 @@ msgstr ""
 "loses all its remaining movement."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:269
+#: data/core/macros/abilities.cfg:302
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:270
+#: data/core/macros/abilities.cfg:303
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
 msgstr "mall"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:271
+#: data/core/macros/abilities.cfg:304
 #, fuzzy
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
@@ -3746,7 +3881,7 @@ msgstr ""
 "loses all its remaining movement."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:292
+#: data/core/macros/abilities.cfg:325
 #, fuzzy
 msgid ""
 "The unit becomes invisible during night.\n"
@@ -3764,12 +3899,12 @@ msgstr ""
 "loses all its remaining movement."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:310
+#: data/core/macros/abilities.cfg:344
 msgid "female^concealment"
 msgstr "ceilt"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:311
+#: data/core/macros/abilities.cfg:345
 #, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
@@ -3788,12 +3923,12 @@ msgstr ""
 "loses all its remaining movement."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:329
+#: data/core/macros/abilities.cfg:364
 msgid "female^submerge"
 msgstr "tum"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:330
+#: data/core/macros/abilities.cfg:365
 #, fuzzy
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -3811,24 +3946,24 @@ msgstr ""
 "loses all its remaining movement."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:385
 msgid "female^feeding"
 msgstr "beathú"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:361
+#: data/core/macros/abilities.cfg:398
 msgid "berserk"
 msgstr "dásatach"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:362
+#: data/core/macros/abilities.cfg:399
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:373
+#: data/core/macros/abilities.cfg:411
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -3836,7 +3971,7 @@ msgid ""
 msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:431
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -3844,7 +3979,7 @@ msgid ""
 msgstr ""
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:442
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -3852,7 +3987,7 @@ msgid ""
 msgstr ""
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:414
+#: data/core/macros/abilities.cfg:454
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -3861,37 +3996,56 @@ msgid ""
 msgstr ""
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:464
 msgid "petrifies"
 msgstr "clochraithe"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:424
+#: data/core/macros/abilities.cfg:465
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:434
+#: data/core/macros/abilities.cfg:476
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/abilities.cfg:489
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/abilities.cfg:490
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/abilities.cfg:491
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:505
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:517
 msgid "swarm"
 msgstr "saithigh"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:459
+#: data/core/macros/abilities.cfg:518
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -3900,28 +4054,46 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:469
+#: data/core/macros/abilities.cfg:529
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 
+#. [damage]: id=absorb
+#: data/core/macros/abilities.cfg:542
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/abilities.cfg:543
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/abilities.cfg:544
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:556
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:566
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "céadbhualadh"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:567
 #, fuzzy
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -3930,7 +4102,7 @@ msgstr ""
 "Buaileann an t-aonad seo "
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:502
+#: data/core/macros/abilities.cfg:578
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4149,19 +4321,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Nótaí Speisialta:"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:10
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -4173,80 +4333,80 @@ msgstr ""
 " Tá friotaíochtaí neamhghnácha in aghaidh damáiste ag spioraid, agus teann "
 "siad go mall ar an domhan."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:13
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:20
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr "Is féidir leis an t-aonad seo bunchneasú."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:23
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr "Is féidir leis an t-aonad seo cneasú tapa."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:26
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:35
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:38
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:44
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:47
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:53
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:56
 #, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
@@ -4260,108 +4420,107 @@ msgstr ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:92
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:95
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:98
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:104
+#: data/core/macros/special-notes.cfg:101
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
-#. [special_note]
-#: data/core/macros/special-notes.cfg:160
-msgid ""
-"This unit heals itself each turn, though not as much as if stationed in a "
-"village."
+#: data/core/macros/special-notes.cfg:116
+#: src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
 msgstr ""
-
-#. [special_note]
-#: data/core/macros/special-notes.cfg:304
-msgid ""
-"If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
-"chance to hit."
-msgstr ""
+"\n"
+"\n"
+"Nótaí Speisialta:"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -4865,15 +5024,13 @@ msgid ""
 "quickly. However, their sheer weight and bulk limits their flight ability "
 "somewhat, making them ungainly in the air. Where possible, they make use of "
 "terrain features such as hills, mountains and trees as launch points in "
-"order to gain greater height and speed. Fortunately for their enemies, they "
-"are still quite clumsy creatures and surprisingly slow in combat. This, "
-"combined with their large size, renders them easy targets for those who dare "
-"attack them.\n"
+"order to gain greater height and speed. Fortunately for their enemies, their "
+"large size renders them easy targets for those who dare attack them.\n"
 "\n"
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -4904,11 +5061,10 @@ msgid ""
 "in quality, only matched by those produced in the finest Dwarvish "
 "foundries.\n"
 "\n"
-"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-"Death in battle is the most preferred way for a drake to leave this world. "
-"Unlike the elder members of other races, drakes naturally grow more "
-"aggressive and reckless towards the ends of their natural lives, perhaps to "
-"help ensure their place in the heroic legends of their kind.\n"
+"Drakes hatch from eggs and may live naturally for several decades, although "
+"some have been known to survive for longer. However, death in battle is the "
+"most preferred way for a drake to leave this world. As such, most drakes do "
+"not live to see the end of their natural lifespan.\n"
 "\n"
 "<header>text='Geography'</header>\n"
 "Drakes originated from an archipelago of volcanic islands called "
@@ -5158,23 +5314,58 @@ msgid ""
 "origins."
 msgstr ""
 
+#. [race]: id=horse
+#: data/core/units.cfg:183
+#, fuzzy
+#| msgid "race^Wose"
+msgid "race^Horse"
+msgstr "Wús"
+
+#. [race]: id=horse
+#: data/core/units.cfg:184
+#, fuzzy
+#| msgid "race+female^Ogre"
+msgid "race+female^Horse"
+msgstr "Fathach"
+
+#. [race]: id=horse
+#: data/core/units.cfg:185
+#, fuzzy
+#| msgid "race^Woses"
+msgid "race^Horses"
+msgstr "Wúis"
+
+#. [race]: id=horse
+#: data/core/units.cfg:186
+msgid ""
+"Domesticated horses come in many shapes and sizes, from mighty war chargers, "
+"to sturdy draught horses or agile stock horses. While they are more fragile "
+"than many beasts, their speed and cunning allow feral horses to thrive in "
+"the wild, alongside their wild brethren.\n"
+"\n"
+"Horses have been an important part of many civilizations, so it is not "
+"surprising that there are many myths and stories centered around them. "
+"Winged horses, man-horse hybrids, and ghost horses have made their way into "
+"written history, though few can honestly claim to have seen such things."
+msgstr ""
+
 #. [race]: id=human
-#: data/core/units.cfg:191
+#: data/core/units.cfg:203
 msgid "race^Human"
 msgstr "Daonnaí"
 
 #. [race]: id=human
-#: data/core/units.cfg:192
+#: data/core/units.cfg:204
 msgid "race+female^Human"
 msgstr "Daonnaí"
 
 #. [race]: id=human
-#: data/core/units.cfg:193
+#: data/core/units.cfg:205
 msgid "race^Humans"
 msgstr "Daonnaithe"
 
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:206
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5217,28 +5408,28 @@ msgid ""
 msgstr ""
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:209
+#: data/core/units.cfg:221
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Daonnaí"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:210
+#: data/core/units.cfg:222
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Daonnaí"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:211
+#: data/core/units.cfg:223
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Neamh-mharbha"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:225
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -5296,22 +5487,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:234
+#: data/core/units.cfg:246
 msgid "race^Saurian"
 msgstr "Sáraíoch"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:235
+#: data/core/units.cfg:247
 msgid "race+female^Saurian"
 msgstr "Sáraíoch"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:248
 msgid "race^Saurians"
 msgstr "Sáraígh"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:249
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -5381,17 +5572,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:263
+#: data/core/units.cfg:275
 msgid "race^Mechanical"
 msgstr "Meicniúil"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:264
+#: data/core/units.cfg:276
 msgid "race+plural^Mechanical"
 msgstr "Meicniúil"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:277
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5400,24 +5591,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:274
+#: data/core/units.cfg:286
 msgid "race^Merman"
 msgstr "Fear Mara"
 
 #. [race]: id=merman
-#: data/core/units.cfg:275
+#: data/core/units.cfg:287
 msgid "race^Mermaid"
 msgstr "Maighdean Mhara"
 
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:288
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Troll"
 
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:290
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5431,22 +5622,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:286
+#: data/core/units.cfg:298
 msgid "race^Monster"
 msgstr "Arracht"
 
 #. [race]: id=monster
-#: data/core/units.cfg:287
+#: data/core/units.cfg:299
 msgid "race+female^Monster"
 msgstr "Arracht"
 
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:300
 msgid "race^Monsters"
 msgstr "Arrachtaí"
 
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:301
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5454,22 +5645,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:296
+#: data/core/units.cfg:308
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:297
+#: data/core/units.cfg:309
 msgid "race^Nagini"
 msgstr "Nagíni"
 
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:310
 msgid "race^Nagas"
 msgstr "Nagaí"
 
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:311
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5487,22 +5678,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:307
+#: data/core/units.cfg:319
 msgid "race^Ogre"
 msgstr "Fathach"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:308
+#: data/core/units.cfg:320
 msgid "race+female^Ogre"
 msgstr "Fathach"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:321
 msgid "race^Ogres"
 msgstr "Fathaigh"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:322
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5521,22 +5712,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:318
+#: data/core/units.cfg:330
 msgid "race^Orc"
 msgstr "Orc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:319
+#: data/core/units.cfg:331
 msgid "race+female^Orc"
 msgstr "Orc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:332
 msgid "race^Orcs"
 msgstr "Oirc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:333
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -5590,7 +5781,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -5599,22 +5790,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:341
+#: data/core/units.cfg:353
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:342
+#: data/core/units.cfg:354
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:355
 msgid "race^Trolls"
 msgstr "Troill"
 
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:356
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -5653,22 +5844,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:364
+#: data/core/units.cfg:376
 msgid "race^Undead"
 msgstr "Neamh-mharbh"
 
 #. [race]: id=undead
-#: data/core/units.cfg:365
+#: data/core/units.cfg:377
 msgid "race+female^Undead"
 msgstr "Neamh-mharbh"
 
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:378
 msgid "race+plural^Undead"
 msgstr "Neamh-mharbha"
 
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:379
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -5705,22 +5896,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:380
+#: data/core/units.cfg:392
 msgid "race^Wolf"
 msgstr "Faolchú"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:381
+#: data/core/units.cfg:393
 msgid "race+female^Wolf"
 msgstr "Faolchú"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:394
 msgid "race^Wolves"
 msgstr "Faolchúnna"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:395
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -5732,17 +5923,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wose"
 msgstr "Wús"
 
 #. [race]: id=wose
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race^Woses"
 msgstr "Wúis"
 
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -5783,96 +5974,136 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:179
+#: src/help/help.cpp:213
 msgid "Close"
 msgstr "Dún"
 
-#: src/help/help.cpp:182
-msgid "The Battle for Wesnoth Help"
-msgstr "An Cabhair Chath ar son Wesnoth"
+#: src/help/help.cpp:216
+msgid "Help"
+msgstr "Cabhair"
 
-#: src/help/help.cpp:236 src/help/help.cpp:240
+#: src/help/help.cpp:270 src/help/help.cpp:274
 msgid "Parse error when parsing help text:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:63
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:156
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
+msgstr ""
+
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr ""
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr ""
+
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:194
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Tír-raon"
 
-#: src/help/help_topic_generators.cpp:176
+#: src/help/help_topic_generators.cpp:214
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "Costas Gluaiseachta"
 
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:260
+#: src/help/help_topic_generators.cpp:298
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "leibhéal"
 
-#: src/help/help_topic_generators.cpp:321
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
 msgstr "Ardaíonn ó: "
 
-#: src/help/help_topic_generators.cpp:323
+#: src/help/help_topic_generators.cpp:361
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Ardaíonn ó: "
 
-#: src/help/help_topic_generators.cpp:352
+#: src/help/help_topic_generators.cpp:390
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Tír-raon"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:395
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Tír-raon"
 
-#: src/help/help_topic_generators.cpp:375
+#: src/help/help_topic_generators.cpp:413
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "Faicsin:"
 
-#: src/help/help_topic_generators.cpp:399
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
 msgstr "Ilghnéitheach"
 
-#: src/help/help_topic_generators.cpp:401
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
 msgstr "Cine: "
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
 msgstr "Cumais: "
 
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
 msgstr "Uasghráduithe Cumais: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:527
+#: src/help/help_topic_generators.cpp:565
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -5881,7 +6112,7 @@ msgstr "PS: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:531
+#: src/help/help_topic_generators.cpp:569
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -5890,14 +6121,14 @@ msgstr "Gluaiseachtaí: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:542
+#: src/help/help_topic_generators.cpp:580
 #, fuzzy
 #| msgid "Swarming"
 msgid "Jamming:"
@@ -5906,7 +6137,7 @@ msgstr "Saithiú"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:547
+#: src/help/help_topic_generators.cpp:585
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -5915,7 +6146,7 @@ msgstr "Costas: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:551
+#: src/help/help_topic_generators.cpp:589
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -5924,67 +6155,70 @@ msgstr "Ailíniú: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:558
+#: src/help/help_topic_generators.cpp:596
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "PT Riachtanach: "
 
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
 msgstr "Ionsaithe"
 
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
 msgstr "Ainm"
 
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
 msgstr "Raon airm:"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
 msgstr "Sórt"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
 msgstr "Speisialta"
 
-#: src/help/help_topic_generators.cpp:666
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
 msgstr "Cineál Ionsaithe"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
 msgstr "Friotaíocht"
 
-#: src/help/help_topic_generators.cpp:696
+#: src/help/help_topic_generators.cpp:734
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Maolaitheoirí Tír-raonta"
 
-#: src/help/help_topic_generators.cpp:700
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Tír-raon"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Costas Gluaiseachta"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:744
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Cosaint"
 
-#: src/help/help_topic_generators.cpp:711
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:715
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr ""
+
+#~ msgid "The Battle for Wesnoth Help"
+#~ msgstr "An Cabhair Chath ar son Wesnoth"
 
 #~ msgid "Orbs"
 #~ msgstr "Cruinne"
@@ -6276,9 +6510,6 @@ msgstr ""
 
 #~ msgid "Experience and Advancement"
 #~ msgstr "Taithí agus Ardú"
-
-#~ msgid "Help"
-#~ msgstr "Cabhair"
 
 #~ msgid "<header>text='Units having this special attack'</header>"
 #~ msgstr "<header>text='Aonaid leis an ionsaí speisialta seo'</header>"

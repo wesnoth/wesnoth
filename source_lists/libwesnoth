@@ -7,13 +7,10 @@ display_context.cpp
 events.cpp
 floating_label.cpp
 font/font_config.cpp
-font/marked-up_text.cpp
-font/sdl_ttf.cpp
+font/sdl_ttf_compat.cpp
 font/standard_colors.cpp
 font/text.cpp
-font/text_cache.cpp
 font/text_formatting.cpp
-font/text_surface.cpp
 format_time_summary.cpp
 formula/string_utils.cpp
 game_end_exceptions.cpp
@@ -35,6 +32,8 @@ preferences/general.cpp
 key.cpp
 language.cpp
 map/label.cpp
+map/location.cpp
+map/map.cpp
 minimap.cpp
 pathfind/astarsearch.cpp
 pathutils.cpp
@@ -47,10 +46,10 @@ soundsource.cpp
 terrain/builder.cpp
 terrain/terrain.cpp
 terrain/translation.cpp
+terrain/type_data.cpp
 theme.cpp
 time_of_day.cpp
 tooltips.cpp
-utils/make_enum.cpp
 video.cpp
 widgets/button.cpp
 widgets/menu.cpp

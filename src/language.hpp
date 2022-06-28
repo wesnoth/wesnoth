@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -37,7 +38,7 @@ struct language_def
 		{}
 
 	language_def(const std::string& name, const t_string& lang, const std::string& dir,
-		    const std::string &salternates = "", const std::string& sort_name = "", const std::string& percent = "100") :
+	             const std::string &salternates = "", const std::string& sort_name = "", const std::string& percent = "100") :
 		localename(name),
 		alternates(utils::split(salternates)),
 		language(lang),
@@ -49,7 +50,7 @@ struct language_def
 		} catch(const std::invalid_argument&) {
 			this->percent = 100;
 		}
-    }
+	}
 
 	std::string localename;
 	std::vector<std::string> alternates;
@@ -67,8 +68,19 @@ typedef std::vector<language_def> language_list;
 
 struct symbol_table
 {
+	/**
+	 * Look up the string mappings given in [language] tags. If the key is not
+	 * found, fall back to returning a string that's only meant for developers
+	 * to see.
+	 */
 	const t_string& operator[](const std::string& key) const;
 	const t_string& operator[](const char* key) const;
+	/**
+	 * Look up the string mappings given in [language] tags. If the key is not
+	 * found, returns symbol_table::end().
+	 */
+	utils::string_map::const_iterator find(const std::string& key) const;
+	utils::string_map::const_iterator end() const;
 };
 
 //table of strings which are displayed to the user. Maps ids -> text.
@@ -78,9 +90,16 @@ extern symbol_table string_table;
 
 bool& time_locale_correct();
 
-//function which, given the main configuration object, will return
-//a list of the translations of the game available.
-std::vector<language_def> get_languages();
+/**
+ * Return a list of available translations.
+ *
+ * The list will normally be filtered with incomplete (according to
+ * min_translation_percent) translations removed.
+ *
+ *@param all if true, include incomplete translations
+ *@pre load_language_list() has already been called
+ */
+std::vector<language_def> get_languages(bool all=false);
 
 //function which, given the main configuration object, and a locale,
 //will set string_table to be populated with data from that locale.

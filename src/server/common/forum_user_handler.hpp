@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -37,11 +38,10 @@ public:
 	 *
 	 * @param name The username used to login.
 	 * @param password The hashed password sent by the client.
-	 * @param seed The nonce created for this login attempt.
 	 *             @see server::send_password_request().
 	 * @return Whether the hashed password sent by the client matches the hash retrieved from the phpbb database.
 	 */
-	bool login(const std::string& name, const std::string& password, const std::string& seed);
+	bool login(const std::string& name, const std::string& password);
 
 	/**
 	 * Needed because the hashing algorithm used by phpbb requires some info
@@ -125,12 +125,12 @@ public:
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
 	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
-	 * @param s_base The server instance the player is connected to.
-	 * @param player_socket The socket use to communicate with the player's client.
+	 * @param s The server instance the player is connected to.
+	 * @param player The player iterator used to communicate with the player's client.
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 */
-	void async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset);
+	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset);
 
 	/**
 	 * Inserts game related information.
@@ -180,8 +180,9 @@ public:
 	 * @param id The id of the content.
 	 * @param source The source add-on for the content.
 	 * @param version The version of the source add-on.
+	 * @return The number of rows inserted which should always be 1.
 	 */
-	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+	unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 	/**
 	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.
@@ -200,6 +201,77 @@ public:
 	 */
 	void async_test_query(boost::asio::io_service& io_service, int limit);
 
+	/**
+	 * Checks whether a forum thread with @a topic_id exists.
+	 *
+	 * @param topic_id The topic id to check for.
+	 * @return True if the thread exists or there was a database failure, false if the topic wasn't found.
+	 */
+	bool db_topic_id_exists(int topic_id);
+
+	/**
+	 * Inserts information about an uploaded add-on into the database.
+	 *
+	 * @param instance_version The version of campaignd the add-on was uploaded to.
+	 * @param id The add-on's ID (aka directory name).
+	 * @param name The add-on's name from the pbl.
+	 * @param type The add-on's type from the pbl.
+	 * @param version The add-on's version from the pbl.
+	 * @param forum_auth Whether the provided author and password should be matched a forum account or not.
+	 * @param topic_id The forum topic ID of the add-on's feedback thread, 0 if not present.
+	 */
+	void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+
+	/**
+	 * Inserts into the database for when a player logs in.
+	 *
+	 * @param username The username of who logged in. The username is converted to lower case when inserting in order to allow index usage when querying.
+	 * @param ip The ip address of who logged in.
+	 * @param version The version of the client that logged in.
+	 */
+	unsigned long long db_insert_login(const std::string& username, const std::string& ip, const std::string& version);
+
+	/**
+	 * Updates the database for when a player logs out.
+	 *
+	 * @param login_id The generated ID that uniquely identifies the row to be updated.
+	 */
+	void db_update_logout(unsigned long long login_id);
+
+	/**
+	 * Searches for all players that logged in using the ip address.
+	 * The '%' wildcard can be used to search for partial ip addresses.
+	 *
+	 * @param ip The ip address to search for.
+	 * @param out Where to output the results.
+	 */
+	void get_users_for_ip(const std::string& ip, std::ostringstream* out);
+
+	/**
+	 * Searches for all ip addresses used by the player.
+	 * The username is converted to lower case to allow a case insensitive select query to be executed while still using an index.
+	 * The '%' wildcard can be used to search for partial usernames.
+	 *
+	 * @param username The username to search for.
+	 * @param out Where to output the results.
+	 */
+	void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's email address from the phpbb forum database.
+	 */
+	std::string get_user_email(const std::string& user);
+
+	/**
+	 * Increments the download count for this add-on for the specific version.
+	 *
+	 * @param instance_version The version of campaignd the add-on was uploaded to.
+	 * @param id The add-on's ID (aka directory name).
+	 * @param version The version of the add-on being downloaded. May not be the most recent version.
+	 */
+	void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;
@@ -214,7 +286,7 @@ private:
 	 * @param user The player's username.
 	 * @return The player's hashed password from the phpbb forum database.
 	 */
-	std::string get_hash(const std::string& user);
+	std::string get_hashed_password_from_db(const std::string& user);
 
 	/**
 	 * @param user The player's username.

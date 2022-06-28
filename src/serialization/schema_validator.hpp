@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Sytyi Nick <nsytyi@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Sytyi Nick <nsytyi@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -56,7 +57,7 @@ public:
 	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
 	virtual void close_tag() override;
 	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
-	virtual void validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file) override;
+	virtual void validate_key(const config& cfg, const std::string& name, const config_attribute_value& value, int start_line, const std::string& file) override;
 
 private:
 	// types section
@@ -98,8 +99,9 @@ protected:
 		std::string tag;
 		std::string key;
 		std::string value;
+		std::string expected;
 
-		message_info(message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "")
+		message_info(message_type t, const std::string& file, int line = 0, int n = 0, const std::string& tag = "", const std::string& key = "", const std::string& value = "", const std::string& expected = "")
 			: type(t)
 			, file(file)
 			, line(line)
@@ -107,6 +109,7 @@ protected:
 			, tag(tag)
 			, key(key)
 			, value(value)
+			, expected(expected)
 		{
 		}
 	};
@@ -165,7 +168,7 @@ public:
 	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
 	virtual void close_tag() override;
 	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
-	virtual void validate_key(const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file) override;
+	virtual void validate_key(const config& cfg, const std::string& name, const config_attribute_value& value, int start_line, const std::string& file) override;
 private:
 	struct reference {
 		reference(const std::string& value, const std::string& file, int line, const std::string& tag)

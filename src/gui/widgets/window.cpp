@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -23,6 +24,7 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
+#include "draw.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
@@ -56,10 +58,12 @@
 #include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <functional>
 
@@ -98,7 +102,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override
+	virtual std::unique_ptr<widget> build() const override
 	{
 		return nullptr;
 	}
@@ -449,7 +453,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::none);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::none);
 	set_want_keyboard_input(false);
 
 	show_mode_ = show_mode::tooltip;
@@ -471,7 +475,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::hit);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::hit);
 
 	show_mode_ = show_mode::modeless;
 
@@ -550,7 +554,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
-				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
+				mouse_button_state_ = sdl::get_mouse_button_mask();
 				mouse_button_state_initialized = true;
 			}
 
@@ -559,7 +563,9 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.
-			SDL_Delay(10);
+			if(status_ != status::CLOSED) {
+				SDL_Delay(10);
+			}
 		}
 	}
 	catch(...)
@@ -574,9 +580,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 		// restore area
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			font::undraw_floating_labels(video_.getSurface());
+			draw::blit(restorer_, get_rectangle());
+			font::undraw_floating_labels();
 		}
 		throw;
 	}
@@ -585,9 +590,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 	// restore area
 	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		font::undraw_floating_labels(video_.getSurface());
+		draw::blit(restorer_, get_rectangle());
+		font::undraw_floating_labels();
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
@@ -605,16 +609,13 @@ void window::draw()
 		return;
 	}
 
-	surface& frame_buffer = video_.getSurface();
-
 	/***** ***** Layout and get dirty list ***** *****/
 	if(need_layout_) {
 		// Restore old surface. In the future this phase will not be needed
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
 		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		layout();
@@ -625,11 +626,11 @@ void window::draw()
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		if(is_toplevel_) {
-			font::draw_floating_labels(frame_buffer);
+			font::draw_floating_labels();
 		}
 
 		if(restore_) {
-			restorer_ = get_surface_portion(frame_buffer, rect);
+			restorer_ = video_.read_texture(&rect);
 		}
 
 		// Need full redraw so only set ourselves dirty.
@@ -674,7 +675,7 @@ void window::draw()
 		assert(!item.empty());
 
 		const SDL_Rect dirty_rect
-				= new_widgets ? video_.screen_area()
+				= new_widgets ? video_.draw_area()
 							  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
@@ -683,7 +684,7 @@ void window::draw()
 		dirty_list_.clear();
 		dirty_list_.emplace_back(1, this);
 #else
-		clip_rect_setter clip(frame_buffer, &dirty_rect);
+		auto clipper = draw::set_clip(dirty_rect);
 #endif
 
 		/*
@@ -729,8 +730,7 @@ void window::draw()
 
 		// Restore.
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		// Background.
@@ -738,12 +738,12 @@ void window::draw()
 			itor != item.end();
 			++itor) {
 
-			(**itor).draw_background(frame_buffer, 0, 0);
+			(**itor).draw_background();
 		}
 
 		// Children.
 		if(!item.empty()) {
-			item.back()->draw_children(frame_buffer, 0, 0);
+			item.back()->draw_children();
 		}
 
 		// Foreground.
@@ -751,7 +751,7 @@ void window::draw()
 			ritor != item.rend();
 			++ritor) {
 
-			(**ritor).draw_foreground(frame_buffer, 0, 0);
+			(**ritor).draw_foreground();
 			(**ritor).set_is_dirty(false);
 		}
 	}
@@ -773,10 +773,7 @@ void window::draw()
 void window::undraw()
 {
 	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		// Since the old area might be bigger as the new one, invalidate
-		// it.
+		draw::blit(restorer_, get_rectangle());
 	}
 }
 
@@ -1126,46 +1123,6 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.
- * This differs slightly from the standard swap_grid utility, so it's defined by itself here.
- */
-void window_swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-		assert(parent_grid);
-	}
-	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		grandparent_grid->swap_child(id, widget, false);
-	} else if(container_base* c
-			  = dynamic_cast<container_base*>(parent_grid->parent())) {
-
-		c->get_grid().swap_child(id, widget, true);
-	} else {
-		assert(false);
-	}
-}
-
-} // namespace
-
 void window::redraw_windows_on_top() const
 {
 	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
@@ -1179,7 +1136,24 @@ void window::redraw_windows_on_top() const
 
 void window::finalize(const builder_grid& content_grid)
 {
-	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
+	auto widget = content_grid.build();
+	assert(widget);
+
+	static const std::string id = "_window_content_grid";
+
+	// Make sure the new child has same id.
+	widget->set_id(id);
+
+	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	assert(parent_grid);
+
+	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
+		grandparent_grid->swap_child(id, std::move(widget), false);
+	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())) {
+		c->get_grid().swap_child(id, std::move(widget), true);
+	} else {
+		assert(false);
+	}
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

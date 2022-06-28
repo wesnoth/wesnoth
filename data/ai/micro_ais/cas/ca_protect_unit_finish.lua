@@ -1,6 +1,6 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_protect_unit_finish, PU_unit, PU_goal = {}
+local ca_protect_unit_finish, PU_unit, PU_goal = {}, nil, nil
 
 function ca_protect_unit_finish:evaluation(cfg)
     -- If a unit can make it to the goal, this is the first thing that happens

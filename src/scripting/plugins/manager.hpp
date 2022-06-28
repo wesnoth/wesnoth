@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -20,7 +21,7 @@
 #pragma once
 
 #include "config.hpp"
-#include "utils/make_enum.hpp"
+#include "scripting/plugin_manager_status.hpp"
 
 #include <string>
 
@@ -41,15 +42,9 @@ public:
 	void play_slice(const plugins_context &);
 	void notify_event(const std::string & name, const config & data);
 
-	MAKE_ENUM( STATUS,
-		(NONE,		"not created")
-		(RUNNING,	"running")
-		(STOPPED,	"stopped")
-	);
-
 	std::size_t size();
 
-	STATUS get_status(std::size_t idx);
+	plugin_manager_status::type get_status(std::size_t idx);
 	std::string get_detailed_status(std::size_t idx);
 	std::string get_name (std::size_t idx);
 

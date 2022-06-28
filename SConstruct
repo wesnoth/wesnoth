@@ -47,7 +47,7 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd boost_unit_tests")),
-    EnumVariable('build', 'Build variant: release, debug, or profile', "release", ["release", "debug", "profile"]),
+    EnumVariable('build', 'Build variant: release, debug, or profile', "release", ["release", "debug"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
@@ -58,17 +58,16 @@ opts.AddVariables(
     ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('harden', 'Whether to enable options to harden the executables', True),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
-    EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
+    EnumVariable('profiler', 'profiler to be used', "", ["", "gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
     BoolVariable('use_srcdir', 'Whether to place object files in src/ or not', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
-    BoolVariable('fribidi','Clear to disable bidirectional-language support', True),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
-    BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemd"))),
+    BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
@@ -88,7 +87,7 @@ opts.AddVariables(
     BoolVariable('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',"$version_suffix"),
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
-    BoolVariable('forum_user_handler', 'Enable forum user handler in wesnothd', False),
+    BoolVariable('forum_user_handler', 'Enable forum user handler in wesnothd and campaignd', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     BoolVariable('strict', 'Set to strict compilation', False),
@@ -115,7 +114,8 @@ opts.AddVariables(
     BoolVariable("autorevision", 'Use autorevision tool to fetch current git revision that will be embedded in version string', True),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
-    BoolVariable("history", "Clear to disable GNU history support in lua console", True)
+    BoolVariable("history", "Clear to disable GNU history support in lua console", True),
+    BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
     )
 
 #
@@ -184,13 +184,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-# boost::asio::post is new with 1.66
-# Ubuntu 18.04 also only has 1.65
-if env["forum_user_handler"]:
-    boost_version = "1.66"
-else:
-    boost_version = "1.65"
-
+boost_version = "1.66"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -318,7 +312,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -340,13 +334,8 @@ if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
     if env["PLATFORM"] == "posix":
-        conf.CheckCHeader("poll.h", "<>")
-        conf.CheckCHeader("sys/poll.h", "<>")
-        conf.CheckCHeader("sys/select.h", "<>")
         if conf.CheckCHeader("sys/sendfile.h", "<>"):
             conf.CheckFunc("sendfile")
-    conf.CheckLib("m")
-    conf.CheckFunc("round")
 
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
@@ -362,10 +351,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL(require_version = '2.0.4') & \
-            conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
-            conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
-            conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2Mixer() & \
+            conf.CheckSDL2Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
@@ -393,7 +381,7 @@ if env["prereqs"]:
 
     if(env["PLATFORM"] != 'darwin'):
         # Otherwise, use Security.framework
-        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto")
+        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto") & conf.CheckLib("ssl")
 
     env = conf.Finish()
 
@@ -403,12 +391,18 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckLib("vorbisfile") & conf.CheckOgg()
     have_client_prereqs = have_client_prereqs & conf.CheckPNG()
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
-#    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
-#    have_client_prereqs = have_client_prereqs & conf.CheckGLEW()
+    have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+
+    if not File("#/src/modules/lua/.git").rfile().exists():
+        have_client_prereqs = False
+        Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+    else:
+        print("Lua submodule found.")
+
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
 
@@ -418,7 +412,6 @@ if env["prereqs"]:
             have_X = conf.CheckLib('X11')
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
-        client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support."))
         env["history"] = env["history"] and (conf.CheckLib("history") or Warning("Can't find GNU history, disabling history support."))
 
     client_env = conf.Finish()
@@ -426,8 +419,6 @@ if env["prereqs"]:
 # We set those outside of Configure() section because SCons doesn't merge CPPPATH var properly in conf.Finish()
     if env["notifications"]:
         client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
-    if client_env['fribidi']:
-        client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
     if env["history"]:
         client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
@@ -498,6 +489,8 @@ for env in [test_env, client_env, env]:
 
         if env['pedantic']:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
+        if env['force_color']:
+            env.AppendUnique(CCFLAGS = ["-fcolor-diagnostics"])
 
     if "gcc" in env["TOOLS"]:
         env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
@@ -511,6 +504,9 @@ for env in [test_env, client_env, env]:
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
             env.AppendUnique(CCFLAGS = Split("-fno-omit-frame-pointer -fno-optimize-sibling-calls"))
+        if env['force_color']:
+            env.AppendUnique(CCFLAGS = ["-fdiagnostics-color=always"])
+
 
 # #
 # Determine optimization level
@@ -519,7 +515,7 @@ for env in [test_env, client_env, env]:
         if not env["opt"]:
             if env["build"] == "release":
                 env["opt"] = "-O3 "
-            elif env["build"] == "profile" and env["profiler"] == "perf":
+            elif env["profiler"] == "perf":
                 env["opt"] = "-Og "
             else:
                 env["opt"] = "-O0 "
@@ -569,6 +565,26 @@ for env in [test_env, client_env, env]:
         rel_comp_flags = env["opt"]
         rel_link_flags = ""
 
+# #
+# Add flags if using profiling
+# #
+
+        if env["profiler"] == "gprof":
+            rel_comp_flags += " -pg"
+            rel_link_flags += " -pg"
+
+        if env["profiler"] == "gcov":
+            rel_comp_flags += " --coverage"
+            rel_link_flags += " --coverage"
+
+        if env["profiler"] == "gperftools":
+            rel_comp_flags += ""
+            rel_link_flags += " -Wl,--no-as-needed,-lprofiler"
+
+        if env["profiler"] == "perf":
+            rel_comp_flags += " -ggdb -fno-omit-frame-pointer"
+            rel_link_flags += ""
+
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
 # without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
         if env["arch"]:
@@ -577,61 +593,40 @@ for env in [test_env, client_env, env]:
         if env["PLATFORM"] == "win32" and not env["arch"]:
             env["arch"] = " -march=pentiumpro"
 
-        rel_comp_flags = rel_comp_flags + env["arch"]
+        rel_comp_flags += env["arch"]
 
 # PGO and LTO setup
         if "gcc" in env["CC"]:
             if env["pgo_data"] == "generate":
-                rel_comp_flags = rel_comp_flags + " -fprofile-generate=pgo_data/"
-                rel_link_flags = "-fprofile-generate=pgo_data/"
+                rel_comp_flags += " -fprofile-generate=pgo_data/"
+                rel_link_flags += " -fprofile-generate=pgo_data/"
 
             if env["pgo_data"] == "use":
-                rel_comp_flags = rel_comp_flags + " -fprofile-correction -fprofile-use=pgo_data/"
-                rel_link_flags = "-fprofile-correction -fprofile-use=pgo_data/"
+                rel_comp_flags += " -fprofile-correction -fprofile-use=pgo_data/"
+                rel_link_flags += " -fprofile-correction -fprofile-use=pgo_data/"
 
             if env["enable_lto"] == True:
-                rel_comp_flags = rel_comp_flags + " -flto=" + str(env["jobs"])
-                rel_link_flags = rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_comp_flags += " -flto=" + str(env["jobs"])
+                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
-                rel_comp_flags = rel_comp_flags + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
-                rel_link_flags = "-fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+                rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+                rel_link_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
 
             if env["pgo_data"] == "use":
-                rel_comp_flags = rel_comp_flags + " -fprofile-instr-use=pgo_data/wesnoth.profdata"
-                rel_link_flags = "-fprofile-instr-use=pgo_data/wesnoth.profdata"
+                rel_comp_flags += " -fprofile-instr-use=pgo_data/wesnoth.profdata"
+                rel_link_flags += " -fprofile-instr-use=pgo_data/wesnoth.profdata"
 
             if env["enable_lto"] == True:
-                rel_comp_flags = rel_comp_flags + " -flto=thin"
-                rel_link_flags = rel_comp_flags + " -fuse-ld=lld"
+                rel_comp_flags += " -flto=thin"
+                rel_link_flags += rel_comp_flags + " -fuse-ld=lld"
 
 # Enable ASLR and NX bit support on mingw
         if "mingw" in env["TOOLS"]:
-            rel_link_flags += "-Wl,--dynamicbase -Wl,--nxcompat"
+            rel_link_flags += " -Wl,--dynamicbase -Wl,--nxcompat"
 
 # #
 # End setting options for release build
-# Start setting options for profile build
-# #
-
-        if env["profiler"] == "gprof":
-            prof_comp_flags = env["opt"]+"-pg"
-            prof_link_flags = "-pg"
-
-        if env["profiler"] == "gcov":
-            prof_comp_flags = env["opt"]+"-fprofile-arcs -ftest-coverage"
-            prof_link_flags = "-fprofile-arcs"
-
-        if env["profiler"] == "gperftools":
-            prof_comp_flags = env["opt"]
-            prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
-
-        if env["profiler"] == "perf":
-            prof_comp_flags = env["opt"]+"-ggdb"
-            prof_link_flags = ""
-
-# #
-# End setting options for profile build
 # #
 
     if env['internal_data']:
@@ -646,13 +641,16 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
         env.Append(FRAMEWORKS = "Security")         # commonCrypto (after OpenSSL replacement on Mac)
         env.Append(FRAMEWORKS = "IOKit")            # IOKit
         env.Append(FRAMEWORKS = "CoreGraphics")     # CoreGraphics
+
+    if env["PLATFORM"] == 'sunos':
+        env.Append(LINKFLAGS = "-lsocket")
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
@@ -672,8 +670,7 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {
     "release" : dict(CCFLAGS = Split(rel_comp_flags) , LINKFLAGS  = Split(rel_link_flags)),
-    "debug"   : dict(CCFLAGS = Split(debug_flags)    , CPPDEFINES = Split(glibcxx_debug_flags)),
-    "profile" : dict(CCFLAGS = Split(prof_comp_flags), LINKFLAGS  = Split(prof_link_flags))
+    "debug"   : dict(CCFLAGS = Split(debug_flags)    , CPPDEFINES = Split(glibcxx_debug_flags))
     }
 build = env["build"]
 
@@ -748,8 +745,9 @@ linguas = Split(File("po/LINGUAS").get_contents().decode("utf-8"))
 def InstallManpages(env, component):
     env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
     for lingua in linguas:
-        manpage = os.path.join("doc", "man", lingua, component + ".6")
-        env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
+        manpage = FindFile(os.path.join(lingua, component + ".6"), "doc/man")
+        if manpage:
+            env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
 
 # Now the actual installation productions
 

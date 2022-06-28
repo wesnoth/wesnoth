@@ -1,18 +1,18 @@
 /*
-   Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
-   Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	by Charles Dang <exodia339gmail.com>
+	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
-
 #pragma once
 
 #include "config.hpp"
@@ -74,13 +74,9 @@ public:
 	/** The display function -- see @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
 
-	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
-
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_build(window& window) override;
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& /*window*/) override;
@@ -93,7 +89,9 @@ private:
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
 	void initialize_sound_option_group(const std::string& id_suffix);
 
-	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
+	void apply_pixel_scale();
+
+	widget_data get_friends_list_row_data(const preferences::acquaintance& entry);
 
 	void add_friend_list_entry(const bool is_friend, text_box& textbox);
 	void remove_friend_list_entry(listbox& friends_list, text_box& textbox);
@@ -116,7 +114,7 @@ private:
 	void default_hotkey_callback();
 	void hotkey_filter_callback() const;
 
-	group<preferences::LOBBY_JOINS> lobby_joins_group;
+	group<preferences::lobby_joins> lobby_joins_group;
 
 	const preferences::advanced_pref_list& adv_preferences_;
 
@@ -125,9 +123,10 @@ private:
 	int last_selected_item_;
 
 	std::vector<double> accl_speeds_;
-	visible_hotkeys_t visible_hotkeys_;
 
-	std::map<hotkey::HOTKEY_CATEGORY, t_string> cat_names_;
+	std::vector<const hotkey::hotkey_command*> visible_hotkeys_;
+
+	std::set<hotkey::HOTKEY_CATEGORY> visible_categories_;
 
 	// The page/tab index pairs for setting visible pages
 	const std::pair<int, int>& initial_index_;

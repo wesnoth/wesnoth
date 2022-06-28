@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2018 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -33,7 +34,6 @@
 #include <boost/range/iterator_range.hpp>
 #include <unordered_map>
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static lg::log_domain log_scripting_lua_mapgen("scripting/lua/mapgen");
 #define LOG_LMG LOG_STREAM(info, log_scripting_lua_mapgen)
@@ -161,25 +161,6 @@ namespace {
 */
 
 } //end namespace
-
-static int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs)
-{
-	LOG_LMG <<  "push_locationset\n";
-	lua_createtable(L, locs.size(), 0);
-	int i = 1;
-	for (const map_location& loc : locs)
-	{
-		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, loc.wml_x());
-		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, loc.wml_y());
-		lua_rawseti(L, -2, 2);
-		lua_rawseti(L, -2, i);
-		++i;
-	}
-	return 1;
-
-}
 
 static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 {
@@ -365,7 +346,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(x);
-		return l.x >= 0 && l.x < int(filter_.size()) && filter_[l.x];
+		const auto value = l.wml_x();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 	dynamic_bitset filter_;
 };
@@ -385,7 +367,8 @@ public:
 	bool matches(const gamemap_base&, map_location l) override
 	{
 		LOG_MATCHES(y);
-		return l.y >= 0 && l.y < int(filter_.size()) && filter_[l.y];
+		const auto value = l.wml_y();
+		return value >= 0 && value < int(filter_.size()) && filter_[value];
 	}
 
 	dynamic_bitset filter_;
@@ -527,7 +510,7 @@ public:
 			lua_pop(L, 1);
 		}
 		lua_geti(L, -1, 2);
-		radius_ = lua_tonumber(L, -1);
+		radius_ = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		lua_geti(L, -1, 3);
 		filter_ = build_filter(L, res_index, ks);

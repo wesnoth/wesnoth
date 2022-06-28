@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -132,7 +133,7 @@ protected:
 		return variant(tmp);
 	}
 
-	static inline void add_input(formula_input_vector& inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
+	static inline void add_input(formula_input_vector& inputs, const std::string& key, formula_access access_type = formula_access::read_only)
 	{
 		inputs.emplace_back(key, access_type);
 	}
@@ -255,6 +256,12 @@ public:
 		return *this;
 	}
 
+	map_formula_callable& add(const std::string& key, variant&& value)
+	{
+		values_[key] = std::move(value);
+		return *this;
+	}
+
 	void set_fallback(const_formula_callable_ptr fallback)
 	{
 		fallback_ = fallback;
@@ -294,7 +301,7 @@ private:
 		}
 
 		for(const auto& i : values_) {
-			add_input(inputs, i.first, FORMULA_READ_WRITE);
+			add_input(inputs, i.first, formula_access::read_write);
 		}
 	}
 

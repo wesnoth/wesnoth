@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -23,8 +24,8 @@
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
-#include "units/alignment.hpp"
 #include "units/ptr.hpp"
+#include "units/unit_alignments.hpp"
 
 #include <vector>
 
@@ -61,8 +62,8 @@ struct battle_context_unit_stats
 	bool poisons;            /**< Attack poisons opponent when it hits. */
 	bool backstab_pos;       /**<
 	                           * True if the attacker is in *position* to backstab the defender (this is used to
-                               * determine whether to apply the backstab bonus in case the attacker has backstab).
-                               */
+	                           * determine whether to apply the backstab bonus in case the attacker has backstab).
+	                           */
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */
@@ -287,7 +288,7 @@ int under_leadership(const unit &u, const map_location& loc, const_attack_ptr we
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
-		UNIT_ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless);
 
 /**
@@ -295,14 +296,14 @@ int combat_modifier(const unit_map& units,
  * due to the current time of day.
  */
 int combat_modifier(const time_of_day& effective_tod,
-		UNIT_ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
  * due to a given lawful_bonus.
  */
-int generic_combat_modifier(int lawful_bonus, UNIT_ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus);
+int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, bool is_fearless, int max_liminal_bonus);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:

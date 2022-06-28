@@ -1,7 +1,6 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
+local HA = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
 local function get_next_sheep(cfg)
     local sheep = AH.get_units_with_moves {
@@ -27,7 +26,7 @@ function ca_herding_sheep_move:execution(cfg)
     local dogs_filter = wml.get_child(cfg, "filter")
     -- Exclude those that are next to a dog
     reach_map:iter( function(x, y, v)
-        for xa, ya in H.adjacent_tiles(x, y) do
+        for xa, ya in wesnoth.current.map:iter_adjacent(x, y) do
             local dog = wesnoth.units.get(xa, ya)
             if dog and dog:matches(dogs_filter) then
                 reach_map:remove(x, y)
@@ -43,7 +42,7 @@ function ca_herding_sheep_move:execution(cfg)
 
     -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move
     -- make it a full move, otherwise partial move
-    local herding_area = herding_area(cfg)
+    local herding_area = HA(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", dogs_filter }

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Sergey Popov <loonycyborg@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -31,14 +32,12 @@
 #endif
 
 #include "exceptions.hpp"
+#include "utils/variant.hpp"
 
-#if BOOST_VERSION >= 106600
 #include <boost/asio/io_context.hpp>
-#else
-#include <boost/asio/io_service.hpp>
-#endif
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
+#include <boost/asio/ssl.hpp>
 
 class config;
 
@@ -52,11 +51,6 @@ struct error : public game::error
 	}
 };
 
-union data_union {
-	char binary[4];
-	uint32_t num;
-};
-
 /** A class that represents a TCP/IP connection. */
 class connection
 {
@@ -68,6 +62,7 @@ public:
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	connection(const std::string& host, const std::string& service);
+	~connection();
 
 	void transfer(const config& request, config& response);
 
@@ -103,6 +98,14 @@ public:
 		return done_;
 	}
 
+	/** True if connection is currently using TLS and thus is allowed to send cleartext passwords or auth tokens */
+	bool using_tls() const
+	{
+		// Calling this function before connection is ready may return wrong result
+		assert(done_);
+		return utils::holds_alternative<tls_socket>(socket_);
+	}
+
 	std::size_t bytes_to_write() const
 	{
 		return bytes_to_write_;
@@ -124,30 +127,28 @@ public:
 	}
 
 private:
-#if BOOST_VERSION >= 106600
 	boost::asio::io_context io_context_;
-#else
-	boost::asio::io_service io_context_;
-#endif
 
+	std::string host_;
+	const std::string service_;
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	typedef boost::asio::ip::tcp::socket socket;
-	socket socket_;
+	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::sslv23 };
+
+	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
+	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
+	bool use_tls_;
+	any_socket socket_;
 
 	bool done_;
 
 	std::unique_ptr<boost::asio::streambuf> write_buf_;
 	std::unique_ptr<boost::asio::streambuf> read_buf_;
 
-#if BOOST_VERSION >= 106600
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
-#else
-	using results_type = resolver::iterator;
-	using endpoint = resolver::iterator;
-#endif
 
 	void handle_resolve(const boost::system::error_code& ec, results_type results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
@@ -155,7 +156,9 @@ private:
 	void handshake();
 	void handle_handshake(const boost::system::error_code& ec);
 
-	data_union handshake_response_;
+	uint32_t handshake_response_;
+
+	void fallback_to_unencrypted();
 
 	std::size_t is_write_complete(const boost::system::error_code& error, std::size_t bytes_transferred);
 	void handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred);

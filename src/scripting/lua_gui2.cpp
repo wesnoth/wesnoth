@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_gui2.hpp"
@@ -35,9 +36,12 @@
 #include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
+#include "help/help.hpp"
+#include "game_config_manager.hpp"
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 #include <functional>
 #include <optional>
@@ -46,8 +50,7 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -74,7 +77,7 @@ int show_message_dialog(lua_State* L)
 	input.maximum_length = txt_cfg["max_length"].to_int(256);
 	input.text_input_was_specified = has_input;
 
-	gui2::dialogs::wml_message_options options;
+	gui2::dialogs::wml_message_options options{};
 	if(!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		std::size_t n = lua_rawlen(L, 2);
@@ -182,7 +185,7 @@ int show_story(lua_State* L) {
 int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
 	SDL_Rect pos {1,1,1,1};
-	SDL_GetMouseState(&pos.x, &pos.y);
+	sdl::get_mouse_state(&pos.x, &pos.y);
 
 	int initial = -1;
 	bool markup = false;
@@ -249,6 +252,11 @@ int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const ga
 	return 0;
 }
 
+static int show_help(lua_State *L)
+{
+	help::show_help(luaL_checkstring(L, 1));
+	return 0;
+}
 
 /**
  * - Arg 1: string, widget type
@@ -280,6 +288,7 @@ int luaW_open(lua_State* L)
 		{ "show_popup",         &show_popup_dialog },
 		{ "show_story",         &show_story },
 		{ "show_prompt",        &show_message_box },
+		{ "show_help",          &show_help   },
 		{ "add_widget_definition",    &intf_add_widget_definition },
 		{ "show_dialog",              &intf_show_dialog   },
 		{ nullptr, nullptr },

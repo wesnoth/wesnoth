@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -457,7 +458,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize({event.window.data1, event.window.data2});
+					video_resize(point(video.draw_area().w, video.draw_area().h));
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -478,7 +479,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
 							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
 			}
@@ -486,21 +487,21 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERUP:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
 			{
-				SDL_Rect r = video.screen_area();
+				SDL_Rect r = video.draw_area();
 				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
 									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
 			}
@@ -597,7 +598,7 @@ void sdl_event_handler::draw()
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo::get_singleton().flip();
+		CVideo::get_singleton().render_screen();
 	}
 }
 
@@ -639,12 +640,12 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	}
 
 	for(auto& dispatcher : utils::reversed_view(dispatchers_)) {
-		if(dispatcher->get_mouse_behavior() == dispatcher::all) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
 			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
 			break;
 		}
 
-		if(dispatcher->get_mouse_behavior() == dispatcher::none) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
 			continue;
 		}
 
@@ -820,7 +821,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
-		return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
+		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
 	}
 
 	return false;

@@ -11,24 +11,24 @@ local function generate(length, villages, castle, iterations, size, players, isl
 	res.road_windiness=3
 
 	res.height = {
-		dr_height(990, "Uh^Uf"),
+		dr_height(990, "Uh^Tf"),
 		dr_height(970, "Qxu"),
 		dr_height(950, "Uh"),
-		dr_height(940, "Uu^Uf"),
+		dr_height(940, "Uu^Tf"),
 		dr_height(920, "Uu"),
 		dr_height(910, "Qxu"),
 		dr_height(890, "Uh"),
-		dr_height(880, "Uu^Uf"),
+		dr_height(880, "Uu^Tf"),
 		dr_height(860, "Uu"),
 		dr_height(840, "Uh"),
-		dr_height(830, "Uu^Uf"),
+		dr_height(830, "Uu^Tf"),
 		dr_height(810, "Uu"),
 		dr_height(765, "Xu"),
 		dr_height(740, "Mm^Xm"),
 		dr_height(700, "Mm"),
-		dr_height(690, "Hh^Uf"),
+		dr_height(690, "Hh^Tf"),
 		dr_height(655, "Hh"),
-		dr_height(650, "Hh^Uf"),
+		dr_height(650, "Hh^Tf"),
 		dr_height(600, "Hh"),
 		dr_height(110, "Gg"),
 		dr_height(30, "Ds"),
@@ -40,13 +40,13 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		-- cold
 		dr_temperature("Mm^Xm", 1, 405, "Ms^Xm"),
 		dr_temperature("Mm", 1, 385, "Ms"),
-		dr_temperature("Hh,Hh^Uf", 1, 345, "Ha"),
+		dr_temperature("Hh,Hh^Tf", 1, 345, "Ha"),
 		dr_temperature("Gg", 1, 305, "Aa"),
 		dr_temperature("Ds", 1, 260, "Ai"),
 		dr_temperature("Gg", 305, 500, "Gs"),
 		-- hot
-		dr_temperature("Hh,Hh^Uf", 585, 760, "Hhd"),
-		dr_temperature("Hh,Hh^Uf", 760, 999, "Hd"),
+		dr_temperature("Hh,Hh^Tf", 585, 760, "Hhd"),
+		dr_temperature("Hh,Hh^Tf", 760, 999, "Hd"),
 		dr_temperature("Gg", 720, 999, "Dd"),
 		dr_temperature("Qxu", 850, 999, "Ql"),
 	}
@@ -115,15 +115,15 @@ local function generate(length, villages, castle, iterations, size, players, isl
 			rating=5
 		},
 		dr_village {
-			terrain="Uu^Uf",
+			terrain="Uu^Tf",
 			convert_to="Uu^Vu",
-			adjacent_liked="Hh^Uf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Uf,Uu^Uf,Uh^Uf",
+			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uu^Tf,Uh^Tf",
 			rating=5
 		},
 		dr_village {
-			terrain="Uh^Uf",
+			terrain="Uh^Tf",
 			convert_to="Uh^Vu",
-			adjacent_liked="Hh^Uf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Uf,Uh^Uf,Uh^Uf",
+			adjacent_liked="Hh^Tf,Hh,Mm,Uu,Uh,Xu,Qxu,Uu,Uu^Tf,Uh^Tf,Uh^Tf",
 			rating=5
 		},
 		dr_village {

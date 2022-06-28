@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,6 +19,7 @@
 
 #include "exceptions.hpp"
 
+#include "sdl/texture.hpp"
 
 namespace gui {
 
@@ -50,10 +52,10 @@ class button : public widget
 {
 public:
 	struct error : public game::error {
-        error()
-            : game::error("GUI1 button error")
-            {}
-    };
+		error()
+			: game::error("GUI1 button error")
+			{}
+	};
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
@@ -62,7 +64,7 @@ public:
 
 	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
-		   const bool auto_join=true, std::string overlay_image="");
+	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -98,7 +100,7 @@ private:
 
 	std::string label_text_;
 
-	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
+	texture image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
@@ -116,6 +118,11 @@ private:
 	std::string button_image_name_;
 	std::string button_overlay_image_name_;
 	std::string button_image_path_suffix_;
+
+	int font_size_;
+	int horizontal_padding_;
+	int checkbox_horizontal_padding_;
+	int vertical_padding_;
 
 }; //end class button
 

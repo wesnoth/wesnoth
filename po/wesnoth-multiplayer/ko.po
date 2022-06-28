@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
 "PO-Revision-Date: 2012-04-25 19:11+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -88,30 +88,45 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:62
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
-
-#. [lua]: f
-#: data/multiplayer/eras.lua:76
+#. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+#: data/multiplayer/eras.lua:53
 msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>:  Has lost all units"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:76
-msgid "Grand total: <b>%d</b>"
+#. In the end-of-match summary, any side that still has units left
+#: data/multiplayer/eras.lua:69
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span>:  Income score = "
+"$income  Unit score = $units  Gold = $gold\n"
+"Grand total: <b>$total</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:93
-msgid "Sides %s and %d are tied."
+#. In the end-of-match summary, there's a single side that's won.
+#: data/multiplayer/eras.lua:84
+msgid ""
+"<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:95
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
+#. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+#: data/multiplayer/eras.lua:89
+msgid "Sides $side_number and $other_side_number are tied."
+msgstr ""
+
+#. [lua]: f
+#. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+#: data/multiplayer/eras.lua:94
+msgid "Sides $winners are tied."
+msgstr ""
+
+#. [lua]: f
+#. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+#: data/multiplayer/eras.lua:100
+msgid "dialog^Turns Over"
 msgstr ""
 
 #. [multiplayer_side]: id=Drakes, type=random
@@ -189,13 +204,13 @@ msgid ""
 "ranged support from bowmen and mages."
 msgstr ""
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "북방족"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
@@ -358,7 +373,7 @@ msgid "teamname^South"
 msgstr "남쪽 팀"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 #, fuzzy
 #| msgid "Death of your leader"
@@ -366,29 +381,29 @@ msgid "Defeat the enemy leader"
 msgstr "아군 지휘관의 사망"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
 msgstr "천공의 구멍이 흔들린다."
 
@@ -900,12 +915,14 @@ msgstr ""
 #. [then]
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
 msgid "Death of your leader"
 msgstr "아군 지휘관의 사망"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:136
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -913,27 +930,30 @@ msgstr "당신의 팀에 지휘관이 하나뿐이므로, 적의 물결은 위�
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:143
 msgid "Death of both of your team’s leaders"
 msgstr "아군 팀 지휘관이 둘다 사망"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:144
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "당신의 팀에 지휘관이 둘이므로, 적의 물결은 완전한 위력으로 옵니다."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:140
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:171
 msgid "Survive and defeat all enemy waves"
 msgstr "살아남아서 모든 적 물결을 격파할 것"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:160
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:166
 msgid "Dark Forecast — a random survival scenario"
 msgstr "불길한 예언 — 무작위 생존 시나리오"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:164
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:170
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -958,12 +978,12 @@ msgid ""
 msgstr ""
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:183
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:189
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "여기가 바로 저주받은 계곡이군 — 우리가 차지할 땅 말이지."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:187
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:193
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -973,7 +993,7 @@ msgstr ""
 "이루는데 저항이 있을것이오. 우리는 이 땅에서 기습에 대비해야 하오."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:191
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:197
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -982,7 +1002,7 @@ msgstr ""
 "르쳐 주도록 하지."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:210
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:216
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -991,7 +1011,7 @@ msgstr ""
 "것인가..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:224
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:230
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1000,7 +1020,7 @@ msgstr ""
 "은 당신의 마지막 순간을 증오로 가득 채웠다."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:246
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1008,19 +1028,21 @@ msgid ""
 msgstr ""
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:259
+#. [slider]: id=enemy_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:330
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1028,27 +1050,32 @@ msgid ""
 msgstr ""
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:469
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:486
 msgid "Clear Weather"
 msgstr "맑은 날"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:492
 msgid "Drought"
 msgstr "가뭄"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:504
 msgid "Heavy Rains"
 msgstr "폭우"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:493
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:524
 msgid "Snowfall"
 msgstr "강설"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:499
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:530
 msgid "Heavy Snowfall"
 msgstr "폭설"
 
@@ -1249,6 +1276,142 @@ msgstr "2p - Howling Ghost Badlands"
 msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
+msgstr ""
+
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
+msgid ""
+"Your aim is to survive spawning waves of units and defeat the final "
+"archenemies. Spawns are randomly generated and will be different each time "
+"Isle of Mists is played. The waves appear at somewhat regular intervals. The "
+"weather will also change randomly, affecting the layout of the map."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
+#, fuzzy
+#| msgid "2p — Dark Forecast (Survival)"
+msgid "2p — Isle of Mists (Survival)"
+msgstr "2p - 불길한 예언 (서바이벌)"
+
+#. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly-spawned AI units. Victory is achieved by "
+#| "surviving and defeating all enemy waves. During the course of play, the "
+#| "terrain will change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use the default map settings for the scenario to work "
+#| "right."
+msgid ""
+"Isle of Mists is a survival scenario which can be played alone or with "
+"another player against randomly spawned AI units, catered for experienced "
+"players. Victory is achieved by surviving and defeating all enemy waves. "
+"During the course of play, the terrain will change based on random weather "
+"effects. Default map settings are required for the scenario to work "
+"properly. By Lord-Knightmare."
+msgstr ""
+"불길한 예언은 혼자 혹은 두명의 팀플레이로 무작위 생성되는 적 유닛들을 상대하"
+"는 서바이벌 시나리오 입니다. 모든 웨이브로부터 살아남아야만 승리할 수 있습니"
+"다. 게임 중 무작위로 주어지는 날씨 효과로 인해 지형이 변화합니다.\n"
+"\n"
+"참고: '맵 설정에 따른다'를 쓰지 않으면 시나리오가 제대로 실행되지 않습니다."
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
+#, fuzzy
+#| msgid "teamname^Southwest"
+msgid "teamname^Invaders"
+msgstr "남서 팀"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#, fuzzy
+#| msgid "teamname^Southwest"
+msgid "teamname^Defenders"
+msgstr "남서 팀"
+
+#. [label]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
+msgid "Healing Keep"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
+#, fuzzy
+#| msgid "Dark Forecast — a random survival scenario"
+msgid "Isle of Mists — a random survival scenario"
+msgstr "불길한 예언 — 무작위 생존 시나리오"
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
+msgid ""
+"You arrive near a mystic shrine, where the apparitions of ancient armies are "
+"forever trapped and doomed to eternally cleanse the isle of all interlopers."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
+msgid ""
+"Phantom armies approach on the horizon. If we defeat them all, they may be "
+"released from this timeless prison."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
+msgid "Let us prepare ourselves for the coming battle."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
+#, fuzzy
+#| msgid ""
+#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
+#| "me..."
+msgid "How can this be? My gods have forsaken me..."
+msgstr ""
+"으윽! 어떻게 이럴 수가? 단순한 야만인들따위에게 당하다니! 신이 나를 저버리신 "
+"것인가..."
+
+#. [message]: speaker=second_unit
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
+msgid ""
+"As the cold grasp of death draws nearer, you feel your spirit being "
+"separated from your body. You realize that you will soon be doomed to the "
+"same fate as the phantom guardians of the shrine."
+msgstr ""
+
+#. [message]
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
+msgid ""
+"A dark mist rises from the land, draining your senses and your will away. "
+"You dimly realize that you will soon join the other ghosts as another "
+"faceless guardian of the ancient shrine."
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
+msgid ""
+"The last and most powerful of our enemies are upon us. If we can finish them "
+"off in time, we shall be victorious."
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:343
+msgid ""
+"As you finally defeat your last remaining foes, the dreary mists around the "
+"island seem to lift. The phantoms fade away, at last released from their "
+"eternal guardianship. You have finally cleansed the ancient shrine... for "
+"now."
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
+msgid "Inundation"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
@@ -1587,19 +1750,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p - Alirok Marsh"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1987,8 +2150,8 @@ msgstr ""
 msgid "5p — The Wilderlands"
 msgstr "5p - The Wilderlands"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."

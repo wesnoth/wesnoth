@@ -720,7 +720,13 @@ class HTMLOutput:
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_all(tag="female")
-                    return self.pic(u, female[0], recursion=recursion + 1)
+                    if female:
+                        return self.pic(u, female[0], recursion=recursion + 1)
+                    else:
+                        # no female images found, fall back on the male/default ones
+                        error_message("Warning: missing female image for unit \
+{}, falling back to male/default image.\n".format(u.get_text_val("id")))
+                        return self.pic(u, u, recursion=recursion + 1)
                 else:
                     return self.pic(u, u, recursion=recursion + 1)
             error_message("Warning: Missing image for unit %s(%s).\n" %
@@ -1327,7 +1333,7 @@ class HTMLOutput:
                 classes_cost.append('rating-' + cost_rating)
             if defense_rating:
                 classes_defense.append('rating-' + defense_rating)
-            if move_cost == '-' or int_fallback(total_movement) <= int_fallback(move_cost, 99):
+            if move_cost == '-' or int_fallback(total_movement) < int_fallback(move_cost, 99):
                 move_cost = HTML_ENTITY_FIGURE_DASH
             else:
                 move_cost = cleantext(move_cost, quote=False)

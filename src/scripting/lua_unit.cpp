@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_unit.hpp"
@@ -31,7 +32,6 @@
 #include "deprecation.hpp"
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -323,6 +323,8 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_moves", u.total_movement());
 	return_int_attrib("max_attacks", u.max_attacks());
 	return_int_attrib("attacks_left", u.attacks_left());
+	return_int_attrib("vision", u.vision());
+	return_int_attrib("jamming", u.jamming());
 	return_tstring_attrib("name", u.name());
 	return_tstring_attrib("description", u.unit_description());
 	return_bool_attrib("canrecruit", u.can_recruit());
@@ -334,7 +336,7 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("advances_to", u.advances_to());
 
 	if(strcmp(m, "alignment") == 0) {
-		lua_push(L, u.alignment());
+		lua_push(L, unit_alignments::get_string(u.alignment()));
 		return 1;
 	}
 
@@ -458,7 +460,7 @@ static int impl_unit_set(lua_State *L)
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
 	if(strcmp(m, "alignment") == 0) {
-		u.set_alignment(lua_check<UNIT_ALIGNMENT>(L, 3));
+		u.set_alignment(lua_enum_check<unit_alignments>(L, 3));
 		return 0;
 	}
 

@@ -1,5 +1,5 @@
 function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
-	local endlevel_data = wesnoth.get_end_level_data()
+	local endlevel_data = wesnoth.scenario.end_level_data
 
 	if not endlevel_data then
 		return false

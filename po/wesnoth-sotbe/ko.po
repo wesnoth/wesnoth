@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
+"POT-Creation-Date: 2022-03-20 03:46 UTC\n"
 "PO-Revision-Date: 2011-10-27 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -60,13 +60,22 @@ msgstr "무장"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Your father Karun Black-Eye was the greatest orcish leader that ever "
+#| "lived. Now, as his son, it’s up to you to thwart the selfish designs of "
+#| "the humans who have broken the old agreements with the orcs and are bent "
+#| "upon taking your lands. Unite the warring orcish tribes, bring together "
+#| "the Orcish Council and call up the Great Horde to send the human-worms "
+#| "and their wose-born allies to the land of the dead!\n"
+#| "\n"
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it’s up to you to thwart the selfish designs of the humans "
 "who have broken the old agreements with the orcs and are bent upon taking "
 "your lands. Unite the warring orcish tribes, bring together the Orcish "
 "Council and call up the Great Horde to send the human-worms and their wose-"
-"born allies to the land of the dead!\n"
+"born allies to the Land of the Dead!\n"
 "\n"
 msgstr ""
 "당신의 아버지인 검은 눈 Karun은 역사상 가장 위대한 오크 지도자였다. 지금 오크"
@@ -134,19 +143,19 @@ msgstr "Alber를 무찔러라"
 msgid "Death of Kapou’e"
 msgstr "Kapou'e의 사망"
 
-#. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]: type=Orcish Slayer, id=Rugh
-#. [side]
-#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]
+#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:76
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:74
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:128
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:57
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:86
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:87
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:72
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:81
@@ -158,12 +167,12 @@ msgstr "Kapou'e의 사망"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:58
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:82
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:84
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:81
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:60
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
@@ -175,11 +184,11 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Alber"
 
+#. [side]: type=Lieutenant, id=Alber
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
-#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:94
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -273,11 +282,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:119
+#, fuzzy
+#| msgid ""
+#| "Retaliating, the orcs systematically slaughtered human colonies and "
+#| "villages on their lands. Then, Earl Lanbec’h — the most powerful human "
+#| "warlord of the North — determined to abolish the orcish menace raised an "
+#| "army and conferred leadership of it to his son-in-law Baron Alber."
 msgid ""
 "Retaliating, the orcs systematically slaughtered human colonies and villages "
 "on their lands. Then, Earl Lanbec’h — the most powerful human warlord of the "
-"North — determined to abolish the orcish menace raised an army and conferred "
-"leadership of it to his son-in-law Baron Alber."
+"North — determined to abolish the orcish menace, raised an army and "
+"conferred leadership of it to his son-in-law Baron Alber."
 msgstr ""
 "보복을 위해 오크들은 조직적으로 인간의 식민지인들과 그들의 영토에 있는 마을 "
 "사람들을 학살했다. 그러자 북방의 가장 강력한 인간 군벌중 하나인 Lanbec'h 백작"
@@ -788,8 +803,12 @@ msgstr "제 말은, 저놈들을 무찌르는건 쉽지만 그냥 시간만 걸�
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:199
+#, fuzzy
+#| msgid ""
+#| "We could, but then again, if we crush them then we can loot their "
+#| "treasury and their dwellings. The gold will be useful."
 msgid ""
-"We could, but then again, if we crush them then we can loot their treasury "
+"We could, but then again, if we crush them, then we can loot their treasury "
 "and their dwellings. The gold will be useful."
 msgstr ""
 "그렇지, 하지만 그래도 우리가 놈들을 뭉개주면 놈들의 보물이나 살림살이를 털어"
@@ -818,7 +837,9 @@ msgid "Blemaker"
 msgstr "블레마커"
 
 #. [unit]: id=Grüü, type=Troll Hero
+#. [side]: id=Grüü, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:248
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:80
 msgid "Grüü"
 msgstr "Grüü"
 
@@ -908,11 +929,17 @@ msgstr "아악! 나 죽는다!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:371
+#, fuzzy
+#| msgid ""
+#| "You were warned, dwarf. Riders, spread out of the area and collect what "
+#| "you can from each of these houses. If anyone refuses to pay, tie them up "
+#| "and take it anyway. Let them know that they live only on my good graces. "
+#| "I’ll take the army to Barag Gór. Catch up when you’re done."
 msgid ""
-"You were warned, dwarf. Riders, spread out of the area and collect what you "
-"can from each of these houses. If anyone refuses to pay, tie them up and "
-"take it anyway. Let them know that they live only on my good graces. I’ll "
-"take the army to Barag Gór. Catch up when you’re done."
+"You were warned, dwarf. Riders, spread out over the area and collect what "
+"you can from each of these houses. If anyone refuses to pay, tie them up and "
+"take what they have anyway. Let them know that they live only on my good "
+"graces. I’ll take the army to Barag Gór. Catch up when you’re done."
 msgstr ""
 "우린 경고했다, 드워프. 기병들아, 근처로 퍼져서 가구마다 모을 수 있는 건 다 모"
 "아와라. 내놓기를 거부하는 놈이 있으면 꽁꽁 묶어놓고 뺏어와라. 놈들이 살아있는"
@@ -936,9 +963,14 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:426
+#, fuzzy
+#| msgid ""
+#| "Blemaker, many thanks for your help in this fight. Would you like to join "
+#| "us in our journey with your son? You are a powerful warrior, and you "
+#| "would be of great help."
 msgid ""
-"Blemaker, many thanks for your help in this fight. Would you like to join us "
-"in our journey with your son? You are a powerful warrior, and you would be "
+"Blemaker, many thanks for your help in this fight. Would you and your son "
+"like to join us in our journey? You are a powerful warrior, and you would be "
 "of great help."
 msgstr ""
 "블레마커, 이번 싸움에 그대의 공이 컸소. 당신의 아들과 함께 우리의 여행에 따라"
@@ -1017,7 +1049,7 @@ msgid ""
 msgstr ""
 
 #. [side]: type=Elvish Marshal, id=Etheliel
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:65
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:66
 msgid "Etheliel"
 msgstr "Etheliel"
 
@@ -1025,57 +1057,57 @@ msgstr "Etheliel"
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Sharpshooter, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:100
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:115
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:141
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:78
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:97
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:69
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:118
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:145
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:79
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:98
 msgid "Elves"
 msgstr "엘프들"
 
 #. [side]: type=Orcish Slayer, id=Rugh
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:82
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:83
 msgid "Rugh"
 msgstr "Rugh"
 
 #. [side]: type=Elvish Marshal, id=Hida'tul
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:97
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:99
 msgid "Hida’tul"
 msgstr "Hida’tul"
 
 #. [side]: type=Elvish Marshal, id=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:112
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:115
 msgid "Ammon"
 msgstr "Ammon"
 
 #. [side]: type=Elvish Marshal, id=Sammual
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:138
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:142
 msgid "Sammual"
 msgstr "Sammual"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:186
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1147
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1148
 msgid "Pirk"
 msgstr "Pirk"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:188
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1148
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:192
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1149
 msgid "Gork"
 msgstr "Gork"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:190
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1149
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1150
 msgid "Vraurk"
 msgstr "Vraurk"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:235
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:239
 msgid ""
 "When the party finally reached Barag Gór, they were met with a most "
 "startling sight."
@@ -1083,7 +1115,7 @@ msgstr ""
 "무리가 Barag Gór에 도착했을 때, 그들은 정말로 당황스런 광경을 보게 되었다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:245
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:249
 msgid ""
 "What the—! Barag Gór is besieged by elves! The wose-born weaklings have "
 "always been jealous of our power, but what reason do they have to attack the "
@@ -1093,38 +1125,42 @@ msgstr ""
 "나 우리의 힘을 질투하지만, 어째서 놈들이 도시를 공격하는 거지?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:251
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:255
 msgid "What can you expect, Chief? They’re elves after all."
 msgstr "뭘 생각하는거에요, 대장? 놈들은 어쨌든 엘프잖아요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:256
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:260
 msgid "Hmmm. $scout.name, go find out what they are up to."
 msgstr "흐으으음. $scout.name, 가서 놈들이 뭘 하려는 건지 알아내라."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:261
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:265
 msgid "Sure."
 msgstr "좋죠."
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:291
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:295
 msgid ""
 "One more step and you are dead, flea-bag. Better run if you value your life."
 msgstr ""
 "한 발짝만 더 딛으면 죽을거다, 벼룩덩어리. 살고 싶으면 도망가는 게 좋아."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:296
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:300
+#, fuzzy
+#| msgid ""
+#| "Quit your boasting, mule-ears. The chief wants to know why you’re here, "
+#| "instead of cowering in your dung-spattered forests."
 msgid ""
-"Quit your boasting, mule-ears. The chief wants to know why you’re here, "
+"Quit your boasting, mule-ears. The Chief wants to know why you’re here, "
 "instead of cowering in your dung-spattered forests."
 msgstr ""
 "허풍은 때려쳐, 당나귀 귀. 족장님이 너희가 왜 똥내나는 숲에서 웅크리지 않고 여"
 "기까지 왔는지 알고싶어하신다."
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:301
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:305
 msgid ""
 "Watch your mouth around your betters, goblin! And you can tell your chief to "
 "hand the shamans over to us if he wants to be alive by sundown."
@@ -1133,17 +1169,17 @@ msgstr ""
 "면 해가 떨어지기 전까지 샤먼들을 넘기라고 전해라."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:306
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:310
 msgid "What business do you high-and-mighty elves have with our shamans?"
 msgstr "드높으며 강력하신 엘프들께옵서 우리 샤먼들에겐 무슨 볼일이시오?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:311
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:315
 msgid "Our business with them is none of your concern."
 msgstr "우리 볼일은 네가 알 바가 아니다."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:316
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:320
 msgid ""
 "Oh, yes, it is. The shamans keep our ancient knowledge and our sacred "
 "things; they are not for the likes of you. Why do you want them anyway?"
@@ -1152,50 +1188,50 @@ msgstr ""
 "들은 너희같은 것들관 달라. 어쨌든 왜 그들을 원하는거지?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:321
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:325
 msgid "Well... the humans want to... meet with them."
 msgstr "으음... 인간들이... 그들을 만나고 싶어하니까."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:326
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:330
 msgid "Oh, so they paid you to come and get them, have they?"
 msgstr "오, 그러니까 저들이 돈을 주고 그들을 잡아오라고 했다는 얘기지?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:331
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:335
 msgid "Well..."
 msgstr "뭐..."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:336
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:340
 msgid ""
 "So the ‘great and mighty’ elves are now nothing but a bunch of mercenaries."
 msgstr "그러니까 ‘그 강대하신’ 엘프님들께선 지금 그냥 용병무리에 불과하시군."
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:341
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:345
 msgid "KILL HIM!!"
 msgstr "<b>죽여!!</b>"
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:380
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:384
 msgid "Hahaha! If you can!"
 msgstr "카카카! 할 수 있으면 해봐!"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:410
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:414
 msgid "Blast it, he got away."
 msgstr "제기랄, 도망갔군."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:415
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:419
 #, fuzzy
 #| msgid "So, what news do you bring $scout.name?"
 msgid "So, what news do you bring, $scout.name?"
 msgstr "그래, 어떤 소식인가 $scout.name?"
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:420
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:424
 msgid ""
 "The elves have been bribed by the humans to capture and deliver the shamans "
 "to them."
@@ -1203,48 +1239,53 @@ msgstr ""
 "엘프들이 인간들에게 뇌물을 먹고 샤먼들을 납치해서 놈들에게 데려가려고 해요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:425
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:429
+#, fuzzy
+#| msgid ""
+#| "Over my dead body! The shamans of the Great Council are the only people "
+#| "who can call up the Great Horde. If they are captured then all the orcs "
+#| "on this continent would surely be doomed."
 msgid ""
 "Over my dead body! The shamans of the Great Council are the only people who "
-"can call up the Great Horde. If they are captured then all the orcs on this "
+"can call up the Great Horde. If they are captured, then all the orcs on this "
 "continent would surely be doomed."
 msgstr ""
 "내가 죽기 전엔 어림없지! 대의회의 샤먼들은 대무리를 불러낼 수 있는 유일한 인"
 "물들이야. 이들이 납치당하면 이 대륙의 오크들은 완전히 끝장난다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:430
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:434
 #, fuzzy
 #| msgid "I have a subtle plan, chief."
 msgid "I have a subtle plan, Chief."
 msgstr "저한테 묘한 계책이 있어요, 대장."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:435
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:439
 msgid "Go on, Grüü."
 msgstr "말해보게, Grüü."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:440
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:444
 msgid "We go and we kill all of them. What do you think?"
 msgstr "우리가 가서 놈들을 다 죽여버려요. 어때요?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:445
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:449
 msgid "..."
 msgstr "..."
 
 #. [unit]: id=Jetto, type=Orcish Assassin
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:465
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:578
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:594
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:614
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:469
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:582
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:598
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:618
 msgid "Jetto"
 msgstr "제토"
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:484
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:488
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I’m Jetto, master of assassins, "
 "now you can count on the assassins’ guild to help you in your quest!"
@@ -1253,14 +1294,19 @@ msgstr ""
 "신은 당신이 가는 길에 암살자 길드의 도움을 받을 수 있소!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:489
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:493
 msgid "Jetto, how did you get captured by the likes of these?"
 msgstr "제토, 어떻게 이런 녀석들에게 사로잡힌건가?"
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:494
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:498
+#, fuzzy
+#| msgid ""
+#| "The Barag Gór council sent me to assassinate the elvish leaders. "
+#| "Unfortunately, I was captured. But now I am free and the elves shall feel "
+#| "my wrath!"
 msgid ""
-"The Barag Gór council sent me to assassinate the elvish leaders. "
+"The Barag Gór Council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
 "wrath!"
 msgstr ""
@@ -1268,12 +1314,12 @@ msgstr ""
 "렸지. 이제 풀려났으니 엘프들에게 내 분노를 보여주겠소!"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:505
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:509
 msgid "At last! The siege has been broken."
 msgstr "드디어! 포위가 풀렸다."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:510
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:514
 msgid ""
 "Thank you, Son of the Black-Eye. If you hadn’t arrived when you did, I don’t "
 "know what would have happened to us."
@@ -1282,29 +1328,29 @@ msgstr ""
 "일어날지 몰랐을 거요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:515
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:519
 msgid "No problem! It was fun, wasn’t it, Grüü?"
 msgstr "문제없었소! 꽤 재밌었지, 그렇지 않나, Grüü?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:520
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:524
 msgid "Hahaha! Yeah!"
 msgstr "하하하! 그럼!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:525
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:529
 msgid ""
 "But, actually, we have come all the way from our lands to get your help."
 msgstr ""
 "그런데 사실은, 우린 우리 땅에서 여기까지 여러분의 도움을 청하러 온거요."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:530
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:534
 msgid "Why? What’s wrong?"
 msgstr "왜요? 뭐가 문젭니까?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:535
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:539
 msgid ""
 "Those insolent humans have massed a huge army and attacked us. We defeated "
 "their vanguard but in the end we were forced to retreat."
@@ -1313,7 +1359,7 @@ msgstr ""
 "무찔렀지만 결국은 퇴각할 수밖에 없었지."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:540
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:544
 msgid ""
 "Hmmmm, this situation is very serious. As you know by now, they have also "
 "hired these elves to attack us here."
@@ -1322,12 +1368,12 @@ msgstr ""
 "용해서 여길 공격했소."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:545
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:549
 msgid "Yes. It seems to me that the humans are declaring all-out war on us."
 msgstr "그렇군. 내가 보기엔 인간들이 우리에게 전면전을 선포한 것 같소."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:550
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:554
 msgid ""
 "We must give this matter careful consideration. Come inside the city, and "
 "we’ll discuss it."
@@ -1336,32 +1382,36 @@ msgstr ""
 "록 하지."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:580
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:584
 msgid ""
 "Son of the Black-Eye! Could I ask for my release from this blighted cage?"
 msgstr "검은 눈의 아들이여! 이 빌어먹을 감옥에서 좀 꺼내주지 않겠소?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:585
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:589
 msgid "How did you get captured by the likes of these?"
 msgstr "어떻게 이런 녀석들에게 사로잡힌건가?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:596
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:600
+#, fuzzy
+#| msgid ""
+#| "The Barag Gór council sent me to assassinate the elvish leaders. "
+#| "Unfortunately, I was captured."
 msgid ""
-"The Barag Gór council sent me to assassinate the elvish leaders. "
+"The Barag Gór Council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
 msgstr ""
 "Barag Gór 의회는 내게 엘프 지도자들의 암살을 의뢰했소. 하지만 불행히도 잡혀버"
 "렸지."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:601
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:605
 msgid "Fine, someone go release him."
 msgstr "좋아, 누가 가서 좀 풀어줘라."
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:633
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:637
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I’m Jetto, master of assassins, "
 "now you can count on my assassins to help you in your quest!"
@@ -1393,10 +1443,16 @@ msgstr "마-라나"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:126
+#, fuzzy
+#| msgid ""
+#| "Kapou’e and the shamans rested and discussed the matter for three days. "
+#| "It was finally decided that it might be necessary to call up the Great "
+#| "Horde to deal with this massive human incursion. However, in order to do "
+#| "that the entire Great Council would have to gather."
 msgid ""
 "Kapou’e and the shamans rested and discussed the matter for three days. It "
 "was finally decided that it might be necessary to call up the Great Horde to "
-"deal with this massive human incursion. However, in order to do that the "
+"deal with this massive human incursion. However, in order to do that, the "
 "entire Great Council would have to gather."
 msgstr ""
 "Kapou'e와 샤먼들은 사흘동안 휴식을 취하며 해결책을 논의했다. 최종적인 결론은 "
@@ -1405,10 +1461,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:132
+#, fuzzy
+#| msgid ""
+#| "Since it was now obvious that the humans were going to try their best to "
+#| "prevent that by capturing or killing the shamans, Kapou’e was requested "
+#| "to escort the shamans to the Harbor of Tirigaz where the rest of the "
+#| "council was residing."
 msgid ""
 "Since it was now obvious that the humans were going to try their best to "
 "prevent that by capturing or killing the shamans, Kapou’e was requested to "
-"escort the shamans to the Harbor of Tirigaz where the rest of the council "
+"escort the shamans to the harbor of Tirigaz where the rest of the Council "
 "was residing."
 msgstr ""
 "인간들이 그것을 막기 위해 무슨 수를 써서든 샤먼들을 납치하거나 죽이려고 들 것"
@@ -1475,8 +1537,13 @@ msgstr "안돼! Grüü는 언데드 부수고 싶다."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:240
+#, fuzzy
+#| msgid ""
+#| "Grüü is right. It is not wise to let these undead remain here cutting off "
+#| "our supply lines and path of retreat. In these days of turmoil, we don’t "
+#| "know what lies ahead, so it is best not to leave any threats in our rear."
 msgid ""
-"Grüü is right. It is not wise to let these undead remain here cutting off "
+"Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
 "know what lies ahead, so it is best not to leave any threats in our rear."
 msgstr ""
@@ -1759,38 +1826,38 @@ msgstr "오아시스에 도착할 것"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]
+#. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:133
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:74
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:132
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:156
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:172
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:84
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:104
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:79
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:92
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:119
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:138
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:156
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:174
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:90
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:84
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:129
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:134
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:75
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:173
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:86
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:106
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:81
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:121
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:140
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:158
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:176
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:92
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:86
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:131
 msgid "Villains"
 msgstr "악당들"
 
@@ -1866,10 +1933,15 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:178
+#, fuzzy
+#| msgid ""
+#| "I wouldn’t worry about the scorpions right now, I would worry about "
+#| "getting out of this sandstorm! These things can last for weeks, and if we "
+#| "aren’t buried alive by all the sand we will die of hunger and thirst."
 msgid ""
 "I wouldn’t worry about the scorpions right now, I would worry about getting "
 "out of this sandstorm! These things can last for weeks, and if we aren’t "
-"buried alive by all the sand we will die of hunger and thirst."
+"buried alive by all the sand, we will die of hunger and thirst."
 msgstr ""
 "지금은 전갈보다도 이 모래폭풍에서 문제요! 이 폭풍은 잘못하면 일주일도 더 갈지"
 "도 모르고, 그랬다간 우린 모래 속에서 생매장당하거나 배고픔과 갈증으로 죽게 될"
@@ -1887,7 +1959,9 @@ msgstr "뭐라고?! 이 난리 속에서 말이오?!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:192
-msgid "We don’t have any other choice. If we remain here we’ll die."
+#, fuzzy
+#| msgid "We don’t have any other choice. If we remain here we’ll die."
+msgid "We don’t have any other choice. If we remain here, we’ll die."
 msgstr "다른 방법이 없소. 여기 남았다간 다 죽을거야."
 
 #. [message]: speaker=Kapou'e
@@ -2037,18 +2111,18 @@ msgstr "침묵의 숲"
 msgid "Defeat the elves"
 msgstr "엘프들을 무찔러라"
 
-#. [side]: type=Elvish Shyde, id=Lucile
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:75
+#. [side]: type=Elvish Sharpshooter, id=Lucile
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:76
 msgid "Lucile"
 msgstr "Lucile"
 
 #. [side]: type=Elvish Captain, id=Raceme
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:94
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:95
 msgid "Raceme"
 msgstr "Raceme"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:113
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:114
 msgid ""
 "As soon as the sandstorm died down, Kapou’e and his men — eager to escape "
 "the searing heat — left the oasis and continued on their trek."
@@ -2057,7 +2131,7 @@ msgstr ""
 "절히 바라는 — 오아시스를 떠나 발걸음을 재촉했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:120
 #, fuzzy
 #| msgid ""
 #| "It was with great relief that they finally spotted the silent forest on "
@@ -2077,7 +2151,7 @@ msgstr ""
 "서 나던 모든 소리가 사라졌다. 죽은듯한 정적만을 남긴 채."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:147
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:148
 #, fuzzy
 #| msgid ""
 #| "This fog and the silence is starting to unsettle me. What is this place, "
@@ -2088,7 +2162,7 @@ msgid ""
 msgstr "안개와 정적이 슬슬 불편하구만. 여긴 대체 어떤 곳이야?"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:151
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:152
 msgid ""
 "It has not always been like this. A lot of hunters from the tribes used to "
 "hunt here and fish in the River Bork. But that all changed a few years ago. "
@@ -2099,12 +2173,12 @@ msgstr ""
 "하지 않은 한 여기 들어오는 자는 거의 없네."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:155
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:156
 msgid "What happened? Why did people stop coming here?"
 msgstr "무슨 일이 있었던 겁니까? 왜 사람들이 여기 오지 않게 된거죠?"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:159
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:160
 msgid ""
 "The fact is that few people entered this forest and returned home safe. I am "
 "not sure, but most likely, this forest is full of elvish renegades."
@@ -2113,7 +2187,7 @@ msgstr ""
 "만 아마도 이 숲에 엘프 이탈자들이 잔뜩 있는 것 같아."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:163
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:164
 msgid ""
 "What would elves be doing so far into orcish territory? Anyway, we need some "
 "rest. We are sufficiently armed to cope with a bunch of elvish poachers. If "
@@ -2124,7 +2198,7 @@ msgstr ""
 "도 보이면 조각조각 내주지."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:201
 #, fuzzy
 #| msgid ""
 #| "Elves! You were right, Gork, this place is infested with the skinny "
@@ -2133,63 +2207,63 @@ msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr "엘프들이다! Gork의 말이 맞았어요, 여긴 깡마른 약골들로 가득해요."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:207
 msgid ""
 "Elves! You were right, Gork, this place is infested with the skinny "
 "weaklings."
 msgstr "엘프들이다! Gork의 말이 맞았어요, 여긴 깡마른 약골들로 가득해요."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:213
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:214
 msgid "Blast it, the orcs have discovered us."
 msgstr "제기랄, 오크들이 우릴 발견했다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:218
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:219
 msgid "What is your purpose for trespassing on orcish territory?"
 msgstr "어째서 오크의 영토에 무단 침입한거냐?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:224
 msgid "Fool, do you really think we are going to tell you?"
 msgstr "멍청하긴, 우리가 네놈에게 말해줄 것 같나?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:229
 msgid ""
 "Men, capture one of these elves and interrogate him. I am sure that will get "
 "us some answers."
 msgstr "얘들아, 엘프 한놈을 잡아서 심문해라. 대답을 좀 얻어야겠다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:240
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:241
 #, fuzzy
 #| msgid "Now we’re going to have some some answers out of you."
 msgid "Now we’re going to have some answers out of you."
 msgstr "이제 네놈에게서 몇가지 대답을 얻어낼 것이다."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:245
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:246
 msgid "You might as well go ahead and kill me, I’m not telling you anything."
 msgstr "너흰 어차피 날 죽일테니, 아무 것도 말하지 않겠다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:250
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:251
 msgid "Very well then..."
 msgstr "좋아 그러면..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:255
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:256
 msgid "Some time later..."
 msgstr "잠시 후..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:261
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:262
 msgid "So you elves have set up an enclave here have you. Why is that?"
 msgstr "그래서 너희 엘프들은 여기 거주지를 만든거군. 어째서냐?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:266
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:267
 msgid ""
 "We made an agreement with the humans some time ago. They were planning a "
 "major assault on you war-mongers, and the humans pledged that if we assisted "
@@ -2201,16 +2275,20 @@ msgstr ""
 "에게 너희 땅에서 큰 덩어리를 떼 준다고 약속했다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:271
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:272
+#, fuzzy
+#| msgid ""
+#| "Why would you elves want still more territory? You guys already have the "
+#| "undisputed rule of the whole elvish forest."
 msgid ""
-"Why would you elves want still more territory? You guys already have the "
+"Why would you elves want still more territory? You already have the "
 "undisputed rule of the whole elvish forest."
 msgstr ""
 "어째서 엘프들이 영토를 바라는거지? 너희 녀석들은 벌써 모두가 인정하는 엘프 "
 "숲 전부를 통치하고 있지않나."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:276
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:277
 msgid ""
 "Yes, but our prince has been banished from those lands for collaborating "
 "with humans. He now seeks to carve out an empire for himself."
@@ -2219,7 +2297,7 @@ msgstr ""
 "국을 꾸밀 곳을 찾고 계시지."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:281
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:282
 msgid ""
 "Hmmm, interesting. So you set up a base here to launch your attacks on us. "
 "Is that right?"
@@ -2227,12 +2305,12 @@ msgstr ""
 "흐으음, 재미있군. 그래서 너희는 여기 기지를 세우고 우릴 공격한거군. 그렇나?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:286
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:287
 msgid "Yes, that is correct."
 msgstr "그래, 그 말이 맞다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:291
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:292
 msgid ""
 "Well folks, it looks like we have our work cut out for us. We must destroy "
 "this enclave."
@@ -2240,48 +2318,49 @@ msgstr ""
 "좋아 얘들아, 우리에게 딱 맞는 일이 떨어진 것 같다. 이 거주지를 파괴하라."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:310
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:311
 msgid "As for this weakling, I’ll personally behead her."
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:317
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:318
 msgid "As for this weakling, I’ll personally behead him."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:333
+#. In this string, the speaker is male while the person described as a "weakling" is female.
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:335
 #, fuzzy
 #| msgid "With pleasure. But what should I do with this weakling?"
 msgid "female^With pleasure. But what should I do with this weakling?"
 msgstr "명대로 합지요. 그런데 이 약골은 어떡하죠?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:338
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:340
 #, fuzzy
 #| msgid "Behead it."
 msgid "Behead her."
 msgstr "목을 따."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:345
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:347
 msgid "With pleasure. But what should I do with this weakling?"
 msgstr "명대로 합지요. 그런데 이 약골은 어떡하죠?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:350
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:352
 #, fuzzy
 #| msgid "Behead it."
 msgid "Behead him."
 msgstr "목을 따."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:359
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:361
 msgid "Ahhhhh!"
 msgstr "아아아아!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:368
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:370
 msgid ""
 "Good work, men, we’ve done it! Now we don’t have to worry about these elves "
 "attacking us. Let’s get some rest and continue our journey."
@@ -2290,19 +2369,23 @@ msgstr ""
 "제 좀 쉬다가 여정을 계속하자."
 
 #. [message]: speaker=Lucile
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:386
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:388
+#, fuzzy
+#| msgid ""
+#| "Ahhh! Flee; warn the prince that I have been slain and the enclave "
+#| "destroyed."
 msgid ""
-"Ahhh! Flee; warn the prince that I have been slain and the enclave destroyed."
+"Ahhh! Flee; warn the Prince that I have been slain and the enclave destroyed."
 msgstr ""
 "아아아! 도망치세요. 공작께 내가 죽었으며 거주지가 파괴됐다는 걸 알리세요."
 
 #. [unit]: type=Elvish Scout, id=Linduilas
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:395
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:397
 msgid "Linduilas"
 msgstr "Linduilas"
 
 #. [message]: speaker=Linduilas
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:400
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:402
 msgid "As you command, my lady."
 msgstr "명을 받들겠습니다, 부인."
 
@@ -2321,11 +2404,11 @@ msgstr "Shan Taum의 위협으로부터 20 턴을 버틸 것"
 msgid "Defeat Shan Taum"
 msgstr "Shan Taum을 무찌른다"
 
-#. [unit]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:60
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:122
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:145
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:124
 msgid "Shan Taum"
 msgstr "Shan Taum"
 
@@ -2335,7 +2418,7 @@ msgid "Rivals"
 msgstr ""
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:77
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:78
 msgid ""
 "After clearing out the elves from the Silent Forest, Kapou’e and his party "
 "set out on the last leg of their journey. Within a few days they finally "
@@ -2347,19 +2430,19 @@ msgstr ""
 "은 Shan Taum the Smug이 지배하는 곳이었다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:106
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:107
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "마침내, 애도의 언덕에 다 왔다! 부디 운이 좋기를 바랄 뿐이다."
 
-#. [message]: role=cannonfodder
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:111
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:289
+#. [message]: role=cannonfodder
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:112
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:290
 msgid "Why?"
 msgstr "왜요?"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:116
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:117
 msgid ""
 "You are a troll, so you don’t know. These lands are ruled by Shan Taum the "
 "Smug, who was a rival of Black-Eye Karun."
@@ -2368,23 +2451,23 @@ msgstr ""
 "의 라이벌이었지."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:121
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:122
 msgid "I doubt he would welcome the son of the Black-Eye."
 msgstr "그가 검은 눈의 아들을 반길 것 같진 않군."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:125
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:126
 msgid ""
 "Who is that? Kapou’e! What are you doing in my lands, you weakling runt?"
 msgstr "이게 누구야? Kapou'e잖아! 여기서 뭘 하는 거냐 왜소한 약골아?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:130
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:131
 msgid "Hold on, Shan Taum. We seek the Great Council, not a quarrel with you."
 msgstr "멈춰라, Shan Taum. 우리는 대의회를 찾고 있다. 너와는 다툴 생각이 없어."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:135
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:136
 msgid ""
 "Bwahaha! You are nothing! Where is your land? You became a beggar. You are "
 "as pathetic as your father!"
@@ -2393,7 +2476,7 @@ msgstr ""
 "큼이나 불쌍하구나!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:140
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:141
 msgid ""
 "How can you talk that way about my father, you miserable coward?! I’ll make "
 "a mug from your skull!"
@@ -2402,33 +2485,33 @@ msgstr ""
 "주잔을 만들어주마!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:144
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:145
 msgid "Really? What would you drink with it? Mint cordial?"
 msgstr "정말로? 그걸로 뭘 마실건데? 민트 주스?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:149
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:150
 msgid ""
 "Exasperated, Kapou’e launched an attack on his fellow orc Shan Taum the Smug."
 msgstr "격분한 Kapou'e는 동료 오크인 Shan Taum the Smug에게 싸움을 걸었다."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:156
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:157
 msgid "Fabstep"
 msgstr "Fabstep"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:158
 msgid "Klebar"
 msgstr "Klebar"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:158
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:159
 msgid "Echarp"
 msgstr "Echarp"
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:161
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:162
 msgid ""
 "What is this? Are you mad?! Humans are to besiege our fortress at Prestim "
 "and you are fighting each other?!"
@@ -2437,44 +2520,53 @@ msgstr ""
 "데 서로 싸우고 있다니?!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:166
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:167
 msgid "Well, ermmm..."
 msgstr "어, 으으으음..."
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:170
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:171
+#, fuzzy
+#| msgid ""
+#| "Kapou’e, rumors tell of you making a long trip to seek assistance from "
+#| "us, and escorting Pirk, Gork and Vraurk. The council is grateful for that."
 msgid ""
 "Kapou’e, rumors tell of you making a long trip to seek assistance from us, "
-"and escorting Pirk, Gork and Vraurk. The council is grateful for that."
+"and escorting Pirk, Gork and Vraurk. The Council is grateful for that."
 msgstr ""
 "Kapou'e, 소문에 자네가 우리의 도움을 구하러 Pirk, Gork, Vraurk를 대동하고 먼 "
 "여행을 하고 있다고 들었네. 이들을 무사히 데려와 줘서 고맙네."
 
 #. [message]: speaker=Fabstep
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:174
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:175
 msgid "I know what you want from us but I’m afraid we can’t help you."
 msgstr "자네가 뭘 원하는지는 알겠네만 우린 자네를 도와줄 수가 없네."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:178
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:179
 #, fuzzy
 #| msgid "Really? But my people..."
 msgid "But my people..."
 msgstr "뭐라고요? 하지만 내 백성들이..."
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:182
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:183
+#, fuzzy
+#| msgid ""
+#| "You don’t understand. Orcs have been divided for ages. The only one who "
+#| "gave us some unity was your father, Black-Eye Karun. Hearing rumors of "
+#| "your exploits, we understood you are a worthy son of your father."
 msgid ""
 "You don’t understand. Orcs have been divided for ages. The only one who gave "
-"us some unity was your father, Black-Eye Karun. Hearing rumors of your "
-"exploits, we understood you are a worthy son of your father."
+"us some unity was your father, Black-Eye Karun. When we heard rumors of your "
+"exploits, we understood that you are a worthy son of your father."
 msgstr ""
 "자넨 이해를 못하는군. 오크들은 오랜 세월 분열되어 있었네. 이들을 어느정도 통"
 "합했던 유일한 사람은 자네의 아버지 검은 눈 Karun 뿐이야. 자네의 공적을 들어보"
 "면, 자네는 아버지의 이름에 걸맞는 아들이라는 걸 알 수 있지."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:186
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:187
 msgid ""
 "This is true. Now we are pressed from all sides by humans and elves; we need "
 "a leader that can unite all banners. This one is <i>you</i>!"
@@ -2483,17 +2575,17 @@ msgstr ""
 "겐 모든 부족을 통합할 지도자가 필요합니다. 그건 바로 <b>당신</i>이지요!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:191
 msgid "Thank you."
 msgstr "고맙소."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:195
 msgid "Did you hear? There is a battle waiting for us at Prestim!"
 msgstr "들었어요? Prestim에서 싸움이 있대요!"
 
 #. [message]: speaker=Echarp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:198
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:199
 msgid ""
 "Kapou’e, if Prestim falls, humans will have a strong bridgehead on this side "
 "of the river and your people won’t be safe. You are the only one that can "
@@ -2504,7 +2596,7 @@ msgstr ""
 "물이야!"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:202
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
 #, fuzzy
 #| msgid ""
 #| "Leave your people here Kapou’e — they are safe for the moment — and go "
@@ -2512,17 +2604,19 @@ msgstr ""
 #| "we will decide. We may have to form the Great Horde again, and give you "
 #| "the leadership on it."
 msgid ""
-"Go defend Prestim, Kapou'e. In the meantime, now that the council is "
-"complete again, we will decide. We may have to form the Great Horde again, "
-"and give you the leadership of it."
+"Go defend Prestim, Kapou’e. In the meantime, now that the Council is "
+"complete again, we will decide. We may have to form the Great Horde again "
+"and make you its leader."
 msgstr ""
 "Kapou'e. 백성들은 여기에 남겨 두시오. 이들은 잠시 동안은 안전할 거요. Prestim"
 "을 원호하러 가시오. 그리고 이제 의회가 완전히 구성됐으니 결정을 내리겠소. 우"
 "리는 대무리를 다시 구성할 것이며, 그대에게 지휘권을 줄 거요."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:247
-msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:248
+#, fuzzy
+#| msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
+msgid "Nooo! Don’t kill me, I surrender to you, little earthworm."
 msgstr "안돼애애! 죽이지 마라, 항복하겠다 이 지렁이 자식아."
 
 #. [scenario]: id=10_Saving_Inarix
@@ -2559,42 +2653,48 @@ msgstr "참고: 다리 파괴를 맡은 부하는 죽습니다."
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:185
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:132
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:63
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:134
 msgid "Thelarion"
 msgstr "Thelarion"
 
 #. [side]: type=Dwarvish Steelclad, id=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:116
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:84
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:117
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:85
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:76
 msgid "Darstang"
 msgstr "Darstang"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:144
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:146
 msgid "Plonk"
 msgstr "Plonk"
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:192
+#, fuzzy
+#| msgid ""
+#| "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
+#| "fortified bridge over the River Bork was taken this morning by a small "
+#| "commando of elves, we have already tried to assault it twice without "
+#| "success."
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
-"commando of elves, we have already tried to assault it twice without success."
+"commando of elves. We have already tried to assault it twice without success."
 msgstr ""
 "마침내 원군이 왔구나! 당신이 누구든 Prestim에 온 것을 환영하오! Bork 강 위에 "
 "놓인 강화 다리가 오늘 아침 엘프 특공대원들에게 점령당했소, 우린 두번이나 재탈"
 "환을 시도했지만 실패했소."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:196
 msgid "Ah! They are no match against my hammer."
 msgstr "아! 녀석들은 내 망치의 상대가 안돼."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:198
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:200
 msgid ""
 "There is worse; our scouts report that our saurian allies led by Inarix are "
 "still trapped on the other side of the river some miles away. They won’t be "
@@ -2605,7 +2705,7 @@ msgstr ""
 "요."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:202
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:204
 msgid ""
 "Elves and dwarves have joined humans against us and have set up camp nearby. "
 "Humans will arrive soon. We must destroy the southern bridge on the river."
@@ -2614,38 +2714,48 @@ msgstr ""
 "인간들이 곧 도착할 거요. 우린 강의 남쪽 다리를 부숴야만 하오."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:206
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:208
+#, fuzzy
+#| msgid ""
+#| "If Inarix falls prey to those humans then we won’t be able to count on "
+#| "their help in this struggle. We must do something!"
 msgid ""
-"If Inarix falls prey to those humans then we won’t be able to count on their "
-"help in this struggle. We must do something!"
+"If Inarix falls prey to those humans, then we won’t be able to count on "
+"their help in this struggle. We must do something!"
 msgstr ""
 "Inarix가 인간들의 먹잇감으로 떨어지면 이 소동에서 그들의 도움을 기대할 수 없"
 "게 된다. 뭐라도 해야 해!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:211
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:213
 msgid "I know what we must do. Kill elves and help Inarix cross."
 msgstr "난 어떡하면 되는지 알아요. 엘프들을 죽이고 Inarix 건너게 도와요."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:215
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:217
 msgid "It won’t be that easy! Our enemies are well entrenched."
 msgstr "쉽지 않을 겁니다! 적들이 단단히 자리잡고 있어요."
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:219
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:221
+#, fuzzy
+#| msgid ""
+#| "We can sabotage the southern bridge to slow them down. When the bulk of "
+#| "the saurians have crossed, someone needs to go and light the barrel of "
+#| "oil we have set up beside the bridge to destroy it. Any warriors trapped "
+#| "on the bridge or on the other side of the river will perish!"
 msgid ""
-"We can sabotage the southern bridge to slow them down. When the bulk of the "
-"saurians have crossed, someone needs to go and light the barrel of oil we "
-"have set up beside the bridge to destroy it. Any warriors trapped on the "
-"bridge or on the other side of the river will perish!"
+"We can capture the southern bridge and keep it open for the saurians. When "
+"the bulk of them have crossed, someone needs to go and light the barrel of "
+"oil we have set up beside the bridge to destroy it. Any warriors trapped on "
+"the bridge or on the other side of the river will perish!"
 msgstr ""
 "우린 다리 남쪽을 부숴서 놈들을 잠시 저지할 수 있소. 대부분의 사우리언들이 건"
 "너온다면, 누가 가서 다리 곁에 설치해 둔 기름통에 불을 붙여서 다리를 파괴해야 "
 "하오. 다리나 강 건너에 묶인 전사들은 죽게 될거요!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:226
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:228
 msgid ""
 "Hey look, that tribe of orcs that destroyed my enclave in the Silent Forest "
 "have reinforced Prestim. It is time to avenge the death of our fallen kin my "
@@ -2655,7 +2765,7 @@ msgstr ""
 "러 왔다. 친구들이여 복수의 시간이 왔다 — 잡아라!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:230
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:232
 msgid ""
 "Ahhh, it’s ‘the Prince’ from the Silent Forest. Unfortunately, I don’t think "
 "we can deal with him now, we have to focus on saving Inarix."
@@ -2664,12 +2774,12 @@ msgstr ""
 "Inarix를 구하는 데 집중한다."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:239
 msgid "Inarix"
 msgstr "Inarix"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:256
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:258
 msgid ""
 "Hurry-hurry, friends. Lanbec’h and his kind are right on our tails, we must "
 "reach Prestim quickly."
@@ -2678,91 +2788,94 @@ msgstr ""
 "자."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:339
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:341
 msgid "Bah! I’m not going to blow myself to bits!"
 msgstr "하! 나 자신을 산산조각 낼 것 같나!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:357
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:359
 msgid "Grüü, stay away from that thing! I still have a use for you!"
 msgstr "Grüü, 거기서 떨어져라! 난 아직도 네가 필요하다!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:363
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:365
 #, fuzzy
 #| msgid "Uh... OK, Chief!"
 msgid "Uh... Fine, Chief!"
 msgstr "어... 알았어요, 대장!"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:381
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:383
 msgid "I’m not going to do it!"
 msgstr "난 안할 거야!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:410
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:412
 msgid "Get away from there you idiot, I’m still over here!"
 msgstr "거기서 떨어져 이 멍청아, 내가 아직 여기 있다고!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:425
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:427
 msgid "Hey, don’t light it up, I’m not safe!"
 msgstr "이봐, 불 켜지마, 나 안전하지 않아!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:448
-msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
+#. To "blow up" means "to make something explode".
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:451
+#, fuzzy
+#| msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
+msgid "Chief, we can’t be blowing up the bridge before Inarix is here, can we?"
 msgstr "족장, Inarix가 여기 없으니 다릴 날릴 수 없지 않나요?"
 
 #. [then]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:460
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:463
 msgid ""
 "Chief, Inarix hasn’t yet made it across! Are you really sure you want to do "
 "this?"
 msgstr "족장, Inarix가 아직 건너지 못했어요! 진짜로 하실 건가요?"
 
 #. [else]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:464
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:467
 msgid "I’m ready, Chief!"
 msgstr "준비됐어요, 족장!"
 
 #. [option]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:473
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:476
 msgid "Let her blow!"
 msgstr "날려버려!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:478
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:481
 msgid "Bye bye, $unit.name|!"
 msgstr "잘가, $unit.name|!"
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:490
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:493
 msgid "Damn you, Son of the Black-Eye! You’ll pay for this!"
 msgstr "젠장맞을, 검은 눈의 아들! 댓가를 치르게 해 주마!"
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:504
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:507
 msgid "No, wait!"
 msgstr "안돼, 기다려!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:511
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:514
 msgid "Aaaaaaaargh!"
 msgstr "아아아아아아악!"
 
 #. [option]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:527
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:530
 msgid "Wait a moment."
 msgstr "잠시 기다려라."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:532
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:535
 msgid "<i>Phew!</i>"
 msgstr "<i>푸휴!</i>"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:589
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:592
 msgid ""
 "Blast it! The saurians have had too many casualties in order for them to be "
 "of any real help to us. We won’t be able to recruit them in the future."
@@ -2771,7 +2884,7 @@ msgstr ""
 "에 이들을 소집할 순 없겠어."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:635
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:638
 #, fuzzy
 #| msgid ""
 #| "This has taken too much time, we should send all of our troops and send "
@@ -2784,33 +2897,33 @@ msgstr ""
 "로 하자."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:639
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:642
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "엘프들이 우리보다 용감하단 소릴 듣게 할 순 없지. 전원 공격!"
 
 #. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:688
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:84
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:78
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:661
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:691
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:144
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:86
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:80
 msgid "Earl Lanbec’h"
 msgstr "Lanbec'h 백작"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:674
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:677
 msgid "At them! Rip them to the last!"
 msgstr "놈들이다! 놈들을 끝까지 산산조각 내어라!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:678
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:681
 msgid "It is too late, we are defeated."
 msgstr "너무 늦었어, 우린 졌다."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:698
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:701
 msgid ""
 "So, the elves and dwarves failed to take the fortress and the beasts were "
 "able to muster a defense. No matter. Once the vanguard of my army arrives, I "
@@ -2818,12 +2931,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:738
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:741
 msgid "The green earth will curse you for this..."
 msgstr "푸른 대지가 너희를 저주하리라..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:750
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:753
 msgid "Curse you, foul orc!"
 msgstr "저주받아라, 더러운 오크!"
 
@@ -2844,37 +2957,44 @@ msgstr "4일간 Prestim을 완전히 방어할 것"
 #| "Enemies control any villages on the north side of the river when turns "
 #| "run out"
 msgid ""
-"You don't control all villages on the north side of the river when turns run "
+"You don’t control all villages on the north side of the river when turns run "
 "out"
 msgstr "턴오버시 적들이 북쪽에 있는 마을을 점령한 상태일 것"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:232
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:233
 msgid "Telamir"
 msgstr "Telamir"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:233
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:234
 msgid "Angthur"
 msgstr "Angthur"
 
 #. [message]: role=cannonfodder
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:254
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:255
 msgid "So here we are, and they are preparing to assault."
 msgstr "위치에 다 왔습니다. 놈들이 공격을 준비하고 있네요."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:259
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:260
 msgid "Prestim’s walls are rock-hard, they’ll waste themselves on them."
 msgstr "Prestim의 벽은 단단하니, 놈들은 시간만 날려먹을거에요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:264
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:265
+#, fuzzy
+#| msgid ""
+#| "I’m not that sure. Every fortress has its own weakness. Prestim’s walls "
+#| "are strong but long and it is difficult to defend them from many "
+#| "directions at once. This Earl Lanbec’h must know they can’t break through "
+#| "by only fording the river where the bridge previously stood so he must "
+#| "have a better plan than that."
 msgid ""
 "I’m not that sure. Every fortress has its own weakness. Prestim’s walls are "
-"strong but long and it is difficult to defend them from many directions at "
+"strong but long, and it is difficult to defend them from many directions at "
 "once. This Earl Lanbec’h must know they can’t break through by only fording "
-"the river where the bridge previously stood so he must have a better plan "
+"the river where the bridge previously stood, so he must have a better plan "
 "than that."
 msgstr ""
 "그건 확신할 수 없다. 모든 요새에는 약점이 있어. Prestim의 벽은 강하지만 길어"
@@ -2883,7 +3003,7 @@ msgstr ""
 "더 나은 방책을 생각해 뒀을거야."
 
 #. [message]: role=cannonfodder
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:269
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:270
 msgid ""
 "We’ve received messengers from the Council, saying that they are gathering "
 "tribes into the Great Horde."
@@ -2891,32 +3011,43 @@ msgstr ""
 "의회에서 전령을 보내서 부족들을 모아 대무리를 구성하고 있다고 알려왔습니다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:274
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:275
 msgid "Great! When do they arrive?"
 msgstr "좋아! 언제 온대?"
 
 #. [message]: role=cannonfodder
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:279
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:280
 msgid "In four days. I fear it will be too late."
 msgstr "4일 후입니다. 너무 늦을까 걱정이군요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:284
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:285
+#, fuzzy
+#| msgid ""
+#| "Fool! We can hold that long. But we have to have Prestim firmly in "
+#| "control when the shamans arrive with the Great Horde. We can’t let the "
+#| "humans establish a foothold on this side of the river."
 msgid ""
 "Fool! We can hold that long. But we have to have Prestim firmly in control "
 "when the shamans arrive with the Great Horde. We can’t let the humans "
-"establish a foothold on this side of the river."
+"establish a foothold on this side of the river..."
 msgstr ""
 "멍청하긴! 우린 그정도는 버틸 수 있다. 하지만 샤먼들이 대무리와 함께 와 있을"
 "때 우린 Prestim을 확실하게 장악하고 있어야해. 인간들이 강 이쪽에 발판을 마련"
 "하게 둬선 안된다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:294
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:295
+#, fuzzy
+#| msgid ""
+#| "Because if we cannot decisively beat these humans, the other tribes won’t "
+#| "think us strong enough to lead them. Each chieftain will try to claim the "
+#| "leadership of the horde for themselves and the humans will be able to "
+#| "break through our defenses."
 msgid ""
-"Because if we cannot decisively beat these humans, the other tribes won’t "
-"think us strong enough to lead them. Each chieftain will try to claim the "
-"leadership of the horde for themselves and the humans will be able to break "
+"... because if we cannot decisively beat these humans, the other tribes "
+"won’t think us strong enough to lead them. Each chieftain will try to claim "
+"leadership of the horde for themselves, and the humans will be able to break "
 "through our defenses."
 msgstr ""
 "왜냐면 우리가 확실하게 인간들을 격퇴하지 못하면 다른 부족은 우리가 그들을 이"
@@ -2924,53 +3055,53 @@ msgstr ""
 "자기가 가지겠다고 우길거고 인간들은 우리의 방어를 깨뜨릴 수 있게 되겠지."
 
 #. [message]: role=cannonfodder
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:299
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:300
 msgid "Great."
 msgstr "대단하네요."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:378
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:379
 msgid "Look, the humans are boarding a ship!"
 msgstr "저거봐요, 인간들이 배에 타고 있어요!"
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:899
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:900
 msgid "Charge!"
 msgstr "돌격!"
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:908
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:909
 msgid "Get them!"
 msgstr "잡아라!"
 
 #. [unit]: type=Merman Warrior, id=Plouf
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1041
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1042
 msgid "Plouf"
 msgstr "Plouf"
 
 #. [message]: speaker=Plouf
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1052
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1053
 msgid "We arrive to honor our alliance, Earl Lanbec’h."
 msgstr "우리의 동맹을 위해 도착했소, Lanbec'h 백작."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1057
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1058
 msgid "Curses! They have fish-men on their side."
 msgstr "빌어먹을! 놈들이 물고기인간을 자기편으로 뒀어."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1140
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1141
 msgid ""
 "The Great Horde is almost here! Drive them out of our villages <b>now</b>!"
 msgstr "대무리가 거의 다 왔다! 우리 마을에서 놈들을 몰아내라, <b>지금</b>!"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1177
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1178
 msgid "Here we are!"
 msgstr "우리가 왔네!"
 
 #. [message]: role=greathordewarlord1
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1182
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1183
 msgid ""
 "What’s this? This weakling has let humans enter Prestim? I will lead the "
 "horde and push them to the river!"
@@ -2979,14 +3110,14 @@ msgstr ""
 "을 강으로 밀어넣겠다!"
 
 #. [message]: role=greathordewarlord2
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1188
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1189
 msgid ""
 "Bah! I’m the only one strong enough to drive out the humans! The Great Horde "
 "follows me!"
 msgstr "하! 인간들을 몰아낼만큼 강한 자는 나 뿐이다! 대무리는 나를 따르라!"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1195
 msgid ""
 "Look at that, the stupid orcs are starting to fight amongst themselves! "
 "Now’s our chance, everyone attack!"
@@ -2995,23 +3126,25 @@ msgstr ""
 "격!"
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1205
-msgid "Here we are! Hold on Prestim, we arrive to push them to the river!"
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1206
+#, fuzzy
+#| msgid "Here we are! Hold on Prestim, we arrive to push them to the river!"
+msgid "Here we are! Hold on Prestim, we will help you push them to the river!"
 msgstr "우리가 왔네! Prestim을 지키게, 우리가 놈들을 강으로 밀어버리겠네!"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1210
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1211
 msgid "They are too numerous now, RETREAT!"
 msgstr "놈들이 너무 많아졌다, 퇴각!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1232
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1233
 msgid ""
 "The Great Horde at last! I was beginning to think they would never come."
 msgstr "드디어 대무리가 왔군! 한때는 오지 않는가 생각했소."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1238
 #, fuzzy
 #| msgid ""
 #| "Your defense of Prestim was heroic, facing such opposition surely "
@@ -3027,7 +3160,7 @@ msgstr ""
 "못할걸세."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1242
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1243
 msgid ""
 "It is now time to show them who we are and to lead the Great Horde in "
 "pursuit. We will not rest until we destroy Earl Lanbec’h. Smite, stab, slay!"
@@ -3057,17 +3190,17 @@ msgid "Death of Flar’Tar"
 msgstr "Flar'Tar의 사망"
 
 #. [side]: type=General, id=Arthain
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:78
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:80
 msgid "Arthain"
 msgstr "Arthain"
 
 #. [side]: type=Lieutenant, id=Hanak
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:99
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:101
 msgid "Hanak"
 msgstr "Hanak"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:118
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:120
 msgid ""
 "With the arrival of the Great Horde, and the humans having retreated, the "
 "united orcish forces held a council of war."
@@ -3075,34 +3208,52 @@ msgstr ""
 "대무리가 도착하고 인간들이 퇴각하자, 통합된 오크 군단은 전쟁 회의를 열었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:124
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:126
+#, fuzzy
+#| msgid ""
+#| "After a fair amount of squabbling — for some of the older warlords were "
+#| "reluctant to let this young upstart lead them — and a few consequent "
+#| "executions, the leadership of the horde was formally bestowed upon "
+#| "Kapou’e."
 msgid ""
 "After a fair amount of squabbling — for some of the older warlords were "
 "reluctant to let this young upstart lead them — and a few consequent "
-"executions, the leadership of the horde was formally bestowed upon Kapou’e."
+"executions, leadership of the horde was formally bestowed upon Kapou’e."
 msgstr ""
 "상당한 다툼과 (일부 원로 무장들이 이 어린 건방진 녀석이 그들을 이끄는 데 저항"
 "했다) 그 결과로 일어난 몇 번의 처형이 있은 후, 무리의 지휘권은 공식적으로 "
 "Kapou'e에게 부여되었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:130
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:132
+#, fuzzy
+#| msgid ""
+#| "Riders were dispatched in all directions to gather intelligence and to "
+#| "pinpoint the exact location of the hostile forces."
 msgid ""
 "Riders were dispatched in all directions to gather intelligence and to "
-"pinpoint the exact location of the hostile forces."
+"pinpoint the exact locations of hostile forces."
 msgstr ""
 "기병들이 모든 방향으로 퍼져서 지혜를 모으고 적대 세력의 확실한 거점을 찾아내"
 "기 위해 분주히 뛰어다녔다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:136
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:138
+#, fuzzy
+#| msgid ""
+#| "The horde was then split into two forces. On the advice of the shamans, "
+#| "Kapou’e placed one force under the leadership of Shan Taum the Smug, who "
+#| "— despite his obnoxious nature — was a fierce and capable leader. He was "
+#| "sent to Bitok, the most southwestern orcish city, to cut off the humans "
+#| "already invading the harbor of Tirigaz, and to stop any further human "
+#| "incursion into orcish territory."
 msgid ""
 "The horde was then split into two forces. On the advice of the shamans, "
 "Kapou’e placed one force under the leadership of Shan Taum the Smug, who — "
 "despite his obnoxious nature — was a fierce and capable leader. He was sent "
 "to Bitok, the most southwestern orcish city, to cut off the humans already "
-"invading the harbor of Tirigaz, and to stop any further human incursion into "
-"orcish territory."
+"invading the port city of Tirigaz, and to stop any further human incursion "
+"into orcish territory."
 msgstr ""
 "그리고 무리는 두 무리로 갈라졌다. 샤먼들의 조언에 따라, Kapou'e는 한쪽 병력"
 "을 그의 불쾌한 천성에도 불구하고 사나우며 적합한 지도자인 Shan Taum the Smug"
@@ -3111,17 +3262,22 @@ msgstr ""
 "되었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:143
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:145
+#, fuzzy
+#| msgid ""
+#| "He sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city just "
+#| "north of the Mourned Hills — to organize any remaining orcish forces as "
+#| "well as create an arms and supply depot."
 msgid ""
-"He sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city just "
-"north of the Mourned Hills — to organize any remaining orcish forces as well "
-"as create an arms and supply depot."
+"Kapou’e sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city "
+"just north of the Mourned Hills — to organize any remaining orcish forces as "
+"well as create an arms and supply depot."
 msgstr ""
 "그는 샤먼인 Pirk, Gork와 Vraurk를 애도의 언덕 바로 북쪽에 있는 Borstep으로 돌"
 "려보내 무기와 보급창이 완성되는 대로 남아있는 오크 병력들을 구성하게 했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:149
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:151
 #, fuzzy
 #| msgid ""
 #| "Kapou’e himself — desiring to settle this business once and for all — led "
@@ -3136,13 +3292,13 @@ msgstr ""
 "이 퇴각해 간 Prestim 남동쪽의 인간 도시 Dorset으로 진군시켰다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:224
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:226
 msgid ""
 "Earl Lanbec’h, you slimy coward, come out and face me if you have the guts!"
 msgstr "Lanbec'h 백작, 이 슬라임같은 겁쟁아, 배알이 있다면 나와서 날 상대해라!"
 
 #. [message]: speaker=Arthain
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:230
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:232
 msgid ""
 "Sorry there, old chap. You’re deemed too insignificant for the likes of the "
 "Earl to deal with. He’s left that pleasure to me instead."
@@ -3151,23 +3307,27 @@ msgstr ""
 "대신 내게 즐거움을 맡겨주셨지."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:235
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:237
+#, fuzzy
+#| msgid ""
+#| "Foolish human. Attack, men, I want that city to be orcish territory "
+#| "within the week. Smite, stab, and slay!"
 msgid ""
-"Foolish human. Attack, men, I want that city to be orcish territory within "
+"Foolish human. Attack, men! I want that city to be orcish territory within "
 "the week. Smite, stab, and slay!"
 msgstr ""
 "멍청한 인간. 얘들아, 공격해라. 나는 일주일 안에 저 도시가 오크의 영토에 편입"
 "되길 바란다. 물고, 찌르고, 베어라!"
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:242
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:244
 msgid ""
 "Easier said than done, Chief. There are many humans in that city. And they "
 "are well armed, too."
 msgstr "말은 쉽죠, 족장. 저긴 인간들이 많은데다 무장도 좋다구요."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:247
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:249
 msgid "No matter. Horde smash!"
 msgstr "상관없어. 무리는 으깬다!"
 
@@ -3177,12 +3337,12 @@ msgid "The Dwarvish Stand"
 msgstr "드워프들의 항전"
 
 #. [side]: type=Bandit, id=Sagmar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:87
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:90
 msgid "Sagmar"
 msgstr "Sagmar"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:99
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:103
 #, fuzzy
 #| msgid ""
 #| "After conquering and occupying Dorset, Kapou’e and his men set themselves "
@@ -3190,13 +3350,13 @@ msgstr "Sagmar"
 #| "rule."
 msgid ""
 "After conquering and occupying Dorest, Kapou’e and his men set themselves to "
-"stabilizing the area and bringing it firmly under the iron-hard orcish rule."
+"stabilizing the area and bringing it firmly under iron-hard orcish rule."
 msgstr ""
 "Dorset을 정복하여 점령한 뒤, Kapou'e와 부하들은 지역을 안정시키고 그곳을 확실"
 "하게 오크의 철권 아래 두는 작업에 착수했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:105
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:109
 #, fuzzy
 #| msgid ""
 #| "After a few weeks of putting down minor rebellions and clearing out the "
@@ -3207,9 +3367,9 @@ msgstr ""
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
-"fall. A few days after the first snowfall a goblin rider — half dead from "
-"exhaustion — raced into Dorest with the news that Borstep was under siege by "
-"a large force of dwarves, outlaws and elves."
+"fall. A few days after the first snowfall, a goblin rider — half dead from "
+"exhaustion — raced into Dorest with news that Borstep was under siege by a "
+"large force of dwarves, outlaws and elves."
 msgstr ""
 "소규모 저항을 찍어누르고 최후의 인간 근거지까지 청소하고 나자, 북방의 기나긴 "
 "겨울을 알리는 첫눈이 내리기 시작했다. 첫눈이 오고 며칠 뒤 고블린 기병이 지쳐"
@@ -3217,7 +3377,7 @@ msgstr ""
 "들의 대부대에 포위당해있다는 소식을 전했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:111
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:115
 msgid ""
 "The orcish commanders were stunned. How had such a large enemy force "
 "penetrated so deep and so far into orcish territory, especially without "
@@ -3231,7 +3391,7 @@ msgstr ""
 "가?"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:117
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:121
 #, fuzzy
 #| msgid ""
 #| "Kapou’e suspected some sort of treachery. Under the assumption that human "
@@ -3249,13 +3409,20 @@ msgstr ""
 "크 주력군을 끌고 Borstep을 지원하기 위해 서둘렀다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:123
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:127
+#, fuzzy
+#| msgid ""
+#| "Rushing to reach Borstep before the river froze up for the winter, the "
+#| "orcs sailed up the River Bork. Paddling day and night the horde barely "
+#| "managed to get through the Silent Forest before the river froze solid. "
+#| "Beaching their crafts, they marched the last leg of their journey through "
+#| "the deepening snow of the Mourned Hills."
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
-"sailed up the River Bork. Paddling day and night the horde barely managed to "
-"get through the Silent Forest before the river froze solid. Beaching their "
-"crafts, they marched the last leg of their journey through the deepening "
-"snow of the Mourned Hills."
+"sailed up the River Bork. Paddling day and night, the horde barely managed "
+"to get through the Silent Forest before the river froze solid. Beaching "
+"their crafts, they marched the last leg of their journey through the "
+"deepening snow of the Mourned Hills."
 msgstr ""
 "강이 겨우내 얼어버리기 전에 Borstep에 도착하기 위해 오크들은 Bork 강을 따라 "
 "배를 저었다. 무리는 밤낮으로 걸어서 강이 단단하게 얼기 전에 겨우겨우 침묵의 "
@@ -3263,7 +3430,7 @@ msgstr ""
 "는 눈발을 뚫고 여정의 마지막을 향해 진군했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:129
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:133
 msgid ""
 "As they crested the last hill before the city, the sight before them cast "
 "them into gloom; there was nothing left of Borstep. The walls had been "
@@ -3275,11 +3442,18 @@ msgstr ""
 "은 불탔고 주민들은 쫓겨나거나 학살당했다. 오크 샤먼들은 흔적조차 없었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:135
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:139
+#, fuzzy
+#| msgid ""
+#| "With eyes burning with apprehension and rage, Kapou’e sent his riders out "
+#| "to scour the land in all directions for the culprits while he made camp "
+#| "with the rest of the horde. A few hours later a rider reported back that "
+#| "he had picked up a trail of a large body of dwarves, elves and humans "
+#| "heading east through the mountains."
 msgid ""
 "With eyes burning with apprehension and rage, Kapou’e sent his riders out to "
 "scour the land in all directions for the culprits while he made camp with "
-"the rest of the horde. A few hours later a rider reported back that he had "
+"the rest of the horde. A few hours later, a rider reported back that he had "
 "picked up a trail of a large body of dwarves, elves and humans heading east "
 "through the mountains."
 msgstr ""
@@ -3289,7 +3463,7 @@ msgstr ""
 "다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:141
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:145
 msgid ""
 "Breaking camp the following dusk, the horde set out in hot pursuit. By the "
 "third day, they caught up with their enemies."
@@ -3298,17 +3472,17 @@ msgstr ""
 "날 그들은 적들을 따라잡았다."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:191
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:195
 msgid "Pelondras"
 msgstr "Pelondras"
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:192
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:196
 msgid "Trithalsul"
 msgstr "Trithalsul"
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:200
 msgid ""
 "My my, look at this, two abandoned keeps. Probably built by those orcs in "
 "one of their pointless wars against each other."
@@ -3317,12 +3491,12 @@ msgstr ""
 "벌이던 중에 지었겠지."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:246
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:250
 msgid "Blast it, the orcs have caught up to us."
 msgstr "제기랄, 오크들이 우릴 따라잡았소."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:251
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:255
 msgid ""
 "Elf, our kind can move and fight far better and faster in these conditions "
 "than your kind can. Take the orcish prisoners and hurry to Melmog. The "
@@ -3333,7 +3507,7 @@ msgstr ""
 "겠네!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:256
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:260
 msgid ""
 "Very well, but our human allies will also stay behind and help you. After "
 "all, we are dealing with the Son of the Black-Eye here."
@@ -3342,12 +3516,12 @@ msgstr ""
 "서 검은 눈의 아들을 상대하는 거니까."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:261
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:265
 msgid "Bah, have it your way then. Now, hurry on your way elf."
 msgstr "하, 맘대로 하게 그럼. 이제 서둘러서 가게 엘프."
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:277
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:281
 msgid ""
 "Bah, cowardly little elves. No dwarf would have ever agreed to such a "
 "proposal. Good riddance too, those elves just get in the way. Come on men, "
@@ -3358,22 +3532,22 @@ msgstr ""
 "다!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:283
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:287
 msgid "Ahhh, nice. I finally get chance to squash dwarves again."
 msgstr "아아, 괜찮은데. 드디어 드워프들을 또 뭉개줄 수 있겠어."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:289
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:293
 msgid "Let’s make them pay for what they did to our people. Blood and steel!"
 msgstr "놈들이 동족들에게 한 짓의 대가를 치르게 해 준다. 철혈의 진군을!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:298
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:302
 msgid "Victory! ... Grüü, what <i>is</i> that you are eating?"
 msgstr "이겼다! ... Grüü, 너 <i>대체</i> 뭘 먹는거냐?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:303
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:307
 msgid ""
 "A human-worm’s dog. Animal meat very tasty. When we fight humans again, can "
 "I have a pony?"
@@ -3387,22 +3561,22 @@ msgid "Back Home"
 msgstr "고향으로"
 
 #. [side]: type=General, id=Telthys
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:113
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:115
 msgid "Telthys"
 msgstr "Telthys"
 
 #. [side]: type=General, id=Fredor
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:150
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:152
 msgid "Fredor"
 msgstr "Fredor"
 
 #. [side]: type=General, id=Georan
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:168
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:170
 msgid "Georan"
 msgstr "Georan"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:185
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:187
 msgid ""
 "Having broken the dwarvish blockade, the horde continued on through the "
 "mountain pass. Kapou’e began to recognize the lands about them and sure "
@@ -3412,22 +3586,22 @@ msgstr ""
 "을 알아보았다. 분명 그들은 부족의 고향으로 돌아온 것이다."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:198
 msgid "Valan"
 msgstr "Valan"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:266
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:268
 msgid "Well, boys, we’re home. I told you we would return one day."
 msgstr "자아, 얘들아, 집에 돌아왔다. 내가 돌아올거라고 전에 말했지."
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:273
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:275
 msgid "Boy, have they ever built this place up."
 msgstr "저런, 놈들이 여기 성채를 지어놨는데요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:279
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:281
 msgid ""
 "Listen up, orcs. Our main objective is to rescue the shamans. It won’t work "
 "to take the human runts head-on while they sneak the shamans out the back "
@@ -3438,16 +3612,22 @@ msgstr ""
 "을 거다."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:285
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:287
 msgid "What are you thinking, Chief?"
 msgstr "계획이 뭔가요, 족장?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:291
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:293
+#, fuzzy
+#| msgid ""
+#| "My men know the land well. Flar’Tar and Al’Brock, both of you take a "
+#| "scout and circle around to the Northeast and Southeast respectively. "
+#| "Grüü, you take your trolls and circle around to the Northwest. If all "
+#| "goes well we shall surround them."
 msgid ""
 "My men know the land well. Flar’Tar and Al’Brock, both of you take a scout "
-"and circle around to the Northeast and Southeast respectively. Grüü, you "
-"take your trolls and circle around to the Northwest. If all goes well we "
+"and circle around to the northeast and southeast respectively. Grüü, you "
+"take your trolls and circle around to the northwest. If all goes well, we "
 "shall surround them."
 msgstr ""
 "내 부하들은 여기 지리를 잘 알지. Flar'Tar와 Al'Brock, 너희 둘은 정찰병 하나씩"
@@ -3455,17 +3635,17 @@ msgstr ""
 "서쪽으로 돌아가라. 작전이 잘 먹히면 우린 놈들을 포위하게 된다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:297
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:299
 msgid "I like this plan, Chief!"
 msgstr "이 작전 좋은데요, 대장!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:303
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:305
 msgid "You always like his plans, Grüü."
 msgstr "넌 맨날 족장의 작전이 좋다는구나, Grüü."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:309
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:311
 msgid ""
 "Of course. Squash elves, squash undead, squash dwarves, squash humans. "
 "Squash them all, very good plan!"
@@ -3474,12 +3654,12 @@ msgstr ""
 "니까 아주 좋은 계획이야!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:315
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:317
 msgid "Well, he has the right idea, anyway."
 msgstr "뭐, 어쨌든 그 생각이 맞긴 하군."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:322
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:324
 msgid ""
 "Good, everyone move out. I will begin the attack from here. I want everyone "
 "to be in position by first watch at the latest. Is that clear?"
@@ -3489,133 +3669,137 @@ msgstr ""
 
 #. [message]: speaker=Flar'Tar
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:328
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:699
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:330
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:701
 #, fuzzy
 #| msgid "Yeah, Chief?"
 msgid "Yes, Chief."
 msgstr "네, 족장?"
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:334
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:336
 msgid "Understood."
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:356
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:358
 msgid "Uh, Chief..."
 msgstr "어, 대장..."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:362
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:364
 msgid "... Yes, Grüü?"
 msgstr "... 뭔가, Grüü?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:368
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:370
 msgid "Can I get some gold with me?"
 msgstr "돈을 좀 받아가도 될까요?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:374
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:376
 msgid "Fine, take a hundred. Don’t lose it."
 msgstr "좋다. 백 원 주지. 잃어버리지 마라."
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:441
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:443
 msgid "I am in position, Chief."
 msgstr "거점을 세웠습니다, 족장."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:447
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:449
 msgid "Excellent. Now, where are the others?"
 msgstr "잘했다. 지금 나머지는 어디 있지?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:491
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:493
 msgid "We made it."
 msgstr "준비 됐습니다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:497
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:499
 msgid "Good, but where is Grüü?"
 msgstr "좋아, 근데 Grüü는 어디 있나?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:502
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:504
 msgid "Dumb trolls, you can never rely on them."
 msgstr "멍청한 트롤, 놈들에겐 의지가 안됩니다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:564
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:566
 #, fuzzy
 #| msgid "I’m here, chief!"
 msgid "I’m here, Chief!"
 msgstr "나 왔어요, 대장!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:570
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:572
 msgid ""
 "Blood and stone, Grüü! You were supposed to be in position by first watch. "
 "It’s dawn!"
 msgstr "석혈石血의 Grüü자식! 초경까지 위치로 가 있기로 했잖아. 지금 새벽이다!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:576
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:578
 msgid "Err, sorry, there were some humans in way. We squash, no problem."
 msgstr "어어, 미안, 가는 길에 인간들이 좀 있었어요. 우린 뭉갰고, 괜찮아요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:582
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:584
+#, fuzzy
+#| msgid ""
+#| "Better late than never. Now it’s time to kill! Let nobody escape and "
+#| "everyone keep an eye out for the shamans."
 msgid ""
-"Better late than never. Now it’s time to kill! Let nobody escape and "
-"everyone keep an eye out for the shamans."
+"Better late than never. Now it’s time to kill! Let nobody escape! Everyone, "
+"keep an eye out for the shamans."
 msgstr ""
 "안오는 것보단 낫지. 이제 죽일 시간이다! 누구도 살려보내지 말고 샤먼들을 눈에 "
 "불을 켜고 찾아라."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:587
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:589
 msgid "Sounds simple enough."
 msgstr "간단한 명령이네요."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:610
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:612
 msgid "Miserable elf, we want some answers!"
 msgstr "비참한 엘프야, 몇가지 대답을 들어야겠다!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:615
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:617
 msgid "Ugh!"
 msgstr "으윽!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:620
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:622
 msgid "SPEAK!"
 msgstr "말해!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:625
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:627
 msgid "... Well, what do you want to know?"
 msgstr "... 음, 뭘 알고 싶은가?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:630
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:632
 msgid "You can start by telling us who told you to strike at Borstep."
 msgstr "먼저 누가 Borstep을 공격하라고 말해줬는지부터 말해라."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:635
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:637
 msgid "Uh... we have intelligence."
 msgstr "어... 우리도 지능은 있다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:640
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:642
 msgid "Don’t make me hurt you more."
 msgstr "내가 널 더 다치게 만들도록 하지 마라."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:645
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:647
 msgid ""
 "I yield. Shan Taum the Smug told us that that’s where the shamans were, and "
 "that it was a rally point and weapons depot for you orcs."
@@ -3624,13 +3808,13 @@ msgstr ""
 "희 오크들의 집결지이자 병기창이라는 걸 알려줬다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:650
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:652
 msgid ""
 "Bah, do not think you can break the unity of the horde with your stupid lies!"
 msgstr "하, 네 멍청한 거짓말로 우리 무리의 통합을 깰 수 있다고 생각하나!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:655
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:657
 msgid ""
 "No really, it’s true. He is jealous of some young upstart called Kapou’e. He "
 "says all the shamans ‘suck up’ to him just because his father had a black "
@@ -3641,7 +3825,7 @@ msgstr ""
 "'빨아준다'고 얘기했지."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:660
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:662
 msgid ""
 "Refer to Black-Eye Karun with respect, wose-born. Now, where are the shamans?"
 msgstr ""
@@ -3649,37 +3833,37 @@ msgstr ""
 "있나?"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:665
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:667
 msgid "They’re... the humans killed them."
 msgstr "그들이... 인간들이 죽였다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:670
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:672
 msgid "You lie!"
 msgstr "거짓말이야!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:675
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:677
 msgid "I do not. Their bodies are frozen in the lake just over there."
 msgstr "아니다. 그들의 시체가 바로 저기 호수에 얼어있다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:687
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:689
 msgid "We had better go look."
 msgstr "가서 살펴봐야겠군."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:694
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:696
 msgid "You had better go look."
 msgstr "네가 가서 살펴봐라."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:706
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:708
 msgid "A few minutes later..."
 msgstr "몇분 후..."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:719
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:721
 #, fuzzy
 #| msgid ""
 #| "<i>What</i>?! The human-worms and tree-shaggers have gone too far! BLOOD "
@@ -3693,12 +3877,12 @@ msgstr ""
 "이 지역의 모든 인간과 엘프들을 죽여버려라! 자비도 아량도 보여주지 마라!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:725
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:727
 msgid "Chief! It’s true, the shamans have been murdered!"
 msgstr "족장! 사실입니다, 샤먼들이 살해당했습니다?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:731
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:733
 msgid ""
 "<i>What</i>?! The human-worms and tree-shaggers have gone too far! BLOOD AND "
 "STEEL! I want every human and elf in this area slaughtered! Show no mercy, "
@@ -3708,17 +3892,17 @@ msgstr ""
 "이 지역의 모든 인간과 엘프들을 죽여버려라! 자비도 아량도 보여주지 마라!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:736
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:738
 msgid "What should I do with this one?"
 msgstr "이놈은 어떻게 할까요?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:742
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:744
 msgid "Throw him in the lake. If he freezes to death, all the better."
 msgstr "호수에 던져버려. 놈이 얼어죽는 편이 더 낫겠지."
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:765
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:767
 msgid "You retrieve $amount_gold of Grüü's leftover gold."
 msgstr ""
 
@@ -3747,44 +3931,44 @@ msgid "Move Kapou’e to the signpost in the southwest"
 msgstr "Kapou'e를 남서쪽의 표지판으로 이동시킨다"
 
 #. [side]: type=Orcish Warlord, id=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:91
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:92
 msgid "Braga"
 msgstr "Braga"
 
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Warrior, id=Knorgh
-#. [side]: type=Orcish Warrior, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:98
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:118
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:138
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:158
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:65
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:86
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:100
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Warrior, id=Knorgh
+#. [side]: type=Orcish Warrior, id=Nofhug
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:100
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:121
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:142
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:163
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:67
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:102
 msgid "Rebels"
 msgstr "저항군"
 
 #. [side]: type=Orcish Warlord, id=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:111
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:113
 msgid "Meato"
 msgstr "Meato"
 
 #. [side]: type=Orcish Warlord, id=Ragvan
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:131
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:134
 msgid "Ragvan"
 msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord, id=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:151
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:155
 msgid "Kergai"
 msgstr "Kergai"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:170
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:175
 msgid ""
 "Infuriated by the murder of the shamans, the orcish horde massacred the "
 "humans and their allies. In their rage, they scoured the snow for hours "
@@ -3797,10 +3981,16 @@ msgstr ""
 "시작했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:176
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:181
+#, fuzzy
+#| msgid ""
+#| "With the Council broken, there was now nothing left to hold the orcish "
+#| "forces together. And if the orcish forces began to fight amongst "
+#| "themselves as they so often did, then the humans would eradicate them "
+#| "with ease."
 msgid ""
 "With the Council broken, there was now nothing left to hold the orcish "
-"forces together. And if the orcish forces began to fight amongst themselves "
+"forces together. And if the orcish forces began to fight amongst themselves, "
 "as they so often did, then the humans would eradicate them with ease."
 msgstr ""
 "의회가 해산당하자, 이제 오크 병력을 한데 묶어주는 것은 아무것도 남아있지 않았"
@@ -3808,7 +3998,17 @@ msgstr ""
 "은 그들을 쉽게 뿌리뽑을 수 있을 것이다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:182
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:187
+#, fuzzy
+#| msgid ""
+#| "Kapou’e vowed that this would not happen. Events had the smell of a "
+#| "treacherous plot aimed at destroying the unity of the orcs. Furthermore, "
+#| "if the tree-shagger was to be trusted, then Shan Taum the Smug was behind "
+#| "it all. What an orc expected to gain from destroying his own race was "
+#| "beyond Kapou’e, but he decided to march to Bitok personally and confront "
+#| "the traitor. Bitok being on the far side of orcish territory, this would "
+#| "also give him a good chance to clobber the orcs together again — the old "
+#| "fashioned way."
 msgid ""
 "Kapou’e vowed that this would not happen. Events had the smell of a "
 "treacherous plot aimed at destroying the unity of the orcs. Furthermore, if "
@@ -3816,8 +4016,8 @@ msgid ""
 "all. What an orc expected to gain from destroying his own race was beyond "
 "Kapou’e, but he decided to march to Bitok personally and confront the "
 "traitor. Bitok being on the far side of orcish territory, this would also "
-"give him a good chance to clobber the orcs together again — the old "
-"fashioned way."
+"give him a good chance to clobber the orcs into working together again — the "
+"old-fashioned way."
 msgstr ""
 "Kapou'e는 그런 일은 절대 일어나게 하지 않겠다고 맹세했다. 일련의 사건들은 오"
 "크족의 통합을 깨뜨리기 위한 배신적인 계획의 냄새가 났다. 뿐만아니라, 그 나무"
@@ -3828,7 +4028,7 @@ msgstr ""
 "패서 다시 뭉치게 만들 좋은 기회였다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:188
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:193
 #, fuzzy
 #| msgid ""
 #| "Furthermore, the troops who had been led by Kapou’e this far had grown to "
@@ -3862,7 +4062,7 @@ msgstr ""
 "로 했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:199
 msgid ""
 "Having thus made his plans, Kapou’e set out for Bitok to get to the root of "
 "this treachery."
@@ -3871,7 +4071,7 @@ msgstr ""
 "출발했다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:219
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:224
 #, fuzzy
 #| msgid ""
 #| "If we are going to make it to Bitok, and then back to Dorset before "
@@ -3879,7 +4079,7 @@ msgstr ""
 #| "all opposition in your path, I want this area to be firmly under my "
 #| "control by the time we are through here."
 msgid ""
-"If we are going to make it to Bitok, and then back to Dorest before spring "
+"If we are going to make it to Bitok, and then back to Dorest before spring, "
 "we have to get a move on. Break camp as soon as possible. Destroy all "
 "opposition in your path, I want this area to be firmly under my control by "
 "the time we are through here."
@@ -3889,12 +4089,12 @@ msgstr ""
 "기를 지날 때쯤에는 이 지역이 확실하게 내 통제하게 있어야 한다."
 
 #. [message]: speaker=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:225
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:230
 msgid "Black-Eye! We won’t submit to an upstart like you!"
 msgstr "검은 눈! 우린 너같이 건방진 놈을 인정하지 않겠다!"
 
 #. [message]: speaker=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:231
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:236
 msgid ""
 "Turn around and go back to where you came from or you’ll find your head on a "
 "pike! Right?"
@@ -3903,15 +4103,15 @@ msgstr ""
 
 #. [message]: speaker=Ragvan
 #. [message]: speaker=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:236
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:241
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:246
 msgid "Right!"
 msgstr "물론!"
 
 #. [message]: speaker=Kapou'e
 #. "whupping" is not a typo for "whipping"; it is a Southern
 #. American dialect word meaning "a severe beating".
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:249
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:254
 msgid ""
 "It’s been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whupping, boys?"
@@ -3919,52 +4119,52 @@ msgstr ""
 "이번 겨울은 차군. 이 배신자들을 거뜬히 이기고 몸을 덥히는게 어떤가, 제군?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:254
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:259
 msgid "Yeah!"
 msgstr "좋아!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:331
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:336
 msgid "Little orcs fun to squash too! Chief doesn’t let me too often."
 msgstr "작은 오크 때려부수는 것도 재밌네! 대장은 별로 자주 시켜주지 않아."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:336
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:341
 msgid "You can have as many as you want now, Grüü."
 msgstr "이제 얼마든지 해도 된다, Grüü."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:356
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:361
 msgid "This rabble won’t be a problem anymore."
 msgstr "이 폭도는 더이상 문제가 안될겁니다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:365
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:370
 msgid "Got this tribe under control."
 msgstr "이 부족을 지배하에 뒀습니다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:374
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:379
 msgid "This is what you get for deserting the Son of the Black-Eye."
 msgstr "이것이 검은눈의 아들을 저버린 댓가다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:383
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:388
 msgid "This trash’s gone."
 msgstr "이 쓰레기를 치웠습니다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:405
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:410
 msgid "Heehee, we wiped them out good."
 msgstr "헤헤, 깔끔하게 쓸었어요."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:410
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:415
 msgid "Now let’s get going, we have an appointment with Shan Taum."
 msgstr "이제 가자. Shan Taum과의 약속이 있다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:560
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:565
 msgid ""
 "I can’t leave these renegades unguarded at our rear. I must take care of "
 "them before continuing."
@@ -3977,28 +4177,36 @@ msgid "The Coward"
 msgstr "겁쟁이"
 
 #. [side]: type=Orcish Warlord, id=Orga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:60
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:61
 msgid "Orga"
 msgstr "Orga"
 
 #. [side]: type=Orcish Warrior, id=Knorgh
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:81
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:83
 msgid "Knorgh"
 msgstr "Knorgh"
 
 #. [side]: type=Orcish Warrior, id=Nofhug
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:97
 msgid "Nofhug"
 msgstr "Nofhug"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:108
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:110
+#, fuzzy
+#| msgid ""
+#| "Kapou’e and his followers made a grueling march across the frozen "
+#| "Northlands. For the orcs it was a constant nightmare of freezing, "
+#| "marching and fighting. Food was scarce, and the stores that they managed "
+#| "to seize from rebellious tribes had to be strictly rationed. Many of the "
+#| "weaker orcs who weren’t killed in combat died from exhaustion, or fell "
+#| "behind and froze to death."
 msgid ""
 "Kapou’e and his followers made a grueling march across the frozen "
-"Northlands. For the orcs it was a constant nightmare of freezing, marching "
+"Northlands. For the orcs, it was a constant nightmare of freezing, marching "
 "and fighting. Food was scarce, and the stores that they managed to seize "
 "from rebellious tribes had to be strictly rationed. Many of the weaker orcs "
-"who weren’t killed in combat died from exhaustion, or fell behind and froze "
+"who weren’t killed in combat died from exhaustion or fell behind and froze "
 "to death."
 msgstr ""
 "Kapou'e와 그 추종자들은 얼어붙은 북방을 가로질러 치열하게 진군했다. 오크들에"
@@ -4007,11 +4215,18 @@ msgstr ""
 "에서 죽거나 지쳐 죽었고, 뒤로 처져서 얼어죽었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:114
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:116
+#, fuzzy
+#| msgid ""
+#| "Throughout this nightmare Kapou’e drove himself and his men ruthlessly. "
+#| "The spring thaw would soon be upon them and with it, the human army that "
+#| "Earl Lanbec’h was no doubt rallying. By that time the orcs had to be "
+#| "united one way or another, since if they were separated and scattered, "
+#| "they would surely be exterminated."
 msgid ""
-"Throughout this nightmare Kapou’e drove himself and his men ruthlessly. The "
+"Throughout this nightmare, Kapou’e drove himself and his men ruthlessly. The "
 "spring thaw would soon be upon them and with it, the human army that Earl "
-"Lanbec’h was no doubt rallying. By that time the orcs had to be united one "
+"Lanbec’h was no doubt rallying. By that time, the orcs had to be united one "
 "way or another, since if they were separated and scattered, they would "
 "surely be exterminated."
 msgstr ""
@@ -4021,7 +4236,7 @@ msgstr ""
 "열되고 흩어지면 반드시 몰살될테니까."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:120
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:122
 msgid ""
 "And so they marched on, persevering in weather that would kill even the most "
 "hardened human, and through fierce bloody battles with belligerent tribes."
@@ -4030,7 +4245,7 @@ msgstr ""
 "치열하고 피비린내나는 전투를 치러갔다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:126
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:128
 msgid ""
 "Finally, after over three months, Kapou’e and his exhausted but hardened "
 "army arrived at Bitok, just before the spring thaw."
@@ -4039,19 +4254,19 @@ msgstr ""
 "가 피어오르기 직전에 Bitok에 도달했다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:197
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:199
 msgid "Good morning, Shan Taum!"
 msgstr "좋은 아침, Shan Taum!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:204
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:206
 #, fuzzy
 #| msgid "What... Kapou’e! What in the frozen northlands are you doing here?!"
 msgid "What... Kapou’e! What in the frozen Northlands are you doing here?!"
 msgstr "뭣... Kapou'e! 이 얼어붙은 북방지대에서 뭘 하는거냐?!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:209
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:211
 msgid ""
 "Oh, I just thought I would take a bracing winter stroll and visit my "
 "father’s old friend. How could I not, given his impressive list of recent "
@@ -4062,12 +4277,12 @@ msgstr ""
 "나."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:215
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:217
 msgid "Accomplishments?"
 msgstr "업적이라고?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:220
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:222
 #, fuzzy
 #| msgid ""
 #| "Well let’s see, first he betrays the trust of his sworn sovereign and "
@@ -4091,21 +4306,25 @@ msgstr ""
 "을 일으킨 직접적인 책임이 있다는 사실이야!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:226
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:228
 msgid "LIES! THESE ARE ALL LIES!"
 msgstr "<b>거짓말이다! 저건 전부 거짓말이야!</b>"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:231
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:233
+#, fuzzy
+#| msgid ""
+#| "Tell you what, you ungrateful backstabbing traitor, if you surrender "
+#| "right now I will just cut off your head instead of torturing you to death."
 msgid ""
 "Tell you what, you ungrateful backstabbing traitor, if you surrender right "
-"now I will just cut off your head instead of torturing you to death."
+"now, I will just cut off your head instead of torturing you to death."
 msgstr ""
 "어떤가, 이 은혜도 모르는 모략꾼 배신자여, 지금 당장 항복한다면 죽을때까지 고"
 "문하는 대신 네 목만 즉시 따주지."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:239
 #, fuzzy
 #| msgid ""
 #| "How dare you accuse me of being a traitor, you turdlicker! Orga, kill "
@@ -4116,12 +4335,12 @@ msgstr ""
 "를 죽여라. 나는 본성에 있겠다."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:242
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:244
 msgid "Right... So what will it be, beheading or torture?"
 msgstr "좋아... 그럼 어떻게 할거냐, 목이 따일거냐 고문당할거냐?"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:249
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:251
 #, fuzzy
 #| msgid ""
 #| "How dare you accuse me of being a traitor, you turdlicker! Orga, kill "
@@ -4132,19 +4351,19 @@ msgstr ""
 "를 죽여라. 나는 본성에 있겠다."
 
 #. [message]: speaker=Orga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:255
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:257
 #, fuzzy
 #| msgid "Yes sir!"
 msgid "Yes, sir!"
 msgstr "예 대장!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:271
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:273
 msgid "What! Fight like an orc, you gutless coward!"
 msgstr "뭐야! 오크답게 싸워라, 이 배알도 없는 겁쟁아!"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:287
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:289
 msgid ""
 "Hey Chief, it’s pretty odd. Shan Taum doesn’t seem to have too many of his "
 "men around. He was given control of half the Great Horde. Do you think they "
@@ -4154,10 +4373,15 @@ msgstr ""
 "무리 절반의 통제권을 갖고 있는데. 그들이 놈을 떠난 걸까요?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:292
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:294
+#, fuzzy
+#| msgid ""
+#| "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out "
+#| "like we did to clobber the other tribes to his rule. In any case, it will "
+#| "be convenient for us."
 msgid ""
 "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out like "
-"we did to clobber the other tribes to his rule. In any case, it will be "
+"we did to clobber the other tribes into his rule. In any case, it will be "
 "convenient for us."
 msgstr ""
 "그건 아닐걸. Shan Taum은 의도를 숨기는 법을 알지. 아마 놈은 우리가 했던 것처"
@@ -4165,7 +4389,7 @@ msgstr ""
 "한 일이지."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:301
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:303
 msgid ""
 "Good, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
@@ -4189,7 +4413,7 @@ msgid "Defeat Earl Lanbec’h"
 msgstr "Lanbec'h 백작을 격파하라"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:127
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:129
 #, fuzzy
 #| msgid ""
 #| "As Kapou’e expected, by the time his forces had been defeated Shan Taum "
@@ -4197,7 +4421,7 @@ msgstr "Lanbec'h 백작을 격파하라"
 #| "make a mug out of the traitor’s skull, Kapou’e gathered his men and "
 #| "headed for Dorset."
 msgid ""
-"As Kapou’e expected, by the time his forces had been defeated Shan Taum was "
+"As Kapou’e expected, by the time his forces had been defeated, Shan Taum was "
 "nowhere to be found. Gritting his teeth and vowing that he would yet make a "
 "mug out of the traitor’s skull, Kapou’e gathered his men and headed for "
 "Dorest."
@@ -4207,7 +4431,7 @@ msgstr ""
 "Kapou'e는 부하들을 모아 Dorset으로 향했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:135
 #, fuzzy
 #| msgid ""
 #| "Once there he found his generals, Al’Brock and Flar’Tar had already "
@@ -4216,9 +4440,9 @@ msgstr ""
 #| "addition, the remaining shamans of the Great Council were also present to "
 #| "help in whatever way they could to preserve the unity of the Horde."
 msgid ""
-"Once there he found his generals, Al’Brock and Flar’Tar, had already arrived "
-"along with hundreds of bloodthirsty orcs. The warriors of the tribes that "
-"Kapou’e had cowed into submission were also present. In addition, the "
+"Once there, he found that his generals, Al’Brock and Flar’Tar, had already "
+"arrived along with hundreds of bloodthirsty orcs. The warriors of the tribes "
+"that Kapou’e had cowed into submission were also present. In addition, the "
 "remaining shamans of the Great Council were also present to help in whatever "
 "way they could to preserve the unity of the Horde."
 msgstr ""
@@ -4228,7 +4452,7 @@ msgstr ""
 "하는 것을 돕기 위해 와 있었다. "
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:139
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:141
 msgid ""
 "Their presence proved to be unnecessary. It came as a shock to Kapou’e to "
 "discover, after a few days, that his people held him in awe. News of "
@@ -4243,16 +4467,21 @@ msgstr ""
 "한 강행군까지. 어린 졸개들은 특히 열정적으로 그를 숭배해서 두려울 정도였다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:145
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Days passed, the snows melted and Kapou’e readied his defenses. A few "
+#| "weeks after Kapou’e’s arrival, riders caught sight of Earl Lanbec’h’s "
+#| "army."
 msgid ""
-"Days passed, the snows melted and Kapou’e readied his defenses. A few weeks "
+"Days passed, the snows melted, and Kapou’e readied his defenses. A few weeks "
 "after Kapou’e’s arrival, riders caught sight of Earl Lanbec’h’s army."
 msgstr ""
 "며칠이 지나고, 눈이 녹자 Kapou'e는 방어전을 준비했다. Kapou'e가 도착한 지 몇"
 "주 뒤, 기병들이 Lanbec'h 백작의 군대를 발견했다."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:234
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:236
 #, fuzzy
 #| msgid ""
 #| "This is it, men! It is time to make these orcs pay for all that they have "
@@ -4261,68 +4490,70 @@ msgstr ""
 msgid ""
 "This is it, men! It is time to make these orcs pay for all that they have "
 "done to us. Attack without compromise, we have several detachments of "
-"reinforcements on their way. Spare no orc and let us take back this land "
+"reinforcements on their way. Spare no orc, and let us take back this land, "
 "which is rightfully ours!"
 msgstr ""
 "여기다, 제군들! 이 오크놈들이 우리에게 한 모든 짓들에 대한 댓가를 치르게 해 "
 "줄 시간이다. 오크를 한놈도 남겨두지 마라! 정당한 우리의 땅인 이곳을 되찾자!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:239
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:241
 msgid "Forward, men! Our wolves will feed well tonight!"
 msgstr "나가라, 부하들아! 오늘밤 우리 늑대들은 포식하게 될 것이다!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:245
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:247
 msgid "Come here, human softlings. Grüü has a little present for you..."
 msgstr "이리와, 인간 풋내기들아. Grüü가 너희에게 줄 작은 선물이 있어..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:344
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:346
 msgid "As a fresh day dawned, more human forces arrived."
 msgstr "새 날이 밝아오고, 더 많은 인간의 군대가 도착했다."
 
 #. [message]: speaker=Bruce
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:357
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:359
 msgid "We have arrived, my lord."
 msgstr "도착했습니다, 각하."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:368
-msgid "Ahhh, perfect, more reinforcements."
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:370
+#, fuzzy
+#| msgid "Ahhh, perfect, more reinforcements."
+msgid "Ahhh, perfect. More reinforcements."
 msgstr "아아아, 완벽해, 증원이 더 왔군."
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:386
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:150
+#. [side]: type=General, id=Howgarth III
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:388
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:152
 msgid "Howgarth III"
 msgstr "Howgarth 3세"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:427
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:429
 msgid "Hold it! What in the wide green world is going on here!"
 msgstr "멈추시오! 대체 이 넓은 녹빛 천지에 무슨 짓을 하는거요!"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:433
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:435
 msgid ""
 "Howgarth? You and your interfering alliance always show up at the worst "
 "possible time."
 msgstr "Howgarth? 당신과 그 방해되는 연합은 항상 제일 나쁜 때에만 나타나는군."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:438
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:440
 msgid "Just who do you think you are, slug?"
 msgstr "네놈이 뭐라도 된다고 생각하는거냐, 달팽이?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:444
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
 msgid "I am Howgarth of the Northern Alliance, successor to the late Rahul I."
 msgstr "나는 돌아가신 Ragul 1세의 후계자인 북방 연합의 Howgarth요."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:450
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
 msgid ""
 "This is a strictly territorial matter, Howgarth. The Northern Alliance has "
 "no right to intervene in this affair."
@@ -4331,7 +4562,7 @@ msgstr ""
 "이 없소."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:455
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:457
 #, fuzzy
 #| msgid ""
 #| "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
@@ -4349,7 +4580,7 @@ msgstr ""
 "의 중재자이자 공증인으로서의 의무요."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:461
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
 msgid ""
 "Well, good for you. As a matter of fact, this land is clearly defined under "
 "your precious treaty as human territory. So if you are so keen on being all "
@@ -4360,10 +4591,15 @@ msgstr ""
 "오크들의 위협을 물리치는걸 도와주는게 어떻소."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:466
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
+#, fuzzy
+#| msgid ""
+#| "Cease your lies, Lanbec’h. We all know that you were the one who started "
+#| "this war. But enough, it is time for all this to end. I call for both "
+#| "sides to parley and we shall discuss this matter."
 msgid ""
 "Cease your lies, Lanbec’h. We all know that you were the one who started "
-"this war. But enough, it is time for all this to end. I call for both sides "
+"this war. But enough. It is time for all this to end. I call for both sides "
 "to parley and we shall discuss this matter."
 msgstr ""
 "거짓말은 그만두시오, Lanbec'h. 우리는 당신들이 이 전쟁을 시작했다는 것을 전"
@@ -4371,7 +4607,7 @@ msgstr ""
 "을 통해 이 문제를 논의하게 할 것이오."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:471
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:473
 msgid ""
 "Ha ha, very funny, old fool. You think we are stupid enough to fall for "
 "that? I’ve not forgotten what you people did to my father."
@@ -4380,26 +4616,26 @@ msgstr ""
 "나? 난 너희가 아버지에게 한 짓을 잊지 않았다."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:477
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
 msgid "What in the world are you talking about?"
 msgstr "대체 무슨 얘기를 하는 것이오?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:482
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:484
 #, fuzzy
 #| msgid ""
 #| "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you "
 #| "people assassinated my father after inviting him to join the Northern "
 #| "Alliance."
 msgid ""
-"I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
+"I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago, you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
 "나는 검은 눈 Karun의 아들 Kapou'e다. 이십칠년전 너희 종족은 아버지를 북방 연"
 "합으로 초대해 놓고는 암살했지."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:488
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
 msgid ""
 "What? We received word that he declined our invitation and that was the end "
 "of the matter. I know nothing of his assassination. As a matter of fact, I "
@@ -4410,17 +4646,17 @@ msgstr ""
 "Karun의 답장을 가져올 때 그 자리에 있었소."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:493
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:495
 msgid "Messenger, what messenger?"
 msgstr "전령이라니, 무슨 전령 말인가?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:499
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:501
 msgid "If I remember correctly, it was some orc named Shan Taum."
 msgstr "내가 확실하게 기억한다면, Shan Taum이라는 오크였소."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:504
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:506
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "웃기는 일이군, 그 이름 꽤 익숙한데..."
 
@@ -4440,7 +4676,7 @@ msgid "Death of Howgarth III"
 msgstr "Howgarth 3세의 사망"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:178
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:180
 msgid ""
 "Kapou’e agreed to meet Howgarth III. Not trusting the human however, Kapou’e "
 "brought along Grüü, as well as one of his most trusted soldiers. Earl "
@@ -4451,7 +4687,7 @@ msgstr ""
 "상에 참석하기를 단호하게 거부했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:184
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:186
 #, fuzzy
 #| msgid ""
 #| "The human attack having stopped for the time being, both parties met in "
@@ -4478,7 +4714,7 @@ msgstr ""
 "는 방법이었다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:192
 msgid ""
 "Howgarth III agreed and further added that, if Earl Lanbec’h continued in "
 "aggression, then under the dictates of the Northern Alliance, he himself "
@@ -4488,7 +4724,7 @@ msgstr ""
 "다면, 북방 연합의 명령에 따라 그 자신이 백작에 대항하겠다고 했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:196
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:198
 #, fuzzy
 #| msgid ""
 #| "That having been settled, Kapou’e began to inquire about the death of his "
@@ -4507,7 +4743,7 @@ msgstr ""
 "은 다름아닌 Shan Taum 자신이었다고 했다."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:202
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:204
 msgid ""
 "As they were discussing the matter, a group of orcs charged from the "
 "surrounding trees and hills and surrounded the parley."
@@ -4516,16 +4752,20 @@ msgstr ""
 "나타나 협상 장소를 포위했다."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:473
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:475
+#, fuzzy
+#| msgid ""
+#| "Now now now, what do we have here. Collaborating with the enemy again "
+#| "just like your disgusting father, are you?"
 msgid ""
-"Now now now, what do we have here. Collaborating with the enemy again just "
+"Now now now, what do we have here? Collaborating with the enemy again just "
 "like your disgusting father, are you?"
 msgstr ""
 "호오 호오 호오, 여기 이게 누군가. 혐오스런 아비와 마찬가지로 또다시 적과 내통"
 "하는건가?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:479
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:481
 msgid ""
 "Collaborating with the humans, pfff. You’re one to talk. What are you doing "
 "here, Shan Taum?"
@@ -4533,35 +4773,35 @@ msgstr ""
 "인간과 내통한다라, 풉. 네놈이 할 말이냐. 여기서 뭐하는 거지, Shan Taum?"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:484
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:486
 msgid "I am here to do to you what I did to your father."
 msgstr "네놈에게 네 아비에게 했던 일을 해주러 왔지."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:489
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:491
 msgid "So you did kill my father then."
 msgstr "그럼 네가 아버지를 죽인 거로군."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:494
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:496
 msgid "What did I tell you, Kapou’e?"
 msgstr "내가 뭐랬소, Kapou'e?"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:500
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:502
 #, fuzzy
 #| msgid ""
 #| "Ha ha! Good work Shan Taum. That will teach them. Attack, boys, I want "
 #| "Dorset recaptured by sunset."
 msgid ""
-"Ha ha! Good work Shan Taum. That will teach them. Attack, boys, I want "
+"Ha ha! Good work Shan Taum. That will teach them. Attack, boys! I want "
 "Dorest recaptured by sunset."
 msgstr ""
 "하 하! 잘했다 Shan Taum. 놈들도 깨달았겠지. 공격해라, 제군들, 해 지기 전까지 "
 "Dorset을 탈환한다."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:505
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:507
 #, fuzzy
 #| msgid ""
 #| "Hold, Earl Lanbec’h. I have reached an agreement with these orcs. Since "
@@ -4573,10 +4813,10 @@ msgstr ""
 #| "the pact."
 msgid ""
 "Hold, Earl Lanbec’h. I have reached an agreement with these orcs. Since your "
-"army has been the aggressor, you must immediately disperse your army and "
-"withdraw from orcish territory. Once that is done then Kapou’e will give you "
-"back Dorest and call off the horde. I have had dealings with Kapou’e’s "
-"father before and I believe his blood will be trustworthy. And if that isn’t "
+"army has been the aggressor, you must immediately disperse it and withdraw "
+"from orcish territory. Once that is done, then Kapou’e will give you back "
+"Dorest and call off the horde. I have had dealings with Kapou’e’s father "
+"before, and I believe his blood will be trustworthy. And if that isn’t "
 "enough, then we are here to protect you in case he violates the pact."
 msgstr ""
 "멈추시오, Lanbec'h 백작. 나는 이 오크들과 합의점에 도달했소. 당신의 군대가 먼"
@@ -4587,21 +4827,25 @@ msgstr ""
 "속하겠소."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:511
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:513
+#, fuzzy
+#| msgid ""
+#| "You and your damned compromises can go to hell. Your beloved Kapou’e will "
+#| "be joining you shortly."
 msgid ""
-"You and your damned compromises can go to hell. Your beloved Kapou’e will be "
+"You and your damned compromises can go to hell! Your beloved Kapou’e will be "
 "joining you shortly."
 msgstr ""
 "네놈과 그 빌어먹을 약속따위 지옥에나 보내버리라지. 네 사랑 Kapou'e도 곧 네녀"
 "석을 따라갈거다."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:516
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:518
 msgid "You leave us no choice but to take military action against you."
 msgstr "당신은 결국 내게 군사 행동을 하도록 만드는군."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:522
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:524
 msgid ""
 "Ha ha! Very funny, Howgarth. Look around you. You are going to be dead as "
 "soon as my orc friend here gives the order. And then your men will "
@@ -4612,12 +4856,12 @@ msgstr ""
 "고 믿게 되는거지."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:527
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:529
 msgid "Not today, my friend. (<i>Whistles</i>)"
 msgstr "오늘은 어림없네, 친구. (<i>휘익</i>)"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:635
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:637
 msgid ""
 "Kapou’e, it is essential that I make it back to my camp to bring news of our "
 "agreement and this treachery. One of my gryphon riders will take me. My "
@@ -4632,12 +4876,12 @@ msgstr ""
 "죽고 해산되면, 당신이 약속을 지키리라 믿소."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:640
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:642
 msgid "Agreed. Let’s get to it. BLOOD AND STEEL!"
 msgstr "좋소. 그러도록 하지. 철혈의 진군이다!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:664
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:666
 msgid ""
 "Blast! The human has escaped. Orcs, bring me Kapou’e’s head. I must get to "
 "my camp and assault the city."
@@ -4646,12 +4890,12 @@ msgstr ""
 "가서 기지를 공격해야겠다."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:693
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:695
 msgid "Shan Taum big coward. Never want to fight."
 msgstr "Shan Taum 대 겁쟁이. 절대 안싸우려고 해."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:748
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:750
 #, fuzzy
 #| msgid ""
 #| "Yeah, we finally got the coward. What do you want us to do with him chief?"
@@ -4659,7 +4903,7 @@ msgid "Yeah, we finally got the coward."
 msgstr "좋아, 드디어 겁쟁이를 잡았다. 이녀석을 어떻게 할까요 족장?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:754
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:756
 #, fuzzy
 #| msgid ""
 #| "Yeah, we finally got the coward. What do you want us to do with him chief?"
@@ -4668,24 +4912,24 @@ msgid ""
 msgstr "좋아, 드디어 겁쟁이를 잡았다. 이녀석을 어떻게 할까요 족장?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:763
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:765
 msgid "Blood and steel! The traitor was mine!"
 msgstr "빌어먹을! 그 배신자는 내꺼야!"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:769
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:771
 msgid "I’m sorry, Kapou’e. I’ll have my men leave what remains of him to you."
 msgstr "미안하오, Kapou'e. 부하를 시켜 시체를 당신에게 보내 주겠소."
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:775
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:777
 #, fuzzy
 #| msgid "What do you want us to do with him chief?"
 msgid "What do you want us to do with him, Chief?"
 msgstr "이놈을 어떻게 할까요 족장?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:782
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:784
 msgid ""
 "Stick his head at the end of a pike and let the buzzards pick it clean. I "
 "wasn’t joking about making a mug from his skull."
@@ -4694,12 +4938,12 @@ msgstr ""
 "든다는 말은 농담이 아냐."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:795
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:797
 msgid "No! Without him the Northern Alliance will continue to fall apart."
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:808
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:810
 msgid "YEAH!"
 msgstr "좋아!"
 
@@ -4719,9 +4963,9 @@ msgstr "에필로그"
 #| "consent of all — to make the Great Council complete again."
 msgid ""
 "True to his word, once Lanbec’h had been slain, Howgarth III dispersed the "
-"Earl’s forces and withdrew them from orcish territory. For his part Kapou’e "
+"Earl’s forces and withdrew them from orcish territory. For his part, Kapou’e "
 "withdrew from Dorest and dispersed the Great Horde. However, before the "
-"horde was dispersed he appointed three more shamans — with the consent of "
+"horde was dispersed, he appointed three more shamans — with the consent of "
 "all — to make the Great Council complete again."
 msgstr ""
 "Howgarth 3세는 자신이 한 말대로, Lanbec'h가 죽자 그의 병력을 해산하고 오크 영"
@@ -4739,7 +4983,7 @@ msgstr ""
 #| "over all the northern tribes."
 msgid ""
 "As Rahul had done to Kapou’e’s father, Howgarth III issued an invitation to "
-"Kapou’e to join the Northern Alliance. Kapou’e declined. Instead he went "
+"Kapou’e to join the Northern Alliance. Kapou’e declined. Instead, he went "
 "back to Barag Gór and, making that his capital, established himself as "
 "sovereign over all the northern tribes."
 msgstr ""
@@ -4810,12 +5054,21 @@ msgstr "오크 수련 샤먼"
 
 #. [unit_type]: id=Novice Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
 "the whole Orcish community and arbitrates the many conflicts that arise "
 "between tribes of this argumentative race. Although physically weak (for "
-"Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
@@ -4833,12 +5086,21 @@ msgstr "나이든 오크 샤먼"
 
 #. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
 "the whole Orcish community and arbitrates the many conflicts that arise "
 "between tribes of this argumentative race. Although physically weak (for "
-"Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
@@ -4856,12 +5118,20 @@ msgstr "오크 샤먼"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
 "the whole Orcish community and arbitrates the many conflicts that arise "
 "between tribes of this argumentative race. Although physically weak (for "
-"Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
 "오크 샤먼들은 오크 마법의 수호자이다. 오크로부터 존경받는 이들은 오크 의회를 "

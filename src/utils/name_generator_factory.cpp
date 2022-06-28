@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "log.hpp"
@@ -18,6 +19,9 @@
 #include "utils/context_free_grammar_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "formula/string_utils.hpp"
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 std::string name_generator::generate(const std::map<std::string,std::string>& variables) const {
 	return utils::interpolate_variables_into_string(generate(), &variables);
@@ -42,7 +46,8 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 			return;
 		}
 		catch (const name_generator_invalid_exception& ex) {
-			lg::wml_error() << ex.what() << '\n';
+			lg::log_to_chat() << ex.what() << '\n';
+			ERR_WML << ex.what();
 		}
 	}
 

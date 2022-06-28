@@ -38,7 +38,7 @@ function training.get_chances(trainer, grade)
 	return training.get_trainer(trainer).grade[grade + 1].chance
 end
 
-function training.apply_trait(unit, trait, check)
+function training.apply_trait(u, trait, check)
 	if u:matches(check) and u:matches( wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } ) then
 		u:add_modification("trait", trait)
 	else
@@ -102,7 +102,7 @@ function training.find_available(side_num, among, amount)
 	if #possible_traintypes == 0 then
 		return
 	else
-		return possible_traintypes[wesnoth.random(#possible_traintypes)]
+		return possible_traintypes[mathx.random(#possible_traintypes)]
 	end
 end
 
@@ -173,7 +173,7 @@ function training.give_bonus(side_num, cx, amount, traintype_index)
 		speaker = teacher.id,
 		message = traintype.dialogue,
 	}
-	wesnoth.extract_unit(teacher)
+	wesnoth.units.extract(teacher)
 	local message = training.generate_message(traintype_index, new_level)
 	wesnoth.wml_actions.message(message)
 
@@ -184,7 +184,7 @@ end
 function training.bonus_calculate_amount(side_num)
 	local amount = 1
 	local advanced_chance = 4 * training.get_level_sum(side_num)
-	if wc2_scenario.scenario_num() > 3 or wesnoth.random(100) <= advanced_chance then
+	if wc2_scenario.scenario_num() > 3 or mathx.random(100) <= advanced_chance then
 		amount = 2
 	end
 	return amount
@@ -226,7 +226,7 @@ function training.apply(u)
 			local vchance = wml.tovconfig(chance)
 			local filter = wml.get_child(vchance, "filter")
 			local matches_filter = (not filter) or u:matches(filter)
-			if wesnoth.random(100) <= vchance.value and matches_filter then
+			if mathx.random(100) <= vchance.value and matches_filter then
 				--wesnoth.wml_actions.message { message = "Got it" }
 				table.insert(descriptions, wc2_utils.get_fstring(chance, "info"))
 				for effect in wml.child_range(vchance, "effect") do
@@ -254,7 +254,7 @@ end
 function wesnoth.wml_actions.wc2_give_random_training(cfg)
 	local side_num = cfg.side
 	local amount = cfg.amount or 1
-	local among = cfg.among and stringx.split(cfg.among)
+	local among = cfg.among and stringx.split(cfg.among or "")
 	for i = 1, amount do
 		local traintype = training.find_available(side_num, among)
 		if traintype == nil then error("wc2_give_random_training: everything alerady maxed") end

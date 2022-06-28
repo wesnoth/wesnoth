@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -222,7 +223,7 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 
 	//for 'support' targets, they are rated much higher if we can get there within two turns,
 	//otherwise they are worthless to go for at all.
-	if(tg.type == target::TYPE::SUPPORT) {
+	if(tg.type == ai_target::type::support) {
 		if (move_cost <= u->movement_left() * 2) {
 			rating *= 10.0;
 		} else {
@@ -234,7 +235,7 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 	//scouts do not like encountering enemies on their paths
 	if (u->usage() == "scout") {
 		//scouts get a bonus for going after villages
-		if(tg.type == target::TYPE::VILLAGE) {
+		if(tg.type == ai_target::type::village) {
 				rating *= get_scout_village_targeting();
 		}
 
@@ -421,7 +422,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
 	const move_map& srcdst = get_srcdst();
-	if(best_target->type == target::TYPE::SUPPORT) {
+	if(best_target->type == ai_target::type::support) {
 		LOG_AI << "support...\n";
 
 		std::vector<map_location> locs;
@@ -547,7 +548,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
-					targets.emplace_back(*j,value*4.0,target::TYPE::MASS);
+					targets.emplace_back(*j,value*4.0,ai_target::type::mass);
 					best_target = targets.end() - 1;
 				}
 			}
@@ -571,12 +572,12 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 								   get_caution())) {
 					double value = best_target->value - best->cost() / 20.0;
 
-					if(value > 0.0 && best_target->type != target::TYPE::MASS) {
+					if(value > 0.0 && best_target->type != ai_target::type::mass) {
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
 						if(is_dangerous) {
 							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
-							targets.emplace_back(its.first->first,value*2.0,target::TYPE::BATTLE_AID);
+							targets.emplace_back(its.first->first,value*2.0,ai_target::type::battle_aid);
 						}
 
 						best_target->value = value;

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -23,12 +24,12 @@
 #include "game_config.hpp"
 #include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
+#include "language.hpp" // for string_table
 #include "log.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "units/unit.hpp"
 #include "utils/iterable_pair.hpp"
-#include "utils/make_enum.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -139,7 +140,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, do_not_list_()
 	, advances_to_()
 	, experience_needed_(0)
-	, alignment_(unit_type::ALIGNMENT::NEUTRAL)
+	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
 	, possible_traits_()
 	, genders_()
@@ -269,8 +270,7 @@ void unit_type::build_help_index(
 
 	adjust_profile(profile_);
 
-	alignment_ = unit_type::ALIGNMENT::NEUTRAL;
-	alignment_.parse(cfg["alignment"].str());
+	alignment_ = unit_alignments::get_enum(cfg["alignment"].str()).value_or(unit_alignments::type::neutral);
 
 	for(int i = 0; i < 2; ++i) {
 		if(gender_types_[i]) {
@@ -302,7 +302,7 @@ void unit_type::build_help_index(
 	}
 
 	if(const config& abil_cfg = cfg.child("abilities")) {
-		for(const config::any_child& ab : abil_cfg.all_children_range()) {
+		for(const config::any_child ab : abil_cfg.all_children_range()) {
 			abilities_.emplace_back(ab.cfg);
 		}
 	}
@@ -315,7 +315,7 @@ void unit_type::build_help_index(
 				continue;
 			}
 
-			for(const config::any_child& ab : abil_cfg.all_children_range()) {
+			for(const config::any_child ab : abil_cfg.all_children_range()) {
 				adv_abilities_.emplace_back(ab.cfg);
 			}
 		}
@@ -348,7 +348,7 @@ void unit_type::build_help_index(
 			possible_traits_.clear();
 		} else {
 			for(const config& t : race_->additional_traits()) {
-				if(alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
+				if(alignment_ != unit_alignments::type::neutral || t["id"] != "fearless")
 					possible_traits_.add_child("trait", t);
 			}
 		}
@@ -491,13 +491,45 @@ t_string unit_type::unit_description() const
 	}
 }
 
-bool unit_type::has_special_notes() const
-{
-	return !special_notes_.empty();
+std::vector<t_string> unit_type::special_notes() const {
+	return combine_special_notes(special_notes_, abilities_cfg(), attacks(), movement_type());
 }
 
-const std::vector<t_string>& unit_type::special_notes() const {
-	return special_notes_;
+static void append_special_note(std::vector<t_string>& notes, const t_string& new_note) {
+	if(new_note.empty()) return;
+	std::string_view note_plain = new_note.c_str();
+	utils::trim(note_plain);
+	if(note_plain.empty()) return;
+	auto iter = std::find(notes.begin(), notes.end(), new_note);
+	if(iter != notes.end()) return;
+	notes.push_back(new_note);
+}
+
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+{
+	std::vector<t_string> notes;
+	for(const auto& note : direct) {
+		append_special_note(notes, note);
+	}
+	for(const config::any_child ability : abilities.all_children_range()) {
+		if(ability.cfg.has_attribute("special_note")) {
+			append_special_note(notes, ability.cfg["special_note"].t_str());
+		}
+	}
+	for(const auto& attack : attacks) {
+		for(const config::any_child ability : attack.specials().all_children_range()) {
+			if(ability.cfg.has_attribute("special_note")) {
+				append_special_note(notes, ability.cfg["special_note"].t_str());
+			}
+		}
+		if(auto attack_type_note = string_table.find("special_note_damage_type_" + attack.type()); attack_type_note != string_table.end()) {
+			append_special_note(notes, attack_type_note->second);
+		}
+	}
+	for(const auto& move_note : mt.special_notes()) {
+		append_special_note(notes, move_note);
+	}
+	return notes;
 }
 
 const std::vector<unit_animation>& unit_type::animations() const
@@ -560,7 +592,7 @@ int unit_type::experience_needed(bool with_acceleration) const
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(const config& abil = get_cfg().child("abilities")) {
-		for(const config::any_child& ab : abil.all_children_range()) {
+		for(const config::any_child ab : abil.all_children_range()) {
 			if(ab.cfg["id"] == ability) {
 				return true;
 			}
@@ -579,7 +611,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 		return res;
 	}
 
-	for(const config::any_child& ab : abilities.all_children_range()) {
+	for(const config::any_child ab : abilities.all_children_range()) {
 		std::string id = ab.cfg["id"];
 
 		if(!id.empty()) {
@@ -805,30 +837,16 @@ bool unit_type::resistance_filter_matches(
 
 /** Implementation detail of unit_type::alignment_description */
 
-MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
-	(LAWFUL,         N_("female^lawful"))
-	(FEMALE_NEUTRAL, N_("female^neutral"))
-	(CHAOTIC       , N_("female^chaotic"))
-	(LIMINAL,        N_("female^liminal"))
-)
-
-std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
+std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count,
-		"ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
-
-	assert(align.valid());
-
-	std::string str = std::string();
+	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
+	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
 
 	if(gender == unit_race::FEMALE) {
-		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
-		str = fem.to_string();
+		return female_names[static_cast<int>(align)];
 	} else {
-		str = align.to_string();
+		return male_names[static_cast<int>(align)];
 	}
-
-	return translation::sgettext(str.c_str());
 }
 
 /* ** unit_type_data ** */
@@ -908,7 +926,7 @@ void patch_movetype(movetype& mt,
 
 		// These three need to follow movetype's fallback system, where values for
 		// movement costs are used for vision too.
-		const auto fallback_children = std::array<std::string, 3>{{"movement_costs", "vision_costs", "jamming_costs"}};
+		const std::array fallback_children {"movement_costs", "vision_costs", "jamming_costs"};
 		config cumulative_values;
 		for(const auto& x : fallback_children) {
 			if(mt_cfg.has_child(x)) {
@@ -925,7 +943,7 @@ void patch_movetype(movetype& mt,
 		}
 
 		// These don't need the fallback system
-		const auto child_names = std::array<std::string, 2>{{"defense", "resistance"}};
+		const std::array child_names {"defense", "resistance"};
 		for(const auto& x : child_names) {
 			if(mt_cfg.has_child(x)) {
 				const auto& subtag = mt_cfg.child(x);
@@ -1028,7 +1046,8 @@ void unit_type::fill_variations()
 		bool success;
 		std::tie(ut, success) = variations_.emplace(var_cfg["variation_id"].str(), std::move(*var));
 		if(!success) {
-			ERR_CF << "Skipping duplicate unit variation ID: " << var_cfg["variation_id"] << "\n";
+			ERR_CF << "Skipping duplicate unit variation ID: '" << var_cfg["variation_id"]
+				<< "' of unit_type '" << get_cfg()["id"] << "'\n";
 		}
 	}
 
@@ -1124,7 +1143,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			std::string alias;
 			int default_val;
 		};
-		const std::array<ter_defs_to_movetype, 4> terrain_info_tags{
+		const std::array terrain_info_tags{
 			ter_defs_to_movetype{{"movement_costs"}, {"movement"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"vision_costs"}, {"vision"}, movetype::UNREACHABLE},
 			ter_defs_to_movetype{{"jamming_costs"}, {"jamming"}, movetype::UNREACHABLE},

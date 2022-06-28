@@ -21,7 +21,7 @@ function ca_hang_out:evaluation(cfg, data)
 
     -- Otherwise check if any of the mobilize conditions are now met
     local mobilize_condition = wml.get_child(cfg, "mobilize_condition")
-    if (mobilize_condition and wesnoth.eval_conditional(mobilize_condition))
+    if (mobilize_condition and wml.eval_conditional(mobilize_condition))
         or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
     then
         MAISD.insert_mai_self_data(data, cfg.ai_id, { mobilize_units = true })
@@ -57,11 +57,11 @@ function ca_hang_out:execution(cfg)
     local default_avoid_tag = { terrain = 'C*,C*^*,*^C*' }
     local avoid_map = AH.get_avoid_map(ai, avoid_tag, true, default_avoid_tag)
 
-    local max_rating, best_hex, best_unit = - math.huge
+    local max_rating, best_hex, best_unit = - math.huge, nil, nil
     for _,unit in ipairs(units) do
         -- Only consider units that have not been marked yet
         if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "moved")) then
-            local max_rating_unit, best_hex_unit = - math.huge
+            local max_rating_unit, best_hex_unit = - math.huge, nil
 
             -- Check out all unoccupied hexes the unit can reach
             local reach_map = AH.get_reachmap(unit, { avoid_map = avoid_map, exclude_occupied = true })
@@ -75,7 +75,7 @@ function ca_hang_out:execution(cfg)
 
                     -- Minor penalty for distance from current position of unit
                     -- so that there's not too much shuffling around
-                    local rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
+                    rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
 
                     if (rating > max_rating_unit) then
                         max_rating_unit = rating

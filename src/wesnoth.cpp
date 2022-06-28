@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/manager.hpp"
@@ -33,6 +34,7 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "picture.hpp"                    // for flush_cache, etc
@@ -87,6 +89,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <optional>
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -240,7 +243,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const config::any_child& value : cfg.all_children_range()) {
+		for(const config::any_child value : cfg.all_children_range()) {
 			const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
 			input_macros[def.first] = def.second;
 			++read;
@@ -336,6 +339,9 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
 	preproc_map defines_map;
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 	for(const std::string& define : defines) {
 		if(define.empty()) {
 			std::cerr << "empty define supplied\n";
@@ -406,7 +412,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		std::cerr << "Overriding data directory with " << game_config::path << std::endl;
+		if(!cmdline_opts.nobanner) std::cerr << "Overriding data directory with " << game_config::path << std::endl;
 
 		if(!filesystem::is_directory(game_config::path)) {
 			std::cerr << "Could not find directory '" << game_config::path << "'\n";
@@ -424,6 +430,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.debug_lua) {
 		game_config::debug_lua = true;
+	}
+
+	if(cmdline_opts.allow_insecure) {
+		game_config::allow_insecure = true;
 	}
 
 	if(cmdline_opts.strict_lua) {
@@ -498,6 +508,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+
+		return 0;
+	}
+
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
@@ -519,7 +535,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(right.get_diff(left));
 		if(os != &std::cout) delete os;
 		return 0;
@@ -536,7 +552,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(base);
 		if(os != &std::cout) delete os;
 		return 0;
@@ -771,6 +787,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	game_config_manager config_manager(cmdline_opts);
 
+	if(game_config::check_migration) {
+		game_config::check_migration = false;
+		gui2::dialogs::migrate_version_selection::execute();
+	}
+
 	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
@@ -963,7 +984,23 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+	// --nobanner needs to be detected before the main command-line parsing happens
+	bool nobanner = false;
+	for(const auto& arg : args) {
+		if(arg == "--nobanner") {
+			nobanner = true;
+			break;
+		}
+	}
+
 #ifdef _WIN32
+	bool log_redirect = true, native_console_implied = false;
+	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
+	std::optional<bool> native_console_force;
+
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
@@ -985,7 +1022,7 @@ int main(int argc, char** argv)
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> wincon_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-addon", "--validate-schema",
+			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -995,12 +1032,22 @@ int main(int argc, char** argv)
 
 		if(wincon_switches.find(arg) != wincon_switches.end() ||
 			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			lg::enable_native_console_output();
-			break;
+			native_console_implied = true;
+		}
+
+		if(arg == "--wnoconsole") {
+			native_console_force = false;
+		} else if(arg == "--wconsole") {
+			native_console_force = true;
+		} else if(arg == "--wnoredirect") {
+			log_redirect = false;
 		}
 	}
 
-	lg::early_log_file_setup();
+	if(native_console_force.value_or(native_console_implied)) {
+		lg::enable_native_console_output();
+	}
+	lg::early_log_file_setup(!log_redirect);
 #endif
 
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
@@ -1032,9 +1079,11 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
-		const std::time_t t = std::time(nullptr);
-		std::cerr << "Started on " << ctime(&t) << "\n";
+		if(!nobanner) {
+			std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
+			const std::time_t t = std::time(nullptr);
+			std::cerr << "Started on " << ctime(&t) << "\n";
+		}
 
 		const std::string& exe_dir = filesystem::get_exe_dir();
 		if(!exe_dir.empty()) {
@@ -1060,7 +1109,7 @@ int main(int argc, char** argv)
 			}
 
 			if(!auto_dir.empty()) {
-				std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
+				if(!nobanner) std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
 				game_config::path = auto_dir;
 			}
 		}
@@ -1071,7 +1120,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error in command line: " << e.what() << '\n';
 		error_exit(1);
 	} catch(const CVideo::error& e) {
-		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
+		std::cerr << "Video system error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const font::error& e) {
 		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
@@ -1097,8 +1146,8 @@ int main(int argc, char** argv)
 	} catch(const sdl::exception& e) {
 		std::cerr << e.what();
 		error_exit(1);
-	} catch(const game::error&) {
-		// A message has already been displayed.
+	} catch(const game::error& e) {
+		std::cerr << "Game error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
@@ -1402,8 +1451,8 @@ int main(int argc, char** argv)
  * @anchor guivartype_f_h_align f_h_align          |A horizontal alignment or a formula returning a horizontal alignment.
  * @anchor guivartype_border border                |Comma separated list of borders to use. Possible values:<ul><li>left</li><li>right</li><li>top</li><li>bottom</li><li>all alias for "left, right, top, bottom"</li></ul>
  * @anchor guivartype_scrollbar_mode scrollbar_mode|How to show the scrollbar of a widget. Possible values:<ul><li>always - The scrollbar is always shown, regardless whether it's required or not.</li><li>never - The scrollbar is never shown, even not when needed. (Note when setting this mode dialogs might not properly fit anymore).</li><li>auto - Shows the scrollbar when needed. The widget will reserve space for the scrollbar, but only show when needed.</li><li>initial_auto - Like auto, but when the scrollbar is not needed the space is not reserved.</li></ul>Use auto when the list can be changed dynamically eg the game list in the lobby. For optimization you can also use auto when you really expect a scrollbar, but don't want it to be shown when not needed eg the language list will need a scrollbar on most screens.
- * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
- * @anchor guivartype_grow_direction grow_direction|Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
+ * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled smoothly.</li><li>scale_sharp - The image is scaled with sharp (nearest neighbour) interpolation. This is good for sprites.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li><li>tile_center - like tile, except aligned so that one tile is always centered.</li><li>tile_highres - like tile, except rendered at full output resolution in high-dpi contexts. This is useful for texturing effects, but final tile size will be unpredictable.</li></ul>
+ * @anchor guivartype_grow_direction grow_direction|The direction in which newly added items will grow a container. Possible values:<ul><li>horizontal</li><li>vertical</li></ul>
  *
  * For more complex parts, there are sections. Sections contain of several lines of WML and can have sub sections. For example a grid has sub sections which contain various widgets. Here's the list of sections:
  * Variable                                        |description

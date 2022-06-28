@@ -5,7 +5,7 @@ return {
 	init = function(ai)
 
 		if (not wesnoth.game_config.debug) then
-			wesnoth.message("LuaAI Error", "The LuaAI debug library is only available in debug mode")
+			wesnoth.interface.add_chat_message("LuaAI Error", "The LuaAI debug library is only available in debug mode")
 			return
 		end
 

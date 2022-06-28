@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -27,18 +28,21 @@
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
-#include "units/alignment.hpp"
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "units/unit_alignments.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 terrain_filter::~terrain_filter()
 {
@@ -107,7 +111,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 	if (cfg_.has_attribute("area") &&
 		fc_->get_tod_man().get_area_by_id(cfg_["area"]).count(loc) == 0)
 		return false;
-	
+
 	if(cfg_.has_attribute("gives_income") &&
 		cfg_["gives_income"].to_bool() != fc_->get_disp_context().map().is_village(loc))
 		return false;
@@ -271,15 +275,15 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		if(!tod_type.empty()) {
 			const std::vector<std::string>& vals = utils::split(tod_type);
 			if(tod.lawful_bonus<0) {
-				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::CHAOTIC)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(), unit_alignments::chaotic) == vals.end()) {
 					return false;
 				}
 			} else if(tod.lawful_bonus>0) {
-				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LAWFUL)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(), unit_alignments::lawful) == vals.end()) {
 					return false;
 				}
-			} else if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::NEUTRAL)) == vals.end() &&
-				std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LIMINAL)) == vals.end()) {
+			} else if(std::find(vals.begin(),vals.end(), unit_alignments::neutral) == vals.end() &&
+				std::find(vals.begin(),vals.end(), unit_alignments::liminal) == vals.end()) {
 				return false;
 			}
 		}
@@ -346,7 +350,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			}
 			return true;
 		} catch(const wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			lg::log_to_chat() << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			ERR_WML << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
 		}
@@ -451,7 +456,7 @@ public:
 	template<typename T, typename F1, typename F2, typename F3>
 	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2, const F3& f3)
 	{
-		for (const map_location &loc : src) {
+		for (map_location loc : src) {
 			if (f1(loc) && f2(loc) && f3(loc)) {
 				dest.insert(loc);
 			}

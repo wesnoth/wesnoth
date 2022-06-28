@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2016 - 2018 by Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	by Sergey Popov <loonycyborg@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -31,15 +32,17 @@ class game;
 class player_record
 {
 public:
-	player_record(const socket_ptr socket, const player& player)
-		: socket_(socket)
+	template<class SocketPtr>
+	player_record(const SocketPtr socket, const player& player)
+		: login_time(std::chrono::steady_clock::now())
+		, socket_(socket)
 		, player_(player)
 		, game_()
 		, ip_address(client_address(socket))
 	{
 	}
 
-	const socket_ptr socket() const
+	const any_socket_ptr socket() const
 	{
 		return socket_;
 	}
@@ -69,8 +72,10 @@ public:
 
 	void enter_lobby();
 
+	const std::chrono::time_point<std::chrono::steady_clock> login_time;
+
 private:
-	const socket_ptr socket_;
+	const any_socket_ptr socket_;
 	mutable player player_;
 	std::shared_ptr<game> game_;
 	std::string ip_address;
@@ -84,7 +89,7 @@ namespace bmi = boost::multi_index;
 
 using player_connections = bmi::multi_index_container<player_record, bmi::indexed_by<
 	bmi::ordered_unique<bmi::tag<socket_t>,
-		bmi::const_mem_fun<player_record, const socket_ptr, &player_record::socket>>,
+		bmi::const_mem_fun<player_record, const any_socket_ptr, &player_record::socket>>,
 	bmi::hashed_unique<bmi::tag<name_t>,
 		bmi::const_mem_fun<player_record, const std::string&, &player_record::name>>,
 	bmi::ordered_non_unique<bmi::tag<game_t>,

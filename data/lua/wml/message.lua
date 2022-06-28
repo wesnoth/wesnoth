@@ -279,10 +279,9 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 	end
 
 	return function()
-		if sound then wesnoth.play_sound(sound) end
+		if sound then wesnoth.audio.play(sound) end
 		if voice then
 			local speech = {
-				id = "wml_message_speaker",
 				sounds = voice,
 				loops = 0,
 				delay = 0,
@@ -291,13 +290,13 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 				speech.x = speaker.x
 				speech.y = speaker.y
 			end
-			wesnoth.add_sound_source(speech)
+			wesnoth.audio.sources.wml_message_speaker = speech
 		end
 
 		local option_chosen, ti_content = gui.show_narration(msg_cfg, options, text_input)
 
 		if voice then
-			wesnoth.remove_sound_source("wml_message_speaker")
+			wesnoth.sources.wml_message_speaker = nil
 		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
@@ -320,7 +319,7 @@ end
 
 function wesnoth.wml_actions.message(cfg)
 	local show_if = wml.get_child(cfg, "show_if") or {}
-	if not wesnoth.eval_conditional(show_if) then
+	if not wml.eval_conditional(show_if) then
 		log("[message] skipped because [show_if] did not pass", "debug")
 		return
 	end
@@ -338,7 +337,7 @@ function wesnoth.wml_actions.message(cfg)
 	local options, option_events = {}, {}
 	for option in wml.child_range(cfg, "option") do
 		local condition = wml.get_child(option, "show_if") or {}
-		if wesnoth.eval_conditional(condition) then
+		if wml.eval_conditional(condition) then
 
 			-- make message= and description= equivalent for the sake of backwards compatibility
 			local msg_text = ""
@@ -350,7 +349,7 @@ function wesnoth.wml_actions.message(cfg)
 			elseif option.description then
 				msg_text = tostring(option.description)
 			end
-			
+
 			local opt = {
 				label = option.label,
 				description = msg_text,
@@ -358,7 +357,7 @@ function wesnoth.wml_actions.message(cfg)
 				default = option.default,
 				value = option.value
 			}
-			
+
 			table.insert(options, opt)
 			table.insert(option_events, {})
 
@@ -407,12 +406,13 @@ function wesnoth.wml_actions.message(cfg)
 		return
 	elseif cfg.highlight == false then
 		-- Nothing to do here
+		log("Nothing to highlight for [message]", "debug")
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
 		wesnoth.interface.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
-		wesnoth.fire("redraw")
+		wml.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
@@ -420,7 +420,7 @@ function wesnoth.wml_actions.message(cfg)
 		end
 
 		wesnoth.interface.highlight_hex(speaker.x, speaker.y)
-		wesnoth.fire("redraw")
+		wml.fire("redraw")
 	end
 
 	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound)
@@ -435,7 +435,7 @@ function wesnoth.wml_actions.message(cfg)
 			-- 0 means currently playing side.
 			sides_for = 0
 		end
-		local choice = wesnoth.synchronize_choice(wait_description, msg_dlg, sides_for)
+		local choice = wesnoth.sync.evaluate_single(wait_description, msg_dlg, sides_for)
 
 		option_chosen = tonumber(choice.value)
 

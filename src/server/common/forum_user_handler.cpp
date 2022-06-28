@@ -1,20 +1,22 @@
 /*
-   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #ifdef HAVE_MYSQLPP
 
 #include "server/common/forum_user_handler.hpp"
+#include "server/wesnothd/server.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
@@ -48,31 +50,21 @@ fuh::fuh(const config& c)
 	}
 }
 
-bool fuh::login(const std::string& name, const std::string& password, const std::string& seed) {
+bool fuh::login(const std::string& name, const std::string& password) {
 	// Retrieve users' password as hash
-	std::string hash;
-
 	try {
-		hash = get_hash(name);
+		std::string hash = get_hashed_password_from_db(name);
+
+		if(utils::md5::is_valid_hash(hash) || utils::bcrypt::is_valid_prefix(hash)) { // md5 hash
+			return password == hash;
+		} else {
+			ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
+			return false;
+		}
 	} catch (const error& e) {
 		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
-
-	std::string valid_hash;
-
-	if(utils::md5::is_valid_hash(hash)) { // md5 hash
-		valid_hash = utils::md5(hash.substr(12,34), seed).base64_digest();
-	} else if(utils::bcrypt::is_valid_prefix(hash)) { // bcrypt hash
-		valid_hash = utils::md5(hash, seed).base64_digest();
-	} else {
-		ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
-		return false;
-	}
-
-	if(password == valid_hash) return true;
-
-	return false;
 }
 
 std::string fuh::extract_salt(const std::string& name) {
@@ -85,7 +77,7 @@ std::string fuh::extract_salt(const std::string& name) {
 	std::string hash;
 
 	try {
-		hash = get_hash(name);
+		hash = get_hashed_password_from_db(name);
 	} catch (const error& e) {
 		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return "";
@@ -187,8 +179,16 @@ std::string fuh::user_info(const std::string& name) {
 	return info.str();
 }
 
-std::string fuh::get_hash(const std::string& user) {
+std::string fuh::get_hashed_password_from_db(const std::string& user) {
 	return conn_.get_user_string(db_users_table_, "user_password", user);
+}
+
+std::string fuh::get_user_email(const std::string& user) {
+	return conn_.get_user_string(db_users_table_, "user_email", user);
+}
+
+void fuh::db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version) {
+	return conn_.update_addon_download_count(instance_version, id, version);
 }
 
 std::time_t fuh::get_lastlogin(const std::string& user) {
@@ -207,10 +207,10 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, server_base& s_base, socket_ptr player_socket, int player_id, int offset) {
-	boost::asio::post([this, &s_base, player_socket, player_id, offset, &io_service] {
-		boost::asio::post(io_service, [player_socket, &s_base, doc = conn_.get_game_history(player_id, offset)]{
-			s_base.async_send_doc_queued(player_socket, *doc);
+void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset) {
+	boost::asio::post([this, &s, player, player_id, offset, &io_service] {
+		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset)]{
+			s.send_to_player(player, *doc);
 		});
 	 });
 }
@@ -227,8 +227,8 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 }
 
-void fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version){
-	conn_.insert_game_content_info(uuid, game_id, type, name, id, source, version);
+unsigned long long fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version){
+	return conn_.insert_game_content_info(uuid, game_id, type, name, id, source, version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
@@ -241,6 +241,30 @@ void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
 		int i = conn_.async_test_query(limit);
 		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i << std::endl; });
 	 });
+}
+
+bool fuh::db_topic_id_exists(int topic_id) {
+	return conn_.topic_id_exists(topic_id);
+}
+
+void fuh::db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) {
+	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id);
+}
+
+unsigned long long fuh::db_insert_login(const std::string& username, const std::string& ip, const std::string& version) {
+	return conn_.insert_login(username, ip, version);
+}
+
+void fuh::db_update_logout(unsigned long long login_id) {
+	conn_.update_logout(login_id);
+}
+
+void fuh::get_users_for_ip(const std::string& ip, std::ostringstream* out) {
+	conn_.get_users_for_ip(ip, out);
+}
+
+void fuh::get_ips_for_user(const std::string& username, std::ostringstream* out) {
+	conn_.get_ips_for_user(username, out);
 }
 
 #endif //HAVE_MYSQLPP

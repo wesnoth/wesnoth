@@ -1,20 +1,21 @@
 /*
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
-
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp" // for set_clip
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"
@@ -240,7 +241,7 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
+	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	if (needs_restore_) {
 		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
@@ -252,7 +253,7 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& rect) const
 {
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
+	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
@@ -273,9 +274,12 @@ void widget::draw()
 
 	bg_restore();
 
-	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
-
-	draw_contents();
+	if (clip_) {
+		auto clipper = draw::set_clip(clip_rect_);
+		draw_contents();
+	} else {
+		draw_contents();
+	}
 
 	set_dirty(false);
 }

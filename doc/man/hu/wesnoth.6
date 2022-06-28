@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2018 wesnoth "Harc Wesnothért"
+.TH WESNOTH 6 2021 wesnoth "Harc Wesnothért"
 .
 .SH NÉV
 wesnoth \- Harc Wesnothért, egy körökre osztott stratégiai játék fantázia
@@ -111,8 +111,9 @@ közvetlenül indítja a játékon belüli térképszerkesztőt. Ha a \fIfájl\f
 meg van adva, akkor egyenértékű az \fB\-l\fP \fB\-\-load\fP opcióval.
 .TP 
 \fB\-\-fps\fP
-a képernyő sarkában megjeleníti az aktuális képkockák számát
-másodpercenként.
+displays the number of frames per second the game is currently running at in
+a corner of the screen as well as writes these values to a file in the
+userdata directory.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 a játékot teljes képernyős módban indítja el.
@@ -189,6 +190,9 @@ letiltja a játék gyorsítótárát.
 \fB\-\-nogui\fP
 grafikus felület nélkül indítja a játékot. Csak a \fB\-\-multiplayer\fP,
 \fB\-\-screenshot\fP vagy \fB\-\-plugin\fP opciókkal együtt működik.
+.TP 
+\fB\-\-nobanner\fP
+suppress the startup banner.
 .TP 
 \fB\-\-nomusic\fP
 a játékot zene nélkül indítja el.
@@ -344,6 +348,9 @@ feltételezi, hogy a gyorsítótár érvényes. (veszélyes)
 \fB\-v, \-\-version\fP
 kiírja a játék verziószámát, majd kilép.
 .TP 
+\fB\-\-simple\-version\fP
+shows the version number and nothing else, then exits.
+.TP 
 \fB\-w, \-\-windowed\fP
 a játékot ablakos módban indítja el.
 .TP 
@@ -445,8 +452,7 @@ közösségi portált: http://wesnoth.fsf.hu/
 .
 .SH "SZERZŐI JOGOK"
 .
-A szerzői jogok \(co 2003\-2018 David White\-ot
-<davidnwhite@verizon.net> illetik meg
+Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
 Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak

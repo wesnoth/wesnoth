@@ -3,61 +3,7 @@ local T = wml.tag
 
 local invest_tellunit = {}
 
-invest_tellunit.dialog_wml = {
-	maximum_width = 1200,
-	maximum_height = 700,
-	T.helptip { id = "tooltip_large" }, -- mandatory field
-	T.tooltip { id = "tooltip_large" }, -- mandatory field
-
-	T.grid {
-		T.row {
-			T.column {
-				border = "all",
-				border_size = 5,
-				horizontal_alignment = "left",
-				T.label {
-					definition = "title",
-					label = _ "You got",
-					id = "title"
-				}
-			}
-		},
-		T.row {
-			T.column {
-				T.grid {
-					T.row {
-						T.column {
-							border = "all",
-							border_size = 5,
-							T.image {
-								id="icon"
-							}
-						},
-					},
-					T.row {
-						T.column {
-							border = "all",
-							border_size = 5,
-							T.label {
-								id = "name"
-							}
-						},
-					},
-				},
-			},
-		},
-		T.row {
-			T.column {
-				border = "all",
-				border_size = 5,
-				T.button {
-					label = _ "OK",
-					id = "ok",
-				},
-			},
-		},
-	},
-}
+invest_tellunit.dialog_wml = wml.load "campaigns/World_Conquest/gui/invest_tellunit.cfg"
 
 -- todo:maybe use a dialog ith the unit specific welcome mesage?
 function invest_tellunit.execute(unit_type)
@@ -72,7 +18,7 @@ function invest_tellunit.execute(unit_type)
 		dialog.name.label = unit_type.name
 	end
 
-	gui.show_dialog(invest_tellunit.dialog_wml, preshow)
+	gui.show_dialog(wml.get_child(invest_tellunit.dialog_wml, 'resolution'), preshow)
 end
 
 return invest_tellunit

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -64,20 +65,16 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(0).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(0).draw();
 }
 
-void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(1).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(1).draw();
 }
 
 point panel::border_space() const
@@ -130,9 +127,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_panel::build() const
+std::unique_ptr<widget> builder_panel::build() const
 {
-	panel* widget = new panel(*this);
+	auto widget = std::make_unique<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

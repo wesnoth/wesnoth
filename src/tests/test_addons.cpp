@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
@@ -30,6 +31,20 @@ BOOST_AUTO_TEST_CASE( validation )
 	BOOST_CHECK( !addon_filename_legal("invalid:colon") );
 	BOOST_CHECK( !addon_filename_legal("invalid~tilde") );
 	BOOST_CHECK( !addon_filename_legal("invalid/../parent") );
+
+	std::vector<std::string> ddns = { "NUL", "CON", "AUX", "PRN", "CONIN$", "CONOUT$" };
+	for(unsigned i = 1; i < 10; ++i) {
+		ddns.emplace_back(std::string{"LPT"} + std::to_string(i));
+		ddns.emplace_back(std::string{"COM"} + std::to_string(i));
+	}
+
+	for(const auto& name : ddns) {
+		BOOST_CHECK( addon_filename_legal("foo.bar." + name) );
+		BOOST_CHECK( addon_filename_legal("foo." + name + ".bar") );
+		BOOST_CHECK( !addon_filename_legal(name + ".foo.bar") );
+		BOOST_CHECK( !addon_filename_legal(name + ':') );
+		BOOST_CHECK( !addon_filename_legal(name) );
+	}
 
 	BOOST_CHECK( addon_name_legal("-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz") );
 

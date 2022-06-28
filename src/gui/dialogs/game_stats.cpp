@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -66,8 +67,8 @@ unit_const_ptr game_stats::get_leader(const int side)
 
 static std::string controller_name(const team& t)
 {
-	static const std::array<t_string, 3> names {{_("controller^Human"), _("controller^AI"), _("controller^Idle")}};
-	return "<span color='#808080'><small>" + names[t.controller().v] + "</small></span>";
+	static const side_controller::sized_array<t_string> names {_("controller^Idle"), _("controller^Human"), _("controller^AI"), _("controller^Reserved")};
+	return "<span color='#808080'><small>" + names[static_cast<int>(t.controller())] + "</small></span>";
 }
 
 void game_stats::pre_show(window& window)
@@ -82,8 +83,8 @@ void game_stats::pre_show(window& window)
 
 		team_data_.emplace_back(board_, team);
 
-		std::map<std::string, string_map> row_data_stats;
-		string_map column_stats;
+		widget_data row_data_stats;
+		widget_item column_stats;
 
 		const bool known = viewing_team_.knows_about_team(team.side() - 1);
 		const bool enemy = viewing_team_.is_enemy(team.side());
@@ -167,8 +168,8 @@ void game_stats::pre_show(window& window)
 		//
 		// Settings list
 		//
-		std::map<std::string, string_map> row_data_settings;
-		string_map column_settings;
+		widget_data row_data_settings;
+		widget_item column_settings;
 
 		column_settings["use_markup"] = "true";
 

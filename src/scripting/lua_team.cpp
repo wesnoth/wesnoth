@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_team.hpp"
@@ -25,7 +26,6 @@
 
 #include <string>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 /**
@@ -79,21 +79,21 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("faction", t.faction());
 	return_tstring_attrib("faction_name", t.faction_name());
 	return_string_attrib("color", t.color());
-	return_cstring_attrib("controller", t.controller().to_string().c_str());
+	return_string_attrib("controller", side_controller::get_string(t.controller()));
 	return_bool_attrib("is_local", t.is_local());
-	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
-	return_string_attrib("share_vision", t.share_vision().to_string());
+	return_string_attrib("defeat_condition", defeat_condition::get_string(t.defeat_cond()));
+	return_string_attrib("share_vision", team_shared_vision::get_string(t.share_vision()));
 	return_float_attrib("carryover_bonus", t.carryover_bonus());
 	return_int_attrib("carryover_percentage", t.carryover_percentage());
 	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
 	return_bool_attrib("persistent", t.persistent());
 	return_bool_attrib("suppress_end_turn_confirmation", t.no_turn_confirmation());
-	return_string_attrib("share_vision", t.share_vision().to_string());
 	return_bool_attrib("share_maps", t.share_maps());
 	return_bool_attrib("share_view", t.share_view());
 	return_bool_attrib("chose_random", t.chose_random());
 	return_tstring_attrib("side_name", t.side_name_tstr());
+	return_string_attrib("shroud_data", t.shroud_data());
 
 	if (strcmp(m, "recruit") == 0) {
 		const std::set<std::string>& recruits = t.recruits();
@@ -204,10 +204,11 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("fog", t.set_fog(value));
 	modify_string_attrib("flag_icon", t.set_flag_icon(value));
 	modify_tstring_attrib("side_name", t.set_side_name(value));
+	modify_string_attrib("shroud_data", t.reshroud(); t.merge_shroud_map_data(value));
 	modify_string_attrib("share_vision", {
-		team::SHARE_VISION v;
-		if(v.parse(value)) {
-			t.set_share_vision(v);
+		auto v = team_shared_vision::get_enum(value);
+		if(v) {
+			t.set_share_vision(*v);
 		} else {
 			return luaL_argerror(L, 3, "Invalid share_vision value (should be 'all', 'none', or 'shroud')");
 		}
@@ -346,6 +347,20 @@ void luaW_pushteam(lua_State *L, team & tm)
 
 team& luaW_checkteam(lua_State* L, int idx)
 {
+	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
+}
+
+team& luaW_checkteam(lua_State* L, int idx, game_board& board)
+{
+	if(lua_isinteger(L, idx)) {
+		int side = lua_tointeger(L, idx);
+		if(!board.has_team(side)) {
+			std::string error = "side " + std::to_string(side) + " does not exist";
+			luaL_argerror(L, 1, error.c_str());
+			// Unreachable
+		}
+		return board.get_team(side);
+	}
 	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
 }
 

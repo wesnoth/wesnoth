@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -36,6 +37,9 @@
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 
 // This file is in the game_events namespace.
@@ -93,15 +97,28 @@ namespace builtin_conditions {
 
 	bool variable_matches(const vconfig& values)
 	{
+		if(values["name"].blank()) {
+			lg::log_to_chat() << "[variable] with missing name=\n";
+			ERR_WML << "[variable] with missing name=";
+			return true;
+		}
 		const std::string name = values["name"];
 		config::attribute_value value = resources::gamedata->get_variable_const(name);
+
+		if(auto n = values.get_config().attribute_count(); n > 2) {
+			lg::log_to_chat() << "[variable] name='" << name << "' found with multiple comparison attributes\n";
+			ERR_WML << "[variable] name='" << name << "' found with multiple comparison attributes";
+		} else if(n < 2) {
+			lg::log_to_chat() << "[variable] name='" << name << "' found with no comparison attribute\n";
+			ERR_WML << "[variable] name='" << name << "' found with no comparison attribute";
+		}
 
 #define TEST_STR_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
 				std::string attr_str = values[name].str(); \
 				std::string str_value = value.str(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -110,7 +127,7 @@ namespace builtin_conditions {
 			if (values.has_attribute(name)) { \
 				double attr_num = values[name].to_double(); \
 				double num_value = value.to_double(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -119,7 +136,7 @@ namespace builtin_conditions {
 			if (values.has_attribute(name)) { \
 				bool attr_bool = values[name].to_bool(); \
 				bool bool_value = value.to_bool(); \
-				if (!(test)) return false; \
+				return (test); \
 			} \
 		} while (0)
 
@@ -138,6 +155,7 @@ namespace builtin_conditions {
 #undef TEST_STR_ATTR
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
+
 		return true;
 	}
 }

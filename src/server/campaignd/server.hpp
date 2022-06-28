@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Copyright (C) 2015 - 2020 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -19,6 +20,7 @@
 #include "server/campaignd/blacklist.hpp"
 #include "server/common/server_base.hpp"
 #include "server/common/simple_wml.hpp"
+#include "server/common/user_handler.hpp"
 
 #include <boost/asio/basic_waitable_timer.hpp>
 
@@ -56,7 +58,7 @@ public:
 		const std::string& cmd;
 		const config& cfg;
 
-		const socket_ptr sock;
+		const any_socket_ptr sock;
 		const std::string addr;
 
 		/**
@@ -79,14 +81,15 @@ public:
 		 *       TO A CONST OBJECT, since some code may modify it directly for
 		 *       performance reasons.
 		 */
+		template<class Socket>
 		request(const std::string& reqcmd,
 				config& reqcfg,
-				socket_ptr reqsock,
+				Socket reqsock,
 				boost::asio::yield_context yield)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
-			, addr(client_address(sock))
+			, addr(client_address(reqsock))
 			, yield(yield)
 		{}
 	};
@@ -95,6 +98,7 @@ public:
 
 private:
 
+	std::unique_ptr<user_handler> user_handler_;
 	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
@@ -121,6 +125,8 @@ private:
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
 
+	std::string server_id_;
+
 	std::string feedback_url_format_;
 
 	std::string web_url_;
@@ -134,6 +140,10 @@ private:
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
+	void handle_new_client(tls_socket_ptr socket);
+
+	template<class Socket>
+	void serve_requests(Socket socket, boost::asio::yield_context yield);
 
 #ifndef _WIN32
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
@@ -236,7 +246,7 @@ private:
 	 * The WML sent consists of a document containing a single @p [message]
 	 * child with a @a message attribute holding the value of @a msg.
 	 */
-	void send_message(const std::string& msg, socket_ptr sock);
+	void send_message(const std::string& msg, const any_socket_ptr& sock);
 
 	/**
 	 * Send a client an error message.
@@ -246,7 +256,7 @@ private:
 	 * sending the error to the client, a line with the client IP and message
 	 * is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, socket_ptr sock);
+	void send_error(const std::string& msg, const any_socket_ptr& sock);
 
 	/**
 	 * Send a client an error message.
@@ -258,7 +268,16 @@ private:
 	 * addition to sending the error to the client, a line with the client IP
 	 * and message is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock);
+	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock);
+
+	/**
+	 * Check whether the provided passphrase matches the add-on and its author by checked against the forum database.
+	 *
+	 * @param addon The add-on uploaded, which contains the username to use.
+	 * @param passphrase The passphrase to use for authentication.
+	 * @return Whether the provided information matches what's in the forum database.
+	 */
+	bool authenticate_forum(const config& addon, const std::string& passphrase);
 };
 
 } // end namespace campaignd

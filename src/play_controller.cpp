@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -36,6 +37,7 @@
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
@@ -64,6 +66,7 @@
 #include "units/id.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <functional>
@@ -166,7 +169,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
-	, scope_()
+	, scope_(hotkey::scope_game)
 	, ignore_replay_errors_(false)
 	, player_type_changed_(false)
 {
@@ -184,8 +187,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	persist_.start_transaction();
 
 	game_config::add_color_info(game_config_view::wrap(level));
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 	try {
 		init(level);
@@ -198,7 +199,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 play_controller::~play_controller()
 {
 	unit_types.remove_scenario_fixes();
-	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
 
@@ -233,11 +233,10 @@ void play_controller::init(const config& level)
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
-		const config& theme_cfg = controller_base::get_theme(game_config_, theme());
 
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme_cfg, level));
+		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 
 		if(!gui_->video().faked()) {
@@ -333,7 +332,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 void play_controller::init_managers()
 {
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
-	preferences::set_preference_display_settings();
 	tooltips_manager_.reset(new tooltips::manager());
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
@@ -634,24 +632,24 @@ void play_controller::enter_textbox()
 	case gui::TEXTBOX_SEARCH:
 		menu_handler_.do_search(str);
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_); // need to close that one after executing do_speak() !
+		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_command(str);
 		break;
 	case gui::TEXTBOX_AI:
 		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 		ERR_DP << "unknown textbox mode" << std::endl;
 	}
 }
@@ -831,7 +829,7 @@ bool play_controller::have_keyboard_focus()
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
 	} else if(event.key.keysym.sym == SDLK_UP) {
@@ -1196,6 +1194,91 @@ void play_controller::start_game()
 		gamestate().gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
+
+	check_next_scenario_is_known();
+}
+
+/**
+ * Find all [endlevel]next_scenario= attributes, and add them to @a result.
+ */
+static void find_next_scenarios(const config& parent, std::set<std::string>& result) {
+	for(const auto& endlevel : parent.child_range("endlevel")) {
+		if(endlevel.has_attribute("next_scenario")) {
+			result.insert(endlevel["next_scenario"]);
+		}
+	}
+	for(const auto cfg : parent.all_children_range()) {
+		find_next_scenarios(cfg.cfg, result);
+	}
+};
+
+void play_controller::check_next_scenario_is_known() {
+	// Which scenarios are reachable from the current one?
+	std::set<std::string> possible_next_scenarios;
+	possible_next_scenarios.insert(gamestate().gamedata_.next_scenario());
+
+	// Find all "endlevel" tags that could be triggered in events
+	config events;
+	gamestate().events_manager_->write_events(events);
+	find_next_scenarios(events, possible_next_scenarios);
+
+	// Are we looking for [scenario]id=, [multiplayer]id= or [test]id=?
+	const auto tagname = saved_game_.classification().get_tagname();
+
+	// Of the possible routes, work out which exist.
+	bool possible_this_is_the_last_scenario = false;
+	std::vector<std::string> known;
+	std::vector<std::string> unknown;
+	for(const auto& x : possible_next_scenarios) {
+		if(x.empty() || x == "null") {
+			possible_this_is_the_last_scenario = true;
+			LOG_NG << "This can be the last scenario\n";
+		} else if(utils::contains(x, '$')) {
+			// Assume a WML variable will be set to a correct value before the end of the scenario
+			known.push_back(x);
+			LOG_NG << "Variable value for next scenario '" << x << "'\n";
+		} else if(game_config_.find_child(tagname, "id", x)) {
+			known.push_back(x);
+			LOG_NG << "Known next scenario '" << x << "'\n";
+		} else {
+			unknown.push_back(x);
+			ERR_NG << "Unknown next scenario '" << x << "'\n";
+		}
+	}
+
+	if(unknown.empty()) {
+		// everything's good
+		return;
+	}
+
+	std::string title = _("Warning: broken campaign branches");
+	std::stringstream message;
+
+	message << _n(
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"The next scenario is missing, you will not be able to finish this campaign.",
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"Some of the possible next scenarios are missing, you might not be able to finish this campaign.",
+		unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0));
+	message << "\n\n";
+	message << _n(
+		"Please report the following missing scenario to the campaign’s author:\n$unknown_list|",
+		"Please report the following missing scenarios to the campaign’s author:\n$unknown_list|",
+		unknown.size());
+	message << "\n";
+	message << _("Once this is fixed, you will need to restart this scenario.");
+
+	std::stringstream unknown_list;
+	for(const auto& x : unknown) {
+		unknown_list << font::unicode_bullet << " " << x << "\n";
+	}
+	utils::string_map symbols;
+	symbols["unknown_list"] = unknown_list.str();
+	auto message_str = utils::interpolate_variables_into_string(message.str(), &symbols);
+	ERR_NG << message_str << "\n";
+	gui2::show_message(title, message_str, gui2::dialogs::message::close_button);
 }
 
 bool play_controller::can_use_synced_wml_menu() const

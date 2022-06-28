@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -166,8 +167,8 @@ void drop_down_menu::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	for(const auto& entry : items_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		//
 		// These widgets can be initialized here since they don't require widget type swapping.
@@ -195,7 +196,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
-			toggle_button* checkbox = build_single_widget_instance<toggle_button>();
+			auto checkbox = build_single_widget_instance<toggle_button>();
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 
@@ -206,14 +207,14 @@ void drop_down_menu::pre_show(window& window)
 				}));
 			}
 
-			mi_grid.swap_child("icon", checkbox, false);
+			mi_grid.swap_child("icon", std::move(checkbox), false);
 		}
 
 		if(entry.image) {
-			image* img = build_single_widget_instance<image>();
+			auto img = build_single_widget_instance<image>();
 			img->set_label(*entry.image);
 
-			mi_grid.swap_child("label", img, false);
+			mi_grid.swap_child("label", std::move(img), false);
 		}
 	}
 

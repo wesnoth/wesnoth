@@ -125,7 +125,7 @@ function pickadvance.pick_advance(unit)
 	unit = unit or wesnoth.units.get(wml.variables.x1, wml.variables.y1)
 	initialize_unit(unit)
 	local _, orig_options_sanitized = original_advances(unit)
-	local dialog_result = wesnoth.synchronize_choice(function()
+	local dialog_result = wesnoth.sync.evaluate_single(function()
 		local local_result = pickadvance.show_dialog_unsynchronized(get_advance_info(unit), unit)
 		return local_result
 	end, function() return { is_ai = true } end)
@@ -212,7 +212,7 @@ on_event("moveto", function()
 				pickadvance.pick_advance(unit)
 				if #unit.advances_to > 1 then
 					local len = #unit.advances_to
-					local rand = wesnoth.random(len)
+					local rand = mathx.random(len)
 					unit.advances_to = { unit.advances_to[rand] }
 				end
 			else

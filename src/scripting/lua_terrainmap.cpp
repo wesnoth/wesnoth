@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2018 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_terrainmap.hpp"
@@ -27,7 +28,6 @@
 #include "play_controller.hpp"
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -45,7 +45,7 @@ using std::string_view;
 
 ////////  SPECIAL LOCATION  ////////
 
-int impl_slocs_get(lua_State* L)
+static int impl_slocs_get(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	string_view id = luaL_checkstring(L, 2);
@@ -59,7 +59,7 @@ int impl_slocs_get(lua_State* L)
 	return 1;
 }
 
-int impl_slocs_set(lua_State* L)
+static int impl_slocs_set(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	string_view id = luaL_checkstring(L, 2);
@@ -69,7 +69,7 @@ int impl_slocs_set(lua_State* L)
 	return 0;
 }
 
-int impl_slocs_next(lua_State *L)
+static int impl_slocs_next(lua_State *L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, lua_upvalueindex(1));
 	const t_translation::starting_positions::left_map& left = m.special_locations().left;
@@ -93,7 +93,7 @@ int impl_slocs_next(lua_State *L)
 	return 2;
 }
 
-int impl_slocs_iter(lua_State *L)
+static int impl_slocs_iter(lua_State *L)
 {
 	lua_settop(L, 1);
 	lua_pushvalue(L, 1);
@@ -124,7 +124,7 @@ mapgen_gamemap::mapgen_gamemap(int w, int h, terrain_code t)
 // This can produce invalid combinations in rare case
 // where an overlay doesn't have an independent terrain definition,
 // or if you set an overlay with no base and merge mode other than OVERLAY.
-void simplemerge(t_translation::terrain_code old_t, t_translation::terrain_code& new_t, const terrain_type_data::merge_mode mode)
+static void simplemerge(t_translation::terrain_code old_t, t_translation::terrain_code& new_t, const terrain_type_data::merge_mode mode)
 {
 	switch(mode) {
 		case terrain_type_data::OVERLAY:
@@ -201,8 +201,8 @@ gamemap_base& luaW_checkterrainmap(lua_State *L, int index)
 int intf_terrainmap_create(lua_State *L)
 {
 	if(lua_isnumber(L, 1) && lua_isnumber(L, 2)) {
-		int w = lua_tonumber(L, 1);
-		int h = lua_tonumber(L, 2);
+		int w = lua_tointeger(L, 1);
+		int h = lua_tointeger(L, 2);
 		auto terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
 		new(L) lua_map_ref(w, h, terrain);
 	} else {
@@ -255,13 +255,13 @@ static void impl_merge_terrain(lua_State* L, gamemap_base& map, map_location loc
 			mode = terrain_type_data::BASE;
 		}
 	}
-	
+
 	auto ter = t_translation::read_terrain_code(t_str);
-	
+
 	if(auto gm = dynamic_cast<gamemap*>(&map)) {
 		if(resources::gameboard) {
 			bool result = resources::gameboard->change_terrain(loc, ter, mode, replace_if_failed);
-			
+
 			for(team& t : resources::gameboard->teams()) {
 				t.fix_villages(*gm);
 			}
@@ -287,7 +287,7 @@ static int impl_terrainmap_get(lua_State *L)
 		luaW_push_terrain(L, tm, loc);
 		return 1;
 	}
-	
+
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -363,7 +363,7 @@ static int impl_terrainmap_iter(lua_State* L)
 	int w = with_border ? tm.total_width() - 1 : tm.w();
 	int h = with_border ? tm.total_height() - 1 : tm.h();
 	int x, y;
-	
+
 	// Given the previous location, determine the next one to be returned
 	if(prev_loc.wml_x() == w) {
 		if(prev_loc.wml_y() == h) {
@@ -377,17 +377,17 @@ static int impl_terrainmap_iter(lua_State* L)
 		x = prev_loc.wml_x() + 1;
 		y = prev_loc.wml_y();
 	}
-	
+
 	// Assign the upvalue representing the previous location
 	map_location next_loc(x, y, wml_loc{});
 	luaW_pushlocation(L, next_loc);
 	lua_replace(L, lua_upvalueindex(2));
-	
+
 	// Return the new location and its terrain code
 	lua_pushinteger(L, x);
 	lua_pushinteger(L, y);
 	luaW_push_terrain(L, tm, next_loc);
-	
+
 	return 3;
 }
 
@@ -397,7 +397,7 @@ int intf_terrainmap_iter(lua_State* L)
 	bool with_border = lua_isboolean(L, 2) ? luaW_toboolean(L, 2) : false;
 	lua_settop(L, 1);
 	luaW_pushlocation(L, map_location(with_border ? -1 : 0, 1, wml_loc{}));
-	
+
 	if(with_border) {
 		lua_pushcclosure(L, impl_terrainmap_iter<true>, 2);
 	} else {
@@ -411,7 +411,7 @@ int intf_on_board(lua_State* L)
 	gamemap_base& tm = luaW_checkterrainmap(L, 1);
 	map_location loc = luaW_checklocation(L, 2);
 	bool with_border = luaL_opt(L, luaW_toboolean, 3, false);
-	
+
 	lua_pushboolean(L, with_border ? tm.on_board_with_border(loc) : tm.on_board(loc));
 	return 1;
 }
@@ -420,7 +420,7 @@ int intf_on_border(lua_State* L)
 {
 	gamemap_base& tm = luaW_checkterrainmap(L, 1);
 	map_location loc = luaW_checklocation(L, 2);
-	
+
 	lua_pushboolean(L, tm.on_board_with_border(loc) && !tm.on_board(loc));
 	return 1;
 }
@@ -504,7 +504,7 @@ int intf_terrain_mask(lua_State *L)
 			lua_pop(L, 1);
 		}
 	}
-	
+
 	if(lua_isstring(L, 3)) {
 		const std::string t_str = luaL_checkstring(L, 3);
 		std::unique_ptr<gamemap_base> mask;
@@ -520,7 +520,7 @@ int intf_terrain_mask(lua_State *L)
 		gamemap_base& mask = luaW_checkterrainmap(L, 3);
 		map.overlay(mask, loc, rules, is_odd, ignore_special_locations);
 	}
-	
+
 	if(resources::gameboard) {
 		if(auto gmap = dynamic_cast<gamemap*>(&map)) {
 			for(team& t : resources::gameboard->teams()) {
@@ -549,7 +549,7 @@ int intf_replace_if_failed(lua_State* L)
 			return luaL_argerror(L, 2, "must be one of 'base', 'overlay', or 'both'");
 		}
 	}
-	
+
 	lua_newuserdatauv(L, 0, 2);
 	lua_pushinteger(L, int(mode));
 	lua_setiuservalue(L, -2, replace_if_failed_idx::MODE);
@@ -586,7 +586,7 @@ namespace lua_terrainmap {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, terrainmapKey);
 		lua_setfield(L, -2, "__metatable");
-		
+
 		luaL_newmetatable(L, mapReplaceIfFailedKey);
 		lua_pushcfunction(L, impl_replace_if_failed_tostring);
 		lua_setfield(L, -2, "__tostring");

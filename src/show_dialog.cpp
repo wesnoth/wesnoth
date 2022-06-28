@@ -1,35 +1,38 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "show_dialog.hpp"
 
+#include "draw.hpp"
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define ERR_G  LOG_STREAM(err, lg::general)
 
 namespace {
@@ -44,9 +47,6 @@ const int ButtonVPadding = 10;
 
 //note: style names are directly related to the panel image file names
 const dialog_frame::style dialog_frame::default_style("opaque", 0);
-const dialog_frame::style dialog_frame::message_style("translucent65", 3);
-const dialog_frame::style dialog_frame::preview_style("../dialogs/selection", 0);
-const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 1);
 
 const int dialog_frame::title_border_w = 10;
 const int dialog_frame::title_border_h = 5;
@@ -67,7 +67,7 @@ dialog_manager::~dialog_manager()
 {
 	is_in_dialog = reset_to;
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex, &mousey);
+	sdl::get_mouse_state(&mousex, &mousey);
 	SDL_Event pb_event;
 	pb_event.type = SDL_MOUSEMOTION;
 	pb_event.motion.state = 0;
@@ -89,16 +89,16 @@ dialog_frame::dialog_frame(CVideo& video, const std::string& title,
 	restorer_(nullptr),
 	auto_restore_(auto_restore),
 	dim_(),
-	top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png")),
-	bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
-	left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png")),
-	right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png")),
-	top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png")),
-	bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png")),
-	top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png")),
-	bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png")),
-	bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png")),
-	have_border_(top_ != nullptr && bot_ != nullptr && left_ != nullptr && right_ != nullptr),
+	top_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-top.png")),
+	bot_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
+	left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-left.png")),
+	right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-right.png")),
+	top_left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-topleft.png")),
+	bot_left_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-botleft.png")),
+	top_right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-topright.png")),
+	bot_right_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-botright.png")),
+	bg_(image::get_texture("dialogs/" + dialog_style_.panel + "-background.png")),
+	have_border_(top_ && bot_ && left_ && right_),
 	dirty_(true)
 {
 }
@@ -112,14 +112,16 @@ dialog_frame::dimension_measurements::dimension_measurements() :
 	interior(sdl::empty_rect), exterior(sdl::empty_rect), title(sdl::empty_rect), button_row(sdl::empty_rect)
 {}
 
-dialog_frame::dimension_measurements dialog_frame::layout(const SDL_Rect& rect) {
+dialog_frame::dimension_measurements dialog_frame::layout(const SDL_Rect& rect)
+{
 	return layout(rect.x, rect.y, rect.w, rect.h);
 }
 
-int dialog_frame::top_padding() const {
+int dialog_frame::top_padding() const
+{
 	int padding = 0;
 	if(have_border_) {
-		padding += top_->h;
+		padding += top_.h();
 	}
 	if(!title_.empty()) {
 		padding += font::get_max_height(font::SIZE_TITLE) + 2*dialog_frame::title_border_h;
@@ -127,12 +129,13 @@ int dialog_frame::top_padding() const {
 	return padding;
 }
 
-void dialog_frame::set_dirty(bool dirty) {
+void dialog_frame::set_dirty(bool dirty)
+{
 	dirty_ = dirty;
 }
 
-void dialog_frame::handle_window_event(const SDL_Event& event) {
-
+void dialog_frame::handle_window_event(const SDL_Event& event)
+{
 	if (event.type == SDL_WINDOWEVENT) {
 		switch (event.window.event) {
 		case SDL_WINDOWEVENT_RESIZED:
@@ -144,8 +147,8 @@ void dialog_frame::handle_window_event(const SDL_Event& event) {
 	}
 }
 
-void dialog_frame::handle_event(const SDL_Event& event) {
-
+void dialog_frame::handle_event(const SDL_Event& event)
+{
 	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
 
@@ -169,7 +172,7 @@ int dialog_frame::bottom_padding() const {
 		}
 	}
 	if(have_border_) {
-		padding += bot_->h;
+		padding += bot_.h();
 	}
 	return padding;
 }
@@ -204,12 +207,12 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	SDL_Rect bounds = video_.screen_area();
+	SDL_Rect bounds = video_.draw_area();
 	if(have_border_) {
-		bounds.x += left_->w;
-		bounds.y += top_->h;
-		bounds.w -= left_->w;
-		bounds.h -= top_->h;
+		bounds.x += left_.w();
+		bounds.y += top_.h();
+		bounds.w -= left_.w();
+		bounds.h -= top_.h();
 	}
 	if(x < bounds.x) {
 		w += x;
@@ -234,10 +237,10 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	dim_.interior.w = w;
 	dim_.interior.h = h;
 	if(have_border_) {
-		dim_.exterior.x = dim_.interior.x - left_->w;
-		dim_.exterior.y = dim_.interior.y - top_->h;
-		dim_.exterior.w = dim_.interior.w + left_->w + right_->w;
-		dim_.exterior.h = dim_.interior.h + top_->h + bot_->h;
+		dim_.exterior.x = dim_.interior.x - left_.w();
+		dim_.exterior.y = dim_.interior.y - top_.h();
+		dim_.exterior.w = dim_.interior.w + left_.w() + right_.w();
+		dim_.exterior.h = dim_.interior.h + top_.h() + bot_.h();
 	} else {
 		dim_.exterior = dim_.interior;
 	}
@@ -252,38 +255,53 @@ void dialog_frame::draw_border()
 		return;
 	}
 
-	surface top_image(scale_surface(top_, dim_.interior.w, top_->h));
+	// Too much typing is bad for you.
+	const SDL_Rect& i = dim_.interior;
+	const SDL_Rect& e = dim_.exterior;
 
-	if(top_image != nullptr) {
-		video_.blit_surface(dim_.interior.x, dim_.exterior.y, top_image);
+	if(top_) {
+		draw::blit(top_, {i.x, e.y, i.w, top_.h()});
 	}
 
-	surface bot_image(scale_surface(bot_, dim_.interior.w, bot_->h));
-
-	if(bot_image != nullptr) {
-		video_.blit_surface(dim_.interior.x, dim_.interior.y + dim_.interior.h, bot_image);
+	if(bot_) {
+		draw::blit(bot_, {i.x, i.y + i.h, i.w, bot_.h()});
 	}
 
-	surface left_image(scale_surface(left_, left_->w, dim_.interior.h));
-
-	if(left_image != nullptr) {
-		video_.blit_surface(dim_.exterior.x, dim_.interior.y, left_image);
+	if(left_) {
+		draw::blit(left_, {e.x, i.y, left_.w(), i.h});
 	}
 
-	surface right_image(scale_surface(right_, right_->w, dim_.interior.h));
-
-	if(right_image != nullptr) {
-		video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y, right_image);
+	if(right_) {
+		draw::blit(right_, {i.x + i.w, i.y, right_.w(), i.h});
 	}
 
-	if(top_left_ == nullptr || bot_left_ == nullptr || top_right_ == nullptr || bot_right_ == nullptr) {
+	if(!top_left_ || !bot_left_ || !top_right_ || !bot_right_) {
 		return;
 	}
 
-	video_.blit_surface(dim_.interior.x - left_->w, dim_.interior.y - top_->h, top_left_);
-	video_.blit_surface(dim_.interior.x - left_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_left_->h, bot_left_);
-	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - top_right_->w, dim_.interior.y - top_->h, top_right_);
-	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - bot_right_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_right_->h, bot_right_);
+	draw::blit(top_left_,
+		{i.x - left_.w(), i.y - top_.h(), top_left_.w(), top_left_.h()});
+
+	draw::blit(bot_left_, {
+		i.x - left_.w(),
+		i.y + i.h + bot_.h() - bot_left_.h(),
+		bot_left_.w(),
+		bot_left_.h()
+	});
+
+	draw::blit(top_right_, {
+		i.x + i.w + right_.w() - top_right_.w(),
+		i.y - top_.h(),
+		top_right_.w(),
+		top_right_.h(),
+	});
+
+	draw::blit(bot_right_, {
+		i.x + i.w + right_.w() - bot_right_.w(),
+		i.y + i.h + bot_.h() - bot_right_.h(),
+		bot_right_.w(),
+		bot_right_.h()
+	});
 }
 
 void dialog_frame::clear_background()
@@ -300,33 +318,38 @@ void dialog_frame::draw_background()
 	}
 
 	if (dialog_style_.blur_radius) {
-		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
+		SDL_Rect r = dim_.exterior;
+		surface surf = video_.read_pixels_low_res(&r);
 		surf = blur_surface(surf, dialog_style_.blur_radius);
-		sdl_blit(surf, nullptr, video_.getSurface(), &dim_.exterior);
+		// TODO: highdpi - converting this to texture every time is not ideal, but i also suspect this is not actually used anywhere, and all this is slated for removal anyway.
+		WRN_DP << "deprecated very slow blur" << std::endl;
+		draw::blit(texture(surf), r);
 	}
 
-	if(bg_ == nullptr) {
+	if (!bg_) {
 		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
 		return;
 	}
-	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
-		for(int j = 0; j < dim_.interior.h; j += bg_->h) {
+
+	auto clipper = draw::set_clip(dim_.interior);
+	for(int i = 0; i < dim_.interior.w; i += bg_.w()) {
+		for(int j = 0; j < dim_.interior.h; j += bg_.h()) {
 			SDL_Rect src {0,0,0,0};
-			src.w = std::min(dim_.interior.w - i, bg_->w);
-			src.h = std::min(dim_.interior.h - j, bg_->h);
+			src.w = std::min(dim_.interior.w - i, bg_.w());
+			src.h = std::min(dim_.interior.h - j, bg_.h());
 			SDL_Rect dst = src;
 			dst.x = dim_.interior.x + i;
 			dst.y = dim_.interior.y + j;
-			sdl_blit(bg_, &src, video_.getSurface(), &dst);
+			draw::blit(bg_, dst);
 		}
 	}
 }
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = CVideo::get_singleton().screen_area();
-	return font::draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
-	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_NORMAL);
+	SDL_Rect rect = CVideo::get_singleton().draw_area();
+	return font::pango_draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
+	                       title_, dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL);
 }
 
 void dialog_frame::draw()

@@ -1,17 +1,18 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Copyright (C) 2015 - 2020 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
-   */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -41,6 +42,10 @@
 #include "game_version.hpp"
 #include "hash.hpp"
 #include "utils/optimer.hpp"
+
+#ifdef HAVE_MYSQLPP
+#include "server/common/forum_user_handler.hpp"
+#endif
 
 #include <csignal>
 #include <ctime>
@@ -138,24 +143,33 @@ inline util::ms_optimer service_timer(const campaignd::server::request& req, con
 
 /**
  * WML version of campaignd::auth::verify_passphrase().
+ * The salt and hash are retrieved from the @a passsalt and @a passhash attributes, respectively, if not using forum_auth.
  *
- * The salt and hash are retrieved from the @a passsalt and @a passhash
- * attributes, respectively.
+ * @param addon The config of the addon being authenticated for upload.
+ * @param passphrase The password being validated.
+ * @return Whether the password is correct for the addon.
  */
 inline bool authenticate(config& addon, const config::attribute_value& passphrase)
 {
-	return auth::verify_passphrase(passphrase, addon["passsalt"], addon["passhash"]);
+	if(!addon["forum_auth"].to_bool()) {
+		return auth::verify_passphrase(passphrase, addon["passsalt"], addon["passhash"]);
+	}
+	return false;
 }
 
 /**
  * WML version of campaignd::auth::generate_hash().
+ * The salt and hash are written into the @a passsalt and @a passhash attributes, respectively, if not using forum_auth.
  *
- * The salt and hash are written into the @a passsalt and @a passhash
- * attributes, respectively.
+ * @param addon The addon whose password is being set.
+ * @param passphrase The password being hashed.
  */
 inline void set_passphrase(config& addon, const std::string& passphrase)
 {
-	std::tie(addon["passsalt"], addon["passhash"]) = auth::generate_hash(passphrase);
+	// don't do anything if using forum authorization
+	if(!addon["forum_auth"].to_bool()) {
+		std::tie(addon["passsalt"], addon["passhash"]) = auth::generate_hash(passphrase);
+	}
 }
 
 /**
@@ -260,6 +274,7 @@ std::string simple_wml_escape(const std::string& text)
 
 server::server(const std::string& cfg_file, unsigned short port)
 	: server_base(default_campaignd_port, true)
+	, user_handler_(nullptr)
 	, capabilities_(cap_defaults)
 	, addons_()
 	, dirty_addons_()
@@ -271,6 +286,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, strict_versions_(true)
 	, hooks_()
 	, handlers_()
+	, server_id_()
 	, feedback_url_format_()
 	, web_url_()
 	, license_notice_()
@@ -331,6 +347,7 @@ void server::load_config()
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
 	if(const auto& svinfo_cfg = server_info()) {
+		server_id_ = svinfo_cfg["id"].str();
 		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
 		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
@@ -449,45 +466,71 @@ void server::load_config()
 	}
 
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.\n";
+
+#ifdef HAVE_MYSQLPP
+	if(const config& user_handler = cfg_.child("user_handler")) {
+		if(server_id_ == "") {
+			ERR_CS << "The server id must be set when database support is used.\n";
+			exit(1);
+		}
+		user_handler_.reset(new fuh(user_handler));
+		LOG_CS << "User handler initialized.\n";
+	}
+#endif
+
+	load_tls_config(cfg_);
 }
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)
 {
-	o << '[' << r.addr << ' ' << r.cmd << "] ";
+	o << '[' << (utils::holds_alternative<tls_socket_ptr>(r.sock) ? "+" : "") << r.addr << ' ' << r.cmd << "] ";
 	return o;
+}
+
+void server::handle_new_client(tls_socket_ptr socket)
+{
+	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
+		serve_requests(socket, yield);
+	});
 }
 
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		while(true) {
-			boost::system::error_code ec;
-			auto doc { coro_receive_doc(socket, yield[ec]) };
-			if(check_error(ec, socket) || !doc) return;
+		serve_requests(socket, yield);
+	});
+}
 
-			config data;
-			read(data, doc->output());
+template<class Socket>
+void server::serve_requests(Socket socket, boost::asio::yield_context yield)
+{
+	while(true) {
+		boost::system::error_code ec;
+		auto doc { coro_receive_doc(socket, yield[ec]) };
+		if(check_error(ec, socket) || !doc) return;
 
-			config::all_children_iterator i = data.ordered_begin();
+		config data;
+		read(data, doc->output());
 
-			if(i != data.ordered_end()) {
-				// We only handle the first child.
-				const config::any_child& c = *i;
+		config::all_children_iterator i = data.ordered_begin();
 
-				request_handlers_table::const_iterator j
-					= handlers_.find(c.key);
+		if(i != data.ordered_end()) {
+			// We only handle the first child.
+			const config::any_child& c = *i;
 
-				if(j != handlers_.end()) {
-					// Call the handler.
-					request req{c.key, c.cfg, socket, yield};
-					auto st = service_timer(req);
-					j->second(this, req);
-				} else {
-					send_error("Unrecognized [" + c.key + "] request.",socket);
-				}
+			request_handlers_table::const_iterator j
+				= handlers_.find(c.key);
+
+			if(j != handlers_.end()) {
+				// Call the handler.
+				request req{c.key, c.cfg, socket, yield};
+				auto st = service_timer(req);
+				j->second(this, req);
+			} else {
+				send_error("Unrecognized [" + c.key + "] request.",socket);
 			}
 		}
-	});
+	}
 }
 
 #ifndef _WIN32
@@ -510,7 +553,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 
 	if(ctl == "shut_down") {
 		LOG_CS << "Shut down requested by admin, shutting down...\n";
-		throw server_shutdown("Shut down via fifo command");
+		BOOST_THROW_EXCEPTION(server_shutdown("Shut down via fifo command"));
 	} else if(ctl == "readonly") {
 		if(ctl.args_count()) {
 			cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
@@ -571,6 +614,8 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			} else if(newpass.empty()) {
 				// Shouldn't happen!
 				ERR_CS << "Add-on passphrases may not be empty!\n";
+			} else if(addon["forum_auth"].to_bool()) {
+				ERR_CS << "Can't set passphrase for add-on using forum_auth.\n";
 			} else {
 				set_passphrase(addon, newpass);
 				mark_dirty(addon_id);
@@ -579,12 +624,18 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			}
 		}
 	} else if(ctl == "setattr") {
-		if(ctl.args_count() != 3) {
+		if(ctl.args_count() < 3) {
 			ERR_CS << "Incorrect number of arguments for 'setattr'\n";
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& key = ctl[2];
-			const std::string& value = ctl[3];
+			std::string value;
+			for (std::size_t i = 3; i <= ctl.args_count(); ++i) {
+				if(i > 3) {
+					value += ' ';
+				}
+				value += ctl[i];
+			}
 
 			config& addon = get_addon(addon_id);
 
@@ -601,7 +652,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				//       the values provided by the .pbl data or the empty
 				//       string if absent, and this is normally preserved by
 				//       the config serialization.
-				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
+				ERR_CS << "Attribute '" << key << "' is not a recognized add-on attribute\n";
 			} else {
 				addon[key] = value;
 				mark_dirty(addon_id);
@@ -609,6 +660,51 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
 				       << key << "=\"" << value << "\"\n";
 			}
+		}
+	} else if(ctl == "log") {
+		static const std::map<std::string, int> log_levels = {
+			{ "error",   lg::err().get_severity() },
+			{ "warning", lg::warn().get_severity() },
+			{ "info",    lg::info().get_severity() },
+			{ "debug",   lg::debug().get_severity() },
+			{ "none",    -1 }
+		};
+
+		if(ctl.args_count() != 2) {
+			ERR_CS << "Incorrect number of arguments for 'log'\n";
+		} else if(ctl[1] == "precise") {
+			if(ctl[2] == "on") {
+				lg::precise_timestamps(true);
+				LOG_CS << "Precise timestamps enabled\n";
+			} else if(ctl[2] == "off") {
+				lg::precise_timestamps(false);
+				LOG_CS << "Precise timestamps disabled\n";
+			} else {
+				ERR_CS << "Invalid argument for 'log precise': " << ctl[2] << '\n';
+			}
+		} else if(log_levels.find(ctl[1]) == log_levels.end()) {
+			ERR_CS << "Invalid log level '" << ctl[1] << "'\n";
+		} else {
+			auto sev = log_levels.find(ctl[1])->second;
+			for(const auto& domain : utils::split(ctl[2])) {
+				if(!lg::set_log_domain_severity(domain, sev)) {
+					ERR_CS << "Unknown log domain '" << domain << "'\n";
+				} else {
+					LOG_CS << "Set log level for domain '" << domain << "' to " << ctl[1] << '\n';
+				}
+			}
+		}
+	} else if(ctl == "timings") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'timings'\n";
+		} else if(ctl[1] == "on") {
+			campaignd::timing_reports_enabled = true;
+			LOG_CS << "Request servicing timing reports enabled\n";
+		} else if(ctl[1] == "off") {
+			campaignd::timing_reports_enabled = false;
+			LOG_CS << "Request servicing timing reports disabled\n";
+		} else {
+			ERR_CS << "Invalid argument for 'timings': " << ctl[1] << '\n';
 		}
 	} else {
 		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
@@ -741,24 +837,28 @@ bool server::ignore_address_stats(const std::string& addr) const
 	return false;
 }
 
-void server::send_message(const std::string& msg, socket_ptr sock)
+void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 {
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-void server::send_error(const std::string& msg, socket_ptr sock)
+inline std::string client_address(const any_socket_ptr& sock) {
+	return utils::visit([](auto&& sock) { return ::client_address(sock); }, sock);
+}
+
+void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 {
 	ERR_CS << "[" << client_address(sock) << "] " << msg << '\n';
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, socket_ptr sock)
+void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock)
 {
 	const std::string& status_hex = formatter()
 		<< "0x" << std::setfill('0') << std::setw(2*sizeof(unsigned int)) << std::hex
@@ -776,7 +876,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	async_send_doc_queued(sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
 config& server::get_addon(const std::string& id)
@@ -839,6 +939,7 @@ void server::handle_server_id(const server::request& req)
 
 	std::ostringstream ostr;
 	write(ostr, config{"server_id", config{
+		"id",					server_id_,
 		"cap",					utils::join(capabilities_),
 		"version",				game_config::revision,
 		"url",					web_url_,
@@ -849,7 +950,7 @@ void server::handle_server_id(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc_queued(req.sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -950,7 +1051,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc_queued(req.sock, doc);
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -1062,9 +1163,11 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)\n";
 
-			boost::system::error_code ec;
-			coro_send_doc(req.sock, doc, req.yield[ec]);
-			if(check_error(ec, req.sock)) return;
+			if(utils::visit([this, &req, &doc](auto && sock) {
+				boost::system::error_code ec;
+				coro_send_doc(sock, doc, req.yield[ec]);
+				return check_error(ec, sock);
+			}, req.sock)) return;
 
 			full_pack_path.clear();
 		}
@@ -1080,9 +1183,11 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB\n";
-		boost::system::error_code ec;
-		coro_send_file(req.sock, full_pack_path, req.yield[ec]);
-		if(check_error(ec, req.sock)) return;
+		if(utils::visit([this, &req, &full_pack_path](auto&& socket) {
+			boost::system::error_code ec;
+			coro_send_file(socket, full_pack_path, req.yield[ec]);
+			return check_error(ec, socket);
+		}, req.sock)) return;
 	}
 
 	// Clients doing upgrades or some other specific thing shouldn't bump
@@ -1091,6 +1196,9 @@ void server::handle_request_campaign(const server::request& req)
 	if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 		addon["downloads"] = 1 + addon["downloads"].to_int();
 		mark_dirty(name);
+		if(user_handler_) {
+			user_handler_->db_update_addon_download_count(server_id_, name, to);
+		}
 	}
 }
 
@@ -1134,9 +1242,11 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB\n";
-		boost::system::error_code ec;
-		coro_send_file(req.sock, path, req.yield[ec]);
-		if(check_error(ec, req.sock)) return;
+		if(utils::visit([this, &path, &req](auto&& socket) {
+			boost::system::error_code ec;
+			coro_send_file(socket, path, req.yield[ec]);
+			return check_error(ec, socket);
+		}, req.sock)) return;
 	}
 }
 
@@ -1203,8 +1313,26 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_PASSPHRASE;
 	}
 
-	if(existing_addon && !authenticate(*existing_addon, upload["passphrase"])) {
-		LOG_CS << "Validation error: passphrase does not match\n";
+	if(existing_addon && upload["forum_auth"].to_bool() != (*existing_addon)["forum_auth"].to_bool()) {
+		LOG_CS << "Validation error: forum_auth is " << upload["forum_auth"].to_bool() << " but was previously uploaded set to " << (*existing_addon)["forum_auth"].to_bool() << "\n";
+		return ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH;
+	} else if(upload["forum_auth"].to_bool()) {
+		if(!user_handler_) {
+			LOG_CS << "Validation error: client requested forum authentication but server does not support it\n";
+			return ADDON_CHECK_STATUS::SERVER_FORUM_AUTH_DISABLED;
+		} else {
+			if(!user_handler_->user_exists(upload["author"].str())) {
+				LOG_CS << "Validation error: forum auth requested for an author who doesn't exist\n";
+				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
+			}
+
+			if(!authenticate_forum(upload, upload["passphrase"].str())) {
+				LOG_CS << "Validation error: forum passphrase does not match\n";
+				return ADDON_CHECK_STATUS::UNAUTHORIZED;
+			}
+		}
+	} else if(existing_addon && !authenticate(*existing_addon, upload["passphrase"])) {
+		LOG_CS << "Validation error: campaignd passphrase does not match\n";
 		return ADDON_CHECK_STATUS::UNAUTHORIZED;
 	}
 
@@ -1291,7 +1419,8 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_DESCRIPTION;
 	}
 
-	if(upload["email"].empty()) {
+	// if using forum_auth, email will be pulled from the forum database later
+	if(upload["email"].empty() && !upload["forum_auth"].to_bool()) {
 		LOG_CS << "Validation error: no add-on email specified\n";
 		return ADDON_CHECK_STATUS::NO_EMAIL;
 	}
@@ -1311,6 +1440,21 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	if(is_upload_pack && !existing_addon) {
 		LOG_CS << "Validation error: attempted to send an update pack for a non-existent add-on\n";
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
+	}
+
+	if(const config& url_params = upload.child("feedback")) {
+		try {
+			int topic_id = std::stoi(url_params["topic_id"].str("0"));
+			if(user_handler_ && topic_id != 0) {
+				if(!user_handler_->db_topic_id_exists(topic_id)) {
+					LOG_CS << "Validation error: feedback topic ID does not exist in forum database\n";
+					return ADDON_CHECK_STATUS::FEEDBACK_TOPIC_ID_NOT_FOUND;
+				}
+			}
+		} catch(...) {
+			LOG_CS << "Validation error: feedback topic ID is not a valid number\n";
+			return ADDON_CHECK_STATUS::BAD_FEEDBACK_TOPIC_ID;
+		}
 	}
 
 	return ADDON_CHECK_STATUS::SUCCESS;
@@ -1360,13 +1504,13 @@ void server::handle_upload(const server::request& req)
 
 	addon.copy_attributes(upload,
 		"title", "name", "author", "description", "version", "icon",
-		"translate", "dependencies", "type", "tags", "email");
+		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth");
 
 	const std::string& pathstem = "data/" + name;
 	addon["filename"] = pathstem;
 	addon["upload_ip"] = req.addr;
 
-	if(!is_existing_upload) {
+	if(!is_existing_upload && !addon["forum_auth"].to_bool()) {
 		set_passphrase(addon, upload["passphrase"]);
 	}
 
@@ -1378,8 +1522,18 @@ void server::handle_upload(const server::request& req)
 	addon["uploads"] = 1 + addon["uploads"].to_int();
 
 	addon.clear_children("feedback");
+	int topic_id = 0;
 	if(const config& url_params = upload.child("feedback")) {
 		addon.add_child("feedback", url_params);
+		// already validated that this can be converted to an int in validate_addon()
+		topic_id = url_params["topic_id"].to_int();
+	}
+
+	if(user_handler_) {
+		if(addon["forum_auth"].to_bool()) {
+			addon["email"] = user_handler_->get_user_email(upload["author"].str());
+		}
+		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id);
 	}
 
 	// Copy in any metadata translations provided directly in the .pbl.
@@ -1686,9 +1840,16 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!authenticate(addon, pass)) {
-		send_error("The passphrase is incorrect.", req.sock);
-		return;
+	if(!addon["forum_auth"].to_bool()) {
+		if(!authenticate(addon, pass)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+	} else {
+		if(!authenticate_forum(addon, pass)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
 	}
 
 	if(addon["hidden"].to_bool()) {
@@ -1716,6 +1877,8 @@ void server::handle_change_passphrase(const server::request& req)
 
 	if(!addon) {
 		send_error("No add-on with that name exists.", req.sock);
+	} else if(addon["forum_auth"].to_bool()) {
+		send_error("Changing the password for add-ons using forum_auth is not supported.", req.sock);
 	} else if(!authenticate(addon, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
 	} else if(addon["hidden"].to_bool()) {
@@ -1729,6 +1892,17 @@ void server::handle_change_passphrase(const server::request& req)
 		write_config();
 		send_message("Passphrase changed.", req.sock);
 	}
+}
+
+bool server::authenticate_forum(const config& addon, const std::string& passphrase) {
+	if(!user_handler_) {
+		return false;
+	}
+
+	std::string author = addon["author"].str();
+	std::string salt = user_handler_->extract_salt(author);
+	std::string hashed_password = hash_password(passphrase, salt, author);
+	return user_handler_->login(author, hashed_password);
 }
 
 } // end namespace campaignd
@@ -1830,9 +2004,7 @@ int run_campaignd(int argc, char** argv)
 	//
 	// Run the server
 	//
-	campaignd::server(config_file, port).run();
-
-	return 0;
+	return campaignd::server(config_file, port).run();
 }
 
 int main(int argc, char** argv)

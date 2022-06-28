@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
-   places formerly created by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by Jörg Hinrichs, David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <boost/iostreams/filter/gzip.hpp>
@@ -257,11 +257,22 @@ bool loadgame::check_version_compatibility(const version_info& save_version)
 
 	if(preferences::confirm_load_save_from_different_version()) {
 		const std::string message
-			= _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
+			= _("This save is from a different version of the game ($version_number|), and might not work with this "
+				"version.\n"
+				"\n"
+				"<b>Warning:</b> saves in the middle of campaigns are especially likely to fail, and you should either "
+				"use the old version or restart the campaign. Even when a saved game seems to load successfully, "
+				"subtler aspects like gameplay balance and story progression could be impacted. The difficulty, the "
+				"challenge, the <i>fun</i> may be missing.\n"
+				"\n"
+				"For example, the campaign may have been rebalanced with fewer enemies in the early scenarios, but "
+				"expecting your recall list to have correspondingly less experience in the late scenarios.\n"
+				"\n"
+				"Do you wish to continue?");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(_("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
-			gui2::dialogs::message::yes_no_buttons);
+			gui2::dialogs::message::yes_no_buttons, true);
 		return res == gui2::retval::OK;
 	}
 
@@ -312,7 +323,7 @@ bool loadgame::load_multiplayer_game()
 
 	// We want to verify the game classification before setting the data, so we don't check on
 	// gamestate_.classification() and instead construct a game_classification object manually.
-	if(game_classification(load_data_.load_config).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	if(game_classification(load_data_.load_config).type != campaign_type::type::multiplayer) {
 		gui2::show_transient_error_message(_("This is not a multiplayer save."));
 		return false;
 	}
@@ -426,6 +437,11 @@ bool savegame::check_filename(const std::string& filename)
 	if(filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(_("Save names should not end on '.gz' or '.bz2'. Please remove the extension."));
 		return false;
+	} else if(!filesystem::is_legal_user_file_name(filename)) {
+		// This message is not all-inclusive. This is on purpose. Few people
+		// need to know about DOS device names or the 255 character limit.
+		gui2::show_error_message(_("Save names may not end with a dot, or contain two dots or any of the following characters:\n    \" * / : < > ? \\ | ~"));
+		return false;
 	}
 
 	return true;
@@ -525,8 +541,6 @@ void savegame::finish_save_game(const config_writer& out)
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-
-		save_index_manager_->remove(gamestate_.classification().label);
 	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}

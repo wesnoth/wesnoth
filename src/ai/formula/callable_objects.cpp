@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Bartosz Waresiak <dragonking@o2.pl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Bartosz Waresiak <dragonking@o2.pl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "ai/formula/ai.hpp"
@@ -50,10 +51,10 @@ variant move_map_callable::get_value(const std::string& key) const
 	if(key == "moves") {
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
-                        if( i->first == i->second || units_.count(i->second) == 0) {
-                            auto item = std::make_shared<move_callable>(i->first, i->second);
-                            vars.emplace_back(item);
-                        }
+			if( i->first == i->second || units_.count(i->second) == 0) {
+				auto item = std::make_shared<move_callable>(i->first, i->second);
+				vars.emplace_back(item);
+			}
 		}
 
 		return variant(vars);
@@ -158,12 +159,12 @@ void outcome_callable::get_inputs(formula_input_vector& inputs) const {
 }
 
 attack_callable::attack_callable(const map_location& move_from,
-				    const map_location& src, const map_location& dst, int weapon)
+		const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(resources::gameboard->units(), src, dst, weapon, -1, 1.0, nullptr,
 		resources::gameboard->units().find(move_from).get_shared_ptr())
 {
-      type_ = ATTACK_C;
+	type_ = ATTACK_C;
 }
 
 variant attack_callable::get_value(const std::string& key) const {

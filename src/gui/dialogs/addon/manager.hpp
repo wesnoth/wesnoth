@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -20,7 +21,6 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
-#include "gui/widgets/pane.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -28,7 +28,6 @@ namespace gui2
 {
 class text_box_base;
 class text_box;
-class pane;
 class selectable_item;
 class button;
 class stacked_widget;
@@ -39,15 +38,16 @@ namespace dialogs
  * @ingroup GUIWindowDefinitionWML
  *
  * Shows the list of addons on the server available for installation.
- * This dialog is under construction and only used with --new-widgets.
+ *
  * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * addons            | @ref listbox |yes      |A listbox that will contain the info about all addons on the server.
- * name              | control      |no       |The name of the addon.
- * version           | control      |no       |The version number of the addon.
- * author            | control      |no       |The author of the addon.
- * downloads         | control      |no       |The number of times the addon has been downloaded.
- * size              | control      |no       |The size of the addon.
+ * name              | label        |yes      |The name of the addon.
+ * version_filter    | menu_button  |yes      |List allowing current or older versions to be selected.
+ * author            | label        |yes      |The author of the addon.
+ * downloads         | label        |yes      |The number of times the addon has been downloaded.
+ * size              | label        |yes      |The size of the addon.
+ * tags              | label        |yes      |Contents of the PblWML "tags" attribute.
  */
 class addon_manager : public modal_dialog
 {
@@ -83,10 +83,8 @@ private:
 	void on_addon_select();
 	void toggle_details(button& btn, stacked_widget& stk);
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	void fetch_addons_list();
@@ -152,11 +150,12 @@ private:
 
 	void apply_filters();
 	void order_addons();
-	void on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order);
+	void on_order_changed(unsigned int sort_column, sort_order::type order);
 	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility() const;
 	boost::dynamic_bitset<> get_status_filter_visibility() const;
+	boost::dynamic_bitset<> get_tag_filter_visibility() const;
 	boost::dynamic_bitset<> get_type_filter_visibility() const;
 
 	void on_selected_version_change();

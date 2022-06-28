@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,6 +19,8 @@
 #include <set>
 
 #include "scrollarea.hpp"
+
+class texture;
 
 namespace image{
 	class locator;
@@ -42,7 +45,7 @@ public:
 		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		void scale_images(int max_width, int max_height);
-		surface get_item_image(const image::locator &i_locator) const;
+		void adjust_image_bounds(int& w, int& h) const;
 		std::size_t get_font_size() const;
 		std::size_t get_cell_padding() const;
 		std::size_t get_thickness() const;
@@ -75,7 +78,7 @@ public:
 
 	protected:
 		const std::string img_base_;
-		std::map<std::string,surface> img_map_;
+		std::map<std::string,texture> img_map_;
 
 	private:
 		bool load_image(const std::string &img_sub);
@@ -84,22 +87,11 @@ public:
 		bool load_failed_;
 		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
 		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
-		//FIXME: why is this better than a plain surface?
-		struct bg_cache
-		{
-			bg_cache() : surf(), width(-1), height(-1)
-			{}
-
-			surface surf;
-			int width, height;
-		};
-		bg_cache bg_cache_;
 	};
 
 	friend class style;
 	friend class imgsel_style;
 	static style &default_style;
-	static style simple_style;
 	static imgsel_style bluebg_style;
 
 	struct item
@@ -132,8 +124,6 @@ public:
 
 		basic_sorter& set_alpha_sort(int column);
 		basic_sorter& set_numeric_sort(int column);
-		basic_sorter& set_xp_sort(int column);
-		basic_sorter& set_level_sort(int level_column, int xp_column);
 		basic_sorter& set_id_sort(int column);
 		basic_sorter& set_redirect_sort(int column, int to);
 		basic_sorter& set_position_sort(int column, const std::vector<int>& pos);
@@ -142,10 +132,9 @@ public:
 		virtual bool less(int column, const item& row1, const item& row2) const;
 
 	private:
-		std::set<int> alpha_sort_, numeric_sort_, id_sort_, xp_sort_, level_sort_;
+		std::set<int> alpha_sort_, numeric_sort_, id_sort_;
 		std::map<int,int> redirect_sort_;
 		std::map<int,std::vector<int>> pos_sort_;
-		int xp_col_; //used by level sort
 	};
 
 	menu(CVideo& video, const std::vector<std::string>& items,

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_launcher.hpp"
@@ -261,13 +262,15 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.translation_percent)
 		set_min_translation_percent(*cmdline_opts_.translation_percent);
 
-	std::cerr
-		<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
-		<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
-		<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
-		<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
-		<< '\n';
-	std::cerr << '\n';
+	if(!cmdline_opts.nobanner) {
+		std::cerr
+			<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
+			<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
+			<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
+			<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
+			<< '\n';
+		std::cerr << '\n';
+	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if(no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -290,7 +293,7 @@ bool game_launcher::init_language()
 
 	language_def locale;
 	if(cmdline_opts_.language) {
-		std::vector<language_def> langs = get_languages();
+		std::vector<language_def> langs = get_languages(true);
 		for(const language_def& def : langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
@@ -329,7 +332,7 @@ bool game_launcher::init_video()
 	video_->set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
-	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
+	surface icon(image::get_surface("icons/icon-game.png", image::UNSCALED));
 	if(icon != nullptr) {
 		video_->set_window_icon(icon);
 	}
@@ -341,7 +344,7 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	std::cerr << "Checking lua scripts... ";
+	if(!cmdline_opts_.nobanner) std::cerr << "Checking lua scripts... ";
 
 	if(cmdline_opts_.script_unsafe_mode) {
 		// load the "package" package, so that scripts can get what packages they want
@@ -421,7 +424,7 @@ bool game_launcher::init_lua_script()
 		}
 	}
 
-	if(!error) {
+	if(!error && !cmdline_opts_.nobanner) {
 		std::cerr << "ok\n";
 	}
 
@@ -431,7 +434,7 @@ bool game_launcher::init_lua_script()
 void game_launcher::set_test(const std::string& id)
 {
 	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
+	state_.classification().type = campaign_type::type::test;
 	state_.classification().campaign_define = "TEST";
 	state_.classification().era_id = "era_default";
 
@@ -511,9 +514,6 @@ game_launcher::unit_test_result game_launcher::unit_test()
 		case unit_test_result::TEST_FAIL_PLAYING_REPLAY:
 			describe_result = "FAIL TEST (ERRORED REPLAY)";
 			break;
-		case unit_test_result::TEST_FAIL_BROKE_STRICT:
-			describe_result = "FAIL TEST (BROKE STRICT)";
-			break;
 		case unit_test_result::TEST_FAIL_WML_EXCEPTION:
 			describe_result = "FAIL TEST (WML EXCEPTION)";
 			break;
@@ -523,8 +523,20 @@ game_launcher::unit_test_result game_launcher::unit_test()
 		case unit_test_result::TEST_PASS_BY_VICTORY:
 			describe_result = "PASS TEST (VICTORY)";
 			break;
+		case unit_test_result::BROKE_STRICT_TEST_PASS:
+			describe_result = "BROKE STRICT (PASS)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_FAIL:
+			describe_result = "BROKE STRICT (FAIL)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT:
+			describe_result = "BROKE STRICT (DEFEAT)";
+			break;
+		case unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY:
+			describe_result = "BROKE STRICT (VICTORY)";
+			break;
 		default:
-			describe_result = "FAIL TEST";
+			describe_result = "FAIL TEST (UNKNOWN)";
 			break;
 		}
 
@@ -541,17 +553,16 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 {
 	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
-	LEVEL_RESULT game_res = LEVEL_RESULT::TEST_FAIL;
+	level_result::type game_res = level_result::type::fail;
 	try {
 		campaign_controller ccontroller(state_, true);
 		game_res = ccontroller.play_game();
-		// TODO: How to handle the case where a unit test scenario ends without an explicit {SUCCEED} or {FAIL}?
-		// ex: check_victory_never_ai_fail results in victory by killing one side's leaders
-		if(game_res == LEVEL_RESULT::TEST_FAIL) {
-			return unit_test_result::TEST_FAIL;
-		}
-		if(lg::broke_strict()) {
-			return unit_test_result::TEST_FAIL_BROKE_STRICT;
+		if(game_res == level_result::type::fail) {
+			if(lg::broke_strict()) {
+				return unit_test_result::BROKE_STRICT_TEST_FAIL;
+			} else {
+				return unit_test_result::TEST_FAIL;
+			}
 		}
 	} catch(const wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
@@ -564,7 +575,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		return pass_victory_or_defeat(game_res);
 	}
 
-	savegame::replay_savegame save(state_, compression::NONE);
+	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
 	load_data_ = savegame::load_game_metadata{
@@ -576,9 +587,10 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	}
 
 	try {
+		const bool was_strict_broken = lg::broke_strict();
 		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
-		if(lg::broke_strict()) {
+		if(!was_strict_broken && lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
@@ -590,15 +602,27 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	return pass_victory_or_defeat(game_res);
 }
 
-game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(LEVEL_RESULT res)
+game_launcher::unit_test_result game_launcher::pass_victory_or_defeat(level_result::type res)
 {
-	if(res == LEVEL_RESULT::DEFEAT) {
-		return unit_test_result::TEST_FAIL_BY_DEFEAT;
-	} else if(res == LEVEL_RESULT::VICTORY) {
-		return unit_test_result::TEST_PASS_BY_VICTORY;
+	if(res == level_result::type::defeat) {
+		if(lg::broke_strict()) {
+			return unit_test_result::BROKE_STRICT_TEST_FAIL_BY_DEFEAT;
+		} else {
+			return unit_test_result::TEST_FAIL_BY_DEFEAT;
+		}
+	} else if(res == level_result::type::victory) {
+		if(lg::broke_strict()) {
+			return unit_test_result::BROKE_STRICT_TEST_PASS_BY_VICTORY;
+		} else {
+			return unit_test_result::TEST_PASS_BY_VICTORY;
+		}
 	}
 
-	return unit_test_result::TEST_PASS;
+	if(lg::broke_strict()) {
+		return unit_test_result::BROKE_STRICT_TEST_PASS;
+	} else {
+		return unit_test_result::TEST_PASS;
+	}
 }
 
 bool game_launcher::play_screenshot_mode()
@@ -621,8 +645,8 @@ bool game_launcher::play_render_image_mode()
 		return true;
 	}
 
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+	state_.classification().type = campaign_type::type::multiplayer;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
 
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
@@ -632,7 +656,7 @@ bool game_launcher::play_render_image_mode()
 	}
 
 	// A default output filename
-	std::string outfile = "wesnoth_image.bmp";
+	std::string outfile = "wesnoth_image.png";
 
 	// If a output path was given as an argument, use that instead
 	if(cmdline_opts_.render_image_dst) {
@@ -655,7 +679,7 @@ bool game_launcher::load_game()
 {
 	assert(game_config_manager::get());
 
-	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
@@ -729,7 +753,7 @@ bool game_launcher::load_game()
 bool game_launcher::new_campaign()
 {
 	state_.clear();
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
+	state_.classification().type = campaign_type::type::scenario;
 	play_replay_ = false;
 
 	return sp::select_campaign(state_, jump_to_campaign_);

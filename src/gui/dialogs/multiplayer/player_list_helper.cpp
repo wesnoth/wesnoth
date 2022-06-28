@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
@@ -24,7 +25,7 @@ player_list_helper::player_list_helper(window* window)
 	: list_(find_widget<listbox>(window, "player_list", false))
 {
 	// add ourselves as the host
-	std::map<std::string, string_map> data = {
+	widget_data data = {
 		{ "player_type_icon", {{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
 		{ "player_name",      {{ "label", preferences::login()}}}
 	};
@@ -38,8 +39,8 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 	unsigned i = 0;
 
 	for(const config& user : users) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string name = user["name"];
 		const bool is_you = name == preferences::login();

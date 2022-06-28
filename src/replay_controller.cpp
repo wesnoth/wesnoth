@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2015 - 2018 by the Battle for Wesnoth Project
+	Copyright (C) 2015 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "replay_controller.hpp"
@@ -90,11 +91,11 @@ replay_controller::~replay_controller()
 }
 void replay_controller::add_replay_theme()
 {
-	const config &theme_cfg = controller_.get_theme(game_config_manager::get()->game_config(), controller_.theme());
-	if (const config &res = theme_cfg.child("resolution"))
+	const config& theme_cfg = theme::get_theme_config(controller_.theme());
+	if (const auto res = theme_cfg.optional_child("resolution"))
 	{
-		if (const config &replay_theme_cfg = res.child("replay")) {
-			controller_.get_display().get_theme().modify(replay_theme_cfg);
+		if (const auto replay_theme_cfg = res->optional_child("replay")) {
+			controller_.get_display().get_theme().modify(replay_theme_cfg.value());
 		}
 		//Make sure we get notified if the theme is redrawn completely. That way we have
 		//a chance to restore the replay controls of the theme as well.
@@ -209,9 +210,7 @@ REPLAY_RETURN replay_controller::play_side_impl()
 }
 bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
-
-	switch(command) {
+	switch(cmd.command) {
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:

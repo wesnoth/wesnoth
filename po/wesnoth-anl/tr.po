@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-01-14 15:35+0300\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
+"PO-Revision-Date: 2021-07-01 02:23+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Türkçe <>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -28,10 +28,6 @@ msgstr "4o - Yeni Bir Ülke"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -39,7 +35,9 @@ msgid ""
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "Bu 4 oyunculu hayatta kalma senaryosunda kendi topraklarınızda binalar inşa "
-"edip tarlalar oluşturacaksınız. Önerilen başlangıç altını: 100."
+"edip tarlalar oluşturacaksınız.\n"
+"\n"
+"Deneyimli oyuncuların başlangıç altınını 75'e düşürmeleri önerilir."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -144,8 +142,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
-"Örümceğin ağına takılmış birini gördüğüme yemin ederim. Belki onu "
-"kurtarabiliriz."
+"Örümceğin ağına takılmış birini gördüğüme yemin ederim. Acaba onu "
+"kurtarabiliriz miyiz?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:725
@@ -334,9 +332,9 @@ msgstr ""
 "Üniversitelerde bulunan büyücülere sağ tıklayıp araştırma konusunu "
 "belirleyebilirsiniz."
 
-#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
+#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
@@ -645,8 +643,8 @@ msgstr ""
 "Eğitim süreci: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
 
-#. [research]
 #. [command]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:146
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"

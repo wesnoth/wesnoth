@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -39,7 +40,6 @@
 #include <string>                       // for string, basic_string
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
@@ -52,6 +52,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace lua_common {
 
@@ -265,6 +268,17 @@ static int impl_vconfig_get(lua_State *L)
 	return 1;
 }
 
+static int impl_vconfig_dir(lua_State* L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	std::vector<std::string> attributes;
+	for(const auto& [key, value] : v->get_config().attribute_range()) {
+		attributes.push_back(key);
+	}
+	lua_push(L, attributes);
+	return 1;
+}
+
 /**
  * Returns the number of a child of a vconfig object.
  */
@@ -466,6 +480,7 @@ std::string register_vconfig_metatable(lua_State *L)
 	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
+		{ "__dir",          &impl_vconfig_dir},
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
 		{ "__ipairs",       &impl_vconfig_ipairs},
@@ -645,9 +660,9 @@ void luaW_filltable(lua_State *L, const config& cfg)
 		return;
 
 	int k = 1;
-	for (const config::any_child &ch : cfg.all_children_range())
+	for (const config::any_child ch : cfg.all_children_range())
 	{
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"tag", "contents"});
 		lua_pushstring(L, ch.key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
@@ -662,9 +677,62 @@ void luaW_filltable(lua_State *L, const config& cfg)
 	}
 }
 
+static int impl_namedtuple_get(lua_State* L)
+{
+	if(lua_isstring(L, 2)) {
+		std::string k = lua_tostring(L, 2);
+		luaL_getmetafield(L, 1, "__names");
+		auto names = lua_check<std::vector<std::string>>(L, -1);
+		auto iter = std::find(names.begin(), names.end(), k);
+		if(iter != names.end()) {
+			int i = std::distance(names.begin(), iter) + 1;
+			lua_rawgeti(L, 1, i);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static int impl_namedtuple_dir(lua_State* L)
+{
+	luaL_getmetafield(L, 1, "__names");
+	return 1;
+}
+
+static int impl_namedtuple_tostring(lua_State* L)
+{
+	std::vector<std::string> elems;
+	for(unsigned i = 1; i <= lua_rawlen(L, 1); i++) {
+		lua_getglobal(L, "tostring");
+		lua_rawgeti(L, 1, i);
+		lua_call(L, 1, 1);
+		elems.push_back(lua_tostring(L, -1));
+	}
+	lua_push(L, "(" + utils::join(elems) + ")");
+	return 1;
+}
+
+void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
+{
+	lua_createtable(L, names.size(), 0);
+	lua_createtable(L, 0, 4);
+	static luaL_Reg callbacks[] = {
+		{ "__index", &impl_namedtuple_get },
+		{ "__dir", &impl_namedtuple_dir },
+		{ "__tostring", &impl_namedtuple_tostring },
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, callbacks, 0);
+	lua_pushliteral(L, "named tuple");
+	lua_setfield(L, -2, "__metatable");
+	lua_push(L, names);
+	lua_setfield(L, -2, "__names");
+	lua_setmetatable(L, -2);
+}
+
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
-	lua_createtable(L, 2, 0);
+	luaW_push_namedtuple(L, {"x", "y"});
 
 	lua_pushinteger(L, ml.wml_x());
 	lua_rawseti(L, -2, 1);
@@ -686,24 +754,24 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 
 	index = lua_absindex(L, index);
 
-	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
+	if (lua_istable(L, index) || lua_isuserdata(L, index)) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
 		lua_getfield(L, index, "x");
-		result.set_wml_x(lua_tonumberx(L, -1, &x_was_num));
+		result.set_wml_x(lua_tointegerx(L, -1, &x_was_num));
 		lua_getfield(L, index, "y");
-		result.set_wml_y(lua_tonumberx(L, -1, &y_was_num));
+		result.set_wml_y(lua_tointegerx(L, -1, &y_was_num));
 		lua_pop(L, 2);
 		if (!x_was_num || !y_was_num) {
 			// If we get here and it was userdata, checking numeric indices won't help
-			// (It won't help if it was a config either, but there's no easy way to check that.)
+			// (It won't help if it was a WML table either, but there's no easy way to check that.)
 			if (lua_isuserdata(L, index)) {
 				return false;
 			}
 			lua_rawgeti(L, index, 1);
-			result.set_wml_x(lua_tonumberx(L, -1, &x_was_num));
+			result.set_wml_x(lua_tointegerx(L, -1, &x_was_num));
 			lua_rawgeti(L, index, 2);
-			result.set_wml_y(lua_tonumberx(L, -1, &y_was_num));
+			result.set_wml_y(lua_tointegerx(L, -1, &y_was_num));
 			lua_pop(L, 2);
 		}
 		if (x_was_num && y_was_num) {
@@ -714,9 +782,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		// If it's a number, then we consume two elements on the stack
 		// Since we have no way of notifying the caller that we have
 		// done this, we remove the first number from the stack.
-		loc.set_wml_x(lua_tonumber(L, index));
+		loc.set_wml_x(lua_tointeger(L, index));
 		lua_remove(L, index);
-		loc.set_wml_y(lua_tonumber(L, index));
+		loc.set_wml_y(lua_tointeger(L, index));
 		return true;
 	}
 	return false;
@@ -728,6 +796,35 @@ map_location luaW_checklocation(lua_State *L, int index)
 	if (!luaW_tolocation(L, index, result))
 		luaW_type_error(L, index, "location");
 	return result;
+}
+
+int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs)
+{
+	lua_createtable(L, locs.size(), 0);
+	int i = 1;
+	for(const map_location& loc : locs) {
+		luaW_pushlocation(L, loc);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
+	return 1;
+}
+
+std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
+{
+	std::set<map_location> locs;
+	if(!lua_istable(L, idx)) {
+		luaW_type_error(L, idx, "array of locations");
+	}
+	lua_len(L, idx);
+	int len = luaL_checkinteger(L, -1);
+	for(int i = 1; i <= len; i++) {
+		lua_geti(L, idx, i);
+		locs.insert(luaW_checklocation(L, -1));
+		lua_pop(L, 1);
+	}
+	return locs;
+
 }
 
 void luaW_pushconfig(lua_State *L, const config& cfg)
@@ -1049,7 +1146,8 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
 				m += 5;
 				char const *e = strstr(m, "stack traceback");
-				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
+				lg::log_to_chat() << std::string(m, e ? e - m : strlen(m)) << '\n';
+				ERR_WML << std::string(m, e ? e - m : strlen(m));
 			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
 				m += 5;
 				char const *e = nullptr, *em = m;

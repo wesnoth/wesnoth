@@ -1,16 +1,16 @@
-
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -138,7 +138,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
-			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
+			*target_list = target(u.get_location(), value(), ai_target::type::xplicit);
 		}
 	}
 
@@ -180,7 +180,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 	for (const map_location &loc : items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
-		*target_list = target(loc, value(), target::TYPE::EXPLICIT);
+		*target_list = target(loc, value(), ai_target::type::xplicit);
 	}
 
 }
@@ -272,7 +272,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),
 					value_ * static_cast<double>(radius_ - distance) /
-					radius_, target::TYPE::THREAT);
+					radius_, ai_target::type::threat);
 			}
 		}
 	}
@@ -313,17 +313,13 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 	config c(cfg_.child_or_empty("args"));
 	const config empty_cfg;
 	handler_->handle(c, empty_cfg, true, l_obj);
-	try {
-		std::vector < target > targets = *(l_obj->get());
 
-		for (target tg : targets)
-		{
-			*target_list = tg;
-		}
-	} catch(const bad_enum_cast& e) {
-		ERR_AI_GOAL << "A Lua goal returned a target of an unknown type (\"" << e.value() << "\"; unfortunately, the engine cannot recover from this error. As a result, all targets returned by the goal have been lost.\n";
+	std::vector < target > targets = *(l_obj->get());
+
+	for (target tg : targets)
+	{
+		*target_list = tg;
 	}
-
 }
 
 // This is defined in the source file so that it can easily access the logger

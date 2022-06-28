@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -23,7 +24,6 @@
 #include "config.hpp"
 #include "deprecation.hpp"
 #include "game_config.hpp"
-#include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -510,14 +510,14 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static bfs::path user_data_dir, user_config_dir, cache_dir;
 
-static const std::string get_version_path_suffix(const version_info& version)
+const std::string get_version_path_suffix(const version_info& version)
 {
 	std::ostringstream s;
 	s << version.major_version() << '.' << version.minor_version();
 	return s.str();
 }
 
-static const std::string& get_version_path_suffix()
+const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
 
@@ -568,6 +568,9 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+	if(!file_exists(user_data_dir)) {
+		game_config::check_migration = true;
+	}
 
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
 		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
@@ -837,7 +840,7 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 	std::vector<other_version_dir> result;
 
 	// For 1.16, check for saves from all versions up to 1.20.
-	for(auto minor = ms_ver.minor_version(); minor <= w_ver.minor_version() + 4; ++minor) {
+	for(auto minor = w_ver.minor_version() + 4; minor >= ms_ver.minor_version(); --minor) {
 		if(minor == w_ver.minor_version())
 			continue;
 
@@ -1038,25 +1041,25 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 	}
 }
 
-filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory)
+filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
 	try {
-		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
+		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), mode);
 		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_sink>>(fd, 4096, 0);
 	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
 		// If this operation failed because the parent directory didn't exist, create the parent directory and
 		// retry.
 		error_code ec_unused;
 		if(create_directory && bfs::create_directories(bfs::path(fname).parent_path(), ec_unused)) {
-			return ostream_file(fname, false);
+			return ostream_file(fname, mode, false);
 		}
 
 		throw filesystem::io_exception(e.what());
 	}
 #else
-	return new bfs::ofstream(bfs::path(fname), std::ios_base::binary);
+	return new bfs::ofstream(bfs::path(fname), mode);
 #endif
 }
 
@@ -1078,6 +1081,11 @@ void write_file(const std::string& fname, const std::string& data)
 			throw io_exception("Error writing to file: '" + fname + "'");
 		}
 	}
+}
+
+void copy_file(const std::string& src, const std::string& dest)
+{
+	write_file(dest, read_file(src));
 }
 
 bool create_directory_if_missing(const std::string& dirname)
@@ -1553,9 +1561,9 @@ std::string get_short_wml_path(const std::string& filename)
 	return filename;
 }
 
-std::string get_independent_image_path(const std::string& filename)
+std::string get_independent_binary_file_path(const std::string& type, const std::string& filename)
 {
-	bfs::path full_path(get_binary_file_location("images", filename));
+	bfs::path full_path(get_binary_file_location(type, filename));
 
 	if(full_path.empty()) {
 		return full_path.generic_string();

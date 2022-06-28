@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2018 wesnoth "Batalla per Wesnoth"
+.TH WESNOTH 6 2021 wesnoth "Batalla per Wesnoth"
 .
 .SH NOM
 wesnoth: Batalla per Wesnoth, un joc d'estratègia de fantasia per torns
@@ -113,8 +113,9 @@ inicia l'editor de mapes del joc directament. Si s'especifica \fIfile\fP, és
 equivalent a \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-mostra el nombre de fotogrames per segon a què s'executa actualment el joc,
-en un racó de la pantalla.
+displays the number of frames per second the game is currently running at in
+a corner of the screen as well as writes these values to a file in the
+userdata directory.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 executa el joc en mode de pantalla completa.
@@ -192,6 +193,9 @@ inhabilita la memòria cau de les dades del joc.
 \fB\-\-nogui\fP
 executa el joc sense la interfície gràfica. Només disponible en combinació
 amb \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP o \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+suppress the startup banner.
 .TP 
 \fB\-\-nomusic\fP
 executa el joc sense música.
@@ -351,6 +355,9 @@ assumeix que la memòria cau és vàlida. (perillós)
 \fB\-v, \-\-version\fP
 mostra el número de versió i surt.
 .TP 
+\fB\-\-simple\-version\fP
+shows the version number and nothing else, then exits.
+.TP 
 \fB\-w, \-\-windowed\fP
 executa el joc en mode de finestra.
 .TP 
@@ -445,7 +452,7 @@ Visiteu la pàgina web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 Això és programari lliure; aquest programari està llicenciat sota la versió
 2 de la GPL, tal com ha estat publicada per la Free Software Foundation.

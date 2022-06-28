@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "units/drawer.hpp"
@@ -86,6 +87,16 @@ unit_drawer::unit_drawer(display & thedisp) :
 	// However, I think it's obsolete, and that the initialization of viewing_team_ref would already
 	// be undefined behavior in the situation where this assert fails.
 	assert(disp.team_valid());
+}
+
+SDL_Rect unit_drawer::scaled_to_zoom(const SDL_Rect& r) const
+{
+	return {r.x, r.y, int(r.w*zoom_factor), int(r.h*zoom_factor)};
+}
+
+point unit_drawer::scaled_to_zoom(const point& p) const
+{
+	return {int(p.x*zoom_factor), int(p.y*zoom_factor)};
 }
 
 void unit_drawer::redraw_unit (const unit & u) const
@@ -216,8 +227,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 		SDL_Rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
-	surface ellipse_front(nullptr);
-	surface ellipse_back(nullptr);
+	texture ellipse_front;
+	texture ellipse_back;
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
 	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
@@ -243,20 +254,28 @@ void unit_drawer::redraw_unit (const unit & u) const
 			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM);
-			ellipse_front = image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM);
+			ellipse_back = image::get_texture(image::locator(ellipse_top));
+			ellipse_front = image::get_texture(image::locator(ellipse_bot));
 		}
 	}
 	if (ellipse_back != nullptr) {
+		const SDL_Rect dest = scaled_to_zoom({
+			xsrc, ysrc + adjusted_params.y - ellipse_floating,
+			ellipse_back.w(), ellipse_back.h()
+		});
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
+			dest, ellipse_back);
 	}
 
 	if (ellipse_front != nullptr) {
+		const SDL_Rect dest = scaled_to_zoom({
+			xsrc, ysrc + adjusted_params.y - ellipse_floating,
+			ellipse_front.w(), ellipse_front.h()
+		});
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
+			dest, ellipse_front);
 	}
 	if(draw_bars) {
 		const auto& type_cfg = u.type().get_cfg();
@@ -265,9 +284,11 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int xoff;
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
-			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = !unit_img ? 0 : (hex_size - unit_img->w)/2;
-			yoff = !unit_img ? 0 : (hex_size - unit_img->h)/2;
+			const point s = scaled_to_zoom(
+				image::get_size(u.default_anim_image())
+			);
+			xoff = !s.x ? 0 : (hex_size - s.x)/2;
+			yoff = !s.y ? 0 : (hex_size - s.x)/2;
 		}
 		else {
 			xoff = cfg_offset_x.to_int();
@@ -297,8 +318,12 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 
 		if(orb_img != nullptr) {
-			surface orb(image::get_image(*orb_img, image::SCALED_TO_ZOOM));
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
+			const texture orb(image::get_texture(*orb_img));
+			const SDL_Rect dest = scaled_to_zoom({
+				xsrc + xoff, ysrc + yoff + adjusted_params.y,
+				orb.w(), orb.h()
+			});
+			disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, orb);
 		}
 
 		double unit_energy = 0.0;
@@ -308,7 +333,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const fixed_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
+		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? floating_to_fixed_point(1.0): floating_to_fixed_point(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -322,21 +347,26 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 
 		if (can_recruit) {
-			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
+			const texture crown(image::get_texture(u.leader_crown()));
 			if(crown) {
-				//if(bar_alpha != ftofxp(1.0)) {
-				//	crown = adjust_surface_alpha(crown, bar_alpha);
-				//}
+				const SDL_Rect dest = scaled_to_zoom({
+					xsrc + xoff, ysrc + yoff + adjusted_params.y,
+					crown.w(), crown.h()
+				});
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
+					loc, dest, crown);
 			}
 		}
 
 		for(const std::string& ov : u.overlays()) {
-			const surface ov_img(image::get_image(ov, image::SCALED_TO_ZOOM));
-			if(ov_img != nullptr) {
+			const texture ov_img(image::get_texture(ov));
+			if(ov_img) {
+				const SDL_Rect dest = scaled_to_zoom({
+					xsrc + xoff, ysrc + yoff + adjusted_params.y,
+					ov_img.w(), ov_img.h()
+				});
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
+					loc, dest, ov_img);
 			}
 		}
 	}
@@ -347,9 +377,10 @@ void unit_drawer::redraw_unit (const unit & u) const
 	const t_translation::terrain_code terrain_dst = map.get_terrain(dst);
 	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
 
-	int height_adjust_unit = static_cast<int>((terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
-											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset) *
-											  zoom_factor);
+	// height_adjust_unit is not scaled by zoom_factor here otherwise it results in a squared offset that results in #5974
+	// It appears the tiles and units are scaled together somewhere else
+	int height_adjust_unit = static_cast<int>(terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
+											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset);
 	if (is_flying && height_adjust_unit < 0) {
 		height_adjust_unit = 0;
 	}
@@ -362,13 +393,17 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, fixed_t alpha) const
+		const color_t& col, int32_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
 	height = static_cast<std::size_t>(height*zoom_factor);
 
-	surface surf(image::get_image(image,image::SCALED_TO_HEX));
+	// TODO: highdpi - most of this function can be completely annihilated.
+	// TODO: highdpi - can't convert these to textures because calculate_energy_bar is insane. Fix.
+	surface surf = scale_surface_nn(
+		image::get_image(image, image::HEXED),
+		disp.hex_size(), disp.hex_size());
 
 	// We use UNSCALED because scaling (and bilinear interpolation)
 	// is bad for calculate_energy_bar.
@@ -386,13 +421,13 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 		bar_loc = unscaled_bar_loc;
 	else {
-		const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
-		const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
+		const int32_t xratio = fixed_point_divide(surf->w,bar_surf->w);
+		const int32_t yratio = fixed_point_divide(surf->h,bar_surf->h);
 		const SDL_Rect scaled_bar_loc {
-			    fxptoi(unscaled_bar_loc. x * xratio)
-			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
-			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255)
+			    fixed_point_to_int(unscaled_bar_loc.x * xratio)
+			  , fixed_point_to_int(unscaled_bar_loc.y * yratio + 127)
+			  , fixed_point_to_int(unscaled_bar_loc.w * xratio + 255)
+			  , fixed_point_to_int(unscaled_bar_loc.h * yratio + 255)
 		};
 		bar_loc = scaled_bar_loc;
 	}
@@ -401,30 +436,32 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		height = bar_loc.h;
 	}
 
-	//if(alpha != ftofxp(1.0)) {
-	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == nullptr) {
-	//		return;
-	//	}
-	//}
-
 	const std::size_t skip_rows = bar_loc.h - height;
 
 	SDL_Rect top {0, 0, surf->w, bar_loc.y};
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
+	// TODO: highdpi - fix. see above
+	texture surf_tex(surf);
+
+	SDL_Rect dest{xpos, ypos, top.w, top.h};
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, surf_tex, top);
+	dest = {xpos, ypos + top.h, bot.w, bot.h};
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, surf_tex, bot);
 
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
-	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
+	if(unfilled < height && alpha >= floating_to_fixed_point(0.3)) {
+		const uint8_t r_alpha = std::min<unsigned>(fixed_point_multiply(alpha,255),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
+		dest = {xpos + bar_loc.x, ypos + bar_loc.y + int(unfilled),
+			filled_surf->w, filled_surf->h};
+		// TODO: highdpi - fix, see above
+		texture fs_tex(filled_surf);
+		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, fs_tex);
 	}
 }
 
@@ -435,6 +472,7 @@ struct is_energy_color {
 												  (color&0x000000FF) < 0x00000010; }
 };
 
+// TODO: highdpi - this is insane, find another way of doing it.
 const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 {
 	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects.find(surf);

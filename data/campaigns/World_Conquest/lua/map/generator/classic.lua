@@ -42,11 +42,11 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_convert(0, 999, 450, 520, "Gg,Gs", "Gs^Ft"),
 		dr_convert(0, 999, 450, 520, "Hh", "Hh^Ft"),
 		-- fungus appears at med temp and high
-		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Uf"),
+		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Tf"),
 		-- lava appears at extreme temp and height
-		dr_convert(800, 999, 850, 999, "Uu, Uh, Uu^Uf", "Ql"),
+		dr_convert(800, 999, 850, 999, "Uu, Uh, Uu^Tf", "Ql"),
 		-- desert appears at extreme temperatures
 		dr_convert(0, 999, 800, 999, "Gg", "Dd"),
 		-- dunes at extreme temp and mod elevation

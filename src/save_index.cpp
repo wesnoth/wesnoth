@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
-   places formerly created by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by Jörg Hinrichs, David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "save_index.hpp"
@@ -70,7 +70,7 @@ void save_index_class::rebuild(const std::string& name, const std::time_t& modif
 void save_index_class::remove(const std::string& name)
 {
 	config& root = data();
-	root.remove_attribute(name);
+	root.remove_children("save", [&name](const config& d) { return name == d["save"]; });
 	write_save_index();
 }
 
@@ -97,6 +97,22 @@ const std::string& save_index_class::dir() const
 	return dir_;
 }
 
+void save_index_class::clean_up_index()
+{
+	config &root = data();
+
+	std::vector<std::string> filenames;
+	filesystem::get_files_in_dir(dir(), &filenames);
+
+	if(root.all_children_count() > filenames.size()) {
+		root.remove_children("save", [&filenames](const config& d)
+			{
+				return std::find(filenames.begin(), filenames.end(), d["save"]) == filenames.end();
+			}
+		);
+	}
+}
+
 void save_index_class::write_save_index()
 {
 	log_scope("write_save_index()");
@@ -106,10 +122,15 @@ void save_index_class::write_save_index()
 		return;
 	}
 
+	if(clean_up_index_) {
+		clean_up_index();
+		clean_up_index_ = false;
+	}
+
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::NONE) {
+		if(preferences::save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {
@@ -126,6 +147,7 @@ save_index_class::save_index_class(const std::string& dir)
 	, modified_()
 	, dir_(dir)
 	, read_only_(true)
+	, clean_up_index_(true)
 {
 }
 
@@ -191,23 +213,6 @@ std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
 	return instance;
 }
 
-class filename_filter
-{
-public:
-	filename_filter(const std::string& filter)
-		: filter_(filter)
-	{
-	}
-
-	bool operator()(const std::string& filename) const
-	{
-		return filename.end() == std::search(filename.begin(), filename.end(), filter_.begin(), filter_.end());
-	}
-
-private:
-	std::string filter_;
-};
-
 /** Get a list of available saves. */
 std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
@@ -216,10 +221,21 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	if(filter) {
-		filenames.erase(
-			std::remove_if(filenames.begin(), filenames.end(), filename_filter(*filter)), filenames.end());
-	}
+	const auto should_remove = [filter](const std::string& filename) {
+		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
+		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
+		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
+
+		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()) {
+			return true;
+		} else if(filter) {
+			return filename.end() == std::search(filename.begin(), filename.end(), filter->begin(), filter->end());
+		}
+
+		return false;
+	};
+
+	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), should_remove), filenames.end());
 
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(), std::back_inserter(result), creator);
@@ -237,8 +253,10 @@ std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
-			? _("%a %b %d %I:%M %p %Y")
-			: _("%a %b %d %H:%M %Y");
+			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
+			? _("%a %b %d %Y, %I:%M %p")
+			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
+			: _("%a %b %d %Y, %H:%M");
 
 		return translation::strftime(format, tm_l);
 	}
@@ -439,7 +457,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			int gold = side["gold"];
 			int units = 0, recall_units = 0;
 
-			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
+			if(side["controller"] != side_controller::human) {
 				continue;
 			}
 
@@ -471,11 +489,11 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
 			// for campaign-specific units even when the campaign isn't loaded yet.
-			std::string leader_image_path = filesystem::get_independent_image_path(leader_image);
+			std::string leader_image_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// If the image path was found, we append the leader TC modifier. If it's not (such as in
 			// the case where the binary path hasn't been loaded yet, perhaps due to save_index being
-			// deleted), the unaltered image path is used and will be parsed by get_independent_image_path
+			// deleted), the unaltered image path is used and will be parsed by get_independent_binary_file_path
 			// at runtime.
 			if(!leader_image_path.empty()) {
 				leader_image_path += leader_image_tc_modifier;

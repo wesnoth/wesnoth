@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -277,9 +278,6 @@ public:
 	const SDL_Rect& palette_location(const SDL_Rect& screen) const
 		{ return palette_.location(screen); }
 
-    static void set_known_themes(const game_config_view* cfg);
-    static std::vector<theme_info> get_known_themes();
-
 	const border_t& border() const { return border_; }
 
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
@@ -294,7 +292,6 @@ private:
 	//atm this is used for replay_controller to add replay controls to the standard theme
 	events::generic_event theme_reset_event_;
 
-	static std::map<std::string, config> known_themes;
 	std::string cur_theme;
 	config cfg_;
 	std::vector<panel> panels_;
@@ -314,4 +311,16 @@ private:
 
 	SDL_Rect screen_dimensions_;
 	std::size_t cur_spec_width_, cur_spec_height_;
+
+	static inline std::map<std::string, config> known_themes{};
+
+public:
+	/** Copies the theme configs from the main game config. */
+	static void set_known_themes(const game_config_view* cfg);
+
+	/** Returns the saved config for the theme with the given ID. */
+	static const config& get_theme_config(const std::string& id);
+
+	/** Returns minimal info about saved themes, optionally including hidden ones. */
+	static std::vector<theme_info> get_basic_theme_info(bool include_hidden = false);
 };

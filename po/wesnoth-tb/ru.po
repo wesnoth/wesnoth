@@ -1,21 +1,23 @@
-# translation of ru-tb.po to
-# translation of ru.po to
+# translation of wesnoth-tb to Russian
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
+# ???
+# Dmitry Ashkadov (dmitryash) <dmitry.ashkadov@gmail.com>, 2020.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: ru-tb\n"
+"Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-11-29 19:01+0300\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"PO-Revision-Date: 2022-02-01 13:02+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
-"Language-Team: \n"
-"Language: ru_RU\n"
+"Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Two_Brothers
@@ -45,10 +47,8 @@ msgstr "Сложный"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Рыцарь"
+msgstr "Великий Рыцарь"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -65,8 +65,6 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Для новичков, 4 сценария.)"
 
@@ -103,18 +101,25 @@ msgstr "И отдельное спасибо всем остальным, ког
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
 msgid "Rooting Out a Mage"
-msgstr "Искоренение чернокнижника"
+msgstr "Искоренить чернокнижника"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
+#, fuzzy
+#| msgid ""
+#| "The remote freehold of Maghre in the western reaches of the Kingdom of "
+#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
+#| "comings and goings of the wider world. Wars and the rumor of wars touched "
+#| "them not, until the day a dark mage settled in the region and began "
+#| "seeking sacrifices for his evil summonings."
 msgid ""
-"The remote freehold of Maghre in the western reaches of the kingdom of "
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
-"Когда-то Магрэ, вольное поселение на восточной окраине Королевства Веснот, "
+"Когда-то Магрэ, вольное поселение на западной окраине Королевства Веснот, "
 "было спокойным местом. Его обитатели не очень-то вникали во всё то, что "
 "творилось во внешнем мире. Войны и военные известия их не касались — до тех "
 "пор, пока тёмный маг не поселился в их краях и не стал выискивать жертв для "
@@ -219,9 +224,9 @@ msgstr ""
 msgid "Humans"
 msgstr "Люди"
 
+#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
@@ -472,23 +477,6 @@ msgstr "Арвит и его отряд направились к северу �
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -510,11 +498,12 @@ msgstr ""
 "16 V, 363 ГВ\n"
 "Отрывок из журнала Арвита из Магрэ\n"
 "\n"
-"Мы искали Бьярна три дня, но безрезультатно. Всё, что я смог придумать — "
+"Мы искали Бьярна три дня, но всё без толку. Всё, что я смог придумать — "
 "отправиться на север, в приграничные земли. Там слуги некроманта легко могут "
-"спрятаться — в других местах они найдут лишь фермы. Сначала я подумал, что "
+"спрятаться — в других местах они найдут лишь луга. Сначала я подумал, что "
 "поиски будут напрасны, но к вечеру первого дня мы нашли следы. Некоторые из "
-"них были оставлены костяными ногами скелетов.\n"
+"них были оставлены костяными ногами скелетов, хотя после первого привала "
+"следы принадлежали людям, несущим тяжёлый груз.\n"
 "\n"
 "Теперь мы почти уверены: эти следы ведут в Седой Лес. Никто из Магрэ, да и "
 "других деревень не входил в этот лес, сколько мы себя помним. Сквозь "
@@ -586,17 +575,21 @@ msgstr "Поймайте похитителей"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Убейте тёмного адепта прежде, чем к нему прибудет подкрепление"
+msgid "Kill the Dark Adept before more elves arrive"
+msgstr "Убейте тёмного адепта прежде, чем прибудут эльфы"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+#, fuzzy
+#| msgid ""
+#| "The elvish forces are spread out. Seek to fight them one at a time with "
+#| "several of your units."
 msgid ""
-"The Elvish forces are spread out. Seek to fight them one at a time with "
+"The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
-"Войско эльфов распределено по территории. Нападайте на их отдельные военные "
-"единицы сразу несколькими своими."
+"Войско эльфов рассеяно по местности. Выцепляйте их по одному, и нападайте "
+"сразу несколькими."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:295
@@ -639,13 +632,17 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Пленник, которого схватили те люди, пользовался некромантией; ради твоего же "
+"блага, надеюсь, он не был твоим братом. Считай, что в плен взяли убийцу "
+"твоего брата, и будь уверен, что серые маги освободят все души, какие "
+"колдовство узника привязало к этой земле."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
 msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
-msgstr ""
+msgstr "Мы сразили некроманта на поле брани! Я лично нанёс смертельный удар."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -653,6 +650,7 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Мы сразили некроманта на поле брани! Я своими глазами видел смертельный удар."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -664,21 +662,25 @@ msgid ""
 "could wish.\n"
 "\n"
 "Either way, nothing will be gained by your intrusion into our woods. Now "
-"advance no further, or you will die."
+"advance no further, for we will defend our land."
 msgstr ""
+"Три дня назад мы слышали звуки битвы, но, когда узник проходил мимо нас, "
+"грязное зловоние смерти было ни с чем не перепутать; ежели твой брат в самом "
+"деле в плену, значит, он также и некромант. Помни своего брата таким, как — "
+"мы все надеемся — он был, и знай, что судьба пленника будет местью настолько "
+"тёмной, как только можно пожелать.\n"
+"\n"
+"В любом случае, вторжением в наши леса вы ничего не достигните. Теперь же, "
+"идти вам дальше нельзя, ибо мы защитим нашу землю."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"А говорили — привидения, привидения. Простые эльфы не помешают мне "
-"освободить своего брата!"
+"А говорили — привидения, привидения. Даже приведения наблюдательнее, чем эти "
+"эльфы. Всё же, они не помешают мне освободить своего брата!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -707,35 +709,40 @@ msgid "I see them! There they are!"
 msgstr "Я вижу их! Вон они!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
+#. There are no undead on the map yet, but Muff Toras summons some immediately after saying this
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
 msgid ""
-"Curses! If they had been an hour slower, our master’s reinforcements would "
-"already be here to meet us."
+"Curses! Had they been a few hours slower, I might have covered our tracks "
+"without arousing the elves’ suspicions. Still, no need for the disguise any "
+"more."
 msgstr ""
-"Проклятье! Задержись они на часок — войско, что хозяин послал нам на "
-"выручку, уже было бы здесь."
+"Проклятье! Опоздай они хоть на несколько часов, я мог бы замести за нами "
+"следы, не вызвав подозрений у эльфов. Тем не менее, нужды скрываться больше "
+"нет."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Ну, эльфы? Теперь вы видите, кто некромант?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:516
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Я слышал звуки сражения, но этого я увидеть не ожидал. Я уведомлю Совет, они "
+"разберутся, кто некромант."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Давайте, ребятки, отловим этих похитителей!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -746,7 +753,7 @@ msgstr ""
 "надёжно заперт в подземельях нашего владыки."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -755,58 +762,58 @@ msgstr ""
 "брата, если не хочешь, чтобы я полил землю твоей дрянной кровью."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Sithrak"
 msgstr "Ситрак"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
 msgid "Eleben"
 msgstr "Элебен"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Jarlom"
 msgstr "Ярлом"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Hamik"
 msgstr "Хамик"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "Akranbral"
 msgstr "Акранбрал"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
 msgid "Drakanal"
 msgstr "Драканал"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Xaskanat"
 msgstr "Ксасканат"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Katklagad"
 msgstr "Катклагад"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:581
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
 "Он в трёх днях пути на северо-восток, в заброшенном замке. Пароли для "
-"охранников — $first_password_$first_password_number и $second_password_"
-"$second_password_number|."
+"охранников — $first_password_$first_password и $second_password_"
+"$second_password|."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:589
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "Свяжите его — возьмём его с собой. Если он нас надул, ему крышка."
 
@@ -897,25 +904,34 @@ msgstr "Тогда возьми вот это. Мои товарищи помо�
 msgid "You receive 70 pieces of gold!"
 msgstr "Вы получили 70 монет!"
 
-#. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:704
-msgid "My reinforcements are here!"
-msgstr "А вот и наше подкрепление!"
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
+msgid ""
+"These elves have delayed us too long, the kidnappers’ trail will have faded "
+"by now."
+msgstr ""
+"Эти эльфы слишком сильно нас задержали: от похитителей уже и след простыл."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:709
-msgid "He escaped us..."
-msgstr "Он ушёл..."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
+msgid ""
+"More elves are arriving; even if they believe me, the kidnappers’ trail is "
+"sure to fade before we can follow."
+msgstr ""
+"Прибывает всё больше эльфов; даже если они мне поверят, след похитителей "
+"затеряется прежде, чем мы сможем пройти дальше."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Обманутый дурень, ты спасаешь некроманта. Я лишь надеюсь, что ты уже опоздал "
+"и что наши души упокоятся с миром."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
 msgstr "Возьмите их след!"
 
@@ -1734,13 +1750,26 @@ msgid "It is over, I am vanquished."
 msgstr "Всё кончено. Я побеждён."
 
 #. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
 msgid "Baran"
 msgstr "Бьярн"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Подсказка:"
+
+#~ msgid ""
+#~ "Curses! If they had been an hour slower, our master’s reinforcements "
+#~ "would already be here to meet us."
+#~ msgstr ""
+#~ "Проклятье! Задержись они на часок — войско, что хозяин послал нам на "
+#~ "выручку, уже было бы здесь."
+
+#~ msgid "My reinforcements are here!"
+#~ msgstr "А вот и наше подкрепление!"
+
+#~ msgid "He escaped us..."
+#~ msgstr "Он ушёл..."
 
 #~ msgid ""
 #~ "Those men told me their prisoner had attempted to murder their master, "

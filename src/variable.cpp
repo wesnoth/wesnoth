@@ -1,17 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
-
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -184,7 +184,7 @@ config vconfig::get_parsed_config() const
 		res[i.first] = expand(i.first);
 	}
 
-	for (const config::any_child &child : cfg_->all_children_range())
+	for (const config::any_child child : cfg_->all_children_range())
 	{
 		if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg, *variables_);
@@ -227,7 +227,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 {
 	vconfig::child_list res;
 
-	for (const config::any_child &child : cfg_->all_children_range())
+	for (const config::any_child child : cfg_->all_children_range())
 	{
 		if (child.key == key) {
 			res.push_back(vconfig(child.cfg, cache_, *variables_));
@@ -257,7 +257,7 @@ std::size_t vconfig::count_children(const std::string& key) const
 {
 	std::size_t n = 0;
 
-	for (const config::any_child &child : cfg_->all_children_range())
+	for (const config::any_child child : cfg_->all_children_range())
 	{
 		if (child.key == key) {
 			n++;

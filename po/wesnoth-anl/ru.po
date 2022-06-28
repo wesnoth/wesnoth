@@ -1,6 +1,6 @@
 # #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2007-2020 Wesnoth development team
+# Copyright (C) 2007-2021 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
@@ -8,13 +8,13 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-09-06 17:40+0300\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
+"PO-Revision-Date: 2021-07-17 23:07+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -32,10 +32,6 @@ msgstr "4и — Новая земля"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -43,7 +39,9 @@ msgid ""
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "Этот сценарий на выживание для 4 игроков позволяет Вам строить здания и "
-"видоизменять местность. Рекомендуемое начальное золото — 100."
+"видоизменять местность.\n"
+"\n"
+"Для опытных игроков рекомендуется понизить начальное золото до 75."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -340,9 +338,9 @@ msgstr ""
 "увеличивается. Чтобы сменить изучаемую дисциплину, нажмите правой кнопкой "
 "мыши на мага, когда тот находится в университете."
 
-#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
+#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
@@ -651,8 +649,8 @@ msgstr ""
 "Прогресс обучения: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 
-#. [research]
 #. [command]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:146
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"

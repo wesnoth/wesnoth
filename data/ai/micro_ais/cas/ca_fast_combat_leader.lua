@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 local LS = wesnoth.require "location_set"
@@ -14,9 +13,9 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- that the (more expensive) calculations for keeping the leader safe only
     -- get done once, when all other Fast MAI CAs are entirely done.
 
-    leader_weight = (cfg and cfg.leader_weight) or 2
-    leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
-    leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
+    local leader_weight = (cfg and cfg.leader_weight) or 2
+    local leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
+    local leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
     move_cache = { turn = wesnoth.current.turn }
     gamedata = FAU.gamedata_setup()
@@ -74,21 +73,21 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- Enemy power and number maps
     -- Currently, the power is simply the summed hitpoints of all enemies that
     -- can get to a hex
-    local enemies = AH.get_live_units {
+    local live_enemies = AH.get_live_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
 
     local enemy_power_map = LS.create()
     local enemy_number_map = LS.create()
 
-    for _,enemy in ipairs(enemies) do
+    for _,enemy in ipairs(live_enemies) do
         -- Only need to consider enemies that are close enough
         if (wesnoth.map.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
-            enemy_power = enemy.hitpoints
+            local enemy_power = enemy.hitpoints
 
             local old_moves = enemy.moves
             enemy.moves = enemy.max_moves
-            local reach = wesnoth.find_reach(enemy)
+            local reach = wesnoth.paths.find_reach(enemy)
             enemy.moves = old_moves
 
             for _,loc in ipairs(reach) do
@@ -111,7 +110,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- not units) on the AI leader
     local leader_current_threat = 0
     if cfg and cfg.threatened_leader_fights then
-        for xa,ya in H.adjacent_tiles(leader.x, leader.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(leader) do
             local enemy_power = enemy_power_map:get(xa, ya) or 0
             if (enemy_power > leader_current_threat) then
                 leader_current_threat = enemy_power
@@ -122,7 +121,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     local attacks = AH.get_attacks({ leader }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side, ignore_visibility = ignore_visibility })
 
     if (#attacks > 0) then
-        local max_rating, best_target, best_dst = - math.huge
+        local max_rating, best_target, best_dst = - math.huge, nil, nil
         for _,attack in ipairs(attacks) do
             if enemy_map:get(attack.target.x, attack.target.y)
                 and (not avoid_map:get(attack.dst.x, attack.dst.y))
@@ -130,7 +129,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
                 -- First check if the threat against the leader at this hex
                 -- is acceptable
                 local acceptable_attack = true
-                for xa,ya in H.adjacent_tiles(attack.dst.x, attack.dst.y) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(attack.dst) do
                     local enemy_power = enemy_power_map:get(xa, ya) or 0
                     local enemy_number = enemy_number_map:get(xa, ya) or 0
 

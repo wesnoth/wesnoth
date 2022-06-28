@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "image_modifications.hpp"
@@ -544,7 +545,7 @@ surface o_modification::operator()(const surface& src) const
 		return nullptr;
 	}
 
-	uint16_t amount = ftofxp(opacity_);
+	uint32_t amount = floating_to_fixed_point(opacity_);
 
 	{
 		surface_lock lock(nsurf);
@@ -560,7 +561,7 @@ surface o_modification::operator()(const surface& src) const
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)), 255);
+				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount), 255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -1022,7 +1023,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	message << "~BLIT():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new blit_modification(surf, x, y);
 }
@@ -1055,7 +1056,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	message << "~MASK():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new mask_modification(surf, x, y);
 }
@@ -1068,7 +1069,7 @@ REGISTER_MOD_PARSER(L, args)
 		return nullptr;
 	}
 
-	surface surf = get_image(args);
+	surface surf = get_surface(args);
 
 	return new light_modification(surf);
 }

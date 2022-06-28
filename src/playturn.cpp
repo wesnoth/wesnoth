@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "playturn.hpp"
@@ -25,7 +26,6 @@
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"                // for bad_enum_cast
 #include "map/label.hpp"
 #include "play_controller.hpp"          // for play_controller
 #include "playturn_network_adapter.hpp"  // for playturn_network_adapter
@@ -135,10 +135,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}
 
-	if (const config &message = cfg.child("message"))
+	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message["sender"], message["side"],
-				message["message"], events::chat_handler::MESSAGE_PUBLIC,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
+				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
@@ -231,19 +231,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			throw ingame_wesnothd_error("");
 		}
 
-		team::CONTROLLER ctrl;
-		if(!ctrl.parse(side_drop_c["controller"])) {
+		auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
+		if(!ctrl) {
 			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
 			throw ingame_wesnothd_error("");
 		}
 
-		if (ctrl == team::CONTROLLER::AI) {
-			resources::gameboard->side_drop_to(side_drop, ctrl);
+		if (ctrl == side_controller::type::ai) {
+			resources::gameboard->side_drop_to(side_drop, *ctrl);
 			return restart ? PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 		//null controlled side cannot be dropped because they aren't controlled by anyone.
-		else if (ctrl != team::CONTROLLER::HUMAN) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << ctrl.to_cstring() << std::endl;
+		else if (ctrl != side_controller::type::human) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl) << std::endl;
 			throw ingame_wesnothd_error("");
 		}
 
@@ -316,7 +316,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			{
 				// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
+				resources::gameboard->side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
 			}
 
 			if (action < first_observer_option_idx) {
@@ -335,17 +335,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			switch(action) {
 				case 0:
 					resources::controller->on_not_observer();
-					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
+					resources::gameboard->side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::ai);
 
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 				case 1:
 					resources::controller->on_not_observer();
-					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
+					resources::gameboard->side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::human);
 
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				case 2:
-					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
+					resources::gameboard->side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
 
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 

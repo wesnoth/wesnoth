@@ -73,8 +73,7 @@ def InstallData(env, datadir, component, source, subdir = "", **kwargs):
         if isinstance(source, SCons.Node.FS.Dir) or source.isdir():
             dirs.append(source)
         else:
-            if source.exists():
-                env.Alias("install-" + component, env.Install(installdir, source, **kwargs))
+            env.Alias("install-" + component, env.Install(installdir, source, **kwargs))
     if dirs:
         if len(dirs) == 1:
             install = env.InstallFiltered(installdir.path, dirs[0].path, **kwargs)

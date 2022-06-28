@@ -21,7 +21,7 @@ problems=no
 
 echo "Checking POTFILES correctness..."
 
-potfiles="po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in po/wesnoth-test/POTFILES.in"
+potfiles="po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in"
 
 # Gather the list of sources
 find src -name '*.cpp' -print | sort >/tmp/sschk$$_sources

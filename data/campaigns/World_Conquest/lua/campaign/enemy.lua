@@ -1,13 +1,12 @@
 local on_event = wesnoth.require("on_event")
-local helper = wesnoth.require("helper")
 
 local enemy = {}
 
 local function get_advanced_units(level, list, res)
 	res = res or {}
 	-- guards against units that can advance in circles or to themselves
-	res_set = {}
-	local add_units = function(units)
+	local res_set = {}
+	local function add_units(units)
 		for unused, typename in ipairs(units) do
 			local unittype = wesnoth.unit_types[typename]
 			if unittype.level == level then
@@ -23,7 +22,7 @@ local function get_advanced_units(level, list, res)
 end
 
 function enemy.pick_suitable_enemy_item(unit)
-	local enemy_items = stringx.split(wml.variables["wc2_enemy_army.artifacts"])
+	local enemy_items = stringx.split(wml.variables["wc2_enemy_army.artifacts"] or "")
 	if #enemy_items == 0 then
 		enemy_items = wc2_artifacts.fresh_artifacts_list("enemy")
 	end
@@ -38,7 +37,7 @@ function enemy.pick_suitable_enemy_item(unit)
 	if #possible_artifacts == 0 then
 		return
 	end
-	local i = possible_artifacts[wesnoth.random(#possible_artifacts)]
+	local i = possible_artifacts[mathx.random(#possible_artifacts)]
 	local artifact_id = tonumber(enemy_items[i])
 	table.remove(enemy_items, i)
 	wml.variables["wc2_enemy_army.artifacts"] = table.concat(enemy_items, ",")
@@ -75,9 +74,9 @@ function enemy.do_commander(cfg, group_id, loc)
 		return
 	end
 	local scenario = wc2_scenario.scenario_num()
-	--wesnoth.message("do_commander", wml.variables[("wc2_enemy_army.group[%d].allies_available"):format(group_id)])
+	--wesnoth.interface.add_chat_message("do_commander", wml.variables[("wc2_enemy_army.group[%d].allies_available"):format(group_id)])
 	local ally_i = wc2_utils.pick_random(("wc2_enemy_army.group[%d].allies_available"):format(group_id)) - 1
-	local leader_index = wesnoth.random(wml.variables[("wc2_enemy_army.group[%d].leader.length"):format(ally_i)]) - 1
+	local leader_index = mathx.random(wml.variables[("wc2_enemy_army.group[%d].leader.length"):format(ally_i)]) - 1
 	local new_recruits = wml.variables[("wc2_enemy_army.group[%d].leader[%d].recruit"):format(ally_i, leader_index)]
 	wesnoth.wml_actions.allow_recruit {
 		side = cfg.side,
@@ -87,7 +86,7 @@ function enemy.do_commander(cfg, group_id, loc)
 	wesnoth.wml_actions.unit {
 		x = loc[1],
 		y = loc[2],
-		type = helper.rand(commander_options),
+		type = mathx.random_choice(commander_options),
 		side = cfg.side,
 		generate_name = true,
 		role = "commander",
@@ -144,7 +143,7 @@ on_event("recruit", function(ec)
 			wml.tag.filter {}
 		}
 	}
-	helper.shuffle(candidates)
+	mathx.shuffle(candidates)
 	while #candidates > 0 and #to_recall > 0 do
 		enemy.fake_recall(side_num, to_recall[1], candidates[1])
 		table.remove(to_recall, 1)
@@ -166,10 +165,10 @@ function enemy.do_recall(cfg, group_id, loc)
 		local amount = wml.get_child(cfg, "recall")["level" .. level] or 0
 		local types =  stringx.split(wml.get_child(group, "recall")["level" .. level] or "")
 		if #types == 0 then
-			get_advanced_units(level, stringx.split(group.recruit), types)
+			get_advanced_units(level, stringx.split(group.recruit or ""), types)
 		end
 		for i = 1, amount do
-			table.insert(to_recall, types[wesnoth.random(#types)])
+			table.insert(to_recall, types[mathx.random(#types)])
 		end
 	end
 	recall_level(2)
@@ -188,6 +187,7 @@ function enemy.fake_recall(side_num, t, loc)
 	}
 	wc2_training.apply(u)
 	u:to_map(loc)
+	wesnoth.add_known_unit(t)
 	side.gold = side.gold - 20
 end
 
@@ -255,7 +255,7 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 		--should't happen, added for robustness.
 		local n_groups = wml.variables["wc2_enemy_army.group.length"]
 		if n_groups > 0 then
-			enemy_type_id = wesnoth.random(n_groups) - 1
+			enemy_type_id = mathx.random(n_groups) - 1
 		else
 			error("no enemy groups defined")
 		end
@@ -276,6 +276,7 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 		unit.name = wc2_random_names()
 	end
 	unit:to_map()
+	wesnoth.add_known_unit(unit.type)
 	wesnoth.wml_actions.set_recruit {
 		side = side_num,
 		recruit = wml.variables[("wc2_enemy_army.group[%d].recruit"):format(enemy_type_id)]

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/plugins/manager.hpp"
@@ -69,12 +70,12 @@ std::size_t plugins_manager::size() {
 	return plugins_.size();
 }
 
-plugins_manager::STATUS plugins_manager::get_status(std::size_t idx) {
+plugin_manager_status::type plugins_manager::get_status(std::size_t idx) {
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
-			return plugins_manager::STATUS::NONE;
+			return plugin_manager_status::type::not_created;
 		} else {
-			return plugins_[idx].thread->is_running() ? plugins_manager::STATUS::RUNNING : plugins_manager::STATUS::STOPPED;
+			return plugins_[idx].thread->is_running() ? plugin_manager_status::type::running : plugin_manager_status::type::stopped;
 		}
 	}
 	throw std::runtime_error("index out of bounds");
@@ -207,7 +208,7 @@ bool plugins_manager::any_running()
 {
 
 	for (std::size_t i = 0; i < size(); ++i) {
-		if (STATUS::RUNNING == get_status(i)) {
+		if (plugin_manager_status::type::running == get_status(i)) {
 			return true;
 		}
 	}

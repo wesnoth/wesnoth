@@ -300,6 +300,56 @@ enemy_army.group = {
 			},
 		}
 	},
+	{
+		id = "dunefolk",
+		recruit = {"Dune Soldier","Dune Burner","Dune Rider","Dune Skirmisher","Dune Rover","Naga Dirkfang"},
+		recall = {
+			level2 = {"Dune Captain","Dune Strider","Dune Scorcher","Dune Alchemist","Dune Falconer","Dune Swordsman","Dune Horse Archer","Dune Sunderer","Dune Scorcher","Dune Apothecary","Dune Swordsman","Dune Spearguard"},
+			level3 = {"Dune Blademaster","Dune Sky Hunter","Dune Firetrooper","Dune Warmaster","Dune Cataphract","Dune Blademaster","Dune Luminary","Dune Firetrooper","Dune Spearmaster","Dune Cataphract"},
+		},
+		commander = {
+			level1 = {"Dune Soldier","Dune Soldier","Dune Burner","Dune Skirmisher"},
+			level2 = {"Dune Captain","Dune Spearguard","Dune Strider","Dune Scorcher","Dune Alchemist","Dune Apothecary","Dune Swordsman"},
+			level3 = {"Dune Blademaster","Dune Luminary","Dune Firetrooper","Dune Warmaster","Dune Spearmaster"},
+		},
+		leader = {
+			{
+				level2 = "Dune Swordsman",
+				level3 = "Dune Blademaster",
+				recruit = {"Dune Soldier","Dune Burner","Dune Rider","Dune Skirmisher"},
+			},
+			{
+				level2 = "Dune Apothecary",
+				level3 = "Dune Luminary",
+				recruit = {"Dune Soldier","Dune Burner","Dune Skirmisher","Dune Herbalist"},
+			},
+			{
+				level2 = "Dune Alchemist",
+				level3 = "Dune Spearmaster",
+				recruit = {"Dune Soldier","Dune Skirmisher","Dune Rider","Dune Herbalist"},
+			},
+			{
+				level2 = "Dune Scorcher",
+				level3 = "Dune Firetrooper",
+				recruit = {"Dune Soldier","Dune Burner","Dune Rider","Dune Skirmisher"},
+			},
+			{
+				level2 = "Dune Strider",
+				level3 = "Dune Harrier",
+				recruit = {"Dune Soldier","Dune Burner","Dune Rider","Dune Skirmisher","Naga Dirkfang"},
+			},
+			{
+				level2 = "Dune Raider",
+				level3 = "Dune Marauder",
+				recruit = {"Dune Skirmisher","Dune Soldier","Dune Rider","Dune Burner","Dune Herbalist"},
+			},
+			{
+				level2 = "Dune Captain",
+				level3 = "Dune Warmaster",
+				recruit = {"Dune Soldier","Dune Rover","Dune Rider","Dune Burner"},
+			},
+		}
+	},
 }
 enemy_army.factions_available = {}
 -- each faction can be picked up to 4 times along campaign

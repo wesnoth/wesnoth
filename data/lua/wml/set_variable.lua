@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 
 function wesnoth.wml_actions.set_variable(cfg, variables)
 	local name = cfg.name or wml.error "trying to set a variable with an empty name"
@@ -106,7 +105,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		else
 			local decimals = math.modf(tonumber(round_val) or 0)
 			local value = var * (10 ^ decimals)
-			value = helper.round(value)
+			value = mathx.round(value)
 			value = value * (10 ^ -decimals)
 			variables[name] = value
 		end
@@ -124,7 +123,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
 		variables[name] = fvalue
 	end
-	
+
 	-- similarly, min and max operate on the list assigned to the variable
 	-- and do not consider value already contained in the variable
 	if cfg.min then
@@ -134,7 +133,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 		end
 		variables[name] = math.min(table.unpack(values))
 	end
-	
+
 	if cfg.max then
 		local values = cfg.max:split()
 		for i = 1, #values do
@@ -149,12 +148,12 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 
 	if cfg.time then
 		if cfg.time == "stamp" then
-			variables[name] = wesnoth.get_time_stamp()
+			variables[name] = wesnoth.ms_since_init()
 		end
 	end
 
 	if cfg.rand then
-		variables[name] = helper.rand(tostring(cfg.rand))
+		variables[name] = mathx.random_choice(tostring(cfg.rand))
 	end
 
 	if cfg.formula then

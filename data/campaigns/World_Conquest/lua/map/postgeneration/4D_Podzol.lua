@@ -1,7 +1,7 @@
 -- Podzol
 
 local function world_conquest_tek_map_repaint_4d()
-	local rad = helper.rand("1,2,2")
+	local rad = mathx.random_choice("1,2,2")
 	world_conquest_tek_map_noise_proxy(rad,  2 , "!,W*^*,Ai,Ds*^*,Xu,M*^Xm,R*^*,Ch*,Cud,K*,U*^*,Ql^B*")
 
 	wct_reduce_wall_clusters("Uu,Uu,Uu,Uu,Uh,Uh,Ai")
@@ -18,7 +18,7 @@ local function world_conquest_tek_map_repaint_4d()
 		percentage = 8,
 	}
 	set_terrain { "Mm,Gll,Gll",
-		f.terrain("Hh^Uf,Ss,Hh,Gll^Uf"),
+		f.terrain("Hh^Tf,Ss,Hh,Gll^Tf"),
 		exact = false,
 		percentage = 9,
 	}
@@ -51,7 +51,7 @@ local function world_conquest_tek_map_repaint_4d()
 		exact = false,
 		percentage = 10,
 	}
-	set_terrain { "Hh,Mm,Gll^Fp,Gll^Fp,Gll^Fp,Gll^Fp,Hh^Fp,Gll^Uf,Hh^Uf",
+	set_terrain { "Hh,Mm,Gll^Fp,Gll^Fp,Gll^Fp,Gll^Fp,Hh^Fp,Gll^Tf,Hh^Tf",
 		f.all(
 			f.terrain("Gll"),
 			f.adjacent(f.terrain("G*,R*,Ww,A*,Gll^Efm"), nil, 6)
@@ -68,7 +68,7 @@ local function world_conquest_tek_map_repaint_4d()
 	}
 
 	-- better looking adjacences to lava and frozen
-	set_terrain { "Uu,Uh,Uu^Uf",
+	set_terrain { "Uu,Uh,Uu^Tf",
 		f.all(
 			f.terrain("W*"),
 			f.adjacent(f.terrain("Ql"))
@@ -102,7 +102,7 @@ local function world_conquest_tek_map_repaint_4d()
 		f.terrain("Ww"),
 	}
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Wwg"),
@@ -129,6 +129,7 @@ local function wct_map_4d_post_bunus_decoration()
 	wct_map_cave_path_to("Re")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Podzol")

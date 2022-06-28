@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -167,8 +168,8 @@ void addon_list::set_addons(const addons_list& addons)
 
 		addon_vector_.push_back(&addon);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(!tracking_info.can_publish) {
 			item["label"] = addon.display_icon();
@@ -385,7 +386,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 
-	auto order = std::pair(0, preferences::SORT_ORDER::ASCENDING);
+	auto order = std::pair(0, sort_order::type::ascending);
 	list.set_active_sorting_option(order);
 }
 
@@ -462,9 +463,9 @@ builder_addon_list::builder_addon_list(const config& cfg)
 	}
 }
 
-widget* builder_addon_list::build() const
+std::unique_ptr<widget> builder_addon_list::build() const
 {
-	addon_list* widget = new addon_list(*this);
+	auto widget = std::make_unique<addon_list>(*this);
 
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
 		"' with definition '" << definition << "'.\n";

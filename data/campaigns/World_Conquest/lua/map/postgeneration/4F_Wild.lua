@@ -17,7 +17,7 @@ function connected_components(locs)
 			local todo = { loc }
 			l_set[loc_i] = color_i
 			while #todo ~= 0 do
-				for i, loc_ad in ipairs({wesnoth.map.get_adjacent_tiles(todo[1][1], todo[1][2])}) do
+				for j, loc_ad in ipairs({wesnoth.map.get_adjacent_hexes(todo[1][1], todo[1][2])}) do
 					local loc_ad_i = loc_to_index(loc_ad)
 					if l_set[loc_ad_i] then
 						if l_set[loc_ad_i] == true then
@@ -50,7 +50,7 @@ function repaint(map_data)
 	local heights = wesnoth.dofile("./../postgeneration_utils/wild_zones.lua")
 
 	-- store and remove villages
-	local villages = map:get_locations(f.terrain("*^Vh"))
+	local villages = map:find(f.terrain("*^Vh"))
 	set_terrain { "*",
 		f.terrain("*^Vh"),
 		layer = "overlay",
@@ -70,7 +70,7 @@ function repaint(map_data)
 		exact = false,
 	}
 
-	if wesnoth.random(4) == 1 then
+	if mathx.random(4) == 1 then
 		set_terrain { "Ww",
 			f.terrain("Wwg^*"),
 			layer = "base",
@@ -117,7 +117,7 @@ function repaint(map_data)
 	}
 	set_terrain { "Xu",
 		f.all(
-			f.terrain("Uu,Uh,Uu^Uf,Uh^Uf"),
+			f.terrain("Uu,Uh,Uu^Tf,Uh^Tf"),
 			f.adjacent(f.terrain("G*^*,H*^*")),
 			f.adjacent(f.terrain("*^Xm"), nil, 0)
 		),
@@ -172,7 +172,7 @@ function repaint(map_data)
 			),
 			f.all(
 				f.terrain("Gll^V*"),
-				f.adjacent(f.terrain("Gll^Uf"))
+				f.adjacent(f.terrain("Gll^Tf"))
 			)
 		),
 		layer = "overlay",
@@ -213,7 +213,7 @@ function wild_zones_store(heights)
 	for i_height, height in ipairs(heights) do
 		for i_temp, temp in ipairs(height) do
 			-- oldname: 'regions'
-			temp.all_locs = map:get_locations(f.terrain(temp.terrain))
+			temp.all_locs = map:find(f.terrain(temp.terrain))
 			-- oldname: 'zone[$zone_i].loc'
 			temp.zones = connected_components(temp.all_locs)
 		end
@@ -238,7 +238,7 @@ function wild_zones_replace(heights)
 		for i_temp, temp in ipairs(height) do
 			handle_single_zone(temp.all_locs, temp[1].default)
 			for zone_i, zone in ipairs(temp.zones) do
-				local wild_dice = wesnoth.random(100)
+				local wild_dice = mathx.random(100)
 				for chance_i, chance in ipairs(temp[1].chances) do
 					if wild_dice <= chance.value then
 						handle_single_zone(zone, chance.command)
@@ -255,12 +255,14 @@ end
 
 -- to place right image in bonus points
 function wild_store_cave_zone(map_data)
-	map_data.road_in_cave = map:get_locations(f.terrain("X*^*"))
+	map_data.road_in_cave = map:find(f.terrain("X*^*"))
 end
 
 function wild_store_roads_in_cave_zone(map_data)
-	map_data.road_in_cave = map:get_locations(f.terrain("R*,Ur"), map_data.road_in_cave)
+	map_data.road_in_cave = map:find(f.terrain("R*,Ur"), map_data.road_in_cave)
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Wild")

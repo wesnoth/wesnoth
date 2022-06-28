@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Dmitry Kovalenko <nephro.wes@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Dmitry Kovalenko <nephro.wes@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -20,6 +21,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "log.hpp"
 #include "lua/lua.h"
 #include "map/location.hpp"
 #include "resources.hpp"
@@ -32,6 +34,9 @@
 #include <iterator>
 #include <string>
 #include <vector>
+
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define ERR_OBJ_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace ai {
 
@@ -285,11 +290,21 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		target::TYPE type = target::TYPE::EXPLICIT;
+		std::optional<ai_target::type> type = ai_target::type::xplicit;
 		if(lua_isnumber(L, -1)) {
-			type = target::TYPE::from_int(static_cast<int>(lua_tointeger(L, -1)));  // st n + 2
+			int target = static_cast<int>(lua_tointeger(L, -1));
+			type = ai_target::get_enum(target);  // st n + 2
+			if(!type) {
+				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.\n";
+				continue;
+			}
 		} else if(lua_isstring(L, -1)) {
-			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
+			std::string target = lua_tostring(L, -1);
+			type = ai_target::get_enum(target);  // st n + 2
+			if(!type) {
+				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.\n";
+				continue;
+			}
 		}
 		lua_pop(L, 1); // st n + 1
 
@@ -299,7 +314,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		map_location ml(x, y, wml_loc());
 
-		targets->emplace_back(ml, value, type);
+		targets->emplace_back(ml, value, *type);
 	}
 
 	lua_settop(L, n);

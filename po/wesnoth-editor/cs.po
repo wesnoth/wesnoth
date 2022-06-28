@@ -1,11 +1,3 @@
-# translation of wesnoth-editor.pot to Czech
-# Czech translations for Battle for Wesnoth package.
-# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2020 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
-# Czech Wesnoth translation team
-#
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
@@ -17,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-02-09 05:42+0100\n"
+"POT-Creation-Date: 2022-06-19 09:03-0500\n"
+"PO-Revision-Date: 2021-02-19 22:18+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -191,7 +183,7 @@ msgstr "Překryv jednotek"
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
 msgid "Transition Update"
-msgstr "Přechodná aktualizace"
+msgstr "Obnova přechodu"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:101
@@ -243,42 +235,42 @@ msgstr "Playlist"
 msgid "Assign Time Schedule"
 msgstr "Přiřadit nastavení času"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:61
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Identifier: "
 msgstr "Identifikátor: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Name: "
 msgstr "Jméno: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Type: "
 msgstr "Typ: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Level: "
 msgstr "Level: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:181
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:211
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přeješ skončit?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:215
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -286,127 +278,127 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor/controller/editor_controller.cpp:222
+#: src/editor/controller/editor_controller.cpp:224
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
-#: src/editor/controller/editor_controller.cpp:1135
+#: src/editor/controller/editor_controller.cpp:1141
 msgid "Change Unit ID"
 msgstr "Změnit ID jednotky"
 
-#: src/editor/controller/editor_controller.cpp:1136
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1152
+#: src/editor/controller/editor_controller.cpp:1158
 msgid "Rename Unit"
 msgstr "Přejmenovat jednotku"
 
-#: src/editor/controller/editor_controller.cpp:1153
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/editor/map/context_manager.cpp:208
+#: src/editor/map/context_manager.cpp:210
 msgid "Load Map"
 msgstr "Načíst mapu"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
+#: src/editor/map/context_manager.cpp:278 src/editor/map/map_context.cpp:853
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:853
 msgid "New Scenario"
 msgstr "Nový scénář"
 
-#: src/editor/map/context_manager.cpp:345
+#: src/editor/map/context_manager.cpp:347
 msgid "No Recent Files"
 msgstr "Žádné předchozí soubory"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:385
 msgid "Unnamed Area"
 msgstr "Nepojmenovaná oblast"
 
-#: src/editor/map/context_manager.cpp:414
+#: src/editor/map/context_manager.cpp:416
 msgid "New Side"
 msgstr "Nová strana"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:472
 msgid "Apply Mask"
 msgstr "Aplikovat masku"
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:481
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:501
 msgid "Identifier:"
 msgstr "Identifikátor:"
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:501
 msgid "Rename Area"
 msgstr "Přejmenovat oblast"
 
-#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:515
 msgid "Choose Target Map"
 msgstr "Vyber cílovou mapu"
 
-#: src/editor/map/context_manager.cpp:522
-#: src/editor/map/context_manager.cpp:931
+#: src/editor/map/context_manager.cpp:524
+#: src/editor/map/context_manager.cpp:933
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:650
 msgid "Save Map As"
 msgstr "Uložit mapu jako"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:671
 msgid "Save Scenario As"
 msgstr "Uložit scénář jako"
 
-#: src/editor/map/context_manager.cpp:701
+#: src/editor/map/context_manager.cpp:703
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:719
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:721
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
-#: src/editor/map/context_manager.cpp:734
+#: src/editor/map/context_manager.cpp:736
 msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
-#: src/editor/map/context_manager.cpp:735
+#: src/editor/map/context_manager.cpp:737
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor/map/context_manager.cpp:791
+#: src/editor/map/context_manager.cpp:793
 msgid "This scenario is already open."
 msgstr "Tento scénář již je otevřen."
 
-#: src/editor/map/context_manager.cpp:814
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:816
+#: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor/map/context_manager.cpp:838
+#: src/editor/map/context_manager.cpp:840
 msgid "Scenario saved."
 msgstr "Scénář uložen."
 
-#: src/editor/map/context_manager.cpp:853
+#: src/editor/map/context_manager.cpp:855
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/map/context_manager.cpp:910
+#: src/editor/map/context_manager.cpp:912
 msgid "Loaded embedded map data"
 msgstr "Načtena vložená data mapy"
 
-#: src/editor/map/context_manager.cpp:911
-#: src/editor/map/context_manager.cpp:924
+#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:926
 msgid "Map loaded from scenario"
 msgstr "Mapa načtena ze scénáře"
 
-#: src/editor/map/context_manager.cpp:921
+#: src/editor/map/context_manager.cpp:923
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -414,24 +406,24 @@ msgstr ""
 "Načten odkazovaný soubor mapy:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:144
+#: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Hráč $side_num"
 
-#: src/editor/map/editor_map.cpp:279
+#: src/editor/map/editor_map.cpp:281
 msgid "The size of the target map is different from the current map"
 msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
-#: src/editor/map/map_context.cpp:145
+#: src/editor/map/map_context.cpp:147
 msgid "File not found"
 msgstr "Soubor nebyl nalezen"
 
-#: src/editor/map/map_context.cpp:152
+#: src/editor/map/map_context.cpp:154
 msgid "Empty file"
 msgstr "Prázdný soubor"
 
-#: src/editor/map/map_context.cpp:208
+#: src/editor/map/map_context.cpp:210
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -439,203 +431,90 @@ msgstr ""
 "Soubor mapy se zdá být scénářem, ale klíč map_data není odkazem na "
 "existující soubor"
 
-#: src/editor/map/map_context.cpp:617
+#: src/editor/map/map_context.cpp:619
 msgid "Could not save the scenario: $msg"
 msgstr "Nepodařilo se uložit scénář: $msg"
 
-#: src/editor/map/map_context.cpp:652
+#: src/editor/map/map_context.cpp:654
 msgid "Could not save into scenario"
 msgstr "Nebylo možno uložit do scénáře"
 
-#: src/editor/map/map_context.cpp:662
+#: src/editor/map/map_context.cpp:664
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:51
+#: src/editor/palette/editor_palettes.cpp:52
 msgid "(Unknown Group)"
 msgstr "(Neznámá skupina)"
 
-#: src/editor/palette/editor_palettes.cpp:284
+#: src/editor/palette/editor_palettes.cpp:295
 msgid "(non-core)"
 msgstr "(není obsažen automaticky)"
 
-#: src/editor/palette/editor_palettes.cpp:285
+#: src/editor/palette/editor_palettes.cpp:296
 msgid "Will not work in game without extra care."
 msgstr "Nefunguje ve hře bez dodatečných úprav."
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:250
 msgid "Go To"
 msgstr "Jít na"
 
-#: src/editor/palette/location_palette.cpp:263
+#: src/editor/palette/location_palette.cpp:257
 msgid "Add"
 msgstr "Přidat"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:259
 msgid "New Location Identifier"
 msgstr "Nový identifikátor lokace"
 
-#: src/editor/palette/location_palette.cpp:272
+#: src/editor/palette/location_palette.cpp:266
 msgid "Error"
 msgstr "Chyba"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:267
 msgid "Invalid location id"
 msgstr "Neplatný identifikátor lokace"
 
-#: src/editor/palette/location_palette.cpp:280
+#: src/editor/palette/location_palette.cpp:274
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/editor/palette/terrain_palettes.cpp:231
+#: src/editor/palette/terrain_palettes.cpp:230
 msgid "Left-click: "
 msgstr "Kliknutí levým: "
 
-#: src/editor/palette/terrain_palettes.cpp:232
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "Right-click: "
 msgstr "Kliknutí pravým: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
-#: src/editor/palette/terrain_palettes.cpp:237
+#: src/editor/palette/terrain_palettes.cpp:236
 msgid "Shift + left-click: paint overlay layer only"
 msgstr "Shift + kliknutí levým: malovat pouze překryvnou vrstvu"
 
-#: src/editor/palette/terrain_palettes.cpp:239
+#: src/editor/palette/terrain_palettes.cpp:238
 msgid "Shift + left-click: paint base layer only"
 msgstr "Shift + kliknutí levým: malovat pouze základní vrstvu"
 
-#: src/editor/palette/terrain_palettes.cpp:242
+#: src/editor/palette/terrain_palettes.cpp:241
 msgid "Cmd + click: copy terrain"
 msgstr "Cmd + kliknutí: kopírovat terén"
 
-#: src/editor/palette/terrain_palettes.cpp:244
+#: src/editor/palette/terrain_palettes.cpp:243
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + kliknutí: kopírovat terén"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:92
+#: src/gui/dialogs/editor/custom_tod.cpp:93
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:156
+#: src/gui/dialogs/editor/custom_tod.cpp:157
 msgid "Choose File"
 msgstr "Vybrat soubor"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:157
+#: src/gui/dialogs/editor/custom_tod.cpp:158
 msgid "Select"
 msgstr "Vybrat"
-
-#~ msgid "player^None"
-#~ msgstr "Žádný"
-
-#~ msgid "Player $player_number"
-#~ msgstr "Hráč $player_number"
-
-#~ msgid "(Unknown unit type: $type)"
-#~ msgstr "(Neznámý typ jednotky: $type)"
-
-#~ msgid "Recruit: "
-#~ msgstr "Naverbovat: "
-
-#~ msgid "FG: "
-#~ msgstr "Popředí: "
-
-#~ msgid "BG: "
-#~ msgstr "Pozadí: "
-
-#~ msgid "Underground"
-#~ msgstr "Podzemí"
-
-#~ msgid "Deep Underground"
-#~ msgstr "Hluboko pod zemí"
-
-#~ msgid "Indoors"
-#~ msgstr "Uvnitř"
-
-#~ msgid "None"
-#~ msgstr "Žádný"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nová mapa)"
-
-#~ msgid "(New Scenario)"
-#~ msgstr "(Nový scénář)"
-
-#~ msgid "Choose a File to Open"
-#~ msgstr "Vyber soubor k načtení"
-
-# co je zase toto?
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Vyber masku k aplikaci"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Mapa už existuje. Přeješ si ji přepsat?"
-
-#~ msgid "Player"
-#~ msgstr "Hráč"
-
-#~ msgid "Quit"
-#~ msgstr "Konec"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Pro kreslení terénu popředí, respektive pozadí, použijte levé resp. pravé "
-#~ "tlačítko myši. Se shiftem se kreslí pouze základní vrstva. S ctrl je do "
-#~ "nástroje nabrán terén pod kurzorem (kapátko)."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Levé tlačítko myši přidává do výběru, pravé odebírá. Se shiftem jsou "
-#~ "vybrána všechny políčka se stejným terénem."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Levé tlačítko myši zobrazí vybraného hráče, pravé odstraní. Klávesy s "
-#~ "čísly posouvají pohled k počáteční pozici odpovídajícího hráče, alt+číslo "
-#~ "nastaví startovní pozici pod kurzor, delete ji smaže."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Kliknutí vkládá; při vkládání větších oblastí je vhodné oddálit pohled. "
-#~ "Pro transformace obsahu schránky (rotace, překlápění) použijte menu úprav."
-
-#~ msgid "Empty map file"
-#~ msgstr "Prázdný soubor mapy"
-
-#~ msgid "Custom setting"
-#~ msgstr "Vlastní nastavení"
-
-#~ msgid "Edit"
-#~ msgstr "Úpravy"
-
-#~ msgid "Undo"
-#~ msgstr "Zpátky"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Nelze vrátit"
-
-#~ msgid "Redo"
-#~ msgstr "Vrať"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Nelze opakovat"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Ano"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Částečně"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Ne"

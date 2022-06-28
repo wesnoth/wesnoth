@@ -10,7 +10,7 @@ Distmap = wesnoth.dofile("./distmap.lua")
 wesnoth.dofile("./postgeneration_utils/engine.lua")
 
 local postgenerators = {}
-for i, v in ipairs(wesnoth.read_file("./postgeneration")) do
+for i, v in ipairs(filesystem.read_file("./postgeneration")) do
 	local code = string.match(v, "^(%d%a).*")
 	if code then
 		postgenerators[string.lower(code)] = v
@@ -32,7 +32,7 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 	for i = 1, nplayers do--nhumanplayer
 		player_list[i] = i
 	end
-	local postgen_starttime = wesnoth.get_time_stamp()
+	local postgen_starttime = wesnoth.ms_since_init()
 	wesnoth.dofile("./postgeneration_utils/utilities.lua")
 	wesnoth.dofile("./postgeneration_utils/events.lua")
 	wesnoth.dofile("./postgeneration_utils/snow.lua")
@@ -48,7 +48,7 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 	_G.total_tiles = _G.map.width * _G.map.height
 	_G.prestart_event = scenario_content.event[1]
 	_G.print_time = function(msg)
-		wesnoth.log("info", msg .. " time: " .. (wesnoth.get_time_stamp() - postgen_starttime))
+		wesnoth.log("info", msg .. " time: " .. (wesnoth.ms_since_init() - postgen_starttime))
 	end
 	--the only reason why we do this here an not in mian.lua is that it needs a map object.
 	shuffle_special_locations(map, player_list)

@@ -44,7 +44,7 @@ local function explain(current_cfg, expect, logger)
 		elseif tag == "true" or tag == "false" then
 			-- We don't explain these ones.
 			return true
-		elseif wesnoth.eval_conditional{t} == expect then
+		elseif wml.eval_conditional{t} == expect then
 			local explanation_args = {}
 			if expect then
 				explanation_args.result = "passed"

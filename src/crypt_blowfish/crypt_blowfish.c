@@ -550,7 +550,7 @@ static void BF_swap(BF_word *x, int count)
 #endif
 
 static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
-    unsigned char flags)
+	unsigned char flags)
 {
 	const char *ptr = key;
 	unsigned int bug, i, j;

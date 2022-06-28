@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -231,10 +232,14 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 	for(int x1 = xstart; x1 != xend; ++x1) {
 		int ystart, yend, yoffset;
 		if(x1 & 1) {
-			ystart = ystart_odd , yend = yend_odd , yoffset = yoffset_odd;
+			ystart = ystart_odd;
+			yend = yend_odd;
+			yoffset = yoffset_odd;
 		}
 		else {
-			ystart = ystart_even, yend = yend_even, yoffset = yoffset_even;
+			ystart = ystart_even;
+			yend = yend_even;
+			yoffset = yoffset_even;
 		}
 		for(int y1 = ystart; y1 != yend; ++y1) {
 			const int x2 = x1 + xoffset;

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -25,7 +26,7 @@
 class bad_commandline_resolution : public boost::program_options::error
 {
 public:
-    bad_commandline_resolution(const std::string& resolution);
+	bad_commandline_resolution(const std::string& resolution);
 };
 
 class bad_commandline_tuple : public boost::program_options::error
@@ -76,6 +77,12 @@ public:
 	bool debug_lua;
 	/** True if --strict-lua was given in the commandline. Disallows use of deprecated APIs. */
 	bool strict_lua;
+	/**
+	 * True if --allow-insecure was given in the commandline.
+	 * Allows sending a plaintext password over an unencrypted connection.
+	 * Should only ever be used for local testing.
+	 */
+	bool allow_insecure;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
 	std::optional<std::string> debug_dot_domain;
@@ -145,6 +152,8 @@ public:
 	bool nodelay;
 	/** True if --nogui was given on the command line. Disables GUI. */
 	bool nogui;
+	/** True if --nobanner was given on the command line. Disables startup banner. */
+	bool nobanner;
 	/** True if --nomusic was given on the command line. Disables music. */
 	bool nomusic;
 	/** True if --nosound was given on the command line. Disables sound. */
@@ -228,6 +237,8 @@ public:
 	std::string diff_left, diff_right;
 	/** True if --version was given on the command line. Prints version and exits. */
 	bool version;
+	/** True if --simple-version was given on the command line. Prints version and nothing else then exits. */
+	bool simple_version;
 	/** True if --report was given on the command line. Prints a bug report-style info dump and exits. */
 	bool report;
 	/** True if --windowed was given on the command line. Starts Wesnoth in windowed mode. */

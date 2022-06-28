@@ -1,21 +1,23 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include <string>
 
 namespace font {
@@ -52,7 +54,7 @@ public:
 		ymove_ = ymove;
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
-	void set_lifetime(int lifetime);
+	void set_lifetime(int lifetime, int fadeout = 100);
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
@@ -68,26 +70,37 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-	void draw(int time, surface screen);
-	void undraw(surface screen);
+	void draw(int time);
+	void undraw();
 
-	surface create_surface();
+	/**
+	 * Ensure a texture for this floating label exists, creating one if needed.
+	 *
+	 * @returns true if the texture exists, false in the case of failure.
+	 */
+	bool create_texture();
 
-	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_; }
+	/** Return the size of the label in drawing coordinates */
+	SDL_Point get_draw_size() const { return {tex_.w(), tex_.h()}; }
+
+	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
 
 	void show(const bool value) { visible_ = value; }
 
 	LABEL_SCROLL_MODE scroll() const { return scroll_; }
+
+	// TODO: Might be good to have more getters, right?
+	int get_fade_time() const { return fadeout_; }
 
 private:
 
 	int get_time_alive(int current_time) const { return current_time - time_start_; }
 	int xpos(std::size_t width) const;
 	SDL_Point get_loc(int time);
-	surface get_surface(int time);
-	surface surf_, buf_;
+	uint8_t get_alpha(int time);
+	texture tex_, buf_;
 	SDL_Rect buf_pos_;
-	bool fadeout_;
+	int fadeout_;
 	int time_start_;
 	std::string text_;
 	int font_size_;
@@ -119,13 +132,15 @@ void move_floating_label(int handle, double xmove, double ymove);
 void scroll_floating_labels(double xmove, double ymove);
 
 /** removes the floating label given by 'handle' from the screen */
-void remove_floating_label(int handle);
+/** if fadeout is given, the label fades out over that duration */
+/** if fadeout is less than 0, it uses the fadeout setting from the label */
+void remove_floating_label(int handle, int fadeout = 0);
 
 /** hides or shows a floating label */
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);
-void draw_floating_labels(surface screen);
-void undraw_floating_labels(surface screen);
+void draw_floating_labels();
+void undraw_floating_labels();
 
 } // end namespace font

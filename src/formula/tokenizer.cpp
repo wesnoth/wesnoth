@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "formula/tokenizer.hpp"
@@ -46,73 +47,73 @@ token get_token(iterator& i1, const iterator i2) {
 	if( *i1 >= 'A' ) {
 		//current character is >= 'A', limit search to the upper-half of the ASCII table
 
-		// check if we parse now TOKEN_IDENTIFIER or TOKEN_OPERATOR/KEYWORD based on string
+		// check if we parse now token_type::identifier or token_type::operator_token/keyword based on string
 		if( *i1 <= 'Z' || ( *i1 >= 'a' && *it <= 'z' ) || *i1 == '_' ) {
 
 			while(i1 != i2 && (std::isalpha(*i1, std::locale::classic()) || *i1 == '_'))
 				++i1;
 
 			int diff = i1 - it;
-			TOKEN_TYPE t = TOKEN_IDENTIFIER;
+			token_type t = token_type::identifier;
 
 			//check if this string matches any keyword or an operator
 			//possible operators and keywords:
 			// d, or, in, def, and, not, wfl, where, wflend, functions
 			if( diff == 1 ) {
 				if( *it == 'd' )
-					t = TOKEN_OPERATOR;
+					t = token_type::operator_token;
 			} else if( diff == 2 ) {
 				if( *it == 'o' && *(it+1) == 'r' )
-					t = TOKEN_OPERATOR;
+					t = token_type::operator_token;
 				else if( *it == 'i' && *(it+1) == 'n' )
-					t = TOKEN_OPERATOR;
+					t = token_type::operator_token;
 			} else if( diff == 3 ) {
 				if( *it == 'd' ) { //def
 					if( *(it+1) == 'e' && *(it+2) == 'f' )
-						t = TOKEN_KEYWORD;
+						t = token_type::keyword;
 				} else if( *it == 'a' ) { //and
 					if( *(it+1) == 'n' && *(it+2) == 'd' )
-						t = TOKEN_OPERATOR;
+						t = token_type::operator_token;
 				} else if( *it == 'n' ) { //not
 					if( *(it+1) == 'o' && *(it+2) == 't' )
-						t = TOKEN_OPERATOR;
+						t = token_type::operator_token;
 				} else if( *it == 'f' ) { //fai
 					if( *(it+1) == 'a' && *(it+2) == 'i' )
-						t = TOKEN_KEYWORD;
+						t = token_type::keyword;
 				} else if( *it == 'w' ) { //wfl
 					if( *(it+1) == 'f' && *(it+2) == 'l' )
-						t = TOKEN_KEYWORD;
+						t = token_type::keyword;
 				}
 			} else if( diff == 5 ) {
 				std::string s(it, i1);
 				if( s == "where" )
-					t = TOKEN_OPERATOR;
+					t = token_type::operator_token;
 			} else if( diff == 6 ) {
 				std::string s(it, i1);
 				if( s == "faiend" )
-					t = TOKEN_KEYWORD;
+					t = token_type::keyword;
 				else if( s == "wflend" )
-					t = TOKEN_KEYWORD;
+					t = token_type::keyword;
 			} else if( diff == 9 ) {
 				std::string s(it, i1);
 				if( s == "functions" )
-					t = TOKEN_KEYWORD;
+					t = token_type::keyword;
 			}
 
 			return token( it, i1, t);
 		} else {
 			//at this point only 3 chars left to check:
 			if( *i1 == '[' )
-				return token( it, ++i1, TOKEN_LSQUARE );
+				return token( it, ++i1, token_type::lsquare );
 
 			if( *i1 == ']' )
-				return token( it, ++i1, TOKEN_RSQUARE );
+				return token( it, ++i1, token_type::rsquare );
 
 			if( *i1 == '^' )
-				return token( it, ++i1, TOKEN_OPERATOR );
+				return token( it, ++i1, token_type::operator_token );
 
 			if( *i1 == '~' )
-				return token( it, ++i1, TOKEN_OPERATOR );
+				return token( it, ++i1, token_type::operator_token );
 
 			//unused characters in this range:
 			// \ ` { | }
@@ -123,13 +124,13 @@ token get_token(iterator& i1, const iterator i2) {
 		//start by checking for whitespaces/end of line char
 		if( *i1 <= ' ' ) {
 			if( *i1 == '\n' ) {
-				return token( it, ++i1, TOKEN_EOL);
+				return token( it, ++i1, token_type::eol);
 			} else {
 
 				while( i1 != i2 && *i1 <= ' ' && *i1 != '\n' )
 					++i1;
 
-				return token( it, i1, TOKEN_WHITESPACE );
+				return token( it, i1, token_type::whitespace );
 			}
 		//try to further limit number of characters that we need to check:
 		} else if ( *i1 >= '0' ){
@@ -157,9 +158,9 @@ token get_token(iterator& i1, const iterator i2) {
 				}
 
 				if( dot )
-					return token( it, i1, TOKEN_DECIMAL );
+					return token( it, i1, token_type::decimal );
 				else
-					return token( it, i1, TOKEN_INTEGER );
+					return token( it, i1, token_type::integer );
 
 			} else {
 				//current character is between ':' and '@'
@@ -169,27 +170,27 @@ token get_token(iterator& i1, const iterator i2) {
 				// : ? @
 
 				if( *i1 == ';' ) {
-					return token( it, ++i1, TOKEN_SEMICOLON);
+					return token( it, ++i1, token_type::semicolon);
 				} else if( *i1 == '=' ) {
-					return token( it, ++i1, TOKEN_OPERATOR);
+					return token( it, ++i1, token_type::operator_token);
 				} else if( *i1 == '<' ) {
 					++i1;
 					if( i1 != i2 ) {
 						if( *i1 == '=' )
-							return token( it, ++i1, TOKEN_OPERATOR);
+							return token( it, ++i1, token_type::operator_token);
 						else
-							return token( it, i1, TOKEN_OPERATOR);
+							return token( it, i1, token_type::operator_token);
 					} else
-						return token( it, i1, TOKEN_OPERATOR);
+						return token( it, i1, token_type::operator_token);
 				} else if( *i1 == '>' ) {
 					++i1;
 					if( i1 != i2 ) {
 						if( *i1 == '=' )
-							return token( it, ++i1, TOKEN_OPERATOR);
+							return token( it, ++i1, token_type::operator_token);
 						else
-							return token( it, i1, TOKEN_OPERATOR);
+							return token( it, i1, token_type::operator_token);
 					} else
-						return token( it, i1, TOKEN_OPERATOR);
+						return token( it, i1, token_type::operator_token);
 				}
 			}
 		//current character is between '!' and '/'
@@ -200,25 +201,25 @@ token get_token(iterator& i1, const iterator i2) {
 		// ! is used only as part of !=
 		// Note: " should never be used since it plays poorly with WML
 		} else if ( *i1 == ',' ) {
-			return token( it, ++i1, TOKEN_COMMA);
+			return token( it, ++i1, token_type::comma);
 
 		} else if ( *i1 == '.' ) {
 			++i1;
 
 			if( i1 != i2 ) {
 				if( *i1 == '+' || *i1 == '-' || *i1 == '*' || *i1 == '/' || *i1 == '.')
-					return token( it, ++i1, TOKEN_OPERATOR );
+					return token( it, ++i1, token_type::operator_token );
 				else
-					return token( it, i1, TOKEN_OPERATOR );
+					return token( it, i1, token_type::operator_token );
 			} else {
-				return token( it, i1, TOKEN_OPERATOR);
+				return token( it, i1, token_type::operator_token);
 			}
 
 		} else if ( *i1 == '(' ) {
-			return token( it, ++i1, TOKEN_LPARENS);
+			return token( it, ++i1, token_type::lparens);
 
 		} else if ( *i1 == ')' ) {
-			return token( it, ++i1, TOKEN_RPARENS);
+			return token( it, ++i1, token_type::rparens);
 
 		} else if ( *i1 == '\'' ) {
 			int bracket_depth = 0;
@@ -235,7 +236,7 @@ token get_token(iterator& i1, const iterator i2) {
 			}
 
 			if( i1 != i2 ) {
-				return token( it, ++i1, TOKEN_STRING_LITERAL );
+				return token( it, ++i1, token_type::string_literal );
 			} else {
 				raise_exception(it, i2, "Missing closing ' for formula string");
 			}
@@ -246,39 +247,39 @@ token get_token(iterator& i1, const iterator i2) {
 				++i1;
 
 			if( i1 != i2 ) {
-				return token( it, ++i1, TOKEN_COMMENT );
+				return token( it, ++i1, token_type::comment );
 			} else {
 				raise_exception(it, i2, "Missing closing # for formula comment");
 			}
 
 		} else if ( *i1 == '+' ) {
-			return token( it, ++i1, TOKEN_OPERATOR);
+			return token( it, ++i1, token_type::operator_token);
 
 		} else if ( *i1 == '-' ) {
 			++i1;
 
 			if( i1 != i2 ) {
 				if( *i1 == '>' )
-					return token( it, ++i1, TOKEN_POINTER );
+					return token( it, ++i1, token_type::pointer );
 				else
-					return token( it, i1, TOKEN_OPERATOR );
+					return token( it, i1, token_type::operator_token );
 			} else {
-				return token( it, i1, TOKEN_OPERATOR);
+				return token( it, i1, token_type::operator_token);
 			}
 
 		} else if ( *i1 == '*' ) {
-			return token( it, ++i1, TOKEN_OPERATOR);
+			return token( it, ++i1, token_type::operator_token);
 
 		} else if ( *i1 == '/' ) {
-			return token( it, ++i1, TOKEN_OPERATOR);
+			return token( it, ++i1, token_type::operator_token);
 
 		} else if ( *i1 == '%' ) {
-			return token( it, ++i1, TOKEN_OPERATOR);
+			return token( it, ++i1, token_type::operator_token);
 
 		} else if ( *i1 == '!' ) {
 			++i1;
 			if( *i1 == '=' )
-				return token( it, ++i1, TOKEN_OPERATOR);
+				return token( it, ++i1, token_type::operator_token);
 			else
 				raise_exception(it, i2, std::string() );
 		}

@@ -2,28 +2,28 @@
 
 function world_conquest_tek_map_repaint_4b()
 	set_terrain { "Ql,Md,Md^Xm",
-		f.terrain("U*,U*^Uf"),
+		f.terrain("U*,U*^Tf"),
 		exact = false,
 		percentage = 10,
 	}
-	set_terrain { "Ql,Uu,Uh,Uh,Uu^Uf,Qxu,Uh^Uf",
+	set_terrain { "Ql,Uu,Uh,Uh,Uu^Tf,Qxu,Uh^Tf",
 		f.terrain("Xu"),
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Uf,Uh,Uh,Uu,Ql,Md",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf,Uh,Uh,Uu,Ql,Md",
 		f.terrain("Mm^Xm"),
 		fraction = 2,
 	}
-	set_terrain { "Ql,Uu^Uf,Qxu,Uh^Uf",
+	set_terrain { "Ql,Uu^Tf,Qxu,Uh^Tf",
 		f.all(
 			f.terrain("Hh^F*"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Uf"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf"))
 		),
 		fraction = 3,
 	}
 	set_terrain { "Uh",
 		f.all(
 			f.terrain("Hh"),
-			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Uf,Qxu,Uh^Uf,Ur"))
+			f.adjacent(f.terrain("Ql,Uu,Uh,Uu^Tf,Qxu,Uh^Tf,Ur"))
 		),
 		fraction = 3,
 	}
@@ -91,21 +91,21 @@ function world_conquest_tek_map_repaint_4b()
 		fraction = 3,
 	}
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Ur^Vd",
 			f.terrain("Ur^Vu"),
 			fraction_rand = "2..3",
 		}
 
 	end
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Rd^Vd",
 			f.terrain("Rd^Vhh"),
 			fraction_rand = "2..3",
 		}
 
 	end
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Ds^Vd",
 			f.terrain("D*^V*"),
 			fraction_rand = "3..4",
@@ -187,13 +187,13 @@ function world_conquest_tek_map_repaint_4b()
 	}
 
 	-- create volcanos where possible and force one
-	local terrain_to_change = map:get_locations(f.all(
+	local terrain_to_change1 = map:find(f.all(
 		f.terrain("Ql"),
 		f.adjacent(f.terrain("M*,M*^Xm"), "se,s,sw", 2),
 		f.adjacent(f.terrain("K*^*,C*^*,*^V"), "se,s,sw", 0)
 	))
-	if #terrain_to_change > 0 then
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+	if #terrain_to_change1 > 0 then
+		local loc = terrain_to_change1[mathx.random(#terrain_to_change1)]
 		set_terrain { "Md^Xm",
 			f.all(
 				f.none(f.terrain("M*^*")),
@@ -207,10 +207,10 @@ function world_conquest_tek_map_repaint_4b()
 			f.adjacent(f.terrain("Md^Xm,Md"), "se,s,sw", 3)
 		),
 	}
-	local terrain_to_change = map:get_locations(f.terrain("Mv"))
+	local terrain_to_change2 = map:find(f.terrain("Mv"))
 
-	for i, v in ipairs(terrain_to_change) do
-		local loc = terrain_to_change[i]
+	for i, v in ipairs(terrain_to_change2) do
+		local loc = terrain_to_change2[i]
 		table.insert(prestart_event, wml.tag.sound_source {
 			id = "volcano" .. tostring(i),
 			sounds = "rumble.ogg",
@@ -276,12 +276,12 @@ function world_conquest_tek_map_repaint_4b()
 	}
 
 	-- mushrooms, base amount in map surface
-	local terrain_to_change = map:get_locations(f.terrain("Hhd,Hhd^F^*"))
-	helper.shuffle(terrain_to_change)
-	local r = helper.rand(tostring(total_tiles // 600) .. ".." .. tostring(total_tiles // 300))
+	local terrain_to_change3 = map:find(f.terrain("Hhd,Hhd^F^*"))
+	mathx.shuffle(terrain_to_change3)
+	local r1 = mathx.random_choice(tostring(total_tiles // 600) .. ".." .. tostring(total_tiles // 300))
 
-	for mush_i = 1, math.min(r, #terrain_to_change) do
-		map[terrain_to_change[mush_i]] = "Hhd^Uf"
+	for mush_i = 1, math.min(r1, #terrain_to_change3) do
+		map[terrain_to_change3[mush_i]] = "Hhd^Tf"
 	end
 	-- chances of few orcish castles
 	wct_possible_map4_castle("Co", 2)
@@ -315,14 +315,14 @@ function world_conquest_tek_map_repaint_4b()
 	}
 
 	-- whirpools
-	local whirlpool_candidats  = map:get_locations(f.all(
+	local whirlpool_candidats  = map:find(f.all(
 		f.terrain("Ww"),
 		f.adjacent(f.terrain("Wo")),
 		f.adjacent(f.terrain("Uue"))
 	))
 
-	helper.shuffle(whirlpool_candidats)
-	for i = 1, #whirlpool_candidats // wesnoth.random(4, 15) do
+	mathx.shuffle(whirlpool_candidats)
+	for i = 1, #whirlpool_candidats // mathx.random(4, 15) do
 
 		local loc = whirlpool_candidats[i]
 		table.insert(prestart_event, wml.tag.item {
@@ -352,13 +352,13 @@ function world_conquest_tek_map_repaint_4b()
 	}
 
 	-- very dirt coast
-	local terrain_to_change = map:get_locations(f.terrain("Ds"))
+	local terrain_to_change = map:find(f.terrain("Ds"))
 
-	helper.shuffle(terrain_to_change)
-	for i = 1, #terrain_to_change // wesnoth.random(3, 4) do
+	mathx.shuffle(terrain_to_change)
+	for i = 1, #terrain_to_change // mathx.random(3, 4) do
 		map[terrain_to_change[i]] = "Ds^Esd"
 	end
-	helper.shuffle(terrain_to_change)
+	mathx.shuffle(terrain_to_change)
 	for i = 1, #terrain_to_change // 6 do
 		map[terrain_to_change[i]] = "Ds^Es"
 	end
@@ -401,14 +401,16 @@ function world_conquest_tek_map_repaint_4b()
 	}
 
 
-	local r = wesnoth.random(20)
-	if r == 1 then
+	local r2 = mathx.random(20)
+	if r2 == 1 then
 		wct_change_map_water("g")
-	elseif r == 2 then
+	elseif r2 == 2 then
 		wct_change_map_water("t")
 	end
 
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Volcanic")

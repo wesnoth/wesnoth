@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/map/context_manager.hpp"
@@ -52,6 +54,7 @@
 #include "units/animation_component.hpp"
 #include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <functional>
 
@@ -67,7 +70,7 @@ editor_controller::editor_controller()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(*this, *reports_, controller_base::get_theme(game_config_, "editor")))
+	, gui_(new editor_display(*this, *reports_))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
@@ -95,7 +98,6 @@ editor_controller::editor_controller()
 void editor_controller::init_gui()
 {
 	gui_->change_display_context(&get_current_map_context());
-	preferences::set_preference_display_settings();
 	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
@@ -187,7 +189,7 @@ EXIT_STATUS editor_controller::main_loop()
 void editor_controller::status_table() {
 }
 
-void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.png" */)
 {
 	try {
 		surface screenshot = gui().screenshot(true);
@@ -237,7 +239,7 @@ void editor_controller::custom_tods_dialog()
 bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch (cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
@@ -585,7 +587,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 
 bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	SCOPE_ED;
 	using namespace hotkey;
 
@@ -856,7 +858,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			context_manager_->perform_refresh(editor_action_select_none());
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
-            context_manager_->fill_selection();
+			context_manager_->fill_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			context_manager_->perform_refresh(editor_action_shuffle_area(
@@ -875,6 +877,10 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		// map specific
 		case HOTKEY_EDITOR_MAP_CLOSE:
 			context_manager_->close_current_context();
+			// Copy behaviour from when switching windows to always reset the active tool to the Paint Tool
+			// This avoids the situation of having a scenario-specific tool active in a map context which can cause a crash if used
+			// Not elegant but at least avoids a potential crash and is consistent with existing behaviour
+			toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			context_manager_->load_map_dialog();
@@ -1005,8 +1011,8 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		const std::string& id = c["id"];
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
-			|| command.id == hotkey::HOTKEY_NULL)
+		if((can_execute_command(command) && (!context_menu || in_context_menu(command.command)))
+			|| command.command == hotkey::HOTKEY_NULL)
 		{
 			items.emplace_back("id", id);
 		}
@@ -1253,10 +1259,10 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		// last_undo is a non-owning pointer. Although it could have other uses, it seems to be
 		// mainly (only?) used for printing debugging information.
 		auto last_undo = get_current_map_context().last_undo_action();
-		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
+		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(1)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
-		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
+		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(3)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}

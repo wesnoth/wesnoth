@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -58,13 +59,13 @@ public:
 	variant get_member(const std::string& name) const;
 
 	/** Functions to test the type of the internal value. */
-	bool is_null()     const { return type() == VARIANT_TYPE::TYPE_NULL; }
-	bool is_int()      const { return type() == VARIANT_TYPE::TYPE_INT; }
-	bool is_decimal()  const { return type() == VARIANT_TYPE::TYPE_DECIMAL; }
-	bool is_callable() const { return type() == VARIANT_TYPE::TYPE_CALLABLE; }
-	bool is_list()     const { return type() == VARIANT_TYPE::TYPE_LIST; }
-	bool is_string()   const { return type() == VARIANT_TYPE::TYPE_STRING; }
-	bool is_map()      const { return type() == VARIANT_TYPE::TYPE_MAP; }
+	bool is_null()     const { return type() == formula_variant::type::null; }
+	bool is_int()      const { return type() == formula_variant::type::integer; }
+	bool is_decimal()  const { return type() == formula_variant::type::decimal; }
+	bool is_callable() const { return type() == formula_variant::type::object; }
+	bool is_list()     const { return type() == formula_variant::type::list; }
+	bool is_string()   const { return type() == formula_variant::type::string; }
+	bool is_map()      const { return type() == formula_variant::type::map; }
 
 	int as_int() const;
 
@@ -81,7 +82,7 @@ public:
 
 	const_formula_callable_ptr as_callable() const
 	{
-		must_be(VARIANT_TYPE::TYPE_CALLABLE);
+		must_be(formula_variant::type::object);
 		return value_cast<variant_callable>()->get_callable();
 	}
 
@@ -146,7 +147,7 @@ public:
 	/** Gets string name of the current value type */
 	std::string type_string() const
 	{
-		return type().to_string();
+		return formula_variant::get_string(type());
 	}
 
 	variant execute_variant(const variant& to_exec);
@@ -158,11 +159,11 @@ private:
 		return wfl::value_cast<T>(value_);
 	}
 
-	void must_be(VARIANT_TYPE t) const;
+	void must_be(formula_variant::type t) const;
 
-	void must_both_be(VARIANT_TYPE t, const variant& second) const;
+	void must_both_be(formula_variant::type t, const variant& second) const;
 
-	VARIANT_TYPE type() const
+	formula_variant::type type() const
 	{
 		return value_->get_type();
 	}
@@ -204,7 +205,7 @@ public:
 	 * @param value   A pointer to a variant value representing the container.
 	 * @param iter    An underlying iterator for the underlying container.
 	 */
-	variant_iterator(const variant_value_base* value, const boost::any& iter);
+	variant_iterator(const variant_value_base* value, const utils::any& iter);
 
 	variant operator*() const;
 	variant_iterator& operator++();
@@ -214,9 +215,9 @@ public:
 	bool operator==(const variant_iterator& that) const;
 	bool operator!=(const variant_iterator& that) const;
 private:
-	VARIANT_TYPE type_;
+	formula_variant::type type_;
 	const variant_value_base* container_;
-	boost::any iter_;
+	utils::any iter_;
 };
 
 }

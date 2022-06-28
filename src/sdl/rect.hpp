@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -87,22 +88,6 @@ SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
  * @return                        The union of rect1 and rect2.
  */
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
-
-/**
- * Draw a rectangle outline.
- *
- * @param rect                    The dimensions of the rectangle.
- * @param color                   The color of the rectangle.
- */
-void draw_rectangle(const SDL_Rect& rect, const color_t& color);
-
-/**
- * Draws a filled rectangle.
- *
- * @param rect                    The dimensions of the rectangle.
- * @param color                   The color of the rectangle.
- */
-void fill_rectangle(const SDL_Rect& rect, const color_t& color);
 
 /**
  * Fill a rectangle on a given surface. Alias for SDL_FillRect.

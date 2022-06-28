@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2013 - 2018 by Felix Bauer
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2022
+	by Felix Bauer
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -48,6 +49,9 @@
 static lg::log_domain log_ai_recruitment("ai/recruitment");
 #define LOG_AI_RECRUITMENT LOG_STREAM(info, log_ai_recruitment)
 #define ERR_AI_RECRUITMENT LOG_STREAM(err, log_ai_recruitment)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace ai {
 
@@ -246,7 +250,8 @@ void recruitment::execute() {
 		// Add team recruits.
 		for (const std::string& recruit : current_team().recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::log_to_chat() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				ERR_WML << "Unit-type \"" << recruit << "\" doesn't exist.";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;
@@ -256,7 +261,8 @@ void recruitment::execute() {
 		// Add extra recruits.
 		for (const std::string& recruit : leader->recruits()) {
 			if (!unit_types.find(recruit)) {
-				lg::wml_error() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				lg::log_to_chat() << "Unit-type \"" << recruit << "\" doesn't exist.\n";
+				ERR_WML << "Unit-type \"" << recruit << "\" doesn't exist.";
 			}
 			data.recruits.insert(recruit);
 			data.scores[recruit] = 0.0;

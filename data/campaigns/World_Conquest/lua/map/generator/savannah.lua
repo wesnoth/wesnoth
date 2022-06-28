@@ -30,11 +30,11 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_temperature("Gg,Gs", 460, 520, "Gs^Ft"),
 		-- fungus appears at medium temperatures and extremely high elevation
 		-- DR_CONVERT MIN_HT MAX_HT MIN_TMP MAX_TMP FROM TO
-		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Uf"),
+		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Tf"),
 		-- lava appears at extreme temperatures and elevation
-		dr_convert(800, nil, 900, nil, "Uu, Uh, Uu^Uf", "Ql"),
+		dr_convert(800, nil, 900, nil, "Uu, Uh, Uu^Tf", "Ql"),
 		-- desert appears at high temperatures
 		dr_temperature("Gs", 475, 500, "Dd"),
 		dr_temperature("Gs", 600, 650, "Dd"),

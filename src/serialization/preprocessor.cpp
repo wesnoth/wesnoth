@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -160,6 +161,17 @@ void preproc_define::write_argument(config_writer& writer, const std::string& ar
 	writer.close_child(key);
 }
 
+void preproc_define::write_argument(config_writer& writer, const std::string& arg, const std::string& default_value) const
+{
+	const std::string key = "argument";
+
+	writer.open_child(key);
+
+	writer.write_key_val("name", arg);
+	writer.write_key_val("default", default_value);
+	writer.close_child(key);
+}
+
 void preproc_define::write(config_writer& writer, const std::string& name) const
 {
 	const std::string key = "preproc_define";
@@ -171,8 +183,20 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
 
+	if(is_deprecated()) {
+		writer.open_child("deprecated");
+		writer.write_key_val("level", int(*deprecation_level));
+		writer.write_key_val("version", deprecation_version.str());
+		writer.write_key_val("message", deprecation_message);
+		writer.close_child("deprecated");
+	}
+
 	for(const std::string& arg : arguments) {
 		write_argument(writer, arg);
+	}
+
+	for(const auto& [key, default_value] : optional_arguments) {
+		write_argument(writer, key, default_value);
 	}
 
 	writer.close_child(key);
@@ -180,7 +204,11 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 
 void preproc_define::read_argument(const config& cfg)
 {
-	arguments.push_back(cfg["name"]);
+	if(cfg.has_attribute("default")) {
+		optional_arguments.emplace(cfg["name"], cfg["default"]);
+	} else {
+		arguments.push_back(cfg["name"]);
+	}
 }
 
 void preproc_define::read(const config& cfg)
@@ -189,6 +217,12 @@ void preproc_define::read(const config& cfg)
 	textdomain = cfg["textdomain"].str();
 	linenum = cfg["linenum"];
 	location = cfg["location"].str();
+
+	if(auto deprecated = cfg.optional_child("deprecated")) {
+		deprecation_level = DEP_LEVEL(deprecated.value()["level"].to_int());
+		deprecation_version = deprecated.value()["version"].str();
+		deprecation_message = deprecated.value()["message"].str();
+	}
 
 	for(const config& arg : cfg.child_range("argument")) {
 		read_argument(arg);
@@ -616,27 +650,27 @@ class preprocessor_data : public preprocessor
 	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
-		enum TOKEN_TYPE {
-			START,        // Toplevel
-			PROCESS_IF,   // Processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
-			PROCESS_ELSE, // Processing the "else" branch of a ifdef/ifndef
-			SKIP_IF,      // Skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
-			SKIP_ELSE,    // Skipping the "else" branch of a ifdef/ifndef
-			STRING,       // Processing a string
-			VERBATIM,     // Processing a verbatim string
-			MACRO_SPACE,  // Processing between chunks of a macro call (skip spaces)
-			MACRO_CHUNK,  // Processing inside a chunk of a macro call (stop on space or '(')
-			MACRO_PARENS  // Processing a parenthesized macro argument
+		enum class token_type {
+			start,        // Toplevel
+			process_if,   // Processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
+			process_else, // Processing the "else" branch of a ifdef/ifndef
+			skip_if,      // Skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
+			skip_else,    // Skipping the "else" branch of a ifdef/ifndef
+			string,       // Processing a string
+			verbatim,     // Processing a verbatim string
+			macro_space,  // Processing between chunks of a macro call (skip spaces)
+			macro_chunk,  // Processing inside a chunk of a macro call (stop on space or '(')
+			macro_parens  // Processing a parenthesized macro argument
 		};
 
-		token_desc(TOKEN_TYPE type, const int stack_pos, const int linenum)
+		token_desc(token_type type, const int stack_pos, const int linenum)
 			: type(type)
 			, stack_pos(stack_pos)
 			, linenum(linenum)
 		{
 		}
 
-		TOKEN_TYPE type;
+		token_type type;
 
 		/** Starting position in #strings_ of the delayed text for this chunk. */
 		int stack_pos;
@@ -689,7 +723,7 @@ class preprocessor_data : public preprocessor
 
 	void skip_spaces();
 	void skip_eol();
-	void push_token(token_desc::TOKEN_TYPE);
+	void push_token(token_desc::token_type);
 	void pop_token();
 	void put(char);
 	void put(const std::string& /*, int change_line = 0 */);
@@ -713,28 +747,28 @@ public:
 		return is_define_ ? PARSES_MACRO : PARSES_FILE;
 	}
 
-	friend bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char);
-	friend bool operator==(char, preprocessor_data::token_desc::TOKEN_TYPE);
-	friend bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE, char);
-	friend bool operator!=(char, preprocessor_data::token_desc::TOKEN_TYPE);
+	friend bool operator==(preprocessor_data::token_desc::token_type, char);
+	friend bool operator==(char, preprocessor_data::token_desc::token_type);
+	friend bool operator!=(preprocessor_data::token_desc::token_type, char);
+	friend bool operator!=(char, preprocessor_data::token_desc::token_type);
 };
 
-bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char)
+bool operator==(preprocessor_data::token_desc::token_type, char)
 {
 	throw std::logic_error("don't compare tokens with characters");
 }
 
-bool operator==(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
+bool operator==(char lhs, preprocessor_data::token_desc::token_type rhs)
 {
 	return rhs == lhs;
 }
 
-bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE rhs, char lhs)
+bool operator!=(preprocessor_data::token_desc::token_type rhs, char lhs)
 {
 	return !(lhs == rhs);
 }
 
-bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
+bool operator!=(char lhs, preprocessor_data::token_desc::token_type rhs)
 {
 	return rhs != lhs;
 }
@@ -840,27 +874,27 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		t.textdomain_ = domain;
 	}
 
-	push_token(token_desc::START);
+	push_token(token_desc::token_type::start);
 }
 
-void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
+void preprocessor_data::push_token(token_desc::token_type t)
 {
 	tokens_.emplace_back(t, strings_.size(), linenum_);
 
-	if(t == token_desc::MACRO_SPACE) {
+	if(t == token_desc::token_type::macro_space) {
 		// Macro expansions do not have any associated storage at start.
 		return;
-	} else if(t == token_desc::STRING || t == token_desc::VERBATIM) {
+	} else if(t == token_desc::token_type::string || t == token_desc::token_type::verbatim) {
 		/* Quoted strings are always inlined in the parent token. So
 		 * they need neither storage nor metadata, unless the parent
 		 * token is a macro expansion.
 		 */
-		token_desc::TOKEN_TYPE& outer_type = tokens_[tokens_.size() - 2].type;
-		if(outer_type != token_desc::MACRO_SPACE) {
+		token_desc::token_type& outer_type = tokens_[tokens_.size() - 2].type;
+		if(outer_type != token_desc::token_type::macro_space) {
 			return;
 		}
 
-		outer_type = token_desc::MACRO_CHUNK;
+		outer_type = token_desc::token_type::macro_chunk;
 		tokens_.back().stack_pos = strings_.size() + 1;
 	}
 
@@ -875,39 +909,39 @@ void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 
 void preprocessor_data::pop_token()
 {
-	token_desc::TOKEN_TYPE inner_type = tokens_.back().type;
+	token_desc::token_type inner_type = tokens_.back().type;
 	unsigned stack_pos = tokens_.back().stack_pos;
 
 	tokens_.pop_back();
 
-	token_desc::TOKEN_TYPE& outer_type = tokens_.back().type;
+	token_desc::token_type& outer_type = tokens_.back().type;
 
-	if(inner_type == token_desc::MACRO_PARENS) {
+	if(inner_type == token_desc::token_type::macro_parens) {
 		// Parenthesized macro arguments are left on the stack.
-		assert(outer_type == token_desc::MACRO_SPACE);
+		assert(outer_type == token_desc::token_type::macro_space);
 		return;
 	}
 
-	if(inner_type == token_desc::STRING || inner_type == token_desc::VERBATIM) {
+	if(inner_type == token_desc::token_type::string || inner_type == token_desc::token_type::verbatim) {
 		// Quoted strings are always inlined.
 		assert(stack_pos == strings_.size());
 		return;
 	}
 
-	if(outer_type == token_desc::MACRO_SPACE) {
+	if(outer_type == token_desc::token_type::macro_space) {
 		/* A macro expansion does not have any associated storage.
 		 * Instead, storage of the inner token is not discarded
 		 * but kept as a new macro argument. But if the inner token
 		 * was a macro expansion, it is about to be appended, so
 		 * prepare for it.
 		 */
-		if(inner_type == token_desc::MACRO_SPACE || inner_type == token_desc::MACRO_CHUNK) {
+		if(inner_type == token_desc::token_type::macro_space || inner_type == token_desc::token_type::macro_chunk) {
 			strings_.erase(strings_.begin() + stack_pos, strings_.end());
 			strings_.emplace_back();
 		}
 
 		assert(stack_pos + 1 == strings_.size());
-		outer_type = token_desc::MACRO_CHUNK;
+		outer_type = token_desc::token_type::macro_chunk;
 
 		return;
 	}
@@ -1049,7 +1083,7 @@ void preprocessor_data::conditional_skip(bool skip)
 		++skipping_;
 	}
 
-	push_token(skip ? token_desc::SKIP_ELSE : token_desc::PROCESS_IF);
+	push_token(skip ? token_desc::token_type::skip_else : token_desc::token_type::process_if);
 }
 
 bool preprocessor_data::get_chunk()
@@ -1063,25 +1097,25 @@ bool preprocessor_data::get_chunk()
 		char const* s;
 
 		switch(token.type) {
-		case token_desc::START:
+		case token_desc::token_type::start:
 			return false; // everything is fine
-		case token_desc::PROCESS_IF:
-		case token_desc::SKIP_IF:
-		case token_desc::PROCESS_ELSE:
-		case token_desc::SKIP_ELSE:
+		case token_desc::token_type::process_if:
+		case token_desc::token_type::skip_if:
+		case token_desc::token_type::process_else:
+		case token_desc::token_type::skip_else:
 			s = "#ifdef or #ifndef";
 			break;
-		case token_desc::STRING:
+		case token_desc::token_type::string:
 			s = "Quoted string";
 			break;
-		case token_desc::VERBATIM:
+		case token_desc::token_type::verbatim:
 			s = "Verbatim string";
 			break;
-		case token_desc::MACRO_CHUNK:
-		case token_desc::MACRO_SPACE:
+		case token_desc::token_type::macro_chunk:
+		case token_desc::token_type::macro_space:
 			s = "Macro substitution";
 			break;
-		case token_desc::MACRO_PARENS:
+		case token_desc::token_type::macro_parens:
 			s = "Macro argument";
 			break;
 		default:
@@ -1111,7 +1145,7 @@ bool preprocessor_data::get_chunk()
 		buffer += '\n';
 		// line_change = 1-1 = 0
 		put(buffer);
-	} else if(token.type == token_desc::VERBATIM) {
+	} else if(token.type == token_desc::token_type::verbatim) {
 		put(c);
 
 		if(c == '>' && in_.peek() == '>') {
@@ -1120,25 +1154,25 @@ bool preprocessor_data::get_chunk()
 		}
 	} else if(c == '<' && in_.peek() == '<') {
 		in_.get();
-		push_token(token_desc::VERBATIM);
+		push_token(token_desc::token_type::verbatim);
 		put('<');
 		put('<');
 	} else if(c == '"') {
-		if(token.type == token_desc::STRING) {
+		if(token.type == token_desc::token_type::string) {
 			parent_.quoted_ = false;
 			put(c);
 			pop_token();
 		} else if(!parent_.quoted_) {
 			parent_.quoted_ = true;
-			push_token(token_desc::STRING);
+			push_token(token_desc::token_type::string);
 			put(c);
 		} else {
 			parent_.error("Nested quoted string", linenum_);
 		}
 	} else if(c == '{') {
-		push_token(token_desc::MACRO_SPACE);
+		push_token(token_desc::token_type::macro_space);
 		++slowpath_;
-	} else if(c == ')' && token.type == token_desc::MACRO_PARENS) {
+	} else if(c == ')' && token.type == token_desc::token_type::macro_parens) {
 		pop_token();
 	} else if(c == '#' && !parent_.quoted_) {
 		std::string command = read_word();
@@ -1337,24 +1371,24 @@ bool preprocessor_data::get_chunk()
 				parent_.error(err, linenum_);
 			}
 		} else if(command == "else") {
-			if(token.type == token_desc::SKIP_ELSE) {
+			if(token.type == token_desc::token_type::skip_else) {
 				pop_token();
 				--skipping_;
-				push_token(token_desc::PROCESS_ELSE);
-			} else if(token.type == token_desc::PROCESS_IF) {
+				push_token(token_desc::token_type::process_else);
+			} else if(token.type == token_desc::token_type::process_if) {
 				pop_token();
 				++skipping_;
-				push_token(token_desc::SKIP_IF);
+				push_token(token_desc::token_type::skip_if);
 			} else {
 				parent_.error("Unexpected #else", linenum_);
 			}
 		} else if(command == "endif") {
 			switch(token.type) {
-			case token_desc::SKIP_IF:
-			case token_desc::SKIP_ELSE:
+			case token_desc::token_type::skip_if:
+			case token_desc::token_type::skip_else:
 				--skipping_;
-			case token_desc::PROCESS_IF:
-			case token_desc::PROCESS_ELSE:
+			case token_desc::token_type::process_if:
+			case token_desc::token_type::process_else:
 				break;
 			default:
 				parent_.error("Unexpected #endif", linenum_);
@@ -1413,21 +1447,21 @@ bool preprocessor_data::get_chunk()
 			std::string detail = read_rest_of_line();
 			deprecated_message(get_filename(parent_.location_), level, version, detail);
 		} else {
-			comment = token.type != token_desc::MACRO_SPACE;
+			comment = token.type != token_desc::token_type::macro_space;
 		}
 
 		skip_eol();
 		if(comment) {
 			put('\n');
 		}
-	} else if(token.type == token_desc::MACRO_SPACE || token.type == token_desc::MACRO_CHUNK) {
+	} else if(token.type == token_desc::token_type::macro_space || token.type == token_desc::token_type::macro_chunk) {
 		if(c == '(') {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = token_desc::MACRO_SPACE;
-			push_token(token_desc::MACRO_PARENS);
+			token.type = token_desc::token_type::macro_space;
+			push_token(token_desc::token_type::macro_parens);
 		} else if(utils::portable_isspace(c)) {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = token_desc::MACRO_SPACE;
+			token.type = token_desc::token_type::macro_space;
 		} else if(c == '}') {
 			--slowpath_;
 			if(skipping_) {
@@ -1634,13 +1668,13 @@ bool preprocessor_data::get_chunk()
 				parent_.error("Too many nested preprocessing inclusions", linenum_);
 			}
 		} else if(!skipping_) {
-			if(token.type == token_desc::MACRO_SPACE) {
+			if(token.type == token_desc::token_type::macro_space) {
 				std::ostringstream s;
 				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
 				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
 
 				strings_.push_back(s.str());
-				token.type = token_desc::MACRO_CHUNK;
+				token.type = token_desc::token_type::macro_chunk;
 			}
 			put(c);
 		}

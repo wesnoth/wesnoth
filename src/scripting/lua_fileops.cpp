@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_fileops.hpp"
@@ -20,20 +21,61 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
+#include "picture.hpp"
+#include "sdl/point.hpp"
+#include "sdl/surface.hpp"
 
 #include <algorithm>
 #include <exception>
 #include <string>
-
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+/**
+* Gets the dimension of an image.
+* - Arg 1: string.
+* - Ret 1: width.
+* - Ret 2: height.
+*/
+static int intf_get_image_size(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	image::locator img(m);
+	if(!img.file_exists()) return 0;
+	const point s = get_size(img);
+	lua_pushinteger(L, s.x);
+	lua_pushinteger(L, s.y);
+	return 2;
+}
+
+/**
+ * Returns true if an asset with the given path can be found in the binary paths.
+ * - Arg 1: asset type (generally one of images, sounds, music, maps)
+ * - Arg 2: relative path
+ */
+static int intf_have_asset(lua_State* L)
+{
+	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	lua_pushboolean(L, !filesystem::get_binary_file_location(type, name).empty());
+	return 1;
+}
+
+/**
+ * Given an asset path relative to binary paths, resolves to an absolute
+ * asset path starting from data/
+ * - Arg 1: asset type
+ * - Arg 2: relative path
+ */
+static int intf_resolve_asset(lua_State* L)
+{
+	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	lua_push(L, filesystem::get_independent_binary_file_path(type, name));
+	return 1;
+}
 
 namespace lua_fileops {
 static std::string get_calling_file(lua_State* L)
@@ -219,7 +261,7 @@ public:
 		lua_filestream* lfs = static_cast<lua_filestream*>(data);
 
 		//int startpos = lfs->pistream_->tellg();
-		lfs->pistream_->read(lfs->buff_, LUAL_BUFFERSIZE);
+		lfs->pistream_->read(lfs->buff_, luaL_buffersize);
 		//int newpos = lfs->pistream_->tellg();
 		*size = lfs->pistream_->gcount();
 #if 0
@@ -242,7 +284,7 @@ public:
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}
 private:
-	char buff_[LUAL_BUFFERSIZE];
+	char buff_[luaL_buffersize];
 	const std::unique_ptr<std::istream> pistream_;
 };
 
@@ -272,6 +314,22 @@ int load_file(lua_State *L)
 	}
 	lua_remove(L, -2);	//remove the filename from the stack
 
+	return 1;
+}
+
+int luaW_open(lua_State* L)
+{
+	static luaL_Reg const callbacks[] {
+		{ "have_file", &lua_fileops::intf_have_file },
+		{ "read_file", &lua_fileops::intf_read_file },
+		{ "canonical_path", &lua_fileops::intf_canonical_path },
+		{ "image_size", &intf_get_image_size },
+		{ "have_asset", &intf_have_asset },
+		{ "resolve_asset", &intf_resolve_asset },
+		{ nullptr, nullptr }
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, callbacks, 0);
 	return 1;
 }
 

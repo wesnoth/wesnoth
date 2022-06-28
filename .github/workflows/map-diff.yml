@@ -1,0 +1,70 @@
+name: Map Diff
+
+on:
+  pull_request_target:
+    paths:
+    - '**.map'
+
+jobs:
+  comment-map-diff:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3.0.0
+    - uses: actions/setup-node@v3.0.0
+      with:
+        node-version: '16'
+    - name: Package install
+      run: |
+        cd ./utils/wesnoth-map-diff
+        npm install
+    - name: Package build
+      run: |
+        cd ./utils/wesnoth-map-diff
+        npm run build:prod
+    - name: Get maps diff
+      id: get-maps-diff
+      run: |
+        sudo apt-get install -y pngquant
+        comment_body=""
+
+        cd ./utils/wesnoth-map-diff
+
+        ## Get maps changed
+        git fetch --depth=1 origin ${{ github.event.pull_request.head.sha }}
+        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.head.sha }} | grep '\.map$')
+
+        for map_path in "${map_paths[@]}"
+        do
+          ## Get old map version
+          map_filename=${map_path##*/}
+          git show ${{ github.event.pull_request.head.sha }}:"$map_path" > "$map_filename"
+
+          ## Run map diff
+          diff_image=${map_filename%.map}.png
+          node ./build/index.js "./$map_filename" "../../$map_path" "./$diff_image"
+
+          ## Compress image
+          pngquant "$diff_image" -o "$diff_image" --force
+
+          ## Write comment body
+          image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
+            -F "image=@\"$diff_image\"" | jq ".data.link" -r)
+
+          comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
+        done
+
+        echo "::set-output name=COMMENT_BODY::$comment_body"
+    - name: Find comment
+      uses: peter-evans/find-comment@v2
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+    - name: Add comment
+      uses: peter-evans/create-or-update-comment@v1.4.5
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        edit-mode: replace
+        body: |
+          ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}

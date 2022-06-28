@@ -5,7 +5,7 @@ local res = {}
 res.quick_4mp_leaders = function(args)
 	local make_4mp_leaders_quick = wml.variables["make_4mp_leaders_quick"]
 	if make_4mp_leaders_quick == nil then
-		make_4mp_leaders_quick = wesnoth.game_config.mp_settings and (wesnoth.game_config.mp_settings.mp_campaign == "")
+		make_4mp_leaders_quick = wesnoth.scenario.mp_settings and (wesnoth.scenario.mp_settings.mp_campaign == "")
 	end
 	if not make_4mp_leaders_quick then
 		return
@@ -24,7 +24,7 @@ end
 res.turns_over_advantage = function()
 	local show_turns_over_advantage = wml.variables["show_turns_over_advantage"]
 	if show_turns_over_advantage == nil then
-		show_turns_over_advantage = wesnoth.game_config.mp_settings and (wesnoth.game_config.mp_settings.mp_campaign == "")
+		show_turns_over_advantage = wesnoth.scenario.mp_settings and (wesnoth.scenario.mp_settings.mp_campaign == "")
 	end
 	if not show_turns_over_advantage then
 		return
@@ -42,58 +42,61 @@ res.turns_over_advantage = function()
 	local income_factor = 5
 
 	local winning_sides = {}
-	local tie = true
 	local total_score = -1
 	local side_comparison = ""
-	local color = "#000000"
+	local winners_color = "#000000"
 	for side, team in all_sides() do
 		if not team.__cfg.hidden then
-			local r, g, b = 255, 255, 255
-			if     team.__cfg.color == 1 then r, g, b = 255,   0,   0
-			elseif team.__cfg.color == 2 then r, g, b =   0,   0, 255
-			elseif team.__cfg.color == 3 then r, g, b =   0, 255,   0
-			elseif team.__cfg.color == 4 then r, g, b = 155,  48, 255
-			elseif team.__cfg.color == 5 then r, g, b =   0,   0,   0
-			elseif team.__cfg.color == 6 then r, g, b = 165,  42,  42
-			elseif team.__cfg.color == 7 then r, g, b = 255, 165,   0
-			elseif team.__cfg.color == 8 then r, g, b = 255, 255, 255
-			elseif team.__cfg.color == 9 then r, g, b =   0, 128, 128 end
+			local side_color = wesnoth.colors[team.color].pango_color
 			if # wesnoth.units.find_on_map( { side = side } ) == 0 then
-				side_comparison = side_comparison .. string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
-				r, g, b, side)
+				-- po: In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
+				local side_text = _ "<span strikethrough='true' foreground='$side_color'>Side $side_number</span>:  Has lost all units"
+				-- The double new-line here is to balance with the other sides getting a line for "Grand total"
+				side_comparison = side_comparison .. side_text:vformat{side_color = side_color, side_number = side} .. "\n\n"
 			else
 				local income = team.total_income * income_factor
 				local units = 0
 				-- Calc the total unit-score here
 				for i, unit in ipairs( wesnoth.units.find_on_map { side = side } ) do
 					if not unit.__cfg.canrecruit then
-						wesnoth.fire("unit_worth", { id = unit.id })
+						wml.fire("unit_worth", { id = unit.id })
 						units = units + wml.variables["unit_worth"]
 					end
 				end
 				-- Up to here
 				local total = units + team.gold + income
-				side_comparison = side_comparison .. string.format( tostring( _ "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit score = %d  Gold = %d") .. "\n" .. tostring( _ "Grand total: <b>%d</b>") .. "\n",
-				r, g, b, side, income, units, team.gold, total)
+				-- po: In the end-of-match summary, any side that still has units left
+				local side_text = _ "<span foreground='$side_color'>Side $side_number</span>:  Income score = $income  Unit score = $units  Gold = $gold\nGrand total: <b>$total</b>"
+				side_comparison = side_comparison .. side_text:vformat{side_color = side_color, side_number = side, income = income, units = units, gold = team.gold, total = total} .. "\n"
 				if total > total_score then
-					color = string.format("#%02x%02x%02x", r, g, b)
+					winners_color = side_color
 					winning_sides = {side}
-					tie = false
 					total_score = total
 				elseif total == total_score then
 					table.insert(winning_sides, side)
-					tie = true
 				end
 			end
 		end
 	end
 
-	if tie then
-		local last_winning_side = table.remove(winning_sides)
-		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "Sides %s and %d are tied."), table.concat(winning_sides, ", "), last_winning_side)
-	else
-		side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, winning_sides[1])
+	if #winning_sides == 1 then
+		-- po: In the end-of-match summary, there's a single side that's won.
+		local comparison_text = _ "<span foreground='$side_color'>Side $side_number</span> has the advantage."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], side_color = winners_color}
+	elseif #winning_sides == 2 then
+		-- po: In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
+		-- Separated from the three-or-more text in case a language differentiates "two sides" vs "three sides".
+		local comparison_text = _ "Sides $side_number and $other_side_number are tied."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], other_side_number = winning_sides[2]}
+	elseif #winning_sides ~= 0 then
+		local winners = stringx.format_conjunct_list("", winning_sides)
+		-- po: In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
+		local comparison_text = _ "Sides $winners are tied."
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{winners = winners}
 	end
-	wesnoth.fire("message", { message = side_comparison, speaker = "narrator", image = "wesnoth-icon.png"})
+	-- if #winning_sides==0, then every side either has no units or has a negative score
+
+	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+	local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
 end
 return res

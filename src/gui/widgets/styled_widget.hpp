@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -77,7 +78,7 @@ public:
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
 	 */
-	virtual void set_members(const string_map& data);
+	virtual void set_members(const widget_item& data);
 
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 
@@ -112,7 +113,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -452,20 +453,16 @@ public:
 	 *
 	 * 2) Having a static type getter allows the type string to be fetched without
 	 *    constructing an instance of the widget. A good example of this usecase is
-	 *    in build_single_widget_and_cast_to.
+	 *    in build_single_widget_instance.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground() override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
@@ -548,7 +545,7 @@ public:
 
 	using builder_widget::build;
 
-	virtual widget* build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

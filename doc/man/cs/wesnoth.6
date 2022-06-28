@@ -1,0 +1,444 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2021 wesnoth "Bitva o Wesnoth"
+.
+.SH NÁZEV
+wesnoth\ – Bitva o Wesnoth, tahová fantasy strategická hra
+.
+.SH POUŽITÍ
+.
+\fBwesnoth\fP [\fIVOLBY\fP] [\fICESTA_K_DATŮM\fP]
+.
+.SH POPIS
+.
+Bitva o \fBWesnoth\fP je tahová fantasy strategická hra.
+
+Poraz všechny nepřátelské vůdce použitím vhodně zvolené sestavy jednotek,
+dbaje přitom na množství zlata a\ vesnic. Všechny jednotky mají své silné
+stránky i\ slabiny; cesta k\ vítězství vede i\ přes postupné posilování
+vlastních jednotek a\ zabránění soupeři v\ tomtéž. Tak jak jednotky získávají
+zkušenosti, získávají i\ nové schopnosti a\ stávají se silnějšími. Hraj ve
+svém rodném jazyce a\ otestuj si své schopnosti proti silnému počítači nebo
+se připoj k\ velké komunitě hráčů Wesnothu hrajících po síti hry více
+hráčů. Vytvoř si vlastní jednotky, scénáře a\ tažení a\ poděl se o\ ně
+s\ ostatními.
+.
+.SH VOLBY
+.
+.TP 
+\fB\-\-all\-translations\fP
+V\ seznamu pro výběr jazyka uvnitř hry ukázat všechny překlady, i\ když jsou
+považovány za nedostatečně hotové.
+.TP 
+\fB\-\-bunzip2\fP\fI\ vstupní_soubor.bz2\fP
+dekomprimuje soubor, který by měl být ve formátu bzip2, a\ uloží jej bez
+přípony .bz2. Původní \fIvstupní_soubor.bz2\fP bude odstraněn.
+.TP 
+\fB\-\-bzip2\fP\fI\ vstupní_soubor\fP
+zkomprimuje soubor do formátu bzip2, uloží jej jako \fIvstupní_soubor\fP.bz2
+a\ odstraní \fIvstupní_soubor\fP.
+.TP 
+\fB\-c[\fP\fIid_tažení\fP\fB],\ \-\-campaign[\fP\fI=id_tažení\fP\fB]\fP
+rovnou spustí tažení s\ identifikátorem \fIid_tažení\fP. Pokud není zadán
+identifikátor, objeví se menu s\ výběrem.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=obtížnost\fP\fB]\fP
+Obtížnost určeného tažení (1 až max.). Pokud tento parametr není přítomen,
+ukáže se ve hře menu s\ výběrem obtížnosti.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ id_scénáře\fP
+Určuje identifikátor scénáře v\ daném tažení. Výchozí hodnotou je první
+scénář.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+Přeskočí obrazovky s\ příběhem ([story]) a\ rozhovor až do konce události
+(event) \fBstart\fP.
+.TP 
+\fB\-\-clock\fP
+Přidá volbu pro ukázání hodin na testování časovače kreslení.
+.TP 
+\fB\-\-config\-dir\fP\fI\ název\fP
+Zastaralé, použij \fB\-\-userdata\-dir\fP.
+.TP 
+\fB\-\-config\-path\fP
+Zastaralé, použij \fB\-\-userdata\-path\fP.
+.TP 
+\fB\-\-core\fP\fI\ id_jádra\fP
+nahradí načtené jádro tím, jehož identifikátor je zadán.
+.TP 
+\fB\-\-data\-dir\fP\fI\ adresář\fP
+nahradí adresář s\ daty tím, který je zadán.
+.TP 
+\fB\-\-data\-path\fP
+vypíše cestu k\ adresáři s\ daty a\ skončí.
+.TP 
+\fB\-d, \-\-debug\fP
+povoluje ve hře další volby příkazového režimu (pro více informací
+o\ příkazovém režimu viz wiki stránku na
+https://www.wesnoth.org/wiki/CommandMode).
+.TP 
+\fB\-\-debug\-lua\fP
+zapíná některé mechanismy ladění Lua.
+.TP 
+\fB\-\-strict\-lua\fP
+nedovolit zastaralá volání Lua API.
+.TP 
+\fB\-D, \-\-diff\fP\fI\ levý\-soubor\fP\fB\ \fP\fIpravý\-soubor\fP
+porovná dva WML soubory. Nedojde k\ jejich předzpracování (k\ tomu je třeba
+projet je nejdřív volbou \fB\-p\fP). Rozdíl je jako DiffWML směrován na
+standardní výstup nebo do souboru označeného volbou \fI\-\-output\fP.
+.TP 
+\fB\-e[\fP\fIsoubor\fP\fB],\ \-\-editor[\fP\fI=soubor\fP\fB]\fP
+rovnou spustí vestavěný editor map. Pokud je zadán \fIsoubor\fP, je to stejné
+jako \fB\-l \-\-load\fP.
+.TP 
+\fB\-\-fps\fP
+zobrazuje v\ rohu obrazovky, na kolika snímcích za vteřinu hra právě běží,
+a\ také tyto hodnoty zapisuje do souboru v\ adresáři s\ uživatelskými daty.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+spouští hru v celoobrazovkovém režimu.
+.TP 
+\fB\-\-gunzip\fP\fI\ soubor_se_hrou\fP
+dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží
+jej bez koncovky .gz. Následně je \fIsoubor_se_hrou\fP smazán.
+.TP 
+\fB\-\-gzip\fP\fI\ soubor_se_hrou\fP
+komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží
+jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
+.TP 
+\fB\-h, \-\-help\fP
+zobrazí nápovědu k parametrům příkazové řádky a skončí.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ soubor\fP
+načte uloženou hru \fIsoubor\fP ze standardního adresáře pro uložené hry. Pokud
+je použit i\ přepínač \fB\-e\fP nebo \fB\-\-editor\fP, spustí editor a\ otevře
+\fIsoubor\fP s\ mapou. Jestliže se jedná o\ adresář, editor zobrazí okno pro
+načtení mapy v\ tomto umístění.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ jazyk\fP
+pro toto sezení použije daný \fIjazyk\fP (symbol). Příklad: \fB\-\-language
+pl_PL\fP.
+.TP 
+\fB\-\-log\-\fP\fIúroveň\fP\fB=\fP\fIoblast1\fP\fB,\fP\fIoblast2\fP\fB,\fP\fI...\fP
+nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro zahrnutí všech
+oblastí zaznamenávání lze použít \fBall\fP. Dostupné úrovně: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Pro většinu oblastí je výchozí
+použitá úroveň \fBwarning\fP, ale pro oblast \fBdeprecation\fP, pokud není
+společně s\ volbou \fB\-d\fP, je výchozí úrovní \fBnone\fP.
+.TP 
+\fB\-\-log\-precise\fP
+použije v\ záznamech časové značky s\ větší přesností.
+.TP 
+\fB\-\-log\-strict\fP
+nastaví úroveň přísnosti pro zaznamenávání. Jakékoli zprávy poslané oblastem
+zaznamenávání s touto nebo závažnější úrovní způsobí, že test součástí selže
+bez ohledu na vítězný výsledek. Má smysl pouze při použití s \fB\-u\fP.
+.TP 
+\fB\-\-logdomains[\fP\fI=filtr\fP\fB]\fP
+vypíše definované oblasti zaznamenávání (pokud je použit \fIfiltr\fP, pak pouze
+ty, které jej obsahují) a\ skončí.
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+počet snímků za sekundu, které může hra zobrazit. Hodnota by měla být mezi
+\fB1\fP a\ \fB1000\fP. Výchozí hodnotou je obnovovací frekvence monitoru.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+spustí hru více hráčů. Existují další volby, které lze s\ \fB\-\-multiplayer\fP
+použít, jak je vysvětleno níže.
+.TP 
+\fB\-\-mp\-test\fP
+načte testovací scénáře pro hru více hráčů.
+.TP 
+\fB\-\-new\-widgets\fP
+existuje nová knihovna grafických ovládacích prvků (WIP widget toolkit)
+a\ tato volba ji zapíná. Tohle je velmi experimentální. Nevyplňuj žádná
+chybová hlášení, protože o\ většině chyb se ví. Část této knihovny je
+považována za stabilní a\ bude pracovat bez tohoto přepínače.
+.TP 
+\fB\-\-nodelay\fP
+spustí hru bez jakýchkoli zpoždění pro otestování grafiky. Tohle je
+automaticky zapnuto volbou \fB\-\-nogui\fP.
+.TP 
+\fB\-\-noaddons\fP
+vypne načtení uživatelských rozšíření.
+.TP 
+\fB\-\-nocache\fP
+vypne ukládání herních dat do mezipaměti.
+.TP 
+\fB\-\-nogui\fP
+spustí hru bez grafického uživatelského rozhraní. Dostupné pouze ve spojení
+s\ \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP nebo \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+potlačí vykreslení úvodního znaku.
+.TP 
+\fB\-\-nomusic\fP
+spustí hru bez hudby.
+.TP 
+\fB\-\-noreplaycheck\fP
+nezkoušet ověřit záznam testu součástí. Má smysl pouze při použití s\ \fB\-u\fP.
+.TP 
+\fB\-\-nosound\fP
+spustí hru bez zvuků a\ hudby.
+.TP 
+\fB\-\-output\fP\fI\ soubor\fP
+uloží výstup do určeného souboru. Použitelné pro rozdílové operace.
+.TP 
+\fB\-\-password\fP\fI\ heslo\fP
+při připojování k\ serveru použije \fIheslo\fP a\ nevšímá si jiných
+nastavení. Riskantní.
+.TP 
+\fB\-\-plugin\fP\fI\ skript\fP
+(experimentální) načte \fIskript\fP, který definuje zásuvný modul
+Wesnothu. Podobné volbě \fB\-\-script\fP, ale Lua soubor by měl vrátit funkci,
+která poběží jako koprogram a\ bude pravidelně probouzena aktualizacemi.
+.TP 
+\fB\-P,\-\-patch\fP\fI\ výchozí\-soubor\fP\fB\ \fP\fIsoubor\-se\-záplatou\fP
+použije na WML soubor DiffWML záplatu. Žádný ze souborů
+nepředzpracovává. Záplatovaný WML směruje na standardní výstup nebo do
+souboru označeného volbou \fI\-\-output\fP.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ zdrojový\-soubor/složka\fP\fB\ \fP\fIcílový\-adresář\fP
+předzpracuje zadaný soubor či složku. Do určeného cílového adresáře bude pro
+každý soubor zapsán .cfg soubor se značkami (plain) a zpracovaný .cfg
+soubor. Pokud je zadána složka, bude zpracována rekurzivně podle známých
+pravidel preprocesoru. Společná makra z adresáře „data/core/macros“ budou
+předzpracována před zadanými zdroji. Příklad: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/výsledek\fP. Pro podrobné údaje týkající
+se preprocesoru navštiv:
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINICE1\fP\fB,\fP\fIDEFINICE2\fP\fB,\fP\fI...\fP
+seznam definic oddělených čárkami, které budou použity příkazem
+\fB\-\-preprocess\fP. Pokud je v\ seznamu definic \fBSKIP_CORE\fP, nebude
+předzpracován adresář „data/core“.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový\-soubor\fP
+použito pouze příkazem \fB\-\-preprocess\fP. Určuje soubor, který obsahuje značky
+\fB[preproc_define]\fP, pro začlenění definic dříve, než se spustí
+předzpracování.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=cílový\-soubor\fP\fB]\fP
+použito pouze příkazem \fB\-\-preprocess\fP. Zapíše všechna předzpracovaná makra
+do cílového souboru. Pokud soubor není určen, bude výstupem soubor
+„_MACROS_.cfg“ v\ cílovém adresáři příkazu preprocess. Výstupní soubor může
+být předán volbě \fB\-\-preprocess\-input\-macros\fP. Tento přepínač by měl být
+napsán před příkazem \fB\-\-preprocess\fP.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+nastaví rozlišení obrazovky. Příklad: \fB\-r\fP \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ obrázek\fP\fB\ \fP\fIvýstup\fP
+vezme pro wesnoth platný „řetězec cesty obrázku“, který obsahuje funkce
+cesty obrázku, a\ zapíše výstup do .png souboru. Funkce cesty obrázku jsou
+zdokumentovány na https://wiki.wesnoth.org/ImagePathFunctionWML.
+.TP 
+\fB\-R,\ \-\-report\fP
+inicializuje adresáře hry, vytiskne informace o\ sestavení vhodné pro použití
+v\ hlášeních o\ chybách a\ skončí.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ číslo\fP
+inicializuje generátor náhodných čísel semínkem \fIčíslo\fP. Příklad:
+\fB\-\-rng\-seed\fP \fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIvýstup\fP
+uloží snímek mapy \fImapa\fP do souboru \fIvýstup\fP, aniž inicializuje obrazovku.
+.TP 
+\fB\-\-script\fP\fI\ soubor\fP
+(experimentální) \fIsoubor\fP obsahující Lua skript na ovládání klienta.
+.TP 
+\fB\-s[\fP\fIhostitel\fP\fB],\ \-\-server[\fP\fI=hostitel\fP\fB]\fP
+připojí se k\ hostiteli, pokud je nějaký zadán, jinak se připojí k\ prvnímu
+serveru v\ nastavení. Příklad: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+nebere v\ úvahu žádnou zahrnutou volbu \fB\-\-nogui\fP a\ spustí hru s\ grafickým
+uživatelským rozhraním.
+.TP 
+\fB\-\-strict\-validation\fP
+chyby ověření jsou brány jako fatální.
+.TP 
+\fB\-t[\fP\fIid_scénáře\fP\fB],\ \-\-test[\fP\fI=id_scénáře\fP\fB]\fP
+spustí hru v\ malém testovacím scénáři. Scénář by měl být definován pomocí
+WML značky \fB[test]\fP. Výchozím je \fBtest\fP. Ukázku prvku \fB[micro_ai]\fP lze
+spustit pomocí \fBmicro_ai_test\fP. Zahrnuje \fB\-\-nogui\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ procent\fP
+nastaví od kolika \fIprocent\fP je překlad považován za dost hotový na to, aby
+se ukázal v\ seznamu jazyků uvnitř hry. Platné hodnoty jsou od 0 do 100.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ id\-scénáře\fP
+spustí zadaný testovací scénář jako test součástí (unit test). Zahrnuje
+\fB\-\-nogui\fP.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+zpřístupní lua skriptům balíček \fBpackage\fP, takže mohou načítat libovolné
+balíčky. Nedělej to s\ nedůvěryhodnými skripty! Tento krok dá lua skriptům
+stejná oprávnění, jaká má spustitelný soubor wesnoth.
+.TP 
+\fB\-S, \-\-use\-schema\fP\fI\ cesta\fP
+nastaví WML schéma pro použití s\ volbou \fB\-V, \-\-validate\fP.
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ název\fP
+nastaví \fInázev\fP adresáře s\ uživatelským nastavením v\ $HOME, nebo pro
+Windows v\ „My Documents\eMy Games“. Pro adresář s\ nastavením můžeš také
+určit absolutní cestu mimo $HOME nebo „My Documents\eMy Games“. Na Windows
+je kromě toho možné zadat adresář relativně k\ pracovnímu adresáři procesu
+užitím cesty, která začíná na „.\e“ nebo „..\e“. Pod X11 je výchozím
+adresářem $XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na jiných systémech
+je to cesta k\ uživatelským datům.
+.TP 
+\fB\-\-userconfig\-path\fP
+vytiskne cestu k\ adresáři s\ uživatelským nastavením a\ skončí.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ název\fP
+nastaví \fInázev\fP adresáře s\ uživatelskými daty v\ $HOME, nebo pro Windows
+v\ „My Documents\eMy Games“. Pro adresář s\ uživatelskými daty můžeš také
+určit absolutní cestu mimo $HOME nebo „My Documents\eMy Games“. Na Windows
+je kromě toho možné zadat adresář relativně k\ pracovnímu adresáři procesu
+užitím cesty, která začíná na „.\e“ nebo „..\e“.
+.TP 
+\fB\-\-userdata\-path\fP
+vytiskne cestu k\ adresáři s\ uživatelskými daty a\ skončí.
+.TP 
+\fB\-\-username\fP\fI\ uživatelské_jméno\fP
+při připojování k\ serveru použije \fIuživatelské_jméno\fP a\ nevšímá si jiných
+nastavení.
+.TP 
+\fB\-\-validate\fP\fI\ cesta\fP
+ověří soubor proti WML schématu.
+.TP 
+\fB\-\-validate\-addon\fP\fI\ id_rozšíření\fP
+ověřuje WML daného rozšíření, zatímco hraješ.
+.TP 
+\fB\-\-validate\-core\fP
+ověřuje WML jádra, zatímco hraješ.
+.TP 
+\fB\-\-validate\-schema\fP\fI\ cesta\fP
+ověří soubor jako WML schéma.
+.TP 
+\fB\-\-validcache\fP
+předpokládá, že mezipaměť je platná. (nebezpečné)
+.TP 
+\fB\-v, \-\-version\fP
+ukáže číslo verze a\ skončí.
+.TP 
+\fB\-\-simple\-version\fP
+ukáže číslo verze a\ nic jiného, pak skončí.
+.TP 
+\fB\-w, \-\-windowed\fP
+spustí hru v\ režimu okna.
+.TP 
+\fB\-\-with\-replay\fP
+přehraje záznam načtený volbou \fB\-\-load\fP.
+.
+.SH "Volby pro \-\-multiplayer"
+.
+Volby hry více hráčů pro určitou stranu jsou označeny výrazem \fIčíslo\fP. Toto
+\fIčíslo\fP musí být nahrazeno číslem strany. To je obvykle 1 nebo 2, ale
+záleží na možném počtu hráčů pro zvolený scénář.
+.TP 
+\fB\-\-ai\-config\fP\fI\ číslo\fP\fB:\fP\fIhodnota\fP
+vybere soubor s\ nastavením, který se načte pro UI ovládající tuto stranu.
+.TP 
+\fB\-\-algorithm\fP\fI\ číslo\fP\fB:\fP\fIhodnota\fP
+vybere jiný než standardní algoritmus, který použije UI ovládající tuto
+stranu. Tento algoritmus je definován značkou \fB[ai]\fP a\ může to být jeden
+z\ algoritmů jádra v\ „data/ai/ais“ nebo „data/ai/dev“, nebo algoritmus
+definovaný rozšířením. Dostupné hodnoty zahrnují: \fBidle_ai\fP
+a\ \fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ číslo\fP\fB:\fP\fIhodnota\fP
+vybere, kdo ovládá tuto stranu. Dostupné hodnoty: \fBhuman\fP, \fBai\fP a\ \fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ hodnota\fP
+použij tuto volbu pro hraní ve vybrané éře namísto éry \fBDefault\fP. Éra je
+dána identifikátorem. Éry jsou popsány v\ souboru
+\fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+skončí, jakmile je po scénáři, aniž zobrazí okno o\ vítězství/prohře, které
+obvykle vyžaduje, aby uživatel kliknul na Ukončit scénář. Toto se také
+používá pro skriptovatelná srovnávací měření.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+místo mapových nastavení použít výchozí hodnoty.
+.TP 
+\fB\-\-label\fP\fI\ popisek\fP
+nastaví \fIpopisek\fP pro umělé inteligence.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ hodnota\fP
+opakuje hru více hráčů tolikrát, jaká je \fIhodnota\fP. Nejlépe použít s\ volbou
+\fB\-\-nogui\fP pro skriptovatelná srovnávací měření.
+.TP 
+\fB\-\-parm\fP\fI\ číslo\fP\fB:\fP\fInázev\fP\fB:\fP\fIhodnota\fP
+pro tuto stranu nastaví další parametry. Název a\ hodnota závisí na hodnotách
+voleb \fB\-\-controller\fP a\ \fB\-\-algorithm\fP. To by mělo být užitečné pouze pro
+lidi, kteří navrhují svou vlastní UI. (ještě není úplně zdokumentováno)
+.TP 
+\fB\-\-scenario\fP\fI\ hodnota\fP
+vybere scénář pro hru více hráčů pomocí jeho identifikátoru. Identifikátorem
+výchozího scénáře je \fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fI\ číslo\fP\fB:\fP\fIhodnota\fP
+pro tuto stranu vybere frakci z\ hrané éry. Frakce je zvolena pomocí
+identifikátoru. Frakce jsou popsány v\ souboru data/multiplayer.cfg.
+.TP 
+\fB\-\-turns\fP\fI\ hodnota\fP
+nastaví počet kol pro vybraný scénář. Výchozím nastavením je neomezený počet
+kol.
+.
+.SH "NÁVRATOVÝ KÓD"
+.
+Návratová hodnota normálního ukončení je\ 0. Hodnota\ 1\ značí chybu
+inicializace (SDL, videa, písem atd.). Návratová hodnota\ 2\ ukazuje na chybu
+ve volbách příkazového řádku.
+.br
+Když běží test součástí (pomocí \fB\ \-u\fP), je návratový kód odlišný. Hodnota
+0 znamená, že test proběhl v\ pořádku a\ hodnota\ 1, že selhal. Návratová
+hodnota 3 značí, že test proběhl v\ pořádku, ale vytvořil neplatný soubor se
+záznamem. Hodnota\ 4 znamená, že test proběhl v\ pořádku, ale záznam vyvolal
+chyby. Poslední dvě uvedené hodnoty jsou vráceny pouze tehdy, když není
+použita volba \fB\-\-noreplaycheck\fP.
+.
+.SH AUTOŘI
+.
+Vytvořil David White <davidnwhite@verizon.net>.
+.br
+Upravili Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> a\ Soliton <soliton.de@gmail.com>.
+.br
+Tuto manuálovou stránku původně vytvořil Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Navštivte oficiální stránky: https://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+.br
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+publikována nadací Free Software Foundation. Tento program je bez záruky, a
+to i co se týká obchodovatelnosti a použitelnosti.
+.
+.SH "VIZ TAKÉ"
+.
+\fBwesnothd\fP(6)

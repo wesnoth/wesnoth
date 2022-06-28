@@ -5,14 +5,17 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	wesnoth.interface.select_unit = wesnoth.units.select
 
-	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
-	--! @note Usable only during WML actions.
+	---Fakes the move of a unit satisfying the given filter to position x, y.
+	---Usable only during WML actions.
+	---@param filter WML
+	---@param to_x integer
+	---@param to_y integer
 	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
 		local moving_unit = wesnoth.units.find_on_map(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
-		to_x, to_y = wesnoth.find_vacant_tile(x, y, moving_unit)
+		to_x, to_y = wesnoth.paths.find_vacant_hex(to_x, to_y, moving_unit)
 
 		if to_x < from_x then
 			moving_unit.facing = "sw"
@@ -21,19 +24,19 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		moving_unit:extract()
 
-		wml_actions.move_unit_fake{
+		wesnoth.wml_actions.move_unit_fake{
 			type      = moving_unit.type,
 			gender    = moving_unit.gender,
-			variation = moving.variation,
+			variation = moving_unit.variation,
 			side      = moving_unit.side,
 			x         = from_x .. ',' .. to_x,
 			y         = from_y .. ',' .. to_y
 		}
 
 		moving_unit:to_map(to_x, to_y)
-		wml_actions.redraw{}
+		wesnoth.wml_actions.redraw{}
 	end
-	
+
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)
 	wesnoth.highlight_hex = wesnoth.deprecate_api('wesnoth.highlight_hex', 'wesnoth.interface.highlight_hex', 1, nil, wesnoth.interface.highlight_hex)
@@ -51,9 +54,17 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.theme_items = wesnoth.deprecate_api('wesnoth.theme_items', 'wesnoth.interface.game_display', 1, nil, wesnoth.interface.game_display)
 	wesnoth.get_displayed_unit = wesnoth.deprecate_api('wesnoth.get_displayed_unit', 'wesnoth.interface.get_displayed_unit', 1, nil, wesnoth.interface.get_displayed_unit)
 	wesnoth.zoom = wesnoth.deprecate_api('wesnoth.zoom', 'wesnoth.interface.zoom', 1, nil, wesnoth.interface.zoom)
-	wesnoth.gamestate_inspector = wesnoth.deprecate_api('wesnoth.gamestate_inspector', 'gui.show_inspector', 1, nil, gui.show_inspector)
+	wesnoth.color_adjust = wesnoth.deprecate_api('wesnoth.color_adjust', 'wesnoth.interface.color_adjust', 1, nil, function(cfg) wesnoth.interface.color_adjust(cfg.red, cfg.green, cfg.blue) end)
+	wesnoth.allow_end_turn = wesnoth.deprecate_api('wesnoth.allow_end_turn', 'wesnoth.interface.allow_end_turn', 1, nil, wesnoth.interface.allow_end_turn)
+	wesnoth.clear_messages = wesnoth.deprecate_api('wesnoth.clear_messages', 'wesnoth.interface.clear_chat_messages', 1, nil, wesnoth.interface.clear_chat_messages)
+	wesnoth.end_turn = wesnoth.deprecate_api('wesnoth.end_turn', 'wesnoth.interface.end_turn', 1, nil, wesnoth.interface.end_turn)
+	wesnoth.get_viewing_side = wesnoth.deprecate_api('wesnoth.get_viewing_side', 'wesnoth.interface.get_viewing_side', 1, nil, wesnoth.interface.get_viewing_side)
+	wesnoth.message = wesnoth.deprecate_api('wesnoth.message', 'wesnoth.interface.add_chat_message', 1, nil, wesnoth.interface.add_chat_message)
+	-- wesnoth.wml_actions.print doesn't exist yet at this point, so create a helper function instead.
+	wesnoth.print = wesnoth.deprecate_api('wesnoth.print', 'wesnoth.interface.add_overlay_text', 1, nil, function(cfg)
+		wesnoth.wml_actions.print(cfg)
+	end)
 	-- No deprecation for these since since they're not actually public API yet
-	wesnoth.color_adjust = wesnoth.interface.color_adjust
 	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
 end

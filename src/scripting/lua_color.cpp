@@ -1,14 +1,15 @@
 /*
-Copyright (C) 2020-2020 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2020 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "color_range.hpp"
@@ -16,7 +17,6 @@ See the COPYING file for more details.
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "lua/lauxlib.h"
-#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 #include "log.hpp"
 #include "game_config.hpp"
 
@@ -26,7 +26,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static const char colorKey[] = "color range";
 
-bool luaW_iscolor(lua_State* L, int index)
+static bool luaW_iscolor(lua_State* L, int index)
 {
 	return luaL_testudata(L, index, colorKey) != nullptr;
 }
@@ -41,14 +41,14 @@ static color_range& LuaW_checkcolor(lua_State *L, int index)
 }
 
 
-color_range* luaW_pushcolor(lua_State *L, const color_range& color)
+static color_range* luaW_pushcolor(lua_State *L, const color_range& color)
 {
 	color_range* res = new(L) color_range(color);
 	luaL_setmetatable(L, colorKey);
 	return res;
 }
 
-int luaW_pushsinglecolor(lua_State *L, const color_t& color)
+static int luaW_pushsinglecolor(lua_State *L, const color_t& color)
 {
 	lua_createtable(L, 0, 4);
 	luaW_table_set(L, -1, "r", color.r);
@@ -118,17 +118,34 @@ static int impl_color_get(lua_State *L)
 	if(strcmp(m, "minimap") == 0) {
 		return luaW_pushsinglecolor(L, c.rep());
 	}
-	// TODO: i think this shortcut would be useful, but im not sure yet on the best attribute name.
-	//if(strcmp(m, "pango_hex") == 0) {
-	//	lua_push(L, c.mid().to_hex_string());
-	//	return 1;
-	//}
+	// returns a string which can be used in Pango's foreground= attribute
+	if(strcmp(m, "pango_color") == 0) {
+		lua_push(L, c.mid().to_hex_string());
+		return 1;
+	}
 	return 0;
+}
+
+static int impl_color_dir(lua_State* L)
+{
+	static const std::vector<std::string> keys{"min", "max", "mid", "minimap", "pango_color"};
+	lua_push(L, keys);
+	return 1;
 }
 
 static int impl_color_set(lua_State *L)
 {
 	return luaL_argerror(L, 2, "color objects canot be modified");
+}
+
+static int impl_colors_table_dir(lua_State* L)
+{
+	std::vector<std::string> all_colours;
+	for(const auto& [key, value] : game_config::team_rgb_range) {
+		all_colours.push_back(key);
+	}
+	lua_push(L, all_colours);
+	return 1;
 }
 
 namespace lua_colors {
@@ -150,6 +167,8 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_color_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_color_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "color range");
 		lua_setfield(L, -2, "__metatable");
 
@@ -162,6 +181,8 @@ namespace lua_colors {
 		lua_createtable(L, 0, 2);
 		lua_pushcfunction(L, impl_get_color);
 		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_colors_table_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "colors table");
 		lua_setfield(L, -2, "__metatable");
 		lua_setmetatable(L, -2);

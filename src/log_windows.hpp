@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -38,6 +39,16 @@
  * and later versions, requiring UAC virtualization to be enabled).
  */
 
+namespace filesystem
+{
+
+/**
+ * Returns the path to the permanent log storage directory.
+ */
+std::string get_logs_dir();
+
+}
+
 namespace lg
 {
 
@@ -57,7 +68,7 @@ std::string log_file_path();
  * horribly wrong as soon as we try to use the logging facilities internally
  * for debug messages.
  */
-void early_log_file_setup();
+void early_log_file_setup(bool disable);
 
 /**
  * Relocates the stdout+stderr log file to the user data directory.

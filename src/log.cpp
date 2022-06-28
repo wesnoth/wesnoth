@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2004 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -237,7 +238,7 @@ log_in_progress::log_in_progress(std::ostream& stream)
 
 void log_in_progress::operator|(formatter&& message)
 {
-	std::lock_guard lock(log_mutex);
+	std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
 	if(timestamp_) {
@@ -282,10 +283,10 @@ void scope_logger::do_log_exit() noexcept
 	auto output = debug()(domain_, false, true);
 	output.set_indent(indent);
 	if(timestamp) output.enable_timestamp();
-	output | formatter() << "} END: " << str_ << " (took " << ticks << "ms)\n";
+	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)\n";
 }
 
-std::stringstream& wml_error()
+std::stringstream& log_to_chat()
 {
 	static std::stringstream lg;
 	return lg;

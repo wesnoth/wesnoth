@@ -1,21 +1,21 @@
 -- Lakes
 local function world_conquest_tek_map_repaint_2b()
 	-- Add snow and ice
-	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+	if mathx.random(2) == 1 then
+		local terrain_to_change = map:find(f.all(
 			f.terrain("!,Ss,D*^*,Hd,W*^*,Mm^Xm,Xu,Mv,Q*^*,U*^*"),
 			f.radius(2, f.terrain("M*^*"))
 		))
 
 		-- base amount in map surface
-		local r = helper.rand(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 330))
+		local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 330))
 		wct_storm(terrain_to_change, r)
 	end
 	wct_expand_snow()
 	set_terrain { "Ai",
 		f.all(
 			f.terrain("Wwt,Wot"),
-			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*,Kha,Cha"), nil, wesnoth.random(3, 5))
+			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*,Kha,Cha"), nil, mathx.random(3, 5))
 		),
 	}
 	-- randomize snowed forests
@@ -58,14 +58,14 @@ local function world_conquest_tek_map_repaint_2b()
 		fraction = 2,
 	}
 
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		set_terrain { "Gg",
 			f.terrain("Gs^*"),
 			layer = "base",
 		}
 
 	end
-	if wesnoth.random(20) ~= 1 then
+	if mathx.random(20) ~= 1 then
 		set_terrain { "Gg^Gvs",
 			f.all(
 				f.terrain("Gg"),
@@ -88,13 +88,13 @@ local function world_conquest_tek_map_repaint_2b()
 		}
 
 	end
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
 	wct_dirt_beachs("9..11")
 	-- chance of different lakes water
 	-- todo: does this syntax really work?
-	local terrain_mod = helper.rand("g,,,,,,,,,,,,,,,,,,t")
+	local terrain_mod = mathx.random_choice("g,,,,,,,,,,,,,,,,,,t")
 	set_terrain { "Ww" .. terrain_mod,
 		f.terrain("Wwt^*"),
 		layer = "base",
@@ -104,11 +104,11 @@ local function world_conquest_tek_map_repaint_2b()
 	}
 
 	-- chance of frozen lakes
-	if wesnoth.random(9) == 1 then
+	if mathx.random(9) == 1 then
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Ww,Wwg,Wo,Wog"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.none(
 					f.find_in("oceanic")
 				)
@@ -120,31 +120,31 @@ local function world_conquest_tek_map_repaint_2b()
 		set_terrain { "Ms",
 			f.all(
 				f.terrain("M*"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(2, f.terrain("Ai"))
 			),
 		}
 		set_terrain { "Ha",
 			f.all(
 				f.terrain("Hh"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(1, f.terrain("Ai"))
 			),
 		}
 		set_terrain { "Ha^Fpa",
 			f.all(
 				f.terrain("Hh^F*"),
-				f.adjacent(f.terrain("*^Uf"), nil, 0),
+				f.adjacent(f.terrain("*^Tf"), nil, 0),
 				f.radius(1, f.terrain("Ai"))
 			),
 		}
 
 	end
 	-- chance of diferent forest based in map temperature
-	local terrain_to_change = map:get_locations(f.terrain("A*^*,Ha*^*,Ms^*"))
+	local terrain_to_change = map:find(f.terrain("A*^*,Ha*^*,Ms^*"))
 
 	local chance = 2000 * #terrain_to_change // total_tiles
-	if wesnoth.random(0, 99 ) > chance then
+	if mathx.random(0, 99 ) > chance then
 		set_terrain { "*^Ftd",
 			f.terrain("*^Ft"),
 			layer = "overlay",
@@ -220,7 +220,7 @@ function world_conquest_tek_map_constructor_lakes()
 	}
 
 	-- add mushrooms
-	set_terrain { "Gg^Uf",
+	set_terrain { "Gg^Tf",
 		f.all(
 			f.adjacent(f.terrain("Wwt^*,Wot,Wwf")),
 			f.adjacent(f.terrain("A*^*,Ha^*,Ms^*"), nil, 0),
@@ -231,9 +231,9 @@ function world_conquest_tek_map_constructor_lakes()
 		fraction_rand = "11..13",
 	}
 
-	local r = helper.rand(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
+	local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
 
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh^F*,Hh"),
 			f.adjacent(f.terrain("A*^*,Ha^*,Ms^*"), nil, 0)
@@ -241,6 +241,8 @@ function world_conquest_tek_map_constructor_lakes()
 		nlocs = r,
 	}
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Lakes")

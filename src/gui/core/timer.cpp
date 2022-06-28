@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/core/timer.hpp"
@@ -100,7 +101,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 
 	Uint32 result;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(reinterpret_cast<std::size_t>(id));
 		if(itor == get_timers().end()) {
@@ -133,7 +134,7 @@ std::size_t add_timer(const uint32_t interval,
 
 	timer timer;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		do {
 			++next_timer_id;
@@ -155,7 +156,7 @@ std::size_t add_timer(const uint32_t interval,
 	timer.callback = callback;
 
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		get_timers().emplace(next_timer_id, timer);
 	}
@@ -168,7 +169,7 @@ bool remove_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::lock_guard lock(timers_mutex);
+	std::scoped_lock lock(timers_mutex);
 
 	auto itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
@@ -203,7 +204,7 @@ bool execute_timer(const std::size_t id)
 
 	std::function<void(size_t)> callback = nullptr;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(id);
 		if(itor == get_timers().end()) {

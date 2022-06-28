@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -1182,7 +1183,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 
-	log_scope2("whiteboard", "Building planned unit map");
+	log_scope2(log_whiteboard, "Building planned unit map");
 	mapbuilder_.reset(new mapbuilder(resources::gameboard->units()));
 	mapbuilder_->build_map();
 
@@ -1197,7 +1198,7 @@ void manager::set_real_unit_map()
 		assert(!wait_for_side_init_);
 		if(mapbuilder_)
 		{
-			log_scope2("whiteboard", "Restoring regular unit map.");
+			log_scope2(log_whiteboard, "Restoring regular unit map.");
 			mapbuilder_.reset();
 		}
 		planned_unit_map_active_ = false;

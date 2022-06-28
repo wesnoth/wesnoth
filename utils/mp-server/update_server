@@ -61,10 +61,16 @@ SOURCE_VERSION="$VERSION"
 
 CXXFLAGS="$CXXFLAGS"
 LDFLAGS="$LDFLAGS"
+BUILD_PRESET="release"
 
 case "$VERSION" in
-  1.6|1.8|1.10|1.12)
+  1.6|1.8|1.10|1.12|1.16) # TODO: also 1.14 but not yet, see below
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	;;
+  1.14)
+	# We need an unoptimized build for debugging issues with 1.14. Remove this later.
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	BUILD_PRESET=debug
 	;;
   1.9)
 	[ "$TYPE" = "campaignd" ] || die "1.9 is currently a special case for the 1.10 campaignd only"
@@ -77,9 +83,14 @@ case "$VERSION" in
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
 	SOURCE_VERSION="1.12"
 	;;
+  1.13)
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	SOURCE_VERSION="1.14"
+	;;
   trunk|master)
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
 	SOURCE_VERSION="master"
+	BUILD_PRESET=debug
 	;;
   *)
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
@@ -127,6 +138,10 @@ if [ $TYPE = wesnothd ]; then
 	esac
 fi
 
+if [ "$TYPE" = "campaignd" ] && [ "$VERSION" != "1.14" ]; then
+	BUILD_OPTIONS="forum_user_handler=1"
+fi
+
 mkdir -p "$DEST"/var/run
 
 echo "            Version: $VERSION"
@@ -135,6 +150,7 @@ echo "   Intermediate dir: $INT"
 echo "    Destination dir: $DEST"
 echo "   SCons output log: $SCONS_LOG"
 echo "   SCons config log: $CONF_LOG"
+echo "       Build preset: $BUILD_PRESET"
 
 set -x
 
@@ -145,7 +161,7 @@ set -x
 cd "$INT"
 
 # HACK: help scons find autorevision from the source dir.
-mkdir -p utils/; ln -sf $SOURCE/utils/autorevision utils/
+mkdir -p utils/; ln -sf "$SOURCE"/utils/autorevision.sh utils/
 
 CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" \
 scons \
@@ -154,12 +170,12 @@ scons \
 		install-$TYPE \
 		prefix="$DEST" \
 		program_suffix="-$VERSION" \
-		use_network_ana=false \
 		profile=0 \
 		fribidi=0 \
 		python=0 \
 		localedir= \
 		prefsdir= \
+		build="$BUILD_PRESET" \
 		$BUILD_OPTIONS \
 > "$SCONS_LOG"
 

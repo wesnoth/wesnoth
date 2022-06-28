@@ -34,11 +34,11 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		-- jungle appears at moderate temperatures
 		dr_convert(nil, nil, 200, 700, "Gg,Gs", "Gs^Ft"),
 		-- fungus appears at medium temperatures and extremely high elevation
-		dr_convert(825, 950, 475, 525, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 550, 600, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 625, 675, "Uu, Uh", "Uu^Uf"),
+		dr_convert(825, 950, 475, 525, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 550, 600, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 625, 675, "Uu, Uh", "Uu^Tf"),
 		-- lava appears at extreme temperatures and elevation
-		dr_convert(800, nil, 850, nil, "Uu, Uh, Uu^Uf", "Ql"),
+		dr_convert(800, nil, 850, nil, "Uu, Uh, Uu^Tf", "Ql"),
 		-- desert appears at extreme temperatures
 		dr_convert(nil, nil, 800, nil, "Gg", "Ds"),
 		-- dunes appear at extreme temperatures and moderate elevation

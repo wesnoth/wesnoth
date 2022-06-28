@@ -5,9 +5,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	wesnoth.units.scroll_to = wesnoth.interface.scroll_to_hex
 
-	--! Modifies all the units satisfying the given @a filter.
-	--! @param vars key/value pairs that need changing.
-	--! @note Usable only during WML actions.
+	---Modifies all the units satisfying the given filter.
+	---@param filter WML A filter to select the units to modify
+	---@param vars table<string, boolean|string|number> key/value pairs that need changing.
 	function wesnoth.units.modify(filter, vars)
 		local units = wesnoth.units.find(filter)
 		for u in pairs(units) do
@@ -20,13 +20,20 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	end
 
+	---Find an attack on the unit that matches a filter
+	---@param unit unit The unit to search
+	---@param filter WML The filter to match
+	---@return unit_weapon|nil #The matching attack
+	---@return integer? #The index of the matching attack in the unit's attack list
 	function wesnoth.units.find_attack(unit, filter)
 		for i, atk in ipairs(unit.attacks) do
 			if atk:matches(filter) then return atk, i end
 		end
 	end
 
-	-- gets map and recalllist units.
+	---Finds both map and recall list units.
+	---@param filter WML A filter to select the units
+	---@return unit[]
 	function wesnoth.units.find(filter)
 		local res = wesnoth.units.find_on_map(filter)
 		for i, u in ipairs(wesnoth.units.find_on_recall(filter)) do
@@ -35,15 +42,19 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		return res
 	end
 
-	function wesnoth.units.chance_to_be_hit(...)
-		return 100 - wesnoth.units.defense_on(...)
+	---Get the chance for the unit to be hit
+	---@param unit unit The unit to test
+	---@param terrain string The terrain to test for
+	---@return number
+	function wesnoth.units.chance_to_be_hit(unit, terrain)
+		return 100 - wesnoth.units.defense_on(unit, terrain)
 	end
 
-	-- Deprecated function
+	---@deprecated
 	function wesnoth.units.resistance(...)
 		return 100 - wesnoth.units.resistance_against(...)
 	end
-	
+
 	wesnoth.match_unit = wesnoth.deprecate_api('wesnoth.match_unit', 'wesnoth.units.matches', 1, nil, wesnoth.units.matches)
 	wesnoth.put_recall_unit = wesnoth.deprecate_api('wesnoth.put_recall_unit', 'wesnoth.units.to_recall', 1, nil, wesnoth.units.to_recall)
 	wesnoth.put_unit = wesnoth.deprecate_api('wesnoth.put_unit', 'wesnoth.units.to_map', 1, nil, wesnoth.units.to_map)
@@ -54,7 +65,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.add_modification = wesnoth.deprecate_api('wesnoth.add_modification', 'wesnoth.units.add_modification', 1, nil, wesnoth.units.add_modification)
 	wesnoth.remove_modifications = wesnoth.deprecate_api('wesnoth.remove_modifications', 'wesnoth.units.remove_modifications', 1, nil, wesnoth.units.remove_modifications)
 	wesnoth.unit_resistance = wesnoth.deprecate_api('wesnoth.unit_resistance', 'wesnoth.units.resistance_against', 1, nil, wesnoth.units.resistance)
-	wesnoth.unit_defense = wesnoth.deprecate_api('wesnoth.unit_defense', 'wesnoth.units.defense_on', 1, nil, wesnoth.units.chance_to_be_hit)
+	wesnoth.unit_defense = wesnoth.deprecate_api('wesnoth.unit_defense', 'wesnoth.units.defense_on or wesnoth.units.chance_to_be_hit', 1, nil, wesnoth.units.chance_to_be_hit)
 	wesnoth.unit_movement_cost = wesnoth.deprecate_api('wesnoth.unit_movement_cost', 'wesnoth.units.movement_on', 1, nil, wesnoth.units.movement_on)
 	wesnoth.unit_vision_cost = wesnoth.deprecate_api('wesnoth.unit_vision_cost', 'wesnoth.units.vision_on', 1, nil, wesnoth.units.vision_on)
 	wesnoth.unit_jamming_cost = wesnoth.deprecate_api('wesnoth.unit_jamming_cost', 'wesnoth.units.jamming_on', 1, nil, wesnoth.units.jamming_on)
@@ -69,5 +80,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
 	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
 	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_map', 1, nil, wesnoth.units.find_on_map)
-	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
+	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_recall_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
+	wesnoth.create_animator = wesnoth.deprecate_api('wesnoth.create_animator', 'wesnoth.units.create_animator', 1, nil, wesnoth.units.create_animator)
+	wesnoth.create_weapon = wesnoth.deprecate_api('wesnoth.create_weapon', 'wesnoth.units.create_weapon', 1, nil, wesnoth.units.create_weapon)
+	wesnoth.teleport = wesnoth.deprecate_api('wesnoth.teleport', 'wesnoth.units.teleport', 1, nil, wesnoth.units.teleport)
 end

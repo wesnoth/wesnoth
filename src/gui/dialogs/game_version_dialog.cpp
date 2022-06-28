@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2013 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -21,8 +22,8 @@
 #include "desktop/open.hpp"
 #include "desktop/version.hpp"
 #include "filesystem.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
-#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -35,9 +36,6 @@
 #ifdef _WIN32
 #include "log_windows.hpp"
 #endif
-#include "formula/string_utils.hpp"
-
-#include "gettext.hpp"
 
 #include <functional>
 
@@ -74,6 +72,9 @@ game_version::game_version()
 	path_map_["saves"] = filesystem::get_saves_dir();
 	path_map_["addons"] = filesystem::get_addons_dir();
 	path_map_["cache"] = filesystem::get_cache_dir();
+#ifdef _WIN32
+	path_map_["logs"] = filesystem::get_logs_dir();
+#endif
 
 	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k) {
 		const game_config::LIBRARY_ID lib = game_config::LIBRARY_ID(k);
@@ -93,7 +94,7 @@ game_version::game_version()
 
 void game_version::pre_show(window& window)
 {
-	string_map i18n_syms;
+	utils::string_map i18n_syms;
 
 	//
 	// General information.
@@ -155,9 +156,9 @@ void game_version::pre_show(window& window)
 	}
 
 #ifndef _WIN32
-	grid& w32_options_grid
-			= find_widget<grid>(&window, "win32_paths", false);
-	w32_options_grid.set_visible(widget::visibility::invisible);
+	for(const auto& wid : {"win32_paths", "label_logs", "path_logs", "copy_logs", "browse_logs"}) {
+		find_widget<widget>(&window, wid, false).set_visible(widget::visibility::invisible);
+	}
 #else
 	button& stderr_button
 			= find_widget<button>(&window, "open_stderr", false);
@@ -173,7 +174,7 @@ void game_version::pre_show(window& window)
 	// Build info tab.
 	//
 
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 
 	listbox& deps_listbox
 			= find_widget<listbox>(&window, "deps_listbox", false);

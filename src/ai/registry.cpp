@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -188,6 +189,9 @@ static register_aspect_factory< composite_aspect< unit_advancements_aspect >>
 static register_aspect_factory< composite_aspect<double>>
 	aggression__composite_aspect_factory("aggression*composite_aspect");
 
+static register_aspect_factory< composite_aspect<bool>>
+	allow_ally_villages__composite_aspect_factory("allow_ally_villages*composite_aspect");
+
 static register_aspect_factory< composite_aspect< attacks_vector >>
 	attacks__composite_aspect_factory("attacks*composite_aspect");
 
@@ -264,6 +268,9 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory("aggression*standard_aspect");
+
+static register_aspect_factory< standard_aspect<bool>>
+	allow_ally_villages__standard_aspect_factory("allow_ally_villages*standard_aspect");
 
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
@@ -346,6 +353,9 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory2("aggression*");
 
+static register_aspect_factory< standard_aspect<bool>>
+	allow_ally_villages__standard_aspect_factory2("allow_ally_villages*");
+
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
 
@@ -422,6 +432,9 @@ static register_lua_aspect_factory< lua_aspect< unit_advancements_aspect >>
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	aggression__lua_aspect_factory("aggression*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool>>
+	allow_ally_villages__lua_aspect_factory("allow_ally_villages*lua_aspect");
 
 static register_lua_aspect_factory< aspect_attacks_lua >
 	attacks__lua_aspect_factory("attacks*lua_aspect");

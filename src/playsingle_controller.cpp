@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -223,7 +224,7 @@ void playsingle_controller::play_scenario_main_loop()
 	} // end for loop
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
+level_result::type playsingle_controller::play_scenario(const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -291,7 +292,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			saved_game_.set_snapshot(config());
 
 			// this is probably only a story scenario, i.e. has its endlevel in the prestart event
-			return LEVEL_RESULT::VICTORY;
+			return level_result::type::victory;
 		}
 
 		if(linger_) {
@@ -302,14 +303,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 				persist_.end_transaction();
 			}
 
-			return LEVEL_RESULT::VICTORY;
+			return level_result::type::victory;
 		}
 
 		pump().fire(is_victory ? "local_victory" : "local_defeat");
 
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
-			pump().fire(end_level.proceed_to_next_level ? "victory" : "defeat");
+			pump().fire(end_level.proceed_to_next_level ? level_result::victory : level_result::defeat);
 			pump().fire("scenario_end");
 		}
 
@@ -319,7 +320,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		if(is_observer()) {
 			gui2::show_transient_message(_("Game Over"), _("The game is over."));
-			return LEVEL_RESULT::OBSERVER_END;
+			return level_result::type::observer_end;
 		}
 
 		// If we're a player, and the result is victory/defeat, then send
@@ -328,7 +329,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			"info", config {
 				"type", "termination",
 				"condition", "game over",
-				"result", is_victory ? "victory" : "defeat",
+				"result", is_victory ? level_result::victory : level_result::defeat,
 			},
 		});
 
@@ -348,9 +349,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 		persist_.end_transaction();
 
-		LEVEL_RESULT res = LEVEL_RESULT::string_to_enum(end_level.test_result);
-		if(res == LEVEL_RESULT::TEST_NOT_SET) {
-			return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
+		level_result::type res = level_result::get_enum(end_level.test_result).value_or(level_result::type::test_invalid);
+		if(res == level_result::type::result_not_set) {
+			return is_victory ? level_result::type::victory : level_result::type::defeat;
 		} else {
 			return res;
 		}
@@ -372,7 +373,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 
 		if(dynamic_cast<const ingame_wesnothd_error*>(&e)) {
-			return LEVEL_RESULT::QUIT;
+			return level_result::type::quit;
 		} else {
 			throw;
 		}
@@ -437,8 +438,8 @@ void playsingle_controller::play_side_impl()
 		}
 	} else {
 		// we should have skipped over empty controllers before so this shouldn't be possible
-		ERR_NG << "Found invalid side controller " << current_team().controller().to_string() << " ("
-			   << current_team().proxy_controller().to_string() << ") for side " << current_team().side() << "\n";
+		ERR_NG << "Found invalid side controller " << side_controller::get_string(current_team().controller()) << " ("
+			   << side_proxy_controller::get_string(current_team().proxy_controller()) << ") for side " << current_team().side() << "\n";
 	}
 }
 
@@ -543,9 +544,11 @@ void playsingle_controller::linger()
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
-void playsingle_controller::end_turn_enable(bool enable)
+void playsingle_controller::end_turn_enable(bool /*enable*/)
 {
-	gui_->enable_menu("endturn", enable);
+	// TODO: this is really only needed to refresh the visual state of the buttons on each turn.
+	// It looks like we can put it in play_side_impl, but it definitely should be removed from
+	// here since other code already takes care of actually enabling/disabling the end turn button.
 	get_hotkey_command_executor()->set_button_state();
 }
 

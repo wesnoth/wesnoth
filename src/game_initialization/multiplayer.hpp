@@ -1,6 +1,7 @@
 /*
-	Copyright (C) 2005 - 2018 Philippe Plantier <ayin@anathas.org>
-	Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -14,6 +15,7 @@
 
 #pragma once
 
+#include <functional>
 #include <string>
 
 class commandline_options;
@@ -66,4 +68,23 @@ bool logged_in_as_moderator();
 /** Gets the forum profile link for the given user. */
 std::string get_profile_link(int user_id);
 
-}
+/** Returns the lobby_info object for the given session. */
+class lobby_info* get_lobby_info();
+
+/** Attempts to send given data to server if a connection is open. */
+void send_to_server(const config& data);
+
+/** RAII helper class to register a network handler. */
+class network_registrar
+{
+public:
+	using handler = std::function<void(const config&)>;
+
+	network_registrar(handler func);
+	~network_registrar();
+
+private:
+	std::function<void()> remove_handler{};
+};
+
+} // namespace mp

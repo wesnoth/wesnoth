@@ -1,7 +1,7 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local M = wesnoth.map
 
-local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
+local HA = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_moves {
@@ -19,7 +19,7 @@ local function get_sheep_to_herd(cfg)
     }
 
     local sheep_to_herd = {}
-    local herding_area = herding_area(cfg)
+    local herding_area = HA(cfg)
     for _,single_sheep in ipairs(all_sheep) do
         if (not herding_area:get(single_sheep.x, single_sheep.y)) then
             table.insert(sheep_to_herd, single_sheep)
@@ -42,7 +42,7 @@ function ca_herding_herd_sheep:execution(cfg)
     local dogs = get_dogs(cfg)
     local sheep_to_herd = get_sheep_to_herd(cfg)
 
-    local max_rating, best_dog, best_hex = - math.huge
+    local max_rating, best_dog, best_hex = - math.huge, nil, nil
     local herd_loc = AH.get_named_loc_xy('herd', cfg)
     local c_x, c_y = herd_loc[1], herd_loc[2]
     for _,single_sheep in ipairs(sheep_to_herd) do

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -39,7 +40,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new tree_view_node("root", nullptr, *this, std::map<std::string, string_map>()))
+	, root_node_(nullptr)
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -54,12 +55,12 @@ tree_view::~tree_view()
 }
 
 tree_view_node& tree_view::add_node(
-		const std::string& id, const std::map<std::string /* widget id */, string_map>& data, const int index)
+	const std::string& id, const widget_data& data, const int index)
 {
 	return get_root_node().add_child(id, data, index);
 }
 
-std::pair<tree_view_node::ptr_t, int> tree_view::remove_node(tree_view_node* node)
+std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
 	const point node_size = node->get_size();
@@ -170,10 +171,13 @@ void tree_view::finalize_setup()
 	// Inherited.
 	scrollbar_container::finalize_setup();
 
+	auto root = std::make_unique<tree_view_node>(root_node_id, nullptr, *this, widget_data{});
+	root_node_ = root.get();
+
 	assert(content_grid());
 	content_grid()->set_rows_cols(1, 1);
 	content_grid()->set_child(
-		root_node_, 0, 0, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+		std::move(root), 0, 0, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
 }
 
 void tree_view::signal_handler_left_button_down(const event::ui_event event)
@@ -299,13 +303,13 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-widget* builder_tree_view::build() const
+std::unique_ptr<widget> builder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	tree_view* widget = new tree_view(*this);
+	auto widget = std::make_unique<tree_view>(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -330,7 +334,8 @@ tree_node::tree_node(const config& cfg)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
-	VALIDATE(id != "root", _("[node]id 'root' is reserved for the implementation."));
+	// TODO: interpolate this value into the error message
+	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
 
 	const config& node_definition = cfg.child("node_definition");
 

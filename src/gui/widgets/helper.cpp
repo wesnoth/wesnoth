@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -24,6 +25,7 @@
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
 #include "tstring.hpp"
+#include "sdl/input.hpp" // get_mouse_location
 
 #include <SDL2/SDL.h>
 
@@ -36,7 +38,7 @@ SDL_Rect create_rect(const point& origin, const point& size)
 
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	static std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
+	static const std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
 		{"normal",    font::pango_text::STYLE_NORMAL},
 		{"bold",      font::pango_text::STYLE_BOLD},
 		{"italic",    font::pango_text::STYLE_ITALIC},
@@ -47,12 +49,12 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 		return font::pango_text::STYLE_NORMAL;
 	}
 
-	if(font_style_map.find(style) == font_style_map.end()) {
-		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
-		return font::pango_text::STYLE_NORMAL;
+	if(const auto i = font_style_map.find(style); i != font_style_map.end()) {
+		return i->second;
 	}
 
-	return font_style_map[style];
+	ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
+	return font::pango_text::STYLE_NORMAL;
 }
 
 color_t decode_color(const std::string& color)
@@ -116,10 +118,7 @@ wfl::map_formula_callable get_screen_size_variables()
 
 point get_mouse_position()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-
-	return point(x, y);
+	return sdl::get_mouse_location();
 }
 
 std::string debug_truncate(const std::string& text)

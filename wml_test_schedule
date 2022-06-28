@@ -6,15 +6,45 @@
 0 test_assert
 1 test_assert_fail
 1 test_assert_fail_two
+0 test_lua_return
+1 test_lua_return_fail
+8 test_lua_return_victory
+7 test_lua_return_defeat
+0 test_lua_assert
+1 test_lua_assert_fail
+1 test_lua_assert_fail_in_fired_event
+0 test_lua_assert_compare
+1 test_lua_assert_compare_fail1
+1 test_lua_assert_compare_fail2
+1 test_lua_assert_compare_fail3
+1 test_lua_assert_compare_fail4
+1 test_lua_assert_compare_fail5
+1 test_lua_assert_compare_fail6
+1 test_lua_assert_compare_fail7
+1 test_lua_assert_compare_fail8
+1 test_lua_assert_compare_fail9
+0 test_lua_assert_errors1
+1 test_lua_assert_errors2
+1 test_lua_assert_errors3
+0 test_lua_assert_errors4
+1 test_lua_assert_errors5
+0 test_lua_assert_errors6
+1 test_lua_assert_errors7
+0 test_lua_assert_errors8
+1 test_lua_assert_errors9
 2 empty_test
+0 test_end_turn
+#
+# The synchronisation mechanism
+#
 4 break_replay_with_lua_random
 0 fixed_lua_random_replay_with_sync_choice
-0 test_end_turn
+0 test_synced_state
 #
 # Security test
 #
 0 cve_2018_1999023
-5 cve_2018_1999023_2
+9 cve_2018_1999023_2
 #
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
@@ -46,7 +76,7 @@
 # WML API tests
 #
 0 two_plus_two
-1 two_plus_two_fail
+10 two_plus_two_fail
 0 order_of_nested_events
 0 test_clear_one
 0 test_clear_two
@@ -55,22 +85,22 @@
 0 units_offmap_goto_recall
 0 recall_by_unit_tag
 0 test_move
-5 test_move_fail_1
-5 test_move_fail_2
-5 test_move_fail_3
-5 test_move_fail_4
-5 test_move_fail_5
-5 test_move_fail_6
+9 test_move_fail_1
+9 test_move_fail_2
+9 test_move_fail_3
+9 test_move_fail_4
+9 test_move_fail_5
+9 test_move_fail_6
 0 test_move_unit
 0 test_move_unit_in_circle
-0 sighted_events
-0 sighted_on_opponents_turn
-0 move_skip_no_sighted_no_share_view
-0 move_skip_ally_sighted_no_share_view
-0 move_skip_all_sighted_no_share_view
-0 move_skip_no_sighted_yes_share_view
-0 move_skip_ally_sighted_yes_share_view
-0 move_skip_all_sighted_yes_share_view
+0 test_move_unit_to_occupied_location
+0 sighted_on_move
+0 move_skip_no_sighted_no_share_vision
+0 move_skip_ally_sighted_no_share_vision
+0 move_skip_all_sighted_no_share_vision
+0 move_skip_no_sighted_yes_share_vision
+0 move_skip_ally_sighted_yes_share_vision
+0 move_skip_all_sighted_yes_share_vision
 0 set_gold_in_prestart_one
 0 set_gold_in_prestart_two
 0 modify_turns_one
@@ -79,6 +109,8 @@
 0 modify_turns_four
 0 replace_schedule_prestart
 0 modify_unit_facing
+0 modify_unit_which_recall_list
+0 put_to_recall_and_modify
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
 0 event_handlers_in_events_2
@@ -87,7 +119,39 @@
 0 event_handlers_in_events_6
 0 event_handlers_in_events_7
 0 event_handlers_in_events_8
+0 event_handlers_in_events__delayed
+0 event_handlers_in_events__delayed__dynamic_name
+0 event_handlers_in_events__delayed__dynamic_filter
+0 event_handlers_in_events__immediate
+0 event_handlers_in_events__immediate__dynamic_name
+0 event_handlers_in_events__immediate__dynamic_filter
+0 event_remove_test
+0 event_repeat_test
+0 event_test_auto_variables_side_turn
+0 event_test_auto_variables_xy
+0 event_test_auto_variables_units
+0 event_test_auto_variables_weapons
+0 event_test_auto_variables_damage
+0 event_test_auto_variables_owner
+0 event_test_filter_condition
+0 event_test_filter_side
+0 event_test_filter_unit
+0 test_ability_id_active
+0 test_ability_id_not_active
+0 event_test_filter_attack
+0 test_lua_name
 0 filter_vision
+0 test_shroud_init
+0 test_shroud_place_wml
+0 test_shroud_place_lua
+0 test_shroud_place_lua_data
+0 test_shroud_override_all
+0 test_shroud_override_data
+0 test_shroud_remove_wml
+0 test_shroud_remove_lua
+0 test_shroud_remove_lua_data
+0 test_shroud_modify_wml
+0 test_shroud_modify_lua
 0 scatter_units
 0 has_ally
 0 xp_mod_1
@@ -105,7 +169,7 @@
 0 events-test_defeat
 0 events-test_die
 0 test_store_unit_defense_on
-5 test_store_unit_defense_deprecated
+9 test_store_unit_defense_deprecated
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -133,6 +197,7 @@
 0 lua_wml_tagnames
 0 test_scoped_vars
 0 as_text
+0 test_lua_version_api
 #
 # Pathfinding
 #
@@ -169,6 +234,18 @@
 0 test_elf_longsighted_cave_and_hills_vision
 0 test_elf_longsighted_cave_slow_cave_vision
 0 test_resistances
+# [effect]apply_to=movement and [effect]apply_to=vision
+0 effect_move_affects_vision
+0 effect_move_ignores_vision
+0 effect_move_separated_vision
+0 effect_vision
+# [store_locations]
+0 store_reachable_locations_vision
+#
+# General information queries
+#
+0 test_lua_colors
+0 test_lua_colors_hexadecimal
 #
 # Attack calculations & codepath tests
 #
@@ -183,6 +260,14 @@
 0 test_time_area_prestart
 0 test_berzerk_firststrike
 0 feeding
+0 firststrike_and_laststrike
+0 backstab_active_with_accomplice_behind_bob
+0 backstab_inactive_with_triangular_formation
+0 backstab_inactive_with_statue_behind_bob
+0 backstab_inactive_with_bobs_ally_behind_bob
+0 reflexive_drains
+0 reflexive_poison
+0 reflexive_slow
 0 swarm_disables_upgrades
 0 swarm_disables_upgrades_with_abilities
 0 swarm_disables_upgrades_with_abilities_fail
@@ -190,6 +275,11 @@
 0 swarm_disables_upgrades_with_abilities_adjacent_fail
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership
 0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
+0 poison_opponent
+0 test_add_in_leadership_abilities
+0 test_sub_in_leadership_abilities
+0 unslowable_status_test
+0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
 #
 # Deterministic unit facing tests
@@ -201,7 +291,7 @@
 # Interface tests
 #
 0 test_wml_menu_items_1
-1 test_wml_menu_items_2
+10 test_wml_menu_items_2
 0 test_wml_menu_items_3
 #
 # Conditional tests
@@ -213,19 +303,19 @@
 0 filter_this_unit_tl
 0 filter_this_unit_formula
 0 filter_formula_unit
-5 filter_formula_unit_error
+9 filter_formula_unit_error
 # Interrupt tag tests
 0 check_interrupts_break
 0 check_interrupts_return
 0 check_interrupts_continue
 0 check_interrupts_break_global
 0 check_interrupts_return_nested
-0 check_interrupts_continue_global
+9 check_interrupts_continue_global
 0 check_interrupts_elseif
 0 check_interrupts_case
 # For-loop tests
-0 forloop_all_zero
-0 forloop_step_zero
+9 forloop_all_zero
+9 forloop_step_zero
 0 forloop_once_positive
 0 forloop_once_negative
 0 forloop_twice_matched
@@ -268,3 +358,15 @@
 0 event_name_variable_substitution
 # Game mechanics
 0 heal
+# Warnings about WML
+0 unknown_scenario_false_positives
+0 unknown_scenario_interpolated
+9 unknown_scenario_1_0
+
+# Lua API tests
+0 lua_functional
+0 lua_map_find
+0 mapgen_filter_range
+0 mapgen_filter_terrain
+0 simulate_combat_clone_adjacent
+0 simulate_combat_occupied

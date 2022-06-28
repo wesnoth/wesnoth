@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -189,6 +190,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 
 void attack::draw_hex(const map_location& hex)
 {
+	// TODO: highdpi - this indent is unnecessary
 	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
 	{
 		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
@@ -201,19 +203,27 @@ void attack::draw_hex(const map_location& hex)
 
 		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
-			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
-			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
+			auto disp = display::get_singleton();
+			int x = disp->get_location_x(get_dest_hex());
+			int y = disp->get_location_y(get_dest_hex());
+			const texture t = image::get_texture(
+				"whiteboard/attack-indicator-src-" + direction_text + ".png",
+				image::HEXED);
+			const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-			display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
+			disp->drawing_buffer_add(layer, get_dest_hex(), dest, t);
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
-			int xpos = display::get_singleton()->get_location_x(target_hex_);
-			int ypos = display::get_singleton()->get_location_y(target_hex_);
+			auto disp = display::get_singleton();
+			int x = disp->get_location_x(target_hex_);
+			int y = disp->get_location_y(target_hex_);
+			const texture t = image::get_texture(
+				"whiteboard/attack-indicator-dst-" + direction_text + ".png",
+				image::HEXED);
+			const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-			display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
+			disp->drawing_buffer_add(layer, target_hex_, dest, t);
 		}
 	}
 }

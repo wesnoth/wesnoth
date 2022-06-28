@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -167,6 +168,24 @@ public:
 	void set_minimum_size(int min_w, int min_h);
 
 	int get_display_index();
+
+	/**
+	 * Sets the desired size of the rendering surface. Input event coordinates
+	 * will be scaled as if the window were also of this size. For best
+	 * results this should be an integer fraction of the window size.
+	 *
+	 * This is a wrapper for SDL_RenderSetLogicalSize.
+	 *
+	 * @param w              Width of the window's rendering surface
+	 * @param h              Height of the window's rendering surface
+	 */
+	void set_logical_size(int w, int h);
+
+	SDL_Point get_logical_size() const;
+	void get_logical_size(int& w, int& h) const;
+
+	/** The current pixel format of the renderer. */
+	uint32_t pixel_format();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 

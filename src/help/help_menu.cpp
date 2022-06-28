@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "help/help_menu.hpp"
@@ -18,6 +19,7 @@
 #include "help/help_impl.hpp"                // for section, topic, topic_list, etc
 #include "sound.hpp"                    // for play_UI_sound
 #include "wml_separators.hpp"           // for IMG_TEXT_SEPARATOR, etc
+#include "sdl/input.hpp"                // for get_mouse_state
 
 #include <algorithm>                    // for find
 #include <iostream>                     // for basic_ostream, operator<<, etc
@@ -156,11 +158,11 @@ int help_menu::process()
 {
 	int res = menu::process();
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	sdl::get_mouse_state(&mousex, &mousey);
 
-	if (!visible_items_.empty() &&
-            static_cast<std::size_t>(res) < visible_items_.size()) {
-
+	if (!visible_items_.empty()
+		&& static_cast<std::size_t>(res) < visible_items_.size())
+	{
 		selected_item_ = visible_items_[res];
 		const section* sec = selected_item_.sec;
 		if (sec != nullptr) {

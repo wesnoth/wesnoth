@@ -7,8 +7,11 @@ function wesnoth.micro_ais.bottleneck_defense(cfg)
 	end
 
 	local required_keys = {}
-	local optional_keys = { "location_id", "x", "y", "enemy_loc", "enemy_x", "enemy_y", "[filter]",
-		"healer_loc", "healer_x", "healer_y", "leadership_loc","leadership_x", "leadership_y", "active_side_leader"
+	local optional_keys = { location_id = 'string', x = 'integer_list', y = 'integer_list',
+	    enemy_loc = 'string', enemy_x = 'integer_list', enemy_y = 'integer_list',
+		healer_loc = 'string', healer_x = 'integer_list', healer_y = 'integer_list',
+		leadership_loc = 'string', leadership_x = 'integer_list', leadership_y = 'integer_list',
+		filter = 'tag', active_side_leader = 'boolean'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {

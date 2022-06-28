@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -40,10 +41,6 @@
  */
 #define DEBUG_THROW(id) throw id;
 #else
-
-#ifdef __FreeBSD__
-#define __LONG_LONG_SUPPORTED
-#endif
 
 #include <optional>
 
@@ -477,6 +474,45 @@ struct lexical_caster<
 		} else {
 			throw bad_lexical_cast();
 		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a bool from a std::string.
+ * @note is specialized to silence C4804 from MSVC.
+ */
+template <>
+struct lexical_caster<bool, std::string>
+{
+	bool operator()(const std::string& value, std::optional<bool>) const
+	{
+		DEBUG_THROW("specialized - To bool - From std::string");
+
+		return value == "1";
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a bool from a (const) char*.
+ * @note is specialized to silence C4804 from MSVC.
+ */
+template <class From>
+struct lexical_caster<
+	  bool
+	, From
+	, void
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
+	>
+{
+	bool operator()(From value, std::optional<bool>) const
+	{
+		DEBUG_THROW("specialized - To bool - From (const) char*");
+
+		return lexical_cast<bool>(std::string(value));
 	}
 };
 

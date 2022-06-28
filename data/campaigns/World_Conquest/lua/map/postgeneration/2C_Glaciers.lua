@@ -1,6 +1,6 @@
 -- Glaciers
 function world_conquest_tek_map_repaint_2c()
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uh^Uf,Uu,Uh,Ai,Ai,Xu,Ai,Ai")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uh^Tf,Uu,Uh,Ai,Ai,Xu,Ai,Ai")
 	world_conquest_tek_map_decoration_2c()
 	wct_randomize_snowed_forest()
 end
@@ -17,10 +17,10 @@ function world_conquest_tek_map_decoration_2c()
 		f.terrain("Mm"),
 	}
 	set_terrain { "Ha^Fpa",
-		f.terrain("Uh^Uf"),
+		f.terrain("Uh^Tf"),
 	}
 	set_terrain { "Aa^Fpa",
-		f.terrain("Uu^Uf"),
+		f.terrain("Uu^Tf"),
 	}
 	set_terrain { "Ha",
 		f.terrain("Uh,Hd"),
@@ -118,7 +118,7 @@ function world_conquest_tek_map_decoration_2c()
 		fraction = 2,
 		layer = "overlay",
 	}
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh^Fp"),
 			f.none(
@@ -127,7 +127,7 @@ function world_conquest_tek_map_decoration_2c()
 		),
 		fraction = 10,
 	}
-	set_terrain { "Ss^Uf",
+	set_terrain { "Ss^Tf",
 		f.all(
 			f.terrain("Ss"),
 			f.none(
@@ -137,28 +137,28 @@ function world_conquest_tek_map_decoration_2c()
 		fraction = 15,
 	}
 
-	local terrain_to_change = map:get_locations(f.all(
+	local terrain_to_change = map:find(f.all(
 		f.terrain("Wo"),
 		f.adjacent(f.terrain("!,Wo"), nil, 0)
 	))
-	helper.shuffle(terrain_to_change)
+	mathx.shuffle(terrain_to_change)
 	-- base amount in map surface
-	local r = helper.rand(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
-	for i = 1, math.min(r, #terrain_to_change) do
+	local r1 = mathx.random_choice(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
+	for i = 1, math.min(r1, #terrain_to_change) do
 		map[terrain_to_change[i]] = "Ai"
 	end
 
-	local icepack_candiates = map:get_locations(f.all(
+	local icepack_candiates = map:find(f.all(
 		f.terrain("Wo"),
 		f.adjacent(f.terrain("!,Wo,Ai"), nil, 0)
 	))
-	helper.shuffle(icepack_candiates)
-	local r = helper.rand(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
+	mathx.shuffle(icepack_candiates)
+	local r2 = mathx.random_choice(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
 
-	for i = 1, math.min(r, #icepack_candiates) do
+	for i = 1, math.min(r2, #icepack_candiates) do
 		local loc = icepack_candiates[i]
 		table.insert(prestart_event, wml.tag.item {
-			image = "scenery/icepack-1.png"
+			image = "scenery/icepack-1.png",
 			x = loc[1],
 			y = loc[2],
 		})
@@ -170,20 +170,20 @@ function world_conquest_tek_map_decoration_2c()
 		fraction = 15,
 	}
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Wwf",
 			f.terrain("Gd"),
 			fraction_rand = "2..6",
 		}
 
 	end
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		set_terrain { "Gs",
 			f.terrain("Gd"),
 			fraction_rand = "1..5",
 		}
 	end
-	if wesnoth.random(8) == 1 then
+	if mathx.random(8) == 1 then
 		set_terrain { "Aa,Aa,Aa,Ai",
 			f.terrain("Gd"),
 			fraction_rand = "1..4",
@@ -201,6 +201,8 @@ function world_conquest_tek_map_decoration_2c()
 
 	wct_change_map_water("g")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Glaciers")

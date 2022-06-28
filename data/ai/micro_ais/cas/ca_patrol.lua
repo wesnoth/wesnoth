@@ -1,4 +1,5 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local BC = wesnoth.dofile "ai/lua/battle_calcs.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local function get_patrol(cfg)
@@ -8,6 +9,78 @@ local function get_patrol(cfg)
         { "and", filter }
     }[1]
     return patrol
+end
+
+local function get_best_attack(unit, loc, last_waypoint, cfg)
+    local attack_range = cfg.attack_range or 1
+
+    -- The attack calculation can be somewhat expensive, check first if there are enemies within the specified range
+    local enemies = AH.get_attackable_enemies(
+        { id = cfg.attack, { "filter_location", { x = loc[1], y = loc[2], radius = attack_range } } },
+        wesnoth.current.side,
+        { ignore_visibility = cfg.attack_invisible_enemies }
+    )
+
+    -- An enemy on the last waypoint gets attacked preferentially and independent of
+    -- whether its id is given in cfg.attack; but it still needs to be within attack range
+    local enemy_last_waypoint
+    if last_waypoint then
+        enemy_last_waypoint = AH.get_attackable_enemies(
+            { x = last_waypoint[1], y = last_waypoint[2] },
+            wesnoth.current.side,
+            { ignore_visibility = cfg.attack_invisible_enemies }
+        )[1]
+        if enemy_last_waypoint and (wesnoth.map.distance_between(enemy_last_waypoint, loc) <= attack_range) then
+            local already_included = false
+            for _,enemy in ipairs(enemies) do
+                if (enemy.id == enemy_last_waypoint.id) then
+                    already_included = true
+                    break
+                end
+            end
+            if (not already_included) then
+                table.insert(enemies, enemy_last_waypoint)
+            end
+        end
+    end
+    if (#enemies == 0) then return end
+
+    local old_moves, old_loc
+    if ((loc[1] ~= unit.x) or (loc[2] ~= unit.y)) then
+        old_moves, old_loc = unit.moves, unit.loc
+        local _,sub_cost = AH.find_path_with_shroud(unit, loc)
+        unit.moves = unit.moves - sub_cost
+        unit.loc = loc
+    end
+    local attacks = AH.get_attacks({ unit }, { ignore_visibility = cfg.attack_invisible_enemies })
+    if old_moves then
+        unit.moves, unit.loc = old_moves, old_loc
+    end
+
+    local max_rating, best_enemy, best_dst = -math.huge, nil, nil
+    for _,attack in ipairs(attacks) do
+        for _,enemy in ipairs(enemies) do
+            if (attack.target.x == enemy.x) and (attack.target.y == enemy.y) then
+                local dst = { attack.dst.x, attack.dst.y }
+                local rating = BC.attack_rating(unit, enemy, dst)
+
+                -- Prioritize any enemy on the last waypoint
+                if enemy_last_waypoint and (enemy_last_waypoint.id == enemy.id) then
+                    rating = rating + 1000
+                end
+
+                if (rating > max_rating) then
+                    max_rating = rating
+                    best_enemy = enemy
+                    best_dst = dst
+                end
+
+                break
+            end
+        end
+    end
+
+    return best_enemy, best_dst
 end
 
 local ca_patrol = {}
@@ -42,15 +115,16 @@ function ca_patrol:execution(cfg)
         MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
     end
 
-    while patrol.moves > 0 do
-        -- Check whether one of the enemies to be attacked is next to the patroller
-        -- If so, don't move, but attack that enemy
-        local adjacent_enemy = AH.get_attackable_enemies {
-            id = cfg.attack,
-            { "filter_adjacent", { id = patrol.id } }
-        }[1]
-        if adjacent_enemy then break end
+    -- Check for a possible attack from the patrol's current position first, that
+    -- way we can skip the other evaluation if one is found
+    local last_waypoint
+    if cfg.one_time_only then last_waypoint = waypoints[n_wp] end
+    local enemy, dst
+    if (patrol.attacks_left > 0) and (#patrol.attacks > 0) then
+        enemy, dst = get_best_attack(patrol, patrol.loc, last_waypoint, cfg)
+    end
 
+    while (not enemy) and (patrol.moves > 0) do
         -- Also check whether we're next to any unit (enemy or ally) which is on the next waypoint
         local unit_on_wp = AH.get_visible_units(wesnoth.current.side, {
             x = patrol_vars.patrol_x,
@@ -97,15 +171,25 @@ function ca_patrol:execution(cfg)
             end
         end
 
-        -- If we're on the last waypoint on one_time_only is set, stop here
+        -- If we're on the last waypoint and one_time_only is set, stop here
         if cfg.one_time_only and
             (patrol.x == waypoints[n_wp][1]) and (patrol.y == waypoints[n_wp][2])
         then
             AH.checked_stopunit_moves(ai, patrol)
         else  -- Otherwise move toward next WP
-            local x, y = wesnoth.find_vacant_tile(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
+            local x, y = wesnoth.paths.find_vacant_hex(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
+                -- Check whether an attackable enemy comes into attack range at any hex along the way
+                local path = AH.find_path_with_shroud(patrol, nh[1], nh[2])
+                for i = 2,#path do -- The patrol's current position is already checked above
+                    local loc = path[i]
+                    enemy, dst = get_best_attack(patrol, loc, last_waypoint, cfg)
+                    if enemy then
+                        nh = loc
+                        break
+                    end
+                end
                 AH.checked_move(ai, patrol, nh[1], nh[2])
             else
                 AH.checked_stopunit_moves(ai, patrol)
@@ -114,28 +198,26 @@ function ca_patrol:execution(cfg)
         if (not patrol) or (not patrol.valid) then return end
     end
 
-    -- Attack unit on the last waypoint under all circumstances if cfg.one_time_only is set
-    local adjacent_enemy
-    if cfg.one_time_only then
-        adjacent_enemy = AH.get_attackable_enemies {
-            x = waypoints[n_wp][1],
-            y = waypoints[n_wp][2],
-            { "filter_adjacent", { id = patrol.id } }
-        }[1]
+    -- It is possible that the patrol unexpectedly ends up next to an enemy, e.g. because of an ambush
+    if not (enemy) then
+        enemy, dst = get_best_attack(patrol, patrol.loc, last_waypoint, cfg)
     end
 
-    -- Otherwise attack adjacent enemy (if specified)
-    if (not adjacent_enemy) then
-        adjacent_enemy = AH.get_attackable_enemies {
-            id = cfg.attack,
-            { "filter_adjacent", { id = patrol.id } }
-        }[1]
+    -- It is also possible that the patrol cannot make it to 'dst' because of an ambush,
+    -- in which case we can check whether the ambusher can/should be attacked.
+    -- So we need to execute the move and the attack separately.
+    if enemy then
+        AH.robust_move_and_attack(ai, patrol, dst)
+        if (not patrol) or (not patrol.valid) then return end
+
+        if (patrol.x ~= dst[1]) or (patrol.y ~= dst[2]) then
+            enemy, dst = get_best_attack(patrol, patrol.loc, last_waypoint, cfg)
+        end
     end
 
-    if adjacent_enemy then AH.checked_attack(ai, patrol, adjacent_enemy) end
-    if (not patrol) or (not patrol.valid) then return end
-
-    AH.checked_stopunit_all(ai, patrol)
+    if enemy then
+        AH.robust_move_and_attack(ai, patrol, dst, enemy)
+    end
 end
 
 return ca_patrol

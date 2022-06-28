@@ -9,7 +9,7 @@ local SP_attack
 local ca_spread_poison = {}
 
 function ca_spread_poison:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
     local attacks_aspect = ai.aspects.attacks
@@ -44,7 +44,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
     -- Go through all possible attacks with poisoners
-    local max_rating, best_attack = - math.huge
+    local max_rating, best_attack = - math.huge, nil
     for i,a in ipairs(attacks) do
         if target_map:get(a.target.x, a.target.y) and (not avoid_map:get(a.dst.x, a.dst.y)) then
             local attacker = wesnoth.units.get(a.src.x, a.src.y)

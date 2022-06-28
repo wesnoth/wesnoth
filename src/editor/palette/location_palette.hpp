@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -25,6 +26,10 @@ namespace editor {
 
 class editor_toolkit;
 
+/**
+ * List of starting locations and location ids. Shows a single-column list, with buttons to add
+ * new items to the list and to jump to that location on the map.
+ */
 class location_palette : public common_palette {
 
 public:
@@ -82,7 +87,6 @@ public:
 	void hide(bool hidden) override;
 
 private:
-
 	/** Scroll the editor-palette to the top. */
 	void scroll_top();
 
@@ -92,22 +96,21 @@ private:
 	virtual bool is_selected_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	int num_items() override;
-	/** Return the maximum number of items shown at the same time. */
-	int num_visible_items();
+	std::size_t num_items() override;
+	/**
+	 * Return the number of GUI elements that can show items. Some of these may be hidden, if there
+	 * are more of them than items to show, or if the palette has been scrolled to the bottom.
+	 */
+	std::size_t num_visible_items();
 protected:
 
 	int item_size_;
 	// the height of a row, the size of an item including borders.
 	int item_space_;
 
-private:
-	unsigned int palette_y_;
-	unsigned int palette_x_;
-
 protected:
-	//the current scrolling position
-	int items_start_;
+	// the current scrolling position
+	std::size_t items_start_;
 
 private:
 	std::string selected_item_;
@@ -117,7 +120,7 @@ private:
 	std::unique_ptr<location_palette_button> button_add_;
 	std::unique_ptr<location_palette_button> button_delete_;
 	std::unique_ptr<location_palette_button> button_goto_;
-    int help_handle_;
+	int help_handle_;
 	editor_display& disp_;
 };
 

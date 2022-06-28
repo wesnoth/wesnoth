@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Fabian Mueller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "editor/toolkit/editor_toolkit.hpp"
@@ -23,6 +24,7 @@
 #include "editor/action/mouse/mouse_action_select.hpp"
 
 #include "game_config_view.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 namespace editor {
 
@@ -84,7 +86,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front()["id"]);
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
@@ -130,7 +132,7 @@ void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__ << "\n";
 	int x, y;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
 	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }

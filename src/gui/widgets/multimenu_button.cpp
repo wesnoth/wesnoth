@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -173,6 +174,9 @@ void multimenu_button::update_label()
 		if(selected.size() > max_shown_) {
 			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
+			// TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
+			// of the text on the button when many of the boxes are selected. The text becomes
+			// "x, y and 1 other", "x, y and 2 others", etc.
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
 		set_label(utils::format_conjunct_list(_("multimenu^None Selected"), selected));
@@ -269,9 +273,9 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	}
 }
 
-widget* builder_multimenu_button::build() const
+std::unique_ptr<widget> builder_multimenu_button::build() const
 {
-	multimenu_button* widget = new multimenu_button(*this);
+	auto widget = std::make_unique<multimenu_button>(*this);
 
 	widget->set_max_shown(max_shown_);
 	if(!options_.empty()) {

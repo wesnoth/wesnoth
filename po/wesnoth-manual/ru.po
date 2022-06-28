@@ -1,17 +1,17 @@
-# translation of wesnoth-manual.po to Russian
+# translation of wesnoth-manual to Russian
 # Russian translations for Battle for Wesnoth package
-# Copyright (C) 2007 Wesnoth Development Team
+# Copyright (C) 2007-2021 Wesnoth Development Team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2007.
 # Victor Zabavin <vicza@zmail.ru>, 2008,
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014,
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manual\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2020-11-29 18:29+0300\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
+"PO-Revision-Date: 2021-07-19 20:00+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. type: Content of: outside any tag (error?)
@@ -474,12 +474,12 @@ msgstr "Титры"
 #: doc/manual/manual.en.xml:215
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
-"be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
-"at <ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
+"be able to reach them in real time at irc.libera.chat:6667 on #wesnoth or at "
+"<ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
 "battleforwesnoth</ulink>"
 msgstr ""
 "Нажмите эту кнопку, чтобы увидеть список основных участников проекта. Обычно "
-"вы можете связаться с ними самими по IRC, на irc.freenode.org:6667, канал "
+"вы можете связаться с ними самими по IRC, на irc.libera.chat:6667, канал "
 "#wesnoth. Либо через Discord <ulink url=\"https://discord.gg/battleforwesnoth"
 "\">https://discord.gg/battleforwesnoth</ulink>"
 
@@ -1252,6 +1252,8 @@ msgid ""
 "To view and change the hotkey settings open the Preferences menu and choose "
 "the Hotkeys tab."
 msgstr ""
+"Чтобы просмотреть или изменить настройки горячих клавиш откройте меню "
+"Настройки, вкладка Горячие клавиши."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -2934,40 +2936,32 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1678
-#, fuzzy
-#| msgid "Recruit and Recall"
 msgid "Red and yellow"
-msgstr "Вербовка и призыв"
+msgstr "Красный и жёлтый"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:1682
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:1685
 msgid "Two color orb"
-msgstr ""
+msgstr "Двуцветный шар"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1689
-#, fuzzy
-#| msgid ""
-#| "If you control the unit and it has moved this turn, but could still move "
-#| "further or attack"
 msgid ""
 "If you control the unit and it has attacked this turn, and could still move "
 "further but could not attack again"
 msgstr ""
-"Если вы контролируете этого бойца, и он уже ходил, но ещё может идти дальше "
-"или атаковать,"
+"Если вы управляете этим бойцом, и на этом ходу он уже атаковал, но всё ещё "
+"может идти дальше, но не атаковать"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -2994,6 +2988,8 @@ msgid ""
 "If the unit is an ally you do not control. On the ally&#8217;s own turn "
 "these will be shown with green, yellow and red orbs"
 msgstr ""
+"Если боец — союзник, которым вы не управляете. Во время хода самого союзника "
+"они показываются зелёными, жёлтыми или красным"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3029,21 +3025,14 @@ msgstr "Эллипсы, цвета команд и значки героев"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1730
-#, fuzzy
-#| msgid ""
-#| "Below each unit there will normally be a colored ellipses or base. The "
-#| "color identifies its team; in a campaign game, the human-player color is "
-#| "red. The team color will also show up in parts of the unit&#8217;s "
-#| "clothing, or possibly on a shield insignia."
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team. The team color will also show up in parts of the "
 "unit&#8217;s clothing, or possibly on a shield insignia."
 msgstr ""
-"Внизу каждого бойца изображается обычно цветной эллипс или основание. Его "
-"цвет идентифицирует команду; в кампаниях основная команда, которой управляет "
-"человек, имеет красный цвет. Цвет команды может также изображаться на частях "
-"одежды бойца или, возможно, на щитах."
+"Внизу каждого бойца обычно изображается цветной эллипс или основание. Его "
+"цвет указывает на цвет команды. Цвет команды может также наноситься на части "
+"одежды бойца или, возможно, на щиты."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3062,30 +3051,23 @@ msgid ""
 "Units that can recruit will always have a star-shaped base. Other units "
 "normally have an elliptic base."
 msgstr ""
+"Под бойцами, способными вербовать, всегда основание в виде звезды. У прочих "
+"бойцов — обычно в виде эллипса."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1738
-#, fuzzy
-#| msgid ""
-#| "Some campaigns use a star-shaped base to indicate leaders and heroes "
-#| "(units which are somehow special and for example not allowed to die in "
-#| "the course of the scenario); others use a silver crown icon above the "
-#| "energy bar to mark heroes. Still others have no specific hero indicator "
-#| "at all. Which (if any) is used is a stylistic choice left to campaign "
-#| "designers."
 msgid ""
 "Some campaigns use a smaller star-shaped base and a silver crown icon above "
 "the energy bar to indicate heroes (units which are somehow special and for "
 "example not allowed to die in the course of the scenario).  Whether to do "
 "this is a stylistic choice left to campaign designers."
 msgstr ""
-"В некоторых кампаниях для обозначения лидеров или героев (так называются "
-"бойцы, имеющие особое значение и которые, как правило, не должны погибнуть в "
-"ходе сценария) используют основание в виде звезды; в других кампаниях для "
-"обозначения героев используют серебряную корону над полоской здоровья. "
-"Некоторые кампании вовсе не имеют обозначения для героев. Какое именно "
-"обозначение использовать, выбирает автор кампании."
+"В некоторых кампаниях, чтобы обозначить героев (так называются бойцы с "
+"особым значением, которые, как правило, обязаны не погибнуть в ходе "
+"сценария) используют уменьшенное основание в виде звезды и небольшую "
+"серебряную корону над полоской здоровья.  Однако автор кампании может "
+"использовать другие обозначения."
 
 # type: Content of: <book><chapter><section><title>
 #. type: Content of: <book><chapter><section><title>

@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -765,10 +766,9 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
-	type_gender_variation selection = choose_unit();
-	if(std::get<0>(selection) != nullptr) {
+	if(const auto& [type, gender, variation] = choose_unit(); type != nullptr) {
 		// Make it so.
-		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *std::get<0>(selection), std::get<1>(selection), std::get<2>(selection));
+		create_and_place(*gui_, pc_.get_map(), pc_.get_units(), destination, *type, gender, variation);
 	}
 }
 
@@ -894,6 +894,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
 
+	mousehandler.deselect_hex();
 	gui_->set_route(nullptr);
 	gui_->invalidate_game_status();
 }
@@ -1243,8 +1244,8 @@ protected:
 		register_command("foreground", &console_handler::do_foreground, _("Debug foreground terrain."), "", "D");
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
-		register_command("fps", &console_handler::do_fps, _("Show fps (Frames Per Second)."));
-		register_command("benchmark", &console_handler::do_benchmark);
+		register_command("fps", &console_handler::do_fps, _("Display and log fps (Frames Per Second)."));
+		register_command("benchmark", &console_handler::do_benchmark, _("Similar to the 'fps' command, but also forces everything to redraw instead of only things that have changed."));
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");
 		register_command("quit", &console_handler::do_quit, _("Quit game."));
@@ -1489,8 +1490,6 @@ void console_handler::do_droid()
 		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
 		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
 		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
-		const std::string human = team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN);
-		const std::string ai = team::CONTROLLER::enum_to_string(team::CONTROLLER::AI);
 
 		if(action == "on") {
 			if(is_ai && !is_your_turn) {
@@ -1502,7 +1501,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			} else {
@@ -1518,7 +1517,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1534,7 +1533,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_human || is_proxy_human) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", ai}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::ai}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
 			} else {
@@ -1550,7 +1549,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1558,7 +1557,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			}
@@ -1572,7 +1571,7 @@ void console_handler::do_droid()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_terrain()
@@ -1629,7 +1628,7 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_theme()
@@ -1691,7 +1690,7 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_controller()
@@ -1714,9 +1713,9 @@ void console_handler::do_controller()
 		return;
 	}
 
-	std::string report = menu_handler_.board().get_team(side_num).controller().to_string();
+	std::string report = side_controller::get_string(menu_handler_.board().get_team(side_num).controller());
 	if(!menu_handler_.board().get_team(side_num).is_proxy_human()) {
-		report += " (" + menu_handler_.board().get_team(side_num).proxy_controller().to_string() + ")";
+		report += " (" + side_proxy_controller::get_string(menu_handler_.board().get_team(side_num).proxy_controller()) + ")";
 	}
 
 	if(menu_handler_.board().get_team(side_num).is_network()) {
@@ -1993,8 +1992,8 @@ void console_handler::do_unit()
 	}
 
 	if(parameters[0] == "alignment") {
-		unit_type::ALIGNMENT alignment;
-		if(!alignment.parse(parameters[1])) {
+		auto alignment = unit_alignments::get_enum(parameters[1]);
+		if(!alignment) {
 			utils::string_map symbols;
 			symbols["alignment"] = get_arg(1);
 			command_failed(VGETTEXT(

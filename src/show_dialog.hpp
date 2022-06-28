@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -64,9 +65,6 @@ public:
 	//Static members
 	static const int title_border_w, title_border_h;
 	static const style default_style;
-	static const style message_style;
-	static const style preview_style;
-	static const style titlescreen_style;
 
 	dialog_frame(CVideo &video, const std::string& title="",
 		const style& dialog_style=default_style,
@@ -107,7 +105,7 @@ private:
 	surface_restorer* restorer_;
 	bool auto_restore_;
 	dimension_measurements dim_;
-	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+	texture top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
 	bool have_border_;
 	bool dirty_;
 };

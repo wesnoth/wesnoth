@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -77,25 +78,52 @@ public:
 
 	pango_text();
 
-    pango_text(const pango_text &) = delete;
-    pango_text & operator = (const pango_text &) = delete;
+	pango_text(const pango_text &) = delete;
+	pango_text & operator = (const pango_text &) = delete;
+
+	/**
+	 * Returns the rendered text as a texture.
+	 *
+	 * texture::w() and texture::h() methods will return the expected
+	 * width and height of the texture in draw space. This may differ
+	 * from the real value returned by texture::get_info().
+	 *
+	 * In almost all cases, use w() and h() to get the size of the
+	 * rendered text for drawing.
+	 *
+	 * This function is otherwise identical to render().
+	 */
+	texture render_texture(const SDL_Rect& viewport);
+	texture render_texture();
 
 	/**
 	 * Returns the rendered text.
 	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the surface before returning it.
+	 * @param viewport Only this area needs to be drawn - the returned
+	 * surface's origin will correspond to viewport.x and viewport.y, the
+	 * width and height will be at least viewport.w and viewport.h (although
+	 * they may be larger).
+	 */
+	surface& render(const SDL_Rect& viewport);
+
+	/**
+	 * Equivalent to render(viewport), where the viewport's top-left is at
+	 * (0,0) and the area is large enough to contain the full text.
+	 *
+	 * The top-left of the viewport will be at (0,0), regardless of the values
+	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
+	 * y rows of blank space are included in the amount of memory allocated.
 	 */
 	surface& render();
 
 	/** Returns the width needed for the text. */
-	int get_width() const;
+	int get_width();
 
 	/** Returns the height needed for the text. */
-	int get_height() const;
+	int get_height();
 
-	/** Returns the pixel size needed for the text. */
-	point get_size() const;
+	/** Returns the size of the text, in drawing coordinates. */
+	point get_size();
 
 	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
@@ -110,27 +138,6 @@ public:
 	 */
 	unsigned insert_text(const unsigned offset, const std::string& text);
 
-	/**
-	 * Inserts a unicode char.
-	 *
-	 * @param offset              The position to insert the char.
-	 * @param unicode             The character to insert.
-	 *
-	 * @returns                   True upon success, false otherwise.
-	 */
-	bool insert_unicode(const unsigned offset, char32_t unicode);
-
-	/**
-	 * Inserts unicode text.
-	 *
-	 * @param offset              The position to insert the text.
-	 * @param unicode             Vector with characters to insert.
-	 *
-	 * @returns                   The number of characters inserted.
-	 */
-	unsigned insert_unicode(
-		const unsigned offset, const std::u32string& unicode);
-
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
 	// NOTE: these values must be powers of 2 in order to be bit-unique
@@ -144,7 +151,16 @@ public:
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
 
 	/**
-	 * Gets the location for the cursor.
+	 * Returns the maximum glyph height of a font, in drawing coordinates.
+	 *
+	 * @returns                       The height of the tallest possible glyph for the selected
+	 *                                font. More specifically, the result is the sum of the maximum
+	 *                                ascent and descent lengths.
+	 */
+	int get_max_glyph_height() const;
+
+	/**
+	 * Gets the location for the cursor, in drawing coordinates.
 	 *
 	 * @param column              The column offset of the cursor.
 	 * @param line                The line offset of the cursor.
@@ -198,6 +214,17 @@ public:
 	point get_column_line(const point& position) const;
 
 	/**
+	 * Retrieves a list of strings with contents for each rendered line.
+	 *
+	 * This method is not const because it requires rendering the text.
+	 *
+	 * @note This is only intended for renderer implementation details. This
+	 *       is a rather expensive function because it copies everything at
+	 *       least once.
+	 */
+	std::vector<std::string> get_lines() const;
+
+	/**
 	 * Gets the length of the text in bytes.
 	 *
 	 * The text set is UTF-8 so the length of the string might not be the length
@@ -225,7 +252,7 @@ public:
 
 	pango_text& set_family_class(font::family_class fclass);
 
-	pango_text& set_font_size(const unsigned font_size);
+	pango_text& set_font_size(unsigned font_size);
 
 	pango_text& set_font_style(const FONT_STYLE font_style);
 
@@ -272,12 +299,12 @@ private:
 	bool link_aware_;
 
 	/**
-     * The color to render links in.
-     *
-     * Links are formatted using pango &lt;span> as follows:
-     *
-     * &lt;span underline="single" color=" + link_color_ + ">
-     */
+	 * The color to render links in.
+	 *
+	 * Links are formatted using pango &lt;span> as follows:
+	 *
+	 * &lt;span underline="single" color=" + link_color_ + ">
+	 */
 	color_t link_color_;
 
 	/** The font family class used. */
@@ -352,14 +379,11 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	/**
-	 * Recalculates the text layout.
-	 *
-	 * When the text is recalculated the surface is dirtied.
-	 *
-	 * @param force               Recalculate even if not dirty?
-	 */
-	void recalculate(const bool force = false) const;
+	/** The pixel scale, used to render high-DPI text. */
+	int pixel_scale_;
+
+	/** Recalculates the text layout. */
+	void recalculate() const;
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
@@ -367,18 +391,17 @@ private:
 	/** The dirty state of the surface. */
 	mutable bool surface_dirty_;
 
+	/** The area that's cached in surface_, which is the area that was rendered when surface_dirty_ was last set to false. */
+	SDL_Rect rendered_viewport_;
+
 	/**
 	 * Renders the text.
 	 *
 	 * It will do a recalculation first so no need to call both.
-	 *
-	 * @param force               Render even if not dirty? This parameter is
-	 *                            also send to recalculate().
 	 */
-	void rerender(const bool force = false);
+	void rerender(const SDL_Rect& viewport);
 
-	void render(PangoLayout& layout, const PangoRectangle& rect,
-		const std::size_t surface_buffer_offset, const unsigned stride);
+	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
 	/**
 	 * Buffer to store the image on.
@@ -409,6 +432,24 @@ private:
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
 	std::string format_links(std::string_view text) const;
+
+	/**
+	 * Adjust a texture's draw-width and height according to pixel scale.
+	 *
+	 * As fonts are rendered at output-scale, we need to do this just
+	 * before returning the rendered texture. These attributes are stored
+	 * as part of the returned texture object.
+	 */
+	texture with_draw_scale(const texture& t) const;
+
+	/** Scale the given render-space size to draw-space, rounding up. */
+	int to_draw_scale(int s) const;
+
+	/** Scale the given render-space point to draw-space, rounding up. */
+	point to_draw_scale(const point& p) const;
+
+	/** Update pixel scale, if necessary. */
+	void update_pixel_scale();
 };
 
 /**
@@ -419,5 +460,18 @@ private:
  * class; constructing one is likely to be expensive.
  */
 pango_text& get_text_renderer();
+
+/**
+ * Returns the maximum glyph height of a font, in pixels.
+ *
+ * @param size                    Desired font size in pixels.
+ * @param fclass                  Font family to use for measurement.
+ * @param style                   Font style to select the correct variant for measurement.
+ *
+ * @returns                       The height of the tallest possible glyph for the selected
+ *                                font. More specifically, the result is the sum of the maximum
+ *                                ascent and descent lengths.
+ */
+int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // namespace font

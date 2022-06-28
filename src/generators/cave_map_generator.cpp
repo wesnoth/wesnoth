@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -26,6 +27,9 @@
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 cave_map_generator::cave_map_generator(const config &cfg) :
 	wall_(t_translation::CAVE_WALL),
@@ -160,7 +164,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 					min_xpos = std::stoi(items.front()) - 1;
 					max_xpos = std::stoi(items.back());
 				} catch(const std::invalid_argument&) {
-					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					lg::log_to_chat() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					ERR_WML << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back();
 					continue;
 				}
 			}
@@ -173,7 +178,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 					min_ypos = std::stoi(items.front()) - 1;
 					max_ypos = std::stoi(items.back());
 				} catch(const std::invalid_argument&) {
-					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					lg::log_to_chat() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					ERR_WML << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back();
 				}
 			}
 		}
@@ -222,7 +228,7 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 	if (c.items == nullptr || c.locs.empty()) return;
 
 	std::size_t index = 0;
-	for (const config::any_child &it : c.items->all_children_range())
+	for (const config::any_child it : c.items->all_children_range())
 	{
 		config cfg = it.cfg;
 		config &filter = cfg.child("filter");

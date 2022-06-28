@@ -1,26 +1,31 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "help/help_text_area.hpp"
 
 #include "config.hpp"                   // for config, etc
+#include "draw.hpp"                     // for blit, fill
+#include "font/sdl_ttf_compat.hpp"
 #include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
-#include "picture.hpp"                    // for get_image
+#include "lexical_cast.hpp"
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
-#include "preferences/general.hpp"              // for font_scaled
+#include "picture.hpp"                  // for get_image
+#include "preferences/general.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
+#include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
 #include "video.hpp"                    // for CVideo
 
@@ -46,7 +51,7 @@ help_text_area::help_text_area(CVideo &video, const section &toplevel) :
 	shown_topic_(nullptr),
 	title_spacing_(16),
 	curr_loc_(0, 0),
-	min_row_height_(font::get_max_height(normal_font_size)),
+	min_row_height_(4 + font::get_max_height(normal_font_size)),
 	curr_row_height_(min_row_height_),
 	contents_height_(0)
 {
@@ -69,11 +74,11 @@ void help_text_area::show_topic(const topic &t)
 }
 
 
-help_text_area::item::item(surface surface, int x, int y, const std::string& _text,
+help_text_area::item::item(const texture& _tex, int x, int y, const std::string& _text,
 						   const std::string& reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
-	surf(surface),
+	tex(_tex),
 	text(_text),
 	ref_to(reference_to),
 	floating(_floating), box(_box),
@@ -81,14 +86,14 @@ help_text_area::item::item(surface surface, int x, int y, const std::string& _te
 {
 	rect.x = x;
 	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
-help_text_area::item::item(surface surface, int x, int y, bool _floating,
+help_text_area::item::item(const texture& _tex, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
-	surf(surface),
+	tex(_tex),
 	text(""),
 	ref_to(""),
 	floating(_floating),
@@ -96,8 +101,8 @@ help_text_area::item::item(surface surface, int x, int y, bool _floating,
 {
 	rect.x = x;
 	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
 void help_text_area::set_items()
@@ -109,11 +114,12 @@ void help_text_area::set_items()
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
 	const std::string show_title =
-		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
-	surface surf(font::get_rendered_text(show_title, title_size,
-					     font::NORMAL_COLOR, TTF_STYLE_BOLD));
-	if (surf != nullptr) {
-		add_item(item(surf, 0, 0, show_title));
+		font::pango_line_ellipsize(shown_topic_->title, title_size, inner_location().w);
+	// TODO: highdpi - pango textures
+	texture tex(font::pango_render_text(show_title, title_size,
+		font::NORMAL_COLOR, font::pango_text::STYLE_BOLD));
+	if (tex) {
+		add_item(item(tex, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
 		contents_height_ = title_spacing_;
 		down_one_line();
@@ -277,7 +283,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		jump_to = to;
 	}
 	if (jump_to != 0 && static_cast<int>(jump_to) <
-            get_max_x(curr_loc_.first, curr_row_height_)) {
+			get_max_x(curr_loc_.first, curr_row_height_)) {
 
 		curr_loc_.first = jump_to;
 	}
@@ -319,11 +325,11 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		return;
 	}
 	const std::string first_word = get_first_word(text);
-	int state = 0;
-	state |= bold ? TTF_STYLE_BOLD : 0;
-	state |= italic ? TTF_STYLE_ITALIC : 0;
+	int state = font::pango_text::STYLE_NORMAL;
+	state |= bold ? font::pango_text::STYLE_BOLD : 0;
+	state |= italic ? font::pango_text::STYLE_ITALIC : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& remaining_width < font::line_width(first_word, scaled_font_size, state)) {
+		&& remaining_width < font::pango_line_width(first_word, scaled_font_size, font::pango_text::FONT_STYLE(state))) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
@@ -349,9 +355,13 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 			down_one_line();
 		}
 		else {
-			surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
-			if (surf)
-				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+			// TODO: highdpi - pango textures
+			texture tex(font::pango_render_text(first_part,
+				scaled_font_size, color, font::pango_text::FONT_STYLE(state)));
+			if (tex) {
+				add_item(item(tex, curr_loc_.first, curr_loc_.second,
+					first_part, ref_dst));
+			}
 		}
 		if (parts.size() > 1) {
 
@@ -359,16 +369,16 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 
 			const std::string first_word_before = get_first_word(s);
 			const std::string first_word_after = get_first_word(remove_first_space(s));
-			if (get_remaining_width() >= font::line_width(first_word_after, scaled_font_size, state)
+			if (get_remaining_width() >= font::pango_line_width(first_word_after, scaled_font_size, font::pango_text::FONT_STYLE(state))
 				&& get_remaining_width()
-				< font::line_width(first_word_before, scaled_font_size, state)) {
+				< font::pango_line_width(first_word_before, scaled_font_size, font::pango_text::FONT_STYLE(state))) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
 				s = remove_first_space(s);
 				down_one_line();
 			}
-			else if (!(font::line_width(first_word_before, scaled_font_size, state)
+			else if (!(font::pango_line_width(first_word_before, scaled_font_size, font::pango_text::FONT_STYLE(state))
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
@@ -381,15 +391,15 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 void help_text_area::add_img_item(const std::string& path, const std::string& alignment,
 								  const bool floating, const bool box)
 {
-	surface surf(image::get_image(path));
-	if (!surf)
+	texture tex(image::get_texture(path));
+	if (!tex)
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
 		WRN_DP << "Floating image with align HERE, aligning left." << std::endl;
 		align = LEFT;
 	}
-	const int width = surf->w + (box ? box_width * 2 : 0);
+	const int width = tex.w() + (box ? box_width * 2 : 0);
 	int xpos;
 	int ypos = curr_loc_.second;
 	int text_width = inner_location().w;
@@ -420,7 +430,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 		else {
 			ypos = get_y_for_floating_img(width, xpos, ypos);
 		}
-		add_item(item(surf, xpos, ypos, floating, box, align));
+		add_item(item(tex, xpos, ypos, floating, box, align));
 	}
 }
 
@@ -535,8 +545,7 @@ void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 	bg_restore();
-	surface& screen = video().getSurface();
-	clip_rect_setter clip_rect_set(screen, &loc);
+	auto clipper = draw::set_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
 		dst.y -= get_position();
@@ -556,12 +565,13 @@ void help_text_area::draw_contents()
 					// surface's clipping rectangle being overridden even if
 					// no render clipping rectangle set operaton was queued,
 					// so let's not use the render API to draw the rectangle.
-					SDL_FillRect(screen, &draw_rect, 0);
+					// TODO: highdpi - is the above still relevant?
+					draw::fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			sdl_blit(it->surf, nullptr, screen, &dst);
+			draw::blit(it->tex, dst);
 		}
 	}
 }

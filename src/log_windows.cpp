@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 // For some reason, it became necessary to include this before the header
@@ -41,6 +42,16 @@ static lg::log_domain log_setup("logsetup");
 #define WRN_LS LOG_STREAM(warn,  log_setup)
 #define LOG_LS LOG_STREAM(info,  log_setup)
 #define DBG_LS LOG_STREAM(debug, log_setup)
+
+namespace filesystem
+{
+
+std::string get_logs_dir()
+{
+	return filesystem::get_user_data_dir() + "/logs";
+}
+
+}
 
 namespace lg
 {
@@ -465,9 +476,16 @@ std::string log_file_path()
 	return "";
 }
 
-void early_log_file_setup()
+static bool disable_redirect;
+
+void early_log_file_setup(bool disable)
 {
 	if(lfm) {
+		return;
+	}
+
+	if(disable) {
+		disable_redirect = true;
 		return;
 	}
 
@@ -491,8 +509,9 @@ bool using_own_console()
 
 void finish_log_file_setup()
 {
+	if(disable_redirect) return;
 	// Make sure the LFM is actually set up just in case.
-	early_log_file_setup();
+	early_log_file_setup(false);
 
 	if(lfm->console_enabled()) {
 		// Nothing to do if running in console mode.
@@ -506,7 +525,7 @@ void finish_log_file_setup()
 		return;
 	}
 
-	const std::string log_dir = filesystem::get_user_data_dir() + "/logs";
+	const std::string log_dir = filesystem::get_logs_dir();
 	if(!filesystem::file_exists(log_dir) && !filesystem::make_directory(log_dir)) {
 		log_init_panic(std::string("Could not create logs directory at ") +
 					   log_dir + ".");

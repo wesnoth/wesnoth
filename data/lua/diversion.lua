@@ -13,7 +13,7 @@ local u_pos_filter = function(u_id)
         end
         for i, dir in ipairs(hex_dirs) do
             if diversion_unit:matches {
-              id = u_id, 
+              id = u_id,
               T.filter_adjacent {
                   is_enemy = "yes",
                   adjacent = dir,
@@ -26,7 +26,7 @@ local u_pos_filter = function(u_id)
               }
             } then
                 output = "diverter"
-                break 
+                break
             end
         end
         if output ~= "initial" then
@@ -67,7 +67,7 @@ local status_anim_update = function(is_undo)
                     }
                 end
         end
-        
+
         -- find all units on map with ability = diversion and status.diversion = true
         local stop_candidates = wesnoth.units.find_on_map({
                 ability = "diversion",
@@ -102,6 +102,6 @@ end
 
 on_event("moveto, die, recruit, recall", function()
         status_anim_update()
-        
+
 end)
 

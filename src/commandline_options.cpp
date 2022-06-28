@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any lfooater version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "commandline_options.hpp"
@@ -60,6 +61,14 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 {
 }
 
+
+#ifdef _WIN32
+#define IMPLY_WCONSOLE " Implies --wconsole."
+#else
+#define IMPLY_WCONSOLE
+#endif // _WIN32
+
+
 commandline_options::commandline_options(const std::vector<std::string>& args)
 	: bunzip2()
 	, bzip2()
@@ -74,6 +83,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, debug(false)
 	, debug_lua(false)
 	, strict_lua(false)
+	, allow_insecure(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_dot_domain()
 	, debug_dot_level()
@@ -107,6 +117,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, nocache(false)
 	, nodelay(false)
 	, nogui(false)
+	, nobanner(false)
 	, nomusic(false)
 	, nosound(false)
 	, new_widgets(false)
@@ -150,6 +161,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, diff_left()
 	, diff_right()
 	, version(false)
+	, simple_version(false)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
@@ -172,10 +184,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path instead.")
 		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
-		("data-path", "prints the path of the data directory and exits.")
+		("data-path", "prints the path of the data directory and exits." IMPLY_WCONSOLE)
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")
 		("strict-lua", "disallow deprecated Lua API calls")
+		("allow-insecure", "Allows sending a plaintext password over an unencrypted connection. Should only ever be used for local testing.")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
@@ -183,7 +196,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("editor,e", po::value<std::string>()->implicit_value(std::string()), "starts the in-game map editor directly. If file <arg> is specified, equivalent to -e --load <arg>.")
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
-		("help,h", "prints this message and exits.")
+		("help,h", "prints this message and exits." IMPLY_WCONSOLE)
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("noaddons", "disables the loading of all add-ons.")
@@ -193,22 +206,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("nosound", "runs the game without sounds and music.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
-		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
-		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file." IMPLY_WCONSOLE)
+		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_WCONSOLE)
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
-		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
-#ifdef _WIN32
-		 " Implies --wconsole."
-#endif // _WIN32
-		 )
+		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work." IMPLY_WCONSOLE)
 		("script", po::value<std::string>(), "(experimental) file containing a Lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
@@ -217,13 +218,16 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
-		("userdata-path", "prints the path of the userdata directory and exits.")
+		("userdata-path", "prints the path of the userdata directory and exits." IMPLY_WCONSOLE)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
+		("simple-version", "prints the game's version number and nothing else.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
 		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
+		("wnoconsole", "don't attach a console window on startup (Windows only). Overrides options that imply --wconsole.")
+		("wnoredirect", "disables standard redirection of logging to a file (Windows only), allowing the output to be piped to another command")
 #endif // _WIN32
 		;
 
@@ -247,7 +251,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 	po::options_description logging_opts("Logging options");
 	logging_opts.add_options()
-		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits.")
+		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits." IMPLY_WCONSOLE)
 		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
@@ -271,7 +275,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string>>()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
-                ("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
+		("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
 		;
 
 	po::options_description testing_opts("Testing options");
@@ -280,6 +284,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("unit,u", po::value<std::vector<std::string>>(), "runs a unit test scenario. The GUI is not shown and the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)\n\t5 - FAIL (BROKE STRICT)\n\t6 - FAIL (WML EXCEPTION)\n\tMultiple tests can be run by giving this option multiple times, in this case the test run will stop immediately after any test which doesn't PASS and the return code will be the status of the test that caused the stop.")
 		("showgui", "don't run headlessly (for debugging a failing test)")
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
+		("nobanner", "suppress startup banner.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
 		;
@@ -287,14 +292,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description parsing_opts("WML parsing options");
 	parsing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
-		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
+		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema" IMPLY_WCONSOLE)
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema. Requires the user to play the campaign (in the GUI) to trigger the validation.")
 		("validate-core", "validate the core WML against the schema")
-		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
-		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents")
+		("validate-schema", po::value<std::string>(), "validate a specified WML schema" IMPLY_WCONSOLE)
+		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents" IMPLY_WCONSOLE)
 		("output,o", po::value<std::string>(), "output to specified file")
-		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document")
-		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
+		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document" IMPLY_WCONSOLE)
+		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file." IMPLY_WCONSOLE)
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
@@ -350,6 +355,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		debug_lua = true;
 	if (vm.count("strict-lua"))
 		strict_lua = true;
+	if (vm.count("allow-insecure"))
+		allow_insecure = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if (vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
@@ -422,6 +429,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		nosound = true;
 	if (vm.count("nogui"))
 		nogui = true;
+	if (vm.count("nobanner"))
+		nobanner = true;
 	if (vm.count("parm"))
 		multiplayer_parm = parse_to_uint_string_string_tuples_(vm["parm"].as<std::vector<std::string>>());
 	if (vm.count("preprocess"))
@@ -521,9 +530,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		validate_schema = vm["validate-schema"].as<std::string>();
 	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("use-schema"))
-		validate_with = vm["use-schema"].as<std::string>();;
+		validate_with = vm["use-schema"].as<std::string>();
 	if (vm.count("version"))
 		version = true;
+	if (vm.count("simple-version"))
+	{
+		simple_version = true;
+		nobanner = true;
+	}
 	if (vm.count("windowed"))
 		windowed = true;
 	if (vm.count("with-replay"))

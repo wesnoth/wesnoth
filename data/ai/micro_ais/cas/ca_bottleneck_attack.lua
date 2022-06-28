@@ -14,7 +14,7 @@ function ca_bottleneck_attack:evaluation(cfg, data)
     }
     if (not attackers[1]) then return 0 end
 
-    local max_rating, best_attacker, best_target, best_weapon = - math.huge
+    local max_rating, best_attacker, best_target, best_weapon = - math.huge, nil, nil, nil
     for _,attacker in ipairs(attackers) do
         local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = attacker.id } } }
 

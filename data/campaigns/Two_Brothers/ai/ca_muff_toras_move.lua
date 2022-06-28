@@ -73,7 +73,7 @@ function muff_toras_move:execution()
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = muff_toras.id } } }
 
-    local max_rating, best_target, best_weapon = - math.huge
+    local max_rating, best_target, best_weapon = - math.huge, nil, nil
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(muff_toras.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(muff_toras, n_weapon, target)

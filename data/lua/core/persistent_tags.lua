@@ -2,7 +2,13 @@
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	print("Creating persistent_tags table...")
-	
+
+	---Defines a tag for custom saved game data.
+	---@class persistent_tag
+	---@field read fun(cfg:WMLTable)
+	---@field write fun(add:fun(WMLTable))
+
+	---@type table<string, persistent_tag>
 	wesnoth.persistent_tags = setmetatable({}, {
 		-- This just makes assignment of the read/write funtions more convenient
 		__index = function(t,k)
@@ -22,11 +28,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			if type(tag) == 'table' and type(tag.read) == 'function' then
 				tag.read(cfg[i][2])
 			elseif tag ~= nil and not warned_tags[name] then
-				msg = string.format("Invalid persistent tag [%s], should be a table containing read and write functions.", name)
+				local msg = string.format("Invalid persistent tag [%s], should be a table containing read and write functions.", name)
 				wesnoth.log("err", msg, true)
 				warned_tags[name] = true
 			else
-				msg = string.format("[%s] not supported at scenario toplevel", name)
+				local msg = string.format("[%s] not supported at scenario toplevel", name)
 				wesnoth.log("err", msg, true)
 				warned_tags[name] = true
 			end

@@ -76,7 +76,7 @@
   ("rulebase"))
  ("ai"
   ("team_formula" "register_candidate_action" "candidate_action" "not" "protect_area" "aspect" "leader_goal" "avoid" "vars" "modify_ai" "engine" "goal" "stage")
-  ("priority" "formula" "eval_list" "_stage" "_aspect" "leader" "loop_formula" "y" "x" "passive_leader_shares_keep" "leader_aggression" "number_of_possible_recruits_to_force_recruit" "time_of_day" "ai_algorithm" "retreat_enemy_weight" "retreat_factor" "scout_village_targeting" "turns" "attack_depth" "grouping" "villages_per_scout" "leader_value" "village_value" "leader_shares_keep" "passive_leader" "recruitment_pattern" "simple_targeting" "recruitment_ignore_bad_combat" "recruitment_ignore_bad_movement" "caution" "aggression" "version" "description" "id"))
+  ("priority" "formula" "eval_list" "_stage" "_aspect" "leader" "loop_formula" "y" "x" "passive_leader_shares_keep" "leader_aggression" "number_of_possible_recruits_to_force_recruit" "time_of_day" "ai_algorithm" "retreat_enemy_weight" "retreat_factor" "scout_village_targeting" "turns" "attack_depth" "grouping" "villages_per_scout" "leader_value" "village_value" "leader_shares_keep" "passive_leader" "recruitment_pattern" "simple_targeting" "recruitment_ignore_bad_combat" "recruitment_ignore_bad_movement" "caution" "allow_ally_villages" "aggression" "version" "description" "id"))
  ("side"
   ("leader" "variables" "goal" "village" "unit" "ai" "modifications")
   ("recall_cost" "village_support" "gold_lock" "faction_from_recruit" "income_lock" "team_lock" "disallow_observers" "variation" "ai_special" "hitpoints" "overlays" "ai_algorithm" "generate_name" "random_traits" "extra_recruit" "y" "x" "allow_player" "faction" "image" "experience" "race" "facing" "moves" "color" "share_maps" "share_view" "shroud" "fog" "profile" "scroll_to_leader" "village_gold" "unrenamable" "gender" "save_id" "income" "no_leader" "gold" "recruit" "canrecruit" "user_team_name" "team_name" "persistent" "max_moves" "type" "id" "name" "hidden" "controller" "side"))
@@ -1151,7 +1151,7 @@
   ("y" "x" "terrain"))
  ("micro_ai"
   ("avoid_unit" "filter_location_enemy" "mobilize_condition" "avoid" "filter_location_wander" "filter_location" "unit" "probability" "filter_second" "filter")
-  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "show_messages" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
+  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "show_messages" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "attack_range" "attack_invisible_enemies" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
  ("petrify" nil
   ("id"))
  ("background_layer" nil

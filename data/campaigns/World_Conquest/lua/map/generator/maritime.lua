@@ -59,11 +59,11 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_convert(300, 999, 510, 540, "Gg,Gs", "Gg^Fds"),
 		dr_convert(300, 999, 510, 540, "Hh", "Hh^Fds"),
 		-- fungus appears at med temp and high
-		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Uf"),
-		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Uf"),
+		dr_convert(825, 950, 500, 525, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 550, 575, "Uu, Uh", "Uu^Tf"),
+		dr_convert(825, 950, 600, 625, "Uu, Uh", "Uu^Tf"),
 		-- high temperatures
-		dr_convert(800, 999, 850, 999, "Uu, Uh, Uu^Uf", "Ql"),
+		dr_convert(800, 999, 850, 999, "Uu, Uh, Uu^Tf", "Ql"),
 		dr_convert(260, 999, 800, 999, "Gg", "Dd"),
 		dr_convert(230, 999, 750, 999, "Gg", "Gd"),
 		dr_convert(100, 999, 650, 999, "Gg", "Gs"),

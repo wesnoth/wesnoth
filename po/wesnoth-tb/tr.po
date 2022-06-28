@@ -1,15 +1,15 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2019 Wesnoth development team
+# Copyright (C) 2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Haluk AKIN <ihsan_akin@yahoo.com>, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2019.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-01-23 14:51+0300\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"PO-Revision-Date: 2022-01-06 02:33+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -46,10 +46,8 @@ msgstr "Meydan Okuma"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Şövalye"
+msgstr "Büyük Şövalye"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -66,10 +64,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Toy seviyesi. 4 senaryo)"
+msgstr "(Acemi seviyesi. 4 senaryo)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -108,14 +104,21 @@ msgstr "Büyücüyü Defetmek"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
+#, fuzzy
+#| msgid ""
+#| "The remote freehold of Maghre in the western reaches of the Kingdom of "
+#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
+#| "comings and goings of the wider world. Wars and the rumor of wars touched "
+#| "them not, until the day a dark mage settled in the region and began "
+#| "seeking sacrifices for his evil summonings."
 msgid ""
-"The remote freehold of Maghre in the western reaches of the kingdom of "
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
-"Vesnot krallığının iyice doğusunda kalan Magre kenti ahalisi huzur içinde "
+"Vesnot Krallığının iyice doğusunda kalan Magre kenti ahalisi huzur içinde "
 "yaşar, kente dışardan pek gelen giden olmazdı. Savaşlardan ve savaş "
 "söylentilerinden de haberleri olmazdı. Taa ki, bir kara büyücünün şeytani "
 "emellerine ulaşmak amacıyla yeni kurbanlar aramak için bölgelerine gelişine "
@@ -220,9 +223,9 @@ msgstr ""
 msgid "Humans"
 msgstr "İnsanlar"
 
+#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
@@ -322,7 +325,7 @@ msgstr "Hepsi bu mu, Arvit? Anlıyorum. ama..."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:201
 msgid "You called, and I came; be content with that. What ails Maghre?"
-msgstr "Sen çağırdın, ben de geldim. Bununla yetin. Sana ne oldu Magre?"
+msgstr "Sen çağırdın, ben de geldim. Bununla yetin. Magre'de neler oluyor?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
@@ -352,8 +355,7 @@ msgstr ""
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
-msgstr ""
-"Tamam. Bunu köy için yapacağım. Büyücüyü sırtımızdan uzak tutabilir misin?"
+msgstr "Tamam. Bunu köy için yapacağım. Büyücüyü bizden uzak tutabilir misin?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:221
@@ -477,23 +479,6 @@ msgstr "Arvit kayıp kardeşini bulmak için ekibiyle kuzeye at sürdü. "
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -515,17 +500,18 @@ msgstr ""
 "16 V, 363 VY\n"
 "Magreli Arvit'in günlüğünden alıntı\n"
 "\n"
-"Baran'ı üç gün aradık ve hiçbir şey bulamadan döndük. Önsezilerime göre en "
-"iyisi kara büyücünün kölelerinin güvenle saklanabileceği sınır bölgelerine "
-"gitmekti; ama her yerde daha fazla tarım arazisi bulduk. İlk başta aramanın "
-"faydasız olabileceğini düşündüm, ancak ilk günün sonunda bir parça iz "
-"bulduk. İzlerin bazıları iskelet ayağıyla yapılmıştı.\n"
+"Baran'ı üç gündür arıyorduk ve hiçbir şey bulamadık. En iyi önsezim, "
+"büyücünün yardakçılarının güvenle saklanabileceği sınır bölgelerine kuzeye "
+"yönelmekti; diğer her yer genellikle tarım arazisidir. İlk başta aramanın "
+"faydasız olabileceğini düşündüm, ancak ilk günün sonunda bir takım izler "
+"bulduk. Bazıları iskelet ayaklardan yapılmıştı, ancak ilk kamp alanlarından "
+"sonra izler sadece ağır yük taşıyan adamların izleriydi.\n"
 "\n"
 "Şimdi emin olmaya yeterince yakınız: bu izler Gri Orman'a doğru ilerliyor. "
 "Magre'den veya diğer köylerden hiç kimsenin son zamanlarda o ormana "
-"gittiğini duymadık. Nesiller boyunca buna karşı uyaran öyküler aktarıldı. "
-"Güya, yaşama açlık duyan kayıp ruhların dadandığı bir yermiş ve orada ölen "
-"herkes onlara katılmaya mahkummuş."
+"gittiğini duymadık. Nesilden nesile aktarılan, buna karşı uyaran öyküler "
+"dinledik. Güya, yaşama açlık duyan kayıp ruhların dadandığı bir yermiş ve "
+"orada ölen herkes onlara katılmaya mahkummuş."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
@@ -592,17 +578,21 @@ msgstr "Adam kaçıranları yakalayın"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Desteği gelmeden Kara Üstadı öldür"
+msgid "Kill the Dark Adept before more elves arrive"
+msgstr "Daha fazla elf gelmeden Kara Üstadı öldür"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+#, fuzzy
+#| msgid ""
+#| "The elvish forces are spread out. Seek to fight them one at a time with "
+#| "several of your units."
 msgid ""
-"The Elvish forces are spread out. Seek to fight them one at a time with "
+"The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
-"Elf kuvvetleri etrafa yayılır. Birimlerinizi her defasında biriyle savaşa "
-"sokmaya çalışın."
+"Elf kuvvetleri etrafa yayılır. Birimlerinizin her defasında biriyle "
+"çarpışmasını sağlayın."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:295
@@ -647,13 +637,17 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Bu adamlar esirlerini büyücülük yaparken yakaladı; senin iyiliğin için, "
+"umarım o senin kardeşin değildir. Yakaladıkları adamın kardeşinizin katili "
+"olduğunu varsayın ve gri büyücülerin, mahkumlarının kötü büyüsünün bu "
+"dünyaya bağladığı tüm ruhları serbest bırakmasını sağlayın."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
 msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
-msgstr ""
+msgstr "Kara Büyücüyü savaş alanında öldürdük! Öldürücü darbeyi kendim vurdum."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -661,6 +655,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Kara Büyücüyü savaş alanında öldürdük! Öldürücü darbenin vuruluşunu kendi "
+"gözlerimle gördüm."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -672,21 +668,25 @@ msgid ""
 "could wish.\n"
 "\n"
 "Either way, nothing will be gained by your intrusion into our woods. Now "
-"advance no further, or you will die."
+"advance no further, for we will defend our land."
 msgstr ""
+"Üç gün önce çarpışma seslerini duyduk, ama tutsak yanımızdan geçerken ölümün "
+"iğrenç kokusu çok barizdi; eğer kardeşin gerçekten mahkumsa, o da bir kara "
+"büyücüdür. Kardeşinizi hepimizin umduğu gibi hatırlayın ve mahkumun "
+"kaderinin dilediğiniz kadar korkunç bir intikam olacağını bilin.\n"
+"\n"
+"\n"
+"Her iki durumda da, ormanlarımıza izinsiz girmekten hiçbir kazancınız olmaz. "
+"Artık daha fazla ilerleme, çünkü topraklarımızı savunacağız."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"Bu hayalet hikayeleri de fazla oldu. Hiçbir elf kardeşim Baran'ı "
-"kurtarmaktan beni alıkoyamaz!"
+"Bu hayalet hikayeleri de fazla oldu ama, hayaletler bile bu elflere karşı "
+"daha dikkatli olabildi. Yine de Baran'ı kurtarmama engel olamayacaklar!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -716,35 +716,40 @@ msgid "I see them! There they are!"
 msgstr "Onları görüyorum! İşte oradalar!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
+#. There are no undead on the map yet, but Muff Toras summons some immediately after saying this
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
 msgid ""
-"Curses! If they had been an hour slower, our master’s reinforcements would "
-"already be here to meet us."
+"Curses! Had they been a few hours slower, I might have covered our tracks "
+"without arousing the elves’ suspicions. Still, no need for the disguise any "
+"more."
 msgstr ""
-"Hay lanet! Bir saat daha geç kalsalar n'olurdu? Hiç olmaza destek "
-"kuvvetlerimiz gelmiş olurdu."
+"Lanet şeyler! Birkaç saat daha geç gelselerdi, elflerin şüphelerini "
+"uyandırmadan izlerimizi kapatabilirdim. Yine de, artık kılık değiştirmeye "
+"gerek yok. "
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Peki, elfler? Şimdi kara büyücülerin kimler olduğunu görüyor musunuz? "
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:516
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Çarpışma sesleri duydum ama bunu görmeyi beklemiyordum. Konseyi "
+"bilgilendireceğim, kara büyücülerin kim olduğunu bulabilirler."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Haydi askerlerim, şu adam kaçıranları yakalayalım!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -755,7 +760,7 @@ msgstr ""
 "zindanına atılmıştır bile."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -764,47 +769,47 @@ msgstr ""
 "kanını yere saçacak."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Sithrak"
 msgstr "Sitrak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
 msgid "Eleben"
 msgstr "Eleben"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Jarlom"
 msgstr "Jarlom"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Hamik"
 msgstr "Hamik"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "Akranbral"
 msgstr "Akranbal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
 msgid "Drakanal"
 msgstr "Darkanal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Xaskanat"
 msgstr "Kazkanat"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Katklagad"
 msgstr "Katkalag"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:581
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
@@ -815,7 +820,7 @@ msgstr ""
 "$second_password|."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:589
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 "Bağlayın şunu! Bizimle gelecek. Eğer bize yalan söylemişse bunu canıyla öder."
@@ -909,25 +914,35 @@ msgstr ""
 msgid "You receive 70 pieces of gold!"
 msgstr "70 altın aldınız!"
 
-#. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:704
-msgid "My reinforcements are here!"
-msgstr "Destek kuvvetlerim geldi!"
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
+msgid ""
+"These elves have delayed us too long, the kidnappers’ trail will have faded "
+"by now."
+msgstr ""
+"Bu elfler bizi çok geciktirdi, kaçıranların izleri şimdiye kadar kaybolmuş "
+"olur."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:709
-msgid "He escaped us..."
-msgstr "Bizden kaçmayı başardı..."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
+msgid ""
+"More elves are arriving; even if they believe me, the kidnappers’ trail is "
+"sure to fade before we can follow."
+msgstr ""
+"Daha fazla elf geliyor; Bana inansalar bile, kaçıranların izleri, biz "
+"izlerini süremeden kaybolacak."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Kandırmışlar seni budala, bir kara büyücüyü kurtarıyorsun. Sadece çok geç "
+"kalmış olmanı ve ruhlarımızın huzur içinde kalmasını umabilirim."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
 msgstr "Bıraktıkları izleri takip edin!"
 
@@ -961,14 +976,14 @@ msgstr ""
 "19 V, 363 VY\n"
 "Klansız Rotarik'in günlüğünden alıntı\n"
 "\n"
-"Mordak’ın hizmetkarlarının sonuncusu ölümünün haberi ile birlikte bu sabah "
-"geldi. Yanlarındaki paket o kadar iyi bağlanmış ki, bir insana benzemiyordu. "
-"Mordak her zaman pervasızdı. Bu çaresiz plan onundu ve sanırım hala bir "
-"önrmi olsaydı yaşadığımız her şey için onu suçlayabilirdim. Orkların "
-"gazabını da üzerimize çeken oydu. Fakat yine de, yapmak istediklerini "
-"yapmayı başardı. Olanların sonucuna hala inanamıyorum.\n"
+"Mordak’ın hizmetkarlarının sonuncusu ölümünün haberini bu sabah getirdi. "
+"Yanlarındaki paket o kadar iyi bağlanmış ki, bir insana benzemiyordu. Mordak "
+"her zaman pervasızdı. Bu çaresiz plan onundu ve sanırım hala bir önemi "
+"olsaydı yaşadığımız her şey için onu suçlayabilirdim. Orkların gazabını da "
+"üzerimize çeken oydu. Fakat yine de, yapmak istediklerini yapmayı başardı. "
+"Olanların sonucuna hala inanamıyorum.\n"
 "\n"
-"Büyücüyü hayatımız pahasına Tairaç'a ulaştırmayı umuyorduk. Savaşbeyinin bu "
+"Büyücüyü hayatımız pahasına Tairaç'a ulaştırmayı umuyorduk. Savaş beyinin bu "
 "adamdan ne istediğini bilmiyorum, ama tarifine uyuyor. Mordak’ın planının, "
 "at savaşçılarının ortaya çıkması için mükemmel olmasa bile işe yarayacağını "
 "farz ediyorum. Şimdi buraya geliyorlar, bu büyücünün kardeşi olduğu söylenen "
@@ -1007,7 +1022,7 @@ msgstr ""
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
 msgid "Rotharik"
-msgstr "Roterik"
+msgstr "Rotarik"
 
 #. [unit]: role=Guard, id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
@@ -1443,7 +1458,7 @@ msgstr ""
 "mutlu, zaman zaman mutsuz. Zindanın dışında ve güneş ışığında ölüm tehlikesi "
 "olmadan bulumak harika birşey.\n"
 "\n"
-"Arvith hücremden kurtardığı zaman beni affetti. Geçen haftayı bir zamanlar "
+"Arvit hücremden kurtardığı zaman beni affetti. Geçen haftayı bir zamanlar "
 "sahip olduğumuz aramızdaki rahatlık duygusunu yeniden  oluşturmakla "
 "geçirdik. Zamanımızı geri kazanabildiğimiz için çok şanslıyız - Gri Ormandan "
 "oldukça uzaklaştık ve seyahatimiz boyunca gerçekten güzel bir kırsal alanda "
@@ -1474,9 +1489,9 @@ msgstr ""
 "Magreli Baran'in günlüğünden alıntı\\n\n"
 "\n"
 "Şu an daha rahat olmama rağmen, düşüncelerim genellikle Toen Karik'e döndü. "
-"Orkları büyük bir kayıp olmadan kovabilmeliydik — Arvith'in tasarladığı "
+"Orkları büyük bir kayıp olmadan kovabilmeliydik — Arvit'in tasarladığı "
 "kıskaç saldırısı günü kurtardı. Adamlarımı geride bırakmak benim "
-"umursamazlığımdı — savaşbeyini yaraladım ve onu alandan kaçmaya zorladım, "
+"umursamazlığımdı — savaş beyini yaraladım ve onu alandan kaçmaya zorladım, "
 "ancak bedeli ağır oldu. Emrimdekilerle kalsaydım onlar kurtulabilirdi.\n"
 "\n"
 "Ölümlerini yanlış bulduğu için Arvit'i suçlayamam çünkü yaptığım yanlıştı ve "
@@ -1693,7 +1708,7 @@ msgstr ""
 "22 IX, 365 VY\n"
 "Magreli Arvit'in günlüğünden alıntı\n"
 "\n"
-"Maghre, son gördüğümden çok daha iyi görünüyor. Baran iki yılda harikalar "
+"Magre, son gördüğümden çok daha iyi görünüyor. Baran iki yılda harikalar "
 "yarattı. Köy yeniden inşa edildi ve çevredeki tarım arazileri yeni sahipler "
 "buldu ve yeniden düzenlendi. Kardeşimin endişelerine rağmen, insanlarımız "
 "şimdiye kadar yeni bir tehditle karşılaşmadılar.\n"
@@ -1741,164 +1756,10 @@ msgid "It is over, I am vanquished."
 msgstr "Bitti, yenildim."
 
 #. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
 msgid "Baran"
 msgstr "Baran"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "İpucu:"
-
-#~ msgid ""
-#~ "Those men told me their prisoner had attempted to murder their master, "
-#~ "and warned that evil men would follow him. Advance no further, or you "
-#~ "will die."
-#~ msgstr ""
-#~ "Bana efendilerini öldürmeye çalışan bir mahkumu götürdüklerini söyledi ve "
-#~ "kötü adamların peşlerini bırakmayacakları konusunda uyardı. Daha ileri "
-#~ "gitmeyin yoksa ölürsünüz."
-
-#~ msgid ""
-#~ "Foolish human, you have killed me but you will not catch the undead in "
-#~ "time. I have fulfilled my contract, and will be reanimated soon to become "
-#~ "a lord of their armies."
-#~ msgstr ""
-#~ "Aptal insan beni öldürdün ama yarı ölülere zamanında yetişemeyeceksin. "
-#~ "Onlarla bir anlaşma yaptım. Yakında yeniden canlandırılacak ve onların "
-#~ "ordusunun bir komutanı olacağım."
-
-#~ msgid "$first_password_1|!"
-#~ msgstr "$first_password_1|!"
-
-#~ msgid "$first_password_2|!"
-#~ msgstr "$first_password_2|!"
-
-#~ msgid "$first_password_3|!"
-#~ msgstr "$first_password_3|!"
-
-#~ msgid "$first_password_4|!"
-#~ msgstr "$first_password_4|!"
-
-#~ msgid "$second_password_1|!"
-#~ msgstr "$second_password_1|!"
-
-#~ msgid "$second_password_2|!"
-#~ msgstr "$second_password_2|!"
-
-#~ msgid "$second_password_3|!"
-#~ msgstr "$second_password_3|!"
-
-#~ msgid "$second_password_4|!"
-#~ msgstr "$second_password_4|!"
-
-#~ msgid "Everything is lost now that I am dead..."
-#~ msgstr "Artık her şey bitti ve ben ölüyorum..."
-
-#~ msgid "Irongate"
-#~ msgstr "Demirkapı"
-
-#~ msgid "Arne"
-#~ msgstr "Arne"
-
-#~ msgid "Bjarn"
-#~ msgstr "Biyarn"
-
-#~ msgid "Fargus"
-#~ msgstr "Fargus"
-
-#~ msgid "Erik"
-#~ msgstr "Erik"
-
-#~ msgid "Heine"
-#~ msgstr "Hayne"
-
-#~ msgid "Magnus"
-#~ msgstr "Magnus"
-
-#~ msgid "Councillor Hoban"
-#~ msgstr "Vekil Hoban"
-
-#~ msgid "Greetings, my brother! How may my men and I be of aid?"
-#~ msgstr "Merhaba, kardeşim! Adamlarım ve ben sana nasıl yardım edebiliriz?"
-
-#~ msgid ""
-#~ "I will lead my men, and such villagers as can keep up with us, north to "
-#~ "slay this Mordak! What will you do?"
-#~ msgstr ""
-#~ "Adamlarımla birlikte eli silah tutan herkese liderlik edeceğim. Kuzeye "
-#~ "gidip şu Mordak’ı öldüreceğim! Sen ne yapacaksın?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The pursuit had already run for several days when the pursuers came to "
-#~ "the bounds of the huge forest known as the Grey Woods. Ancient tales "
-#~ "warned of lost souls haunting the wood, hunting and killing anyone brave "
-#~ "enough to enter it."
-#~ msgstr ""
-#~ "Kaçıranlar büyük bir ormanın kıyısına gelene kadar takip günlerce sürdü. "
-#~ "Eskilerin anlattıklarına göre orman kayıp ruhlarla doluymuş ve girmeye "
-#~ "cesaret eden herkes avlanıp öldürülüyormuş."
-
-#~ msgid ""
-#~ "Heedless of those rumors, Arne followed them. His only worry was that his "
-#~ "horsemen would be at disadvantage if attacked in the forest."
-#~ msgstr ""
-#~ "Atlıları ormanda iyi yol alamasa da hatta ormanda saldırıya uğradığında "
-#~ "üstün gelemeyecek olsa da Arne söylentilerden bihaber kardeşini "
-#~ "kaçıranların peşinden ormana daldı."
-
-#~ msgid "Sounds of a scuffle were heard from the forest."
-#~ msgstr "Ormandan birtakım itiş-kakış sesleri geliyordu."
-
-#~ msgid ""
-#~ "It is whispered that hungry ghosts rule this forest, and kill everyone "
-#~ "who dares to enter."
-#~ msgstr ""
-#~ "Onlar ormanda dolaşan öfkeli hayaletlerin sesleri. Ormana girmeye cesaret "
-#~ "eden herkesi öldürüyorlar."
-
-#, fuzzy
-#~ msgid ""
-#~ "Arne’s men arrived at the castle and were immediately challenged by some "
-#~ "guards."
-#~ msgstr ""
-#~ "Arne’nin adamları kaleye varır varmaz parola sormak için kale muhafızları "
-#~ "tarafından durduruldu."
-
-#~ msgid "Nooo! This is the end..."
-#~ msgstr "Hayırrr! Bu sonummuş..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Good to see you, Arne. Now can you get me out of this dungeon, please?"
-#~ msgstr ""
-#~ "Seni gördüğüme sevindim, Arne. Lütfen bu zindandan çıkmama yardım et."
-
-#~ msgid "Finally the warlord is killed. Now you can go back to Maghre."
-#~ msgstr "Sonunda ork geberdi. Artık Magre’ye dönebilirsin."
-
-#, fuzzy
-#~ msgid ""
-#~ "It took years to rebuild the village and restore the surrounding farms. "
-#~ "The people of Maghre had to work very hard, but felt better knowing "
-#~ "Arne’s men would be their firm allies in troubled times."
-#~ msgstr ""
-#~ "Kenti yeniden inşa etmek ve çiflikleri ayağa kaldırmak yıllar sürdü. "
-#~ "Magre’liler çok zor şartlarda çalıştılar fakat bir sorunla "
-#~ "karşılaştıklarında Arne’nin adamlarıyla yardıma koşacağını bildikleri "
-#~ "için içleri rahattı."
-
-#, fuzzy
-#~ msgid ""
-#~ "Arne and his men left the village assured that it would be well guided by "
-#~ "Bjarn. On their journeys they faced many challenges and battles. Some "
-#~ "tales even mention Arne’s name together with that of the famous elvish "
-#~ "lord Kalenz, but this is a different story..."
-#~ msgstr ""
-#~ "Arne ve adamları kenti Biyarn’ın artık daha iyi yönetebileceğinden emin "
-#~ "olarak oradan ayrıldılar. Yolculukları esnasında bir çok meydan okumayla "
-#~ "ve çarpışmayla karşılaştılar. Bazı hikayelerde Arne’nin ismi Elf beyi "
-#~ "Kalenz ile birlikte anılır, fakat bu başka bir hikayenin konusu..."
-
-#~ msgid "Turns run out"
-#~ msgstr "Ellerin Bitimi"

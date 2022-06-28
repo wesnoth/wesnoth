@@ -1,17 +1,17 @@
 /*
-   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
-
 #pragma once
 
 #include "gui/widgets/styled_widget.hpp"
@@ -108,15 +108,12 @@ class matrix : public tbase
 {
 	friend class debug_layout_graph;
 
-private:
-	explicit matrix(const implementation::builder_matrix& builder);
-
 public:
-	static matrix* build(const implementation::builder_matrix& builder);
+	explicit matrix(const implementation::builder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
-	unsigned create_item(const std::map<std::string, string_map>& item_data,
+	unsigned create_item(const widget_data& item_data,
 						 const std::map<std::string, std::string>& tags);
 
 
@@ -129,9 +126,7 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
@@ -195,7 +190,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	/**
 	 * Returns a grid in the pane.
@@ -267,7 +262,7 @@ struct builder_matrix : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

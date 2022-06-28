@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_stringx.hpp"
@@ -22,7 +23,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 namespace lua_stringx {
@@ -72,6 +72,14 @@ static int impl_str_index(lua_State* L)
 		lua_gettable(L, -2);
 		return 1;
 	} else if(lua_type(L, 2) == LUA_TNUMBER) {
+		// get the string length and the index
+		int len = lua_rawlen(L, 1);
+		int i = luaL_checkinteger(L, 2);
+		// In order to not break ipairs, an out-of-bounds access needs to return nil
+		if(i == 0 || abs(i) > len) {
+			lua_pushnil(L);
+			return 1;
+		}
 		// return string.sub(str, key, key)
 		luaW_getglobal(L, "string", "sub");
 		lua_pushvalue(L, 1);

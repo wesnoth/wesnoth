@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -294,20 +295,20 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 	// Prefer to attack already damaged targets.
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
-       // If the unit is surrounded and there is no support,
-	   // or if the unit is surrounded and the average damage is 0,
-	   // the unit skips its sanity check and tries to break free as good as possible.
-       if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
-       {
-               // Sanity check: if we're putting ourselves at major risk,
-			   // and have no chance to kill, and we're not aiding our allies
-			   // who are also attacking, then don't do it.
-               if(vulnerability > 50.0 && vulnerability > support*2.0
-			   && chance_to_kill < 0.02 && aggression < 0.75
-			   && !attack_close(target)) {
-                       return -1.0;
-               }
-        }
+	// If the unit is surrounded and there is no support,
+	// or if the unit is surrounded and the average damage is 0,
+	// the unit skips its sanity check and tries to break free as good as possible.
+	if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
+	{
+		// Sanity check: if we're putting ourselves at major risk,
+		// and have no chance to kill, and we're not aiding our allies
+		// who are also attacking, then don't do it.
+		if(vulnerability > 50.0 && vulnerability > support*2.0
+		&& chance_to_kill < 0.02 && aggression < 0.75
+		&& !attack_close(target)) {
+			return -1.0;
+		}
+	}
 
 	if(!leader_threat && vulnerability*terrain_quality > 0.0 && support != 0) {
 		value *= support/(vulnerability*terrain_quality);

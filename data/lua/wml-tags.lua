@@ -1,5 +1,3 @@
-local helper = wesnoth.require "helper"
-local location_set = wesnoth.require "location_set"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -21,7 +19,7 @@ That means before loading the WML tags via wesnoth.require "wml".
 
 function wml_actions.sync_variable(cfg)
 	local names = cfg.name or wml.error "[sync_variable] missing required name= attribute."
-	local result = wesnoth.synchronize_choice(
+	local result = wesnoth.sync.evaluate_single(
 		function()
 			local res = {}
 			for _,name_raw in ipairs(names:split()) do
@@ -66,7 +64,7 @@ function wml_actions.chat(cfg)
 
 	for index, side in ipairs(side_list) do
 		if side.controller == "human" and side.is_local then
-			wesnoth.message(speaker, message)
+			wesnoth.interface.add_chat_message(speaker, message)
 			break
 		end
 	end
@@ -84,7 +82,7 @@ function wml_actions.chat(cfg)
 		end
 
 		if not has_human_side then
-			wesnoth.message(speaker, message)
+			wesnoth.interface.add_chat_message(speaker, message)
 		end
 	end
 end
@@ -268,27 +266,27 @@ end
 
 function wml_actions.music(cfg)
 	if cfg.play_once then
-		wesnoth.music_list.play(cfg.name)
+		wesnoth.audio.music_list.play(cfg.name)
 	else
 		if not cfg.append then
-			if cfg.immediate and wesnoth.music_list.current_i then
-				wesnoth.music_list.current.once = true
+			if cfg.immediate and wesnoth.audio.music_list.current_i then
+				wesnoth.audio.music_list.current.once = true
 			end
-			wesnoth.music_list.clear()
+			wesnoth.audio.music_list.clear()
 		end
-		local m = #wesnoth.music_list
-		wesnoth.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
-		local n = #wesnoth.music_list
+		local m = #wesnoth.audio.music_list
+		wesnoth.audio.music_list.add(cfg.name, not not cfg.immediate, cfg.ms_before or 0, cfg.ms_after or 0)
+		local n = #wesnoth.audio.music_list
 		if n == 0 then
 			return
 		end
 		if cfg.shuffle == false then
-			wesnoth.music_list[n].shuffle = false
+			wesnoth.audio.music_list[n].shuffle = false
 		end
 		-- Always overwrite shuffle even if the new track couldn't be added,
 		-- but title shouldn't be overwritten.
 		if cfg.title ~= nil and m ~= n then
-			wesnoth.music_list[n].title = cfg.title
+			wesnoth.audio.music_list[n].title = cfg.title
 		end
 	end
 end
@@ -296,11 +294,11 @@ end
 function wml_actions.volume(cfg)
 	if cfg.music then
 		local rel = tonumber(cfg.music) or 100.0
-		wesnoth.music_list.volume = rel
+		wesnoth.audio.music_list.volume = rel
 	end
 	if cfg.sound then
 		local rel = tonumber(cfg.sound) or 100.0
-		wesnoth.sound_volume(rel)
+		wesnoth.audio.volume = rel
 	end
 end
 
@@ -348,7 +346,7 @@ function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or wml.error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
-		for i, w in ipairs(u.overlays) do
+		for j, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
 		end
 		if has_already == false then
@@ -368,7 +366,7 @@ function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or wml.error( "[remove_unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
-		for i, w in ipairs(u.overlays) do
+		for j, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
 		end
 		if has_already then
@@ -385,7 +383,7 @@ end
 
 function wml_actions.store_turns(cfg)
 	local var = cfg.variable or "turns"
-	wml.variables[var] = wesnoth.game_config.last_turn
+	wml.variables[var] = wesnoth.scenario.turns
 end
 
 function wml_actions.store_unit(cfg)
@@ -404,14 +402,14 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = 'recall'
 			ucfg.y = 'recall'
 		end
-		utils.vwriter.write(writer, u.__cfg)
+		utils.vwriter.write(writer, ucfg)
 		if kill_units then u:erase() end
 	end
 end
 
 function wml_actions.sound(cfg)
 	local name = cfg.name or wml.error("[sound] missing required name= attribute")
-	wesnoth.play_sound(name, cfg["repeat"])
+	wesnoth.audio.play(name, cfg["repeat"])
 end
 
 function wml_actions.store_locations(cfg)
@@ -428,57 +426,6 @@ function wml_actions.store_locations(cfg)
 		end
 		utils.vwriter.write(writer, res)
 	end
-end
-
-function wml_actions.store_reachable_locations(cfg)
-	local unit_filter = wml.get_child(cfg, "filter") or
-		wml.error "[store_reachable_locations] missing required [filter] tag"
-	local location_filter = wml.get_child(cfg, "filter_location")
-	local range = cfg.range or "movement"
-	local moves = cfg.moves or "current"
-	local variable = cfg.variable or wml.error "[store_reachable_locations] missing required variable= key"
-	local reach_param = { viewing_side = cfg.viewing_side }
-	if cfg.viewing_side == 0 then
-		wml.error "[store_reachable_locations] invalid viewing_side"
-	elseif cfg.viewing_side == nil then
-		reach_param.ignore_visibility = true
-	end
-	if range == "vision" then
-		moves = "max"
-		reach_param.ignore_units = true
-	end
-
-	local reach = location_set.create()
-
-	for i,unit in ipairs(wesnoth.units.find_on_map(unit_filter)) do
-		local unit_reach
-		if moves == "max" then
-			local saved_moves = unit.moves
-			unit.moves = unit.max_moves
-			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
-			unit.moves = saved_moves
-		else
-			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
-		end
-
-		if range == "vision" or range == "attack" then
-			unit_reach:iter(function(x, y)
-				reach:insert(x, y)
-				for u,v in helper.adjacent_tiles(x, y) do
-					reach:insert(u, v)
-				end
-			end)
-		else
-			reach:union(unit_reach)
-		end
-	end
-
-	if location_filter then
-		reach = reach:filter(function(x, y)
-			return wesnoth.map.matches(x, y, location_filter)
-		end)
-	end
-	reach:to_wml_var(variable)
 end
 
 function wml_actions.hide_unit(cfg)
@@ -600,7 +547,7 @@ end
 
 function wml_actions.store_side(cfg)
 	local writer = utils.vwriter.init(cfg, "side")
-	for t, side_number in helper.get_sides(cfg) do
+	for t, side_number in wesnoth.sides.iter(cfg) do
 		local container = t.__cfg
 		-- set values not properly handled by the __cfg
 		container.income = t.total_income
@@ -703,11 +650,11 @@ function wml_actions.allow_undo(cfg)
 end
 
 function wml_actions.allow_end_turn(cfg)
-	wesnoth.allow_end_turn(true)
+	wesnoth.interface.allow_end_turn(true)
 end
 
 function wml_actions.disallow_end_turn(cfg)
-	wesnoth.allow_end_turn(cfg.reason or false)
+	wesnoth.interface.allow_end_turn(cfg.reason or false)
 end
 
 function wml_actions.clear_menu_item(cfg)
@@ -722,7 +669,7 @@ function wml_actions.place_shroud(cfg)
 	local sides = utils.get_sides(cfg)
 	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.map.place_shroud(side.side, tiles)
+		side:place_shroud(tiles)
 	end
 end
 
@@ -730,7 +677,7 @@ function wml_actions.remove_shroud(cfg)
 	local sides = utils.get_sides(cfg)
 	local tiles = wesnoth.map.find(cfg)
 	for i,side in ipairs(sides) do
-		wesnoth.map.remove_shroud(side.side, tiles)
+		side:remove_shroud(tiles)
 	end
 end
 
@@ -738,7 +685,7 @@ function wml_actions.time_area(cfg)
 	if cfg.remove then
 		wml_actions.remove_time_area(cfg)
 	else
-		wesnoth.map.place_area(cfg)
+		wesnoth.map.place_area(cfg.id or '', cfg, cfg)
 	end
 end
 
@@ -751,7 +698,7 @@ function wml_actions.remove_time_area(cfg)
 end
 
 function wml_actions.replace_schedule(cfg)
-	wesnoth.replace_schedule(cfg)
+	wesnoth.schedule.replace(cfg)
 end
 
 function wml_actions.scroll(cfg)
@@ -768,11 +715,11 @@ function wml_actions.scroll(cfg)
 end
 
 function wml_actions.color_adjust(cfg)
-	wesnoth.interface.color_adjust(cfg)
+	wesnoth.interface.color_adjust(cfg.red or 0, cfg.green or 0, cfg.blue or 0)
 end
 
 function wml_actions.end_turn(cfg)
-	wesnoth.end_turn()
+	wesnoth.interface.end_turn()
 end
 
 function wml_actions.event(cfg)
@@ -800,12 +747,12 @@ function wml_actions.label( cfg )
 	local new_cfg = wml.parsed( cfg )
 	for index, location in ipairs( wesnoth.map.find( cfg ) ) do
 		new_cfg.x, new_cfg.y = location[1], location[2]
-		wesnoth.label( new_cfg )
+		wesnoth.map.add_label( new_cfg )
 	end
 end
 
 function wml_actions.open_help(cfg)
-	wesnoth.open_help(cfg.topic)
+	gui.show_help(cfg.topic)
 end
 
 function wml_actions.redraw(cfg)
@@ -819,12 +766,32 @@ function wml_actions.redraw(cfg)
 	wesnoth.redraw(cfg, clear_shroud)
 end
 
+local wml_floating_label = {valid = false}
 function wml_actions.print(cfg)
-	wesnoth.print(cfg)
+	local options = {}
+	if wml_floating_label.valid then
+		wml_floating_label:remove()
+	end
+	if cfg.size then
+		options.size = cfg.size
+	end
+	if cfg.color then
+		options.color = stringx.split(cfg.color)
+	elseif cfg.red or cfg.green or cfg.blue then
+		options.color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0}
+	end
+	if cfg.duration then
+		options.duration = cfg.duration
+	end
+	if cfg.fade_time then
+		options.fade_time = cfg.fade_time
+	end
+
+	wml_floating_label = wesnoth.interface.add_overlay_text(cfg.text, options)
 end
 
 function wml_actions.unsynced(cfg)
-	wesnoth.unsynced(function ()
+	wesnoth.sync.run_unsynced(function ()
 		wml_actions.command(cfg)
 	end)
 end
@@ -842,12 +809,12 @@ wml_actions.unstore_unit = function(cfg)
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
 	if cfg.location_id then
-		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
+		x,y = table.unpack(wesnoth.current.map.special_locations[cfg.location_id])
 	end
 	wesnoth.add_known_unit(unit.type)
-	if wesnoth.current.map:on_board(x, y) then
+	if x ~= 'recall' and y ~= 'recall' and wesnoth.current.map:on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
+			x,y = wesnoth.paths.find_vacant_hex(x, y, check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text
@@ -881,20 +848,20 @@ wml_actions.teleport = function(cfg)
 	end
 	local x,y = cfg.x, cfg.y
 	if cfg.location_id then
-		x,y = table.unpack(wesnoth.special_locations[cfg.location_id])
+		x,y = table.unpack(wesnoth.current.map.special_locations[cfg.location_id])
 	end
-	wesnoth.teleport(unit, x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+	unit:teleport(x, y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
 
 function wml_actions.remove_sound_source(cfg)
 	local ids = cfg.id or wml.error("[remove_sound_source] missing required id= attribute")
 	for _,id in ipairs(ids:split()) do
-		wesnoth.remove_sound_source(id)
+		wesnoth.audio.sources[id] = nil
 	end
 end
 
 function wml_actions.sound_source(cfg)
-	wesnoth.add_sound_source(cfg)
+	wesnoth.audio.sources[cfg.id] = cfg
 end
 
 function wml_actions.deprecated_message(cfg)
@@ -921,14 +888,14 @@ end
 function wml_actions.lift_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.map.remove_fog(sides[i].side, locs, not cfg.multiturn)
+		sides[i]:remove_fog(locs, not cfg.multiturn)
 	end
 end
 
 function wml_actions.reset_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
-		wesnoth.map.place_fog(sides[i].side, locs, cfg.reset_view)
+		sides[i]:place_fog(locs, cfg.reset_view)
 	end
 end
 
@@ -947,7 +914,7 @@ function wesnoth.wml_actions.zoom(cfg)
 end
 
 function wesnoth.wml_actions.story(cfg)
-	local title = cfg.title or wml.error "Missing title key in [story] ActionWML"
+	local title = cfg.title or wesnoth.scenario.name
 	gui.show_story(cfg, title)
 end
 
@@ -1019,7 +986,9 @@ function wml_actions.terrain_mask(cfg)
 		rules[#rules + 1] = rule
 	end
 	if cfg.mask_file then
-		mask = wesnoth.read_file(cfg.mask_file)
+		local resolved = filesystem.resolve_asset(filesystem.asset_type.MAP, cfg.mask_file)
+		resolved = resolved:sub(6) -- strip off 'data/' prefix
+		mask = filesystem.read_file(resolved)
 	end
 	wesnoth.current.map:terrain_mask({x, y}, mask, {
 		is_odd = is_odd,

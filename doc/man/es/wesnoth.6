@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2018 wesnoth "La batalla por Wesnoth"
+.TH WESNOTH 6 2021 wesnoth "La batalla por Wesnoth"
 .
 .SH NOMBRE
 wesnoth \- La batalla por Wesnoth, un juego de estrategia fantástica por
@@ -102,12 +102,12 @@ el modo de comandos).
 habilita algunos mecanismos de depuración de Lua
 .TP 
 \fB\-\-strict\-lua\fP
-disallow deprecated Lua API calls
+deshabilita llamadas obsoletas de Lua API
 .TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+compara los dos archivos WML; no los preprocesa primero (para hacerlo,
+ejecutelos antes mediante \fB\-p\fP). Genera la comparación como DiffWML por la
+salida estándar o en el archivo indicado por \fI\-\-output\fP.
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 inicia directamente el editor de mapas del juego. Si \fIarchivo\fP es
@@ -115,7 +115,8 @@ especificado, equivale a \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
 muestra el número de fotogramas por segundo a los que se está ejecutando el
-juego actualmente, en una esquina de la pantalla.
+juego actualmente en una esquina de la pantalla además de escribir estos
+valores en un archivo del directorio userdata
 .TP 
 \fB\-f, \-\-fullscreen\fP
 ejecuta el juego en modo de pantalla completa.
@@ -195,6 +196,9 @@ deshabilita el cache de datos de juego.
 ejecuta el juego sin la GUI. Solo disponible en combinación con
 \fB\-\-multiplayer\fP o \fB\-\-screenshot\fP o \fB\-\-plugin\fP.
 .TP 
+\fB\-\-nobanner\fP
+suprime la ventana de arranque
+.TP 
 \fB\-\-nomusic\fP
 ejecuta el juego sin música.
 .TP 
@@ -206,7 +210,7 @@ cuando se usa con \fB\-u\fP.
 ejecuta el juego sin sonidos ni música.
 .TP 
 \fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+extrae al archivo especificado. Aplicable a las operaciones de comparación.
 .TP 
 \fB\-\-password\fP\fI\ password\fP
 utiliza \fIpassword\fP cuando se conecta a un servidor, ignorando otras
@@ -219,9 +223,9 @@ función que se ejecutará como una corutina que se activará periódicamente
 con actualizaciones.
 .TP 
 \fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+aplica un arreglo DiffWML a un archivo WML; no preprocesa ninguno de los
+archivos. Extrae el WML arreglado por la salida estándar o al archivo
+indicado por \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 preprocesa un archivo o carpeta especificados. Por cada archivo, se
@@ -291,7 +295,7 @@ trata los errores de validación como fatales.
 ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
 ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
 \fBtest\fP. Una demostración de la característica \fB[micro_ai]\fP puede ser
-iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui.\fP
+iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Establece a \fIpercent\fP el estándar para considerar que una traducción está
@@ -309,7 +313,7 @@ confiables! Esta acción da a los lua los mismos permisos que el ejecutable
 de wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+configura el patrón WML para su uso con \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nombre\fP
 establece el directorio de configuración del usuario como \fInombre\fP en $HOME
@@ -340,22 +344,25 @@ utiliza \fIusername\fP cuando se conecta a un servidor, ignorando otras
 preferencias.
 .TP 
 \fB\-\-validate\fP\fI\ path\fP
-validates a file against the WML schema.
+valida un archivo con el patrón WML.
 .TP 
 \fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+valida el WML del complemento dado mientras se está jugando.
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+valida el núcleo WML mientras se está jugando.
 .TP 
 \fB\-\-validate\-schema \ path\fP
-validates a file as a WML schema.
+valida un archivo como un patrón WML.
 .TP 
 \fB\-\-validcache\fP
 asume que el caché es válido (peligroso).
 .TP 
 \fB\-v, \-\-version\fP
 muestra el número de versión y finaliza.
+.TP 
+\fB\-\-simple\-version\fP
+shows the version number and nothing else, then exits.
 .TP 
 \fB\-w, \-\-windowed\fP
 ejecuta el juego en una ventana.
@@ -454,7 +461,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

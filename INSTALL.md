@@ -8,7 +8,7 @@ later, or a version of Clang with equivalent support.
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries             >= 1.65.0
+ * Boost libraries             >= 1.66.0
      Most headers plus the following binary libs:
    * Filesystem
    * Locale
@@ -18,10 +18,9 @@ order to build Wesnoth:
    * Program Options
    * System
  * SDL2 libraries:
-   * SDL2                      >= 2.0.4
-   * SDL2_image                >= 2.0.2 (with PNG and JPEG support)
+   * SDL2                      >= 2.0.10
+   * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
-   * SDL2_ttf                  >= 2.0.12
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
  * Pango                       >= 1.22.0 (with Cairo backend)
@@ -39,10 +38,6 @@ features:
  * GNU history (libreadline):
    Command history and history expansion in the built-in Lua console.
 
- * FriBiDi >= 0.10.9:
-   Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
-   of the user interface.
-
 
 ## Build Environment
 
@@ -55,16 +50,13 @@ created directory:
     $ tar xvjf wesnoth-<version>.tar.bz2
     $ cd wesnoth-<version>
 
-Or:
-
-    $ tar xvzf wesnoth-<version>.tar.gz
-    $ cd wesnoth-<version>
+Alternatively, you can clone this git repository. Since Wesnoth uses submodules, when cloning you must add the `--recurse-submodules` option, or if you have already cloned the repository without using that option then you must run the command `git submodule update --init --recursive`.
 
 The following build systems are fully supported for compiling Wesnoth on Linux,
 *BSD, and other Unix-like platforms:
 
  * SCons >= 0.98.3
- * CMake >= 2.8.5
+ * CMake >= 3.14
 
 You will also need to have a working installation of GNU gettext to build the
 translations.
@@ -78,7 +70,9 @@ rebuild Wesnoth frequently (i.e. for development and testing).
 See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/README.md) for instructions on using Xcode.
 
 ### Windows
-See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/VC16/README.md) for instructions on using Visual Studio 2019.
+Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
+
+NOTE 1: You will need a Windows implementation of pkg-config present in your PATH, such as [pkg-config-lite](https://sourceforge.net/projects/pkgconfiglite/).
 
 ## SCons Build
 

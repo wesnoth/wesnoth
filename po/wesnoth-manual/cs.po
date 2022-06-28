@@ -1,21 +1,14 @@
-# translation of wesnoth-manual.pot to Czech
-# Czech translations for Battle for Wesnoth package
-# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2007 - 2020 Wesnoth development Team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
-# Czech Wesnoth translation team
-#
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"POT-Creation-Date: 2021-02-20 18:40-0300\n"
-"PO-Revision-Date: 2021-02-08 18:39+0100\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
+"PO-Revision-Date: 2022-05-01 09:22+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -24,10 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+# Je to nějaká hovadina.
 #. type: Content of: outside any tag (error?)
 #: doc/manual/manual.en.xml:3
 msgid "<?asciidoc-toc?> <?asciidoc-numbered?>"
-msgstr ""
+msgstr "<?asciidoc-toc?> <?asciidoc-numbered?>"
 
 #. type: Attribute 'lang' of: <book>
 #: doc/manual/manual.en.xml:6
@@ -44,12 +38,11 @@ msgstr "Manuál uživatele Bitvy o Wesnoth"
 msgid "Preface"
 msgstr "Úvod"
 
-# Fantasy?
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:12
 msgid ""
 "The Battle for Wesnoth is a turn-based strategy game with a fantasy theme."
-msgstr "Bitva o Wesnoth je tahová strategická hra s fantastickým námětem."
+msgstr "Bitva o Wesnoth je tahová strategická hra s fantasy námětem."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:13
@@ -60,11 +53,11 @@ msgid ""
 "specialists, and hand pick a force with the right strengths to fight well on "
 "different terrains against all manner of opposition."
 msgstr ""
-"Sestavte skvělou armádu, jak se budou vaši vojáci zdokonalovat ze zelenáčů v "
-"ostřílené veterány. V pozdějších hrách přivoláte ty nejlepší z nich a "
-"vytvoříte vojsko, proti kterému nikdo neobstojí! Vybírejte jednotky z mnoha "
-"specialistů a nakombinujte armádu tak, aby měla ty správné klady pro boj v "
-"různých terénech a proti různým druhům nepřátel."
+"Vybuduj skvělou armádu tím, že postupně vytrénuješ zelenáče na ostřílené "
+"veterány. V pozdějších hrách si přivoláš ty nejlepší z nich a vytvoříš "
+"smrtící vojsko, proti kterému nikdo neobstojí! Vybírej jednotky z mnoha "
+"specialistů a nakombinuj svou armádu tak, aby měla ty správné předpoklady "
+"pro boj v různých terénech a proti všemožným nepřátelům."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:18
@@ -77,13 +70,13 @@ msgid ""
 "power over the Undead to dominate the land of mortals, or lead your glorious "
 "Orcish tribe to victory against the humans who dared despoil your lands."
 msgstr ""
-"Wesnoth Vám nabízí ke hraní mnoho příběhů, které jen čekají na objevení. "
-"Můžete válčit se skřety, nemrtvými a bandity na hranicích Wesnothského "
-"království; bojovat po boku draků na vrcholcích, elfů v zeleni lesů "
-"Aethenwoodu, trpaslíků ve skvělých halách Knalgy nebo dokonce mořského lidu "
-"v Zátoce perel. Můžete dobývat zpět trůn Wesnothu, užít Vaši strašlivou moc "
-"nad nemrtvými k ovládnutí zemí smrtelníků, nebo vést skřetí kmeny k "
-"vítězství nad lidmi, kteří se opovážili znesvětit Vaše země."
+"Wesnoth nabízí ke hraní mnoho příběhů, které jen čekají na objevení. Můžeš "
+"válčit se skřety, nemrtvými a bandity na hranicích wesnothského království. "
+"Můžeš bojovat po boku draků na štítech hor, elfů v zeleni Aethenského lesa, "
+"trpaslíků ve skvělých halách Knalgy nebo dokonce mořského lidu v Zátoce "
+"perel. Můžeš dobývat zpět trůn Wesnothu, užít svou strašlivou moc nad "
+"nemrtvými k ovládnutí zemí smrtelníků nebo vést svůj slavný skřetí kmen k "
+"vítězství nad lidmi, kteří se opovážili znesvětit tvou zem."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:26
@@ -94,12 +87,10 @@ msgid ""
 "challenge your friends – or strangers – and fight in epic multi-player "
 "fantasy battles."
 msgstr ""
-"Máte na výběr z více než dvou set druhů jednotek (pěchota, kavalérie, "
-"lučištníci, mágové atd.) a bojových situací od malých přepadů až po srážky "
-"obřích armád. Můžete dokonce vytvářet vlastní jednotky a scénáře - nebo "
-"dokonce tažení. Také se Vám nabízí možnost soupeřit s přáteli - nebo "
-"kýmkoliv jiným - a ve hře více hráčů tak prožívat boje proti „živým“ (a "
-"tudíž chytřejším) protivníkům."
+"Budeš mít na výběr z více než dvou set druhů jednotek (pěchota, kavalérie, "
+"lučištníci, mágové atd.) a množství bojových situací od malých přepadů po "
+"srážky obřích armád. Také se ti nabízí možnost soupeřit s kamarády – nebo s "
+"kýmkoliv jiným – a ve hře více hráčů tak prožívat epické fantasy bitvy."
 
 #. type: Content of: <book><preface><simpara>
 #: doc/manual/manual.en.xml:31
@@ -110,11 +101,11 @@ msgid ""
 "maintained content is available from an add-on server, and the very best of "
 "it is incorporated into Battle for Wesnoth&#8217;s official releases."
 msgstr ""
-"Bitva o Wesnoth je svobodný a otevřený software; na vylepšení hry "
-"spolupracuje celá komunita dobrovolníků a nadšenců. Můžete vytvářet vlastní "
-"jednotky, scénáře, nebo dokonce celá tažení s příběhem. Na serveru je také k "
-"dispozici množství obsahu vytvořeného uživateli a nejlepší části bývají "
-"přidány do oficiálních vydání Bitvy o Wesnoth."
+"Bitva o Wesnoth je svobodný a otevřený software. Na vylepšení hry "
+"spolupracuje početná komunita dobrovolníků a nadšenců. Můžeš vytvářet "
+"vlastní jednotky, scénáře, nebo dokonce celá plnohodnotná tažení s příběhem. "
+"Na serveru s doplňky je k dispozici množství obsahu vytvořeného uživateli a "
+"nejlepší části bývají přidávány do oficiálních vydání Bitvy o Wesnoth."
 
 #. type: Content of: <book><chapter><title>
 #: doc/manual/manual.en.xml:39
@@ -135,8 +126,8 @@ msgid ""
 "and the domain of the Southwest Elves in the Aethenwood and beyond."
 msgstr ""
 "Známou část Velkého kontinentu, kde se Wesnoth nalézá, lze hrubě rozdělit na "
-"tři části: sever - víceméně neovládané území, království Wesnoth a jemu "
-"občas podřízené knížectví Elensefar, a nakonec oblast pod kontrolou "
+"tři části: sever – víceméně neovládané území, království Wesnoth a jemu "
+"občas podřízené knížectví Elensefar a nakonec oblast pod kontrolou "
 "jihozápadních elfů v Aethenwoodu a dále za ním."
 
 #. type: Content of: <book><chapter><section><simpara>
@@ -178,11 +169,11 @@ msgid ""
 "there and can travel more easily and fight better when they are in familiar "
 "terrain."
 msgstr ""
-"V krajině se nacházejí roztroušené vesnice, kde můžete uzdravovat jednotky a "
-"shromažďovat peníze, potřebné pro vydržování armády. Občas bude nutno "
+"V krajině se nacházejí roztroušené vesnice, kde můžeš léčit jednotky a "
+"získávat peníze, potřebné pro vydržování armády. Občas bude nutno "
 "překračovat pohoří a řeky, pronikat lesy, kopci a tundrou, a také křižovat "
 "otevřené pláně. Každý z těchto terénů obývají tvorové, uzpůsobení k "
-"tamějšímu životu; pohybují se proto ve známém terénu rychleji a bojují lépe."
+"tamějšímu životu. Pohybují se proto ve známém terénu rychleji a bojují lépe."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:64
@@ -219,10 +210,9 @@ msgid ""
 msgstr ""
 "Pro herní účely bývají tyto rasy seskupovány do frakcí. Skřeti například "
 "často spolupracují s trolly a lidé s elfy nebo trpaslíky. Některé další "
-"frakce odrážejí diverzitu lidské společnosti &#8212; například věrní a "
-"psanci. Ve většině tažení budete ovládat jednotky spadající do jediné "
-"frakce. Někdy ale frakce uzavírají spojenectví, takže nejspíše budete ve "
-"scénářích čelit více než jedné frakci."
+"frakce odrážejí diverzitu lidské společnosti, například věrní a psanci. Ve "
+"většině tažení budeš ovládat jednotky spadající do jediné frakce. Někdy ale "
+"frakce uzavírají spojenectví, takže můžeš během scénáře čelit více frakcím."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:82
@@ -240,22 +230,18 @@ msgid ""
 "button and selecting it from the list provided."
 msgstr ""
 "Když je Wesnoth spuštěn, zobrazí nejprve pozadí s mapou a sloupec tlačítek "
-"zvaný Hlavní menu. Tyto tlačítka reagují pouze na myš. Pro netrpělivé, "
-"rychlý start je: kliknout na tlačítko „Jazyk“ pro nastavení Vašeho jazyka, "
-"potom „Výcvik“ pro krátký úvod do hraní, a nakonec zkusit tažení „Příběh "
-"dvou bratrů“ - tlačítko „Tažení“, jedna z prvních položek v seznamu."
+"zvaný Hlavní menu. Tato tlačítka reagují pouze na myš. Pro netrpělivé, "
+"rychlý start je: kliknout na tlačítko „Jazyk“ pro nastavení jazyka, potom "
+"„Výcvik“ pro krátký úvod do hraní a nakonec zkusit tažení „Příběh dvou "
+"bratrů“ – tlačítko „Tažení“ a vybrat z položek v seznamu."
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -282,6 +268,7 @@ msgstr "<placeholder type=\"inlinemediaobject\" id=\"0\"/>"
 msgid "Tutorial"
 msgstr "Výcvik"
 
+# Je tam čolek, ale nám je bližší žába.
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:102
 msgid ""
@@ -293,10 +280,10 @@ msgid ""
 "you into a newt."
 msgstr ""
 "Výcvik je sice jednoduchá, ale jinak běžná hra, vyučující základní ovládání "
-"nutné ke hraní. Není důležité vyhrát, ale naučit se co dělat - a jak. Pro "
-"spuštění stačí kliknout na tlačítko s tímto názvem. Během výcviku jste v "
-"roli mladého prince Konráda (nebo princezny Lisar), které učí starý mág "
-"Delfador. Dávejte pozor, jinak vás zakleje v žábu!"
+"nutné ke hraní. Ve výcviku není důležité vyhrát, ale naučit se co a jak "
+"dělat. Pro spuštění stačí kliknout na tlačítko s tímto názvem. Během výcviku "
+"hraješ v roli prince Konráda (nebo princezny Lisar), které učí starý mág "
+"Delfador. Dávej pozor, nebo tě zakleje v žábu!"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:114
@@ -319,16 +306,16 @@ msgid ""
 "the first scenario of the campaign."
 msgstr ""
 "Wesnoth je navržen převážně pro hraní tažení. Tažení jsou propojené série "
-"scénářů. Tažení začnete hrát kliknutím na toto tlačítko; poté se zobrazí "
-"seznam tažení dostupných na Vašem počítači (další mohou být stažena). "
-"Vyberte si tažení a klikněte na „OK“ pro start nebo „Zrušit“ pro zavření "
+"scénářů. Tažení začneš hrát kliknutím na toto tlačítko. Zobrazí se seznam "
+"tažení dostupných na tvém počítači (a další si můžeš stáhnout, když budeš "
+"chtít). Vyber si tažení a klikni na „OK“ pro start nebo „Zrušit“ pro zavření "
 "seznamu. Každé tažení má několik úrovní obtížnosti (typicky tři). "
 "Doporučenou je prostřední obtížnost z možných voleb, protože obvykle "
-"poskytuje dostatek výzev a současně zachovává hru zábavnou. Během hraní "
-"tažení není možné měnit obtížnost. Pokud máte problém postupovat i při volbě "
-"nejnižší obtížnosti, oddíl <link linkend=\"basic_strategy\">základy "
-"strategie</link> tohoto manuálu Vám pomůže. Jakmile zvolíte obtížnost, hra "
-"načte první scénář tažení."
+"poskytuje dostatek výzev a současně zachovává hru zábavnou. Během hraní bys "
+"neměl měnit obtížnost tažení. Pokud máš problém postupovat i při volbě "
+"nejnižší obtížnosti, prostudování oddílu <link "
+"linkend=\"basic_strategy\">základy strategie</link> tohoto manuálu ti určitě "
+"pomůže. Jakmile zvolíš obtížnost, hra načte první scénář tažení."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:135
@@ -344,10 +331,10 @@ msgid ""
 "appear and allow you to choose how you want to play the scenario. To learn "
 "more, see <link linkend=\"scenarios\">scenarios</link>."
 msgstr ""
-"Kliknutím na toto tlačítko můžete hrát jednotlivé scénáře proti protivníkům. "
+"Kliknutím na toto tlačítko můžeš hrát jednotlivé scénáře proti protivníkům. "
 "Hra může být vedena přes internet i pouze na jednom počítači a proti lidem i "
-"počítačovým hráčům. Po zmáčknutí se objeví dialog, kde můžete zvolit další "
-"podrobnosti. Více se dozvíte v oddílu <link linkend=\"scenarios\">scénáře</"
+"počítačovým hráčům. Po zmáčknutí se objeví dialog, kde můžeš zvolit další "
+"podrobnosti. Více se dozvíš v oddílu <link linkend=\"scenarios\">scénáře</"
 "link>."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -357,13 +344,6 @@ msgstr "Načíst hru"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -371,11 +351,11 @@ msgid ""
 "you can check the \"Show replay\" check box. The loaded game will make all "
 "the moves from the beginning while you watch."
 msgstr ""
-"Tímto tlačítkem můžete načíst uložené hry. Zmáčknutím se dostanete do "
-"dialogu, kde lze vybrat hru ze seznamu; Ok ji načte, Zrušit Vás vrátí do "
-"hlavního menu. Pokud vyberete místo hry záznam, můžete zaškrtnout „Ukaž "
-"záznamy“ - po načtení si budete moci přehrát záznam celé hry tak, jak byla "
-"původně odehrána."
+"Kliknutím na toto tlačítko lze načíst dříve uloženou hru. Zobrazí se "
+"dialogové okno se seznamem uložených her. Výběrem hry a kliknutím na Načíst "
+"hru ji načteš, tlačítkem Zrušit se vrátíš do hlavního menu. Pokud vybereš "
+"hru se záznamem, můžeš zaškrtnout políčko „Přehrát záznam“. Načtená hra ti "
+"přehraje všechny tahy od začátku, zatímco se budeš dívat."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:163
@@ -423,9 +403,10 @@ msgid ""
 "defaults to English or your system locale if that can be determined, but "
 "once you change it, it will start in that language."
 msgstr ""
-"Po kliknutí na toto tlačítko můžete změnit jazyk hry vybráním ze seznamu a "
-"potvrzením tlačítkem Ok. Při prvním spuštění se Wesnoth pokusí určit "
-"nastavený jazyk Vašeho počítače; pokud neuspěje, zvolí angličtinu."
+"Klikni na toto tlačítko, vyber si svůj jazyk a klikni OK pro použití nebo "
+"Zrušit, abys pokračoval se současným jazykem. Při prvním spuštění je výchozí "
+"angličtina nebo národní prostředí tvého systému, pokud může být zjištěno, "
+"ale jakmile to změníš, bude Wesnoth startovat s tímto jazykem."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:201
@@ -435,25 +416,25 @@ msgstr "Nastavení"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:205
 msgid "Click here to change default settings."
-msgstr "Po kliknutí sem můžete změnit nastavení hry."
+msgstr "Po kliknutí sem můžeš změnit nastavení hry."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:211
 msgid "Credits"
-msgstr "Kdo se na hře podílel"
+msgstr "Poděkování"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
-"be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
-"at <ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
-"battleforwesnoth</ulink>"
-msgstr ""
-"Klikněte sem pro zobrazení seznamu důležitějších přispěvatelů Wesnothu. "
-"Spoustu z nich lze zastihnout na irc.freenode.net:6667, #wesnoth nebo na "
+"be able to reach them in real time at irc.libera.chat:6667 on #wesnoth or at "
 "<ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
 "battleforwesnoth</ulink>"
+msgstr ""
+"Na toto tlačítko klikni, aby se ukázal seznam hlavních přispěvatelů "
+"Wesnothu. Často je budeš moci zastihnout přímo na kanálu #wesnoth serveru "
+"irc.libera.chat:6667 nebo na <ulink url=\"https://discord.gg/"
+"battleforwesnoth\">https://discord.gg/battleforwesnoth</ulink>"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -477,9 +458,9 @@ msgid ""
 "provide you with information about units and all other gameplay relevant "
 "things of the game. Most of those things are mentioned in this manual."
 msgstr ""
-"Tento knoflík otvírá vestavěnou nápovědu hry, která obsahuje informace o "
-"jednotkách a všech dalších herních aspektech. Většina těchto informací je "
-"přítomna i v tomto manuálu."
+"Kliknutím na toto tlačítko otevřeš vestavěnou nápovědu hry, která obsahuje "
+"informace o jednotkách a všech dalších herních aspektech. Většina těchto "
+"informací je zmíněna i v tomto manuálu."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:245
@@ -500,8 +481,8 @@ msgstr "Předchozí"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:259
 msgid ""
-"Click this button to read the previous little tip from the \"Tome of Wesnoth"
-"\"."
+"Click this button to read the previous little tip from the \"Tome of "
+"Wesnoth\"."
 msgstr "Klikněte sem pro zobrazení předchozího tipu z „kronik Wesnothu“."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -515,6 +496,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Kliknutím na toto tlačítko zobrazíš verzi hry a technické informace. To může "
+"být užitečné při řešení problémů."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:277
@@ -531,7 +514,7 @@ msgstr "Bitvu o Wesnoth lze hrát dvěma způsoby:"
 msgid ""
 "Play a sequence of connected scenarios, known as a campaign, against the "
 "computer."
-msgstr "Hrát sekvenci navazujících scénářů - tažení - proti počítači."
+msgstr "Hrát sekvenci navazujících scénářů – tažení – proti počítači."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:288
@@ -540,10 +523,8 @@ msgstr "Hrát jediný scénář proti lidským nebo počítačovým protivníků
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Pošle zprávu jinému hráči (ve hře více hráčů)"
+msgstr "Existují také tažení, která mohou být hrána ve hře více hráčů."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:294
@@ -560,12 +541,12 @@ msgid ""
 "you choose not to use a unit at all during a scenario it is carried over to "
 "the next, so you don&#8217;t lose units you don&#8217;t use."
 msgstr ""
-"Tažení jsou sekvence bitev, propojených příběhem. Typické tažení se skládá s "
-"přibližně 10-20 scénářů. Hlavní výhodou tažení je, že Vám umožňují vyvíjet "
-"Vaši armádu. Po zakončení každého scénáře jsou jednotky uschovány pro "
-"použití v příštích scénářích, kde je můžete, ale nemusíte přivolat. Pokud je "
-"nepřivoláte, zůstanou i tak nadále k dispozici ve všech dalších scénářích "
-"tažení."
+"Tažení jsou sekvence bitev propojené příběhem. Typické tažení se skládá "
+"přibližně z 10 až 20 scénářů. Hlavní výhodou tažení je, že ti umožňují "
+"vyvíjet svou armádu. Po dokončení každého scénáře se přeživší jednotky na "
+"konci uloží, abys je mohl použít v dalším scénáři. Pokud se rozhodneš "
+"jednotku během scénáře vůbec nepoužít, bude přenesena do dalšího, takže o "
+"jednotky, které nepoužíváš, nepřijdeš."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:302
@@ -574,8 +555,9 @@ msgid ""
 "is probably the most enjoyable, and is the recommended way for new players "
 "to learn the game."
 msgstr ""
-"Tažení představují zamýšlený primární účel Wesnothu, jsou nejzábavnější "
-"formou hry a také umožňují novým hráčům snadno se naučit hru."
+"Tažení představují zamýšlený primární účel Wesnothu, jsou pravděpodobně "
+"nejzábavnější formou hry a reprezentují doporučený způsob, kterým by se noví "
+"hráči měli hru učit."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:307
@@ -599,18 +581,6 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -623,13 +593,14 @@ msgid ""
 "units won&#8217;t carry to future games and building up your army&#8217;s "
 "strength is possible only within the scenario."
 msgstr ""
-"Obecně jsou tyto hry hrány proti ostatním lidem přes internet (ale je možno "
-"i přes LAN). Pro tento účel je koordinuje hlavní server. Hry více hráčů přes "
-"internet mohou zabrat i několik hodin, podle počtu zúčastněných a velikosti "
-"mapy. Obvykle to bývá něco mezi třemi a sedmi hodinami. Hry je možno ukládat "
-"a načítat podle libosti, mohou proto trvat i několik týdnů - není nutno je "
-"hrát celé naráz. Jelikož není umožněno přenášet jednotky z jednoho scénáře "
-"do druhého, musíte si vystačit s budováním armády v rámci scénáře."
+"Obecně jsou tyto hry hrány proti ostatním hráčům přes internet (ale je možno "
+"i přes LAN). Jsou kordinovány prostřednictvím serveru pro hru více hráčů. "
+"Hry více hráčů mohou zabrat i desítky hodin, podle počtu zúčastněných a "
+"velikosti mapy. Obvykle to bývá něco mezi třemi a sedmi hodinami. Hry je "
+"možno ukládat a načítat podle libosti, mohou proto trvat i několik týdnů, "
+"ačkoli vlastní doba hry je v hodinách. Když hraješ pouze jeden scénář, tvé "
+"jednotky se nepřenáší do budoucích her a budování armády je možné jen v "
+"rámci daného scénáře."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:323
@@ -637,19 +608,15 @@ msgid ""
 "There are several possible options you are provided with when clicking on "
 "the \"Multiplayer\" button:"
 msgstr ""
-"Po kliknutí na tlačítko „Hra více hráčů“ máte na výběr z několika možností:"
+"Po kliknutí na tlačítko „Hra více hráčů“ máš na výběr z několika možností:"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -664,14 +631,6 @@ msgstr "Přezdívka"
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -679,11 +638,11 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
-"Toto bude Vaše jméno na serveru hry více hráčů. Pokud již máte účet na "
-"<ulink url=\"https://www.wesnoth.org/forum\">Oficiálním fóru Wesnothu</"
-"ulink>, můžete na oficiálním serveru použít stejné uživatelské jméno a "
-"heslo. Pokud je pro dané jméno nutné zadat heslo, objeví se dialog pro "
-"zadání hesla. Registrovanou přezdívku nelze bez zadání hesla použít."
+"Toto bude tvé jméno na serveru hry více hráčů. Pokud již máš účet na <ulink "
+"url=\"https://forums.wesnoth.org/\">oficiálním fóru Wesnothu</ulink>, můžeš "
+"na oficiálním serveru použít stejné uživatelské jméno a heslo. Pokud je pro "
+"dané jméno nutné zadat heslo, objeví se dialog pro zadání hesla. "
+"Registrované uživatelské jméno nelze bez zadání hesla použít."
 
 #. type: Content of: <book><chapter><section><section><section><title>
 #: doc/manual/manual.en.xml:340
@@ -698,9 +657,9 @@ msgid ""
 "are already open and maybe some players already waiting to join in a new "
 "match."
 msgstr ""
-"Tato volba Vás připojí na hlavní server. Octnete se v čekárně, kde stejně "
-"jako Vy čeká mnoho dalších hráčů. Můžete zde vytvářet hry nebo vstupovat do "
-"otevřených her."
+"Tato volba tě připojí na hlavní server. Nasměruje tě do čekárny, kde stejně "
+"jako ty mohou vyčkávat další hráči. Můžeš zde vytvářet hry nebo vstupovat do "
+"již otevřených her."
 
 #. type: Content of: <book><chapter><section><section><section><title>
 #: doc/manual/manual.en.xml:346
@@ -721,18 +680,14 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
-"website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
-"\">Multiplayer servers</ulink>."
+"website: <ulink url=\"https://wiki.wesnoth.org/"
+"MultiplayerServers\">Multiplayer servers</ulink>."
 msgstr ""
 "Úplný seznam oficiálních i uživatelských serverů je k dispozici na stránce "
-"<ulink url=\"https://wesnoth.org/wiki/MultiplayerServers\">servery</ulink>."
+"<ulink url=\"https://wesnoth.org/wiki/MultiplayerServers\">Servery pro hru "
+"více hráčů</ulink>."
 
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:353
@@ -774,7 +729,7 @@ msgstr ""
 "provedeno při této volbě; server běží, dokud se neodpojí poslední hráč. Dále "
 "je pro správnou funkci serveru zapotřebí povolit ostatním hráčům připojit se "
 "k vašemu počítači na portu 15000 přes TCP. Pokud používáte firewall, musíte "
-"jej tedy příslušně nastavit - povolit provoz na portu 15000 a případně jej "
+"jej tedy příslušně nastavit – povolit provoz na portu 15000 a případně jej "
 "přesměrovat na počítač se spuštěným serverem. Připojování k oficiálnímu "
 "serveru nebo jiným hostujícím počítačům by nemělo vyžadovat nastavování "
 "Vašeho firewallu."
@@ -784,6 +739,7 @@ msgstr ""
 msgid "Local Game"
 msgstr "Místní hra"
 
+# Nechal jsem některé formulace, protože jsou krásné.
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:375
 msgid ""
@@ -799,15 +755,16 @@ msgid ""
 "these games.  Of course, you can also mix both in one game. That is, play "
 "together in a game with a friend against an AI opponent."
 msgstr ""
-"Tímto vytvoříte hru, probíhající pouze na Vašem počítači. Může to být buď "
-"tzv. „horké křeslo“, kdy se hráči střídají u jednoho počítače v pořadí "
-"jejich tahů a hra trvá přibližně stejně dlouho jako kdyby byla hrána přes "
-"internet, nebo pouze hra proti počítačovým protivníkům. Druhá možnost může "
-"být dobrou přípravou pro hraní přes internet - seznámíte se s často hranými "
-"mapami. Je to také snadná cesta pro zkoumání jednotlivých frakcí: vyberete "
-"sobě a protivníkům příslušné frakce a hurá do boje! Oba přístupy - horké "
-"křeslo i bitku s počítači - lze libovolně kombinovat, výběr zda je daný hráč "
-"ovládán člověkem či počítačem je individuální pro každou stranu."
+"Tímto vytvoříš hru, probíhající pouze na tvém počítači. Může to být buď tzv. "
+"„horké křeslo“, kdy se hráči střídají u jednoho počítače v pořadí svých tahů "
+"a hra trvá přibližně stejně dlouho, jako kdyby byla hrána přes internet, "
+"nebo hra pouze proti počítačovým protivníkům. Druhá možnost může být dobrým "
+"způsobem, jak se seznámit s různými mapami, co se používají pro hry více "
+"hráčů, dříve než naskočíš do boje proti lidským protivníkům. Je to také "
+"snadná cesta jak prozkoumat možnosti jednotek z různých frakcí: vybereš sobě "
+"a svým protivníkům příslušné frakce a hurá do boje! Oba přístupy – horké "
+"křeslo i bitku s počítači – lze různě kombinovat. Můžeš tedy hrát společně s "
+"kamarádem proti počítačovému protivníkovi."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:389
@@ -816,15 +773,11 @@ msgstr "Herní obrazovka"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -848,15 +801,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -888,7 +837,7 @@ msgstr "Počitadlo kol (současné kolo / maximální počet kol)"
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:426
 msgid "Your gold"
-msgstr "Vaše zlato"
+msgstr "Tvé zlato"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:431
@@ -898,17 +847,17 @@ msgstr "Vesnice (vlastněné / celkový počet)"
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:436
 msgid "Your total units"
-msgstr "Počet Vašich jednotek"
+msgstr "Počet tvých jednotek"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:441
 msgid "Your upkeep"
-msgstr "Vaše výdaje"
+msgstr "Tvé výdaje"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:446
 msgid "Your income"
-msgstr "Vaše příjmy"
+msgstr "Tvé příjmy"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:451
@@ -917,15 +866,11 @@ msgstr "Aktuální čas, nebo zbývající čas (v hrách více hráčů na čas
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -989,13 +934,14 @@ msgid ""
 "recall experienced units that survived earlier scenarios. From here, you can "
 "start to build your army to conquer the enemy."
 msgstr ""
-"Když poprvé začnete hrát scénář nebo tažení, bude se na mapě nacházet pouze "
-"několik jednotek. Jednou z nich bude Váš velitel (určený malou ikonkou "
-"koruny). Velitel je obvykle na začátku umístěn na zvláštním hexu zvaném "
-"tvrz. Kdykoliv je Váš velitel na tvrzi (kterékoliv) a má dostatek zlata, "
-"může verbovat do armády nové jednotky. V dalších scénářích tažení může také "
-"stejným způsobem přivolávat zkušené jednotky přeživší z dřívějších scénářů. "
-"Ve tvrzi tedy začínáte stavět armádu, která pokoří nepřítele."
+"Když poprvé začneš hrát scénář nebo tažení, budeš mít na mapě jen několik "
+"svých jednotek. Jednou z nich bude tvůj velitel (označený malou ikonkou "
+"zlaté korunky). Tvůj velitel je na začátku obvykle umístěn na zvláštním "
+"políčku zvaném tvrz. Kdykoliv je tvůj velitel na tvrzi (a to nejen na tvé, "
+"ale také na tvrzi kteréhokoli nepřátelského hradu, co zajmeš) a je k "
+"dispozici dostatek zlata, můžeš verbovat do armády jednotky. V dalších "
+"scénářích tažení můžeš přivolávat zkušené jednotky, které přežily ze scénářů "
+"dřívějších. Ve tvrzi tedy začínáš stavět armádu pro pokoření nepřítele."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:506
@@ -1010,14 +956,14 @@ msgid ""
 "don&#8217;t dilly-dally looking at the scenery, there&#8217;s a battle to be "
 "won."
 msgstr ""
-"První, co budete chtít udělat, bude naverbovat alespoň jednu jednotku. "
-"Stiskněte <literal>Ctrl+r</literal> (nebo klikněte pravým tlačítkem na "
-"prázdné políčko hradu a zvolte „Naverbuj“) a vyberte jednotku k naverbování "
-"ze seznamu dostupných druhů jednotek. Každý rekrut je umístěn na příslušném "
-"(prázdném) políčku hradu; jakmile jimi zaplníte celý hrad, nelze již nikam "
-"verbovat dokud se nepřesunou pryč a neuvolní opět místo. Velitel vašeho "
-"nepřítele je také ve své tvrzi a započne verbováním své bandy, takže "
-"neotálejte s prohlížením krajiny."
+"První, co budeš pravděpodobně chtít udělat, bude naverbovat svou první "
+"jednotku. Stiskni <literal>Ctrl+r</literal> (nebo klikni pravým tlačítkem na "
+"prázdné políčko hradu a zvol „Naverbovat“) a vyber jednotku k naverbování ze "
+"seznamu všech dostupných jednotek. Každý rekrut je umístěn na (příslušné) "
+"prázdné políčko hradu. Jakmile jimi zaplníš celý hrad, nemůžeš už verbovat, "
+"dokud se nepřesunou pryč. Velitel tvého protivníka je podobně umístěn v jeho "
+"hradní tvrzi a začíná s verbováním svých vojáků, takže na začátku je "
+"zbytečné úporně šmejdit po mapě a hledat bitvu, co má být vyhrána."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:514
@@ -1027,15 +973,15 @@ msgid ""
 "in a similar way to recruiting. Recalled troops are often more experienced "
 "than recruits and usually a better choice."
 msgstr ""
-"Na konci každého vyhraného scénáře jsou uschovány Vaše veškeré zbývající "
-"jednotky. Na začátku dalšího scénáře je můžete přivolat podobně jako při "
-"verbování. Přivolané jednotky již mají obvykle nasbírané zkušenosti a "
-"představují tak lepší volbu."
+"Na konci každého vyhraného scénáře se všechny tvé zbývající jednotky "
+"automaticky uloží. Na začátku dalšího scénáře je můžeš přivolat podobně jako "
+"při verbování. Přivolané jednotky jsou často zkušenější než noví rekruti a "
+"obvykle tak představují lepší volbu."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:520
 msgid "Your Army"
-msgstr "Vaše armáda"
+msgstr "Tvá armáda"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:521
@@ -1053,7 +999,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:527
 msgid "Life and Death — Experience"
-msgstr "Život a smrt - zkušenosti"
+msgstr "Život a smrt – zkušenosti"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:528
@@ -1063,10 +1009,10 @@ msgid ""
 "recruit and recall more when that happens. But choose wisely, for each has "
 "strengths and weaknesses a cunning opponent will quickly exploit."
 msgstr ""
-"Jak Vaše jednotky získávají bojové zkušenosti, stávají se silnějšími a "
-"zvládají čím dál více. Některé také v boji padnou, takže budete muset "
-"naverbovat nebo přivolat další. Vybírejte ale dobře, výhody i nevýhody lze "
-"využít."
+"Jak tvé jednotky získávají bojové zkušenosti, učí se více dovedností a "
+"stávají se silnějšími. Také mohou padnout v bitvě a v tom případě budeš "
+"muset verbovat a přivolávat další. Vybírej ale moudře, protože každá "
+"jednotka má silné i slabé stránky, které mazaný protivník rychle využije."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:534
@@ -1083,11 +1029,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"Vždy si pozorně pročtěte, co se objeví v okénku Úkoly na začátku scénáře. "
-"Většinou lze dosáhnout vítězství porážkou všech nepřátelských vůdců a "
-"prohrát, když zemře váš vůdce. Některé scénáře však mohou mít i jiné cíle - "
-"například dojít s vůdcem na určené místo, nebo nebo někoho zachránit, nebo "
-"vyřešit hádanku, nebo odolávat nepřátelům po několik kol..."
+"Vždy si pozorně pročti, co se objeví v okénku Úkoly na začátku scénáře. "
+"Obvykle lze dosáhnout vítězství porážkou všech nepřátelských vůdců a utrpět "
+"porážku, když tvůj vůdce zemře. Scénáře však mohou mít i jiné cíle – "
+"například dojít s vůdcem na určené místo, zachránit někoho, vyřešit hádanku "
+"nebo odolávat nepřátelům po určený počet kol."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:542
@@ -1098,10 +1044,10 @@ msgid ""
 "multiplayer game)  chatting with other players before pressing that button "
 "to advance."
 msgstr ""
-"Když vyhrajete scénář, mapa zešedne a tlačítko <emphasis>Ukončit kolo</"
-"emphasis> se změní na <emphasis>Ukončit scénář</emphasis>. Můžete stále "
-"měnit nastavení nebo komunikovat se spoluhráči (ve hře více hráčů) před "
-"potvrzením konce hry tímto tlačítkem."
+"Když vyhraješ scénář, mapa zešedne a tlačítko <emphasis>Ukončit kolo</"
+"emphasis> se změní na <emphasis>Ukončit scénář</emphasis>. Před potvrzením "
+"konce hry tímto tlačítkem můžeš stále provádět některé věci, jako je změna "
+"možností uložení nebo chatování s ostatními hráči (ve hře více hráčů)."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:548 doc/manual/manual.en.xml:580
@@ -1123,14 +1069,15 @@ msgid ""
 "current gold and current income at the top of the screen as described in the "
 "section on the <link linkend=\"game_screen\">game screen</link>."
 msgstr ""
-"Vaše armáda nebojuje zadarmo. Verbování stojí peníze a vydržování jednotek "
-"také. Každý scénář začínáte se zlatem, které zbylo po předchozím scénáři "
-"(ale je zajištěno, že vždy dostanete určitý minimální obnos). Více zlata je "
-"možno získat vlastnictvím vesnic během hry a včasným zakončením (výhrou) "
-"scénáře. Každá vesnice Vám za tah dodá dva zlaté. Když začnete hrát scénář, "
-"je obvykle žádoucí rychle osadit co nejvíce vesnic, abyste měli dost financí "
-"na vedení války. Aktuální stav Vaší pokladnice zjistíte na horní liště - viz "
-"<link linkend=\"game_screen\">„Herní obrazovka“</link>."
+"Tvá armáda nebojuje zadarmo. Verbování stojí peníze a vydržování jednotek "
+"také. Každý scénář začínáš se zlatem, které zbylo po předchozím scénáři (ale "
+"je zajištěno, že vždy dostaneš určitý minimální obnos, pokud ti z minule "
+"zbylo méně). Více zlata je možno získat vlastnictvím vesnic během hry a "
+"včasným zakončením (výhrou) scénáře. Každá vesnice ti za tah dodá dva zlaté. "
+"Když začneš hrát scénář, je obvykle žádoucí rychle osadit co nejvíce vesnic, "
+"aby sis zajistil dostatek financí na vedení války. Aktuální stav tvé "
+"pokladnice zjistíš na horní liště – viz <link linkend=\"game_screen\">herní "
+"obrazovku</link>."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:562
@@ -1148,12 +1095,11 @@ msgid ""
 "scenario. However, most beginners tend to do so rather often."
 msgstr ""
 "Na začátku každého scénáře je hra automaticky uložena. Při porážce ji pak "
-"můžete načíst a opět se pokusit zvítězit. Jakmile se Vám to povede, budete "
-"na začátku dalšího scénáře opět před začátkem dotázán(a) na uložení atd. "
-"Pokud budete muset hru přerušit uprostřed scénáře, uložte ji a načtěte "
-"později. Pamatujte ale, že dobří hráči nepotřebují každou chvíli ukládat "
-"hru, aby předešli ztrátám. Většina začátečníků se přirozeně tímto stylem "
-"pokouší podvést náhodu působící v jejich neprospěch."
+"můžeš načíst a opět se pokusit zvítězit. Jakmile se ti to povede, budeš na "
+"začátku dalšího scénáře opět před začátkem dotázán na uložení atd. Pokud "
+"budeš muset hru přerušit uprostřed scénáře, můžeš ji uložit a načíst "
+"později. Pamatuj ale, že dobrý hráč Wesnothu nepotřebuje v průběhu scénáře "
+"hru ukládat. Většina začátečníků však má tendenci to dělat častěji."
 
 #. type: Content of: <book><chapter><title>
 #: doc/manual/manual.en.xml:574
@@ -1171,6 +1117,8 @@ msgid ""
 "To view and change the hotkey settings open the Preferences menu and choose "
 "the Hotkeys tab."
 msgstr ""
+"Chceš-li zobrazit a změnit nastavení klávesových zkratek, otevři nabídku "
+"Nastavení a vyber položku Klávesy."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:581
@@ -1197,15 +1145,11 @@ msgstr "Verbování a přivolávání"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:591
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1233,7 +1177,7 @@ msgid ""
 "from the list that is presented. The cost to Recruit depends on the unit, "
 "but is usually between 10 and 20 gold."
 msgstr ""
-"Klikněte pravým tlačítkem na volné pole hradu a vyberte „Naverbuj“ pro "
+"Klikni pravým tlačítkem na volné pole hradu a vyber „Naverbovat“ pro "
 "naverbování nové jednotky ze zobrazeného seznamu. Cena záleží na druhu "
 "jednotky, ale obvykle se pohybuje mezi 10 a 20 zlatými."
 
@@ -1244,10 +1188,10 @@ msgid ""
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
 "linkend=\"unit_recall\">recalling units</link> for more information."
 msgstr ""
-"Klikněte pravým tlačítkem na volné pole hradu a vyberte „Přivolej“ pro "
-"přivolání jednotky z předchozího scénáře. Přivolání stojí 20 zlatých za "
-"jednotku bez rozdílu. Podívejte se na oddíl <link linkend=\"unit_recall"
-"\">přivolávání jednotek</link> pro další informace."
+"Klikni pravým tlačítkem na volné pole hradu a vyber „Povolat“ pro přivolání "
+"jednotky z předchozího scénáře. Přivolání stojí 20 zlatých za jednotku bez "
+"rozdílu. Podívej se na oddíl <link linkend=\"unit_recall\">přivolávání "
+"jednotek</link> pro další informace."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:618
@@ -1258,17 +1202,17 @@ msgstr "Výdaje"
 #: doc/manual/manual.en.xml:619
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
-"level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
-"\"traits\">see below</link>). Units that are not initially recruited — i.e. "
-"the leader or those that join voluntarily — usually have the Loyal trait. "
-"Upkeep is only paid if the total upkeep of a side&#8217;s units is greater "
-"than the number of villages that side controls. Upkeep paid is the "
+"level of the unit, unless the unit has the \"Loyal\" trait (<link "
+"linkend=\"traits\">see below</link>). Units that are not initially recruited "
+"— i.e. the leader or those that join voluntarily — usually have the Loyal "
+"trait. Upkeep is only paid if the total upkeep of a side&#8217;s units is "
+"greater than the number of villages that side controls. Upkeep paid is the "
 "difference between the number of villages and the upkeep cost."
 msgstr ""
 "Každá jednotka vyžaduje žold. Tato částka je obecně rovna úrovni jednotky; "
-"výjimku představuje případ, kdy má jednotka vlastnost „věrný“ ((<link "
+"výjimku představuje případ, kdy má jednotka vlastnost „věrný“ (<link "
 "linkend=\"traits\">viz níže</link>). Jednotky, které nejsou přivolány nebo "
-"naverbovány — tedy např. vůdce nebo ty, které se přidají dobrovolně — jsou "
+"naverbovány – tedy např. vůdce nebo ty, které se přidají dobrovolně – jsou "
 "obvykle věrné. Žold platíte pouze pokud je celkově vyšší než počet Vámi "
 "ovládaných vesnic. (Totéž platí pro všechny strany.) Částka v tom případě "
 "placená pak představuje rozdíl mezi počtem vesnic a žoldem."
@@ -1287,7 +1231,7 @@ msgstr "Vzorec pro výpočet příjmů za kolo je tedy"
 #: doc/manual/manual.en.xml:629
 #, no-wrap
 msgid "2 + villages − maximum(0, upkeep − villages)"
-msgstr "2 + vesnice - maximum(0, žold - vesnice)"
+msgstr "2 + vesnice – maximum(0, žold – vesnice)"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:630
@@ -1352,9 +1296,9 @@ msgid ""
 "and less at night. Chaotic units do more damage at night and less during the "
 "day. Liminal units do less damage during both night and daytime."
 msgstr ""
-"Každá jednotka má příslušnost — zákonnou, neutrální, chaotickou nebo šerou. "
+"Každá jednotka má příslušnost – zákonnou, neutrální, chaotickou nebo šerou. "
 "Příslušnost ovlivňuje, jak dobře jednotka bojuje v různé denní doby. Na "
-"neutrální nemá vliv, zákonné zvýhodňuje ve den a znevýhodňuje v noci, pro "
+"neutrální nemá vliv, zákonné zvýhodňuje během dne a znevýhodňuje v noci, pro "
 "chaotické platí opak. Šeré jednotky pak bojují během dne i noci hůře."
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -1473,7 +1417,7 @@ msgstr "Den (ráno)"
 #: doc/manual/manual.en.xml:813 doc/manual/manual.en.xml:838
 #: doc/manual/manual.en.xml:863
 msgid "+25%"
-msgstr "+25%"
+msgstr "+25 %"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:738 doc/manual/manual.en.xml:741
@@ -1482,7 +1426,7 @@ msgstr "+25%"
 #: doc/manual/manual.en.xml:835 doc/manual/manual.en.xml:841
 #: doc/manual/manual.en.xml:860 doc/manual/manual.en.xml:866
 msgid "−25%"
-msgstr "−25%"
+msgstr "−25 %"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:746 doc/manual/manual.en.xml:1506
@@ -1615,7 +1559,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
-"Pamatujte prosím, že pokud se scénář nachází pod zemí, pak je zde neustále "
+"Pamatuj, že pokud se některý scénář odehrává pod zemí, pak je zde neustále "
 "noc!"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -1664,7 +1608,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:888
 msgid "The possible traits for most units are as follows:"
-msgstr "Možné vlastnosti pro většinu jednotek:"
+msgstr "Možné vlastnosti pro většinu jednotek jsou tyto:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:892
@@ -1685,12 +1629,12 @@ msgstr ""
 "Inteligentní jednotky potřebují k postupu na další úroveň o 20 % méně "
 "zkušeností. Tuto vlastnost nemohou mít trollové. Inteligentní jednotky jsou "
 "velmi užitečné na začátku tažení, kdy mohou postupovat na vyšší úrovně "
-"rychleji, ale později se toto naopak obrací v nevýhodu. Po dosažení "
-"maximální úrovně již nedochází k významnému postupu - AMLA (After Maximum "
-"Level Advancement, postup po dosažení nejvyšší úrovně) nepřináší nijak "
-"významné výhody ve srovnání se zvýšením úrovně. Pokud již máte mnoho "
-"jednotek na jejich <emphasis>maximální úrovni</emphasis>, budete chtít "
-"přivolat jednotky s příhodnějšími vlastnostmi než „inteligentní“."
+"rychleji, ale později se to obrací v nevýhodu. Po dosažení maximální úrovně "
+"již nedochází k významnému postupu – AMLA (After Maximum Level Advancement, "
+"postup po dosažení nejvyšší úrovně) nepřináší nijak významné výhody ve "
+"srovnání se zvýšením úrovně. Pokud již máš mnoho jednotek na jejich "
+"<emphasis>maximální úrovni</emphasis>, budeš možná chtít přivolávat jednotky "
+"s příhodnějšími vlastnostmi než „inteligentní“."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:908
@@ -1708,12 +1652,12 @@ msgid ""
 "units without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
-"Rychlé jednotky mají 1 krok navíc, ale o 5 % životů méně. Rychlost je velmi "
-"nápadnou vlastností, zejména u pomaleji se pohybujících jednotek jako "
-"trollové nebo těžká pěchota. Jednotky s touto vlastností mají často mnohem "
-"vyšší mobilitu v těžkém terénu, která může být důležitá při rozmísťování "
-"Vašich sil. Rychlé jednotky nejsou tak silné jako jednotky bez této "
-"vlastnosti a jsou také slabší při udržování bojových pozic."
+"Rychlé jednotky mají 1 pohybový bod navíc, ale o 5 % životů méně. Rychlost "
+"je velmi nápadnou vlastností, zejména u pomaleji se pohybujících jednotek "
+"jako jsou trollové nebo těžká pěchota. Jednotky s touto vlastností mají "
+"často mnohem vyšší mobilitu v těžkém terénu, což může být důležité při "
+"rozmisťování tvých sil. Rychlé jednotky nejsou tak silné jako jednotky bez "
+"této vlastnosti a jsou také slabší při udržování bojových pozic."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:924
@@ -1730,10 +1674,12 @@ msgid ""
 "resistances. Resilient units are especially useful for holding strategic "
 "positions against opponents."
 msgstr ""
-"Houževnaté jednotky mají navíc 4HP + 1HP na úroveň. Jsou užitečné ve všech "
-"fázích tažení. Největší výhodu tato vlastnost poskytuje, pokud ji dostane "
-"jednotka s kombinací nízkých životů, dobré obrany a vysokých odolností. "
-"Houževnaté jednotky se hodí zvláště pro udržení strategických pozic."
+"Houževnaté jednotky mají navíc 4 životy + 1 život za každou úroveň. Jsou "
+"užitečné ve všech fázích tažení a tato vlastnost se hodí všem jednotkám. "
+"Houževnatost je často nejužitečnější vlastností v případě, pokud ji dostane "
+"jednotka s kombinací nízkého počtu životů, dobré obrany a vysokých "
+"odolností. Houževnaté jednotky se zvláště hodí pro udržení strategických "
+"pozic."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:939
@@ -1749,11 +1695,11 @@ msgid ""
 "Fighter. Strong units can be very useful when a tiny bit of extra damage is "
 "all that is needed to turn a damaging stroke into a killing blow."
 msgstr ""
-"Silné jednotky udělují o 1 bod větší zranění při každém úderu v boji a mají "
-"o 1 život více. I když je tato vlastnost užitečná v každém případě, hodí se "
-"zejména pro jednotky s vysokým množstvím úderů jako elfí bojovníci - zisk je "
-"pak nejvyšší. Silné jednotky najdou využití v případech, kdy je zapotřebí "
-"„jen o trošičku víc“ k zabití co nejdříve."
+"Silné jednotky udělují o 1 vyšší zranění při každém úderu v boji zblízka a "
+"mají o 1 život více. I když je tato vlastnost užitečná pro každou jednotku, "
+"která bojuje zblízka, hodí se zejména pro jednotky s vysokým množstvím úderů "
+"jako elfí bojovníci. Silné jednotky najdou využití zvláště v případech, kdy "
+"je zapotřebí k zabití nepřítele „jen o trošičku víc síly“."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:953
@@ -1777,10 +1723,11 @@ msgid ""
 "however, are gifted with natural talent that exceeds their brethren. These "
 "elves inflict an additional point of damage with each arrow."
 msgstr ""
-"Obratné jednotky způsobují o 1 bod poškození více při každé střele v boji na "
-"dálku. Tuto vlastnost mohou získat pouze elfové, známí velkou zručností s "
-"lukem; někteří z nich dostanou do vínku um, převyšující schopnosti jejich "
-"soukmenovců."
+"Obratné jednotky udělují o 1 vyšší zranění při každém úderu v boji na dálku. "
+"Tuto vlastnost mohou získat pouze elfové. Elfové jsou známí svým tajemným "
+"nadáním pro velmi zručné ovládání luku. Někteří z nich však dostanou do "
+"vínku um převyšující schopnosti jejich bratrů. Ti pak způsobí každou "
+"úspěšnou střelou další bod poškození."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:972
@@ -1793,9 +1740,9 @@ msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Heavy Infantry, Necrophage, Trolls, Walking Corpses)."
 msgstr ""
-"Nebojácné jednotky netrpí negativními změnami statistik během nepříznivé "
-"denní doby. Mohou to být trollové, chodící mrtvoly, těžkooděnci a požírači "
-"mrtvol."
+"Nebojácné jednotky (kterými mohou být těžkooděnci, požírači mrtvol, trollové "
+"či chodící mrtvoly) netrpí negativními změnami statistik během nepříznivé "
+"denní doby."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:983
@@ -1808,8 +1755,8 @@ msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
-"Divé jednotky (např. netopýři nebo sokoli) mají ve vesnicích obranu "
-"maximálně 50 % nezávisle na tom, na jakém povrchu vesnice stojí."
+"Divé jednotky (kterými mohou být netopýři nebo sokoli) mají ve vesnicích "
+"obranu maximálně 50 % nezávisle na tom, na jakém povrchu vesnice stojí."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:994
@@ -1824,11 +1771,10 @@ msgid ""
 "HP per level more than usual and rest heal the usual 2 HP after each turn "
 "regardless."
 msgstr ""
-"Trpaslíci jsou obecně známi jako velmi životaschopní a odolní tvorové. "
-"Někteří jsou tak zdatní, že dokáží odpočívat i při chůzi. Zdravé jednotky "
-"mají o 1 HP plus 1 HP na úroveň více; uzdravují se také o 2HP (při "
-"odpočinku) za každé kolo, ve kterém nebojují. Kromě toho jim jed působí "
-"pouze tříčtvrtinové zranění."
+"Trpaslíci jsou obecně známí jako životaschopní tvorové. Někteří jsou "
+"zdatnější než jiní a dokáží odpočívat i při chůzi či boji. Zdravé jednotky "
+"mají o 1 život navíc plus 1 život za každou úroveň a bez ohledu na to, co "
+"dělají, si po každém tahu vyléčí 2 životy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1006
@@ -1851,8 +1797,8 @@ msgid ""
 "The oldest units may have the Aged trait, receiving an 8 points HP decrease "
 "and having -1 movement and melee damage."
 msgstr ""
-"Nejstarší jednotky mohou mít vlastnost Starý, která způsobuje snížení životů "
-"o 8, snížení bodů pohybu o 1 a -1 zranění na blízko."
+"Ty nejstarší jednotky mohou být tak staré, že mají o 8 méně životů, snížený "
+"pohyb o 1 bod a udílí o 1 menší zranění v boji zblízka."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1023
@@ -1868,7 +1814,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1033
 msgid "Elemental"
-msgstr "Elemental"
+msgstr "Elementál"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1037
@@ -1878,7 +1824,7 @@ msgid ""
 "<emphasis>Elemental</emphasis> as their only trait."
 msgstr ""
 "Živelné jednotky nepodléhají jedům a nelze je vysát či nakazit, protože "
-"stroje nejsou živé. „Elemental“ je obvykle jejich jediná vlastnost."
+"nejsou živé. „Elementál“ je obvykle jejich jediná vlastnost."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1045
@@ -1897,19 +1843,19 @@ msgid ""
 "gold is in short supply.  This trait is never given to recruited units, so "
 "it may be unwise to dismiss such units or to send them to a foolish death."
 msgstr ""
-"Věrné jednotky nepotřebují žold. Většina jednotek vyžaduje žold úměrný "
-"jejich úrovni na konci každého kola, ale věrné nikoliv. Během tažení se "
-"objevují jednotky, přidávající se ke hráčově armádě z vlastní vůle. Ty pak "
-"bývají zpravidla věrné a vyžadují tak pouze počáteční investici při jejich "
-"přivolání, čímž se stávají velice užitečnými v obdobích, kdy je během "
-"dlouhých tažení zlata pomálu. Naverbované jednotky tuto vlastnost nikdy "
-"nezískávají, proto je nemoudré se zbavovat věrných jednotek, ať už "
-"propouštěním či vysláním na jistou smrt."
+"Věrné jednotky nepotřebují žold. Většina jednotek vyžaduje na konci každého "
+"kola žold úměrný jejich úrovni, ale věrné nikoliv. Během tažení se mohou "
+"objevit jednotky, které bojují za hráče ze své vlastní vůle. Tyto jednotky "
+"jsou označeny jako věrné. I když mohou vyžadovat počáteční investici při "
+"svém přivolání, jejich náklady na údržbu jsou nulové. Tím se stávají "
+"nedocenitelné během dlouhých tažení, kdy je zlata pomálu. Naverbované "
+"jednotky tuto vlastnost nikdy nezískávají, proto je nemoudré zbavovat se "
+"věrných jednotek tím, že je propustíš, nebo je pošleš na pošetilou smrt."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1063
 msgid "Mechanical"
-msgstr "Stroje"
+msgstr "Stroj"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1067
@@ -1918,13 +1864,13 @@ msgid ""
 "and plague don&#8217;t work on them.  Mechanical units generally have "
 "<emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
-"Mechanické jednotky nepodléhají jedům a nelze je vysát či nakazit, protože "
-"stroje nejsou živé. „Stroj“ je obvykle jejich jediná vlastnost."
+"Mechanické jednotky nejsou živé a proto nepodléhají jedům a nelze je vysát "
+"či nakazit. „Stroj“ je obvykle jejich jediná vlastnost."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1075 doc/manual/manual.en.xml:1217
 msgid "Slow"
-msgstr "Zpomalení"
+msgstr "Pomalý"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1079
@@ -1932,13 +1878,13 @@ msgid ""
 "Large, unwieldy units with the Slow trait have -1 movement and 5% more "
 "hitpoints."
 msgstr ""
-"Velké, nemotorné jednotky s vlastností Pomalý mají -1 bodů pohybu a o 5% "
-"více životů."
+"Velké, nemotorné jednotky, které jsou pomalé, mají o jeden pohybový bod méně "
+"a o 5 % více životů."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1085
 msgid "Undead"
-msgstr "Nemrtví"
+msgstr "Nemrtvý"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1089
@@ -1950,9 +1896,9 @@ msgid ""
 "dealing with foes who use poison in conjunction with their attacks."
 msgstr ""
 "Nemrtvé jednotky nepodléhají jedům a nelze je vysát či nakazit. „Nemrtvý“ je "
-"obvykle jediná vlastnost nemrtvých jednotek. Odolnost proti jedům je "
-"způsobena jejich původem - jsou již vlastně po smrti - a představuje velkou "
-"výhodu při boji s protivníky spoléhajícími se na jed."
+"obvykle jediná vlastnost nemrtvých jednotek. Protože nemrtví jsou vlastně "
+"již mrtvá těla, povolaná znovu do boje, nemá na ně jed žádný vliv, což "
+"představuje velkou výhodu při boji s protivníky spoléhajícími se na jed."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1099
@@ -1964,7 +1910,8 @@ msgstr "Slabý"
 msgid ""
 "Units may have the Weak trait, receiving a -1 increment in hitpoints and "
 "melee damage."
-msgstr "Jednotky s vlastností slabé mají -1 život a zranění na blízko."
+msgstr ""
+"Slabé jednotky mají o 1 život méně a udílejí o 1 menší zranění na blízko."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1111
@@ -2228,10 +2175,11 @@ msgstr ""
 "Tato jednotka získává 1 život k celkovému počtu životů kdykoliv zabije "
 "jednotku, kromě jednotek, které jsou odolné proti nákaze."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1311
 msgid "Heals +4"
-msgstr "Ošetření"
+msgstr "Léčení +4"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1315
@@ -2242,16 +2190,17 @@ msgid ""
 "its poison by a healer, and must seek the care of a village or a unit that "
 "can cure."
 msgstr ""
-"Umožňuje jednotce na začátku každého kola ošetřit sousední spřátelené "
-"jednotky. Jednotka, která je v péči tohoto ošetřovatele, se může vyléčit až "
-"o 4 životy za kolo, nebo v tomto kole zastavit působení jedu. Otrávenou "
-"jednotku ošetřovatel uzdravit nedokáže. Ta musí hledat pomoc ve vesnici nebo "
-"u jednotky, která dokáže uzdravovat."
+"Umožňuje jednotce na začátku každého kola základním způsobem léčit sousedící "
+"spřátelené jednotky. Jednotka, která je v péči tohoto léčitele, se může "
+"vyléčit až o 4 životy za kolo, nebo v tomto kole zastavit působení jedu. "
+"Otrávenou jednotku nedokáže léčitel uzdravit. Ta musí hledat pomoc ve "
+"vesnici nebo u jednotky, která dokáže uzdravovat."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1326
 msgid "Heals +8"
-msgstr "Léčení"
+msgstr "Léčení +8"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1330
@@ -2263,12 +2212,10 @@ msgid ""
 "must seek the care of a village or a unit that can cure."
 msgstr ""
 "Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
-"jednotky rychleji než je běžně možné na bitevním poli. Na začátku tahu se "
-"postará o všechny spřátelené zraněné jednotky stojící na sousedních polích. "
-"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
-"jeden tah průběh otravy. Léčitel nedokáže uzdravit otrávenou jednotku; "
-"taková jednotka musí vyhledat pomoc ve vesnici nebo u jednotky, která dokáže "
-"uzdravovat."
+"jednotky rychleji, než je běžně na bitevním poli možné. Jednotka, která je "
+"v péči tohoto léčitele, se může vyléčit až o 8 životů za kolo, nebo v tomto "
+"kole zastavit působení jedu. Otrávenou jednotku nedokáže léčitel uzdravit. "
+"Ta musí hledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1341
@@ -2304,7 +2251,7 @@ msgstr ""
 "Tato jednotka dokáže vést jednotky vedle sebe, takže bojují lépe. Spřátelené "
 "jednotky nižší úrovně na sousedních polích způsobí v boji větší poškození. "
 "Když se spřátelená jednotka nižšího stupně nachází v boji na stejné straně "
-"jako ta velící, pak její útok způsobí o 25% více poškození krát rozdíl "
+"jako ta velící, pak její útok způsobí o 25 % více poškození krát rozdíl "
 "jejich úrovní."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2324,10 +2271,11 @@ msgstr ""
 "jednotka, která ji nalezne jako první, ztrácí všechny své zbývající body "
 "pohybu."
 
+# Je to název schopnosti.
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1382
 msgid "Regenerates"
-msgstr "Regeneruje"
+msgstr "Regenerace"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1386
@@ -2335,7 +2283,7 @@ msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Jednotka se vyléčí o 8 životů za tah. V případě, že je otrávena, je místo "
+"Jednotka se vyléčí o 8 životů za kolo. V případě, že je otrávena, je místo "
 "vyléčení uzdravena z otravy."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2363,8 +2311,8 @@ msgid ""
 "This unit&#8217;s resistances are doubled, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
 msgstr ""
-"Odolnost této jednotky je při obraně zdvojena, až na maximum 50%. Výše "
-"zranění při zásahu ale není ovlivněna."
+"Odolnosti této jednotky jsou při obraně zdvojnásobeny, až na maximum 50 %. "
+"Odolnosti se zápornými hodnotami (zranitelnosti) nejsou ovlivněny."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1415
@@ -2517,7 +2465,7 @@ msgid ""
 "top of a unit&#8217;s energy bar provide a quick way to see which of your "
 "units have already moved or can move further in the current turn."
 msgstr ""
-"Kliknutí na jednotku zobrazí všechna místa, kam dojde v tomto tahu - "
+"Kliknutí na jednotku zobrazí všechna místa, kam dojde v tomto tahu – "
 "nedostupné políčka ztmavnou. Stisknutí kláves 2-7 provede totéž, pouze pro "
 "příslušný počet tahů. V tomto módu ukazuje cestička šlápot, kudy by se "
 "jednotka k danému místu vydala. Na políčku pod kurzorem je rovněž vidět "
@@ -2527,8 +2475,8 @@ msgstr ""
 "přesouvat vybranou jednotku, stačí vybrat jinou kliknutím na ni či "
 "zmáčknutím <literal>n</literal> nebo <literal>N</literal> anebo nevybrat "
 "žádnou kliknutím do prázdna pravým tlačítkem („Command-klik“ na Macu). "
-"Rychlý přehled o stavu možného pohybu poskytuje <link linkend=\"orbs"
-"\">koule</link> na ukazateli životů jednotky."
+"Rychlý přehled o stavu možného pohybu poskytuje <link "
+"linkend=\"orbs\">koule</link> na ukazateli životů jednotky."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1576
@@ -2546,7 +2494,7 @@ msgstr ""
 "Když se rozhodnete pohnout vybranou jednotkou, klikněte na políčko, kam ji "
 "zamýšlíte přesunout. Jednotka se tam přesune; pokud není toto místo dostupné "
 "v jednom tahu, dojde tak daleko, jak jen je možné, a zůstane v "
-"<emphasis>přesunovém módu</emphasis> - bude se posunovat po zvolené trase k "
+"<emphasis>přesunovém módu</emphasis> – bude se posunovat po zvolené trase k "
 "cíli, dokud tam nedojde. <emphasis>Přesunový mód</emphasis> může trvat i "
 "několik tahů a můžete jej snadno zrušit vrácením přesunu proběhnuvšího v "
 "dalším kole nebo opětovným kliknutím na jednotku. Také lze jednotku na cestě "
@@ -2607,8 +2555,8 @@ msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
 msgstr ""
-"Nahoře na ukazateli energie každé vámi ovládané jednotky je umístěna koule. "
-"Tato koule může nabývat různých barev:"
+"Nahoře na ukazateli života každé jednotky tvé strany je umístěna koule. Tato "
+"koule může nabývat různých barev:"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: doc/manual/manual.en.xml:1617
@@ -2640,7 +2588,7 @@ msgstr "Zelená koule"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1641
 msgid "If you control the unit and it hasn&#8217;t moved this turn"
-msgstr "Jednotka patří Vám a v tomto kole se ještě nepohnula."
+msgstr "Jednotka je tvá a v tomto kole se ještě nepohnula."
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1646
@@ -2665,7 +2613,7 @@ msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
-"Jednotka patří Vám a již se v tomto kole pohnula, ale ještě může zaútočit či "
+"Jednotka je tvá a již se v tomto kole pohnula, ale stále může zaútočit či "
 "pohnout se"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -2690,43 +2638,35 @@ msgstr "Červená koule"
 msgid ""
 "If you control the unit, but it can no longer move or attack, or the user "
 "ended the unit&#8217;s turn"
-msgstr "Jednotka patří Vám, ale již nemůže v tomto kole nic dělat"
+msgstr "Jednotka je tvá, ale již nemůže v tomto kole nic dělat"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1678
-#, fuzzy
-#| msgid "Recruit and Recall"
 msgid "Red and yellow"
-msgstr "Verbování a přivolávání"
+msgstr "Červená a žlutá"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:1682
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:1685
 msgid "Two color orb"
-msgstr ""
+msgstr "Dvoubarevná koule"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1689
-#, fuzzy
-#| msgid ""
-#| "If you control the unit and it has moved this turn, but could still move "
-#| "further or attack"
 msgid ""
 "If you control the unit and it has attacked this turn, and could still move "
 "further but could not attack again"
 msgstr ""
-"Jednotka patří Vám a již se v tomto kole pohnula, ale ještě může zaútočit či "
-"pohnout se"
+"Jednotka je tvá a již v tomto kole útočila (a nemůže tedy znovu útočit), ale "
+"stále se může pohnout"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1694
@@ -2751,6 +2691,8 @@ msgid ""
 "If the unit is an ally you do not control. On the ally&#8217;s own turn "
 "these will be shown with green, yellow and red orbs"
 msgstr ""
+"Jednotka je spojenecká a ty ji neovládáš. Během spojeneckého kola se pak u "
+"takových jednotek používají zelené, žluté a červené koule"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1710
@@ -2771,10 +2713,8 @@ msgstr "Žádná koule"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1721
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "Nepřátelské jednotky mají červené koule na ukazateli energie"
+msgstr "Nepřátelské jednotky nemají na ukazateli života žádnou kouli"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1729
@@ -2783,21 +2723,14 @@ msgstr "Plochy pod jednotkami, barvy týmů a ikony hrdinů"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1730
-#, fuzzy
-#| msgid ""
-#| "Below each unit there will normally be a colored ellipses or base. The "
-#| "color identifies its team; in a campaign game, the human-player color is "
-#| "red. The team color will also show up in parts of the unit&#8217;s "
-#| "clothing, or possibly on a shield insignia."
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team. The team color will also show up in parts of the "
 "unit&#8217;s clothing, or possibly on a shield insignia."
 msgstr ""
 "Pod každou jednotkou se normálně nachází barevná plocha. Její barva "
-"identifikuje stranu jednotky; v taženích je pro stranu lidského hráče (Vás) "
-"použita červená. Barva strany se také objevuje na částech oblečení nebo "
-"výbavy jednotky."
+"identifikuje stranu jednotky. Barva strany se také objevuje na částech "
+"oblečení nebo výstroje jednotky."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1733
@@ -2806,10 +2739,9 @@ msgid ""
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
 "Control."
 msgstr ""
-"Plocha pod jednotkou je obvykle celistvý disk - kvůli pohledu ze strany "
-"vyhlíží jako elipsa. Na některých jednotkách, obvykle nulté úrovně, je okraj "
-"elipsy přerušovaný a připomíná tak trochu vrtuli helikoptéry; znamená to, že "
-"jednotka nevytváří oblast kontroly."
+"Elipsa obvykle vypadá jako celistvý disk. U jednotek úrovně 0 lze vidět "
+"elipsu tvořenou přerušovanou čarou. To značí, že jednotka nemá žádnou zónu "
+"kontroly."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1736
@@ -2817,27 +2749,21 @@ msgid ""
 "Units that can recruit will always have a star-shaped base. Other units "
 "normally have an elliptic base."
 msgstr ""
+"Jednotky, které mohou verbovat, budou vždy mít pod sebou plochu ve tvaru "
+"hvězdice. Ostatní jednotky běžně mají plochu ve tvaru elipsy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1738
-#, fuzzy
-#| msgid ""
-#| "Some campaigns use a star-shaped base to indicate leaders and heroes "
-#| "(units which are somehow special and for example not allowed to die in "
-#| "the course of the scenario); others use a silver crown icon above the "
-#| "energy bar to mark heroes. Still others have no specific hero indicator "
-#| "at all. Which (if any) is used is a stylistic choice left to campaign "
-#| "designers."
 msgid ""
 "Some campaigns use a smaller star-shaped base and a silver crown icon above "
 "the energy bar to indicate heroes (units which are somehow special and for "
 "example not allowed to die in the course of the scenario).  Whether to do "
 "this is a stylistic choice left to campaign designers."
 msgstr ""
-"Některá tažení používají k odlišení vůdců a hrdinů (jednotek které nesmí "
-"zemřít) plochu ve tvaru hvězdy, jiné zase přidávají k jednotce ikonku malé "
-"stříbrné koruny. Některé dokonce nemají žádné specifické ukazatele pro "
-"hrdiny. Zda a jak budou hrdinové odlišeni je volbou tvůrce tažení."
+"Některá tažení používají k odlišení hrdinů (jednotek, které jsou nějakým "
+"způsobem speciální a například nemohou v průběhu scénáře zemřít) plochu ve "
+"tvaru menší hvězdice a ikonu stříbrné korunky na ukazateli života. Zda je "
+"toto odlišení použito je stylistická volba ponechaná na autorech tažení."
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:1745
@@ -2854,11 +2780,11 @@ msgid ""
 "swords, are melee weapons, and some weapons, such as bows, are ranged "
 "weapons."
 msgstr ""
-"Když přesunete jednotku vedle nepřátelské, můžete zaútočit. Klikněte na vaši "
-"jednotku a potom na nepřátelskou, na niž zamýšlíte útočit. Objeví se okno, "
-"které obsahuje další volby pro boj. Každá jednotka může bojovat nejméně "
-"jednou zbraní. Obecně lze zbraně rozlišit na dálkové (jako např. luky, praky "
-"a magii) a na blízko (meče, kopí, kyje...)."
+"Když přesuneš jednotku vedle nepřátelské, můžeš zaútočit. Klikni na svou "
+"jednotku a potom na sousedící nepřátelskou, na niž zamýšlíš útočit. Objeví "
+"se okno, které obsahuje další volby pro boj. Každá jednotka má jednu nebo "
+"více zbraní, kterými může zaútočit. S některými zbraněmi, například meči, se "
+"bojuje nablízko, jiné, například luky, jsou určeny pro boj na dálku."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1752
@@ -2869,20 +2795,13 @@ msgid ""
 "not have a weapon of the same type as the one you attack with, they will be "
 "unable to strike back and do any damage to you in that fight."
 msgstr ""
-"Pokud zaútočíte zbraní na blízko, nepřítel odpoví rovněž zbraní na blízko; "
-"stejně tak pro zbraně působící na dálku. Pokud však nemá žádnou zbraň "
-"odpovídajícího druhu, nebude moci odpovědět a útok je tak proveden prakticky "
-"beztrestně."
+"Pokud zaútočíš zbraní na blízko, nepřítel odpoví rovněž zbraní na blízko. "
+"Stejně je tomu u zbraní působících na dálku. Pokud však nemá žádnou zbraň "
+"odpovídajícího druhu, nebude moci odpovědět a útok tak provedeš bez rizika "
+"protiútoku."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1758
-#, fuzzy
-#| msgid ""
-#| "Different types of attacks do different amounts of damage, and a certain "
-#| "number of strikes may be made with each weapon. For instance, an Elvish "
-#| "Fighter does 5 points of damage with its sword every time it hits, and "
-#| "can strike 4 blows with the sword in one exchange. This is written as 5–"
-#| "4, meaning 5 damage per hit, and 4 strikes."
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -2890,10 +2809,11 @@ msgid ""
 "strike 4 blows with the sword in one exchange. This is written as 5&times;4, "
 "meaning 5 damage per hit, and 4 strikes."
 msgstr ""
-"Různé druhy útoků způsobují při zásahu různé zranění. Každá zbraň použita "
-"při útoku několikrát - tento počet je rovněž přesně určen. Například elfí "
-"bojovník způsobuje mečem poškození 5 životů při úspěšném zásahu a udeří "
-"4krát za jeden útok. To je psáno jako 5-4, tzn. 5 životů za zásah a 4 údery."
+"Různé druhy útoků způsobují při zásahu různé zranění a s každou zbraní může "
+"být proveden určitý počet úderů. Například elfí bojovník způsobí při každém "
+"úspěšném zásahu mečem poškození 5 životů a udeří 4krát během jednoho kola "
+"útoků. To je psáno jako 5-4, tzn. že 4krát udeří a pokaždé může zranit za 5 "
+"životů."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1763
@@ -2910,7 +2830,7 @@ msgstr ""
 "stojí. Například jednotky stojící ve vesnici nebo hradu mají obecně vyšší "
 "šanci vyhnout se zásahu. Pro zjištění obranného bonusu (tedy šance vyhnout "
 "se zásahu) jednotky na tom kterém místě ji stačí vybrat a přejet myší nad "
-"dané políčko - ukáže se na něm veliké barevné číslo (v procentech). Totéž "
+"dané políčko – ukáže se na něm veliké barevné číslo (v procentech). Totéž "
 "číslo se ukáže rovněž ve stavovém řádku napravo nahoře za koordináty políčka."
 
 #. type: Content of: <book><chapter><section><simpara>
@@ -2936,7 +2856,7 @@ msgid ""
 "drake claws."
 msgstr ""
 "<emphasis role=\"strong\">Čepel</emphasis>: Zbraně s ostrým okrajem, "
-"používané k odseknutí částí nepřítele. Dýky, šavle, drápy..."
+"používané k odseknutí částí nepřítele. Např. dýky, šavle nebo drápy."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1784
@@ -2947,7 +2867,7 @@ msgid ""
 msgstr ""
 "<emphasis role=\"strong\">Bodnutí</emphasis>: Zbraně s ostrou špičkou, buď "
 "na dlouhé násadě nebo jako střely, používané k probodnutí těla nepřátel a "
-"poškození orgánů. Např. šípy, kopí."
+"poškození orgánů. Např. jezdecká či pěchotní kopí nebo šípy."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1791
@@ -2957,7 +2877,7 @@ msgid ""
 "Examples: mace, staff, Troll fist."
 msgstr ""
 "<emphasis role=\"strong\">Úder</emphasis>: Zbraně bez špiček a hran, "
-"dostatečně těžké k lámání kostí, jako hole, kladiva nebo třeba trollí pěsti."
+"dostatečně těžké k lámání kostí. Např. palice, hole nebo trollí pěsti."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1798
@@ -2965,8 +2885,8 @@ msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A Dark Adepts&#8217;s chill wave."
 msgstr ""
-"<emphasis role=\"strong\">Chlad</emphasis>: Zbraně založené na ochlazení "
-"nebo ledových střelách, většinou magické. Příklad: střely temného učedníka."
+"<emphasis role=\"strong\">Chlad</emphasis>: Zbraně založené na chladu nebo "
+"ledových střelách. Např. vlna mrazu u temného učedníka."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1804
@@ -2975,7 +2895,7 @@ msgid ""
 "foe like a chicken. Example: A drake&#8217;s fire breath."
 msgstr ""
 "<emphasis role=\"strong\">Oheň</emphasis>: Zbraně používané k popálení nebo "
-"upečení nepřátel: ohnivý dech drakonidů, zápalné šípy atd."
+"usmažení nepřátel. Např. ohnivý dech drakonidů."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1810
@@ -2985,8 +2905,8 @@ msgid ""
 "Example: A white mage&#8217;s magic attack."
 msgstr ""
 "<emphasis role=\"strong\">Nezemský</emphasis>: Útoky oslabující a ničící "
-"magii, dodávající život zejména nemrtvým stvořením. Oplývají jimi zejména "
-"mágové různých ras (například Bílý mág)."
+"magii dodávající život zejména nemrtvým stvořením. Např. magický paprsek "
+"bílého mága."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1818
@@ -3035,7 +2955,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1835 doc/manual/manual.en.xml:2233
 msgid "Healing"
-msgstr "Uzdravování"
+msgstr "Léčení"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1836
@@ -3046,11 +2966,11 @@ msgid ""
 "added on top of hitpoints recovered through healing so it is possible for a "
 "unit to recover up to a total of 10 hit points per turn."
 msgstr ""
-"Jednotka může být vyléčena nejvýše o 8 životů za kolo. Jednotka, která během "
-"svého kola nebojuje ani se nepohne, <emphasis>odpočívá</emphasis> a vyléčí "
-"se „jen tak“ o 2 životy. Tyto 2 životy získané odpočinkem nejsou do dříve "
-"zmíněných 8 zahrnuty, takže v extrémních případech se mohou jednotky vyléčit "
-"až o 10 životů za kolo."
+"Jednotka může být vyléčena nejvýše o 8 životů za kolo. Jednotka, která se "
+"během svého kola nepohne ani nebojuje, <emphasis>odpočívá</emphasis> a "
+"vyléčí si tak 2 životy. Životy získané <emphasis>odpočinkem</emphasis> "
+"nejsou zahrnuty do životů získaných léčením, takže se v některých situacích "
+"může jednotka vyléčit až o 10 životů za kolo."
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:1841
@@ -3070,9 +2990,9 @@ msgid ""
 "description. This is invariably <emphasis>heals +4</emphasis> or "
 "<emphasis>heals +8</emphasis>."
 msgstr ""
-"Stáním vedle jednotek se schopností <emphasis>ošetření</emphasis> nebo "
-"<emphasis>léčení</emphasis>. Rozdíl je v počtu životů, o které dokáže "
-"léčitel vyléčit zraněnou jednotku za kolo, a to buď 4, nebo 8."
+"Pobýváním vedle jednotek se schopností <emphasis>léčení</emphasis>. Počet "
+"vyléčených životů je pak dán specifikací schopnosti léčitele. Je to buď 4 "
+"nebo 8 životů."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1857
@@ -3088,9 +3008,9 @@ msgid ""
 "and Woses gain no additional benefit from being on a village or next to a "
 "healing unit."
 msgstr ""
-"Trollové a stromoví muži se dokáží léčit sami přirozenou regenerací. Uzdraví "
-"se o 8 životů za kolo, pokud jsou raněni. Jelikož je 8 životů zároveň "
-"maximem léčení, je zbytečné je stavět na vesnice nebo vedle léčitelů - "
+"Trollové a stromoví lidé se dokáží léčit sami přirozenou regenerací. Pokud "
+"jsou zraněni, vyléčí se o 8 životů za kolo. Jelikož je 8 životů zároveň "
+"maximem léčení, je zbytečné je stavět na vesnice nebo vedle léčitelů – "
 "nevyléčí nic navíc."
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3106,15 +3026,14 @@ msgid ""
 "until it is cured of poisoning. Resting is still allowed, although it will "
 "not substantially diminish the poison&#8217;s effect."
 msgstr ""
-"Některé útoky mohou Vaše jednotky otrávit jedem. Když se tak stane, otrávená "
+"Některé útoky mohou tvé jednotky otrávit jedem. Když se tak stane, otrávená "
 "jednotka bude každé kolo ztrácet 8 životů, dokud není uzdravena. Otravu "
 "uzdravují vesnice nebo jednotky se schopností <emphasis>uzdravování</"
-"emphasis> stejně jako při léčení. Jednotky se schopnostmi "
-"<emphasis>ošetření</emphasis> a <emphasis>léčení</emphasis> pouze pozastaví "
-"účinky jedu, ale neuzdraví otrávenou jednotku. V kole, kdy je jednotka "
-"uzdravena z otravy již neztrácí životy, ale ani se nemůže dále léčit. "
-"Otrávenou jednotku lze samozřejmě nechat odpočívat, jakkoli to podstatně "
-"nezmenší efekt otravy."
+"emphasis> stejným mechanismem jako při léčení. Jednotky se schopností "
+"<emphasis>léčení</emphasis> pouze pozastaví účinky jedu, ale neuzdraví "
+"otrávenou jednotku. V kole, kdy je jednotka uzdravena z otravy, již neztrácí "
+"životy, ale ani se nemůže dále léčit. Otrávenou jednotku lze samozřejmě "
+"nechat odpočívat, jakkoli to podstatně nezmenší efekt otravy."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1874
@@ -3124,7 +3043,7 @@ msgstr "Další rady ohledně léčení:"
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1878
 msgid "A unit may take several turns to be fully healed."
-msgstr "Plné uzdravení jednotky často trvá i několik kol."
+msgstr "Plné vyléčení jednotky často trvá i několik kol."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1883
@@ -3133,9 +3052,9 @@ msgid ""
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
-"Léčitelé (Elfí šamanka, elfí druidka, elfí víla, bílý mág, mág světla, "
-"paladin) léčí všechny zraněné jednotky kolem nich, takže můžete jednotky "
-"nechat odpočívat a uzdravovat nedaleko od místa boje."
+"Léčitelé (elfí šamanka, elfí druidka, elfí víla, bílý mág, mág světla či "
+"paladin) léčí všechny zraněné jednotky kolem sebe, takže můžeš nechat "
+"jednotky se léčit nedaleko od místa boje."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1890
@@ -3151,7 +3070,7 @@ msgstr "Léčitelé nemohou léčit sami sebe."
 #: doc/manual/manual.en.xml:1900
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
-"Používejte léčitele ve dvojicích, aby se mohli léčit navzájem, pokud je to "
+"Používej léčitele ve dvojicích, aby se mohli léčit navzájem, pokud je to "
 "zapotřebí."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
@@ -3160,13 +3079,13 @@ msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
 "speed up healing."
 msgstr ""
-"Jednotku může léčit několik léčitelů (i spojeneckých) zaráz a urychlit tak "
-"léčení."
+"Jednotku může léčit nezávisle několik léčitelů různých spojeneckých stran a "
+"urychlit tak léčení."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1911
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr "Trollové a stromoví muži nemohou regenerovat ostatní jednotky."
+msgstr "Trollové a stromoví lidé nemohou regenerovat ostatní jednotky."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:1916
@@ -3192,14 +3111,14 @@ msgid ""
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
 "are somewhat tied to the \"Heir to the Throne\" campaign."
 msgstr ""
-"Následující základní principy boje a tipy by Vám měly pomoci začít Vaši "
+"Následující základní principy boje a tipy by ti měly pomoci začít tvou "
 "kariéru ostříleného válečníka ve světě Wesnothu. Některé konkrétnější "
-"příklady se týkají tažení „Dědic trůnu“."
+"příklady se odvozují od tažení „Dědic trůnu“."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1931
 msgid "Don&#8217;t waste units"
-msgstr "Neplýtvejte jednotkami"
+msgstr "Neplýtvej jednotkami"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1932
@@ -3210,10 +3129,9 @@ msgid ""
 "care of a healer (like Elvish Shamans or White Mages). Healers are very "
 "useful!"
 msgstr ""
-"Neposílejte raněné jednotky na jistou smrt. Jakmile je jednotka raněna tak, "
-"že jí zbývá méně než polovina životů (HP), pokuste se ji dopravit do bezpečí "
-"a vyléčit - buď ve vesnici nebo pomocí léčitele. Léčitelé jsou velmi "
-"užiteční!"
+"Neposílej raněné jednotky na jistou smrt. Jakmile je jednotka raněna tak, že "
+"jí zbývá méně než polovina životů (HP), pokus se ji dopravit do bezpečí a "
+"vyléčit – buď ve vesnici nebo pomocí léčitele. Léčitelé jsou velmi užiteční!"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1937
@@ -3229,8 +3147,8 @@ msgstr ""
 "Důvod pro toto opatření je veskrze praktický: těžce raněná jednotka stěží "
 "dokáže zadržet nebo zabít nepřítele. Během prvního boje s velkou jistotou "
 "rychle zemře. No a pokud ji necháte zemřít, veškeré její nashromážděné "
-"zkušenosti (XP) přijdou vniveč. Verbování náhrady může být nemožné - vůdce "
-"není v tvrzi nebo dojde zlato - a i tak je obvykle hrad daleko od fronty a "
+"zkušenosti (XP) přijdou vniveč. Verbování náhrady může být nemožné – vůdce "
+"není v tvrzi nebo dojde zlato – a i tak je obvykle hrad daleko od fronty a "
 "nováček podpoří ostatní jednotky až za několik kol, během nichž může "
 "oslabení zvrátit boj ve Váš neprospěch. Takže nezahazujte jednotky jen tak!"
 
@@ -3275,7 +3193,7 @@ msgstr ""
 "Když se armády srazí, měli byste se pokusit o výhodu prvního útoku. "
 "Posouvejte jednotky tak, aby byly těsně mimo dosah nepřátel. Když k nim pak "
 "nepřítel ve svém tahu nedojde, dostane se blízko k Vám a budete moci "
-"zaútočit první - Vy si vyberete, které jednotky se kde a jak pustí do křížku."
+"zaútočit první – Vy si vyberete, které jednotky se kde a jak pustí do křížku."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1961
@@ -3309,7 +3227,7 @@ msgstr ""
 "Kvůli ZoC nemůže nepřítel proniknout mezi dvěma jednotkami stojícími na "
 "vertikální nebo diagonální linii a mají mezi sebou 1 nebo 2 hexy. "
 "Kombinováním takovýchto dvojic do dlouhé řady nebo jiných útvarů dokážete "
-"znemožnit nepříteli průnik do týla, kde obvykle chráníte raněné jednotky - "
+"znemožnit nepříteli průnik do týla, kde obvykle chráníte raněné jednotky – "
 "nejdříve se musí probojovat jednotkami vytvářejícími „zeď“ z oblastí "
 "kontroly. I pokud je nepřítel téměř na dosah, stačí pro jeho (dočasné) "
 "zadržení jediná jednotka."
@@ -3387,22 +3305,22 @@ msgid ""
 "front line. If you have healers, damaged units in the second line will "
 "quickly recover."
 msgstr ""
-"Když je jednotka v první linii těžce zraněna, můžete ji přesunout do týlu. K "
-"udržení fronty ji nejspíše budete muset nahradit jinou - udržujte proto za "
-"frontou „na střídačce“ několik náhradníků. Když navíc umístíte za první "
-"linii léčitele, raněné jednotky se budou moci rychleji opět zapojit."
+"Když je jednotka v první linii těžce zraněna, můžeš ji přesunout do týlu. K "
+"udržení fronty ji nejspíše budeš muset nahradit jinou. Udržuj proto za "
+"frontou „na střídačce“ několik náhradníků. Když máš za první linií léčitele, "
+"raněné jednotky se budou moci rychle vyléčit."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2002
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
-"Pamatujte, že Vaše jednotky mohou procházet přes políčka, na nichž stojí "
-"opět Vaše jednotky."
+"Pamatuj, že tvé jednotky mohou procházet přes políčka, na nichž stojí tvé "
+"jiné jednotky."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2005
 msgid "Use the terrain"
-msgstr "Využívejte terén"
+msgstr "Využívej terén"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2006
@@ -3422,7 +3340,7 @@ msgid ""
 "that attacking orcs must stand on grassland while your elves enjoy the high "
 "forest defenses."
 msgstr ""
-"Například můžete umístit elfy na okraj lesa - útočící skřeti musí zůstat na "
+"Například můžete umístit elfy na okraj lesa – útočící skřeti musí zůstat na "
 "pláni před ním, zatímco elfové v lese se těší vysokému obrannému bonusu."
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3500,27 +3418,20 @@ msgstr ""
 "alespoň těžce zranit druhou jednotku. Když si nejste jisti tím, že ji "
 "skutečně za jeden tah dorazíte, buď se ujistěte, že Vaše jednotka dokáže "
 "přežít útok druhé strany, anebo se rozhodněte, zda dokážete ustát její "
-"ztrátu. Pro první volbu - přežití dalšího kola - je vhodné útočit tak, aby "
+"ztrátu. Pro první volbu – přežití dalšího kola – je vhodné útočit tak, aby "
 "Vaší jednotce v boji při útoku nepřítel uštědřil co nejmenší zranění, raději "
 "než abyste Vy poškodili nepřítele co nejvíce."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2042
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
 "dies."
 msgstr ""
-"Nejvíce využívejte situaci, v níž nemá nepřítel žádný útok na dálku a Vaše "
-"jednotky ano. Automatika v dialogu pro výběr útoku vybere na začátku útok "
-"způsobující nepříteli největší zranění, ale taková volba často vyústí ve "
-"větší (a zbytečné) zranění i Vaší jednotky."
+"Zbraně na dálku používej zejména v případech, kdy nepřítel útok na dálku "
+"nemá. Jejich použití často sníží poškození, které tvé jednotky utrpí, než "
+"nepřítel zemře."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2047
@@ -3537,11 +3448,11 @@ msgid ""
 "pays off to strengthen your lines and hold a favorable defensive position. "
 "When its weak time is about to arise, your advance will push forth."
 msgstr ""
-"Pamatujte, že zákonné jednotky (hlavně lidé) bojují lépe ve dne, chaotické "
+"Pamatuj, že zákonné jednotky (hlavně lidé) bojují lépe ve dne, chaotické "
 "jako skřeti a nemrtví v noci a šeré jednotky během soumraku. Pochopitelně "
-"budete chtít konfrontovat nepřítele, když je slabý a Vy silní. V opačné "
-"situaci je lepší držet obranné body v dobrém terénu nebo i ustoupit. Až se "
-"situace opět obrátí, postoupíte dále."
+"budeš chtít konfrontovat nepřítele, když je slabý a ty silný. V opačné "
+"situaci je lepší posílit své linie a držet dobré obranné body. Až se situace "
+"opět obrátí, budeš se zas tlačit dopředu."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2055
@@ -3551,8 +3462,8 @@ msgid ""
 "retreats his orcs during day."
 msgstr ""
 "Například elfové se mohou během nočních skřetích rejdů bránit v lese a při "
-"úsvitu postupovat. Můžete si všimnout, že i počítačová umělá inteligence ve "
-"dne stahuje skřety zpět."
+"úsvitu postupovat. Můžeš si dokonce všimnout, že i počítačová umělá "
+"inteligence ve dne stahuje skřety zpět."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2061
@@ -3561,8 +3472,9 @@ msgid ""
 "force. Later scenarios will assume you have level 2 and 3 units available "
 "for recall."
 msgstr ""
-"Je důležité vybudovat v průběhu tažení vytrénované síly. Pozdější scénáře "
-"operují s předpokladem, že máte k dispozici jednotky druhé a třetí úrovně."
+"Je velmi důležité vybudovat v průběhu tažení vytrénované síly. Pozdější "
+"scénáře operují s předpokladem, že máš k dispozici jednotky druhé a třetí "
+"úrovně."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2064
@@ -3586,9 +3498,10 @@ msgid ""
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
-"Na začátku, kdy nemáte jednotky vyšší úrovně, se je pokuste co nejrychleji "
-"získat - přenechávejte zabití jen několika vybraným jednotkám. Postoupí na "
-"další úroveň dříve a pak Vám pomohou vycvičit i ostatní."
+"Na začátku, kdy (pravděpodobně) nemáš jednotky vyšší úrovně, se je pokus co "
+"nejrychleji získat tím, že budeš přenechávat zabití jen několika vybraným "
+"jednotkám. Postoupí tak na další úroveň dříve a pak ti pomohou vycvičit i "
+"ostatní."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2072
@@ -3597,8 +3510,8 @@ msgid ""
 "safe, but if you coddle him too much he will be too low level to survive "
 "future scenarios anyway."
 msgstr ""
-"Neopomíjejte vašeho velitele při získávání zkušeností. Sice je zapotřebí "
-"chránit jej, ale pokud se vůbec nedostane do boje, zůstane na nízké úrovni a "
+"Neopomíjej svého velitele při získávání zkušeností. Sice je zapotřebí jej "
+"chránit, ale pokud se vůbec nedostane do boje, zůstane na nízké úrovni a "
 "nejspíše nepřežije další scénáře."
 
 #. type: Content of: <book><chapter><section><title>
@@ -3612,8 +3525,8 @@ msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
 msgstr ""
-"Pamatujte, že cílem hry je zábava! Zde je pár doporučení vývojářů, jak se "
-"při hře co nejvíce pobavit:"
+"Pamatuj, že cílem hry je zábava! Zde je pár doporučení vývojářů, jak se při "
+"hře co nejvíce pobavit:"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2084
@@ -3622,8 +3535,9 @@ msgid ""
 "you have prior experience with strategy games. We feel you&#8217;ll find it "
 "much more rewarding."
 msgstr ""
-"Pokuste se hrát tažení na prostřední obtížnost místo nejlehčí, zvláště pokud "
-"již máte se strategickými hrami zkušenost. Určitě Vás budou bavit více."
+"Pokus se hrát tažení na prostřední obtížnost místo nejlehčí, zvláště pokud "
+"již máš se strategickými hrami zkušenost. Myslíme, že tě to bude určitě více "
+"bavit."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2091
@@ -3631,8 +3545,8 @@ msgid ""
 "Don&#8217;t sweat it too much when you lose some units. The campaign was "
 "designed to accommodate the player losing some units along the way."
 msgstr ""
-"Netrapte se příliš, pokud o některé jednotky přijdete. Tažení je navrženo "
-"tak, aby si na tento jev hráč zvykl."
+"Netrap se příliš, pokud o některé jednotky přijdeš. Tažení je navrženo tak, "
+"aby si během postupu na tento jev hráč zvykl."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2097
@@ -3645,12 +3559,12 @@ msgid ""
 "protect your White Mage instead, and balance risks! That is part of the "
 "strategy."
 msgstr ""
-"Nezneužívejte ukládání her. Kdysi bylo možné ukládat hry jen na konci "
-"scénáře; ukládání v kteroukoliv chvíli bylo přidáno pro usnadnění v případě "
-"přerušení hry nebo chyby programu. Není doporučeno načítat uložené pozice "
-"pořád dokola, protože Vám neustále zabíjejí některou důležitou jednotku. "
-"Raději přijděte na to, jaký postup ji uchrání! <emphasis>To</emphasis> je "
-"strategie."
+"Nezneužívej ukládání her. Kdysi bylo ve Wesnothu možné ukládat hry jen na "
+"konci scénáře. Ukládání v kteroukoliv chvíli bylo přidáno pro usnadnění v "
+"případě přerušení hry nebo chyby programu. Není doporučeno načítat uložené "
+"pozice pořád dokola, protože ti neustále zabíjejí některou důležitou "
+"jednotku, např. bílého mága. Místo toho se raději nauč svého bílého mága "
+"chránit a vyvažovat rizika! To je součást strategie."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2108
@@ -3659,9 +3573,9 @@ msgid ""
 "scenario, so that you choose a new strategy that works, rather than simply "
 "finding random numbers that favor you."
 msgstr ""
-"Pokud musíte hru načíst, může být lepší volbou začít hrát scénář od začátku "
-"a použít strategii, která bude fungovat, raději než zkoušet a čekat až Vám "
-"pomůže náhoda."
+"Pokud musíš hru načíst, může být lepší volbou začít hrát scénář od začátku a "
+"použít jinou strategii, která bude fungovat, raději než zkoušet a čekat až "
+"ti pomůže náhoda."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2115
@@ -3671,10 +3585,10 @@ msgid ""
 "every time you make a mistake, looking for the <emphasis>perfect</emphasis> "
 "game where you never lose a unit, by all means, go right ahead!"
 msgstr ""
-"Pamatujte ale, že cílem je pobavit se! Pochopitelně můžete mít jinou "
-"představu než autoři, a tak dělejte to, co Vás bude nejvíce bavit! Pokud Vás "
-"baví načítat hru po každé chybě při pokusu o <emphasis>dokonalou</emphasis> "
-"hru, v níž nepřijdete o žádné jednotky, není důvod tak neučinit!"
+"Pamatuj ale, že cílem je pobavit se! Pochopitelně můžeš mít jinou představu "
+"než autoři, a tak dělej to, co tě bude nejvíce bavit! Pokud ti nevadí "
+"načítat hru po každé chybě při pokusech o <emphasis>dokonalou</emphasis> "
+"hru, v níž nepřijdeš o žádné jednotky, není důvod tak neučinit!"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2123
@@ -3688,16 +3602,15 @@ msgid ""
 "leaders; instead it is enough that you survive for a certain number of "
 "turns, or pick up a particular object."
 msgstr ""
-"Nejdříve si přečtěte cíle scénáře. Někdy není nutné pobít všechny "
-"nepřátelské vůdce, stačí přežít po stanovený počet kol nebo získat určitý "
-"předmět."
+"Nejdříve si přečti cíle scénáře. Někdy není nutné pobít všechny nepřátelské "
+"vůdce, stačí přežít po stanovený počet kol nebo získat určitý předmět."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2134
 msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
-msgstr "Prohlédněte si mapu: terén, pozice vůdců včetně Vašeho."
+msgstr "Prohlédni si mapu: terén a pozice vůdců včetně tvého."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2140
@@ -3707,8 +3620,8 @@ msgid ""
 "support. Fast units can be used as scouts, for exploring the map and to "
 "quickly conquer villages."
 msgstr ""
-"Pak začněte s verbováním. První vlnu útoků mohou pohltit levné jednotky, "
-"lepší poté pokračují. Rychlé jednotky lze využít jako průzkumníky - k "
+"Pak začni s verbováním. První vlnu útoků mohou zastavit levné jednotky, poté "
+"je lze podpořit těmi lepšími a zkušenějšími. Rychlé jednotky lze využít k "
 "průzkumu mapy a rychlému zabírání vesnic."
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -3721,7 +3634,7 @@ msgstr "Během scénáře"
 msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
-msgstr "Pokuste se obsadit a udržet co nejvíce vesnic kvůli příjmům."
+msgstr "Pokus se obsadit a udržet co nejvíce vesnic kvůli příjmům."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2159
@@ -3730,10 +3643,10 @@ msgid ""
 "you can outnumber each enemy unit. Put your units in a line so that the "
 "enemy cannot attack any one of your units from more than two sides."
 msgstr ""
-"Ponechávejte jednotky ve skupinkách, aby je nemohl nepřítel kompletně "
+"Ponechávej jednotky ve skupinkách, aby je nemohl nepřítel kompletně "
 "obklíčit, a aby měly převahu nad jednotlivými nepřátelskými jednotkami. "
-"Využívejte formace v řadě, aby nemohl nepřítel zaútočit z více než dvou "
-"stran."
+"Využívej formace v řadě, aby nemohl nepřítel zaútočit na tvé jednotky z více "
+"než dvou stran."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2166
@@ -3743,8 +3656,8 @@ msgid ""
 "Description\" to learn more."
 msgstr ""
 "Různé jednotky mají různé přednosti a nevýhody v závislosti na tom, kde a s "
-"kým bojují. Pro podrobnější informace ke zhodnocení klikněte pravým "
-"tlačítkem myši na jednotku a vyberte „Popis jednotky“."
+"kým bojují. Pro podrobnější informace ke zhodnocení klikni pravým tlačítkem "
+"myši na jednotku a vyber „Popis jednotky“."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2173
@@ -3762,9 +3675,9 @@ msgid ""
 "with lower level units — to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
-"Můžete poškodit nepřátele silnými jednotkami vyšších úrovní a pak je dorazit "
-"jednotkami s nízkou úrovní, aby dostaly více zkušeností (a postoupily na "
-"další úroveň)."
+"Můžeš poškodit nepřátele silnými jednotkami vyšších úrovní a pak je dorazit "
+"jednotkami s nízkou úrovní, aby dostaly více zkušeností (a nakonec "
+"postoupily na další úroveň)."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2186
@@ -3773,9 +3686,9 @@ msgid ""
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
-"Když máte léčitele - bílého mága (povyšuje z mága) nebo druidku (povyšuje ze "
-"šamanky), stavějte je doprostřed kolečka jednotek, aby se léčily, když se "
-"posunují po mapě (šamanky to dokáží také, ale ne tak dobře)."
+"Když máš léčitele, například bílého mága (povyšuje z mága) nebo druidku "
+"(povyšuje ze šamanky), stavěj jej doprostřed kolečka jednotek, aby se během "
+"pohybu po mapě léčily (šamanky to dokáží také, ale ne tak dobře)."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2193
@@ -3804,8 +3717,8 @@ msgid ""
 "Plan ahead — think about what it&#8217;s going to be next turn as well as "
 "this turn."
 msgstr ""
-"nezapomínejte kontrolovat ukazatel denní doby na pravé straně obrazovky. "
-"Plánujte - uvažte nejen to co se stane v tomto kole, ale i v příštím."
+"nezapomínej kontrolovat ukazatel denní doby na pravé straně obrazovky. "
+"Plánuj dopředu. Uvažuj nejen to, co se stane v tomto kole, ale i v příštím."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2222
@@ -3818,9 +3731,9 @@ msgid ""
 msgstr ""
 "Některé jednotky jsou odolné nebo naopak slabé vůči různým druhům útoků. "
 "Jízdu obvykle skosí útok bodáním. Nemrtvé spolehlivě ničí oheň a nezemské "
-"útoky. Jak dobře odolává jednotka určitému druhu útoku zjistíte, když na ni "
-"kliknete pravým tlačítkem, vyberete „Popis jednotky“ a pak posunete dolů k "
-"tabulce „Typy zranění a odolnost“."
+"útoky. Jak dobře odolává jednotka určitému druhu útoku zjistíš, když na ni "
+"klikneš pravým tlačítkem, vybereš „Popis jednotky“ a v popisu sjedeš dolů k "
+"přehledu „Odolnosti“. Tam uvidíš její odolnosti vůči různým druhům útoků."
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2234
@@ -3831,10 +3744,10 @@ msgid ""
 "Mage). Some other units you will encounter, such as Trolls, have the ability "
 "to heal themselves naturally."
 msgstr ""
-"Důležitá část úspěšného boje ve Wesnothu je udržení Vašich jednotek "
-"zdravých. Když jsou raněny, můžete je přesunout do vesnice nebo vedle "
-"léčitelů (elfí šamanka, bílý mág atd.). Některé jiné jednotky, které "
-"potkáte, jako trollové, se dokáží uzdravovat samy."
+"Důležitá část úspěšného hraní ve Wesnothu je udržení zdraví tvých jednotek. "
+"Když jsou raněny, můžeš je léčit přesunutím do vesnice nebo vedle léčitelů "
+"(elfí šamanka, bílý mág atd.). Některé jiné jednotky, s kterými se setkáš, "
+"jako trollové, se dokáží léčit samy."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2241
@@ -3857,9 +3770,8 @@ msgid ""
 "gold from winning early than from all of the map&#8217;s villages for the "
 "rest of the turns."
 msgstr ""
-"Čím rychleji vyhrajete scénář, tím více zlatých dostanete; tento bonus je "
-"vždy větší, než kolik můžete získat držením všech vesnic na mapě po "
-"zbývající kola."
+"Čím rychleji vyhraješ scénář, tím více zlatých dostaneš. Tento bonus je vždy "
+"větší, než kolik můžeš získat držením všech vesnic na mapě po zbývající kola."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2258
@@ -3878,9 +3790,9 @@ msgid ""
 "usually \"breathing room\" scenarios where you can rather easily gain some "
 "gold and experience (advanced units)."
 msgstr ""
-"Po scénářích, sestávajících se ze strašlivé řeže (kde pořádně „dostáváte na "
-"frak“), obvykle následují volnější scénáře určené k opětovnému nashromáždění "
-"zlata a zkušených jednotek."
+"Po scénářích sestávajících ze strašlivé řeže (kde pořádně „dostáváš na "
+"frak“), obvykle následují volnější scénáře určené k opětovnému nashromáždění "
+"zlata a zkušených jednotek."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:2275
@@ -3888,498 +3800,5 @@ msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr ""
-"Povýšené jednotky vyžadují vyšší žold, než na základní úrovni (1 zlatý na "
+"Povýšené jednotky vyžadují vyšší žold než na základní úrovni (1 zlatý na "
 "úroveň), výjimkou jsou věrné jednotky."
-
-#~ msgid ""
-#~ "These are the default control keys. Key setup might differ depending on "
-#~ "the platform used. For example you will often have to use the command key "
-#~ "instead of the control key when you are using MacOSX. You can change most "
-#~ "hotkeys to your taste using the Preferences menu."
-#~ msgstr ""
-#~ "Toto jsou výchozí nastavení klávesových zkratek. Rozdílné platformy "
-#~ "přinášejí drobné odlišnosti. Například pro Mac OS X bude třeba většinou "
-#~ "zaměnit Ctrl za Cmd. Většinu zkratek lze v nastavení hry změnit."
-
-#~ msgid "General controls and hotkeys"
-#~ msgstr "Obecné klávesové zkratky"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Nápověda Bitvy o Wesnoth"
-
-#~ msgid "Arrow keys"
-#~ msgstr "Šipky"
-
-#~ msgid "Scroll"
-#~ msgstr "Posouvání"
-
-#~ msgid "Left click"
-#~ msgstr "Levé („hlavní“) tlačítko myši"
-
-#~ msgid "Select unit, move unit"
-#~ msgstr "Vybere nebo přesune jednotku"
-
-#~ msgid "Right click"
-#~ msgstr "Pravé („druhé“) tlačítko myši"
-
-#~ msgid "Context menu, cancel action"
-#~ msgstr "Kontextové menu / zrušení akce"
-
-#~ msgid "Middle click"
-#~ msgstr "Prostřední tlačítko myši"
-
-#~ msgid "Center on pointer location"
-#~ msgstr "Vystředí mapu kolem pozice kurzoru"
-
-#~ msgid "Escape"
-#~ msgstr "Escape"
-
-#~ msgid "Exit game, exit menu, cancel message"
-#~ msgstr "Ukončí hru / zavře menu / odstraní zprávu"
-
-#~ msgid "Ctrl+s"
-#~ msgstr "Ctrl+s"
-
-#~ msgid "Save game"
-#~ msgstr "Uloží hru"
-
-#~ msgid "Ctrl+o"
-#~ msgstr "Ctrl+o"
-
-#~ msgid "Load game"
-#~ msgstr "Načte hru"
-
-#~ msgid "Ctrl+p"
-#~ msgstr "Ctrl+p"
-
-#~ msgid "Go to Preferences menu"
-#~ msgstr "Otevře dialog nastavení"
-
-#~ msgid "Ctrl+q"
-#~ msgstr "Ctrl+q"
-
-#~ msgid "Quit game"
-#~ msgstr "Ukončí hru"
-
-#~ msgid "Ctrl+f"
-#~ msgstr "Ctrl+f"
-
-#~ msgid "Toggle full screen/windowed mode"
-#~ msgstr "Přepne režim zobrazení mezi celoobrazovkovým a oknem"
-
-#~ msgid "Ctrl+Alt+m"
-#~ msgstr "Ctrl+Alt+m"
-
-#~ msgid "Toggle muting of game sounds"
-#~ msgstr "Přepíná utlumení herních zvuků"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "Zoom in"
-#~ msgstr "Přiblíží pohled"
-
-#~ msgid "Zoom out"
-#~ msgstr "Oddálí pohled"
-
-#~ msgid "Reset zoom to default"
-#~ msgstr "Přiblíží/oddálí na implicitní pohled"
-
-#~ msgid "Ctrl+e"
-#~ msgstr "Ctrl+e"
-
-#~ msgid "Toggle ellipses"
-#~ msgstr "Přepne elipsy"
-
-#~ msgid "Ctrl+g"
-#~ msgstr "Ctrl+g"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Přepne mřížku"
-
-#~ msgid "Ctrl+a"
-#~ msgstr "Ctrl+a"
-
-#~ msgid "Toggle accelerated game mode"
-#~ msgstr "Přepne zrychlený mód"
-
-#~ msgid "Holding Shift"
-#~ msgstr "Držení mezerníku"
-
-#~ msgid ""
-#~ "Toggle between accelerated and normal game mode while pressed (temporary!)"
-#~ msgstr "Přepne mezi zrychleným a běžným herním módem při držení (dočasně!)"
-
-#~ msgid "Ctrl+j"
-#~ msgstr "Ctrl+j"
-
-#~ msgid "Show scenario objectives"
-#~ msgstr "Zobrazí úkoly scénáře"
-
-#~ msgid "s"
-#~ msgstr "s"
-
-#~ msgid "Show statistics"
-#~ msgstr "Zobrazí statistiky"
-
-#~ msgid "Alt+s"
-#~ msgstr "Alt+s"
-
-#~ msgid "Show status table"
-#~ msgstr "Ukáže stavovou tabulku"
-
-#~ msgid "Alt+u"
-#~ msgstr "Alt+u"
-
-#~ msgid "Show unit list"
-#~ msgstr "Zobrazí seznam jednotek"
-
-#~ msgid "l"
-#~ msgstr "l"
-
-#~ msgid "Move to leader unit"
-#~ msgstr "Posune pohled k vůdci"
-
-#~ msgid "Shift+s"
-#~ msgstr "Shift+s"
-
-#~ msgid "Update shroud now"
-#~ msgstr "Obnov mlhu"
-
-#~ msgid "Unit and turn specific hotkeys"
-#~ msgstr "Klávesové zkratky pro jednotky a tah"
-
-#~ msgid "Ctrl+r"
-#~ msgstr "Ctrl+r"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Naverbuje jednotku"
-
-#~ msgid "Ctrl+Alt+r"
-#~ msgstr "Ctrl+Alt+r"
-
-#~ msgid "Repeat last recruit"
-#~ msgstr "Zopakuje poslední verbování"
-
-#~ msgid "Alt+r"
-#~ msgstr "Alt+r"
-
-#~ msgid "Recall unit"
-#~ msgstr "Přivolá jednotku"
-
-#~ msgid "Ctrl+n"
-#~ msgstr "Ctrl+n"
-
-#~ msgid "Rename unit"
-#~ msgstr "Přejmenuje jednotku"
-
-#~ msgid "d"
-#~ msgstr "d"
-
-#~ msgid "Show the description of the currently selected unit"
-#~ msgstr "Ukáže popis vybrané jednotky"
-
-#~ msgid "t"
-#~ msgstr "t"
-
-#~ msgid "Continue interrupted unit move"
-#~ msgstr "Pokračuje v přerušeném pohybu jednotky"
-
-#~ msgid "u"
-#~ msgstr "u"
-
-#~ msgid "Undo last move (only deterministic moves can be undone)"
-#~ msgstr "Vrátí poslední pohyb (lze vracet pouze deterministické akce)"
-
-#~ msgid "r"
-#~ msgstr "r"
-
-#~ msgid "Redo move"
-#~ msgstr "Zopakuje pohyb"
-
-#~ msgid "n"
-#~ msgstr "n"
-
-#~ msgid "Cycle through units that have movement left"
-#~ msgstr "Prochází jednotkami, které se ještě mohou pohybovat"
-
-#~ msgid "Shift+n"
-#~ msgstr "Shift+n"
-
-#~ msgid "Cycle through units that have movement left, in reverse order"
-#~ msgstr "Prochází opačným směrem jednotkami, které se ještě mohou pohybovat"
-
-#~ msgid "Ctrl+v"
-#~ msgstr "Ctrl+v"
-
-#~ msgid "Show enemy moves (where the enemy can move next turn)"
-#~ msgstr "Zobrazí nepřátelské tahy (kam může nepřítel táhnout v příštím kole)"
-
-#~ msgid "Ctrl+b"
-#~ msgstr "Ctrl+b"
-
-#~ msgid "Show potential enemy moves, if your units were not on the map"
-#~ msgstr ""
-#~ "Zobrazí možné nepřátelské tahy (nebere v potaz Vaše jednotky, jen terén)"
-
-#~ msgid "1-7"
-#~ msgstr "1-7"
-
-#~ msgid "Show how far currently selected unit can move in that many turns"
-#~ msgstr "Zobrazí, jak daleko může vybraná jednotka dojít za tolik tahů"
-
-#~ msgid "Space"
-#~ msgstr "Mezerník"
-
-#~ msgid "End unit turn and cycle to next unit that has movement left"
-#~ msgstr ""
-#~ "Ukončí tah jednotky a přepne na další jednotku se zbývajícími pohyby"
-
-#~ msgid "Shift+Space"
-#~ msgstr "Shift+mezerník"
-
-#~ msgid "Make currently selected unit hold position (end its movement)"
-#~ msgstr "Ukončí tah vybrané jednotky (vynuluje zbývající pohyby)"
-
-#~ msgid "Ctrl+Space"
-#~ msgstr "Ctrl+mezerník"
-
-#~ msgid "End this player&#8217;s turn"
-#~ msgstr "Ukončí hráčovo kolo"
-
-#~ msgid "Whiteboard specific hotkeys"
-#~ msgstr "Klávesové zkratky pro plánování"
-
-#~ msgid "p"
-#~ msgstr "p"
-
-#~ msgid "Toggle planning mode"
-#~ msgstr "Přepne plánovací mód"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "Execute planned action"
-#~ msgstr "Provede plánovanou akci"
-
-#~ msgid "h"
-#~ msgstr "h"
-
-#~ msgid "Delete planned action"
-#~ msgstr "Smaže naplánovanou akci"
-
-#~ msgid "Page Down"
-#~ msgstr "Page Down"
-
-#~ msgid "Move action down in the queue"
-#~ msgstr "Posune akci ve frontě dolů"
-
-#~ msgid "Page Up"
-#~ msgstr "Page Up"
-
-#~ msgid "Move action up in the queue"
-#~ msgstr "Posune akci ve frontě nahoru"
-
-#~ msgid "Ctrl+y"
-#~ msgstr "Ctrl+y"
-
-#~ msgid "Execute all actions"
-#~ msgstr "Spustí všechny akce"
-
-#~ msgid "Suppose dead"
-#~ msgstr "Předpokládá smrt"
-
-#~ msgid "Multiplayer specific hotkeys"
-#~ msgstr "Klávesové zkratky hry více hráčů"
-
-#~ msgid "m"
-#~ msgstr "m"
-
-#~ msgid "Message another player (in multiplayer)"
-#~ msgstr "Pošle zprávu jinému hráči (ve hře více hráčů)"
-
-#~ msgid "Ctrl+m"
-#~ msgstr "Ctrl+m"
-
-#~ msgid "Message your allies (in multiplayer)"
-#~ msgstr "Pošle zprávu Vašim spojencům (ve hře více hráčů)"
-
-#~ msgid "Alt+m"
-#~ msgstr "Alt+m"
-
-#~ msgid "Message everyone in the game (in multiplayer)"
-#~ msgstr "Pošle zprávu všem (ve hře více hráčů)"
-
-#~ msgid "Alt+c"
-#~ msgstr "Alt+c"
-
-#~ msgid "View chat log"
-#~ msgstr "Ukáže záznam rozhovoru"
-
-#~ msgid "Ctrl+x"
-#~ msgstr "Ctrl+x"
-
-#~ msgid "Clear messages"
-#~ msgstr "Smaže zprávy"
-
-#~ msgid "Miscellaneous hotkeys"
-#~ msgstr "Klávesové zkratky – ostatní"
-
-#~ msgid "Ctrl+c"
-#~ msgstr "Ctrl+c"
-
-#~ msgid "Clear onscreen labels"
-#~ msgstr "Odstraní plovoucí popisky"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "Search (find label or unit by name)"
-#~ msgstr "Hledá (jednotky podle jména nebo popisku na mapě)"
-
-#~ msgid "Alt+l"
-#~ msgstr "Alt+l"
-
-#~ msgid "Attach a text label to a terrain hex"
-#~ msgstr "Přidá popisek na současnou pozici na mapě"
-
-#~ msgid "Ctrl+l"
-#~ msgstr "Ctrl+l"
-
-#~ msgid "Set team label"
-#~ msgstr "Umístí týmový popisek"
-
-#~ msgid ":"
-#~ msgstr ":"
-
-#, fuzzy
-#~| msgid ""
-#~| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#~| "ulink>"
-#~ msgid ""
-#~ "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
-#~ msgstr ""
-#~ "<ulink url=\"https://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#~ "ulink>"
-
-#~ msgid "F5"
-#~ msgstr "F5"
-
-#~ msgid "Refresh Cache"
-#~ msgstr "Obnoví mezipaměť"
-
-#~ msgid "Shift+c"
-#~ msgstr "Shift+c"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "Vytvoří jednotku (ladění!)"
-
-#~ msgid "f"
-#~ msgstr "f"
-
-#~ msgid "Run AI formula"
-#~ msgstr "Spustí vzorec umělé inteligence"
-
-#~ msgid ""
-#~ "Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a "
-#~ "list of those:"
-#~ msgstr ""
-#~ "Mac&nbsp;OS&nbsp;X vyžaduje pro některé akce jiné kombinace kláves, než "
-#~ "pouhé nahrazení Ctrl za Cmd. Zde je jejich seznam:"
-
-#~ msgid "Cmd+w"
-#~ msgstr "Cmd+w"
-
-#~ msgid "Cmd+,"
-#~ msgstr "Cmd+,"
-
-#~ msgid "Ctrl+F5"
-#~ msgstr "Ctrl+F5"
-
-#~ msgid "Option+Space"
-#~ msgstr "Option+mezerník"
-
-#~ msgid "If the unit is an ally you do not control"
-#~ msgstr "Jednotka patří mezi spojence, které nekontrolujete"
-
-#~ msgid ""
-#~ "Some hotkeys were changed slightly to make better use of the controls "
-#~ "provided by the Pandora. If you are using a Pandora, these keys differ "
-#~ "from the lists above:"
-#~ msgstr ""
-#~ "Některé klávesové zkratky byly změněny, aby lépe odpovídaly možnostem "
-#~ "Pandory. Pokud tedy používáte Pandoru, tyto akce mají odlišné zkratky:"
-
-#~ msgid "Pandora specific controls and hotkeys"
-#~ msgstr "Klávesové zkratky Pandory"
-
-# klávesa na Pandoře
-#~ msgid "D-Pad"
-#~ msgstr "D-Pad"
-
-#~ msgid "GamingButton A"
-#~ msgstr "Knoflík A"
-
-#~ msgid "GamingButton B"
-#~ msgstr "Knoflík B"
-
-#~ msgid "GamingButton X"
-#~ msgstr "Knoflík X"
-
-#~ msgid "GamingButton Y"
-#~ msgstr "Knoflík Y"
-
-#~ msgid "Alt+GamingButton Y"
-#~ msgstr "Alt+Knoflík Y"
-
-#~ msgid "Move action down queue"
-#~ msgstr "Posune akci ve frontě dolů"
-
-#~ msgid "Alt+GamingButton X"
-#~ msgstr "Alt+Knoflík X"
-
-#~ msgid "Move action up queue"
-#~ msgstr "Posune akci ve frontě nahoru"
-
-#~ msgid "Unpoison"
-#~ msgstr "Protijed"
-
-#~ msgid ""
-#~ "A curer can cure a unit of poison, although that unit will receive no "
-#~ "additional healing on the turn it is cured of the poison."
-#~ msgstr ""
-#~ "Uzdravovatel dokáže uzdravit otrávenou jednotku, ale tato jednotka už v "
-#~ "daném tahu nebude dále léčena."
-
-#~ msgid "Black"
-#~ msgstr "Černý"
-
-#, fuzzy
-#~| msgid ""
-#~| "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
-#~ msgid ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-black.jpg\"/> </imageobject>"
-#~ msgstr ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
-
-#~ msgid "Black orb"
-#~ msgstr "Černá koule"
-
-#~ msgid "Current hex position (x-coordinate, y-coordinate)"
-#~ msgstr "Pozice současného hexu (souřadnice x,y)"
-
-#~ msgid "Envelope"
-#~ msgstr "Obálka"
-
-#~ msgid ""
-#~ "Click this button (the icon of an envelope) to open a dialog where you "
-#~ "can enable or disable summary uploads which will help us to better "
-#~ "balance campaigns. All data submitted will be anonymous."
-#~ msgstr ""
-#~ "Kliknutí na tento knoflík (ikonku obálky) otevře dialog, ve kterém můžete "
-#~ "povolit odesílání souhrnů Vašich her. Tyto data pomáhají při úpravách "
-#~ "obtížnosti tažení. Veškerá odeslaná data jsou anonymní. Tato volba je "
-#~ "implicitně vypnutá."

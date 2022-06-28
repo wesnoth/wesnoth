@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -62,6 +63,8 @@ namespace game_config
 	extern bool debug_lua, strict_lua, editor, ignore_replay_errors, mp_debug,
 		exit_at_end, no_delay, disable_autosave, no_addons;
 
+	extern bool allow_insecure;
+
 	extern const bool& debug;
 	void set_debug(bool new_debug);
 
@@ -69,6 +72,7 @@ namespace game_config
 
 	extern std::string path;
 	extern std::string default_preferences_path;
+	extern bool check_migration;
 
 	struct server_info
 	{
@@ -149,8 +153,7 @@ namespace game_config
 	extern std::string shroud_prefix, fog_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
-	extern double hex_brightening;
-	extern double hex_semi_brightening;
+	extern double hex_brightening; // UNUSED
 
 	extern std::string flag_rgb, unit_rgb;
 	extern std::vector<color_t> red_green_scale;

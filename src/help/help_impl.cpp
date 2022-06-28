@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "help/help_impl.hpp"
@@ -27,10 +28,9 @@
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "picture.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"          // for operator<<
 #include "map/map.hpp"                  // for gamemap
-#include "font/marked-up_text.hpp"      // for is_cjk_char, word_wrap_text
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
+#include "font/sdl_ttf_compat.hpp"
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/surface.hpp"                // for surface
@@ -76,7 +76,7 @@ boost::tribool last_debug_state = boost::indeterminate;
 std::vector<std::string> empty_string_vector;
 const int max_section_level = 15;
 const int title_size = font::SIZE_LARGE;
-const int title2_size = font::SIZE_15;
+const int title2_size = font::SIZE_PLUS;
 const int box_width = 2;
 const int normal_font_size = font::SIZE_NORMAL;
 const unsigned max_history = 100;
@@ -93,6 +93,61 @@ const std::string faction_prefix = "faction_";
 const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
 const std::string ability_prefix = "ability_";
+
+static bool is_cjk_char(const char32_t ch)
+{
+	/**
+	 * You can check these range at http://unicode.org/charts/
+	 * see the "East Asian Scripts" part.
+	 * Notice that not all characters in that part is still in use today, so don't list them all here.
+	 * Below are characters that I guess may be used in wesnoth translations.
+	 */
+
+	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
+
+	if (ch < 0x2e80) return false; // shortcut for common non-CJK
+
+	return
+		//Han Ideographs: all except Supplement
+		(ch >= 0x4e00 && ch < 0x9fcf) ||
+		(ch >= 0x3400 && ch < 0x4dbf) ||
+		(ch >= 0x20000 && ch < 0x2a6df) ||
+		(ch >= 0xf900 && ch < 0xfaff) ||
+		(ch >= 0x3190 && ch < 0x319f) ||
+
+		//Radicals: all except Ideographic Description
+		(ch >= 0x2e80 && ch < 0x2eff) ||
+		(ch >= 0x2f00 && ch < 0x2fdf) ||
+		(ch >= 0x31c0 && ch < 0x31ef) ||
+
+		//Chinese-specific: Bopomofo and Bopomofo Extended
+		(ch >= 0x3104 && ch < 0x312e) ||
+		(ch >= 0x31a0 && ch < 0x31bb) ||
+
+		//Yi-specific: Yi Radicals, Yi Syllables
+		(ch >= 0xa490 && ch < 0xa4c7) ||
+		(ch >= 0xa000 && ch < 0xa48d) ||
+
+		//Japanese-specific: Hiragana, Katakana, Kana Supplement
+		(ch >= 0x3040 && ch <= 0x309f) ||
+		(ch >= 0x30a0 && ch <= 0x30ff) ||
+		(ch >= 0x1b000 && ch <= 0x1b001) ||
+
+		//Ainu-specific: Katakana Phonetic Extensions
+		(ch >= 0x31f0 && ch <= 0x31ff) ||
+
+		//Korean-specific: Hangul Syllables, Hangul Jamo, Hangul Jamo Extended-A, Hangul Jamo Extended-B
+		(ch >= 0xac00 && ch < 0xd7af) ||
+		(ch >= 0x1100 && ch <= 0x11ff) ||
+		(ch >= 0xa960 && ch <= 0xa97c) ||
+		(ch >= 0xd7b0 && ch <= 0xd7fb) ||
+
+		//CJK Symbols and Punctuation
+		(ch >= 0x3000 && ch < 0x303f) ||
+
+		//Halfwidth and Fullwidth Forms
+		(ch >= 0xff00 && ch < 0xffef);
+}
 
 bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
@@ -339,9 +394,8 @@ const std::vector<std::string>& topic_text::parsed_text() const
 	return parsed_text_;
 }
 
-std::string time_of_day_bonus_colored(const int time_of_day_bonus)
+static std::string time_of_day_bonus_colored(const int time_of_day_bonus)
 {
-	// Use same red/green colouring scheme as time_of_day_at() in reports.cpp for consistency
 	return std::string("<format>color='") + (time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")) + "' text='" + std::to_string(time_of_day_bonus) + "'</format>";
 }
 
@@ -367,10 +421,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
 		std::stringstream text;
 
-		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false, resources::tod_manager->get_max_liminal_bonus());
-		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus());
+		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::lawful, false, resources::tod_manager->get_max_liminal_bonus());
+		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::neutral, false, resources::tod_manager->get_max_liminal_bonus());
+		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::chaotic, false, resources::tod_manager->get_max_liminal_bonus());
+		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::liminal, false, resources::tod_manager->get_max_liminal_bonus());
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
 			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<
@@ -1348,11 +1402,11 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 {
 	std::vector<std::string> res;
 	try {
-	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1, true);
-	res.push_back(first_line);
-	if(s.size() > first_line.size()) {
-		res.push_back(s.substr(first_line.size()));
-	}
+		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
+		res.push_back(first_line);
+		if(s.size() > first_line.size()) {
+			res.push_back(s.substr(first_line.size()));
+		}
 	}
 	catch (utf8::invalid_utf8_exception&)
 	{
@@ -1390,7 +1444,7 @@ std::string get_first_word(const std::string &s)
 		return re;
 
 	char32_t firstchar = *ch;
-	if (font::is_cjk_char(firstchar)) {
+	if (is_cjk_char(firstchar)) {
 		re = unicode_cast<std::string>(firstchar);
 	}
 	return re;
@@ -1503,7 +1557,7 @@ unsigned image_width(const std::string &filename)
 
 void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
 {
-	help::item item(s, font::line_width(s, normal_font_size));
+	help::item item(s, font::pango_line_width(s, normal_font_size));
 	if (image) {
 		// If the image doesn't exist, don't add padding.
 		auto width = image_width(*image);

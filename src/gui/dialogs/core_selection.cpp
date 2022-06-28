@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -59,8 +60,8 @@ void core_selection::pre_show(window& window)
 	for(const auto & core : cores_)
 	{
 		/*** Add list item ***/
-		string_map list_item;
-		std::map<std::string, string_map> list_item_item;
+		widget_item list_item;
+		widget_data list_item_item;
 
 		list_item["label"] = core["image"];
 		list_item_item.emplace("image", list_item);
@@ -72,8 +73,8 @@ void core_selection::pre_show(window& window)
 		assert(grid);
 
 		/*** Add detail item ***/
-		string_map detail_item;
-		std::map<std::string, string_map> detail_page;
+		widget_item detail_item;
+		widget_data detail_page;
 
 		detail_item["label"] = core["description"];
 		detail_item["use_markup"] = "true";

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "hotkey/hotkey_handler_mp.hpp"
@@ -44,7 +45,7 @@ void playmp_controller::hotkey_handler::stop_network(){
 
 bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:

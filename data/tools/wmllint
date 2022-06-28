@@ -18,7 +18,6 @@
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
-#   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
 #   * unknown unit types in recruitment lists
 #   * double space after punctuation in translatable strings.
@@ -122,11 +121,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# A special comment "# wmllint: notecheck off" will disable checking unit types
-# for consistency between abilities/weapon specials and usage of special notes
-# macros in their descriptions.
-# The comment "# wmllint: notecheck on" will re-enable this check.
-#
 # A special comment "# wmllint: deathcheck off" will disable the check whether
 # dying units speak in their death events.
 # The comment "# wmllint: deathcheck on" will re-enable this check.
@@ -147,13 +141,6 @@
 # numerical sequence. However, if a side is defined in a macro the comment
 # "#wmllint: skip-side" is needed where the macro is used in order to allow
 # wmllint to account for it properly.
-#
-# A comment of the form
-#
-# #wmllint: match {ABILITY_FOO} with {NOTE_FOO}
-#
-# will declare an ability macro and a special-notes macro to be tied
-# together for reference-checking purposes.
 #
 # In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
 # without a ZoC are automatically handled by the C++ engine. wmllint warns if such
@@ -194,6 +181,7 @@ import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 from collections import defaultdict
+from wesnoth import version
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -204,8 +192,16 @@ mapchanges = (
     ("^Vcha", "^Vca"),
     ("^Vch",  "^Vc"),
     ("^Vcm",  "^Vc"),
-    ("Ggf,",  "Gg^Emf"),
-    ("Qv,",  "Mv"),
+    ("Qv",  "Mv"),
+    )
+
+# These terrains were changed from just base to base + overlay
+# Automatic replacement is possible only
+# when the old terrain doesn't have an overlay
+# The terrain name is used to print warnings
+mapchanges_with_overlay = (
+    ("Xol", "Xos^Efs", "enlightened wall"),
+    ("Ggf", "Gg^Efm", "grassland flowers"),
     )
 
 # Base terrain aliasing changes.
@@ -225,6 +221,13 @@ aliaschanges = (
     ("Vit",  "Vt"),
     # 1.11.9:
     ("Vi",   "Vt"),
+    )
+
+# Deprecated lines that ought to be removed globally. Suppressed by noconvert.
+obsolete_lines = (
+    "{MAGENTA_IS_THE_TEAM_COLOR}",
+    "{SOUND:SLOW}",
+    "{SOUND:POISON}",
     )
 
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
@@ -605,6 +608,11 @@ linechanges = (
         # Changes just before 1.9.2
         ("[removeitem]", "[remove_item]"),
         ("[/removeitem]", "[/remove_item]"),
+        # Changes introduced in the 1.9.x cycle
+        ("TRANSITION_BASE_Ls", "TRANSITION_RESTRICTED_Ls"),
+        ("TRANSITION_BASE_LF", "TRANSITION_RESTRICTED_LF"),
+        ("TRANSITION_BASE_LB", "TRANSITION_RESTRICTED_LB"),
+        ("TRANSITION_BASE_L", "TRANSITION_RESTRICTED_L"),
         # Changes just before 1.11.0
         ("viewing_side", "side"),
         ("duration=level", "duration=scenario"), # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
@@ -911,6 +919,28 @@ linechanges = (
         ("units/nagas/slasher.png", "units/nagas/dirkfang.png"),
         ("units/nagas/bladewhirler.png", "units/nagas/ophidian.png"),
 
+        # third round of renaming
+        ("units/dunefolk/apothecary.png", "units/dunefolk/herbalist/apothecary.png"),
+        ("units/dunefolk/blademaster.png", "units/dunefolk/soldier/blademaster.png"),
+        ("units/dunefolk/burner.png", "units/dunefolk/burner/burner.png"),
+        ("units/dunefolk/cataphract.png", "units/dunefolk/rider/cataphract.png"),
+        ("units/dunefolk/explorer.png", "units/dunefolk/rover/explorer.png"),
+        ("units/dunefolk/firetrooper.png", "units/dunefolk/burner/firetrooper.png"),
+        ("units/dunefolk/harrier.png", "units/dunefolk/skirmisher/harrier.png"),
+        ("units/dunefolk/herbalist.png", "units/dunefolk/herbalist/herbalist.png"),
+        ("units/dunefolk/marauder.png", "units/dunefolk/rider/marauder.png"),
+        ("units/dunefolk/raider.png", "units/dunefolk/rider/raider.png"),
+        ("units/dunefolk/rider.png", "units/dunefolk/rider/rider.png"),
+        ("units/dunefolk/rover.png", "units/dunefolk/rover/rover.png"),
+        ("units/dunefolk/scorcher.png", "units/dunefolk/burner/scorcher.png"),
+        ("units/dunefolk/skirmisher.png", "units/dunefolk/skirmisher/skirmisher.png"),
+        ("units/dunefolk/soldier.png", "units/dunefolk/soldier/soldier.png"),
+        ("units/dunefolk/spearguard.png", "units/dunefolk/soldier/spearguard.png"),
+        ("units/dunefolk/spearmaster.png", "units/dunefolk/soldier/spearmaster.png"),
+        ("units/dunefolk/sunderer.png", "units/dunefolk/rider/sunderer.png"),
+        ("units/dunefolk/swordsman.png", "units/dunefolk/soldier/swordsman.png"),
+        ("units/dunefolk/warmaster.png", "units/dunefolk/soldier/warmaster.png"),
+
         # unit ids
         ("Arif", "Dune Soldier"),
         ("Ghazi", "Dune Swordsman"),
@@ -946,9 +976,311 @@ linechanges = (
         ("Naga Slasher", "Naga Dirkfang"),
         ("Naga Bladewhirler", "Naga Ophidian"),
 
+        # monster unit ID changes during 1.15.x cycle
+        ("Giant Stoat", "Frost Stoat"),
+
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
-        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png")
+        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png"),
+
+        # Changed just before 1.17.0
+        # removed some duplicated images that were also part of an obsolete theme
+        ("themes/unit_box/status-bg.png", "themes/legacy/status-bg.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-afternoon.png", "unit_env/schedule/ToD-day3.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-dawn.png", "unit_env/schedule/ToD-day2.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-dusk.png", "unit_env/schedule/ToD-day1.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-firstwatch.png", "unit_env/schedule/ToD-night.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-indoors.png", "unit_env/terrain/terrain-indoors.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-morning.png", "unit_env/schedule/ToD-day3.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-secondwatch.png", "unit_env/schedule/ToD-night.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-underground.png", "unit_env/terrain/terrain-underground.png"),
+        ("themes/unit_box/misc/time-schedules/default/schedule-underground-illum.png", "misc/time-schedules/schedule-underground-illum.png"),
+        ("themes/unit_box/misc/time-schedules/default/tod-schedule-24hrs.png", "misc/time-schedules/tod-schedule-24hrs.png"),
+
+        # Changed in 1.17.2
+        # added support for WebP images and converted an image to this format
+        ("maps/background.jpg", "maps/background.webp"),
+
+        # Changed in 1.17.3
+        # convert a bunch more things to webp
+        ("terrain/map-specific/isar-background-dawndusk.png", "terrain/map-specific/isar-background-dawndusk.webp"),
+        ("terrain/map-specific/isar-background-night.png", "terrain/map-specific/isar-background-night.webp"),
+        ("terrain/map-specific/isar-background.png", "terrain/map-specific/isar-background.webp"),
+        ("maps/titlescreen.png", "maps/titlescreen.webp"),
+        ("maps/wesnoth.png", "maps/wesnoth.webp"),
+        ("maps/l10n/gd/wesnoth--overlay.png", "maps/l10n/gd/wesnoth--overlay.webp"),
+        ("maps/l10n/gd/titlescreen--overlay.png", "maps/l10n/gd/titlescreen--overlay.webp"),
+        ("maps/l10n/hu/wesnoth--overlay.png", "maps/l10n/hu/wesnoth--overlay.webp"),
+        ("maps/l10n/it/wesnoth--overlay.png", "maps/l10n/it/wesnoth--overlay.webp"),
+        ("maps/l10n/it/titlescreen--overlay.png", "maps/l10n/it/titlescreen--overlay.webp"),
+        ("maps/l10n/fr/wesnoth--overlay.png", "maps/l10n/fr/wesnoth--overlay.webp"),
+        ("maps/l10n/sr@ijekavianlatin/wesnoth--overlay.png", "maps/l10n/sr@ijekavianlatin/wesnoth--overlay.webp"),
+        ("maps/l10n/pt/wesnoth--overlay.png", "maps/l10n/pt/wesnoth--overlay.webp"),
+        ("maps/l10n/pt/titlescreen--overlay.png", "maps/l10n/pt/titlescreen--overlay.webp"),
+        ("maps/l10n/sr/wesnoth--overlay.png", "maps/l10n/sr/wesnoth--overlay.webp"),
+        ("maps/l10n/gl/titlescreen--overlay.png", "maps/l10n/gl/titlescreen--overlay.webp"),
+        ("maps/l10n/sr@ijekavian/wesnoth--overlay.png", "maps/l10n/sr@ijekavian/wesnoth--overlay.webp"),
+        ("maps/l10n/lt/titlescreen--overlay.png", "maps/l10n/lt/titlescreen--overlay.webp"),
+        ("maps/l10n/es/wesnoth--overlay.png", "maps/l10n/es/wesnoth--overlay.webp"),
+        ("maps/l10n/zh_CN/wesnoth--overlay.png", "maps/l10n/zh_CN/wesnoth--overlay.webp"),
+        ("maps/l10n/zh_CN/titlescreen--overlay.png", "maps/l10n/zh_CN/titlescreen--overlay.webp"),
+        ("maps/l10n/de/wesnoth--overlay.png", "maps/l10n/de/wesnoth--overlay.webp"),
+        ("maps/l10n/de/titlescreen--overlay.png", "maps/l10n/de/titlescreen--overlay.webp"),
+        ("maps/l10n/ru/wesnoth--overlay.png", "maps/l10n/ru/wesnoth--overlay.webp"),
+        ("maps/l10n/ru/titlescreen--overlay.png", "maps/l10n/ru/titlescreen--overlay.webp"),
+        ("maps/l10n/la/wesnoth--overlay.png", "maps/l10n/la/wesnoth--overlay.webp"),
+        ("maps/l10n/sr@latin/wesnoth--overlay.png", "maps/l10n/sr@latin/wesnoth--overlay.webp"),
+        ("story/landscape-plain.jpg", "story/landscape-plain.webp"),
+        ("story/landscape-battlefield_nohumans.jpg", "story/landscape-battlefield_nohumans.webp"),
+        ("story/landscape-bridge_sun.jpg", "story/landscape-bridge_sun.webp"),
+        ("story/landscape-hills-01.jpg", "story/landscape-hills-01.webp"),
+        ("story/landscape-mountains-01.jpg", "story/landscape-mountains-01.webp"),
+        ("story/landscape-mountains-03.jpg", "story/landscape-mountains-03.webp"),
+        ("story/landscape-mountains-05.jpg", "story/landscape-mountains-05.webp"),
+        ("story/landscape-coast.jpg", "story/landscape-coast.webp"),
+        ("story/landscape-bridge.jpg", "story/landscape-bridge.webp"),
+        ("story/landscape-battlefield.jpg", "story/landscape-battlefield.webp"),
+        ("story/landscape-mountains-02.jpg", "story/landscape-mountains-02.webp"),
+        ("story/landscape-castle.jpg", "story/landscape-castle.webp"),
+        ("story/swamp-01.jpg", "story/swamp-01.webp"),
+        ("story/landscape-hills-02.jpg", "story/landscape-hills-02.webp"),
+        ("story/landscape-mountains-04.jpg", "story/landscape-mountains-04.webp"),
+        ("portraits/dwarves/fighter-2.png", "portraits/dwarves/fighter-2.webp"),
+        ("portraits/dwarves/guard.png", "portraits/dwarves/guard.webp"),
+        ("portraits/dwarves/dragonguard.png", "portraits/dwarves/dragonguard.webp"),
+        ("portraits/dwarves/thunderer.png", "portraits/dwarves/thunderer.webp"),
+        ("portraits/dwarves/lord.png", "portraits/dwarves/lord.webp"),
+        ("portraits/dwarves/scout.png", "portraits/dwarves/scout.webp"),
+        ("portraits/dwarves/explorer.png", "portraits/dwarves/explorer.webp"),
+        ("portraits/dwarves/gryphon-rider.png", "portraits/dwarves/gryphon-rider.webp"),
+        ("portraits/dwarves/ulfserker.png", "portraits/dwarves/ulfserker.webp"),
+        ("portraits/dwarves/sentinel.png", "portraits/dwarves/sentinel.webp"),
+        ("portraits/dwarves/fighter.png", "portraits/dwarves/fighter.webp"),
+        ("portraits/dwarves/runemaster.png", "portraits/dwarves/runemaster.webp"),
+        ("portraits/dunefolk/herbalist.png", "portraits/dunefolk/herbalist.webp"),
+        ("portraits/merfolk/triton.png", "portraits/merfolk/triton.webp"),
+        ("portraits/merfolk/enchantress.png", "portraits/merfolk/enchantress.webp"),
+        ("portraits/merfolk/spearman.png", "portraits/merfolk/spearman.webp"),
+        ("portraits/merfolk/initiate.png", "portraits/merfolk/initiate.webp"),
+        ("portraits/merfolk/hunter.png", "portraits/merfolk/hunter.webp"),
+        ("portraits/merfolk/priestess.png", "portraits/merfolk/priestess.webp"),
+        ("portraits/merfolk/hoplite.png", "portraits/merfolk/hoplite.webp"),
+        ("portraits/merfolk/netcaster.png", "portraits/merfolk/netcaster.webp"),
+        ("portraits/merfolk/initiate-2.png", "portraits/merfolk/initiate-2.webp"),
+        ("portraits/merfolk/fighter.png", "portraits/merfolk/fighter.webp"),
+        ("portraits/undead/skeleton.png", "portraits/undead/skeleton.webp"),
+        ("portraits/undead/draug-2.png", "portraits/undead/draug-2.webp"),
+        ("portraits/undead/brown-lich.png", "portraits/undead/brown-lich.webp"),
+        ("portraits/undead/zombie-horse.png", "portraits/undead/zombie-horse.webp"),
+        ("portraits/undead/ghoul.png", "portraits/undead/ghoul.webp"),
+        ("portraits/undead/zombie-drake.png", "portraits/undead/zombie-drake.webp"),
+        ("portraits/undead/zombie-troll.png", "portraits/undead/zombie-troll.webp"),
+        ("portraits/undead/zombie-saurian.png", "portraits/undead/zombie-saurian.webp"),
+        ("portraits/undead/zombie-rider.png", "portraits/undead/zombie-rider.webp"),
+        ("portraits/undead/zombie-gryphon.png", "portraits/undead/zombie-gryphon.webp"),
+        ("portraits/undead/zombie-dwarf.png", "portraits/undead/zombie-dwarf.webp"),
+        ("portraits/undead/lich.png", "portraits/undead/lich.webp"),
+        ("portraits/undead/walking-corpse.png", "portraits/undead/walking-corpse.webp"),
+        ("portraits/undead/revenant.png", "portraits/undead/revenant.webp"),
+        ("portraits/undead/zombie-wose.png", "portraits/undead/zombie-wose.webp"),
+        ("portraits/undead/zombie-bat.png", "portraits/undead/zombie-bat.webp"),
+        ("portraits/undead/banebow.png", "portraits/undead/banebow.webp"),
+        ("portraits/undead/draug.png", "portraits/undead/draug.webp"),
+        ("portraits/undead/zombie-swimmer.png", "portraits/undead/zombie-swimmer.webp"),
+        ("portraits/undead/death-knight.png", "portraits/undead/death-knight.webp"),
+        ("portraits/undead/zombie-goblin.png", "portraits/undead/zombie-goblin.webp"),
+        ("portraits/undead/zombie-rat.png", "portraits/undead/zombie-rat.webp"),
+        ("portraits/undead/archer.png", "portraits/undead/archer.webp"),
+        ("portraits/undead/shadow.png", "portraits/undead/shadow.webp"),
+        ("portraits/undead/spectre.png", "portraits/undead/spectre.webp"),
+        ("portraits/undead/zombie-boar.png", "portraits/undead/zombie-boar.webp"),
+        ("portraits/undead/zombie-falcon.png", "portraits/undead/zombie-falcon.webp"),
+        ("portraits/undead/zombie-spider.png", "portraits/undead/zombie-spider.webp"),
+        ("portraits/undead/zombie-scorpion.png", "portraits/undead/zombie-scorpion.webp"),
+        ("portraits/undead/soulless.png", "portraits/undead/soulless.webp"),
+        ("portraits/undead/ghost.png", "portraits/undead/ghost.webp"),
+        ("portraits/undead/deathblade.png", "portraits/undead/deathblade.webp"),
+        ("portraits/undead/wraith.png", "portraits/undead/wraith.webp"),
+        ("portraits/undead/zombie-beastrider.png", "portraits/undead/zombie-beastrider.webp"),
+        ("portraits/undead/zombie-wolf.png", "portraits/undead/zombie-wolf.webp"),
+        ("portraits/undead/ancient-lich.png", "portraits/undead/ancient-lich.webp"),
+        ("portraits/undead/zombie-serpent.png", "portraits/undead/zombie-serpent.webp"),
+        ("portraits/undead/bone-shooter.png", "portraits/undead/bone-shooter.webp"),
+        ("portraits/undead/nightgaunt.png", "portraits/undead/nightgaunt.webp"),
+        ("portraits/elves/lady.png", "portraits/elves/lady.webp"),
+        ("portraits/elves/shaman.png", "portraits/elves/shaman.webp"),
+        ("portraits/elves/ranger.png", "portraits/elves/ranger.webp"),
+        ("portraits/elves/marksman+female.png", "portraits/elves/marksman+female.webp"),
+        ("portraits/elves/sorceress.png", "portraits/elves/sorceress.webp"),
+        ("portraits/elves/druid.png", "portraits/elves/druid.webp"),
+        ("portraits/elves/sylph.png", "portraits/elves/sylph.webp"),
+        ("portraits/elves/archer.png", "portraits/elves/archer.webp"),
+        ("portraits/elves/lord.png", "portraits/elves/lord.webp"),
+        ("portraits/elves/scout.png", "portraits/elves/scout.webp"),
+        ("portraits/elves/archer+female.png", "portraits/elves/archer+female.webp"),
+        ("portraits/elves/captain.png", "portraits/elves/captain.webp"),
+        ("portraits/elves/high-lord.png", "portraits/elves/high-lord.webp"),
+        ("portraits/elves/ranger+female.png", "portraits/elves/ranger+female.webp"),
+        ("portraits/elves/shyde.png", "portraits/elves/shyde.webp"),
+        ("portraits/elves/marksman.png", "portraits/elves/marksman.webp"),
+        ("portraits/elves/hero.png", "portraits/elves/hero.webp"),
+        ("portraits/elves/fighter.png", "portraits/elves/fighter.webp"),
+        ("portraits/nagas/myrmidon.png", "portraits/nagas/myrmidon.webp"),
+        ("portraits/nagas/dirkfang.png", "portraits/nagas/dirkfang.webp"),
+        ("portraits/nagas/naga-mace_warrior2.png", "portraits/nagas/naga-mace_warrior2.webp"),
+        ("portraits/nagas/naga-mace_warrior1.png", "portraits/nagas/naga-mace_warrior1.webp"),
+        ("portraits/nagas/naga-ophidian.png", "portraits/nagas/naga-ophidian.webp"),
+        ("portraits/nagas/naga-mace_warrior3.png", "portraits/nagas/naga-mace_warrior3.webp"),
+        ("portraits/nagas/naga-ringcaster.png", "portraits/nagas/naga-ringcaster.webp"),
+        ("portraits/nagas/fighter.png", "portraits/nagas/fighter.webp"),
+        ("portraits/woses/wose.png", "portraits/woses/wose.webp"),
+        ("portraits/orcs/grunt-5.png", "portraits/orcs/grunt-5.webp"),
+        ("portraits/orcs/warlord.png", "portraits/orcs/warlord.webp"),
+        ("portraits/orcs/grunt-6.png", "portraits/orcs/grunt-6.webp"),
+        ("portraits/orcs/grunt.png", "portraits/orcs/grunt.webp"),
+        ("portraits/orcs/archer.png", "portraits/orcs/archer.webp"),
+        ("portraits/orcs/warrior.png", "portraits/orcs/warrior.webp"),
+        ("portraits/orcs/ruler-2.png", "portraits/orcs/ruler-2.webp"),
+        ("portraits/orcs/crossbowman.png", "portraits/orcs/crossbowman.webp"),
+        ("portraits/orcs/slayer.png", "portraits/orcs/slayer.webp"),
+        ("portraits/orcs/grunt-4.png", "portraits/orcs/grunt-4.webp"),
+        ("portraits/orcs/grunt-2.png", "portraits/orcs/grunt-2.webp"),
+        ("portraits/orcs/sovereign.png", "portraits/orcs/sovereign.webp"),
+        ("portraits/orcs/assassin.png", "portraits/orcs/assassin.webp"),
+        ("portraits/orcs/ruler.png", "portraits/orcs/ruler.webp"),
+        ("portraits/orcs/grunt-3.png", "portraits/orcs/grunt-3.webp"),
+        ("portraits/orcs/slurbow.png", "portraits/orcs/slurbow.webp"),
+        ("portraits/wolves/wolf-red.png", "portraits/wolves/wolf-red.webp"),
+        ("portraits/wolves/wolf-great.png", "portraits/wolves/wolf-great.webp"),
+        ("portraits/wolves/wolf-chewing.png", "portraits/wolves/wolf-chewing.webp"),
+        ("portraits/wolves/wolf-dark.png", "portraits/wolves/wolf-dark.webp"),
+        ("portraits/humans/outlaw+female.png", "portraits/humans/outlaw+female.webp"),
+        ("portraits/humans/dark-adept+female.png", "portraits/humans/dark-adept+female.webp"),
+        ("portraits/humans/outlaw.png", "portraits/humans/outlaw.webp"),
+        ("portraits/humans/necromancer.png", "portraits/humans/necromancer.webp"),
+        ("portraits/humans/marshal.png", "portraits/humans/marshal.webp"),
+        ("portraits/humans/woodsman.png", "portraits/humans/woodsman.webp"),
+        ("portraits/humans/fencer.png", "portraits/humans/fencer.webp"),
+        ("portraits/humans/general.png", "portraits/humans/general.webp"),
+        ("portraits/humans/lancer.png", "portraits/humans/lancer.webp"),
+        ("portraits/humans/bandit.png", "portraits/humans/bandit.webp"),
+        ("portraits/humans/ranger.png", "portraits/humans/ranger.webp"),
+        ("portraits/humans/spearman-2.png", "portraits/humans/spearman-2.webp"),
+        ("portraits/humans/thief+female.png", "portraits/humans/thief+female.webp"),
+        ("portraits/humans/mage-white.png", "portraits/humans/mage-white.webp"),
+        ("portraits/humans/halberdier.png", "portraits/humans/halberdier.webp"),
+        ("portraits/humans/peasant.png", "portraits/humans/peasant.webp"),
+        ("portraits/humans/huntsman.png", "portraits/humans/huntsman.webp"),
+        ("portraits/humans/pikeman.png", "portraits/humans/pikeman.webp"),
+        ("portraits/humans/mage-red.png", "portraits/humans/mage-red.webp"),
+        ("portraits/humans/longbowman.png", "portraits/humans/longbowman.webp"),
+        ("portraits/humans/swordsman-3.png", "portraits/humans/swordsman-3.webp"),
+        ("portraits/humans/mage-red+female.png", "portraits/humans/mage-red+female.webp"),
+        ("portraits/humans/footpad+female.png", "portraits/humans/footpad+female.webp"),
+        ("portraits/humans/spearman.png", "portraits/humans/spearman.webp"),
+        ("portraits/humans/mage-white+female.png", "portraits/humans/mage-white+female.webp"),
+        ("portraits/humans/grand-knight.png", "portraits/humans/grand-knight.webp"),
+        ("portraits/humans/mage-arch+female.png", "portraits/humans/mage-arch+female.webp"),
+        ("portraits/humans/trapper.png", "portraits/humans/trapper.webp"),
+        ("portraits/humans/bowman.png", "portraits/humans/bowman.webp"),
+        ("portraits/humans/horseman.png", "portraits/humans/horseman.webp"),
+        ("portraits/humans/grand-knight-2.png", "portraits/humans/grand-knight-2.webp"),
+        ("portraits/humans/royal-warrior.png", "portraits/humans/royal-warrior.webp"),
+        ("portraits/humans/iron-mauler.png", "portraits/humans/iron-mauler.webp"),
+        ("portraits/humans/mage-light.png", "portraits/humans/mage-light.webp"),
+        ("portraits/humans/necromancer+female.png", "portraits/humans/necromancer+female.webp"),
+        ("portraits/humans/paladin.png", "portraits/humans/paladin.webp"),
+        ("portraits/humans/thief.png", "portraits/humans/thief.webp"),
+        ("portraits/humans/lieutenant.png", "portraits/humans/lieutenant.webp"),
+        ("portraits/humans/mage+female.png", "portraits/humans/mage+female.webp"),
+        ("portraits/humans/mage.png", "portraits/humans/mage.webp"),
+        ("portraits/humans/dark-adept.png", "portraits/humans/dark-adept.webp"),
+        ("portraits/humans/assassin+female.png", "portraits/humans/assassin+female.webp"),
+        ("portraits/humans/cavalier.png", "portraits/humans/cavalier.webp"),
+        ("portraits/humans/mage-silver+female.png", "portraits/humans/mage-silver+female.webp"),
+        ("portraits/humans/footpad.png", "portraits/humans/footpad.webp"),
+        ("portraits/humans/knight.png", "portraits/humans/knight.webp"),
+        ("portraits/humans/royal-guard.png", "portraits/humans/royal-guard.webp"),
+        ("portraits/humans/assassin.png", "portraits/humans/assassin.webp"),
+        ("portraits/humans/sergeant.png", "portraits/humans/sergeant.webp"),
+        ("portraits/humans/mage-light+female.png", "portraits/humans/mage-light+female.webp"),
+        ("portraits/humans/ruffian.png", "portraits/humans/ruffian.webp"),
+        ("portraits/humans/javelineer.png", "portraits/humans/javelineer.webp"),
+        ("portraits/humans/swordsman.png", "portraits/humans/swordsman.webp"),
+        ("portraits/humans/thug.png", "portraits/humans/thug.webp"),
+        ("portraits/humans/heavy-infantry.png", "portraits/humans/heavy-infantry.webp"),
+        ("portraits/humans/master-bowman.png", "portraits/humans/master-bowman.webp"),
+        ("portraits/humans/cavalryman.png", "portraits/humans/cavalryman.webp"),
+        ("portraits/humans/mage-arch.png", "portraits/humans/mage-arch.webp"),
+        ("portraits/humans/master-at-arms.png", "portraits/humans/master-at-arms.webp"),
+        ("portraits/humans/duelist.png", "portraits/humans/duelist.webp"),
+        ("portraits/humans/swordsman-2.png", "portraits/humans/swordsman-2.webp"),
+        ("portraits/humans/marshal-2.png", "portraits/humans/marshal-2.webp"),
+        ("portraits/humans/mage-silver.png", "portraits/humans/mage-silver.webp"),
+        ("portraits/drakes/glider.png", "portraits/drakes/glider.webp"),
+        ("portraits/drakes/enforcer.png", "portraits/drakes/enforcer.webp"),
+        ("portraits/drakes/blademaster.png", "portraits/drakes/blademaster.webp"),
+        ("portraits/drakes/flameheart.png", "portraits/drakes/flameheart.webp"),
+        ("portraits/drakes/warden.png", "portraits/drakes/warden.webp"),
+        ("portraits/drakes/hurricane.png", "portraits/drakes/hurricane.webp"),
+        ("portraits/drakes/burner.png", "portraits/drakes/burner.webp"),
+        ("portraits/drakes/clasher.png", "portraits/drakes/clasher.webp"),
+        ("portraits/drakes/inferno.png", "portraits/drakes/inferno.webp"),
+        ("portraits/drakes/fighter.png", "portraits/drakes/fighter.webp"),
+        ("portraits/trolls/troll-hero.png", "portraits/trolls/troll-hero.webp"),
+        ("portraits/trolls/troll-warrior.png", "portraits/trolls/troll-warrior.webp"),
+        ("portraits/trolls/troll-hero-alt.png", "portraits/trolls/troll-hero-alt.webp"),
+        ("portraits/trolls/whelp.png", "portraits/trolls/whelp.webp"),
+        ("portraits/trolls/troll-rocklobber.png", "portraits/trolls/troll-rocklobber.webp"),
+        ("portraits/trolls/troll-shaman.png", "portraits/trolls/troll-shaman.webp"),
+        ("portraits/saurians/augur.png", "portraits/saurians/augur.webp"),
+        ("portraits/saurians/skirmisher.png", "portraits/saurians/skirmisher.webp"),
+        ("portraits/goblins/spearman-2.png", "portraits/goblins/spearman-2.webp"),
+        ("portraits/goblins/rouser-2.png", "portraits/goblins/rouser-2.webp"),
+        ("portraits/goblins/spearman.png", "portraits/goblins/spearman.webp"),
+        ("portraits/goblins/direwolver.png", "portraits/goblins/direwolver.webp"),
+        ("portraits/goblins/wolf-rider.png", "portraits/goblins/wolf-rider.webp"),
+        ("portraits/goblins/impaler.png", "portraits/goblins/impaler.webp"),
+        ("portraits/goblins/pillager.png", "portraits/goblins/pillager.webp"),
+        ("portraits/goblins/rouser.png", "portraits/goblins/rouser.webp"),
+        ("portraits/monsters/small-icemonax.png", "portraits/monsters/small-icemonax.webp"),
+        ("portraits/monsters/bat-dread.png", "portraits/monsters/bat-dread.webp"),
+        ("portraits/monsters/fire-dragon.png", "portraits/monsters/fire-dragon.webp"),
+        ("portraits/monsters/fire_guardian.png", "portraits/monsters/fire_guardian.webp"),
+        ("portraits/monsters/yeti.png", "portraits/monsters/yeti.webp"),
+        ("portraits/monsters/scarab.png", "portraits/monsters/scarab.webp"),
+        ("portraits/monsters/water-serpent.png", "portraits/monsters/water-serpent.webp"),
+        ("portraits/monsters/black-stallion.png", "portraits/monsters/black-stallion.webp"),
+        ("portraits/monsters/scuttler.png", "portraits/monsters/scuttler.webp"),
+        ("portraits/monsters/scorpion-elder.png", "portraits/monsters/scorpion-elder.webp"),
+        ("portraits/monsters/bear.png", "portraits/monsters/bear.webp"),
+        ("portraits/monsters/gryphon.png", "portraits/monsters/gryphon.webp"),
+        ("portraits/monsters/jinn.png", "portraits/monsters/jinn.webp"),
+        ("portraits/monsters/bat-red.png", "portraits/monsters/bat-red.webp"),
+        ("portraits/monsters/fire_ant.png", "portraits/monsters/fire_ant.webp"),
+        ("portraits/monsters/cuttlefish.png", "portraits/monsters/cuttlefish.webp"),
+        ("portraits/monsters/woodland_boar.png", "portraits/monsters/woodland_boar.webp"),
+        ("portraits/monsters/seahorse.png", "portraits/monsters/seahorse.webp"),
+        ("portraits/monsters/stoat.png", "portraits/monsters/stoat.webp"),
+        ("portraits/monsters/scorpion.png", "portraits/monsters/scorpion.webp"),
+        ("portraits/monsters/falcon.png", "portraits/monsters/falcon.webp"),
+        ("portraits/monsters/mudcrawler.png", "portraits/monsters/mudcrawler.webp"),
+        ("portraits/monsters/young-ogre.png", "portraits/monsters/young-ogre.webp"),
+        ("portraits/monsters/giant-rat.png", "portraits/monsters/giant-rat.webp"),
+        ("portraits/monsters/nightmare.png", "portraits/monsters/nightmare.webp"),
+        ("portraits/monsters/bat.png", "portraits/monsters/bat.webp"),
+        ("portraits/monsters/fire_wraith_A.png", "portraits/monsters/fire_wraith_A.webp"),
+        ("portraits/monsters/deep-tentacle.png", "portraits/monsters/deep-tentacle.webp"),
+        ("portraits/monsters/crocodile.png", "portraits/monsters/crocodile.webp"),
+        ("portraits/monsters/horse.png", "portraits/monsters/horse.webp"),
+        ("portraits/monsters/giant_ant.png", "portraits/monsters/giant_ant.webp"),
+        ("portraits/monsters/giant-mudcrawler.png", "portraits/monsters/giant-mudcrawler.webp"),
+        ("portraits/monsters/giant-spider.png", "portraits/monsters/giant-spider.webp"),
+        ("portraits/monsters/scorpion-rock.png", "portraits/monsters/scorpion-rock.webp"),
+        ("portraits/monsters/piglet.png", "portraits/monsters/piglet.webp"),
+        ("portraits/monsters/sea-serpent.png", "portraits/monsters/sea-serpent.webp"),
+        ("portraits/monsters/big-icemonax.png", "portraits/monsters/big-icemonax.webp"),
+        ("portraits/monsters/ogre.png", "portraits/monsters/ogre.webp"),
 
         )
 
@@ -1068,49 +1400,6 @@ def standard_unit_filter():
 
 # Sanity checking
 
-# Associations for the ability sanity checks.
-# Please note that a special note can be associated with multiple abilities
-# but any given ability can be associated with only one special note
-# Some notes are handled directly in the global_sanity_check() function
-notepairs = [
-    ("{ABILITY_HEALS}", "{NOTE_HEALS}"),
-    ("{ABILITY_EXTRA_HEAL}", "{NOTE_EXTRA_HEAL}"),
-    ("{ABILITY_UNPOISON}", "{NOTE_UNPOISON}"),
-    ("{ABILITY_CURES}", "{NOTE_CURES}"),
-    ("{ABILITY_REGENERATES}", "{NOTE_REGENERATES}"),
-    ("{ABILITY_SELF_HEAL}", "{NOTE_SELF_HEAL}"),
-    ("{ABILITY_STEADFAST}", "{NOTE_STEADFAST}"),
-    ("{ABILITY_LEADERSHIP}", "{NOTE_LEADERSHIP}"),
-    ("{ABILITY_SKIRMISHER}", "{NOTE_SKIRMISHER}"),
-    ("{ABILITY_ILLUMINATES}", "{NOTE_ILLUMINATES}"),
-    ("{ABILITY_TELEPORT}", "{NOTE_TELEPORT}"),
-    ("{ABILITY_AMBUSH}", "{NOTE_AMBUSH}"),
-    ("{ABILITY_NIGHTSTALK}", "{NOTE_NIGHTSTALK}"),
-    ("{ABILITY_CONCEALMENT}", "{NOTE_CONCEALMENT}"),
-    ("{ABILITY_SUBMERGE}", "{NOTE_SUBMERGE}"),
-    ("{ABILITY_FEEDING}", "{NOTE_FEEDING}"),
-    ("{ABILITY_INSPIRE}", "{NOTE_INSPIRE}"),
-    ("{ABILITY_INITIATIVE}", "{NOTE_INITIATIVE}"),
-    ("{ABILITY_DISTRACT}", "{NOTE_DISTRACT}"),
-    ("{ABILITY_DISENGAGE}", "{NOTE_DISENGAGE}"),
-    ("{ABILITY_FORMATION}", "{NOTE_FORMATION}"),
-    ("{WEAPON_SPECIAL_BERSERK}", "{NOTE_BERSERK}"),
-    ("{WEAPON_SPECIAL_BACKSTAB}", "{NOTE_BACKSTAB}"),
-    ("{WEAPON_SPECIAL_PLAGUE", "{NOTE_PLAGUE}"), # No } deliberately
-    ("{WEAPON_SPECIAL_SLOW}", "{NOTE_SLOW}"),
-    ("{WEAPON_SPECIAL_PETRIFY}", "{NOTE_PETRIFY}"),
-    ("{WEAPON_SPECIAL_MARKSMAN}", "{NOTE_MARKSMAN}"),
-    ("{WEAPON_SPECIAL_MAGICAL}", "{NOTE_MAGICAL}"),
-    ("{WEAPON_SPECIAL_SWARM}", "{NOTE_SWARM}"),
-    ("{WEAPON_SPECIAL_CHARGE}", "{NOTE_CHARGE}"),
-    ("{WEAPON_SPECIAL_DRAIN}", "{NOTE_DRAIN}"),
-    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{NOTE_FIRSTSTRIKE}"),
-    ("{WEAPON_SPECIAL_POISON}", "{NOTE_POISON}"),
-    ("{WEAPON_SPECIAL_STUN}", "{NOTE_STUN}"),
-    ("{WEAPON_SPECIAL_SHOCK}", "{NOTE_SHOCK}"),
-    ("{WEAPON_SPECIAL_DAZE}", "{NOTE_DAZE}"),
-    ]
-
 # This dictionary will pair macros with the characters they recall or create,
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
@@ -1122,9 +1411,9 @@ whomacros = {}
 # This dictionary pairs the ids of stored units with their variable name.
 storedids = {}
 
-# This list of the standard recruitable usage types can be appended with the
+# This set of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
-usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
+standard_usage_types = {"scout", "fighter", "mixed fighter", "archer", "healer"}
 
 # Since 1.13, UMC authors can define their own conditional tags in Lua
 # This list can be populated by using the magic comment
@@ -1144,6 +1433,7 @@ races = []
 unit_races = []
 nextrefs = []
 scenario_to_filename = {}
+unit_levels = {}
 
 # Attributes that should have translation marks
 def is_translatable(key):
@@ -1153,18 +1443,18 @@ def is_translatable(key):
         "editor_name", "end_text", "difficulty_descriptions", "female_message",
         "female_name_inactive", "female_names", "female_text", "help_text",
         "help_topic_text", "label", "male_message", "male_names", "male_text",
-        "message", "name", "name_inactive", "new_game_title", "note",
+        "message", "name", "names", "name_inactive", "new_game_title", "note",
         "option_description", "option_name", "order", "plural_name", "prefix",
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
-        "title2", "tooltip", "translator_comment", "user_team_name", "side_name"
+        "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
+        "special_note"
         )
     return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
-mainline = ("An_Orcish_Incursion",
-            "Dead_Water",
+mainline = ("Dead_Water",
             "Delfadors_Memoirs",
             "Descent_Into_Darkness",
             "Eastern_Invasion",
@@ -1181,6 +1471,8 @@ mainline = ("An_Orcish_Incursion",
             "tutorial",
             "Two_Brothers",
             "Under_the_Burning_Suns",
+            "Winds_of_Fate",
+            "World_Conquest",
             )
 
 spellcheck_these = (\
@@ -1366,10 +1658,6 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                            and not nav.element.startswith("[filter") and \
                            nav.element not in custom_conditionals:
             print(errlead + 'illegal child of [if]:', nav.element)
-    # Check for fluky credit parts
-    if parent == "[entry]":
-        if key == "email" and " " in value:
-            print(errlead + 'space in email name')
     # Check for various things that shouldn't be outside an [ai] tag
     if not in_definition and not in_call and "[ai]" not in nav.ancestors() and not ignored:
         if key in ("number_of_possible_recruits_to_force_recruit",
@@ -1484,45 +1772,28 @@ def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
 
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
-    # Sanity-check abilities and traits against notes macros.
-    # Note: This check is disabled on units derived via [base_unit].
-    # Also, build dictionaries of unit movement types and races
+    # Build dictionaries of unit movement types and races
     in_unit_type = None
-    notecheck = True
-    trait_note = dict(notepairs)
-    # it's possible that a note might be associated with two abilities
-    # use a multimap-like data structure for this reason
-    note_trait = defaultdict(list) # {p[1]:p[0] for p in notepairs}
-    for pair in notepairs:
-        note_trait[pair[1]].append(pair[0])
     unit_id = ""
     base_unit = ""
     for nav in WmllintIterator(lines, filename):
-        if "wmllint: notecheck off" in nav.text:
-            notecheck = False
-            continue
-        elif "wmllint: notecheck on" in nav.text:
-            notecheck = True
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
+            unit_level = None
             base_unit = ""
-            traits = []
-            notes = []
-            has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
             unit_usage = ""
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
             if unit_id and unit_usage:
                 usage[unit_id] = unit_usage
+            if unit_id and (unit_level is not None):
+                unit_levels[unit_id] = unit_level
             if unit_id and temp_movetypes:
                 for movetype in temp_movetypes:
                     # movetype, race and advance are 3-element tuples, expand them
@@ -1536,63 +1807,23 @@ def global_sanity_check(filename, lines):
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
-                missing_notes = []
-                if arcane_note_needed and "{NOTE_ARCANE}" not in notes:
-                    missing_notes.append("{NOTE_ARCANE}")
-                if spirit_note_needed and "{NOTE_SPIRIT}" not in notes:
-                    missing_notes.append("{NOTE_SPIRIT}")
-                if defense_cap_note_needed and "{NOTE_DEFENSE_CAP}" not in notes:
-                    missing_notes.append("{NOTE_DEFENSE_CAP}")
-                for trait in traits:
-                    tn = trait_note[trait]
-                    if tn not in notes and tn not in missing_notes:
-                        missing_notes.append(tn)
-                missing_traits = []
-                if (not arcane_note_needed) and "{NOTE_ARCANE}" in notes:
-                    missing_traits.append("type=arcane")
-                if (not spirit_note_needed) and "{NOTE_SPIRIT}" in notes:
-                    missing_traits.append("movement_type=undeadspirit")
-                if (not defense_cap_note_needed) and "{NOTE_DEFENSE_CAP}" in notes:
-                    missing_traits.append("movement_type=mounted or [defense] tag")
-                for note in notes:
-                    for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
-                        if nt in traits:
-                            break
-                    else: # this is done only if there isn't at least one trait matching the note
-                        for nt in note_trait[note]:
-                            if nt not in missing_traits:
-                                missing_traits.append(nt)
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
-                if notecheck and missing_notes:
-                    print('"%s", line %d: unit %s is missing notes %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_notes)))
-                if missing_traits:
-                    print('"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_traits)))
-                if notecheck and not (notes or traits) and has_special_notes:
-                    print('"%s", line %d: unit %s has superfluous {NOTE_*}' \
-                         % (filename, in_unit_type, unit_id))
                 if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print('"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id))
             in_unit_type = None
-            traits = []
-            notes = []
             unit_id = ""
+            unit_level = None
             base_unit = ""
-            has_special_notes = False
             unit_race = None
             unit_usage = ""
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
         # the glob pattern matches any WML tag starting with filter, including [filter] itself
         if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
@@ -1607,15 +1838,15 @@ def global_sanity_check(filename, lines):
                         base_unit = value
                 elif key == "hitpoints":
                     hitpoints_specified = True
+                elif key == "level":
+                    # levels are signed integers, however here we leave them as strings
+                    # because we need to check for them in recruitment patterns (consistency_check())
+                    unit_level = value
                 elif key == "usage":
                     unit_usage = value
                 elif key == "movement_type":
                     if '{' not in value:
                         temp_movetypes.append((filename, nav.lineno + 1, value))
-                    if value == "undeadspirit":
-                        spirit_note_needed = True
-                    elif value == "mounted":
-                        defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
                         unit_race = value
@@ -1624,26 +1855,8 @@ def global_sanity_check(filename, lines):
                     advancements = value
                     if advancements.strip() != "null":
                         temp_advances.append((filename, nav.lineno + 1, advancements))
-                elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
-                    arcane_note_needed = True
-                elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
-                    defense_cap_note_needed = True
             except TypeError:
                 pass
-            precomment = nav.text
-            if '#' in nav.text:
-                precomment = nav.text[:nav.text.find("#")]
-            if "{NOTE" in precomment:
-                has_special_notes = True
-            # these special cases are handled better outside of notepairs
-            for note in ("{NOTE_DEFENSE_CAP}","{NOTE_SPIRIT}","{NOTE_ARCANE}"):
-                if note in precomment:
-                    notes.append(note)
-            for (p, q) in notepairs:
-                if p in precomment:
-                    traits.append(p)
-                if q in precomment:
-                    notes.append(q)
 
     # Sanity-check all the [event] tags
     global_sanity_check_events(filename, lines)
@@ -1829,7 +2042,7 @@ to be called on their own".format(filename, num))
         m = re.search('# *wmllint: usagetypes? +(.*)', line)
         if m:
             for newusage in m.group(1).split(","):
-                usage_types.append(newusage.strip())
+                standard_usage_types.add(newusage.strip())
         # Accumulate global spelling exceptions
         words = re.search("wmllint: general spellings? (.*)", line)
         if words:
@@ -2244,13 +2457,9 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("#"): # FIXME: parse_attribute is confused.
-                pass
-            elif key.startswith("{"):
+            if key.startswith("{"):
                 pass
             elif in_name_generator:
-                pass
-            elif key == 'letter': # May be led with _s for void
                 pass
             elif key in ('name', 'male_name', 'female_name', 'value'): # FIXME: check this someday
                 pass
@@ -2259,11 +2468,11 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key):
-                if markcheck and has_tr_mark and '""' in lines[i]:
+                if markcheck and has_tr_mark and not attr_strip(value):
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in lines[i] and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace('=', "=_ ", 1)
@@ -2271,8 +2480,7 @@ to be called on their own".format(filename, num))
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
                           % (filename, i+1))
-                    if not stringfreeze:
-                        lines[i] = sentence_end.sub(" ", lines[i])
+                    lines[i] = sentence_end.sub(" ", lines[i])
                 if capitalization_error.search(lines[i]):
                     print('"%s", line %d: probable capitalization or punctuation error' \
                           % (filename, i+1))
@@ -2362,7 +2570,9 @@ def consistency_check():
     derivations = {u[2]: u[3] for u in derived_units}
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
-            utypes = []
+            # using sets to automatically remove duplicates
+            usage_types = set()
+            available_levels = set()
             for rtype in recruit:
                 base = rtype
                 if rtype not in unit_types:
@@ -2383,35 +2593,55 @@ def consistency_check():
                     continue
                 else:
                     utype = usage[base]
-                utypes.append(utype)
+                usage_types.add(utype)
+                # collect available unit levels for recruitment
+                if rtype in unit_levels:
+                    available_levels.add(unit_levels[rtype])
+                elif rtype in derivations:
+                    base = derivations[rtype]
+                    available_levels.add(unit_levels[base])
+                else:
+                    print('"{}", line {}: {} has no level'.format(filename, rl, rtype))
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
-                        if utype not in recruit_pattern:
+                        # now recruitment patterns can also contain levels and unit types, not just usages
+                        # so check all these three options
+                        if (utype not in recruit_pattern) and \
+                           (unit_levels[rtype] not in recruit_pattern) and \
+                           (rtype not in recruit_pattern):
                             rshow = ''
                             if rdifficulty is not None:
                                 rshow = 'At ' + rdifficulty + ', '
                             ushow = ''
-                            if utype not in usage_types:
-                                ushow = ', a non-standard usage class'
+                            if utype not in standard_usage_types:
+                                ushow = ', a possible non-standard usage class'
                             pshow = ''
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
                             print('"%s", line %d: %s%s (%s%s) doesn\'t match the%s recruitment pattern (%s) for its side' \
                                   % (filename, rl, rshow, rtype, utype, ushow, pshow, ", ".join(recruit_pattern)))
             # We have a list of all the usage types recruited at this difficulty
-            # in utypes.  Use it to check the matching pattern, if any. Suppress
+            # in usage_types. Use it to check the matching pattern, if any. Suppress
             # this check if the recruit line is a macroexpansion.
             if recruit and not recruit[0].startswith("{"):
                 for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
                         for utype in recruitment_pattern:
-                            if utype not in utypes:
+                            # again, check for levels and unit types as well
+                            if (utype not in usage_types) and \
+                               (utype not in available_levels) and \
+                               (utype not in recruit):
                                 rshow = '.'
                                 if rdifficulty is not None:
                                     rshow = ' at difficulty ' + rdifficulty + '.'
                                 ushow = ''
-                                if utype not in usage_types:
-                                    ushow = ' (a non-standard usage class)'
+                                # unit types usually have at least one uppercase character
+                                # levels have only numeric characters
+                                # so assume that a completely lowercase string is a usage type
+                                if utype not in standard_usage_types and utype.islower():
+                                    ushow = ' (a possible non-standard usage class)'
+                                elif utype.isnumeric():
+                                    ushow = ' (a possible unit level)'
                                 print('"%s", line %d: no %s%s units recruitable%s' % (filename, pl, utype, ushow, rshow))
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
@@ -2471,8 +2701,8 @@ def hack_syntax(filename, lines):
         precomment = re.split(r'\s#', lines[i], 1)[0]
         comment = lines[i][len(precomment):]
         if '\\' in precomment:
-            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
-                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|webp|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|webp|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
                 fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
                 precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
                 print('"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
@@ -2724,6 +2954,54 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
+    # handle removal of obsolete lines without replacement
+    # obsolete_lines contains normal strings, so re.escape is needed to embed them into this regex
+    obsolete_re = re.compile(r"(\s*)(" + "|".join([re.escape(l) for l in obsolete_lines]) + r")(.*)")
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        if "wmllint: noconvert" in line:
+            continue
+        m = obsolete_re.match(line)
+        if m:
+            # match group 1 is the indentation
+            # match group 3 contains everything after the removed part (like comments)
+            new_line = m.group(1) + m.group(3).lstrip()
+            if new_line.isspace():
+                # only empty spaces, make the line blank
+                # don't remove the line to not alter the other for cycles
+                lines[i] = "\n"
+            else:
+                # keep indentation and comments
+                lines[i] = new_line + "\n"
+            # match group 2 contains the removed part
+            print('"{}", line {}: removed {}'.format(filename, i+1, m.group(2)))
+    # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
+    in_unit = False
+    for i, line in enumerate(lines):
+        if "no-syntax-rewrite" in line:
+            break
+        if has_opening_tag(line, "unit"):
+            in_unit = True
+        elif "[/unit]" in line:
+            in_unit = False
+        if in_unit:
+            # once again, keep indentation and comments when replacing
+            m = re.match(r"(\s*)placement\s?=\s?(map_overwrite|map_passable|leader_passable)(.*)", line)
+            if m:
+                if m.group(2) == "map_overwrite":
+                    lines[i] = "{}placement=map{}\n{}overwrite=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_overwrite -> placement=map overwrite=yes'.format(filename,
+                                                                                                         i+1))
+                elif m.group(2) == "map_passable":
+                    lines[i] = "{}placement=map{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=map_passable -> placement=map passable=yes'.format(filename,
+                                                                                                       i+1))
+                elif m.group(2) == "leader_passable":
+                    lines[i] = "{}placement=leader{}\n{}passable=yes\n".format(m.group(1), m.group(3), m.group(1))
+                    print('"{}", line {}: placement=leader_passable -> placement=leader passable=yes'.format(filename,
+                                                                                                             i+1))
+
     # More syntax transformations would go here.
     return lines
 
@@ -2732,15 +3010,16 @@ def maptransform(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
-        # this change needs to be hardcoded here because it's tricky
+        # this change needs to be handled separately because it's tricky
         # we're converting from a terrain without overlays to a terrain +
         # overlay code
         # since we don't support having two overlays, skip and print a warning
-        if "Xol^" in inmap[y][i]:
-            print("{}, line {}: Xol (enlightened wall) terrain with overlays \
-must be converted manually".format(filename, baseline + y + 1))
-        elif "Xol" in inmap[y][i]:
-            inmap[y][i] = inmap[y][i].replace("Xol", "Xos^Efs")
+        for (old, new, name) in mapchanges_with_overlay:
+            if old + "^" in inmap[y][i]:
+                print("{}, line {}: {} ({}) terrain with overlays \
+must be converted manually".format(filename, baseline + y + 1, old, name))
+            elif old in inmap[y][i]:
+                inmap[y][i] = inmap[y][i].replace(old, new)
 
 # Generic machinery starts here
 
@@ -2789,8 +3068,12 @@ def translator(filename, mapxforms, textxform):
         with gzip.open(filename) as content:
             unmodified = content.readlines()
     else:
-        with codecs.open(filename, "r", "utf8") as content:
-            unmodified = content.readlines()
+        try:
+            with codecs.open(filename, "r", "utf8") as content:
+                unmodified = content.readlines()
+        except UnicodeDecodeError as e:
+            print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+            return
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
     map_only = filename.endswith(".map")
@@ -2983,14 +3266,6 @@ def translator(filename, mapxforms, textxform):
                 in_lua_code = True
             if in_lua_code and re.match(r".*?>>\s*$", destringed):
                 in_lua_code = False
-            if "wmllint: match" in comment:
-                comment = comment.strip()
-                try:
-                    fields = comment.split("match ", 1)[1].split(" with ", 1)
-                    if len(fields) == 2:
-                        notepairs.append((fields[0], fields[1]))
-                except IndexError:
-                    pass
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print('"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack))
@@ -3229,7 +3504,8 @@ Also validates WML to check for errors.''',
 positive warnings with magic comments, read the introduction in the wmllint
 file itself.
 See also: https://wiki.wesnoth.org/Maintenance_tools.''',
-        formatter_class = argparse.RawTextHelpFormatter
+        formatter_class = argparse.RawTextHelpFormatter,
+        prog="wmllint"
     )
 
     mode = parser.add_mutually_exclusive_group()
@@ -3255,14 +3531,15 @@ to all sides.""")
 scenarios, etc.""")
     parser.add_argument("-S", "--nospellcheck", action="store_false",
                         help="Suppress spellchecking")
-    parser.add_argument("-Z", "--stringfreeze", action="store_true",
-                        help="Suppress repair attempts of newlines in messages")
+    # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
                         help="""Any number of directories. Each directory is converted.
 If no directories are specified, acts on the current
 directory.""")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -3270,7 +3547,6 @@ directory.""")
     dryrun = namespace.dryrun
     missingside = namespace.missing
     revert = namespace.revert
-    stringfreeze = namespace.stringfreeze
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
@@ -3547,6 +3823,6 @@ In your case, your system interprets your arguments as:
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:
-        print("Aborted")
+        print("Aborted by pressing ctrl-c")
 
 # wmllint ends here

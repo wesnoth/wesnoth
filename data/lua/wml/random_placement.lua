@@ -35,7 +35,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				wml.error("[random_placement] failed to place items. only " .. i .. " items were placed")
 			end
 		end
-		local index = wesnoth.random(size)
+		local index = mathx.random(size)
 		local point = locs[index]
 		wml.variables[variable .. ".x"] = point[1]
 		wml.variables[variable .. ".y"] = point[2]

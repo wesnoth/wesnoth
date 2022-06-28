@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -94,12 +95,12 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, local_mode_(local_mode)
 {
 	level_types_ = {
-		{ng::level::TYPE::SCENARIO, _("Scenarios")},
-		{ng::level::TYPE::CAMPAIGN, _("Multiplayer Campaigns")},
-		{ng::level::TYPE::SP_CAMPAIGN, _("Singleplayer Campaigns")},
-		{ng::level::TYPE::USER_MAP, _("Custom Maps")},
-		{ng::level::TYPE::USER_SCENARIO, _("Custom Scenarios")},
-		{ng::level::TYPE::RANDOM_MAP, _("Random Maps")},
+		{level_type::type::scenario, _("Scenarios")},
+		{level_type::type::campaign, _("Multiplayer Campaigns")},
+		{level_type::type::sp_campaign, _("Singleplayer Campaigns")},
+		{level_type::type::user_map, _("Custom Maps")},
+		{level_type::type::user_scenario, _("Custom Scenarios")},
+		{level_type::type::random_map, _("Random Maps")},
 	};
 
 	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
@@ -107,18 +108,12 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	}), level_types_.end());
 
-	rfm_types_ = {
-		mp_game_settings::RANDOM_FACTION_MODE::DEFAULT,
-		mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR,
-		mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR,
-	};
-
 	set_show_even_without_video(true);
 
 	create_engine_.init_active_mods();
 
 	create_engine_.get_state().clear();
-	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	create_engine_.get_state().classification().type = campaign_type::type::multiplayer;
 
 	// Need to set this in the constructor, pre_show() is too late
 	set_allow_plugin_skip(false);
@@ -180,7 +175,7 @@ void mp_create_game::pre_show(window& win)
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
 		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == ng::level::TYPE::from_int(preferences::level_type());
+			return info.first == *level_type::get_enum(preferences::level_type());
 		});
 
 		if(index != level_types_.end()) {
@@ -202,8 +197,8 @@ void mp_create_game::pre_show(window& win)
 
 	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
@@ -258,27 +253,10 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up random faction mode menu_button
 	//
-	std::vector<config> rfm_options;
-	for(const auto& type : rfm_types_) {
-		// HACK: The labels are defined for the wesnoth textdomain in a header,
-		//       see mp_game_settings::RANDOM_FACTION_MODE in src/mp_game_settings.hpp
-		rfm_options.emplace_back("label",
-			translation::dsgettext("wesnoth", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type).c_str())
-		);
-	};
-
-	// Manually insert tooltips. Need to find a better way to do this
-	rfm_options[0]["tooltip"] = _("Independent: Random factions assigned independently");
-	rfm_options[1]["tooltip"] = _("No Mirror: No two players will get the same faction");
-	rfm_options[2]["tooltip"] = _("No Ally Mirror: No two allied players will get the same faction");
-
-	const int initial_index = std::distance(rfm_types_.begin(), std::find(rfm_types_.begin(), rfm_types_.end(),
-		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT))
-	);
+	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::random_faction_mode()).value_or(random_faction_mode::type::independent));
 
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
-
-	rfm_menu_button.set_values(rfm_options, initial_index);
+	rfm_menu_button.set_selected(initial_index);
 
 	connect_signal_notify_modified(rfm_menu_button,
 		std::bind(&mp_create_game::on_random_faction_mode_select, this));
@@ -299,16 +277,22 @@ void mp_create_game::pre_show(window& win)
 	bind_status_label<slider>(&win, action_bonus_->id());
 
 	//
+	// Timer reset button
+	//
+	connect_signal_mouse_left_click(
+		find_widget<button>(&win, "reset_timer_defaults", false),
+		std::bind(&mp_create_game::reset_timer_settings, this));
+
+	//
 	// Disable certain settings if we're playing a local game.
 	//
-
 	if(local_mode_) {
 		find_widget<text_box>(&win, "game_name", false).set_active(false);
 		find_widget<text_box>(&win, "game_password", false).set_active(false);
 
-		observers_->widget_set_enabled(win, false, false);
-		strict_sync_->widget_set_enabled(win, false, false);
-		private_replay_->widget_set_enabled(win, false, false);
+		observers_->widget_set_enabled(false, false);
+		strict_sync_->widget_set_enabled(false, false);
+		private_replay_->widget_set_enabled(false, false);
 	}
 
 	//
@@ -352,9 +336,9 @@ void mp_create_game::pre_show(window& win)
 	plugins_context_->set_callback("load",   [this](const config&) { load_game_callback(); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
-	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(win, cfg[#field].convert()); } } while(false) \
+	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(cfg[#field].convert()); } } while(false) \
 
-	plugins_context_->set_callback("update_settings", [this, &win](const config& cfg) {
+	plugins_context_->set_callback("update_settings", [this](const config& cfg) {
 		UPDATE_ATTRIBUTE(turns, to_int);
 		UPDATE_ATTRIBUTE(gold, to_int);
 		UPDATE_ATTRIBUTE(support, to_int);
@@ -387,7 +371,7 @@ void mp_create_game::pre_show(window& win)
 	}, true);
 
 	plugins_context_->set_callback("select_type",  [this](const config& cfg) {
-		create_engine_.set_current_level_type(ng::level::TYPE::string_to_enum(cfg["type"], ng::level::TYPE::SCENARIO)); }, true);
+		create_engine_.set_current_level_type(level_type::get_enum(cfg["type"].str()).value_or(level_type::type::scenario)); }, true);
 
 	plugins_context_->set_callback("select_era",   [this](const config& cfg) {
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
@@ -404,7 +388,7 @@ void mp_create_game::pre_show(window& win)
 			"icon", current_level.icon(),
 			"description", current_level.description(),
 			"allow_era_choice", current_level.allow_era_choice(),
-			"type", create_engine_.current_level_type(),
+			"type", level_type::get_string(create_engine_.current_level_type()),
 		};
 	});
 
@@ -412,7 +396,7 @@ void mp_create_game::pre_show(window& win)
 		const std::string id = cfg["id"].str();
 		return config {
 			"index", create_engine_.find_level_by_id(id).second,
-			"type", create_engine_.find_level_by_id(id).first,
+			"type", level_type::get_string(create_engine_.find_level_by_id(id).first),
 		};
 	});
 
@@ -583,7 +567,7 @@ void mp_create_game::update_games_list()
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
 }
 
-void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::string& level)
+void mp_create_game::display_games_of_type(level_type::type type, const std::string& level)
 {
 	create_engine_.set_current_level_type(type);
 
@@ -592,10 +576,10 @@ void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::stri
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
-		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
+		if(type == level_type::type::campaign || type == level_type::type::sp_campaign) {
 			item["label"] = game->icon();
 			data.emplace("game_icon", item);
 		}
@@ -617,7 +601,7 @@ void mp_create_game::display_games_of_type(ng::level::TYPE type, const std::stri
 		}
 	}
 
-	const bool is_random_map = type == ng::level::TYPE::RANDOM_MAP;
+	const bool is_random_map = type == level_type::type::random_map;
 
 	find_widget<button>(get_window(), "random_map_regenerate", false).set_active(is_random_map);
 	find_widget<button>(get_window(), "random_map_settings", false).set_active(is_random_map);
@@ -653,7 +637,7 @@ void mp_create_game::update_details()
 	styled_widget& players = find_widget<styled_widget>(get_window(), "map_num_players", false);
 	styled_widget& map_size = find_widget<styled_widget>(get_window(), "map_size", false);
 
-	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
+	if(create_engine_.current_level_type() == level_type::type::random_map) {
 		// If the current random map doesn't have data, generate it
 		if(create_engine_.generator_assigned() &&
 			create_engine_.current_level().data()["map_data"].empty() &&
@@ -678,11 +662,11 @@ void mp_create_game::update_details()
 
 	show_description(create_engine_.current_level().description());
 
-	switch(create_engine_.current_level_type().v) {
-		case ng::level::TYPE::SCENARIO:
-		case ng::level::TYPE::USER_MAP:
-		case ng::level::TYPE::USER_SCENARIO:
-		case ng::level::TYPE::RANDOM_MAP: {
+	switch(create_engine_.current_level_type()) {
+		case level_type::type::scenario:
+		case level_type::type::user_map:
+		case level_type::type::user_scenario:
+		case level_type::type::random_map: {
 			ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&create_engine_.current_level());
 
 			assert(current_scenario);
@@ -703,8 +687,8 @@ void mp_create_game::update_details()
 
 			break;
 		}
-		case ng::level::TYPE::CAMPAIGN:
-		case ng::level::TYPE::SP_CAMPAIGN: {
+		case level_type::type::campaign:
+		case level_type::type::sp_campaign: {
 			ng::campaign* current_campaign = dynamic_cast<ng::campaign*>(&create_engine_.current_level());
 
 			assert(current_campaign);
@@ -734,44 +718,44 @@ void mp_create_game::update_details()
 
 void mp_create_game::update_map_settings()
 {
-	window& window = *get_window();
-
 	if(config_engine_->force_lock_settings()) {
-		use_map_settings_->widget_set_enabled(window, false, false);
-		use_map_settings_->set_widget_value(window, true);
+		use_map_settings_->widget_set_enabled(false, false);
+		use_map_settings_->set_widget_value(true);
 	} else {
-		use_map_settings_->widget_set_enabled(window, true, false);
+		use_map_settings_->widget_set_enabled(true, false);
 	}
 
-	const bool use_map_settings = use_map_settings_->get_widget_value(window);
+	const bool use_map_settings = use_map_settings_->get_widget_value();
 
 	config_engine_->set_use_map_settings(use_map_settings);
 
-	fog_            ->widget_set_enabled(window, !use_map_settings, false);
-	shroud_         ->widget_set_enabled(window, !use_map_settings, false);
-	start_time_     ->widget_set_enabled(window, !use_map_settings, false);
+	fog_            ->widget_set_enabled(!use_map_settings, false);
+	shroud_         ->widget_set_enabled(!use_map_settings, false);
+	start_time_     ->widget_set_enabled(!use_map_settings, false);
 
-	turns_          ->widget_set_enabled(window, !use_map_settings, false);
-	gold_           ->widget_set_enabled(window, !use_map_settings, false);
-	support_        ->widget_set_enabled(window, !use_map_settings, false);
-	experience_     ->widget_set_enabled(window, !use_map_settings, false);
+	turns_          ->widget_set_enabled(!use_map_settings, false);
+	gold_           ->widget_set_enabled(!use_map_settings, false);
+	support_        ->widget_set_enabled(!use_map_settings, false);
+	experience_     ->widget_set_enabled(!use_map_settings, false);
 
-	const bool time_limit = time_limit_->get_widget_value(window);
+	const bool time_limit = time_limit_->get_widget_value();
 
-	init_turn_limit_->widget_set_enabled(window, time_limit, false);
-	turn_bonus_     ->widget_set_enabled(window, time_limit, false);
-	reservoir_      ->widget_set_enabled(window, time_limit, false);
-	action_bonus_   ->widget_set_enabled(window, time_limit, false);
+	init_turn_limit_->widget_set_enabled(time_limit, false);
+	turn_bonus_     ->widget_set_enabled(time_limit, false);
+	reservoir_      ->widget_set_enabled(time_limit, false);
+	action_bonus_   ->widget_set_enabled(time_limit, false);
+
+	find_widget<button>(get_window(), "reset_timer_defaults", false).set_active(time_limit);
 
 	if(use_map_settings) {
-		fog_       ->set_widget_value(window, config_engine_->fog_game_default());
-		shroud_    ->set_widget_value(window, config_engine_->shroud_game_default());
-		start_time_->set_widget_value(window, config_engine_->random_start_time_default());
+		fog_       ->set_widget_value(config_engine_->fog_game_default());
+		shroud_    ->set_widget_value(config_engine_->shroud_game_default());
+		start_time_->set_widget_value(config_engine_->random_start_time_default());
 
-		turns_     ->set_widget_value(window, config_engine_->num_turns_default());
-		gold_      ->set_widget_value(window, config_engine_->village_gold_default());
-		support_   ->set_widget_value(window, config_engine_->village_support_default());
-		experience_->set_widget_value(window, config_engine_->xp_modifier_default());
+		turns_     ->set_widget_value(config_engine_->num_turns_default());
+		gold_      ->set_widget_value(config_engine_->village_gold_default());
+		support_   ->set_widget_value(config_engine_->village_support_default());
+		experience_->set_widget_value(config_engine_->xp_modifier_default());
 	}
 }
 
@@ -812,6 +796,20 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 		find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
 	}
+}
+
+void mp_create_game::reset_timer_settings()
+{
+	// This allows the defaults to be returned by the pref getters below
+	preferences::erase("mp_countdown_init_time");
+	preferences::erase("mp_countdown_reservoir_time");
+	preferences::erase("mp_countdown_turn_bonus");
+	preferences::erase("mp_countdown_action_bonus");
+
+	init_turn_limit_->set_widget_value(preferences::countdown_init_time());
+	turn_bonus_->set_widget_value(preferences::countdown_turn_bonus());
+	reservoir_->set_widget_value(preferences::countdown_reservoir_time());
+	action_bonus_->set_widget_value(preferences::countdown_action_bonus());
 }
 
 bool mp_create_game::dialog_exit_hook(window& /*window*/)
@@ -855,16 +853,16 @@ void mp_create_game::post_show(window& window)
 
 	if(get_retval() == retval::OK) {
 		prefs::set_modifications(create_engine_.active_mods());
-		prefs::set_level_type(create_engine_.current_level_type().v);
+		prefs::set_level_type(static_cast<int>(create_engine_.current_level_type()));
 		prefs::set_level(create_engine_.current_level().id());
 		prefs::set_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 
-		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
-			create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+		if(create_engine_.current_level_type() == level_type::type::campaign ||
+			create_engine_.current_level_type() == level_type::type::sp_campaign) {
 			create_engine_.prepare_for_campaign();
-		} else if(create_engine_.current_level_type() == ng::level::TYPE::SCENARIO) {
+		} else if(create_engine_.current_level_type() == level_type::type::scenario) {
 			create_engine_.prepare_for_scenario();
 		} else {
 			// This means define= doesn't work for randomly generated scenarios
@@ -907,37 +905,38 @@ void mp_create_game::post_show(window& window)
 			create_engine_.get_state().set_scenario(scenario);
 		}
 
-		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
+		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value());
 
 		if(!config_engine_->force_lock_settings()) {
 			// Max slider value (in this case, 100) means 'unlimited turns', so pass the value -1
-			const int num_turns = turns_->get_widget_value(window);
+			const int num_turns = turns_->get_widget_value();
 			config_engine_->set_num_turns(num_turns < ::settings::turns_max ? num_turns : - 1);
-			config_engine_->set_village_gold(gold_->get_widget_value(window));
-			config_engine_->set_village_support(support_->get_widget_value(window));
-			config_engine_->set_xp_modifier(experience_->get_widget_value(window));
-			config_engine_->set_random_start_time(start_time_->get_widget_value(window));
-			config_engine_->set_fog_game(fog_->get_widget_value(window));
-			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
+			config_engine_->set_village_gold(gold_->get_widget_value());
+			config_engine_->set_village_support(support_->get_widget_value());
+			config_engine_->set_xp_modifier(experience_->get_widget_value());
+			config_engine_->set_random_start_time(start_time_->get_widget_value());
+			config_engine_->set_fog_game(fog_->get_widget_value());
+			config_engine_->set_shroud_game(shroud_->get_widget_value());
 
 			config_engine_->write_parameters();
 		}
 
-		config_engine_->set_mp_countdown(time_limit_->get_widget_value(window));
-		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value(window));
-		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value(window));
-		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value(window));
-		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
+		config_engine_->set_mp_countdown(time_limit_->get_widget_value());
+		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value());
+		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value());
+		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value());
+		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value());
 
-		config_engine_->set_allow_observers(observers_->get_widget_value(window));
-		config_engine_->set_private_replay(private_replay_->get_widget_value(window));
-		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
-		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
+		config_engine_->set_allow_observers(observers_->get_widget_value());
+		config_engine_->set_private_replay(private_replay_->get_widget_value());
+		config_engine_->set_oos_debug(strict_sync_->get_widget_value());
+		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value());
 
-		config_engine_->set_random_faction_mode(rfm_types_[selected_rfm_index_]);
+		random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+		config_engine_->set_random_faction_mode(type);
 
 		// Since we don't have a field handling this option, we need to save the value manually
-		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
+		prefs::set_random_faction_mode(random_faction_mode::get_string(type));
 
 		// Save custom option settings
 		config_engine_->set_options(options_manager_->get_options_config());

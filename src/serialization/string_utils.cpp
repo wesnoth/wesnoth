@@ -1,17 +1,18 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -601,7 +602,7 @@ static bool is_username_char(char c) {
 }
 
 static bool is_wildcard_char(char c) {
-    return ((c == '?') || (c == '*'));
+	return ((c == '?') || (c == '*'));
 }
 
 bool isvalid_username(const std::string& username) {
@@ -617,13 +618,13 @@ bool isvalid_username(const std::string& username) {
 }
 
 bool isvalid_wildcard(const std::string& username) {
-    const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const std::size_t valid_char =
-			std::count_if(username.begin(), username.end(), is_username_char);
-    const std::size_t wild_char =
-            std::count_if(username.begin(), username.end(), is_wildcard_char);
+		std::count_if(username.begin(), username.end(), is_username_char);
+	const std::size_t wild_char =
+		std::count_if(username.begin(), username.end(), is_wildcard_char);
 	if ((alnum + valid_char + wild_char != username.size())
-			|| valid_char == username.size() || username.empty() )
+		|| valid_char == username.size() || username.empty() )
 	{
 		return false;
 	}
@@ -733,6 +734,20 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 		}
 	} while(wild_matching && !matches && ++current < str.length());
 	return matches;
+}
+
+void to_sql_wildcards(std::string& str, bool underscores)
+{
+	std::replace(str.begin(), str.end(), '*', '%');
+	if(underscores)
+	{
+		std::size_t n = 0;
+		while((n = str.find("_", n)) != std::string::npos)
+		{
+			str.replace(n, 1, "\\_");
+			n += 2;
+		}
+	}
 }
 
 std::string indent(const std::string& string, std::size_t indent_size)

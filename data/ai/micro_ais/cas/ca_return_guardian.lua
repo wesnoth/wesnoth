@@ -33,7 +33,7 @@ function ca_return_guardian:execution(cfg)
     -- In case the return hex is occupied:
     local x, y = return_loc[1], return_loc[2]
     if (guardian.x ~= x) or (guardian.y ~= y) then
-        x, y = wesnoth.find_vacant_tile(x, y, guardian)
+        x, y = wesnoth.paths.find_vacant_hex(x, y, guardian)
     end
 
     local nh = AH.next_hop(guardian, x, y)

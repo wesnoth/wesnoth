@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -23,9 +24,10 @@
 #include "config.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
+struct point;
 
 namespace gui2
 {
@@ -61,15 +63,11 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param canvas          The resulting image will be blitted upon this
-		 *                        canvas.
-		 * @param renderer        The SDL_Renderer to use.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  wfl::map_formula_callable& variables) = 0;
+		virtual void draw(wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{
@@ -84,33 +82,18 @@ public:
 		bool immutable_;
 	};
 
-	typedef std::shared_ptr<shape> shape_ptr;
-	typedef std::shared_ptr<const shape> const_shape_ptr;
-
 	canvas();
 	canvas(const canvas&) = delete;
+	canvas& operator=(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
 
-	~canvas();
-
 	/**
-	 * Draws the canvas.
-	 *
-	 * @param force               If the canvas isn't dirty it isn't redrawn
-	 *                            unless force is set to true.
-	 */
-	void draw(const bool force = false);
-
-	/**
-	 * Blits the canvas unto another surface.
+	 * Draw the canvas' shapes onto the screen.
 	 *
 	 * It makes sure the image on the canvas is up to date. Also executes the
 	 * pre-blitting functions.
-	 *
-	 * @param surf                The surface to blit upon.
-	 * @param rect                The place to blit to.
 	 */
-	void blit(surface& surf, SDL_Rect rect);
+	void draw();
 
 	/**
 	 * Sets the config.
@@ -121,7 +104,6 @@ public:
 	void set_cfg(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
-		invalidate_cache();
 		parse_cfg(cfg);
 	}
 
@@ -135,25 +117,14 @@ public:
 		parse_cfg(cfg);
 	}
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
+	/** Update WFL size variables. */
+	void update_size_variables();
 
-	void set_width(const unsigned width)
-	{
-		w_ = width;
-		set_is_dirty(true);
-		invalidate_cache();
-	}
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	unsigned get_width() const
 	{
 		return w_;
-	}
-
-	void set_height(const unsigned height)
-	{
-		h_ = height;
-		set_is_dirty(true);
-		invalidate_cache();
 	}
 
 	unsigned get_height() const
@@ -161,30 +132,22 @@ public:
 		return h_;
 	}
 
-	surface& surf()
+	void set_size(const point& size);
+
+	void set_variable(const std::string& key, wfl::variant&& value)
 	{
-		return canvas_;
+		variables_.add(key, std::move(value));
 	}
 
-	void set_variable(const std::string& key, const wfl::variant& value)
+	// TODO: highdpi - find everywhere that is calling this, and determine why.
+	void set_is_dirty(bool)
 	{
-		variables_.add(key, value);
-		set_is_dirty(true);
-		invalidate_cache();
-	}
-
-	void set_is_dirty(const bool is_dirty)
-	{
-		is_dirty_ = is_dirty;
+		update_size_variables();
 	}
 
 private:
 	/** Vector with the shapes to draw. */
-	std::vector<shape_ptr> shapes_;
-
-	/** All shapes which have been already drawn. Kept around in case
-	 * the cache needs to be invalidated. */
-	std::vector<shape_ptr> drawn_shapes_;
+	std::vector<std::unique_ptr<shape>> shapes_;
 
 	/**
 	 * The depth of the blur to use in the pre committing.
@@ -196,25 +159,20 @@ private:
 	 */
 	unsigned blur_depth_;
 
-	/** Width of the canvas. */
+	/** Blurred background texture. */
+	texture blur_texture_;
+
+	/** The full width of the canvas. */
 	unsigned w_;
 
-	/** Height of the canvas. */
+	/** The full height of the canvas. */
 	unsigned h_;
-
-	/** The surface we draw all items on. */
-	surface canvas_;
-
-	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
 
 	/** Action function definitions for the canvas. */
 	wfl::action_function_symbol_table functions_;
-
-	/** The dirty state of the canvas. */
-	bool is_dirty_;
 
 	/**
 	 * Parses a config object.
@@ -228,7 +186,6 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
-	void invalidate_cache();
 };
 
 } // namespace gui2

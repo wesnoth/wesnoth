@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2009 - 2018 by Eugen Jiresch
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Eugen Jiresch
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 #pragma once
 
@@ -46,6 +47,7 @@ class tod_manager
 		void set_current_time(int time, int area_index);
 		void set_current_time(int time, const std::string& area_id);
 		void set_area_id(int area_index, const std::string& id);
+		const std::string& get_area_id(int area_index) const;
 
 		/**
 		 * Returns global time of day for the passed turn.
@@ -60,8 +62,12 @@ class tod_manager
 		 * tod areas matter, for_turn = 0 means current turn
 		 * ignoring illumination
 		 */
-		const time_of_day& get_time_of_day(const map_location& loc,
-				int for_turn = 0) const;
+		const time_of_day& get_time_of_day(const map_location& loc, int for_turn = 0) const;
+		/**
+		 * Returns time of day for the passed turn in the specified tod area.
+		 * for_turn = 0 means current turn, ignoring illumination
+		*/
+		const time_of_day& get_area_time_of_day(int area_i, int for_turn = 0) const;
 
 		int get_current_area_time(int index) const;
 
@@ -81,8 +87,8 @@ class tod_manager
 		 * Replace the time of day schedule
 		 */
 		void replace_schedule(const config& time_cfg);
-		void replace_schedule(const std::vector<time_of_day>& schedule);
-		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index);
+		void replace_schedule(const std::vector<time_of_day>& schedule, int initial_time=0);
+		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index, int initial_time=0);
 
 		void replace_area_locations(int index, const std::set<map_location>& locs);
 
@@ -101,6 +107,11 @@ class tod_manager
 		 * @returns The area with id @p id.
 		 */
 		const std::set<map_location>& get_area_by_id(const std::string& id) const;
+
+		/**
+		 * @returns the area ID and index active on the given location.
+		 */
+		std::pair<int, std::string> get_area_on_hex(const map_location& loc) const;
 
 		/**
 		 * Adds a new local time area from config, making it follow its own
@@ -181,6 +192,14 @@ class tod_manager
 		{ return has_tod_bonus_changed_; }
 		int get_max_liminal_bonus() const
 		{ return liminal_bonus_; }
+		void set_max_liminal_bonus(int bonus) {
+			liminal_bonus_ = bonus;
+			has_cfg_liminal_bonus_ = true;
+		}
+		void reset_max_liminal_bonus() {
+			liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times()));
+			has_cfg_liminal_bonus_ = false;
+		}
 	private:
 
 		/**

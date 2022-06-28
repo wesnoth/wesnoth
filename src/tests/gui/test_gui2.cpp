@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 // In this domain since it compares a shared string from this domain.
@@ -31,6 +32,7 @@
 #include "generators/map_create.hpp"
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
+#include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -413,6 +415,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/**** Run the tests. *****/
 
 	/* The modal_dialog classes. */
+	test<addon_auth>();
 	test<addon_connect>();
 	test<addon_license_prompt>();
 	//test<addon_manager>();
@@ -568,6 +571,16 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 }
 
 namespace {
+
+template<>
+struct dialog_tester<addon_auth>
+{
+	config cfg;
+	addon_auth* create()
+	{
+		return new addon_auth(cfg);
+	}
+};
 
 template<>
 struct dialog_tester<addon_connect>
@@ -840,10 +853,9 @@ struct dialog_tester<mp_lobby>
 {
 	config game_config;
 	wesnothd_connection connection;
-	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
 	int selected_game;
-	dialog_tester() : connection("", ""), li(installed_addons)
+	dialog_tester() : connection("", ""), li()
 	{
 	}
 	mp_lobby* create()
@@ -858,6 +870,7 @@ class fake_chat_handler : public events::chat_handler {
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
 	void send_to_server(const config&) {}
+	void clear_messages() {}
 };
 
 template<>
@@ -867,11 +880,10 @@ struct dialog_tester<lobby_player_info>
 	fake_chat_handler ch;
 	wesnothd_connection connection;
 	mp::user_info ui;
-	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
 	dialog_tester()
 		: connection("", "")
-		, ui(c), li(installed_addons)
+		, ui(c), li()
 	{
 	}
 	lobby_player_info* create()

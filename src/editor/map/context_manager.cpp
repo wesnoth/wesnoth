@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "resources.hpp"
@@ -685,12 +687,12 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			continue;
 		}
 
-		const config& generator_cfg = i.child("generator");
-		if(!generator_cfg) {
+		// TODO: we should probably use `child` with a try/catch block once that function throws
+		if(const auto generator_cfg = i.optional_child("generator")) {
+			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
+		} else {
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
 					<< " has map_generation= but no [generator] tag" << std::endl;
-		} else {
-			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg));
 		}
 	}
 }

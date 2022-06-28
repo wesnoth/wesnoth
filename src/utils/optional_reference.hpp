@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2021 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2021 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -22,13 +23,14 @@ namespace utils
  * A simple wrapper class for optional reference types.
  *
  * Since std::optional (as of C++17 at least) does not support reference types (see [1]),
- * the only way to use those is std::optional<std::reference_wrapper>. However, this makes
+ * the only way to use those is std::optional<std::reference_wrapper<T>>. However, this makes
  * the interace messy, as to access the referenced object you need an extra get() call to
  * access the value stored in the reference wrapper.
  *
- * This does not rebind operator=() as std::optional does. Instead, assigning a value
- * to this object will simply change the object to which it points. To change the value
- * of the referred to object, use value() or one of the other operators.
+ * This rebinds operator=() as boost::optional does. Assigning a value to this wrapper will
+ * simply change the object to which it points instead of assigning a value to the referenced
+ * object. To change the value of the referenced object, perform an assignment on value()
+ * or operator*.
  *
  * [1] https://www.fluentcpp.com/2018/10/05/pros-cons-optional-references/
  */
@@ -69,7 +71,7 @@ public:
 		return *this;
 	}
 
-	operator bool() const
+	explicit operator bool() const
 	{
 		return opt_.has_value();
 	}

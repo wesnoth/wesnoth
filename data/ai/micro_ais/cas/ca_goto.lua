@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
@@ -8,7 +7,7 @@ local M = wesnoth.map
 
 local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.current.map[{x, y}]
-    local move_cost = unit:movement(terrain)
+    local move_cost = unit:movement_on(terrain)
 
     if avoid_map and avoid_map:get(x, y) then
         move_cost = move_cost + AH.no_path
@@ -22,7 +21,7 @@ local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, m
     return move_cost
 end
 
-local ca_goto, GO_units, GO_locs, GO_avoid_map = {}
+local ca_goto, GO_units, GO_locs, GO_avoid_map = {}, nil, nil, nil
 
 function ca_goto:evaluation(cfg, data)
     -- If cfg.release_all_units_at_goal is set, check whether the goal has
@@ -69,18 +68,18 @@ function ca_goto:evaluation(cfg, data)
     local locs = {}
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
-        local str = 'goal_taken_' .. (wesnoth.current.turn - 1)
+        local str1 = 'goal_taken_' .. (wesnoth.current.turn - 1)
         local old_goals = MAISD.get_mai_self_data(data, cfg.ai_id)
         for goal,_ in pairs(old_goals) do
-            if string.find(goal, str) then
+            if string.find(goal, str1) then
                 old_goals[goal] = nil  -- This also removes it from data
             end
         end
 
         -- Now on to the current turn
         for _,loc in ipairs(valid_locs) do
-            local str = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
-            if (not MAISD.get_mai_self_data(data, cfg.ai_id, str)) then
+            local str2 = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
+            if (not MAISD.get_mai_self_data(data, cfg.ai_id, str2)) then
                 table.insert(locs, loc)
             end
         end
@@ -122,7 +121,7 @@ function ca_goto:execution(cfg, data)
             enemy_map:insert(enemy.x, enemy.y, (enemy_map:get(enemy.x, enemy.y) or 0) + 1000)
         end
         for _,enemy in ipairs(live_enemies) do
-            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
                 enemy_map:insert(xa, ya, (enemy_map:get(xa, ya) or 0) + 10)
             end
         end
@@ -130,7 +129,7 @@ function ca_goto:execution(cfg, data)
         enemy_attack_map = BC.get_attack_map(live_enemies)
     end
 
-    local max_rating, closest_hex, best_path, best_unit = - math.huge
+    local max_rating, closest_hex, best_path, best_unit = - math.huge, nil, nil, nil
     for _,unit in ipairs(units) do
         for _,loc in ipairs(locs) do
             -- If cfg.use_straight_line is set, we simply find the closest
@@ -151,7 +150,7 @@ function ca_goto:execution(cfg, data)
             else  -- Otherwise find the best path to take
                 local path, cost
                 if avoid_enemies then
-                    path, cost = wesnoth.find_path(unit, loc[1], loc[2], {
+                    path, cost = wesnoth.paths.find_path(unit, loc[1], loc[2], {
                         calculate = function(x, y, current_cost)
                             return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, avoid_enemies)
                         end

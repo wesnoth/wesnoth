@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2016 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -44,7 +45,7 @@ terrain_layers::terrain_layers(display_t& disp, const map_location& loc)
 
 void terrain_layers::pre_show(window& window)
 {
-    //
+	//
 	// List terrain flags
 	//
 	std::vector<std::string> flags(tile_->flags.begin(), tile_->flags.end());
@@ -72,8 +73,8 @@ void terrain_layers::pre_show(window& window)
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc_cut = img.get_loc();
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << (ri->is_background() ? "B ": "F ") << order).str();
 		data.emplace("index", item);
@@ -83,7 +84,7 @@ void terrain_layers::pre_show(window& window)
 		const int tz = game_config::tile_size;
 		SDL_Rect r {0,0,tz,tz};
 
-		surface surf = image::get_image(img.get_filename());
+		const point img_size = image::get_size(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
 		if(loc_cut.valid()) {
@@ -96,8 +97,8 @@ void terrain_layers::pre_show(window& window)
 			};
 
 			if(img.get_center_x() >= 0 && img.get_center_y() >= 0) {
-				r.x += surf->w / 2 - img.get_center_x();
-				r.y += surf->h / 2 - img.get_center_y();
+				r.x += img_size.x / 2 - img.get_center_x();
+				r.y += img_size.y / 2 - img.get_center_y();
 			}
 		}
 
@@ -106,7 +107,7 @@ void terrain_layers::pre_show(window& window)
 		// Cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
 		// TODO: ^ eh? what limitations?
-		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,surf->w,surf->h});
+		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,img_size.x,img_size.y});
 		if(r2.w > 0 && r2.h > 0) {
 			image_steam
 				<< "~BLIT(" << name

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2015 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <boost/test/unit_test.hpp>
@@ -142,12 +143,6 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 {
 	BOOST_CHECK_EQUAL( get_binary_dir_location("images", "."), gamedata + "/images/." );
 
-	// This test depends on get_binary_file_location() deterministically choosing
-	// which order to search the [binary_path] entries, as there are four "images"
-	// directories that could match.
-	BOOST_CHECK_EQUAL( get_binary_file_location("images", "././././././"),
-	                   gamedata + "/images/././././././" );
-
 	BOOST_CHECK_EQUAL( get_binary_file_location("images", "wesnoth-icon.png"),
 	                   gamedata + "/data/core/images/wesnoth-icon.png" );
 
@@ -157,7 +152,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK_EQUAL( get_binary_file_location("sounds", "explosion.ogg"),
 	                   gamedata + "/data/core/sounds/explosion.ogg" );
 
-	BOOST_CHECK_EQUAL( get_independent_image_path("wesnoth-icon.png"),
+	BOOST_CHECK_EQUAL( get_independent_binary_file_path("images", "wesnoth-icon.png"),
 	                   "data/core/images/wesnoth-icon.png" );
 
 	// Inexistent paths are resolved empty.
@@ -167,7 +162,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK( get_binary_file_location("images", "bunnies_and_ponies_and_rainbows_oh_em_gee.psd").empty() );
 	BOOST_CHECK( get_binary_file_location("music", "this_track_does_not_exist.aiff").empty() );
 	BOOST_CHECK( get_binary_file_location("sounds", "rude_noises.aiff").empty() );
-	BOOST_CHECK( get_independent_image_path("dopefish.txt").empty() );
+	BOOST_CHECK( get_independent_binary_file_path("images", "dopefish.txt").empty() );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )

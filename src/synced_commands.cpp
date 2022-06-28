@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #include "synced_commands.hpp"
 #include <cassert>
 
@@ -149,8 +151,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler)
 {
-	const config &destination = child.child("destination");
-	const config &source = child.child("source");
+	const auto destination = child.optional_child("destination");
+	const auto source = child.optional_child("source");
 	//check_checksums(*cfg);
 
 	if (!destination) {
@@ -165,8 +167,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 	//we must get locations by value instead of by references, because the iterators
 	//may become invalidated later
-	const map_location src(source, resources::gamedata);
-	const map_location dst(destination, resources::gamedata);
+	const map_location src(source.value(), resources::gamedata);
+	const map_location dst(destination.value(), resources::gamedata);
 
 	int weapon_num = child["weapon"];
 	// having defender_weapon in the replay fixes a bug (OOS) where one player (or observer) chooses a different defensive weapon.
@@ -322,14 +324,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 {
 	bool undoable = true;
 
-	if(const config &last_select = child.child("last_select"))
+	if(const auto last_select = child.optional_child("last_select"))
 	{
 		//the select event cannot clear the undo stack.
-		resources::game_events->pump().fire("select", map_location(last_select, resources::gamedata));
+		resources::game_events->pump().fire("select", map_location(last_select.value(), resources::gamedata));
 	}
 	const std::string &event_name = child["raise"];
-	if (const config &source = child.child("source")) {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source, resources::gamedata)));
+	if (const auto source = child.optional_child("source")) {
+		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata)));
 	} else {
 		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
 	}

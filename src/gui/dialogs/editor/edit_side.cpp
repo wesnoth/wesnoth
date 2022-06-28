@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Fabian Müller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Fabian Müller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -51,15 +52,15 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 
 void editor_edit_side::pre_show(window& window)
 {
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_human", false, true), team::CONTROLLER::HUMAN);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_ai", false, true),    team::CONTROLLER::AI);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_null", false, true),  team::CONTROLLER::EMPTY);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_human", false, true), side_controller::type::human);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_ai", false, true),    side_controller::type::ai);
+	controller_group.add_member(find_widget<toggle_button>(&window, "controller_null", false, true),  side_controller::type::none);
 
 	controller_group.set_member_states(controller_);
 
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_all", false, true),    team::SHARE_VISION::ALL);
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_shroud", false, true), team::SHARE_VISION::SHROUD);
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_null", false, true),   team::SHARE_VISION::NONE);
+	vision_group.add_member(find_widget<toggle_button>(&window, "vision_all", false, true),    team_shared_vision::type::all);
+	vision_group.add_member(find_widget<toggle_button>(&window, "vision_shroud", false, true), team_shared_vision::type::shroud);
+	vision_group.add_member(find_widget<toggle_button>(&window, "vision_null", false, true),   team_shared_vision::type::none);
 
 	vision_group.set_member_states(share_vision_);
 

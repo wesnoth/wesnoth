@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "filesystem.hpp"
@@ -90,6 +91,16 @@ const t_string& symbol_table::operator[](const char* key) const
 	return (*this)[std::string(key)];
 }
 
+utils::string_map::const_iterator symbol_table::find(const std::string& key) const
+{
+	return strings_.find(key);
+}
+
+utils::string_map::const_iterator symbol_table::end() const
+{
+	return strings_.end();
+}
+
 bool load_language_list()
 {
 	config cfg;
@@ -113,13 +124,13 @@ bool load_language_list()
 	return true;
 }
 
-language_list get_languages()
+language_list get_languages(bool all)
 {
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 
-	if(min_translation_percent == 0) {
+	if(all || min_translation_percent == 0) {
 		return known_languages;
 	}
 

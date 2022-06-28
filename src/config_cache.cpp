@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Pauli Nieminen <paniemin@cc.hut.fi>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -27,7 +28,6 @@
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
-#include <SDL2/SDL_platform.h>
 
 static lg::log_domain log_cache("cache");
 #define ERR_CACHE LOG_STREAM(err, log_cache)
@@ -46,7 +46,7 @@ void add_builtin_defines(preproc_map& target)
 	target["APPLE"] = preproc_define();
 #endif
 
-#if defined(MOUSE_TOUCH_EMULATION) || defined(__IPHONEOS__)
+#if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
 	target["IPHONEOS"] = preproc_define();
 #endif
 
@@ -179,7 +179,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		// Use a hash for a shorter display of the defines.
 		const std::string fname = cache_path + "/" +
 								  cache_file_prefix_ +
-								  utils::sha1(defines_string.str()).hex_digest();
+								  utils::md5(defines_string.str()).hex_digest();
 		const std::string fname_checksum = fname + ".checksum" + extension;
 
 		filesystem::file_tree_checksum dir_checksum;
@@ -271,7 +271,7 @@ void config_cache::read_defines_file(const std::string& file_path)
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
-	for(const config::any_child &value : cfg.all_children_range()) {
+	for(const config::any_child value : cfg.all_children_range()) {
 		config_cache_transaction::instance().insert_to_active(
 			preproc_define::read_pair(value.cfg));
 	}

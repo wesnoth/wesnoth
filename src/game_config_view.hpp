@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2022
+	by Andrius Silinskas <silinskas.andrius@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -26,13 +27,12 @@ class game_config_view
 
 public:
 	game_config_view()
-   {
+	{}
 
-   }
-
-   static game_config_view wrap(const config& cfg) {
-      return game_config_view(cfg);
-   }
+	static game_config_view wrap(const config& cfg)
+	{
+		return game_config_view(cfg);
+	}
 
 	config_array_view child_range(config_key_type key) const;
 
@@ -45,17 +45,17 @@ public:
 	game_config_view merged_children_view(config_key_type key) const;
 
 
-   config_array_view& data()
-   {
-      return cfgs_;
-   }
+	config_array_view& data()
+	{
+		return cfgs_;
+	}
 
 private:
 
 	explicit game_config_view(const config& cfg)
-      : cfgs_()
-   {
-      cfgs_.push_back(cfg);
-   }
-   config_array_view cfgs_;
+		: cfgs_()
+	{
+		cfgs_.push_back(cfg);
+	}
+	config_array_view cfgs_;
 };

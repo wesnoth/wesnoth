@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_initialization/singleplayer.hpp"
@@ -34,10 +35,10 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	while(true) {
 		ng::create_engine create_eng(state);
-		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
+		create_eng.set_current_level_type(level_type::type::sp_campaign);
 
 		const std::vector<ng::create_engine::level_ptr> campaigns =
-			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
+			create_eng.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
 		if(campaigns.empty()) {
 			gui2::show_error_message(_("No campaigns are available."));

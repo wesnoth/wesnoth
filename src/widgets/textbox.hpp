@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -81,7 +82,7 @@ private:
 	//the cursor should be inverted every 500 ms.
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
-	surface text_image_;
+	texture text_image_;
 
 	bool wrap_;
 
@@ -106,7 +107,7 @@ private:
 
 	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
-	surface add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
+	texture add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 

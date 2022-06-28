@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -50,6 +51,7 @@ void arrow::hide()
 {
 	if(hidden_)
 		return;
+
 	hidden_ = true;
 
 	if(display* disp = display::get_singleton()) {
@@ -62,6 +64,7 @@ void arrow::show()
 {
 	if(!hidden_)
 		return;
+
 	hidden_ = false;
 
 	if(display* disp = display::get_singleton()) {
@@ -139,16 +142,13 @@ void arrow::draw_hex(const map_location& hex)
 	{
 		display* disp = display::get_singleton();
 		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
-					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
+					hex, symbols_map_[hex]);
 	}
 }
 
 bool arrow::valid_path(const arrow_path_t& path)
 {
-	if (path.size() >= 2)
-		return true;
-	else
-		return false;
+	return (path.size() >= 2);
 }
 
 void arrow::update_symbols()

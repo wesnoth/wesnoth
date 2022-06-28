@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/manager_ui.hpp"
@@ -18,6 +19,7 @@
 #include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -37,6 +39,7 @@ static lg::log_domain log_filesystem("filesystem");
 static lg::log_domain log_addons_client("addons-client");
 
 #define ERR_CFG LOG_STREAM(err,   log_config)
+#define INFO_CFG LOG_STREAM(info, log_config)
 
 #define ERR_NET LOG_STREAM(err,   log_network)
 
@@ -270,18 +273,49 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 		}
 
 		bool return_value = true;
-		for(const std::string & addon_id : addon_ids) {
+		std::ostringstream os;
+		for(const std::string& addon_id : addon_ids) {
 			addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
+				const std::string addon_dir = filesystem::get_addons_dir()+"/"+addon_id;
+				const std::string info_cfg = addon_dir+"/_info.cfg";
+
+				// no _info.cfg, so either there's a _server.pbl or there's no version information available at all, so this add-on can be skipped
+				if(filesystem::file_exists(addon_dir) && !filesystem::file_exists(info_cfg)) {
+					INFO_CFG << "No _info.cfg exists for '" << addon_id << "', skipping update.\n";
+					continue;
+				}
+
+				// if _info.cfg exists, compare the local vs remote add-on versions to determine whether a download is needed
+				if(filesystem::file_exists(info_cfg)) {
+					game_config::config_cache& cache = game_config::config_cache::instance();
+					config info;
+					cache.get_config(info_cfg, info);
+					version_info installed_addon_version(info.child_or_empty("info")["version"]);
+
+					// if the installed version is outdated, download the most recent version from the add-ons server
+					if(installed_addon_version >= addon.current_version) {
+						continue;
+					}
+				}
+
+				// if the add-on exists locally and needs to be updated, or it doesn't exist and needs to be downloaded
 				addons_client::install_result res = client.install_addon_with_checks(addons, addon);
 				return_value = return_value && (res.outcome == addons_client::install_outcome::success);
 			} else {
-				utils::string_map symbols;
-				symbols["addon_id"] = addon_id;
-				gui2::show_error_message(VGETTEXT("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
+				if(!return_value) {
+					os << ", ";
+				}
+				os << addon_id;
 				return_value = false;
 			}
+		}
+
+		if(!return_value) {
+			utils::string_map symbols;
+			symbols["addon_ids"] = os.str();
+			gui2::show_error_message(VGETTEXT("Could not find add-ons matching the ids $addon_ids on the add-on server.", symbols));
 		}
 
 		return return_value;

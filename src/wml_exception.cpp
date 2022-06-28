@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -28,6 +29,9 @@
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 void throw_wml_exception(
 		  const char* cond
@@ -149,12 +153,9 @@ const config::attribute_value& get_renamed_config_attribute(
 
 	result = cfg.get(deprecated_key);
 	if(result) {
-		lg::wml_error()
-			<< deprecated_renamed_wml_key_warning(
-				  deprecated_key
-				, key
-				, removal_version)
-			<< '\n';
+		std::string msg = deprecated_renamed_wml_key_warning(deprecated_key, key, removal_version);
+		lg::log_to_chat() << msg << '\n';
+		ERR_WML << msg;
 
 		return *result;
 	}

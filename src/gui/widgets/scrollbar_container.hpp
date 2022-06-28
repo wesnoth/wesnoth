@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -136,6 +137,11 @@ public:
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
+
+	/**
+	 * See @ref widget::create_walker.
+	 */
+	virtual iteration::walker_ptr create_walker() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -504,7 +510,7 @@ private:
 	virtual void layout_children() override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	/** See @ref widget::child_populate_dirty_list. */
 	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;

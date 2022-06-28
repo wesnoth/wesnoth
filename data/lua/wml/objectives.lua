@@ -42,7 +42,7 @@ local function generate_objectives(cfg)
 
 	for obj in wml.child_range(cfg, "objective") do
 		local show_if = wml.get_child(obj, "show_if")
-		if not show_if or wesnoth.eval_conditional(show_if) then
+		if not show_if or wml.eval_conditional(show_if) then
 			local objective_bullet = obj.bullet or bullet
 			local condition = obj.condition
 			local description = obj.description or ""
@@ -50,7 +50,7 @@ local function generate_objectives(cfg)
 
 			if obj.show_turn_counter then
 				local current_turn = wesnoth.current.turn
-				local turn_limit = wesnoth.game_config.last_turn
+				local turn_limit = wesnoth.scenario.turns
 
 				if turn_limit >= current_turn then
 					local turn_count = turn_limit - current_turn + 1
@@ -87,14 +87,14 @@ local function generate_objectives(cfg)
 					.. color_prefix(r, g, b) .. objective_bullet.. description
 					.. turn_counter .. "</span>" .. "\n"
 			else
-				wesnoth.message "Unknown condition, ignoring."
+				wesnoth.interface.add_chat_message "Unknown condition, ignoring."
 			end
 		end
 	end
 
 	for obj in wml.child_range(cfg, "gold_carryover") do
 		local show_if = wml.get_child(obj, "show_if")
-		if not show_if or wesnoth.eval_conditional(show_if) then
+		if not show_if or wml.eval_conditional(show_if) then
 			local gold_carryover_bullet = obj.bullet or bullet
 			local r = obj.red or 255
 			local g = obj.green or 255
@@ -128,7 +128,7 @@ local function generate_objectives(cfg)
 
 	for note in wml.child_range(cfg, "note") do
 		local show_if = wml.get_child(note, "show_if")
-		if not show_if or wesnoth.eval_conditional(show_if) then
+		if not show_if or wml.eval_conditional(show_if) then
 			local note_bullet = note.bullet or bullet
 			local r = note.red or 255
 			local g = note.green or 255

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -17,6 +18,7 @@
 #include "gui/widgets/pane.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
@@ -63,9 +65,7 @@ struct pane_implementation
 			return nullptr;
 		}
 
-		for(auto item : pane->items_)
-		{
-
+		for(auto& item : pane->items_) {
 			if(item.item_grid->get_visible() == widget::visibility::invisible) {
 				continue;
 			}
@@ -92,11 +92,9 @@ struct pane_implementation
 	static utils::const_clone_ptr<grid, W>
 	get_grid(W pane, const unsigned id)
 	{
-		for(auto item : pane->items_)
-		{
-
+		for(auto& item : pane->items_) {
 			if(item.id == id) {
-				return item.item_grid;
+				return item.item_grid.get();
 			}
 		}
 
@@ -109,7 +107,7 @@ pane::pane(const implementation::builder_pane& builder)
 	, items_()
 	, item_builder_(builder.item_definition)
 	, item_id_generator_(0)
-	, placer_(placer_base::build(builder.grow_direction, builder.parallel_items))
+	, placer_(placer_base::build(builder.grow_dir, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
@@ -117,29 +115,24 @@ pane::pane(const implementation::builder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-pane* pane::build(const implementation::builder_pane& builder)
-{
-	return new pane(builder);
-}
-
-unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
+unsigned pane::create_item(const widget_data& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	item item = { item_id_generator_++, tags, item_builder_->build() };
+	item item{item_id_generator_++, tags, std::unique_ptr<grid>{static_cast<grid*>(item_builder_->build().release())}};
 
 	item.item_grid->set_parent(this);
 
 	for(const auto & data : item_data)
 	{
 		styled_widget* control
-				= find_widget<styled_widget>(item.item_grid, data.first, false, false);
+				= find_widget<styled_widget>(item.item_grid.get(), data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
 		}
 	}
 
-	items_.push_back(item);
+	items_.push_back(std::move(item));
 
 	event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
@@ -172,15 +165,14 @@ void pane::layout_initialize(const bool full_initialization)
 	}
 }
 
-void
-pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void pane::impl_draw_children()
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->draw_children(frame_buffer, x_offset, y_offset);
+			item.item_grid->draw_children();
 		}
 	}
 }
@@ -240,7 +232,7 @@ bool pane::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* pane::create_walker()
+iteration::walker_ptr pane::create_walker()
 {
 	/**
 	 * @todo Implement properly.
@@ -374,22 +366,21 @@ namespace implementation
 
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
-	, grow_direction(
-			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
+	, grow_dir(*grow_direction::get_enum(cfg["grow_direction"].str()))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-widget* builder_pane::build() const
+std::unique_ptr<widget> builder_pane::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_pane::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_pane::build(const replacements_map& /*replacements*/) const
 {
-	return pane::build(*this);
+	return std::make_unique<pane>(*this);
 }
 
 } // namespace implementation

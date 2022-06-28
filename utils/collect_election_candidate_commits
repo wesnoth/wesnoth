@@ -1,0 +1,144 @@
+#!/bin/bash
+# Collect a log of candidate commits for consideration of commit authors as
+# active developers according to https://www.wesnoth.org/constitution/
+#   ("tangible output [...] at least once every three months within the last 12 calendar months"
+#   for project manager: "increased to 18 calendar months")
+#
+# Note: Devs not committing their work themselves or devs performing
+#       housekeeping are naturally not considered here!
+#
+# First optional argument is the stable release date in ISO 8601 format.
+#   Default: 2021-10-24 (1.16 release date)
+# Second optional argument is the path to a wesnoth repo checkout.
+#   Default: . (current dir)
+# The repo checkout must contain local tracking branches of all relevant stable
+# branches or they won't be considered.
+#
+# Output is written to a new dir: wesnoth-election-<year>
+# - There will be a complete commit log (commits-by-author.log) of the 18
+#   months before the stable release.
+# - A subdir "dev_candidate" with files that contain the commit log of single
+#   authors that have at least one commit in each 3 month time span in the last
+#   12 months.
+# - A subdir "pm_candidate" with files that contain the commit log of single
+#   authors that have at least one commit in each 3 month time span in the last
+#   18 months (only commits from 12 to 18 months back are in the file so only
+#   what's not already in the dev log).
+#
+# Github commit graphs can be used to somewhat double check against:
+#   https://github.com/wesnoth/wesnoth/graphs/contributors?from=2020-04-24&to=2021-10-24&type=c
+# Though the graph just shows the default branch (master) while this script
+# considers master and stable branches (1.*).
+#
+# Expects GNU date for the date calculations.
+
+
+# stable release date in ISO 8601 format
+release_date=${1-2021-10-24}
+
+# location of wesnoth repo checkout, default to current dir
+repo_dir=${2-.}
+
+
+git -C "$repo_dir" rev-parse --git-dir >/dev/null 2>&1 || { printf '"%s" is not a git repository!\n' "$repo_dir" >&2; exit 1; }
+
+start_date=$(date -d "$release_date - 18 months - 1 week" +%F)
+year=${release_date%%-*}
+output_dir=wesnoth-election-"$year"
+# calculate start and end UNIX epoch for 3 month time spans with a week grace period
+date6=$(date -d "$release_date - 18 months" +%s) date6s=$(date -d "$release_date - 18 months - 1 week" +%s) date6e=$(date -d "$release_date - 15 months+1 week" +%s)
+date5=$(date -d "$release_date - 15 months" +%s) date5s=$(date -d "$release_date - 15 months - 1 week" +%s) date5e=$(date -d "$release_date - 12 months+1 week" +%s)
+date4=$(date -d "$release_date - 12 months" +%s) date4s=$(date -d "$release_date - 12 months - 1 week" +%s) date4e=$(date -d "$release_date -  9 months+1 week" +%s)
+date3=$(date -d "$release_date -  9 months" +%s) date3s=$(date -d "$release_date -  9 months - 1 week" +%s) date3e=$(date -d "$release_date -  6 months+1 week" +%s)
+date2=$(date -d "$release_date -  6 months" +%s) date2s=$(date -d "$release_date -  6 months - 1 week" +%s) date2e=$(date -d "$release_date -  3 months+1 week" +%s)
+date1=$(date -d "$release_date -  3 months" +%s) date1s=$(date -d "$release_date -  3 months - 1 week" +%s) date1e=$(date -d "$release_date" +%s)
+commitlog=commits-by-author.log
+
+#printf '%s - %s\n' "$date1s" "$date1e" "$date2s" "$date2e" "$date3s" "$date3e" "$date4s" "$date4e"
+
+mkdir "$output_dir" || exit
+cd "$output_dir" || exit
+
+# get all commits in tsv-format: <author> <commit date as UNIX epoch> <relative commit date> <commit hash> <subject> (<committer>)
+# GIT_TEST_DATE_NOW makes the relative dates relative to that timestamp
+gitlog() {
+	GIT_TEST_DATE_NOW=$date1e git -C "$repo_dir" log --branches=master --branches='1.*' $'--pretty=format:%an\t%ct\t%ci (%cr)\t%h\t%s\t(%cn)' --before="$release_date" "$@"
+}
+gitlog --since="$start_date" | sort > "$commitlog"
+
+# get authors with commits in each time span
+declare -A span1 span2 span3 span4 span5 span6
+while IFS=$'\t' read -r author date rest
+do
+	author=${author,,}
+	# there is no a >= b so need to write ! a < b
+	if [[ ! $date < $date1s && ! $date > $date1e ]]; then span1[$author]=1; continue; fi
+	if [[ ! $date < $date2s && ! $date > $date2e ]]; then span2[$author]=1; continue; fi
+	if [[ ! $date < $date3s && ! $date > $date3e ]]; then span3[$author]=1; continue; fi
+	if [[ ! $date < $date4s && ! $date > $date4e ]]; then span4[$author]=1; continue; fi
+	if [[ ! $date < $date5s && ! $date > $date5e ]]; then span5[$author]=1; continue; fi
+	if [[ ! $date < $date6s && ! $date > $date6e ]]; then span6[$author]=1; continue; fi
+done < "$commitlog"
+
+# check for at least one commit in the last 4 3 month time spans
+dev_candidate() { [[ ${span1[$author]+exists} && ${span2[$author]+exists} && ${span3[$author]+exists} && ${span4[$author]+exists} ]]; }
+# check for at least one commit in the last 6 3 month time spans
+pm_candidate() { [[ ${span1[$author]+exists} && ${span2[$author]+exists} && ${span3[$author]+exists} && ${span4[$author]+exists} && ${span5[$author]+exists} && ${span6[$author]+exists} ]]; }
+
+mkdir {dev,pm}_candidate || exit
+
+print_commit() {
+	if [[ $1 ]]
+	then
+		# print timestamp if date crosses a 3 month date limit
+		if [[ $1 < $date1 && ! $2 < $date1 ]]
+		then
+			printf '%(%F %T)T 3 months back\n' "$date1"
+		elif [[ $1 < $date2 && ! $2 < $date2 ]]
+		then
+			printf '%(%F %T)T 6 months back\n' "$date2"
+		elif [[ $1 < $date3 && ! $2 < $date3 ]]
+		then
+			printf '%(%F %T)T 9 months back\n' "$date3"
+		elif [[ $1 < $date4 && ! $2 < $date4 ]]
+		then
+			printf '%(%F %T)T 12 months back\n' "$date4"
+		elif [[ $1 < $date5 && ! $2 < $date5 ]]
+		then
+			printf '%(%F %T)T 15 months back\n' "$date5"
+		elif [[ $1 < $date6 && ! $2 < $date6 ]]
+		then
+			printf '%(%F %T)T 18 months back\n' "$date6"
+		fi
+	fi
+	printf '%s\t%s\n' "$3" "$4"
+}
+
+# write commits of each active dev candidate to its own file, write commits in the extended project manager period to a separate pm file
+# appending each commit instead of opening the file just once so we don't get empty files for authors not passing the checks.
+prev_date= prev_author=
+while IFS=$'\t' read -r author date rest
+do
+	author=${author,,}
+	if [[ $prev_author != $author ]]
+	then
+		prev_date=
+	fi
+	prev_author=$author
+
+	if [[ ! $date > $date4s ]]
+	then
+		if pm_candidate "$author"
+		then
+			print_commit "$prev_date" "$date" "$author" "$rest" >> "pm_candidate/$author"
+			prev_date=$date
+		fi
+		continue
+	fi
+
+	if dev_candidate "$author"
+	then
+		print_commit "$prev_date" "$date" "$author" "$rest" >> "dev_candidate/$author"
+		prev_date=$date
+	fi
+done < "$commitlog"

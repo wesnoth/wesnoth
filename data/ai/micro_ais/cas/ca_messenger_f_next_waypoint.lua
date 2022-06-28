@@ -17,7 +17,7 @@ return function(cfg)
 
     -- Set the next waypoint for all messengers
     -- Also find those with MP left and return the one to next move, together with the WP to move toward
-    local max_rating, best_messenger, x, y = - math.huge
+    local max_rating, best_messenger, x, y = - math.huge, nil, nil, nil
     for _,messenger in ipairs(messengers) do
         -- To avoid code duplication and ensure consistency, we store some pieces of
         -- information in the messenger units, even though it could be calculated each time it is needed

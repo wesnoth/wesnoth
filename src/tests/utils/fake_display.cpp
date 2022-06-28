@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Pauli Nieminen <paniemin@cc.hut.fi>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
@@ -66,7 +67,7 @@ fake_display_manager::fake_display_manager()
 	, dummy_cfg2_()
 	, dummy_board_(dummy_cfg2_)
 	, main_event_context_()
-	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, dummy_cfg_, dummy_cfg_)
+	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
 }
 

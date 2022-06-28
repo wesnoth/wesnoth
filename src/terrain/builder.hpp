@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2004 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2004 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -859,8 +860,8 @@ private:
 	bool draw_border_;
 
 	/** Parsed terrain rules. Cached between instances */
-	static building_ruleset building_rules_;
+	static inline building_ruleset building_rules_{};
 
 	/** Config used to parse global terrain rules */
-	static const game_config_view* rules_cfg_;
+	static const inline game_config_view* rules_cfg_ = nullptr;
 };

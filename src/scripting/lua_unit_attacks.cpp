@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_unit_attacks.hpp"
@@ -24,7 +25,6 @@
 #include "utils/const_clone.hpp"
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 
 #include <type_traits>
 
@@ -222,8 +222,8 @@ static int impl_unit_attacks_len(lua_State *L)
 static int impl_unit_attacks_next(lua_State *L)
 {
 	lua_len(L, 1);
-	int n = luaL_checknumber(L, 2) + 1;
-	int max_n = luaL_checknumber(L, -1);
+	int n = luaL_checkinteger(L, 2) + 1;
+	int max_n = luaL_checkinteger(L, -1);
 	if(n > max_n) {
 		return 0;
 	}
@@ -260,8 +260,8 @@ static int impl_unit_attack_get(lua_State *L)
 	return_string_attrib("range", attack.range());
 	return_int_attrib("damage", attack.damage());
 	return_int_attrib("number", attack.num_attacks());
-	return_int_attrib("attack_weight", attack.attack_weight());
-	return_int_attrib("defense_weight", attack.defense_weight());
+	return_float_attrib("attack_weight", attack.attack_weight());
+	return_float_attrib("defense_weight", attack.defense_weight());
 	return_int_attrib("accuracy", attack.accuracy());
 	return_int_attrib("movement_used", attack.movement_used());
 	return_int_attrib("parry", attack.parry());
@@ -346,7 +346,7 @@ static int impl_unit_attack_collect(lua_State* L)
 	return 0;
 }
 
-static int intf_create_attack(lua_State* L)
+int intf_create_attack(lua_State* L)
 {
 	auto atk = std::make_shared<attack_type>(luaW_checkconfig(L, 1));
 	luaW_pushweapon(L, atk);
@@ -389,12 +389,6 @@ namespace lua_units {
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");
-
-		// Add create_attack
-		luaW_getglobal(L, "wesnoth");
-		lua_pushcfunction(L, intf_create_attack);
-		lua_setfield(L, -2, "create_weapon");
-		lua_pop(L, 1);
 
 		return cmd_out.str();
 	}

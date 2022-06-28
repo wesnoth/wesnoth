@@ -1,22 +1,24 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-help"
 
 #include "help/help_topic_generators.hpp"
 
-#include "font/sdl_ttf.hpp"             // for line_width
+#include "font/sdl_ttf_compat.hpp"
+#include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -152,6 +154,42 @@ std::string terrain_topic_generator::operator()() const {
 		return ss.str();
 	}
 
+	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
+	// to add their own via a [special_note] tag.
+	std::vector<std::string> special_notes;
+
+	if(type_.is_village()) {
+		special_notes.push_back(_("Villages allow any unit stationed therein to heal, or to be cured of poison."));
+	} else if(type_.gives_healing() > 0) {
+		auto symbols = utils::string_map{{"amount", std::to_string(type_.gives_healing())}};
+		// TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+		// For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+		auto message = VNGETTEXT("This terrain allows units to be cured of poison, or to heal a single hitpoint.",
+			"This terrain allows units to heal $amount hitpoints, or to be cured of poison, as if stationed in a village.",
+			type_.gives_healing(), symbols);
+		special_notes.push_back(std::move(message));
+	}
+
+	if(type_.is_castle()) {
+		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
+	}
+	if(type_.is_keep() && type_.is_castle()) {
+		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
+	} else if(type_.is_keep() && !type_.is_castle()) {
+		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
+	}
+
+	if(!special_notes.empty()) {
+		ss << "\n" << _("Special Notes:") << '\n';
+		for(const auto& note : special_notes) {
+			ss << font::unicode_bullet << " " << note << '\n';
+		}
+	}
+
+	// Almost all terrains will show the data in this conditional block. The ones that don't are the
+	// archetypes used in [movetype]'s subtags such as [movement_costs].
 	if (!type_.is_indivisible()) {
 		ss << "\n" << _("Base Terrain: ");
 
@@ -255,7 +293,7 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-	const int screen_width = CVideo::get_singleton().get_width();
+	const int screen_width = CVideo::get_singleton().draw_area().w;
 
 	ss << _("Level") << " " << type_.level();
 	ss << "\n\n";
@@ -443,8 +481,8 @@ std::string unit_topic_generator::operator()() const {
 				std::stringstream random_count;
 				random_count << " (" << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits) << ") : ";
 
-				int second_line_whitespace = font::line_width(traits_label+must_have_count.str(), normal_font_size)
-					- font::line_width(random_count.str(), normal_font_size);
+				int second_line_whitespace = font::pango_line_width(traits_label+must_have_count.str(), normal_font_size)
+					- font::pango_line_width(random_count.str(), normal_font_size);
 				// This ensures that the second line is justified so that the ':' characters are aligned.
 
 				ss << must_have_count.str();
@@ -560,10 +598,10 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the detailed description about the unit.
 	ss << "\n\n" << detailed_description;
-	if(type_.has_special_notes()) {
+	if(const auto notes = type_.special_notes(); !notes.empty()) {
 		ss << "\n\n" << _("Special Notes:") << '\n';
-		for(const auto& note : type_.special_notes()) {
-			ss << "• " << note << '\n';
+		for(const auto& note : notes) {
+			ss << font::unicode_bullet << " " << note << '\n';
 		}
 	}
 
@@ -635,7 +673,7 @@ std::string unit_topic_generator::operator()() const {
 						attack_ss << ", "; //comma placed before next special
 					}
 				}
-				row.emplace_back(attack_ss.str(), font::line_width(lang_special, normal_font_size));
+				row.emplace_back(attack_ss.str(), font::pango_line_width(lang_special, normal_font_size));
 			}
 			table.push_back(row);
 		}
@@ -687,7 +725,7 @@ std::string unit_topic_generator::operator()() const {
 		const std::string markup = str.str();
 		str.str(clear_stringstream);
 		str << resist;
-		row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+		row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 		resistance_table.push_back(row);
 	}
 	ss << generate_table(resistance_table);
@@ -759,7 +797,7 @@ std::string unit_topic_generator::operator()() const {
 
 			row.emplace_back("<img>src='" + final_image + "'</img> " +
 					make_link(m.name, "..terrain_" + m.id),
-				font::line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
+				font::pango_line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
 
 			//defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
@@ -770,7 +808,7 @@ std::string unit_topic_generator::operator()() const {
 			std::string markup = str.str();
 			str.str(clear_stringstream);
 			str << m.defense << "%";
-			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
@@ -795,7 +833,7 @@ std::string unit_topic_generator::operator()() const {
 			markup = str.str();
 			str.str(clear_stringstream);
 			str << m.movement_cost;
-			row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 
 			//defense cap
 			if (has_terrain_defense_caps) {
@@ -813,7 +851,7 @@ std::string unit_topic_generator::operator()() const {
 				} else {
 					str << font::unicode_figure_dash;
 				}
-				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 			}
 
 			//vision
@@ -840,7 +878,7 @@ std::string unit_topic_generator::operator()() const {
 				markup = str.str();
 				str.str(clear_stringstream);
 				str << m.vision_cost;
-				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
+				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
 			}
 
 			//jamming
@@ -879,7 +917,7 @@ std::string unit_topic_generator::operator()() const {
 }
 
 void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
-	row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
+	row.emplace_back(bold(name), font::pango_line_width(name, normal_font_size, font::pango_text::STYLE_BOLD));
 }
 
 } // end namespace help

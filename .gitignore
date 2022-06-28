@@ -18,6 +18,16 @@ CPack*Config.cmake
 uninstall.cmake
 CMakeCache.txt
 install_manifest.txt
+out/**/*
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/*
+doc/CTestTestfile.cmake
+doc/design/CTestTestfile.cmake
+doc/man/CTestTestfile.cmake
+doc/manual/CTestTestfile.cmake
+src/CTestTestfile.cmake
+src/Testing/
 
 # scons
 .scons-option-cache
@@ -49,25 +59,16 @@ projectfiles/**/*_build_log.html
 projectfiles/**/*objs*
 
 # Visual Studio
-projectfiles/VC*
-!projectfiles/VC16
-projectfiles/VC*/.vs/
-projectfiles/VC*/*.vc.*db
-projectfiles/VC*/*.sdf
-projectfiles/VC*/*.suo
-projectfiles/VC*/*.aps
-projectfiles/VC*/*.user
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-ZERO_CHECK.vcproj
-uninstall.vcproj
-*.vcproj.*.user
-src/**/*.vcproj
-/WindowsTimeout.ilk
-/WindowsTimeout.pdb
 .vscode
 /.vs
+vcpkg_installed/
+*.vcxproj
+*.vcxproj.filters
+doc/**/*.vcxproj
+doc/**/*.vcxproj.filters
+src/**/*.vcxproj
+src/**/*.vcxproj.filters
+vcpkg-manifest-install.log
 
 # CLion
 /.idea

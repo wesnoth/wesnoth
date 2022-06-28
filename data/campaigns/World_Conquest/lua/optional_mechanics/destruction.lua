@@ -19,16 +19,13 @@ local ice = {
 --replaces terrain fo the wct  custom terrain mod.
 local function wct_map_custom_ruin_village(loc)
 	local map = wesnoth.current.map
-	loc = wesnoth.map.get(loc)
-	-- TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
-	if false then
-		if loc:matches{terrain = "*^Vh,*^Vha"} then
-			map[loc] = "^Vhr"
-		end
-		if loc:matches{terrain = "*^Vhc,*^Vhca"} then
-			map[loc] = "^Vhr"
-		end
-	end
+	-- TODO: uncomment once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
+	-- if loc:matches{terrain = "*^Vh,*^Vha"} then
+	-- 	map[loc] = "^Vhr"
+	-- end
+	-- if loc:matches{terrain = "*^Vhc,*^Vhca"} then
+	-- 	map[loc] = "^Vhr"
+	-- end
 end
 
 on_event("die", function(cx)
@@ -37,7 +34,7 @@ on_event("die", function(cx)
 	if wml.variables.wc2_config_enable_terrain_destruction == false then
 		return
 	end
-	if not loc:matches{terrain = "K*^*,C*^*,*^Fet,G*^F*,G*^Uf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*"} then
+	if not loc:matches{terrain = "K*^*,C*^*,*^Fet,G*^F*,G*^Tf,A*,*^B*,Rrc,Iwr,*^Vhh,*^Vh*,*^Fda*"} then
 		return
 	end
 	local function item(image)
@@ -67,7 +64,7 @@ on_event("die", function(cx)
 	elseif loc:matches{terrain = "Kd"} then
 		map[loc] = "Kdr^Es"
 
-	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Uf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Uf"} then
+	elseif loc:matches{terrain = "Gg^Fmf,Gg^Fdf,Gg^Fp,Gg^Tf,Gs^Fmf,Gs^Fdf,Gs^Fp,Gs^Tf"} then
 		map[loc] = "Gll^"
 
 	elseif loc:matches{terrain = "Cv^Fds"} then
@@ -77,15 +74,15 @@ on_event("die", function(cx)
 		map[loc] = "^Fetd"
 
 	elseif loc:matches{terrain = "Aa"} then
-		item(snow[wesnoth.random(#snow)])
+		item(snow[mathx.random(#snow)])
 	elseif loc:matches{terrain = "Ai"} then
-		item(ice[wesnoth.random(#ice)])
+		item(ice[mathx.random(#ice)])
 	elseif loc:matches{terrain = "Ww^Bsb|,Ww^Bsb/,Ww^Bsb\\,Wwt^Bsb|,Wwt^Bsb/,Wwt^Bsb\\,Wwg^Bsb|,Wwg^Bsb/,Wwg^Bsb\\"} then
 		map[loc] = "Wwf^Edt"
-		wesnoth.play_sound("water-blast.wav")
+		wesnoth.audio.play("water-blast.wav")
 		item("scenery/castle-ruins.png")
 	elseif loc:matches{terrain = "Rrc"} then
-		if wesnoth.variables["bonus.theme"] == "paradise" then
+		if wml.variables["bonus.theme"] == "paradise" then
 			wesnoth.wml_actions.remove_item {
 				x = cx.x1,
 				y = cx.y1,
@@ -107,12 +104,10 @@ on_event("die", function(cx)
 		if loc:matches{terrain = "Ch^V*"} then
 			map[loc] = "Chr^"
 		end
-		--  TODO: enable once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
-		if false then
-			if loc:matches{terrain = "*^Fda"} then
-				map[loc] = "^Fdw"
-			end
-		end
+		--  TODO: uncomment once https://github.com/wesnoth/wesnoth/issues/4894 is fixed.
+		-- if loc:matches{terrain = "*^Fda"} then
+		-- 	map[loc] = "^Fdw"
+		-- end
 	else
 		if loc:matches{terrain = "*^Vhh,*^Vhha"} then
 			map[loc] = "^Vhhr"

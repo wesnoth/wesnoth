@@ -6,8 +6,12 @@ ARG BOOST_VERSION_=1_66_0
 RUN apt-get update
 RUN apt-get install -y scons libsdl2-dev libicu-dev libreadline-dev expect-dev
 
-RUN wget --max-redirect 3 https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz
+RUN wget --max-redirect 3 https://boostorg.jfrog.io/artifactory/main/release/$BOOST_VERSION/source/boost_$BOOST_VERSION_.tar.gz
 RUN mkdir -p /src/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /src/boost --strip-components=1
 RUN cd /src/boost && ./bootstrap.sh --with-libraries=iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine && ./b2 toolset=gcc-9 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
 
-RUN mkdir -p /staging/lib64 && cp /usr/lib/libicu*.so.* /lib/x86_64-linux-gnu/libhistory.so.6 /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /staging/lib64/
+RUN wget https://www.openssl.org/source/openssl-1.1.1l.tar.gz --no-check-certificate
+RUN mkdir -p /src/openssl && tar zxf openssl-1.1.1l.tar.gz -C /src/openssl --strip-components=1
+RUN cd /src/openssl && ./config --prefix=/usr/local --openssldir=/etc/ssl && make && make install
+
+RUN mkdir -p /staging/lib64 && cp /usr/lib/libicu*.so.* /lib/x86_64-linux-gnu/libhistory.so.6 /usr/local/lib/libcrypto.so.1.1 /usr/local/lib/libssl.so.1.1 /staging/lib64/

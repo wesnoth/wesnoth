@@ -11,8 +11,8 @@ local function plugin()
 
   local events, context, info
 
-  local function find_test_game(info)
-    local g = info.game_list()
+  local function find_test_game(game_info)
+    local g = game_info.game_list()
     if g then
       local gamelist = wml.get_child(g, "gamelist")
       if gamelist then

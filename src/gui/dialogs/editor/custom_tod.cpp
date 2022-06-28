@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
@@ -221,9 +222,9 @@ void custom_tod::color_slider_callback()
 {
 	time_of_day& current_tod = times_[current_tod_];
 
-	current_tod.color.r = color_field_r_->get_widget_value(*get_window());
-	current_tod.color.g = color_field_g_->get_widget_value(*get_window());
-	current_tod.color.b = color_field_b_->get_widget_value(*get_window());
+	current_tod.color.r = color_field_r_->get_widget_value();
+	current_tod.color.g = color_field_g_->get_widget_value();
+	current_tod.color.b = color_field_b_->get_widget_value();
 
 	update_tod_display();
 }
@@ -280,9 +281,9 @@ void custom_tod::update_selected_tod_info()
 
 	find_widget<slider>(get_window(), "lawful_bonus", false).set_value(current_tod.lawful_bonus);
 
-	color_field_r_->set_widget_value(*get_window(), current_tod.color.r);
-	color_field_g_->set_widget_value(*get_window(), current_tod.color.g);
-	color_field_b_->set_widget_value(*get_window(), current_tod.color.b);
+	color_field_r_->set_widget_value(current_tod.color.r);
+	color_field_g_->set_widget_value(current_tod.color.g);
+	color_field_b_->set_widget_value(current_tod.color.b);
 
 	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
 	find_widget<label>(get_window(), "tod_number", false).set_label(new_index_str);

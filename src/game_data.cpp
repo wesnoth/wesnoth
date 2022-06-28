@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -38,6 +39,7 @@ game_data::game_data(const config& level)
 	, variables_(level.child_or_empty("variables"))
 	, phase_(INITIAL)
 	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, cannot_end_turn_reason_(level["cannot_end_turn_reason"].t_str())
 	, next_scenario_(level["next_scenario"])
 	, id_(level["id"])
 	, theme_(level["theme"])
@@ -131,6 +133,7 @@ void game_data::write_snapshot(config& cfg) const
 	cfg["victory_music"] = utils::join(victory_music_);
 
 	cfg["can_end_turn"] = can_end_turn_;
+	cfg["cannot_end_turn_reason"] = cannot_end_turn_reason_;
 
 	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();

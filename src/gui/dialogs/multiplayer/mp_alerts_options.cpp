@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -53,10 +54,10 @@ static toggle_button * setup_pref_toggle_button(const std::string & id, bool def
 static void setup_item(const std::string & item, window & window)
 {
 	// Set up the sound checkbox
-	setup_pref_toggle_button(item+"_sound", mp_ui_alerts::get_def_pref_sound(item), window);
+	setup_pref_toggle_button(item+"_sound", mp::ui_alerts::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	toggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_alerts::get_def_pref_notif(item), window);
+	toggle_button * notif = setup_pref_toggle_button(item+"_notif", mp::ui_alerts::get_def_pref_notif(item), window);
 
 	// Check if desktop notifications are available
 	if (!desktop::notifications::available()) {
@@ -68,7 +69,7 @@ static void setup_item(const std::string & item, window & window)
 	}
 
 	// Set up the in_lobby checkbox
-	setup_pref_toggle_button(item+"_lobby", mp_ui_alerts::get_def_pref_lobby(item), window);
+	setup_pref_toggle_button(item+"_lobby", mp::ui_alerts::get_def_pref_lobby(item), window);
 }
 
 static void set_pref_and_button(const std::string & id, bool value, window & window)
@@ -80,10 +81,10 @@ static void set_pref_and_button(const std::string & id, bool value, window & win
 
 static void revert_to_default_pref_values(window & window)
 {
-	for (const std::string & i : mp_ui_alerts::items) {
-		set_pref_and_button(i+"_sound", mp_ui_alerts::get_def_pref_sound(i), window);
-		set_pref_and_button(i+"_notif", mp_ui_alerts::get_def_pref_notif(i), window);
-		set_pref_and_button(i+"_lobby", mp_ui_alerts::get_def_pref_lobby(i), window);
+	for (const std::string & i : mp::ui_alerts::items) {
+		set_pref_and_button(i+"_sound", mp::ui_alerts::get_def_pref_sound(i), window);
+		set_pref_and_button(i+"_notif", mp::ui_alerts::get_def_pref_notif(i), window);
+		set_pref_and_button(i+"_lobby", mp::ui_alerts::get_def_pref_lobby(i), window);
 	}
 }
 
@@ -95,7 +96,7 @@ mp_alerts_options::mp_alerts_options()
 
 void mp_alerts_options::pre_show(window& window)
 {
-	for (const std::string & i : mp_ui_alerts::items) {
+	for (const std::string & i : mp::ui_alerts::items) {
 		setup_item(i, window);
 	}
 

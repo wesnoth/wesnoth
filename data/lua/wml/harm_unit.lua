@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -78,7 +77,7 @@ function wml_actions.harm_unit(cfg)
 				elseif alignment == "chaotic" then
 					damage_multiplier = damage_multiplier - tod_bonus
 				elseif alignment == "liminal" then
-					damage_multiplier = damage_multiplier + math.max(0, wesnoth.get_max_liminal_bonus() - math.abs(tod_bonus))
+					damage_multiplier = damage_multiplier + math.max(0, wesnoth.current.schedule.liminal_bonus - math.abs(tod_bonus))
 				else -- neutral, do nothing
 				end
 				local resistance_modified = resistance * modifier
@@ -90,7 +89,7 @@ function wml_actions.harm_unit(cfg)
 			local damage = calculate_damage(
 				amount,
 				cfg.alignment or "neutral",
-				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
+				wesnoth.schedule.get_illumination(unit_to_harm).lawful_bonus,
 				100 - unit_to_harm:resistance_against( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)
@@ -118,7 +117,7 @@ function wml_actions.harm_unit(cfg)
 				add_tab = true
 
 				if animate and sound then -- for unhealable, that has no sound
-					wesnoth.play_sound (sound)
+					wesnoth.audio.play(sound)
 				end
 			end
 
@@ -144,8 +143,8 @@ function wml_actions.harm_unit(cfg)
 						hits = true,
 						with_bars = true,
 						T.filter { id = unit_to_harm.id },
-						T.primary_attack ( primary_attack ),
-						T.secondary_attack ( secondary_attack ),
+						T.primary_attack ( secondary_attack ),
+						T.secondary_attack ( primary_attack ),
 						T.facing { x = harmer.x, y = harmer.y },
 					}
 				else
@@ -154,8 +153,8 @@ function wml_actions.harm_unit(cfg)
 						hits = true,
 						with_bars = true,
 						T.filter { id = unit_to_harm.id },
-						T.primary_attack ( primary_attack ),
-						T.secondary_attack ( secondary_attack ),
+						T.primary_attack ( secondary_attack ),
+						T.secondary_attack ( primary_attack ),
 					}
 				end
 			end
@@ -187,7 +186,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if variable then
-				wml.variables[string.format("%s[%d]", variable, index - 1)] = { harm_amount = damage }
+				wml.variables[string.format("%s[%d]", variable, index - 1)] = { id = unit_to_harm.id, harm_amount = damage }
 			end
 
 			-- both units may no longer be alive at this point, so double check
