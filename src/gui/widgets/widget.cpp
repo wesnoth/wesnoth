@@ -309,9 +309,9 @@ point widget::get_size() const
 	return point(width_, height_);
 }
 
-SDL_Rect widget::get_rectangle() const
+rect widget::get_rectangle() const
 {
-	return sdl::create_rect(get_origin(), get_size());
+	return {get_origin(), get_size()};
 }
 
 int widget::get_x() const
@@ -463,7 +463,7 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 
 	if(clipping_rectangle_ == get_rectangle()) {
 		redraw_action_ = redraw_action::full;
-	} else if(clipping_rectangle_ == sdl::empty_rect) {
+	} else if(clipping_rectangle_.empty()) {
 		redraw_action_ = redraw_action::none;
 	} else {
 		redraw_action_ = redraw_action::partly;

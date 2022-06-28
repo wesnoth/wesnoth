@@ -20,6 +20,7 @@
 #include "gui/widgets/event_executor.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "sdl/point.hpp"
+#include "sdl/rect.hpp"
 
 #include <string>
 
@@ -437,7 +438,7 @@ public:
 	 *
 	 * @returns                   The bounding rectangle of the widget.
 	 */
-	SDL_Rect get_rectangle() const;
+	rect get_rectangle() const;
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
@@ -674,7 +675,7 @@ private:
 	redraw_action redraw_action_;
 
 	/** The clipping rectangle if a widget is partly visible. */
-	SDL_Rect clipping_rectangle_;
+	rect clipping_rectangle_;
 
 	/**
 	 * Mode for drawing the debug border.

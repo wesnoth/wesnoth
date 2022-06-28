@@ -74,3 +74,24 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 	s << "x: " << rect.x << ", y: " << rect.y << ", w: " << rect.w << ", h: " << rect.h;
 	return s;
 }
+
+bool rect::operator==(const rect& r) const
+{
+	return SDL_RectEquals(this, &r) != SDL_FALSE;
+}
+
+bool rect::operator==(const SDL_Rect& r) const
+{
+	return SDL_RectEquals(this, &r) != SDL_FALSE;
+}
+
+bool rect::empty() const
+{
+	return SDL_RectEmpty(this);
+}
+
+std::ostream& operator<<(std::ostream& s, const rect& r)
+{
+	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';
+	return s;
+}

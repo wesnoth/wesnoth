@@ -41,19 +41,6 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 }
 
 /**
- * Creates a rectangle.
- *
- * @param origin                  The top left corner.
- * @param size                    The width (x) and height (y).
- *
- * @returns                       SDL_Rect with the proper rectangle.
- */
-inline SDL_Rect create_rect(const point& origin, const point& size)
-{
-	return {origin.x, origin.y, size.x, size.y};
-}
-
-/**
  * Tests whether a point is inside a rectangle.
  *
  * @param x                       The x coordinate of the point.
@@ -106,3 +93,37 @@ bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
 std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
+
+/**
+ * An abstract description of a rectangle with integer coordinates.
+ *
+ * This is a thin wrapper over SDL_Rect, furnished with utility functions.
+ *
+ * As for SDL_Rect, member variables x, y, w and h are public.
+ */
+struct rect : SDL_Rect
+{
+public:
+	/** Explicitly initialize rects to 0. */
+	rect() : SDL_Rect{0, 0, 0, 0} {}
+
+	/** There's nothing extra when converting an SDL_Rect. */
+	rect(const SDL_Rect& r) : SDL_Rect{r} {}
+
+	/** Specify via (x, y, w, h). */
+	rect(int x, int y, int w, int h) : SDL_Rect{x, y, w, h} {}
+
+	/** Specify via top-left corner position and size. */
+	rect(const point& pos, const point& size)
+		: SDL_Rect{pos.x, pos.y, size.x, size.y}
+	{}
+
+	// Comparisons
+	bool operator==(const rect& r) const;
+	bool operator==(const SDL_Rect& r) const;
+
+	/** False if both w and h are > 0, true otherwise. */
+	bool empty() const;
+};
+
+std::ostream& operator<<(std::ostream&, const rect&);
