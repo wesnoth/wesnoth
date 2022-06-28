@@ -41,6 +41,19 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 }
 
 /**
+ * Creates a rectangle.
+ *
+ * @param origin                  The top left corner.
+ * @param size                    The width (x) and height (y).
+ *
+ * @returns                       SDL_Rect with the proper rectangle.
+ */
+inline SDL_Rect create_rect(const point& origin, const point& size)
+{
+	return {origin.x, origin.y, size.x, size.y};
+}
+
+/**
  * Tests whether a point is inside a rectangle.
  *
  * @param x                       The x coordinate of the point.

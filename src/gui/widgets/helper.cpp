@@ -31,11 +31,6 @@
 
 namespace gui2
 {
-SDL_Rect create_rect(const point& origin, const point& size)
-{
-	return {origin.x, origin.y, size.x, size.y};
-}
-
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
 	static const std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {

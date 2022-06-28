@@ -311,7 +311,7 @@ point widget::get_size() const
 
 SDL_Rect widget::get_rectangle() const
 {
-	return create_rect(get_origin(), get_size());
+	return sdl::create_rect(get_origin(), get_size());
 }
 
 int widget::get_x() const
