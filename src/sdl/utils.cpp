@@ -52,88 +52,6 @@ bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
 	return true;
 }
 
-surface stretch_surface_horizontal(
-		const surface& surf, const unsigned w)
-{
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
-	if(surf == nullptr)
-		return nullptr;
-
-	if(static_cast<int>(w) == surf->w) {
-		return surf;
-	}
-	assert(w > 0);
-
-	surface dst(w, surf->h);
-
-	if(surf == nullptr || dst == nullptr) {
-		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
-	}
-
-	{
-		// Extra scoping used for the surface_lock.
-		const_surface_lock src_lock(surf);
-		surface_lock dst_lock(dst);
-
-		const uint32_t* const src_pixels = src_lock.pixels();
-		uint32_t* dst_pixels = dst_lock.pixels();
-
-		for(unsigned y = 0; y < static_cast<unsigned>(surf->h); ++y) {
-			const uint32_t pixel = src_pixels [y * surf->w];
-			for(unsigned x = 0; x < w; ++x) {
-
-				*dst_pixels++ = pixel;
-
-			}
-		}
-	}
-
-	return dst;
-}
-
-surface stretch_surface_vertical(
-		const surface& surf, const unsigned h)
-{
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
-	if(surf == nullptr)
-		return nullptr;
-
-	if(static_cast<int>(h) == surf->h) {
-		return surf;
-	}
-	assert(h > 0);
-
-	surface dst(surf->w, h);
-
-	if(surf == nullptr || dst == nullptr) {
-		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
-	}
-
-	{
-		// Extra scoping used for the surface_lock.
-		const_surface_lock src_lock(surf);
-		surface_lock dst_lock(dst);
-
-		const uint32_t* const src_pixels = src_lock.pixels();
-		uint32_t* dst_pixels = dst_lock.pixels();
-
-		for(unsigned y = 0; y < static_cast<unsigned>(h); ++y) {
-		  for(unsigned x = 0; x < static_cast<unsigned>(surf->w); ++x) {
-
-				*dst_pixels++ = src_pixels[x];
-			}
-		}
-	}
-
-	return dst;
-}
-
 surface scale_surface_xbrz(const surface & surf, std::size_t z)
 {
 	if(surf == nullptr)
@@ -561,50 +479,6 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 	}
 
 	return dst;
-}
-
-
-surface tile_surface(const surface& surf, int w, int h, bool centered)
-{
-	if (surf->w == w && surf->h == h) {
-		return surf;
-	}
-
-	surface dest(w, h);
-
-	if (surf == nullptr || dest == nullptr) {
-		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
-	}
-
-	{
-		const_surface_lock srclock(surf);
-		surface_lock destlock(dest);
-
-		const uint32_t* srcpixels = srclock.pixels();
-		uint32_t* destpixels = destlock.pixels();
-
-		const int& sw = surf->w;
-		const int& sh = surf->h;
-
-		const int xoff = centered ? (w - sw) / 2 : 0;
-		const int yoff = centered ? (h - sh) / 2 : 0;
-
-		for (int i = 0; i<w*h; ++i) {
-			int x = ((i % w) - xoff);
-			int y = ((i / w) - yoff);
-
-			while ((x += sw) < 0) { /* DO NOTHING */ }
-			while ((y += sh) < 0) { /* DO NOTHING */ }
-
-			const int sx = x % sw;
-			const int sy = y % sh;
-
-			destpixels[i] = srcpixels[sy*sw + sx];
-		}
-	}
-
-	return dest;
 }
 
 surface adjust_surface_color(const surface &surf, int red, int green, int blue)
@@ -1258,44 +1132,6 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 	}
 
 	return true;
-}
-
-surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta)
-{
-	if(surf== nullptr) {
-		return nullptr;
-	}
-
-	surface nsurf = surf.clone();
-
-	{
-		surface_lock lock(nsurf);
-
-		uint32_t* beg = lock.pixels();
-		uint32_t* limit = beg + (nsurf->h-depth) * nsurf->w ;
-		uint32_t* end = beg + nsurf->w * nsurf->h;
-		beg = limit; // directlt jump to the bottom part
-
-		while(beg != end){
-			uint8_t alpha = (*beg) >> 24;
-
-			if(alpha) {
-				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-				int d = (beg-limit)/nsurf->w;  // current depth in pixels
-				float a = alpha_base - d * alpha_delta;
-				int32_t amount = floating_to_fixed_point(a<0?0:a);
-				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount),255);
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-			}
-
-			++beg;
-		}
-	}
-
-	return nsurf;
 }
 
 surface light_surface(const surface &surf, const surface &lightmap)
@@ -1997,154 +1833,6 @@ surface flop_surface(const surface &surf)
 	return nsurf;
 }
 
-void blit_surface(const surface& surf,
-	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect)
-{
-	assert(surf);
-	assert(dst);
-	assert(dst.is_neutral());
-
-	// Get the areas to blit
-	SDL_Rect dst_rect {0, 0, dst->w, dst->h};
-	if(dstrect) {
-		dst_rect.x = dstrect->x;
-		dst_rect.w -= dstrect->x;
-
-		dst_rect.y = dstrect->y;
-		dst_rect.h -= dstrect->y;
-
-	}
-
-	SDL_Rect src_rect {0, 0, surf->w, surf->h};
-	if(srcrect && srcrect->w && srcrect->h) {
-		src_rect.x = srcrect->x;
-		src_rect.y = srcrect->y;
-
-		src_rect.w = srcrect->w;
-		src_rect.h = srcrect->h;
-
-		if (src_rect.x < 0) {
-			if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
-				return;
-			dst_rect.x -= src_rect.x;
-			dst_rect.w += src_rect.x;
-			src_rect.w += src_rect.x;
-			src_rect.x = 0;
-		}
-		if (src_rect.y < 0) {
-			if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
-				return;
-			dst_rect.y -= src_rect.y;
-			dst_rect.h += src_rect.y;
-			src_rect.h += src_rect.y;
-			src_rect.y = 0;
-		}
-		if (src_rect.x + src_rect.w > surf->w) {
-			if (src_rect.x >= surf->w)
-				return;
-			src_rect.w = surf->w - src_rect.x;
-		}
-		if (src_rect.y + src_rect.h > surf->h) {
-			if (src_rect.y >= surf->h)
-				return;
-			src_rect.h = surf->h - src_rect.y;
-		}
-	}
-
-	assert(dst_rect.x >= 0);
-	assert(dst_rect.y >= 0);
-
-	// Get the blit size limits.
-	const unsigned width = std::min(src_rect.w, dst_rect.w);
-	const unsigned height = std::min(src_rect.h, dst_rect.h);
-
-	{
-		// Extra scoping used for the surface_lock.
-		const_surface_lock src_lock(surf);
-		surface_lock dst_lock(dst);
-
-		const uint32_t* const src_pixels = src_lock.pixels();
-		uint32_t* dst_pixels = dst_lock.pixels();
-
-		for(unsigned y = 0; y < height; ++y) {
-			for(unsigned x = 0; x < width; ++x) {
-
-				// We need to do the blitting using some optimizations
-				// if the src is fully transparent we can ignore this pixel
-				// if the src is fully opaque we can overwrite the destination with this pixel
-				// if the destination is fully transparent we replace us with the source
-				//
-				// We do these optimizations between the extraction of the variables
-				// to avoid creating variables not used (it might save us some cycles).
-
-				const int src_offset = (y + src_rect.y) * surf->w + (x + src_rect.x);
-				assert(src_offset < surf->w * surf->h);
-				const uint32_t src_pixel = src_pixels[src_offset];
-				const uint8_t src_a = (src_pixel & 0xFF000000) >> 24;
-
-				if(!src_a) {
-					// Fully transparent source, ignore
-					continue;
-				}
-
-				const ptrdiff_t dst_offset = (y + dst_rect.y) * dst->w + (x + dst_rect.x);
-				assert(dst_offset < dst->w * dst->h);
-				if(src_a == 255) {
-					// Fully opaque source, copy
-					dst_pixels[dst_offset] = src_pixel;
-					continue;
-				}
-
-				const uint32_t dst_pixel = dst_pixels[dst_offset];
-				uint8_t dst_a = (dst_pixel & 0xFF000000) >> 24;
-
-				if(!dst_a) {
-					// Fully transparent destination, copy
-					dst_pixels[dst_offset] = src_pixel;
-					continue;
-				}
-
-				const uint8_t src_r = (src_pixel & 0x00FF0000) >> 16;
-				const uint8_t src_g = (src_pixel & 0x0000FF00) >> 8;
-				const uint8_t src_b = src_pixel & 0x000000FF;
-
-				uint8_t dst_r = (dst_pixel & 0x00FF0000) >> 16;
-				uint8_t dst_g = (dst_pixel & 0x0000FF00) >> 8;
-				uint8_t dst_b = dst_pixel & 0x000000FF;
-
-				if(dst_a == 255) {
-
-					// Destination fully opaque blend the source.
-					dst_r = (((src_r - dst_r) * src_a) >> 8 ) + dst_r;
-					dst_g = (((src_g - dst_g) * src_a) >> 8 ) + dst_g;
-					dst_b = (((src_b - dst_b) * src_a) >> 8 ) + dst_b;
-
-				} else {
-
-					// Destination and source party transparent.
-
-					// acquired the data now do the blitting
-					const unsigned tmp_a = 255 - src_a;
-
-					const unsigned tmp_r = 1 + (src_r * src_a) + (dst_r * tmp_a);
-					dst_r = (tmp_r + (tmp_r >> 8)) >> 8;
-
-					const unsigned tmp_g = 1 + (src_g * src_a) + (dst_g * tmp_a);
-					dst_g = (tmp_g + (tmp_g >> 8)) >> 8;
-
-					const unsigned tmp_b = 1 + (src_b * src_a) + (dst_b * tmp_a);
-					dst_b = (tmp_b + (tmp_b >> 8)) >> 8;
-
-					dst_a += (((255 - dst_a) * src_a) >> 8);
-				}
-
-				dst_pixels[dst_offset] = (dst_a << 24) | (dst_r << 16) | (dst_g << 8) | (dst_b);
-
-			}
-		}
-	}
-}
-
 surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
 	if (src == nullptr) {
@@ -2171,7 +1859,12 @@ surface get_surface_portion(const surface &src, SDL_Rect &area)
 		return nullptr;
 	}
 
-	sdl_copy_portion(src, &area, dst, nullptr);
+	// Blit to dst with BLENDMODE_NONE, then reset src blend mode.
+	SDL_BlendMode src_blend;
+	SDL_GetSurfaceBlendMode(src, &src_blend);
+	SDL_SetSurfaceBlendMode(src, SDL_BLENDMODE_NONE);
+	SDL_BlitSurface(src, &area, dst, nullptr);
+	SDL_SetSurfaceBlendMode(src, src_blend);
 
 	return dst;
 }

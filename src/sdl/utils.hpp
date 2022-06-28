@@ -27,8 +27,6 @@
 #include <map>
 #include <string>
 
-class CVideo;
-
 namespace sdl
 {
 
@@ -47,47 +45,6 @@ bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
 inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
-
-inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surface& dst, SDL_Rect* dst_rect){
-	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
-	SDL_SetSurfaceBlendMode(dst, SDL_BLENDMODE_NONE);
-	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
-	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
-}
-
-/**
- * Stretches a surface in the horizontal direction.
- *
- *  The stretches a surface it uses the first pixel in the horizontal
- *  direction of the original surface and copies that to the destination.
- *  This means only the first column of the original is used for the destination.
- *  @param surf              The source surface.
- *  @param w                 The width of the resulting surface.
- *
- *  @return                  A surface.
- *                           returned.
- *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w.
- */
-surface stretch_surface_horizontal(
-	const surface& surf, const unsigned w);
-
-/**
- *  Stretches a surface in the vertical direction.
- *
- *  The stretches a surface it uses the first pixel in the vertical
- *  direction of the original surface and copies that to the destination.
- *  This means only the first row of the original is used for the destination.
- *  @param surf              The source surface.
- *  @param h                 The height of the resulting surface.
- *
- *  @return                  A surface.
- *                           returned.
- *
- *  @retval surf             Returned if h == surf->h.
- */
-surface stretch_surface_vertical(
-	const surface& surf, const unsigned h);
 
 /** Scale a surface using xBRZ algorithm
  *  @param surf		     The source surface
@@ -137,17 +94,6 @@ surface scale_surface_legacy(const surface &surf, int w, int h);
  */
 surface scale_surface_sharp(const surface& surf, int w, int h);
 
-/** Tile a surface
- * @param surf               The source surface.
- * @param w                  The width of the resulting surface.
- * @param h                  The height of the resulting surface.
- * @param centered           Whether to tile from the center outwards or from the top left (origin).
- * @return                   A surface containing the tiled version of the source.
- * @retval 0                 Returned upon error
- * @retval surf              Returned if w == surf->w and h == surf->h.
- */
-surface tile_surface(const surface &surf, int w, int h, bool centered = true);
-
 surface adjust_surface_color(const surface &surf, int r, int g, int b);
 surface greyscale_image(const surface &surf);
 surface monochrome_image(const surface &surf, const int threshold);
@@ -193,14 +139,6 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
-
-/** Progressively reduce alpha of bottom part of the surface
- *  @param surf              The source surface.
- *  @param depth             The height of the bottom part in pixels
- *  @param alpha_base        The alpha adjustment at the interface
- *  @param alpha_delta       The alpha adjustment reduction rate by pixel depth
-*/
-surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta);
 
 /**
  * Light surf using lightmap
@@ -300,27 +238,6 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
-
-/**
- * Replacement for sdl_blit.
- *
- * sdl_blit has problems with blitting partly transparent surfaces so
- * this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
- * flags. src and dst will have the SDL_RLEACCEL flag removed.
- * The return value of SDL_BlistSurface is normally ignored so no return value.
- * The rectangles are const and will not be modified.
- *
- * @pre @p src contains a valid canvas.
- * @pre @p dst contains a valid neutral canvas.
- * @pre The caller must make sure the @p src fits on the @p dst.
- *
- * @param src          The surface to blit.
- * @param srcrect      The region of the surface to blit
- * @param dst          The surface to blit on.
- * @param dstrect      The offset to blit the surface on, only x and y are used.
- */
-void blit_surface(const surface& src,
-	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
