@@ -117,8 +117,7 @@ function artifacts.give_item(unit, index, visualize)
 
 	-- slot in traits if any artifacts grant any
 	for trait in wml.child_range(artifacts.list[index], "trait") do
-		if unit:matches { wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } } then
-		else
+		if not unit:matches { wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } } then
 			unit:add_modification("trait", trait)
 		end
 	end
