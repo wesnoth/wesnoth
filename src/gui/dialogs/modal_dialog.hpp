@@ -207,6 +207,17 @@ public:
 
 protected:
 	/**
+	 * Creates a new field of given type with given arguments.
+	 *
+	 * The field created is owned by modal_dialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @param args                Arguments to forward to the field constructor.
+	 */
+	template<typename T, typename... Args>
+	T* register_field(Args&&... args);
+
+	/**
 	 * Creates a new boolean field.
 	 *
 	 * The field created is owned by modal_dialog, the returned pointer can be used
@@ -447,10 +458,9 @@ private:
 	 *
 	 * Saving only happens if a callback handler is installed.
 	 *
-	 * @param window              The window which has been shown.
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(window& window, const bool save_fields);
+	virtual void finalize_fields(const bool save_fields);
 };
 
 } // namespace dialogs

@@ -174,7 +174,7 @@ local create_tag_mt = {
 	end
 }
 
----@type table<string, fun(cfg:WML):WMLTag
+---@type table<string, fun(cfg:WML):WMLTag>
 wml.tag = setmetatable({}, create_tag_mt)
 
 --[========[Config / Vconfig Unified Handling]========]
@@ -269,6 +269,10 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	local get_all_vars_local = wml.get_all_vars
 	setmetatable(wml, {
 		__metatable = "WML module",
+		__dir = function(_, keys)
+			table.insert(keys, 'all_variables')
+			return keys
+		end,
 		__index = function(self, key)
 			if key == 'all_variables' then
 				return get_all_vars_local()
@@ -288,12 +292,29 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	local set_variable_local = wml.set_variable or function()
 		error("Variables are read-only during map generation", 3)
 	end
+	local function dir_vars(include_attributes)
+		return function()
+			local vars = get_all_vars_local()
+			local keys = {}
+			for k,v in pairs(vars) do
+				if type(k) == 'number' then
+					-- It's a tag; add the tag name
+					table.insert(keys, v[1])
+				elseif type(k) == 'string' and include_attributes then
+					-- It's an attribute, add the key
+					table.insert(keys, k)
+				end
+			end
+			return keys
+		end
+	end
 
 	-- Get and set variables via wml.variables[variable_path]
 	---@alias WMLVariableProxy table<string, string|number|boolean|WMLTable>
 	---@type WMLVariableProxy
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
+		__dir = dir_vars(true),
 		__index = function(_, key)
 			return get_variable_local(key)
 		end,
@@ -345,6 +366,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 
 	local root_variable_mt = {
 		__metatable = "WML variables proxy",
+		__dir = dir_vars(true),
 		__index    = function(t, k)    return get_variable_proxy(k)    end,
 		__newindex = function(t, k, v)
 			if type(v) == "function" then
@@ -439,6 +461,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	---@type table<string, WML[]>
 	wml.array_variables = setmetatable({}, {
 		__metatable = "WML variables",
+		__dir = dir_vars(false),
 		__index = function(_, key)
 			return wml.array_access.get(key)
 		end,

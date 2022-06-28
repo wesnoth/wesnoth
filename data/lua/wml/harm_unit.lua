@@ -143,8 +143,8 @@ function wml_actions.harm_unit(cfg)
 						hits = true,
 						with_bars = true,
 						T.filter { id = unit_to_harm.id },
-						T.primary_attack ( primary_attack ),
-						T.secondary_attack ( secondary_attack ),
+						T.primary_attack ( secondary_attack ),
+						T.secondary_attack ( primary_attack ),
 						T.facing { x = harmer.x, y = harmer.y },
 					}
 				else
@@ -153,8 +153,8 @@ function wml_actions.harm_unit(cfg)
 						hits = true,
 						with_bars = true,
 						T.filter { id = unit_to_harm.id },
-						T.primary_attack ( primary_attack ),
-						T.secondary_attack ( secondary_attack ),
+						T.primary_attack ( secondary_attack ),
+						T.secondary_attack ( primary_attack ),
 					}
 				end
 			end

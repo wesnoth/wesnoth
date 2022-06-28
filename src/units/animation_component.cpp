@@ -26,7 +26,7 @@
 
 #include <set>
 
-const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
+const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const strike_result::type hit,
 		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
@@ -34,7 +34,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(const unit_animation& anim : animations_) {
-		int matching = anim.matches(disp,loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
+		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&anim);
 		} else if(matching > max_val) {
@@ -52,47 +52,41 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 
 void unit_animation_component::set_standing(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	if(disp == nullptr) return;
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
 void unit_animation_component::set_ghosted(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_ghosted_"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
 
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_ghosted_"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
 void unit_animation_component::set_idling()
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "idling"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "idling"),
 		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
 {
-	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "selected"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_selected_"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_selected_"),
 			true, "", {0,0,0}, STATE_FORGET);
 	}
 }

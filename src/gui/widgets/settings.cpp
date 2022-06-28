@@ -17,9 +17,6 @@
 
 #include "display.hpp"
 
-#define MAGIC_DPI_MATCH_VIDEO 96
-#define MICRONS_PER_INCH 25400
-
 namespace gui2
 {
 bool new_widgets = false;
@@ -28,7 +25,14 @@ namespace settings
 {
 unsigned screen_width = 0;
 unsigned screen_height = 0;
-unsigned screen_pitch_microns = MICRONS_PER_INCH / MAGIC_DPI_MATCH_VIDEO;
+/** screen_pitch_microns is deprecated. Do not use it.
+ *
+ * This value corresponds to a physical DPI of 96. But physical DPI should
+ * not be used to make rendering decisions. With the ability to set pixel
+ * scale, it can be assumed that one pixel in draw-space is neither too
+ * small nor too large.
+ */
+const unsigned screen_pitch_microns = 265;
 unsigned gamemap_x_offset = 0;
 
 unsigned gamemap_width = 0;
@@ -56,12 +60,6 @@ void update_screen_size_variables()
 
 	screen_width = rect.w;
 	screen_height = rect.h;
-
-	// Use of screen_pitch_microns should probably be deprecated, as physical
-	// DPI is not an accurate method of determining perceptual pixel size.
-	auto [scalew, scaleh] = video.get_dpi_scale_factor();
-	float avgscale = (scalew + scaleh)/2;
-	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
 
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;

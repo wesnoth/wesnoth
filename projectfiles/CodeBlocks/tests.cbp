@@ -285,6 +285,8 @@
 		<Unit filename="../../src/display_chat_manager.hpp" />
 		<Unit filename="../../src/display_context.cpp" />
 		<Unit filename="../../src/display_context.hpp" />
+		<Unit filename="../../src/draw.cpp" />
+		<Unit filename="../../src/draw.hpp" />
 		<Unit filename="../../src/editor/action/action.cpp" />
 		<Unit filename="../../src/editor/action/action.hpp" />
 		<Unit filename="../../src/editor/action/action_base.hpp" />
@@ -501,8 +503,12 @@
 		<Unit filename="../../src/gui/auxiliary/iterator/policy_order.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/policy_visit.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker.hpp" />
+		<Unit filename="../../src/gui/auxiliary/iterator/walker_container.cpp" />
+		<Unit filename="../../src/gui/auxiliary/iterator/walker_container.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker_grid.cpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker_grid.hpp" />
+		<Unit filename="../../src/gui/auxiliary/iterator/walker_scrollbar_container.cpp" />
+		<Unit filename="../../src/gui/auxiliary/iterator/walker_scrollbar_container.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker_tree_node.cpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker_tree_node.hpp" />
 		<Unit filename="../../src/gui/auxiliary/iterator/walker_widget.cpp" />
@@ -1068,11 +1074,15 @@
 		<Unit filename="../../src/scripting/push_check.hpp" />
 		<Unit filename="../../src/sdl/exception.cpp" />
 		<Unit filename="../../src/sdl/exception.hpp" />
+		<Unit filename="../../src/sdl/input.cpp" />
+		<Unit filename="../../src/sdl/input.hpp" />
 		<Unit filename="../../src/sdl/point.cpp" />
 		<Unit filename="../../src/sdl/point.hpp" />
 		<Unit filename="../../src/sdl/rect.cpp" />
 		<Unit filename="../../src/sdl/surface.cpp" />
 		<Unit filename="../../src/sdl/surface.hpp" />
+		<Unit filename="../../src/sdl/texture.cpp" />
+		<Unit filename="../../src/sdl/texture.hpp" />
 		<Unit filename="../../src/sdl/utils.cpp" />
 		<Unit filename="../../src/sdl/utils.hpp" />
 		<Unit filename="../../src/sdl/window.cpp" />

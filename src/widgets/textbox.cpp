@@ -19,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "draw.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
@@ -93,7 +94,7 @@ void textbox::set_text(const std::string& text, const color_t& color)
 
 void textbox::append_text(const std::string& text, bool auto_scroll, const color_t& color)
 {
-	if(text_image_.get() == nullptr) {
+	if(!text_image_) {
 		set_text(text, color);
 		return;
 	}
@@ -102,32 +103,15 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()) {
 		return;
 	}
-	const bool is_at_bottom = get_position() == get_max_position();
+
 	const std::u32string& wtext = unicode_cast<std::u32string>(text);
-
-	surface new_text = add_text_line(wtext, color);
-	surface new_surface(std::max<std::size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
-
-	adjust_surface_alpha(new_text, SDL_ALPHA_TRANSPARENT);
-	adjust_surface_alpha(text_image_, SDL_ALPHA_TRANSPARENT);
-	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_NONE);
-	sdl_blit(text_image_,nullptr,new_surface,nullptr);
-	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
-
-	SDL_Rect target {
-			  0
-			, text_image_->h
-			, new_text->w
-			, new_text->h
-	};
-	SDL_SetSurfaceBlendMode(new_text, SDL_BLENDMODE_NONE);
-	sdl_blit(new_text,nullptr,new_surface,&target);
-	text_image_ = new_surface;
-
 	text_.insert(text_.end(), wtext.begin(), wtext.end());
+
+	text_image_ = add_text_line(text_);
 
 	set_dirty(true);
 	update_text_cache(false);
+	const bool is_at_bottom = get_position() == get_max_position();
 	if(auto_scroll && is_at_bottom) scroll_to_bottom();
 	handle_text_changed(text_);
 }
@@ -185,7 +169,7 @@ void textbox::draw_cursor(int pos) const
 				, location().h
 		};
 
-		sdl::fill_rectangle(rect, {255, 255, 255, 255});
+		draw::fill(rect, 255, 255, 255, 255);
 	}
 }
 
@@ -193,14 +177,12 @@ void textbox::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
 
-	surface& surf = video().getDrawingSurface();
-
 	color_t c(0, 0, 0);
 
 	double& alpha = focus(nullptr) ? alpha_focus_ : alpha_;
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(loc, c);
+	draw::fill(loc, c);
 
 	SDL_Rect src;
 
@@ -210,12 +192,10 @@ void textbox::draw_contents()
 
 	if(text_image_ != nullptr) {
 		src.y = yscroll_;
-		src.w = std::min<std::size_t>(loc.w,text_image_->w);
-		src.h = std::min<std::size_t>(loc.h,text_image_->h);
+		src.w = std::min<std::size_t>(loc.w,text_image_.w());
+		src.h = std::min<std::size_t>(loc.h,text_image_.h());
 		src.x = text_pos_;
-		SDL_Rect dest = video().draw_area();
-		dest.x = loc.x;
-		dest.y = loc.y;
+		SDL_Rect dest{loc.x, loc.y, src.w, src.h};
 
 		// Fills the selected area
 		if(enabled() && is_selection()) {
@@ -227,7 +207,7 @@ void textbox::draw_contents()
 			const int endy = char_y_[end];
 
 			while(starty <= endy) {
-				const std::size_t right = starty == endy ? endx : text_image_->w;
+				const std::size_t right = starty == endy ? endx : text_image_.w();
 				if(right <= std::size_t(startx)) {
 					break;
 				}
@@ -237,25 +217,31 @@ void textbox::draw_contents()
 						, right - startx
 						, line_height_);
 
-				const clip_rect_setter clipper(surf, &loc);
+				// TODO: highdpi - this seems excessive
+				auto clipper = draw::set_clip(loc);
 
-				color_t c2(0, 0, 160, 140);
-				sdl::fill_rectangle(rect, c2);
+				draw::fill(rect, 0, 0, 160, 140);
 
 				starty += int(line_height_);
 				startx = 0;
 			}
 		}
 
+		// text may be rendered at high dpi, scale source clip accordingly
+		const int ps = video().get_pixel_scale();
+		src.x *= ps; src.y *= ps; src.w *= ps; src.h *= ps;
+		// TODO: highdpi - consider sizing source clip in draw coordinates, now that textures have a draw-space w/h? That would work here.
+
 		if(enabled()) {
-			sdl_blit(text_image_, &src, surf, &dest);
+			draw::blit(text_image_, dest, src);
 		} else {
 			// HACK: using 30% opacity allows white text to look as though it is grayed out,
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
-			adjust_surface_alpha(text_image_, floating_to_fixed_point(0.3));
-			sdl_blit(text_image_, &src, surf, &dest);
+			text_image_.set_alpha_mod(76);
+			draw::blit(text_image_, dest, src);
+			text_image_.set_alpha_mod(255);
 		}
 	}
 
@@ -302,7 +288,7 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const std::u32string& text, const color_t& color)
+texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 {
 	line_height_ = font::get_max_height(font_size_);
 
@@ -366,9 +352,7 @@ surface textbox::add_text_line(const std::u32string& text, const color_t& color)
 	}
 
 	const std::string s = unicode_cast<std::string>(wrapped_text);
-	const surface res(font::pango_render_text(s, font_size_, color));
-
-	return res;
+	return font::pango_render_text(s, font_size_, color);
 }
 
 
@@ -391,7 +375,8 @@ void textbox::update_text_cache(bool changed, const color_t& color)
 	cursor_pos_ = cursor_x - text_pos_;
 
 	if (text_image_) {
-		set_full_size(text_image_->h);
+		// TODO: highdpi - does this need pixel scale compensation?
+		set_full_size(text_image_.h());
 		set_shown_size(location().h);
 	}
 }
@@ -748,7 +733,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	show_cursor_at_ = SDL_GetTicks();
 
 	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_) {
-		text_image_ = nullptr;
+		text_image_.reset();
 		handle_text_changed(text_);
 	}
 

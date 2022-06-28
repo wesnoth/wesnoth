@@ -17,6 +17,7 @@
 
 #include "gui/widgets/viewport.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "config.hpp"
 #include "utils/const_clone.hpp"
@@ -63,7 +64,7 @@ struct viewport_implementation
 		coordinate.x -= viewport->get_x();
 		coordinate.y -= viewport->get_y();
 
-		return viewport->widget_.find_at(coordinate, must_be_active);
+		return viewport->widget_->find_at(coordinate, must_be_active);
 	}
 
 	template <class W>
@@ -73,7 +74,7 @@ struct viewport_implementation
 		if(viewport->widget::find(id, must_be_active)) {
 			return viewport;
 		} else {
-			return viewport->widget_.find(id, must_be_active);
+			return viewport->widget_->find(id, must_be_active);
 		}
 	}
 };
@@ -81,52 +82,38 @@ struct viewport_implementation
 viewport::viewport(const implementation::builder_viewport& builder,
 					 const builder_widget::replacements_map& replacements)
 	: widget(builder)
-	, widget_(*builder.widget_->build(replacements))
-	, owns_widget_(true)
+	, widget_(builder.widget_->build(replacements))
 {
-	widget_.set_parent(this);
+	widget_->set_parent(this);
 }
 
 viewport::~viewport()
 {
-	if(owns_widget_) {
-		delete &widget_;
-	}
-}
-
-viewport* viewport::build(const implementation::builder_viewport& builder,
-							const builder_widget::replacements_map& replacements)
-{
-	return new viewport(builder, replacements);
 }
 
 void viewport::place(const point& origin, const point& size)
 {
 	widget::place(origin, size);
 
-	widget_.place(point(), widget_.get_best_size());
+	widget_->place(point(), widget_->get_best_size());
 }
 
 void viewport::layout_initialize(const bool full_initialization)
 {
 	widget::layout_initialize(full_initialization);
 
-	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.layout_initialize(full_initialization);
+	if(widget_->get_visible() != widget::visibility::invisible) {
+		widget_->layout_initialize(full_initialization);
 	}
 }
 
-void
-viewport::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void viewport::impl_draw_children()
 {
-	x_offset += get_x();
-	y_offset += get_y();
-
-	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.draw_background(frame_buffer, x_offset, y_offset);
-		widget_.draw_children(frame_buffer, x_offset, y_offset);
-		widget_.draw_foreground(frame_buffer, x_offset, y_offset);
-		widget_.set_is_dirty(false);
+	if(widget_->get_visible() != widget::visibility::invisible) {
+		widget_->draw_background();
+		widget_->draw_children();
+		widget_->draw_foreground();
+		widget_->set_is_dirty(false);
 	}
 }
 
@@ -135,7 +122,7 @@ viewport::child_populate_dirty_list(window& caller,
 									 const std::vector<widget*>& call_stack)
 {
 	std::vector<widget*> child_call_stack = call_stack;
-	widget_.populate_dirty_list(caller, child_call_stack);
+	widget_->populate_dirty_list(caller, child_call_stack);
 }
 
 void viewport::request_reduce_width(const unsigned /*maximum_width*/)
@@ -166,7 +153,7 @@ const widget* viewport::find(const std::string& id, const bool must_be_active)
 
 point viewport::calculate_best_size() const
 {
-	return widget_.get_best_size();
+	return widget_->get_best_size();
 }
 
 bool viewport::disable_click_dismiss() const
@@ -174,7 +161,7 @@ bool viewport::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* viewport::create_walker()
+iteration::walker_ptr viewport::create_walker()
 {
 	/**
 	 * @todo Implement properly.
@@ -193,14 +180,14 @@ builder_viewport::builder_viewport(const config& cfg)
 {
 }
 
-widget* builder_viewport::build() const
+std::unique_ptr<widget> builder_viewport::build() const
 {
 	return build(replacements_map());
 }
 
-widget* builder_viewport::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_viewport::build(const replacements_map& replacements) const
 {
-	return viewport::build(*this, replacements);
+	return std::make_unique<viewport>(*this, replacements);
 }
 
 } // namespace implementation

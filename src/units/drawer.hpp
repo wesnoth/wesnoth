@@ -39,6 +39,7 @@ class unit;
 
 struct color_t;
 struct SDL_Rect;
+struct point;
 class surface;
 
 class unit_drawer
@@ -82,4 +83,9 @@ private:
 	 * White pixels are substituted for the color of the energy.
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf) const;
+
+	/** Scale a rect to the current zoom level. */
+	SDL_Rect scaled_to_zoom(const SDL_Rect& r) const;
+	/** Scale a point to the current zoom level. */
+	point scaled_to_zoom(const point& p) const;
 };

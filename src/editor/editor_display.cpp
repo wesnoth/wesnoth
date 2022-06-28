@@ -71,29 +71,24 @@ void editor_display::pre_draw()
 {
 }
 
-image::TYPE editor_display::get_image_type(const map_location& loc)
-{
-	if (map().in_selection(loc)) {
-		return image::BRIGHTENED;
-	}
-	return image::TOD_COLORED;
-}
-
 void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 	display::draw_hex(loc);
-	if (map().on_board_with_border(loc)) {
+	if (map().on_board_with_border(loc) && !map_screenshot_) {
 		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
+			const texture tex = image::get_texture(
+				"editor/selection-overlay.png", image::TOD_COLORED);
+			SDL_Rect dest = scaled_to_zoom({xpos, ypos, tex.w(), tex.h()});
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, tex);
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_image(brush, image::SCALED_TO_HEX));
+			const texture tex = image::get_texture(brush, image::HEXED);
+			SDL_Rect dest = scaled_to_zoom({xpos, ypos, tex.w(), tex.h()});
+			drawing_buffer_add(LAYER_SELECTED_HEX, loc, dest, tex);
 		}
 	}
 }

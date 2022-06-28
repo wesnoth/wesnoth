@@ -14,8 +14,10 @@
 
 #pragma once
 
+#include <array>
 #include <optional>
 #include <string>
+#include <string_view>
 #include <tuple>
 
 namespace string_enums
@@ -26,51 +28,55 @@ namespace string_enums
  * The number of enum values must match the number of elements in the @a values array.
  * The values the @a values array must be unique.
  */
-template<typename T>
-struct enum_base : public T
+template<typename Definition>
+struct enum_base : public Definition
 {
+	using enum_type = typename Definition::type;
+
 	// check that all implementations of this are scoped enums
-	static_assert(std::is_enum<typename T::type>::value && !std::is_convertible<typename T::type, int>::value, "Enum is not a scoped enum");
+	// TODO: C++23 std::is_scoped_enum
+	static_assert(std::is_enum_v<enum_type> && !std::is_convertible_v<enum_type, int>, "Enum is not a scoped enum");
 
 	/**
-	 * Uses the int value of the provided enum to get the associated index of the @a values array in the implementing class.
+	 * Converts a enum to its string equivalent.
 	 *
-	 * @param key The enum value to get the equivalent string for.
-	 * @return The string value associated to the enum value.
+	 * @param key        The enum value to get the equivalent string for.
+	 * @return           The string value associated with the enum value.
 	 */
-	static std::string get_string(typename T::type key)
+	static std::string get_string(enum_type key)
 	{
-		return std::string{T::values[static_cast<int>(key)]};
+		return std::string{Definition::values[static_cast<int>(key)]};
 	}
 
 	/**
-	 * Convert a string into its enum equivalent.
+	 * Converts a string into its enum equivalent.
 	 *
-	 * @param value The string value to convert.
-	 * @return The equivalent enum or std::nullopt.
+	 * @param value      The string value to convert.
+	 * @return           The equivalent enum or std::nullopt.
 	 */
-	static std::optional<typename T::type> get_enum(const std::string value)
+	static constexpr std::optional<enum_type> get_enum(const std::string_view value)
 	{
-		for(unsigned int i = 0; i < T::values.size(); i++) {
-			if(value == T::values[i]) {
-				return static_cast<typename T::type>(i);
+		for(unsigned int i = 0; i < size(); i++) {
+			if(value == Definition::values[i]) {
+				return static_cast<enum_type>(i);
 			}
 		}
 		return std::nullopt;
 	}
 
 	/**
-	 * Convert an int into its enum equivalent.
+	 * Converts an int into its enum equivalent.
 	 *
-	 * @param value The string value to convert.
-	 * @return The equivalent enum or std::nullopt.
+	 * @param value      The string value to convert.
+	 * @return           The equivalent enum or std::nullopt.
 	 */
-	static std::optional<typename T::type> get_enum(unsigned long value)
+	static constexpr std::optional<enum_type> get_enum(unsigned long value)
 	{
-		if(value < T::values.size()) {
-			return static_cast<typename T::type>(value);
+		if(value < size()) {
+			return static_cast<enum_type>(value);
+		} else {
+			return std::nullopt;
 		}
-		return std::nullopt;
 	}
 
 	/**
@@ -78,17 +84,23 @@ struct enum_base : public T
 	 */
 	static constexpr std::size_t size()
 	{
-		return T::values.size();
+		return Definition::values.size();
 	}
+
+	/** Provide a alias template for an array of matching size. */
+	template<typename T>
+	using sized_array = std::array<T, size()>;
 };
 
+#ifndef __MINGW64__
 #define ENUM_AND_ARRAY(...)                                                                                            \
 	enum class type { __VA_ARGS__ };                                                                                   \
-                                                                                                                       \
-	/** Provide a alias template for an array of matching size. */                                                     \
-	template<typename T>                                                                                               \
-	using sized_array = std::array<T, std::tuple_size<decltype(std::make_tuple(__VA_ARGS__))>::value>;                 \
-                                                                                                                       \
-	static constexpr sized_array<const char*> values{__VA_ARGS__};
+	static constexpr std::array values{__VA_ARGS__};
+#else
+#define ENUM_AND_ARRAY(...)                                                                                            \
+	enum class type { __VA_ARGS__ };                                                                                   \
+	static constexpr std::array<std::string_view, std::tuple_size_v<decltype(std::make_tuple(__VA_ARGS__))>>           \
+		values{__VA_ARGS__};
+#endif
 
 } // namespace string_enums

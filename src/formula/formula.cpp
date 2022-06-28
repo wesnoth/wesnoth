@@ -1138,8 +1138,7 @@ static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::
 }
 
 static void parse_args(const tk::token* i1, const tk::token* i2,
-                std::vector<expression_ptr>* res,
-				function_symbol_table* symbols)
+	std::vector<expression_ptr>* res, function_symbol_table* symbols)
 {
 	int parens = 0;
 	const tk::token* beg = i1;
@@ -1162,8 +1161,7 @@ static void parse_args(const tk::token* i1, const tk::token* i2,
 }
 
 static void parse_set_args(const tk::token* i1, const tk::token* i2,
-                std::vector<expression_ptr>* res,
-				function_symbol_table* symbols)
+	std::vector<expression_ptr>* res, function_symbol_table* symbols)
 {
 	int parens = 0;
 	bool check_pointer = false;

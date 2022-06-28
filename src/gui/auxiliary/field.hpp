@@ -68,9 +68,6 @@ public:
 	 * @warning After attaching the window must remain a valid. Before the
 	 * window is destroyed the @ref detach_from_window function must be called.
 	 *
-	 * @todo Most functions that have a window parameter only use it to get the
-	 * widget. Evaluate and remove the window parameter where applicable.
-	 *
 	 * @pre widget_ == nullptr
 	 *
 	 * @param window               The window to be attached to.
@@ -96,13 +93,11 @@ public:
 	 *  - init_specialized which is to be used in subclasses of the template
 	 *     class. This way they can override this function without to use their
 	 *     signature to inherit.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	void widget_init(window& window)
+	void widget_init()
 	{
-		init_generic(window);
-		init_specialized(window);
+		init_generic();
+		init_specialized();
 	}
 
 	/**
@@ -115,13 +110,11 @@ public:
 	 * - The widget value is saved in value_.
 	 *
 	 * Like widget_init it calls two functions with the same purpose.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	void widget_finalize(window& window)
+	void widget_finalize()
 	{
-		finalize_generic(window);
-		finalize_specialized(window);
+		finalize_generic();
+		finalize_specialized();
 	}
 
 	/**
@@ -142,24 +135,19 @@ public:
 	 * saved and restored. This routine does the following:
 	 * - if no widget available exit (doesn't look at the active state).
 	 * - The widget value is saved in value_.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	virtual void widget_save(window& window) = 0;
+	virtual void widget_save() = 0;
 
 	/**
 	 * Restores a widget.
 	 *
 	 * See widget_save for more info.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	virtual void widget_restore(window& window) = 0;
+	virtual void widget_restore() = 0;
 
 	/**
 	 * Enables a widget.
 	 *
-	 * @param window              The window containing the widget.
 	 * @param enable              If true enables the widget, disables
 	 *                            otherwise.
 	 * @param sync                If the state is changed do we need to
@@ -168,28 +156,26 @@ public:
 	 *                            enabling write the value of value_ in the
 	 *                            widget.
 	 */
-	void widget_set_enabled(window& window, const bool enable, const bool sync)
+	void widget_set_enabled(const bool enable, const bool sync)
 	{
-		styled_widget* widget = dynamic_cast<styled_widget*>(window.find(id(), false));
-
-		if(!widget) {
+		if(!get_widget()) {
 			return;
 		}
 
-		const bool widget_state = widget->get_active();
+		const bool widget_state = get_widget()->get_active();
 		if(widget_state == enable) {
 			return;
 		}
 
 		if(sync) {
 			if(enable) {
-				widget_restore(window);
+				widget_restore();
 			} else {
-				widget_save(window);
+				widget_save();
 			}
 		}
 
-		widget->set_active(enable);
+		get_widget()->set_active(enable);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -225,18 +211,18 @@ private:
 	styled_widget* widget_;
 
 	/** See widget_init. */
-	virtual void init_generic(window& window) = 0;
+	virtual void init_generic() = 0;
 
 	/** See widget_init. */
-	virtual void init_specialized(window& /*window*/)
+	virtual void init_specialized()
 	{
 	}
 
 	/** See widget_finalize. */
-	virtual void finalize_generic(window& window) = 0;
+	virtual void finalize_generic() = 0;
 
 	/** See widget_finalize. */
-	virtual void finalize_specialized(window& /*window*/)
+	virtual void finalize_specialized()
 	{
 	}
 };
@@ -340,11 +326,11 @@ public:
 	}
 
 	/** Inherited from field_base. */
-	void widget_restore(window& window)
+	void widget_restore()
 	{
-		validate_widget(window);
+		validate_widget();
 
-		restore(window);
+		restore();
 	}
 
 	/**
@@ -353,13 +339,12 @@ public:
 	 * This sets the value in both the internal cache value and in the widget
 	 * itself.
 	 *
-	 * @param window              The window containing the widget.
 	 * @param value               The new value.
 	 */
-	void set_widget_value(window& window, CT value)
+	void set_widget_value(CT value)
 	{
 		value_ = value;
-		restore(window);
+		restore();
 	}
 
 	/**
@@ -376,9 +361,9 @@ public:
 	}
 
 	/** Inherited from field_base. */
-	void widget_save(window& window)
+	void widget_save()
 	{
-		save(window, false);
+		save(false);
 	}
 
 	/**
@@ -389,13 +374,11 @@ public:
 	 *
 	 * @deprecated Use references to a variable instead.
 	 *
-	 * @param window              The window containing the widget.
-	 *
 	 * @returns                   The current value of the widget.
 	 */
-	T get_widget_value(window& window)
+	T get_widget_value()
 	{
-		save(window, false);
+		save(false);
 		return value_;
 	}
 
@@ -422,9 +405,9 @@ private:
 	std::function<T()> callback_load_value_;
 
 	/** Inherited from field_base. */
-	void init_generic(window& window)
+	void init_generic()
 	{
-		validate_widget(window);
+		validate_widget();
 
 		if(callback_load_value_) {
 			value_ = callback_load_value_();
@@ -432,13 +415,13 @@ private:
 			value_ = link_;
 		}
 
-		restore(window);
+		restore();
 	}
 
 	/** Inherited from field_base. */
-	void finalize_generic(window& window)
+	void finalize_generic()
 	{
-		save(window, true);
+		save(true);
 
 		if(callback_save_value_) {
 			callback_save_value_(value_);
@@ -457,89 +440,49 @@ private:
 
 	/**
 	 * Test whether the widget exists if the widget is mandatory.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	void validate_widget(window& window)
+	void validate_widget()
 	{
-		if(!is_mandatory()) {
-			return;
+		if(is_mandatory() && get_widget() == nullptr) {
+			throw std::runtime_error("Mandatory field widget is null");
 		}
-		find_widget<const W>(&window, id(), false);
 	}
 
 	/**
 	 * Stores the value in the widget in the interval value_.
 	 *
-	 * @param window              The window containing the widget.
-	 * @param must_be_active      If true only active widgets will store their
-	 *value.
+	 * @param must_be_active      If true only active widgets will store their value.
 	 */
-	void save(window& window, const bool must_be_active);
+	void save(const bool must_be_active)
+	{
+		if(auto* widget = dynamic_cast<W*>(get_widget())) {
+			// get_active is only defined for styled_widget so use the non-cast pointer
+			if(!must_be_active || get_widget()->get_active()) {
+				if constexpr(std::is_same_v<W, styled_widget>) {
+					value_ = widget->get_label();
+				} else if constexpr(std::is_same_v<W, selectable_item>) {
+					value_ = widget->get_value_bool();
+				} else {
+					value_ = widget->get_value();
+				}
+			}
+		}
+	}
 
 	/**
 	 * Stores the internal value_ in the widget.
-	 *
-	 * @param window              The window containing the widget.
 	 */
-	void restore(window& window);
+	void restore()
+	{
+		if(auto* widget = dynamic_cast<W*>(get_widget())) {
+			if constexpr(std::is_same_v<W, styled_widget>) {
+				widget->set_label(value_);
+			} else {
+				widget->set_value(value_);
+			}
+		}
+	}
 };
-
-template <class T, class W, class CT>
-void field<T, W, CT>::save(window& window, const bool must_be_active)
-{
-	const W* widget
-			= find_widget<const W>(&window, id(), must_be_active, false);
-
-	if(widget) {
-		value_ = widget->get_value();
-	}
-}
-
-template <>
-inline void field<bool, selectable_item>::save(
-		window& window, const bool must_be_active)
-{
-	const selectable_item* selectable
-			= find_widget<const selectable_item>(&window, id(), must_be_active, false);
-
-	if(selectable) {
-		value_ = selectable->get_value_bool();
-	}
-}
-
-template <>
-inline void field<std::string, styled_widget, const std::string&>::save(
-		window& window, const bool must_be_active)
-{
-	const styled_widget* control
-			= find_widget<const styled_widget>(&window, id(), must_be_active, false);
-
-	if(control) {
-		value_ = control->get_label();
-	}
-}
-
-template <class T, class W, class CT>
-void field<T, W, CT>::restore(window& window)
-{
-	W* widget = find_widget<W>(&window, id(), false, false);
-
-	if(widget) {
-		widget->set_value(value_);
-	}
-}
-
-template <>
-inline void
-field<std::string, styled_widget, const std::string&>::restore(window& window)
-{
-	styled_widget* control = find_widget<styled_widget>(&window, id(), false, false);
-
-	if(control) {
-		control->set_label(value_);
-	}
-}
 
 /** Specialized field class for boolean. */
 class field_bool : public field<bool, selectable_item>
@@ -571,10 +514,10 @@ public:
 
 private:
 	/** Overridden from field_base. */
-	void init_specialized(window& window)
+	void init_specialized()
 	{
 		if(callback_change_) {
-			if(widget* widget = window.find(id(), false)) {
+			if(widget* widget = get_widget()) {
 				if(initial_fire_) {
 					callback_change_(*widget);
 				}
@@ -613,11 +556,9 @@ public:
 
 private:
 	/** Overridden from field_base. */
-	void finalize_specialized(window& window)
+	void finalize_specialized()
 	{
-		text_box* widget = dynamic_cast<text_box*>(window.find(id(), false));
-
-		if(widget) {
+		if(auto* widget = dynamic_cast<text_box*>(get_widget())) {
 			widget->save_to_history();
 		}
 	}
@@ -641,9 +582,9 @@ private:
 	bool use_markup_;
 
 	/** Overridden from field_base. */
-	void init_specialized(window& window)
+	void init_specialized()
 	{
-		find_widget<styled_widget>(&window, id(), false).set_use_markup(use_markup_);
+		get_widget()->set_use_markup(use_markup_);
 	}
 };
 

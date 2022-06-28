@@ -44,11 +44,6 @@ public:
 
 protected:
 	void pre_draw() override;
-	/**
-	* The editor uses different rules for terrain highlighting (e.g. selections)
-	*/
-	image::TYPE get_image_type(const map_location& loc) override;
-
 	void draw_hex(const map_location& loc) override;
 
 	/** Inherited from display. */

@@ -77,7 +77,7 @@ label_settings::label_settings(display_context& dc)
 			team_name = _("Unknown");
 		}
 
-		string_map subst;
+		utils::string_map subst;
 		subst["side_number"] = std::to_string(i + 1);
 		subst["name"] = team_name;
 		labels_display_[label_cat_key] = VGETTEXT("Side $side_number ($name)", subst);
@@ -87,7 +87,7 @@ label_settings::label_settings(display_context& dc)
 void label_settings::pre_show(window& window)
 {
 	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 
 	for(const auto& label_entry : all_labels_) {
 		const std::string& category = label_entry.first;

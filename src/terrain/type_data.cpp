@@ -192,11 +192,11 @@ t_string terrain_type_data::get_underlying_terrain_string(const t_translation::t
 
 	if(underlying.size() > 1 || underlying[0] != terrain) {
 		str += " (";
-        t_translation::ter_list::const_iterator i = underlying.begin();
-        str += get_terrain_info(*i).name();
-        while (++i != underlying.end()) {
+		t_translation::ter_list::const_iterator i = underlying.begin();
+		str += get_terrain_info(*i).name();
+		while (++i != underlying.end()) {
 			str += ", " + get_terrain_info(*i).name();
-        }
+		}
 		str += ")";
 	}
 

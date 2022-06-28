@@ -446,6 +446,19 @@ void dbconn::get_ips_for_user(const std::string& username, std::ostringstream* o
 	}
 }
 
+void dbconn::update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version)
+{
+	try
+	{
+		modify(connection_, "UPDATE `"+db_addon_info_table_+"` SET DOWNLOAD_COUNT = DOWNLOAD_COUNT+1 WHERE INSTANCE_VERSION = ? AND ADDON_ID = ? AND VERSION = ?",
+			instance_version, id, version);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to update download count for add-on "+id+" with version "+version+".", e);
+	}
+}
+
 //
 // handle complex query results
 //

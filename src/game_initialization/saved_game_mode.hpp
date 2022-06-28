@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <array>
-
 #include "enum_base.hpp"
 
 struct saved_game_mode_defines

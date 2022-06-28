@@ -19,18 +19,17 @@
  * configuration objects, and then detect if a keyboard event
  * refers to a hotkey command being executed.
  */
-namespace hotkey {
-
+namespace hotkey
+{
 /**
  * this class is initialized once at game start
  * put all initialization and wipe code in the methods here.
  */
-class manager {
+class manager
+{
 public:
 	manager();
-	static void init();
-	static void wipe();
 	~manager();
 };
 
-}
+} // namespace hotkey

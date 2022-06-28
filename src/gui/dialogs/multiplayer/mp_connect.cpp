@@ -102,9 +102,9 @@ void mp_connect::pre_show(window& win)
 
 void mp_connect::insert_into_server_listbox(listbox& listbox, const server_info& srv, int pos)
 {
-	const std::map<std::string, string_map>& entry{
-		{ "name",    string_map{{"label", srv.name}} },
-		{ "address", string_map{{"label", srv.address}} },
+	const widget_data& entry{
+		{ "name",    widget_item{{"label", srv.name}} },
+		{ "address", widget_item{{"label", srv.address}} },
 	};
 
 	listbox.add_row(entry, pos);

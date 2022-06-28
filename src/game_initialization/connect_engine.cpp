@@ -559,7 +559,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 				}
 			}
 		}
-    }
+	}
 
 	save_reserved_sides_information();
 

@@ -77,10 +77,8 @@ public:
 		return *root_node_;
 	}
 
-	tree_view_node&
-	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data,
-			 const int index = -1);
+	tree_view_node& add_node(
+		const std::string& id, const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes the given node as a child of its parent node.
@@ -244,7 +242,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

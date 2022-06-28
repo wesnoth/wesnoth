@@ -291,7 +291,7 @@ version_table_manager::version_table_manager()
 #endif
 
 #ifdef __APPLE__
-    // Always compiled in.
+	// Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
 	features.back().enabled = true;
 #endif /* __APPLE__ */
@@ -568,27 +568,14 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	const auto& current_driver = CVideo::current_driver();
 	auto drivers = CVideo::enumerate_drivers();
 
-	const auto& dpi = video.get_dpi();
-	const auto& scale = video.get_dpi_scale_factor();
-	std::string dpi_report, scale_report;
-
-	if(dpi.first == 0.0f || dpi.second == 0.0f) {
-		scale_report = dpi_report = "<unknown>";
-	} else {
-		dpi_report = geometry_to_string(dpi.first, dpi.second);
-		scale_report = geometry_to_string(scale.first, scale.second);
-	}
-
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(
 		video.current_resolution().x, video.current_resolution().y));
 	fmt.insert("Game canvas size", geometry_to_string(
-		video.get_width(), video.get_height()));
+		video.draw_area().w, video.draw_area().h));
 	fmt.insert("Final render target size", geometry_to_string(
 		video.output_size().x, video.output_size().y));
 	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
-	fmt.insert("Screen dots per inch", dpi_report);
-	fmt.insert("Screen dpi scale factor", scale_report);
 
 	return fmt;
 }

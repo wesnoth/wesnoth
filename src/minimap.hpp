@@ -21,12 +21,24 @@
 class gamemap;
 class surface;
 class team;
+class unit_map;
 struct map_location;
 
 namespace image {
 	/**
-    * function to create the minimap for a given map
-    * the surface returned must be freed by the user
-    */
+	 * function to create the minimap for a given map
+	 * the surface returned must be freed by the user
+	 */
 	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr, bool ignore_terrain_disabled = false);
+
+/**
+ * Renders the minimap to the screen.
+ */
+void render_minimap(unsigned dst_w,
+	unsigned dst_h,
+	const gamemap& map,
+	const team* vw = nullptr,
+	const unit_map* units = nullptr,
+	const std::map<map_location, unsigned int>* reach_map = nullptr,
+	bool ignore_terrain_disabled = false);
 }

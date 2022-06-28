@@ -74,8 +74,6 @@ public:
 	/** The display function -- see @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
 
-	typedef std::vector<const hotkey::hotkey_command*> visible_hotkeys_t;
-
 private:
 	virtual const std::string& window_id() const override;
 
@@ -93,7 +91,7 @@ private:
 
 	void apply_pixel_scale();
 
-	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
+	widget_data get_friends_list_row_data(const preferences::acquaintance& entry);
 
 	void add_friend_list_entry(const bool is_friend, text_box& textbox);
 	void remove_friend_list_entry(listbox& friends_list, text_box& textbox);
@@ -125,9 +123,10 @@ private:
 	int last_selected_item_;
 
 	std::vector<double> accl_speeds_;
-	visible_hotkeys_t visible_hotkeys_;
 
-	std::map<hotkey::HOTKEY_CATEGORY, t_string> cat_names_;
+	std::vector<const hotkey::hotkey_command*> visible_hotkeys_;
+
+	std::set<hotkey::HOTKEY_CATEGORY> visible_categories_;
 
 	// The page/tab index pairs for setting visible pages
 	const std::pair<int, int>& initial_index_;

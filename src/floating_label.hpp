@@ -17,6 +17,7 @@
 
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include <string>
 
 namespace font {
@@ -69,10 +70,18 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-	void draw(int time, surface screen);
-	void undraw(surface screen);
+	void draw(int time);
+	void undraw();
 
-	surface create_surface();
+	/**
+	 * Ensure a texture for this floating label exists, creating one if needed.
+	 *
+	 * @returns true if the texture exists, false in the case of failure.
+	 */
+	bool create_texture();
+
+	/** Return the size of the label in drawing coordinates */
+	SDL_Point get_draw_size() const { return {tex_.w(), tex_.h()}; }
 
 	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
 
@@ -88,8 +97,8 @@ private:
 	int get_time_alive(int current_time) const { return current_time - time_start_; }
 	int xpos(std::size_t width) const;
 	SDL_Point get_loc(int time);
-	surface get_surface(int time);
-	surface surf_, buf_;
+	uint8_t get_alpha(int time);
+	texture tex_, buf_;
 	SDL_Rect buf_pos_;
 	int fadeout_;
 	int time_start_;
@@ -131,7 +140,7 @@ void remove_floating_label(int handle, int fadeout = 0);
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);
-void draw_floating_labels(surface screen);
-void undraw_floating_labels(surface screen);
+void draw_floating_labels();
+void undraw_floating_labels();
 
 } // end namespace font

@@ -239,7 +239,7 @@ void editor_controller::custom_tods_dialog()
 bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch (cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
@@ -587,7 +587,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 
 bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	SCOPE_ED;
 	using namespace hotkey;
 
@@ -858,7 +858,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			context_manager_->perform_refresh(editor_action_select_none());
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
-            context_manager_->fill_selection();
+			context_manager_->fill_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			context_manager_->perform_refresh(editor_action_shuffle_area(
@@ -1011,8 +1011,8 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		const std::string& id = c["id"];
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
-			|| command.id == hotkey::HOTKEY_NULL)
+		if((can_execute_command(command) && (!context_menu || in_context_menu(command.command)))
+			|| command.command == hotkey::HOTKEY_NULL)
 		{
 			items.emplace_back("id", id);
 		}

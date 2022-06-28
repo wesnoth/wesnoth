@@ -21,6 +21,7 @@
 #include "arrow.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
@@ -70,6 +71,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
 #define DBG_DP LOG_STREAM(debug, log_display)
 
@@ -208,7 +210,7 @@ display::display(const display_context* dc,
 	, menu_buttons_()
 	, action_buttons_()
 	, invalidated_()
-	, mouseover_hex_overlay_(nullptr)
+	, mouseover_hex_overlay_()
 	, tod_hex_mask1(nullptr)
 	, tod_hex_mask2(nullptr)
 	, fog_images_()
@@ -228,7 +230,6 @@ display::display(const display_context* dc,
 	, fps_handle_(0)
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
-	, map_screenshot_surf_(nullptr)
 	, redraw_observers_()
 	, draw_coordinates_(false)
 	, draw_terrain_codes_(false)
@@ -247,9 +248,10 @@ display::display(const display_context* dc,
 
 	read(level.child_or_empty("display"));
 
-	if(screen_.non_interactive()
-		&& (screen_.getDrawingSurface() != nullptr
-		&& screen_.faked())) {
+	if (screen_.non_interactive()
+		&& screen_.surface_initialized()
+		&& screen_.faked())
+	{
 		screen_.lock_updates(true);
 	}
 
@@ -374,10 +376,10 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 	}
 }
 
-surface display::get_flag(const map_location& loc)
+texture display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
-		return surface(nullptr);
+		return texture();
 	}
 
 	for (const team& t : dc_->teams()) {
@@ -387,11 +389,11 @@ surface display::get_flag(const map_location& loc)
 			flag.update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
 				flag.get_current_frame() : flag.get_first_frame();
-			return image::get_image(image_flag, image::TOD_COLORED);
+			return image::get_texture(image_flag, image::TOD_COLORED);
 		}
 	}
 
-	return surface(nullptr);
+	return texture();
 }
 
 void display::set_team(std::size_t teamindex, bool show_everything)
@@ -779,43 +781,46 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		return screen_.getDrawingSurface().clone();
-	} else {
-		if (get_map().empty()) {
-			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
-			return nullptr;
-		}
-
-		SDL_Rect area = max_map_area();
-		map_screenshot_surf_ = surface(area.w, area.h);
-
-		if (map_screenshot_surf_ == nullptr) {
-			// Memory problem ?
-			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
-			return nullptr;
-		}
-
-		// back up the current map view position and move to top-left
-		int old_xpos = xpos_;
-		int old_ypos = ypos_;
-		xpos_ = 0;
-		ypos_ = 0;
-
-		// we reroute render output to the screenshot surface and invalidate all
-		map_screenshot_= true;
-		invalidateAll_ = true;
-		DBG_DP << "draw() with map_screenshot\n";
-		draw(true,true);
-
-		// restore normal rendering
-		map_screenshot_= false;
-		xpos_ = old_xpos;
-		ypos_ = old_ypos;
-
-		// Clear map_screenshot_surf_ and return a new surface that contains the same data
-		surface surf(std::move(map_screenshot_surf_));
-		return surf;
+		LOG_DP << "taking ordinary screenshot" << std::endl;
+		return screen_.read_pixels();
 	}
+
+	if (get_map().empty()) {
+		ERR_DP << "No map loaded, cannot create a map screenshot.\n";
+		return nullptr;
+	}
+
+	// back up the current map view position and move to top-left
+	int old_xpos = xpos_;
+	int old_ypos = ypos_;
+	xpos_ = 0;
+	ypos_ = 0;
+
+	// Reroute render output to a separate texture until the end of scope.
+	SDL_Rect area = max_map_area();
+	if (area.w > 1 << 16 || area.h > 1 << 16) {
+		WRN_DP << "Excessively large map screenshot area" << std::endl;
+	}
+	LOG_DP << "creating " << area.w << " by " << area.h
+	       << " texture for map screenshot" << std::endl;
+	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
+	auto target_setter = draw::set_render_target(output_texture);
+	auto clipper = draw::set_clip(area);
+
+	map_screenshot_ = true;
+	dirty_ = true;
+
+	DBG_DP << "draw() call for map screenshot\n";
+	draw();
+
+	map_screenshot_ = false;
+
+	// Restore map viewport position
+	xpos_ = old_xpos;
+	ypos_ = old_ypos;
+
+	// Read rendered pixels back as an SDL surface.
+	return video().read_pixels();
 }
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
@@ -890,6 +895,10 @@ const std::string& get_direction(std::size_t n)
 
 void display::create_buttons()
 {
+	if(screen_.faked()) {
+		return;
+	}
+
 	menu_buttons_.clear();
 	action_buttons_.clear();
 
@@ -955,7 +964,7 @@ void display::render_buttons()
 	}
 }
 
-std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
@@ -1029,18 +1038,19 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 	}
 
-	// now get the surfaces
-	std::vector<surface> res;
+	// now get the textures
+	std::vector<texture> res;
 
 	for(const std::string& name : names) {
-		if(surface surf = image::get_image(name, image_type)) {
-			res.push_back(std::move(surf));
+		if(texture tex = image::get_texture(name, image_type)) {
+			res.push_back(std::move(tex));
 		}
 	}
 
 	return res;
 }
 
+// TODO: highdpi - verify these get scaled correctly
 void display::get_terrain_images(const map_location& loc, const std::string& timeid, TERRAIN_TYPE terrain_type)
 {
 	terrain_image_vector_.clear();
@@ -1174,38 +1184,42 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-			surface surf;
+			texture tex;
 			const bool off_map = (image.get_filename() == off_map_name
 				|| image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
 			if(off_map) {
-				surf = image::get_image(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::HEXED);
 			} else if(lt.empty()) {
-				surf = image::get_image(image, image::SCALED_TO_HEX);
+				tex = image::get_texture(image, image::HEXED);
 			} else {
-				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
+				tex = image::get_lighted_texture(image, lt);
 			}
 
-			if(surf) {
-				terrain_image_vector_.push_back(std::move(surf));
+			if(tex) {
+				terrain_image_vector_.push_back(std::move(tex));
 			}
 		}
 	}
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
-		const map_location& loc, int x, int y, const surface& surf,
-		const SDL_Rect &clip)
+		const map_location& loc, const SDL_Rect& dest, const texture& tex,
+		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
 {
-	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
+	drawing_buffer_.emplace_back(
+		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
+	);
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
-		const map_location& loc, int x, int y,
-		const std::vector<surface> &surf,
-		const SDL_Rect &clip)
+		const map_location& loc, const SDL_Rect& dest,
+		const std::vector<texture> &tex,
+		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
 {
-	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
+	drawing_buffer_.emplace_back(
+		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
+	);
 }
 
 enum {
@@ -1265,9 +1279,7 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
-	SDL_Rect clip_rect = map_area();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	auto clipper = draw::set_clip(map_area());
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -1282,16 +1294,24 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
+	// TODO: highdpi - perhaps it might be desirable to optionally apply colour and alpha modifiers here?
 	for(const blit_helper& blit : drawing_buffer_) {
-		for(const surface& surf : blit.surf()) {
-			// Note that dstrect can be changed by sdl_blit
-			// and so a new instance should be initialized
-			// to pass to each call to sdl_blit.
-			SDL_Rect dstrect{blit.x(), blit.y(), 0, 0};
-			SDL_Rect srcrect = blit.clip();
-			SDL_Rect* srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h) ? &srcrect : nullptr;
-			sdl_blit(surf, srcrectArg, screen, &dstrect);
-			// NOTE: the screen part should already be marked as 'to update'
+		for(texture tex : blit.tex()) {
+			const SDL_Rect& src = blit.clip();
+			const uint8_t alpha_mod = blit.alpha_mod();
+			const bool hflip = blit.hflip();
+			const bool vflip = blit.vflip();
+			if (alpha_mod != SDL_ALPHA_OPAQUE) {
+				tex.set_alpha_mod(alpha_mod);
+			}
+			if (src != sdl::empty_rect) {
+				draw::flipped(tex, blit.dest(), src, hflip, vflip);
+			} else {
+				draw::flipped(tex, blit.dest(), hflip, vflip);
+			}
+			if (alpha_mod != SDL_ALPHA_OPAQUE) {
+				tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
+			}
 		}
 	}
 	drawing_buffer_clear();
@@ -1318,15 +1338,13 @@ void display::flip()
 		return;
 	}
 
-	surface& drawingSurface = video().getDrawingSurface();
-
-	font::draw_floating_labels(drawingSurface);
+	font::draw_floating_labels();
 	events::raise_volatile_draw_event();
 
-	video().flip();
+	video().render_screen();
 
 	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(drawingSurface);
+	font::undraw_floating_labels();
 }
 
 // frametime is in milliseconds
@@ -1403,23 +1421,30 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
 
-	surface surf(image::get_image(panel.image()));
-
+	// TODO: highdpi - draw area should probably be moved to new drawing API
 	const SDL_Rect screen = video.draw_area();
 	SDL_Rect& loc = panel.location(screen);
 
-	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
-			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
+	DBG_DP << "panel location: " << loc << std::endl;
 
-	if(surf) {
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf = tile_surface(surf,loc.w,loc.h);
-		}
-		video.blit_surface(loc.x, loc.y, surf);
+	if (panel.image().empty()) {
+		DBG_DP << "no panel image given" << std::endl;
+		return;
 	}
+
+	texture tex(image::get_texture(panel.image()));
+	if (!tex) {
+		ERR_DP << "failed to load panel texture ("
+			<< "id: " << panel.get_id()
+			<< ", image: " << panel.image()
+			<< ")" << std::endl;
+		return;
+	}
+
+	draw::tiled(tex, loc);
 }
 
-static void draw_label(CVideo& video, surface target, const theme::label& label)
+static void draw_label(CVideo& video, const theme::label& label)
 {
 	//log_scope("draw label");
 
@@ -1429,14 +1454,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	SDL_Rect& loc = label.location(video.draw_area());
 
 	if(icon.empty() == false) {
-		surface surf(image::get_image(icon));
-		if(surf) {
-			if(surf->w > loc.w || surf->h > loc.h) {
-				surf = scale_surface(surf,loc.w,loc.h);
-			}
-
-			sdl_blit(surf,nullptr,target,&loc);
-		}
+		draw::blit(image::get_texture(icon), loc);
 
 		if(text.empty() == false) {
 			tooltips::add_tooltip(loc,text);
@@ -1448,8 +1466,6 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
-	surface& screen(screen_.getDrawingSurface());
-
 	/*
 	 * The minimap is also a panel, force it to update its contents.
 	 * This is required when the size of the minimap has been modified.
@@ -1461,37 +1477,10 @@ void display::draw_all_panels()
 	}
 
 	for(const auto& label : theme_.labels()) {
-		draw_label(video(), screen, label);
+		draw_label(video(), label);
 	}
 
 	render_buttons();
-}
-
-static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
-{
-	// No background image, just fill in black.
-	if(image.empty()) {
-		sdl::fill_rectangle(area, color_t(0, 0, 0));
-		return;
-	}
-
-	const surface background(image::get_image(image));
-	if(!background) {
-		return;
-	}
-
-	const unsigned int width = background->w;
-	const unsigned int height = background->h;
-
-	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
-	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
-
-	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
-		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = sdl::create_rect(w_off, h_off, 0, 0);
-			sdl_blit(background, nullptr, screen, &clip);
-		}
-	}
 }
 
 void display::draw_text_in_hex(const map_location& loc,
@@ -1504,91 +1493,126 @@ void display::draw_text_in_hex(const map_location& loc,
 {
 	if (text.empty()) return;
 
-	const std::size_t font_sz = static_cast<std::size_t>(font_size * get_zoom_factor());
+	const double zf = get_zoom_factor();
+	const int font_sz = int(font_size * zf);
 
-	surface text_surf = font::pango_render_text(text, font_sz, color);
-	surface back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
-	const int x = get_location_x(loc) - text_surf->w/2
+	// TODO: highdpi - use the same processing as floating_label::create_texture() and cache the effect result so it doesn't constantly rerender the same thing.
+	// TODO: highdpi - perhaps this could be a single texture with colour mod, in stead of rendering twice?
+	texture text_surf = font::pango_render_text(text, font_sz, color);
+	texture back_surf = font::pango_render_text(text, font_sz, font::BLACK_COLOR);
+	const int x = get_location_x(loc) - text_surf.w()/2
 	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_surf->h/2
+	const int y = get_location_y(loc) - text_surf.h()/2
 	              + static_cast<int>(y_in_hex* hex_size());
+	const int w = text_surf.w();
+	const int h = text_surf.h();
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, loc, x + dx, y + dy, back_surf);
+				const SDL_Rect dest{int(x + dx*zf), int(y + dy*zf), w, h};
+				drawing_buffer_add(layer, loc, dest, back_surf,
+					SDL_Rect(), false, false, 128);
 			}
 		}
 	}
-	drawing_buffer_add(layer, loc, x, y, text_surf);
+	drawing_buffer_add(layer, loc, {x, y, w, h}, text_surf);
 }
 
-//TODO: convert this to use sdl::ttexture
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
-		const map_location& loc, surface image,
+		const map_location& loc, const image::locator& i_locator,
 		bool hreverse, bool greyscale, int32_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	if (image==nullptr)
-		return;
-
-	SDL_Rect image_rect {x, y, image->w, image->h};
-	SDL_Rect clip_rect = map_area();
-	if (!sdl::rects_overlap(image_rect, clip_rect))
-		return;
-
-	surface surf(image);
-
-	if(hreverse) {
-		surf = image::reverse_image(surf);
-	}
-	if(vreverse) {
-		surf = flop_surface(surf);
-	}
-
-	if(greyscale) {
-		surf = greyscale_image(surf);
-	}
-
-	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto);
-	}
-	if(alpha > floating_to_fixed_point(1.0)) {
-		surf = brighten_image(surf, alpha);
-	} else if(alpha != floating_to_fixed_point(1.0)) {
-		surf = surf.clone();
-		adjust_surface_alpha(surf, alpha);
-	}
-
-	if(surf == nullptr) {
-		ERR_DP << "surface lost..." << std::endl;
+	const point image_size = image::get_size(i_locator);
+	if (!image_size.x || !image_size.y) {
 		return;
 	}
 
-	if(submerged > 0.0) {
-		// divide the surface into 2 parts
-		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
-		const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect {0, 0, surf->w, submerge_height};
-		drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+	// TODO: highdpi - are x,y correct here?
+	SDL_Rect dest = scaled_to_zoom({x, y, image_size.x, image_size.y});
+	if (!sdl::rects_overlap(dest, map_area())) {
+		return;
+	}
 
-		if(submerge_height != surf->h) {
-			//the lower part will be transparent
-			float alpha_base = 0.3f; // 30% alpha at surface of water
-			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
-			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
+	// For now, we add to the existing IPF modifications for the image.
+	std::string new_modifications;
 
-			srcrect.y = submerge_height;
-			srcrect.h = surf->h-submerge_height;
-			y += submerge_height;
+	if (greyscale) {
+		new_modifications += "~GS()";
+	}
 
-			drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+	if (blend_ratio > 0.0) {
+		new_modifications += "~BLEND(";
+		new_modifications += std::to_string(blendto.r);
+		new_modifications += ",";
+		new_modifications += std::to_string(blendto.g);
+		new_modifications += ",";
+		new_modifications += std::to_string(blendto.b);
+		new_modifications += ",";
+		// reduce blend_ratio precision to avoid caching too many options.
+		if (blend_ratio >= 1.0) {
+			new_modifications += "1.0";
+		} else {
+			new_modifications += "0.";
+			new_modifications += std::to_string(int(100*blend_ratio));
 		}
-	} else {
-		// simple blit
-		drawing_buffer_add(drawing_layer, loc, x, y, surf);
+		new_modifications += ")";
 	}
+
+	// TODO: This is not what alpha means. Don't frivolously overload it.
+	// TODO: highdpi - perhaps this can be done by blitting twice, once in additive blend mode
+	// Note: this may not be identical to the original calculation,
+	// which was to multiply the RGB values by (alpha/255).
+	// But for now it looks close enough.
+	if(alpha > floating_to_fixed_point(1.0)) {
+		const std::string brighten_string = std::to_string((alpha - 255)/2);
+		new_modifications += "~CS(";
+		new_modifications += brighten_string;
+		new_modifications += ",";
+		new_modifications += brighten_string;
+		new_modifications += ",";
+		new_modifications += brighten_string;
+		new_modifications += ")";
+	}
+
+	// general formula for submerged alpha:
+	//   if (y > WATERLINE)
+	//   then min(max(alpha_mod, 0), 1) * alpha
+	//   else alpha
+	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
+	// formula variables: x, y, red, green, blue, alpha, width, height
+	// full WFL string:
+	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
+	// where DL = submersion line in pixels from top of image
+	//       AB = base alpha proportion at submersion line (30%)
+	//       AD = proportional alpha delta per pixel (1.5%)
+	if (submerged > 0.0) {
+		const int submersion_line = image_size.y * (1.0 - submerged);
+		const std::string sl_string = std::to_string(submersion_line);
+		new_modifications += "~ADJUST_ALPHA(if(y>";
+		new_modifications += sl_string;
+		new_modifications += ",clamp((0.3-(y-";
+		new_modifications += sl_string;
+		new_modifications += ")*0.015),0,1)*alpha,alpha))";
+	}
+
+	texture tex;
+	if (!new_modifications.empty()) {
+		const image::locator modified_locator(
+			i_locator.get_filename(),
+			i_locator.get_modifications() + new_modifications
+		);
+		tex = image::get_texture(modified_locator);
+	} else {
+		tex = image::get_texture(i_locator);
+	}
+
+	// TODO: highdpi - flipping and alpha modification need to be propagated from hreverse, vreverse, alpha
+	const uint8_t alpha_mod = std::clamp(alpha, 0, 255);
+	drawing_buffer_add(drawing_layer, loc, dest, tex, sdl::empty_rect,
+		hreverse, vreverse, alpha_mod);
 }
+
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
@@ -1640,10 +1664,11 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-		const surface& screen = get_screen_surface();
-		clip_rect_setter set_clip_rect(screen, &clip_rect);
-		SDL_FillRect(screen, &clip_rect, 0x00000000);
-		draw_background(screen, clip_rect, theme_.border().background_image);
+		draw::fill(clip_rect, 0, 0, 0);
+		draw::tiled(
+			image::get_texture(theme_.border().background_image),
+			clip_rect
+		);
 		redraw_background_ = false;
 
 		// Force a full map redraw
@@ -1668,7 +1693,7 @@ void display::draw_wrap(bool update, bool force)
 		time_between_draws = 1000 / screen_.current_refresh_rate();
 	}
 
-	if(redrawMinimap_) {
+	if(redrawMinimap_ && !map_screenshot_) {
 		redrawMinimap_ = false;
 		draw_minimap();
 	}
@@ -1755,33 +1780,40 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(),
+	// TODO: highdpi - high DPI minimap
+	// TODO: highdpi - is this the best place to convert to texture?
+	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
+		minimap_ = texture(image::getMinimap(area.w, area.h, get_map(),
 			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
-			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
-		if(minimap_ == nullptr) {
+			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr));
+		if(!minimap_) {
 			return;
 		}
 	}
 
-	const surface& screen(screen_.getDrawingSurface());
-	clip_rect_setter clip_setter(screen, &area);
+	// TODO: highdpi - does this really need to set a clipping area?
+	auto clipper = draw::set_clip(area);
 
-	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color, screen);
+	// Draw the minimap background.
+	draw::fill(area, 31, 31, 23);
 
-	//update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_->h) / 2;
-	minimap_location_.w = minimap_->w;
-	minimap_location_.h = minimap_->h;
+	// Update the minimap location for mouse and units functions
+	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
+	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
+	minimap_location_.w = minimap_.w();
+	minimap_location_.h = minimap_.h();
+
+	// Draw the minimap.
+	if (minimap_) {
+		draw::blit(minimap_, minimap_location_);
+	}
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_->w / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_->h / (get_map().h()*hex_size());
+	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
+	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1809,20 +1841,8 @@ void display::draw_minimap()
 	// no render clipping rectangle set operaton was queued,
 	// so let's not use the render API to draw the rectangle.
 
-	const SDL_Rect outline_parts[] = {
-		// top
-		{ outline_rect.x,                      outline_rect.y,                  outline_rect.w, 1              },
-		// bottom
-		{ outline_rect.x,                      outline_rect.y + outline_rect.h, outline_rect.w, 1              },
-		// left
-		{ outline_rect.x,                      outline_rect.y,                  1,              outline_rect.h },
-		// right
-		{ outline_rect.x + outline_rect.w - 1, outline_rect.y,                  1,              outline_rect.h },
-	};
-
-	for(const auto& r : outline_parts) {
-		SDL_FillRect(screen_.getDrawingSurface(), &r, 0x00FFFFFF);
-	}
+	// TODO: highdpi - is the above still relevant? It doesn't seem to be.
+	draw::rect(outline_rect, 255, 255, 255);
 }
 
 void display::draw_minimap_units()
@@ -1873,7 +1893,7 @@ void display::draw_minimap_units()
 		// no render clipping rectangle set operaton was queued,
 		// so let's not use the render API to draw the rectangle.
 
-		SDL_FillRect(screen_.getDrawingSurface(), &r, col.to_argb_bytes());
+		draw::fill(r, col.r, col.g, col.b, col.a);
 	}
 }
 
@@ -1923,8 +1943,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		surface& screen(screen_.getDrawingSurface());
-
 		SDL_Rect dstrect = map_area();
 		dstrect.x += diff_x;
 		dstrect.y += diff_y;
@@ -1934,9 +1952,9 @@ bool display::scroll(int xmove, int ymove, bool force)
 		srcrect.x -= diff_x;
 		srcrect.y -= diff_y;
 
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen, &srcrect, screen, &dstrect);
-		SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
+		// TODO: highdpi - This is gross and should be replaced
+		texture t = screen_.read_texture(&srcrect);
+		draw::blit(t, dstrect);
 	}
 
 	if(diff_y != 0) {
@@ -2078,7 +2096,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(screen_.update_locked()) {
+	if(screen_.update_locked() || screen_.faked()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2168,7 +2186,7 @@ void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, b
 
 void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
-			      double add_spacing, bool force)
+                              double add_spacing, bool force)
 {
 	std::vector<map_location> locs;
 	locs.push_back(loc1);
@@ -2438,7 +2456,7 @@ void display::draw(bool update, bool force)
 {
 	//	log_scope("display::draw");
 
-	if(screen_.update_locked()) {
+	if(screen_.update_locked() || screen_.faked()) {
 		return;
 	}
 
@@ -2459,21 +2477,19 @@ void display::draw(bool update, bool force)
 
 	draw_init();
 	pre_draw();
-	// invalidate all that needs to be invalidated
+	// invalidate animated terrain, units and haloes
 	invalidate_animations();
 
 	if(!get_map().empty()) {
-		/*
-		 * draw_invalidated() also invalidates the halos, so also needs to be
-		 * ran if invalidated_.empty() == true.
-		 */
 		if(!invalidated_.empty()) {
 			draw_invalidated();
 			invalidated_.clear();
 		}
 		drawing_buffer_commit();
 		post_commit();
-		draw_sidebar();
+		if (!map_screenshot_) {
+			draw_sidebar();
+		}
 	}
 	draw_wrap(update, force);
 	post_draw();
@@ -2497,8 +2513,7 @@ const SDL_Rect& display::get_clip_rect()
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	auto clipper = draw::set_clip(clip_rect);
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
@@ -2534,9 +2549,10 @@ void display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
+	const int zoom = int(zoom_);
+	SDL_Rect dest{xpos, ypos, zoom, zoom};
 
 	int num_images_fg = 0;
 	int num_images_bg = 0;
@@ -2544,21 +2560,21 @@ void display::draw_hex(const map_location& loc)
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		get_terrain_images(loc, tod.id, BACKGROUND); // updates terrain_image_vector_
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, terrain_image_vector_);
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, terrain_image_vector_);
 		num_images_bg = terrain_image_vector_.size();
 
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, terrain_image_vector_);
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, terrain_image_vector_);
 		num_images_fg = terrain_image_vector_.size();
 
 		// Draw the grid, if that's been enabled
 		if(preferences::grid()) {
 			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_image(grid_top, image::TOD_COLORED));
+			drawing_buffer_add(LAYER_GRID_TOP, loc, dest,
+				image::get_texture(grid_top, image::TOD_COLORED));
 			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_image(grid_bottom, image::TOD_COLORED));
+			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, dest,
+				image::get_texture(grid_bottom, image::TOD_COLORED));
 		}
 	}
 
@@ -2583,9 +2599,9 @@ void display::draw_hex(const map_location& loc)
 					}
 					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
-						const surface surf = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_image(ov.image, lt, image::SCALED_TO_HEX) : image::get_image(ov.image, image::SCALED_TO_HEX);
-						drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+							image::get_lighted_texture(ov.image, lt) : image::get_texture(ov.image, image::HEXED);
+						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}
 			}
@@ -2594,24 +2610,30 @@ void display::draw_hex(const map_location& loc)
 
 	if(!shrouded(loc)) {
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, get_flag(loc));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+		// TODO: highdpi - don't convert these every time, this is terrible
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask1));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask2));
 	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
-			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest,
+			image::get_texture(tod_hex_mask,image::HEXED));
 	}
 
 	// Paint mouseover overlays
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-			&& mouseover_hex_overlay_ != nullptr) {
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
+	if(loc == mouseoverHex_
+		&& (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+		&& !map_screenshot_
+		&& bool(mouseover_hex_overlay_))
+	{
+		const uint8_t alpha = 196;
+		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, dest,
+			mouseover_hex_overlay_, SDL_Rect(), false, false, alpha);
 	}
 
 	// Paint arrows
@@ -2628,90 +2650,95 @@ void display::draw_hex(const map_location& loc)
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
 		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(shroud_image, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
+			image::get_texture(shroud_image, image::TOD_COLORED));
 	} else if(fogged(loc)) {
 		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(fog_image, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest,
+			image::get_texture(fog_image, image::TOD_COLORED));
 	}
 
 	if(!shrouded(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, dest, get_fog_shroud_images(loc, image::TOD_COLORED));
 	}
 
 	if (on_map) {
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - this is just a fill, some way of better passing this as a command to the drawing buffer perhaps?
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_terrain_codes_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
 			if (draw_num_of_bitmaps_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - see above
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
-				off_y -= text->h / 2;
+				off_y -= text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
+			texture text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			// TODO: highdpi - see above
+			surface bg_surf(text.w(), text.h());
+			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
+			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
+			texture bg(bg_surf);
+			off_x -= text.w() / 2;
+			off_y -= text.h() / 2;
 			if (draw_coordinates_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			}
 			if (draw_terrain_codes_) {
-				off_y += text->h / 2;
+				off_y += text.h() / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 	}
 
 	if(debug_foreground) {
-		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
-			image::get_image("terrain/foreground.png", image_type));
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, dest,
+			image::get_texture("terrain/foreground.png", image::TOD_COLORED));
 	}
 
 }
 
-image::TYPE display::get_image_type(const map_location& /*loc*/) {
-	return image::TOD_COLORED;
-}
-
-/*void display::draw_sidebar() {
-
-}*/
-
-void display::draw_image_for_report(surface& img, SDL_Rect& rect)
+// TODO: highdpi - why is there all this faff to deal with textures that are fill of transparency? Just don't make your textures full of transparency. This should not be a thing.
+// Usage of this function has been removed.
+// If this turns out to raise no problems, remove the function too.
+#if 0
+void display::draw_image_for_report(surface& img, const SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transparent_portion(img);
 	SDL_Rect target = rect;
@@ -2734,15 +2761,16 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		sdl_blit(img, &visible_area, screen_.getDrawingSurface(), &target);
+		screen_.blit_surface(target.x, target.y, img, &visible_area, nullptr);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img = scale_surface(img,rect.w,rect.h);
 		}
 
-		sdl_blit(img, nullptr, screen_.getDrawingSurface(), &target);
+		screen_.blit_surface(img, &target);
 	}
 }
+#endif
 
 /**
  * Redraws the specified report (if anything has changed).
@@ -2753,7 +2781,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_name] = nullptr;
+		reportSurfaces_[report_name].reset();
 		return;
 	}
 
@@ -2773,34 +2801,37 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_.draw_area());
-	surface &surf = reportSurfaces_[report_name];
+	texture &tex = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (surf && rect == new_rect && report == *new_cfg) {
+	if (tex && rect == new_rect && report == *new_cfg) {
 		return;
 	}
 
 	// Update the config in reports_.
 	report = *new_cfg;
 
-	if (surf) {
-		sdl_blit(surf, nullptr, screen_.getDrawingSurface(), &rect);
+	// TODO: highdpi - should this really be drawn if rect != new_rect? That's how the old code was.
+	if (tex) {
+		draw::blit(tex, rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
-	if (!surf || new_rect != rect)
+	if (!tex || new_rect != rect)
 	{
-		surf = nullptr;
+		tex.reset();
 		rect = new_rect;
+
+		// TODO: highdpi - i have no idea why this is neccesary, as the only report backgrounds i have seen were just black. Maybe it can just stop doing this?
 
 		// If the rectangle is present, and we are blitting text,
 		// then we need to backup the surface.
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf = get_surface_portion(screen_.getDrawingSurface(), rect);
-			if (reportSurfaces_[report_name] == nullptr) {
+			tex = texture(screen_.read_pixels_low_res(&rect));
+			if (!reportSurfaces_[report_name]) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
@@ -2846,6 +2877,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		{
 			if (used_ellipsis) goto skip_element;
 
+			// TODO: highdpi - high dpi text
 			// Draw a text element.
 			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
@@ -2865,12 +2897,12 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 				.set_characters_per_line(0);
 
-			surface s = text.render();
+			texture s = text.render_texture();
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
 			config::const_child_iterator ee = elements.begin();
-			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
+			if (!eol && rect.w - (x - rect.x + s.w()) < minimal_text &&
 				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
@@ -2878,18 +2910,19 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				s = text.render();
+				// TODO: highdpi - don't convert this here
+				s = text.render_texture();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;
 				ellipsis_area.y = y;
-				ellipsis_area.w = s->w;
-				ellipsis_area.h = s->h;
+				ellipsis_area.w = s.w();
+				ellipsis_area.h = s.h();
 			}
 
-			screen_.blit_surface(x, y, s);
-			area.w = s->w;
-			area.h = s->h;
+			area.w = s.w();
+			area.h = s.h();
+			draw::blit(s, area);
 			if (area.h > tallest) {
 				tallest = area.h;
 			}
@@ -2906,22 +2939,25 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw an image element.
-			surface img(image::get_image(t));
+			texture img(image::get_texture(t));
 
 			if (!img) {
 				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
 				continue;
 			}
 
-			if (area.w < img->w && image_count) {
+			// TODO: highdpi - set size independently of image
+			if (area.w < img.w() && image_count) {
 				// We have more than one image, and this one doesn't fit.
-				img = image::get_image(game_config::images::ellipsis);
+				img = image::get_texture(game_config::images::ellipsis);
 				used_ellipsis = true;
 			}
 
-			if (img->w < area.w) area.w = img->w;
-			if (img->h < area.h) area.h = img->h;
-			draw_image_for_report(img, area);
+			if (img.w() < area.w) area.w = img.w();
+			if (img.h() < area.h) area.h = img.h();
+			// TODO: highdpi - this was crazy so i nixed it
+			//draw_image_for_report(img, area);
+			draw::blit(img, area);
 
 			++image_count;
 			if (area.h > tallest) {
@@ -3078,6 +3114,8 @@ void display::invalidate_animations()
 			new_inval |= u->anim_comp().invalidate(*this);
 		}
 	} while(new_inval);
+
+	halo_man_->unrender(invalidated_);
 }
 
 void display::reset_standing_animations()

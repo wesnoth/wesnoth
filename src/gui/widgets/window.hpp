@@ -29,6 +29,8 @@
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/retval.hpp"
 
+#include "sdl/texture.hpp"
+
 #include <functional>
 #include <map>
 #include <memory>
@@ -36,7 +38,6 @@
 #include <vector>
 
 class CVideo;
-class surface;
 struct point;
 
 namespace gui2
@@ -480,8 +481,8 @@ private:
 	/** Whether the window has other windows behind it */
 	bool is_toplevel_;
 
-	/** When the window closes this surface is used to undraw the window. */
-	surface restorer_;
+	/** When the window closes this texture is used to undraw the window. */
+	texture restorer_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;

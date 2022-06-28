@@ -38,7 +38,7 @@ struct language_def
 		{}
 
 	language_def(const std::string& name, const t_string& lang, const std::string& dir,
-		    const std::string &salternates = "", const std::string& sort_name = "", const std::string& percent = "100") :
+	             const std::string &salternates = "", const std::string& sort_name = "", const std::string& percent = "100") :
 		localename(name),
 		alternates(utils::split(salternates)),
 		language(lang),
@@ -50,7 +50,7 @@ struct language_def
 		} catch(const std::invalid_argument&) {
 			this->percent = 100;
 		}
-    }
+	}
 
 	std::string localename;
 	std::vector<std::string> alternates;

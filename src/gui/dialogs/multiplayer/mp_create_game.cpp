@@ -197,8 +197,8 @@ void mp_create_game::pre_show(window& win)
 
 	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
@@ -253,23 +253,10 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up random faction mode menu_button
 	//
-	static const random_faction_mode::sized_array<t_string> names {_("Independent"), _("No Mirror"), _("No Ally Mirror")};
-	static const random_faction_mode::sized_array<t_string> tooltips {
-		_("Independent: Random factions assigned independently"),
-		_("No Mirror: No two players will get the same faction"),
-		_("No Ally Mirror: No two allied players will get the same faction")
-	};
-	std::vector<config> rfm_options;
-	for(std::size_t i = 0; i < random_faction_mode::size(); i++) {
-		rfm_options.emplace_back("label", names[i]);
-		rfm_options[i]["tooltip"] = tooltips[i];
-	};
-
 	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::random_faction_mode()).value_or(random_faction_mode::type::independent));
 
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
-
-	rfm_menu_button.set_values(rfm_options, initial_index);
+	rfm_menu_button.set_selected(initial_index);
 
 	connect_signal_notify_modified(rfm_menu_button,
 		std::bind(&mp_create_game::on_random_faction_mode_select, this));
@@ -290,16 +277,22 @@ void mp_create_game::pre_show(window& win)
 	bind_status_label<slider>(&win, action_bonus_->id());
 
 	//
+	// Timer reset button
+	//
+	connect_signal_mouse_left_click(
+		find_widget<button>(&win, "reset_timer_defaults", false),
+		std::bind(&mp_create_game::reset_timer_settings, this));
+
+	//
 	// Disable certain settings if we're playing a local game.
 	//
-
 	if(local_mode_) {
 		find_widget<text_box>(&win, "game_name", false).set_active(false);
 		find_widget<text_box>(&win, "game_password", false).set_active(false);
 
-		observers_->widget_set_enabled(win, false, false);
-		strict_sync_->widget_set_enabled(win, false, false);
-		private_replay_->widget_set_enabled(win, false, false);
+		observers_->widget_set_enabled(false, false);
+		strict_sync_->widget_set_enabled(false, false);
+		private_replay_->widget_set_enabled(false, false);
 	}
 
 	//
@@ -343,9 +336,9 @@ void mp_create_game::pre_show(window& win)
 	plugins_context_->set_callback("load",   [this](const config&) { load_game_callback(); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
-	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(win, cfg[#field].convert()); } } while(false) \
+	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(cfg[#field].convert()); } } while(false) \
 
-	plugins_context_->set_callback("update_settings", [this, &win](const config& cfg) {
+	plugins_context_->set_callback("update_settings", [this](const config& cfg) {
 		UPDATE_ATTRIBUTE(turns, to_int);
 		UPDATE_ATTRIBUTE(gold, to_int);
 		UPDATE_ATTRIBUTE(support, to_int);
@@ -583,8 +576,8 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		if(type == level_type::type::campaign || type == level_type::type::sp_campaign) {
 			item["label"] = game->icon();
@@ -725,44 +718,44 @@ void mp_create_game::update_details()
 
 void mp_create_game::update_map_settings()
 {
-	window& window = *get_window();
-
 	if(config_engine_->force_lock_settings()) {
-		use_map_settings_->widget_set_enabled(window, false, false);
-		use_map_settings_->set_widget_value(window, true);
+		use_map_settings_->widget_set_enabled(false, false);
+		use_map_settings_->set_widget_value(true);
 	} else {
-		use_map_settings_->widget_set_enabled(window, true, false);
+		use_map_settings_->widget_set_enabled(true, false);
 	}
 
-	const bool use_map_settings = use_map_settings_->get_widget_value(window);
+	const bool use_map_settings = use_map_settings_->get_widget_value();
 
 	config_engine_->set_use_map_settings(use_map_settings);
 
-	fog_            ->widget_set_enabled(window, !use_map_settings, false);
-	shroud_         ->widget_set_enabled(window, !use_map_settings, false);
-	start_time_     ->widget_set_enabled(window, !use_map_settings, false);
+	fog_            ->widget_set_enabled(!use_map_settings, false);
+	shroud_         ->widget_set_enabled(!use_map_settings, false);
+	start_time_     ->widget_set_enabled(!use_map_settings, false);
 
-	turns_          ->widget_set_enabled(window, !use_map_settings, false);
-	gold_           ->widget_set_enabled(window, !use_map_settings, false);
-	support_        ->widget_set_enabled(window, !use_map_settings, false);
-	experience_     ->widget_set_enabled(window, !use_map_settings, false);
+	turns_          ->widget_set_enabled(!use_map_settings, false);
+	gold_           ->widget_set_enabled(!use_map_settings, false);
+	support_        ->widget_set_enabled(!use_map_settings, false);
+	experience_     ->widget_set_enabled(!use_map_settings, false);
 
-	const bool time_limit = time_limit_->get_widget_value(window);
+	const bool time_limit = time_limit_->get_widget_value();
 
-	init_turn_limit_->widget_set_enabled(window, time_limit, false);
-	turn_bonus_     ->widget_set_enabled(window, time_limit, false);
-	reservoir_      ->widget_set_enabled(window, time_limit, false);
-	action_bonus_   ->widget_set_enabled(window, time_limit, false);
+	init_turn_limit_->widget_set_enabled(time_limit, false);
+	turn_bonus_     ->widget_set_enabled(time_limit, false);
+	reservoir_      ->widget_set_enabled(time_limit, false);
+	action_bonus_   ->widget_set_enabled(time_limit, false);
+
+	find_widget<button>(get_window(), "reset_timer_defaults", false).set_active(time_limit);
 
 	if(use_map_settings) {
-		fog_       ->set_widget_value(window, config_engine_->fog_game_default());
-		shroud_    ->set_widget_value(window, config_engine_->shroud_game_default());
-		start_time_->set_widget_value(window, config_engine_->random_start_time_default());
+		fog_       ->set_widget_value(config_engine_->fog_game_default());
+		shroud_    ->set_widget_value(config_engine_->shroud_game_default());
+		start_time_->set_widget_value(config_engine_->random_start_time_default());
 
-		turns_     ->set_widget_value(window, config_engine_->num_turns_default());
-		gold_      ->set_widget_value(window, config_engine_->village_gold_default());
-		support_   ->set_widget_value(window, config_engine_->village_support_default());
-		experience_->set_widget_value(window, config_engine_->xp_modifier_default());
+		turns_     ->set_widget_value(config_engine_->num_turns_default());
+		gold_      ->set_widget_value(config_engine_->village_gold_default());
+		support_   ->set_widget_value(config_engine_->village_support_default());
+		experience_->set_widget_value(config_engine_->xp_modifier_default());
 	}
 }
 
@@ -803,6 +796,20 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 		find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
 	}
+}
+
+void mp_create_game::reset_timer_settings()
+{
+	// This allows the defaults to be returned by the pref getters below
+	preferences::erase("mp_countdown_init_time");
+	preferences::erase("mp_countdown_reservoir_time");
+	preferences::erase("mp_countdown_turn_bonus");
+	preferences::erase("mp_countdown_action_bonus");
+
+	init_turn_limit_->set_widget_value(preferences::countdown_init_time());
+	turn_bonus_->set_widget_value(preferences::countdown_turn_bonus());
+	reservoir_->set_widget_value(preferences::countdown_reservoir_time());
+	action_bonus_->set_widget_value(preferences::countdown_action_bonus());
 }
 
 bool mp_create_game::dialog_exit_hook(window& /*window*/)
@@ -898,32 +905,32 @@ void mp_create_game::post_show(window& window)
 			create_engine_.get_state().set_scenario(scenario);
 		}
 
-		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
+		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value());
 
 		if(!config_engine_->force_lock_settings()) {
 			// Max slider value (in this case, 100) means 'unlimited turns', so pass the value -1
-			const int num_turns = turns_->get_widget_value(window);
+			const int num_turns = turns_->get_widget_value();
 			config_engine_->set_num_turns(num_turns < ::settings::turns_max ? num_turns : - 1);
-			config_engine_->set_village_gold(gold_->get_widget_value(window));
-			config_engine_->set_village_support(support_->get_widget_value(window));
-			config_engine_->set_xp_modifier(experience_->get_widget_value(window));
-			config_engine_->set_random_start_time(start_time_->get_widget_value(window));
-			config_engine_->set_fog_game(fog_->get_widget_value(window));
-			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
+			config_engine_->set_village_gold(gold_->get_widget_value());
+			config_engine_->set_village_support(support_->get_widget_value());
+			config_engine_->set_xp_modifier(experience_->get_widget_value());
+			config_engine_->set_random_start_time(start_time_->get_widget_value());
+			config_engine_->set_fog_game(fog_->get_widget_value());
+			config_engine_->set_shroud_game(shroud_->get_widget_value());
 
 			config_engine_->write_parameters();
 		}
 
-		config_engine_->set_mp_countdown(time_limit_->get_widget_value(window));
-		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value(window));
-		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value(window));
-		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value(window));
-		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
+		config_engine_->set_mp_countdown(time_limit_->get_widget_value());
+		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value());
+		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value());
+		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value());
+		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value());
 
-		config_engine_->set_allow_observers(observers_->get_widget_value(window));
-		config_engine_->set_private_replay(private_replay_->get_widget_value(window));
-		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
-		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
+		config_engine_->set_allow_observers(observers_->get_widget_value());
+		config_engine_->set_private_replay(private_replay_->get_widget_value());
+		config_engine_->set_oos_debug(strict_sync_->get_widget_value());
+		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value());
 
 		random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
 		config_engine_->set_random_faction_mode(type);

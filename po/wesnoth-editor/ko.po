@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 03:24+0300\n"
+"POT-Creation-Date: 2022-06-19 09:03-0500\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -256,22 +256,22 @@ msgstr "레벨:"
 msgid "Cost: "
 msgstr "비용:"
 
-#: src/editor/controller/editor_controller.cpp:180
+#: src/editor/controller/editor_controller.cpp:181
 msgid "Fatal error"
 msgstr "치명적인 에러"
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:211
 msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/editor/controller/editor_controller.cpp:212
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:215
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -279,23 +279,23 @@ msgstr ""
 "정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
 "사라집니다:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:224
 msgid "No editor time-of-day found."
 msgstr "에디터의 시각설정을 찾을 수 없습니다."
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1141
 msgid "Change Unit ID"
 msgstr "유닛 ID변경"
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1158
 msgid "Rename Unit"
 msgstr "유닛 이름 변경"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Name:"
 msgstr "이름:"
 
@@ -410,7 +410,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "$side_num 번 플레이어"
 
@@ -449,62 +449,62 @@ msgstr "맵을 저장 할 수 없습니다: $msg"
 msgid "(Unknown Group)"
 msgstr "(알수없는 그룹)"
 
-#: src/editor/palette/editor_palettes.cpp:285
+#: src/editor/palette/editor_palettes.cpp:295
 msgid "(non-core)"
 msgstr "(코어 이외)"
 
-#: src/editor/palette/editor_palettes.cpp:286
+#: src/editor/palette/editor_palettes.cpp:296
 msgid "Will not work in game without extra care."
 msgstr "지금 상태론 게임에서 동작 하지 않습니다"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:250
 msgid "Go To"
 msgstr "이동하다"
 
-#: src/editor/palette/location_palette.cpp:264
+#: src/editor/palette/location_palette.cpp:257
 msgid "Add"
 msgstr "추가하다"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:259
 msgid "New Location Identifier"
 msgstr "새로운 장소 ID"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:266
 msgid "Error"
 msgstr "에러"
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:267
 msgid "Invalid location id"
 msgstr "불명확한 장소 ID"
 
-#: src/editor/palette/location_palette.cpp:281
+#: src/editor/palette/location_palette.cpp:274
 msgid "Delete"
 msgstr "삭제"
 
-#: src/editor/palette/terrain_palettes.cpp:232
+#: src/editor/palette/terrain_palettes.cpp:230
 msgid "Left-click: "
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:233
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "Right-click: "
 msgstr ""
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
-#: src/editor/palette/terrain_palettes.cpp:238
+#: src/editor/palette/terrain_palettes.cpp:236
 msgid "Shift + left-click: paint overlay layer only"
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:240
+#: src/editor/palette/terrain_palettes.cpp:238
 msgid "Shift + left-click: paint base layer only"
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:243
+#: src/editor/palette/terrain_palettes.cpp:241
 msgid "Cmd + click: copy terrain"
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:245
+#: src/editor/palette/terrain_palettes.cpp:243
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 

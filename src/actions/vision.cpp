@@ -47,7 +47,7 @@ static const std::string sighted_str("sighted");
 
 
 void actions::create_jamming_map(std::map<map_location, int> & jamming,
-                               const team & view_team)
+                                 const team & view_team)
 {
 	// Reset the map.
 	jamming.clear();

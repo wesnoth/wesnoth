@@ -34,7 +34,7 @@ public:
 	game_delete();
 
 	/** The execute function. See @ref modal_dialog for more information. */
-    DEFINE_SIMPLE_EXECUTE_WRAPPER(game_delete)
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_delete)
 
 private:
 	virtual const std::string& window_id() const override;

@@ -19,13 +19,7 @@
 
 #include <cstring>
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace policy
+namespace gui2::iteration::policy
 {
 
 namespace visit
@@ -120,8 +114,4 @@ class visit_level<true, level> : public visit::visit_level<level>
 {
 };
 
-} // namespace policy
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::policy

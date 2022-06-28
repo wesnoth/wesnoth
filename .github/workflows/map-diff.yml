@@ -1,7 +1,7 @@
 name: Map Diff
 
 on:
-  pull_request:
+  pull_request_target:
     paths:
     - '**.map'
 
@@ -30,14 +30,14 @@ jobs:
         cd ./utils/wesnoth-map-diff
 
         ## Get maps changed
-        git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
-        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.base.sha }} | grep '\.map$')
+        git fetch --depth=1 origin ${{ github.event.pull_request.head.sha }}
+        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.head.sha }} | grep '\.map$')
 
         for map_path in "${map_paths[@]}"
         do
           ## Get old map version
           map_filename=${map_path##*/}
-          git show ${{ github.event.pull_request.base.sha }}:"$map_path" > "$map_filename"
+          git show ${{ github.event.pull_request.head.sha }}:"$map_path" > "$map_filename"
 
           ## Run map diff
           diff_image=${map_filename%.map}.png
@@ -54,10 +54,17 @@ jobs:
         done
 
         echo "::set-output name=COMMENT_BODY::$comment_body"
+    - name: Find comment
+      uses: peter-evans/find-comment@v2
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
     - name: Add comment
       uses: peter-evans/create-or-update-comment@v1.4.5
       with:
         issue-number: ${{ github.event.pull_request.number }}
+        comment-id: ${{ steps.fc.outputs.comment-id }}
         edit-mode: replace
         body: |
           ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}

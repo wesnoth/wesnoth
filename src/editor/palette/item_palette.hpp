@@ -45,8 +45,12 @@ private:
 
 	virtual const std::string& get_id(const overlay& item);
 
-	virtual void draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text);
-
+	virtual void setup_item(
+		const overlay& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	);
 };
 
 }

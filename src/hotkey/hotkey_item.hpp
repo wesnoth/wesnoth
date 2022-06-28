@@ -16,26 +16,19 @@
 #pragma once
 
 #include <SDL2/SDL_events.h>
-#include <SDL2/SDL.h>
 #include <memory>
 #include <vector>
 #include <string>
-#include <boost/algorithm/string.hpp>
 
 class game_config_view;
 class config;
 namespace hotkey {
 
-/* forward declarations */
-class hotkey_base;
-class hotkey_mouse;
-class hotkey_keyboard;
-typedef std::shared_ptr<hotkey_base> hotkey_ptr;
-typedef std::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
-typedef std::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
+typedef std::shared_ptr<class hotkey_base> hotkey_ptr;
+typedef std::shared_ptr<class hotkey_mouse> hotkey_mouse_ptr;
+typedef std::shared_ptr<class hotkey_keyboard> hotkey_keyboard_ptr;
 
 typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
-typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;
 
 /**
  * This is the base class for hotkey event matching.
@@ -253,11 +246,7 @@ public:
 		keycode_ = keycode;
 	}
 
-	void set_text(const std::string& text)
-	{
-		text_ = text;
-		boost::algorithm::to_lower(text_);
-	}
+	void set_text(const std::string& text);
 
 	/**
 	 * Checks whether this hotkey has been set to a sensible value.
@@ -361,7 +350,7 @@ bool has_hotkey_item(const std::string& command);
  * Add a hotkey to the list of hotkeys.
  * @param item The item to add.
  */
-void add_hotkey(const hotkey_ptr item);
+void add_hotkey(hotkey_ptr item);
 
 /**
  * Remove a hotkey from the list of hotkeys
@@ -385,13 +374,19 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event);
 const hotkey_ptr get_hotkey(const SDL_Event &event);
 
 /**
- * Iterates through all hotkeys present in the config struct and creates and adds
- * them to the hotkey list.
- * @param cfg The config struct to load from.
- * @param set_as_default Indicates whether the config struct should be treated as the
- * default game settings.
+ * Registers all hotkeys present in this config.
+ *
+ * @param cfg    The config to load from. This is saved and is used again when
+ *               @ref reset_default_hotkeys is called.
  */
-void load_hotkeys(const game_config_view& cfg, bool set_as_default = false);
+void load_default_hotkeys(const game_config_view& cfg);
+
+/**
+ * Registers all hotkeys present in this config, overwriting any matching default hotkeys.
+ *
+ * @param cfg    The config to load from.
+ */
+void load_custom_hotkeys(const game_config_view& cfg);
 
 /**
  * Reset all hotkeys to the defaults.

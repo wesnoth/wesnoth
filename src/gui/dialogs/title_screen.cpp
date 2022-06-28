@@ -52,7 +52,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
 #include "video.hpp"
@@ -109,7 +108,7 @@ static void launch_lua_console()
 
 static void make_screenshot()
 {
-	surface screenshot = CVideo::get_singleton().getDrawingSurface().clone();
+	surface screenshot = CVideo::get_singleton().read_pixels();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
@@ -214,8 +213,8 @@ void title_screen::pre_show(window& win)
 			WRN_CF << "There are no tips of day available." << std::endl;
 		}
 		for(const auto& tip : tips)	{
-			string_map widget;
-			std::map<std::string, string_map> page;
+			widget_item widget;
+			widget_data page;
 
 			widget["use_markup"] = "true";
 
@@ -441,7 +440,7 @@ void title_screen::hotkey_callback_select_tests()
 
 	std::sort(options.begin(), options.end());
 
-	gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+	gui2::dialogs::simple_item_selector dlg(_("Choose Test Scenario"), "", options);
 	dlg.show();
 
 	int choice = dlg.selected_index();

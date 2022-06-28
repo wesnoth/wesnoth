@@ -29,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 #include <functional>
 
@@ -87,11 +88,11 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 			&styled_widget::signal_handler_notify_remove_tooltip, this, std::placeholders::_2, std::placeholders::_3));
 }
 
-void styled_widget::set_members(const string_map& data)
+void styled_widget::set_members(const widget_item& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
-	string_map::const_iterator itor = data.find("id");
+	widget_item::const_iterator itor = data.find("id");
 	if(itor != data.end()) {
 		set_id(itor->second);
 	}
@@ -132,9 +133,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iteration::walker_base* styled_widget::create_walker()
+iteration::walker_ptr styled_widget::create_walker()
 {
-	return new iteration::walker::widget(*this);
+	return std::make_unique<iteration::walker::widget>(*this);
 }
 
 point styled_widget::get_config_minimum_size() const
@@ -267,8 +268,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// resize canvasses
 	for(auto & canvas : canvases_)
 	{
-		canvas.set_width(size.x);
-		canvas.set_height(size.y);
+		canvas.set_size(size);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
@@ -431,22 +431,15 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background(surface& frame_buffer,
-									int x_offset,
-									int y_offset)
+void styled_widget::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
 
-	get_canvas(get_state()).blit(frame_buffer,
-							 calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(get_state()).draw();
 }
 
-void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+void styled_widget::impl_draw_foreground()
 {
 	/* DO NOTHING */
 }
@@ -498,13 +491,15 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "renderer size: " << renderer_.get_size() << "\n\n"
 		<< std::noboolalpha;
 
-	const point border(config_->text_extra_width, config_->text_extra_height);
+	const point border(config_->text_extra_width,
+	                   config_->text_extra_height);
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		maximum_size = point(config_->max_width, config_->max_height);
+		maximum_size = point(config_->max_width,
+		                     config_->max_height);
 
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 	}
@@ -537,7 +532,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 			utils::string_map symbols;
 			symbols["hotkey"] = hotkey::get_names(
 					hotkey::hotkey_command::get_command_by_command(
-							hotkey::GLOBAL__HELPTIP).command);
+							hotkey::GLOBAL__HELPTIP).id);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
 									 settings::has_helptip_message, &symbols);
@@ -614,7 +609,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

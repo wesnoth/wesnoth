@@ -62,20 +62,13 @@ std::unique_ptr<editor_action> mouse_action_select::click_right(editor_display& 
 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)
 {
-	surface image;
+	texture tex;
 	if (has_shift_modifier()) {
-		image = image::get_image("editor/tool-overlay-select-wand.png");
+		tex = image::get_texture("editor/tool-overlay-select-wand.png");
 	} else {
-		image = image::get_image("editor/tool-overlay-select-brush.png");
+		tex = image::get_texture("editor/tool-overlay-select-brush.png");
 	}
-	uint8_t alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(tex);
 }
 
 

@@ -152,8 +152,7 @@ namespace game_config
 	extern std::string shroud_prefix, fog_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
-	extern double hex_brightening;
-	extern double hex_semi_brightening;
+	extern double hex_brightening; // UNUSED
 
 	extern std::string flag_rgb, unit_rgb;
 	extern std::vector<color_t> red_green_scale;

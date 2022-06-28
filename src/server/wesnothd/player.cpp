@@ -74,8 +74,8 @@ void wesnothd::player::mark_available(const int game_id,
 
 void wesnothd::player::mark_registered(bool registered)
 {
-    cfg_.set_attr("registered", registered ? "yes" : "no");
-    registered_ = registered;
+	cfg_.set_attr("registered", registered ? "yes" : "no");
+	registered_ = registered;
 }
 
 bool wesnothd::player::is_message_flooding()

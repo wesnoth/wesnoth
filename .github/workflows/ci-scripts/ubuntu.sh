@@ -10,7 +10,6 @@ echo "CXX: $CXX"
 echo "CXX_STD: $CXX_STD"
 echo "CFG: $CFG"
 echo "LTO: $LTO"
-echo "CACHE_DIR: $CACHE_DIR"
 
 version=$(grep '#define VERSION' src/wesconfig.h | cut -d\" -f2)
 echo "Found version: $version"
@@ -30,16 +29,17 @@ elif [ "$IMAGE" == "mingw" ]; then
 		cd mingwbuild
 		mv ./wesnoth*-win64.exe ~/wesnoth-$version-win64.exe
 else
-# create temp docker file to pull the pre-created images
-		echo FROM wesnoth/wesnoth:"$IMAGE"-"$BRANCH" > utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
-		echo COPY ./ /home/wesnoth-CI/ >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
-		echo WORKDIR /home/wesnoth-CI >> utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH"
+		# pull the pre-created image
+		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f - . <<-EOF
+			FROM wesnoth/wesnoth:$IMAGE-$BRANCH
+			COPY ./ /home/wesnoth-CI/
+			WORKDIR /home/wesnoth-CI
+		EOF
 
-		docker build -t wesnoth-repo:"$IMAGE"-"$BRANCH" -f utils/dockerbuilds/CI/Dockerfile-CI-"$IMAGE"-"$BRANCH" .
+		[[ $NLS == only ]] || tty=1  # something in the update-po4a-manual step hangs when building the xml (po4a-translate) and --tty is used
 
-		docker run --cap-add=ALL --privileged \
-				--volume ~/build-cache:"$CACHE_DIR" \
+		docker run ${tty+--tty} --cap-add=ALL --privileged \
 				--env BRANCH --env IMAGE --env NLS --env TOOL --env CC --env CXX \
-				--env CXX_STD --env CFG --env LTO --env CACHE_DIR \
+				--env CXX_STD --env CFG --env LTO --env CLICOLOR_FORCE \
 				wesnoth-repo:"$IMAGE"-"$BRANCH" ./.github/workflows/ci-scripts/docker.sh
 fi

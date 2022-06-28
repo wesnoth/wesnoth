@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2011-12-29 00:33+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -216,10 +216,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "Tumedad aastad läksid. Terved põlvkonnad inimesi kasvas üles orjapõlves ja "
@@ -548,17 +554,17 @@ msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "Aaah! Trollid! Koopad on trolle täis!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:346
 msgid "<i>Yes</i>! We did it! We are free!"
 msgstr "Hurraa, me tegime selle ära! Oleme vabad!"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:367
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:358
 msgid "Khrulg"
 msgstr "Khrulg"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:375
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:366
 msgid ""
 "Garrugch failed in mission, but Al’tar dead by peasant slaves. Better tell "
 "the Master."
@@ -567,12 +573,12 @@ msgstr ""
 "peremehele teada andma."
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:380
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:371
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "Peremehel vaja huntide jaoks liha. Talumehed käivad küll."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:404
 #, fuzzy
 #| msgid ""
 #| "I die now, you orcish scum, but I die free! More will come after me. We "
@@ -585,7 +591,7 @@ msgstr ""
 "tõuseme ikka ja jälle, kuni me saame teile korralikult kätte tasuda!"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:416
 msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Päh! Jorsid, pange see ülejäänud orjarämps tagasi ahelaisse."
 
@@ -597,39 +603,65 @@ msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "Mida pag... (rögiseb) Hei, näe.... ori... ülestõus!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
 msgid "(<i>Stab</i>)"
 msgstr "(Siuh!)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "Mida pag... (rögiseb) Hei, näe.... ori... ülestõus!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#, fuzzy
+#| msgid "(<i>Smash</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "(Matsti!)"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:465
 msgid "Ugh!"
 msgstr "Uhh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:481
 msgid "Not a very bright one, was he?"
 msgstr "See polnd eriti taibukas, või mis?"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:501
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:518
 msgid "No! I have failed in my mission!"
 msgstr "Eii! Mu ülesanne jääb täitmata!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:530
 msgid "Mission? What mission?"
 msgstr "Ülesanne? Mis ülesanne?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:538
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:543
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
@@ -10573,9 +10605,6 @@ msgstr "Arthian"
 
 #~ msgid "Then it’s time to fight!"
 #~ msgstr "Siis on aeg võidelda!"
-
-#~ msgid "(<i>Smash</i>)"
-#~ msgstr "(Matsti!)"
 
 #~ msgid "Clear the caves (Bonus)"
 #~ msgstr "Puhasta koopad (preemia)"

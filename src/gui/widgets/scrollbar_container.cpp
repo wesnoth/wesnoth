@@ -18,6 +18,7 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker_scrollbar_container.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
@@ -516,6 +517,11 @@ bool scrollbar_container::disable_click_dismiss() const
 	return container_base::disable_click_dismiss() || content_grid_->disable_click_dismiss();
 }
 
+iteration::walker_ptr scrollbar_container::create_walker()
+{
+	return std::make_unique<gui2::iteration::scrollbar_container>(*this);
+}
+
 bool scrollbar_container::content_resize_request(const bool force_sizing)
 {
 	/**
@@ -769,10 +775,11 @@ void scrollbar_container::finalize_setup()
 	}
 
 	/***** Setup the content *****/
-	content_ = build_single_widget_instance<spacer>();
+	auto content = build_single_widget_instance<spacer>();
+	content_ = content.get();
 
 	// TODO: possibly move this unique_ptr casting functionality to a helper function.
-	content_grid_.reset(dynamic_cast<grid*>(get_grid().swap_child("_content_grid", content_, true).release()));
+	content_grid_.reset(static_cast<grid*>(get_grid().swap_child("_content_grid", std::move(content), true).release()));
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);
@@ -795,14 +802,14 @@ void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scr
 	}
 }
 
-void scrollbar_container::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void scrollbar_container::impl_draw_children()
 {
 	assert(get_visible() == widget::visibility::visible && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
-	container_base::impl_draw_children(frame_buffer, x_offset, y_offset);
+	container_base::impl_draw_children();
 
-	content_grid_->draw_children(frame_buffer, x_offset, y_offset);
+	content_grid_->draw_children();
 }
 
 void scrollbar_container::layout_children()

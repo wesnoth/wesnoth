@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <array>
-
 #include "enum_base.hpp"
 
 namespace gui2

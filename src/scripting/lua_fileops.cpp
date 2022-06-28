@@ -22,6 +22,7 @@
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
 #include "picture.hpp"
+#include "sdl/point.hpp"
 #include "sdl/surface.hpp"
 
 #include <algorithm>
@@ -45,9 +46,9 @@ static int intf_get_image_size(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	image::locator img(m);
 	if(!img.file_exists()) return 0;
-	surface s = get_image(img);
-	lua_pushinteger(L, s->w);
-	lua_pushinteger(L, s->h);
+	const point s = get_size(img);
+	lua_pushinteger(L, s.x);
+	lua_pushinteger(L, s.y);
 	return 2;
 }
 

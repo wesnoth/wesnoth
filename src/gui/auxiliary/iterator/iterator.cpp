@@ -17,17 +17,9 @@
 
 #include "gui/auxiliary/iterator/iterator.hpp"
 
-namespace gui2
+namespace gui2::iteration
 {
-
-namespace iteration
-{
-
-
-} // namespace iteration
-
-} // namespace gui2
-
+} // namespace gui2::iteration
 
 /**
  * @page gui2_iterator GUI2 Iterator.

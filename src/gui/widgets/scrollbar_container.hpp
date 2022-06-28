@@ -138,6 +138,11 @@ public:
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
+	/**
+	 * See @ref widget::create_walker.
+	 */
+	virtual iteration::walker_ptr create_walker() override;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** @note shouldn't be called after being shown in a dialog. */
@@ -505,7 +510,7 @@ private:
 	virtual void layout_children() override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	/** See @ref widget::child_populate_dirty_list. */
 	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;

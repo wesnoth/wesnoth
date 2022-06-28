@@ -13,11 +13,12 @@
 	See the COPYING file for more details.
 */
 
-#include "sdl/surface.hpp"
 #include "sdl/window.hpp"
-#include "sdl/input.hpp"
 
 #include "sdl/exception.hpp"
+#include "sdl/input.hpp"
+#include "sdl/surface.hpp"
+#include "sdl/utils.hpp"
 
 #include <SDL2/SDL_render.h>
 
@@ -38,11 +39,11 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
-#if SDL_VERSION_ATLEAST(2, 0, 10)
-	// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
-	// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
-	SDL_SetHint(SDL_HINT_RENDER_BATCHING, "0");
-#endif
+	if(sdl::runtime_at_least(2,0,10)) {
+		// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
+		// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
+		SDL_SetHint(SDL_HINT_RENDER_BATCHING, "0");
+	}
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
@@ -57,6 +58,10 @@ window::window(const std::string& title,
 	if(info.num_texture_formats == 0) {
 		throw exception("The renderer has no texture information available.\n",
 						 false);
+	}
+
+	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
+		throw exception("Render-to-texture not supported or enabled!", false);
 	}
 
 	// Set default blend mode to blend.

@@ -152,10 +152,10 @@ std::vector<description*> configuration::get_available_ais()
 
 	// Sort by mp_rank. For same mp_rank, keep alphabetical order.
 	std::stable_sort(ais_list.begin(), ais_list.end(),
-        [](const description* a, const description* b) {
+		[](const description* a, const description* b) {
 			return a->mp_rank < b->mp_rank;
 		}
-    );
+	);
 
 	return ais_list;
 }

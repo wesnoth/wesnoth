@@ -223,6 +223,13 @@ aliaschanges = (
     ("Vi",   "Vt"),
     )
 
+# Deprecated lines that ought to be removed globally. Suppressed by noconvert.
+obsolete_lines = (
+    "{MAGENTA_IS_THE_TEAM_COLOR}",
+    "{SOUND:SLOW}",
+    "{SOUND:POISON}",
+    )
+
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
@@ -969,6 +976,9 @@ linechanges = (
         ("Naga Slasher", "Naga Dirkfang"),
         ("Naga Bladewhirler", "Naga Ophidian"),
 
+        # monster unit ID changes during 1.15.x cycle
+        ("Giant Stoat", "Frost Stoat"),
+
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
         ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png"),
@@ -990,6 +1000,287 @@ linechanges = (
         # Changed in 1.17.2
         # added support for WebP images and converted an image to this format
         ("maps/background.jpg", "maps/background.webp"),
+
+        # Changed in 1.17.3
+        # convert a bunch more things to webp
+        ("terrain/map-specific/isar-background-dawndusk.png", "terrain/map-specific/isar-background-dawndusk.webp"),
+        ("terrain/map-specific/isar-background-night.png", "terrain/map-specific/isar-background-night.webp"),
+        ("terrain/map-specific/isar-background.png", "terrain/map-specific/isar-background.webp"),
+        ("maps/titlescreen.png", "maps/titlescreen.webp"),
+        ("maps/wesnoth.png", "maps/wesnoth.webp"),
+        ("maps/l10n/gd/wesnoth--overlay.png", "maps/l10n/gd/wesnoth--overlay.webp"),
+        ("maps/l10n/gd/titlescreen--overlay.png", "maps/l10n/gd/titlescreen--overlay.webp"),
+        ("maps/l10n/hu/wesnoth--overlay.png", "maps/l10n/hu/wesnoth--overlay.webp"),
+        ("maps/l10n/it/wesnoth--overlay.png", "maps/l10n/it/wesnoth--overlay.webp"),
+        ("maps/l10n/it/titlescreen--overlay.png", "maps/l10n/it/titlescreen--overlay.webp"),
+        ("maps/l10n/fr/wesnoth--overlay.png", "maps/l10n/fr/wesnoth--overlay.webp"),
+        ("maps/l10n/sr@ijekavianlatin/wesnoth--overlay.png", "maps/l10n/sr@ijekavianlatin/wesnoth--overlay.webp"),
+        ("maps/l10n/pt/wesnoth--overlay.png", "maps/l10n/pt/wesnoth--overlay.webp"),
+        ("maps/l10n/pt/titlescreen--overlay.png", "maps/l10n/pt/titlescreen--overlay.webp"),
+        ("maps/l10n/sr/wesnoth--overlay.png", "maps/l10n/sr/wesnoth--overlay.webp"),
+        ("maps/l10n/gl/titlescreen--overlay.png", "maps/l10n/gl/titlescreen--overlay.webp"),
+        ("maps/l10n/sr@ijekavian/wesnoth--overlay.png", "maps/l10n/sr@ijekavian/wesnoth--overlay.webp"),
+        ("maps/l10n/lt/titlescreen--overlay.png", "maps/l10n/lt/titlescreen--overlay.webp"),
+        ("maps/l10n/es/wesnoth--overlay.png", "maps/l10n/es/wesnoth--overlay.webp"),
+        ("maps/l10n/zh_CN/wesnoth--overlay.png", "maps/l10n/zh_CN/wesnoth--overlay.webp"),
+        ("maps/l10n/zh_CN/titlescreen--overlay.png", "maps/l10n/zh_CN/titlescreen--overlay.webp"),
+        ("maps/l10n/de/wesnoth--overlay.png", "maps/l10n/de/wesnoth--overlay.webp"),
+        ("maps/l10n/de/titlescreen--overlay.png", "maps/l10n/de/titlescreen--overlay.webp"),
+        ("maps/l10n/ru/wesnoth--overlay.png", "maps/l10n/ru/wesnoth--overlay.webp"),
+        ("maps/l10n/ru/titlescreen--overlay.png", "maps/l10n/ru/titlescreen--overlay.webp"),
+        ("maps/l10n/la/wesnoth--overlay.png", "maps/l10n/la/wesnoth--overlay.webp"),
+        ("maps/l10n/sr@latin/wesnoth--overlay.png", "maps/l10n/sr@latin/wesnoth--overlay.webp"),
+        ("story/landscape-plain.jpg", "story/landscape-plain.webp"),
+        ("story/landscape-battlefield_nohumans.jpg", "story/landscape-battlefield_nohumans.webp"),
+        ("story/landscape-bridge_sun.jpg", "story/landscape-bridge_sun.webp"),
+        ("story/landscape-hills-01.jpg", "story/landscape-hills-01.webp"),
+        ("story/landscape-mountains-01.jpg", "story/landscape-mountains-01.webp"),
+        ("story/landscape-mountains-03.jpg", "story/landscape-mountains-03.webp"),
+        ("story/landscape-mountains-05.jpg", "story/landscape-mountains-05.webp"),
+        ("story/landscape-coast.jpg", "story/landscape-coast.webp"),
+        ("story/landscape-bridge.jpg", "story/landscape-bridge.webp"),
+        ("story/landscape-battlefield.jpg", "story/landscape-battlefield.webp"),
+        ("story/landscape-mountains-02.jpg", "story/landscape-mountains-02.webp"),
+        ("story/landscape-castle.jpg", "story/landscape-castle.webp"),
+        ("story/swamp-01.jpg", "story/swamp-01.webp"),
+        ("story/landscape-hills-02.jpg", "story/landscape-hills-02.webp"),
+        ("story/landscape-mountains-04.jpg", "story/landscape-mountains-04.webp"),
+        ("portraits/dwarves/fighter-2.png", "portraits/dwarves/fighter-2.webp"),
+        ("portraits/dwarves/guard.png", "portraits/dwarves/guard.webp"),
+        ("portraits/dwarves/dragonguard.png", "portraits/dwarves/dragonguard.webp"),
+        ("portraits/dwarves/thunderer.png", "portraits/dwarves/thunderer.webp"),
+        ("portraits/dwarves/lord.png", "portraits/dwarves/lord.webp"),
+        ("portraits/dwarves/scout.png", "portraits/dwarves/scout.webp"),
+        ("portraits/dwarves/explorer.png", "portraits/dwarves/explorer.webp"),
+        ("portraits/dwarves/gryphon-rider.png", "portraits/dwarves/gryphon-rider.webp"),
+        ("portraits/dwarves/ulfserker.png", "portraits/dwarves/ulfserker.webp"),
+        ("portraits/dwarves/sentinel.png", "portraits/dwarves/sentinel.webp"),
+        ("portraits/dwarves/fighter.png", "portraits/dwarves/fighter.webp"),
+        ("portraits/dwarves/runemaster.png", "portraits/dwarves/runemaster.webp"),
+        ("portraits/dunefolk/herbalist.png", "portraits/dunefolk/herbalist.webp"),
+        ("portraits/merfolk/triton.png", "portraits/merfolk/triton.webp"),
+        ("portraits/merfolk/enchantress.png", "portraits/merfolk/enchantress.webp"),
+        ("portraits/merfolk/spearman.png", "portraits/merfolk/spearman.webp"),
+        ("portraits/merfolk/initiate.png", "portraits/merfolk/initiate.webp"),
+        ("portraits/merfolk/hunter.png", "portraits/merfolk/hunter.webp"),
+        ("portraits/merfolk/priestess.png", "portraits/merfolk/priestess.webp"),
+        ("portraits/merfolk/hoplite.png", "portraits/merfolk/hoplite.webp"),
+        ("portraits/merfolk/netcaster.png", "portraits/merfolk/netcaster.webp"),
+        ("portraits/merfolk/initiate-2.png", "portraits/merfolk/initiate-2.webp"),
+        ("portraits/merfolk/fighter.png", "portraits/merfolk/fighter.webp"),
+        ("portraits/undead/skeleton.png", "portraits/undead/skeleton.webp"),
+        ("portraits/undead/draug-2.png", "portraits/undead/draug-2.webp"),
+        ("portraits/undead/brown-lich.png", "portraits/undead/brown-lich.webp"),
+        ("portraits/undead/zombie-horse.png", "portraits/undead/zombie-horse.webp"),
+        ("portraits/undead/ghoul.png", "portraits/undead/ghoul.webp"),
+        ("portraits/undead/zombie-drake.png", "portraits/undead/zombie-drake.webp"),
+        ("portraits/undead/zombie-troll.png", "portraits/undead/zombie-troll.webp"),
+        ("portraits/undead/zombie-saurian.png", "portraits/undead/zombie-saurian.webp"),
+        ("portraits/undead/zombie-rider.png", "portraits/undead/zombie-rider.webp"),
+        ("portraits/undead/zombie-gryphon.png", "portraits/undead/zombie-gryphon.webp"),
+        ("portraits/undead/zombie-dwarf.png", "portraits/undead/zombie-dwarf.webp"),
+        ("portraits/undead/lich.png", "portraits/undead/lich.webp"),
+        ("portraits/undead/walking-corpse.png", "portraits/undead/walking-corpse.webp"),
+        ("portraits/undead/revenant.png", "portraits/undead/revenant.webp"),
+        ("portraits/undead/zombie-wose.png", "portraits/undead/zombie-wose.webp"),
+        ("portraits/undead/zombie-bat.png", "portraits/undead/zombie-bat.webp"),
+        ("portraits/undead/banebow.png", "portraits/undead/banebow.webp"),
+        ("portraits/undead/draug.png", "portraits/undead/draug.webp"),
+        ("portraits/undead/zombie-swimmer.png", "portraits/undead/zombie-swimmer.webp"),
+        ("portraits/undead/death-knight.png", "portraits/undead/death-knight.webp"),
+        ("portraits/undead/zombie-goblin.png", "portraits/undead/zombie-goblin.webp"),
+        ("portraits/undead/zombie-rat.png", "portraits/undead/zombie-rat.webp"),
+        ("portraits/undead/archer.png", "portraits/undead/archer.webp"),
+        ("portraits/undead/shadow.png", "portraits/undead/shadow.webp"),
+        ("portraits/undead/spectre.png", "portraits/undead/spectre.webp"),
+        ("portraits/undead/zombie-boar.png", "portraits/undead/zombie-boar.webp"),
+        ("portraits/undead/zombie-falcon.png", "portraits/undead/zombie-falcon.webp"),
+        ("portraits/undead/zombie-spider.png", "portraits/undead/zombie-spider.webp"),
+        ("portraits/undead/zombie-scorpion.png", "portraits/undead/zombie-scorpion.webp"),
+        ("portraits/undead/soulless.png", "portraits/undead/soulless.webp"),
+        ("portraits/undead/ghost.png", "portraits/undead/ghost.webp"),
+        ("portraits/undead/deathblade.png", "portraits/undead/deathblade.webp"),
+        ("portraits/undead/wraith.png", "portraits/undead/wraith.webp"),
+        ("portraits/undead/zombie-beastrider.png", "portraits/undead/zombie-beastrider.webp"),
+        ("portraits/undead/zombie-wolf.png", "portraits/undead/zombie-wolf.webp"),
+        ("portraits/undead/ancient-lich.png", "portraits/undead/ancient-lich.webp"),
+        ("portraits/undead/zombie-serpent.png", "portraits/undead/zombie-serpent.webp"),
+        ("portraits/undead/bone-shooter.png", "portraits/undead/bone-shooter.webp"),
+        ("portraits/undead/nightgaunt.png", "portraits/undead/nightgaunt.webp"),
+        ("portraits/elves/lady.png", "portraits/elves/lady.webp"),
+        ("portraits/elves/shaman.png", "portraits/elves/shaman.webp"),
+        ("portraits/elves/ranger.png", "portraits/elves/ranger.webp"),
+        ("portraits/elves/marksman+female.png", "portraits/elves/marksman+female.webp"),
+        ("portraits/elves/sorceress.png", "portraits/elves/sorceress.webp"),
+        ("portraits/elves/druid.png", "portraits/elves/druid.webp"),
+        ("portraits/elves/sylph.png", "portraits/elves/sylph.webp"),
+        ("portraits/elves/archer.png", "portraits/elves/archer.webp"),
+        ("portraits/elves/lord.png", "portraits/elves/lord.webp"),
+        ("portraits/elves/scout.png", "portraits/elves/scout.webp"),
+        ("portraits/elves/archer+female.png", "portraits/elves/archer+female.webp"),
+        ("portraits/elves/captain.png", "portraits/elves/captain.webp"),
+        ("portraits/elves/high-lord.png", "portraits/elves/high-lord.webp"),
+        ("portraits/elves/ranger+female.png", "portraits/elves/ranger+female.webp"),
+        ("portraits/elves/shyde.png", "portraits/elves/shyde.webp"),
+        ("portraits/elves/marksman.png", "portraits/elves/marksman.webp"),
+        ("portraits/elves/hero.png", "portraits/elves/hero.webp"),
+        ("portraits/elves/fighter.png", "portraits/elves/fighter.webp"),
+        ("portraits/nagas/myrmidon.png", "portraits/nagas/myrmidon.webp"),
+        ("portraits/nagas/dirkfang.png", "portraits/nagas/dirkfang.webp"),
+        ("portraits/nagas/naga-mace_warrior2.png", "portraits/nagas/naga-mace_warrior2.webp"),
+        ("portraits/nagas/naga-mace_warrior1.png", "portraits/nagas/naga-mace_warrior1.webp"),
+        ("portraits/nagas/naga-ophidian.png", "portraits/nagas/naga-ophidian.webp"),
+        ("portraits/nagas/naga-mace_warrior3.png", "portraits/nagas/naga-mace_warrior3.webp"),
+        ("portraits/nagas/naga-ringcaster.png", "portraits/nagas/naga-ringcaster.webp"),
+        ("portraits/nagas/fighter.png", "portraits/nagas/fighter.webp"),
+        ("portraits/woses/wose.png", "portraits/woses/wose.webp"),
+        ("portraits/orcs/grunt-5.png", "portraits/orcs/grunt-5.webp"),
+        ("portraits/orcs/warlord.png", "portraits/orcs/warlord.webp"),
+        ("portraits/orcs/grunt-6.png", "portraits/orcs/grunt-6.webp"),
+        ("portraits/orcs/grunt.png", "portraits/orcs/grunt.webp"),
+        ("portraits/orcs/archer.png", "portraits/orcs/archer.webp"),
+        ("portraits/orcs/warrior.png", "portraits/orcs/warrior.webp"),
+        ("portraits/orcs/ruler-2.png", "portraits/orcs/ruler-2.webp"),
+        ("portraits/orcs/crossbowman.png", "portraits/orcs/crossbowman.webp"),
+        ("portraits/orcs/slayer.png", "portraits/orcs/slayer.webp"),
+        ("portraits/orcs/grunt-4.png", "portraits/orcs/grunt-4.webp"),
+        ("portraits/orcs/grunt-2.png", "portraits/orcs/grunt-2.webp"),
+        ("portraits/orcs/sovereign.png", "portraits/orcs/sovereign.webp"),
+        ("portraits/orcs/assassin.png", "portraits/orcs/assassin.webp"),
+        ("portraits/orcs/ruler.png", "portraits/orcs/ruler.webp"),
+        ("portraits/orcs/grunt-3.png", "portraits/orcs/grunt-3.webp"),
+        ("portraits/orcs/slurbow.png", "portraits/orcs/slurbow.webp"),
+        ("portraits/wolves/wolf-red.png", "portraits/wolves/wolf-red.webp"),
+        ("portraits/wolves/wolf-great.png", "portraits/wolves/wolf-great.webp"),
+        ("portraits/wolves/wolf-chewing.png", "portraits/wolves/wolf-chewing.webp"),
+        ("portraits/wolves/wolf-dark.png", "portraits/wolves/wolf-dark.webp"),
+        ("portraits/humans/outlaw+female.png", "portraits/humans/outlaw+female.webp"),
+        ("portraits/humans/dark-adept+female.png", "portraits/humans/dark-adept+female.webp"),
+        ("portraits/humans/outlaw.png", "portraits/humans/outlaw.webp"),
+        ("portraits/humans/necromancer.png", "portraits/humans/necromancer.webp"),
+        ("portraits/humans/marshal.png", "portraits/humans/marshal.webp"),
+        ("portraits/humans/woodsman.png", "portraits/humans/woodsman.webp"),
+        ("portraits/humans/fencer.png", "portraits/humans/fencer.webp"),
+        ("portraits/humans/general.png", "portraits/humans/general.webp"),
+        ("portraits/humans/lancer.png", "portraits/humans/lancer.webp"),
+        ("portraits/humans/bandit.png", "portraits/humans/bandit.webp"),
+        ("portraits/humans/ranger.png", "portraits/humans/ranger.webp"),
+        ("portraits/humans/spearman-2.png", "portraits/humans/spearman-2.webp"),
+        ("portraits/humans/thief+female.png", "portraits/humans/thief+female.webp"),
+        ("portraits/humans/mage-white.png", "portraits/humans/mage-white.webp"),
+        ("portraits/humans/halberdier.png", "portraits/humans/halberdier.webp"),
+        ("portraits/humans/peasant.png", "portraits/humans/peasant.webp"),
+        ("portraits/humans/huntsman.png", "portraits/humans/huntsman.webp"),
+        ("portraits/humans/pikeman.png", "portraits/humans/pikeman.webp"),
+        ("portraits/humans/mage-red.png", "portraits/humans/mage-red.webp"),
+        ("portraits/humans/longbowman.png", "portraits/humans/longbowman.webp"),
+        ("portraits/humans/swordsman-3.png", "portraits/humans/swordsman-3.webp"),
+        ("portraits/humans/mage-red+female.png", "portraits/humans/mage-red+female.webp"),
+        ("portraits/humans/footpad+female.png", "portraits/humans/footpad+female.webp"),
+        ("portraits/humans/spearman.png", "portraits/humans/spearman.webp"),
+        ("portraits/humans/mage-white+female.png", "portraits/humans/mage-white+female.webp"),
+        ("portraits/humans/grand-knight.png", "portraits/humans/grand-knight.webp"),
+        ("portraits/humans/mage-arch+female.png", "portraits/humans/mage-arch+female.webp"),
+        ("portraits/humans/trapper.png", "portraits/humans/trapper.webp"),
+        ("portraits/humans/bowman.png", "portraits/humans/bowman.webp"),
+        ("portraits/humans/horseman.png", "portraits/humans/horseman.webp"),
+        ("portraits/humans/grand-knight-2.png", "portraits/humans/grand-knight-2.webp"),
+        ("portraits/humans/royal-warrior.png", "portraits/humans/royal-warrior.webp"),
+        ("portraits/humans/iron-mauler.png", "portraits/humans/iron-mauler.webp"),
+        ("portraits/humans/mage-light.png", "portraits/humans/mage-light.webp"),
+        ("portraits/humans/necromancer+female.png", "portraits/humans/necromancer+female.webp"),
+        ("portraits/humans/paladin.png", "portraits/humans/paladin.webp"),
+        ("portraits/humans/thief.png", "portraits/humans/thief.webp"),
+        ("portraits/humans/lieutenant.png", "portraits/humans/lieutenant.webp"),
+        ("portraits/humans/mage+female.png", "portraits/humans/mage+female.webp"),
+        ("portraits/humans/mage.png", "portraits/humans/mage.webp"),
+        ("portraits/humans/dark-adept.png", "portraits/humans/dark-adept.webp"),
+        ("portraits/humans/assassin+female.png", "portraits/humans/assassin+female.webp"),
+        ("portraits/humans/cavalier.png", "portraits/humans/cavalier.webp"),
+        ("portraits/humans/mage-silver+female.png", "portraits/humans/mage-silver+female.webp"),
+        ("portraits/humans/footpad.png", "portraits/humans/footpad.webp"),
+        ("portraits/humans/knight.png", "portraits/humans/knight.webp"),
+        ("portraits/humans/royal-guard.png", "portraits/humans/royal-guard.webp"),
+        ("portraits/humans/assassin.png", "portraits/humans/assassin.webp"),
+        ("portraits/humans/sergeant.png", "portraits/humans/sergeant.webp"),
+        ("portraits/humans/mage-light+female.png", "portraits/humans/mage-light+female.webp"),
+        ("portraits/humans/ruffian.png", "portraits/humans/ruffian.webp"),
+        ("portraits/humans/javelineer.png", "portraits/humans/javelineer.webp"),
+        ("portraits/humans/swordsman.png", "portraits/humans/swordsman.webp"),
+        ("portraits/humans/thug.png", "portraits/humans/thug.webp"),
+        ("portraits/humans/heavy-infantry.png", "portraits/humans/heavy-infantry.webp"),
+        ("portraits/humans/master-bowman.png", "portraits/humans/master-bowman.webp"),
+        ("portraits/humans/cavalryman.png", "portraits/humans/cavalryman.webp"),
+        ("portraits/humans/mage-arch.png", "portraits/humans/mage-arch.webp"),
+        ("portraits/humans/master-at-arms.png", "portraits/humans/master-at-arms.webp"),
+        ("portraits/humans/duelist.png", "portraits/humans/duelist.webp"),
+        ("portraits/humans/swordsman-2.png", "portraits/humans/swordsman-2.webp"),
+        ("portraits/humans/marshal-2.png", "portraits/humans/marshal-2.webp"),
+        ("portraits/humans/mage-silver.png", "portraits/humans/mage-silver.webp"),
+        ("portraits/drakes/glider.png", "portraits/drakes/glider.webp"),
+        ("portraits/drakes/enforcer.png", "portraits/drakes/enforcer.webp"),
+        ("portraits/drakes/blademaster.png", "portraits/drakes/blademaster.webp"),
+        ("portraits/drakes/flameheart.png", "portraits/drakes/flameheart.webp"),
+        ("portraits/drakes/warden.png", "portraits/drakes/warden.webp"),
+        ("portraits/drakes/hurricane.png", "portraits/drakes/hurricane.webp"),
+        ("portraits/drakes/burner.png", "portraits/drakes/burner.webp"),
+        ("portraits/drakes/clasher.png", "portraits/drakes/clasher.webp"),
+        ("portraits/drakes/inferno.png", "portraits/drakes/inferno.webp"),
+        ("portraits/drakes/fighter.png", "portraits/drakes/fighter.webp"),
+        ("portraits/trolls/troll-hero.png", "portraits/trolls/troll-hero.webp"),
+        ("portraits/trolls/troll-warrior.png", "portraits/trolls/troll-warrior.webp"),
+        ("portraits/trolls/troll-hero-alt.png", "portraits/trolls/troll-hero-alt.webp"),
+        ("portraits/trolls/whelp.png", "portraits/trolls/whelp.webp"),
+        ("portraits/trolls/troll-rocklobber.png", "portraits/trolls/troll-rocklobber.webp"),
+        ("portraits/trolls/troll-shaman.png", "portraits/trolls/troll-shaman.webp"),
+        ("portraits/saurians/augur.png", "portraits/saurians/augur.webp"),
+        ("portraits/saurians/skirmisher.png", "portraits/saurians/skirmisher.webp"),
+        ("portraits/goblins/spearman-2.png", "portraits/goblins/spearman-2.webp"),
+        ("portraits/goblins/rouser-2.png", "portraits/goblins/rouser-2.webp"),
+        ("portraits/goblins/spearman.png", "portraits/goblins/spearman.webp"),
+        ("portraits/goblins/direwolver.png", "portraits/goblins/direwolver.webp"),
+        ("portraits/goblins/wolf-rider.png", "portraits/goblins/wolf-rider.webp"),
+        ("portraits/goblins/impaler.png", "portraits/goblins/impaler.webp"),
+        ("portraits/goblins/pillager.png", "portraits/goblins/pillager.webp"),
+        ("portraits/goblins/rouser.png", "portraits/goblins/rouser.webp"),
+        ("portraits/monsters/small-icemonax.png", "portraits/monsters/small-icemonax.webp"),
+        ("portraits/monsters/bat-dread.png", "portraits/monsters/bat-dread.webp"),
+        ("portraits/monsters/fire-dragon.png", "portraits/monsters/fire-dragon.webp"),
+        ("portraits/monsters/fire_guardian.png", "portraits/monsters/fire_guardian.webp"),
+        ("portraits/monsters/yeti.png", "portraits/monsters/yeti.webp"),
+        ("portraits/monsters/scarab.png", "portraits/monsters/scarab.webp"),
+        ("portraits/monsters/water-serpent.png", "portraits/monsters/water-serpent.webp"),
+        ("portraits/monsters/black-stallion.png", "portraits/monsters/black-stallion.webp"),
+        ("portraits/monsters/scuttler.png", "portraits/monsters/scuttler.webp"),
+        ("portraits/monsters/scorpion-elder.png", "portraits/monsters/scorpion-elder.webp"),
+        ("portraits/monsters/bear.png", "portraits/monsters/bear.webp"),
+        ("portraits/monsters/gryphon.png", "portraits/monsters/gryphon.webp"),
+        ("portraits/monsters/jinn.png", "portraits/monsters/jinn.webp"),
+        ("portraits/monsters/bat-red.png", "portraits/monsters/bat-red.webp"),
+        ("portraits/monsters/fire_ant.png", "portraits/monsters/fire_ant.webp"),
+        ("portraits/monsters/cuttlefish.png", "portraits/monsters/cuttlefish.webp"),
+        ("portraits/monsters/woodland_boar.png", "portraits/monsters/woodland_boar.webp"),
+        ("portraits/monsters/seahorse.png", "portraits/monsters/seahorse.webp"),
+        ("portraits/monsters/stoat.png", "portraits/monsters/stoat.webp"),
+        ("portraits/monsters/scorpion.png", "portraits/monsters/scorpion.webp"),
+        ("portraits/monsters/falcon.png", "portraits/monsters/falcon.webp"),
+        ("portraits/monsters/mudcrawler.png", "portraits/monsters/mudcrawler.webp"),
+        ("portraits/monsters/young-ogre.png", "portraits/monsters/young-ogre.webp"),
+        ("portraits/monsters/giant-rat.png", "portraits/monsters/giant-rat.webp"),
+        ("portraits/monsters/nightmare.png", "portraits/monsters/nightmare.webp"),
+        ("portraits/monsters/bat.png", "portraits/monsters/bat.webp"),
+        ("portraits/monsters/fire_wraith_A.png", "portraits/monsters/fire_wraith_A.webp"),
+        ("portraits/monsters/deep-tentacle.png", "portraits/monsters/deep-tentacle.webp"),
+        ("portraits/monsters/crocodile.png", "portraits/monsters/crocodile.webp"),
+        ("portraits/monsters/horse.png", "portraits/monsters/horse.webp"),
+        ("portraits/monsters/giant_ant.png", "portraits/monsters/giant_ant.webp"),
+        ("portraits/monsters/giant-mudcrawler.png", "portraits/monsters/giant-mudcrawler.webp"),
+        ("portraits/monsters/giant-spider.png", "portraits/monsters/giant-spider.webp"),
+        ("portraits/monsters/scorpion-rock.png", "portraits/monsters/scorpion-rock.webp"),
+        ("portraits/monsters/piglet.png", "portraits/monsters/piglet.webp"),
+        ("portraits/monsters/sea-serpent.png", "portraits/monsters/sea-serpent.webp"),
+        ("portraits/monsters/big-icemonax.png", "portraits/monsters/big-icemonax.webp"),
+        ("portraits/monsters/ogre.png", "portraits/monsters/ogre.webp"),
 
         )
 
@@ -1163,8 +1454,7 @@ def is_translatable(key):
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
-mainline = ("An_Orcish_Incursion",
-            "Dead_Water",
+mainline = ("Dead_Water",
             "Delfadors_Memoirs",
             "Descent_Into_Darkness",
             "Eastern_Invasion",
@@ -1181,6 +1471,8 @@ mainline = ("An_Orcish_Incursion",
             "tutorial",
             "Two_Brothers",
             "Under_the_Burning_Suns",
+            "Winds_of_Fate",
+            "World_Conquest",
             )
 
 spellcheck_these = (\
@@ -2176,7 +2468,7 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key):
-                if markcheck and has_tr_mark and not value:
+                if markcheck and has_tr_mark and not attr_strip(value):
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
@@ -2409,8 +2701,8 @@ def hack_syntax(filename, lines):
         precomment = re.split(r'\s#', lines[i], 1)[0]
         comment = lines[i][len(precomment):]
         if '\\' in precomment:
-            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
-                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|webp|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|webp|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
                 fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
                 precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
                 print('"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
@@ -2662,13 +2954,19 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
-    # handle removal of {MAGENTA_IS_THE_TEAM_COLOR}
+    # handle removal of obsolete lines without replacement
+    # obsolete_lines contains normal strings, so re.escape is needed to embed them into this regex
+    obsolete_re = re.compile(r"(\s*)(" + "|".join([re.escape(l) for l in obsolete_lines]) + r")(.*)")
     for i, line in enumerate(lines):
         if "no-syntax-rewrite" in line:
             break
-        m = re.match(r"(\s*)\{MAGENTA_IS_THE_TEAM_COLOR\}(.*)", line)
+        if "wmllint: noconvert" in line:
+            continue
+        m = obsolete_re.match(line)
         if m:
-            new_line = m.group(1) + m.group(2).lstrip()
+            # match group 1 is the indentation
+            # match group 3 contains everything after the removed part (like comments)
+            new_line = m.group(1) + m.group(3).lstrip()
             if new_line.isspace():
                 # only empty spaces, make the line blank
                 # don't remove the line to not alter the other for cycles
@@ -2676,8 +2974,8 @@ def hack_syntax(filename, lines):
             else:
                 # keep indentation and comments
                 lines[i] = new_line + "\n"
-            print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
-                                                                            i+1))
+            # match group 2 contains the removed part
+            print('"{}", line {}: removed {}'.format(filename, i+1, m.group(2)))
     # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
     in_unit = False
     for i, line in enumerate(lines):

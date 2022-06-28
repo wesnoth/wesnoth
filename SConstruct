@@ -114,7 +114,8 @@ opts.AddVariables(
     BoolVariable("autorevision", 'Use autorevision tool to fetch current git revision that will be embedded in version string', True),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
-    BoolVariable("history", "Clear to disable GNU history support in lua console", True)
+    BoolVariable("history", "Clear to disable GNU history support in lua console", True),
+    BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
     )
 
 #
@@ -311,7 +312,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua", "gl"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -350,9 +351,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL(require_version = '2.0.8') & \
-            conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
-            conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2Mixer() & \
+            conf.CheckSDL2Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
@@ -488,6 +489,8 @@ for env in [test_env, client_env, env]:
 
         if env['pedantic']:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
+        if env['force_color']:
+            env.AppendUnique(CCFLAGS = ["-fcolor-diagnostics"])
 
     if "gcc" in env["TOOLS"]:
         env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
@@ -501,6 +504,9 @@ for env in [test_env, client_env, env]:
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
             env.AppendUnique(CCFLAGS = Split("-fno-omit-frame-pointer -fno-optimize-sibling-calls"))
+        if env['force_color']:
+            env.AppendUnique(CCFLAGS = ["-fdiagnostics-color=always"])
+
 
 # #
 # Determine optimization level

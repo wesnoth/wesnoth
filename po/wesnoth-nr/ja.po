@@ -1,15 +1,15 @@
 #
 # Translators:
-# RatArmy, 2021
 # k konami, 2022
+# RatArmy, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: k konami, 2022\n"
+"Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -200,10 +200,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "暗黒の時代が過ぎていった。隷属のうちに世代は変わり、先祖が自由の身であったこ"
@@ -375,6 +381,10 @@ msgid ""
 "them hack at each other, we can use this as our chance to get rid of this "
 "scum once and for all. Who’s with me?"
 msgstr ""
+"あの挑戦者のおかげでオークの監視が緩くなっている。なんとかこっそり倉庫の鍵を"
+"盗むことができた。みんなも来いよ、武器を奪うんだ！奴らが同士討ちしている間"
+"に、このチャンスを掴んであのクソッタレどもを排除するんだ。誰か付いてくる者は"
+"いないのか？"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:240
@@ -384,6 +394,10 @@ msgid ""
 "armor, no training. Are we supposed to beat them with bad breath and "
 "colorful language?"
 msgstr ""
+"Tallin、お前は勇敢だな。だが、もし俺がお前のことを知らなかったなら、それは月"
+"に触ろうとするようなこと、つまり無理だと言っただろう。ここには武器なんて無"
+"い。鍬と狩猟用の弓があるだけだ。鎧も無ければ、俺達は訓練もしていない。倒せる"
+"と思うのか？ 臭い息を吐きながら、口汚く罵ってくるあいつらを。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:245
@@ -494,17 +508,17 @@ msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "アァァァァ！ トロルだ！ トロルが洞窟にはびこっているぞ！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:346
 msgid "<i>Yes</i>! We did it! We are free!"
 msgstr "<i>よし</i>！ やったぞ！ 俺達は自由だ！"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:367
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:358
 msgid "Khrulg"
 msgstr "Khrulg"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:375
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:366
 msgid ""
 "Garrugch failed in mission, but Al’tar dead by peasant slaves. Better tell "
 "the Master."
@@ -513,12 +527,12 @@ msgstr ""
 "に報告せねば。"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:380
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:371
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "ご主人は狼のためにもっと肉がいる。農奴、いい肉。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:404
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
@@ -528,7 +542,7 @@ msgstr ""
 "を成し遂げるまで！"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:416
 msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "フン！ 兵卒ども、残りの農奴共を鎖に繋げ。"
 
@@ -538,43 +552,71 @@ msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "何だと...？（<i>ゴボッ</i>）殺られる...奴隷...ごときに？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
 msgid "(<i>Stab</i>)"
 msgstr "（<i>ズドッ</i>）"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "何だと...？（<i>ゴボッ</i>）殺られる...奴隷...ごときに？"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#, fuzzy
+#| msgid "(<i>Stab</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "（<i>ズドッ</i>）"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:465
 msgid "Ugh!"
 msgstr "ウグゥ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:481
 msgid "Not a very bright one, was he?"
 msgstr "それほど大した奴じゃなかったな。"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:501
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:518
 msgid "No! I have failed in my mission!"
 msgstr "しまった！ 任務失敗だ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:530
 msgid "Mission? What mission?"
 msgstr "任務？ 何の任務だ？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:538
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr "戦鼓と角笛の音が山腹にこだましました。オークの大軍が迫っています！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:543
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
 msgstr ""
+"鉱山からもっと早く脱出できていればこうはならなかっただろうな。少なくとも死ね"
+"ば自由になれるか..."
 
 #. [scenario]: id=02_01_Infested_Caves
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:5
@@ -589,6 +631,9 @@ msgid ""
 "they break or falter. In the end, the orcish host was smashed and the "
 "survivors sent scurrying for their lives."
 msgstr ""
+"碌な装備もなく訓練もしていなかったが、ドワーフの戸口の人々はオーク族に反旗を"
+"翻した。損害も多数出たものの、もう挫けたり怯んだりすることはなかった。ついに"
+"オークの軍勢は打ち破られ、敗残兵は生き残りを図って駆け出した。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:22
@@ -1267,13 +1312,14 @@ msgstr ""
 msgid ""
 "Without eating or sleeping for days, Tallin’s men begin to fall one by one."
 msgstr ""
+"何日間も食事と睡眠をとれず、Tallin の配下たちは一人ずつ倒れていきました。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:1149
 msgid ""
 "We were too slow in finding the dwarves. I don’t think we can fight for much "
 "longer!"
-msgstr ""
+msgstr "ドワーフを探すのに時間をかけすぎた。もう持ちこたえられない！"
 
 #. [scenario]: id=02_02_Meeting_With_Dwarves
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:5
@@ -1315,7 +1361,7 @@ msgstr ""
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:91
 msgid "And I, don’t forget me!"
-msgstr ""
+msgstr "我輩もいるぞ！忘れるなよ。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:96
@@ -2353,6 +2399,8 @@ msgid ""
 "Wow! That’s incredible. Now I understand why the bag of bones kept you in "
 "jail; he just simply couldn’t kill you!"
 msgstr ""
+"おぉ！ 信じられない。どうして骨袋があなた達を牢に閉じ込めていたのかやっと解っ"
+"たよ……ただ単純に殺そうにも殺せなかったんだ！"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:810
@@ -2583,10 +2631,8 @@ msgstr "宝物庫"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1168
-#, fuzzy
-#| msgid "There we go, let’s give this one more shot!"
 msgid "The Treasury! Excellent, let’s clean out the gold!"
-msgstr "よし！ もう一度やってみるわ！"
+msgstr "宝物庫だ！ 素晴らしい、ゴールドをそっくりいただこう！"
 
 #. [message]: role=Treasury Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1201
@@ -2662,6 +2708,10 @@ msgid ""
 "rightful heir must have long since perished in his vain quest for the "
 "Sceptre of Fire."
 msgstr ""
+"ああ、言っちゃ悪いが――今は確実にそんな状態じゃないな。Knalga は廃れたままで、"
+"オークは地上を席巻し、地下通路には暗く邪悪な生物が出没している。一方 Wesnoth "
+"は、邪悪で残虐な女王 Asheviere に支配されているという。正統な後継者は大分前に"
+"炎の笏を求めるというくだらない冒険行で命を落としたに違いない。"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1305
@@ -2909,7 +2959,7 @@ msgstr "いや、わからないな……"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1764
 msgid "What is this? Our retreat is cut off!"
-msgstr ""
+msgstr "何だと？ 退路が断たれた！"
 
 #. [message]: type=Giant Spider
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1805
@@ -2944,10 +2994,8 @@ msgstr "偉大なる Malifor の研究所"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1873
-#, fuzzy
-#| msgid "There we go."
 msgid "There we go! This way!"
-msgstr "よし！"
+msgstr "よし！ みんな、こっちだ！"
 
 #. [message]: role=Study Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1891
@@ -3850,6 +3898,8 @@ msgid ""
 "Khazg tried and failed, and if you repeat his folly you will soon join him "
 "in the Land of the Dead!"
 msgstr ""
+"Khazg は挑戦し、そして敗北した。貴様もその愚行を繰り返すのならば、すぐにあの"
+"世で奴と会うことになるぞ！"
 
 #. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:238
@@ -4220,6 +4270,9 @@ msgid ""
 "themselves. They would only aid us if something drastic happened to them and "
 "they needed our help. What about Wesnoth?"
 msgstr ""
+"エルフ族は勘定に入れなくてよい。あいつらは非常に利己的で、自分自身にしか興味"
+"が無い。何か大変なことが起こってわしらの助けが必要にならなければ、こちらを援"
+"助したりはしないだろう。Wesnoth はどうだ？"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:59
@@ -4237,6 +4290,9 @@ msgid ""
 "through here. At that time the evil Queen Asheviere was ruling, and it was "
 "said that she was in alliance with the orcs."
 msgstr ""
+"俺達が最後に聞いた情報は、何年も前に Konrad 王子がここを通った時のものだ。そ"
+"の時は悪の女王 Asheviere が支配していて、彼女はオーク族と同盟を結んでいるとい"
+"われていた。"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:63
@@ -4981,6 +5037,8 @@ msgid ""
 "I have the power to control many creatures, such as gryphons, trolls and "
 "ogres. So while I am with you they shall be at your command."
 msgstr ""
+"私はグリフォンやトロル、オーガのような多くの生物を操る力を持っている。私が共"
+"にいる限りお前の思うままだ。"
 
 #. [message]: speaker=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:892
@@ -5153,6 +5211,8 @@ msgid ""
 "But you do have a point, Stalrag. That ransom will buy more troops and "
 "weapons for the orcs, worse news for us."
 msgstr ""
+"ですがあなたの言うことももっともです、Stalrag、オーク族はその身代金でもっと部"
+"隊と武器を買い揃えることでしょう、私達にとっては悪い知らせです。"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:56
@@ -5203,6 +5263,8 @@ msgid ""
 "Kenning the way of orcs, belike they’d kill the Princess, especially if it "
 "seems the rescue ha’ any chance of succeeding."
 msgstr ""
+"オークのやり方から考えれば、王女を殺すだろうな。救出が成功する可能性がありそ"
+"うならなおさらだ。"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:68
@@ -5271,6 +5333,8 @@ msgid ""
 "Elves are deeply honor-bound, especially in matters that touch their kin. If "
 "we rescue the Princess, I am certain the deed will not go without reward."
 msgstr ""
+"エルフは大変名誉を重んじるものです。特に同族に関わることとなれば。王女を救出"
+"したとすれば、何も報償が無いということは有り得ません。"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:82
@@ -5297,7 +5361,7 @@ msgstr ""
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:88
 msgid "Then to arms, men! For Knalga and the Princess!"
-msgstr ""
+msgstr "では全員武器を取れ！ Knalga と王女のために！"
 
 #. [side]: type=Orcish Warlord, id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:118
@@ -5411,6 +5475,7 @@ msgid ""
 "The intruders are breaking in! Get to the walls and defend the fortress! And "
 "where did that elvish princess go?"
 msgstr ""
+"敵が押し入ってくる！壁まで行って要塞を守れ！おい、エルフの姫はどこに行った？"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:402
@@ -5472,7 +5537,7 @@ msgstr "Eryssa の死"
 msgid ""
 "After rescuing the Princess, Tallin and his allies quickly withdrew into the "
 "caves."
-msgstr ""
+msgstr "王女を救出した後、Tallin と仲間達は素早く洞窟へ退いた。"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:189
@@ -5552,6 +5617,8 @@ msgid ""
 "the caves and broke the dwarves out from their encirclement by the undead "
 "and trolls."
 msgstr ""
+"それからオークの死骸から弓と棍棒を漁って、洞窟に進撃してアンデッドとトロルに"
+"よるドワーフ族の包囲を破ったの。"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:254
@@ -5886,6 +5953,8 @@ msgid ""
 "boisterously by the dwarves as they usually were, they were met by silent "
 "guards with downcast eyes."
 msgstr ""
+"到着した時にはどこか様子がおかしかった。ドワーフ族がいつもやっていた騒がしい"
+"歓迎を受けることはなく、代わりに無言でうつむいた守衛達に出会うことになった。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:38
@@ -6042,6 +6111,8 @@ msgid ""
 "This isn’t looking good. Not only do we fail to get the Princess but now we "
 "lost all of our gold! Seriously Hamel, I don’t know if we’re gonna make it."
 msgstr ""
+"まずいな。王女の奪取に失敗しただけではなく資金を全て失ってしまうとは！ 真剣な"
+"話、Hamel、成功するかどうか判らなくなってきた。"
 
 #. [else]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:100
@@ -6514,7 +6585,7 @@ msgstr ""
 msgid ""
 "Tell the Princess to get off her high horse and stop acting like such a "
 "priss!"
-msgstr ""
+msgstr "傲慢な態度を改めてこんな神経質な真似をするのはやめろと王女に伝えろ！"
 
 #. [message]: speaker=Himadrin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:959
@@ -6591,7 +6662,7 @@ msgstr ""
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1055
 msgid "If you lot are quite finished exchanging pleasantries..."
-msgstr ""
+msgstr "下らぬお世辞はさっさと終わらせてほしいものだ……"
 
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1065
@@ -7159,6 +7230,9 @@ msgid ""
 "her childhood hurts; how in later years, he had guided her in the green "
 "paths of the forest, and taught her the deep mysteries of elven-kind."
 msgstr ""
+"Tallin の胸ですすり泣き、Eryssa は生まれた時から Hidel に守られ育てられてきた"
+"話をいくつもした。小さい頃怪我をした時に慰めてもらったこと、大きくなって、森"
+"の緑の道を案内してくれたこと、エルフの種族の深遠な秘密を教えてくれたこと。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:82
@@ -7867,6 +7941,9 @@ msgid ""
 "only to suppress warfare and raiding in the lands south and east of the "
 "Great Ocean, north of Wesnoth and west of the elvish forests."
 msgstr ""
+"この会議体はどんな人民や土地も統治するものではなく、大洋の南と東、Wesnoth の"
+"北、エルフの森の西の土地における武力衝突や略奪を抑えるために存在するもので"
+"す。"
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:138
@@ -8061,6 +8138,8 @@ msgid ""
 "You have been a valuable ally and a great friend, Elenia. Go with our "
 "blessing, and convey to the elves our intentions and the hope of peace."
 msgstr ""
+"君は大事な盟友であり素晴らしい友人だ、Elenia 。行くといい。前途を祝福しよう。"
+"そしてエルフ族のところへ俺達の意図と平和への希望を伝えてくれ。"
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:286
@@ -8134,6 +8213,9 @@ msgid ""
 "nature for it to be otherwise. There is just one problem; Malifor forced me "
 "into this body and I don’t know how to get out of it."
 msgstr ""
+"さよう。死者は死者の国に留まるべきだ。さもなくば自然の諸法則に反する。ただ一"
+"つだけ問題がある――Malifor が無理矢理この体に押し込めたものだからどうやって抜"
+"け出せばいいのか分からないのだ。"
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:335

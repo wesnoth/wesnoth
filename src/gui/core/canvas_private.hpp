@@ -16,8 +16,8 @@
 #include "gui/core/canvas.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 
-namespace gui2 {
-
+namespace gui2
+{
 /**
  * @ingroup GUICanvasWML
  *
@@ -68,7 +68,8 @@ namespace gui2 {
  *
  * Drawing outside this area will result in unpredictable results including crashing. (That should be fixed, when encountered.)
  */
-class line_shape : public canvas::shape {
+class line_shape : public canvas::shape
+{
 public:
 	/**
 	 * Constructor.
@@ -77,16 +78,13 @@ public:
 	 */
 	explicit line_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
-			y1_,			/**< The start y coordinate of the line. */
-			x2_,			/**< The end x coordinate of the line. */
-			y2_;			/**< The end y coordinate of the line. */
+	typed_formula<unsigned> x1_; /**< The start x coordinate of the line. */
+	typed_formula<unsigned> y1_; /**< The start y coordinate of the line. */
+	typed_formula<unsigned> x2_; /**< The end x coordinate of the line. */
+	typed_formula<unsigned> y2_; /**< The end y coordinate of the line. */
 
 	/** The color of the line. */
 	typed_formula<color_t> color_;
@@ -115,48 +113,23 @@ private:
  * w                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The width of the rectangle.
  * h                  | @ref guivartype_f_unsigned "f_unsigned"|0      |The height of the rectangle.
  */
-class rect_bounded_shape : public canvas::shape {
+class rect_bounded_shape : public canvas::shape
+{
 protected:
 	/**
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the rectangle.
 	 */
-	explicit rect_bounded_shape(const config& cfg);
+	explicit rect_bounded_shape(const config& cfg)
+		: shape(cfg)
+		, x_(cfg["x"])
+		, y_(cfg["y"])
+		, w_(cfg["w"])
+		, h_(cfg["h"])
+	{
+	}
 
-	/**
-	 * Where to draw, calculated from the x,y,w,h formulas but with different reference points used
-	 * as the origin of the co-ordinate system.
-	 */
-	struct calculated_rects {
-		/**
-		 * True if there was no intersection between dst_on_widget and the viewport. If true, the
-		 * data in the SDL_Rects must be ignored.
-		 */
-		bool empty;
-		/** In the co-ordinate system that the WML uses, and unaffected by the view_bounds */
-		SDL_Rect dst_on_widget;
-		/** Intersection of dst_on_widget with view_bounds, in the co-ordinate system that the WML uses. */
-		SDL_Rect clip_on_widget;
-		/**
-		 * Intersection of view_bounds with the shape, in co-ordinates with the shape's top-left at
-		 * (0,0). For a text_shape, this co-ordinate system corresponds to the co-ordinates of the
-		 * Cairo surface that Pango draws on.
-		 */
-		SDL_Rect clip_in_shape;
-		/**
-		 * Translation of dst_on_widget to the viewport's co-ordinates. Here (0,0) corresponds to
-		 * view_bounds's top-left. Will often have negative values for x and y, and widths or
-		 * heights larger than the viewport's size.
-		 */
-		SDL_Rect unclipped_around_viewport;
-		/** Where to draw, in the co-ordinates of the viewport, and restricted to the view_bounds. */
-		SDL_Rect dst_in_viewport;
-	};
-
-	calculated_rects calculate_rects(const SDL_Rect& view_bounds, wfl::map_formula_callable& variables) const;
-
-private:
 	typed_formula<int> x_; /**< The x coordinate of the rectangle. */
 	typed_formula<int> y_; /**< The y coordinate of the rectangle. */
 	typed_formula<int> w_; /**< The width of the rectangle. */
@@ -180,7 +153,8 @@ private:
  *
  * Variables: see line_shape
  */
-class rectangle_shape : public rect_bounded_shape {
+class rectangle_shape : public rect_bounded_shape
+{
 public:
 	/**
 	 * Constructor.
@@ -189,10 +163,7 @@ public:
 	 */
 	explicit rectangle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	/**
@@ -231,7 +202,8 @@ private:
  * fill_color      | @ref guivartype_color "color"          |""       |The color of the interior; if omitted it's not drawn.
  * debug           | @ref guivartype_string "string"        |""       |Debug message to show upon creation; this message is not stored.
  */
-class round_rectangle_shape : public rect_bounded_shape {
+class round_rectangle_shape : public rect_bounded_shape
+{
 public:
 	/**
 	 * Constructor.
@@ -240,10 +212,7 @@ public:
 	 */
 	explicit round_rectangle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<int> r_; /**< The radius of the corners. */
@@ -290,7 +259,8 @@ private:
  *
  * Drawing outside the area will result in unpredictable results including crashing. (That should be fixed, when encountered.)
  */
-class circle_shape : public canvas::shape {
+class circle_shape : public canvas::shape
+{
 public:
 	/**
 	 * Constructor.
@@ -299,18 +269,20 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw( wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
-			y_,			   /**< The center y coordinate of the circle. */
-			radius_;	   /**< The radius of the circle. */
+	typed_formula<unsigned> x_; /**< The center x coordinate of the circle. */
+	typed_formula<unsigned> y_; /**< The center y coordinate of the circle. */
+
+	/** The radius of the circle. */
+	typed_formula<unsigned> radius_;
 
 	/** The border color of the circle. */
-	typed_formula<color_t> border_color_, fill_color_; /**< The fill color of the circle. */
+	typed_formula<color_t> border_color_;
+
+	/** The fill color of the circle. */
+	typed_formula<color_t> fill_color_;
 
 	/** The border thickness of the circle. */
 	unsigned int border_thickness_;
@@ -341,7 +313,8 @@ private:
  *
  * Also the general variables are available, see line_shape
  */
-class image_shape : public canvas::shape {
+class image_shape : public canvas::shape
+{
 public:
 	/**
 	 * Constructor.
@@ -351,22 +324,13 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
-			y_,			   /**< The y coordinate of the image. */
-			w_,			   /**< The width of the image. */
-			h_;			   /**< The height of the image. */
-
-	/** Contains the size of the image. */
-	SDL_Rect src_clip_;
-
-	/** The image is cached in this surface. */
-	surface image_;
+	typed_formula<unsigned> x_; /**< The x coordinate of the image. */
+	typed_formula<unsigned> y_; /**< The y coordinate of the image. */
+	typed_formula<unsigned> w_; /**< The width of the image. */
+	typed_formula<unsigned> h_; /**< The height of the image. */
 
 	/**
 	 * Name of the image.
@@ -389,6 +353,7 @@ private:
 		stretch,
 		tile,
 		tile_center,
+		tile_highres,
 	};
 
 	/** Converts a string to a resize mode. */
@@ -398,7 +363,7 @@ private:
 	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
+	typed_formula<bool> mirror_;
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
@@ -434,7 +399,8 @@ private:
  * text_height        | @ref guivartype_unsigned "unsigned"      |The height of the rendered text.
  * Also the general variables are available, see line_shape
  */
-class text_shape : public rect_bounded_shape {
+class text_shape : public rect_bounded_shape
+{
 public:
 	/**
 	 * Constructor.
@@ -443,10 +409,7 @@ public:
 	 */
 	explicit text_shape(const config& cfg);
 
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const SDL_Rect& viewport,
-			  wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	/** The text font family. */

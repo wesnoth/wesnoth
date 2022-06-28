@@ -65,12 +65,12 @@ unsigned toggle_button::num_states() const
 	return res.quot;
 }
 
-void toggle_button::set_members(const string_map& data)
+void toggle_button::set_members(const widget_item& data)
 {
 	// Inherit
 	styled_widget::set_members(data);
 
-	string_map::const_iterator itor = data.find("icon");
+	widget_item::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
 		set_icon_name(itor->second);
 	}
@@ -228,9 +228,9 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 {
 }
 
-widget* builder_toggle_button::build() const
+std::unique_ptr<widget> builder_toggle_button::build() const
 {
-	toggle_button* widget = new toggle_button(*this);
+	auto widget = std::make_unique<toggle_button>(*this);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));

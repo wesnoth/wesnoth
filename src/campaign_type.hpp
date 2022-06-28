@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <array>
-
 #include "enum_base.hpp"
 
 struct campaign_type_defines

@@ -39,7 +39,7 @@ struct item_group
 	std::string id;
 	t_string name;
 	std::string icon;
-    bool core;
+	bool core;
 };
 
 
@@ -77,8 +77,8 @@ public:
 	/** Menu expanding for palette group list */
 	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) = 0;
 
-    //item
-	virtual int num_items() = 0;
+	//item
+	virtual std::size_t num_items() = 0;
 	virtual std::size_t start_num() = 0;
 	virtual void set_start_item(std::size_t index) = 0;
 

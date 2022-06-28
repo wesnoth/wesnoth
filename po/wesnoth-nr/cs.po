@@ -1,5 +1,5 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
-# Petr Šlejhar <Septim>, 2011.
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-04-17 00:24 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
 "PO-Revision-Date: 2022-04-26 22:46+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -206,10 +206,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "Temná léta plynula. Generace lidí vyrůstaly v otroctví a téměř zapomněly, že "
@@ -515,29 +521,29 @@ msgid "Aaaaah! Trolls! The caves are infested with trolls!"
 msgstr "Áaaa! Trollové! Ty jeskyně jsou plné trollů!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:355
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:346
 msgid "<i>Yes</i>! We did it! We are free!"
 msgstr "<i>Ano</i>! Dokázali jsme to! Jsme volní!"
 
 #. [unit]: type=Orcish Grunt, id=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:367
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:358
 msgid "Khrulg"
 msgstr "Khrulg"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:375
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:366
 msgid ""
 "Garrugch failed in mission, but Al’tar dead by peasant slaves. Better tell "
 "the Master."
 msgstr "Garrugch selhal, ale Altara zabili otroci. Musím to říct pánovi!"
 
 #. [message]: speaker=Khrulg
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:380
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:371
 msgid "Master needs more meat for wolves. Peasants good meat."
 msgstr "Pán potřebuje pro vlky maso. Lidi dobré maso."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:404
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
@@ -546,7 +552,7 @@ msgstr ""
 "dokud naše pomsta nevymaže vaši špínu z naší země!"
 
 #. [message]: speaker=Al'Tar
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:416
 msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Pch! Pěšáci, dejte zbytek té sedlácké chátry do zpátky želez."
 
@@ -556,32 +562,58 @@ msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "Co to... (<i>Chropt</i>) Zabit... otroky?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
 msgid "(<i>Stab</i>)"
 msgstr "(<i>Pích</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "Co to... (<i>Chropt</i>) Zabit... otroky?"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#, fuzzy
+#| msgid "(<i>Stab</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "(<i>Pích</i>)"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:465
 msgid "Ugh!"
 msgstr "Ugh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:481
 msgid "Not a very bright one, was he?"
 msgstr "Že by teda byl nějak extra bystrý..."
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:501
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:518
 msgid "No! I have failed in my mission!"
 msgstr "Ne! Já nesplnil úkol!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:530
 msgid "Mission? What mission?"
 msgstr "Úkol? Jaký úkol?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:538
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
@@ -590,7 +622,7 @@ msgstr ""
 "vojsko skřetů!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:543
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."

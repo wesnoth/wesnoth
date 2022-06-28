@@ -17,6 +17,7 @@
 
 #include "widgets/menu.hpp"
 
+#include "draw.hpp"
 #include "game_config.hpp"
 #include "font/standard_colors.hpp"
 #include "language.hpp"
@@ -24,6 +25,7 @@
 #include "picture.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -439,7 +441,7 @@ std::size_t menu::max_items_onscreen() const
 		return std::size_t(max_items_);
 	}
 
-	const std::size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (max_height_ == -1 ? (video().draw_area().h*66)/100 : max_height_) - heading_height();
 
 	std::vector<int> heights;
 	std::size_t n;
@@ -755,10 +757,13 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			surface const img = get_item_image(image_name);
-			if(img != nullptr) {
-				res.w += img->w;
-				res.h = std::max<int>(img->h, res.h);
+			const point image_size = image::get_size(image_name);
+			if (image_size.x && image_size.y) {
+				int w = image_size.x;
+				int h = image_size.y;
+				adjust_image_bounds(w, h);
+				res.w += w;
+				res.h = std::max<int>(h, res.h);
 			}
 		}
 		else {
@@ -798,7 +803,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, c
 	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(rect, c);
+	draw::fill(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -888,9 +893,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			};
 
 			if(highlight_heading_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,77});
+				draw::fill(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,26});
+				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -903,15 +908,18 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
-				const surface img = style_->get_item_image(image_name);
+				const texture img = image::get_texture(image_name);
+				int img_w = img.w();
+				int img_h = img.h();
+				style_->adjust_image_bounds(img_w, img_h);
 				const int remaining_width = max_width_ < 0 ? area.w :
 				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
-				if(img != nullptr && img->w <= remaining_width
-				&& rect.y + img->h < area.h) {
-					const std::size_t y = rect.y + (rect.h - img->h)/2;
-					const std::size_t w = img->w + 5;
+				if(img && img_w <= remaining_width
+				&& rect.y + img_h < area.h) {
+					const std::size_t y = rect.y + (rect.h - img_h)/2;
+					const std::size_t w = img_w + 5;
 					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					video().blit_surface(x,y,img);
+					draw::blit(img, {int(x), int(y), img_w, img_h});
 					if(!lang_rtl)
 						xpos += w;
 					column.w -= w;
@@ -929,12 +937,13 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
-					if(sort_img != nullptr && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const std::size_t sort_x = xpos + widths[i] - sort_img->w - padding;
-						const std::size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
-						video().blit_surface(sort_x,sort_y,sort_img);
+					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
+					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= rect.h) {
+						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
+						const int sort_y = rect.y + rect.h/2 - sort_tex.h()/2;
+						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
+						draw::blit(sort_tex, dest);
 					}
 				}
 
@@ -991,10 +1000,13 @@ void menu::draw()
 
 	bg_restore();
 
-	clip_rect_setter clipping_rect =
-			clip_rect_setter(video().getDrawingSurface(), clip_rect(), clip_rect() != nullptr);
-
-	draw_contents();
+	const SDL_Rect* clip = clip_rect();
+	if (clip) {
+		auto clipper = draw::set_clip(*clip);
+		draw_contents();
+	} else {
+		draw_contents();
+	}
 
 	set_dirty(false);
 }

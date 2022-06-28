@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units-fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 03:46 UTC\n"
-"PO-Revision-Date: 2022-01-16 17:39+0200\n"
+"POT-Creation-Date: 2022-06-19 14:03 UTC\n"
+"PO-Revision-Date: 2022-06-06 23:02+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -126,7 +126,7 @@ msgstr "sauva"
 #: data/core/units/dunefolk/Falconer.cfg:140
 #: data/core/units/dunefolk/Sky_Hunter.cfg:138
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
-#: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:28
+#: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:34
 msgid "short sword"
 msgstr "lyhytmiekka"
 
@@ -199,7 +199,7 @@ msgstr "kirves"
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:22
+#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
 msgid "greatsword"
 msgstr "suurmiekka"
 
@@ -268,7 +268,7 @@ msgstr "varsta"
 #: data/core/units/humans/Loyalist_Swordsman.cfg:29
 #: data/core/units/humans/Woodsman_Ranger.cfg:44
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:82
+#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:88
 #: data/core/units/orcs/Leader.cfg:27
 msgid "sword"
 msgstr "miekka"
@@ -329,7 +329,7 @@ msgstr "jousi"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:36
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "kynnet"
@@ -444,7 +444,7 @@ msgstr "kosketus"
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
@@ -512,6 +512,8 @@ msgstr "kirous"
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
+#: data/core/units/monsters/Caribe.cfg:113
+#: data/core/units/monsters/Caribe_Nibbler.cfg:125
 #: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
@@ -668,7 +670,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:33
 #: data/core/units/nagas/Dirkfang.cfg:29 data/core/units/orcs/Archer.cfg:24
-#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:26
+#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:35
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -1659,6 +1661,23 @@ msgid ""
 "offensive swordsmanship and are capable of subverting even the strongest "
 "fortifications."
 msgstr ""
+"Dyynikansan miekkamiehet ovat tunnettuja siitä, että he pelaavat peliä "
+"nimeltä \"Laeqad haaste\", jossa heitä vastaan ​​heitetään keihään lailla "
+"Laeqadeja, jotka ovat paksuja, tukevia ruokkoja, joiden korkeus on useita "
+"miekkoja. Pelin temppu on, että ruoko ei ole ympyräsymmetrinen: suurin osa "
+"varresta on melko kovaa, mutta poikkileikkauksessa on ohut viiva, josta on "
+"pehmeämpi ja helpompi leikata. Jopa kokeneelle miekkamiehelle koko Laeqadin "
+"halkaiseminen kokonaan olisi poikkeuksellinen saavutus, kun otetaan huomioon "
+"tarkka tavoite, joka vaaditaan terän linjaamiseen ruo'on pehmeän kohdan "
+"kanssa. Kuitenkin todelliselle miekan mestarille useiden Laeqadien halkaisu "
+"nopeasti peräkkäin on hyvin tavallista, ja jotkut pystyvät leikkaamaan jopa "
+"kaksi tai kolme ruokoa samanaikaisesti yhdellä miekan heilautuksella.\n"
+"\n"
+"Tällä pelillä on enemmän käytännön vaikutuksia todellisiin taisteluihin. "
+"Riippumatta siitä, kuinka vaikeasti haavoittuva tai hyvin panssaroitu "
+"taistelija on, puolustuksella ei näytä olevan merkitystä miekkamestaria "
+"vastaan. Nämä soturit ovat epäilemättä hyökkäävän miekkailun mestareita ja "
+"pystyvät kumoamaan vahvimmatkin linnoitukset."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Blademaster.cfg:29
@@ -1686,6 +1705,14 @@ msgid ""
 "applicability of such a substance to warfare and regularly employ fire "
 "spouting weapons to sow chaos among their enemies."
 msgstr ""
+"Usein unohdettu vaara autiomaassa kulkemisessa on jäätävä kylmä, joka "
+"laskeutuu hiekalle yön aikana. Tämän torjumiseksi dyynikansa käyttää "
+"tyypillisesti Sanbaar-puun erittäin syttyvää mahlaa, joka palaa hitaasti ja "
+"hellästi pieninä määrinä tarjoten pienen määrän lämpöä ja valoa. Suurina "
+"määrinä Sanbaar-mahla on kuitenkin lähes räjähtävää ja palaa erittäin "
+"rajusti. Dyyniläiset ymmärsivät nopeasti tällaisen aineen soveltuvuuden "
+"sodankäyntiin ja käyttivät säännöllisesti tulisuihkuaseita kylvääkseen "
+"kaaosta vihollistensa keskuuteen."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
@@ -1714,6 +1741,15 @@ msgid ""
 "for most soldiers, but they still readily follow the expert tactical "
 "direction of their captains."
 msgstr ""
+"Perinteisesti aatelisto- tai sotilasperheistä kotoisin olevat kapteenit ovat "
+"useimpien dyynikansalaisten joukkueiden ydin. Heidät yleensä valitaan "
+"perinnön eikä saavutusten perusteella, joten monet upseerit ovat usein "
+"suhteellisen heikkoja terän kanssa, mutta kohtuullisen koulutettuja "
+"taktikoijia. Heidän kykynsä piilevät suurelta osin joukkojensa ohjaamisessa "
+"strategisesti edullisiin paikkoihin sen sijaan, että he kohottaisivat "
+"suoraan heidän moraaliaan. Tällaisen komentajan läsnäolo on harvoin "
+"inspiroivaa sotilaille, mutta he silti epäröimättä seuraavat kapteeniensa "
+"asiantuntevaa taktista ohjausta."
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
@@ -1735,6 +1771,17 @@ msgid ""
 "these riders in the slightest, and the displaced air of a descending mace is "
 "the last sound they hear."
 msgstr ""
+"Katafraktit ovat merkittäviä ratsumiehiä, joilla on tavallista vähemmän "
+"nopeutta tai kestävyyttä, mutta sen sijaan valtava määrä voimaa. Nämä "
+"soturit, joilla on aseena peitsi ja tunnusomaiset helanuijat, ovat "
+"useimmiten toissijaisia iskujoukkoja ensisijaisen hyökkäyksen jälkeen. Kun "
+"vihollisen joukot ovat jo miekkamiesten heikentämiä, on kauhistuttava näky "
+"nähdä joukko katafrakteja rivissä, peitset valmiina. Dyynikansan joukkojen "
+"välille muodostuu aukko, ja yhdellä rynnäköllä nämä mahtavat ratsumiehet "
+"tunkeutuvat suoraan vihollisen muodostelmien läpi murskaten kaiken tieltään. "
+"Ne, jotka yrittävät paeta, huomaavat nopeasti, että hiekka tai kukkulat "
+"eivät estä näitä ratsastajia lainkaan, ja laskeutuvan nuijan syrjäytynyt "
+"ilma on viimeinen ääni, jonka he kuulevat."
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
@@ -1763,6 +1810,14 @@ msgid ""
 "longer act only as scouts for probing enemies, but are skilled enough to be "
 "effective flankers or potent shock attackers."
 msgstr ""
+"Hitaasti liikkuva karavaani avoimessa autiomaassa on rosvojen ja ryöväreiden "
+"ensisijainen kohde. Suojellakseen itseään dyynikansa palkkaa "
+"erikoissotureita tiedustelemaan ja torjumaan näitä mahdollisia uhkia. Näin "
+"tehdessään nämä soturit eivät vain suojele haavoittuvia karavaanejaan, vaan "
+"ryöstävät itselleen itse rosvojen tarvikkeet. Kun tutkimusmatkailijat "
+"palvelevat sodankäynnissä, he eivät enää toimi vain tiedustelijoina "
+"vihollisten tutkimiseen, vaan he ovat riittävän taitavia ollakseen "
+"tehokkaita selustaan hyökkääjiä."
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
@@ -1786,6 +1841,18 @@ msgid ""
 "the least, forcing them to abandon their efforts on offense in order to "
 "defend themselves properly."
 msgstr ""
+"Vaikka haukkametsästystä arvostetaan dyyniekansan keskuudessa, se on "
+"suhteellisen harvinaista, koska petolintujen kouluttaminen vaatii aikaa ja "
+"taitoa. Haukkametsästäjät käyttävät taitojaan tyypillisesti metsästykseen ja "
+"vesistöjen kartoittamiseen avodyyneillä. Sama älykkyys voi olla hyödyllistä "
+"sodankäynnissä, jos haukkametsästäjä voidaan vakuuttaa riskeeraamaan "
+"arvostetut lemmikkinsä taistelutarkoituksiin.\n"
+"\n"
+"Taistelussa haukka voi joko auttaa isäntäänsä iskemällä vihollisiin "
+"terävillä kynsillä, tai se voidaan lähettää korkeammalle ilmaan kiertämään "
+"ylös korkeuksiin ja iskemään vihollisen huomion siirtyessä. Soturin huomion "
+"siirtäminen kahden eri rintaman välillä voi olla vähintäänkin häiritsevää ja "
+"pakottaa hänet luopumaan hyökkäyksestä puolustaakseen itseään kunnolla."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
@@ -1809,6 +1876,14 @@ msgid ""
 "of choice. The resulting destruction is more than enough to justify the use "
 "of such a hazardous chemical."
 msgstr ""
+"Jalostamalla Sanbaar-puun mahlaa hyvin tarkalla tislausprosessilla on "
+"mahdollista tuottaa erittäin helposti syttyvää polttoainetta, joka palaa "
+"vielä rajummin kuin mahla, josta se on peräisin. Tietenkin tällainen aine on "
+"hyvin vaarallinen sen erittäin palavan luonteensa vuoksi. Useimmat varovat "
+"sen käyttöä, koska itsensä vahingoittamisen mahdollisuus on suuri, mutta "
+"muutamat rohkeat sielut ottavat käyttöön liekinheittimiä, aseita, jotka "
+"toimivat puhtaalla polttoaineella. Tuloksena oleva tuhon määrä on enemmän "
+"kuin tarpeeksi oikeuttamaan tällaisen vaarallisen kemikaalin käytön."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Firetrooper.cfg:95
@@ -1840,6 +1915,16 @@ msgid ""
 "thrust of spears is often enough to severely cripple the target, allowing "
 "the main Dunefolk force to close in and finish the job."
 msgstr ""
+"Vaikka jäljittäjät voivat täyttää samanlaisen roolin kuin vaeltajat "
+"vihollisjoukkojen jarruttamisessa, heidän nimensä juontuu itse asiassa "
+"toiminta tavastaan jolla he taistelevat. Yleisimmin vihollislinjojen takana "
+"toimivien jäljittäjien tehtävänä on tarjota hyödyllistä tiedustelutietoa "
+"vihollisjoukkojen liikkeistä, mikä usein yksinään riittää dyynikansan "
+"armeijoille päihittämään vihollisensa. Kuitenkin kun aika on oikea, nämä "
+"ketterät soturit kokoontuvat yhteen ja iskevät heikentyneiden "
+"huoltolinjoihin tai vihollisjoukkojen selustaan. Bola-sade ja lävistävät "
+"keihäät riittävät usein vakavasti lamauttamaan kohteen, jolloin dyynikansan "
+"pääjoukot pääsevät lähi etäisyydelle ja viimeistelevät työn."
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
@@ -1862,6 +1947,18 @@ msgid ""
 "of the various flora and fauna that supply their work. Hardened by their "
 "travels, many of these men are even able to heal themselves."
 msgstr ""
+"Dyynikansan sairaiden ja haavoittuneiden hoidosta vastaavina "
+"dyyniparantajilla on sekä lääketieteelliset taidot parantaa erilaisia "
+"vaivoja että taito etsiä ja kerätä hoivaavia yrttejä. Heillä on työhönsä "
+"monet motiivit. Jotkut pitävät sitä seikkailuna tai vakaana palkanlähteenä, "
+"kun taas toiset pitävät sitä velvollisuutena yhteiskuntaansa kohtaan. Syystä "
+"riippumatta nämä parantajat ovat korvaamaton osa dyynikansan yhteiskuntaa ja "
+"ovat erityisen hyödyllisiä, koska he pystyvät antamaan nopeasti hoitoa "
+"keskellä taistelua tai matkustaessaan autiomaassa.\n"
+"\n"
+"Dyyniparantajat matkustelevat joskus jopa paimentolaisten joukossa "
+"etsiessään kasvistoa ja eläimistöä auttamaan heitä työssään. Matkojensa "
+"koventamana monet näistä miehistä pystyvät jopa parantamaan itsensä."
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
@@ -1879,6 +1976,14 @@ msgid ""
 "long-ranged arrows is of great use to maintain communication among the "
 "Dunefolk armies."
 msgstr ""
+"Jotkut harvat ratsastajat suosivat jousiammuntaa taisteluissa. Hyökkää ja "
+"peräänny taktiikkaa käyttäen, nämä hevosmiehet ovat asiantuntijoita "
+"häiritsemään vähemmän liikkuvia vihollisia, ampuen nuolisateita "
+"vihollisjoukkoihin ja metsästämään pakenevia vihollisia kaukaa. Vaikka näitä "
+"ratsastusmiehiä ei yleensä ole koulutettu soluttautumista tai vakoilua "
+"varten, näiden ratsastajien kyvystä välittää viestejä kaukaa niiden pitkän "
+"kantaman nuolilla on suurta hyötyä yhteydenpidossa dyynikansan armeijoiden "
+"välillä."
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
@@ -1902,6 +2007,20 @@ msgid ""
 "proven, but the fact remains that some Luminaries seem to hold much more "
 "influence than their abilities should afford."
 msgstr ""
+"Nopeasti vilkaistuna, ei ole täysin selvää mikä erottaa dyynitaitajan muista "
+"dyynikansa parantajista. Varmasti dyynitaitaja voi olla hieman enemmän "
+"asiantuntevaisempi, paljon matkustanut tai taitavampi taisteluissa "
+"verrattuna tavallisiin parantajiin tai apteekkariin, mutta ero on yleensä "
+"parhaimmillaan vaatimattoman pieni. Siitä huolimatta \"taitaja\" on "
+"muodollinen arvonimi, joka myönnetään dyynikansan parantajien korkeimmalle "
+"luokalle, ja se antaa näille miehille sekä suurimman arvostuksen että "
+"suurimman kateuden.\n"
+"\n"
+"Arvellaan, että dyynitaitajien keskuudessa on olemassa salainen järjestö. "
+"Nämä niin kutsutut \"ylhäiset\" keräävät paljon kiellettyä tietoa ja "
+"varjoista neuvovat monia dyynikansan johtajia. Tätä väittämää ei ole koskaan "
+"todistettu, mutta tosiasia on, että joillakin dyynitaitajilla näyttää olevan "
+"paljon enemmän vaikutusvaltaa kuin heidän kykyjensä mukaan pitäisi olla."
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
@@ -1923,6 +2042,18 @@ msgid ""
 "For this reason, they are sometimes hired by small armies or wealthier "
 "caravans as a deterrent to unwanted raids."
 msgstr ""
+"Jotkut sopivat hyvin ratsastajan elämään ja voivat jopa muodostaa omia "
+"klaaneja saman mielisten ihmisten kanssa. Nämä ratsumiehet saavat "
+"toimeentulonsa ryöstelemällä autiomaassa varomattomia matkailijoita tai "
+"haavoittuvaisia karavaaneja. Koska dyyniryöväreillä ei ole erityisiä "
+"taitoja, he eivät ole vahvimpia sotureita eivätkä taitavimpia jousiampujia, "
+"mutta silti he ovat vaarallisimpia vihollisia erämaassa pelkän hyvän "
+"liikkuvuutensa ansiosta. Koordinoitu ryöstöretki voi tuhota pois "
+"keskikokoisetkin leirit ennen kuin mitään vastahyökkäystä saadaan "
+"järjestettyä, ja sissitaktiikat voivat antaa heille mahdollisuuden voittaa "
+"vahvempiakin vihollisia, jos raaka voima ei tepsi. Tästä syystä pienet "
+"armeijat tai rikkaammat karavaanit palkkaavat heitä joskus pelotteeksi muita "
+"hyökkääjiä vastaan."
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
@@ -1934,7 +2065,7 @@ msgstr "soihtu"
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
 msgid "Dune Paragon"
-msgstr ""
+msgstr "Dyynipäälikkö"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1961,11 +2092,31 @@ msgid ""
 "acuity who may then be considered as candidates to lead the next generation "
 "of Dunefolk."
 msgstr ""
+"Monissa dyynikansan kaupunkivaltioissa seuraavan sukupolven johtajien "
+"valintamenettely on pitkä prosessi, joka kestää useita vuosia. Jokaisesta "
+"sukupolvesta valitaan aateliston joukosta muutama erityisen lahjakas nuori "
+"erityisopetukseen. Nämä soturit oppivat elämään ja hengittämään miekan "
+"kautta, joka heille on enemmän kuin vain itsensä jatke. Nuoruudesta lähtien "
+"kymmenen vuoden kovan harjoittelu tasoittaa polun viimeiseen kokeeseen, "
+"sarjaan kaksintaisteluja muiden päällikkökokelaiden välillä kuolemaan. Kun "
+"taistelu on ohi ja pöly on laskeutunut, jäljellä jää kahdeksan päällikköä. "
+"Näille miehille myönnetään titteli Kal tai yhteisesti Kalait.\n"
+"\n"
+"Vaikka kaikkien suurten johtajien edellytetään hallitsevan terää, "
+"dyynikansan keskuudessa hallitsevan kastin on tiedettävä paljon enemmän kuin "
+"miekkailua. Uurasta harjoittelua seuraa yleensä joko useiden vuosien "
+"vaeltelu erämaissa tai mielen omistautuminen tieteille. Tämän tarkoituksena "
+"on löytää itsemotivoitunut polku kohti valaistumista. Oli miten oli, toisen "
+"koulutusjakson lopussa jäljellä olevat Kalait palaavat ja osoittavat "
+"tietonsa nykyisen hallitsevan kastin vanhimmille. Ne, jotka todetaan "
+"arvollisiksi, kutsutaan sitten päälliköiksi, suuren voiman ja viisauden "
+"sotureiksi, joita voidaan sitten pitää ehdokkaina johtamaan dyynikansan "
+"seuraavaa sukupolvea."
 
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Paragon.cfg:42
 msgid "pommel strike"
-msgstr ""
+msgstr "ponsi-isku"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:11
@@ -1984,6 +2135,14 @@ msgid ""
 "Dunefolk, capable of outpacing nearly anything they might encounter in the "
 "sandy deserts."
 msgstr ""
+"Vaikka dyynirosvot esiintyvät harvoin järjestäytyneissä armeijoissa, ne ovat "
+"paimentolais dyynikansan perusta, joka säännöllisesti väijyttää kilpailevia "
+"karavaaneja ja leirejä öisin. Näissä skenaarioissa raakavoimalla ei ole "
+"suurta merkitystä. Nopeudella on eniten merkitystä. Nopea iskeminen ja "
+"mahdollisimman suuren kaaoksen levittäminen mahdollisimman lyhyessä ajassa "
+"mahdollistaa näiden ratsastajien pääsemisen sisään ja ulos pelkäämättä "
+"vastahyökkäystä. Dyynirosvot ovat dyynikansan nopeimpia, ja ne pystyvät "
+"ohittamaan melkein kaiken, mitä he saattavat kohdata aavikolla."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -2003,6 +2162,15 @@ msgid ""
 "is what allows these horsemen to be so effective and versatile out on the "
 "rolling dunes."
 msgstr ""
+"Dyyniläiset ovat merkittäviä hevoskasvattajia, jotka kasvattavat monia "
+"erilaisia ratsuja erilaisiin tarkoituksiin. Ne, joita käytetään kovaan "
+"työhön, kasvatetaan voimakkaiksi, kun taas matkoille tai karavaanien "
+"käyttöön jalostetaan kestävyyttä. Sodankäynnissä ominaisuuksien sekoitus on "
+"yleensä paras, vaikka kyky kulkea helposti ja nopeasti hiekan läpi on "
+"äärimmäisen tärkeä. Näiden hevosten ratsastajat toimivat ensisijaisesti "
+"partioina ja sanansaattajina tai toisinaan heikentyneen linjan "
+"tukijoukkoina. Ratkaiseva ominaisuus on hyvä liikkuvuus, sillä se "
+"mahdollistaa näiden ratsumiesten tehokkaan ja monipuolisen dyyneillä."
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
@@ -2021,6 +2189,15 @@ msgid ""
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
+"Avoimien aavikoiden paimentolaisvaeltajista lähtöisin olevat dyynikulkijat "
+"edustavat tasapainoisinta dyynikansan sotilasta: joustava, liikkuva, yhtä "
+"tehokas puolustuksessa ja hyökkäyksessä sekä kauko- tai lähitaistelussa. He "
+"ovat kokeneita metsästäjiä ja jäljittäjiä, kestäviä asukkaita aavikoilla ja "
+"kukkuloilla, joita he kutsuvat kodiksi. Vaikka heiltä puuttuu koulutusta "
+"muodollisina joukkoina, taidot, joita nämä kulkijat käyttävät selviytyäkseen "
+"autiomaassa, auttavat suuresti sodankäynnissä. Heidän ainutlaatuinen "
+"ominaisuus taistella parhaiten aamunkoitteessa tai iltahämärässä vastaa "
+"aikaa, jolloin aavikon lämpötilat ovat asutuskelpoisimpia."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
@@ -2038,6 +2215,14 @@ msgid ""
 "in their work, these archers relish igniting great swaths of flame on the "
 "battlefield, though this sometimes also results in unintended friendly fire."
 msgstr ""
+"Dyynipolttajan nimimerkki ei johdu tuhosta, jota he aiheuttavat "
+"vastustaville joukoille, vaan heidän omasta ulkonäöstään. Kokeillessaan "
+"usein varusteitaan, useimmat polttajat ylittävät väistämättä jossain "
+"vaiheessa rajansa, ja heidän aseidensa erittäin herkästi syttyvä Sanbaar-"
+"mahla kärventää heidät. Nämä jousimiehet pitävät palovammojaan ylpeyden "
+"merkkinä työstään, ja he nauttivat suurten liekkien sytyttämisestä "
+"taistelukentällä, vaikka tämä joskus johtaa myös tahattomaan omien "
+"vahingoittamiseen."
 
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
@@ -2047,7 +2232,7 @@ msgstr "Dyynipolttaja"
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
 msgid "female^Dune Skirmisher"
-msgstr "Dyynitaistelija"
+msgstr "Dyynikahakoitsija"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:21
@@ -2062,6 +2247,16 @@ msgid ""
 "assassinating key units, or pincering an enemy formation into a "
 "disadvantageous position."
 msgstr ""
+"Autiomaassa syntyneet ja kasvaneet kahakoitsijat ovat tottuneet aavikon "
+"ankaraan aavikon kuumaan ja kuivaan ilmaan sekä epäystävälliseen maastoon. "
+"Jopa muihin dyynikansalaisiin verrattuna nämä paimentolaiset ovat "
+"epävakailla dyynillä harvinaisen ketteriä, minkä ansiosta he voivat turvata "
+"laumojaan ja metsästää karuissa oloissa helposti. Taistelussa sama ketteryys "
+"mahdollistaa heidän sekä liukua vihollislinjojen läpi että välttää "
+"monenlaiset hyökkäykset. Nämä taidot tekevät kahakoitsijoista tehokkaita "
+"sabotoijia, jotka pystyvät katkaisemaan pakoreitit ja huoltolinjat, "
+"salamurhaamaan tärkeitä henkilöitä tai pakottamaan vihollisen muodostelman "
+"epäedulliseen asemaan."
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
@@ -2082,11 +2277,22 @@ msgid ""
 "tools for combat, the eagles can live for up to a few decades and are often "
 "precious companions to their dunefolk partners."
 msgstr ""
+"Aavikkohaukat, joita usein luullaan nuoriksi roc-linnuiksi, ovat "
+"majesteettisia saalistaja eläimiä jotka ovat hyvin aggressiivisia ja lähes "
+"mahdottomia kesyttää. Luonnossa ne saalistavat isoja eläimiä kuten susia, "
+"pieniä hevosia, ja on jopa kerrottu, että tuhmia pieniä lapsia. Näiden "
+"eläinten mahti tekee niistä hyvin haastavia lähestyttäviä, joten vain "
+"kaikkein kaikkein kokeneimmat kesyttäjät uskaltavat lähestyä niitä. Mikäli "
+"kesyttäjä onnistuu työssään, suhde eläimen ja kesyttäjän välillä ei niinkään "
+"kehity kouluttaja-lemmikki suhteeksi, vain enemmänkin tasavertaiseksi "
+"suhteeksi kahden tasavertaisen välillä. Kotkista on paljon hyötyä "
+"taistelukentillä, mutta ne myös elävät vuosikymmeniä ja ovat arvokkaita "
+"kumppaneita dyynikansalle."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:150
 msgid "eagle"
-msgstr ""
+msgstr "kotka"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
@@ -2095,7 +2301,6 @@ msgstr "Dyynisotilas"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
-#, fuzzy
 msgid ""
 "While most Dunefolk castes serve an additional practical purpose beyond only "
 "direct warfare, cities and caravans usually train a group of soldiers "
@@ -2106,14 +2311,14 @@ msgid ""
 "spaced pattern, allowing them to assault and overwhelm clustered enemy lines "
 "by engaging them in quasi-single combat."
 msgstr ""
-"Vaikka useimmat dyyniläisten säädyt palvelevat muutakin käytännön "
-"tarkoitusta kuin suoraa sodankäyntiä, kaupungit ja karavaanit kouluttavat "
-"yleensä sotilaita, jotka ovat täysin omistautuneet sotilaallisiin "
-"tarkoituksiin. Harjoittelemalla taitojaan miekkailussa, nämä soturit oppivat "
-"navigoimaan hankalia taisteluita lähietäisyydeltä ja päihittäen vihollisensa "
-"lähitaistelun avulla. Tyypillinen dyyniläisten muodostelma hyödyntää tätä "
+"Vaikka useimmat dyynikansan säädyt palvelevat muutakin käytännön tarkoitusta "
+"kuin suoraa sodankäyntiä, kaupungit ja karavaanit kouluttavat yleensä "
+"sotilaita, jotka ovat täysin omistautuneet sotilaallisiin tarkoituksiin. "
+"Harjoittelemalla taitojaan miekkailussa, nämä soturit oppivat navigoimaan "
+"hankalia taisteluita lähietäisyydeltä ja päihittäen vihollisensa "
+"lähitaistelun avulla. Tyypillinen dyynikansan muodostelma hyödyntää tätä "
 "taitoa asettamalla sotilaita erilleen, jolloin he voivat hyökätä ja kaataa "
-"ryhmittyneet vihollislinjat taistelemalla yksittäin yhtä vi"
+"ryhmittyneet vihollislinjat taistelemalla yksittäin yhtä vihollista vastaan."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
@@ -2134,6 +2339,17 @@ msgid ""
 "combat than their sword-wielding brethren, they are highly skilled with "
 "spear and shield and more than capable of repelling most advances."
 msgstr ""
+"Minkä tahansa taistelun kulku vaatii eriasteista hyökkäystä ja puolustusta. "
+"Dyynikansa arvostaa epäilemättä enemmän hyökkäystä näistä kahdesta ja "
+"tyypillisesti keskittävät suurimman osan resursseistaan taitavien "
+"miekkamiesten kouluttamiseen. Kuitenkin missä tahansa soturijoukossa pieni "
+"joukko sotilaita kieltäytyy miekasta ja sen sijaan täyttää puolustajien "
+"tärkeän roolin. Tärkeitä huoltolinjoja ja tähystyspaikkoja vartioivat "
+"keihäsvartijat sijoitetaan useimmiten hieman päälinjan taakse ja niitä "
+"käytetään tukivoimana tai pelotteena selustahyökkäyksille. Vaikka nämä "
+"taistelijat näkevät yleensä vähemmän suoraa taistelua kuin heidän miekkoja "
+"käyttävät toverinsa, ovat he erittäin taitavia käyttämään keihästä ja kilpeä "
+"ja pystyvät hyvin torjumaan useimmat hyökkäykset."
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
@@ -2162,11 +2378,31 @@ msgid ""
 "distinction, it is still a modicum of recognition for those who were "
 "prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
+"Dyynikansan armeijoiden joukossa korkein arvovalta kuuluu jokaista "
+"hyökkäystä johtaville miekkamiehille. Heitä kunnioitetaan palveluksestaan "
+"taistelussa, mutta ne jotka käyttävät keihästä, unohdetaan suurelta osin sen "
+"jälkeen, ja he yleensä täyttävät vähiten toivotun roolin taistelussa ilman "
+"kunniaa tai tunnustusta. Kun dyynikansan hyökkäys epäonnistuu ja "
+"vetäytyminen on suoritettava, keihäsvartijoiden joukko jää yleensä taakse "
+"hillitsemään vastahyökkäystä. Vaikka kilpilinja tarjoaa mahtavan "
+"puolustuksen, se on väistämättä ylikuormitettu ja suurin osa puolustajista "
+"kaatuu taisteluissa. Jos joku onnistuu selviytymään hengissä ja löytämään "
+"tiensä takaisin toipuvaan armeijaan, häntä moititaan usein siitä, että hän "
+"ei pitänyt asemaansa ja kuollut muiden nimeämättömien toveriensa kanssa. "
+"Siitä huolimatta soturi hyväksytään pienen nuhtelun jälkeen takaisin ja "
+"kuljettaa kokemuksensa seuraavaan taisteluun.\n"
+"\n"
+"Se ei ole muodollinen titteli, mutta \"keihäsmestari\" on se, mitä "
+"keihäsvartijat kutsuvat tovereitaan, jotka onnistuvat palaamaan tavallisesti "
+"itsemurhapuolustukselta, jolla dyynikansa ryhtyy turvaamaan perääntymisensä. "
+"Ei juurikaan ylistys tai kunnianosoitus, se on silti pieni tunnustus niille, "
+"jotka olivat valmiita kuolemaan nimettöminä marttyyreina suojellakseen "
+"veljiään."
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
 msgid "female^Dune Strider"
-msgstr "Dyynikulkija"
+msgstr "Dyynisamooja"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
@@ -2183,12 +2419,22 @@ msgid ""
 "striders are fairly fragile in direct combat and are easily taken down if "
 "left exposed."
 msgstr ""
+"Dyynikansan hyökkäyksen voimaa estää yksi suuri haittapuoli, nimittäin "
+"järjestäytyneet dyynikansan joukot ovat yleensä melko hitaita. Tästä johtuen "
+"vihollisjoukot pystyvät usein ryhmittymään uudelleen ja kutsumaan "
+"vahvistuksia, jolloin toisesta hyökkäyksestä tulee paljon haastavampi. Tämän "
+"estämiseksi dyynisamoajat vaihtavat alkeelliset linkonsa raskaisiin boliin, "
+"jolloin he voivat hidastaa perääntyviä joukkoja sivulta ja estää puhtaan "
+"paon. Samaa taktiikkaa voidaan soveltaa dyynikansan omaan vetäytymiseen. "
+"Etenevää armeijaa voidaan häiritä, mikä antaa loukkaantuneille dyynikansan "
+"sotureille aikaa toipua. Tällaisen taktiikan vaarana on, että suuresta "
+"kyvykkyydestään huolimatta samoajat ovat melko hauraita suorassa taistelussa "
+"ja he kaatuvat helposti, jos he jäävät yksin."
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
-#, fuzzy
 msgid "Dune Sunderer"
-msgstr "Dyyniesiratsastaja"
+msgstr "Dyynimurskaaja"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
@@ -2203,6 +2449,15 @@ msgid ""
 "enough skill at archery to weaken enemy forces or pick off fleeing "
 "stragglers."
 msgstr ""
+"Dyyniratsumiesten suuressa joukossa on niitä, jotka nauttivat kiihkeästä "
+"lähitaistelusta hyökkäyksien aikana. Kantaen raskaita aseita ja vahvoja "
+"panssareita, nämä ratsastajat turvautuvat suureen raakaan voimaansa "
+"taistelussa. Lempinimen \"murskaaja\" ratsastajat ovat joko saaneet "
+"raskaista nuijistaan tai maineesta, kun nämä dyynikansan raskas ratsuväki "
+"ratsastaa taisteluun, he usein murskaavat vihollisten vahvimmatkin "
+"muodostelmat. Tarpeen vaativassa näillä ratsumiehillä on myös tarpeeksi "
+"taitoa jousiammunnassa heikentääkseen vihollisen joukkoja tai pysäyttääkseen "
+"pakenevia karkureita."
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
@@ -2224,16 +2479,27 @@ msgid ""
 "accuracy, a contingent of of swordsmen is enough to crack even the sternest "
 "of defenses."
 msgstr ""
+"Suurten armeijoiden yhteenotossa dyynikansa kohtaa yleensä joko tiheästi "
+"pakkautuneet \"kilpiseinät\" tai voimakkaasti linnoitettuja vihollisasemia. "
+"Iskeminen näitä erittäin organisoituneita rintamia vastaan voi olla melko "
+"haastavaa. Vihollismuodostelma saattaa jättää vain pieniä, kapeita rakoja "
+"kilpien ja panssarin väliin samalla, kun se uhkaa keihäiden ja nuolien "
+"vastaiskulla. Dyynikansan miekkailu korostaa siis vahvasti taisteluvoimaa ja "
+"mikä tärkeintä, tarkkuutta. Soturi saattaa löytää vain yhden tilaisuuden "
+"iskeä vihollista vastaan, mutta kokenut miekkamies tarttuu todennäköisemmin "
+"oikeaan tilaisuuteen ja tekee iskusta tehokkaan. Melkein luonnottomaan "
+"tarkkuuteen hiottu miekkamiehien joukko riittää murtamaan ankarimmankin "
+"puolustuksen."
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:26
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "raskas miekan lyönti"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "tasapainotettu miekan sivallus"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2253,6 +2519,15 @@ msgid ""
 "rather than formal training. Said to be a veteran of a thousand battles, a "
 "warmaster is an expert leader that should never be underestimated."
 msgstr ""
+"Toisin kuin muut dyynikansan komentajat, monet korkea-arvoiset kenraalit "
+"keskittyvät voimakkaasti joukkojensa kokoamiseen ja korkean moraalin "
+"ylläpitämiseen. Sotaherrat ovat usein taistelun eturintamassa taistelemassa "
+"sotilaidensa rinnalla. Vaikka nämä komentajat yleensä jättävät hienommat "
+"strategiset yksityiskohdat alemman tason kapteeneilleen, he ovat silti "
+"erityisen taitavia taktikoita. Monet taistelut on voitettu kekseliäällä "
+"hyökkäyksellä tai yllätysliikkeellä, joka on usein taistelukokemuksen luova "
+"sivutuote muodollisen koulutuksen sijaan. Tuhannen taistelun veteraaniksi "
+"sanottu sotaherra on asiantunteva johtaja, jota ei pidä koskaan aliarvioida."
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
@@ -2292,11 +2567,41 @@ msgid ""
 "the other Wayfarers again. My tale might not be that impressive to them, but "
 "at least it is an improvement over my previous encounter with the wyvern...”"
 msgstr ""
+"Dyyniläisen vaeltajan Balahin päiväkirjasta:\n"
+"\n"
+"”...Tänään oli kuudes päivä. Kuusi päivää takaa-ajoa autiomaassa ilman unta, "
+"ilman lepoa... mutta en tarvitse kumpaakaan. Verisilmäinen Roc-lintu on "
+"ryöstellyt liian monia eläimiä laumastani. Minun täytyy päästä eroon siitä "
+"ennen kuin karavaani kuolee nälkään. Olen seurannut sitä tänne asti, ja "
+"riippumatta siitä, kuinka pitkälle se pakenee, aion seurata sitä.\n"
+"\n"
+"... kirottua! Olento oli vain muutaman sadan askeleen päässä, mutta aurinko "
+"oli silmissäni! Onnistuin ampumaan muutaman nuolen sen ärsyttävän otuksen "
+"päälle, mutta vain tarpeeksi hidastaakseni sitä. Se näyttää väsyvän "
+"nopeammin kuin minä. Hyvällä tuurilla saan sen kiinni ennen kuin se pääsee "
+"vuorille.\n"
+"\n"
+"... Yhdestoista päivä. Ahdistin olennon nurkkaan sen laskeuduttua "
+"rinteeseen, mutta siellä oli kolme muuta, joita en ottanut huomioon. Roc-"
+"linnut ovat hurjia olentoja lähietäisyydellä. Pelkästään yhden kanssa "
+"taisteleminen on haastava tehtävä, mutta neljä kerralla? Olen onnekas, että "
+"toin toisen kirveeni, muuten olisin loukkaantunut vakavasti tuon taistelun "
+"aikana. Odotan, että sideharso asettuu jalkaani ennen kuin palaan tappamaan "
+"kaksi viimeistä. Ehkä sitten vihdoin löydän aikaa syödä ja levätä.\n"
+"\n"
+"... tämä on minullekin yllätys, että matkustin lähes puoliväliin pohjoisten "
+"dyynien poikki 21 päivän tutkimusmatkallani. Karavaanilla se kestäisi "
+"melkein kolme kuukautta, mutta oletan, että matkani olosuhteet olivat jonkin "
+"verran lieventäviä. Valoisa puoli on se, että sain matkan varrelta hankittua "
+"suolattua Roc-linnun lihaa, jonka pitäisi olla hyvä herkku lapsille. On myös "
+"mukava nähdä taas joitain muita vaeltajia. Tarinani ei ehkä ole heille niin "
+"vaikuttava, mutta se on ainakin parannus edelliseen tapaamiseeni lentoliskon "
+"kanssa...\""
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
 msgid "Dune Windbolt"
-msgstr "Dyynilähettiläs"
+msgstr "Dyynituuliratsastaja"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
@@ -2312,6 +2617,17 @@ msgid ""
 "able to otherwise. Having honed their craft to its apex, windbolts are the "
 "undisputed masters of ranged combat among the Dunefolk."
 msgstr ""
+"Jousiammunta hevosen selässä tuo mukanaan useita lisähaasteita, jotka vain "
+"harvat pystyvät voittamaan. Se mikä erottaa maineikkaat tuuliratsastajat "
+"muista jousimiehistä, on niiden kyky ei vain hallita näitä vaikeuksia, vaan "
+"muuttaa ne sen sijaan eduiksi. Ratsunsa suurta nopeutta hyödyntäen "
+"tuuliratsastaja on itse asiassa parempi jousiampuja ratsailla kuin jalan. "
+"Ratsastamisesta saatava ylimääräinen vauhti antaa lisävoimaa heidän jo "
+"ennestään tehokkaisiin nuoliinsa, ja mutkittelevissa kuvioissa ratsastamalla "
+"nämä jousimiehet pystyvät ampumaan nuolensa kaareutuvilla lentoradoilla ja "
+"saavuttamaan kohteet, joita ne eivät muuten osuisi. Taitonsa huippuun "
+"hioneena, tuuliratsastajat ovat dyynikansan kaukotaistelun kiistattomat "
+"mestarit."
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
@@ -2571,7 +2887,6 @@ msgstr "Jousihaltia"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:19
-#, fuzzy
 msgid ""
 "As primarily foragers and hunters, most elves learn to become proficient "
 "archers from a young age. Besides being only a practical skill, archery is "
@@ -2584,7 +2899,13 @@ msgid ""
 msgstr ""
 "Useimmat haltiat ovat ensisijaisesti keräilijöitä ja metsästäjiä, ja he "
 "oppivat taitaviksi jousiampujiksi jo nuorella iällä. Käytännön taidon "
-"lisäksi, jousiammunta on myös vapaa-ajan ja kilpailujen"
+"lisäksi, jousiammunta on myös vapaa-ajalla ja kilpailuissa suosittu laji "
+"niin osallistujille kuin katsojille. Tämä taito muuntuu tarpeen vaatiessa "
+"myös sodan aikana käytettäväksi taidoksi, jolloin monet haltiat kantavat "
+"jousia aseinaan. Haltia jouset eivät ole niin vahvoja kuin ihmisten tai "
+"örkkien vastaavat jouset, mutta jousihaltiat ovat silti äärimmäisen "
+"tehokkaita taistelijoita, erityisesti silloin kun he taistelevat metsiensä "
+"suojissa."
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -2734,7 +3055,6 @@ msgstr "Haltialumoojatar"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "In the context of Elven magic, the notion of enchanting is a little bit "
 "misleading since it almost always refers to manipulation of an object’s "
@@ -2748,16 +3068,15 @@ msgid ""
 "especially in unusual or peculiar matters."
 msgstr ""
 "Haltioiden taikuuden yhteydessä käsitys lumoamisesta on hieman "
-"harhaanjohtava, koska se viittaa melkein aina esineen olemuksen "
-"manipulointiin ennustamisen tai oivalluksen tarkoituksessa. Suosikki "
-"lumoutujien joukossa on heidän luonnollisen ympäristönsä imeytyminen "
-"arkaanisen hengityksen kanssa, mikä tuottaa salaisia lehtoja, jotka ovat "
-"ruumiillisen ja eteerisen maailman risteyksessä. Näitä salaperäisiä piiriä "
-"pitävät heidän yhtä arvoituksellinen huoltajansa, jotka pitävät enimmäkseen "
-"itsensä poissa uteliailta katseilta. Vaikka he ovat melko pidättymättömiä ja "
-"epäsosiaalisia, useimmat sukulaisistaan pitävät nämä tontut hyvin, ja joskus "
-"heitä pyydetään opastamaan erityisesti epätavallisissa tai erikoisissa "
-"asioissa."
+"harhaanjohtava, koska se viittaa lähes aina esineen olemuksen manipulointiin "
+"ennustamisen tai oivalluksen tarkoituksessa. Suosittua lumoajien joukossa on "
+"heidän luonnollisen ympäristönsä kyllästäminen arkaanisella hengityksellä, "
+"mikä tuottaa salaisia lehtoja, jotka sijaitsevat ruumiillisen ja eteerisen "
+"maailman risteyksessä. Näitä salaperäisiä piiriä pitävät yllä heidän yhtä "
+"arvoitukselliset huoltajansa, jotka pitävät enimmäkseen itsensä poissa "
+"uteliailta katseilta. Vaikka nämä haltiat ovatkin melko epäsosiaalisia ja "
+"varautuneita, useimmat muut haltiat pitävät heitä arvossaan, ja joskus "
+"heiltä pyydetään opastusta epätavallisissa tai erikoisissa asioissa."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
@@ -2797,7 +3116,6 @@ msgstr "Haltiasankari"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
-#, fuzzy
 msgid ""
 "Accomplished Elvish warriors are sometimes called ‘Sárcan’, roughly meaning "
 "‘one who has sacrificed in defense’ or ‘one transfigured by experience’. "
@@ -2820,15 +3138,14 @@ msgstr ""
 "\"Haltiasankari\", osoittaa jonkin verran arvovaltaa, mutta sen tarkoitus ei "
 "ole ylistää asemaa. Haltiasankarit ovat niitä, jotka ovat selviytyneet "
 "useista sodista ja eläneet kauemmin kuin monet aiemmissa taisteluissa "
-"kaatuneet ystävänsä. Taistelukentän harvojen yksinäisten selviytyjien "
+"kaatuneet toverinsa. Taistelukentän harvojen yksinäisten selviytyjien "
 "joukossa nämä taistelussa paatuneet sotilaat ovat tietoisia sodan lukuisista "
 "julmuuksista. Örkit ja ihmiset polttavat ja tuhoavat heidän kotinsa "
-"metsissä, kääpiöt ryöstävät kaatuneiden arvoesineitä, nekromantit "
-"kasvattavat omia tovereitaan taistelemaan heitä vastaan ​​tai jopa heidän "
-"omiaan teurastamaan viattomia ilman huolenpitoa tai armoa. Vaikka haltiat "
-"ymmärtävät sotilaallisen voiman välttämättömyyden ja kunnioittavat "
-"\"Sárcanetia\" sankareina palveluksestaan, tällaista asemaa ei usein haeta "
-"haltioiden enemmistön taholta."
+"metsissä, kääpiöt ryöstävät kaatuneiden arvoesineitä, manaajat elävöittävät "
+"heidän omia tovereitaan taistelemaan heitä vastaan ​​tai teurastamaan "
+"viattomia ilman armoa. Vaikka haltiat ymmärtävät sotilaallisen voiman "
+"välttämättömyyden ja kunnioittavat \"Sárcaneja\" palveluksestaan, useimmat "
+"haltiat eivät tähän asemaa pyri tarkoituksella."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -2855,6 +3172,23 @@ msgid ""
 "lords is invaluable for maintaining the prosperity of Elvish rule, whether "
 "or not they sit at the top of the chain of command."
 msgstr ""
+"Haltioiden taikuuden kaksinaisuus ilmenee voimakkaimmin ruumiillisen ja "
+"arkaanisen maailman välisissä kahtia jaossa. Sama kaksijakoisuus heijastuu "
+"haltioiden aateliston riveihin. Osittain keijutulen käytöstä johtuen "
+"useimmat suurlordit huomaavat olevansa vahvasti samassa asemassa lumoajien "
+"kanssa, yhdistäen itseään oivallukseen ja tuhoamiseen. Vaikka se ei ole sama "
+"asia kuin viisaus, suurlordin intuitiota on yleensä kunnioitettava ja hänen "
+"vihaansa pelättävä. Tämä vain vahvistuu iän myötä, kun aika tuo terävyyttä "
+"haltian mieleen ja aisteihin.\n"
+"\n"
+"Ulkopuolisten käsitykset \"Suurlordeista\" ylemmän luokan olemassaolosta "
+"ovat yleensä harhaa, joka johtuu näiden kokeneiden haltioiden käsityksen ja "
+"voiman suuresta erosta muhin haltioihin nähden. Todellisuudessa haltioiden "
+"hallinnon hierarkialla on eroa kuin yöllä ja päivällä rauhan- ja sodan "
+"aikojen välillä. Ainoa asia, joka voidaan sanoa varmaksi, on, että näiden "
+"suurlordien älykkyys on korvaamaton haltioiden hallinnon vaurauden "
+"ylläpitämisessä riippumatta siitä, istuvatko he komentoketjun huipulla vai "
+"eivät."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
@@ -2863,6 +3197,7 @@ msgstr "Haltialeidi"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
+#, fuzzy
 msgid ""
 "Usually strongly connected with the earthly aspect of Elven magic, noble "
 "ladies of the elvish enclaves are associated with wisdom and preservation. "
@@ -2876,6 +3211,16 @@ msgid ""
 "peacekeepers, holding high authority during times of amity and taking a "
 "lesser role in times of war."
 msgstr ""
+"Tavallisesti vahvasti haltioiden taikuuden maalliseen ulottuvuuteen "
+"liittyvät haltioiden enklaavien jalot naiset liittyvät viisauteen ja "
+"säilymiseen. Monien arvostetuimpien haltiaperinteiden ylläpitäjinä heillä on "
+"suuri rooli tunnettujen metsäsuojelualueidensa rauhallisuuden ja luonnon "
+"ihmeiden turvaamisessa. Toisin kuin kollegansa lordissa, joista monet saavat "
+"suuren yksilöllisen näkemyksen käyttämällä salaperäistä taikuutta, useimmat "
+"naiset levittävät valtaansa ohjaamiinsa yhteiskunnallisiin ryhmiin, usein "
+"omien henkilökohtaisten kykyjensä kustannuksella. Tästä syystä he palvelevat "
+"useimmiten diplomaatteina ja rauhanturvaajina, joilla on korkea arvovalta "
+"ystävyyssuhteiden aikana ja heikompi rooli sodan aikana."
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
@@ -2884,6 +3229,7 @@ msgstr "Haltialordi"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
+#, fuzzy
 msgid ""
 "Succession among the Elvish nobility is a complex process that varies "
 "somewhat between the different enclaves of Elvenkind. Typically, the future "
@@ -2903,6 +3249,23 @@ msgid ""
 "an absolute one, and they are expected to lead more by diplomacy and wisdom "
 "rather than force."
 msgstr ""
+"Haltia-aateliston jälkeläinen on monimutkainen prosessi, joka vaihtelee "
+"jonkin verran Elvenkindin eri enklaavien välillä. Tyypillisesti tonttujen "
+"tulevien johtajien tehtävänä on hallita haltiayhteiskunnan kolmea osa-"
+"aluetta: metsiä puolustavat soturit ja metsänvartijat, rauhalliset siviilit, "
+"jotka karttavat taistelua kokonaan, sekä parantajien ja mystikoiden "
+"kollektiivinen ryhmä, joka tutkii taidetta. keiju taikuudesta. Kyky sovittaa "
+"yhteen näiden ryhmittymien väliset erot ja johtaa tehokkaasti heidän väkeään "
+"vaatii huomattavia henkilökohtaisia ​​ansioita ja syvällistä näkemystä "
+"kaikenlaisista haltioista. Tätä varten lordit ovat tyypillisesti ainoita "
+"mieshaltioita, jotka saavat oppia minkä tahansa määrän keijutaikuutta, jota "
+"perinteisesti opetetaan vain naispuolisille shamaaneille.\n"
+"\n"
+"Vaikka jotkut erillisalueet, kuten pohjoisen Lintanirin lehto, ylläpitävät "
+"aatelistoaan verilinjan kautta, toiset, kuten mahtavat Wesmeren tontut, "
+"valitsevat uusia herroja jokaiselle uudelle sukupolvelle. Kummassakin "
+"tapauksessa aatelisten asema on harvoin ehdoton, ja heidän odotetaan "
+"johtavan enemmän diplomatialla ja viisaudella kuin voimalla."
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
@@ -2921,6 +3284,14 @@ msgid ""
 "training the body to keep up with the eyes is no easy feat, and realizing "
 "this prodigious skill does come with the cost of weakness in close quarters."
 msgstr ""
+"Haltioilla on intiimi yhteys keijujen maailmaan, mikä luo heille erittäin "
+"teräviä aisteja ja uskomattoman tarkan näön. Tämä yhdistettynä vuosien "
+"metsästykseen syvissä metsissä edistää suuresti haltioiden jousen hallintaa. "
+"Jousiammuntaa harjoittanut haltia pystyy osumaan neulanreiän kokoiseen "
+"kohteeseen kymmenien askelten päästä ja pystyy ampumaan nopeasti sekä "
+"tarpeeksi tarkasti halkaisemaan putoavat oksat ilmassa. Kehon kouluttaminen "
+"pysymään silmien tahdissa ei tietenkään ole helppoa, ja tämän upean taidon "
+"hallitseminen altistaa heikkoudelle lähitaistelussa."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:38
@@ -2954,6 +3325,17 @@ msgid ""
 "task for any invasion force, precisely because of the skillful maneuvering "
 "of the marshals who are entrusted with the protection of their people."
 msgstr ""
+"Haltiat eivät usein ole avoimen sodan yllyttäjiä, mutta eivät arkojakaan, "
+"kun on aika käydä taisteluun. Tätä tarkoitusta varten he ylläpitävät koko "
+"ajan pienen määrän strategisesti ajattelevia marsalkkoja. Nämä komentajat on "
+"valittu lahjakkaimmista partiokapteeneista, ja he käyvät läpi laajan "
+"koulutuksen erilaisissa sotilaallisissa haaroissa, mukaan lukien ihmisten ja "
+"örkkien sotimisen tekniikoita. He ovat hiukan epätavallisia, mutta loistavia "
+"strategeja, jotka ovat erinomaisia hajottamaan suuret taistelurintamat "
+"pienemmiksi yhteenotoiksi ja muuttamaan tavalliset kampanjat hajallaan "
+"käytäväksi sissisodankäynniksi. Haltioita vastaan taisteleminen heidän "
+"omassa kodissaan on pelottava tehtävä mille tahansa hyökkääjäjoukolle juuri "
+"kansansa suojeluun uskottujen marsalkoiden taitavien ohjailujen vuoksi."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -3001,6 +3383,7 @@ msgstr "Haltiasamooja"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:19
+#, fuzzy
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
 "and reconnaissance. Many are explorers and loners, preferring to wander "
@@ -3012,6 +3395,16 @@ msgid ""
 "their size and will often compel attacking armies to withdraw rather than "
 "risk a game of prolonged guerrilla warfare in the forests."
 msgstr ""
+"Metsien hiljaiset tarkkailijat, haltioiden vartijat ovat varkain ja "
+"tiedustelun mestareita. Monet ovat tutkimusmatkailijoita ja yksinäisiä, "
+"jotka haluavat vaeltaa kohoavien puiden läpi, jotka suojaavat kotinsa "
+"luonnon kauneutta, jota he suojelevat kiivaasti. Vaikka heillä on "
+"huomattavaa taitoa sekä terässä että jousessa, nämä jousimiehet eivät ole "
+"yhtä taitavia taistelemaan tasaisin ehdoin muita sotureita vastaan, vaan "
+"mieluummin väijyttävät vihollisiaan varjoista metsässä. Vartioiden "
+"yllätyshyökkäys voi lamauttaa joukkoja moninkertaisesti heidän kokoonsa ja "
+"usein pakottaa hyökkäävät armeijat vetäytymään sen sijaan, että ottaisi "
+"riskiä pitkäkestoisesta sissisodasta metsissä."
 
 #. [special_note]
 #: data/core/units/elves/Ranger.cfg:21
@@ -3019,6 +3412,8 @@ msgid ""
 "Elvish Rangers are well-traveled and adept at traversing harsh terrains like "
 "sand, water, and mountains."
 msgstr ""
+"Haltiasamoojat ovat paremmin sopeutuneet ja varustautuneet matkaamaan vaikea "
+"kulkuisessa maastossa, kuten hiekalla, vedessä ja vuorilla."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:95
@@ -3032,6 +3427,7 @@ msgstr "Haltiaratsastaja"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:21
+#, fuzzy
 msgid ""
 "The prevalence of guerrilla tactics in Elven strategy results in great "
 "emphasis on maintaining highly mobile units capable of fighting on an "
@@ -3047,6 +3443,19 @@ msgid ""
 "these riders are the oft unsung heroes of war, left supporting their "
 "brethren from the back lines."
 msgstr ""
+"Sissitaktiikkojen yleisyys Haltioiden strategiassa johtaa siihen, että "
+"painotetaan erittäin liikkuvien yksiköiden ylläpitämistä, jotka pystyvät "
+"taistelemaan mukautuvalla taistelurintamalla. Tämä sodankäyntityyli vaatii "
+"nopeaa kommunikointia pienten taisteluryhmien välillä ja kykyä siirtää "
+"joukkoja nopeasti taistelualueiden välillä. Kokeneet haltiaratsastajat "
+"tietävät tämän hyvin ja omistavat siten suurimman osan ajastaan "
+"ratsastustaitojensa parantamiseen yksilöllisten taistelutaitojensa sijaan. "
+"Nopeus, jolla he kulkevat metsän halki, olisi itsetuhoista mille tahansa "
+"muulle ratsuväelle, ja he ovat tarpeeksi sitkeitä ratsastamaan jopa kaksi "
+"tai kolme päivää kerrallaan lepäämättä. Vaikka näiden ratsastajien tarjoama "
+"älykkyys ja viestintä on korvaamatonta, taistelukyvyn ja etulinjan "
+"puuttuminen tarkoittaa, että nämä ratsastajat ovat usein tuntemattomia sodan "
+"sankareita, jotka jäävät tukemaan veljiään takalinjoista."
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
@@ -3055,6 +3464,7 @@ msgstr "Haltiatiedustelija"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:21
+#, fuzzy
 msgid ""
 "Although the equines bred by the wood elves are much faster and more agile "
 "than regular horses, they tend to be quite a bit harder to master. It takes "
@@ -3067,6 +3477,17 @@ msgid ""
 "support units and are adept at quickly transferring information between "
 "patrols, whom they also reinforce when necessary."
 msgstr ""
+"Vaikka metsähaltioiden kasvattamat hevoset ovat paljon nopeampia ja "
+"ketterämpiä kuin tavalliset hevoset, niitä on yleensä hieman vaikeampi "
+"hallita. Näiden epävakaiden ponien kouluttaminen kestää useita vuosia, mutta "
+"kesytettyään ne ovat yksi omistautuneimmista ratsuista. Nämä ainutlaatuiset "
+"hevoset antavat haltioiden ratsumiehet ohittaa useimmat muut ratsuväet "
+"avoimella maalla ja jopa ratsastaa paksujen metsien läpi täydellä laukkalla. "
+"Vaikka näillä ratsastajilla on jonkin verran taitoa käyttää miekkoja ja "
+"jousia, heidän suurin tehonsa piilee heidän kyvyssään tiedustella ja ohittaa "
+"vihollisen joukkoja. Haltiapartiolaisia käytetään useimmiten sanansaattajina "
+"tai tukiyksiköinä, ja he ovat taitavia siirtämään nopeasti tietoa partioiden "
+"välillä, joita he myös tarvittaessa vahvistavat."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -3075,6 +3496,7 @@ msgstr "Haltiashamaani"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:19
+#, fuzzy
 msgid ""
 "With a little training, an elf’s inherent affinity with the natural world "
 "can be channeled into a material magic that affects the physical plane. "
@@ -3085,6 +3507,15 @@ msgid ""
 "peaceful by nature, these shamans rarely engage in combat, instead using "
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
+"Pienellä harjoittelulla tontun luontainen affiniteetti luonnonmaailmaan "
+"voidaan kanavoida materiaaliksi, joka vaikuttaa fyysiseen tasoon. Tämän "
+"tieteenalan shamaanit käyttävät useimmiten taitojaan hoitaakseen luontoa, "
+"joka yhdistää heidät voimiinsa, mikä johtaa epätavallisen reheviin ja "
+"vehreisiin metsiin heidän kotinsa ympärillä. Sama taika soveltuu "
+"merkittäville ja tunnetuille parantamisen taiteen kyvyille. Luonteeltaan "
+"hartaasti rauhanomaiset shamaanit osallistuvat harvoin taisteluun, vaan "
+"käyttävät taikuuttaan käskeäkseen maata estämään tai rauhoittamaan "
+"vihollisiaan."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -3093,6 +3524,7 @@ msgstr "Haltiain jousimestari"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:20
+#, fuzzy
 msgid ""
 "Though not a formal title, ‘Sharpshooter’ is the epithet given to the most "
 "gifted Elvish marksmen. These expert archers are capable of feats that, even "
@@ -3104,6 +3536,16 @@ msgid ""
 "sharpshooters of the elves have honed their art to its highest form and are "
 "the undisputed masters of archery."
 msgstr ""
+"Vaikka \"Sharpshooter\" ei ole muodollinen otsikko, se on lahjakkaimpien "
+"haltiaampujien tunnusmerkki. Nämä asiantuntevat jousiampujat pystyvät jopa "
+"haltioiden standardien mukaan ihmeellisiin saavutuksiin - heillä on tarkkuus "
+"jakaa saapuvat nuolet ilmassa ja he voivat irrottaa toisen nuolen ennen "
+"ensimmäistä osumaa, samalla kun he säilyttävät tarpeeksi voimaa "
+"vahingoittaakseen koko levypanssarin. Heidän nuolinsa yksi heitto riittää "
+"kaatamaan hevosen selässä olevan ritarin, ja jopa raskaasti panssaroitu "
+"jalkaväki selviää muutamasta lisälaukauksesta. Haltioiden teräampujat ovat "
+"hioneet taiteensa korkeimpaan muotoon ja ovat kiistattomia "
+"jousiammuntamestareita."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:81
@@ -3112,6 +3554,7 @@ msgstr "Haltiain jousimestari"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
+#, fuzzy
 msgid ""
 "As an elf maiden entwines herself more and more with nature, the essence of "
 "earth begins to transform her body. The butterfly wings that sprout on the "
@@ -3122,6 +3565,14 @@ msgid ""
 "for true faerie or ‘forest spirits’, these stewards of the forests epitomize "
 "their people’s mysterious connection with the natural order."
 msgstr ""
+"Kun tonttuneito kietoutuu yhä enemmän luontoon, maan olemus alkaa muuttaa "
+"hänen kehoaan. Shyden selässä versovat perhosen siivet ovat suora osoitus "
+"hänen yhteydestään keijuun ja antavat hänelle tyypillisen eteerisen "
+"tyyneyden ja pelon auran. Shydes ovat arkipäivän mestareita, joita ohjaa "
+"voima, jota he eivät ymmärrä, mutta jota muut lajinsa arvostavat suuresti. "
+"Nämä metsänhoitajat, jotka usein erehtyvät todellisiksi keijuiksi tai "
+"\"metsähengiksi\", kuvailevat ihmisten salaperäistä yhteyttä "
+"luonnonjärjestykseen."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
@@ -3135,6 +3586,7 @@ msgstr "Haltiavelhotar"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:19
+#, fuzzy
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
 "natural, or corporeal world, and divination into the arcane plane. The "
@@ -3148,6 +3600,16 @@ msgid ""
 "nonetheless hold the arcane flame in high regard and are careful to utilize "
 "it with judicious caution."
 msgstr ""
+"Haltioiden taika poikkeaa yleisimmin kahden polun välillä - luonnollisen tai "
+"ruumiillisen maailman manipuloinnista ja ennustamisesta arkaaniselle "
+"tasolle. Jälkimmäinen voimana, jota on vaikea hallita ja jota jopa useimmat "
+"sen harjoittajat eivät ymmärrä, ei haltiat usein etsi. Arkaanien hallitsijat "
+"kohtaavat merkittävän riskin tutkiessaan lajinsa epävakaa luonnetta ja "
+"oppivat nopeasti kunnioittamaan aluksensa häiritsevää voimaa. Tämä tuhoisa "
+"luonne ilmenee yleisimmin \"keijutulen\" kihtinä, joka on haltioiden noidan "
+"helpoimmin hallittavia taitoja. Vaikka haltiat ovatkin melko pinnallinen "
+"tämän taiteen sovellus, ne pitävät salaista liekkiä korkeassa arvossa ja "
+"käyttävät sitä harkitusti varoen."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
@@ -3156,6 +3618,7 @@ msgstr "Keijulumoojatar"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
+#, fuzzy
 msgid ""
 "Tremendously powerful in unfathomable ways, the sage-like Sylphs are masters "
 "of manipulating the bridge between the mundane and arcane worlds. Long years "
@@ -3173,6 +3636,22 @@ msgid ""
 "‘reflection pools’ and steer them is one of her greatest — and most feared — "
 "abilities."
 msgstr ""
+"Äärimmäisen voimakkaat ja käsittämättömällä tavalla viisaat sylfit ovat "
+"mestareita manipuloimaan siltaa arkisen ja arkaanisen maailman välillä. "
+"Pitkät vuodet, jotka on vietetty eteeriseen maailmaan katsellessa, ovat "
+"heikentäneet näiden haltioiden kykyä tarkastella fyysistä maailmaa; "
+"vastineeksi heille myönnetään abstrakti näkemys, joka saa mahdollisuuden "
+"tarkastella yhtä tai jopa useampaa eri näkökulmaa todellisuuden olemuksesta. "
+"Kuten monet rikkoutuneen peilin sirpaleet, aineellisen maailman lukemattomat "
+"murtumat heijastavat arkaanin valoa sen monien eri puolien kautta. "
+"Huolellinen harjoittelu mahdollistaa näiden valosäikeiden seuraamisen "
+"ruudusta toiseen ja tarkkailee, kuinka fyysisen todellisuuden lopputulos "
+"kehittyy jokaisen vapaasta tahdosta tehdyn valinnan myötä. Vaikka "
+"liitoskankaan suora kudonta on yleensä mahdotonta saavuttaa, epäsuora "
+"manipulointi on mahdollista koneistamalla kehon tasolla, jossa arkaanisen "
+"tason heijastus on voimakkainta. Sylfin kyky paikantaa nämä "
+"\"heijastusaltaat\" ja ohjata niitä on yksi hänen suurimmista – ja "
+"pelätyimmistä – kyvyistä."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:41
@@ -3604,10 +4083,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:36
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
 #: data/core/units/humans/Loyalist_Sergeant.cfg:36
-#: data/core/units/orcs/Crossbowman.cfg:32
-#: data/core/units/orcs/Crossbowman.cfg:41 data/core/units/orcs/Leader.cfg:36
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:37
-#: data/core/units/orcs/Slurbow.cfg:46 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:41
+#: data/core/units/orcs/Crossbowman.cfg:50 data/core/units/orcs/Leader.cfg:36
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:43
+#: data/core/units/orcs/Slurbow.cfg:52 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:42
 msgid "crossbow"
 msgstr "varsijousi"
@@ -4003,6 +4482,8 @@ msgid ""
 "Compared to other loyalists, Pikemen have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"Muihin uskollisiin verrattunna, seiväsmiehillä on suurempi vastustus "
+"\"lävistys\" tyypin hyökkäyksiä vastaan."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:34
@@ -4041,11 +4522,15 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"Muihin uskollisiin verrattuna, Kuninkaankaartilaisilla on korkeampi "
+"vastustus \"viilto\" ja \"murskaus\" tyypin hyökkäyksiä vastaan."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movement points."
 msgstr ""
+"Muihin uskollisiin verrattuna, kuninkaankaartilaisilla on enemmän "
+"liikepisteitä."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -4142,6 +4627,8 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
+"Muihin uskollisiin verrattuna, miekkamiehillä on suurempi vastustus "
+"\"viilto\" ja \"murskaus\" tyypin hyökkäyksiä vastaan."
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -4236,6 +4723,8 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Muihin velhoihin verrattuna, arkkivelhoilla korkeampi vastustus \"tuli\" "
+"tyypin hyökkäyksiä vastaan."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:47
@@ -4307,6 +4796,8 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Muihin velhoihin verrattuna, suurvelhoilla on suurempi vastustus \"tuli\" "
+"tyypin hyökkäyksiä vastaan"
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:90
@@ -4455,6 +4946,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Muihin velhoihin verrattuna, valon velhoilla on suurempi vastustus "
+"\"salatiede\" tyypin hyökkäyksiä vastaan."
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:105
@@ -4558,7 +5051,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:39
 #: data/core/units/humans/Outlaw_Rogue.cfg:38
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Nightblade.cfg:43
-#: data/core/units/orcs/Slayer.cfg:35
+#: data/core/units/orcs/Slayer.cfg:44
 msgid "throwing knives"
 msgstr "heittoveitset"
 
@@ -4736,7 +5229,7 @@ msgid "Thug"
 msgstr "Korsto"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -5378,6 +5871,36 @@ msgstr ""
 "vanhempansa, jokseenkin vähemmän haastavia taistelussa. Mutta harvoin löytyy "
 "porsasta, jolla ei ole suojelevaa aikuista karjua."
 
+#. [unit_type]: id=Caribe, race=monster
+#: data/core/units/monsters/Caribe.cfg:8
+msgid "Caribe"
+msgstr ""
+
+#. [unit_type]: id=Caribe, race=monster
+#: data/core/units/monsters/Caribe.cfg:29
+msgid ""
+"The giant caribe are seldom encountered in the inland rivers near Weldyn, "
+"but tales of their ferocious attacks have spread far and wide.  Their angry "
+"red eyes are embedded in an armored face.  While it is their teeth that are "
+"a dangerous weapon, they do posses small, bony arms and claws, which they "
+"can use to extricate themselves from situations dire to most other fish.  "
+"The giant caribe can climb over land and untie fishing nets, some have said "
+"they even commune with the saurian augers.  Whatever the truth, these fish "
+"are unusually clever and should not be understimated."
+msgstr ""
+
+#. [unit_type]: id=Nibbler, race=monster
+#: data/core/units/monsters/Caribe_Nibbler.cfg:8
+msgid "Nibbler"
+msgstr ""
+
+#. [unit_type]: id=Nibbler, race=monster
+#: data/core/units/monsters/Caribe_Nibbler.cfg:41
+msgid ""
+"Nibblers are juvenile predator fish, often more curious than dangerous.  A "
+"single individual may not be a threat, but these fish seldom travel alone."
+msgstr ""
+
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
@@ -5602,12 +6125,12 @@ msgstr ""
 msgid "ice claw"
 msgstr "jääkynnet"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
 msgid "Giant Stoat"
 msgstr "Jättiläiskärppä"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr ""
@@ -5896,7 +6419,6 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
-#, fuzzy
 msgid "desert lightning"
 msgstr "aavikko salama"
 
@@ -5967,15 +6489,23 @@ msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
+"Tämä yksikkö voi kaivautua piiloon pehmeään maahan, hiekkaan tai lehtiin, "
+"kunnes se taas liikkuu."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
+#, fuzzy
 msgid ""
 "Horned Scarabs are large, rugged insects that can grow to be quite large, "
 "making them a threat when they decide to be aggressive. Their primary means "
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
+"Pillerinpyörittäjät ovat suuria, karuja hyönteisiä, jotka voivat kasvaa "
+"suuriksi, mikä tekee niistä uhan, silloin kun ne päättävät olla "
+"aggressiivisia. Niiden ensisijainen hyökkäyskeino on päästä kasvava suuri, "
+"terävä sarvi. Suuren kokonsa, panssarinsa ja sarvensa vuoksi ne eivät voi "
+"lentää."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53

@@ -25,5 +25,6 @@ namespace lua_widget {
 
 int impl_widget_get(lua_State* L);
 int impl_widget_set(lua_State* L);
+int impl_widget_dir(lua_State* L);
 
 } // end namespace lua_gui2

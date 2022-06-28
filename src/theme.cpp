@@ -520,11 +520,11 @@ theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
 		items_.emplace_back("id", item);
 	}
 
+	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"]);
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"]) + hotkey::get_names(items_[0]["id"]) + "\n"
-				   + hotkey::get_tooltip(items_[0]["id"]);
+		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + cmd.tooltip;
 	} else if(cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"]) + hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
+		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
 	}
 }
 
@@ -558,14 +558,15 @@ theme::action::action(std::size_t sw, std::size_t sh, const config& cfg)
 
 const std::string theme::action::tooltip(std::size_t index) const
 {
+	const auto& cmd = hotkey::get_hotkey_command(items_[index]);
 	std::stringstream result;
 	if(auto_tooltip_ && tooltip_.empty() && items_.size() > index) {
-		result << hotkey::get_description(items_[index]);
+		result << cmd.description;
 		if(!hotkey::get_names(items_[index]).empty())
 			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
-		result << "\n" << hotkey::get_tooltip(items_[index]);
+		result << "\n" << cmd.tooltip;
 	} else if(tooltip_name_prepend_ && items_.size() == 1) {
-		result << hotkey::get_description(items_[index]);
+		result << cmd.description;
 		if(!hotkey::get_names(items_[index]).empty())
 			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
 		result << "\n" << tooltip_;
@@ -1007,7 +1008,10 @@ const config& theme::get_theme_config(const std::string& id)
 		return iter->second;
 	}
 
-	ERR_DP << "Theme '" << id << "' not found. Falling back to default theme." << std::endl;
+	if (!id.empty()) { // (treat empty id as request for default theme)
+		ERR_DP << "Theme '" << id << "' not found."
+		       << " Falling back to default theme." << std::endl;
+	}
 
 	iter = known_themes.find("Default");
 	if(iter != known_themes.end()) {

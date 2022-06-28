@@ -357,14 +357,14 @@ void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_
 		if(*i == t_translation::BASE) {
 			t_translation::ter_list::iterator insert_it = first.erase(i);
 			//if we are in reverse mode, insert PLUS before and MINUS after the base list
-            //so calculation of base aliases will work normal
+			//so calculation of base aliases will work normal
 			if(revert) {
 //				insert_it = first.insert(insert_it, t_translation::PLUS);
 //				insert_it++;
 				insert_it = first.insert(insert_it, t_translation::MINUS);
 			}
 			else {
-                //else insert PLUS after the base aliases to restore previous "reverse state"
+				//else insert PLUS after the base aliases to restore previous "reverse state"
 				insert_it =  first.insert(insert_it, t_translation::PLUS);
 			}
 

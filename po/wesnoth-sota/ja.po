@@ -1,13 +1,13 @@
 #
 # Translators:
-# RatArmy, 2021
+# RatArmy, 2022
 # k konami, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"POT-Creation-Date: 2022-06-19 14:02 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:33+0000\n"
 "Last-Translator: k konami, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -68,6 +68,11 @@ msgid ""
 "\n"
 "(Hard level, 18 scenarios.)\n"
 msgstr ""
+"緑の島のリッチ君主たちの秘密を解き明かせ。彼らは不死の秘訣を知っていたのだ。"
+"あなたにできぬはずはなかろう？\n"
+"\n"
+"（上級レベル、18シナリオ）\n"
+"\n"
 
 #. [about]
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:29
@@ -85,37 +90,37 @@ msgid "Additional Artwork"
 msgstr "追加のアートワーク"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:108
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:106
 msgid "Lvl 0"
 msgstr "レベル 0"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:130
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:128
 msgid "Undead"
 msgstr "アンデッド"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:173
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:171
 msgid "Traits"
 msgstr "特性"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:207
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:205
 msgid "Attacks"
 msgstr "攻撃"
 
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:275
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:271
 msgid "Choose a Corpse"
 msgstr "死体の選択"
 
 #. [button]
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:341
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:337
 msgid "Recruit"
 msgstr "雇用"
 
 #. [button]: id=cancel
-#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:347
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:343
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -347,6 +352,8 @@ msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
 "suppose we could rest inside a farmer’s or woodcutter’s fence."
 msgstr ""
+"オオカミだ！ この旅は思ったよりも危険みたい。 けど、農家や木こりが丈夫な柵を"
+"築いてるはず。そこまで逃げ込めば、野生動物から身を守れるかな。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:366
@@ -396,10 +403,8 @@ msgstr "スケルトンアーチャーを呼び出す（14ゴールド）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:159
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You don’t have enough gold to raise that unit."
-msgstr "そのユニットを雇用するにはゴールドが足りません。"
+msgstr "ユニットを呼び出すためのゴールドが足りません。"
 
 #. [objective]: condition=win
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:238
@@ -473,18 +478,18 @@ msgstr "Caradoc"
 #. She's speaking to a bat from scenario 1
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:397
 msgid "Oh, hello friend! I didn’t know you were hiding in there."
-msgstr ""
+msgstr "あ、こんにちは！ここはあなたのお家だったの？"
 
 #. [message]: speaker=Ardonna
 #. She's speaking to a bat that she hasn't met before
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:404
 msgid "Oh, hello! You’re a handsome one."
-msgstr ""
+msgstr "あ、こんにちは！あなたなかなかカッコいいね。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:421
 msgid "Hey, come back! I didn’t mean to frighten you."
-msgstr ""
+msgstr "ねえ、戻ってきて！あなたを怖がらせるつもりはないから。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:425
@@ -503,10 +508,8 @@ msgstr "コウモリを呼び出す（20 ゴールド）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:496
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You don’t have enough gold to summon the bat."
-msgstr "そのユニットを雇用するにはゴールドが足りません。"
+msgstr "コウモリを呼び出すにはゴールドが足りません。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:578
@@ -514,6 +517,8 @@ msgid ""
 "You can now recruit skeletons and skeleton archers! You will lose this "
 "ability if the guardhouse is retaken by the guards!"
 msgstr ""
+"スケルトンとスケルトンアーチャーを雇用できるようになりました！ただし、衛兵小"
+"屋が衛兵たちに奪還されてしまうと雇用できなくなります！"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:632
@@ -583,6 +588,8 @@ msgid ""
 "I don’t know, but this evening a mage from the Academy was here talking to "
 "the mayor, my brother says."
 msgstr ""
+"知るか。だが、アカデミーから来た魔術師が夜に町長と話していたそうだ。俺の兄弟"
+"がそう言っていたぞ。"
 
 #. [message]: speaker=Caradoc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:767
@@ -655,6 +662,7 @@ msgstr "おめえと...そっちのやつ。何者だ？"
 msgid ""
 "Oh, him. See here, I don’t want any trouble, but he is a little... ah..."
 msgstr ""
+"ああ、あそこにいる人か。 面倒事は起こしたくないのだけれど…彼は少し...あー..."
 
 #. [message]: speaker=Caradoc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:914
@@ -662,11 +670,13 @@ msgid ""
 "He’s <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
 "country! The penalty is death. Attack and destroy them both!"
 msgstr ""
+"これは<i>死体</i>じゃ！祖父の時代に古い国で行われていた黒魔術！死をもって償う"
+"べし。やつらを攻撃するのじゃ！"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:918
 msgid "Hey! Don’t do that, or I will need more of them."
-msgstr ""
+msgstr "待って！来ないで、でないとさらにコレをしちゃうよ。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:922
@@ -822,15 +832,6 @@ msgstr "凪"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:25
-#, fuzzy
-#| msgid ""
-#| "22 III, 23 YW\n"
-#| "\n"
-#| "Research sometimes requires experiments, so I began.  I knew the bandit "
-#| "had intended to rob me, and once I had killed his beloved, he had "
-#| "intended to torture and kill me.  Now that I was in control, he was "
-#| "afraid and defensive, and while his hatred of me was unabated, his desire "
-#| "to live made him somewhat malleable."
 msgid ""
 "22 III, 23 YW\n"
 "\n"
@@ -864,21 +865,20 @@ msgid ""
 "thousand suns — I could feel it more strongly than the fear or hunger from "
 "any of my pets..."
 msgstr ""
+"山賊を休ませるため、ぶどう酒を入れた革袋をあげた。彼は疑うような目で見た後、"
+"私の様子を伺いながら少しずつ飲んでた。そして私がゴールドの一部を机の上に置く"
+"と、彼の目はそれに釘付けになった。\n"
+"\n"
+"さらに彼の恋人「Mossa」から奪った指輪を机に置いた。彼の視線はゴールドから指輪"
+"に移り、そして私の両目に素早く移った。もし彼が椅子に縛り付けられていなかった"
+"ら、襲い掛かってきただろう。\n"
+"\n"
+"さらにゴールドを追加で積み重ねてみたけど彼は興味を示さなくて、憎しみのこもっ"
+"た目で睨んでくるだけ。千の太陽が放つ熱のように復讐への渇望が放たれていた。そ"
+"の思いは、私のペットたちの恐れや飢えよりも強烈に感じた。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
-#, fuzzy
-#| msgid ""
-#| "This rich vein into the life-force of the bandit was like nothing I had "
-#| "ever seen, but I knew enough to bend his hunger to my will. With further "
-#| "study, I may one day be able to stop it there, but today I could not: The "
-#| "single-minded hunger consumed the man, it was all I could do to control "
-#| "its direction!\n"
-#| "\n"
-#| "The bandit howled, thrashed, tore at his clothes and bindings, eventually "
-#| "digging into his own flesh.  Eventually, when all but the hunger had been "
-#| "flensed from his being, he calmed down.  Now hairless, bloody, naked, and "
-#| "unthinking, the bandit was unrecognizable as the man he once was."
 msgid ""
 "This rich vein into the life-force of the bandit was like nothing I had ever "
 "seen, but I knew enough to bend his hunger to my will. With further study, I "
@@ -976,7 +976,7 @@ msgstr "船の最上甲板の上であれば、どこでも雇用できます。
 msgid ""
 "Player and Enemy units can move between the surface and the interior of the "
 "ship via stairs."
-msgstr ""
+msgstr "自軍および敵軍ユニットは甲板と船室を階段で行き来することができます。"
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:266
@@ -1368,6 +1368,8 @@ msgid ""
 "If there is one bat, there are certainly more. We should be careful. It "
 "would be foolish to explore this cave alone."
 msgstr ""
+"コウモリが一匹見つかれば、もっとたくさんいるはず。気をつけないと。一人でこの"
+"洞窟を探検するのは自殺行為だね。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:275
@@ -1406,7 +1408,7 @@ msgstr "洞窟の中について行こう。"
 msgid ""
 "I don’t know, Bogdush. The Chief said he wanted stuff that was helpful for "
 "the war."
-msgstr ""
+msgstr "知らねえよ、Bogdush。族長は戦争のために人手が欲しいと言ってたぜ。"
 
 #. [message]: speaker=Bogdush
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:574
@@ -1432,7 +1434,7 @@ msgstr "まさにソイツらだ。こりゃあ楽に倒せるぜ！"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:592
 msgid "You must be goblins. You will stand out of my way if you wish to live."
-msgstr ""
+msgstr "ゴブリンだな。死にたくなければどいてよ？"
 
 #. [message]: speaker=Bogdush
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:596
@@ -1505,6 +1507,11 @@ msgid ""
 "have even accomplished something which I have not. You have useful creatures "
 "— I believe you call them ghouls?"
 msgstr ""
+"君のことは良く知っておる。わしの幽霊たちが君を監視していたのじゃ。そして、わ"
+"しらの目的は共通しておる。そう、死を克服することじゃ。多くの生徒が自らあの保"
+"守的なアカデミーから離れることをわしは望んでいたが、それをしたのは君だけだっ"
+"た。幸運にも、君は革新的であり、わしが知らぬことを成し遂げた。あの有能な生き"
+"物は…グールと呼べばいいのかの？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:197
@@ -1591,6 +1598,13 @@ msgid ""
 "of those shambling ghouls. I am actually in no hurry, as they have a "
 "terrible odor."
 msgstr ""
+"頼もしいのう。わしらに必要な情報を集める手段は分かっておる。そのために、わし"
+"と君で任務を行うのじゃ。わしらは二手に分かれて行動する。まず、君には幽霊を生"
+"み出す術を学んでもらう。その間、わしはそこらの村人たちに魔術を教える。学の無"
+"い庶民にはあまり期待してはおらぬが、わしらの力となるほどの知性を持つ者もおる"
+"じゃろう。そして、わしらが再会したときにはグールを生み出す術をわしに教えてく"
+"れ。急ぐ必要はないぞ。わしは急いではおらんし、それにグールは鼻が曲がるほど臭"
+"いからのう。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:225
@@ -1619,6 +1633,12 @@ msgid ""
 "will meet at the end of the elf road by the Great River, and I will explain "
 "where we should go next."
 msgstr ""
+"ゴブリンでは弱すぎる。魂が十分に強くなるまでに時間が掛かり過ぎるのじゃ。代わ"
+"りにエルフの戦士を使うと良い。灰色森の中へ数マイル入ったところに、数百年前に"
+"内戦が起きた場所がある。古いエルフの道を通ってそこへ向かい、幽霊の軍勢を生み"
+"出すのじゃ。その間にわしは近くの町、Carcynを訪ねておく。そのエルフの道は大い"
+"なる川のそばまで続いておるから、そこで落ち合うことにしよう。その後、わしの計"
+"画の続きを聞かせよう。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:241
@@ -2030,7 +2050,7 @@ msgstr "ここには大きな骨があります。爪と翼のようだ。"
 #. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:186
 msgid "How odd. I wonder what they are from. A gryphon perhaps?"
-msgstr ""
+msgstr "妙ですね。どこから来たのでしょう？グリフォンでしょうか？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:190
@@ -2052,6 +2072,7 @@ msgstr "確かに。やってみるとしよう。"
 msgid ""
 "I wonder what they are from. A large flightless bird perhaps? Let us see."
 msgstr ""
+"どこから来たのじゃろう？大型の飛べない鳥じゃろうか？確かめてみるとしよう。"
 
 #. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
@@ -2230,6 +2251,13 @@ msgid ""
 "will go fine. If not, well, I am surrounded by the remnants of those who "
 "assumed I was weak."
 msgstr ""
+"Wesnoth 暦 23 年 4 月 11 日\n"
+"\n"
+"Rastabanは良き同志だと思う。アカデミーのつまんない教師たち...今の自分に満足"
+"し、自分の講義を愛している連中...と彼は違う。私を小娘として軽蔑したりしない"
+"し、髪の色を気にすることも無かった。彼が私のことを尊重してくれる限りは、全て"
+"上手くいくかも。もしそうでなければ、私は敵に取り囲まれてしまうことになるだろ"
+"う。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:27
@@ -2242,6 +2270,12 @@ msgid ""
 "attacking me would be unwise. However, if he were to become indestructible "
 "first, I would do well to stay alert."
 msgstr ""
+"問題は、Rastabanを信頼することは正しいのかどうか。彼が言うには、今回は信頼な"
+"ど必要はないというけど、そのうち共に旅をすることになると思う。彼はすばらしい"
+"幽霊を見せてくれたし、それが彼の大きな功績なのかも。熟考の末、私は彼を信用す"
+"ることにした。まあ、とりあえずは、だけど。今や、私達は弱みを握り合っている"
+"し、彼も私を攻撃するのは不利益だと分かっているはず。しかし、彼がもし先に不死"
+"となれば、警戒する必要があるかも。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:34
@@ -2267,6 +2301,9 @@ msgid ""
 "fought for me. The more strong-willed among them may even remember desiring "
 "it."
 msgstr ""
+"まあ、この戦士たちは栄光をつかむための二度目のチャンスを得ることになった。私"
+"のために戦ってもらおう。強い意志を持っていた者たちはまだ栄光を求めているかも"
+"しれない。"
 
 #. [side]: type=Saurian Soothsayer, id=Krissaz
 #. [side]
@@ -2650,6 +2687,8 @@ msgid ""
 "Before we leave, I have an unrelated question. Vendraxis here has said that "
 "my name is untrue. Do you have an idea what that could mean?"
 msgstr ""
+"その前に、一つ聞かせてもらえませんか？あまり関係無いことですが。このVendraxis"
+"が私の名はまだ真のものではないと言うのです。一体どういうことなのでしょう？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:160
@@ -2657,6 +2696,8 @@ msgid ""
 "Before we leave, I have an unrelated question. I met a mystic who said that "
 "my name was untrue. Do you have an idea what that could mean?"
 msgstr ""
+"その前に、一つ聞かせてもらえませんか？あまり関係無いことですが。昔出会った神"
+"官が私の名はまだ真のものではないと言うのです。一体どういうことなのでしょう？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:166
@@ -2667,6 +2708,10 @@ msgid ""
 "originally Rassin Tabin, but that is fairly ordinary, and at one point, it "
 "no longer suited."
 msgstr ""
+"有り得るかもしれん。アカデミーの魔術師が卒業するとき、力のある音節の集まりを"
+"与えられ、それが新しい名となるのじゃ。君はすでに一人前だし、自由な魔術師でも"
+"ある。じゃから、新しい名を自ら選ぶのじゃ。わしはかつてRassin Tabinじゃったが"
+"それでは普通過ぎるし、今はもう使ってはおらん。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:170
@@ -2674,6 +2719,8 @@ msgid ""
 "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
 "Vendraxis was correct. From now on I shall be... Ardryn-Na."
 msgstr ""
+"確かにそうですね。 私はもう普通の少女 Ardonna ではないし、Vendraxis は正し"
+"かったようです。 今から私は…Ardryn-Na です。"
 
 #. [modify_unit]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:177
@@ -2713,6 +2760,16 @@ msgid ""
 "seen. When he could speak again, he assured me that it was only on account "
 "of the cold, and I should not be unduly troubled. I am uneasy all the same."
 msgstr ""
+"Wesnoth 暦 23 年 4 月 24 日\n"
+"\n"
+"北の山頂に日が差した頃、私たちはAbezの浅瀬に到着した。川を渡る際に暗い水が腰"
+"にまでとどいたので、ゆっくり進むことになった。下にどのような生き物が潜んでい"
+"るかを考えないようにしていたけど、何事もなく渡ることができた。水は雪解けのせ"
+"いで冷たかったので、対岸に着く頃には私たちの唇は震えてた。夜明けの太陽は暖く"
+"て、すぐに体が乾いた。でも、Ras-Tabahnはそうではなかった。Ras-Tabahnは砂の上"
+"に倒れ、今までにないほどひどく咳の発作を起こした。再び喋れるようになると、彼"
+"は寒さのせいだから問題は無いと言った。あまり気を遣いすぎるのも良くないだろう"
+"けど、彼のことが心配だ。"
 
 #. [side]: type=Orcish Warlord, id=Rod-Ishnak
 #. [side]: type=Orcish Warlord, id=Vok-Hroog
@@ -2742,6 +2799,8 @@ msgid ""
 "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. We "
 "may meet our doom if we don’t have enough coinsss."
 msgstr ""
+"前のおぉ雪山にはあぁ暗いぃ予感があああぁするううぅ。金をおぉぉ十分にいぃ持っ"
+"て行かないとおおぉぉぉ墓場行きにいいぃぃなるうううぅ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:179
@@ -2863,6 +2922,14 @@ msgid ""
 "thinness leads me to believe it is consumption, but he refuses to discuss "
 "it, preferring to deny the severity of his problem."
 msgstr ""
+"Wesnoth 暦 23 年 5 月 6 日\n"
+"\n"
+"私たちはRas-Tabahnの知っていた山道を通った。高所の空気は冷たい。午後になると"
+"雪から霧が生じ、オーバーハングした岩につららができた。私は良い気分だったけ"
+"ど、Ras-Tabahnの咳が増えていた。時々彼は息が足りずに、短いフレーズで喋ってい"
+"た。もちろん彼が老いているのもあるだろうが（少なくとも50歳以上だろう）、病に"
+"侵されているに違いない。彼に疲労がたまっていると思うのだけど、本人はそのこと"
+"について話したがらなかった。"
 
 #. [side]: type=Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:46
@@ -2883,7 +2950,7 @@ msgstr "ここに...大きな骨がある。 わしが思うに...爪と翼じ�
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:176
 msgid "I wonder what they are from. A gryphon perhaps?"
-msgstr ""
+msgstr "どこから来たのでしょう？グリフォンかも？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:180
@@ -3361,6 +3428,8 @@ msgid ""
 "We have conquered death! Let us bring the news back to Wesnoth! Let all in "
 "this world know that nobody ever need die again."
 msgstr ""
+"私たちは死を征服しました！Wesnoth にこのニュースを知らせてやりましょう。みん"
+"なに死ぬ必要がないことを教えなきゃ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:432
@@ -3375,7 +3444,7 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:436
 msgid "Why would the dwarvish empire abandon an outpost like this?"
-msgstr ""
+msgstr "なぜドワーフの帝国は前哨基地を捨てていったのでしょう？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:440
@@ -3444,6 +3513,14 @@ msgid ""
 "clash, but that will be a worry for another time, and for now, we each "
 "continue to regard the other as an ally."
 msgstr ""
+"Ras-Tabahnは私にも計画に加わるように説得したけれど、私は彼の計画に疑問を持っ"
+"ていた。彼が都市の防衛隊を突破できるか怪しいし、人々を奴隷にするなんて、古代"
+"のWesfolkの指導者たちの愚かな行いと同じじゃないか。私達の技術を活かすには、"
+"もっとみんなに優しいやり方がいいと思う。私達の成功の知らせをみんなに伝えて、"
+"私達に同意する人々を仲間に加えるべきなんだ。不死を強制するのは間違ってる。私"
+"は南に向かいWesnothの国土、Dan'TonkやWeldynを訪ねるつもり。やがていつかは、私"
+"の仲間たちとRas-Tabahnの民が戦うことになるかもしれない。でも、そんな後のこと"
+"は考えなくてもいいだろう。とりあえず今は、お互いに同盟を結んだままだ。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:32
@@ -3585,7 +3662,7 @@ msgstr "ここはどこでしょう？"
 msgid ""
 "We are in a dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
-msgstr ""
+msgstr "ここはドワーフの墓地じゃ。ちょうどいい。いつでも兵士が補充できるぞ。"
 
 #. [unit]: type=Dwarvish Sentinel, id=Aigondur
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:724
@@ -3610,6 +3687,8 @@ msgid ""
 "But look. There is a large crack in the wall to our right! I’m certain we "
 "could squeeze through."
 msgstr ""
+"じゃが、見るのじゃ。わしらの右の壁には大きな亀裂がある。そこを通れるはず"
+"じゃ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:777
@@ -3640,6 +3719,10 @@ msgid ""
 "passageways. Being able to feel the life force of the dwarves allowed us to "
 "take mostly unoccupied tunnels, which we did."
 msgstr ""
+"Wesnoth 暦 23 年 6 月 30 日\n"
+"\n"
+"Knalga王国の北から、トンネルはいくつもの道に分かれていた。ドワーフの生命力を"
+"感じることで、使われていないトンネルを通ることができた。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:28
@@ -4025,6 +4108,10 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"ドワーフの炭鉱夫（Dwarvish Miner）はドワーフ社会における労働者です。彼らは貴"
+"重な鉱石を地下から掘り出しますが、武器やアーティファクトを作る訳ではありませ"
+"ん。彼らは戦いの訓練を受けてはいませんが、ツルハシで攻撃を行うことができま"
+"す。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/Dwarvish_Miner.cfg:22
@@ -4062,6 +4149,11 @@ msgid ""
 "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
+"オークのシャーマンはオークの魔法の守護者です。オークの部族の中で尊敬され、"
+"オークの評議会を組織しますが、そこではオークコミュニティー全体に対する重要な"
+"決定を下したり、この喧嘩っ早い種族の部族間に起こる多くの衝突を仲裁したりしま"
+"す。身体的には脆弱ですが（オークとしては）、オークのシャーマンは呪文を唱える"
+"のがうまく、敵を呪って生命力を奪うことも可能です。"
 
 #. [unit_type]: id=Sailor, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:4
@@ -4155,7 +4247,7 @@ msgstr "ぐあぁ。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:163
 msgid "But I don’t know how to bring you back yet!"
-msgstr ""
+msgstr "まだあなたを蘇らせる術を見出していないのに！"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:194
@@ -4172,7 +4264,7 @@ msgstr "Shynalを蘇らせて下さい。どうか！"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:202
 msgid "I’m not sure that’s such a good..."
-msgstr ""
+msgstr "それが良いことなのかは分かんない…"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:206
@@ -4200,6 +4292,8 @@ msgid ""
 "It’s not possible. She was already back from the dead. She has been utterly "
 "destroyed this time."
 msgstr ""
+"不可能じゃ。彼女はすでに一度蘇った存在じゃ。今回は完全に破壊されてしまってお"
+"る。"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:272
@@ -4224,7 +4318,7 @@ msgstr "もはや延命ぃの秘密を学ぶことはできぬぅぅ。"
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I’m going to miss him."
-msgstr ""
+msgstr "彼がいないと寂しくなりそうだ。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
@@ -4244,7 +4338,7 @@ msgstr "そうだね。寂しくなるな。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:375
 msgid "Don’t worry, my pet. I can save you."
-msgstr ""
+msgstr "心配しないで。今助けるよ。"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:431
@@ -4305,160 +4399,110 @@ msgstr "帆と索具の非表示"
 msgid "Show Sails and Rigging"
 msgstr "帆と索具の表示"
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:19
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:15
 msgid "Grave"
 msgstr "墓"
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:20
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:16
 msgid "Grave Overlay"
 msgstr "墓のオーバーレイ"
 
-#. [terrain_type]: id=znot_here
 #. [terrain_type]: id=not_here
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:31
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:27
 msgid "Not Here Overlay"
 msgstr "ノット・ヒア・オーバーレイ"
 
-#. [terrain_type]: id=zcrystal
 #. [terrain_type]: id=crystal
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:50
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:46
 msgid "Crystal Caves"
 msgstr "水晶の洞窟"
 
-#. [terrain_type]: id=zpassageway
 #. [terrain_type]: id=passageway
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:60
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:56
 msgid "Passageway"
 msgstr "通路"
 
-#. [terrain_type]: id=zgate_open
-#. [terrain_type]: id=zgate_closed
 #. [terrain_type]: id=gate_open
 #. [terrain_type]: id=gate_closed
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:69
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:65
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:75
 msgid "Gate"
 msgstr "門"
 
-#. [terrain_type]: id=zweb
 #. [terrain_type]: id=web
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:89
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:85
 msgid "Spiderweb"
 msgstr "蜘蛛の巣"
 
-#. [terrain_type]: id=zgraveyard-fence-top
 #. [terrain_type]: id=graveyard-fence-top
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:99
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:95
 msgid "Fence-Top"
 msgstr "柵の上部"
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:104
 msgid "Fence"
 msgstr "柵"
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:105
 msgid "Fence-Bottom"
 msgstr "柵の下部"
 
-#. [terrain_type]: id=zship--forecastle
 #. [terrain_type]: id=ship--forecastle
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:128
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:124
 msgid "Ship Forecastle"
 msgstr "船首楼"
 
-#. [terrain_type]: id=zship--main-deck
 #. [terrain_type]: id=ship--main-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:141
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:137
 msgid "Ship Main Deck"
 msgstr "船のメインデッキ"
 
-#. [terrain_type]: id=zship--poop-deck
 #. [terrain_type]: id=ship--poop-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:151
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:147
 msgid "Ship Poop Deck"
 msgstr "船尾楼"
 
-#. [terrain_type]: id=zship--hull
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--hull
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:164
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:256
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:274
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:252
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:270
 msgid "Ship Hull"
 msgstr "船体"
 
-#. [terrain_type]: id=zship--rigging-and-sails
 #. [terrain_type]: id=ship--rigging-and-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:173
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:169
 msgid "Ship Rigging and Sails"
 msgstr "船の索具装置と帆"
 
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:182
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:178
 msgid "Ship Railing"
 msgstr "船の手摺り"
 
-#. [terrain_type]: id=zship--bits-and-pieces
 #. [terrain_type]: id=ship--bits-and-pieces
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:191
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:187
 msgid "Ship Pieces"
 msgstr "船の部品"
 
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:200
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:196
 msgid "Ship Lower Deck"
 msgstr "船の下部デッキ"
 
-#. [terrain_type]: id=zship--lower-deck-edge
 #. [terrain_type]: id=ship--lower-deck-edge
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:209
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:205
 msgid "Ship Lower Deck Edge"
 msgstr "船の下部デッキの端"
 
-#. [terrain_type]: id=zship--forecastle
-#. [terrain_type]: id=ship--main-deck
-#. [terrain_type]: id=zship--poop-deck
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--forecastle
+#. [terrain_type]: id=ship--main-deck
 #. [terrain_type]: id=ship--poop-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:220
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:233
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:243
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:305
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:216
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:229
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:239
@@ -4466,23 +4510,17 @@ msgstr "船の下部デッキの端"
 msgid "Ship"
 msgstr "船"
 
-#. [terrain_type]: id=zfull-void
 #. [terrain_type]: id=full-void
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:327
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:323
 msgid "Full Void"
 msgstr "空っぽ"
 
-#. [terrain_type]: id=zfull-void-overlay
 #. [terrain_type]: id=full-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:337
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:333
 msgid "Void Overlay"
 msgstr "空っぽのオーバーレイ"
 
-#. [terrain_type]: id=zhalf-void-overlay
 #. [terrain_type]: id=half-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:347
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:343
 msgid "Half Void"
 msgstr "半分空っぽ"
@@ -4660,8 +4698,3 @@ msgstr "死体が存在しません。"
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:96
 msgid "You do not have enough gold to recruit that unit"
 msgstr "そのユニットを雇用するにはゴールドが足りません。"
-
-#, fuzzy
-#~| msgid "You can no longer recruit skeletons and skeleton archers."
-#~ msgid "You can now recruit skeletons and skeleton archers!"
-#~ msgstr "スケルトンとスケルトンアーチャーが雇用できなくなった。"

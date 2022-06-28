@@ -1,28 +1,73 @@
-## Version 1.17.3+dev
+## Version 1.17.5+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
-   * Sceptre of Fire
-     * S9: Allow Grypon Riders to complete the scenario (issue #6332)
    * Under the Burning Suns
      * S8: Fixed replay OOS on victory event (issue #6267)
+   * World Conquest
+     * Fixed Bezoar artifact being bugged and broken.
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
+   * Increased minimum required version of SDL to 2.0.10.
+ ### Terrain
+ ### Translations
+   * Updated translations: Arabic, British English, Finnish
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.5
+ ### Campaigns
+   * Eastern Invasion
+     * S1: Fixed campfire not having a sound (issue #5766)
+     * S07a:
+       * Better handling for side 2 (issue #4145)
+       * Fixed Grug upkeep, added dialogue about ogres joining (issue #4145)
+   * Northern Rebirth
+     * S1: Fixed Al'Tar confusing an orc for a slave (issue #6735)
+ ### Translations
+   * Updated translations: Arabic, Chinese (Traditional), Czech, Finnish, French, Japanese, Polish
+ ### User interface
+   * High-DPI font and image rendering is now enabled across the entire UI.
+   * Resolved broken layout in some low-resolution configurations (issue #5620, #6544)
+ ### Miscellaneous and Bug Fixes
+   * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}`
+   * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
+   * Fixed transparency of submerged units when zoomed (issue #3746)
+   * Fixed mouse input mapping problems on MacOS (issue #6715)
+   * Removing the Protect Unit Micro AI no longer causes a Lua error
+   * Fixed chance of being unscathed in damage calculation for some fights in which both units can die (issue #6590)
+   * Fixed visibility bug in ai_helper.get_attackable_enemies() for some complex filters
+   * Fixed bug in Bottleneck Micro AI involving units without moves on terrain with multiple open passages (issue #6599)
+   * Fixed error in Castle Switch CA of the Experimental AI after a leader was killed (issue #6440)
+
+## Version 1.17.4
+ ### Campaigns
+   * Sceptre of Fire
+     * S9: Allow Grypon Riders to complete the scenario (issue #6332)
+   * Under the Burning Suns
+     * S5: Enforce encounter with the Cloaked Figure (issue #6364)
+     * S8: Spawned units will now be unable to be blocked into walls (PR #6677)
+ ### Editor
+   * Added some missing terrain groupings (issue #6643)
  ### Terrain
    * new terrain variations
      * `Rrd` for desert road/cobbles - just a recolor, but has some different transitions than the normal roads
      * `^Bsa*` for snowy stone bridge
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Czech, French
- ### Units
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Italian
  ### User interface
- ### WML Engine
+   * Added integer scaling options for the entire UI.
  ### Miscellaneous and Bug Fixes
    * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
    * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
    * Resolved title screen flashing during the loading screen (issue #2395)
+   * Added the {PASSABLE_HEX} macro to core and deleted it from TRoW S19 (PR #6677)
+   * Converted most portrait images to webp (PR #6611).
+   * Hardware accelerated rendering has been enabled in SDL.
 
 ## Version 1.17.3
  ### Add-ons client
@@ -171,6 +216,63 @@
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+
+## Version 1.16.3
+ ### Add-ons client
+   * Fixed: using the up or down arrow keys in small-screen mode returned to the title screen (issue #6485).
+   * Add-on passwords that are not stored in the `_server.pbl` can now be stored in the same credentials file as multiplayer passwords (PR #6543).
+ ### Campaigns
+   * Delfador’s Memoirs
+     * S11: Finding Chantal will now share her side’s vision with the player, as originally intended.
+     * S14: Smoother appearance of enemies and added dialogue (#6176).
+   * Descent into Darkness
+     * S08: Prevent Spectral Servant from picking up the book (issue #6576).
+   * Northern Rebirth
+     * S05a_01: Solve units getting stuck in the wall before the spider chamber (issue #6607).
+   * Sceptre of Fire
+     * Fixed Thursagan's Arcanister advancement being "lost" after dismounting a minecart.
+     * Improvements and spelling corrections to the English prose text (PR #6177).
+     * S9: Allow Grypon Riders to complete the scenario (issue #6332)
+   * Son of the Black Eye
+     * Improvements and spelling corrections to the English prose text (PR #6166).
+   * The Rise of Wesnoth
+     * S22: Fixed the possibility of a misplaced dialogue when a bridge was broken (issue #6376).
+   * Under the Burning Suns
+     * S08: Kromph and the Dust devil now trigger a critical event (issue #6211).
+   * World Conquest
+     * Updated the modding instructions, helping add-on authors add extra factions etc.
+ ### Editor
+   * Add documentation for the magenta D and special terrain overlays (PR #6460).
+   * Added some missing terrain groupings (issue #6643)
+ ### Multiplayer
+   * Fixed updating add-ons when joining a game that requires a new version (issue #6383).
+   * Add a `/clear` command for the lobby-chat window.
+ ### Packaging
+   * flatpak: update freedesktop runtime version to 21.08 (issue #6497).
+ ### Terrain
+   * Better transition for Swamp to Icy Cobbles (PR #6491).
+   * New graphics variations for icy and rocky terrains.
+   * The help browser adds special notes for castles and healing terrains (PR #6461).
+ ### Translations
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, French, Italian, Japanese, Portuguese (Brazil), Russian
+   * Fixed the stats for Spanish being overwritten by the stats for Spanish (Latin American).
+ ### Units
+   * Saurian sprites cleanup (PR #6450).
+   * Various small sprite updates for sea serpents and swamp lizards (PR #6452).
+ ### User interface
+   * Mark the Plan Unit Advance mod as MP-only so it doesn't show up as available for campaigns.
+ ### Miscellaneous and Bug Fixes
+   * wmlscope can now report about calls to deprecated macros when using the `--unresolved` switch.
+   * wmlxgettext’s old behavior of processing files in the order they’re given on the command line can be selected with the `--no-sort-by-file` option (PR #6586).
+   * Fixed a crash with "laststrike" (firststrike given to the opponent) weapon specials (issue #6575).
+   * Fixed a crash with locally-edited add-ons that had neither `_server.pbl` nor `_info.cfg` (issue #6389).
+   * Added more unit tests for weapon specials.
+   * Resolve crash on systems using musl implementation of libc (issue #6603)
+   * The `--stringfreeze` (`-Z`) command line flag has been removed from wmllint.
+   * The checks for the old special notes system have been removed from wmllint; the `notecheck off`, `notecheck on` and `match <ability> with <note>` magic comments no longer have any effect.
+   * Resolved title screen flashing during the loading screen (issue #2395)
+   * Fixed erratic keyboard and mouse scroll speed (issue #3607)
+   * wmllint automatically removes the obsolete lines `{SOUND:SLOW}` and `{SOUND:POISON}
 
 ## Version 1.16.2
  ### Campaigns

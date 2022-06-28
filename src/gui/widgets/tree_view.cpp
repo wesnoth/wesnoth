@@ -40,7 +40,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new tree_view_node(root_node_id, nullptr, *this, {}))
+	, root_node_(nullptr)
 	, selected_item_(nullptr)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -55,7 +55,7 @@ tree_view::~tree_view()
 }
 
 tree_view_node& tree_view::add_node(
-		const std::string& id, const std::map<std::string /* widget id */, string_map>& data, const int index)
+	const std::string& id, const widget_data& data, const int index)
 {
 	return get_root_node().add_child(id, data, index);
 }
@@ -171,10 +171,13 @@ void tree_view::finalize_setup()
 	// Inherited.
 	scrollbar_container::finalize_setup();
 
+	auto root = std::make_unique<tree_view_node>(root_node_id, nullptr, *this, widget_data{});
+	root_node_ = root.get();
+
 	assert(content_grid());
 	content_grid()->set_rows_cols(1, 1);
 	content_grid()->set_child(
-		root_node_, 0, 0, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+		std::move(root), 0, 0, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
 }
 
 void tree_view::signal_handler_left_button_down(const event::ui_event event)
@@ -300,13 +303,13 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-widget* builder_tree_view::build() const
+std::unique_ptr<widget> builder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	tree_view* widget = new tree_view(*this);
+	auto widget = std::make_unique<tree_view>(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

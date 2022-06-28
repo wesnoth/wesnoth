@@ -39,15 +39,15 @@
 // TODO duplicated from attack_predictions.cpp
 static std::string get_probability_string(const double prob)
 {
-       std::ostringstream ss;
+	std::ostringstream ss;
 
-       if(prob > 0.9995) {
-               ss << "100";
-       } else {
-               ss << std::fixed << std::setprecision(1) << 100.0 * prob;
-       }
+	if(prob > 0.9995) {
+		ss << "100";
+	} else {
+		ss << std::fixed << std::setprecision(1) << 100.0 * prob;
+	}
 
-       return ss.str();
+	return ss.str();
 }
 
 namespace gui2::dialogs
@@ -111,8 +111,8 @@ void statistics_dialog::add_stat_row(const std::string& type, const statistics::
 {
 	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("stat_type", item);
@@ -153,15 +153,15 @@ void statistics_dialog::add_damage_row(
 {
 	listbox& damage_list = find_widget<listbox>(get_window(), "stats_list_damage", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = type;
 	data.emplace("damage_type", item);
 
-	const int shift = statistics::stats::decimal_shift;
+	static const int shift = statistics::stats::decimal_shift;
 
-	const auto damage_str = [shift](long long damage, long long expected) {
+	const auto damage_str = [](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
 		write_actual_and_expected(str, damage, static_cast<double>(shifted) * 0.1);
@@ -313,8 +313,8 @@ void statistics_dialog::add_hits_row(
 {
 	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
 
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	hitrate_table_element element;
 
@@ -331,7 +331,7 @@ void statistics_dialog::add_hits_row(
 	data.emplace("hits_overall", item);
 
 	// Don't set the tooltip; it's set in WML.
-	data.emplace("overall_score", string_map { { "label", element.pvalue_str } });
+	data.emplace("overall_score", widget_item { { "label", element.pvalue_str } });
 
 	if(show_this_turn) {
 		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
@@ -343,7 +343,7 @@ void statistics_dialog::add_hits_row(
 		data.emplace("hits_this_turn", item);
 
 		// Don't set the tooltip; it's set in WML.
-		data.emplace("this_turn_score", string_map { { "label", element.pvalue_str } });
+		data.emplace("this_turn_score", widget_item { { "label", element.pvalue_str } });
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenario view, so set the label to " " (a single space) instead.
 		label& this_turn_header = find_widget<label>(get_window(), "hits_this_turn_header", false);
@@ -446,8 +446,8 @@ void statistics_dialog::on_primary_list_select()
 			continue;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = (formatter() << type->image() << "~RC(" << type->flag_rgb() << ">" << current_team_.color() << ")").str();
 		data.emplace("unit_image", item);

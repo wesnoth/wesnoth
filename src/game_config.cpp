@@ -78,6 +78,7 @@ std::vector<unsigned int> zoom_levels {36, 72, 144};
 //
 double hp_bar_scaling  = 0.666;
 double xp_bar_scaling  = 0.5;
+// TODO: highdpi - remove hex_brightening? it is and was not actually used
 double hex_brightening = 1.25;
 
 //
@@ -410,10 +411,10 @@ void load_config(const config &v)
 	server_list.clear();
 
 	for(const config& server : v.child_range("server")) {
-        server_info sinf;
-        sinf.name = server["name"].str();
-        sinf.address = server["address"].str();
-        server_list.push_back(sinf);
+		server_info sinf;
+		sinf.name = server["name"].str();
+		sinf.address = server["address"].str();
+		server_list.push_back(sinf);
 	}
 
 	if(const config& s = v.child("sounds")) {

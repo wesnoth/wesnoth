@@ -17,6 +17,7 @@
 
 #include "widgets/button.hpp"
 
+#include "draw.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -99,13 +100,20 @@ void button::load_images() {
 			break;
 	}
 
-	surface button_image(image::get_image(button_image_name_ + ".png" + button_image_path_suffix_));
-	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
-	surface active_image(image::get_image(button_image_name_ + "-active.png"+ button_image_path_suffix_));
-	surface disabled_image;
-	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
-		disabled_image = image::get_image(button_image_name_ + "-disabled.png"+ button_image_path_suffix_);
-	surface pressed_disabled_image, pressed_active_image, touched_image;
+	image_ = image::get_texture(
+		button_image_name_ + ".png" + button_image_path_suffix_);
+	pressedImage_ = image::get_texture(
+		button_image_name_ + "-pressed.png" + button_image_path_suffix_);
+	activeImage_ = image::get_texture(
+		button_image_name_ + "-active.png" + button_image_path_suffix_);
+	// TODO: highdpi - why is this checking if the path exists? There should be no problem even if it doesn't.
+	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png")) {
+		disabledImage_ = image::get_texture(
+			button_image_name_ + "-disabled.png" + button_image_path_suffix_);
+	} else {
+		// TODO: highdpi - this was not previously reset. Is this function only ever run once, or can it be run multiple times?
+		disabledImage_.reset();
+	}
 
 	if (!button_overlay_image_name_.empty()) {
 
@@ -114,51 +122,64 @@ void button::load_images() {
 			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
 		}
 
-		overlayImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
-		overlayPressedImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
+		overlayImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
+		overlayPressedImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
-			overlayActiveImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
+			overlayActiveImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
-			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
+			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
 		if (!overlayDisabledImage_)
-			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
+			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
-			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_);
+			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_);
 		if (!overlayPressedDisabledImage_)
-			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
+			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
-		overlayImage_ = nullptr;
+		overlayImage_.reset();
 	}
 
-	if (disabled_image == nullptr) {
-		disabled_image = image::get_image(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
+	if (!disabledImage_) {
+		disabledImage_ = image::get_texture(
+			button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
-	if (!pressed_image)
-		pressed_image = button_image;
+	if (!pressedImage_) {
+		pressedImage_ = image_;
+	}
 
-	if (!active_image)
-		active_image = button_image;
+	if (!activeImage_) {
+		activeImage_ = image_;
+	}
 
 	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-		touched_image = image::get_image(button_image_name_ + "-touched.png"+ button_image_path_suffix_);
-		if (!touched_image)
-			touched_image = pressed_image;
+		touchedImage_ = image::get_texture(
+			button_image_name_ + "-touched.png"+ button_image_path_suffix_);
+		if (!touchedImage_) {
+			touchedImage_ = pressedImage_;
+		}
 
-		pressed_active_image = image::get_image(button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_);
-		if (!pressed_active_image)
-			pressed_active_image = pressed_image;
+		pressedActiveImage_ = image::get_texture(
+			button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_);
+		if (!pressedActiveImage_) {
+			pressedActiveImage_ = pressedImage_;
+		}
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"))
-			pressed_disabled_image = image::get_image(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
-		if (!pressed_disabled_image)
-			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
+		// TODO: highdpi - why is this check necessary? How does this work?
+		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png")) {
+			pressedDisabledImage_ = image::get_texture(
+				button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
+		}
+		if (!pressedDisabledImage_) {
+			pressedDisabledImage_ = image::get_texture(
+				button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
+		}
 	}
 
-	if (!button_image) {
+	// TODO: highdpi - why is this check HERE? Why not back at the start? WTF is even going on in this function? And if checks like this work, WHY do we need all these filesystem::exists checks!?
+	if (!image_) {
 		std::string err_msg = "error initializing button images! file name: ";
 		err_msg += button_image_name_;
 		err_msg += ".png";
@@ -166,28 +187,11 @@ void button::load_images() {
 		throw game::error(err_msg);
 	}
 
-	base_height_ = button_image->h;
-	base_width_ = button_image->w;
+	base_height_ = image_.h();
+	base_width_ = image_.w();
 
 	if (type_ != TYPE_IMAGE) {
 		set_label(label_text_);
-	}
-
-	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
-		image_ = scale_surface(button_image,location().w,location().h);
-		pressedImage_ = scale_surface(pressed_image,location().w,location().h);
-		activeImage_ = scale_surface(active_image,location().w,location().h);
-		disabledImage_ = scale_surface(disabled_image,location().w,location().h);
-	} else {
-		image_ = scale_surface(button_image,button_image->w,button_image->h);
-		activeImage_ = scale_surface(active_image,button_image->w,button_image->h);
-		disabledImage_ = scale_surface(disabled_image,button_image->w,button_image->h);
-		pressedImage_ = scale_surface(pressed_image,button_image->w,button_image->h);
-		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-			pressedDisabledImage_ = scale_surface(pressed_disabled_image,button_image->w,button_image->h);
-			pressedActiveImage_ = scale_surface(pressed_active_image, button_image->w, button_image->h);
-			touchedImage_ = scale_surface(touched_image, button_image->w, button_image->h);
-		}
 	}
 
 	if (type_ == TYPE_IMAGE){
@@ -203,8 +207,8 @@ void button::calculate_size()
 {
 	if (type_ == TYPE_IMAGE){
 		SDL_Rect loc_image = location();
-		loc_image.h = image_->h;
-		loc_image.w = image_->w;
+		loc_image.h = image_.h();
+		loc_image.w = image_.w();
 		set_location(loc_image);
 		return;
 	}
@@ -285,8 +289,7 @@ void button::enable(bool new_val)
 
 void button::draw_contents()
 {
-	surface image = image_;
-	const int image_w = image_->w;
+	texture image = image_;
 
 	int offset = 0;
 	switch(state_) {
@@ -309,22 +312,21 @@ void button::draw_contents()
 		break;
 	}
 
-	const SDL_Rect& loc = location();
+	SDL_Rect loc = location();
 	SDL_Rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
-		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
-	else {
-		clipArea.w += image_w + checkbox_horizontal_padding_;
-		textx = loc.x + image_w + checkbox_horizontal_padding_ / 2;
+	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE) {
+		textx = loc.x + image.w() / 2 - textRect_.w / 2 + offset;
+	} else {
+		clipArea.w += image.w() + checkbox_horizontal_padding_;
+		textx = loc.x + image.w() + checkbox_horizontal_padding_ / 2;
 	}
 
 	color_t button_color = font::BUTTON_COLOR;
 
 	if (!enabled()) {
-
 		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)
 			image = pressedDisabledImage_;
 		else image = disabledImage_;
@@ -332,33 +334,61 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
-	if (overlayImage_) {
+	// TODO: highdpi - previous code was so much of a mess, i am not sure if this is doing anything like the correct thing.
+	SDL_Rect dest = loc;
+	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO) {
+		// Scale other button types to match the base image?
+		dest.w = image_.w();
+		dest.h = image_.h();
+	}
+	// PREVIOUS HORRIBLE CODE FROM ELSEWHERE, FOR REFERENCE:
+	/*
+	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
+		image_ = scale_surface(button_image,location().w,location().h);
+		pressedImage_ = scale_surface(pressed_image,location().w,location().h);
+		activeImage_ = scale_surface(active_image,location().w,location().h);
+		disabledImage_ = scale_surface(disabled_image,location().w,location().h);
+	} else {
+		image_ = scale_surface(button_image,button_image->w,button_image->h);
+		activeImage_ = scale_surface(active_image,button_image->w,button_image->h);
+		disabledImage_ = scale_surface(disabled_image,button_image->w,button_image->h);
+		pressedImage_ = scale_surface(pressed_image,button_image->w,button_image->h);
+		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
+			pressedDisabledImage_ = scale_surface(pressed_disabled_image,button_image->w,button_image->h);
+			pressedActiveImage_ = scale_surface(pressed_active_image, button_image->w, button_image->h);
+			touchedImage_ = scale_surface(touched_image, button_image->w, button_image->h);
+		}
+	}
+	*/
 
-		surface* noverlay = enabled() ? &overlayImage_ : &overlayDisabledImage_;
+	draw::blit(image, dest);
+
+	if (overlayImage_) {
+		texture overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
 
 		if (overlayPressedImage_) {
 			switch (state_) {
 			case ACTIVE:
 				if (overlayActiveImage_)
-					noverlay = &overlayActiveImage_;
+					overlay = overlayActiveImage_;
 				break;
 			case PRESSED:
 			case PRESSED_ACTIVE:
 			case TOUCHED_NORMAL:
 			case TOUCHED_PRESSED:
-				noverlay = enabled() ? &overlayPressedImage_ : &overlayPressedDisabledImage_;
+				overlay = enabled() ? overlayPressedImage_ : overlayPressedDisabledImage_;
 				break;
 			default:
 				break;
 			}
 		}
 
-		surface nimage = image.clone();
-		sdl_blit(*noverlay, nullptr, nimage, nullptr);
-		image = nimage;
+		// TODO: highdpi - should this be the whole button? Like... WTF? Previously these weren't scaled at all, so... maybe? Or maybe not? IT IS A MYSTERY
+		dest.w = overlay.w();
+		dest.h = overlay.h();
+		draw::blit(overlay, dest);
 	}
 
-	video().blit_surface(loc.x, loc.y, image);
 	if (type_ != TYPE_IMAGE){
 		clipArea.x += offset;
 		clipArea.y += offset;

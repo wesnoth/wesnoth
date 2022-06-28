@@ -470,9 +470,6 @@ end
 
 ----- General functionality and maths helper functions ------
 
-ai_helper.filter = wesnoth.deprecate_api('ai_helper.filter', 'functional.filter', 3, '1.17.0', F.filter)
-ai_helper.choose = wesnoth.deprecate_api('ai_helper.choose', 'functional.filter', 3, '1.17.0', F.choose)
-
 function ai_helper.table_copy(t)
     -- Make a copy of a table (rather than just another pointer to the same table)
     local copy = {}
@@ -925,91 +922,6 @@ function ai_helper.generalized_distance(x1, y1, x2, y2)
     return M.distance_between(x1, y1, x2, y2)
 end
 
-function ai_helper.xyoff(x, y, ori, hex)
-    -- Finds hexes at a certain offset from @x,@y
-    -- @ori: direction/orientation: north (0), ne (1), se (2), s (3), sw (4), nw (5)
-    -- @hex: string for the hex to be queried. Possible values:
-    --   's': self, 'u': up, 'lu': left up, 'ld': left down, 'ru': right up, 'rd': right down
-    --   This is all relative "looking" in the direction of 'ori'
-    -- returns x,y for the queried hex
-
-    wesnoth.deprecated_message('ai_helper.xyoff', 3, '1.17.0', "Use of ai_helper.xyoff is deprecated. There is no replacement as this is not a generally useful function, but equivalent results can be obtained with combinations of the wesnoth.map functions.")
-
-    -- Unlike Lua default, we count 'ori' from 0 (north) to 5 (nw), so that modulo operator can be used
-    ori = ori % 6
-
-    if (hex == 's') then return x, y end
-
-    -- This is all done with ifs, to keep it as fast as possible
-    if (ori == 0)  then -- "north"
-        if (hex == 'u') then return x, y-1 end
-        if (hex == 'd') then return x, y+1 end
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'lu') then return x-1, y-dy end
-        if (hex == 'ld') then return x-1, y+1-dy end
-        if (hex == 'ru') then return x+1, y-dy end
-        if (hex == 'rd') then return x+1, y+1-dy end
-    end
-
-    if (ori == 1)  then -- "north-east"
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'u') then return x+1, y-dy end
-        if (hex == 'd') then return x-1, y+1-dy end
-        if (hex == 'lu') then return x, y-1 end
-        if (hex == 'ld') then return x-1, y-dy end
-        if (hex == 'ru') then return x+1, y+1-dy end
-        if (hex == 'rd') then return x, y+1 end
-    end
-
-    if (ori == 2)  then -- "south-east"
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'u') then return x+1, y+1-dy end
-        if (hex == 'd') then return x-1, y-dy end
-        if (hex == 'lu') then return x+1, y-dy end
-        if (hex == 'ld') then return x, y-1 end
-        if (hex == 'ru') then return x, y+1 end
-        if (hex == 'rd') then return x-1, y+1-dy end
-    end
-
-    if (ori == 3)  then -- "south"
-        if (hex == 'u') then return x, y+1 end
-        if (hex == 'd') then return x, y-1 end
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'lu') then return x+1, y+1-dy end
-        if (hex == 'ld') then return x+1, y-dy end
-        if (hex == 'ru') then return x-1, y+1-dy end
-        if (hex == 'rd') then return x-1, y-dy end
-    end
-
-    if (ori == 4)  then -- "south-west"
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'u') then return x-1, y+1-dy end
-        if (hex == 'd') then return x+1, y-dy end
-        if (hex == 'lu') then return x, y+1 end
-        if (hex == 'ld') then return x+1, y+1-dy end
-        if (hex == 'ru') then return x-1, y-dy end
-        if (hex == 'rd') then return x, y-1 end
-    end
-
-    if (ori == 5)  then -- "north-west"
-        local dy = 0
-        if (x % 2) == 1 then dy=1 end
-        if (hex == 'u') then return x-1, y-dy end
-        if (hex == 'd') then return x+1, y+1-dy end
-        if (hex == 'lu') then return x-1, y+1-dy end
-        if (hex == 'ld') then return x, y+1 end
-        if (hex == 'ru') then return x, y-1 end
-        if (hex == 'rd') then return x+1, y-dy end
-    end
-
-    return
-end
-
 function ai_helper.split_location_list_to_strings(list)
     -- Convert a list of locations @list as returned by wesnoth.map.find into a pair of strings
     -- suitable for passing in as x,y coordinate lists to wesnoth.map.find.
@@ -1200,7 +1112,10 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
     if (not ignore_visibility) then
-        table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
+        filter_plus_vision = {
+            { "and", filter_plus_vision },
+            { "filter_vision", { side = viewing_side, visible = 'yes' } }
+        }
     end
 
     local enemies = {}
@@ -1288,30 +1203,6 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
     end
 
     return closest_enemy, closest_distance
-end
-
-function ai_helper.has_ability(unit, ability, exact_match)
-    -- Returns true/false depending on whether unit has the given ability type (tag name)
-
-    wesnoth.deprecated_message('ai_helper.has_ability', 3, '1.17.0', "Use unit:matches { ability_type = ability } instead.")
-
-    return unit:matches { ability_type = ability }
-end
-
-function ai_helper.has_weapon_special(unit, special)
-    -- Returns true/false depending on whether @unit has a weapon with special @special
-    -- Also returns the number of the first weapon with this special
-
-    wesnoth.deprecated_message('ai_helper.has_weapon_special', 3, '1.17.0', "Use unit:find_attack() instead, noting that the argument needs to be a filter, such as { special_id = 'poison' }.")
-
-    for weapon_number,att in ipairs(unit.attacks) do
-        for _,sp in ipairs(att.specials) do
-            if (sp[1] == special) then
-                return true, weapon_number
-            end
-        end
-    end
-    return false
 end
 
 function ai_helper.get_cheapest_recruit_cost(leader)

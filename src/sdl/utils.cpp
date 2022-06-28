@@ -31,11 +31,25 @@
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
 
-version_info sdl_get_version()
+version_info sdl::get_version()
 {
 	SDL_version sdl_version;
 	SDL_GetVersion(&sdl_version);
 	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+}
+
+bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
+{
+	SDL_version ver;
+	SDL_GetVersion(&ver);
+	if(ver.major < major) return false;
+	if(ver.major > major) return true;
+	// major version equal
+	if(ver.minor < minor) return false;
+	if(ver.minor > minor) return true;
+	// major and minor version equal
+	if(ver.patch < patch) return false;
+	return true;
 }
 
 surface stretch_surface_horizontal(
@@ -864,13 +878,13 @@ surface wipe_alpha(const surface &surf)
 }
 
 
-surface shadow_image(const surface &surf)
+surface shadow_image(const surface &surf, int scale)
 {
 	if(surf == nullptr)
 		return nullptr;
 
 	// we blur it, and reuse the neutral surface created by the blur function
-	surface nsurf (blur_alpha_surface(surf, 2));
+	surface nsurf (blur_alpha_surface(surf, 2*scale));
 
 	if(nsurf == nullptr) {
 		std::cerr << "failed to blur the shadow surface\n";
@@ -2010,29 +2024,29 @@ void blit_surface(const surface& surf,
 		src_rect.h = srcrect->h;
 
 		if (src_rect.x < 0) {
-            if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
-                return;
+			if (src_rect.x + src_rect.w <= 0 || src_rect.x + dst_rect.w <= 0 )
+				return;
 			dst_rect.x -= src_rect.x;
 			dst_rect.w += src_rect.x;
 			src_rect.w += src_rect.x;
 			src_rect.x = 0;
 		}
 		if (src_rect.y < 0) {
-            if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
-                return;
+			if (src_rect.y + src_rect.h <= 0 || src_rect.y + dst_rect.h <= 0 )
+				return;
 			dst_rect.y -= src_rect.y;
 			dst_rect.h += src_rect.y;
 			src_rect.h += src_rect.y;
 			src_rect.y = 0;
 		}
 		if (src_rect.x + src_rect.w > surf->w) {
-            if (src_rect.x >= surf->w)
-                return;
+			if (src_rect.x >= surf->w)
+				return;
 			src_rect.w = surf->w - src_rect.x;
 		}
 		if (src_rect.y + src_rect.h > surf->h) {
-            if (src_rect.y >= surf->h)
-                return;
+			if (src_rect.y >= surf->h)
+				return;
 			src_rect.h = surf->h - src_rect.y;
 		}
 	}
@@ -2244,22 +2258,6 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	res.w = nsurf->w - res.x - n;
 
 	return res;
-}
-
-void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color, surface target)
-{
-	clip_rect_setter clip_setter(target, &rect);
-
-	uint32_t col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
-	//TODO: only draw background outside the image
-	SDL_Rect r = rect;
-	sdl::fill_surface_rect(target, &r, col);
-
-	if (surf != nullptr) {
-		r.x = rect.x + (rect.w-surf->w)/2;
-		r.y = rect.y + (rect.h-surf->h)/2;
-		sdl_blit(surf, nullptr, target, &r);
-	}
 }
 
 SDL_Color color_t::to_sdl() const {

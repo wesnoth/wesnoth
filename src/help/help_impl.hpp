@@ -185,16 +185,20 @@ private:
 class title_less
 {
 public:
-	bool operator()(const topic &t1, const topic &t2) {
-            return translation::compare(t1.title, t2.title) < 0; }
+	bool operator()(const topic &t1, const topic &t2)
+	{
+		return translation::compare(t1.title, t2.title) < 0;
+	}
 };
 
 /** To be used as a function object when sorting section lists on the title. */
 class section_less
 {
 public:
-	bool operator()(const section& s1, const section& s2) {
-            return translation::compare(s1.title, s2.title) < 0; }
+	bool operator()(const section& s1, const section& s2)
+	{
+		return translation::compare(s1.title, s2.title) < 0;
+	}
 };
 
 class string_less

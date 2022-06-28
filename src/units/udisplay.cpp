@@ -600,7 +600,9 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const_attack_ptr secondary_attack,
-                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds,
+                 int swing, const std::string& hit_text, int drain_amount,
+                 const std::string& att_text,
+                 const std::vector<std::string>* extra_hit_sounds,
                  bool attacking)
 {
 	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
@@ -653,7 +655,7 @@ void unit_attack(display * disp, game_board & board,
 		secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation* defender_anim = def->anim_comp().choose_animation(*disp, def->get_location(), "defend",
+	const unit_animation* defender_anim = def->anim_comp().choose_animation(def->get_location(), "defend",
 		att->get_location(), damage, hit_type, weapon, secondary_attack, swing);
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});

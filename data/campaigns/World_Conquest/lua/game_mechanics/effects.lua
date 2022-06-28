@@ -9,8 +9,8 @@ local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt",
 
 -- for all attacks that match [filter_attack], it add a dublicate fo that attack and modifres is as describes in the [attack]  subtag which uses the apply_to=attack syntax
 function wesnoth.effects.wc2_optional_attack(u, cfg)
-	local name_suffix = cfg.name_suffix or helper.wml_error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
-	local attack_mod = wml.get_child(cfg, "attack") or helper.wml_error("apply_to=wc2_optional_attack missing required [attack] subtag")
+	local name_suffix = cfg.name_suffix or wml.error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
+	local attack_mod = wml.get_child(cfg, "attack") or wml.error("apply_to=wc2_optional_attack missing required [attack] subtag")
 	local attacks_to_add = {}
 	local names = {}
 	for i = 1, #u.attacks do

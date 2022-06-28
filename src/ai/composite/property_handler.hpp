@@ -79,9 +79,9 @@ public:
 	vector_property_handler(const std::string &property, ptr_vector &values, std::function<void(ptr_vector&, const config&)> &construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
 
-        component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child)
 	{
-			typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
+		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		if (i!=values_.end()){
 			return &*(*i);
 		}
@@ -220,7 +220,7 @@ public:
 	{
 	}
 
-        component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child)
 	{
 		typename aspect_map::const_iterator a = aspects_.find(child.id);
 		if (a!=aspects_.end()){

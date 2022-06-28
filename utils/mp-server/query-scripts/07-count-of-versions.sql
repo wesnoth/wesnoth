@@ -10,6 +10,7 @@ from
     and game.INSTANCE_UUID = player.INSTANCE_UUID
     and game.GAME_ID = player.GAME_ID
     and player.USER_ID != -1
+    and player.CLIENT_VERSION != ''
 ) src
 group by CLIENT_VERSION
 order by COUNT(*) desc

@@ -78,8 +78,23 @@ public:
 
 	pango_text();
 
-    pango_text(const pango_text &) = delete;
-    pango_text & operator = (const pango_text &) = delete;
+	pango_text(const pango_text &) = delete;
+	pango_text & operator = (const pango_text &) = delete;
+
+	/**
+	 * Returns the rendered text as a texture.
+	 *
+	 * texture::w() and texture::h() methods will return the expected
+	 * width and height of the texture in draw space. This may differ
+	 * from the real value returned by texture::get_info().
+	 *
+	 * In almost all cases, use w() and h() to get the size of the
+	 * rendered text for drawing.
+	 *
+	 * This function is otherwise identical to render().
+	 */
+	texture render_texture(const SDL_Rect& viewport);
+	texture render_texture();
 
 	/**
 	 * Returns the rendered text.
@@ -102,13 +117,13 @@ public:
 	surface& render();
 
 	/** Returns the width needed for the text. */
-	int get_width() const;
+	int get_width();
 
 	/** Returns the height needed for the text. */
-	int get_height() const;
+	int get_height();
 
-	/** Returns the pixel size needed for the text. */
-	point get_size() const;
+	/** Returns the size of the text, in drawing coordinates. */
+	point get_size();
 
 	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
@@ -136,7 +151,7 @@ public:
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
 
 	/**
-	 * Returns the maximum glyph height of a font, in pixels.
+	 * Returns the maximum glyph height of a font, in drawing coordinates.
 	 *
 	 * @returns                       The height of the tallest possible glyph for the selected
 	 *                                font. More specifically, the result is the sum of the maximum
@@ -145,7 +160,7 @@ public:
 	int get_max_glyph_height() const;
 
 	/**
-	 * Gets the location for the cursor.
+	 * Gets the location for the cursor, in drawing coordinates.
 	 *
 	 * @param column              The column offset of the cursor.
 	 * @param line                The line offset of the cursor.
@@ -237,7 +252,7 @@ public:
 
 	pango_text& set_family_class(font::family_class fclass);
 
-	pango_text& set_font_size(const unsigned font_size);
+	pango_text& set_font_size(unsigned font_size);
 
 	pango_text& set_font_style(const FONT_STYLE font_style);
 
@@ -284,12 +299,12 @@ private:
 	bool link_aware_;
 
 	/**
-     * The color to render links in.
-     *
-     * Links are formatted using pango &lt;span> as follows:
-     *
-     * &lt;span underline="single" color=" + link_color_ + ">
-     */
+	 * The color to render links in.
+	 *
+	 * Links are formatted using pango &lt;span> as follows:
+	 *
+	 * &lt;span underline="single" color=" + link_color_ + ">
+	 */
 	color_t link_color_;
 
 	/** The font family class used. */
@@ -364,9 +379,10 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	/**
-	 * Recalculates the text layout.
-	 */
+	/** The pixel scale, used to render high-DPI text. */
+	int pixel_scale_;
+
+	/** Recalculates the text layout. */
 	void recalculate() const;
 
 	/** Calculates surface size. */
@@ -416,6 +432,24 @@ private:
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
 	std::string format_links(std::string_view text) const;
+
+	/**
+	 * Adjust a texture's draw-width and height according to pixel scale.
+	 *
+	 * As fonts are rendered at output-scale, we need to do this just
+	 * before returning the rendered texture. These attributes are stored
+	 * as part of the returned texture object.
+	 */
+	texture with_draw_scale(const texture& t) const;
+
+	/** Scale the given render-space size to draw-space, rounding up. */
+	int to_draw_scale(int s) const;
+
+	/** Scale the given render-space point to draw-space, rounding up. */
+	point to_draw_scale(const point& p) const;
+
+	/** Update pixel scale, if necessary. */
+	void update_pixel_scale();
 };
 
 /**

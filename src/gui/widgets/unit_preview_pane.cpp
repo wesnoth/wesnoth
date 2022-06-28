@@ -20,6 +20,7 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -73,7 +74,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<image>(this, "type_image", false, false);
+	icon_type_              = find_widget<drawing>(this, "type_image", false, false);
 	icon_race_              = find_widget<image>(this, "type_race", false, false);
 	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
 
@@ -108,7 +109,8 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	return child_node;
 }
 
-static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
+static inline std::string get_hp_tooltip(
+	const utils::string_map& res, const std::function<int(const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
@@ -281,7 +283,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -426,7 +428,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}
@@ -622,9 +624,9 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-widget* builder_unit_preview_pane::build() const
+std::unique_ptr<widget> builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane(*this);
+	auto widget = std::make_unique<unit_preview_pane>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

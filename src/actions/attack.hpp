@@ -62,8 +62,8 @@ struct battle_context_unit_stats
 	bool poisons;            /**< Attack poisons opponent when it hits. */
 	bool backstab_pos;       /**<
 	                           * True if the attacker is in *position* to backstab the defender (this is used to
-                               * determine whether to apply the backstab bonus in case the attacker has backstab).
-                               */
+	                           * determine whether to apply the backstab bonus in case the attacker has backstab).
+	                           */
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */

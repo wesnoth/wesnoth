@@ -15,6 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -22,6 +23,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 
 namespace gui2
 {
@@ -349,69 +351,74 @@ void widget::set_linked_group(const std::string& linked_group)
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect widget::calculate_blitting_rectangle(const int x_offset,
-											   const int y_offset)
+SDL_Rect widget::calculate_blitting_rectangle() const
 {
-	SDL_Rect result = get_rectangle();
-	result.x += x_offset;
-	result.y += y_offset;
-	return result;
+	return get_rectangle();
 }
 
-SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
-											   const int y_offset)
+SDL_Rect widget::calculate_clipping_rectangle() const
 {
-	SDL_Rect result = clipping_rectangle_;
-	result.x += x_offset;
-	result.y += y_offset;
-	return result;
-}
-
-void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
-{
-	assert(visible_ == visibility::visible);
-
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
-
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
-	} else {
-		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
+	switch(get_drawing_action()) {
+	case redraw_action::none:
+		return sdl::empty_rect;
+	case redraw_action::partly:
+		return clipping_rectangle_;
+	case redraw_action::full:
+	default:
+		return get_rectangle();
 	}
 }
 
-void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
-
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_children(frame_buffer, x_offset, y_offset);
-	} else {
-		impl_draw_children(frame_buffer, x_offset, y_offset);
+	if(get_drawing_action() == redraw_action::none) {
+		return;
 	}
+
+	SDL_Rect dest = calculate_blitting_rectangle();
+	SDL_Rect clip = calculate_clipping_rectangle();
+	clip.x -= dest.x; clip.y -= dest.y;
+	auto view_setter = draw::set_viewport(dest);
+	auto clip_setter = draw::reduce_clip(clip);
+
+	draw_debug_border();
+	impl_draw_background();
 }
 
-void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_children()
 {
 	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
-
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
-	} else {
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	if(get_drawing_action() == redraw_action::none) {
+		return;
 	}
+
+	SDL_Rect dest = calculate_blitting_rectangle();
+	SDL_Rect clip = calculate_clipping_rectangle();
+	clip.x -= dest.x; clip.y -= dest.y;
+	auto view_setter = draw::set_viewport(dest);
+	auto clip_setter = draw::reduce_clip(clip);
+
+	impl_draw_children();
+}
+
+void widget::draw_foreground()
+{
+	assert(visible_ == visibility::visible);
+
+	if(get_drawing_action() == redraw_action::none) {
+		return;
+	}
+
+	SDL_Rect dest = calculate_blitting_rectangle();
+	SDL_Rect clip = calculate_clipping_rectangle();
+	clip.x -= dest.x; clip.y -= dest.y;
+	auto view_setter = draw::set_viewport(dest);
+	auto clip_setter = draw::reduce_clip(clip);
+
+	impl_draw_foreground();
 }
 
 void widget::populate_dirty_list(window& caller,
@@ -523,32 +530,9 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 
 void widget::draw_debug_border()
 {
-	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
-														  : get_rectangle();
-
-	switch(debug_border_mode_) {
-		case debug_border::none:
-			/* DO NOTHING */
-			break;
-		case debug_border::outline:
-			sdl::draw_rectangle(r, debug_border_color_);
-			break;
-
-		case debug_border::fill:
-			sdl::fill_rectangle(r, debug_border_color_);
-			break;
-
-		default:
-			assert(false);
-	}
-}
-
-void
-widget::draw_debug_border(int x_offset, int y_offset)
-{
 	SDL_Rect r = redraw_action_ == redraw_action::partly
-						 ? calculate_clipping_rectangle(x_offset, y_offset)
-						 : calculate_blitting_rectangle(x_offset, y_offset);
+		? calculate_clipping_rectangle()
+		: calculate_blitting_rectangle();
 
 	switch(debug_border_mode_) {
 		case debug_border::none:
@@ -556,11 +540,11 @@ widget::draw_debug_border(int x_offset, int y_offset)
 			break;
 
 		case debug_border::outline:
-			sdl::draw_rectangle(r, debug_border_color_);
+			draw::rect(r, debug_border_color_);
 			break;
 
 		case debug_border::fill:
-			sdl::fill_rectangle(r, debug_border_color_);
+			draw::fill(r, debug_border_color_);
 			break;
 
 		default:

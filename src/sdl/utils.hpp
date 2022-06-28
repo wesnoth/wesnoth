@@ -27,9 +27,24 @@
 #include <map>
 #include <string>
 
-version_info sdl_get_version();
+class CVideo;
 
-inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+namespace sdl
+{
+
+/** Returns the runtime SDL version. */
+version_info get_version();
+
+/**
+ * Returns true if the runtime SDL version is at or greater than the
+ * specified version, false otherwise.
+ */
+bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
+
+} // namespace sdl
+
+
+inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
@@ -101,7 +116,7 @@ surface scale_surface_nn(const surface & surf, int w, int h);
 surface scale_surface(const surface &surf, int w, int h);
 
 /** Scale a surface using simple bilinear filtering (discarding rgb from source
-    pixels with 0 alpha)
+ *  pixels with 0 alpha)
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.
@@ -141,7 +156,7 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 surface alpha_to_greyscale(const surface & surf);
 surface wipe_alpha(const surface & surf);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(const surface &surf);
+surface shadow_image(const surface &surf, int scale = 1);
 
 enum channel { RED, GREEN, BLUE, ALPHA };
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a);
@@ -322,7 +337,3 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
-// blit the image on the center of the rectangle
-// and a add a colored background
-void draw_centered_on_background(surface surf, const SDL_Rect& rect,
-	const color_t& color, surface target);

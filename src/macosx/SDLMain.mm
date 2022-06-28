@@ -88,7 +88,7 @@ static std::vector<char*> gArgs;
 	setenv ("SDL_ENABLEAPPEVENTS", "1", 1);
 	setenv ("SDL_VIDEO_ALLOW_SCREENSAVER", "1", 1);
 
-    /* Set config files for pango and fontconfig, so the data they need can be found */
+	/* Set config files for pango and fontconfig, so the data they need can be found */
 	setenv ("PANGO_RC_FILE", "./pangorc", 1);
 	setenv ("PANGO_SYSCONFDIR", ".", 1);
 	setenv ("PANGO_LIBDIR", ".", 1);

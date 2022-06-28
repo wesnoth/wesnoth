@@ -58,7 +58,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref styled_widget::set_members. */
-	void set_members(const string_map& data) override;
+	void set_members(const widget_item& data) override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
@@ -187,7 +187,7 @@ struct builder_toggle_button : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	std::string icon_name_;

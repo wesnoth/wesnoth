@@ -611,8 +611,8 @@ namespace { // Helpers for place_recruit()
 }// anonymous namespace
 //Used by recalls and recruits
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-    int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
-    bool wml_triggered)
+	int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
+	bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";

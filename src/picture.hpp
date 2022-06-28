@@ -21,6 +21,8 @@
 #include <unordered_map>
 
 class surface;
+class texture;
+struct point;
 
 /**
  * Functions to load and save images from/to disk.
@@ -66,6 +68,7 @@ public:
 	locator(const locator& a, const std::string& mods = "");
 	locator(const char* filename);
 	locator(const std::string& filename);
+	locator(const char* filename, const char* modifications);
 	locator(const std::string& filename, const std::string& modifications);
 	locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
 
@@ -125,6 +128,7 @@ private:
 		value();
 		value(const char *filename);
 		value(const std::string& filename);
+		value(const char *filename, const char* modifications);
 		value(const std::string& filename, const std::string& modifications);
 		value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 
@@ -150,9 +154,11 @@ private:
 	value val_;
 };
 
-surface load_from_disk(const locator& loc);
+// write a readable representation of a locator, mostly for debugging
+std::ostream& operator<<(std::ostream&, const locator&);
 
-typedef cache_type<surface> image_cache;
+typedef cache_type<surface> surface_cache;
+typedef cache_type<texture> texture_cache;
 typedef cache_type<bool> bool_cache;
 
 typedef std::map<t_translation::terrain_code, surface> mini_terrain_cache_map;
@@ -176,10 +182,12 @@ extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 typedef std::basic_string<signed char> light_string;
 
 /** Type used to pair light possibilities with the corresponding lit surface. */
-typedef std::map<light_string, surface> lit_variants;
+typedef std::map<light_string, surface> lit_surface_variants;
+typedef std::map<light_string, texture> lit_texture_variants;
 
 /** Lit variants for each locator. */
-typedef cache_type<lit_variants> lit_cache;
+typedef cache_type<lit_surface_variants> lit_surface_cache;
+typedef cache_type<lit_texture_variants> lit_texture_cache;
 
 /**
  * Returns the light_string for one light operation.
@@ -208,10 +216,9 @@ struct manager
 /**
  * Changes Time of Day color tint for all applicable image types.
  *
- * In particular this affects TOD_COLORED and BRIGHTENED images, as well as
+ * In particular this affects TOD_COLORED images, as well as
  * images with lightmaps applied. Changing the previous values automatically
- * invalidates all cached images of those types. It also invalidates the
- * internal cache used by reverse_image() (FIXME?).
+ * invalidates all cached images of those types.
  */
 void set_color_adjustment(int r, int g, int b);
 
@@ -230,20 +237,19 @@ enum TYPE
 {
 	/** Unmodified original-size image. */
 	UNSCALED,
-	/** Image rescaled according to the zoom settings. */
-	SCALED_TO_ZOOM,
 	/** Standard hexagonal tile mask applied, removing portions that don't fit. */
 	HEXED,
-	/** Image rescaled to fit into a hexagonal tile according to the zoom settings. */
-	SCALED_TO_HEX,
-	/** Same as SCALED_TO_HEX, but with Time of Day color tint applied. */
+	/** Same as HEXED, but with Time of Day color tint applied. */
 	TOD_COLORED,
-	/** Same as TOD_COLORED, but also brightened. */
-	BRIGHTENED
+	NUM_TYPES // Equal to the number of types specified above
 };
 
+enum class scale_quality { nearest, linear };
+
 /**
- * Caches and returns an image.
+ * [DEPRECATED] Caches and returns an image.
+ *
+ * This function is deprecated. Use get_texture or get_surface in stead.
  *
  * @param i_locator            Image path.
  * @param type                 Rendering format.
@@ -251,18 +257,66 @@ enum TYPE
 surface get_image(const locator& i_locator, TYPE type = UNSCALED);
 
 /**
+ * Returns an image surface suitable for software manipulation.
+ *
+ * The equivalent get_texture() function should generally be preferred.
+ *
+ * Surfaces will be cached for repeat access, unless skip_cache is set.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ * @param skip_cache           Skip adding the result to the surface cache.
+ */
+surface get_surface(const locator& i_locator, TYPE type = UNSCALED,
+	bool skip_cache = false);
+
+/**
+ * Returns an image texture suitable for hardware-accelerated rendering.
+ *
+ * Texture pointers are not unique, and will be cached and retained
+ * until no longer needed. Users of the returned texture do not have to
+ * worry about texture management.
+ *
+ * If caching is disabled via @a skip_cache, texture memory will be
+ * automatically freed once the returned object and all other linked
+ * textures (if any) are destroyed.
+ *
+ * @param i_locator            Image path.
+ * @param type                 Rendering format.
+ * @param skip_cache           Skip adding the result to the surface cache.
+ */
+texture get_texture(const locator& i_locator, TYPE type = UNSCALED,
+	bool skip_cache = false);
+
+texture get_texture(const image::locator& i_locator, scale_quality quality,
+	TYPE type = UNSCALED, bool skip_cache = false);
+
+/**
  * Caches and returns an image with a lightmap applied to it.
+ *
+ * Images will always be HEXED type.
  *
  * @param i_locator            Image path.
  * @param ls                   Light map to apply to the image.
- * @param type                 This should be either HEXED or SCALED_TO_HEX.
  */
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+surface get_lighted_image(const image::locator& i_locator, const light_string& ls);
+texture get_lighted_texture(const image::locator& i_locator, const light_string& ls);
 
 /**
  * Retrieves the standard hexagonal tile mask.
  */
 surface get_hexmask();
+
+/**
+ * Returns the width and height of an image.
+ *
+ * If the image is not yet in the surface cache, it will be loaded and cached
+ * unless skip_cache is explicitly set.
+ *
+ * @param i_locator            Image path.
+ * @param skip_cache           If true, do not cache the image if loaded.
+ */
+point get_size(const locator& i_locator, bool skip_cache = false);
 
 /**
  * Checks if an image fits into a single hex.
@@ -276,14 +330,6 @@ bool is_in_hex(const locator& i_locator);
  * the hex-masked version if necessary.
  */
 bool is_empty_hex(const locator& i_locator);
-
-/**
- * Horizontally flips an image.
- *
- * The input MUST have originally been returned from an image namespace function.
- * Returned images have the same semantics as those obtained from get_image().
- */
-surface reverse_image(const surface& surf);
 
 /**
  * Returns @a true if the given image actually exists, without loading it.

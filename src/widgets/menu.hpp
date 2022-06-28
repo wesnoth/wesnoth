@@ -20,6 +20,8 @@
 
 #include "scrollarea.hpp"
 
+class texture;
+
 namespace image{
 	class locator;
 }
@@ -43,7 +45,7 @@ public:
 		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		void scale_images(int max_width, int max_height);
-		surface get_item_image(const image::locator &i_locator) const;
+		void adjust_image_bounds(int& w, int& h) const;
 		std::size_t get_font_size() const;
 		std::size_t get_cell_padding() const;
 		std::size_t get_thickness() const;
@@ -76,7 +78,7 @@ public:
 
 	protected:
 		const std::string img_base_;
-		std::map<std::string,surface> img_map_;
+		std::map<std::string,texture> img_map_;
 
 	private:
 		bool load_image(const std::string &img_sub);
@@ -85,16 +87,6 @@ public:
 		bool load_failed_;
 		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
 		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
-		//FIXME: why is this better than a plain surface?
-		struct bg_cache
-		{
-			bg_cache() : surf(), width(-1), height(-1)
-			{}
-
-			surface surf;
-			int width, height;
-		};
-		bg_cache bg_cache_;
 	};
 
 	friend class style;

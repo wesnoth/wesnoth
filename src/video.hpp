@@ -18,12 +18,18 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/point.hpp"
+#include "sdl/texture.hpp"
 
+#include <SDL2/SDL_render.h>
+
+#include <cassert>
 #include <memory>
 
 class surface;
-struct point;
+class texture;
 struct SDL_Texture;
+struct color_t;
 
 namespace sdl
 {
@@ -71,13 +77,21 @@ public:
 
 	bool non_interactive() const;
 
+	bool surface_initialized() const;
+
 	/***** ***** ***** ***** Window-related functions ***** ***** ****** *****/
 
 	/** Initializes a new SDL window instance, taking into account any preiously saved states. */
 	void init_window();
+private:
+	void init_fake_window();
 
+public:
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
+
+	/** Returns a pointer to the underlying window's renderer. */
+	SDL_Renderer* get_renderer();
 
 	bool has_window()
 	{
@@ -106,9 +120,13 @@ public:
 
 	bool is_fullscreen() const;
 
-	bool supports_vsync() const;
-
-	bool set_resolution(const unsigned width, const unsigned height);
+	/**
+	 * Only recent versions of SDL support vsync with the software renderer.
+	 * This is irrelevant now as we're using hardware rendering exclusively.
+	 * I recommend removing this function entirely after several months,
+	 * when it has become clear that the software renderer won't be needed.
+	 */
+	bool supports_software_vsync() const;
 
 	/**
 	 * Set the window resolution.
@@ -157,24 +175,30 @@ public:
 	SDL_Rect input_area() const;
 
 	/**
-	 * Returns the width of the drawing surface in pixels.
-	 * Input coordinates are automatically scaled to correspond,
-	 * so this also indicates the width of the input surface.
+	 * Get the current active pixel scale multiplier.
+	 * This is equal to output_size() / draw_area().
+	 * Currently it is always integer, and the same in both dimensions.
+	 *
+	 * This may differ from preferences::pixel_scale() in some cases,
+	 * For example if the window is too small to fit the desired scale.
+	 *
+	 * @returns     The currently active pixel scale multiplier.
 	 */
-	int get_width() const;
+	int get_pixel_scale() const { return pixel_scale_; }
 
 	/**
-	 * Returns the height of the drawing surface in pixels.
-	 * Input coordinates are automatically scaled to correspond,
-	 * so this also indicates the height of the input surface.
+	 * Clip a rectangle to the drawing area.
+	 *
+	 * This does not change the original
+	 * @param r                   The SDL_Rect to clip.
+	 * @returns                   The new clipped SDL_Rect.
 	 */
-	int get_height() const;
+	SDL_Rect clip_to_draw_area(const SDL_Rect* r) const;
 
-	/** The current game screen dpi. */
-	std::pair<float, float> get_dpi() const;
-
-	/** The current scale factor on High-DPI screens. */
-	std::pair<float, float> get_dpi_scale_factor() const;
+	/**
+	 * Convert coordinates in draw space to coordinates in render space.
+	 */
+	SDL_Rect to_output(const SDL_Rect& draw_space_rect) const;
 
 	/**
 	 * Tests whether the given flags are currently set on the SDL window.
@@ -204,33 +228,66 @@ public:
 
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
-	/**
-	 * Copies an area of a surface to the drawing surface.
-	 *
-	 * @param x                   The x coordinate at which to draw.
-	 * @param y                   The y coordinate at which to draw.
-	 * @param surf                The surface to draw.
-	 * @param srcrect             The area of the surface to draw. This defaults to nullptr,
-	 *                            which implies the entire thing.
-	 * @param clip_rect           The clipping rect. If not null, the surface will only be drawn
-	 *                            within the bounds of the given rectangle.
-	 */
-	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
-
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.
 	 * This needs to be invoked immediately after a resize event or the game will crash.
 	 */
 	void update_framebuffer();
+private:
+	void update_framebuffer_fake();
 
+public:
 	/** Clear the screen contents */
 	void clear_screen();
 
-	/** Returns a reference to the drawing surface. */
-	surface& getDrawingSurface();
+	/**
+	 * Copy back a portion of the render target that is already drawn.
+	 *
+	 * This area is specified in draw coordinates, not render coordinates.
+	 * Thus the size of the retrieved surface may not match the size of r.
+	 *
+	 * If not null, r will be automatically clipped to the drawing area.
+	 *
+	 * Note: This is a very slow function! Its use should be phased out
+	 * for everything except maybe screenshots.
+	 *
+	 * @param r       The portion of the render target to retrieve, in
+	 *                draw coordinates.
+	 *                If not null, this will be modified to reflect the
+	 *                portion of the draw area that has been returned.
+	 */
+	surface read_pixels(SDL_Rect* r = nullptr);
+
+	/**
+	 * The same as read_pixels, but returns a low-resolution surface
+	 * suitable for use with the old drawing system.
+	 *
+	 * This should be considered deprecated, and phased out ASAP.
+	 */
+	surface read_pixels_low_res(SDL_Rect* r = nullptr);
+
+	/**
+	 * Copy a portion of the render target to another texture.
+	 *
+	 * This area is specified in draw coordinates, not render coordinates.
+	 * Thus the size of the retrieved texture may not match the size of r.
+	 *
+	 * If not null, r will be automatically clipped to the drawing area.
+	 *
+	 * Note: This is a very slow function! Its use should be phased out
+	 * for everything except maybe screenshots.
+	 *
+	 * @param r       The portion of the render target to retrieve, in
+	 *                draw coordinates.
+	 *                If not null, this will be modified to reflect the
+	 *                portion of the draw area that has been returned.
+	 */
+	texture read_texture(SDL_Rect* r = nullptr);
+
+	/***** ***** ***** ***** State management ***** ***** ****** *****/
 
 	/**
 	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
@@ -245,6 +302,25 @@ public:
 	bool update_locked() const;
 
 	void lock_flips(bool);
+
+	/**
+	 * Set the render target, without any provided way of setting it back.
+	 *
+	 * End-users should not use this function directly. In stead use
+	 * draw::set_render_target(), which returns a setter object which
+	 * will automatically restore the render target upon leaving scope.
+	 *
+	 * @param t     The new render target. This must be a texture created
+	 *              with SDL_TEXTUREACCESS_TARGET, or NULL to indicate
+	 *              the underlying window.
+	 */
+	void force_render_target(SDL_Texture* t);
+
+	/** Get the current render target.
+	 *
+	 * Returns NULL if the render target is the underlying window.
+	 */
+	SDL_Texture* get_render_target();
 
 	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
 
@@ -271,10 +347,8 @@ public:
 
 	struct error : public game::error
 	{
-		error()
-			: game::error("Video initialization failed")
-		{
-		}
+		error() : game::error("unspecified video subsystem error") {}
+		error(const std::string& msg) : game::error(msg) {}
 	};
 
 	/** Type that can be thrown as an exception to quit to desktop. */
@@ -291,13 +365,13 @@ public:
 	};
 
 private:
-	static CVideo* singleton_;
+	static inline CVideo* singleton_ = nullptr;
 
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
 
-	/** The drawing texture. */
-	SDL_Texture* drawing_texture_;
+	/** The current offscreen render target. */
+	SDL_Texture* render_texture_;
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();
@@ -329,6 +403,9 @@ private:
 	int updated_locked_;
 	int flip_locked_;
 	int refresh_rate_;
+	int offset_x_, offset_y_;
+	point logical_size_;
+	int pixel_scale_;
 };
 
 /** An object which will lock the display for the duration of its lifetime. */

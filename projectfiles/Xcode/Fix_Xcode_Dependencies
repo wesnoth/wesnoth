@@ -5,27 +5,17 @@
 # Victor Sergienko (singalen), 2018
 #
 
-starttimestamp=$(date +%s)
-
 ###Functions
 time_interval_to_string() {
-  local START=$1
-  local END=$2
+  local duration=$(($2 - $1)) days hours minutes seconds
 
-  declare -i timestamp
-  declare -i days
-  declare -i hours
-  declare -i minutes
-  declare -i seconds
-  timestamp=$END-$START
-
-  days=$timestamp/60/60/24
-  hours=$((($timestamp-($days*60*60*24))/60/60))
-  minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
-  seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
-  if [ $days -eq 0 ]; then
-    if [ $hours -eq 0 ]; then
-      if [ $minutes -eq 0 ]; then
+  days=$((duration/60/60/24))
+  hours=$((duration%(60*60*24)/60/60))
+  minutes=$((duration%(60*60)/60))
+  seconds=$((duration%60))
+  if ((days == 0)); then
+    if ((hours == 0)); then
+      if ((minutes == 0)); then
         echo "==> Operation took $seconds seconds ..."
       else
         echo "==> Operation took $minutes minutes and $seconds seconds ..."
@@ -43,34 +33,30 @@ get_mcs() {
 }
 ###/Functions
 
-starttimestamp=`date +%s`
+SECONDS=0
 
-MY_PATH=$(cd `dirname $0` && pwd)
+MY_PATH=$(cd "$(dirname "$0")" && pwd)
 if [ -z "$MY_PATH" ] ; then
   # error; for some reason, the path is not accessible
   # to the script (e.g. permissions re-evaled after suid)
   echo 'Error: Script path is for some reason not accessible' >&2
   exit 1  # fail
 fi
-cd "${MY_PATH}"
+cd "${MY_PATH}" || exit
 
 if ! [ -d "The Battle for Wesnoth.xcodeproj" ]; then
   echo 'Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !' >&2
   exit 1
 fi
 
-if ! [ -x "$(command -v git)" ]; then
+if ! command -v git >/dev/null; then
   echo 'Error: Git is not installed. Use for example Homebrew to install git. https://brew.sh/' >&2
   exit 1
 fi
 
-if ! [ -d "temp" ]; then
-  mkdir "temp"
-fi
-cd "temp"
-if [ -d "MacCompileStuff-master" ]; then
-  rm -rf MacCompileStuff-master
-fi
+mkdir -p "temp" || exit
+cd "temp" || exit
+rm -rf MacCompileStuff-master
 
 if ! [ -d "MacCompileStuff-1.17" ]; then
   get_mcs
@@ -79,20 +65,20 @@ else
   git pull --depth 5
   if ! [ $? -eq 0 ]; then
     echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
-    cd ".."
+    cd ".." || exit
     rm -rf "MacCompileStuff-1.17"
     get_mcs
   fi
 fi
-cd "${MY_PATH}"
+cd "${MY_PATH}" || exit
 
-rm -rf "Headers"
+rm -f "Headers"
 ln -s "temp/MacCompileStuff-1.17/Headers"
 
-rm -rf "lib"
+rm -f "lib"
 ln -s "temp/MacCompileStuff-1.17/lib"
 
 echo "==> DONE ..."
 echo
-time_interval_to_string "$starttimestamp" "$(date +%s)"
+time_interval_to_string 0 "$SECONDS"
 echo

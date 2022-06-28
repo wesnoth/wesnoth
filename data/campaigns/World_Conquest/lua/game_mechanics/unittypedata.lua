@@ -260,7 +260,7 @@ type_infos = {
 	},
 	["Skeleton Archer"] = {
 		founddialogue=_"I am called forth from eternal rest, bound to follow he who called me. Show me the enemy, master!",
-		image="units/undead-skeletal/archer.png",
+		image="units/undead-skeletal/archer/archer.png",
 		name="Skeleton Archer",
 	},
 	["Ghoul"] = {
@@ -355,32 +355,27 @@ type_infos = {
 	},
 	["Dune Herbalist"] = {
 		founddialogue=_"Long have I studied the ways of lore, and I have much wisdom to offer. Allow me to guide you on your quest and together we will accomplish great things!",
-		image="units/dunefolk/herbalist.png",
+		image="units/dunefolk/herbalist/herbalist.png",
 		name="Dune Herbalist",
 	},
 	["Dune Soldier"] = {
 		founddialogue=_"I too have come a long way to this strange land. Perhaps we were destined to join blades here.",
-		image="units/dunefolk/soldier.png",
+		image="units/dunefolk/soldier/soldier.png",
 		name="Dune Soldier",
 	},
 	["Dune Rover"] = {
 		founddialogue=_"Ho there, friends! I am but a soldier of humble circumstances, yet long have I dreamed of joining great wars beyond our shores. Let me join your mission!",
-		image="units/dunefolk/rover.png",
+		image="units/dunefolk/rover/rover.png",
 		name="Dune Rover",
-	},
-	["Dune Piercer"] = {
-		founddialogue=_"Heh, looks like you whelps might be getting in over your heads. Good thing I’m here now to win this fight for ya, huh?",
-		image="units/dunefolk/piercer.png",
-		name="Dune Piercer",
 	},
 	["Dune Burner"] = {
 		founddialogue=_"You may not trust me or my reasons, but it seems you are not in a position to be choosy about your allies. Let me assist you and you just may survive.",
-		image="units/dunefolk/burner.png",
+		image="units/dunefolk/burner/burner.png",
 		name="Dune Burner",
 	},
 	["Dune Rider"] = {
 		founddialogue=_"A soldier is no good without something to fight for. Let me fight for you!",
-		image="units/dunefolk/rider.png",
+		image="units/dunefolk/rider/rider.png",
 		name="Dune Rider",
 	},
 }

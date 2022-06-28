@@ -26,7 +26,7 @@
 class bad_commandline_resolution : public boost::program_options::error
 {
 public:
-    bad_commandline_resolution(const std::string& resolution);
+	bad_commandline_resolution(const std::string& resolution);
 };
 
 class bad_commandline_tuple : public boost::program_options::error

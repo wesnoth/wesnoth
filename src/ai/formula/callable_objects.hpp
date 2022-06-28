@@ -190,7 +190,7 @@ class move_map_callable : public formula_callable {
 	typedef std::multimap<map_location, map_location> move_map;
 	const move_map& srcdst_;
 	const move_map& dstsrc_;
-        const unit_map& units_;
+	const unit_map& units_;
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;

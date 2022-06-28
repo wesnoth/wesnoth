@@ -458,7 +458,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize(point(video.get_width(), video.get_height()));
+					video_resize(point(video.draw_area().w, video.draw_area().h));
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -598,7 +598,7 @@ void sdl_event_handler::draw()
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo::get_singleton().flip();
+		CVideo::get_singleton().render_screen();
 	}
 }
 
@@ -821,7 +821,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
-		return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
+		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
 	}
 
 	return false;

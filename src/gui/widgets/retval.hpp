@@ -31,13 +31,13 @@ enum retval : int
 	/** Default, unset return value. */
 	NONE = 0,
 
-    /** Dialog was closed with the OK button. */
+	/** Dialog was closed with the OK button. */
 	OK = -1,
 
-    /** Dialog was closed with the CANCEL button. */
+	/** Dialog was closed with the CANCEL button. */
 	CANCEL = -2,
 
-    /** The dialog was closed automatically as its timeout had been reached. */
+	/** The dialog was closed automatically as its timeout had been reached. */
 	AUTO_CLOSE = -3,
 };
 

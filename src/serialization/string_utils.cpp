@@ -602,7 +602,7 @@ static bool is_username_char(char c) {
 }
 
 static bool is_wildcard_char(char c) {
-    return ((c == '?') || (c == '*'));
+	return ((c == '?') || (c == '*'));
 }
 
 bool isvalid_username(const std::string& username) {
@@ -618,13 +618,13 @@ bool isvalid_username(const std::string& username) {
 }
 
 bool isvalid_wildcard(const std::string& username) {
-    const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const std::size_t valid_char =
-			std::count_if(username.begin(), username.end(), is_username_char);
-    const std::size_t wild_char =
-            std::count_if(username.begin(), username.end(), is_wildcard_char);
+		std::count_if(username.begin(), username.end(), is_username_char);
+	const std::size_t wild_char =
+		std::count_if(username.begin(), username.end(), is_wildcard_char);
 	if ((alnum + valid_char + wild_char != username.size())
-			|| valid_char == username.size() || username.empty() )
+		|| valid_char == username.size() || username.empty() )
 	{
 		return false;
 	}

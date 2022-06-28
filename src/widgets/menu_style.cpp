@@ -18,6 +18,7 @@
 
 #include "widgets/menu.hpp"
 
+#include "draw.hpp"
 #include "font/constants.hpp"
 #include "picture.hpp"
 #include "lexical_cast.hpp"
@@ -63,32 +64,28 @@ void menu::style::scale_images(int max_width, int max_height)
 	max_img_h_ = max_height;
 }
 
-surface menu::style::get_item_image(const image::locator& img_loc) const
+void menu::style::adjust_image_bounds(int& w, int& h) const
 {
-	surface surf = image::get_image(img_loc);
-	if(surf)
-	{
-		int scale = 100;
-		if(max_img_w_ > 0 && surf->w > max_img_w_) {
-			scale = (max_img_w_ * 100) / surf->w;
-		}
-		if(max_img_h_ > 0 && surf->h > max_img_h_) {
-			scale = std::min<int>(scale, ((max_img_h_ * 100) / surf->h));
-		}
-		if(scale != 100)
-		{
-			return scale_surface(surf, (scale * surf->w)/100, (scale * surf->h)/100);
-		}
+	int scale = 100;
+	if(max_img_w_ > 0 && w > max_img_w_) {
+		scale = (max_img_w_ * 100) / w;
 	}
-	return surf;
+	if(max_img_h_ > 0 && h > max_img_h_) {
+		scale = std::min<int>(scale, ((max_img_h_ * 100) / h));
+	}
+	if(scale != 100)
+	{
+		w = (scale * w)/100;
+		h = (scale * h)/100;
+	}
 }
 
 bool menu::imgsel_style::load_image(const std::string &img_sub)
 {
 	std::string path = img_base_ + "-" + img_sub + ".png";
-	const surface image = image::get_image(path);
+	const texture image = image::get_texture(path);
 	img_map_[img_sub] = image;
-	return image.get() != nullptr;
+	return bool(image);
 }
 
 bool menu::imgsel_style::load_images()
@@ -106,8 +103,8 @@ bool menu::imgsel_style::load_images()
 			&& load_image("border-bottom") )
 		{
 			thickness_ = std::min(
-					img_map_["border-top"]->h,
-					img_map_["border-left"]->w);
+					img_map_["border-top"].h(),
+					img_map_["border-left"].w());
 
 
 			if(has_background_ && !load_image("background"))
@@ -140,16 +137,7 @@ bool menu::imgsel_style::load_images()
 void menu::imgsel_style::draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
-		if(bg_cache_.width != rect.w || bg_cache_.height != rect.h)
-		{
-			//draw scaled background image
-			//scale image each time (to prevent loss of quality)
-			bg_cache_.surf = scale_surface(img_map_["background"], rect.w, rect.h);
-			bg_cache_.width = rect.w;
-			bg_cache_.height = rect.h;
-		}
-		SDL_Rect clip = rect;
-		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,nullptr,&clip);
+		draw::blit(img_map_["background"], rect);
 	}
 	else {
 		style::draw_row_bg(menu_ref, row_index, rect, type);
@@ -164,63 +152,80 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 
 		if(type == SELECTED_ROW) {
 			// draw border
-			surface image;
+			texture image;
 			SDL_Rect area;
-			SDL_Rect clip = rect;
+			// TODO: highdpi - move clip API to draw.cpp, this is the last usage of video here
+			auto clipper = draw::set_clip(rect);
 			area.x = rect.x;
 			area.y = rect.y;
 
 			image = img_map_["border-top"];
 			area.x = rect.x;
 			area.y = rect.y;
+			area.w = image.w();
+			area.h = image.h();
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
-				area.x += image->w;
+				draw::blit(image, area);
+				area.x += area.w;
 			} while( area.x < rect.x + rect.w );
 
 			image = img_map_["border-left"];
 			area.x = rect.x;
 			area.y = rect.y;
+			area.w = image.w();
+			area.h = image.h();
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
-				area.y += image->h;
+				draw::blit(image, area);
+				area.y += area.h;
 			} while( area.y < rect.y + rect.h );
 
 			image = img_map_["border-right"];
 			area.x = rect.x + rect.w - thickness_;
 			area.y = rect.y;
+			area.w = image.w();
+			area.h = image.h();
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
-				area.y += image->h;
+				draw::blit(image, area);
+				area.y += area.h;
 			} while( area.y < rect.y + rect.h );
 
 			image = img_map_["border-bottom"];
 			area.x = rect.x;
 			area.y = rect.y + rect.h - thickness_;
+			area.w = image.w();
+			area.h = image.h();
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
-				area.x += image->w;
+				draw::blit(image, area);
+				area.x += area.w;
 			} while( area.x < rect.x + rect.w );
 
 			image = img_map_["border-topleft"];
 			area.x = rect.x;
 			area.y = rect.y;
-			menu_ref.video().blit_surface(area.x,area.y,image);
+			area.w = image.w();
+			area.h = image.h();
+			draw::blit(image, area);
 
 			image = img_map_["border-topright"];
-			area.x = rect.x + rect.w - image->w;
+			area.x = rect.x + rect.w - image.w();
 			area.y = rect.y;
-			menu_ref.video().blit_surface(area.x,area.y,image);
+			area.w = image.w();
+			area.h = image.h();
+			draw::blit(image, area);
 
 			image = img_map_["border-botleft"];
 			area.x = rect.x;
-			area.y = rect.y + rect.h - image->h;
-			menu_ref.video().blit_surface(area.x,area.y,image);
+			area.y = rect.y + rect.h - image.h();
+			area.w = image.w();
+			area.h = image.h();
+			draw::blit(image, area);
 
 			image = img_map_["border-botright"];
-			area.x = rect.x + rect.w - image->w;
-			area.y = rect.y + rect.h - image->h;
-			menu_ref.video().blit_surface(area.x,area.y,image);
+			area.x = rect.x + rect.w - image.w();
+			area.y = rect.y + rect.h - image.h();
+			area.w = image.w();
+			area.h = image.h();
+			draw::blit(image, area);
 		}
 	}
 		else {

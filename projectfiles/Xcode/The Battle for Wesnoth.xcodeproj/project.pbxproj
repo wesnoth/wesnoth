@@ -822,6 +822,12 @@
 		91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
 		91A41F901CA22A98008B10D5 /* libreadline.8.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91AF556D281101C4007A7652 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF556C281101C3007A7652 /* input.cpp */; };
+		91AF55B02827588B007A7652 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55AF2827588B007A7652 /* texture.cpp */; };
+		91AF55DF2848472F007A7652 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55DE2848472F007A7652 /* draw.cpp */; };
+		91AF564F284D8A8B007A7652 /* walker_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5649284D88DA007A7652 /* walker_container.cpp */; };
+		91AF5654284D90ED007A7652 /* walker_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5649284D88DA007A7652 /* walker_container.cpp */; };
+		91AF565B284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */; };
+		91AF565C284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
 		91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1605,7 +1611,7 @@
 		46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_attributes.cpp; sourceTree = "<group>"; };
 		46E2D98E25022BF5003D99F3 /* lua_widget_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget_methods.cpp; sourceTree = "<group>"; };
 		46E2D99525022D46003D99F3 /* lua_ptr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_ptr.hpp; sourceTree = "<group>"; };
-		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = "lib/libwebp.7.dylib"; sourceTree = "<group>"; };
+		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = lib/libwebp.7.dylib; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
@@ -2135,6 +2141,14 @@
 		91A214E41CAD618700927AEA /* gettext.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gettext.hpp; sourceTree = "<group>"; };
 		91AF556B281101C3007A7652 /* input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = input.hpp; sourceTree = "<group>"; };
 		91AF556C281101C3007A7652 /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
+		91AF55AE2827588B007A7652 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		91AF55AF2827588B007A7652 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		91AF55DD2848472E007A7652 /* draw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
+		91AF55DE2848472F007A7652 /* draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
+		91AF5649284D88DA007A7652 /* walker_container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = walker_container.cpp; sourceTree = "<group>"; };
+		91AF564A284D88DA007A7652 /* walker_container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = walker_container.hpp; sourceTree = "<group>"; };
+		91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = walker_scrollbar_container.cpp; sourceTree = "<group>"; };
+		91AF565A284D9251007A7652 /* walker_scrollbar_container.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = walker_scrollbar_container.hpp; sourceTree = "<group>"; };
 		91B621801B766ED500B00E0F /* buffered_istream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buffered_istream.hpp; sourceTree = "<group>"; };
 		91B621811B766F1900B00E0F /* carryover.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carryover.hpp; sourceTree = "<group>"; };
 		91B621821B766FD200B00E0F /* display_context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = display_context.hpp; sourceTree = "<group>"; };
@@ -3084,6 +3098,8 @@
 				91B621821B766FD200B00E0F /* display_context.hpp */,
 				B5599A990EC62181008DD061 /* display.cpp */,
 				B5599A980EC62181008DD061 /* display.hpp */,
+				91AF55DE2848472F007A7652 /* draw.cpp */,
+				91AF55DD2848472E007A7652 /* draw.hpp */,
 				B5599FF60EC8FE2E008DD061 /* editor */,
 				B5599A970EC62181008DD061 /* events.cpp */,
 				B5599A960EC62181008DD061 /* events.hpp */,
@@ -3765,8 +3781,12 @@
 				46F92D0A2174F6A300602C1C /* iterator.hpp */,
 				46F92D072174F6A300602C1C /* policy_order.hpp */,
 				46F92D032174F6A300602C1C /* policy_visit.hpp */,
+				91AF5649284D88DA007A7652 /* walker_container.cpp */,
+				91AF564A284D88DA007A7652 /* walker_container.hpp */,
 				46F92D052174F6A300602C1C /* walker_grid.cpp */,
 				46F92D0C2174F6A300602C1C /* walker_grid.hpp */,
+				91AF5659284D9251007A7652 /* walker_scrollbar_container.cpp */,
+				91AF565A284D9251007A7652 /* walker_scrollbar_container.hpp */,
 				46F92D012174F6A300602C1C /* walker_tree_node.cpp */,
 				46F92D082174F6A300602C1C /* walker_tree_node.hpp */,
 				46F92D092174F6A300602C1C /* walker_widget.cpp */,
@@ -4172,6 +4192,8 @@
 				91AF556B281101C3007A7652 /* input.hpp */,
 				EC669C251DFC95AF00172EED /* surface.cpp */,
 				467D9DF5205EC3DA00FA2FC4 /* surface.hpp */,
+				91AF55AF2827588B007A7652 /* texture.cpp */,
+				91AF55AE2827588B007A7652 /* texture.hpp */,
 				467D9DF0205EC3D200FA2FC4 /* userevent.hpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
@@ -5117,6 +5139,7 @@
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated.cpp in Sources */,
 				F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */,
+				91AF55DF2848472F007A7652 /* draw.cpp in Sources */,
 				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,
 				B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */,
 				B59F96E71034791200A57C1A /* aspect_attacks.cpp in Sources */,
@@ -5336,6 +5359,7 @@
 				46F92EDC2174FD9900602C1C /* scrollarea.cpp in Sources */,
 				ECA1E0F21A1271AC00426E00 /* lua_gui2.cpp in Sources */,
 				46F92D872174F6A300602C1C /* horizontal_list.cpp in Sources */,
+				91AF564F284D8A8B007A7652 /* walker_container.cpp in Sources */,
 				EC5401851EBE0C4500AE66EE /* display.cpp in Sources */,
 				46F92C1E2174F5D700602C1C /* help.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
@@ -5470,6 +5494,7 @@
 				B559986C0EC616B3008DD061 /* SDLMain.mm in Sources */,
 				EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */,
 				B5599B030EC62181008DD061 /* map_settings.cpp in Sources */,
+				91AF565B284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */,
 				46F92C1A2174F5D700602C1C /* help_text_area.cpp in Sources */,
 				46F92DC12174F6A300602C1C /* game_version_dialog.cpp in Sources */,
 				ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */,
@@ -5604,6 +5629,7 @@
 				91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */,
 				46F92DB12174F6A300602C1C /* wml_message.cpp in Sources */,
 				46F92E832174F6A400602C1C /* grid.cpp in Sources */,
+				91AF55B02827588B007A7652 /* texture.cpp in Sources */,
 				91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */,
 				91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */,
 				46F92D912174F6A300602C1C /* gui_definition.cpp in Sources */,
@@ -5790,6 +5816,7 @@
 				46F92EE42174FDA600602C1C /* menu.cpp in Sources */,
 				91E356691CACC6E000774252 /* mouse_events.cpp in Sources */,
 				91E3566A1CACC6E000774252 /* mouse_handler_base.cpp in Sources */,
+				91AF565C284D9251007A7652 /* walker_scrollbar_container.cpp in Sources */,
 				46F92EEB2174FDAB00602C1C /* widget.cpp in Sources */,
 				91E3566B1CACC6E000774252 /* movetype.cpp in Sources */,
 				91E3566C1CACC6E000774252 /* mp_game_settings.cpp in Sources */,
@@ -6072,6 +6099,7 @@
 				91A214FA1CAD66B900927AEA /* hotkey_manager.cpp in Sources */,
 				46F92D802174F6A300602C1C /* static_registry.cpp in Sources */,
 				91A214FB1CAD66CC00927AEA /* picture.cpp in Sources */,
+				91AF5654284D90ED007A7652 /* walker_container.cpp in Sources */,
 				91A214FC1CAD66CC00927AEA /* image_modifications.cpp in Sources */,
 				4649B88420288DFB00827CFB /* game.cpp in Sources */,
 				46F92E322174F6A400602C1C /* custom_tod.cpp in Sources */,
@@ -6345,6 +6373,221 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		460F21C92858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../src",
+					"$(PROJECT_DIR)/Headers/cairo",
+					"$(PROJECT_DIR)/Headers/glib-2.0",
+					"$(PROJECT_DIR)/Headers/SDL2",
+					"$(PROJECT_DIR)/Headers/harfbuzz",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lbz2",
+				);
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
+				WARNING_CFLAGS = (
+					"-Werror=format",
+					"-Werror=missing-braces",
+					"-Werror=return-type",
+					"-Werror=missing-field-initializers",
+					"-Werror=sign-compare",
+					"-Werror=unused",
+					"-Werror=switch",
+					"-Wno-unused-lambda-capture",
+				);
+			};
+			name = SignedRelease;
+		};
+		460F21CA2858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = N5CYW96P9T;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = /Applications;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LLVM_LTO = YES_THIN;
+				OTHER_CFLAGS = "-Wall";
+				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lbz2",
+					"-lreadline",
+					"-llua",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
+				PRODUCT_NAME = "The Battle for Wesnoth";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = NO;
+				WARNING_CFLAGS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = SignedRelease;
+		};
+		460F21CB2858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = N5CYW96P9T;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnothd\\\"",
+				);
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_CFLAGS = "-Wall";
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.wesnothd;
+				PRODUCT_NAME = wesnothd;
+				WARNING_CFLAGS = "";
+			};
+			name = SignedRelease;
+		};
+		460F21CC2858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					BOOST_TEST_DYN_LINK,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lbz2",
+					"-llua",
+				);
+				PRODUCT_NAME = unit_tests;
+			};
+			name = SignedRelease;
+		};
+		460F21CD2858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
+				);
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = campaignd;
+			};
+			name = SignedRelease;
+		};
+		460F21CE2858F72100EE2131 /* SignedRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_COMMA = NO;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-include",
+					../../src/wesnoth_lua_config.h,
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = lua;
+			};
+			name = SignedRelease;
+		};
 		9107AE161DB32862001927B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6389,6 +6632,7 @@
 		91C548CC1D8866ED00FE6A7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
@@ -6406,6 +6650,7 @@
 		91C548CD1D8866ED00FE6A7B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
@@ -6421,6 +6666,7 @@
 		B597C49A0FACD3CE00CE81F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
@@ -6444,6 +6690,7 @@
 		B597C49B0FACD3CE00CE81F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
@@ -6466,7 +6713,19 @@
 		B5BB6B4D0F890FBC00444FBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -6475,7 +6734,18 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
+				OTHER_CFLAGS = "-Wall";
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.wesnothd;
 				PRODUCT_NAME = wesnothd;
 			};
@@ -6484,30 +6754,65 @@
 		B5BB6B4E0F890FBC00444FBF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = N5CYW96P9T;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
+				OTHER_CFLAGS = "-Wall";
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.wesnothd;
 				PRODUCT_NAME = wesnothd;
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6517,10 +6822,23 @@
 					"HAVE_HISTORY=1",
 					"LOAD_REVISION=1",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_CFLAGS = "-Wall";
+				OTHER_CPLUSPLUSFLAGS = "-Wall";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6538,13 +6856,24 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N5CYW96P9T;
-				ENABLE_HARDENED_RUNTIME = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -6552,11 +6881,24 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
-				GCC_WARN_UNUSED_VARIABLE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				LLVM_LTO = YES_THIN;
+				OTHER_CFLAGS = "-Wall";
+				OTHER_CPLUSPLUSFLAGS = "-Wall";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6567,6 +6909,7 @@
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
+				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -6704,6 +7047,7 @@
 			buildConfigurations = (
 				9107AE161DB32862001927B0 /* Debug */,
 				9107AE171DB32862001927B0 /* Release */,
+				460F21CE2858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6713,6 +7057,7 @@
 			buildConfigurations = (
 				91C548CC1D8866ED00FE6A7B /* Debug */,
 				91C548CD1D8866ED00FE6A7B /* Release */,
+				460F21CD2858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6722,6 +7067,7 @@
 			buildConfigurations = (
 				B597C49A0FACD3CE00CE81F5 /* Debug */,
 				B597C49B0FACD3CE00CE81F5 /* Release */,
+				460F21CC2858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6731,6 +7077,7 @@
 			buildConfigurations = (
 				B5BB6B4D0F890FBC00444FBF /* Debug */,
 				B5BB6B4E0F890FBC00444FBF /* Release */,
+				460F21CB2858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6740,6 +7087,7 @@
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
 				C01FCF4C08A954540054247B /* Release */,
+				460F21CA2858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6749,6 +7097,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				460F21C92858F72100EE2131 /* SignedRelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

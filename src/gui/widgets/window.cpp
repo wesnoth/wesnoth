@@ -24,6 +24,7 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
+#include "draw.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
@@ -57,6 +58,7 @@
 #include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -100,7 +102,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override
+	virtual std::unique_ptr<widget> build() const override
 	{
 		return nullptr;
 	}
@@ -578,9 +580,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 		// restore area
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-			font::undraw_floating_labels(video_.getDrawingSurface());
+			draw::blit(restorer_, get_rectangle());
+			font::undraw_floating_labels();
 		}
 		throw;
 	}
@@ -589,9 +590,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 	// restore area
 	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-		font::undraw_floating_labels(video_.getDrawingSurface());
+		draw::blit(restorer_, get_rectangle());
+		font::undraw_floating_labels();
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
@@ -609,16 +609,13 @@ void window::draw()
 		return;
 	}
 
-	surface& drawing_surface = video_.getDrawingSurface();
-
 	/***** ***** Layout and get dirty list ***** *****/
 	if(need_layout_) {
 		// Restore old surface. In the future this phase will not be needed
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
 		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, drawing_surface, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		layout();
@@ -629,11 +626,11 @@ void window::draw()
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		if(is_toplevel_) {
-			font::draw_floating_labels(drawing_surface);
+			font::draw_floating_labels();
 		}
 
 		if(restore_) {
-			restorer_ = get_surface_portion(drawing_surface, rect);
+			restorer_ = video_.read_texture(&rect);
 		}
 
 		// Need full redraw so only set ourselves dirty.
@@ -687,7 +684,7 @@ void window::draw()
 		dirty_list_.clear();
 		dirty_list_.emplace_back(1, this);
 #else
-		clip_rect_setter clip(drawing_surface, &dirty_rect);
+		auto clipper = draw::set_clip(dirty_rect);
 #endif
 
 		/*
@@ -733,8 +730,7 @@ void window::draw()
 
 		// Restore.
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, drawing_surface, &rect);
+			draw::blit(restorer_, get_rectangle());
 		}
 
 		// Background.
@@ -742,12 +738,12 @@ void window::draw()
 			itor != item.end();
 			++itor) {
 
-			(**itor).draw_background(drawing_surface, 0, 0);
+			(**itor).draw_background();
 		}
 
 		// Children.
 		if(!item.empty()) {
-			item.back()->draw_children(drawing_surface, 0, 0);
+			item.back()->draw_children();
 		}
 
 		// Foreground.
@@ -755,7 +751,7 @@ void window::draw()
 			ritor != item.rend();
 			++ritor) {
 
-			(**ritor).draw_foreground(drawing_surface, 0, 0);
+			(**ritor).draw_foreground();
 			(**ritor).set_is_dirty(false);
 		}
 	}
@@ -777,9 +773,7 @@ void window::draw()
 void window::undraw()
 {
 	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getDrawingSurface(), &rect);
-		// Since the old area might be bigger than the new one, invalidate it.
+		draw::blit(restorer_, get_rectangle());
 	}
 }
 
@@ -1129,46 +1123,6 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.
- * This differs slightly from the standard swap_grid utility, so it's defined by itself here.
- */
-void window_swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-		assert(parent_grid);
-	}
-	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		grandparent_grid->swap_child(id, widget, false);
-	} else if(container_base* c
-			  = dynamic_cast<container_base*>(parent_grid->parent())) {
-
-		c->get_grid().swap_child(id, widget, true);
-	} else {
-		assert(false);
-	}
-}
-
-} // namespace
-
 void window::redraw_windows_on_top() const
 {
 	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
@@ -1182,7 +1136,24 @@ void window::redraw_windows_on_top() const
 
 void window::finalize(const builder_grid& content_grid)
 {
-	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
+	auto widget = content_grid.build();
+	assert(widget);
+
+	static const std::string id = "_window_content_grid";
+
+	// Make sure the new child has same id.
+	widget->set_id(id);
+
+	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	assert(parent_grid);
+
+	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
+		grandparent_grid->swap_child(id, std::move(widget), false);
+	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())) {
+		c->get_grid().swap_child(id, std::move(widget), true);
+	} else {
+		assert(false);
+	}
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

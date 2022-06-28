@@ -7,11 +7,11 @@
 # Mathieu GUILBAUD <mathieu@guim.info>, 2018.
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth_Manpages-1.12\n"
-"POT-Creation-Date: 2022-02-20 13:43+0300\n"
+"Project-Id-Version: Wesnoth_Manpages-1.16\n"
+"POT-Creation-Date: 2022-05-15 17:27+0300\n"
 "PO-Revision-Date: 2021-01-04 11:12+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
-"Language-Team: français <wesnoth@ml.free.fr>\n"
+"Language-Team: français <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -250,7 +250,7 @@ msgstr "B<--config-dir>I<\\ nom>"
 #. type: Plain text
 #: doc/man/wesnoth.6:85
 msgid "Deprecated, use B<--userdata-dir>."
-msgstr "Déprécié, utilisez B<--userdata-dir>."
+msgstr "Obsolète, utilisez B<--userdata-dir>."
 
 # type: TP
 #. type: TP
@@ -263,7 +263,7 @@ msgstr "B<--config-path>"
 #. type: Plain text
 #: doc/man/wesnoth.6:89
 msgid "Deprecated, use B<--userdata-path>."
-msgstr "Déprécié, utilisez B<--userdata-path>"
+msgstr "Obsolète, utilisez B<--userdata-path>"
 
 # type: TP
 #. type: TP
@@ -1120,9 +1120,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "Définit le répertoire de configuration de l'utilisateur à I<nom> dans $HOME "
 "ou dans \"Mes Documents\\eMes Jeux\" pour Windows.  Vous pouvez aussi "
@@ -1165,12 +1165,12 @@ msgid ""
 "also possible to specify a directory relative to the process working "
 "directory by using path starting with \".\\e\" or \"..\\e\"."
 msgstr ""
-"Définit le répertoire de données à I<nom> dans $HOME ou dans \"Mes Documents"
-"\\eMes Jeux\" pour Windows. Vous pouvez aussi indiquer un chemin absolu pour "
-"un répertoire de données situé en dehors de $HOME ou de \"Mes Documents"
-"\\eMes Jeux\". Sous Windows, il est possible d'indiquer un répertoire "
-"relatif au répertoire de travail du processus, en utilisant un chemin "
-"commençant par \".\\e\" ou \"..\\e\"."
+"Définit le répertoire de données à I<nom> dans $HOME ou dans \"Mes "
+"Documents\\eMes Jeux\" pour Windows. Vous pouvez aussi indiquer un chemin "
+"absolu pour un répertoire de données situé en dehors de $HOME ou de \"Mes "
+"Documents\\eMes Jeux\". Sous Windows, il est possible d'indiquer un "
+"répertoire relatif au répertoire de travail du processus, en utilisant un "
+"chemin commençant par \".\\e\" ou \"..\\e\"."
 
 # type: TP
 #. type: TP

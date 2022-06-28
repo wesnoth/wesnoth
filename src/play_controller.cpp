@@ -169,7 +169,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
-	, scope_()
+	, scope_(hotkey::scope_game)
 	, ignore_replay_errors_(false)
 	, player_type_changed_(false)
 {
@@ -187,8 +187,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	persist_.start_transaction();
 
 	game_config::add_color_info(game_config_view::wrap(level));
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 	try {
 		init(level);
@@ -201,7 +199,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 play_controller::~play_controller()
 {
 	unit_types.remove_scenario_fixes();
-	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
 

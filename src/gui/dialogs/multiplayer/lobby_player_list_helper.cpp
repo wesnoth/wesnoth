@@ -32,7 +32,7 @@ namespace gui2
 {
 lobby_player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::string& lbl, const bool unfolded)
 {
-	std::map<std::string, string_map> tree_group_item;
+	widget_data tree_group_item;
 	tree_group_item["tree_view_node_label"]["label"] = lbl;
 
 	root = &parent_tree->add_node("player_group", tree_group_item);
@@ -55,7 +55,7 @@ namespace
 struct update_pod
 {
 	/** The raw data used to mass-construct player tree nodes. */
-	std::vector<std::map<std::string, string_map>> node_data;
+	std::vector<widget_data> node_data;
 
 	/** The associated user data for each node, index-to-index. */
 	std::vector<const mp::user_info*> user_data;
@@ -104,8 +104,8 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 
 		icon_ss << ".png";
 
-		string_map tree_group_field;
-		std::map<std::string, string_map> tree_group_item;
+		widget_item tree_group_field;
+		widget_data tree_group_item;
 
 		/*** Add tree item ***/
 		tree_group_field["label"] = icon_ss.str();

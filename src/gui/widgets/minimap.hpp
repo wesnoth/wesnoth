@@ -21,6 +21,8 @@
 #include "gui/core/window_builder.hpp"
 
 class config;
+class gamemap;
+
 namespace gui2
 {
 namespace implementation
@@ -61,13 +63,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_map_data(const std::string& map_data)
-	{
-		if(map_data != map_data_) {
-			map_data_ = map_data;
-			set_is_dirty(true);
-		}
-	}
+	void set_map_data(const std::string& map_data);
 
 	std::string get_map_data() const
 	{
@@ -83,20 +79,11 @@ private:
 	/** The map data to be used to generate the map. */
 	std::string map_data_;
 
-	/**
-	 * Gets the image for the minimap.
-	 *
-	 * @param w                   The wanted width of the image.
-	 * @param h                   The wanted height of the image.
-	 *
-	 * @returns                   The image, nullptr upon error.
-	 */
-	const surface get_image(const int w, const int h) const;
+	/** Game map generated from the provided data. */
+	std::unique_ptr<gamemap> map_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -130,7 +117,7 @@ struct builder_minimap : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 };
 
 } // namespace implementation

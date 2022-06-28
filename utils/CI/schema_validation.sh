@@ -1,102 +1,71 @@
 #!/bin/bash
 
-function validate_core()
-{
-    SUCCESS="Yes"
-    NAME="$1"
-    
-    echo "------"
-    echo "Validating $NAME..."
-    
-    ./wesnoth --validate data/_main.cfg &> temp.log || SUCCESS="No"
-    if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
-        cat temp.log
-        rm temp.log
-    fi
-    
-    echo "$NAME validation complete!  Success: $SUCCESS"
-    echo "------"
-    
-    [ "$SUCCESS" == "Yes" ]
-}
+reset=$(tput sgr0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+blue=$(tput bold; tput setaf 4)
 
-function validate_misc()
-{
-    SUCCESS="Yes"
-    NAME="$1"
-    DEFINE="$2"
-    
-    echo "------"
-    echo "Validating $NAME..."
-    
-    ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines=$DEFINE &> temp.log || SUCCESS="No"
-    if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
-        cat temp.log
-        rm temp.log
-    fi
-    
-    echo "$NAME validation complete!  Success: $SUCCESS"
-    echo "------"
-    
-    [ "$SUCCESS" == "Yes" ]
-}
+print() { printf '%s%s%s\n' "$blue" "$*" "$reset"; }
+error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
+success() { printf '%s%s%s\n' "$green" "$*" "$reset"; }
 
-function validate_schema()
-{
-    SUCCESS="Yes"
-    NAME="$1"
-    FILE="$2"
-    
-    echo "------"
-    echo "Validating schema $NAME..."
-    
-    ./wesnoth --data-dir=. --validate-schema=data/schema/$FILE.cfg &> temp.log || SUCCESS="No"
-    if [ "$SUCCESS" == "No" ]; then
-        echo "$NAME failed validation!"
-        cat temp.log
-        rm temp.log
-    fi
-    
-    echo "$NAME validation complete!  Success: $SUCCESS"
-    echo "------"
-    
-    [ "$SUCCESS" == "Yes" ]
-}
-
-function validate_campaign()
-{
-    SUCCESS="Yes"
-    NAME="$1"
-    DEFINE="$2"
+validate() {
+    local name="$1"
     shift
-    shift
-    DIFFICULTIES=("$@")
-    
+
     echo "------"
-    echo "Validating $NAME..."
-    
-    for DIFFICULTY in ${DIFFICULTIES[@]}; do
-        if [ "$SUCCESS" == "Yes" ]; then
-            echo "Validating $DIFFICULTY..."
-            ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines=$DEFINE,$DIFFICULTY &> temp.log || SUCCESS="No"
-            
-            if [ "$SUCCESS" == "No" ]; then
-                echo "$NAME failed $DIFFICULTY validation!"
+    print "Validating $name..."
+
+    if "$@" > temp.log 2>&1; then
+        rm temp.log
+        success "$name validation complete!  Success: Yes"
+        echo "------"
+        return 0
+    else
+        error "$name failed validation!"
+        cat temp.log
+        rm temp.log
+        error "$name validation complete!  Success: No"
+        echo "------"
+        return 1
+    fi
+}
+
+validate_core() { validate "$1" ./wesnoth --validate data/_main.cfg; }
+validate_misc() { validate "$1" ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines="$2"; }
+validate_schema() { validate "$1" ./wesnoth --data-dir=. --validate-schema=data/schema/"$2".cfg; }
+
+validate_campaign() {
+    local success=Yes name="$1" define="$2"
+    shift 2
+
+    echo "------"
+    print "Validating $name..."
+
+    for difficulty in "$@"; do
+        if [ "$success" = "Yes" ]; then
+            print "Validating $difficulty..."
+            if ! ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines="$define,$difficulty" > temp.log 2>&1; then
+                success=No
+                error "$name failed $difficulty validation!"
                 cat temp.log
             fi
-            
+
             rm temp.log
         else
-            echo "Skipping $DIFFICULTY validation"
+            echo "Skipping $difficulty validation"
         fi
     done
-    
-    echo "$NAME validation complete!  Success: $SUCCESS"
-    echo "------"
-    
-    [ "$SUCCESS" == "Yes" ]
+
+    if [ "$success" = "Yes" ]; then
+        success "$name validation complete!  Success: Yes"
+        echo "------"
+        return 0
+    else
+        error "$name validation complete!  Success: No"
+        echo "------"
+        return 1
+    fi
 }
 
 RET=0

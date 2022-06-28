@@ -45,20 +45,23 @@ function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem
 				wesnoth.deprecated_message(elem_name, level, version, message)
 			end
 		end
-		return setmetatable({}, {
+		return setmetatable({__deprecated = true}, {
 			__index = show_msg,
 			__newindex = show_msg,
 			__call = show_msg,
 			__metatable = "removed API",
 		})
 	elseif type(elem) == "function" or getmetatable(elem) == "function" then
-		return function(...)
-			if not msg_shown then
-				msg_shown = true
-				wesnoth.deprecated_message(elem_name, level, version, message)
-			end
-			return elem(...)
-		end
+		return setmetatable({__deprecated = true}, {
+			__call = function(self, ...)
+				if not msg_shown then
+					msg_shown = true
+					wesnoth.deprecated_message(elem_name, level, version, message)
+				end
+				return elem(...)
+			end,
+			__metatable = "function"
+		})
 	elseif type(elem) == "table" then
 		-- Don't clobber the old metatable.
 		local old_mt = getmetatable(elem) or {}
@@ -86,7 +89,7 @@ function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem
 			end
 			elem[key] = val
 		end
-		return setmetatable({}, mt)
+		return setmetatable({__deprecated = true}, mt)
 	else
 		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..
 			elem_name .. " -> " .. replacement_name .. ", which is " .. tostring(elem))
@@ -100,7 +103,7 @@ function wesnoth.type(value)
 		local m = getmetatable(value)
 		if type(m) == 'string' then
 			return m
-		elseif type(m.__name) == 'string' then
+		elseif type(m) == 'table' and type(m.__name) == 'string' then
 			return m.__name
 		end
 	end

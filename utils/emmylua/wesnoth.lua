@@ -99,14 +99,16 @@ function wesnoth.eval_formula(formula, variables) end
 ---@overload fun(major:integer, minor?:integer, revision?:integer, suffix?:string):version
 function wesnoth.version(str) end
 
----Construct a version
+---Parse a version
 ---@param str string A version string to parse
+---@return version
+function wesnoth.version(str) end
+---Construct a version
 ---@param major integer The major revision number
 ---@param minor? integer The minor revision number
 ---@param revision? integer The patch revision number
 ---@param suffix string The suffix, including the separator character if any
 ---@return version
----@overload fun(major:integer, minor?:integer, revision?:integer, suffix?:string):version
 function wesnoth.version(major, minor, revision, suffix) end
 
 ---@return version #The current version of Wesnoth
@@ -119,7 +121,7 @@ function wesnoth.ms_since_init() end
 ---@param element_name string The name of the element being deprecated
 ---@param level '1'|'2'|'3'|'4' The deprecation level
 ---@param version string|nil The earliest version the element may be removed in
----@param detail_message An additional message describing the deprecation and usually indicating a replacement
+---@param detail_message string An additional message describing the deprecation and usually indicating a replacement
 function wesnoth.deprecated_message(element_name, level, version, detail_message) end
 
 ---@type table<string, fun(cfg:WML)>

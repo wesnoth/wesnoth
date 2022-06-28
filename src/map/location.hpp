@@ -101,7 +101,7 @@ struct map_location {
 	bool operator==(const map_location& a) const { return x == a.x && y == a.y; }
 	bool operator!=(const map_location& a) const { return !operator==(a); }
 
-        /** three-way comparator */
+	/** three-way comparator */
 	int do_compare(const map_location& a) const {return x == a.x ? y - a.y : x - a.x; }
 
 	// Location arithmetic operations treating the locations as vectors in

@@ -65,20 +65,16 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(0).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(0).draw();
 }
 
-void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(1).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(1).draw();
 }
 
 point panel::border_space() const
@@ -131,9 +127,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_panel::build() const
+std::unique_ptr<widget> builder_panel::build() const
 {
-	panel* widget = new panel(*this);
+	auto widget = std::make_unique<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

@@ -16,12 +16,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp"
 #include "widgets/scrollbar.hpp"
 #include "picture.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "video.hpp"
-#include "sdl/input.hpp" // get_mouse_state
 
 #include <iostream>
 
@@ -45,8 +47,6 @@ namespace gui {
 
 scrollbar::scrollbar(CVideo &video)
 	: widget(video)
-	, mid_scaled_(nullptr)
-	, groove_scaled_(nullptr)
 	, state_(NORMAL)
 	, minimum_grip_height_(0)
 	, mousey_on_grip_(0)
@@ -55,12 +55,12 @@ scrollbar::scrollbar(CVideo &video)
 	, full_height_(0)
 	, scroll_rate_(1)
 {
-	static const surface img(image::get_image(scrollbar_mid));
+	const point img_size(image::get_size(scrollbar_mid));
 
-	if (img != nullptr) {
-		set_width(img->w);
+	if (img_size.x && img_size.y) {
+		set_width(img_size.x);
 		// this is a bit rough maybe
-		minimum_grip_height_ = 2 * img->h;
+		minimum_grip_height_ = 2 * img_size.y;
 	}
 }
 
@@ -157,28 +157,28 @@ SDL_Rect scrollbar::grip_area() const
 
 void scrollbar::draw_contents()
 {
-	surface mid_img;
-	surface bottom_img;
-	surface top_img;
+	texture mid_img;
+	texture bot_img;
+	texture top_img;
 
 	switch (state_) {
 
 	case NORMAL:
-		top_img = image::get_image(scrollbar_top);
-		mid_img = image::get_image(scrollbar_mid);
-		bottom_img = image::get_image(scrollbar_bottom);
+		top_img = image::get_texture(scrollbar_top);
+		mid_img = image::get_texture(scrollbar_mid);
+		bot_img = image::get_texture(scrollbar_bottom);
 		break;
 
 	case ACTIVE:
-		top_img = image::get_image(scrollbar_top_hl);
-		mid_img = image::get_image(scrollbar_mid_hl);
-		bottom_img = image::get_image(scrollbar_bottom_hl);
+		top_img = image::get_texture(scrollbar_top_hl);
+		mid_img = image::get_texture(scrollbar_mid_hl);
+		bot_img = image::get_texture(scrollbar_bottom_hl);
 		break;
 
 	case DRAGGED:
-		top_img = image::get_image(scrollbar_top_pressed);
-		mid_img = image::get_image(scrollbar_mid_pressed);
-		bottom_img = image::get_image(scrollbar_bottom_pressed);
+		top_img = image::get_texture(scrollbar_top_pressed);
+		mid_img = image::get_texture(scrollbar_mid_pressed);
+		bot_img = image::get_texture(scrollbar_bottom_pressed);
 		break;
 
 	case UNINIT:
@@ -187,7 +187,8 @@ void scrollbar::draw_contents()
 	}
 
 	SDL_Rect grip = grip_area();
-	int mid_height = grip.h - top_img->h - bottom_img->h;
+
+	int mid_height = grip.h - top_img.h() - bot_img.h();
 	if (mid_height <= 0) {
 		// For now, minimum size of the middle piece is 1.
 		// This should never really be encountered, and if it is,
@@ -195,16 +196,7 @@ void scrollbar::draw_contents()
 		mid_height = 1;
 	}
 
-	if(!mid_scaled_ || mid_scaled_->h != mid_height) {
-		mid_scaled_ = scale_surface(mid_img, mid_img->w, mid_height);
-	}
-
 	SDL_Rect groove = location();
-
-	if (!mid_scaled_) {
-		std::cerr << "Failure during scrollbar image scale.\n";
-		return;
-	}
 
 	if (grip.h > groove.h) {
 		std::cerr << "abort draw scrollbar: grip too large\n";
@@ -213,13 +205,17 @@ void scrollbar::draw_contents()
 
 	// Draw scrollbar "groove"
 	const color_t c{0, 0, 0, uint8_t(255 * 0.35)};
-
-	sdl::fill_rectangle(groove, c);
+	draw::fill(groove, c);
 
 	// Draw scrollbar "grip"
-	video().blit_surface(grip.x, grip.y, top_img);
-	video().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
-	video().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
+	SDL_Rect dest{grip.x, grip.y, top_img.w(), top_img.h()};
+	draw::blit(top_img, dest);
+
+	dest = {dest.x, dest.y + top_img.h(), mid_img.w(), mid_height};
+	draw::blit(mid_img, dest);
+
+	dest = {dest.x, dest.y + mid_height, bot_img.w(), bot_img.h()};
+	draw::blit(bot_img, dest);
 }
 
 void scrollbar::handle_event(const SDL_Event& event)
@@ -295,7 +291,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 
 	if (new_state != state_) {
 		set_dirty();
-		mid_scaled_ = nullptr;
 		state_ = new_state;
 	}
 }

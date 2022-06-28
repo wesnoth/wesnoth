@@ -25,10 +25,13 @@
 
 class surface;
 
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+/* Data format used by styled_widget::set_members to set settings for a single widget. */
+using widget_item = std::map<std::string, t_string>;
+
+/* Indexes multiple @ref widget_item maps by widget ID. */
+using widget_data = std::map<std::string, widget_item>;
 
 struct builder_widget;
 class window;
@@ -36,7 +39,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -520,45 +523,29 @@ public:
 	/**
 	 * Calculates the blitting rectangle of the widget.
 	 *
-	 * The blitting rectangle is the entire widget rectangle, but offsetted for
-	 * drawing position.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * The blitting rectangle is the entire widget rectangle.
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_blitting_rectangle() const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
-	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
-	 * needs offset parameters.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * @ref redraw_action::partly.
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_clipping_rectangle() const;
 
 	/**
 	 * Draws the background of a widget.
 	 *
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_background();
 
 	/**
 	 * Draws the children of a widget.
@@ -567,14 +554,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_children();
 
 	/**
 	 * Draws the foreground of the widget.
@@ -584,43 +565,22 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_foreground();
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background(surface& /*frame_buffer*/)
-	{
-	}
-	virtual void impl_draw_background(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_background()
 	{
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+	virtual void impl_draw_children()
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_foreground()
 	{
 	}
 
@@ -728,7 +688,6 @@ private:
 	color_t debug_border_color_;
 
 	void draw_debug_border();
-	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
@@ -825,7 +784,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	virtual iteration::walker_ptr create_walker() = 0;
 };
 
 } // namespace gui2

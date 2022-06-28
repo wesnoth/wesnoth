@@ -275,7 +275,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string>>()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
-                ("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
+		("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
 		;
 
 	po::options_description testing_opts("Testing options");

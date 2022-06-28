@@ -28,7 +28,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/wml_error.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -47,6 +46,8 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
+
+using gui2::dialogs::loading_screen;
 
 static game_config_manager* singleton;
 
@@ -116,11 +117,10 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
 	// can cause a crash by accessing the list of hotkeys while it's being modified.
 	events::call_in_main_thread([this]() {
-		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
+		const hotkey::scope_changer hk_scope{hotkey::scope_main, false};
 
 		// Load the standard hotkeys, then apply any player customizations.
-		hotkey::load_hotkeys(game_config(), true);
+		hotkey::load_default_hotkeys(game_config());
 		preferences::load_hotkeys();
 	});
 
@@ -418,12 +418,16 @@ void game_config_manager::load_addons_cfg()
 		}
 	}
 
+	loading_screen::spin();
+
 	// Rerun the directory scan using filename only, to get the addon_ids more easily.
 	user_files.clear();
 	user_dirs.clear();
 
 	filesystem::get_files_in_dir(user_campaign_dir, nullptr, &user_dirs,
 		filesystem::name_mode::FILE_NAME_ONLY);
+
+	loading_screen::spin();
 
 	// Load the addons.
 	for(const std::string& addon_id : user_dirs) {
@@ -436,6 +440,8 @@ void game_config_manager::load_addons_cfg()
 		if(!filesystem::file_exists(main_cfg)) {
 			continue;
 		}
+
+		loading_screen::spin();
 
 		// Try to find this addon's metadata. Author publishing info (_server.pbl) is given
 		// precedence over addon sever-generated info (_info.cfg). If neither are found, it
@@ -488,6 +494,8 @@ void game_config_manager::load_addons_cfg()
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 
+			loading_screen::spin();
+
 			// Load this addon from the cache to a config.
 			config umc_cfg;
 			cache_.get_config(main_cfg, umc_cfg, validator.get());
@@ -513,6 +521,8 @@ void game_config_manager::load_addons_cfg()
 				}
 			}
 
+			loading_screen::spin();
+
 			for(auto& units : umc_cfg.child_range("units")) {
 				for(auto& unit_type : units.child_range("unit_type")) {
 					for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
@@ -531,6 +541,8 @@ void game_config_manager::load_addons_cfg()
 					unit_type.remove_children("advancefrom", [](const config&){return true;});
 				}
 			}
+
+			loading_screen::spin();
 
 			// hardcoded list of 1.14 advancement macros, just used for the error mesage below.
 			static const std::set<std::string> deprecated_defines {
@@ -566,6 +578,8 @@ void game_config_manager::load_addons_cfg()
 				}
 			}
 
+			loading_screen::spin();
+
 			static const std::set<std::string> entry_tags {
 				"era",
 				"modification",
@@ -578,6 +592,8 @@ void game_config_manager::load_addons_cfg()
 			for(const std::string& tagname : entry_tags) {
 				game_config_.append_children_by_move(umc_cfg, tagname);
 			}
+
+			loading_screen::spin();
 
 			addon_cfgs_[addon_id] = std::move(umc_cfg);
 		} catch(const config::error& err) {

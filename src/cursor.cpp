@@ -143,12 +143,12 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 		static const std::string bw_prefix = "cursors-bw/";
 
 		if(use_color) {
-			const surface surf(image::get_image(color_prefix + data.image_color));
+			const surface& surf(image::get_surface(color_prefix + data.image_color));
 
 			// Construct a temporary ptr to provide a new deleter.
 			data.cursor = cursor_ptr_t(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y), SDL_FreeCursor);
 		} else {
-			const surface surf(image::get_image(bw_prefix + data.image_bw));
+			const surface& surf(image::get_surface(bw_prefix + data.image_bw));
 
 			// Construct a temporary ptr to provide a new deleter.
 			data.cursor = cursor_ptr_t(create_cursor(surf), SDL_FreeCursor);

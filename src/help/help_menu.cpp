@@ -160,9 +160,9 @@ int help_menu::process()
 	int mousex, mousey;
 	sdl::get_mouse_state(&mousex, &mousey);
 
-	if (!visible_items_.empty() &&
-            static_cast<std::size_t>(res) < visible_items_.size()) {
-
+	if (!visible_items_.empty()
+		&& static_cast<std::size_t>(res) < visible_items_.size())
+	{
 		selected_item_ = visible_items_[res];
 		const section* sec = selected_item_.sec;
 		if (sec != nullptr) {

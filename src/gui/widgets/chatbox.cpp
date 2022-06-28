@@ -410,10 +410,10 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Add a new chat log page.
 	//
-	string_map item;
+	widget_item item;
 	item["use_markup"] = "true";
 	item["label"] = initial_text;
-	std::map<std::string, string_map> data{{"log_text", item}};
+	widget_data data{{"log_text", item}};
 
 	if(log_ != nullptr) {
 		log_->emplace(name, chatroom_log{item["label"], whisper});
@@ -671,9 +671,9 @@ builder_chatbox::builder_chatbox(const config& cfg)
 {
 }
 
-widget* builder_chatbox::build() const
+std::unique_ptr<widget> builder_chatbox::build() const
 {
-	chatbox* widget = new chatbox(*this);
+	auto widget = std::make_unique<chatbox>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

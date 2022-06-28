@@ -126,22 +126,7 @@ void mouse_action_item::set_mouse_overlay(editor_display& disp)
 
 void mouse_action_item::set_item_mouse_overlay(editor_display& disp, const overlay& u)
 {
-
-	std::stringstream filename;
-	filename << u.image; // << "~RC(" << u.flag_rgb() << '>'
-		//	<< team::get_side_color_id(disp.viewing_side()) << ')';
-
-	surface image(image::get_image(filename.str()));
-	uint8_t alpha = 196;
-	//TODO don't hardcode
-	int size = 72;
-	//int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(image::get_texture(u.image));
 }
 
 

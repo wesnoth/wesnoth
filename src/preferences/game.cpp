@@ -34,8 +34,6 @@
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err, log_config)
 
-using acquaintances_map = std::map<std::string, preferences::acquaintance>;
-
 namespace
 {
 bool message_private_on = false;
@@ -46,7 +44,7 @@ std::set<t_translation::terrain_code> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string>> history_map;
 
-acquaintances_map acquaintances;
+std::map<std::string, preferences::acquaintance> acquaintances;
 
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
@@ -123,13 +121,6 @@ void load_game_prefs()
 {
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
-
-	if(!preferences::get("remember_timer_settings", false)) {
-		preferences::erase("mp_countdown_init_time");
-		preferences::erase("mp_countdown_reservoir_time");
-		preferences::erase("mp_countdown_turn_bonus");
-		preferences::erase("mp_countdown_action_bonus");
-	}
 
 	// We save the password encrypted now. Erase any saved passwords in the prefs file.
 	preferences::erase("password");
@@ -241,15 +232,10 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
-	auto [iter, success] = acquaintances.emplace(nick, new_entry);
-
-	if(!success) {
-		iter->second = new_entry;
-	}
+	auto [iter, added_new] = acquaintances.insert_or_assign(nick, new_entry);
 
 	save_acquaintances();
-
-	return std::pair(&iter->second, success);
+	return std::pair(&iter->second, added_new);
 }
 
 bool remove_acquaintance(const std::string& nick)

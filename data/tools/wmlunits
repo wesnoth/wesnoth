@@ -30,21 +30,8 @@ TIMEOUT = 20
 def copy_images():
     print("Recolorizing pictures.")
     image_collector.copy_and_color_images(options.output)
-    shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                              "unit_tree/menu.js"),
+    shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)), "unit_tree", "menu.js"),
                  options.output)
-
-def shell(com):
-    #print(com)
-    p = subprocess.Popen(com,
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE,
-                         shell=True)
-    out, err = p.communicate()
-    #if out: sys.stdout.write(out)
-    #if err: sys.stdout.write(err)
-
-    return p.returncode
 
 def shell_out(com):
     p = subprocess.Popen(com,
@@ -53,17 +40,11 @@ def shell_out(com):
     out, err = p.communicate()
     return out
 
-def bash(name):
-    return "'" + name.replace("'", "'\\''") + "'"
-
 def move(f, t, name):
+    if os.path.exists(os.path.join(f, name + ".cfg")):
+        shutil.move(os.path.join(f, name + ".cfg"), t)
 
-    if os.path.exists(f + "/" + name + ".cfg"):
-        com = "mv " + f + "/" + bash(name + ".cfg") + " " + t + "/"
-        shell(com)
-
-    com = "mv " + f + "/" + bash(name) + " " + t + "/"
-    return shell(com)
+    shutil.move(os.path.join(f, name), t)
 
 _info = {}
 def get_info(addon):
@@ -72,7 +53,7 @@ def get_info(addon):
         return _info[addon]
     _info[addon] = None
     try:
-        path = options.addons + "/" + addon + "/_info.cfg"
+        path = os.path.join(options.addons, addon, "_info.cfg")
         if os.path.exists(path):
             parser = wmlparser3.Parser(options.wesnoth,
                                        options.config_dir,
@@ -259,7 +240,7 @@ def list_contents():
                 return info.get_text_val("version") + "*" + info.get_text_val("uploads")
 
     try:
-        os.makedirs(options.output + "/mainline")
+        os.makedirs(os.path.join(options.output, "mainline"))
     except OSError:
         pass
 
@@ -300,7 +281,7 @@ def list_contents():
     addons = sorted_by_dependencies(addons)
 
     for i, addon in enumerate(addons):
-        if not os.path.isdir(options.addons + "/" + addon):
+        if not os.path.isdir(os.path.join(options.addons, addon)):
             continue
         mem = "? KB"
         try:
@@ -309,16 +290,16 @@ def list_contents():
             pass
         sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " [" + mem + "] ... ")
         sys.stdout.flush()
-        d = options.output + "/" + addon
-        logname = d + "/error.log"
+        d = os.path.join(options.output, addon)
+        logname = os.path.join(d, "error.log")
         try:
             os.makedirs(d)
         except OSError:
             pass
         version = get_version(addon)
-        move(options.addons, options.config_dir + "/data/add-ons", addon)
+        move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), addon)
         for d in get_dependencies(addon):
-            move(options.addons, options.config_dir + "/data/add-ons", d)
+            move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
         try:
             info = search(batchlist, addon)
             if info.get("version", "") == version and info.get("parsed", False) is True:
@@ -353,9 +334,9 @@ def list_contents():
             ef.close()
             sys.stdout.write("failed\n")
         finally:
-            move(options.config_dir + "/data/add-ons", options.addons, addon)
+            move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, addon)
             for d in get_dependencies(addon):
-                move(options.config_dir + "/data/add-ons", options.addons, d)
+                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
 
     yaml.safe_dump(batchlist, open(filename, "w"),
                    encoding="utf-8", default_flow_style=False)
@@ -446,15 +427,19 @@ def batch_process():
         if name == "mainline":
             worked = True
         else:
-            worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+            try:
+                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), name)
+                worked = True
+            except FileNotFoundError:
+                worked = False
             for d in addon.get("dependencies", []):
-                move(options.addons, options.config_dir + "/data/add-ons", d)
-        d = options.output + "/" + name
+                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
+        d = os.path.join(options.output, name)
         try:
             os.makedirs(d)
         except OSError:
             pass
-        logname = d + "/error.log"
+        logname = os.path.join(d, "error.log")
 
         def err(mess):
             ef = open(logname, "a")
@@ -500,9 +485,9 @@ def batch_process():
             ef.close()
         finally:
             if name != "mainline":
-                move(options.config_dir + "/data/add-ons", options.addons, name)
+                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, name)
                 for d in addon.get("dependencies", []):
-                    move(options.config_dir + "/data/add-ons", options.addons, d)
+                    move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
 
         addon["parsed"] = True
 
