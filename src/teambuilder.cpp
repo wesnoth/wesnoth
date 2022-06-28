@@ -198,6 +198,9 @@ void team_builder::handle_leader(const config& leader)
 		stored.remove_attribute(attr);
 	}
 
+    // Remove [ai] tag as it is already added for the side
+	stored.remove_children("ai");
+
 	// Provide some default values, if not specified.
 	config::attribute_value& a1 = stored["canrecruit"];
 	if(a1.blank()) {

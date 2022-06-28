@@ -2,8 +2,8 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.big_animals(cfg)
-    local required_keys = { "[filter]"}
-    local optional_keys = { "[avoid_unit]", "[filter_location]", "[filter_location_wander]" }
+    local required_keys = { filter = 'tag' }
+    local optional_keys = { avoid_unit = 'tag', filter_location = 'tag', filter_location_wander = 'tag' }
     local CA_parms = {
         ai_id = 'mai_big_animals',
         { ca_id = "move", location = 'ca_big_animals.lua', score = cfg.ca_score or 300000 }
@@ -12,8 +12,8 @@ function wesnoth.micro_ais.big_animals(cfg)
 end
 
 function wesnoth.micro_ais.wolves(cfg)
-	local required_keys = { "[filter]", "[filter_second]" }
-	local optional_keys = { "attack_only_prey", "avoid_type" }
+	local required_keys = { filter = 'tag', filter_second = 'tag' }
+	local optional_keys = { attack_only_prey = 'boolean', avoid_type = 'string' }
 	local score = cfg.ca_score or 90000
 	local CA_parms = {
 		ai_id = 'mai_wolves',
@@ -69,8 +69,10 @@ function wesnoth.micro_ais.herding(cfg)
 	if (cfg.action ~= 'delete') then
 		AH.get_named_loc_xy('herd', cfg, 'Herding [micro_ai] tag')
 	end
-	local required_keys = { "[filter_location]", "[filter]", "[filter_second]" }
-	local optional_keys = { "attention_distance", "attack_distance", "herd_loc", "herd_x", "herd_y" }
+	local required_keys = { filter_location = 'tag', filter = 'tag', filter_second = 'tag' }
+	local optional_keys = { attention_distance = 'integer', attack_distance = 'integer',
+	    herd_loc = 'string', herd_x = 'integer', herd_y = 'integer'
+	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_herding',
@@ -112,8 +114,9 @@ function wesnoth.persistent_tags.micro_ai_rabbits.write(add)
 end
 
 function wesnoth.micro_ais.forest_animals(cfg)
-	local optional_keys = { "rabbit_type", "rabbit_number", "rabbit_enemy_distance", "rabbit_hole_img",
-		"tusker_type", "tusklet_type", "deer_type", "[filter_location]"
+	local optional_keys = { rabbit_type = 'string', rabbit_number = 'integer',
+	    rabbit_enemy_distance = 'integer', rabbit_hole_img = 'string', tusker_type = 'string',
+	    tusklet_type = 'string', deer_type = 'string', filter_location = 'tag'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -146,7 +149,9 @@ function wesnoth.micro_ais.forest_animals(cfg)
 end
 
 function wesnoth.micro_ais.swarm(cfg)
-	local optional_keys = { "[avoid]", "[filter]", "scatter_distance", "vision_distance", "enemy_distance" }
+	local optional_keys = { avoid = 'tag', filter = 'tag', scatter_distance = 'integer',
+	    vision_distance = 'integer', enemy_distance = 'integer'
+	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_swarm',
@@ -157,7 +162,7 @@ function wesnoth.micro_ais.swarm(cfg)
 end
 
 function wesnoth.micro_ais.wolves_multipacks(cfg)
-	local optional_keys = { "[avoid]", "type", "pack_size", "show_pack_number" }
+	local optional_keys = { avoid = 'tag', type = 'string', pack_size = 'integer', show_pack_number = 'boolean' }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_wolves_multipacks',
@@ -175,7 +180,9 @@ function wesnoth.micro_ais.hunter(cfg)
 		AH.get_named_loc_xy('home', cfg, 'Hunter [micro_ai] tag')
 	end
 	local required_keys = {}
-	local optional_keys = { "id", "[filter]", "[filter_location]", "home_loc", "home_x", "home_y", "rest_turns", "show_messages" }
+	local optional_keys = { id = 'string', filter = 'tag', filter_location = 'tag', home_loc = 'string',
+	    home_x = 'integer', home_y = 'integer', rest_turns = 'integer', show_messages = 'boolean'
+	}
 	local CA_parms = {
 		ai_id = 'mai_hunter',
 		{ ca_id = "move", location = 'ca_hunter.lua', score = cfg.ca_score or 300000 }
