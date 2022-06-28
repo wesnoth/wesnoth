@@ -114,6 +114,14 @@ function artifacts.give_item(unit, index, visualize)
 	unit:add_modification("object", object)
 	--rebuild unit, to reduce savefile size.
 	unit:transform(unit.type)
+
+	-- slot in traits if any artifacts grant any
+	for trait in wml.child_range(artifacts.list[index], "trait") do
+		if not unit:matches { wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } } then
+			unit:add_modification("trait", trait)
+		end
+	end
+
 	-- restore unit hitpoints to before they picked up the artifact
 	unit.hitpoints = unit_initial_hp
 	-- the artifact might reduce the max xp.

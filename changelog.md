@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * World Conquest
+     * Fixed Bezoar artifact being bugged and broken.
  ### Editor
  ### Multiplayer
  ### Lua API
