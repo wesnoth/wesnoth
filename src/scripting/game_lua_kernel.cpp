@@ -3762,24 +3762,26 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 					new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
 					has_lua_filter = true;
 				} else {
-					if(luaW_tableget(L, filterIdx, "condition")) {
-						filters.add_child("filter_condition", luaW_checkconfig(L, -1));
-					}
-					if(luaW_tableget(L, filterIdx, "side")) {
-						filters.add_child("filter_side", luaW_checkconfig(L, -1));
-					}
-					if(luaW_tableget(L, filterIdx, "unit")) {
-						filters.add_child("filter", luaW_checkconfig(L, -1));
-					}
-					if(luaW_tableget(L, filterIdx, "attack")) {
-						filters.add_child("filter_attack", luaW_checkconfig(L, -1));
-					}
-					if(luaW_tableget(L, filterIdx, "second_unit")) {
-						filters.add_child("filter_second", luaW_checkconfig(L, -1));
-					}
-					if(luaW_tableget(L, filterIdx, "second_attack")) {
-						filters.add_child("filter_second_attack", luaW_checkconfig(L, -1));
-					}
+#define READ_ONE_FILTER(key) \
+					do { \
+						if(luaW_tableget(L, filterIdx, key)) { \
+							if(lua_isstring(L, -1)) { \
+								filters.add_child("insert_tag", config{ \
+									"name", "filter_" key, \
+									"variable", luaL_checkstring(L, -1) \
+								}); \
+							} else { \
+								filters.add_child("filter_" key, luaW_checkconfig(L, -1)); \
+							} \
+						} \
+					} while(false);
+					READ_ONE_FILTER("condition");
+					READ_ONE_FILTER("side");
+					READ_ONE_FILTER("unit");
+					READ_ONE_FILTER("attack");
+					READ_ONE_FILTER("second_unit");
+					READ_ONE_FILTER("second_attack");
+#undef READ_ONE_FILTER
 					if(luaW_tableget(L, filterIdx, "formula")) {
 						filters["filter_formula"] = luaL_checkstring(L, -1);
 					}
