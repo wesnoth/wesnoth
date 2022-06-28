@@ -30,7 +30,6 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/render_utils.hpp"
 #include "sdl/texture.hpp"
 
 #include <SDL2/SDL_image.h>

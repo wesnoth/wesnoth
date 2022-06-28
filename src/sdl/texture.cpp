@@ -14,9 +14,9 @@
 
 #include "sdl/texture.hpp"
 
+#include "color.hpp"
 #include "log.hpp"
 #include "sdl/point.hpp"
-#include "sdl/render_utils.hpp"
 #include "sdl/surface.hpp"
 #include "video.hpp"
 
@@ -90,9 +90,7 @@ texture::texture(int width, int height, SDL_TextureAccess access)
 
 void texture::finalize()
 {
-	if (texture_) {
-		set_texture_blend_mode(*this, SDL_BLENDMODE_BLEND);
-	}
+	set_blend_mode(SDL_BLENDMODE_BLEND);
 }
 
 void texture::set_draw_size(const point& p)
