@@ -95,7 +95,7 @@ function wesnoth.wml_actions.wc2_random_hero(cfg)
 	local t = wc2_era.pick_deserter(side_num)
 
 	if t == nil then
-		print("No serserter available for side", side_num)
+		print("No deserter available for side", side_num)
 		return
 	end
 	wc2_heroes.place(t, side_num, x, y)
