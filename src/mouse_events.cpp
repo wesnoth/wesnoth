@@ -41,6 +41,7 @@
 #include "units/animation_component.hpp"
 #include "units/ptr.hpp"           // for unit_const_ptr
 #include "units/unit.hpp"          // for unit
+#include "utils/guard_value.hpp"
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
@@ -776,7 +777,10 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 
 void mouse_handler::select_or_action(bool browse)
 {
-	if(!pc_.get_map().on_board(last_hex_)) {
+	// Save a copy of the hex in case the mouse moves in the middle of this handler
+	auto clicked_hex = last_hex_, attack_hex = previous_hex_;
+	auto saved_route = current_route_;
+	if(!pc_.get_map().on_board(clicked_hex)) {
 		tooltips::click(drag_from_x_, drag_from_y_);
 		return;
 	}
@@ -785,17 +789,26 @@ void mouse_handler::select_or_action(bool browse)
 	wb::future_map_if_active planned_unit_map;
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->select_hex_callback(last_hex_);
+		lk->select_hex_callback(clicked_hex);
+		// The callback may modify clicked_hex, so make sure it's still valid
+		if(!pc_.get_map().on_board(clicked_hex)) {
+			return;
+		}
 	}
 
-	unit_map::iterator clicked_u = find_unit(last_hex_);
+	unit_map::iterator clicked_u = find_unit(clicked_hex);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
-		select_hex(last_hex_, false);
+		select_hex(clicked_hex, false);
 	} else {
+		// There's a small chance the last hex has changed since this function began.
+		// Make sure the move applies to the hex that was originally clicked!
+		utils::guard_value clicked(last_hex_, clicked_hex);
+		utils::guard_value prev(previous_hex_, attack_hex);
+		utils::guard_value route(current_route_, saved_route);
 		move_action(browse);
 	}
 }

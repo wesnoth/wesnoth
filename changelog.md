@@ -5,6 +5,8 @@
  ### Editor
  ### Multiplayer
  ### Lua API
+   * Fix a bug where a `wesnoth.game_events.on_mouse_action` callback could transfer the click to a different hex
+     if the callback takes significant time to run and the mouse moves in the meantime.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.10.
  ### Terrain
