@@ -1088,9 +1088,9 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 		y = prev.y + prev.h;
 	}
 
-	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
+	rect res(loc.x, y, loc.w, get_item_height(item));
 
-	const SDL_Rect& draw_area = video().draw_area();
+	const rect draw_area = video().draw_area();
 
 	if(res.x > draw_area.w) {
 		return sdl::empty_rect;

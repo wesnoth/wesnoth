@@ -214,12 +214,12 @@ void textbox::draw_contents()
 					break;
 				}
 
-				SDL_Rect rect = sdl::create_rect(loc.x + startx
+				rect r(loc.x + startx
 						, loc.y + starty - src.y
 						, right - startx
 						, line_height_);
 
-				draw::fill(rect, 0, 0, 160, 140);
+				draw::fill(r, 0, 0, 160, 140);
 
 				starty += int(line_height_);
 				startx = 0;

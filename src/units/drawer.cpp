@@ -439,8 +439,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	const std::size_t skip_rows = bar_loc.h - height;
 
-	SDL_Rect top {0, 0, surf->w, bar_loc.y};
-	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
+	rect top{0, 0, surf->w, bar_loc.y};
+	rect bot(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
 	// TODO: highdpi - fix. see above
@@ -456,7 +456,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	if(unfilled < height && alpha >= floating_to_fixed_point(0.3)) {
 		const uint8_t r_alpha = std::min<unsigned>(fixed_point_multiply(alpha,255),255);
 		surface filled_surf(bar_loc.w, height - unfilled);
-		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
+		rect filled_area(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		dest = {xpos + bar_loc.x, ypos + bar_loc.y + int(unfilled),
 			filled_surf->w, filled_surf->h};

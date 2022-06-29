@@ -29,17 +29,6 @@ namespace sdl
 
 constexpr const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
-/**
- * Creates an SDL_Rect with the given dimensions.
- *
- * This is a simple wrapper in order to avoid the narrowing conversion warnings
- * that occur when using aggregate initialization and non-int values.
- */
-inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
-{
-	return {x, y, w, h};
-}
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
