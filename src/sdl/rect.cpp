@@ -32,14 +32,6 @@ SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 	return res;
 }
 
-SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	SDL_Rect res;
-	SDL_UnionRect(&rect1, &rect2, &res);
-
-	return res;
-}
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
@@ -88,6 +80,13 @@ bool rect::overlaps(const SDL_Rect& r) const
 {
 	return (r.x < x + w && x < r.x + r.w &&
 	        r.y < y + h && y < r.y + r.h);
+}
+
+rect rect::minimal_cover(const SDL_Rect& other) const
+{
+	rect result;
+	SDL_UnionRect(this, &other, &result);
+	return result;
 }
 
 std::ostream& operator<<(std::ostream& s, const rect& r)
