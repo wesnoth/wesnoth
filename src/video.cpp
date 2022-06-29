@@ -472,7 +472,7 @@ SDL_Point CVideo::window_size() const
 	return window->get_size();
 }
 
-SDL_Rect CVideo::draw_area() const
+rect CVideo::draw_area() const
 {
 	return {0, 0, logical_size_.x, logical_size_.y};
 }
@@ -522,7 +522,7 @@ SDL_Texture* CVideo::get_render_target()
 SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
 {
 	if(r) {
-		return sdl::intersect_rects(*r, draw_area());
+		return draw_area().intersect(*r);
 	} else {
 		return draw_area();
 	}
@@ -588,9 +588,9 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	}
 
 	// Intersect with the given rect.
-	SDL_Rect r_clipped = d;
+	rect r_clipped = d;
 	if (r) {
-		r_clipped = sdl::intersect_rects(*r, d);
+		r_clipped.clip(*r);
 		if (r_clipped != *r) {
 			DBG_DP << "modifying pixel read area\n"
 			       << "  from " << *r << "\n"

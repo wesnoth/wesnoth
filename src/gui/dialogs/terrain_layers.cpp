@@ -107,8 +107,9 @@ void terrain_layers::pre_show(window& window)
 		// Cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
 		// TODO: ^ eh? what limitations?
-		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,img_size.x,img_size.y});
-		if(r2.w > 0 && r2.h > 0) {
+		rect r2{0, 0, img_size.x, img_size.y};
+		r2.clip(r);
+		if(!r2.empty()) {
 			image_steam
 				<< "~BLIT(" << name
 					<< "~CROP("

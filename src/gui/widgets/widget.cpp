@@ -459,7 +459,7 @@ SDL_Rect widget::get_dirty_rectangle() const
 
 void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 {
-	clipping_rectangle_ = sdl::intersect_rects(rectangle, get_rectangle());
+	clipping_rectangle_ = get_rectangle().intersect(rectangle);
 
 	if(clipping_rectangle_ == get_rectangle()) {
 		redraw_action_ = redraw_action::full;

@@ -466,7 +466,7 @@ void scrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
 	container_base::set_visible_rectangle(rectangle);
 
 	// Now get the visible part of the content.
-	content_visible_area_ = sdl::intersect_rects(rectangle, content_->get_rectangle());
+	content_visible_area_ = content_->get_rectangle().intersect(rectangle);
 
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }

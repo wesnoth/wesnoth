@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "sdl/rect.hpp"
 #include "sdl/texture.hpp" // for surface_restorer. Remove that, then remove this
 #include "utils/const_clone.hpp"
 
@@ -118,19 +119,19 @@ std::ostream& operator<<(std::ostream& stream, const surface& surf);
 struct surface_restorer
 {
 	surface_restorer();
-	surface_restorer(class CVideo* target, const SDL_Rect& rect);
+	surface_restorer(class CVideo* target, const rect& location);
 	~surface_restorer();
 
 	void restore() const;
-	void restore(const SDL_Rect& dst) const;
+	void restore(const rect& dst) const;
 	void update();
 	void cancel();
 
-	const SDL_Rect& area() const { return rect_; }
+	const rect& area() const { return rect_; }
 
 private:
 	class CVideo* target_;
-	SDL_Rect rect_;
+	rect rect_;
 	texture surface_;
 };
 

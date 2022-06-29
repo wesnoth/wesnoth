@@ -40,16 +40,6 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 	return {x, y, w, h};
 }
 
-/**
- * Calculates the intersection of two rectangles.
- *
- * @param rect1                   One rectangle.
- * @param rect2                   Another rectangle
- * @return                        The intersection of rect1 and rect2, or
- *                                empty_rect if they don't overlap.
- */
-SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
@@ -106,6 +96,19 @@ public:
 	 * this rectangle and the given rectangle.
 	 */
 	rect minimal_cover(const SDL_Rect& r) const;
+
+	/**
+	 * Calculates the intersection of this rectangle and another;
+	 * that is, the maximal rectangle that is contained by both.
+	 */
+	rect intersect(const SDL_Rect& r) const;
+
+	/**
+	 * Clip this rectangle by the given rectangle.
+	 *
+	 * This rectangle will be reduced to the intersection of both rectangles.
+	 */
+	void clip(const SDL_Rect& r);
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);

@@ -85,14 +85,14 @@ void surface::free_surface()
 
 surface_restorer::surface_restorer()
 	: target_(nullptr)
-	, rect_(sdl::empty_rect)
+	, rect_()
 	, surface_()
 {
 }
 
-surface_restorer::surface_restorer(CVideo* target, const SDL_Rect& rect)
+surface_restorer::surface_restorer(CVideo* target, const rect& location)
 	: target_(target)
-	, rect_(rect)
+	, rect_(location)
 	, surface_()
 {
 	update();
@@ -103,18 +103,18 @@ surface_restorer::~surface_restorer()
 	restore();
 }
 
-void surface_restorer::restore(const SDL_Rect& dst) const
+void surface_restorer::restore(const rect& dst) const
 {
 	if(!surface_) {
 		return;
 	}
 
-	SDL_Rect dst2 = sdl::intersect_rects(dst, rect_);
+	rect dst2 = rect_.intersect(dst);
 	if(dst2.w == 0 || dst2.h == 0) {
 		return;
 	}
 
-	SDL_Rect src = dst2;
+	rect src = dst2;
 	src.x -= rect_.x;
 	src.y -= rect_.y;
 	draw::blit(surface_, dst2, src);
