@@ -22,12 +22,6 @@
 
 namespace sdl
 {
-bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	return (rect1.x < rect2.x+rect2.w && rect2.x < rect1.x+rect1.w &&
-			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
-}
-
 SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
 	SDL_Rect res;
@@ -88,6 +82,12 @@ bool rect::contains(int x, int y) const
 bool rect::contains(const point& point) const
 {
 	return SDL_PointInRect(&point, this) != SDL_FALSE;
+}
+
+bool rect::overlaps(const SDL_Rect& r) const
+{
+	return (r.x < x + w && x < r.x + r.w &&
+	        r.y < y + h && y < r.y + r.h);
 }
 
 std::ostream& operator<<(std::ostream& s, const rect& r)
