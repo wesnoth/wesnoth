@@ -145,8 +145,11 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
-	if(!filter_alignment.empty() && filter_alignment.count(attack.attack_alignment()) == 0){
-		return false;
+	if(!filter_alignment.empty()){
+		std::string attack_alignment = (tag_name == "attack_alignment") ? attack.attack_alignment() : unit_alignments::get_string((attack.specials_alignment()).first);
+		if (filter_alignment.count(attack_alignment) == 0 ){
+			return false;
+		}
 	}
 
 	if (!filter_type.empty()){

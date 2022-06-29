@@ -186,8 +186,9 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	int damage_multiplier = 100;
 
 	// Time of day bonus.
+	std::pair<unit_alignments::type, int> alignment = weapon->specials_alignment();
 	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, weapon->alignment_in_attack(), u.is_fearless());
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment.first, u.is_fearless(), alignment.second);
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -1583,23 +1584,23 @@ int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
 		unit_alignments::type alignment,
-		bool is_fearless)
+		bool is_fearless, int special_bonus)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
 	const time_of_day& effective_tod = tod_m.get_illuminated_time_of_day(units, map, loc);
-	return combat_modifier(effective_tod, alignment, is_fearless);
+	return combat_modifier(effective_tod, alignment, is_fearless, special_bonus);
 }
 
 int combat_modifier(const time_of_day& effective_tod,
 		unit_alignments::type alignment,
-		bool is_fearless)
+		bool is_fearless, int special_bonus)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
 	const int lawful_bonus = effective_tod.lawful_bonus;
-	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus());
+	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus(), special_bonus);
 }
 
-int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, bool is_fearless, int max_liminal_bonus)
+int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, bool is_fearless, int max_liminal_bonus, int special_bonus)
 {
 	int bonus;
 
@@ -1620,6 +1621,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 		bonus = 0;
 	}
 
+	bonus *= special_bonus;
 	if(is_fearless) {
 		bonus = std::max<int>(bonus, 0);
 	}

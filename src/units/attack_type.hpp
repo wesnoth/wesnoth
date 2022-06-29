@@ -91,6 +91,9 @@ public:
 	/** Returns alignment specified by 'attack_alignment' If empty and have unit's alignment returns the unit's alignment.
 	 */
 	unit_alignments::type alignment_in_attack() const;
+	/** Returns alignment used in [attack_alignment] and percentage of alignment bonus. If no such specials are active, it returns the unit's alignment.
+	 */
+	std::pair<unit_alignments::type, int> specials_alignment() const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,

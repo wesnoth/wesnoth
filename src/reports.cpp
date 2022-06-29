@@ -786,8 +786,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		unit_alignments::type alignment = weapon->alignment_in_attack();
-		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), alignment, u.is_fearless());
+		std::pair<unit_alignments::type, int> alignment = weapon->specials_alignment();
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), alignment.first, u.is_fearless(), alignment.second);
 		damage_multiplier += tod_bonus;
 		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
@@ -957,9 +957,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
-		if(alignment != u.alignment()){
-			const std::string align = unit_type::alignment_description(alignment, u.gender());
-			const std::string align_id = unit_alignments::get_string(alignment);
+		if(alignment.first != u.alignment() || alignment.second != 1){
+			const std::string align = unit_type::alignment_description(alignment.first, u.gender());
+			const std::string align_id = unit_alignments::get_string(alignment.first);
 
 			color_t color = font::weapon_color;
 			if (tod_bonus != 0)
