@@ -201,8 +201,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 				page_type = "settings",
 			}
 
-			page.checkbox_use_pya.selected = not not wml.variables["wc2_config_enable_pya"]
-			page.checkbox_use_pya.enabled = false
 			page.checkbox_use_markers.selected = not not wml.variables["wc2_config_enable_unitmarker"]
 			page.checkbox_use_markers.enabled = false
 			page.checkbox_use_pickup.selected = not not wml.variables["wc2_config_experimental_pickup"]
