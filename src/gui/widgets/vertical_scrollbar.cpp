@@ -64,11 +64,12 @@ unsigned vertical_scrollbar::offset_after() const
 
 bool vertical_scrollbar::on_positioner(const point& coordinate) const
 {
-	SDL_Rect positioner_rect =
-		sdl::create_rect(0, get_positioner_offset(), get_width(), get_positioner_length());
+	rect positioner_rect(
+		0, get_positioner_offset(), get_width(), get_positioner_length()
+	);
 
 	// Note we assume the positioner is over the entire height of the widget.
-	return sdl::point_in_rect(coordinate, positioner_rect);
+	return positioner_rect.contains(coordinate);
 }
 
 int vertical_scrollbar::on_bar(const point& coordinate) const

@@ -640,9 +640,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		grabmouse_ = false;
 	}
 
-	const SDL_Rect& loc = inner_location();
+	const rect loc = inner_location();
 
-	const bool mouse_inside = sdl::point_in_rect(mousex, mousey, loc);
+	const bool mouse_inside = loc.contains(mousex, mousey);
 
 	// Someone else may set the mouse cursor for us to something unusual (e.g.
 	// the WAIT cursor) so we ought to mess with that only if it's set to
@@ -699,7 +699,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
 	if(!was_forwarded && focus(&event) == false) {
-		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && sdl::point_in_rect(mousex, mousey, loc))
+		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && loc.contains(mousex, mousey))
 			events::focus_handler(this);
 
 		return;

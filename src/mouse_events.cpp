@@ -145,7 +145,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
 		sdl::get_mouse_state(&mx, &my);
 
-		if(sdl::point_in_rect(x, y, gui().map_area())) {
+		if(gui().map_area().contains(x, y)) {
 			int dx = drag_from_x_ - mx;
 			int dy = drag_from_y_ - my;
 
@@ -771,7 +771,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 		return false;
 	}
 
-	return sdl::point_in_rect(x, y, gui().map_area());
+	return gui().map_area().contains(x, y);
 }
 
 void mouse_handler::select_or_action(bool browse)

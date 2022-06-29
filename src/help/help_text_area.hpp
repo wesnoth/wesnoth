@@ -67,7 +67,7 @@ private:
 			 bool floating, bool box=false, ALIGNMENT=HERE);
 
 		/** Relative coordinates of this item. */
-		SDL_Rect rect;
+		rect rect_;
 
 		texture tex;
 

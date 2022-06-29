@@ -70,7 +70,7 @@ public:
 	//TODO move to widget
 	bool hit(int x, int y) const
 	{
-		return sdl::point_in_rect(x, y, location());
+		return location().contains(x, y);
 	}
 
 	void mouse_up(const SDL_MouseButtonEvent& e)

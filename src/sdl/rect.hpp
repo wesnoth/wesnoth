@@ -41,20 +41,6 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 }
 
 /**
- * Tests whether a point is inside a rectangle.
- *
- * @param x                       The x coordinate of the point.
- * @param y                       The y coordinate of the point.
- * @param rect                    The rectangle.
- *
- * @return                        True if point (x;y) is inside or on the border
- *                                of rect, false otherwise
- */
-bool point_in_rect(int x, int y, const SDL_Rect& rect);
-
-bool point_in_rect(const point& point, const SDL_Rect& rect);
-
-/**
  * Tests whether two rectangles overlap.
  *
  * @param rect1                   One rectangle.
@@ -130,6 +116,10 @@ public:
 
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
+
+	/** Whether the given point lies within the rectangle. */
+	bool contains(int x, int y) const;
+	bool contains(const point& p) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);

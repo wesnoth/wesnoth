@@ -83,7 +83,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 		if(!yes_actually_dragging
 		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
-		   && sdl::point_in_rect(x_now, y_now, get_display().map_area()))
+		   && get_display().map_area().contains(x_now, y_now))
 		{
 			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
 			if(m != nullptr) {
@@ -214,7 +214,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
 			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
 			   // TODO: Move to right_click_show_menu?
-			   && sdl::point_in_rect(x, y, get_display().map_area())
+			   && get_display().map_area().contains(x, y)
 			   // TODO: This chain repeats in several places, move to a method.
 			   && get_display().get_theme().context_menu() != nullptr) {
 				show_menu(get_display().get_theme().context_menu()->items(),
@@ -284,7 +284,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		: 0;
 
 	for(const theme::menu& m : get_display().get_theme().menus()) {
-		if(sdl::point_in_rect(mousex, mousey, m.get_location())) {
+		if(m.get_location().contains(mousex, mousey)) {
 			scroll_threshold = 0;
 		}
 	}
@@ -334,9 +334,9 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		const SDL_Point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {
-			const SDL_Rect& rect = get_display().map_outside_area();
-
-			if(sdl::point_in_rect(mousex, mousey, rect) && mh_base.scroll_started()) {
+			if(get_display().map_outside_area().contains(mousex, mousey)
+				&& mh_base.scroll_started())
+			{
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
 				const double speed = 0.01 * scroll_amount;

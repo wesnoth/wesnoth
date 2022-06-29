@@ -40,7 +40,7 @@ protected:
 	virtual void scroll(unsigned int pos) = 0;
 	virtual void set_inner_location(const SDL_Rect& rect) = 0;
 
-	SDL_Rect inner_location() const;
+	rect inner_location() const;
 	unsigned scrollbar_width() const;
 
 	unsigned get_position() const;

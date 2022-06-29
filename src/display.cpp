@@ -534,9 +534,9 @@ bool display::is_blindfolded() const
 	return blindfold_ctr_ > 0;
 }
 
-const SDL_Rect& display::max_map_area() const
+rect display::max_map_area() const
 {
-	static SDL_Rect max_area{0, 0, 0, 0};
+	rect max_area{0, 0, 0, 0};
 
 	// hex_size() is always a multiple of 4
 	// and hex_width() a multiple of 3,
@@ -551,18 +551,16 @@ const SDL_Rect& display::max_map_area() const
 	return max_area;
 }
 
-const SDL_Rect& display::map_area() const
+rect display::map_area() const
 {
-	static SDL_Rect max_area;
-	max_area = max_map_area();
+	rect max_area = max_map_area();
 
 	// if it's for map_screenshot, maximize and don't recenter
 	if(map_screenshot_) {
 		return max_area;
 	}
 
-	static SDL_Rect res;
-	res = map_outside_area();
+	rect res = map_outside_area();
 
 	if(max_area.w < res.w) {
 		// map is smaller, center
@@ -589,13 +587,13 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 // This function uses the screen as reference
 const map_location display::hex_clicked_on(int xclick, int yclick) const
 {
-	const SDL_Rect& rect = map_area();
-	if(sdl::point_in_rect(xclick,yclick,rect) == false) {
+	rect r = map_area();
+	if(!r.contains(xclick, yclick)) {
 		return map_location();
 	}
 
-	xclick -= rect.x;
-	yclick -= rect.y;
+	xclick -= r.x;
+	yclick -= r.y;
 
 	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
 }
@@ -752,7 +750,7 @@ map_location display::minimap_location_on(int x, int y)
 	// TODO: don't return location for this,
 	//  instead directly scroll to the clicked pixel position
 
-	if(!sdl::point_in_rect(x, y, minimap_area())) {
+	if(!minimap_area().contains(x, y)) {
 		return map_location();
 	}
 
@@ -2497,7 +2495,7 @@ const map_labels& display::labels() const
 	return *map_labels_;
 }
 
-const SDL_Rect& display::get_clip_rect()
+rect display::get_clip_rect() const
 {
 	return map_area();
 }

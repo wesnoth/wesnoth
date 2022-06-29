@@ -31,9 +31,9 @@ static const int text_width = 400;
 struct tooltip
 {
 	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false, const surface& fg = surface())
-	: rect(r), message(msg), action(act), markup(use_markup), foreground(fg)
+	: rect_(r), message(msg), action(act), markup(use_markup), foreground(fg)
 	{}
-	SDL_Rect rect;
+	rect rect_;
 	std::string message;
 	std::string action;
 	bool markup;
@@ -88,13 +88,13 @@ static void show_tooltip(const tooltip& tip)
 	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
 
 	//see if there is enough room to fit it above the tip area
-	if(tip.rect.y > rect.h) {
-		rect.y = tip.rect.y - rect.h;
+	if(tip.rect_.y > rect.h) {
+		rect.y = tip.rect_.y - rect.h;
 	} else {
-		rect.y = tip.rect.y + tip.rect.h;
+		rect.y = tip.rect_.y + tip.rect_.h;
 	}
 
-	rect.x = tip.rect.x;
+	rect.x = tip.rect_.x;
 	if(rect.x < 0) {
 		rect.x = 0;
 	} else if(rect.x + rect.w > area.w) {
@@ -128,7 +128,7 @@ void clear_tooltips()
 void clear_tooltips(const SDL_Rect& rect)
 {
 	for(std::map<int,tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(sdl::rects_overlap(i->second.rect,rect)) {
+		if(sdl::rects_overlap(i->second.rect_,rect)) {
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
@@ -150,7 +150,7 @@ bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
 	it->second.action = action;
 	it->second.markup = use_markup;
 	it->second.message = message;
-	it->second.rect = rect;
+	it->second.rect_ = rect;
 	return true;
 }
 
@@ -163,7 +163,7 @@ bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
 	it->second.foreground = foreground;
 	it->second.markup = use_markup;
 	it->second.message = message;
-	it->second.rect = rect;
+	it->second.rect_ = rect;
 	return true;
 }
 
@@ -188,8 +188,8 @@ int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::str
 void process(int mousex, int mousey)
 {
 	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(mousex > i->second.rect.x && mousey > i->second.rect.y &&
-		   mousex < i->second.rect.x + i->second.rect.w && mousey < i->second.rect.y + i->second.rect.h) {
+		if(mousex > i->second.rect_.x && mousey > i->second.rect_.y &&
+		   mousex < i->second.rect_.x + i->second.rect_.w && mousey < i->second.rect_.y + i->second.rect_.h) {
 			if(current_tooltip != i) {
 				show_tooltip(i->second);
 				current_tooltip = i;
@@ -206,7 +206,7 @@ void process(int mousex, int mousey)
 bool click(int mousex, int mousey)
 {
 	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(!i->second.action.empty() && sdl::point_in_rect(mousex, mousey, i->second.rect)) {
+		if(!i->second.action.empty() && i->second.rect_.contains(mousex, mousey)) {
 			help::show_help(i->second.action);
 			return true;
 		}
