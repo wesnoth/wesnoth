@@ -309,14 +309,14 @@ void listbox::list_item_clicked(widget& caller)
 		return;
 	}
 
-	const SDL_Rect& visible = content_visible_area();
-	SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+	const rect& visible = content_visible_area();
+	rect r = generator_->item(selected_item).get_rectangle();
 
-	if(sdl::rects_overlap(visible, rect)) {
-		rect.x = visible.x;
-		rect.w = visible.w;
+	if(visible.overlaps(r)) {
+		r.x = visible.x;
+		r.w = visible.w;
 
-		show_content_rect(rect);
+		show_content_rect(r);
 	}
 }
 

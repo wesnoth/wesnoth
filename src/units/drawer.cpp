@@ -225,8 +225,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
-		SDL_Rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
-		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
+		rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
+		draw_bars = unit_rect.overlaps(disp.map_outside_area());
 	}
 	texture ellipse_front;
 	texture ellipse_back;

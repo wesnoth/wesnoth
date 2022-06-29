@@ -189,7 +189,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 bool widget::hidden() const
 {
 	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
-		|| (clip_ && !sdl::rects_overlap(clip_rect_, rect_)));
+		|| (clip_ && !rect_.overlaps(clip_rect_)));
 }
 
 void widget::enable(bool new_val)

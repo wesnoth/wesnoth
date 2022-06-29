@@ -67,7 +67,7 @@ private:
 
 	int x_, y_, w_, h_;
 	texture tex_, buffer_;
-	SDL_Rect rect_, buffer_pos_;
+	rect rect_, buffer_pos_;
 
 	/** The location of the center of the halo. */
 	map_location loc_;
@@ -210,21 +210,20 @@ bool halo_impl::effect::render()
 	const int xpos = x_ + screenx - w_/2;
 	const int ypos = y_ + screeny - h_/2;
 
-	SDL_Rect rect {xpos, ypos, w_, h_};
-	rect_ = rect;
-	SDL_Rect clip_rect = disp->map_outside_area();
+	rect_ = {xpos, ypos, w_, h_};
+	rect clip_rect = disp->map_outside_area();
 
 	// If rendered the first time, need to determine the area affected.
 	// If a halo changes size, it is not updated.
 	if(location_not_known()) {
-		display::rect_of_hexes hexes = disp->hexes_under_rect(rect);
+		display::rect_of_hexes hexes = disp->hexes_under_rect(rect_);
 		display::rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
 		for (;i != end; ++i) {
 			overlayed_hexes_.push_back(*i);
 		}
 	}
 
-	if(sdl::rects_overlap(rect,clip_rect) == false) {
+	if(!clip_rect.overlaps(rect_)) {
 		buffer_.reset();
 		return false;
 	}
@@ -235,9 +234,9 @@ bool halo_impl::effect::render()
 	buffer_ = disp->video().read_texture(&buffer_pos_);
 
 	if (orientation_ == NORMAL) {
-		draw::blit(tex_, rect);
+		draw::blit(tex_, rect_);
 	} else {
-		draw::flipped(tex_, rect,
+		draw::flipped(tex_, rect_,
 			orientation_ == HREVERSE || orientation_ == HVREVERSE,
 			orientation_ == VREVERSE || orientation_ == HVREVERSE);
 	}

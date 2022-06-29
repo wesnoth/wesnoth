@@ -1527,8 +1527,8 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	}
 
 	// TODO: highdpi - are x,y correct here?
-	SDL_Rect dest = scaled_to_zoom({x, y, image_size.x, image_size.y});
-	if (!sdl::rects_overlap(dest, map_area())) {
+	rect dest = scaled_to_zoom({x, y, image_size.x, image_size.y});
+	if (!dest.overlaps(map_area())) {
 		return;
 	}
 
@@ -2509,8 +2509,8 @@ void display::draw_invalidated() {
 		int ypos = get_location_y(loc);
 
 		//const bool on_map = get_map().on_board(loc);
-		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
-		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
+		rect hex_rect(xpos, ypos, zoom_, zoom_);
+		if(!hex_rect.overlaps(clip_rect)) {
 			continue;
 		}
 		draw_hex(loc);

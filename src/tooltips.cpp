@@ -125,10 +125,10 @@ void clear_tooltips()
 	current_tooltip = tips.end();
 }
 
-void clear_tooltips(const SDL_Rect& rect)
+void clear_tooltips(const SDL_Rect& r)
 {
 	for(std::map<int,tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(sdl::rects_overlap(i->second.rect_,rect)) {
+		if(i->second.rect_.overlaps(r)) {
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}

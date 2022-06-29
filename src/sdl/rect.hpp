@@ -41,17 +41,6 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 }
 
 /**
- * Tests whether two rectangles overlap.
- *
- * @param rect1                   One rectangle.
- * @param rect2                   Another rectangle.
- *
- * @return                        True if rect1 and rect2 intersect, false if
- *                                not. Touching borders don't overlap.
- */
-bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
-
-/**
  * Calculates the intersection of two rectangles.
  *
  * @param rect1                   One rectangle.
@@ -120,6 +109,10 @@ public:
 	/** Whether the given point lies within the rectangle. */
 	bool contains(int x, int y) const;
 	bool contains(const point& p) const;
+
+	/** Whether the given rectangle and this rectangle overlap. */
+	bool overlaps(const SDL_Rect& r) const;
+
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);
