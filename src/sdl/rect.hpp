@@ -50,18 +50,6 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
  */
 SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
-/**
- * Calculates the union of two rectangles. Note: "union" here doesn't mean the
- * union of the sets of points of the two polygons, but rather the minimal
- * rectangle that supersets both rectangles.
- *
- * @param rect1                   One rectangle.
- * @param rect2                   Another rectangle.
- *
- * @return                        The union of rect1 and rect2.
- */
-SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
@@ -113,6 +101,11 @@ public:
 	/** Whether the given rectangle and this rectangle overlap. */
 	bool overlaps(const SDL_Rect& r) const;
 
+	/**
+	 * Calculates the minimal rectangle that completely contains both
+	 * this rectangle and the given rectangle.
+	 */
+	rect minimal_cover(const SDL_Rect& r) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);
