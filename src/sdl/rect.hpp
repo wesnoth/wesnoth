@@ -122,6 +122,12 @@ public:
 	bool operator==(const rect& r) const;
 	bool operator==(const SDL_Rect& r) const;
 
+	// Scalar multiplication and division
+	rect operator*(int s) const { return {x*s, y*s, w*s, h*s}; }
+	rect& operator*=(int s) { x*=s; y*=s; w*=s; h*=s; return *this; }
+	rect operator/(int s) const { return {x/s, y/s, w/s, h/s}; }
+	rect& operator/=(int s) { x/=s; y/=s; w/=s; h/=s; return *this; }
+
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
 };

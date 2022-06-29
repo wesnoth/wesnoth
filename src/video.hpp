@@ -19,6 +19,7 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "sdl/point.hpp"
+#include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
 #include <SDL2/SDL_render.h>
@@ -198,7 +199,7 @@ public:
 	/**
 	 * Convert coordinates in draw space to coordinates in render space.
 	 */
-	SDL_Rect to_output(const SDL_Rect& draw_space_rect) const;
+	rect to_output(const rect& draw_space_rect) const;
 
 	/**
 	 * Tests whether the given flags are currently set on the SDL window.

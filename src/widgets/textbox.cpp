@@ -184,7 +184,7 @@ void textbox::draw_contents()
 
 	draw::fill(loc, c);
 
-	SDL_Rect src;
+	rect src;
 
 	if(text_image_ == nullptr) {
 		update_text_cache(true);
@@ -227,8 +227,7 @@ void textbox::draw_contents()
 		}
 
 		// text may be rendered at high dpi, scale source clip accordingly
-		const int ps = video().get_pixel_scale();
-		src.x *= ps; src.y *= ps; src.w *= ps; src.h *= ps;
+		src *= video().get_pixel_scale();
 		// TODO: highdpi - consider sizing source clip in draw coordinates, now that textures have a draw-space w/h? That would work here.
 
 		if(enabled()) {
