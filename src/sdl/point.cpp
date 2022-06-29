@@ -19,11 +19,6 @@
 
 #include <iostream>
 
-point::operator SDL_Point() const
-{
-	return {x, y};
-}
-
 point& point::operator+=(const point& point)
 {
 	x += point.x;
