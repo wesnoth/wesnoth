@@ -461,16 +461,12 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	SDL_Rect visible = sdl::intersect_rects(draw::get_clip(), dst_rect);
 
 	// Get the source region of text for clipping.
-	SDL_Rect clip_in = visible;
+	rect clip_in = visible;
 	clip_in.x -= x;
 	clip_in.y -= y;
 
 	// Source region for high-dpi text needs to have pixel scale applied.
-	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
-	clip_in.x *= pixel_scale;
-	clip_in.y *= pixel_scale;
-	clip_in.w *= pixel_scale;
-	clip_in.h *= pixel_scale;
+	clip_in *= CVideo::get_singleton().get_pixel_scale();
 
 	// Render the currently visible portion of text
 	// TODO: highdpi - it would be better to render this all, but some things currently have far too much text. Namely the credits screen.

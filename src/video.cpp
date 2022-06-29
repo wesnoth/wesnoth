@@ -528,10 +528,9 @@ SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
 	}
 }
 
-SDL_Rect CVideo::to_output(const SDL_Rect& r) const
+rect CVideo::to_output(const rect& r) const
 {
-	int s = get_pixel_scale();
-	return {s * r.x, s * r.y, s * r.w, s * r.h};
+	return r * get_pixel_scale();
 }
 
 void CVideo::render_screen()
