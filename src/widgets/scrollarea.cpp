@@ -133,9 +133,9 @@ void scrollarea::process_event()
 	scroll(grip_position);
 }
 
-SDL_Rect scrollarea::inner_location() const
+rect scrollarea::inner_location() const
 {
-	SDL_Rect r = location();
+	rect r = location();
 	if (shown_scrollbar_)
 		r.w -= scrollbar_.width();
 	return r;
@@ -157,7 +157,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 		const SDL_MouseWheelEvent &ev = event.wheel;
 		int x, y;
 		sdl::get_mouse_state(&x, &y);
-		if (sdl::point_in_rect(x, y, inner_location())) {
+		if (inner_location().contains(x, y)) {
 			if (ev.y > 0) {
 				scrollbar_.scroll_up();
 			} else if (ev.y < 0) {
@@ -194,7 +194,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 				return;
 			}
 
-			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
+			if (inner_location().contains(swipe_origin_.x, swipe_origin_.y)
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
 				unsigned int pos = std::max(

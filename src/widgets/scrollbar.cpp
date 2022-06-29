@@ -226,23 +226,23 @@ void scrollbar::handle_event(const SDL_Event& event)
 		return;
 
 	STATE new_state = state_;
-	const SDL_Rect& grip = grip_area();
-	const SDL_Rect& groove = location();
+	const rect grip = grip_area();
+	const rect& groove = location();
 
 
 	switch (event.type) {
 	case SDL_MOUSEBUTTONUP:
 	{
 		const SDL_MouseButtonEvent& e = event.button;
-		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
+		bool on_grip = grip.contains(e.x, e.y);
 		new_state = on_grip ? ACTIVE : NORMAL;
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
 	{
 		const SDL_MouseButtonEvent& e = event.button;
-		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
-		bool on_groove = sdl::point_in_rect(e.x, e.y, groove);
+		bool on_grip = grip.contains(e.x, e.y);
+		bool on_groove = groove.contains(e.x, e.y);
 		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
@@ -262,7 +262,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	{
 		const SDL_MouseMotionEvent& e = event.motion;
 		if (state_ == NORMAL || state_ == ACTIVE) {
-			bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
+			bool on_grip = grip.contains(e.x, e.y);
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - mousey_on_grip_;
@@ -276,7 +276,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 		const SDL_MouseWheelEvent& e = event.wheel;
 		int x, y;
 		sdl::get_mouse_state(&x, &y);
-		bool on_groove = sdl::point_in_rect(x, y, groove);
+		bool on_groove = groove.contains(x, y);
 		if (on_groove && e.y < 0) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.y > 0) {

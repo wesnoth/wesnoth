@@ -218,30 +218,30 @@ public:
 	 * Between mapx and x is the sidebar region.
 	 */
 
-	const SDL_Rect& minimap_area() const
+	const rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_.draw_area()); }
-	const SDL_Rect& palette_area() const
+	const rect& palette_area() const
 		{ return theme_.palette_location(screen_.draw_area()); }
-	const SDL_Rect& unit_image_area() const
+	const rect& unit_image_area() const
 		{ return theme_.unit_image_location(screen_.draw_area()); }
 
 	/**
 	 * Returns the maximum area used for the map
 	 * regardless to resolution and view size
 	 */
-	const SDL_Rect& max_map_area() const;
+	rect max_map_area() const;
 
 	/**
 	 * Returns the area used for the map
 	 */
-	const SDL_Rect& map_area() const;
+	rect map_area() const;
 
 	/**
 	 * Returns the available area for a map, this may differ
 	 * from the above. This area will get the background area
 	 * applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
+	rect map_outside_area() const { return map_screenshot_ ?
 		max_map_area() : theme_.main_map_location(screen_.draw_area()); }
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
@@ -666,7 +666,7 @@ protected:
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */
-	virtual const SDL_Rect& get_clip_rect();
+	virtual rect get_clip_rect() const;
 
 	/**
 	 * Only called when there's actual redrawing to do. Loops through

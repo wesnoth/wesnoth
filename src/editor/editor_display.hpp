@@ -49,7 +49,7 @@ protected:
 	/** Inherited from display. */
 	virtual overlay_map& get_overlays() override;
 
-	const SDL_Rect& get_clip_rect() override;
+	rect get_clip_rect() const override;
 	void draw_sidebar() override;
 
 	std::set<map_location> brush_locations_;

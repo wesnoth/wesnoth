@@ -77,32 +77,32 @@ void help_text_area::show_topic(const topic &t)
 help_text_area::item::item(const texture& _tex, int x, int y, const std::string& _text,
 						   const std::string& reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
-	rect(),
+	rect_(),
 	tex(_tex),
 	text(_text),
 	ref_to(reference_to),
 	floating(_floating), box(_box),
 	align(alignment)
 {
-	rect.x = x;
-	rect.y = y;
-	rect.w = box ? tex.w() + box_width * 2 : tex.w();
-	rect.h = box ? tex.h() + box_width * 2 : tex.h();
+	rect_.x = x;
+	rect_.y = y;
+	rect_.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect_.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
 help_text_area::item::item(const texture& _tex, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
-	rect(),
+	rect_(),
 	tex(_tex),
 	text(""),
 	ref_to(""),
 	floating(_floating),
 	box(_box), align(alignment)
 {
-	rect.x = x;
-	rect.y = y;
-	rect.w = box ? tex.w() + box_width * 2 : tex.w();
-	rect.h = box ? tex.h() + box_width * 2 : tex.h();
+	rect_.x = x;
+	rect_.y = y;
+	rect_.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect_.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
 void help_text_area::set_items()
@@ -438,9 +438,9 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if ((itm.rect.x + itm.rect.w > x && itm.rect.x < x + width)
-				|| (itm.rect.x > x && itm.rect.x < x + width)) {
-				min_y = std::max<int>(min_y, itm.rect.y + itm.rect.h);
+			if ((itm.rect_.x + itm.rect_.w > x && itm.rect_.x < x + width)
+				|| (itm.rect_.x > x && itm.rect_.x < x + width)) {
+				min_y = std::max<int>(min_y, itm.rect_.y + itm.rect_.h);
 			}
 		}
 	}
@@ -453,8 +453,8 @@ int help_text_area::get_min_x(const int y, const int height)
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y && itm.align == LEFT) {
-				min_x = std::max<int>(min_x, itm.rect.w + 5);
+			if (itm.rect_.y < y + height && itm.rect_.y + itm.rect_.h > y && itm.align == LEFT) {
+				min_x = std::max<int>(min_x, itm.rect_.w + 5);
 			}
 		}
 	}
@@ -468,11 +468,11 @@ int help_text_area::get_max_x(const int y, const int height)
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
+			if (itm.rect_.y < y + height && itm.rect_.y + itm.rect_.h > y) {
 				if (itm.align == RIGHT) {
-					max_x = std::min<int>(max_x, text_width - itm.rect.w - 5);
+					max_x = std::min<int>(max_x, text_width - itm.rect_.w - 5);
 				} else if (itm.align == MIDDLE) {
-					max_x = std::min<int>(max_x, text_width / 2 - itm.rect.w / 2 - 5);
+					max_x = std::min<int>(max_x, text_width / 2 - itm.rect_.w / 2 - 5);
 				}
 			}
 		}
@@ -484,16 +484,16 @@ void help_text_area::add_item(const item &itm)
 {
 	items_.push_back(itm);
 	if (!itm.floating) {
-		curr_loc_.first += itm.rect.w;
-		curr_row_height_ = std::max<int>(itm.rect.h, curr_row_height_);
+		curr_loc_.first += itm.rect_.w;
+		curr_row_height_ = std::max<int>(itm.rect_.h, curr_row_height_);
 		contents_height_ = std::max<int>(contents_height_, curr_loc_.second + curr_row_height_);
 		last_row_.push_back(&items_.back());
 	}
 	else {
 		if (itm.align == LEFT) {
-			curr_loc_.first = itm.rect.w + 5;
+			curr_loc_.first = itm.rect_.w + 5;
 		}
-		contents_height_ = std::max<int>(contents_height_, itm.rect.y + itm.rect.h);
+		contents_height_ = std::max<int>(contents_height_, itm.rect_.y + itm.rect_.h);
 	}
 }
 
@@ -528,8 +528,8 @@ void help_text_area::adjust_last_row()
 {
 	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); ++it) {
 		item &itm = *(*it);
-		const int gap = curr_row_height_ - itm.rect.h;
-		itm.rect.y += gap / 2;
+		const int gap = curr_row_height_ - itm.rect_.h;
+		itm.rect_.y += gap / 2;
 	}
 }
 
@@ -545,9 +545,9 @@ void help_text_area::draw_contents()
 	bg_restore();
 	auto clipper = draw::set_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
-		SDL_Rect dst = it->rect;
+		SDL_Rect dst = it->rect_;
 		dst.y -= get_position();
-		if (dst.y < static_cast<int>(loc.h) && dst.y + it->rect.h > 0) {
+		if (dst.y < static_cast<int>(loc.h) && dst.y + it->rect_.h > 0) {
 			dst.x += loc.x;
 			dst.y += loc.y;
 			if (it->box) {
@@ -555,8 +555,8 @@ void help_text_area::draw_contents()
 					SDL_Rect draw_rect {
 						dst.x,
 						dst.y,
-						it->rect.w - i * 2,
-						it->rect.h - i * 2
+						it->rect_.w - i * 2,
+						it->rect_.h - i * 2
 					};
 					draw::fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
@@ -577,7 +577,7 @@ void help_text_area::scroll(unsigned int)
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {
-	return sdl::point_in_rect(x_, y_, item.rect);
+	return item.rect_.contains(x_, y_);
 }
 
 std::string help_text_area::ref_at(const int x, const int y)

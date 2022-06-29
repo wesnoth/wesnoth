@@ -16,6 +16,7 @@
 #pragma once
 
 #include "events.hpp"
+#include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 
 #include <string>
@@ -27,7 +28,7 @@ namespace gui {
 class widget : public events::sdl_handler
 {
 public:
-	const SDL_Rect& location() const;
+	const rect& location() const;
 	virtual void set_location(const SDL_Rect& rect);
 	void set_location(int x, int y);
 	void set_width(int w);
@@ -108,7 +109,7 @@ private:
 
 	CVideo* video_;
 	std::vector< surface_restorer > restorer_;
-	SDL_Rect rect_;
+	rect rect_;
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;

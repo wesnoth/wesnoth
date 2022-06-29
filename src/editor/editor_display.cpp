@@ -93,7 +93,7 @@ void editor_display::draw_hex(const map_location& loc)
 	}
 }
 
-const SDL_Rect& editor_display::get_clip_rect()
+rect editor_display::get_clip_rect() const
 {
 	return map_outside_area();
 }

@@ -245,7 +245,7 @@ void tristate_button::draw_contents()
 
 //TODO move to widget
 bool tristate_button::hit(int x, int y) const {
-	return sdl::point_in_rect(x, y, location());
+	return location().contains(x, y);
 }
 
 void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {

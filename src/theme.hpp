@@ -23,6 +23,7 @@
 #include "color.hpp"
 #include "config.hpp"
 #include "generic_event.hpp"
+#include "sdl/rect.hpp"
 
 #include <memory>
 #include <SDL2/SDL_rect.h>
@@ -48,8 +49,8 @@ class theme
 		object(std::size_t sw, std::size_t sh, const config& cfg);
 		virtual ~object() { }
 
-		virtual SDL_Rect& location(const SDL_Rect& screen) const;
-		const SDL_Rect& get_location() const { return loc_; }
+		virtual rect& location(const SDL_Rect& screen) const;
+		const rect& get_location() const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
 		// This supports relocating of theme elements ingame.
@@ -70,9 +71,9 @@ class theme
 	private:
 		bool location_modified_;
 		std::string id_;
-		SDL_Rect loc_;
-		mutable SDL_Rect relative_loc_;
-		mutable SDL_Rect last_screen_;
+		rect loc_;
+		mutable rect relative_loc_;
+		mutable rect last_screen_;
 
 		ANCHORING xanchor_, yanchor_;
 		std::size_t spec_width_, spec_height_;
@@ -269,13 +270,13 @@ public:
 	const menu *get_menu_item(const std::string &key) const;
 	const action* get_action_item(const std::string &key) const;
 
-	const SDL_Rect& main_map_location(const SDL_Rect& screen) const
+	const rect& main_map_location(const SDL_Rect& screen) const
 		{ return main_map_.location(screen); }
-	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const
+	const rect& mini_map_location(const SDL_Rect& screen) const
 		{ return mini_map_.location(screen); }
-	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const
+	const rect& unit_image_location(const SDL_Rect& screen) const
 		{ return unit_image_.location(screen); }
-	const SDL_Rect& palette_location(const SDL_Rect& screen) const
+	const rect& palette_location(const SDL_Rect& screen) const
 		{ return palette_.location(screen); }
 
 	const border_t& border() const { return border_; }

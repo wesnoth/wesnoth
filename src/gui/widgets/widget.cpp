@@ -606,7 +606,7 @@ bool widget::is_at(const point& coordinate, const bool must_be_active) const
 		return false;
 	}
 
-	return sdl::point_in_rect(coordinate, get_rectangle());
+	return get_rectangle().contains(coordinate);
 }
 
 } // namespace gui2

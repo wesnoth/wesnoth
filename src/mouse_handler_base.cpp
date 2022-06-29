@@ -318,7 +318,7 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	int movey = scrolly * preferences::scroll_speed();
 
 	// Don't scroll map if cursor is not in gamemap area
-	if(!sdl::point_in_rect(x, y, gui().map_area())) {
+	if(!gui().map_area().contains(x, y)) {
 		return;
 	}
 

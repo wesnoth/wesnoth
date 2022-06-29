@@ -74,7 +74,7 @@ struct pane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			if(sdl::point_in_rect(coordinate, item.item_grid->get_rectangle())) {
+			if(item.item_grid->get_rectangle().contains(coordinate)) {
 				return item.item_grid->find_at(coordinate, must_be_active);
 			}
 		}

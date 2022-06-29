@@ -100,7 +100,7 @@ void help_browser::process_event()
 	sdl::get_mouse_state(&mousex,&mousey);
 
 	// Fake focus functionality for the menu, only process it if it has focus.
-	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
+	if (menu_.location().contains(mousex, mousey)) {
 		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
 		if (chosen_topic != nullptr && chosen_topic != shown_topic_) {

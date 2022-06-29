@@ -315,7 +315,7 @@ theme::border_t::border_t(const config& cfg)
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
 
-SDL_Rect& theme::object::location(const SDL_Rect& screen) const
+rect& theme::object::location(const SDL_Rect& screen) const
 {
 	if(last_screen_ == screen && !location_modified_)
 		return relative_loc_;

@@ -144,8 +144,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 		list.select_row(sel, false);
 	}
 
-	SDL_Rect rect = get_window()->get_rectangle();
-	if(!sdl::point_in_rect(coordinate, rect)) {
+	if(!get_window()->get_rectangle().contains(coordinate)) {
 		set_retval(retval::CANCEL);
 	} else if(!keep_open_) {
 		set_retval(retval::OK);
