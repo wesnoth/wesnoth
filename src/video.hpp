@@ -166,7 +166,7 @@ public:
 	 * Returns the size and location of the current drawing area in pixels.
 	 * This will usually be an SDL_Rect indicating the full drawing surface.
 	 */
-	SDL_Rect draw_area() const;
+	rect draw_area() const;
 
 	/**
 	 * Returns the size and location of the window's input area in pixels.

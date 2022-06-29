@@ -29,7 +29,8 @@
  * resolution when possible, without any extra handling required.
  */
 
-#include <SDL2/SDL_rect.h>
+#include "sdl/rect.hpp"
+
 #include <vector>
 
 struct color_t;
@@ -329,7 +330,7 @@ void force_clip(const SDL_Rect& clip);
  *
  * If clipping is disabled, this will return the full drawing area.
  */
-SDL_Rect get_clip();
+::rect get_clip();
 
 /** Whether clipping is enabled. */
 bool clip_enabled();

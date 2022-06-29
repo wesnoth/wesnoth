@@ -1933,10 +1933,10 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		SDL_Rect dstrect = map_area();
+		rect dstrect = map_area();
 		dstrect.x += diff_x;
 		dstrect.y += diff_y;
-		dstrect = sdl::intersect_rects(dstrect, map_area());
+		dstrect.clip(map_area());
 
 		SDL_Rect srcrect = dstrect;
 		srcrect.x -= diff_x;
@@ -3000,7 +3000,7 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 
 bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 {
-	return invalidate_locations_in_rect(sdl::intersect_rects(map_area(), rect));
+	return invalidate_locations_in_rect(map_area().intersect(rect));
 }
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)

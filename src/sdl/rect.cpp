@@ -20,20 +20,6 @@
 
 #include <iostream>
 
-namespace sdl
-{
-SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	SDL_Rect res;
-	if(!SDL_IntersectRect(&rect1, &rect2, &res)) {
-		return empty_rect;
-	}
-
-	return res;
-}
-
-} // namespace sdl
-
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
 	return SDL_RectEquals(&a, &b) != SDL_FALSE;
@@ -87,6 +73,20 @@ rect rect::minimal_cover(const SDL_Rect& other) const
 	rect result;
 	SDL_UnionRect(this, &other, &result);
 	return result;
+}
+
+rect rect::intersect(const SDL_Rect& other) const
+{
+	rect result;
+	if(!SDL_IntersectRect(this, &other, &result)) {
+		return rect();
+	}
+	return result;
+}
+
+void rect::clip(const SDL_Rect& other)
+{
+	*this = this->intersect(other);
 }
 
 std::ostream& operator<<(std::ostream& s, const rect& r)

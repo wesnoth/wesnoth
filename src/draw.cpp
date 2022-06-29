@@ -458,8 +458,7 @@ draw::clip_setter draw::reduce_clip(const SDL_Rect& clip)
 	if (!draw::clip_enabled()) {
 		return draw::clip_setter(clip);
 	}
-	SDL_Rect c = draw::get_clip();
-	return draw::clip_setter(sdl::intersect_rects(clip, c));
+	return draw::clip_setter(draw::get_clip().intersect(clip));
 }
 
 void draw::force_clip(const SDL_Rect& clip)
@@ -474,7 +473,7 @@ void draw::force_clip(const SDL_Rect& clip)
 	SDL_RenderSetClipRect(renderer(), &clip);
 }
 
-SDL_Rect draw::get_clip()
+rect draw::get_clip()
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
 	if (!renderer()) {
@@ -487,7 +486,7 @@ SDL_Rect draw::get_clip()
 		return CVideo::get_singleton().draw_area();
 	}
 
-	SDL_Rect clip;
+	::rect clip;
 	SDL_RenderGetClipRect(renderer(), &clip);
 	return clip;
 }

@@ -455,10 +455,10 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int y = y_(local_variables);
 	const int w = w_(local_variables);
 	const int h = h_(local_variables);
-	SDL_Rect dst_rect{x, y, w, h};
+	rect dst_rect{x, y, w, h};
 
 	// Get the visible portion of text.
-	SDL_Rect visible = sdl::intersect_rects(draw::get_clip(), dst_rect);
+	rect visible = dst_rect.intersect(draw::get_clip());
 
 	// Get the source region of text for clipping.
 	rect clip_in = visible;
