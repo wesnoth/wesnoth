@@ -577,7 +577,7 @@ static surface load_image_sub_file(const image::locator& loc)
 	}
 
 	if(loc.get_loc().valid()) {
-		SDL_Rect srcrect = sdl::create_rect(
+		rect srcrect(
 			((tile_size * 3) / 4)                           *  loc.get_loc().x,
 			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
 			  tile_size,
