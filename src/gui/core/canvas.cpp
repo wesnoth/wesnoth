@@ -318,13 +318,12 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	local_variables.add("image_width", wfl::variant(w ? w : tex.w()));
 	local_variables.add("image_height", wfl::variant(h ? h : tex.h()));
 
-	// TODO: highdpi - why are these called "clip"?
-	const unsigned clip_x = x_(local_variables);
-	const unsigned clip_y = y_(local_variables);
+	const int x = x_(local_variables);
+	const int y = y_(local_variables);
 
-	// TODO: highdpi - what are these for? They are never used anywhere else.
-	local_variables.add("clip_x", wfl::variant(clip_x));
-	local_variables.add("clip_y", wfl::variant(clip_y));
+	// used in gui/dialogs/story_viewer.cpp
+	local_variables.add("clip_x", wfl::variant(x));
+	local_variables.add("clip_y", wfl::variant(y));
 
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
@@ -333,7 +332,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
 
-	const SDL_Rect dst_rect { static_cast<int>(clip_x), static_cast<int>(clip_y), w, h };
+	const SDL_Rect dst_rect { x, y, w, h };
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch(resize_mode_) {

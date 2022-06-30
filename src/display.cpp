@@ -1051,7 +1051,6 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
-// TODO: highdpi - verify these get scaled correctly
 void display::get_terrain_images(const map_location& loc, const std::string& timeid, TERRAIN_TYPE terrain_type)
 {
 	terrain_image_vector_.clear();
@@ -1791,7 +1790,6 @@ void display::draw_minimap()
 		}
 	}
 
-	// TODO: highdpi - does this really need to set a clipping area?
 	auto clipper = draw::set_clip(area);
 
 	// Draw the minimap background.
@@ -1836,12 +1834,6 @@ void display::draw_minimap()
 		view_h + 2
 	};
 
-	// SDL 2.0.10's render batching changes result in the
-	// surface's clipping rectangle being overridden even if
-	// no render clipping rectangle set operaton was queued,
-	// so let's not use the render API to draw the rectangle.
-
-	// TODO: highdpi - is the above still relevant? It doesn't seem to be.
 	draw::rect(outline_rect, 255, 255, 255);
 }
 
@@ -2734,44 +2726,6 @@ void display::draw_hex(const map_location& loc)
 
 }
 
-// TODO: highdpi - why is there all this faff to deal with textures that are fill of transparency? Just don't make your textures full of transparency. This should not be a thing.
-// Usage of this function has been removed.
-// If this turns out to raise no problems, remove the function too.
-#if 0
-void display::draw_image_for_report(surface& img, const SDL_Rect& rect)
-{
-	SDL_Rect visible_area = get_non_transparent_portion(img);
-	SDL_Rect target = rect;
-	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
-		if(visible_area.w == 0 || visible_area.h == 0) {
-			return;
-		}
-
-		if(visible_area.w > rect.w || visible_area.h > rect.h) {
-			img = get_surface_portion(img,visible_area);
-			img = scale_surface(img,rect.w,rect.h);
-			visible_area.x = 0;
-			visible_area.y = 0;
-			visible_area.w = img->w;
-			visible_area.h = img->h;
-		} else {
-			target.x = rect.x + (rect.w - visible_area.w)/2;
-			target.y = rect.y + (rect.h - visible_area.h)/2;
-			target.w = visible_area.w;
-			target.h = visible_area.h;
-		}
-
-		screen_.blit_surface(target.x, target.y, img, &visible_area, nullptr);
-	} else {
-		if(img->w != rect.w || img->h != rect.h) {
-			img = scale_surface(img,rect.w,rect.h);
-		}
-
-		screen_.blit_surface(img, &target);
-	}
-}
-#endif
-
 /**
  * Redraws the specified report (if anything has changed).
  * If a config is not supplied, it will be generated via
@@ -2801,36 +2755,34 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_.draw_area());
-	texture &tex = reportSurfaces_[report_name];
+	texture &bg_restore = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (tex && rect == new_rect && report == *new_cfg) {
+	if (bg_restore && rect == new_rect && report == *new_cfg) {
 		return;
 	}
 
 	// Update the config in reports_.
 	report = *new_cfg;
 
-	// TODO: highdpi - should this really be drawn if rect != new_rect? That's how the old code was.
-	if (tex) {
-		draw::blit(tex, rect);
+	// TODO: highdpi - remove background restorer
+	if (bg_restore) {
+		draw::blit(bg_restore, rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
-	if (!tex || new_rect != rect)
+	if (!bg_restore || new_rect != rect)
 	{
-		tex.reset();
+		bg_restore.reset();
 		rect = new_rect;
-
-		// TODO: highdpi - i have no idea why this is neccesary, as the only report backgrounds i have seen were just black. Maybe it can just stop doing this?
 
 		// If the rectangle is present, and we are blitting text,
 		// then we need to backup the surface.
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			tex = texture(screen_.read_pixels_low_res(&rect));
+			bg_restore = texture(screen_.read_pixels_low_res(&rect));
 			if (!reportSurfaces_[report_name]) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
@@ -2944,7 +2896,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				continue;
 			}
 
-			// TODO: highdpi - set size independently of image
 			if (area.w < img.w() && image_count) {
 				// We have more than one image, and this one doesn't fit.
 				img = image::get_texture(game_config::images::ellipsis);
@@ -2953,8 +2904,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 			if (img.w() < area.w) area.w = img.w();
 			if (img.h() < area.h) area.h = img.h();
-			// TODO: highdpi - this was crazy so i nixed it
-			//draw_image_for_report(img, area);
 			draw::blit(img, area);
 
 			++image_count;
