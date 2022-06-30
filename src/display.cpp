@@ -1289,7 +1289,7 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
-	for(const blit_helper& blit : drawing_buffer_) {
+	for(blit_helper& blit : drawing_buffer_) {
 		for(texture tex : blit.tex()) {
 			const SDL_Rect& src = blit.clip();
 			if (blit.alpha_mod != SDL_ALPHA_OPAQUE) {
@@ -1299,11 +1299,22 @@ void display::drawing_buffer_commit()
 				tex.set_color_mod(blit.r_mod, blit.g_mod, blit.b_mod);
 			}
 			// TODO: hwaccel - revist whether treating empty rect as full src clip is okay
-			draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+			if (blit.smooth_shade) {
+				draw::smooth_shaded(tex, blit.shader_verts);
+			} else {
+				draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+			}
 			if (blit.highlight) {
 				tex.set_blend_mode(SDL_BLENDMODE_ADD);
-				tex.set_alpha_mod(blit.highlight);
-				draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+				if (blit.smooth_shade) {
+					for(SDL_Vertex& v : blit.shader_verts) {
+						v.color.a = color_multiply(v.color.a, blit.highlight);
+					}
+					draw::smooth_shaded(tex, blit.shader_verts);
+				} else {
+					tex.set_alpha_mod(blit.highlight);
+					draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+				}
 				tex.set_blend_mode(SDL_BLENDMODE_BLEND);
 			}
 			if (blit.r_mod != 255 || blit.g_mod != 255 || blit.b_mod != 255) {
@@ -1544,30 +1555,49 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		new_modifications += "~GS()";
 	}
 
-	// general formula for submerged alpha:
-	//   if (y > WATERLINE)
-	//   then min(max(alpha_mod, 0), 1) * alpha
-	//   else alpha
-	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
-	// formula variables: x, y, red, green, blue, alpha, width, height
-	// full WFL string:
-	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
-	// where DL = submersion line in pixels from top of image
-	//       AB = base alpha proportion at submersion line (30%)
-	//       AD = proportional alpha delta per pixel (1.5%)
+	// If we have RenderGeometry support we can do this in hardware.
+	rect unsub_src;
+	rect unsub_dest;
+	rect sub_dest;
+	std::array<SDL_Vertex,4> alpha_verts;
 	if (submerged > 0.0) {
+		// Set up blit destinations
+		unsub_dest = dest;
+		const int dest_sub_h = dest.h * submerged;
+		unsub_dest.h -= dest_sub_h;
+		const int dest_y_mid = dest.y + unsub_dest.h;
+		sub_dest = {dest.x, dest_y_mid, dest.w, dest_sub_h};
+
+		// Set up blit src regions
 		const int submersion_line = image_size.y * (1.0 - submerged);
-		const std::string sl_string = std::to_string(submersion_line);
-		new_modifications += "~ADJUST_ALPHA(if(y>";
-		new_modifications += sl_string;
-		new_modifications += ",clamp((0.3-(y-";
-		new_modifications += sl_string;
-		new_modifications += ")*0.015),0,1)*alpha,alpha))";
+		unsub_src = {0, 0, image_size.x, submersion_line};
+
+		// Set up shader vertices
+		const color_t c_mid(255, 255, 255, 0.3*alpha);
+		const int pixels_submerged = image_size.y * submerged;
+		const int bot_alpha = std::max(0.3 - pixels_submerged * 0.015, 0.0) * alpha;
+		const color_t c_bot(255, 255, 255, bot_alpha);
+		const SDL_FPoint pML{float(dest.x), float(dest_y_mid)};
+		const SDL_FPoint pMR{float(dest.x + dest.w), float(dest_y_mid)};
+		const SDL_FPoint pBL{float(dest.x), float(dest.y + dest.h)};
+		const SDL_FPoint pBR{float(dest.x + dest.w), float(dest.y + dest.h)};
+		alpha_verts = {
+			SDL_Vertex{pML, c_mid, {0.0, float(1.0 - submerged)}},
+			SDL_Vertex{pMR, c_mid, {1.0, float(1.0 - submerged)}},
+			SDL_Vertex{pBL, c_bot, {0.0, 1.0}},
+			SDL_Vertex{pBR, c_bot, {1.0, 1.0}},
+		};
+		if (hreverse) {
+			for (SDL_Vertex& v : alpha_verts) {
+				v.tex_coord.x = 1.0 - v.tex_coord.x;
+			}
+		}
+		if (vreverse) {
+			for (SDL_Vertex& v : alpha_verts) {
+				v.tex_coord.y = 1.0 - v.tex_coord.y;
+			}
+		}
 	}
-	// FUTURE: this submerge function could be done using SDL_RenderGeometry,
-	// but that's not available below SDL 2.0.18.
-	// Alternately it could also be done fairly easily using shaders,
-	// if a graphics system supporting them (such as openGL) is moved to.
 
 	texture tex;
 	if (!new_modifications.empty()) {
@@ -1583,11 +1613,26 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	// Clamp blend ratio so nothing weird happens
 	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
 
-	blit_helper& bh = drawing_buffer_add(drawing_layer, loc, dest, tex);
+
+	blit_helper& bh = submerged > 0.0 ?
+		drawing_buffer_add(drawing_layer, loc, unsub_dest, tex, unsub_src)
+		: drawing_buffer_add(drawing_layer, loc, dest, tex);
+
 	bh.hflip = hreverse;
 	bh.vflip = vreverse;
 	bh.alpha_mod = alpha;
 	bh.highlight = float_to_color(highlight);
+
+	if (submerged > 0.0) {
+		// also draw submerged portion
+		blit_helper& sh = drawing_buffer_add(
+			drawing_layer, loc, sub_dest, tex
+		);
+		// hreverse and vreverse are already incorporated
+		sh.highlight = float_to_color(highlight);
+		sh.shader_verts = alpha_verts;
+		sh.smooth_shade = true;
+	}
 
 	// SDL hax to apply an active washout tint at the correct ratio
 	if (blend_ratio > 0.0) {
@@ -1600,13 +1645,35 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		);
 		const texture& wt = image::get_texture(whiteout_locator);
 		// Blit the pure white version, tinted to the right colour
-		blit_helper &wh = drawing_buffer_add(drawing_layer, loc, dest, wt);
+		blit_helper& wh = submerged > 0.0 ?
+			drawing_buffer_add(drawing_layer, loc, unsub_dest, wt, unsub_src)
+			: drawing_buffer_add(drawing_layer, loc, dest, wt);
+
 		wh.hflip = hreverse;
 		wh.vflip = vreverse;
 		wh.alpha_mod = uint8_t(alpha * blend_ratio);
 		wh.r_mod = blendto.r;
 		wh.g_mod = blendto.g;
 		wh.b_mod = blendto.b;
+
+		if (submerged > 0.0) {
+			// also draw submerged portion
+			blit_helper& sh = drawing_buffer_add(
+				drawing_layer, loc, sub_dest, wt
+			);
+			// hreverse and vreverse are already incorporated
+			sh.shader_verts = alpha_verts;
+			sh.smooth_shade = true;
+			// alpha_mod and color_mod are ignored,
+			// so we have to put them in the smooth shaded vertex data.
+			// This also has to incorporate the existing submerge alpha.
+			blendto.a = uint8_t(sh.shader_verts[0].color.a * blend_ratio);
+			sh.shader_verts[0].color = blendto;
+			sh.shader_verts[1].color = blendto;
+			blendto.a = uint8_t(sh.shader_verts[2].color.a * blend_ratio);
+			sh.shader_verts[2].color = blendto;
+			sh.shader_verts[3].color = blendto;
+		}
 	}
 }
 
