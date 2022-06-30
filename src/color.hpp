@@ -14,13 +14,13 @@
 
 #pragma once
 
+#include <SDL2/SDL_pixels.h>
+
 #include <algorithm> // for max
 #include <cstdint>
 #include <ostream>
 #include <string>
 #include <utility>
-
-struct SDL_Color;
 
 //
 // TODO: constexpr
@@ -46,26 +46,25 @@ const uint32_t RGBA_RED_BITSHIFT   = 24;
 const uint32_t RGBA_GREEN_BITSHIFT = 16;
 const uint32_t RGBA_BLUE_BITSHIFT  = 8;
 
-const uint8_t ALPHA_OPAQUE = 255;
+const uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
 
-struct color_t
+/**
+ * The basic class for representing 8-bit RGB or RGBA colour values.
+ *
+ * This is a thin wrapper over SDL_Color, and can be used interchangeably.
+ */
+struct color_t : SDL_Color
 {
-	color_t()
-		: r(255)
-		, g(255)
-		, b(255)
-		, a(ALPHA_OPAQUE)
-	{}
+	/** color_t initializes to fully opaque white by default. */
+	color_t() : SDL_Color{255, 255, 255, ALPHA_OPAQUE} {}
 
+	/** Basic RGB or RGBA constructor. */
 	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
-		: r(r_val)
-		, g(g_val)
-		, b(b_val)
-		, a(a_val)
+		: SDL_Color{r_val, g_val, b_val, a_val}
 	{}
 
-	// Implemented in sdl/utils.cpp to avoid dependency nightmares
-	explicit color_t(const SDL_Color& c);
+	/** This is a thin wrapper. There is nothing extra to do here. */
+	color_t(const SDL_Color& c) : SDL_Color{c} {}
 
 	/**
 	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
@@ -165,26 +164,6 @@ struct color_t
 	 * @return      The new color string.
 	 */
 	std::string to_rgb_string() const;
-
-	/**
-	 * Returns the stored color as an color_t object.
-	 *
-	 * @return       The new color_t object.
-	 */
-	// Implemented in sdl/utils.cpp to avoid dependency nightmares
-	SDL_Color to_sdl() const;
-
-	/** Red value */
-	uint8_t r;
-
-	/** Green value */
-	uint8_t g;
-
-	/** Blue value */
-	uint8_t b;
-
-	/** Alpha value */
-	uint8_t a;
 
 	bool null() const
 	{
