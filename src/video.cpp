@@ -72,10 +72,6 @@ void trigger_full_redraw()
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_EXPOSED;
-	// TODO: highdpi - double check whether anything actually does need a resize event
-	//event.window.event = SDL_WINDOWEVENT_RESIZED;
-	//event.window.data1 = (*drawingSurface).h;
-	//event.window.data2 = (*drawingSurface).w;
 
 	for(const auto& layer : draw_layers) {
 		layer->handle_window_event(event);

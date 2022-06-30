@@ -319,12 +319,10 @@ void dialog_frame::draw_background()
 	}
 
 	if (dialog_style_.blur_radius) {
-		SDL_Rect r = dim_.exterior;
-		surface surf = video_.read_pixels_low_res(&r);
-		surf = blur_surface(surf, dialog_style_.blur_radius);
-		// TODO: highdpi - converting this to texture every time is not ideal, but i also suspect this is not actually used anywhere, and all this is slated for removal anyway.
-		WRN_DP << "deprecated very slow blur" << std::endl;
-		draw::blit(texture(surf), r);
+		// This is no longer used by anything.
+		// The only thing that uses dialog_frame is help/help.cpp,
+		// and it uses the default style with no blur.
+		ERR_DP << "GUI1 dialog_frame blur has been removed" << std::endl;
 	}
 
 	if (!bg_) {

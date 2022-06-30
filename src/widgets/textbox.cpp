@@ -206,6 +206,8 @@ void textbox::draw_contents()
 			const int endx = char_x_[end];
 			const int endy = char_y_[end];
 
+			auto clipper = draw::set_clip(loc);
+
 			while(starty <= endy) {
 				const std::size_t right = starty == endy ? endx : text_image_.w();
 				if(right <= std::size_t(startx)) {
@@ -216,9 +218,6 @@ void textbox::draw_contents()
 						, loc.y + starty - src.y
 						, right - startx
 						, line_height_);
-
-				// TODO: highdpi - this seems excessive
-				auto clipper = draw::set_clip(loc);
 
 				draw::fill(rect, 0, 0, 160, 140);
 
