@@ -218,7 +218,7 @@ void blit(const texture& tex);
  *                  in low-resolution game-native drawing coordinates.
  *                  If not given, the entire render target will be filled.
  * @param src       The portion of the texture to copy.
- *                  If not given, the entire texture will be copied.
+ *                  If null or not given, the entire texture will be copied.
  * @param flip_h    Whether to flip/mirror the texture horizontally.
  * @param flip_v    Whether to flip/mirror the texture vertically.
  */
