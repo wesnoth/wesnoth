@@ -1201,23 +1201,20 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 	}
 }
 
-void display::drawing_buffer_add(const drawing_layer layer,
+display::blit_helper& display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, const SDL_Rect& dest, const texture& tex,
-		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
+		const SDL_Rect &clip)
 {
-	drawing_buffer_.emplace_back(
-		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
-	);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	return drawing_buffer_.back();
 }
 
-void display::drawing_buffer_add(const drawing_layer layer,
+display::blit_helper& display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, const SDL_Rect& dest,
-		const std::vector<texture> &tex,
-		const SDL_Rect &clip, bool hflip, bool vflip, uint8_t alpha_mod)
+		const std::vector<texture> &tex, const SDL_Rect &clip)
 {
-	drawing_buffer_.emplace_back(
-		layer, loc, dest, tex, clip, hflip, vflip, alpha_mod
-	);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	return drawing_buffer_.back();
 }
 
 enum {
@@ -1296,18 +1293,27 @@ void display::drawing_buffer_commit()
 	for(const blit_helper& blit : drawing_buffer_) {
 		for(texture tex : blit.tex()) {
 			const SDL_Rect& src = blit.clip();
-			const uint8_t alpha_mod = blit.alpha_mod();
-			const bool hflip = blit.hflip();
-			const bool vflip = blit.vflip();
-			if (alpha_mod != SDL_ALPHA_OPAQUE) {
-				tex.set_alpha_mod(alpha_mod);
+			if (blit.alpha_mod != SDL_ALPHA_OPAQUE) {
+				tex.set_alpha_mod(blit.alpha_mod);
 			}
 			if (src != sdl::empty_rect) {
-				draw::flipped(tex, blit.dest(), src, hflip, vflip);
+				draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+				if (blit.highlight) {
+					tex.set_blend_mode(SDL_BLENDMODE_ADD);
+					tex.set_alpha_mod(blit.highlight);
+					draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+					tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+				}
 			} else {
-				draw::flipped(tex, blit.dest(), hflip, vflip);
+				draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
+				if (blit.highlight) {
+					tex.set_blend_mode(SDL_BLENDMODE_ADD);
+					tex.set_alpha_mod(blit.highlight);
+					draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
+					tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+				}
 			}
-			if (alpha_mod != SDL_ALPHA_OPAQUE) {
+			if (blit.alpha_mod != SDL_ALPHA_OPAQUE || blit.highlight) {
 				tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
 			}
 		}
@@ -1508,8 +1514,8 @@ void display::draw_text_in_hex(const map_location& loc,
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
 				const SDL_Rect dest{int(x + dx*zf), int(y + dy*zf), w, h};
-				drawing_buffer_add(layer, loc, dest, back_surf,
-					SDL_Rect(), false, false, 128);
+				auto& bh = drawing_buffer_add(layer, loc, dest, back_surf);
+				bh.alpha_mod = 128;
 			}
 		}
 	}
@@ -1521,12 +1527,15 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		bool hreverse, bool greyscale, uint8_t alpha, double highlight,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
+	if (alpha <= 0) {
+		return;
+	}
+
 	const point image_size = image::get_size(i_locator);
 	if (!image_size.x || !image_size.y) {
 		return;
 	}
 
-	// TODO: highdpi - are x,y correct here?
 	rect dest = scaled_to_zoom({x, y, image_size.x, image_size.y});
 	if (!dest.overlaps(map_area())) {
 		return;
@@ -1554,21 +1563,6 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 			new_modifications += "0.";
 			new_modifications += std::to_string(int(100*blend_ratio));
 		}
-		new_modifications += ")";
-	}
-
-	// TODO: highdpi - perhaps this can be done by blitting twice, once in additive blend mode
-	// Note: this may not be identical to the original calculation,
-	// which was to multiply the RGB values by (alpha/255).
-	// But for now it looks close enough.
-	if(highlight > 0.0) {
-		const std::string brighten_string = std::to_string(int(highlight*128.0));
-		new_modifications += "~CS(";
-		new_modifications += brighten_string;
-		new_modifications += ",";
-		new_modifications += brighten_string;
-		new_modifications += ",";
-		new_modifications += brighten_string;
 		new_modifications += ")";
 	}
 
@@ -1604,8 +1598,11 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		tex = image::get_texture(i_locator);
 	}
 
-	drawing_buffer_add(drawing_layer, loc, dest, tex, sdl::empty_rect,
-		hreverse, vreverse, alpha);
+	blit_helper& bh = drawing_buffer_add(drawing_layer, loc, dest, tex);
+	bh.hflip = hreverse;
+	bh.vflip = vreverse;
+	bh.alpha_mod = alpha;
+	bh.highlight = float_to_color(highlight);
 }
 
 void display::select_hex(map_location hex)
@@ -2620,8 +2617,9 @@ void display::draw_hex(const map_location& loc)
 		&& bool(mouseover_hex_overlay_))
 	{
 		const uint8_t alpha = 196;
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, dest,
-			mouseover_hex_overlay_, SDL_Rect(), false, false, alpha);
+		blit_helper& bh = drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY,
+			loc, dest, mouseover_hex_overlay_);
+		bh.alpha_mod = alpha;
 	}
 
 	// Paint arrows
