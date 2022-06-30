@@ -545,7 +545,7 @@ surface o_modification::operator()(const surface& src) const
 		return nullptr;
 	}
 
-	uint32_t amount = floating_to_fixed_point(opacity_);
+	uint8_t alpha_mod = float_to_color(opacity_);
 
 	{
 		surface_lock lock(nsurf);
@@ -561,7 +561,7 @@ surface o_modification::operator()(const surface& src) const
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = std::min<unsigned>(fixed_point_multiply(alpha,amount), 255);
+				alpha = color_multiply(alpha, alpha_mod);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 

@@ -143,7 +143,7 @@ surface brighten_image(const surface &surf, int32_t amount);
  */
 surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
-void adjust_surface_alpha(surface& surf, int32_t amount);
+void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 surface adjust_surface_alpha_add(const surface &surf, int amount);
 
 /** Applies a mask on a surface. */

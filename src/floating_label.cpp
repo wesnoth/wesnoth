@@ -145,12 +145,6 @@ bool floating_label::create_texture()
 			uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
 			sdl::fill_surface_rect(background, nullptr, color);
 
-			// we make the text less transparent, because the blitting on the
-			// dark background will darken the anti-aliased part.
-			// This 1.13 value seems to restore the brightness of version 1.4
-			// (where the text was blitted directly on screen)
-			adjust_surface_alpha(foreground, floating_to_fixed_point(1.13));
-
 			SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);

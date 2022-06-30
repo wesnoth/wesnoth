@@ -972,13 +972,13 @@ surface brighten_image(const surface &surf, int32_t amount)
 	return nsurf;
 }
 
-void adjust_surface_alpha(surface& surf, int32_t amount)
+void adjust_surface_alpha(surface& surf, uint8_t alpha_mod)
 {
 	if(surf == nullptr) {
 		return;
 	}
 
-	SDL_SetSurfaceAlphaMod(surf, uint8_t(amount));
+	SDL_SetSurfaceAlphaMod(surf, alpha_mod);
 }
 
 surface adjust_surface_alpha_add(const surface &surf, int amount)

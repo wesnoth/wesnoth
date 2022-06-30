@@ -1518,7 +1518,7 @@ void display::draw_text_in_hex(const map_location& loc,
 
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, const image::locator& i_locator,
-		bool hreverse, bool greyscale, int32_t alpha,
+		bool hreverse, bool greyscale, uint8_t alpha, double highlight,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
 	const point image_size = image::get_size(i_locator);
@@ -1557,13 +1557,12 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		new_modifications += ")";
 	}
 
-	// TODO: This is not what alpha means. Don't frivolously overload it.
 	// TODO: highdpi - perhaps this can be done by blitting twice, once in additive blend mode
 	// Note: this may not be identical to the original calculation,
 	// which was to multiply the RGB values by (alpha/255).
 	// But for now it looks close enough.
-	if(alpha > floating_to_fixed_point(1.0)) {
-		const std::string brighten_string = std::to_string((alpha - 255)/2);
+	if(highlight > 0.0) {
+		const std::string brighten_string = std::to_string(int(highlight*128.0));
 		new_modifications += "~CS(";
 		new_modifications += brighten_string;
 		new_modifications += ",";
@@ -1605,9 +1604,8 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		tex = image::get_texture(i_locator);
 	}
 
-	const uint8_t alpha_mod = std::clamp(alpha, 0, 255);
 	drawing_buffer_add(drawing_layer, loc, dest, tex, sdl::empty_rect,
-		hreverse, vreverse, alpha_mod);
+		hreverse, vreverse, alpha);
 }
 
 void display::select_hex(map_location hex)

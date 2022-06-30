@@ -849,8 +849,9 @@ public:
 	void render_image(int x, int y, const display::drawing_layer drawing_layer,
 			const map_location& loc, const image::locator& i_locator,
 			bool hreverse=false, bool greyscale=false,
-			int32_t alpha=SDL_ALPHA_OPAQUE, color_t blendto = {0,0,0},
-			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
+			uint8_t alpha=SDL_ALPHA_OPAQUE, double highlight=0.0,
+			color_t blendto={0,0,0}, double blend_ratio=0,
+			double submerged=0.0, bool vreverse=false);
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.

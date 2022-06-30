@@ -111,14 +111,16 @@ void game_display::new_turn()
 
 				if(old_mask != nullptr) {
 					// TODO: highdpi - do this on the fly, rather than baking it
-					const int32_t proportion = floating_to_fixed_point(1.0) - fixed_point_divide(i,niterations);
+					int32_t proportion = 256 - fixed_point_divide(i,niterations);
+					proportion = std::clamp(proportion, 0, 255);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
 					// TODO: highdpi - do this on the fly, rather than baking it
-					const int32_t proportion = fixed_point_divide(i,niterations);
+					int32_t proportion = fixed_point_divide(i,niterations);
+					proportion = std::clamp(proportion, 0, 255);
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2 = new_mask;
 				}

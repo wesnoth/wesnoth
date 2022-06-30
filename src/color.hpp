@@ -240,3 +240,29 @@ namespace std
 		}
 	};
 }
+
+/********************************************/
+/* Functions for manipulating colour values */
+/********************************************/
+
+/** Convert a double in the range [0.0,1.0] to an 8-bit colour value. */
+constexpr uint8_t float_to_color(double n)
+{
+	if(n <= 0.0) return 0;
+	else if(n >= 1.0) return 255;
+	else return uint8_t(n * 256.0);
+}
+
+/** Convert a float in the range [0.0,1.0] to an 8-bit colour value. */
+constexpr uint8_t float_to_color(float n)
+{
+	if(n <= 0.0f) return 0;
+	else if(n >= 1.0f) return 255;
+	else return uint8_t(n * 256.0f);
+}
+
+/** Multiply two 8-bit colour values as if in the range [0.0,1.0]. */
+constexpr uint8_t color_multiply(uint8_t n1, uint8_t n2)
+{
+	return uint8_t((uint16_t(n1) * uint16_t(n2))/255);
+}

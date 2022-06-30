@@ -75,7 +75,7 @@ private:
 	/** draw a health/xp bar of a unit */
 	void draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, int32_t alpha) const;
+		const color_t& col, uint8_t alpha) const;
 
 	/**
 	 * Finds the start and end rows on the energy bar image.

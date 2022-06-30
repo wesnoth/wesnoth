@@ -18,7 +18,6 @@
 #include "color.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "sdl/utils.hpp" // floating_to_fixed_point
 #include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -554,10 +553,21 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			my_y -= current_data.directional_y * disp_zoom;
 		}
 
+		// TODO: don't conflate highlights and alpha
+		double brighten;
+		uint8_t alpha;
+		if(current_data.highlight_ratio >= 1.0) {
+			brighten = current_data.highlight_ratio - 1.0;
+			alpha = 255;
+		} else {
+			brighten = 0.0;
+			alpha = float_to_color(current_data.highlight_ratio);
+		}
+
 		display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
-			src, image_loc, facing_west, false,
-			floating_to_fixed_point(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
+			src, image_loc, facing_west, false, alpha, brighten,
+			current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 

@@ -334,7 +334,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const int32_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? floating_to_fixed_point(1.0): floating_to_fixed_point(0.8);
+		const uint8_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? 255 : float_to_color(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -394,7 +394,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, int32_t alpha) const
+		const color_t& col, uint8_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
@@ -453,11 +453,10 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
 
-	if(unfilled < height && alpha >= floating_to_fixed_point(0.3)) {
-		const uint8_t r_alpha = std::min<unsigned>(fixed_point_multiply(alpha,255),255);
+	if(unfilled < height && alpha >= float_to_color(0.3)) {
 		surface filled_surf(bar_loc.w, height - unfilled);
 		rect filled_area(0, 0, bar_loc.w, height-unfilled);
-		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, alpha));
 		dest = {xpos + bar_loc.x, ypos + bar_loc.y + int(unfilled),
 			filled_surf->w, filled_surf->h};
 		// TODO: highdpi - fix, see above
