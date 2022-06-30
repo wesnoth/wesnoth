@@ -78,8 +78,6 @@ std::vector<unsigned int> zoom_levels {36, 72, 144};
 //
 double hp_bar_scaling  = 0.666;
 double xp_bar_scaling  = 0.5;
-// TODO: highdpi - remove hex_brightening? it is and was not actually used
-double hex_brightening = 1.25;
 
 //
 // Misc
@@ -366,7 +364,6 @@ void load_config(const config &v)
 
 	hp_bar_scaling  = v["hp_bar_scaling"].to_double(0.666);
 	xp_bar_scaling  = v["xp_bar_scaling"].to_double(0.5);
-	hex_brightening = v["hex_brightening"].to_double(1.25);
 
 	foot_speed_prefix   = utils::split(v["footprint_prefix"]);
 	foot_teleport_enter = v["footprint_teleport_enter"].str();
