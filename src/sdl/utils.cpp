@@ -1952,14 +1952,3 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 
 	return res;
 }
-
-SDL_Color color_t::to_sdl() const {
-	return {r, g, b, a};
-}
-
-color_t::color_t(const SDL_Color& c)
-	: r(c.r)
-	, g(c.g)
-	, b(c.b)
-	, a(c.a)
-{}
