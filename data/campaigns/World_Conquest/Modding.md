@@ -176,7 +176,7 @@ Next, continue coding:
             commanders=Drakes,Knalgans
             heroes=Loyalists_All,Northerners_All,Young Ogre
             deserters=Rebels,Undead,Dune Burner
-            deserters_names={WC_STR_DUNE_BURNER}+", "+{WC_STR_REBELS}+{WC_STR_AND}+{WC_STR_THE_UNDEAD}
+            deserters_names=_ "Dune Burner, Rebels and Undead"
             {WC_II_PAIR "Drake Fighter" "Dwarvish Fighter"}
             {WC_II_PAIR "Drake Burner" "Dwarvish Thunderer"}
             {WC_II_PAIR "Saurian Augur" "Dwarvish Ulfserker"}
@@ -400,7 +400,7 @@ Normally, this is what an entire modifications/era file should look like. Notice
             commanders=Drakes,Knalgans
             heroes=Loyalists_All,Northerners_All,Young Ogre
             deserters=Rebels,Undead,Dune Burner
-            deserters_names={WC_STR_DUNE_BURNER}+", "+{WC_STR_REBELS}+{WC_STR_AND}+{WC_STR_THE_UNDEAD}
+            deserters_names=_ "Dune Burner, Rebels and Undead"
             {WC_II_PAIR "Drake Fighter" "Dwarvish Fighter"}
             {WC_II_PAIR "Drake Burner" "Dwarvish Thunderer"}
             {WC_II_PAIR "Saurian Augur" "Dwarvish Ulfserker"}
