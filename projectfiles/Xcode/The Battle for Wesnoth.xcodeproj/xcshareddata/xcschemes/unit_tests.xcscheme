@@ -51,6 +51,12 @@
             ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "--run_test=test_preproc_defines"
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "DYLD_FALLBACK_FRAMEWORK_PATH"
