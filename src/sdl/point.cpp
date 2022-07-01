@@ -35,6 +35,6 @@ point& point::operator-=(const point& point)
 
 std::ostream& operator<<(std::ostream& stream, const point& point)
 {
-	stream << point.x << ',' << point.y;
+	stream << '(' << point.x << ',' << point.y << ')';
 	return stream;
 }
