@@ -703,6 +703,12 @@
 		919797A7261A6FDB001E8133 /* test_macro_define.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919797A6261A6FDB001E8133 /* test_macro_define.cpp */; };
 		919797B6261A7399001E8133 /* addon_auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919797322619A151001E8133 /* addon_auth.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
+		919F2CF6286F7D8100F47750 /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF556C281101C3007A7652 /* input.cpp */; };
+		919F2CFB286F7D8600F47750 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55AF2827588B007A7652 /* texture.cpp */; };
+		919F2D00286F7D9400F47750 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AF55DE2848472F007A7652 /* draw.cpp */; };
+		919F2D05286F7DAB00F47750 /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
+		919F2D0A286F7DE100F47750 /* lobby_player_list_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF2393126B592C800F2884F /* lobby_player_list_helper.cpp */; };
+		919F2D0F286F7E2B00F47750 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		91A214E71CAD666B00927AEA /* cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A9D0EC62181008DD061 /* cursor.cpp */; };
 		91A214E81CAD666B00927AEA /* clipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC49A38119F34F1200E78528 /* clipboard.cpp */; };
@@ -2936,6 +2942,7 @@
 				46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */,
 				468A5B99258CD3B5004A80EF /* libboost_system-mt.dylib in Frameworks */,
 				468A5B9F258CD3B5004A80EF /* libboost_locale-mt.dylib in Frameworks */,
+				919F2D0F286F7E2B00F47750 /* Security.framework in Frameworks */,
 				B597C51E0FACD56600CE81F5 /* libpixman-1.0.dylib in Frameworks */,
 				91A215281CAD699200927AEA /* libfontconfig.1.dylib in Frameworks */,
 				46515C362569CE0B00084CE2 /* libcrypto.1.1.dylib in Frameworks */,
@@ -5887,6 +5894,7 @@
 				46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */,
 				91E356981CACC7CE00774252 /* shroud_clearing_action.cpp in Sources */,
 				91E356991CACC7CE00774252 /* undo.cpp in Sources */,
+				919F2D0A286F7DE100F47750 /* lobby_player_list_helper.cpp in Sources */,
 				91E3569A1CACC7CE00774252 /* undo_action.cpp in Sources */,
 				91E3569B1CACC7CE00774252 /* undo_dismiss_action.cpp in Sources */,
 				46F92E122174F6A400602C1C /* mp_staging.cpp in Sources */,
@@ -5897,6 +5905,7 @@
 				91E3569C1CACC7CE00774252 /* undo_move_action.cpp in Sources */,
 				91E3569D1CACC7CE00774252 /* undo_recall_action.cpp in Sources */,
 				91E3569E1CACC7CE00774252 /* undo_recruit_action.cpp in Sources */,
+				919F2CF6286F7D8100F47750 /* input.cpp in Sources */,
 				91E3569F1CACC7CE00774252 /* undo_update_shroud_action.cpp in Sources */,
 				91E356A01CACC7CE00774252 /* unit_creator.cpp in Sources */,
 				91E356A11CACC7CE00774252 /* vision.cpp in Sources */,
@@ -5918,6 +5927,7 @@
 				91E356AE1CACC81A00774252 /* registry.cpp in Sources */,
 				46F92E2C2174F6A400602C1C /* synced_choice_wait.cpp in Sources */,
 				46F92F182174FEC000602C1C /* font_config.cpp in Sources */,
+				919F2D05286F7DAB00F47750 /* lua_mathx.cpp in Sources */,
 				91E356AF1CACC81A00774252 /* simulated_actions.cpp in Sources */,
 				91E356B01CACC81A00774252 /* testing.cpp in Sources */,
 				91E356B11CACC82D00774252 /* ai.cpp in Sources */,
@@ -6003,6 +6013,7 @@
 				91979795261A6FA1001E8133 /* test_formula_timespan.cpp in Sources */,
 				91E356E21CACC92000774252 /* map_fragment.cpp in Sources */,
 				4685124D24AE1A15005B6EB1 /* game_config_view.cpp in Sources */,
+				919F2D00286F7D9400F47750 /* draw.cpp in Sources */,
 				46F92D982174F6A300602C1C /* handler.cpp in Sources */,
 				46F92D7A2174F6A300602C1C /* linked_group_definition.cpp in Sources */,
 				91E356E31CACC93000774252 /* editor_palettes.cpp in Sources */,
@@ -6034,6 +6045,7 @@
 				46F92E702174F6A400602C1C /* size_lock.cpp in Sources */,
 				91E356F11CACC95100774252 /* tokenizer.cpp in Sources */,
 				91E356F21CACC95100774252 /* variant.cpp in Sources */,
+				919F2CFB286F7D8600F47750 /* texture.cpp in Sources */,
 				46F92E982174F6A400602C1C /* stacked_widget.cpp in Sources */,
 				46F92DE22174F6A300602C1C /* hotkey_bind.cpp in Sources */,
 				91E356F31CACC97400774252 /* action_wml.cpp in Sources */,
