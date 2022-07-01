@@ -1289,29 +1289,25 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
-	// TODO: highdpi - perhaps it might be desirable to optionally apply colour and alpha modifiers here?
 	for(const blit_helper& blit : drawing_buffer_) {
 		for(texture tex : blit.tex()) {
 			const SDL_Rect& src = blit.clip();
 			if (blit.alpha_mod != SDL_ALPHA_OPAQUE) {
 				tex.set_alpha_mod(blit.alpha_mod);
 			}
-			if (src != sdl::empty_rect) {
+			if (blit.r_mod != 255 || blit.g_mod != 255 || blit.b_mod != 255) {
+				tex.set_color_mod(blit.r_mod, blit.g_mod, blit.b_mod);
+			}
+			// TODO: hwaccel - revist whether treating empty rect as full src clip is okay
+			draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+			if (blit.highlight) {
+				tex.set_blend_mode(SDL_BLENDMODE_ADD);
+				tex.set_alpha_mod(blit.highlight);
 				draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
-				if (blit.highlight) {
-					tex.set_blend_mode(SDL_BLENDMODE_ADD);
-					tex.set_alpha_mod(blit.highlight);
-					draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
-					tex.set_blend_mode(SDL_BLENDMODE_BLEND);
-				}
-			} else {
-				draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
-				if (blit.highlight) {
-					tex.set_blend_mode(SDL_BLENDMODE_ADD);
-					tex.set_alpha_mod(blit.highlight);
-					draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
-					tex.set_blend_mode(SDL_BLENDMODE_BLEND);
-				}
+				tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+			}
+			if (blit.r_mod != 255 || blit.g_mod != 255 || blit.b_mod != 255) {
+				tex.set_color_mod(255, 255, 255);
 			}
 			if (blit.alpha_mod != SDL_ALPHA_OPAQUE || blit.highlight) {
 				tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
@@ -1527,7 +1523,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		bool hreverse, bool greyscale, uint8_t alpha, double highlight,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	if (alpha <= 0) {
+	if (alpha == 0) {
 		return;
 	}
 
@@ -1546,24 +1542,6 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 
 	if (greyscale) {
 		new_modifications += "~GS()";
-	}
-
-	if (blend_ratio > 0.0) {
-		new_modifications += "~BLEND(";
-		new_modifications += std::to_string(blendto.r);
-		new_modifications += ",";
-		new_modifications += std::to_string(blendto.g);
-		new_modifications += ",";
-		new_modifications += std::to_string(blendto.b);
-		new_modifications += ",";
-		// reduce blend_ratio precision to avoid caching too many options.
-		if (blend_ratio >= 1.0) {
-			new_modifications += "1.0";
-		} else {
-			new_modifications += "0.";
-			new_modifications += std::to_string(int(100*blend_ratio));
-		}
-		new_modifications += ")";
 	}
 
 	// general formula for submerged alpha:
@@ -1586,6 +1564,10 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		new_modifications += sl_string;
 		new_modifications += ")*0.015),0,1)*alpha,alpha))";
 	}
+	// FUTURE: this submerge function could be done using SDL_RenderGeometry,
+	// but that's not available below SDL 2.0.18.
+	// Alternately it could also be done fairly easily using shaders,
+	// if a graphics system supporting them (such as openGL) is moved to.
 
 	texture tex;
 	if (!new_modifications.empty()) {
@@ -1598,10 +1580,31 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		tex = image::get_texture(i_locator);
 	}
 
+	// Clamp blend ratio so nothing weird happens
+	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
+
+	// SDL hax to apply an active washout tint at the correct ratio
+	if (blend_ratio > 0.0) {
+		// Get a pure-white version of the texture
+		const image::locator whiteout_locator(
+			i_locator.get_filename(),
+			i_locator.get_modifications() + "~CHAN(255, 255, 255, alpha)"
+		);
+		const texture& wt = image::get_texture(whiteout_locator);
+		// Blit the pure white version, tinted to the right colour
+		blit_helper &wh = drawing_buffer_add(drawing_layer, loc, dest, wt);
+		wh.hflip = hreverse;
+		wh.vflip = vreverse;
+		wh.alpha_mod = alpha;
+		wh.r_mod = blendto.r;
+		wh.g_mod = blendto.g;
+		wh.b_mod = blendto.b;
+	}
+
 	blit_helper& bh = drawing_buffer_add(drawing_layer, loc, dest, tex);
 	bh.hflip = hreverse;
 	bh.vflip = vreverse;
-	bh.alpha_mod = alpha;
+	bh.alpha_mod = uint8_t(alpha * (1.0 - blend_ratio));
 	bh.highlight = float_to_color(highlight);
 }
 
