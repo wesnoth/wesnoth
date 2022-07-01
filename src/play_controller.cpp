@@ -126,8 +126,8 @@ static void clear_resources()
 	resources::filter_con = nullptr;
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
-	resources::game_events = nullptr;
 	resources::lua_kernel = nullptr;
+	resources::game_events = nullptr;
 	resources::persist = nullptr;
 	resources::soundsources = nullptr;
 	resources::tod_manager = nullptr;
