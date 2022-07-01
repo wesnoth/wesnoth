@@ -709,6 +709,9 @@
 		919F2D05286F7DAB00F47750 /* lua_mathx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F8E12D260A25E1002312BA /* lua_mathx.cpp */; };
 		919F2D0A286F7DE100F47750 /* lobby_player_list_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF2393126B592C800F2884F /* lobby_player_list_helper.cpp */; };
 		919F2D0F286F7E2B00F47750 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; };
+		919F2D31286F851D00F47750 /* libboost_prg_exec_monitor-mt.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 468A5B87258CD3B4004A80EF /* libboost_prg_exec_monitor-mt.dylib */; };
+		919F2D36286F856100F47750 /* libboost_unit_test_framework-mt.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 468A5B88258CD3B4004A80EF /* libboost_unit_test_framework-mt.dylib */; };
+		919F2D3B286F857100F47750 /* libboost_timer-mt.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 468A5B90258CD3B4004A80EF /* libboost_timer-mt.dylib */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		91A214E71CAD666B00927AEA /* cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A9D0EC62181008DD061 /* cursor.cpp */; };
 		91A214E81CAD666B00927AEA /* clipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC49A38119F34F1200E78528 /* clipboard.cpp */; };
@@ -1398,6 +1401,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		919F2D30286F851000F47750 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = TestFrameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				919F2D31286F851D00F47750 /* libboost_prg_exec_monitor-mt.dylib in CopyFiles */,
+				919F2D36286F856100F47750 /* libboost_unit_test_framework-mt.dylib in CopyFiles */,
+				919F2D3B286F857100F47750 /* libboost_timer-mt.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5599E8F0EC64D18008DD061 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5004,6 +5019,7 @@
 			buildConfigurationList = B597C49C0FACD3EC00CE81F5 /* Build configuration list for PBXNativeTarget "unit_tests" */;
 			buildPhases = (
 				B597C4950FACD3CD00CE81F5 /* Sources */,
+				919F2D30286F851000F47750 /* CopyFiles */,
 				B597C4960FACD3CD00CE81F5 /* Frameworks */,
 			);
 			buildRules = (
