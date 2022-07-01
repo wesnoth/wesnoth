@@ -363,11 +363,11 @@ bool game_launcher::init_lua_script()
 
 			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
-			std::cerr << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
+			std::cerr << "\nRunning lua script: " << filesystem::sanitize_path(*cmdline_opts_.script_file) << std::endl;
 
 			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
 		} else {
-			std::cerr << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
+			std::cerr << "Encountered failure when opening script '" << filesystem::sanitize_path(*cmdline_opts_.script_file) << "'\n";
 			error = true;
 		}
 	}
@@ -375,7 +375,7 @@ bool game_launcher::init_lua_script()
 	if(cmdline_opts_.plugin_file) {
 		std::string filename = *cmdline_opts_.plugin_file;
 
-		std::cerr << "Loading a plugin file'" << filename << "'...\n";
+		std::cerr << "Loading a plugin file'" << filesystem::sanitize_path(filename) << "'...\n";
 
 		filesystem::scoped_istream sf = filesystem::istream_file(filename);
 
