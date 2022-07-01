@@ -24,7 +24,7 @@
 #include <boost/test/unit_test.hpp>
 
 namespace std {
-std::ostream& operator<<(std::ostream& str, const std::pair<const std::string, std::string>& p)
+static std::ostream& operator<<(std::ostream& str, const std::pair<const std::string, std::string>& p)
 {
 	return str << '(' << p.first << " => " << p.second << ')';
 }
