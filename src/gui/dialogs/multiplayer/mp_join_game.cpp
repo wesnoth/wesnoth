@@ -46,7 +46,7 @@
 #include "side_controller.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
-#include "utils/scope_exit.hpp"
+#include "utils/guard_value.hpp"
 #include "wesnothd_connection.hpp"
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
@@ -318,10 +318,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
-			flg_dialog_ = &flg_dialog;
-			ON_SCOPE_EXIT(this) {
-				flg_dialog_ = nullptr;
-			};
+			utils::guard_value guard(flg_dialog_, &flg_dialog);
 
 			if(!flg_dialog.show() && !first_time) {
 				return true;
