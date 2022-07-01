@@ -11,8 +11,11 @@
  ### Editor
  ### Multiplayer
  ### Lua API
+   * New `wesnoth.interface.screen_fade` function applies an overlay colour to the game display, fading over the given duration (PR #6864).
  ### Packaging
    * Increased minimum required version of SDL to 2.0.10.
+ ### Rendering Engine
+   * Large changes have been made to Wesnoth's rendering engine, enabling hardware acceleration for the majority of components and resolving many long-standing issues. Performance should be greatly increased, and CPU and GPU usage greatly decreased in almost all situations. Issues confirmed resolved: #1291, #1350, #1605, #1755, #2059, #2458, #2618, #2865, #3238, #3255, #3421, #3592, #3798, #3937, #3942, #4210, #4460, #4877, #5115, #5420, #5494.
  ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Swedish
@@ -21,8 +24,11 @@
    * Updated some Loyalist sprites: Sergeant, Lieutenant, Swordsman, Pikeman, Royal Guard, Halberdier
  ### User interface
  ### WML Engine
+   * A new interface action `[screen_fade]` provides a smooth screen fade effect which also covers units (issue #6745).
  ### Miscellaneous and Bug Fixes
    * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
+   * Fixed the addon manager UI blanking incorrectly (issue #6787)
+   * Implemented a workaround for bad SDL rectangle drawing in some versions (issue #6799)
 
 ## Version 1.17.5
  ### Campaigns
