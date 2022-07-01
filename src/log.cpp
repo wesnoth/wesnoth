@@ -21,6 +21,7 @@
  */
 
 #include "log.hpp"
+#include <boost/algorithm/string.hpp>
 
 #include <map>
 #include <sstream>
@@ -207,6 +208,25 @@ static void print_precise_timestamp(std::ostream& out) noexcept
 	} catch(...) {}
 }
 
+std::string sanitize_log(const std::string& logstr)
+{
+	std::string str = logstr;
+
+#ifdef _WIN32
+	const char* user_name = getenv("USERNAME");
+	if(user_name != nullptr) {
+		boost::replace_all(str, std::string("\\") + user_name + "\\", "\\USER\\");
+	}
+#else
+	const char* user_name = getenv("USER");
+	if(user_name != nullptr) {
+		boost::replace_all(str, std::string("/") + user_name + "/", "/USER/");
+	}
+#endif
+
+	return str;
+}
+
 log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
 {
 	if (severity_ > domain.domain_->second) {
@@ -248,7 +268,7 @@ void log_in_progress::operator|(formatter&& message)
 			stream_ << get_timestamp(std::time(nullptr));
 		}
 	}
-	stream_ << prefix_ << message.str();
+	stream_ << prefix_ << sanitize_log(message.str());
 }
 
 void log_in_progress::set_indent(int level) {
