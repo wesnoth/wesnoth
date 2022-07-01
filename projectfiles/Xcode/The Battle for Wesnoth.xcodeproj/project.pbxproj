@@ -6554,6 +6554,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6689,6 +6690,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6712,6 +6714,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
