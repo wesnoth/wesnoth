@@ -551,11 +551,11 @@ const std::string& get_version_path_suffix()
 		if(bfs::is_directory(new_saves_dir)) {
 			if(!bfs::exists(old_saves_dir)) {
 				std::cout << "Apple developer's userdata migration: ";
-				std::cout << "symlinking " << old_saves_dir << " to " << new_saves_dir << "\n";
+				std::cout << "symlinking " << filesystem::sanitize_path(old_saves_dir.string()) << " to " << filesystem::sanitize_path(new_saves_dir.string()) << "\n";
 				bfs::create_symlink(new_saves_dir, old_saves_dir);
 			} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
 				std::cout << "Apple developer's userdata migration: ";
-				std::cout << "Problem! Old (non-containerized) directory " << old_saves_dir << " is not a symlink. Your savegames are scattered around 2 locations.\n";
+				std::cout << "Problem! Old (non-containerized) directory " << filesystem::sanitize_path(old_saves_dir.string()) << " is not a symlink. Your savegames are scattered around 2 locations.\n";
 			}
 			return;
 		}

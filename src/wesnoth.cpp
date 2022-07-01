@@ -158,7 +158,7 @@ static void encode(const std::string& input_file, const std::string& output_file
 		ifile.peek(); // We need to touch the stream to set the eof bit
 
 		if(!ifile.good()) {
-			std::cerr << "Input file " << input_file
+			std::cerr << "Input file " << filesystem::sanitize_path(input_file)
 					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting\n";
 			safe_exit(1);
 		}
@@ -225,11 +225,11 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_input_macros) {
 		std::string file = *cmdline_opts.preprocess_input_macros;
 		if(filesystem::file_exists(file) == false) {
-			std::cerr << "please specify an existing file. File " << file << " doesn't exist.\n";
+			std::cerr << "please specify an existing file. File " << filesystem::sanitize_path(file) << " doesn't exist.\n";
 			return;
 		}
 
-		std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
+		std::cerr << SDL_GetTicks() << " Reading cached defines from: " << filesystem::sanitize_path(file) << "\n";
 
 		config cfg;
 
@@ -237,7 +237,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			filesystem::scoped_istream stream = filesystem::istream_file(file);
 			read(cfg, *stream);
 		} catch(const config::error& e) {
-			std::cerr << "Caught a config error while parsing file '" << file << "':\n" << e.message << std::endl;
+			std::cerr << "Caught a config error while parsing file '" << filesystem::sanitize_path(file) << "':\n" << e.message << std::endl;
 		}
 
 		int read = 0;
@@ -351,7 +351,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		LOG_PREPROC << "adding define: " << define << '\n';
 		defines_map.emplace(define, preproc_define(define));
 	}
-	std::cout << "Validating " << file << " against schema " << validator.name_ << std::endl;
+	std::cout << "Validating " << filesystem::sanitize_path(file) << " against schema " << validator.name_ << std::endl;
 	lg::set_strict_severity(0);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
@@ -385,7 +385,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userconfig_path) {
-		std::cout << filesystem::get_user_config_dir() << '\n';
+		std::cout << filesystem::sanitize_path(filesystem::get_user_config_dir()) << '\n';
 		return 0;
 	}
 
@@ -394,7 +394,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir() << '\n';
+		std::cout << filesystem::sanitize_path(filesystem::get_user_data_dir()) << '\n';
 		return 0;
 	}
 
@@ -412,10 +412,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		if(!cmdline_opts.nobanner) std::cerr << "Overriding data directory with " << game_config::path << std::endl;
+		if(!cmdline_opts.nobanner) std::cerr << "Overriding data directory with " << filesystem::sanitize_path(game_config::path) << std::endl;
 
 		if(!filesystem::is_directory(game_config::path)) {
-			std::cerr << "Could not find directory '" << game_config::path << "'\n";
+			std::cerr << "Could not find directory '" << filesystem::sanitize_path(game_config::path) << "'\n";
 			throw config::error("directory not found");
 		}
 
@@ -424,7 +424,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_path) {
-		std::cout << game_config::path << '\n';
+		std::cout << filesystem::sanitize_path(game_config::path) << '\n';
 		return 0;
 	}
 
@@ -443,7 +443,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);
 		if(!filesystem::is_gzip_file(input_file)) {
-			std::cerr << "file '" << input_file << "'isn't a .gz file\n";
+			std::cerr << "file '" << filesystem::sanitize_path(input_file) << "'isn't a .gz file\n";
 			return 2;
 		}
 
@@ -454,7 +454,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.bunzip2) {
 		const std::string input_file(*cmdline_opts.bunzip2);
 		if(!filesystem::is_bzip2_file(input_file)) {
-			std::cerr << "file '" << input_file << "'isn't a .bz2 file\n";
+			std::cerr << "file '" << filesystem::sanitize_path(input_file) << "'isn't a .bz2 file\n";
 			return 2;
 		}
 
@@ -645,7 +645,7 @@ static void handle_lua_script_args(game_launcher* game, commandline_options& /*c
 
 	if(!game->init_lua_script()) {
 		// std::cerr << "error when loading lua scripts at startup\n";
-		// std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
+		// std::cerr << "could not load lua script: " << filesystem::sanitize_path(*cmdline_opts.script_file) << std::endl;
 	}
 }
 
