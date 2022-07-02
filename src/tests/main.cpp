@@ -69,7 +69,7 @@ struct wesnoth_global_fixture {
 				break;
 			}
 		}
-		
+
 		reporter.open(file.c_str());
 		assert( reporter.is_open() );
 
