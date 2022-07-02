@@ -1,8 +1,9 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-Dev: [![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3Amaster)
-
-Stable: [![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg?branch=1.16)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3A1.16)
+|Branch|CI status|
+|------|---------|
+|Master|[![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3Amaster)|
+|1.16|[![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg?branch=1.16)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3A1.16)|
 
 About
 =====
