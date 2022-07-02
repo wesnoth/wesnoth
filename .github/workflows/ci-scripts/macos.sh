@@ -19,4 +19,12 @@ if [ $EXIT_VAL == 0 ] && [ "$CFG" == "Release" ]; then
 		EXIT_VAL=$?
 fi
 
+if [ "$CFG" == "Debug" ]; then
+	xcodebuild -project "The Battle for Wesnoth.xcodeprog" -target "unit tests" -configuration "$CFG"
+	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
+		./unit_tests --color_output --log_level=test_suite
+		EXIT_VAL=$?
+	fi
+fi
+
 exit $EXIT_VAL
