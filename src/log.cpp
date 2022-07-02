@@ -214,15 +214,14 @@ std::string sanitize_log(const std::string& logstr)
 
 #ifdef _WIN32
 	const char* user_name = getenv("USERNAME");
-	if(user_name != nullptr) {
-		boost::replace_all(str, std::string("\\") + user_name + "\\", "\\USER\\");
-	}
 #else
 	const char* user_name = getenv("USER");
+#endif
+
 	if(user_name != nullptr) {
 		boost::replace_all(str, std::string("/") + user_name + "/", "/USER/");
+		boost::replace_all(str, std::string("\\") + user_name + "\\", "\\USER\\");
 	}
-#endif
 
 	return str;
 }
