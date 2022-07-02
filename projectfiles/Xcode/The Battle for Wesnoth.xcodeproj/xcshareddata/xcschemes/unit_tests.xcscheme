@@ -69,23 +69,6 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_FRAMEWORK_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_LIBRARY_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_IMAGE_SUFFIX"
-            value = "-mt"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
