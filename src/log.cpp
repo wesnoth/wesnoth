@@ -227,7 +227,7 @@ std::string sanitize_log(const std::string& logstr)
 	return str;
 }
 
-log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
+log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent, bool show_timestamps) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
@@ -242,7 +242,7 @@ log_in_progress logger::operator()(const log_domain& domain, bool show_names, bo
 		if(do_indent) {
 			stream.set_indent(indent);
 		}
-		if (timestamp) {
+		if (timestamp && show_timestamps) {
 			stream.enable_timestamp();
 		}
 		if (show_names) {
