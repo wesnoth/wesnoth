@@ -262,4 +262,17 @@ function wesnoth.units.find_on_recall(filter) end
 ---@overload fun(x:integer, y:integer):unit
 function wesnoth.units.get(id) end
 
+---Create a weapon not attached to any unit
+---@param cfg WMLTable
+function wesnoth.units.create_weapon(cfg) end
+
+---Teleports a unit to a specified location, potentially with animation.
+---If the target location is occupied, a nearby location is selected.
+---If no valid location can be found, the unit is not teleported.
+---@param unit unit The unit to teleport
+---@param target location The target location
+---@param ignore_passability boolean
+---@param clear_shroud boolean
+---@param animate boolean
+
 wesnoth.units.get_hovered = wesnoth.interface.get_displayed_unit
