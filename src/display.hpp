@@ -978,7 +978,12 @@ protected:
 
 public:
 	/**
-	 * Add an item to the drawing buffer. You need to update screen on affected area
+	 * Add an item to the drawing buffer.
+	 *
+	 * This returns a blit_helper reference with several extra fields that can
+	 * be modified as necessary. In particular hflip, vflip and alpha_mod
+	 * have been moved to this helper. Fields that can be modified are
+	 * available as public members of blit_helper.
 	 *
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the
@@ -987,10 +992,6 @@ public:
 	 *                           in drawing coordinates.
 	 * @param tex               The texture to use.
 	 * @param clip              The portion of the source texture to use.
-	 * @param hflip             If true, flip the image horizontally.
-	 * @param vflip             If true, flip the image vertically.
-	 * @param alpha_mod         An alpha modifier to apply - multiplies
-	 *                          texture alpha by this value when drawing.
 	 */
 	blit_helper& drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, const SDL_Rect& dest, const texture& tex,
