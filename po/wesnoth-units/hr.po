@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 20:52 UTC\n"
+"POT-Creation-Date: 2022-05-29 10:14 UTC\n"
 "PO-Revision-Date: 2008-03-06 10:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -523,8 +523,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -4375,12 +4375,13 @@ msgid "tusk"
 msgstr ""
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
 msgstr ""
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -4388,12 +4389,12 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -4404,24 +4405,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -4572,12 +4573,12 @@ msgstr ""
 msgid "ice claw"
 msgstr ""
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
 msgid "Giant Stoat"
 msgstr ""
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr ""

@@ -312,11 +312,9 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
         -- A unit that cannot move any more, (or at least cannot move out of the way)
         -- must be considered to have a very high rating (it's in the best position
-        -- it can possibly achieve), but only if it is in own territory
-        if on_my_territory then
-            local best_move_away = bottleneck_move_out_of_way(unit, data)
-            if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
-        end
+        -- it can possibly achieve)
+        local best_move_away = bottleneck_move_out_of_way(unit, data)
+        if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
     end
 
     local enemies = AH.get_attackable_enemies()

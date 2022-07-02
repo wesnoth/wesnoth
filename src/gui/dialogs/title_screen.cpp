@@ -259,6 +259,9 @@ void title_screen::pre_show(window& win)
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
 		try{
 			if(game_.new_campaign()) {
+				// Suspend drawing of the title screen,
+				// so it doesn't flicker in between loading screens.
+				win.set_suspend_drawing(true);
 				win.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
@@ -277,6 +280,9 @@ void title_screen::pre_show(window& win)
 	//
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
+			// Suspend drawing of the title screen,
+			// so it doesn't flicker in between loading screens.
+			win.set_suspend_drawing(true);
 			win.set_retval(LAUNCH_GAME);
 		}
 	});

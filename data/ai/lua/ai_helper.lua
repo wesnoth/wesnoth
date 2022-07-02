@@ -1188,7 +1188,10 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
     if (not ignore_visibility) then
-        table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
+        filter_plus_vision = {
+            { "and", filter_plus_vision },
+            { "filter_vision", { side = viewing_side, visible = 'yes' } }
+        }
     end
 
     local enemies = {}

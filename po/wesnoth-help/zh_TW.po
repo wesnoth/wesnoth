@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2021-07-19 02:00+0800\n"
+"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"PO-Revision-Date: 2022-05-31 09:41+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [time]: id=underground
@@ -177,7 +177,7 @@ msgid "cures"
 msgstr "治癒"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "防禦力"
 
@@ -292,7 +292,7 @@ msgid "regenerates"
 msgstr "恢復"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
 msgstr "抗性"
 
@@ -320,7 +320,7 @@ msgstr "堅守"
 
 # 這用來表示幫助中單位頁的「傷害×次數」那行。
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
 msgstr "傷害×次數"
 
@@ -357,13 +357,13 @@ msgstr "地圖及章節編輯器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 msgid "Terrain Editor"
 msgstr "地形編輯器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 msgid "Scenario Editor"
 msgstr "章節編輯器"
 
@@ -618,13 +618,167 @@ msgstr ""
 "要讓超過九個隊伍在同一張地圖中，可以按下「增加」然後輸入一個數字。例如輸入"
 "「10」，介面上就會將它顯示成「玩家 10」。"
 
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr "編輯器地形覆蓋層圖形"
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+"地圖在編輯器中的通常與它們在遊戲中的看起來相似。有一些例外情況，那就是在編輯"
+"器中使用了不同的圖形。此處描述的所有覆蓋層都可以在地形調色盤的「特殊」群組中"
+"找到。"
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+"<bold>text='移動覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> 無法"
+"通過(Impassable)和無法行走(Unwalkable)\n"
+"\n"
+"雖然在編輯器中很容易注意到，但它們在遊戲中是不可見的，因此它們建立的混合地形"
+"看起來像基本地形。它們會建立一個混合地形，移動消耗分別設置為「無法通過」或"
+"「無法行走」。"
+
+# 不照翻。
+# 不確定這裡的blocked是什麼意思。
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+"<bold>text='主堡/城堡覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"加入主堡/城堡覆蓋層到可以通過的格子上能允許單位被招募到這個格子上。主堡能允許"
+"首領在上面進行招募。\n"
+"\n"
+"這些可以被加到無法通過的格子上來連接城堡到一個看起來被分割（透過無法通過的"
+"牆）的主堡。用它也可以做到建立出一個主堡和塔樓間有綠地的風格的城堡，然而這個"
+"需要連接的格子被佔用以防單位被招募到它們上面。"
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+"<bold>text='村莊覆蓋層'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"這個可以將任意的基本地形轉成村莊，提供收入和治療。"
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+"<bold>text='假的戰場黑幕'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"假的戰場黑幕看起來像未被探索過的區域，即便在章節中戰場黑幕被禁用且玩家的單位"
+"可以看到這個格子。"
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+msgid "Deprecated Terrain"
+msgstr "廢棄地形"
+
+# 不照翻。
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>桃紅「D」（廢棄用）\n"
+"\n"
+"被廢棄的地形代碼會顯示出這個。舉例來說：\n"
+"• <ref>dst='terrain_fungus_grove_old' text='代碼為「^Uf」的純種蘑菇林地形'</"
+"ref>,\n"
+"• 代碼為「Xol」的點燃的石牆，這個被廢棄是因為有幾個牆現在支援「^Efs」壁燈裝"
+"飾。\n"
+"\n"
+"這些地形的幫助頁面也許只有在編輯器內會顯示額外的文字，描述廢棄原因以及建議的"
+"替代作法。"
+
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr "標籤工具"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -646,12 +800,12 @@ msgstr ""
 "標籤來實作。"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
 msgstr "項目工具（章節工具）"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -674,13 +828,13 @@ msgstr ""
 "過WML的<italic>text='[item]'</italic>標籤。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr "村莊所有權工具"
 
 # 為了描述更清楚一點，不照翻。
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -704,12 +858,12 @@ msgstr ""
 "來儲存的。"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr "單位工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -732,12 +886,12 @@ msgstr ""
 "到適當的<italic>text='[side]'</italic>上。"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr "命名地區"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -781,12 +935,12 @@ msgstr ""
 "變地區中的時段才使用它。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr "播放清單管理器"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -800,13 +954,13 @@ msgstr ""
 "籤到章節。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr "地圖/章節編輯器"
 
 # 最後面的警告不照翻。
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -860,7 +1014,7 @@ msgstr ""
 "<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -903,7 +1057,7 @@ msgstr ""
 "地形的地圖將會需要該模組來告訴編輯器它們的地形。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -924,7 +1078,7 @@ msgstr ""
 "想要開始，就參考<ref>dst='editor_tool_paint' text='繪圖工具'</ref>的頁面。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -936,7 +1090,7 @@ msgstr ""
 "本的編輯。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -953,7 +1107,7 @@ msgstr ""
 "• 在地形模式中，「地區」和「陣營」選單是禁用的，而呈灰色。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:277
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -976,14 +1130,14 @@ msgstr ""
 "cfg」檔案（不是「.map」檔案）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:342
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -1007,12 +1161,12 @@ msgstr ""
 "案來開啟一樣。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
 msgstr "對WML事件使用一個獨立的檔案"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1106,12 +1260,12 @@ msgstr ""
 "  ◦ 在「[scenario]」標籤中，使用「map_file=\"map_from_01.cfg\"」來載入該檔案"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:336
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr "編輯器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:337
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1120,12 +1274,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:345
+#: data/core/editor/help.cfg:402
 msgid "ToD and Schedule Editor"
 msgstr "時段編輯器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:346
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1144,13 +1298,13 @@ msgstr ""
 "ref>編輯器，用來獨立設定時段。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:357
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr "編輯器調色盤"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1174,32 +1328,32 @@ msgstr ""
 "最左邊的那個，而且圖示會根據被選擇的東西而改變。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:364
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
 msgstr "顯示所有種類的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
 msgstr "只顯示水的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
 msgstr "只顯示村莊"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr "韋諾地圖格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "韋諾將它的地圖存成人類可讀的純文字檔案。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:381
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1253,7 +1407,7 @@ msgstr ""
 
 # 看不懂「but this is rarely-used code」，不翻譯。
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1285,7 +1439,7 @@ msgstr ""
 "檔案會在視窗選單上被標示為「(E)」。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1305,7 +1459,7 @@ msgstr ""
 "避免。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:406
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1899,8 +2053,8 @@ msgstr "玩法"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "特質"
 
@@ -3253,32 +3407,6 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "The orbs show whether the unit can move or attack. The statuses and their "
-#| "standard colors are:\n"
-#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
-#| "turn.\n"
-#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-#| "attack. It might still be able to move further too.\n"
-#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
-#| "this turn.\n"
-#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
-#| "    • when a unit is in the middle of a multi-turn move (has been told to "
-#| "move further than it can in the current turn).\n"
-#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-#| "still move further, but it can no longer attack.\n"
-#| "    • This can happen due to campaign-specific events or abilities, for "
-#| "example the <italic>text='disengage'</italic> ability in the campaign "
-#| "<italic>text='Under the Burning Suns'</italic>.\n"
-#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
-#| "own turn.\n"
-#| "    • During the ally’s own turn, their units will be shown with the "
-#| "green/yellow/red/white colors; however their moves, and the corresponding "
-#| "orb changes, are delayed as explained in <ref>dst='shroud_and_fog' "
-#| "text='Shroud and Fog of War'</ref>.\n"
-#| "• Enemy units normally don’t have orbs, however these can be enabled in "
-#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3317,9 +3445,9 @@ msgstr ""
 "    • 這個可能會是戰役特製的事件或是技能，例如<italic>text='在灼燒的太陽下'</"
 "italic>戰役的<italic>text='脫離'</italic>技能。\n"
 "• <bold>text='藍色'</bold>：表示同盟陣營的單位。\n"
-"    • 在同盟陣營自己的回合中，他們的單位的狀態球會顯示綠色/黃色/紅色/白色。他"
-"們的移動，以及對應的狀態球變化，則在<ref>dst='shroud_and_fog' text='戰場黑幕"
-"與戰爭迷霧'</ref>頁面中被解釋。\n"
+"    • 在同盟陣營自己的回合中，他們的單位的狀態球會顯示顏色來表示這些單位是否"
+"仍可以移動和攻擊。他們的移動，以及對應的狀態球變化，則在"
+"<ref>dst='shroud_and_fog' text='戰場黑幕與戰爭迷霧'</ref>頁面中被解釋。\n"
 "• • 敵人的單位通常沒有狀態球，不過它可以在進階設定的「自訂狀態球顏色」中被啟"
 "用。"
 
@@ -3694,6 +3822,7 @@ msgstr ""
 msgid "License"
 msgstr "授權"
 
+# 由於是中文，句子最後不加空格。
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
 msgid ""
@@ -4325,6 +4454,9 @@ msgid ""
 "of only things that have changed.\n"
 "\n"
 msgstr ""
+"\n"
+"與「fps」指令類似，但它同時強制所有東西重新繪製，而不是只有發生改變的那些。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:684
@@ -4853,6 +4985,9 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"這個單位可以在戰鬥中領導其它部隊。\n"
+"\n"
+"所有相鄰的較低等級的同盟單位每差一個等級，他的攻擊就能多造成25%的傷害。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -5366,7 +5501,8 @@ msgstr "長夜(3)"
 msgid "The Long Dark (4)"
 msgstr "長夜(4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
 msgid "Special Notes:"
 msgstr "特別備註："
 
@@ -6138,7 +6274,7 @@ msgid ""
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -6577,18 +6713,6 @@ msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses.  While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7485,165 +7609,208 @@ msgstr "幫助"
 msgid "Parse error when parsing help text:"
 msgstr "解析幫助文本時語法錯誤："
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr "最佳於"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr "最差於"
 
-#: src/help/help_topic_generators.cpp:157
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
+msgstr "村莊允許任何單位駐守進來以進行治療或是治癒毒素。"
+
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] "這個地形允許單位治癒毒素，或是恢復 1 點生命值。"
+msgstr[1] ""
+"這個地形允許單位治癒毒素，或是恢復 $amount hitpoints 點生命值，就像是駐守在一"
+"個村莊裡。"
+
+# 為了解釋更淺顯易懂一些，不照翻。
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr "這個地形是一個城堡，單位可以從相鄰的主堡被招募到這個格子上。"
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr "這個地形是一個主堡，首領可以在這個格子上招募單位到相鄰的城堡格子上。"
+
+# 為了解釋更淺顯易懂一些，不照翻。
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+"這個不尋常的主堡可以讓首領站在上面時進行招募，但是不允許首領在相鄰的主堡上將"
+"單位招募到這個格子上。"
+
+#: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
 msgstr "基礎地形："
 
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:214
 msgid "Movement properties: "
 msgstr "移動性質："
 
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
 msgstr "防禦性質："
 
-#: src/help/help_topic_generators.cpp:261
+#: src/help/help_topic_generators.cpp:298
 msgid "Level"
 msgstr "等級"
 
-#: src/help/help_topic_generators.cpp:322
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
 msgstr "升級自："
 
-#: src/help/help_topic_generators.cpp:324
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances to: "
 msgstr "升級成："
 
-#: src/help/help_topic_generators.cpp:353
+#: src/help/help_topic_generators.cpp:390
 msgid "Base unit: "
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:395
 msgid "Base units: "
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:376
+#: src/help/help_topic_generators.cpp:413
 msgid "Variations: "
 msgstr "變體："
 
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_topic_generators.cpp:402
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:472
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
 msgstr "技能："
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
 msgstr "技能升級："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:528
+#: src/help/help_topic_generators.cpp:565
 msgid "HP:"
 msgstr "生命值："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:569
 msgid "Moves:"
 msgstr "移動點數："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
 msgstr "視野："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:580
 msgid "Jamming:"
 msgstr "干擾："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:548
+#: src/help/help_topic_generators.cpp:585
 msgid "Cost:"
 msgstr "價格："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:589
 msgid "Alignment:"
 msgstr "立場："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:596
 msgid "Required XP:"
 msgstr "升級所需經驗值："
 
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
 msgstr "攻擊招數"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
 msgstr "名稱"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
 msgstr "範圍"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
 msgstr "特殊效果"
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:668
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:697
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "地形影響"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "移動成本"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "防禦上限"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "視野成本"
 
-#: src/help/help_topic_generators.cpp:716
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "干擾成本"
 

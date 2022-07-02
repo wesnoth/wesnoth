@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2021-07-19 01:49+0800\n"
+"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"PO-Revision-Date: 2022-05-30 15:52+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -1903,19 +1903,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2199,7 +2186,7 @@ msgstr "發佈模組"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:314
-#: src/gui/dialogs/addon/manager.cpp:928
+#: src/gui/dialogs/addon/manager.cpp:934
 msgid "Uninstall add-on"
 msgstr "移除模組"
 
@@ -2253,9 +2240,15 @@ msgstr "驗證"
 msgid "Password:"
 msgstr "密碼："
 
+#. [toggle_button]: id=remember_password
+#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/preferences/05_multiplayer.cfg:68
+msgid "Save password locally (encrypted)"
+msgstr "在本機儲存密碼（加密）"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2280,7 +2273,7 @@ msgstr "確定"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2436,7 +2429,7 @@ msgstr "下載："
 #. [label]
 #: data/gui/window/addon_manager.cfg:576
 msgid "Website:"
-msgstr "網站"
+msgstr "網站："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:606
@@ -2445,7 +2438,7 @@ msgstr "相依模組："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1008
+#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1016
 msgid "addon_dependencies^None"
 msgstr "無"
 
@@ -2456,7 +2449,7 @@ msgstr "翻譯："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1022
+#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1030
 msgid "translations^None"
 msgstr "無"
 
@@ -2488,8 +2481,8 @@ msgstr "模組管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:509
-#: src/gui/dialogs/addon/manager.cpp:744
+#: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:511
+#: src/gui/dialogs/addon/manager.cpp:747
 msgid "Add-on Details"
 msgstr "模組詳細資訊"
 
@@ -2837,7 +2830,7 @@ msgstr "刪除 ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:901 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:907 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "確認"
@@ -3553,7 +3546,7 @@ msgstr "儲存遊戲："
 #. [grid]
 #: data/gui/window/game_version.cfg:135
 msgid "Add-ons:"
-msgstr "模組"
+msgstr "模組："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:137
@@ -4162,7 +4155,7 @@ msgstr "更改控制者"
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "選擇或是輸入一個多人伺服器的位址"
+msgstr "選擇或是輸入一個多人伺服器的位址。"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -4437,10 +4430,8 @@ msgstr "招募"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "選擇你的派系"
+msgstr "選擇你的首領"
 
 #. [label]
 #. [widget]: id=name
@@ -4512,12 +4503,6 @@ msgstr "登入"
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
 msgstr "帳號："
-
-#. [toggle_button]: id=remember_password
-#: data/gui/window/mp_login.cfg:199
-#: data/gui/window/preferences/05_multiplayer.cfg:68
-msgid "Save password locally (encrypted)"
-msgstr "在本機儲存密碼（加密）"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4812,10 +4797,8 @@ msgstr "地圖編輯器中可使用"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5719,56 +5702,42 @@ msgstr "過期"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num 年"
 msgstr[1] "$num 年"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num 月"
 msgstr[1] "$num 月"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num 週"
 msgstr[1] "$num 週"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num 天"
 msgstr[1] "$num 天"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num 小時"
 msgstr[1] "$num 小時"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num 分"
 msgstr[1] "$num 分"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num 秒"
@@ -5803,7 +5772,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "連線的群組「$id|」已經有人命名。"
 
 #: src/gui/core/window_builder.cpp:177 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:693 src/gui/widgets/listbox.cpp:732
+#: src/gui/widgets/chatbox.cpp:702 src/gui/widgets/listbox.cpp:732
 #: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
@@ -5823,316 +5792,316 @@ msgid ""
 msgstr ""
 "行列 $grid 之 第 $row 列有著異常的行數（找到 $found 行，預期 $expected 行）"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^All Add-ons"
 msgstr "所有模組"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Installed"
 msgstr "已安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_view^Upgradable"
 msgstr "可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_view^Publishable"
 msgstr "可發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_view^Not Installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^Campaigns"
 msgstr "戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Scenarios"
 msgstr "章節"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "單人/多人戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP campaigns"
 msgstr "多人戰役"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP scenarios"
 msgstr "多人章節"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP map-packs"
 msgstr "多人地圖包"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^MP eras"
 msgstr "多人時代"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^MP factions"
 msgstr "多人派系"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:180
 msgid "addons_of_type^Modifications"
 msgstr "模組"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Cores"
 msgstr "核心"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Resources"
 msgstr "資源"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:184
 msgid "addons_of_type^Other"
 msgstr "其它"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_of_type^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Name ($order)"
 msgstr "名稱 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_order^Author ($order)"
 msgstr "作者 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_order^Size ($order)"
 msgstr "大小 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_order^Downloads ($order)"
 msgstr "下載數 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_order^Type ($order)"
 msgstr "類型 ($order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "最近更新時間 ($datelike_order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "首次上傳時間 ($datelike_order|)"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cooperative"
 msgstr "合作"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr "所有人類玩家都在同一個隊伍，對抗AI"
 
 # 直接用「Cosmetic」來翻譯會不知道是什麼東東。
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^Cosmetic"
 msgstr "風格"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr "這些會讓遊戲看起來不一樣，不會改變遊戲的玩法"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^Difficulty"
 msgstr "難度"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr "可以使戰役變得更簡單或者更難"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^RNG"
 msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:236
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr "調整戰鬥機制中的隨機性，或者將隨機性整個移除"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Survival"
 msgstr "生存"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Fight against waves of enemies"
 msgstr "對抗敵人的數波攻勢"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:240
 msgid "addon_tag^Terraforming"
 msgstr "改變地形"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:242
 msgid "addon_tag^Players can change the terrain"
 msgstr "玩家可以改變地形"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Published, not installed"
 msgstr "已發佈，未安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Installed"
 msgstr "已安裝"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Published"
 msgstr "已發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:273
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Installed, not tracking local version"
 msgstr "已安裝，未追蹤本機版本"
 
-#: src/gui/dialogs/addon/manager.cpp:276
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published, not tracking local version"
 msgstr "已發佈，未追蹤本機版本"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "已安裝（$local_version|），可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "已發佈（$local_version| 已安裝），可更新"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "已安裝（$local_version|），伺服器版本已過期"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "已發佈（$local_version| 已安裝），伺服器版本已過期"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Installed, not ready to publish"
 msgstr "已安裝，未準備好發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Ready to publish"
 msgstr "已準備好發佈"
 
-#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Installed, broken"
 msgstr "已安裝，但損毀"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Published, broken"
 msgstr "已發佈，但損毀"
 
-#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:305 src/gui/widgets/addon_list.cpp:131
 msgid "addon_state^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:400
+#: src/gui/dialogs/addon/manager.cpp:402
 msgid "ascending"
 msgstr "遞增"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:402
+#: src/gui/dialogs/addon/manager.cpp:404
 msgid "oldest to newest"
 msgstr "從最舊到最新"
 
-#: src/gui/dialogs/addon/manager.cpp:405
+#: src/gui/dialogs/addon/manager.cpp:407
 msgid "descending"
 msgstr "遞減"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:407
+#: src/gui/dialogs/addon/manager.cpp:409
 msgid "newest to oldest"
 msgstr "從最新到最舊"
 
-#: src/gui/dialogs/addon/manager.cpp:506
+#: src/gui/dialogs/addon/manager.cpp:508
 msgid "addons^Back to List"
 msgstr "回到清單"
 
-#: src/gui/dialogs/addon/manager.cpp:518
+#: src/gui/dialogs/addon/manager.cpp:520
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "從伺服器下載模組清單時發生錯誤。"
 
-#: src/gui/dialogs/addon/manager.cpp:554
+#: src/gui/dialogs/addon/manager.cpp:556
 msgid "No Add-ons Available"
 msgstr "沒有可用的模組"
 
-#: src/gui/dialogs/addon/manager.cpp:554
+#: src/gui/dialogs/addon/manager.cpp:556
 msgid "There are no add-ons available for download from this server."
 msgstr "此伺服器沒有可供下載的模組。"
 
-#: src/gui/dialogs/addon/manager.cpp:786
+#: src/gui/dialogs/addon/manager.cpp:789
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr "下列模組似乎有發佈中或版本控制訊息儲存在本機，所以將不會被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:794
+#: src/gui/dialogs/addon/manager.cpp:797
 msgid "The following add-on could not be deleted properly:"
 msgstr "下列模組無法正常被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:847
+#: src/gui/dialogs/addon/manager.cpp:850
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:848
+#: src/gui/dialogs/addon/manager.cpp:851
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr "此模組的遠端版本與正在上傳的版本相同或更新。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "無效的圖示路徑。請確認路徑指向有效的圖示。"
 
-#: src/gui/dialogs/addon/manager.cpp:867 src/gui/dialogs/addon/manager.cpp:909
+#: src/gui/dialogs/addon/manager.cpp:873 src/gui/dialogs/addon/manager.cpp:915
 msgid "The server responded with an error:"
 msgstr "伺服器回傳了一個錯誤："
 
-#: src/gui/dialogs/addon/manager.cpp:870
+#: src/gui/dialogs/addon/manager.cpp:876
 msgid "The add-on was rejected by the server:"
 msgstr "這個模組被伺服器拒絕了："
 
-#: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:891 src/gui/dialogs/addon/manager.cpp:918
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
 msgid "Response"
 msgstr "回應"
 
-#: src/gui/dialogs/addon/manager.cpp:897
+#: src/gui/dialogs/addon/manager.cpp:903
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 "刪除「$addon|」將會從模組伺服器上永久移除上傳及下載數。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "你真的想要移除「$addon|」？"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:960
+#: src/gui/dialogs/addon/manager.cpp:966
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:962
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1033
 msgid "url^None"
 msgstr "無"
 
@@ -6606,7 +6575,7 @@ msgstr "大廳"
 #: src/gui/dialogs/multiplayer/lobby.cpp:985
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
-msgstr ""
+msgstr "這個遊戲被密碼保護。仍然要用管理員權限觀察嗎？"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6618,7 +6587,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
-msgstr ""
+msgstr "這個遊戲被密碼保護。仍然要用管理員權限加入嗎？"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
@@ -6862,7 +6831,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
-#: src/gui/dialogs/title_screen.cpp:433
+#: src/gui/dialogs/title_screen.cpp:439
 msgid "Choose Test"
 msgstr "選擇測試"
 
@@ -6934,15 +6903,15 @@ msgstr "已發佈，伺服器上的版本已過期"
 msgid "Delete add-on from server"
 msgstr "從伺服器上刪除模組"
 
-#: src/gui/widgets/chatbox.cpp:293
+#: src/gui/widgets/chatbox.cpp:302
 msgid "whisper to $receiver"
 msgstr "對$receiver|說悄悄話"
 
-#: src/gui/widgets/chatbox.cpp:393
+#: src/gui/widgets/chatbox.cpp:402
 msgid "Joined <i>$name</i>"
 msgstr "已加入 <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:399
+#: src/gui/widgets/chatbox.cpp:408
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"

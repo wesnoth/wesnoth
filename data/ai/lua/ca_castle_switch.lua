@@ -59,7 +59,7 @@ end
 local ca_castle_switch = {}
 
 function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
-    -- @recruiting_leader is passed from the recuit_rushers CA for the leader_takes_village()
+    -- @recruiting_leader is passed from the recuit_rushers CA for the leader_takes_villages evaluation
     -- evaluation. If it is set, we do the castle switch evaluation only for that leader
 
     local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'castle_switch'
@@ -97,6 +97,11 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         data.CS_leader, data.CS_leader_target = nil, nil
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
+    end
+
+    -- Also need to check that the stored leader has not been killed
+    if data.CS_leader and not data.CS_leader.valid then
+        data.CS_leader, data.CS_leader_target = nil, nil
     end
 
     local avoid_map = AH.get_avoid_map(ai, nil, true)

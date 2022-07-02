@@ -1984,6 +1984,11 @@ void console_handler::do_unit()
 
 	unit_map::iterator i = menu_handler_.current_unit();
 	if(i == menu_handler_.pc_.get_units().end()) {
+		utils::string_map symbols;
+		symbols["unit"] = get_arg(1);
+		command_failed(VGETTEXT(
+			"Debug command 'unit: $unit' failed: no unit selected or hovered over.",
+			symbols));
 		return;
 	}
 

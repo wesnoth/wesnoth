@@ -18,7 +18,6 @@
 #   * strings that have a translation mark and should not
 #   * translatable strings containing macro references
 #   * filter references by id= not matched by an actual unit
-#   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
 #   * unknown unit types in recruitment lists
 #   * double space after punctuation in translatable strings.
@@ -122,11 +121,6 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 #
-# A special comment "# wmllint: notecheck off" will disable checking unit types
-# for consistency between abilities/weapon specials and usage of special notes
-# macros in their descriptions.
-# The comment "# wmllint: notecheck on" will re-enable this check.
-#
 # A special comment "# wmllint: deathcheck off" will disable the check whether
 # dying units speak in their death events.
 # The comment "# wmllint: deathcheck on" will re-enable this check.
@@ -147,13 +141,6 @@
 # numerical sequence. However, if a side is defined in a macro the comment
 # "#wmllint: skip-side" is needed where the macro is used in order to allow
 # wmllint to account for it properly.
-#
-# A comment of the form
-#
-# #wmllint: match {ABILITY_FOO} with {NOTE_FOO}
-#
-# will declare an ability macro and a special-notes macro to be tied
-# together for reference-checking purposes.
 #
 # In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
 # without a ZoC are automatically handled by the C++ engine. wmllint warns if such
@@ -234,6 +221,13 @@ aliaschanges = (
     ("Vit",  "Vt"),
     # 1.11.9:
     ("Vi",   "Vt"),
+    )
+
+# Deprecated lines that ought to be removed globally. Suppressed by noconvert.
+obsolete_lines = (
+    "{MAGENTA_IS_THE_TEAM_COLOR}",
+    "{SOUND:SLOW}",
+    "{SOUND:POISON}",
     )
 
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
@@ -982,6 +976,9 @@ linechanges = (
         ("Naga Slasher", "Naga Dirkfang"),
         ("Naga Bladewhirler", "Naga Ophidian"),
 
+        # monster unit ID changes during 1.15.x cycle
+        ("Giant Stoat", "Frost Stoat"),
+
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
         ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png")
@@ -1104,12 +1101,6 @@ def standard_unit_filter():
 
 # Sanity checking
 
-# Associations for the ability sanity checks.
-# Please note that a special note can be associated with multiple abilities
-# but any given ability can be associated with only one special note
-# Some notes are handled directly in the global_sanity_check() function
-notepairs = []
-
 # This dictionary will pair macros with the characters they recall or create,
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
@@ -1164,8 +1155,7 @@ def is_translatable(key):
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
-mainline = ("An_Orcish_Incursion",
-            "Dead_Water",
+mainline = ("Dead_Water",
             "Delfadors_Memoirs",
             "Descent_Into_Darkness",
             "Eastern_Invasion",
@@ -1182,6 +1172,7 @@ mainline = ("An_Orcish_Incursion",
             "tutorial",
             "Two_Brothers",
             "Under_the_Burning_Suns",
+            "World_Conquest",
             )
 
 spellcheck_these = (\
@@ -1481,33 +1472,16 @@ def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
 
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
-    # Sanity-check abilities and traits against notes macros.
-    # Note: This check is disabled on units derived via [base_unit].
-    # Also, build dictionaries of unit movement types and races
+    # Build dictionaries of unit movement types and races
     in_unit_type = None
-    notecheck = True
-    trait_note = dict(notepairs)
-    # it's possible that a note might be associated with two abilities
-    # use a multimap-like data structure for this reason
-    note_trait = defaultdict(list) # {p[1]:p[0] for p in notepairs}
-    for pair in notepairs:
-        note_trait[pair[1]].append(pair[0])
     unit_id = ""
     base_unit = ""
     for nav in WmllintIterator(lines, filename):
-        if "wmllint: notecheck off" in nav.text:
-            notecheck = False
-            continue
-        elif "wmllint: notecheck on" in nav.text:
-            notecheck = True
         if nav.element == "[unit_type]":
             unit_race = ""
             unit_id = ""
             unit_level = None
             base_unit = ""
-            traits = []
-            notes = []
-            has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
             unit_usage = ""
@@ -1533,44 +1507,18 @@ def global_sanity_check(filename, lines):
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
-                missing_notes = []
-                for trait in traits:
-                    tn = trait_note[trait]
-                    if tn not in notes and tn not in missing_notes:
-                        missing_notes.append(tn)
-                missing_traits = []
-                for note in notes:
-                    for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
-                        if nt in traits:
-                            break
-                    else: # this is done only if there isn't at least one trait matching the note
-                        for nt in note_trait[note]:
-                            if nt not in missing_traits:
-                                missing_traits.append(nt)
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
-                if notecheck and missing_notes:
-                    print('"%s", line %d: unit %s is missing notes %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_notes)))
-                if missing_traits:
-                    print('"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit_type, unit_id, " ".join(missing_traits)))
-                if notecheck and not (notes or traits) and has_special_notes:
-                    print('"%s", line %d: unit %s has superfluous {NOTE_*}' \
-                         % (filename, in_unit_type, unit_id))
                 if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print('"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id))
             in_unit_type = None
-            traits = []
-            notes = []
             unit_id = ""
             unit_level = None
             base_unit = ""
-            has_special_notes = False
             unit_race = None
             unit_usage = ""
             temp_movetypes = []
@@ -1609,16 +1557,6 @@ def global_sanity_check(filename, lines):
                         temp_advances.append((filename, nav.lineno + 1, advancements))
             except TypeError:
                 pass
-            precomment = nav.text
-            if '#' in nav.text:
-                precomment = nav.text[:nav.text.find("#")]
-            if "{NOTE" in precomment:
-                has_special_notes = True
-            for (p, q) in notepairs:
-                if p in precomment:
-                    traits.append(p)
-                if q in precomment:
-                    notes.append(q)
 
     # Sanity-check all the [event] tags
     global_sanity_check_events(filename, lines)
@@ -2232,7 +2170,7 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key):
-                if markcheck and has_tr_mark and value:
+                if markcheck and has_tr_mark and not attr_strip(value):
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
@@ -2244,8 +2182,7 @@ to be called on their own".format(filename, num))
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
                           % (filename, i+1))
-                    if not stringfreeze:
-                        lines[i] = sentence_end.sub(" ", lines[i])
+                    lines[i] = sentence_end.sub(" ", lines[i])
                 if capitalization_error.search(lines[i]):
                     print('"%s", line %d: probable capitalization or punctuation error' \
                           % (filename, i+1))
@@ -2466,8 +2403,8 @@ def hack_syntax(filename, lines):
         precomment = re.split(r'\s#', lines[i], 1)[0]
         comment = lines[i][len(precomment):]
         if '\\' in precomment:
-            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
-                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
                 fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
                 precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
                 print('"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
@@ -2719,13 +2656,19 @@ def hack_syntax(filename, lines):
                             in_side_one_tag = False
                             side_one_tag_needs_side_one = True
                             break
-    # handle removal of {MAGENTA_IS_THE_TEAM_COLOR}
+    # handle removal of obsolete lines without replacement
+    # obsolete_lines contains normal strings, so re.escape is needed to embed them into this regex
+    obsolete_re = re.compile(r"(\s*)(" + "|".join([re.escape(l) for l in obsolete_lines]) + r")(.*)")
     for i, line in enumerate(lines):
         if "no-syntax-rewrite" in line:
             break
-        m = re.match(r"(\s*)\{MAGENTA_IS_THE_TEAM_COLOR\}(.*)", line)
+        if "wmllint: noconvert" in line:
+            continue
+        m = obsolete_re.match(line)
         if m:
-            new_line = m.group(1) + m.group(2).lstrip()
+            # match group 1 is the indentation
+            # match group 3 contains everything after the removed part (like comments)
+            new_line = m.group(1) + m.group(3).lstrip()
             if new_line.isspace():
                 # only empty spaces, make the line blank
                 # don't remove the line to not alter the other for cycles
@@ -2733,8 +2676,8 @@ def hack_syntax(filename, lines):
             else:
                 # keep indentation and comments
                 lines[i] = new_line + "\n"
-            print('"{}", line {}: removed MAGENTA_IS_THE_TEAM_COLOR'.format(filename,
-                                                                            i+1))
+            # match group 2 contains the removed part
+            print('"{}", line {}: removed {}'.format(filename, i+1, m.group(2)))
     # handle deprecation of [unit] placement=map_overwrite/map_passable/leader_passable
     in_unit = False
     for i, line in enumerate(lines):
@@ -3025,14 +2968,6 @@ def translator(filename, mapxforms, textxform):
                 in_lua_code = True
             if in_lua_code and re.match(r".*?>>\s*$", destringed):
                 in_lua_code = False
-            if "wmllint: match" in comment:
-                comment = comment.strip()
-                try:
-                    fields = comment.split("match ", 1)[1].split(" with ", 1)
-                    if len(fields) == 2:
-                        notepairs.append((fields[0], fields[1]))
-                except IndexError:
-                    pass
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print('"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack))
@@ -3298,8 +3233,7 @@ to all sides.""")
 scenarios, etc.""")
     parser.add_argument("-S", "--nospellcheck", action="store_false",
                         help="Suppress spellchecking")
-    parser.add_argument("-Z", "--stringfreeze", action="store_true",
-                        help="Suppress repair attempts of newlines in messages")
+    # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
@@ -3315,7 +3249,6 @@ directory.""")
     dryrun = namespace.dryrun
     missingside = namespace.missing
     revert = namespace.revert
-    stringfreeze = namespace.stringfreeze
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!

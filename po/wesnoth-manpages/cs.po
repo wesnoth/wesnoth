@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2022-01-10 19:15+0100\n"
+"PO-Revision-Date: 2022-04-11 20:32+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -130,7 +130,7 @@ msgstr ""
 #: doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgstr "B<--bunzip2>I<\\ soubor_se_hrou.bz2>"
+msgstr "B<--bunzip2>I<\\ vstupní_soubor.bz2>"
 
 # type: Plain text
 #. type: Plain text
@@ -139,15 +139,15 @@ msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
-"dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu bzip2 a "
-"uloží jej bez koncovky .bz2. Následně je I<soubor_se_hrou.bz2> smazán."
+"dekomprimuje soubor, který by měl být ve formátu bzip2, a uloží jej bez "
+"přípony .bz2. Původní I<vstupní_soubor.bz2> bude odstraněn."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
 #, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
-msgstr "B<--bzip2>I<\\ soubor_se_hrou>"
+msgstr "B<--bzip2>I<\\ vstupní_soubor>"
 
 # type: Plain text
 #. type: Plain text
@@ -156,8 +156,8 @@ msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu bzip2 a uloží "
-"jej jako I<soubor_se_hrou>.bz2 a odstraní I<soubor_se_hrou>."
+"zkomprimuje soubor do formátu bzip2, uloží jej jako I<vstupní_soubor>.bz2 "
+"a odstraní I<vstupní_soubor>."
 
 #. type: TP
 #: doc/man/wesnoth.6:61
@@ -1088,9 +1088,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "nastaví I<název> adresáře s uživatelským nastavením v $HOME, nebo pro "
 "Windows v „My Documents\\eMy Games“. Pro adresář s nastavením můžeš také "
@@ -2246,8 +2246,8 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y"
-"\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
+"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
 "minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
 "12 hodin a 30 minut."
 

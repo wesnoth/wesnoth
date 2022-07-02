@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 20:52 UTC\n"
-"PO-Revision-Date: 2021-07-29 13:24+0200\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"POT-Creation-Date: 2022-05-29 10:14 UTC\n"
+"PO-Revision-Date: 2022-06-03 18:15+0200\n"
+"Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [attack]: type=impact
@@ -535,8 +535,8 @@ msgstr "kły"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -623,16 +623,6 @@ msgstr "szał berserkera"
 
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#, fuzzy
-#| msgid ""
-#| "It is not clear why the Dragonguards are called what they are, a name "
-#| "given by their dwarven brethren. Some speculate that the name comes from "
-#| "their weapon of choice, these strange staves that belch fire and death. "
-#| "Others have surmised that it is because such weapons would be a threat "
-#| "against even a true Dragon, should such a thing be seen again in the "
-#| "known world. Whatever the case, it is for these weapons that the "
-#| "guardians of the great Dwarven citadels are both renowned and feared; "
-#| "weapons that have broken the mightiest of warriors with a single blow."
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -643,7 +633,7 @@ msgid ""
 "dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
-"Nie jest jasne, dlaczego smokostrażnicy są tak właśnie nazywani przez swoich "
+"Nie jest jasne, dlaczego smokostrażnicy są tak nazywani przez swoich "
 "pobratymców. Niektórzy twierdzą, że nazwa ta pochodzi od broni, której "
 "używają — tajemniczych kijów ziejących śmiercionośnym ogniem. Inni "
 "utrzymują, że taka broń byłaby groźna nawet przeciwko prawdziwym smokom, "
@@ -857,19 +847,6 @@ msgstr "kij grzmotów"
 
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Dwarven Thunderguards are famed for their curious weaponry, these "
-#| "strange staves of wood and iron that make a thunderous noise in their "
-#| "anger. The machinations behind this weaponry are a mystery, a secret "
-#| "taken to the grave by the dwarves of Knalga who wield them, and are "
-#| "assumed to have even forged them. The most that is known are reports of "
-#| "dwarves pouring a strange black dust into the mouth of their weapons, "
-#| "which some say is a food to fuel the beast imprisoned within.\n"
-#| "\n"
-#| "Though a single shot from these ‘thundersticks’ can take several minutes "
-#| "to prepare, the results are seen by the Dwarves as being well worth the "
-#| "wait."
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -3183,19 +3160,20 @@ msgid ""
 msgstr ""
 "Najbardziej utalentowani elficcy wojownicy czasami są okrzyknięci "
 "określeniem \"Sárcan\", co można tłumaczyć mniej więcej jako \"ten, który "
-"dokonał poświęcenia w obronie\" albo \"ten, którego zmieniło doświadczenie"
-"\". Często w języku ludzi nazywani są elfickimi bohaterami. Tytuł ten jest "
-"wyznacznikiem swego rodzaju prestiżu, lecz nie został stworzony by czcić tę "
-"pozycję. Elficcy bohaterowie to wojownicy, które przetrwali niezliczoną "
-"liczbę wojen i przeżyli wielu ze swoich przyjaciół, którzy polegli w boju. "
-"Stanowiący często bardzo nieliczną grupę ocalałych z pola bitwy, ci "
-"doświadczeni w bojach żołnierze są wtajemniczeni w mnóstwo okropieństw wojen "
-"- orków i ludzi plądrujących i palących ich leśne domy, krasnoludy grabiące "
-"poległych z cennych artefaktów, nekromantów wskrzeszających ich własnych "
-"kamratów do walki przeciwko nim, jak również ich własny gatunek mordujący "
-"niewinnych bez cienia skrupułów czy okazywania łaski. Podczas gdy elfy zdają "
-"sobie sprawę z konieczności wojen i czczą \"Sárcanet\" jako bohaterów za ich "
-"służbę, mało który elf życzyłby sobie otrzymać taki status."
+"dokonał poświęcenia w obronie\" albo \"ten, którego zmieniło "
+"doświadczenie\". Często w języku ludzi nazywani są elfickimi bohaterami. "
+"Tytuł ten jest wyznacznikiem swego rodzaju prestiżu, lecz nie został "
+"stworzony by czcić tę pozycję. Elficcy bohaterowie to wojownicy, które "
+"przetrwali niezliczoną liczbę wojen i przeżyli wielu ze swoich przyjaciół, "
+"którzy polegli w boju. Stanowiący często bardzo nieliczną grupę ocalałych z "
+"pola bitwy, ci doświadczeni w bojach żołnierze są wtajemniczeni w mnóstwo "
+"okropieństw wojen - orków i ludzi plądrujących i palących ich leśne domy, "
+"krasnoludy grabiące poległych z cennych artefaktów, nekromantów "
+"wskrzeszających ich własnych kamratów do walki przeciwko nim, jak również "
+"ich własny gatunek mordujący niewinnych bez cienia skrupułów czy okazywania "
+"łaski. Podczas gdy elfy zdają sobie sprawę z konieczności wojen i czczą "
+"\"Sárcanet\" jako bohaterów za ich służbę, mało który elf życzyłby sobie "
+"otrzymać taki status."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
@@ -4984,10 +4962,6 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
-#| msgid ""
-#| "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and "
-#| "are highly resistant to non-physical damage."
 msgid ""
 "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
@@ -5915,12 +5889,13 @@ msgid "tusk"
 msgstr "kieł"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
 msgstr "Prosiaczek"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -5932,12 +5907,12 @@ msgstr ""
 "niedaleko którego nie znajduje się pilnujący go dorosły dzik."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
+#: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr "Bagienny jaszczur"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5954,7 +5929,7 @@ msgstr ""
 "= złe' i tym samym nie zawahają się pomścić swoich przodków."
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
@@ -5963,17 +5938,17 @@ msgstr ""
 "zanurzona."
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
 msgstr "Bagienny czyhacz"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
 msgstr "Bagienna czyhaczka"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -6171,12 +6146,12 @@ msgstr ""
 msgid "ice claw"
 msgstr "lodowy szpon"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:169
 msgid "Giant Stoat"
 msgstr "Ogromny gronostaj"
 
-#. [unit_type]: id=Giant Stoat
+#. [unit_type]: id=Giant Stoat # wmllint: noconvert
 #: data/core/units/monsters/Frost_Stoat.cfg:170
 msgid "Giant Stoats are obsolete, use Frost Stoat."
 msgstr "Gigantyczne gronostaje są przestarzałe, użyj lodowych gronostajów."
@@ -6339,13 +6314,6 @@ msgstr "Gniady koń"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Bay horses are defined more by their coloration than their size or "
-#| "temperament, and can be found anywhere from the battlefield to the farm "
-#| "to the wild plains and woodlands. Though an unencumbered horse will tend "
-#| "to flee if possible, they will fight back with a powerful kick when "
-#| "cornered."
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
@@ -6364,7 +6332,7 @@ msgstr ""
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
 msgid "hooves"
-msgstr ""
+msgstr "kopyta"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
@@ -6931,14 +6899,6 @@ msgstr "Naga gwardzista"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
-#, fuzzy
-#| msgid ""
-#| "The elite naga guards are a rigid barrier to any invaders of a naga "
-#| "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
-#| "they are difficult to dislodge from their posts because of effective use "
-#| "of a shield in melee techniques. This tactic does nothing against ranged "
-#| "attacks, but the nagas can usually seek better terrain advantage in such "
-#| "situations."
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "

@@ -206,7 +206,7 @@ WIDGET_SETTER("selected_index", int, gui2::selectable_item)
 	if(value > int(w.num_states())) {
 		throw std::invalid_argument("invalid index");
 	}
-	w.set_value(value + 1);
+	w.set_value(value - 1);
 }
 
 WIDGET_GETTER("value_compat,selected", bool, gui2::selectable_item)

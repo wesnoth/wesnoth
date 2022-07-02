@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 23:52+0300\n"
+"POT-Creation-Date: 2022-05-08 04:42+0300\n"
 "PO-Revision-Date: 2022-01-21 13:03+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2292,7 +2292,7 @@ msgstr "Pubblica estensione"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:314
-#: src/gui/dialogs/addon/manager.cpp:928
+#: src/gui/dialogs/addon/manager.cpp:934
 msgid "Uninstall add-on"
 msgstr "Disinstalla estensioni"
 
@@ -2346,9 +2346,15 @@ msgstr "Autenticato"
 msgid "Password:"
 msgstr "Password:"
 
+#. [toggle_button]: id=remember_password
+#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/preferences/05_multiplayer.cfg:68
+msgid "Save password locally (encrypted)"
+msgstr "Salva la password localmente (testo criptato)"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:119 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2373,7 +2379,7 @@ msgstr "OK"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/window/addon_auth.cfg:133 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2538,7 +2544,7 @@ msgstr "Dipendenze:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1008
+#: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1016
 msgid "addon_dependencies^None"
 msgstr "Nessuna"
 
@@ -2549,7 +2555,7 @@ msgstr "Traduzioni:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1022
+#: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1030
 msgid "translations^None"
 msgstr "Nessuna"
 
@@ -2580,8 +2586,8 @@ msgstr "Gestore Estensioni"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:509
-#: src/gui/dialogs/addon/manager.cpp:744
+#: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:511
+#: src/gui/dialogs/addon/manager.cpp:747
 msgid "Add-on Details"
 msgstr "Dettagli estensione"
 
@@ -2934,7 +2940,7 @@ msgstr "Elimina ATG"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:901 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:907 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Conferma"
@@ -4617,12 +4623,6 @@ msgstr "Login"
 msgid "Login:"
 msgstr "Login:"
 
-#. [toggle_button]: id=remember_password
-#: data/gui/window/mp_login.cfg:199
-#: data/gui/window/preferences/05_multiplayer.cfg:68
-msgid "Save password locally (encrypted)"
-msgstr "Salva la password localmente (testo criptato)"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [widget]: id=label
@@ -5925,7 +5925,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Il gruppo «$id» collegato ha definizioni multiple."
 
 #: src/gui/core/window_builder.cpp:177 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:693 src/gui/widgets/listbox.cpp:732
+#: src/gui/widgets/chatbox.cpp:702 src/gui/widgets/listbox.cpp:732
 #: src/gui/widgets/multi_page.cpp:179 src/gui/widgets/panel.cpp:129
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:109 src/gui/widgets/stacked_widget.cpp:223
@@ -5946,141 +5946,141 @@ msgstr ""
 "La riga $row della griglia '$grid' ha un diverso numero di colonne (trovato "
 "$found, atteso $expected)"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^All Add-ons"
 msgstr "Tutte le estensioni"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_view^Installed"
 msgstr "Installate"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_view^Upgradable"
 msgstr "Aggiornabili"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_view^Publishable"
 msgstr "Pubblicabile"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_view^Not Installed"
 msgstr "Non installate"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^Campaigns"
 msgstr "Campagne"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Scenarios"
 msgstr "Scenari"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Campagne SG/MG"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP campaigns"
 msgstr "Campagne MG"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP scenarios"
 msgstr "Scenari MG"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP map-packs"
 msgstr "Pacchetti di mappe MG"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^MP eras"
 msgstr "Ere MG"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^MP factions"
 msgstr "Fazioni MG"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:180
 msgid "addons_of_type^Modifications"
 msgstr "Modifiche"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_of_type^Cores"
 msgstr "Nuclei"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Resources"
 msgstr "Risorse"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:184
 msgid "addons_of_type^Other"
 msgstr "Altro"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_of_type^Unknown"
 msgstr "Sconosciuta"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Name ($order)"
 msgstr "Nome ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:192
 msgid "addons_order^Author ($order)"
 msgstr "Autore ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_order^Size ($order)"
 msgstr "Dimensione ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_order^Downloads ($order)"
 msgstr "Scaricamenti ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Ultimo aggiornamento ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Prima pubblicazione ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cooperative"
 msgstr "Cooperativo"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
 "Tutti i giocatori umani fanno parte dello stesso schieramento, opposto alla "
 "IA"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^Cosmetic"
 msgstr "Abbellimento"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr "Fa sembrare il gioco diverso senza alterare le meccaniche di gioco"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addon_tag^Difficulty"
 msgstr "Difficoltà"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr "Può rendere le campagne più facili o più difficili"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^RNG"
 msgstr "GNC"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:236
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
@@ -6088,120 +6088,120 @@ msgstr ""
 "Modifica la casualità nelle meccaniche di combattimento, o la rimuove "
 "interamente."
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Survival"
 msgstr "Sopravvivenza"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Fight against waves of enemies"
 msgstr "Combatti contro ondate di nemici"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:240
 msgid "addon_tag^Terraforming"
 msgstr "Terraforming"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:242
 msgid "addon_tag^Players can change the terrain"
 msgstr "I giocatori posso cambiare il terreno"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
 msgstr "Non installata"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Published, not installed"
 msgstr "Pubblicata, non installata"
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Installed"
 msgstr "Installata"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:271 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Published"
 msgstr "Pubblicata"
 
-#: src/gui/dialogs/addon/manager.cpp:273
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/manager.cpp:276
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Published, not tracking local version"
 msgstr "Pubblicata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installata ($local_version|), aggiornabile"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Pubblicata ($local_version| installata), aggiornabile"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installata ($local_version|), antiquata sul server"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Pubblicata ($local_version|), antiquata sul server"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Installata, non pronta per la pubblicazione"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Ready to publish"
 msgstr "Pronta per la pubblicazione"
 
-#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Installed, broken"
 msgstr "Installata, corrotta"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Published, broken"
 msgstr "Pubblicata, corrotta"
 
-#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:305 src/gui/widgets/addon_list.cpp:131
 msgid "addon_state^Unknown"
 msgstr "Sconosciuta"
 
-#: src/gui/dialogs/addon/manager.cpp:400
+#: src/gui/dialogs/addon/manager.cpp:402
 msgid "ascending"
 msgstr "ascendente"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:402
+#: src/gui/dialogs/addon/manager.cpp:404
 msgid "oldest to newest"
 msgstr "dalla più vecchia alla più recente"
 
-#: src/gui/dialogs/addon/manager.cpp:405
+#: src/gui/dialogs/addon/manager.cpp:407
 msgid "descending"
 msgstr "discendente"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:407
+#: src/gui/dialogs/addon/manager.cpp:409
 msgid "newest to oldest"
 msgstr "dalla più recente alla più vecchia"
 
-#: src/gui/dialogs/addon/manager.cpp:506
+#: src/gui/dialogs/addon/manager.cpp:508
 msgid "addons^Back to List"
 msgstr "Ritorna all’elenco"
 
-#: src/gui/dialogs/addon/manager.cpp:518
+#: src/gui/dialogs/addon/manager.cpp:520
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Errore durante lo scaricamento dal server della lista delle estensioni."
 
-#: src/gui/dialogs/addon/manager.cpp:554
+#: src/gui/dialogs/addon/manager.cpp:556
 msgid "No Add-ons Available"
 msgstr "Nessuna estensione disponibile"
 
-#: src/gui/dialogs/addon/manager.cpp:554
+#: src/gui/dialogs/addon/manager.cpp:556
 msgid "There are no add-ons available for download from this server."
 msgstr "Non ci sono estensioni scaricabili su questo server."
 
-#: src/gui/dialogs/addon/manager.cpp:786
+#: src/gui/dialogs/addon/manager.cpp:789
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6210,15 +6210,15 @@ msgstr ""
 "delle informazioni per il controllo della versione locali, e non verrà "
 "rimossa:"
 
-#: src/gui/dialogs/addon/manager.cpp:794
+#: src/gui/dialogs/addon/manager.cpp:797
 msgid "The following add-on could not be deleted properly:"
 msgstr "Le seguenti estensioni non possono essere eliminate appropriatamente:"
 
-#: src/gui/dialogs/addon/manager.cpp:847
+#: src/gui/dialogs/addon/manager.cpp:850
 msgid "Warning"
 msgstr "Attenzione"
 
-#: src/gui/dialogs/addon/manager.cpp:848
+#: src/gui/dialogs/addon/manager.cpp:851
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6226,26 +6226,26 @@ msgstr ""
 "La versione remota di questa estensione è maggiore o uguale a quella che sta "
 "per essere caricata. Sei sicuro di voler continuare?"
 
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Percorso icona non valido. Accertati che il percorso punti ad una immagine "
 "valida."
 
-#: src/gui/dialogs/addon/manager.cpp:867 src/gui/dialogs/addon/manager.cpp:909
+#: src/gui/dialogs/addon/manager.cpp:873 src/gui/dialogs/addon/manager.cpp:915
 msgid "The server responded with an error:"
 msgstr "Il server ha risposto con un errore:"
 
-#: src/gui/dialogs/addon/manager.cpp:870
+#: src/gui/dialogs/addon/manager.cpp:876
 msgid "The add-on was rejected by the server:"
 msgstr "L’estensione è stata respinta dal server:"
 
-#: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:891 src/gui/dialogs/addon/manager.cpp:918
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
 msgid "Response"
 msgstr "Risposta"
 
-#: src/gui/dialogs/addon/manager.cpp:897
+#: src/gui/dialogs/addon/manager.cpp:903
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6253,21 +6253,21 @@ msgstr ""
 "Cancellare '$addon|' azzererà permanentemente i contatori di caricamento e "
 "scaricamento sul server delle estensioni. Vuoi veramente procedere?"
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Vuoi davvero disinstallare '$addon|'?"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:960
+#: src/gui/dialogs/addon/manager.cpp:966
 msgid "%Y-%m-%d %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:962
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid "%Y-%m-%d %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1033
 msgid "url^None"
 msgstr "Nessuno"
 
@@ -6929,8 +6929,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"La scorciatoia \"<b>$hotkey_sequence|</b>\" è attualmente utilizzata da \"<b>"
-"$old_hotkey_action|</b>\". \n"
+"La scorciatoia \"<b>$hotkey_sequence|</b>\" è attualmente utilizzata da "
+"\"<b>$old_hotkey_action|</b>\". \n"
 "Vuoi cambiare ed assegnarla a \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:849
@@ -7020,7 +7020,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Schermata"
 
-#: src/gui/dialogs/title_screen.cpp:433
+#: src/gui/dialogs/title_screen.cpp:439
 msgid "Choose Test"
 msgstr "Scegli il test"
 
@@ -7096,15 +7096,15 @@ msgstr "Pubblicata, antiquata sul server"
 msgid "Delete add-on from server"
 msgstr "Elimina estensione dal server"
 
-#: src/gui/widgets/chatbox.cpp:293
+#: src/gui/widgets/chatbox.cpp:302
 msgid "whisper to $receiver"
 msgstr "bisbiglia a $receiver"
 
-#: src/gui/widgets/chatbox.cpp:393
+#: src/gui/widgets/chatbox.cpp:402
 msgid "Joined <i>$name</i>"
 msgstr "Aggiunto <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:399
+#: src/gui/widgets/chatbox.cpp:408
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"

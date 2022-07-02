@@ -1,6 +1,8 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -13,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-01-17 23:52+0300\n"
-"PO-Revision-Date: 2022-01-13 13:30+0800\n"
+"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"PO-Revision-Date: 2022-04-22 16:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -180,7 +182,7 @@ msgid "cures"
 msgstr "疗毒"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "防御"
 
@@ -296,7 +298,7 @@ msgid "regenerates"
 msgstr "再生"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:663
+#: src/help/help_topic_generators.cpp:700
 msgid "Resistances"
 msgstr "抗性"
 
@@ -323,7 +325,7 @@ msgid "steadfast"
 msgstr "坚定"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:582
+#: src/help/help_topic_generators.cpp:619
 msgid "Strikes"
 msgstr "打击次数"
 
@@ -360,13 +362,13 @@ msgstr "地图与场景编辑器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
 msgid "Terrain Editor"
 msgstr "地形编辑器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
 msgid "Scenario Editor"
 msgstr "场景编辑器"
 
@@ -412,22 +414,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr "绘制单个格子。"
+msgstr "绘制单格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr "一次绘制七个格子。"
+msgstr "一次绘制七格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr "一次绘制十九个格子。"
+msgstr "一次绘制十九格。"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr "绘制一直线上的三个格子。"
+msgstr "绘制一直线上的三格。"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -481,12 +483,12 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
-"选择一组格子，与菜单栏下的剪切、复制和填充选择区域按钮一起使用。\n"
+"选择一组六角格，与菜单栏下的剪切、复制和填充选择区域按钮一起使用。\n"
 "\n"
 "<bold>text='键盘修饰符'</bold>\n"
 "\n"
-"• Shift+鼠标点击：“魔杖”模式，选择鼠标光标下的格子，以及相同地形类型的相邻格"
-"子。\n"
+"• Shift+鼠标点击：“魔杖”模式，选择鼠标光标下的六角格，以及相同地形类型的相邻"
+"六角格。\n"
 "• Control+鼠标点击：取消选择。\n"
 "\n"
 "<bold>text='笔刷大小'</bold>\n"
@@ -496,22 +498,22 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr "选择单个格子。"
+msgstr "选择单格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr "一次选择七个格子。"
+msgstr "一次选择七格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr "一次选择十九个格子。"
+msgstr "一次选择十九格。"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr "选择一直线上的三个格子。"
+msgstr "选择一直线上的三格。"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
@@ -535,8 +537,8 @@ msgid ""
 msgstr ""
 "旋转、翻转和粘贴剪贴板中的地形\n"
 "\n"
-"可以使用<ref>dst='editor_tool_select' text='选择工具'</ref>将格子剪切或复制到"
-"剪贴板。\n"
+"可以使用<ref>dst='editor_tool_select' text='选择工具'</ref>将六角格剪切或复制"
+"到剪贴板。\n"
 "\n"
 "粘贴工具会显示剪贴板中内容的轮廓，可以用鼠标点击来粘贴。显示的内容只有轮廓，"
 "但可以用撤销功能来纠正错误，该功能绑定在Control+Z键上，同时也绑定在和游戏中的"
@@ -607,8 +609,9 @@ msgstr ""
 "此工具用于设置各阵营首领的默认起始位置，以及具名的特殊位置。在<ref>dst='..."
 "editor_mode_terrain' text='地形编辑器'</ref>和<ref>dst='..."
 "editor_mode_scenario' text='场景编辑器'</ref>模式下，这两种类型的位置都启用"
-"了。位置名称在编辑器调色板中显示为一个列表，点击地图将把该名称放置于一个格子"
-"上。每个位置只能放在一个格子上，而且编辑器只允许每个格子上最多有一个位置。\n"
+"了。位置名称在编辑器调色板中显示为一个列表，点击地图将把该名称放置于六角格"
+"上。每个位置只能放在一个六角格上，而且编辑器只允许每个六角格上最多有一个位"
+"置。\n"
 "\n"
 "要添加具名的特殊位置，请点击编辑器调色板底部的“添加”，并输入名称。这些名称必"
 "须以字母开头，可以包含数字和下划线。\n"
@@ -623,16 +626,120 @@ msgstr ""
 "\n"
 "<bold>text='键盘修饰符'</bold>\n"
 "\n"
-" •Control+鼠标点击已经含有位置的格子：选择该格子中的位置，用于在下次鼠标点击"
+" •Control+鼠标点击已经含有位置的六角格：选择该格中的位置，用于在下次鼠标点击"
 "时进行放置，与在编辑器调色板中选择该位置等价。"
 
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:127
+msgid "Editor Terrain-Overlay Graphics"
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#: data/core/editor/help.cfg:128
+msgid ""
+"editor^Maps generally look similar in the editor to their appearance in the "
+"game. There are a few exceptions, where different graphics are used in the "
+"editor; all the overlays described here are found in the terrain palette’s "
+"“special” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English the text is “IO” for impassable and “UO” for unwalkable.
+#: data/core/editor/help.cfg:133
+msgid ""
+"editor^<bold>text='Movement Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impassable and Unwalkable\n"
+"\n"
+"While easily noticeable in the editor, these are invisible in the game, so "
+"the mixed terrains created by them look like the base terrain. They create a "
+"mixed terrain with the movement costs set to “impassable” or “unwalkable” "
+"respectively."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The images here have text, while they could be translated I assume editor-only images won’t be.
+#. In English these images are the literal text “Castle overlay” and “Keep overlay”.
+#: data/core/editor/help.cfg:142
+msgid ""
+"editor^<bold>text='Castle Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Adding either of these overlays to a passable hex allows units to be "
+"recruited onto a hex. The keep also allows a leader to recruit from there.\n"
+"\n"
+"These can be added to an impassable hex to connect a castle to a visually-"
+"separate keep through an impassable wall. It’s also possible to create a "
+"castle that seems to have grassland between the keep and towers, however "
+"this requires the connecting hexes to be occupied or blocked to prevent "
+"units being recruited onto them."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image here has text, while it could be translated I assume editor-only images won’t be.
+#. In English this image is the literal text “Village overlay”.
+#: data/core/editor/help.cfg:153
+msgid ""
+"editor^<bold>text='Village Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"This turns any base terrain into a village, providing income and healing."
+msgstr ""
+
+#. [topic]: id=editor_terrain_overlays
+#. The image is an “S” on a solid black background.
+#: data/core/editor/help.cfg:161
+msgid ""
+"editor^<bold>text='Fake Shroud'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Fake Shroud looks like an unexplored area, even in scenarios that have "
+"shroud disabled and even when the player’s units can see the hex."
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Deprecated Terrain"
+msgstr "基础地形："
+
+#. [topic]: id=editor_deprecated_overlay
+#. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
+#. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
+#: data/core/editor/help.cfg:173
+msgid ""
+"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"\n"
+"This is shown in the editor over deprecated terrain codes. Examples are:\n"
+"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+"terrains now support the “^Efs” Sconce embellishment.\n"
+"\n"
+"The help pages for these terrains may have additional text that’s only shown "
+"in the editor, describing the deprecation and the recommended replacements."
+msgstr ""
+
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:186
 msgid "Label Tool"
 msgstr "标签工具"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:130
+#: data/core/editor/help.cfg:187
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -654,12 +761,12 @@ msgstr ""
 "签在场景中实现。"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:145
+#: data/core/editor/help.cfg:202
 msgid "Item Tool (Scenery Tool)"
 msgstr "物品工具（景色工具）"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:146
+#: data/core/editor/help.cfg:203
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -672,7 +779,8 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
-"物品工具可以放置风车、书柜和巨石等装饰物。多个物品可以放置在同一个格子上。\n"
+"物品工具可以放置风车、书柜和巨石等装饰物。多个物品可以放置在同一个六角格"
+"上。\n"
 "\n"
 "<bold>text='注意：'</bold>此工具不支持删除已经放置的物品，也不支持撤销。目前"
 "只能通过编辑生成的WML文件来修复错误。\n"
@@ -681,12 +789,12 @@ msgstr ""
 "<italic>text='[item]'</italic>标签在场景中实现。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:216
 msgid "Village Ownership Tool"
 msgstr "村庄所有权工具"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:160
+#: data/core/editor/help.cfg:217
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -710,12 +818,12 @@ msgstr ""
 "来存储的。"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:174
+#: data/core/editor/help.cfg:231
 msgid "Unit Tool"
 msgstr "单位工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:232
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -732,18 +840,18 @@ msgstr ""
 "\n"
 "• 左键单击将放置单位。\n"
 "• 左键拖放将移动已放置的单位。\n"
-"• 当格子中包含单位时，各种操作将被添加到该格子的右键菜单中。\n"
+"• 当六角格中包含单位时，各种操作将被添加到该格的右键菜单中。\n"
 "\n"
 "这个工具只在场景模式中可用。它会将WML的<italic>text='[unit]'</italic>标签添加"
 "到适当的<italic>text='[side]'</italic>下。"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:247
 msgid "Named Areas"
 msgstr "具名区域"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:191
+#: data/core/editor/help.cfg:248
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -772,12 +880,12 @@ msgstr ""
 "的id，以创建可以用于此类过滤器的贴片组。（Wiki上有关于标准位置过滤器这一概念"
 "的详细说明。）例如：\n"
 "\n"
-"• 为此组格子指定本地时区\n"
-"• 筛选出当角色移动到其上时会触发事件的格子组\n"
+"• 为此组六角格指定本地时区\n"
+"• 筛选出当角色移动到其上时会触发事件的六角格组\n"
 "\n"
 "如何使用此工具：\n"
 "\n"
-"- 使用<ref>dst='editor_tool_select' text='select tool'</ref>选择格子。\n"
+"- 使用<ref>dst='editor_tool_select' text='select tool'</ref>选择六角格。\n"
 "- 在“区域”菜单中，选择“添加新区域”\n"
 "- 然后在“区域”菜单中，选择“保存选中范围到区域”\n"
 "- 然后在“区域”菜单中，选择“重命名所选区域”并为该区域选择名称。\n"
@@ -787,12 +895,12 @@ msgstr ""
 "改变该区域的时段安排。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:269
 msgid "Playlist Manager"
 msgstr "播放列表管理器"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:270
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -806,12 +914,12 @@ msgstr ""
 "到场景中。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:223
+#: data/core/editor/help.cfg:280
 msgid "Map/Scenario Editor"
 msgstr "地图/场景编辑器"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:281
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -866,7 +974,7 @@ msgstr ""
 "音乐。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:293
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -895,8 +1003,7 @@ msgstr ""
 "• 与游戏中完全一致的地图渲染\n"
 "\n"
 "地图在游戏中的样子不会和编辑器中的完全一样，因为这取决于地形规则。例如，当许"
-"多山地格子聚集在一起时，地形规则会试图将它们组合成山脉和横跨多个格子的大图"
-"形。\n"
+"多山地格聚集在一起时，地形规则会试图将它们组合成山脉和横跨多格的大图形。\n"
 "\n"
 "• 事件处理器和脚本\n"
 "\n"
@@ -909,7 +1016,7 @@ msgstr ""
 "地形的附加组件，则需要该附加组件将自身的附加地形信息告知编辑器。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:256
+#: data/core/editor/help.cfg:313
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -931,7 +1038,7 @@ msgstr ""
 "框的“自定义地图”游戏类型中找到。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:325
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -943,7 +1050,7 @@ msgstr ""
 "编写脚本。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:327
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -960,7 +1067,7 @@ msgstr ""
 "• 在纯地形模式下，“区域”和“阵营”菜单是灰色的。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:277
+#: data/core/editor/help.cfg:334
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -984,14 +1091,30 @@ msgstr ""
 "件（不是.map文件）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:342
+#, fuzzy
+#| msgid ""
+#| "<header>text='The files: .map and .cfg'</header>\n"
+#| "\n"
+#| "The map editor saves exactly one file, either a .map (for terrain mode) "
+#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
+#| "inside the .cfg file; there is no separate .map file. If you start "
+#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "file might remain, but this is not updated by the scenario editor.\n"
+#| "\n"
+#| "Loading a .cfg file has different results depending on the contents of "
+#| "the .cfg file. For .cfg files that were created by the scenario editor, "
+#| "it will open the .cfg in the scenario editor. However, for .cfg files "
+#| "that use a separate .map file (which can't be created by the scenario "
+#| "editor), the editor may follow the link and open the corresponding .map "
+#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
 "The map editor saves exactly one file, either a .map (for terrain mode) or "
 "a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
 "the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenaro mode then an old .map file might "
+"terrain mode and then switch to scenario mode then an old .map file might "
 "remain, but this is not updated by the scenario editor.\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
@@ -1014,12 +1137,12 @@ msgstr ""
 "应的.map，就像在文件选择器中选择了.map文件一样。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:297
+#: data/core/editor/help.cfg:354
 msgid "Using a separate file for WML events"
 msgstr "为WML事件使用单独的文件"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:298
+#: data/core/editor/help.cfg:355
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1114,12 +1237,12 @@ msgstr ""
 "  ◦ 在[scenario]元素中，使用“map_file=\"map_from_01.cfg”来加载该文件"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:336
+#: data/core/editor/help.cfg:393
 msgid "Editor Mask Usage"
 msgstr "编辑器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:337
+#: data/core/editor/help.cfg:394
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1127,12 +1250,12 @@ msgstr "遮罩可以用于基础地图上，以便于在多个发生于同一位
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:345
+#: data/core/editor/help.cfg:402
 msgid "ToD and Schedule Editor"
 msgstr "时段和日程编辑器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:346
+#: data/core/editor/help.cfg:403
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1151,13 +1274,13 @@ msgstr ""
 "<ref>dst='editor_named_area' text='时间区域'</ref>的自有日程表。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:357
+#: data/core/editor/help.cfg:414
 msgid "Editor Palette"
 msgstr "编辑器调色板"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:359
+#: data/core/editor/help.cfg:416
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1181,32 +1304,32 @@ msgstr ""
 "左边的一个，其图形会根据选择的内容而改变。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:364
+#: data/core/editor/help.cfg:421
 msgid "Show all kinds of terrain"
 msgstr "显示所有类型的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:422
 msgid "Show only water terrains"
 msgstr "只显示水地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:366
+#: data/core/editor/help.cfg:423
 msgid "Show only villages"
 msgstr "只显示村庄"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:435
 msgid "Wesnoth Map Format"
 msgstr "韦诺地图格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:379
+#: data/core/editor/help.cfg:436
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "韦诺将其地图存储在人类可读的纯文本文件中。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:381
+#: data/core/editor/help.cfg:438
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1256,7 +1379,7 @@ msgstr ""
 "优先使用<italic>text='map_file'</italic>语法，而不是预处理器包含。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:451
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1288,7 +1411,7 @@ msgstr ""
 "在“窗口”菜单中被标记为（E）。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:459
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1307,7 +1430,7 @@ msgstr ""
 "文件'</ref>来存储手工编辑的部分，这一问题可以解决。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:406
+#: data/core/editor/help.cfg:463
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1393,20 +1516,20 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
-"韦诺历法中的每年都由12个月组成。这些月份依次是：\n"
+"韦诺历法中每年都由12个月组成。这些月份依次是：\n"
 "\n"
-"银白之火\n"
-"血色之月\n"
-"散播之种\n"
-"深埋之根\n"
-"斯克莱尔之花\n"
-"荆棘之女\n"
-"巅峰之星\n"
-"温燃之火\n"
-"静止之种\n"
-"死神之月\n"
-"维格拉斯之花\n"
-"黯黑之火\n"
+"白火月\n"
+"渗血月\n"
+"播种月\n"
+"深根月\n"
+"星华月\n"
+"棘女月\n"
+"峰星月\n"
+"燃火月\n"
+"静种月\n"
+"死神月\n"
+"冰华月\n"
+"黑火月\n"
 "\n"
 
 #. [section]: id=geography
@@ -1896,8 +2019,8 @@ msgstr "游戏玩法"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
+#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:499
 msgid "Traits"
 msgstr "特质"
 
@@ -2151,7 +2274,7 @@ msgstr ""
 "<ref>dst='movement' text='控制区域'</ref>和<ref>dst='time_of_day' text='时"
 "段'</ref>）的熟习程度。而“难度”表明了战役中的场景对一位老手会有多大挑战：难度"
 "越高，胜利之前的阻碍会越多，而要克服阻碍则需要更高超的游玩技术。例如，在更高"
-"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格子，诸如此类。"
+"的难度下，敌方可能有更高的收入、更高级的单位、更多的城堡格，诸如此类。"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2232,9 +2355,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"如果你是右击城堡格子后选择征募的，那么新的单位将出现在该格内。否则，新兵将出"
-"现在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在"
-"招募时，你的总花费不能超出你所拥有的金币数量。"
+"如果你是右击城堡格后选择征募的，那么新的单位将出现在该格内。否则，新兵将出现"
+"在主楼旁的某一个空格里。你最多只能征募与城堡内空格数相同个数的单位，并且在招"
+"募时，你的总花费不能超出你所拥有的金币数量。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2253,10 +2376,10 @@ msgstr ""
 "游戏开始时，每一阵营都有一位首领在城堡主楼里。在战斗开始时，以及战斗过程中，"
 "你需要征募<ref>dst='..units' text='单位'</ref>到你的部队里。要想征募单位，你"
 "的首领（例如<bold>text='王座继承人'</bold>战役中的科纳德）必须位于"
-"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格子上。而后你可以在菜单中选"
-"择<bold>text='征募'</bold>或右键点击一个格子并选择<bold>text='征募'</bold>。"
-"此时会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单"
-"位可以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
+"<ref>dst='terrain_castle' text='城堡'</ref>的主楼格上。而后你可以在菜单中选择"
+"<bold>text='征募'</bold>或右键点击六角格并选择<bold>text='征募'</bold>。此时"
+"会弹出征募菜单，其中列出了所有可供征募的单位和所花费金币枚数。点击一个单位可"
+"以查看其能力数据，然后点击<bold>text='征募'</bold>按钮就可将其征募。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -2569,8 +2692,8 @@ msgstr ""
 "\n"
 "\n"
 "移动时，你还需要记住<bold>text='控制区域'</bold>这一概念。每个单位都会在紧邻"
-"自身的格子中产生控制区域，敌军若进入那些格子，将立即无法继续移动。学习如何利"
-"用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
+"自身的六角格中产生控制区域，敌军若进入那些六角格，将立即无法继续移动。学习如"
+"何利用控制区域，是游玩韦诺时的一个要点。只有<ref>dst='ability_skirmisher' "
 "text='散兵'</ref>可以忽略控制区域的影响。"
 
 #. [topic]: id=movement
@@ -2621,8 +2744,8 @@ msgstr ""
 "之后，你将总是能看见该位置。<bold>text='战争迷雾'</bold>只会隐藏单位，以及村"
 "庄的归属（除了属于你或者你的盟友的村庄之外）。当迷雾附近有你的单位时，它会暂"
 "时消失，而当他们离去后则会再次笼罩。黑幕和迷雾都可以被单位所清除。单位清除黑"
-"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈格"
-"子（忽略控制区域和敌方单位的影响）。\n"
+"幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧临的一圈六"
+"角格（忽略控制区域和敌方单位的影响）。\n"
 "\n"
 "通常你可以撤销单位的移动，只要没有发生会产生随机结果的事件即可，比如战斗和征"
 "募（大多数单位被征募时都会获得随机的特质）。为了探索被隐藏的地形而清除黑幕或"
@@ -3833,7 +3956,7 @@ msgstr ""
 "\n"
 "\n"
 "最后，陆上单位通常不能居住在水中村庄里。因此水中村庄不能为这些单位提供村庄的"
-"防御和移动加成，而是仅仅被视为普通的水地形格子。\n"
+"防御和移动加成，而是仅仅被视为普通的水地形格。\n"
 "\n"
 "\n"
 
@@ -3848,8 +3971,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并检视（在默认主题下）于右上角显示的地形类型图标，就可以看"
-"到该格对应的混合地形是由什么基本地形组成的了。"
+"将鼠标移动到六角格上并检视（在默认主题下）于右上角显示的地形类型图标，就可以"
+"看到该格对应的混合地形是由什么基本地形组成的了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:577
@@ -3863,8 +3986,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"将鼠标移动到格子上并按下快捷键，或右击并从上下文中选择<bold>text='地形描述'</"
-"bold>，你就可以看到混合地形所产生的效果了。"
+"将鼠标移动到六角格上并按下快捷键，或右击并从上下文中选择<bold>text='地形描"
+"述'</bold>，你就可以看到混合地形所产生的效果了。"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:579
@@ -5280,7 +5403,8 @@ msgstr "长夜(3)"
 msgid "The Long Dark (4)"
 msgstr "长夜(4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:565
+#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:185
+#: src/help/help_topic_generators.cpp:602
 msgid "Special Notes:"
 msgstr "特别备注："
 
@@ -6022,6 +6146,73 @@ msgstr "龙人"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#| "armor- and weapon-smithing, but neither know nor need other science and "
+#| "culture besides this. Nonetheless, the few implements they do fashion are "
+#| "almost unrivaled in quality, only matched by those produced in the finest "
+#| "Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#| "Death in battle is the most preferred way for a drake to leave this "
+#| "world. Unlike the elder members of other races, drakes naturally grow "
+#| "more aggressive and reckless towards the ends of their natural lives, "
+#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6039,7 +6230,7 @@ msgid ""
 "Drakes are inherently magical creatures, with a mysterious internal fire "
 "fueling their very lives. This can easily be witnessed when one of their "
 "kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
+"remains into ashes. Their internal fire is also their greatest weakness; it "
 "makes them extremely vulnerable to cold attacks. Despite their magical "
 "nature, drakes are incapable of channeling magic in a controlled manner. "
 "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -6322,7 +6513,7 @@ msgstr ""
 "<header>text='魔法'</header>\n"
 "虽然精灵与传说中的仙灵是根本不同的生物，但他们的魔法与仙灵有某种联系，是他们"
 "异常敏锐的感觉以及长寿的源泉。精灵的魔法分为两种不同的路径，一种侧重于操纵世"
-"俗或自然世界，另一种则侧重于奥术位面的占卜。物质变换术是更常见的那一种，比奥"
+"俗或物质世界，另一种则侧重于奥术位面的占卜。物质变换术是更常见的那一种，比奥"
 "术界的对立流派有更明显的效果。虽然精灵的自然魔法不适合战斗，但这种利用大地能"
 "量来进行滋养与守护的强大力量，是精灵拥有高效的治疗能力以及精灵森林美丽而充满"
 "活力的主要原因。\n"
@@ -6340,13 +6531,13 @@ msgstr ""
 "\n"
 "<header>text='社会'</header>\n"
 "精灵社会大致分为三个派系：负责保卫森林的准军事派系，通常担任工匠和艺术家的和"
-"平平民，以及保持精灵与仙灵联系的治疗师和秘术师。负责管理这些不同派系的是贵"
-"族，他们被视为更广泛的社会秩序的公仆，而不是其人民的严格统治者。挑选这些贵族"
-"的过程在不同的精灵议会中有所不同，韦弥尔的管理评议会——卡·利安——是选举产生的，"
-"而林塔尼尔的贵族通常是继承的。\n"
+"平平民，以及保持精灵与仙灵联系的医者和秘术师。负责管理这些不同派系的是贵族，"
+"他们被视为更广泛的社会秩序的公仆，而不是其人民的严格统治者。挑选这些贵族的过"
+"程在不同的精灵议会中有所不同，韦弥尔的管理评议会——卡·利安——是选举产生的，而林"
+"塔尼尔的贵族通常是继承的。\n"
 "\n"
 "在纷争时期，指挥层级会适时而变，普通贵族会听命于更有战争意识的元帅。根据传"
-"统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的魔女来推动权力的交接。"
+"统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的女附魔师来推动权力的交接。"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -6473,18 +6664,6 @@ msgstr "马"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses. While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -6501,7 +6680,7 @@ msgstr ""
 "欣欣向荣。\n"
 "\n"
 "马是许多文明的重要组成部分，因此，有许多以马为中心的神话和故事也就不足为奇。"
-"翼马、人马混血种以及幽灵马都被写进了历史，尽管很少有人真能说自己见过这些东"
+"翼马、人马混血种以及幽灵马都被写进了历史，尽管很少有人真能宣称自己见过这类东"
 "西。"
 
 #. [race]: id=human
@@ -7375,163 +7554,200 @@ msgstr "帮助"
 msgid "Parse error when parsing help text:"
 msgstr "分析帮助文本时出现分析错误："
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Best of"
 msgstr "最佳"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:65
 msgid "Worst of"
 msgstr "最差"
 
-#: src/help/help_topic_generators.cpp:157
+#: src/help/help_topic_generators.cpp:162
+msgid ""
+"Villages allow any unit stationed therein to heal, or to be cured of poison."
+msgstr ""
+
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+#: src/help/help_topic_generators.cpp:167
+msgid ""
+"This terrain allows units to be cured of poison, or to heal a single "
+"hitpoint."
+msgid_plural ""
+"This terrain allows units to heal $amount hitpoints, or to be cured of "
+"poison, as if stationed in a village."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/help/help_topic_generators.cpp:174
+msgid ""
+"This terrain is a castle — units can be recruited onto it from a connected "
+"keep."
+msgstr ""
+
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+#: src/help/help_topic_generators.cpp:178
+msgid ""
+"This terrain is a keep — a leader can recruit from this hex onto connected "
+"castle hexes."
+msgstr ""
+
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+#: src/help/help_topic_generators.cpp:181
+msgid ""
+"This unusual keep allows a leader to recruit while standing on it, but does "
+"not allow a leader on a connected keep to recruit onto this hex."
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
 msgstr "基础地形："
 
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:214
 msgid "Movement properties: "
 msgstr "移动特性："
 
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:218
 msgid "Defense properties: "
 msgstr "防御特性："
 
-#: src/help/help_topic_generators.cpp:261
+#: src/help/help_topic_generators.cpp:298
 msgid "Level"
 msgstr "等级"
 
-#: src/help/help_topic_generators.cpp:322
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances from: "
 msgstr "升级自："
 
-#: src/help/help_topic_generators.cpp:324
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances to: "
 msgstr "升级为："
 
-#: src/help/help_topic_generators.cpp:353
+#: src/help/help_topic_generators.cpp:390
 msgid "Base unit: "
 msgstr "基础单位："
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:395
 msgid "Base units: "
 msgstr "基础单位："
 
-#: src/help/help_topic_generators.cpp:376
+#: src/help/help_topic_generators.cpp:413
 msgid "Variations: "
 msgstr "变种："
 
-#: src/help/help_topic_generators.cpp:400
+#: src/help/help_topic_generators.cpp:437
 msgid "race^Miscellaneous"
 msgstr "杂项"
 
-#: src/help/help_topic_generators.cpp:402
+#: src/help/help_topic_generators.cpp:439
 msgid "Race: "
 msgstr "种族："
 
-#: src/help/help_topic_generators.cpp:472
+#: src/help/help_topic_generators.cpp:509
 msgid "Abilities: "
 msgstr "能力："
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:535
 msgid "Ability Upgrades: "
 msgstr "能力升级："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:528
+#: src/help/help_topic_generators.cpp:565
 msgid "HP:"
 msgstr "生命："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:532
+#: src/help/help_topic_generators.cpp:569
 msgid "Moves:"
 msgstr "移动："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:574
 msgid "Vision:"
 msgstr "视野："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:543
+#: src/help/help_topic_generators.cpp:580
 msgid "Jamming:"
 msgstr "干扰："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:548
+#: src/help/help_topic_generators.cpp:585
 msgid "Cost:"
 msgstr "费用："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:589
 msgid "Alignment:"
 msgstr "立场："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:596
 msgid "Required XP:"
 msgstr "所需经验："
 
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:611
 msgid "unit help^Attacks"
 msgstr "攻击手段"
 
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:618
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:620
 msgid "Range"
 msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:621
 msgid "Type"
 msgstr "类型"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:622
 msgid "Special"
 msgstr "特攻"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:704
 msgid "Attack Type"
 msgstr "攻击类型"
 
-#: src/help/help_topic_generators.cpp:668
+#: src/help/help_topic_generators.cpp:705
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:697
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "地形修正"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "移动消耗"
 
-#: src/help/help_topic_generators.cpp:707
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "防御上限"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "视野消耗"
 
-#: src/help/help_topic_generators.cpp:716
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "干扰消耗"

@@ -17,7 +17,7 @@ function random_placement(locs, num_items, min_distance, command)
 				print("placed only " .. i .. " items")
 				return
 			else
-				helper.wml_error("[random_placement] failed to place items. only " .. i .. " items were placed")
+				wml.error("[random_placement] failed to place items. only " .. i .. " items were placed")
 			end
 		end
 		local index = mathx.random(size)
