@@ -68,6 +68,8 @@ struct wesnoth_global_fixture {
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
 
+		// declare this here so that it will always be at the front of the event queue.
+		events::event_context global_context;
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
