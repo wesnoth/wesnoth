@@ -116,6 +116,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('enable_rendergeometry', 'Enable SDL_RenderGeometry usage. Requires SDL 2.0.18.', False),
     )
 
 #
@@ -482,6 +483,9 @@ for env in [test_env, client_env, env]:
     env.Prepend(CPPPATH = [build_root + "$build_dir", "#/src"])
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
+
+    if env['enable_rendergeometry']:
+        end.Append(CPPDEFINES = ["ENABLE_RENDERGEOMETRY"])
 
     if "clang" in env["CXX"]:
 # Silence warnings about unused -I options and unknown warning switches.

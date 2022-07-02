@@ -160,6 +160,11 @@ if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
 endif()
 
+option(ENABLE_RENDERGEOMETRY "Enable SDL_RenderGeometry usage. Requires SDL 2.0.18." FALSE)
+if(ENABLE_RENDERGEOMETRY)
+	add_definitions(-DENABLE_RENDERGEOMETRY)
+endif()
+
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
