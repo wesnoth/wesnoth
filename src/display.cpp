@@ -1583,29 +1583,31 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	// Clamp blend ratio so nothing weird happens
 	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
 
+	blit_helper& bh = drawing_buffer_add(drawing_layer, loc, dest, tex);
+	bh.hflip = hreverse;
+	bh.vflip = vreverse;
+	bh.alpha_mod = alpha;
+	bh.highlight = float_to_color(highlight);
+
 	// SDL hax to apply an active washout tint at the correct ratio
 	if (blend_ratio > 0.0) {
 		// Get a pure-white version of the texture
 		const image::locator whiteout_locator(
 			i_locator.get_filename(),
-			i_locator.get_modifications() + "~CHAN(255, 255, 255, alpha)"
+			i_locator.get_modifications()
+				+ new_modifications
+				+ "~CHAN(255, 255, 255, alpha)"
 		);
 		const texture& wt = image::get_texture(whiteout_locator);
 		// Blit the pure white version, tinted to the right colour
 		blit_helper &wh = drawing_buffer_add(drawing_layer, loc, dest, wt);
 		wh.hflip = hreverse;
 		wh.vflip = vreverse;
-		wh.alpha_mod = alpha;
+		wh.alpha_mod = uint8_t(alpha * blend_ratio);
 		wh.r_mod = blendto.r;
 		wh.g_mod = blendto.g;
 		wh.b_mod = blendto.b;
 	}
-
-	blit_helper& bh = drawing_buffer_add(drawing_layer, loc, dest, tex);
-	bh.hflip = hreverse;
-	bh.vflip = vreverse;
-	bh.alpha_mod = uint8_t(alpha * (1.0 - blend_ratio));
-	bh.highlight = float_to_color(highlight);
 }
 
 void display::select_hex(map_location hex)
