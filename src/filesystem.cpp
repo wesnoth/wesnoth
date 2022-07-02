@@ -714,6 +714,7 @@ void set_user_data_dir(std::string newprefdir)
 #else
 	if(newprefdir.empty()) {
 		newprefdir = backupprefdir;
+		relative_ok = true;
 	}
 
 	const char* home_str = getenv("HOME");
