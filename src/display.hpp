@@ -957,6 +957,10 @@ protected:
 		uint8_t b_mod = 255;
 		/** Strength of highlight effect to apply, if any. */
 		uint8_t highlight = 0;
+#ifdef ENABLE_RENDERGEOMETRY
+		std::array<SDL_Vertex,4> shader_verts;
+		bool smooth_shade = false;
+#endif
 
 	private:
 		// Core info is set on creation.
