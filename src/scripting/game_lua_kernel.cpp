@@ -3747,6 +3747,14 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
 	if(luaW_tableget(L, 1, "name")) {
 		name = read_event_name(L, -1);
+	} else if(is_menu_item) {
+		if(id.empty()) {
+			return luaL_argerror(L, 1, "non-empty id is required for a menu item");
+		}
+		name = "menu item " + id;
+	}
+	if(id.empty() && name.empty()) {
+		return luaL_argerror(L, 1, "either a name or id is required");
 	}
 	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
 	if(new_handler.valid()) {
@@ -3814,6 +3822,9 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 	bool repeat = true;
 	std::string name = read_event_name(L, 1), id;
+	if(name.empty()) {
+		return luaL_argerror(L, 1, "must not be empty");
+	}
 	if(is_menu_item) {
 		id = name;
 		name = "menu item " + name;
