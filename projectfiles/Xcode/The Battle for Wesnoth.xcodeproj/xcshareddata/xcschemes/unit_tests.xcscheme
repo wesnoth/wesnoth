@@ -56,6 +56,10 @@
             argument = "--run_test=test_preproc_defines"
             isEnabled = "NO">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-- --output_file &quot;$(PROJECT_DIR)/../../boost_test_result.xml&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable

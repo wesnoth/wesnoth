@@ -26,6 +26,7 @@
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/unit_test_parameters.hpp>
 #include <boost/test/results_reporter.hpp>
+#include <boost/filesystem/path.hpp>
 
 #include <fstream>
 
@@ -60,8 +61,16 @@ std::ofstream reporter;
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture()
 	{
-		using namespace boost::unit_test;
-		reporter.open("boost_test_result.xml");
+		using namespace boost::unit_test; using namespace std::literals;
+		boost::filesystem::path file("boost_test_result.xml");
+		for(int i = 1; i < framework::master_test_suite().argc; i++) {
+			if(framework::master_test_suite().argv[i - 1] == "--output_file"s) {
+				file = framework::master_test_suite().argv[i];
+				break;
+			}
+		}
+		
+		reporter.open(file.c_str());
 		assert( reporter.is_open() );
 
 		results_reporter::set_stream(reporter);
