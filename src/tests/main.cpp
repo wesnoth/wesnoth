@@ -87,11 +87,15 @@ struct wesnoth_global_fixture {
 		gui2::init();
 		static const gui2::event::manager gui_event_manager;
 
+		// TODO: For some reason this fails on MacOS and prevents any tests from running
+		// It's not crucial to change the log levels though, so just skip over it.
+#ifndef __APPLE__
 		// Set more report as default
 		if(runtime_config::get<log_level>(runtime_config::btrt_log_level) == invalid_log_level)
 			unit_test_log.set_threshold_level(log_messages);
 		if(runtime_config::get<report_level>(runtime_config::btrt_report_level) == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
+#endif
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 	}
