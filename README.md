@@ -1,5 +1,7 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
 [![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml)
+
 [![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg?branch=1.16)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml)
 
 About
