@@ -22,7 +22,8 @@ fi
 if [ "$CFG" == "Debug" ]; then
 	xcodebuild -project "The Battle for Wesnoth.xcodeproj" -target "unit_tests" -configuration "$CFG"
 	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
-		./unit_tests --color_output --log_level=test_suite
+		cd 'projectfiles/Xcode/The Battle for Wesnoth.app/Content/Resources'
+		../../../unit_tests --color_output --log_level=test_suite
 		EXIT_VAL=$?
 	fi
 fi
