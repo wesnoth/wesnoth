@@ -61,6 +61,10 @@ std::ofstream reporter;
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture()
 	{
+#ifndef __APPLE__
+		using namespace boost::unit_test;
+		reporter.open("boost_test_result.xml");
+#else
 		using namespace boost::unit_test; using namespace std::literals;
 		boost::filesystem::path file("boost_test_result.xml");
 		for(int i = 1; i < framework::master_test_suite().argc; i++) {
@@ -71,6 +75,7 @@ struct wesnoth_global_fixture {
 		}
 
 		reporter.open(file.c_str());
+#endif
 		assert( reporter.is_open() );
 
 		results_reporter::set_stream(reporter);
