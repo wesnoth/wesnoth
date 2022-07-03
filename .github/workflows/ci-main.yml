@@ -232,6 +232,7 @@ jobs:
       - name: Build vcpkg
         shell: cmd
         run: |
+          if exist "D:/a/wesnoth/vcpkg/vcpkg.exe" rm "D:/a/wesnoth/vcpkg/vcpkg.exe"
           if not exist "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           if not exist "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
           if not exist "D:/a/wesnoth/vcpkg" git checkout b49b2bdf22559c89eddbf29a29621a1dc6929320
