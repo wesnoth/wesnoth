@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * S8: Fixed replay OOS on victory event (issue #6267)
    * World Conquest
      * Fixed Bezoar artifact being bugged and broken.
  ### Editor
