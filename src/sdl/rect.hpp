@@ -77,6 +77,9 @@ public:
 	bool contains(int x, int y) const;
 	bool contains(const point& p) const;
 
+	/** Whether the given rectangle is completely contained by this one. */
+	bool contains(const SDL_Rect& r) const;
+
 	/** Whether the given rectangle and this rectangle overlap. */
 	bool overlaps(const SDL_Rect& r) const;
 
