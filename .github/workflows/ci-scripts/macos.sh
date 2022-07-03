@@ -8,7 +8,7 @@ scons translations build=release --debug=time nls=true jobs=2 || exit 1
 
 cd ./projectfiles/Xcode
 
-xcodebuild -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -configuration "$CFG"
+xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
 EXIT_VAL=$?
 
 hdiutil create -volname "Wesnoth_${CFG}" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
@@ -20,7 +20,6 @@ if [ $EXIT_VAL == 0 ] && [ "$CFG" == "Release" ]; then
 fi
 
 if [ "$CFG" == "Debug" ]; then
-	xcodebuild -project "The Battle for Wesnoth.xcodeproj" -target "unit_tests" -configuration "$CFG"
 	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
 		cd 'projectfiles/Xcode/The Battle for Wesnoth.app/Content/Resources'
 		../../../unit_tests --color_output --log_level=test_suite
