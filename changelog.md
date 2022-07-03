@@ -18,6 +18,7 @@
  ### Translations
    * Updated translations: Arabic, Chinese (Traditional), Polish, Finnish
  ### Units
+    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface
    * Resolved broken layout in some low-resolution configurations (issue #5620, #6544)
  ### WML Engine
