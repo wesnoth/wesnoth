@@ -21,8 +21,7 @@ fi
 
 if [ "$CFG" == "Debug" ]; then
 	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
-		ls; ls projectfiles/Xcode
-		cd 'projectfiles/Xcode/The Battle for Wesnoth.app/Content/Resources'
+		cd "build/$CFG/The Battle for Wesnoth.app/Content/Resources"
 		../../../unit_tests --color_output --log_level=test_suite
 		EXIT_VAL=$?
 	fi
