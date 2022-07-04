@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "sdl/point.hpp"
+
 #include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_render.h>
 
@@ -70,6 +72,16 @@ public:
 		return info(*this);
 	}
 
+	/** The internal texture format. Equivalent to get_info().format. */
+	uint32_t get_format() const;
+
+	/** The texture access mode. Equivalent to get_info().access. */
+	int get_access() const;
+
+	/** The raw internal texture size.
+	  * Equivalent to point{get_info().w, get_info().h} */
+	point get_raw_size() const;
+
 	/**
 	 * The draw-space width of the texture, in pixels.
 	 *
@@ -87,6 +99,14 @@ public:
 	 * it will usually be equal to get_info().h / pixel_scale.
 	 */
 	int h() const { return h_; }
+
+	/**
+	 * The size of the texture in draw-space.
+	 *
+	 * This may differ from the raw texture size. To get that in stead,
+	 * use get_info() or get_raw_size().
+	 */
+	point draw_size() const { return {w_, h_}; }
 
 	/** Set the intended width of the texture, in draw-space. */
 	void set_draw_width(int w) { w_ = w; }
@@ -120,10 +140,15 @@ public:
 	/** Replaces ownership of the managed texture with the given one. */
 	void assign(SDL_Texture* t);
 
+	SDL_Texture* get() const { return texture_.get(); }
+
 	texture& operator=(const texture& t) = default;
 
 	/** Move assignment. Releases ownership of the managed texture from the passed object. */
 	texture& operator=(texture&& t);
+
+	/** Texture comparisons explicitly only care about the pointer value. */
+	bool operator==(const texture& t) const { return get() == t.get(); }
 
 	operator SDL_Texture*() const
 	{

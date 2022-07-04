@@ -565,10 +565,10 @@ void render_minimap(unsigned dst_w,
 		}
 	}
 
-	texture::info src_info = minimap.get_info();
+	point raw_size = minimap.get_raw_size();
 
-	const double wratio = dst_w * 1.0 / src_info.w;
-	const double hratio = dst_h * 1.0 / src_info.h;
+	const double wratio = dst_w * 1.0 / raw_size.x;
+	const double hratio = dst_h * 1.0 / raw_size.y;
 
 	const double ratio = std::min<double>(wratio, hratio);
 
@@ -576,8 +576,8 @@ void render_minimap(unsigned dst_w,
 	SDL_Rect final_dst_rect {
 		0,
 		0,
-		static_cast<int>(src_info.w * ratio),
-		static_cast<int>(src_info.h * ratio)
+		static_cast<int>(raw_size.x * ratio),
+		static_cast<int>(raw_size.y * ratio)
 	};
 
 	// Finally, render the composited minimap texture (scaled down) to the render target,
