@@ -90,7 +90,6 @@ void trigger_full_redraw()
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
-	, render_texture_(nullptr)
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
@@ -201,18 +200,17 @@ void CVideo::update_framebuffer_fake()
 		if (w != fake_size.x || h != fake_size.y) {
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture" << std::endl;
-			SDL_DestroyTexture(render_texture_);
-			render_texture_ = nullptr;
+			render_texture_.reset();
 		}
 	}
 	if (!render_texture_) {
 		LOG_DP << "creating offscreen render texture" << std::endl;
-		render_texture_ = SDL_CreateTexture(
+		render_texture_.assign(SDL_CreateTexture(
 			*window,
 			window->pixel_format(),
 			SDL_TEXTUREACCESS_TARGET,
 			fake_size.x, fake_size.y
-		);
+		));
 		LOG_DP << "updated render target to " << fake_size.x
 			<< "x" << fake_size.y << std::endl;
 	}
@@ -221,7 +219,7 @@ void CVideo::update_framebuffer_fake()
 	logical_size_ = fake_size;
 
 	// The render texture is always the render target in this case.
-	SDL_SetRenderTarget(*window, render_texture_);
+	force_render_target(render_texture_);
 
 	// TODO: is there any need to update input dimensions?
 	//sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
@@ -307,24 +305,23 @@ void CVideo::update_framebuffer()
 		if (w != osize.x || h != osize.y) {
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture" << std::endl;
-			SDL_DestroyTexture(render_texture_);
-			render_texture_ = nullptr;
+			render_texture_.reset();
 		}
 	}
 	if (!render_texture_) {
 		LOG_DP << "creating offscreen render texture" << std::endl;
-		render_texture_ = SDL_CreateTexture(
+		render_texture_.assign(SDL_CreateTexture(
 			*window,
 			window->pixel_format(),
 			SDL_TEXTUREACCESS_TARGET,
 			osize.x, osize.y
-		);
+		));
+		// This isn't really necessary, but might be nice to have attached
+		render_texture_.set_draw_size(lsize);
 	}
 
 	// Assign the render texture now. It will be used for all drawing.
-	SDL_SetRenderTarget(*window, render_texture_);
-	// It also resets the rendering scale, so set logical size once more.
-	window->set_logical_size(lsize.x, lsize.y);
+	force_render_target(render_texture_);
 
 	// Update sizes for input conversion.
 	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
@@ -498,9 +495,16 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::force_render_target(SDL_Texture* t)
+void CVideo::force_render_target(const texture& t)
 {
-	SDL_SetRenderTarget(get_renderer(), t);
+	if (SDL_SetRenderTarget(get_renderer(), t)) {
+		ERR_DP << "failed to set render target to "
+			<< static_cast<void*>(t.get()) << ' '
+			<< t.draw_size() << " / " << t.get_raw_size() << std::endl;
+		ERR_DP << "last SDL error: " << SDL_GetError() << std::endl;
+		throw error("failed to set render target");
+	}
+	current_render_target_ = t;
 
 	if (fake_interactive) {
 		return;
@@ -508,15 +512,32 @@ void CVideo::force_render_target(SDL_Texture* t)
 
 	// The scale factor gets reset when the render target changes,
 	// so make sure it gets set back appropriately.
-	if (t == nullptr || t == render_texture_) {
+	if (!t) {
+		DBG_DP << "rendering to window / screen" << std::endl;
+		// TODO: draw_manager - clean this up
+		window->set_logical_size(draw_area().w, draw_area().h);
+	} else if (t == render_texture_) {
+		DBG_DP << "rendering to primary buffer" << std::endl;
 		// TODO: highdpi - sort out who owns this
 		window->set_logical_size(draw_area().w, draw_area().h);
+	} else {
+		DBG_DP << "rendering to custom target "
+			<< static_cast<void*>(t.get()) << ' '
+			<< t.draw_size() << " / " << t.get_raw_size() << std::endl;
+		window->set_logical_size(t.w(), t.h());
 	}
 }
 
-SDL_Texture* CVideo::get_render_target()
+void CVideo::clear_render_target()
 {
-	return SDL_GetRenderTarget(get_renderer());
+	force_render_target({});
+}
+
+texture CVideo::get_render_target()
+{
+	// This should always be up-to-date, but assert for sanity.
+	assert(current_render_target_ == SDL_GetRenderTarget(get_renderer()));
+	return current_render_target_;
 }
 
 SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
@@ -530,41 +551,56 @@ SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
 
 rect CVideo::to_output(const rect& r) const
 {
-	return r * get_pixel_scale();
+	rect o = r * get_pixel_scale();
+	// The draw-space viewport may be slightly offset on the render target,
+	// if the scale doesn't match precisely with the window size.
+	o.x += offset_x_;
+	o.y += offset_y_;
+	return o;
 }
 
+// Note: this is not thread-safe.
+// Drawing functions should not be called while this is active.
+// SDL renderer usage is not thread-safe anyway, so this is fine.
 void CVideo::render_screen()
 {
-	if(fake_screen_ || flip_locked_ > 0) {
-		return;
-	}
-
-	if(fake_interactive) {
+	if(fake_screen_ || fake_interactive) {
 		// No need to present anything in this case
 		return;
 	}
 
-	// Note: this is not thread-safe.
-	// Drawing functions should not be called while this is active.
-	// SDL renderer usage is not thread-safe anyway, so this is fine.
-
-	if(window) {
-		// Reset the render target to the window.
-		SDL_SetRenderTarget(*window, nullptr);
-
-		// Copy the render texture to the window.
-		SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
-
-		// Finalize and display the frame.
-		SDL_RenderPresent(*window);
-
-		// Reset the render target to the render texture.
-		SDL_SetRenderTarget(*window, render_texture_);
-
-		// SDL resets the logical size when setting a render texture target,
-		// so we also have to reset that every time.
-		window->set_logical_size(draw_area().w, draw_area().h);
+	if(!window) {
+		WRN_DP << "trying to render with no window" << std::endl;
+		return;
 	}
+
+	if(flip_locked_ > 0) {
+		DBG_DP << "trying to render with flip locked" << std::endl;
+		return;
+	}
+
+	// This should only ever be called when the main render texture is the
+	// current render target. It could be adapted otherwise... but let's not.
+	if(SDL_GetRenderTarget(*window) != render_texture_) {
+		ERR_DP << "trying to render screen, but current render texture is "
+			<< static_cast<void*>(SDL_GetRenderTarget(*window))
+			<< " | " << static_cast<void*>(current_render_target_.get())
+			<< ". It should be " << static_cast<void*>(render_texture_.get())
+			<< std::endl;
+		throw error("tried to render screen from wrong render target");
+	}
+
+	// Clear the render target so we're drawing to the window.
+	clear_render_target();
+
+	// Copy the render texture to the window.
+	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
+
+	// Finalize and display the frame.
+	SDL_RenderPresent(*window);
+
+	// Reset the render target to the render texture.
+	force_render_target(render_texture_);
 }
 
 surface CVideo::read_pixels(SDL_Rect* r)
@@ -575,8 +611,20 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	}
 	SDL_Rect d;
 
+	// This should be what we want to read from.
+	texture& target = current_render_target_;
+
+	// Make doubly sure.
+	if (target != SDL_GetRenderTarget(*window)) {
+		SDL_Texture* t = SDL_GetRenderTarget(*window);
+		ERR_DP << "render target " << static_cast<void*>(target.get())
+			<< ' ' << target.draw_size() << " / " << target.get_raw_size()
+			<< " doesn't match window render target "
+			<< static_cast<void*>(t) << std::endl;
+		throw error("unexpected render target while reading pixels");
+	}
+
 	// Get the full target area.
-	SDL_Texture* target = SDL_GetRenderTarget(*window);
 	const bool default_target = !target || target == render_texture_;
 	if (default_target) {
 		d = draw_area();
@@ -610,12 +658,6 @@ surface CVideo::read_pixels(SDL_Rect* r)
 
 	// Create surface and read pixels
 	surface s(o.w, o.h);
-	if (default_target) {
-		// the draw-space viewport may be slightly offset on the render target,
-		// if the scale doesn't match precisely with the window size.
-		o.x += offset_x_;
-		o.y += offset_y_;
-	}
 	SDL_RenderReadPixels(*window, &o, s->format->format, s->pixels, s->pitch);
 	return s;
 }

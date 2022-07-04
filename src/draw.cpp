@@ -581,7 +581,7 @@ SDL_Rect draw::get_viewport()
 
 
 draw::render_target_setter::render_target_setter(const texture& t)
-	: target_(nullptr)
+	: target_()
 	, viewport_()
 {
 	// Validate we can render to this texture.

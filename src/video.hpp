@@ -312,16 +312,20 @@ public:
 	 * will automatically restore the render target upon leaving scope.
 	 *
 	 * @param t     The new render target. This must be a texture created
-	 *              with SDL_TEXTUREACCESS_TARGET, or NULL to indicate
-	 *              the underlying window.
+	 *              with SDL_TEXTUREACCESS_TARGET, or an empty texture to
+	 *              indicate the underlying window.
 	 */
-	void force_render_target(SDL_Texture* t);
+	void force_render_target(const texture& t);
+
+	/** Reset the render target to the main window / screen. */
+	void clear_render_target();
 
 	/** Get the current render target.
 	 *
-	 * Returns NULL if the render target is the underlying window.
+	 * Will return an empty texture if the render target is the underlying
+	 * window.
 	 */
-	SDL_Texture* get_render_target();
+	texture get_render_target();
 
 	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
 
@@ -371,8 +375,11 @@ private:
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
 
+	/** The main offscreen render target. */
+	texture render_texture_ = {};
+
 	/** The current offscreen render target. */
-	SDL_Texture* render_texture_;
+	texture current_render_target_ = {};
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();

@@ -30,6 +30,7 @@
  */
 
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 
 #include <vector>
 
@@ -407,10 +408,13 @@ void force_viewport(const SDL_Rect& viewport);
 SDL_Rect get_viewport();
 
 
-/** A class to manage automatic restoration of the render target.
+/**
+ * A class to manage automatic restoration of the render target.
  *
- * While this can be constructed on its own, it is usually easier to
- * use the draw::set_render_target() utility function.
+ * It will also cache and restore the current viewport.
+ *
+ * This can be constructed on its own, or the draw::set_render_target()
+ * utility function can be used.
  */
 class render_target_setter
 {
@@ -419,12 +423,15 @@ public:
 	~render_target_setter();
 
 private:
-	SDL_Texture* target_;
-	SDL_Rect viewport_;
+	texture target_;
+	::rect viewport_;
 };
 
 /**
  * Set the given texture as the active render target.
+ *
+ * The current viewport will also be cached and restored along with the
+ * render target.
  *
  * All draw calls will draw to this texture until the returned object
  * goes out of scope. Do not retain the render_target_setter longer
