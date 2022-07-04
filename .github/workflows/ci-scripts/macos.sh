@@ -21,7 +21,12 @@ fi
 
 if [ "$CFG" == "Debug" ]; then
 	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
-		cd "build/$CFG/The Battle for Wesnoth.app/Content/Resources"
+		echo "Entering 'build'" ; cd build ; ls
+		echo "Entering '$CFG'" ; cd $CFG ; ls
+		echo "Entering '.app'" ; cd "The Battle for Wesnoth.app" ; ls
+		echo "Entering 'Content'" ; cd Content ; ls
+		echo "Entering 'Resources'" ; cd Resources ; ls
+		#cd "build/$CFG/The Battle for Wesnoth.app/Content/Resources"
 		../../../unit_tests --color_output --log_level=test_suite
 		EXIT_VAL=$?
 	fi
