@@ -132,10 +132,8 @@ int pango_text::get_height()
 
 texture pango_text::with_draw_scale(const texture& t) const
 {
-	auto info = t.get_info();
 	texture res(t);
-	res.set_draw_width(to_draw_scale(info.w));
-	res.set_draw_height(to_draw_scale(info.h));
+	res.set_draw_size(to_draw_scale(t.get_raw_size()));
 	return res;
 }
 

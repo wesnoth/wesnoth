@@ -93,6 +93,39 @@ void texture::finalize()
 	set_blend_mode(SDL_BLENDMODE_BLEND);
 }
 
+uint32_t texture::get_format() const
+{
+	uint32_t ret;
+	if(texture_) {
+		SDL_QueryTexture(texture_.get(), &ret, nullptr, nullptr, nullptr);
+	} else {
+		ret = SDL_PIXELFORMAT_UNKNOWN;
+	}
+	return ret;
+}
+
+int texture::get_access() const
+{
+	int ret;
+	if(texture_) {
+		SDL_QueryTexture(texture_.get(), nullptr, &ret, nullptr, nullptr);
+	} else {
+		ret = -1;
+	}
+	return ret;
+}
+
+point texture::get_raw_size() const
+{
+	point ret;
+	if(texture_) {
+		SDL_QueryTexture(texture_.get(), nullptr, nullptr, &ret.x, &ret.y);
+	} else {
+		ret = {0, 0};
+	}
+	return ret;
+}
+
 void texture::set_draw_size(const point& p)
 {
 	w_ = p.x;
@@ -205,8 +238,8 @@ texture& texture::operator=(texture&& t)
 }
 
 texture::info::info(SDL_Texture* t)
-	: format(0)
-	, access(0)
+	: format(SDL_PIXELFORMAT_UNKNOWN)
+	, access(-1)
 	, w(0)
 	, h(0)
 {

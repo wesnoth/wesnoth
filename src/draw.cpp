@@ -402,9 +402,9 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	// Reduce clip to dst.
 	auto clipper = draw::reduce_clip(dst);
 
-	const auto info = tex.get_info();
-	const float w = float(info.w) / float(pixel_scale);
-	const float h = float(info.h) / float(pixel_scale);
+	const ::point size = tex.get_raw_size();
+	const float w = float(size.x) / float(pixel_scale);
+	const float h = float(size.y) / float(pixel_scale);
 	const float xoff = centered ? (dst.w - w) / 2 : 0.0f;
 	const float yoff = centered ? (dst.h - h) / 2 : 0.0f;
 
@@ -585,7 +585,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	, viewport_()
 {
 	// Validate we can render to this texture.
-	assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
+	assert(t.get_access() == SDL_TEXTUREACCESS_TARGET);
 
 	if (!renderer()) {
 		WRN_D << "can't set render target with null renderer" << endl;
