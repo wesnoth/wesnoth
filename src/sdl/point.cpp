@@ -19,20 +19,6 @@
 
 #include <iostream>
 
-point& point::operator+=(const point& point)
-{
-	x += point.x;
-	y += point.y;
-	return *this;
-}
-
-point& point::operator-=(const point& point)
-{
-	x -= point.x;
-	y -= point.y;
-	return *this;
-}
-
 std::ostream& operator<<(std::ostream& stream, const point& point)
 {
 	stream << '(' << point.x << ',' << point.y << ')';
