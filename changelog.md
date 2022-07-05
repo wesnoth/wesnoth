@@ -24,6 +24,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
+   * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
 
 ## Version 1.16.3
  ### Add-ons client
