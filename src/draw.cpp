@@ -108,6 +108,11 @@ void draw::set_color(const color_t& c)
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 }
 
+void draw::set_blend_mode(SDL_BlendMode b)
+{
+	SDL_SetRenderDrawBlendMode(renderer(), b);
+}
+
 /** Some versions of SDL have a bad rectangle drawing implementation. */
 static bool sdl_bad_at_rects()
 {

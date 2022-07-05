@@ -97,6 +97,14 @@ void set_color(uint8_t r, uint8_t g, uint8_t b);
 void set_color(const color_t& c);
 
 /**
+ * Set the blend mode used for drawing operations such as fill() and line().
+ *
+ * This does not affect texture drawing operations such as blit(). For those,
+ * use texture::set_blend_mode() on the texture before blitting.
+ */
+void set_blend_mode(SDL_BlendMode b);
+
+/**
  * Draw a rectangle.
  *
  * Uses the current drawing colour set by set_color().
