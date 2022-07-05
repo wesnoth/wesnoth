@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-08 01:42 UTC\n"
+"POT-Creation-Date: 2022-07-05 14:17 UTC\n"
 "PO-Revision-Date: 2014-06-03 22:21+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -225,10 +225,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "Những năm tháng đen tối trôi qua. Nhiều thế hệ con người lớn lên trong cảnh "
@@ -610,46 +616,72 @@ msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Hừ! Bọn bay, đặt đám nông dân thấp hèn đó vào lại xiềng xích."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:436
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
 #, fuzzy
 #| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
 msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
 msgstr "Cái đ...? (<i>Rít lên</i>) Ê! Nhìn kìa... một nô lệ... đang nổi dậy!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:444
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:455
 msgid "(<i>Stab</i>)"
 msgstr "(<i>Đâm</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr "Cái đ...? (<i>Rít lên</i>) Ê! Nhìn kìa... một nô lệ... đang nổi dậy!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:462
+#, fuzzy
+#| msgid "(<i>Smash</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "(<i>Đập</i>)"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:469
 msgid "Ugh!"
 msgstr "Ựa!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:485
 msgid "Not a very bright one, was he?"
 msgstr "Hắn không phải một kẻ sáng dạ lắm, đúng không?"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:499
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:505
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:522
 msgid "No! I have failed in my mission!"
 msgstr "Không! Ta đã không hoàn thành nhiệm vụ!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:534
 msgid "Mission? What mission?"
 msgstr "Nhiệm vụ? Nhiệm vụ gì?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:542
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:547
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
@@ -10923,9 +10955,6 @@ msgstr "Arthian"
 
 #~ msgid "Then it’s time to fight!"
 #~ msgstr "Thế thì đã đến lúc chiến đấu!"
-
-#~ msgid "(<i>Smash</i>)"
-#~ msgstr "(<i>Đập</i>)"
 
 #~ msgid "Clear the caves (Bonus)"
 #~ msgstr "Dọn dẹp hang động (Thưởng)"

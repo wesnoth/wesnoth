@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-nr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-08 01:42 UTC\n"
+"POT-Creation-Date: 2022-07-05 14:17 UTC\n"
 "PO-Revision-Date: 2012-01-02 16:43+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -226,10 +226,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:49
+#, fuzzy
+#| msgid ""
+#| "Dark years passed; human generations grew up in slavery, and came near to "
+#| "forgetting that their ancestors had been free — and might have completely "
+#| "forgotten were it not for a fateful day in 518YW. That day that changed "
+#| "the lives of the people of Dwarven Doors — forever."
 msgid ""
 "Dark years passed; human generations grew up in slavery, and came near to "
 "forgetting that their ancestors had been free — and might have completely "
-"forgotten were it not for a fateful day in 518YW. That day that changed the "
+"forgotten were it not for a fateful day in 518YW. The day that changed the "
 "lives of the people of Dwarven Doors — forever."
 msgstr ""
 "Sötét évek múltak el, emberek generációi nőttek fel rabszolgaként, szinte "
@@ -608,7 +614,7 @@ msgid "Pah! Grunts, put the rest of those peasant rabble back in chains."
 msgstr "Hahh! Katonák, verjétek láncba ismét a maradék csőcseléket.."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:436
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:440
 #, fuzzy
 #| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
 msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
@@ -616,39 +622,66 @@ msgstr ""
 "Mi az örd... <i>Hörög</i> Hé! Nézzétek...  a rabszolgák... fellázadtak!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:441
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:444
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:455
 msgid "(<i>Stab</i>)"
 msgstr "(<i>Suhintás</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:446
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:451
+#, fuzzy
+#| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
+msgid "What the...? (<i>Gurgle</i>) Defeated... by... a grunt?"
+msgstr ""
+"Mi az örd... <i>Hörög</i> Hé! Nézzétek...  a rabszolgák... fellázadtak!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:462
+#, fuzzy
+#| msgid "(<i>Smash</i>)"
+msgid "(<i>Smack</i>)"
+msgstr "(<i>Lecsap</i>)"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:469
 msgid "Ugh!"
 msgstr "Áhh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:458
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:485
 msgid "Not a very bright one, was he?"
 msgstr "Bravó! Már észre is vetted?"
 
+#. [message]: speaker=second_unit
+#. "him" is referring to Al'Tar
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:499
+msgid "We got him, chief!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:505
+msgid "We avenged our leader..."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:470
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:522
 msgid "No! I have failed in my mission!"
 msgstr "Nem lehet igaz! Elbuktam a küldetésem!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:482
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:534
 msgid "Mission? What mission?"
 msgstr "Küldetés? Milyen küldetésről beszél ez?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:542
 msgid ""
 "Sounds of drums and horns echo on the mountainsides. A large orc army draws "
 "near!"
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:495
+#: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:547
 msgid ""
 "If only we were faster escaping into the mines this wouldn’t have happened. "
 "At least we will die free..."
@@ -10767,9 +10800,6 @@ msgstr "Arthian"
 
 #~ msgid "Then it’s time to fight!"
 #~ msgstr "Akkor harcra fel!"
-
-#~ msgid "(<i>Smash</i>)"
-#~ msgstr "(<i>Lecsap</i>)"
 
 #~ msgid "Clear the caves (Bonus)"
 #~ msgstr "Megtisztítod a barlangokat (jutalom)"
