@@ -19,12 +19,8 @@ if [ $EXIT_VAL == 0 ] && [ "$CFG" == "Release" ]; then
 		EXIT_VAL=$?
 fi
 
-if [ "$CFG" == "Debug" ]; then
-	if [ $? == 0 ] && [ "$CFG" == "Debug" ]; then
-		cd "build/$CFG/The Battle for Wesnoth.app/Contents/Resources"
-		../../../unit_tests --color_output --log_level=test_suite
-		EXIT_VAL=$?
-	fi
-fi
+cd "build/$CFG/The Battle for Wesnoth.app/Contents/Resources"
+../../../unit_tests --color_output --log_level=test_suite
+EXIT_VAL=$?
 
 exit $EXIT_VAL
