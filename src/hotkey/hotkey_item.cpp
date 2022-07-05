@@ -48,9 +48,8 @@ unsigned int sdl_get_mods()
 	unsigned int mods;
 	mods = SDL_GetModState();
 
-	mods &= ~KMOD_NUM;
-	mods &= ~KMOD_CAPS;
-	mods &= ~KMOD_MODE;
+	// Filter for only the mods we use: shift, ctrl, alt, gui
+	mods &= KMOD_SHIFT | KMOD_CTRL | KMOD_ALT | KMOD_GUI;
 
 	// save the matching for checking right vs left keys
 	if(mods & KMOD_SHIFT) {
