@@ -354,6 +354,11 @@ void render_minimap(unsigned dst_w,
 		// Point rendering to the temp minimap texture.
 		const draw::render_target_setter target_setter{minimap};
 
+		// Clear the minimap texture, as some of it can be left transparent.
+		draw::set_blend_mode(SDL_BLENDMODE_NONE);
+		draw::fill(0, 0, 0, 0);
+		draw::set_blend_mode(SDL_BLENDMODE_BLEND);
+
 		//
 		// Terrain
 		//
