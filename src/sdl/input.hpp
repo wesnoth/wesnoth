@@ -35,8 +35,22 @@ uint32_t get_mouse_state(int *x, int *y);
 /** Returns the current mouse button mask */
 uint32_t get_mouse_button_mask();
 
-/** Returns the currnet mouse location in draw space. */
+/** Returns the current mouse location in draw space. */
 SDL_Point get_mouse_location();
+
+/**
+ * Returns a bitmask of active modifier keys (ctrl, shift, alt, gui).
+ *
+ * Unused modifier keys (caps lock, scroll lock, num lock, AltGr) are
+ * filtered out and will always be unset.
+ *
+ * Left and right keys are not distinguished. If either is detected, both
+ * will be set. For example if only left shift is down, both KMOD_LSHIFT
+ * and KMOD_RSHIFT will be set in the returned bitmask.
+ *
+ * @returns  A bitmask of SDL_Keymod values representing the active state.
+ */
+unsigned get_mods();
 
 /**
  * Update the cached drawing area and input area sizes. These correspond to

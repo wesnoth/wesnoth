@@ -17,6 +17,7 @@
 #include "sdl/point.hpp"
 
 #include <SDL2/SDL_mouse.h>
+#include <SDL2/SDL_keyboard.h>
 
 namespace {
 	SDL_Point drawing_surface_size;
@@ -52,6 +53,32 @@ SDL_Point get_mouse_location()
 	SDL_Point p;
 	get_mouse_state(&p.x, &p.y);
 	return p;
+}
+
+unsigned get_mods()
+{
+	unsigned mods = SDL_GetModState();
+
+	// Filter for only the mods we use: shift, ctrl, alt, gui
+	mods &= KMOD_SHIFT | KMOD_CTRL | KMOD_ALT | KMOD_GUI;
+
+	// Set both left and right modifiers if either is active
+	if(mods & KMOD_SHIFT) {
+		mods |= KMOD_SHIFT;
+	}
+
+	if(mods & KMOD_CTRL) {
+		mods |= KMOD_CTRL;
+	}
+
+	if(mods & KMOD_ALT)
+		mods |= KMOD_ALT;
+
+	if(mods & KMOD_GUI) {
+		mods |= KMOD_GUI;
+	}
+
+	return mods;
 }
 
 void update_input_dimensions(

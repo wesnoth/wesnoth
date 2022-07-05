@@ -22,6 +22,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
 #include "log.hpp"
+#include "sdl/input.hpp" // for sdl::get_mods
 #include "serialization/unicode.hpp"
 
 #include <boost/algorithm/string.hpp>
@@ -42,34 +43,6 @@ hotkey_list hotkeys_;
 game_config_view default_hotkey_cfg_;
 
 const int TOUCH_MOUSE_INDEX = 255;
-
-unsigned int sdl_get_mods()
-{
-	unsigned int mods;
-	mods = SDL_GetModState();
-
-	mods &= ~KMOD_NUM;
-	mods &= ~KMOD_CAPS;
-	mods &= ~KMOD_MODE;
-
-	// save the matching for checking right vs left keys
-	if(mods & KMOD_SHIFT) {
-		mods |= KMOD_SHIFT;
-	}
-
-	if(mods & KMOD_CTRL) {
-		mods |= KMOD_CTRL;
-	}
-
-	if(mods & KMOD_ALT)
-		mods |= KMOD_ALT;
-
-	if(mods & KMOD_GUI) {
-		mods |= KMOD_GUI;
-	}
-
-	return mods;
-}
 }; // namespace
 
 const std::string hotkey_base::get_name() const
@@ -146,7 +119,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 	const hotkey_command& command = get_hotkey_command(id);
-	unsigned mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 
 	switch(event.type) {
 	case SDL_KEYUP: {
@@ -251,7 +224,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 		return false;
 	}
 
-	unsigned int mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 	if((mods != mod_)) {
 		return false;
 	}
@@ -289,7 +262,7 @@ const std::string hotkey_keyboard::get_name_helper() const
 
 bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 {
-	unsigned int mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 	const hotkey_command& command = get_hotkey_command(get_command());
 
 	if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
@@ -476,7 +449,7 @@ bool is_hotkeyable_event(const SDL_Event& event)
 		return true;
 	}
 
-	unsigned mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 
 	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
 		return event.type == SDL_KEYUP;
