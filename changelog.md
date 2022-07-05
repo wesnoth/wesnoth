@@ -19,6 +19,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
 
 ## Version 1.17.5
  ### Campaigns
