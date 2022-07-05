@@ -61,10 +61,33 @@ void draw::fill(const SDL_Rect& area, const color_t& c)
 	draw::fill(area, c.r, c.g, c.b, c.a);
 }
 
+void draw::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	DBG_D << "fill " << color_t{r,g,b,a} << endl;
+	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
+	SDL_RenderFillRect(renderer(), nullptr);
+}
+
+void draw::fill(uint8_t r, uint8_t g, uint8_t b)
+{
+	draw::fill(r, g, b, SDL_ALPHA_OPAQUE);
+}
+
+void draw::fill(const color_t& c)
+{
+	draw::fill(c.r, c.g, c.b, c.a);
+}
+
 void draw::fill(const SDL_Rect& area)
 {
 	DBG_D << "fill " << area << endl;
 	SDL_RenderFillRect(renderer(), &area);
+}
+
+void draw::fill()
+{
+	DBG_D << "fill" << endl;
+	SDL_RenderFillRect(renderer(), nullptr);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)

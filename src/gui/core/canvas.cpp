@@ -175,9 +175,9 @@ void round_rectangle_shape::draw(wfl::map_formula_callable& variables)
 	if(!fill_color.null() && w && h) {
 		draw::set_color(fill_color);
 
-		draw::fill({x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
-		draw::fill({x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
-		draw::fill({x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
+		draw::fill(rect{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
+		draw::fill(rect{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
+		draw::fill(rect{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
 
 		draw::disc(x + r,     y + r,     r, 0xc0);
 		draw::disc(x + w - r, y + r,     r, 0x03);

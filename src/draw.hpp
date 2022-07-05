@@ -52,6 +52,8 @@ namespace draw
  *
  * If the alpha component is not specified, it defaults to fully opaque.
  *
+ * If a fill area is not specified, it will fill the entire render target.
+ *
  * @param rect      The area to fill, in drawing coordinates.
  * @param r         The red   component of the fill colour, 0-255.
  * @param g         The green component of the fill colour, 0-255.
@@ -61,6 +63,9 @@ namespace draw
 void fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 void fill(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b);
 void fill(const SDL_Rect& rect, const color_t& color);
+void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void fill(uint8_t r, uint8_t g, uint8_t b);
+void fill(const color_t& color);
 
 /**
  * Fill an area.
@@ -68,9 +73,12 @@ void fill(const SDL_Rect& rect, const color_t& color);
  * Uses the current drawing colour set by set_draw_color().
  * Coordinates are given in draw space.
  *
+ * If a fill area is not specified, it will fill the entire render target.
+ *
  * @param rect      The area to fill, in drawing coordinates.
  */
 void fill(const SDL_Rect& rect);
+void fill();
 
 /**
  * Set the drawing colour.
