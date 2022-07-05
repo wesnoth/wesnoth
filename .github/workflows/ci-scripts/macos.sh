@@ -19,8 +19,8 @@ if [ $EXIT_VAL == 0 ] && [ "$CFG" == "Release" ]; then
 		EXIT_VAL=$?
 fi
 
-cd "build/$CFG/The Battle for Wesnoth.app/Contents/Resources"
-../../../unit_tests --color_output --log_level=test_suite
+cd ../..
+"projectfiles/Xcode/build/$CFG/unit_tests" --color_output --log_level=test_suite
 EXIT_VAL=$?
 
 exit $EXIT_VAL
