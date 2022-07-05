@@ -34,6 +34,10 @@ function ca_move_to_any_enemy:evaluation(cfg, data, filter_own)
     -- In principle we don't even need to pass avoid_map here, as the loop below also
     -- checks this, but we might as well eliminate unreachable enemies right away
     local enemies = AH.get_attackable_enemies({}, wesnoth.current.side, { avoid_map = avoid_map })
+    if (not enemies[1]) then
+        if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
+        return 0
+    end
 
     -- Presort unit/enemy pairs by distance in hexes to avoid unnecessary path finding.
     -- As AI units are dealt with one by one below, this only needs to be done individually

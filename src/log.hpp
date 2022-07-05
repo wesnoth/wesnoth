@@ -144,7 +144,7 @@ class logger {
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
 	log_in_progress operator()(const log_domain& domain,
-		bool show_names = true, bool do_indent = false) const;
+		bool show_names = true, bool do_indent = false, bool show_timestamps = true) const;
 
 	bool dont_log(const log_domain& domain) const
 	{
@@ -230,3 +230,8 @@ std::stringstream& log_to_chat();
 // If you have an explicit logger object and want to ignore the logging level, use this.
 // Meant for cases where you explicitly call dont_log to avoid an expensive operation if the logging is disabled.
 #define FORCE_LOG_TO(logger, domain) logger(domain) | formatter()
+
+// always log (since it's at the error level) to the general log stream
+// outputting the log domain and timestamp is disabled
+// meant as a replacement to using cerr/cout, but that goes through the same logging infrastructure as everything else
+#define PLAIN_LOG lg::err()(lg::general(), false, false, false) | formatter()

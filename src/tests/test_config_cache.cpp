@@ -36,7 +36,11 @@ static preproc_map setup_test_preproc_map()
 #if defined(__APPLE__)
 	defines_map["APPLE" ] = preproc_define();
 #endif
-	
+
+#if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
+	defines_map["IPHONEOS"] = preproc_define();
+#endif
+
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
 	return defines_map;

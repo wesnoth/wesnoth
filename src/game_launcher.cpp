@@ -89,6 +89,8 @@ static lg::log_domain log_config("config");
 #define WRN_GENERAL LOG_STREAM(warn, lg::general())
 #define DBG_GENERAL LOG_STREAM(debug, lg::general())
 
+#define LOG_TEST FORCE_LOG_TO(lg::general(), log_config)
+
 static lg::log_domain log_mp_create("mp/create");
 #define DBG_MP LOG_STREAM(debug, log_mp_create)
 
@@ -263,13 +265,12 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		set_min_translation_percent(*cmdline_opts_.translation_percent);
 
 	if(!cmdline_opts.nobanner) {
-		std::cerr
-			<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
-			<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
-			<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
-			<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
-			<< '\n';
-		std::cerr << '\n';
+		PLAIN_LOG
+			<< "\nData directory:               " << game_config::path
+			<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
+			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
+			<< "\nCache directory:              " << filesystem::get_cache_dir()
+			<< "\n\n";
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
@@ -363,11 +364,11 @@ bool game_launcher::init_lua_script()
 
 			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
-			std::cerr << "\nRunning lua script: " << filesystem::sanitize_path(*cmdline_opts_.script_file) << std::endl;
+			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
 
 			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
 		} else {
-			std::cerr << "Encountered failure when opening script '" << filesystem::sanitize_path(*cmdline_opts_.script_file) << "'\n";
+			PLAIN_LOG << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
 			error = true;
 		}
 	}
@@ -375,7 +376,7 @@ bool game_launcher::init_lua_script()
 	if(cmdline_opts_.plugin_file) {
 		std::string filename = *cmdline_opts_.plugin_file;
 
-		std::cerr << "Loading a plugin file'" << filesystem::sanitize_path(filename) << "'...\n";
+		PLAIN_LOG << "Loading a plugin file'" << filename << "'...\n";
 
 		filesystem::scoped_istream sf = filesystem::istream_file(filename);
 

@@ -550,12 +550,10 @@ const std::string& get_version_path_suffix()
 
 		if(bfs::is_directory(new_saves_dir)) {
 			if(!bfs::exists(old_saves_dir)) {
-				std::cout << "Apple developer's userdata migration: ";
-				std::cout << "symlinking " << filesystem::sanitize_path(old_saves_dir.string()) << " to " << filesystem::sanitize_path(new_saves_dir.string()) << "\n";
+				LOG_FS << "Apple developer's userdata migration: symlinking " << old_saves_dir.string() << " to " << new_saves_dir.string() << "\n";
 				bfs::create_symlink(new_saves_dir, old_saves_dir);
 			} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
-				std::cout << "Apple developer's userdata migration: ";
-				std::cout << "Problem! Old (non-containerized) directory " << filesystem::sanitize_path(old_saves_dir.string()) << " is not a symlink. Your savegames are scattered around 2 locations.\n";
+				ERR_FS << "Apple developer's userdata migration: Problem! Old (non-containerized) directory " << old_saves_dir.string() << " is not a symlink. Your savegames are scattered around 2 locations.\n";
 			}
 			return;
 		}
@@ -1460,8 +1458,8 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 			if(result.empty()) {
 				result = bpath.string();
 			} else {
-				WRN_FS << "Conflicting files in binary_path: '" << sanitize_path(result)
-					   << "' and '" << sanitize_path(bpath.string()) << "'\n";
+				WRN_FS << "Conflicting files in binary_path: '" << result
+					   << "' and '" << bpath.string() << "'\n";
 			}
 		}
 	}

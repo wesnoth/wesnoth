@@ -44,7 +44,7 @@ void draw::fill(
 	const SDL_Rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "fill " << area << " (" << color_t{r,g,b,a} << ")" << endl;
+	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a} << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderFillRect(renderer(), &area);
 }
@@ -69,15 +69,13 @@ void draw::fill(const SDL_Rect& area)
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "set color "
-	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
+	DBG_D << "set color " << color_t{r,g,b,a} << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b)
 {
-	DBG_D << "set color "
-	      << " [" << r << ',' << g << ',' << b << ']' << endl;
+	DBG_D << "set color " << color_t{r,g,b} << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, SDL_ALPHA_OPAQUE);
 }
 
@@ -126,8 +124,7 @@ void draw::rect(const SDL_Rect& rect)
 void draw::rect(const SDL_Rect& rect,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "rect " << rect
-	      << " [" << r << ',' << g << ',' << b << ',' << a << ']' << endl;
+	DBG_D << "rect " << rect << ' ' << color_t{r,g,b,a} << endl;
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);

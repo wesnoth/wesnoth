@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * S8: Fixed replay OOS on victory event (issue #6267)
    * World Conquest
      * Fixed Bezoar artifact being bugged and broken.
  ### Editor
@@ -13,6 +15,7 @@
  ### Translations
    * Updated translations: Arabic, British English, Finnish
  ### Units
+   * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
