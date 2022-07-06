@@ -25,6 +25,18 @@
  ### Miscellaneous and Bug Fixes
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
    * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
+   * Removing the Protect Unit Micro AI no longer causes a Lua error
+   * Fixed chance of being unscathed in damage calculation for some fights in which both units can die (issue #6590)
+   * Fixed visibility bug in ai_helper.get_attackable_enemies() for some complex filters
+   * Fixed bug in Bottleneck Micro AI involving units without moves on terrain with multiple open passages (issue #6599)
+   * Fixed error in Castle Switch CA of the Experimental AI after a leader was killed (issue #6440)
+   * Fixed error in retreat-injured CA when regenerate ability code does not include a value= key
+   * Retreat-injured CA no longer takes villages from allies
+   * Experimental AI no longer uses generic_recruit_engine: fixes a data leakage bug between Experimental AIs of different sides
+   * Experimental AI recruit rushers: include unit types from extra_recruit (issue #4924)
+   * Fix segfault when weapon is removed during attack (issues #4927 and #5914)
+   * Add no-unit error message for unit debug command (issue #6116)
+   * Significantly improve efficiency of move-to-any-enemy CA
 
 ## Version 1.16.3
  ### Add-ons client
