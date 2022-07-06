@@ -40,7 +40,6 @@
 #include <array>
 #include <cfloat>
 #include <cmath>
-#include <iostream>
 #include <memory>
 #include <numeric>
 #include <sstream>

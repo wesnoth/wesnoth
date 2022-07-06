@@ -30,10 +30,9 @@
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
-#include <functional>
 
+#include <functional>
 #include <iomanip>
-#include <iostream>
 #include <memory>
 
 // TODO duplicated from attack_predictions.cpp

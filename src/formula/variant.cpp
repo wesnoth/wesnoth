@@ -15,8 +15,10 @@
 
 #include <cassert>
 #include <cmath>
-#include <iostream>
 #include <cstring>
+#include <cassert>
+#include <cmath>
+#include <memory>
 #include <stack>
 
 #include "formatter.hpp"
@@ -30,9 +32,6 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define WRN_SF LOG_STREAM(warn, log_scripting_formula)
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
-#include <cassert>
-#include <cmath>
-#include <memory>
 
 namespace wfl
 {

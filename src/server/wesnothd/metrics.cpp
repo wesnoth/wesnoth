@@ -21,7 +21,7 @@
 #include "server/wesnothd/metrics.hpp"
 
 #include <algorithm>
-#include <iostream>
+#include <ostream>
 
 struct compare_samples_to_stringspan {
 	bool operator()(const simple_wml::string_span& a, const simple_wml::string_span& b) const

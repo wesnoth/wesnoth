@@ -32,11 +32,10 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include <optional>
 #include "video.hpp"                    // fore current_resolution
 
-#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
+#include <optional>
 #include <set>
 
 static lg::log_domain log_help("help");

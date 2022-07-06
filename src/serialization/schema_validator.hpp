@@ -22,7 +22,6 @@
 #include "serialization/schema/key.hpp"
 #include "serialization/validator.hpp"
 
-#include <iostream>
 #include <queue>
 #include <stack>
 #include <string>

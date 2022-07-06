@@ -33,7 +33,6 @@
 #include "units/map.hpp"
 #include "wml_exception.hpp"
 
-#include <iostream>
 #include <vector>
 #include <algorithm>
 

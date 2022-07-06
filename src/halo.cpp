@@ -28,8 +28,6 @@
 #include "serialization/string_utils.hpp"
 #include "sdl/texture.hpp"
 
-#include <iostream>
-
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 

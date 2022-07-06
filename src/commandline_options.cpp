@@ -30,7 +30,6 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
 #include <array>
-#include <iostream>                     // for operator<<, basic_ostream, etc
 
 namespace po = boost::program_options;
 

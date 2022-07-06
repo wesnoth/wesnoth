@@ -49,7 +49,6 @@
 
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>

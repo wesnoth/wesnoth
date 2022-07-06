@@ -18,7 +18,7 @@
 #include "sdl/window.hpp"
 #include "video.hpp"
 
-#include <iostream>
+#include <ostream>
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {

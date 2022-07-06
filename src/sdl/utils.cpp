@@ -27,7 +27,6 @@
 #include <algorithm>
 #include <cassert>
 #include <cstring>
-#include <iostream>
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>

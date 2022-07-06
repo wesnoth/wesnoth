@@ -19,7 +19,6 @@
 #include "formula/variant.hpp"
 #include "log.hpp"
 
-#include <iostream>
 #include <memory>
 #include <set>
 
