@@ -17,6 +17,7 @@
 
 #include "formula/callable_fwd.hpp"
 #include "formula/variant.hpp"
+#include "log.hpp"
 
 #include <iostream>
 #include <memory>
@@ -140,7 +141,7 @@ protected:
 
 	virtual void set_value(const std::string& key, const variant& /*value*/)
 	{
-		std::cerr << "ERROR: cannot set key '" << key << "' on object" << std::endl;
+		PLAIN_LOG << "ERROR: cannot set key '" << key << "' on object" << std::endl;
 	}
 
 	virtual int do_compare(const formula_callable* callable) const

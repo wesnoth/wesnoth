@@ -248,7 +248,7 @@ void widget::place(const point& origin, const point& size)
 	height_ = size.y;
 
 #if 0
-	std::cerr
+	PLAIN_LOG
 			<< "Id " << id()
 			<< " rect " << get_rectangle()
 			<< " parent "

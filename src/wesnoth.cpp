@@ -174,7 +174,7 @@ static void encode(const std::string& input_file, const std::string& output_file
 
 		safe_exit(remove(input_file.c_str()));
 	} catch(const filesystem::io_exception& e) {
-		std::cerr << "IO error: " << e.what() << "\n";
+		PLAIN_LOG << "IO error: " << e.what() << "\n";
 	}
 }
 
@@ -194,7 +194,7 @@ static void decode(const std::string& input_file, const std::string& output_file
 
 		safe_exit(remove(input_file.c_str()));
 	} catch(const filesystem::io_exception& e) {
-		std::cerr << "IO error: " << e.what() << "\n";
+		PLAIN_LOG << "IO error: " << e.what() << "\n";
 	}
 }
 
@@ -249,7 +249,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			++read;
 		}
 
-		std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
+		PLAIN_LOG << SDL_GetTicks() << " Read " << read << " defines.\n";
 	}
 
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
@@ -268,7 +268,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		// add the specified defines
 		for(const std::string& define : *cmdline_opts.preprocess_defines) {
 			if(define.empty()) {
-				std::cerr << "empty define supplied\n";
+				PLAIN_LOG << "empty define supplied\n";
 				continue;
 			}
 
@@ -276,10 +276,10 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			defines_map.emplace(define, preproc_define(define));
 
 			if(define == "SKIP_CORE") {
-				std::cerr << "'SKIP_CORE' defined.\n";
+				PLAIN_LOG << "'SKIP_CORE' defined.\n";
 				skipCore = true;
 			} else if(define == "NO_TERRAIN_GFX") {
-				std::cerr << "'NO_TERRAIN_GFX' defined." << std::endl;
+				PLAIN_LOG << "'NO_TERRAIN_GFX' defined." << std::endl;
 				skipTerrainGFX = true;
 			}
 		}
@@ -288,11 +288,11 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	// add the WESNOTH_VERSION define
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
-	std::cerr << "added " << defines_map.size() << " defines.\n";
+	PLAIN_LOG << "added " << defines_map.size() << " defines.\n";
 
 	// preprocess core macros first if we don't skip the core
 	if(skipCore == false) {
-		std::cerr << "preprocessing common macros from 'data/core' ...\n";
+		PLAIN_LOG << "preprocessing common macros from 'data/core' ...\n";
 
 		// process each folder explicitly to gain speed
 		preprocess_resource(game_config::path + "/data/core/macros", &defines_map);
@@ -301,16 +301,16 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			preprocess_resource(game_config::path + "/data/core/terrain-graphics", &defines_map);
 		}
 
-		std::cerr << "acquired " << (defines_map.size() - input_macros.size()) << " 'data/core' defines.\n";
+		PLAIN_LOG << "acquired " << (defines_map.size() - input_macros.size()) << " 'data/core' defines.\n";
 	} else {
-		std::cerr << "skipped 'data/core'\n";
+		PLAIN_LOG << "skipped 'data/core'\n";
 	}
 
 	// preprocess resource
-	std::cerr << "preprocessing specified resource: " << resourceToProcess << " ...\n";
+	PLAIN_LOG << "preprocessing specified resource: " << resourceToProcess << " ...\n";
 
 	preprocess_resource(resourceToProcess, &defines_map, true, true, targetDir);
-	std::cerr << "acquired " << (defines_map.size() - input_macros.size()) << " total defines.\n";
+	PLAIN_LOG << "acquired " << (defines_map.size() - input_macros.size()) << " total defines.\n";
 
 	if(cmdline_opts.preprocess_output_macros) {
 		std::string outputFileName = "_MACROS_.cfg";
@@ -320,7 +320,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 		std::string outputPath = targetDir + "/" + outputFileName;
 
-		std::cerr << "writing '" << outputPath << "' with " << defines_map.size() << " defines.\n";
+		PLAIN_LOG << "writing '" << outputPath << "' with " << defines_map.size() << " defines.\n";
 
 		filesystem::scoped_ostream out = filesystem::ostream_file(outputPath);
 		if(!out->fail()) {
@@ -330,11 +330,11 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 				define_pair.second.write(writer, define_pair.first);
 			}
 		} else {
-			std::cerr << "couldn't open the file.\n";
+			PLAIN_LOG << "couldn't open the file.\n";
 		}
 	}
 
-	std::cerr << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.\n";
+	PLAIN_LOG << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.\n";
 }
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
@@ -344,7 +344,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 	for(const std::string& define : defines) {
 		if(define.empty()) {
-			std::cerr << "empty define supplied\n";
+			PLAIN_LOG << "empty define supplied\n";
 			continue;
 		}
 
@@ -374,7 +374,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			const std::string log_domain = log_pair.second;
 			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
-				std::cerr << "unknown log domain: " << log_domain << '\n';
+				PLAIN_LOG << "unknown log domain: " << log_domain << '\n';
 				return 2;
 			}
 		}
@@ -583,7 +583,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		std::cerr << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.\n";
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.\n";
 		// Return an error status other than -1, because in our caller -1 means no error
 		return -2;
 	}
@@ -625,7 +625,7 @@ static void init_locale()
 static void warn_early_init_failure()
 {
 	// NOTE: wrap output to 80 columns.
-	std::cerr << '\n'
+	PLAIN_LOG << '\n'
 			  << "An error at this point during initialization usually indicates that the data\n"
 			  << "directory above was not correctly set or detected. Try passing the correct path\n"
 			  << "in the command line with the --data-dir switch or as the only argument.\n";
@@ -661,7 +661,7 @@ static void check_fpu()
 		uint32_t rounding_mode = f_control & _MCW_RC;
 
 		if(rounding_mode != _RC_NEAR) {
-			std::cerr << "Floating point rounding mode is currently '"
+			PLAIN_LOG << "Floating point rounding mode is currently '"
 				<< ((rounding_mode == _RC_CHOP)
 					? "chop"
 					: (rounding_mode == _RC_UP)
@@ -672,14 +672,14 @@ static void check_fpu()
 				<< "' setting to 'near'\n";
 
 			if(_controlfp_s(&unused, _RC_NEAR, _MCW_RC)) {
-				std::cerr << "failed to set floating point rounding type to 'near'\n";
+				PLAIN_LOG << "failed to set floating point rounding type to 'near'\n";
 			}
 		}
 
 #ifndef _M_AMD64
 		uint32_t precision_mode = f_control & _MCW_PC;
 		if(precision_mode != _PC_53) {
-			std::cerr << "Floating point precision mode is currently '"
+			PLAIN_LOG << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
 					? "double"
 					: (precision_mode == _PC_24)
@@ -688,13 +688,13 @@ static void check_fpu()
 				<< "' setting to 'double'\n";
 
 			if(_controlfp_s(&unused, _PC_53, _MCW_PC)) {
-				std::cerr << "failed to set floating point precision type to 'double'\n";
+				PLAIN_LOG << "failed to set floating point precision type to 'double'\n";
 			}
 		}
 #endif
 
 	} else {
-		std::cerr << "_controlfp_s failed.\n";
+		PLAIN_LOG << "_controlfp_s failed.\n";
 	}
 }
 #else
@@ -704,19 +704,19 @@ static void check_fpu()
 	case FE_TONEAREST:
 		break;
 	case FE_DOWNWARD:
-		std::cerr << "Floating point precision mode is currently 'downward'";
+		PLAIN_LOG << "Floating point precision mode is currently 'downward'";
 		goto reset_fpu;
 	case FE_TOWARDZERO:
-		std::cerr << "Floating point precision mode is currently 'toward-zero'";
+		PLAIN_LOG << "Floating point precision mode is currently 'toward-zero'";
 		goto reset_fpu;
 	case FE_UPWARD:
-		std::cerr << "Floating point precision mode is currently 'upward'";
+		PLAIN_LOG << "Floating point precision mode is currently 'upward'";
 		goto reset_fpu;
 	default:
-		std::cerr << "Floating point precision mode is currently 'unknown'";
+		PLAIN_LOG << "Floating point precision mode is currently 'unknown'";
 		goto reset_fpu;
 	reset_fpu:
-		std::cerr << "setting to 'nearest'";
+		PLAIN_LOG << "setting to 'nearest'";
 		fesetround(FE_TONEAREST);
 		break;
 	}
@@ -758,7 +758,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	// when the language is read from the game config.
 	res = font::load_font_config();
 	if(res == false) {
-		std::cerr << "could not initialize fonts\n";
+		PLAIN_LOG << "could not initialize fonts\n";
 		// The most common symptom of a bogus data dir path -- warn the user.
 		warn_early_init_failure();
 		return 1;
@@ -766,13 +766,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	res = game->init_language();
 	if(res == false) {
-		std::cerr << "could not initialize the language\n";
+		PLAIN_LOG << "could not initialize the language\n";
 		return 1;
 	}
 
 	res = game->init_video();
 	if(res == false) {
-		std::cerr << "could not initialize display\n";
+		PLAIN_LOG << "could not initialize display\n";
 		return 1;
 	}
 
@@ -799,7 +799,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
-			std::cerr << "could not initialize game config\n";
+			PLAIN_LOG << "could not initialize game config\n";
 			return;
 		}
 
@@ -807,7 +807,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		res = font::load_font_config();
 		if(res == false) {
-			std::cerr << "could not re-initialize fonts for the current language\n";
+			PLAIN_LOG << "could not re-initialize fonts for the current language\n";
 			return;
 		}
 
@@ -1082,9 +1082,9 @@ int main(int argc, char** argv)
 
 	try {
 		if(!nobanner) {
-			std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
+			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
 			const std::time_t t = std::time(nullptr);
-			std::cerr << "Started on " << ctime(&t) << "\n";
+			PLAIN_LOG << "Started on " << ctime(&t) << "\n";
 		}
 
 		const std::string& exe_dir = filesystem::get_exe_dir();
@@ -1121,58 +1121,58 @@ int main(int argc, char** argv)
 		const int res = do_gameloop(args);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
-		std::cerr << "Error in command line: " << e.what() << '\n';
+		PLAIN_LOG << "Error in command line: " << e.what() << '\n';
 		error_exit(1);
 	} catch(const CVideo::error& e) {
-		std::cerr << "Video system error: " << e.what() << std::endl;
+		PLAIN_LOG << "Video system error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const font::error& e) {
-		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
+		PLAIN_LOG << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
 	} catch(const config::error& e) {
-		std::cerr << e.message << "\n";
+		PLAIN_LOG << e.message << "\n";
 		error_exit(1);
 	} catch(const gui::button::error&) {
-		std::cerr << "Could not create button: Image could not be found\n";
+		PLAIN_LOG << "Could not create button: Image could not be found\n";
 		error_exit(1);
 	} catch(const CVideo::quit&) {
 		// just means the game should quit
 	} catch(const return_to_play_side_exception&) {
-		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
+		PLAIN_LOG << "caught return_to_play_side_exception, please report this bug (quitting)\n";
 	} catch(const quit_game_exception&) {
-		std::cerr << "caught quit_game_exception (quitting)\n";
+		PLAIN_LOG << "caught quit_game_exception (quitting)\n";
 	} catch(const wml_exception& e) {
-		std::cerr << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message << '\n';
+		PLAIN_LOG << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);
 	} catch(const wfl::formula_error& e) {
-		std::cerr << e.what() << "\n\nGame will be aborted.\n";
+		PLAIN_LOG << e.what() << "\n\nGame will be aborted.\n";
 		error_exit(1);
 	} catch(const sdl::exception& e) {
-		std::cerr << e.what();
+		PLAIN_LOG << e.what();
 		error_exit(1);
 	} catch(const game::error& e) {
-		std::cerr << "Game error: " << e.what() << std::endl;
+		PLAIN_LOG << "Game error: " << e.what() << std::endl;
 		error_exit(1);
 	} catch(const std::bad_alloc&) {
-		std::cerr << "Ran out of memory. Aborted.\n";
+		PLAIN_LOG << "Ran out of memory. Aborted.\n";
 		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
 	} catch(const std::exception& e) {
 		// Try to catch unexpected exceptions.
-		std::cerr << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what() << std::endl;
+		PLAIN_LOG << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what() << std::endl;
 		error_exit(1);
 	} catch(const std::string& e) {
-		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
+		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e << std::endl;
 		error_exit(1);
 	} catch(const char* e) {
-		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
+		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e << std::endl;
 		error_exit(1);
 	} catch(...) {
 		// Ensure that even when we terminate with `throw 42`, the exception
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
-		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
+		PLAIN_LOG << "Caught unspecified general exception. Terminating." << std::endl;
 		error_exit(1);
 #endif
 	}

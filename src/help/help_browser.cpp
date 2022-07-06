@@ -214,7 +214,7 @@ void help_browser::show_topic(const std::string &topic_id)
 	} else if (topic_id.find(unit_prefix)==0 || topic_id.find(hidden_symbol() + unit_prefix)==0) {
 		show_topic(unknown_unit_topic);
 	} else {
-		std::cerr << "Help browser tried to show topic with id '" << topic_id
+		PLAIN_LOG << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 	}
 }

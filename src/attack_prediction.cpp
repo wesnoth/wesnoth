@@ -2400,13 +2400,13 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	assert(opponent.summary[0].size() == opp_res.size());
 	for(unsigned int i = 0; i < summary[0].size(); ++i) {
 		if(std::fabs(summary[0][i] - res[i]) > 0.000001) {
-			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
+			PLAIN_LOG << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
 			assert(false);
 		}
 	}
 	for(unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
 		if(std::fabs(opponent.summary[0][i] - opp_res[i]) > 0.000001) {
-			std::cerr << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
+			PLAIN_LOG << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
 			assert(false);
 		}
 	}
@@ -2730,14 +2730,14 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 		if(max) {
 			max_hp = atoi(max + strlen("maxhp="));
 			if(max_hp < hitpoints) {
-				std::cerr << "maxhp must be at least hitpoints." << std::endl;
+				PLAIN_LOG << "maxhp must be at least hitpoints." << std::endl;
 				exit(1);
 			}
 		}
 
 		if(strstr((*argv)[5], "drain")) {
 			if(!max) {
-				std::cerr << "WARNING: drain specified without maxhp; assuming uninjured." << std::endl;
+				PLAIN_LOG << "WARNING: drain specified without maxhp; assuming uninjured." << std::endl;
 			}
 
 			drains = true;
@@ -2761,7 +2761,7 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 
 		if(strstr((*argv)[5], "swarm")) {
 			if(!max) {
-				std::cerr << "WARNING: swarm specified without maxhp; assuming uninjured." << std::endl;
+				PLAIN_LOG << "WARNING: swarm specified without maxhp; assuming uninjured." << std::endl;
 			}
 
 			swarm = true;
@@ -2786,7 +2786,7 @@ int main(int argc, char* argv[])
 		run(argv[1] ? atoi(argv[1]) : 0);
 
 	if(argc < 9) {
-		std::cerr
+		PLAIN_LOG
 			<< "Usage: " << argv[0] << " [<battle>]\n\t" << argv[0] << " "
 			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] "
 			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ..."

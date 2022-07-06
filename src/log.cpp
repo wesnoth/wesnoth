@@ -226,12 +226,12 @@ std::string sanitize_log(const std::string& logstr)
 	return str;
 }
 
-log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent, bool show_timestamps) const
+log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent, bool show_timestamps, bool break_strict) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
 	} else {
-		if (!strict_threw_ && (severity_ <= strict_level_)) {
+		if (!strict_threw_ && severity_ <= strict_level_ && break_strict) {
 			std::stringstream ss;
 			ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
 			std::cerr << ss.str() << std::endl;

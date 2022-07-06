@@ -569,9 +569,6 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 
 		itor->basex = static_cast<int>(rx + tilewidth_ / 2);
 		itor->basey = static_cast<int>(ry + tilewidth_ / 2);
-
-		// std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
-		//	", " << itor->basey << "\n";
 	}
 }
 
@@ -966,28 +963,28 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 
 // Debug output for the terrain rules
 #if 0
-	std::cerr << "Built terrain rules: \n";
+	PLAIN_LOG << "Built terrain rules: \n";
 
 	building_ruleset::const_iterator rule;
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
-		std::cerr << ">> New rule: image_background = "
+		PLAIN_LOG << ">> New rule: image_background = "
 			<< "\n>> Location " << rule->second.location_constraints
 			<< "\n>> Probability " << rule->second.probability
 
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
-			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
+			PLAIN_LOG << ">>>> New constraint: location = (" << constraint->second.loc
 			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'\n";
 
 			std::vector<std::string>::const_iterator flag;
 
 			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
-				std::cerr << ">>>>>> Set_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> Set_flag: " << *flag << "\n";
 			}
 
 			for(flag = constraint->second.no_flag.begin(); flag != constraint->second.no_flag.end(); ++flag) {
-				std::cerr << ">>>>>> No_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> No_flag: " << *flag << "\n";
 			}
 		}
 

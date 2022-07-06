@@ -45,7 +45,7 @@ static void add_widget(gui2::grid& grid
 template<class T>
 static void test_control(T&& control)
 {
-	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
+	//PLAIN_LOG << __func__ << ": " << typeid(T).name() << ".\n";
 
 	const auto visitor = control.create_walker();
 
@@ -91,7 +91,7 @@ static void test_grid()
 	/* An empty grid behaves the same as a control so test here. */
 	test_control(gui2::grid());
 
-	//std::cerr << __func__ << ": Detailed test.\n";
+	//PLAIN_LOG << __func__ << ": Detailed test.\n";
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);

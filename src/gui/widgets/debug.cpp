@@ -21,6 +21,7 @@
 #include "gui/widgets/debug.hpp"
 
 #include "formatter.hpp"
+#include "log.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
@@ -133,8 +134,7 @@ void debug_layout_graph::set_level(const std::string& level)
 		} else if(param == "state") {
 			level_ |= STATE_INFO;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown level '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown level '" << param << "' is ignored.\n";
 		}
 	}
 }
@@ -161,8 +161,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 		} else if(param == "layout") {
 			domain_ |= LAYOUT;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown domain '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.\n";
 		}
 	}
 }

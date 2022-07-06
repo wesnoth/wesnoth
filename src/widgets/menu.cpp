@@ -1165,7 +1165,7 @@ void menu::process_help_string(int mousex, int mousey)
 			if(std::size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
-					//std::cerr << "setting help string from menu to '" << help << "'\n";
+					//PLAIN_LOG << "setting help string from menu to '" << help << "'\n";
 					help_string_ = video().set_help_string(help);
 				}
 			}

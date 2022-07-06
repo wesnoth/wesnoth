@@ -13,6 +13,7 @@
 	See the COPYING file for more details.
 */
 
+#include "log.hpp"
 #include "save_blocker.hpp"
 #include <exception>
 #include <iostream>
@@ -34,7 +35,7 @@ save_blocker::~save_blocker() {
 		callback_ = nullptr;
 	}
 	} catch (const std::exception & e) {
-		std::cerr << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
+		PLAIN_LOG << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
 	}
 }
 

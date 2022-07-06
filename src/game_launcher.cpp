@@ -147,18 +147,18 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.campaign) {
 		jump_to_campaign_.jump = true;
 		jump_to_campaign_.campaign_id = *cmdline_opts_.campaign;
-		std::cerr << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]\n";
+		PLAIN_LOG << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]\n";
 
 		if(cmdline_opts_.campaign_difficulty) {
 			jump_to_campaign_.difficulty = *cmdline_opts_.campaign_difficulty;
-			std::cerr << "selected difficulty: [" << jump_to_campaign_.difficulty << "]\n";
+			PLAIN_LOG << "selected difficulty: [" << jump_to_campaign_.difficulty << "]\n";
 		} else {
 			jump_to_campaign_.difficulty = -1; // let the user choose the difficulty
 		}
 
 		if(cmdline_opts_.campaign_scenario) {
 			jump_to_campaign_.scenario_id = *cmdline_opts_.campaign_scenario;
-			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]\n";
+			PLAIN_LOG << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]\n";
 		}
 
 		if(cmdline_opts_.campaign_skip_story) {
@@ -302,7 +302,7 @@ bool game_launcher::init_language()
 			}
 		}
 		if(locale.localename.empty()) {
-			std::cerr << "Language symbol '" << *cmdline_opts_.language << "' not found.\n";
+			PLAIN_LOG << "Language symbol '" << *cmdline_opts_.language << "' not found.\n";
 			return false;
 		}
 	} else {
@@ -318,7 +318,7 @@ bool game_launcher::init_video()
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		if(!(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test)) {
-			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
+			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
 			return false;
 		}
 		video_->make_fake();
@@ -345,7 +345,9 @@ bool game_launcher::init_lua_script()
 {
 	bool error = false;
 
-	if(!cmdline_opts_.nobanner) std::cerr << "Checking lua scripts... ";
+	if(!cmdline_opts_.nobanner) {
+		PLAIN_LOG << "Checking lua scripts... ";
+	}
 
 	if(cmdline_opts_.script_unsafe_mode) {
 		// load the "package" package, so that scripts can get what packages they want
@@ -397,24 +399,24 @@ bool game_launcher::init_lua_script()
 			std::size_t i = pm.add_plugin(filename, full_plugin);
 
 			for(std::size_t j = 0; j < pm.size(); ++j) {
-				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 			}
 
-			std::cerr << "Starting a plugin...\n";
+			PLAIN_LOG << "Starting a plugin...\n";
 			pm.start_plugin(i);
 
 			for(std::size_t j = 0; j < pm.size(); ++j) {
-				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 			}
 
 			plugins_context pc("init");
 
 			for(std::size_t repeat = 0; repeat < 5; ++repeat) {
-				std::cerr << "Playing a slice...\n";
+				PLAIN_LOG << "Playing a slice...\n";
 				pc.play_slice();
 
 				for(std::size_t j = 0; j < pm.size(); ++j) {
-					std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+					PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 				}
 			}
 
@@ -426,7 +428,7 @@ bool game_launcher::init_lua_script()
 	}
 
 	if(!error && !cmdline_opts_.nobanner) {
-		std::cerr << "ok\n";
+		PLAIN_LOG << "ok\n";
 	}
 
 	return !error;
@@ -461,12 +463,12 @@ bool game_launcher::play_test()
 
 	if(test_scenarios_.size() == 0) {
 		// shouldn't happen, as test_scenarios_ is initialised to {"test"}
-		std::cerr << "Error in the test handling code" << std::endl;
+		PLAIN_LOG << "Error in the test handling code" << std::endl;
 		return false;
 	}
 
 	if(test_scenarios_.size() > 1) {
-		std::cerr << "You can't run more than one unit test in interactive mode" << std::endl;
+		PLAIN_LOG << "You can't run more than one unit test in interactive mode" << std::endl;
 	}
 
 	set_test(test_scenarios_.at(0));
@@ -541,7 +543,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			break;
 		}
 
-		std::cerr << describe_result << ": " << scenario << std::endl;
+		PLAIN_LOG << describe_result << " (" << int(ret) << "): " << scenario << std::endl;
 		if(ret != unit_test_result::TEST_PASS) {
 			break;
 		}
@@ -566,7 +568,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 			}
 		}
 	} catch(const wml_exception& e) {
-		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
+		PLAIN_LOG << "Caught WML Exception:" << e.dev_message << std::endl;
 		return unit_test_result::TEST_FAIL_WML_EXCEPTION;
 	}
 
@@ -583,7 +585,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
 	if(!load_game()) {
-		std::cerr << "Failed to load the replay!" << std::endl;
+		PLAIN_LOG << "Failed to load the replay!" << std::endl;
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
 	}
 
@@ -592,11 +594,11 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
 		if(!was_strict_broken && lg::broke_strict()) {
-			std::cerr << "Observed failure on replay" << std::endl;
+			PLAIN_LOG << "Observed failure on replay" << std::endl;
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
 	} catch(const wml_exception& e) {
-		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
+		PLAIN_LOG << "WML Exception while playing replay: " << e.dev_message << std::endl;
 		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
 
@@ -652,7 +654,7 @@ bool game_launcher::play_render_image_mode()
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error& e) {
-		std::cerr << "Error loading game config: " << e.what() << std::endl;
+		PLAIN_LOG << "Error loading game config: " << e.what() << std::endl;
 		return false;
 	}
 
@@ -943,7 +945,7 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const game::error& e) {
-		std::cerr << "caught game::error...\n";
+		PLAIN_LOG << "caught game::error...\n";
 		gui2::show_error_message(_("Error: ") + e.message);
 	}
 

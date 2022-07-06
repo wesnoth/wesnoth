@@ -442,11 +442,11 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	// Use a minimalistic interface to get the specified define
 	if(set_value != -1) {
 		if(set_value > static_cast<int>(difficulties.size())) {
-			std::cerr << "incorrect difficulty number: [" <<
+			PLAIN_LOG << "incorrect difficulty number: [" <<
 				set_value << "]. maximum is [" << difficulties.size() << "].\n";
 			return "FAIL";
 		} else if(set_value < 1) {
-			std::cerr << "incorrect difficulty number: [" <<
+			PLAIN_LOG << "incorrect difficulty number: [" <<
 				set_value << "]. minimum is [1].\n";
 			return "FAIL";
 		} else {
