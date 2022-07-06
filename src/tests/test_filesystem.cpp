@@ -24,7 +24,7 @@ template<typename T>
 void dump(const T& v)
 {
 	for(typename T::const_iterator k = v.begin(); k != v.end(); ++k) {
-		std::cerr << " * " << *k << '\n';
+		PLAIN_LOG << " * " << *k << '\n';
 	}
 }
 

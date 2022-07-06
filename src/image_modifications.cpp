@@ -289,7 +289,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...\n";
 		return nullptr;
 	}
 
@@ -336,7 +336,7 @@ surface adjust_channels_modification::operator()(const surface & src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...\n";
 		return nullptr;
 	}
 
@@ -541,7 +541,7 @@ surface o_modification::operator()(const surface& src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...\n";
 		return nullptr;
 	}
 

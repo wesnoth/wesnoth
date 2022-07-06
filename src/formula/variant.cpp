@@ -58,7 +58,7 @@ static std::string was_expecting(const std::string& message, const variant& v)
 
 type_error::type_error(const std::string& str) : game::error(str)
 {
-	std::cerr << "ERROR: " << message << "\n" << call_stack_manager::get();
+	PLAIN_LOG << "ERROR: " << message << "\n" << call_stack_manager::get();
 }
 
 variant_iterator::variant_iterator()

@@ -59,7 +59,7 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 {
 #if 0
 	const bool res = dispatcher_implementation::has_handler(*this, event_type, event);
-	std::cerr << "Event '" << event << " '" << (res ? "found" : "not found") << "in queue\n";
+	PLAIN_LOG << "Event '" << event << " '" << (res ? "found" : "not found") << "in queue\n";
 	return res;
 #else
 	return dispatcher_implementation::has_handler(*this, event_type, event);

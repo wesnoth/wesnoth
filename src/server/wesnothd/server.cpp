@@ -3007,7 +3007,7 @@ int main(int argc, char** argv)
 		} else if(val.substr(0, 6) == "--log-") {
 			std::size_t p = val.find('=');
 			if(p == std::string::npos) {
-				std::cerr << "unknown option: " << val << '\n';
+				PLAIN_LOG << "unknown option: " << val << '\n';
 				return 2;
 			}
 
@@ -3023,7 +3023,7 @@ int main(int argc, char** argv)
 			} else if(s == "debug") {
 				severity = lg::debug().get_severity();
 			} else {
-				std::cerr << "unknown debug level: " << s << '\n';
+				PLAIN_LOG << "unknown debug level: " << s << '\n';
 				return 2;
 			}
 
@@ -3032,7 +3032,7 @@ int main(int argc, char** argv)
 				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
 
 				if(!lg::set_log_domain_severity(s, severity)) {
-					std::cerr << "unknown debug domain: " << s << '\n';
+					PLAIN_LOG << "unknown debug domain: " << s << '\n';
 					return 2;
 				}
 

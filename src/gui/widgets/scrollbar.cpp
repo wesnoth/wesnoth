@@ -248,7 +248,7 @@ void scrollbar_base::recalculate()
 
 	set_item_position(item_position_ * step_size_);
 #if 0
-	std::cerr << "Scrollbar recalculate overview:\n"
+	PLAIN_LOG << "Scrollbar recalculate overview:\n"
 		<< "item_count_ " << item_count_
 		<< " visible_items_ " << visible_items_
 		<< " step_size_ " << step_size_
@@ -314,7 +314,7 @@ void scrollbar_base::move_positioner(const int distance)
 		// positioner_moved_notifier_.notify();
 	}
 #if 0
-	std::cerr << "Scrollbar move overview:\n"
+	PLAIN_LOG << "Scrollbar move overview:\n"
 		<< "item_count_ " << item_count_
 		<< " visible_items_ " << visible_items_
 		<< " step_size_ " << step_size_

@@ -1032,29 +1032,29 @@ void get_villages_phase::dispatch_complex(
 
 	if(debug_) {
 		// Print header
-		std::cerr << "Reach matrix:\n\nvillage";
+		PLAIN_LOG << "Reach matrix:\n\nvillage";
 		std::size_t u, v;
 		for(v = 0; v < village_count; ++v) {
-			std::cerr << '\t' << villages[v];
+			PLAIN_LOG << '\t' << villages[v];
 		}
-		std::cerr << "\ttotal\nunit\n";
+		PLAIN_LOG << "\ttotal\nunit\n";
 
 		// Print data
 		for(u = 0; u < unit_count; ++u) {
-			std::cerr << units[u];
+			PLAIN_LOG << units[u];
 
 			for(v = 0; v < village_count; ++v) {
-				std::cerr << '\t' << matrix[u][v];
+				PLAIN_LOG << '\t' << matrix[u][v];
 			}
-			std::cerr << "\t" << villages_per_unit[u] << '\n';
+			PLAIN_LOG << "\t" << villages_per_unit[u] << '\n';
 		}
 
 		// Print footer
-		std::cerr << "total";
+		PLAIN_LOG << "total";
 		for(v = 0; v < village_count; ++v) {
-			std::cerr << '\t' << units_per_village[v];
+			PLAIN_LOG << '\t' << units_per_village[v];
 		}
-		std::cerr << '\n';
+		PLAIN_LOG << '\n';
 	}
 
 	// Test the special case, everybody can reach all villages
@@ -1299,20 +1299,19 @@ void get_villages_phase::dump_reachmap(treachmap& reachmap)
 	for(treachmap::const_iterator itor =
 			reachmap.begin(); itor != reachmap.end(); ++itor) {
 
-		std::cerr << "Reachlist for unit at " << itor->first;
+		PLAIN_LOG << "Reachlist for unit at " << itor->first;
 
 		if(itor->second.empty()) {
-			std::cerr << "\tNone";
+			PLAIN_LOG << "\tNone";
 		}
 
 		for(std::vector<map_location>::const_iterator
 				v_itor = itor->second.begin();
 				v_itor != itor->second.end(); ++v_itor) {
 
-			std::cerr << '\t' << *v_itor;
+			PLAIN_LOG << '\t' << *v_itor;
 		}
-		std::cerr << '\n';
-
+		PLAIN_LOG << '\n';
 	}
 }
 

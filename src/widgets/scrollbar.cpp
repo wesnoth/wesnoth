@@ -17,6 +17,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "draw.hpp"
+#include "log.hpp"
 #include "widgets/scrollbar.hpp"
 #include "picture.hpp"
 #include "sdl/input.hpp" // get_mouse_state
@@ -199,7 +200,7 @@ void scrollbar::draw_contents()
 	SDL_Rect groove = location();
 
 	if (grip.h > groove.h) {
-		std::cerr << "abort draw scrollbar: grip too large\n";
+		PLAIN_LOG << "abort draw scrollbar: grip too large\n";
 		return;
 	}
 

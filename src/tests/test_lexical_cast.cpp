@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include "lexical_cast.hpp"
+#include "log.hpp"
 
 #include <boost/test/unit_test.hpp>
 
@@ -72,7 +73,7 @@ namespace {
 bool validate(const char* str)
 {
 	if(str != result) {
-		std::cerr << "Received " << str << '\n'
+		PLAIN_LOG << "Received " << str << '\n'
 				<< "Expected " << result << '\n';
 		return false;
 	} else {

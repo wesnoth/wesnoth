@@ -435,7 +435,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 	}
 
 #if 0
-	std::cerr << std::hex << "src = " << src.base << "^" << src.overlay << "\t"
+	PLAIN_LOG << std::hex << "src = " << src.base << "^" << src.overlay << "\t"
 		<< src_mask.base << "^" << src_mask.overlay << "\t"
 		<< masked_src.base << "^" << masked_src.overlay << "\t"
 		<< src_has_wildcard << "\n";
@@ -468,7 +468,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 		const terrain_code masked_dest = (*itor & dest_mask);
 		const bool dest_has_wildcard = has_wildcard(*itor);
 #if 0
-		std::cerr << std::hex << "dest= "
+		PLAIN_LOG << std::hex << "dest= "
 			<< itor->base << "^" << itor->overlay  << "\t"
 			<< dest_mask.base << "^" << dest_mask.overlay << "\t"
 			<< masked_dest.base << "^" << masked_dest.overlay << "\t"

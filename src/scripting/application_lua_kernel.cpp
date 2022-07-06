@@ -62,7 +62,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static int intf_describe_plugins(lua_State * L)
 {
-	std::cerr << "describe plugins (" << plugins_manager::get()->size() << "):\n";
+	PLAIN_LOG << "describe plugins (" << plugins_manager::get()->size() << "):\n";
 	lua_getglobal(L, "print");
 	for (std::size_t i = 0; i < plugins_manager::get()->size(); ++i) {
 		lua_pushvalue(L,-1); //duplicate the print

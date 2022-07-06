@@ -550,7 +550,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(missing.size(), 0);
 	for(const std::string& id : missing) {
-		std::cerr << "Window '" << id << "' registered but not tested.\n";
+		PLAIN_LOG << "Window '" << id << "' registered but not tested.\n";
 	}
 }
 
