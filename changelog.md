@@ -45,6 +45,15 @@
    * Fixed visibility bug in ai_helper.get_attackable_enemies() for some complex filters
    * Fixed bug in Bottleneck Micro AI involving units without moves on terrain with multiple open passages (issue #6599)
    * Fixed error in Castle Switch CA of the Experimental AI after a leader was killed (issue #6440)
+   * Fixed error in retreat-injured CA when regenerate ability code does not include a value= key
+   * Retreat-injured CA no longer takes villages from allies by default, but this can be allowed with new aspect allow_ally_villages
+   * Recruit Rushers Micro AI: new parameter reset_cache_each_turn
+   * Experimental AI no longer uses generic_recruit_engine: fixes a data leakage bug between Experimental AIs of different sides
+   * Experimental AI recruit rushers: include unit types from extra_recruit (issue #4924)
+   * Fix segfault when weapon is removed during attack (issues #4927 and #5914)
+   * Add no-unit error message for unit debug command (issue #6116)
+   * Significantly improve efficiency of move-to-any-enemy CA (issue #6504)
+   * Logger: do not show user name in paths
 
 ## Version 1.17.4
  ### Campaigns
