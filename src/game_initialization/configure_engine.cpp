@@ -22,7 +22,6 @@
 #include "tod_manager.hpp"
 
 #include <cassert>
-#include <iostream>
 #include <sstream>
 
 namespace ng

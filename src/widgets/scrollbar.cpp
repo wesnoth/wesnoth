@@ -26,8 +26,6 @@
 #include "sdl/utils.hpp"
 #include "video.hpp"
 
-#include <iostream>
-
 namespace {
 
 const std::string scrollbar_top = "buttons/scrollbars/scrolltop.png";

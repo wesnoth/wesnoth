@@ -15,8 +15,8 @@
 
 #include "log.hpp"
 #include "save_blocker.hpp"
+
 #include <exception>
-#include <iostream>
 
 play_controller* save_blocker::controller_ = nullptr;
 void (play_controller::*save_blocker::callback_)() = nullptr;

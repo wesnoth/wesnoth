@@ -20,7 +20,6 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/widget.hpp"
 
-#include <iostream>
 #include <cassert>
 
 namespace gui2::iteration::policy::order

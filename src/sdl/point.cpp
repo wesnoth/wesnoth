@@ -17,7 +17,7 @@
 
 #include "sdl/point.hpp"
 
-#include <iostream>
+#include <ostream>
 
 std::ostream& operator<<(std::ostream& stream, const point& point)
 {

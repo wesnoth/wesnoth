@@ -22,7 +22,6 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/grid.hpp"
 
-#include <iostream>
 #include <typeinfo>
 
 static void add_widget(gui2::grid& grid

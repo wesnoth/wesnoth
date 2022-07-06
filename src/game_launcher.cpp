@@ -60,7 +60,6 @@
 
 #include <algorithm> // for copy, max, min, stable_sort
 #include <cstdlib>   // for system
-#include <iostream>  // for operator<<, basic_ostream, etc
 #include <new>
 #include <utility> // for pair
 

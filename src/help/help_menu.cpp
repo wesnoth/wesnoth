@@ -22,7 +22,6 @@
 #include "sdl/input.hpp"                // for get_mouse_state
 
 #include <algorithm>                    // for find
-#include <iostream>                     // for basic_ostream, operator<<, etc
 #include <list>                         // for _List_const_iterator, etc
 #include <utility>                      // for pair
 #include <SDL2/SDL.h>

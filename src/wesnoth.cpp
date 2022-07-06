@@ -98,8 +98,6 @@
 #include <cstdlib>   // for srand, exit
 #include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
-#include <fstream>   // for operator<<, basic_ostream, etc
-#include <iostream>  // for cerr, cout
 #include <vector>
 
 //#define NO_CATCH_AT_GAME_END

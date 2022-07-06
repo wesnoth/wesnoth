@@ -17,7 +17,6 @@
 
 #include "serialization/base64.hpp"
 
-#include <iostream>
 #include <string>
 #include <sstream>
 #include <string.h>

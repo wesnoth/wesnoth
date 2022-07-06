@@ -37,7 +37,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <iomanip>
-#include <iostream>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

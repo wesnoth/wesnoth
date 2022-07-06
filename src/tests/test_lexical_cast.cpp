@@ -25,8 +25,6 @@
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/contains.hpp>
 
-#include <iostream>
-
 namespace test_throw {
 
 #ifdef _MSC_VER

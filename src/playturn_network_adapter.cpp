@@ -16,7 +16,6 @@
 #include "log.hpp"
 
 #include <functional>
-#include <iostream>
 #include <cassert>
 
 

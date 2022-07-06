@@ -23,7 +23,6 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/grid.hpp"
 
-#include <iostream>
 #include <sstream>
 #include <typeinfo>
 

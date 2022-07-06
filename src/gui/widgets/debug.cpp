@@ -28,9 +28,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <fstream>
 #include <iomanip>
-#include <iostream>
 
 namespace gui2
 {
