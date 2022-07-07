@@ -5,19 +5,20 @@
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
 # Mathieu GUILBAUD <mathieu@guim.info>, 2018.
+# Émile Enguehard <zerbugug@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2022-05-15 17:27+0300\n"
-"PO-Revision-Date: 2021-01-04 11:12+0100\n"
-"Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
-"Language-Team: français <wesnothfr@lists.tuxfamily.org>\n"
+"PO-Revision-Date: 2022-06-08 08:45-0500\n"
+"Last-Translator: demario\n"
+"Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Lokalize 2.0\n"
 
 # type: TH
 #. type: TH
@@ -30,7 +31,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2021"
-msgstr ""
+msgstr "2021"
 
 # type: TH
 #. type: TH
@@ -334,10 +335,9 @@ msgstr "active certains mécanismes de débogage pour Lua."
 
 #. type: TP
 #: doc/man/wesnoth.6:106
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
-msgstr "B<--strict-validation>"
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
@@ -348,7 +348,7 @@ msgstr ""
 #: doc/man/wesnoth.6:109
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ fichier-original>B<\\ >I<fichier-nouveau>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
@@ -696,10 +696,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:229
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:232
@@ -751,10 +750,9 @@ msgstr "Lance le jeu sans son ni musique."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<--script>I<\\ file>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--script>I<\\ fichier_d'entrée>"
+msgstr "B<--output>I<\\ fichier>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:245
@@ -797,10 +795,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p,\\ --preprocess>I<\\ fichier/dossier>B<\\ >I<répertoire cible>"
+msgstr "B<-P,--patch>I<\\ fichier-cible>B<\\ >I<fichier-patch>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:262
@@ -1095,10 +1092,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:366
-#, fuzzy, no-wrap
-#| msgid "B<--scenario>I<\\ value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ valeur>"
+msgstr "B<-S,--use-schema>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:370
@@ -1202,10 +1198,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:401
-#, fuzzy, no-wrap
-#| msgid "B<--data-path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--data-path>"
+msgstr "B<--validate>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:404
@@ -1216,7 +1211,7 @@ msgstr ""
 #: doc/man/wesnoth.6:404
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ id_extension>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
@@ -1226,10 +1221,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:407
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
@@ -1239,10 +1233,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:410
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
@@ -1278,18 +1271,15 @@ msgstr "Affiche le numéro de version et quitte le programme."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:419
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:422
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "Affiche le numéro de version et quitte le programme."
+msgstr "Affiche uniquement le numéro de version et quitte le programme."
 
 # type: TP
 #. type: TP
@@ -1622,12 +1612,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:289
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1971,7 +1958,7 @@ msgstr ""
 #: doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:129
@@ -2387,13 +2374,13 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> Configure l'identifiant utilisateur. Les options "
-"disponibles dépendent de la configuration de la clé B<user_handler>. S'il "
-"n'y a aucune section B< [user_handler]> dans la configuration, le serveur "
-"fonctionnera sans aucun service d'enregistrement d'alias. Toutes les tables "
+"B<[user_handler]> Configure l'identifiant utilisateur. S'il n'y a aucune "
+"section B< [user_handler]> dans la configuration, le serveur fonctionnera "
+"sans aucun service d'enregistrement d'alias. Toutes les tables "
 "complémentaires qui sont nécessaire pour que le B<forum_user_handler> "
 "fonctionne, se trouvent dans le fichier table_definition.sql du dépôt des "
-"sources de Wesnoth."
+"sources de Wesnoth. Nécessite l'activation du support mysql. Pour cmake, "
+"c'est le paramètre B<ENABLE_MYSQL> et pour scons c'est B<forum_user_handler.>"
 
 # type: TP
 #. type: TP
@@ -2405,10 +2392,8 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:242
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "Nom d'hôte du serveur mail"
+msgstr "Nom d'hôte du serveur de base de données"
 
 # type: TP
 #. type: TP
@@ -2420,10 +2405,8 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "Nom d'hôte du serveur mail"
+msgstr "Nom de la base de données"
 
 # type: TP
 #. type: TP
@@ -2435,14 +2418,8 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr ""
-"(pour user_handler=forum) Nom d'utilisateur se connectant à la base de "
-"données"
+msgstr "Nom d'utilisateur se connectant à la base de données"
 
 # type: TP
 #. type: TP
@@ -2454,8 +2431,6 @@ msgstr "B<db_password>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
 msgstr "Mot de passe de cet utilisateur"
 
@@ -2469,18 +2444,12 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"(pour user_handler=forum) Nom de la table des données utilisateurs de vos "
-"forums phpbb, probablement sous la forme E<lt>table-prefixE<gt>_users. "
-"Exemple : phpbb3_users."
+"Nom de la table des données utilisateurs de vos forums phpbb, probablement "
+"sous la forme E<lt>table-prefixE<gt>_users. Par exemple : phpbb3_users."
 
 # type: TP
 #. type: TP
@@ -2492,15 +2461,11 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
-"ses données à propos des parties."
+"Nom de la table dans laquelle wesnothd stockera ses données à propos des "
+"joueurs."
 
 # type: TP
 #. type: TP
@@ -2512,15 +2477,11 @@ msgstr "B<db_game_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:260
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about games."
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
-"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
-"ses données à propos des parties."
+"Nom de la table dans laquelle wesnothd stockera ses données à propos des "
+"parties."
 
 # type: TP
 #. type: TP
@@ -2532,16 +2493,12 @@ msgstr "B<db_game_player_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:263
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the players in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
-"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
-"ses données à propos des joueurs d'une partie."
+"Nom de la table dans laquelle wesnothd stockera ses données à propos des "
+"joueurs d'une partie."
 
 #. type: TP
 #: doc/man/wesnothd.6:263
@@ -2552,16 +2509,12 @@ msgstr "B<db_game_modification_info_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:266
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which wesnothd will "
-#| "save its own data about the modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
-"(pour user_handler=forum) Nom de la table dans laquelle wesnothd stockera "
-"ses données à propos des modifications utilisées dans une parties."
+"Nom de la table dans laquelle wesnothd stockera ses données à propos des "
+"modifications utilisées dans une partie."
 
 # type: TP
 #. type: TP
@@ -2573,19 +2526,14 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:269
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user group data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"(pour user_handler=forum) Nom de la table des données de groupe "
-"d'utilisateurs de vos forums phpbb, probablement sous la forme E<lt>table-"
-"prefixE<gt>_user_group. Exemple : phpbb3_user_group."
+"Nom de la table des données de groupe d'utilisateurs de vos forums phpbb, "
+"probablement sous la forme E<lt>table-prefixE<gt>_user_group. Par exemple : "
+"phpbb3_user_group."
 
 #. type: TP
 #: doc/man/wesnothd.6:269
@@ -2596,15 +2544,9 @@ msgstr "B<mp_mod_group>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The ID of the forum group to be considered as "
-#| "having moderation authority."
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
-"(pour user_handler=forum) L'identifiant du groupe du forum ayant les "
-"pouvoirs de modération."
+msgstr "L'identifiant du groupe du forum ayant les pouvoirs de modération."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:277
@@ -2638,12 +2580,10 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#, no-wrap
 #~ msgid "2018"
 #~ msgstr "2018"
 
 # type: TP
-#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2685,7 +2625,6 @@ msgstr "B<wesnoth>(6)"
 #~ "manuellement."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2707,12 +2646,10 @@ msgstr "B<wesnoth>(6)"
 #~ "'sample'."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
 # type: TP
-#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
@@ -2721,12 +2658,10 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Nom d'utilisateur utilisé pour vous connecter au serveur mail."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
 # type: TP
-#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
@@ -2735,7 +2670,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Adresse de réponse de votre mail."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 
@@ -2744,7 +2678,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Port de votre serveur mail (par défaut : 25)."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--proxy>"
 #~ msgstr "B<--proxy>"
 
@@ -2752,7 +2685,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "active l'utilisation d'un proxy pour les connexions au réseau."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--proxy-address>I<\\ address>"
 #~ msgstr "B<--proxy-address>I<\\ addresse>"
 
@@ -2760,21 +2692,18 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "indique l'I<addresse> du proxy."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--proxy-port>I<\\ port>"
 #~ msgstr "B<--proxy-port>I<\\ port>"
 
 #~ msgid "specifies I<port> of the proxy."
 #~ msgstr "indique le I<port> du proxy."
 
-#, no-wrap
 #~ msgid "B<--proxy-user>I<\\ username>"
 #~ msgstr "B<--proxy-user>I<\\ nom d'utilisateur>"
 
 #~ msgid "specifies I<username> to log in to the proxy."
 #~ msgstr "indique le I<nom d'utilisateur> du proxy."
 
-#, no-wrap
 #~ msgid "B<--proxy-password>I<\\ password>"
 #~ msgstr "B<--proxy-password>I<\\ mot de passe>"
 
