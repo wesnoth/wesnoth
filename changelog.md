@@ -16,7 +16,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Chinese (Traditional), Polish, Finnish
+   * Updated translations: Arabic, British English, Chinese (Traditional), Polish, Finnish
  ### Units
     * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface
