@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-05 09:17-0500\n"
-"PO-Revision-Date: 2022-04-17 21:06+0200\n"
-"Last-Translator: demario\n"
+"PO-Revision-Date: 2022-06-21 11:51+0200\n"
+"Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -5613,7 +5613,7 @@ msgstr "Connexion à $server_address|..."
 
 #: src/addon/client.cpp:125
 msgid "Downloading list of add-ons..."
-msgstr "Téléchargement d'une liste des extensions..."
+msgstr "Téléchargement de la liste des extensions..."
 
 #: src/addon/client.cpp:146
 msgid "Requesting distribution terms..."
@@ -6410,6 +6410,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Erreur : [advancefrom] ne fonctionne plus. Les unités '$lower_level' ne "
+"peuvent pas passer à '$higher_level' ; veuillez demander à l'auteur du "
+"module complémentaire d'utiliser [modify_unit_type] à la place."
 
 #: src/game_config_manager.cpp:563
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6616,20 +6619,20 @@ msgstr "aucune"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "La version de l'hôte de l'extension <i>$addon</i> est incompatible. Il "
-"possède la version <b>$host_ver</b> tandis que vous avez la version <b>"
-"$local_ver</b>."
+"possède la version <b>$host_ver</b> tandis que vous avez la version "
+"<b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"Votre version de <i>$addon</i> est incompatible. Vous avez la version <b>"
-"$local_ver</b> tandis que l'hôte possède la version <b>$host_ver</b>."
+"Votre version de <i>$addon</i> est incompatible. Vous avez la version "
+"<b>$local_ver</b> tandis que l'hôte possède la version <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
