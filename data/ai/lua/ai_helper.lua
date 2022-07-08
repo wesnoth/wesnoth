@@ -1630,12 +1630,14 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
         local cfg_copy = {}
         if cfg then cfg_copy = ai_helper.table_copy(cfg) end
         cfg_copy.ignore_visibility = true
+        wesnoth.interface.handle_user_interact()
         path, cost = wesnoth.paths.find_path(unit, x, y, cfg_copy)
 
         for _,extracted_unit in ipairs(extracted_units) do
             extracted_unit:to_map()
         end
     else
+        wesnoth.interface.handle_user_interact()
         path, cost = wesnoth.paths.find_path(unit, x, y, cfg)
     end
 
@@ -2064,6 +2066,7 @@ function ai_helper.get_attacks(units, cfg)
     local reaches = LS.create()
 
     for _,unit in ipairs(units) do
+        wesnoth.interface.handle_user_interact()
         local reach
         if reaches:get(unit.x, unit.y) then
             reach = reaches:get(unit.x, unit.y)
