@@ -231,12 +231,6 @@ log_in_progress logger::operator()(const log_domain& domain, bool show_names, bo
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
 	} else {
-		if (!strict_threw_ && severity_ <= strict_level_ && break_strict) {
-			std::stringstream ss;
-			ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
-			std::cerr << ss.str() << std::endl;
-			strict_threw_ = true;
-		}
 		log_in_progress stream = output();
 		if(do_indent) {
 			stream.set_indent(indent);
@@ -246,6 +240,10 @@ log_in_progress logger::operator()(const log_domain& domain, bool show_names, bo
 		}
 		if (show_names) {
 			stream.set_prefix(formatter() << name_ << ' ' << domain.domain_->first << ": ");
+		}
+		if (!strict_threw_ && severity_ <= strict_level_ && break_strict) {
+			stream | formatter() << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first << std::endl;
+			strict_threw_ = true;
 		}
 		return stream;
 	}
