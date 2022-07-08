@@ -20,6 +20,7 @@ local function get_reachable_enemy_leaders(unit, avoid_map)
     for _,e in ipairs(potential_enemy_leaders) do
         -- Cannot use AH.find_path_with_avoid() here as there might be enemies all around the enemy leader
         if (not avoid_map:get(e.x, e.y)) then
+            wesnoth.interface.handle_user_interact()
             local path, cost = wesnoth.paths.find_path(unit, e.x, e.y, { ignore_units = true, ignore_visibility = true })
             if cost < AH.no_path then
                 table.insert(enemy_leaders, e)
@@ -156,6 +157,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
 
         for i,loc in ipairs(keeps) do
             -- Only consider keeps within 2 turns movement
+            wesnoth.interface.handle_user_interact()
             local path, cost = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
             local score = 0
             -- Prefer closer keeps to enemy
@@ -211,6 +213,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
                     owner_side = 0 })
                 local cheapest_unit_cost = AH.get_cheapest_recruit_cost(leader)
                 for i,loc in ipairs(close_villages) do
+                    wesnoth.interface.handle_user_interact()
                     local path_village, cost_village = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
                     if cost_village <= leader.moves then
                         local dummy_leader = leader:clone()

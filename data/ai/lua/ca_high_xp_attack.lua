@@ -96,6 +96,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
     local max_ca_score, max_rating, best_attack = 0, 0, nil
     for _,target_info in ipairs(target_infos) do
+        wesnoth.interface.handle_user_interact()
         local target = attacks_aspect.enemy[target_info.ind_target]
         local can_force_level = {}
         local attack_hexes = LS.create()

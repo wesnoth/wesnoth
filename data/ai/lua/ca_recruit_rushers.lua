@@ -979,6 +979,7 @@ function ca_recruit_rushers:execution(cfg, data, filter_own)
     end
 
     for i, unit_type in ipairs(enemy_types) do
+        wesnoth.interface.handle_user_interact()
         enemy_type_count = enemy_type_count + 1
         local poison_vulnerable = false
         for recruit_id in pairs(recruit_data.recruit_types) do

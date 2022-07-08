@@ -95,6 +95,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
                 -- There is no way a unit can get to the village if the distance is greater than its moves
                 local dist = M.distance_between(u.x, u.y, v[1], v[2])
                 if (dist <= u.moves) then
+                    wesnoth.interface.handle_user_interact()
                     local path, cost = wesnoth.paths.find_path(u, v[1], v[2])
                     if (cost <= u.moves) then
                         village_rating = village_rating - 1

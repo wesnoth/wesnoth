@@ -63,6 +63,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             if (not cant_poison) and (healing == 0) and (not about_to_level) then
                 local _, poison_weapon = attacker:find_attack { special_id = "poison" }
                 local dst = { a.dst.x, a.dst.y }
+                wesnoth.interface.handle_user_interact()
                 local att_stats, def_stats = BC.simulate_combat_loc(attacker, dst, defender, poison_weapon)
                 local _, defender_rating, attacker_rating = BC.attack_rating(attacker, defender, dst, { att_stats = att_stats, def_stats = def_stats })
 
