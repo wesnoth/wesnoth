@@ -6441,6 +6441,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
+				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
@@ -7020,6 +7021,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
+				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
@@ -7063,6 +7065,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
+				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
