@@ -252,6 +252,12 @@ static int intf_get_viewing_side(lua_State *L)
 	}
 }
 
+static int intf_handle_user_interact(lua_State *)
+{
+	ai::manager::get_singleton().raise_user_interact();
+	return 0;
+}
+
 static const char animatorKey[] = "unit animator";
 
 static int impl_animator_collect(lua_State* L) {
@@ -4716,6 +4722,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"get_viewing_side", &intf_get_viewing_side},
 		{"add_chat_message", &dispatch<&game_lua_kernel::intf_message>},
 		{"add_overlay_text", &dispatch2<&game_lua_kernel::intf_set_floating_label, true>},
+		{"handle_user_interact", &intf_handle_user_interact},
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
