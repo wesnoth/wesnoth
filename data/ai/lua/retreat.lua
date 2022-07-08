@@ -153,6 +153,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
 
     local max_rating, best_loc, best_unit = - math.huge, nil, nil
     for i,u in ipairs(healees) do
+        wesnoth.interface.handle_user_interact()
         local possible_locations = wesnoth.paths.find_reach(u)
         if (not regen_amounts[i]) then
             -- Unit cannot self heal, make the terrain do it for us if possible

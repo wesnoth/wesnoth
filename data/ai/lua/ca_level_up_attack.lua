@@ -49,6 +49,7 @@ function level_up_attack:evaluation(cfg, data, filter_own)
     local moves = LS.of_raw(ai.get_src_dst())
     local units = wesnoth.units.find(filter_own)
     for _,me in ipairs(units) do
+        wesnoth.interface.handle_user_interact()
         local save_x, save_y = me.x, me.y
         if not moves[me] or #moves[me] == 0 then
             goto continue
