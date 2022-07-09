@@ -1061,6 +1061,10 @@
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
+		95EB8A52287A02B900B09F95 /* draw_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A50287A02B800B09F95 /* draw_manager.cpp */; };
+		95EB8A55287A02EC00B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
+		95EB8A58287B138700B09F95 /* draw_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A50287A02B800B09F95 /* draw_manager.cpp */; };
+		95EB8A59287B139800B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
 		B508D193100146E300B12852 /* engine_fai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D191100146E300B12852 /* engine_fai.cpp */; };
 		B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
@@ -2284,6 +2288,10 @@
 		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
 		91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = markov_generator.cpp; sourceTree = "<group>"; };
 		91FBBADA1CB6D1B700470BFE /* markov_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = markov_generator.hpp; sourceTree = "<group>"; };
+		95EB8A50287A02B800B09F95 /* draw_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = draw_manager.cpp; sourceTree = "<group>"; };
+		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
+		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
+		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
 		B508D191100146E300B12852 /* engine_fai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_fai.cpp; sourceTree = "<group>"; };
 		B508D192100146E300B12852 /* engine_fai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_fai.hpp; sourceTree = "<group>"; };
 		B513B2270ED36BFB0006E551 /* libcairo.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.2.dylib; path = lib/libcairo.2.dylib; sourceTree = "<group>"; };
@@ -3122,6 +3130,10 @@
 				B5599A980EC62181008DD061 /* display.hpp */,
 				91AF55DE2848472F007A7652 /* draw.cpp */,
 				91AF55DD2848472E007A7652 /* draw.hpp */,
+				95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */,
+				95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */,
+				95EB8A50287A02B800B09F95 /* draw_manager.cpp */,
+				95EB8A51287A02B800B09F95 /* draw_manager.hpp */,
 				B5599FF60EC8FE2E008DD061 /* editor */,
 				B5599A970EC62181008DD061 /* events.cpp */,
 				B5599A960EC62181008DD061 /* events.hpp */,
@@ -5179,6 +5191,7 @@
 				620A386E15E9364E00A4F513 /* attack.cpp in Sources */,
 				46F92DB52174F6A300602C1C /* message.cpp in Sources */,
 				46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */,
+				95EB8A52287A02B900B09F95 /* draw_manager.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_move_to_targets.cpp in Sources */,
 				46F92DED2174F6A400602C1C /* uninstall_list.cpp in Sources */,
@@ -5316,6 +5329,7 @@
 				46685C8F219D518B0009CFFE /* string_utils.cpp in Sources */,
 				46F92E812174F6A400602C1C /* styled_widget.cpp in Sources */,
 				ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */,
+				95EB8A55287A02EC00B09F95 /* top_level_drawable.cpp in Sources */,
 				46F92E972174F6A400602C1C /* stacked_widget.cpp in Sources */,
 				62CC8E4C1771E7E100C16B75 /* game_config_manager.cpp in Sources */,
 				B5599B6B0EC62181008DD061 /* game_config.cpp in Sources */,
@@ -5765,6 +5779,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95EB8A59287B139800B09F95 /* top_level_drawable.cpp in Sources */,
+				95EB8A58287B138700B09F95 /* draw_manager.cpp in Sources */,
 				46F92E802174F6A400602C1C /* pane.cpp in Sources */,
 				46F92DEA2174F6A400602C1C /* simple_item_selector.cpp in Sources */,
 				91E356341CACC47F00774252 /* main.cpp in Sources */,
