@@ -15,13 +15,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "draw.hpp" // for set_clip
+#include "draw.hpp"
+#include "draw_manager.hpp"
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
 #include <cassert>
+#include <iostream>
 
 namespace {
 	const SDL_Rect EmptyRect {-1234,-1234,0,0};
@@ -34,12 +36,15 @@ bool widget::mouse_lock_ = false;
 widget::widget(CVideo& video, const bool auto_join)
 	: events::sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
-	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), mouse_lock_local_(false)
+	  clip_rect_(EmptyRect), help_string_(0), mouse_lock_local_(false)
 {
 }
 
 widget::~widget()
 {
+	if (!hidden()) {
+		queue_redraw();
+	}
 	bg_cancel();
 	free_mouse_lock();
 }
@@ -65,11 +70,12 @@ bool widget::mouse_locked() const
 	return mouse_lock_ && !mouse_lock_local_;
 }
 
+// TODO: draw_manager - kill surface restorers
 void widget::bg_cancel()
 {
-	for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
+	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
-		i->cancel();
+		i->cancel();*/
 	restorer_.clear();
 }
 
@@ -80,6 +86,7 @@ void widget::set_location(const SDL_Rect& rect)
 	if(state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
 		state_ = DRAWN;
 
+	// TODO: draw_manager - overhaul
 	bg_restore();
 	bg_cancel();
 	rect_ = rect;
@@ -92,6 +99,11 @@ void widget::update_location(const SDL_Rect& rect)
 	bg_register(rect);
 }
 
+void widget::layout()
+{
+	// this basically happens in set_location, so there's nothing to do here.
+}
+
 const SDL_Rect* widget::clip_rect() const
 {
 	return clip_ ? &clip_rect_ : nullptr;
@@ -99,7 +111,7 @@ const SDL_Rect* widget::clip_rect() const
 
 void widget::bg_register(const SDL_Rect& rect)
 {
-	restorer_.emplace_back(&video(), rect);
+	restorer_.emplace_back(rect);
 }
 
 void widget::set_location(int x, int y)
@@ -205,14 +217,18 @@ bool widget::enabled() const
 	return enabled_;
 }
 
+// TODO: draw_manager - this needs to die
 void widget::set_dirty(bool dirty)
 {
-	if ((dirty && (volatile_ || hidden_override_ || state_ != DRAWN)) || (!dirty && state_ != DIRTY))
+	if ((dirty && (hidden_override_ || state_ != DRAWN)) || (!dirty && state_ != DIRTY))
 		return;
 
 	state_ = dirty ? DIRTY : DRAWN;
-	if (!dirty)
-		needs_restore_ = true;
+	if (dirty) {
+		queue_redraw();
+	}
+	//if (!dirty)
+	//	needs_restore_ = true;
 }
 
 bool widget::dirty() const
@@ -234,70 +250,77 @@ void widget::set_id(const std::string& id)
 
 void widget::bg_update()
 {
-	for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
+	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
-		i->update();
+		i->update();*/
 }
 
 void widget::bg_restore() const
 {
-	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
+	rect c = clip_ ? clip_rect_ : video().draw_area();
+	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
 	if (needs_restore_) {
-		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
+		for(const rect& r : restorer_) {
+			draw_manager::invalidate_region(r.intersect(c));
+		}
+		/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 		    i_end = restorer_.end(); i != i_end; ++i)
-			i->restore();
+			i->restore();*/
 		needs_restore_ = false;
 	}
 }
 
-void widget::bg_restore(const SDL_Rect& rect) const
+void widget::bg_restore(const SDL_Rect& where) const
 {
-	auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
+	rect c = clip_ ? clip_rect_ : video().draw_area();
+	c.clip(where);
+	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
 
-	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
+	for(const rect& r : restorer_) {
+		draw_manager::invalidate_region(r.intersect(c));
+	}
+	/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
-		i->restore(rect);
+		i->restore(rect);*/
 }
 
-void widget::set_volatile(bool val)
+void widget::queue_redraw(const rect& r)
 {
-	volatile_ = val;
-	if (volatile_ && state_ == DIRTY)
-		state_ = DRAWN;
+	draw_manager::invalidate_region(r);
+}
+
+void widget::queue_redraw()
+{
+	queue_redraw(location());
+}
+
+bool widget::expose(const SDL_Rect& region)
+{
+	// TODO: draw_manager - draw always? or only when dirty?
+	//if (!dirty()) {
+	//	return false;
+	//}
+	(void)region;
+	draw();
+	return true;
 }
 
 void widget::draw()
 {
-	if (hidden() || !dirty())
+	if (hidden())
 		return;
 
-	bg_restore();
+	//bg_restore();
 
 	if (clip_) {
-		auto clipper = draw::set_clip(clip_rect_);
+		auto clipper = draw::reduce_clip(clip_rect_);
 		draw_contents();
 	} else {
 		draw_contents();
 	}
 
 	set_dirty(false);
-}
-
-void widget::volatile_draw()
-{
-	if (!volatile_ || state_ != DRAWN || hidden_override_)
-		return;
-	state_ = DIRTY;
-	bg_update();
-	draw();
-}
-
-void widget::volatile_undraw()
-{
-	if (!volatile_)
-		return;
-	bg_restore();
 }
 
 void widget::set_help_string(const std::string& str)
@@ -330,25 +353,5 @@ void widget::process_tooltip_string(int mousex, int mousey)
 			tooltips::add_tooltip(rect_, tooltip_text_ );
 	}
 }
-
-void widget::handle_event(const SDL_Event& event) {
-	if (event.type == DRAW_ALL_EVENT) {
-		set_dirty();
-		draw();
-	}
-}
-
-void widget::handle_window_event(const SDL_Event& event) {
-	if (event.type == SDL_WINDOWEVENT) {
-		switch (event.window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-		case SDL_WINDOWEVENT_RESTORED:
-		case SDL_WINDOWEVENT_SHOWN:
-		case SDL_WINDOWEVENT_EXPOSED:
-			set_dirty();
-		}
-	}
-}
-
 
 }

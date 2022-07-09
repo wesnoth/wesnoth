@@ -138,9 +138,8 @@ void outro::draw_callback()
 	}
 
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
-	window_canvas.set_is_dirty(true);
-
-	get_window()->set_is_dirty(true);
+	window_canvas.update_size_variables();
+	get_window()->queue_redraw();
 
 	if(fading_in_) {
 		fade_step_++;

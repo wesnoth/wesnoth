@@ -88,7 +88,7 @@ public:
 	{
 		assert(row < row_grow_factor_.size());
 		row_grow_factor_[row] = factor;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
 	/**
@@ -103,7 +103,7 @@ public:
 	{
 		assert(column < col_grow_factor_.size());
 		col_grow_factor_[column] = factor;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
@@ -272,11 +272,6 @@ public:
 
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,

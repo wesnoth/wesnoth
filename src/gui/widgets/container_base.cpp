@@ -209,14 +209,6 @@ void container_base::layout_children()
 	grid_.layout_children();
 }
 
-void
-container_base::child_populate_dirty_list(window& caller,
-									   const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, child_call_stack);
-}
-
 widget* container_base::find_at(const point& coordinate,
 							  const bool must_be_active)
 {
@@ -252,7 +244,7 @@ void container_base::set_active(const bool active)
 		return;
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 
 	set_self_active(active);
 }

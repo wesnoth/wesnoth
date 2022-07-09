@@ -53,7 +53,6 @@ unit_create::unit_create()
 	, variation_(last_variation)
 	, last_words_()
 {
-	set_restore(true);
 }
 
 void unit_create::pre_show(window& window)

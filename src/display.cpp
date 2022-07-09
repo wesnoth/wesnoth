@@ -23,6 +23,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
@@ -84,6 +85,8 @@ static lg::log_domain log_display("display");
 #define MinZoom          (zoom_levels.front())
 #define MaxZoom          (zoom_levels.back())
 
+using std::endl;
+
 namespace {
 	// if this is enabled with :benchmark, then everything is marked as invalid and redrawn each time
 	bool benchmark = false;
@@ -139,17 +142,15 @@ void display::parse_team_overlays()
 
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float z_order)
 {
-	if (halo_man_) {
-		halo::handle halo_handle;
-		if(halo != "") {
-			halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
-				get_location_y(loc) + hex_size() / 2, halo, loc);
-		}
-
-		std::vector<overlay>& overlays = get_overlays()[loc];
-		auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
-		overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order);
+	halo::handle halo_handle;
+	if(halo != "") {
+		halo_handle = halo_man_.add(get_location_x(loc) + hex_size() / 2,
+			get_location_y(loc) + hex_size() / 2, halo, loc);
 	}
+
+	std::vector<overlay>& overlays = get_overlays()[loc];
+	auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
+	overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order);
 }
 
 void display::remove_overlay(const map_location& loc)
@@ -173,11 +174,9 @@ display::display(const display_context* dc,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
 		const std::string& theme_id,
-		const config& level,
-		bool auto_join)
-	: video2::draw_layering(auto_join)
-	, dc_(dc)
-	, halo_man_(new halo::manager(*this))
+		const config& level)
+	: dc_(dc)
+	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
 	, screen_(CVideo::get_singleton())
@@ -192,11 +191,9 @@ display::display(const display_context* dc,
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_(nullptr)
 	, minimap_location_(sdl::empty_rect)
-	, redrawMinimap_(false)
 	, redraw_background_(true)
 	, invalidateAll_(true)
 	, diagnostic_label_(0)
-	, panelsDrawn_(false)
 	, invalidateGameStatus_(true)
 	, map_labels_(new map_labels(nullptr))
 	, reports_object_(&reports_object)
@@ -205,7 +202,7 @@ display::display(const display_context* dc,
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
-	, reportRects_()
+	, reportLocations_()
 	, reportSurfaces_()
 	, reports_()
 	, menu_buttons_()
@@ -298,9 +295,8 @@ void display::set_theme(const std::string& new_theme)
 	menu_buttons_.clear();
 	action_buttons_.clear();
 	create_buttons();
-	invalidate_theme();
 	rebuild_all();
-	redraw_everything();
+	redraw_everything(); // TODO: draw_manager - rename?
 }
 
 void display::init_flags() {
@@ -509,16 +505,6 @@ void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
 	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initialize the builder object?
-}
-
-void display::reset_halo_manager()
-{
-	halo_man_.reset(new halo::manager(*this));
-}
-
-void display::reset_halo_manager(halo::manager & halo_man)
-{
-	halo_man_.reset(&halo_man);
 }
 
 void display::blindfold(bool value)
@@ -908,10 +894,9 @@ void display::create_buttons()
 		}
 
 		auto b = std::make_shared<gui::button>(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
-			gui::button::DEFAULT_SPACE, false, menu.overlay(), font::SIZE_BUTTON_SMALL);
+			gui::button::DEFAULT_SPACE, true, menu.overlay(), font::SIZE_BUTTON_SMALL);
 
 		DBG_DP << "drawing button " << menu.get_id() << "\n";
-		b->join_same(this);
 		b->set_id(menu.get_id());
 		if(!menu.tooltip().empty()) {
 			b->set_tooltip_string(menu.tooltip());
@@ -927,11 +912,10 @@ void display::create_buttons()
 	DBG_DP << "creating action buttons...\n";
 	for(const auto& action : theme_.actions()) {
 		auto b = std::make_shared<gui::button>(screen_, action.title(), string_to_button_type(action.type()),
-			action.image(), gui::button::DEFAULT_SPACE, false, action.overlay(), font::SIZE_BUTTON_SMALL);
+			action.image(), gui::button::DEFAULT_SPACE, true, action.overlay(), font::SIZE_BUTTON_SMALL);
 
 		DBG_DP << "drawing button " << action.get_id() << "\n";
 		b->set_id(action.get_id());
-		b->join_same(this);
 		if(!action.tooltip(0).empty()) {
 			b->set_tooltip_string(action.tooltip(0));
 		}
@@ -950,16 +934,22 @@ void display::create_buttons()
 	DBG_DP << "buttons created\n";
 }
 
-void display::render_buttons()
+void display::draw_buttons()
 {
+	const rect clip = draw::get_clip();
 	for(auto& btn : menu_buttons_) {
-		btn->set_dirty(true);
-		btn->draw();
+		if(clip.overlaps(btn->location())) {
+			//btn->set_dirty(true);
+			// TODO: draw_manager - this won't actually draw, because it's not "dirty", but dirty can't be set because that invalidates. Overhaul.
+			btn->draw();
+		}
 	}
 
 	for(auto& btn : action_buttons_) {
-		btn->set_dirty(true);
-		btn->draw();
+		if(clip.overlaps(btn->location())) {
+			//btn->set_dirty(true);
+			btn->draw();
+		}
 	}
 }
 
@@ -1338,13 +1328,9 @@ void display::flip()
 		return;
 	}
 
-	font::draw_floating_labels();
-	events::raise_volatile_draw_event();
+	// TODO: draw_manager - remove this function
+	return;
 
-	video().render_screen();
-
-	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels();
 }
 
 // frametime is in milliseconds
@@ -1416,42 +1402,46 @@ void display::update_display()
 
 	flip();
 }
-static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std::shared_ptr<gui::button>>& /*buttons*/)
+
+void display::draw_panel(const theme::panel& panel)
 {
-	//log_scope("draw panel");
-	DBG_DP << "drawing panel " << panel.get_id() << "\n";
-
-	// TODO: highdpi - draw area should probably be moved to new drawing API
-	const SDL_Rect screen = video.draw_area();
-	SDL_Rect& loc = panel.location(screen);
-
-	DBG_DP << "panel location: " << loc << std::endl;
-
+	// Most panels are transparent.
 	if (panel.image().empty()) {
-		DBG_DP << "no panel image given" << std::endl;
 		return;
 	}
 
+	// TODO: highdpi - draw area should probably be moved to new drawing API
+	const rect& loc = panel.location(video().draw_area());
+
+	if (!loc.overlaps(draw::get_clip())) {
+		return;
+	}
+
+	DBG_DP << "drawing panel " << panel.get_id() << ' ' << loc << endl;
+
 	texture tex(image::get_texture(panel.image()));
 	if (!tex) {
-		ERR_DP << "failed to load panel texture ("
-			<< "id: " << panel.get_id()
-			<< ", image: " << panel.image()
-			<< ")" << std::endl;
+		ERR_DP << "failed to load panel " << panel.get_id()
+			<< " texture: " << panel.image() << endl;
 		return;
 	}
 
 	draw::tiled(tex, loc);
 }
 
-static void draw_label(CVideo& video, const theme::label& label)
+void display::draw_label(const theme::label& label)
 {
-	//log_scope("draw label");
+	const rect& loc = label.location(video().draw_area());
+
+	if (!loc.overlaps(draw::get_clip())) {
+		return;
+	}
 
 	const std::string& text = label.text();
 	const color_t text_color = label.font_rgb_set() ? label.font_rgb() : font::NORMAL_COLOR;
 	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(video.draw_area());
+
+	DBG_DP << "drawing label " << label.get_id() << ' ' << loc << endl;
 
 	if(icon.empty() == false) {
 		draw::blit(image::get_texture(icon), loc);
@@ -1460,27 +1450,21 @@ static void draw_label(CVideo& video, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::pango_draw_text(&video, loc, label.font_size(), text_color, text, loc.x, loc.y);
+		font::pango_draw_text(&video(), loc, label.font_size(),
+			text_color, text, loc.x, loc.y
+		);
 	}
 }
 
 void display::draw_all_panels()
 {
-	/*
-	 * The minimap is also a panel, force it to update its contents.
-	 * This is required when the size of the minimap has been modified.
-	 */
-	recalculate_minimap();
-
 	for(const auto& panel : theme_.panels()) {
-		draw_panel(video(), panel, menu_buttons_);
+		draw_panel(panel);
 	}
 
 	for(const auto& label : theme_.labels()) {
-		draw_label(video(), label);
+		draw_label(label);
 	}
-
-	render_buttons();
 }
 
 void display::draw_text_in_hex(const map_location& loc,
@@ -1620,6 +1604,9 @@ void display::select_hex(map_location hex)
 
 void display::highlight_hex(map_location hex)
 {
+	if(mouseoverHex_ == hex) {
+		return;
+	}
 	invalidate(mouseoverHex_);
 	mouseoverHex_ = hex;
 	invalidate(mouseoverHex_);
@@ -1653,22 +1640,7 @@ void display::draw_init()
 		invalidateAll_ = true;
 	}
 
-	if(!panelsDrawn_) {
-		draw_all_panels();
-		panelsDrawn_ = true;
-	}
-
 	if(redraw_background_) {
-		// Full redraw of the background
-		const SDL_Rect clip_rect = map_outside_area();
-		draw::fill(clip_rect, 0, 0, 0);
-		draw::tiled(
-			image::get_texture(theme_.border().background_image),
-			clip_rect
-		);
-		redraw_background_ = false;
-
-		// Force a full map redraw
 		invalidateAll_ = true;
 	}
 
@@ -1679,7 +1651,7 @@ void display::draw_init()
 		invalidateAll_ = false;
 		invalidate_locations_in_rect(map_area());
 
-		redrawMinimap_ = true;
+		redraw_minimap();
 	}
 }
 
@@ -1688,11 +1660,6 @@ void display::draw_wrap(bool update, bool force)
 	static int time_between_draws = preferences::draw_delay();
 	if(time_between_draws < 0) {
 		time_between_draws = 1000 / screen_.current_refresh_rate();
-	}
-
-	if(redrawMinimap_ && !map_screenshot_) {
-		redrawMinimap_ = false;
-		draw_minimap();
 	}
 
 	if(update) {
@@ -1769,26 +1736,36 @@ void display::announce(const std::string& message, const color_t& color, const a
 	prevLabel = font::add_floating_label(flabel);
 }
 
+void display::recalculate_minimap()
+{
+	const rect& area = minimap_area();
+	minimap_ = texture(image::getMinimap(
+		area.w, area.h, get_map(),
+		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
+	));
+	redraw_minimap();
+}
+
+void display::redraw_minimap()
+{
+	draw_manager::invalidate_region(minimap_area());
+}
+
 void display::draw_minimap()
 {
-	const SDL_Rect& area = minimap_area();
+	const rect& area = minimap_area();
 
-	if(area.w == 0 || area.h == 0) {
+	if(area.empty() || !area.overlaps(draw::get_clip())) {
 		return;
 	}
 
-	// TODO: highdpi - high DPI minimap
-	// TODO: highdpi - is this the best place to convert to texture?
-	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
-		minimap_ = texture(image::getMinimap(area.w, area.h, get_map(),
-			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
-			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr));
-		if(!minimap_) {
-			return;
-		}
+	if(!minimap_) {
+		ERR_DP << "trying to draw null minimap" << endl;
+		return;
 	}
 
-	auto clipper = draw::set_clip(area);
+	auto clipper = draw::reduce_clip(area);
 
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
@@ -1933,18 +1910,26 @@ bool display::scroll(int xmove, int ymove, bool force)
 	//
 
 	if(!screen_.update_locked()) {
-		rect dstrect = map_area();
-		dstrect.x += diff_x;
-		dstrect.y += diff_y;
-		dstrect.clip(map_area());
+		rect dst = map_area();
+		dst.x += diff_x;
+		dst.y += diff_y;
+		dst.clip(map_area());
 
-		SDL_Rect srcrect = dstrect;
-		srcrect.x -= diff_x;
-		srcrect.y -= diff_y;
+		rect src = dst;
+		src.x -= diff_x;
+		src.y -= diff_y;
 
-		// TODO: highdpi - This is gross and should be replaced
-		texture t = screen_.read_texture(&srcrect);
-		draw::blit(t, dstrect);
+		src = video().to_output(src);
+
+		// swap buffers
+		std::swap(front_, back_);
+
+		// copy from the back to the front buffer
+		auto rts = draw::set_render_target(front_);
+		draw::blit(back_, dst, src);
+
+		// queue repaint
+		draw_manager::invalidate_region(map_area());
 	}
 
 	if(diff_y != 0) {
@@ -1971,7 +1956,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 	scroll_event_.notify_observers();
 
-	redrawMinimap_ = true;
+	redraw_minimap();
 
 	return true;
 }
@@ -2047,10 +2032,6 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	redraw_background_ = true;
 	invalidate_all();
 
-	// Forces a redraw after zooming.
-	// This prevents some graphic glitches from occurring.
-	draw();
-
 	return true;
 }
 
@@ -2101,7 +2082,8 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
 		scroll(xmove,ymove,true);
-		draw();
+		redraw_minimap();
+		events::raise_draw_event();
 		return;
 	}
 
@@ -2158,7 +2140,9 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		scroll(dx,dy,true);
 		x_old += dx;
 		y_old += dy;
-		draw();
+
+		redraw_minimap();
+		events::raise_draw_event();
 	}
 }
 
@@ -2378,9 +2362,11 @@ void display::redraw_everything()
 	if(screen_.update_locked())
 		return;
 
+	DBG_DP << "redrawing everything" << endl;
+
 	invalidateGameStatus_ = true;
 
-	reportRects_.clear();
+	reportLocations_.clear();
 	reportSurfaces_.clear();
 	reports_.clear();
 
@@ -2403,7 +2389,6 @@ void display::redraw_everything()
 		}
 	}
 
-	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
 		labels().recalculate_labels();
 	}
@@ -2447,28 +2432,39 @@ void display::draw(bool update, bool force)
 	//	log_scope("display::draw");
 
 	if(screen_.update_locked() || screen_.faked()) {
+		DBG_DP << "display::draw denied" << endl;
+		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;
 	}
+	//DBG_DP << "display::draw" << endl;
 
+	// TODO: draw_manager - make this check better / kill it
 	if(dirty_) {
+		DBG_DP << "display::draw dirty redraw all" << endl;
+		// TODO: draw_manager - flip_locker is almost certainly unnecessary
 		flip_locker flip_lock(screen_);
 		dirty_ = false;
+		// TODO: draw_manager - remove this and integrate here
 		redraw_everything();
 		return;
 	}
 
-	// Trigger cache rebuild when preference gets changed
-	if(animate_water_ != preferences::animate_water()) {
-		animate_water_ = preferences::animate_water();
-		builder_->rebuild_cache_all();
-	}
-
+	// TODO: draw_manager - why on earth does this need to mess with sync context?
 	set_scontext_unsynced leave_synced_context;
 
-	draw_init();
-	pre_draw();
-	// invalidate animated terrain, units and haloes
-	invalidate_animations();
+	// TODO: draw_manager - redraw background more judiciously
+	if(redraw_background_) {
+		DBG_DP << "display::draw redraw background" << endl;
+		// Full redraw of the background
+		const SDL_Rect clip_rect = map_outside_area();
+		draw::fill(clip_rect, 0, 0, 0);
+		draw::tiled(
+			image::get_texture(theme_.border().background_image),
+			clip_rect
+		);
+		draw_manager::invalidate_region(map_outside_area());
+		redraw_background_ = false;
+	}
 
 	if(!get_map().empty()) {
 		if(!invalidated_.empty()) {
@@ -2477,12 +2473,129 @@ void display::draw(bool update, bool force)
 		}
 		drawing_buffer_commit();
 		post_commit();
-		if (!map_screenshot_) {
-			draw_sidebar();
+	}
+
+	// TODO: draw_manager - what even is this for
+	draw_wrap(update, force);
+
+	// TODO: draw_manager - event hooks rather than this, maybe?
+	post_draw();
+	//DBG_DP << "display::draw done" << endl;
+}
+
+void display::layout()
+{
+	// Ensure render textures are correctly sized and up-to-date
+	update_render_textures(); // TODO
+
+	//DBG_DP << "display::layout" << endl;
+	// TODO: draw_manager - the layout part of this, perhaps
+
+	// TODO: draw_manager - check usage of this and maybe delete, move or rename
+	pre_draw();
+
+	// TODO: draw_manager - should this just be inlined here?
+	draw_init();
+
+	// Trigger cache rebuild when preference gets changed
+	if(animate_water_ != preferences::animate_water()) {
+		animate_water_ = preferences::animate_water();
+		builder_->rebuild_cache_all();
+	}
+
+	// invalidate animated terrain, units and haloes
+	invalidate_animations();
+
+	// update and invalidate reports
+	refresh_reports();
+
+	// Update and invalidate floating labels as necessary
+	font::update_floating_labels();
+	// TODO: draw_manager - rename and organize this sort of stuff
+}
+
+void display::render()
+{
+	// This should render the game map and units.
+	// It is not responsible for halos and floating labels.
+	//DBG_DP << "display::render" << endl;
+
+	// render to the offscreen buffer
+	auto target_setter = draw::set_render_target(front_);
+	draw();
+
+	// update the minimap texture, if necessary
+	// TODO: highdpi - high DPI minimap
+	const rect& area = minimap_area();
+	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
+		recalculate_minimap();
+		if(!minimap_) {
+			ERR_DP << "error creating minimap" << endl;
+			return;
 		}
 	}
-	draw_wrap(update, force);
-	post_draw();
+}
+
+bool display::expose(const SDL_Rect& region)
+{
+	if (region == sdl::empty_rect) { return false; } // TODO temp
+	//DBG_DP << "display::expose " << region << endl;
+	//invalidate_locations_in_rect(region);
+	// TODO: draw_manager - API to get src region in output space
+	rect src_region = region;
+	src_region *= video().get_pixel_scale();
+	//DBG_DP << "  src region " << src_region << endl;
+	//draw::blit(front_, region);
+	draw::blit(front_, region, src_region);
+	//draw();
+	// TODO: draw_manager - halo render region not rely on clip?
+	// TODO: draw_manager - can we rely on clip already being set?
+	auto clipper = draw::set_clip(region);
+	halo_man_.render();
+
+	// These all check for clip region overlap before drawing
+	draw_all_panels();
+	draw_reports();
+	draw_minimap();
+	draw_buttons();
+
+	// TODO: draw_manager - hmm... buttons redraw over tooltips, because they are TLDs
+	font::draw_floating_labels();
+
+	return true; // TODO: draw_manager - maybe don't flip yeah?
+}
+
+rect display::screen_location()
+{
+	assert(!map_screenshot_);
+	//return map_outside_area();
+	// well actually it also has to draw the panels, so
+	return video().draw_area();
+	// TODO: draw_manager - get this from theme perhaps?
+}
+
+void display::update_render_textures()
+{
+	// TODO: draw_manager - tidy these video accessors
+	rect darea = video().draw_area();
+	rect oarea = darea * video().get_pixel_scale();
+
+	// Check that the front buffer size is correct.
+	// Buffers are always resized together, so we only need to check one.
+	point size = front_.get_raw_size();
+	if (size.x == oarea.w && size.y == oarea.h) {
+		// buffers are fine
+		return;
+	}
+
+	// For now, just clobber and regenerate both textures.
+	LOG_DP << "updating display render buffers to " << oarea << endl;
+	front_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
+	front_.set_draw_size(darea.w, darea.h);
+	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
+	back_.set_draw_size(darea.w, darea.h);
+	// TODO: draw_manager - this is gross
+	dirty_ = true;
 }
 
 map_labels& display::labels()
@@ -2504,6 +2617,8 @@ void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
 	auto clipper = draw::set_clip(clip_rect);
+	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes"
+		<< " with clip " << clip_rect << endl;
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
@@ -2515,6 +2630,7 @@ void display::draw_invalidated() {
 		}
 		draw_hex(loc);
 		drawn_hexes_+=1;
+		draw_manager::invalidate_region(hex_rect.intersect(clip_rect));
 	}
 	invalidated_hexes_ += invalidated_.size();
 
@@ -2734,7 +2850,8 @@ void display::refresh_report(const std::string& report_name, const config * new_
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_name].reset();
+		// TODO: draw_manager omfg why are there unused reports here
+		//WRN_DP << "no report '" << report_name << "' in theme" << endl;
 		return;
 	}
 
@@ -2752,47 +2869,30 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	if ( new_cfg == nullptr )
 		new_cfg = &generated_cfg;
 
-	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(screen_.draw_area());
-	texture &bg_restore = reportSurfaces_[report_name];
+	rect& loc = reportLocations_[report_name];
+	// TODO: draw_manager - rect
+	const SDL_Rect& new_loc = item->location(screen_.draw_area());
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (bg_restore && rect == new_rect && report == *new_cfg) {
+	if (loc == new_loc && report == *new_cfg) {
 		return;
 	}
 
-	// Update the config in reports_.
+	DBG_DP << "updating report: " << report_name << endl;
+
+	// Mark both old and new locations for redraw.
+	draw_manager::invalidate_region(loc);
+	draw_manager::invalidate_region(new_loc);
+
+	// Update the config and current location.
 	report = *new_cfg;
+	loc = new_loc;
 
-	// TODO: highdpi - remove background restorer
-	if (bg_restore) {
-		draw::blit(bg_restore, rect);
-	}
-
-	// If the rectangle has just changed, assign the surface to it
-	if (!bg_restore || new_rect != rect)
-	{
-		bg_restore.reset();
-		rect = new_rect;
-
-		// If the rectangle is present, and we are blitting text,
-		// then we need to backup the surface.
-		// (Images generally won't need backing up,
-		// unless they are transparent, but that is done later).
-		if (rect.w > 0 && rect.h > 0) {
-			bg_restore = texture(screen_.read_pixels_low_res(&rect));
-			if (!reportSurfaces_[report_name]) {
-				ERR_DP << "Could not backup background for report!" << std::endl;
-			}
-		}
-	}
-
-	tooltips::clear_tooltips(rect);
+	// TODO: draw_manager - verify this is okay here
+	tooltips::clear_tooltips(loc);
 
 	if (report.empty()) return;
-
-	int x = rect.x, y = rect.y;
 
 	// Add prefix, postfix elements.
 	// Make sure that they get the same tooltip
@@ -2810,17 +2910,36 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		e["tooltip"] = report.child("element", -1)["tooltip"];
 	}
 
+	// Do a fake run of drawing the report, so tooltips can be determined.
+	// TODO: this is horrible, refactor reports to actually make sense
+	draw_report(report_name, true);
+}
+
+void display::draw_report(const std::string& report_name, bool tooltip_test)
+{
+	const theme::status_item *item = theme_.get_status_item(report_name);
+	if (!item) {
+		// TODO: draw_manager unused report_clock report_battery WTF
+		//WRN_DP << "no report '" << report_name << "' in theme" << endl;
+		return;
+	}
+
+	const rect& loc = reportLocations_[report_name];
+	const config& report = reports_[report_name];
+
+	int x = loc.x, y = loc.y;
+
 	// Loop through and display each report element.
 	int tallest = 0;
 	int image_count = 0;
 	bool used_ellipsis = false;
 	std::ostringstream ellipsis_tooltip;
-	SDL_Rect ellipsis_area = rect;
+	SDL_Rect ellipsis_area = loc;
 
 	for (config::const_child_itors elements = report.child_range("element");
 		 elements.begin() != elements.end(); elements.pop_front())
 	{
-		SDL_Rect area {x, y, rect.w + rect.x - x, rect.h + rect.y - y};
+		SDL_Rect area {x, y, loc.w + loc.x - x, loc.h + loc.y - y};
 		if (area.h <= 0) break;
 
 		std::string t = elements.front()["text"];
@@ -2828,6 +2947,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		{
 			if (used_ellipsis) goto skip_element;
 
+			// TODO: draw_manager - don't render if faking
 			// Draw a text element.
 			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
@@ -2838,7 +2958,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			text.set_link_aware(false)
 				.set_text(t, true);
 			text.set_family_class(font::FONT_SANS_SERIF)
-			    .set_font_size(item->font_size())
+				.set_font_size(item->font_size())
 				.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(PANGO_ALIGN_LEFT)
 				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : font::NORMAL_COLOR)
@@ -2852,7 +2972,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
 			config::const_child_iterator ee = elements.begin();
-			if (!eol && rect.w - (x - rect.x + s.w()) < minimal_text &&
+			if (!eol && loc.w - (x - loc.x + s.w()) < minimal_text &&
 				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
@@ -2871,12 +2991,14 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 			area.w = s.w();
 			area.h = s.h();
-			draw::blit(s, area);
+			if (!tooltip_test) {
+				draw::blit(s, area);
+			}
 			if (area.h > tallest) {
 				tallest = area.h;
 			}
 			if (eol) {
-				x = rect.x;
+				x = loc.x;
 				y += tallest;
 				tallest = 0;
 			} else {
@@ -2891,7 +3013,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			texture img(image::get_texture(t));
 
 			if (!img) {
-				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
+				ERR_DP << "could not find image for report: '" << t << "'" << endl;
 				continue;
 			}
 
@@ -2903,7 +3025,9 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 			if (img.w() < area.w) area.w = img.w();
 			if (img.h() < area.h) area.h = img.h();
-			draw::blit(img, area);
+			if (!tooltip_test) {
+				draw::blit(img, area);
+			}
 
 			++image_count;
 			if (area.h > tallest) {
@@ -2925,7 +3049,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		skip_element:
 		t = elements.front()["tooltip"].t_str().c_str();
 		if (!t.empty()) {
-			if (!used_ellipsis) {
+			if (tooltip_test && !used_ellipsis) {
 				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().c_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
@@ -2939,8 +3063,21 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		}
 	}
 
-	if (used_ellipsis) {
+	if (tooltip_test && used_ellipsis) {
 		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
+	}
+}
+
+// TODO: draw_manager - pass in bounds in stead of using clip region
+// TODO: draw_manager - return whether anything was drawn
+void display::draw_reports()
+{
+	for(const auto& it : reports_) {
+		const std::string& name = it.first;
+		const rect& loc = reportLocations_[name];
+		if(loc.overlaps(draw::get_clip())) {
+			draw_report(name);
+		}
 	}
 }
 
@@ -3009,8 +3146,11 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 	if(invalidateAll_)
 		return false;
 
+	DBG_DP << "invalidating locations in " << rect << endl;
+
 	bool result = false;
 	for(const map_location& loc : hexes_under_rect(rect)) {
+		//DBG_DP << "invalidating " << loc.x << ',' << loc.y << endl;
 		result |= invalidate(loc);
 	}
 	return result;
@@ -3029,6 +3169,7 @@ void display::invalidate_animations_location(const map_location& loc)
 
 void display::invalidate_animations()
 {
+	// TODO: draw_manager - WTF... how does this timing even work?
 	new_animation_frame();
 	animate_map_ = preferences::animate_map();
 	if(animate_map_) {
@@ -3061,7 +3202,7 @@ void display::invalidate_animations()
 		}
 	} while(new_inval);
 
-	halo_man_->unrender(invalidated_);
+	halo_man_.update();
 }
 
 void display::reset_standing_animations()
@@ -3156,30 +3297,6 @@ void display::process_reachmap_changes()
 	}
 	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
-}
-
-void display::handle_window_event(const SDL_Event& event)
-{
-	if(event.type == SDL_WINDOWEVENT) {
-		switch(event.window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-		case SDL_WINDOWEVENT_RESTORED:
-		case SDL_WINDOWEVENT_EXPOSED:
-			dirty_ = true;
-
-			break;
-		}
-	}
-}
-
-void display::handle_event(const SDL_Event& event)
-{
-	if(gui2::dialogs::loading_screen::displaying()) {
-		return;
-	}
-	if(event.type == DRAW_ALL_EVENT) {
-		draw();
-	}
 }
 
 display *display::singleton_ = nullptr;

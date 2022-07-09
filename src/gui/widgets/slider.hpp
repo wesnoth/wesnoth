@@ -111,7 +111,7 @@ public:
 	void set_best_slider_length(const unsigned length)
 	{
 		best_slider_length_ = length;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does the above change the size?
 	}
 
 	void set_value_range(int min_value, int max_value);

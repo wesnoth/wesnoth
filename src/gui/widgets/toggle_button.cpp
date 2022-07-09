@@ -107,7 +107,7 @@ void toggle_button::update_canvas()
 		canvas.set_variable("icon", wfl::variant(icon_name_));
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void toggle_button::set_value(unsigned selected, bool fire_event)
@@ -117,7 +117,7 @@ void toggle_button::set_value(unsigned selected, bool fire_event)
 		return;
 	}
 	state_num_ = selected;
-	set_is_dirty(true);
+	queue_redraw();
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
@@ -143,7 +143,7 @@ void toggle_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 

@@ -18,6 +18,7 @@
 #include "font/font_options.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <pango/pango.h>

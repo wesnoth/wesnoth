@@ -19,6 +19,7 @@ class surface;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
+#include "gui/core/top_level_drawable.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -49,7 +50,7 @@ private:
 	bool reset_to;
 };
 
-class dialog_frame :public video2::draw_layering {
+class dialog_frame : public gui2::top_level_drawable {
 public:
 	struct dimension_measurements {
 		dimension_measurements();
@@ -68,7 +69,7 @@ public:
 
 	dialog_frame(CVideo &video, const std::string& title="",
 		const style& dialog_style=default_style,
-		bool auto_restore=true, std::vector<button*>* buttons=nullptr,
+		std::vector<button*>* buttons=nullptr,
 		button* help_button=nullptr);
 	~dialog_frame();
 
@@ -82,6 +83,15 @@ public:
 
 	void draw();
 
+	/** Called by draw_manager to validate layout. */
+	virtual void layout() override;
+
+	/** Called by draw_manager when it believes a redraw is necessary. */
+	virtual bool expose(const SDL_Rect &region) override;
+
+	/** The current draw location of the window, on the screen. */
+	virtual rect screen_location() override;
+
 	//called by draw
 	void draw_border();
 	void draw_background();
@@ -91,9 +101,6 @@ public:
 
 	void set_dirty(bool dirty = true);
 
-	virtual void handle_event(const SDL_Event&);
-	void handle_window_event(const SDL_Event& event);
-
 private:
 	void clear_background();
 
@@ -102,7 +109,6 @@ private:
 	const style& dialog_style_;
 	std::vector<button*>* buttons_;
 	button* help_button_;
-	surface_restorer* restorer_;
 	bool auto_restore_;
 	dimension_measurements dim_;
 	texture top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;

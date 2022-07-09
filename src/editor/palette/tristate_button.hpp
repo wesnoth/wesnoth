@@ -66,10 +66,6 @@ public:
 		item_id_ = id;
 	}
 
-	void draw() override {
-		widget::draw();
-	}
-
 protected:
 
 	virtual void handle_event(const SDL_Event& event) override;

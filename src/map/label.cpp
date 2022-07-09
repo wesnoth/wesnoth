@@ -496,8 +496,9 @@ void terrain_label::calculate_shroud()
 
 	// tooltips::update_tooltip(tooltip_handle, get_rect(), tooltip_.str(), "", true);
 
+	// TODO: draw_manager - why the fuck is this happening in "calculate_shroud"?
 	if(tooltip_handle_) {
-		tooltips::update_tooltip(tooltip_handle_, get_rect(), tooltip_.str(), "", true);
+		tooltips::update_tooltip(tooltip_handle_, get_rect(), tooltip_.str());
 	} else {
 		tooltip_handle_ = tooltips::add_tooltip(get_rect(), tooltip_.str());
 	}

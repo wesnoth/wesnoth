@@ -76,7 +76,7 @@ int intf_show_dialog(lua_State* L)
 	}
 
 	gui2::open_window_stack.push_back(wp.get());
-	int v = wp->show(true, 0);
+	int v = wp->show();
 	gui2::remove_from_window_stack(wp.get());
 
 	if (!lua_isnoneornil(L, 3)) {
@@ -330,7 +330,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 
 	config cfg = luaW_checkconfig(L, 3);
 	cv[i - 1].set_cfg(cfg);
-	c->set_is_dirty(true);
+	c->queue_redraw();
 	return 0;
 }
 

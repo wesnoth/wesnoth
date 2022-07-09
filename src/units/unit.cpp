@@ -2639,6 +2639,7 @@ void unit::set_hidden(bool state) const
 		return;
 	}
 
+	// TODO: this should really hide the halo, not destroy it
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
 }

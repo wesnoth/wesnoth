@@ -35,43 +35,44 @@ namespace editor {
 
 void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 {
-	if (hex != previous_move_hex_) {
+	if (hex == previous_move_hex_) {
+		return;
+	}
 
-		update_brush_highlights(disp, hex);
+	update_brush_highlights(disp, hex);
 
-		std::set<map_location> adjacent_set;
-		for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
-			adjacent_set.insert(adj);
+	std::set<map_location> adjacent_set;
+	for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
+		adjacent_set.insert(adj);
+	}
+
+	disp.invalidate(adjacent_set);
+	previous_move_hex_ = hex;
+
+	const unit_map& units = disp.get_units();
+	const unit_map::const_unit_iterator unit_it = units.find(hex);
+	if (unit_it != units.end()) {
+
+		disp.clear_mouseover_hex_overlay();
+
+		SDL_Rect rect;
+		rect.x = disp.get_location_x(hex);
+		rect.y = disp.get_location_y(hex);
+		rect.h = disp.hex_size();
+		rect.w = disp.hex_size();
+		std::stringstream str;
+		str << _("Identifier: ") << unit_it->id()     << "\n";
+		if(unit_it->name() != "") {
+			str	<< _("Name: ")    << unit_it->name()      << "\n";
 		}
-
-		disp.invalidate(adjacent_set);
-		previous_move_hex_ = hex;
-
-		const unit_map& units = disp.get_units();
-		const unit_map::const_unit_iterator unit_it = units.find(hex);
-		if (unit_it != units.end()) {
-
-			disp.clear_mouseover_hex_overlay();
-
-			SDL_Rect rect;
-			rect.x = disp.get_location_x(hex);
-			rect.y = disp.get_location_y(hex);
-			rect.h = disp.hex_size();
-			rect.w = disp.hex_size();
-			std::stringstream str;
-			str << _("Identifier: ") << unit_it->id()     << "\n";
-			if(unit_it->name() != "") {
-				str	<< _("Name: ")    << unit_it->name()      << "\n";
-			}
-			str	<< _("Type: ")    << unit_it->type_name() << "\n"
-				<< _("Level: ")   << unit_it->level()     << "\n"
-				<< _("Cost: ")    << unit_it->cost()      << "\n";
-			tooltips::clear_tooltips();
-			tooltips::add_tooltip(rect, str.str());
-		}
-		else {
-			set_mouse_overlay(disp);
-		}
+		str	<< _("Type: ")    << unit_it->type_name() << "\n"
+			<< _("Level: ")   << unit_it->level()     << "\n"
+			<< _("Cost: ")    << unit_it->cost()      << "\n";
+		tooltips::clear_tooltips();
+		tooltips::add_tooltip(rect, str.str());
+	}
+	else {
+		set_mouse_overlay(disp);
 	}
 }
 

@@ -17,6 +17,7 @@
 
 #include "gui/core/event/handler.hpp"
 
+#include "draw_manager.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/core/log.hpp"
@@ -563,13 +564,8 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 		keyboard_focus_ = nullptr;
 	}
 
-	/***** Set proper state for the other dispatchers. *****/
-	for(auto d : dispatchers_)
-	{
-		dynamic_cast<widget&>(*d).set_is_dirty(true);
-	}
-
-	activate();
+	// TODO: draw_manager - Why TF was this "activate"ing on "disconnect"? Seriously WTF?
+	//activate();
 
 	/***** Validate post conditions. *****/
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp)
@@ -592,6 +588,7 @@ void sdl_event_handler::activate()
 
 void sdl_event_handler::draw()
 {
+	/*
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
@@ -600,14 +597,16 @@ void sdl_event_handler::draw()
 	if(!dispatchers_.empty()) {
 		CVideo::get_singleton().render_screen();
 	}
+	*/
+
+	draw_manager::sparkle();
 }
 
 void sdl_event_handler::draw_everything()
 {
-	for(auto dispatcher : dispatchers_) {
-		dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
-	}
-
+	// TODO: draw_manager - look into usage of this
+	//std::cerr << "sdl_event_handler::draw_everything" << std::endl;
+	draw_manager::invalidate_region(CVideo::get_singleton().draw_area());
 	draw();
 }
 

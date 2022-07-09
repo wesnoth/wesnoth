@@ -32,10 +32,12 @@ bool mouse_action::has_context_menu() const
 
 void mouse_action::move(editor_display& disp, const map_location& hex)
 {
-	if (hex != previous_move_hex_) {
-		update_brush_highlights(disp, hex);
-		previous_move_hex_ = hex;
+	if (hex == previous_move_hex_) {
+		return;
 	}
+
+	update_brush_highlights(disp, hex);
+	previous_move_hex_ = hex;
 }
 
 void mouse_action::update_brush_highlights(editor_display& disp, const map_location& hex)

@@ -85,12 +85,8 @@ public:
 	void update_contents(const std::string & str)
 	{
 		assert(msg_label);
-
 		msg_label->set_label(str);
-		window_->set_callback_next_draw([this]()
-		{
-			msg_label->scroll_vertical_scrollbar(scrollbar_base::END);
-		});
+		msg_label->scroll_vertical_scrollbar(scrollbar_base::END);
 	}
 
 	void pg_up()
@@ -516,7 +512,7 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 
 		// Commands such as `wesnoth.interface.zoom` might cause the display to redraw and leave the window half-drawn.
 		// This preempts that.
-		window.set_is_dirty(true);
+		window.queue_redraw();
 
 		LOG_LUA << "finished executing\n";
 	} else if(key == SDLK_TAB) {	// handle tab completion

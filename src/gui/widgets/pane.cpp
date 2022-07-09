@@ -177,16 +177,6 @@ void pane::impl_draw_children()
 	}
 }
 
-void pane::child_populate_dirty_list(window& caller,
-									  const std::vector<widget*>& call_stack)
-{
-	for(auto & item : items_)
-	{
-		std::vector<widget*> child_call_stack = call_stack;
-		item.item_grid->populate_dirty_list(caller, child_call_stack);
-	}
-}
-
 void pane::sort(const compare_functor_t& compare_functor)
 {
 	items_.sort(compare_functor);

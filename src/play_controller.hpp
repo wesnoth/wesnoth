@@ -67,7 +67,7 @@ namespace pathfind {
 }
 
 namespace tooltips {
-	struct manager;
+	class manager;
 } // namespace tooltips
 
 namespace wb {
@@ -364,7 +364,7 @@ protected:
 	saved_game& saved_game_;
 
 	//managers
-	std::unique_ptr<tooltips::manager> tooltips_manager_;
+	tooltips::manager tooltips_manager_;
 
 	//whiteboard manager
 	std::shared_ptr<wb::manager> whiteboard_manager_;

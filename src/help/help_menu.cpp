@@ -35,7 +35,6 @@ help_menu::help_menu(CVideo &video, const section& toplevel, int max_height) :
 	visible_items_(),
 	toplevel_(toplevel),
 	expanded_(),
-	restorer_(),
 	chosen_topic_(nullptr),
 	selected_item_(&toplevel, "", 0)
 {

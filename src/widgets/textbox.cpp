@@ -173,6 +173,13 @@ void textbox::draw_cursor(int pos) const
 	}
 }
 
+void textbox::layout()
+{
+	if(text_image_ == nullptr) {
+		update_text_cache(true);
+	}
+}
+
 void textbox::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
@@ -185,10 +192,6 @@ void textbox::draw_contents()
 	draw::fill(loc, c);
 
 	rect src;
-
-	if(text_image_ == nullptr) {
-		update_text_cache(true);
-	}
 
 	if(text_image_ != nullptr) {
 		src.y = yscroll_;
@@ -709,17 +712,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	if (event.type == SDL_TEXTINPUT && listening_) {
 		changed = handle_text_input(event);
-	} else
-		if (event.type == SDL_KEYDOWN) {
-			changed = handle_key_down(event);
+	} else if (event.type == SDL_KEYDOWN) {
+		changed = handle_key_down(event);
 	}
-	else {
-		if(event.type != SDL_KEYDOWN || (!was_forwarded && focus(&event) != true)) {
-			draw();
-			return;
-		}
-	}
-
 
 	if(is_selection() && (selend_ != cursor_))
 		selstart_ = selend_ = -1;

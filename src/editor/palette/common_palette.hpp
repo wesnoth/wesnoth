@@ -66,7 +66,6 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& target) = 0;
-	virtual void draw() = 0;
 
 	//group
 	virtual void set_group(std::size_t index) = 0;

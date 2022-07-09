@@ -201,7 +201,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			if(side_changed) {
 				display::get_singleton()->redraw_everything();
 				display::get_singleton()->recalculate_minimap();
-				video2::trigger_full_redraw();
+				// TODO: decide what should replace this
+				//video2::trigger_full_redraw();
 			}
 		};
 

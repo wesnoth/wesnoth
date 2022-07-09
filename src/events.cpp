@@ -18,6 +18,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
+#include "draw_manager.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
@@ -692,17 +693,9 @@ void pump()
 		}
 
 		case DRAW_ALL_EVENT: {
-			flip_locker flip_lock(CVideo::get_singleton());
-
-			/* Iterate backwards as the most recent things will be at the top */
-			// FIXME? ^ that isn't happening here.
-			for(auto& context : event_contexts) {
-				for(auto handler : context.handlers) {
-					handler->handle_event(event);
-				}
-			}
-
-			continue; // do not do further handling here
+			draw_manager::invalidate_region(CVideo::get_singleton().draw_area());
+			// Nothing else needs to or should ever react to this.
+			continue;
 		}
 
 #ifndef __APPLE__
@@ -781,51 +774,14 @@ void raise_resize_event()
 
 void raise_draw_event()
 {
-	if(event_contexts.empty() == false) {
-		event_contexts.back().add_staging_handlers();
-
-		// Events may cause more event handlers to be added and/or removed,
-		// so we must use indexes instead of iterators here.
-		for(auto handler : event_contexts.back().handlers) {
-			handler->draw();
-		}
-	}
+	draw_manager::sparkle();
 }
 
 void raise_draw_all_event()
 {
-	for(auto& context : event_contexts) {
-		for(auto handler : context.handlers) {
-			handler->draw();
-		}
-	}
-}
-
-void raise_volatile_draw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_draw_all_event()
-{
-	for(auto& context : event_contexts) {
-		for(auto handler : context.handlers) {
-			handler->volatile_draw();
-		}
-	}
-}
-
-void raise_volatile_undraw_event()
-{
-	if(event_contexts.empty() == false) {
-		for(auto handler : event_contexts.back().handlers) {
-			handler->volatile_undraw();
-		}
-	}
+	// TODO: draw_manager - look into usage of this
+	//std::cerr << "draw all event raised" << std::endl;
+	draw_manager::sparkle();
 }
 
 void raise_help_string_event(int mousex, int mousey)

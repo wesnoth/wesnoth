@@ -66,9 +66,9 @@ public:
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
 
-	virtual void draw() override {
-		widget::draw();
-	}
+	/** Called by draw_manager to validate layout before drawing. */
+	virtual void layout() override;
+	/** Called by widget::draw() */
 	virtual void draw_contents() override;
 
 	void next_group() override {

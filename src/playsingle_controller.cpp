@@ -518,7 +518,6 @@ void playsingle_controller::linger()
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->invalidate_theme();
 	gui_->redraw_everything();
 
 	try {
@@ -537,7 +536,6 @@ void playsingle_controller::linger()
 
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->invalidate_theme();
 	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 

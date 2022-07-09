@@ -93,7 +93,7 @@ void repeating_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 
 		if(state_ == DISABLED && repeat_timer_) {
 			remove_timer(repeat_timer_);

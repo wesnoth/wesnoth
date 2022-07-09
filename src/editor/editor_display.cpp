@@ -98,7 +98,7 @@ rect editor_display::get_clip_rect() const
 	return map_outside_area();
 }
 
-void editor_display::draw_sidebar()
+void editor_display::refresh_reports()
 {
 	config element;
 	config::attribute_value &text = element.add_child("element")["text"];

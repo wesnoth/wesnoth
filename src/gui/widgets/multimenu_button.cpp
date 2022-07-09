@@ -89,7 +89,7 @@ void multimenu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -229,7 +229,7 @@ void multimenu_button::select_options(boost::dynamic_bitset<> states)
 
 void multimenu_button::set_values(const std::vector<::config>& values)
 {
-	set_is_dirty(true);
+	queue_redraw(); // TODO: draw_manager - does this need a relayout first?
 
 	values_ = values;
 	toggle_states_.resize(values_.size(), false);

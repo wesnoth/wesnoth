@@ -29,18 +29,19 @@ namespace editor {
 
 void mouse_action_item::move(editor_display& disp, const map_location& hex)
 {
-	if (hex != previous_move_hex_) {
-
-		update_brush_highlights(disp, hex);
-
-		std::set<map_location> adjacent_set;
-		for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
-			adjacent_set.insert(adj);
-		}
-
-		disp.invalidate(adjacent_set);
-		previous_move_hex_ = hex;
+	if (hex == previous_move_hex_) {
+		return;
 	}
+
+	update_brush_highlights(disp, hex);
+
+	std::set<map_location> adjacent_set;
+	for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
+		adjacent_set.insert(adj);
+	}
+
+	disp.invalidate(adjacent_set);
+	previous_move_hex_ = hex;
 }
 
 std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& disp, int x, int y)

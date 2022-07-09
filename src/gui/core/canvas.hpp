@@ -139,12 +139,6 @@ public:
 		variables_.add(key, std::move(value));
 	}
 
-	// TODO: highdpi - find everywhere that is calling this, and determine why.
-	void set_is_dirty(bool)
-	{
-		update_size_variables();
-	}
-
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<std::unique_ptr<shape>> shapes_;

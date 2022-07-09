@@ -15,26 +15,30 @@
 
 #pragma once
 
+#include "gui/core/top_level_drawable.hpp"
+#include "sdl/rect.hpp"
+
 #include <string>
-#include "sdl/surface.hpp"
 
 struct SDL_Rect;
 
 namespace tooltips {
 
-struct manager
+class manager : public gui2::top_level_drawable
 {
+public:
 	manager();
 	~manager();
+	// TLD interface
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect& region) override;
+	virtual rect screen_location() override;
 };
 
 void clear_tooltips();
 void clear_tooltips(const SDL_Rect& rect);
-int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true, const surface& foreground = surface(nullptr));
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup, const surface& foreground);
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup);
+int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="");
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message);
 void remove_tooltip(int id);
 void process(int mousex, int mousey);
 

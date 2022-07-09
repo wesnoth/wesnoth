@@ -24,6 +24,10 @@
 #include "scripting/plugins/manager.hpp"
 #include "video.hpp"
 
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
+
 namespace gui2::dialogs
 {
 modal_dialog::modal_dialog()
@@ -32,7 +36,6 @@ modal_dialog::modal_dialog()
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()
-	, restore_(false)
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
@@ -57,6 +60,7 @@ namespace {
 bool modal_dialog::show(const unsigned auto_close_time)
 {
 	if(CVideo::get_singleton().faked() && !show_even_without_video_) {
+		DBG_DP << "modal_dialog::show denied" << std::endl;
 		if(!allow_plugin_skip_) {
 			return false;
 		}
@@ -87,7 +91,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	{ // Scope the window stack
 		cursor::setter cur{cursor::NORMAL};
 		window_stack_handler push_window_stack(window_);
-		retval_ = window_->show(restore_, auto_close_time);
+		retval_ = window_->show(auto_close_time);
 	}
 
 	/*

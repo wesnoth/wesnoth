@@ -50,7 +50,7 @@ protected:
 	virtual overlay_map& get_overlays() override;
 
 	rect get_clip_rect() const override;
-	void draw_sidebar() override;
+	void refresh_reports() override;
 
 	std::set<map_location> brush_locations_;
 

@@ -62,11 +62,7 @@ void palette_manager::scroll_down()
 	bool scrolled = active_palette().scroll_down();
 
 	if (scrolled) {
-
-//		const SDL_Rect& rect = gui_.palette_area();
-//		bg_restore(rect);
 		set_dirty();
-		draw();
 	}
 }
 
@@ -83,11 +79,9 @@ bool palette_manager::can_scroll_down()
 void palette_manager::scroll_up()
 {
 	bool scrolled_up = active_palette().scroll_up();
+
 	if(scrolled_up) {
-//		const SDL_Rect rect = gui_.palette_area();
-//		bg_restore(rect);
 		set_dirty();
-		draw();
 	}
 }
 
@@ -96,6 +90,7 @@ void palette_manager::scroll_top()
 	restore_palette_bg(true);
 }
 
+// TODO: draw_manager - can probably remove this...
 void palette_manager::restore_palette_bg(bool scroll_top)
 {
 	const SDL_Rect rect = gui_.palette_area();
@@ -121,15 +116,11 @@ void palette_manager::scroll_bottom()
 	}
 }
 
-void palette_manager::draw_contents()
+void palette_manager::layout()
 {
-	//if (!dirty() && !force) {
-	//	return;
-	//}
-
-	const SDL_Rect &loc = location();
-
-	tooltips::clear_tooltips(loc);
+	if (!dirty()) {
+		return;
+	}
 
 	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
@@ -141,12 +132,15 @@ void palette_manager::draw_contents()
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 
-//	bg_restore(loc);
 	active_palette().set_dirty(true);
 	active_palette().hide(false);
-	active_palette().draw();
 
-//	set_dirty(false);
+	set_dirty(false);
+}
+
+void palette_manager::draw_contents()
+{
+	active_palette().draw();
 }
 
 sdl_handler_vector palette_manager::handler_members()
@@ -166,10 +160,14 @@ void palette_manager::handle_event(const SDL_Event& event) {
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
 		if (location().contains(event.button.x, event.button.y)) {
-			if (!focus(&event)) set_focus(true);
+			if (!focus(&event)) {
+				set_focus(true);
+			}
 		}
 		// If the mouse is outside, remove focus.
-		else if (focus(&event)) set_focus(false);
+		else if (focus(&event)) {
+			set_focus(false);
+		}
 	}
 	if (!focus(&event)) {
 		return;

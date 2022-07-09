@@ -166,6 +166,9 @@ public:
 	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
 				   bool keep_viewport=false);
 
+	/** top_level_drawable */
+	virtual void layout() override;
+
 	/**
 	 * Set a new max height for this menu. Note that this does not take
 	 * effect immediately, only after certain operations that clear
@@ -186,7 +189,8 @@ public:
 	void set_click_selects(bool value);
 	void set_numeric_keypress_selection(bool value);
 
-	void scroll(unsigned int pos);
+	// scrollarea override
+	void scroll(unsigned int pos) override;
 
 	//currently, menus do not manage the memory of their sorter
 	//this should be changed to a more object-oriented approach
@@ -197,10 +201,10 @@ public:
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;
-	virtual void handle_event(const SDL_Event& event);
-	void set_inner_location(const SDL_Rect& rect);
+	virtual void handle_event(const SDL_Event& event) override;
+	void set_inner_location(const SDL_Rect& rect) override;
 
-	bool requires_event_focus(const SDL_Event *event=nullptr) const;
+	bool requires_event_focus(const SDL_Event *event=nullptr) const override;
 	const std::vector<int>& column_widths() const;
 	virtual void draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
@@ -236,7 +240,7 @@ private:
 	mutable int heading_height_;
 
 	void create_help_strings();
-	void process_help_string(int mousex, int mousey);
+	void process_help_string(int mousex, int mousey) override;
 
 	std::pair<int,int> cur_help_;
 	int help_string_;
@@ -256,8 +260,7 @@ private:
 	void column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const;
 
 	void clear_item(int item);
-	void draw_contents();
-	void draw();
+	void draw_contents() override;
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 

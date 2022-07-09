@@ -55,6 +55,8 @@ namespace wb {
 #include "filesystem.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
+#include "gui/core/top_level_drawable.hpp"
+#include "halo.hpp"
 #include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "time_of_day.hpp"
@@ -78,15 +80,14 @@ namespace wb {
 
 class gamemap;
 
-class display : public video2::draw_layering
+class display : public gui2::top_level_drawable
 {
 public:
 	display(const display_context* dc,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
 		const std::string& theme_id,
-		const config& level,
-		bool auto_join = true);
+		const config& level);
 
 	virtual ~display();
 	/**
@@ -179,9 +180,7 @@ public:
 		return *dc_;
 	}
 
-	void reset_halo_manager();
-	void reset_halo_manager(halo::manager & hm);
-	halo::manager & get_halo_manager() { return *halo_man_; }
+	halo::manager& get_halo_manager() { return halo_man_; }
 
 	/**
 	 * Applies r,g,b coloring to the map.
@@ -404,11 +403,22 @@ public:
 
 	void layout_buttons();
 
-	void render_buttons();
+	void draw_buttons();
 
-	void invalidate_theme() { panelsDrawn_ = false; }
-
+	/** Update the given report. Actual drawing is done in draw_report(). */
 	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
+
+	/**
+	 * Draw the specified report.
+	 *
+	 * If test_run is true, it will simulate the draw without actually
+	 * drawing anything. This will add any overflowing information to the
+	 * report tooltip, and also registers the tooltip.
+	 */
+	void draw_report(const std::string& report_name, bool test_run = false);
+
+	/** Draw all reports. This will respect the clipping region, if set. */
+	void draw_reports();
 
 	void draw_minimap_units();
 
@@ -566,6 +576,27 @@ public:
 
 	void draw(bool update, bool force);
 
+	/** Called by draw_manager to finalize screen layout. */
+	virtual void layout() override;
+
+	/** Called by draw_manager to update offscreen render buffers. */
+	virtual void render() override;
+
+	/** Called by draw_manager when it believes a redraw is necessary. */
+	virtual bool expose(const SDL_Rect& region) override;
+
+	/** The current draw location of the display, on the screen. */
+	virtual rect screen_location() override;
+
+private:
+	/** Render textures, for intermediate rendering. */
+	texture front_ = {};
+	texture back_ = {};
+
+	/** Ensure render textures are valid and correct. */
+	void update_render_textures();
+
+public:
 	map_labels& labels();
 	const map_labels& labels() const;
 
@@ -598,13 +629,19 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_.reset(); redrawMinimap_ = true; }
+	void recalculate_minimap();
 
 	/**
 	 * Schedule the minimap to be redrawn.
 	 * Useful if units have moved about on the map.
 	 */
-	void redraw_minimap() { redrawMinimap_ = true; }
+	void redraw_minimap();
+
+private:
+	/** Actually draw the minimap. */
+	void draw_minimap();
+
+public:
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
 
@@ -614,9 +651,6 @@ public:
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
-
-	virtual void handle_event(const SDL_Event& );
-	virtual void handle_window_event(const SDL_Event& event);
 
 private:
 	void read(const config& cfg);
@@ -640,7 +674,7 @@ private:
 protected:
 	//TODO sort
 	const display_context * dc_;
-	std::unique_ptr<halo::manager> halo_man_;
+	halo::manager halo_man_;
 	std::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
@@ -688,12 +722,12 @@ protected:
 	virtual void draw_hex(const map_location& loc);
 
 	/**
-	 * Called near the end of a draw operation, derived classes can use this
-	 * to render a specific sidebar. Very similar to post_commit.
+	 * Choose which reports, if any, to refresh.
+	 *
+	 * This function should make individual refresh_report() calls for
+	 * whichever reports need to be updated.
 	 */
-	virtual void draw_sidebar() {}
-
-	void draw_minimap();
+	virtual void refresh_reports() {}
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
@@ -733,11 +767,9 @@ protected:
 	const std::unique_ptr<terrain_builder> builder_;
 	texture minimap_;
 	SDL_Rect minimap_location_;
-	bool redrawMinimap_;
 	bool redraw_background_;
 	bool invalidateAll_;
 	int diagnostic_label_;
-	bool panelsDrawn_;
 	bool invalidateGameStatus_;
 	const std::unique_ptr<map_labels> map_labels_;
 	reports * reports_object_;
@@ -752,7 +784,7 @@ protected:
 	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
-	std::map<std::string, SDL_Rect> reportRects_;
+	std::map<std::string, rect> reportLocations_;
 	std::map<std::string, texture> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
@@ -1012,7 +1044,11 @@ protected:
 
 	/** redraw all panels associated with the map display */
 	void draw_all_panels();
+private:
+	void draw_panel(const theme::panel& panel);
+	void draw_label(const theme::label& label);
 
+protected:
 
 	/**
 	 * Initiate a redraw.

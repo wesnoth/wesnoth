@@ -238,6 +238,7 @@ void custom_tod::update_tod_display()
 	// theme UI sidebar after redrawing tiles and before we have a
 	// chance to redraw the rest of this window.
 	get_window()->undraw();
+	// TODO: draw_manager - do this properly, probably by removing this undraw
 
 	// NOTE: We only really want to re-render the gamemap tiles here.
 	// Redrawing everything is a significantly more expensive task.
@@ -253,11 +254,8 @@ void custom_tod::update_tod_display()
 	// invalidate all tiles so they are redrawn with the new ToD tint next
 	disp->invalidate_all();
 
-	// redraw tiles
-	disp->draw(false);
-
 	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
-	get_window()->set_is_dirty(true);
+	get_window()->queue_redraw();
 }
 
 void custom_tod::update_lawful_bonus()

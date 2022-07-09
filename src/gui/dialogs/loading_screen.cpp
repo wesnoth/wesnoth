@@ -22,6 +22,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 
 #include "cursor.hpp"
+#include "draw_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
@@ -31,6 +32,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 
 #include <cstdlib>
@@ -40,6 +42,9 @@ static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define ERR_LS LOG_STREAM(err, log_loadscreen)
 #define WRN_LS LOG_STREAM(warn, log_loadscreen)
+
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
 
 static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::build_terrain,       N_("Building terrain rules") },
@@ -104,10 +109,6 @@ void loading_screen::pre_show(window& window)
 
 	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
 	animation_ = find_widget<drawing>(&window, "animation", false, true);
-
-	// Add a draw callback to handle the animation, et al.
-	window.connect_signal<event::DRAW>(
-		std::bind(&loading_screen::draw_callback, this), event::dispatcher::front_child);
 }
 
 void loading_screen::post_show(window& /*window*/)
@@ -120,6 +121,7 @@ void loading_screen::progress(loading_stage stage)
 	if(singleton_ && stage != loading_stage::none) {
 		singleton_->current_stage_.store(stage, std::memory_order_release);
 		// Allow display to update, close events to be handled, etc.
+		// TODO: draw_manager - draws should probably go after pumping
 		events::raise_draw_event();
 		events::pump();
 	}
@@ -167,12 +169,16 @@ void loading_screen::process(events::pump_info&)
 
 	// If there's nothing more to do, close.
 	if (load_funcs_.empty()) {
+		draw_manager::invalidate_region(get_window()->get_rectangle());
+		draw_manager::deregister_drawable(this);
 		get_window()->close();
 	}
 }
 
-void loading_screen::draw_callback()
+void loading_screen::layout()
 {
+	DBG_DP << "loading_screen::layout" << std::endl;
+
 	loading_stage stage = current_stage_.load(std::memory_order_acquire);
 
 	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
@@ -195,7 +201,18 @@ void loading_screen::draw_callback()
 	}
 
 	animation_->get_drawing_canvas().set_variable("time", wfl::variant(duration_cast<milliseconds>(now - *animation_start_).count()));
-	animation_->set_is_dirty(true);
+	animation_->queue_redraw();
+}
+
+bool loading_screen::expose(const SDL_Rect& region)
+{
+	DBG_DP << "loading_screen::expose " << region << std::endl;
+	return get_window()->expose(region);
+}
+
+rect loading_screen::screen_location()
+{
+	return get_window()->screen_location();
 }
 
 loading_screen::~loading_screen()

@@ -93,7 +93,7 @@ void menu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -189,7 +189,7 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	assert(selected_ < values_.size());
 
 	if(values[selected]["label"] != values_[selected_]["label"]) {
-		set_is_dirty(true);
+		queue_redraw();
 	}
 
 	values_ = values;
@@ -204,7 +204,7 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 	assert(selected_ < values_.size());
 
 	if(selected != selected_) {
-		set_is_dirty(true);
+		queue_redraw();
 	}
 
 	selected_ = selected;

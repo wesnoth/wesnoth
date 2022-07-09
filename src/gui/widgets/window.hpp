@@ -25,6 +25,7 @@
 #include "formula/function.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/event/handler.hpp"
+#include "gui/core/top_level_drawable.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/retval.hpp"
@@ -63,7 +64,7 @@ class distributor;
  * base class of top level items, the only item which needs to store the final canvases to draw on.
  * A window is a kind of panel see the panel for which fields exist.
  */
-class window : public panel
+class window : public panel, public top_level_drawable
 {
 	friend class debug_layout_graph;
 	friend std::unique_ptr<window> build(const builder_window::window_resolution&);
@@ -89,16 +90,8 @@ public:
 	static retval get_retval_by_id(const std::string& id);
 
 	/**
-	 * @todo Clean up the show functions.
+	 * Shows the window, running an event loop until it should close.
 	 *
-	 * the show functions are a bit messy and can use a proper cleanup.
-	 */
-
-	/**
-	 * Shows the window.
-	 *
-	 * @param restore             Restore the screenarea the window was on
-	 *                            after closing it?
 	 * @param auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
@@ -108,7 +101,7 @@ public:
 	 * @returns                   The close code of the window, predefined
 	 *                            values are listed in retval.
 	 */
-	int show(const bool restore = true, const unsigned auto_close_timeout = 0);
+	int show(unsigned auto_close_timeout = 0);
 
 	/**
 	 * Shows the window as a tooltip.
@@ -156,15 +149,22 @@ public:
 	void undraw();
 
 	/**
-	 * Adds an item to the dirty_list_.
+	 * Lays out the window.
 	 *
-	 * @param call_stack          The list of widgets traversed to get to the
-	 *                            dirty widget.
+	 * This part does the pre and post processing for the actual layout
+	 * algorithm.
+	 *
+	 * See @ref layout_algorithm for more information.
+	 *
+	 * This is also called by draw_manager to finalize screen layout.
 	 */
-	void add_to_dirty_list(const std::vector<widget*>& call_stack)
-	{
-		dirty_list_.push_back(call_stack);
-	}
+	virtual void layout() override;
+
+	/** Called by draw_manager when it believes a redraw is necessary. */
+	virtual bool expose(const SDL_Rect &region) override;
+
+	/** The current draw location of the window, on the screen. */
+	virtual rect screen_location() override;
 
 	/** The status of the window. */
 	enum class status {
@@ -386,7 +386,7 @@ public:
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
-		set_is_dirty(true);
+		queue_redraw();
 	}
 	point get_linked_size(const std::string& linked_group_id) const
 	{
@@ -413,17 +413,6 @@ public:
 	void set_exit_hook_ok_only(std::function<bool(window&)> func)
 	{
 		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
-	}
-
-	/**
-	 * Sets a callback that will be called after the window is drawn next time.
-	 * The callback is automatically removed after calling it once.
-	 * Useful if you need to do something after the window is drawn for the first time
-	 * and it's timing-sensitive (i.e. pre_show is too early).
-	 */
-	void set_callback_next_draw(std::function<void()> func)
-	{
-		callback_next_draw_ = func;
 	}
 
 	void set_suspend_drawing(bool s = true)
@@ -474,15 +463,6 @@ private:
 
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
-
-	/** Whether the window should undraw the window using restorer_ */
-	bool restore_;
-
-	/** Whether the window has other windows behind it */
-	bool is_toplevel_;
-
-	/** When the window closes this texture is used to undraw the window. */
-	texture restorer_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;
@@ -589,16 +569,6 @@ private:
 	std::vector<widget*> tab_order;
 
 	/**
-	 * Layouts the window.
-	 *
-	 * This part does the pre and post processing for the actual layout
-	 * algorithm.
-	 *
-	 * See @ref layout_algorithm for more information.
-	 */
-	void layout();
-
-	/**
 	 * Layouts the linked widgets.
 	 *
 	 * See @ref layout_algorithm for more information.
@@ -642,14 +612,6 @@ public:
 private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
-
-	/**
-	 * The list with dirty items in the window.
-	 *
-	 * When drawing only the widgets that are dirty are updated. The draw()
-	 * function has more information about the dirty_list_.
-	 */
-	std::vector<std::vector<widget*>> dirty_list_;
 
 	/**
 	 * In how many consecutive frames the window has changed. This is used to
@@ -768,7 +730,6 @@ private:
 	void signal_handler_close_window();
 
 	std::function<bool(window&)> exit_hook_;
-	std::function<void()> callback_next_draw_;
 };
 
 // }---------- DEFINITION ---------{

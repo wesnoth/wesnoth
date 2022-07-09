@@ -76,6 +76,8 @@ public:
 		return fake_screen_;
 	}
 
+	bool any_fake() const;
+
 	bool non_interactive() const;
 
 	bool surface_initialized() const;
@@ -463,15 +465,3 @@ public:
 private:
 	CVideo& video_;
 };
-
-namespace video2
-{
-class draw_layering : public events::sdl_handler
-{
-protected:
-	draw_layering(const bool auto_join = true);
-	virtual ~draw_layering();
-};
-
-void trigger_full_redraw();
-}

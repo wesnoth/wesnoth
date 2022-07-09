@@ -15,13 +15,20 @@
 
 #include "tooltips.hpp"
 
+#include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"
+#include "log.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
+#include <SDL2/SDL_rect.h>
+
+static lg::log_domain log_font("font");
+#define DBG_FT LOG_STREAM(debug, log_font)
+
+using std::endl;
 
 namespace {
 
@@ -30,85 +37,87 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false, const surface& fg = surface())
-	: rect_(r), message(msg), action(act), markup(use_markup), foreground(fg)
-	{}
-	rect rect_;
+	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "");
+	rect origin;
+	rect loc = {};
 	std::string message;
 	std::string action;
-	bool markup;
-	surface foreground;
+	font::floating_label label;
 };
 
-std::map<int, tooltip> tips;
-std::map<int, tooltip>::const_iterator current_tooltip = tips.end();
+tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act)
+	: origin(r), message(msg), action(act), label(msg)
+{
+	const color_t bgcolor {0,0,0,192};
+	rect area = CVideo::get_singleton().draw_area();
+	unsigned int border = 10;
 
-int tooltip_handle = 0;
-int tooltip_id = 0;
+	label.set_font_size(font_size);
+	label.set_color(font::NORMAL_COLOR);
+	label.set_clip_rect(area);
+	label.set_width(text_width);
+	label.set_alignment(font::LEFT_ALIGN);
+	label.set_bg_color(bgcolor);
+	label.set_border_size(border);
+
+	label.create_texture();
+	point lsize = label.get_draw_size();
+	loc = {0, 0, lsize.x, lsize.y};
+
+	// See if there is enough room to fit it above the tip area
+	if(origin.y > loc.h) {
+		loc.y = origin.y - loc.h;
+	} else {
+		loc.y = origin.y + origin.h;
+	}
+
+	// Try to keep it within the screen
+	loc.x = origin.x;
+	if(loc.x < 0) {
+		loc.x = 0;
+	} else if(loc.x + loc.w > area.w) {
+		loc.x = area.w - loc.w;
+	}
+
+	label.move(loc.x, loc.y);
+
+	DBG_FT << "created tooltip for " << origin << " at " << loc << endl;
+}
+
+
+std::map<int, tooltip> tips;
+int active_tooltip = 0;
+
+int tooltip_id = 1;
 
 surface current_background = nullptr;
 
-}
+// Is this a freaking singleton or is it not?
+// This is horrible, but that's how the usage elsewhere is.
+// If you want to fix this, either make it an actual singleton,
+// or ensure that tooltips:: functions are called on an instance.
+tooltips::manager* current_manager = nullptr;
 
-static void clear_tooltip()
+} // anon namespace
+
+/** Clear/hide the active tooltip. */
+static void clear_active()
 {
-	if(tooltip_handle != 0) {
-		font::remove_floating_label(tooltip_handle);
-		tooltip_handle = 0;
-	}
-}
-
-static void show_tooltip(const tooltip& tip)
-{
-	CVideo& video = CVideo::get_singleton();
-
-	if(video.faked()) {
+	if(!active_tooltip) {
 		return;
 	}
-
-	clear_tooltip();
-
-	const color_t bgcolor {0,0,0,192};
-	SDL_Rect area = video.draw_area();
-
-	unsigned int border = 10;
-
-	font::floating_label flabel(tip.message, tip.foreground);
-	flabel.use_markup(tip.markup);
-	flabel.set_font_size(font_size);
-	flabel.set_color(font::NORMAL_COLOR);
-	flabel.set_clip_rect(area);
-	flabel.set_width(text_width);
-	flabel.set_alignment(font::LEFT_ALIGN);
-	flabel.set_bg_color(bgcolor);
-	flabel.set_border_size(border);
-
-	tooltip_handle = font::add_floating_label(flabel);
-
-	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
-
-	//see if there is enough room to fit it above the tip area
-	if(tip.rect_.y > rect.h) {
-		rect.y = tip.rect_.y - rect.h;
-	} else {
-		rect.y = tip.rect_.y + tip.rect_.h;
-	}
-
-	rect.x = tip.rect_.x;
-	if(rect.x < 0) {
-		rect.x = 0;
-	} else if(rect.x + rect.w > area.w) {
-		rect.x = area.w - rect.w;
-	}
-
-	font::move_floating_label(tooltip_handle,rect.x,rect.y);
+	DBG_FT << "clearing active tooltip " << active_tooltip << endl;
+	tips.at(active_tooltip).label.undraw();
+	active_tooltip = 0;
 }
 
-namespace tooltips {
+namespace tooltips
+{
 
 manager::manager()
 {
 	clear_tooltips();
+	current_manager = this;
 }
 
 manager::~manager()
@@ -116,102 +125,154 @@ manager::~manager()
 	try {
 	clear_tooltips();
 	} catch (...) {}
+	current_manager = nullptr;
+}
+
+void manager::layout()
+{
+	if(!active_tooltip) {
+		return;
+	}
+	// Update the active tooltip's draw state.
+	// This will trigger redraws if necessary.
+	tips.at(active_tooltip).label.update(SDL_GetTicks());
+}
+
+bool manager::expose(const SDL_Rect& region)
+{
+	// Only the active tip is shown.
+	if(!active_tooltip) {
+		return false;
+	}
+	tooltip& tip = tips.at(active_tooltip);
+	if(!tip.loc.overlaps(region)) {
+		return false;
+	}
+	tip.label.draw();
+	return true;
+}
+
+rect manager::screen_location()
+{
+	// Only the active tip, if any, should be visible.
+	if(!active_tooltip) {
+		return {};
+	} else {
+		return tips.at(active_tooltip).loc;
+	}
 }
 
 void clear_tooltips()
 {
-	clear_tooltip();
+	DBG_FT << "clearing all tooltips" << endl;
+	clear_active();
 	tips.clear();
-	current_tooltip = tips.end();
 }
 
 void clear_tooltips(const SDL_Rect& r)
 {
-	for(std::map<int,tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(i->second.rect_.overlaps(r)) {
-			if (i==current_tooltip) {
-				clear_tooltip();
+	for(auto i = tips.begin(); i != tips.end(); ) {
+		if(i->second.origin.overlaps(r)) {
+			DBG_FT << "clearing tip " << i->first << " at "
+				<< i->second.origin << " overlapping " << r << endl;
+
+			if (i->first == active_tooltip) {
+				i->second.label.undraw();
+				active_tooltip = 0;
 			}
+
 			i = tips.erase(i);
-			current_tooltip = tips.end();
 		} else {
 			++i;
 		}
 	}
 }
 
-
-
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup)
+bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 {
+	// TODO: draw_manager - update floating label
 	std::map<int, tooltip>::iterator it = tips.find(id);
 	if (it == tips.end() ) return false;
-	it->second.action = action;
-	it->second.markup = use_markup;
 	it->second.message = message;
-	it->second.rect_ = rect;
-	return true;
-}
-
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup, const surface& foreground)
-{
-	std::map<int, tooltip>::iterator it = tips.find(id);
-	if (it == tips.end() ) return false;
-	it->second.action = action;
-	it->second.foreground = foreground;
-	it->second.markup = use_markup;
-	it->second.message = message;
-	it->second.rect_ = rect;
+	it->second.origin = origin;
 	return true;
 }
 
 void remove_tooltip(int id)
 {
+	DBG_FT << "removing tooltip " << id << endl;
+	if(id == active_tooltip) {
+		clear_active();
+	}
 	tips.erase(id);
-	clear_tooltip();
 }
 
-int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup, const surface& foreground)
+int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::string& action)
 {
-	clear_tooltips(rect);
+	// Because some other things are braindead, we have to check we're not
+	// just adding the same tooltip over and over every time the mouse moves.
+	for(auto& [id, tip] : tips) {
+		if(tip.origin == origin && tip.message == message && tip.action == action) {
+			return id;
+		}
+	}
+	DBG_FT << "adding tooltip for " << origin << endl;
 
+	// Clear any existing tooltips for this origin
+	clear_tooltips(origin);
+	// Create and add a new tooltip
 	int id = tooltip_id++;
-
-	tips.emplace(id, tooltip(rect, message, action, use_markup, foreground));
-
-	current_tooltip = tips.end();
+	tips.emplace(id, tooltip(origin, message, action));
 	return id;
+}
+
+static void raise_to_top()
+{
+	// Raise the current manager so it will display on top of everything.
+	if(!current_manager) {
+		throw game::error("trying to show tooltip with no tooltip manager");
+	}
+	draw_manager::raise_drawable(current_manager);
+}
+
+static void select_active(int id)
+{
+	if(active_tooltip == id) {
+		return;
+	}
+	tooltip& tip = tips.at(id);
+	DBG_FT << "showing tip " << id << " for " << tip.origin << endl;
+	clear_active();
+	active_tooltip = id;
+	tip.label.update(SDL_GetTicks());
+	raise_to_top();
 }
 
 void process(int mousex, int mousey)
 {
-	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(mousex > i->second.rect_.x && mousey > i->second.rect_.y &&
-		   mousex < i->second.rect_.x + i->second.rect_.w && mousey < i->second.rect_.y + i->second.rect_.h) {
-			if(current_tooltip != i) {
-				show_tooltip(i->second);
-				current_tooltip = i;
-			}
-
+	point mouseloc{mousex, mousey};
+	for(auto& [id, tip] : tips) {
+		if(tip.origin.contains(mouseloc)) {
+			select_active(id);
 			return;
 		}
 	}
 
-	clear_tooltip();
-	current_tooltip = tips.end();
+	if(active_tooltip) {
+		DBG_FT << "clearing tooltip because none hovered" << endl;
+		clear_active();
+	}
 }
 
 bool click(int mousex, int mousey)
 {
-	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(!i->second.action.empty() && i->second.rect_.contains(mousex, mousey)) {
-			help::show_help(i->second.action);
+	for(auto& [id, tip] : tips) { (void)id;
+		if(!tip.action.empty() && tip.origin.contains(mousex, mousey)) {
+			help::show_help(tip.action);
 			return true;
 		}
 	}
 	return false;
 }
 
-}
+} // namespace tooltips

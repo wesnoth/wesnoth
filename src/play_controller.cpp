@@ -285,9 +285,6 @@ void play_controller::init(const config& level)
 		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
 		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
 	});
-
-	// Do this after the loadingscreen, so that ita happens in the main thread.
-	gui_->join();
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
@@ -332,7 +329,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 void play_controller::init_managers()
 {
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
-	tooltips_manager_.reset(new tooltips::manager());
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();

@@ -21,7 +21,6 @@
 #include "widgets/menu.hpp"             // for menu
 
 class CVideo;
-struct surface_restorer;
 
 namespace help { struct section; }
 namespace help { struct topic; }
@@ -104,7 +103,6 @@ private:
 	std::vector<visible_item> visible_items_;
 	const section &toplevel_;
 	std::set<const section*> expanded_;
-	surface_restorer restorer_;
 	topic const *chosen_topic_;
 	visible_item selected_item_;
 };

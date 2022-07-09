@@ -148,7 +148,8 @@ protected:
 
 	virtual void draw_invalidated() override;
 
-	virtual void post_commit() override;
+	// TODO: draw_manager - maybe delete
+	//virtual void post_commit() override;
 
 	virtual void draw_hex(const map_location& loc) override;
 
@@ -219,7 +220,7 @@ private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
 
-	virtual void draw_sidebar() override;
+	virtual void refresh_reports() override;
 
 	overlay_map overlay_map_;
 

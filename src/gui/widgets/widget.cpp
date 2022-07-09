@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -43,7 +44,6 @@ widget::widget()
 	, last_best_size_()
 #endif
 	, linked_group_()
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -66,7 +66,6 @@ widget::widget(const builder_widget& builder)
 	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -234,7 +233,7 @@ void widget::set_size(const point& size)
 	width_ = size.x;
 	height_ = size.y;
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void widget::place(const point& origin, const point& size)
@@ -259,7 +258,7 @@ void widget::place(const point& origin, const point& size)
 			<< ".\n";
 #endif
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void widget::move(const int x_offset, const int y_offset)
@@ -421,36 +420,6 @@ void widget::draw_foreground()
 	impl_draw_foreground();
 }
 
-void widget::populate_dirty_list(window& caller,
-								  std::vector<widget*>& call_stack)
-{
-	assert(call_stack.empty() || call_stack.back() != this);
-
-	if(visible_ != visibility::visible) {
-		return;
-	}
-
-	if(get_drawing_action() == redraw_action::none) {
-		return;
-	}
-
-	call_stack.push_back(this);
-	if(is_dirty_) {
-		caller.add_to_dirty_list(call_stack);
-	} else {
-		// virtual function which only does something for container items.
-		child_populate_dirty_list(caller, call_stack);
-	}
-}
-
-void
-widget::child_populate_dirty_list(window& /*caller*/
-								   ,
-								   const std::vector<widget*>& /*call_stack*/)
-{
-	/* DO NOTHING */
-}
-
 SDL_Rect widget::get_dirty_rectangle() const
 {
 	return redraw_action_ == redraw_action::full ? get_rectangle()
@@ -470,14 +439,20 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void widget::set_is_dirty(const bool is_dirty)
+void widget::queue_redraw()
 {
-	is_dirty_ = is_dirty;
+	if (x_ < 0 || y_ < 0) {
+		// Do nothing if the widget hasn't yet been placed.
+		return;
+		// TODO: draw_manager - does this miss anything?
+		// TODO: draw_manager - yes, if a widget is partially offscreen
+	}
+	queue_redraw(get_rectangle());
 }
 
-bool widget::get_is_dirty() const
+void widget::queue_redraw(const rect& region)
 {
-	return is_dirty_;
+	draw_manager::invalidate_region(region);
 }
 
 void widget::set_visible(const visibility visible)
@@ -503,7 +478,7 @@ void widget::set_visible(const visibility visible)
 			}
 		}
 	} else {
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 

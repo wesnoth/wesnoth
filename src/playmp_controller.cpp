@@ -217,16 +217,14 @@ void playmp_controller::set_end_scenario_button()
 	}
 
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
+	gui_->redraw_everything(); // TODO: draw_manager - verify this is right
 }
 
 void playmp_controller::reset_end_scenario_button()
 {
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
+	gui_->redraw_everything();// TODO: draw_manager - verify this is right
 	gui_->set_game_mode(game_display::RUNNING);
 }
 
@@ -416,7 +414,6 @@ void playmp_controller::handle_generic_event(const std::string& name)
 		mp_info_->is_host = true;
 		if(linger_) {
 			end_turn_enable(true);
-			gui_->invalidate_theme();
 		}
 	}
 }

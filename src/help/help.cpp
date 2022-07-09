@@ -213,10 +213,10 @@ void show_with_toplevel(const section &toplevel_sec,
 	gui::button close_button_(video, _("Close"));
 	buttons_ptr.push_back(&close_button_);
 
-	gui::dialog_frame f(video, _("Help"), gui::dialog_frame::default_style,
-					 true, &buttons_ptr);
+	gui::dialog_frame f(
+		video, _("Help"), gui::dialog_frame::default_style, &buttons_ptr
+	);
 	f.layout(xloc, yloc, width, height);
-	f.draw();
 
 	// Find all unit_types that have not been constructed yet and fill in the information
 	// needed to create the help topics
@@ -250,8 +250,6 @@ void show_with_toplevel(const section &toplevel_sec,
 		for (;;) {
 			events::pump();
 			events::raise_process_event();
-			f.draw();
-			events::raise_draw_event();
 			if (key[SDLK_ESCAPE]) {
 				// Escape quits from the dialog.
 				return;
@@ -263,8 +261,8 @@ void show_with_toplevel(const section &toplevel_sec,
 					return;
 				}
 			}
-			video.render_screen();
-			CVideo::delay(10);
+			// This also rate limits to vsync
+			events::raise_draw_event();
 		}
 	}
 	catch (const parse_error& e) {

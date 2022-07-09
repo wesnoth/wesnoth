@@ -49,11 +49,15 @@ public:
 
 	void set_edit_target(textbox* target);
 
+	/** Called by draw_manager to validate layout. */
+	virtual void layout() override;
+
 protected:
-	virtual void draw_contents();
-	virtual void update_location(const SDL_Rect& rect);
-	virtual void set_inner_location(const SDL_Rect& );
-	virtual void scroll(unsigned int pos);
+	// scrollarea overrides
+	virtual void draw_contents() override;
+	virtual void update_location(const SDL_Rect& rect) override;
+	virtual void set_inner_location(const SDL_Rect& ) override;
+	virtual void scroll(unsigned int pos) override;
 
 private:
 	virtual void handle_text_changed(const std::u32string&) {}
@@ -101,7 +105,7 @@ private:
 
 	void handle_event(const SDL_Event& event, bool was_forwarded);
 
-	void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event) override;
 
 	void pass_event_to_target(const SDL_Event& event);
 
@@ -113,7 +117,7 @@ private:
 
 	//make it so that only one textbox object can be receiving
 	//events at a time.
-	bool requires_event_focus(const SDL_Event *event=nullptr) const;
+	bool requires_event_focus(const SDL_Event *event=nullptr) const override;
 
 	bool show_scrollbar() const;
 	bool handle_text_input(const SDL_Event& event);

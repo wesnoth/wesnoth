@@ -68,7 +68,7 @@ game_display::game_display(game_board& board,
 		reports& reports_object,
 		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_id, level, false)
+	: display(&board, wb, reports_object, theme_id, level)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -247,11 +247,6 @@ void game_display::draw_invalidated()
 	}
 }
 
-void game_display::post_commit()
-{
-	halo_man_->render();
-}
-
 void game_display::draw_hex(const map_location& loc)
 {
 	const bool on_map = get_map().on_board(loc);
@@ -369,7 +364,7 @@ bool game_display::has_time_area() const
 	return resources::tod_manager->has_time_area();
 }
 
-void game_display::draw_sidebar()
+void game_display::refresh_reports()
 {
 	if ( !team_valid() )
 		return;

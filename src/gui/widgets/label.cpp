@@ -77,7 +77,7 @@ void label::set_text_alpha(unsigned short alpha)
 	if(alpha != text_alpha_) {
 		text_alpha_ = alpha;
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -93,7 +93,7 @@ void label::set_link_aware(bool link_aware)
 	if(link_aware != link_aware_) {
 		link_aware_ = link_aware;
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -102,7 +102,7 @@ void label::set_link_color(const color_t& color)
 	if(color != link_color_) {
 		link_color_ = color;
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -110,7 +110,7 @@ void label::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 

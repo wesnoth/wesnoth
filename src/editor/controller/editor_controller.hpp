@@ -33,7 +33,7 @@
 class map_generator;
 
 namespace tooltips {
-struct manager;
+class manager;
 }
 
 namespace font {

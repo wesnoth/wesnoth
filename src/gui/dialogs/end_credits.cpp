@@ -48,11 +48,8 @@ end_credits::end_credits(const std::string& campaign)
 
 void end_credits::pre_show(window& window)
 {
-	window.set_callback_next_draw([this]()
-	{
-		// Delay a little before beginning the scrolling
-		last_scroll_ = SDL_GetTicks() + 3000;
-	});
+	// Delay a little before beginning the scrolling
+	last_scroll_ = SDL_GetTicks() + 3000;
 
 	connect_signal_on_draw(window, std::bind(&end_credits::timer_callback, this));
 

@@ -116,7 +116,7 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -129,7 +129,7 @@ void text_box_base::set_value(const std::string& text)
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -150,7 +150,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		copy_selection(true);
 #endif
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 
 	} else {
 		assert(offset <= text_.get_length());
@@ -158,7 +158,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		selection_length_ = 0;
 
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -171,7 +171,7 @@ void text_box_base::insert_char(const std::string& unicode)
 		// Update status
 		set_cursor(selection_start_ + utf8::size(unicode), false);
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -230,7 +230,7 @@ void text_box_base::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
@@ -238,7 +238,7 @@ void text_box_base::set_selection_start(const std::size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -246,7 +246,7 @@ void text_box_base::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -286,7 +286,7 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -331,7 +331,7 @@ void text_box_base::cursor_timer_callback()
 		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void text_box_base::reset_cursor_state()
@@ -501,7 +501,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			set_cursor(std::min(maximum_length, ime_start_point_ + start + len), true);
 		}
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 

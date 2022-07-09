@@ -15,7 +15,6 @@
 #pragma once
 
 #include "sdl/rect.hpp"
-#include "sdl/texture.hpp" // for surface_restorer. Remove that, then remove this
 #include "utils/const_clone.hpp"
 
 #include <SDL2/SDL.h>
@@ -115,25 +114,6 @@ private:
 bool operator<(const surface& a, const surface& b);
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
-
-struct surface_restorer
-{
-	surface_restorer();
-	surface_restorer(class CVideo* target, const rect& location);
-	~surface_restorer();
-
-	void restore() const;
-	void restore(const rect& dst) const;
-	void update();
-	void cancel();
-
-	const rect& area() const { return rect_; }
-
-private:
-	class CVideo* target_;
-	rect rect_;
-	texture surface_;
-};
 
 /**
  * Helper class for pinning SDL surfaces into memory.

@@ -18,10 +18,11 @@
 #include "show_dialog.hpp"
 
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
-#include "gui/core/event/handler.hpp"
+#include "gui/core/event/handler.hpp" // is_in_dialog
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
@@ -34,6 +35,7 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
+#define DBG_DP LOG_STREAM(debug, log_display)
 #define ERR_G  LOG_STREAM(err, lg::general)
 
 namespace {
@@ -80,15 +82,13 @@ dialog_manager::~dialog_manager()
 }
 
 dialog_frame::dialog_frame(CVideo& video, const std::string& title,
-		const style& style, bool auto_restore,
+		const style& style,
 		std::vector<button*>* buttons, button* help_button) :
 	title_(title),
 	video_(video),
 	dialog_style_(style),
 	buttons_(buttons),
 	help_button_(help_button),
-	restorer_(nullptr),
-	auto_restore_(auto_restore),
 	dim_(),
 	top_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-top.png")),
 	bot_(image::get_texture("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
@@ -102,11 +102,19 @@ dialog_frame::dialog_frame(CVideo& video, const std::string& title,
 	have_border_(top_ && bot_ && left_ && right_),
 	dirty_(true)
 {
+	// Raise buttons so they are drawn on top.
+	// and BTW buttons_ being a pointer to a vector is fucking insane
+	for (button* b : *buttons_) {
+		draw_manager::raise_drawable(b);
+	}
+	if (help_button) {
+		draw_manager::raise_drawable(help_button_);
+	}
 }
 
 dialog_frame::~dialog_frame()
 {
-	delete restorer_;
+	draw_manager::invalidate_region(screen_location());
 }
 
 dialog_frame::dimension_measurements::dimension_measurements() :
@@ -133,36 +141,6 @@ int dialog_frame::top_padding() const
 void dialog_frame::set_dirty(bool dirty)
 {
 	dirty_ = dirty;
-}
-
-void dialog_frame::handle_window_event(const SDL_Event& event)
-{
-	if (event.type == SDL_WINDOWEVENT) {
-		switch (event.window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-		case SDL_WINDOWEVENT_RESTORED:
-		case SDL_WINDOWEVENT_SHOWN:
-		case SDL_WINDOWEVENT_EXPOSED:
-			set_dirty();
-		}
-	}
-}
-
-void dialog_frame::handle_event(const SDL_Event& event)
-{
-	if (event.type == DRAW_ALL_EVENT) {
-		set_dirty();
-
-		if (buttons_) {
-			for(std::vector<button *>::iterator it = buttons_->begin(); it != buttons_->end(); ++it) {
-				(*it)->set_dirty(true);
-			}
-		}
-	}
-
-	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {
-		draw();
-	}
 }
 
 int dialog_frame::bottom_padding() const {
@@ -247,6 +225,9 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	}
 	dim_.title.x = dim_.interior.x + title_border_w;
 	dim_.title.y = dim_.interior.y + title_border_h;
+
+	draw_manager::invalidate_region(dim_.exterior);
+
 	return dim_;
 }
 
@@ -305,19 +286,8 @@ void dialog_frame::draw_border()
 	});
 }
 
-void dialog_frame::clear_background()
-{
-	delete restorer_;
-	restorer_ = nullptr;
-}
-
 void dialog_frame::draw_background()
 {
-	if(auto_restore_) {
-		clear_background();
-		restorer_ = new surface_restorer(&video_, dim_.exterior);
-	}
-
 	if (dialog_style_.blur_radius) {
 		// This is no longer used by anything.
 		// The only thing that uses dialog_frame is help/help.cpp,
@@ -330,7 +300,7 @@ void dialog_frame::draw_background()
 		return;
 	}
 
-	auto clipper = draw::set_clip(dim_.interior);
+	auto clipper = draw::reduce_clip(dim_.interior);
 	for(int i = 0; i < dim_.interior.w; i += bg_.w()) {
 		for(int j = 0; j < dim_.interior.h; j += bg_.h()) {
 			SDL_Rect src {0,0,0,0};
@@ -353,9 +323,6 @@ SDL_Rect dialog_frame::draw_title(CVideo* video)
 
 void dialog_frame::draw()
 {
-	if (!dirty_)
-		return;
-
 	//draw background
 	draw_background();
 
@@ -366,8 +333,15 @@ void dialog_frame::draw()
 	if (!title_.empty()) {
 		draw_title(&video_);
 	}
+}
 
-	//draw buttons
+void dialog_frame::layout()
+{
+	if (!dirty_) {
+		return;
+	}
+
+	// Layout buttons
 	SDL_Rect buttons_area = dim_.button_row;
 	if(buttons_ != nullptr) {
 #ifdef OK_BUTTON_ON_RIGHT
@@ -379,11 +353,26 @@ void dialog_frame::draw()
 		}
 	}
 
+	// Layout help button, if any
 	if(help_button_ != nullptr) {
 		help_button_->set_location(dim_.interior.x+ButtonHPadding, buttons_area.y);
 	}
 
 	dirty_ = false;
+}
+
+bool dialog_frame::expose(const SDL_Rect& region)
+{
+	DBG_DP << "dialog_frame::expose " << region << std::endl;
+	// Just draw everthing.
+	(void)region;
+	draw();
+	return true;
+}
+
+rect dialog_frame::screen_location()
+{
+	return dim_.exterior;
 }
 
 }

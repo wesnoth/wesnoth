@@ -71,7 +71,6 @@ mp_connect::mp_connect()
 	, builtin_servers_(preferences::builtin_servers_list())
 	, user_servers_(preferences::user_servers_list())
 {
-	set_restore(true);
 }
 
 std::array<mp_connect::server_list*, 2> mp_connect::server_lists()

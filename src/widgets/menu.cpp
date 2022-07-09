@@ -32,6 +32,7 @@
 #include "wml_separators.hpp"
 
 #include <numeric>
+#include <iostream>
 
 namespace gui {
 
@@ -664,8 +665,8 @@ void menu::handle_event(const SDL_Event& event)
 			const int item = hit(event.motion.x,event.motion.y);
 			const bool out = (item == -1);
 			if (out_ != out) {
-					out_ = out;
-					invalidate_row_pos(selected_);
+				out_ = out;
+				invalidate_row_pos(selected_);
 			}
 			if (item != -1) {
 				move_selection_to(item);
@@ -777,9 +778,9 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	return res;
 }
 
-void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
 {
-	menu_ref.bg_restore(rect);
+	//menu_ref.bg_restore(rect);
 
 	int rgb = 0;
 	double alpha = 0.0;
@@ -969,11 +970,10 @@ void menu::draw_contents()
 	}
 }
 
-void menu::draw()
+
+void menu::layout()
 {
-	if(hidden()) {
-		return;
-	}
+	widget::layout();
 
 	if(!dirty()) {
 
@@ -986,7 +986,7 @@ void menu::draw()
 			} else if(*i >= 0 && *i < int(item_pos_.size())) {
 				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
-				bg_restore(rect);
+				queue_redraw(rect);
 				style_->draw_row(*this,pos,rect,
 					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
 			}
@@ -998,17 +998,7 @@ void menu::draw()
 
 	invalid_.clear();
 
-	bg_restore();
-
-	const SDL_Rect* clip = clip_rect();
-	if (clip) {
-		auto clipper = draw::set_clip(*clip);
-		draw_contents();
-	} else {
-		draw_contents();
-	}
-
-	set_dirty(false);
+	queue_redraw();
 }
 
 int menu::hit(int x, int y) const

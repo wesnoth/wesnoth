@@ -246,8 +246,12 @@ bool editor_palette<Item>::is_selected_bg_item(const std::string& id)
 }
 
 template<class Item>
-void editor_palette<Item>::draw_contents()
+void editor_palette<Item>::layout()
 {
+	if (!dirty()) {
+		return;
+	}
+
 	toolkit_.set_mouseover_overlay(gui_);
 
 	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
@@ -324,6 +328,16 @@ void editor_palette<Item>::draw_contents()
 
 		tile.set_dirty(true);
 		tile.hide(false);
+	}
+
+	set_dirty(false);
+}
+
+template<class Item>
+void editor_palette<Item>::draw_contents()
+{
+	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+		gui::tristate_button& tile = buttons_[i];
 		tile.draw();
 	}
 }

@@ -55,9 +55,9 @@ public:
 	virtual void prev_group() override {}
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
-	virtual void draw() override {
-		widget::draw();
-	}
+	/** Called by draw_manager to validate layout before drawing. */
+	virtual void layout() override;
+	/** Called by widget::draw() */
 	virtual void draw_contents() override;
 
 	/**

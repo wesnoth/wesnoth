@@ -91,7 +91,6 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
 {
-	set_restore(true);
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
@@ -103,7 +102,6 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
 {
-	set_restore(true);
 }
 
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)

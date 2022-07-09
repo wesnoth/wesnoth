@@ -25,7 +25,7 @@ namespace gui2::dialogs
 {
 
 /** Dialog to view the storyscreen. */
-class story_viewer : public modal_dialog
+class story_viewer : public modal_dialog, public top_level_drawable
 {
 public:
 	story_viewer(const std::string& scenario_name, const config& cfg_parsed);
@@ -41,6 +41,14 @@ public:
 			}
 		} catch(const std::out_of_range&) {}
 	}
+
+	// top_level_drawable overrides
+	// used to animate the view
+	// TODO: draw_manager - better animation step / hook
+	// TODO: draw_manager - i still am horrified that a modal_dialog is not a window
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect&) override { return false; }
+	virtual rect screen_location() override { return {0,0,0,0}; }
 
 private:
 	virtual const std::string& window_id() const override;
@@ -68,8 +76,6 @@ private:
 	void set_next_draw();
 	void begin_fade_draw(bool fade_in);
 	void halt_fade_draw();
-
-	void draw_callback();
 
 	void flag_stack_as_dirty();
 

@@ -19,6 +19,8 @@
 
 #include "gui/core/event/dispatcher.hpp"
 
+class CVideo;
+
 namespace gui2
 {
 

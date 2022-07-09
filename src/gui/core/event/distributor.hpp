@@ -249,17 +249,6 @@ public:
 	widget* keyboard_focus() const;
 
 private:
-	class layer : public video2::draw_layering
-	{
-	public:
-		virtual void handle_event(const SDL_Event& ) {}
-		virtual void handle_window_event(const SDL_Event& ) {}
-		layer() : video2::draw_layering(false) { }
-	};
-
-	// make sure the appropriate things happens when we close.
-	layer layer_;
-
 	/** The widget that holds the keyboard focus_. */
 	widget* keyboard_focus_;
 

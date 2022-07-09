@@ -97,9 +97,6 @@ void replay_controller::add_replay_theme()
 		if (const auto replay_theme_cfg = res->optional_child("replay")) {
 			controller_.get_display().get_theme().modify(replay_theme_cfg.value());
 		}
-		//Make sure we get notified if the theme is redrawn completely. That way we have
-		//a chance to restore the replay controls of the theme as well.
-		controller_.get_display().invalidate_theme();
 	}
 }
 
@@ -144,7 +141,7 @@ void replay_controller::update_gui()
 
 void replay_controller::update_enabled_buttons()
 {
-	controller_.get_display().invalidate_theme();
+	// TODO: draw_manager - is this the right call?
 	controller_.get_display().redraw_everything();
 }
 

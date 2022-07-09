@@ -208,20 +208,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
 
-	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + hex_size_by_2;
-	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + hex_size_by_2;
-
-	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
-	if(!has_halo && !u.image_halo().empty()) {
-		ac.unit_halo_ = halo_man.add(x, y - height_adjust, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
-	}
-	if(has_halo && u.image_halo().empty()) {
-		halo_man.remove(ac.unit_halo_);
-		ac.unit_halo_.reset();
-	} else if(has_halo) {
-		halo_man.set_location(ac.unit_halo_, x, y - height_adjust);
-	}
-
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
@@ -387,6 +373,35 @@ void unit_drawer::redraw_unit (const unit & u) const
 	}
 	params.y -= height_adjust_unit - height_adjust;
 	params.halo_y -= height_adjust_unit - height_adjust;
+	// TODO: params.halo_y is not used. Why is it set?
+
+	const int halo_x =
+		static_cast<int>(
+			adjusted_params.offset * xdst
+			+ (1.0 - adjusted_params.offset) * xsrc
+		)
+		+ hex_size_by_2;
+	const int halo_y =
+		static_cast<int>(
+			adjusted_params.offset * ydst
+			+ (1.0 - adjusted_params.offset) * ysrc
+		)
+		+ hex_size_by_2 - height_adjust_unit * zoom_factor;
+
+	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
+	if(!has_halo && !u.image_halo().empty()) {
+		ac.unit_halo_ = halo_man.add(
+			halo_x, halo_y,
+			u.image_halo() + u.TC_image_mods(),
+			map_location(-1, -1)
+		);
+	}
+	if(has_halo && u.image_halo().empty()) {
+		halo_man.remove(ac.unit_halo_);
+		ac.unit_halo_.reset();
+	} else if(has_halo) {
+		halo_man.set_location(ac.unit_halo_, halo_x, halo_y);
+	}
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;

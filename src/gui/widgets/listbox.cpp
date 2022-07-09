@@ -163,7 +163,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does this get the right area?
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -206,7 +206,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does this get the right area?
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -337,7 +337,7 @@ bool listbox::update_content_size()
 
 	if(content_resize_request(true)) {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does this get the right area?
 		return true;
 	}
 
@@ -400,7 +400,7 @@ void listbox::resize_content(const int width_modification,
 
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_is_dirty(true);
+			queue_redraw();
 		}
 
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
@@ -433,16 +433,6 @@ void listbox::resize_content(const widget& row)
 void listbox::layout_children()
 {
 	layout_children(false);
-}
-
-void listbox::child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
-{
-	// Inherited.
-	scrollbar_container::child_populate_dirty_list(caller, call_stack);
-
-	assert(generator_);
-	std::vector<widget*> child_call_stack = call_stack;
-	generator_->populate_dirty_list(caller, child_call_stack);
 }
 
 point listbox::calculate_best_size() const
@@ -618,7 +608,7 @@ void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
 
-	set_is_dirty(true);
+	queue_redraw();
 	need_layout_ = true;
 }
 
@@ -704,7 +694,7 @@ void listbox::layout_children(const bool force)
 		content_grid()->set_visible_rectangle(visible);
 
 		need_layout_ = false;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 

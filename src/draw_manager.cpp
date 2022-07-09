@@ -118,6 +118,14 @@ void sparkle()
 	// Ensure layout and animations are up-to-date.
 	draw_manager::layout();
 
+	// Unit tests rely on not doing any rendering, or waiting at all...
+	// "behave differently when being tested" is really not good policy
+	// but whatever.
+	if(CVideo::get_singleton().any_fake()) {
+		invalidated_regions_.clear();
+		return;
+	}
+
 	// Ensure any off-screen render buffers are up-to-date.
 	draw_manager::render();
 
@@ -164,8 +172,6 @@ static void render()
 
 static bool draw()
 {
-	// TODO: draw_manager - some things were skipping draw when video is faked. Should this skip all in this case?
-
 	drawing_ = true;
 
 	// For now just send all regions to all TLDs in the correct order.

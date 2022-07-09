@@ -50,44 +50,6 @@ bool fake_interactive = false;
 point fake_size = {0, 0};
 }
 
-namespace video2
-{
-std::list<events::sdl_handler*> draw_layers;
-
-draw_layering::draw_layering(const bool auto_join)
-	: sdl_handler(auto_join)
-{
-	draw_layers.push_back(this);
-}
-
-draw_layering::~draw_layering()
-{
-	draw_layers.remove(this);
-
-	video2::trigger_full_redraw();
-}
-
-void trigger_full_redraw()
-{
-	SDL_Event event;
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_EXPOSED;
-
-	for(const auto& layer : draw_layers) {
-		layer->handle_window_event(event);
-	}
-
-	SDL_Event drawEvent;
-	sdl::UserEvent data(DRAW_ALL_EVENT);
-
-	drawEvent.type = DRAW_ALL_EVENT;
-	drawEvent.user = data;
-	SDL_FlushEvent(DRAW_ALL_EVENT);
-	SDL_PushEvent(&drawEvent);
-}
-
-} // video2
-
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
 	, fake_screen_(false)
@@ -134,6 +96,11 @@ CVideo::~CVideo()
 	LOG_DP << "called SDL_Quit()\n";
 }
 
+bool CVideo::any_fake() const
+{
+	return fake_screen_ || fake_interactive;
+}
+
 bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
@@ -144,6 +111,7 @@ bool CVideo::surface_initialized() const
 	return logical_size_.x != 0 || logical_size_.y != 0;
 }
 
+// TODO: draw_manager - ugh, why - does this really need to exist?
 void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 {
 	if(event.type == SDL_WINDOWEVENT) {
@@ -152,8 +120,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT_RESTORED:
 		case SDL_WINDOWEVENT_SHOWN:
 		case SDL_WINDOWEVENT_EXPOSED:
-			// if(display::get_singleton())
-			// display::get_singleton()->redraw_everything();
 			SDL_Event drawEvent;
 			sdl::UserEvent data(DRAW_ALL_EVENT);
 
@@ -171,6 +137,7 @@ void CVideo::make_fake()
 {
 	fake_screen_ = true;
 	refresh_rate_ = 1;
+	logical_size_ = {800,600};
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
@@ -710,6 +677,7 @@ void CVideo::set_window_icon(surface& icon)
 void CVideo::clear_screen()
 {
 	if(window) {
+		DBG_DP << "clearing screen" << std::endl;
 		window->fill(0, 0, 0, 255);;
 	}
 }

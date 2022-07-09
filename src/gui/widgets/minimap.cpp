@@ -81,7 +81,7 @@ void minimap::set_map_data(const std::string& map_data)
 	}
 
 	map_data_ = map_data;
-	set_is_dirty(true);
+	queue_redraw();
 
 	try {
 		map_ = std::make_unique<gamemap>(map_data_);

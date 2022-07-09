@@ -91,9 +91,6 @@ void story_viewer::pre_show(window& window)
 	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
-	connect_signal_on_draw(window,
-		std::bind(&story_viewer::draw_callback, this));
-
 	display_part();
 }
 
@@ -223,8 +220,8 @@ void story_viewer::display_part()
 	window_canvas.set_cfg(cfg);
 
 	// Needed to make the background redraw correctly.
-	window_canvas.set_is_dirty(true);
-	get_window()->set_is_dirty(true);
+	window_canvas.update_size_variables();
+	get_window()->queue_redraw();
 
 	//
 	// Title
@@ -358,8 +355,8 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		window_canvas.append_cfg(std::move(cfg));
 
 		// Needed to make the background redraw correctly.
-		window_canvas.set_is_dirty(true);
-		get_window()->set_is_dirty(true);
+		window_canvas.update_size_variables();
+		get_window()->queue_redraw();
 
 		// If a delay is specified, schedule the next image draw and break out of the loop.
 		const unsigned int draw_delay = floating_image.display_delay();
@@ -451,7 +448,7 @@ void story_viewer::halt_fade_draw()
 	fade_state_ = NOT_FADING;
 }
 
-void story_viewer::draw_callback()
+void story_viewer::layout()
 {
 	if(next_draw_ && SDL_GetTicks() < next_draw_) {
 		return;
@@ -492,7 +489,7 @@ void story_viewer::draw_callback()
 
 void story_viewer::flag_stack_as_dirty()
 {
-	find_widget<stacked_widget>(get_window(), "text_and_control_stack", false).set_is_dirty(true);
+	find_widget<stacked_widget>(get_window(), "text_and_control_stack", false).queue_redraw();
 }
 
 } // namespace dialogs

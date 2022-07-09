@@ -336,8 +336,12 @@ bool location_palette::is_selected_item(const std::string& id)
 	return selected_item_ == id;
 }
 
-void location_palette::draw_contents()
+void location_palette::layout()
 {
+	if (!dirty()) {
+		return;
+	}
+
 	toolkit_.set_mouseover_overlay(disp_);
 
 	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
@@ -381,6 +385,15 @@ void location_palette::draw_contents()
 		tile.set_selected(is_selected_item(item_id));
 		tile.set_dirty(true);
 		tile.hide(false);
+	}
+
+	set_dirty(false);
+}
+
+void location_palette::draw_contents()
+{
+	for(std::size_t i = 0; i < num_visible_items(); ++i) {
+		location_palette_item& tile = buttons_[i];
 		tile.draw();
 	}
 }

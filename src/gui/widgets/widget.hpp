@@ -69,8 +69,7 @@ public:
 		 *   tested later).
 		 * * The widget (if active) handles events (and sends events to
 		 *   its children).
-		 * * The widget is drawn (and sends the call to
-		 *   @ref populate_dirty_list to children).
+		 * * The widget is drawn.
 		 */
 		visible,
 
@@ -80,9 +79,6 @@ public:
 		 * * @ref find_at 'sees' the widget if active is @c false.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		hidden,
 
@@ -92,9 +88,6 @@ public:
 		 * * @ref find_at never 'sees' the widget.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		invisible
 	};
@@ -107,26 +100,27 @@ public:
 	 */
 	enum class redraw_action
 	{
+		// TODO: draw_manager/hwaccel - are these still useful?
 		/**
 		 * The widget is fully visible.
 		 *
-		 * The widget should be drawn if dirty_ is @c true. The entire
-		 * widget's rectangle should be redrawn.
+		 * The widget should be drawn. The entire widget's rectangle
+		 * should be redrawn.
 		 */
 		full,
 
 		/**
 		 * The widget is partly visible.
 		 *
-		 * The should be drawn if dirty_ is @c true. The rectangle to
-		 * redraw in determined by @ref clipping_rectangle_
+		 * The should be drawn. The rectangle to redraw in determined
+		 * by @ref clipping_rectangle_
 		 */
 		partly,
 
 		/**
 		 * The widget is not visible.
 		 *
-		 * The widget should not be drawn if dirty_ is @c true.
+		 * The widget should not be drawn.
 		 */
 		none
 	};
@@ -350,10 +344,9 @@ public:
 	/**
 	 * Sets the origin of the widget.
 	 *
-	 * This function can be used to move the widget without dirtying it. The
-	 * location is an absolute position, if a relative more is required use
-	 * @ref move.
-	 *
+	 * This function can be used to move the widget without triggering a
+	 * redraw. The location is an absolute position, if a relative move is
+	 * required use @ref move.
 	 *
 	 * @param origin              The new origin.
 	 */
@@ -384,7 +377,7 @@ public:
 	/**
 	 * Moves a widget.
 	 *
-	 * This function can be used to move the widget without dirtying it.
+	 * This function can be used to move the widget without queueing a redraw.
 	 *
 	 * @todo Implement the function to all derived classes.
 	 *
@@ -587,40 +580,6 @@ private:
 
 public:
 	/**
-	 * Adds a widget to the dirty list if it is dirty.
-	 *
-	 * See @ref window::dirty_list_ for more information regarding the dirty
-	 * list.
-	 *
-	 * If the widget is not dirty and has children it should add itself to the
-	 * call_stack and call child_populate_dirty_list with the new call_stack.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	void populate_dirty_list(window& caller,
-							 std::vector<widget*>& call_stack);
-
-private:
-	/**
-	 * Tries to add all children of a container to the dirty list.
-	 *
-	 * @note The function is private since everybody should call
-	 * @ref populate_dirty_list instead.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack);
-
-public:
-	/**
 	 * Gets the dirty rectangle of the widget.
 	 *
 	 * Depending on the @ref redraw_action_ it returns the rectangle this
@@ -640,10 +599,23 @@ public:
 	 */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle);
 
-	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
+	/**
+	 * Indicates that this widget should be redrawn.
+	 *
+	 * This function should be called by widgets whenever their visible
+	 * state changes.
+	 */
+	void queue_redraw();
 
-	void set_is_dirty(const bool is_dirty);
-	bool get_is_dirty() const;
+	/**
+	 * Indicate that specific region of the screen should be redrawn.
+	 *
+	 * This is in absolute drawing-space coordinates, and not constrained
+	 * to the current widget.
+	 */
+	void queue_redraw(const rect& region);
+
+	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
 	void set_visible(const visibility visible);
 	visibility get_visible() const;
@@ -657,17 +629,6 @@ public:
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
 private:
-	/**
-	 * Is the widget dirty?
-	 *
-	 * When a widget is dirty it needs to be redrawn at the next drawing cycle.
-	 *
-	 * The top-level window will use @ref populate_dirty_list and
-	 * @ref child_populate_dirty_list to find al dirty widgets, so the widget
-	 * doesn't need to inform its parent regarding it being marked dirty.
-	 */
-	bool is_dirty_;
-
 	/** Field for the status of the visibility. */
 	visibility visible_;
 

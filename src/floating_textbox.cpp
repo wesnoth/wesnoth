@@ -88,7 +88,6 @@ namespace gui{
 		}
 
 		if(box_ != nullptr) {
-			box_->set_volatile(true);
 			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
@@ -100,7 +99,6 @@ namespace gui{
 		}
 
 		if(check_ != nullptr) {
-			check_->set_volatile(true);
 			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
 		}
 	}

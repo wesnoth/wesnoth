@@ -61,7 +61,7 @@ namespace soundsource
 class manager;
 }
 
-class controller_base : public video2::draw_layering, public events::pump_monitor
+class controller_base : public events::sdl_handler, public events::pump_monitor
 {
 public:
 	controller_base();
