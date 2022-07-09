@@ -31,6 +31,7 @@ function ca_protect_unit_attack:evaluation(cfg)
 
     local max_rating = - math.huge
     for _,attack in pairs(attacks) do
+        wesnoth.interface.handle_user_interact()
         -- Only consider attack if there is no chance to die or to be poisoned or slowed
         if (attack.att_stats.hp_chance[0] == 0)
             and (attack.att_stats.poisoned == 0)

@@ -349,6 +349,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     local max_rating, best_unit, best_hex = 0, nil, nil
     for _,unit in ipairs(units) do
+        wesnoth.interface.handle_user_interact()
         local is_healer = (unit.usage == "healer")
         local has_leadership = unit:matches { ability_type = "leadership" }
         local on_my_territory = BD_is_my_territory:get(unit.x, unit.y)
