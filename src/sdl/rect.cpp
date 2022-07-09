@@ -83,6 +83,12 @@ rect rect::minimal_cover(const SDL_Rect& other) const
 	return result;
 }
 
+rect& rect::expand_to_cover(const SDL_Rect& other)
+{
+	SDL_UnionRect(this, &other, this);
+	return *this;
+}
+
 rect rect::intersect(const SDL_Rect& other) const
 {
 	rect result;

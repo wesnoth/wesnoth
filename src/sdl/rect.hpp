@@ -70,6 +70,9 @@ public:
 	rect operator/(int s) const { return {x/s, y/s, w/s, h/s}; }
 	rect& operator/=(int s) { x/=s; y/=s; w/=s; h/=s; return *this; }
 
+	/** The area of this rectangle, in square pixels. */
+	int area() const { return w * h; }
+
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
 
@@ -88,6 +91,9 @@ public:
 	 * this rectangle and the given rectangle.
 	 */
 	rect minimal_cover(const SDL_Rect& r) const;
+
+	/** Minimally expand this rect to fully contain another. */
+	rect& expand_to_cover(const SDL_Rect& r);
 
 	/**
 	 * Calculates the intersection of this rectangle and another;
