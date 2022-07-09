@@ -101,9 +101,10 @@ set(XSLTPROC_OPTIONS
 	--stringparam html.stylesheet "./styles/manual.css"
 )
 
+# added a hack to find asciidoc when using latest archlinux by searching inside the python site packages...
 find_path(ASCIIDOC_DOCBOOK_XSL_PATH
 	xhtml.xsl
-	HINTS /usr/share/asciidoc/docbook-xsl /etc/asciidoc/docbook-xsl /opt/local/etc/asciidoc/docbook-xsl
+	HINTS /usr/share/asciidoc/docbook-xsl /etc/asciidoc/docbook-xsl /opt/local/etc/asciidoc/docbook-xsl /usr/lib/*/site-packages/asciidoc/resources/docbook-xsl
 	NO_DEFAULT_PATH
 )
 if(NOT ASCIIDOC_DOCBOOK_XSL_PATH)
