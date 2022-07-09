@@ -150,6 +150,7 @@ function ca_goto:execution(cfg, data)
             else  -- Otherwise find the best path to take
                 local path, cost
                 if avoid_enemies then
+                    wesnoth.interface.handle_user_interact()
                     path, cost = wesnoth.paths.find_path(unit, loc[1], loc[2], {
                         calculate = function(x, y, current_cost)
                             return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, avoid_enemies)

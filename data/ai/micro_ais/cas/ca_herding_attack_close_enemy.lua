@@ -50,6 +50,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
 
     local max_rating1, best_dog1, best_enemy, best_hex1 = - math.huge, nil, nil, nil
     for _,enemy in ipairs(enemies1) do
+        wesnoth.interface.handle_user_interact()
         for _,dog in ipairs(dogs) do
             local reach_map = AH.get_reachable_unocc(dog)
             reach_map:iter( function(x, y, v)

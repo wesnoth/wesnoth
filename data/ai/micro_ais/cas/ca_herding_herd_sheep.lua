@@ -46,6 +46,7 @@ function ca_herding_herd_sheep:execution(cfg)
     local herd_loc = AH.get_named_loc_xy('herd', cfg)
     local c_x, c_y = herd_loc[1], herd_loc[2]
     for _,single_sheep in ipairs(sheep_to_herd) do
+        wesnoth.interface.handle_user_interact()
         -- Farthest sheep goes first
         local sheep_rating = M.distance_between(c_x, c_y, single_sheep.x, single_sheep.y) / 10.
         -- Sheep with no movement left gets big hit
