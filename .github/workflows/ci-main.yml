@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-intel-release, windows-release, windows-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -183,31 +183,41 @@ jobs:
           export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-intel-debug:
-    runs-on: macos-10.15
+  macos-intel:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-10.15
+            cfg: Debug
+          - os: macos-11.0
+            cfg: Release
+    runs-on: ${{ matrix.os }}
+    env:
+      CFG: ${{ matrix.cfg }}
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
 
-      - name: macOS Intel Debug
+      - name: Get dependencies
         run: |
-          export CFG=Debug
-          ./.github/workflows/ci-scripts/macos.sh
-
-  macos-intel-release:
-    runs-on: macos-11.0
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS Intel Release
-        run: |
-          export CFG=Release
-          ./.github/workflows/ci-scripts/macos.sh
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install scons
+          ./projectfiles/Xcode/Fix_Xcode_Dependencies
+      - name: Build translations
+        run: scons translations build=release --debug=time nls=true jobs=2
+      - name: Build wesnoth and unit tests
+        working-directory: projectfiles/Xcode
+        run: xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+#      - name: Create disk image
+#        working-directory: projectfiles/Xcode
+#        run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+      - name: Run WML tests
+        if: matrix.cfg == 'Release'
+        run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
+      - name: Run unit tests
+        run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
 
   windows-debug:
     runs-on: windows-2019
