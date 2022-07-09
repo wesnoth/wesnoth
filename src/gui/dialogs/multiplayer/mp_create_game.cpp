@@ -660,7 +660,6 @@ void mp_create_game::update_details()
 	boost::replace_all(title, "\n", " " + font::unicode_em_dash + " ");
 	find_widget<styled_widget>(get_window(), "game_title", false).set_label(title);
 
-	show_description(create_engine_.current_level().description());
 
 	switch(create_engine_.current_level_type()) {
 		case level_type::type::scenario:
@@ -714,6 +713,9 @@ void mp_create_game::update_details()
 			break;
 		}
 	}
+
+	// This needs to be at the end, since errors found expanding the map data are put into the description
+	show_description(create_engine_.current_level().description());
 }
 
 void mp_create_game::update_map_settings()

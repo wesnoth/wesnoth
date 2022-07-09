@@ -709,9 +709,10 @@ static ter_layer string_to_layer_(std::string_view str)
 		return NO_LAYER;
 	}
 
-	// Validate the string
-	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
-		"than 4 characters has been found, the affected terrain is:") + std::string(str));
+	if(str.size() > 4) {
+		throw error("A terrain with a string with more "
+			"than 4 characters has been found, the affected terrain is: " + std::string(str));
+	}
 
 	ter_layer result = 0;
 	// The conversion to int puts the first char

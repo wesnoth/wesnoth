@@ -72,6 +72,8 @@ void scenario::set_metadata()
 	try {
 		map_.reset(new gamemap(map_data));
 	} catch(const incorrect_map_format_error& e) {
+		// Set map content to nullptr, so that it fails can_launch_game()
+		map_.reset(nullptr);
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
@@ -662,6 +664,8 @@ void create_engine::init_all_levels()
 			try {
 				map.reset(new gamemap(user_map_data["map_data"]));
 			} catch (const incorrect_map_format_error& e) {
+				// Set map content to nullptr, so that it fails can_launch_game()
+				map.reset(nullptr);
 				user_map_data["description"] = _("Map could not be loaded: ") + e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
