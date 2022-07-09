@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel, windows-release, windows-debug]
+    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows-release, windows-debug]
     if: always()
 
     steps:
@@ -29,50 +29,80 @@ jobs:
             commit: ${{ github.event.head_commit.message }}
             commit url: ${{ github.event.head_commit.url }}
 
-  ubuntu-2004-scons-gcc-release-lto:
+  ubuntu-2004:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - tool: scons
+            cc: gcc
+            cxx: g++
+            cfg: release
+            lto: true
+          - tool: cmake
+            cc: clang
+            cxx: clang++
+            cfg: debug
+            lto: false
     runs-on: ubuntu-20.04
+    container:
+      image: wesnoth/wesnoth:2004-master
+      options: --tty # docker create options
+      env:
+        CFG: ${{ matrix.cfg }}
+        CC: ${{ matrix.cc }}
+        CXX: ${{ matrix.cxx }}
+        CXX_STD: 17
+        LTO: ${{ matrix.lto }}
+        NLS: false
+        CLICOLOR_FORCE: 1
+        DISPLAY: :99.0
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
 
-      - name: Ubuntu 20.04
+      - name: Start Xvfb
+        run: start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid
+               --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+      - name: Build wesnoth, wesnothd, campaignd and unit tests (scons)
+        if: matrix.tool == 'scons'
+        run: scons wesnoth wesnothd campaignd boost_unit_tests
+               build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD"
+               extra_flags_config="-pipe" strict=true forum_user_handler=true
+               nls="$NLS" enable_lto="$LTO" force_color=true jobs=2 --debug=time
+      - name: Build wesnoth, wesnothd, campaignd and unit tests (cmake)
+        if: matrix.tool == 'cmake'
         run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=true
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-  ubuntu-2004-cmake-clang-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=cmake
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=17
-          export CFG=debug
-          export LTO=false
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
+             cmake -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
+               -DENABLE_TESTS=true -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
+               -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
+               -DENABLE_NLS="$NLS" -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
+             make conftests
+             make VERBOSE=1 -j2
+#      - name: Rename debug binaries
+#        if: matrix.cfg == 'debug'
+#        run: mv wesnoth{-debug,}; mv wesnothd{-debug,}; mv campaignd{-debug,}; mv boost_unit_tests{-debug,}
+      - name: WML validation
+        run: ./utils/CI/schema_validation.sh
+      - name: Run luacheck
+        run: luacheck .
+      - name: Whitespace and WML indentation check
+        run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
+      - name: Doxygen check
+        run: ./utils/CI/doxygen-check.sh
+      - name: Run WML tests
+        run: ./run_wml_tests -g -c -t 20
+      - name: Run play tests
+        run: ./utils/CI/play_test_executor.sh
+      - name: Run MP tests
+        run: ./utils/CI/mp_test_executor.sh
+      - name: Run unit tests
+        run: ./utils/CI/test_executor.sh
 
   steam-runtime:
     runs-on: ubuntu-20.04
