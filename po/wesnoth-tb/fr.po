@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Two_Brothers-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-02 18:02 UTC\n"
-"PO-Revision-Date: 2022-06-08 08:50-0500\n"
+"PO-Revision-Date: 2022-07-09 06:52+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -486,7 +486,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -514,7 +513,9 @@ msgstr ""
 "partout ailleurs c'est davantage de terres agricoles. Au début, je pensais "
 "que la recherche pourrait être vaine, mais, vers la fin de la première "
 "journée, nous avons trouvé un ensemble de pistes. Certaines d'entre elles "
-"avaient été faites par des pieds de squelette.\n"
+"avaient été faites par des pieds de squelette, même si après le premier "
+"campement les traces n'étaient encore que celles d'humains portants de "
+"lourdes charges.\n"
 "\n"
 "Nous sommes assez près pour en être certains maintenant : ces pistes se "
 "dirigent vers le Bois Gris. De mémoire d'homme, personne, de Maghre ou "
@@ -648,6 +649,11 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Ces troupes ont pris ce prisonnier en flagrant délit de nécromancie. "
+"J’espère pour vous que ce prisonnier n'est pas votre frère. Considérez que "
+"c’était le meurtrier de votre frère et rassurez-vous, les mages gris vont "
+"libérer les âmes que la magie diabolique de cet homme a rappelé dans ce "
+"monde."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
@@ -655,6 +661,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
 msgstr ""
+"Ce nécromancien est tombé sur le champ de bataille, je lui ai porté le coup "
+"mortel moi-même !"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -662,6 +670,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Ce nécromancien est tombé sur le champ de bataille, il a reçu le coup mortel "
+"sous mes propres yeux !"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -675,19 +685,25 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, for we will defend our land."
 msgstr ""
+"Nous avons entendu les sons de la bataille il y a trois jours mais l'odeur "
+"nauséabonde de la mort suivait le prisonnier quand il est passé devant nous. "
+"Si votre frère était le prisonnier alors il serait aussi le nécromancien. "
+"Gardez de lui le souvenir de l'homme bien qu'il était et sachez que ce "
+"prisonnier sera puni de façon si effroyable que ce sera la meilleure des "
+"vengeances que vous puissiez désirer.\n"
+"\n"
+"En tout cas, vous n'avez rien à gagner à pénétrer dans nos forêts. N'avancez "
+"plus ou nous devrons défendre notre pays."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"Ces fantômes n'étaient donc que des histoires. De simples elfes ne "
-"m'empêcheront pas de libérer Baran !"
+"Assez de ces histoires de revenants. Même des fantômes seraient plus "
+"observateurs que ces elfes. Mais ils ne pourront pas m'empêcher de libérer "
+"Baran !"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -697,7 +713,7 @@ msgid ""
 "trees."
 msgstr ""
 "Je suis soulagé de ne pas avoir à affronter des fantômes. Mais ces elfes ont "
-"l'avantage ; nos chevaux ne manœuvreront pas facilement dans les bois."
+"l'avantage ; ce sera difficile de manœuvrer avec nos chevaux dans les bois."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:409
@@ -723,12 +739,15 @@ msgid ""
 "without arousing the elves’ suspicions. Still, no need for the disguise any "
 "more."
 msgstr ""
+"Malédiction ! S'ils étaient arrivés quelques heures plus tard, j'aurais pu "
+"couvrir nos pas sans éveiller les soupçons des elves. Mais plus besoin "
+"d'agir à couvert maintenant."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Alors elfes, vous voyez qui sont les nécromanciens maintenant ?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -737,6 +756,9 @@ msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"J'avais bien entendu les sons d'une bataille mais je ne m'attendais pas à "
+"voir çà. Je vais informer le conseil, ils pourront décider où sont les vrais "
+"nécromanciens."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
@@ -915,6 +937,8 @@ msgid ""
 "These elves have delayed us too long, the kidnappers’ trail will have faded "
 "by now."
 msgstr ""
+"Ces elfes nous ont ralentis trop longtemps. Les traces des ravisseurs auront "
+"déjà disparu."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:717
@@ -922,6 +946,8 @@ msgid ""
 "More elves are arriving; even if they believe me, the kidnappers’ trail is "
 "sure to fade before we can follow."
 msgstr ""
+"Les renforts elfes arrivent. Même si je pouvais les convaincre, les traces "
+"des ravisseurs auront disparu avant qu'on ne le retrouve."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
@@ -929,6 +955,8 @@ msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Pauvre abruti, tu sauves un nécromancien. J’espère que tu arriveras trop "
+"tard et que nos âmes pourront trouver le repos."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:741

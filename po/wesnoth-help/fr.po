@@ -660,7 +660,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Graphiques des surcouches de terrain pour l'éditeur"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -670,6 +670,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Les cartes affichées dans l'éditeur ont une apparence identique à celles du "
+"jeu. Il y a cependant quelques exceptions où des graphiques spécifiques à "
+"l'éditeur sont affichés ; toutes les surcouches décrites ci-dessous se "
+"trouvent dans le groupe « spécial » de la palette de terrain."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -688,6 +692,18 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Surcouches de mouvement'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Infranchissable et impraticable\n"
+"\n"
+"Bien qu'elles soient clairement identifiables dans l'éditeur, elles sont "
+"invisibles dans le jeu et le terrain où elles sont placées apparaîtra "
+"identique à la couche de base. Elles créent un terrain combiné où le coût de "
+"mouvement correspondra à celui d'un terrain « infranchissable » et "
+"« impraticable » respectivement."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -710,6 +726,22 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Surcouches de château'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Ajouter une de ces surcouches à un terrain franchissable permet d'y recruter "
+"des unités. Le donjon permet aussi à un chef de s'y placer pour faire son "
+"recrutement.\n"
+"\n"
+"Elles peuvent aussi être utilisées sur des terrains infranchissables pour "
+"connecter un donjon à un château qui ne lui est pas attenant. Il est aussi "
+"possible de créer un château dont le donjon est séparé par de la pâture mais "
+"il faut alors que les cases faisant la connexion soient occupées ou qu'elles "
+"soient bloquées pour éviter que le recrutement d'unités y soit possible."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -723,6 +755,13 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Surcouche de village'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Cela transforme n'importe quel terrain de base en village, apportant les "
+"revenus et les soins."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -735,6 +774,12 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Voile artificiel'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Le voile artificiel s'affiche comme une zone inexplorée même sur les cartes "
+"où le voile est désactivé ou quand les unités du joueur peuvent l'atteindre."
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:170
@@ -758,6 +803,20 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>Le ‘D’ magenta (pour “Déprécié”).\n"
+"\n"
+"Il s'affiche dans l'éditeur pour les terrains dont le code est obsolète. Par "
+"exemple :\n"
+"• le terrain <ref>dst='terrain_fungus_grove_old' text='“^Uf” de la forêt de "
+"champignons'</ref>,\n"
+"• le terrain “Xol” du mur de pierre éclairé, qui est obsolète car plusieurs "
+"types de mur peuvent recevoir une décoration de chandelier “^Efs” "
+"maintenant.\n"
+"\n"
+"Les pages d'aide de ces terrains peuvent avoir de l'information "
+"supplémentaire qui ne s'affiche que dans l'éditeur, décrivant l'obsolescence "
+"et les recommandations de remplacement."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:186
@@ -8287,6 +8346,8 @@ msgstr "Le pire"
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Les villages permettent de soigner les unités qui s'y trouvent ou de les "
+"guérir du poison."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8298,13 +8359,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Ce terrain permet aux unités qui l'occupent de guérir du poison ou d’être "
+"soignées d'un point de vie."
 msgstr[1] ""
+"Ce terrain permet aux unités qui l'occupent d’être soignées de $amount "
+"points de vie ou de guérir du poison comme sur un village."
 
 #: src/help/help_topic_generators.cpp:174
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Ce terrain est un château : des unités peuvent y être recrutées à partir "
+"d'un donjon attenant."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:178
@@ -8312,6 +8379,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Ce terrain est un donjon : un chef se trouvant sur cet hexagone peut "
+"recruter sur tout hexagone 'château' attenant."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:181
@@ -8319,6 +8388,8 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Ce donjon particulier permet à un chef qui l'occupe de recruter mais ne "
+"permet pas à un chef sur un donjon attenant de recruter sur cet hexagone."
 
 #: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
