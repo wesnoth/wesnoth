@@ -839,18 +839,14 @@ msgstr "Cage"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "Coffre ordinaire fermé"
+msgstr "Coffre fermé"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "Coffre ordinaire ouvert"
+msgstr "Coffre ouvert"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:260
@@ -880,10 +876,8 @@ msgstr "Cercueil fermé"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Cercueil fermé"
+msgstr "Cercueil ouvert"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
@@ -893,19 +887,18 @@ msgstr ""
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
 msgid "Dagger"
-msgstr ""
+msgstr "Dague"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Poison"
+msgstr "Dague empoisonnée"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
+#, fuzzy
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Dague empoisonnée (propre)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:321
@@ -920,9 +913,8 @@ msgstr "Épée enflammée"
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
 #, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Épée enflammée"
+msgstr "Épée enflammée non enchantée"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -960,10 +952,8 @@ msgstr "Gerbe de blé"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Marteau runique"
+msgstr "Marteau"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:399
@@ -999,21 +989,18 @@ msgstr "Sac de cuir"
 msgid "Mace"
 msgstr ""
 
-# On peut aussi utiliser « ânkh »
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
 #, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Ânkh"
+msgstr "Collier d'os"
 
 # On peut aussi utiliser « ânkh »
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
 #, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Ânkh"
+msgstr "Collier de pierre"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1110,13 +1097,10 @@ msgstr "Sceptre de feu"
 msgid "Sling"
 msgstr "Soins"
 
-# Pas une traduction exacte, mais qui respecte l'esprit de la VO
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Jolie lance"
+msgstr "Lance"
 
 # Pas une traduction exacte, mais qui respecte l'esprit de la VO
 #. [item]: id=spear-fancy
@@ -1138,10 +1122,8 @@ msgstr "Bâton"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Bâton magique"
+msgstr "Bâton de druide"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1159,9 +1141,8 @@ msgstr "Bâton magique"
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
 #, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Bâton magique"
+msgstr "Bâton ordinaire"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:627
@@ -1191,16 +1172,14 @@ msgstr "Épée"
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
 #, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Épée"
+msgstr "Épée sacrée"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
 #, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Épée"
+msgstr "Épée courte"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
@@ -1211,20 +1190,21 @@ msgstr "Épée enflammée"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
+#, fuzzy
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Talisman ânkh"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
+#, fuzzy
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Talisman en os"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
 #, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Tablette de pierre"
+msgstr "Talisman en pierre"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
@@ -1234,12 +1214,12 @@ msgstr ""
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr ""
+msgstr "Torche allumée"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Torche éteinte"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:723
@@ -1434,9 +1414,8 @@ msgstr "Temple"
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
 #, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Tente abîmée"
+msgstr "Temple en ruine"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1087
@@ -9052,9 +9031,6 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options du tableau blanc"
 
-#~ msgid "Chest"
-#~ msgstr "Coffre"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -9073,6 +9049,9 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "No Ally Mirror"
 #~ msgstr "Pas de miroir allié"
+
+#~ msgid "Chest"
+#~ msgstr "Coffre"
 
 #~ msgid "Use [modify_unit_type]\n"
 #~ msgstr "Utilise [modify_unit_type]\n"
