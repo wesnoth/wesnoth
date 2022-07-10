@@ -8,27 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-# run after all other jobs have completed to check overall build status
-  discord-notification:
-    runs-on: ubuntu-20.04
-
-    name: Discord Notification
-
-    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
-    if: always()
-
-    steps:
-      - uses: technote-space/workflow-conclusion-action@v2
-      - uses: rjstone/discord-webhook-notify@v1
-        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
-        with:
-          severity: error
-          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
-          description: |-
-            pusher: ${{ github.actor }}
-            commit: ${{ github.event.head_commit.message }}
-            commit url: ${{ github.event.head_commit.url }}
-
   ubuntu-2004:
     strategy:
       fail-fast: false
@@ -250,15 +229,15 @@ jobs:
         run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
 
   windows:
-     strategy:
-       fail-fast: false
-       matrix:
-         cfg: [Debug, Release]
-     env:
-       CFG: ${{ matrix.cfg }}
-     defaults:
-       run:
-         shell: cmd
+    strategy:
+      fail-fast: false
+      matrix:
+        cfg: [Debug, Release]
+    env:
+      CFG: ${{ matrix.cfg }}
+    defaults:
+      run:
+        shell: cmd
     runs-on: windows-2019
 
     steps:
@@ -307,3 +286,25 @@ jobs:
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'
         run: python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/%CFG%/wesnoth.exe
+
+# run after all other jobs have completed to check overall build status
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
+    if: always()
+
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
+        with:
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          description: |-
+            pusher: ${{ github.actor }}
+            commit: ${{ github.event.head_commit.message }}
+            commit url: ${{ github.event.head_commit.url }}
+
