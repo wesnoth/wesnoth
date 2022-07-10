@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-05 09:17-0500\n"
-"PO-Revision-Date: 2022-05-10 19:48+0200\n"
+"PO-Revision-Date: 2022-07-10 09:30+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -693,7 +693,7 @@ msgstr "Kovadlina"
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:42
 msgid "Archery Target"
-msgstr "Terč pro Lukostřelbu"
+msgstr "Terč pro lukostřelbu"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:48
@@ -714,12 +714,12 @@ msgstr "Sekera"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:72
 msgid "Small Axe"
-msgstr ""
+msgstr "Sekerka"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Vrhací sekera"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -793,24 +793,22 @@ msgstr "Krabice"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:198
 msgid "Branch"
-msgstr ""
+msgstr "Větev"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr ""
+msgstr "Holá větev"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
 msgid "Brazier"
-msgstr "Rošt"
+msgstr "Ohniště"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Rošt"
+msgstr "Hořící ohniště"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -830,28 +828,24 @@ msgstr "Klec"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "Zavřená truhla"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Otevřená truhla"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:260
 msgid "Closed Plain Chest"
-msgstr "Zavřená truhla"
+msgstr "Zavřená obyčejná truhla"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:266
 msgid "Open Plain Chest"
-msgstr "Otevřená truhla"
+msgstr "Otevřená obyčejná truhla"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:272
@@ -861,7 +855,7 @@ msgstr "Zelený Plášť"
 #. [item]: id=club
 #: data/core/editor/items.cfg:278
 msgid "Club"
-msgstr ""
+msgstr "Kyj"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:284
@@ -871,32 +865,28 @@ msgstr "Zavřená rakev"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Zavřená rakev"
+msgstr "Otevřená rakev"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
 msgid "Crossbow"
-msgstr ""
+msgstr "Kuše"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
 msgid "Dagger"
-msgstr ""
+msgstr "Dýka"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Jed"
+msgstr "Otrávená dýka"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Otrávená dýka (čistá)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:321
@@ -910,10 +900,8 @@ msgstr "Ohnivý meč"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Ohnivý meč"
+msgstr "Odčarovaný ohnivý meč"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -951,10 +939,8 @@ msgstr "Otep obilí"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Runové kladivo"
+msgstr "Kladivo"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:399
@@ -975,10 +961,8 @@ msgstr "Klíč"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Tmavě červená"
+msgstr "Tmavý klíč"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:429
@@ -988,21 +972,17 @@ msgstr "Kožený tlumok"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:435
 msgid "Mace"
-msgstr ""
+msgstr "Palcát"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Náhrdelník s křížkem"
+msgstr "Kostěný náhrdelník"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Náhrdelník s křížkem"
+msgstr "Kamenný náhrdelník"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1095,14 +1075,12 @@ msgstr "Ohnivé žezlo"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:555
 msgid "Sling"
-msgstr ""
+msgstr "Prak"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Ozdobné kopí"
+msgstr "Kopí"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1113,7 +1091,7 @@ msgstr "Ozdobné kopí"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:579
 msgid "Javelin"
-msgstr ""
+msgstr "Oštěp"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1123,10 +1101,8 @@ msgstr "Hůl"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Kouzelná hůl"
+msgstr "Druidská hůl"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1136,17 +1112,13 @@ msgstr "Kouzelná hůl"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Kouzelná hůl"
+msgstr "Kouzelná hůlka"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Kouzelná hůl"
+msgstr "Prostá hůl"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:627
@@ -1175,56 +1147,48 @@ msgstr "Meč"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Meč"
+msgstr "Posvátný meč"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Meč"
+msgstr "Krátký meč"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Ohnivý meč"
+msgstr "Přízračný meč"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Talisman anch"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Kostěný talisman"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Kamenná tabulka"
+msgstr "Kamenný talisman"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
 msgid "Thunderstick"
-msgstr ""
+msgstr "Hromová hůl"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr ""
+msgstr "Hořící pochodeň"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Uhašená pochodeň"
 
 # !!!!
 #. [item_group]: id=scenery
@@ -1417,10 +1381,8 @@ msgstr "Chrám"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Zničený stan"
+msgstr "Rozpadlý chrám"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1087
@@ -6522,16 +6484,16 @@ msgstr "žádný"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je <b>"
-"$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
+"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je "
+"<b>$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Vaše verze <i>$addon</i> je nekompatibilní. Máte verzi <b>$local_ver</b> a "
 "hostitel má verzi <b>$host_ver</b>."
@@ -7735,6 +7697,8 @@ msgstr "Proměnná nenalezena"
 #: src/menu_events.cpp:1990
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Ladicí příkaz „unit: $unit“ selhal: žádná jednotka nebyla vybrána ani "
+"ukázána myší."
 
 #: src/menu_events.cpp:2008
 msgid ""
