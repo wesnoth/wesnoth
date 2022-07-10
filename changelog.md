@@ -13,7 +13,7 @@
    * Increased minimum required version of SDL to 2.0.10.
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Finnish, French
+   * Updated translations: Arabic, British English, Czech, Finnish, French
  ### Units
    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface

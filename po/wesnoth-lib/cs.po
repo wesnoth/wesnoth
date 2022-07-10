@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-06-19 09:03-0500\n"
-"PO-Revision-Date: 2022-05-20 20:59+0200\n"
+"PO-Revision-Date: 2022-06-29 17:46+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -163,10 +163,8 @@ msgstr "Močál"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Palmový les"
+msgstr "Chaluhový les"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -266,10 +264,8 @@ msgstr "Čisté šedé kočičí hlavy"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Plážové písky"
+msgstr "Kamenité písky"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -423,12 +419,12 @@ msgstr "Svícen"
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:494
 msgid "Brazier"
-msgstr "Ohřívač"
+msgstr "Ohniště"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:503
 msgid "Lit Brazier"
-msgstr "Zapálený ohřívač"
+msgstr "Hořící ohniště"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:524
@@ -463,7 +459,7 @@ msgstr "Lekníny, kvetoucí"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "Lastury"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -1267,10 +1263,8 @@ msgstr "Drakonidská vesnice"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:1936
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Drakonidská vesnice"
+msgstr "Zasněžená drakonidská vesnice"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1951
@@ -6948,8 +6942,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</b>"
-"\".\n"
+"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</"
+"b>\".\n"
 "Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:876
