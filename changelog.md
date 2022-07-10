@@ -1,6 +1,4 @@
-## Version 1.16.3+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.16.4
  ### Campaigns
    * Eastern Invasion
      * S07a:
@@ -10,18 +8,12 @@
      * S1: Fixed Al'Tar confusing an orc for a slave (issue #6735)
    * Under the Burning Suns
      * S5: Enforce encounter with the Cloaked Figure (issue #6364)
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Chinese (Traditional), Czech, Polish, Finnish, French
  ### Units
     * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
  ### User interface
    * Resolved broken layout in some low-resolution configurations (issue #5620, #6544)
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed path finding visibility bug that sometimes caused OOS errors on maps with tunnels and at least three sides that do not share vision (PR #6744)
    * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
