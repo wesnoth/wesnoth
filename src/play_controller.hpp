@@ -80,7 +80,10 @@ class game_state;
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
-	play_controller(const config& level, saved_game& state_of_game, bool skip_replay);
+	play_controller(const config& level,
+			saved_game& state_of_game,
+			bool skip_replay,
+			bool start_faded = false);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -399,6 +402,9 @@ protected:
 	bool init_side_done_now_;
 	//the displayed location when we load a game.
 	map_location map_start_;
+	// Whether to start with the display faded to black
+	bool start_faded_;
+
 	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);

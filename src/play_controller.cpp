@@ -138,7 +138,7 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay)
+play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay, bool start_faded)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
@@ -165,6 +165,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()
+	, start_faded_(start_faded)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
@@ -239,6 +240,9 @@ void play_controller::init(const config& level)
 
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
+		if(start_faded_) {
+			gui_->set_fade({0,0,0,255});
+		}
 
 		// Ensure the loading screen doesn't end up underneath the game display
 		gui2::dialogs::loading_screen::raise();

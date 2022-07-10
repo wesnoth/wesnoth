@@ -66,7 +66,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay)
-	: play_controller(level, state_of_game, skip_replay)
+	: play_controller(level, state_of_game, skip_replay, true) // start faded
 	, cursor_setter_(cursor::NORMAL)
 	, textbox_info_()
 	, replay_sender_(*resources::recorder)
@@ -127,6 +127,13 @@ void playsingle_controller::init_gui()
 		} else {
 			LOG_NG << "Found bad stored ui location\n";
 		}
+	}
+
+	// Fade in
+	if(!gui_->video().any_fake()) {
+		gui_->fade_to({0,0,0,0}, 500);
+	} else {
+		gui_->set_fade({0,0,0,0});
 	}
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
