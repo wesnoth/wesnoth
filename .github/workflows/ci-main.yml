@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows-release, windows-debug]
+    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
     if: always()
 
     steps:
@@ -249,7 +249,16 @@ jobs:
       - name: Run unit tests
         run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
 
-  windows-debug:
+  windows:
+     strategy:
+       fail-fast: false
+       matrix:
+         cfg: [Debug, Release]
+     env:
+       CFG: ${{ matrix.cfg }}
+     defaults:
+       run:
+         shell: cmd
     runs-on: windows-2019
 
     steps:
@@ -270,7 +279,6 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Build vcpkg
-        shell: cmd
         run: |
           if not exist "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           if not exist "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
@@ -281,73 +289,21 @@ jobs:
         with:
           cmake-version: '3.20.6'
 
-      - name: Use cmake
+      - name: Run cmake
         run: |
-          cmake --version
-          cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+          cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+
+      - name: vcpkg_abi_info
+        run: type "D:\a\wesnoth\vcpkg\buildtrees\bzip2\x64-windows.vcpkg_abi_info.txt"
 
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
 # otherwise the job was failing when trying to write a .obj file
 # building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
-      - name: Build wesnoth
-        shell: cmd
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
         run: |
           rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
-          MSBuild.exe wesnoth.sln -p:Configuration=Debug
-
-# seems to work, but with the debug SDL libraries it's so slow that it times out even with a limit of 300 seconds
-#      - name: Run WML unit tests
-#        shell: cmd
-#        run: |
-#          python run_wml_tests -v -g -c -t 300 -p D:/a/wesnoth/wesnoth/Debug/wesnoth.exe
-
-  windows-release:
-    runs-on: windows-2019
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Cache object files
-        id: windows-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            D:/a/wesnoth/vcpkg
-            D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: win-cache-0005
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: Build vcpkg
-        shell: cmd
-        run: |
-          if not exist "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
-          if not exist "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
-          if not exist "D:/a/wesnoth/vcpkg" D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
-
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.9
-        with:
-          cmake-version: '3.20.6'
-
-      - name: Use cmake
-        run: |
-          cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
-
-      - name: vcpkg_abi_info
-        shell: cmd
-        run: |
-          type "D:\a\wesnoth\vcpkg\buildtrees\bzip2\x64-windows.vcpkg_abi_info.txt"
-
-      - name: Build wesnoth
-        shell: cmd
-        run: |
-          MSBuild.exe wesnoth.sln -p:Configuration=Release
+          MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
 
       - name: Run WML unit tests
-        shell: cmd
-        run: |
-          python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/Release/wesnoth.exe
+        if: matrix.cfg == 'Release'
+        run: python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/%CFG%/wesnoth.exe
