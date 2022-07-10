@@ -57,7 +57,7 @@ texture pango_render_text(const std::string& text, int size, const color_t& colo
 		 .set_maximum_width(max_width)
 		 .set_ellipse_mode(max_width > 0 ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE);
 
-	return ptext.render_texture();
+	return ptext.render_and_get_texture();
 }
 
 std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style)
@@ -161,7 +161,7 @@ SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const co
 		ellipsized = true;
 	}
 
-	texture t = ptext.render_texture();
+	auto t = ptext.render_and_get_texture();
 
 	SDL_Rect res = {x, y, t.w(), t.h()};
 

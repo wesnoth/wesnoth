@@ -2967,7 +2967,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 				.set_characters_per_line(0);
 
-			texture s = text.render_texture();
+			texture s = text.render_and_get_texture();
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
@@ -2980,7 +2980,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				s = text.render_texture();
+				s = text.render_and_get_texture();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;

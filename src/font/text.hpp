@@ -76,11 +76,13 @@ namespace font {
 class pango_text
 {
 public:
-
 	pango_text();
 
-	pango_text(const pango_text &) = delete;
-	pango_text & operator = (const pango_text &) = delete;
+	pango_text(const pango_text&) = delete;
+	pango_text& operator=(const pango_text&) = delete;
+
+	/** Returns the cached texture, or creates a new one otherwise. */
+	texture render_and_get_texture();
 
 	/**
 	 * Returns the rendered text as a texture.
@@ -95,7 +97,6 @@ public:
 	 * This function is otherwise identical to render().
 	 */
 	texture render_texture(const SDL_Rect& viewport);
-	texture render_texture();
 
 	/**
 	 * Returns the rendered text.
@@ -105,7 +106,7 @@ public:
 	 * width and height will be at least viewport.w and viewport.h (although
 	 * they may be larger).
 	 */
-	surface& render(const SDL_Rect& viewport);
+	surface render_surface(const SDL_Rect& viewport);
 
 	/**
 	 * Equivalent to render(viewport), where the viewport's top-left is at
@@ -115,13 +116,7 @@ public:
 	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
 	 * y rows of blank space are included in the amount of memory allocated.
 	 */
-	surface& render();
-
-	/** Returns the width needed for the text. */
-	int get_width();
-
-	/** Returns the height needed for the text. */
-	int get_height();
+	surface render_surface();
 
 	/** Returns the size of the text, in drawing coordinates. */
 	point get_size();
@@ -286,10 +281,6 @@ private:
 	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
 	mutable PangoRectangle rect_;
 
-	/** The SDL surface to render upon used as a cache. */
-	mutable surface surface_;
-
-
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;
 
@@ -389,18 +380,12 @@ private:
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
 
-	/** The dirty state of the surface. */
-	mutable bool surface_dirty_;
+	/** Allow specialization of std::hash for pango_text. */
+	friend struct std::hash<pango_text>;
 
-	/** The area that's cached in surface_, which is the area that was rendered when surface_dirty_ was last set to false. */
-	SDL_Rect rendered_viewport_;
-
-	/**
-	 * Renders the text.
-	 *
-	 * It will do a recalculation first so no need to call both.
-	 */
-	void rerender(const SDL_Rect& viewport);
+	/** Renders the text to a surface. */
+	surface create_surface();
+	surface create_surface(const SDL_Rect& viewport);
 
 	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
@@ -476,3 +461,14 @@ pango_text& get_text_renderer();
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // namespace font
+
+// Specialize std::hash for pango_text
+namespace std
+{
+template<>
+struct hash<font::pango_text>
+{
+	std::size_t operator()(const font::pango_text&) const;
+};
+
+} // namespace std

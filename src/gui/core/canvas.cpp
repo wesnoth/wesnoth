@@ -457,27 +457,16 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int h = h_(local_variables);
 	rect dst_rect{x, y, w, h};
 
-	// Get the visible portion of text.
-	rect visible = dst_rect.intersect(draw::get_clip());
-
-	// Get the source region of text for clipping.
-	rect clip_in = visible;
-	clip_in.x -= x;
-	clip_in.y -= y;
-
-	// Source region for high-dpi text needs to have pixel scale applied.
-	clip_in *= CVideo::get_singleton().get_pixel_scale();
-
-	// Render the currently visible portion of text
-	// TODO: highdpi - it would be better to render this all, but some things currently have far too much text. Namely the credits screen.
-	texture tex = text_renderer.render_texture(clip_in);
+	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
 		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
-	// TODO: highdpi - this /should/ be fine. But, in some cases (Credits) the maximum viewport height is exceeded. This is bad, but at least it shows something and doesn't crash.
-	draw::blit(tex, visible);
+	dst_rect.w = std::min(dst_rect.w, tex.w());
+	dst_rect.h = std::min(dst_rect.h, tex.h());
+
+	draw::blit(tex, dst_rect);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/

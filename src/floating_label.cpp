@@ -127,7 +127,7 @@ bool floating_label::create_texture()
 			text.set_text(text_, use_markup_);
 		}
 
-		surface foreground = text.render();
+		surface foreground = text.render_surface();
 
 		// Pixel scaling is necessary as we are manipulating the raw surface
 		const int ps = CVideo::get_singleton().get_pixel_scale();
