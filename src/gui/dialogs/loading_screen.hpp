@@ -109,6 +109,14 @@ public:
 	 */
 	static void spin();
 
+	/**
+	 * Raise the loading screen to the top of the draw stack.
+	 *
+	 * This can be called if another TLD has been created during loading,
+	 * such as happens with the game display.
+	 */
+	static void raise();
+
 private:
 	virtual const std::string& window_id() const override;
 

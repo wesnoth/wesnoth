@@ -148,6 +148,13 @@ void loading_screen::spin()
 	}
 }
 
+void loading_screen::raise()
+{
+	if (singleton_) {
+		draw_manager::raise_drawable(singleton_);
+	}
+}
+
 // This will be run inside the window::show() loop.
 void loading_screen::process(events::pump_info&)
 {
