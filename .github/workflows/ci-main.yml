@@ -28,6 +28,7 @@ jobs:
       image: wesnoth/wesnoth:2004-master
       options: --tty # docker create options
       env:
+        TOOL: ${{ matrix.tool }}
         CFG: ${{ matrix.cfg }}
         CC: ${{ matrix.cc }}
         CXX: ${{ matrix.cxx }}
@@ -45,50 +46,53 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Start Xvfb
-        run: start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid
-               --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
-      - name: Build wesnoth, wesnothd, campaignd and unit tests (scons)
-        if: matrix.tool == 'scons'
-        run: scons wesnoth wesnothd campaignd boost_unit_tests
-               build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD"
-               extra_flags_config="-pipe" strict=true forum_user_handler=true
-               nls="$NLS" enable_lto="$LTO" force_color=true jobs=2 --debug=time
-      - name: Build wesnoth, wesnothd, campaignd and unit tests (cmake)
-        if: matrix.tool == 'cmake'
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
+        id: build
         run: |
-             cmake -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
-               -DENABLE_TESTS=true -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
-               -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
-               -DENABLE_NLS="$NLS" -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
-             make conftests
-             make VERBOSE=1 -j2
+          case $TOOL in
+            scons)
+              scons wesnoth wesnothd campaignd boost_unit_tests \
+                build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
+                extra_flags_config="-pipe" strict=true forum_user_handler=true\
+                nls="$NLS" enable_lto="$LTO" force_color=true jobs=2 --debug=time
+              ;;
+            cmake)
+              cmake -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
+                -DENABLE_TESTS=true -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
+                -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
+                -DENABLE_NLS="$NLS" -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
+              make conftests
+              make VERBOSE=1 -j2
+              ;;
+          esac
 #      - name: Rename debug binaries
 #        if: matrix.cfg == 'debug'
 #        run: mv wesnoth{-debug,}; mv wesnothd{-debug,}; mv campaignd{-debug,}; mv boost_unit_tests{-debug,}
-      - name: WML validation
-        if: always()
-        run: ./utils/CI/schema_validation.sh
-      - name: Run luacheck
-        if: always()
-        run: luacheck .
+      - name: Start Xvfb
+        run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
       - name: Whitespace and WML indentation check
-        if: always()
+        if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
+      - name: Run luacheck
+        if: success() || failure()
+        run: luacheck .
       - name: Doxygen check
-        if: always()
+        if: success() || failure()
         run: ./utils/CI/doxygen-check.sh; false
+      - name: WML validation
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
-        if: always()
+        if: success() || steps.build.outcome == 'success'
         run: ./run_wml_tests -g -c -t 20
       - name: Run play tests
-        if: always()
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/play_test_executor.sh; false
       - name: Run MP tests
-        if: always()
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: always()
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/test_executor.sh
 
   steam-runtime:
