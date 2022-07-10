@@ -2357,6 +2357,35 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
+void display::fade_to(const color_t& c, int duration)
+{
+	uint32_t start = SDL_GetTicks();
+	color_t fade_start = fade_color_;
+
+	// If we started transparent, assume the same colour
+	if(fade_start.a == 0) {
+		fade_start.r = c.r;
+		fade_start.g = c.g;
+		fade_start.b = c.b;
+	}
+
+	// Smoothly blend and display
+	for(uint32_t now = start; now < start + duration; now = SDL_GetTicks()) {
+		float prop_f = float(now - start) / float(duration);
+		uint8_t p = float_to_color(prop_f);
+		fade_color_ = fade_start.smooth_blend(c, p);
+		draw_manager::invalidate_region(map_outside_area());
+		events::pump();
+		events::raise_draw_event();
+	}
+	fade_color_ = c;
+}
+
+void display::set_fade(const color_t& c)
+{
+	fade_color_ = c;
+}
+
 void display::redraw_everything()
 {
 	if(screen_.update_locked())
@@ -2561,6 +2590,11 @@ bool display::expose(const SDL_Rect& region)
 
 	// TODO: draw_manager - hmm... buttons redraw over tooltips, because they are TLDs
 	font::draw_floating_labels();
+
+	// If there's a fade, apply it over everything
+	if(fade_color_.a) {
+		draw::fill(map_outside_area().intersect(region), fade_color_);
+	}
 
 	return true; // TODO: draw_manager - maybe don't flip yeah?
 }

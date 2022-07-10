@@ -563,6 +563,14 @@ public:
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc) const;
 
+	/** Screen fade */
+	void fade_to(const color_t& color, int duration);
+	void set_fade(const color_t& color);
+
+private:
+	color_t fade_color_ = {0,0,0,0};
+
+public:
 	/**
 	 * Draws invalidated items.
 	 * If update is true, will also copy the display to the frame buffer.
