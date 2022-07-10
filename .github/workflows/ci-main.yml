@@ -67,20 +67,28 @@ jobs:
 #        if: matrix.cfg == 'debug'
 #        run: mv wesnoth{-debug,}; mv wesnothd{-debug,}; mv campaignd{-debug,}; mv boost_unit_tests{-debug,}
       - name: WML validation
+        if: always()
         run: ./utils/CI/schema_validation.sh
       - name: Run luacheck
+        if: always()
         run: luacheck .
       - name: Whitespace and WML indentation check
+        if: always()
         run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
       - name: Doxygen check
-        run: ./utils/CI/doxygen-check.sh
+        if: always()
+        run: ./utils/CI/doxygen-check.sh; false
       - name: Run WML tests
+        if: always()
         run: ./run_wml_tests -g -c -t 20
       - name: Run play tests
-        run: ./utils/CI/play_test_executor.sh
+        if: always()
+        run: ./utils/CI/play_test_executor.sh; false
       - name: Run MP tests
+        if: always()
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
+        if: always()
         run: ./utils/CI/test_executor.sh
 
   steam-runtime:
