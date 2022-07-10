@@ -3730,6 +3730,19 @@ int game_lua_kernel::intf_get_color_adjust(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_screen_fade(lua_State *L)
+{
+	if(game_display_) {
+		color_t fade;
+		fade.r = luaL_checkinteger(L, 1);
+		fade.g = luaL_checkinteger(L, 2);
+		fade.b = luaL_checkinteger(L, 3);
+		fade.a = luaL_checkinteger(L, 4);
+		game_display_->fade_to(fade, luaL_checkinteger(L, 5));
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -4700,6 +4713,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
 		{"get_color_adjust", &dispatch<&game_lua_kernel::intf_get_color_adjust>},
 		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
+		{"screen_fade", &dispatch<&game_lua_kernel::intf_screen_fade>},
 		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
 		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
 		{"highlight_hex", &dispatch<&game_lua_kernel::intf_highlight_hex>},

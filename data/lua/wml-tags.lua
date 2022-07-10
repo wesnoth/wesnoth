@@ -718,6 +718,10 @@ function wml_actions.color_adjust(cfg)
 	wesnoth.interface.color_adjust(cfg.red or 0, cfg.green or 0, cfg.blue or 0)
 end
 
+function wml_actions.screen_fade(cfg)
+	wesnoth.interface.screen_fade(cfg.red, cfg.green, cfg.blue, cfg.alpha, cfg.duration)
+end
+
 function wml_actions.end_turn(cfg)
 	wesnoth.interface.end_turn()
 end
