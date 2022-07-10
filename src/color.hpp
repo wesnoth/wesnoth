@@ -48,6 +48,12 @@ const uint32_t RGBA_BLUE_BITSHIFT  = 8;
 
 const uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
 
+// Functions for manipulating RGB values.
+constexpr uint8_t float_to_color(double n);
+constexpr uint8_t float_to_color(float n);
+constexpr uint8_t color_multiply(uint8_t n1, uint8_t n2);
+constexpr uint8_t color_blend(uint8_t n1, uint8_t n2, uint8_t p);
+
 /**
  * The basic class for representing 8-bit RGB or RGBA colour values.
  *
@@ -212,6 +218,23 @@ struct color_t : SDL_Color
 		};
 	}
 
+	/**
+	 * Blend smoothly with another color_t.
+	 *
+	 * @param c     The color to blend with.
+	 * @param p     The proportion of the other color to blend. 0 will
+	 *              return the original color, 255 the blending color.
+	 */
+	color_t smooth_blend(const color_t& c, uint8_t p) const
+	{
+		return {
+			color_blend(r, c.r, p),
+			color_blend(g, c.g, p),
+			color_blend(b, c.b, p),
+			color_blend(a, c.a, p)
+		};
+	}
+
 	/** Definition of a 'null' color - fully transparent black. */
 	static color_t null_color()
 	{
@@ -261,4 +284,14 @@ constexpr uint8_t float_to_color(float n)
 constexpr uint8_t color_multiply(uint8_t n1, uint8_t n2)
 {
 	return uint8_t((uint16_t(n1) * uint16_t(n2))/255);
+}
+
+/**
+ * Blend 8-bit colour value with another in the given proportion.
+ *
+ * A proportion of 0 returns the first value, 255 the second.
+ */
+constexpr uint8_t color_blend(uint8_t n1, uint8_t n2, uint8_t p)
+{
+	return color_multiply(n1, ~p) + color_multiply(n2, p);
 }
