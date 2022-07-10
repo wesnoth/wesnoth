@@ -69,7 +69,8 @@ jobs:
 #        if: matrix.cfg == 'debug'
 #        run: mv wesnoth{-debug,}; mv wesnothd{-debug,}; mv campaignd{-debug,}; mv boost_unit_tests{-debug,}
       - name: Start Xvfb
-        run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+        if: success() || failure()
+        run: start-stop-daemon --start --background --exec Xvfb -- :99 -ac -screen 0 1024x768x24
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
