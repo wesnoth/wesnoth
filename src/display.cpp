@@ -191,7 +191,7 @@ display::display(const display_context* dc,
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_(nullptr)
 	, minimap_location_(sdl::empty_rect)
-	, redraw_background_(true)
+	, redraw_background_(false)
 	, invalidateAll_(true)
 	, diagnostic_label_(0)
 	, invalidateGameStatus_(true)
@@ -2613,6 +2613,10 @@ rect display::screen_location()
 
 void display::update_render_textures()
 {
+	if(CVideo::get_singleton().faked()) {
+		return;
+	}
+
 	// TODO: draw_manager - tidy these video accessors
 	rect darea = video().draw_area();
 	rect oarea = darea * video().get_pixel_scale();
@@ -2631,6 +2635,17 @@ void display::update_render_textures()
 	front_.set_draw_size(darea.w, darea.h);
 	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
 	back_.set_draw_size(darea.w, darea.h);
+
+	// Fill both with the background texture.
+	const SDL_Rect clip_rect = map_outside_area();
+	for(int i = 0; i < 2; ++i) {
+		auto setter = draw::set_render_target(i ? back_ : front_);
+		draw::tiled(
+			image::get_texture(theme_.border().background_image),
+			clip_rect
+		);
+	}
+
 	// TODO: draw_manager - this is gross
 	dirty_ = true;
 }
