@@ -30,8 +30,8 @@ jobs:
         comment_body=""
 
         ## Get maps changed
-        git fetch --depth=1 origin "$SHA"
         mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" -- '*.map')
+        git fetch --depth=1 origin "$SHA"
 
         for map_path in "${map_paths[@]}"
         do
