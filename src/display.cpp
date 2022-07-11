@@ -1738,6 +1738,9 @@ void display::announce(const std::string& message, const color_t& color, const a
 
 void display::recalculate_minimap()
 {
+	if(video().faked()) {
+		return;
+	}
 	const rect& area = minimap_area();
 	minimap_ = texture(image::getMinimap(
 		area.w, area.h, get_map(),
