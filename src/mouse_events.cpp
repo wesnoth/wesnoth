@@ -394,6 +394,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		return;
 	}
 
+	// Don't process other motion events while scrolling
+	if(scroll_started_) {
+		return;
+	}
+
 	if(new_hex == map_location::null_location()) {
 		new_hex = gui().hex_clicked_on(x, y);
 	}

@@ -229,6 +229,9 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 					last_hex_ = loc;
 					gui().scroll_to_tile(loc, display::WARP, false);
 				}
+			} else {
+				// Deselect the current tile as we're scrolling
+				gui().highlight_hex({-1,-1});
 			}
 		} else if(event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
