@@ -8,47 +8,46 @@ on:
 jobs:
   comment-map-diff:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: utils/wesnoth-map-diff
     steps:
     - uses: actions/checkout@v3.0.0
     - uses: actions/setup-node@v3.0.0
       with:
         node-version: '16'
     - name: Package install
-      run: |
-        cd ./utils/wesnoth-map-diff
-        npm install
+      run: npm install
     - name: Package build
-      run: |
-        cd ./utils/wesnoth-map-diff
-        npm run build:prod
+      run: npm run build:prod
     - name: Get maps diff
       id: get-maps-diff
+      env:
+        SHA: ${{ github.event.pull_request.head.sha }}
       run: |
         sudo apt-get install -y pngquant
         comment_body=""
 
-        cd ./utils/wesnoth-map-diff
-
         ## Get maps changed
-        git fetch --depth=1 origin ${{ github.event.pull_request.head.sha }}
-        mapfile -t map_paths < <(git diff --name-only HEAD ${{ github.event.pull_request.head.sha }} | grep '\.map$')
+        git fetch --depth=1 origin "$SHA"
+        mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" | grep '\.map$')
 
         for map_path in "${map_paths[@]}"
         do
           ## Get old map version
-          map_filename=${map_path##*/}
-          git show ${{ github.event.pull_request.head.sha }}:"$map_path" > "$map_filename"
+          old_map=${map_path##*/}
+          git show "$SHA":"$map_path" > "$old_map"
 
           ## Run map diff
-          diff_image=${map_filename%.map}.png
-          node ./build/index.js "./$map_filename" "../../$map_path" "./$diff_image"
+          diff_image=${old_map%.map}.png
+          node build/index.js "$old_map" "../../$map_path" "$diff_image"
 
           ## Compress image
-          pngquant "$diff_image" -o "$diff_image" --force
+          pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
           image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
-            -F "image=@\"$diff_image\"" | jq ".data.link" -r)
+            -F "image=@\"$diff_image\"" | jq -r ".data.link")
 
           comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
         done
