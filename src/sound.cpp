@@ -672,6 +672,14 @@ static void play_new_music()
 		fading_time = 0;
 	}
 
+	// Halt any existing music.
+	// If we don't do this SDL_Mixer blocks everything until fade out is complete.
+	// Do not remove this without ensuring that it does not block.
+	// If you don't want it to halt the music, ensure that fades are completed
+	// before attempting to play new music.
+	Mix_HaltMusic();
+
+	// Fade in the new music
 	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time);
 	if(res < 0) {
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " " << std::endl;
@@ -767,6 +775,11 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process(events::pump_info& info)
 {
+	if(Mix_FadingMusic() != MIX_NO_FADING) {
+		// Do not block everything while fading.
+		return;
+	}
+
 	if(preferences::music_on()) {
 		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
@@ -784,6 +797,7 @@ void music_thinker::process(events::pump_info& info)
 		if(want_new_music) {
 			if(Mix_PlayingMusic()) {
 				Mix_FadeOutMusic(fadingout_time);
+				return;
 			}
 
 			unload_music = false;
