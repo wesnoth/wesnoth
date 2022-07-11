@@ -42,9 +42,11 @@ jobs:
           ## Run map diff
           diff_image=${map_filename%.map}.png
           node ./build/index.js "./$map_filename" "../../$map_path" "./$diff_image"
+          
+          printf 'created diff image %s for map %s\n' "$diff_image" "$map_filename"
 
           ## Compress image
-          pngquant "$diff_image" -o "$diff_image" --force
+          pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
           image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
