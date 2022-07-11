@@ -40,6 +40,7 @@ namespace {
 std::vector<top_level_drawable*> top_level_drawables_;
 std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
+bool tlds_invalidated_ = false;
 uint32_t last_sparkle_ = 0;
 } // namespace
 
@@ -115,6 +116,9 @@ void sparkle()
 		throw game::error("recursive draw");
 	}
 
+	// Keep track of whether the TLD vector has been invalidated.
+	tlds_invalidated_ = false;
+
 	// Ensure layout and animations are up-to-date.
 	draw_manager::layout();
 
@@ -159,6 +163,7 @@ static void wait_for_vsync()
 static void layout()
 {
 	for (auto tld : top_level_drawables_) {
+		if (tlds_invalidated_) { break; }
 		tld->layout();
 	}
 }
@@ -166,6 +171,7 @@ static void layout()
 static void render()
 {
 	for (auto tld : top_level_drawables_) {
+		if (tlds_invalidated_) { break; }
 		tld->render();
 	}
 }
@@ -226,6 +232,7 @@ void deregister_drawable(top_level_drawable* tld)
 	DBG_DM << "deregistering TLD " << static_cast<void*>(tld) << endl;
 	auto& vec = top_level_drawables_;
 	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
+	tlds_invalidated_ = true;
 }
 
 void raise_drawable(top_level_drawable* tld)
@@ -234,6 +241,7 @@ void raise_drawable(top_level_drawable* tld)
 	auto& vec = top_level_drawables_;
 	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
 	vec.push_back(tld);
+	tlds_invalidated_ = true;
 }
 
 } // namespace draw_manager
