@@ -31,13 +31,17 @@ jobs:
 
         git fetch --depth=1 origin "$SHA"
         echo 1
-        git diff --name-only HEAD "$SHA" -- '*.map'
+        git diff --name-only HEAD FETCH_HEAD -- '*.map'
         echo 2
-        git diff --name-only HEAD "$SHA" '*.map'
+        git diff --name-only HEAD FETCH_HEAD '*.map'
         echo 3
-        git diff --name-only HEAD "$SHA"
+        git diff --name-only HEAD FETCH_HEAD
+        echo 4
+        git diff --name-only HEAD..FETCH_HEAD -- '*.map'
+        echo 5
+        git diff --name-only HEAD..FETCH_HEAD '*.map'
         ## Get maps changed
-        mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" -- '*.map')
+        mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" | grep '\.map$')
 
         for map_path in "${map_paths[@]}"
         do
