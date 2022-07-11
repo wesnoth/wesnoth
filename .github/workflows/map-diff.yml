@@ -29,6 +29,12 @@ jobs:
         sudo apt-get install -y pngquant
         comment_body=""
 
+        echo 1
+        git diff --name-only HEAD "$SHA" -- '*.map'
+        echo 2
+        git diff --name-only HEAD "$SHA" '*.map'
+        echo 3
+        git diff --name-only HEAD "$SHA"
         ## Get maps changed
         mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" -- '*.map')
         git fetch --depth=1 origin "$SHA"
