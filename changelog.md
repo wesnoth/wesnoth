@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * The South Guard
+     * S4: Fixed replay OOS on victory event (issue #6832)
    * Under the Burning Suns
      * S8: Fixed replay OOS on victory event (issue #6267)
    * World Conquest
