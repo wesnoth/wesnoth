@@ -16,6 +16,7 @@
    * Updated translations: Arabic, British English, Czech, Finnish, French
  ### Units
    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
+   * Updated some Loyalist sprites: Sergeant, Lieutenant, Swordsman, Pikeman, Royal Guard, Halberdier
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
