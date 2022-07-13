@@ -32,7 +32,6 @@
 #include "wml_separators.hpp"
 
 #include <numeric>
-#include <iostream>
 
 namespace gui {
 

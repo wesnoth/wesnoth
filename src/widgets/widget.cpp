@@ -23,8 +23,6 @@
 #include "tooltips.hpp"
 
 #include <cassert>
-#include <iostream>
-
 namespace {
 	const SDL_Rect EmptyRect {-1234,-1234,0,0};
 }

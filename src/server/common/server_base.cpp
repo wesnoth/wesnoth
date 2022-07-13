@@ -49,6 +49,7 @@
 #include <queue>
 #include <sstream>
 #include <string>
+#include <iostream>
 
 
 static lg::log_domain log_server("server");

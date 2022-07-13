@@ -26,6 +26,7 @@
 
 #include <ctime>
 #include <iomanip>
+#include <iostream>
 
 #include <boost/algorithm/string/predicate.hpp>
 
