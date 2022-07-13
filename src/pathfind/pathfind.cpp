@@ -609,10 +609,19 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
 	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
-	// The viewing team needs to be the unit's team here.
-	const team& viewing_team = resources::gameboard->get_team(u->side());
-	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
-	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
+
+	if(u.valid())
+	{
+		// The viewing team needs to be the unit's team here.
+		const team& viewing_team = resources::gameboard->get_team(u->side());
+		find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
+					destinations, &edges, &*u, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
+	}
+	else
+	{
+		find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
+					destinations, &edges, nullptr, nullptr, nullptr, nullptr, &jamming_map, nullptr, true);
+	}
 }
 
 /** Default destructor */
