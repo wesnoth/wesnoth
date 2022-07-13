@@ -2437,12 +2437,9 @@ void display::redraw_everything()
 		f(*this);
 	}
 
-	int ticks1 = SDL_GetTicks();
 	invalidate_all();
-	int ticks2 = SDL_GetTicks();
-	draw(true,true);
-	int ticks3 = SDL_GetTicks();
-	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
+
+	draw_manager::invalidate_region(screen_.draw_area());
 }
 
 void display::add_redraw_observer(std::function<void(display&)> f)
@@ -2479,12 +2476,9 @@ void display::draw(bool update, bool force)
 	// TODO: draw_manager - make this check better / kill it
 	if(dirty_) {
 		DBG_DP << "display::draw dirty redraw all" << endl;
-		// TODO: draw_manager - flip_locker is almost certainly unnecessary
-		flip_locker flip_lock(screen_);
 		dirty_ = false;
 		// TODO: draw_manager - remove this and integrate here
 		redraw_everything();
-		return;
 	}
 
 	// TODO: draw_manager - why on earth does this need to mess with sync context?
