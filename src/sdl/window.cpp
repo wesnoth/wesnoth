@@ -32,7 +32,8 @@ window::window(const std::string& title,
 				 const int h,
 				 const uint32_t window_flags,
 				 const uint32_t render_flags)
-	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
+	: window_(SDL_CreateWindow(
+		title.c_str(), x, y, w, h, window_flags | SDL_WINDOW_HIDDEN))
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
 	if(!window_) {
@@ -79,6 +80,11 @@ window::window(const std::string& title,
 	update_input_dimensions(get_logical_size(), get_size());
 
 	render();
+
+	// If we didn't explicitly ask for the window to be hidden, show it
+	if(!(window_flags & SDL_WINDOW_HIDDEN)) {
+		SDL_ShowWindow(window_);
+	}
 }
 
 window::~window()
