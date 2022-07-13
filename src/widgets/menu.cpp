@@ -979,16 +979,13 @@ void menu::layout()
 
 		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
 			if(*i == -1) {
+				// TODO: draw_manager - is this ever actually used?
 				SDL_Rect heading_rect = inner_location();
 				heading_rect.h = heading_height();
-				bg_restore(heading_rect);
-				style_->draw_row(*this,0,heading_rect,HEADING_ROW);
+				queue_redraw(heading_rect);
 			} else if(*i >= 0 && *i < int(item_pos_.size())) {
-				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
 				queue_redraw(rect);
-				style_->draw_row(*this,pos,rect,
-					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
 			}
 		}
 
