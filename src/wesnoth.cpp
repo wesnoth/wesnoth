@@ -99,6 +99,7 @@
 #include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
 #include <vector>
+#include <iostream>
 
 //#define NO_CATCH_AT_GAME_END
 

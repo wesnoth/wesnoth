@@ -27,6 +27,7 @@
 #include <sstream>
 #include <ctime>
 #include <mutex>
+#include <iostream>
 #include <iomanip>
 
 namespace {

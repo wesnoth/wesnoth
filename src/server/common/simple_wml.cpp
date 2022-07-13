@@ -13,7 +13,6 @@
 	See the COPYING file for more details.
 */
 
-#include <iostream>
 #include <sstream>
 
 #include <boost/iostreams/copy.hpp>
