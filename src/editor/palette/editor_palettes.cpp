@@ -86,7 +86,6 @@ bool editor_palette<Item>::scroll_up()
 		scrolled = true;
 		set_dirty(true);
 	}
-	draw();
 	return scrolled;
 }
 
@@ -111,7 +110,6 @@ bool editor_palette<Item>::scroll_down()
 		scrolled = true;
 		set_dirty(true);
 	}
-	draw();
 	return scrolled;
 }
 

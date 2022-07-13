@@ -1230,9 +1230,9 @@ void editor_controller::refresh_image_cache()
 
 void editor_controller::display_redraw_callback(display&)
 {
+	// TODO: draw_manager - this is the only use of this redraw_callback system, refactor it away
 	set_button_state();
 	toolkit_->adjust_size();
-	toolkit_->get_palette_manager()->draw_contents();
 	get_current_map_context().get_labels().recalculate_labels();
 }
 
