@@ -2493,13 +2493,7 @@ void display::draw(bool update, bool force)
 	// TODO: draw_manager - redraw background more judiciously
 	if(redraw_background_) {
 		DBG_DP << "display::draw redraw background" << endl;
-		// Full redraw of the background
-		const SDL_Rect clip_rect = map_outside_area();
-		draw::fill(clip_rect, 0, 0, 0);
-		draw::tiled(
-			image::get_texture(theme_.border().background_image),
-			clip_rect
-		);
+		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
 		redraw_background_ = false;
 	}
@@ -2644,7 +2638,17 @@ void display::update_render_textures()
 	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
 	back_.set_draw_size(darea.w, darea.h);
 
-	// Fill with the background texture, or plain black if there is none.
+	// Fill in the background area on both textures.
+	render_map_outside_area();
+
+	// TODO: draw_manager - this is gross
+	dirty_ = true;
+}
+
+void display::render_map_outside_area()
+{
+	// This could be optimized to avoid the map area,
+	// but it's only called on game creation or zoom anyway.
 	const SDL_Rect clip_rect = map_outside_area();
 	texture bgtex = image::get_texture(theme_.border().background_image);
 	for(int i = 0; i < 2; ++i) {
@@ -2655,9 +2659,6 @@ void display::update_render_textures()
 			draw::fill(clip_rect, 0, 0, 0);
 		}
 	}
-
-	// TODO: draw_manager - this is gross
-	dirty_ = true;
 }
 
 map_labels& display::labels()

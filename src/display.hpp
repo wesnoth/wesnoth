@@ -604,6 +604,10 @@ private:
 	/** Ensure render textures are valid and correct. */
 	void update_render_textures();
 
+	/** Draw/redraw the off-map background area.
+	  * This updates both render textures. */
+	void render_map_outside_area();
+
 public:
 	map_labels& labels();
 	const map_labels& labels() const;
