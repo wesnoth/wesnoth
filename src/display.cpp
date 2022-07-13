@@ -1741,12 +1741,18 @@ void display::recalculate_minimap()
 	if(video().faked()) {
 		return;
 	}
+
 	const rect& area = minimap_area();
+	if(area.empty()){
+		return;
+	}
+
 	minimap_ = texture(image::getMinimap(
 		area.w, area.h, get_map(),
 		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
 	));
+
 	redraw_minimap();
 }
 
@@ -2559,7 +2565,9 @@ void display::render()
 	// update the minimap texture, if necessary
 	// TODO: highdpi - high DPI minimap
 	const rect& area = minimap_area();
-	if(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h) {
+	if(!area.empty() &&
+		(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h))
+	{
 		recalculate_minimap();
 		if(!minimap_) {
 			ERR_DP << "error creating minimap" << endl;
@@ -2636,14 +2644,16 @@ void display::update_render_textures()
 	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
 	back_.set_draw_size(darea.w, darea.h);
 
-	// Fill both with the background texture.
+	// Fill with the background texture, or plain black if there is none.
 	const SDL_Rect clip_rect = map_outside_area();
+	texture bgtex = image::get_texture(theme_.border().background_image);
 	for(int i = 0; i < 2; ++i) {
 		auto setter = draw::set_render_target(i ? back_ : front_);
-		draw::tiled(
-			image::get_texture(theme_.border().background_image),
-			clip_rect
-		);
+		if(bgtex) {
+			draw::tiled(bgtex, clip_rect);
+		} else {
+			draw::fill(clip_rect, 0, 0, 0);
+		}
 	}
 
 	// TODO: draw_manager - this is gross
