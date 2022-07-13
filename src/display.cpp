@@ -1497,10 +1497,41 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, {x, y, w, h}, text_surf);
 }
 
+static void add_submerge_ipf_mod(
+	std::string& image_path,
+	int image_height,
+	double submersion_amount)
+{
+	// general formula for submerge alpha:
+	//   if (y > WATERLINE)
+	//   then min(max(alpha_mod, 0), 1) * alpha
+	//   else alpha
+	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
+	// formula variables: x, y, red, green, blue, alpha, width, height
+	// full WFL string:
+	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
+	// where DL = submersion line in pixels from top of image
+	//       AB = base alpha proportion at submersion line (30%)
+	//       AD = proportional alpha delta per pixel (1.5%)
+	if (submersion_amount > 0.0) {
+		int submersion_line = image_height * (1.0 - submersion_amount);
+		const std::string sl_string = std::to_string(submersion_line);
+		image_path += "~ADJUST_ALPHA(if(y>";
+		image_path += sl_string;
+		image_path += ",clamp((0.3-(y-";
+		image_path += sl_string;
+		image_path += ")*0.015),0,1)*alpha,alpha))";
+	}
+	// FUTURE: this submerge function could be done using SDL_RenderGeometry,
+	// but that's not available below SDL 2.0.18.
+	// Alternately it could also be done fairly easily using shaders,
+	// if a graphics system supporting them (such as openGL) is moved to.
+}
+
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, const image::locator& i_locator,
 		bool hreverse, bool greyscale, uint8_t alpha, double highlight,
-		color_t blendto, double blend_ratio, double submerged, bool vreverse)
+		color_t blendto, double blend_ratio, double submerge, bool vreverse)
 {
 	if (alpha == 0) {
 		return;
@@ -1523,30 +1554,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		new_modifications += "~GS()";
 	}
 
-	// general formula for submerged alpha:
-	//   if (y > WATERLINE)
-	//   then min(max(alpha_mod, 0), 1) * alpha
-	//   else alpha
-	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
-	// formula variables: x, y, red, green, blue, alpha, width, height
-	// full WFL string:
-	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
-	// where DL = submersion line in pixels from top of image
-	//       AB = base alpha proportion at submersion line (30%)
-	//       AD = proportional alpha delta per pixel (1.5%)
-	if (submerged > 0.0) {
-		const int submersion_line = image_size.y * (1.0 - submerged);
-		const std::string sl_string = std::to_string(submersion_line);
-		new_modifications += "~ADJUST_ALPHA(if(y>";
-		new_modifications += sl_string;
-		new_modifications += ",clamp((0.3-(y-";
-		new_modifications += sl_string;
-		new_modifications += ")*0.015),0,1)*alpha,alpha))";
-	}
-	// FUTURE: this submerge function could be done using SDL_RenderGeometry,
-	// but that's not available below SDL 2.0.18.
-	// Alternately it could also be done fairly easily using shaders,
-	// if a graphics system supporting them (such as openGL) is moved to.
+	add_submerge_ipf_mod(new_modifications, image_size.y, submerge);
 
 	texture tex;
 	if (!new_modifications.empty()) {
@@ -2762,6 +2770,10 @@ void display::draw_hex(const map_location& loc)
 		}
 	}
 
+	const t_translation::terrain_code terrain = get_map().get_terrain(loc);
+	const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
+	const double submerge = terrain_info.unit_submerge();
+
 	if(!shrouded(loc)) {
 		auto it = get_overlays().find(loc);
 		if(it != get_overlays().end()) {
@@ -2783,8 +2795,12 @@ void display::draw_hex(const map_location& loc)
 					}
 					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog))
 					{
+						point isize = image::get_size(ov.image, image::HEXED);
+						std::string ipf = ov.image;
+						add_submerge_ipf_mod(ipf, isize.y, submerge);
 						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_texture(ov.image, lt) : image::get_texture(ov.image, image::HEXED);
+							image::get_lighted_texture(ipf, lt) :
+							image::get_texture(ipf, image::HEXED);
 						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}
