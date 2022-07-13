@@ -793,9 +793,9 @@ surface display::screenshot(bool map_screenshot)
 	auto clipper = draw::set_clip(area);
 
 	map_screenshot_ = true;
-	dirty_ = true;
 
-	DBG_DP << "draw() call for map screenshot\n";
+	invalidate_all();
+	draw_init();
 	draw();
 
 	map_screenshot_ = false;
