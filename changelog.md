@@ -1,17 +1,6 @@
 ## Version 1.16.4+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
- ### Translations
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed frequent crashes occurring in multiplayer matches (issue #6863).
 
 ## Version 1.16.4
  ### Campaigns
