@@ -600,7 +600,7 @@ void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
 
-	update_layout();
+	queue_redraw();
 }
 
 void listbox::set_column_order(unsigned col, const generator_sort_array& func)
