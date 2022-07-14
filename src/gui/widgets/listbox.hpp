@@ -253,9 +253,6 @@ public:
 	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref widget::layout_children. */
-	virtual void layout_children() override;
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void order_by(const generator_base::order_func& func);
@@ -366,8 +363,6 @@ private:
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
 
-	bool need_layout_;
-
 	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
 	torder_list orders_;
 
@@ -404,8 +399,8 @@ private:
 	 */
 	void resize_content(const widget& row);
 
-	/** Layouts the children if needed. */
-	void layout_children(const bool force);
+	/** Updates internal layout. */
+	void update_layout();
 
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;

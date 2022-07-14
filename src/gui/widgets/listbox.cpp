@@ -53,7 +53,6 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 	, generator_(nullptr)
 	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(list_builder)
-	, need_layout_(false)
 	, orders_()
 	, callback_order_change_()
 {
@@ -394,9 +393,7 @@ void listbox::resize_content(const int width_modification,
 
 		// Set new size.
 		content_grid()->set_size(size);
-
-		// Set status.
-		need_layout_ = true;
+		update_layout();
 
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
@@ -428,11 +425,6 @@ void listbox::resize_content(const widget& row)
 	}
 
 	resize_content(size.x, size.y);
-}
-
-void listbox::layout_children()
-{
-	layout_children(false);
 }
 
 point listbox::calculate_best_size() const
@@ -608,8 +600,7 @@ void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
 
-	queue_redraw();
-	need_layout_ = true;
+	update_layout();
 }
 
 void listbox::set_column_order(unsigned col, const generator_sort_array& func)
@@ -682,20 +673,16 @@ void listbox::set_content_size(const point& origin, const point& size)
 	content_grid()->place(origin, s);
 }
 
-void listbox::layout_children(const bool force)
+void listbox::update_layout()
 {
 	assert(content_grid());
 
-	if(need_layout_ || force) {
-		content_grid()->place(content_grid()->get_origin(), content_grid()->get_size());
+	content_grid()->place(content_grid()->get_origin(), content_grid()->get_size());
 
-		const SDL_Rect& visible = content_visible_area_;
+	const SDL_Rect& visible = content_visible_area_;
+	content_grid()->set_visible_rectangle(visible);
 
-		content_grid()->set_visible_rectangle(visible);
-
-		need_layout_ = false;
-		queue_redraw();
-	}
+	queue_redraw();
 }
 
 // }---------- DEFINITION ---------{
