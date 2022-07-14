@@ -153,7 +153,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 			// draw border
 			texture image;
 			SDL_Rect area;
-			auto clipper = draw::set_clip(rect);
+			auto clipper = draw::reduce_clip(rect);
 			area.x = rect.x;
 			area.y = rect.y;
 

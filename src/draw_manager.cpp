@@ -204,7 +204,7 @@ next:
 		}
 		DBG_DM << "drawing " << r << endl;
 		//PLAIN_LOG << "+";
-		auto clipper = draw::set_clip(r);
+		auto clipper = draw::override_clip(r);
 		for (auto tld : top_level_drawables_) {
 			rect i = r.intersect(tld->screen_location());
 			if (i.empty()) {

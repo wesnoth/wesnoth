@@ -473,7 +473,7 @@ draw::clip_setter::~clip_setter()
 	}
 }
 
-draw::clip_setter draw::set_clip(const SDL_Rect& clip)
+draw::clip_setter draw::override_clip(const SDL_Rect& clip)
 {
 	return draw::clip_setter(clip);
 }

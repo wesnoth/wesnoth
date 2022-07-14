@@ -209,7 +209,7 @@ void textbox::draw_contents()
 			const int endx = char_x_[end];
 			const int endy = char_y_[end];
 
-			auto clipper = draw::set_clip(loc);
+			auto clipper = draw::reduce_clip(loc);
 
 			while(starty <= endy) {
 				const std::size_t right = starty == endy ? endx : text_image_.w();

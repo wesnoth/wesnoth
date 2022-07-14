@@ -296,8 +296,8 @@ void tiled_highres(const texture& tex,
 /** A class to manage automatic restoration of the clipping region.
  *
  * This can be constructed on its own, or one of the utility functions
- * set_clip() and reduce_clip() can be used. Constructing a clip_setter
- * or using set_clip() will completely override the current clipping area.
+ * override_clip() and reduce_clip() can be used. Constructing a clip_setter
+ * or using override_clip() will completely override the current clipping area.
  * To intersect with the current clipping area in stead, use reduce_clip().
  */
 class clip_setter
@@ -311,7 +311,7 @@ private:
 };
 
 /**
- * Set the clipping area. All draw calls will be clipped to this region.
+ * Override the clipping area. All draw calls will be clipped to this region.
  *
  * The clipping area is specified in draw-space coordinates.
  *
@@ -323,13 +323,13 @@ private:
  *                      the clipping region will be restored to whatever
  *                      it was before this call.
  */
-clip_setter set_clip(const SDL_Rect& clip);
+clip_setter override_clip(const SDL_Rect& clip);
 
 /**
  * Set the clipping area to the intersection of the current clipping
  * area and the given rectangle.
  *
- * Otherwise acts as set_clip().
+ * Otherwise acts as override_clip().
  */
 clip_setter reduce_clip(const SDL_Rect& clip);
 

@@ -790,7 +790,7 @@ surface display::screenshot(bool map_screenshot)
 	       << " texture for map screenshot" << std::endl;
 	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
 	auto target_setter = draw::set_render_target(output_texture);
-	auto clipper = draw::set_clip(area);
+	auto clipper = draw::override_clip(area);
 
 	map_screenshot_ = true;
 
@@ -1264,7 +1264,7 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
-	auto clipper = draw::set_clip(map_area());
+	auto clipper = draw::reduce_clip(map_area());
 
 	/*
 	 * Info regarding the rendering algorithm.
@@ -2566,19 +2566,18 @@ void display::render()
 
 bool display::expose(const SDL_Rect& region)
 {
-	if (region == sdl::empty_rect) { return false; } // TODO temp
-	//DBG_DP << "display::expose " << region << endl;
-	//invalidate_locations_in_rect(region);
+	// Note: clipping region is set by draw_manager,
+	// and will be contained by <region>.
+
+	// Blit from the pre-rendered front buffer.
 	// TODO: draw_manager - API to get src region in output space
 	rect src_region = region;
 	src_region *= video().get_pixel_scale();
 	//DBG_DP << "  src region " << src_region << endl;
-	//draw::blit(front_, region);
 	draw::blit(front_, region, src_region);
-	//draw();
+
+	// Render halos.
 	// TODO: draw_manager - halo render region not rely on clip?
-	// TODO: draw_manager - can we rely on clip already being set?
-	auto clipper = draw::set_clip(region);
 	halo_man_.render();
 
 	// These all check for clip region overlap before drawing
@@ -2679,7 +2678,7 @@ rect display::get_clip_rect() const
 void display::draw_invalidated() {
 //	log_scope("display::draw_invalidated");
 	SDL_Rect clip_rect = get_clip_rect();
-	auto clipper = draw::set_clip(clip_rect);
+	auto clipper = draw::reduce_clip(clip_rect);
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes"
 		<< " with clip " << clip_rect << endl;
 	for (const map_location& loc : invalidated_) {
