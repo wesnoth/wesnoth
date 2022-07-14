@@ -2632,6 +2632,12 @@ void display::update_render_textures()
 	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
 	back_.set_draw_size(darea.w, darea.h);
 
+	// Fill entire texture with black, just in case
+	for(int i = 0; i < 2; ++i) {
+		auto setter = draw::set_render_target(i ? back_ : front_);
+		draw::fill(0,0,0);
+	}
+
 	// Fill in the background area on both textures.
 	render_map_outside_area();
 
