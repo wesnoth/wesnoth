@@ -3733,12 +3733,12 @@ int game_lua_kernel::intf_get_color_adjust(lua_State *L)
 int game_lua_kernel::intf_screen_fade(lua_State *L)
 {
 	if(game_display_) {
-		color_t fade;
-		fade.r = luaL_checkinteger(L, 1);
-		fade.g = luaL_checkinteger(L, 2);
-		fade.b = luaL_checkinteger(L, 3);
-		fade.a = luaL_checkinteger(L, 4);
-		game_display_->fade_to(fade, luaL_checkinteger(L, 5));
+		auto vec = lua_check<std::vector<uint8_t>>(L, 1);
+		if(vec.size() != 4) {
+			return luaL_error(L, "screen fade colour must be an array of 4 integers");
+		}
+		color_t fade{vec[0], vec[1], vec[2], vec[3]};
+		game_display_->fade_to(fade, luaL_checkinteger(L, 2));
 	}
 	return 0;
 }
