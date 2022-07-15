@@ -242,6 +242,7 @@ void play_controller::init(const config& level)
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if(start_faded_) {
 			gui_->set_fade({0,0,0,255});
+			gui_->set_prevent_draw(true);
 		}
 
 		// Ensure the loading screen doesn't end up underneath the game display

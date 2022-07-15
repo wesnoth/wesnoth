@@ -2546,6 +2546,11 @@ void display::render()
 	// It is not responsible for halos and floating labels.
 	//DBG_DP << "display::render" << endl;
 
+	// No need to render if we aren't going to draw anything.
+	if(prevent_draw_) {
+		return;
+	}
+
 	// render to the offscreen buffer
 	auto target_setter = draw::set_render_target(front_);
 	draw();
@@ -2568,6 +2573,10 @@ bool display::expose(const SDL_Rect& region)
 {
 	// Note: clipping region is set by draw_manager,
 	// and will be contained by <region>.
+
+	if(prevent_draw_) {
+		return false;
+	}
 
 	// Blit from the pre-rendered front buffer.
 	// TODO: draw_manager - API to get src region in output space

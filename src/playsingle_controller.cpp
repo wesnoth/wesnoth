@@ -130,6 +130,7 @@ void playsingle_controller::init_gui()
 	}
 
 	// Fade in
+	gui_->set_prevent_draw(false);
 	if(!gui_->video().any_fake()) {
 		gui_->fade_to({0,0,0,0}, 500);
 	} else {
