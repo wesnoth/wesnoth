@@ -3736,7 +3736,7 @@ static std::string read_event_name(lua_State* L, int idx)
  * menu_item: True if this is a menu item (an ID is required); this means removing the menu item will automatically remove this event. Default false.
  * first_time_only: Whether this event should fire again after the first time; default true.
  * filter: Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
- * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
+ * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML, unless it has a "code" attribute, in which case that code will be compiled as the function.
  * action: The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
  */
 int game_lua_kernel::intf_add_event(lua_State *L)
