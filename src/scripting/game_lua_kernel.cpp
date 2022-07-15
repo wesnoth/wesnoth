@@ -3730,6 +3730,19 @@ int game_lua_kernel::intf_get_color_adjust(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_screen_fade(lua_State *L)
+{
+	if(game_display_) {
+		auto vec = lua_check<std::vector<uint8_t>>(L, 1);
+		if(vec.size() != 4) {
+			return luaW_type_error(L, 1, "array of 4 integers");
+		}
+		color_t fade{vec[0], vec[1], vec[2], vec[3]};
+		game_display_->fade_to(fade, luaL_checkinteger(L, 2));
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -4700,6 +4713,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
 		{"get_color_adjust", &dispatch<&game_lua_kernel::intf_get_color_adjust>},
 		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
+		{"screen_fade", &dispatch<&game_lua_kernel::intf_screen_fade>},
 		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
 		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
 		{"highlight_hex", &dispatch<&game_lua_kernel::intf_highlight_hex>},

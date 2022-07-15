@@ -123,5 +123,10 @@ function wesnoth.interface.allow_end_turn(reason) end
 ---@param blue integer
 function wesnoth.interface.color_adjust(red, green, blue) end
 
+---Fade the screen to the given colour
+---@param color integer[] RGBA colour value to fade to; A=0 removes fade
+---@param duration integer How long the fade takes to apply, in milliseconds
+function wesnoth.interface.screen_fade(color, duration) end
+
 ---@type table<string, fun()>
 wesnoth.game_display = {}
