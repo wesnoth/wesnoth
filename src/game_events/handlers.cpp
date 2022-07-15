@@ -287,6 +287,37 @@ private:
 	wfl::formula formula_;
 };
 
+struct filter_lua : public event_filter {
+	filter_lua(const std::string& code, const vconfig& args) : code_(code), args_(args)
+	{
+		event_ref_ = resources::lua_kernel->save_wml_event("filter", "", code);
+	}
+	bool operator()(const queued_event& event_info) const override
+	{
+		bool result;
+		return resources::lua_kernel->run_wml_event(event_ref_, args_, event_info, &result) && result;
+	}
+	void serialize(config& cfg) const override
+	{
+		if(cfg.has_attribute(("filter"))) {
+			WRN_NG << "Somehow an event has two filter= attributes";
+		}
+		cfg["filter"] = code_;
+	}
+	bool can_serialize() const override
+	{
+		return true;
+	}
+	~filter_lua()
+	{
+		resources::lua_kernel->clear_wml_event(event_ref_);
+	}
+private:
+	std::string code_;
+	vconfig args_;
+	int event_ref_;
+};
+
 static std::unique_ptr<event_filter> make_filter(const std::string& key, const vconfig& contents)
 {
 	if(key == "filter_condition") {
@@ -346,6 +377,10 @@ void event_handler::read_filters(const config &cfg)
 	}
 	if(cfg.has_attribute("filter_formula")) {
 		add_filter(std::make_unique<filter_formula>(cfg["filter_formula"]));
+	}
+	if(cfg.has_attribute("filter")) {
+		vconfig args(cfg.child_or_empty("filter_args"));
+		add_filter(std::make_unique<filter_lua>(cfg["filter"], args));
 	}
 }
 

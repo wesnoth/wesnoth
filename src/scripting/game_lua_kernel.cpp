@@ -4635,6 +4635,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	, level_lua_()
 	, EVENT_TABLE(LUA_NOREF)
 	, queued_events_()
+	, resources_ptr_(resources::lua_kernel, this)
 	, map_locked_(0)
 {
 	static game_events::queued_event default_queued_event("_from_lua", "", map_location(), map_location(), config());
