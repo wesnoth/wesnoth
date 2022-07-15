@@ -600,7 +600,7 @@ void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
 
-	queue_redraw();
+	update_layout();
 }
 
 void listbox::set_column_order(unsigned col, const generator_sort_array& func)
@@ -677,7 +677,13 @@ void listbox::update_layout()
 {
 	assert(content_grid());
 
-	content_grid()->place(content_grid()->get_origin(), content_grid()->get_size());
+	// If we haven't initialized, or have no content, just return.
+	point size = content_grid()->get_size();
+	if(size.x <= 0 || size.y <= 0) {
+		return;
+	}
+
+	content_grid()->place(content_grid()->get_origin(), size);
 
 	const SDL_Rect& visible = content_visible_area_;
 	content_grid()->set_visible_rectangle(visible);
