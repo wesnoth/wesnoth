@@ -15,7 +15,7 @@
    * Increased minimum required version of SDL to 2.0.10.
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese
+   * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Swedish
  ### Units
    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
    * Updated some Loyalist sprites: Sergeant, Lieutenant, Swordsman, Pikeman, Royal Guard, Halberdier

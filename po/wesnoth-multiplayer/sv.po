@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-15 14:27 UTC\n"
-"PO-Revision-Date: 2020-03-14 13:39+0100\n"
-"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
+"PO-Revision-Date: 2022-07-11 19:09+0200\n"
+"Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: /home/niklas/Documents/wesnoth/source/wesnoth-1.9\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -103,58 +103,49 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Sida %d</span>"
+msgstr ""
+"<span strikethrough=’true’ foreground=’$side_color’>Sida $side_number</"
+"span>:  Har förlorat alla trupper"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Sida %d</span>:  Inkomstpoäng = %d "
-"Truppoäng = %d  Guld = %d"
+"<span foreground='$side_color'>Sida $side_number</span>:  Inkomstpoäng = "
+"$income  Truppoäng = $units  Guld = $gold\n"
+"Totalt: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:84
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>Sida %d</span> leder."
+msgstr "<span foreground='$side_color'>Sida $side_number</span> har övertaget."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:89
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Det är oavgjort mellan sidorna %s och %d|."
+msgstr "Det är oavgjort mellan sidorna $side_number och $other_side_number."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:94
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
-msgstr "Det är oavgjort mellan sidorna %s och %d|."
+msgstr "Det är oavgjort mellan sidorna $winners."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Slut på drag"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -200,7 +191,7 @@ msgid ""
 "of the Loyalist faction, they make up for this with high mobility — "
 "especially on hilly terrains."
 msgstr ""
-" <bold>text='Dynfolket'</bold> är en fraktion av människor från öknarna och "
+"<bold>text='Dynfolket'</bold> är en fraktion av människor från öknarna och "
 "kullarna i söder. Dynfolket specialiserar sig på att använda sig av "
 "terrängen för att samordna attacker i gryning och skymning. Bland dem finns "
 "redbara och perifera trupper, helare, närstridskämpar med hög träffsäkerhet "
@@ -671,7 +662,7 @@ msgstr ""
 "Åren har gått över en ensam gestalt,\n"
 "Här står draken som sitt hem övergav,\n"
 "Och mot basiliskens guld tog av.\n"
-"(Inristat av Flametrooper) "
+"(Inristat av Flametrooper)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
@@ -890,8 +881,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
-"Det verkar som om ingen hört den här modiga spndelns berättelse än.\n"
-" "
+"Det verkar som om ingen hört den här modiga spindelns berättelse än.\n"
+"(Inristat av WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:181
@@ -900,7 +891,7 @@ msgid ""
 "(inscribed by WinnerB)"
 msgstr ""
 "Sagan om den här otursförföljda stråtrövaren har ännu inte berättats.\n"
-" "
+"(Inristat av WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
@@ -1224,10 +1215,10 @@ msgstr ""
 "<span color='red'>Vädrets makter skrevs av:</span>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"- kartdesign, regenerationsgrupper and scenariokoncept\n"
+"• kartdesign, regenerationsgrupper and scenariokoncept\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
-"- WML-implementation "
+"• WML-implementation"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:189
@@ -1378,7 +1369,7 @@ msgid ""
 "what used to be the glorious city of Elensefar."
 msgstr ""
 "Slåss i korridorer och trädgårdar för dominans över vad som en gång var den "
-"mäktiga staden Elensefars östra borggård. "
+"mäktiga staden Elensefars östra borggård."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -1563,28 +1554,6 @@ msgstr ""
 "fristad för plundrare och tjuvar."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
@@ -1592,43 +1561,18 @@ msgid ""
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
 "Ditt mål är att överleva fiendens anfallsvågor och besegra de slutliga "
-"ärkefienderna.\n"
-"\n"
-"Anfallsvågorna genereras slumpmässigt och kommer vara olika varje gång "
-"Vädrets makter spelas.\n"
-"\n"
-"Anfallsvågorna kommer från kartans norra, södra och västra kanter - "
-"troligast västerifrån. De uppstår med någorlunda regelbundet intervall. \n"
-"\n"
-"Vädret ändras också slumpmässigt, och påverkar kartans utseende.\n"
-"\n"
-"\n"
-"<span color='red'>Vädrets makter skrevs av:</span>\n"
-"\n"
-"<span color='green'>jb</span>\n"
-"- kartdesign, regenerationsgrupper and scenariokoncept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"- WML-implementation "
+"ärkefienderna. Anfallsvågorna genereras slumpmässigt och kommer vara olika "
+"varje gång Dimmans ö spelas. Anfallsvågorna uppstår med någorlunda "
+"regelbundet intervall. Vädret ändras också slumpmässigt, och påverkar "
+"kartans utseende."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2s - Vädrets makter (Överlevnad)"
+msgstr "2s - Dimmans ö (Överlevnad)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1637,42 +1581,35 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Vädrets makter är ett överlevnadsscenario för en eller två spelare mot "
-"slumpvalda AI-trupper. Segern vinns genom att överleva och besegra alla "
-"anfallsvågor. Under spelets gång ändras terrängen som följd av olika "
-"slumpmässiga ändringar i vädret.\n"
-"\n"
-"Notera: Du behöver använda förvalda kartinställningar för att detta scenario "
-"ska fungera korrekt."
+"Dimmans ö är ett överlevnadsscenario för en eller två spelare mot slumpvalda "
+"AI-trupper, tänkt för erfarna spelare. Segern vinns genom att överleva och "
+"besegra alla anfallsvågor. Under spelets gång ändras terrängen som följd av "
+"olika slumpmässiga ändringar i vädret. Du behöver använda förvalda "
+"kartinställningar för att detta scenario ska fungera korrekt. Av Lord-"
+"Knightmare."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Monster"
+msgstr "Anfallare"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Centrum"
+msgstr "Försvarare"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Helande kärntorn"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Vädrets makter - ett slumpmässigt överlevnadsscenario"
+msgstr "Dimmans ö - ett slumpmässigt överlevnadsscenario"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1680,6 +1617,8 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"Du anländer vid en mystisk helgedom, där andarna av antika arméer är för "
+"evigt fängslade, dömda att för evigt rena ön från inkräktare."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1687,22 +1626,18 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"Arméer av spöken närmar sig vid horisonten. Om vi besegrar dem alla, kommer "
+"de att befrias från detta tidlösa fängelse."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "Låt oss förbereda oss för den kommande striden."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"Argh! Hur gick det här till? Besegrad av simpla barbarer! Mina gudar har "
-"övergivit mig..."
+msgstr "Hur kunde detta hända? Mina gudar har övergivit mig..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1711,6 +1646,9 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"I takt med att dödens kalla grepp drar sig närmare, känner du hur din själ "
+"delas från din kropp. Du inser att du nu är dömd till samma öde som de "
+"spökliga väktarna av helgedomen."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1719,13 +1657,12 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"En mörk dimma stiger från marken, som tömmer dig på förnuft och viljestyrka. "
+"Trots dimman i ditt huvud inser du att du snart kommer vara intet mer de "
+"andra spökena, en ansiktslös väktare av den antika helgedomen."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
@@ -1741,11 +1678,14 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"När du äntligen besegrar dina sista kvarvarande fiender så verkar dimman "
+"runt ön lyfta. Fantomerna bleks bort till intet, äntligen befriade från "
+"deras eviga plikt. Du har äntligen renat den antika helgedomen… för nuläget."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Överflöde"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2368,7 +2308,7 @@ msgstr "Nordöst"
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
 msgid "Disable Background Image"
-msgstr ""
+msgstr "Stäng av bakgrundsbild"
 
 #. [checkbox]: id=simple_background
 #. Tooltip for the Isar's Cross map, makes the map look as it did in Wesnoth 1.14 and earlier
@@ -2377,6 +2317,8 @@ msgid ""
 "Show a blank area outside the map, instead of the floating island with "
 "cliffs."
 msgstr ""
+"Visa ett blankt område utanför kartan, istället för de flytande öarna med "
+"klippor."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
@@ -2615,7 +2557,7 @@ msgstr "Alla dina trupper dör"
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:292
 msgid "You cannot recruit units."
-msgstr "Du kan inte rekrytera trupper"
+msgstr "Du kan inte rekrytera trupper."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
@@ -2641,7 +2583,7 @@ msgstr "6s - Hexagon"
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "2 mot 2- eller 3 mot 3-spel"
+msgstr "2 mot 2- eller 3 mot 3-spel."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:246

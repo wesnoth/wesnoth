@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 10:43 UTC\n"
-"PO-Revision-Date: 2020-03-21 16:26+0100\n"
-"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
+"PO-Revision-Date: 2022-07-08 22:51+0200\n"
+"Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -22,10 +22,6 @@ msgstr "4s — Ett nytt land"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -33,7 +29,9 @@ msgid ""
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "Detta överlevnadsscenario för fyra spelare låter dig bygga byggnader och "
-"förändra landskapet. Rekommenderat startguld = 100."
+"förändra landskapet. \n"
+"\n"
+"För erfarna spelare rekommenderas det att sänka startguldet till 75."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -624,13 +622,13 @@ msgstr "Fortsätt som förut"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
-"Study Progress: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Study Progress: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 msgstr ""
 "<span color='green'>Jordbruk</span>\n"
 "Jordbrukare producerar +1 guld\n"
-"Forskningsframsteg: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Forskningsframsteg: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 
 #. [command]
 #. [research]
@@ -649,8 +647,8 @@ msgid ""
 msgstr ""
 "<span color='green'>Gruvdrift</span>\n"
 "Gruvarbetare producerar +1 guld\n"
-"Forskningsframsteg: $player_$side_number|.mining.progress|/$player_"
-"$side_number|.mining.target"
+"Forskningsframsteg: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -662,13 +660,13 @@ msgstr "gruvdrift"
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
-"Study Progress: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Study Progress: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 msgstr ""
 "<span color='green'>Krigföring</span>\n"
 "Låter dig rekrytera ett nytt truppslag\n"
-"Forskningsframsteg: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Forskningsframsteg: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:177
@@ -1073,9 +1071,9 @@ msgstr "Rensa marken"
 #~ "förstena köttsliga varelser. Under en period spred dessa basilisker (som "
 #~ "de blev kända som) förödelse över de levandes värld, och förstenade "
 #~ "tusentals. En efter en besegrades basiliskerna, under stora uppoffringar. "
-#~ "Alla, utom en; basilisken känd som Ney'yks, eller \"Chak'ksos äldsta barn"
-#~ "\". Helt övertygad om sin förmåga att finna och binda denna varelse i sin "
-#~ "tjänst, gav sig Oxsrrsk ut på sin resa."
+#~ "Alla, utom en; basilisken känd som Ney'yks, eller \"Chak'ksos äldsta "
+#~ "barn\". Helt övertygad om sin förmåga att finna och binda denna varelse i "
+#~ "sin tjänst, gav sig Oxsrrsk ut på sin resa."
 
 #~ msgid ""
 #~ "Slim of Stature, dexterous Hands\n"
