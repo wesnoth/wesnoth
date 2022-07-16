@@ -345,24 +345,6 @@ private:
 	// if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
 
-	/** Helper class to manage SDL events. */
-	class video_event_handler : public events::sdl_handler
-	{
-	public:
-		virtual void handle_event(const SDL_Event&)
-		{
-		}
-
-		virtual void handle_window_event(const SDL_Event& event);
-
-		video_event_handler()
-			: sdl_handler(false)
-		{
-		}
-	};
-
-	video_event_handler event_handler_;
-
 	int refresh_rate_;
 	int offset_x_, offset_y_;
 	point logical_size_;

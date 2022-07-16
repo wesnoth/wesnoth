@@ -41,6 +41,9 @@
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+
 namespace
 {
 struct invoked_function_data
@@ -443,31 +446,6 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 	return false;
 }
 
-const uint32_t resize_timeout = 100;
-SDL_Event last_resize_event;
-bool last_resize_event_used = true;
-
-static bool remove_on_resize(const SDL_Event& a)
-{
-	if(a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
-		return true;
-	}
-
-	if(a.type == SHOW_HELPTIP_EVENT) {
-		return true;
-	}
-
-	if((a.type == SDL_WINDOWEVENT) && (
-		a.window.event == SDL_WINDOWEVENT_RESIZED ||
-		a.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
-		a.window.event == SDL_WINDOWEVENT_EXPOSED)
-	) {
-		return true;
-	}
-
-	return false;
-}
-
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const std::thread::id main_thread = std::this_thread::get_id();
 
@@ -485,7 +463,6 @@ void pump()
 		return;
 	}
 
-	peek_for_resize();
 	pump_info info;
 
 	// Used to keep track of double click events
@@ -504,7 +481,6 @@ void pump()
 		}
 
 		++poll_count;
-		peek_for_resize();
 
 		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT && (
 			temp_event.window.event == SDL_WINDOWEVENT_ENTER ||
@@ -527,37 +503,6 @@ void pump()
 		} else {
 			++ev_it;
 		}
-	}
-
-	bool resize_found = false;
-	for(const SDL_Event& event : utils::reversed_view(events)) {
-		if(event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
-			resize_found = true;
-			last_resize_event = event;
-			last_resize_event_used = false;
-
-			// Since we're working backwards, the first resize event found is the last in the list.
-			break;
-		}
-	}
-
-	// remove all inputs, draw events and only keep the last of the resize events
-	// This will turn horrible after ~49 days when the uint32_t wraps.
-	if(resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
-		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
-	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
-		events.insert(events.begin(), last_resize_event);
-		last_resize_event_used = true;
-	}
-
-	// Move all draw events to the end of the queue
-	auto first_draw_event = std::stable_partition(events.begin(), events.end(),
-		[](const SDL_Event& e) { return e.type != DRAW_EVENT; }
-	);
-
-	if(first_draw_event != events.end()) {
-		// Remove all draw events except one
-		events.erase(first_draw_event + 1, events.end());
 	}
 
 	for(SDL_Event& event : events) {
@@ -636,9 +581,37 @@ void pump()
 				cursor::set_focus(1);
 				break;
 
+			// Size changed is called before resized.
+			// We can ensure the video framebuffer is valid here.
+			case SDL_WINDOWEVENT_SIZE_CHANGED:
+				LOG_DP << "events/SIZE_CHANGED "
+					<< event.window.data1 << 'x' << event.window.data2;
+				CVideo::get_singleton().update_buffers();
+				break;
+
+			// Resized comes after size_changed.
+			// Here we can trigger any watchers for resize events.
+			// Video settings such as draw_area() will be correct.
 			case SDL_WINDOWEVENT_RESIZED:
+				LOG_DP << "events/RESIZED "
+					<< event.window.data1 << 'x' << event.window.data2;
 				info.resize_dimensions.first = event.window.data1;
 				info.resize_dimensions.second = event.window.data2;
+				break;
+
+			// Once everything has had a chance to respond to the resize,
+			// an expose is triggered to display the changed content.
+			case SDL_WINDOWEVENT_EXPOSED:
+				LOG_DP << "events/EXPOSED";
+				draw_manager::invalidate_region(
+					CVideo::get_singleton().draw_area());
+				break;
+
+			case SDL_WINDOWEVENT_MAXIMIZED:
+			case SDL_WINDOWEVENT_RESTORED:
+			case SDL_WINDOWEVENT_SHOWN:
+			case SDL_WINDOWEVENT_MOVED:
+				// Not used.
 				break;
 			}
 
@@ -814,18 +787,6 @@ bool is_input(const SDL_Event& event)
 void discard_input()
 {
 	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
-}
-
-void peek_for_resize()
-{
-	SDL_Event events[100];
-	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
-	for(int i = 0; i < num; ++i) {
-		if(events[i].type == SDL_WINDOWEVENT && events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
-			CVideo::get_singleton().update_framebuffer();
-			break;
-		}
-	}
 }
 
 void call_in_main_thread(const std::function<void(void)>& f)
