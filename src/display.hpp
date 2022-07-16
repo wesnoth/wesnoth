@@ -1012,6 +1012,47 @@ protected:
 		/** Strength of highlight effect to apply, if any. */
 		uint8_t highlight = 0;
 
+		// Or they can be set in a chain.
+		blit_helper& set_color_and_alpha(color_t c)
+		{
+			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
+			this->alpha_mod = c.a;
+			return *this;
+		}
+		blit_helper& set_color_and_alpha(
+			uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+		{
+			this->r_mod = r; this->g_mod = g; this->b_mod = b;
+			this->alpha_mod = a;
+			return *this;
+		}
+		blit_helper& set_color(color_t c)
+		{
+			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
+			return *this;
+		}
+		blit_helper& set_color(uint8_t r, uint8_t g, uint8_t b)
+		{
+			this->r_mod = r; this->g_mod = g; this->b_mod = b;
+			return *this;
+		}
+		blit_helper& set_alpha(uint8_t alpha)
+		{
+			this->alpha_mod = alpha; return *this;
+		}
+		blit_helper& set_hflip(bool hflip)
+		{
+			this->hflip = hflip; return *this;
+		}
+		blit_helper& set_vflip(bool vflip)
+		{
+			this->vflip = vflip; return *this;
+		}
+		blit_helper& set_highlight(uint8_t highlight)
+		{
+			this->highlight = highlight; return *this;
+		}
+
 	private:
 		// Core info is set on creation.
 
