@@ -51,7 +51,8 @@ void end_credits::pre_show(window& window)
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
 
-	connect_signal_on_draw(window, std::bind(&end_credits::timer_callback, this));
+	//connect_signal_on_draw(window, std::bind(&end_credits::timer_callback, this));
+	// TODO: draw_manager - modal_dialog should be a window, i'm not hacking any more of these
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 

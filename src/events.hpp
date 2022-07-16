@@ -27,8 +27,7 @@
 #define DRAW_EVENT (SDL_USEREVENT + 3)
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
 #define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
-#define DRAW_ALL_EVENT (SDL_USEREVENT + 6)
-#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 7)
+#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 6)
 
 namespace events
 {
@@ -168,7 +167,6 @@ public:
 void raise_process_event();
 void raise_resize_event();
 void raise_draw_event();
-void raise_draw_all_event();
 void raise_help_string_event(int mousex, int mousey);
 
 

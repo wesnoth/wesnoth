@@ -95,7 +95,8 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
 
-	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
+	//connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
+	// TODO: draw_manager - modal_dialog should be a window, i'm not hacking any more of these
 }
 
 void outro::draw_callback()
