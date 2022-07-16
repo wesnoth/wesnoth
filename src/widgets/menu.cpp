@@ -18,12 +18,13 @@
 #include "widgets/menu.hpp"
 
 #include "draw.hpp"
-#include "game_config.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
+#include "floating_label.hpp"
+#include "game_config.hpp"
 #include "language.hpp"
 #include "lexical_cast.hpp"
 #include "picture.hpp"
-#include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "sound.hpp"
@@ -154,7 +155,7 @@ menu::menu(const std::vector<std::string>& items,
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
   heading_height_(-1),
-  cur_help_(-1,-1), help_string_(-1),
+  cur_help_(-1,-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
@@ -1139,20 +1140,16 @@ void menu::process_help_string(int mousex, int mousey)
 	if(loc == cur_help_) {
 		return;
 	} else if(loc.first == -1) {
-		video().clear_help_string(help_string_);
-		help_string_ = -1;
+		font::clear_help_string();
 	} else {
-		if(help_string_ != -1) {
-			video().clear_help_string(help_string_);
-			help_string_ = -1;
-		}
+		font::clear_help_string();
 		if(std::size_t(loc.first) < items_.size()) {
 			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
 			if(std::size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
 					//PLAIN_LOG << "setting help string from menu to '" << help << "'";
-					help_string_ = video().set_help_string(help);
+					font::set_help_string(help);
 				}
 			}
 		}

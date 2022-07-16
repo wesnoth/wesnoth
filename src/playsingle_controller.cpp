@@ -137,7 +137,6 @@ void playsingle_controller::init_gui()
 		gui_->set_fade({0,0,0,0});
 	}
 
-	update_locker lock_display(gui_->video(), is_skipping_replay());
 	get_hotkey_command_executor()->set_button_state();
 }
 

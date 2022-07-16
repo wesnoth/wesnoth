@@ -356,7 +356,6 @@ void play_controller::fire_prestart()
 {
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
-	update_locker lock_display(gui_->video());
 	gamestate().gamedata_.set_phase(game_data::PRESTART);
 
 	// Fire these right before prestart events, to catch only the units sides

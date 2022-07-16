@@ -49,11 +49,13 @@ public:
 
 	~CVideo();
 
+	// TODO: refactor? only used by build_info.cpp
 	static bool setup_completed()
 	{
 		return singleton_ != nullptr;
 	}
 
+	// TODO: remove / replace
 	static CVideo& get_singleton()
 	{
 		return *singleton_;
@@ -80,8 +82,6 @@ public:
 
 	bool non_interactive() const;
 
-	bool surface_initialized() const;
-
 	/***** ***** ***** ***** Window-related functions ***** ***** ****** *****/
 
 	/** Initializes a new SDL window instance, taking into account any preiously saved states. */
@@ -90,15 +90,13 @@ private:
 	void init_fake_window();
 
 public:
-	/** Returns a pointer to the underlying SDL window. */
-	sdl::window* get_window();
-
 	/** Returns a pointer to the underlying window's renderer. */
 	SDL_Renderer* get_renderer();
 
+	// TODO: refactor? only used by build_info.cpp
 	bool has_window()
 	{
-		return get_window() != nullptr;
+		return window != nullptr;
 	}
 
 	static std::string current_driver();
@@ -124,14 +122,6 @@ public:
 	bool is_fullscreen() const;
 
 	/**
-	 * Only recent versions of SDL support vsync with the software renderer.
-	 * This is irrelevant now as we're using hardware rendering exclusively.
-	 * I recommend removing this function entirely after several months,
-	 * when it has become clear that the software renderer won't be needed.
-	 */
-	bool supports_software_vsync() const;
-
-	/**
 	 * Set the window resolution.
 	 *
 	 * @param resolution          The new width and height.
@@ -142,6 +132,7 @@ public:
 
 	point current_resolution();
 
+	// TODO: refactor? only used by preferences_dialog.cpp
 	/**
 	 * Update buffers to match current resolution and pixel scale settings.
 	 * Also triggers a full redraw.
@@ -190,19 +181,11 @@ public:
 	int get_pixel_scale() const { return pixel_scale_; }
 
 	/**
-	 * Clip a rectangle to the drawing area.
-	 *
-	 * This does not change the original
-	 * @param r                   The SDL_Rect to clip.
-	 * @returns                   The new clipped SDL_Rect.
-	 */
-	SDL_Rect clip_to_draw_area(const SDL_Rect* r) const;
-
-	/**
 	 * Convert coordinates in draw space to coordinates in render space.
 	 */
 	rect to_output(const rect& draw_space_rect) const;
 
+	// TODO: split use into individual functions to avoid use of SDL enums
 	/**
 	 * Tests whether the given flags are currently set on the SDL window.
 	 *
@@ -224,6 +207,7 @@ public:
 	 */
 	void set_window_icon(surface& icon);
 
+	// TODO: this should be more clever, depending on usage
 	int current_refresh_rate() const
 	{
 		return refresh_rate_;
@@ -231,9 +215,11 @@ public:
 
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
+	// TODO: hide this so it's not tempting to use
 	/** Renders the screen. Should normally not be called directly! */
 	void render_screen();
 
+	// TODO: refactor? this shouldn't be public. why does events.cpp use it?
 	/**
 	 * Updates and ensures the framebuffer surface is valid.
 	 * This needs to be invoked immediately after a resize event or the game will crash.
@@ -243,6 +229,7 @@ private:
 	void update_framebuffer_fake();
 
 public:
+	// TODO: this should probably be in draw
 	/** Clear the screen contents */
 	void clear_screen();
 
@@ -293,20 +280,6 @@ public:
 	/***** ***** ***** ***** State management ***** ***** ****** *****/
 
 	/**
-	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
-	 * be hidden from the user's view.
-	 *
-	 * Note that this function is re-entrant, meaning that if lock_updates(true) is called twice,
-	 * lock_updates(false) must be called twice to unlock updates.
-	 */
-	void lock_updates(bool value);
-
-	/** Whether the screen has been 'locked' or not. */
-	bool update_locked() const;
-
-	void lock_flips(bool);
-
-	/**
 	 * Set the render target, without any provided way of setting it back.
 	 *
 	 * End-users should not use this function directly. In stead use
@@ -329,26 +302,9 @@ public:
 	 */
 	texture get_render_target();
 
-	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
-
-	/**
-	 * Displays a help string with the given text. A 'help string' is like a tooltip,
-	 * but appears at the bottom of the screen so as to not be intrusive.
-	 *
-	 * @param str                 The text to display.
-	 *
-	 * @returns                   The handle id of the new help string.
-	 */
-	int set_help_string(const std::string& str);
-
-	/** Removes the help string with the given handle. */
-	void clear_help_string(int handle);
-
-	/** Removes all help strings. */
-	void clear_all_help_strings();
-
 	/***** ***** ***** ***** General utils ***** ***** ****** *****/
 
+	// TODO: this should not be here
 	/** Waits a given number of milliseconds before returning. */
 	static void delay(unsigned int milliseconds);
 
@@ -407,61 +363,8 @@ private:
 
 	video_event_handler event_handler_;
 
-	/** Curent ID of the help string. */
-	int help_string_;
-
-	int updated_locked_;
-	int flip_locked_;
 	int refresh_rate_;
 	int offset_x_, offset_y_;
 	point logical_size_;
 	int pixel_scale_;
-};
-
-/** An object which will lock the display for the duration of its lifetime. */
-struct update_locker
-{
-	update_locker(CVideo& v, bool lock = true)
-		: video(v)
-		, unlock(lock)
-	{
-		if(lock) {
-			video.lock_updates(true);
-		}
-	}
-
-	~update_locker()
-	{
-		unlock_update();
-	}
-
-	void unlock_update()
-	{
-		if(unlock) {
-			video.lock_updates(false);
-			unlock = false;
-		}
-	}
-
-private:
-	CVideo& video;
-	bool unlock;
-};
-
-class flip_locker
-{
-public:
-	flip_locker(CVideo& video)
-		: video_(video)
-	{
-		video_.lock_flips(true);
-	}
-
-	~flip_locker()
-	{
-		video_.lock_flips(false);
-	}
-
-private:
-	CVideo& video_;
 };
