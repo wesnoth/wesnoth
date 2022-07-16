@@ -76,7 +76,7 @@ class sdl_handler
 friend class context;
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
-	virtual void handle_window_event(const SDL_Event& event) = 0;
+	virtual void handle_window_event(const SDL_Event&) {};
 	virtual void process_event() {}
 	virtual void draw() {}
 
