@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-06-19 09:02-0500\n"
-"PO-Revision-Date: 2022-01-09 01:05+0100\n"
+"PO-Revision-Date: 2022-07-12 09:32+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -44,7 +44,7 @@ msgstr "Formato Gzip"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Compressione predefinita (più veloce)"
+msgstr "Compressione predefinita, più veloce"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
@@ -54,12 +54,12 @@ msgstr "Formato Bzip2"
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "Compressione migliore (più lenta)"
+msgstr "Compressione migliore, più lenta"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "Nessuna compressione"
+msgstr "Nessuna"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -722,12 +722,12 @@ msgstr "Ascia"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:72
 msgid "Small Axe"
-msgstr ""
+msgstr "Accetta"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Ascia da lancio"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -801,12 +801,12 @@ msgstr "Cassa"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:198
 msgid "Branch"
-msgstr ""
+msgstr "Ramo"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr ""
+msgstr "Ramo nudo"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
@@ -815,10 +815,8 @@ msgstr "Braciere"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Braciere"
+msgstr "Braciere acceso"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -838,16 +836,12 @@ msgstr "Gabbia"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "Forziere chiuso"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Forziere aperto"
 
@@ -869,7 +863,7 @@ msgstr "Mantello verde"
 #. [item]: id=club
 #: data/core/editor/items.cfg:278
 msgid "Club"
-msgstr ""
+msgstr "Manganello"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:284
@@ -879,32 +873,28 @@ msgstr "Bara chiusa"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Bara chiusa"
+msgstr "Bara aperta"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
 msgid "Crossbow"
-msgstr ""
+msgstr "Balestra"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
 msgid "Dagger"
-msgstr ""
+msgstr "Pugnale"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Veleno"
+msgstr "Pugnale avvelenato"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Pugnale da veleno (pulito)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:321
@@ -918,10 +908,8 @@ msgstr "Spada fiammeggiante"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Spada fiammeggiante"
+msgstr "Spada fiammeggiante non incantata"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -959,10 +947,8 @@ msgstr "Fienile"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Martello runico"
+msgstr "Martello"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:399
@@ -983,10 +969,8 @@ msgstr "Chiave"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Rosso scuro"
+msgstr "Chiave scuro"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:429
@@ -996,21 +980,17 @@ msgstr "Zaino in pelle"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:435
 msgid "Mace"
-msgstr ""
+msgstr "Mazza"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Collana con Ankh"
+msgstr "Collana d’ossa"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Collana con Ankh"
+msgstr "Collana di pietre"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1103,14 +1083,12 @@ msgstr "Scettro di Fuoco"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:555
 msgid "Sling"
-msgstr ""
+msgstr "Fionda"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Strana lancia"
+msgstr "Lancia"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1121,7 +1099,7 @@ msgstr "Strana lancia"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:579
 msgid "Javelin"
-msgstr ""
+msgstr "Giavellotto"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1131,10 +1109,8 @@ msgstr "Bastone"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Bastone magico"
+msgstr "Bastone druidico"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1144,17 +1120,13 @@ msgstr "Bastone magico"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Bastone magico"
+msgstr "Bacchetta magica"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Bastone magico"
+msgstr "Bastone semplice"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:627
@@ -1183,56 +1155,48 @@ msgstr "Spada"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Spada"
+msgstr "Spada santa"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Spada"
+msgstr "Spada corta"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Spada fiammeggiante"
+msgstr "Spada spettrale"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Talismano con Ankh"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Talismano d’osso"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Tavoletta di pietra"
+msgstr "Talismano di pietra"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
 msgid "Thunderstick"
-msgstr ""
+msgstr "Bastone tonante"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr ""
+msgstr "Torcia accesa"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Torcia spenta"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:723
@@ -1426,10 +1390,8 @@ msgstr "Tempio"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Tenda rovinata"
+msgstr "Tempio diroccato"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1087
@@ -5628,8 +5590,8 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
 #: src/addon/client.cpp:223
@@ -5884,9 +5846,6 @@ msgstr ""
 "estensioni dal server."
 
 #: src/addon/manager_ui.cpp:318
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -6416,6 +6375,10 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Errore: [advancefrom] non funziona più. Unità di livello ‘$lower_level’ non "
+"saranno in grado di avanzare al livello ‘$higher_level’; si prega di "
+"chiedere all’autore dell’estensione di utilizzare [modify_unit_type] al suo "
+"posto."
 
 #: src/game_config_manager.cpp:575
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6623,28 +6586,26 @@ msgstr "nessuno"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "La versione dell’estensione <i>$addon</i> non è compatibile: Loro hanno la "
 "versione <b>$host_ver</b> mentre tu la <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "La tua versione dell’estensione <i>$addon</i> è incompatibile. Tu hai la "
-"versione versione <b>$local_ver</b> mentre l’host ha la versione <b>"
-"$host_ver</b>."
+"versione versione <b>$local_ver</b> mentre l’host ha la versione "
+"<b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
 msgstr "Sconfiggi il condottiero nemico (o i condottieri nemici)"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "Impossibile trovare l’era “$era”"
 
@@ -8487,15 +8448,11 @@ msgstr "Conto alla rovescia dei turni"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %Y, %H:%M"
 
@@ -9041,8 +8998,21 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
-#~ msgid "Chest"
-#~ msgstr "Forziere"
+#~ msgid ""
+#~ "Some types of terrain give unique bonuses, such as healing or "
+#~ "illumination."
+#~ msgstr ""
+#~ "Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative "
+#~ "o illuminazione."
+
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>― Galun, Comandante di Stormo, 5AW</i>"
+
+#~ msgid ""
+#~ "Debug command 'unit: $unit' failed: no unit selected or hovered over."
+#~ msgstr ""
+#~ "Comando di debug 'unit: $unit' fallito: nessuna unità selezionata o "
+#~ "controllata."
 
 #~ msgid "Independent"
 #~ msgstr "Indipendente"
@@ -9054,778 +9024,3 @@ msgstr "Opzioni della lavagna"
 # Da controllare l'utilizzo
 #~ msgid "No Ally Mirror"
 #~ msgstr "Nessuno Specchio Alleato"
-
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr ""
-#~ "Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative "
-#~ "o illuminazione."
-
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Galun, Comandante di Stormo, 5AW</i>"
-
-#~ msgid "<room>"
-#~ msgstr "<stanza>"
-
-#~ msgid "Join a room."
-#~ msgstr "Entra in una stanza."
-
-#~ msgid "Part a room."
-#~ msgstr "Lascia una stanza."
-
-#~ msgid "List room members."
-#~ msgstr "Elenca i membri della stanza."
-
-#~ msgid "List available rooms."
-#~ msgstr "Elenca le stanze disponibili."
-
-#~ msgid "<room> <msg>"
-#~ msgstr "<stanza> <msg>"
-
-#~ msgid "Room message."
-#~ msgstr "Messaggio per la stanza."
-
-#~ msgid "<room> <type> [value]"
-#~ msgstr "<stanza> <tipo> [valore]"
-
-#~ msgid "Room query."
-#~ msgstr "Interrogazione per la stanza."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Usa [modify_unit_type]\n"
-
-#, fuzzy
-#~ msgid "female^feral"
-#~ msgstr "neutrale"
-
-#, fuzzy
-#~ msgid "Unhealable"
-#~ msgstr "incurabile"
-
-#~ msgid "magical leadership"
-#~ msgstr "comando magico"
-
-#~ msgid "female^magical leadership"
-#~ msgstr "comando magico"
-
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better with magicals weapons.\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Questa unità può comandare le tue unità alleate circostanti, facendole "
-#~ "combattere meglio con le loro armi magiche.\n"
-#~ "Le unità alleate adiacenti di livello inferiore infliggeranno un danno "
-#~ "maggiore in combattimento. Quando una unità adiacente di livello "
-#~ "inferiore e della stessa squadra di una unità con questa abilità di "
-#~ "Comando viene ingaggiata in combattimento, i suoi attacchi avranno un "
-#~ "bonus danni del 25% moltiplicato per la differenza di livello."
-
-#~ msgid ""
-#~ "This unit’s resistances are added to 20%, up to a maximum of 50%, when "
-#~ "defending to melle attacks. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Le resistenze di questa unità vengono incrementate del 20%, fino ad un "
-#~ "massimo del 50%, quando l’unità è in fase difensiva. Le vulnerabilità non "
-#~ "vengono alterate."
-
-#, fuzzy
-#~ msgid "female^darkens"
-#~ msgstr "curata"
-
-#, fuzzy
-#~ msgid "This unit sacrifices its own life in order to make more attacks."
-#~ msgstr "Quest’unità è stata pietrificata: non può muoversi né attaccare."
-
-#~ msgid "cantor"
-#~ msgstr "cantore"
-
-#~ msgid "female^cantor"
-#~ msgstr "cantrice"
-
-#~ msgid ""
-#~ "This unit grants marksman to all ranged attacks of all adjacent allies."
-#~ msgstr ""
-#~ "Questa unità infonde l’abilità “colpo preciso” a tutti gli attacchi a "
-#~ "distanza delle unità ad essa adiacenti."
-
-#, fuzzy
-#~ msgid "Jamming Orc"
-#~ msgstr "Disturbo:"
-
-#, fuzzy
-#~ msgid "Vision Test"
-#~ msgstr "Costo di visione"
-
-#, fuzzy
-#~ msgid "Clear sailing!"
-#~ msgstr "Elimina etichette"
-
-#, fuzzy
-#~ msgid "It is invisible!"
-#~ msgstr "invisibile: "
-
-#, fuzzy
-#~ msgid "Teleporters activated"
-#~ msgstr "Modalità di debug attivata!"
-
-#, fuzzy
-#~ msgid "Teleporters deactivated"
-#~ msgstr "Modalità di debug disattivata!"
-
-#, fuzzy
-#~ msgid "Steadfast tester"
-#~ msgstr "fermezza"
-
-#~ msgid "aura of death ("
-#~ msgstr "aura mortale ("
-
-#~ msgid "female^aura of death ("
-#~ msgstr "aura mortale ("
-
-#, fuzzy
-#~ msgid "Custom dialog"
-#~ msgstr "Mappa personalizzata."
-
-#, fuzzy
-#~ msgid "objectives test"
-#~ msgstr "Annulla gli ordini relativi all’obiettivo"
-
-#, fuzzy
-#~ msgid "Neutral"
-#~ msgstr "neutrale"
-
-#, fuzzy
-#~ msgid "Defeat the enemy leader (he’s at 29,16!)"
-#~ msgstr "Sconfiggi il condottiero nemico (o i condottieri nemici)"
-
-#, fuzzy
-#~ msgid "Defeat the enemy leader (he’s at 28,18!)"
-#~ msgstr "Sconfiggi il condottiero nemico (o i condottieri nemici)"
-
-#, fuzzy
-#~ msgid "Temporal Clone"
-#~ msgstr "Tempio"
-
-# se va bene qui, va bene anche nel file Lib
-#, fuzzy
-#~ msgid "Gamestate Inspector"
-#~ msgstr "Avvia l’ispettore di stato della partita"
-
-#, fuzzy
-#~ msgid "Parrot message"
-#~ msgstr "Messaggio di chat"
-
-#, fuzzy
-#~ msgid "Water"
-#~ msgstr "Acqua santa"
-
-#, fuzzy
-#~ msgid "poison"
-#~ msgstr "avvelenato"
-
-#, fuzzy
-#~ msgid "Northerners unleashed!"
-#~ msgstr "Settentrionali"
-
-#, fuzzy
-#~ msgid "Let’s fight"
-#~ msgstr "Lato Light"
-
-#, fuzzy
-#~ msgid "Cannot divide by zero!"
-#~ msgstr "Impossibile trovare l’era $era"
-
-#, fuzzy
-#~ msgid "Crash test"
-#~ msgstr "Cumulo di rifiuti"
-
-#, fuzzy
-#~ msgid "Potion of bleach"
-#~ msgstr "Pozione del deperimento"
-
-# è corretto così? Verificare
-#, fuzzy
-#~ msgid "Win"
-#~ msgstr "Attenzione"
-
-#, fuzzy
-#~ msgid "This is not a forest"
-#~ msgstr "Questo salvataggio non appartiene a una partita multigiocatore."
-
-#, fuzzy
-#~ msgid "Still there"
-#~ msgstr "Ancora un altro vagabondo"
-
-#, fuzzy
-#~ msgid "Summon Troll"
-#~ msgstr "Circolo d’evocazione"
-
-#, fuzzy
-#~ msgid "Magic Troll"
-#~ msgstr "Circolo magico"
-
-#, fuzzy
-#~ msgid "ruby of fire"
-#~ msgstr "scettro di fuoco"
-
-#, fuzzy
-#~ msgid "map change"
-#~ msgstr "Turno cambiato"
-
-#, fuzzy
-#~ msgid "map change2"
-#~ msgstr "Turno cambiato"
-
-#, fuzzy
-#~ msgid "map change3"
-#~ msgstr "Turno cambiato"
-
-#, fuzzy
-#~ msgid "Shrouded label"
-#~ msgstr "Oscurità"
-
-#, fuzzy
-#~ msgid "More green!"
-#~ msgstr "Verde brillante"
-
-#, fuzzy
-#~ msgid "More blue!"
-#~ msgstr "Blu scuro"
-
-#, fuzzy
-#~ msgid "Menu 1"
-#~ msgstr "Menù"
-
-#, fuzzy
-#~ msgid "Menu 2"
-#~ msgstr "Menù"
-
-#~ msgid "very long"
-#~ msgstr "molto lungo"
-
-#~ msgid "electrical"
-#~ msgstr "elettrico"
-
-#~ msgid "Group players in lobby"
-#~ msgstr "Raggruppa i giocatori nella lobby"
-
-#~ msgid ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-#~ msgstr ""
-#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
-#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-
-#~ msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-#~ msgstr "Leggi la lista delle <b>Scorciatoie</b> nel menù <b>Preferenze</b>."
-
-#~ msgid ""
-#~ "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-#~ "mouse pointer over any button or icon to get a description or explanation "
-#~ "of what it does."
-#~ msgstr ""
-#~ "Quasi tutti i pulsanti e le icone presenti nella schermata di gioco di "
-#~ "Wesnoth rimandano a un suggerimento. Porta il puntatore del mouse su un "
-#~ "pulsante o su un’icona per leggere una descrizione o una spiegazione "
-#~ "relativa alle sue funzioni."
-
-#~ msgid "Bad data received from server"
-#~ msgstr "Dati corrotti ricevuti dal server"
-
-#~ msgid ""
-#~ "Error in the login procedure (the server had no seed for your connection)."
-#~ msgstr ""
-#~ "Errore nella procedura di accesso (il server non possiede un seed per la "
-#~ "tua connessione)."
-
-#~ msgid "Alex"
-#~ msgstr "Alex"
-
-#~ msgid "Ben"
-#~ msgstr "Ben"
-
-#~ msgid "Back to..."
-#~ msgstr "Torna a..."
-
-#~ msgid ""
-#~ "This save is from a different version of the game ($version_number|). Do "
-#~ "you wish to try to load it?"
-#~ msgstr ""
-#~ "Questo salvataggio appartiene a una versione differente del gioco "
-#~ "($version_number|). Vuoi provare a caricarlo?"
-
-#~ msgid "Start"
-#~ msgstr "Inizio"
-
-#~ msgid "Scenario"
-#~ msgstr "Scenario"
-
-#~ msgid "Final Battle"
-#~ msgstr "Battaglia Finale"
-
-#~ msgid "Glaciers"
-#~ msgstr "Ghiacciai"
-
-#~ msgid "Provinces"
-#~ msgstr "Province"
-
-#~ msgid "river^Delta"
-#~ msgstr "Delta"
-
-#~ msgid "Sulfurous"
-#~ msgstr "Sulfureo"
-
-#~ msgid "made of^Coral"
-#~ msgstr "Corallino"
-
-#~ msgid "Thermal"
-#~ msgstr "Termale"
-
-#~ msgid "Volcanic"
-#~ msgstr "Vulcanico"
-
-#~ msgid "Enemies"
-#~ msgstr "Nemici"
-
-#~ msgid "Allies"
-#~ msgstr "Alleati"
-
-#~ msgid " and "
-#~ msgstr "e"
-
-#~ msgid "damage"
-#~ msgstr "danno"
-
-#~ msgid "XP to advance"
-#~ msgstr "PE per avanzare"
-
-#~ msgid "gold"
-#~ msgstr "oro"
-
-# mi tocca metterlo così, altrimenti il testo nella finestra va a capo [Nd Bonta-kun]
-#~ msgid "moves"
-#~ msgstr "mosse"
-
-#~ msgid "gender^Random"
-#~ msgstr "Casuale"
-
-#~ msgid " resistance vs "
-#~ msgstr " resistenza vs "
-
-#~ msgid "strike"
-#~ msgstr "colpo"
-
-#~ msgid "female^steadfast"
-#~ msgstr "fermezza"
-
-#~ msgid "initiative"
-#~ msgstr "iniziativa"
-
-#, fuzzy
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "Bonus max. per lo sciame: "
-
-#, fuzzy
-#~ msgid "+moves defense"
-#~ msgstr "Sii più difensivo"
-
-#~ msgid "Use experimental PRNG combat"
-#~ msgstr "Usa combattimento sperimentale PRNG"
-
-#~ msgid ""
-#~ "Enables more determinstic chance-to-hit calculations. This is an "
-#~ "experimental feature designed to bring the observed hit/miss rate more in "
-#~ "line with the displayed percentages.\n"
-#~ "\n"
-#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
-#~ "option must also be enabled when creating a game for this to work."
-#~ msgstr ""
-#~ "Abilita una modalità di calcolo delle possibilità di colpire un bersaglio "
-#~ "più deterministica. Questa è una caratteristica sperimentale progettata "
-#~ "per allineare il rateo successo/fallimento osservato alle percentuali "
-#~ "mostrate in gioco.\n"
-#~ "\n"
-#~ "Nota: questa opzione è attiva soltanto in modalità giocatore singolo; per "
-#~ "funzionare, deve anche assere selezionata l’opzione \"Salva seme numerico "
-#~ "casuale\" al momento della creazione di una partita."
-
-#, fuzzy
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Invio dell’estensione <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Connessione scaduta"
-
-# adesso è localizzato!
-# (Antro) Profanazione!!
-# Il nome del gioco rimane tale, non viene tradotto...
-#, fuzzy
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "The Battle for Wesnoth"
-
-#~ msgid "<i>― Vank of Galun’s Flight, 6YW</i>"
-#~ msgstr "<i>― Vank dello Stormo di Galun, 6AW</i>"
-
-#~ msgid "Graphics scaling options"
-#~ msgstr "Opzioni di ridimensionamento degli elementi grafici"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "Mostra gli effetti alone"
-
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Visualizza gli effetti grafici delle unità speciali"
-
-#~ msgid "Joystick support"
-#~ msgstr "Supporto del joystick"
-
-# tutta questa sezione non mi convince...
-#~ msgid "Joystick: number of the scroll X-axis joystick"
-#~ msgstr "Joystick: numero del joystick per lo scorrimento sull’asse X"
-
-#~ msgid "Joystick: number of the scroll X-axis"
-#~ msgstr "Joystick: numero per lo scorrimento sull’asse X"
-
-#~ msgid "Joystick: number of the scroll Y-axis joystick"
-#~ msgstr "Joystick: numero del joystick per lo scorrimento sull’asse Y"
-
-#~ msgid "Joystick: number of the scroll Y-axis"
-#~ msgstr "Joystick: numero per lo scorrimento sull’asse Y"
-
-#~ msgid "Joystick: deadzone of the scrolling stick"
-#~ msgstr "Joystick: zona morta della leva di scorrimento"
-
-#~ msgid "Joystick: number of the cursor X-axis joystick"
-#~ msgstr "Joystick: numero del joystick per il cursore sull’asse X"
-
-#~ msgid "Joystick: number of the cursor X-axis"
-#~ msgstr "Joystick: numero del cursore sull’asse X"
-
-#~ msgid "Joystick: number of the cursor Y-axis joystick"
-#~ msgstr "Joystick: numero del joystick per il cursore sull’asse Y"
-
-#~ msgid "Joystick: number of the cursor Y-axis"
-#~ msgstr "Joystick: numero del cursore sull’asse Y"
-
-#~ msgid "Joystick: deadzone of the cursor stick"
-#~ msgstr "Joystick: zona morta della leva del cursore"
-
-#~ msgid "Joystick: number of the mouse X-axis joystick"
-#~ msgstr "Joystick: numero del joystick per il mouse sull’asse X"
-
-#~ msgid "Joystick: number of the mouse X-axis"
-#~ msgstr "Joystick: numero del mouse sull’asse X"
-
-#~ msgid "Joystick: number of the mouse Y-axis joystick"
-#~ msgstr "Joystick: numero del joystick per il mouse sull’asse Y"
-
-#~ msgid "Joystick: number of the mouse Y-axis"
-#~ msgstr "Joystick: numero del mouse sull’asse Y"
-
-# perché, fino a prova contraria, il mouse non ha una leva
-#~ msgid "Joystick: deadzone of the mouse stick"
-#~ msgstr "Joystick: zona morta dello stick del mouse"
-
-#~ msgid "Joystick: number of the thrust axis joystick"
-#~ msgstr "Joystick: numero del joystick per l’asse di spinta"
-
-#~ msgid "Joystick: number of the thrust axis"
-#~ msgstr "Joystick: numero dell’asse di spinta"
-
-#~ msgid "Joystick: deadzone of the thruster"
-#~ msgstr "Joystick: zona morta della leva di spinta"
-
-#~ msgid "<small>(early finish bonus)</small>"
-#~ msgstr "<small>(premio per i turni risparmiati)</small>"
-
-#~ msgid "theme^Classic"
-#~ msgstr "Classico"
-
-#~ msgid "The classic, pre-1.12 theme"
-#~ msgstr "Tema classico, precedente alla versione 1.12"
-
-#~ msgid "villages"
-#~ msgstr "villaggi"
-
-#~ msgid "units"
-#~ msgstr "unità"
-
-#~ msgid "upkeep"
-#~ msgstr "mantenimento"
-
-#~ msgid "income"
-#~ msgstr "entrate"
-
-#~ msgid "statuspanel^level"
-#~ msgstr "livello"
-
-#~ msgid "statuspanel^moves"
-#~ msgstr "mosse"
-
-#~ msgid "statuspanel^terrain def."
-#~ msgstr "terreno def."
-
-#~ msgid "No Saved Games"
-#~ msgstr "Nessuna partita salvata"
-
-#~ msgid "There are no save files to load"
-#~ msgstr "Non sono presenti salvataggi da caricare"
-
-#~ msgid "Best of"
-#~ msgstr "Il meglio"
-
-#~ msgid "Worst of"
-#~ msgstr "Il peggio"
-
-#~ msgid "Base Terrain: "
-#~ msgstr "Terreno di base: "
-
-#~ msgid "Movement properties: "
-#~ msgstr "Proprietà di movimento: "
-
-#~ msgid "Defense properties: "
-#~ msgstr "Proprietà di difesa: "
-
-#~ msgid "Level"
-#~ msgstr "Livello"
-
-#~ msgid "Advances from: "
-#~ msgstr "Avanza da: "
-
-#~ msgid "Advances to: "
-#~ msgstr "Avanza come: "
-
-#~ msgid "Base unit: "
-#~ msgstr "Unità base: "
-
-# non posso farci niente se in italiano il plurale di "unità" è "unità"...
-#~ msgid "Base units: "
-#~ msgstr "Unità base: "
-
-#~ msgid "Variations: "
-#~ msgstr "Varianti: "
-
-#~ msgid "Traits"
-#~ msgstr "Caratteristiche"
-
-#~ msgid "Abilities: "
-#~ msgstr "Abilità: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Potenziamenti delle abilità: "
-
-#~ msgid "HP:"
-#~ msgstr "PF:"
-
-#~ msgid "Vision:"
-#~ msgstr "Visione:"
-
-#~ msgid "Cost:"
-#~ msgstr "Costo:"
-
-#~ msgid "Alignment:"
-#~ msgstr "Allineamento:"
-
-#~ msgid "Required XP:"
-#~ msgstr "PE richiesti:"
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Attacchi"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Nome"
-
-#~ msgid "Range"
-#~ msgstr "Portata"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "Special"
-#~ msgstr "Attacchi speciali"
-
-#~ msgid "Attack Type"
-#~ msgstr "Tipo di attacco"
-
-#~ msgid "Resistance"
-#~ msgstr "Resistenza"
-
-#~ msgid "Terrain Modifiers"
-#~ msgstr "Modificatori di terreno"
-
-#~ msgid "Terrain"
-#~ msgstr "Terreno"
-
-#~ msgid "Defense"
-#~ msgstr "Difesa"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Costo di movimento"
-
-#~ msgid "Defense Cap"
-#~ msgstr "Difesa massima"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "Costo di disturbo"
-
-#~ msgid "Side:"
-#~ msgstr "Squadra:"
-
-#, fuzzy
-#~ msgid "Income"
-#~ msgstr "entrate"
-
-#, fuzzy
-#~ msgid " replay"
-#~ msgstr "replay"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Le unità liminali attaccano a piena potenza soltanto nelle fasi "
-#~ "crepuscolari.\n"
-#~ "\n"
-#~ "Giorno: −25% danni\n"
-#~ "Notte: −25% danni"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Nonn sono disponibili opzioni di personalizzazione per l’era, il gioco o "
-#~ "la modifica selezionati."
-
-#~ msgid "Defaults"
-#~ msgstr "Impostazioni predefinite"
-
-#~ msgid "Connected Players"
-#~ msgstr "Giocatori connessi"
-
-#~ msgid "registering with password *** and no email address"
-#~ msgstr ""
-#~ "registrazione con password *** e nessun indirizzo di posta elettronica"
-
-#~ msgid "registering with password *** and email address $email"
-#~ msgstr "registrazione con password *** e indirizzo di posta $email"
-
-#~ msgid "dropping your username"
-#~ msgstr "abbandono del tuo nickname"
-
-#~ msgid "setting $var to $value"
-#~ msgstr "impostazione di $var come $value"
-
-#~ msgid "<password> <email (optional)>"
-#~ msgstr "<password> <e-mail (opzionale)>"
-
-#~ msgid "Register your nickname"
-#~ msgstr "Registra il tuo nickname"
-
-#~ msgid "Drop your nickname."
-#~ msgstr "Abbandona il tuo nickname."
-
-#~ msgid ""
-#~ "Update details for your nickname. For possible details see '/details'."
-#~ msgstr ""
-#~ "Aggiorna i dettagli relativi al tuo nickname. Per i dettagli possibili, "
-#~ "vedi «/details»."
-
-#~ msgid "<detail> <value>"
-#~ msgstr "<dettaglio> <valore>"
-
-#~ msgid "Request a list of details you can set for your registered nickname."
-#~ msgstr ""
-#~ "Richiedi un elenco di dettagli da impostare per il nickname da te "
-#~ "registrato."
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Impossibile automatizzare una squadra con IA locale: «$side»."
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "In molti scenari legati a varie campagne, puoi dare semplici istruzioni "
-#~ "ai tuoi alleati controllati dal computer utilizzando il menù contestuale "
-#~ "che appare facendo clic col tasto destro."
-
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "Numero di secondi d’attesa per una risposta al ping prima del timeout. "
-#~ "Imposta su 0 per disabilitare"
-
-#~ msgid ""
-#~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
-#~ "the throne of Wesnoth, of which you are the legitimate heir... step into "
-#~ "the boots of a young officer sent to guard a not-so-sleepy frontier "
-#~ "outpost... lead a brutal quest to unite the orcish tribes... vanquish a "
-#~ "horde of undead warriors unleashed by a foul necromancer, who also "
-#~ "happens to have taken your brother hostage... guide a band of elvish "
-#~ "survivors in an epic quest to find a new home... get revenge on the orcs "
-#~ "by using the foul art of necromancy...\n"
-#~ "\n"
-#~ "There are at least two hundred unit types, sixteen races, seven major "
-#~ "factions, and hundreds of years of history.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Wesnoth dispone di numerose saghe differenti in attesa di essere giocate. "
-#~ "Combatti per riconquistare il trono di Wesnoth, del quale sei il "
-#~ "legittimo erede... Vesti i panni di un giovane ufficiale inviato a "
-#~ "guardia di un avamposto di frontiera non troppo tranquillo... Affronta "
-#~ "una brutale avventura nel tentativo di riunire le tribù degli orchi... "
-#~ "Sconfiggi un’orda di guerrieri non-morti risvegliata da un malvagio "
-#~ "negromante, che per giunta ha preso in ostaggio tuo fratello... Guida un "
-#~ "drappello di elfi sopravvissuti in un’epica avventura alla ricerca di una "
-#~ "nuova patria... Ottieni la tua vendetta sugli orchi dando fondo alla "
-#~ "malefica arte della negromanzia...\n"
-#~ "\n"
-#~ "Sono presenti almeno duecento tipi di unità, sedici razze, sette fazioni "
-#~ "principali e centinaia di anni di storia.\n"
-#~ "\n"
-
-#~ msgid "water^Springs"
-#~ msgstr "Surgiva"
-
-#~ msgid "Clayey"
-#~ msgstr "Argilloso"
-
-#~ msgid "Podzol"
-#~ msgstr "Podzol"
-
-#~ msgid "Wicked"
-#~ msgstr "Malvagio"
-
-#~ msgid "Wild"
-#~ msgstr "Selvatico"
-
-#~ msgid "Feudal"
-#~ msgstr "Feudale"
-
-#~ msgid "plague"
-#~ msgstr "contagio"
-
-#~ msgid ""
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "Walking Corpse on the same side as the unit with the Plague attack. This "
-#~ "doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Quando un’unità viene uccisa da un attacco “contagio”, viene sostituita "
-#~ "da un morto vivente che si schiera a fianco dell’unità che ha sferrato "
-#~ "tale attacco. Non funziona sui non-morti e sulle unità nei villaggi."
-
-#~ msgid ""
-#~ "All adjacent friendly units will strike first in melee combat, even when "
-#~ "defending."
-#~ msgstr ""
-#~ "Tutte le unità alleate adiacenti otterranno il primo attacco, anche in "
-#~ "difesa."
