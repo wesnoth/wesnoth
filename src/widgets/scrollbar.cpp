@@ -24,7 +24,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
-#include "video.hpp"
 
 namespace {
 
@@ -44,8 +43,8 @@ const std::string scrollbar_mid_pressed = "buttons/scrollbars/scrollmid-pressed.
 
 namespace gui {
 
-scrollbar::scrollbar(CVideo &video)
-	: widget(video)
+scrollbar::scrollbar()
+	: widget()
 	, state_(NORMAL)
 	, minimum_grip_height_(0)
 	, mousey_on_grip_(0)

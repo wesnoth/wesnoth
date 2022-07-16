@@ -173,7 +173,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	if(items_fitting > 0) {
 		const auto buttons_needed = static_cast<std::size_t>(items_fitting);
 		if(buttons_.size() != buttons_needed) {
-			buttons_.resize(buttons_needed, gui::tristate_button(gui_.video(), this));
+			buttons_.resize(buttons_needed, gui::tristate_button(this));
 		}
 	}
 

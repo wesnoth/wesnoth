@@ -19,7 +19,6 @@ class config;
 class terrain_type;
 class unit;
 class unit_type;
-class CVideo;
 class game_config_view;
 
 #include <memory>

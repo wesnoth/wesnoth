@@ -21,8 +21,9 @@ class surface;
 #include "floating_label.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "tooltips.hpp"
-#include "video.hpp"
 #include "widgets/button.hpp"
+
+class CVideo;
 
 namespace gui
 {
@@ -67,7 +68,7 @@ public:
 	static const int title_border_w, title_border_h;
 	static const style default_style;
 
-	dialog_frame(CVideo &video, const std::string& title="",
+	dialog_frame(const std::string& title="",
 		const style& dialog_style=default_style,
 		std::vector<button*>* buttons=nullptr,
 		button* help_button=nullptr);

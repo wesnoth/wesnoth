@@ -20,8 +20,6 @@
 #include <vector>                       // for vector
 #include "widgets/menu.hpp"             // for menu
 
-class CVideo;
-
 namespace help { struct section; }
 namespace help { struct topic; }
 
@@ -34,7 +32,7 @@ namespace help {
 class help_menu : public gui::menu
 {
 public:
-	help_menu(CVideo &video, const section &toplevel, int max_height=-1);
+	help_menu(const section &toplevel, int max_height=-1);
 	int process();
 
 	/**

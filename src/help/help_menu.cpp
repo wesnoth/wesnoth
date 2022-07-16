@@ -26,12 +26,10 @@
 #include <utility>                      // for pair
 #include <SDL2/SDL.h>
 
-class CVideo;  // lines 56-56
-
 namespace help {
 
-help_menu::help_menu(CVideo &video, const section& toplevel, int max_height) :
-	gui::menu(video, empty_string_vector, true, max_height, -1, nullptr, &gui::menu::bluebg_style),
+help_menu::help_menu(const section& toplevel, int max_height) :
+	gui::menu(empty_string_vector, true, max_height, -1, nullptr, &gui::menu::bluebg_style),
 	visible_items_(),
 	toplevel_(toplevel),
 	expanded_(),

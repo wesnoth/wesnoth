@@ -27,7 +27,6 @@
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
-#include "video.hpp"                    // for CVideo
 
 #include <algorithm>                    // for max, min, find_if
 #include <ostream>                      // for operator<<, stringstream, etc
@@ -43,8 +42,8 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-help_text_area::help_text_area(CVideo &video, const section &toplevel) :
-	gui::scrollarea(video),
+help_text_area::help_text_area(const section &toplevel) :
+	gui::scrollarea(),
 	items_(),
 	last_row_(),
 	toplevel_(toplevel),

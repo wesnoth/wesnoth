@@ -25,7 +25,7 @@ namespace editor {
 
 palette_manager::palette_manager(editor_display& gui, const game_config_view& cfg
                                , editor_toolkit& toolkit)
-		: gui::widget(gui.video()),
+		: gui::widget(),
 		  gui_(gui),
 		  palette_start_(0),
 		  toolkit_(toolkit),

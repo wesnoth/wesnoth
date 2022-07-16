@@ -69,7 +69,7 @@ public:
 	virtual void process_tooltip_string(int mousex, int mousey) override;
 
 protected:
-	widget(CVideo& video, const bool auto_join=true);
+	widget(const bool auto_join=true);
 	virtual ~widget();
 
 	// During each relocation, this function should be called to register
@@ -80,7 +80,7 @@ protected:
 	void bg_update(); // TODO: draw_manager - remove
 	void bg_cancel(); // TODO: draw_manager - remove
 
-	CVideo& video() const { return *video_; }
+	CVideo& video() const;
 
 public:
 	/* draw_manager interface */
@@ -111,7 +111,6 @@ protected:
 private:
 	void hide_override(bool value = true);
 
-	CVideo* video_;
 	std::vector<rect> restorer_;
 	rect rect_;
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?

@@ -112,12 +112,12 @@ namespace gui{
 		mode_ = mode;
 
 		if(!check_label.empty()) {
-			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
+			check_.reset(new gui::button(check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}
 
 
-		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_NORMAL,0.8,0.6));
+		box_.reset(new gui::textbox(100,"",true,256,font::SIZE_NORMAL,0.8,0.6));
 
 		update_location(gui);
 	}

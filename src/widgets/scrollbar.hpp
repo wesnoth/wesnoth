@@ -33,7 +33,7 @@ public:
 	//- @param d         the display object
 	//- @param pane      the widget where wheel events take place
 	//- @param callback  a callback interface for warning that the grip has been moved
-	scrollbar(CVideo &video);
+	scrollbar();
 
 	/**
 	 * Determine where the scrollbar is.

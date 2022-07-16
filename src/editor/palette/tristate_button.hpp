@@ -37,7 +37,7 @@ public:
 
 	enum PRESSED_STATE { LEFT, RIGHT, BOTH, NONE };
 
-	tristate_button(CVideo& video,
+	tristate_button(
 			editor::tristate_palette* palette,
 			std::string button_image="",
 			const bool auto_join=true);

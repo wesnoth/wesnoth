@@ -20,7 +20,6 @@
 #include "widgets/widget.hpp"
 
 struct SDL_Rect;
-class CVideo;
 
 namespace editor {
 
@@ -47,7 +46,7 @@ class common_palette  : public gui::widget {
 
 public:
 
-	common_palette(CVideo& video) : gui::widget(video, true) {}
+	common_palette() : gui::widget(true) {}
 
 	virtual ~common_palette() {}
 
@@ -91,8 +90,8 @@ public:
 class tristate_palette : public common_palette
 {
 public:
-	tristate_palette(CVideo& video)
-		: common_palette(video)
+	tristate_palette()
+		: common_palette()
 	{
 	}
 	virtual void select_fg_item(const std::string& item_id) = 0;

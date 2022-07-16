@@ -29,7 +29,7 @@ class empty_palette : public common_palette {
 public:
 
 	empty_palette(display& gui) :
-		common_palette(gui.video()),
+		common_palette(),
 		gui_(gui) {}
 
 	//event handling

@@ -23,18 +23,17 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
-#include "video.hpp" // TODO: highdpi - only needed for widget constructor
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace gui {
 
-tristate_button::tristate_button(CVideo& video,
+tristate_button::tristate_button(
 		editor::tristate_palette* palette,
 		std::string button_image_name,
 		const bool auto_join)
-	: widget(video, auto_join)
+	: widget(auto_join)
 	, baseImage_()
 	, touchedBaseImage_()
 	, activeBaseImage_()

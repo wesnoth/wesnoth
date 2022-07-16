@@ -31,6 +31,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 #include "sdl/utils.hpp" // blur_surface
+#include "video.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -81,11 +82,11 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-dialog_frame::dialog_frame(CVideo& video, const std::string& title,
+dialog_frame::dialog_frame(const std::string& title,
 		const style& style,
 		std::vector<button*>* buttons, button* help_button) :
 	title_(title),
-	video_(video),
+	video_(CVideo::get_singleton()),
 	dialog_style_(style),
 	buttons_(buttons),
 	help_button_(help_button),
@@ -316,7 +317,7 @@ void dialog_frame::draw_background()
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = CVideo::get_singleton().draw_area();
+	SDL_Rect rect = video_.draw_area();
 	return font::pango_draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL);
 }
