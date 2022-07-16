@@ -2839,15 +2839,12 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if (on_map) {
+		texture bg = image::get_texture("misc/single-pixel.png");
+		color_t bg_col = {0, 0, 0, 0xaa};
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			texture text = font::pango_render_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
-			// TODO: highdpi - this is just a fill, some way of better passing this as a command to the drawing buffer perhaps?
-			surface bg_surf(text.w(), text.h());
-			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
-			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
-			texture bg(bg_surf);
 			off_x -= text.w() / 2;
 			off_y -= text.h() / 2;
 			if (draw_terrain_codes_) {
@@ -2856,19 +2853,15 @@ void display::draw_hex(const map_location& loc)
 			if (draw_num_of_bitmaps_) {
 				off_y -= text.h() / 2;
 			}
-			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			rect tdest {off_x, off_y, text.w(), text.h()};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg)
+				.set_color_and_alpha(bg_col);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			texture text = font::pango_render_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
-			// TODO: highdpi - see above
-			surface bg_surf(text.w(), text.h());
-			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
-			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
-			texture bg(bg_surf);
 			off_x -= text.w() / 2;
 			off_y -= text.h() / 2;
 			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
@@ -2876,19 +2869,15 @@ void display::draw_hex(const map_location& loc)
 			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
 				off_y -= text.h() / 2;
 			}
-			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			rect tdest {off_x, off_y, text.w(), text.h()};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg)
+				.set_color_and_alpha(bg_col);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			texture text = font::pango_render_text(std::to_string(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
-			// TODO: highdpi - see above
-			surface bg_surf(text.w(), text.h());
-			SDL_Rect bg_rect {0, 0, text.w(), text.h()};
-			sdl::fill_surface_rect(bg_surf, &bg_rect, 0xaa000000);
-			texture bg(bg_surf);
 			off_x -= text.w() / 2;
 			off_y -= text.h() / 2;
 			if (draw_coordinates_) {
@@ -2897,8 +2886,9 @@ void display::draw_hex(const map_location& loc)
 			if (draw_terrain_codes_) {
 				off_y += text.h() / 2;
 			}
-			SDL_Rect tdest {off_x, off_y, bg_rect.w, bg_rect.h};
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg);
+			rect tdest {off_x, off_y, text.w(), text.h()};
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, bg)
+				.set_color_and_alpha(bg_col);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tdest, text);
 		}
 	}
