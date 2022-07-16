@@ -891,7 +891,7 @@ void display::create_buttons()
 			continue;
 		}
 
-		auto b = std::make_shared<gui::button>(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
+		auto b = std::make_shared<gui::button>(menu.title(), gui::button::TYPE_PRESS, menu.image(),
 			gui::button::DEFAULT_SPACE, true, menu.overlay(), font::SIZE_BUTTON_SMALL);
 
 		DBG_DP << "drawing button " << menu.get_id();
@@ -909,7 +909,7 @@ void display::create_buttons()
 
 	DBG_DP << "creating action buttons...";
 	for(const auto& action : theme_.actions()) {
-		auto b = std::make_shared<gui::button>(screen_, action.title(), string_to_button_type(action.type()),
+		auto b = std::make_shared<gui::button>(action.title(), string_to_button_type(action.type()),
 			action.image(), gui::button::DEFAULT_SPACE, true, action.overlay(), font::SIZE_BUTTON_SMALL);
 
 		DBG_DP << "drawing button " << action.get_id();

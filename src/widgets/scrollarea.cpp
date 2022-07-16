@@ -17,13 +17,13 @@
 
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only needed for draw_area()
 #include "sdl/input.hpp" // get_mouse_state
 
 namespace gui {
 
-scrollarea::scrollarea(CVideo &video, const bool auto_join)
-	: widget(video, auto_join), scrollbar_(video),
+scrollarea::scrollarea(const bool auto_join)
+	: widget(auto_join), scrollbar_(),
 	  old_position_(0), recursive_(false), shown_scrollbar_(false),
 	  shown_size_(0), full_size_(0), swipe_dy_(0)
 {

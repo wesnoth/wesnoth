@@ -62,7 +62,7 @@ public:
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
-	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
+	button(const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 

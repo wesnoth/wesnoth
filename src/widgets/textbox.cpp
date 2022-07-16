@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only needed for pixel scale
 #include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
@@ -33,8 +33,8 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, std::size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
-	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<std::u32string>(text)),
+textbox::textbox(int width, const std::string& text, bool editable, std::size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
+	   : scrollarea(auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<std::u32string>(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(nullptr),

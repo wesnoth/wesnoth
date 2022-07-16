@@ -28,7 +28,7 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only needed for draw_area()
 #include "wml_separators.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
@@ -40,10 +40,10 @@ namespace gui {
 
 const int default_font_size = font::SIZE_BUTTON;
 
-button::button(CVideo& video, const std::string& label, button::TYPE type,
+button::button(const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing,
                const bool auto_join, std::string overlay_image, int font_size)
-	: widget(video, auto_join), type_(type),
+	: widget(auto_join), type_(type),
 	  label_text_(label),
 	  image_(nullptr), pressedImage_(nullptr), activeImage_(nullptr), pressedActiveImage_(nullptr),
 	  disabledImage_(nullptr), pressedDisabledImage_(nullptr),

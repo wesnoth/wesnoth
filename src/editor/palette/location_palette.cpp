@@ -50,8 +50,8 @@ public:
 		}
 
 	};
-	location_palette_item(CVideo& video, editor::location_palette* parent)
-		: gui::widget(video, true)
+	location_palette_item(editor::location_palette* parent)
+		: gui::widget(true)
 		, parent_(parent)
 	{
 	}
@@ -137,8 +137,8 @@ private:
 class location_palette_button : public gui::button
 {
 public:
-	location_palette_button(CVideo& video, const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
-		: gui::button(video, text)
+	location_palette_button(const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
+		: gui::button(text)
 		, callback_(callback)
 	{
 		this->set_location(location.x, location.y);
@@ -160,7 +160,7 @@ protected:
 namespace editor {
 location_palette::location_palette(editor_display &gui, const game_config_view& /*cfg*/,
                                    editor_toolkit &toolkit)
-		: common_palette(gui.video())
+		: common_palette()
 		, item_size_(20)
 		//TODO avoid magic number
 		, item_space_(20 + 3)
@@ -247,14 +247,14 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	const int button_y = 30;
 	int bottom = target.y + target.h;
 	if (!button_goto_) {
-		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
+		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 			map_location pos = disp_.get_map().special_location(selected_item_);
 			if (pos.valid()) {
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
 		}));
-		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
+		button_add_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
 				static const boost::regex valid_id("[a-zA-Z0-9_]+");
@@ -271,7 +271,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 				}
 			}
 		}));
-		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
+		button_delete_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
 	}
 	else {
 		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
@@ -290,7 +290,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		// This simplifies the scrolling code in add_item.
 		const std::size_t buttons_needed = items_fitting;
 		if(buttons_.size() != buttons_needed) {
-			location_palette_item lpi(disp_.video(), this);
+			location_palette_item lpi(this);
 			buttons_.resize(buttons_needed, lpi);
 		}
 	}

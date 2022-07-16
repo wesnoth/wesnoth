@@ -38,7 +38,7 @@
 #include "terrain/terrain.hpp"                  // for terrain_type
 #include "units/unit.hpp"                     // for unit
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for CVideo, resize_lock
+#include "video.hpp"               // TODO: draw_manager - only for draw_area
 #include "widgets/button.hpp"           // for button
 
 #include <cassert>                     // for assert
@@ -189,12 +189,10 @@ void show_with_toplevel(const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
-	CVideo& video = CVideo::get_singleton();
-
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	SDL_Rect draw_area = video.draw_area();
+	SDL_Rect draw_area = CVideo::get_singleton().draw_area();
 
 	const int width  = std::min<int>(font::relative_size(1200), draw_area.w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), draw_area.h - font::relative_size(150));
@@ -210,11 +208,11 @@ void show_with_toplevel(const section &toplevel_sec,
 		yloc = draw_area.h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(video, _("Close"));
+	gui::button close_button_(_("Close"));
 	buttons_ptr.push_back(&close_button_);
 
 	gui::dialog_frame f(
-		video, _("Help"), gui::dialog_frame::default_style, &buttons_ptr
+		_("Help"), gui::dialog_frame::default_style, &buttons_ptr
 	);
 	f.layout(xloc, yloc, width, height);
 
@@ -234,7 +232,7 @@ void show_with_toplevel(const section &toplevel_sec,
 		generate_contents();
 	}
 	try {
-		help_browser hb(video, toplevel_sec);
+		help_browser hb(toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
 		hb.set_width(width - left_padding - right_padding);
 		hb.set_height(height - top_padding - bot_padding);

@@ -25,21 +25,19 @@
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp"                // for get_mouse_state
 
-class CVideo;
 struct SDL_Rect;
 
 namespace help {
 
-help_browser::help_browser(CVideo& video, const section &toplevel) :
-	gui::widget(video),
-	menu_(video,
-	toplevel),
-	text_area_(video, toplevel), toplevel_(toplevel),
+help_browser::help_browser(const section &toplevel) :
+	gui::widget(),
+	menu_(toplevel),
+	text_area_(toplevel), toplevel_(toplevel),
 	ref_cursor_(false),
 	back_topics_(),
 	forward_topics_(),
-	back_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
-	forward_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
+	back_button_("", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
+	forward_button_("", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
 	shown_topic_(nullptr)
 {
 	// Hide the buttons at first since we do not have any forward or

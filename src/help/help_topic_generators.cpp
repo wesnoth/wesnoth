@@ -32,7 +32,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // fore current_resolution
+#include "video.hpp"                    // TODO: draw_manager - only draw_area
 
 #include <map>                          // for map, etc
 #include <optional>

@@ -22,7 +22,7 @@
 #include "help_text_area.hpp"           // for help_text_area
 #include "widgets/button.hpp"           // for button
 #include "widgets/widget.hpp"           // for widget
-class CVideo;  // lines 18-18
+
 struct SDL_Rect;
 
 namespace help {
@@ -31,7 +31,7 @@ namespace help {
 class help_browser : public gui::widget
 {
 public:
-	help_browser(CVideo& video, const section &toplevel);
+	help_browser(const section &toplevel);
 
 	void adjust_layout();
 

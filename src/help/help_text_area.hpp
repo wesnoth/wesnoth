@@ -21,7 +21,7 @@
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "sdl/texture.hpp"              // for texture
 #include "widgets/scrollarea.hpp"       // for scrollarea
-class CVideo;
+
 class config;
 namespace help { struct section; }
 namespace help { struct topic; }
@@ -33,7 +33,7 @@ namespace help {
 class help_text_area : public gui::scrollarea
 {
 public:
-	help_text_area(CVideo &video, const section &toplevel);
+	help_text_area(const section &toplevel);
 	/** Display the topic. */
 	void show_topic(const topic &t);
 

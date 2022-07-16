@@ -31,8 +31,8 @@ namespace gui {
 
 bool widget::mouse_lock_ = false;
 
-widget::widget(CVideo& video, const bool auto_join)
-	: events::sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
+widget::widget(const bool auto_join)
+	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
 	  clip_rect_(EmptyRect), help_string_(0), mouse_lock_local_(false)
 {
@@ -66,6 +66,12 @@ void widget::free_mouse_lock()
 bool widget::mouse_locked() const
 {
 	return mouse_lock_ && !mouse_lock_local_;
+}
+
+// TODO: draw_manager - overhaul CVideo interface
+CVideo& widget::video() const
+{
+	return CVideo::get_singleton();
 }
 
 // TODO: draw_manager - kill surface restorers

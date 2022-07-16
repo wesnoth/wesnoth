@@ -30,7 +30,7 @@ public:
 
 	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
 	             , std::size_t item_size, std::size_t columns, editor_toolkit &toolkit)
-		: tristate_palette(gui.video())
+		: tristate_palette()
 		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)
