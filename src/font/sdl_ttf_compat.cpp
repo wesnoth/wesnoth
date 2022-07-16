@@ -139,7 +139,6 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-// TODO: highdpi - cache results, especially size checks
 SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();

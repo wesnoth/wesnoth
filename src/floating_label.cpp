@@ -102,84 +102,86 @@ bool floating_label::create_texture()
 		return false;
 	}
 
-	// TODO: highdpi - this really does not need the extra indent
-	if(tex_ == nullptr) {
-		DBG_FT << "creating floating label texture";
-		font::pango_text& text = font::get_text_renderer();
-
-		text.set_link_aware(false)
-			.set_family_class(font::FONT_SANS_SERIF)
-			.set_font_size(font_size_)
-			.set_font_style(font::pango_text::STYLE_NORMAL)
-			.set_alignment(PANGO_ALIGN_LEFT)
-			.set_foreground_color(color_)
-			.set_maximum_width(width_ < 0 ? clip_rect_.w : width_)
-			.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true)
-			.set_ellipse_mode(PANGO_ELLIPSIZE_END)
-			.set_characters_per_line(0);
-
-		// ignore last '\n'
-		if(!text_.empty() && *(text_.rbegin()) == '\n') {
-			text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
-		} else {
-			text.set_text(text_, use_markup_);
-		}
-
-		surface foreground = text.render_surface();
-
-		// Pixel scaling is necessary as we are manipulating the raw surface
-		const int ps = CVideo::get_singleton().get_pixel_scale();
-		// For consistent results we must also enlarge according to zoom
-		const int sf = ps * display::get_singleton()->get_zoom_factor();
-
-		if(foreground == nullptr) {
-			// TODO: draw_manager - find what triggers this and fix it
-			//ERR_FT << "could not create floating label's text";
-			return false;
-		}
-
-		// combine foreground text with its background
-		if(bgalpha_ != 0) {
-			// background is a dark tooltip box
-			surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
-
-			if(background == nullptr) {
-				ERR_FT << "could not create tooltip box";
-				tex_ = texture(foreground);
-				return tex_ != nullptr;
-			}
-
-			uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::fill_surface_rect(background, nullptr, color);
-
-			SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			sdl_blit(foreground, nullptr, background, &r);
-
-			tex_ = texture(background);
-		} else {
-			// background is blurred shadow of the text
-			surface background(foreground->w + 4*sf, foreground->h + 4*sf);
-			sdl::fill_surface_rect(background, nullptr, 0);
-			SDL_Rect r{2*sf, 2*sf, 0, 0};
-			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background, sf);
-
-			if(background == nullptr) {
-				ERR_FT << "could not create floating label's shadow";
-				tex_ = texture(foreground);
-				return tex_ != nullptr;
-			}
-			sdl_blit(foreground, nullptr, background, &r);
-			tex_ = texture(background);
-		}
-
-		// adjust high-dpi text display scale
-		tex_.set_draw_width(tex_.w() / ps);
-		tex_.set_draw_height(tex_.h() / ps);
+	if(tex_ != nullptr) {
+		// Already have a texture
+		return true;
 	}
 
-	return tex_ != nullptr;
+	DBG_FT << "creating floating label texture";
+	font::pango_text& text = font::get_text_renderer();
+
+	text.set_link_aware(false)
+		.set_family_class(font::FONT_SANS_SERIF)
+		.set_font_size(font_size_)
+		.set_font_style(font::pango_text::STYLE_NORMAL)
+		.set_alignment(PANGO_ALIGN_LEFT)
+		.set_foreground_color(color_)
+		.set_maximum_width(width_ < 0 ? clip_rect_.w : width_)
+		.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true)
+		.set_ellipse_mode(PANGO_ELLIPSIZE_END)
+		.set_characters_per_line(0);
+
+	// ignore last '\n'
+	if(!text_.empty() && *(text_.rbegin()) == '\n') {
+		text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
+	} else {
+		text.set_text(text_, use_markup_);
+	}
+
+	surface foreground = text.render_surface();
+
+	// Pixel scaling is necessary as we are manipulating the raw surface
+	const int ps = CVideo::get_singleton().get_pixel_scale();
+	// For consistent results we must also enlarge according to zoom
+	const int sf = ps * display::get_singleton()->get_zoom_factor();
+
+	if(foreground == nullptr) {
+		// TODO: draw_manager - find what triggers this and fix it
+		//ERR_FT << "could not create floating label's text";
+		return false;
+	}
+
+	// combine foreground text with its background
+	if(bgalpha_ != 0) {
+		// background is a dark tooltip box
+		surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
+
+		if(background == nullptr) {
+			ERR_FT << "could not create tooltip box";
+			tex_ = texture(foreground);
+			return tex_ != nullptr;
+		}
+
+		uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
+		sdl::fill_surface_rect(background, nullptr, color);
+
+		SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
+		adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+		sdl_blit(foreground, nullptr, background, &r);
+
+		tex_ = texture(background);
+	} else {
+		// background is blurred shadow of the text
+		surface background(foreground->w + 4*sf, foreground->h + 4*sf);
+		sdl::fill_surface_rect(background, nullptr, 0);
+		SDL_Rect r{2*sf, 2*sf, 0, 0};
+		sdl_blit(foreground, nullptr, background, &r);
+		background = shadow_image(background, sf);
+
+		if(background == nullptr) {
+			ERR_FT << "could not create floating label's shadow";
+			tex_ = texture(foreground);
+			return tex_ != nullptr;
+		}
+		sdl_blit(foreground, nullptr, background, &r);
+		tex_ = texture(background);
+	}
+
+	// adjust high-dpi text display scale
+	tex_.set_draw_width(tex_.w() / ps);
+	tex_.set_draw_height(tex_.h() / ps);
+
+	return true;
 }
 
 void floating_label::undraw()
