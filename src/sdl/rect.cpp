@@ -103,6 +103,12 @@ void rect::clip(const SDL_Rect& other)
 	*this = this->intersect(other);
 }
 
+void rect::shift(const point& other)
+{
+	this->x += other.x;
+	this->y += other.y;
+}
+
 std::ostream& operator<<(std::ostream& s, const rect& r)
 {
 	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';
