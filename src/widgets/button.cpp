@@ -82,6 +82,7 @@ button::button(const std::string& label, button::TYPE type,
 	load_images();
 }
 
+// This function is a mess and i can only hope it someday dies a horrible death
 void button::load_images() {
 
 	std::string size_postfix;
@@ -106,12 +107,10 @@ void button::load_images() {
 		button_image_name_ + "-pressed.png" + button_image_path_suffix_);
 	activeImage_ = image::get_texture(
 		button_image_name_ + "-active.png" + button_image_path_suffix_);
-	// TODO: highdpi - why is this checking if the path exists? There should be no problem even if it doesn't.
 	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png")) {
 		disabledImage_ = image::get_texture(
 			button_image_name_ + "-disabled.png" + button_image_path_suffix_);
 	} else {
-		// TODO: highdpi - this was not previously reset. Is this function only ever run once, or can it be run multiple times?
 		disabledImage_.reset();
 	}
 
@@ -167,7 +166,6 @@ void button::load_images() {
 			pressedActiveImage_ = pressedImage_;
 		}
 
-		// TODO: highdpi - why is this check necessary? How does this work?
 		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png")) {
 			pressedDisabledImage_ = image::get_texture(
 				button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
@@ -178,7 +176,6 @@ void button::load_images() {
 		}
 	}
 
-	// TODO: highdpi - why is this check HERE? Why not back at the start? WTF is even going on in this function? And if checks like this work, WHY do we need all these filesystem::exists checks!?
 	if (!image_) {
 		std::string err_msg = "error initializing button images! file name: ";
 		err_msg += button_image_name_;
@@ -287,6 +284,7 @@ void button::enable(bool new_val)
 	}
 }
 
+// I can only assume this is working because nobody has complained it isn't.
 void button::draw_contents()
 {
 	texture image = image_;
@@ -334,32 +332,12 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
-	// TODO: highdpi - previous code was so much of a mess, i am not sure if this is doing anything like the correct thing.
 	SDL_Rect dest = loc;
 	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO) {
 		// Scale other button types to match the base image?
 		dest.w = image_.w();
 		dest.h = image_.h();
 	}
-	// PREVIOUS HORRIBLE CODE FROM ELSEWHERE, FOR REFERENCE:
-	/*
-	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
-		image_ = scale_surface(button_image,location().w,location().h);
-		pressedImage_ = scale_surface(pressed_image,location().w,location().h);
-		activeImage_ = scale_surface(active_image,location().w,location().h);
-		disabledImage_ = scale_surface(disabled_image,location().w,location().h);
-	} else {
-		image_ = scale_surface(button_image,button_image->w,button_image->h);
-		activeImage_ = scale_surface(active_image,button_image->w,button_image->h);
-		disabledImage_ = scale_surface(disabled_image,button_image->w,button_image->h);
-		pressedImage_ = scale_surface(pressed_image,button_image->w,button_image->h);
-		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-			pressedDisabledImage_ = scale_surface(pressed_disabled_image,button_image->w,button_image->h);
-			pressedActiveImage_ = scale_surface(pressed_active_image, button_image->w, button_image->h);
-			touchedImage_ = scale_surface(touched_image, button_image->w, button_image->h);
-		}
-	}
-	*/
 
 	draw::blit(image, dest);
 
@@ -383,7 +361,6 @@ void button::draw_contents()
 			}
 		}
 
-		// TODO: highdpi - should this be the whole button? Like... WTF? Previously these weren't scaled at all, so... maybe? Or maybe not? IT IS A MYSTERY
 		dest.w = overlay.w();
 		dest.h = overlay.h();
 		draw::blit(overlay, dest);
