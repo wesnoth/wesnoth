@@ -223,7 +223,12 @@ next:
 void register_drawable(top_level_drawable* tld)
 {
 	DBG_DM << "registering TLD " << static_cast<void*>(tld);
-	top_level_drawables_.push_back(tld);
+	auto& vec = top_level_drawables_;
+	if (std::find(vec.begin(), vec.end(), tld) != vec.end()) {
+		raise_drawable(tld);
+	} else {
+		top_level_drawables_.push_back(tld);
+	}
 }
 
 void deregister_drawable(top_level_drawable* tld)
