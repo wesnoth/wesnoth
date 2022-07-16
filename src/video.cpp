@@ -16,6 +16,7 @@
 #include "video.hpp"
 
 #include "display.hpp"
+#include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
@@ -101,28 +102,6 @@ bool CVideo::any_fake() const
 bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
-}
-
-// TODO: draw_manager - ugh, why - does this really need to exist?
-void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
-{
-	if(event.type == SDL_WINDOWEVENT) {
-		switch(event.window.event) {
-		case SDL_WINDOWEVENT_RESIZED:
-		case SDL_WINDOWEVENT_RESTORED:
-		case SDL_WINDOWEVENT_SHOWN:
-		case SDL_WINDOWEVENT_EXPOSED:
-			SDL_Event drawEvent;
-			sdl::UserEvent data(DRAW_ALL_EVENT);
-
-			drawEvent.type = DRAW_ALL_EVENT;
-			drawEvent.user = data;
-
-			SDL_FlushEvent(DRAW_ALL_EVENT);
-			SDL_PushEvent(&drawEvent);
-			break;
-		}
-	}
 }
 
 void CVideo::make_fake()
@@ -315,8 +294,6 @@ void CVideo::init_fake_window()
 		window_flags, renderer_flags
 	));
 
-	event_handler_.join_global();
-
 	update_framebuffer_fake();
 }
 
@@ -364,8 +341,6 @@ void CVideo::init_window()
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
-
-	event_handler_.join_global();
 
 	update_framebuffer();
 }
@@ -765,9 +740,7 @@ void CVideo::set_fullscreen(bool ison)
 
 		set_window_mode(mode, res);
 
-		if(display* d = display::get_singleton()) {
-			d->redraw_everything();
-		}
+		draw_manager::invalidate_region(draw_area());
 	}
 
 	// Change the config value.
@@ -787,9 +760,7 @@ bool CVideo::set_resolution(const point& resolution)
 
 	set_window_mode(TO_RES, resolution);
 
-	if(display* d = display::get_singleton()) {
-		d->redraw_everything();
-	}
+	draw_manager::invalidate_region(draw_area());
 
 	// Change the saved values in preferences.
 	LOG_DP << "updating resolution to " << resolution;
@@ -815,9 +786,7 @@ void CVideo::update_buffers()
 
 	update_framebuffer();
 
-	if(display* d = display::get_singleton()) {
-		d->redraw_everything();
-	}
+	draw_manager::invalidate_region(draw_area());
 
 	// Push a window-resized event to the queue. This is necessary so various areas
 	// of the game (like GUI2) update properly with the new size.

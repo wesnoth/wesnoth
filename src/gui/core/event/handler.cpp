@@ -419,11 +419,11 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case DRAW_EVENT:
-			draw();
+			//draw();
 			break;
 
 		case DRAW_ALL_EVENT:
-			draw_everything();
+			//draw_everything();
 			break;
 
 		case TIMER_EVENT:
@@ -455,7 +455,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_EXPOSED:
-					draw();
+					//draw();
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
@@ -607,7 +607,7 @@ void sdl_event_handler::draw_everything()
 	// TODO: draw_manager - look into usage of this
 	//std::cerr << "sdl_event_handler::draw_everything" << std::endl;
 	draw_manager::invalidate_region(CVideo::get_singleton().draw_area());
-	draw();
+	//draw();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)
