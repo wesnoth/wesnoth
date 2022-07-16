@@ -102,7 +102,6 @@ protected:
 
 	// TODO: draw_manager - only things that need events should be handlers
 	virtual void handle_event(const SDL_Event&) override {};
-	virtual void handle_window_event(const SDL_Event&) override {};
 	bool focus_;		// Should user input be ignored?
 
 	bool mouse_locked() const;

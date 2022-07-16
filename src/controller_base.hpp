@@ -148,11 +148,6 @@ protected:
 	 */
 	void handle_event(const SDL_Event& event) override;
 
-	void handle_window_event(const SDL_Event& /*event*/) override
-	{
-		// No action by default
-	}
-
 	/** Process keydown (only when the general map display does not have focus). */
 	virtual void process_focus_keydown_event(const SDL_Event& /*event*/)
 	{
@@ -211,7 +206,6 @@ private:
 		}
 
 		void handle_event(const SDL_Event& event) override;
-		void handle_window_event(const SDL_Event&) override {}
 
 	private:
 		controller_base& controller_;
