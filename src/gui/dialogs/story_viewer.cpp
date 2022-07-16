@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/story_viewer.hpp"
 
+#include "display.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "sdl/point.hpp"
@@ -91,7 +92,17 @@ void story_viewer::pre_show(window& window)
 	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
+	// Tell the game display not to draw
+	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
+	display::get_singleton()->set_prevent_draw(true);
+
 	display_part();
+}
+
+void story_viewer::post_show(window& /*window*/)
+{
+	// Bring the game display back again, if appropriate
+	display::get_singleton()->set_prevent_draw(game_was_already_hidden_);
 }
 
 void story_viewer::update_current_part_ptr()

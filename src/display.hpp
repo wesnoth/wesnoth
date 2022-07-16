@@ -567,6 +567,7 @@ public:
 	/** Prevent the game display from drawing.
 	  * Used while story screen is showing to prevent flicker. */
 	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }
+	bool get_prevent_draw() { return prevent_draw_; }
 
 private:
 	bool prevent_draw_ = false;

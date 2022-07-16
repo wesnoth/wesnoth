@@ -54,6 +54,7 @@ private:
 	virtual const std::string& window_id() const override;
 
 	virtual void pre_show(window& window) override;
+	virtual void post_show(window& window) override;
 
 	void clear_image_timer();
 
@@ -97,6 +98,8 @@ private:
 	};
 
 	FADE_STATE fade_state_;
+
+	bool game_was_already_hidden_;
 };
 
 } // namespace dialogs
