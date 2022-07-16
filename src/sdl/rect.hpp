@@ -107,6 +107,13 @@ public:
 	 * This rectangle will be reduced to the intersection of both rectangles.
 	 */
 	void clip(const SDL_Rect& r);
+
+	/**
+	 * Shift the rectangle by the given relative position.
+	 *
+	 * The point's X and Y coordinates will be added to the rectangle's.
+	 */
+	void shift(const point& p);
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);
