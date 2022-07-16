@@ -573,6 +573,9 @@ private:
 	bool prevent_draw_ = false;
 
 public:
+	/** ToD mask smooth fade */
+	void fade_tod_mask(const std::string& old, const std::string& new_);
+
 	/** Screen fade */
 	void fade_to(const color_t& color, int duration);
 	void set_fade(const color_t& color);
@@ -814,7 +817,10 @@ protected:
 	texture mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
-	surface tod_hex_mask1, tod_hex_mask2; // TODO: highdpi - texture
+	texture tod_hex_mask1 = {};
+	texture tod_hex_mask2 = {};
+	uint8_t tod_hex_alpha1 = 0;
+	uint8_t tod_hex_alpha2 = 0;
 	std::vector<std::string> fog_images_;
 	std::vector<std::string> shroud_images_;
 

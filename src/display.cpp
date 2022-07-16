@@ -2364,6 +2364,30 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
+void display::fade_tod_mask(
+	const std::string& old_mask,
+	const std::string& new_mask)
+{
+	// TODO: hwaccel - this needs testing as it's not used in mainline
+	tod_hex_mask1 = image::get_texture(old_mask, image::HEXED);
+	tod_hex_mask2 = image::get_texture(new_mask, image::HEXED);
+
+	int duration = 300 / turbo_speed();
+	int start = SDL_GetTicks();
+	for(int now = start; now < start + duration; now = SDL_GetTicks()) {
+		float prop_f = float(now - start) / float(duration);
+		uint8_t p = float_to_color(prop_f);
+		tod_hex_alpha2 = p;
+		tod_hex_alpha1 = ~p;
+		draw_manager::invalidate_region(map_outside_area());
+		events::pump();
+		events::raise_draw_event();
+	}
+
+	tod_hex_mask1.reset();
+	tod_hex_mask2.reset();
+}
+
 void display::fade_to(const color_t& c, int duration)
 {
 	uint32_t start = SDL_GetTicks();
@@ -2791,10 +2815,11 @@ void display::draw_hex(const map_location& loc)
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
-	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		// TODO: highdpi - don't convert these every time, this is terrible
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask1));
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, texture(tod_hex_mask2));
+	if(tod_hex_mask1 || tod_hex_mask2) {
+		auto& a = drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, tod_hex_mask1);
+		a.alpha_mod = tod_hex_alpha1;
+		auto& b = drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest, tod_hex_mask2);
+		b.alpha_mod = tod_hex_alpha2;
 	} else if(!tod_hex_mask.empty()) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, dest,
 			image::get_texture(tod_hex_mask,image::HEXED));

@@ -92,51 +92,15 @@ game_display::~game_display()
 void game_display::new_turn()
 {
 	static bool first_turn = true;
-	const time_of_day& tod = resources::tod_manager->get_time_of_day();
 
 	// We want to skip this on the first run of this function
 	if(!first_turn) {
+		const time_of_day& tod = resources::tod_manager->get_time_of_day();
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
-			// TODO: highdpi - textures
-			// TODO: highdpi - make sure these are scaled correctly
-			surface old_mask(image::get_image(old_tod.image_mask,image::HEXED));
-			surface new_mask(image::get_image(tod.image_mask,image::HEXED));
-
-			const int niterations = static_cast<int>(10/turbo_speed());
-			const int frame_time = 30;
-			const int starting_ticks = SDL_GetTicks();
-			for(int i = 0; i != niterations; ++i) {
-
-				if(old_mask != nullptr) {
-					// TODO: highdpi - do this on the fly, rather than baking it
-					int32_t proportion = 256 - fixed_point_divide(i,niterations);
-					proportion = std::clamp(proportion, 0, 255);
-					adjust_surface_alpha(old_mask, proportion);
-					tod_hex_mask1 = old_mask;
-				}
-
-				if(new_mask != nullptr) {
-					// TODO: highdpi - do this on the fly, rather than baking it
-					int32_t proportion = fixed_point_divide(i,niterations);
-					proportion = std::clamp(proportion, 0, 255);
-					adjust_surface_alpha(new_mask, proportion);
-					tod_hex_mask2 = new_mask;
-				}
-
-				invalidate_all();
-
-				const int cur_ticks = SDL_GetTicks();
-				const int wanted_ticks = starting_ticks + i*frame_time;
-				if(cur_ticks < wanted_ticks) {
-					SDL_Delay(wanted_ticks - cur_ticks);
-				}
-			}
+			fade_tod_mask(old_tod.image_mask, tod.image_mask);
 		}
-
-		tod_hex_mask1 = nullptr;
-		tod_hex_mask2 = nullptr;
 	}
 
 	first_turn = false;
