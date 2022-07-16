@@ -135,7 +135,8 @@ bool floating_label::create_texture()
 		const int sf = ps * display::get_singleton()->get_zoom_factor();
 
 		if(foreground == nullptr) {
-			ERR_FT << "could not create floating label's text" << endl;
+			// TODO: draw_manager - find what triggers this and fix it
+			//ERR_FT << "could not create floating label's text" << endl;
 			return false;
 		}
 
@@ -197,7 +198,8 @@ void floating_label::update(int time)
 	}
 
 	if(!create_texture()) {
-		ERR_FT << "failed to create texture for floating label" << std::endl;
+		// TODO: draw_manager - find what triggers this and fix it
+		//ERR_FT << "failed to create texture for floating label" << std::endl;
 		return;
 	}
 
