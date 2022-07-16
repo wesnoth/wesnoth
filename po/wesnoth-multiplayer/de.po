@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-11-09 00:45 UTC\n"
-"PO-Revision-Date: 2021-07-25 16:22+0200\n"
+"PO-Revision-Date: 2022-03-15 16:38+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -1187,7 +1187,7 @@ msgid ""
 "strength."
 msgstr ""
 "Da Eure Allianz nur einen Anführer aufweist, werden die Angriffswellen nicht "
-"in voller Stärke auftreten"
+"in voller Stärke auftreten."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
@@ -1202,7 +1202,7 @@ msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 "Da Eure Allianz zwei Anführer aufweist, erwartet die Angriffswellen in "
-"voller Macht"
+"voller Macht."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
@@ -1664,6 +1664,9 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"Ihr erreicht einen mystischen Schrein, an dem die Scheinbilder von uralten "
+"Armeen gefangen sind, dazu verdammt, auf ewig die Insel von allen "
+"Eindringlingen zu säubern."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1671,11 +1674,13 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"Phantom-Armeen nähren sich am Horizont. Wenn wir sie alle besiegen werden "
+"sie uns womöglich von diesem zeitlosen Gefängnis befreien."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "lasst uns auf die bevorstehende Schlacht vorbereiten"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
@@ -1689,6 +1694,9 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"Als der kalte Griff des Todes näherzieht spürst du, wie sich dein Geist von "
+"deinem Körper löst. Dir wird bewusst, dass du bald zum selben Schicksal als "
+"Phantom-Wächter des Schreins verdammt sein wirst."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1697,6 +1705,9 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"Ein dunkler Nebel erhebt sich aus dem Land und zieht deine Sinne davon. "
+"Langsam dämmert es dir, dass du schon bald den anderen Geistern als "
+"gesichtsloser Wächter des uralten Schreins beitreten wirst."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
@@ -1715,6 +1726,10 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"Also du schlussendlich den letzten verbleibenden Gegner besiegst scheint der "
+"düstere Nebel um die Insel sich zu erheben. Die Phantome verblassen, erlöst "
+"von ihrem ewigen Wachposten. Du hast es endlich geschafft den uralten "
+"Schrein zu reinigen. Zumindest für eine Weile..."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517

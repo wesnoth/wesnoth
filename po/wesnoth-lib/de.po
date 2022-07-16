@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-01-02 22:09+0100\n"
+"PO-Revision-Date: 2022-03-15 16:42+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -769,6 +769,15 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"Die Overlays »^Uf« und »^Ufi« sind veraltet, da sie graphisch zwar ein "
+"anderes Gelände unter dem Overlay anzeigen, aber in Wahrheit immer die "
+"Bewegungs- und Verteidigungswerte des Pilzhain-Geländes geben und das "
+"zugrundeliegende angezeigte Gelände völlig ignorieren. Stattdessen wird "
+"empfohlen »^Tf« und »^Tfi« zu verwenden, welche genauso aussehen, aber "
+"tatsächlich die Werte des angezeigten zugrundeliegenden Geländes geben. Wenn "
+"die Werte eines reinen Pilzhains gewünscht sind kann das Pilzhain-"
+"Basisgelände »Tb« verwendet werden, welches sowohl mit als auch ohne »^Tf« "
+"darüber verwendet werden kann."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -782,6 +791,12 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Zwergische Geschichten erzählen von verschiedenen Arten an Pilzen – bei "
+"manchen von ihnen hängt die Schwierigkeit, ihren schwammigen Boden zu "
+"durchqueren, nicht mit dem zugrundeliegenden Boden zusammen, selbst wenn "
+"dieser noch sichtbar ist. Die Verteidigungs- und Bewegungswerte einer "
+"Einheit auf diesem Gelände sind die selben wie auf <italic>text='Pilzhain'</"
+"italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1028
@@ -1953,19 +1968,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1983,12 +1985,16 @@ msgstr ""
 "<italic>text='Berge'</italic> sind steiles, bergiges Gelände, welche "
 "Einheiten, da sie oft klettern müssen, stark verlangsamt.\n"
 "Durch ihre Beschaffenheit bieten Berge beachtliche Deckung für die meisten "
-"Truppen, wofür sie jedoch stark an Mobilität einbüßen. Die meisten Reiter "
-"können gar nicht durch Berge reisen; mit Ausnahme der elfischen und der "
-"Kobold-Wolfsreiter. Da Zwerge und Trolle in Bergen beheimatet sind, haben "
-"sie leichtes Spiel sich durch die Berge zu bewegen.\n"
+"Truppen, wofür sie jedoch stark an Mobilität einbüßen. Einheiten mit "
+"schwerer Rüstung, wie etwa Wesnoths Kavallerie oder schwere Infanterie, "
+"können sie nicht einmal betreten. Kreaturen des Meeres wie das Meervolk "
+"besitzen fisch-ähnliche Körper, die es ihnen das Klettern ebenfalls "
+"unmöglich macht. Nagas bilden wegen ihrer starken Arme und rauen Schuppen "
+"eine Ausnahme. Da Zwerge und Trolle in Bergen beheimatet sind, haben sie "
+"leichtes Spiel sich durch die Berge zu bewegen.\n"
 "\n"
-"Die meisten Einheiten erhalten etwa 60% Verteidigung, Zwerge sogar 70%."
+"Die meisten Einheiten erhalten etwa 60% Verteidigung im Gebirge, Zwerge "
+"sogar 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3114
@@ -2258,7 +2264,6 @@ msgstr "Erweiterung installieren"
 msgid "Update add-on"
 msgstr "Erweiterung aktualisieren"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:337
@@ -2266,7 +2271,6 @@ msgstr "Erweiterung aktualisieren"
 msgid "Publish add-on"
 msgstr "Erweiterung veröffentlichen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:314
@@ -2355,7 +2359,6 @@ msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 msgid "OK"
 msgstr "Okay"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
@@ -2426,10 +2429,8 @@ msgstr "Verbinden"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Typ ($order)"
+msgstr "Vereinbarungen"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2468,7 +2469,6 @@ msgstr "Version:"
 msgid "Select the add-on version"
 msgstr "Wähle die Version der Erweiterung"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:227
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:576
@@ -2522,7 +2522,6 @@ msgstr "Webseite:"
 msgid "Dependencies:"
 msgstr "Abhängigkeiten:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/window/addon_manager.cfg:620 src/gui/dialogs/addon/manager.cpp:1016
 msgid "addon_dependencies^None"
@@ -2533,7 +2532,6 @@ msgstr "Keine"
 msgid "Translations:"
 msgstr "Übersetzungen:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/window/addon_manager.cfg:654 src/gui/dialogs/addon/manager.cpp:1030
 msgid "translations^None"
@@ -2564,7 +2562,6 @@ msgstr "Reihenfolge:"
 msgid "Add-ons Manager"
 msgstr "Erweiterungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1013 src/gui/dialogs/addon/manager.cpp:511
 #: src/gui/dialogs/addon/manager.cpp:747
@@ -2708,8 +2705,8 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
-"Der Ausgang eines Kampfes wird durch die gezeigten Wahrscheinlichkeiten "
-"beeinflusst nicht durch das Laden des Spielstandes."
+"Der Ausgang eines Kampfes ist näher an den gezeigten Wahrscheinlichkeiten "
+"und wird durch neu laden eines Spielstandes nicht beeinflusst."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:341
@@ -2740,7 +2737,7 @@ msgstr "Eine Kampagne spielen"
 #: data/gui/window/campaign_dialog.cfg:482
 #: data/gui/window/campaign_difficulty.cfg:221
 msgid "game^Play"
-msgstr ""
+msgstr "Spielen"
 
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
@@ -2756,7 +2753,6 @@ msgstr "Schwierigkeitsgrad"
 msgid "Select difficulty:"
 msgstr "Wählt den Schwierigkeitsgrad:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:276
 msgid "Chat Log"
@@ -2810,7 +2806,6 @@ msgstr "Log in die Zwischenablage kopieren"
 msgid "Load Core"
 msgstr "Lade Kern"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:171
 msgid "Select"
@@ -2851,7 +2846,6 @@ msgstr "Verzeichnis im Dateimanager öffnen"
 msgid "Edit Time Schedule"
 msgstr "Bearbeite Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
 #: data/gui/window/editor_edit_scenario.cfg:106
@@ -2915,7 +2909,6 @@ msgstr "Neuer Tagesablauf"
 msgid "Delete ToD"
 msgstr "Lösche Tagesablauf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:907 src/gui/dialogs/file_dialog.cpp:303
@@ -2928,7 +2921,6 @@ msgstr "Bestätigen"
 msgid "Would you like to apply the changes?"
 msgstr "Möchtet Ihr die Änderungen übernehmen?"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/depcheck_confirm_change.cfg:128
 #: data/gui/window/game_delete.cfg:107
@@ -2939,7 +2931,6 @@ msgstr "Möchtet Ihr die Änderungen übernehmen?"
 msgid "Yes"
 msgstr "Ja"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/window/depcheck_confirm_change.cfg:142
 #: data/gui/window/game_delete.cfg:121
@@ -3020,7 +3011,6 @@ msgstr "ID:"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
 #: src/gui/dialogs/multiplayer/lobby.cpp:513
@@ -3082,7 +3072,6 @@ msgstr "In Spielübersicht ausblenden"
 msgid "Gold:"
 msgstr "Gold:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
 #: src/gui/dialogs/multiplayer/lobby.cpp:514
@@ -3104,7 +3093,6 @@ msgstr "Unterhalt pro Dorf:"
 msgid "Controller:"
 msgstr "Spielertyp:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:70
 msgid "controller^Human"
@@ -3140,7 +3128,6 @@ msgstr "Schleier der Finsternis"
 msgid "vision^None"
 msgstr "Keine"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:240
 msgid "Generate Map"
@@ -3151,7 +3138,6 @@ msgstr "Karte erzeugen"
 msgid "Choose a map generator:"
 msgstr "Wählt einen Zufallskartengenerator:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
@@ -3170,7 +3156,6 @@ msgstr "Numerischer Startwert:"
 msgid "Generate"
 msgstr "Erzeugen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:172
 msgid "New Map"
@@ -3195,7 +3180,6 @@ msgstr "Höhe:"
 msgid "Create"
 msgstr "Erstellen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:239
 msgid "Resize Map"
@@ -3415,7 +3399,6 @@ msgstr "Truppen in Reserve:"
 msgid "Date"
 msgstr "Datum"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #. [button]: id=load_game
 #: data/gui/window/game_load.cfg:292 data/gui/window/mp_create_game.cfg:898
@@ -3471,14 +3454,12 @@ msgstr "Öffne Ordner mit gespeicherten Spielständen"
 msgid "Load"
 msgstr "Laden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/game_save.cfg:42 data/gui/window/game_save_message.cfg:42
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:100
 msgid "Save Game"
 msgstr "Spiel speichern"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
@@ -3517,14 +3498,12 @@ msgstr "Heerführer"
 msgid "Team"
 msgstr "Allianz"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
 msgid "Gold"
 msgstr "Gold"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
 #: src/generators/default_map_generator.cpp:198
@@ -3541,7 +3520,6 @@ msgstr "Einheiten"
 msgid "Upkeep"
 msgstr "Unterhaltskosten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
@@ -3593,7 +3571,6 @@ msgstr ""
 "Unterhalt\n"
 "pro Dorf"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:254
 msgid "Current Status"
@@ -3604,7 +3581,6 @@ msgstr "Übersicht (Parteien)"
 msgid "Game Stats"
 msgstr "Übersicht (Parteien)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:254
 msgid "Scenario Settings"
@@ -3880,14 +3856,12 @@ msgstr "Filter invertieren"
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "Join"
 msgstr "Beitreten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
 #: src/gui/dialogs/multiplayer/lobby.cpp:985
@@ -3901,7 +3875,6 @@ msgstr "Beobachten"
 msgid "Announcements"
 msgstr "Ankündigungen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
@@ -4048,27 +4021,27 @@ msgstr "Log Domaine"
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Debug"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Information"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Warnung"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Fehler"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Keine"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4415,7 +4388,6 @@ msgstr "Aktionsbonus"
 msgid "Time for each attack, recruit, and capture"
 msgstr "Zeit für jeden Angriff, jede Ausbildung und Einnahme"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:292
@@ -4494,7 +4466,6 @@ msgstr ""
 "Lege das Passwort fest, welches Spieler benötigen, um deinem Spiel "
 "beizutreten"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
@@ -4517,7 +4488,6 @@ msgstr "Männlich"
 msgid "Female"
 msgstr "Weiblich"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:206
 #: src/gui/dialogs/statistics_dialog.cpp:369
@@ -4573,7 +4543,6 @@ msgstr "Verlassen"
 msgid "Game Lobby"
 msgstr "Spiel Lobby"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
@@ -4875,7 +4844,6 @@ msgstr "Aktion"
 msgid "Hotkey"
 msgstr "Tastenkürzel"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
@@ -4888,7 +4856,6 @@ msgstr "S"
 msgid "Available in game"
 msgstr "Verfügbar im Spiel"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
@@ -4901,7 +4868,6 @@ msgstr "E"
 msgid "Available in editor"
 msgstr "Verfügbar im Editor"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
@@ -5241,8 +5207,8 @@ msgstr "Entfernt den Spieler von Eurer Liste"
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or blocked any other players."
 msgstr ""
-"Ihr habt Euch noch nicht mit anderen Spielern angefreundet oder ignoriert "
-"sie."
+"Ihr habt Euch noch keine anderen Spielern als Freunde hinzugefügt oder "
+"blockiert."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5282,31 +5248,29 @@ msgstr "Zeige bewegte Sphäre"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:113
 msgid "Show ally orb"
-msgstr "Zeige Sphären Verbündeter"
+msgstr "Zeige Sphären für Verbündete"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:114
 msgid "Show enemy orb"
-msgstr "Zeige Sphären der Gegner"
+msgstr "Zeige Sphären für Gegner"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
-#, fuzzy
-#| msgid "Show enemy orb"
 msgid "Show disengaged orb"
-msgstr "Zeige Sphären der Gegner"
+msgstr "Zeige Rückzugs-Spähren"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:115
 msgid "This uses the colors for partial and moved orbs."
 msgstr ""
+"Verwendet eine Kombination der Farben von bewegten und teilweise bewegten "
+"Sphären."
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Karteninformationen"
+msgstr "Serverinformation"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:44
@@ -5324,7 +5288,6 @@ msgstr ""
 msgid "Overall"
 msgstr "Insgesamt"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/statistics_dialog.cfg:490 src/hotkey/hotkey_command.cpp:122
 msgid "Statistics"
@@ -5346,16 +5309,21 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Unterschied zwischen dem erwarteten und tatsächlichen Ergebnis als "
+"Prozentwert.\n"
+"Die erste Zahl in Klammern ist der erwartete Schaden.\n"
+"Die Summe (oder Differenz) der beiden Zahlen in Klammern ist der "
+"tatsächliche Schaden."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Verhältnis von tatsächlichen zu erwartetem"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Treffer"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -5371,8 +5339,22 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"Die <i>a priori</i> Wahrscheinlichkeit in Prozent, mindestens so viele "
+"Treffer hinzuzufügen/zu erhalten.\n"
+"\n"
+"Intuitiv ist das ein Maß dafür, wie stark diese Partei vom Zufall "
+"beeinflusst wurde.\n"
+"\n"
+"Werte zwischen 0 und 50 deuten an, dass die Zahl der Treffer niedriger als "
+"erwartet war.\n"
+"Werte zwischen 50 und 100 deuten an, dass die Zahl der Treffer höher als "
+"erwartet war.\n"
+"\n"
+"Grüne Werte deuten an, dass es dieser Partei deutlich besser als erwartet "
+"erging.\n"
+"Rote Werte deuten an, dass es dieser Partei deutlich schlechter als erwartet "
+"erging."
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:125
 msgid "Surrender Game"
@@ -5454,7 +5436,6 @@ msgstr "Flaggen"
 msgid "Choose Theme"
 msgstr "Grafikthema wählen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:274
 msgid "Help"
@@ -5606,7 +5587,6 @@ msgstr "S"
 msgid "XP"
 msgstr "EP"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
@@ -5615,7 +5595,6 @@ msgstr "EP"
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_list.cfg:367 src/hotkey/hotkey_command.cpp:121
 msgid "Unit List"
@@ -5643,7 +5622,6 @@ msgstr "Umbenennen"
 msgid "Dismiss"
 msgstr "Entlassen"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recall.cfg:450 src/hotkey/hotkey_command.cpp:106
 msgid "Recall"
@@ -5654,13 +5632,11 @@ msgstr "Einberufen"
 msgid "Recruit Unit"
 msgstr "Einheit ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:104
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
 #: src/gui/dialogs/preferences_dialog.cpp:236
@@ -5668,7 +5644,6 @@ msgstr "Ausbilden"
 msgid "Error"
 msgstr "Fehler"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:239
 #: src/gui/dialogs/multiplayer/lobby.cpp:255 src/gui/dialogs/wml_error.cpp:161
@@ -5693,7 +5668,7 @@ msgstr "Benachrichtigungen mittels Cocoa"
 
 #: src/build_info.cpp:332 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "<Unbekannt>"
 
 #: src/desktop/paths.cpp:97
 msgid "filesystem_path_system^Volumes"
@@ -5730,24 +5705,28 @@ msgstr "<unbekannt>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:638
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<relativer Pfad, der nicht mit einem Punkt beginnt>"
 
 #: src/filesystem.cpp:641
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Benutze einen absoluten Pfad, oder einen relativen Pfad der mit einem Punkt "
+"und einem Schrägstrich beginnt"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:706 src/filesystem.cpp:727
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<relativer Pfad>"
 
 #: src/filesystem.cpp:709 src/filesystem.cpp:730
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Benutze absolute Pfade. Relative Pfade sind veraltet, da sie relativ zu "
+"$HOME interpretiert werden"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5872,11 +5851,11 @@ msgstr "Der Text hat eine Schriftgröße von 0."
 
 #: src/gui/core/canvas.cpp:835
 msgid "Area to draw has negative size"
-msgstr ""
+msgstr "Zeichenfläche ist negativ"
 
 #: src/gui/core/canvas.cpp:837
 msgid "Area to draw is larger than widget size"
-msgstr ""
+msgstr "Zeichenfläche ist größer als die Widgetgröße"
 
 #: src/gui/core/widget_definition.cpp:31
 msgid "No state or draw section defined."
@@ -5901,16 +5880,16 @@ msgid "No grid defined."
 msgstr "Kein Gitternetz definiert."
 
 #: src/gui/core/window_builder.cpp:231
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "Eine Zeile muss mindestens über eine Spalte verfügen."
+msgstr "Gitter »$grid« Reihe $row muss mindestens eine Spalte haben."
 
 #: src/gui/core/window_builder.cpp:243
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Gitter »$grid« Reihe $row hat eine andere Zahl an Spalten ($found gefunden, "
+"$expected erwartet)"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_view^All Add-ons"
@@ -6014,36 +5993,35 @@ msgstr "Zuerst hochgeladen ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Kooperativ"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Alle menschlichen Spieler sind im selben Team, gegen die KI"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Kosmetisch"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
+"Lässt das Spiel anders aussehen, ohne das Spielverhalten zu beeinflussen"
 
 #: src/gui/dialogs/addon/manager.cpp:231
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Schwierigkeitsgrad"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Kann Kampagnen einfacher oder schwieriger machen"
 
 #: src/gui/dialogs/addon/manager.cpp:234
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "Zufall"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:236
@@ -6051,24 +6029,25 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Modifiziert den Zufall in Kampfmechaniken oder entfernt ihn vollständig"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Überleben"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:239
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Kämpfe gegen Wellen von Gegnern"
 
 #: src/gui/dialogs/addon/manager.cpp:240
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraforming"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:242
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Spieler können das Gelände verändern"
 
 #: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
@@ -6226,12 +6205,12 @@ msgstr "Möchtet Ihr '$addon|' wirklich deinstallieren?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:966
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:968
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%Y-%m-%d %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1033
 msgid "url^None"
@@ -6718,6 +6697,8 @@ msgstr "Lobby"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Dieses Spiel erlaubt keine Zuschauer. Moderatoren-Rechte benutzen um "
+"trotzdem zuzuschauen?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -6730,6 +6711,8 @@ msgstr ""
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Dieses Spiel ist passwortgeschützt. Moderatoren-Rechte benutzen um trotzdem "
+"beizutreten?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
@@ -6939,11 +6922,11 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
-"stats dialog^Unterschied zwischen aktuellen und erwarteten Resultat als "
+"Unterschied zwischen dem erwarteten und tatsächlichen Ergebnis als "
 "Prozentwert.\n"
-"Die erste Zahl in den Klammern zeigt die die Anzahl der erwarteten Treffer.\n"
-"Die wirkliche Anzahl der Treffer zeigt sich im Vergleich mit der zweiten "
-"Zahl in der Klammer und liegt in der Regel irgendwo dazwischen."
+"Die erste Zahl in Klammern zeigt die die Anzahl der erwarteten Treffer.\n"
+"Die Summe (oder Differenz) der beiden Zahlen in Klammern ist die "
+"tatsächliche Anzahl an Treffern."
 
 #: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Recalls"
@@ -6985,7 +6968,7 @@ msgstr "Test wählen"
 
 #: src/gui/dialogs/unit_create.cpp:198
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Standardvariante"
 
 #: src/gui/dialogs/unit_recall.cpp:224
 msgid ""
@@ -7343,10 +7326,8 @@ msgid "End Unit Turn"
 msgstr "Zug der Einheit beenden"
 
 #: src/hotkey/hotkey_command.cpp:85
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Linksseitig verschieben"
+msgstr "Zum Anführer scrollen"
 
 #: src/hotkey/hotkey_command.cpp:86
 msgid "Undo"
@@ -7377,10 +7358,8 @@ msgid "Map Screenshot"
 msgstr "Bildschirmfoto der Karte"
 
 #: src/hotkey/hotkey_command.cpp:94
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Geschwindigkeit erhöhen"
+msgstr "Geschwindigkeit umschalten"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Terrain Description"
@@ -7451,10 +7430,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Einheit töten (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:120
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Missionsziele"
+msgstr "Ziele"
 
 #: src/hotkey/hotkey_command.cpp:123
 msgid "Pause Network Game"
@@ -7465,8 +7442,6 @@ msgid "Continue Network Game"
 msgstr "Netzwerkpartie fortsetzen"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
 msgstr "Zurück zum Hauptmenü"
 
@@ -7972,10 +7947,8 @@ msgid "Update Shroud Now"
 msgstr "Schleier jetzt aktualisieren"
 
 #: src/hotkey/hotkey_command.cpp:270
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Bewegung fortsetzen"
+msgstr "Unterbrochene Bewegung fortsetzen"
 
 #: src/hotkey/hotkey_command.cpp:271
 msgid "Find Label or Unit"

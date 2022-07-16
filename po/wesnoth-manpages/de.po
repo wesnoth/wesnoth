@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "POT-Creation-Date: 2022-01-02 21:01+0300\n"
-"PO-Revision-Date: 2021-10-18 18:13+0200\n"
+"PO-Revision-Date: 2022-03-16 11:50+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Bookmarks: -1,-1,276,-1,-1,-1,-1,-1,-1,-1\n"
 
 # type: TH
@@ -1281,18 +1281,17 @@ msgstr "Zeigt die Versionsnummer an und beendet das Programm."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:419
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:422
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "Zeigt die Versionsnummer an und beendet das Programm."
+msgstr ""
+"Zeigt nur die Versionsnummer ohne sonstige Informationen an und beendet das "
+"Programm."
 
 # type: TP
 #. type: TP
@@ -1667,17 +1666,17 @@ msgid "SEE ALSO"
 msgstr "ANDERE"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+#. This program is free software; you can redistribute it and/or modify
+#. it under the terms of the GNU General Public License as published by
+#. the Free Software Foundation; either version 2 of the License, or
+#. (at your option) any later version.
+#. This program is distributed in the hope that it will be useful,
+#. but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. GNU General Public License for more details.
+#. You should have received a copy of the GNU General Public License
+#. along with this program; if not, write to the Free Software
+#. Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
 msgid "B<wesnothd>(6)"
@@ -2231,16 +2230,13 @@ msgstr "Globale Elemente:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:181
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Ein Element, um bestimmte Programmversionen anzugeben, die auf "
-"einen anderen Server umgeleitet werden sollen."
+"einen anderen Server umgeleitet werden sollen. Wird nur verwendet wenn "
+"B<versions_accepted> gesetzt ist."
 
 # type: TP
 #. type: TP
@@ -2347,14 +2343,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:226
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2363,13 +2351,14 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren "
-"Schlüssel hängen davon ab, welche Nutzerverwaltung beim B<user_handler> "
-"Schlüssel festgelegt wurde. Ist kein B<[user_handler]>-Bereich vorhanden, so "
-"ist es nicht möglich, Nutzerauthentifizierung auf dem Server zu verwenden. "
-"Alle zusätzlichen Datenbanktabellen, welche für den B<forum_user_handler> "
-"benötigt werden, können über die Datei table_definitions.sql angelegt "
-"werden, welche im Wesnoth Code-Repository zu finden is."
+"B<[user_handler]> Dies Konfiguriert die Nutzerverwaltung. Ist kein "
+"B<[user_handler]>-Bereich vorhanden, so ist es nicht möglich, "
+"Nutzerauthentifizierung auf dem Server zu verwenden. Alle zusätzlichen "
+"Datenbanktabellen, welche für den B<forum_user_handler> benötigt werden, "
+"können über die Datei table_definitions.sql angelegt werden, welche im "
+"Wesnoth Code-Repository zu finden ist. Erfordert, dass die MySQL-"
+"Unterstützung aktiviert ist. Für cmake kann diese durch B<ENABLE_MYSQL> "
+"erreicht werden, für scons durch B<forum_user_handler>."
 
 # type: TP
 #. type: TP
