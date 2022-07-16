@@ -46,7 +46,6 @@ public:
 		, selected_bg_item_()
 		, toolkit_(toolkit)
 		, buttons_()
-		, help_handle_(-1)
 	{
 	}
 
@@ -123,15 +122,7 @@ private:
 	/** Return the number of items in the currently-active group. */
 	std::size_t num_items() override;
 
-	void hide(bool hidden) override {
-		widget::hide(hidden);
-		if (!hidden)
-			help_handle_ = gui_.video().set_help_string(get_help_string());
-		else gui_.video().clear_help_string(help_handle_);
-		for (gui::widget& w : buttons_) {
-			w.hide(hidden);
-		}
-	}
+	void hide(bool hidden) override;
 
 protected:
 	/**
@@ -189,8 +180,6 @@ private:
 
 	editor_toolkit& toolkit_;
 	std::vector<gui::tristate_button> buttons_;
-
-	int help_handle_;
 };
 
 

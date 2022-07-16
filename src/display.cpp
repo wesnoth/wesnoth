@@ -244,13 +244,6 @@ display::display(const display_context* dc,
 
 	read(level.child_or_empty("display"));
 
-	if (screen_.non_interactive()
-		&& screen_.surface_initialized()
-		&& screen_.faked())
-	{
-		screen_.lock_updates(true);
-	}
-
 	fill_images_list(game_config::fog_prefix, fog_images_);
 	fill_images_list(game_config::shroud_prefix, shroud_images_);
 
@@ -1338,7 +1331,7 @@ static unsigned calculate_fps(unsigned frametime)
 
 void display::update_display()
 {
-	if (screen_.update_locked()) {
+	if (screen_.faked()) {
 		return;
 	}
 
@@ -1913,7 +1906,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	// NOTE: the next three blocks can be removed once we switch to accelerated rendering.
 	//
 
-	if(!screen_.update_locked()) {
+	if(!screen_.faked()) {
 		rect dst = map_area();
 		dst.x += diff_x;
 		dst.y += diff_y;
@@ -2071,7 +2064,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(screen_.update_locked() || screen_.faked()) {
+	if(screen_.faked()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2416,7 +2409,7 @@ void display::set_fade(const color_t& c)
 
 void display::redraw_everything()
 {
-	if(screen_.update_locked())
+	if(screen_.faked())
 		return;
 
 	DBG_DP << "redrawing everything";
@@ -2485,7 +2478,7 @@ void display::draw(bool update, bool force)
 {
 	//	log_scope("display::draw");
 
-	if(screen_.update_locked() || screen_.faked()) {
+	if(screen_.faked()) {
 		DBG_DP << "display::draw denied";
 		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;

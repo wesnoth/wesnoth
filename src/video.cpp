@@ -53,9 +53,6 @@ point fake_size = {0, 0};
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
 	, fake_screen_(false)
-	, help_string_(0)
-	, updated_locked_(0)
-	, flip_locked_(0)
 	, refresh_rate_(0)
 	, offset_x_(0)
 	, offset_y_(0)
@@ -104,11 +101,6 @@ bool CVideo::any_fake() const
 bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
-}
-
-bool CVideo::surface_initialized() const
-{
-	return logical_size_.x != 0 || logical_size_.y != 0;
 }
 
 // TODO: draw_manager - ugh, why - does this really need to exist?
@@ -507,15 +499,6 @@ texture CVideo::get_render_target()
 	return current_render_target_;
 }
 
-SDL_Rect CVideo::clip_to_draw_area(const SDL_Rect* r) const
-{
-	if(r) {
-		return draw_area().intersect(*r);
-	} else {
-		return draw_area();
-	}
-}
-
 rect CVideo::to_output(const rect& r) const
 {
 	rect o = r * get_pixel_scale();
@@ -538,11 +521,6 @@ void CVideo::render_screen()
 
 	if(!window) {
 		WRN_DP << "trying to render with no window";
-		return;
-	}
-
-	if(flip_locked_ > 0) {
-		DBG_DP << "trying to render with flip locked";
 		return;
 	}
 
@@ -646,20 +624,6 @@ texture CVideo::read_texture(SDL_Rect* r)
 	return texture(read_pixels(r));
 }
 
-void CVideo::lock_updates(bool value)
-{
-	if(value == true) {
-		++updated_locked_;
-	} else {
-		--updated_locked_;
-	}
-}
-
-bool CVideo::update_locked() const
-{
-	return updated_locked_ > 0;
-}
-
 void CVideo::set_window_title(const std::string& title)
 {
 	assert(window);
@@ -678,11 +642,6 @@ void CVideo::clear_screen()
 		DBG_DP << "clearing screen";
 		window->fill(0, 0, 0, 255);;
 	}
-}
-
-sdl::window* CVideo::get_window()
-{
-	return window.get();
 }
 
 SDL_Renderer* CVideo::get_renderer()
@@ -786,57 +745,7 @@ bool CVideo::is_fullscreen() const
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 
-bool CVideo::supports_software_vsync() const
-{
-	return sdl::runtime_at_least(2, 0, 17);
-}
-
-// TODO: highdpi - this should not be here.
-int CVideo::set_help_string(const std::string& str)
-{
-	font::remove_floating_label(help_string_);
-
-	const color_t color{0, 0, 0, 0xbb};
-
-	int size = font::SIZE_LARGE;
-
-	while(size > 0) {
-		if(font::pango_line_width(str, size) > draw_area().w) {
-			size--;
-		} else {
-			break;
-		}
-	}
-
-	const int border = 5;
-
-	font::floating_label flabel(str);
-	flabel.set_font_size(size);
-	flabel.set_position(draw_area().w / 2, draw_area().h);
-	flabel.set_bg_color(color);
-	flabel.set_border_size(border);
-
-	help_string_ = font::add_floating_label(flabel);
-
-	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
-	font::move_floating_label(help_string_, 0.0, -double(rect.h));
-
-	return help_string_;
-}
-
-void CVideo::clear_help_string(int handle)
-{
-	if(handle == help_string_) {
-		font::remove_floating_label(handle);
-		help_string_ = 0;
-	}
-}
-
-void CVideo::clear_all_help_strings()
-{
-	clear_help_string(help_string_);
-}
-
+// TODO: this is not behaving well
 void CVideo::set_fullscreen(bool ison)
 {
 	if (fake_interactive) {
@@ -913,13 +822,4 @@ void CVideo::update_buffers()
 	// Push a window-resized event to the queue. This is necessary so various areas
 	// of the game (like GUI2) update properly with the new size.
 	events::raise_resize_event();
-}
-
-void CVideo::lock_flips(bool lock)
-{
-	if(lock) {
-		++flip_locked_;
-	} else {
-		--flip_locked_;
-	}
 }

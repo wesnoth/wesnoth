@@ -243,7 +243,6 @@ private:
 	void process_help_string(int mousex, int mousey) override;
 
 	std::pair<int,int> cur_help_;
-	int help_string_;
 
 	mutable std::vector<int> column_widths_;
 

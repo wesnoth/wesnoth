@@ -123,7 +123,7 @@ private:
 
 	std::string help_text_;
 	std::string tooltip_text_;
-	int help_string_;
+	bool has_help_;
 	std::string id_;
 
 	bool mouse_lock_local_;

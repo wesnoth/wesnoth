@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
+#include "font/sdl_ttf_compat.hpp" // pango_line_width
 #include "font/text.hpp"
 #include "log.hpp"
 #include "sdl/utils.hpp"
@@ -43,6 +44,9 @@ label_map labels;
 int label_id = 1;
 
 std::stack<std::set<int>> label_contexts;
+
+/** Curent ID of the help string. */
+int help_string_ = 0;
 }
 
 // TODO: draw_manager - why tf is this in namespace font?
@@ -421,4 +425,42 @@ void update_floating_labels()
 		}
 	}
 }
+
+void set_help_string(const std::string& str)
+{
+	remove_floating_label(help_string_);
+
+	const color_t color{0, 0, 0, 0xbb};
+
+	int size = font::SIZE_LARGE;
+	rect draw_area = CVideo::get_singleton().draw_area();
+
+	while(size > 0) {
+		if(pango_line_width(str, size) > draw_area.w) {
+			size--;
+		} else {
+			break;
+		}
+	}
+
+	const int border = 5;
+
+	floating_label flabel(str);
+	flabel.set_font_size(size);
+	flabel.set_position(draw_area.w / 2, draw_area.h);
+	flabel.set_bg_color(color);
+	flabel.set_border_size(border);
+
+	help_string_ = add_floating_label(flabel);
+
+	const rect& r = get_floating_label_rect(help_string_);
+	move_floating_label(help_string_, 0.0, -double(r.h));
+}
+
+void clear_help_string()
+{
+	remove_floating_label(help_string_);
+	help_string_ = 0;
+}
+
 }

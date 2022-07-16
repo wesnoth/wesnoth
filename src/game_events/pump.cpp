@@ -522,8 +522,8 @@ pump_result_t wml_event_pump::operator()()
 
 void wml_event_pump::flush_messages()
 {
-	// Dialogs can only be shown if the display is not locked
-	if(game_display::get_singleton() && !CVideo::get_singleton().update_locked()) {
+	// Dialogs can only be shown if the display is not fake
+	if(game_display::get_singleton() && !CVideo::get_singleton().faked()) {
 		show_wml_errors();
 		show_wml_messages();
 	}

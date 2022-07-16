@@ -644,7 +644,6 @@ void pump()
 
 			// make sure this runs in it's own scope.
 			{
-				flip_locker flip_lock(CVideo::get_singleton());
 				for(auto& context : event_contexts) {
 					for(auto handler : context.handlers) {
 						handler->handle_window_event(event);
