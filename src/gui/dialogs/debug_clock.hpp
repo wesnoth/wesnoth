@@ -18,6 +18,7 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
+#include "gui/core/top_level_drawable.hpp"
 
 class CVideo;
 
@@ -48,7 +49,7 @@ namespace dialogs
  * second            | integer_selector |no       |This shows the seconds since the beginning of the current minute. The control should have a minimum_value of 0 and a maximum_value of 59.
  * clock             | control          |no       |A control which will have set three variables in its canvas:<ul><li>hour - the same value as the hour integer_selector.</li><li>minute - the same value as the minute integer_selector.</li><li>second - the same value as the second integer_selector.</li></ul>The control can then show the time in its own preferred format(s).
  */
-class debug_clock : public modeless_dialog
+class debug_clock : public modeless_dialog, public top_level_drawable
 {
 public:
 	debug_clock()
@@ -156,6 +157,12 @@ private:
 	 *                            initially.)
 	 */
 	void update_time(const bool force);
+
+	// TODO: draw_manager - modeless dialog should be a window, fix
+	/* top_level_drawable interface */
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect& region) override;
+	virtual rect screen_location() override;
 };
 
 } // namespace dialogs

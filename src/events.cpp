@@ -586,7 +586,7 @@ void pump()
 			case SDL_WINDOWEVENT_SIZE_CHANGED:
 				LOG_DP << "events/SIZE_CHANGED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				CVideo::get_singleton().update_buffers();
+				CVideo::get_singleton().update_framebuffer();
 				break;
 
 			// Resized comes after size_changed.
@@ -662,12 +662,6 @@ void pump()
 				last_click_y = event.button.y;
 			}
 			break;
-		}
-
-		case DRAW_ALL_EVENT: {
-			draw_manager::invalidate_region(CVideo::get_singleton().draw_area());
-			// Nothing else needs to or should ever react to this.
-			continue;
 		}
 
 #ifndef __APPLE__
@@ -746,13 +740,6 @@ void raise_resize_event()
 
 void raise_draw_event()
 {
-	draw_manager::sparkle();
-}
-
-void raise_draw_all_event()
-{
-	// TODO: draw_manager - look into usage of this
-	//std::cerr << "draw all event raised" << std::endl;
 	draw_manager::sparkle();
 }
 

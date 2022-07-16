@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/debug_clock.hpp"
 
+#include "draw_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
@@ -60,8 +61,7 @@ void debug_clock::pre_show(window& window)
 
 	clock_ = find_widget<styled_widget>(&window, "clock", false, false);
 
-	signal_ = std::bind(&debug_clock::update_time, this, false);
-	connect_signal_on_draw(window, signal_);
+	draw_manager::register_drawable(this);
 
 	time_.set_current_time();
 	update_time(true);
@@ -69,7 +69,23 @@ void debug_clock::pre_show(window& window)
 
 void debug_clock::post_show(CVideo& /*video*/)
 {
-	get_window()->disconnect_signal<event::DRAW>(signal_);
+	draw_manager::deregister_drawable(this);
+}
+
+void debug_clock::layout()
+{
+	update_time(false);
+}
+
+rect debug_clock::screen_location()
+{
+	return get_window()->get_rectangle();
+}
+
+bool debug_clock::expose(const SDL_Rect& /*region*/)
+{
+	// Drawing is handled by the window that this should be, but is not.
+	return false;
 }
 
 void debug_clock::update_time(const bool force)

@@ -172,7 +172,6 @@ private:
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
 	void draw() override;
-	void draw_everything();
 
 	/**
 	 * Fires a video resize event.
@@ -418,14 +417,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			// remove_popup();
 			break;
 
-		case DRAW_EVENT:
-			//draw();
-			break;
-
-		case DRAW_ALL_EVENT:
-			//draw_everything();
-			break;
-
 		case TIMER_EVENT:
 			execute_timer(reinterpret_cast<std::size_t>(event.user.data1));
 			break;
@@ -454,10 +445,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
-				case SDL_WINDOWEVENT_EXPOSED:
-					//draw();
-					break;
-
 				case SDL_WINDOWEVENT_RESIZED:
 					video_resize(point(video.draw_area().w, video.draw_area().h));
 					break;
@@ -588,26 +575,10 @@ void sdl_event_handler::activate()
 
 void sdl_event_handler::draw()
 {
-	/*
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
-
-	if(!dispatchers_.empty()) {
-		CVideo::get_singleton().render_screen();
-	}
-	*/
-
-	draw_manager::sparkle();
-}
-
-void sdl_event_handler::draw_everything()
-{
-	// TODO: draw_manager - look into usage of this
-	//std::cerr << "sdl_event_handler::draw_everything" << std::endl;
-	draw_manager::invalidate_region(CVideo::get_singleton().draw_area());
-	//draw();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)
