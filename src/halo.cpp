@@ -39,117 +39,114 @@ static lg::log_domain log_halo("halo");
 namespace halo
 {
 
-// TODO: draw_manager - GH#1350 - halo issues on edge of screen - maybe fixed
 // TODO: draw_manager - GH#1354 - halo_mod doesn't mod halos - maybe not hard
 // TODO: draw_manager - GH#1960 - halos inherit alpha from unit - maybe not hard
-// TODO: draw_manager - GH#2458 - artifacts when zooming (probably fixed)
 // TODO: draw_manager - GH#6738 - (1) done already (2) halos off screen maybe done
 
-// TODO: draw_manager - fucking indent, what the shit
 class halo_impl
 {
 
-class effect
-{
-public:
-	effect(
-		int xpos, int ypos,
-		const animated<image::locator>::anim_description& img,
-		const map_location& loc, ORIENTATION, bool infinite
-	);
+	class effect
+	{
+	public:
+		effect(
+			int xpos, int ypos,
+			const animated<image::locator>::anim_description& img,
+			const map_location& loc, ORIENTATION, bool infinite
+		);
 
-	void set_location(int x, int y);
-	rect get_draw_location();
+		void set_location(int x, int y);
+		rect get_draw_location();
 
-	/** Whether the halo is currently visible */
-	bool visible();
+		/** Whether the halo is currently visible */
+		bool visible();
 
-	void queue_undraw();
-	void queue_redraw();
+		void queue_undraw();
+		void queue_redraw();
+		void update();
+		bool render();
+
+		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
+		bool need_update() const { return images_.need_update(); }
+		bool does_change() const { return !images_.does_not_change(); }
+		bool on_location(const std::set<map_location>& locations) const;
+		bool location_not_known() const;
+
+	private:
+
+		const image::locator& current_image() const { return images_.get_current_frame(); }
+
+		animated<image::locator> images_;
+
+		ORIENTATION orientation_;
+
+		// The mid-point of the halo in pixels relative to the absolute top-left of the map, in screen coordinates.
+		// Yes it's just as ridiculous as it sounds...
+		// TODO: make this something sane. Like a floating-point map location.
+		point abs_mid_ = {0, 0};
+
+		// The current halo image frame
+		texture tex_ = {};
+		// The current location where the halo will be drawn on the screen
+		rect screen_loc_ = {};
+		// The last drawn location
+		rect last_draw_loc_ = {};
+		// The display zoom level, cached so we can compensate when it changes.
+		double cached_zoom_ = 1.0;
+
+		// The map location the halo is attached to, if any
+		map_location map_loc_ = {-1, -1};
+
+		display* disp = nullptr;
+	};
+
+	std::map<int, effect> haloes;
+	int halo_id;
+
+	/**
+	 * Upon unrendering, an invalidation list is send. All haloes in that area and
+	 * the other invalidated haloes are stored in this set. Then there'll be
+	 * tested which haloes overlap and they're also stored in this set.
+	 */
+	std::set<int> invalidated_haloes;
+
+	/**
+	 * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
+	 * the image is unrendered and deleted.
+	 */
+	std::set<int> deleted_haloes;
+
+	/**
+	 * Haloes that have an animation or expiration time need to be checked every
+	 * frame and are stored in this set.
+	 */
+	std::set<int> changing_haloes;
+
+	public:
+	/**
+	 * impl's of exposed functions
+	 */
+
+	explicit halo_impl() :
+		haloes(),
+		halo_id(1),
+		invalidated_haloes(),
+		deleted_haloes(),
+		changing_haloes()
+	{}
+
+
+	int add(int x, int y, const std::string& image, const map_location& loc,
+			ORIENTATION orientation=NORMAL, bool infinite=true);
+
+	/** Set the position of an existing haloing effect, according to its handle. */
+	void set_location(int handle, int x, int y);
+
+	/** Remove the halo with the given handle. */
+	void remove(int handle);
+
 	void update();
-	bool render();
-
-	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
-	bool need_update() const { return images_.need_update(); }
-	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<map_location>& locations) const;
-	bool location_not_known() const;
-
-private:
-
-	const image::locator& current_image() const { return images_.get_current_frame(); }
-
-	animated<image::locator> images_;
-
-	ORIENTATION orientation_;
-
-	// The mid-point of the halo in pixels relative to the absolute top-left of the map, in screen coordinates.
-	// Yes it's just as ridiculous as it sounds...
-	// TODO: make this something sane. Like a floating-point map location.
-	point abs_mid_ = {0, 0};
-
-	// The current halo image frame
-	texture tex_ = {};
-	// The current location where the halo will be drawn on the screen
-	rect screen_loc_ = {};
-	// The last drawn location
-	rect last_draw_loc_ = {};
-	// The display zoom level, cached so we can compensate when it changes.
-	double cached_zoom_ = 1.0;
-
-	// The map location the halo is attached to, if any
-	map_location map_loc_ = {-1, -1};
-
-	display* disp = nullptr;
-};
-
-std::map<int, effect> haloes;
-int halo_id;
-
-/**
- * Upon unrendering, an invalidation list is send. All haloes in that area and
- * the other invalidated haloes are stored in this set. Then there'll be
- * tested which haloes overlap and they're also stored in this set.
- */
-std::set<int> invalidated_haloes;
-
-/**
- * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
- * the image is unrendered and deleted.
- */
-std::set<int> deleted_haloes;
-
-/**
- * Haloes that have an animation or expiration time need to be checked every
- * frame and are stored in this set.
- */
-std::set<int> changing_haloes;
-
-public:
-/**
- * impl's of exposed functions
- */
-
-explicit halo_impl() :
-	haloes(),
-	halo_id(1),
-	invalidated_haloes(),
-	deleted_haloes(),
-	changing_haloes()
-{}
-
-
-int add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation=NORMAL, bool infinite=true);
-
-/** Set the position of an existing haloing effect, according to its handle. */
-void set_location(int handle, int x, int y);
-
-/** Remove the halo with the given handle. */
-void remove(int handle);
-
-void update();
-void render();
+	void render();
 
 }; //end halo_impl
 

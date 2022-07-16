@@ -500,7 +500,7 @@ void canvas::draw()
 		return;
 	}
 
-	// TODO: highdpi - it is assumed this will never move after blit
+	// Note: this doesn't update if whatever is underneath changes.
 	if(blur_depth_ && !blur_texture_) {
 		// Cache a blurred image of whatever is underneath.
 		SDL_Rect rect = draw::get_viewport();
@@ -510,7 +510,7 @@ void canvas::draw()
 	}
 
 	// Draw blurred background.
-	// TODO: highdpi - this should be able to be removed at some point with shaders
+	// TODO: hwaccel - this should be able to be removed at some point with shaders
 	if(blur_depth_ && blur_texture_) {
 		draw::blit(blur_texture_);
 	}
