@@ -23,6 +23,7 @@
  ### Units
    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
    * Updated some Loyalist sprites: Sergeant, Lieutenant, Swordsman, Pikeman, Royal Guard, Halberdier
+   * Animations for Nightgaunt
  ### User interface
  ### WML Engine
    * A new interface action `[screen_fade]` provides a smooth screen fade effect which also covers units (issue #6745).
