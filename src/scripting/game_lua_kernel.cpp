@@ -3863,7 +3863,6 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 	if (game_display_) {
 		game_display_->adjust_color_overlay(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2), luaL_checkinteger(L, 3));
 		game_display_->invalidate_all();
-		game_display_->draw(true,true);
 	}
 	return 0;
 }
@@ -4019,8 +4018,6 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		if (!result) {
 			screen.invalidate_all();
 		}
-
-		screen.draw(true,true);
 	}
 	return 0;
 }
@@ -4341,7 +4338,6 @@ int game_lua_kernel::intf_scroll(lua_State * L)
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
-		game_display_->draw(true, true);
 	}
 
 	return 0;
@@ -4469,7 +4465,6 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	}
 
 	game_display_->invalidate_unit_after_move(src_loc, vacant_dst);
-	game_display_->draw();
 
 	// Sighted events.
 	clearer.fire_events();

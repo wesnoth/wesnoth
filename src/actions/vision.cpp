@@ -335,12 +335,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 const map_location & real_loc,
                                 const std::set<map_location>* known_units,
                                 std::size_t * enemy_count, std::size_t * friend_count,
-                                move_unit_spectator * spectator, bool instant)
+                                move_unit_spectator * spectator, bool /*instant*/)
 {
-	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
-
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	std::size_t enemies=0, friends=0;
@@ -352,16 +348,10 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	// Make sure the jamming map is up-to-date.
 	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
-		// Give animations a chance to progress; see bug #20324.
-		if ( !instant  && display::get_singleton() )
-			display::get_singleton()->draw(true);
 	}
 
 	// Determine the hexes to clear.
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
-	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
 
 	// Clear the fog.
 	for (const pathfind::paths::step &dest : sight.destinations) {

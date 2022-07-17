@@ -186,7 +186,7 @@ void menu_handler::preferences()
 {
 	gui2::dialogs::preferences_dialog::display();
 	// Needed after changing fullscreen/windowed mode or display resolution
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 }
 
 void menu_handler::show_chat_log()
@@ -1462,7 +1462,7 @@ void console_handler::do_refresh()
 	sound::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
-	menu_handler_.gui_->redraw_everything();
+	menu_handler_.gui_->queue_rerender();
 }
 
 void console_handler::do_droid()

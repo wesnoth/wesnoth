@@ -132,6 +132,7 @@ void playsingle_controller::init_gui()
 
 	// Fade in
 	gui_->set_prevent_draw(false);
+	gui_->queue_repaint();
 	if(!video::any_fake()) {
 		gui_->fade_to({0,0,0,0}, 500);
 	} else {
@@ -474,8 +475,7 @@ void playsingle_controller::show_turn_dialog()
 {
 	if(preferences::turn_dialog() && !is_regular_game_end()) {
 		blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
-		gui_->redraw_everything();
-		gui_->recalculate_minimap();
+		gui_->queue_rerender();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
 		symbols["name"] = gamestate().board_.get_team(current_side()).side_name();
@@ -526,7 +526,7 @@ void playsingle_controller::linger()
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 
 	try {
 		// Same logic as single-player human turn, but
@@ -544,7 +544,7 @@ void playsingle_controller::linger()
 
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger";

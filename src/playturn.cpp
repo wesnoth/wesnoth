@@ -199,10 +199,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			display::get_singleton()->set_team(side_index);
 
 			if(side_changed) {
-				display::get_singleton()->redraw_everything();
-				display::get_singleton()->recalculate_minimap();
-				// TODO: decide what should replace this
-				//video2::trigger_full_redraw();
+				display::get_singleton()->queue_rerender();
 			}
 		};
 

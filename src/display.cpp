@@ -232,7 +232,6 @@ display::display(const display_context* dc,
 	, draw_num_of_bitmaps_(false)
 	, arrows_map_()
 	, color_adjust_()
-	, dirty_()
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
@@ -287,7 +286,7 @@ void display::set_theme(const std::string& new_theme)
 	action_buttons_.clear();
 	create_buttons();
 	rebuild_all();
-	redraw_everything(); // TODO: draw_manager - rename?
+	queue_rerender();
 }
 
 void display::init_flags() {
@@ -1649,14 +1648,6 @@ void display::update_fps_count()
 		fps_counter_ = 0;
 	}
 
-	int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
-	int wait_time = time_between_draws - longest_frame;
-
-	if(!benchmark && wait_time > 0) {
-		// If it's not time yet to draw, delay until it is
-		SDL_Delay(wait_time);
-	}
-
 	last_frame_finished_ = SDL_GetTicks();
 }
 
@@ -2386,7 +2377,7 @@ void display::set_fade(const color_t& c)
 	fade_color_ = c;
 }
 
-void display::redraw_everything()
+void display::queue_rerender()
 {
 	if(video::faked())
 		return;
@@ -2435,6 +2426,13 @@ void display::redraw_everything()
 	draw_manager::invalidate_all();
 }
 
+void display::queue_repaint()
+{
+	// Could redraw a smaller region if the display doesn't use it all,
+	// but when does that ever happen?
+	draw_manager::invalidate_all();
+}
+
 void display::add_redraw_observer(std::function<void(display&)> f)
 {
 	redraw_observers_.push_back(f);
@@ -2455,14 +2453,6 @@ void display::draw()
 		return;
 	}
 	//DBG_DP << "display::draw";
-
-	// TODO: draw_manager - make this check better / kill it
-	if(dirty_) {
-		DBG_DP << "display::draw dirty redraw all";
-		dirty_ = false;
-		// TODO: draw_manager - remove this and integrate here
-		redraw_everything();
-	}
 
 	// TODO: draw_manager - why on earth does this need to mess with sync context?
 	set_scontext_unsynced leave_synced_context;
@@ -2661,8 +2651,7 @@ void display::update_render_textures()
 	// Fill in the background area on both textures.
 	render_map_outside_area();
 
-	// TODO: draw_manager - this is gross
-	dirty_ = true;
+	queue_rerender();
 }
 
 void display::render_map_outside_area()

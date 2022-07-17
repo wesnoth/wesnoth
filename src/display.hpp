@@ -365,10 +365,15 @@ public:
 	/** Capture a (map-)screenshot into a surface. */
 	surface screenshot(bool map_screenshot = false);
 
-	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
-	void redraw_everything();
+	/** Marks everything for rendering including all tiles and sidebar.
+	  * Also calls redraw observers. */
+	void queue_rerender();
 
-	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
+	/** Queues repainting to the screen, but doesn't rerender. */
+	void queue_repaint();
+
+	/** Adds a redraw observer, a function object to be called when a
+	  * full rerender is queued. */
 	void add_redraw_observer(std::function<void(display&)> f);
 
 	/** Clear the redraw observers */
@@ -579,26 +584,11 @@ public:
 private:
 	color_t fade_color_ = {0,0,0,0};
 
-public:
-	/**
-	 * Draws invalidated items.
-	 * If update is true, will also copy the display to the frame buffer.
-	 * If force is true, will not skip frames, even if running behind.
-	 * Not virtual, since it gathers common actions. Calls various protected
-	 * virtuals (further below) to allow specialized behavior in derived classes.
-	 */
-	virtual void draw();
-	// TODO: nonvirtual, WTF goddamn fuck shit
-
-	// TODO: draw_manager - remove
-	void draw(bool /*update*/) { draw(); }
-	// TODO: draw_manager - remove
-	void draw(bool /*update*/, bool /*force*/) { draw(); }
-
 	/*-------------------------------------------------------*/
 	/* top_level_drawable interface (called by draw_manager) */
 	/*-------------------------------------------------------*/
 
+public:
 	/** Update animations and internal state */
 	virtual void update() override;
 
@@ -625,6 +615,9 @@ private:
 	/** Draw/redraw the off-map background area.
 	  * This updates both render textures. */
 	void render_map_outside_area();
+
+	/** Perform rendering of invalidated items. */
+	void draw();
 
 public:
 	map_labels& labels();
@@ -1179,8 +1172,6 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
-
-	bool dirty_;
 
 	std::vector<std::tuple<int, int, int>> fps_history_;
 

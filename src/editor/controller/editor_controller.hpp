@@ -218,7 +218,7 @@ class editor_controller : public controller_base,
 		void refresh_image_cache();
 
 		/**
-		 * Callback function passed to display to be called on each redraw_everything run.
+		 * Callback function passed to display to be called on queue_rerender.
 		 * Redraws toolbar, brush bar and related items.
 		 */
 		void display_redraw_callback(display&);
