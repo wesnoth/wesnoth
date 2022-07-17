@@ -446,6 +446,19 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 	return false;
 }
 
+static void raise_window_event(const SDL_Event& event)
+{
+	for(auto& context : event_contexts) {
+		for(auto handler : context.handlers) {
+			handler->handle_window_event(event);
+		}
+	}
+
+	for(auto global_handler : event_contexts.front().handlers) {
+		global_handler->handle_window_event(event);
+	}
+}
+
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const std::thread::id main_thread = std::this_thread::get_id();
 
@@ -615,18 +628,7 @@ void pump()
 				break;
 			}
 
-			// make sure this runs in it's own scope.
-			{
-				for(auto& context : event_contexts) {
-					for(auto handler : context.handlers) {
-						handler->handle_window_event(event);
-					}
-				}
-
-				for(auto global_handler : event_contexts.front().handlers) {
-					global_handler->handle_window_event(event);
-				}
-			}
+			raise_window_event(event);
 
 			// This event was just distributed, don't re-distribute.
 			continue;
@@ -735,7 +737,7 @@ void raise_resize_event()
 	event.window.data1 = size.x;
 	event.window.data2 = size.y;
 
-	SDL_PushEvent(&event);
+	raise_window_event(event);
 }
 
 void raise_draw_event()

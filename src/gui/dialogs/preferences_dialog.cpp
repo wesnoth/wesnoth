@@ -18,6 +18,7 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
+#include "events.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -324,6 +325,9 @@ void preferences_dialog::apply_pixel_scale()
 
 	// Update draw buffers, taking these into account.
 	video::update_buffers();
+
+	// Raise a window resize event so we can react to the change
+	events::raise_resize_event();
 }
 
 
