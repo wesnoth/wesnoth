@@ -34,13 +34,13 @@ jobs:
 
         for map_path in "${map_paths[@]}"
         do
-          ## Get old map version
-          old_map=${map_path##*/}
-          git show "$SHA":"$map_path" > "$old_map"
+          ## Get new map version
+          new_map=${map_path##*/}
+          git show "$SHA":"$map_path" > "$new_map"
 
           ## Run map diff
-          diff_image=${old_map%.map}.png
-          node build/index.js "$old_map" "../../$map_path" "$diff_image"
+          diff_image=${new_map%.map}.png
+          node build/index.js "../../$map_path" "$new_map" "$diff_image"
 
           ## Compress image
           pngquant --force --output "$diff_image" "$diff_image"
