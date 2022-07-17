@@ -26,10 +26,27 @@ namespace gui2
  * They must draw themselves when requested via expose().
  *
  * The TLD interface will be called in the following order:
+ *   - update()
  *   - layout()
  *   - render()
  *   - screen_location()
  *   - zero or more expose() calls
+ *
+ * It can be assumed that events will have been processed before TLD
+ * interface calls commence, and that no more events will be processed
+ * until all TLD interfaces have been called. As such the main program
+ * loop will usually be:
+ *   1. process events
+ *   2. call update() on all TLDs
+ *   3. call layout() on all TLDs
+ *   4. call render() on all TLDs
+ *   5. call expose() on TLDs as appropriate
+ *
+ * TLDs are responsible for propagating these calls to their children.
+ *
+ * This process is loosely based on the GTK drawing model. Ref:
+ *   - https://docs.gtk.org/gtk3/drawing-model.html
+ *   - https://docs.gtk.org/gtk4/drawing-model.html
  */
 class top_level_drawable
 {
@@ -38,12 +55,26 @@ protected:
 	virtual ~top_level_drawable();
 public:
 	/**
-	 * Size and position the drawable and its children.
+	 * Update state and any parameters that may effect layout, or any of
+	 * the later stages.
 	 *
-	 * If this results in a change, it should invalidate both the previous
-	 * and new drawable regions via draw_manager::invalidate_region().
-	 * If the drawable was not previously laid out, it should invalidate
-	 * the newly determined region.
+	 * In general this should be used to make changes to things that will
+	 * affect the visible state of the drawable. This can include changing
+	 * the drawable's size or position, or updating animation frames to
+	 * show the appropriate image for the current time. Exact usage is up
+	 * to the drawable to decide.
+	 *
+	 * This interface is optional.
+	 */
+	virtual void update() {}
+
+	/**
+	 * Finalize the size and position of the drawable and its children,
+	 * and invalidate any regions requiring redraw.
+	 *
+	 * Visibly changed screen locations should be invalidated using
+	 * draw_manager::invalidate_region(), both in the previous location
+	 * and in the new location if different.
 	 *
 	 * TLDs must not perform any actual drawing during layout.
 	 *

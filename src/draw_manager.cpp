@@ -45,9 +45,10 @@ uint32_t last_sparkle_ = 0;
 
 namespace draw_manager {
 
+static void update();
 static void layout();
 static void render();
-static bool draw();
+static bool expose();
 static void wait_for_vsync();
 
 void invalidate_region(const rect& region)
@@ -118,7 +119,10 @@ void sparkle()
 	// Keep track of whether the TLD vector has been invalidated.
 	tlds_invalidated_ = false;
 
-	// Ensure layout and animations are up-to-date.
+	// Animate, process, and update state.
+	draw_manager::update();
+
+	// Ensure layout is up-to-date.
 	draw_manager::layout();
 
 	// Unit tests rely on not doing any rendering, or waiting at all...
@@ -133,7 +137,7 @@ void sparkle()
 	draw_manager::render();
 
 	// Draw to the screen.
-	if (draw_manager::draw()) {
+	if (draw_manager::expose()) {
 		// We only need to flip the screen if something was drawn.
 		CVideo::get_singleton().render_screen();
 	} else {
@@ -159,6 +163,14 @@ static void wait_for_vsync()
 	}
 }
 
+static void update()
+{
+	for (auto tld : top_level_drawables_) {
+		if (tlds_invalidated_) { break; }
+		tld->update();
+	}
+}
+
 static void layout()
 {
 	for (auto tld : top_level_drawables_) {
@@ -175,7 +187,7 @@ static void render()
 	}
 }
 
-static bool draw()
+static bool expose()
 {
 	drawing_ = true;
 
