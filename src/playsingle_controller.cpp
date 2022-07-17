@@ -287,9 +287,9 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		}
 		const bool is_victory = get_end_level_data().is_victory;
 
-		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
-			video::clear_screen();
-		}
+		//if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
+		//	video::clear_screen();
+		//}
 
 		ai_testing::log_game_end();
 

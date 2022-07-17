@@ -108,7 +108,7 @@
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
-#include "video.hpp"                    // for faked and delay, consider refactor
+#include "video.hpp"                    // only for faked
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "wml_exception.hpp"
 #include "deprecation.hpp"
@@ -3916,7 +3916,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	const unsigned final = SDL_GetTicks() + delay;
 	do {
 		play_controller_.play_slice(false);
-		video::delay(10);
+		SDL_Delay(10);
 	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
 	return 0;
 }

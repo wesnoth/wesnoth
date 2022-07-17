@@ -274,7 +274,7 @@ bool controller_base::have_keyboard_focus()
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
-		video::window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
+		video::window_has_mouse_focus()
 		|| preferences::get("scroll_when_mouse_outside", true);
 
 	int scroll_speed = preferences::scroll_speed();
@@ -430,8 +430,8 @@ void controller_base::play_slice(bool is_delay_enabled)
 	map_location highlighted_hex = get_display().mouseover_hex();
 
 	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !video::window_has_flags(SDL_WINDOW_SHOWN)) {
-		video::delay(200);
+	if(is_delay_enabled && !video::window_is_visible()) {
+		SDL_Delay(200);
 	}
 
 	// Scrolling ended, update the cursor and the brightened hex

@@ -545,17 +545,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 {
 	list_formatter fmt{heading};
 
-	if(!video::setup_completed()) {
-		fmt.set_placeholder("Graphics not initialized.");
-		return fmt;
-	}
-
 	std::string placeholder;
 
 	if(video::non_interactive()) {
 		placeholder = "Running in non-interactive mode.";
-	} else if(!video::has_window()) {
-		placeholder = "Running without a game window.";
 	}
 
 	if(!placeholder.empty()) {

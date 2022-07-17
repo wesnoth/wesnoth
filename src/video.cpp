@@ -72,6 +72,12 @@ int pixel_scale_ = 1;
 namespace video
 {
 
+// Forward declarations
+void make_fake();
+bool update_framebuffer();
+bool update_framebuffer_fake();
+
+
 void init(fake type)
 {
 	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -130,11 +136,14 @@ void make_test_fake(const unsigned width, const unsigned height)
 	}
 }
 
-void update_framebuffer_fake()
+/** Returns true if the buffer was changed */
+bool update_framebuffer_fake()
 {
 	if (!window) {
-		return;
+		return false;
 	}
+
+	bool changed = false;
 
 	// TODO: code unduplication
 	// Build or update the current render texture.
@@ -157,6 +166,7 @@ void update_framebuffer_fake()
 		));
 		LOG_DP << "updated render target to " << fake_size.x
 			<< "x" << fake_size.y;
+		changed = true;
 	}
 
 	pixel_scale_ = 1;
@@ -165,20 +175,20 @@ void update_framebuffer_fake()
 	// The render texture is always the render target in this case.
 	force_render_target(render_texture_);
 
-	// TODO: is there any need to update input dimensions?
-	//sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
+	return changed;
 }
 
-void update_framebuffer()
+bool update_framebuffer()
 {
 	if(!window) {
-		return;
+		return false;
 	}
 
 	if (fake_interactive) {
-		update_framebuffer_fake();
-		return;
+		return update_framebuffer_fake();
 	}
+
+	bool changed = false;
 
 	// Make sure we're getting values from the native window.
 	SDL_SetRenderTarget(*window, nullptr);
@@ -212,7 +222,10 @@ void update_framebuffer()
 		scale = std::min(max_scale, preferences::pixel_scale());
 	}
 	// Cache it for easy access.
-	pixel_scale_ = scale;
+	if (pixel_scale_ != scale) {
+		pixel_scale_ = scale;
+		changed = true;
+	}
 
 	// Update logical size if it doesn't match the current resolution and scale.
 	point lsize(window->get_logical_size());
@@ -262,6 +275,7 @@ void update_framebuffer()
 		));
 		// This isn't really necessary, but might be nice to have attached
 		render_texture_.set_draw_size(lsize);
+		changed = true;
 	}
 
 	// Assign the render texture now. It will be used for all drawing.
@@ -280,6 +294,8 @@ void update_framebuffer()
 		LOG_DP << "render target viewport offset: "
 		       << offset_x_ << ", " << offset_y_;
 	}
+
+	return changed;
 }
 
 void init_fake_window()
@@ -351,47 +367,6 @@ void init_window()
 	update_framebuffer();
 }
 
-void set_window_mode(const MODE_EVENT mode, const point& size)
-{
-	assert(window);
-	if(fake_screen_) {
-		return;
-	}
-
-	if(fake_interactive) {
-		if(mode == TO_RES) {
-			LOG_DP << "resizing fake resolution to " << size;
-			fake_size = size;
-			update_framebuffer_fake();
-		}
-		return;
-	}
-
-	switch(mode) {
-	case TO_FULLSCREEN:
-		window->full_screen();
-		break;
-
-	case TO_WINDOWED:
-		window->to_window();
-		window->restore();
-		break;
-
-	case TO_MAXIMIZED_WINDOW:
-		window->to_window();
-		window->maximize();
-		break;
-
-	case TO_RES:
-		window->restore();
-		window->set_size(size.x, size.y);
-		window->center();
-		break;
-	}
-
-	update_framebuffer();
-}
-
 point output_size()
 {
 	if (fake_interactive) {
@@ -437,13 +412,6 @@ int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
 	return refresh_rate_;
-}
-
-void delay(unsigned int milliseconds)
-{
-	if(!game_config::no_delay) {
-		SDL_Delay(milliseconds);
-	}
 }
 
 void force_render_target(const texture& t)
@@ -611,11 +579,6 @@ surface read_pixels_low_res(SDL_Rect* r)
 	}
 }
 
-texture read_texture(SDL_Rect* r)
-{
-	return texture(read_pixels(r));
-}
-
 void set_window_title(const std::string& title)
 {
 	assert(window);
@@ -626,14 +589,6 @@ void set_window_icon(surface& icon)
 {
 	assert(window);
 	window->set_icon(icon);
-}
-
-void clear_screen()
-{
-	if(window) {
-		DBG_DP << "clearing screen";
-		window->fill(0, 0, 0, 255);;
-	}
 }
 
 SDL_Renderer* get_renderer()
@@ -664,9 +619,29 @@ std::vector<std::string> enumerate_drivers()
 	return res;
 }
 
-bool window_has_flags(uint32_t flags)
+/**
+ * Tests whether the given flags are currently set on the SDL window.
+ *
+ * @param flags               The flags to test, OR'd together.
+ */
+static bool window_has_flags(uint32_t flags)
 {
 	return window && (window->get_flags() & flags) != 0;
+}
+
+bool window_is_visible()
+{
+	return window_has_flags(SDL_WINDOW_SHOWN);
+}
+
+bool window_has_focus()
+{
+	return window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS);
+}
+
+bool window_has_mouse_focus()
+{
+	return window_has_flags(SDL_WINDOW_MOUSE_FOCUS);
 }
 
 std::vector<point> get_available_resolutions(const bool include_current)
@@ -737,31 +712,28 @@ bool is_fullscreen()
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 
-// TODO: this is not behaving well
-void set_fullscreen(bool ison)
+void set_fullscreen(bool fullscreen)
 {
-	if (fake_interactive) {
+	if (any_fake()) {
 		return;
 	}
 
-	if(window && is_fullscreen() != ison) {
-		const point& res = preferences::resolution();
-
-		MODE_EVENT mode;
-
-		if(ison) {
-			mode = TO_FULLSCREEN;
+	// Only do anything if the current value differs from the desired value
+	if (window && is_fullscreen() != fullscreen) {
+		if (fullscreen) {
+			window->full_screen();
+		} else if (preferences::maximized()) {
+			window->to_window();
+			window->maximize();
 		} else {
-			mode = preferences::maximized() ? TO_MAXIMIZED_WINDOW : TO_WINDOWED;
+			window->to_window();
+			window->restore();
 		}
-
-		set_window_mode(mode, res);
-
-		draw_manager::invalidate_region(draw_area());
+		update_buffers();
 	}
 
-	// Change the config value.
-	preferences::_set_fullscreen(ison);
+	// Update the config value in any case.
+	preferences::_set_fullscreen(fullscreen);
 }
 
 void toggle_fullscreen()
@@ -775,39 +747,38 @@ bool set_resolution(const point& resolution)
 		return false;
 	}
 
-	set_window_mode(TO_RES, resolution);
+	assert(window);
 
-	draw_manager::invalidate_region(draw_area());
+	if(fake_screen_) {
+		return false;
+	}
+
+	if(fake_interactive) {
+		LOG_DP << "resizing fake resolution to " << resolution << std::endl;
+		fake_size = resolution;
+		return update_framebuffer_fake();
+	}
+
+	window->restore();
+	window->set_size(resolution.x, resolution.y);
+	window->center();
+
+	update_buffers();
 
 	// Change the saved values in preferences.
 	LOG_DP << "updating resolution to " << resolution;
 	preferences::_set_resolution(resolution);
 	preferences::_set_maximized(false);
 
-	// Push a window-resized event to the queue. This is necessary so various areas
-	// of the game (like GUI2) update properly with the new size.
-	events::raise_resize_event();
-
 	return true;
 }
 
-void update_buffers()
+void update_buffers(bool autoupdate)
 {
 	LOG_DP << "updating buffers";
-	// We could also double-check the resolution here.
-	/*if (preferences::resolution() != current_resolution()) {
-		LOG_DP << "updating resolution from " << current_resolution()
-			<< " to " << preferences::resolution();
-		set_window_mode(TO_RES, preferences::resolution());
-	}*/
-
-	update_framebuffer();
-
-	draw_manager::invalidate_region(draw_area());
-
-	// Push a window-resized event to the queue. This is necessary so various areas
-	// of the game (like GUI2) update properly with the new size.
-	events::raise_resize_event();
+	if(update_framebuffer() && autoupdate) {
+		draw_manager::invalidate_region(draw_area());
+	}
 }
 
 } // namespace video
