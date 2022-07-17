@@ -586,7 +586,7 @@ void pump()
 			case SDL_WINDOWEVENT_SIZE_CHANGED:
 				LOG_DP << "events/SIZE_CHANGED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				video::update_framebuffer();
+				video::update_buffers(false);
 				break;
 
 			// Resized comes after size_changed.

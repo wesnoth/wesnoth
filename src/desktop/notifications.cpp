@@ -56,12 +56,9 @@ bool available()
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	// Do not show notifications when the window is visible...
-	if(video::window_has_flags(SDL_WINDOW_SHOWN)) {
-		// ... and it has a focus.
-		if(video::window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) {
-			return;
-		}
+	// Do not show notifications when the window is visible and has focus
+	if(video::window_is_visible() && video::window_has_focus()) {
+		return;
 	}
 
 #ifdef HAVE_LIBDBUS

@@ -24,6 +24,7 @@
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_timer.h>
 
+#include <algorithm>
 #include <vector>
 #include <map>
 
@@ -34,6 +35,10 @@ static lg::log_domain log_draw_man("draw/manager");
 #define DBG_DM LOG_STREAM(debug, log_draw_man)
 
 using gui2::top_level_drawable;
+
+// This is not publically exposed, because nobody else should be using it.
+// Implementation is in video.cpp.
+namespace video { void render_screen(); }
 
 namespace {
 std::vector<top_level_drawable*> top_level_drawables_;

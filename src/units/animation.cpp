@@ -1440,14 +1440,17 @@ void unit_animator::wait_until(int animation_time) const
 	resources::controller->play_slice(false);
 
 	int end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
-	while(SDL_GetTicks() < static_cast<unsigned int>(end_tick) - std::min<int>(static_cast<unsigned int>(20 / speed), 20)) {
-		video::delay(std::max<int>(0, std::min<int>(10, static_cast<int>((animation_time - get_animation_time()) * speed))));
-
+	while(SDL_GetTicks() < unsigned(end_tick - std::min(int(20 / speed), 20))) {
+		if(!game_config::no_delay) {
+			SDL_Delay(std::clamp(int((animation_time - get_animation_time()) * speed), 0, 10));
+		}
 		resources::controller->play_slice(false);
 		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 
-	video::delay(std::max<int>(0, end_tick - SDL_GetTicks() + 5));
+	if(!game_config::no_delay) {
+		SDL_Delay(std::max<int>(0, end_tick - SDL_GetTicks() + 5));
+	}
 
 	new_animation_frame();
 	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0);
@@ -1461,7 +1464,7 @@ void unit_animator::wait_for_end() const
 	while(!finished) {
 		resources::controller->play_slice(false);
 
-		video::delay(10);
+		SDL_Delay(10);
 
 		finished = true;
 		for(const auto& anim : animated_units_) {

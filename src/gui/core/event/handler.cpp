@@ -18,6 +18,7 @@
 #include "gui/core/event/handler.hpp"
 
 #include "draw_manager.hpp"
+#include "events.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/core/log.hpp"

@@ -23,7 +23,6 @@
 #include "team.hpp"
 #include "terrain/builder.hpp"
 #include "units/map.hpp"
-#include "video.hpp" // TODO: draw_manager - for clear_screen, remove
 
 namespace wb {
 	class manager;
@@ -36,8 +35,6 @@ editor_display::editor_display(editor_controller& controller, reports& reports_o
 	, brush_locations_()
 	, controller_(controller)
 {
-	// TODO: draw_manager - don't use video for this, use draw, if anything.
-	video::clear_screen();
 }
 
 void editor_display::add_brush_loc(const map_location& hex)

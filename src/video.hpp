@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "sdl/point.hpp"
@@ -24,18 +23,10 @@
 
 #include <SDL2/SDL_render.h>
 
-#include <cassert>
-#include <memory>
+#include <vector>
 
 class surface;
 class texture;
-struct SDL_Texture;
-struct color_t;
-
-namespace sdl
-{
-class window;
-}
 
 namespace video
 {
@@ -60,25 +51,11 @@ enum class fake { none, window, draw };
  */
 void init(fake fake_type = fake::none);
 
-// TODO: refactor? only used by build_info.cpp.
-inline bool setup_completed() { return true; } // previously checked singleton_ ptr
-
-// TODO: refactor? this probably shouldn't be public
-/**
- * Updates and ensures the framebuffer surface is valid.
- * This needs to be invoked immediately after a resize event or the game will crash.
- */
-void update_framebuffer();
-// private:
-void update_framebuffer_fake();
-
 
 /********************************/
 /* Unit-test and No-GUI support */
 /********************************/
 
-// TODO: refactor, this should be internal
-void make_fake();
 
 // TODO: tests are calling this constantly, refactor the tests to not do that
 /**
@@ -111,9 +88,6 @@ void init_fake_window();
 /** Returns a pointer to the underlying window's renderer. */
 SDL_Renderer* get_renderer();
 
-// TODO: refactor? only used by build_info.cpp
-inline bool has_window() { return !faked(); }; // previously checked window ptr
-
 /** The current video driver in use, or else "<not initialized>". */
 std::string current_driver();
 
@@ -125,23 +99,8 @@ std::vector<std::string> enumerate_drivers();
 /* Resizing */
 /************/
 
-// private:
-
-// TODO: refactor
-enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
-
-/**
- * Sets the window's mode - ie, changing it to fullscreen, maximizing, etc.
- *
- * @param mode                The action to perform.
- * @param size                The new window size. Utilized if @a mode is TO_RES.
- */
-void set_window_mode(const MODE_EVENT mode, const point& size);
-
-// public:
-
 // TODO: check these are okay and don't do bad things
-void set_fullscreen(bool ison);
+void set_fullscreen(bool);
 void toggle_fullscreen();
 bool is_fullscreen();
 
@@ -164,12 +123,13 @@ std::vector<point> get_available_resolutions(bool include_current = false);
 /* IDK */
 /*******/
 
-// TODO: refactor? only used by preferences_dialog.cpp
 /**
  * Update buffers to match current resolution and pixel scale settings.
- * Also triggers a full redraw.
+ *
+ * If @p autoupdate is true and buffers are changed by this call,
+ * a full redraw is also triggered.
  */
-void update_buffers();
+void update_buffers(bool autoupdate = true);
 
 
 /***********/
@@ -223,44 +183,27 @@ rect to_output(const rect& draw_space_rect);
 
 // TODO: move these:
 
-// TODO: split use into individual functions to avoid use of SDL enums
-/**
- * Tests whether the given flags are currently set on the SDL window.
- *
- * @param flags               The flags to test, OR'd together.
- */
-bool window_has_flags(uint32_t flags);
+/** True iff the window is not hidden. */
+bool window_is_visible();
+/** True iff the window has mouse or input focus */
+bool window_has_focus();
+/** True iff the window has mouse focus */
+bool window_has_mouse_focus();
 
-/**
- * Sets the title of the main window.
- *
- * @param title               The new title for the window.
- */
+/** Sets the title of the main window. */
 void set_window_title(const std::string& title);
 
-/**
- * Sets the icon of the main window.
- *
- * @param icon                The new icon for the window.
- */
+/** Sets the icon of the main window. */
 void set_window_icon(surface& icon);
 
 int current_refresh_rate();
 
 
-/***********************/
-/* Rendering functions */
-/***********************/
+/******************/
+/* Screen capture */
+/******************/
+// These functions are slow, and intended only for screenshots.
 
-// TODO: hide this so it's not tempting to use
-/** Renders the screen. Should normally not be called directly! */
-void render_screen();
-
-// TODO: this should probably be in draw
-/** Clear the screen contents */
-void clear_screen();
-
-// TODO: different header? idk
 /**
  * Copy back a portion of the render target that is already drawn.
  *
@@ -286,24 +229,6 @@ surface read_pixels(SDL_Rect* r = nullptr);
  * This should be considered deprecated, and phased out ASAP.
  */
 surface read_pixels_low_res(SDL_Rect* r = nullptr);
-
-/**
- * Copy a portion of the render target to another texture.
- *
- * This area is specified in draw coordinates, not render coordinates.
- * Thus the size of the retrieved texture may not match the size of r.
- *
- * If not null, r will be automatically clipped to the drawing area.
- *
- * Note: This is a very slow function! Its use should be phased out
- * for everything except maybe screenshots.
- *
- * @param r       The portion of the render target to retrieve, in
- *                draw coordinates.
- *                If not null, this will be modified to reflect the
- *                portion of the draw area that has been returned.
- */
-texture read_texture(SDL_Rect* r = nullptr);
 
 
 /****************************/
@@ -334,14 +259,12 @@ void clear_render_target();
  */
 texture get_render_target();
 
-/********/
-/* Misc */
-/********/
 
-// TODO: this should not be here
-/** Waits a given number of milliseconds before returning. */
-void delay(unsigned int milliseconds);
+/*******************/
+/* Exception types */
+/*******************/
 
+/** An error specifically indicating video subsystem problems. */
 struct error : public game::error
 {
 	error() : game::error("unspecified video subsystem error") {}

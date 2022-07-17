@@ -18,6 +18,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "cursor.hpp"
+#include "events.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "scripting/plugins/context.hpp"
