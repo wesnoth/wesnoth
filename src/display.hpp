@@ -466,10 +466,15 @@ public:
 
 	terrain_builder& get_builder() {return *builder_;}
 
-	void flip();
+	// TODO: draw_manager - remove
+	void flip() {}
 
+	// TODO: draw_manager - remove
 	/** Copy the backbuffer to the framebuffer. */
-	void update_display();
+	void update_display() {}
+	void update_fps_label();
+	void clear_fps_label();
+	void update_fps_count();
 
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
@@ -583,21 +588,30 @@ public:
 	 * virtuals (further below) to allow specialized behavior in derived classes.
 	 */
 	virtual void draw();
+	// TODO: nonvirtual, WTF goddamn fuck shit
 
-	void draw(bool update);
+	// TODO: draw_manager - remove
+	void draw(bool /*update*/) { draw(); }
+	// TODO: draw_manager - remove
+	void draw(bool /*update*/, bool /*force*/) { draw(); }
 
-	void draw(bool update, bool force);
+	/*-------------------------------------------------------*/
+	/* top_level_drawable interface (called by draw_manager) */
+	/*-------------------------------------------------------*/
 
-	/** Called by draw_manager to finalize screen layout. */
+	/** Update animations and internal state */
+	virtual void update() override;
+
+	/** Finalize screen layout. */
 	virtual void layout() override;
 
-	/** Called by draw_manager to update offscreen render buffers. */
+	/** Update offscreen render buffers. */
 	virtual void render() override;
 
-	/** Called by draw_manager when it believes a redraw is necessary. */
+	/** Paint the indicated region to the screen. */
 	virtual bool expose(const SDL_Rect& region) override;
 
-	/** The current draw location of the display, on the screen. */
+	/** Return the current draw location of the display, on the screen. */
 	virtual rect screen_location() override;
 
 private:
