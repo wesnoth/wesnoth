@@ -792,8 +792,7 @@ surface display::screenshot(bool map_screenshot)
 
 	map_screenshot_ = true;
 
-	invalidate_all();
-	draw_init();
+	invalidate_locations_in_rect(map_area());
 	draw();
 
 	map_screenshot_ = false;
