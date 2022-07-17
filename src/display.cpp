@@ -1336,85 +1336,73 @@ void display::toggle_debug_foreground()
 	debug_foreground = !debug_foreground;
 }
 
-void display::flip()
-{
-	if(video::faked()) {
-		return;
-	}
-
-	// TODO: draw_manager - remove this function
-	return;
-
-}
-
 // frametime is in milliseconds
 static unsigned calculate_fps(unsigned frametime)
 {
 	return frametime != 0u ? 1000u / frametime : 999u;
 }
 
-void display::update_display()
+void display::update_fps_label()
 {
-	if (video::faked()) {
+	static int frames = 0;
+	++frames;
+	const int sample_freq = 10;
+
+	if(frames != sample_freq) {
 		return;
 	}
 
-	if(preferences::show_fps() || benchmark) {
-		static int frames = 0;
-		++frames;
-		const int sample_freq = 10;
+	const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
+	const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
+	const int avg_fps = calculate_fps(render_avg);
+	const int max_fps = calculate_fps(*minmax_it.first);
+	const int min_fps = calculate_fps(*minmax_it.second);
+	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
+	frames = 0;
 
-		if(frames == sample_freq) {
-			const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
-			const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
-			const int avg_fps = calculate_fps(render_avg);
-			const int max_fps = calculate_fps(*minmax_it.first);
-			const int min_fps = calculate_fps(*minmax_it.second);
-			fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-			frames = 0;
-
-			// flush out the stored fps values every so often
-			if(fps_history_.size() == 1000) {
-				std::string filename = filesystem::get_user_data_dir()+"/fps_log.csv";
-				filesystem::scoped_ostream fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
-				for(const auto& fps : fps_history_) {
-					*fps_log << std::get<0>(fps) << "," << std::get<1>(fps) << "," << std::get<2>(fps) << "\n";
-				}
-				fps_history_.clear();
-			}
-
-			if(fps_handle_ != 0) {
-				font::remove_floating_label(fps_handle_);
-				fps_handle_ = 0;
-			}
-			std::ostringstream stream;
-			stream << "<tt>      min/avg/max/act</tt>\n";
-			stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << '/' << std::setw(3) << fps_actual_ << "</tt>\n";
-			stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
-			if (game_config::debug) {
-				stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
-				if (drawn_hexes_ != invalidated_hexes_)
-					stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
-			}
-			drawn_hexes_ = 0;
-			invalidated_hexes_ = 0;
-
-			font::floating_label flabel(stream.str());
-			flabel.set_font_size(12);
-			flabel.set_color(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
-			flabel.set_position(10, 100);
-			flabel.set_alignment(font::LEFT_ALIGN);
-
-			fps_handle_ = font::add_floating_label(flabel);
+	// flush out the stored fps values every so often
+	if(fps_history_.size() == 1000) {
+		std::string filename = filesystem::get_user_data_dir()+"/fps_log.csv";
+		filesystem::scoped_ostream fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
+		for(const auto& fps : fps_history_) {
+			*fps_log << std::get<0>(fps) << "," << std::get<1>(fps) << "," << std::get<2>(fps) << "\n";
 		}
-	} else if(fps_handle_ != 0) {
+		fps_history_.clear();
+	}
+
+	if(fps_handle_ != 0) {
+		font::remove_floating_label(fps_handle_);
+		fps_handle_ = 0;
+	}
+	std::ostringstream stream;
+	stream << "<tt>      min/avg/max/act</tt>\n";
+	stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << '/' << std::setw(3) << fps_actual_ << "</tt>\n";
+	stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
+	if (game_config::debug) {
+		stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
+		if (drawn_hexes_ != invalidated_hexes_)
+			stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
+	}
+	drawn_hexes_ = 0;
+	invalidated_hexes_ = 0;
+
+	font::floating_label flabel(stream.str());
+	flabel.set_font_size(12);
+	flabel.set_color(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
+	flabel.set_position(10, 100);
+	flabel.set_alignment(font::LEFT_ALIGN);
+
+	fps_handle_ = font::add_floating_label(flabel);
+}
+
+void display::clear_fps_label()
+{
+	if(fps_handle_ != 0) {
 		font::remove_floating_label(fps_handle_);
 		fps_handle_ = 0;
 		drawn_hexes_ = 0;
 		invalidated_hexes_ = 0;
 	}
-
-	flip();
 }
 
 void display::draw_panel(const theme::panel& panel)
@@ -1642,62 +1630,34 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
-void display::draw_init()
-{
-	if (get_map().empty()) {
-		return;
-	}
-
-	if(benchmark) {
-		invalidateAll_ = true;
-	}
-
-	if(redraw_background_) {
-		invalidateAll_ = true;
-	}
-
-	if(invalidateAll_) {
-		DBG_DP << "draw() with invalidateAll";
-
-		// toggle invalidateAll_ first to allow regular invalidations
-		invalidateAll_ = false;
-		invalidate_locations_in_rect(map_area());
-
-		redraw_minimap();
-	}
-}
-
-void display::draw_wrap(bool update, bool force)
+void display::update_fps_count()
 {
 	static int time_between_draws = preferences::draw_delay();
 	if(time_between_draws < 0) {
 		time_between_draws = 1000 / video::current_refresh_rate();
 	}
 
-	if(update) {
-		update_display();
-
-		frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
-		fps_counter_++;
-		using std::chrono::duration_cast;
-		using std::chrono::seconds;
-		using std::chrono::steady_clock;
-		const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
-		if(current_second != fps_start_) {
-			fps_start_ = current_second;
-			fps_actual_ = fps_counter_;
-			fps_counter_ = 0;
-		}
-		int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
-		int wait_time = time_between_draws - longest_frame;
-
-		if(!force && !benchmark && wait_time > 0) {
-			// If it's not time yet to draw, delay until it is
-			SDL_Delay(wait_time);
-		}
-
-		last_frame_finished_ = SDL_GetTicks();
+	frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
+	fps_counter_++;
+	using std::chrono::duration_cast;
+	using std::chrono::seconds;
+	using std::chrono::steady_clock;
+	const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
+	if(current_second != fps_start_) {
+		fps_start_ = current_second;
+		fps_actual_ = fps_counter_;
+		fps_counter_ = 0;
 	}
+
+	int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
+	int wait_time = time_between_draws - longest_frame;
+
+	if(!benchmark && wait_time > 0) {
+		// If it's not time yet to draw, delay until it is
+		SDL_Delay(wait_time);
+	}
+
+	last_frame_finished_ = SDL_GetTicks();
 }
 
 const theme::action* display::action_pressed()
@@ -1875,11 +1835,6 @@ void display::draw_minimap_units()
 				, int(std::round(u_w))
 				, int(std::round(u_h))
 		};
-
-		// SDL 2.0.10's render batching changes result in the
-		// surface's clipping rectangle being overridden even if
-		// no render clipping rectangle set operaton was queued,
-		// so let's not use the render API to draw the rectangle.
 
 		draw::fill(r, col.r, col.g, col.b, col.a);
 	}
@@ -2438,6 +2393,7 @@ void display::redraw_everything()
 
 	DBG_DP << "redrawing everything";
 
+	// TODO: draw_manager - ugh
 	invalidateGameStatus_ = true;
 
 	reportLocations_.clear();
@@ -2469,6 +2425,7 @@ void display::redraw_everything()
 
 	redraw_background_ = true;
 
+	// TODO: draw_manager - kill this
 	for(std::function<void(display&)> f : redraw_observers_) {
 		f(*this);
 	}
@@ -2489,16 +2446,6 @@ void display::clear_redraw_observers()
 }
 
 void display::draw()
-{
-	draw(true, false);
-}
-
-void display::draw(bool update)
-{
-	draw(update, false);
-}
-
-void display::draw(bool update, bool force)
 {
 	//	log_scope("display::draw");
 
@@ -2537,43 +2484,65 @@ void display::draw(bool update, bool force)
 		post_commit();
 	}
 
-	// TODO: draw_manager - what even is this for
-	draw_wrap(update, force);
-
-	// TODO: draw_manager - event hooks rather than this, maybe?
-	post_draw();
-	//DBG_DP << "display::draw done";
+	if(preferences::show_fps() || benchmark) {
+		update_fps_label();
+		update_fps_count();
+	} else if(fps_handle_ != 0) {
+		clear_fps_label();
+	}
 }
 
-void display::layout()
+void display::update()
 {
-	// Ensure render textures are correctly sized and up-to-date
-	update_render_textures(); // TODO
+	// Ensure render textures are correctly sized and up-to-date.
+	update_render_textures();
 
-	//DBG_DP << "display::layout";
-	// TODO: draw_manager - the layout part of this, perhaps
-
-	// TODO: draw_manager - check usage of this and maybe delete, move or rename
-	pre_draw();
-
-	// TODO: draw_manager - should this just be inlined here?
-	draw_init();
-
-	// Trigger cache rebuild when preference gets changed
+	// Trigger cache rebuild if animated water preference has changed.
 	if(animate_water_ != preferences::animate_water()) {
 		animate_water_ = preferences::animate_water();
 		builder_->rebuild_cache_all();
 	}
 
+	if(benchmark) {
+		invalidate_all();
+	}
+
+	// TODO: draw_manager - can probably just override update() on subclasses
+	pre_draw();
+}
+
+void display::layout()
+{
+	//DBG_DP << "display::layout";
+	// TODO: draw_manager - theme layout for changed screen size?
+
+	// Post-layout / Pre-render
+
+	if (!get_map().empty()) {
+		if(redraw_background_) {
+			invalidateAll_ = true;
+		}
+		if(invalidateAll_) {
+			DBG_DP << "draw() with invalidateAll";
+
+			// toggle invalidateAll_ first to allow regular invalidations
+			invalidateAll_ = false;
+			invalidate_locations_in_rect(map_area());
+
+			redraw_minimap();
+		}
+	}
+
 	// invalidate animated terrain, units and haloes
 	invalidate_animations();
 
-	// update and invalidate reports
-	refresh_reports();
-
+	// TODO: draw_manager - split map labels from UI labels
 	// Update and invalidate floating labels as necessary
 	font::update_floating_labels();
-	// TODO: draw_manager - rename and organize this sort of stuff
+
+	// TODO: draw_manager - should this just be moved into subclass layout() overrides?
+	// update and invalidate reports
+	refresh_reports();
 }
 
 void display::render()
@@ -2584,6 +2553,7 @@ void display::render()
 
 	// No need to render if we aren't going to draw anything.
 	if(prevent_draw_) {
+		DBG_DP << "render prevented";
 		return;
 	}
 
@@ -2603,6 +2573,9 @@ void display::render()
 			return;
 		}
 	}
+
+	// TODO: draw_manager - subclass override in stead of this maybe
+	post_draw();
 }
 
 bool display::expose(const SDL_Rect& region)
@@ -2611,6 +2584,7 @@ bool display::expose(const SDL_Rect& region)
 	// and will be contained by <region>.
 
 	if(prevent_draw_) {
+		DBG_DP << "draw prevented";
 		return false;
 	}
 
@@ -2638,6 +2612,8 @@ bool display::expose(const SDL_Rect& region)
 	if(fade_color_.a) {
 		draw::fill(map_outside_area().intersect(region), fade_color_);
 	}
+
+	LOG_DP << "display::expose " << region;
 
 	return true; // TODO: draw_manager - maybe don't flip yeah?
 }
