@@ -1,7 +1,7 @@
 import Jimp from 'jimp'
 import * as tilemap from './tilemap'
 import type { Tilemap } from './tilemap'
-import type { ImagesDict } from './images'
+import type { ImagesGetter } from './images'
 
 type Side = 'left' | 'right'
 
@@ -25,22 +25,10 @@ const getTileImageCoordenates = (tileX: number, tileY: number) => {
   return [imageX, imageY]
 }
 
-const producePainters = (output: Jimp, images: ImagesDict, leftPadding: number) => {
+const producePainters = (output: Jimp, images: ImagesGetter, leftPadding: number) => {
   const paintTile = (x: number, y: number, baseCode: string, miscCode?: string) => {
-    if (miscCode && images.tile[`${baseCode}^${miscCode}`]) {
-      const compoundImage = images.tile[`${baseCode}^${miscCode}`]
-      output.composite(compoundImage, x + leftPadding, y)
-      return
-    }
-
-    const baseImage = images.tile[baseCode]
-    output.composite(baseImage, x + leftPadding, y)
-
-    // todo: we should use the defaultBase correctly
-    if (miscCode) {
-      const miscImage = images.tile[`^${miscCode}`]
-      output.composite(miscImage, x + leftPadding, y)
-    }
+    const tileImage = images.getTile({ baseCode, miscCode })
+    output.composite(tileImage, x + leftPadding, y)
   }
 
   // todo: the flag color should follow the player number
@@ -59,7 +47,7 @@ const paint = async (
   oldTilemap: Tilemap,
   newTilemap: Tilemap,
   outputFilename: string,
-  images: ImagesDict
+  images: ImagesGetter
 ) => {
   const { height, width } = imageSize(oldTilemap)
 
