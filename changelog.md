@@ -13,7 +13,8 @@
  ### Lua API
    * New `wesnoth.interface.screen_fade` function applies an overlay colour to the game display, fading over the given duration (PR #6864).
  ### Packaging
-   * Increased minimum required version of SDL to 2.0.10.
+   * Increased minimum required version of SDL to 2.0.10 for non-macOS platforms.
+   * Increased minimum required version of SDL to 2.0.22 and the minimum required OS version to 10.12 for macOS due to needing the fix https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30.
  ### Rendering Engine
    * Large changes have been made to Wesnoth's rendering engine, enabling hardware acceleration for the majority of components and resolving many long-standing issues. Performance should be greatly increased, and CPU and GPU usage greatly decreased in almost all situations. Issues confirmed resolved: #1291, #1350, #1605, #1755, #2059, #2458, #2618, #2865, #3238, #3255, #3421, #3592, #3798, #3937, #3942, #4210, #4460, #4877, #5115, #5420, #5494.
  ### Terrain
