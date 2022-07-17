@@ -842,8 +842,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 				animator.add_animation(leader.get_shared_ptr(), "recruiting", leader_loc, loc, 0, true);
 			}
 		}
-
-		disp->draw();
 	}
 	animator.add_animation(u.get_shared_ptr(), "recruited", loc, leader_loc);
 	animator.start_animations();

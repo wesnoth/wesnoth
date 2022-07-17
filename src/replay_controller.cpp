@@ -76,8 +76,7 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 		vision_ = HUMAN_TEAM;
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
-	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
+	controller_.get_display().queue_rerender();
 }
 replay_controller::~replay_controller()
 {
@@ -85,9 +84,7 @@ replay_controller::~replay_controller()
 		controller_.toggle_skipping_replay();
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
-	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
-	controller_.get_display().create_buttons();
+	controller_.get_display().queue_rerender();
 }
 void replay_controller::add_replay_theme()
 {
@@ -133,16 +130,12 @@ void replay_controller::play_replay()
 
 void replay_controller::update_gui()
 {
-	controller_.get_display().recalculate_minimap();
-	controller_.get_display().redraw_minimap();
-	controller_.get_display().invalidate_all();
-	controller_.get_display().redraw_everything();
+	controller_.get_display().queue_rerender();
 }
 
 void replay_controller::update_enabled_buttons()
 {
-	// TODO: draw_manager - is this the right call?
-	controller_.get_display().redraw_everything();
+	controller_.get_display().queue_rerender();
 }
 
 void replay_controller::handle_generic_event(const std::string& name)

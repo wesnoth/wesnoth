@@ -92,8 +92,8 @@ void playmp_controller::remove_blindfold()
 {
 	if(gui_->is_blindfolded()) {
 		blindfold_.unblind();
-		LOG_NG << "Taking off the blindfold now ";
-		gui_->redraw_everything();
+		LOG_NG << "Taking off the blindfold now";
+		gui_->queue_rerender();
 	}
 }
 
@@ -218,14 +218,14 @@ void playmp_controller::set_end_scenario_button()
 	}
 
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->redraw_everything(); // TODO: draw_manager - verify this is right
+	gui_->queue_rerender();
 }
 
 void playmp_controller::reset_end_scenario_button()
 {
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->redraw_everything();// TODO: draw_manager - verify this is right
+	gui_->queue_rerender();
 	gui_->set_game_mode(game_display::RUNNING);
 }
 

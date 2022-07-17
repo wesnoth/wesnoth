@@ -247,7 +247,7 @@ void custom_tod::update_tod_display()
 	// the image caching mechanism.
 	//
 	// If this ceases to be the case in the future, you'll need to call
-	// redraw_everything() instead.
+	// queue_rerender() instead.
 
 	disp->update_tod(&get_selected_tod());
 

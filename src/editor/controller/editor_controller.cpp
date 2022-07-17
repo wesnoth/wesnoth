@@ -91,8 +91,7 @@ editor_controller::editor_controller()
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
-	gui().create_buttons();
-	gui().redraw_everything();
+	gui().queue_rerender();
 }
 
 void editor_controller::init_gui()
@@ -1102,7 +1101,7 @@ void editor_controller::preferences()
 	font::clear_help_string();
 	gui2::dialogs::preferences_dialog::display();
 
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 }
 
 void editor_controller::toggle_grid()
@@ -1230,7 +1229,6 @@ void editor_controller::refresh_image_cache()
 
 void editor_controller::display_redraw_callback(display&)
 {
-	// TODO: draw_manager - this is the only use of this redraw_callback system, refactor it away
 	set_button_state();
 	toolkit_->adjust_size();
 	get_current_map_context().get_labels().recalculate_labels();
