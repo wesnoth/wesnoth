@@ -31,7 +31,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 #include "sdl/utils.hpp" // blur_surface
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only for draw_area
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -86,7 +86,6 @@ dialog_frame::dialog_frame(const std::string& title,
 		const style& style,
 		std::vector<button*>* buttons, button* help_button) :
 	title_(title),
-	video_(CVideo::get_singleton()),
 	dialog_style_(style),
 	buttons_(buttons),
 	help_button_(help_button),
@@ -160,7 +159,7 @@ int dialog_frame::bottom_padding() const {
 dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, int h) {
 	dim_ = dimension_measurements();
 	if(!title_.empty()) {
-		dim_.title = draw_title(nullptr);
+		dim_.title = draw_title(false);
 		dim_.title.w += title_border_w;
 	}
 	if(buttons_ != nullptr) {
@@ -187,7 +186,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	SDL_Rect bounds = video_.draw_area();
+	rect bounds = video::draw_area();
 	if(have_border_) {
 		bounds.x += left_.w();
 		bounds.y += top_.h();
@@ -315,11 +314,13 @@ void dialog_frame::draw_background()
 	}
 }
 
-SDL_Rect dialog_frame::draw_title(CVideo* video)
+rect dialog_frame::draw_title(bool actually_draw)
 {
-	SDL_Rect rect = video_.draw_area();
-	return font::pango_draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
-	                       title_, dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL);
+	rect r = video::draw_area();
+	return font::pango_draw_text(
+		actually_draw, r, font::SIZE_TITLE, font::TITLE_COLOR, title_,
+		dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL
+	);
 }
 
 void dialog_frame::draw()
@@ -332,7 +333,7 @@ void dialog_frame::draw()
 
 	//draw title
 	if (!title_.empty()) {
-		draw_title(&video_);
+		draw_title(true);
 	}
 }
 

@@ -21,8 +21,6 @@
 
 #include <ostream>
 
-class CVideo;
-
 class surface
 {
 public:

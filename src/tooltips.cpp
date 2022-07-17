@@ -21,7 +21,7 @@
 #include "game_display.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only for draw_area
 
 #include <SDL2/SDL_rect.h>
 
@@ -47,7 +47,7 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 	: origin(r), message(msg), action(act), label(msg)
 {
 	const color_t bgcolor {0,0,0,192};
-	rect area = CVideo::get_singleton().draw_area();
+	rect area = video::draw_area();
 	unsigned int border = 10;
 
 	label.set_font_size(font_size);

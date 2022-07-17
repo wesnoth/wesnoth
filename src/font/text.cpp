@@ -552,7 +552,7 @@ int pango_text::get_max_glyph_height() const
 
 void pango_text::update_pixel_scale()
 {
-	const int ps = CVideo::get_singleton().get_pixel_scale();
+	const int ps = video::get_pixel_scale();
 	if (ps == pixel_scale_) {
 		return;
 	}

@@ -65,7 +65,7 @@ public:
 		if (state_.selected) {
 			draw::rect(location(), 255, 255, 255, 255);
 		}
-		font::pango_draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
+		font::pango_draw_text(true, location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}
 
 	//TODO move to widget

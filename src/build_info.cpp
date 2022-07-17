@@ -545,18 +545,16 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 {
 	list_formatter fmt{heading};
 
-	if(!CVideo::setup_completed()) {
+	if(!video::setup_completed()) {
 		fmt.set_placeholder("Graphics not initialized.");
 		return fmt;
 	}
 
-	CVideo& video = CVideo::get_singleton();
-
 	std::string placeholder;
 
-	if(video.non_interactive()) {
+	if(video::non_interactive()) {
 		placeholder = "Running in non-interactive mode.";
-	} else if(!video.has_window()) {
+	} else if(!video::has_window()) {
 		placeholder = "Running without a game window.";
 	}
 
@@ -565,17 +563,17 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		return fmt;
 	}
 
-	const auto& current_driver = CVideo::current_driver();
-	auto drivers = CVideo::enumerate_drivers();
+	const auto& current_driver = video::current_driver();
+	auto drivers = video::enumerate_drivers();
 
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(
-		video.current_resolution().x, video.current_resolution().y));
+		video::current_resolution().x, video::current_resolution().y));
 	fmt.insert("Game canvas size", geometry_to_string(
-		video.draw_area().w, video.draw_area().h));
+		video::draw_area().w, video::draw_area().h));
 	fmt.insert("Final render target size", geometry_to_string(
-		video.output_size().x, video.output_size().y));
-	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
+		video::output_size().x, video::output_size().y));
+	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
 
 	return fmt;
 }

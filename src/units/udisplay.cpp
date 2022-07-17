@@ -31,6 +31,7 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/scope_exit.hpp"
+#include "video.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 
@@ -167,7 +168,7 @@ int move_unit_between(const map_location& a,
 bool do_not_show_anims(display* disp)
 {
 
-	return !disp || disp->video().faked();
+	return !disp || video::faked();
 }
 
 } // end anon namespace
@@ -177,7 +178,7 @@ bool do_not_show_anims(display* disp)
  */
 unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool force_scroll) :
 	disp_(game_display::get_singleton()),
-	can_draw_(disp_ && !disp_->video().faked() && path.size() > 1),
+	can_draw_(disp_ && !video::faked() && path.size() > 1),
 	animate_(animate),
 	force_scroll_(force_scroll),
 	animator_(),

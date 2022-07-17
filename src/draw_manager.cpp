@@ -132,7 +132,7 @@ void sparkle()
 	// Unit tests rely on not doing any rendering, or waiting at all...
 	// "behave differently when being tested" is really not good policy
 	// but whatever.
-	if(CVideo::get_singleton().any_fake()) {
+	if(video::any_fake()) {
 		invalidated_regions_.clear();
 		return;
 	}
@@ -143,7 +143,7 @@ void sparkle()
 	// Draw to the screen.
 	if (draw_manager::expose()) {
 		// We only need to flip the screen if something was drawn.
-		CVideo::get_singleton().render_screen();
+		video::render_screen();
 	} else {
 		wait_for_vsync();
 	}
@@ -153,7 +153,7 @@ void sparkle()
 
 static void wait_for_vsync()
 {
-	int rr = CVideo::get_singleton().current_refresh_rate();
+	int rr = video::current_refresh_rate();
 	if (rr <= 0) {
 		// make something up
 		rr = 60;

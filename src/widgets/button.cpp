@@ -210,7 +210,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::pango_draw_text(nullptr, sdl::empty_rect, font_size_, font::BUTTON_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
@@ -370,7 +370,7 @@ void button::draw_contents()
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
 		clipArea.h -= 2*offset;
-		font::pango_draw_text(&video(), clipArea, font_size_, button_color, label_text_, textx, texty);
+		font::pango_draw_text(true, clipArea, font_size_, button_color, label_text_, textx, texty);
 	}
 }
 

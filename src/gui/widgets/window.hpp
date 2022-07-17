@@ -38,7 +38,6 @@
 #include <string>
 #include <vector>
 
-class CVideo;
 struct point;
 
 namespace gui2
@@ -428,9 +427,6 @@ public:
 	};
 
 private:
-	/** Needed so we can change what's drawn on the screen. */
-	CVideo& video_;
-
 	/** The status of the window. */
 	status status_;
 

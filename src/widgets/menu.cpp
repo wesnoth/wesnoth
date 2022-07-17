@@ -29,7 +29,7 @@
 #include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only for draw_area
 #include "wml_separators.hpp"
 
 #include <numeric>
@@ -442,7 +442,7 @@ std::size_t menu::max_items_onscreen() const
 		return std::size_t(max_items_);
 	}
 
-	const std::size_t max_height = (max_height_ == -1 ? (video().draw_area().h*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (max_height_ == -1 ? (video::draw_area().h*66)/100 : max_height_) - heading_height();
 
 	std::vector<int> heights;
 	std::size_t n;
@@ -770,7 +770,8 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		else {
 			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::pango_draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
+				font::pango_draw_text(false, area, get_font_size(),
+					font::NORMAL_COLOR, str, 0, 0);
 			res.w += font_size.w;
 			res.h = std::max<int>(font_size.h, res.h);
 		}
@@ -867,31 +868,28 @@ void menu::clear_item(int item)
 	bg_restore(rect);
 }
 
-void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	const SDL_Rect& area = video().draw_area();
-	const SDL_Rect& loc = inner_location();
+	rect area = video::draw_area();
+	rect column = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
 	int dir = (lang_rtl) ? -1 : 1;
-	SDL_Rect column = loc;
 
-	int xpos = rect.x;
-	if(lang_rtl)
-		xpos += rect.w;
+	int xpos = loc.x;
+	if(lang_rtl) {
+		xpos += loc.w;
+	}
+
 	for(std::size_t i = 0; i != row.size(); ++i) {
 
-		if(lang_rtl)
+		if(lang_rtl) {
 			xpos -= widths[i];
+		}
 		if(type == HEADING_ROW) {
-			SDL_Rect draw_rect {
-				xpos,
-				rect.y,
-				widths[i],
-				rect.h
-			};
+			rect draw_rect {xpos, loc.y, widths[i], loc.h };
 
 			if(highlight_heading_ == int(i)) {
 				draw::fill(draw_rect, {255,255,255,77});
@@ -914,10 +912,10 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				int img_h = img.h();
 				style_->adjust_image_bounds(img_w, img_h);
 				const int remaining_width = max_width_ < 0 ? area.w :
-				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
+				std::min<int>(max_width_, ((lang_rtl)? xpos - loc.x : loc.x + loc.w - xpos));
 				if(img && img_w <= remaining_width
-				&& rect.y + img_h < area.h) {
-					const std::size_t y = rect.y + (rect.h - img_h)/2;
+				&& loc.y + img_h < area.h) {
+					const std::size_t y = loc.y + (loc.h - img_h)/2;
 					const std::size_t w = img_w + 5;
 					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
 					draw::blit(img, {int(x), int(y), img_w, img_h});
@@ -929,20 +927,20 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				column.x = xpos;
 
 				const auto text_size = font::pango_line_size(str, style_->get_font_size());
-				const std::size_t y = rect.y + (rect.h - text_size.second)/2;
+				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
 				const std::size_t padding = 2;
-				SDL_Rect text_rect = column;
-				text_rect.w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
-				text_rect.h = text_size.second;
-				font::pango_draw_text(&video(), text_rect, style_->get_font_size(), font::NORMAL_COLOR, str,
+				rect text_loc = column;
+				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
+				text_loc.h = text_size.second;
+				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
 					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
-					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= rect.h) {
+					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
 						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
-						const int sort_y = rect.y + rect.h/2 - sort_tex.h()/2;
+						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;
 						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
 						draw::blit(sort_tex, dest);
 					}
@@ -1077,7 +1075,7 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 
 	rect res(loc.x, y, loc.w, get_item_height(item));
 
-	const rect draw_area = video().draw_area();
+	const rect draw_area = video::draw_area();
 
 	if(res.x > draw_area.w) {
 		return sdl::empty_rect;

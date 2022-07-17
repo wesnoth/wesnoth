@@ -54,7 +54,7 @@
 #include "serialization/string_utils.hpp" // for split
 #include "statistics.hpp"
 #include "tstring.hpp"       // for operator==, operator!=
-#include "video.hpp"         // for CVideo
+#include "video.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
@@ -101,7 +101,6 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
-	, video_(new CVideo())
 	, font_manager_()
 	, prefs_manager_()
 	, image_manager_()
@@ -186,7 +185,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
-		video_->set_fullscreen(true);
+		start_in_fullscreen_ = true;
 	if(cmdline_opts_.load)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
@@ -257,7 +256,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
 	if(cmdline_opts_.windowed)
-		video_->set_fullscreen(false);
+		start_in_fullscreen_ = false;
 	if(cmdline_opts_.with_replay && load_data_)
 		load_data_->show_replay = true;
 	if(cmdline_opts_.translation_percent)
@@ -314,6 +313,7 @@ bool game_launcher::init_language()
 
 bool game_launcher::init_video()
 {
+	// TODO: draw_manager - this should probably be set in more situations, e.g. render_image
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui
 		|| cmdline_opts_.headless_unit_test
@@ -328,21 +328,24 @@ bool game_launcher::init_video()
 			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags";
 			return false;
 		}
-		video_->make_fake();
+		video::init(video::fake::window);
 		game_config::no_delay = true;
 		return true;
 	}
 
+	video::init();
+
 	// Initialize a new window
-	video_->init_window();
+	// TODO: draw_manager - surely this should happen automatically?
+	video::init_window();
 
 	// Set window title and icon
-	video_->set_window_title(game_config::get_default_title_string());
+	video::set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_surface("icons/icon-game.png", image::UNSCALED));
 	if(icon != nullptr) {
-		video_->set_window_icon(icon);
+		video::set_window_icon(icon);
 	}
 #endif
 	return true;
@@ -984,7 +987,7 @@ bool game_launcher::change_language()
 	}
 
 	if(!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
-		video_->set_window_title(game_config::get_default_title_string());
+		video::set_window_title(game_config::get_default_title_string());
 	}
 
 	t_string::reset_translations();

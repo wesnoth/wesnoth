@@ -27,6 +27,7 @@
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "video.hpp"
 
 #include "editor/action/action.hpp"
 #include "editor/controller/editor_controller.hpp"
@@ -91,7 +92,7 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 context_manager::~context_manager()
 {
 	// Restore default window title
-	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
+	video::set_window_title(game_config::get_default_title_string());
 
 	resources::filter_con = nullptr;
 }
@@ -1079,7 +1080,7 @@ void context_manager::set_window_title()
 	}
 
 	const std::string& wm_title_string = name + " - " + game_config::get_default_title_string();
-	CVideo::get_singleton().set_window_title(wm_title_string);
+	video::set_window_title(wm_title_string);
 }
 
 } //Namespace editor

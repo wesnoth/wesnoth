@@ -229,7 +229,7 @@ loading_screen::~loading_screen()
 
 void loading_screen::display(std::function<void()> f)
 {
-	if(singleton_ || CVideo::get_singleton().faked()) {
+	if(singleton_ || video::faked()) {
 		LOG_LS << "Directly executing loading function.";
 		f();
 	} else {

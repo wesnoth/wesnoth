@@ -65,7 +65,7 @@ texture::texture(const surface& surf, bool linear_interpolation)
 		return;
 	}
 
-	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
+	SDL_Renderer* renderer = video::get_renderer();
 	if(!renderer) {
 		return;
 	}
@@ -204,7 +204,7 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 	// No-op if texture is null.
 	reset();
 
-	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
+	SDL_Renderer* renderer = video::get_renderer();
 	if(!renderer) {
 		return;
 	}

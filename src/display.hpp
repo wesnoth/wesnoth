@@ -64,7 +64,6 @@ namespace wb {
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "theme.hpp"
-#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include <boost/circular_buffer.hpp>
@@ -200,10 +199,6 @@ public:
 	void adjust_color_overlay(int r, int g, int b);
 	tod_color get_color_overlay() const { return color_adjust_; }
 
-
-	/** Gets the underlying screen object. */
-	CVideo& video() { return screen_; }
-
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
 
@@ -217,12 +212,9 @@ public:
 	 * Between mapx and x is the sidebar region.
 	 */
 
-	const rect& minimap_area() const
-		{ return theme_.mini_map_location(screen_.draw_area()); }
-	const rect& palette_area() const
-		{ return theme_.palette_location(screen_.draw_area()); }
-	const rect& unit_image_area() const
-		{ return theme_.unit_image_location(screen_.draw_area()); }
+	const rect& minimap_area() const;
+	const rect& palette_area() const;
+	const rect& unit_image_area() const;
 
 	/**
 	 * Returns the maximum area used for the map
@@ -240,8 +232,7 @@ public:
 	 * from the above. This area will get the background area
 	 * applied to it.
 	 */
-	rect map_outside_area() const { return map_screenshot_ ?
-		max_map_area() : theme_.main_map_location(screen_.draw_area()); }
+	rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	static bool outside_area(const SDL_Rect& area, const int x,const int y);
@@ -768,7 +759,6 @@ protected:
 
 	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
-	CVideo& screen_;
 	std::size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**

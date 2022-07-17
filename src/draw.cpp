@@ -31,7 +31,7 @@ static lg::log_domain log_draw("draw");
 
 static SDL_Renderer* renderer()
 {
-	return CVideo::get_singleton().get_renderer();
+	return video::get_renderer();
 }
 
 /**************************************/
@@ -423,7 +423,7 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	DBG_D << "tiled_highres (" << centered << '|' << mirrored
 	      << ") " << dst;
 
-	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
+	const int pixel_scale = video::get_pixel_scale();
 
 	// Reduce clip to dst.
 	auto clipper = draw::reduce_clip(dst);
@@ -506,7 +506,7 @@ rect draw::get_clip()
 	if (!SDL_RenderIsClipEnabled(renderer())) {
 		// TODO: highdpi - fix this in the case of render to texture
 		// TODO: highdpi - fix this for viewports
-		return CVideo::get_singleton().draw_area();
+		return video::draw_area();
 	}
 
 	::rect clip;
@@ -600,7 +600,7 @@ SDL_Rect draw::get_viewport()
 
 	if (viewport == sdl::empty_rect) {
 		// TODO: highdpi - fix this in the case of render to texture
-		return CVideo::get_singleton().draw_area();
+		return video::draw_area();
 	}
 	return viewport;
 }
@@ -618,10 +618,10 @@ draw::render_target_setter::render_target_setter(const texture& t)
 		return;
 	}
 
-	target_ = CVideo::get_singleton().get_render_target();
+	target_ = video::get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
 
-	CVideo::get_singleton().force_render_target(t);
+	video::force_render_target(t);
 }
 
 draw::render_target_setter::~render_target_setter()
@@ -630,7 +630,7 @@ draw::render_target_setter::~render_target_setter()
 		WRN_D << "can't reset render target with null renderer";
 		return;
 	}
-	CVideo::get_singleton().force_render_target(target_);
+	video::force_render_target(target_);
 	SDL_RenderSetViewport(renderer(), &viewport_);
 }
 

@@ -22,8 +22,6 @@
 
 #include <string>
 
-class CVideo;
-
 namespace gui {
 
 // TODO: making widgets TLDs is horrible. Please move everything to GUI2.
@@ -79,8 +77,6 @@ protected:
 	void bg_restore(const SDL_Rect& rect) const; // TODO: draw_manager - remove
 	void bg_update(); // TODO: draw_manager - remove
 	void bg_cancel(); // TODO: draw_manager - remove
-
-	CVideo& video() const;
 
 public:
 	/* draw_manager interface */

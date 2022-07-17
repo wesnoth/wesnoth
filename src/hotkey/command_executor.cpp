@@ -34,6 +34,7 @@
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
 #include "sdl/input.hpp" // get_mouse_state
+#include "video.hpp" // toggle_fullscreen
 
 #include <functional>
 
@@ -628,7 +629,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 
 	switch(command.command->command) {
 		case HOTKEY_FULLSCREEN:
-			CVideo::get_singleton().toggle_fullscreen();
+			video::toggle_fullscreen();
 			break;
 		case HOTKEY_SCREENSHOT:
 			make_screenshot(_("Screenshot"), false);

@@ -103,7 +103,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
 	{
 		events::pump();
 	}
-	catch(CVideo::quit&)
+	catch(video::quit&)
 	{
 		return 0;
 	}
@@ -380,7 +380,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 	}
 
 	uint8_t button = event.button.button;
-	CVideo& video = CVideo::get_singleton();
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
@@ -446,7 +445,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize(point(video.draw_area().w, video.draw_area().h));
+					// TODO: draw_manager - rect accessor for {w,h}
+					video_resize(point(video::draw_area().w, video::draw_area().h));
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -467,7 +467,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				SDL_Rect r = video.draw_area();
+				rect r = video::draw_area();
 				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
 							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
 			}
@@ -475,21 +475,21 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERUP:
 			{
-				SDL_Rect r = video.draw_area();
+				rect r = video::draw_area();
 				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				SDL_Rect r = video.draw_area();
+				rect r = video::draw_area();
 				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
 			{
-				SDL_Rect r = video.draw_area();
+				rect r = video::draw_area();
 				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
 									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
 			}

@@ -18,7 +18,7 @@
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 
-#include "video.hpp" //CVideo::get_singleton().window_state()
+#include "video.hpp" // window_has_flags()
 
 #ifdef HAVE_LIBDBUS
 #include "desktop/dbus_features.hpp"
@@ -56,12 +56,10 @@ bool available()
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	CVideo& video = CVideo::get_singleton();
-
 	// Do not show notifications when the window is visible...
-	if(video.window_has_flags(SDL_WINDOW_SHOWN)) {
+	if(video::window_has_flags(SDL_WINDOW_SHOWN)) {
 		// ... and it has a focus.
-		if(video.window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) {
+		if(video::window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) {
 			return;
 		}
 	}

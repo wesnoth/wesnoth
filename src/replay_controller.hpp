@@ -20,8 +20,6 @@
 
 #include <vector>
 
-class video;
-
 class replay_controller : public events::observer
 {
 public:

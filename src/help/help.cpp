@@ -192,7 +192,7 @@ void show_with_toplevel(const section &toplevel_sec,
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	SDL_Rect draw_area = CVideo::get_singleton().draw_area();
+	rect draw_area = video::draw_area();
 
 	const int width  = std::min<int>(font::relative_size(1200), draw_area.w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), draw_area.h - font::relative_size(150));

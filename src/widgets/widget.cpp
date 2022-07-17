@@ -19,7 +19,7 @@
 #include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "widgets/widget.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only for draw_area
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
@@ -67,12 +67,6 @@ void widget::free_mouse_lock()
 bool widget::mouse_locked() const
 {
 	return mouse_lock_ && !mouse_lock_local_;
-}
-
-// TODO: draw_manager - overhaul CVideo interface
-CVideo& widget::video() const
-{
-	return CVideo::get_singleton();
 }
 
 // TODO: draw_manager - kill surface restorers
@@ -262,8 +256,8 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	rect c = clip_ ? clip_rect_ : video().draw_area();
-	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
+	rect c = clip_ ? clip_rect_ : video::draw_area();
+	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video::draw_area());
 
 	if (needs_restore_) {
 		for(const rect& r : restorer_) {
@@ -278,9 +272,9 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& where) const
 {
-	rect c = clip_ ? clip_rect_ : video().draw_area();
+	rect c = clip_ ? clip_rect_ : video::draw_area();
 	c.clip(where);
-	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video().draw_area());
+	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video::draw_area());
 
 	for(const rect& r : restorer_) {
 		draw_manager::invalidate_region(r.intersect(c));

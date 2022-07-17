@@ -27,6 +27,7 @@
 #include "color.hpp"
 #include "preferences/credentials.hpp"
 #include "serialization/utf8_exception.hpp"
+#include "video.hpp" // only for faked
 
 #include <SDL2/SDL_timer.h>
 
@@ -105,7 +106,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = my_disp_.video().faked() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
+		msg = video::faked() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored.";
 		return;

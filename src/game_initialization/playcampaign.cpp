@@ -44,6 +44,7 @@
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
+#include "video.hpp" // TODO: draw_manager - only for faked, refactor?
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
@@ -208,7 +209,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 	end_level = playcontroller.get_end_level_data();
 	show_carryover_message(playcontroller, end_level, res);
 
-	if(!CVideo::get_singleton().faked()) {
+	if(!video::faked()) {
 		playcontroller.maybe_linger();
 	}
 

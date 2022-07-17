@@ -112,7 +112,7 @@ base_manager::~base_manager()
 /*
  * Hook for setting window state variables on window resize and maximize
  * events. Since there is no fullscreen window event, that setter is called
- * from the CVideo function instead.
+ * from the video function instead.
  */
 void prefs_event_handler::handle_window_event(const SDL_Event& event)
 {
@@ -122,7 +122,8 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		_set_resolution(CVideo::get_singleton().window_size());
+		// TODO: draw_manager - is this actually okay?
+		_set_resolution(video::window_size());
 
 		break;
 
@@ -467,7 +468,7 @@ void set_vsync(bool ison)
 
 bool turbo()
 {
-	if(CVideo::get_singleton().non_interactive()) {
+	if(video::non_interactive()) {
 		return true;
 	}
 

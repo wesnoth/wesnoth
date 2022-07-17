@@ -60,7 +60,7 @@
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "formula/variant.hpp"
-#include "video.hpp"
+#include "video.hpp" // only for toggle_fullscreen
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
@@ -260,7 +260,6 @@ window* manager::get_window(const unsigned id)
 
 window::window(const builder_window::window_resolution& definition)
 	: panel(implementation::builder_window(::config {"definition", definition.definition}), type())
-	, video_(CVideo::get_singleton())
 	, status_(status::NEW)
 	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
@@ -362,7 +361,7 @@ window::window(const builder_window::window_resolution& definition)
 
 	/** @todo: should eventally become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&CVideo::toggle_fullscreen, std::ref(video_)));
+		std::bind(&video::toggle_fullscreen));
 }
 
 window::~window()

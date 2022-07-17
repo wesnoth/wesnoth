@@ -118,7 +118,6 @@
 #include "tests/utils/fake_display.hpp"
 //#include "scripting/lua_kernel_base.hpp"
 #include <functional>
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
@@ -607,9 +606,9 @@ Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas 
 template<>
 struct dialog_tester<addon_manager>
 {
-	CVideo& video = test_utils::get_fake_display(10, 10).video();
 	dialog_tester()
 	{
+		test_utils::get_fake_display(10, 10);
 	}
 	addon_manager* create()
 	{

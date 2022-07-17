@@ -49,6 +49,7 @@
 #include "statistics.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
+#include "video.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -131,7 +132,7 @@ void playsingle_controller::init_gui()
 
 	// Fade in
 	gui_->set_prevent_draw(false);
-	if(!gui_->video().any_fake()) {
+	if(!video::any_fake()) {
 		gui_->fade_to({0,0,0,0}, 500);
 	} else {
 		gui_->set_fade({0,0,0,0});
@@ -287,7 +288,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		const bool is_victory = get_end_level_data().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
-			gui_->video().clear_screen();
+			video::clear_screen();
 		}
 
 		ai_testing::log_game_end();
