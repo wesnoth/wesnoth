@@ -45,7 +45,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "statistics.hpp"
-#include "video.hpp"
+#include "video.hpp" // only for faked
 
 #include <algorithm>
 #include <iomanip>
@@ -121,7 +121,7 @@ bool loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game_ingame()
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::faked()) {
 		return false;
 	}
 

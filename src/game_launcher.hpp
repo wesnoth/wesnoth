@@ -32,7 +32,6 @@
 
 class commandline_options;
 class config;
-class CVideo;
 
 struct jump_to_campaign_info
 {
@@ -131,8 +130,7 @@ private:
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;
-	//Never null.
-	const std::unique_ptr<CVideo> video_;
+	bool start_in_fullscreen_ = false;
 
 	font::manager font_manager_;
 	const preferences::manager prefs_manager_;

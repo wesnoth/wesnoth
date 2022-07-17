@@ -18,7 +18,7 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/widgets/window.hpp"
-#include "video.hpp"
+#include "video.hpp" // TODO: draw_manager - only for faked(), is it needed?
 
 namespace gui2::dialogs
 {
@@ -34,7 +34,7 @@ modeless_dialog::~modeless_dialog()
 
 void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::faked()) {
 		return;
 	}
 

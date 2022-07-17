@@ -64,7 +64,7 @@ struct invoked_function_data
 	{
 		try {
 			f();
-		} catch(const CVideo::quit&) {
+		} catch(const video::quit&) {
 			// Handle this exception in the main thread.
 			throw;
 		} catch(...) {
@@ -520,7 +520,7 @@ void pump()
 
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
-					SDL_Rect r = CVideo::get_singleton().input_area();
+					rect r = video::input_area();
 
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
@@ -547,7 +547,7 @@ void pump()
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
 
-					SDL_Rect r = CVideo::get_singleton().input_area();
+					rect r = video::input_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
 					touch_event.tfinger.type = touch_event.type;
@@ -586,7 +586,7 @@ void pump()
 			case SDL_WINDOWEVENT_SIZE_CHANGED:
 				LOG_DP << "events/SIZE_CHANGED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				CVideo::get_singleton().update_framebuffer();
+				video::update_framebuffer();
 				break;
 
 			// Resized comes after size_changed.
@@ -604,7 +604,7 @@ void pump()
 			case SDL_WINDOWEVENT_EXPOSED:
 				LOG_DP << "events/EXPOSED";
 				draw_manager::invalidate_region(
-					CVideo::get_singleton().draw_area());
+					video::draw_area());
 				break;
 
 			case SDL_WINDOWEVENT_MAXIMIZED:
@@ -727,7 +727,7 @@ void raise_process_event()
 
 void raise_resize_event()
 {
-	SDL_Point size = CVideo::get_singleton().window_size();
+	point size = video::window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;

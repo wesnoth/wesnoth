@@ -35,6 +35,7 @@
 #include "savegame.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
+#include "video.hpp" // only for faked
 #include "wesnothd_connection.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -434,7 +435,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || gui_->video().faked()) {
+	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::faked()) {
 		const bool has_next_scenario
 			= !gamestate().gamedata_.next_scenario().empty() && gamestate().gamedata_.next_scenario() != "null";
 		if(!is_host() && has_next_scenario) {

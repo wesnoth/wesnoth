@@ -54,6 +54,7 @@
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
 #include "units/orb_status.hpp"
+#include "video.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <SDL2/SDL_image.h>
@@ -177,13 +178,12 @@ display::display(const display_context* dc,
 	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, screen_(CVideo::get_singleton())
 	, currentTeam_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
 	, ypos_(0)
 	, view_locked_(false)
-	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), screen_.draw_area())
+	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), video::draw_area())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
@@ -281,7 +281,7 @@ display::~display()
 
 void display::set_theme(const std::string& new_theme)
 {
-	theme_ = theme{theme::get_theme_config(new_theme), screen_.draw_area()};
+	theme_ = theme{theme::get_theme_config(new_theme), video::draw_area()};
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
@@ -511,6 +511,21 @@ bool display::is_blindfolded() const
 	return blindfold_ctr_ > 0;
 }
 
+const rect& display::minimap_area() const
+{
+	return theme_.mini_map_location(video::draw_area());
+}
+
+const rect& display::palette_area() const
+{
+	return theme_.palette_location(video::draw_area());
+}
+
+const rect& display::unit_image_area() const
+{
+	return theme_.unit_image_location(video::draw_area());
+}
+
 rect display::max_map_area() const
 {
 	rect max_area{0, 0, 0, 0};
@@ -552,6 +567,15 @@ rect display::map_area() const
 	}
 
 	return res;
+}
+
+rect display::map_outside_area() const
+{
+	if(map_screenshot_) {
+		return max_map_area();
+	} else {
+		return theme_.main_map_location(video::draw_area());
+	}
 }
 
 bool display::outside_area(const SDL_Rect& area, const int x, const int y)
@@ -758,7 +782,7 @@ surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
 		LOG_DP << "taking ordinary screenshot";
-		return screen_.read_pixels();
+		return video::read_pixels();
 	}
 
 	if (get_map().empty()) {
@@ -795,7 +819,7 @@ surface display::screenshot(bool map_screenshot)
 	ypos_ = old_ypos;
 
 	// Read rendered pixels back as an SDL surface.
-	return video().read_pixels();
+	return video::read_pixels();
 }
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
@@ -823,7 +847,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning menu buttons...";
 	for(const auto& menu : theme_.menus()) {
 		if(auto b = find_menu_button(menu.get_id())) {
-			const SDL_Rect& loc = menu.location(screen_.draw_area());
+			const SDL_Rect& loc = menu.location(video::draw_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -834,7 +858,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning action buttons...";
 	for(const auto& action : theme_.actions()) {
 		if(auto b = find_action_button(action.get_id())) {
-			const SDL_Rect& loc = action.location(screen_.draw_area());
+			const SDL_Rect& loc = action.location(video::draw_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -870,7 +894,7 @@ const std::string& get_direction(std::size_t n)
 
 void display::create_buttons()
 {
-	if(screen_.faked()) {
+	if(video::faked()) {
 		return;
 	}
 
@@ -1314,7 +1338,7 @@ void display::toggle_debug_foreground()
 
 void display::flip()
 {
-	if(video().faked()) {
+	if(video::faked()) {
 		return;
 	}
 
@@ -1331,7 +1355,7 @@ static unsigned calculate_fps(unsigned frametime)
 
 void display::update_display()
 {
-	if (screen_.faked()) {
+	if (video::faked()) {
 		return;
 	}
 
@@ -1401,7 +1425,7 @@ void display::draw_panel(const theme::panel& panel)
 	}
 
 	// TODO: highdpi - draw area should probably be moved to new drawing API
-	const rect& loc = panel.location(video().draw_area());
+	const rect& loc = panel.location(video::draw_area());
 
 	if (!loc.overlaps(draw::get_clip())) {
 		return;
@@ -1421,7 +1445,7 @@ void display::draw_panel(const theme::panel& panel)
 
 void display::draw_label(const theme::label& label)
 {
-	const rect& loc = label.location(video().draw_area());
+	const rect& loc = label.location(video::draw_area());
 
 	if (!loc.overlaps(draw::get_clip())) {
 		return;
@@ -1440,7 +1464,7 @@ void display::draw_label(const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::pango_draw_text(&video(), loc, label.font_size(),
+		font::pango_draw_text(true, loc, label.font_size(),
 			text_color, text, loc.x, loc.y
 		);
 	}
@@ -1647,7 +1671,7 @@ void display::draw_wrap(bool update, bool force)
 {
 	static int time_between_draws = preferences::draw_delay();
 	if(time_between_draws < 0) {
-		time_between_draws = 1000 / screen_.current_refresh_rate();
+		time_between_draws = 1000 / video::current_refresh_rate();
 	}
 
 	if(update) {
@@ -1726,7 +1750,7 @@ void display::announce(const std::string& message, const color_t& color, const a
 
 void display::recalculate_minimap()
 {
-	if(video().faked()) {
+	if(video::faked()) {
 		return;
 	}
 
@@ -1906,7 +1930,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	// NOTE: the next three blocks can be removed once we switch to accelerated rendering.
 	//
 
-	if(!screen_.faked()) {
+	if(!video::faked()) {
 		rect dst = map_area();
 		dst.x += diff_x;
 		dst.y += diff_y;
@@ -1916,7 +1940,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		src.x -= diff_x;
 		src.y -= diff_y;
 
-		src = video().to_output(src);
+		src = video::to_output(src);
 
 		// swap buffers
 		std::swap(front_, back_);
@@ -2064,7 +2088,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(screen_.faked()) {
+	if(video::faked()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2347,7 +2371,7 @@ double display::turbo_speed() const
 		res = !res;
 	}
 
-	res |= screen_.faked();
+	res |= video::faked();
 	if(res)
 		return preferences::turbo_speed();
 	else
@@ -2409,7 +2433,7 @@ void display::set_fade(const color_t& c)
 
 void display::redraw_everything()
 {
-	if(screen_.faked())
+	if(video::faked())
 		return;
 
 	DBG_DP << "redrawing everything";
@@ -2424,7 +2448,7 @@ void display::redraw_everything()
 
 	tooltips::clear_tooltips();
 
-	theme_.set_resolution(screen_.draw_area());
+	theme_.set_resolution(video::draw_area());
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
@@ -2451,7 +2475,7 @@ void display::redraw_everything()
 
 	invalidate_all();
 
-	draw_manager::invalidate_region(screen_.draw_area());
+	draw_manager::invalidate_region(video::draw_area());
 }
 
 void display::add_redraw_observer(std::function<void(display&)> f)
@@ -2478,7 +2502,7 @@ void display::draw(bool update, bool force)
 {
 	//	log_scope("display::draw");
 
-	if(screen_.faked()) {
+	if(video::faked()) {
 		DBG_DP << "display::draw denied";
 		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;
@@ -2593,7 +2617,7 @@ bool display::expose(const SDL_Rect& region)
 	// Blit from the pre-rendered front buffer.
 	// TODO: draw_manager - API to get src region in output space
 	rect src_region = region;
-	src_region *= video().get_pixel_scale();
+	src_region *= video::get_pixel_scale();
 	//DBG_DP << "  src region " << src_region;
 	draw::blit(front_, region, src_region);
 
@@ -2623,19 +2647,19 @@ rect display::screen_location()
 	assert(!map_screenshot_);
 	//return map_outside_area();
 	// well actually it also has to draw the panels, so
-	return video().draw_area();
+	return video::draw_area();
 	// TODO: draw_manager - get this from theme perhaps?
 }
 
 void display::update_render_textures()
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::faked()) {
 		return;
 	}
 
 	// TODO: draw_manager - tidy these video accessors
-	rect darea = video().draw_area();
-	rect oarea = darea * video().get_pixel_scale();
+	rect darea = video::draw_area();
+	rect oarea = darea * video::get_pixel_scale();
 
 	// Check that the front buffer size is correct.
 	// Buffers are always resized together, so we only need to check one.
@@ -2945,7 +2969,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	rect& loc = reportLocations_[report_name];
 	// TODO: draw_manager - rect
-	const SDL_Rect& new_loc = item->location(screen_.draw_area());
+	const SDL_Rect& new_loc = item->location(video::draw_area());
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.

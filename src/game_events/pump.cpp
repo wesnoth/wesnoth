@@ -33,6 +33,7 @@
 #include "units/map.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
+#include "video.hpp" // only for faked
 #include "whiteboard/manager.hpp"
 
 #include <iomanip>
@@ -523,7 +524,7 @@ pump_result_t wml_event_pump::operator()()
 void wml_event_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not fake
-	if(game_display::get_singleton() && !CVideo::get_singleton().faked()) {
+	if(game_display::get_singleton() && !video::faked()) {
 		show_wml_errors();
 		show_wml_messages();
 	}

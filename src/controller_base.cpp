@@ -30,6 +30,7 @@
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
 #include "sdl/input.hpp" // get_mouse_state
+#include "video.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -273,7 +274,7 @@ bool controller_base::have_keyboard_focus()
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
-		CVideo::get_singleton().window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
+		video::window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
 		|| preferences::get("scroll_when_mouse_outside", true);
 
 	int scroll_speed = preferences::scroll_speed();
@@ -314,7 +315,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 			dy -= scroll_amount;
 		}
 
-		if(mousey > get_display().video().draw_area().h - scroll_threshold) {
+		if(mousey > video::draw_area().h - scroll_threshold) {
 			dy += scroll_amount;
 		}
 
@@ -322,7 +323,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 			dx -= scroll_amount;
 		}
 
-		if(mousex > get_display().video().draw_area().w - scroll_threshold) {
+		if(mousex > video::draw_area().w - scroll_threshold) {
 			dx += scroll_amount;
 		}
 	}
@@ -399,7 +400,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().video().draw_area());
+		const rect& menu_loc = m->location(video::draw_area());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
@@ -407,7 +408,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const SDL_Rect& action_loc = a->location(get_display().video().draw_area());
+		const rect& action_loc = a->location(video::draw_area());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;
@@ -429,8 +430,8 @@ void controller_base::play_slice(bool is_delay_enabled)
 	map_location highlighted_hex = get_display().mouseover_hex();
 
 	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !CVideo::get_singleton().window_has_flags(SDL_WINDOW_SHOWN)) {
-		CVideo::delay(200);
+	if(is_delay_enabled && !video::window_has_flags(SDL_WINDOW_SHOWN)) {
+		video::delay(200);
 	}
 
 	// Scrolling ended, update the cursor and the brightened hex

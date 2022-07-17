@@ -23,8 +23,6 @@ class surface;
 #include "tooltips.hpp"
 #include "widgets/button.hpp"
 
-class CVideo;
-
 namespace gui
 {
 
@@ -98,7 +96,7 @@ public:
 	void draw_background();
 
 	//also called by layout with null param
-	SDL_Rect draw_title(CVideo *video);
+	rect draw_title(bool actually_draw);
 
 	void set_dirty(bool dirty = true);
 
@@ -106,7 +104,6 @@ private:
 	void clear_background();
 
 	std::string title_;
-	CVideo &video_;
 	const style& dialog_style_;
 	std::vector<button*>* buttons_;
 	button* help_button_;

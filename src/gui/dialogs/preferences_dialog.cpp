@@ -122,7 +122,7 @@ preferences_dialog::preferences_dialog(const PREFERENCE_VIEW initial_view)
 // Helper function to refresh resolution list
 void preferences_dialog::set_resolution_list(menu_button& res_list)
 {
-	resolutions_ = CVideo::get_singleton().get_available_resolutions(true);
+	resolutions_ = video::get_available_resolutions(true);
 
 	std::vector<config> options;
 	for(const point& res : resolutions_) {
@@ -140,8 +140,8 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		options.push_back(std::move(option));
 	}
 
-	const unsigned current_res = std::distance(resolutions_.begin(), std::find(resolutions_.begin(), resolutions_.end(),
-		CVideo::get_singleton().current_resolution()));
+	const unsigned current_res = std::distance(resolutions_.begin(), std::find(
+		resolutions_.begin(), resolutions_.end(), video::current_resolution()));
 
 	res_list.set_values(options, current_res);
 }
@@ -323,7 +323,7 @@ void preferences_dialog::apply_pixel_scale()
 	set_auto_pixel_scale(auto_ps_toggle.get_value_bool());
 
 	// Update draw buffers, taking these into account.
-	CVideo::get_singleton().update_buffers();
+	video::update_buffers();
 }
 
 
@@ -1075,7 +1075,7 @@ void preferences_dialog::set_visible_page(unsigned int page, const std::string& 
 void preferences_dialog::fullscreen_toggle_callback()
 {
 	const bool ison = find_widget<toggle_button>(get_window(), "fullscreen", false).get_value_bool();
-	CVideo::get_singleton().set_fullscreen(ison);
+	video::set_fullscreen(ison);
 
 	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
@@ -1087,7 +1087,7 @@ void preferences_dialog::handle_res_select()
 {
 	menu_button& res_list = find_widget<menu_button>(get_window(), "resolution_set", false);
 
-	if(CVideo::get_singleton().set_resolution(resolutions_[res_list.get_value()])) {
+	if(video::set_resolution(resolutions_[res_list.get_value()])) {
 		set_resolution_list(res_list);
 	}
 }

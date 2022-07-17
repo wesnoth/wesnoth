@@ -230,7 +230,7 @@ void textbox::draw_contents()
 		}
 
 		// text may be rendered at high dpi, scale source clip accordingly
-		src *= video().get_pixel_scale();
+		src *= video::get_pixel_scale();
 		// TODO: highdpi - consider sizing source clip in draw coordinates, now that textures have a draw-space w/h? That would work here.
 
 		if(enabled()) {

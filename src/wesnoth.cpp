@@ -54,7 +54,7 @@
 #include "statistics.hpp"              // for fresh_stats
 #include <functional>
 #include "game_version.hpp"        // for version_info
-#include "video.hpp"          // for CVideo
+#include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
@@ -1122,7 +1122,7 @@ int main(int argc, char** argv)
 	} catch(const boost::program_options::error& e) {
 		PLAIN_LOG << "Error in command line: " << e.what();
 		error_exit(1);
-	} catch(const CVideo::error& e) {
+	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
 	} catch(const font::error& e) {
@@ -1134,7 +1134,7 @@ int main(int argc, char** argv)
 	} catch(const gui::button::error&) {
 		PLAIN_LOG << "Could not create button: Image could not be found";
 		error_exit(1);
-	} catch(const CVideo::quit&) {
+	} catch(const video::quit&) {
 		// just means the game should quit
 	} catch(const return_to_play_side_exception&) {
 		PLAIN_LOG << "caught return_to_play_side_exception, please report this bug (quitting)";

@@ -20,8 +20,6 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/top_level_drawable.hpp"
 
-class CVideo;
-
 namespace gui2
 {
 
@@ -145,7 +143,7 @@ private:
 
 	virtual void pre_show(window& window) override;
 
-	virtual void post_show(CVideo& video);
+	virtual void post_show();
 
 	/**
 	 * The callback for the drawing routine.

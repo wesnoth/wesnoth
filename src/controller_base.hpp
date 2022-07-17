@@ -40,7 +40,6 @@
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
 #include "quit_confirmation.hpp"
-#include "video.hpp"
 
 class game_config_view;
 class display;

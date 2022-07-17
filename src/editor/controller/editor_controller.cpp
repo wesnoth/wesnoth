@@ -705,7 +705,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 //			std::vector< std::pair< std::string, std::string >> blah_items;
 //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
 //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
-//			gui2::teditor_select_palette_group::execute(selected, blah_items, gui_->video());
+//			gui2::teditor_select_palette_group::execute(selected, blah_items);
 		}
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:

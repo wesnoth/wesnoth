@@ -23,7 +23,6 @@
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tooltips.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -139,7 +138,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-rect pango_draw_text(CVideo* video, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();
 
@@ -167,7 +166,7 @@ rect pango_draw_text(CVideo* video, const rect& area, int size, const color_t& c
 
 	SDL_Rect res = {x, y, t.w(), t.h()};
 
-	if(video) {
+	if(actually_draw) {
 		draw::blit(t, res);
 	}
 

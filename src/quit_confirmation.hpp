@@ -14,8 +14,6 @@
 
 #pragma once
 
-class CVideo;
-
 #include <cassert>
 #include <vector>
 #include <string>
@@ -39,7 +37,7 @@ public:
 	/**
 	 * Shows the quit confirmation if needed.
 	 *
-	 * @throws CVideo::quit If the user chooses to quit or no prompt was
+	 * @throws video::quit If the user chooses to quit or no prompt was
 	 *                      displayed.
 	 */
 	static bool quit();

@@ -21,7 +21,6 @@
 #include <SDL2/SDL_events.h>
 
 class display;
-class CVideo;
 
 namespace hotkey {
 

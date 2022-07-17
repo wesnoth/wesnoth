@@ -108,6 +108,7 @@
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
+#include "video.hpp"                    // for faked and delay, consider refactor
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "wml_exception.hpp"
 #include "deprecation.hpp"
@@ -126,8 +127,6 @@
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
 #include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
-
-class CVideo;
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -372,8 +371,7 @@ static int impl_add_animation(lua_State* L)
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
-	CVideo& v = CVideo::get_singleton();
-	if(v.faked()) {
+	if(video::faked()) {
 		return 0;
 	}
 	events::command_disabler command_disabler;
@@ -3918,7 +3916,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	const unsigned final = SDL_GetTicks() + delay;
 	do {
 		play_controller_.play_slice(false);
-		CVideo::delay(10);
+		video::delay(10);
 	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
 	return 0;
 }

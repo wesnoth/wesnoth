@@ -41,7 +41,6 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
 #include "sdl/point.hpp"
-#include "video.hpp"
 
 #include <string>
 #include <vector>

@@ -70,7 +70,7 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, lifetime_(-1)
 	, width_(-1)
 	, height_(-1)
-	, clip_rect_(CVideo::get_singleton().draw_area())
+	, clip_rect_(video::draw_area())
 	, visible_(true)
 	, align_(CENTER_ALIGN)
 	, border_(0)
@@ -102,7 +102,7 @@ int floating_label::xpos(std::size_t width) const
 
 bool floating_label::create_texture()
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::faked()) {
 		return false;
 	}
 
@@ -135,7 +135,7 @@ bool floating_label::create_texture()
 	surface foreground = text.render_surface();
 
 	// Pixel scaling is necessary as we are manipulating the raw surface
-	const int ps = CVideo::get_singleton().get_pixel_scale();
+	const int ps = video::get_pixel_scale();
 	// For consistent results we must also enlarge according to zoom
 	const int sf = ps * display::get_singleton()->get_zoom_factor();
 
@@ -197,7 +197,7 @@ void floating_label::undraw()
 
 void floating_label::update(int time)
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::faked()) {
 		return;
 	}
 
@@ -433,7 +433,7 @@ void set_help_string(const std::string& str)
 	const color_t color{0, 0, 0, 0xbb};
 
 	int size = font::SIZE_LARGE;
-	rect draw_area = CVideo::get_singleton().draw_area();
+	rect draw_area = video::draw_area();
 
 	while(size > 0) {
 		if(pango_line_width(str, size) > draw_area.w) {

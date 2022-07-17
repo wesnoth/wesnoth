@@ -21,6 +21,7 @@
 #include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "reports.hpp"
+#include "video.hpp"
 
 namespace wb
 {
@@ -33,7 +34,6 @@ class fake_display_manager
 {
 	static fake_display_manager* manager_;
 
-	CVideo video_;
 	config dummy_cfg_;
 	config dummy_cfg2_;
 	game_board dummy_board_;
@@ -62,13 +62,13 @@ fake_display_manager* fake_display_manager::get_manager()
 }
 
 fake_display_manager::fake_display_manager()
-	: video_(CVideo::FAKE_TEST)
-	, dummy_cfg_()
+	: dummy_cfg_()
 	, dummy_cfg2_()
 	, dummy_board_(dummy_cfg2_)
 	, main_event_context_()
 	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
+	video::init(video::fake::draw);
 }
 
 game_display& fake_display_manager::get_display()
@@ -81,7 +81,7 @@ game_display& get_fake_display(const int width, const int height)
 	game_display& display = fake_display_manager::get_manager()->get_display();
 
 	if(width >= 0 && height >= 0) {
-		display.video().make_test_fake(width, height);
+		video::make_test_fake(width, height);
 	}
 
 	return display;

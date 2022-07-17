@@ -47,71 +47,77 @@ static lg::log_domain log_display("display");
 
 namespace
 {
+// TODO: match naming with others
 bool fake_interactive = false;
 point fake_size = {0, 0};
-}
 
-CVideo::CVideo(FAKE_TYPES type)
-	: window()
-	, fake_screen_(false)
-	, refresh_rate_(0)
-	, offset_x_(0)
-	, offset_y_(0)
-	, logical_size_{0,0}
-	, pixel_scale_(1)
+/** The SDL window object. */
+std::unique_ptr<sdl::window> window;
+
+/** The main offscreen render target. */
+texture render_texture_ = {};
+
+/** The current offscreen render target. */
+texture current_render_target_ = {};
+
+bool fake_screen_ = false;
+int refresh_rate_ = 0;
+int offset_x_ = 0;
+int offset_y_ = 0;
+point logical_size_ = {0, 0};
+int pixel_scale_ = 1;
+
+} // anon namespace
+
+namespace video
 {
-	assert(!singleton_);
-	singleton_ = this;
 
-	initSDL();
-
-	switch(type) {
-	case NO_FAKE:
-		break;
-	case FAKE:
-		make_fake();
-		break;
-	case FAKE_TEST:
-		make_test_fake();
-		break;
-	}
-}
-
-void CVideo::initSDL()
+void init(fake type)
 {
 	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
 	}
+
+	switch(type) {
+	case fake::none:
+		break;
+	case fake::window:
+		make_fake();
+		break;
+	case fake::draw:
+		make_test_fake();
+		break;
+	}
 }
 
-CVideo::~CVideo()
+// TODO: draw_manager - the CVideo class was previously calling SDL_Quit() in its destructor. Fix so that it calls correctly.
+// It would have (usually?) been called in game_launcher destructor,
+// as that's what (usually?) owns the instance.
+
+bool faked()
 {
-	LOG_DP << "calling SDL_Quit()";
-	SDL_Quit();
-	assert(singleton_);
-	singleton_ = nullptr;
-	LOG_DP << "called SDL_Quit()";
+	return fake_screen_;
 }
 
-bool CVideo::any_fake() const
+bool any_fake()
 {
 	return fake_screen_ || fake_interactive;
 }
 
-bool CVideo::non_interactive() const
+bool non_interactive()
 {
 	return fake_interactive ? false : (window == nullptr);
 }
 
-void CVideo::make_fake()
+void make_fake()
 {
 	fake_screen_ = true;
 	refresh_rate_ = 1;
 	logical_size_ = {800,600};
 }
 
-void CVideo::make_test_fake(const unsigned width, const unsigned height)
+void make_test_fake(const unsigned width, const unsigned height)
 {
 	fake_interactive = true;
 	refresh_rate_ = 1;
@@ -124,7 +130,7 @@ void CVideo::make_test_fake(const unsigned width, const unsigned height)
 	}
 }
 
-void CVideo::update_framebuffer_fake()
+void update_framebuffer_fake()
 {
 	if (!window) {
 		return;
@@ -163,7 +169,7 @@ void CVideo::update_framebuffer_fake()
 	//sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 }
 
-void CVideo::update_framebuffer()
+void update_framebuffer()
 {
 	if(!window) {
 		return;
@@ -276,7 +282,7 @@ void CVideo::update_framebuffer()
 	}
 }
 
-void CVideo::init_fake_window()
+void init_fake_window()
 {
 	LOG_DP << "creating fake window " << fake_size.x
 		<< "x" << fake_size.y;
@@ -297,7 +303,7 @@ void CVideo::init_fake_window()
 	update_framebuffer_fake();
 }
 
-void CVideo::init_window()
+void init_window()
 {
 	// Position
 	const int x = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
@@ -345,7 +351,7 @@ void CVideo::init_window()
 	update_framebuffer();
 }
 
-void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
+void set_window_mode(const MODE_EVENT mode, const point& size)
 {
 	assert(window);
 	if(fake_screen_) {
@@ -386,7 +392,7 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 	update_framebuffer();
 }
 
-SDL_Point CVideo::output_size() const
+point output_size()
 {
 	if (fake_interactive) {
 		return fake_size;
@@ -395,7 +401,7 @@ SDL_Point CVideo::output_size() const
 	return window->get_output_size();
 }
 
-SDL_Point CVideo::window_size() const
+point window_size()
 {
 	if (fake_interactive) {
 		return fake_size;
@@ -403,12 +409,12 @@ SDL_Point CVideo::window_size() const
 	return window->get_size();
 }
 
-rect CVideo::draw_area() const
+rect draw_area()
 {
 	return {0, 0, logical_size_.x, logical_size_.y};
 }
 
-SDL_Rect CVideo::input_area() const
+rect input_area()
 {
 	if(!window) {
 		WRN_DP << "requesting input area with no window";
@@ -422,14 +428,25 @@ SDL_Rect CVideo::input_area() const
 	return {0, 0, p.x, p.y};
 }
 
-void CVideo::delay(unsigned int milliseconds)
+int get_pixel_scale()
+{
+	return pixel_scale_;
+}
+
+int current_refresh_rate()
+{
+	// TODO: this should be more clever, depending on usage
+	return refresh_rate_;
+}
+
+void delay(unsigned int milliseconds)
 {
 	if(!game_config::no_delay) {
 		SDL_Delay(milliseconds);
 	}
 }
 
-void CVideo::force_render_target(const texture& t)
+void force_render_target(const texture& t)
 {
 	if (SDL_SetRenderTarget(get_renderer(), t)) {
 		ERR_DP << "failed to set render target to "
@@ -462,19 +479,19 @@ void CVideo::force_render_target(const texture& t)
 	}
 }
 
-void CVideo::clear_render_target()
+void clear_render_target()
 {
 	force_render_target({});
 }
 
-texture CVideo::get_render_target()
+texture get_render_target()
 {
 	// This should always be up-to-date, but assert for sanity.
 	assert(current_render_target_ == SDL_GetRenderTarget(get_renderer()));
 	return current_render_target_;
 }
 
-rect CVideo::to_output(const rect& r) const
+rect to_output(const rect& r)
 {
 	rect o = r * get_pixel_scale();
 	// The draw-space viewport may be slightly offset on the render target,
@@ -487,7 +504,7 @@ rect CVideo::to_output(const rect& r) const
 // Note: this is not thread-safe.
 // Drawing functions should not be called while this is active.
 // SDL renderer usage is not thread-safe anyway, so this is fine.
-void CVideo::render_screen()
+void render_screen()
 {
 	if(fake_screen_ || fake_interactive) {
 		// No need to present anything in this case
@@ -522,7 +539,7 @@ void CVideo::render_screen()
 	force_render_target(render_texture_);
 }
 
-surface CVideo::read_pixels(SDL_Rect* r)
+surface read_pixels(SDL_Rect* r)
 {
 	if (!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -580,7 +597,7 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	return s;
 }
 
-surface CVideo::read_pixels_low_res(SDL_Rect* r)
+surface read_pixels_low_res(SDL_Rect* r)
 {
 	if(!window) {
 		WRN_DP << "trying to read pixels with no window";
@@ -594,24 +611,24 @@ surface CVideo::read_pixels_low_res(SDL_Rect* r)
 	}
 }
 
-texture CVideo::read_texture(SDL_Rect* r)
+texture read_texture(SDL_Rect* r)
 {
 	return texture(read_pixels(r));
 }
 
-void CVideo::set_window_title(const std::string& title)
+void set_window_title(const std::string& title)
 {
 	assert(window);
 	window->set_title(title);
 }
 
-void CVideo::set_window_icon(surface& icon)
+void set_window_icon(surface& icon)
 {
 	assert(window);
 	window->set_icon(icon);
 }
 
-void CVideo::clear_screen()
+void clear_screen()
 {
 	if(window) {
 		DBG_DP << "clearing screen";
@@ -619,7 +636,7 @@ void CVideo::clear_screen()
 	}
 }
 
-SDL_Renderer* CVideo::get_renderer()
+SDL_Renderer* get_renderer()
 {
 	if(window) {
 		return *window;
@@ -628,13 +645,13 @@ SDL_Renderer* CVideo::get_renderer()
 	}
 }
 
-std::string CVideo::current_driver()
+std::string current_driver()
 {
 	const char* const drvname = SDL_GetCurrentVideoDriver();
 	return drvname ? drvname : "<not initialized>";
 }
 
-std::vector<std::string> CVideo::enumerate_drivers()
+std::vector<std::string> enumerate_drivers()
 {
 	std::vector<std::string> res;
 	int num_drivers = SDL_GetNumVideoDrivers();
@@ -647,12 +664,12 @@ std::vector<std::string> CVideo::enumerate_drivers()
 	return res;
 }
 
-bool CVideo::window_has_flags(uint32_t flags) const
+bool window_has_flags(uint32_t flags)
 {
 	return window && (window->get_flags() & flags) != 0;
 }
 
-std::vector<point> CVideo::get_available_resolutions(const bool include_current)
+std::vector<point> get_available_resolutions(const bool include_current)
 {
 	std::vector<point> result;
 
@@ -704,7 +721,7 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	return result;
 }
 
-point CVideo::current_resolution()
+point current_resolution()
 {
 	if (fake_interactive) {
 		return fake_size;
@@ -712,7 +729,7 @@ point CVideo::current_resolution()
 	return point(window->get_size()); // Convert from plain SDL_Point
 }
 
-bool CVideo::is_fullscreen() const
+bool is_fullscreen()
 {
 	if (fake_interactive) {
 		return true;
@@ -721,7 +738,7 @@ bool CVideo::is_fullscreen() const
 }
 
 // TODO: this is not behaving well
-void CVideo::set_fullscreen(bool ison)
+void set_fullscreen(bool ison)
 {
 	if (fake_interactive) {
 		return;
@@ -747,12 +764,12 @@ void CVideo::set_fullscreen(bool ison)
 	preferences::_set_fullscreen(ison);
 }
 
-void CVideo::toggle_fullscreen()
+void toggle_fullscreen()
 {
 	set_fullscreen(!preferences::fullscreen());
 }
 
-bool CVideo::set_resolution(const point& resolution)
+bool set_resolution(const point& resolution)
 {
 	if(resolution == current_resolution()) {
 		return false;
@@ -774,7 +791,7 @@ bool CVideo::set_resolution(const point& resolution)
 	return true;
 }
 
-void CVideo::update_buffers()
+void update_buffers()
 {
 	LOG_DP << "updating buffers";
 	// We could also double-check the resolution here.
@@ -792,3 +809,5 @@ void CVideo::update_buffers()
 	// of the game (like GUI2) update properly with the new size.
 	events::raise_resize_event();
 }
+
+} // namespace video

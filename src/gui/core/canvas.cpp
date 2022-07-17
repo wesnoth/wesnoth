@@ -35,7 +35,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // blur_surface
-#include "video.hpp"
+#include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -504,7 +504,7 @@ void canvas::draw()
 	if(blur_depth_ && !blur_texture_) {
 		// Cache a blurred image of whatever is underneath.
 		SDL_Rect rect = draw::get_viewport();
-		surface s = CVideo::get_singleton().read_pixels_low_res(&rect);
+		surface s = video::read_pixels_low_res(&rect);
 		s = blur_surface(s, blur_depth_);
 		blur_texture_ = texture(s);
 	}

@@ -171,7 +171,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 
 	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
-		SDL_Rect r = video().draw_area();
+		rect r = video::draw_area();
 		auto tx = static_cast<int>(event.tfinger.x * r.w);
 		auto ty = static_cast<int>(event.tfinger.y * r.h);
 		auto dy = static_cast<int>(event.tfinger.dy * r.h);

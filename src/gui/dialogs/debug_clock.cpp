@@ -67,7 +67,7 @@ void debug_clock::pre_show(window& window)
 	update_time(true);
 }
 
-void debug_clock::post_show(CVideo& /*video*/)
+void debug_clock::post_show()
 {
 	draw_manager::deregister_drawable(this);
 }
