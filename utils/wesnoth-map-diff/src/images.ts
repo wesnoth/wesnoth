@@ -55,6 +55,10 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
     Jimp.read(flagPath),
   ])
 
+  focus.color([
+    { apply: 'hue', params: [-90] },
+  ])
+
   return {
     getTile: ({ baseCode, miscCode }) => {
       if (miscCode && images[`${baseCode}^${miscCode}`]) {
