@@ -52,7 +52,7 @@ type WalkthroughCallback =
       x: number,
       y: number,
       baseCode: string,
-      miscCode: string,
+      miscCode: string | undefined,
       player: string,
     }
   ) => void

@@ -26,19 +26,21 @@ const getTileImageCoordenates = (tileX: number, tileY: number) => {
 }
 
 const producePainters = (output: Jimp, images: ImagesDict, leftPadding: number) => {
-  const paintTile = (x: number, y: number, baseCode: string) => {
-    const baseImage = images.tile[baseCode]
-    output.composite(baseImage, x + leftPadding, y)
-  }
-
-  // todo: we should use the defaultBase correctly
-  const paintMisc = (x: number, y: number, baseCode: string, miscCode: string) => {
-    if (!miscCode) {
+  const paintTile = (x: number, y: number, baseCode: string, miscCode?: string) => {
+    if (miscCode && images.tile[`${baseCode}^${miscCode}`]) {
+      const compoundImage = images.tile[`${baseCode}^${miscCode}`]
+      output.composite(compoundImage, x + leftPadding, y)
       return
     }
 
-    const misctileImage = images.tile[`${baseCode}^${miscCode}`] || images.tile[`^${miscCode}`]
-    output.composite(misctileImage, x + leftPadding, y)
+    const baseImage = images.tile[baseCode]
+    output.composite(baseImage, x + leftPadding, y)
+
+    // todo: we should use the defaultBase correctly
+    if (miscCode) {
+      const miscImage = images.tile[`^${miscCode}`]
+      output.composite(miscImage, x + leftPadding, y)
+    }
   }
 
   // todo: the flag color should follow the player number
@@ -50,7 +52,7 @@ const producePainters = (output: Jimp, images: ImagesDict, leftPadding: number) 
     output.composite(images.flag, x + leftPadding, y)
   }
 
-  return { paintTile, paintMisc, paintPlayer }
+  return { paintTile, paintPlayer }
 }
 
 const paint = async (
@@ -70,13 +72,12 @@ const paint = async (
         ? 0
         : width + tileImageSize
 
-      const { paintTile, paintMisc, paintPlayer } = producePainters(output, images, leftPadding)
+      const { paintTile, paintPlayer } = producePainters(output, images, leftPadding)
 
       tilemap.walkthrough(map, ({ x, y, baseCode, miscCode, player }) => {
         const [imageX, imageY] = getTileImageCoordenates(x, y)
 
-        paintTile(imageX, imageY, baseCode)
-        paintMisc(imageX, imageY, baseCode, miscCode)
+        paintTile(imageX, imageY, baseCode, miscCode)
         paintPlayer(imageX, imageY, player)
       })
 
