@@ -72,37 +72,30 @@ bool any_fake();
 bool non_interactive();
 
 
-/****************************/
-/* Window-related functions */
-/****************************/
-// TODO: other things probably should never be calling these. remove/refactor
+/***********************/
+/* Windowing functions */
+/***********************/
 
-/** Initializes a new SDL window instance, taking into account any preiously saved states. */
-void init_window();
-
-// private:
-void init_fake_window();
-
-// TODO: refactor? only draw.cpp and texture.cpp should need to access the renderer
-
-/** Returns a pointer to the underlying window's renderer. */
-SDL_Renderer* get_renderer();
-
-/** The current video driver in use, or else "<not initialized>". */
-std::string current_driver();
-
-/** A list of available video drivers. */
-std::vector<std::string> enumerate_drivers();
-
-
-/************/
-/* Resizing */
-/************/
-
-// TODO: check these are okay and don't do bad things
-void set_fullscreen(bool);
-void toggle_fullscreen();
+/** Whether we are currently in fullscreen mode */
 bool is_fullscreen();
+
+/**
+ * Set the fullscreen state.
+ *
+ * If the setting matches the current fullscreen state, the window state
+ * will not be changed.
+ *
+ * If false and the window is fullscreen, the window will be restored to
+ * its last saved non-fullscreen configuration.
+ */
+void set_fullscreen(bool);
+
+/**
+ * Toggle fullscreen mode.
+ *
+ * Equivalent to set_fullscreen(!is_fullscreen()).
+ */
+void toggle_fullscreen();
 
 /**
  * Set the window resolution.
@@ -113,10 +106,38 @@ bool is_fullscreen();
  */
 bool set_resolution(const point& resolution);
 
+/** The current window size in desktop coordinates. */
 point current_resolution();
 
 /** Returns the list of available screen resolutions. */
 std::vector<point> get_available_resolutions(bool include_current = false);
+
+/** The current video driver in use, or else "<not initialized>". */
+std::string current_driver();
+
+/** A list of available video drivers. */
+std::vector<std::string> enumerate_drivers();
+
+/**
+ * The refresh rate of the screen.
+ *
+ * If a refresh cannot be detected, this may return 0, or it may return a
+ * substitute value.
+ */
+int current_refresh_rate();
+
+/** True iff the window is not hidden. */
+bool window_is_visible();
+/** True iff the window has mouse or input focus */
+bool window_has_focus();
+/** True iff the window has mouse focus */
+bool window_has_mouse_focus();
+
+/** Sets the title of the main window. */
+void set_window_title(const std::string& title);
+
+/** Sets the icon of the main window. */
+void set_window_icon(surface& icon);
 
 
 /*******/
@@ -180,23 +201,6 @@ int get_pixel_scale();
  * Convert coordinates in draw space to coordinates in render space.
  */
 rect to_output(const rect& draw_space_rect);
-
-// TODO: move these:
-
-/** True iff the window is not hidden. */
-bool window_is_visible();
-/** True iff the window has mouse or input focus */
-bool window_has_focus();
-/** True iff the window has mouse focus */
-bool window_has_mouse_focus();
-
-/** Sets the title of the main window. */
-void set_window_title(const std::string& title);
-
-/** Sets the icon of the main window. */
-void set_window_icon(surface& icon);
-
-int current_refresh_rate();
 
 
 /******************/
@@ -283,5 +287,9 @@ public:
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
 };
+
+/* This should only be used by draw.cpp for drawing, and texture.cpp for
+ * texture creation. Try not to use it for anything else. */
+SDL_Renderer* get_renderer();
 
 } // namespace video
