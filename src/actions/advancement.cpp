@@ -41,7 +41,7 @@
 #include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
 #include "utils/general.hpp"
-#include "video.hpp" // for faked, non_interactive
+#include "video.hpp"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -124,7 +124,7 @@ namespace
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !video::faked()) {
+		if (animate && !video::headless()) {
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -145,7 +145,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		game_display::get_singleton()->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !video::faked()) {
+		if (animate && u != resources::gameboard->units().end() && !video::headless()) {
 			unit_animator animator;
 			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -205,7 +205,7 @@ namespace
 
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
-			if(!video::non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_droid() && !t.is_idle() && (is_current_side || !is_mp))))
+			if(!video::headless() && (force_dialog_ || (t.is_local_human() && !t.is_droid() && !t.is_idle() && (is_current_side || !is_mp))))
 			{
 				res = advance_unit_dialog(loc_);
 			}

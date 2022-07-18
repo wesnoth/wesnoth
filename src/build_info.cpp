@@ -547,7 +547,7 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 
 	std::string placeholder;
 
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		placeholder = "Running in non-interactive mode.";
 	}
 

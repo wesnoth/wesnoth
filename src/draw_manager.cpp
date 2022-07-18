@@ -139,10 +139,9 @@ void sparkle()
 	// Ensure layout is up-to-date.
 	draw_manager::layout();
 
-	// Unit tests rely on not doing any rendering, or waiting at all...
-	// "behave differently when being tested" is really not good policy
-	// but whatever.
-	if(video::any_fake()) {
+	// If we are running headless or executing unit tests, do not render.
+	// There are not currently any tests for actual rendering output.
+	if(video::headless() || video::testing()) {
 		invalidated_regions_.clear();
 		return;
 	}

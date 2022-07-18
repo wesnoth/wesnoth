@@ -35,7 +35,6 @@ namespace video
 /* Initialization */
 /******************/
 
-// TODO: this whole faking system is a mess
 /**
  * For describing the type of faked display, if any.
  *
@@ -51,25 +50,28 @@ enum class fake { none, window, draw };
  */
 void init(fake fake_type = fake::none);
 
-
-/********************************/
-/* Unit-test and No-GUI support */
-/********************************/
-
-
-// TODO: tests are calling this constantly, refactor the tests to not do that
 /**
- * Creates a fake frame buffer for the unit tests.
+ * Update buffers to match current resolution and pixel scale settings.
  *
- * @param width               The width of the buffer.
- * @param height              The height of the buffer.
+ * If @p autoupdate is true and buffers are changed by this call,
+ * a full redraw is also triggered.
+ *
+ * If nothing has changed, it will not generate any new buffers or queue
+ * the redraw.
  */
-void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
+void update_buffers(bool autoupdate = true);
 
-// TODO: rename and refactor - these don't clearly express what they mean
-bool faked();
-bool any_fake();
-bool non_interactive();
+
+/**********************************/
+/* Unit-test and headless support */
+/**********************************/
+
+/** The game is running headless. There is no window or renderer. */
+bool headless();
+
+/** The game is running unit tests. There is a window and offscreen
+  * render buffer, but performing actual rendering is unnecessary. */
+bool testing();
 
 
 /***********************/
@@ -140,19 +142,6 @@ void set_window_title(const std::string& title);
 void set_window_icon(surface& icon);
 
 
-/*******/
-/* IDK */
-/*******/
-
-/**
- * Update buffers to match current resolution and pixel scale settings.
- *
- * If @p autoupdate is true and buffers are changed by this call,
- * a full redraw is also triggered.
- */
-void update_buffers(bool autoupdate = true);
-
-
 /***********/
 /* Queries */
 /***********/
@@ -196,7 +185,6 @@ rect input_area();
  */
 int get_pixel_scale();
 
-// TODO: move
 /**
  * Convert coordinates in draw space to coordinates in render space.
  */
@@ -239,7 +227,6 @@ surface read_pixels_low_res(SDL_Rect* r = nullptr);
 /* Render target management */
 /****************************/
 
-// TODO: revisit who owns this
 /**
  * Set the render target, without any provided way of setting it back.
  *

@@ -249,7 +249,7 @@ void play_controller::init(const config& level)
 		// Ensure the loading screen doesn't end up underneath the game display
 		gui2::dialogs::loading_screen::raise();
 
-		if(!video::faked()) {
+		if(!video::headless()) {
 			if(saved_game_.mp_settings().mp_countdown) {
 				gui_->get_theme().modify_label("time-icon", _("time left for current turn"));
 			} else {
@@ -1042,7 +1042,7 @@ void play_controller::check_victory()
 		return;
 	}
 
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		LOG_AIT << "winner: ";
 		for(unsigned l : not_defeated) {
 			std::string ai = ai::manager::get_singleton().get_active_ai_identifier_for_side(l);
@@ -1065,7 +1065,7 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		throw game::game_error(msg);
 	}
 
@@ -1344,7 +1344,7 @@ void play_controller::play_turn()
 
 	LOG_NG << "turn: " << turn();
 
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		LOG_AIT << "Turn " << turn() << ":";
 	}
 
@@ -1386,7 +1386,7 @@ void play_controller::play_turn()
 				return;
 			}
 
-			if(video::non_interactive()) {
+			if(video::headless()) {
 				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages";
 				ai_testing::log_turn_end(current_side());
 			}
@@ -1423,7 +1423,7 @@ void play_controller::check_time_over()
 			return;
 		}
 
-		if(video::non_interactive()) {
+		if(video::headless()) {
 			LOG_AIT << "time over (draw)";
 			ai_testing::log_draw();
 		}

@@ -121,7 +121,7 @@ bool loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game_ingame()
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return false;
 	}
 
