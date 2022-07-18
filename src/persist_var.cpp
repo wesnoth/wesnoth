@@ -139,14 +139,14 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 		valid = false;
 	}
 	if (resources::controller->is_networked_mp()) {
-			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
+			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"];
 			config::attribute_value pcfg_side = pcfg["side"];
 			int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side() : pcfg_side.to_int();
 			if (!resources::gameboard->has_team(side)) {
-				ERR_PERSIST << "[get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
+				ERR_PERSIST << "[get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
 			}
-			DBG_PERSIST <<  "end verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
+			DBG_PERSIST <<  "end verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"];
 	}
 	if (valid)
 	{

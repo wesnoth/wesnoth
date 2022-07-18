@@ -1431,7 +1431,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 			DBG_NG << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
 
 			for(std::size_t n = 0; n != arg_names_.size(); ++n) {
-				DBG_NG << "  arg " << (n + 1) << ": " << args()[n]->evaluate(variables, fdb).to_debug_string() << "\n";
+				DBG_NG << "  arg " << (n + 1) << ": " << args()[n]->evaluate(variables, fdb).to_debug_string();
 			}
 		}
 	}
@@ -1439,7 +1439,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 	variant res = formula_->evaluate(callable, fdb);
 
 	const int taken = SDL_GetTicks() - begin_time;
-	DBG_NG << indent << "returning: " << taken << "\n";
+	DBG_NG << indent << "returning: " << taken;
 
 	indent.resize(indent.size() - 2);
 

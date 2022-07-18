@@ -243,7 +243,7 @@ void mp_lobby::update_gamelist()
 		}
 
 		gamelist_id_at_row_.push_back(game.id);
-		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
+		LOG_LB << "Adding game to listbox (1)" << game.id;
 		grid* grid = &gamelistbox_->add_row(make_game_row_data(game));
 
 		adjust_game_row_contents(game, grid);
@@ -282,7 +282,7 @@ void mp_lobby::update_gamelist_diff()
 				do_notify(mp::notify_mode::game_created, game.scenario, game.name);
 			}
 
-			LOG_LB << "Adding game to listbox " << game.id << "\n";
+			LOG_LB << "Adding game to listbox " << game.id;
 
 			if(list_i != gamelistbox_->get_item_count()) {
 				gamelistbox_->add_row(make_game_row_data(game), list_i);
@@ -530,7 +530,7 @@ void mp_lobby::update_playerlist()
 	if(delay_playerlist_update_) return;
 
 	SCOPE_LB;
-	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
+	DBG_LB << "Playerlist update: " << lobby_info_.users().size();
 
 	player_list_.update(lobby_info_.users(), selected_game_id_);
 
@@ -703,7 +703,7 @@ void mp_lobby::network_handler()
 			process_network_data(data);
 		}
 	} catch (const wesnothd_error& e) {
-		LOG_LB << "caught wesnothd_error in network_handler: " << e.message << "\n";
+		LOG_LB << "caught wesnothd_error in network_handler: " << e.message;
 		throw;
 	}
 

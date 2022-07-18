@@ -155,7 +155,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 	}
 
 	default:
-		ERR_G << "Trying to bind an unknown event type:" << event.type << "\n";
+		ERR_G << "Trying to bind an unknown event type:" << event.type;
 		break;
 	}
 
@@ -188,7 +188,7 @@ hotkey_ptr load_from_config(const config& cfg)
 
 		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
 		if(keycode == SDLK_UNKNOWN) {
-			ERR_G << "Unknown key: " << key_cfg << "\n";
+			ERR_G << "Unknown key: " << key_cfg;
 		}
 		keyboard->set_text(key_cfg);
 		keyboard->set_keycode(keycode);

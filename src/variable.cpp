@@ -67,7 +67,7 @@ config::attribute_value config_variable_set::get_variable_const(const std::strin
 		variable_access_const variable = get_variable_access_read(id);
 		return variable.as_scalar();
 	} catch(const invalid_variablename_exception&) {
-		ERR_NG << "invalid variablename " << id << "\n";
+		ERR_NG << "invalid variablename " << id;
 		return config::attribute_value();
 	}
 }

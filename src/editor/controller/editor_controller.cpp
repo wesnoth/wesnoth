@@ -1309,7 +1309,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	if (!get_current_map_context().map().on_board_with_border(hex_clicked))
 		return true;
 
-	LOG_ED << "Left click action " << hex_clicked << "\n";
+	LOG_ED << "Left click action " << hex_clicked;
 	auto a = get_mouse_action().click_left(*gui_, x, y);
 	if(a) {
 		perform_refresh_delete(std::move(a), true);
@@ -1343,7 +1343,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click, after generic handling\n";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return true;
-	LOG_ED << "Right click action " << hex_clicked << "\n";
+	LOG_ED << "Right click action " << hex_clicked;
 	auto a = get_mouse_action().click_right(*gui_, x, y);
 	if(a) {
 		perform_refresh_delete(std::move(a), true);

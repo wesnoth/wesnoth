@@ -50,7 +50,7 @@ widget::widget()
 	, debug_border_mode_(debug_border::none)
 	, debug_border_color_(0,0,0,0)
 {
-	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
+	DBG_GUI_LF << "widget create: " << static_cast<void*>(this);
 }
 
 widget::widget(const builder_widget& builder)
@@ -72,7 +72,7 @@ widget::widget(const builder_widget& builder)
 	, debug_border_mode_(builder.debug_border_mode)
 	, debug_border_color_(builder.debug_border_color)
 {
-	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
+	DBG_GUI_LF << "widget create: " << static_cast<void*>(this);
 }
 
 widget::~widget()

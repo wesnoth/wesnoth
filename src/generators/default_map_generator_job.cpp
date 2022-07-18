@@ -319,7 +319,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		}
 
 		const int radius = rng_()%hill_size + 1;
-		DBG_NG << "placing hill at " << x1 << "," << y1 << " radius=" << radius << " is_valley=" << is_valley << "\n";
+		DBG_NG << "placing hill at " << x1 << "," << y1 << " radius=" << radius << " is_valley=" << is_valley;
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
 		const int max_x = x1 + radius < static_cast<long>(res.size()) ? x1 + radius : res.size();
@@ -752,7 +752,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	// Generate the height of everything.
 	const height_map heights = generate_height_map(data.width, data.height, data.iterations, data.hill_size, data.island_size, data.island_off_center);
 
-	LOG_NG << "Done generating height map. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Done generating height map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	// Find out what the 'flatland' on this map is, i.e. grassland.
@@ -782,7 +782,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	t_translation::starting_positions starting_positions;
 	LOG_NG << output_map(terrain, starting_positions);
-	LOG_NG << "Placed landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Placed landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	/* Now that we have our basic set of flatland/hills/mountains/water,
@@ -872,7 +872,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Generated rivers. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Generated rivers. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	const std::size_t default_dimensions = 40*40*9;
@@ -889,7 +889,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		cfg["temperature_iterations"].to_int() * data.width * data.height / default_dimensions,
 		cfg["temperature_size"], 0, 0);
 
-	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
@@ -897,7 +897,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		converters.emplace_back(cv);
 	}
 
-	LOG_NG << "Created terrain converters. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Created terrain converters. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	// Iterate over every flatland tile, and determine what type of flatland it is, based on our [convert] tags.
@@ -936,7 +936,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		const is_valid_terrain terrain_tester(terrain, list);
 
 		for(int player = 0; player != data.nplayers; ++player) {
-			LOG_NG << "placing castle for " << player << "\n";
+			LOG_NG << "placing castle for " << player;
 			lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
 			const int min_x = data.width/3 + 3;
 			const int min_y = data.height/3 + 3;
@@ -978,7 +978,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			failed_locs.insert(best_loc);
 		}
 
-		LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+		LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	}
 	LOG_NG << "Placing roads...\n";
 	ticks = SDL_GetTicks();
@@ -1166,7 +1166,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placed roads. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Placed roads. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
 
 	/* Random naming for landforms: mountains, forests, swamps, hills
@@ -1224,7 +1224,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Named landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Named landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	LOG_NG << "Placing villages...\n";
 	ticks = SDL_GetTicks();
 
@@ -1265,7 +1265,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		std::map<map_location,std::string>* village_labels = village_naming.empty() ? nullptr : labels;
 
 		for(int vx = 0; vx < data.width; vx += village_x) {
-			LOG_NG << "village at " << vx << "\n";
+			LOG_NG << "village at " << vx;
 
 			for(int vy = rng_()%village_y; vy < data.height; vy += village_y) {
 				const std::size_t add = rng_()%3;
@@ -1411,7 +1411,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placed villages. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Placed villages. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 
 	return output_map(terrain, starting_positions);
 }

@@ -227,7 +227,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		route.steps.push_back(src);
 		std::reverse(route.steps.begin(), route.steps.end());
 	} else {
-		LOG_PF << "aborted a* search  " << "\n";
+		LOG_PF << "aborted a* search  ";
 		route.move_cost = static_cast<int>(calc.getNoPathValue());
 	}
 

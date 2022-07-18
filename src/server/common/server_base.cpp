@@ -110,7 +110,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			acceptor.listen();
 		}
 	} catch(const boost::system::system_error& e) {
-		ERR_SERVER << "Exception when trying to bind port: " << e.code().message() << "\n";
+		ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
 		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
 	}
 
@@ -119,7 +119,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	boost::system::error_code error;
 	acceptor.async_accept(socket->lowest_layer(), yield[error]);
 	if(error && accepting_connections()) {
-		ERR_SERVER << "Accept failed: " << error.message() << "\n";
+		ERR_SERVER << "Accept failed: " << error.message();
 		BOOST_THROW_EXCEPTION(server_shutdown("Accept failed", error));
 	}
 
@@ -184,7 +184,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
 			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
 			if(error) {
-				ERR_SERVER << "TLS handshake failed: " << error.message() << "\n";
+				ERR_SERVER << "TLS handshake failed: " << error.message();
 				return;
 			}
 
@@ -199,7 +199,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 		const std::string reason = is_ip_banned(ip);
 		if (!reason.empty()) {
-			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason;
 			async_send_error(socket, "You are banned. Reason: " + reason);
 				return;
 		} else if (ip_exceeds_connection_limit(ip)) {
@@ -246,12 +246,12 @@ int server_base::run() {
 			LOG_SERVER << "Server has shut down because event loop is out of work\n";
 			return 1;
 		} catch(const server_shutdown& e) {
-			LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
+			LOG_SERVER << "Server has been shut down: " << e.what();
 			return e.ec.value();
 		} catch(const boost::system::system_error& e) {
-			ERR_SERVER << "Caught system error exception from handler: " << e.code().message() << "\n";
+			ERR_SERVER << "Caught system error exception from handler: " << e.code().message();
 		} catch(const std::exception& e) {
-			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n" << boost::current_exception_diagnostic_information() << "\n";
+			ERR_SERVER << "Caught exception from handler: " << e.what() << "\n" << boost::current_exception_diagnostic_information();
 		}
 	}
 }
@@ -272,7 +272,7 @@ template<class SocketPtr> bool check_error(const boost::system::error_code& erro
 		if(error == boost::asio::error::eof)
 			LOG_SERVER << log_address(socket) << "\tconnection closed\n";
 		else
-			ERR_SERVER << log_address(socket) << "\t" << error.message() << "\n";
+			ERR_SERVER << log_address(socket) << "\t" << error.message();
 		return true;
 	}
 	return false;

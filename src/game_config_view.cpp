@@ -56,7 +56,7 @@ const config& game_config_view::find_child(config_key_type key, const std::strin
 			return res;
 		}
 	}
-	LOG_CONFIG << "gcv : cannot find [" << key <<  "] with " << name  << "=" << value << ", count = " << cfgs_.size() <<"\n";
+	LOG_CONFIG << "gcv : cannot find [" << key <<  "] with " << name  << "=" << value << ", count = " << cfgs_.size();
 	const config cfg;
 	return cfg.child("invalid");
 }

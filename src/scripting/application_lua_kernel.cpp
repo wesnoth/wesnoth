@@ -167,7 +167,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 	lua_State * T = get_new_thread(mState);
 	// now we are operating on T's stack, leaving a compiled C function on it.
 
-	DBG_LUA << "created thread: status = " << lua_status(T) << (lua_status(T) == LUA_OK ? " == OK" : " == ?") << "\n";
+	DBG_LUA << "created thread: status = " << lua_status(T) << (lua_status(T) == LUA_OK ? " == OK" : " == ?");
 	DBG_LUA << "loading script from string:\n<<\n" << prog << "\n>>\n";
 
 	// note: this is unsafe for umc as it allows loading lua baytecode, but umc cannot add application lua kernel scipts.

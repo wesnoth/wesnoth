@@ -237,7 +237,7 @@ public:
 
 	std::string search([[maybe_unused]] int direction ) {
 #ifdef HAVE_HISTORY
-		LOG_LUA << "searching in direction " << direction << " from position " << where_history() << "\n";
+		LOG_LUA << "searching in direction " << direction << " from position " << where_history();
 
 		HIST_ENTRY * e = nullptr;
 		if (end_of_history_) {
@@ -268,7 +268,7 @@ public:
 		}
 
 		if (e) {
-			LOG_LUA << "found something at " << where_history() << "\n";
+			LOG_LUA << "found something at " << where_history();
 			std::string ret = e->line;
 			end_of_history_ = false;
 			return ret;

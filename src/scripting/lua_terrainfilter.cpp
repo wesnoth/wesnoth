@@ -57,7 +57,7 @@ using location_set = std::set<map_location>;
 
 static const char terrinfilterKey[] = "terrainfilter";
 #define LOG_MATCHES(NAME) \
-LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__   << "\n";
+LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__;
 
 //helper functions for parsing
 namespace {
@@ -558,7 +558,7 @@ public:
 		try {
 			formula_ = std::make_unique<wfl::formula>(code);
 		} catch(const wfl::formula_error& e) {
-			ERR_LMG << "formula error" << e.what() << "\n";
+			ERR_LMG << "formula error" << e.what();
 		}
 	}
 	bool matches(const gamemap_base&, map_location l) override
@@ -603,7 +603,7 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 	}
 	lua_rawgeti(L, -1, 1);
 	std::string s = std::string(luaW_tostring(L, -1));
-	LOG_LMG << "buildfilter: got: " << s << "\n";
+	LOG_LMG << "buildfilter: got: " << s;
 	auto it = keys.find(s);
 	if(it == keys.end()) {
 		//fixme use proper exception type.
@@ -680,7 +680,7 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 	if(lua_istable(L, 3)) {
 		LOG_LMG <<  "map:get_locations some locations\n";
 		location_set s = luaW_to_locationset(L, 3);
-		LOG_LMG <<  "map:get_locations #args = " << s.size() << "\n";
+		LOG_LMG <<  "map:get_locations #args = " << s.size();
 		for (const map_location& l : s) {
 			if(f.matches(m, l)) {
 				res.insert(l);
@@ -695,7 +695,7 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 			}
 		});
 	}
-	LOG_LMG <<  "map:get_locations #res = " << res.size() << "\n";
+	LOG_LMG <<  "map:get_locations #res = " << res.size();
 	luaW_push_locationset(L, res);
 	LOG_LMG <<  "map:get_locations end\n";
 	return 1;

@@ -403,7 +403,7 @@ void unit_type::build_created()
 	type_name_ = cfg["name"].t_str();
 	variation_name_ = cfg["variation_name"].t_str();
 
-	DBG_UT << "unit_type '" << log_id() << "' advances to : " << advances_to_val << "\n";
+	DBG_UT << "unit_type '" << log_id() << "' advances to : " << advances_to_val;
 
 	experience_needed_ = cfg["experience"].to_int(500);
 	cost_ = cfg["cost"].to_int(1);
@@ -1080,7 +1080,7 @@ void unit_type::fill_variations_and_gender()
  */
 void unit_type_data::set_config(const game_config_view& cfg)
 {
-	LOG_UT << "unit_type_data::set_config, nunits: " << cfg.child_range("unit_type").size() << "\n";
+	LOG_UT << "unit_type_data::set_config, nunits: " << cfg.child_range("unit_type").size();
 
 	clear();
 	units_cfg_ = cfg;

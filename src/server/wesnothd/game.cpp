@@ -303,7 +303,7 @@ void game::start_game(player_iterator starter)
 		}
 	}
 
-	DBG_GAME << "Number of sides: " << nsides_ << "\n";
+	DBG_GAME << "Number of sides: " << nsides_;
 	int turn = 1;
 	int side = 0;
 
@@ -502,7 +502,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(newplayer_name.empty()) {
 		std::stringstream msg;
 		msg << "Received invalid [change_controller] with no player= attribute specified";
-		DBG_GAME << msg.str() << "\n";
+		DBG_GAME << msg.str();
 		send_server_message(msg.str(), player);
 		return;
 	}
@@ -511,7 +511,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(!(player == old_player || player == owner_)) {
 		std::stringstream msg;
 		msg << "You can't give away side " << side_num << ". It's controlled by '" << old_player_name << "' not you.";
-		DBG_GAME << msg.str() << "\n";
+		DBG_GAME << msg.str();
 		send_server_message(msg.str(), player);
 		return;
 	}

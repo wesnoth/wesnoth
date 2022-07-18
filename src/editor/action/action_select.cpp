@@ -29,7 +29,7 @@ IMPLEMENT_ACTION(select)
 void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
 	for(const map_location& loc : locs) {
-		LOG_ED << "Extending by " << loc << "\n";
+		LOG_ED << "Extending by " << loc;
 		area_.insert(loc);
 	}
 }
@@ -59,9 +59,9 @@ IMPLEMENT_ACTION(deselect)
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	for(const map_location& loc : locs) {
-		LOG_ED << "Checking " << loc << "\n";
+		LOG_ED << "Checking " << loc;
 		if(!map.in_selection(loc)) {
-			LOG_ED << "Extending by " << loc << "\n";
+			LOG_ED << "Extending by " << loc;
 			area_.insert(loc);
 		}
 	}

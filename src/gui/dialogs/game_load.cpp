@@ -282,7 +282,7 @@ void game_load::display_savegame()
 		// Clear the UI widgets, show an error message.
 		const std::string preamble = _("The selected file is corrupt: ");
 		const std::string message = e.message.empty() ? "(no details)" : e.message;
-		ERR_GAMELOADDLG << preamble << message << "\n";
+		ERR_GAMELOADDLG << preamble << message;
 	}
 
 	if(!successfully_displayed_a_game) {

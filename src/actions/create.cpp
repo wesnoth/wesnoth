@@ -62,7 +62,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 {
 	const team & current_team = resources::gameboard->get_team(side);
 
-	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
+	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc;
 
 	std::set<std::string> local_result;
 	std::set<std::string> global_result;
@@ -160,7 +160,7 @@ namespace { // Helpers for get_recalls()
 
 std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc)
 {
-	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
+	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc;
 
 	std::vector<unit_const_ptr > result;
 
@@ -330,7 +330,7 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 
 std::string find_recall_location(const int side, map_location& recall_location, map_location& recall_from, const unit &unit_recall)
 {
-	LOG_NG << "finding recall location for side " << side << " and unit " << unit_recall.id() << "\n";
+	LOG_NG << "finding recall location for side " << side << " and unit " << unit_recall.id();
 
 	// This function basically translates check_recall_location() to a
 	// human-readable string.
@@ -466,7 +466,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 std::string find_recruit_location(const int side, map_location& recruit_location, map_location& recruited_from, const std::string& unit_type)
 {
-	LOG_NG << "finding recruit location for side " << side << "\n";
+	LOG_NG << "finding recruit location for side " << side;
 
 	// This function basically translates check_recruit_location() to a
 	// human-readable string.
@@ -615,7 +615,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
-	LOG_NG << "placing new unit on location " << recruit_location << "\n";
+	LOG_NG << "placing new unit on location " << recruit_location;
 	if (full_movement) {
 		u->set_movement(u->total_movement(), true);
 	} else {

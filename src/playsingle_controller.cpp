@@ -100,7 +100,7 @@ std::string playsingle_controller::describe_result() const
 
 void playsingle_controller::init_gui()
 {
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
+	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
 	play_controller::init_gui();
 
 	// Scroll to the starting position of the first team. If there is a
@@ -113,7 +113,7 @@ void playsingle_controller::init_gui()
 	// overriding those found in the map (if any).
 	if(map_start_.valid()) {
 		gui_->scroll_to_tile(map_start_, game_display::WARP, false);
-		LOG_NG << "Found good stored ui location " << map_start_ << "\n";
+		LOG_NG << "Found good stored ui location " << map_start_;
 	} else {
 		int scroll_team = gamestate().first_human_team_ + 1;
 		if(scroll_team == 0) {
@@ -123,7 +123,7 @@ void playsingle_controller::init_gui()
 		map_location loc(get_map().starting_position(scroll_team));
 		if((loc.x >= 0) && (loc.y >= 0)) {
 			gui_->scroll_to_tile(loc, game_display::WARP);
-			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc << "\n";
+			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc;
 		} else {
 			LOG_NG << "Found bad stored ui location\n";
 		}
@@ -164,7 +164,7 @@ void playsingle_controller::play_scenario_init()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks()) << "\n";
+	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
 
 	ai_testing::log_game_start();
 	if(get_teams().empty()) {
@@ -271,7 +271,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		}
 	}
 
-	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks()) << "\n";
+	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks());
 
 	try {
 		play_scenario_init();

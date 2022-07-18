@@ -237,7 +237,7 @@ int lua_kernel_base::intf_print(lua_State* L)
 	lua_pop(L, 1); // Pop 'tostring' global
 
 	cmd_log_ << "\n";
-	DBG_LUA << "\n";
+	DBG_LUA;
 
 	return 0;
 }

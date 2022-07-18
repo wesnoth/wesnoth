@@ -167,7 +167,7 @@ double recruitment::evaluate() {
 		integrate_recruitment_pattern_in_recruitment_instructions();
 		recruitment_instructions_turn_ = resources::tod_manager->turn();
 		LOG_AI_RECRUITMENT << "Recruitment-instructions updated:\n";
-		LOG_AI_RECRUITMENT << recruitment_instructions_ << "\n";
+		LOG_AI_RECRUITMENT << recruitment_instructions_;
 	}
 
 	// Check if we have something to do.
@@ -374,7 +374,7 @@ void recruitment::execute() {
 			LOG_AI_RECRUITMENT << "All recruitment jobs (recruitment_instructions) done.\n";
 			break;
 		}
-		LOG_AI_RECRUITMENT << "Executing this job:\n" << *job << "\n";
+		LOG_AI_RECRUITMENT << "Executing this job:\n" << *job;
 
 		data* best_leader_data = get_best_leader_from_ratio_scores(leader_data, job);
 		if (!best_leader_data) {
@@ -397,10 +397,10 @@ void recruitment::execute() {
 			}
 		}
 
-		LOG_AI_RECRUITMENT << "Best recruit is: " << best_recruit << "\n";
+		LOG_AI_RECRUITMENT << "Best recruit is: " << best_recruit;
 		const std::string* recall_id = get_appropriate_recall(best_recruit, *best_leader_data);
 		if (recall_id) {
-			LOG_AI_RECRUITMENT << "Found appropriate recall with id: " << *recall_id << "\n";
+			LOG_AI_RECRUITMENT << "Found appropriate recall with id: " << *recall_id;
 			action_result = execute_recall(*recall_id, *best_leader_data);
 		} else {
 			action_result = execute_recruit(best_recruit, *best_leader_data);
@@ -481,7 +481,7 @@ action_result_ptr recruitment::execute_recruit(const std::string& type, data& le
 
 	if (recruit_result->is_ok()) {
 		recruit_result->execute();
-		LOG_AI_RECRUITMENT << "Recruited " << type << "\n";
+		LOG_AI_RECRUITMENT << "Recruited " << type;
 		++leader_data.recruit_count;
 	}
 	return recruit_result;
@@ -536,7 +536,7 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		// Check if this leader is allowed to recall this unit.
 		const unit_filter ufilt(vconfig(leader_data.leader->recall_filter()));
 		if (!ufilt(*recall_unit, map_location::null_location())) {
-			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
+			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id();
 			continue;
 		}
 		const double recall_value = recruitment::recall_unit_value(recall_unit);
@@ -595,7 +595,7 @@ const std::string recruitment::get_best_recruit_from_scores(const data& leader_d
 	assert(job);
 	std::string pattern_type = get_random_pattern_type_if_exists(leader_data, job);
 	if (!pattern_type.empty()) {
-		LOG_AI_RECRUITMENT << "Randomly chosen pattern_type: " << pattern_type << "\n";
+		LOG_AI_RECRUITMENT << "Randomly chosen pattern_type: " << pattern_type;
 	}
 	std::string best_recruit = "";
 	double biggest_difference = -99999.;
@@ -1554,8 +1554,8 @@ void recruitment::update_state() {
 	if (!get_recruitment_save_gold()["save_on_negative_income"].to_bool(false)) {
 		income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
 	}
-	LOG_AI_RECRUITMENT << "Ratio is " << ratio << "\n";
-	LOG_AI_RECRUITMENT << "Estimated income is " << income_estimation << "\n";
+	LOG_AI_RECRUITMENT << "Ratio is " << ratio;
+	LOG_AI_RECRUITMENT << "Estimated income is " << income_estimation;
 
 	// Retrieve from aspect.
 	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.5);

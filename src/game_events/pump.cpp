@@ -196,7 +196,7 @@ pump_manager::~pump_manager()
  */
 void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 {
-	DBG_EH << "processing event " << ev.name << " with id=" << ev.id << "\n";
+	DBG_EH << "processing event " << ev.name << " with id=" << ev.id;
 
 	// We currently never pass a null pointer to this function, but to
 	// guard against future modifications:
@@ -424,7 +424,7 @@ void wml_event_pump::raise(const std::string& event,
 	if(game_display::get_singleton() == nullptr)
 		return;
 
-	DBG_EH << "raising event name=" << event << ", id=" << id << "\n";
+	DBG_EH << "raising event name=" << event << ", id=" << id;
 
 	impl_->events_queue.emplace_back(event, id, loc1, loc2, data);
 }
@@ -454,7 +454,7 @@ pump_result_t wml_event_pump::operator()()
 			ss << "name=" << ev.name << ", "
 			   << "id=" << ev.id << "; ";
 		}
-		DBG_EH << "processing queued events: " << ss.str() << "\n";
+		DBG_EH << "processing queued events: " << ss.str();
 	}
 
 	// Ensure the whiteboard doesn't attempt to build its future unit map
@@ -493,7 +493,7 @@ pump_result_t wml_event_pump::operator()()
 		if(event_id.empty()) {
 			// Handle events of this name.
 			impl_->my_manager->execute_on_events(event_name, [&](game_events::manager&, handler_ptr& ptr) {
-				DBG_EH << "processing event " << event_name << " with id=" << ptr->id() << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << ptr->id();
 
 				// Let this handler process our event.
 				process_event(ptr, ev);
@@ -503,7 +503,7 @@ pump_result_t wml_event_pump::operator()()
 			handler_ptr cur_handler = impl_->my_manager->get_event_handler_by_id(event_id);
 
 			if(cur_handler) {
-				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->id() << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->id();
 				process_event(cur_handler, ev);
 			}
 		}

@@ -54,7 +54,7 @@ void event_handlers::log_handlers()
 		ss << "name=" << h->names_raw() << ", with id=" << h->id() << "; ";
 	}
 
-	DBG_EH << "active handlers are now " << ss.str() << "\n";
+	DBG_EH << "active handlers are now " << ss.str();
 }
 
 /**
@@ -111,7 +111,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 		if(lg::info().dont_log(log_event_handler)) {
 			ERR_EH << msg << " (run with --log-info=event_handler for more info)\n";
 		} else {
-			ERR_EH << msg << "\n";
+			ERR_EH << msg;
 		}
 		return {*this, nullptr};
 	}
@@ -136,7 +136,7 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 	// Register the new handler.
 	// Do note active_ holds the main shared_ptr, and the other three containers
 	// construct weak_ptrs from the shared one.
-	DBG_EH << "inserting event handler for name=" << names << " with id=" << id << "\n";
+	DBG_EH << "inserting event handler for name=" << names << " with id=" << id;
 	active_.emplace_back(handler);
 
 	// File by name.
@@ -171,7 +171,7 @@ void event_handlers::remove_event_handler(const std::string& id)
 		return;
 	}
 
-	DBG_EH << "removing event handler with id " << id << "\n";
+	DBG_EH << "removing event handler with id " << id;
 
 	// Find the existing handler with this ID.
 	auto find_it = id_map_.find(id);

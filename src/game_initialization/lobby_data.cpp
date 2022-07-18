@@ -493,7 +493,7 @@ const char* game_info::display_status_string() const
 		case game_info::disp_status::UPDATED:
 			return "updated";
 		default:
-			ERR_CF << "BAD display_status " << static_cast<int>(display_status) << " in game " << id << "\n";
+			ERR_CF << "BAD display_status " << static_cast<int>(display_status) << " in game " << id;
 			return "?";
 	}
 }

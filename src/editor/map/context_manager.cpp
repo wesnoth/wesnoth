@@ -890,7 +890,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		return;
 	}
 
-	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
+	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
 			context_ptr mc(new map_context(game_config_, filename));

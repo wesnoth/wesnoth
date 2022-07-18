@@ -594,7 +594,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			config& addon = get_addon(addon_id);
 
 			if(!addon) {
-				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd();
 			} else {
 				addon["hidden"] = ctl.cmd() == "hide";
 				mark_dirty(addon_id);
@@ -736,7 +736,7 @@ void server::flush_cfg()
 void server::handle_flush(const boost::system::error_code& error)
 {
 	if(error) {
-		ERR_CS << "Error from reload timer: " << error.message() << "\n";
+		ERR_CS << "Error from reload timer: " << error.message();
 		throw boost::system::system_error(error);
 	}
 	write_config();
@@ -1314,7 +1314,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	}
 
 	if(existing_addon && upload["forum_auth"].to_bool() != (*existing_addon)["forum_auth"].to_bool()) {
-		LOG_CS << "Validation error: forum_auth is " << upload["forum_auth"].to_bool() << " but was previously uploaded set to " << (*existing_addon)["forum_auth"].to_bool() << "\n";
+		LOG_CS << "Validation error: forum_auth is " << upload["forum_auth"].to_bool() << " but was previously uploaded set to " << (*existing_addon)["forum_auth"].to_bool();
 		return ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH;
 	} else if(upload["forum_auth"].to_bool()) {
 		if(!user_handler_) {
@@ -1729,7 +1729,7 @@ void server::handle_upload(const server::request& req)
 
 	for(const config& pack : addon.child_range("update_pack")) {
 		if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
-			LOG_CS << "Expiring upate pack for " << pack["from"].str() << " -> " << pack["to"].str() << "\n";
+			LOG_CS << "Expiring upate pack for " << pack["from"].str() << " -> " << pack["to"].str();
 			const auto& pack_filename = pack["filename"].str();
 			filesystem::delete_file(pathstem + '/' + pack_filename);
 			expire_packs.insert(pack_filename);

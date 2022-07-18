@@ -643,7 +643,7 @@ t_string& t_string::operator=(const char* o)
 
 void t_string::add_textdomain(const std::string& name, const std::string& path)
 {
-	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
+	LOG_CF << "Binding textdomain " << name << " to path " << path;
 
 	// Register and (re-)bind this textdomain
 	translation::bind_textdomain(name.c_str(), path.c_str(), "UTF-8");

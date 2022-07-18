@@ -415,7 +415,7 @@ void addon_list::select_first_addon()
 addon_list_definition::addon_list_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing add-on list " << id << "\n";
+	DBG_GUI_P << "Parsing add-on list " << id;
 
 	load_resolutions<resolution>(cfg);
 }

@@ -321,7 +321,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	for(; rated_tg != rated_targets.end(); ++rated_tg) {
 		const target& tg = *(rated_tg->tg);
 
-		LOG_AI << "Considering target at: " << tg.loc <<"\n";
+		LOG_AI << "Considering target at: " << tg.loc;
 		assert(map_.on_board(tg.loc));
 
 		raise_user_interact();
@@ -334,13 +334,13 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		pathfind::plain_route real_route = a_star_search(u->get_location(), tg.loc, locStopValue, cost_calc, map_.w(), map_.h(), &allowed_teleports);
 
 		if(real_route.steps.empty()) {
-			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating << "\n";
+			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating;
 			continue;
 		}
 
 		double real_rating = rate_target(tg, u, dstsrc, enemy_dstsrc, real_route);
 
-		LOG_AI << tg.value << "/" << real_route.move_cost << " = " << real_rating << "\n";
+		LOG_AI << tg.value << "/" << real_route.move_cost << " = " << real_rating;
 
 		if(real_rating > best_rating){
 			best_rating = real_rating;
@@ -429,7 +429,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		access_points(srcdst, best->get_location(), best_target->loc, locs);
 
 		if(locs.empty() == false) {
-			LOG_AI << "supporting unit at " << best_target->loc.wml_x() << "," << best_target->loc.wml_y() << "\n";
+			LOG_AI << "supporting unit at " << best_target->loc.wml_x() << "," << best_target->loc.wml_y();
 			map_location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
@@ -501,7 +501,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			if(res) {
 				return std::pair<map_location,map_location>(map_location(1,1),map_location());
 			} else {
-				LOG_AI << "group didn't move " << group.size() << "\n";
+				LOG_AI << "group didn't move " << group.size();
 
 				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
 				return std::pair(best->get_location(), best->get_location());
@@ -547,7 +547,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
-					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
+					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0;
 					targets.emplace_back(*j,value*4.0,ai_target::type::mass);
 					best_target = targets.end() - 1;
 				}
@@ -576,7 +576,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
 						if(is_dangerous) {
-							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
+							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0;
 							targets.emplace_back(its.first->first,value*2.0,ai_target::type::battle_aid);
 						}
 
@@ -585,7 +585,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 						targets.erase(best_target);
 					}
 
-					LOG_AI << "Moving to " << its.first->first.wml_x() << "," << its.first->first.wml_y() << "\n";
+					LOG_AI << "Moving to " << its.first->first.wml_x() << "," << its.first->first.wml_y();
 
 					return std::pair<map_location,map_location>(its.first->second,its.first->first);
 				} else {
@@ -784,7 +784,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
 				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
 					preferred_moves.push_front(adj[n]);
-					LOG_AI << "added moves: " << adj[n].wml_x() << "," << adj[n].wml_y() << "\n";
+					LOG_AI << "added moves: " << adj[n].wml_x() << "," << adj[n].wml_y();
 				}
 			}
 		} else {

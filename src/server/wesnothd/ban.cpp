@@ -272,7 +272,7 @@ void ban_manager::read()
 		return;
 	}
 
-	LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
+	LOG_SERVER << "Reading bans from " <<  filename_;
 	config cfg;
 	dirty_ = false;
 	filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
@@ -309,7 +309,7 @@ void ban_manager::write()
 		return;
 	}
 
-	LOG_SERVER << "Writing bans to " << filename_ << "\n";
+	LOG_SERVER << "Writing bans to " << filename_;
 	dirty_ = false;
 
 	config cfg;

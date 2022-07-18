@@ -196,7 +196,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 		try {
 			x = std::stoi(xs) - 1;
 		} catch(const std::invalid_argument&) {
-			ERR_CF << "Invalid map coordinate: " << xs << "\n";
+			ERR_CF << "Invalid map coordinate: " << xs;
 		}
 	}
 
@@ -204,7 +204,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 		try {
 			y = std::stoi(ys) - 1;
 		} catch(const std::invalid_argument&) {
-			ERR_CF << "Invalid map coordinate: " << ys << "\n";
+			ERR_CF << "Invalid map coordinate: " << ys;
 		}
 	}
 }
@@ -329,7 +329,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 	//
 	// No warning if only x or only y was given, as matching only that coordinate seems sane.
 	if(xlocs.size() != ylocs.size() && xlocs.size() && ylocs.size()) {
-		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc << "\n";
+		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc;
 	}
 
 	std::size_t i = 0;

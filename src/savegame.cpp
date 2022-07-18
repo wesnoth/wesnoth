@@ -891,7 +891,7 @@ void convert_old_saves(config& cfg)
 		convert_old_saves_1_15_3(cfg);
 	}
 
-	LOG_RG << "cfg after conversion " << cfg << "\n";
+	LOG_RG << "cfg after conversion " << cfg;
 }
 
 } // namespace savegame

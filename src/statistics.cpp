@@ -700,7 +700,7 @@ stats calculate_stats(const std::string & save_id)
 {
 	stats res;
 
-	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
+	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size();
 	// The order of this loop matters since the turn stats are taken from the
 	// last stats merged.
 	for ( std::size_t i = 0; i != master_stats.size(); ++i ) {

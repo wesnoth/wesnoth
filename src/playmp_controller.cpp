@@ -123,7 +123,7 @@ void playmp_controller::play_human_turn()
 
 	mp::ui_alerts::turn_changed(current_team().current_player());
 
-	LOG_NG << "events::commands_disabled=" << events::commands_disabled << "\n";
+	LOG_NG << "events::commands_disabled=" << events::commands_disabled;
 
 	remove_blindfold();
 

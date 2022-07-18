@@ -531,9 +531,9 @@ int icompare(const std::string& s1, const std::string& s2)
 			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
 
 			try { //just to be safe.
-				ERR_G << get_manager().debug_description() << "\n";
+				ERR_G << get_manager().debug_description();
 			} catch (const std::exception& e) {
-				ERR_G << e.what() << "\n";
+				ERR_G << e.what();
 			}
 			bad_cast_once = true;
 		}

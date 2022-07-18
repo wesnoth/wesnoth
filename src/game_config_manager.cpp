@@ -177,7 +177,7 @@ void game_config_manager::load_game_config_with_loadscreen(
 		}
 	}
 
-	LOG_CONFIG << "load_game_config reload everything: " << reload_everything << "\n";
+	LOG_CONFIG << "load_game_config reload everything: " << reload_everything;
 
 	gui2::dialogs::loading_screen::display([this, reload_everything, classification, scenario_id]() {
 		load_game_config(reload_everything, classification, scenario_id);

@@ -206,7 +206,7 @@ void editor_map::select_all()
 
 bool editor_map::everything_selected() const
 {
-	LOG_ED << selection_.size() << " " << total_width() * total_height() << "\n";
+	LOG_ED << selection_.size() << " " << total_width() * total_height();
 	return static_cast<int>(selection_.size()) == total_width() * total_height();
 }
 

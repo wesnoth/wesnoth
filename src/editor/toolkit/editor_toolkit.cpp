@@ -130,7 +130,7 @@ common_palette& editor_toolkit::get_palette()
 
 void editor_toolkit::update_mouse_action_highlights()
 {
-	DBG_ED << __func__ << "\n";
+	DBG_ED << __func__;
 	int x, y;
 	sdl::get_mouse_state(&x, &y);
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
