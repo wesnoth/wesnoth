@@ -39,7 +39,7 @@ namespace {
 std::vector<top_level_drawable*> top_level_drawables_;
 std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
-bool tlds_invalidated_ = false;
+bool tlds_need_tidying_ = false;
 uint32_t last_sparkle_ = 0;
 } // namespace
 
@@ -50,6 +50,7 @@ static void layout();
 static void render();
 static bool expose();
 static void wait_for_vsync();
+static void tidy_drawables();
 
 void invalidate_region(const rect& region)
 {
@@ -116,8 +117,11 @@ void sparkle()
 		throw game::error("recursive draw");
 	}
 
-	// Keep track of whether the TLD vector has been invalidated.
-	tlds_invalidated_ = false;
+	// Remove any invalidated TLDs from previous iterations or events.
+	if (tlds_need_tidying_) {
+		tidy_drawables();
+		tlds_need_tidying_ = false;
+	}
 
 	// Animate, process, and update state.
 	draw_manager::update();
@@ -165,25 +169,25 @@ static void wait_for_vsync()
 
 static void update()
 {
-	for (auto tld : top_level_drawables_) {
-		if (tlds_invalidated_) { break; }
-		tld->update();
+	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+		top_level_drawable* tld = top_level_drawables_[i];
+		if (tld) { tld->update(); }
 	}
 }
 
 static void layout()
 {
-	for (auto tld : top_level_drawables_) {
-		if (tlds_invalidated_) { break; }
-		tld->layout();
+	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+		top_level_drawable* tld = top_level_drawables_[i];
+		if (tld) { tld->layout(); }
 	}
 }
 
 static void render()
 {
-	for (auto tld : top_level_drawables_) {
-		if (tlds_invalidated_) { break; }
-		tld->render();
+	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+		top_level_drawable* tld = top_level_drawables_[i];
+		if (tld) { tld->render(); }
 	}
 }
 
@@ -217,6 +221,7 @@ next:
 		//STREAMING_LOG << "+";
 		auto clipper = draw::override_clip(r);
 		for (auto tld : top_level_drawables_) {
+			if (!tld) { continue; }
 			rect i = r.intersect(tld->screen_location());
 			if (i.empty()) {
 				//DBG_DM << "  skip " << static_cast<void*>(tld);
@@ -232,6 +237,8 @@ next:
 	return drawn;
 }
 
+// Note: This function ensures that multiple copies are not added.
+// We can assume top_level_drawables_ will contain at most one of each TLD.
 void register_drawable(top_level_drawable* tld)
 {
 	DBG_DM << "registering TLD " << static_cast<void*>(tld);
@@ -247,17 +254,45 @@ void deregister_drawable(top_level_drawable* tld)
 {
 	DBG_DM << "deregistering TLD " << static_cast<void*>(tld);
 	auto& vec = top_level_drawables_;
-	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
-	tlds_invalidated_ = true;
+	auto it = std::find(vec.begin(), vec.end(), tld);
+	// Sanity check
+	if (it == vec.end()) {
+		WRN_DM << "attempted to deregister nonexistant TLD "
+			<< static_cast<void*>(tld);
+		return;
+	}
+	// Replace it with a null pointer. We will tidy it later.
+	// This prevents removals from interfering with TLD iteration.
+	*it = nullptr;
+	tlds_need_tidying_ = true;
 }
 
 void raise_drawable(top_level_drawable* tld)
 {
 	DBG_DM << "raising TLD " << static_cast<void*>(tld);
 	auto& vec = top_level_drawables_;
-	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
+	auto it = std::find(vec.begin(), vec.end(), tld);
+	// Sanity check
+	if (it == vec.end()) {
+		ERR_DM << "attempted to raise nonexistant TLD "
+			<< static_cast<void*>(tld);
+		return;
+	}
+	// Invalidate existing occurances. They will be removed later.
+	for ( ; it != vec.end(); it = std::find(it, vec.end(), tld)) {
+		*it = nullptr;
+	}
+	// Then just readd it on the end.
 	vec.push_back(tld);
-	tlds_invalidated_ = true;
+	tlds_need_tidying_ = true;
+}
+
+static void tidy_drawables()
+{
+	// Remove all invalidated TLDs from the list.
+	DBG_DM << "tidying drawables";
+	auto& vec = top_level_drawables_;
+	vec.erase(std::remove(vec.begin(), vec.end(), nullptr), vec.end());
 }
 
 } // namespace draw_manager

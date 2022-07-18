@@ -177,7 +177,6 @@ void loading_screen::process(events::pump_info&)
 	// If there's nothing more to do, close.
 	if (load_funcs_.empty()) {
 		draw_manager::invalidate_region(get_window()->get_rectangle());
-		draw_manager::deregister_drawable(this);
 		get_window()->close();
 	}
 }
