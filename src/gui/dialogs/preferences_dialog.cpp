@@ -18,6 +18,7 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
+#include "display.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
@@ -325,6 +326,11 @@ void preferences_dialog::apply_pixel_scale()
 
 	// Update draw buffers, taking these into account.
 	video::update_buffers();
+
+	// Update game display, if active
+	if(::display* disp = display::get_singleton()) {
+		disp->queue_rerender();
+	}
 
 	// Raise a window resize event so we can react to the change
 	events::raise_resize_event();
