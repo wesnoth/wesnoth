@@ -45,7 +45,7 @@ extern lg::log_domain log_gui_general;
 
 extern lg::log_domain log_gui_iterator;
 
-#define TST_GUI_I LOG_STREAM_NAMELESS(debug, gui2::log_gui_iterator)
+#define TST_GUI_I LOG_STREAM_NAMELESS_STREAMING(debug, gui2::log_gui_iterator)
 #define DBG_GUI_I LOG_STREAM_INDENT(debug, gui2::log_gui_iterator)
 #define LOG_GUI_I LOG_STREAM_INDENT(info, gui2::log_gui_iterator)
 #define WRN_GUI_I LOG_STREAM_INDENT(warn, gui2::log_gui_iterator)
