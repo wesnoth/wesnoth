@@ -207,7 +207,7 @@ config vconfig::get_parsed_config() const
 			}
 			catch(const recursion_error &err) {
 				vconfig_recursion.erase(vname);
-				WRN_NG << err.message << std::endl;
+				WRN_NG << err.message;
 				if(vconfig_recursion.empty()) {
 					res.add_child("insert_tag", insert_cfg.get_config());
 				} else {
@@ -552,7 +552,7 @@ void scoped_xy_unit::activate()
 		tmp_cfg["y"] = loc_.wml_y();
 		LOG_NG << "auto-storing $" << name() << " at (" << loc_ << ")\n";
 	} else {
-		ERR_NG << "failed to auto-store $" << name() << " at (" << loc_ << ")" << std::endl;
+		ERR_NG << "failed to auto-store $" << name() << " at (" << loc_ << ")";
 	}
 }
 

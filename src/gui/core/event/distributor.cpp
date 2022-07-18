@@ -337,7 +337,7 @@ void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 		hover_widget_ = widget;
 		hover_position_ = coordinate;
 	} else {
-		ERR_GUI_E << LOG_HEADER << "Failed to add hover timer." << std::endl;
+		ERR_GUI_E << LOG_HEADER << "Failed to add hover timer.";
 	}
 }
 
@@ -350,7 +350,7 @@ void mouse_motion::stop_hover_timer()
 				  << ".\n";
 
 		if(!remove_timer(hover_timer_)) {
-			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer." << std::endl;
+			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.";
 		}
 
 		hover_timer_ = 0;

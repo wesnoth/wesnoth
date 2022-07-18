@@ -539,7 +539,7 @@ mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		ERR_SQL << "SQL query failed for query: `"+sql+"`" << std::endl;
+		ERR_SQL << "SQL query failed for query: `"+sql+"`";
 		throw e;
 	}
 }
@@ -554,7 +554,7 @@ unsigned long long dbconn::modify(mariadb::connection_ref connection, const std:
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		ERR_SQL << "SQL query failed for query: `"+sql+"`" << std::endl;
+		ERR_SQL << "SQL query failed for query: `"+sql+"`";
 		throw e;
 	}
 }
@@ -569,7 +569,7 @@ unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, con
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		ERR_SQL << "SQL query failed for query: `"+sql+"`" << std::endl;
+		ERR_SQL << "SQL query failed for query: `"+sql+"`";
 		throw e;
 	}
 }

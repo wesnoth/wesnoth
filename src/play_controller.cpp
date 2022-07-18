@@ -208,7 +208,7 @@ void play_controller::init(const config& level)
 	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
-		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks());
 		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
@@ -223,19 +223,19 @@ void play_controller::init(const config& level)
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
-		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_whiteboard);
 		whiteboard_manager_.reset(new wb::manager());
 		resources::whiteboard = whiteboard_manager_;
 
-		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		preferences::encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
 
-		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
 
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
@@ -260,9 +260,9 @@ void play_controller::init(const config& level)
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
-		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks());
 
-		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks());
 		// This *needs* to be created before the show_intro and show_map_scene
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
@@ -337,11 +337,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 void play_controller::init_managers()
 {
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
+	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks());
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
+	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks());
 }
 
 void play_controller::fire_preload()
@@ -656,7 +656,7 @@ void play_controller::enter_textbox()
 		break;
 	default:
 		menu_handler_.get_textbox().close();
-		ERR_DP << "unknown textbox mode" << std::endl;
+		ERR_DP << "unknown textbox mode";
 	}
 }
 
@@ -750,7 +750,7 @@ void play_controller::tab()
 	}
 
 	default:
-		ERR_DP << "unknown textbox mode" << std::endl;
+		ERR_DP << "unknown textbox mode";
 	} // switch(mode)
 
 	menu_handler_.get_textbox().tab(dictionary);
@@ -1033,9 +1033,9 @@ void play_controller::check_victory()
 		}
 	}
 
-	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
-	DBG_EE << "found_player: " << found_player << std::endl;
-	DBG_EE << "found_network_player: " << found_network_player << std::endl;
+	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_;
+	DBG_EE << "found_player: " << found_player;
+	DBG_EE << "found_network_player: " << found_network_player;
 
 	if(!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
@@ -1051,11 +1051,11 @@ void play_controller::check_victory()
 			LOG_AIT << l << " (using " << ai << ") ";
 		}
 
-		LOG_AIT << std::endl;
+		LOG_AIT;
 		ai_testing::log_victory(not_defeated);
 	}
 
-	DBG_EE << "throwing end level exception..." << std::endl;
+	DBG_EE << "throwing end level exception...";
 	// Also proceed to the next scenario when another player survived.
 	end_level_data el_data;
 	el_data.proceed_to_next_level = found_player || found_network_player;
@@ -1345,7 +1345,7 @@ void play_controller::play_turn()
 	LOG_NG << "turn: " << turn() << "\n";
 
 	if(gui_->video().non_interactive()) {
-		LOG_AIT << "Turn " << turn() << ":" << std::endl;
+		LOG_AIT << "Turn " << turn() << ":";
 	}
 
 	int last_player_number = gamestate_->player_number_;
@@ -1387,7 +1387,7 @@ void play_controller::play_turn()
 			}
 
 			if(gui_->video().non_interactive()) {
-				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages" << std::endl;
+				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages";
 				ai_testing::log_turn_end(current_side());
 			}
 		}

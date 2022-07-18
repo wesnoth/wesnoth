@@ -168,7 +168,7 @@ void playsingle_controller::play_scenario_main_loop()
 
 	ai_testing::log_game_start();
 	if(get_teams().empty()) {
-		ERR_NG << "Playing game with 0 teams." << std::endl;
+		ERR_NG << "Playing game with 0 teams.";
 	}
 
 	while(true) {
@@ -265,9 +265,9 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 			soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);
 		} catch(const bad_lexical_cast&) {
-			ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
-			ERR_NG << "sound_source config was: " << s.debug() << std::endl;
-			ERR_NG << "Skipping this sound source..." << std::endl;
+			ERR_NG << "Error when parsing sound_source config: bad lexical cast.";
+			ERR_NG << "sound_source config was: " << s.debug();
+			ERR_NG << "Skipping this sound source...";
 		}
 	}
 
@@ -630,7 +630,7 @@ void playsingle_controller::do_idle_notification()
 void playsingle_controller::play_network_turn()
 {
 	// There should be no networked sides in single-player.
-	ERR_NG << "Networked team encountered by playsingle_controller." << std::endl;
+	ERR_NG << "Networked team encountered by playsingle_controller.";
 }
 
 void playsingle_controller::handle_generic_event(const std::string& name)

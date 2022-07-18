@@ -324,7 +324,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 
 		async_write(*socket, buffers, yield);
 	} catch (simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 		throw;
 	}
 }
@@ -610,7 +610,7 @@ void server_base::load_tls_config(const config& cfg)
 std::string server_base::hash_password(const std::string& pw, const std::string& salt, const std::string& username)
 {
 	if(salt.length() < 12) {
-		ERR_SERVER << "Bad salt found for user: " << username << std::endl;
+		ERR_SERVER << "Bad salt found for user: " << username;
 		return "";
 	}
 
@@ -642,11 +642,11 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 			auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
 			return hash.base64_digest();
 		} catch(const utils::hash_error& err) {
-			ERR_SERVER << "bcrypt hash failed for user " << username << ": " << err.what() << std::endl;
+			ERR_SERVER << "bcrypt hash failed for user " << username << ": " << err.what();
 			return "";
 		}
 	} else {
-		ERR_SERVER << "Unable to determine how to hash the password for user: " << username << std::endl;
+		ERR_SERVER << "Unable to determine how to hash the password for user: " << username;
 		return "";
 	}
 }

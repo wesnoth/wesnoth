@@ -124,9 +124,9 @@ void game_board::check_victory(bool& continue_level,
 	not_defeated = std::set<unsigned>();
 
 	for(const unit& i : units()) {
-		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
+		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side();
 		const team& tm = get_team(i.side());
-		DBG_EE << "That team's defeat condition is: " << defeat_condition::get_string(tm.defeat_cond()) << std::endl;
+		DBG_EE << "That team's defeat condition is: " << defeat_condition::get_string(tm.defeat_cond());
 		if(i.can_recruit() && tm.defeat_cond() == defeat_condition::type::no_leader_left) {
 			not_defeated.insert(i.side());
 		} else if(tm.defeat_cond() == defeat_condition::type::no_units_left) {
@@ -157,7 +157,7 @@ void game_board::check_victory(bool& continue_level,
 
 	for(std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
 		std::size_t side = *n - 1;
-		DBG_EE << "Side " << (side + 1) << " is a not-defeated team" << std::endl;
+		DBG_EE << "Side " << (side + 1) << " is a not-defeated team";
 
 		std::set<unsigned>::iterator m(n);
 		for(++m; m != not_defeated.end(); ++m) {
@@ -165,7 +165,7 @@ void game_board::check_victory(bool& continue_level,
 				return;
 			}
 
-			DBG_EE << "Side " << (side + 1) << " and " << *m << " are not enemies." << std::endl;
+			DBG_EE << "Side " << (side + 1) << " and " << *m << " are not enemies.";
 		}
 
 		if(teams()[side].is_local_human()) {

@@ -48,14 +48,14 @@ void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::stri
 	const std::string aspect_factory_key = id+"*"+cfg["name"];//@note: hack which combines aspect id and name to get the std::string key of the aspect factory
 	aspect_factory::factory_map::iterator f = aspect_factory::get_list().find(aspect_factory_key);
 	if (f == aspect_factory::get_list().end()){
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]" << std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	aspect_ptr new_aspect = f->second->get_new_instance(ai_,cfg,id);
 	if (!new_aspect) {
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_aspect;
@@ -64,14 +64,14 @@ void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::stri
 void engine_cpp::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b ){
 	candidate_action_factory::factory_map::iterator f = candidate_action_factory::get_list().find(cfg["name"]);
 	if (f == candidate_action_factory::get_list().end()){
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN candidate_action["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN candidate_action["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	candidate_action_ptr new_candidate_action = f->second->get_new_instance(context,cfg);
 	if (!new_candidate_action) {
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE candidate_action["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE candidate_action["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_candidate_action;
@@ -82,14 +82,14 @@ void engine_cpp::do_parse_stage_from_config( ai_context &context, const config &
 {
 	stage_factory::factory_map::iterator f = stage_factory::get_list().find(cfg["name"]);
 	if (f == stage_factory::get_list().end()){
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN stage["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN stage["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	stage_ptr new_stage = f->second->get_new_instance(context,cfg);
 	if (!new_stage) {
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE stage["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE stage["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_stage;
@@ -99,14 +99,14 @@ void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 {
 	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
 	if (f == goal_factory::get_list().end()){
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
 	if (!new_goal || !new_goal->ok()) {
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_goal;
@@ -116,14 +116,14 @@ void engine_cpp::do_parse_engine_from_config(const config &cfg, std::back_insert
 {
 	engine_factory::factory_map::iterator f = engine_factory::get_list().find(cfg["name"]);
 	if (f == engine_factory::get_list().end()){
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN engine["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN engine["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	engine_ptr new_engine = f->second->get_new_instance(ai_,cfg);
 	if (!new_engine) {
-		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE engine["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE engine["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_CPP << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_engine;

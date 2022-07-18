@@ -281,7 +281,7 @@ void locator::parse_arguments()
 		if(!parsed.good) {
 			std::string_view view{ fn };
 			std::string_view stripped = view.substr(0, view.find(","));
-			ERR_IMG << "Invalid data URI: " << stripped << std::endl;
+			ERR_IMG << "Invalid data URI: " << stripped;
 		}
 
 		val_.is_data_uri_ = true;
@@ -536,7 +536,7 @@ static surface load_image_file(const image::locator& loc)
 	}
 
 	if(!res && !name.empty()) {
-		ERR_IMG << "could not open image '" << name << "'" << std::endl;
+		ERR_IMG << "could not open image '" << name << "'";
 		if(game_config::debug && name != game_config::images::missing)
 			return get_surface(game_config::images::missing, UNSCALED);
 	}
@@ -617,21 +617,21 @@ static surface load_image_data_uri(const image::locator& loc)
 	if(!parsed.good) {
 		std::string_view fn = loc.get_filename();
 		std::string_view stripped = fn.substr(0, fn.find(","));
-		ERR_IMG << "Invalid data URI: " << stripped << std::endl;
+		ERR_IMG << "Invalid data URI: " << stripped;
 	} else if(parsed.mime.substr(0, 5) != "image") {
-		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime << std::endl;
+		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
 	} else {
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
 		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size()), &SDL_FreeRW};
 
 		if(image_data.empty()) {
-			ERR_IMG << "Invalid encoding in data URI" << std::endl;
+			ERR_IMG << "Invalid encoding in data URI";
 		} else if(parsed.mime == "image/png") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
 		} else {
-			ERR_IMG << "Invalid image MIME type: " << parsed.mime << std::endl;
+			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
 		}
 	}
 
@@ -811,7 +811,7 @@ surface get_surface(
 
 	// select associated cache
 	if(type >= NUM_TYPES) {
-		WRN_IMG << "get_surface called with unknown image type" << std::endl;
+		WRN_IMG << "get_surface called with unknown image type";
 		return res;
 	}
 	surface_cache& imap = surfaces_[type];
@@ -821,7 +821,7 @@ surface get_surface(
 		return i_locator.locate_in_cache(imap);
 	}
 
-	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator << std::endl;
+	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
 
 	// not cached, generate it
 	switch(type) {
@@ -890,7 +890,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 		}
 	}
 
-	DBG_IMG << "lit surface cache miss: " << i_locator << std::endl;
+	DBG_IMG << "lit surface cache miss: " << i_locator;
 
 	// not cached yet, generate it
 	res = get_surface(i_locator, HEXED);
@@ -927,7 +927,7 @@ texture get_lighted_texture(
 		}
 	}
 
-	DBG_IMG << "lit texture cache miss: " << i_locator << std::endl;
+	DBG_IMG << "lit texture cache miss: " << i_locator;
 
 	// not cached yet, generate it
 	texture tex(get_lighted_image(i_locator, ls));
@@ -1078,14 +1078,14 @@ save_result save_image(const surface& surf, const std::string& filename)
 	}
 
 	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
-		LOG_IMG << "Writing a JPG image to " << filename << std::endl;
+		LOG_IMG << "Writing a JPG image to " << filename;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
 	if(filesystem::ends_with(filename, ".png")) {
-		LOG_IMG << "Writing a PNG image to " << filename << std::endl;
+		LOG_IMG << "Writing a PNG image to " << filename;
 
 		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
@@ -1145,7 +1145,7 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 		return res;
 	}
 
-	DBG_IMG << "texture cache [" << type << "] miss: " << i_locator << std::endl;
+	DBG_IMG << "texture cache [" << type << "] miss: " << i_locator;
 
 	//
 	// No texture was cached. In that case, create a new one. The explicit cases require special

@@ -436,7 +436,7 @@ void lua_interpreter::controller::update_view()
 /** Find all the widgets managed by the controller and connect them to handler methods. */
 void lua_interpreter::controller::bind(window& window)
 {
-	LOG_LUA << "Entering lua_interpreter::controller::bind" << std::endl;
+	LOG_LUA << "Entering lua_interpreter::controller::bind";
 	assert(view_);
 	view_->bind(window);
 
@@ -475,7 +475,7 @@ void lua_interpreter::controller::bind(window& window)
 		copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
-	LOG_LUA << "Exiting lua_interpreter::controller::bind" << std::endl;
+	LOG_LUA << "Exiting lua_interpreter::controller::bind";
 }
 
 /** Copy text to the clipboard */
@@ -696,7 +696,7 @@ void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
 void lua_interpreter::pre_show(window& window)
 {
-	LOG_LUA << "Entering lua_interpreter::view::pre_show" << std::endl;
+	LOG_LUA << "Entering lua_interpreter::view::pre_show";
 	register_text("text_entry", false, controller_->text_entry_, true);
 	controller_->bind(window);
 
@@ -705,7 +705,7 @@ void lua_interpreter::pre_show(window& window)
 
 	controller_->update_view();
 	//window.invalidate_layout(); // workaround for assertion failure
-	LOG_LUA << "Exiting lua_interpreter::view::pre_show" << std::endl;
+	LOG_LUA << "Exiting lua_interpreter::view::pre_show";
 }
 
 lua_interpreter::lua_interpreter(lua_kernel_base & lk)

@@ -155,9 +155,9 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 		mods.pop_front( );
 	}
 
-	DBG_NG << "Active content for game set to:" << std::endl;
+	DBG_NG << "Active content for game set to:";
 	for(const std::string& mod : res) {
-		DBG_NG << mod << std::endl;
+		DBG_NG << mod;
 	}
 
 	return res;

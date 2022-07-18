@@ -805,7 +805,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 		return nullptr;
 	}
 
-	DBG_FT << "creating new text surface" << std::endl;
+	DBG_FT << "creating new text surface";
 
 	// Check to prevent arithmetic overflow when calculating (stride * height).
 	// The size of the viewport should already provide a far lower limit on the

@@ -207,7 +207,7 @@ std::vector<int> game_lua_kernel::get_sides_vector(const vconfig& cfg)
 	const vconfig &ssf = cfg.child("filter_side");
 
 	if (!ssf.null()) {
-		if(!sides.empty()) { WRN_LUA << "ignoring duplicate side filter information (inline side=)" << std::endl; }
+		if(!sides.empty()) { WRN_LUA << "ignoring duplicate side filter information (inline side=)"; }
 		side_filter filter(ssf, &game_state_);
 		return filter.get_teams();
 	}
@@ -731,7 +731,7 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 	std::string ids(luaL_checkstring(L, 1));
 	for(const std::string& id : utils::split(ids, ',', utils::STRIP_SPACES)) {
 		if(id.empty()) {
-			WRN_LUA << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
+			WRN_LUA << "[clear_menu_item] has been given an empty id=, ignoring";
 			continue;
 		}
 		game_state_.get_wml_menu_items().erase(id);
@@ -3502,7 +3502,7 @@ int game_lua_kernel::intf_get_side(lua_State* L)
  */
 int game_lua_kernel::intf_get_sides(lua_State* L)
 {
-	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << std::dec << " myname = " << my_name() << std::endl;
+	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << std::dec << " myname = " << my_name();
 	std::vector<int> sides;
 	const vconfig ssf = luaW_checkvconfig(L, 1, true);
 	if(ssf.null()) {
@@ -4325,7 +4325,7 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 		vconfig cfg = luaW_checkvconfig(L, 1);
 
 		if(cfg.get_children("time").empty()) {
-			ERR_LUA << "attempted to to replace ToD schedule with empty schedule" << std::endl;
+			ERR_LUA << "attempted to to replace ToD schedule with empty schedule";
 		} else {
 			tod_man().replace_schedule(cfg.get_parsed_config());
 			if (game_display_) {

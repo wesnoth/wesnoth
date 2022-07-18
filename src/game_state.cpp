@@ -171,7 +171,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
 			board_.map().set_starting_position(i->side,i->pos);
-			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
+			LOG_NG << "placing side " << i->side << " at " << i->pos;
 		}
 	}
 }
@@ -181,16 +181,16 @@ void game_state::init(const config& level, play_controller & pc)
 	events_manager_->read_scenario(level, *lua_kernel_);
 	gui2::dialogs::loading_screen::progress(loading_stage::init_teams);
 	if (level["modify_placing"].to_bool()) {
-		LOG_NG << "modifying placing..." << std::endl;
+		LOG_NG << "modifying placing...";
 		place_sides_in_preferred_locations(level);
 	}
 
-	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks());
 	for (const config &t : level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks());
 
 	board_.teams().resize(level.child_count("side"));
 	if (player_number_ > static_cast<int>(board_.teams().size())) {

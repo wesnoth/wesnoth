@@ -460,7 +460,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 	queue_redraw();
-	DBG_DP << "show tooltip queued to " << get_rectangle() << std::endl;
+	DBG_DP << "show tooltip queued to " << get_rectangle();
 }
 
 void window::show_non_modal(/*const unsigned auto_close_timeout*/)
@@ -484,7 +484,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	suspend_drawing_ = false;
 	queue_redraw();
 
-	DBG_DP << "show non-modal queued to " << get_rectangle() << std::endl;
+	DBG_DP << "show non-modal queued to " << get_rectangle();
 
 	push_draw_event();
 
@@ -582,7 +582,7 @@ void window::draw()
 {
 	// TODO: draw_manager - is there a better way of handling window close?
 	if(suspend_drawing_) {
-		WRN_DP << "window::draw called with drawing suspended" << std::endl;
+		WRN_DP << "window::draw called with drawing suspended";
 		return;
 	}
 
@@ -608,7 +608,7 @@ void window::undraw()
 
 bool window::expose(const SDL_Rect& region)
 {
-	DBG_DP << "window::expose " << region << std::endl;
+	DBG_DP << "window::expose " << region;
 	rect i = get_rectangle().intersect(region);
 	i.clip(draw::get_clip());
 	if (i.empty()) {
@@ -718,7 +718,7 @@ void window::layout()
 	if(!need_layout_) {
 		return;
 	}
-	DBG_DP << "window::layout" << std::endl;
+	DBG_DP << "window::layout";
 
 	/***** Initialize. *****/
 

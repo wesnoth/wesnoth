@@ -126,7 +126,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 		return run_and_throw(commandname, data, use_undo, show, error_handler);
 	}
 	case(synced_context::LOCAL_CHOICE):
-		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
+		ERR_REPLAY << "trying to execute action while being in a local_choice";
 		// we reject it because such actions usually change the gamestate badly which is not intended during a
 		// local_choice. Also we cannot invoke synced commands here, because multiple clients might run local choices
 		// simultaneously so it could result in invoking different synced commands simultaneously.
@@ -148,7 +148,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 
 void synced_context::default_error_function(const std::string& message)
 {
-	ERR_REPLAY << "Unexpected Error during synced execution" << message << std::endl;
+	ERR_REPLAY << "Unexpected Error during synced execution" << message;
 	assert(!"Unexpected Error during synced execution, more info in stderr.");
 }
 

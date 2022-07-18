@@ -162,7 +162,7 @@ namespace
 			}
 			int comp = cur->first.compare(*cur_known);
 			if(comp < 0) {
-				WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+				WRN_UT << "Unknown attribute '" << cur->first << "' discarded.";
 				++cur;
 			}
 			else if(comp == 0) {
@@ -175,7 +175,7 @@ namespace
 		}
 
 		while(cur != end) {
-			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
+			WRN_UT << "Unknown attribute '" << cur->first << "' discarded.";
 			++cur;
 		}
 	}
@@ -719,7 +719,7 @@ unit::~unit()
 			units_with_cache.erase(itor);
 		}
 	} catch(const std::exception & e) {
-		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
+		ERR_UT << "Caught exception when destroying unit: " << e.what();
 	} catch(...) {}
 }
 
@@ -801,7 +801,7 @@ void unit::generate_name()
 
 void unit::generate_traits(bool must_have_only)
 {
-	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with must_have_only " << must_have_only  << std::endl;
+	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with must_have_only " << must_have_only;
 	const unit_type& u_type = type();
 
 	// Calculate the unit's traits
@@ -1954,7 +1954,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			a->apply_modification(effect);
 		}
 	} else if(apply_to == "hitpoints") {
-		LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << std::endl;
+		LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_;
 		const std::string& increase_hp = effect["increase"];
 		const std::string& increase_total = effect["increase_total"];
 		const std::string& set_hp = effect["set"];
@@ -1995,9 +1995,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
 		}
 
-		LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << std::endl;
+		LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_;
 		if(hit_points_ > max_hit_points_ && !violate_max) {
-			LOG_UT << "resetting hp to max" << std::endl;
+			LOG_UT << "resetting hp to max";
 			hit_points_ = max_hit_points_;
 		}
 
@@ -2122,12 +2122,12 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			}
 		}
 	} else if(apply_to == "image_mod") {
-		LOG_UT << "applying image_mod" << std::endl;
+		LOG_UT << "applying image_mod";
 		std::string mod = effect["replace"];
 		if(!mod.empty()){
 			image_mods_ = mod;
 		}
-		LOG_UT << "applying image_mod" << std::endl;
+		LOG_UT << "applying image_mod";
 		mod = effect["add"].str();
 		if(!mod.empty()){
 			if(!image_mods_.empty()) {
@@ -2138,7 +2138,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		game_config::add_color_info(game_config_view::wrap(effect));
-		LOG_UT << "applying image_mod" << std::endl;
+		LOG_UT << "applying image_mod";
 	} else if(apply_to == "new_animation") {
 		anim_comp_->apply_new_animation_effect(effect);
 	} else if(apply_to == "ellipse") {
@@ -2245,7 +2245,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				heal_fully();
 			}
 		} else {
-			WRN_UT << "unknown variation '" << variation_id << "' (name=) in [effect]apply_to=variation, ignoring" << std::endl;
+			WRN_UT << "unknown variation '" << variation_id << "' (name=) in [effect]apply_to=variation, ignoring";
 		}
 	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
@@ -2261,7 +2261,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				heal_fully();
 			}
 		} else {
-			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring" << std::endl;
+			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring";
 		}
 	}
 }
@@ -2439,7 +2439,7 @@ void unit::apply_modifications()
 bool unit::invisible(const map_location& loc, bool see_all) const
 {
 	if(loc != get_location()) {
-		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location() << std::endl;
+		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location();
 	}
 
 	// This is a quick condition to check, and it does not depend on the
@@ -2553,7 +2553,7 @@ unit& unit::mark_clone(bool is_temporary)
 		if(pos != std::string::npos && pos+1 < id_.size()
 		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
 			// this appears to be a duplicate of a generic unit, so give it a new id
-			WRN_UT << "assigning new id to clone of generic unit " << id_ << std::endl;
+			WRN_UT << "assigning new id to clone of generic unit " << id_;
 			id_.clear();
 			set_underlying_id(ids);
 		}
@@ -2580,7 +2580,7 @@ unit_movement_resetter::~unit_movement_resetter()
 			* It might be valid that the unit is not in the unit map.
 			* It might also mean a no longer valid unit will be assigned to.
 			*/
-			DBG_UT << "The unit to be removed is not in the unit map." << std::endl;
+			DBG_UT << "The unit to be removed is not in the unit map.";
 		}
 
 		u_.set_movement(moves_);
@@ -2660,7 +2660,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	try {
 		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor{});
 	} catch(std::invalid_argument& e) {
-		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit" << std::endl;
+		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit";
 		upkeep_ = upkeep_full{};
 	}
 }

@@ -287,7 +287,7 @@ void saved_game::expand_scenario()
 			update_label();
 			set_defaults();
 		} else {
-			ERR_NG << "Couldn't find [" << classification().get_tagname() << "] with id=" << carryover_["next_scenario"] << std::endl;
+			ERR_NG << "Couldn't find [" << classification().get_tagname() << "] with id=" << carryover_["next_scenario"];
 			starting_point_type_ = starting_point::INVALID;
 			starting_point_.clear();
 		}
@@ -361,7 +361,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		}
 	} else {
 		// TODO: A user message instead?
-		ERR_NG << "Couldn't find [" << type << "] with id=" << id << std::endl;
+		ERR_NG << "Couldn't find [" << type << "] with id=" << id;
 	}
 }
 
@@ -431,11 +431,11 @@ void saved_game::expand_mp_options()
 					try {
 						variable_access_create(option["id"], variables).as_scalar() = option["value"];
 					} catch(const invalid_variablename_exception&) {
-						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
+						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"];
 					}
 				}
 			} else {
-				LOG_NG << "Couldn't find [" << mod.type << "] with id=" << mod.id << " for [option]s" << std::endl;
+				LOG_NG << "Couldn't find [" << mod.type << "] with id=" << mod.id << " for [option]s";
 			}
 		}
 	}

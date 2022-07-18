@@ -148,7 +148,7 @@ void write_preferences()
 		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
 		write(*prefs_file, prefs);
 	} catch(const filesystem::io_exception&) {
-		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
+		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'";
 	}
 
 	preferences::save_credentials();
@@ -156,7 +156,7 @@ void write_preferences()
 #ifndef _WIN32
 	if(!prefs_file_existed) {
 		if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
-			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
+			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'";
 		}
 	}
 #endif

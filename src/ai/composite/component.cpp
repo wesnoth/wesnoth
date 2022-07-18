@@ -157,7 +157,7 @@ static component *find_component(component *root, const std::string &path, path_
 				pe.position = -2;
 			}
 		}
-		//DBG_AI_COMPONENT << "adding path element: "<< pe << std::endl;
+		//DBG_AI_COMPONENT << "adding path element: "<< pe;
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
@@ -244,7 +244,7 @@ std::string component_manager::print_component_tree(component *root, const std::
 	if (!path.empty()) {
 		c = find_component(root,path,tail);
 		if (c==nullptr) {
-			ERR_AI_COMPONENT << "unable to find component" <<std::endl;
+			ERR_AI_COMPONENT << "unable to find component";
 			return "";
 		}
 	} else {

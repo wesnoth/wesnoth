@@ -66,7 +66,7 @@ void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 {
 	unit_map& units = mc.units();
 	if(!units.erase(loc_)) {
-		ERR_ED << "Could not delete unit on " << loc_ << std::endl;
+		ERR_ED << "Could not delete unit on " << loc_;
 	} else {
 		mc.add_changed_location(loc_);
 	}

@@ -169,7 +169,7 @@ public:
 		try {
 			customcodecvt_do_conversion<char, wchar_t>(state, from, from_end, from_next, to, to_end, to_next);
 		} catch(...) {
-			ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' " << std::endl;
+			ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' ";
 			return std::codecvt_base::error;
 		}
 
@@ -187,7 +187,7 @@ public:
 		try {
 			customcodecvt_do_conversion<wchar_t, char>(state, from, from_end, from_next, to, to_end, to_next);
 		} catch(...) {
-			ERR_FS << "Invalid UTF-16 string" << std::endl;
+			ERR_FS << "Invalid UTF-16 string";
 			return std::codecvt_base::error;
 		}
 
@@ -1374,13 +1374,13 @@ static bool is_legal_file(const std::string& filename_str)
 	bfs::path filepath(filename_str);
 
 	if(default_blacklist.match_file(filepath.filename().string())) {
-		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted filename)." << std::endl;
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted filename).";
 		return false;
 	}
 
 	if(std::any_of(filepath.begin(), filepath.end(),
 			   [](const bfs::path& dirname) { return default_blacklist.match_dir(dirname.string()); })) {
-		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted directory name)." << std::endl;
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted directory name).";
 		return false;
 	}
 

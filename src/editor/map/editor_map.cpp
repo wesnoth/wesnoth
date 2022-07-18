@@ -29,7 +29,7 @@ namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
-	WRN_ED << type << " error in load map " << filename << ": " << e_msg << std::endl;
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg;
 	utils::string_map symbols;
 	symbols["type"] = type;
 	const char* error_msg = "There was an error ($type) while loading the file:";
@@ -87,24 +87,24 @@ void editor_map::sanity_check()
 {
 	int errors = 0;
 	if (total_width() != tiles().w) {
-		ERR_ED << "total_width is " << total_width() << " but tiles().size() is " << tiles().w << std::endl;
+		ERR_ED << "total_width is " << total_width() << " but tiles().size() is " << tiles().w;
 		++errors;
 	}
 	if (total_height() != tiles().h) {
-		ERR_ED << "total_height is " << total_height() << " but tiles()[0].size() is " << tiles().h << std::endl;
+		ERR_ED << "total_height is " << total_height() << " but tiles()[0].size() is " << tiles().h;
 		++errors;
 	}
 	if (w() + 2 * border_size() != total_width()) {
-		ERR_ED << "h is " << h() << " and border_size is " << border_size() << " but total_width is " << total_width() << std::endl;
+		ERR_ED << "h is " << h() << " and border_size is " << border_size() << " but total_width is " << total_width();
 		++errors;
 	}
 	if (h() + 2 * border_size() != total_height()) {
-		ERR_ED << "w is " << w() << " and border_size is " << border_size() << " but total_height is " << total_height() << std::endl;
+		ERR_ED << "w is " << w() << " and border_size is " << border_size() << " but total_height is " << total_height();
 		++errors;
 	}
 	for (const map_location& loc : selection_) {
 		if (!on_board_with_border(loc)) {
-			ERR_ED << "Off-map tile in selection: " << loc << std::endl;
+			ERR_ED << "Off-map tile in selection: " << loc;
 		}
 	}
 	if (errors) {

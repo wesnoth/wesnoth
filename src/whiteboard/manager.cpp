@@ -284,7 +284,7 @@ bool manager::allow_leader_to_move(const unit& leader) const
 		//       It could also happen that the original leader can be moved back to that location before
 		//       the unit is recruited.
 		if(!has_planned_unit_map() && !executing_actions_) {
-			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
+			WRN_WB << "Unable to build future map to determine whether leader's allowed to move.";
 		}
 		if(find_backup_leader(leader))
 			return true;
@@ -981,7 +981,7 @@ bool manager::execute_all_actions()
 {
 	if (has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!";
 	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
@@ -1011,7 +1011,7 @@ bool manager::execute_all_actions()
 
 	if (has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
 	//LOG_WB << "Before executing all actions, " << *sa << "\n";
@@ -1179,7 +1179,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 	if (planned_unit_map_active_) {
-		WRN_WB << "Not building planned unit map: already set." << std::endl;
+		WRN_WB << "Not building planned unit map: already set.";
 		return;
 	}
 

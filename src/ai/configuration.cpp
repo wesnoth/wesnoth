@@ -51,12 +51,12 @@ void configuration::init(const game_config_view &game_config)
 	const config &ais = game_config.child("ais");
 	default_config_ = ais.child("default_config");
 	if (!default_config_) {
-		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty." << std::endl;
+		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty.";
 		default_config_.clear();
 	}
 	default_ai_algorithm_ = ais["default_ai_algorithm"].str();
 	if (default_ai_algorithm_.empty()) {
-		ERR_AI_CONFIGURATION << "Missing default_ai_algorithm. This will result in no AI being loaded by default." << std::endl;
+		ERR_AI_CONFIGURATION << "Missing default_ai_algorithm. This will result in no AI being loaded by default.";
 	}
 
 
@@ -64,11 +64,11 @@ void configuration::init(const game_config_view &game_config)
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
-			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 		if (ai_configurations_.count(id)>0){
-			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 
@@ -79,7 +79,7 @@ void configuration::init(const game_config_view &game_config)
 		desc.cfg=ai_configuration;
 
 		ai_configurations_.emplace(id, desc);
-		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"];
 	}
 }
 
@@ -90,11 +90,11 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
-			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 		if (storage.count(id)>0){
-			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 
@@ -105,7 +105,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		desc.cfg=ai_configuration;
 
 		storage.emplace(id, desc);
-		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"];
 	}
 }
 }
@@ -134,7 +134,7 @@ std::vector<description*> configuration::get_available_ais()
 		if(!cfg["hidden"].to_bool(false)) {
 			ais_list.push_back(d);
 
-			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg << std::endl;
+			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg;
 		}
 	};
 
@@ -183,12 +183,12 @@ bool configuration::get_side_config_from_file(const std::string& file, config& c
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
 		read(cfg, *stream);
-		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'" << std::endl;
+		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'";
 	} catch(const config::error &) {
-		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'" << std::endl;
+		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'";
 		return false;
 	}
-	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'" << std::endl;
+	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'";
 	return true;
 }
 
@@ -200,7 +200,7 @@ const config& configuration::get_default_ai_parameters()
 
 bool configuration::parse_side_config(side_number side, const config& original_cfg, config &cfg )
 {
-	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config" << std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config";
 
 	//leave only the [ai] children
 	cfg.clear();
@@ -214,40 +214,40 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		ai_a["ai_algorithm"] = *v;
 		cfg.add_child("ai",ai_a);
 	}
-	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg;
 
 	//insert default config at the beginning
 	if (default_config_) {
-		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
+		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration";
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it" << std::endl;
+		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it";
 	}
 
-	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets";
 	expand_simplified_aspects(side, cfg);
 
 	//construct new-style integrated config
-	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config";
 	config parsed_cfg = config();
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations";
 	for (const config &aiparam : cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
 
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id";
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects";
 	for (config &aspect_cfg : parsed_cfg.child_range("aspect")) {
 		if (aspect_cfg["name"] != "composite_aspect") {
 			// No point in warning about Lua or standard aspects lacking [default]
 			continue;
 		}
 		if (!aspect_cfg.child("default")) {
-			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
+			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!";
 			continue;
 		}
 		aspect_cfg.merge_children("default");
@@ -259,8 +259,8 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		}
 	}
 
-	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
-	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config"<< std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg;
+	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config";
 
 	cfg = parsed_cfg;
 	return true;

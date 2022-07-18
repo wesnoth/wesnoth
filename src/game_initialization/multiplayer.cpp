@@ -222,7 +222,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 
 std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
 {
-	DBG_MP << "opening connection" << std::endl;
+	DBG_MP << "opening connection";
 
 	if(host.empty()) {
 		return nullptr;
@@ -513,7 +513,7 @@ void mp_manager::run_lobby_loop()
 
 bool mp_manager::enter_lobby_mode()
 {
-	DBG_MP << "entering lobby mode" << std::endl;
+	DBG_MP << "entering lobby mode";
 
 	// Connection should never be null in the lobby.
 	assert(connection);
@@ -571,7 +571,7 @@ bool mp_manager::enter_lobby_mode()
 
 void mp_manager::enter_create_mode()
 {
-	DBG_MP << "entering create mode" << std::endl;
+	DBG_MP << "entering create mode";
 
 	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode();
@@ -582,7 +582,7 @@ void mp_manager::enter_create_mode()
 
 void mp_manager::enter_staging_mode()
 {
-	DBG_MP << "entering connect mode" << std::endl;
+	DBG_MP << "entering connect mode";
 
 	std::unique_ptr<mp_game_metadata> metadata;
 
@@ -612,7 +612,7 @@ void mp_manager::enter_staging_mode()
 
 void mp_manager::enter_wait_mode(int game_id, bool observe)
 {
-	DBG_MP << "entering wait mode" << std::endl;
+	DBG_MP << "entering wait mode";
 
 	// The connection should never be null here, since one should never reach this screen in local game mode.
 	assert(connection);
@@ -679,13 +679,13 @@ bool mp_manager::post_scenario_wait(bool observe)
 
 void start_client(const std::string& host)
 {
-	DBG_MP << "starting client" << std::endl;
+	DBG_MP << "starting client";
 	mp_manager(host).run_lobby_loop();
 }
 
 void start_local_game()
 {
-	DBG_MP << "starting local game" << std::endl;
+	DBG_MP << "starting local game";
 
 	preferences::set_message_private(false);
 
@@ -694,7 +694,7 @@ void start_local_game()
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
 {
-	DBG_MP << "starting local MP game from commandline" << std::endl;
+	DBG_MP << "starting local MP game from commandline";
 
 	const game_config_view& game_config = game_config_manager::get()->game_config();
 
@@ -703,7 +703,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// needed in commandline mode, but they are required by the functions called.
 	preferences::set_message_private(false);
 
-	DBG_MP << "entering create mode" << std::endl;
+	DBG_MP << "entering create mode";
 
 	// Set the default parameters
 	saved_game state;
@@ -723,7 +723,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 
 	// Do not use map settings if --ignore-map-settings commandline option is set
 	if(cmdline_opts.multiplayer_ignore_map_settings) {
-		DBG_MP << "ignoring map settings" << std::endl;
+		DBG_MP << "ignoring map settings";
 		parameters.use_map_settings = false;
 	} else {
 		parameters.use_map_settings = true;
@@ -770,11 +770,11 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 
 	// Should number of turns be determined from scenario data?
 	if(parameters.use_map_settings && state.get_starting_point()["turns"]) {
-		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"] << std::endl;
+		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
 		parameters.num_turns = state.get_starting_point()["turns"];
 	}
 
-	DBG_MP << "entering connect mode" << std::endl;
+	DBG_MP << "entering connect mode";
 
 	statistics::fresh_stats();
 

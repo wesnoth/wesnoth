@@ -358,7 +358,7 @@ void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 	if(m != nullptr) {
 		show_menu_ = true;
 	} else {
-		WRN_DP << "no context menu found..." << std::endl;
+		WRN_DP << "no context menu found...";
 	}
 }
 

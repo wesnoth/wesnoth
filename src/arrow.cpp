@@ -155,7 +155,7 @@ void arrow::update_symbols()
 {
 	if (!valid_path(path_))
 	{
-		WRN_ARR << "arrow::update_symbols called with invalid path" << std::endl;
+		WRN_ARR << "arrow::update_symbols called with invalid path";
 		return;
 	}
 
@@ -274,7 +274,7 @@ void arrow::update_symbols()
 		image::locator image = image::locator(image_filename, mods);
 		if (!image.file_exists())
 		{
-			ERR_ARR << "Image " << image_filename << " not found." << std::endl;
+			ERR_ARR << "Image " << image_filename << " not found.";
 			image = image::locator(game_config::images::missing);
 		}
 		symbols_map_[*hex] = image;

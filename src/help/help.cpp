@@ -266,7 +266,7 @@ void show_with_toplevel(const section &toplevel_sec,
 		}
 	}
 	catch (const parse_error& e) {
-		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message << std::endl;
+		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message;
 #if 0
 		// Displaying in the UI is disabled due to issue #2587
 		std::stringstream msg;

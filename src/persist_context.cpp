@@ -41,7 +41,7 @@ void persist_file_context::load()
 			try {
 				read(cfg_,*file_stream);
 			} catch (const config::error &err) {
-				LOG_PERSIST << err.message << std::endl;
+				LOG_PERSIST << err.message;
 			}
 		}
 	}
@@ -192,7 +192,7 @@ bool persist_file_context::save_context() {
 					writer.write(cfg_);
 					success = true;
 				} catch(config::error &err) {
-					LOG_PERSIST << err.message << std::endl;
+					LOG_PERSIST << err.message;
 					success = false;
 				}
 			}

@@ -325,7 +325,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 					break;
 			}
 			ss << "error:\n" << lua_tostring(T_, -1) << "\n";
-			ERR_LUA << ss.str() << std::endl;
+			ERR_LUA << ss.str();
 		}
 	}
 

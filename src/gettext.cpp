@@ -73,7 +73,7 @@ namespace
 			}
 			catch(const std::exception& e)
 			{
-				ERR_G << "Failed to generate default locale string. message:" << e.what() << std::endl;
+				ERR_G << "Failed to generate default locale string. message:" << e.what();
 			}
 			LOG_G << "Finished generating default locale, default is now '" << name_ << "'\n";
 		}

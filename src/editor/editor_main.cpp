@@ -63,11 +63,11 @@ EXIT_STATUS start(const std::string& filename /* = "" */,
 			e = editor.main_loop();
 
 	} catch(const editor_exception& e) {
-		ERR_ED << "Editor exception in editor::start: " << e.what() << std::endl;
+		ERR_ED << "Editor exception in editor::start: " << e.what();
 		throw;
 	}
 	if (editor_action::get_instance_count() != 0) {
-		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects" << std::endl;
+		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects";
 	}
 
 	return e;

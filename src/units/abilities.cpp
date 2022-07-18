@@ -1107,7 +1107,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
-		ERR_NG << "negative number of strikes after applying weapon specials" << std::endl;
+		ERR_NG << "negative number of strikes after applying weapon specials";
 	}
 
 	// Apply [swarm].
@@ -1853,7 +1853,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 			}) * 100);
 
 			if (divide == 0) {
-				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << std::endl;
+				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;
 			}
 			else {
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);

@@ -234,9 +234,9 @@ std::string addon_info::display_icon() const
 	std::string ret = icon;
 
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
+		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
 	} else if(!image::exists(ret)) {
-		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
+		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications\n";
@@ -301,7 +301,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 	for(const config& addon_cfg : addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
-			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;
+			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them";
 			continue;
 		}
 		dest[id].read(addon_cfg);

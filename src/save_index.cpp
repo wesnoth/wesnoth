@@ -137,7 +137,7 @@ void save_index_class::write_save_index()
 			write(*stream, data());
 		}
 	} catch(const filesystem::io_exception& e) {
-		ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
+		ERR_SAVE << "error writing to save index file: '" << e.what() << "'";
 	}
 }
 
@@ -185,9 +185,9 @@ config& save_index_class::data()
 				read(data_, *stream);
 			}
 		} catch(const filesystem::io_exception& e) {
-			ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
+			ERR_SAVE << "error reading save index: '" << e.what() << "'";
 		} catch(const config::error& e) {
-			ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
+			ERR_SAVE << "error parsing save index config file:\n" << e.message;
 			data_.clear();
 		}
 
@@ -518,13 +518,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			if(!cfg_snapshot.find_child("side", "shroud", "yes") && cfg_snapshot.has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
 			} else {
-				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
+				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		} else if(has_replay) {
 			if(!cfg_replay_start.find_child("side", "shroud", "yes") && cfg_replay_start.has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			} else {
-				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
+				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		}
 	}

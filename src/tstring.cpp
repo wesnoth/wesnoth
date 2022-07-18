@@ -84,7 +84,7 @@ void t_string_base::walker::update()
 		std::string::size_type textdomain_end = string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
 		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -103,7 +103,7 @@ void t_string_base::walker::update()
 	case ID_TRANSLATABLE_PART:
 		// Format: [ID_TRANSLATABLE_PART][2-byte textdomain ID]msgid[...]
 		if(begin_ + 3 >= string_.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -115,7 +115,7 @@ void t_string_base::walker::update()
 
 		id = static_cast<unsigned char>(string_[begin_ + 1]) + static_cast<unsigned char>(string_[begin_ + 2]) * 256;
 		if(id >= id_to_textdomain.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -133,7 +133,7 @@ void t_string_base::walker::update()
 		}
 
 		if(end_ <= begin_ + 1) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -150,7 +150,7 @@ void t_string_base::walker::update()
 		}
 
 		if(string_[begin_] == PLURAL_PART) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -168,14 +168,14 @@ void t_string_base::walker::update()
 	if(translatable_ && string_[end_] == PLURAL_PART) {
 		// Format: [PLURAL_PART][4-byte count]msgid_plural[...]
 		if(end_ + 5 >= string_.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
 
 		std::string::size_type real_end = string_.find_first_of(mark, end_ + 6);
 		if(real_end < string_.size() && string_[real_end] == PLURAL_PART) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}

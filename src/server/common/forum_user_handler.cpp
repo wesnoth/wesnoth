@@ -46,7 +46,7 @@ fuh::fuh(const config& c)
 	try {
 		mp_mod_group_ = std::stoi(c["mp_mod_group"].str());
 	} catch(...) {
-		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << "." << std::endl;
+		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << ".";
 	}
 }
 
@@ -58,11 +58,11 @@ bool fuh::login(const std::string& name, const std::string& password) {
 		if(utils::md5::is_valid_hash(hash) || utils::bcrypt::is_valid_prefix(hash)) { // md5 hash
 			return password == hash;
 		} else {
-			ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
+			ERR_UH << "Invalid hash for user '" << name << "'";
 			return false;
 		}
 	} catch (const error& e) {
-		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
+		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message;
 		return false;
 	}
 }
@@ -79,7 +79,7 @@ std::string fuh::extract_salt(const std::string& name) {
 	try {
 		hash = get_hashed_password_from_db(name);
 	} catch (const error& e) {
-		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
+		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message;
 		return "";
 	}
 
@@ -90,7 +90,7 @@ std::string fuh::extract_salt(const std::string& name) {
 		try {
 			return utils::bcrypt::from_hash_string(hash).get_salt();
 		} catch(const utils::hash_error& err) {
-			ERR_UH << "Error getting salt from hash of user '" << name << "': " << err.what() << std::endl;
+			ERR_UH << "Error getting salt from hash of user '" << name << "': " << err.what();
 			return "";
 		}
 	}
@@ -237,9 +237,9 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 
 void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
 	boost::asio::post([this, limit, &io_service] {
-		ERR_UH << "async test query starts!" << std::endl;
+		ERR_UH << "async test query starts!";
 		int i = conn_.async_test_query(limit);
-		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i << std::endl; });
+		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i; });
 	 });
 }
 

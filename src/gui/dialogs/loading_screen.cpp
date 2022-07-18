@@ -169,7 +169,7 @@ void loading_screen::process(events::pump_info&)
 	// Run the loading function.
 	auto func = load_funcs_.back();
 	load_funcs_.pop_back();
-	LOG_LS << "Executing loading screen worker function." << std::endl;
+	LOG_LS << "Executing loading screen worker function.";
 	func();
 
 	running_ = false;
@@ -184,14 +184,14 @@ void loading_screen::process(events::pump_info&)
 
 void loading_screen::layout()
 {
-	DBG_DP << "loading_screen::layout" << std::endl;
+	DBG_DP << "loading_screen::layout";
 
 	loading_stage stage = current_stage_.load(std::memory_order_acquire);
 
 	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
 		auto iter = visible_stages_.find(stage);
 		if(iter == visible_stages_.end()) {
-			WRN_LS << "Stage missing description." << std::endl;
+			WRN_LS << "Stage missing description.";
 			return;
 		}
 
@@ -213,7 +213,7 @@ void loading_screen::layout()
 
 bool loading_screen::expose(const SDL_Rect& region)
 {
-	DBG_DP << "loading_screen::expose " << region << std::endl;
+	DBG_DP << "loading_screen::expose " << region;
 	return get_window()->expose(region);
 }
 
@@ -224,17 +224,17 @@ rect loading_screen::screen_location()
 
 loading_screen::~loading_screen()
 {
-	LOG_LS << "Loading screen destroyed." << std::endl;
+	LOG_LS << "Loading screen destroyed.";
 	singleton_ = nullptr;
 }
 
 void loading_screen::display(std::function<void()> f)
 {
 	if(singleton_ || CVideo::get_singleton().faked()) {
-		LOG_LS << "Directly executing loading function." << std::endl;
+		LOG_LS << "Directly executing loading function.";
 		f();
 	} else {
-		LOG_LS << "Creating new loading screen." << std::endl;
+		LOG_LS << "Creating new loading screen.";
 		loading_screen(f).show();
 	}
 }

@@ -113,7 +113,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 	else
 	{
 		// Unrecognized type.
-		ERR_NG << "Unrecognized undo action type: " << str << "." << std::endl;
+		ERR_NG << "Unrecognized undo action type: " << str << ".";
 		return nullptr;
 	}
 	return res;
@@ -264,13 +264,13 @@ void undo_list::new_side_turn(int side)
 {
 	// Error checks.
 	if ( !undos_.empty() ) {
-		ERR_NG << "Undo stack not empty in new_side_turn()." << std::endl;
+		ERR_NG << "Undo stack not empty in new_side_turn().";
 		// At worst, someone missed some sighted events, so try to recover.
 		undos_.clear();
 		redos_.clear();
 	}
 	else if ( !redos_.empty() ) {
-		ERR_NG << "Redo stack not empty in new_side_turn()." << std::endl;
+		ERR_NG << "Redo stack not empty in new_side_turn().";
 		// Sloppy tracking somewhere, but not critically so.
 		redos_.clear();
 	}
@@ -300,13 +300,13 @@ void undo_list::read(const config & cfg)
 				undos_.emplace_back(action);
 			}
 		} catch (const bad_lexical_cast &) {
-			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
-			ERR_NG << "Skipping this undo action..." << std::endl;
+			ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
+			ERR_NG << "config was: " << child.debug();
+			ERR_NG << "Skipping this undo action...";
 		} catch (const config::error& e) {
-			ERR_NG << "Error when parsing undo list from config: " << e.what() << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
-			ERR_NG << "Skipping this undo action..." << std::endl;
+			ERR_NG << "Error when parsing undo list from config: " << e.what();
+			ERR_NG << "config was: " << child.debug();
+			ERR_NG << "Skipping this undo action...";
 		}
 	}
 
@@ -315,13 +315,13 @@ void undo_list::read(const config & cfg)
 		try {
 			redos_.emplace_back(new config(child));
 		} catch (const bad_lexical_cast &) {
-			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
-			ERR_NG << "Skipping this redo action..." << std::endl;
+			ERR_NG << "Error when parsing redo list from config: bad lexical cast.";
+			ERR_NG << "config was: " << child.debug();
+			ERR_NG << "Skipping this redo action...";
 		} catch (const config::error& e) {
-			ERR_NG << "Error when parsing redo list from config: " << e.what() << std::endl;
-			ERR_NG << "config was: " << child.debug() << std::endl;
-			ERR_NG << "Skipping this redo action..." << std::endl;
+			ERR_NG << "Error when parsing redo list from config: " << e.what();
+			ERR_NG << "config was: " << child.debug();
+			ERR_NG << "Skipping this redo action...";
 		}
 	}
 }
@@ -366,7 +366,7 @@ void undo_list::undo()
 			return;
 		}
 		if(last_unit_id - undoable_action->unit_id_diff < 0) {
-			ERR_NG << "Next unit id is below 0 after undoing" << std::endl;
+			ERR_NG << "Next unit id is below 0 after undoing";
 		}
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 

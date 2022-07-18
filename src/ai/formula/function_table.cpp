@@ -411,7 +411,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
 	std::string path = filesystem::get_wml_location(filename);
 	if(path.empty()) {
-		ERR_AI << "run_file : not found [" << filename <<"]"<< std::endl;
+		ERR_AI << "run_file : not found [" << filename <<"]";
 		return variant(); //no suitable file
 	}
 
@@ -419,7 +419,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	//need to get function_table from somewhere or delegate to someone who has access to it
 	formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 	if(parsed_formula == formula_ptr()) {
-		ERR_AI << "run_file : unable to create formula"<< std::endl;
+		ERR_AI << "run_file : unable to create formula";
 		return variant(); //was unable to create a formula from file
 	}
 	return parsed_formula->evaluate(variables,add_debug_info(fdb,-1,"run_file:formula_from_file"));
@@ -571,7 +571,7 @@ DEFINE_FAI_FUNCTION(close_enemies, 2, 2)
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "close_enemies:location")).convert_to<location_callable>()->loc();
 	int range_s = args()[1]->evaluate(variables,add_debug_info(fdb,1,"close_enemies:distance")).as_int();
 	if (range_s < 0) {
-		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")" << std::endl;
+		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")";
 		range_s = 0;
 	}
 	std::size_t range = static_cast<std::size_t>(range_s);
@@ -893,7 +893,7 @@ DEFINE_WFL_FUNCTION(attack, 3, 4)
 	const map_location dst = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "attack:dst")).convert_to<location_callable>()->loc();
 	const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
 	if(resources::gameboard->units().count(move_from) == 0 || resources::gameboard->units().count(dst) == 0) {
-		ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << std::endl;
+		ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst;
 		return variant();
 	}
 	return variant(std::make_shared<attack_callable>(move_from, src, dst, weapon));

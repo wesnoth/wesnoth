@@ -71,7 +71,7 @@ bool stage_unit_formulas::do_play_stage()
 							callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 							priority = (wfl::formula::evaluate(priority_formula, callable)).as_int();
 						} else {
-							WRN_AI << "priority formula skipped, maybe it's empty or incorrect"<< std::endl;
+							WRN_AI << "priority formula skipped, maybe it's empty or incorrect";
 						}
 					} catch(wfl::formula_error& e) {
 						if(e.filename == "formula")
@@ -81,7 +81,7 @@ bool stage_unit_formulas::do_play_stage()
 						priority = 0;
 					} catch(const wfl::type_error& e) {
 						priority = 0;
-						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
+						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message;
 					}
 				}
 
@@ -104,7 +104,7 @@ bool stage_unit_formulas::do_play_stage()
 						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						fai_.make_action(formula, callable);
 					} else {
-						WRN_AI << "unit formula skipped, maybe it's empty or incorrect" << std::endl;
+						WRN_AI << "unit formula skipped, maybe it's empty or incorrect";
 					}
 				}
 				catch(wfl::formula_error& e) {
@@ -128,7 +128,7 @@ bool stage_unit_formulas::do_play_stage()
 						{
 						}
 					} else {
-						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect" << std::endl;
+						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect";
 					}
 				} catch(wfl::formula_error& e) {
 					if (e.filename == "formula") {

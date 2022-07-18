@@ -309,7 +309,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 	const vconfig& filter_owner = cfg_.child("filter_owner");
 	if(!filter_owner.null()) {
 		if(!owner_side.empty()) {
-			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=" << std::endl;
+			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=";
 		}
 		if(!fc_->get_disp_context().map().is_village(loc))
 			return false;

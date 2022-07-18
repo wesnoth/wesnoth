@@ -252,13 +252,13 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 	// override default reference rect with "ref" parameter if any
 	if(!cfg["ref"].empty()) {
 		if(resol_cfg == nullptr) {
-			ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
+			ERR_DP << "Use of ref= outside a [resolution] block";
 		} else {
 			// DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
 			const config& ref = find_ref(cfg["ref"], *resol_cfg);
 
 			if(ref["id"].empty()) {
-				ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"" << std::endl;
+				ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"";
 			} else if(ref["rect"].empty()) {
 				ERR_DP << "Reference to id \"" << cfg["ref"] << "\" which does not have a \"rect\"\n";
 			} else {
@@ -630,7 +630,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if(!current) {
 		if(cfg_.child_count("resolution")) {
-			ERR_DP << "No valid resolution found" << std::endl;
+			ERR_DP << "No valid resolution found";
 		}
 		return false;
 	}
@@ -1018,7 +1018,7 @@ const config& theme::get_theme_config(const std::string& id)
 		return iter->second;
 	}
 
-	ERR_DP << "Default theme not found." << std::endl;
+	ERR_DP << "Default theme not found.";
 
 	static config empty;
 	return empty;

@@ -250,7 +250,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
-			ERR_NG << "could not find unit '" << recruit << "'" << std::endl;
+			ERR_NG << "could not find unit '" << recruit << "'";
 			unknown_units.emplace_back(recruit);
 			continue;
 		}
@@ -456,7 +456,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 				synced_context::ignore_error_function);
 
 		if(!success) {
-			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list." << std::endl;
+			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";
 		}
 	}
 }
@@ -714,7 +714,7 @@ type_gender_variation choose_unit()
 	const std::string& ut_id = create_dlg.choice();
 	const unit_type* utp = unit_types.find(ut_id);
 	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
 	const unit_type& ut = *utp;

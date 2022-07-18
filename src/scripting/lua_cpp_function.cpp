@@ -47,8 +47,8 @@ static int intf_cleanup ( lua_State* L )
 {
 	lua_function * d = static_cast< lua_function *> (luaL_testudata(L, 1, cpp_function));
 	if (d == nullptr) {
-		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
-		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) );
+		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org";
 		lua_pushstring(L, "C++ function object garbage collection failure");
 		lua_error(L);
 	} else {

@@ -648,7 +648,7 @@ bool game_launcher::play_render_image_mode()
 	}
 
 	state_.classification().type = campaign_type::type::multiplayer;
-	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
@@ -681,7 +681,7 @@ bool game_launcher::load_game()
 {
 	assert(game_config_manager::get());
 
-	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type) << std::endl;
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 
 	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
 	if(load_data_) {
@@ -844,7 +844,7 @@ void game_launcher::start_wesnothd()
 	preferences::set_mp_server_program_name("");
 
 	// Couldn't start server so throw error
-	WRN_GENERAL << "Failed to run server start script" << std::endl;
+	WRN_GENERAL << "Failed to run server start script";
 	throw game::mp_server_error("Starting MP server failed!");
 }
 
@@ -905,7 +905,7 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 		gui2::show_error_message(_("Map generator error: ") + e.message);
 	} catch(const wesnothd_error& e) {
 		if(!e.message.empty()) {
-			ERR_NET << "caught network error: " << e.message << std::endl;
+			ERR_NET << "caught network error: " << e.message;
 
 			std::string user_msg;
 			auto conn_err = dynamic_cast<const wesnothd_connection_error*>(&e);
@@ -927,14 +927,14 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 
 			gui2::show_error_message(user_msg);
 		} else {
-			ERR_NET << "caught network error" << std::endl;
+			ERR_NET << "caught network error";
 		}
 	} catch(const config::error& e) {
 		if(!e.message.empty()) {
-			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
+			ERR_CONFIG << "caught config::error: " << e.message;
 			gui2::show_transient_message("", e.message);
 		} else {
-			ERR_CONFIG << "caught config::error" << std::endl;
+			ERR_CONFIG << "caught config::error";
 		}
 	} catch(const incorrect_map_format_error& e) {
 		gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
@@ -957,7 +957,7 @@ bool game_launcher::play_multiplayer_commandline()
 		return true;
 	}
 
-	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
+	DBG_MP << "starting multiplayer game from the commandline";
 
 	game_config_manager::get()->load_game_config_for_create(true);
 

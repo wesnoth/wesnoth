@@ -76,7 +76,7 @@ texture::texture(const surface& surf, bool linear_interpolation)
 
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {
-		ERR_SDL << "When creating texture from surface: " << SDL_GetError() << std::endl;
+		ERR_SDL << "When creating texture from surface: " << SDL_GetError();
 	}
 
 	w_ = surf->w; h_ = surf->h;
@@ -209,7 +209,7 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 
 	texture_.reset(SDL_CreateTexture(renderer, default_texture_format, access, width, height), &cleanup_texture);
 	if(!texture_) {
-		ERR_SDL << "When creating texture: " << SDL_GetError() << std::endl;
+		ERR_SDL << "When creating texture: " << SDL_GetError();
 		return;
 	}
 

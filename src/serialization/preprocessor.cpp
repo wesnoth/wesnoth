@@ -819,7 +819,7 @@ void preprocessor_file::init()
 	filesystem::scoped_istream file_stream = filesystem::istream_file(name_);
 
 	if(!file_stream->good()) {
-		ERR_PREPROC << "Could not open file " << name_ << std::endl;
+		ERR_PREPROC << "Could not open file " << name_;
 	} else {
 		parent_.add_preprocessor<preprocessor_data>(std::move(file_stream), "",
 			filesystem::get_short_wml_path(name_), 1,

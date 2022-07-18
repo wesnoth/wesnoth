@@ -54,7 +54,7 @@ bool check_font_file(std::string name) {
 		if(!filesystem::file_exists(game_config::path + "/fonts/" + name)) {
 			if(!filesystem::file_exists("fonts/" + name)) {
 				if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
 				return false;
 				}
 			}
@@ -62,7 +62,7 @@ bool check_font_file(std::string name) {
 	} else {
 		if(!filesystem::file_exists("fonts/" + name)) {
 			if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
 				return false;
 			}
 		}
@@ -155,7 +155,7 @@ manager::manager()
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>(font_path.c_str())))
 	{
-		ERR_FT << "Could not load the true type fonts" << std::endl;
+		ERR_FT << "Could not load the true type fonts";
 		throw font::error("font config lib failed to add the font path: '" + font_path + "'");
 	}
 

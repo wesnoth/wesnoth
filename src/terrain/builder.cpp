@@ -628,7 +628,7 @@ void terrain_builder::replace_rotate_tokens(building_rule& rule, int angle, cons
 void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vector<std::string>& rot)
 {
 	if(rot.size() != 6) {
-		ERR_NG << "invalid rotations" << std::endl;
+		ERR_NG << "invalid rotations";
 		return;
 	}
 
@@ -922,7 +922,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 			if(const config::attribute_value* v = tc.get("pos")) {
 				int pos = *v;
 				if(anchors.find(pos) == anchors.end()) {
-					WRN_NG << "Invalid anchor!" << std::endl;
+					WRN_NG << "Invalid anchor!";
 					continue;
 				}
 

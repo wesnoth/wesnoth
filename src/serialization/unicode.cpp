@@ -79,7 +79,7 @@ std::size_t index(const std::string& str, const std::size_t index)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
+		ERR_GENERAL << "Invalid UTF-8 string.";
 	}
 	return i;
 }
@@ -92,7 +92,7 @@ std::size_t size(const std::string& str)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
+		ERR_GENERAL << "Invalid UTF-8 string.";
 	}
 	return chr;
 }

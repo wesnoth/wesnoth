@@ -211,7 +211,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_c
 		return i;
 	}
 	else {
-		DBG_G << "find_or_create: creating terrain " << terrain << std::endl;
+		DBG_G << "find_or_create: creating terrain " << terrain;
 		auto base_iter    = tcodeToTerrain_.find(t_translation::terrain_code(terrain.base, t_translation::NO_LAYER));
 		auto overlay_iter = tcodeToTerrain_.find(t_translation::terrain_code(t_translation::NO_LAYER, terrain.overlay));
 
@@ -220,7 +220,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_c
 			// campaigns. The code for showing movetypes for discovered terrains in the
 			// sidebar will query every terrain listed in
 			// preferences::encountered_terrains(), even those that are campaign-specific.
-			// ERR_G << "couldn't find base or overlay for " << terrain << std::endl;
+			// ERR_G << "couldn't find base or overlay for " << terrain;
 			return tcodeToTerrain_.end();
 		}
 

@@ -392,7 +392,7 @@ void load_config(const config &v)
 			try {
 				color_vec.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument& e) {
-				ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what() << std::endl;
+				ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what();
 				color_vec.push_back(fallback);
 			}
 		}
@@ -495,7 +495,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 				try {
 					temp.push_back(color_t::from_hex_string(s));
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s << std::endl;
+					ERR_NG << "Invalid color in palette: " << s;
 				}
 			}
 
@@ -546,7 +546,7 @@ const std::vector<color_t>& tc_info(const std::string& name)
 			temp.push_back(color_t::from_hex_string(s));
 		} catch(const std::invalid_argument&) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s << std::endl;
+			ERR_NG << "Invalid color in palette: " << s;
 			return stv;
 		}
 	}

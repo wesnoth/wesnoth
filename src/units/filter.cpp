@@ -819,7 +819,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			else {
 				std::stringstream errmsg;
 				errmsg << "encountered a child [" << child.first << "] of a standard unit filter, it is being ignored";
-				DBG_CF << errmsg.str() << std::endl;
+				DBG_CF << errmsg.str();
 			}
 
 		}

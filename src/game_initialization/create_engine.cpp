@@ -635,7 +635,7 @@ const config& create_engine::curent_era_cfg() const
 
 const mp_game_settings& create_engine::get_parameters()
 {
-	DBG_MP << "getting parameter values" << std::endl;
+	DBG_MP << "getting parameter values";
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	state_.classification().era_id = eras_[era_index]->id;
@@ -693,8 +693,8 @@ void create_engine::init_all_levels()
 			try {
 				read(data, *preprocess_file(filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]));
 			} catch(const config::error & e) {
-				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message << std::endl;
-				ERR_CF << "Skipping file: " << (filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]) << std::endl;
+				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message;
+				ERR_CF << "Skipping file: " << (filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]);
 				continue;
 			}
 
@@ -732,9 +732,9 @@ void create_engine::init_all_levels()
 	{
 		if(data["id"].empty()) {
 			if(data["name"].empty()) {
-				ERR_CF << "Found a [campaign] with neither a name nor an id attribute, ignoring it" << std::endl;
+				ERR_CF << "Found a [campaign] with neither a name nor an id attribute, ignoring it";
 			} else {
-				ERR_CF << "Ignoring a [campaign] with no id attribute, but name '" << data["name"] << "'" << std::endl;
+				ERR_CF << "Ignoring a [campaign] with no id attribute, but name '" << data["name"] << "'";
 			}
 			continue;
 		}

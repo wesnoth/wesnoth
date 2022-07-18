@@ -86,7 +86,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 			// Didn't find a campaign with that id
 			if(campaign == campaigns.end()) {
-				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]" << std::endl;
+				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]";
 				return false;
 			}
 
@@ -117,7 +117,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		}
 
 		if(!state.valid()) {
-			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id() << std::endl;
+			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id();
 			return false;
 		}
 

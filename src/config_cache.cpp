@@ -79,7 +79,7 @@ const preproc_map& config_cache::get_preproc_map() const
 
 void config_cache::clear_defines()
 {
-	LOG_CACHE << "Clearing defines map!" << std::endl;
+	LOG_CACHE << "Clearing defines map!";
 
 	defines_map_.clear();
 
@@ -195,11 +195,11 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 				}
 			} catch(const config::error&) {
-				ERR_CACHE << "cache checksum is corrupt" << std::endl;
+				ERR_CACHE << "cache checksum is corrupt";
 			} catch(const filesystem::io_exception&) {
-				ERR_CACHE << "error reading cache checksum" << std::endl;
+				ERR_CACHE << "error reading cache checksum";
 			} catch(const std::ios_base::failure&) {
-				ERR_CACHE << "error reading cache checksum" << std::endl;
+				ERR_CACHE << "error reading cache checksum";
 			}
 		}
 
@@ -221,12 +221,12 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 
 				return;
 			} catch(const config::error& e) {
-				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message << std::endl;
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message;
 			} catch(const filesystem::io_exception&) {
-				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
+				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files";
 			} catch (const boost::iostreams::gzip_error& e) {
 				//read_file -> ... -> read_gz can throw this exception.
-				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error();
 			}
 		}
 
@@ -249,7 +249,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			filesystem::data_tree_checksum().write(checksum_cfg);
 			write_file(fname_checksum, checksum_cfg);
 		} catch(const filesystem::io_exception&) {
-			ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
+			ERR_CACHE << "could not write to cache '" << fname << "'";
 		}
 
 		return;

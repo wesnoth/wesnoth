@@ -432,7 +432,7 @@ void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 		if (i != known_aspects_.end()) {
 			i->second->set(a);
 		} else {
-			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
+			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
 		}
 	}
 }
@@ -443,7 +443,7 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 	if (i != known_aspects_.end()) {
 		i->second->add_facet(cfg);
 	} else {
-		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
+		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
 	}
 }
 
@@ -623,7 +623,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
 			engine_name <<"]" << std::endl;
-		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}
 
@@ -631,7 +631,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	if (!new_engine) {
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
 			engine_name <<"] " << std::endl;
-		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}
 	engines_.push_back(new_engine);

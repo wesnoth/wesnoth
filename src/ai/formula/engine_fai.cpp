@@ -80,8 +80,8 @@ engine_fai::~engine_fai()
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b ){
 	wfl::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
 	if (!fai_ca) {
-		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]";
+		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	auto ca = std::make_shared<fai_candidate_action_wrapper>(context, cfg, fai_ca, *formula_ai_);
@@ -106,7 +106,7 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	} else if (name=="unit_formulas") {
 		st_ptr = std::make_shared<stage_unit_formulas>(context, cfg, *formula_ai_);
 	} else {
-		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
+		ERR_AI_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]";
 	}
 	if (st_ptr) {
 		st_ptr->on_create();
@@ -122,9 +122,9 @@ std::string engine_fai::evaluate(const std::string &str)
 void engine_fai::set_ai_context(ai_context *context)
 {
 	if (context!=nullptr) {
-		DBG_AI_ENGINE_FAI << "fai engine: ai_context is set" << std::endl;
+		DBG_AI_ENGINE_FAI << "fai engine: ai_context is set";
 	} else {
-		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;
+		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared";
 	}
 	formula_ai_->set_ai_context(context);
 }

@@ -140,7 +140,7 @@ bool loadgame::load_game_ingame()
 	}
 
 	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index" << std::endl;
+		ERR_SAVE << "Null pointer in save index";
 		return false;
 	}
 
@@ -186,7 +186,7 @@ bool loadgame::load_game()
 	}
 
 	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index" << std::endl;
+		ERR_SAVE << "Null pointer in save index";
 		return false;
 	}
 
@@ -296,7 +296,7 @@ bool loadgame::load_multiplayer_game()
 	}
 
 	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index" << std::endl;
+		ERR_SAVE << "Null pointer in save index";
 		return false;
 	}
 
@@ -484,7 +484,7 @@ bool savegame::save_game(const std::string& filename)
 		save_index_manager_->rebuild(filename_);
 
 		end = SDL_GetTicks();
-		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
+		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start;
 
 		if(show_confirmation_) {
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
@@ -492,7 +492,7 @@ bool savegame::save_game(const std::string& filename)
 
 		return true;
 	} catch(const game::save_game_failed& e) {
-		ERR_SAVE << error_message_ << e.message << std::endl;
+		ERR_SAVE << error_message_ << e.message;
 		gui2::show_error_message(error_message_ + e.message);
 
 		// do not bother retrying, since the user can just try to save the game again
@@ -503,7 +503,7 @@ bool savegame::save_game(const std::string& filename)
 
 void savegame::write_game_to_disk(const std::string& filename)
 {
-	LOG_SAVE << "savegame::save_game" << std::endl;
+	LOG_SAVE << "savegame::save_game";
 
 	filename_ = filename;
 	filename_ += compression::format_extension(compress_saves_);

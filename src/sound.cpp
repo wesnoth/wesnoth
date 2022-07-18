@@ -452,7 +452,7 @@ bool init_sound()
 	if(!mix_ok) {
 		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
 			return false;
 		}
 
@@ -507,7 +507,7 @@ void close_sound()
 
 		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Error closing audio device: " << Mix_GetError();
 		}
 
 		while(numtimesopened) {
@@ -533,7 +533,7 @@ void reset_sound()
 	if(music || sound || bell || UI_sound) {
 		sound::close_sound();
 		if(!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError();
 		}
 
 		if(!music) {
@@ -682,7 +682,7 @@ static void play_new_music()
 	// Fade in the new music
 	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time);
 	if(res < 0) {
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " " << std::endl;
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
 	}
 
 	want_new_music = false;
@@ -722,7 +722,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	music_track track(music_node);
 
 	if(!track.valid() && !track.id().empty()) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.";
 	}
 
 	// If they say play once, we don't alter playlist.
@@ -758,7 +758,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 			}
 		}
 	} else {
-		ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'" << std::endl;
+		ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'";
 	}
 
 	// They can tell us to start playing this list immediately.
@@ -947,7 +947,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
-			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
+			ERR_AUDIO << "Could not load sound file '" << file << "'.";
 			throw chunk_load_exception();
 		}
 
@@ -1021,7 +1021,7 @@ static void play_sound_internal(const std::string& files,
 	}
 
 	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << std::endl;
+		ERR_AUDIO << "error playing sound effect: " << Mix_GetError();
 		// still keep it in the sound cache, in case we want to try again later
 		return;
 	}

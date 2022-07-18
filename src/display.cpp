@@ -766,7 +766,7 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		LOG_DP << "taking ordinary screenshot" << std::endl;
+		LOG_DP << "taking ordinary screenshot";
 		return screen_.read_pixels();
 	}
 
@@ -784,7 +784,7 @@ surface display::screenshot(bool map_screenshot)
 	// Reroute render output to a separate texture until the end of scope.
 	SDL_Rect area = max_map_area();
 	if (area.w > 1 << 16 || area.h > 1 << 16) {
-		WRN_DP << "Excessively large map screenshot area" << std::endl;
+		WRN_DP << "Excessively large map screenshot area";
 	}
 	LOG_DP << "creating " << area.w << " by " << area.h
 	       << " texture for map screenshot" << std::endl;
@@ -1417,7 +1417,7 @@ void display::draw_panel(const theme::panel& panel)
 		return;
 	}
 
-	DBG_DP << "drawing panel " << panel.get_id() << ' ' << loc << endl;
+	DBG_DP << "drawing panel " << panel.get_id() << ' ' << loc;
 
 	texture tex(image::get_texture(panel.image()));
 	if (!tex) {
@@ -1441,7 +1441,7 @@ void display::draw_label(const theme::label& label)
 	const color_t text_color = label.font_rgb_set() ? label.font_rgb() : font::NORMAL_COLOR;
 	const std::string& icon = label.icon();
 
-	DBG_DP << "drawing label " << label.get_id() << ' ' << loc << endl;
+	DBG_DP << "drawing label " << label.get_id() << ' ' << loc;
 
 	if(icon.empty() == false) {
 		draw::blit(image::get_texture(icon), loc);
@@ -1770,7 +1770,7 @@ void display::draw_minimap()
 	}
 
 	if(!minimap_) {
-		ERR_DP << "trying to draw null minimap" << endl;
+		ERR_DP << "trying to draw null minimap";
 		return;
 	}
 
@@ -1994,7 +1994,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 {
 	unsigned int new_zoom = std::clamp(amount, MinZoom, MaxZoom);
 
-	LOG_DP << "new_zoom = " << new_zoom << std::endl;
+	LOG_DP << "new_zoom = " << new_zoom;
 
 	if(new_zoom == zoom_) {
 		return false;
@@ -2158,7 +2158,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged, bool force)
 {
 	if(get_map().on_board(loc) == false) {
-		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile." << std::endl;
+		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.";
 		return;
 	}
 
@@ -2299,7 +2299,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 			if (target_x < r.x) target_x = r.x;
 			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
 		} else {
-			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all..." << std::endl;
+			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...";
 			// keep the target at the center
 		}
 	}
@@ -2400,7 +2400,7 @@ void display::redraw_everything()
 	if(screen_.update_locked())
 		return;
 
-	DBG_DP << "redrawing everything" << endl;
+	DBG_DP << "redrawing everything";
 
 	invalidateGameStatus_ = true;
 
@@ -2467,15 +2467,15 @@ void display::draw(bool update, bool force)
 	//	log_scope("display::draw");
 
 	if(screen_.update_locked() || screen_.faked()) {
-		DBG_DP << "display::draw denied" << endl;
+		DBG_DP << "display::draw denied";
 		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;
 	}
-	//DBG_DP << "display::draw" << endl;
+	//DBG_DP << "display::draw";
 
 	// TODO: draw_manager - make this check better / kill it
 	if(dirty_) {
-		DBG_DP << "display::draw dirty redraw all" << endl;
+		DBG_DP << "display::draw dirty redraw all";
 		dirty_ = false;
 		// TODO: draw_manager - remove this and integrate here
 		redraw_everything();
@@ -2486,7 +2486,7 @@ void display::draw(bool update, bool force)
 
 	// TODO: draw_manager - redraw background more judiciously
 	if(redraw_background_) {
-		DBG_DP << "display::draw redraw background" << endl;
+		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
 		redraw_background_ = false;
@@ -2506,7 +2506,7 @@ void display::draw(bool update, bool force)
 
 	// TODO: draw_manager - event hooks rather than this, maybe?
 	post_draw();
-	//DBG_DP << "display::draw done" << endl;
+	//DBG_DP << "display::draw done";
 }
 
 void display::layout()
@@ -2514,7 +2514,7 @@ void display::layout()
 	// Ensure render textures are correctly sized and up-to-date
 	update_render_textures(); // TODO
 
-	//DBG_DP << "display::layout" << endl;
+	//DBG_DP << "display::layout";
 	// TODO: draw_manager - the layout part of this, perhaps
 
 	// TODO: draw_manager - check usage of this and maybe delete, move or rename
@@ -2544,7 +2544,7 @@ void display::render()
 {
 	// This should render the game map and units.
 	// It is not responsible for halos and floating labels.
-	//DBG_DP << "display::render" << endl;
+	//DBG_DP << "display::render";
 
 	// No need to render if we aren't going to draw anything.
 	if(prevent_draw_) {
@@ -2563,7 +2563,7 @@ void display::render()
 	{
 		recalculate_minimap();
 		if(!minimap_) {
-			ERR_DP << "error creating minimap" << endl;
+			ERR_DP << "error creating minimap";
 			return;
 		}
 	}
@@ -2582,7 +2582,7 @@ bool display::expose(const SDL_Rect& region)
 	// TODO: draw_manager - API to get src region in output space
 	rect src_region = region;
 	src_region *= video().get_pixel_scale();
-	//DBG_DP << "  src region " << src_region << endl;
+	//DBG_DP << "  src region " << src_region;
 	draw::blit(front_, region, src_region);
 
 	// Render halos.
@@ -2634,7 +2634,7 @@ void display::update_render_textures()
 	}
 
 	// For now, just clobber and regenerate both textures.
-	LOG_DP << "updating display render buffers to " << oarea << endl;
+	LOG_DP << "updating display render buffers to " << oarea;
 	front_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
 	front_.set_draw_size(darea.w, darea.h);
 	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
@@ -2922,7 +2922,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		// TODO: draw_manager omfg why are there unused reports here
-		//WRN_DP << "no report '" << report_name << "' in theme" << endl;
+		//WRN_DP << "no report '" << report_name << "' in theme";
 		return;
 	}
 
@@ -2950,7 +2950,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		return;
 	}
 
-	DBG_DP << "updating report: " << report_name << endl;
+	DBG_DP << "updating report: " << report_name;
 
 	// Mark both old and new locations for redraw.
 	draw_manager::invalidate_region(loc);
@@ -2991,7 +2991,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		// TODO: draw_manager unused report_clock report_battery WTF
-		//WRN_DP << "no report '" << report_name << "' in theme" << endl;
+		//WRN_DP << "no report '" << report_name << "' in theme";
 		return;
 	}
 
@@ -3084,7 +3084,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 			texture img(image::get_texture(t));
 
 			if (!img) {
-				ERR_DP << "could not find image for report: '" << t << "'" << endl;
+				ERR_DP << "could not find image for report: '" << t << "'";
 				continue;
 			}
 
@@ -3217,11 +3217,11 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 	if(invalidateAll_)
 		return false;
 
-	DBG_DP << "invalidating locations in " << rect << endl;
+	DBG_DP << "invalidating locations in " << rect;
 
 	bool result = false;
 	for(const map_location& loc : hexes_under_rect(rect)) {
-		//DBG_DP << "invalidating " << loc.x << ',' << loc.y << endl;
+		//DBG_DP << "invalidating " << loc.x << ',' << loc.y;
 		result |= invalidate(loc);
 	}
 	return result;

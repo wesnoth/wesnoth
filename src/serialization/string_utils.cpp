@@ -125,12 +125,12 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	if (i1 == val.end()) return res;
 
 	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split function." << std::endl;
+		ERR_GENERAL << "Separator must be specified for square bracket split function.";
 		return res;
 	}
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
 		return res;
 	}
 
@@ -191,7 +191,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 				}
 				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
 					std::string tmp2(i1, i2);
-					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2 << std::endl;
+					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2;
 					return res;
 				}
 				size_square_exp = square_expansion.size();
@@ -261,7 +261,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	}
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val;
 	}
 
 	return res;
@@ -318,7 +318,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 	i2=i1;
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
 		return res;
 	}
 
@@ -384,7 +384,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val;
 	}
 
 	return res;
@@ -839,7 +839,7 @@ std::pair<int, int> parse_range(const std::string& str)
 			res.second = res.first;
 		}
 	} catch(const std::invalid_argument&) {
-	    ERR_GENERAL << "Invalid range: "<< str << std::endl;
+	    ERR_GENERAL << "Invalid range: "<< str;
 	}
 
 	return res;

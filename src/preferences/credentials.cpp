@@ -121,7 +121,7 @@ namespace preferences
 		} else if(name.size() > 2 && name.front() == '@' && name.back() == '@') {
 			name = name.substr(1, name.size() - 2);
 		} else {
-			ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)" << std::endl;
+			ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)";
 		}
 		if(name.empty()) {
 			return "player";
@@ -248,7 +248,7 @@ namespace preferences
 			secure_buffer encrypted = encrypt(credentials_data, build_key("global", get_system_username()));
 			credentials_file->write(reinterpret_cast<const char*>(encrypted.data()), encrypted.size());
 		} catch(const filesystem::io_exception&) {
-			ERR_CFG << "error writing to credentials file '" << filesystem::get_credentials_file() << "'" << std::endl;
+			ERR_CFG << "error writing to credentials file '" << filesystem::get_credentials_file() << "'";
 		}
 	}
 }

@@ -55,12 +55,12 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();
 
-	DBG_AI_TESTING << msg <<                   side << ": " << _turn_number << std::endl;
-	DBG_AI_TESTING << msg << "_UNITS "      << side << ": " << _units << std::endl;
-	DBG_AI_TESTING << msg << "_UNITS_COST " << side << ": " << _units_cost << std::endl;
-	DBG_AI_TESTING << msg << "_GOLD "       << side << ": " << _gold << std::endl;
-	DBG_AI_TESTING << msg << "_VILLAGES "   << side << ": " << _villages << std::endl;
-	DBG_AI_TESTING << msg << "_INCOME "     << side << ": " << _income << std::endl;
+	DBG_AI_TESTING << msg <<                   side << ": " << _turn_number;
+	DBG_AI_TESTING << msg << "_UNITS "      << side << ": " << _units;
+	DBG_AI_TESTING << msg << "_UNITS_COST " << side << ": " << _units_cost;
+	DBG_AI_TESTING << msg << "_GOLD "       << side << ": " << _gold;
+	DBG_AI_TESTING << msg << "_VILLAGES "   << side << ": " << _villages;
+	DBG_AI_TESTING << msg << "_INCOME "     << side << ": " << _income;
 
 	config c;
 	c["side"] = static_cast<int>(side);
@@ -75,7 +75,7 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 
 void ai_testing::log_draw()
 {
-	LOG_AI_TESTING << "DRAW:" << std::endl;
+	LOG_AI_TESTING << "DRAW:";
 	resources::recorder->add_log_data("ai_log","result","draw");
 }
 
@@ -83,7 +83,7 @@ void ai_testing::log_victory(std::set<unsigned int> winners)
 {
 	resources::recorder->add_log_data("ai_log","result","victory");
 	for(std::set<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
-		LOG_AI_TESTING << "WINNER: "<< *w <<std::endl;
+		LOG_AI_TESTING << "WINNER: "<< *w;
 		resources::recorder->add_log_data("ai_log","winner",std::to_string(*w));
 	}
 }
@@ -92,17 +92,17 @@ void ai_testing::log_game_start()
 {
 	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
 		int side = tm-resources::gameboard->teams().begin()+1;
-		LOG_AI_TESTING << "AI_IDENTIFIER " << side << ": " << ai::manager::get_singleton().get_active_ai_identifier_for_side(side) << std::endl;
-		LOG_AI_TESTING << "TEAM " << side << ": " << tm->side() << std::endl;
+		LOG_AI_TESTING << "AI_IDENTIFIER " << side << ": " << ai::manager::get_singleton().get_active_ai_identifier_for_side(side);
+		LOG_AI_TESTING << "TEAM " << side << ": " << tm->side();
 		resources::recorder->add_log_data("ai_log", "ai_id" + std::to_string(side), ai::manager::get_singleton().get_active_ai_identifier_for_side(side));
 	}
-	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
+	LOG_AI_TESTING << "VERSION: " << game_config::revision;
 	resources::recorder->add_log_data("ai_log","version",game_config::revision);
 }
 
 void ai_testing::log_game_end()
 {
-	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn() <<std::endl;
+	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn();
 	resources::recorder->add_log_data("ai_log","end_turn",
 		std::to_string(resources::tod_manager->turn()));
 	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {

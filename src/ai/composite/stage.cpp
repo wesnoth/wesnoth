@@ -47,7 +47,7 @@ stage::stage( ai_context &context, const config &cfg )
 
 void stage::on_create()
 {
-	LOG_AI_STAGE << "side "<< get_side() << " : "<<" created stage with name=["<<cfg_["name"]<<"]"<<std::endl;
+	LOG_AI_STAGE << "side "<< get_side() << " : "<<" created stage with name=["<<cfg_["name"]<<"]";
 }
 
 stage::~stage()
@@ -102,7 +102,7 @@ idle_stage::~idle_stage()
 }
 
 bool idle_stage::do_play_stage(){
-	LOG_AI_STAGE << "Turn " << resources::tod_manager->turn() << ": playing idle stage for side: "<< get_side() << std::endl;
+	LOG_AI_STAGE << "Turn " << resources::tod_manager->turn() << ": playing idle stage for side: "<< get_side();
 	return false;
 }
 
@@ -110,7 +110,7 @@ bool idle_stage::do_play_stage(){
 bool stage_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_STAGE << "Error: Attempt to double-register stage " << name << std::endl;
+		ERR_AI_STAGE << "Error: Attempt to double-register stage " << name;
 		return true;
 	}
 	return false;

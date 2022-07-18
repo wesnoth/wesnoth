@@ -541,7 +541,7 @@ bool team::calculate_is_enemy(std::size_t index) const
 		}
 	}
 
-	LOG_NGE << "team " << info_.side << " has enemy in team " << index + 1 << std::endl;
+	LOG_NGE << "team " << info_.side << " has enemy in team " << index + 1;
 	return true;
 }
 
@@ -585,18 +585,18 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 {
 	auto new_controller = side_controller::get_enum(new_controller_string);
 	if(!new_controller) {
-		WRN_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+		WRN_NG << "ignored attempt to change controller to " << new_controller_string;
 		return;
 	}
 
 	if(new_controller == side_controller::type::none && resources::controller->current_side() == this->side()) {
-		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
+		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'";
 		return;
 	}
 
 	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
 	if(!side_controller::get_enum(choice["controller"].str())) {
-		WRN_NG << "Received an invalid controller string from the server" << choice["controller"] << std::endl;
+		WRN_NG << "Received an invalid controller string from the server" << choice["controller"];
 	} else {
 		new_controller = side_controller::get_enum(choice["controller"].str());
 	}
@@ -1037,7 +1037,7 @@ void team::log_recruitable() const
 {
 	LOG_NG << "Adding recruitable units: \n";
 	for(const std::string& recruit : info_.can_recruit) {
-		LOG_NG << recruit << std::endl;
+		LOG_NG << recruit;
 	}
 
 	LOG_NG << "Added all recruitable units\n";

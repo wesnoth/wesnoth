@@ -180,7 +180,7 @@ void halo_impl::effect::set_location(int x, int y)
 	int new_x = x - disp->get_location_x(map_location::ZERO());
 	int new_y = y - disp->get_location_y(map_location::ZERO());
 	if (new_x != abs_mid_.x || new_y != abs_mid_.y) {
-		DBG_HL << "setting halo location " << point{new_x,new_y} << endl;
+		DBG_HL << "setting halo location " << point{new_x,new_y};
 		abs_mid_.x = new_x;
 		abs_mid_.y = new_y;
 	}
@@ -219,7 +219,7 @@ void halo_impl::effect::update()
 	// Load texture for current animation frame
 	tex_ = image::get_texture(current_image());
 	if(!tex_) {
-		ERR_HL << "no texture found for current halo animation frame" << endl;
+		ERR_HL << "no texture found for current halo animation frame";
 		screen_loc_ = {};
 		return;
 	}
@@ -277,7 +277,7 @@ bool halo_impl::effect::render()
 	// Make sure we clip to the map area
 	auto clipper = draw::reduce_clip(disp->map_outside_area());
 
-	DBG_HL << "drawing halo at " << screen_loc_ << endl;
+	DBG_HL << "drawing halo at " << screen_loc_;
 
 	if (orientation_ == NORMAL) {
 		draw::blit(tex_, screen_loc_);
@@ -297,7 +297,7 @@ void halo_impl::effect::queue_undraw()
 	if(!last_draw_loc_.overlaps(disp->map_outside_area())) {
 		return;
 	}
-	DBG_HL << "queueing halo undraw at " << last_draw_loc_ << endl;
+	DBG_HL << "queueing halo undraw at " << last_draw_loc_;
 	draw_manager::invalidate_region(last_draw_loc_);
 }
 
@@ -306,7 +306,7 @@ void halo_impl::effect::queue_redraw()
 	if(!visible()) {
 		return;
 	}
-	DBG_HL << "queueing halo redraw at " << screen_loc_ << endl;
+	DBG_HL << "queueing halo redraw at " << screen_loc_;
 	draw_manager::invalidate_region(screen_loc_);
 }
 
@@ -321,7 +321,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		ORIENTATION orientation, bool infinite)
 {
 	const int id = halo_id++;
-	DBG_HL << "adding halo " << id << endl;
+	DBG_HL << "adding halo " << id;
 	animated<image::locator>::anim_description image_vector;
 	std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
 
@@ -335,7 +335,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 			try {
 				time = std::stoi(sub_items.back());
 			} catch(const std::invalid_argument&) {
-				ERR_HL << "Invalid time value found when constructing halo: " << sub_items.back() << endl;
+				ERR_HL << "Invalid time value found when constructing halo: " << sub_items.back();
 			}
 		}
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
@@ -377,18 +377,18 @@ void halo_impl::update()
 	// Mark expired haloes for removal
 	for(auto& [id, effect] : haloes) {
 		if(effect.expired()) {
-			DBG_HL << "expiring halo " << id << endl;
+			DBG_HL << "expiring halo " << id;
 			deleted_haloes.insert(id);
 		}
 	}
 	// Make sure deleted halos get undrawn
 	for(int id : deleted_haloes) {
-		DBG_HL << "invalidating deleted halo " << id << endl;
+		DBG_HL << "invalidating deleted halo " << id;
 		haloes.at(id).queue_undraw();
 	}
 	// Remove deleted halos
 	for(int id : deleted_haloes) {
-		DBG_HL << "deleting halo " << id << endl;
+		DBG_HL << "deleting halo " << id;
 		changing_haloes.erase(id);
 		haloes.erase(id);
 	}
@@ -403,7 +403,7 @@ void halo_impl::update()
 	for(int id : changing_haloes) {
 		auto& halo = haloes.at(id);
 		if(halo.need_update() && halo.visible()) {
-			DBG_HL << "invalidating changed halo " << id << endl;
+			DBG_HL << "invalidating changed halo " << id;
 			halo.queue_redraw();
 		}
 	}
@@ -420,7 +420,7 @@ void halo_impl::render()
 
 	for(auto& [id, effect] : haloes) {
 		if(clip.overlaps(effect.get_draw_location())) {
-			DBG_HL << "drawing intersected halo " << id << endl;
+			DBG_HL << "drawing intersected halo " << id;
 			effect.render();
 		}
 	}

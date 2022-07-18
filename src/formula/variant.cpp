@@ -682,7 +682,7 @@ variant variant::execute_variant(const variant& var)
 				made_moves.push_back(vars.top());
 //			} else {
 				//too many calls in a row - possible infinite loop
-//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword" << std::endl;
+//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword";
 
 //				if(safe_call)
 //					error = variant(new game_logic::safe_call_result(nullptr, 5001));
@@ -691,7 +691,7 @@ variant variant::execute_variant(const variant& var)
 			break;
 		} else {
 			//this information is unneeded when evaluating formulas from commandline
-			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string() << std::endl;
+			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string();
 		}
 
 		vars.pop();
