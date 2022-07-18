@@ -226,6 +226,9 @@ std::stringstream& log_to_chat();
 // Don't prefix the logdomain to messages on this stream
 #define LOG_STREAM_NAMELESS(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false) | formatter()
 
+// Like LOG_STREAM_NAMELESS except doesn't add newlines automatically
+#define LOG_STREAM_NAMELESS_STREAMING(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false, false, true, true, false) | formatter()
+
 // When using log_scope/log_scope2 it is nice to have all output indented.
 #define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true) | formatter()
 
