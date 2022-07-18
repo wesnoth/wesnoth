@@ -77,7 +77,7 @@ action_result::action_result( side_number side )
 action_result::~action_result()
 {
 	if (!return_value_checked_) {
-		DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; //Demotes to DBG "unchecked result" warning
+		DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; //Demotes to DBG "unchecked result" warning
 	}
 }
 
@@ -100,7 +100,7 @@ void action_result::execute()
 		try {
 			do_execute();
 		} catch (const return_to_play_side_exception&) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}
 	}
@@ -181,7 +181,7 @@ attack_result::attack_result( side_number side, const map_location& attacker_loc
 
 void attack_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 	const unit_map::const_iterator attacker = resources::gameboard->units().find(attacker_loc_);
 	const unit_map::const_iterator defender = resources::gameboard->units().find(defender_loc_);
 
@@ -263,7 +263,7 @@ std::string attack_result::do_describe() const
 
 void attack_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: "<< *this;
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
@@ -318,7 +318,7 @@ void attack_result::do_execute()
 	try {
 		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -399,7 +399,7 @@ bool move_result::test_route(const unit &un)
 
 void move_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 	const unit *u = get_unit();
 	if (!u) {
 		return;
@@ -448,7 +448,7 @@ std::string move_result::do_describe() const
 
 void move_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: "<< *this;
 	assert(is_success());
 
 	if(resources::simulation_){
@@ -516,7 +516,7 @@ void move_result::do_execute()
 		try {
 			manager::get_singleton().raise_gamestate_changed();
 		} catch (...) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}
 	}
@@ -559,7 +559,7 @@ bool recall_result::test_enough_gold(const team &my_team)
 
 void recall_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 	const team& my_team = get_my_team();
 	const bool location_specified = recall_location_.valid();
 
@@ -635,7 +635,7 @@ std::string recall_result::do_describe() const
 
 void recall_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this;
 	assert(is_success());
 
 	const events::command_disabler disable_commands;
@@ -667,7 +667,7 @@ void recall_result::do_execute()
 	try {
 		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -710,7 +710,7 @@ bool recruit_result::test_enough_gold(const team &my_team, const unit_type &type
 
 void recruit_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 	const team& my_team = get_my_team();
 	const bool location_specified = recruit_location_.valid();
 
@@ -786,7 +786,7 @@ std::string recruit_result::do_describe() const
 
 void recruit_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this;
 	assert(is_success());
 
 	const unit_type *u = unit_types.find(unit_name_);
@@ -812,7 +812,7 @@ void recruit_result::do_execute()
 	try {
 		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -849,7 +849,7 @@ const unit *stopunit_result::get_unit()
 
 void stopunit_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 
 	if (!get_unit()) {
 		return;
@@ -894,7 +894,7 @@ std::string stopunit_result::do_describe() const
 
 void stopunit_result::do_execute()
 {
-	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this;
 	assert(is_success());
 	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
@@ -920,7 +920,7 @@ void stopunit_result::do_execute()
 			manager::get_singleton().raise_gamestate_changed();//to be on the safe side
 		}
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -938,7 +938,7 @@ synced_command_result::synced_command_result( side_number side, const std::strin
 
 void synced_command_result::do_check_before()
 {
-	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this;
 }
 
 void synced_command_result::do_check_after()
@@ -964,7 +964,7 @@ void synced_command_result::do_execute()
 		return;
 	}
 
-	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this;
 	assert(is_success());
 
 	std::stringstream s;
@@ -977,7 +977,7 @@ void synced_command_result::do_execute()
 		set_gamestate_changed();
 		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked."; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -1114,7 +1114,7 @@ const std::string& actions::get_error_name(int error_code)
 {
 	auto i = error_names_.find(error_code);
 	if (i==error_names_.end()){
-		ERR_AI_ACTIONS << "error name not available for error #"<<error_code << std::endl;
+		ERR_AI_ACTIONS << "error name not available for error #"<<error_code;
 		i = error_names_.find(-1);
 		assert(i != error_names_.end());
 	}

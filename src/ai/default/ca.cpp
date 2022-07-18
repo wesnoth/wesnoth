@@ -137,14 +137,14 @@ void goto_phase::execute()
 
 	move_->execute();
 	if (!move_->is_ok()){
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 	}
 
 	// In some situations, a theoretically possible path is blocked by allies,
 	// resulting in the unit not moving. In this case, we remove all remaining
 	// movement from the unit in order to prevent blacklisting of the CA.
 	if (!move_->is_gamestate_changed()){
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute did not move unit; removing moves instead" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute did not move unit; removing moves instead";
 		stopunit_result_ptr stopunit = check_stopunit_action(move_->get_unit_location(), true, false);
 		stopunit->execute();
 	}
@@ -246,18 +246,18 @@ void combat_phase::execute()
 	if (from!=to) {
 		move_result_ptr move_res = execute_move_action(from,to,false);
 		if (!move_res->is_ok()) {
-			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, move failed" << std::endl;
+			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, move failed";
 			return;
 		}
 	}
 
 	attack_result_ptr attack_res = check_attack_action(to, target_loc, -1);
 	if (!attack_res->is_ok()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack cancelled" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack cancelled";
 	} else {
 		attack_res->execute();
 		if (!attack_res->is_ok()) {
-			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack failed" << std::endl;
+			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack failed";
 		}
 	}
 
@@ -313,7 +313,7 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	if (leader == nullptr) {
-		WRN_AI_TESTING_AI_DEFAULT << "Leader not found" << std::endl;
+		WRN_AI_TESTING_AI_DEFAULT << "Leader not found";
 		return BAD_SCORE;
 	}
 
@@ -370,7 +370,7 @@ void move_leader_to_goals_phase::execute()
 {
 	move_->execute();
 	if (!move_->is_ok()){
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 	}
 	if (move_->get_unit_location()==dst_) {
 		//goal already reached
@@ -531,7 +531,7 @@ void move_leader_to_keep_phase::execute()
 {
 	move_->execute();
 	if (!move_->is_ok()) {
-		LOG_AI_TESTING_AI_DEFAULT <<  get_name() <<"::execute not ok" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT <<  get_name() <<"::execute not ok";
 	}
 }
 
@@ -1387,7 +1387,7 @@ void get_healing_phase::execute()
 	LOG_AI_TESTING_AI_DEFAULT << "moving unit to village for healing...\n";
 	move_->execute();
 	if (!move_->is_ok()){
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 	}
 }
 
@@ -1520,7 +1520,7 @@ void retreat_phase::execute()
 {
 	move_->execute();
 	if (!move_->is_ok()){
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 	}
 }
 
@@ -1559,13 +1559,13 @@ leader_control_phase::~leader_control_phase()
 
 double leader_control_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
+	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented";
 	return BAD_SCORE;
 }
 
 void leader_control_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented" << std::endl;
+	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented";
 }
 
 //==============================================================
@@ -1676,7 +1676,7 @@ void leader_shares_keep_phase::execute()
 				if(move->is_ok()){
 					move->execute();
 					if (!move->is_ok()){
-						LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+						LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 					}else{
 						ai_leader->set_goto(keep);
 					}
@@ -1685,13 +1685,13 @@ void leader_shares_keep_phase::execute()
 					possible_moves.clear();
 					calculate_moves(resources::gameboard->units(), possible_moves, friends_srcdst, friends_dstsrc, false, true);
 				}else{
-					LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+					LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok";
 				}
 			}
 		}
 		ai_leader->remove_movement_ai();
 	}
-	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;
+	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented";
 }
 
 //==============================================================

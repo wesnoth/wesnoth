@@ -247,7 +247,7 @@ void move::execute(bool& success, bool& complete)
 	}
 	else if ( unit_it == resources::gameboard->units().end()  ||  (unit_id_.empty() && ( unit_it->id() != unit_id_ )))
 	{
-		WRN_WB << "Unit disappeared from map during move execution." << std::endl;
+		WRN_WB << "Unit disappeared from map during move execution.";
 		success = false;
 		complete = true;
 	}
@@ -549,7 +549,7 @@ int move::calculate_moves_left(unit& u)
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
-			WRN_WB << shared_from_this() << " defined with insufficient movement left." << std::endl;
+			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 
 		// If unit finishes move in a village it captures, set the move cost to unit's movement_left()

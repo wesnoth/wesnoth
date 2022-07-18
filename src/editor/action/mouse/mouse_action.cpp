@@ -154,7 +154,7 @@ void mouse_action::set_terrain_mouse_overlay(
 	const std::string blank_hex = "misc/blank-hex.png";
 
 	if (!image::exists(fg_path) || !image::exists(bg_path)) {
-		ERR_ED << "Missing terrain icon" << std::endl;
+		ERR_ED << "Missing terrain icon";
 		disp.clear_mouseover_hex_overlay();
 		return;
 	}

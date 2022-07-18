@@ -56,7 +56,7 @@ bool wmi_manager::erase(const std::string& id)
 	const auto iter = wml_menu_items_.find(id);
 
 	if(iter == wml_menu_items_.end()) {
-		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring." << std::endl;
+		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.";
 		// No such item.
 		return false;
 	}
@@ -187,7 +187,7 @@ void wmi_manager::init_handlers(game_lua_kernel& lk) const
 
 	// Diagnostic:
 	if(wmi_count > 0) {
-		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+		LOG_NG << wmi_count << " WML menu items found, loaded.";
 	}
 }
 
@@ -233,7 +233,7 @@ void wmi_manager::set_menu_items(const config& cfg)
 		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
 
 		if(!success) {
-			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;
+			WRN_NG << "duplicate menu item (" << id << ") while loading from config";
 		}
 	}
 }

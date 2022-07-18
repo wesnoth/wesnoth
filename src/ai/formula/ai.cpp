@@ -85,7 +85,7 @@ ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 		} else if( type == "attack") {
 			new_ca = std::make_shared<attack_candidate_action>(name, type, rc_action, &function_table_);
 		} else {
-			ERR_AI << "Unknown candidate action type: " << type << std::endl;
+			ERR_AI << "Unknown candidate action type: " << type;
 		}
 	} catch(const formula_error& e) {
 		handle_exception(e, "Error while registering candidate action '" + name + "'");
@@ -111,7 +111,7 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	function_table_(*this)
 {
 	init_readonly_context_proxy(context);
-	LOG_AI << "creating new formula ai"<< std::endl;
+	LOG_AI << "creating new formula ai";
 }
 
 void formula_ai::handle_exception(const formula_error& e) const
@@ -121,14 +121,14 @@ void formula_ai::handle_exception(const formula_error& e) const
 
 void formula_ai::handle_exception(const formula_error& e, const std::string& failed_operation) const
 {
-	LOG_AI << failed_operation << ": " << e.formula << std::endl;
+	LOG_AI << failed_operation << ": " << e.formula;
 	display_message(failed_operation + ": " + e.formula);
 	//if line number = 0, don't display info about filename and line number
 	if (e.line != 0) {
-		LOG_AI << e.type << " in " << e.filename << ":" << e.line << std::endl;
+		LOG_AI << e.type << " in " << e.filename << ":" << e.line;
 		display_message(e.type + " in " + e.filename + ":" + std::to_string(e.line));
 	} else {
-		LOG_AI << e.type << std::endl;
+		LOG_AI << e.type;
 		display_message(e.type);
 	}
 }
@@ -195,7 +195,7 @@ wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl:
 	if (ai_ptr_) {
 		res = variant(this->fake_ptr()).execute_variant(var);
 	} else {
-		ERR_AI << "skipped execution of action because ai context is not set correctly" << std::endl;
+		ERR_AI << "skipped execution of action because ai context is not set correctly";
 	}
 
 	return res;
@@ -759,7 +759,7 @@ config formula_ai::to_config() const
 	{
 		return config();
 	}
-	DBG_AI << "formula_ai::to_config(): "<< cfg_<<std::endl;
+	DBG_AI << "formula_ai::to_config(): "<< cfg_;
 	config cfg = cfg_;
 
 	//formula AI variables
@@ -773,7 +773,7 @@ config formula_ai::to_config() const
 			try {
 				str = i->second.serialize_to_string();
 			} catch(const type_error&) {
-				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames"<<std::endl;
+				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames";
 				continue;
 			}
 				if (!str.empty())

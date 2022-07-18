@@ -180,7 +180,7 @@ namespace { // Support functions
 				game_map->w(), game_map->h());
 
 			if (route.steps.empty()) {
-				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
+				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities";
 				pathfind::emergency_path_calculator emergency_calc(fake_unit, *game_map);
 
 				route = pathfind::a_star_search(src, dst, 10000, emergency_calc,
@@ -189,7 +189,7 @@ namespace { // Support functions
 					// This would occur when trying to do a MUF of a unit
 					// over locations which are unreachable to it (infinite movement
 					// costs). This really cannot fail.
-					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
+					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain";
 					pathfind::dummy_path_calculator dummy_calc(fake_unit, *game_map);
 					route = a_star_search(src, dst, 10000, dummy_calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
@@ -265,8 +265,8 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 
 static void on_replay_error(const std::string& message)
 {
-	ERR_NG << "Error via [do_command]:" << std::endl;
-	ERR_NG << message << std::endl;
+	ERR_NG << "Error via [do_command]:";
+	ERR_NG << message;
 }
 
 // This tag exposes part of the code path used to handle [command]'s in replays
@@ -279,7 +279,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	// With the theme_items lua callbacks
 	if(resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_NG << "[do_command] called while whiteboard is applied, ignoring" << std::endl;
+		ERR_NG << "[do_command] called while whiteboard is applied, ignoring";
 		return;
 	}
 
@@ -290,41 +290,41 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
-		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
+		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
 	if(is_unsynced && resources::controller->is_lingering())
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode" << std::endl;
+		ERR_NG << "[do_command] cannot be used in linger mode";
 		return;
 	}
 	if(is_unsynced && !resources::controller->gamestate().init_side_done())
 	{
-		ERR_NG << "[do_command] cannot be used before the turn has started" << std::endl;
+		ERR_NG << "[do_command] cannot be used before the turn has started";
 		return;
 	}
 	if(is_unsynced && is_unsynced_too_early)
 	{
-		ERR_NG << "[do_command] called too early" << std::endl;
+		ERR_NG << "[do_command] called too early";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)
 	{
-		ERR_NG << "[do_command] cannot invoke synced commands while commands are blocked" << std::endl;
+		ERR_NG << "[do_command] cannot invoke synced commands while commands are blocked";
 		return;
 	}
 	if(is_unsynced && !resources::controller->current_team().is_local())
 	{
-		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
+		ERR_NG << "[do_command] can only be used from clients that control the currently playing side";
 		return;
 	}
 	for(const auto& [key, child] : cfg.all_ordered())
 	{
 		if(allowed_tags.find(key) == allowed_tags.end()) {
-			ERR_NG << "unsupported tag [" << key << "] in [do_command]" << std::endl;
+			ERR_NG << "unsupported tag [" << key << "] in [do_command]";
 			std::stringstream o;
 			std::copy(allowed_tags.begin(), allowed_tags.end(), std::ostream_iterator<std::string>(o, " "));
-			ERR_NG << "allowed tags: " << o.str() << std::endl;
+			ERR_NG << "allowed tags: " << o.str();
 			continue;
 		}
 		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
@@ -369,7 +369,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 		int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
-			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
+			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")";
 		} else if(new_turn_number_u != current_turn_number) {
 			tod_man.set_turn_by_wml(new_turn_number_u, resources::gamedata);
 			game_display::get_singleton()->new_turn();
@@ -684,7 +684,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug();
 		}
 	} else {
 		typedef std::pair<std::string, vconfig> vchild;
@@ -708,7 +708,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
 				if(separator_string.size() > 1){
-					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug() << std::endl;
+					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug();
 				}
 
 				std::vector<std::string> split_vector;
@@ -763,7 +763,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -775,15 +775,15 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 {
 	if (!cfg.child("source")) {
-		WRN_NG << "No source in [store_relative_direction]" << std::endl;
+		WRN_NG << "No source in [store_relative_direction]";
 		return;
 	}
 	if (!cfg.child("destination")) {
-		WRN_NG << "No destination in [store_relative_direction]" << std::endl;
+		WRN_NG << "No destination in [store_relative_direction]";
 		return;
 	}
 	if (!cfg.has_attribute("variable")) {
-		WRN_NG << "No variable in [store_relative_direction]" << std::endl;
+		WRN_NG << "No variable in [store_relative_direction]";
 		return;
 	}
 
@@ -800,7 +800,7 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -813,15 +813,15 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 {
 	if (!cfg.child("source")) {
-		WRN_NG << "No source in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No source in [store_rotate_map_location]";
 		return;
 	}
 	if (!cfg.child("destination")) {
-		WRN_NG << "No destination in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No destination in [store_rotate_map_location]";
 		return;
 	}
 	if (!cfg.has_attribute("variable")) {
-		WRN_NG << "No variable in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No variable in [store_rotate_map_location]";
 		return;
 	}
 
@@ -839,7 +839,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -889,7 +889,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug();
 		}
 		return;
 
@@ -899,7 +899,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 
 	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
-		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")"<<std::endl;
+		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")";
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}

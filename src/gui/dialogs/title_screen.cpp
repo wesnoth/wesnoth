@@ -175,13 +175,13 @@ void title_screen::pre_show(window& win)
 	// Background and logo images
 	//
 	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined" << std::endl;
+		ERR_CF << "No title image defined";
 	}
 
 	win.get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 
 	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined" << std::endl;
+		ERR_CF << "No title background image defined";
 	}
 
 	win.get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
@@ -208,7 +208,7 @@ void title_screen::pre_show(window& win)
 	if(tip_pages != nullptr) {
 		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
 		if(tips.empty()) {
-			WRN_CF << "There are no tips of day available." << std::endl;
+			WRN_CF << "There are no tips of day available.";
 		}
 		for(const auto& tip : tips)	{
 			widget_item widget;

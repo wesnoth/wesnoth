@@ -176,7 +176,7 @@ shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(nullptr)
 shroud_clearer::~shroud_clearer()
 {
 	if ( !sightings_.empty() ) {
-		ERR_NG << sightings_.size() << " sighted events were ignored." << std::endl;
+		ERR_NG << sightings_.size() << " sighted events were ignored.";
 	}
 }
 

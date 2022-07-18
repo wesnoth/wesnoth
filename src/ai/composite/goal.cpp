@@ -52,7 +52,7 @@ goal::goal(readonly_context &context, const config &cfg)
 
 void goal::on_create()
 {
-	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
+	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]";
 }
 
 void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
@@ -62,7 +62,7 @@ void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
 
 void goal::unrecognized()
 {
-	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. " << std::endl;
+	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. ";
 	ok_ = false;
 }
 
@@ -179,7 +179,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 	filter_ptr_->get_locations(items);
 	for (const map_location &loc : items)
 	{
-		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
+		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value();
 		*target_list = target(loc, value(), ai_target::type::xplicit);
 	}
 
@@ -227,16 +227,16 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	}
 
 	if (!(this)->active()) {
-		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active" << std::endl;
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active";
 		return;
 	}
 
 	const config &criteria = cfg_.child("criteria");
 	if (!criteria) {
-		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given" << std::endl;
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given";
 		return;
 	} else {
-		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria");
 	}
 
 	unit_map &units = resources::gameboard->units();
@@ -259,7 +259,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	} else {
 		filter_ptr_->get_locations(items);
 	}
-	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal" << std::endl;
+	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal";
 	// Look for directions to protect a specific location or specific unit.
 	for (const map_location &loc : items)
 	{
@@ -298,7 +298,7 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	}
 	else
 	{
-		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)" << std::endl;
+		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)";
 	}
 }
 
@@ -326,7 +326,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 bool goal_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name << std::endl;
+		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name;
 		return true;
 	}
 	return false;

@@ -51,7 +51,7 @@ void playturn_network_adapter::read_from_network()
 
 	if(!back.attribute_range().empty() )
 	{
-		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
+		ERR_NW << "found unexpected attribute:" <<back.debug();
 		this->data_.pop_back();
 		//ignore those here
 	}
@@ -141,7 +141,7 @@ playturn_network_adapter::~playturn_network_adapter()
 	try {
 		if(!is_at_end())
 		{
-			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data";
 		}
 	} catch (...) {}
 }

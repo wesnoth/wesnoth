@@ -196,9 +196,9 @@ void game::perform_controller_tweaks()
 {
 	const simple_wml::node::child_list& sides = get_sides_list();
 
-	DBG_GAME << "****\n Performing controller tweaks. sides = " << std::endl;
-	DBG_GAME << debug_sides_info() << std::endl;
-	DBG_GAME << "****" << std::endl;
+	DBG_GAME << "****\n Performing controller tweaks. sides = ";
+	DBG_GAME << debug_sides_info();
+	DBG_GAME << "****";
 
 	update_side_data(); // Necessary to read the level_ and get sides_, etc. updated to match
 
@@ -250,9 +250,9 @@ void game::perform_controller_tweaks()
 void game::start_game(player_iterator starter)
 {
 	const simple_wml::node::child_list& sides = get_sides_list();
-	DBG_GAME << "****\n Starting game. sides = " << std::endl;
-	DBG_GAME << debug_sides_info() << std::endl;
-	DBG_GAME << "****" << std::endl;
+	DBG_GAME << "****\n Starting game. sides = ";
+	DBG_GAME << debug_sides_info();
+	DBG_GAME << "****";
 
 	// If the game was already started we're actually advancing.
 	const bool advance = started_;
@@ -989,7 +989,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 		} else if((*command).child("speak")) {
 			simple_wml::node& speak = *(*command).child("speak");
 			if(!speak["to_sides"].empty() || is_muted_observer(user)) {
-				DBG_GAME << "repackaging..." << std::endl;
+				DBG_GAME << "repackaging...";
 				repackage = true;
 			}
 
@@ -1265,7 +1265,7 @@ void game::process_whiteboard(simple_wml::document& data, player_iterator user)
 
 		const std::string& msg_str = msg.str();
 
-		LOG_GAME << msg_str << std::endl;
+		LOG_GAME << msg_str;
 		send_and_record_server_message(msg_str);
 		return;
 	}
@@ -1527,7 +1527,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 		node_side_drop.set_attr_dup("side_num", side_drop.c_str());
 		node_side_drop.set_attr_dup("controller", side_controller::get_string(side_controllers_[side_index]).c_str());
 
-		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
+		DBG_GAME << "*** sending side drop: \n" << drop.output();
 
 		server.send_to_player(owner_, drop);
 	}
@@ -1586,9 +1586,9 @@ void game::load_next_scenario(player_iterator user)
 	level_.root().copy_into(next_scen);
 	next_scen.set_attr("started", started_ ? "yes" : "no");
 
-	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;
-	DBG_GAME << debug_sides_info() << std::endl;
-	DBG_GAME << "****" << std::endl;
+	DBG_GAME << "****\n loading next scenario for a client. sides info = ";
+	DBG_GAME << debug_sides_info();
+	DBG_GAME << "****";
 
 	//
 	// Change the controller to match that client.
@@ -1743,7 +1743,7 @@ void game::send_history(player_iterator player) const
 		history_.clear();
 		history_.push_back(std::move(doc));
 	} catch(const simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 	}
 }
 
@@ -1820,16 +1820,16 @@ void game::save_replay()
 		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
 
 		std::string filename = get_replay_filename();
-		DBG_GAME << "saving replay: " << filename << std::endl;
+		DBG_GAME << "saving replay: " << filename;
 
 		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));
 		(*os) << replay.output_compressed(true);
 
 		if(!os->good()) {
-			ERR_GAME << "Could not save replay! (" << filename << ")" << std::endl;
+			ERR_GAME << "Could not save replay! (" << filename << ")";
 		}
 	} catch(const simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 	}
 }
 

@@ -270,7 +270,7 @@ DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 	if(args().size() == 1) {
 		str1 = var1.to_debug_string(true);
 
-		LOG_SF << str1 << std::endl;
+		LOG_SF << str1;
 
 		if(game_config::debug && game_display::get_singleton()) {
 			game_display::get_singleton()->get_chat_manager().add_chat_message(
@@ -284,7 +284,7 @@ DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 		const variant var2 = args()[1]->evaluate(variables, fdb);
 		str2 = var2.to_debug_string(true);
 
-		LOG_SF << str1 << ": " << str2 << std::endl;
+		LOG_SF << str1 << ": " << str2;
 
 		if(game_config::debug && game_display::get_singleton()) {
 			game_display::get_singleton()->get_chat_manager().add_chat_message(
@@ -317,7 +317,7 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 	std::ostringstream str;
 	str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
 
-	LOG_SF << speaker << ": " << str.str() << std::endl;
+	LOG_SF << speaker << ": " << str.str();
 
 	if(game_config::debug && game_display::get_singleton()) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(

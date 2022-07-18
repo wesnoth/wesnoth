@@ -109,7 +109,7 @@ formula_debugger::~formula_debugger()
 
 static void msg(const char *act, debug_info &i, const char *to="", const char *result = "")
 {
-	DBG_FDB << "#" << i.counter() << act << std::endl <<"     \""<< i.name() << "\"='" << i.str() << "' " << to << result << std::endl;
+	DBG_FDB << "#" << i.counter() << act << std::endl <<"     \""<< i.name() << "\"='" << i.str() << "' " << to << result;
 }
 
 
@@ -154,13 +154,13 @@ void formula_debugger::check_breakpoints()
 void formula_debugger::show_gui()
 {
 	if (game_display::get_singleton() == nullptr) {
-		WRN_FDB << "skipping WFL debug window due to nullptr gui" << std::endl;
+		WRN_FDB << "skipping WFL debug window due to nullptr gui";
 		return;
 	}
 	if (game_config::debug) {
 		gui2::dialogs::formula_debugger::display(*this);
 	} else {
-		WRN_FDB << "skipping WFL debug window because :debug is not enabled"<< std::endl;
+		WRN_FDB << "skipping WFL debug window because :debug is not enabled";
 	}
 }
 
@@ -361,28 +361,28 @@ private:
 void formula_debugger::add_breakpoint_continue_to_end()
 {
 	breakpoints_.emplace_back(new end_breakpoint(*this));
-	LOG_FDB << "added 'end' breakpoint"<< std::endl;
+	LOG_FDB << "added 'end' breakpoint";
 }
 
 
 void formula_debugger::add_breakpoint_step_into()
 {
 	breakpoints_.emplace_back(new step_in_breakpoint(*this));
-	LOG_FDB << "added 'step into' breakpoint"<< std::endl;
+	LOG_FDB << "added 'step into' breakpoint";
 }
 
 
 void formula_debugger::add_breakpoint_step_out()
 {
 	breakpoints_.emplace_back(new step_out_breakpoint(*this));
-	LOG_FDB << "added 'step out' breakpoint"<< std::endl;
+	LOG_FDB << "added 'step out' breakpoint";
 }
 
 
 void formula_debugger::add_breakpoint_next()
 {
 	breakpoints_.emplace_back(new next_breakpoint(*this));
-	LOG_FDB << "added 'next' breakpoint"<< std::endl;
+	LOG_FDB << "added 'next' breakpoint";
 }
 
 

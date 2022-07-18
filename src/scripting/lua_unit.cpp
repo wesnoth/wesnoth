@@ -103,7 +103,7 @@ bool lua_unit::put_map(const map_location &loc)
 			}
 			// No need to change our contents
 		} else {
-			ERR_LUA << "Could not find unit " << uid << " on the map" << std::endl;
+			ERR_LUA << "Could not find unit " << uid << " on the map";
 			return false;
 		}
 	}

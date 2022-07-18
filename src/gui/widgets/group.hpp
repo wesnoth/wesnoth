@@ -45,7 +45,7 @@ public:
 		std::tie(std::ignore, success) = members_.emplace(value, w);
 
 		if(!success) {
-			ERR_GUI_G << "Group member with value already exists." << std::endl;
+			ERR_GUI_G << "Group member with value already exists.";
 			return;
 		}
 

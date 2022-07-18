@@ -93,17 +93,17 @@ public:
 
 bool operator()(const target &t){
 	if (!map_.on_board(t.loc)) {
-		DBG_AI << "removing target "<< t.loc << " due to it not on_board" << std::endl;
+		DBG_AI << "removing target "<< t.loc << " due to it not on_board";
 		return true;
 	}
 
 	if (t.value<=0) {
-		DBG_AI << "removing target "<< t.loc << " due to value<=0" << std::endl;
+		DBG_AI << "removing target "<< t.loc << " due to value<=0";
 		return true;
 	}
 
 	if (avoid_.match(t.loc)) {
-		DBG_AI << "removing target "<< t.loc << " due to 'avoid' match" << std::endl;
+		DBG_AI << "removing target "<< t.loc << " due to 'avoid' match";
 		return true;
 	}
 
@@ -171,7 +171,7 @@ void move_to_targets_phase::execute()
 
 		move_result_ptr move_ptr = execute_move_action(move.first,move.second,true);
 		if(!move_ptr->is_ok()) {
-			WRN_AI << "unexpected outcome of move"<<std::endl;
+			WRN_AI << "unexpected outcome of move";
 			break;
 		}
 	}
@@ -363,7 +363,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	LOG_AI << "choose target...\n";
 
 	if(best_rated_target == rated_targets.end()) {
-		LOG_AI << "no eligible targets found for unit at " << u->get_location() << std::endl;
+		LOG_AI << "no eligible targets found for unit at " << u->get_location();
 		return std::pair(u->get_location(), u->get_location());
 	}
 

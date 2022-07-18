@@ -117,7 +117,7 @@ void connection::handle_resolve(const boost::system::error_code& ec, results_typ
 void connection::handle_connect(const boost::system::error_code& ec, endpoint endpoint)
 {
 	if(ec) {
-		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
 		LOG_NW << "Connected to " << endpoint.address() << '\n';
@@ -277,7 +277,7 @@ void connection::cancel()
 #endif
 
 			if(ec) {
-				WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+				WRN_NW << "Failed to cancel network operations: " << ec.message();
 			}
 		}
 	}, socket_);

@@ -192,7 +192,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("attacker_type")) {
 		const std::string &att_type_id = child["attacker_type"];
 		if (u->type_id() != att_type_id) {
-			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")";
 		}
 	}
 
@@ -213,7 +213,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("defender_type")) {
 		const std::string &def_type_id = child["defender_type"];
 		if (tgt->type_id() != def_type_id) {
-			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")";
 		}
 	}
 
@@ -264,13 +264,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	try {
 		read_locations(child,steps);
 	} catch (const std::invalid_argument&) {
-		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
 	}
 
 	if(steps.empty())
 	{
-		WRN_REPLAY << "Warning: Missing path data found in [move]" << std::endl;
+		WRN_REPLAY << "Warning: Missing path data found in [move]";
 		return false;
 	}
 
@@ -278,14 +278,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	const map_location& dst = steps.back();
 
 	if (src == dst) {
-		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping..." << std::endl;
+		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
 		return false;
 	}
 
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
-		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied." << std::endl;
+		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.";
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
 		// 'event' doesn't mean wml event but rather it means 'hidden' units form the movers point of view.
@@ -515,7 +515,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
 		} catch(const unit_type::error& e) {
-			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
+			ERR_REPLAY << e.what(); // TODO: more appropriate error message log
 			return false;
 		}
 	}

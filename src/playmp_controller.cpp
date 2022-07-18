@@ -91,7 +91,7 @@ void playmp_controller::remove_blindfold()
 {
 	if(gui_->is_blindfolded()) {
 		blindfold_.unblind();
-		LOG_NG << "Taking off the blindfold now " << std::endl;
+		LOG_NG << "Taking off the blindfold now ";
 		gui_->redraw_everything();
 	}
 }
@@ -258,9 +258,9 @@ void playmp_controller::linger()
 			end_turn_ = END_TURN_NONE;
 			play_linger_turn();
 			after_human_turn();
-			LOG_NG << "finished human turn" << std::endl;
+			LOG_NG << "finished human turn";
 		} catch(const savegame::load_game_exception&) {
-			LOG_NG << "caught load-game-exception" << std::endl;
+			LOG_NG << "caught load-game-exception";
 			// this should not happen, the option to load a game is disabled
 			throw;
 		} catch(const leavegame_wesnothd_error& e) {
@@ -277,7 +277,7 @@ void playmp_controller::linger()
 			}
 			throw;
 		} catch(const ingame_wesnothd_error&) {
-			LOG_NG << "caught network-error-exception" << std::endl;
+			LOG_NG << "caught network-error-exception";
 			quit = false;
 		}
 	} while(!quit);

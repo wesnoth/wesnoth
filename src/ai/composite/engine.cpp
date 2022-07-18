@@ -37,7 +37,7 @@ engine::engine( readonly_context &context, const config &cfg )
 	, id_(cfg["id"])
 	, name_(cfg["name"])
 {
-	LOG_AI_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]"<<std::endl;
+	LOG_AI_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<name_<<"]";
 }
 
 engine::~engine()
@@ -148,7 +148,7 @@ readonly_context& engine::get_readonly_context()
 bool engine_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_ENGINE << "Error: Attempt to double-register engine " << name << std::endl;
+		ERR_AI_ENGINE << "Error: Attempt to double-register engine " << name;
 		return true;
 	}
 	return false;

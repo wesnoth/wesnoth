@@ -313,7 +313,7 @@ void render_minimap(unsigned dst_w,
 
 	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
 
-	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale << std::endl;
+	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
 	const std::size_t map_width  = std::max(0, map.w()) * scale * 3 / 4;
 	const std::size_t map_height = std::max(0, map.h()) * scale;
@@ -589,7 +589,7 @@ void render_minimap(unsigned dst_w,
 	// which should be the passed texture.
 	draw::blit(minimap, final_dst_rect);
 
-	DBG_DP << "done generating minimap" << std::endl;
+	DBG_DP << "done generating minimap";
 }
 
 }

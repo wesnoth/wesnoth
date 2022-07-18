@@ -176,7 +176,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	assert(shown.size() == get_item_count());
 
 	if(generator_->get_items_shown() == shown) {
-		LOG_GUI_G << LOG_HEADER << " returning early" << std::endl;
+		LOG_GUI_G << LOG_HEADER << " returning early";
 		return;
 	}
 
@@ -358,12 +358,12 @@ void listbox::place(const point& origin, const point& size)
 
 	const int selected_item = generator_->get_selected_item();
 	if(vertical_scrollbar_position && horizontal_scrollbar_position) {
-		LOG_GUI_L << LOG_HEADER << " restoring scroll position" << std::endl;
+		LOG_GUI_L << LOG_HEADER << " restoring scroll position";
 
 		set_vertical_scrollbar_item_position(*vertical_scrollbar_position);
 		set_horizontal_scrollbar_item_position(*horizontal_scrollbar_position);
 	} else if(selected_item != -1) {
-		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible" << std::endl;
+		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible";
 
 		const SDL_Rect& visible = content_visible_area();
 		SDL_Rect rect = generator_->item(selected_item).get_rectangle();

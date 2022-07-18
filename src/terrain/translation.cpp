@@ -323,7 +323,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		// Add to the resulting starting position
 		for(const auto& starting_position : sp) {
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
-				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
+				WRN_G << "Starting position " << starting_position << " is redefined.";
 			}
 			starting_positions.insert(starting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
@@ -343,11 +343,11 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << std::endl;
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x;
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {
-					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")" << std::endl;
+					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")";
 					throw error("Map height limit exceeded.");
 				}
 			}
@@ -373,7 +373,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 			++x;
 			offset = pos_separator + 1;
 			if (x > max_map_size()) {
-				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")" << std::endl;
+				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")";
 				throw error("Map width limit exceeded.");
 			}
 		}
@@ -381,7 +381,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occurred at the end" << std::endl;
+		ERR_G << "Map not a rectangle error occurred at the end";
 		throw error("Map not a rectangle.");
 	}
 

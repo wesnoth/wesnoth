@@ -108,7 +108,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
-		DBG_GUI_D << "fill " << fill_color << std::endl;
+		DBG_GUI_D << "fill " << fill_color;
 		draw::set_color(fill_color);
 
 		const SDL_Rect area {
@@ -301,7 +301,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	texture tex = image::get_texture(image::locator(name), scale_quality);
 
 	if(!tex) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
 		return;
 	}
 
@@ -359,7 +359,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 		}
 		break;
 	default:
-		ERR_GUI_D << "Image: unrecognized resize mode." << std::endl;
+		ERR_GUI_D << "Image: unrecognized resize mode.";
 		break;
 	}
 }

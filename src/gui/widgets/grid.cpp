@@ -940,12 +940,12 @@ void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_
 	unsigned flags = cell->get_flags();
 
 	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT) {
-		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)" << std::endl;
+		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)";
 		return;
 	}
 
 	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT) {
-		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)" << std::endl;
+		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)";
 		return;
 	}
 

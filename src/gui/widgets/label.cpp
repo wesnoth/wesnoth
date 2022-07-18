@@ -116,7 +116,7 @@ void label::set_state(const state_t state)
 
 void label::signal_handler_left_button_click(bool& handled)
 {
-	DBG_GUI_E << "label click" << std::endl;
+	DBG_GUI_E << "label click";
 
 	if (!get_link_aware()) {
 		return; // without marking event as "handled".
@@ -151,7 +151,7 @@ void label::signal_handler_left_button_click(bool& handled)
 
 void label::signal_handler_right_button_click(bool& handled)
 {
-	DBG_GUI_E << "label right click" << std::endl;
+	DBG_GUI_E << "label right click";
 
 	if (!get_link_aware()) {
 		return ; // without marking event as "handled".
@@ -179,7 +179,7 @@ void label::signal_handler_right_button_click(bool& handled)
 
 void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 {
-	DBG_GUI_E << "label mouse motion" << std::endl;
+	DBG_GUI_E << "label mouse motion";
 
 	if(!get_link_aware()) {
 		return; // without marking event as "handled"
@@ -197,7 +197,7 @@ void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 
 void label::signal_handler_mouse_leave(bool& handled)
 {
-	DBG_GUI_E << "label mouse leave" << std::endl;
+	DBG_GUI_E << "label mouse leave";
 
 	if(!get_link_aware()) {
 		return; // without marking event as "handled"

@@ -37,7 +37,7 @@ void register_window(const std::string& id)
 	std::tie(std::ignore, added) = registered_window_types().emplace(id);
 
 	if(!added) {
-		WRN_GUI_P << "Window '" << id << "' already registered. Ignoring." << std::endl;
+		WRN_GUI_P << "Window '" << id << "' already registered. Ignoring.";
 	}
 }
 

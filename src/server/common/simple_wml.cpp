@@ -194,7 +194,7 @@ char* string_span::duplicate() const
 error::error(const char* msg)
   : game::error(msg)
 {
-	ERR_SWML << "ERROR: '" << msg << "'" << std::endl;
+	ERR_SWML << "ERROR: '" << msg << "'";
 }
 
 std::ostream& operator<<(std::ostream& o, const string_span& s)
@@ -277,7 +277,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == nullptr) {
-				ERR_SWML << "attribute: " << s << std::endl;
+				ERR_SWML << "attribute: " << s;
 				throw error("did not find '=' after attribute");
 			}
 
@@ -293,7 +293,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if (*s != '"') {
 				end = strchr(s, '\n');
 				if (!end) {
-					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))" << std::endl;
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))";
 					throw error("did not find end of attribute");
 				}
 				if (memchr(s, '"', end - s))
@@ -345,7 +345,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			read_attribute:
 			string_span value(s, end - s);
 			if(attr_.empty() == false && !(attr_.back().key < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'" << std::endl;
+				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'";
 				throw error("attributes not in order");
 			}
 

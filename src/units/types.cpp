@@ -444,7 +444,7 @@ void unit_type::build(BUILD_STATUS status,
 		return;
 
 	default:
-		ERR_UT << "Build of unit_type to unrecognized status (" << status << ") requested." << std::endl;
+		ERR_UT << "Build of unit_type to unrecognized status (" << status << ") requested.";
 		// Build as much as possible.
 		build_full(movement_types, races, traits);
 		return;
@@ -899,7 +899,7 @@ void patch_movetype(movetype& mt,
 	int default_val,
 	bool replace)
 {
-	LOG_CONFIG << "Patching " << new_key << " into movetype." << type_to_patch << std::endl;
+	LOG_CONFIG << "Patching " << new_key << " into movetype." << type_to_patch;
 	config mt_cfg;
 	mt.write(mt_cfg);
 
@@ -957,7 +957,7 @@ void patch_movetype(movetype& mt,
 			}
 		}
 
-		LOG_CONFIG << " formula=" << formula_str << ", resolves to " << formula(original) << std::endl;
+		LOG_CONFIG << " formula=" << formula_str << ", resolves to " << formula(original);
 		temp_cfg[new_key] = formula(original);
 	}
 	mt.merge(temp_cfg, type_to_patch, true);
@@ -999,7 +999,7 @@ void unit_type_data::apply_base_unit(unit_type& type, std::vector<std::string>& 
 		type.writable_cfg().inherit_from(base_type.get_cfg());
 	}
 	else {
-		ERR_CF << "[base_unit]: unit type not found: " << type.base_unit_id_ << std::endl;
+		ERR_CF << "[base_unit]: unit type not found: " << type.base_unit_id_;
 		throw config::error("unit type not found: " + type.base_unit_id_);
 	}
 }
@@ -1099,7 +1099,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	}
 
 	// Movetype resistance patching
-	DBG_CF << "Start of movetype patching" << std::endl;
+	DBG_CF << "Start of movetype patching";
 	for(const config& r : cfg.child_range("resistance_defaults")) {
 		const std::string& dmg_type = r["id"];
 
@@ -1110,7 +1110,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 				continue;
 			}
 
-			DBG_CF << "Patching specific movetype " << mt << std::endl;
+			DBG_CF << "Patching specific movetype " << mt;
 			patch_movetype(movement_types_[mt], "resistance", dmg_type, attr.second, 100, true);
 		}
 
@@ -1129,7 +1129,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			}
 		}
 	}
-	DBG_CF << "Split between resistance and cost patching" << std::endl;
+	DBG_CF << "Split between resistance and cost patching";
 
 	// Movetype move/defend patching
 	for(const config& terrain : cfg.child_range("terrain_defaults")) {
@@ -1193,7 +1193,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			}
 		}
 	}
-	DBG_CF << "End of movetype patching" << std::endl;
+	DBG_CF << "End of movetype patching";
 
 	for(const config& ut : cfg.child_range("unit_type")) {
 		// Every type is required to have an id.
@@ -1206,7 +1206,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		if(types_.emplace(id, unit_type(ut)).second) {
 			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		} else {
-			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
+			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.";
 		}
 	}
 

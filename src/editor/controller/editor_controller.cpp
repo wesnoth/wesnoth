@@ -118,7 +118,7 @@ void editor_controller::init_tods(const game_config_view& game_config)
 		const std::string& schedule_id = schedule["id"];
 		const std::string& schedule_name = schedule["name"];
 		if (schedule_id.empty()) {
-			ERR_ED << "Missing ID attribute in a TOD Schedule." << std::endl;
+			ERR_ED << "Missing ID attribute in a TOD Schedule.";
 			continue;
 		}
 
@@ -129,7 +129,7 @@ void editor_controller::init_tods(const game_config_view& game_config)
 
 			times = new_times.first;
 		} else {
-			ERR_ED << "Duplicate TOD Schedule identifiers." << std::endl;
+			ERR_ED << "Duplicate TOD Schedule identifiers.";
 			continue;
 		}
 
@@ -140,7 +140,7 @@ void editor_controller::init_tods(const game_config_view& game_config)
 	}
 
 	if (tods_.empty()) {
-		ERR_ED << "No editor time-of-day defined" << std::endl;
+		ERR_ED << "No editor time-of-day defined";
 	}
 }
 
@@ -148,14 +148,14 @@ void editor_controller::init_music(const game_config_view& game_config)
 {
 	const std::string tag_name = "editor_music";
 	if (game_config.child_range(tag_name).size() == 0) {
-		ERR_ED << "No editor music defined" << std::endl;
+		ERR_ED << "No editor music defined";
 	}
 	else {
 		for (const config& editor_music : game_config.child_range(tag_name)) {
 			for (const config& music : editor_music.child_range("music")) {
 				sound::music_track track(music);
 				if (track.file_path().empty())
-					WRN_ED << "Music track " << track.id() << " not found." << std::endl;
+					WRN_ED << "Music track " << track.id() << " not found.";
 				else
 					music_tracks_.emplace_back(music);
 			}

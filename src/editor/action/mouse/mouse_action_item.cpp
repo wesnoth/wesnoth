@@ -83,7 +83,7 @@ std::unique_ptr<editor_action> mouse_action_item::up_left(editor_display& disp, 
 //	const item_type *new_item_type = item_types.find(type_id);
 //	if (!new_item_type) {
 //		//TODO rewrite the error message.
-//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'" << std::endl;
+//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'";
 //		return nullptr;
 //	}
 //

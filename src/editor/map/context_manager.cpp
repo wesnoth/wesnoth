@@ -609,7 +609,7 @@ void context_manager::resize_map_dialog()
 				break;
 			default:
 				y_offset = 0;
-				WRN_ED << "Unknown resize expand direction" << std::endl;
+				WRN_ED << "Unknown resize expand direction";
 				break;
 		}
 
@@ -943,7 +943,7 @@ void context_manager::revert_map()
 
 	std::string filename = get_map_context().get_filename();
 	if(filename.empty()) {
-		ERR_ED << "Empty filename in map revert" << std::endl;
+		ERR_ED << "Empty filename in map revert";
 		return;
 	}
 
@@ -1049,7 +1049,7 @@ void context_manager::close_current_context()
 void context_manager::switch_context(const int index, const bool force)
 {
 	if(index < 0 || static_cast<std::size_t>(index) >= map_contexts_.size()) {
-		WRN_ED << "Invalid index in switch map context: " << index << std::endl;
+		WRN_ED << "Invalid index in switch map context: " << index;
 		return;
 	}
 

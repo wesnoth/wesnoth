@@ -308,7 +308,7 @@ bool connect_engine::sides_available() const
 
 void connect_engine::update_level()
 {
-	DBG_MP << "updating level" << std::endl;
+	DBG_MP << "updating level";
 
 	scenario().clear_children("side");
 
@@ -347,7 +347,7 @@ bool connect_engine::can_start_game() const
 		}
 	}
 
-	DBG_MP << "all sides are ready" << std::endl;
+	DBG_MP << "all sides are ready";
 
 	/*
 	 * If at least one human player is slotted with a player/ai we're allowed
@@ -390,7 +390,7 @@ void side_engine::set_side_children(std::multimap<std::string, config> children)
 
 void connect_engine::start_game()
 {
-	DBG_MP << "starting a new game" << std::endl;
+	DBG_MP << "starting a new game";
 
 	// Resolves the "random faction", "random gender" and "random message"
 	// Must be done before shuffle sides, or some cases will cause errors
@@ -469,7 +469,7 @@ void connect_engine::start_game()
 
 void connect_engine::start_game_commandline(const commandline_options& cmdline_opts, const game_config_view& game_config)
 {
-	DBG_MP << "starting a new game in commandline mode" << std::endl;
+	DBG_MP << "starting a new game in commandline mode";
 
 	randomness::mt_rng rng;
 
@@ -485,10 +485,10 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 						   [fid = faction_id](const config* faction) { return (*faction)["id"] == fid; })
 						!= era_factions_.end()
 					) {
-						DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+						DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id;
 						side->set_faction_commandline(faction_id);
 					} else {
-						ERR_MP << "failed to set side " << side_num << " to faction " << faction_id << std::endl;
+						ERR_MP << "failed to set side " << side_num << " to faction " << faction_id;
 					}
 				}
 			}
@@ -498,7 +498,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		if(cmdline_opts.multiplayer_controller) {
 			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_controller) {
 				if(side_num == num) {
-					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id;
 					side->set_controller_commandline(faction_id);
 				}
 			}
@@ -512,7 +512,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		if(cmdline_opts.multiplayer_algorithm) {
 			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_algorithm) {
 				if(side_num == num) {
-					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id << std::endl;
+					DBG_MP << "\tsetting side " << side_num << "\tfaction: " << faction_id;
 					side->set_ai_algorithm(faction_id);
 				}
 			}
@@ -536,7 +536,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		if(cmdline_opts.multiplayer_ai_config) {
 			for(const auto& [side_num, faction_id] : *cmdline_opts.multiplayer_ai_config) {
 				if(side_num == side["side"].to_unsigned()) {
-					DBG_MP << "\tsetting side " << side["side"] << "\tai_config: " << faction_id << std::endl;
+					DBG_MP << "\tsetting side " << side["side"] << "\tai_config: " << faction_id;
 					side["ai_config"] = faction_id;
 				}
 			}
@@ -554,7 +554,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 		if(cmdline_opts.multiplayer_parm) {
 			for(const auto& [side_num, pname, pvalue] : *cmdline_opts.multiplayer_parm) {
 				if(side_num == side["side"].to_unsigned()) {
-					DBG_MP << "\tsetting side " << side["side"] << " " << pname << ": " << pvalue << std::endl;
+					DBG_MP << "\tsetting side " << side["side"] << " " << pname << ": " << pvalue;
 					side[pname] = pvalue;
 				}
 			}
@@ -570,7 +570,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 void connect_engine::leave_game()
 {
-	DBG_MP << "leaving the game" << std::endl;
+	DBG_MP << "leaving the game";
 
 	mp::send_to_server(config("leave_game"));
 }
@@ -614,7 +614,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			response["failed"] = true;
 			mp::send_to_server(response);
 
-			ERR_CF << "ERROR: No username provided with the side." << std::endl;
+			ERR_CF << "ERROR: No username provided with the side.";
 
 			return result;
 		}
@@ -679,12 +679,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 			// Wait for them to choose faction if allowed.
 			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes());
-			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes() << std::endl;
+			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes();
 			result.second = false;
 
 			LOG_NW << "sent player data\n";
 		} else {
-			ERR_CF << "tried to take illegal side: " << side_taken << std::endl;
+			ERR_CF << "tried to take illegal side: " << side_taken;
 
 			config response;
 			response["failed"] = true;
@@ -862,7 +862,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	});
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
-		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
+		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1;
 	}
 
 	cfg_["side"] = index_ + 1;
@@ -918,7 +918,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	if(team_name_index >= parent_.team_data_.size()) {
 		assert(!parent_.team_data_.empty());
 		team_ = 0;
-		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
+		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!";
 	} else {
 		team_ = team_name_index;
 	}

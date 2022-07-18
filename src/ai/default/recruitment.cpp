@@ -894,7 +894,7 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 	const unit_type* const type_a = unit_types.find(a);
 	const unit_type* const type_b = unit_types.find(b);
 	if (!type_a || !type_b) {
-		ERR_AI_RECRUITMENT << "Couldn't find unit type: " << ((type_a) ? b : a) << "." << std::endl;
+		ERR_AI_RECRUITMENT << "Couldn't find unit type: " << ((type_a) ? b : a) << ".";
 		return 0.0;
 	}
 	double defense_a = get_average_defense(a);
@@ -1152,7 +1152,7 @@ void recruitment::simulate_attack(
 			double attacker_defense, double defender_defense,
 			double* damage_to_attacker, double* damage_to_defender) const {
 	if(!attacker || !defender || !damage_to_attacker || !damage_to_defender) {
-		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()" << std::endl;
+		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()";
 		return;
 	}
 	const_attack_itors attacker_weapons = attacker->attacks();

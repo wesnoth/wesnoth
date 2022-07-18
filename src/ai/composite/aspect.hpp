@@ -215,7 +215,7 @@ public:
 			where_ = c;
 			aspects_.emplace(this->get_name(),c);
 		} else {
-			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while setting aspect, got null. this might be caused by invalid [aspect] WML" << std::endl;
+			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while setting aspect, got null. this might be caused by invalid [aspect] WML";
 		}
 	}
 
@@ -227,7 +227,7 @@ public:
 			c->add_facet(-1, cfg);
 			c->invalidate();
 		} else {
-			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while adding facet to aspect, got null. this might be caused by target [aspect] being not composite" << std::endl;
+			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while adding facet to aspect, got null. this might be caused by target [aspect] being not composite";
 		}
 	}
 
@@ -363,7 +363,7 @@ public:
 	{
 		this->name_ = "standard_aspect";
 		this->value_ = std::make_shared<T>(config_value_translator<T>::cfg_to_value(this->cfg_));
-		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
+		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get());
 	}
 
 	void recalculate() const

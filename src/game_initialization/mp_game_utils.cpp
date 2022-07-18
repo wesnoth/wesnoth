@@ -104,7 +104,7 @@ config initial_level_config(saved_game& state)
 		}
 
 		// FIXME: @todo We should tell user about missing era but still load game...
-		WRN_CF << "Missing era in MP load game '" << era << "'" << std::endl;
+		WRN_CF << "Missing era in MP load game '" << era << "'";
 
 	} else {
 		level.add_child("era", era_cfg);

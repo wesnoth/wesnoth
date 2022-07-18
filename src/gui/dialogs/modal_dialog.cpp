@@ -60,7 +60,7 @@ namespace {
 bool modal_dialog::show(const unsigned auto_close_time)
 {
 	if(CVideo::get_singleton().faked() && !show_even_without_video_) {
-		DBG_DP << "modal_dialog::show denied" << std::endl;
+		DBG_DP << "modal_dialog::show denied";
 		if(!allow_plugin_skip_) {
 			return false;
 		}

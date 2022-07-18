@@ -906,7 +906,7 @@ void movetype::merge(const config & new_cfg, const std::string & applies_to, boo
 		resist_.merge(new_cfg, overwrite);
 	}
 	else {
-		ERR_CF << "movetype::merge with unknown applies_to: " << applies_to << std::endl;
+		ERR_CF << "movetype::merge with unknown applies_to: " << applies_to;
 	}
 }
 

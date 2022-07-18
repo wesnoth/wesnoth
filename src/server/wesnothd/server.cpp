@@ -532,7 +532,7 @@ void server::load_config()
 #ifdef HAVE_MYSQLPP
 	if(const config& user_handler = cfg_.child("user_handler")) {
 		if(server_id_ == "") {
-			ERR_SERVER << "The server id must be set when database support is used" << std::endl;
+			ERR_SERVER << "The server id must be set when database support is used";
 			exit(1);
 		}
 
@@ -622,7 +622,7 @@ void server::dummy_player_updates(const boost::system::error_code& ec)
 	}
 
 	int size = games_and_users_list_.root().children("user").size();
-	LOG_SERVER << "player count: " << size << std::endl;
+	LOG_SERVER << "player count: " << size;
 	if(size % 2 == 0) {
 		simple_wml::node* dummy_user = games_and_users_list_.root().children("user").at(size-1);
 
@@ -1100,7 +1100,7 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 		auto doc { coro_receive_doc(socket, yield[ec]) };
 		if(check_error(ec, socket) || !doc) return;
 
-		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
+		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output();
 		if(doc->child("refresh_lobby")) {
 			async_send_doc_queued(socket, games_and_users_list_);
 			continue;
@@ -1230,7 +1230,7 @@ void server::handle_query(player_iterator iter, simple_wml::node& query)
 			LOG_SERVER << "Admin Command: type: " << command << "\tIP: " << iter->client_ip()
 					   << "\tnick: " << player.name() << std::endl;
 			response << process_command(command, player.name());
-			LOG_SERVER << response.str() << std::endl;
+			LOG_SERVER << response.str();
 		}
 	} else if(command == "help" || command.empty()) {
 		response << query_help_msg;
@@ -1891,7 +1891,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			}
 
 			if(player_id != 0) {
-				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`." << std::endl;
+				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`.";
 				user_handler_->async_get_and_send_game_history(io_service_, *this, p, player_id, offset);
 			}
 		}
@@ -2018,7 +2018,7 @@ void server::start_new_server()
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	if(std::system(restart_command.c_str())) {
-		ERR_SERVER << "Failed to start new server with command: " << restart_command << std::endl;
+		ERR_SERVER << "Failed to start new server with command: " << restart_command;
 	} else {
 		LOG_SERVER << "New server started with command: " << restart_command << "\n";
 	}
@@ -2062,7 +2062,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 			} catch(const std::bad_function_call& ex) {
 				ERR_SERVER << "While handling a command '" << command
 						   << "', caught a std::bad_function_call exception.\n";
-				ERR_SERVER << ex.what() << std::endl;
+				ERR_SERVER << ex.what();
 				out << "An internal server error occurred (std::bad_function_call) while executing '" << command
 					<< "'\n";
 			}
@@ -2073,7 +2073,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 	} catch(const utf8::invalid_utf8_exception& e) {
 		std::string msg = "While handling a command, caught an invalid utf8 exception: ";
 		msg += e.what();
-		ERR_SERVER << msg << std::endl;
+		ERR_SERVER << msg;
 		return (msg + '\n');
 	}
 }
@@ -2514,7 +2514,7 @@ void server::bans_handler(const std::string& /*issuer_name*/,
 		}
 
 	} catch(const utf8::invalid_utf8_exception& e) {
-		ERR_SERVER << "While handling bans, caught an invalid utf8 exception: " << e.what() << std::endl;
+		ERR_SERVER << "While handling bans, caught an invalid utf8 exception: " << e.what();
 	}
 }
 
@@ -3064,12 +3064,12 @@ int main(int argc, char** argv)
 			return 0;
 		} else if(val == "--daemon" || val == "-d") {
 #ifdef _WIN32
-			ERR_SERVER << "Running as a daemon is not supported on this platform" << std::endl;
+			ERR_SERVER << "Running as a daemon is not supported on this platform";
 			return -1;
 #else
 			const pid_t pid = fork();
 			if(pid < 0) {
-				ERR_SERVER << "Could not fork and run as a daemon" << std::endl;
+				ERR_SERVER << "Could not fork and run as a daemon";
 				return -1;
 			} else if(pid > 0) {
 				std::cout << "Started wesnothd as a daemon with process id " << pid << "\n";
@@ -3088,7 +3088,7 @@ int main(int argc, char** argv)
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
 			wesnothd::request_sample_frequency = atoi(argv[++arg]);
 		} else {
-			ERR_SERVER << "unknown option: " << val << std::endl;
+			ERR_SERVER << "unknown option: " << val;
 			return 2;
 		}
 	}

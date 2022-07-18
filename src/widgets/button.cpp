@@ -183,7 +183,7 @@ void button::load_images() {
 		std::string err_msg = "error initializing button images! file name: ";
 		err_msg += button_image_name_;
 		err_msg += ".png";
-		ERR_DP << err_msg << std::endl;
+		ERR_DP << err_msg;
 		throw game::error(err_msg);
 	}
 

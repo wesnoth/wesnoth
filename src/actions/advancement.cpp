@@ -299,15 +299,15 @@ void advance_unit_at(const advance_unit_params& params)
 		//calls actions::advance_unit.
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 
-		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
+		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80)
 		{
-			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
+			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.";
 		}
 	}
-	ERR_NG << "unit at " << params.loc_ << " tried to advance more than 20 times. Advancing was aborted" << std::endl;
+	ERR_NG << "unit at " << params.loc_ << " tried to advance more than 20 times. Advancing was aborted";
 }
 
 unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)

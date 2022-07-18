@@ -157,7 +157,7 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 
 	for(const config& new_ev : cfgs) {
 		if(type.empty() && new_ev["id"].empty()) {
-			WRN_NG << "attempt to add an [event] with empty id=, ignoring " << std::endl;
+			WRN_NG << "attempt to add an [event] with empty id=, ignoring ";
 			continue;
 		}
 

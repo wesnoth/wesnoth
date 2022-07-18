@@ -130,7 +130,7 @@ bool candidate_action::to_be_removed()
 bool candidate_action_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_STAGE_RCA << "Error: Attempt to double-register candidate action " << name << std::endl;
+		ERR_AI_STAGE_RCA << "Error: Attempt to double-register candidate action " << name;
 		return true;
 	}
 	return false;

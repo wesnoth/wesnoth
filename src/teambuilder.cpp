@@ -82,13 +82,13 @@ void team_builder::build_team_stage_two()
 
 void team_builder::log_step(const char* s) const
 {
-	LOG_NG_TC << "team " << side_ << " construction: " << s << std::endl;
+	LOG_NG_TC << "team " << side_ << " construction: " << s;
 }
 
 void team_builder::init()
 {
 	if(side_cfg_["side"].to_int(side_) != side_) {
-		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_ << std::endl;
+		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_;
 	}
 
 	log_step("init");
@@ -100,7 +100,7 @@ void team_builder::init()
 		throw game::load_game_failed("Map not found");
 	}
 
-	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_) << std::endl;
+	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_);
 
 	unit_configs_.clear();
 	seen_ids_.clear();

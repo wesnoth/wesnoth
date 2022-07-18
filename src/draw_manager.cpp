@@ -66,7 +66,7 @@ void invalidate_region(const rect& region)
 		if (r.contains(region)) {
 			// An existing invalidated region already contains it,
 			// no need to do anything in this case.
-			//DBG_DM << "no need to invalidate " << region << endl;
+			//DBG_DM << "no need to invalidate " << region;
 			//STREAMING_LOG << '.';
 			return;
 		}
@@ -104,7 +104,7 @@ void invalidate_region(const rect& region)
 	}
 
 	// No optimization was found, so add a new invalidation
-	DBG_DM << "invalidating region " << region << endl;
+	DBG_DM << "invalidating region " << region;
 	//STREAMING_LOG << '.';
 	invalidated_regions_.push_back(region);
 }
@@ -112,7 +112,7 @@ void invalidate_region(const rect& region)
 void sparkle()
 {
 	if (drawing_) {
-		ERR_DM << "Draw recursion detected" << endl;
+		ERR_DM << "Draw recursion detected";
 		throw game::error("recursive draw");
 	}
 
@@ -190,29 +190,29 @@ next:
 		for (auto& other : invalidated_regions_) {
 			// r will never contain other, due to construction
 			if (other.contains(r)) {
-				DBG_DM << "skipping redundant draw " << r << endl;
+				DBG_DM << "skipping redundant draw " << r;
 				//STREAMING_LOG << "-";
 				goto next;
 			}
 			rect m = other.minimal_cover(r);
 			if (m.area() <= r.area() + other.area()) {
-				DBG_DM << "merging inefficient draws " << r << endl;
+				DBG_DM << "merging inefficient draws " << r;
 				//STREAMING_LOG << "=";
 				other = m;
 				goto next;
 			}
 		}
-		DBG_DM << "drawing " << r << endl;
+		DBG_DM << "drawing " << r;
 		//STREAMING_LOG << "+";
 		auto clipper = draw::override_clip(r);
 		for (auto tld : top_level_drawables_) {
 			rect i = r.intersect(tld->screen_location());
 			if (i.empty()) {
-				//DBG_DM << "  skip " << static_cast<void*>(tld) << endl;
+				//DBG_DM << "  skip " << static_cast<void*>(tld);
 				//STREAMING_LOG << "x";
 				continue;
 			}
-			DBG_DM << "  to " << static_cast<void*>(tld) << endl;
+			DBG_DM << "  to " << static_cast<void*>(tld);
 			//STREAMING_LOG << "*";
 			drawn |= tld->expose(i);
 		}
@@ -223,13 +223,13 @@ next:
 
 void register_drawable(top_level_drawable* tld)
 {
-	DBG_DM << "registering TLD " << static_cast<void*>(tld) << endl;
+	DBG_DM << "registering TLD " << static_cast<void*>(tld);
 	top_level_drawables_.push_back(tld);
 }
 
 void deregister_drawable(top_level_drawable* tld)
 {
-	DBG_DM << "deregistering TLD " << static_cast<void*>(tld) << endl;
+	DBG_DM << "deregistering TLD " << static_cast<void*>(tld);
 	auto& vec = top_level_drawables_;
 	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
 	tlds_invalidated_ = true;
@@ -237,7 +237,7 @@ void deregister_drawable(top_level_drawable* tld)
 
 void raise_drawable(top_level_drawable* tld)
 {
-	DBG_DM << "raising TLD " << static_cast<void*>(tld) << endl;
+	DBG_DM << "raising TLD " << static_cast<void*>(tld);
 	auto& vec = top_level_drawables_;
 	vec.erase(std::remove(vec.begin(), vec.end(), tld), vec.end());
 	vec.push_back(tld);

@@ -90,7 +90,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "variable " << key << "cannot be set to " << value << std::endl;
+		ERR_NG << "variable " << key << "cannot be set to " << value;
 	}
 }
 //throws

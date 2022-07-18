@@ -157,7 +157,7 @@ chat_msg::chat_msg(const config &cfg)
 		nick_ = "*"+cfg["id"].str()+"*";
 	}
 	int side = cfg["side"].to_int(0);
-	LOG_REPLAY << "side in message: " << side << std::endl;
+	LOG_REPLAY << "side in message: " << side;
 	if (side==0) {
 		color_ = "white";//observers
 	} else {
@@ -448,7 +448,7 @@ config& replay::get_last_real_command()
 		}
 		return c;
 	}
-	ERR_REPLAY << "replay::get_last_real_command called with no existent command." << std::endl;
+	ERR_REPLAY << "replay::get_last_real_command called with no existent command.";
 	assert(false && "replay::get_last_real_command called with no existent command.");
 	throw "replay::get_last_real_command called with no existent command.";
 }
@@ -467,7 +467,7 @@ static bool fix_rename_command(const config& c, config& async_child)
 		try {
 			read_locations(child.value(), steps);
 		} catch(const bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug() << std::endl;
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug();
 		}
 
 		if (steps.empty()) {
@@ -733,7 +733,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behavior.
-			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
+			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay";
 			//do nothing
 		}
 		else if (const config &speak = cfg->child("speak"))

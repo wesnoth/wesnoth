@@ -151,7 +151,7 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 {
 	MPTEST_LOG;
 	if(ec) {
-		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
 		LOG_NW << "Connected to " << endpoint.address() << '\n';
@@ -273,7 +273,7 @@ void wesnothd_connection::fallback_to_unencrypted()
 void wesnothd_connection::wait_for_handshake()
 {
 	MPTEST_LOG;
-	LOG_NW << "Waiting for handshake" << std::endl;
+	LOG_NW << "Waiting for handshake";
 
 	try {
 		// TODO: make this duration customizable. Should default to 1 minute.
@@ -354,7 +354,7 @@ void wesnothd_connection::cancel()
 #endif
 
 			if(ec) {
-				WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+				WRN_NW << "Failed to cancel network operations: " << ec.message();
 			}
 		}
 	}, socket_);

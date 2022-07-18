@@ -67,7 +67,7 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	, prev_scenario_()
 	, prev_mods_()
 {
-	DBG_MP << "Initializing the dependency manager" << std::endl;
+	DBG_MP << "Initializing the dependency manager";
 
 	for(const config& cfg : gamecfg.child_range("modification")) {
 		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::hybrid);
@@ -128,7 +128,7 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 
 void manager::save_state()
 {
-	DBG_MP << "Saving current state" << std::endl;
+	DBG_MP << "Saving current state";
 	prev_era_ = era_;
 	prev_scenario_ = scenario_;
 	prev_mods_ = mods_;
@@ -136,7 +136,7 @@ void manager::save_state()
 
 void manager::revert()
 {
-	DBG_MP << "Restoring previous state" << std::endl;
+	DBG_MP << "Restoring previous state";
 	era_ = prev_era_;
 	scenario_ = prev_scenario_;
 	mods_ = prev_mods_;

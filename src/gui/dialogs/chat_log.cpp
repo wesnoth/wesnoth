@@ -207,8 +207,8 @@ class chat_log::controller
 public:
 	controller(model& m) : model_(m)
 	{
-		LOG_CHAT_LOG << "Entering chat_log::controller" << std::endl;
-		LOG_CHAT_LOG << "Exiting chat_log::controller" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller";
+		LOG_CHAT_LOG << "Exiting chat_log::controller";
 	}
 
 	void next_page()
@@ -219,9 +219,9 @@ public:
 			return;
 		}
 		model_.page++;
-		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting chat_log::controller::next_page" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller::next_page";
 	}
 
 	void previous_page()
@@ -232,7 +232,7 @@ public:
 			return;
 		}
 		model_.page--;
-		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting chat_log::controller::previous_page"
 					 << std::endl;
@@ -240,9 +240,9 @@ public:
 
 	void filter()
 	{
-		LOG_CHAT_LOG << "Entering chat_log::controller::filter" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller::filter";
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting chat_log::controller::filter" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller::filter";
 	}
 
 	void handle_page_number_changed()
@@ -251,7 +251,7 @@ public:
 		<< "Entering chat_log::controller::handle_page_number_changed"
 		<< std::endl;
 		model_.page = model_.page_number->get_value() - 1;
-		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1;
 		update_view_from_model();
 		LOG_CHAT_LOG
 		<< "Exiting chat_log::controller::handle_page_number_changed"
@@ -285,7 +285,7 @@ public:
 					 << std::endl;
 		model_.msg_label->set_use_markup(true);
 		int size = model_.chat_log_history.size();
-		LOG_CHAT_LOG << "Number of chat messages: " << size << std::endl;
+		LOG_CHAT_LOG << "Number of chat messages: " << size;
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
 		if(select_last_page) {
@@ -339,9 +339,9 @@ public:
 
 	void pre_show()
 	{
-		LOG_CHAT_LOG << "Entering chat_log::view::pre_show" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::view::pre_show";
 		controller_.update_view_from_model(true);
-		LOG_CHAT_LOG << "Exiting chat_log::view::pre_show" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::view::pre_show";
 	}
 
 	void handle_page_number_changed()
@@ -371,7 +371,7 @@ public:
 
 	void bind(window& window)
 	{
-		LOG_CHAT_LOG << "Entering chat_log::view::bind" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::view::bind";
 		model_.msg_label = find_widget<styled_widget>(&window, "msg", false, true);
 		model_.page_number
 				= find_widget<slider>(&window, "page_number", false, true);
@@ -406,7 +406,7 @@ public:
 
 		model_.page_label = find_widget<styled_widget>(&window, "page_label", false, true);
 
-		LOG_CHAT_LOG << "Exiting chat_log::view::bind" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::view::bind";
 	}
 
 private:
@@ -417,9 +417,9 @@ private:
 
 chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
 {
-	LOG_CHAT_LOG << "Entering chat_log::chat_log" << std::endl;
+	LOG_CHAT_LOG << "Entering chat_log::chat_log";
 	view_ = std::make_shared<view>(cfg, r);
-	LOG_CHAT_LOG << "Exiting chat_log::chat_log" << std::endl;
+	LOG_CHAT_LOG << "Exiting chat_log::chat_log";
 }
 
 std::shared_ptr<chat_log::view> chat_log::get_view() const
@@ -429,10 +429,10 @@ std::shared_ptr<chat_log::view> chat_log::get_view() const
 
 void chat_log::pre_show(window& window)
 {
-	LOG_CHAT_LOG << "Entering chat_log::pre_show" << std::endl;
+	LOG_CHAT_LOG << "Entering chat_log::pre_show";
 	view_->bind(window);
 	view_->pre_show();
-	LOG_CHAT_LOG << "Exiting chat_log::pre_show" << std::endl;
+	LOG_CHAT_LOG << "Exiting chat_log::pre_show";
 }
 
 } // namespace dialogs

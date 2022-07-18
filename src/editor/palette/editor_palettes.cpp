@@ -135,7 +135,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	active_group_ = id;
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found in group with the id: '" << id << "'." << std::endl;
+		ERR_ED << "No items found in group with the id: '" << id << "'.";
 	}
 }
 

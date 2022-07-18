@@ -107,7 +107,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 		// so now catch the exception and ignore the message.
 		msg = my_disp_.video().faked() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
-		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
+		ERR_NG << "Invalid utf-8 found, chat message is ignored.";
 		return;
 	}
 

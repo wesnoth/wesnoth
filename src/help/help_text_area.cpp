@@ -70,7 +70,7 @@ void help_text_area::show_topic(const topic &t)
 	shown_topic_ = &t;
 	set_items();
 	set_dirty(true);
-	DBG_HP << "Showing topic: " << t.id << ": " << t.title << std::endl;
+	DBG_HP << "Showing topic: " << t.id << ": " << t.title;
 }
 
 
@@ -394,7 +394,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
-		WRN_DP << "Floating image with align HERE, aligning left." << std::endl;
+		WRN_DP << "Floating image with align HERE, aligning left.";
 		align = LEFT;
 	}
 	const int width = tex.w() + (box ? box_width * 2 : 0);

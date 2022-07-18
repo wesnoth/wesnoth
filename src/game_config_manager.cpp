@@ -597,31 +597,31 @@ void game_config_manager::load_addons_cfg()
 
 			addon_cfgs_[addon_id] = std::move(umc_cfg);
 		} catch(const config::error& err) {
-			ERR_CONFIG << "config error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "config error reading usermade add-on '" << main_cfg << "'";
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const preproc_config::error& err) {
-			ERR_CONFIG << "preprocessor config error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "preprocessor config error reading usermade add-on '" << main_cfg << "'";
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const filesystem::io_exception&) {
-			ERR_CONFIG << "filesystem I/O error reading usermade add-on '" << main_cfg << "'" << std::endl;
+			ERR_CONFIG << "filesystem I/O error reading usermade add-on '" << main_cfg << "'";
 			error_addons.push_back(main_cfg);
 		}
 	}
 
 	if(cmdline_opts_.validate_addon) {
 		if(!addon_cfgs_.count(*cmdline_opts_.validate_addon)) {
-			ERR_CONFIG << "Didn’t find an add-on for --validate-addon - check whether the id has a typo" << std::endl;
+			ERR_CONFIG << "Didn’t find an add-on for --validate-addon - check whether the id has a typo";
 			const std::string log_msg = formatter()
 				<< "Didn't find an add-on for --validate-addon - check whether the id has a typo";
 			error_log.push_back(log_msg);
 			throw game::error("Did not find an add-on for --validate-addon");
 		}
 
-		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on." << std::endl;
+		WRN_CONFIG << "Note: for --validate-addon to find errors, you have to play (in the GUI) a game that uses the add-on.";
 	}
 
 	if(!error_addons.empty()) {

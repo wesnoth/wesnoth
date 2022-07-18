@@ -39,7 +39,7 @@ void init()
 		return;
 	}
 
-	LOG_GUI_G << "Initializing UI subststem." << std::endl;
+	LOG_GUI_G << "Initializing UI subststem.";
 
 	// Save current screen size.
 	settings::update_screen_size_variables();
@@ -57,9 +57,9 @@ void init()
 		read(cfg, *stream, &validator);
 	} catch(const config::error& e) {
 		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
 	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
 		ERR_GUI_P << e.message;
 	}
 

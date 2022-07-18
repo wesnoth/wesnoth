@@ -106,7 +106,7 @@ bool floating_label::create_texture()
 
 	// TODO: highdpi - this really does not need the extra indent
 	if(tex_ == nullptr) {
-		DBG_FT << "creating floating label texture" << endl;
+		DBG_FT << "creating floating label texture";
 		font::pango_text& text = font::get_text_renderer();
 
 		text.set_link_aware(false)
@@ -136,7 +136,7 @@ bool floating_label::create_texture()
 
 		if(foreground == nullptr) {
 			// TODO: draw_manager - find what triggers this and fix it
-			//ERR_FT << "could not create floating label's text" << endl;
+			//ERR_FT << "could not create floating label's text";
 			return false;
 		}
 
@@ -146,7 +146,7 @@ bool floating_label::create_texture()
 			surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
 
 			if(background == nullptr) {
-				ERR_FT << "could not create tooltip box" << endl;
+				ERR_FT << "could not create tooltip box";
 				tex_ = texture(foreground);
 				return tex_ != nullptr;
 			}
@@ -168,7 +168,7 @@ bool floating_label::create_texture()
 			background = shadow_image(background, sf);
 
 			if(background == nullptr) {
-				ERR_FT << "could not create floating label's shadow" << endl;
+				ERR_FT << "could not create floating label's shadow";
 				tex_ = texture(foreground);
 				return tex_ != nullptr;
 			}
@@ -186,7 +186,7 @@ bool floating_label::create_texture()
 
 void floating_label::undraw()
 {
-	DBG_FT << "undrawing floating label from " << screen_loc_ << std::endl;
+	DBG_FT << "undrawing floating label from " << screen_loc_;
 	draw_manager::invalidate_region(screen_loc_);
 	screen_loc_ = {};
 }
@@ -199,7 +199,7 @@ void floating_label::update(int time)
 
 	if(!create_texture()) {
 		// TODO: draw_manager - find what triggers this and fix it
-		//ERR_FT << "failed to create texture for floating label" << std::endl;
+		//ERR_FT << "failed to create texture for floating label";
 		return;
 	}
 
@@ -235,7 +235,7 @@ void floating_label::draw()
 	}
 
 	if(!tex_) {
-		ERR_DP << "trying to draw floating label with no texture!" << endl;
+		ERR_DP << "trying to draw floating label with no texture!";
 		return;
 	}
 
@@ -243,7 +243,7 @@ void floating_label::draw()
 		return;
 	}
 
-	DBG_FT << "drawing floating label to " << screen_loc_ << std::endl;
+	DBG_FT << "drawing floating label to " << screen_loc_;
 
 	// TODO: draw_manager - is this actually useful?
 	// Clip if appropriate.
@@ -413,7 +413,7 @@ void update_floating_labels()
 	//remove expired labels
 	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
 		if(context.count(j->first) > 0 && j->second.expired(time)) {
-			DBG_FT << "removing expired floating label " << j->first << std::endl;
+			DBG_FT << "removing expired floating label " << j->first;
 			context.erase(j->first);
 			labels.erase(j++);
 		} else {

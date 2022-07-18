@@ -50,7 +50,7 @@ gui_definition::gui_definition(const config& cfg)
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	DBG_GUI_P << "Parsing gui " << id_ << std::endl;
+	DBG_GUI_P << "Parsing gui " << id_;
 
 	//
 	// Widget parsing

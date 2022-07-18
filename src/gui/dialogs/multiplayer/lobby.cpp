@@ -770,7 +770,7 @@ void mp_lobby::process_gamelist_diff(const config& data)
 		DBG_LB << "Received gamelist diff\n";
 		gamelist_dirty_ = true;
 	} else {
-		ERR_LB << "process_gamelist_diff failed!" << std::endl;
+		ERR_LB << "process_gamelist_diff failed!";
 		refresh_lobby();
 	}
 	const int joined = data.child_count("insert_child");
@@ -789,14 +789,14 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	switch(mode) {
 	case DO_JOIN:
 		if(!game.can_join()) {
-			ERR_LB << "Attempted to join a game with no vacant slots" << std::endl;
+			ERR_LB << "Attempted to join a game with no vacant slots";
 			return;
 		}
 
 		break;
 	case DO_OBSERVE:
 		if(!game.can_observe()) {
-			ERR_LB << "Attempted to observe a game with observers disabled" << std::endl;
+			ERR_LB << "Attempted to observe a game with observers disabled";
 			return;
 		}
 
@@ -807,7 +807,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		} else if(game.can_observe()) {
 			mode = DO_OBSERVE;
 		} else {
-			DBG_LB << "Cannot join or observe a game." << std::endl;
+			DBG_LB << "Cannot join or observe a game.";
 			return;
 		}
 
@@ -886,7 +886,7 @@ void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
 
 	if(!game_ptr) {
-		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id << std::endl;
+		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
 		return;
 	}
 

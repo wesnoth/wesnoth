@@ -65,7 +65,7 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 	set_group(groups_[0].id);
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found." << std::endl;
+		ERR_ED << "No items found.";
 	}
 }
 
@@ -82,10 +82,10 @@ void unit_palette::setup_item(
 	base_image = image::get_texture(filename.str());
 	if(!base_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
+		ERR_ED << "image for unit type: '" << filename.str() << "' not found";
 		base_image = image::get_texture(game_config::images::missing);
 		if(!base_image) {
-			ERR_ED << "Placeholder image not found" << std::endl;
+			ERR_ED << "Placeholder image not found";
 			return;
 		}
 	}

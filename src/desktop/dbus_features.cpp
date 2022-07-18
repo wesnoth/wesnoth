@@ -199,7 +199,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 		ERR_DU << "Failed to send visual notification: " << err.message << '\n';
 		dbus_error_free(&err);
 		if (kde_style) {
-			ERR_DU << " Retrying with the freedesktop protocol." << std::endl;
+			ERR_DU << " Retrying with the freedesktop protocol.";
 			kde_style = false;
 			return send_dbus_notification(connection, replaces_id, owner, message);
 		}

@@ -180,7 +180,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
 		if(!boost::regex_search(file_string, rexpression_scenario)) {
-			LOG_ED << "Loading generated scenario file" << std::endl;
+			LOG_ED << "Loading generated scenario file";
 			// 4.0 editor generated scenario
 			try {
 				load_scenario();
@@ -189,7 +189,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 				throw editor_map_load_exception("load_scenario", e.message);
 			}
 		} else {
-			LOG_ED << "Loading embedded map file" << std::endl;
+			LOG_ED << "Loading embedded map file";
 			embedded_ = true;
 			pure_map_ = true;
 			map_ = editor_map::from_string(map_data);
@@ -201,7 +201,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 	// 3.0 Macro referenced pure map
 	const std::string& macro_argument = matched_macro[1];
-	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
+	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
 
 	std::string new_filename = filesystem::get_wml_location(macro_argument,
 		filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
@@ -213,7 +213,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		throw editor_map_load_exception(filename, message);
 	}
 
-	LOG_ED << "New filename is: " << new_filename << std::endl;
+	LOG_ED << "New filename is: " << new_filename;
 
 	filename_ = new_filename;
 	file_string = filesystem::read_file(filename_);
@@ -321,7 +321,7 @@ void map_context::load_scenario()
 	try {
 		read(scenario, *(preprocess_file(filename_)));
 	} catch(const config::error& e) {
-		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
+		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message;
 		throw;
 	}
 
@@ -770,30 +770,30 @@ const editor_action* map_context::last_redo_action() const
 
 void map_context::undo()
 {
-	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
 	if(can_undo()) {
 		perform_action_between_stacks(undo_stack_, redo_stack_);
 		actions_since_save_--;
 	} else {
-		WRN_ED << "undo() called with an empty undo stack" << std::endl;
+		WRN_ED << "undo() called with an empty undo stack";
 	}
 
-	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 }
 
 void map_context::redo()
 {
-	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
 	if(can_redo()) {
 		perform_action_between_stacks(redo_stack_, undo_stack_);
 		++actions_since_save_;
 	} else {
-		WRN_ED << "redo() called with an empty redo stack" << std::endl;
+		WRN_ED << "redo() called with an empty redo stack";
 	}
 
-	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 }
 
 void map_context::partial_undo()

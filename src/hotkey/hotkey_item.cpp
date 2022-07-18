@@ -399,7 +399,7 @@ void reset_default_hotkeys()
 	if(!default_hotkey_cfg_.child_range("hotkey").empty()) {
 		load_default_hotkeys(default_hotkey_cfg_);
 	} else {
-		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!" << std::endl;
+		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!";
 	}
 }
 

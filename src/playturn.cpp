@@ -132,7 +132,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	assert(cfg.attribute_range().empty());
 	if(!resources::recorder->at_end())
 	{
-		ERR_NW << "processing network data while still having data on the replay." << std::endl;
+		ERR_NW << "processing network data while still having data on the replay.";
 	}
 
 	if (const auto message = cfg.optional_child("message"))
@@ -171,7 +171,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	else if (const config &change = cfg.child("change_controller"))
 	{
 		if(change.empty()) {
-			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty." << std::endl;
+			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
 			return PROCESS_CONTINUE;
 		}
 
@@ -181,7 +181,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const std::string controller_type = change["controller"];
 		const std::size_t index = side - 1;
 		if(index >= resources::gameboard->teams().size()) {
-			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug();
 			return PROCESS_CONTINUE;
 		}
 
@@ -228,13 +228,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		bool restart = side_drop == game_display::get_singleton()->playing_side();
 
 		if (index >= resources::gameboard->teams().size()) {
-			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
+			ERR_NW << "unknown side " << side_drop << " is dropping game";
 			throw ingame_wesnothd_error("");
 		}
 
 		auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
 		if(!ctrl) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"];
 			throw ingame_wesnothd_error("");
 		}
 
@@ -244,7 +244,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 		//null controlled side cannot be dropped because they aren't controlled by anyone.
 		else if (ctrl != side_controller::type::human) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl) << std::endl;
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl);
 			throw ingame_wesnothd_error("");
 		}
 
@@ -380,7 +380,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else
 	{
-		ERR_NW << "found unknown command:\n" << cfg.debug() << std::endl;
+		ERR_NW << "found unknown command:\n" << cfg.debug();
 	}
 
 	return PROCESS_CONTINUE;

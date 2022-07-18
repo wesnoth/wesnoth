@@ -265,7 +265,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 		++i;
 	}
 
-	WRN_G << "setlocale() failed for '" << slocale << "'." << std::endl;
+	WRN_G << "setlocale() failed for '" << slocale << "'.";
 
 	if (category == LC_TIME) {
 		time_locale_correct() = false;
@@ -273,7 +273,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 
 #ifndef _WIN32
 		//if(category == LC_MESSAGES) {
-		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'." << std::endl;
+		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'.";
 		//	setenv("LANGUAGE", slocale.c_str(), 1);
 		//	std::setlocale(LC_MESSAGES, "");
 		//}
@@ -379,7 +379,7 @@ void init_textdomains(const game_config_view& cfg)
 			if (location.empty()) {
 				//if location is empty, this causes a crash on Windows, so we
 				//disallow adding empty domains
-				WRN_G << "no location found for '" << path << "', skipping textdomain" << std::endl;
+				WRN_G << "no location found for '" << path << "', skipping textdomain";
 			} else {
 				t_string::add_textdomain(name, location);
 			}

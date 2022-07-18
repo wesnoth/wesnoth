@@ -821,7 +821,7 @@ variant set_var_callable::execute_self(variant ctxt)
 	}
 	//}
 	//too many calls in a row - possible infinite loop
-	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function" << std::endl;
+	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function";
 
 	return variant(std::make_shared<safe_call_result>(fake_ptr(), 5001));
 }

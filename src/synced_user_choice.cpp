@@ -157,7 +157,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	/* side = 0 should default to the currently active side per definition. */
 	if(side < 1 || max_side < side) {
 		if(side != 0) {
-			ERR_REPLAY << "Invalid parameter for side in get_user_choice." << std::endl;
+			ERR_REPLAY << "Invalid parameter for side in get_user_choice.";
 		}
 
 		side = resources::controller->current_side();

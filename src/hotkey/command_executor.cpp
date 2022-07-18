@@ -588,7 +588,7 @@ static void event_queue(const SDL_Event& event, command_executor* executor)
 
 void command_executor::queue_command(const SDL_Event& event, int index)
 {
-	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
+	LOG_HK << "event 0x" << std::hex << event.type << std::dec;
 	if(event.type == SDL_TEXTINPUT) {
 		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
 	}

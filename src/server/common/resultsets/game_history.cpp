@@ -42,7 +42,7 @@ void game_history::read(mariadb::result_set_ref rslt)
             }
             else
             {
-                ERR_SQL << "Expected player information to split into two fields, instead found the value `" << player_info << "`." << std::endl;
+                ERR_SQL << "Expected player information to split into two fields, instead found the value `" << player_info << "`.";
             }
         }
         r.modification_names = utils::split(rslt->get_string("MODIFICATION_NAMES"));

@@ -44,7 +44,7 @@ void draw::fill(
 	const SDL_Rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a} << endl;
+	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderFillRect(renderer(), &area);
 }
@@ -63,7 +63,7 @@ void draw::fill(const SDL_Rect& area, const color_t& c)
 
 void draw::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "fill " << color_t{r,g,b,a} << endl;
+	DBG_D << "fill " << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	SDL_RenderFillRect(renderer(), nullptr);
 }
@@ -80,31 +80,31 @@ void draw::fill(const color_t& c)
 
 void draw::fill(const SDL_Rect& area)
 {
-	DBG_D << "fill " << area << endl;
+	DBG_D << "fill " << area;
 	SDL_RenderFillRect(renderer(), &area);
 }
 
 void draw::fill()
 {
-	DBG_D << "fill" << endl;
+	DBG_D << "fill";
 	SDL_RenderFillRect(renderer(), nullptr);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "set color " << color_t{r,g,b,a} << endl;
+	DBG_D << "set color " << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 }
 
 void draw::set_color(uint8_t r, uint8_t g, uint8_t b)
 {
-	DBG_D << "set color " << color_t{r,g,b} << endl;
+	DBG_D << "set color " << color_t{r,g,b};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, SDL_ALPHA_OPAQUE);
 }
 
 void draw::set_color(const color_t& c)
 {
-	DBG_D << "set color " << c << endl;
+	DBG_D << "set color " << c;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 }
 
@@ -142,7 +142,7 @@ static void draw_rect_as_lines(const SDL_Rect& rect)
 
 void draw::rect(const SDL_Rect& rect)
 {
-	DBG_D << "rect " << rect << endl;
+	DBG_D << "rect " << rect;
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
@@ -152,7 +152,7 @@ void draw::rect(const SDL_Rect& rect)
 void draw::rect(const SDL_Rect& rect,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	DBG_D << "rect " << rect << ' ' << color_t{r,g,b,a} << endl;
+	DBG_D << "rect " << rect << ' ' << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
@@ -188,13 +188,13 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 
 void draw::points(const std::vector<SDL_Point>& points)
 {
-	DBG_D << points.size() << " points" << endl;
+	DBG_D << points.size() << " points";
 	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
 }
 
 void draw::point(int x, int y)
 {
-	DBG_D << "point (" << x << ',' << y << ')' << endl;
+	DBG_D << "point (" << x << ',' << y << ')';
 	SDL_RenderDrawPoint(renderer(), x, y);
 }
 
@@ -306,8 +306,8 @@ void draw::blit(const texture& tex, const SDL_Rect& dst, const SDL_Rect& src)
 		return draw::blit(tex, dst);
 	}
 
-	if (!tex) { DBG_D << "null blit" << endl; return; }
-	DBG_D << "blit " << dst << " from " << src << endl;
+	if (!tex) { DBG_D << "null blit"; return; }
+	DBG_D << "blit " << dst << " from " << src;
 
 	SDL_RenderCopy(renderer(), tex, &src, &dst);
 }
@@ -318,16 +318,16 @@ void draw::blit(const texture& tex, const SDL_Rect& dst)
 		return draw::blit(tex);
 	}
 
-	if (!tex) { DBG_D << "null blit" << endl; return; }
-	DBG_D << "blit " << dst << endl;
+	if (!tex) { DBG_D << "null blit"; return; }
+	DBG_D << "blit " << dst;
 
 	SDL_RenderCopy(renderer(), tex, nullptr, &dst);
 }
 
 void draw::blit(const texture& tex)
 {
-	if (!tex) { DBG_D << "null blit" << endl; return; }
-	DBG_D << "blit" << endl;
+	if (!tex) { DBG_D << "null blit"; return; }
+	DBG_D << "blit";
 
 	SDL_RenderCopy(renderer(), tex, nullptr, nullptr);
 }
@@ -353,7 +353,7 @@ void draw::flipped(
 		return draw::flipped(tex, dst, flip_h, flip_v);
 	}
 
-	if (!tex) { DBG_D << "null flipped" << endl; return; }
+	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
 	      << ") to " << dst << " from " << src << endl;
 
@@ -371,7 +371,7 @@ void draw::flipped(
 		return draw::flipped(tex, flip_h, flip_v);
 	}
 
-	if (!tex) { DBG_D << "null flipped" << endl; return; }
+	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
 	      << ") to " << dst << endl;
 
@@ -381,8 +381,8 @@ void draw::flipped(
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 {
-	if (!tex) { DBG_D << "null flipped" << endl; return; }
-	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')' << endl;
+	if (!tex) { DBG_D << "null flipped"; return; }
+	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
@@ -393,7 +393,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 	bool mirrored)
 {
-	if (!tex) { DBG_D << "null tiled" << endl; return; }
+	if (!tex) { DBG_D << "null tiled"; return; }
 	DBG_D << "tiled (" << centered << '|' << mirrored
 	      << ") " << dst << endl;
 
@@ -421,7 +421,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	bool centered, bool mirrored)
 {
-	if (!tex) { DBG_D << "null tiled_highres" << endl; return; }
+	if (!tex) { DBG_D << "null tiled_highres"; return; }
 	DBG_D << "tiled_highres (" << centered << '|' << mirrored
 	      << ") " << dst << endl;
 
@@ -490,10 +490,10 @@ void draw::force_clip(const SDL_Rect& clip)
 {
 	// TODO: highdpi - fix whatever reason there is for this guard (CI fail)
 	if (!renderer()) {
-		WRN_D << "trying to force clip will null renderer" << endl;
+		WRN_D << "trying to force clip will null renderer";
 		return;
 	}
-	DBG_D << "forcing clip to " << clip << endl;
+	DBG_D << "forcing clip to " << clip;
 
 	SDL_RenderSetClipRect(renderer(), &clip);
 }
@@ -530,7 +530,7 @@ void draw::disable_clip()
 		return;
 	}
 	SDL_RenderSetClipRect(renderer(), nullptr);
-	DBG_D << "clip disabled" << endl;
+	DBG_D << "clip disabled";
 }
 
 bool draw::null_clip()
@@ -582,10 +582,10 @@ draw::viewport_setter draw::set_viewport(const SDL_Rect& viewport)
 void draw::force_viewport(const SDL_Rect& viewport)
 {
 	if (!renderer()) {
-		WRN_D << "trying to force viewport will null renderer" << endl;
+		WRN_D << "trying to force viewport will null renderer";
 		return;
 	}
-	DBG_D << "forcing viewport to " << viewport << endl;
+	DBG_D << "forcing viewport to " << viewport;
 
 	SDL_RenderSetViewport(renderer(), &viewport);
 }
@@ -593,7 +593,7 @@ void draw::force_viewport(const SDL_Rect& viewport)
 SDL_Rect draw::get_viewport()
 {
 	if (!renderer()) {
-		WRN_D << "no renderer available to get viewport" << endl;
+		WRN_D << "no renderer available to get viewport";
 		return sdl::empty_rect;
 	}
 
@@ -616,7 +616,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	assert(t.get_access() == SDL_TEXTUREACCESS_TARGET);
 
 	if (!renderer()) {
-		WRN_D << "can't set render target with null renderer" << endl;
+		WRN_D << "can't set render target with null renderer";
 		return;
 	}
 
@@ -629,7 +629,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 draw::render_target_setter::~render_target_setter()
 {
 	if (!renderer()) {
-		WRN_D << "can't reset render target with null renderer" << endl;
+		WRN_D << "can't reset render target with null renderer";
 		return;
 	}
 	CVideo::get_singleton().force_render_target(target_);

@@ -82,7 +82,7 @@ CVideo::CVideo(FAKE_TYPES type)
 void CVideo::initSDL()
 {
 	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
-		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << std::endl;
+		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
 	}
 }
@@ -166,12 +166,12 @@ void CVideo::update_framebuffer_fake()
 		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
 		if (w != fake_size.x || h != fake_size.y) {
 			// Delete it and let it be recreated.
-			LOG_DP << "destroying old render texture" << std::endl;
+			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
 		}
 	}
 	if (!render_texture_) {
-		LOG_DP << "creating offscreen render texture" << std::endl;
+		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
 			window->pixel_format(),
@@ -246,21 +246,21 @@ void CVideo::update_framebuffer()
 				<< preferences::pixel_scale() << " to maximum allowable "
 				<< scale << std::endl;
 		}
-		LOG_DP << "pixel scale: " << scale << std::endl;
-		LOG_DP << "overriding logical size" << std::endl;
-		LOG_DP << "  old lsize: " << lsize << std::endl;
-		LOG_DP << "  old wsize: " << wsize << std::endl;
-		LOG_DP << "  old osize: " << osize << std::endl;
+		LOG_DP << "pixel scale: " << scale;
+		LOG_DP << "overriding logical size";
+		LOG_DP << "  old lsize: " << lsize;
+		LOG_DP << "  old wsize: " << wsize;
+		LOG_DP << "  old osize: " << osize;
 		window->set_logical_size(osize.x / scale, osize.y / scale);
 		lsize = window->get_logical_size();
 		wsize = window->get_size();
 		osize = window->get_output_size();
-		LOG_DP << "  new lsize: " << lsize << std::endl;
-		LOG_DP << "  new wsize: " << wsize << std::endl;
-		LOG_DP << "  new osize: " << osize << std::endl;
+		LOG_DP << "  new lsize: " << lsize;
+		LOG_DP << "  new wsize: " << wsize;
+		LOG_DP << "  new osize: " << osize;
 		float sx, sy;
 		SDL_RenderGetScale(*window, &sx, &sy);
-		LOG_DP << "  render scale: " << sx << ", " << sy << std::endl;
+		LOG_DP << "  render scale: " << sx << ", " << sy;
 	}
 	// Cache it for easy access
 	logical_size_ = lsize;
@@ -271,12 +271,12 @@ void CVideo::update_framebuffer()
 		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
 		if (w != osize.x || h != osize.y) {
 			// Delete it and let it be recreated.
-			LOG_DP << "destroying old render texture" << std::endl;
+			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
 		}
 	}
 	if (!render_texture_) {
-		LOG_DP << "creating offscreen render texture" << std::endl;
+		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
 			window->pixel_format(),
@@ -387,7 +387,7 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 
 	if(fake_interactive) {
 		if(mode == TO_RES) {
-			LOG_DP << "resizing fake resolution to " << size << std::endl;
+			LOG_DP << "resizing fake resolution to " << size;
 			fake_size = size;
 			update_framebuffer_fake();
 		}
@@ -444,7 +444,7 @@ rect CVideo::draw_area() const
 SDL_Rect CVideo::input_area() const
 {
 	if(!window) {
-		WRN_DP << "requesting input area with no window" << std::endl;
+		WRN_DP << "requesting input area with no window";
 		return draw_area();
 	}
 	if (fake_interactive) {
@@ -468,7 +468,7 @@ void CVideo::force_render_target(const texture& t)
 		ERR_DP << "failed to set render target to "
 			<< static_cast<void*>(t.get()) << ' '
 			<< t.draw_size() << " / " << t.get_raw_size() << std::endl;
-		ERR_DP << "last SDL error: " << SDL_GetError() << std::endl;
+		ERR_DP << "last SDL error: " << SDL_GetError();
 		throw error("failed to set render target");
 	}
 	current_render_target_ = t;
@@ -480,11 +480,11 @@ void CVideo::force_render_target(const texture& t)
 	// The scale factor gets reset when the render target changes,
 	// so make sure it gets set back appropriately.
 	if (!t) {
-		DBG_DP << "rendering to window / screen" << std::endl;
+		DBG_DP << "rendering to window / screen";
 		// TODO: draw_manager - clean this up
 		window->set_logical_size(draw_area().w, draw_area().h);
 	} else if (t == render_texture_) {
-		DBG_DP << "rendering to primary buffer" << std::endl;
+		DBG_DP << "rendering to primary buffer";
 		// TODO: highdpi - sort out who owns this
 		window->set_logical_size(draw_area().w, draw_area().h);
 	} else {
@@ -537,12 +537,12 @@ void CVideo::render_screen()
 	}
 
 	if(!window) {
-		WRN_DP << "trying to render with no window" << std::endl;
+		WRN_DP << "trying to render with no window";
 		return;
 	}
 
 	if(flip_locked_ > 0) {
-		DBG_DP << "trying to render with flip locked" << std::endl;
+		DBG_DP << "trying to render with flip locked";
 		return;
 	}
 
@@ -573,7 +573,7 @@ void CVideo::render_screen()
 surface CVideo::read_pixels(SDL_Rect* r)
 {
 	if (!window) {
-		WRN_DP << "trying to read pixels with no window" << std::endl;
+		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
 	SDL_Rect d;
@@ -632,7 +632,7 @@ surface CVideo::read_pixels(SDL_Rect* r)
 surface CVideo::read_pixels_low_res(SDL_Rect* r)
 {
 	if(!window) {
-		WRN_DP << "trying to read pixels with no window" << std::endl;
+		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
 	surface s = read_pixels(r);
@@ -677,7 +677,7 @@ void CVideo::set_window_icon(surface& icon)
 void CVideo::clear_screen()
 {
 	if(window) {
-		DBG_DP << "clearing screen" << std::endl;
+		DBG_DP << "clearing screen";
 		window->fill(0, 0, 0, 255);;
 	}
 }
@@ -885,7 +885,7 @@ bool CVideo::set_resolution(const point& resolution)
 	}
 
 	// Change the saved values in preferences.
-	LOG_DP << "updating resolution to " << resolution << std::endl;
+	LOG_DP << "updating resolution to " << resolution;
 	preferences::_set_resolution(resolution);
 	preferences::_set_maximized(false);
 
@@ -898,7 +898,7 @@ bool CVideo::set_resolution(const point& resolution)
 
 void CVideo::update_buffers()
 {
-	LOG_DP << "updating buffers" << std::endl;
+	LOG_DP << "updating buffers";
 	// We could also double-check the resolution here.
 	/*if (preferences::resolution() != current_resolution()) {
 		LOG_DP << "updating resolution from " << current_resolution()

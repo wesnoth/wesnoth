@@ -292,11 +292,11 @@ void dialog_frame::draw_background()
 		// This is no longer used by anything.
 		// The only thing that uses dialog_frame is help/help.cpp,
 		// and it uses the default style with no blur.
-		ERR_DP << "GUI1 dialog_frame blur has been removed" << std::endl;
+		ERR_DP << "GUI1 dialog_frame blur has been removed";
 	}
 
 	if (!bg_) {
-		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
+		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'";
 		return;
 	}
 
@@ -363,7 +363,7 @@ void dialog_frame::layout()
 
 bool dialog_frame::expose(const SDL_Rect& region)
 {
-	DBG_DP << "dialog_frame::expose " << region << std::endl;
+	DBG_DP << "dialog_frame::expose " << region;
 	// Just draw everthing.
 	(void)region;
 	draw();

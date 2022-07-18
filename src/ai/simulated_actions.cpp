@@ -46,21 +46,21 @@ void helper_place_unit(const unit& u, const map_location& loc);
 void helper_advance_unit(const map_location& loc);
 
 bool simulated_attack(const map_location& attacker_loc, const map_location& defender_loc, double attacker_hp, double defender_hp){
-	LOG_AI_SIM_ACTIONS << "Simulated attack" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated attack";
 
 	unit_map::iterator attack_unit = resources::gameboard->units().find(attacker_loc);
 	unit_map::iterator defend_unit = resources::gameboard->units().find(defender_loc);
 
 	LOG_AI_SIM_ACTIONS << attack_unit->type_name() << " at " << attacker_loc << " attack "
 		<< defend_unit->type_name() << " at " << defender_loc << std::endl;
-	LOG_AI_SIM_ACTIONS << "attacker's hp before attack: " << attack_unit->hitpoints() << std::endl;
-	LOG_AI_SIM_ACTIONS << "defender's hp before attack: " << defend_unit->hitpoints() << std::endl;
+	LOG_AI_SIM_ACTIONS << "attacker's hp before attack: " << attack_unit->hitpoints();
+	LOG_AI_SIM_ACTIONS << "defender's hp before attack: " << defend_unit->hitpoints();
 
 	attack_unit->set_hitpoints(static_cast<int>(attacker_hp));
 	defend_unit->set_hitpoints(static_cast<int>(defender_hp));
 
-	LOG_AI_SIM_ACTIONS << "attacker's hp after attack: " << attack_unit->hitpoints() << std::endl;
-	LOG_AI_SIM_ACTIONS << "defender's hp after attack: " << defend_unit->hitpoints() << std::endl;
+	LOG_AI_SIM_ACTIONS << "attacker's hp after attack: " << attack_unit->hitpoints();
+	LOG_AI_SIM_ACTIONS << "defender's hp after attack: " << defend_unit->hitpoints();
 
 	int attacker_xp = game_config::combat_xp(defend_unit->level());
 	int defender_xp = game_config::combat_xp(attack_unit->level());
@@ -97,7 +97,7 @@ bool simulated_attack(const map_location& attacker_loc, const map_location& defe
 
 bool simulated_move(int side, const map_location& from, const map_location& to, int steps, map_location& unit_location)
 {
-	LOG_AI_SIM_ACTIONS << "Simulated move" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated move";
 
 	// In simulation, AI should not know if there is a enemy's ambusher.
 	auto [move_unit, success] = resources::gameboard->units().move(from, to);
@@ -114,7 +114,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 
 	unit_location = move_unit->get_location();	// For check_after.
 
-	LOG_AI_SIM_ACTIONS << move_unit->type_name() << " move from " << from << " to " << to << std::endl;
+	LOG_AI_SIM_ACTIONS << move_unit->type_name() << " move from " << from << " to " << to;
 
 	if(resources::gameboard->map().is_village(to)){
 		helper_check_village(to, side);
@@ -124,7 +124,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 }
 
 bool simulated_recall(int side, const std::string& unit_id, const map_location& recall_location){
-	LOG_AI_SIM_ACTIONS << "Simulated recall" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated recall";
 
 	team own_team = resources::gameboard->get_team(side);
 	unit_ptr recall_unit = own_team.recall_list().extract_if_matches_id(unit_id);
@@ -140,7 +140,7 @@ bool simulated_recall(int side, const std::string& unit_id, const map_location& 
 }
 
 bool simulated_recruit(int side, const unit_type* u, const map_location& recruit_location){
-	LOG_AI_SIM_ACTIONS << "Simulated recruit" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated recruit";
 
 	unit_ptr recruit_unit = unit::create(*u, side, false);	// Random traits, name and gender are not needed. This will cause "duplicate id conflicts" inside unit_map::insert(), but engine will manage this issue correctly.
 	helper_place_unit(*recruit_unit, recruit_location);
@@ -154,18 +154,18 @@ bool simulated_recruit(int side, const unit_type* u, const map_location& recruit
 }
 
 bool simulated_stopunit(const map_location& unit_location, bool remove_movement, bool remove_attacks){
-	LOG_AI_SIM_ACTIONS << "Simulated stopunit" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated stopunit";
 
 	unit_map::iterator stop_unit = resources::gameboard->units().find(unit_location);
 	bool changed = false;
 	if(remove_movement){
 		stop_unit->set_movement(0, true);
-		LOG_AI_SIM_ACTIONS << "remove (" << stop_unit->get_location() << ") " << stop_unit->type_name() << "'s movement" << std::endl;
+		LOG_AI_SIM_ACTIONS << "remove (" << stop_unit->get_location() << ") " << stop_unit->type_name() << "'s movement";
 		changed = true;
 	}
 	if(remove_attacks){
 		stop_unit->set_attacks(0);
-		LOG_AI_SIM_ACTIONS << "remove (" << stop_unit->get_location() << ") " << stop_unit->type_name() << "'s attacks" << std::endl;
+		LOG_AI_SIM_ACTIONS << "remove (" << stop_unit->get_location() << ") " << stop_unit->type_name() << "'s attacks";
 		changed = true;
 	}
 
@@ -173,9 +173,9 @@ bool simulated_stopunit(const map_location& unit_location, bool remove_movement,
 }
 
 bool simulated_synced_command(){
-	LOG_AI_SIM_ACTIONS << "Simulated synced_command" << std::endl;
+	LOG_AI_SIM_ACTIONS << "Simulated synced_command";
 
-	DBG_AI_SIM_ACTIONS << "Trigger dummy synced_command_result::do_execute()" << std::endl;
+	DBG_AI_SIM_ACTIONS << "Trigger dummy synced_command_result::do_execute()";
 
 	return false;
 }
@@ -198,7 +198,7 @@ void helper_check_village(const map_location& loc, int side){
 			if(i->owns_village(loc)){
 				old_owner_side = i_side;
 				i->lose_village(loc);
-				DBG_AI_SIM_ACTIONS << "side " << i_side << " losts village at " << loc << std::endl;
+				DBG_AI_SIM_ACTIONS << "side " << i_side << " losts village at " << loc;
 			}
 		}
 	}
@@ -208,7 +208,7 @@ void helper_check_village(const map_location& loc, int side){
 
 	if(has_leader){
 		t->get_village(loc, old_owner_side, nullptr);
-		DBG_AI_SIM_ACTIONS << "side " << side << " gets village at " << loc << std::endl;
+		DBG_AI_SIM_ACTIONS << "side " << side << " gets village at " << loc;
 	}
 }
 
@@ -265,7 +265,7 @@ void helper_advance_unit(const map_location& loc){
 	}
 
 	resources::gameboard->units().replace(loc, advanced_unit);
-	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit->type_name() << std::endl;
+	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit->type_name();
 }
 
 }// End namespace

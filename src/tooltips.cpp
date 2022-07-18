@@ -81,7 +81,7 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 
 	label.move(loc.x, loc.y);
 
-	DBG_FT << "created tooltip for " << origin << " at " << loc << endl;
+	DBG_FT << "created tooltip for " << origin << " at " << loc;
 }
 
 
@@ -106,7 +106,7 @@ static void clear_active()
 	if(!active_tooltip) {
 		return;
 	}
-	DBG_FT << "clearing active tooltip " << active_tooltip << endl;
+	DBG_FT << "clearing active tooltip " << active_tooltip;
 	tips.at(active_tooltip).label.undraw();
 	active_tooltip = 0;
 }
@@ -164,7 +164,7 @@ rect manager::screen_location()
 
 void clear_tooltips()
 {
-	DBG_FT << "clearing all tooltips" << endl;
+	DBG_FT << "clearing all tooltips";
 	clear_active();
 	tips.clear();
 }
@@ -200,7 +200,7 @@ bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 
 void remove_tooltip(int id)
 {
-	DBG_FT << "removing tooltip " << id << endl;
+	DBG_FT << "removing tooltip " << id;
 	if(id == active_tooltip) {
 		clear_active();
 	}
@@ -216,7 +216,7 @@ int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::s
 			return id;
 		}
 	}
-	DBG_FT << "adding tooltip for " << origin << endl;
+	DBG_FT << "adding tooltip for " << origin;
 
 	// Clear any existing tooltips for this origin
 	clear_tooltips(origin);
@@ -241,7 +241,7 @@ static void select_active(int id)
 		return;
 	}
 	tooltip& tip = tips.at(id);
-	DBG_FT << "showing tip " << id << " for " << tip.origin << endl;
+	DBG_FT << "showing tip " << id << " for " << tip.origin;
 	clear_active();
 	active_tooltip = id;
 	tip.label.update(SDL_GetTicks());
@@ -259,7 +259,7 @@ void process(int mousex, int mousey)
 	}
 
 	if(active_tooltip) {
-		DBG_FT << "clearing tooltip because none hovered" << endl;
+		DBG_FT << "clearing tooltip because none hovered";
 		clear_active();
 	}
 }
