@@ -149,7 +149,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
 #endif
 
-	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
+	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted";
 
 	uint32_t protocol_version;
 	uint32_t handshake_response;
@@ -168,7 +168,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			break;
 		case 1:
 			if(!tls_enabled_) {
-				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server\n";
+				ERR_SERVER << client_address(socket) << "\tTLS requested by client but not enabled on server";
 				handshake_response = 0xFFFFFFFFU;
 			} else {
 				handshake_response = 0x00000000;
@@ -190,7 +190,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 			break;
 		default:
-			ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
+			ERR_SERVER << client_address(socket) << "\tincorrect handshake";
 			return;
 	}
 
@@ -203,14 +203,14 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			async_send_error(socket, "You are banned. Reason: " + reason);
 				return;
 		} else if (ip_exceeds_connection_limit(ip)) {
-			LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+			LOG_SERVER << ip << "\trejected ip due to excessive connections";
 			async_send_error(socket, "Too many connections from your IP.");
 			return;
 		} else {
 			if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
-				DBG_SERVER << ip << "\tnew encrypted connection fully accepted\n";
+				DBG_SERVER << ip << "\tnew encrypted connection fully accepted";
 			} else {
-				DBG_SERVER << ip << "\tnew connection fully accepted\n";
+				DBG_SERVER << ip << "\tnew connection fully accepted";
 			}
 			this->handle_new_client(socket);
 		}
@@ -235,7 +235,7 @@ void server_base::handle_termination(const boost::system::error_code& error, int
 	if(signal_number == SIGINT) signame = "SIGINT";
 	else if(signal_number == SIGTERM) signame = "SIGTERM";
 	else signame = std::to_string(signal_number);
-	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
+	LOG_SERVER << signame << " caught, exiting without cleanup immediately.";
 	exit(128 + signal_number);
 }
 
@@ -243,7 +243,7 @@ int server_base::run() {
 	for(;;) {
 		try {
 			io_service_.run();
-			LOG_SERVER << "Server has shut down because event loop is out of work\n";
+			LOG_SERVER << "Server has shut down because event loop is out of work";
 			return 1;
 		} catch(const server_shutdown& e) {
 			LOG_SERVER << "Server has been shut down: " << e.what();
@@ -270,7 +270,7 @@ template<class SocketPtr> bool check_error(const boost::system::error_code& erro
 {
 	if(error) {
 		if(error == boost::asio::error::eof)
-			LOG_SERVER << log_address(socket) << "\tconnection closed\n";
+			LOG_SERVER << log_address(socket) << "\tconnection closed";
 		else
 			ERR_SERVER << log_address(socket) << "\t" << error.message();
 		return true;

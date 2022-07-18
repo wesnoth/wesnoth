@@ -386,9 +386,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		empty = current_team.recall_list().empty();
 	}
 
-	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:\n";
+	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:";
 	for(const unit_const_ptr& unit : recall_list_team) {
-		DBG_WB << unit->name() << " [" << unit->id() << "]\n";
+		DBG_WB << unit->name() << " [" << unit->id() << "]";
 	}
 
 	if(empty) {

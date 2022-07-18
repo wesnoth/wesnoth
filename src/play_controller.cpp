@@ -1238,17 +1238,17 @@ void play_controller::check_next_scenario_is_known() {
 	for(const auto& x : possible_next_scenarios) {
 		if(x.empty() || x == "null") {
 			possible_this_is_the_last_scenario = true;
-			LOG_NG << "This can be the last scenario\n";
+			LOG_NG << "This can be the last scenario";
 		} else if(utils::contains(x, '$')) {
 			// Assume a WML variable will be set to a correct value before the end of the scenario
 			known.push_back(x);
-			LOG_NG << "Variable value for next scenario '" << x << "'\n";
+			LOG_NG << "Variable value for next scenario '" << x << "'";
 		} else if(game_config_.find_child(tagname, "id", x)) {
 			known.push_back(x);
-			LOG_NG << "Known next scenario '" << x << "'\n";
+			LOG_NG << "Known next scenario '" << x << "'";
 		} else {
 			unknown.push_back(x);
-			ERR_NG << "Unknown next scenario '" << x << "'\n";
+			ERR_NG << "Unknown next scenario '" << x << "'";
 		}
 	}
 
@@ -1413,10 +1413,10 @@ void play_controller::check_time_over()
 	const bool time_left = gamestate().tod_manager_.next_turn(&gamestate().gamedata_);
 
 	if(!time_left) {
-		LOG_NG << "firing time over event...\n";
+		LOG_NG << "firing time over event...";
 		set_scontext_synced_base sync;
 		pump().fire("time_over");
-		LOG_NG << "done firing time over event...\n";
+		LOG_NG << "done firing time over event...";
 
 		// If turns are added while handling 'time over' event.
 		if(gamestate().tod_manager_.is_time_left()) {
@@ -1424,7 +1424,7 @@ void play_controller::check_time_over()
 		}
 
 		if(gui_->video().non_interactive()) {
-			LOG_AIT << "time over (draw)\n";
+			LOG_AIT << "time over (draw)";
 			ai_testing::log_draw();
 		}
 

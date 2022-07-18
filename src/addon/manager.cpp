@@ -112,7 +112,7 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 
 void write_addon_install_info(const std::string& addon_name, const config& cfg)
 {
-	LOG_CFG << "Writing version info for add-on '" << addon_name << "'\n";
+	LOG_CFG << "Writing version info for add-on '" << addon_name << "'";
 
 	const auto& info_path = get_info_file_path(addon_name);
 	auto out = filesystem::ostream_file(info_path);
@@ -228,7 +228,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
 	filesystem::blacklist_pattern_list patterns;
-	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
+	LOG_CFG << "searching for .ign file for '" << addon_name << "'...";
 	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
 		        << "using default ignore patterns...\n";
@@ -357,7 +357,7 @@ void refresh_addon_version_info_cache()
 {
 	version_info_cache.clear();
 
-	LOG_CFG << "refreshing add-on versions cache\n";
+	LOG_CFG << "refreshing add-on versions cache";
 
 	const std::vector<std::string>& addons = installed_addons();
 	if(addons.empty()) {
@@ -384,7 +384,7 @@ void refresh_addon_version_info_cache()
 			}
 
 			const std::string& version = info_cfg["version"].str();
-			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]\n";
+			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]";
 
 			version_info_cache[addon] = version;
 		} else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {

@@ -46,7 +46,7 @@ struct mptest_log
 {
 	mptest_log(const char* functionname)
 	{
-		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start\n";
+		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start";
 	}
 };
 }
@@ -110,7 +110,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 		} catch(...) {
 		}
 
-		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
+		LOG_NW << "wesnothd_connection::io_service::run() returned";
 	});
 
 	LOG_NW << "Resolving hostname: " << host;
@@ -325,7 +325,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 
 	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
 
-		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
+		DBG_NW << "In wesnothd_connection::send_data::lambda";
 		send_queue_.push(std::move(buf_ptr));
 
 		if(send_queue_.size() == 1) {
@@ -392,7 +392,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 void wesnothd_connection::handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
-	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Written " << bytes_transferred << " bytes.";
 
 	send_queue_.pop();
 
@@ -456,7 +456,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
-	DBG_NW << "Read " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Read " << bytes_transferred << " bytes.";
 
 	bytes_to_read_ = 0;
 	if(last_error_ && ec != boost::asio::error::eof) {

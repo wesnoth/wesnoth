@@ -150,7 +150,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	DBG_PF << "A* search: " << src << " -> " << dst;
 
 	if (calc.cost(dst, 0) >= stop_at) {
-		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
+		LOG_PF << "aborted A* search because Start or Dest is invalid";
 		plain_route locRoute;
 		locRoute.move_cost = static_cast<int>(calc.getNoPathValue());
 		return locRoute;
@@ -219,7 +219,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	plain_route route;
 	if (nodes[index(dst)].g <= stop_at) {
-		DBG_PF << "found solution; calculating it...\n";
+		DBG_PF << "found solution; calculating it...";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);
 		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location(); curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);

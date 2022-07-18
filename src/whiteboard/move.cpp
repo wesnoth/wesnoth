@@ -241,7 +241,7 @@ void move::execute(bool& success, bool& complete)
 
 	if ( num_steps == 0 )
 	{
-		LOG_WB << "Move execution resulted in zero movement.\n";
+		LOG_WB << "Move execution resulted in zero movement.";
 		success = false;
 		complete = true;
 	}
@@ -260,14 +260,14 @@ void move::execute(bool& success, bool& complete)
 		{
 			if ( complete )
 			{
-				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
+				LOG_WB << "Move completed, but interrupted on final hex. Halting.";
 				//reset to a single-hex path, just in case *this is a wb::attack
 				route_->steps = std::vector<map_location>(1, final_location);
 				arrow_.reset();
 			}
 			else
 			{
-				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.\n";
+				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.";
 				route_->steps = std::vector<map_location>(steps.begin() + num_steps, steps.end());
 				//FIXME: probably better to use the new calculate_new_route() instead of the above:
 				//calculate_new_route(final_location, steps.back());

@@ -105,7 +105,7 @@ void repeating_button::set_state(const state_t state)
 void repeating_button::signal_handler_mouse_enter(const event::ui_event event,
 												   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -114,7 +114,7 @@ void repeating_button::signal_handler_mouse_enter(const event::ui_event event,
 void repeating_button::signal_handler_mouse_leave(const event::ui_event event,
 												   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -124,7 +124,7 @@ void
 repeating_button::signal_handler_left_button_down(const event::ui_event event,
 												   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// If the timer isn't set it's the initial down event.
 	if(!repeat_timer_) {
@@ -151,7 +151,7 @@ repeating_button::signal_handler_left_button_down(const event::ui_event event,
 void repeating_button::signal_handler_left_button_up(const event::ui_event event,
 													  bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(repeat_timer_) {
 		remove_timer(repeat_timer_);

@@ -590,7 +590,7 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 {
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec;
 	if(event.type == SDL_TEXTINPUT) {
-		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
+		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"";
 	}
 
 	const hotkey_ptr hk = get_hotkey(event);
@@ -664,7 +664,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			}
 			break;
 		default:
-			DBG_G << "command_executor: unknown command number " << command.command->command << ", ignoring.\n";
+			DBG_G << "command_executor: unknown command number " << command.command->command << ", ignoring.";
 			break;
 	}
 }

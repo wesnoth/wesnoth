@@ -821,7 +821,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
+	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms";
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
@@ -921,7 +921,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		switch(dlg.get_retval()) {
 		case gui2::dialogs::title_screen::QUIT_GAME:
-			LOG_GENERAL << "quitting game...\n";
+			LOG_GENERAL << "quitting game...";
 			return 0;
 		case gui2::dialogs::title_screen::MP_CONNECT:
 			game_config::set_debug(game_config::mp_debug);

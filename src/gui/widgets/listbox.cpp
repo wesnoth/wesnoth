@@ -400,9 +400,9 @@ void listbox::resize_content(const int width_modification,
 			queue_redraw();
 		}
 
-		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
+		DBG_GUI_L << LOG_HEADER << " succeeded.";
 	} else {
-		DBG_GUI_L << LOG_HEADER << " failed.\n";
+		DBG_GUI_L << LOG_HEADER << " failed.";
 	}
 }
 
@@ -788,7 +788,7 @@ std::unique_ptr<widget> builder_listbox::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
@@ -831,7 +831,7 @@ std::unique_ptr<widget> builder_horizontal_listbox::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
@@ -874,7 +874,7 @@ std::unique_ptr<widget> builder_grid_listbox::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);

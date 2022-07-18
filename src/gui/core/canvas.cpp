@@ -54,7 +54,7 @@ line_shape::line_shape(const config& cfg)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Line: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Line: found debug message '" << debug << "'.";
 	}
 }
 
@@ -71,7 +71,7 @@ void line_shape::draw(wfl::map_formula_callable& variables)
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
 
-	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2 << ".\n";
+	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2 << ".";
 
 	// @todo FIXME respect the thickness.
 
@@ -93,7 +93,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.";
 	}
 }
 
@@ -155,7 +155,7 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.";
 	}
 }
 
@@ -167,7 +167,7 @@ void round_rectangle_shape::draw(wfl::map_formula_callable& variables)
 	const int h = h_(variables);
 	const int r = r_(variables);
 
-	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w << " height " << h << ".\n";
+	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w << " height " << h << ".";
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -217,7 +217,7 @@ circle_shape::circle_shape(const config& cfg)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Circle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Circle: found debug message '" << debug << "'.";
 	}
 }
 
@@ -233,7 +233,7 @@ void circle_shape::draw(wfl::map_formula_callable& variables)
 	const int y = y_(variables);
 	const unsigned radius = radius_(variables);
 
-	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".\n";
+	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
@@ -261,7 +261,7 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Image: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Image: found debug message '" << debug << "'.";
 	}
 }
 
@@ -276,7 +276,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 
 void image_shape::draw(wfl::map_formula_callable& variables)
 {
-	DBG_GUI_D << "Image: draw.\n";
+	DBG_GUI_D << "Image: draw.";
 
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -286,7 +286,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: formula returned no value, will not be drawn.\n";
+		DBG_GUI_D << "Image: formula returned no value, will not be drawn.";
 		return;
 	}
 
@@ -378,7 +378,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return resize_mode::scale_sharp;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
-			ERR_GUI_E << "Invalid resize mode '" << resize_mode << "' falling back to 'scale'.\n";
+			ERR_GUI_E << "Invalid resize mode '" << resize_mode << "' falling back to 'scale'.";
 		}
 		return resize_mode::scale;
 	}
@@ -407,7 +407,7 @@ text_shape::text_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Text: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
 	}
 }
 
@@ -421,7 +421,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const t_string text = text_(variables);
 
 	if(text.empty()) {
-		DBG_GUI_D << "Text: no text to render, leave.\n";
+		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
 
@@ -459,7 +459,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
-		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.\n";
+		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
 		return;
 	}
 
@@ -496,7 +496,7 @@ void canvas::draw()
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
 	if(shapes_.empty()) {
-		DBG_GUI_D << "Canvas: empty (no shapes to draw).\n";
+		DBG_GUI_D << "Canvas: empty (no shapes to draw).";
 		return;
 	}
 
@@ -531,7 +531,7 @@ void canvas::parse_cfg(const config& cfg)
 		const std::string& type = shape.key;
 		const config& data = shape.cfg;
 
-		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
+		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
 		if(type == "line") {
 			shapes_.emplace_back(std::make_unique<line_shape>(data));

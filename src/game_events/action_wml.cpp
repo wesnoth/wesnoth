@@ -408,7 +408,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
 	events::command_disabler command_disabler;
-	LOG_NG << "Processing [move_units_fake]\n";
+	LOG_NG << "Processing [move_units_fake]";
 
 	const bool force_scroll = cfg["force_scroll"].to_bool();
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
@@ -418,7 +418,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	std::vector<std::vector<map_location>> paths;
 	paths.reserve(num_units);
 
-	LOG_NG << "Moving " << num_units << " units\n";
+	LOG_NG << "Moving " << num_units << " units";
 
 	std::size_t longest_path = 0;
 
@@ -438,12 +438,12 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		units.back().place_on_fake_unit_manager(resources::fake_units);
 	}
 
-	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
+	LOG_NG << "Units placed, longest path is " << longest_path << " long";
 
 	std::vector<map_location> path_step(2);
 	path_step.resize(2);
 	for(std::size_t step = 1; step < longest_path; ++step) {
-		DBG_NG << "Doing step " << step << "...\n";
+		DBG_NG << "Doing step " << step << "...";
 		for(std::size_t un = 0; un < num_units; ++un) {
 			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
@@ -456,7 +456,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		}
 	}
 
-	LOG_NG << "Units moved\n";
+	LOG_NG << "Units moved";
 }
 
 /**
@@ -467,7 +467,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
 	events::command_disabler command_disabler;
-	LOG_NG << "recalling unit...\n";
+	LOG_NG << "recalling unit...";
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
 
@@ -483,7 +483,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
 	for(int index = 0; index < static_cast<int>(resources::gameboard->teams().size()); ++index) {
-		LOG_NG << "for side " << index + 1 << "...\n";
+		LOG_NG << "for side " << index + 1 << "...";
 		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
 
 		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
@@ -498,10 +498,10 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
-			DBG_NG << "checking unit against filter...\n";
+			DBG_NG << "checking unit against filter...";
 			scoped_recall_unit auto_store("this_unit", player_id, std::distance(avail.begin(), u));
 			if (ufilt(*(*u), map_location())) {
-				DBG_NG << (*u)->id() << " matched the filter...\n";
+				DBG_NG << (*u)->id() << " matched the filter...";
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = nullptr;
@@ -515,17 +515,17 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				}
 
 				for (unit_map::const_unit_iterator leader : leaders) {
-					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
+					DBG_NG << "...considering " + leader->id() + " as the recalling leader...";
 					map_location loc = cfg_loc;
 					if ( lfilt(*leader)  &&
 					     unit_filter(vconfig(leader->recall_filter())).matches( *(*u),map_location() ) ) {
-						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
+						DBG_NG << "...matched the leader filter and is able to recall the unit.";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
 						if(pass_check || (resources::gameboard->units().count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 						if(resources::gameboard->map().on_board(loc)) {
-							DBG_NG << "...valid location for the recall found. Recalling.\n";
+							DBG_NG << "...valid location for the recall found. Recalling.";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
 							                       map_location::parse_direction(cfg["facing"]),
@@ -541,7 +541,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
 					if (resources::gameboard->map().on_board(loc)) {
-						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
+						DBG_NG << "No usable leader found, but found usable location. Recalling.";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
 						actions::place_recruit(to_recruit, loc, null_location, 0, true,

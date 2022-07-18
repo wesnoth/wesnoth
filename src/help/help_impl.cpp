@@ -346,7 +346,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	} else if (generator == "terrains") {
 		generate_terrain_sections(sec, level);
 	} else if (generator == "eras") {
-		DBG_HP << "Generating eras...\n";
+		DBG_HP << "Generating eras...";
 		generate_era_sections(help_cfg, sec, level);
 	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
@@ -890,7 +890,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
-		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
+		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
 		return;
 	}
 

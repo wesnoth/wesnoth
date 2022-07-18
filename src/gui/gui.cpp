@@ -87,7 +87,7 @@ void init()
 	if(current_theme.empty()) {
 		current_gui = default_gui;
 	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'\n";
+		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
 		current_gui = default_gui;
 	}
 

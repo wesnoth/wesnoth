@@ -1066,7 +1066,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
 			int rating = rating_64;
 			if(static_cast<int64_t>(rating) != rating_64) {
-				WRN_AI << "overflow in ai attack calculation\n";
+				WRN_AI << "overflow in ai attack calculation";
 			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);

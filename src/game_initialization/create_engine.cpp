@@ -255,7 +255,7 @@ create_engine::create_engine(saved_game& state)
 	type_map_.emplace(level_type::type::sp_campaign, type_list());
 	type_map_.emplace(level_type::type::random_map, type_list());
 
-	DBG_MP << "restoring game config\n";
+	DBG_MP << "restoring game config";
 
 	// Restore game config for multiplayer.
 	campaign_type::type type = state_.classification().type;
@@ -275,7 +275,7 @@ create_engine::create_engine(saved_game& state)
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
 		nullptr, filesystem::name_mode::FILE_NAME_ONLY);
 
-	DBG_MP << "initializing all levels, eras and mods\n";
+	DBG_MP << "initializing all levels, eras and mods";
 
 	init_all_levels();
 	init_extras(ERA);
@@ -296,15 +296,15 @@ create_engine::create_engine(saved_game& state)
 
 void create_engine::init_generated_level_data()
 {
-	DBG_MP << "initializing generated level data\n";
+	DBG_MP << "initializing generated level data";
 
-	//DBG_MP << "current data:\n";
+	//DBG_MP << "current data:";
 	//DBG_MP << current_level().data().debug();
 
 	random_map * cur_lev = dynamic_cast<random_map *> (&current_level());
 
 	if(!cur_lev) {
-		WRN_MP << "Tried to initialized generated level data on a level that wasn't a random map\n";
+		WRN_MP << "Tried to initialized generated level data on a level that wasn't a random map";
 		return;
 	}
 
@@ -345,7 +345,7 @@ void create_engine::init_generated_level_data()
 		cur_lev->set_data(data);
 	}
 
-	//DBG_MP << "final data:\n";
+	//DBG_MP << "final data:";
 	//DBG_MP << current_level().data().debug();
 }
 
@@ -367,7 +367,7 @@ bool create_engine::current_level_has_side_data()
 
 void create_engine::prepare_for_new_level()
 {
-	DBG_MP << "preparing mp_game_settings for new level\n";
+	DBG_MP << "preparing mp_game_settings for new level";
 	state_.expand_scenario();
 	state_.expand_random_scenario();
 }
@@ -383,7 +383,7 @@ void create_engine::prepare_for_era_and_mods()
 
 void create_engine::prepare_for_scenario()
 {
-	DBG_MP << "preparing data for scenario by reloading game config\n";
+	DBG_MP << "preparing data for scenario by reloading game config";
 
 	state_.classification().scenario_define = current_level().data()["define"].str();
 
@@ -394,7 +394,7 @@ void create_engine::prepare_for_scenario()
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
-	DBG_MP << "preparing data for campaign by reloading game config\n";
+	DBG_MP << "preparing data for campaign by reloading game config";
 
 	if(!difficulty.empty()) {
 		state_.classification().difficulty = difficulty;
@@ -469,7 +469,7 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 
 void create_engine::prepare_for_saved_game()
 {
-	DBG_MP << "preparing mp_game_settings for saved game\n";
+	DBG_MP << "preparing mp_game_settings for saved game";
 
 	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
@@ -480,7 +480,7 @@ void create_engine::prepare_for_saved_game()
 
 void create_engine::prepare_for_other()
 {
-	DBG_MP << "prepare_for_other\n";
+	DBG_MP << "prepare_for_other";
 	state_.set_scenario(current_level().data());
 	state_.mp_settings().hash = current_level().data().hash();
 	state_.check_require_scenario();
@@ -792,7 +792,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 			}
 			else {
 				//TODO: use a more visible error message.
-				ERR_CF << "found " << extra_name << " with id=" << extra["id"] << " twice\n";
+				ERR_CF << "found " << extra_name << " with id=" << extra["id"] << " twice";
 			}
 		}
 	}

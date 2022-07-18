@@ -124,7 +124,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 		const int island_radius = 40 + ((max_coastal - data_.island_size) * 40)/max_coastal;
 		job_data.island_size = (island_radius * data_.width * 2)/100;
 		job_data.island_off_center = std::min(data_.width, data_.height);
-		DBG_NG << "calculated coastal params...\n";
+		DBG_NG << "calculated coastal params...";
 	}
 
 	// A map generator can fail so try a few times to get a map before aborting.
@@ -168,14 +168,14 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 
 config default_map_generator::create_scenario(std::optional<uint32_t> randomseed)
 {
-	DBG_NG << "creating scenario...\n";
+	DBG_NG << "creating scenario...";
 
 	config res = cfg_.child_or_empty("scenario");
 
-	DBG_NG << "got scenario data...\n";
+	DBG_NG << "got scenario data...";
 
 	std::map<map_location,std::string> labels;
-	DBG_NG << "generating map...\n";
+	DBG_NG << "generating map...";
 
 	try{
 		res["map_data"] = generate_map(&labels, randomseed);
@@ -184,7 +184,7 @@ config default_map_generator::create_scenario(std::optional<uint32_t> randomseed
 		res["map_data"] = "";
 		res["error_message"] = exc.message;
 	}
-	DBG_NG << "done generating map..\n";
+	DBG_NG << "done generating map..";
 
 	for(std::map<map_location,std::string>::const_iterator i =
 			labels.begin(); i != labels.end(); ++i) {

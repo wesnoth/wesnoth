@@ -73,7 +73,7 @@ gui_definition::gui_definition(const config& cfg)
 			const std::string& def_id = def_ptr->id;
 
 			if(def_map.find(def_id) != def_map.end()) {
-				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'\n";
+				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'";
 				continue;
 			}
 

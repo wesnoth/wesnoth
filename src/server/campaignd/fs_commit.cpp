@@ -102,7 +102,7 @@ platform_file_handle_type get_stream_file_descriptor(std::ostream& os)
  */
 filesystem::scoped_ostream ostream_file_with_delete(const std::string& fname)
 {
-	LOG_FS << "streaming " << fname << " for writing with delete access.\n";
+	LOG_FS << "streaming " << fname << " for writing with delete access.";
 
 	namespace bfs = boost::filesystem;
 	const auto& w_name = unicode_cast<std::wstring>(fname);
@@ -146,7 +146,7 @@ filesystem::scoped_ostream ostream_file_with_delete(const std::string& fname)
 bool rename_open_file(const std::string& new_name, HANDLE open_handle)
 {
 	if(open_handle == INVALID_HANDLE_VALUE) {
-		ERR_FS << "replace_open_file(): Bad handle\n";
+		ERR_FS << "replace_open_file(): Bad handle";
 		return false;
 	}
 
@@ -206,7 +206,7 @@ atomic_commit::~atomic_commit()
 void atomic_commit::commit()
 {
 	if(temp_name_.empty()) {
-		ERR_FS << "Attempted to commit " << dest_name_ << " more than once!\n";
+		ERR_FS << "Attempted to commit " << dest_name_ << " more than once!";
 		return;
 	}
 

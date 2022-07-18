@@ -95,7 +95,7 @@ builder_widget::builder_widget(const config& cfg)
 		debug_border_mode = widget::debug_border::fill;
 		break;
 	default:
-		WRN_GUI_P << "Widget builder: unknown debug border mode " << dbm << ".\n";
+		WRN_GUI_P << "Widget builder: unknown debug border mode " << dbm << ".";
 	}
 }
 
@@ -151,7 +151,7 @@ void builder_window::read(const config& cfg)
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
 
-	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
+	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
@@ -262,7 +262,7 @@ builder_grid::builder_grid(const config& cfg)
 		}
 	}
 
-	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols << " columns.\n";
+	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols << " columns.";
 }
 
 std::unique_ptr<widget> builder_grid::build() const
@@ -287,7 +287,7 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows << " rows and " << cols << " columns.\n";
+	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows << " rows and " << cols << " columns.";
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid.set_row_grow_factor(x, row_grow_factor[x]);
@@ -297,7 +297,7 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 				grid.set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".";
 
 			const unsigned int i = x * cols + y;
 

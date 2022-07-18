@@ -145,7 +145,7 @@ void add_license(config& cfg)
 	// Copy over COPYING.txt
 	const std::string& contents = filesystem::read_file("COPYING.txt");
 	if (contents.empty()) {
-		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"\n";
+		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"";
 		return;
 	}
 

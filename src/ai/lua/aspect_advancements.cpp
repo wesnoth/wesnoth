@@ -76,7 +76,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	const int unit_x = (*unit).get_location().wml_x();
 	const int unit_y = (*unit).get_location().wml_y();
 
-	LOG_LUA << "Entering unit_advancements_aspect::get_advancements() in instance " << this << " with unit " << unit_id <<  " on (x,y) = (" << unit_x << ", " << unit_y << ")\n";
+	LOG_LUA << "Entering unit_advancements_aspect::get_advancements() in instance " << this << " with unit " << unit_id <<  " on (x,y) = (" << unit_x << ", " << unit_y << ")";
 
 	if(L_ == nullptr || ref_ == LUA_REFNIL)
 	{
@@ -126,7 +126,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	const std::string retval = std::string(lua_tostring(L_, -1));
 	lua_pop(L_, 1);
 
-	LOG_LUA << "Called Lua advancement function. Result was: \"" << retval << "\".\n";
+	LOG_LUA << "Called Lua advancement function. Result was: \"" << retval << "\".";
 
 	return utils::split(retval);
 }

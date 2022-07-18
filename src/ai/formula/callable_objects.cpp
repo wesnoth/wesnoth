@@ -92,7 +92,7 @@ variant move_callable::execute_self(variant ctxt) {
 	move_result_ptr move_result = ai.execute_move_action(src_, dst_, true);
 
 	if(!move_result->is_ok()) {
-		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n";
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
@@ -121,7 +121,7 @@ variant move_partial_callable::execute_self(variant ctxt) {
 	move_result_ptr move_result = ai.execute_move_action(src_, dst_, false);
 
 	if(!move_result->is_ok()) {
-		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n";
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
@@ -224,7 +224,7 @@ variant attack_callable::execute_self(variant ctxt) {
 
 		if(!move_result->is_ok()) {
 			//move part failed
-			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n";
+			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function";
 			return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 		}
 	}
@@ -235,7 +235,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		gamestate_changed |= attack_result->is_gamestate_changed();
 		if(!attack_result->is_ok()) {
 			//attack failed
-			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n";
+			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function";
 			return variant(std::make_shared<safe_call_result>(fake_ptr(), attack_result->get_status()));
 		}
 	}
@@ -309,7 +309,7 @@ variant recall_callable::execute_self(variant ctxt) {
 	if(recall_result->is_ok()) {
 		recall_result->execute();
 	} else {
-		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function\n";
+		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), recall_result->get_status()));
 	}
 
@@ -338,7 +338,7 @@ variant recruit_callable::execute_self(variant ctxt) {
 	if(recruit_result->is_ok()) {
 		recruit_result->execute();
 	} else {
-		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function\n";
+		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), recruit_result->get_status()));
 	}
 

@@ -546,7 +546,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		if(int side = u.on_recall_list()) {
 			WRN_LUA << "wesnoth.units.matches called with a secondary unit (3rd argument), ";
 			WRN_LUA << "but unit to match was on recall list. ";
-			WRN_LUA << "Thus the 3rd argument is ignored.\n";
+			WRN_LUA << "Thus the 3rd argument is ignored.";
 			team &t = board().get_team(side);
 			scoped_recall_unit auto_store("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 			lua_pushboolean(L, unit_filter(filter).matches(*u, map_location()));
@@ -1270,7 +1270,7 @@ static int intf_get_era(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_get(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_get\n";
+	LOG_LUA << "impl_game_config_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1322,7 +1322,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_set(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_set\n";
+	LOG_LUA << "impl_game_config_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1544,7 +1544,7 @@ static int impl_mp_settings_len(lua_State* L)
  */
 int game_lua_kernel::impl_scenario_get(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_get\n";
+	LOG_LUA << "impl_scenario_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1629,7 +1629,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
  */
 int game_lua_kernel::impl_scenario_set(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_set\n";
+	LOG_LUA << "impl_scenario_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1761,7 +1761,7 @@ int game_lua_kernel::intf_message(lua_State *L)
 		m = luaW_checktstring(L, 2);
 	}
 	lua_chat(h, m);
-	LOG_LUA << "Script says: \"" << m << "\"\n";
+	LOG_LUA << "Script says: \"" << m << "\"";
 	return 0;
 }
 
@@ -4271,7 +4271,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	}
 
 	tod_man().add_time_area(id, locs, times);
-	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
+	LOG_LUA << "Lua inserted time_area '" << id << "'";
 	return 0;
 }
 
@@ -4282,7 +4282,7 @@ int game_lua_kernel::intf_remove_time_area(lua_State * L)
 
 	const char * id = luaL_checkstring(L, 1);
 	tod_man().remove_time_area(id);
-	LOG_LUA << "Lua removed time_area '" << id << "'\n";
+	LOG_LUA << "Lua removed time_area '" << id << "'";
 
 	return 0;
 }
@@ -4331,7 +4331,7 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 			if (game_display_) {
 				game_display_->new_turn();
 			}
-			LOG_LUA << "replaced ToD schedule\n";
+			LOG_LUA << "replaced ToD schedule";
 		}
 	}
 	return 0;

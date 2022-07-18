@@ -258,7 +258,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 	size_t center_x = width/2;
 	size_t center_y = height/2;
 
-	LOG_NG << "off-centering...\n";
+	LOG_NG << "off-centering...";
 
 	if(island_off_center != 0) {
 		switch(rng_()%4) {
@@ -291,7 +291,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 {
 	height_map res(width, std::vector<int>(height,0));
 
-	DBG_NG << iterations << " iterations\n";
+	DBG_NG << iterations << " iterations";
 	for(std::size_t i = 0; i != iterations; ++i) {
 
 		// (x1,y1) is the location of the hill,
@@ -454,14 +454,14 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	if(!on_map || terrain[x][y] == t_translation::SHALLOW_WATER ||
 			terrain[x][y] == t_translation::DEEP_WATER) {
 
-		LOG_NG << "generating river...\n";
+		LOG_NG << "generating river...";
 
 		// Generate the river
 		for(auto i : river) {
 			terrain[i.x][i.y] = t_translation::SHALLOW_WATER;
 		}
 
-		LOG_NG << "done generating river\n";
+		LOG_NG << "done generating river";
 
 		return true;
 	}
@@ -816,7 +816,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			if(!river.empty() && misc_labels != nullptr) {
 				const std::string base_name = base_name_generator->generate();
 				const std::string& name = river_name_generator->generate({{"base",  base_name}});
-				LOG_NG << "Named river '" << name << "'\n";
+				LOG_NG << "Named river '" << name << "'";
 
 				std::size_t name_frequency = 20;
 				for(std::vector<map_location>::const_iterator r = river.begin(); r != river.end(); ++r) {
@@ -830,7 +830,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				}
 			}
 
-			LOG_NG << "Generating lake...\n";
+			LOG_NG << "Generating lake...";
 
 			std::set<map_location> locs;
 			if(generate_lake(terrain, x, y, cfg["lake_size"], locs) && misc_labels != nullptr) {
@@ -912,7 +912,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placing castles...\n";
+	LOG_NG << "Placing castles...";
 
 	/*
 	 * Attempt to place castles at random.
@@ -980,7 +980,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 		LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	}
-	LOG_NG << "Placing roads...\n";
+	LOG_NG << "Placing roads...";
 	ticks = SDL_GetTicks();
 
 	// Place roads.
@@ -1225,7 +1225,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	}
 
 	LOG_NG << "Named landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
-	LOG_NG << "Placing villages...\n";
+	LOG_NG << "Placing villages...";
 	ticks = SDL_GetTicks();
 
 	/*

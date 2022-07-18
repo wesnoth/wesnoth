@@ -672,7 +672,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 				}
 			}
 
-			LOG_CF << "client has taken a valid position\n";
+			LOG_CF << "client has taken a valid position";
 
 			import_user(data, false, side_taken);
 			update_and_send_diff();
@@ -682,7 +682,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes();
 			result.second = false;
 
-			LOG_NW << "sent player data\n";
+			LOG_NW << "sent player data";
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken;
 
@@ -875,7 +875,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		cfg_.remove_attribute("controller");
 
 		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
-		ERR_MP << "controller=<number> is deperecated\n";
+		ERR_MP << "controller=<number> is deperecated";
 	}
 
 	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {

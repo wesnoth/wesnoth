@@ -262,7 +262,7 @@ void team::team_info::read(const config& cfg)
 	share_vision = team_shared_vision::get_enum(cfg["share_vision"].str()).value_or(team_shared_vision::type::all);
 	handle_legacy_share_vision(cfg);
 
-	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << team_shared_vision::get_string(share_vision) << ".\n";
+	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << team_shared_vision::get_string(share_vision) << ".";
 }
 
 void team::team_info::handle_legacy_share_vision(const config& cfg)
@@ -1040,7 +1040,7 @@ void team::log_recruitable() const
 		LOG_NG << recruit;
 	}
 
-	LOG_NG << "Added all recruitable units\n";
+	LOG_NG << "Added all recruitable units";
 }
 
 config team::to_config() const

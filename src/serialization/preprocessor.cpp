@@ -986,7 +986,7 @@ std::string preprocessor_data::read_word()
 		int c = in_.peek();
 
 		if(c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
-			// DBG_PREPROC << "(" << res << ")\n";
+			// DBG_PREPROC << "(" << res << ")";
 			return res;
 		}
 
@@ -1318,7 +1318,7 @@ bool preprocessor_data::get_chunk()
 						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
 						deprecation_detail, deprecation_level, deprecation_version);
 
-				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}
 		} else if(command == "ifdef" || command == "ifndef") {
 			const bool negate = command[2] == 'n';
@@ -1410,7 +1410,7 @@ bool preprocessor_data::get_chunk()
 			const std::string& symbol = read_word();
 			if(!skipping_) {
 				parent_.defines_->erase(symbol);
-				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}
 		} else if(command == "error") {
 			if(!skipping_) {
@@ -1419,7 +1419,7 @@ bool preprocessor_data::get_chunk()
 				error << "#error: \"" << read_rest_of_line() << '"';
 				parent_.error(error.str(), linenum_);
 			} else
-				DBG_PREPROC << "Skipped an error\n";
+				DBG_PREPROC << "Skipped an error";
 		} else if(command == "warning") {
 			if(!skipping_) {
 				skip_spaces();
@@ -1427,7 +1427,7 @@ bool preprocessor_data::get_chunk()
 				warning << "#warning: \"" << read_rest_of_line() << '"';
 				parent_.warning(warning.str(), linenum_);
 			} else {
-				DBG_PREPROC << "Skipped a warning\n";
+				DBG_PREPROC << "Skipped a warning";
 			}
 		} else if(command == "deprecated") {
 			// The current file is deprecated, so print a message
@@ -1637,7 +1637,7 @@ bool preprocessor_data::get_chunk()
 					put(res.str());
 				}
 			} else if(parent_.depth() < 40) {
-				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
+				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.";
 				pop_token();
 
 				std::string nfname = filesystem::get_wml_location(symbol, directory_);
@@ -1795,7 +1795,7 @@ void preprocess_resource(const std::string& res_name,
 
 	ss << (*stream).rdbuf();
 
-	LOG_PREPROC << "processing finished\n";
+	LOG_PREPROC << "processing finished";
 
 	if(write_cfg || write_plain_cfg) {
 		config cfg;

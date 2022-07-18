@@ -92,7 +92,7 @@ void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_c
 	std::istringstream s(seed_str);
 	if (!(s >> std::hex >> new_seed)) {
 		new_seed = 42;
-		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.\n";
+		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.";
 	}
 	seed_random(new_seed, call_count);
 }

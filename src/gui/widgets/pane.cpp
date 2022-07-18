@@ -311,7 +311,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 											 const event::ui_event event,
 											 bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	widget* wgt = dynamic_cast<widget*>(&dispatcher);
 	if(wgt) {
@@ -337,14 +337,14 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 					item.item_grid->place(point(), item.item_grid->get_best_size());
 				}
 				place_or_set_origin_children();
-				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";
+				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.";
 				handled = true;
 				return;
 			}
 		}
 	}
 
-	DBG_GUI_E << LOG_HEADER << ' ' << event << " failed to handle.\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " failed to handle.";
 	assert(false);
 	handled = false;
 }

@@ -203,7 +203,7 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		}
 
 		if(addon.version != new_data.version) {
-			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.\n";
+			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.";
 		}
 
 		if(new_data.required) {

@@ -347,7 +347,7 @@ void text_box::signal_handler_mouse_motion(const event::ui_event event,
 											bool& handled,
 											const point& coordinate)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".";
 
 	if(dragging_) {
 		handle_mouse_selection(coordinate, false);
@@ -359,7 +359,7 @@ void text_box::signal_handler_mouse_motion(const event::ui_event event,
 void text_box::signal_handler_left_button_down(const event::ui_event event,
 												bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	/*
 	 * Copied from the base class see how we can do inheritance with the new
@@ -376,7 +376,7 @@ void text_box::signal_handler_left_button_down(const event::ui_event event,
 void text_box::signal_handler_left_button_up(const event::ui_event event,
 											  bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	dragging_ = false;
 	handled = true;
@@ -386,7 +386,7 @@ void
 text_box::signal_handler_left_button_double_click(const event::ui_event event,
 												   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	select_all();
 	handled = true;

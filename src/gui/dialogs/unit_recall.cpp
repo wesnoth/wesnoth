@@ -76,7 +76,7 @@ static void dump_recall_list_to_console(const T& units)
 
 	std::size_t idx = 0;
 	for(const auto& u_ptr : units) {
-		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
+		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'";
 	}
 }
 
@@ -342,7 +342,7 @@ void unit_recall::rename_unit()
 
 void unit_recall::dismiss_unit()
 {
-	LOG_DP << "Recall list units:\n"; dump_recall_list_to_console(recall_list_);
+	LOG_DP << "Recall list units:"; dump_recall_list_to_console(recall_list_);
 
 	listbox& list = find_widget<listbox>(get_window(), "recall_list", false);
 	const int index = list.get_selected_row();
@@ -388,8 +388,8 @@ void unit_recall::dismiss_unit()
 	filter_options_.erase(filter_options_.begin() + index);
 	assert(filter_options_.size() == list.get_item_count());
 
-	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'\n";
-	LOG_DP << "That side's recall list:\n";
+	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
+	LOG_DP << "That side's recall list:";
 	dump_recall_list_to_console(team_.recall_list());
 
 	// Find the unit in the recall list.

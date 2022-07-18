@@ -1058,7 +1058,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 	}
 	catch (const invalid_variablename_exception&)
 	{
-		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'\n";
+		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'";
 		return false;
 	}
 }

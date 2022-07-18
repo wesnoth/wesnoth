@@ -303,10 +303,10 @@ static bool create_directory_if_missing(const bfs::path& dirpath)
 		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message();
 		return false;
 	} else if(bfs::is_directory(fs)) {
-		DBG_FS << "directory " << dirpath.string() << " exists, not creating\n";
+		DBG_FS << "directory " << dirpath.string() << " exists, not creating";
 		return true;
 	} else if(bfs::exists(fs)) {
-		ERR_FS << "cannot create directory " << dirpath.string() << "; file exists\n";
+		ERR_FS << "cannot create directory " << dirpath.string() << "; file exists";
 		return false;
 	}
 
@@ -553,7 +553,7 @@ const std::string& get_version_path_suffix()
 				LOG_FS << "Apple developer's userdata migration: symlinking " << old_saves_dir.string() << " to " << new_saves_dir.string();
 				bfs::create_symlink(new_saves_dir, old_saves_dir);
 			} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
-				ERR_FS << "Apple developer's userdata migration: Problem! Old (non-containerized) directory " << old_saves_dir.string() << " is not a symlink. Your savegames are scattered around 2 locations.\n";
+				ERR_FS << "Apple developer's userdata migration: Problem! Old (non-containerized) directory " << old_saves_dir.string() << " is not a symlink. Your savegames are scattered around 2 locations.";
 			}
 			return;
 		}
@@ -1004,10 +1004,10 @@ std::string read_file(const std::string& fname)
 
 filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error)
 {
-	LOG_FS << "Streaming " << fname << " for reading.\n";
+	LOG_FS << "Streaming " << fname << " for reading.";
 
 	if(fname.empty()) {
-		ERR_FS << "Trying to open file with empty name.\n";
+		ERR_FS << "Trying to open file with empty name.";
 		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
@@ -1020,9 +1020,9 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 
 		// TODO: has this still use ?
 		if(!fd.is_open() && treat_failure_as_error) {
-			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+			ERR_FS << "Could not open '" << fname << "' for reading.";
 		} else if(!is_filename_case_correct(fname, fd)) {
-			ERR_FS << "Not opening '" << fname << "' due to case mismatch.\n";
+			ERR_FS << "Not opening '" << fname << "' due to case mismatch.";
 			filesystem::scoped_istream s(new bfs::ifstream());
 			s->clear(std::ios_base::failbit);
 			return s;
@@ -1031,7 +1031,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_source>>(fd, 4096, 0);
 	} catch(const std::exception&) {
 		if(treat_failure_as_error) {
-			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+			ERR_FS << "Could not open '" << fname << "' for reading.";
 		}
 
 		filesystem::scoped_istream s(new bfs::ifstream());
@@ -1042,7 +1042,7 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 
 filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode, bool create_directory)
 {
-	LOG_FS << "streaming " << fname << " for writing.\n";
+	LOG_FS << "streaming " << fname << " for writing.";
 #if 1
 	try {
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), mode);
@@ -1324,7 +1324,7 @@ void binary_paths_manager::set_paths(const game_config_view& cfg)
 	for(const config& bp : cfg.child_range("binary_path")) {
 		std::string path = bp["path"].str();
 		if(path.find("..") != std::string::npos) {
-			ERR_FS << "Invalid binary path '" << path << "'\n";
+			ERR_FS << "Invalid binary path '" << path << "'";
 			continue;
 		}
 
@@ -1353,15 +1353,15 @@ void clear_binary_paths_cache()
 
 static bool is_legal_file(const std::string& filename_str)
 {
-	DBG_FS << "Looking for '" << filename_str << "'.\n";
+	DBG_FS << "Looking for '" << filename_str << "'.";
 
 	if(filename_str.empty()) {
-		LOG_FS << "  invalid filename\n";
+		LOG_FS << "  invalid filename";
 		return false;
 	}
 
 	if(filename_str.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename_str << "' (\"..\" not allowed).\n";
+		ERR_FS << "Illegal path '" << filename_str << "' (\"..\" not allowed).";
 		return false;
 	}
 
@@ -1400,7 +1400,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	if(type.find("..") != std::string::npos) {
 		// Not an assertion, as language.cpp is passing user data as type.
-		ERR_FS << "Invalid WML type '" << type << "' for binary paths\n";
+		ERR_FS << "Invalid WML type '" << type << "' for binary paths";
 		static std::vector<std::string> dummy;
 		return dummy;
 	}
@@ -1451,10 +1451,10 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		bfs::path bpath(bp);
 		bpath /= filename;
 
-		DBG_FS << "  checking '" << bp << "'\n";
+		DBG_FS << "  checking '" << bp << "'";
 
 		if(file_exists(bpath)) {
-			DBG_FS << "  found at '" << bpath.string() << "'\n";
+			DBG_FS << "  found at '" << bpath.string() << "'";
 			if(result.empty()) {
 				result = bpath.string();
 			} else {
@@ -1464,7 +1464,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		}
 	}
 
-	DBG_FS << "  not found\n";
+	DBG_FS << "  not found";
 	return result;
 }
 
@@ -1477,14 +1477,14 @@ std::string get_binary_dir_location(const std::string& type, const std::string& 
 	for(const std::string& bp : get_binary_paths(type)) {
 		bfs::path bpath(bp);
 		bpath /= filename;
-		DBG_FS << "  checking '" << bp << "'\n";
+		DBG_FS << "  checking '" << bp << "'";
 		if(is_directory_internal(bpath)) {
-			DBG_FS << "  found at '" << bpath.string() << "'\n";
+			DBG_FS << "  found at '" << bpath.string() << "'";
 			return bpath.string();
 		}
 	}
 
-	DBG_FS << "  not found\n";
+	DBG_FS << "  not found";
 	return std::string();
 }
 
@@ -1501,7 +1501,7 @@ std::string get_wml_location(const std::string& filename, const std::string& cur
 
 	if(filename[0] == '~') {
 		result /= get_user_data_path() / "data" / filename.substr(1);
-		DBG_FS << "  trying '" << result.string() << "'\n";
+		DBG_FS << "  trying '" << result.string() << "'";
 	} else if(*fpath.begin() == ".") {
 		if(!current_dir.empty()) {
 			result /= bfs::path(current_dir);
@@ -1515,10 +1515,10 @@ std::string get_wml_location(const std::string& filename, const std::string& cur
 	}
 
 	if(result.empty() || !file_exists(result)) {
-		DBG_FS << "  not found\n";
+		DBG_FS << "  not found";
 		result.clear();
 	} else {
-		DBG_FS << "  found: '" << result.string() << "'\n";
+		DBG_FS << "  found: '" << result.string() << "'";
 	}
 
 	return result.string();

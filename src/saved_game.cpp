@@ -481,7 +481,7 @@ void saved_game::expand_random_scenario()
 	if(starting_point_type_ == starting_point::SCENARIO) {
 		// If the entire scenario should be randomly generated
 		if(!starting_point_["scenario_generation"].empty()) {
-			LOG_NG << "randomly generating scenario...\n";
+			LOG_NG << "randomly generating scenario...";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
 			config scenario_new =
@@ -499,7 +499,7 @@ void saved_game::expand_random_scenario()
 		// If the map should be randomly generated
 		// We don’t want that we accidentally to this twice so we check for starting_point_["map_data"].empty()
 		if(starting_point_["map_data"].empty() && !starting_point_["map_generation"].empty()) {
-			LOG_NG << "randomly generating map...\n";
+			LOG_NG << "randomly generating map...";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
 			starting_point_["map_data"] =
@@ -769,7 +769,7 @@ void saved_game::set_data(config& cfg)
 		starting_point_.clear();
 	}
 
-	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
+	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'";
 
 	if(const config& stats = cfg.child("statistics")) {
 		statistics::fresh_stats();

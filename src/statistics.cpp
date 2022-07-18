@@ -155,7 +155,7 @@ static stats::str_int_map read_str_int_map(const config& cfg)
 				m[val] = std::stoi(i.first);
 			}
 		} catch(const std::invalid_argument&) {
-			ERR_NG << "Invalid statistics entry; skipping\n";
+			ERR_NG << "Invalid statistics entry; skipping";
 		}
 	}
 
@@ -272,7 +272,7 @@ static void merge_cth_map(stats::hitrate_map& a, const stats::hitrate_map& b)
 
 static void merge_stats(stats& a, const stats& b)
 {
-	DBG_NG << "Merging statistics\n";
+	DBG_NG << "Merging statistics";
 	merge_str_int_map(a.recruits,b.recruits);
 	merge_str_int_map(a.recalls,b.recalls);
 	merge_str_int_map(a.advanced_to,b.advanced_to);

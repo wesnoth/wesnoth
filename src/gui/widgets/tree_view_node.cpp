@@ -527,7 +527,7 @@ point tree_view_node::calculate_best_size(const int indentation_level, const uns
 		best_size.x += indentation_level * indentation_step_size;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
+	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".";
 
 	for(const auto& node : children_) {
 		if(node->grid_.get_visible() == widget::visibility::invisible) {
@@ -543,7 +543,7 @@ point tree_view_node::calculate_best_size(const int indentation_level, const uns
 		best_size.x = std::max(best_size.x, node_size.x);
 	}
 
-	DBG_GUI_L << LOG_HEADER << " result " << best_size << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << best_size << ".";
 	return best_size;
 }
 
@@ -567,7 +567,7 @@ void tree_view_node::place(const point& origin, const point& size)
 unsigned tree_view_node::place(const unsigned indentation_step_size, point origin, unsigned width)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".\n";
+	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".";
 
 	const unsigned offset = origin.y;
 	point best_size = grid_.get_best_size();
@@ -584,11 +584,11 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	origin.y += best_size.y;
 
 	if(is_folded()) {
-		DBG_GUI_L << LOG_HEADER << " folded node done.\n";
+		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return origin.y - offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " set children.\n";
+	DBG_GUI_L << LOG_HEADER << " set children.";
 	for(auto& node : children_) {
 		origin.y += node->place(indentation_step_size, origin, width);
 	}
@@ -596,18 +596,18 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	// Inherited.
 	widget::set_size(point(width, origin.y - offset));
 
-	DBG_GUI_L << LOG_HEADER << " result " << (origin.y - offset) << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << (origin.y - offset) << ".";
 	return origin.y - offset;
 }
 
 void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".\n";
+	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";
 	grid_.set_visible_rectangle(rectangle);
 
 	if(is_folded()) {
-		DBG_GUI_L << LOG_HEADER << " folded node done.\n";
+		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return;
 	}
 
@@ -631,7 +631,7 @@ void tree_view_node::impl_draw_children()
 
 void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	/**
 	 * @todo Rewrite this sizing code for the folding/unfolding.
@@ -652,7 +652,7 @@ void tree_view_node::signal_handler_left_button_click(const event::ui_event even
 
 void tree_view_node::signal_handler_label_left_button_click(const event::ui_event event, bool& handled, bool& halt)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	assert(label_);
 

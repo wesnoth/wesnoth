@@ -345,7 +345,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	i18n_symbols["addon_title"] = font::escape_text(info.title);
 
 	if(archive_cfg.has_child("removelist") || archive_cfg.has_child("addlist")) {
-		LOG_ADDONS << "Received an updatepack for the addon '" << info.id << "'\n";
+		LOG_ADDONS << "Received an updatepack for the addon '" << info.id << "'";
 
 		// A consistency check
 		for(const config::any_child entry : archive_cfg.all_children_range()) {
@@ -370,11 +370,11 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 			}
 		}
 
-		LOG_ADDONS << "Update completed.\n";
+		LOG_ADDONS << "Update completed.";
 
 		//#TODO: hash verification ???
 	} else {
-		LOG_ADDONS << "Received a full pack for the addon '" << info.id << "'\n";
+		LOG_ADDONS << "Received a full pack for the addon '" << info.id << "'";
 
 		if(!check_names_legal(archive_cfg)) {
 			gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
@@ -390,11 +390,11 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 		// Remove any previously installed versions
 		if(!remove_local_addon(info.id)) {
-			WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!\n";
+			WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!";
 		}
 
 		unarchive_addon(archive_cfg);
-		LOG_ADDONS << "unpacking finished\n";
+		LOG_ADDONS << "unpacking finished";
 	}
 
 	config info_cfg;

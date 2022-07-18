@@ -92,7 +92,7 @@ bool load_font_config()
 	try {
 		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
 		if(cfg_path.empty()) {
-			ERR_FT << "could not resolve path to fonts.cfg, file not found\n";
+			ERR_FT << "could not resolve path to fonts.cfg, file not found";
 			return false;
 		}
 
@@ -114,17 +114,17 @@ bool load_font_config()
 	family_order_script = fonts_config["family_order_script"];
 
 	if(family_order_mono.empty()) {
-		ERR_FT << "No monospace font family order defined, falling back to sans serif order\n";
+		ERR_FT << "No monospace font family order defined, falling back to sans serif order";
 		family_order_mono = family_order_sans;
 	}
 
 	if(family_order_light.empty()) {
-		ERR_FT << "No light font family order defined, falling back to sans serif order\n";
+		ERR_FT << "No light font family order defined, falling back to sans serif order";
 		family_order_light = family_order_sans;
 	}
 
 	if(family_order_script.empty()) {
-		ERR_FT << "No script font family order defined, falling back to sans serif order\n";
+		ERR_FT << "No script font family order defined, falling back to sans serif order";
 		family_order_script = family_order_sans;
 	}
 
@@ -164,12 +164,12 @@ manager::manager()
 							 reinterpret_cast<const FcChar8*>(font_file.c_str()),
 							 FcFalse))
 	{
-		ERR_FT << "Could not load local font configuration\n";
+		ERR_FT << "Could not load local font configuration";
 		throw font::error("font config lib failed to find font.conf: '" + font_file + "'");
 	}
 	else
 	{
-		LOG_FT << "Local font configuration loaded\n";
+		LOG_FT << "Local font configuration loaded";
 	}
 }
 

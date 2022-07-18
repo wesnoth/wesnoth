@@ -149,7 +149,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 {
 	if(const config& base_unit = cfg.child("base_unit")) {
 		base_unit_id_ = base_unit["id"].str();
-		LOG_UT << "type '" <<  id_ << "' has base unit '" << base_unit_id_ << "'\n";
+		LOG_UT << "type '" <<  id_ << "' has base unit '" << base_unit_id_ << "'";
 	}
 	check_id(id_);
 	check_id(parent_id_);
@@ -326,10 +326,10 @@ void unit_type::build_help_index(
 	const movement_type_map::const_iterator find_it = mv_types.find(move_type);
 
 	if(find_it != mv_types.end()) {
-		DBG_UT << "inheriting from movement_type '" << move_type << "'\n";
+		DBG_UT << "inheriting from movement_type '" << move_type << "'";
 		movement_type_ = find_it->second;
 	} else if(!move_type.empty()) {
-		DBG_UT << "movement_type '" << move_type << "' not found\n";
+		DBG_UT << "movement_type '" << move_type << "' not found";
 	}
 
 	// Override parts of the movement type with what is in our config.
@@ -1204,7 +1204,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		}
 
 		if(types_.emplace(id, unit_type(ut)).second) {
-			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)";
 		} else {
 			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.";
 		}
@@ -1233,7 +1233,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		hide_help_all_ = hide_help["all"].to_bool();
 		read_hide_help(hide_help);
 	}
-	DBG_UT << "Finished creatign unti types\n";
+	DBG_UT << "Finished creatign unti types";
 }
 
 void unit_type_data::build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
@@ -1250,12 +1250,12 @@ const unit_type* unit_type_data::find(const std::string& key, unit_type::BUILD_S
 		return nullptr;
 	}
 
-	DBG_CF << "trying to find " << key << " in unit_type list (unit_type_data.unit_types)\n";
+	DBG_CF << "trying to find " << key << " in unit_type list (unit_type_data.unit_types)";
 	const unit_type_map::iterator itor = types_.find(key);
 
 	// This might happen if units of another era are requested (for example for savegames)
 	if(itor == types_.end()) {
-		DBG_CF << "unable to find " << key << " in unit_type list (unit_type_data.unit_types)\n";
+		DBG_CF << "unable to find " << key << " in unit_type list (unit_type_data.unit_types)";
 		return nullptr;
 	}
 
@@ -1454,7 +1454,7 @@ void unit_type::check_id(std::string& id)
 
 		if(!valid) {
 			if(!gave_warning) {
-				ERR_UT << "Found unit type id with invalid characters: \"" << id << "\"\n";
+				ERR_UT << "Found unit type id with invalid characters: \"" << id << "\"";
 				gave_warning = true;
 			}
 

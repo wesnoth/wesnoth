@@ -160,7 +160,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	try {
 		gamelist_.apply_diff(data, true);
 	} catch(const config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff: '" << e.message << "' Getting a new gamelist.\n";
+		ERR_LB << "Error while applying the gamelist diff: '" << e.message << "' Getting a new gamelist.";
 		return false;
 	}
 
@@ -168,7 +168,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	DBG_LB << dump_games_map(games_by_id_);
 
 	for(config& c : gamelist_.child("gamelist").child_range("game")) {
-		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
+		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")";
 
 		const int game_id = c["id"];
 		if(game_id == 0) {
@@ -215,7 +215,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	try {
 		gamelist_.clear_diff_track(data);
 	} catch(const config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message << "' Getting a new gamelist.\n";
+		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message << "' Getting a new gamelist.";
 		return false;
 	}
 

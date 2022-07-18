@@ -188,7 +188,7 @@ wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl:
 	if (!formula_) {
 		throw formula_error("null formula passed to make_action","","formula",0);
 	}
-	LOG_AI << "do move...\n";
+	LOG_AI << "do move...";
 	const variant var = formula_->evaluate(variables);
 	variant res;
 

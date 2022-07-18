@@ -214,7 +214,7 @@ static int intf_current_version(lua_State* L) {
  */
 int lua_kernel_base::intf_print(lua_State* L)
 {
-	DBG_LUA << "intf_print called:\n";
+	DBG_LUA << "intf_print called:";
 	std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
@@ -224,14 +224,14 @@ int lua_kernel_base::intf_print(lua_State* L)
 		lua_call(L, 1, 1);
 		const char * str = lua_tostring(L, -1);
 		if (!str) {
-			LOG_LUA << "'tostring' must return a value to 'print'\n";
+			LOG_LUA << "'tostring' must return a value to 'print'";
 			str = "";
 		}
 		if (i > 1) {
 			cmd_log_ << "\t"; //separate multiple args with tab character
 		}
 		cmd_log_ << str;
-		DBG_LUA << "'" << str << "'\n";
+		DBG_LUA << "'" << str << "'";
 		lua_pop(L, 1); // Pop the output of tostrring()
 	}
 	lua_pop(L, 1); // Pop 'tostring' global
@@ -261,7 +261,7 @@ static void impl_warn(void* p, const char* msg, int tocont) {
 
 void lua_kernel_base::add_log_to_console(const std::string& msg) {
 	cmd_log_ << msg << "\n";
-	DBG_LUA << "'" << msg << "'\n";
+	DBG_LUA << "'" << msg << "'";
 }
 
 /**
@@ -1177,7 +1177,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 		// stack is now [packagename] [wesnoth] [package] [chunk]
 		return 0;
 	}
-	DBG_LUA << "require: loaded a file, now calling it\n";
+	DBG_LUA << "require: loaded a file, now calling it";
 
 	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
@@ -1290,7 +1290,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	int result = luaL_loadstring(L, load.c_str());
 	if(result != LUA_OK) {
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
-		LOG_LUA << "Error when attempting tab completion:\n";
+		LOG_LUA << "Error when attempting tab completion:";
 		LOG_LUA << luaL_checkstring(L, -1);
 		// Just return an empty list; no matches were found
 		lua_settop(L, save_stack);

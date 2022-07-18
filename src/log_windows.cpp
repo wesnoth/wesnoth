@@ -100,7 +100,7 @@ void rotate_logs(const std::string& log_dir)
 		const std::string path = log_dir + '/' + files[j];
 		LOG_LS << "rotate_logs(): delete " << path;
 		if(!filesystem::delete_file(path)) {
-			WRN_LS << "rotate_logs(): failed to delete " << path << "!\n";
+			WRN_LS << "rotate_logs(): failed to delete " << path << "!";
 		}
 	}
 }
@@ -296,13 +296,13 @@ log_file_manager::log_file_manager(bool native_console)
 	, use_wincon_(console_attached())
 	, created_wincon_(false)
 {
-	DBG_LS << "Early init message\n";
+	DBG_LS << "Early init message";
 
 	if(use_wincon_) {
 		// Someone already attached a console to us. Assume we were compiled
 		// with the console subsystem flag and that the standard streams are
 		// already pointing to the console.
-		LOG_LS << "Console already attached at startup, log file disabled.\n";
+		LOG_LS << "Console already attached at startup, log file disabled.";
 		return;
 	}
 
@@ -384,7 +384,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 												 log_file_manager::STREAM_ID stream,
 												 bool truncate)
 {
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side A]\n";
+	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side A]";
 
 	FILE* crts = stream == STREAM_STDERR ? stderr : stdout;
 	std::ostream& cxxs = stream == STREAM_STDERR ? std::cerr : std::cout;
@@ -401,7 +401,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 
 	//setbuf(crts, nullptr);
 
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]\n";
+	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]";
 }
 
 bool log_file_manager::console_enabled() const
@@ -428,10 +428,10 @@ void log_file_manager::enable_native_console_output()
 	}
 
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
-		LOG_LS << "Attached parent process console.\n";
+		LOG_LS << "Attached parent process console.";
 		created_wincon_ = false;
 	} else if(AllocConsole()) {
-		LOG_LS << "Allocated own console.\n";
+		LOG_LS << "Allocated own console.";
 		created_wincon_ = true;
 	} else {
 		// Wine as of version 4.21 just goes ERROR_ACCESS_DENIED when trying
@@ -439,20 +439,20 @@ void log_file_manager::enable_native_console_output()
 		// this since the user purportedly knows what they're doing and if they
 		// get radio silence from Wesnoth and no log files they'll realize that
 		// something went wrong.
-		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)\n";
+		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)";
 	}
 
-	DBG_LS << "stderr to console\n";
+	DBG_LS << "stderr to console";
 	fflush(stderr);
 	std::cerr.flush();
 	assert(freopen("CONOUT$", "wb", stderr) == stderr);
 
-	DBG_LS << "stdout to console\n";
+	DBG_LS << "stdout to console";
 	fflush(stdout);
 	std::cout.flush();
 	assert(freopen("CONOUT$", "wb", stdout) == stdout);
 
-	DBG_LS << "stdin from console\n";
+	DBG_LS << "stdin from console";
 	assert(freopen("CONIN$",  "rb", stdin) == stdin);
 
 	// At this point the log file has been closed and it's no longer our
@@ -461,7 +461,7 @@ void log_file_manager::enable_native_console_output()
 	cur_path_.clear();
 	use_wincon_ = true;
 
-	LOG_LS << "Console streams handover complete!\n";
+	LOG_LS << "Console streams handover complete!";
 }
 
 std::unique_ptr<log_file_manager> lfm;
@@ -522,7 +522,7 @@ void finish_log_file_setup()
 	static bool setup_complete = false;
 
 	if(setup_complete) {
-		ERR_LS << "finish_log_file_setup() called more than once!\n";
+		ERR_LS << "finish_log_file_setup() called more than once!";
 		return;
 	}
 

@@ -508,7 +508,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 void text_box_base::signal_handler_middle_button_click(const event::ui_event event,
 												bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	paste_selection(true);
 
@@ -521,7 +521,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 										 SDL_Keymod modifier)
 {
 
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 /*
  * For copy, cut and paste we use a different key on the MAC. Even for 'select
@@ -656,14 +656,14 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 }
 
 void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 }
@@ -671,7 +671,7 @@ void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event eve
 void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ != FOCUSED) {
 		set_state(HOVERED);
@@ -685,7 +685,7 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 void text_box_base::signal_handler_mouse_leave(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ != FOCUSED) {
 		set_state(ENABLED);

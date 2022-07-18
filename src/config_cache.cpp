@@ -204,7 +204,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		}
 
 		if(force_valid_cache_) {
-			LOG_CACHE << "skipping cache validation (forced)\n";
+			LOG_CACHE << "skipping cache validation (forced)";
 		}
 
 		if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
@@ -230,7 +230,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			}
 		}
 
-		LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'\n";
+		LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'";
 
 		// Now we need queued defines so read them to memory
 		read_defines_queue();
@@ -255,7 +255,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		return;
 	}
 
-	LOG_CACHE << "Loading plain config instead of cache\n";
+	LOG_CACHE << "Loading plain config instead of cache";
 
 	preproc_map copy_map(make_copy_map());
 	read_configs(file_path, cfg, copy_map, validator);
@@ -358,7 +358,7 @@ bool config_cache::clean_cache()
 	status &= delete_cache_files(files, exclude_current);
 	status &= delete_cache_files(dirs, exclude_current);
 
-	LOG_CACHE << "clean_cache(): done\n";
+	LOG_CACHE << "clean_cache(): done";
 
 	return status;
 }
@@ -376,7 +376,7 @@ bool config_cache::purge_cache()
 	status &= delete_cache_files(files);
 	status &= delete_cache_files(dirs);
 
-	LOG_CACHE << "purge_cache(): done\n";
+	LOG_CACHE << "purge_cache(): done";
 	return status;
 }
 

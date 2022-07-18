@@ -204,11 +204,11 @@ void grid::reduce_width(const unsigned maximum_width)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".\n";
+	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".";
 
 	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
+		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
 
@@ -218,7 +218,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
 
@@ -228,7 +228,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
-	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
+	DBG_GUI_L << LOG_HEADER << " Resizing failed.";
 
 	throw layout_exception_width_resize_failed();
 }
@@ -282,11 +282,11 @@ void grid::reduce_height(const unsigned maximum_height)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".\n";
+	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".";
 
 	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
+		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
 
@@ -296,7 +296,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
 
@@ -306,7 +306,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
-	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
+	DBG_GUI_L << LOG_HEADER << " Resizing failed.";
 
 	throw layout_exception_height_resize_failed();
 }
@@ -464,7 +464,7 @@ point grid::calculate_best_size() const
 			std::accumulate(col_width_.begin(), col_width_.end(), 0),
 			std::accumulate(row_height_.begin(), row_height_.end(), 0));
 
-	DBG_GUI_L << LOG_HEADER << " returning " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " returning " << result << ".";
 	return result;
 }
 
@@ -521,7 +521,7 @@ void grid::place(const point& origin, const point& size)
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
 		}
-		ERR_GUI_L << LOG_HEADER << out.str() << ".\n";
+		ERR_GUI_L << LOG_HEADER << out.str() << ".";
 
 		return;
 	}
@@ -824,17 +824,17 @@ void grid::child::place(point origin, point size)
 	} else if(v_flag == VERTICAL_ALIGN_TOP) {
 		// Do nothing.
 
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the top.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the top.";
 
 	} else if(v_flag == VERTICAL_ALIGN_CENTER) {
 
 		widget_orig.y += (size.y - widget_size.y) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.";
 
 	} else if(v_flag == VERTICAL_ALIGN_BOTTOM) {
 
 		widget_orig.y += (size.y - widget_size.y);
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the bottom.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the bottom.";
 
 	} else {
 		ERR_GUI_L << LOG_CHILD_HEADER << " Invalid vertical alignment '"
@@ -855,12 +855,12 @@ void grid::child::place(point origin, point size)
 
 	} else if(h_flag == HORIZONTAL_ALIGN_LEFT) {
 		// Do nothing.
-		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally aligned at the left.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally aligned at the left.";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_CENTER) {
 
 		widget_orig.x += (size.x - widget_size.x) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_RIGHT) {
 

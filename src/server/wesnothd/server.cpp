@@ -279,7 +279,7 @@ void server::handle_sighup(const boost::system::error_code& error, int)
 {
 	assert(!error);
 
-	WRN_SERVER << "SIGHUP caught, reloading config\n";
+	WRN_SERVER << "SIGHUP caught, reloading config";
 
 	cfg_ = read_config();
 	load_config();
@@ -325,12 +325,12 @@ void server::setup_fifo()
 #ifndef _WIN32
 	const int res = mkfifo(input_path_.c_str(), 0660);
 	if(res != 0 && errno != EEXIST) {
-		ERR_SERVER << "could not make fifo at '" << input_path_ << "' (" << strerror(errno) << ")\n";
+		ERR_SERVER << "could not make fifo at '" << input_path_ << "' (" << strerror(errno) << ")";
 		return;
 	}
 	int fifo = open(input_path_.c_str(), O_RDWR | O_NONBLOCK);
 	input_.assign(fifo);
-	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.\n";
+	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.";
 	read_from_fifo();
 #endif
 }
@@ -420,9 +420,9 @@ config server::read_config() const
 	try {
 		filesystem::scoped_istream stream = preprocess_file(config_file_);
 		read(configuration, *stream);
-		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.\n";
+		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.";
 	} catch(const config::error& e) {
-		ERR_CONFIG << "ERROR: Could not read configuration file: '" << config_file_ << "': '" << e.message << "'.\n";
+		ERR_CONFIG << "ERROR: Could not read configuration file: '" << config_file_ << "': '" << e.message << "'.";
 	}
 
 	return configuration;
@@ -739,7 +739,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 			return;
 		}
 	} else {
-		LOG_SERVER << log_address(socket) << "\tclient didn't send its version: rejecting\n";
+		LOG_SERVER << log_address(socket) << "\tclient didn't send its version: rejecting";
 		return;
 	}
 
@@ -1389,7 +1389,7 @@ void server::cleanup_game(game* game_ptr)
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transferred.
-		LOG_SERVER << "Could not find game (" << game_ptr->id() << ", " << game_ptr->db_id() << ") to delete in games_and_users_list_.\n";
+		LOG_SERVER << "Could not find game (" << game_ptr->id() << ", " << game_ptr->db_id() << ") to delete in games_and_users_list_.";
 	}
 
 	if(destructed) game_ptr->emergency_cleanup();
@@ -1477,7 +1477,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 void server::handle_player_in_game(player_iterator p, simple_wml::document& data)
 {
-	DBG_SERVER << "in process_data_game...\n";
+	DBG_SERVER << "in process_data_game...";
 
 	wesnothd::player& player { p->info() };
 
@@ -1688,12 +1688,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				for(const auto& content : addon->children("content")) {
 					unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
 					if(rows_inserted == 0) {
-						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'\n";
+						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
 					}
 				}
 			}
 			if(m.children("addon").size() == 0) {
-				WRN_SERVER << "Game content info missing for game with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', named '" << g.name() << "'\n";
+				WRN_SERVER << "Game content info missing for game with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', named '" << g.name() << "'";
 			}
 
 			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
@@ -1957,7 +1957,7 @@ void server::remove_player(player_iterator iter)
 
 	games_and_users_list_.root().remove_child("user", index);
 
-	LOG_SERVER << ip << "\t" << iter->info().name() << "\thas logged off\n";
+	LOG_SERVER << ip << "\t" << iter->info().name() << "\thas logged off";
 
 	// Find the matching nick-ip pair in the log and update the sign off time
 	if(user_handler_) {
@@ -2937,7 +2937,7 @@ void server::delete_game(int gameid, const std::string& reason)
 		if(make_change_diff(games_and_users_list_.root(), nullptr, "user", it->info().config_address(), udiff)) {
 			send_to_lobby(udiff);
 		} else {
-			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_.\n";
+			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_.";
 		}
 	}
 

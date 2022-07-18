@@ -169,7 +169,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//we got called from inside lua's wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
 		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful,
 		//so just give a warning.
-		LOG_REPLAY << "MP synchronization called during an unsynced context.\n";
+		LOG_REPLAY << "MP synchronization called during an unsynced context.";
 		return uch.query_user(side);
 	}
 	if(is_too_early && uch.is_visible())
@@ -195,7 +195,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 
 	if (is_side_null_controlled)
 	{
-		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
+		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.";
 		//most likely we are in a start event with an empty side 1
 		//but calling [set_global_variable] to an empty side might also cause this.
 		//i think in that case we should better use uch.random_choice(),
@@ -345,7 +345,7 @@ void user_choice_manager::ask_local_choice()
 	leave_synced_context sync;
 	/* At least one of the decisions is ours, and it will be inserted
 	into the replay. */
-	DBG_REPLAY << "MP synchronization: local choice\n";
+	DBG_REPLAY << "MP synchronization: local choice";
 	config cfg = uch_.query_user(local_choice_);
 	if(res_.find(local_choice_) != res_.end()) {
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
@@ -369,7 +369,7 @@ void user_choice_manager::ask_local_choice()
 void user_choice_manager::fix_oos()
 {
 	assert(oos_);
-	ERR_REPLAY << "A sync error appeared while waiting for a synced user choice of type '" << uch_.description() << "' ([" + tagname_ + "]), doing the choice locally\n";
+	ERR_REPLAY << "A sync error appeared while waiting for a synced user choice of type '" << uch_.description() << "' ([" + tagname_ + "]), doing the choice locally";
 	for(int side : required_)
 	{
 		if(res_.find(side) == res_.end())

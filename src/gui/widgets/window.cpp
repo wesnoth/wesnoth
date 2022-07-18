@@ -136,7 +136,7 @@ const unsigned LAYOUT = 0;
  */
 static void push_draw_event()
 {
-	//	DBG_GUI_E << "Pushing draw event in queue.\n";
+	//	DBG_GUI_E << "Pushing draw event in queue.";
 
 	SDL_Event event;
 	sdl::UserEvent data(DRAW_EVENT);
@@ -182,7 +182,7 @@ static void delay_event(const SDL_Event& event, const uint32_t delay)
  */
 static void helptip()
 {
-	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.\n";
+	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.";
 
 	SDL_Event event;
 	sdl::UserEvent data(SHOW_HELPTIP_EVENT);
@@ -683,7 +683,7 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 {
 	assert(wgt);
 	if(!has_linked_size_group(id)) {
-		ERR_GUI << "Unknown linked group '" << id << "'; skipping\n";
+		ERR_GUI << "Unknown linked group '" << id << "'; skipping";
 		return;
 	}
 
@@ -1027,7 +1027,7 @@ void window_implementation::layout(window& window,
 		if(size.x <= static_cast<int>(maximum_width)
 		   && size.y <= static_cast<int>(maximum_height)) {
 
-			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.\n";
+			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.";
 			return;
 		}
 
@@ -1063,7 +1063,7 @@ void window_implementation::layout(window& window,
 			   && size.y <= static_cast<int>(maximum_height));
 
 
-		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
+		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.";
 		return;
 	}
 	catch(const layout_exception_width_modified&)
@@ -1122,7 +1122,7 @@ void window::signal_handler_sdl_video_resize(const event::ui_event event,
 											  bool& handled,
 											  const point& new_size)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	settings::gamemap_width += new_size.x - settings::screen_width;
 	settings::gamemap_height += new_size.y - settings::screen_height;
@@ -1158,7 +1158,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 										  const SDL_Keymod mod,
 										  bool handle_tab)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		if(tb->is_composing()) {
@@ -1213,7 +1213,7 @@ void window::signal_handler_message_show_tooltip(const event::ui_event event,
 												  bool& handled,
 												  const event::message& message)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	const event::message_show_tooltip& request
 			= dynamic_cast<const event::message_show_tooltip&>(message);
@@ -1227,7 +1227,7 @@ void window::signal_handler_message_show_helptip(const event::ui_event event,
 												  bool& handled,
 												  const event::message& message)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	const event::message_show_helptip& request
 			= dynamic_cast<const event::message_show_helptip&>(message);
@@ -1240,7 +1240,7 @@ void window::signal_handler_message_show_helptip(const event::ui_event event,
 void window::signal_handler_request_placement(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	invalidate_layout();
 

@@ -395,18 +395,18 @@ file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::strin
 		// here. This makes it the only platform where is_relative() and is_root()
 		// aren't mutually exclusive.
 		if(fs::is_root(name)) {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is relative to a root resource\n";
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is relative to a root resource";
 			// Using the browsed dir's root drive instead of the cwd's makes the most
 			// sense for users.
 			new_parent = fs::root_name(current_dir_);
 			new_path = fs::normalize_path(concat_path(new_parent, name), true, true);
 		} else {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems relative\n";
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems relative";
 			new_parent = current_dir_;
 			new_path = fs::normalize_path(concat_path(current_dir_, name), true, true);
 		}
 	} else {
-		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems absolute\n";
+		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems absolute";
 		new_parent = fs::directory_name(name);
 		new_path = fs::normalize_path(name, true, true);
 		DBG_FILEDLG << "register_new_selection(): new selection is " << new_path;
@@ -433,13 +433,13 @@ file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::strin
 	// exists).
 	const std::string& absolute_parent = fs::normalize_path(new_parent, true, true);
 	if(!absolute_parent.empty()) {
-		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible, but parent exists\n";
+		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible, but parent exists";
 		current_dir_ = absolute_parent;
 		current_entry_ = fs::base_name(name);
 		return SELECTION_NOT_FOUND;
 	}
 
-	DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible\n";
+	DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible";
 	return SELECTION_PARENT_NOT_FOUND;
 }
 

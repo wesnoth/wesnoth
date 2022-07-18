@@ -89,11 +89,11 @@ void CVideo::initSDL()
 
 CVideo::~CVideo()
 {
-	LOG_DP << "calling SDL_Quit()\n";
+	LOG_DP << "calling SDL_Quit()";
 	SDL_Quit();
 	assert(singleton_);
 	singleton_ = nullptr;
-	LOG_DP << "called SDL_Quit()\n";
+	LOG_DP << "called SDL_Quit()";
 }
 
 bool CVideo::any_fake() const
@@ -354,7 +354,7 @@ void CVideo::init_window()
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
 
 	if(preferences::vsync()) {
-		LOG_DP << "VSYNC on\n";
+		LOG_DP << "VSYNC on";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
