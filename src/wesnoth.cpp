@@ -1051,10 +1051,12 @@ int main(int argc, char** argv)
 	lg::early_log_file_setup(!log_redirect);
 #endif
 
+	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
 		return (1);
 	}
+	atexit(SDL_Quit);
 
 #ifndef _WIN32
 	struct sigaction terminate_handler;
