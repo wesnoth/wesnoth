@@ -97,10 +97,6 @@ void init(fake type)
 	}
 }
 
-// TODO: draw_manager - the CVideo class was previously calling SDL_Quit() in its destructor. Fix so that it calls correctly.
-// It would have (usually?) been called in game_launcher destructor,
-// as that's what (usually?) owns the instance.
-
 bool faked()
 {
 	return fake_screen_;
