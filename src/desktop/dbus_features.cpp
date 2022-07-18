@@ -170,7 +170,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 			<< "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'\n"
 			<< "normalized path =\'" << app_icon_ << "\'\n";
 	} else {
-		DBG_DU << "app_icon_=\'" << app_icon_ << "\'\n";
+		DBG_DU << "app_icon_=\'" << app_icon_ << "\'";
 	}
 
 	const char *app_icon = app_icon_.c_str();

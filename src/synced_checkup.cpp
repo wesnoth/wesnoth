@@ -48,7 +48,7 @@ ignored_checkup::~ignored_checkup()
 bool ignored_checkup::local_checkup(const config& /*expected_data*/, config& real_data)
 {
 	assert(real_data.empty());
-	LOG_REPLAY << "ignored_checkup::local_checkup called\n";
+	LOG_REPLAY << "ignored_checkup::local_checkup called";
 	return true;
 }
 

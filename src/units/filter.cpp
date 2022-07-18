@@ -519,7 +519,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					try {
 						res.push_back(std::stoi(s));
 					} catch(std::invalid_argument&) {
-						WRN_CF << "ignored invalid side='" << s << "' in filter\n";
+						WRN_CF << "ignored invalid side='" << s << "' in filter";
 					}
 				}
 				return res;

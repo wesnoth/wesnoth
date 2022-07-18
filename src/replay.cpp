@@ -61,7 +61,7 @@ static lg::log_domain log_random("random");
 
 static void verify(const unit_map& units, const config& cfg) {
 	std::stringstream errbuf;
-	LOG_REPLAY << "verifying unit structure...\n";
+	LOG_REPLAY << "verifying unit structure...";
 
 	const std::size_t nunits = cfg["num_units"].to_size_t();
 	if(nunits != units.size()) {
@@ -126,7 +126,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		}
 	}
 
-	LOG_REPLAY << "verification passed\n";
+	LOG_REPLAY << "verification passed";
 }
 
 static std::time_t get_time(const config &speak)
@@ -519,7 +519,7 @@ void replay::undo_cut(config& dst)
 		{
 			if(c["sent"].to_bool(false))
 			{
-				ERR_REPLAY << "trying to undo a command that was already sent.\n";
+				ERR_REPLAY << "trying to undo a command that was already sent.";
 				return;
 			}
 			else
@@ -531,7 +531,7 @@ void replay::undo_cut(config& dst)
 
 	if (cmd_index < 0)
 	{
-		ERR_REPLAY << "trying to undo a command but no command was found.\n";
+		ERR_REPLAY << "trying to undo a command but no command was found.";
 		return;
 	}
 	//Fix the [command]s after the undone action. This includes dependent commands for that user actions and async user action.
@@ -562,7 +562,7 @@ void replay::undo_cut(config& dst)
 		}
 		else
 		{
-			ERR_REPLAY << "Couldn't handle command:\n" << cc << "\nwhen undoing.\n";
+			ERR_REPLAY << "Couldn't handle command:\n" << cc << "\nwhen undoing.";
 		}
 	}
 	set_to_end();
@@ -722,7 +722,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else
 		{
-			DBG_REPLAY << "Replay data at end\n";
+			DBG_REPLAY << "Replay data at end";
 			return REPLAY_RETURN_AT_END;
 		}
 
@@ -744,7 +744,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
-				DBG_REPLAY << "tried to add a chat message twice.\n";
+				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"];
 					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
@@ -881,7 +881,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side();
 				}
 				else if((*cfg)["side_invalid"].to_bool(false)) {
-					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.";
 				}
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.

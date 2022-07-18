@@ -194,7 +194,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 	try {
 		surface screenshot = gui().screenshot(true);
 		if(!screenshot || image::save_image(screenshot, screenshot_filename) != image::save_result::success) {
-			ERR_ED << "Screenshot creation failed!\n";
+			ERR_ED << "Screenshot creation failed!";
 		}
 	} catch (const wml_exception& e) {
 		e.show();
@@ -1304,7 +1304,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	if (mouse_handler_base::left_click(x, y, browse))
 		return true;
 
-	LOG_ED << "Left click, after generic handling\n";
+	LOG_ED << "Left click, after generic handling";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_current_map_context().map().on_board_with_border(hex_clicked))
 		return true;
@@ -1340,7 +1340,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 {
 	toolkit_->clear_mouseover_overlay();
 	if (mouse_handler_base::right_click(x, y, browse)) return true;
-	LOG_ED << "Right click, after generic handling\n";
+	LOG_ED << "Right click, after generic handling";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked;

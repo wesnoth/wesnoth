@@ -137,16 +137,16 @@ fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& ad
 		case BAN_NONE:
 			return {};
 		case BAN_IP:
-			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
+			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address";
 			return { BAN_IP, b.get_ban_duration() };
 		case BAN_USER:
-			LOG_UH << "User '" << name << "' uid " << b.get_user_id() << " banned by uid\n";
+			LOG_UH << "User '" << name << "' uid " << b.get_user_id() << " banned by uid";
 			return { BAN_USER, b.get_ban_duration() };
 		case BAN_EMAIL:
-			LOG_UH << "User '" << name << "' email " << b.get_email() << " banned by email address\n";
+			LOG_UH << "User '" << name << "' email " << b.get_email() << " banned by email address";
 			return { BAN_EMAIL, b.get_ban_duration() };
 		default:
-			ERR_UH << "Invalid ban type '" << b.get_ban_type() << "' returned for user '" << name << "'\n";
+			ERR_UH << "Invalid ban type '" << b.get_ban_type() << "' returned for user '" << name << "'";
 			return {};
 	}
 }

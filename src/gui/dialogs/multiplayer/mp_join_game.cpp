@@ -289,13 +289,13 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 
 		const config& era = level_.child("era");
 		if(!era) {
-			ERR_MP << "no era information\n";
+			ERR_MP << "no era information";
 			return false;
 		}
 
 		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 		if(possible_sides.empty()) {
-			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
+			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.";
 			return false;
 		}
 
@@ -547,7 +547,7 @@ void mp_join_game::network_handler()
 	}
 
 	if(data.has_child("turn")) {
-		ERR_MP << "received replay data\n" << data << "\n in mp join\n";
+		ERR_MP << "received replay data\n" << data << "\n in mp join";
 	}
 
 	// Update player list

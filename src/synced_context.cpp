@@ -76,7 +76,7 @@ bool synced_context::run(const std::string& commandname,
 	resources::controller->check_victory();
 	sync.do_final_checkup();
 
-	DBG_REPLAY << "run_in_synced_context end\n";
+	DBG_REPLAY << "run_in_synced_context end";
 	return true;
 }
 
@@ -87,7 +87,7 @@ bool synced_context::run_and_store(const std::string& commandname,
 	synced_command::error_handler_function error_handler)
 {
 	if(resources::controller->is_replay()) {
-		ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+		ERR_REPLAY << "ignored attempt to invoke a synced command during replay";
 		return false;
 	}
 
@@ -259,7 +259,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
-	DBG_REPLAY << "ask_server for random_seed\n";
+	DBG_REPLAY << "ask_server for random_seed";
 
 	// As soon as random or similar is involved, undoing is impossible.
 	resources::undo_stack->clear();
@@ -271,7 +271,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 
 		if(is_replay_end && !is_mp_game) {
 			// The decision is ours, and it will be inserted into the replay.
-			DBG_REPLAY << "MP synchronization: local server choice\n";
+			DBG_REPLAY << "MP synchronization: local server choice";
 			leave_synced_context sync;
 			config cfg = sch.local_choice();
 
@@ -280,7 +280,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			return cfg;
 
 		} else if(is_replay_end && is_mp_game) {
-			DBG_REPLAY << "MP synchronization: remote server choice\n";
+			DBG_REPLAY << "MP synchronization: remote server choice";
 
 			// Here we can get into the situation that the decision has already been made but not received yet.
 			synced_context::pull_remote_user_input();
@@ -300,7 +300,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 
 		} else if(!is_replay_end) {
 			// The decision has already been made, and must be extracted from the replay.
-			DBG_REPLAY << "MP synchronization: replay server choice\n";
+			DBG_REPLAY << "MP synchronization: replay server choice";
 			do_replay_handle();
 
 			const config* action = resources::recorder->get_next_action();
@@ -338,7 +338,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
 	, old_rng_(randomness::generator)
 {
-	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
+	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base";
 
 	assert(!resources::whiteboard->has_planned_unit_map());
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
@@ -354,7 +354,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 
 set_scontext_synced_base::~set_scontext_synced_base()
 {
-	LOG_REPLAY << "set_scontext_synced_base:: destructor\n";
+	LOG_REPLAY << "set_scontext_synced_base:: destructor";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	randomness::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
@@ -390,7 +390,7 @@ checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
 */
 void set_scontext_synced::init()
 {
-	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
+	LOG_REPLAY << "set_scontext_synced::set_scontext_synced";
 	did_final_checkup_ = false;
 	old_checkup_ = checkup_instance;
 	checkup_instance = &*new_checkup_;
@@ -437,7 +437,7 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 
 set_scontext_synced::~set_scontext_synced()
 {
-	LOG_REPLAY << "set_scontext_synced:: destructor\n";
+	LOG_REPLAY << "set_scontext_synced:: destructor";
 	assert(checkup_instance == &*new_checkup_);
 	if(!did_final_checkup_) {
 		// do_final_checkup(true);

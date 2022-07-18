@@ -771,7 +771,7 @@ surface display::screenshot(bool map_screenshot)
 	}
 
 	if (get_map().empty()) {
-		ERR_DP << "No map loaded, cannot create a map screenshot.\n";
+		ERR_DP << "No map loaded, cannot create a map screenshot.";
 		return nullptr;
 	}
 
@@ -830,7 +830,7 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 
 void display::layout_buttons()
 {
-	DBG_DP << "positioning menu buttons...\n";
+	DBG_DP << "positioning menu buttons...";
 	for(const auto& menu : theme_.menus()) {
 		if(auto b = find_menu_button(menu.get_id())) {
 			const SDL_Rect& loc = menu.location(screen_.draw_area());
@@ -841,7 +841,7 @@ void display::layout_buttons()
 		}
 	}
 
-	DBG_DP << "positioning action buttons...\n";
+	DBG_DP << "positioning action buttons...";
 	for(const auto& action : theme_.actions()) {
 		if(auto b = find_action_button(action.get_id())) {
 			const SDL_Rect& loc = action.location(screen_.draw_area());
@@ -887,7 +887,7 @@ void display::create_buttons()
 	menu_buttons_.clear();
 	action_buttons_.clear();
 
-	DBG_DP << "creating menu buttons...\n";
+	DBG_DP << "creating menu buttons...";
 	for(const auto& menu : theme_.menus()) {
 		if(!menu.is_button()) {
 			continue;
@@ -909,7 +909,7 @@ void display::create_buttons()
 		menu_buttons_.push_back(std::move(b));
 	}
 
-	DBG_DP << "creating action buttons...\n";
+	DBG_DP << "creating action buttons...";
 	for(const auto& action : theme_.actions()) {
 		auto b = std::make_shared<gui::button>(screen_, action.title(), string_to_button_type(action.type()),
 			action.image(), gui::button::DEFAULT_SPACE, true, action.overlay(), font::SIZE_BUTTON_SMALL);
@@ -931,7 +931,7 @@ void display::create_buttons()
 	}
 
 	layout_buttons();
-	DBG_DP << "buttons created\n";
+	DBG_DP << "buttons created";
 }
 
 void display::draw_buttons()
@@ -1645,7 +1645,7 @@ void display::draw_init()
 	}
 
 	if(invalidateAll_) {
-		DBG_DP << "draw() with invalidateAll\n";
+		DBG_DP << "draw() with invalidateAll";
 
 		// toggle invalidateAll_ first to allow regular invalidations
 		invalidateAll_ = false;
@@ -3154,7 +3154,7 @@ void display::draw_reports()
 
 void display::invalidate_all()
 {
-	DBG_DP << "invalidate_all()\n";
+	DBG_DP << "invalidate_all()";
 	invalidateAll_ = true;
 	invalidated_.clear();
 }

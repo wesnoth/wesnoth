@@ -67,8 +67,8 @@ public:
 		, filter()
 		, copy_button()
 	{
-		LOG_CHAT_LOG << "entering chat_log::model...\n";
-		LOG_CHAT_LOG << "finished chat_log::model...\n";
+		LOG_CHAT_LOG << "entering chat_log::model...";
+		LOG_CHAT_LOG << "finished chat_log::model...";
 	}
 
 	vconfig cfg;
@@ -105,7 +105,7 @@ public:
 		}
 
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
-		LOG_CHAT_LOG << "entering chat_log::model::stream_log\n";
+		LOG_CHAT_LOG << "entering chat_log::model::stream_log";
 
 		for(const auto & t : make_pair(chat_log_history.begin() + first,
 										  chat_log_history.begin() + last))

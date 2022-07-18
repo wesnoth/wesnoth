@@ -540,7 +540,7 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 void shroud_clearer::drop_events()
 {
 	if ( !sightings_.empty() ) {
-		DBG_NG << sightings_.size() << " sighted events were dropped.\n";
+		DBG_NG << sightings_.size() << " sighted events were dropped.";
 	}
 	sightings_.clear();
 }

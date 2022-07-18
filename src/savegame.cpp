@@ -69,12 +69,12 @@ bool save_game_exists(std::string name, compression::format compressed)
 void clean_saves(const std::string& label)
 {
 	const std::string prefix = label + "-" + _("Auto-Save");
-	LOG_SAVE << "Cleaning saves with prefix '" << prefix << "'\n";
+	LOG_SAVE << "Cleaning saves with prefix '" << prefix << "'";
 
 	auto manager = save_index_class::default_saves_dir();
 	for(const auto& save : manager->get_saves_list()) {
 		if(save.name().compare(0, prefix.length(), prefix) == 0) {
-			LOG_SAVE << "Deleting savegame '" << save.name() << "'\n";
+			LOG_SAVE << "Deleting savegame '" << save.name() << "'";
 			manager->delete_game(save.name());
 		}
 	}

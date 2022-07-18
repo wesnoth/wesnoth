@@ -75,7 +75,7 @@ point slider::calculate_best_size() const
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_ << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_ << " result " << result << ".";
 	return result;
 }
 
@@ -203,7 +203,7 @@ void slider::handle_key_increase(bool& handled)
 
 void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& handled, const SDL_Keycode key)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(key == SDLK_DOWN || key == SDLK_LEFT) {
 		handle_key_decrease(handled);
@@ -217,7 +217,7 @@ void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& hand
 #if 0
 void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	update_current_item_mouse_position();
 
@@ -227,7 +227,7 @@ void slider::signal_handler_left_button_down(const event::ui_event event, bool& 
 
 void slider::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	get_window()->keyboard_capture(this);
 
@@ -363,7 +363,7 @@ std::unique_ptr<widget> builder_slider::build() const
 		widget->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_GUI_G << "Window builder: placed slider '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed slider '" << id << "' with definition '" << definition << "'.";
 
 	return widget;
 }

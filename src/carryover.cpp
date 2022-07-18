@@ -138,7 +138,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 		{
 			//this shouldn't happen outside a snpshot.
 			if(!from_snpashot) {
-				ERR_NG << "found invalid carryover data in saved game, lost='" << side["lost"] << "' persistent='" << side["persistent"] << "' save_id='" << side["save_id"] << "'\n";
+				ERR_NG << "found invalid carryover data in saved game, lost='" << side["lost"] << "' persistent='" << side["persistent"] << "' save_id='" << side["save_id"] << "'";
 			}
 			continue;
 		}

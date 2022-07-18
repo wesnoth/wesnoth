@@ -342,7 +342,7 @@ void wml_menu_item::update_command(const config& new_command)
 
 	resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
 		if(ptr->is_menu_item()) {
-			LOG_NG << "Removing command for " << event_name_ << ".\n";
+			LOG_NG << "Removing command for " << event_name_ << ".";
 			man.remove_event_handler(command_["id"].str());
 		}
 	});

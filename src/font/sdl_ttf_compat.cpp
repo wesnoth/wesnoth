@@ -100,7 +100,7 @@ std::string pango_line_ellipsize(const std::string& text, int font_size, int max
 			current_substring = std::move(tmp);
 		}
 	} catch(const utf8::invalid_utf8_exception&) {
-		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"\n";
+		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"";
 		return "";
 	}
 

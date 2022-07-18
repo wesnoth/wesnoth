@@ -641,7 +641,7 @@ REGISTER_MOD_PARSER(TC, args)
 
 	const int side_n = lexical_cast_default<int>(params[0], -1);
 	if(side_n < 1) {
-		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function\n";
+		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function";
 		return nullptr;
 	}
 

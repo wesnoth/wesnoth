@@ -1412,7 +1412,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 	static std::string indent;
 	indent += "  ";
 
-	DBG_NG << indent << "executing '" << formula_->str() << "'\n";
+	DBG_NG << indent << "executing '" << formula_->str() << "'";
 
 	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;

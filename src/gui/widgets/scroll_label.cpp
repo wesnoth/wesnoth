@@ -157,7 +157,7 @@ bool scroll_label::can_wrap() const
 
 void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	get_window()->keyboard_capture(this);
 }

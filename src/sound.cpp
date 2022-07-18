@@ -308,7 +308,7 @@ static bool track_ok(const std::string& id)
 
 	// If we've played this twice, must have played every other track.
 	if(num_played == 2 && played.size() != current_track_list.size() - 1) {
-		LOG_AUDIO << "Played twice with only " << played.size() << " tracks between\n";
+		LOG_AUDIO << "Played twice with only " << played.size() << " tracks between";
 		return false;
 	}
 
@@ -318,7 +318,7 @@ static bool track_ok(const std::string& id)
 		++i;
 		if(i != played_before.rend()) {
 			if(*i == id) {
-				LOG_AUDIO << "Played just before previous\n";
+				LOG_AUDIO << "Played just before previous";
 				return false;
 			}
 		}
@@ -442,7 +442,7 @@ driver_status driver_status::query()
 
 bool init_sound()
 {
-	LOG_AUDIO << "Initializing audio...\n";
+	LOG_AUDIO << "Initializing audio...";
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1) {
 			return false;
@@ -477,7 +477,7 @@ bool init_sound()
 
 		Mix_ChannelFinished(channel_finished_hook);
 
-		LOG_AUDIO << "Audio initialized.\n";
+		LOG_AUDIO << "Audio initialized.";
 
 		DBG_AUDIO << "Channel layout: " << n_of_channels << " channels (" << n_reserved_channels << " reserved)\n"
 		          << "    " << bell_channel << " - bell\n"
@@ -520,7 +520,7 @@ void close_sound()
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 	}
 
-	LOG_AUDIO << "Audio device released.\n";
+	LOG_AUDIO << "Audio device released.";
 }
 
 void reset_sound()
@@ -652,7 +652,7 @@ static void play_new_music()
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
-		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
+		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
 
 		filesystem::rwops_ptr rwops = filesystem::make_read_RWops(filename);
 		// SDL takes ownership of rwops
@@ -666,7 +666,7 @@ static void play_new_music()
 		itor = music_cache.emplace(filename, music).first;
 	}
 
-	LOG_AUDIO << "Playing track '" << filename << "'\n";
+	LOG_AUDIO << "Playing track '" << filename << "'";
 	int fading_time = current_track->ms_before();
 	if(no_fading) {
 		fading_time = 0;
@@ -935,7 +935,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(cache_full) {
-			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
+			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.";
 			throw chunk_load_exception();
 		}
 
@@ -979,7 +979,7 @@ static void play_sound_internal(const std::string& files,
 	// find a free channel in the desired group
 	int channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
-		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
+		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.";
 		return;
 	}
 

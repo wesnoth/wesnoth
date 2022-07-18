@@ -210,7 +210,7 @@ void toggle_panel::impl_draw_foreground()
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -219,7 +219,7 @@ void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
 void toggle_panel::signal_handler_mouse_leave(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -228,7 +228,7 @@ void toggle_panel::signal_handler_mouse_leave(const event::ui_event event,
 void
 toggle_panel::signal_handler_pre_left_button_click(const event::ui_event event)
 {
-	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
+	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".";
 
 	set_value(1, true);
 
@@ -255,7 +255,7 @@ toggle_panel::signal_handler_pre_left_button_click(const event::ui_event event)
 void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 													 bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
@@ -267,7 +267,7 @@ void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 void toggle_panel::signal_handler_left_button_double_click(
 		const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(retval_) {
 		window* window = get_window();

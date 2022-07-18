@@ -285,7 +285,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	minimap = scale_surface_sharp(minimap,
 		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));
 
-	DBG_DP << "done generating minimap\n";
+	DBG_DP << "done generating minimap";
 
 	return minimap;
 }

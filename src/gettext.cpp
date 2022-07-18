@@ -58,7 +58,7 @@ namespace
 		default_utf8_locale_name()
 			: name_()
 		{
-			LOG_G << "Generating default locale\n";
+			LOG_G << "Generating default locale";
 			try
 			{
 				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the program will segfault.
@@ -75,7 +75,7 @@ namespace
 			{
 				ERR_G << "Failed to generate default locale string. message:" << e.what();
 			}
-			LOG_G << "Finished generating default locale, default is now '" << name_ << "'\n";
+			LOG_G << "Finished generating default locale, default is now '" << name_ << "'";
 		}
 
 		std::string name_;
@@ -219,7 +219,7 @@ namespace
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
 			for(const std::string& name : g_mgr.get_all_backends())
 			{
-				LOG_G << "Found boost locale backend: '" << name << "'\n";
+				LOG_G << "Found boost locale backend: '" << name << "'";
 			}
 
 			generator_.use_ansi_encoding(false);
@@ -309,7 +309,7 @@ namespace
 		{
 			try
 			{
-				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
+				LOG_G << "attempting to generate locale by name '" << current_language_ << "'";
 				current_locale_ = generator_.generate(current_language_);
 				current_locale_ = std::locale(current_locale_, new wesnoth_message_format(current_locale_, loaded_domains_, loaded_paths_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
@@ -470,7 +470,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 
 void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
-	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'\n";
+	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().add_messages_domain(domain);
 	get_manager().add_messages_path(directory);
@@ -479,7 +479,7 @@ void bind_textdomain(const char* domain, const char* directory, const char* /*en
 
 void set_default_textdomain(const char* domain)
 {
-	LOG_G << "set_default_textdomain: '" << domain << "'\n";
+	LOG_G << "set_default_textdomain: '" << domain << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().set_default_messages_domain(domain);
 }
@@ -504,7 +504,7 @@ int compare(const std::string& s1, const std::string& s2)
 		static bool bad_cast_once = false;
 
 		if(!bad_cast_once) {
-			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()\n";
+			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()";
 			bad_cast_once = true;
 		}
 
@@ -528,7 +528,7 @@ int icompare(const std::string& s1, const std::string& s2)
 		static bool bad_cast_once = false;
 
 		if(!bad_cast_once) {
-			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
+			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()";
 
 			try { //just to be safe.
 				ERR_G << get_manager().debug_description();

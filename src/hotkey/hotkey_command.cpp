@@ -374,7 +374,7 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 	: cleanup_()
 {
 	if(id == "null") {
-		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.\n";
+		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.";
 		return;
 	}
 
@@ -382,9 +382,9 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 		id, hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string(""));
 
 	if(inserted) {
-		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
+		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.";
 	} else {
-		LOG_G << "Hotkey with id '" << id << "' already exists.\n";
+		LOG_G << "Hotkey with id '" << id << "' already exists.";
 		return;
 	}
 

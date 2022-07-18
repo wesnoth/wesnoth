@@ -254,12 +254,12 @@ namespace { // helpers of intf_set_dialog_callback()
 	{
 		gui2::widget* w = wp.get_ptr();
 		if(!w) {
-			ERR_LUA << "widget was deleted\n";
+			ERR_LUA << "widget was deleted";
 			return;
 		}
 		gui2::window* wd = w->get_window();
 		if(!wd) {
-			ERR_LUA << "cannot find window in widget callback\n";
+			ERR_LUA << "cannot find window in widget callback";
 			return;
 		}
 		luaW_callwidgetcallback(L, w, wd, id);

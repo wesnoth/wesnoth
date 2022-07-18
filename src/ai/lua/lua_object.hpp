@@ -295,14 +295,14 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 			int target = static_cast<int>(lua_tointeger(L, -1));
 			type = ai_target::get_enum(target);  // st n + 2
 			if(!type) {
-				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.\n";
+				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.";
 				continue;
 			}
 		} else if(lua_isstring(L, -1)) {
 			std::string target = lua_tostring(L, -1);
 			type = ai_target::get_enum(target);  // st n + 2
 			if(!type) {
-				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.\n";
+				ERR_OBJ_LUA << "Failed to convert ai target type of " << target << ", skipping.";
 				continue;
 			}
 		}

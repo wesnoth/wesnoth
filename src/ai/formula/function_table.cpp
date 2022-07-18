@@ -860,7 +860,7 @@ DEFINE_WFL_FUNCTION(move, 2, 2)
 {
 	const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move:src")).convert_to<location_callable>()->loc();
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move:dst")).convert_to<location_callable>()->loc();
-	LOG_AI << "move(): " << src << ", " << dst << ")\n";
+	LOG_AI << "move(): " << src << ", " << dst << ")";
 	return variant(std::make_shared<move_callable>(src, dst));
 }
 
@@ -868,7 +868,7 @@ DEFINE_WFL_FUNCTION(move_partial, 2, 2)
 {
 	const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move_partial:src")).convert_to<location_callable>()->loc();
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move_partial:dst")).convert_to<location_callable>()->loc();
-	LOG_AI << "move_partial(): " << src << ", " << dst << ")\n";
+	LOG_AI << "move_partial(): " << src << ", " << dst << ")";
 	return variant(std::make_shared<move_partial_callable>(src, dst));
 }
 

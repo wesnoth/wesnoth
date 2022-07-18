@@ -336,7 +336,7 @@ void scrollbar_base::signal_handler_mouse_enter(const event::ui_event event,
 											 bool& handled,
 											 bool& halt)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// Send the motion under our event id to make debugging easier.
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
@@ -347,7 +347,7 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 											  bool& halt,
 											  const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".";
 
 	point mouse = coordinate;
 	mouse.x -= get_x();
@@ -391,7 +391,7 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 											 bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ == FOCUSED) {
 		set_state(ENABLED);
@@ -403,7 +403,7 @@ void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 void scrollbar_base::signal_handler_left_button_down(const event::ui_event event,
 												  bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();
@@ -434,7 +434,7 @@ void scrollbar_base::signal_handler_left_button_down(const event::ui_event event
 void scrollbar_base::signal_handler_left_button_up(const event::ui_event event,
 												bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();

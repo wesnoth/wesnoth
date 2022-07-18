@@ -99,7 +99,7 @@ void menu_button::set_state(const state_t state)
 
 void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -107,7 +107,7 @@ void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& 
 
 void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -115,7 +115,7 @@ void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& 
 
 void menu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
 	if(window) {
@@ -128,7 +128,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event, b
 
 void menu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -137,7 +137,7 @@ void menu_button::signal_handler_left_button_up(const event::ui_event event, boo
 void menu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	sound::play_UI_sound(settings::sound_button_click);
 
@@ -161,7 +161,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
 	if(selected_ > 0) {
@@ -173,7 +173,7 @@ void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool&
 
 void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
 	if(selected_ < values_.size() - 1) {

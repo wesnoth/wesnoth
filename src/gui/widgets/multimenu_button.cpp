@@ -95,7 +95,7 @@ void multimenu_button::set_state(const state_t state)
 
 void multimenu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -103,7 +103,7 @@ void multimenu_button::signal_handler_mouse_enter(const event::ui_event event, b
 
 void multimenu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -111,7 +111,7 @@ void multimenu_button::signal_handler_mouse_leave(const event::ui_event event, b
 
 void multimenu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
 	if(window) {
@@ -124,7 +124,7 @@ void multimenu_button::signal_handler_left_button_down(const event::ui_event eve
 
 void multimenu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -133,7 +133,7 @@ void multimenu_button::signal_handler_left_button_up(const event::ui_event event
 void multimenu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	sound::play_UI_sound(settings::sound_button_click);
 

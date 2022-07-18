@@ -411,10 +411,10 @@ void mp_create_game::pre_show(window& win)
 
 void mp_create_game::sync_with_depcheck()
 {
-	DBG_MP << "sync_with_depcheck: start\n";
+	DBG_MP << "sync_with_depcheck: start";
 
 	if(static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
-		DBG_MP << "sync_with_depcheck: correcting era\n";
+		DBG_MP << "sync_with_depcheck: correcting era";
 		const int new_era_index = create_engine_.dependency_manager().get_era_index();
 
 		create_engine_.set_current_era_index(new_era_index, true);
@@ -422,7 +422,7 @@ void mp_create_game::sync_with_depcheck()
 	}
 
 	if(create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
-		DBG_MP << "sync_with_depcheck: correcting scenario\n";
+		DBG_MP << "sync_with_depcheck: correcting scenario";
 
 		// Match scenario and scenario type
 		const auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
@@ -454,12 +454,12 @@ void mp_create_game::sync_with_depcheck()
 	}
 
 	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()) {
-		DBG_MP << "sync_with_depcheck: correcting modifications\n";
+		DBG_MP << "sync_with_depcheck: correcting modifications";
 		set_active_mods(create_engine_.dependency_manager().get_modifications());
 	}
 
 	create_engine_.init_active_mods();
-	DBG_MP << "sync_with_depcheck: end\n";
+	DBG_MP << "sync_with_depcheck: end";
 }
 
 template<typename widget>
@@ -525,7 +525,7 @@ void mp_create_game::on_tab_select()
 void mp_create_game::on_mod_toggle(const int index, toggle_button* sender)
 {
 	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(index))) {
-		ERR_MP << "ignoring on_mod_toggle that is already set\n";
+		ERR_MP << "ignoring on_mod_toggle that is already set";
 		return;
 	}
 

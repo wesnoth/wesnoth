@@ -265,7 +265,7 @@ public:
 		//int newpos = lfs->pistream_->tellg();
 		*size = lfs->pistream_->gcount();
 #if 0
-		ERR_LUA << "read bytes from " << startpos << " to " << newpos << " in total " *size << " from steam\n";
+		ERR_LUA << "read bytes from " << startpos << " to " << newpos << " in total " *size << " from steam";
 		ERR_LUA << "streamstate being "
 			<< " goodbit:" << lfs->pistream_->good()
 			<< " endoffile:" << lfs->pistream_->eof()

@@ -100,7 +100,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 		auto find_it = id_map_.find(id);
 
 		if(find_it != id_map_.end() && !find_it->second.expired()) {
-			LOG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "' because an event with that id already exists\n";
+			LOG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "' because an event with that id already exists";
 			return {*this, nullptr};
 		}
 	}
@@ -109,7 +109,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 		static const char* msg = "[event] is missing name or id field";
 		lg::log_to_chat() << msg << "\n";
 		if(lg::info().dont_log(log_event_handler)) {
-			ERR_EH << msg << " (run with --log-info=event_handler for more info)\n";
+			ERR_EH << msg << " (run with --log-info=event_handler for more info)";
 		} else {
 			ERR_EH << msg;
 		}

@@ -505,7 +505,7 @@ config &scoped_wml_variable::store(const config &var_value)
 		}
 		resources::gamedata->clear_variable_cfg(var_name_);
 		config &res = resources::gamedata->add_variable_cfg(var_name_, var_value);
-		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
+		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.";
 		activated_ = true;
 		return res;
 	}
@@ -535,7 +535,7 @@ scoped_wml_variable::~scoped_wml_variable()
 			{
 			}
 		}
-		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
+		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.";
 	}
 
 	assert(resources::gamedata->scoped_variables.back() == this);
@@ -550,7 +550,7 @@ void scoped_xy_unit::activate()
 		itor->write(tmp_cfg);
 		tmp_cfg["x"] = loc_.wml_x();
 		tmp_cfg["y"] = loc_.wml_y();
-		LOG_NG << "auto-storing $" << name() << " at (" << loc_ << ")\n";
+		LOG_NG << "auto-storing $" << name() << " at (" << loc_ << ")";
 	} else {
 		ERR_NG << "failed to auto-store $" << name() << " at (" << loc_ << ")";
 	}

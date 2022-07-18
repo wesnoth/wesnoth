@@ -390,7 +390,7 @@ void map_context::draw_terrain_actual(
 	if(!map_.on_board_with_border(loc)) {
 		// requests for painting off the map are ignored in set_terrain anyway,
 		// but ideally we should not have any
-		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")\n";
+		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")";
 		return;
 	}
 

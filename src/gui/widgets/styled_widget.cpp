@@ -144,7 +144,7 @@ point styled_widget::get_config_minimum_size() const
 
 	point result(config_->min_width, config_->min_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -154,7 +154,7 @@ point styled_widget::get_config_default_size() const
 
 	point result(config_->default_width, config_->default_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -164,7 +164,7 @@ point styled_widget::get_config_maximum_size() const
 
 	point result(config_->max_width, config_->max_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -246,7 +246,7 @@ point styled_widget::calculate_best_size() const
 {
 	assert(config_);
 	if(label_.empty()) {
-		DBG_GUI_L << LOG_HEADER << " empty label return default.\n";
+		DBG_GUI_L << LOG_HEADER << " empty label return default.";
 		return get_config_default_size();
 	}
 
@@ -524,7 +524,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(!tooltip_.empty()) {
 		std::string tip = tooltip_;
@@ -547,7 +547,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(!help_message_.empty()) {
 		event::message_show_helptip message(help_message_, location, get_rectangle());
@@ -558,7 +558,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event event,
 													bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	/*
 	 * This makes the class know the tip code rather intimately. An

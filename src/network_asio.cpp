@@ -299,7 +299,7 @@ std::size_t connection::is_write_complete(const boost::system::error_code& ec, s
 
 void connection::handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
-	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Written " << bytes_transferred << " bytes.";
 	if(write_buf_)
 		write_buf_->consume(bytes_transferred);
 
@@ -337,7 +337,7 @@ std::size_t connection::is_read_complete(const boost::system::error_code& ec, st
 
 void connection::handle_read(const boost::system::error_code& ec, std::size_t bytes_transferred, config& response)
 {
-	DBG_NW << "Read " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Read " << bytes_transferred << " bytes.";
 
 	bytes_to_read_ = 0;
 	bytes_to_write_ = 0;

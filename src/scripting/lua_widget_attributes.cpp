@@ -379,7 +379,7 @@ WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
 WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 {
 	if(!luaW_getglobal(L, "gui", "widget", "set_callback")) {
-		ERR_LUA << "gui.widget.set_callback didn't exist\n";
+		ERR_LUA << "gui.widget.set_callback didn't exist";
 	}
 	luaW_pushwidget(L, w);
 	lua_pushvalue(L, value.index);
@@ -464,12 +464,12 @@ void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string&
 {
 	gui2::widget* w = wp.get_ptr();
 	if(!w) {
-		ERR_LUA << "widget was deleted\n";
+		ERR_LUA << "widget was deleted";
 		return;
 	}
 	gui2::window* wd = w->get_window();
 	if(!wd) {
-		ERR_LUA << "cannot find window in widget callback\n";
+		ERR_LUA << "cannot find window in widget callback";
 		return;
 	}
 	luaW_callwidgetcallback(L, w, wd, id);
@@ -565,7 +565,7 @@ int impl_widget_set(lua_State* L)
 				return 0;
 			}
 		}
-		ERR_LUA << "none of "<< it->second.size() << " setters matched\n";
+		ERR_LUA << "none of "<< it->second.size() << " setters matched";
 	}
 	else {
 		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size();

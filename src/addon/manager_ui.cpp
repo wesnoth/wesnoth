@@ -101,9 +101,9 @@ bool addons_manager_ui(const std::string& remote_address)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
-		LOG_AC << "initial connection canceled by user\n";
+		LOG_AC << "initial connection canceled by user";
 	} catch(const addons_client::user_disconnect&) {
-		LOG_AC << "attempt to reconnect canceled by user\n";
+		LOG_AC << "attempt to reconnect canceled by user";
 	} catch(const addons_client::invalid_server_address&) {
 		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}
@@ -342,7 +342,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
-		LOG_AC << "initial connection canceled by user\n";
+		LOG_AC << "initial connection canceled by user";
 	} catch(const addons_client::invalid_server_address&) {
 		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}

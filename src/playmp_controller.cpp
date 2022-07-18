@@ -116,7 +116,7 @@ void playmp_controller::play_linger_turn()
 
 void playmp_controller::play_human_turn()
 {
-	LOG_NG << "playmp::play_human_turn...\n";
+	LOG_NG << "playmp::play_human_turn...";
 	assert(!linger_);
 	assert(gamestate_->init_side_done());
 	assert(gamestate().gamedata_.phase() == game_data::PLAY);
@@ -190,7 +190,7 @@ void playmp_controller::play_human_turn()
 
 void playmp_controller::play_idle_loop()
 {
-	LOG_NG << "playmp::play_human_turn...\n";
+	LOG_NG << "playmp::play_human_turn...";
 
 	remove_blindfold();
 
@@ -230,7 +230,7 @@ void playmp_controller::reset_end_scenario_button()
 
 void playmp_controller::linger()
 {
-	LOG_NG << "beginning end-of-scenario linger\n";
+	LOG_NG << "beginning end-of-scenario linger";
 	linger_ = true;
 
 	// If we need to set the status depending on the completion state
@@ -284,7 +284,7 @@ void playmp_controller::linger()
 
 	reset_end_scenario_button();
 
-	LOG_NG << "ending end-of-scenario linger\n";
+	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playmp_controller::wait_for_upload()
@@ -337,7 +337,7 @@ void playmp_controller::after_human_turn()
 		resources::recorder->add_countdown_update(new_time, current_side());
 	}
 
-	LOG_NG << "playmp::after_human_turn...\n";
+	LOG_NG << "playmp::after_human_turn...";
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
@@ -348,7 +348,7 @@ void playmp_controller::after_human_turn()
 
 void playmp_controller::play_network_turn()
 {
-	LOG_NG << "is networked...\n";
+	LOG_NG << "is networked...";
 
 	end_turn_enable(false);
 	turn_data_.send_data();
@@ -367,7 +367,7 @@ void playmp_controller::play_network_turn()
 		}
 	}
 
-	LOG_NG << "finished networked...\n";
+	LOG_NG << "finished networked...";
 }
 
 void playmp_controller::process_oos(const std::string& err_msg) const

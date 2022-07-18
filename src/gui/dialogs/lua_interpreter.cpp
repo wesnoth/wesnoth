@@ -121,8 +121,8 @@ public:
 		, log_()
 		, raw_log_()
 	{
-		DBG_LUA << "constructing a lua_interpreter::model\n";
-		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
+		DBG_LUA << "constructing a lua_interpreter::model";
+		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.";
 		log_ << font::escape_text(lk.get_log().str()) << std::flush;
 		raw_log_ << lk.get_log().str() << std::flush;
 		// Lua kernel sends log strings to this function
@@ -130,14 +130,14 @@ public:
 			log_ << font::escape_text(str);
 			raw_log_ << str;
 		});
-		//DBG_LUA << "received:\n" << log_.str() << "\n.\n";
+		//DBG_LUA << "received:\n" << log_.str() << "\n.";
 
-		DBG_LUA << "finished constructing a lua_interpreter::model\n";
+		DBG_LUA << "finished constructing a lua_interpreter::model";
 	}
 
 	~lua_model()
 	{
-		DBG_LUA << "destroying a lua_interpreter::model\n";
+		DBG_LUA << "destroying a lua_interpreter::model";
 		L_.set_external_log(nullptr); //deregister our log since it's about to be destroyed
 	}
 
@@ -226,13 +226,13 @@ public:
 	}
 
 	void maybe_update_prefix (const std::string & text) {
-		LOG_LUA << "maybe update prefix\n";
-		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'\n";
+		LOG_LUA << "maybe update prefix";
+		LOG_LUA << "prefix_: '"<< prefix_ << "'\t text='"<< text << "'";
 
 		if (!end_of_history_) return;
 
 		prefix_ = text;
-		LOG_LUA << "updated prefix\n";
+		LOG_LUA << "updated prefix";
 	}
 
 	std::string search([[maybe_unused]] int direction ) {
@@ -275,7 +275,7 @@ public:
 		}
 #endif
 
-		LOG_LUA << "didn't find anything\n";
+		LOG_LUA << "didn't find anything";
 
 		// reset, set history to the end and prefix_ to empty, and return the current prefix_ for the user to edit
 		end_of_history_ = true;
@@ -400,7 +400,7 @@ public:
 /** Execute a command, and report any errors encountered. */
 bool lua_interpreter::lua_model::execute (const std::string & cmd)
 {
-	LOG_LUA << "lua_interpreter::model::execute...\n";
+	LOG_LUA << "lua_interpreter::model::execute...";
 
 	try {
 		L_.interactive_run(cmd.c_str());
@@ -424,13 +424,13 @@ void lua_interpreter::lua_model::add_dialog_message(const std::string & msg) {
 /** Update the view based on the model. */
 void lua_interpreter::controller::update_view()
 {
-	LOG_LUA << "lua_interpreter update_view...\n";
+	LOG_LUA << "lua_interpreter update_view...";
 	assert(lua_model_);
 	assert(view_);
 
 	view_->update_contents(lua_model_->get_log());
 
-	LOG_LUA << "lua_interpreter update_view finished\n";
+	LOG_LUA << "lua_interpreter update_view finished";
 }
 
 /** Find all the widgets managed by the controller and connect them to handler methods. */
@@ -503,9 +503,9 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 	assert(lua_model_);
 	assert(text_entry);
 
-	LOG_LUA << "keypress_callback\n";
+	LOG_LUA << "keypress_callback";
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) { // handle executing whatever is in the command entry field
-		LOG_LUA << "executing...\n";
+		LOG_LUA << "executing...";
 		execute();
 		handled = true;
 		halt = true;
@@ -514,7 +514,7 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		// This preempts that.
 		window.queue_redraw();
 
-		LOG_LUA << "finished executing\n";
+		LOG_LUA << "finished executing";
 	} else if(key == SDLK_TAB) {	// handle tab completion
 		tab();
 		handled = true;
@@ -545,7 +545,7 @@ void lua_interpreter::controller::execute()
 
 	cmd.erase(cmd.find_last_not_of(" \n\r\t")+1); //right trim the string
 
-	LOG_LUA << "Executing '"<< cmd << "'\n";
+	LOG_LUA << "Executing '"<< cmd << "'";
 
 	if (cmd.size() >= 13 && (cmd.substr(0,13) == "history clear" || cmd.substr(0,13) == "clear history")) {
 		lua_model_->add_dialog_message(input_model_->clear_history());
@@ -677,7 +677,7 @@ void lua_interpreter::display(lua_kernel_base * lk) {
 	}
 #endif
 	if (!lk) {
-		ERR_LUA << "Tried to open console with a null lua kernel pointer.\n";
+		ERR_LUA << "Tried to open console with a null lua kernel pointer.";
 		return;
 	}
 
@@ -711,8 +711,8 @@ void lua_interpreter::pre_show(window& window)
 lua_interpreter::lua_interpreter(lua_kernel_base & lk)
 		: controller_(new lua_interpreter::controller(lk))
 {
-	LOG_LUA << "entering lua_interpreter ctor...\n";
-	LOG_LUA << "finished lua_interpreter ctor...\n";
+	LOG_LUA << "entering lua_interpreter ctor...";
+	LOG_LUA << "finished lua_interpreter ctor...";
 }
 
 } // namespace dialogs

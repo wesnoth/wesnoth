@@ -260,7 +260,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 			if(ref["id"].empty()) {
 				ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"";
 			} else if(ref["rect"].empty()) {
-				ERR_DP << "Reference to id \"" << cfg["ref"] << "\" which does not have a \"rect\"\n";
+				ERR_DP << "Reference to id \"" << cfg["ref"] << "\" which does not have a \"rect\"";
 			} else {
 				ref_rect = read_rect(ref);
 			}
@@ -722,7 +722,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 			menus_.push_back(new_menu);
 		}
 
-		DBG_DP << "done adding menu...\n";
+		DBG_DP << "done adding menu...";
 	}
 
 	for(const config& a : cfg.child_range("action")) {
@@ -735,16 +735,16 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 			actions_.push_back(new_action);
 		}
 
-		DBG_DP << "done adding action...\n";
+		DBG_DP << "done adding action...";
 	}
 
 	for(const config& s : cfg.child_range("slider")) {
 		slider new_slider(sw, sh, s);
-		DBG_DP << "adding slider\n";
+		DBG_DP << "adding slider";
 		set_object_location(new_slider, s["rect"], s["ref"]);
 		sliders_.push_back(new_slider);
 
-		DBG_DP << "done adding slider...\n";
+		DBG_DP << "done adding slider...";
 	}
 
 	if(const config& c = cfg.child("main_map_border")) {
@@ -969,7 +969,7 @@ void theme::modify_label(const std::string& id, const std::string& text)
 {
 	theme::label* label = dynamic_cast<theme::label*>(&find_element(id));
 	if(!label) {
-		LOG_DP << "Theme contains no label called '" << id << "'.\n";
+		LOG_DP << "Theme contains no label called '" << id << "'.";
 		return;
 	}
 	label->set_text(text);

@@ -438,7 +438,7 @@ pump_result_t wml_event_pump::operator()()
 
 	assert(resources::lua_kernel != nullptr);
 	if(impl_->events_queue.empty()) {
-		DBG_EH << "Processing queued events, but none found.\n";
+		DBG_EH << "Processing queued events, but none found.";
 		return pump_result_t();
 	}
 

@@ -166,7 +166,7 @@ double recruitment::evaluate() {
 		recruitment_instructions_ = get_recruitment_instructions();
 		integrate_recruitment_pattern_in_recruitment_instructions();
 		recruitment_instructions_turn_ = resources::tod_manager->turn();
-		LOG_AI_RECRUITMENT << "Recruitment-instructions updated:\n";
+		LOG_AI_RECRUITMENT << "Recruitment-instructions updated:";
 		LOG_AI_RECRUITMENT << recruitment_instructions_;
 	}
 
@@ -206,7 +206,7 @@ double recruitment::evaluate() {
 }
 
 void recruitment::execute() {
-	LOG_AI_RECRUITMENT << "\n\n\n------------AI RECRUITMENT BEGIN---------------\n\n";
+	LOG_AI_RECRUITMENT << "\n\n\n------------AI RECRUITMENT BEGIN---------------\n";
 	LOG_AI_RECRUITMENT << "TURN: " << resources::tod_manager->turn() <<
 			" SIDE: " << current_team().side() << "\n";
 
@@ -294,7 +294,7 @@ void recruitment::execute() {
 		if (data.in_danger) {
 			data.ratio_score = 50;
 			state_ = LEADER_IN_DANGER;
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is in danger.\n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is in danger.";
 		}
 
 		leader_data.push_back(data);
@@ -335,7 +335,7 @@ void recruitment::execute() {
 
 	do_combat_analysis(&leader_data);
 
-	LOG_AI_RECRUITMENT << "Scores before extra treatments:\n";
+	LOG_AI_RECRUITMENT << "Scores before extra treatments:";
 	for (const data& data : leader_data) {
 		LOG_AI_RECRUITMENT << "\n" << data.to_string();
 	}
@@ -344,7 +344,7 @@ void recruitment::execute() {
 	do_randomness(&leader_data);
 	handle_recruitment_more(&leader_data);
 
-	LOG_AI_RECRUITMENT << "Scores after extra treatments:\n";
+	LOG_AI_RECRUITMENT << "Scores after extra treatments:";
 	for (const data& data : leader_data) {
 		LOG_AI_RECRUITMENT << "\n" << data.to_string();
 	}
@@ -371,25 +371,25 @@ void recruitment::execute() {
 
 		job = get_most_important_job();
 		if (!job) {
-			LOG_AI_RECRUITMENT << "All recruitment jobs (recruitment_instructions) done.\n";
+			LOG_AI_RECRUITMENT << "All recruitment jobs (recruitment_instructions) done.";
 			break;
 		}
 		LOG_AI_RECRUITMENT << "Executing this job:\n" << *job;
 
 		data* best_leader_data = get_best_leader_from_ratio_scores(leader_data, job);
 		if (!best_leader_data) {
-			LOG_AI_RECRUITMENT << "Leader with job (recruitment_instruction) is not on keep.\n";
+			LOG_AI_RECRUITMENT << "Leader with job (recruitment_instruction) is not on keep.";
 			if (remove_job_if_no_blocker(job)) {
 				continue;
 			} else {
 				break;
 			}
 		}
-		LOG_AI_RECRUITMENT << "We want to have " << scouts_wanted_ << " more scouts.\n";
+		LOG_AI_RECRUITMENT << "We want to have " << scouts_wanted_ << " more scouts.";
 
 		const std::string best_recruit = get_best_recruit_from_scores(*best_leader_data, job);
 		if (best_recruit.empty()) {
-			LOG_AI_RECRUITMENT << "Cannot fulfill recruitment-instruction.\n";
+			LOG_AI_RECRUITMENT << "Cannot fulfill recruitment-instruction.";
 			if (remove_job_if_no_blocker(job)) {
 				continue;
 			} else {
@@ -431,7 +431,7 @@ void recruitment::execute() {
 			}
 
 		} else {
-			LOG_AI_RECRUITMENT << "Recruit result not ok.\n";
+			LOG_AI_RECRUITMENT << "Recruit result not ok.";
 			// We'll end up here if
 			// 1. We haven't enough gold,
 			// 2. There aren't any free hexes around leaders,
@@ -1273,7 +1273,7 @@ const std::string recruitment::get_random_pattern_type_if_exists(const data& lea
 				++job_types_it;
 			} else {
 				// Erase Element. erase() will return iterator of next element.
-				LOG_AI_RECRUITMENT << "Erase type " << *job_types_it << " from pattern.\n";
+				LOG_AI_RECRUITMENT << "Erase type " << *job_types_it << " from pattern.";
 				job_types_it = job_types.erase(job_types_it);
 			}
 		}
@@ -1432,11 +1432,11 @@ bool recruitment::recruit_matches_types(const std::string& recruit,
 bool recruitment::remove_job_if_no_blocker(config* job) {
 	assert(job);
 	if ((*job)["blocker"].to_bool(true)) {
-		LOG_AI_RECRUITMENT << "Canceling job.\n";
+		LOG_AI_RECRUITMENT << "Canceling job.";
 		job->clear();
 		return true;
 	} else {
-		LOG_AI_RECRUITMENT << "Aborting recruitment.\n";
+		LOG_AI_RECRUITMENT << "Aborting recruitment.";
 		return false;
 	}
 }
@@ -1563,10 +1563,10 @@ void recruitment::update_state() {
 
 	if (state_ == NORMAL && ratio > save_gold_begin && income_estimation > 0) {
 		state_ = SAVE_GOLD;
-		LOG_AI_RECRUITMENT << "Changed state to SAVE_GOLD.\n";
+		LOG_AI_RECRUITMENT << "Changed state to SAVE_GOLD.";
 	} else if (state_ == SAVE_GOLD && ratio < save_gold_end) {
 		state_ = NORMAL;
-		LOG_AI_RECRUITMENT << "Changed state to NORMAL.\n";
+		LOG_AI_RECRUITMENT << "Changed state to NORMAL.";
 	}
 }
 
@@ -1664,7 +1664,7 @@ int recruitment::get_cheapest_unit_cost_for_leader(const unit_map::const_iterato
 	if (!current_team().recall_list().empty() && current_team().recall_cost() < cheapest_cost) {
 		cheapest_cost = current_team().recall_cost();
 	}
-	LOG_AI_RECRUITMENT << "Cheapest unit cost updated to " << cheapest_cost << ".\n";
+	LOG_AI_RECRUITMENT << "Cheapest unit cost updated to " << cheapest_cost << ".";
 	cheapest_unit_costs_[leader->underlying_id()] = cheapest_cost;
 	return cheapest_cost;
 }
@@ -1786,7 +1786,7 @@ recruitment::recruit_situation_change_observer::recruit_situation_change_observe
 void recruitment::recruit_situation_change_observer::handle_generic_event(
 		const std::string& event) {
 	if (event == "ai_recruit_list_changed") {
-		LOG_AI_RECRUITMENT << "Recruitment List is not valid anymore.\n";
+		LOG_AI_RECRUITMENT << "Recruitment List is not valid anymore.";
 		set_recruit_list_changed(true);
 	} else {
 		++gamestate_changed_;

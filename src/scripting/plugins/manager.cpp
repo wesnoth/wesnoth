@@ -101,15 +101,15 @@ std::string plugins_manager::get_name(std::size_t idx) {
 
 void plugins_manager::start_plugin(std::size_t idx)
 {
-	DBG_PLG << "start_plugin[" << idx <<"]\n";
+	DBG_PLG << "start_plugin[" << idx <<"]";
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
-			DBG_PLG << "creating thread[" << idx << "]\n";
+			DBG_PLG << "creating thread[" << idx << "]";
 			plugins_[idx].thread.reset(plugins_[idx].is_file ?
 						kernel_->load_script_from_file(plugins_[idx].source) : kernel_->load_script_from_string(plugins_[idx].source));
-			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'\n";
+			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'";
 		} else {
-			DBG_PLG << "thread already exists, skipping\n";
+			DBG_PLG << "thread already exists, skipping";
 		}
 		return ;
 	}
@@ -173,7 +173,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
 			DBG_PLG << "is running...";
 			if (!*local) {			//check playing_ before each call to be sure that we should still continue
-				DBG_PLG << "aborting\n";
+				DBG_PLG << "aborting";
 				return;
 			}
 
@@ -184,7 +184,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 			std::vector<std::function<bool(void)>> requests =
 				plugins_[idx].thread->run_script(ctxt, input);
 
-			DBG_PLG << "thread returned " << requests.size() << " requests\n";
+			DBG_PLG << "thread returned " << requests.size() << " requests";
 
 			for (std::size_t j = 0; j < requests.size(); ++j) {
 				if (!*local) return;		//check playing_ before each call to be sure that we should still continue
@@ -194,11 +194,11 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 				}
 			}
 
-			DBG_PLG << "play_slice[" << idx << "] finished.\n";
+			DBG_PLG << "play_slice[" << idx << "] finished.";
 		} else if (!plugins_[idx].thread) {
-			DBG_PLG << "thread ["<< idx << "] not created\n";
+			DBG_PLG << "thread ["<< idx << "] not created";
 		} else {
-			DBG_PLG << "thread ["<< idx << "] not running\n";
+			DBG_PLG << "thread ["<< idx << "] not running";
 		}
 	}
 	*local = false;

@@ -252,7 +252,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 			if (ufilt(u)
 				&& (!u.invisible(u.get_location()) || u.is_visible_to_team(current_team(), false)))
 			{
-				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
+				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected";
 				items.insert(u.get_location());
 			}
 		}

@@ -300,7 +300,7 @@ void mp_lobby::update_gamelist_diff()
 			next_gamelist_id_at_row.push_back(game.id);
 		} else {
 			if(list_i >= gamelistbox_->get_item_count()) {
-				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
+				ERR_LB << "Ran out of listbox items -- triggering a full refresh";
 				refresh_lobby();
 				return;
 			}
@@ -323,7 +323,7 @@ void mp_lobby::update_gamelist_diff()
 			}
 
 			if(game.display_status == mp::game_info::disp_status::UPDATED) {
-				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
+				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, grid, false);
@@ -336,7 +336,7 @@ void mp_lobby::update_gamelist_diff()
 				++list_rows_deleted;
 			} else {
 				// clean
-				LOG_LB << "Clean game in listbox " << game.id << " (row " << list_i << ")\n";
+				LOG_LB << "Clean game in listbox " << game.id << " (row " << list_i << ")";
 				next_gamelist_id_at_row.push_back(game.id);
 				++list_i;
 			}
@@ -516,7 +516,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 
 void mp_lobby::update_gamelist_filter()
 {
-	DBG_LB << "mp_lobby::update_gamelist_filter\n";
+	DBG_LB << "mp_lobby::update_gamelist_filter";
 	lobby_info_.apply_game_filter();
 	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
 		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
@@ -757,7 +757,7 @@ void mp_lobby::process_gamelist(const config& data)
 	if(delay_gamelist_update_ || delay_playerlist_update_) return;
 
 	lobby_info_.process_gamelist(data);
-	DBG_LB << "Received gamelist\n";
+	DBG_LB << "Received gamelist";
 	gamelist_dirty_ = true;
 	gamelist_diff_update_ = false;
 }
@@ -767,7 +767,7 @@ void mp_lobby::process_gamelist_diff(const config& data)
 	if(delay_gamelist_update_ || delay_playerlist_update_) return;
 
 	if(lobby_info_.process_gamelist_diff(data)) {
-		DBG_LB << "Received gamelist diff\n";
+		DBG_LB << "Received gamelist diff";
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!";

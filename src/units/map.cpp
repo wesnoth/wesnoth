@@ -144,14 +144,14 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 	const map_location& loc = p->get_location();
 
 	if(!loc.valid()) {
-		ERR_NG << "Trying to add " << p->name() << " - " << p->id() << " at an invalid location; Discarding.\n";
+		ERR_NG << "Trying to add " << p->name() << " - " << p->id() << " at an invalid location; Discarding.";
 		return std::pair(make_unit_iterator(umap_.end()), false);
 	}
 
 	unit_pod upod;
 	upod.unit = p;
 
-	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id() << " to location: (" << loc << ")\n";
+	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id() << " to location: (" << loc << ")";
 
 	std::pair<umap::iterator, bool> uinsert = umap_.emplace(unit_id, upod);
 
@@ -278,7 +278,7 @@ unit_ptr unit_map::extract(const map_location& loc)
 	unit_ptr u = uit->second.unit;
 	std::size_t uid(u->underlying_id());
 
-	DBG_NG << "Extract unit " << uid << " - " << u->id() << " from location: (" << loc << ")\n";
+	DBG_NG << "Extract unit " << uid << " - " << u->id() << " from location: (" << loc << ")";
 
 	assert(uit->first == uit->second.unit->underlying_id());
 	if(uit->second.ref_count == 0) {

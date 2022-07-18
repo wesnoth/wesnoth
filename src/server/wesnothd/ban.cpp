@@ -362,7 +362,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 					loc->tm_sec = number;
 					break;
 				default:
-					LOG_SERVER << "Invalid time modifier given: '" << *i << "'.\n";
+					LOG_SERVER << "Invalid time modifier given: '" << *i << "'.";
 					break;
 				}
 				number = 0;

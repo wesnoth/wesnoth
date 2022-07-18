@@ -326,7 +326,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			std::set<std::string> active_addons = classification->active_addons(scenario_id);
 			// IMPORTANT: this is a significant performance optimization, particularly for the worst case example of the batched WML unit tests
 			if(!reload_everything && active_addons == active_addons_) {
-				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.\n";
+				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.";
 				return;
 			}
 			active_addons_ = active_addons;
@@ -402,7 +402,7 @@ void game_config_manager::load_addons_cfg()
 		const int size_minus_extension = file.size() - 4;
 
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
-			ERR_CONFIG << "error reading usermade add-on '" << file << "'\n";
+			ERR_CONFIG << "error reading usermade add-on '" << file << "'";
 
 			error_addons.push_back(file);
 

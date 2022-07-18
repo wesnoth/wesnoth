@@ -461,7 +461,7 @@ bool undo_list::apply_shroud_changes() const
 	// Loop through the list of undo_actions.
 	for( std::size_t i = 0; i != list_size; ++i ) {
 		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(undos_[i].get())) {
-			LOG_NG << "Turning an undo...\n";
+			LOG_NG << "Turning an undo...";
 
 			// Clear the hexes this unit can see from each hex occupied during
 			// the action.

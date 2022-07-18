@@ -327,7 +327,7 @@ void chatbox::add_chat_room_message_sent(const std::string& room, const std::str
 {
 	lobby_chat_window* t = room_window_open(room, false);
 	if(!t) {
-		LOG_LB << "Cannot add sent message to ui for room " << room << ", player not in the room\n";
+		LOG_LB << "Cannot add sent message to ui for room " << room << ", player not in the room";
 		return;
 	}
 
@@ -597,19 +597,19 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 
 		// Attempt to send to the currently active room first.
 		if(room.empty()) {
-			LOG_LB << "Message without a room from " << sender << ", falling back to active window\n";
+			LOG_LB << "Message without a room from " << sender << ", falling back to active window";
 			room = open_windows_[active_window_].name;
 		}
 
 		// If we still don't have a name, fall back to lobby.
 		if(room.empty()) {
-			LOG_LB << "Message without a room from " << sender << ", assuming lobby\n";
+			LOG_LB << "Message without a room from " << sender << ", assuming lobby";
 			room = "lobby";
 		}
 
 		if(log_ != nullptr && data["type"].str() == "motd") {
 			if(log_->at("lobby").received_motd == message) {
-				LOG_LB << "Ignoring repeated motd\n";
+				LOG_LB << "Ignoring repeated motd";
 				return;
 			} else {
 				log_->at("lobby").received_motd = message;
@@ -636,7 +636,7 @@ void chatbox::process_network_data(const ::config& data)
 
 void chatbox::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// Forward focus to the input textbox.
 	get_window()->keyboard_capture(chat_input_);

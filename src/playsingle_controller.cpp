@@ -125,7 +125,7 @@ void playsingle_controller::init_gui()
 			gui_->scroll_to_tile(loc, game_display::WARP);
 			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc;
 		} else {
-			LOG_NG << "Found bad stored ui location\n";
+			LOG_NG << "Found bad stored ui location";
 		}
 	}
 
@@ -234,7 +234,7 @@ void playsingle_controller::play_scenario_main_loop()
 
 level_result::type playsingle_controller::play_scenario(const config& level)
 {
-	LOG_NG << "in playsingle_controller::play_scenario()...\n";
+	LOG_NG << "in playsingle_controller::play_scenario()...";
 
 	// Start music.
 	for(const config& m : level.child_range("music")) {
@@ -304,7 +304,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		}
 
 		if(linger_) {
-			LOG_NG << "resuming from loaded linger state...\n";
+			LOG_NG << "resuming from loaded linger state...";
 			// as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
 			saved_game_.set_snapshot(config());
 			if(!is_observer()) {
@@ -414,7 +414,7 @@ void playsingle_controller::play_side_impl()
 			replay_controller_.reset();
 		}
 	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
-		LOG_NG << "is human...\n";
+		LOG_NG << "is human...";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
 		if(gamestate().board_.side_units(current_side()) == 0 && !(get_units().empty() && current_side() == 1)) {
@@ -431,7 +431,7 @@ void playsingle_controller::play_side_impl()
 			after_human_turn();
 		}
 
-		LOG_NG << "human finished turn...\n";
+		LOG_NG << "human finished turn...";
 	} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
 		play_ai_turn();
 	} else if(current_team().is_network()) {
@@ -514,7 +514,7 @@ void playsingle_controller::play_human_turn()
 
 void playsingle_controller::linger()
 {
-	LOG_NG << "beginning end-of-scenario linger\n";
+	LOG_NG << "beginning end-of-scenario linger";
 	linger_ = true;
 
 	// If we need to set the status depending on the completion state
@@ -547,7 +547,7 @@ void playsingle_controller::linger()
 	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
-	LOG_NG << "ending end-of-scenario linger\n";
+	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playsingle_controller::end_turn_enable(bool /*enable*/)
@@ -567,7 +567,7 @@ void playsingle_controller::after_human_turn()
 
 void playsingle_controller::play_ai_turn()
 {
-	LOG_NG << "is ai...\n";
+	LOG_NG << "is ai...";
 
 	end_turn_enable(false);
 	gui_->recalculate_minimap();
@@ -713,7 +713,7 @@ void playsingle_controller::reset_replay()
 		replay_controller_->stop_replay();
 		throw reset_gamestate_exception(replay_controller_->get_reset_state(), {}, false);
 	} else {
-		ERR_NG << "received invalid reset replay\n";
+		ERR_NG << "received invalid reset replay";
 	}
 }
 

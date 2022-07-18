@@ -78,7 +78,7 @@ static unsigned event_poll_interval = 0;
  */
 static uint32_t timer_sdl_draw_event(uint32_t, void*)
 {
-	// DBG_GUI_E << "Pushing draw event in queue.\n";
+	// DBG_GUI_E << "Pushing draw event in queue.";
 
 	SDL_Event event;
 	sdl::UserEvent data(DRAW_EVENT);
@@ -612,7 +612,7 @@ void sdl_event_handler::draw_everything()
 
 void sdl_event_handler::video_resize(const point& new_size)
 {
-	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
+	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".";
 
 	for(auto dispatcher : dispatchers_)
 	{
@@ -621,7 +621,7 @@ void sdl_event_handler::video_resize(const point& new_size)
 }
 
 void sdl_event_handler::raw_event(const SDL_Event& event) {
-	DBG_GUI_E << "Firing raw event\n";
+	DBG_GUI_E << "Firing raw event";
 
 	for(auto dispatcher : dispatchers_)
 	{
@@ -631,7 +631,7 @@ void sdl_event_handler::raw_event(const SDL_Event& event) {
 
 void sdl_event_handler::mouse(const ui_event event, const point& position)
 {
-	DBG_GUI_E << "Firing: " << event << ".\n";
+	DBG_GUI_E << "Firing: " << event << ".";
 
 	if(mouse_focus) {
 		mouse_focus->fire(event, dynamic_cast<widget&>(*mouse_focus), position);
@@ -830,7 +830,7 @@ void sdl_event_handler::key_down(const SDL_Keycode key,
 						const SDL_Keymod modifier,
 						const std::string& unicode)
 {
-	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
+	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".";
 
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(SDL_KEY_DOWN,
@@ -843,7 +843,7 @@ void sdl_event_handler::key_down(const SDL_Keycode key,
 
 void sdl_event_handler::keyboard(const ui_event event)
 {
-	DBG_GUI_E << "Firing: " << event << ".\n";
+	DBG_GUI_E << "Firing: " << event << ".";
 
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher));
@@ -852,7 +852,7 @@ void sdl_event_handler::keyboard(const ui_event event)
 
 void sdl_event_handler::close_window(const unsigned window_id)
 {
-	DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
+	DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".";
 
 	window* window = window::window_instance(window_id);
 	if(window) {

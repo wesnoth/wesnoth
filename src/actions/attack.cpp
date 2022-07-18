@@ -122,7 +122,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	if(u.hitpoints() < 0) {
-		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp than its maximum, the engine will fail with an
@@ -865,13 +865,13 @@ attack::attack(const map_location& attacker,
 	, prng_defender_()
 {
 	if(use_prng_) {
-		LOG_NG << "Using experimental PRNG for combat\n";
+		LOG_NG << "Using experimental PRNG for combat";
 	}
 }
 
 void attack::fire_event(const std::string& n)
 {
-	LOG_NG << "attack: firing '" << n << "' event\n";
+	LOG_NG << "attack: firing '" << n << "' event";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
@@ -1194,14 +1194,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 
 		if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
 			defender_unit.set_state(unit::STATE_POISONED, true);
-			LOG_NG << "defender poisoned\n";
+			LOG_NG << "defender poisoned";
 		}
 
 		if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
 			defender_unit.set_state(unit::STATE_SLOWED, true);
 			update_fog = true;
 			defender.damage_ = defender_stats->slow_damage;
-			LOG_NG << "defender slowed\n";
+			LOG_NG << "defender slowed";
 		}
 
 		// If the defender is petrified, the fight stops immediately
@@ -1342,7 +1342,7 @@ void attack::unit_killed(unit_info& attacker,
 			}
 		}
 	} else {
-		LOG_NG << "unit not reanimated\n";
+		LOG_NG << "unit not reanimated";
 	}
 }
 
@@ -1363,7 +1363,7 @@ void attack::perform()
 	}
 
 	if(a_.get_unit().attacks_left() <= 0) {
-		LOG_NG << "attack::perform(): not enough ap.\n";
+		LOG_NG << "attack::perform(): not enough ap.";
 		return;
 	}
 
@@ -1389,7 +1389,7 @@ void attack::perform()
 	d_stats_ = &bc_->get_defender_stats();
 
 	if(a_stats_->disable) {
-		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
+		LOG_NG << "attack::perform(): tried to attack with a disabled attack.";
 		return;
 	}
 
@@ -1409,7 +1409,7 @@ void attack::perform()
 
 	refresh_bc();
 
-	DBG_NG << "getting attack statistics\n";
+	DBG_NG << "getting attack statistics";
 	statistics::attack_context attack_stats(
 			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
@@ -1434,12 +1434,12 @@ void attack::perform()
 	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
 	while(true) {
-		DBG_NG << "start of attack loop...\n";
+		DBG_NG << "start of attack loop...";
 		++abs_n_attack_;
 
 		if(a_.n_attacks_ > 0 && !defender_strikes_first) {
 			if(!perform_hit(true, attack_stats)) {
-				DBG_NG << "broke from attack loop on attacker turn\n";
+				DBG_NG << "broke from attack loop on attacker turn";
 				break;
 			}
 		}
@@ -1450,7 +1450,7 @@ void attack::perform()
 
 		if(d_.n_attacks_ > 0) {
 			if(!perform_hit(false, attack_stats)) {
-				DBG_NG << "broke from attack loop on defender turn\n";
+				DBG_NG << "broke from attack loop on defender turn";
 				break;
 			}
 		}

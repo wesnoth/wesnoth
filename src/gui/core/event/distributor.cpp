@@ -153,7 +153,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event, 
 	}
 	resource_locker lock{signal_handler_sdl_mouse_motion_entered_};
 
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
@@ -167,7 +167,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event, 
 		}
 
 		if(mouse_over) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".";
 			if(owner_.fire(event, *mouse_over, coordinate)) {
 				return;
 			}
@@ -193,7 +193,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event, 
 void mouse_motion::signal_handler_sdl_touch_motion(
 	const event::ui_event event, bool& handled, const point& coordinate, const point& distance)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
@@ -208,7 +208,7 @@ void mouse_motion::signal_handler_sdl_touch_motion(
 
 void mouse_motion::signal_handler_sdl_wheel(const event::ui_event event, bool& handled, const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
@@ -223,7 +223,7 @@ void mouse_motion::signal_handler_sdl_wheel(const event::ui_event event, bool& h
 
 void mouse_motion::signal_handler_show_helptip(const event::ui_event event, bool& handled, const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
@@ -232,7 +232,7 @@ void mouse_motion::signal_handler_show_helptip(const event::ui_event event, bool
 		}
 	} else {
 		if(widget* mouse_over = owner_.find_at(coordinate, true)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".";
 			if(owner_.fire(event, *mouse_over, coordinate)) {
 				stop_hover_timer();
 			}
@@ -244,7 +244,7 @@ void mouse_motion::signal_handler_show_helptip(const event::ui_event event, bool
 
 void mouse_motion::mouse_enter(widget* mouse_over)
 {
-	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_ENTER << ".\n";
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_ENTER << ".";
 
 	assert(mouse_over);
 
@@ -257,7 +257,7 @@ void mouse_motion::mouse_enter(widget* mouse_over)
 
 void mouse_motion::mouse_hover(widget* mouse_over, const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_MOTION << ".\n";
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_MOTION << ".";
 
 	assert(mouse_over);
 
@@ -273,11 +273,11 @@ void mouse_motion::mouse_hover(widget* mouse_over, const point& coordinate)
 
 void mouse_motion::show_tooltip()
 {
-	DBG_GUI_E << LOG_HEADER << "Firing: " << event::SHOW_TOOLTIP << ".\n";
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::SHOW_TOOLTIP << ".";
 
 	if(!hover_widget_) {
 		// See mouse_motion::stop_hover_timer.
-		ERR_GUI_E << LOG_HEADER << event::SHOW_TOOLTIP << " bailing out, no hover widget.\n";
+		ERR_GUI_E << LOG_HEADER << event::SHOW_TOOLTIP << " bailing out, no hover widget.";
 		return;
 	}
 
@@ -297,7 +297,7 @@ void mouse_motion::show_tooltip()
 
 void mouse_motion::mouse_leave()
 {
-	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
+	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".";
 
 	styled_widget* control = dynamic_cast<styled_widget*>(mouse_focus_);
 	if(!control || control->get_active()) {
@@ -453,11 +453,11 @@ void mouse_button<I>::signal_handler_sdl_button_down(
 	}
 	resource_locker lock{signal_handler_sdl_button_down_entered_};
 
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(is_down_) {
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
-		WRN_GUI_E << LOG_HEADER << event << ". The mouse button is already down, we missed an event.\n";
+		WRN_GUI_E << LOG_HEADER << event << ". The mouse button is already down, we missed an event.";
 #endif
 		return;
 	}
@@ -466,9 +466,9 @@ void mouse_button<I>::signal_handler_sdl_button_down(
 	if(mouse_captured_) {
 		assert(mouse_focus_);
 		focus_ = mouse_focus_;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".";
 		if(!owner_.fire(mouse_data[I].sdl_button_down_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".";
 			owner_.fire(mouse_data[I].button_down_event, *mouse_focus_);
 		}
 	} else {
@@ -486,9 +486,9 @@ void mouse_button<I>::signal_handler_sdl_button_down(
 		}
 
 		focus_ = mouse_over;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_down_event << ".";
 		if(!owner_.fire(mouse_data[I].sdl_button_down_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_down_event << ".";
 			owner_.fire(mouse_data[I].button_down_event, *focus_);
 		}
 	}
@@ -504,20 +504,20 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	}
 	resource_locker lock{signal_handler_sdl_button_up_entered_};
 
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(!is_down_) {
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
-		WRN_GUI_E << LOG_HEADER << event << ". The mouse button is already up, we missed an event.\n";
+		WRN_GUI_E << LOG_HEADER << event << ". The mouse button is already up, we missed an event.";
 #endif
 		return;
 	}
 	is_down_ = false;
 
 	if(focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_up_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].sdl_button_up_event << ".";
 		if(!owner_.fire(mouse_data[I].sdl_button_up_event, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_up_event << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_up_event << ".";
 			owner_.fire(mouse_data[I].button_up_event, *focus_);
 		}
 	}
@@ -556,14 +556,14 @@ void mouse_button<I>::mouse_button_click(widget* widget)
 {
 	uint32_t stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp && last_clicked_widget_ == widget) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_double_click_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_double_click_event << ".";
 
 		owner_.fire(mouse_data[I].button_double_click_event, *widget);
 		last_click_stamp_ = 0;
 		last_clicked_widget_ = nullptr;
 
 	} else {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_click_event << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_click_event << ".";
 		owner_.fire(mouse_data[I].button_click_event, *widget);
 		last_click_stamp_ = stamp;
 		last_clicked_widget_ = widget;
@@ -680,14 +680,14 @@ widget* distributor::keyboard_focus() const
 void distributor::keyboard_capture(widget* widget)
 {
 	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS << ".";
 		owner_.fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, nullptr);
 	}
 
 	keyboard_focus_ = widget;
 
 	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << event::RECEIVE_KEYBOARD_FOCUS << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::RECEIVE_KEYBOARD_FOCUS << ".";
 		owner_.fire(event::RECEIVE_KEYBOARD_FOCUS, *keyboard_focus_, nullptr);
 	}
 }
@@ -714,7 +714,7 @@ void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1,
 {
 	/** @todo Test whether recursion protection is needed. */
 
-	DBG_GUI_E << LOG_HEADER << evt << ".\n";
+	DBG_GUI_E << LOG_HEADER << evt << ".";
 
 	if(keyboard_focus_) {
 		// Attempt to cast to styled_widget, to avoid sending events if the
@@ -722,7 +722,7 @@ void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1,
 		// is enabled and ready to receive events.
 		styled_widget* control = dynamic_cast<styled_widget*>(keyboard_focus_);
 		if(!control || control->get_active()) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << evt << ".\n";
+			DBG_GUI_E << LOG_HEADER << "Firing: " << evt << ".";
 			if(owner_.fire(evt, *keyboard_focus_, p1, p2, p3)) {
 				return;
 			}
@@ -762,7 +762,7 @@ void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1,
 			continue;
 		}
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << evt << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << evt << ".";
 		if(owner_.fire(evt, **ritor, p1, p2, p3)) {
 			return;
 		}
@@ -786,7 +786,7 @@ void distributor::signal_handler_sdl_text_editing(const std::string& unicode, in
 
 void distributor::signal_handler_notify_removal(dispatcher& w, const ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	/**
 	 * @todo Evaluate whether moving the cleanup parts in the subclasses.

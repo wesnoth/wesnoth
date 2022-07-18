@@ -444,7 +444,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n";
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
 			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
 		}
 	}
@@ -453,7 +453,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
 		if(!result->is_ok()) {
 			//attack failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n";
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
 			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
 		}
 	}

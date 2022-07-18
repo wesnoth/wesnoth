@@ -129,7 +129,7 @@ std::unique_ptr<widget> builder_size_lock::build() const
 {
 	auto widget = std::make_unique<size_lock>(*this);
 
-	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);

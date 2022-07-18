@@ -267,7 +267,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 						_("Invalid location id")
 					);
 					//TODO: a user visible messae would be nice.
-					ERR_ED  << "entered invalid location id\n";
+					ERR_ED  << "entered invalid location id";
 				}
 			}
 		}));

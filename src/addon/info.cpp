@@ -32,7 +32,7 @@ namespace {
 	{
 		addons_list::const_iterator it = addons.find(base_id);
 		if(it == addons.end()) {
-			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list\n";
+			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list";
 			return;
 		}
 
@@ -44,10 +44,10 @@ namespace {
 
 		for(const std::string& dep : base_deps) {
 			if(base_id == dep) {
-				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
+				LOG_AC << dep << " depends upon itself; breaking circular dependency";
 				continue;
 			} else if(dest.find(dep) != dest.end()) {
-				LOG_AC << dep << " already in dependency tree; breaking circular dependency\n";
+				LOG_AC << dep << " already in dependency tree; breaking circular dependency";
 				continue;
 			}
 
@@ -239,7 +239,7 @@ std::string addon_info::display_icon() const
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
-		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications\n";
+		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";
 		ret += "~RC(magenta>red)";
 	}
 
@@ -284,7 +284,7 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	resolve_deps_recursive(addons, id, deps);
 
 	if(deps.find(id) != deps.end()) {
-		LOG_AC << id << " depends upon itself; breaking circular dependency\n";
+		LOG_AC << id << " depends upon itself; breaking circular dependency";
 		deps.erase(id);
 	}
 

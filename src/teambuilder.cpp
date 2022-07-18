@@ -112,7 +112,7 @@ void team_builder::gold()
 
 	gold_info_ngold_ = side_cfg_["gold"];
 
-	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
+	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'";
 }
 
 void team_builder::new_team()

@@ -155,7 +155,7 @@ namespace preferences
 
 	std::string password(const std::string& server, const std::string& login)
 	{
-		DBG_CFG << "Retrieving password for server: '" << server << "', login: '" << login << "'\n";
+		DBG_CFG << "Retrieving password for server: '" << server << "', login: '" << login << "'";
 		auto login_clean = login;
 		boost::trim(login_clean);
 
@@ -179,7 +179,7 @@ namespace preferences
 
 	void set_password(const std::string& server, const std::string& login, const std::string& key)
 	{
-		DBG_CFG << "Setting password for server: '" << server << "', login: '" << login << "'\n";
+		DBG_CFG << "Setting password for server: '" << server << "', login: '" << login << "'";
 		auto login_clean = login;
 		boost::trim(login_clean);
 
@@ -214,7 +214,7 @@ namespace preferences
 		secure_buffer data((std::istreambuf_iterator<char>(*stream)), (std::istreambuf_iterator<char>()));
 		data = decrypt(data, build_key("global", get_system_username()));
 		if(data.empty() || data[0] != CREDENTIAL_SEPARATOR) {
-			ERR_CFG << "Invalid data in credentials file\n";
+			ERR_CFG << "Invalid data in credentials file";
 			return;
 		}
 		for(const std::string& elem : utils::split(std::string(data.begin(), data.end()), CREDENTIAL_SEPARATOR, utils::REMOVE_EMPTY)) {

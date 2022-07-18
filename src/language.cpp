@@ -255,7 +255,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 			locale = lang + encoding[j] + extra;
 			res = std::setlocale(category, locale.c_str());
 			if (res) {
-				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.\n";
+				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.";
 				goto done;
 			}
 		}
@@ -303,23 +303,23 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	DBG_G << "Loading strings\n";
+	DBG_G << "Loading strings";
 	config cfg;
 
-	LOG_G << "There are " << languages_.size() << " [language] blocks\n";
+	LOG_G << "There are " << languages_.size() << " [language] blocks";
 	if (complain && languages_.empty()) {
 		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
 	for (const config &lang : languages_) {
-		DBG_G << "[language]\n";
+		DBG_G << "[language]";
 		for (const config::attribute &j : lang.attribute_range()) {
-			DBG_G << j.first << "=\"" << j.second << "\"\n";
+			DBG_G << j.first << "=\"" << j.second << "\"";
 			strings_[j.first] = j.second;
 		}
-		DBG_G << "[/language]\n";
+		DBG_G << "[/language]";
 	}
-	DBG_G << "done\n";
+	DBG_G << "done";
 
 	return true;
 }
@@ -340,7 +340,7 @@ const language_def& get_locale()
 			if (prefs_locale == i->localename)
 				return *i;
 		}
-		LOG_G << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale\n";
+		LOG_G << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale";
 		return known_languages[0];
 	}
 
@@ -360,7 +360,7 @@ const language_def& get_locale()
 	}
 #endif
 
-	LOG_G << "locale could not be determined; defaulting to system locale\n";
+	LOG_G << "locale could not be determined; defaulting to system locale";
 	return known_languages[0];
 }
 

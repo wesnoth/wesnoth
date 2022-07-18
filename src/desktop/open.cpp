@@ -51,10 +51,10 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 #if defined(_X11) || defined(__APPLE__)
 
 #ifndef __APPLE__
-	LOG_DU << "open_object(): on X11, will use xdg-open\n";
+	LOG_DU << "open_object(): on X11, will use xdg-open";
 	const char launcher[] = "xdg-open";
 #else
-	LOG_DU << "open_object(): on OS X, will use open\n";
+	LOG_DU << "open_object(): on OS X, will use open";
 	const char launcher[] = "open";
 #endif
 
@@ -75,7 +75,7 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 
 #elif defined(_WIN32)
 
-	LOG_DU << "open_object(): on Win32, will use ShellExecute()\n";
+	LOG_DU << "open_object(): on Win32, will use ShellExecute()";
 
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
 

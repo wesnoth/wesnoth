@@ -132,14 +132,14 @@ double move_to_targets_phase::evaluate()
 void move_to_targets_phase::execute()
 {
 	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
-	LOG_AI << "finding targets...\n";
+	LOG_AI << "finding targets...";
 	std::vector<target> targets;
 	while(true) {
 		if(targets.empty()) {
 			targets = find_targets(get_enemy_dstsrc());
 			targets.insert(targets.end(),additional_targets().begin(),
 				       additional_targets().end());
-			LOG_AI << "Found " << targets.size() << " targets\n";
+			LOG_AI << "Found " << targets.size() << " targets";
 			if(targets.empty()) {
 				break;
 			}
@@ -151,9 +151,9 @@ void move_to_targets_phase::execute()
 			break;
 		}
 
-		LOG_AI << "choosing move with " << targets.size() << " targets\n";
+		LOG_AI << "choosing move with " << targets.size() << " targets";
 		std::pair<map_location,map_location> move = choose_move(targets);
-		LOG_AI << "choose_move ends with " << targets.size() << " targets\n";
+		LOG_AI << "choose_move ends with " << targets.size() << " targets";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
@@ -270,7 +270,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	for(u = units_.begin(); u != units_.end(); ++u) {
 		if (!(u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) || u->movement_left() <= 0 || u->incapacitated())) {
 			if (u->get_state("guardian")) {
-				LOG_AI << u->type_id() << " is guardian, staying still\n";
+				LOG_AI << u->type_id() << " is guardian, staying still";
 				return std::pair(u->get_location(), u->get_location());
 			}
 		}
@@ -284,7 +284,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	}
 
 	if(u == units_.end()) {
-		LOG_AI  << "no eligible units found\n";
+		LOG_AI  << "no eligible units found";
 		return std::pair<map_location,map_location>();
 	}
 
@@ -360,7 +360,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		}
 	}
 
-	LOG_AI << "choose target...\n";
+	LOG_AI << "choose target...";
 
 	if(best_rated_target == rated_targets.end()) {
 		LOG_AI << "no eligible targets found for unit at " << u->get_location();
@@ -376,7 +376,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	bool simple_targeting = get_simple_targeting();
 
 	if(simple_targeting == false) {
-		LOG_AI << "complex targeting...\n";
+		LOG_AI << "complex targeting...";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if (u->side() != get_side() || (u->can_recruit() && !is_keep_ignoring_leader(u->id())) ||
@@ -410,7 +410,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			}
 		}
 
-		LOG_AI << "done complex targeting...\n";
+		LOG_AI << "done complex targeting...";
 	} else {
 		u = units_.end();
 	}
@@ -423,7 +423,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	//see if we can move to a position in support of this target
 	const move_map& srcdst = get_srcdst();
 	if(best_target->type == ai_target::type::support) {
-		LOG_AI << "support...\n";
+		LOG_AI << "support...";
 
 		std::vector<map_location> locs;
 		access_points(srcdst, best->get_location(), best_target->loc, locs);
@@ -446,7 +446,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 				}
 			}
 
-			LOG_AI << "returning support...\n";
+			LOG_AI << "returning support...";
 			return std::pair(best->get_location(), best_loc);
 		}
 	}
@@ -459,7 +459,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	bool dangerous = false;
 
 	if(get_grouping() != "no") {
-		LOG_AI << "grouping...\n";
+		LOG_AI << "grouping...";
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->movement_left();
 
@@ -484,11 +484,11 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			}
 		}
 
-		LOG_AI << "done grouping...\n";
+		LOG_AI << "done grouping...";
 	}
 
 	if(dangerous) {
-		LOG_AI << "dangerous path\n";
+		LOG_AI << "dangerous path";
 		std::set<map_location> group, enemies;
 		const map_location dst = form_group(best_route.steps,dstsrc,group);
 		enemies_along_path(best_route.steps,enemy_dstsrc,enemies);
@@ -496,7 +496,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
 		if(our_strength > 0.5 + get_caution()) {
-			LOG_AI << "moving group\n";
+			LOG_AI << "moving group";
 			const bool res = move_group(dst,best_route.steps,group);
 			if(res) {
 				return std::pair<map_location,map_location>(map_location(1,1),map_location());
@@ -589,7 +589,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 					return std::pair<map_location,map_location>(its.first->second,its.first->first);
 				} else {
-					LOG_AI << "dangerous!\n";
+					LOG_AI << "dangerous!";
 					is_dangerous = true;
 				}
 			}
@@ -599,7 +599,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	}
 
 	if(best != units_.end()) {
-		LOG_AI << "Could not make good move, staying still\n";
+		LOG_AI << "Could not make good move, staying still";
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
@@ -608,7 +608,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		return std::pair(best->get_location(), best->get_location());
 	}
 
-	LOG_AI << "Could not find anywhere to move!\n";
+	LOG_AI << "Could not find anywhere to move!";
 	return std::pair<map_location,map_location>();
 }
 
@@ -708,7 +708,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 		return false;
 	}
 
-	LOG_AI << "group has " << units.size() << " members\n";
+	LOG_AI << "group has " << units.size() << " members";
 
 	map_location next;
 
@@ -788,7 +788,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 				}
 			}
 		} else {
-			LOG_AI << "Could not move group member to any of " << preferred_moves.size() << " locations\n";
+			LOG_AI << "Could not move group member to any of " << preferred_moves.size() << " locations";
 		}
 	}
 

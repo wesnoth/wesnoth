@@ -28,7 +28,7 @@
  * Then stream logging info to ERR_DP, or LOG_DP, as if it were an ostream like std::cerr.
  * (In general it will actually be std::cerr at runtime when logging is enabled.)
  *
- * LOG_DP << "Found a window resize event: ...\n";
+ * LOG_DP << "Found a window resize event: ...";
  *
  * Please do not use iomanip features like std::hex directly on the logger. Because of the
  * design of the logger, this will result in all of the loggers (in fact std::cerr) being

@@ -221,7 +221,7 @@ std::string os_version()
 	struct utsname u;
 
 	if(uname(&u) != 0) {
-		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
+		ERR_DU << "os_version: uname error (" << strerror(errno) << ")";
 	}
 #endif
 
@@ -403,7 +403,7 @@ std::string os_version()
 	// "I don't know where I am" version.
 	//
 
-	ERR_DU << "os_version(): unsupported platform\n";
+	ERR_DU << "os_version(): unsupported platform";
 	return _("operating_system^<unknown>");
 
 #endif

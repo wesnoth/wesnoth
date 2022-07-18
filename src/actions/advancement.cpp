@@ -62,7 +62,7 @@ namespace
 	{
 		const auto u_it = resources::gameboard->units().find(loc);
 		if(!u_it) {
-			ERR_NG << "advance_unit_dialog: unit not found\n";
+			ERR_NG << "advance_unit_dialog: unit not found";
 			return 0;
 		}
 		const unit& u = *u_it;
@@ -103,11 +103,11 @@ namespace
 
 		unit_map::iterator u = resources::gameboard->units().find(loc);
 		if (u == resources::gameboard->units().end()) {
-			LOG_DP << "animate_unit_advancement suppressed: invalid unit\n";
+			LOG_DP << "animate_unit_advancement suppressed: invalid unit";
 			return false;
 		}
 		else if (!u->advances()) {
-			LOG_DP << "animate_unit_advancement suppressed: unit does not advance\n";
+			LOG_DP << "animate_unit_advancement suppressed: unit does not advance";
 			return false;
 		}
 
@@ -116,7 +116,7 @@ namespace
 
 		assert(options.size() + mod_options.size() > 0);
 		if (choice >= options.size() + mod_options.size()) {
-			LOG_DP << "animate_unit_advancement: invalid option, using first option\n";
+			LOG_DP << "animate_unit_advancement: invalid option, using first option";
 			choice = 0;
 		}
 
@@ -217,7 +217,7 @@ namespace
 				//have no effect because get_advancements returns an empty list.
 				unit_map::iterator u = resources::gameboard->units().find(loc_);
 				if(!u) {
-					ERR_NG << "unit_advancement_choice: unit not found\n";
+					ERR_NG << "unit_advancement_choice: unit not found";
 					return config{};
 				}
 
@@ -282,13 +282,13 @@ void advance_unit_at(const advance_unit_params& params)
 
 		if(params.fire_events_)
 		{
-			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
+			LOG_NG << "Firing pre advance event at " << params.loc_ <<".";
 			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
 			u = resources::gameboard->units().find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
 			{
-				LOG_NG << "pre advance event aborted advancing.\n";
+				LOG_NG << "pre advance event aborted advancing.";
 				return;
 			}
 		}
@@ -354,13 +354,13 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	// "advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "Firing advance event at " << loc <<".\n";
+		LOG_NG << "Firing advance event at " << loc <<".";
 		resources::game_events->pump().fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
 		{
-			LOG_NG << "WML has invalidated the advancing unit. Aborting.\n";
+			LOG_NG << "WML has invalidated the advancing unit. Aborting.";
 			return;
 		}
 		// In case WML moved the unit:
@@ -388,7 +388,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	{
 		statistics::advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
-		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
+		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}
 	u->anim_comp().clear_haloes();
 	resources::gameboard->units().erase(loc);
@@ -402,7 +402,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	// "post_advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "Firing post_advance event at " << loc << ".\n";
+		LOG_NG << "Firing post_advance event at " << loc << ".";
 		resources::game_events->pump().fire("post_advance",loc);
 	}
 

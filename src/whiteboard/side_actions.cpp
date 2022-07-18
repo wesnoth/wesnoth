@@ -82,10 +82,10 @@ std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t
 {
 	if(begin+1 >= end) {
 		if(begin+1 != end) {
-			ERR_WB << "get_turn: begin >= end\n";
+			ERR_WB << "get_turn: begin >= end";
 		}
 		else if(it < turn_beginnings_[begin]) {
-			ERR_WB << "get_turn failed\n";
+			ERR_WB << "get_turn failed";
 		}
 		return begin;
 	}
@@ -339,7 +339,7 @@ bool side_actions::execute(side_actions::iterator position)
 	action_ptr action = *position;
 
 	if(!action->valid()) {
-		LOG_WB << "Invalid action sent to execution, deleting.\n";
+		LOG_WB << "Invalid action sent to execution, deleting.";
 		synced_erase(position);
 		return true;
 	}
@@ -362,7 +362,7 @@ bool side_actions::execute(side_actions::iterator position)
 			resources::undo_stack->clear();
 		}
 		else {
-			WRN_WB << "not clearing undo stack because dsu is active\n";
+			WRN_WB << "not clearing undo stack because dsu is active";
 		}
 	}
 
@@ -687,7 +687,7 @@ void side_actions::change_gold_spent_by(int difference)
 
 void side_actions::reset_gold_spent()
 {
-	DBG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.\n";
+	DBG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.";
 	gold_spent_ = 0;
 }
 
@@ -861,10 +861,10 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		display::get_singleton()->invalidate(first_action->get_numbering_hex());
 		display::get_singleton()->invalidate(second_action->get_numbering_hex());
 	} else if(type=="clear") {
-		LOG_WB << "Command received: clear\n";
+		LOG_WB << "Command received: clear";
 		clear();
 	} else if(type=="refresh") {
-		LOG_WB << "Command received: refresh\n";
+		LOG_WB << "Command received: refresh";
 		clear();
 		for(const net_cmd& sub_cmd : cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);

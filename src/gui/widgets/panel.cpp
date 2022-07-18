@@ -67,13 +67,13 @@ unsigned panel::get_state() const
 
 void panel::impl_draw_background()
 {
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
 	get_canvas(0).draw();
 }
 
 void panel::impl_draw_foreground()
 {
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
 	get_canvas(1).draw();
 }
 

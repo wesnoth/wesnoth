@@ -149,7 +149,7 @@ std::string terrain_topic_generator::operator()() const {
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
-		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data\n";
+		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
 	}
 
@@ -910,7 +910,7 @@ std::string unit_topic_generator::operator()() const {
 
 		ss << generate_table(table);
 	} else {
-		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
+		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.";
 	}
 	return ss.str();
 }

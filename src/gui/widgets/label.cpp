@@ -139,7 +139,7 @@ void label::signal_handler_left_button_click(bool& handled)
 		return ; // without marking event as "handled"
 	}
 
-	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
+	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
 
 	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
 	if(res == gui2::retval::OK) {
@@ -168,7 +168,7 @@ void label::signal_handler_right_button_click(bool& handled)
 		return ; // without marking event as "handled"
 	}
 
-	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"\n";
+	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"";
 
 	desktop::clipboard::copy_to_clipboard(link, false);
 

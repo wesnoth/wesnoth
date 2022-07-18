@@ -82,7 +82,7 @@ unit_race::unit_race(const config& cfg) :
 {
 	if (plural_name_.empty()) {
 		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";
-		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.\n";
+		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
 
