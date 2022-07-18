@@ -1052,7 +1052,7 @@ int main(int argc, char** argv)
 #endif
 
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
-		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
 		return (1);
 	}
 
