@@ -262,7 +262,7 @@ variant formula::execute(const formula_callable& variables, formula_debugger*fdb
 	try {
 		return expr_->evaluate(variables, fdb);
 	} catch(const type_error& e) {
-		PLAIN_LOG << "formula type error: " << e.message << "\n";
+		PLAIN_LOG << "formula type error: " << e.message;
 		return variant();
 	}
 }
@@ -782,7 +782,7 @@ private:
 		case DICE:
 			return variant(dice_roll(left.as_int(), right.as_int()));
 		default:
-			PLAIN_LOG << "ERROR: Unimplemented operator!" << std::endl;
+			PLAIN_LOG << "ERROR: Unimplemented operator!";
 			return variant();
 		}
 	}

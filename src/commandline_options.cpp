@@ -566,7 +566,7 @@ void commandline_options::parse_log_strictness (const std::string & severity ) {
 			return ;
 		}
 	}
-	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging." << std::endl;
+	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging.";
 	lg::set_strict_severity(-1);
 }
 

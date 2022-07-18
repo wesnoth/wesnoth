@@ -140,7 +140,7 @@ protected:
 
 	virtual void set_value(const std::string& key, const variant& /*value*/)
 	{
-		PLAIN_LOG << "ERROR: cannot set key '" << key << "' on object" << std::endl;
+		PLAIN_LOG << "ERROR: cannot set key '" << key << "' on object";
 	}
 
 	virtual int do_compare(const formula_callable* callable) const

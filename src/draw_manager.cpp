@@ -67,7 +67,7 @@ void invalidate_region(const rect& region)
 			// An existing invalidated region already contains it,
 			// no need to do anything in this case.
 			//DBG_DM << "no need to invalidate " << region << endl;
-			//PLAIN_LOG << '.';
+			//STREAMING_LOG << '.';
 			return;
 		}
 		if (region.contains(r)) {
@@ -75,7 +75,7 @@ void invalidate_region(const rect& region)
 			// might as well supercede it with this.
 			DBG_DM << "superceding previous invalidation " << r
 				<< " with " << region << endl;
-			//PLAIN_LOG << '\'';
+			//STREAMING_LOG << '\'';
 			r = region;
 			return;
 		}
@@ -86,7 +86,7 @@ void invalidate_region(const rect& region)
 			// but it also won't ever be the worst.
 			DBG_DM << "merging " << region << " with " << r
 				<< " to invalidate " << m << endl;
-			//PLAIN_LOG << ':';
+			//STREAMING_LOG << ':';
 			r = m;
 			return;
 		}
@@ -96,7 +96,7 @@ void invalidate_region(const rect& region)
 		if (progressive_cover.area() <= cumulative_area) {
 			DBG_DM << "conglomerating invalidations to "
 				<< progressive_cover << endl;
-			//PLAIN_LOG << '%';
+			//STREAMING_LOG << '%';
 			// replace the first one, so we can easily prune later
 			invalidated_regions_[0] = progressive_cover;
 			return;
@@ -105,7 +105,7 @@ void invalidate_region(const rect& region)
 
 	// No optimization was found, so add a new invalidation
 	DBG_DM << "invalidating region " << region << endl;
-	//PLAIN_LOG << '.';
+	//STREAMING_LOG << '.';
 	invalidated_regions_.push_back(region);
 }
 
@@ -191,29 +191,29 @@ next:
 			// r will never contain other, due to construction
 			if (other.contains(r)) {
 				DBG_DM << "skipping redundant draw " << r << endl;
-				//PLAIN_LOG << "-";
+				//STREAMING_LOG << "-";
 				goto next;
 			}
 			rect m = other.minimal_cover(r);
 			if (m.area() <= r.area() + other.area()) {
 				DBG_DM << "merging inefficient draws " << r << endl;
-				//PLAIN_LOG << "=";
+				//STREAMING_LOG << "=";
 				other = m;
 				goto next;
 			}
 		}
 		DBG_DM << "drawing " << r << endl;
-		//PLAIN_LOG << "+";
+		//STREAMING_LOG << "+";
 		auto clipper = draw::override_clip(r);
 		for (auto tld : top_level_drawables_) {
 			rect i = r.intersect(tld->screen_location());
 			if (i.empty()) {
 				//DBG_DM << "  skip " << static_cast<void*>(tld) << endl;
-				//PLAIN_LOG << "x";
+				//STREAMING_LOG << "x";
 				continue;
 			}
 			DBG_DM << "  to " << static_cast<void*>(tld) << endl;
-			//PLAIN_LOG << "*";
+			//STREAMING_LOG << "*";
 			drawn |= tld->expose(i);
 		}
 	}

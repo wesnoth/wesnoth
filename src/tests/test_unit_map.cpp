@@ -86,8 +86,8 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	BOOST_CHECK_MESSAGE(uresult1.first == unit_map.end(), "Didn't Add at invalid location.");
 
 
-	// PLAIN_LOG<<"ID real ="<<orc1_side0_real.underlying_id()<<"\n";
-	// PLAIN_LOG<<"ID fake ="<<orc2_side0_fake.underlying_id()<<"\n";
+	// PLAIN_LOG<<"ID real ="<<orc1_side0_real.underlying_id();
+	// PLAIN_LOG<<"ID fake ="<<orc2_side0_fake.underlying_id();
 
 	lg::set_log_domain_severity("engine", lg::err().get_severity() - 1); // Don't log anything
 	lg::set_log_domain_severity("unit", lg::err());

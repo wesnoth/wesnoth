@@ -200,8 +200,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level)
 {
 	if (level > max_section_level) {
-		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?"
-				  << std::endl;
+		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?";
 	}
 	else if (section_cfg != nullptr) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
@@ -788,7 +787,7 @@ std::string make_unit_link(const std::string& type_id)
 
 	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEXED);
 	if (!type) {
-		PLAIN_LOG << "Unknown unit type : " << type_id << "\n";
+		PLAIN_LOG << "Unknown unit type : " << type_id;
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
 		link = type_id;
@@ -1504,7 +1503,7 @@ void generate_contents()
 		catch (parse_error& e) {
 			std::stringstream msg;
 			msg << "Parse error when parsing help text: '" << e.message << "'";
-			PLAIN_LOG << msg.str() << std::endl;
+			PLAIN_LOG << msg.str();
 		}
 	}
 }

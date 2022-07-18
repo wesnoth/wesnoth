@@ -963,7 +963,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 
 // Debug output for the terrain rules
 #if 0
-	PLAIN_LOG << "Built terrain rules: \n";
+	PLAIN_LOG << "Built terrain rules: ";
 
 	building_ruleset::const_iterator rule;
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
@@ -975,16 +975,16 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
 			PLAIN_LOG << ">>>> New constraint: location = (" << constraint->second.loc
-			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'\n";
+			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'";
 
 			std::vector<std::string>::const_iterator flag;
 
 			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
-				PLAIN_LOG << ">>>>>> Set_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> Set_flag: " << *flag;
 			}
 
 			for(flag = constraint->second.no_flag.begin(); flag != constraint->second.no_flag.end(); ++flag) {
-				PLAIN_LOG << ">>>>>> No_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> No_flag: " << *flag;
 			}
 		}
 

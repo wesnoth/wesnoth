@@ -361,7 +361,7 @@ void wml_tag::expand(wml_tag& root)
 				super_refs_.push_back(super_tag);
 			} else {
 				// TODO: Detect super cycles too!
-				//PLAIN_LOG << "the same" << super_tag->name_ << "\n";
+				//PLAIN_LOG << "the same" << super_tag->name_;
 			}
 		}
 		// TODO: Warn if the super doesn't exist

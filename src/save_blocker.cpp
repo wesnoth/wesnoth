@@ -35,7 +35,7 @@ save_blocker::~save_blocker() {
 		callback_ = nullptr;
 	}
 	} catch (const std::exception & e) {
-		PLAIN_LOG << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
+		PLAIN_LOG << "Save blocker dtor swallowing an exception: " << e.what();
 	}
 }
 
