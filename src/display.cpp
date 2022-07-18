@@ -893,7 +893,7 @@ const std::string& get_direction(std::size_t n)
 
 void display::create_buttons()
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return;
 	}
 
@@ -1701,7 +1701,7 @@ void display::announce(const std::string& message, const color_t& color, const a
 
 void display::recalculate_minimap()
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return;
 	}
 
@@ -1876,7 +1876,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	// NOTE: the next three blocks can be removed once we switch to accelerated rendering.
 	//
 
-	if(!video::faked()) {
+	if(!video::headless()) {
 		rect dst = map_area();
 		dst.x += diff_x;
 		dst.y += diff_y;
@@ -2034,7 +2034,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(video::faked()) {
+	if(video::headless()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2317,7 +2317,7 @@ double display::turbo_speed() const
 		res = !res;
 	}
 
-	res |= video::faked();
+	res |= video::headless();
 	if(res)
 		return preferences::turbo_speed();
 	else
@@ -2379,7 +2379,7 @@ void display::set_fade(const color_t& c)
 
 void display::queue_rerender()
 {
-	if(video::faked())
+	if(video::headless())
 		return;
 
 	DBG_DP << "redrawing everything";
@@ -2447,7 +2447,7 @@ void display::draw()
 {
 	//	log_scope("display::draw");
 
-	if(video::faked()) {
+	if(video::headless()) {
 		DBG_DP << "display::draw denied";
 		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;
@@ -2620,7 +2620,7 @@ rect display::screen_location()
 
 void display::update_render_textures()
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return;
 	}
 

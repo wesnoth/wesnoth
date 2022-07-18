@@ -209,7 +209,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 	end_level = playcontroller.get_end_level_data();
 	show_carryover_message(playcontroller, end_level, res);
 
-	if(!video::faked()) {
+	if(!video::headless()) {
 		playcontroller.maybe_linger();
 	}
 

@@ -371,7 +371,7 @@ static int impl_add_animation(lua_State* L)
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return 0;
 	}
 	events::command_disabler command_disabler;

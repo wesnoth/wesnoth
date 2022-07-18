@@ -81,7 +81,7 @@ game_display& get_fake_display(const int width, const int height)
 	game_display& display = fake_display_manager::get_manager()->get_display();
 
 	if(width >= 0 && height >= 0) {
-		video::make_test_fake(width, height);
+		video::set_resolution({width, height});
 	}
 
 	return display;

@@ -32,7 +32,7 @@
 #include "sdl/point.hpp"
 #include "serialization/parser.hpp"
 #include "sound.hpp"
-#include "video.hpp" // non_interactive()
+#include "video.hpp"
 #include "game_config_view.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
@@ -468,7 +468,7 @@ void set_vsync(bool ison)
 
 bool turbo()
 {
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		return true;
 	}
 

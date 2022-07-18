@@ -102,7 +102,7 @@ int floating_label::xpos(std::size_t width) const
 
 bool floating_label::create_texture()
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return false;
 	}
 
@@ -197,7 +197,7 @@ void floating_label::undraw()
 
 void floating_label::update(int time)
 {
-	if(video::faked()) {
+	if(video::headless()) {
 		return;
 	}
 

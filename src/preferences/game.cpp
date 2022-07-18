@@ -801,8 +801,7 @@ void set_autosavemax(int value)
 
 std::string theme()
 {
-	// TODO: draw_manager - is this correct?
-	if(video::non_interactive()) {
+	if(video::headless()) {
 		static const std::string null_theme = "null";
 		return null_theme;
 	}

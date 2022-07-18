@@ -60,7 +60,7 @@ namespace {
 
 bool modal_dialog::show(const unsigned auto_close_time)
 {
-	if(video::faked() && !show_even_without_video_) {
+	if(video::headless() && !show_even_without_video_) {
 		DBG_DP << "modal_dialog::show denied";
 		if(!allow_plugin_skip_) {
 			return false;

@@ -47,11 +47,7 @@ static lg::log_domain log_display("display");
 
 namespace
 {
-// TODO: match naming with others
-bool fake_interactive = false;
-point fake_size = {0, 0};
-
-/** The SDL window object. */
+/** The SDL window object. Will be null only if headless_. */
 std::unique_ptr<sdl::window> window;
 
 /** The main offscreen render target. */
@@ -60,7 +56,9 @@ texture render_texture_ = {};
 /** The current offscreen render target. */
 texture current_render_target_ = {};
 
-bool fake_screen_ = false;
+bool headless_ = false; /**< running with no window at all */
+bool testing_ = false; /**< running unit tests */
+point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
 int offset_x_ = 0;
 int offset_y_ = 0;
@@ -74,10 +72,11 @@ namespace video
 
 // Forward declarations
 void init_window();
-void init_fake_window();
-void make_fake();
+void init_test_window();
+void init_fake();
+void init_test();
 bool update_framebuffer();
-bool update_framebuffer_fake();
+bool update_test_framebuffer();
 
 
 void init(fake type)
@@ -92,54 +91,45 @@ void init(fake type)
 		init_window();
 		break;
 	case fake::window:
-		make_fake();
+		init_fake();
 		break;
 	case fake::draw:
-		make_test_fake();
+		init_test();
 		break;
+	default:
+		throw error("unrecognized fake type passed to video::init");
 	}
 }
 
-bool faked()
+bool headless()
 {
-	return fake_screen_;
+	return headless_;
 }
 
-bool any_fake()
+bool testing()
 {
-	return fake_screen_ || fake_interactive;
+	return testing_;
 }
 
-bool non_interactive()
+void init_fake()
 {
-	return fake_interactive ? false : (window == nullptr);
-}
-
-void make_fake()
-{
-	fake_screen_ = true;
+	headless_ = true;
 	refresh_rate_ = 1;
 	logical_size_ = {800,600};
 }
 
-void make_test_fake(const unsigned width, const unsigned height)
+void init_test()
 {
-	fake_interactive = true;
+	testing_ = true;
 	refresh_rate_ = 1;
-
-	if (window) {
-		set_resolution({int(width), int(height)});
-	} else {
-		fake_size = {int(width), int(height)};
-		init_fake_window();
-	}
+	init_test_window();
 }
 
 /** Returns true if the buffer was changed */
-bool update_framebuffer_fake()
+bool update_test_framebuffer()
 {
 	if (!window) {
-		return false;
+		throw("trying to update test framebuffer with no window");
 	}
 
 	bool changed = false;
@@ -149,7 +139,7 @@ bool update_framebuffer_fake()
 	if (render_texture_) {
 		int w, h;
 		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
-		if (w != fake_size.x || h != fake_size.y) {
+		if (w != test_resolution_.x || h != test_resolution_.y) {
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
@@ -161,15 +151,15 @@ bool update_framebuffer_fake()
 			*window,
 			window->pixel_format(),
 			SDL_TEXTUREACCESS_TARGET,
-			fake_size.x, fake_size.y
+			test_resolution_.x, test_resolution_.y
 		));
-		LOG_DP << "updated render target to " << fake_size.x
-			<< "x" << fake_size.y;
+		LOG_DP << "updated render target to " << test_resolution_.x
+			<< "x" << test_resolution_.y;
 		changed = true;
 	}
 
 	pixel_scale_ = 1;
-	logical_size_ = fake_size;
+	logical_size_ = test_resolution_;
 
 	// The render texture is always the render target in this case.
 	force_render_target(render_texture_);
@@ -179,12 +169,12 @@ bool update_framebuffer_fake()
 
 bool update_framebuffer()
 {
-	if(!window) {
-		return false;
+	if (!window) {
+		throw error("trying to update framebuffer with no window");
 	}
 
-	if (fake_interactive) {
-		return update_framebuffer_fake();
+	if (testing_) {
+		return update_test_framebuffer();
 	}
 
 	bool changed = false;
@@ -297,10 +287,10 @@ bool update_framebuffer()
 	return changed;
 }
 
-void init_fake_window()
+void init_test_window()
 {
-	LOG_DP << "creating fake window " << fake_size.x
-		<< "x" << fake_size.y;
+	LOG_DP << "creating test window " << test_resolution_.x
+		<< "x" << test_resolution_.y;
 
 	uint32_t window_flags = 0;
 	window_flags |= SDL_WINDOW_HIDDEN;
@@ -311,11 +301,11 @@ void init_fake_window()
 	// All we need is to be able to render to texture.
 
 	window.reset(new sdl::window(
-		"", 0, 0, fake_size.x, fake_size.y,
+		"", 0, 0, test_resolution_.x, test_resolution_.y,
 		window_flags, renderer_flags
 	));
 
-	update_framebuffer_fake();
+	update_test_framebuffer();
 }
 
 void init_window()
@@ -368,8 +358,8 @@ void init_window()
 
 point output_size()
 {
-	if (fake_interactive) {
-		return fake_size;
+	if (testing_) {
+		return test_resolution_;
 	}
 	// As we are rendering via an abstraction, we should never need this.
 	return window->get_output_size();
@@ -377,8 +367,8 @@ point output_size()
 
 point window_size()
 {
-	if (fake_interactive) {
-		return fake_size;
+	if (testing_) {
+		return test_resolution_;
 	}
 	return window->get_size();
 }
@@ -394,8 +384,8 @@ rect input_area()
 		WRN_DP << "requesting input area with no window";
 		return draw_area();
 	}
-	if (fake_interactive) {
-		return {0, 0, fake_size.x, fake_size.y};
+	if (testing_) {
+		return {0, 0, test_resolution_.x, test_resolution_.y};
 	}
 	// This should always match draw_area.
 	SDL_Point p(window->get_logical_size());
@@ -424,7 +414,7 @@ void force_render_target(const texture& t)
 	}
 	current_render_target_ = t;
 
-	if (fake_interactive) {
+	if (testing_) {
 		return;
 	}
 
@@ -436,7 +426,6 @@ void force_render_target(const texture& t)
 		window->set_logical_size(draw_area().w, draw_area().h);
 	} else if (t == render_texture_) {
 		DBG_DP << "rendering to primary buffer";
-		// TODO: highdpi - sort out who owns this
 		window->set_logical_size(draw_area().w, draw_area().h);
 	} else {
 		DBG_DP << "rendering to custom target "
@@ -473,7 +462,7 @@ rect to_output(const rect& r)
 // SDL renderer usage is not thread-safe anyway, so this is fine.
 void render_screen()
 {
-	if(fake_screen_ || fake_interactive) {
+	if(headless_ || testing_) {
 		// No need to present anything in this case
 		return;
 	}
@@ -697,15 +686,15 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 point current_resolution()
 {
-	if (fake_interactive) {
-		return fake_size;
+	if (testing_) {
+		return test_resolution_;
 	}
 	return point(window->get_size()); // Convert from plain SDL_Point
 }
 
 bool is_fullscreen()
 {
-	if (fake_interactive) {
+	if (testing_) {
 		return true;
 	}
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
@@ -713,7 +702,7 @@ bool is_fullscreen()
 
 void set_fullscreen(bool fullscreen)
 {
-	if (any_fake()) {
+	if (headless_ || testing_) {
 		return;
 	}
 
@@ -746,16 +735,14 @@ bool set_resolution(const point& resolution)
 		return false;
 	}
 
-	assert(window);
-
-	if(fake_screen_) {
-		return false;
+	if(!window) {
+		throw error("tried to set resolution with no window");
 	}
 
-	if(fake_interactive) {
-		LOG_DP << "resizing fake resolution to " << resolution << std::endl;
-		fake_size = resolution;
-		return update_framebuffer_fake();
+	if(testing_) {
+		LOG_DP << "resizing test resolution to " << resolution;
+		test_resolution_ = resolution;
+		return update_test_framebuffer();
 	}
 
 	window->restore();
@@ -774,6 +761,10 @@ bool set_resolution(const point& resolution)
 
 void update_buffers(bool autoupdate)
 {
+	if(headless_) {
+		return;
+	}
+
 	LOG_DP << "updating video buffers";
 	if(update_framebuffer() && autoupdate) {
 		draw_manager::invalidate_all();

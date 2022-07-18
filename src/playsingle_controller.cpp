@@ -133,7 +133,7 @@ void playsingle_controller::init_gui()
 	// Fade in
 	gui_->set_prevent_draw(false);
 	gui_->queue_repaint();
-	if(!video::any_fake()) {
+	if(!video::headless() && !video::testing()) {
 		gui_->fade_to({0,0,0,0}, 500);
 	} else {
 		gui_->set_fade({0,0,0,0});
