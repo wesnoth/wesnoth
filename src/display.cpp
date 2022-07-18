@@ -2484,6 +2484,7 @@ void display::draw()
 
 void display::update()
 {
+	//DBG_DP << "display::update";
 	// Ensure render textures are correctly sized and up-to-date.
 	update_render_textures();
 

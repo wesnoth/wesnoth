@@ -333,11 +333,8 @@ bool game_launcher::init_video()
 		return true;
 	}
 
+	// Initialize video subsystem, and create a new window.
 	video::init();
-
-	// Initialize a new window
-	// TODO: draw_manager - surely this should happen automatically?
-	video::init_window();
 
 	// Set window title and icon
 	video::set_window_title(game_config::get_default_title_string());

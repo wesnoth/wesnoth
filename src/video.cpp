@@ -73,6 +73,8 @@ namespace video
 {
 
 // Forward declarations
+void init_window();
+void init_fake_window();
 void make_fake();
 bool update_framebuffer();
 bool update_framebuffer_fake();
@@ -87,6 +89,7 @@ void init(fake type)
 
 	switch(type) {
 	case fake::none:
+		init_window();
 		break;
 	case fake::window:
 		make_fake();
