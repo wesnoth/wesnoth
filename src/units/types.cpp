@@ -421,7 +421,7 @@ void unit_type::build(BUILD_STATUS status,
 		const race_map& races,
 		const config_array_view& traits)
 {
-	DBG_UT << "Building unit type " << log_id() << ", level " << status << '\n';
+	DBG_UT << "Building unit type " << log_id() << ", level " << status;
 
 	switch(status) {
 	case NOT_BUILT:
@@ -883,7 +883,7 @@ void throw_base_unit_recursion_error(const std::vector<std::string>& base_tree, 
 	}
 
 	ss << base_id;
-	ERR_CF << ss.str() << '\n';
+	ERR_CF << ss.str();
 
 	throw config::error(ss.str());
 }

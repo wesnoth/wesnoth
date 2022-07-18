@@ -696,7 +696,7 @@ void listbox::update_layout()
 listbox_definition::listbox_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing listbox " << id << '\n';
+	DBG_GUI_P << "Parsing listbox " << id;
 
 	load_resolutions<resolution>(cfg);
 }

@@ -596,7 +596,7 @@ void unit_preview_pane::set_self_active(const bool /*active*/)
 unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
+	DBG_GUI_P << "Parsing unit preview pane " << id;
 
 	load_resolutions<resolution>(cfg);
 }

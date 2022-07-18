@@ -164,7 +164,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		   d.first != "WESNOTH_VERSION")
 		{
 			is_valid = false;
-			ERR_CACHE << "Invalid preprocessor define: " << d.first << '\n';
+			ERR_CACHE << "Invalid preprocessor define: " << d.first;
 			break;
 		}
 
@@ -398,7 +398,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 			}
 		}
 
-		LOG_CACHE << "delete_cache_files(): deleting " << file_path << '\n';
+		LOG_CACHE << "delete_cache_files(): deleting " << file_path;
 		if(!filesystem::delete_directory(file_path)) {
 			ERR_CACHE << "delete_cache_files(): could not delete "
 					  << file_path << '\n';

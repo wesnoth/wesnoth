@@ -204,7 +204,7 @@ int show_message(const std::string& title,
 void show_error_message(const std::string& msg,
 						bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general()) << msg << '\n';
+	LOG_STREAM(err, lg::general()) << msg;
 	(void) show_message(
 				 _("Error"),
 				 msg,

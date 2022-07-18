@@ -94,7 +94,7 @@ point size_lock::calculate_best_size() const
 size_lock_definition::size_lock_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing fixed size widget " << id << '\n';
+	DBG_GUI_P << "Parsing fixed size widget " << id;
 
 	load_resolutions<resolution>(cfg);
 }

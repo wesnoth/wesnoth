@@ -76,11 +76,11 @@ void scenario::set_metadata()
 		map_.reset(nullptr);
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
-		ERR_CF << "map could not be loaded: " << e.message << '\n';
+		ERR_CF << "map could not be loaded: " << e.message;
 	} catch(const wml_exception& e) {
 		data_["description"] = _("Map could not be loaded.");
 
-		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
+		ERR_CF << "map could not be loaded: " << e.dev_message;
 	}
 
 	set_sides();
@@ -668,7 +668,7 @@ void create_engine::init_all_levels()
 				map.reset(nullptr);
 				user_map_data["description"] = _("Map could not be loaded: ") + e.message;
 
-				ERR_CF << "map could not be loaded: " << e.message << '\n';
+				ERR_CF << "map could not be loaded: " << e.message;
 			} catch (const wml_exception&) {
 				add_map = false;
 				dep_index_offset++;

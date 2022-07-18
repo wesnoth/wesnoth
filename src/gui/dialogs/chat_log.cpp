@@ -274,7 +274,7 @@ public:
 						 ? first + page_size
 						 : log_size;
 
-		LOG_CHAT_LOG << "First " << first << ", last " << last << '\n';
+		LOG_CHAT_LOG << "First " << first << ", last " << last;
 
 		return std::pair(first, last);
 	}

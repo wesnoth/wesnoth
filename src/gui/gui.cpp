@@ -56,7 +56,7 @@ void init()
 
 		read(cfg, *stream, &validator);
 	} catch(const config::error& e) {
-		ERR_GUI_P << e.what() << '\n';
+		ERR_GUI_P << e.what();
 		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
 	} catch(const abstract_validator::error& e) {
 		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";

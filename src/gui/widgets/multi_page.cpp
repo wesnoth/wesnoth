@@ -164,7 +164,7 @@ void multi_page::set_self_active(const bool /*active*/)
 multi_page_definition::multi_page_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing multipage " << id << '\n';
+	DBG_GUI_P << "Parsing multipage " << id;
 
 	load_resolutions<resolution>(cfg);
 }

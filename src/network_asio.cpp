@@ -89,7 +89,7 @@ connection::connection(const std::string& host, const std::string& service)
 			std::bind(&connection::handle_resolve, this, std::placeholders::_1, std::placeholders::_2));
 	}
 
-	LOG_NW << "Resolving hostname: " << host << '\n';
+	LOG_NW << "Resolving hostname: " << host;
 }
 
 connection::~connection()
@@ -120,7 +120,7 @@ void connection::handle_connect(const boost::system::error_code& ec, endpoint en
 		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << endpoint.address() << '\n';
+		LOG_NW << "Connected to " << endpoint.address();
 
 		if(endpoint.address().is_loopback()) {
 			use_tls_ = false;

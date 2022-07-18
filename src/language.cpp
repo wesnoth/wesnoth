@@ -280,8 +280,8 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 #endif
 
 	done:
-	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr) << '\n';
-	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr);
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr);
 }
 
 void set_language(const language_def& locale)

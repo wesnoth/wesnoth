@@ -80,7 +80,7 @@ bool lua_unit::put_map(const map_location &loc)
 			ptr.reset();
 			uid = unit_it->underlying_id();
 		} else {
-			ERR_LUA << "Could not move unit " << ptr->underlying_id() << " onto map location " << loc << '\n';
+			ERR_LUA << "Could not move unit " << ptr->underlying_id() << " onto map location " << loc;
 			return false;
 		}
 	} else if (side) { // recall list
@@ -90,7 +90,7 @@ bool lua_unit::put_map(const map_location &loc)
 			// uid may be changed by unit_map on insertion
 			uid = resources::gameboard->units().replace(loc, it).first->underlying_id();
 		} else {
-			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
+			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side;
 			return false;
 		}
 	} else { // on map

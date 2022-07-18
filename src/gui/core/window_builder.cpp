@@ -197,7 +197,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 		VALIDATE(height.has_formula() || height(), missing_mandatory_wml_key("resolution", "height"));
 	}
 
-	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ',' << window_height << '\n';
+	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ',' << window_height;
 
 	if(definition.empty()) {
 		definition = "default";

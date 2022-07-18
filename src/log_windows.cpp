@@ -98,7 +98,7 @@ void rotate_logs(const std::string& log_dir)
 
 	for(std::size_t j = 0; j < files.size() - max_logs; ++j) {
 		const std::string path = log_dir + '/' + files[j];
-		LOG_LS << "rotate_logs(): delete " << path << '\n';
+		LOG_LS << "rotate_logs(): delete " << path;
 		if(!filesystem::delete_file(path)) {
 			WRN_LS << "rotate_logs(): failed to delete " << path << "!\n";
 		}
@@ -148,7 +148,7 @@ std::string temp_dir()
  */
 void log_init_panic(const std::string& msg)
 {
-	ERR_LS << "Log initialization panic call: " << msg << '\n';
+	ERR_LS << "Log initialization panic call: " << msg;
 
 	const std::string full_msg = msg + "\n\n" + "This may indicate an issue with your Wesnoth launch configuration. If the problem persists, contact the development team for technical support, including the full contents of this message (copy with CTRL+C).";
 
@@ -322,7 +322,7 @@ log_file_manager::log_file_manager(bool native_console)
 		log_init_panic(e, new_path, cur_path_);
 	}
 
-	LOG_LS << "Opened log file at " << new_path << '\n';
+	LOG_LS << "Opened log file at " << new_path;
 }
 
 log_file_manager::~log_file_manager()
@@ -369,7 +369,7 @@ void log_file_manager::move_log_file(const std::string& log_dir)
 		log_init_panic(e, new_path, cur_path_);
 	}
 
-	LOG_LS << "Moved log file to " << new_path << '\n';
+	LOG_LS << "Moved log file to " << new_path;
 }
 
 void log_file_manager::open_log_file(const std::string& file_path, bool truncate)

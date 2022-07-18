@@ -112,7 +112,7 @@ horizontal_scrollbar_definition::horizontal_scrollbar_definition(
 		const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
+	DBG_GUI_P << "Parsing horizontal scrollbar " << id;
 
 	load_resolutions<resolution>(cfg);
 }

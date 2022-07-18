@@ -271,7 +271,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 				continue;
 			}
 
-			LOG_PREPROC << "adding define: " << define << '\n';
+			LOG_PREPROC << "adding define: " << define;
 			defines_map.emplace(define, preproc_define(define));
 
 			if(define == "SKIP_CORE") {
@@ -347,7 +347,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 			continue;
 		}
 
-		LOG_PREPROC << "adding define: " << define << '\n';
+		LOG_PREPROC << "adding define: " << define;
 		defines_map.emplace(define, preproc_define(define));
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;

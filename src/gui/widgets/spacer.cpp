@@ -107,7 +107,7 @@ void spacer::impl_draw_background()
 spacer_definition::spacer_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing spacer " << id << '\n';
+	DBG_GUI_P << "Parsing spacer " << id;
 
 	load_resolutions<resolution>(cfg);
 }

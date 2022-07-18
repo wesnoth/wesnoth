@@ -306,7 +306,7 @@ bool file_dialog::process_submit_common(const std::string& name)
 {
 	const auto stype = register_new_selection(name);
 
-	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_ << '\n';
+	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_;
 
 	if(is_selection_type_acceptable(stype)) {
 		return save_mode_ ? confirm_overwrite(stype) : true;
@@ -409,19 +409,19 @@ file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::strin
 		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems absolute\n";
 		new_parent = fs::directory_name(name);
 		new_path = fs::normalize_path(name, true, true);
-		DBG_FILEDLG << "register_new_selection(): new selection is " << new_path << '\n';
+		DBG_FILEDLG << "register_new_selection(): new selection is " << new_path;
 	}
 
 	if(!new_path.empty()) {
 		if(fs::is_directory(new_path)) {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a directory: " << new_path << '\n';
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a directory: " << new_path;
 			current_dir_ = new_path;
 			current_entry_.clear();
 			return SELECTION_IS_DIR;
 		} else if(fs::file_exists(new_path)) {
 			// FIXME: Perhaps redundant since the three-params call to normalize_path()
 			//        above necessarily validates existence.
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a file, symbolic link, or special: " << new_path << '\n';
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a file, symbolic link, or special: " << new_path;
 			current_dir_ = fs::directory_name(new_path);
 			current_entry_ = fs::base_name(new_path);
 			return SELECTION_IS_FILE;

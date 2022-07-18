@@ -568,7 +568,7 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	error = error_type + '\n';
 	error += "at " + position;
 
-	ERR_PREPROC << error << '\n';
+	ERR_PREPROC << error;
 
 	throw preproc_config::error(error);
 }
@@ -584,7 +584,7 @@ void preprocessor_streambuf::warning(const std::string& warning_type, int l)
 	warning = warning_type + '\n';
 	warning += "at " + position;
 
-	WRN_PREPROC << warning << '\n';
+	WRN_PREPROC << warning;
 }
 
 
@@ -1325,7 +1325,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = parent_.defines_->count(symbol) != 0;
-			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
+			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifhave" || command == "ifnhave") {
 			const bool negate = command[2] == 'n';
@@ -1612,12 +1612,12 @@ bool preprocessor_data::get_chunk()
 				pop_token();
 
 				if(!slowpath_) {
-					DBG_PREPROC << "substituting macro " << symbol << '\n';
+					DBG_PREPROC << "substituting macro " << symbol;
 
 					parent_.add_preprocessor<preprocessor_data>(
 						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
 				} else {
-					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
+					DBG_PREPROC << "substituting (slow) macro " << symbol;
 
 					std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
@@ -1761,7 +1761,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Subdirectories
 		for(const std::string& dir : dirs) {
-			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
+			LOG_PREPROC << "processing sub-dir: " << dir;
 			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, parent_directory);
 		}
 
@@ -1778,7 +1778,7 @@ void preprocess_resource(const std::string& res_name,
 		return;
 	}
 
-	LOG_PREPROC << "processing resource: " << res_name << '\n';
+	LOG_PREPROC << "processing resource: " << res_name;
 
 	// disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
@@ -1807,7 +1807,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Write the processed cfg file
 		if(write_cfg) {
-			LOG_PREPROC << "writing cfg file: " << preproc_res_name << '\n';
+			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
 			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
@@ -1817,7 +1817,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Write the plain cfg file
 		if(write_plain_cfg) {
-			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain") << '\n';
+			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain");
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
 			filesystem::write_file(preproc_res_name + ".plain", streamContent);

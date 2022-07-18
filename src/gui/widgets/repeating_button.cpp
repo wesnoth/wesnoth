@@ -169,7 +169,7 @@ void repeating_button::signal_handler_left_button_up(const event::ui_event event
 repeating_button_definition::repeating_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing repeating button " << id << '\n';
+	DBG_GUI_P << "Parsing repeating button " << id;
 
 	load_resolutions<resolution>(cfg);
 }

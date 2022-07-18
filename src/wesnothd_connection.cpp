@@ -113,7 +113,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
 	});
 
-	LOG_NW << "Resolving hostname: " << host << '\n';
+	LOG_NW << "Resolving hostname: " << host;
 }
 
 wesnothd_connection::~wesnothd_connection()
@@ -154,7 +154,7 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << endpoint.address() << '\n';
+		LOG_NW << "Connected to " << endpoint.address();
 
 		if(endpoint.address().is_loopback()) {
 			use_tls_ = false;

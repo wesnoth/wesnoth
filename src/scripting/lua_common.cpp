@@ -1158,7 +1158,7 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 					e = em;
 				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 			} else {
-				ERR_LUA << m << '\n';
+				ERR_LUA << m;
 				chat_message("Lua error", m);
 			}
 		} else {

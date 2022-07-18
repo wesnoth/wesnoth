@@ -588,7 +588,7 @@ void get_villages_phase::execute()
 				if (new_unit != units_.end() &&
 				    power_projection(i->first, get_enemy_dstsrc()) >= new_unit->hitpoints() / 4.0)
 				{
-					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->get_location() << '\n';
+					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->get_location();
 				}
 			}
 		}
@@ -764,7 +764,7 @@ void get_villages_phase::find_villages(
 
 			move_result_ptr move_check_res = check_move_action(j->second,j->first,true);
 			if (move_check_res->is_ok()) {
-				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << j->second << " to village " << j->first << '\n';
+				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << j->second << " to village " << j->first;
 				moves.emplace_back(j->first, j->second);
 			}
 			reachmap.erase(j->second);
@@ -849,7 +849,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 			const map_location village = itor->second[0];
 			result = true;
 
-			DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first << " to village " << village << '\n';
+			DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first << " to village " << village;
 			moves.emplace_back(village, itor->first);
 			reachmap.erase(itor++);
 
@@ -918,7 +918,7 @@ bool get_villages_phase::dispatch_village_simple(
 				dispatched = true;
 				result = true;
 
-				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->second[0] << " to village " << itor->first << '\n';
+				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->second[0] << " to village " << itor->first;
 				moves.emplace_back(itor->first, itor->second[0]);
 
 				reachmap.erase(itor->second[0]);
@@ -1361,7 +1361,7 @@ double get_healing_phase::evaluate()
 					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
 						best_loc = it.first;
-						DBG_AI_TESTING_AI_DEFAULT << "chose village " << dst << '\n';
+						DBG_AI_TESTING_AI_DEFAULT << "chose village " << dst;
 					}
 				}
 

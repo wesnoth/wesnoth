@@ -1682,7 +1682,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		if(user_handler_) {
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
-			DBG_SERVER << simple_wml::node_to_string(m) << '\n';
+			DBG_SERVER << simple_wml::node_to_string(m);
 			// [addon] info handling
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {

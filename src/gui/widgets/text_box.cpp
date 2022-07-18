@@ -397,7 +397,7 @@ text_box::signal_handler_left_button_double_click(const event::ui_event event,
 text_box_definition::text_box_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing text_box " << id << '\n';
+	DBG_GUI_P << "Parsing text_box " << id;
 
 	load_resolutions<resolution>(cfg);
 }

@@ -70,7 +70,7 @@ addons_client::addons_client(const std::string& address)
 
 void addons_client::connect()
 {
-	LOG_ADDONS << "connecting to server " << host_ << " on port " << port_ << '\n';
+	LOG_ADDONS << "connecting to server " << host_ << " on port " << port_;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["server_address"] = addr_;
@@ -156,7 +156,7 @@ bool addons_client::request_distribution_terms(std::string& terms)
 
 bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg, bool local_only)
 {
-	LOG_ADDONS << "preparing to upload " << id << '\n';
+	LOG_ADDONS << "preparing to upload " << id;
 
 	response_message.clear();
 
@@ -225,7 +225,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		// A silent error check
 		if(!hashlist.child("error")) {
 			if(!contains_hashlist(addon_data, hashlist) || !contains_hashlist(hashlist, addon_data)) {
-				LOG_ADDONS << "making an update pack for the add-on " << id << '\n';
+				LOG_ADDONS << "making an update pack for the add-on " << id;
 				config updatepack;
 				// The client shouldn't send the pack if the server is old due to the previous check,
 				// so the server should handle the new format in the `upload` request
@@ -241,7 +241,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 				if(const config& message_cfg = response_buf.child("message")) {
 					response_message = message_cfg["message"].str();
-					LOG_ADDONS << "server response: " << response_message << '\n';
+					LOG_ADDONS << "server response: " << response_message;
 				}
 
 				if(!update_last_error(response_buf))
@@ -254,7 +254,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	config request_buf, response_buf;
 	request_buf.add_child("upload", cfg).add_child("data", std::move(addon_data));
 
-	LOG_ADDONS << "sending " << id << '\n';
+	LOG_ADDONS << "sending " << id;
 
 	send_request(request_buf, response_buf);
 	wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
@@ -262,7 +262,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();
-		LOG_ADDONS << "server response: " << response_message << '\n';
+		LOG_ADDONS << "server response: " << response_message;
 	}
 
 	return !update_last_error(response_buf);
@@ -300,7 +300,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	request_body["name"] = id;
 	request_body["passphrase"] = cfg["passphrase"];
 
-	LOG_ADDONS << "requesting server to delete " << id << '\n';
+	LOG_ADDONS << "requesting server to delete " << id;
 
 	send_request(request_buf, response_buf);
 	wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
@@ -308,7 +308,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();
-		LOG_ADDONS << "server response: " << response_message << '\n';
+		LOG_ADDONS << "server response: " << response_message;
 	}
 
 	return !update_last_error(response_buf);
@@ -329,7 +329,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(title);
 
-	LOG_ADDONS << "downloading " << id << '\n';
+	LOG_ADDONS << "downloading " << id;
 
 	send_request(request_buf, archive_cfg);
 	wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
@@ -386,7 +386,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 							"with case conflicts. This may cause problems.", i18n_symbols));
 		}
 
-		LOG_ADDONS << "unpacking " << info.id << '\n';
+		LOG_ADDONS << "unpacking " << info.id;
 
 		// Remove any previously installed versions
 		if(!remove_local_addon(info.id)) {
@@ -599,7 +599,7 @@ bool addons_client::update_last_error(config& response_cfg)
 			last_error_ = font::escape_text(error["message"].str());
 		}
 		last_error_data_ = font::escape_text(error["extra_data"].str());
-		ERR_ADDONS << "server error: " << error << '\n';
+		ERR_ADDONS << "server error: " << error;
 		return true;
 	} else {
 		last_error_.clear();

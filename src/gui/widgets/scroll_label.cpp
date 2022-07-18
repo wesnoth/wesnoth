@@ -167,7 +167,7 @@ void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 scroll_label_definition::scroll_label_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing scroll label " << id << '\n';
+	DBG_GUI_P << "Parsing scroll label " << id;
 
 	load_resolutions<resolution>(cfg);
 }

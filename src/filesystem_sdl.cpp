@@ -54,7 +54,7 @@ rwops_ptr make_read_RWops(const std::string &path) {
 
 	scoped_istream ifs = istream_file(path);
 	if(!ifs) {
-		ERR_FS << "make_read_RWops: istream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_read_RWops: istream_file returned NULL on " << path;
 		rw.reset();
 		return rw;
 	}
@@ -77,7 +77,7 @@ rwops_ptr make_write_RWops(const std::string &path) {
 
 	scoped_ostream ofs = ostream_file(path);
 	if(!ofs) {
-		ERR_FS << "make_write_RWops: ostream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_write_RWops: ostream_file returned NULL on " << path;
 		rw.reset();
 		return rw;
 	}

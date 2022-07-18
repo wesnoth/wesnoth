@@ -102,7 +102,7 @@ vertical_scrollbar_definition::vertical_scrollbar_definition(
 		const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing vertical scrollbar " << id << '\n';
+	DBG_GUI_P << "Parsing vertical scrollbar " << id;
 
 	load_resolutions<resolution>(cfg);
 }

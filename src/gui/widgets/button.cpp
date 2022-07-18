@@ -150,7 +150,7 @@ void button::signal_handler_left_button_click(const event::ui_event event,
 button_definition::button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing button " << id << '\n';
+	DBG_GUI_P << "Parsing button " << id;
 
 	load_resolutions<resolution>(cfg);
 }

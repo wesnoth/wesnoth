@@ -1309,10 +1309,10 @@ void attack::unit_killed(unit_info& attacker,
 
 	// Plague units make new units on the target hex.
 	if(attacker.valid() && attacker_stats->plagues && !drain_killed) {
-		LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
+		LOG_NG << "trying to reanimate " << attacker_stats->plague_type;
 
 		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)) {
-			LOG_NG << "found unit type:" << reanimator->id() << '\n';
+			LOG_NG << "found unit type:" << reanimator->id();
 
 			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
 			newunit->set_attacks(0);

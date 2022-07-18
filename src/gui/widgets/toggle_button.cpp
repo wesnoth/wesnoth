@@ -197,7 +197,7 @@ void toggle_button::signal_handler_left_button_double_click(
 toggle_button_definition::toggle_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing toggle button " << id << '\n';
+	DBG_GUI_P << "Parsing toggle button " << id;
 
 	load_resolutions<resolution>(cfg);
 }
