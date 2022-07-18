@@ -126,7 +126,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	// Draw the border
 	draw::set_color(border_color);
 	DBG_GUI_D << "border thickness " << border_thickness_
-		<< ", colour " << border_color << std::endl;
+		<< ", colour " << border_color;
 	for(int i = 0; i < border_thickness_; ++i) {
 		const SDL_Rect dimensions {
 			x + i,
@@ -555,13 +555,13 @@ void canvas::parse_cfg(const config& cfg)
 					blur_depth_ = function.cfg["depth"];
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
-							  << " of an invalid type " << type << ".\n";
+							  << " of an invalid type " << type << ".";
 				}
 			}
 
 		} else {
 			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type
-					  << ".\n";
+					  << ".";
 
 			assert(false);
 		}

@@ -522,7 +522,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled event " << static_cast<uint32_t>(event.type)
-			          << ".\n";
+			          << ".";
 #endif
 			break;
 	}
@@ -670,7 +670,7 @@ void sdl_event_handler::mouse_button_up(const point& position, const uint8_t but
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
-					  << static_cast<uint32_t>(button) << ".\n";
+					  << static_cast<uint32_t>(button) << ".";
 #endif
 			break;
 	}
@@ -691,7 +691,7 @@ void sdl_event_handler::mouse_button_down(const point& position, const uint8_t b
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
-					  << static_cast<uint32_t>(button) << ".\n";
+					  << static_cast<uint32_t>(button) << ".";
 #endif
 			break;
 	}

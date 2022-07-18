@@ -341,7 +341,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		if(text != narrow) {
 			ERR_GUI_L << "pango_text::" << __func__
 					<< " text '" << text
-					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
+					<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
 		if(markedup) {
 			if(!this->set_markup(narrow, *layout_)) {
@@ -634,7 +634,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		<< " text '" << gui2::debug_truncate(text_)
 		<< "' maximum_width " << maximum_width
 		<< " width " << size.x + size.width
-		<< ".\n";
+		<< ".";
 
 	DBG_GUI_L << "pango_text::" << __func__
 		<< " text '" << gui2::debug_truncate(text_)
@@ -644,14 +644,14 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		<< " maximum_width " << maximum_width
 		<< " maximum_height " << maximum_height_
 		<< " result " << size
-		<< ".\n";
+		<< ".";
 
 	if(maximum_width != -1 && size.x + size.width > maximum_width) {
 		DBG_GUI_L << "pango_text::" << __func__
 			<< " text '" << gui2::debug_truncate(text_)
 			<< " ' width " << size.x + size.width
 			<< " greater as the wanted maximum of " << maximum_width
-			<< ".\n";
+			<< ".";
 	}
 
 	// The maximum height is handled here instead of using the library - see the comments in set_maximum_height()
@@ -660,7 +660,7 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 			<< " text '" << gui2::debug_truncate(text_)
 			<< " ' height " << size.y + size.height
 			<< " greater as the wanted maximum of " << maximum_height_
-			<< ".\n";
+			<< ".";
 		size.height = maximum_height_ - std::max(0, size.y);
 	}
 
@@ -855,7 +855,7 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 	} else {
 		ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
-			<< "' has broken markup, set to normal text.\n";
+			<< "' has broken markup, set to normal text.";
 		set_text(_("The text contains invalid Pango markup: ") + std::string(text), false);
 	}
 
@@ -937,7 +937,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	/* Replacement worked, still warn the user about the error. */
 	WRN_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
-			<< "' has unescaped ampersands '&', escaped them.\n";
+			<< "' has unescaped ampersands '&', escaped them.";
 
 	return true;
 }

@@ -209,7 +209,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 				  << "' maximum_width " << maximum_width << " result " << size
-				  << ".\n";
+				  << ".";
 
 	} else if(label_.empty() || text_can_shrink()) {
 		point size = get_best_size();
@@ -219,10 +219,10 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
 		          << " maximum_width " << maximum_width << " result " << size
-		          << ".\n";
+		          << ".";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-				  << "' failed; either no label or wrapping not allowed.\n";
+				  << "' failed; either no label or wrapping not allowed.";
 	}
 }
 
@@ -238,7 +238,7 @@ void styled_widget::request_reduce_height(const unsigned maximum_height)
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
 		          << " maximum_height " << maximum_height << " result " << size
-		          << ".\n";
+		          << ".";
 	}
 }
 
@@ -259,7 +259,7 @@ point styled_widget::calculate_best_size() const
 	 */
 	point result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-			  << "' result " << result << ".\n";
+			  << "' result " << result << ".";
 	return result;
 }
 
@@ -434,7 +434,7 @@ int styled_widget::get_text_maximum_height() const
 void styled_widget::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
-			  << get_rectangle() << ".\n";
+			  << get_rectangle() << ".";
 
 	get_canvas(get_state()).draw();
 }
@@ -475,7 +475,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	if(get_characters_per_line() != 0 && !can_wrap()) {
 		WRN_GUI_L << LOG_HEADER
 			<< " Limited the number of characters per line, "
-			<< "but wrapping is not set, output may not be as expected.\n";
+			<< "but wrapping is not set, output may not be as expected.";
 	}
 
 	DBG_GUI_L << LOG_HEADER << "\n"
@@ -488,7 +488,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"
-		<< "renderer size: " << renderer_.get_size() << "\n\n"
+		<< "renderer size: " << renderer_.get_size() << "\n"
 		<< std::noboolalpha;
 
 	const point border(config_->text_extra_width,
@@ -516,7 +516,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	}
 
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-			  << "' result " << size << ".\n";
+			  << "' result " << size << ".";
 	return size;
 }
 
@@ -606,7 +606,7 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 
 
 	DBG_GUI_P << "Window builder: found styled_widget with id '" << id
-			  << "' and definition '" << definition << "'.\n";
+			  << "' and definition '" << definition << "'.";
 }
 
 std::unique_ptr<widget> builder_styled_widget::build(const replacements_map& /*replacements*/) const

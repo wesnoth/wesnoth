@@ -229,7 +229,7 @@ void scrollbar_base::recalculate()
 		assert(window);
 		window->invalidate_layout();
 		ERR_GUI_G << LOG_HEADER
-				  << " Can't recalculate size, force a window layout phase.\n";
+				  << " Can't recalculate size, force a window layout phase.";
 		return;
 	}
 

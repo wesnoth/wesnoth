@@ -173,7 +173,7 @@ point container_base::calculate_best_size() const
 
 
 	DBG_GUI_L << LOG_HEADER << " border size " << border_size << " returning "
-			  << result << ".\n";
+			  << result << ".";
 
 	return result;
 }

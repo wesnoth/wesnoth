@@ -329,7 +329,7 @@ void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 	}
 
 	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '" << widget->id()
-			  << "' at address " << widget << ".\n";
+			  << "' at address " << widget << ".";
 
 	hover_timer_ = add_timer(50, std::bind(&mouse_motion::show_tooltip, this));
 
@@ -347,7 +347,7 @@ void mouse_motion::stop_hover_timer()
 		assert(hover_widget_);
 		DBG_GUI_E << LOG_HEADER << "Stop hover timer for widget '"
 				  << hover_widget_->id() << "' at address " << hover_widget_
-				  << ".\n";
+				  << ".";
 
 		if(!remove_timer(hover_timer_)) {
 			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.";
@@ -480,7 +480,7 @@ void mouse_button<I>::signal_handler_sdl_button_down(
 		if(mouse_over != mouse_focus_) {
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << LOG_HEADER << ". Mouse down on non focused widget "
-					  << "and mouse not captured, we missed events.\n";
+					  << "and mouse not captured, we missed events.";
 #endif
 			mouse_focus_ = mouse_over;
 		}

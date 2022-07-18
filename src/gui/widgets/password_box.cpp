@@ -130,7 +130,7 @@ std::unique_ptr<widget> builder_password_box::build() const
 	widget->set_value(label_string);
 
 	DBG_GUI_G << "Window builder: placed password box '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

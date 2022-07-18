@@ -213,8 +213,7 @@ public:
 
 	void next_page()
 	{
-		LOG_CHAT_LOG << "Entering chat_log::controller::next_page"
-					 << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller::next_page";
 		if(model_.page >= model_.count_of_pages() - 1) {
 			return;
 		}
@@ -226,16 +225,14 @@ public:
 
 	void previous_page()
 	{
-		LOG_CHAT_LOG << "Entering chat_log::controller::previous_page"
-					 << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller::previous_page";
 		if(model_.page == 0) {
 			return;
 		}
 		model_.page--;
 		LOG_CHAT_LOG << "Set page to " << model_.page + 1;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting chat_log::controller::previous_page"
-					 << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller::previous_page";
 	}
 
 	void filter()
@@ -248,14 +245,12 @@ public:
 	void handle_page_number_changed()
 	{
 		LOG_CHAT_LOG
-		<< "Entering chat_log::controller::handle_page_number_changed"
-		<< std::endl;
+			<< "Entering chat_log::controller::handle_page_number_changed";
 		model_.page = model_.page_number->get_value() - 1;
 		LOG_CHAT_LOG << "Set page to " << model_.page + 1;
 		update_view_from_model();
 		LOG_CHAT_LOG
-		<< "Exiting chat_log::controller::handle_page_number_changed"
-		<< std::endl;
+			<< "Exiting chat_log::controller::handle_page_number_changed";
 	}
 
 	std::pair<int, int> calculate_log_line_range()
@@ -266,8 +261,7 @@ public:
 		const int page = model_.page;
 		const int count_of_pages = std::max(1, model_.count_of_pages());
 
-		LOG_CHAT_LOG << "Page: " << page + 1 << " of " << count_of_pages
-		             << '\n';
+		LOG_CHAT_LOG << "Page: " << page + 1 << " of " << count_of_pages;
 
 		const int first = page * page_size;
 		const int last = page < (count_of_pages - 1)
@@ -281,8 +275,8 @@ public:
 
 	void update_view_from_model(bool select_last_page = false)
 	{
-		LOG_CHAT_LOG << "Entering chat_log::controller::update_view_from_model"
-					 << std::endl;
+		LOG_CHAT_LOG
+			<< "Entering chat_log::controller::update_view_from_model";
 		model_.msg_label->set_use_markup(true);
 		int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size;
@@ -305,16 +299,16 @@ public:
 		model_.populate_chat_message_list(first, last);
 		model_.page_number->set_value_range(1, count_of_pages);
 		model_.page_number->set_active(count_of_pages > 1);
-		LOG_CHAT_LOG << "Maximum value of page number slider: "
-					 << count_of_pages << std::endl;
+		LOG_CHAT_LOG
+			<< "Maximum value of page number slider: " << count_of_pages;
 		model_.page_number->set_value(page + 1);
 
 		std::ostringstream cur_page_text;
 		cur_page_text << (page + 1) << '/' << std::max(1, count_of_pages);
 		model_.page_label->set_label(cur_page_text.str());
 
-		LOG_CHAT_LOG << "Exiting chat_log::controller::update_view_from_model"
-					 << std::endl;
+		LOG_CHAT_LOG
+			<< "Exiting chat_log::controller::update_view_from_model";
 	}
 
 	void handle_copy_button_clicked()

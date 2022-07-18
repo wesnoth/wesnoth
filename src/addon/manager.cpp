@@ -106,7 +106,7 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"
 				<< addon_name << "' from " << info_path << ":\n"
-				<< e.message << std::endl;
+				<< e.message;
 	}
 }
 
@@ -231,7 +231,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...";
 	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
-		        << "using default ignore patterns...\n";
+		        << "using default ignore patterns...";
 		return filesystem::default_blacklist;
 	}
 	LOG_CFG << "found .ign file: " << ign_file;

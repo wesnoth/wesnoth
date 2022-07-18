@@ -622,7 +622,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
-			engine_name <<"]" << std::endl;
+			engine_name << ']';
 		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}
@@ -630,7 +630,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
 	if (!new_engine) {
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
-			engine_name <<"] " << std::endl;
+			engine_name << ']';
 		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}

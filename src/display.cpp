@@ -85,8 +85,6 @@ static lg::log_domain log_display("display");
 #define MinZoom          (zoom_levels.front())
 #define MaxZoom          (zoom_levels.back())
 
-using std::endl;
-
 namespace {
 	// if this is enabled with :benchmark, then everything is marked as invalid and redrawn each time
 	bool benchmark = false;
@@ -787,7 +785,7 @@ surface display::screenshot(bool map_screenshot)
 		WRN_DP << "Excessively large map screenshot area";
 	}
 	LOG_DP << "creating " << area.w << " by " << area.h
-	       << " texture for map screenshot" << std::endl;
+	       << " texture for map screenshot";
 	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
 	auto target_setter = draw::set_render_target(output_texture);
 	auto clipper = draw::override_clip(area);
@@ -1422,7 +1420,7 @@ void display::draw_panel(const theme::panel& panel)
 	texture tex(image::get_texture(panel.image()));
 	if (!tex) {
 		ERR_DP << "failed to load panel " << panel.get_id()
-			<< " texture: " << panel.image() << endl;
+			<< " texture: " << panel.image();
 		return;
 	}
 
@@ -2689,7 +2687,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	auto clipper = draw::reduce_clip(clip_rect);
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes"
-		<< " with clip " << clip_rect << endl;
+		<< " with clip " << clip_rect;
 	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);

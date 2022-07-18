@@ -78,8 +78,8 @@ widget::widget(const builder_widget& builder)
 widget::~widget()
 {
 	DBG_GUI_LF
-	<< "widget destroy: " << static_cast<void*>(this) << " (id: " << id_
-	<< ")\n";
+	<< "widget destroy: " << static_cast<void*>(this)
+	<< " (id: " << id_ << ')';
 
 	widget* p = parent();
 	while(p) {
@@ -103,7 +103,7 @@ void widget::set_id(const std::string& id)
 	DBG_GUI_LF
 	<< "set id of " << static_cast<void*>(this) << " to '" << id << "' "
 	<< "(was '" << id_ << "'). Widget type: "
-	<< (this_ctrl ? this_ctrl->get_control_type() : typeid(widget).name()) << "\n";
+	<< (this_ctrl ? this_ctrl->get_control_type() : typeid(widget).name());
 
 	id_ = id;
 }

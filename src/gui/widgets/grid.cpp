@@ -84,7 +84,7 @@ void grid::set_child(std::unique_ptr<widget> widget,
 	if(cell.get_widget()) {
 		// free a child when overwriting it
 		WRN_GUI_G << LOG_HEADER << " child '" << cell.id() << "' at cell '"
-				  << row << ',' << col << "' will be replaced.\n";
+				  << row << ',' << col << "' will be replaced.";
 	}
 
 	// copy data
@@ -246,7 +246,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 	for(std::size_t col = 0; col < cols_; ++col) {
 		if(too_wide - reduced >= col_width_[col]) {
 			DBG_GUI_L << LOG_HEADER << " column " << col
-					  << " is too small to be reduced.\n";
+					  << " is too small to be reduced.";
 			continue;
 		}
 
@@ -259,7 +259,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 			unsigned reduction = col_width_[col] - width;
 
 			DBG_GUI_L << LOG_HEADER << " reduced " << reduction
-					  << " pixels for column " << col << ".\n";
+					  << " pixels for column " << col << ".";
 
 			size.x -= reduction;
 			reduced += reduction;
@@ -333,7 +333,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 		if(too_high - reduced >= row_height_[row]) {
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
-					  << " is too small to be reduced fully try 1 pixel.\n";
+					  << " is too small to be reduced fully try 1 pixel.";
 
 			wanted_height = 1;
 		}
@@ -352,7 +352,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
-					  << " reduced " << reduction << " pixels.\n";
+					  << " reduced " << reduction << " pixels.";
 
 			size.y -= reduction;
 			reduced += reduction;
@@ -366,7 +366,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 	size = calculate_best_size();
 
 	DBG_GUI_L << LOG_HEADER << " Requested maximum " << maximum_height
-			  << " resulting height " << size.y << ".\n";
+			  << " resulting height " << size.y << ".";
 
 	set_layout_size(size);
 }
@@ -452,12 +452,12 @@ point grid::calculate_best_size() const
 
 	for(unsigned row = 0; row < rows_; ++row) {
 		DBG_GUI_L << LOG_HEADER << " the row_height_ for row " << row
-				  << " will be " << row_height_[row] << ".\n";
+				  << " will be " << row_height_[row] << ".";
 	}
 
 	for(unsigned col = 0; col < cols_; ++col) {
 		DBG_GUI_L << LOG_HEADER << " the col_width_ for column " << col
-				  << " will be " << col_width_[col] << ".\n";
+				  << " will be " << col_width_[col] << ".";
 	}
 
 	const point result(
@@ -502,7 +502,7 @@ void grid::place(const point& origin, const point& size)
 	assert(col_grow_factor_.size() == cols_);
 
 	DBG_GUI_L << LOG_HEADER << " best size " << best_size << " available size "
-			  << size << ".\n";
+			  << size << ".";
 
 	/***** BEST_SIZE *****/
 
@@ -536,7 +536,7 @@ void grid::place(const point& origin, const point& size)
 
 		DBG_GUI_L << LOG_HEADER << " extra width " << w
 			<< " will be divided amount " << w_size << " units in "
-			<< cols_ << " columns.\n";
+			<< cols_ << " columns.";
 
 		if(w_size == 0) {
 			// If all sizes are 0 reset them to 1
@@ -553,7 +553,7 @@ void grid::place(const point& origin, const point& size)
 			col_width_[i] += w_normal * col_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " column " << i
 				<< " with grow factor " << col_grow_factor_[i]
-			<< " set width to " << col_width_[i] << ".\n";
+			<< " set width to " << col_width_[i] << ".";
 		}
 	}
 
@@ -563,7 +563,7 @@ void grid::place(const point& origin, const point& size)
 			row_grow_factor_.begin(), row_grow_factor_.end(), 0);
 		DBG_GUI_L << LOG_HEADER << " extra height " << h
 			<< " will be divided amount " << h_size << " units in "
-			<< rows_ << " rows.\n";
+			<< rows_ << " rows.";
 
 		if(h_size == 0) {
 			// If all sizes are 0 reset them to 1
@@ -580,7 +580,7 @@ void grid::place(const point& origin, const point& size)
 			row_height_[i] += h_normal * row_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " row " << i << " with grow factor "
 				<< row_grow_factor_[i] << " set height to "
-				<< row_height_[i] << ".\n";
+				<< row_height_[i] << ".";
 		}
 	}
 
@@ -717,7 +717,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 
 	if(!children_.empty()) {
 		WRN_GUI_G << LOG_HEADER << " resizing a non-empty grid "
-				  << " may give unexpected problems.\n";
+				  << " may give unexpected problems.";
 	}
 
 	rows_ = rows;
@@ -733,14 +733,13 @@ point grid::child::get_best_size() const
 
 	if(!widget_) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << false
-				  << " returning " << border_space() << ".\n";
+				  << " returning " << border_space() << ".";
 		return border_space();
 	}
 
 	if(widget_->get_visible() == widget::visibility::invisible) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
-				  << " widget visible " << false << " returning 0,0"
-				  << ".\n";
+				  << " widget visible " << false << " returning 0,0.";
 		return point();
 	}
 
@@ -748,7 +747,7 @@ point grid::child::get_best_size() const
 
 	DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 			  << " widget visible " << true << " returning " << best_size
-			  << ".\n";
+			  << ".";
 	return best_size;
 }
 
@@ -783,7 +782,7 @@ void grid::child::place(point origin, point size)
 	if(size <= best_size) {
 		DBG_GUI_L << LOG_CHILD_HEADER
 				  << " in best size range setting widget to " << origin << " x "
-				  << size << ".\n";
+				  << size << ".";
 
 		get_widget()->place(origin, size);
 		return;
@@ -800,7 +799,7 @@ void grid::child::place(point origin, point size)
 
 			DBG_GUI_L << LOG_CHILD_HEADER
 					  << " in maximum size range setting widget to " << origin
-					  << " x " << size << ".\n";
+					  << " x " << size << ".";
 
 			get_widget()->place(origin, size);
 			return;
@@ -819,7 +818,7 @@ void grid::child::place(point origin, point size)
 			widget_size.y = size.y;
 		}
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertical growing from "
-				  << best_size.y << " to " << widget_size.y << ".\n";
+				  << best_size.y << " to " << widget_size.y << ".";
 
 	} else if(v_flag == VERTICAL_ALIGN_TOP) {
 		// Do nothing.
@@ -838,7 +837,7 @@ void grid::child::place(point origin, point size)
 
 	} else {
 		ERR_GUI_L << LOG_CHILD_HEADER << " Invalid vertical alignment '"
-				  << v_flag << "' specified.\n";
+				  << v_flag << "' specified.";
 		assert(false);
 	}
 
@@ -851,7 +850,7 @@ void grid::child::place(point origin, point size)
 			widget_size.x = size.x;
 		}
 		DBG_GUI_L << LOG_CHILD_HEADER << " horizontal growing from "
-				  << best_size.x << " to " << widget_size.x << ".\n";
+				  << best_size.x << " to " << widget_size.x << ".";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_LEFT) {
 		// Do nothing.
@@ -866,16 +865,16 @@ void grid::child::place(point origin, point size)
 
 		widget_orig.x += (size.x - widget_size.x);
 		DBG_GUI_L << LOG_CHILD_HEADER
-				  << " horizontally aligned at the right.\n";
+				  << " horizontally aligned at the right.";
 
 	} else {
 		ERR_GUI_L << LOG_CHILD_HEADER << " No horizontal alignment '" << h_flag
-				  << "' specified.\n";
+				  << "' specified.";
 		assert(false);
 	}
 
 	DBG_GUI_L << LOG_CHILD_HEADER << " resize widget to " << widget_orig
-			  << " x " << widget_size << ".\n";
+			  << " x " << widget_size << ".";
 
 	get_widget()->place(widget_orig, widget_size);
 }
@@ -967,7 +966,7 @@ void grid::layout(const point& origin)
 			const point size(col_width_[col], row_height_[row]);
 			DBG_GUI_L << LOG_HEADER << " set widget at " << row << ',' << col
 					  << " at origin " << orig << " with size " << size
-					  << ".\n";
+					  << ".";
 
 			if(get_child(row, col).get_widget()) {
 				get_child(row, col).place(orig, size);
@@ -1035,7 +1034,7 @@ unsigned grid_implementation::row_request_reduce_height(
 	}
 
 	DBG_GUI_L << LOG_IMPL_HEADER << " maximum row height " << maximum_height
-			  << " returning " << required_height << ".\n";
+			  << " returning " << required_height << ".";
 
 	return required_height;
 }
@@ -1060,7 +1059,7 @@ unsigned grid_implementation::column_request_reduce_width(
 	}
 
 	DBG_GUI_L << LOG_IMPL_HEADER << " maximum column width " << maximum_width
-			  << " returning " << required_width << ".\n";
+			  << " returning " << required_width << ".";
 
 	return required_width;
 }

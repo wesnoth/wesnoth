@@ -169,11 +169,11 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 				   << " ("  << loc << ") over " << q->name()
 				   << " - " << q->id() << " - " << q->underlying_id()
 				   << " ("  << q->get_location()
-				   << ").\n";
+				   << ").";
 
 			p->mark_clone(false);
 			ERR_NG << "The new unit was assigned underlying_id=" << p->underlying_id()
-				   << " to prevent duplicate id conflicts.\n";
+				   << " to prevent duplicate id conflicts.";
 
 			uinsert = umap_.emplace(p->underlying_id(), upod);
 
@@ -185,7 +185,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 						"and how it happened, please answer the following questions "
 						"\n 1. Were you playing multi-player?"
 						"\n 2. Did you start/restart/reload the game/scenario?"
-						"\nThank you for your help in fixing this bug.\n";
+						"\nThank you for your help in fixing this bug.";
 				}
 
 				p->mark_clone(false);
@@ -404,7 +404,7 @@ bool unit_map::self_check() const
 		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first) {
 			good = false;
 			ERR_NG << "unit_map umap uid(" << uit->first << ") != underlying_id()[" << uit->second.unit->underlying_id()
-				   << "]" << std::endl;
+				   << "]";
 		}
 	}
 

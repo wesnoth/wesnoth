@@ -391,7 +391,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
-		<< ", restricting\n";
+		<< ", restricting";
 		radius = max_loop_;
 	}
 	if ( radius == 0 )
@@ -435,7 +435,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 			std::set<map_location>::const_iterator temp = i;
 			if(++temp != hexes.end()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
-				<< ", aborting\n";
+				<< ", aborting";
 				break;
 			}
 		}
@@ -586,7 +586,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
-				<< ", aborting\n";
+				<< ", aborting";
 				break;
 			}
 		}
@@ -651,7 +651,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
-		<< ", restricting\n";
+		<< ", restricting";
 		radius = max_loop_;
 	}
 	if(radius > 0) {

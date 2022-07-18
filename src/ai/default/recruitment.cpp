@@ -208,7 +208,7 @@ double recruitment::evaluate() {
 void recruitment::execute() {
 	LOG_AI_RECRUITMENT << "\n\n\n------------AI RECRUITMENT BEGIN---------------\n";
 	LOG_AI_RECRUITMENT << "TURN: " << resources::tod_manager->turn() <<
-			" SIDE: " << current_team().side() << "\n";
+			" SIDE: " << current_team().side();
 
 	/*
 	 * Check which leaders can recruit and collect them in leader_data.

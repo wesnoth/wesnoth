@@ -579,7 +579,7 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 {
 	std::string sender = data["sender"];
 	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
-		<< ", len " << data["message"].str().size() << '\n';
+		<< ", len " << data["message"].str().size();
 
 	if(preferences::is_ignored(sender)) {
 		return;
@@ -676,7 +676,7 @@ std::unique_ptr<widget> builder_chatbox::build() const
 	auto widget = std::make_unique<chatbox>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<chatbox_definition>();
 	assert(conf);

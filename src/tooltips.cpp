@@ -28,8 +28,6 @@
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
 
-using std::endl;
-
 namespace {
 
 static const int font_size = font::SIZE_SMALL;
@@ -174,7 +172,7 @@ void clear_tooltips(const SDL_Rect& r)
 	for(auto i = tips.begin(); i != tips.end(); ) {
 		if(i->second.origin.overlaps(r)) {
 			DBG_FT << "clearing tip " << i->first << " at "
-				<< i->second.origin << " overlapping " << r << endl;
+				<< i->second.origin << " overlapping " << r;
 
 			if (i->first == active_tooltip) {
 				i->second.label.undraw();

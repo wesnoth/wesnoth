@@ -184,7 +184,7 @@ std::unique_ptr<widget> builder_button::build() const
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
 	DBG_GUI_G << "Window builder: placed button '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

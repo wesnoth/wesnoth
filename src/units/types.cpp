@@ -1047,7 +1047,7 @@ void unit_type::fill_variations()
 		std::tie(ut, success) = variations_.emplace(var_cfg["variation_id"].str(), std::move(*var));
 		if(!success) {
 			ERR_CF << "Skipping duplicate unit variation ID: '" << var_cfg["variation_id"]
-				<< "' of unit_type '" << get_cfg()["id"] << "'\n";
+				<< "' of unit_type '" << get_cfg()["id"] << "'";
 		}
 	}
 

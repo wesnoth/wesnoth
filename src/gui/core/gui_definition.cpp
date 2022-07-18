@@ -230,7 +230,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 		if(!found_fallback) {
 			if(definition != "default") {
 				LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
-						  << "' not found, falling back to 'default'.\n";
+						  << "' not found, falling back to 'default'.";
 				return get_control(control_type, "default");
 			}
 

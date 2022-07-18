@@ -118,7 +118,7 @@ void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 	// Remove the unit
 	const unit_const_ptr removed_unit = unit_map.extract(loc_);
 	DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
-			<< "] from (" << loc_ << ")\n";
+			<< "] from (" << loc_ << ")";
 
 	// Just check to make sure we removed the unit we expected to remove
 	assert(get_unit().get() == removed_unit.get());

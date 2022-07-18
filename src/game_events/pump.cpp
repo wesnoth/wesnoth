@@ -444,7 +444,8 @@ pump_result_t wml_event_pump::operator()()
 
 	if(impl_->instance_count >= game_config::max_loop) {
 		ERR_NG << "game_events pump waiting to process new events because "
-			   << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
+			   << "recursion level would exceed maximum: "
+			   << game_config::max_loop;
 		return pump_result_t();
 	}
 

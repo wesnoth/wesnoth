@@ -175,7 +175,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						}
 						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
 							ERR_GENERAL << "Square bracket padding sizes not matching: "
-										<< s_begin << " and " << s_end <<".\n";
+										<< s_begin << " and " << s_end <<".";
 						}
 						if (padding_end > padding) padding = padding_end;
 

@@ -249,7 +249,7 @@ void saved_game::set_defaults()
 
 		if(!is_loaded_game && !side["current_player"].empty()) {
 			ERR_NG << "Removed invalid 'current_player' attribute from [side] while loading a scenario. Consider using "
-					  "'side_name' instead\n";
+					  "'side_name' instead";
 
 			side["current_player"] = config::attribute_value();
 		}

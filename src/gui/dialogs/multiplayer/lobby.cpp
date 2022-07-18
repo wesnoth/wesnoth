@@ -287,7 +287,7 @@ void mp_lobby::update_gamelist_diff()
 			if(list_i != gamelistbox_->get_item_count()) {
 				gamelistbox_->add_row(make_game_row_data(game), list_i);
 				DBG_LB << "Added a game listbox row not at the end" << list_i
-					   << " " << gamelistbox_->get_item_count() << "\n";
+					   << " " << gamelistbox_->get_item_count();
 				list_rows_deleted--;
 			} else {
 				gamelistbox_->add_row(make_game_row_data(game));
@@ -309,7 +309,7 @@ void mp_lobby::update_gamelist_diff()
 				ERR_LB << "gamelist_id_at_row_ overflow! " << list_i << " + "
 					   << list_rows_deleted
 					   << " >= " << gamelist_id_at_row_.size()
-					   << " -- triggering a full refresh\n";
+					   << " -- triggering a full refresh";
 				refresh_lobby();
 				return;
 			}
@@ -317,7 +317,7 @@ void mp_lobby::update_gamelist_diff()
 			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
 			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
-					   << listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
+					   << listbox_game_id << " " << game.id << " (row " << list_i << ")";
 				refresh_lobby();
 				return;
 			}
@@ -331,7 +331,7 @@ void mp_lobby::update_gamelist_diff()
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if(game.display_status == mp::game_info::disp_status::DELETED) {
 				LOG_LB << "Deleting game from listbox " << game.id << " (row "
-					   << list_i << ")\n";
+					   << list_i << ")";
 				gamelistbox_->remove_row(list_i);
 				++list_rows_deleted;
 			} else {
@@ -352,7 +352,7 @@ void mp_lobby::update_gamelist_diff()
 	next_gamelist_id_at_row.swap(gamelist_id_at_row_);
 	if(select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
 		ERR_LB << "Would select a row beyond the listbox" << select_row << " "
-			   << gamelistbox_->get_item_count() << "\n";
+			   << gamelistbox_->get_item_count();
 		select_row = gamelistbox_->get_item_count() - 1;
 	}
 
@@ -519,7 +519,7 @@ void mp_lobby::update_gamelist_filter()
 	DBG_LB << "mp_lobby::update_gamelist_filter";
 	lobby_info_.apply_game_filter();
 	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
-		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
+		   << ", games in listbox: " << gamelistbox_->get_item_count();
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
 
 	update_visible_games();
@@ -877,7 +877,7 @@ void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
 	} catch(const std::out_of_range&) {
 		// Game index was invalid!
 		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
-		       << "Games vector size is " << lobby_info_.games().size() << std::endl;
+		       << "Games vector size is " << lobby_info_.games().size();
 	}
 }
 

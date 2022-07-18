@@ -360,10 +360,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//Modify movement points
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
 			<< "] from " << unit->movement_left() << " to "
-			<< calculate_moves_left(*unit) << ".\n";
+			<< calculate_moves_left(*unit) << ".";
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
-			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
+			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")";
 	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
@@ -387,7 +387,7 @@ void move::remove_temp_modifier(unit_map&)
 		}
 		DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
 					<< "] should get changed from " << unit->movement_left() << " to "
-					<< calculate_moves_left(*unit) << ".\n";
+					<< calculate_moves_left(*unit) << ".";
 	}
 
 	// Restore the unit to its original position and movement.

@@ -349,7 +349,7 @@ bool config_cache::clean_cache()
 	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "clean_cache(): " << files.size() << " files, "
-			  << dirs.size() << " dirs to check\n";
+			  << dirs.size() << " dirs to check";
 
 	const std::string& exclude_current = cache_file_prefix_ + "*";
 
@@ -369,7 +369,7 @@ bool config_cache::purge_cache()
 	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
-			  << dirs.size() << " dirs\n";
+			  << dirs.size() << " dirs";
 
 	bool status = true;
 
@@ -393,7 +393,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 
 			if(utils::wildcard_string_match(fn, exclude_pattern)) {
 				LOG_CACHE << "delete_cache_files(): skipping " << file_path
-						  << " excluded by '" << exclude_pattern << "'\n";
+						  << " excluded by '" << exclude_pattern << "'";
 				continue;
 			}
 		}
@@ -401,7 +401,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 		LOG_CACHE << "delete_cache_files(): deleting " << file_path;
 		if(!filesystem::delete_directory(file_path)) {
 			ERR_CACHE << "delete_cache_files(): could not delete "
-					  << file_path << '\n';
+					  << file_path;
 			status = false;
 		}
 	}

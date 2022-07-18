@@ -127,7 +127,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 
 	LOG_REPLAY << "recruit: team=" << current_team_num << " '" << type_id << "' at (" << loc
 		<< ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
-		<< "-> " << current_team.gold() << "\n";
+		<< "-> " << current_team.gold();
 	return true;
 }
 

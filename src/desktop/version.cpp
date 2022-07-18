@@ -314,8 +314,7 @@ std::string os_version()
 #pragma warning(disable:4996)
 #endif
 	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
-		ERR_DU << "os_version: GetVersionEx error ("
-			   << GetLastError() << ")\n";
+		ERR_DU << "os_version: GetVersionEx error (" << GetLastError() << ')';
 		return base;
 	}
 #ifdef _MSC_VER

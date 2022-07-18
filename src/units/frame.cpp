@@ -92,7 +92,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG text color in unit animation: " << text_color_key.str()
-				<< "\n" << e.what() << "\n;";
+				<< "\n" << e.what();
 		}
 	}
 
@@ -117,7 +117,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG blend color in unit animation: " << blend_color_key.str()
-				<< "\n" << e.what() << "\n;";
+				<< "\n" << e.what();
 		}
 	}
 }

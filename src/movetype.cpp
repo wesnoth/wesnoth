@@ -283,7 +283,7 @@ int movetype::terrain_info::data::calc_value(
 		ERR_CF << "infinite terrain_info recursion on "
 		       << (params_.use_move ? "movement" : "defense") << ": "
 			   << t_translation::write_terrain_code(terrain)
-			   << " depth " << recurse_count << '\n';
+			   << " depth " << recurse_count;
 		return params_.default_value;
 	}
 
@@ -320,14 +320,14 @@ int movetype::terrain_info::data::calc_value(
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 			       << "), which is less than " << params_.min_value
-			       << "; resetting to " << params_.min_value << ".\n";
+			       << "; resetting to " << params_.min_value << ".";
 			result = params_.min_value;
 		}
 		if ( result > params_.max_value ) {
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 				   << "), which is more than " << params_.max_value
-			       << "; resetting to " << params_.max_value << ".\n";
+			       << "; resetting to " << params_.max_value << ".";
 			result = params_.max_value;
 		}
 

@@ -283,7 +283,7 @@ std::unique_ptr<widget> builder_multimenu_button::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed multimenu_button '" << id
-	          << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.";
 
 	return widget;
 }

@@ -127,7 +127,7 @@ std::unique_ptr<widget> builder_image::build() const
 	auto widget = std::make_unique<image>(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	return widget;
 }

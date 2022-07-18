@@ -111,7 +111,7 @@ void addons_client::connect()
 	const std::string id_desc = server_id_.empty() ? "<id not provided>" : server_id_;
 
 	LOG_ADDONS << "Server " << id_desc << " version " << version_desc
-			   << " supports: " << utils::join(server_capabilities_, " ") << '\n';
+			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
 bool addons_client::request_addons_list(config& cfg)

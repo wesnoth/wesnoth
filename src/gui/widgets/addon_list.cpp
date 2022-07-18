@@ -468,7 +468,7 @@ std::unique_ptr<widget> builder_addon_list::build() const
 	auto widget = std::make_unique<addon_list>(*this);
 
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
-		"' with definition '" << definition << "'.\n";
+		"' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<addon_list_definition>();
 	assert(conf != nullptr);

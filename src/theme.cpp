@@ -1010,7 +1010,7 @@ const config& theme::get_theme_config(const std::string& id)
 
 	if (!id.empty()) { // (treat empty id as request for default theme)
 		ERR_DP << "Theme '" << id << "' not found."
-		       << " Falling back to default theme." << std::endl;
+		       << " Falling back to default theme.";
 	}
 
 	iter = known_themes.find("Default");

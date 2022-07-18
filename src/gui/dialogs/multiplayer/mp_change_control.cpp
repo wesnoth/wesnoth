@@ -169,7 +169,7 @@ void mp_change_control::post_show(window& window)
 	if(window.get_retval() == retval::OK) {
 		DBG_GUI << "Main: changing control of side "
 		        << sides_[selected_side_] << " to nick "
-		        << nicks_[selected_nick_] << std::endl;
+		        << nicks_[selected_nick_];
 
 		menu_handler_.request_control_change(
 			sides_[selected_side_],

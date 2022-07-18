@@ -166,9 +166,9 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 
 	std::string app_icon_ = filesystem::normalize_path(game_config::path + "/" + game_config::images::app_icon);
 	if (!filesystem::file_exists(app_icon_)) {
-		ERR_DU << "Error: Could not find notification icon.\n"
-			<< "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'\n"
-			<< "normalized path =\'" << app_icon_ << "\'\n";
+		ERR_DU << "Error: Could not find notification icon.";
+		ERR_DU << "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'";
+		ERR_DU << "normalized path =\'" << app_icon_ << "\'";
 	} else {
 		DBG_DU << "app_icon_=\'" << app_icon_ << "\'";
 	}
@@ -297,9 +297,9 @@ void send_notification(const std::string & owner, const std::string & message, b
 		wnotify visual(id,owner,message);
 		std::pair<wnotify_owner_it, bool> result = noticias.insert(visual);
 		if (!result.second) {
-			ERR_DU << "Failed to insert a dbus notification message:\n"
-				<< "New Item:\n" << "\tid=" << id << "\n\towner=" << owner << "\n\tmessage=" << message << "\n"
-				<< "Old Item:\n" << "\tid=" << result.first->id << "\n\towner=" << result.first->owner << "\n\tmessage=" << result.first->message << "\n";
+			ERR_DU << "Failed to insert a dbus notification message:";
+			ERR_DU << "New Item:\n" << "\tid=" << id << "\n\towner=" << owner << "\n\tmessage=" << message;
+			ERR_DU << "Old Item:\n" << "\tid=" << result.first->id << "\n\towner=" << result.first->owner << "\n\tmessage=" << result.first->message;
 		}
 	}
 }

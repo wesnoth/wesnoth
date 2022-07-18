@@ -692,7 +692,7 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-					<< " has map_generation= but no [generator] tag" << std::endl;
+					<< " has map_generation= but no [generator] tag";
 		}
 	}
 }
@@ -916,7 +916,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				if(get_map_context().get_map_data_key().empty()) {
 					ERR_ED << "Internal error, map context filename changed: "
 						<< filename << " -> " << get_map_context().get_filename()
-						<< " with no apparent scenario load\n";
+						<< " with no apparent scenario load";
 				} else {
 					utils::string_map symbols;
 					symbols["old"] = filename;

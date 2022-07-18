@@ -206,7 +206,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				double value = village_value * (1.0 - leader_distance / corner_distance);
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
-					<< " distance: " << leader_distance << '\n';
+					<< " distance: " << leader_distance;
 				targets.emplace_back(*t,value,ai_target::type::village);
 			}
 		}

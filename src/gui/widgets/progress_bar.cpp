@@ -109,7 +109,7 @@ std::unique_ptr<widget> builder_progress_bar::build() const
 	auto widget = std::make_unique<progress_bar>(*this);
 
 	DBG_GUI_G << "Window builder: placed progress bar '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

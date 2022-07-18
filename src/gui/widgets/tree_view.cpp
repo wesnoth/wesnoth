@@ -113,7 +113,7 @@ void tree_view::resize_content(const int width_modification,
 		const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " width_modification "
-			  << width_modification << " height_modification " << height_modification << ".\n";
+			  << width_modification << " height_modification " << height_modification << ".";
 
 	if(content_resize_request(
 		width_modification,

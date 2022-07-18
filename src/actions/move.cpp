@@ -1235,7 +1235,7 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
-		          ( steps.empty() ? map_location::null_location() : steps.front() ) << ".\n";
+		          ( steps.empty() ? map_location::null_location() : steps.front() ) << ".";
 		return 0;
 	}
 	//if we have no fog activated then we always skip sighted

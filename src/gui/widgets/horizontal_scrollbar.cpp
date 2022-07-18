@@ -153,7 +153,7 @@ std::unique_ptr<widget> builder_horizontal_scrollbar::build() const
 
 	DBG_GUI_G << "Window builder:"
 			  << " placed horizontal scrollbar '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	return widget;
 }

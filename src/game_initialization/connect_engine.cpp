@@ -341,7 +341,7 @@ bool connect_engine::can_start_game() const
 		if(!side->ready_for_start()) {
 			const int side_num = side->index() + 1;
 			DBG_MP << "not all sides are ready, side " <<
-				side_num << " not ready\n";
+				side_num << " not ready";
 
 			return false;
 		}
@@ -527,8 +527,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	// Update sides with commandline parameters.
 	if(cmdline_opts.multiplayer_turns) {
-		DBG_MP << "\tsetting turns: " << *cmdline_opts.multiplayer_turns <<
-			std::endl;
+		DBG_MP << "\tsetting turns: " << *cmdline_opts.multiplayer_turns;
 		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
 
@@ -666,7 +665,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 					update_and_send_diff();
 
 					ERR_CF << "ERROR: Couldn't assign a side to '" <<
-						name << "'\n";
+						name << "'";
 
 					return result;
 				}
@@ -1206,7 +1205,7 @@ void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std
 
 	LOG_MP << "side " << (index_ + 1) << ": faction=" <<
 		(flg_.current_faction())["name"] << ", leader=" <<
-		flg_.current_leader() << ", gender=" << flg_.current_gender() << "\n";
+		flg_.current_leader() << ", gender=" << flg_.current_gender();
 }
 
 void side_engine::reset()

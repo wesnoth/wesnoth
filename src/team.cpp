@@ -362,7 +362,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 	auto_shroud_updates_ = cfg["auto_shroud"].to_bool(auto_shroud_updates_);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name << ", shroud: " << uses_shroud()
-		   << ", fog: " << uses_fog() << ".\n";
+		   << ", fog: " << uses_fog() << ".";
 
 	// Load the WML-cleared fog.
 	const config& fog_override = cfg.child("fog_override");
@@ -389,8 +389,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		if(map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc
-				   << std::endl;
+			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc;
 		}
 	}
 
@@ -532,12 +531,10 @@ bool team::calculate_is_enemy(std::size_t index) const
 
 	for(const std::string& t : our_teams) {
 		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
-			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1
-					<< std::endl;
+			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;
 		} else {
-			LOG_NGE << "team " << info_.side << " not found same team name [" << t << "] in team " << index + 1
-					<< std::endl;
+			LOG_NGE << "team " << info_.side << " not found same team name [" << t << "] in team " << index + 1;
 		}
 	}
 
@@ -808,10 +805,10 @@ void shroud_map::place(int x, int y)
 
 	if(x >= static_cast<int>(data_.size())) {
 		DBG_NG << "Couldn't place shroud on invalid x coordinate: (" << x << ", " << y
-			   << ") - max x: " << data_.size() - 1 << "\n";
+			   << ") - max x: " << data_.size() - 1;
 	} else if(y >= static_cast<int>(data_[x].size())) {
 		DBG_NG << "Couldn't place shroud on invalid y coordinate: (" << x << ", " << y
-			   << ") - max y: " << data_[x].size() - 1 << "\n";
+			   << ") - max y: " << data_[x].size() - 1;
 	} else {
 		data_[x][y] = false;
 	}

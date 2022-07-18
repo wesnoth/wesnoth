@@ -487,8 +487,8 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
 
 		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
-			DBG_NG << "recall list is empty when trying to recall!\n"
-				   << "player_id: " << player_id << " side: " << index+1 << "\n";
+			DBG_NG << "recall list is empty when trying to recall!";
+			DBG_NG << "player_id: " << player_id << " side: " << index+1;
 			continue;
 		}
 
@@ -856,7 +856,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("target").empty() ||
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
-			 << cfg.get_config().debug();
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);

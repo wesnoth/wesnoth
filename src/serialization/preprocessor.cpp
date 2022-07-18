@@ -1310,7 +1310,7 @@ bool preprocessor_data::get_chunk()
 
 					WRN_PREPROC << "Redefining macro " << symbol << " without explicit #undef at "
 								<< lineno_string(new_pos.str()) << '\n'
-								<< "previously defined at " << lineno_string(old_pos.str()) << '\n';
+								<< "previously defined at " << lineno_string(old_pos.str());
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -1332,8 +1332,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
-						<< '\n';
+			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
 			const bool negate = command[2] == 'n';
@@ -1361,7 +1360,7 @@ bool preprocessor_data::get_chunk()
 
 				const bool found = do_version_check(version1, vop, version2);
 				DBG_PREPROC << "testing version '" << version1.str() << "' against '" << version2.str() << "' ("
-							<< vopstr << "): " << (found ? "match" : "no match") << '\n';
+							<< vopstr << "): " << (found ? "match" : "no match");
 
 				conditional_skip(negate ? found : !found);
 			} else {
@@ -1555,8 +1554,7 @@ bool preprocessor_data::get_chunk()
 
 								optional_arg_num++;
 
-								DBG_PREPROC << "Found override for " << argname << " in call to macro " << symbol
-											<< "\n";
+								DBG_PREPROC << "Found override for " << argname << " in call to macro " << symbol;
 							} else {
 								std::ostringstream warning;
 								warning << "Unrecognized optional argument passed to macro '" << symbol << "': '"
@@ -1590,7 +1588,7 @@ bool preprocessor_data::get_chunk()
 							res << in.rdbuf();
 
 							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro "
-										<< symbol << "\n";
+										<< symbol;
 
 							(*defines)[argument.first] = res.str();
 						}

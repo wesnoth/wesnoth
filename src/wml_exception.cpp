@@ -84,7 +84,7 @@ std::string missing_mandatory_wml_key(
 		} else {
 			WRN_NG << __func__
 					<< " parameter 'section' should contain brackets."
-					<< " Added them.\n";
+					<< " Added them.";
 			symbols["section"] = "[" + section + "]";
 		}
 	}

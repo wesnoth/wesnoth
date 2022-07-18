@@ -600,7 +600,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 		args()[0]->evaluate(variables, add_debug_info(fdb, 0, "calculate_outcome:attacker_current_location")).convert_to<location_callable>()->loc();
 	if(units.count(attacker_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
-			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")\n";
+			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")";
 		return variant();
 	}
 
@@ -608,7 +608,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 		args()[2]->evaluate(variables,add_debug_info(fdb, 2, "calculate_outcome:defender_location")).convert_to<location_callable>()->loc();
 	if(units.count(defender_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
-			defender_location.wml_x() << "," << defender_location.wml_y() << ")\n";
+			defender_location.wml_x() << "," << defender_location.wml_y() << ")";
 		return variant();
 	}
 

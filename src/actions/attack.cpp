@@ -1428,7 +1428,7 @@ void attack::perform()
 		   << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit
 		   << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-"
 		   << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)"
-		   << (defender_strikes_first ? " defender first-strike" : "") << "\n";
+		   << (defender_strikes_first ? " defender first-strike" : "");
 
 	// Play the pre-fight animation
 	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());

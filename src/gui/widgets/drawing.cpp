@@ -134,7 +134,7 @@ std::unique_ptr<widget> builder_drawing::build() const
 	widget->set_drawing_data(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

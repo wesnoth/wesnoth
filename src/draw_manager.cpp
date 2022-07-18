@@ -33,7 +33,6 @@ static lg::log_domain log_draw_man("draw/manager");
 #define LOG_DM LOG_STREAM(info, log_draw_man)
 #define DBG_DM LOG_STREAM(debug, log_draw_man)
 
-using std::endl;
 using gui2::top_level_drawable;
 
 namespace {
@@ -55,7 +54,7 @@ void invalidate_region(const rect& region)
 {
 	if (drawing_) {
 		ERR_DM << "Attempted to invalidate region " << region
-			<< " during draw" << endl;
+			<< " during draw";
 		throw game::error("invalidate during draw");
 	}
 
@@ -74,7 +73,7 @@ void invalidate_region(const rect& region)
 			// This region contains a previously invalidated region,
 			// might as well supercede it with this.
 			DBG_DM << "superceding previous invalidation " << r
-				<< " with " << region << endl;
+				<< " with " << region;
 			//STREAMING_LOG << '\'';
 			r = region;
 			return;
@@ -85,7 +84,7 @@ void invalidate_region(const rect& region)
 			// This won't always be the best,
 			// but it also won't ever be the worst.
 			DBG_DM << "merging " << region << " with " << r
-				<< " to invalidate " << m << endl;
+				<< " to invalidate " << m;
 			//STREAMING_LOG << ':';
 			r = m;
 			return;
@@ -95,7 +94,7 @@ void invalidate_region(const rect& region)
 		cumulative_area += r.area();
 		if (progressive_cover.area() <= cumulative_area) {
 			DBG_DM << "conglomerating invalidations to "
-				<< progressive_cover << endl;
+				<< progressive_cover;
 			//STREAMING_LOG << '%';
 			// replace the first one, so we can easily prune later
 			invalidated_regions_[0] = progressive_cover;
