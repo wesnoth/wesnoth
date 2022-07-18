@@ -130,12 +130,14 @@ class log_in_progress {
 	int indent_ = 0;
 	bool timestamp_ = false;
 	std::string prefix_;
+	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
 	void operator|(formatter&& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
+	void set_auto_newline(bool enabled);
 };
 
 class logger {
@@ -144,7 +146,7 @@ class logger {
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
 	log_in_progress operator()(const log_domain& domain,
-		bool show_names = true, bool do_indent = false, bool show_timestamps = true, bool break_strict = true) const;
+		bool show_names = true, bool do_indent = false, bool show_timestamps = true, bool break_strict = true, bool auto_newline = true) const;
 
 	bool dont_log(const log_domain& domain) const
 	{
@@ -234,4 +236,5 @@ std::stringstream& log_to_chat();
 // always log (since it's at the error level) to the general log stream
 // outputting the log domain and timestamp is disabled
 // meant as a replacement to using cerr/cout, but that goes through the same logging infrastructure as everything else
-#define PLAIN_LOG lg::err()(lg::general(), false, false, false, false) | formatter()
+#define PLAIN_LOG lg::err()(lg::general(), false, false, false, false, true) | formatter()
+#define STREAMING_LOG lg::err()(lg::general(), false, false, false, false, false) | formatter()

@@ -227,7 +227,13 @@ std::string sanitize_log(const std::string& logstr)
 	return str;
 }
 
-log_in_progress logger::operator()(const log_domain& domain, bool show_names, bool do_indent, bool show_timestamps, bool break_strict) const
+log_in_progress logger::operator() (
+	const log_domain& domain,
+	bool show_names,
+	bool do_indent,
+	bool show_timestamps,
+	bool break_strict,
+	bool auto_newline) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
@@ -246,6 +252,7 @@ log_in_progress logger::operator()(const log_domain& domain, bool show_names, bo
 			stream | formatter() << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first << std::endl;
 			strict_threw_ = true;
 		}
+		stream.set_auto_newline(auto_newline);
 		return stream;
 	}
 }
@@ -267,6 +274,9 @@ void log_in_progress::operator|(formatter&& message)
 		}
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
+	if(auto_newline_) {
+		stream_ << std::endl;
+	}
 }
 
 void log_in_progress::set_indent(int level) {
@@ -279,6 +289,10 @@ void log_in_progress::enable_timestamp() {
 
 void log_in_progress::set_prefix(const std::string& prefix) {
 	prefix_ = prefix;
+}
+
+void log_in_progress::set_auto_newline(bool auto_newline) {
+	auto_newline_ = auto_newline;
 }
 
 void scope_logger::do_log_entry(const std::string& str) noexcept
