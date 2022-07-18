@@ -58,7 +58,7 @@ void scrollbar_panel::set_self_active(const bool /*active*/)
 scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
+	DBG_GUI_P << "Parsing scrollbar panel " << id;
 
 	load_resolutions<resolution>(cfg);
 }

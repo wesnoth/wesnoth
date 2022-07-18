@@ -87,7 +87,7 @@ void minimap::set_map_data(const std::string& map_data)
 		map_ = std::make_unique<gamemap>(map_data_);
 	} catch(const incorrect_map_format_error& e) {
 		map_.reset(nullptr);
-		ERR_CF << "Error while loading the map: " << e.message << '\n';
+		ERR_CF << "Error while loading the map: " << e.message;
 	}
 }
 
@@ -103,7 +103,7 @@ void minimap::impl_draw_background()
 minimap_definition::minimap_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing minimap " << id << '\n';
+	DBG_GUI_P << "Parsing minimap " << id;
 
 	load_resolutions<resolution>(cfg);
 }

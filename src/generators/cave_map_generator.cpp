@@ -107,7 +107,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	});
 	uint32_t seed = randomseed ? *randomseed : seed_rng::next_seed();
 	rng_.seed(seed);
-	LOG_NG << "creating random cave with seed: " << seed << '\n';
+	LOG_NG << "creating random cave with seed: " << seed;
 	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;
 	flipy_ = static_cast<int>(rng_() % 100) < params.flipy_chance_;
 

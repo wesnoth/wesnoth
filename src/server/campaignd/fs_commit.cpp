@@ -74,7 +74,7 @@ const platform_file_handle_type INVALID_FILE_HANDLE =
 inline void atomic_fail(const std::string& step_description)
 {
 	const std::string errno_desc = std::strerror(errno);
-	ERR_FS << "Atomic commit failed (" << step_description << "): " << errno_desc << '\n';
+	ERR_FS << "Atomic commit failed (" << step_description << "): " << errno_desc;
 	throw filesystem::io_exception(std::string("Atomic commit failed (") + step_description + ")");
 }
 
@@ -171,7 +171,7 @@ bool rename_open_file(const std::string& new_name, HANDLE open_handle)
 								   fileinfo_buf.get(),
 								   static_cast<DWORD>(buf_size)))
 	{
-		ERR_FS << "replace_open_file(): SetFileInformationByHandle() " << GetLastError() << '\n';
+		ERR_FS << "replace_open_file(): SetFileInformationByHandle() " << GetLastError();
 		return false;
 	}
 
@@ -193,13 +193,13 @@ atomic_commit::atomic_commit(const std::string& filename)
 	, handle_(filesystem::get_stream_file_descriptor(*out_))
 #endif
 {
-	LOG_FS << "Atomic write guard created for " << dest_name_ << " using " << temp_name_ << '\n';
+	LOG_FS << "Atomic write guard created for " << dest_name_ << " using " << temp_name_;
 }
 
 atomic_commit::~atomic_commit()
 {
 	if(!temp_name_.empty()) {
-		ERR_FS << "Temporary file for atomic write leaked: " << temp_name_ << '\n';
+		ERR_FS << "Temporary file for atomic write leaked: " << temp_name_;
 	}
 }
 
@@ -224,7 +224,7 @@ void atomic_commit::commit()
 	}
 #endif
 
-	LOG_FS << "Atomic commit succeeded: " << temp_name_ << " -> " << dest_name_ << '\n';
+	LOG_FS << "Atomic commit succeeded: " << temp_name_ << " -> " << dest_name_;
 
 	temp_name_.clear();
 }

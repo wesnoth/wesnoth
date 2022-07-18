@@ -116,7 +116,7 @@ DBusConnection *get_dbus_session_bus()
 		dbus_error_init(&err);
 		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
 		if (!connection) {
-			ERR_DU << "Failed to open DBus session: " << err.message << '\n';
+			ERR_DU << "Failed to open DBus session: " << err.message;
 			dbus_error_free(&err);
 			return nullptr;
 		}
@@ -196,7 +196,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	DBusMessage *ret = dbus_connection_send_with_reply_and_block(connection, buf, 1000, &err);
 	dbus_message_unref(buf);
 	if (!ret) {
-		ERR_DU << "Failed to send visual notification: " << err.message << '\n';
+		ERR_DU << "Failed to send visual notification: " << err.message;
 		dbus_error_free(&err);
 		if (kde_style) {
 			ERR_DU << " Retrying with the freedesktop protocol.";
@@ -241,7 +241,7 @@ T get_power_source_property(const std::string &name, T fallback)
 	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> ret(dbus_connection_send_with_reply_and_block(
 		connection, msg.get(), 1000, &err), dbus_message_unref);
 	if (ret == nullptr) {
-		DBG_DU << "Failed to query power source properties: " << err.message << '\n';
+		DBG_DU << "Failed to query power source properties: " << err.message;
 		dbus_error_free(&err);
 		return fallback;
 	}

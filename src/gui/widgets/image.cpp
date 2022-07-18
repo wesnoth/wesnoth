@@ -101,7 +101,7 @@ bool image::disable_click_dismiss() const
 image_definition::image_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing image " << id << '\n';
+	DBG_GUI_P << "Parsing image " << id;
 
 	load_resolutions<resolution>(cfg);
 }

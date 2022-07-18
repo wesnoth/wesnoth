@@ -209,7 +209,7 @@ const widget* stacked_widget::find(const std::string& id, const bool must_be_act
 stacked_widget_definition::stacked_widget_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
+	DBG_GUI_P << "Parsing stacked widget " << id;
 
 	load_resolutions<resolution>(cfg);
 }

@@ -313,7 +313,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 		port_ = port;
 	}
 
-	LOG_CS << "Port: " << port_ << '\n';
+	LOG_CS << "Port: " << port_;
 	LOG_CS << "Server directory: " << game_config::path << " (" << addons_.size() << " add-ons)\n";
 
 	register_handlers();
@@ -542,7 +542,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		if(error == boost::asio::error::operation_aborted)
 			// This means fifo was closed by load_config() to open another fifo
 			return;
-		ERR_CS << "Error reading from fifo: " << error.message() << '\n';
+		ERR_CS << "Error reading from fifo: " << error.message();
 		return;
 	}
 
@@ -560,7 +560,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
 		}
 
-		LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
+		LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled");
 	} else if(ctl == "flush") {
 		LOG_CS << "Flushing config to disk...\n";
 		write_config();
@@ -570,7 +570,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				LOG_CS << "Reloading blacklist...\n";
 				load_blacklist();
 			} else {
-				ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
+				ERR_CS << "Unrecognized admin reload argument: " << ctl[1];
 			}
 		} else {
 			LOG_CS << "Reloading all configuration...\n";
@@ -599,7 +599,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				addon["hidden"] = ctl.cmd() == "hide";
 				mark_dirty(addon_id);
 				write_config();
-				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
+				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden");
 			}
 		}
 	} else if(ctl == "setpass") {
@@ -681,7 +681,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				lg::precise_timestamps(false);
 				LOG_CS << "Precise timestamps disabled\n";
 			} else {
-				ERR_CS << "Invalid argument for 'log precise': " << ctl[2] << '\n';
+				ERR_CS << "Invalid argument for 'log precise': " << ctl[2];
 			}
 		} else if(log_levels.find(ctl[1]) == log_levels.end()) {
 			ERR_CS << "Invalid log level '" << ctl[1] << "'\n";
@@ -691,7 +691,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				if(!lg::set_log_domain_severity(domain, sev)) {
 					ERR_CS << "Unknown log domain '" << domain << "'\n";
 				} else {
-					LOG_CS << "Set log level for domain '" << domain << "' to " << ctl[1] << '\n';
+					LOG_CS << "Set log level for domain '" << domain << "' to " << ctl[1];
 				}
 			}
 		}
@@ -705,10 +705,10 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			campaignd::timing_reports_enabled = false;
 			LOG_CS << "Request servicing timing reports disabled\n";
 		} else {
-			ERR_CS << "Invalid argument for 'timings': " << ctl[1] << '\n';
+			ERR_CS << "Invalid argument for 'timings': " << ctl[1];
 		}
 	} else {
-		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
+		ERR_CS << "Unrecognized admin command: " << ctl.full();
 	}
 
 	read_from_fifo();
@@ -760,7 +760,7 @@ void server::load_blacklist()
 		read(blcfg, *in);
 
 		blacklist_.read(blcfg);
-		LOG_CS << "using blacklist from " << blacklist_file_ << '\n';
+		LOG_CS << "using blacklist from " << blacklist_file_;
 	} catch(const config::error&) {
 		ERR_CS << "failed to read blacklist from " << blacklist_file_ << ", blacklist disabled\n";
 	}
@@ -805,7 +805,7 @@ void server::fire(const std::string& hook, [[maybe_unused]] const std::string& a
 	pid_t childpid;
 
 	if((childpid = fork()) == -1) {
-		ERR_CS << "fork failed while updating add-on " << addon << '\n';
+		ERR_CS << "fork failed while updating add-on " << addon;
 		return;
 	}
 
@@ -851,7 +851,7 @@ inline std::string client_address(const any_socket_ptr& sock) {
 
 void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 {
-	ERR_CS << "[" << client_address(sock) << "] " << msg << '\n';
+	ERR_CS << "[" << client_address(sock) << "] " << msg;
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
@@ -863,7 +863,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	const std::string& status_hex = formatter()
 		<< "0x" << std::setfill('0') << std::setw(2*sizeof(unsigned int)) << std::hex
 		<< std::uppercase << status_code;
-	ERR_CS << "[" << client_address(sock) << "]: (" << status_hex << ") " << msg << '\n';
+	ERR_CS << "[" << client_address(sock) << "]: (" << status_hex << ") " << msg;
 
 	const auto& escaped_status_str = simple_wml_escape(std::to_string(status_code));
 	const auto& escaped_msg = simple_wml_escape(msg);

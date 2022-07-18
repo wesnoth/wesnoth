@@ -989,7 +989,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	{
 
 		char const *m = lua_tostring(L, -1);
-		ERR_LUA << "error while initializing ai:  " <<m << '\n';
+		ERR_LUA << "error while initializing ai:  " <<m;
 		lua_pop(L, 2);//return with stack size 0 []
 		return nullptr;
 	}
@@ -1030,7 +1030,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
-		ERR_LUA << "error while creating ai function:  " <<m << '\n';
+		ERR_LUA << "error while creating ai function:  " <<m;
 		lua_pop(L, 2);//return with stack size 0 []
 		return nullptr;
 	}

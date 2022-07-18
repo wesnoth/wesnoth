@@ -254,7 +254,7 @@ static bool is_directory_internal(const bfs::path& fpath)
 	error_code ec;
 	bool is_dir = bfs::is_directory(fpath, ec);
 	if(error_except_not_found(ec)) {
-		LOG_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
+		LOG_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message();
 	}
 
 	return is_dir;
@@ -265,7 +265,7 @@ static bool file_exists(const bfs::path& fpath)
 	error_code ec;
 	bool exists = bfs::exists(fpath, ec);
 	if(error_except_not_found(ec)) {
-		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message() << '\n';
+		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message();
 	}
 
 	return exists;
@@ -279,7 +279,7 @@ static bfs::path get_dir(const bfs::path& dirpath)
 		bfs::create_directory(dirpath, ec);
 
 		if(ec) {
-			ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
+			ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message();
 		}
 
 		// This is probably redundant
@@ -287,7 +287,7 @@ static bfs::path get_dir(const bfs::path& dirpath)
 	}
 
 	if(!is_dir) {
-		ERR_FS << "Could not open or create directory " << dirpath.string() << '\n';
+		ERR_FS << "Could not open or create directory " << dirpath.string();
 		return std::string();
 	}
 
@@ -300,7 +300,7 @@ static bool create_directory_if_missing(const bfs::path& dirpath)
 	bfs::file_status fs = bfs::status(dirpath, ec);
 
 	if(error_except_not_found(ec)) {
-		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message();
 		return false;
 	} else if(bfs::is_directory(fs)) {
 		DBG_FS << "directory " << dirpath.string() << " exists, not creating\n";
@@ -312,7 +312,7 @@ static bool create_directory_if_missing(const bfs::path& dirpath)
 
 	bool created = bfs::create_directory(dirpath, ec);
 	if(ec) {
-		ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
+		ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message();
 	}
 
 	return created;
@@ -320,7 +320,7 @@ static bool create_directory_if_missing(const bfs::path& dirpath)
 
 static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 {
-	DBG_FS << "creating recursive directory: " << dirpath.string() << '\n';
+	DBG_FS << "creating recursive directory: " << dirpath.string();
 
 	if(dirpath.empty()) {
 		return false;
@@ -330,7 +330,7 @@ static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 	bfs::file_status fs = bfs::status(dirpath);
 
 	if(error_except_not_found(ec)) {
-		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message();
 		return false;
 	} else if(bfs::is_directory(fs)) {
 		return true;
@@ -341,7 +341,7 @@ static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 	if(!dirpath.has_parent_path() || create_directory_if_missing_recursive(dirpath.parent_path())) {
 		return create_directory_if_missing(dirpath);
 	} else {
-		ERR_FS << "Could not create parents to " << dirpath.string() << '\n';
+		ERR_FS << "Could not create parents to " << dirpath.string();
 		return false;
 	}
 }
@@ -367,11 +367,11 @@ void get_files_in_dir(const std::string& dir,
 	const bfs::path dirpath(dir);
 
 	if(reorder == reorder_mode::DO_REORDER) {
-		LOG_FS << "searching for _main.cfg in directory " << dir << '\n';
+		LOG_FS << "searching for _main.cfg in directory " << dir;
 		const bfs::path maincfg = dirpath / maincfg_filename;
 
 		if(file_exists(maincfg)) {
-			LOG_FS << "_main.cfg found : " << maincfg << '\n';
+			LOG_FS << "_main.cfg found : " << maincfg;
 			push_if_exists(files, maincfg, mode == name_mode::ENTIRE_FILE_PATH);
 			return;
 		}
@@ -389,7 +389,7 @@ void get_files_in_dir(const std::string& dir,
 	for(; di != end; ++di) {
 		bfs::file_status st = di->status(ec);
 		if(ec) {
-			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message() << '\n';
+			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message();
 			continue;
 		}
 
@@ -415,7 +415,7 @@ void get_files_in_dir(const std::string& dir,
 
 				uintmax_t size = bfs::file_size(di->path(), ec);
 				if(ec) {
-					LOG_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
+					LOG_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message();
 				} else {
 					checksum->sum_size += size;
 				}
@@ -437,7 +437,7 @@ void get_files_in_dir(const std::string& dir,
 			bfs::file_status main_st = bfs::status(inner_main, ec);
 
 			if(error_except_not_found(ec)) {
-				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
+				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message();
 			} else if(reorder == reorder_mode::DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : "
 					   << (mode == name_mode::ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
@@ -571,7 +571,7 @@ static void setup_user_data_dir()
 	}
 
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
-		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
+		ERR_FS << "could not open or create user data directory at " << user_data_dir.string();
 		return;
 	}
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
@@ -741,7 +741,7 @@ static void set_user_config_path(bfs::path newconfig)
 {
 	user_config_dir = newconfig;
 	if(!create_directory_if_missing_recursive(user_config_dir)) {
-		ERR_FS << "could not open or create user config directory at " << user_config_dir.string() << '\n';
+		ERR_FS << "could not open or create user config directory at " << user_config_dir.string();
 	}
 }
 
@@ -881,7 +881,7 @@ std::string get_cwd()
 	bfs::path cwd = bfs::current_path(ec);
 
 	if(ec) {
-		ERR_FS << "Failed to get current directory: " << ec.message() << '\n';
+		ERR_FS << "Failed to get current directory: " << ec.message();
 		return "";
 	}
 
@@ -894,10 +894,10 @@ bool set_cwd(const std::string& dir)
 	bfs::current_path(bfs::path{dir}, ec);
 
 	if(ec) {
-		ERR_FS << "Failed to set current directory: " << ec.message() << '\n';
+		ERR_FS << "Failed to set current directory: " << ec.message();
 		return false;
 	} else {
-		LOG_FS << "Process working directory set to " << dir << '\n';
+		LOG_FS << "Process working directory set to " << dir;
 	}
 
 	return true;
@@ -938,7 +938,7 @@ bool make_directory(const std::string& dirname)
 	error_code ec;
 	bool created = bfs::create_directory(bfs::path(dirname), ec);
 	if(ec) {
-		ERR_FS << "Failed to create directory " << dirname << ": " << ec.message() << '\n';
+		ERR_FS << "Failed to create directory " << dirname << ": " << ec.message();
 	}
 
 	return created;
@@ -957,7 +957,7 @@ bool delete_directory(const std::string& dirname, const bool keep_pbl)
 		for(const std::string& f : files) {
 			bfs::remove(bfs::path(f), ec);
 			if(ec) {
-				LOG_FS << "remove(" << f << "): " << ec.message() << '\n';
+				LOG_FS << "remove(" << f << "): " << ec.message();
 				ret = false;
 			}
 		}
@@ -975,7 +975,7 @@ bool delete_directory(const std::string& dirname, const bool keep_pbl)
 	if(ret) {
 		bfs::remove(bfs::path(dirname), ec);
 		if(ec) {
-			LOG_FS << "remove(" << dirname << "): " << ec.message() << '\n';
+			LOG_FS << "remove(" << dirname << "): " << ec.message();
 			ret = false;
 		}
 	}
@@ -988,7 +988,7 @@ bool delete_file(const std::string& filename)
 	error_code ec;
 	bool ret = bfs::remove(bfs::path(filename), ec);
 	if(ec) {
-		ERR_FS << "Could not delete file " << filename << ": " << ec.message() << '\n';
+		ERR_FS << "Could not delete file " << filename << ": " << ec.message();
 	}
 
 	return ret;
@@ -1112,7 +1112,7 @@ std::time_t file_modified_time(const std::string& fname)
 	error_code ec;
 	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);
 	if(ec) {
-		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message() << '\n';
+		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message();
 	}
 
 	return mtime;
@@ -1133,7 +1133,7 @@ int file_size(const std::string& fname)
 	error_code ec;
 	uintmax_t size = bfs::file_size(bfs::path(fname), ec);
 	if(ec) {
-		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
+		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message();
 		return -1;
 	} else if(size > INT_MAX) {
 		return INT_MAX;
@@ -1154,7 +1154,7 @@ int dir_size(const std::string& pname)
 	}
 
 	if(ec) {
-		LOG_FS << "Failed to read directorysize of " << pname << ": " << ec.message() << '\n';
+		LOG_FS << "Failed to read directorysize of " << pname << ": " << ec.message();
 		return -1;
 	} else if(size_sum > INT_MAX) {
 		return INT_MAX;

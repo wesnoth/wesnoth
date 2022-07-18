@@ -131,10 +131,10 @@ bool remove_local_addon(const std::string& addon)
 {
 	const std::string addon_dir = filesystem::get_addons_dir() + "/" + addon;
 
-	LOG_CFG << "removing local add-on: " << addon << '\n';
+	LOG_CFG << "removing local add-on: " << addon;
 
 	if(filesystem::file_exists(addon_dir) && !filesystem::delete_directory(addon_dir, true)) {
-		ERR_CFG << "Failed to delete directory/file: " << addon_dir << '\n';
+		ERR_CFG << "Failed to delete directory/file: " << addon_dir;
 		ERR_CFG << "removal of add-on " << addon << " failed!";
 		return false;
 	}
@@ -234,7 +234,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 		        << "using default ignore patterns...\n";
 		return filesystem::default_blacklist;
 	}
-	LOG_CFG << "found .ign file: " << ign_file << '\n';
+	LOG_CFG << "found .ign file: " << ign_file;
 	auto stream = filesystem::istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {

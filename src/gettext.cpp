@@ -102,24 +102,24 @@ namespace
 				lang_name_short += '@';
 				lang_name_short += inf.variant();
 			}
-			DBG_G << "Loading po files for language " << lang_name_long << '\n';
+			DBG_G << "Loading po files for language " << lang_name_long;
 			for(auto& domain : domains) {
-				DBG_G << "Searching for po files for domain " << domain << '\n';
+				DBG_G << "Searching for po files for domain " << domain;
 				std::string path;
 				for(auto base_path : paths) {
-					DBG_G << "Searching in dir " << base_path << '\n';
+					DBG_G << "Searching in dir " << base_path;
 					if(base_path[base_path.length()-1] != '/') {
 						base_path += '/';
 					}
 					base_path += domain;
 					base_path += '/';
 					path = base_path + lang_name_long + ".po";
-					DBG_G << "  Trying path " << path << '\n';
+					DBG_G << "  Trying path " << path;
 					if(filesystem::file_exists(path)) {
 						break;
 					}
 					path = base_path + lang_name_short + ".po";
-					DBG_G << "  Trying path " << path << '\n';
+					DBG_G << "  Trying path " << path;
 					if(filesystem::file_exists(path)) {
 						break;
 					}
@@ -127,7 +127,7 @@ namespace
 				if(!filesystem::file_exists(path)) {
 					continue;
 				}
-				LOG_G << "Loading language file from " << path << '\n';
+				LOG_G << "Loading language file from " << path;
 				try {
 					filesystem::scoped_istream po_file = filesystem::istream_file(path);
 					po_file->exceptions(std::ios::badbit);

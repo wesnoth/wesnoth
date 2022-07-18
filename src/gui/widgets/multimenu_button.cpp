@@ -243,7 +243,7 @@ void multimenu_button::set_values(const std::vector<::config>& values)
 multimenu_button_definition::multimenu_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing multimenu_button " << id << '\n';
+	DBG_GUI_P << "Parsing multimenu_button " << id;
 
 	load_resolutions<resolution>(cfg);
 }

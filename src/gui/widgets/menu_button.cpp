@@ -220,7 +220,7 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 menu_button_definition::menu_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing menu_button " << id << '\n';
+	DBG_GUI_P << "Parsing menu_button " << id;
 
 	load_resolutions<resolution>(cfg);
 }

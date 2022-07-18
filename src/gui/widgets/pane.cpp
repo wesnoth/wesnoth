@@ -142,7 +142,7 @@ unsigned pane::create_item(const widget_data& item_data,
 
 void pane::place(const point& origin, const point& size)
 {
-	DBG_GUI_L << LOG_HEADER << '\n';
+	DBG_GUI_L << LOG_HEADER;
 	widget::place(origin, size);
 
 	assert(origin.x == 0);
@@ -153,7 +153,7 @@ void pane::place(const point& origin, const point& size)
 
 void pane::layout_initialize(const bool full_initialization)
 {
-	DBG_GUI_D << LOG_HEADER << '\n';
+	DBG_GUI_D << LOG_HEADER;
 
 	widget::layout_initialize(full_initialization);
 
@@ -167,7 +167,7 @@ void pane::layout_initialize(const bool full_initialization)
 
 void pane::impl_draw_children()
 {
-	DBG_GUI_D << LOG_HEADER << '\n';
+	DBG_GUI_D << LOG_HEADER;
 
 	for(auto & item : items_)
 	{

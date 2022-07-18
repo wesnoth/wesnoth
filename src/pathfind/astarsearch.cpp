@@ -147,7 +147,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	assert(stop_at <= calc.getNoPathValue());
 	//---------------------------------------------------
 
-	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
+	DBG_PF << "A* search: " << src << " -> " << dst;
 
 	if (calc.cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";

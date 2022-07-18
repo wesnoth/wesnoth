@@ -73,7 +73,7 @@ void show_transient_error_message(const std::string& message,
 								  const std::string& image,
 								  const bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general()) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message;
 	show_transient_message(_("Error"), message, image, message_use_markup);
 }
 

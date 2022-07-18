@@ -87,7 +87,7 @@ bool drawing::disable_click_dismiss() const
 drawing_definition::drawing_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing drawing " << id << '\n';
+	DBG_GUI_P << "Parsing drawing " << id;
 
 	load_resolutions<resolution>(cfg);
 }

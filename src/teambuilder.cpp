@@ -143,7 +143,7 @@ void team_builder::previous_recruits()
 
 	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
 		for(const std::string& rec : utils::split(*v)) {
-			DBG_NG_TC << "adding previous recruit: " << rec << '\n';
+			DBG_NG_TC << "adding previous recruit: " << rec;
 			team_.add_recruit(rec);
 		}
 	}

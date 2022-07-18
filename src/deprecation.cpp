@@ -78,7 +78,7 @@ std::string deprecated_message(
 
 	if(log_ptr && !log_ptr->dont_log(log_deprecate)) {
 		const lg::logger& out_log = *log_ptr;
-		FORCE_LOG_TO(out_log, log_deprecate) << message << '\n';
+		FORCE_LOG_TO(out_log, log_deprecate) << message;
 		// whether to show the error in the ingame chat area
 		if(preferences::get("show_deprecation", game_config::wesnoth_version.is_dev_version())) {
 			lg::log_to_chat() << message << '\n';

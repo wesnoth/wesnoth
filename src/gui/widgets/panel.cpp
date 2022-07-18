@@ -95,7 +95,7 @@ void panel::set_self_active(const bool /*active*/)
 panel_definition::panel_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing panel " << id << '\n';
+	DBG_GUI_P << "Parsing panel " << id;
 
 	load_resolutions<resolution>(cfg);
 }

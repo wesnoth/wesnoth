@@ -150,11 +150,11 @@ namespace { // Support functions
 					src.set_wml_x(std::stoi(xvals[i]));
 					src.set_wml_y(std::stoi(yvals[i]));
 				} catch(std::invalid_argument&) {
-					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i];
 					continue;
 				}
 				if (!game_map->on_board(src)) {
-					ERR_CF << "Invalid move_unit_fake source: " << src << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << src;
 					break;
 				}
 				path.push_back(src);
@@ -169,10 +169,10 @@ namespace { // Support functions
 				dst.set_wml_x(std::stoi(xvals[i]));
 				dst.set_wml_y(std::stoi(yvals[i]));
 			} catch(std::invalid_argument&) {
-				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i];
 			}
 			if (!game_map->on_board(dst)) {
-				ERR_CF << "Invalid move_unit_fake destination: " << dst << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << dst;
 				break;
 			}
 
@@ -432,7 +432,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
 		longest_path = std::max(longest_path, paths.back().size());
-		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
+		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size();
 
 		u->set_location(paths.back().front());
 		units.back().place_on_fake_unit_manager(resources::fake_units);
@@ -447,7 +447,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		for(std::size_t un = 0; un < num_units; ++un) {
 			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
-			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
+			DBG_NG << "Moving unit " << un << ", doing step " << step;
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
 			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);

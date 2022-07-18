@@ -960,7 +960,7 @@ lua_kernel_base::~lua_kernel_base()
 
 void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	ERR_LUA << context << ": " << msg << '\n';
+	ERR_LUA << context << ": " << msg;
 }
 
 void lua_kernel_base::throw_exception(char const * msg, char const * context)
@@ -1291,7 +1291,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	if(result != LUA_OK) {
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
 		LOG_LUA << "Error when attempting tab completion:\n";
-		LOG_LUA << luaL_checkstring(L, -1) << '\n';
+		LOG_LUA << luaL_checkstring(L, -1);
 		// Just return an empty list; no matches were found
 		lua_settop(L, save_stack);
 		return ret;

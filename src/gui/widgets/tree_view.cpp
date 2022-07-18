@@ -255,7 +255,7 @@ void tree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 tree_view_definition::tree_view_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing tree view " << id << '\n';
+	DBG_GUI_P << "Parsing tree view " << id;
 
 	load_resolutions<resolution>(cfg);
 }

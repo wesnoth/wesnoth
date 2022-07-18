@@ -167,7 +167,7 @@ void move_to_targets_phase::execute()
 		assert (resources::gameboard->map().on_board(move.first)
 			&& resources::gameboard->map().on_board(move.second));
 
-		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
+		LOG_AI << "move: " << move.first << " -> " << move.second;
 
 		move_result_ptr move_ptr = execute_move_action(move.first,move.second,true);
 		if(!move_ptr->is_ok()) {
@@ -415,7 +415,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		u = units_.end();
 	}
 
-	LOG_AI << "best unit: " << best->get_location() << '\n';
+	LOG_AI << "best unit: " << best->get_location();
 
 	assert(best_target != targets.end());
 

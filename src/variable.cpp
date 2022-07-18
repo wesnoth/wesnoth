@@ -584,6 +584,6 @@ void scoped_recall_unit::activate()
 				<< " at recall index: " << recall_index_ << '\n';
 		}
 	} else {
-		ERR_NG << "failed to auto-store $" << name() << " for player: " << player_ << '\n';
+		ERR_NG << "failed to auto-store $" << name() << " for player: " << player_;
 	}
 }

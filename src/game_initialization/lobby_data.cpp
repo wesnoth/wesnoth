@@ -239,7 +239,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		} catch(const incorrect_map_format_error&) {
 			verified = false;
 		} catch(const wml_exception& e) {
-			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
+			ERR_CF << "map could not be loaded: " << e.dev_message;
 			verified = false;
 		}
 	}

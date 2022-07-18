@@ -185,7 +185,7 @@ void slider::update_canvas()
 
 void slider::handle_key_decrease(bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << '\n';
+	DBG_GUI_E << LOG_HEADER;
 
 	handled = true;
 
@@ -194,7 +194,7 @@ void slider::handle_key_decrease(bool& handled)
 
 void slider::handle_key_increase(bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << '\n';
+	DBG_GUI_E << LOG_HEADER;
 
 	handled = true;
 
@@ -296,7 +296,7 @@ void slider::set_step_size(int step_size)
 slider_definition::slider_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing slider " << id << '\n';
+	DBG_GUI_P << "Parsing slider " << id;
 
 	load_resolutions<resolution>(cfg);
 }

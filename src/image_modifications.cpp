@@ -107,7 +107,7 @@ modification* decode_modification(const std::string& encoded_mod)
 	std::string args = split[1];
 
 	if(mod_parsers.find(mod_type) == mod_parsers.end()) {
-		ERR_DP << "unknown image function in path: " << mod_type << '\n';
+		ERR_DP << "unknown image function in path: " << mod_type;
 		return nullptr;
 	}
 

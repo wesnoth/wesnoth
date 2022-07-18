@@ -350,7 +350,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 		game_config::add_color_info(game_config());
 
 	} catch(const game::error& e) {
-		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
+		ERR_CONFIG << "Error loading game configuration files\n" << e.message;
 
 		// Try reloading without add-ons
 		if(!game_config::no_addons) {
@@ -598,12 +598,12 @@ void game_config_manager::load_addons_cfg()
 			addon_cfgs_[addon_id] = std::move(umc_cfg);
 		} catch(const config::error& err) {
 			ERR_CONFIG << "config error reading usermade add-on '" << main_cfg << "'";
-			ERR_CONFIG << err.message << '\n';
+			ERR_CONFIG << err.message;
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const preproc_config::error& err) {
 			ERR_CONFIG << "preprocessor config error reading usermade add-on '" << main_cfg << "'";
-			ERR_CONFIG << err.message << '\n';
+			ERR_CONFIG << err.message;
 			error_addons.push_back(main_cfg);
 			error_log.push_back(err.message);
 		} catch(const filesystem::io_exception&) {

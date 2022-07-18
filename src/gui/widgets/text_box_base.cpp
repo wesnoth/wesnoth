@@ -353,7 +353,7 @@ void text_box_base::reset_cursor_state()
 void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
@@ -365,7 +365,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
@@ -376,7 +376,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -388,7 +388,7 @@ void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -400,7 +400,7 @@ void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -418,7 +418,7 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 
 void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -436,7 +436,7 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 
 void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
