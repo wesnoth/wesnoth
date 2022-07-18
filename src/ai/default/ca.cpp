@@ -184,7 +184,7 @@ double combat_phase::evaluate()
 	if(num_sims > 40)
 		num_sims = 40;
 
-	LOG_AI_TESTING_AI_DEFAULT << "simulations: " << num_sims << "\n";
+	LOG_AI_TESTING_AI_DEFAULT << "simulations: " << num_sims;
 
 	const int max_positions = 30000;
 	const int skip_num = analysis.size()/max_positions;
@@ -1357,7 +1357,7 @@ double get_healing_phase::evaluate()
 				const map_location& dst = it.first->second;
 				if (resources::gameboard->map().gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
 					const double vuln = power_projection(dst, get_enemy_dstsrc());
-					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
+					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln;
 					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
 						best_loc = it.first;

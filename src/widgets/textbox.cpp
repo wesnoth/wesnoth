@@ -447,7 +447,7 @@ bool textbox::handle_text_input(const SDL_Event& event)
 	std::string str = event.text.text;
 	std::u32string s = unicode_cast<std::u32string>(str);
 
-	DBG_G << "Char: " << str << "\n";
+	DBG_G << "Char: " << str;
 
 	if (editable_) {
 		changed = true;

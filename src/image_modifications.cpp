@@ -99,7 +99,7 @@ modification* decode_modification(const std::string& encoded_mod)
 	std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
 
 	if(split.size() != 2) {
-		ERR_DP << "error parsing image modifications: " << encoded_mod << "\n";
+		ERR_DP << "error parsing image modifications: " << encoded_mod;
 		return nullptr;
 	}
 
@@ -711,7 +711,7 @@ REGISTER_MOD_PARSER(PAL, args)
 	const std::vector<std::string> remap_params = utils::split(args,'>');
 
 	if(remap_params.size() < 2) {
-		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args << "\n";
+		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args;
 
 		return nullptr;
 	}

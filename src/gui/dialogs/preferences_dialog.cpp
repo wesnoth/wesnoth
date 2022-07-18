@@ -973,7 +973,7 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 		} else if(pref.field == "orb_color") {
 			gui2::dialogs::select_orb_colors::display();
 		} else {
-			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field << "\n";
+			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field;
 		}
 
 		// Add more options here as needed

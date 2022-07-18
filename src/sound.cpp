@@ -267,7 +267,7 @@ void remove_track(unsigned int i)
 
 static bool track_ok(const std::string& id)
 {
-	LOG_AUDIO << "Considering " << id << "\n";
+	LOG_AUDIO << "Considering " << id;
 
 	if(!current_track) {
 		return true;
@@ -347,7 +347,7 @@ static std::shared_ptr<sound::music_track> choose_track()
 		current_track_index = track;
 	}
 
-	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path() << "\n";
+	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path();
 	played_before.push_back(current_track_list[current_track_index]->file_path());
 	return current_track_list[current_track_index];
 }
@@ -659,7 +659,7 @@ static void play_new_music()
 		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops.release(), MUS_NONE, true), &Mix_FreeMusic);
 
 		if(music == nullptr) {
-			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError();
 			return;
 		}
 
@@ -952,7 +952,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError();
 			throw chunk_load_exception();
 		}
 

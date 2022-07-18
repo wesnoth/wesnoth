@@ -194,7 +194,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 	board_.teams().resize(level.child_count("side"));
 	if (player_number_ > static_cast<int>(board_.teams().size())) {
-		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size() << "\n";
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size();
 		player_number_ = 1;
 		// in case there are no teams, using player_number_ migh still cause problems later.
 	}

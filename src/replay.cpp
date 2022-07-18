@@ -250,7 +250,7 @@ void replay::add_synced_command(const std::string& name, const config& command)
 	config& cmd = add_command();
 	cmd.add_child(name,command);
 	cmd["from_side"] = resources::controller->current_side();
-	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
+	LOG_REPLAY << "add_synced_command: \n" << cmd.debug();
 }
 
 
@@ -714,11 +714,11 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		const bool is_synced = synced_context::is_synced();
 		const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 
-		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "is_unsynced=" << is_unsynced << "\n";
+		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "is_unsynced=" << is_unsynced;
 
 		if (cfg != nullptr)
 		{
-			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
+			DBG_REPLAY << "Replay data:\n" << *cfg;
 		}
 		else
 		{
@@ -857,7 +857,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// the only other option for "dependent" command is checksum which is already checked.
 			assert(cfg->all_children_count() == 1);
 			std::string child_name = cfg->all_children_range().front().key;
-			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
+			DBG_REPLAY << "got an dependent action name = " << child_name;
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
 		}
@@ -878,7 +878,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
 
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
-					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side();
 				}
 				else if((*cfg)["side_invalid"].to_bool(false)) {
 					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.\n";

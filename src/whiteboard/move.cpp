@@ -219,7 +219,7 @@ void move::execute(bool& success, bool& complete)
 		return;
 	}
 
-	LOG_WB << "Executing: " << shared_from_this() << "\n";
+	LOG_WB << "Executing: " << shared_from_this();
 
 	// Copy the current route to ensure it remains valid throughout the animation.
 	const std::vector<map_location> steps = route_->steps;

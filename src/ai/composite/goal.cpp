@@ -137,7 +137,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	const unit_filter ufilt{ vconfig(criteria) };
 	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
-			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
+			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value();
 			*target_list = target(u.get_location(), value(), ai_target::type::xplicit);
 		}
 	}

@@ -332,7 +332,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		} else if (parts[0] == "era" && parts.size()>1) {
 			res = generate_era_topics(sort_generated, parts[1]);
 		} else {
-			WRN_HP << "Found a topic generator that I didn't recognize: " << generator << "\n";
+			WRN_HP << "Found a topic generator that I didn't recognize: " << generator;
 		}
 	}
 
@@ -353,7 +353,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 		if (parts.size() > 1 && parts[0] == "units") {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
 		} else if (generator.size() > 0) {
-			WRN_HP << "Found a section generator that I didn't recognize: " << generator << "\n";
+			WRN_HP << "Found a section generator that I didn't recognize: " << generator;
 		}
 	}
 }
@@ -869,7 +869,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 			continue;
 		}
 
-		DBG_HP << "Adding help section: " << era["id"].str() << "\n";
+		DBG_HP << "Adding help section: " << era["id"].str();
 
 		section era_section;
 		config section_cfg;
@@ -878,7 +878,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 		section_cfg["generator"] = "era:" + era["id"].str();
 
-		DBG_HP << section_cfg.debug() << "\n";
+		DBG_HP << section_cfg.debug();
 
 		parse_config_internal(help_cfg, &section_cfg, era_section, level+1);
 		sec.add_section(era_section);

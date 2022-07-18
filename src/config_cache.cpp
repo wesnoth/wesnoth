@@ -189,7 +189,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 				if(filesystem::file_exists(fname_checksum)) {
 					config checksum_cfg;
 
-					DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
+					DBG_CACHE << "Reading checksum: " << fname_checksum;
 					read_file(fname_checksum, checksum_cfg);
 
 					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
@@ -208,7 +208,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		}
 
 		if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
-			LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
+			LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str();
 			log_scope("read cache");
 
 			try {
@@ -267,7 +267,7 @@ void config_cache::read_defines_file(const std::string& file_path)
 	config cfg;
 	read_file(file_path, cfg);
 
-	DBG_CACHE << "Reading cached defines from: " << file_path << "\n";
+	DBG_CACHE << "Reading cached defines from: " << file_path;
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
@@ -322,7 +322,7 @@ void config_cache::recheck_filetree_checksum()
 
 void config_cache::add_define(const std::string& define)
 {
-	DBG_CACHE << "adding define: " << define << "\n";
+	DBG_CACHE << "adding define: " << define;
 	defines_map_[define] = preproc_define();
 
 	if(config_cache_transaction::is_active()) {
@@ -334,7 +334,7 @@ void config_cache::add_define(const std::string& define)
 
 void config_cache::remove_define(const std::string& define)
 {
-	DBG_CACHE << "removing define: " << define << "\n";
+	DBG_CACHE << "removing define: " << define;
 	defines_map_.erase(define);
 
 	if(config_cache_transaction::is_active()) {

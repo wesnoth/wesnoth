@@ -93,7 +93,7 @@ unit_map::umap_retval_pair_t unit_map::add(const map_location& l, const unit& u)
 unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_location& dst)
 {
 	self_check();
-	DBG_NG << "Unit map: Moving unit from " << src << " to " << dst << "\n";
+	DBG_NG << "Unit map: Moving unit from " << src << " to " << dst;
 
 	// Find the unit at the src location
 	lmap::iterator i = lmap_.find(src);
@@ -255,7 +255,7 @@ void unit_map::clear(bool force)
 
 	for(umap::iterator i = umap_.begin(); i != umap_.end(); ++i) {
 		if(is_valid(i)) {
-			DBG_NG << "Delete unit " << i->second.unit->underlying_id() << "\n";
+			DBG_NG << "Delete unit " << i->second.unit->underlying_id();
 			i->second.unit.reset();
 		}
 	}

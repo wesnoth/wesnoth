@@ -815,7 +815,7 @@ variant set_var_callable::execute_self(variant ctxt)
 {
 	//if(infinite_loop_guardian_.set_var_check()) {
 	if(auto obj = ctxt.try_convert<formula_callable>()) {
-		LOG_SF << "Setting variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
+		LOG_SF << "Setting variable: " << key_ << " -> " << value_.to_debug_string();
 		obj->mutate_value(key_, value_);
 		return variant(true);
 	}

@@ -334,7 +334,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 		flag = game_config::images::flag;
 	}
 
-	LOG_DP << "Adding flag for team " << n << " from animation " << flag << "\n";
+	LOG_DP << "Adding flag for team " << n << " from animation " << flag;
 
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
@@ -351,7 +351,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(const std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
+				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back();
 			}
 		}
 
@@ -369,7 +369,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 	}
 	else {
 		// this can happen if both flag and game_config::images::flag are empty.
-		ERR_DP << "missing flag for team" << n << "\n";
+		ERR_DP << "missing flag for team" << n;
 	}
 }
 
@@ -896,7 +896,7 @@ void display::create_buttons()
 		auto b = std::make_shared<gui::button>(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
 			gui::button::DEFAULT_SPACE, true, menu.overlay(), font::SIZE_BUTTON_SMALL);
 
-		DBG_DP << "drawing button " << menu.get_id() << "\n";
+		DBG_DP << "drawing button " << menu.get_id();
 		b->set_id(menu.get_id());
 		if(!menu.tooltip().empty()) {
 			b->set_tooltip_string(menu.tooltip());
@@ -914,7 +914,7 @@ void display::create_buttons()
 		auto b = std::make_shared<gui::button>(screen_, action.title(), string_to_button_type(action.type()),
 			action.image(), gui::button::DEFAULT_SPACE, true, action.overlay(), font::SIZE_BUTTON_SMALL);
 
-		DBG_DP << "drawing button " << action.get_id() << "\n";
+		DBG_DP << "drawing button " << action.get_id();
 		b->set_id(action.get_id());
 		if(!action.tooltip(0).empty()) {
 			b->set_tooltip_string(action.tooltip(0));

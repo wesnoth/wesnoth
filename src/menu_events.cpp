@@ -432,7 +432,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	LOG_NG << "recall index: " << res << "\n";
+	LOG_NG << "recall index: " << res;
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
@@ -890,7 +890,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 	gui_->unhighlight_reach();
 
 	{
-		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
+		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back();
 		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
 
@@ -968,7 +968,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 			gui_->set_route(&route);
 
 			{
-				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back() << "\n";
+				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
 				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
 				change = moves > 0;
 			}

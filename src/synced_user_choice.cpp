@@ -161,7 +161,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		}
 
 		side = resources::controller->current_side();
-		LOG_REPLAY << " side changed to " << side << "\n";
+		LOG_REPLAY << " side changed to " << side;
 	}
 
 	if(!is_synced)
@@ -259,7 +259,7 @@ void user_choice_manager::search_in_replay()
 			return;
 		}
 
-		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice() << "\n";
+		DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_choice();
 
 		const config *action = resources::recorder->get_next_action();
 		assert(action); //action cannot be null because resources::recorder->at_end() returned false.
@@ -374,7 +374,7 @@ void user_choice_manager::fix_oos()
 	{
 		if(res_.find(side) == res_.end())
 		{
-			ERR_REPLAY << "Doing a local choice for side " << side << "\n";
+			ERR_REPLAY << "Doing a local choice for side " << side;
 			res_[side] = uch_.query_user(side);
 		}
 	}

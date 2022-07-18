@@ -72,7 +72,7 @@ static void dump_recall_list_to_console(const T& units)
 {
 	log_scope2(log_display, "dump_recall_list_to_console()")
 
-	LOG_DP << "size: " << units.size() << "\n";
+	LOG_DP << "size: " << units.size();
 
 	std::size_t idx = 0;
 	for(const auto& u_ptr : units) {

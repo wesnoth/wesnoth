@@ -466,7 +466,7 @@ bool terrain_builder::load_images(building_rule& rule)
 							try {
 								time = std::stoi(items.back());
 							} catch(const std::invalid_argument&) {
-								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back() << "\n";
+								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back();
 							}
 						}
 						image::locator locator;
@@ -691,7 +691,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 					basex = std::stoi(base[0]);
 					basey = std::stoi(base[1]);
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1] << "\n";
+					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1];
 				}
 			}
 		}

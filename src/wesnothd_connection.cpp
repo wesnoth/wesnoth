@@ -138,7 +138,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, results_type resu
 {
 	MPTEST_LOG;
 	if(ec) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
+		LOG_NW << __func__ << " Throwing: " << ec;
 		throw system_error(ec);
 	}
 
@@ -207,7 +207,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			fallback_to_unencrypted();
 			return;
 		}
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
+		LOG_NW << __func__ << " Throwing: " << ec;
 		throw system_error(ec);
 	}
 
@@ -239,7 +239,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 
 			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
 				if(ec) {
-					LOG_NW << __func__ << " Throwing: " << ec << "\n";
+					LOG_NW << __func__ << " Throwing: " << ec;
 					throw system_error(ec);
 				}
 
@@ -304,7 +304,7 @@ void wesnothd_connection::wait_for_handshake()
 			return;
 		}
 
-		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
+		WRN_NW << __func__ << " Rethrowing: " << err.code();
 		throw error(err.code());
 	} catch(const std::future_error& e) {
 		if(e.code() == std::future_errc::future_already_retrieved) {
@@ -378,7 +378,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return bytes_to_write_ - bytes_transferred;
@@ -402,7 +402,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return;
@@ -424,7 +424,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return bytes_to_read_ - bytes_transferred;
@@ -465,7 +465,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return;

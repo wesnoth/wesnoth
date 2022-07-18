@@ -150,7 +150,7 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 				mods.emplace_back("resource", load_res["id"].str());
 			}
 		} else {
-			ERR_NG << "Unable to find config for content " << current.id << " of type " << current.type << "\n";
+			ERR_NG << "Unable to find config for content " << current.id << " of type " << current.type;
 		}
 		mods.pop_front( );
 	}

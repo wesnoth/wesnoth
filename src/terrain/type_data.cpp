@@ -64,7 +64,7 @@ void terrain_type_data::lazy_initialization() const
 				std::string joined = utils::join(egs);
 
 				if(clean_merge) {
-					LOG_G << "Editor groups merged to: " << joined << "\n";
+					LOG_G << "Editor groups merged to: " << joined;
 				} else {
 					LOG_G << "Merged terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ") "

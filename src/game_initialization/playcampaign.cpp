@@ -187,7 +187,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 
 	playsingle_controller playcontroller(starting_point, state_, false);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
+	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}

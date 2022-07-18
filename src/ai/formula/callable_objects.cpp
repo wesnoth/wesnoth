@@ -380,7 +380,7 @@ variant set_unit_var_callable::execute_self(variant ctxt) {
 	}
 
 	if(status == 0) {
-		LOG_AI << "Setting unit variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
+		LOG_AI << "Setting unit variable: " << key_ << " -> " << value_.to_debug_string();
 		unit->formula_manager().add_formula_var(key_, value_);
 		return variant(true);
 	}

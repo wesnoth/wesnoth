@@ -348,7 +348,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	std::string cmd;
 	std::getline(is, cmd);
 
-	LOG_SERVER << "Admin Command: type: " << cmd << "\n";
+	LOG_SERVER << "Admin Command: type: " << cmd;
 
 	const std::string res = process_command(cmd, "*socket*");
 
@@ -358,7 +358,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				   << res << "\n"
 				   << "[/admin_command_response]\n";
 	} else {
-		LOG_SERVER << res << "\n";
+		LOG_SERVER << res;
 	}
 
 	read_from_fifo();
@@ -599,7 +599,7 @@ void server::start_dump_stats()
 void server::dump_stats(const boost::system::error_code& ec)
 {
 	if(ec) {
-		ERR_SERVER << "Error waiting for dump stats timer: " << ec.message() << "\n";
+		ERR_SERVER << "Error waiting for dump stats timer: " << ec.message();
 		return;
 	}
 	LOG_SERVER << "Statistics:"
@@ -617,7 +617,7 @@ void server::start_dummy_player_updates()
 void server::dummy_player_updates(const boost::system::error_code& ec)
 {
 	if(ec) {
-		ERR_SERVER << "Error waiting for dummy player timer: " << ec.message() << "\n";
+		ERR_SERVER << "Error waiting for dummy player timer: " << ec.message();
 		return;
 	}
 
@@ -660,7 +660,7 @@ void server::start_tournaments_timer()
 void server::refresh_tournaments(const boost::system::error_code& ec)
 {
 	if(ec) {
-		ERR_SERVER << "Error waiting for tournament refresh timer: " << ec.message() << "\n";
+		ERR_SERVER << "Error waiting for tournament refresh timer: " << ec.message();
 		return;
 	}
 	if(user_handler_) {
@@ -1313,7 +1313,7 @@ void server::handle_message(player_iterator user, simple_wml::node& message)
 		LOG_SERVER << user->client_ip() << "\t<" << user->name()
 				   << simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">\n";
 	} else {
-		LOG_SERVER << user->client_ip() << "\t<" << user->name() << "> " << msg << "\n";
+		LOG_SERVER << user->client_ip() << "\t<" << user->name() << "> " << msg;
 	}
 
 	send_to_lobby(relay_message, user);
@@ -1351,7 +1351,7 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 
 	wesnothd::game& g = *player->get_game();
 
-	DBG_SERVER << "initial bans: " << initial_bans << "\n";
+	DBG_SERVER << "initial bans: " << initial_bans;
 	if(initial_bans != "") {
 		g.set_name_bans(utils::split(initial_bans,','));
 	}
@@ -2020,7 +2020,7 @@ void server::start_new_server()
 	if(std::system(restart_command.c_str())) {
 		ERR_SERVER << "Failed to start new server with command: " << restart_command;
 	} else {
-		LOG_SERVER << "New server started with command: " << restart_command << "\n";
+		LOG_SERVER << "New server started with command: " << restart_command;
 	}
 }
 

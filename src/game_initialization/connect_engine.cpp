@@ -974,7 +974,7 @@ config side_engine::new_config() const
 	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
-		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
+		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"];
 		res["faction_name"] = faction["name"];
 		res["faction"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type", "description");
@@ -1078,7 +1078,7 @@ config side_engine::new_config() const
 		if(controller_ != CNTR_EMPTY) {
 			(*leader)["type"] = flg_.current_leader();
 			(*leader)["gender"] = flg_.current_gender();
-			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"] << "\n";
+			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"];
 		} else {
 			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
 			(*leader)["type"] = "null";

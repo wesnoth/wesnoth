@@ -334,7 +334,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	assert(position < turn_end(0)); //can't execute actions from future turns
 
-	LOG_WB << "Before execution, " << *this << "\n";
+	LOG_WB << "Before execution, " << *this;
 
 	action_ptr action = *position;
 
@@ -351,7 +351,7 @@ bool side_actions::execute(side_actions::iterator position)
 		 action->execute(action_successful, action_complete);
 	} catch (const return_to_play_side_exception&) {
 		synced_erase(position);
-		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
+		LOG_WB << "End turn exception caught during execution, deleting action. " << *this;
 		//validate actions at next map rebuild
 		resources::whiteboard->on_gamestate_change();
 		throw;
@@ -430,7 +430,7 @@ side_actions::iterator side_actions::queue_action(std::size_t turn_num, action_p
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 	iterator result = synced_enqueue(turn_num, action);
-	LOG_WB << "Queue into turn #" << turn_num << " : " << action <<"\n";
+	LOG_WB << "Queue into turn #" << turn_num << " : " << action;
 	resources::whiteboard->validate_viewer_actions();
 	return result;
 }
@@ -521,7 +521,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 		}
 	}
 
-	LOG_WB << "Before bumping earlier, " << *this << "\n";
+	LOG_WB << "Before bumping earlier, " << *this;
 
 	int turn_number = get_turn(position);
 	int action_number = actions_.position_in_turn(position);
@@ -535,7 +535,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	}
 	actions_.bump_earlier(position);
 
-	LOG_WB << "After bumping earlier, " << *this << "\n";
+	LOG_WB << "After bumping earlier, " << *this;
 	return position - 1;
 }
 
@@ -563,7 +563,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 
 	assert(position < end());
 
-	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position) << "\n";
+	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position);
 
 
 	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
@@ -795,7 +795,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 			return;
 		}
 
-		LOG_WB << "Command received: action inserted on turn #" << turn << ", position #" << pos << ": " << act << "\n";
+		LOG_WB << "Command received: action inserted on turn #" << turn << ", position #" << pos << ": " << act;
 
 		//update numbering hexes as necessary
 		++itor;
@@ -822,7 +822,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 			return;
 		}
 
-		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act << "\n";
+		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act;
 	} else if(type=="remove") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
@@ -835,7 +835,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		itor = safe_erase(itor);
 
-		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos << "\n";
+		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
 		for(iterator end_itor = end(); itor != end_itor; ++itor) {
@@ -855,7 +855,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		action_ptr second_action = itor[1];
 		bump_later(itor, false);
 
-		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos << "\n";
+		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
 		display::get_singleton()->invalidate(first_action->get_numbering_hex());

@@ -121,7 +121,7 @@ void attack::execute(bool& success, bool& complete)
 		return;
 	}
 
-	LOG_WB << "Executing: " << shared_from_this() << "\n";
+	LOG_WB << "Executing: " << shared_from_this();
 
 	if (route_->steps.size() >= 2)
 	{

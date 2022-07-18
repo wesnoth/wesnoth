@@ -93,7 +93,7 @@ public:
 			try {
 				time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
 			} catch(const std::invalid_argument&) {
-				//ERR_NG << "Invalid time in unit animation: " << colon_split[1] << "\n";
+				//ERR_NG << "Invalid time in unit animation: " << colon_split[1];
 			}
 
 			try {
@@ -170,7 +170,7 @@ public:
 					try {
 						total_specified_time += std::stoi(second_pass[1]);
 					} catch(const std::invalid_argument&) {
-						//ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+						//ERR_NG << "Invalid time in unit animation: " << second_pass[1];
 					}
 				}
 			}
@@ -184,7 +184,7 @@ public:
 				try {
 					base_data.push_back({std::move(second_pass[0]), std::stoi(second_pass[1])});
 				} catch(const std::invalid_argument&) {
-					//ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+					//ERR_NG << "Invalid time in unit animation: " << second_pass[1];
 				}
 			} else {
 				base_data.push_back({std::move(second_pass[0]) ,time_chunk});

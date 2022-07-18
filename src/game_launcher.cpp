@@ -731,8 +731,8 @@ bool game_launcher::load_game()
 	}
 
 	play_replay_ = load.data().show_replay;
-	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
-	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no") << "\n";
+	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no");
+	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no");
 	// in case load.data().show_replay && !state_.is_mid_game_save()
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
@@ -835,7 +835,7 @@ void game_launcher::start_wesnothd()
 	// meaningful to SDL applications during pre-main initialization.
 	SetEnvironmentVariableA("SDL_STDIO_REDIRECT", "0");
 #endif
-	LOG_GENERAL << "Starting wesnothd: "<< command << "\n";
+	LOG_GENERAL << "Starting wesnothd: "<< command;
 	if (std::system(command.c_str()) == 0) {
 		// Give server a moment to start up
 		SDL_Delay(50);

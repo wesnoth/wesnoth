@@ -238,7 +238,7 @@ namespace
 				// because it's a mp game and it's not his turn.
 				// default to the first unit listed in the unit's advancements
 			}
-			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res << "\n";
+			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res;
 			config retv;
 			retv["value"] = res;
 			return retv;

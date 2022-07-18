@@ -263,7 +263,7 @@ void team_builder::place_units()
 		try {
 			uc.add_unit(*u);
 		} catch(const unit_type_error& e) {
-			ERR_NG_TC << e.what() << "\n";
+			ERR_NG_TC << e.what();
 		}
 	}
 }

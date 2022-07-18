@@ -548,7 +548,7 @@ int impl_widget_get(lua_State* L)
 		luaW_pushwidget(L, *pwidget);
 		return 1;
 	}
-	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str << "\n";
+	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str;
 	return luaL_argerror(L, 2, "invalid property of widget");
 }
 
@@ -568,10 +568,10 @@ int impl_widget_set(lua_State* L)
 		ERR_LUA << "none of "<< it->second.size() << " setters matched\n";
 	}
 	else {
-		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size() << "\n";
+		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size();
 
 	}
-	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str << "\n";
+	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str;
 	return luaL_argerror(L, 2, "invalid modifiable property of widget");
 }
 

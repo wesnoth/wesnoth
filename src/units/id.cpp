@@ -28,14 +28,14 @@ namespace n_unit
 	unit_id id_manager::next_id()
 	{
 		assert(next_id_ < unit_id::highest_bit);
-		DBG_UT << "id: " << next_id_ << "\n";
+		DBG_UT << "id: " << next_id_;
 		return unit_id::create_real(++next_id_);
 	}
 
 	unit_id id_manager::next_fake_id()
 	{
 		assert(fake_id_ < unit_id::highest_bit);
-		DBG_UT << "fake id: " << fake_id_ << "\n";
+		DBG_UT << "fake id: " << fake_id_;
 		return unit_id::create_fake(++fake_id_);
 	}
 
@@ -47,7 +47,7 @@ namespace n_unit
 	void id_manager::set_save_id(std::size_t id)
 	{
 		clear();
-		DBG_UT << "set save id: " << id << "\n";
+		DBG_UT << "set save id: " << id;
 		next_id_ = id;
 	}
 

@@ -113,7 +113,7 @@ static std::string resolve_rect(const std::string& rect_str)
 		resolved << "," << rect.y2;
 	}
 
-	// DBG_DP << "Rect " << rect_str << "\t: " << resolved.str() << "\n";
+	// DBG_DP << "Rect " << rect_str << "\t: " << resolved.str();
 
 	ref_rect = rect;
 	return resolved.str();
@@ -254,7 +254,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		if(resol_cfg == nullptr) {
 			ERR_DP << "Use of ref= outside a [resolution] block";
 		} else {
-			// DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
+			// DBG_DP << ">> Looking for " << cfg["ref"];
 			const config& ref = find_ref(cfg["ref"], *resol_cfg);
 
 			if(ref["id"].empty()) {
@@ -613,9 +613,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	for(const config& i : cfg_.child_range("resolution")) {
 		int width = i["width"];
 		int height = i["height"];
-		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
+		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
 		if(screen.w >= width && screen.h >= height) {
-			LOG_DP << "loading theme: " << width << "," << height << "\n";
+			LOG_DP << "loading theme: " << width << "," << height;
 			current = &i;
 			result = true;
 			break;
@@ -714,7 +714,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 
 	for(const config& m : cfg.child_range("menu")) {
 		menu new_menu(sw, sh, m);
-		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context");
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else {
@@ -727,7 +727,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 
 	for(const config& a : cfg.child_range("action")) {
 		action new_action(sw, sh, a);
-		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
+		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context");
 		if(new_action.is_context())
 			action_context_ = new_action;
 		else {

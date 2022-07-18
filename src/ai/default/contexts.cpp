@@ -158,7 +158,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 			const double value = threat/static_cast<double>(threats.size());
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
-				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
+				LOG_AI << "found threat target... " << *i << " with value: " << value;
 				targets.emplace_back(*i,value,ai_target::type::threat);
 			}
 		}
@@ -222,7 +222,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			if (u->can_recruit() && current_team().is_enemy(u->side())
 			    && !u->invisible(u->get_location())) {
 				assert(map_.on_board(u->get_location()));
-				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
+				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value();
 				targets.emplace_back(u->get_location(), get_leader_value(), ai_target::type::leader);
 			}
 		}
@@ -262,7 +262,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 	assert(new_values.size() == targets.size());
 	for(std::size_t n = 0; n != new_values.size(); ++n) {
-		LOG_AI << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
+		LOG_AI << "target value: " << targets[n].value << " -> " << new_values[n];
 		targets[n].value = new_values[n];
 	}
 

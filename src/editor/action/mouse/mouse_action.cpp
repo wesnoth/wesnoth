@@ -229,7 +229,7 @@ std::unique_ptr<editor_action> brush_drag_mouse_action::drag_generic(editor_disp
 	move(disp, hex);
 	if (hex != previous_drag_hex_) {
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
-		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
+		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x;
 		partial = true;
 		auto a = (this->*perform_func)(disp, affected_hexes(disp, hex));
 		previous_drag_hex_ = hex;

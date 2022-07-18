@@ -1015,7 +1015,7 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 	}
 	catch (const invalid_variablename_exception&)
 	{
-		WRN_LUA << v.get_error_message() << "\n";
+		WRN_LUA << v.get_error_message();
 		return false;
 	}
 }

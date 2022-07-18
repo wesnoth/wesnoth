@@ -204,7 +204,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		read(cfg, *stream, validator.get());
 	} catch(const config::error& e) {
-		ERR_VL << "Failed to read file " << filename << ":\n" << e.what() << "\n";
+		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
 		return false;
 	}
 

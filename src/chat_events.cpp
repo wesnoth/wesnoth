@@ -77,7 +77,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["domain"] = domain;
 		const std::string& msg =
 			VGETTEXT("Switched domain: '$domain' to level: '$level'.", symbols);
-		LOG_NG << msg << "\n";
+		LOG_NG << msg;
 		add_chat_message(std::time(nullptr), "log", 0, msg);
 	}
 }

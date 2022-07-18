@@ -319,7 +319,7 @@ void chatbox::add_whisper_received(const std::string& sender, const std::string&
 		add_active_window_whisper(sender, message);
 		do_notify(mp::notify_mode::whisper, sender, message);
 	} else {
-		LOG_LB << "Ignoring whisper from " << sender << "\n";
+		LOG_LB << "Ignoring whisper from " << sender;
 	}
 }
 
@@ -474,7 +474,7 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 		++t->pending_messages;
 
 		if(t->pending_messages == 1) {
-			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name << "\n";
+			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
 			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
@@ -490,7 +490,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 		if(t->pending_messages == 1) {
 			int idx = t - &open_windows_[0];
 
-			DBG_LB << "do room pending mark row " << idx << " with " << t->name << "\n";
+			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(idx);
 			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
@@ -502,7 +502,7 @@ void chatbox::add_whisper_window_whisper(const std::string& sender, const std::s
 {
 	lobby_chat_window* t = whisper_window_open(sender, false);
 	if(!t) {
-		ERR_LB << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
+		ERR_LB << "Whisper window not open in add_whisper_window_whisper for " << sender;
 		return;
 	}
 
@@ -522,7 +522,7 @@ void chatbox::close_window(std::size_t idx)
 {
 	const lobby_chat_window& t = open_windows_[idx];
 
-	DBG_LB << "Close window " << idx << " - " << t.name << "\n";
+	DBG_LB << "Close window " << idx << " - " << t.name;
 
 	// Can't close the lobby!
 	if((t.name == "lobby" && t.whisper == false) || open_windows_.size() == 1) {
@@ -559,7 +559,7 @@ void chatbox::add_room_window_message(const std::string& room,
 {
 	lobby_chat_window* t = room_window_open(room, false);
 	if(!t) {
-		ERR_LB << "Room window not open in add_room_window_message for " << room << "\n";
+		ERR_LB << "Room window not open in add_room_window_message for " << room;
 		return;
 	}
 

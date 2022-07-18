@@ -223,7 +223,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
+	DBG_REPLAY << "Attacker XP (before attack): " << u->experience();
 
 	resources::undo_stack->clear();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);

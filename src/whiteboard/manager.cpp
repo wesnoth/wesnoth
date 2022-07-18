@@ -192,7 +192,7 @@ void manager::set_active(bool active)
 				resources::undo_stack->clear();
 			}
 			validate_viewer_actions();
-			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
+			LOG_WB << "Whiteboard activated! " << *viewer_actions();
 			create_temp_move();
 		} else {
 			LOG_WB << "Whiteboard deactivated!\n";
@@ -814,7 +814,7 @@ void manager::save_temp_move()
 		}
 		erase_temp_move();
 
-		LOG_WB << *viewer_actions() << "\n";
+		LOG_WB << *viewer_actions();
 		print_help_once();
 	}
 }
@@ -870,7 +870,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		display::get_singleton()->invalidate(defender_loc);
 		display::get_singleton()->invalidate(attacker_loc);
 		erase_temp_move();
-		LOG_WB << *viewer_actions() << "\n";
+		LOG_WB << *viewer_actions();
 	}
 }
 
@@ -1014,7 +1014,7 @@ bool manager::execute_all_actions()
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
-	//LOG_WB << "Before executing all actions, " << *sa << "\n";
+	//LOG_WB << "Before executing all actions, " << *sa;
 
 	while (sa->turn_begin(0) != sa->turn_end(0))
 	{

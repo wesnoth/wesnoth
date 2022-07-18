@@ -1179,7 +1179,7 @@ void play_controller::start_game()
 		}
 
 		init_gui();
-		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
+		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip");
 
 		fire_start();
 		if(is_regular_game_end()) {
@@ -1283,7 +1283,7 @@ void play_controller::check_next_scenario_is_known() {
 	utils::string_map symbols;
 	symbols["unknown_list"] = unknown_list.str();
 	auto message_str = utils::interpolate_variables_into_string(message.str(), &symbols);
-	ERR_NG << message_str << "\n";
+	ERR_NG << message_str;
 	gui2::show_message(title, message_str, gui2::dialogs::message::close_button);
 }
 
@@ -1342,7 +1342,7 @@ void play_controller::play_turn()
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 
-	LOG_NG << "turn: " << turn() << "\n";
+	LOG_NG << "turn: " << turn();
 
 	if(gui_->video().non_interactive()) {
 		LOG_AIT << "Turn " << turn() << ":";

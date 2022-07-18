@@ -38,7 +38,7 @@ editor_action::editor_action()
 	++instance_count_;
 
 #ifdef EDITOR_DEBUG_ACTION_LIFETIME
-	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count << "\n";
+	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count;
 #endif
 }
 
@@ -47,7 +47,7 @@ editor_action::~editor_action()
 	instance_count_--;
 
 #ifdef EDITOR_DEBUG_ACTION_LIFETIME
-	LOG_ED << "Action " << std::setw(2) << id_ << " dtor " << this << " (count is " << instance_count << "\n";
+	LOG_ED << "Action " << std::setw(2) << id_ << " dtor " << this << " (count is " << instance_count;
 #endif
 }
 
@@ -255,14 +255,14 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 
 		undo = std::move(undo_chain);
 
-		LOG_ED << "ssp actual: " << *old_loc_id << " to " << map_location() << "\n";
+		LOG_ED << "ssp actual: " << *old_loc_id << " to " << map_location();
 
 		mc.map().set_special_location(*old_loc_id, map_location());
 	} else {
 		undo = std::make_unique<editor_action_starting_position>(old_loc, loc_id_);
 	}
 
-	LOG_ED << "ssp actual: " << loc_id_ << " to " << loc_ << "\n";
+	LOG_ED << "ssp actual: " << loc_id_ << " to " << loc_;
 
 	mc.map().set_special_location(loc_id_, loc_);
 	mc.set_needs_labels_reset();

@@ -144,7 +144,7 @@ static lg::log_domain log_preprocessor("preprocessor");
 // be replaced with this
 static void safe_exit(int res)
 {
-	LOG_GENERAL << "exiting with code " << res << "\n";
+	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
 }
 

@@ -53,7 +53,7 @@ bool synced_context::run(const std::string& commandname,
 	bool show,
 	synced_command::error_handler_function error_handler)
 {
-	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
+	DBG_REPLAY << "run_in_synced_context:" << commandname;
 
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 
