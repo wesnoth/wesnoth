@@ -198,7 +198,7 @@ void scrollbar::draw_contents()
 	SDL_Rect groove = location();
 
 	if (grip.h > groove.h) {
-		PLAIN_LOG << "abort draw scrollbar: grip too large\n";
+		PLAIN_LOG << "abort draw scrollbar: grip too large";
 		return;
 	}
 

@@ -816,8 +816,7 @@ void server::fire(const std::string& hook, [[maybe_unused]] const std::string& a
 		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(nullptr));
 
 		// exec() and family never return; if they do, we have a problem
-		PLAIN_LOG << "ERROR: exec failed with errno " << errno << " for addon " << addon
-				  << '\n';
+		PLAIN_LOG << "ERROR: exec failed with errno " << errno << " for addon " << addon;
 		exit(errno);
 
 	} else {
@@ -1956,7 +1955,7 @@ int run_campaignd(int argc, char** argv)
 		// otherwise, hence this check must only exists in this code path. It's
 		// only meant to protect against user mistakes.
 		if(!port) {
-			PLAIN_LOG << "Invalid network port: " << port << '\n';
+			PLAIN_LOG << "Invalid network port: " << port;
 			return 2;
 		}
 	}
@@ -1968,7 +1967,7 @@ int run_campaignd(int argc, char** argv)
 
 	for(const auto& ldl : cmdline.log_domain_levels) {
 		if(!lg::set_log_domain_severity(ldl.first, ldl.second)) {
-			PLAIN_LOG << "Unknown log domain: " << ldl.first << '\n';
+			PLAIN_LOG << "Unknown log domain: " << ldl.first;
 			return 2;
 		}
 	}
@@ -1981,15 +1980,15 @@ int run_campaignd(int argc, char** argv)
 		campaignd::timing_reports_enabled = true;
 	}
 
-	PLAIN_LOG << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
+	PLAIN_LOG << "Wesnoth campaignd v" << game_config::revision << " starting...";
 
 	if(server_path.empty() || !filesystem::is_directory(server_path)) {
-		PLAIN_LOG << "Server directory '" << *cmdline.server_dir << "' does not exist or is not a directory.\n";
+		PLAIN_LOG << "Server directory '" << *cmdline.server_dir << "' does not exist or is not a directory.";
 		return 1;
 	}
 
 	if(filesystem::is_directory(config_file)) {
-		PLAIN_LOG << "Server configuration file '" << config_file << "' is not a file.\n";
+		PLAIN_LOG << "Server configuration file '" << config_file << "' is not a file.";
 		return 1;
 	}
 
@@ -1997,7 +1996,7 @@ int run_campaignd(int argc, char** argv)
 	// need to change it accordingly. We don't do this before because paths in
 	// the command line need to remain relative to the original pwd.
 	if(cmdline.server_dir && !filesystem::set_cwd(server_path)) {
-		PLAIN_LOG << "Bad server directory '" << server_path << "'.\n";
+		PLAIN_LOG << "Bad server directory '" << server_path << "'.";
 		return 1;
 	}
 
@@ -2014,16 +2013,16 @@ int main(int argc, char** argv)
 	try {
 		run_campaignd(argc, argv);
 	} catch(const boost::program_options::error& e) {
-		PLAIN_LOG << "Error in command line: " << e.what() << '\n';
+		PLAIN_LOG << "Error in command line: " << e.what();
 		return 10;
 	} catch(const config::error& /*e*/) {
-		PLAIN_LOG << "Could not parse config file\n";
+		PLAIN_LOG << "Could not parse config file";
 		return 1;
 	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "File I/O error: " << e.what() << "\n";
+		PLAIN_LOG << "File I/O error: " << e.what();
 		return 2;
 	} catch(const std::bad_function_call& /*e*/) {
-		PLAIN_LOG << "Bad request handler function call\n";
+		PLAIN_LOG << "Bad request handler function call";
 		return 4;
 	}
 

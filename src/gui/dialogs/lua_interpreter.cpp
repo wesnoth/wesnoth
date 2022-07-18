@@ -213,7 +213,7 @@ public:
 			}
 
 			history_truncate_file (filename_.c_str(), history_max);
-		} catch (...) { PLAIN_LOG << "Swallowed an exception when trying to write lua command line history\n";}
+		} catch (...) { PLAIN_LOG << "Swallowed an exception when trying to write lua command line history";}
 	}
 #endif
 	void add_to_history ([[maybe_unused]] const std::string& str) {

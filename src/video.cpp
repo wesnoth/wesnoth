@@ -365,7 +365,7 @@ void CVideo::init_window()
 	// If that is no longer true, then you should clean things up.
 	assert(!render_texture_);
 
-	PLAIN_LOG << "Setting mode to " << w << "x" << h << std::endl;
+	PLAIN_LOG << "Setting mode to " << w << "x" << h;
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
 
@@ -732,7 +732,7 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 
 	const int modes = SDL_GetNumDisplayModes(display_index);
 	if(modes <= 0) {
-		PLAIN_LOG << "No modes supported\n";
+		PLAIN_LOG << "No modes supported";
 		return result;
 	}
 

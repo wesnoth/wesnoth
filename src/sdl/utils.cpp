@@ -58,7 +58,7 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 		return nullptr;
 
 	if (z > 5) {
-		PLAIN_LOG << "Cannot use xbrz scaling with zoom factor > 5." << std::endl;
+		PLAIN_LOG << "Cannot use xbrz scaling with zoom factor > 5.";
 		z = 1;
 	}
 
@@ -70,12 +70,12 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 	surface dst(surf->w *z, surf->h * z);
 
 	if (z == 0) {
-		PLAIN_LOG << "Create an empty image\n";
+		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
 	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto\n";
+		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
@@ -106,12 +106,12 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 	surface dst(w,h);
 
 	if (w == 0 || h ==0) {
-		PLAIN_LOG << "Create an empty image\n";
+		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
 	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto\n";
+		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
@@ -143,12 +143,12 @@ surface scale_surface(const surface &surf, int w, int h)
 	surface dst(w,h);
 
 	if (w == 0 || h ==0) {
-		PLAIN_LOG << "Create an empty image\n";
+		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
 	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto\n";
+		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
@@ -272,7 +272,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 	surface dst(w,h);
 
 	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto\n";
+		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
@@ -409,12 +409,12 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 	surface dst(w,h);
 
 	if (w == 0 || h ==0) {
-		PLAIN_LOG << "Create an empty image\n";
+		PLAIN_LOG << "Create an empty image";
 		return dst;
 	}
 
 	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto\n";
+		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
 	}
 
@@ -494,7 +494,7 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -533,7 +533,7 @@ surface greyscale_image(const surface &surf)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -578,7 +578,7 @@ surface monochrome_image(const surface &surf, const int threshold)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -618,7 +618,7 @@ surface sepia_image(const surface &surf)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -660,7 +660,7 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -703,7 +703,7 @@ surface alpha_to_greyscale(const surface &surf)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -731,7 +731,7 @@ surface wipe_alpha(const surface &surf)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -761,7 +761,7 @@ surface shadow_image(const surface &surf, int scale)
 	surface nsurf (blur_alpha_surface(surf, 2*scale));
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to blur the shadow surface\n";
+		PLAIN_LOG << "failed to blur the shadow surface";
 		return nullptr;
 	}
 
@@ -795,7 +795,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -902,7 +902,7 @@ surface recolor_image(surface surf, const color_range_map& map_rgb)
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface" << std::endl;
+		PLAIN_LOG << "failed to make neutral surface";
 		return nullptr;
 	}
 
@@ -939,7 +939,7 @@ surface brighten_image(const surface &surf, int32_t amount)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -990,7 +990,7 @@ surface adjust_surface_alpha_add(const surface &surf, int amount)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1032,7 +1032,7 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 	surface nmask = mask.clone();
 
 	if(nsurf == nullptr || nmask == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 	if (nsurf->w !=  nmask->w) {
@@ -1043,9 +1043,9 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 		std::stringstream ss;
 		ss << "Detected an image with bad dimensions: ";
 		if(!filename.empty()) ss << filename << ": ";
-		ss << nsurf->w << "x" << nsurf->h << "\n";
+		ss << nsurf->w << "x" << nsurf->h;
 		PLAIN_LOG << ss.str();
-		PLAIN_LOG << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h << "\n";
+		PLAIN_LOG << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h;
 		return nsurf;
 	}
 
@@ -1106,7 +1106,7 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 	surface nmask = mask.clone();
 
 	if(nsurf == nullptr || nmask == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return false;
 	}
 
@@ -1146,7 +1146,7 @@ surface light_surface(const surface &surf, const surface &lightmap)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 	if (nsurf->w != lightmap->w) {
@@ -1154,8 +1154,8 @@ surface light_surface(const surface &surf, const surface &lightmap)
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
 		// so better keep it simple and efficient for the normal case
-		PLAIN_LOG << "Detected an image with bad dimensions: " << nsurf->w << "x" << nsurf->h << "\n";
-		PLAIN_LOG << "It will not be lighted, please use: "<< lightmap->w << "x" << lightmap->h << "\n";
+		PLAIN_LOG << "Detected an image with bad dimensions: " << nsurf->w << "x" << nsurf->h;
+		PLAIN_LOG << "It will not be lighted, please use: "<< lightmap->w << "x" << lightmap->h;
 		return nsurf;
 	}
 	{
@@ -1209,7 +1209,7 @@ surface blur_surface(const surface &surf, int depth)
 	surface res = surf.clone();
 
 	if(res == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1344,7 +1344,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	surface res = surf.clone();
 
 	if(res == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1490,7 +1490,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 	surface res(r.w, r.h);
 
 	if(res == nullptr) {
-		PLAIN_LOG << "Could not create a new surface in cut_surface()\n";
+		PLAIN_LOG << "Could not create a new surface in cut_surface()";
 		return nullptr;
 	}
 
@@ -1552,7 +1552,7 @@ surface blend_surface(
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1707,7 +1707,7 @@ surface rotate_180_surface(const surface &surf)
 	surface nsurf = surf.clone();
 
 	if ( nsurf == nullptr ) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1748,7 +1748,7 @@ surface rotate_90_surface(const surface &surf, bool clockwise)
 	surface dst(surf->h, surf->w); // Flipped dimensions.
 
 	if ( surf == nullptr  ||  dst == nullptr ) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1784,7 +1784,7 @@ surface flip_surface(const surface &surf)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1813,7 +1813,7 @@ surface flop_surface(const surface &surf)
 	surface nsurf = surf.clone();
 
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -1855,7 +1855,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area)
 	surface dst(area.w, area.h);
 
 	if(dst == nullptr) {
-		PLAIN_LOG << "Could not create a new surface in get_surface_portion()\n";
+		PLAIN_LOG << "Could not create a new surface in get_surface_portion()";
 		return nullptr;
 	}
 
@@ -1889,7 +1889,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	SDL_Rect res {0,0,0,0};
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface\n";
+		PLAIN_LOG << "failed to make neutral surface";
 		return res;
 	}
 

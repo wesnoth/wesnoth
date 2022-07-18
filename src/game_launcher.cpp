@@ -146,18 +146,18 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.campaign) {
 		jump_to_campaign_.jump = true;
 		jump_to_campaign_.campaign_id = *cmdline_opts_.campaign;
-		PLAIN_LOG << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]\n";
+		PLAIN_LOG << "selected campaign id: [" << jump_to_campaign_.campaign_id << "]";
 
 		if(cmdline_opts_.campaign_difficulty) {
 			jump_to_campaign_.difficulty = *cmdline_opts_.campaign_difficulty;
-			PLAIN_LOG << "selected difficulty: [" << jump_to_campaign_.difficulty << "]\n";
+			PLAIN_LOG << "selected difficulty: [" << jump_to_campaign_.difficulty << "]";
 		} else {
 			jump_to_campaign_.difficulty = -1; // let the user choose the difficulty
 		}
 
 		if(cmdline_opts_.campaign_scenario) {
 			jump_to_campaign_.scenario_id = *cmdline_opts_.campaign_scenario;
-			PLAIN_LOG << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]\n";
+			PLAIN_LOG << "selected scenario id: [" << jump_to_campaign_.scenario_id << "]";
 		}
 
 		if(cmdline_opts_.campaign_skip_story) {
@@ -301,7 +301,7 @@ bool game_launcher::init_language()
 			}
 		}
 		if(locale.localename.empty()) {
-			PLAIN_LOG << "Language symbol '" << *cmdline_opts_.language << "' not found.\n";
+			PLAIN_LOG << "Language symbol '" << *cmdline_opts_.language << "' not found.";
 			return false;
 		}
 	} else {
@@ -317,7 +317,7 @@ bool game_launcher::init_video()
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		if(!(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test)) {
-			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
+			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags";
 			return false;
 		}
 		video_->make_fake();
@@ -345,7 +345,7 @@ bool game_launcher::init_lua_script()
 	bool error = false;
 
 	if(!cmdline_opts_.nobanner) {
-		PLAIN_LOG << "Checking lua scripts... ";
+		STREAMING_LOG << "Checking lua scripts... ";
 	}
 
 	if(cmdline_opts_.script_unsafe_mode) {
@@ -365,11 +365,11 @@ bool game_launcher::init_lua_script()
 
 			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
-			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
+			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file;
 
 			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
 		} else {
-			PLAIN_LOG << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
+			PLAIN_LOG << "Encountered failure when opening script '" << *cmdline_opts_.script_file << '\'';
 			error = true;
 		}
 	}
@@ -377,7 +377,7 @@ bool game_launcher::init_lua_script()
 	if(cmdline_opts_.plugin_file) {
 		std::string filename = *cmdline_opts_.plugin_file;
 
-		PLAIN_LOG << "Loading a plugin file'" << filename << "'...\n";
+		PLAIN_LOG << "Loading a plugin file'" << filename << "'...";
 
 		filesystem::scoped_istream sf = filesystem::istream_file(filename);
 
@@ -398,24 +398,24 @@ bool game_launcher::init_lua_script()
 			std::size_t i = pm.add_plugin(filename, full_plugin);
 
 			for(std::size_t j = 0; j < pm.size(); ++j) {
-				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 			}
 
-			PLAIN_LOG << "Starting a plugin...\n";
+			PLAIN_LOG << "Starting a plugin...";
 			pm.start_plugin(i);
 
 			for(std::size_t j = 0; j < pm.size(); ++j) {
-				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 			}
 
 			plugins_context pc("init");
 
 			for(std::size_t repeat = 0; repeat < 5; ++repeat) {
-				PLAIN_LOG << "Playing a slice...\n";
+				PLAIN_LOG << "Playing a slice...";
 				pc.play_slice();
 
 				for(std::size_t j = 0; j < pm.size(); ++j) {
-					PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+					PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);
 				}
 			}
 
@@ -427,7 +427,7 @@ bool game_launcher::init_lua_script()
 	}
 
 	if(!error && !cmdline_opts_.nobanner) {
-		PLAIN_LOG << "ok\n";
+		PLAIN_LOG << "ok";
 	}
 
 	return !error;
@@ -462,12 +462,12 @@ bool game_launcher::play_test()
 
 	if(test_scenarios_.size() == 0) {
 		// shouldn't happen, as test_scenarios_ is initialised to {"test"}
-		PLAIN_LOG << "Error in the test handling code" << std::endl;
+		PLAIN_LOG << "Error in the test handling code";
 		return false;
 	}
 
 	if(test_scenarios_.size() > 1) {
-		PLAIN_LOG << "You can't run more than one unit test in interactive mode" << std::endl;
+		PLAIN_LOG << "You can't run more than one unit test in interactive mode";
 	}
 
 	set_test(test_scenarios_.at(0));
@@ -542,7 +542,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			break;
 		}
 
-		PLAIN_LOG << describe_result << " (" << int(ret) << "): " << scenario << std::endl;
+		PLAIN_LOG << describe_result << " (" << int(ret) << "): " << scenario;
 		if(ret != unit_test_result::TEST_PASS) {
 			break;
 		}
@@ -567,7 +567,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 			}
 		}
 	} catch(const wml_exception& e) {
-		PLAIN_LOG << "Caught WML Exception:" << e.dev_message << std::endl;
+		PLAIN_LOG << "Caught WML Exception:" << e.dev_message;
 		return unit_test_result::TEST_FAIL_WML_EXCEPTION;
 	}
 
@@ -584,7 +584,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
 	if(!load_game()) {
-		PLAIN_LOG << "Failed to load the replay!" << std::endl;
+		PLAIN_LOG << "Failed to load the replay!";
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
 	}
 
@@ -593,11 +593,11 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 		campaign_controller ccontroller(state_, true);
 		ccontroller.play_replay();
 		if(!was_strict_broken && lg::broke_strict()) {
-			PLAIN_LOG << "Observed failure on replay" << std::endl;
+			PLAIN_LOG << "Observed failure on replay";
 			return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 		}
 	} catch(const wml_exception& e) {
-		PLAIN_LOG << "WML Exception while playing replay: " << e.dev_message << std::endl;
+		PLAIN_LOG << "WML Exception while playing replay: " << e.dev_message;
 		return unit_test_result::TEST_FAIL_PLAYING_REPLAY;
 	}
 
@@ -653,7 +653,7 @@ bool game_launcher::play_render_image_mode()
 	try {
 		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error& e) {
-		PLAIN_LOG << "Error loading game config: " << e.what() << std::endl;
+		PLAIN_LOG << "Error loading game config: " << e.what();
 		return false;
 	}
 
@@ -944,7 +944,7 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const game::error& e) {
-		PLAIN_LOG << "caught game::error...\n";
+		PLAIN_LOG << "caught game::error...";
 		gui2::show_error_message(_("Error: ") + e.message);
 	}
 

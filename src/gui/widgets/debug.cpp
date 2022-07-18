@@ -133,7 +133,7 @@ void debug_layout_graph::set_level(const std::string& level)
 		} else if(param == "state") {
 			level_ |= STATE_INFO;
 		} else {
-			PLAIN_LOG << "Unknown level '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown level '" << param << "' is ignored.";
 		}
 	}
 }
@@ -160,7 +160,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 		} else if(param == "layout") {
 			domain_ |= LAYOUT;
 		} else {
-			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.";
 		}
 	}
 }

@@ -308,7 +308,7 @@ bool load_strings(bool complain)
 
 	LOG_G << "There are " << languages_.size() << " [language] blocks\n";
 	if (complain && languages_.empty()) {
-		PLAIN_LOG << "No [language] block found\n";
+		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
 	for (const config &lang : languages_) {

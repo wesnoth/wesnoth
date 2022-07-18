@@ -78,7 +78,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 	}
 	catch(const utf8::invalid_utf8_exception&)
 	{
-		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
+		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name();
 		return res;
 	}
 	return res;
@@ -106,7 +106,7 @@ TD unicode_cast(char32_t onechar)
 	}
 	catch(const utf8::invalid_utf8_exception&)
 	{
-		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
+		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name();
 		return res;
 	}
 	return res;
