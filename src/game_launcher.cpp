@@ -315,8 +315,16 @@ bool game_launcher::init_language()
 bool game_launcher::init_video()
 {
 	// Handle special commandline launch flags
-	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
-		if(!(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test)) {
+	if(cmdline_opts_.nogui
+		|| cmdline_opts_.headless_unit_test
+		|| cmdline_opts_.render_image)
+	{
+		if(!(cmdline_opts_.multiplayer
+			|| cmdline_opts_.screenshot
+			|| cmdline_opts_.plugin_file
+			|| cmdline_opts_.headless_unit_test
+			|| cmdline_opts_.render_image))
+		{
 			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags";
 			return false;
 		}
