@@ -2603,7 +2603,7 @@ bool display::expose(const SDL_Rect& region)
 		draw::fill(map_outside_area().intersect(region), fade_color_);
 	}
 
-	LOG_DP << "display::expose " << region;
+	DBG_DP << "display::expose " << region;
 
 	return true; // TODO: draw_manager - maybe don't flip yeah?
 }
@@ -2630,17 +2630,25 @@ void display::update_render_textures()
 	// Check that the front buffer size is correct.
 	// Buffers are always resized together, so we only need to check one.
 	point size = front_.get_raw_size();
-	if (size.x == oarea.w && size.y == oarea.h) {
+	point dsize = front_.draw_size();
+	bool raw_size_changed = size.x != oarea.w || size.y != oarea.h;
+	bool draw_size_changed = dsize.x != darea.w || dsize.y != darea.h;
+	if (!raw_size_changed && !draw_size_changed) {
 		// buffers are fine
 		return;
 	}
 
-	// For now, just clobber and regenerate both textures.
-	LOG_DP << "updating display render buffers to " << oarea;
-	front_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
-	front_.set_draw_size(darea.w, darea.h);
-	back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
-	back_.set_draw_size(darea.w, darea.h);
+	// TODO: draw_manager - these need to account for the logical offset
+	if(raw_size_changed) {
+		LOG_DP << "regenerating render buffers as " << oarea;
+		front_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
+		back_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);
+	}
+	if(raw_size_changed || draw_size_changed) {
+		LOG_DP << "updating render buffer draw size to " << darea;
+		front_.set_draw_size(darea.w, darea.h);
+		back_.set_draw_size(darea.w, darea.h);
+	}
 
 	// Fill entire texture with black, just in case
 	for(int i = 0; i < 2; ++i) {

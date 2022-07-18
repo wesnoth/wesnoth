@@ -775,7 +775,7 @@ bool set_resolution(const point& resolution)
 
 void update_buffers(bool autoupdate)
 {
-	LOG_DP << "updating buffers";
+	LOG_DP << "updating video buffers";
 	if(update_framebuffer() && autoupdate) {
 		draw_manager::invalidate_all();
 	}
