@@ -118,7 +118,7 @@ void terrain_palette::setup(const game_config_view& cfg)
 		DBG_ED << "Palette: processing terrain " << t_info.name()
 			<< "(editor name: '" << t_info.editor_name() << "') "
 			<< "(" << t_info.number() << ")"
-			<< ": " << t_info.editor_group() << "\n";
+			<< ": " << t_info.editor_group();
 
 		// don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined()) continue;

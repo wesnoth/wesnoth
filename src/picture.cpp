@@ -510,7 +510,7 @@ static surface load_image_file(const image::locator& loc)
 		location = filesystem::get_binary_file_location("images", webp_name);
 		if(!location.empty()) {
 			WRN_IMG << "Replaced missing '" << name << "' with found '"
-			        << webp_name << "'." << std::endl;
+			        << webp_name << "'.";
 		}
 	}
 
@@ -569,7 +569,7 @@ static surface load_image_sub_file(const image::locator& loc)
 			ERR_CFG << "Failed to apply a modification to an image:\n"
 					<< "Image: " << loc.get_filename() << "\n"
 					<< "Modifications: " << ss.str() << "\n"
-					<< "Error: " << e.message << "\n";
+					<< "Error: " << e.message;
 		}
 
 		// NOTE: do this *after* applying the mod or you'll get crashes!
@@ -844,15 +844,13 @@ surface get_surface(
 	{
 		DBG_IMG << "duplicate load: " << i_locator
 			<< " [" << type << "]"
-			<< " (" << duplicate_loads_ << "/" << total_loads_ << " total)"
-			<< std::endl;
+			<< " (" << duplicate_loads_ << "/" << total_loads_ << " total)";
 		++duplicate_loads_;
 	}
 	++total_loads_;
 
 	if(skip_cache) {
-		DBG_IMG << "surface cache [" << type << "] skip: "
-			<< i_locator << std::endl;
+		DBG_IMG << "surface cache [" << type << "] skip: " << i_locator;
 		i_locator.add_to_cache(skip, true);
 	} else {
 		i_locator.add_to_cache(imap, res);
@@ -1164,8 +1162,7 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 
 	// Cache the texture.
 	if(skip_cache) {
-		DBG_IMG << "texture cache [" << type << "] skip: "
-			<< i_locator << std::endl;
+		DBG_IMG << "texture cache [" << type << "] skip: " << i_locator;
 	} else {
 		i_locator.add_to_cache(*cache, res);
 	}

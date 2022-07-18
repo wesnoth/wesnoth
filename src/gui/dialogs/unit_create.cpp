@@ -146,7 +146,7 @@ void unit_create::post_show(window& window)
 	} else if(static_cast<std::size_t>(selected_row) >= units_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
-					 "types; not good\n";
+		             "types; not good";
 		return;
 	}
 

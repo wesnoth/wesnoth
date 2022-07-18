@@ -137,7 +137,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	temp_unit_->set_location(recruit_hex_);
 
 	DBG_WB << "Inserting future recruit [" << temp_unit_->id()
-			<< "] at position " << temp_unit_->get_location() << ".\n";
+			<< "] at position " << temp_unit_->get_location() << ".";
 
 	// Add cost to money spent on recruits.
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost_);

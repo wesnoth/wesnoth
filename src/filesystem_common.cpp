@@ -262,7 +262,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
 			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes" << std::endl;
+			   << checksum.sum_size << " bytes";
 	}
 
 	return checksum;

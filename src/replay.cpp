@@ -788,7 +788,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				// The same way it is possible that an unrenamable unit moves to a
 				// hex where previously a renamable unit was.
 				WRN_REPLAY << "attempt to rename unit at location: "
-				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)") << "\n";
+				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)");
 			}
 		}
 

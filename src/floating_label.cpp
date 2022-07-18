@@ -36,8 +36,6 @@ static lg::log_domain log_font("font");
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-using std::endl;
-
 namespace
 {
 typedef std::map<int, font::floating_label> label_map;
@@ -217,7 +215,7 @@ void floating_label::update(int time)
 	draw_manager::invalidate_region(draw_loc);
 
 	DBG_FT << "updating floating label from " << screen_loc_
-		<< " to " << draw_loc << std::endl;
+		<< " to " << draw_loc;
 
 	screen_loc_ = draw_loc;
 	alpha_ = new_alpha;

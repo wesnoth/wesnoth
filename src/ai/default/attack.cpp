@@ -288,7 +288,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.get_caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
-			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
+			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1));
 		value -= exposure*(1.0-aggression);
 	}
 
@@ -327,7 +327,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		<< " vulnerability: " << vulnerability
 		<< " support: " << support
 		<< " quality: " << terrain_quality
-		<< " alternative quality: " << alternative_terrain_quality << "\n";
+		<< " alternative quality: " << alternative_terrain_quality;
 
 	return value;
 }

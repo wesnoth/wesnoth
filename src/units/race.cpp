@@ -100,7 +100,7 @@ unit_race::unit_race(const config& cfg) :
 			<< "[race] id='" << id_
 			<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
 		ERR_WML << "[race] id'" << id_
-				<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
+				<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').";
 	}
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});

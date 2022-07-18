@@ -132,7 +132,7 @@ std::unique_ptr<widget> builder_panel::build() const
 	auto widget = std::make_unique<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	widget->init_grid(*grid);
 	return widget;

@@ -254,9 +254,7 @@ void load_base_prefs() {
 		read(prefs, *stream);
 #endif
 	} catch(const config::error& e) {
-		ERR_CFG << "Error loading preference, message: "
-				<< e.what()
-				<< std::endl;
+		ERR_CFG << "Error loading preference, message: " << e.what();
 	}
 }
 

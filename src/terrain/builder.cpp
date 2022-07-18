@@ -704,8 +704,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 					center_x = std::stoi(center[0]);
 					center_y = std::stoi(center[1]);
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1]
-						   << "\n";
+					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1];
 				}
 			}
 		}
@@ -822,8 +821,7 @@ void terrain_builder::parse_mapstring(
 			} else if(terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
-				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map"
-					   << std::endl;
+				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map";
 				assert(false);
 				return;
 			}

@@ -443,7 +443,7 @@ std::unique_ptr<widget> builder_text_box::build() const
 	widget->set_hint_data(hint_text, hint_image);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

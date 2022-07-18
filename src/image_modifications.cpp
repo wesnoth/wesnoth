@@ -649,9 +649,8 @@ REGISTER_MOD_PARSER(TC, args)
 	// Pass argseters for RC functor
 	//
 	if(!game_config::tc_info(params[1]).size()){
-		ERR_DP << "could not load TC info for '" << params[1]
-		       << "' palette\n"
-		       << "bailing out from TC\n";
+		ERR_DP << "could not load TC info for '" << params[1] << "' palette";
+		ERR_DP << "bailing out from TC";
 
 		return nullptr;
 	}
@@ -663,10 +662,8 @@ REGISTER_MOD_PARSER(TC, args)
 
 		rc_map = recolor_range(new_color,old_color);
 	} catch(const config::error& e) {
-		ERR_DP << "caught config::error while processing TC: "
-		       << e.message
-		       << '\n'
-		       << "bailing out from TC\n";
+		ERR_DP << "caught config::error while processing TC: " << e.message;
+		ERR_DP << "bailing out from TC";
 
 		return nullptr;
 	}
@@ -695,10 +692,8 @@ REGISTER_MOD_PARSER(RC, args)
 	} catch (const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing color-range RC: "
-			<< e.message
-			<< '\n';
-		ERR_DP
-			<< "bailing out from RC\n";
+			<< e.message;
+		ERR_DP << "bailing out from RC";
 		rc_map.clear();
 	}
 
@@ -729,10 +724,9 @@ REGISTER_MOD_PARSER(PAL, args)
 	} catch(const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing PAL function: "
-			<< e.message
-			<< '\n';
+			<< e.message;
 		ERR_DP
-			<< "bailing out from PAL\n";
+			<< "bailing out from PAL";
 
 		return nullptr;
 	}

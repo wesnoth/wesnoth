@@ -270,7 +270,7 @@ public:
 			<< " goodbit:" << lfs->pistream_->good()
 			<< " endoffile:" << lfs->pistream_->eof()
 			<< " badbit:" <<  lfs->pistream_->bad()
-			<< " failbit:" << lfs->pistream_->fail() << "\n";
+			<< " failbit:" << lfs->pistream_->fail();
 #endif
 		return lfs->buff_;
 	}

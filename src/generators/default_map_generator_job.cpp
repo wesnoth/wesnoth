@@ -364,7 +364,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 	LOG_NG  << "generate_height_map"
 		<< " lowest=" << lowest
-		<< " highest =" << highest << " \n";
+		<< " highest =" << highest;
 	// Normalize the heights to the range 0-1000:
 	highest -= lowest;
 	for(x = 0; std::size_t(x) != res.size(); ++x) {
@@ -701,7 +701,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		<< " island_off_center=" << data.island_off_center
 		<< " max_lakes=" << data.max_lakes
 		<< " link_castles=" << data.link_castles
-		<< " show_labels=" << data.show_labels << "\n";
+		<< " show_labels=" << data.show_labels;
 
 	// Odd widths are nasty
 	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));

@@ -29,8 +29,6 @@ static lg::log_domain log_draw("draw");
 #define DBG_D LOG_STREAM(debug, log_draw)
 #define WRN_D LOG_STREAM(warn, log_draw)
 
-using std::endl;
-
 static SDL_Renderer* renderer()
 {
 	return CVideo::get_singleton().get_renderer();
@@ -173,7 +171,7 @@ void draw::rect(const SDL_Rect& rect, const color_t& c)
 void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
 	DBG_D << "line from (" << from_x << ',' << from_y
-	      << ") to (" << to_x << ',' << to_y << ')' << endl;
+	      << ") to (" << to_x << ',' << to_y << ')';
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
@@ -181,7 +179,7 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 {
 	DBG_D << "line from (" << from_x << ',' << from_y
 	      << ") to (" << to_x << ',' << to_y
-	      << ") with colour " << c << endl;
+	      << ") with colour " << c;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
@@ -207,7 +205,7 @@ void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
 void draw::circle(int cx, int cy, int r, uint8_t octants)
 {
 	DBG_D << "circle (" << cx << ',' << cy
-	      << ") -> " << r << ", oct " << int(octants) << endl;
+	      << ") -> " << r << ", oct " << int(octants);
 
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
@@ -249,7 +247,7 @@ void draw::disc(int cx, int cy, int r, const color_t& c, uint8_t octants)
 void draw::disc(int cx, int cy, int r, uint8_t octants)
 {
 	DBG_D << "disc (" << cx << ',' << cy
-	      << ") -> " << r << ", oct " << int(octants) << endl;
+	      << ") -> " << r << ", oct " << int(octants);
 
 	int d = -r;
 	int x = r;
@@ -355,7 +353,7 @@ void draw::flipped(
 
 	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
-	      << ") to " << dst << " from " << src << endl;
+	      << ") to " << dst << " from " << src;
 
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, &src, &dst, 0.0, nullptr, flip);
@@ -373,7 +371,7 @@ void draw::flipped(
 
 	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
-	      << ") to " << dst << endl;
+	      << ") to " << dst;
 
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, nullptr, &dst, 0.0, nullptr, flip);
@@ -395,7 +393,7 @@ void draw::tiled(const texture& tex, const SDL_Rect& dst, bool centered,
 {
 	if (!tex) { DBG_D << "null tiled"; return; }
 	DBG_D << "tiled (" << centered << '|' << mirrored
-	      << ") " << dst << endl;
+	      << ") " << dst;
 
 	// Reduce clip to dst.
 	auto clipper = draw::reduce_clip(dst);
@@ -423,7 +421,7 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 {
 	if (!tex) { DBG_D << "null tiled_highres"; return; }
 	DBG_D << "tiled_highres (" << centered << '|' << mirrored
-	      << ") " << dst << endl;
+	      << ") " << dst;
 
 	const int pixel_scale = CVideo::get_singleton().get_pixel_scale();
 
@@ -639,6 +637,6 @@ draw::render_target_setter::~render_target_setter()
 draw::render_target_setter draw::set_render_target(const texture& t)
 {
 	DBG_D << "setting render target to "
-	      << t.w() << 'x' << t.h() << " texture" << endl;
+	      << t.w() << 'x' << t.h() << " texture";
 	return draw::render_target_setter(t);
 }

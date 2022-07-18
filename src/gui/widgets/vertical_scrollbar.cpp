@@ -143,7 +143,7 @@ std::unique_ptr<widget> builder_vertical_scrollbar::build() const
 
 	DBG_GUI_G << "Window builder:"
 			  << " placed vertical scrollbar '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	return widget;
 }

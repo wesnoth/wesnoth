@@ -179,7 +179,7 @@ void CVideo::update_framebuffer_fake()
 			fake_size.x, fake_size.y
 		));
 		LOG_DP << "updated render target to " << fake_size.x
-			<< "x" << fake_size.y << std::endl;
+			<< "x" << fake_size.y;
 	}
 
 	pixel_scale_ = 1;
@@ -244,7 +244,7 @@ void CVideo::update_framebuffer()
 		if (!preferences::auto_pixel_scale() && scale < preferences::pixel_scale()) {
 			LOG_DP << "reducing pixel scale from desired "
 				<< preferences::pixel_scale() << " to maximum allowable "
-				<< scale << std::endl;
+				<< scale;
 		}
 		LOG_DP << "pixel scale: " << scale;
 		LOG_DP << "overriding logical size";
@@ -301,14 +301,14 @@ void CVideo::update_framebuffer()
 	offset_y_ = (osize.y - (scale * lsize.y)) / 2;
 	if (offset_x_ || offset_y_) {
 		LOG_DP << "render target viewport offset: "
-		       << offset_x_ << ", " << offset_y_ << std::endl;
+		       << offset_x_ << ", " << offset_y_;
 	}
 }
 
 void CVideo::init_fake_window()
 {
 	LOG_DP << "creating fake window " << fake_size.x
-		<< "x" << fake_size.y << std::endl;
+		<< "x" << fake_size.y;
 
 	uint32_t window_flags = 0;
 	window_flags |= SDL_WINDOW_HIDDEN;
@@ -467,7 +467,7 @@ void CVideo::force_render_target(const texture& t)
 	if (SDL_SetRenderTarget(get_renderer(), t)) {
 		ERR_DP << "failed to set render target to "
 			<< static_cast<void*>(t.get()) << ' '
-			<< t.draw_size() << " / " << t.get_raw_size() << std::endl;
+			<< t.draw_size() << " / " << t.get_raw_size();
 		ERR_DP << "last SDL error: " << SDL_GetError();
 		throw error("failed to set render target");
 	}
@@ -490,7 +490,7 @@ void CVideo::force_render_target(const texture& t)
 	} else {
 		DBG_DP << "rendering to custom target "
 			<< static_cast<void*>(t.get()) << ' '
-			<< t.draw_size() << " / " << t.get_raw_size() << std::endl;
+			<< t.draw_size() << " / " << t.get_raw_size();
 		window->set_logical_size(t.w(), t.h());
 	}
 }
@@ -552,8 +552,7 @@ void CVideo::render_screen()
 		ERR_DP << "trying to render screen, but current render texture is "
 			<< static_cast<void*>(SDL_GetRenderTarget(*window))
 			<< " | " << static_cast<void*>(current_render_target_.get())
-			<< ". It should be " << static_cast<void*>(render_texture_.get())
-			<< std::endl;
+			<< ". It should be " << static_cast<void*>(render_texture_.get());
 		throw error("tried to render screen from wrong render target");
 	}
 
@@ -587,7 +586,7 @@ surface CVideo::read_pixels(SDL_Rect* r)
 		ERR_DP << "render target " << static_cast<void*>(target.get())
 			<< ' ' << target.draw_size() << " / " << target.get_raw_size()
 			<< " doesn't match window render target "
-			<< static_cast<void*>(t) << std::endl;
+			<< static_cast<void*>(t);
 		throw error("unexpected render target while reading pixels");
 	}
 
@@ -607,9 +606,8 @@ surface CVideo::read_pixels(SDL_Rect* r)
 	if (r) {
 		r_clipped.clip(*r);
 		if (r_clipped != *r) {
-			DBG_DP << "modifying pixel read area\n"
-			       << "  from " << *r << "\n"
-			       << "    to " << r_clipped << std::endl;
+			DBG_DP << "modifying pixel read area from " << *r
+			       << " to " << r_clipped;
 			*r = r_clipped;
 		}
 	}
@@ -902,7 +900,7 @@ void CVideo::update_buffers()
 	// We could also double-check the resolution here.
 	/*if (preferences::resolution() != current_resolution()) {
 		LOG_DP << "updating resolution from " << current_resolution()
-			<< " to " << preferences::resolution() << std::endl;
+			<< " to " << preferences::resolution();
 		set_window_mode(TO_RES, preferences::resolution());
 	}*/
 

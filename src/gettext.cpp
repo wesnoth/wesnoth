@@ -145,7 +145,7 @@ namespace
 
 		static void log_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
 			ERR_G << "Error opening language file for " << lang << ", textdomain " << dom
-				<< ":\n  " << detail << '\n' << std::flush;
+				<< ":\n  " << detail;
 		}
 
 		const char* get(int domain_id, const char* ctx, const char* msg_id) const override
@@ -245,7 +245,7 @@ namespace
 				// so we can't possibly support that, and odds are it's a user
 				// mistake (as in bug #23839).
 				ERR_G << "illegal textdomain name '" << domain
-					  << "', skipping textdomain\n";
+					  << "', skipping textdomain";
 				return;
 			}
 
@@ -318,7 +318,7 @@ namespace
 				      << "' country='"  << info.country()
 				      << "' language='"  << info.language()
 				      << "' encoding='"  << info.encoding()
-				      << "' variant='"  << info.variant() << "')\n";
+				      << "' variant='"  << info.variant() << "')";
 			}
 			catch(const bl::conv::conversion_error&)
 			{
@@ -330,7 +330,7 @@ namespace
 				      << "' language='" << info.language()
 				      << "' encoding='" << info.encoding()
 				      << "' variant='" << info.variant()
-				      << "'" << std::endl;
+				      << "'";
 			}
 			catch(const std::runtime_error&)
 			{
@@ -342,7 +342,7 @@ namespace
 				      << "' language='" << info.language()
 				      << "' encoding='" << info.encoding()
 				      << "' variant='" << info.variant()
-				      << "'" << std::endl;
+				      << "'";
 			}
 			is_dirty_ = false;
 		}

@@ -131,7 +131,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			if(paren_nesting_level > 0) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< "a missing closing parenthesis:\n\t--> \""
-					<< std::string(var_begin, var_end) << "\"\n";
+					<< std::string(var_begin, var_end) << "\"";
 				res.replace(var_begin, var_end, "");
 				continue;
 			}

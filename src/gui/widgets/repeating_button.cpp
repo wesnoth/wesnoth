@@ -200,7 +200,7 @@ std::unique_ptr<widget> builder_repeating_button::build() const
 	auto widget = std::make_unique<repeating_button>(*this);
 
 	DBG_GUI_G << "Window builder: placed repeating button '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

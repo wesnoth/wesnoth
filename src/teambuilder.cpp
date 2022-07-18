@@ -157,15 +157,14 @@ void team_builder::handle_unit(const config& u, const char* origin)
 		<< "id=[" << u["id"] << "] "
 		<< "placement=[" << u["placement"] << "] "
 		<< "x=[" << u["x"] << "] "
-		<< "y=[" << u["y"] << "]"
-		<< std::endl;
+		<< "y=[" << u["y"] << "]";
 
 	if(u["type"].empty()) {
 		WRN_NG_TC
 			<< "when building level, skipping a unit (id=[" << u["id"] << "]) from " << origin
 			<< " with no type information,\n"
 			<< "for side:\n"
-			<< side_cfg_.debug() << std::endl;
+			<< side_cfg_.debug();
 
 		return;
 	}

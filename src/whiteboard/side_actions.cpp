@@ -419,7 +419,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	}
 	iterator valid_position = synced_insert(position, action);
 	LOG_WB << "Inserted into turn #" << get_turn(valid_position) << " at position #"
-			<< actions_.position_in_turn(valid_position) << " : " << action <<"\n";
+			<< actions_.position_in_turn(valid_position) << " : " << action;
 	resources::whiteboard->validate_viewer_actions();
 	return valid_position;
 }
@@ -528,7 +528,8 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	int last_position = turn_size(turn_number) - 1;
 	LOG_WB << "In turn #" << turn_number
 			<< ", bumping action #" << action_number << "/" << last_position
-			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
+			<< " to position #" << action_number - 1  << "/" << last_position
+			<< ".";
 
 	if (send_to_net) {
 		resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_bump_later(position - 1));

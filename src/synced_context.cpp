@@ -250,7 +250,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 {
 	if(!is_synced()) {
 		ERR_REPLAY << "Trying to ask the server for a '" << sch.name()
-				   << "' choice in a unsynced context, doing the choice locally. This can cause OOS.\n";
+				   << "' choice in a unsynced context, doing the choice locally. This can cause OOS.";
 		return sch.local_choice();
 	}
 

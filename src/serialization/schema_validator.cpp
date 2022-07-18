@@ -187,8 +187,8 @@ schema_validator::schema_validator(const std::string& config_file_name, bool val
 		counter_.emplace();
 		cache_.emplace();
 		root_.expand_all(root_);
-		LOG_VL << "Schema file " << config_file_name << " was read.\n"
-			   << "Validator initialized\n";
+		LOG_VL << "Schema file " << config_file_name << " was read.";
+		LOG_VL << "Validator initialized";
 	}
 }
 

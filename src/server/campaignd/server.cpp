@@ -417,7 +417,7 @@ void server::load_config()
 	if(cfg_.has_child("campaigns")) {
 		config& campaigns = cfg_.child("campaigns");
 		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! "
-		       << campaigns.child_count("campaign") << " entries to be processed.\n";
+		       << campaigns.child_count("campaign") << " entries to be processed.";
 		for(config& campaign : campaigns.child_range("campaign")) {
 			const std::string& addon_id = campaign["name"].str();
 			const std::string& addon_file = campaign["filename"].str();
@@ -659,7 +659,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
-				       << key << "=\"" << value << "\"\n";
+				       << key << "=\"" << value << "\"";
 			}
 		}
 	} else if(ctl == "log") {
@@ -906,7 +906,7 @@ void server::delete_addon(const std::string& id)
 
 	if(!filesystem::delete_directory(fn)) {
 		ERR_CS << "Could not delete the directory for addon '" << id
-		       << "' (" << fn << "): " << strerror(errno) << '\n';
+		       << "' (" << fn << "): " << strerror(errno);
 	}
 
 	addons_.erase(id);
@@ -1137,7 +1137,7 @@ void server::handle_request_campaign(const server::request& req)
 					delivery_size += filesystem::file_size(update_pack_path);
 				} else {
 					ERR_CS << "Broken update sequence from version " << from << " to "
-							<< to << " for the add-on '" << name << "', sending a full pack instead\n";
+							<< to << " for the add-on '" << name << "', sending a full pack instead";
 					force_use_full = true;
 					break;
 				}
@@ -1498,7 +1498,7 @@ void server::handle_upload(const server::request& req)
 
 	LOG_CS << req << "Upload type: "
 		   << (is_delta_upload ? "delta" : "full") << ", "
-		   << (is_existing_upload ? "update" : "new") << '\n';
+		   << (is_existing_upload ? "update" : "new");
 
 	// Write general metadata attributes
 
@@ -1774,7 +1774,7 @@ void server::handle_upload(const server::request& req)
 		if(filesystem::file_size(prev_path) <= 0 || filesystem::file_size(next_path) <= 0) {
 			ERR_CS << "Unable to automatically generate an update pack for '" << name
 					<< "' for version " << prev_version_name << " to " << next_version_name
-					<< "!\n";
+					<< "!";
 			continue;
 		}
 

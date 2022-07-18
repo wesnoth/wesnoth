@@ -685,7 +685,7 @@ void map_context::set_map(const editor_map& map)
 void map_context::perform_action(const editor_action& action)
 {
 	LOG_ED << "Performing action " << action.get_id() << ": " << action.get_name() << ", actions count is "
-		   << action.get_instance_count() << std::endl;
+		   << action.get_instance_count();
 	auto undo = action.perform(*this);
 	if(actions_since_save_ < 0) {
 		// set to a value that will make it impossible to get to zero, as at this point
@@ -705,7 +705,7 @@ void map_context::perform_action(const editor_action& action)
 void map_context::perform_partial_action(const editor_action& action)
 {
 	LOG_ED << "Performing (partial) action " << action.get_id() << ": " << action.get_name() << ", actions count is "
-		   << action.get_instance_count() << std::endl;
+		   << action.get_instance_count();
 	if(!can_undo()) {
 		throw editor_logic_exception("Empty undo stack in perform_partial_action()");
 	}

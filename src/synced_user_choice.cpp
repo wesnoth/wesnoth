@@ -191,7 +191,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 			<< " name=" << name
 			<< " is_synced=" << is_synced
 			<< " is_mp_game=" << is_mp_game
-			<< " is_side_null_controlled=" << is_side_null_controlled << "\n";
+			<< " is_side_null_controlled=" << is_side_null_controlled;
 
 	if (is_side_null_controlled)
 	{

@@ -575,13 +575,12 @@ void ban_manager::check_ban_times(std::time_t time_now)
 		if(ban->get_end_time() > time_now) {
 			// No bans going to expire
 			DBG_SERVER << "ban " << ban->get_ip() << " not removed. time: " << time_now << " end_time "
-					   << ban->get_end_time() << "\n";
+					   << ban->get_end_time();
 			break;
 		}
 
 		// This ban is going to expire so delete it.
-		LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time()
-				   << "\n";
+		LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time();
 		std::ostringstream os;
 		unban(os, ban->get_ip(), false);
 		time_queue_.pop();

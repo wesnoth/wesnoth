@@ -509,7 +509,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			}
 		} else {
 			LOG_AI << "massing to attack " << best_target->loc.wml_x() << "," << best_target->loc.wml_y()
-				<< " " << our_strength << "\n";
+				<< " " << our_strength;
 
 			const double value = best_target->value;
 			const map_location target_loc = best_target->loc;

@@ -1023,7 +1023,7 @@ void window_implementation::layout(window& window,
 
 		DBG_GUI_L << LOG_IMPL_HEADER << " best size : " << size
 				  << " maximum size : " << maximum_width << ','
-				  << maximum_height << ".\n";
+				  << maximum_height << ".";
 		if(size.x <= static_cast<int>(maximum_width)
 		   && size.y <= static_cast<int>(maximum_height)) {
 
@@ -1038,11 +1038,11 @@ void window_implementation::layout(window& window,
 			if(size.x > static_cast<int>(maximum_width)) {
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize width failed."
 						  << " Wanted width " << maximum_width
-						  << " resulting width " << size.x << ".\n";
+						  << " resulting width " << size.x << ".";
 				throw layout_exception_width_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					  << " Status: Resize width succeeded.\n";
+					  << " Status: Resize width succeeded.";
 		}
 
 		if(size.y > static_cast<int>(maximum_height)) {
@@ -1052,11 +1052,11 @@ void window_implementation::layout(window& window,
 			if(size.y > static_cast<int>(maximum_height)) {
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
 						  << " Wanted height " << maximum_height
-						  << " resulting height " << size.y << ".\n";
+						  << " resulting height " << size.y << ".";
 				throw layout_exception_height_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					  << " Status: Resize height succeeded.\n";
+					  << " Status: Resize height succeeded.";
 		}
 
 		assert(size.x <= static_cast<int>(maximum_width)
@@ -1069,7 +1069,7 @@ void window_implementation::layout(window& window,
 	catch(const layout_exception_width_modified&)
 	{
 		DBG_GUI_L << LOG_IMPL_HEADER
-				  << " Status: Width has been modified, rerun.\n";
+				  << " Status: Width has been modified, rerun.";
 
 		window.layout_initialize(false);
 		window.layout_linked_widgets();
@@ -1139,7 +1139,7 @@ void window::signal_handler_click_dismiss(const event::ui_event event,
 										   const int mouse_button_mask)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " mouse_button_mask "
-			  << static_cast<unsigned>(mouse_button_mask) << ".\n";
+			  << static_cast<unsigned>(mouse_button_mask) << ".";
 
 	handled = halt = click_dismiss(mouse_button_mask);
 }

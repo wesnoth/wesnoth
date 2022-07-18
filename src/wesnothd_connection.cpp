@@ -184,7 +184,7 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
 		bool verified = verifier(preverified, ctx);
 		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
-			(verified ? "verified" : "failed") << std::endl;
+			(verified ? "verified" : "failed");
 		BIO* bio = BIO_new(BIO_s_mem());
 		char buffer[1024];
 		X509_print(bio, cert);

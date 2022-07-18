@@ -148,7 +148,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 
 	DBG_WB << "Inserting future recall " << temp_unit_->name() << " [" << temp_unit_->id()
-			<< "] at position " << temp_unit_->get_location() << ".\n";
+			<< "] at position " << temp_unit_->get_location() << ".";
 
 	//temporarily remove unit from recall list
 	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id(), &original_recall_pos_);

@@ -228,7 +228,7 @@ std::unique_ptr<widget> builder_multi_page::build() const
 	widget->set_page_builders(builders);
 
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<multi_page_definition>();
 	assert(conf);

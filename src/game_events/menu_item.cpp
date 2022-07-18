@@ -242,8 +242,8 @@ void wml_menu_item::to_config(config& cfg) const
 	}
 
 	if(!use_hotkey_ && !use_wml_menu_) {
-		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and use_hotkey set to false is not supposed to be "
-				  "possible.";
+		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and "
+		          "use_hotkey set to false is not supposed to be possible.";
 		cfg["use_hotkey"] = false;
 	}
 

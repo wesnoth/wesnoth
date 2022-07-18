@@ -407,8 +407,7 @@ void get_files_in_dir(const std::string& dir,
 			if(checksum != nullptr) {
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
 				if(ec) {
-					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message()
-						   << '\n';
+					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message();
 				} else if(mtime > checksum->modified) {
 					checksum->modified = mtime;
 				}
@@ -440,7 +439,7 @@ void get_files_in_dir(const std::string& dir,
 				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message();
 			} else if(reorder == reorder_mode::DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : "
-					   << (mode == name_mode::ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
+					   << (mode == name_mode::ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string());
 				push_if_exists(files, inner_main, mode == name_mode::ENTIRE_FILE_PATH);
 			} else {
 				push_if_exists(dirs, di->path(), mode == name_mode::ENTIRE_FILE_PATH);
@@ -649,7 +648,7 @@ void set_user_data_dir(std::string newprefdir)
 			//
 			ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
 				   << "User config/data directories may be unavailable for "
-				   << "this session. Please report this as a bug.\n";
+				   << "this session. Please report this as a bug.";
 			user_data_dir = bfs::path(get_cwd()) / newprefdir;
 		} else {
 			bfs::path games_path = bfs::path(docs_path) / "My Games";
@@ -1367,7 +1366,7 @@ static bool is_legal_file(const std::string& filename_str)
 
 	if(filename_str.find('\\') != std::string::npos) {
 		ERR_FS << "Illegal path '" << filename_str
-			   << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end" << std::endl;
+			   << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end";
 		return false;
 	}
 
@@ -1459,7 +1458,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 				result = bpath.string();
 			} else {
 				WRN_FS << "Conflicting files in binary_path: '" << result
-					   << "' and '" << bpath.string() << "'\n";
+					   << "' and '" << bpath.string() << "'";
 			}
 		}
 	}

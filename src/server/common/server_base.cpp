@@ -509,13 +509,13 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	if(size == 0) {
 		ERR_SERVER <<
 					  log_address(socket) <<
-					  "\treceived invalid packet with payload size 0" << std::endl;
+					  "\treceived invalid packet with payload size 0";
 		return {};
 	}
 	if(size > simple_wml::document::document_size_limit) {
 		ERR_SERVER <<
 					  log_address(socket) <<
-					  "\treceived packet with payload size over size limit" << std::endl;
+					  "\treceived packet with payload size over size limit";
 		return {};
 	}
 
@@ -528,7 +528,7 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	}  catch (simple_wml::error& e) {
 		ERR_SERVER <<
 			log_address(socket) <<
-			"\tsimple_wml error in received data: " << e.message << std::endl;
+			"\tsimple_wml error in received data: " << e.message;
 		async_send_error(socket, "Invalid WML received: " + e.message);
 		return {};
 	}

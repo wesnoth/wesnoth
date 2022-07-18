@@ -214,7 +214,7 @@ std::unique_ptr<widget> builder_scroll_label::build() const
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

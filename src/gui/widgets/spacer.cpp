@@ -132,7 +132,7 @@ std::unique_ptr<widget> builder_spacer::build() const
 	auto widget = std::make_unique<spacer>(*this, width_, height_);
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

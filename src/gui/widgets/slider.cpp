@@ -97,7 +97,7 @@ void slider::set_value(int value)
 			<< " desired_value=" << value
 			<< " minimum_value=" << minimum_value_
 			<< " maximum_value=" << get_maximum_value()
-			<< " step_size=" << step_size_ << "\n";
+			<< " step_size=" << step_size_;
 		assert(false);
 	}
 

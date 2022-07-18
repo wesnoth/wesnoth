@@ -267,7 +267,7 @@ std::unique_ptr<widget> builder_label::build() const
 	lbl->set_link_color(conf->link_color);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	return lbl;
 }

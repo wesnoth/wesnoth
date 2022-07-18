@@ -52,7 +52,7 @@ bool simulated_attack(const map_location& attacker_loc, const map_location& defe
 	unit_map::iterator defend_unit = resources::gameboard->units().find(defender_loc);
 
 	LOG_AI_SIM_ACTIONS << attack_unit->type_name() << " at " << attacker_loc << " attack "
-		<< defend_unit->type_name() << " at " << defender_loc << std::endl;
+		<< defend_unit->type_name() << " at " << defender_loc;
 	LOG_AI_SIM_ACTIONS << "attacker's hp before attack: " << attack_unit->hitpoints();
 	LOG_AI_SIM_ACTIONS << "defender's hp before attack: " << defend_unit->hitpoints();
 
@@ -134,7 +134,7 @@ bool simulated_recall(int side, const std::string& unit_id, const map_location& 
 	own_team.spend_gold(recall_unit->recall_cost()<0 ? own_team.recall_cost() : recall_unit->recall_cost());
 
 	LOG_AI_SIM_ACTIONS << "recall " << recall_unit->type_name() << " at "
-		<< recall_location << " spend " << own_team.recall_cost() << " gold" << std::endl;
+		<< recall_location << " spend " << own_team.recall_cost() << " gold";
 
 	return true;
 }
@@ -148,7 +148,7 @@ bool simulated_recruit(int side, const unit_type* u, const map_location& recruit
 	resources::gameboard->get_team(side).spend_gold(u->cost());
 
 	LOG_AI_SIM_ACTIONS << "recruit " << u->type_name() << " at "
-		<< recruit_location << " spend " << u->cost() << " gold" << std::endl;
+		<< recruit_location << " spend " << u->cost() << " gold";
 
 	return true;
 }

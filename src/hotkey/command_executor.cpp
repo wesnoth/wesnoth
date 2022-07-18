@@ -606,7 +606,7 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	bool release = event.type == SDL_KEYUP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
-			std::boolalpha << keypress << std::noboolalpha << ")\n";
+			std::boolalpha << keypress << std::noboolalpha << ")";
 	}
 	if(keypress) {
 		press_event_sent_ = true;

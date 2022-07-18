@@ -252,7 +252,7 @@ std::unique_ptr<widget> builder_stacked_widget::build() const
 	auto widget = std::make_unique<stacked_widget>(*this);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<stacked_widget_definition>();
 	assert(conf);

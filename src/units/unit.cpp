@@ -1162,7 +1162,7 @@ const std::vector<std::string> unit::advances_to_translated() const
 			result.push_back(adv_type->type_name());
 		} else {
 			WRN_UT << "unknown unit in advances_to list of type "
-			<< type().log_id() << ": " << adv_type_id << std::endl;
+			<< type().log_id() << ": " << adv_type_id;
 		}
 	}
 

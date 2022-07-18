@@ -484,7 +484,7 @@ bool init_sound()
 		          << "    " << timer_channel << " - timer\n"
 		          << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
 		          << "    " << UI_sound_channel_start << ".." << UI_sound_channel_last << " - UI\n"
-		          << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
+		          << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects";
 
 		play_music();
 	}

@@ -422,7 +422,7 @@ config& config::child(config_key_type key, int n)
 		return *i->second.at(n);
 	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
-			   << "«; request for the index »" << n << "« cannot be honored.\n";
+			   << "«; request for the index »" << n << "« cannot be honored.";
 
 		if(throw_when_child_not_found::do_throw()) {
 			throw error("Child at index not found");

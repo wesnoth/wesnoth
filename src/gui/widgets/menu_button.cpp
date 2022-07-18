@@ -258,7 +258,7 @@ std::unique_ptr<widget> builder_menu_button::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed menu_button '" << id
-	          << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.";
 
 	return widget;
 }

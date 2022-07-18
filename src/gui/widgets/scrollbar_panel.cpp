@@ -104,7 +104,7 @@ std::unique_ptr<widget> builder_scrollbar_panel::build() const
 	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = panel->cast_config_to<scrollbar_panel_definition>();
 	assert(conf);

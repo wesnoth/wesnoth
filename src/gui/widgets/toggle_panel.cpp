@@ -330,7 +330,7 @@ std::unique_ptr<widget> builder_toggle_panel::build() const
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
 	DBG_GUI_G << "Window builder: placed toggle panel '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	widget->init_grid(*grid);
 	return widget;

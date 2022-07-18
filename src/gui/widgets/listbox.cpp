@@ -381,7 +381,7 @@ void listbox::resize_content(const int width_modification,
 		const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " width_modification "
-			  << width_modification << " height_modification " << height_modification << ".\n";
+			  << width_modification << " height_modification " << height_modification << ".";
 
 	if(content_resize_request(
 		width_modification, height_modification, width_modification_pos, height_modification_pos))
@@ -413,7 +413,7 @@ void listbox::resize_content(const widget& row)
 	}
 
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " row size " << row.get_best_size()
-			  << ".\n";
+			  << ".";
 
 	const point content = content_grid()->get_size();
 	point size = row.get_best_size();

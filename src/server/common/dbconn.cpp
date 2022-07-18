@@ -59,7 +59,7 @@ void dbconn::log_sql_exception(const std::string& text, const mariadb::exception
 {
 	ERR_SQL << text << '\n'
 			<< "what: " << e.what() << '\n'
-			<< "error id: " << e.error_id() << std::endl;
+			<< "error id: " << e.error_id();
 }
 
 mariadb::connection_ref dbconn::create_connection()

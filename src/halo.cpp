@@ -36,8 +36,6 @@ static lg::log_domain log_halo("halo");
 #define LOG_HL LOG_STREAM(info, log_halo)
 #define DBG_HL LOG_STREAM(debug, log_halo)
 
-using std::endl;
-
 namespace halo
 {
 

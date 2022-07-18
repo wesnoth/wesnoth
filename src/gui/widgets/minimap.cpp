@@ -129,7 +129,7 @@ std::unique_ptr<widget> builder_minimap::build() const
 	auto widget = std::make_unique<minimap>(*this);
 
 	DBG_GUI_G << "Window builder: placed minimap '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

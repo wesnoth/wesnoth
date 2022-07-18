@@ -112,7 +112,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		palette_manager_->active_palette().hide(false);
 	} else {
 		ERR_ED << "Invalid hotkey command ("
-			<< static_cast<int>(command) << ") passed to set_mouse_action\n";
+			<< static_cast<int>(command) << ") passed to set_mouse_action";
 	}
 
 }
