@@ -122,7 +122,6 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		// TODO: draw_manager - is this actually okay?
 		_set_resolution(video::window_size());
 
 		break;
