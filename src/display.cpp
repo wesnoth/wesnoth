@@ -1411,7 +1411,6 @@ void display::draw_panel(const theme::panel& panel)
 		return;
 	}
 
-	// TODO: highdpi - draw area should probably be moved to new drawing API
 	const rect& loc = panel.location(video::game_canvas());
 
 	if (!loc.overlaps(draw::get_clip())) {

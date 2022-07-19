@@ -21,7 +21,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "sdl/window.hpp"
-#include "video.hpp"		// CVideo class holds the window -> SDL_Window object which contains the handle of the main window
+#include "video.hpp" // for get_window
 
 NOTIFYICONDATA* windows_tray_notification::nid = nullptr;
 bool windows_tray_notification::message_reset = false;
@@ -173,7 +173,6 @@ HWND windows_tray_notification::get_window_handle()
 {
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
-	// TODO: draw_manager - refactor?
 	sdl::window* window = video::get_window();
 	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
 	if (!window || SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*window), &wmInfo) != SDL_TRUE) {

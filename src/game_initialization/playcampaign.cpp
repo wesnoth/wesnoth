@@ -44,7 +44,7 @@
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "video.hpp" // TODO: draw_manager - only for faked, refactor?
+#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
