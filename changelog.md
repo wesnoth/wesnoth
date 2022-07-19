@@ -12,6 +12,14 @@
  ### Multiplayer
  ### Lua API
    * New `wesnoth.interface.screen_fade` function applies an overlay colour to the game display, fading over the given duration (PR #6864).
+   * New functions have been added to register game events from Lua: `wesnoth.game_events.add`, `wesnoth.game_events.add_menu`, `wesnoth.game_events.add_repeating`, `wesnoth.game_events.add_wml`.
+     * Both the action and the filter can now be a native Lua function, if needed.
+     * All features of the `[event]` tag are available.
+     * The primary API is `wesnoth.game_event.add` - the others are shortcuts for common use-cases.
+   * `wesnoth.game_events.fire` (renamed from `wesnoth.fire_event`) now supports passing unusual event-specific data such as damage in an attack event or previous owner in a village capture event.
+   * `wesnoth.fire_event_by_id` is renamed to `wesnoth.game_events.fire_by_id`.
+   * `wesnoth.current.event_context` now has an additional `data` attribute that contains the full event data, including the former owner in a village capture event (which was previously never exposed anywhere).
+   * `wesnoth.remove_event_handler` renamed to `wesnoth.game_events.remove` for consistency with other event functions.
  ### Packaging
    * Increased minimum required version of SDL to 2.0.10 for non-macOS platforms.
    * Increased minimum required version of SDL to 2.0.22 and the minimum required OS version to 10.12 for macOS due to needing the fix https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30.
@@ -27,6 +35,9 @@
  ### User interface
  ### WML Engine
    * A new interface action `[screen_fade]` provides a smooth screen fade effect which also covers units (issue #6745).
+   * Events now support filter conditions using the Wesnoth Formula Language with a new `filter_formula` key.
+   * It is now possible for variable interpolation in an event name to expand to multiple event names - the name is split on commas both before and after variable interpolation.
+   * The `[fire_event]` tag now supports a `[data]` subtag that can be used to pass any arbitrary information to the event. In particular, it supports passing damage to an attack event and former owner to a village capture event.
  ### Miscellaneous and Bug Fixes
    * Fixed being unable to interact with units when Scroll Lock is active (issue #6759)
    * Fixed the addon manager UI blanking incorrectly (issue #6787)
