@@ -198,7 +198,7 @@ void replay::delete_upcoming_commands()
 */
 void replay::process_error(const std::string& msg)
 {
-	ERR_REPLAY << msg << std::flush;
+	ERR_REPLAY << msg;
 
 	resources::controller->process_oos(msg); // might throw quit_game_exception()
 }

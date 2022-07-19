@@ -426,7 +426,7 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	if(!msg.str().empty()) {
 		msg << co.debug() << std::endl;
 		if(dont_throw) {
-			ERR_REPLAY << msg.str() << std::flush;
+			ERR_REPLAY << msg.str();
 		} else {
 			replay::process_error(msg.str());
 		}
