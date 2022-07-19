@@ -151,7 +151,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 	const std::size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
-		LOG_AI << "cut analysis short with number of positions\n";
+		LOG_AI << "cut analysis short with number of positions";
 		return;
 	}
 

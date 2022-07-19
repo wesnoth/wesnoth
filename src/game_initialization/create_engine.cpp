@@ -311,7 +311,7 @@ void create_engine::init_generated_level_data()
 	try {
 		if(!cur_lev->generate_whole_scenario())
 		{
-			DBG_MP << "** replacing map ** \n";
+			DBG_MP << "** replacing map **";
 
 			config data = cur_lev->data();
 
@@ -321,7 +321,7 @@ void create_engine::init_generated_level_data()
 
 		} else { //scenario generation
 
-			DBG_MP << "** replacing scenario ** \n";
+			DBG_MP << "** replacing scenario **";
 
 			config data = generator_->create_scenario();
 
