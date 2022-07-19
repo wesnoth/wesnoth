@@ -97,6 +97,33 @@ struct point : SDL_Point
 		y /= s;
 		return *this;
 	}
+
+	// Multiplication and division of points works elementwise.
+
+	point operator*(const point& p) const
+	{
+		return {x * p.x, y * p.y};
+	}
+
+	point& operator*=(const point& p)
+	{
+		x *= p.x;
+		y *= p.y;
+		return *this;
+	}
+
+	point operator/(const point& p) const
+	{
+		return {x / p.x, y / p.y};
+	}
+
+	point& operator/=(const point& p)
+	{
+		x /= p.x;
+		y /= p.y;
+		return *this;
+	}
+
 };
 
 std::ostream& operator<<(std::ostream& stream, const point& point);
