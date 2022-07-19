@@ -29,7 +29,7 @@
 #include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
-#include "video.hpp" // TODO: draw_manager - only for draw_area
+#include "video.hpp"
 #include "wml_separators.hpp"
 
 #include <numeric>
@@ -442,7 +442,11 @@ std::size_t menu::max_items_onscreen() const
 		return std::size_t(max_items_);
 	}
 
-	const std::size_t max_height = (max_height_ == -1 ? (video::draw_area().h*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (
+			max_height_ == -1
+				? (video::game_canvas_size().y * 66) / 100
+				: max_height_
+		) - heading_height();
 
 	std::vector<int> heights;
 	std::size_t n;
@@ -872,7 +876,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	rect area = video::draw_area();
+	rect area = video::game_canvas();
 	rect column = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
@@ -1075,18 +1079,18 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 
 	rect res(loc.x, y, loc.w, get_item_height(item));
 
-	const rect draw_area = video::draw_area();
+	const point canvas_size = video::game_canvas_size();
 
-	if(res.x > draw_area.w) {
+	if(res.x > canvas_size.x) {
 		return sdl::empty_rect;
-	} else if(res.x + res.w > draw_area.w) {
-		res.w = draw_area.w - res.x;
+	} else if(res.x + res.w > canvas_size.x) {
+		res.w = canvas_size.x - res.x;
 	}
 
-	if(res.y > draw_area.h) {
+	if(res.y > canvas_size.y) {
 		return sdl::empty_rect;
-	} else if(res.y + res.h > draw_area.h) {
-		res.h = draw_area.h - res.y;
+	} else if(res.y + res.h > canvas_size.y) {
+		res.h = canvas_size.y - res.y;
 	}
 
 	//only insert into the cache if the menu's co-ordinates have

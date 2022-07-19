@@ -16,7 +16,7 @@
 #include "gui/widgets/settings.hpp"
 
 #include "display.hpp"
-#include "video.hpp" // TODO: draw_manager - only for draw_area
+#include "video.hpp"
 
 namespace gui2
 {
@@ -56,10 +56,10 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	rect r = video::draw_area();
+	point canvas_size = video::game_canvas_size();
 
-	screen_width = r.w;
-	screen_height = r.h;
+	screen_width = canvas_size.x;
+	screen_height = canvas_size.y;
 
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;

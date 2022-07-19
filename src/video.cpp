@@ -62,7 +62,7 @@ point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
 int offset_x_ = 0;
 int offset_y_ = 0;
-point logical_size_ = {0, 0};
+point game_canvas_size_ = {0, 0};
 int pixel_scale_ = 1;
 
 } // anon namespace
@@ -115,7 +115,7 @@ void init_fake()
 {
 	headless_ = true;
 	refresh_rate_ = 1;
-	logical_size_ = {800,600};
+	game_canvas_size_ = {800,600};
 }
 
 void init_test()
@@ -159,7 +159,7 @@ bool update_test_framebuffer()
 	}
 
 	pixel_scale_ = 1;
-	logical_size_ = test_resolution_;
+	game_canvas_size_ = test_resolution_;
 
 	// The render texture is always the render target in this case.
 	force_render_target(render_texture_);
@@ -242,7 +242,7 @@ bool update_framebuffer()
 		LOG_DP << "  render scale: " << sx << ", " << sy;
 	}
 	// Cache it for easy access
-	logical_size_ = lsize;
+	game_canvas_size_ = lsize;
 
 	// Build or update the current render texture.
 	if (render_texture_) {
@@ -375,20 +375,31 @@ point window_size()
 
 rect draw_area()
 {
-	return {0, 0, logical_size_.x, logical_size_.y};
+	// TODO: highdpi - fix this for render to texture
+	return game_canvas();
+}
+
+rect game_canvas()
+{
+	return {0, 0, game_canvas_size_.x, game_canvas_size_.y};
+}
+
+point game_canvas_size()
+{
+	return game_canvas_size_;
 }
 
 rect input_area()
 {
 	if(!window) {
 		WRN_DP << "requesting input area with no window";
-		return draw_area();
+		return game_canvas();
 	}
 	if (testing_) {
 		return {0, 0, test_resolution_.x, test_resolution_.y};
 	}
-	// This should always match draw_area.
-	SDL_Point p(window->get_logical_size());
+	// This should always match game_canvas_size_.
+	point p(window->get_logical_size());
 	return {0, 0, p.x, p.y};
 }
 
@@ -423,10 +434,10 @@ void force_render_target(const texture& t)
 	if (!t) {
 		DBG_DP << "rendering to window / screen";
 		// TODO: draw_manager - clean this up
-		window->set_logical_size(draw_area().w, draw_area().h);
+		window->set_logical_size(game_canvas_size_);
 	} else if (t == render_texture_) {
 		DBG_DP << "rendering to primary buffer";
-		window->set_logical_size(draw_area().w, draw_area().h);
+		window->set_logical_size(game_canvas_size_);
 	} else {
 		DBG_DP << "rendering to custom target "
 			<< static_cast<void*>(t.get()) << ' '
@@ -519,7 +530,7 @@ surface read_pixels(SDL_Rect* r)
 	// Get the full target area.
 	const bool default_target = !target || target == render_texture_;
 	if (default_target) {
-		d = draw_area();
+		d = game_canvas();
 	} else {
 		// Assume it's a custom render target.
 		int w, h;

@@ -70,7 +70,7 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, lifetime_(-1)
 	, width_(-1)
 	, height_(-1)
-	, clip_rect_(video::draw_area())
+	, clip_rect_(video::game_canvas())
 	, visible_(true)
 	, align_(CENTER_ALIGN)
 	, border_(0)
@@ -433,10 +433,10 @@ void set_help_string(const std::string& str)
 	const color_t color{0, 0, 0, 0xbb};
 
 	int size = font::SIZE_LARGE;
-	rect draw_area = video::draw_area();
+	point canvas_size = video::game_canvas_size();
 
 	while(size > 0) {
-		if(pango_line_width(str, size) > draw_area.w) {
+		if(pango_line_width(str, size) > canvas_size.x) {
 			size--;
 		} else {
 			break;
@@ -447,7 +447,7 @@ void set_help_string(const std::string& str)
 
 	floating_label flabel(str);
 	flabel.set_font_size(size);
-	flabel.set_position(draw_area.w / 2, draw_area.h);
+	flabel.set_position(canvas_size.x / 2, canvas_size.y);
 	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
 

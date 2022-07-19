@@ -516,10 +516,9 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 	return fmt;
 }
 
-template<typename T>
-inline std::string geometry_to_string(T horizontal, T vertical)
+inline std::string geometry_to_string(point p)
 {
-	return std::to_string(horizontal) + 'x' + std::to_string(vertical);
+	return std::to_string(p.x) + 'x' + std::to_string(p.y);
 }
 
 std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
@@ -560,12 +559,9 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	auto drivers = video::enumerate_drivers();
 
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
-	fmt.insert("Window size", geometry_to_string(
-		video::current_resolution().x, video::current_resolution().y));
-	fmt.insert("Game canvas size", geometry_to_string(
-		video::draw_area().w, video::draw_area().h));
-	fmt.insert("Final render target size", geometry_to_string(
-		video::output_size().x, video::output_size().y));
+	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
+	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
+	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
 
 	return fmt;

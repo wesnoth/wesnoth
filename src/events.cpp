@@ -533,6 +533,7 @@ void pump()
 
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
+					// TODO: highdpi - this will be slightly off if there is a logical offset
 					rect r = video::input_area();
 
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
@@ -560,6 +561,7 @@ void pump()
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
 
+					// TODO: highdpi - this will be slightly off if there is a logical offset
 					rect r = video::input_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
@@ -604,7 +606,7 @@ void pump()
 
 			// Resized comes after size_changed.
 			// Here we can trigger any watchers for resize events.
-			// Video settings such as draw_area() will be correct.
+			// Video settings such as game_canvas_size() will be correct.
 			case SDL_WINDOWEVENT_RESIZED:
 				LOG_DP << "events/RESIZED "
 					<< event.window.data1 << 'x' << event.window.data2;

@@ -32,7 +32,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // TODO: draw_manager - only draw_area
+#include "video.hpp"                    // for game_canvas_size
 
 #include <map>                          // for map, etc
 #include <optional>
@@ -292,7 +292,7 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-	const int screen_width = video::draw_area().w;
+	const int screen_width = video::game_canvas_size().x;
 
 	ss << _("Level") << " " << type_.level();
 	ss << "\n\n";
