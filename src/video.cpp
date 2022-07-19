@@ -60,8 +60,6 @@ bool headless_ = false; /**< running with no window at all */
 bool testing_ = false; /**< running unit tests */
 point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
-int offset_x_ = 0;
-int offset_y_ = 0;
 point game_canvas_size_ = {0, 0};
 int pixel_scale_ = 1;
 
@@ -77,6 +75,7 @@ void init_fake();
 void init_test();
 bool update_framebuffer();
 bool update_test_framebuffer();
+point draw_offset();
 
 
 void init(fake type)
@@ -273,15 +272,10 @@ bool update_framebuffer()
 	// Update sizes for input conversion.
 	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
 
-	// If we are using pixel scale, and also have a window of awkward size,
-	// there may be a very slight offset in real pixels.
-	// SDL doesn't provide any way of retrieving this offset,
-	// so we just have to base our calculation on known behaviour.
-	offset_x_ = (osize.x - (scale * lsize.x)) / 2;
-	offset_y_ = (osize.y - (scale * lsize.y)) / 2;
-	if (offset_x_ || offset_y_) {
-		LOG_DP << "render target viewport offset: "
-		       << offset_x_ << ", " << offset_y_;
+	rect active_area = to_output(draw_area());
+	if (active_area != output_area()) {
+		LOG_DP << "render target offset: LT " << active_area.pos() << " RB "
+		       << output_size() - active_area.size() - active_area.pos();
 	}
 
 	return changed;
@@ -373,12 +367,6 @@ point window_size()
 	return window->get_size();
 }
 
-rect draw_area()
-{
-	// TODO: highdpi - fix this for render to texture
-	return game_canvas();
-}
-
 rect game_canvas()
 {
 	return {0, 0, game_canvas_size_.x, game_canvas_size_.y};
@@ -387,6 +375,53 @@ rect game_canvas()
 point game_canvas_size()
 {
 	return game_canvas_size_;
+}
+
+point draw_size()
+{
+	return current_render_target_.draw_size();
+}
+
+rect draw_area()
+{
+	return {0, 0, current_render_target_.w(), current_render_target_.h()};
+}
+
+point draw_offset()
+{
+	// As we are using SDL_RenderSetIntegerScale, there may be a slight
+	// offset of the drawable area on the render target if the target size
+	// is not perfectly divisble by the scale.
+	// SDL doesn't provide any way of retrieving this offset,
+	// so we just have to base our calculation on the known behaviour.
+	point osize = output_size();
+	point dsize = draw_size();
+	point scale = osize / dsize;
+	return (osize - (scale * dsize)) / 2;
+}
+
+rect output_area()
+{
+	point p = output_size();
+	return {0, 0, p.x, p.y};
+}
+
+point to_output(const point& p)
+{
+	// Multiply p by the integer scale, then add the draw offset if any.
+	point dsize = current_render_target_.draw_size();
+	point osize = current_render_target_.get_raw_size();
+	return (p * (osize / dsize)) + draw_offset();
+}
+
+rect to_output(const rect& r)
+{
+	// Multiply r by integer scale, adding draw_offset to the position.
+	point dsize = current_render_target_.draw_size();
+	point osize = current_render_target_.get_raw_size();
+	point pos = (r.pos() * (osize / dsize)) + draw_offset();
+	point size = r.size() * (osize / dsize);
+	return {pos, size};
 }
 
 rect input_area()
@@ -458,16 +493,6 @@ texture get_render_target()
 	return current_render_target_;
 }
 
-rect to_output(const rect& r)
-{
-	rect o = r * get_pixel_scale();
-	// The draw-space viewport may be slightly offset on the render target,
-	// if the scale doesn't match precisely with the window size.
-	o.x += offset_x_;
-	o.y += offset_y_;
-	return o;
-}
-
 // Note: this is not thread-safe.
 // Drawing functions should not be called while this is active.
 // SDL renderer usage is not thread-safe anyway, so this is fine.
@@ -512,7 +537,6 @@ surface read_pixels(SDL_Rect* r)
 		WRN_DP << "trying to read pixels with no window";
 		return surface();
 	}
-	SDL_Rect d;
 
 	// This should be what we want to read from.
 	texture& target = current_render_target_;
@@ -527,19 +551,8 @@ surface read_pixels(SDL_Rect* r)
 		throw error("unexpected render target while reading pixels");
 	}
 
-	// Get the full target area.
-	const bool default_target = !target || target == render_texture_;
-	if (default_target) {
-		d = game_canvas();
-	} else {
-		// Assume it's a custom render target.
-		int w, h;
-		SDL_QueryTexture(target, nullptr, nullptr, &w, &h);
-		d = {0, 0, w, h};
-	}
-
-	// Intersect with the given rect.
-	rect r_clipped = d;
+	// Intersect the draw area with the given rect.
+	rect r_clipped = draw_area();
 	if (r) {
 		r_clipped.clip(*r);
 		if (r_clipped != *r) {
@@ -550,13 +563,7 @@ surface read_pixels(SDL_Rect* r)
 	}
 
 	// Convert the rect to output coordinates, if necessary.
-	SDL_Rect o;
-	if (default_target) {
-		o = to_output(r_clipped);
-	} else {
-		// r assumed to already be in output space.
-		o = r_clipped;
-	}
+	rect o = to_output(r_clipped);
 
 	// Create surface and read pixels
 	surface s(o.w, o.h);
@@ -574,7 +581,7 @@ surface read_pixels_low_res(SDL_Rect* r)
 	if(r) {
 		return scale_surface(s, r->w, r->h);
 	} else {
-		return scale_surface(s, draw_area().w, draw_area().h);
+		return scale_surface(s, draw_size().x, draw_size().y);
 	}
 }
 

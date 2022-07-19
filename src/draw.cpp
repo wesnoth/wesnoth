@@ -504,9 +504,7 @@ rect draw::get_clip()
 	}
 
 	if (!SDL_RenderIsClipEnabled(renderer())) {
-		// TODO: highdpi - fix this in the case of render to texture
-		// TODO: highdpi - fix this for viewports
-		return video::draw_area();
+		return draw::get_viewport();
 	}
 
 	::rect clip;
@@ -599,7 +597,6 @@ SDL_Rect draw::get_viewport()
 	SDL_RenderGetViewport(renderer(), &viewport);
 
 	if (viewport == sdl::empty_rect) {
-		// TODO: highdpi - fix this in the case of render to texture
 		return video::draw_area();
 	}
 	return viewport;

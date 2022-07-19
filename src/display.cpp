@@ -1886,7 +1886,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		src.x -= diff_x;
 		src.y -= diff_y;
 
-		src = video::to_output(src);
+		src *= video::get_pixel_scale();
 
 		// swap buffers
 		std::swap(front_, back_);
@@ -2624,7 +2624,8 @@ void display::update_render_textures()
 		return;
 	}
 
-	// TODO: highdpi - is this correct when there is a logical offset?
+	// We ignore any logical offset on the underlying window buffer.
+	// Render buffer size is always a simple multiple of the draw area.
 	rect darea = video::game_canvas();
 	rect oarea = darea * video::get_pixel_scale();
 
@@ -2639,7 +2640,6 @@ void display::update_render_textures()
 		return;
 	}
 
-	// TODO: draw_manager - these need to account for the logical offset
 	if(raw_size_changed) {
 		LOG_DP << "regenerating render buffers as " << oarea;
 		front_ = texture(oarea.w, oarea.h, SDL_TEXTUREACCESS_TARGET);

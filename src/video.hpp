@@ -146,26 +146,6 @@ void set_window_icon(surface& icon);
 /* Queries */
 /***********/
 
-// TODO: revisit these for correctness and usefulness
-/**
- * Returns the size of the final render target. This is irrelevant
- * for most purposes. Use game_canvas_size() in stead.
- */
-point output_size();
-
-/**
- * Returns the size of the window in display units / screen coordinates.
- * This should match the value sent by window resize events, and also
- * those used for setting resolution.
- */
-point window_size();
-
-/**
- * Returns the size and location of the current drawing area in pixels.
- * This will usually be an SDL_Rect indicating the full drawing surface.
- */
-rect draw_area();
-
 /**
  * The game canvas area, in drawing coordinates.
  *
@@ -182,6 +162,39 @@ rect game_canvas();
 
 /** The size of the game canvas, in drawing coordinates / game pixels. */
 point game_canvas_size();
+
+/**
+ * The size of the current render target in drawing coordinates.
+ *
+ * This will be the same as game_canvas_size() unless the render target
+ * has been manually changed.
+ */
+point draw_size();
+
+/**
+ * The current drawable area.
+ *
+ * Equivalent to {0, 0, draw_size().x, draw_size().y}.
+ */
+rect draw_area();
+
+
+// TODO: revisit these for correctness and usefulness
+/**
+ * Returns the size of the final render target. This is irrelevant
+ * for most purposes. Use game_canvas_size() in stead.
+ */
+point output_size();
+
+/** {0, 0, output_size().x, output_size().y} */
+rect output_area();
+
+/**
+ * Returns the size of the window in display units / screen coordinates.
+ * This should match the value sent by window resize events, and also
+ * those used for setting resolution.
+ */
+point window_size();
 
 /**
  * Returns the size and location of the window's input area in pixels.
