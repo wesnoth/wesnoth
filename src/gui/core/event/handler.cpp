@@ -467,7 +467,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				// TODO: highdpi - this may be wrong if there is a logical offset
 				point c = video::game_canvas_size();
 				touch_motion(
 					point(event.tfinger.x * c.x, event.tfinger.y * c.y),
@@ -478,7 +477,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERUP:
 			{
-				// TODO: highdpi - this may be wrong if there is a logical offset
 				point c = video::game_canvas_size();
 				touch_up(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
@@ -486,7 +484,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERDOWN:
 			{
-				// TODO: highdpi - this may be wrong if there is a logical offset
 				point c = video::game_canvas_size();
 				touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
@@ -494,7 +491,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_MULTIGESTURE:
 			{
-				// TODO: highdpi - this may be wrong if there is a logical offset
 				point c = video::game_canvas_size();
 				touch_multi_gesture(
 					point(event.mgesture.x * c.x, event.mgesture.y * c.y),

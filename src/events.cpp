@@ -533,8 +533,8 @@ void pump()
 
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
-					// TODO: highdpi - this will be slightly off if there is a logical offset
-					rect r = video::input_area();
+					// Events are given by SDL in draw space
+					point c = video::game_canvas_size();
 
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
@@ -543,10 +543,10 @@ void pump()
 					touch_event.tfinger.timestamp = event.motion.timestamp;
 					touch_event.tfinger.touchId = 1;
 					touch_event.tfinger.fingerId = 1;
-					touch_event.tfinger.dx = static_cast<float>(event.motion.xrel) / r.w;
-					touch_event.tfinger.dy = static_cast<float>(event.motion.yrel) / r.h;
-					touch_event.tfinger.x = static_cast<float>(event.motion.x) / r.w;
-					touch_event.tfinger.y = static_cast<float>(event.motion.y) / r.h;
+					touch_event.tfinger.dx = static_cast<float>(event.motion.xrel) / c.x;
+					touch_event.tfinger.dy = static_cast<float>(event.motion.yrel) / c.y;
+					touch_event.tfinger.x = static_cast<float>(event.motion.x) / c.x;
+					touch_event.tfinger.y = static_cast<float>(event.motion.y) / c.y;
 					touch_event.tfinger.pressure = 1;
 					::SDL_PushEvent(&touch_event);
 
@@ -561,8 +561,9 @@ void pump()
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
 
-					// TODO: highdpi - this will be slightly off if there is a logical offset
-					rect r = video::input_area();
+					// Events are given by SDL in draw space
+					point c = video::game_canvas_size();
+
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
 					touch_event.tfinger.type = touch_event.type;
@@ -571,8 +572,8 @@ void pump()
 					touch_event.tfinger.fingerId = 1;
 					touch_event.tfinger.dx = 0;
 					touch_event.tfinger.dy = 0;
-					touch_event.tfinger.x = static_cast<float>(event.button.x) / r.w;
-					touch_event.tfinger.y = static_cast<float>(event.button.y) / r.h;
+					touch_event.tfinger.x = static_cast<float>(event.button.x) / c.x;
+					touch_event.tfinger.y = static_cast<float>(event.button.y) / c.y;
 					touch_event.tfinger.pressure = 1;
 					::SDL_PushEvent(&touch_event);
 
