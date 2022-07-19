@@ -117,7 +117,8 @@ void invalidate_region(const rect& region)
 
 void invalidate_all()
 {
-	invalidate_region(video::draw_area());
+	// Note: this does not support render targets other than the screen.
+	invalidate_region(video::game_canvas());
 }
 
 void sparkle()

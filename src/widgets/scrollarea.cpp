@@ -16,9 +16,9 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "widgets/scrollarea.hpp"
+#include "sdl/input.hpp" // for get_mouse_state
 #include "sdl/rect.hpp"
-#include "video.hpp" // TODO: draw_manager - only needed for draw_area()
-#include "sdl/input.hpp" // get_mouse_state
+#include "video.hpp" // for converting input events to game coordinates
 
 namespace gui {
 
@@ -171,10 +171,13 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 
 	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
-		rect r = video::draw_area();
-		auto tx = static_cast<int>(event.tfinger.x * r.w);
-		auto ty = static_cast<int>(event.tfinger.y * r.h);
-		auto dy = static_cast<int>(event.tfinger.dy * r.h);
+		// These events are given as a proportion of the full game canvas.
+		// 0.0 is top/left edge, 1.0 is bottom/right edge.
+		// Thus first convert them to game pixels.
+		point canvas_size = video::game_canvas_size();
+		auto tx = static_cast<int>(event.tfinger.x * canvas_size.x);
+		auto ty = static_cast<int>(event.tfinger.y * canvas_size.y);
+		auto dy = static_cast<int>(event.tfinger.dy * canvas_size.y);
 
 		if (event.type == SDL_FINGERDOWN) {
 			swipe_dy_ = 0;

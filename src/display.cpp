@@ -183,7 +183,7 @@ display::display(const display_context* dc,
 	, xpos_(0)
 	, ypos_(0)
 	, view_locked_(false)
-	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), video::draw_area())
+	, theme_(theme::get_theme_config(theme_id.empty() ? preferences::theme() : theme_id), video::game_canvas())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
@@ -280,7 +280,7 @@ display::~display()
 
 void display::set_theme(const std::string& new_theme)
 {
-	theme_ = theme{theme::get_theme_config(new_theme), video::draw_area()};
+	theme_ = theme{theme::get_theme_config(new_theme), video::game_canvas()};
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
@@ -512,17 +512,17 @@ bool display::is_blindfolded() const
 
 const rect& display::minimap_area() const
 {
-	return theme_.mini_map_location(video::draw_area());
+	return theme_.mini_map_location(video::game_canvas());
 }
 
 const rect& display::palette_area() const
 {
-	return theme_.palette_location(video::draw_area());
+	return theme_.palette_location(video::game_canvas());
 }
 
 const rect& display::unit_image_area() const
 {
-	return theme_.unit_image_location(video::draw_area());
+	return theme_.unit_image_location(video::game_canvas());
 }
 
 rect display::max_map_area() const
@@ -573,7 +573,7 @@ rect display::map_outside_area() const
 	if(map_screenshot_) {
 		return max_map_area();
 	} else {
-		return theme_.main_map_location(video::draw_area());
+		return theme_.main_map_location(video::game_canvas());
 	}
 }
 
@@ -846,7 +846,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning menu buttons...";
 	for(const auto& menu : theme_.menus()) {
 		if(auto b = find_menu_button(menu.get_id())) {
-			const SDL_Rect& loc = menu.location(video::draw_area());
+			const SDL_Rect& loc = menu.location(video::game_canvas());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -857,7 +857,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning action buttons...";
 	for(const auto& action : theme_.actions()) {
 		if(auto b = find_action_button(action.get_id())) {
-			const SDL_Rect& loc = action.location(video::draw_area());
+			const SDL_Rect& loc = action.location(video::game_canvas());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -1412,7 +1412,7 @@ void display::draw_panel(const theme::panel& panel)
 	}
 
 	// TODO: highdpi - draw area should probably be moved to new drawing API
-	const rect& loc = panel.location(video::draw_area());
+	const rect& loc = panel.location(video::game_canvas());
 
 	if (!loc.overlaps(draw::get_clip())) {
 		return;
@@ -1432,7 +1432,7 @@ void display::draw_panel(const theme::panel& panel)
 
 void display::draw_label(const theme::label& label)
 {
-	const rect& loc = label.location(video::draw_area());
+	const rect& loc = label.location(video::game_canvas());
 
 	if (!loc.overlaps(draw::get_clip())) {
 		return;
@@ -2395,7 +2395,7 @@ void display::queue_rerender()
 
 	tooltips::clear_tooltips();
 
-	theme_.set_resolution(video::draw_area());
+	theme_.set_resolution(video::game_canvas());
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
@@ -2614,7 +2614,7 @@ rect display::screen_location()
 	assert(!map_screenshot_);
 	//return map_outside_area();
 	// well actually it also has to draw the panels, so
-	return video::draw_area();
+	return video::game_canvas();
 	// TODO: draw_manager - get this from theme perhaps?
 }
 
@@ -2624,8 +2624,8 @@ void display::update_render_textures()
 		return;
 	}
 
-	// TODO: draw_manager - tidy these video accessors
-	rect darea = video::draw_area();
+	// TODO: highdpi - is this correct when there is a logical offset?
+	rect darea = video::game_canvas();
 	rect oarea = darea * video::get_pixel_scale();
 
 	// Check that the front buffer size is correct.
@@ -2943,7 +2943,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	rect& loc = reportLocations_[report_name];
 	// TODO: draw_manager - rect
-	const SDL_Rect& new_loc = item->location(video::draw_area());
+	const SDL_Rect& new_loc = item->location(video::game_canvas());
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.

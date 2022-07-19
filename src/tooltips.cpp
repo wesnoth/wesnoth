@@ -21,7 +21,7 @@
 #include "game_display.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
-#include "video.hpp" // TODO: draw_manager - only for draw_area
+#include "video.hpp"
 
 #include <SDL2/SDL_rect.h>
 
@@ -47,12 +47,12 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 	: origin(r), message(msg), action(act), label(msg)
 {
 	const color_t bgcolor {0,0,0,192};
-	rect area = video::draw_area();
+	rect game_canvas = video::game_canvas();
 	unsigned int border = 10;
 
 	label.set_font_size(font_size);
 	label.set_color(font::NORMAL_COLOR);
-	label.set_clip_rect(area);
+	label.set_clip_rect(game_canvas);
 	label.set_width(text_width);
 	label.set_alignment(font::LEFT_ALIGN);
 	label.set_bg_color(bgcolor);
@@ -73,8 +73,8 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 	loc.x = origin.x;
 	if(loc.x < 0) {
 		loc.x = 0;
-	} else if(loc.x + loc.w > area.w) {
-		loc.x = area.w - loc.w;
+	} else if(loc.x + loc.w > game_canvas.w) {
+		loc.x = game_canvas.w - loc.w;
 	}
 
 	label.move(loc.x, loc.y);

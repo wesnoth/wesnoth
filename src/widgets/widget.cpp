@@ -19,7 +19,6 @@
 #include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "widgets/widget.hpp"
-#include "video.hpp" // TODO: draw_manager - only for draw_area
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
@@ -256,12 +255,13 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
-	rect c = clip_ ? clip_rect_ : video::draw_area();
-	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video::draw_area());
-
 	if (needs_restore_) {
 		for(const rect& r : restorer_) {
-			draw_manager::invalidate_region(r.intersect(c));
+			if(clip_) {
+				draw_manager::invalidate_region(r.intersect(clip_rect_));
+			} else {
+				draw_manager::invalidate_region(r);
+			}
 		}
 		/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 		    i_end = restorer_.end(); i != i_end; ++i)
@@ -272,9 +272,8 @@ void widget::bg_restore() const
 
 void widget::bg_restore(const SDL_Rect& where) const
 {
-	rect c = clip_ ? clip_rect_ : video::draw_area();
+	rect c = clip_ ? clip_rect_ : where;
 	c.clip(where);
-	//auto clipper = draw::set_clip(clip_ ? clip_rect_ : video::draw_area());
 
 	for(const rect& r : restorer_) {
 		draw_manager::invalidate_region(r.intersect(c));

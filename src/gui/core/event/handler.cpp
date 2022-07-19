@@ -446,8 +446,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_RESIZED:
-					// TODO: draw_manager - rect accessor for {w,h}
-					video_resize(point(video::draw_area().w, video::draw_area().h));
+					video_resize(video::game_canvas_size());
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -468,31 +467,40 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				rect r = video::draw_area();
-				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
-							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
+				// TODO: highdpi - this may be wrong if there is a logical offset
+				point c = video::game_canvas_size();
+				touch_motion(
+					point(event.tfinger.x * c.x, event.tfinger.y * c.y),
+					point(event.tfinger.dx * c.x, event.tfinger.dy * c.y)
+				);
 			}
 			break;
 
 		case SDL_FINGERUP:
 			{
-				rect r = video::draw_area();
-				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
+				// TODO: highdpi - this may be wrong if there is a logical offset
+				point c = video::game_canvas_size();
+				touch_up(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				rect r = video::draw_area();
-				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
+				// TODO: highdpi - this may be wrong if there is a logical offset
+				point c = video::game_canvas_size();
+				touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
 			{
-				rect r = video::draw_area();
-				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
-									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+				// TODO: highdpi - this may be wrong if there is a logical offset
+				point c = video::game_canvas_size();
+				touch_multi_gesture(
+					point(event.mgesture.x * c.x, event.mgesture.y * c.y),
+					event.mgesture.dTheta, event.mgesture.dDist,
+					event.mgesture.numFingers
+				);
 			}
 			break;
 

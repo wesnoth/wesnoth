@@ -149,7 +149,7 @@ void set_window_icon(surface& icon);
 // TODO: revisit these for correctness and usefulness
 /**
  * Returns the size of the final render target. This is irrelevant
- * for most purposes. Use draw_area() in stead.
+ * for most purposes. Use game_canvas_size() in stead.
  */
 point output_size();
 
@@ -167,15 +167,32 @@ point window_size();
 rect draw_area();
 
 /**
+ * The game canvas area, in drawing coordinates.
+ *
+ * This is the "screen area", as seen by game systems, and as used for
+ * specifying where to draw things on-screen. It may differ, in high-dpi
+ * contexts, from input area, window area, and output area.
+ *
+ * Usually this is the only area game components should use or care about.
+ *
+ * The units it uses can be considered "pixels". Final output will be
+ * rendered in higher resolution automatically if and when appropriate.
+ */
+rect game_canvas();
+
+/** The size of the game canvas, in drawing coordinates / game pixels. */
+point game_canvas_size();
+
+/**
  * Returns the size and location of the window's input area in pixels.
  * We use SDL_RendererSetLogicalSize to ensure this always matches
- * draw_area(), but for clarity there are two separate functions.
+ * game_canvas(), but for clarity there are two separate functions.
  */
 rect input_area();
 
 /**
  * Get the current active pixel scale multiplier.
- * This is equal to output_size() / draw_area().
+ * This is equal to output_size() / game_canvas_size().
  * Currently it is always integer, and the same in both dimensions.
  *
  * This may differ from preferences::pixel_scale() in some cases,

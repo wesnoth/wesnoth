@@ -29,19 +29,19 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
-#include "help/help_browser.hpp"             // for help_browser
-#include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
+#include "help/help_browser.hpp"        // for help_browser
+#include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/surface.hpp"                // for surface
+#include "sdl/surface.hpp"              // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
-#include "terrain/terrain.hpp"                  // for terrain_type
-#include "units/unit.hpp"                     // for unit
-#include "units/types.hpp"               // for unit_type, unit_type_data, etc
-#include "video.hpp"               // TODO: draw_manager - only for draw_area
+#include "terrain/terrain.hpp"          // for terrain_type
+#include "units/unit.hpp"               // for unit
+#include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "video.hpp"                    // for game_canvas_size
 #include "widgets/button.hpp"           // for button
 
-#include <cassert>                     // for assert
+#include <cassert>                      // for assert
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
@@ -192,10 +192,10 @@ void show_with_toplevel(const section &toplevel_sec,
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	rect draw_area = video::draw_area();
+	point canvas_size = video::game_canvas_size();
 
-	const int width  = std::min<int>(font::relative_size(1200), draw_area.w - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), draw_area.h - font::relative_size(150));
+	const int width  = std::min<int>(font::relative_size(1200), canvas_size.x - font::relative_size(20));
+	const int height = std::min<int>(font::relative_size(850), canvas_size.y - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);
@@ -204,8 +204,8 @@ void show_with_toplevel(const section &toplevel_sec,
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {
-		xloc = draw_area.w / 2 - width / 2;
-		yloc = draw_area.h / 2 - height / 2;
+		xloc = canvas_size.x / 2 - width / 2;
+		yloc = canvas_size.y / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
 	gui::button close_button_(_("Close"));

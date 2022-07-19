@@ -31,7 +31,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 #include "sdl/utils.hpp" // blur_surface
-#include "video.hpp" // TODO: draw_manager - only for draw_area
+#include "video.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -186,7 +186,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	rect bounds = video::draw_area();
+	rect bounds = video::game_canvas();
 	if(have_border_) {
 		bounds.x += left_.w();
 		bounds.y += top_.h();
@@ -316,7 +316,7 @@ void dialog_frame::draw_background()
 
 rect dialog_frame::draw_title(bool actually_draw)
 {
-	rect r = video::draw_area();
+	rect r = video::game_canvas();
 	return font::pango_draw_text(
 		actually_draw, r, font::SIZE_TITLE, font::TITLE_COLOR, title_,
 		dim_.title.x, dim_.title.y, false, font::pango_text::STYLE_NORMAL
