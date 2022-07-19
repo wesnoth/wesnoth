@@ -30,6 +30,7 @@
 #include "font/text.hpp"
 
 class CVideo;
+struct rect;
 class texture;
 
 namespace font {
@@ -67,6 +68,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
  *
  * The text will be clipped to area.  If the text runs outside of area
  * horizontally, an ellipsis will be displayed at the end of it.
+ * If area is empty, the text will not be clipped.
  *
  * If use_tooltips is true, then text with an ellipsis will have a tooltip
  * set for it equivalent to the entire contents of the text.
@@ -74,6 +76,6 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
  * A bounding rectangle of the text is returned. If video is nullptr, then the
  * text will not be drawn, and a bounding rectangle only will be returned.
  */
-SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+rect pango_draw_text(CVideo* video, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips = false, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // end namespace font
