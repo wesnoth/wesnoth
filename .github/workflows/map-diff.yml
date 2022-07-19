@@ -34,6 +34,8 @@ jobs:
 
         for map_path in "${map_paths[@]}"
         do
+          echo "** Working on $map_path **"
+
           ## Get new map version
           new_map=${map_path##*/}
           git show "$SHA":"$map_path" > "$new_map"
@@ -46,8 +48,12 @@ jobs:
           pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
-          image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
-            -F "image=@\"$diff_image\"" | jq -r ".data.link")
+          curl_result=$(curl -X POST "https://api.imgur.com/3/upload" -F "image=@\"$diff_image\"")
+
+          echo "Imgur result:"
+          echo "$curl_result"
+
+          image_link=$($curl_result | jq -r ".data.link")
 
           comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
         done
