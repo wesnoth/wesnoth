@@ -193,7 +193,12 @@ void window::set_logical_size(int w, int h)
 	update_input_dimensions(get_logical_size(), get_size());
 }
 
-SDL_Point window::get_logical_size() const
+void window::set_logical_size(const point& p)
+{
+	set_logical_size(p.x, p.y);
+}
+
+point window::get_logical_size() const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;

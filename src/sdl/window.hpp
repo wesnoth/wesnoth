@@ -20,6 +20,8 @@
  * Contains a wrapper class for the SDL_Window class.
  */
 
+#include "sdl/point.hpp"
+
 #include <SDL2/SDL_video.h>
 
 #include <string>
@@ -180,8 +182,9 @@ public:
 	 * @param h              Height of the window's rendering surface
 	 */
 	void set_logical_size(int w, int h);
+	void set_logical_size(const point& p);
 
-	SDL_Point get_logical_size() const;
+	point get_logical_size() const;
 	void get_logical_size(int& w, int& h) const;
 
 	/** The current pixel format of the renderer. */
