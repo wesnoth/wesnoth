@@ -178,7 +178,9 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 		// have been flagged as disabled by this point (such events are disabled before their
 		// actions are run). If a disabled event is encountered outside an event context,
 		// however, assert. That means something went wrong with event list cleanup.
-		if(eh->disabled() && is_event_running()) {
+		// Also silently skip them when including nonserializable events, which can happen
+		// if viewing the inspector with :inspect after removing an event from the Lua console.
+		if(eh->disabled() && (is_event_running() || include_nonserializable)) {
 			continue;
 		} else {
 			assert(!eh->disabled());
