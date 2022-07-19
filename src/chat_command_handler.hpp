@@ -67,6 +67,7 @@ protected:
 	void init_map()
 	{
 		set_cmd_prefix("/");
+		set_cmd_flag(false);
 		register_command("query", &chat_command_handler::do_network_send,
 			_("Send a query to the server. Without arguments the server"
 				" should tell you the available commands."));
