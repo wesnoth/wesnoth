@@ -49,7 +49,6 @@
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "preferences/lobby.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 #include <functional>
@@ -911,25 +910,6 @@ void mp_lobby::show_help_callback()
 void mp_lobby::show_preferences_button_callback()
 {
 	gui2::dialogs::preferences_dialog::display();
-
-	/**
-	 * The screen size might have changed force an update of the size.
-	 *
-	 * @todo This might no longer be needed when gui2 is done.
-	 */
-	const SDL_Rect rect = CVideo::get_singleton().draw_area();
-
-	gui2::settings::gamemap_width  += rect.w - gui2::settings::screen_width;
-	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height;
-	gui2::settings::screen_width    = rect.w;
-	gui2::settings::screen_height   = rect.h;
-
-	/**
-	 * The screen size might have changed force an update of the size.
-	 *
-	 * @todo This might no longer be needed when gui2 is done.
-	 */
-	get_window()->invalidate_layout();
 
 	refresh_lobby();
 }
