@@ -62,6 +62,7 @@ point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
 point game_canvas_size_ = {0, 0};
 int pixel_scale_ = 1;
+rect input_area_ = {};
 
 } // anon namespace
 
@@ -159,6 +160,7 @@ bool update_test_framebuffer()
 
 	pixel_scale_ = 1;
 	game_canvas_size_ = test_resolution_;
+	input_area_ = {{}, test_resolution_};
 
 	// The render texture is always the render target in this case.
 	force_render_target(render_texture_);
@@ -269,13 +271,19 @@ bool update_framebuffer()
 	// Assign the render texture now. It will be used for all drawing.
 	force_render_target(render_texture_);
 
-	// Update sizes for input conversion.
-	sdl::update_input_dimensions(lsize.x, lsize.y, wsize.x, wsize.y);
+	// By default input area is the same as the window area.
+	input_area_ = {{}, wsize};
 
 	rect active_area = to_output(draw_area());
-	if (active_area != output_area()) {
+	if (active_area.size() != osize) {
 		LOG_DP << "render target offset: LT " << active_area.pos() << " RB "
-		       << output_size() - active_area.size() - active_area.pos();
+		       << osize - active_area.size() - active_area.pos();
+		// Translate active_area into display coordinates as input_area_
+		input_area_ = {
+			(active_area.pos() * wsize) / osize,
+			(active_area.size() * wsize) / osize
+		};
+		LOG_DP << "input area: " << input_area_;
 	}
 
 	return changed;
@@ -426,16 +434,7 @@ rect to_output(const rect& r)
 
 rect input_area()
 {
-	if(!window) {
-		WRN_DP << "requesting input area with no window";
-		return game_canvas();
-	}
-	if (testing_) {
-		return {0, 0, test_resolution_.x, test_resolution_.y};
-	}
-	// This should always match game_canvas_size_.
-	point p(window->get_logical_size());
-	return {0, 0, p.x, p.y};
+	return input_area_;
 }
 
 int get_pixel_scale()
@@ -468,7 +467,6 @@ void force_render_target(const texture& t)
 	// so make sure it gets set back appropriately.
 	if (!t) {
 		DBG_DP << "rendering to window / screen";
-		// TODO: draw_manager - clean this up
 		window->set_logical_size(game_canvas_size_);
 	} else if (t == render_texture_) {
 		DBG_DP << "rendering to primary buffer";

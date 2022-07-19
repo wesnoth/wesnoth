@@ -102,6 +102,8 @@ void toggle_fullscreen();
 /**
  * Set the window resolution.
  *
+ * @todo this is no longer useful as fullscreen is always native resolution.
+ *
  * @param resolution          The new width and height.
  *
  * @returns                   Whether the resolution was successfully changed.
@@ -142,9 +144,9 @@ void set_window_title(const std::string& title);
 void set_window_icon(surface& icon);
 
 
-/***********/
-/* Queries */
-/***********/
+/**********************/
+/* Coordinate Systems */
+/**********************/
 
 /**
  * The game canvas area, in drawing coordinates.
@@ -178,8 +180,6 @@ point draw_size();
  */
 rect draw_area();
 
-
-// TODO: revisit these for correctness and usefulness
 /**
  * Returns the size of the final render target. This is irrelevant
  * for most purposes. Use game_canvas_size() in stead.
@@ -197,9 +197,16 @@ rect output_area();
 point window_size();
 
 /**
- * Returns the size and location of the window's input area in pixels.
- * We use SDL_RendererSetLogicalSize to ensure this always matches
- * game_canvas(), but for clarity there are two separate functions.
+ * Returns the input area of the window, in display coordinates.
+ *
+ * This can be slightly offset within the window, if the drawable area
+ * is not the same as the full window area. This will happen if output
+ * size is not a perfect multiple of the draw size.
+ *
+ * In general this will be almost, but not quite, equal to window_size().
+ *
+ * input_area() represents the portion of the window corresponding to
+ * game_canvas().
  */
 rect input_area();
 

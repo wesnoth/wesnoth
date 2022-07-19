@@ -22,7 +22,7 @@
  * Contains functions for cleanly handling SDL input.
  */
 
-struct SDL_Point;
+struct point;
 
 namespace sdl
 {
@@ -36,7 +36,7 @@ uint32_t get_mouse_state(int *x, int *y);
 uint32_t get_mouse_button_mask();
 
 /** Returns the current mouse location in draw space. */
-SDL_Point get_mouse_location();
+point get_mouse_location();
 
 /**
  * Returns a bitmask of active modifier keys (ctrl, shift, alt, gui).
@@ -51,25 +51,5 @@ SDL_Point get_mouse_location();
  * @returns  A bitmask of SDL_Keymod values representing the active state.
  */
 unsigned get_mods();
-
-/**
- * Update the cached drawing area and input area sizes. These correspond to
- * the size of the drawing surface in pixels, and the size of the window in
- * display coordinates.
- *
- * This should be called every time the window is resized, or the pixel scale
- * multiplier changes.
- *
- * @param draw_width         The width of the drawing surface, in pixels
- * @param draw_height        The height of the drawing surface, in pixels
- * @param input_width        The width of the input surface, in display coordinates
- * @param input_height       The height of the input surface, in display coordinates
- */
-void update_input_dimensions(
-	int draw_width, int draw_height,
-	int input_width, int input_height
-);
-void update_input_dimensions(SDL_Point draw_size, SDL_Point input_size);
-
 
 } // namespace sdl
