@@ -762,18 +762,18 @@ static void convert_old_saves_1_11_0(config& cfg)
 
 	// if replay and snapshot are empty we've got a start of scenario save and don't want replay_start either
 	if(replay.empty() && snapshot.empty()) {
-		LOG_RG << "removing replay_start \n";
+		LOG_RG << "removing replay_start";
 		cfg.clear_children("replay_start");
 	}
 
 	// remove empty replay or snapshot so type of save can be detected more easily
 	if(replay.empty()) {
-		LOG_RG << "removing replay \n";
+		LOG_RG << "removing replay";
 		cfg.clear_children("replay");
 	}
 
 	if(snapshot.empty()) {
-		LOG_RG << "removing snapshot \n";
+		LOG_RG << "removing snapshot";
 		cfg.clear_children("snapshot");
 	}
 }

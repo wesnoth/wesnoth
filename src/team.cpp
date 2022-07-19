@@ -1032,7 +1032,7 @@ std::string team::get_side_highlight_pango(int side)
 
 void team::log_recruitable() const
 {
-	LOG_NG << "Adding recruitable units: \n";
+	LOG_NG << "Adding recruitable units:";
 	for(const std::string& recruit : info_.can_recruit) {
 		LOG_NG << recruit;
 	}

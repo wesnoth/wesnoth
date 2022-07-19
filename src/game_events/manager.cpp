@@ -94,7 +94,7 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 			<< " with the following actions:\n"
 			<< args.debug();
 	} else {
-		LOG_EH << "Content of failed event:\n" << handler.debug() << "\n";
+		LOG_EH << "Content of failed event:\n" << handler.debug();
 	}
 }
 

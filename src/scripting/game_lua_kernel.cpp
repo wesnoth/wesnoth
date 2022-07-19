@@ -4184,7 +4184,7 @@ static int intf_debug_ai(lua_State *L)
 		config cfg = ai::configuration::get_default_ai_parameters();
 
 		lua_engine = new ai::engine_lua(ai_context, cfg);
-		LOG_LUA << "Created new dummy lua-engine for debug_ai(). \n";
+		LOG_LUA << "Created new dummy lua-engine for debug_ai().";
 
 		//and add the dummy engine as a component
 		//to the manager, so we could use it later

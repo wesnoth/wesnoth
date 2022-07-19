@@ -226,20 +226,20 @@ void recruitment::execute() {
 	for (const unit_map::const_iterator& leader : leaders) {
 		const map_location& keep = leader->get_location();
 		if (!is_allowed_unit(*leader)) {
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not allowed recruiter. \n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not allowed recruiter.";
 			continue;
 		}
 		if (!resources::gameboard->map().is_keep(keep)) {
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep. \n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep.";
 			continue;
 		}
 		if (pathfind::find_vacant_castle(*leader) == map_location::null_location()) {
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " has no free hexes \n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " has no free hexes";
 			continue;
 		}
 		int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
 		if (current_team().gold() < cheapest_unit_cost && cheapest_unit_cost > 0) {
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " recruits are too expensive. \n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " recruits are too expensive.";
 			continue;
 		}
 
@@ -301,12 +301,12 @@ void recruitment::execute() {
 	}
 
 	if (leader_data.empty()) {
-		LOG_AI_RECRUITMENT << "No leader available for recruiting. \n";
+		LOG_AI_RECRUITMENT << "No leader available for recruiting.";
 		return;  // This CA is going to be blacklisted for this turn.
 	}
 
 	if (global_recruits.empty()) {
-		LOG_AI_RECRUITMENT << "All leaders have empty recruitment lists. \n";
+		LOG_AI_RECRUITMENT << "All leaders have empty recruitment lists.";
 		return;  // This CA is going to be blacklisted for this turn.
 	}
 
@@ -1546,7 +1546,7 @@ void recruitment::update_state() {
 	int spend_all_gold = get_recruitment_save_gold()["spend_all_gold"].to_int(-1);
 	if (spend_all_gold > 0 && current_team().gold() >= spend_all_gold) {
 		state_ = SPEND_ALL_GOLD;
-		LOG_AI_RECRUITMENT << "Changed state_ to SPEND_ALL_GOLD. \n";
+		LOG_AI_RECRUITMENT << "Changed state_ to SPEND_ALL_GOLD.";
 		return;
 	}
 	double ratio = get_unit_ratio();

@@ -489,7 +489,7 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 {
 	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
-	LOG_G << "setting language to  '" << language << "' \n";
+	LOG_G << "setting language to  '" << language << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().set_language(language);
 }

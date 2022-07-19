@@ -169,7 +169,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 	for (std::size_t idx = 0; idx < size(); ++idx)
 	{
-		DBG_PLG << "play_slice[" << idx << "] ... \n";
+		DBG_PLG << "play_slice[" << idx << "] ...";
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
 			DBG_PLG << "is running...";
 			if (!*local) {			//check playing_ before each call to be sure that we should still continue
