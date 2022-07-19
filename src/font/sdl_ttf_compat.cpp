@@ -139,7 +139,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+rect pango_draw_text(CVideo* video, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();
 
@@ -148,14 +148,17 @@ SDL_Rect pango_draw_text(CVideo* video, const SDL_Rect& area, int size, const co
 		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_width(-1)
-		 .set_maximum_height(area.h, true)
 		 .set_foreground_color(color)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
+
+	if(!area.empty()) {
+		ptext.set_maximum_height(area.h, true);
+	}
 
 	auto extents = ptext.get_size();
 	bool ellipsized = false;
 
-	if(extents.x > area.w) {
+	if(!area.empty() && extents.x > area.w) {
 		ptext.set_maximum_width(area.w);
 		ellipsized = true;
 	}
