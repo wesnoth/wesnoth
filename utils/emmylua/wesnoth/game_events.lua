@@ -26,12 +26,13 @@ function wesnoth.game_events.on_mouse_action(x, y) end
 function wesnoth.game_events.on_mouse_move(x, y) end
 
 ---@class event_filter
----@field condition WML
----@field side WML
----@field unit WML
----@field attack WML
----@field second_unit WML
----@field second_attack WML
+---@field formula string
+---@field condition WML|string
+---@field side WML|string
+---@field unit WML|string
+---@field attack WML|string
+---@field second_unit WML|string
+---@field second_attack WML|string
 
 ---@class game_event_options
 ---@field name string|string[] Event to handle, as a string or list of strings
@@ -39,6 +40,7 @@ function wesnoth.game_events.on_mouse_move(x, y) end
 ---@field menu_item boolean True if this is a menu item (an ID is required); this means removing the menu item will automatically remove this event. Default false.
 ---@field first_time_only boolean Whether this event should fire again after the first time; default true.
 ---@field filter WML|event_filter|fun(cfg:WML):boolean Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
+---@field filter_args WML Arbitrary data that will be passed to the filter, if it is a function. Ignored if the filter is specified as WML or a table.
 ---@field content WML The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
 ---@field action fun(cfg:WML) The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
 
