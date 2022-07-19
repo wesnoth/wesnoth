@@ -60,6 +60,10 @@ public:
 		: SDL_Rect{pos.x, pos.y, size.x, size.y}
 	{}
 
+	// subcomponent access
+	point pos() const { return {x, y}; }
+	point size() const { return {w, h}; }
+
 	// Comparisons
 	bool operator==(const rect& r) const;
 	bool operator==(const SDL_Rect& r) const;
