@@ -21,6 +21,7 @@
 #include "formatter.hpp"
 #include "game_display.hpp"
 #include "halo.hpp"
+#include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "picture.hpp"
@@ -34,8 +35,8 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 
-// Map of different energy bar surfaces and their dimensions.
-static std::map<surface, SDL_Rect> energy_bar_rects;
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
 
 namespace
 {
@@ -90,7 +91,7 @@ unit_drawer::unit_drawer(display & thedisp) :
 	assert(disp.team_valid());
 }
 
-SDL_Rect unit_drawer::scaled_to_zoom(const SDL_Rect& r) const
+rect unit_drawer::scaled_to_zoom(const rect& r) const
 {
 	return {r.x, r.y, int(r.w*zoom_factor), int(r.h*zoom_factor)};
 }
@@ -246,7 +247,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 	}
 	if (ellipse_back != nullptr) {
-		const SDL_Rect dest = scaled_to_zoom({
+		const rect dest = scaled_to_zoom({
 			xsrc, ysrc + adjusted_params.y - ellipse_floating,
 			ellipse_back.w(), ellipse_back.h()
 		});
@@ -256,7 +257,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	}
 
 	if (ellipse_front != nullptr) {
-		const SDL_Rect dest = scaled_to_zoom({
+		const rect dest = scaled_to_zoom({
 			xsrc, ysrc + adjusted_params.y - ellipse_floating,
 			ellipse_front.w(), ellipse_front.h()
 		});
@@ -282,8 +283,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 			yoff = cfg_offset_y.to_int();
 		}
 
-		const std::string* energy_file = &game_config::images::energy;
-
 		using namespace orb_status_helper;
 		std::unique_ptr<image::locator> orb_img = nullptr;
 		if(viewing_team_ref.is_enemy(side)) {
@@ -306,7 +305,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		if(orb_img != nullptr) {
 			const texture orb(image::get_texture(*orb_img));
-			const SDL_Rect dest = scaled_to_zoom({
+			const rect dest = scaled_to_zoom({
 				xsrc + xoff, ysrc + yoff + adjusted_params.y,
 				orb.w(), orb.h()
 			});
@@ -322,21 +321,21 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		const uint8_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? 255 : float_to_color(0.8);
 
-		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
+		draw_bar(xsrc + xoff + bar_shift, ysrc + yoff + adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
 
 		if(experience > 0 && can_advance) {
 			const double filled = static_cast<double>(experience) / static_cast<double>(max_experience);
 			const int xp_bar_height = static_cast<int>(max_experience * u.xp_bar_scaling() / std::max<int>(u.level(),1));
 
-			draw_bar(*energy_file, xsrc+xoff, ysrc+yoff+adjusted_params.y,
+			draw_bar(xsrc + xoff, ysrc + yoff + adjusted_params.y,
 				loc, xp_bar_height, filled, xp_color, bar_alpha);
 		}
 
 		if (can_recruit) {
 			const texture crown(image::get_texture(u.leader_crown()));
 			if(crown) {
-				const SDL_Rect dest = scaled_to_zoom({
+				const rect dest = scaled_to_zoom({
 					xsrc + xoff, ysrc + yoff + adjusted_params.y,
 					crown.w(), crown.h()
 				});
@@ -348,7 +347,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		for(const std::string& ov : u.overlays()) {
 			const texture ov_img(image::get_texture(ov));
 			if(ov_img) {
-				const SDL_Rect dest = scaled_to_zoom({
+				const rect dest = scaled_to_zoom({
 					xsrc + xoff, ysrc + yoff + adjusted_params.y,
 					ov_img.w(), ov_img.h()
 				});
@@ -407,76 +406,44 @@ void unit_drawer::redraw_unit (const unit & u) const
 	ac.refreshing_ = false;
 }
 
-void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, std::size_t height, double filled,
-		const color_t& col, uint8_t alpha) const
+void unit_drawer::draw_bar(int xpos, int ypos, const map_location& loc,
+		int height, double filled, const color_t& col, uint8_t alpha) const
 {
+	const std::string& bar_image = game_config::images::energy;
+	rect bar_loc = calculate_energy_bar(bar_image);
+	texture tex = image::get_texture(bar_image, image::HEXED);
+	filled = std::clamp(filled, 0.0, 1.0);
+	height = std::clamp(height, 0, bar_loc.h);
 
-	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
-	height = static_cast<std::size_t>(height*zoom_factor);
+	// TODO: highdpi - src clip region in texture?
+	// this only works because raw and draw sizes are the same here...
+	rect top{0, 0, tex.w(), bar_loc.y};
+	rect bot(0, bar_loc.y + bar_loc.h - height, tex.w(), 0);
+	bot.h = tex.h() - bot.y;
 
-	// TODO: highdpi - most of this function can be completely annihilated.
-	// TODO: highdpi - can't convert these to textures because calculate_energy_bar is insane. Fix.
-	surface surf = scale_surface_nn(
-		image::get_image(image, image::HEXED),
-		disp.hex_size(), disp.hex_size());
+	rect dest = scaled_to_zoom({xpos, ypos, top.w, top.h});
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex, top);
+	dest = scaled_to_zoom({xpos, ypos + int(top.h * zoom_factor), bot.w, bot.h});
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex, bot);
 
-	// We use UNSCALED because scaling (and bilinear interpolation)
-	// is bad for calculate_energy_bar.
-	// But we will do a geometric scaling later.
-	surface bar_surf(image::get_image(image));
-	if(surf == nullptr || bar_surf == nullptr) {
-		return;
-	}
-
-	// calculate_energy_bar returns incorrect results if the surface colors
-	// have changed (for example, due to bilinear interpolation)
-	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
-
-	SDL_Rect bar_loc;
-	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
-		bar_loc = unscaled_bar_loc;
-	else {
-		const int32_t xratio = fixed_point_divide(surf->w,bar_surf->w);
-		const int32_t yratio = fixed_point_divide(surf->h,bar_surf->h);
-		const SDL_Rect scaled_bar_loc {
-			    fixed_point_to_int(unscaled_bar_loc.x * xratio)
-			  , fixed_point_to_int(unscaled_bar_loc.y * yratio + 127)
-			  , fixed_point_to_int(unscaled_bar_loc.w * xratio + 255)
-			  , fixed_point_to_int(unscaled_bar_loc.h * yratio + 255)
-		};
-		bar_loc = scaled_bar_loc;
-	}
-
-	if(height > static_cast<std::size_t>(bar_loc.h)) {
-		height = bar_loc.h;
-	}
-
-	const std::size_t skip_rows = bar_loc.h - height;
-
-	rect top{0, 0, surf->w, bar_loc.y};
-	rect bot(0, bar_loc.y + skip_rows, surf->w, 0);
-	bot.h = surf->w - bot.y;
-
-	// TODO: highdpi - fix. see above
-	texture surf_tex(surf);
-
-	SDL_Rect dest{xpos, ypos, top.w, top.h};
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, surf_tex, top);
-	dest = {xpos, ypos + top.h, bot.w, bot.h};
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, surf_tex, bot);
-
-	std::size_t unfilled = static_cast<std::size_t>(height * (1.0 - filled));
+	int unfilled = height * (1.0 - filled);
 
 	if(unfilled < height && alpha >= float_to_color(0.3)) {
-		surface filled_surf(bar_loc.w, height - unfilled);
-		rect filled_area(0, 0, bar_loc.w, height-unfilled);
-		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, alpha));
-		dest = {xpos + bar_loc.x, ypos + bar_loc.y + int(unfilled),
-			filled_surf->w, filled_surf->h};
-		// TODO: highdpi - fix, see above
-		texture fs_tex(filled_surf);
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, fs_tex);
+		// display::blit_helper only supports drawing textures,
+		// however we can draw a rectangle by blitting a single-pixel image.
+		texture white = image::get_texture("misc/single-pixel.png");
+
+		// This would be much cleaner if we weren't placing things scaled.
+		dest = {
+			xpos + int(bar_loc.x * zoom_factor),
+			ypos + int((bar_loc.y + unfilled) * zoom_factor),
+			int(bar_loc.w * zoom_factor),
+			int((height - unfilled) * zoom_factor)
+		};
+
+		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, white)
+			.set_alpha(alpha)
+			.set_color(col);
 	}
 }
 
@@ -487,13 +454,18 @@ struct is_energy_color {
 												  (color&0x000000FF) < 0x00000010; }
 };
 
-// TODO: highdpi - this is insane, find another way of doing it.
-const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
+rect unit_drawer::calculate_energy_bar(const std::string& bar_image) const
 {
-	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects.find(surf);
-	if(i != energy_bar_rects.end()) {
-		return i->second;
+	// Cache the results here, per bar image
+	static std::map<std::string, rect> energy_bar_rects;
+
+	auto it = energy_bar_rects.find(bar_image);
+	if(it != energy_bar_rects.end()) {
+		return it->second;
 	}
+
+	// Cache miss, read the surface and figure out the bar location.
+	surface surf(image::get_surface(bar_image));
 
 	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
 
@@ -523,6 +495,7 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 			, last_col-first_col
 			, last_row+1-first_row
 	};
-	energy_bar_rects.emplace(surf, res);
-	return calculate_energy_bar(surf);
+	energy_bar_rects.emplace(bar_image, res);
+	LOG_DP << "calculated energy bar location: " << res;
+	return res;
 }
