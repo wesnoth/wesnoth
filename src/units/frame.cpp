@@ -691,8 +691,10 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 		}
 
 		if(w != 0 || h != 0) {
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc);
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc);
+			// TODO: unduplicate this code
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
+			const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
 			bool facing_west = (
 				direction == map_location::NORTH_WEST ||
@@ -703,27 +705,27 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 				direction == map_location::NORTH ||
 				direction == map_location::NORTH_EAST);
 
-			if(!current_data.auto_vflip) { facing_north = true; }
 			if(!current_data.auto_hflip) { facing_west = false; }
+			if(!current_data.auto_vflip) { facing_north = true; }
 
-			int my_x = x + current_data.x + d2 - w / 2;
-			int my_y = y + current_data.y + d2 - h / 2;
+			int my_x = x + disp_zoom * (current_data.x - w / 2);
+			int my_y = y + disp_zoom * (current_data.y - h / 2);
 
 			if(facing_west) {
-				my_x += current_data.directional_x;
+				my_x -= current_data.directional_x * disp_zoom;
 			} else {
-				my_x -= current_data.directional_x;
+				my_x += current_data.directional_x * disp_zoom;
 			}
 
 			if(facing_north) {
-				my_y += current_data.directional_y;
+				my_y += current_data.directional_y * disp_zoom;
 			} else {
-				my_y -= current_data.directional_y;
+				my_y -= current_data.directional_y * disp_zoom;
 			}
 
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
 			// invalidate our hexes and return whether or not was successful.
-			const SDL_Rect r {my_x, my_y, w, h};
+			const SDL_Rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 
 			result.insert(src);
