@@ -53,6 +53,13 @@ class top_level_drawable
 protected:
 	top_level_drawable();
 	virtual ~top_level_drawable();
+
+	// These make sure the TLD is registered.
+	top_level_drawable(const top_level_drawable&);
+	top_level_drawable& operator=(const top_level_drawable&);
+	top_level_drawable(top_level_drawable&&);
+	top_level_drawable& operator=(top_level_drawable&&);
+
 public:
 	/**
 	 * Update state and any parameters that may effect layout, or any of
