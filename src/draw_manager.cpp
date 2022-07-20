@@ -290,9 +290,10 @@ void raise_drawable(top_level_drawable* tld)
 static void tidy_drawables()
 {
 	// Remove all invalidated TLDs from the list.
-	DBG_DM << "tidying drawables";
+	DBG_DM << "tidying " << top_level_drawables_.size() << " drawables";
 	auto& vec = top_level_drawables_;
 	vec.erase(std::remove(vec.begin(), vec.end(), nullptr), vec.end());
+	DBG_DM << top_level_drawables_.size() << " after tidying";
 }
 
 } // namespace draw_manager
