@@ -41,6 +41,7 @@
 			<Add option="-Wunused-parameter" />
 			<Add option="-DHAVE_LIBPNG" />
 			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
+			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-D_WIN32_WINDOWS" />
 			<Add option="-D_WIN32_WINNT=0x0601" />
 			<Add option="-D_WIN32_IE=0x0601" />
@@ -69,6 +70,7 @@
 			<Add library="libpng" />
 			<Add library="libjpeg" />
 			<Add library="libwebp" />
+			<Add library="libbcrypt" />
 			<Add library="libboost_iostreams" />
 			<Add library="libboost_bzip2" />
 			<Add library="libboost_filesystem" />
