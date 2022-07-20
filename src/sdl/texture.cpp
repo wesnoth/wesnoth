@@ -80,6 +80,8 @@ texture::texture(const surface& surf, bool linear_interpolation)
 	}
 
 	w_ = surf->w; h_ = surf->h;
+
+	finalize();
 }
 
 texture::texture(int width, int height, SDL_TextureAccess access)
