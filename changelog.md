@@ -9,6 +9,7 @@
  ### Terrain
  ### Translations
  ### Units
+   * Added a variation to the Royal Guard portrait to fix an anachronism (issue #6431)
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
