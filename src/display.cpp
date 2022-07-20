@@ -1205,18 +1205,17 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 }
 
 display::blit_helper& display::drawing_buffer_add(const drawing_layer layer,
-		const map_location& loc, const SDL_Rect& dest, const texture& tex,
-		const SDL_Rect &clip)
+		const map_location& loc, const SDL_Rect& dest, const texture& tex)
 {
-	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex);
 	return drawing_buffer_.back();
 }
 
 display::blit_helper& display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, const SDL_Rect& dest,
-		const std::vector<texture> &tex, const SDL_Rect &clip)
+		const std::vector<texture> &tex)
 {
-	drawing_buffer_.emplace_back(layer, loc, dest, tex, clip);
+	drawing_buffer_.emplace_back(layer, loc, dest, tex);
 	return drawing_buffer_.back();
 }
 
@@ -1294,19 +1293,17 @@ void display::drawing_buffer_commit()
 
 	for(const blit_helper& blit : drawing_buffer_) {
 		for(texture tex : blit.tex()) {
-			const SDL_Rect& src = blit.clip();
 			if (blit.alpha_mod != SDL_ALPHA_OPAQUE) {
 				tex.set_alpha_mod(blit.alpha_mod);
 			}
 			if (blit.r_mod != 255 || blit.g_mod != 255 || blit.b_mod != 255) {
 				tex.set_color_mod(blit.r_mod, blit.g_mod, blit.b_mod);
 			}
-			// TODO: hwaccel - revist whether treating empty rect as full src clip is okay
-			draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+			draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
 			if (blit.highlight) {
 				tex.set_blend_mode(SDL_BLENDMODE_ADD);
 				tex.set_alpha_mod(blit.highlight);
-				draw::flipped(tex, blit.dest(), src, blit.hflip, blit.vflip);
+				draw::flipped(tex, blit.dest(), blit.hflip, blit.vflip);
 				tex.set_blend_mode(SDL_BLENDMODE_BLEND);
 			}
 			if (blit.r_mod != 255 || blit.g_mod != 255 || blit.b_mod != 255) {
@@ -1885,14 +1882,17 @@ bool display::scroll(int xmove, int ymove, bool force)
 		src.x -= diff_x;
 		src.y -= diff_y;
 
-		src *= video::get_pixel_scale();
-
 		// swap buffers
 		std::swap(front_, back_);
 
+		// Set the source region to blit from
+		back_.set_src(src);
+
 		// copy from the back to the front buffer
 		auto rts = draw::set_render_target(front_);
-		draw::blit(back_, dst, src);
+		draw::blit(back_, dst);
+
+		back_.clear_src();
 
 		// queue repaint
 		draw_manager::invalidate_region(map_area());
@@ -2579,11 +2579,9 @@ bool display::expose(const SDL_Rect& region)
 	}
 
 	// Blit from the pre-rendered front buffer.
-	// TODO: draw_manager - API to get src region in output space
-	rect src_region = region;
-	src_region *= video::get_pixel_scale();
-	//DBG_DP << "  src region " << src_region;
-	draw::blit(front_, region, src_region);
+	front_.set_src(region);
+	draw::blit(front_, region);
+	front_.clear_src();
 
 	// Render halos.
 	// TODO: draw_manager - halo render region not rely on clip?

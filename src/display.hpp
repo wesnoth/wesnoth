@@ -982,20 +982,17 @@ protected:
 		blit_helper(const blit_helper&) = delete;
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const SDL_Rect& dest, const texture& tex,
-				const SDL_Rect& clip)
-			: dest_(dest), tex_(1, tex), clip_(clip), key_(loc, layer)
+				const SDL_Rect& dest, const texture& tex)
+			: dest_(dest), tex_(1, tex), key_(loc, layer)
 		{}
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const SDL_Rect& dest, const std::vector<texture>& tex,
-				const SDL_Rect& clip)
-			: dest_(dest), tex_(tex), clip_(clip), key_(loc, layer)
+				const SDL_Rect& dest, const std::vector<texture>& tex)
+			: dest_(dest), tex_(tex), key_(loc, layer)
 		{}
 
 		const SDL_Rect& dest() const { return dest_; }
 		const std::vector<texture> &tex() const { return tex_; }
-		const SDL_Rect &clip() const { return clip_; }
 
 		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
@@ -1063,9 +1060,6 @@ protected:
 		SDL_Rect dest_;
 		/** One or more textures to render. */
 		std::vector<texture> tex_;
-		/** The portion of the source texture to use.
-		  * If omitted, the entire source is used. */
-		SDL_Rect clip_;
 		// TODO: could also add blend mode and rotation if desirable
 		/** Allows ordering of draw calls by layer and location. */
 		drawing_buffer_key key_;
@@ -1088,17 +1082,14 @@ public:
 	 *                           drawing order.
 	 * @param dest               The target destination on screen,
 	 *                           in drawing coordinates.
-	 * @param tex               The texture to use.
-	 * @param clip              The portion of the source texture to use.
+	 * @param tex                The texture to use.
 	 */
 	blit_helper& drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, const SDL_Rect& dest, const texture& tex,
-			const SDL_Rect &clip = SDL_Rect());
+			const map_location& loc, const SDL_Rect& dest, const texture& tex);
 
 	blit_helper& drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, const SDL_Rect& dest,
-			const std::vector<texture> &tex,
-			const SDL_Rect &clip = SDL_Rect());
+			const std::vector<texture> &tex);
 
 protected:
 

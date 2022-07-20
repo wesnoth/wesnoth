@@ -298,18 +298,6 @@ void draw::disc(int cx, int cy, int r, uint8_t octants)
 /*******************/
 
 
-void draw::blit(const texture& tex, const SDL_Rect& dst, const SDL_Rect& src)
-{
-	if (src == sdl::empty_rect) {
-		return draw::blit(tex, dst);
-	}
-
-	if (!tex) { DBG_D << "null blit"; return; }
-	DBG_D << "blit " << dst << " from " << src;
-
-	SDL_RenderCopy(renderer(), tex, &src, &dst);
-}
-
 void draw::blit(const texture& tex, const SDL_Rect& dst)
 {
 	if (dst == sdl::empty_rect) {
@@ -319,7 +307,7 @@ void draw::blit(const texture& tex, const SDL_Rect& dst)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit " << dst;
 
-	SDL_RenderCopy(renderer(), tex, nullptr, &dst);
+	SDL_RenderCopy(renderer(), tex, tex.src(), &dst);
 }
 
 void draw::blit(const texture& tex)
@@ -327,7 +315,7 @@ void draw::blit(const texture& tex)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit";
 
-	SDL_RenderCopy(renderer(), tex, nullptr, nullptr);
+	SDL_RenderCopy(renderer(), tex, tex.src(), nullptr);
 }
 
 
@@ -338,25 +326,6 @@ static SDL_RendererFlip get_flip(bool flip_h, bool flip_v)
 		static_cast<int>(flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE)
 		| static_cast<int>(flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE)
 	);
-}
-
-void draw::flipped(
-	const texture& tex,
-	const SDL_Rect& dst,
-	const SDL_Rect& src,
-	bool flip_h,
-	bool flip_v)
-{
-	if (src == sdl::empty_rect) {
-		return draw::flipped(tex, dst, flip_h, flip_v);
-	}
-
-	if (!tex) { DBG_D << "null flipped"; return; }
-	DBG_D << "flipped (" << flip_h << '|' << flip_v
-	      << ") to " << dst << " from " << src;
-
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderCopyEx(renderer(), tex, &src, &dst, 0.0, nullptr, flip);
 }
 
 void draw::flipped(
@@ -374,7 +343,7 @@ void draw::flipped(
 	      << ") to " << dst;
 
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderCopyEx(renderer(), tex, nullptr, &dst, 0.0, nullptr, flip);
+	SDL_RenderCopyEx(renderer(), tex, tex.src(), &dst, 0.0, nullptr, flip);
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
@@ -383,7 +352,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
 	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderCopyEx(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
+	SDL_RenderCopyEx(renderer(), tex, tex.src(), nullptr, 0.0, nullptr, flip);
 }
 
 
