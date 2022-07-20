@@ -1,6 +1,4 @@
-## Version 1.17.5+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.6
  ### Campaigns
    * The South Guard
      * S4: Fixed replay OOS on victory event (issue #6832)
@@ -8,8 +6,6 @@
      * S8: Fixed replay OOS on victory event (issue #6267)
    * World Conquest
      * Fixed Bezoar artifact being bugged and broken.
- ### Editor
- ### Multiplayer
  ### Lua API
    * New `wesnoth.interface.screen_fade` function applies an overlay colour to the game display, fading over the given duration (PR #6864).
    * New functions have been added to register game events from Lua: `wesnoth.game_events.add`, `wesnoth.game_events.add_menu`, `wesnoth.game_events.add_repeating`, `wesnoth.game_events.add_wml`.
@@ -25,14 +21,12 @@
    * Increased minimum required version of SDL to 2.0.22 and the minimum required OS version to 10.12 for macOS due to needing the fix https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30.
  ### Rendering Engine
    * Large changes have been made to Wesnoth's rendering engine, enabling hardware acceleration for the majority of components and resolving many long-standing issues. Performance should be greatly increased, and CPU and GPU usage greatly decreased in almost all situations. Issues confirmed resolved: #1291, #1350, #1605, #1755, #2059, #2458, #2618, #2865, #3238, #3255, #3421, #3592, #3798, #3937, #3942, #4210, #4460, #4877, #5115, #5420, #5494.
- ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Swedish
  ### Units
    * Fixed Warden’s and Arbiter’s animations popping on water tiles (issue #6508)
    * Updated some Loyalist sprites: Sergeant, Lieutenant, Swordsman, Pikeman, Royal Guard, Halberdier
    * Animations for Nightgaunt
- ### User interface
  ### WML Engine
    * A new interface action `[screen_fade]` provides a smooth screen fade effect which also covers units (issue #6745).
    * Events now support filter conditions using the Wesnoth Formula Language with a new `filter_formula` key.
