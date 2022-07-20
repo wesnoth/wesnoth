@@ -228,21 +228,23 @@ void textbox::draw_contents()
 			}
 		}
 
-		// text may be rendered at high dpi, scale source clip accordingly
-		src *= video::get_pixel_scale();
-		// TODO: highdpi - consider sizing source clip in draw coordinates, now that textures have a draw-space w/h? That would work here.
+		// Set the source region on the texture.
+		text_image_.set_src(src);
 
 		if(enabled()) {
-			draw::blit(text_image_, dest, src);
+			draw::blit(text_image_, dest);
 		} else {
 			// HACK: using 30% opacity allows white text to look as though it is grayed out,
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
 			text_image_.set_alpha_mod(76);
-			draw::blit(text_image_, dest, src);
+			draw::blit(text_image_, dest);
 			text_image_.set_alpha_mod(255);
 		}
+
+		// This doesn't really need to be cleared, but why not.
+		text_image_.clear_src();
 	}
 
 	draw_cursor(cursor_pos_ == 0 ? 0 : cursor_pos_ - 1);

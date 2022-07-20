@@ -218,10 +218,7 @@ void disc(int x, int y, int r, uint8_t octants = 0xff);
  * @param dst       The target location to copy the texture to,
  *                  in low-resolution game-native drawing coordinates.
  *                  If null, this fills the entire render target.
- * @param src       The portion of the texture to copy.
- *                  If null, this copies the entire texture.
  */
-void blit(const texture& tex, const SDL_Rect& dst, const SDL_Rect& src);
 void blit(const texture& tex, const SDL_Rect& dst);
 void blit(const texture& tex);
 
@@ -235,17 +232,9 @@ void blit(const texture& tex);
  * @param dst       The target location to copy the texture to,
  *                  in low-resolution game-native drawing coordinates.
  *                  If not given, the entire render target will be filled.
- * @param src       The portion of the texture to copy.
- *                  If null or not given, the entire texture will be copied.
  * @param flip_h    Whether to flip/mirror the texture horizontally.
  * @param flip_v    Whether to flip/mirror the texture vertically.
  */
-void flipped(const texture& tex,
-	const SDL_Rect& dst,
-	const SDL_Rect& src,
-	bool flip_h = true,
-	bool flip_v = false
-);
 void flipped(const texture& tex,
 	const SDL_Rect& dst,
 	bool flip_h = true,

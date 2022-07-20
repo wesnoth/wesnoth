@@ -15,6 +15,7 @@
 #pragma once
 
 #include "sdl/point.hpp"
+#include "sdl/rect.hpp"
 
 #include <SDL2/SDL_hints.h>
 #include <SDL2/SDL_render.h>
@@ -22,7 +23,6 @@
 #include <memory>
 
 class surface;
-struct point;
 struct color_t;
 
 /**
@@ -33,9 +33,12 @@ class texture
 {
 public:
 	/** Default ctor. Texture will be a nullptr. */
-	texture();
+	texture() = default;
 
-	texture(const texture&) = default;
+	// No other standard constructors need to be defined. See: Rule of Zero.
+	// However if you are implementing one... See: Rule of Five.
+	// There is potential to optimize copy and move by ignoring src_,
+	// however it is unlikely that this is a significant burden as-is.
 
 	/** Assigns the given texture to this one. */
 	explicit texture(SDL_Texture* txt);
@@ -54,6 +57,11 @@ public:
 
 	/** Construct a texture of the specified size and access type. */
 	texture(int w, int h, SDL_TextureAccess access);
+
+
+	/********************/
+	/* raw texture info */
+	/********************/
 
 	/** Small wrapper that queries metadata about the provided texture. */
 	struct info
@@ -81,6 +89,11 @@ public:
 	/** The raw internal texture size.
 	  * Equivalent to point{get_info().w, get_info().h} */
 	point get_raw_size() const;
+
+
+	/*************/
+	/* draw size */
+	/*************/
 
 	/**
 	 * The draw-space width of the texture, in pixels.
@@ -118,6 +131,46 @@ public:
 	void set_draw_size(int w, int h) { w_ = w; h_ = h; }
 	void set_draw_size(const point& p);
 
+
+	/*****************/
+	/* source region */
+	/*****************/
+
+	/**
+	 * A pointer to a rect indicating the source region of the underlying
+	 * SDL_Texture to be used when drawing.
+	 *
+	 * If null, the whole SDL_Texture should be used.
+	 *
+	 * It should generally not be queried directly. Set it using set_src()
+	 * or set_src_raw(). Clear it using clear_src().
+	 */
+	const rect* src() const { return has_src_ ? &src_ : nullptr; }
+
+	/**
+	 * Set the source region of the texture used for drawing operations.
+	 *
+	 * This function operates in draw-space, and will be clipped to
+	 * {0, 0, w(), h()}.
+	 */
+	void set_src(const rect& r);
+
+	/**
+	 * Set the source region of the texture used for drawing operations.
+	 *
+	 * This function operates in texture-space, and will be clipped to
+	 * {0, 0, get_raw_size().x, get_raw_size().y}.
+	 */
+	void set_src_raw(const rect& r);
+
+	/** Clear the source region. */
+	void clear_src() { has_src_ = false; }
+
+
+	/**********************/
+	/* texture properties */
+	/**********************/
+
 	/** Alpha modifier. Multiplies alpha when drawing. */
 	void set_alpha_mod(uint8_t alpha);
 	uint8_t get_alpha_mod();
@@ -142,11 +195,6 @@ public:
 
 	SDL_Texture* get() const { return texture_.get(); }
 
-	texture& operator=(const texture& t) = default;
-
-	/** Move assignment. Releases ownership of the managed texture from the passed object. */
-	texture& operator=(texture&& t);
-
 	/** Texture comparisons explicitly only care about the pointer value. */
 	bool operator==(const texture& t) const { return get() == t.get(); }
 
@@ -163,8 +211,11 @@ public:
 private:
 	void finalize();
 
-	std::shared_ptr<SDL_Texture> texture_;
-	int w_, h_;
+	std::shared_ptr<SDL_Texture> texture_ = nullptr;
+	int w_ = 0;
+	int h_ = 0;
+	bool has_src_ = false; /**< true iff the source rect is valid */
+	rect src_; /**< uninitialized by default. */
 };
 
 /**

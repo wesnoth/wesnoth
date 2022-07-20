@@ -32,18 +32,10 @@ void cleanup_texture(SDL_Texture* t)
 {
 	if(t != nullptr) {
 		SDL_DestroyTexture(t);
-		;
 	}
 }
 
 } // namespace
-
-texture::texture()
-	: texture_(nullptr)
-	, w_(0)
-	, h_(0)
-{
-}
 
 texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
@@ -134,6 +126,28 @@ void texture::set_draw_size(const point& p)
 	h_ = p.y;
 }
 
+void texture::set_src(const rect& r)
+{
+	rect dsrc = r.intersect({0, 0, w_, h_});
+	point rsize = get_raw_size();
+	if (draw_size() == rsize) {
+		src_ = dsrc;
+	} else {
+		src_.x = (dsrc.x * rsize.x) / w_;
+		src_.y = (dsrc.y * rsize.y) / h_;
+		src_.w = (dsrc.w * rsize.x) / w_;
+		src_.h = (dsrc.h * rsize.y) / h_;
+	}
+	has_src_ = true;
+}
+
+void texture::set_src_raw(const rect& r)
+{
+	rect max = {{}, get_raw_size()};
+	src_ = r.intersect(max);
+	has_src_ = true;
+}
+
 void texture::set_alpha_mod(uint8_t alpha)
 {
 	if (texture_) {
@@ -197,6 +211,7 @@ void texture::reset()
 		texture_.reset();
 	}
 	w_ = 0; h_ = 0;
+	has_src_ = false;
 }
 
 void texture::reset(int width, int height, SDL_TextureAccess access)
@@ -216,6 +231,7 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 	}
 
 	w_ = width; h_ = height;
+	has_src_ = false;
 
 	finalize();
 }
@@ -229,14 +245,7 @@ void texture::assign(SDL_Texture* t)
 		w_ = 0;
 		h_ = 0;
 	}
-}
-
-texture& texture::operator=(texture&& t)
-{
-	texture_ = std::move(t.texture_);
-	w_ = t.w_;
-	h_ = t.h_;
-	return *this;
+	has_src_ = false;
 }
 
 texture::info::info(SDL_Texture* t)

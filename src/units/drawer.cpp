@@ -415,16 +415,17 @@ void unit_drawer::draw_bar(int xpos, int ypos, const map_location& loc,
 	filled = std::clamp(filled, 0.0, 1.0);
 	height = std::clamp(height, 0, bar_loc.h);
 
-	// TODO: highdpi - src clip region in texture?
-	// this only works because raw and draw sizes are the same here...
 	rect top{0, 0, tex.w(), bar_loc.y};
 	rect bot(0, bar_loc.y + bar_loc.h - height, tex.w(), 0);
 	bot.h = tex.h() - bot.y;
 
 	rect dest = scaled_to_zoom({xpos, ypos, top.w, top.h});
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex, top);
+	tex.set_src(top);
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex);
 	dest = scaled_to_zoom({xpos, ypos + int(top.h * zoom_factor), bot.w, bot.h});
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex, bot);
+	tex.set_src(bot);
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, dest, tex);
+	tex.clear_src();
 
 	int unfilled = height * (1.0 - filled);
 
