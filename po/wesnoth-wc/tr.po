@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
 "PO-Revision-Date: 2022-01-06 04:19+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: none\n"
@@ -18,81 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
-msgid "Max HP bonus +6%"
-msgstr "Azami YP ödülü +%6"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
-msgid "heroic"
-msgstr "kahramanlık"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:7
-msgid "female^heroic"
-msgstr "kahramanlık"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:10
-msgid "expert"
-msgstr "uzman"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:13
-msgid "female^expert"
-msgstr "uzman"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:16
-msgid "epic"
-msgstr "destansı"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:19
-msgid "female^epic"
-msgstr "destansı"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:22
-msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
-msgstr "SSST ile 60 TP azami sağlığı daima 6 YP yükseltir."
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:25
-msgid "legendary"
-msgstr "efsanevi"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:28
-msgid "female^legendary"
-msgstr "efsanevi"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:31
-msgid "Special advancement to Chocobone enabled."
-msgstr "Atlı İskelete özel terfi etkinleşti."
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:34
-msgid "Special advancement to Goblin Pillager enabled."
-msgstr "Goblin Yağmacıya özel terfi etkinleşti."
-
-#. [multiplayer_side]: id=The_Artisans, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
-msgid "The Artisans"
-msgstr "İttifak"
-
-#. [multiplayer_side]: id=The_Defiance, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
-msgid "The Defiance"
-msgstr "İttifak"
-
-#. [multiplayer_side]: id=The_Marauders, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
-msgid "The Marauders"
-msgstr "Ordu"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:7
+#. [era]: id=world_conquest_era
+#: data/campaigns/World_Conquest/_main.cfg:41
 msgid "World Conquest"
 msgstr "Dünyanın Fethi"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:10
+#. [era]: id=world_conquest_era
+#: data/campaigns/World_Conquest/_main.cfg:42
 msgid ""
 "Units are defined as pairs in recruit list: Every time a unit is recruited, "
 "it is replaced by its pair. This era is designed to be balanced playing "
@@ -106,62 +38,192 @@ msgstr ""
 "Çiftlerin durumu hakkında bilgi edinmek için oyun içi yardıma boş bir "
 "altıgene sağ tıklayarak erişebilirsiniz."
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:14
-msgid "The Horde"
-msgstr "Ordu"
+#. [trait]: id=heroic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:57
+msgid "heroic"
+msgstr "kahramanlık"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:17
+#. [trait]: id=heroic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:58
+msgid "female^heroic"
+msgstr "kahramanlık"
+
+#. [trait]: id=expert
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:95
+msgid "expert"
+msgstr "uzman"
+
+#. [trait]: id=expert
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:96
+msgid "female^expert"
+msgstr "uzman"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:112
+msgid "epic"
+msgstr "destansı"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:113
+msgid "female^epic"
+msgstr "destansı"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:114
+msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
+msgstr "SSST ile 60 TP azami sağlığı daima 6 YP yükseltir."
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+msgid "Max HP bonus +6%"
+msgstr "Azami YP ödülü +%6"
+
+#. [trait]: id=legendary_zombie
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:165
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:209
+msgid "legendary"
+msgstr "efsanevi"
+
+#. [trait]: id=legendary_zombie
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:166
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:210
+msgid "female^legendary"
+msgstr "efsanevi"
+
+#. [trait]: id=legendary_zombie
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:167
+msgid "Special advancement to Chocobone enabled."
+msgstr "Atlı İskelete özel terfi etkinleşti."
+
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:211
+msgid "Special advancement to Goblin Pillager enabled."
+msgstr "Goblin Yağmacıya özel terfi etkinleşti."
+
+#. [multiplayer_side]: id=The Alliance, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:6
 msgid "The Alliance"
 msgstr "İttifak"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:20
-msgid "The Guild"
-msgstr "Lonca"
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:16
+msgid "Young Ogre, Undead and Northerners"
+msgstr ""
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:23
-msgid "The Trust"
-msgstr "Tekel"
+#. [multiplayer_side]: id=The_Artisans, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Artisans"
+msgstr "İttifak"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:26
-msgid "The Gang"
-msgstr "Çete"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:29
+#. [multiplayer_side]: id=The Cult, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
 msgid "The Cult"
 msgstr "Kült"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:32
-msgid "The Militia"
-msgstr "Milis"
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:16
+msgid "Young Ogre, Drakes and Northerners"
+msgstr ""
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:35
-msgid "The Scourge"
-msgstr "Bela"
+#. [multiplayer_side]: id=The_Defiance, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Defiance"
+msgstr "İttifak"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:38
-msgid "The Hand"
-msgstr "El"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:41
+#. [multiplayer_side]: id=The Empire, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
 msgid "The Empire"
 msgstr "İmparatorluk"
 
+#. [multiplayer_side]: id=The Gang, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:6
+msgid "The Gang"
+msgstr "Çete"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:16
+msgid "Dune Herbalist, Loyalists and Knalgan Alliance"
+msgstr ""
+
+#. [multiplayer_side]: id=The Guild, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:6
+msgid "The Guild"
+msgstr "Lonca"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:16
+msgid "Dune Soldier, Loyalists and Drakes"
+msgstr ""
+
+#. [multiplayer_side]: id=The Hand, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:6
+msgid "The Hand"
+msgstr "El"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+msgid "Dune Rider, Knalgan Alliance and Drakes"
+msgstr ""
+
+#. [multiplayer_side]: id=The Horde, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:6
+msgid "The Horde"
+msgstr "Ordu"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:16
+msgid "Dune Rider, Knalgan Alliance and Rebels"
+msgstr ""
+
+#. [multiplayer_side]: id=The_Marauders, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
+#, fuzzy
+#| msgid "The Horde"
+msgid "The Marauders"
+msgstr "Ordu"
+
+#. [multiplayer_side]: id=The Militia, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
+msgid "The Militia"
+msgstr "Milis"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:16
+msgid "Dune Rover, Undead and Loyalists"
+msgstr ""
+
+#. [multiplayer_side]: id=The Scourge, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Scourge.cfg:7
+msgid "The Scourge"
+msgstr "Bela"
+
+#. [multiplayer_side]: id=The Trust, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Trust.cfg:7
+msgid "The Trust"
+msgstr "Tekel"
+
 #. [label]: id=title
 #. [lua]: root_node.on_modified
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:236
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:234
 msgid "WoCopedia"
 msgstr "Düfepedi"
 
 #. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Ayarlar"
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:670
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
 msgid "Difficulty"
 msgstr "Zorluk"
 
@@ -253,12 +315,12 @@ msgid "You are not using a WC2 faction."
 msgstr "Bir DF2 birliği kullanmıyorsunuz."
 
 #. [lua]: artifacts.give_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:148
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:156
 msgid "I cannot pick up that item."
 msgstr "Bu öğeyi seçemedim."
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:230
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:238
 msgid "Remind me what this item does"
 msgstr "Bu öğenin ne işe yaradığını bana hatırlat"
 
@@ -2427,18 +2489,18 @@ msgstr " (oyuncular için değil)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:128
+#: data/campaigns/World_Conquest/lua/map/main.lua:122
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "Başlangıç"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:130
+#: data/campaigns/World_Conquest/lua/map/main.lua:124
 msgid "Scenario"
 msgstr "Senaryo"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:132
+#: data/campaigns/World_Conquest/lua/map/main.lua:126
 msgid "Final Battle"
 msgstr "Son Çarpışma"
 
@@ -2734,126 +2796,22 @@ msgstr "Düşmanlar"
 msgid "Allies"
 msgstr "Müttefikler"
 
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
-msgid "Preset Advancement"
-msgstr "Ön Ayarlı İlerleme"
-
-#. [lua]: wesnoth.wml_actions.wc2_pya_pick
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:41
-msgid ""
-"Currently I’m set to advance towards: $name \n"
-"\n"
-"What are your new orders?"
-msgstr ""
-"Şimdilik şuna doğru terfi ettirdim: $name \n"
-"\n"
-"Yeni emirler nedir?"
-
-#. [lua]: wesnoth.wml_actions.wc2_pya_pick
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:48
-msgid "Random"
-msgstr "Rastgele"
-
 #: data/campaigns/World_Conquest/lua/optional_mechanics/unitmarker.lua:12
 msgid "Special Overlay"
 msgstr "Özel Katman"
 
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:6
-msgid " and "
-msgstr " ve "
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
-msgid "damage"
-msgstr "hasar"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:12
-msgid " resistance vs "
-msgstr " direnç vs "
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:15
-msgid "moves"
-msgstr "hamleler"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:18
-msgid "strike"
-msgstr "vuruş"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:21
-msgid "XP to advance"
-msgstr "Terfi için TP"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:308
-msgid "$range|: $special|"
-msgstr "$range|: $special|"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:522
-msgid "+$boost| moves"
-msgstr "+$boost| hareket"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:536
-msgid "$range|: +$boost| damage"
-msgstr "$range|: +$boost| hasar"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:552
-msgid "$range|: +1 damage per level"
-msgstr "$range|: +1 seviye başına hasar"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:568
-msgid "+$hitpoints| hitpoints"
-msgstr "+$hitpoints| yaşam puanı"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:583
-msgid "+$hitpoints| hitpoints per level"
-msgstr "+$hitpoints| seviye başına hayat puanı"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:599
-msgid "$value| XP to advance"
-msgstr "Terfi için $value| TP"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:623
-msgid "Village/Castle: +5 defense"
-msgstr "Köy/Kale: +5 savunma"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:655
-msgid ""
-"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
-msgstr ""
-"$terrain|: +$def| savunma ve tam hareket, $dmg_type| türünde +$res| direnç"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:684
-msgid "$terrain|: +10 defense and full movement"
-msgstr "$terrain|: +10 savunma ve tam hareket"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:695
-msgid "+moves defense"
-msgstr "+hareket savunma"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:705
-msgid "melee: optional charge"
-msgstr "yakın dövüş: seçimlik ücret"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:730
-msgid "$range|: arcane and +25% damage"
-msgstr "$range|: gizemli ve +%25 hasar"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:4
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:7
 msgid "Adamant armor"
 msgstr "Adamant zırh"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:7
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
+msgid "blade/impact/pierce: up to 10% resistances, steadfast"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:10
 msgid ""
 "The sturdy plates of this lightweight armor increase the user’s physical "
 "resistances (to a maximum of 10%) and grants the steadfast ability."
@@ -2861,11 +2819,18 @@ msgstr ""
 "Bu hafif zırhın sağlam plakaları, kullanıcının fiziksel direncini (en fazla "
 "%10'a kadar) artırır ve sarsılmaz yeteneği verir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:10
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:28
 msgid "Assassin’s ring"
 msgstr "Suikastçı yüzüğü"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:13
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:30
+msgid "melee: backstab"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:31
 msgid ""
 "This plain ring with a pleasantly smooth and slippery surface gives its "
 "owner unmatched sneak attacking skills."
@@ -2873,11 +2838,22 @@ msgstr ""
 "Hoş bir şekilde pürüzsüz ve kaygan bir yüzeye sahip bu sade yüzük, sahibine "
 "eşsiz sinsi saldırı becerileri kazandırır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:16
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:47
 msgid "Azure pearl"
 msgstr "Mavi inci"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:19
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:49
+msgid ""
+"Full movement and up to 60% defense in water or swamp and up to 70% defense "
+"in reef."
+msgstr ""
+"Suda veya bataklıkta tam hareket ve %60'a kadar savunma ve kıyıda %70'e "
+"kadar savunma."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:50
 msgid ""
 "This wondrous gem lets the bearer breathe and move through water as if it "
 "was air, strongly improving their mobility in water and granting the "
@@ -2887,11 +2863,18 @@ msgstr ""
 "soluyormuş gibi hareket etmesini sağlar, sudaki hareketlerini güçlü bir "
 "şekilde geliştirir ve suya dalma kabiliyeti verir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:22
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:80
 msgid "Bezoar"
 msgstr "Antidot"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:25
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
+msgid "fearless, undead, healthy, tenacity"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
 msgid ""
 "This shamanic totem protects from poison, drain, and plague. Bearers of the "
 "totem are immune to fear and their vulnerabilities are reduced."
@@ -2899,11 +2882,18 @@ msgstr ""
 "Bu şamanik totem, zehir, akıntı ve vebadan korur. Totem taşıyıcıları korkuya "
 "karşı bağışıktır ve savunmasızlıkları azalır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:28
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:96
 msgid "Blood ring"
 msgstr "Kan yüzüğü"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:31
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:98
+msgid "melee: drains"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:99
 msgid ""
 "This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
@@ -2911,88 +2901,20 @@ msgstr ""
 "Bu yanıp sönen yüzük, taşıyıcının yakın dövüş saldırılarını, kurbanlarından "
 "yaşam gücü sömürme yeteneği ile güçlendirir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:34
-msgid "Cursed symbol of life"
-msgstr "Lanetli yaşam sembolü"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:37
-msgid ""
-"This vampiric amulet allows a unit to drain enemy life from a safe distance."
-msgstr ""
-"Bu vampir tılsımı, bir birimin düşmanın canını güvenli bir mesafeden "
-"sömürmesini sağlar."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:40
-msgid "Eagle eye longbow"
-msgstr "Kartal göz uzunyay"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:43
-msgid ""
-"This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
-"precision and increased damage."
-msgstr ""
-"Bu büyülü uzun yay, sahibinin menzilli saldırılarını esrarengiz bir "
-"hassasiyet ve artırılmış hasar ile güçlendirir."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:46
-msgid "Forbidden grimoire"
-msgstr "Yasak büyü kitabı"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:49
-msgid ""
-"This unholy manual gives the user the arcane knowledge to resurrect enemies "
-"slain in melee combat as the walking dead."
-msgstr ""
-"Bu kötücül kılavuz, kullanıcıya yakın dövüşte katledilen düşmanları yürüyen "
-"ölüler olarak diriltmek için gizli bilgiler verir."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:52
-msgid "Forcefield"
-msgstr "Güçalanı"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:55
-msgid "adjacent enemies do 13% less damage"
-msgstr "yanındaki düşmanlar %13 daha az hasar verir"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:58
-msgid ""
-"Charged with intense magic, this shield generates a forcefield causing "
-"adjacent enemies to inflict less damage around the wielder."
-msgstr ""
-"Yoğun sihirle dolu bu kalkan, bir güç alanı oluşturarak yanındaki "
-"düşmanların, daha az hasar vermesine neden olur."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:61
-msgid "Ghast’s marrow"
-msgstr "Ceset Yiyen iliği"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:64
-msgid ""
-"This grisly concoction instills the drinker with an insatiable unholy hunger "
-"for more blood. Every time a foe is slain, a part of his lifeforce is "
-"eternally claimed through arcane ghoulish powers."
-msgstr ""
-"Bu ürkütücü karışım, içene daha fazla kan için doyumsuz, kutsal olmayan bir "
-"açlık aşılar. Ne zaman bir düşman öldürülse, yaşam gücünün bir kısmı sürekli "
-"gizemli gulyabani güçler tarafından sömürülür."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:67
-msgid "Root of the Elder Wose"
-msgstr "Yaşlı Ulu Ağaç Kökü"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
-msgid ""
-" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
-msgstr " Cücelerin dövdüğü, bu kör silah Ulu Ağacın ezici gücünü taklit eder."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:115
 msgid "Cruel spike"
 msgstr "Zalim çivi"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:76
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
+#, fuzzy
+#| msgid "melee: optional charge"
+msgid "melee: charge"
+msgstr "yakın dövüş: seçimlik ücret"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
 msgid ""
 "This enchanted spear drives the owner to commit himself to his rage. A "
 "unit’s melee strikes are doubled in power when attacking, but the same is "
@@ -3002,11 +2924,129 @@ msgstr ""
 "saldırılarının gücü saldırırken iki katına çıkar, ancak aynısı savunucunun "
 "misilleme saldırısı için de geçerlidir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:79
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:134
+msgid "Cursed symbol of life"
+msgstr "Lanetli yaşam sembolü"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
+msgid "ranged: drains"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:137
+msgid ""
+"This vampiric amulet allows a unit to drain enemy life from a safe distance."
+msgstr ""
+"Bu vampir tılsımı, bir birimin düşmanın canını güvenli bir mesafeden "
+"sömürmesini sağlar."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:153
+msgid "Eagle eye longbow"
+msgstr "Kartal göz uzunyay"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
+#, fuzzy
+#| msgid "$range|: arcane and +25% damage"
+msgid "ranged: marksman and +25% damage"
+msgstr "$range|: gizemli ve +%25 hasar"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
+msgid ""
+"This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
+"precision and increased damage."
+msgstr ""
+"Bu büyülü uzun yay, sahibinin menzilli saldırılarını esrarengiz bir "
+"hassasiyet ve artırılmış hasar ile güçlendirir."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:177
+msgid "Forbidden grimoire"
+msgstr "Yasak büyü kitabı"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
+#, fuzzy
+#| msgid "melee: optional charge"
+msgid "melee: plague"
+msgstr "yakın dövüş: seçimlik ücret"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
+msgid ""
+"This unholy manual gives the user the arcane knowledge to resurrect enemies "
+"slain in melee combat as the walking dead."
+msgstr ""
+"Bu kötücül kılavuz, kullanıcıya yakın dövüşte katledilen düşmanları yürüyen "
+"ölüler olarak diriltmek için gizli bilgiler verir."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:197
+msgid "Forcefield"
+msgstr "Güçalanı"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:199
+msgid "adjacent enemies do 13% less damage"
+msgstr "yanındaki düşmanlar %13 daha az hasar verir"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:200
+msgid ""
+"Charged with intense magic, this shield generates a forcefield causing "
+"adjacent enemies to inflict less damage around the wielder."
+msgstr ""
+"Yoğun sihirle dolu bu kalkan, bir güç alanı oluşturarak yanındaki "
+"düşmanların, daha az hasar vermesine neden olur."
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:209
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:210
+msgid "forcefield"
+msgstr "güç alanı"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:211
+msgid "Adjacent enemies do 13% less damage."
+msgstr "Komşu düşmanlar %13 daha az hasar verir."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:226
+msgid "Ghast’s marrow"
+msgstr "Ceset Yiyen iliği"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:228
+msgid "feeding, +3 HP"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:229
+msgid ""
+"This grisly concoction instills the drinker with an insatiable unholy hunger "
+"for more blood. Every time a foe is slain, a part of his lifeforce is "
+"eternally claimed through arcane ghoulish powers."
+msgstr ""
+"Bu ürkütücü karışım, içene daha fazla kan için doyumsuz, kutsal olmayan bir "
+"açlık aşılar. Ne zaman bir düşman öldürülse, yaşam gücünün bir kısmı sürekli "
+"gizemli gulyabani güçler tarafından sömürülür."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "Heart of fire"
 msgstr "Ateşin kalbi"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:82
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:252
+msgid "melee: fire and +25% damage, +30 resistance vs fire"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:253
 msgid ""
 "This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
@@ -3014,11 +3054,18 @@ msgstr ""
 "Bu sihirli küre, kullanıcının yakın dövüş saldırılarının hasar türünü "
 "değiştirerek ateşli güçle besler. Ayrıca ateşe dayanıklılığı da artırır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:85
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:270
 msgid "Herald armor"
 msgstr "Hanedan zırhı"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:88
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:272
+msgid "illuminates, lawful, heals +4, firststrike"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:273
 msgid ""
 "This holy armor of thin gold radiates pure light, illuminating the bearer’s "
 "body and soul. This effect will heal allies, blind evil, and preemptively "
@@ -3028,11 +3075,18 @@ msgstr ""
 "ruhunu aydınlatır. Bu etki müttefikleri iyileştirecek, kötülüğü kör edecek "
 "ve zarar vermek isteyenleri önceden cezalandıracaktır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:91
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:308
 msgid "Holy water"
 msgstr "Okunmuş su"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:94
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
+msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:311
 msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
@@ -3041,11 +3095,18 @@ msgstr ""
 "hasarlarını artırır ve hasar türlerini değiştirir. Ayrıca gizemli "
 "saldırılara direnci arttırır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:97
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:329
 msgid "Ice bow"
 msgstr "Buzyay"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:100
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
+msgid "19-1 ranged-cold slows"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
 msgid ""
 "Draw this magical bow summon an ice arrow that will freeze and slow its "
 "target upon hit."
@@ -3053,11 +3114,24 @@ msgstr ""
 "Bu büyülü yayı gererek, vurulduğunda hedefini donduracak ve yavaşlatacak bir "
 "buz oku çağırın."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:103
+#. [effect]: type=cold
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:337
+msgid "ice bow"
+msgstr "buzyay"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
 msgid "Medicinal herbs"
 msgstr "Şifalı otlar"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:106
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+msgid "heals +8, cures"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
@@ -3065,11 +3139,22 @@ msgstr ""
 "Bu güçlü otlar, taşıyıcıya yanındaki birimleri iyileştirme ve zehirlerini "
 "giderme yeteneği verir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:109
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:396
 msgid "Melange"
 msgstr "Karışım"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:112
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
+#, fuzzy
+#| msgid "no undead^consumed by a living being:"
+msgid ""
+"no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
+"advance"
+msgstr "bir canlı tarafından tüketilen:"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
@@ -3077,11 +3162,37 @@ msgstr ""
 "Organik kökenli bu tuhaf ilaç, kullanıcının canlılığını ve farkındalığını "
 "artırır. Yarı ölüler tarafından tüketildiğinde hiçbir etkisi yoktur."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:115
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:426
+msgid "Ointment of venom"
+msgstr "Zehirli merhem"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
+msgid "blade/pierce: poison and +20% damage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
+msgid ""
+"This deadly poison envenoms the user’s blade and pierce attacks, increasing "
+"damage and allowing them to inflict poison."
+msgstr ""
+"Bu ölümcül zehir, kullanıcının bıçak ve delme saldırılarını zehirler, hasarı "
+"artırır ve zehir vermelerini sağlar."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:446
 msgid "Ring of frostbite"
 msgstr "Dondurucu yüzük"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:118
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
+msgid "melee: cold and slows"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
 msgid ""
 "This frigid ring envelops the user’s melee attacks with icy cold, changing "
 "their damage to cold and allowing them to inflict deathly chills that slow "
@@ -3091,11 +3202,18 @@ msgstr ""
 "sararak, hasarlarını soğuğa çevirir ve düşmanı yavaşlatan ölümcül titremeler "
 "vermelerini sağlar."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:121
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:466
 msgid "Ring of power"
 msgstr "Güç yüzüğü"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:124
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
+msgid "arcane/cold/fire: disengage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
 msgid ""
 "Wearing this ring enhances damage with arcane and elemental attacks, "
 "allowing using them with supernatural skill and presence."
@@ -3103,11 +3221,39 @@ msgstr ""
 "Bu yüzüğü takmak, gizemli ve temel saldırılarda hasarı artırarak, onları "
 "doğaüstü beceri ve varlıkla kullanmayı sağlar."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:127
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:483
+msgid "Root of the Elder Wose"
+msgstr "Yaşlı Ulu Ağaç Kökü"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
+#, fuzzy
+#| msgid "$range|: arcane and +25% damage"
+msgid "impact: +1 strike and +2 damage"
+msgstr "$range|: gizemli ve +%25 hasar"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
+#, fuzzy
+#| msgid ""
+#| " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
+msgid ""
+" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
+msgstr " Cücelerin dövdüğü, bu kör silah Ulu Ağacın ezici gücünü taklit eder."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:500
 msgid "Runic sword"
 msgstr "Runik kılıç"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:130
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
+msgid "melee: magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
 msgid ""
 "This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
@@ -3115,19 +3261,38 @@ msgstr ""
 "Bu sihirli kılıç, büyülü özelliği ile kullanıcının yakın dövüş saldırılarını "
 "güçlendirir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:133
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:519
 msgid "Staff of radiance"
 msgstr "Işıltı asası"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:136
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
+msgid "11-3 ranged-arcane magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
 msgid "This sacred rod can unleash brilliant bursts of luminous energy."
 msgstr "Bu kutsal asa, parlak enerji patlamalarını serbest bırakabilir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:139
+#. [effect]: type=arcane
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:527
+msgid "staff of radiance"
+msgstr "parlaklık asası"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
 msgid "Stormbringer"
 msgstr "Fırtına getiren"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:142
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
+msgid "melee: fury"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
 msgid ""
 "This tormented sword causes rage in any who wield it. Melee attacks will "
 "gain the fury ability pressing engagement for 3 rounds."
@@ -3135,11 +3300,33 @@ msgstr ""
 "Bu işkence görmüş kılıç, onu kullanan herkeste öfkeye neden olur. Yakın "
 "dövüş saldırılarına 3 hamlelik öfke yeteneği kazandırır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:145
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:581
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:582
+msgid "fury"
+msgstr "öfke"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:583
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 3 rounds of attacks have occurred."
+msgstr ""
+"İster saldırı ister savunma amaçlı kullanılsın, bu saldırı, savaşçılardan "
+"biri öldürülünceye veya 3 saldırı gerçekleşene kadar çarpışmaya zorlar."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:590
 msgid "Sylph bow"
 msgstr "Peri yayı"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:148
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
+msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
 msgid ""
 "A runic bow. This elvish heirloom, passed from Queen to Princess, gathers "
 "power with each generation and speeds up the wielders movements so that more "
@@ -3149,163 +3336,32 @@ msgstr ""
 "toplar ve daha fazla saldırının yapılabilmesi için kullananların "
 "hareketlerini hızlandırır."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:151
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:608
 msgid "Terror disguise"
 msgstr "Korkunç giysi"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:154
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
+msgid "darkness, chaotic, corruption, distract"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
 msgid ""
 "This cursed outfit spreads a trail of darkness, harming those who get too "
 "close."
 msgstr ""
 "Bu lanetli kıyafet bir karanlık iz yayar ve çok yaklaşanlara zarar verir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:157
-msgid "The Key"
-msgstr "Anahtar"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:160
-msgid "This magical object opens the gateway between dimensions."
-msgstr "Bu büyülü nesne, boyutlar arasındaki geçidi açar."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:163
-msgid "Tome of secrets"
-msgstr "Sırlar kitabı"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:166
-msgid "This forgotten book imparts ancient knowledge to the reader."
-msgstr "Bu unutulmuş kitap, okuyucuya eski bilgileri aktarır."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:169
-msgid "Trident of storms"
-msgstr "Fırtına çatalı"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:172
-msgid ""
-"This legendary trident can summon lightning from the heavens, granting its "
-"wielder magical ranged fire attack."
-msgstr ""
-"Bu efsanevi çatal, göklerden yıldırımları çekerek, sahibine sihirli menzilli "
-"ateş saldırısı yaptırabilir."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:175
-msgid "Trolls blood potion"
-msgstr "Trollerin kan iksiri"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:178
-msgid "This foul-smelling potion allows the imbiber to regenerate health."
-msgstr "Bu kötü kokulu iksir, içenin sağlığını yenilemesini sağlar."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:181
-msgid "Ointment of venom"
-msgstr "Zehirli merhem"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:184
-msgid ""
-"This deadly poison envenoms the user’s blade and pierce attacks, increasing "
-"damage and allowing them to inflict poison."
-msgstr ""
-"Bu ölümcül zehir, kullanıcının bıçak ve delme saldırılarını zehirler, hasarı "
-"artırır ve zehir vermelerini sağlar."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:187
-msgid "War banner"
-msgstr "Savaş flaması"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:190
-msgid "adjacent allies do 20% more damage"
-msgstr "yanındaki müttefikler %20 daha fazla hasar verir"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:193
-msgid ""
-"This inspiring banner rallies the bearer’s allies to war, imparting a damage "
-"bonus to the allied units around it."
-msgstr ""
-"Bu ilham verici pankart, taşıyıcının müttefiklerini savaşa çağırarak "
-"yanındaki müttefik birimlere hasar ödülü verir."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:196
-msgid "Winged scepter"
-msgstr "Kanatlı asa"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:199
-msgid ""
-"This wondrous rod imparts the user the ability to soar through the skies, "
-"making it a breeze to move through most terrain. Units that can already fly "
-"get improved defenses."
-msgstr ""
-"Bu harika çubuk, kullanıcıya gökyüzünde uçma yeteneği vererek, çoğu arazide "
-"hareket etmeyi bir esinti haline getirir. Halihazırda uçabilen birimler "
-"gelişmiş savunma alır."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:202
-msgid "Winter’s bloom"
-msgstr "Kardelen"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:205
-msgid ""
-"This delicate blossom rarely found in snowy peaks, is strongly appreciated "
-"for its beneficial effects on health."
-msgstr ""
-"Karlı tepelerde nadiren bulunan bu narin çiçek, sağlığa faydalı etkileri "
-"nedeniyle büyük beğeni topluyor."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:208
-msgid "Zephyr cloak"
-msgstr "İnce pelerin"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:211
-msgid ""
-"This lightweight cloak renders its wearer almost invisible in the darkness "
-"and lets them move with fluid grace past enemies with ease."
-msgstr ""
-"Bu hafif pelerin, kullanıcısını karanlıkta neredeyse görünmez kılar ve "
-"düşmanları kolayca geçerek akıcı bir zarafetle hareket etmelerini sağlar."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:4
-msgid "staff of radiance"
-msgstr "parlaklık asası"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:7
-msgid "storm trident"
-msgstr "fırtına çatalı"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:10
-msgid "ice bow"
-msgstr "buzyay"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:13
-msgid "banner"
-msgstr "sancak"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:16
-msgid ""
-"This unit can lead ~allied~ units that are next to it, making them fight "
-"better. Adjacent allied units will do 20% more damage. This is cumulative "
-"with leadership."
-msgstr ""
-"Bu birim, yanındaki ~müttefik~ birimlere liderlik ederek daha iyi "
-"savaşmalarını sağlar. Komşu dost birimler %20 daha fazla hasar verir. Bu "
-"liderlikle birikimlidir."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:19
-msgid "corruption"
-msgstr "yozlaşma"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:22
-msgid ""
-"This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
-"units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
-"unit."
-msgstr ""
-"Bu birim, elinizin başlangıcında bitişik düşmanları çürütür. Çürük birimler "
-"6 YP kaybeder veya 1 YP'ye düşürülür. Çürümeyle bir birim ölmez."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:25
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:631
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:632
 msgid "darkness"
 msgstr "karanlık"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:28
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:633
 msgid ""
 "This unit darkens the surrounding area, making chaotic units fight better, "
 "and lawful units fight worse. Any units adjacent to this unit will fight as "
@@ -3315,21 +3371,126 @@ msgstr ""
 "birimlerin daha kötü savaşmasını sağlar. Bu birimin yanındaki birim, gündüz "
 "olduğunda alacakaranlık, alacakaranlıkta ise geceymiş gibi savaşır."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:31
-msgid "distract"
-msgstr "şaşırtma"
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:638
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:639
+msgid "corruption"
+msgstr "yozlaşma"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:34
-msgid "Allied units ignore enemy zones of control adjacent to this unit."
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:640
+msgid ""
+"This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
+"units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
+"unit."
 msgstr ""
-"Müttefik birimler, bu birimin yanındaki düşman birimlerin etki alanlarını "
-"yoksayar."
+"Bu birim, elinizin başlangıcında bitişik düşmanları çürütür. Çürük birimler "
+"6 YP kaybeder veya 1 YP'ye düşürülür. Çürümeyle bir birim ölmez."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:37
-msgid "flight"
-msgstr "kaçış"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:653
+msgid "The Key"
+msgstr "Anahtar"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:40
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:658
+msgid "This magical object opens the gateway between dimensions."
+msgstr "Bu büyülü nesne, boyutlar arasındaki geçidi açar."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:680
+msgid "Tome of secrets"
+msgstr "Sırlar kitabı"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#, fuzzy
+#| msgid "XP to advance"
+msgid "-50% XP to advance"
+msgstr "Terfi için TP"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
+msgid "This forgotten book imparts ancient knowledge to the reader."
+msgstr "Bu unutulmuş kitap, okuyucuya eski bilgileri aktarır."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:691
+msgid "Trident of storms"
+msgstr "Fırtına çatalı"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
+msgid "17-2 ranged-fire magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
+msgid ""
+"This legendary trident can summon lightning from the heavens, granting its "
+"wielder magical ranged fire attack."
+msgstr ""
+"Bu efsanevi çatal, göklerden yıldırımları çekerek, sahibine sihirli menzilli "
+"ateş saldırısı yaptırabilir."
+
+#. [effect]: type=fire
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+msgid "storm trident"
+msgstr "fırtına çatalı"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:714
+msgid "Trolls blood potion"
+msgstr "Trollerin kan iksiri"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:719
+msgid "This foul-smelling potion allows the imbiber to regenerate health."
+msgstr "Bu kötü kokulu iksir, içenin sağlığını yenilemesini sağlar."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:729
+msgid "War banner"
+msgstr "Savaş flaması"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:731
+msgid "adjacent allies do 20% more damage"
+msgstr "yanındaki müttefikler %20 daha fazla hasar verir"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:732
+msgid ""
+"This inspiring banner rallies the bearer’s allies to war, imparting a damage "
+"bonus to the allied units around it."
+msgstr ""
+"Bu ilham verici pankart, taşıyıcının müttefiklerini savaşa çağırarak "
+"yanındaki müttefik birimlere hasar ödülü verir."
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:742
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:743
+msgid "banner"
+msgstr "sancak"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:744
+msgid ""
+"This unit can lead ~allied~ units that are next to it, making them fight "
+"better. Adjacent allied units will do 20% more damage. This is cumulative "
+"with leadership."
+msgstr ""
+"Bu birim, yanındaki ~müttefik~ birimlere liderlik ederek daha iyi "
+"savaşmalarını sağlar. Komşu dost birimler %20 daha fazla hasar verir. Bu "
+"liderlikle birikimlidir."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:755
+msgid "Winged scepter"
+msgstr "Kanatlı asa"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
@@ -3337,142 +3498,77 @@ msgstr ""
 "Mağara veya mantar korusu hariç tüm arazilerde tam hareket ve %50'ye kadar "
 "savunma."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:43
-msgid "swim"
-msgstr "yüzme"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:46
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:758
 msgid ""
-"Full movement and up to 60% defense in water or swamp and up to 70% defense "
-"in reef."
+"This wondrous rod imparts the user the ability to soar through the skies, "
+"making it a breeze to move through most terrain. Units that can already fly "
+"get improved defenses."
 msgstr ""
-"Suda veya bataklıkta tam hareket ve %60'a kadar savunma ve kıyıda %70'e "
-"kadar savunma."
+"Bu harika çubuk, kullanıcıya gökyüzünde uçma yeteneği vererek, çoğu arazide "
+"hareket etmeyi bir esinti haline getirir. Halihazırda uçabilen birimler "
+"gelişmiş savunma alır."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:49
-msgid "forcefield"
-msgstr "güç alanı"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
+msgid "Winter’s bloom"
+msgstr "Kardelen"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:52
-msgid "Adjacent enemies do 13% less damage."
-msgstr "Komşu düşmanlar %13 daha az hasar verir."
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
+msgid "+15 HP, up to 20% resistance vs cold"
+msgstr ""
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:55
-msgid "fury"
-msgstr "öfke"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:58
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
 msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 3 rounds of attacks have occurred."
+"This delicate blossom rarely found in snowy peaks, is strongly appreciated "
+"for its beneficial effects on health."
 msgstr ""
-"İster saldırı ister savunma amaçlı kullanılsın, bu saldırı, savaşçılardan "
-"biri öldürülünceye veya 3 saldırı gerçekleşene kadar çarpışmaya zorlar."
+"Karlı tepelerde nadiren bulunan bu narin çiçek, sağlığa faydalı etkileri "
+"nedeniyle büyük beğeni topluyor."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:61
-msgid "Full movement on turn recruited or recalled"
-msgstr "Askere alındığı veya geri çağrıldığı el tam hareket"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:816
+msgid "Zephyr cloak"
+msgstr "İnce pelerin"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:64
-msgid "optional charge"
-msgstr "isteğe bağlı ücret"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
+msgid "skirmisher, ambush, nightstalk, +2 moves"
+msgstr ""
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:67
-msgid "tenacity"
-msgstr "azim"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:70
-msgid "This unit’s vulnerabilities are halved when defending."
-msgstr "Bu birimin savunmasızlığı, savunma sırasında yarı yarıya azalır."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:73
-msgid "free upkeep"
-msgstr "ücretsiz bakım"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:76
-msgid "full movement"
-msgstr "tam hareket"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:79
-msgid "terrain^water"
-msgstr "su"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:82
-msgid "improved defenses"
-msgstr "arttırılmış savuma"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:85
-msgid "no undead^consumed by a living being:"
-msgstr "bir canlı tarafından tüketilen:"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:88
-msgid "up to"
-msgstr "şuna kadar:"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:91
-msgid "disengage"
-msgstr "salma"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:94
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
 msgid ""
-"Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
-"gain a new attack)."
+"This lightweight cloak renders its wearer almost invisible in the darkness "
+"and lets them move with fluid grace past enemies with ease."
 msgstr ""
-"Bu silahla saldırmak, çarpışma sonunda birime 1 hareket sağlar (birim yeni "
-"bir saldırı kazanmaz)."
+"Bu hafif pelerin, kullanıcısını karanlıkta neredeyse görünmez kılar ve "
+"düşmanları kolayca geçerek akıcı bir zarafetle hareket etmelerini sağlar."
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
-msgid "per level"
-msgstr "seviye başına"
+#. [trainer]: type=Lich
+#: data/campaigns/World_Conquest/resources/data/training.cfg:10
+msgid "Dark"
+msgstr "Karanlık"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:4
-msgid "Melee Combat"
-msgstr "Yakın Dövüş"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:7
+#. [trainer]: type=Lich
+#: data/campaigns/World_Conquest/resources/data/training.cfg:11
 msgid ""
-"Looks like you could use some help. A grizzled old veteran like me won’t be "
-"much use on the field, but I bet I can teach your men a thing or two about "
-"swordplay."
+"I haven’t lived centuries fighting others’ battles, but I could combat "
+"boredom teaching your men a couple of things about dark techniques."
 msgstr ""
-"Biraz yardıma ihtiyacın var gibi görünüyor. Benim gibi kır saçlı yaşlı bir "
-"gazi sahada pek işe yaramaz ama bahse girerim adamlarına kılıç oyunu "
-"hakkında bir iki şey öğretebilirim."
+"Yüzyılları başkalarının savaşlarında savaşarak yaşamadım ama adamlarınıza "
+"karanlık teknikler hakkında birkaç şey öğreterek can sıkıntısıyla "
+"savaşabilirim."
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:10
-msgid "Ranger Tactics"
-msgstr "Okçu Taktikleri"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:13
-msgid ""
-"I sympathize with your cause, but this is not my battle. I will not fight "
-"for you, but I will gladly instruct your recruits in the art of the ranger, "
-"that they may better fight on their own."
-msgstr ""
-"Davanıza sempati duyuyorum ama bu benim savaşım değil. Sizin için "
-"savaşmayacağım, ama kendi başlarına daha iyi savaşabilmeleri için "
-"acemilerinize okçuluk sanatını seve seve öğreteceğim."
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:16
-msgid "Health"
-msgstr "Sağlık"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:19
-msgid ""
-"Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
-"troubles of my own to join in, but stick about a while and I’ll put some "
-"steel in your backbone. When I’m through with you you’ll be able to keep on "
-"going no matter the odds!"
-msgstr ""
-"Önünüzde oldukça sert bir dövüş var gibi görünüyor. Benim de katılamayacağım "
-"kadar çok derdim var ama biraz sabredin ve belkemiğinize biraz çelik "
-"koyayım. Sizinle işim bittiğinde, her halûkarda devam edebileceksiniz!"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:22
+#. [trainer]: type=Duelist
+#: data/campaigns/World_Conquest/resources/data/training.cfg:59
 msgid "Movement"
 msgstr "Hareket"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:25
+#. [trainer]: type=Duelist
+#: data/campaigns/World_Conquest/resources/data/training.cfg:60
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
 "afraid battlefields just aren’t my scene - no drama, no style, no romance! "
@@ -3486,11 +3582,50 @@ msgstr ""
 "kasvetli yürüşünden nasıl kurtulup tüy gibi hafif adımlar atacağını "
 "öğreteceğim!"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:28
+#. [trainer]: type=Orcish Warrior
+#: data/campaigns/World_Conquest/resources/data/training.cfg:77
+msgid "Melee Combat"
+msgstr "Yakın Dövüş"
+
+#. [trainer]: type=Orcish Warrior
+#: data/campaigns/World_Conquest/resources/data/training.cfg:78
+msgid ""
+"Looks like you could use some help. A grizzled old veteran like me won’t be "
+"much use on the field, but I bet I can teach your men a thing or two about "
+"swordplay."
+msgstr ""
+"Biraz yardıma ihtiyacın var gibi görünüyor. Benim gibi kır saçlı yaşlı bir "
+"gazi sahada pek işe yaramaz ama bahse girerim adamlarına kılıç oyunu "
+"hakkında bir iki şey öğretebilirim."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:102
+msgid "melee: +1 strikes"
+msgstr ""
+
+#. [trainer]: type=Elvish Ranger
+#: data/campaigns/World_Conquest/resources/data/training.cfg:120
+msgid "Ranger Tactics"
+msgstr "Okçu Taktikleri"
+
+#. [trainer]: type=Elvish Ranger
+#: data/campaigns/World_Conquest/resources/data/training.cfg:121
+msgid ""
+"I sympathize with your cause, but this is not my battle. I will not fight "
+"for you, but I will gladly instruct your recruits in the art of the ranger, "
+"that they may better fight on their own."
+msgstr ""
+"Davanıza sempati duyuyorum ama bu benim savaşım değil. Sizin için "
+"savaşmayacağım, ama kendi başlarına daha iyi savaşabilmeleri için "
+"acemilerinize okçuluk sanatını seve seve öğreteceğim."
+
+#. [trainer]: type=Drake Flare
+#: data/campaigns/World_Conquest/resources/data/training.cfg:159
 msgid "Combat Experience"
 msgstr "Savaş Deneyimi"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:31
+#. [trainer]: type=Drake Flare
+#: data/campaigns/World_Conquest/resources/data/training.cfg:160
 msgid ""
 " Join the battle? Nay, lads, my talents would be wasted on the frontlines. "
 "Give me some raw recruits to work with, though, and I’ll whip ’em into shape "
@@ -3502,18 +3637,153 @@ msgstr ""
 "sizin için şekillendireyim. Gerçek savaşın nasıl olduğunu biliyorum; Onlarla "
 "işim bittiğinde, yeni başlayanların da bir fikri olabilir."
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:34
-msgid "Dark"
-msgstr "Karanlık"
+#. [trainer]: type=Dwarvish Runesmith
+#: data/campaigns/World_Conquest/resources/data/training.cfg:186
+msgid "Health"
+msgstr "Sağlık"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:37
+#. [trainer]: type=Dwarvish Runesmith
+#: data/campaigns/World_Conquest/resources/data/training.cfg:187
 msgid ""
-"I haven’t lived centuries fighting others’ battles, but I could combat "
-"boredom teaching your men a couple of things about dark techniques."
+"Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
+"troubles of my own to join in, but stick about a while and I’ll put some "
+"steel in your backbone. When I’m through with you you’ll be able to keep on "
+"going no matter the odds!"
 msgstr ""
-"Yüzyılları başkalarının savaşlarında savaşarak yaşamadım ama adamlarınıza "
-"karanlık teknikler hakkında birkaç şey öğreterek can sıkıntısıyla "
-"savaşabilirim."
+"Önünüzde oldukça sert bir dövüş var gibi görünüyor. Benim de katılamayacağım "
+"kadar çok derdim var ama biraz sabredin ve belkemiğinize biraz çelik "
+"koyayım. Sizinle işim bittiğinde, her halûkarda devam edebileceksiniz!"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:220
+#, fuzzy
+#| msgid "disengage"
+msgid "ranged: disengage"
+msgstr "salma"
+
+#. [dummy]: id=wc2_disengage
+#: data/campaigns/World_Conquest/resources/data/training.cfg:234
+msgid "disengage"
+msgstr "salma"
+
+#. [dummy]: id=wc2_disengage
+#: data/campaigns/World_Conquest/resources/data/training.cfg:235
+msgid ""
+"Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
+"gain a new attack)."
+msgstr ""
+"Bu silahla saldırmak, çarpışma sonunda birime 1 hareket sağlar (birim yeni "
+"bir saldırı kazanmaz)."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:246
+msgid "Full movement on turn recruited or recalled"
+msgstr "Askere alındığı veya geri çağrıldığı el tam hareket"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:312
+msgid "$range|: $special|"
+msgstr "$range|: $special|"
+
+#. [chance]
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:377
+#: data/campaigns/World_Conquest/resources/data/training.cfg:402
+#: data/campaigns/World_Conquest/resources/data/training.cfg:403
+msgid "distract"
+msgstr "şaşırtma"
+
+#. [chance]
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:389
+#: data/campaigns/World_Conquest/resources/data/training.cfg:426
+#: data/campaigns/World_Conquest/resources/data/training.cfg:427
+msgid "tenacity"
+msgstr "azim"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "Allied units ignore enemy zones of control adjacent to this unit."
+msgstr ""
+"Müttefik birimler, bu birimin yanındaki düşman birimlerin etki alanlarını "
+"yoksayar."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "This unit’s vulnerabilities are halved when defending."
+msgstr "Bu birimin savunmasızlığı, savunma sırasında yarı yarıya azalır."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:468
+msgid "heals +4, cures"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:544
+msgid "+$boost| moves"
+msgstr "+$boost| hareket"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:558
+msgid "$range|: +$boost| damage"
+msgstr "$range|: +$boost| hasar"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:574
+msgid "$range|: +1 damage per level"
+msgstr "$range|: +1 seviye başına hasar"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:590
+msgid "+$hitpoints| hitpoints"
+msgstr "+$hitpoints| yaşam puanı"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:605
+msgid "+$hitpoints| hitpoints per level"
+msgstr "+$hitpoints| seviye başına hayat puanı"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:621
+msgid "$value| XP to advance"
+msgstr "Terfi için $value| TP"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:635
+msgid "free upkeep"
+msgstr "ücretsiz bakım"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:645
+msgid "Village/Castle: +5 defense"
+msgstr "Köy/Kale: +5 savunma"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:677
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+"$terrain|: +$def| savunma ve tam hareket, $dmg_type| türünde +$res| direnç"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:706
+msgid "$terrain|: +10 defense and full movement"
+msgstr "$terrain|: +10 savunma ve tam hareket"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:717
+msgid "+moves defense"
+msgstr "+hareket savunma"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "melee: optional charge"
+msgstr "yakın dövüş: seçimlik ücret"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:752
+msgid "$range|: arcane and +25% damage"
+msgstr "$range|: gizemli ve +%25 hasar"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
 msgid "World Conquest 1p"
@@ -3595,3 +3865,146 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
 msgid "WC"
 msgstr "DF"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+msgid "Beginner"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+msgid "Peasant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+msgid "Easy"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+msgid "Sergeant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+msgid "Lieutenant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+msgid "Medium"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+msgid "General"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+msgid "Hard"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+msgid "Challenging"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#, fuzzy
+#| msgid "Granary"
+msgid "Grand Marshal"
+msgstr "Ambar"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#, fuzzy
+#| msgid "expert"
+msgid "Expert"
+msgstr "uzman"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+msgid "Nightmare"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+msgid "Campaign Design"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+msgid "Prose, Grammatical and Text Assistance"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+msgid "Minor Code Contributors"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+msgid "Playtesting"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+msgid "Campaign Maintenance"
+msgstr ""
+
+#~ msgid "Preset Advancement"
+#~ msgstr "Ön Ayarlı İlerleme"
+
+#~ msgid ""
+#~ "Currently I’m set to advance towards: $name \n"
+#~ "\n"
+#~ "What are your new orders?"
+#~ msgstr ""
+#~ "Şimdilik şuna doğru terfi ettirdim: $name \n"
+#~ "\n"
+#~ "Yeni emirler nedir?"
+
+#~ msgid "Random"
+#~ msgstr "Rastgele"
+
+#~ msgid " and "
+#~ msgstr " ve "
+
+#~ msgid "damage"
+#~ msgstr "hasar"
+
+#~ msgid " resistance vs "
+#~ msgstr " direnç vs "
+
+#~ msgid "moves"
+#~ msgstr "hamleler"
+
+#~ msgid "strike"
+#~ msgstr "vuruş"
+
+#~ msgid "flight"
+#~ msgstr "kaçış"
+
+#~ msgid "swim"
+#~ msgstr "yüzme"
+
+#~ msgid "optional charge"
+#~ msgstr "isteğe bağlı ücret"
+
+#~ msgid "full movement"
+#~ msgstr "tam hareket"
+
+#~ msgid "terrain^water"
+#~ msgstr "su"
+
+#~ msgid "improved defenses"
+#~ msgstr "arttırılmış savuma"
+
+#~ msgid "up to"
+#~ msgstr "şuna kadar:"
+
+#~ msgid "per level"
+#~ msgstr "seviye başına"

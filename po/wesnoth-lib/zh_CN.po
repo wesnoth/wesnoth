@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-06-19 09:03-0500\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
 "PO-Revision-Date: 2022-04-22 16:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -55,12 +55,6 @@ msgstr "使用另一种征募规则的默认AI（RCA）"
 #: data/core/terrain.cfg:513 data/core/terrain.cfg:523
 msgid "Fence"
 msgstr "篱笆"
-
-#. [row]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:196
-#: data/gui/window/mp_faction_select.cfg:180
-msgid "gender^Random"
-msgstr "随机"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2332,8 +2326,8 @@ msgstr "在本地保存密码（明文）"
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
 #: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:182
-#: src/gui/dialogs/message.cpp:189
+#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:180
+#: src/gui/dialogs/message.cpp:187
 msgid "OK"
 msgstr "确定"
 
@@ -2830,7 +2824,7 @@ msgstr "编辑日程表"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
 #: src/gui/dialogs/unit_recall.cpp:323
 msgid "Name:"
 msgstr "名字："
@@ -2888,8 +2882,8 @@ msgstr "删除时段"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "确认"
 
@@ -2905,7 +2899,7 @@ msgstr "你想应用这些改变吗？"
 #: data/gui/window/game_save_message.cfg:139
 #: data/gui/window/game_save_oos.cfg:191
 #: data/gui/window/game_save_overwrite.cfg:96
-#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:196
+#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:194
 msgid "Yes"
 msgstr "是"
 
@@ -2916,7 +2910,7 @@ msgstr "是"
 #: data/gui/window/game_save_message.cfg:153
 #: data/gui/window/game_save_oos.cfg:205
 #: data/gui/window/game_save_overwrite.cfg:110
-#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:198
+#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:196
 msgid "No"
 msgstr "否"
 
@@ -3435,7 +3429,7 @@ msgstr "保存游戏"
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Save"
 msgstr "保存"
 
@@ -3472,7 +3466,7 @@ msgstr "团队"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:435
 msgid "Gold"
 msgstr "金币"
 
@@ -3499,7 +3493,7 @@ msgstr "维护费用"
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:444
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Income"
 msgstr "收入"
 
@@ -4477,6 +4471,11 @@ msgid "Map size:"
 msgstr "地图尺寸："
 
 #. [row]
+#: data/gui/window/mp_faction_select.cfg:180
+msgid "gender^Random"
+msgstr "随机"
+
+#. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:182
 #: data/gui/window/unit_create.cfg:225
@@ -4493,7 +4492,7 @@ msgstr "女"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:217
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Recruits"
 msgstr "次征募"
 
@@ -4837,7 +4836,7 @@ msgstr "快捷键"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:794
+#: src/gui/dialogs/preferences_dialog.cpp:791
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4850,7 +4849,7 @@ msgstr "游戏中可用"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:795
+#: src/gui/dialogs/preferences_dialog.cpp:792
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4863,7 +4862,7 @@ msgstr "编辑器中可用"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:796
+#: src/gui/dialogs/preferences_dialog.cpp:793
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5645,16 +5644,16 @@ msgstr "征募"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
+#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
 #: src/gui/dialogs/preferences_dialog.cpp:229
-#: src/gui/dialogs/transient_message.cpp:79
+#: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "错误"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:182
-#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:161
+#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:159
 msgid "Details:"
 msgstr "详细："
 
@@ -5711,22 +5710,22 @@ msgid "operating_system^<unknown>"
 msgstr "<未知>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:638
+#: src/filesystem.cpp:636
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<不以点号开头的相对路径>"
 
-#: src/filesystem.cpp:641
+#: src/filesystem.cpp:639
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr "使用绝对路径，或以点号及反斜杠开头的相对路径"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:706 src/filesystem.cpp:727
+#: src/filesystem.cpp:704 src/filesystem.cpp:726
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<相对路径>"
 
-#: src/filesystem.cpp:709 src/filesystem.cpp:730
+#: src/filesystem.cpp:707 src/filesystem.cpp:729
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5744,11 +5743,11 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1641
+#: src/filesystem.cpp:1640
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
-#: src/font/text.cpp:861
+#: src/font/text.cpp:859
 msgid "The text contains invalid Pango markup: "
 msgstr "文本中包含非法的Pango标记："
 
@@ -5846,21 +5845,13 @@ msgid_plural "timespan^$num seconds"
 msgstr[0] "$num|秒"
 msgstr[1] "$num|秒"
 
-#: src/gui/core/canvas.cpp:345
+#: src/gui/core/canvas.cpp:272
 msgid "Image doesn't fit on canvas."
 msgstr "图片不适应画布大小。"
 
-#: src/gui/core/canvas.cpp:495
+#: src/gui/core/canvas.cpp:405
 msgid "Text has a font size of 0."
 msgstr "字体大小是0。"
-
-#: src/gui/core/canvas.cpp:636
-msgid "Area to draw has negative size"
-msgstr "绘图区域的尺寸为负值"
-
-#: src/gui/core/canvas.cpp:638
-msgid "Area to draw is larger than widget size"
-msgstr "绘图区域比部界面构件尺寸大"
 
 #: src/gui/core/widget_definition.cpp:31
 msgid "No state or draw section defined."
@@ -5875,11 +5866,11 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "连接的“$id|”组有多个定义。"
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:127
+#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:713
+#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:125
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
-#: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:283
+#: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
 #: src/gui/widgets/unit_preview_pane.cpp:611
 msgid "No grid defined."
 msgstr "没有已定义的网格。"
@@ -6178,7 +6169,7 @@ msgid "The add-on was rejected by the server:"
 msgstr "附加组件被服务器拒绝："
 
 #: src/gui/dialogs/addon/manager.cpp:887 src/gui/dialogs/addon/manager.cpp:914
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "回复"
 
@@ -6240,9 +6231,9 @@ msgstr "无"
 #: src/gui/dialogs/chat_log.cpp:404 src/gui/dialogs/game_cache_options.cpp:68
 #: src/gui/dialogs/game_version_dialog.cpp:154
 #: src/gui/dialogs/gamestate_inspector.cpp:409
-#: src/gui/dialogs/lua_interpreter.cpp:479
+#: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:69
-#: src/gui/dialogs/wml_error.cpp:193
+#: src/gui/dialogs/wml_error.cpp:191
 msgid "Clipboard support not found, contact your packager"
 msgstr "未找到剪贴板支持，请联系你的打包者"
 
@@ -6298,41 +6289,41 @@ msgstr "岛屿"
 msgid "Find File"
 msgstr "查找文件"
 
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
 msgstr "打开"
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:301
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "文件已存在。你要覆盖吗？"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:325
 msgid "The file or folder $path cannot be created."
 msgstr "文件或文件夹$path|无法创建。"
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:331
 msgid "The file or folder $path does not exist."
 msgstr "文件或文件夹$path|不存在。"
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:706
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr "无法在$path|处创建新文件夹。确保你拥有写入该位置的合适权限。"
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:724
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "下列文件夹及其内容将被永久删除："
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following file will be permanently deleted:"
 msgstr "下列文件将被永久删除："
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "Do you wish to continue?"
 msgstr "你希望继续吗？"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:738
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6347,8 +6338,8 @@ msgid "dir_size^Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_cache_options.cpp:102
-#: src/gui/dialogs/network_transmission.cpp:87
-#: src/gui/dialogs/network_transmission.cpp:88
+#: src/gui/dialogs/network_transmission.cpp:52
+#: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/screenshot_notification.cpp:116
 msgid "unit_byte^B"
 msgstr "B"
@@ -6471,7 +6462,7 @@ msgid "yes"
 msgstr "是"
 
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:197
+#: src/gui/dialogs/title_screen.cpp:195
 msgid "Version $version"
 msgstr "版本$version"
 
@@ -6487,99 +6478,99 @@ msgstr "团队标签"
 msgid "Side $side_number ($name)"
 msgstr "阵营$side_number|（$name）"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
 msgstr "正在构建地形规则"
 
-#: src/gui/dialogs/loading_screen.cpp:46
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Reading files and creating cache"
 msgstr "正在读取文件并创建缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:52 src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing display"
 msgstr "正在初始化显示"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Reinitialize fonts for the current language"
 msgstr "正在为当前语言重新初始化字体"
 
-#: src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
 msgstr "正在初始化团队"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
 msgstr "正在载入游戏配置"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading data files"
 msgstr "正在载入数据文件"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading level"
 msgstr "正在载入关卡"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Initializing scripting engine"
 msgstr "正在初始化脚本引擎"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Initializing planning mode"
 msgstr "正在初始化计划模式"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Reading unit files"
 msgstr "正在读取单位文件"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Loading units"
 msgstr "正在载入单位"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
 msgstr "正在搜索已安装的附加组件"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Starting game"
 msgstr "正在开始游戏"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Verifying cache"
 msgstr "正在验证缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Logging in"
 msgstr "正在登录"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:68
 msgid "Waiting for server"
 msgstr "正在等待服务器回复"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:69
 msgid "Connecting to redirected server"
 msgstr "正在连接到重定向目标服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
 msgstr "正在等待下幕场景"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:71
 msgid "Getting game data"
 msgstr "正在获取游戏数据"
 
-#: src/gui/dialogs/loading_screen.cpp:67
+#: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
 msgstr "正在下载大厅数据"
 
-#: src/gui/dialogs/lua_interpreter.cpp:678
+#: src/gui/dialogs/lua_interpreter.cpp:674
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr "Lua控制台只能用于调试模式中！（请先运行“:debug”）"
 
-#: src/gui/dialogs/lua_interpreter.cpp:679
+#: src/gui/dialogs/lua_interpreter.cpp:675
 msgid "lua console"
 msgstr "Lua控制台"
 
@@ -6705,7 +6696,7 @@ msgstr "此韦诺构建不包含桌面提醒支持，请联系你的打包者"
 msgid "Side $side"
 msgstr "阵营$side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
 msgid "Add Server"
 msgstr "添加服务器"
 
@@ -6750,24 +6741,24 @@ msgstr "未找到时代"
 msgid "No eras available for this game."
 msgstr "没有可用于此游戏的时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
 msgid "number of players^$min to $max"
 msgstr "$min|至$max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr "选定的游戏没有阵营！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:825
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr "无法创建选定的游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:897
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr "选择起始场景"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:897
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr "选择在何处开始此战役。"
 
@@ -6825,12 +6816,12 @@ msgstr "无效用户名"
 msgid "Not on friends or ignore lists"
 msgstr "不在好友或忽略列表上"
 
-#: src/gui/dialogs/preferences_dialog.cpp:842
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:839
+#: src/gui/dialogs/preferences_dialog.cpp:903
 msgid "No hotkey selected"
 msgstr "未选定热键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:870
+#: src/gui/dialogs/preferences_dialog.cpp:867
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6838,15 +6829,15 @@ msgstr ""
 "“<b>$hotkey_sequence</b>”目前已用于“<b>$old_hotkey_action</b>”。\n"
 "你希望将该快捷键序列重新指定给“<b>$new_hotkey_action|</b>”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:876
+#: src/gui/dialogs/preferences_dialog.cpp:873
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:893
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快捷键都已被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:893
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 
@@ -6860,24 +6851,24 @@ msgstr ""
 "\n"
 "请尝试将截屏保存为PNG。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:81
+#: src/gui/dialogs/statistics_dialog.cpp:79
 msgid "All Scenarios"
 msgstr "全部场景"
 
-#: src/gui/dialogs/statistics_dialog.cpp:179
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:177
+#: src/gui/dialogs/statistics_dialog.cpp:336
 msgid "This Turn"
 msgstr "此回合"
 
-#: src/gui/dialogs/statistics_dialog.cpp:215
+#: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Actual hit rates, by chance to hit:"
 msgstr "实际命中率比期望命中率："
 
-#: src/gui/dialogs/statistics_dialog.cpp:217
+#: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "(no attacks have taken place yet)"
 msgstr "（还没有进行攻击）"
 
-#: src/gui/dialogs/statistics_dialog.cpp:325
+#: src/gui/dialogs/statistics_dialog.cpp:323
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -6890,45 +6881,47 @@ msgstr ""
 "括号中的第一个数字是期望命中/被命中数。\n"
 "括号中的两个数字之和（差）是实际命中/被命中数。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Recalls"
 msgstr "次召回"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Advancements"
 msgstr "次升级"
 
-#: src/gui/dialogs/statistics_dialog.cpp:372
+#: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Losses"
 msgstr "次损失"
 
-#: src/gui/dialogs/statistics_dialog.cpp:373
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Kills"
 msgstr "次击杀"
 
-#: src/gui/dialogs/statistics_dialog.cpp:395
-#: src/gui/dialogs/statistics_dialog.cpp:402
+#: src/gui/dialogs/statistics_dialog.cpp:393
+#: src/gui/dialogs/statistics_dialog.cpp:400
 msgid "Inflicted"
 msgstr "点造成的伤害"
 
-#: src/gui/dialogs/statistics_dialog.cpp:408
-#: src/gui/dialogs/statistics_dialog.cpp:415
+#: src/gui/dialogs/statistics_dialog.cpp:406
+#: src/gui/dialogs/statistics_dialog.cpp:413
 msgid "Taken"
 msgstr "点受到的伤害"
 
-#: src/gui/dialogs/statistics_dialog.cpp:456
+#: src/gui/dialogs/statistics_dialog.cpp:454
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:113 src/hotkey/hotkey_command.cpp:97
+#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:97
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/gui/dialogs/title_screen.cpp:443
-msgid "Choose Test"
-msgstr "选择测试"
+#: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
+#, fuzzy
+#| msgid "Choose Starting Scenario"
+msgid "Choose Test Scenario"
+msgstr "选择起始场景"
 
-#: src/gui/dialogs/unit_create.cpp:198
+#: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
 msgstr "默认变化"
 
@@ -7012,7 +7005,7 @@ msgstr ""
 "和<b>$name</b>的悄悄话开始。如果你不希望收到来自此玩家的消息，请输入<b>/"
 "ignore $name</b>"
 
-#: src/gui/widgets/helper.cpp:98
+#: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "必须的界面构件“$id|”尚未定义。"
 
@@ -7028,18 +7021,18 @@ msgstr "打开链接？"
 msgid "Copied link!"
 msgstr "已复制链接！"
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:728 src/gui/widgets/multi_page.cpp:219
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "“list_data”与“list_definition”中的列数必须一致。"
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
-#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:772 src/gui/widgets/listbox.cpp:815
+#: src/gui/widgets/listbox.cpp:858 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "没有已定义的列表。"
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
-#: src/gui/widgets/listbox.cpp:880
+#: src/gui/widgets/listbox.cpp:777 src/gui/widgets/listbox.cpp:820
+#: src/gui/widgets/listbox.cpp:863
 msgid "A 'list_definition' should contain one row."
 msgstr "每个“list_definition”（列表定义）应该至少有一行。"
 
@@ -7065,7 +7058,7 @@ msgstr[1] "及另$excess|个"
 msgid "multimenu^None Selected"
 msgstr "未选中"
 
-#: src/gui/widgets/pane.cpp:373
+#: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
 msgstr "还需要至少一件并行的物品。"
 
@@ -7077,7 +7070,7 @@ msgstr "无效尺寸。"
 msgid "No widget defined."
 msgstr "没有已定义的界面构件。"
 
-#: src/gui/widgets/slider.cpp:355
+#: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
 msgstr "value_label的数量与值（value）的数量不匹配。"
 
@@ -7089,15 +7082,15 @@ msgstr "没有已定义的堆栈层次。"
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "发现有帮助提示但却没有提示小标签的界面构件。"
 
-#: src/gui/widgets/tree_view.cpp:303
+#: src/gui/widgets/tree_view.cpp:292
 msgid "No nodes defined for a tree view."
 msgstr "没有已定义的树状视图节点。"
 
-#: src/gui/widgets/tree_view.cpp:338
+#: src/gui/widgets/tree_view.cpp:327
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[节点]ID‘root’是保留给游戏实现专用的。"
 
-#: src/gui/widgets/tree_view.cpp:342
+#: src/gui/widgets/tree_view.cpp:331
 msgid "No node defined."
 msgstr "没有已定义的节点。"
 
@@ -7157,11 +7150,11 @@ msgstr "移动："
 msgid "Abilities"
 msgstr "能力"
 
-#: src/gui/widgets/window.cpp:922
+#: src/gui/widgets/window.cpp:773
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "单击“开除”需要一个“click_dismiss”或“ok”按钮。"
 
-#: src/gui/widgets/window.cpp:947 src/gui/widgets/window.cpp:984
+#: src/gui/widgets/window.cpp:798 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:565
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示对话框，对话框不适应屏幕大小。"
@@ -7963,10 +7956,6 @@ msgstr "启动编辑器"
 msgid "Show Credits"
 msgstr "显示制作者名单"
 
-#: src/hotkey/hotkey_command.cpp:297
-msgid "Start Test Scenario"
-msgstr "开始测试场景"
-
 #: src/hotkey/hotkey_command.cpp:299
 msgid "Show Helptip"
 msgstr "显示帮助提示"
@@ -8003,12 +7992,6 @@ msgstr "[%H:%M]"
 #: src/preferences/game.cpp:869
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
-
-#: src/terrain/translation.cpp:713
-msgid ""
-"A terrain with a string with more than 4 characters has been found, the "
-"affected terrain is:"
-msgstr "找到一个具有长度超过4个字符的字符串的地形，受影响的地形是："
 
 #: src/wml_exception.cpp:66
 msgid ""
@@ -8047,6 +8030,23 @@ msgid ""
 msgstr ""
 "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
 "$removal_version|中移除。"
+
+#~ msgid "Area to draw has negative size"
+#~ msgstr "绘图区域的尺寸为负值"
+
+#~ msgid "Area to draw is larger than widget size"
+#~ msgstr "绘图区域比部界面构件尺寸大"
+
+#~ msgid "Choose Test"
+#~ msgstr "选择测试"
+
+#~ msgid "Start Test Scenario"
+#~ msgstr "开始测试场景"
+
+#~ msgid ""
+#~ "A terrain with a string with more than 4 characters has been found, the "
+#~ "affected terrain is:"
+#~ msgstr "找到一个具有长度超过4个字符的字符串的地形，受影响的地形是："
 
 #, fuzzy
 #~| msgid "Desert Castle"

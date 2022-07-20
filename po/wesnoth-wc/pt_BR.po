@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
 "PO-Revision-Date: 2022-01-11 23:01-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -13,81 +13,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.4.3\n"
 
-#. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
-msgid "Max HP bonus +6%"
-msgstr "Bônus de HP máximo +6%"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:4
-msgid "heroic"
-msgstr "heroico"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:7
-msgid "female^heroic"
-msgstr "heroica"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:10
-msgid "expert"
-msgstr "perito"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:13
-msgid "female^expert"
-msgstr "perita"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:16
-msgid "epic"
-msgstr "épico"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:19
-msgid "female^epic"
-msgstr "épica"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:22
-msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
-msgstr "APNM custa 60 de XP e aumenta a vida máxima em 6 HP."
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:25
-msgid "legendary"
-msgstr "lendário"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:28
-msgid "female^legendary"
-msgstr "lendária"
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:31
-msgid "Special advancement to Chocobone enabled."
-msgstr "Avanço especial para Chocosso ativado."
-
-#: data/campaigns/World_Conquest/era/campaign/strings.cfg:34
-msgid "Special advancement to Goblin Pillager enabled."
-msgstr "Avanço especial para Góblin Saqueador ativado."
-
-#. [multiplayer_side]: id=The_Artisans, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
-msgid "The Artisans"
-msgstr "A Aliança"
-
-#. [multiplayer_side]: id=The_Defiance, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
-msgid "The Defiance"
-msgstr "A Aliança"
-
-#. [multiplayer_side]: id=The_Marauders, type=random
-#: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
-msgid "The Marauders"
-msgstr "A Horda"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:7
+#. [era]: id=world_conquest_era
+#: data/campaigns/World_Conquest/_main.cfg:41
 msgid "World Conquest"
 msgstr "Conquistando o Mundo"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:10
+#. [era]: id=world_conquest_era
+#: data/campaigns/World_Conquest/_main.cfg:42
 msgid ""
 "Units are defined as pairs in recruit list: Every time a unit is recruited, "
 "it is replaced by its pair. This era is designed to be balanced playing "
@@ -101,62 +33,192 @@ msgstr ""
 "Para mais informações sobre os pares, clique com o botão direito dentro do "
 "jogo em um hexágono vazio."
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:14
-msgid "The Horde"
-msgstr "A Horda"
+#. [trait]: id=heroic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:57
+msgid "heroic"
+msgstr "heroico"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:17
+#. [trait]: id=heroic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:58
+msgid "female^heroic"
+msgstr "heroica"
+
+#. [trait]: id=expert
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:95
+msgid "expert"
+msgstr "perito"
+
+#. [trait]: id=expert
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:96
+msgid "female^expert"
+msgstr "perita"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:112
+msgid "epic"
+msgstr "épico"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:113
+msgid "female^epic"
+msgstr "épica"
+
+#. [trait]: id=epic
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:114
+msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
+msgstr "APNM custa 60 de XP e aumenta a vida máxima em 6 HP."
+
+#. [advancement]: id=amla_default
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+msgid "Max HP bonus +6%"
+msgstr "Bônus de HP máximo +6%"
+
+#. [trait]: id=legendary_zombie
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:165
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:209
+msgid "legendary"
+msgstr "lendário"
+
+#. [trait]: id=legendary_zombie
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:166
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:210
+msgid "female^legendary"
+msgstr "lendária"
+
+#. [trait]: id=legendary_zombie
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:167
+msgid "Special advancement to Chocobone enabled."
+msgstr "Avanço especial para Chocosso ativado."
+
+#. [trait]: id=legendary_goblin
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:211
+msgid "Special advancement to Goblin Pillager enabled."
+msgstr "Avanço especial para Góblin Saqueador ativado."
+
+#. [multiplayer_side]: id=The Alliance, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:6
 msgid "The Alliance"
 msgstr "A Aliança"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:20
-msgid "The Guild"
-msgstr "A Guilda"
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:16
+msgid "Young Ogre, Undead and Northerners"
+msgstr ""
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:23
-msgid "The Trust"
-msgstr "A Irmandade"
+#. [multiplayer_side]: id=The_Artisans, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Artisans"
+msgstr "A Aliança"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:26
-msgid "The Gang"
-msgstr "A Guangue"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:29
+#. [multiplayer_side]: id=The Cult, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
 msgid "The Cult"
 msgstr "O Culto"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:32
-msgid "The Militia"
-msgstr "A Milícia"
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:16
+msgid "Young Ogre, Drakes and Northerners"
+msgstr ""
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:35
-msgid "The Scourge"
-msgstr "O Flagelo"
+#. [multiplayer_side]: id=The_Defiance, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
+#, fuzzy
+#| msgid "The Alliance"
+msgid "The Defiance"
+msgstr "A Aliança"
 
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:38
-msgid "The Hand"
-msgstr "A Mão"
-
-#: data/campaigns/World_Conquest/era/factions/strings.cfg:41
+#. [multiplayer_side]: id=The Empire, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
 msgid "The Empire"
 msgstr "O Império"
 
+#. [multiplayer_side]: id=The Gang, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:6
+msgid "The Gang"
+msgstr "A Guangue"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:16
+msgid "Dune Herbalist, Loyalists and Knalgan Alliance"
+msgstr ""
+
+#. [multiplayer_side]: id=The Guild, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:6
+msgid "The Guild"
+msgstr "A Guilda"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:16
+msgid "Dune Soldier, Loyalists and Drakes"
+msgstr ""
+
+#. [multiplayer_side]: id=The Hand, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:6
+msgid "The Hand"
+msgstr "A Mão"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+msgid "Dune Rider, Knalgan Alliance and Drakes"
+msgstr ""
+
+#. [multiplayer_side]: id=The Horde, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:6
+msgid "The Horde"
+msgstr "A Horda"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:16
+msgid "Dune Rider, Knalgan Alliance and Rebels"
+msgstr ""
+
+#. [multiplayer_side]: id=The_Marauders, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
+#, fuzzy
+#| msgid "The Horde"
+msgid "The Marauders"
+msgstr "A Horda"
+
+#. [multiplayer_side]: id=The Militia, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
+msgid "The Militia"
+msgstr "A Milícia"
+
+#. [world_conquest_data]
+#: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:16
+msgid "Dune Rover, Undead and Loyalists"
+msgstr ""
+
+#. [multiplayer_side]: id=The Scourge, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Scourge.cfg:7
+msgid "The Scourge"
+msgstr "O Flagelo"
+
+#. [multiplayer_side]: id=The Trust, type=random
+#: data/campaigns/World_Conquest/era/factions/The_Trust.cfg:7
+msgid "The Trust"
+msgstr "A Irmandade"
+
 #. [label]: id=title
 #. [lua]: root_node.on_modified
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:49
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:236
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:234
 msgid "WoCopedia"
 msgstr "CoMupedia"
 
 #. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:571
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Configurações"
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:670
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
 msgid "Difficulty"
 msgstr "Dificuldade"
 
@@ -250,12 +312,12 @@ msgid "You are not using a WC2 faction."
 msgstr "Você não está usando uma facção do WC2."
 
 #. [lua]: artifacts.give_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:148
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:156
 msgid "I cannot pick up that item."
 msgstr "Eu não posso pegar esse item."
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
-#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:230
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:238
 msgid "Remind me what this item does"
 msgstr "Me lembre do que este item faz"
 
@@ -2437,18 +2499,18 @@ msgstr " (não disponível para os jogadores)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:128
+#: data/campaigns/World_Conquest/lua/map/main.lua:122
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "Começo"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:130
+#: data/campaigns/World_Conquest/lua/map/main.lua:124
 msgid "Scenario"
 msgstr "Cenário"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:132
+#: data/campaigns/World_Conquest/lua/map/main.lua:126
 msgid "Final Battle"
 msgstr "Batalha Final"
 
@@ -2749,127 +2811,22 @@ msgstr "Inimigos"
 msgid "Allies"
 msgstr "Aliados"
 
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:10
-msgid "Preset Advancement"
-msgstr "Avanço Predeterminado"
-
-#. [lua]: wesnoth.wml_actions.wc2_pya_pick
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:41
-msgid ""
-"Currently I’m set to advance towards: $name \n"
-"\n"
-"What are your new orders?"
-msgstr ""
-"No momento estou definido para avançar para: $name \n"
-"\n"
-"Quais são as suas ordens?"
-
-#. [lua]: wesnoth.wml_actions.wc2_pya_pick
-#: data/campaigns/World_Conquest/lua/optional_mechanics/pick_advance.lua:48
-msgid "Random"
-msgstr "Aleatório"
-
 #: data/campaigns/World_Conquest/lua/optional_mechanics/unitmarker.lua:12
 msgid "Special Overlay"
 msgstr "Sobreposição Especial"
 
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:6
-msgid " and "
-msgstr " e "
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
-msgid "damage"
-msgstr "dano"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:12
-msgid " resistance vs "
-msgstr " resistência vs "
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:15
-msgid "moves"
-msgstr "movimentos"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:18
-msgid "strike"
-msgstr "golpe"
-
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:21
-msgid "XP to advance"
-msgstr "XP para avançar"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:308
-msgid "$range|: $special|"
-msgstr "$range|: $special|"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:522
-msgid "+$boost| moves"
-msgstr "+$boost| de movimento"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:536
-msgid "$range|: +$boost| damage"
-msgstr "$range|: +$boost| de dano"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:552
-msgid "$range|: +1 damage per level"
-msgstr "$range|: +1 dano por nível"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:568
-msgid "+$hitpoints| hitpoints"
-msgstr "+$hitpoints| pontos de vida"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:583
-msgid "+$hitpoints| hitpoints per level"
-msgstr "+$hitpoints| pontos de vida por nível"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:599
-msgid "$value| XP to advance"
-msgstr "$value| XP para avançar"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:623
-msgid "Village/Castle: +5 defense"
-msgstr "Aldeia/Castelo: +5 defesa"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:655
-msgid ""
-"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
-msgstr ""
-"$terrain|: +$def| defesa e sem penalidade de movimento +$res|"
-" resistência vs $dmg_type|"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:684
-msgid "$terrain|: +10 defense and full movement"
-msgstr "$terrain|: +10 de defesa e sem penalidade de movimento"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:695
-msgid "+moves defense"
-msgstr "+movimento defesa"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:705
-msgid "melee: optional charge"
-msgstr "corpo-a-corpo: carga opcional"
-
-#. [chance]
-#: data/campaigns/World_Conquest/resources/data/training.cfg:730
-msgid "$range|: arcane and +25% damage"
-msgstr "$range|: arcano e +25% de dano"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:4
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:7
 msgid "Adamant armor"
 msgstr "Armadura de Adamante"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:7
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
+msgid "blade/impact/pierce: up to 10% resistances, steadfast"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:10
 msgid ""
 "The sturdy plates of this lightweight armor increase the user’s physical "
 "resistances (to a maximum of 10%) and grants the steadfast ability."
@@ -2877,11 +2834,18 @@ msgstr ""
 "As robustas placas desta armadura leve aumentam as resistências físicas de "
 "seu usuário (até um máximo de 10%) e concedem a habilidade posição defensiva."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:10
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:28
 msgid "Assassin’s ring"
 msgstr "Anel do assassino"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:13
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:30
+msgid "melee: backstab"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:31
 msgid ""
 "This plain ring with a pleasantly smooth and slippery surface gives its "
 "owner unmatched sneak attacking skills."
@@ -2889,11 +2853,22 @@ msgstr ""
 "Este anel simples cuja superfície é agradavelmente lisa e escorregadia "
 "concede ao seu usuário a capacidade de atacar de surpresa."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:16
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:47
 msgid "Azure pearl"
 msgstr "Pérola Azure"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:19
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:49
+msgid ""
+"Full movement and up to 60% defense in water or swamp and up to 70% defense "
+"in reef."
+msgstr ""
+"Sem penalidade de movimento e no máximo 60% de defesa em água ou pântano, e "
+"no máximo 70% de defesa em corais."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:50
 msgid ""
 "This wondrous gem lets the bearer breathe and move through water as if it "
 "was air, strongly improving their mobility in water and granting the "
@@ -2903,11 +2878,18 @@ msgstr ""
 "mover pela água como se ela fosse vento, aumentando consideravelmente sua "
 "mobilidade na água e dando-lhe a habilidade de submergir."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:22
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:80
 msgid "Bezoar"
 msgstr "Bezoar"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:25
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
+msgid "fearless, undead, healthy, tenacity"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
 msgid ""
 "This shamanic totem protects from poison, drain, and plague. Bearers of the "
 "totem are immune to fear and their vulnerabilities are reduced."
@@ -2915,11 +2897,18 @@ msgstr ""
 "Este totem xamanico protege contra veneno, dreno e praga. Aquele que porta "
 "este totem é imune a medo e suas vulnerabilidades são diminuídas."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:28
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:96
 msgid "Blood ring"
 msgstr "Anel de Sangue"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:31
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:98
+msgid "melee: drains"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:99
 msgid ""
 "This pulsing ring empowers the bearer’s melee attacks with the ability to "
 "drain lifeforce from their victim."
@@ -2927,22 +2916,61 @@ msgstr ""
 "Este anel pulsante faz com que os ataques corpo-a-corpo de seu dono drenem a "
 "força vital de suas vítimas."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:34
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:115
+msgid "Cruel spike"
+msgstr "Ponta cruel"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
+#, fuzzy
+#| msgid "melee: optional charge"
+msgid "melee: charge"
+msgstr "corpo-a-corpo: carga opcional"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
+msgid ""
+"This enchanted spear drives the owner to commit himself to his rage. A "
+"unit’s melee strikes are doubled in power when attacking, but the same is "
+"true for the retaliation strike of the defender."
+msgstr ""
+"Esta lança encantada faz com que o seu dono seja consumido pela ira. Os "
+"ataques corpo-a-corpo dele possuem seu dano dobrado quando ele ataca, mas o "
+"mesmo também acontece com o dano de retaliação do defensor."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:134
 msgid "Cursed symbol of life"
 msgstr "Símbolo da Vida Amaldiçoado"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:37
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
+msgid "ranged: drains"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:137
 msgid ""
 "This vampiric amulet allows a unit to drain enemy life from a safe distance."
 msgstr ""
 "Este amuleto vampírico permite que o usuário drene a vida dos seus inimigos "
 "a uma distância segura."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:40
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:153
 msgid "Eagle eye longbow"
 msgstr "Arco longo Olho d' águia"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:43
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
+#, fuzzy
+#| msgid "$range|: arcane and +25% damage"
+msgid "ranged: marksman and +25% damage"
+msgstr "$range|: arcano e +25% de dano"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
 msgid ""
 "This enchanted longbow enhances the wielder’s ranged attacks with uncanny "
 "precision and increased damage."
@@ -2950,11 +2978,20 @@ msgstr ""
 "Este arco longo encanta os ataques à distância de seu dono com uma precisão "
 "sobrenatural e dano aumentado."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:46
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:177
 msgid "Forbidden grimoire"
 msgstr "Grimório Proibido"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:49
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
+#, fuzzy
+#| msgid "melee: optional charge"
+msgid "melee: plague"
+msgstr "corpo-a-corpo: carga opcional"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
 msgid ""
 "This unholy manual gives the user the arcane knowledge to resurrect enemies "
 "slain in melee combat as the walking dead."
@@ -2963,15 +3000,18 @@ msgstr ""
 "para ressucitar inimigos mortos em combate corpo-a-corpo como corpos "
 "ambulantes."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:52
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:197
 msgid "Forcefield"
 msgstr "Campo de força"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:55
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:199
 msgid "adjacent enemies do 13% less damage"
 msgstr "inimigos adjacentes causam 13% de dano a menos"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:58
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:200
 msgid ""
 "Charged with intense magic, this shield generates a forcefield causing "
 "adjacent enemies to inflict less damage around the wielder."
@@ -2980,11 +3020,29 @@ msgstr ""
 "com que as unidades inimigas adjacentes inflijam menos dano ao redor do "
 "usuário."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:61
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:209
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:210
+msgid "forcefield"
+msgstr "campo de força"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:211
+msgid "Adjacent enemies do 13% less damage."
+msgstr "Inimigos adjacentes causam 13% de dano a menos."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:226
 msgid "Ghast’s marrow"
 msgstr "Tutano de Ghast"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:64
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:228
+msgid "feeding, +3 HP"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:229
 msgid ""
 "This grisly concoction instills the drinker with an insatiable unholy hunger "
 "for more blood. Every time a foe is slain, a part of his lifeforce is "
@@ -2995,38 +3053,18 @@ msgstr ""
 "vital é reinvindicada eternamente por meio de poderes arcanos parecidos com "
 "os dos carniçais."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:67
-msgid "Root of the Elder Wose"
-msgstr "Raíz do Wose Ancião"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
-msgid ""
-" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
-msgstr ""
-" Forjado por Anões, esta arma contundente imita o poder esmagador de um Wose."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:73
-msgid "Cruel spike"
-msgstr "Ponta cruel"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:76
-msgid ""
-"This enchanted spear drives the owner to commit himself to his rage. A "
-"unit’s melee strikes are doubled in power when attacking, but the same is "
-"true for the retaliation strike of the defender."
-msgstr ""
-"Esta lança encantada faz com que o seu dono seja consumido pela ira. Os "
-"ataques corpo-a-corpo dele possuem seu dano dobrado quando ele ataca, mas o "
-"mesmo também acontece com o dano de retaliação do defensor."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:79
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "Heart of fire"
 msgstr "Coração de fogo"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:82
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:252
+msgid "melee: fire and +25% damage, +30 resistance vs fire"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:253
 msgid ""
 "This magic orb infuses the wielder’s melee attacks with fiery power, "
 "changing their damage type. It also improves fire resistance."
@@ -3035,11 +3073,18 @@ msgstr ""
 "do fogo, mudando o tipo do dano deles. Ela também melhora a resistência "
 "contra fogo."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:85
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:270
 msgid "Herald armor"
 msgstr "Armadura do arauto"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:88
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:272
+msgid "illuminates, lawful, heals +4, firststrike"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:273
 msgid ""
 "This holy armor of thin gold radiates pure light, illuminating the bearer’s "
 "body and soul. This effect will heal allies, blind evil, and preemptively "
@@ -3049,11 +3094,18 @@ msgstr ""
 "alma de seu usuário. Este efeito irá curar os aliados, cegar os seres "
 "malignos e preventinamente atacar aqueles que tentarem lhe causar mau."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:91
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:308
 msgid "Holy water"
 msgstr "Água benta"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:94
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
+msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:311
 msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
@@ -3062,11 +3114,18 @@ msgstr ""
 "aumentando o dano e mudando o tipo do dano. Ele também aumenta a resistência "
 "arcana."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:97
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:329
 msgid "Ice bow"
 msgstr "Arco de gelo"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:100
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
+msgid "19-1 ranged-cold slows"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
 msgid ""
 "Draw this magical bow summon an ice arrow that will freeze and slow its "
 "target upon hit."
@@ -3074,11 +3133,24 @@ msgstr ""
 "Envergar este arco mágico invoca uma flecha de gelo que congela e causa "
 "lentidão no seu alvo quando ele é acertado."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:103
+#. [effect]: type=cold
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:337
+msgid "ice bow"
+msgstr "arco de gelo"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
 msgid "Medicinal herbs"
 msgstr "Ervas medicinais"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:106
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+msgid "heals +8, cures"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
@@ -3086,11 +3158,22 @@ msgstr ""
 "Estas ervas potentes concedem ao seu usuário a habilidade de medicar "
 "unidades adjacentes e curá-las de seus venenos."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:109
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:396
 msgid "Melange"
 msgstr "Mistura"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:112
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
+#, fuzzy
+#| msgid "no undead^consumed by a living being:"
+msgid ""
+"no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
+"advance"
+msgstr "ingerido por um ser vivo:"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
@@ -3098,11 +3181,37 @@ msgstr ""
 "Esta droga de origem orgânica melhora a vitalidade e atenção de seu usuário. "
 "Ela não possui efeito quando consumida por um morto-vivo."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:115
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:426
+msgid "Ointment of venom"
+msgstr "Ungento de veneno"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
+msgid "blade/pierce: poison and +20% damage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
+msgid ""
+"This deadly poison envenoms the user’s blade and pierce attacks, increasing "
+"damage and allowing them to inflict poison."
+msgstr ""
+"Este veneno mortal afeta os ataques de lâmina e perfurante de seu usuário, "
+"aumentando o dano e fazendo com que eles envenenem."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:446
 msgid "Ring of frostbite"
 msgstr "Anel de queimadura por frio"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:118
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
+msgid "melee: cold and slows"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
 msgid ""
 "This frigid ring envelops the user’s melee attacks with icy cold, changing "
 "their damage to cold and allowing them to inflict deathly chills that slow "
@@ -3112,21 +3221,57 @@ msgstr ""
 "vento gélido , mudando o seu dano para frio e fazendo com que ele inflinja "
 "calafrios mortíferos."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:121
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:466
 msgid "Ring of power"
 msgstr "Anel do poder"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:124
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
+msgid "arcane/cold/fire: disengage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
 msgid ""
 "Wearing this ring enhances damage with arcane and elemental attacks, "
 "allowing using them with supernatural skill and presence."
 msgstr "Esse anel aumenta o dano com ataque arcano e elementais."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:127
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:483
+msgid "Root of the Elder Wose"
+msgstr "Raíz do Wose Ancião"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
+#, fuzzy
+#| msgid "$range|: arcane and +25% damage"
+msgid "impact: +1 strike and +2 damage"
+msgstr "$range|: arcano e +25% de dano"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
+#, fuzzy
+#| msgid ""
+#| " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
+msgid ""
+" Dwarven forged, this blunt weapon mimics the crushing power of the wose."
+msgstr ""
+" Forjado por Anões, esta arma contundente imita o poder esmagador de um Wose."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:500
 msgid "Runic sword"
 msgstr "Espada rúnica"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:130
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
+msgid "melee: magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
 msgid ""
 "This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
@@ -3134,20 +3279,39 @@ msgstr ""
 "Esta espada mágica concede a propriedade mágica aos ataques corpo-a-corpo de "
 "seu portador."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:133
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:519
 msgid "Staff of radiance"
 msgstr "Cajado da radiância"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:136
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
+msgid "11-3 ranged-arcane magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
 msgid "This sacred rod can unleash brilliant bursts of luminous energy."
 msgstr ""
 "Este cajado sagrado é capaz de emitir rajadas brilhantes de energia luminosa."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:139
+#. [effect]: type=arcane
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:527
+msgid "staff of radiance"
+msgstr "cajado do esplendor"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
 msgid "Stormbringer"
 msgstr "Presságio da Tempestade"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:142
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
+msgid "melee: fury"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
 msgid ""
 "This tormented sword causes rage in any who wield it. Melee attacks will "
 "gain the fury ability pressing engagement for 3 rounds."
@@ -3155,11 +3319,34 @@ msgstr ""
 "Esta espada atormentada induz à fúria que a carrega. Ataques corpo-a-corpo "
 "ganham a habilidade de fúria forçando que o combate dure 3 rodadas."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:145
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:581
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:582
+msgid "fury"
+msgstr "fúria"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:583
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 3 rounds of attacks have occurred."
+msgstr ""
+"Independente de ser usado ofensiva ou defensivamente, este ataque faz com "
+"que o combate continue até que um dos combatentes sejam mortos ou se passem "
+"três rodadas de ataques."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:590
 msgid "Sylph bow"
 msgstr "Arco da Silfa"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:148
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
+msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
 msgid ""
 "A runic bow. This elvish heirloom, passed from Queen to Princess, gathers "
 "power with each generation and speeds up the wielders movements so that more "
@@ -3170,11 +3357,18 @@ msgstr ""
 "portador, possibilitando que mais golpes sejam desferidos antes que o "
 "combate termine."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:151
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:608
 msgid "Terror disguise"
 msgstr "Disfarce do Terror"
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:154
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
+msgid "darkness, chaotic, corruption, distract"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
 msgid ""
 "This cursed outfit spreads a trail of darkness, harming those who get too "
 "close."
@@ -3182,154 +3376,14 @@ msgstr ""
 "Esta veste amaldiçoada deixa um rastro de trevas que machuca aqueles que se "
 "aproximam demais."
 
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:157
-msgid "The Key"
-msgstr "A Chave"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:160
-msgid "This magical object opens the gateway between dimensions."
-msgstr "Este objeto mágia abre o portal entre dimensões."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:163
-msgid "Tome of secrets"
-msgstr "Tomo dos segredos"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:166
-msgid "This forgotten book imparts ancient knowledge to the reader."
-msgstr ""
-"Este livro esquecido transmite conhecimento ancestral para o seu leitor."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:169
-msgid "Trident of storms"
-msgstr "Tridente das tempestades"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:172
-msgid ""
-"This legendary trident can summon lightning from the heavens, granting its "
-"wielder magical ranged fire attack."
-msgstr ""
-"Este tridente lendário é capaz de invocar relâmpagos do céu,concedendo ao "
-"seu portador ataque mágico de fogo à distância."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:175
-msgid "Trolls blood potion"
-msgstr "Poção de sangue de troll"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:178
-msgid "This foul-smelling potion allows the imbiber to regenerate health."
-msgstr "Esta poção que cheira mal permite que quem a beba regenere vida."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:181
-msgid "Ointment of venom"
-msgstr "Ungento de veneno"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:184
-msgid ""
-"This deadly poison envenoms the user’s blade and pierce attacks, increasing "
-"damage and allowing them to inflict poison."
-msgstr ""
-"Este veneno mortal afeta os ataques de lâmina e perfurante de seu usuário, "
-"aumentando o dano e fazendo com que eles envenenem."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:187
-msgid "War banner"
-msgstr "Estandarte de guerra"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:190
-msgid "adjacent allies do 20% more damage"
-msgstr "aliados adjacentes causam 20% a mais de dano"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:193
-msgid ""
-"This inspiring banner rallies the bearer’s allies to war, imparting a damage "
-"bonus to the allied units around it."
-msgstr ""
-"Este estandarte inspirador encoraja os aliados do portador para à guerra, "
-"concedendo dano bônus para as unidades aliadas ao redor dele."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:196
-msgid "Winged scepter"
-msgstr "Cajado alado"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:199
-msgid ""
-"This wondrous rod imparts the user the ability to soar through the skies, "
-"making it a breeze to move through most terrain. Units that can already fly "
-"get improved defenses."
-msgstr ""
-"Este bastão maravilhoso faz com que o seu usuário seja capaz de voar pelos "
-"céus, fazendo com que seja extremamente fácil cruzar a maioria dos terrenos. "
-"Unidades que já são capazes de voar tem as suas defesas melhoradas."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:202
-msgid "Winter’s bloom"
-msgstr "Flor invernal"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:205
-msgid ""
-"This delicate blossom rarely found in snowy peaks, is strongly appreciated "
-"for its beneficial effects on health."
-msgstr ""
-"Uma delicada flor rara que é encontrada em picos nevados. É muito apreciada "
-"pelos seus efeitos benéficos para a saúde."
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:208
-msgid "Zephyr cloak"
-msgstr "Manto de Zéfiro"
-
-#: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:211
-msgid ""
-"This lightweight cloak renders its wearer almost invisible in the darkness "
-"and lets them move with fluid grace past enemies with ease."
-msgstr ""
-"Este manto leve faz com que o seu usuário fique quase que completamente "
-"invisível nas trevas e mova-se com graça e fluidez por entre seus oponentes."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:4
-msgid "staff of radiance"
-msgstr "cajado do esplendor"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:7
-msgid "storm trident"
-msgstr "tridente da tempestade"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:10
-msgid "ice bow"
-msgstr "arco de gelo"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:13
-msgid "banner"
-msgstr "estandarte"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:16
-msgid ""
-"This unit can lead ~allied~ units that are next to it, making them fight "
-"better. Adjacent allied units will do 20% more damage. This is cumulative "
-"with leadership."
-msgstr ""
-"Esta unidade pode liderar unidades ~aliadas~ que estão ao seu redor fazendo "
-"com que elas lutem melhor. Unidades adjacentes terão seu dano aumentado em "
-"20%. Este efeito acumula com liderança."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:19
-msgid "corruption"
-msgstr "corrupção"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:22
-msgid ""
-"This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
-"units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
-"unit."
-msgstr ""
-"Esta unidade corrompe unidades inimigas adjacententes no começo de nosso "
-"turno. Unidades corrompidas perdem 6 de HP ou são reduzidas para 1 de HP. "
-"Corrupção não é capaz de matar uma unidade."
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:25
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:631
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:632
 msgid "darkness"
 msgstr "escuridão"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:28
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:633
 msgid ""
 "This unit darkens the surrounding area, making chaotic units fight better, "
 "and lawful units fight worse. Any units adjacent to this unit will fight as "
@@ -3340,21 +3394,128 @@ msgstr ""
 "esta unidade lutará como se fosse anoitecer quando for de dia, e lutará como "
 "se fosse de noite quando for no anoitecer."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:31
-msgid "distract"
-msgstr "distrair"
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:638
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:639
+msgid "corruption"
+msgstr "corrupção"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:34
-msgid "Allied units ignore enemy zones of control adjacent to this unit."
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:640
+msgid ""
+"This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
+"units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
+"unit."
 msgstr ""
-"Unidades aliadas ignoram zonas de controle inimigas adjacentes a esta "
-"unidade."
+"Esta unidade corrompe unidades inimigas adjacententes no começo de nosso "
+"turno. Unidades corrompidas perdem 6 de HP ou são reduzidas para 1 de HP. "
+"Corrupção não é capaz de matar uma unidade."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:37
-msgid "flight"
-msgstr "voo"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:653
+msgid "The Key"
+msgstr "A Chave"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:40
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:658
+msgid "This magical object opens the gateway between dimensions."
+msgstr "Este objeto mágia abre o portal entre dimensões."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:680
+msgid "Tome of secrets"
+msgstr "Tomo dos segredos"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#, fuzzy
+#| msgid "XP to advance"
+msgid "-50% XP to advance"
+msgstr "XP para avançar"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
+msgid "This forgotten book imparts ancient knowledge to the reader."
+msgstr ""
+"Este livro esquecido transmite conhecimento ancestral para o seu leitor."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:691
+msgid "Trident of storms"
+msgstr "Tridente das tempestades"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
+msgid "17-2 ranged-fire magical"
+msgstr ""
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
+msgid ""
+"This legendary trident can summon lightning from the heavens, granting its "
+"wielder magical ranged fire attack."
+msgstr ""
+"Este tridente lendário é capaz de invocar relâmpagos do céu,concedendo ao "
+"seu portador ataque mágico de fogo à distância."
+
+#. [effect]: type=fire
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+msgid "storm trident"
+msgstr "tridente da tempestade"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:714
+msgid "Trolls blood potion"
+msgstr "Poção de sangue de troll"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:719
+msgid "This foul-smelling potion allows the imbiber to regenerate health."
+msgstr "Esta poção que cheira mal permite que quem a beba regenere vida."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:729
+msgid "War banner"
+msgstr "Estandarte de guerra"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:731
+msgid "adjacent allies do 20% more damage"
+msgstr "aliados adjacentes causam 20% a mais de dano"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:732
+msgid ""
+"This inspiring banner rallies the bearer’s allies to war, imparting a damage "
+"bonus to the allied units around it."
+msgstr ""
+"Este estandarte inspirador encoraja os aliados do portador para à guerra, "
+"concedendo dano bônus para as unidades aliadas ao redor dele."
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:742
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:743
+msgid "banner"
+msgstr "estandarte"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:744
+msgid ""
+"This unit can lead ~allied~ units that are next to it, making them fight "
+"better. Adjacent allied units will do 20% more damage. This is cumulative "
+"with leadership."
+msgstr ""
+"Esta unidade pode liderar unidades ~aliadas~ que estão ao seu redor fazendo "
+"com que elas lutem melhor. Unidades adjacentes terão seu dano aumentado em "
+"20%. Este efeito acumula com liderança."
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:755
+msgid "Winged scepter"
+msgstr "Cajado alado"
+
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
@@ -3362,145 +3523,77 @@ msgstr ""
 "Sem penalidade de movimento e no máximo 50% de defesa em todos os terrenos "
 "exceto cavernas e bosque de cogumelos."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:43
-msgid "swim"
-msgstr "nado"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:46
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:758
 msgid ""
-"Full movement and up to 60% defense in water or swamp and up to 70% defense "
-"in reef."
+"This wondrous rod imparts the user the ability to soar through the skies, "
+"making it a breeze to move through most terrain. Units that can already fly "
+"get improved defenses."
 msgstr ""
-"Sem penalidade de movimento e no máximo 60% de defesa em água ou pântano, e "
-"no máximo 70% de defesa em corais."
+"Este bastão maravilhoso faz com que o seu usuário seja capaz de voar pelos "
+"céus, fazendo com que seja extremamente fácil cruzar a maioria dos terrenos. "
+"Unidades que já são capazes de voar tem as suas defesas melhoradas."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:49
-msgid "forcefield"
-msgstr "campo de força"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
+msgid "Winter’s bloom"
+msgstr "Flor invernal"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:52
-msgid "Adjacent enemies do 13% less damage."
-msgstr "Inimigos adjacentes causam 13% de dano a menos."
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
+msgid "+15 HP, up to 20% resistance vs cold"
+msgstr ""
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:55
-msgid "fury"
-msgstr "fúria"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:58
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
 msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 3 rounds of attacks have occurred."
+"This delicate blossom rarely found in snowy peaks, is strongly appreciated "
+"for its beneficial effects on health."
 msgstr ""
-"Independente de ser usado ofensiva ou defensivamente, este ataque faz com "
-"que o combate continue até que um dos combatentes sejam mortos ou se passem "
-"três rodadas de ataques."
+"Uma delicada flor rara que é encontrada em picos nevados. É muito apreciada "
+"pelos seus efeitos benéficos para a saúde."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:61
-msgid "Full movement on turn recruited or recalled"
-msgstr "Sem penalidade de movimento no turno em que é recrutado ou convocado"
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:816
+msgid "Zephyr cloak"
+msgstr "Manto de Zéfiro"
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:64
-msgid "optional charge"
-msgstr "carga opcional"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:67
-msgid "tenacity"
-msgstr "tenacidade"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:70
-msgid "This unit’s vulnerabilities are halved when defending."
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
+msgid "skirmisher, ambush, nightstalk, +2 moves"
 msgstr ""
-"As vulnerabilidades desta unidade são reduzidas pela metade quando ela "
-"defende."
 
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:73
-msgid "free upkeep"
-msgstr "manutenção gratuita"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:76
-msgid "full movement"
-msgstr "movimento total"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:79
-msgid "terrain^water"
-msgstr "água"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:82
-msgid "improved defenses"
-msgstr "defesas aprimoradas"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:85
-msgid "no undead^consumed by a living being:"
-msgstr "ingerido por um ser vivo:"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:88
-msgid "up to"
-msgstr "até"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:91
-msgid "disengage"
-msgstr "recuar"
-
-#: data/campaigns/World_Conquest/resources/strings/effects.cfg:94
+#. [artifact]
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
 msgid ""
-"Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
-"gain a new attack)."
+"This lightweight cloak renders its wearer almost invisible in the darkness "
+"and lets them move with fluid grace past enemies with ease."
 msgstr ""
-"Atacar com está arma concede à unidade 1 movimento no final do combate (a "
-"unidade não ganha um novo ataque)."
+"Este manto leve faz com que o seu usuário fique quase que completamente "
+"invisível nas trevas e mova-se com graça e fluidez por entre seus oponentes."
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
-msgid "per level"
-msgstr "por nível"
+#. [trainer]: type=Lich
+#: data/campaigns/World_Conquest/resources/data/training.cfg:10
+msgid "Dark"
+msgstr "Trevas"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:4
-msgid "Melee Combat"
-msgstr "Combate Corpo-a-corpo"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:7
+#. [trainer]: type=Lich
+#: data/campaigns/World_Conquest/resources/data/training.cfg:11
 msgid ""
-"Looks like you could use some help. A grizzled old veteran like me won’t be "
-"much use on the field, but I bet I can teach your men a thing or two about "
-"swordplay."
+"I haven’t lived centuries fighting others’ battles, but I could combat "
+"boredom teaching your men a couple of things about dark techniques."
 msgstr ""
-"Você parece estar precisando de ajuda. Um veterano de incontáveis guerrais "
-"como eu não será muito útil em batalha, mas aposto que tenha muito o que "
-"ensinar aos seus homens sobre esgrima."
+"Eu não vivi séculos lutando a guerra dos outros, mas ensinar aos seus homens "
+"uma coisa ou duas sobre as artes das trevas será um bom modo de combater o "
+"tédio."
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:10
-msgid "Ranger Tactics"
-msgstr "Táticas de Ranger"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:13
-msgid ""
-"I sympathize with your cause, but this is not my battle. I will not fight "
-"for you, but I will gladly instruct your recruits in the art of the ranger, "
-"that they may better fight on their own."
-msgstr ""
-"Eu simpatizo com a sua causa, mas essa luta não é minha. Eu não lutarei por "
-"você, mas ficarei contente em instruir os seus recrutas na arte dos Rangers "
-"para que eles lutem melhor."
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:16
-msgid "Health"
-msgstr "Vida"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:19
-msgid ""
-"Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
-"troubles of my own to join in, but stick about a while and I’ll put some "
-"steel in your backbone. When I’m through with you you’ll be able to keep on "
-"going no matter the odds!"
-msgstr ""
-"Parece que você tem uma luta e tanto pela frente. Eu estou ocupado demais "
-"para participar, mas fique um pouco mais que eu tenho algo para você. Quando "
-"eu terminar, nada poderá lhe deter!"
-
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:22
+#. [trainer]: type=Duelist
+#: data/campaigns/World_Conquest/resources/data/training.cfg:59
 msgid "Movement"
 msgstr "Movimento"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:25
+#. [trainer]: type=Duelist
+#: data/campaigns/World_Conquest/resources/data/training.cfg:60
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
 "afraid battlefields just aren’t my scene - no drama, no style, no romance! "
@@ -3515,11 +3608,50 @@ msgstr ""
 "ensinar a vocês como sair dessas formações de marcha horríveis e se mover "
 "com a leveza de uma pluma!"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:28
+#. [trainer]: type=Orcish Warrior
+#: data/campaigns/World_Conquest/resources/data/training.cfg:77
+msgid "Melee Combat"
+msgstr "Combate Corpo-a-corpo"
+
+#. [trainer]: type=Orcish Warrior
+#: data/campaigns/World_Conquest/resources/data/training.cfg:78
+msgid ""
+"Looks like you could use some help. A grizzled old veteran like me won’t be "
+"much use on the field, but I bet I can teach your men a thing or two about "
+"swordplay."
+msgstr ""
+"Você parece estar precisando de ajuda. Um veterano de incontáveis guerrais "
+"como eu não será muito útil em batalha, mas aposto que tenha muito o que "
+"ensinar aos seus homens sobre esgrima."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:102
+msgid "melee: +1 strikes"
+msgstr ""
+
+#. [trainer]: type=Elvish Ranger
+#: data/campaigns/World_Conquest/resources/data/training.cfg:120
+msgid "Ranger Tactics"
+msgstr "Táticas de Ranger"
+
+#. [trainer]: type=Elvish Ranger
+#: data/campaigns/World_Conquest/resources/data/training.cfg:121
+msgid ""
+"I sympathize with your cause, but this is not my battle. I will not fight "
+"for you, but I will gladly instruct your recruits in the art of the ranger, "
+"that they may better fight on their own."
+msgstr ""
+"Eu simpatizo com a sua causa, mas essa luta não é minha. Eu não lutarei por "
+"você, mas ficarei contente em instruir os seus recrutas na arte dos Rangers "
+"para que eles lutem melhor."
+
+#. [trainer]: type=Drake Flare
+#: data/campaigns/World_Conquest/resources/data/training.cfg:159
 msgid "Combat Experience"
 msgstr "Experiência de Combate"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:31
+#. [trainer]: type=Drake Flare
+#: data/campaigns/World_Conquest/resources/data/training.cfg:160
 msgid ""
 " Join the battle? Nay, lads, my talents would be wasted on the frontlines. "
 "Give me some raw recruits to work with, though, and I’ll whip ’em into shape "
@@ -3531,18 +3663,156 @@ msgstr ""
 "de verdade e, quando eu tiver terminado com os seus novatos, eles também "
 "saberão."
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:34
-msgid "Dark"
-msgstr "Trevas"
+#. [trainer]: type=Dwarvish Runesmith
+#: data/campaigns/World_Conquest/resources/data/training.cfg:186
+msgid "Health"
+msgstr "Vida"
 
-#: data/campaigns/World_Conquest/resources/strings/training.cfg:37
+#. [trainer]: type=Dwarvish Runesmith
+#: data/campaigns/World_Conquest/resources/data/training.cfg:187
 msgid ""
-"I haven’t lived centuries fighting others’ battles, but I could combat "
-"boredom teaching your men a couple of things about dark techniques."
+"Looks like a pretty grim fight you’ve got up ahead. I’ve got too many "
+"troubles of my own to join in, but stick about a while and I’ll put some "
+"steel in your backbone. When I’m through with you you’ll be able to keep on "
+"going no matter the odds!"
 msgstr ""
-"Eu não vivi séculos lutando a guerra dos outros, mas ensinar aos seus homens "
-"uma coisa ou duas sobre as artes das trevas será um bom modo de combater o "
-"tédio."
+"Parece que você tem uma luta e tanto pela frente. Eu estou ocupado demais "
+"para participar, mas fique um pouco mais que eu tenho algo para você. Quando "
+"eu terminar, nada poderá lhe deter!"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:220
+#, fuzzy
+#| msgid "disengage"
+msgid "ranged: disengage"
+msgstr "recuar"
+
+#. [dummy]: id=wc2_disengage
+#: data/campaigns/World_Conquest/resources/data/training.cfg:234
+msgid "disengage"
+msgstr "recuar"
+
+#. [dummy]: id=wc2_disengage
+#: data/campaigns/World_Conquest/resources/data/training.cfg:235
+msgid ""
+"Attack with this weapon gives unit 1 moves at end of combat (unit doesn’t "
+"gain a new attack)."
+msgstr ""
+"Atacar com está arma concede à unidade 1 movimento no final do combate (a "
+"unidade não ganha um novo ataque)."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:246
+msgid "Full movement on turn recruited or recalled"
+msgstr "Sem penalidade de movimento no turno em que é recrutado ou convocado"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:312
+msgid "$range|: $special|"
+msgstr "$range|: $special|"
+
+#. [chance]
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:377
+#: data/campaigns/World_Conquest/resources/data/training.cfg:402
+#: data/campaigns/World_Conquest/resources/data/training.cfg:403
+msgid "distract"
+msgstr "distrair"
+
+#. [chance]
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:389
+#: data/campaigns/World_Conquest/resources/data/training.cfg:426
+#: data/campaigns/World_Conquest/resources/data/training.cfg:427
+msgid "tenacity"
+msgstr "tenacidade"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "Allied units ignore enemy zones of control adjacent to this unit."
+msgstr ""
+"Unidades aliadas ignoram zonas de controle inimigas adjacentes a esta "
+"unidade."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "This unit’s vulnerabilities are halved when defending."
+msgstr ""
+"As vulnerabilidades desta unidade são reduzidas pela metade quando ela "
+"defende."
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:468
+msgid "heals +4, cures"
+msgstr ""
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:544
+msgid "+$boost| moves"
+msgstr "+$boost| de movimento"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:558
+msgid "$range|: +$boost| damage"
+msgstr "$range|: +$boost| de dano"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:574
+msgid "$range|: +1 damage per level"
+msgstr "$range|: +1 dano por nível"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:590
+msgid "+$hitpoints| hitpoints"
+msgstr "+$hitpoints| pontos de vida"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:605
+msgid "+$hitpoints| hitpoints per level"
+msgstr "+$hitpoints| pontos de vida por nível"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:621
+msgid "$value| XP to advance"
+msgstr "$value| XP para avançar"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:635
+msgid "free upkeep"
+msgstr "manutenção gratuita"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:645
+msgid "Village/Castle: +5 defense"
+msgstr "Aldeia/Castelo: +5 defesa"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:677
+msgid ""
+"$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
+msgstr ""
+"$terrain|: +$def| defesa e sem penalidade de movimento +$res|"
+" resistência vs $dmg_type|"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:706
+msgid "$terrain|: +10 defense and full movement"
+msgstr "$terrain|: +10 de defesa e sem penalidade de movimento"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:717
+msgid "+moves defense"
+msgstr "+movimento defesa"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:727
+msgid "melee: optional charge"
+msgstr "corpo-a-corpo: carga opcional"
+
+#. [chance]
+#: data/campaigns/World_Conquest/resources/data/training.cfg:752
+msgid "$range|: arcane and +25% damage"
+msgstr "$range|: arcano e +25% de dano"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
 msgid "World Conquest 1p"
@@ -3625,6 +3895,149 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
 msgid "WC"
 msgstr "CM"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+msgid "Beginner"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+msgid "Peasant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+msgid "Easy"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+msgid "Sergeant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+msgid "Lieutenant"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+msgid "Medium"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+msgid "General"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+msgid "Hard"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+msgid "Challenging"
+msgstr ""
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#, fuzzy
+#| msgid "Granary"
+msgid "Grand Marshal"
+msgstr "Celeiro"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#, fuzzy
+#| msgid "expert"
+msgid "Expert"
+msgstr "perito"
+
+#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+msgid "Nightmare"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+msgid "Campaign Design"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+msgid "Prose, Grammatical and Text Assistance"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+msgid "Minor Code Contributors"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+msgid "Playtesting"
+msgstr ""
+
+#. [about]
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+msgid "Campaign Maintenance"
+msgstr ""
+
+#~ msgid "Preset Advancement"
+#~ msgstr "Avanço Predeterminado"
+
+#~ msgid ""
+#~ "Currently I’m set to advance towards: $name \n"
+#~ "\n"
+#~ "What are your new orders?"
+#~ msgstr ""
+#~ "No momento estou definido para avançar para: $name \n"
+#~ "\n"
+#~ "Quais são as suas ordens?"
+
+#~ msgid "Random"
+#~ msgstr "Aleatório"
+
+#~ msgid " and "
+#~ msgstr " e "
+
+#~ msgid "damage"
+#~ msgstr "dano"
+
+#~ msgid " resistance vs "
+#~ msgstr " resistência vs "
+
+#~ msgid "moves"
+#~ msgstr "movimentos"
+
+#~ msgid "strike"
+#~ msgstr "golpe"
+
+#~ msgid "flight"
+#~ msgstr "voo"
+
+#~ msgid "swim"
+#~ msgstr "nado"
+
+#~ msgid "optional charge"
+#~ msgstr "carga opcional"
+
+#~ msgid "full movement"
+#~ msgstr "movimento total"
+
+#~ msgid "terrain^water"
+#~ msgstr "água"
+
+#~ msgid "improved defenses"
+#~ msgstr "defesas aprimoradas"
+
+#~ msgid "up to"
+#~ msgstr "até"
+
+#~ msgid "per level"
+#~ msgstr "por nível"
 
 #~ msgid "Choose difficulty level:"
 #~ msgstr "Escolha o nível de dificuldade:"

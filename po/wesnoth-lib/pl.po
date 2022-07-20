@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-06-19 09:03-0500\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
 "PO-Revision-Date: 2022-06-03 18:16+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
@@ -53,12 +53,6 @@ msgstr "Dev AI: Domyślne AI (RCA) z alternatywną rekrutacją"
 #: data/core/terrain.cfg:513 data/core/terrain.cfg:523
 msgid "Fence"
 msgstr "Płot"
-
-#. [row]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:196
-#: data/gui/window/mp_faction_select.cfg:180
-msgid "gender^Random"
-msgstr "Losowa"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -2404,8 +2398,8 @@ msgstr "Zapisz hasło lokalnie (zaszyfrowane)"
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
 #: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:182
-#: src/gui/dialogs/message.cpp:189
+#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:180
+#: src/gui/dialogs/message.cpp:187
 msgid "OK"
 msgstr "OK"
 
@@ -2906,7 +2900,7 @@ msgstr "Edytuj pory dnia"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
 #: src/gui/dialogs/unit_recall.cpp:323
 msgid "Name:"
 msgstr "Nazwa:"
@@ -2964,8 +2958,8 @@ msgstr "Usuń ustawienie pory dnia"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "Confirm"
 msgstr "Potwierdź"
 
@@ -2981,7 +2975,7 @@ msgstr "Czy chcesz zastosować te zmiany?"
 #: data/gui/window/game_save_message.cfg:139
 #: data/gui/window/game_save_oos.cfg:191
 #: data/gui/window/game_save_overwrite.cfg:96
-#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:196
+#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:194
 msgid "Yes"
 msgstr "Tak"
 
@@ -2992,7 +2986,7 @@ msgstr "Tak"
 #: data/gui/window/game_save_message.cfg:153
 #: data/gui/window/game_save_oos.cfg:205
 #: data/gui/window/game_save_overwrite.cfg:110
-#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:198
+#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:196
 msgid "No"
 msgstr "Nie"
 
@@ -3513,7 +3507,7 @@ msgstr "Zapisz grę"
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Save"
 msgstr "Zapisz"
 
@@ -3550,7 +3544,7 @@ msgstr "Drużyna"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:435
 msgid "Gold"
 msgstr "Złoto"
 
@@ -3577,7 +3571,7 @@ msgstr "Utrzymanie"
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:444
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
 msgid "Income"
 msgstr "Dochód"
 
@@ -4563,6 +4557,11 @@ msgid "Map size:"
 msgstr "Rozmiar mapy:"
 
 #. [row]
+#: data/gui/window/mp_faction_select.cfg:180
+msgid "gender^Random"
+msgstr "Losowa"
+
+#. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:182
 #: data/gui/window/unit_create.cfg:225
@@ -4579,7 +4578,7 @@ msgstr "Żeńska"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:217
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Recruits"
 msgstr "Rekruci"
 
@@ -4934,7 +4933,7 @@ msgstr "Klawisz skrótu"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:794
+#: src/gui/dialogs/preferences_dialog.cpp:791
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4947,7 +4946,7 @@ msgstr "Dostępne w grze"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:795
+#: src/gui/dialogs/preferences_dialog.cpp:792
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4960,7 +4959,7 @@ msgstr "Dostępne w edytorze"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:796
+#: src/gui/dialogs/preferences_dialog.cpp:793
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5766,16 +5765,16 @@ msgstr "Rekrutuj"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:211
+#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
 #: src/gui/dialogs/preferences_dialog.cpp:229
-#: src/gui/dialogs/transient_message.cpp:79
+#: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Błąd"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:182
-#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:161
+#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:159
 msgid "Details:"
 msgstr "Szczegóły:"
 
@@ -5832,11 +5831,11 @@ msgid "operating_system^<unknown>"
 msgstr "<nieznany>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:638
+#: src/filesystem.cpp:636
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<ścieżka względna niezaczynająca się kropką>"
 
-#: src/filesystem.cpp:641
+#: src/filesystem.cpp:639
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -5844,11 +5843,11 @@ msgstr ""
 "Użyj ścieżki absolutnej lub względnej, zaczynającej się kropką i ukośnikiem"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:706 src/filesystem.cpp:727
+#: src/filesystem.cpp:704 src/filesystem.cpp:726
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<ścieżka względna>"
 
-#: src/filesystem.cpp:709 src/filesystem.cpp:730
+#: src/filesystem.cpp:707 src/filesystem.cpp:729
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5866,11 +5865,11 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1641
+#: src/filesystem.cpp:1640
 msgid "language code for localized resources^en_US"
 msgstr "pl_PL"
 
-#: src/font/text.cpp:861
+#: src/font/text.cpp:859
 msgid "The text contains invalid Pango markup: "
 msgstr "Tekst zawiera nieprawidłowy kod Pango: "
 
@@ -5975,21 +5974,13 @@ msgstr[0] "$num sekunda"
 msgstr[1] "$num sekundy"
 msgstr[2] "$num sekund"
 
-#: src/gui/core/canvas.cpp:345
+#: src/gui/core/canvas.cpp:272
 msgid "Image doesn't fit on canvas."
 msgstr "Obraz nie mieści się na kanwie."
 
-#: src/gui/core/canvas.cpp:495
+#: src/gui/core/canvas.cpp:405
 msgid "Text has a font size of 0."
 msgstr "Rozmiar czcionki w tekście wynosi 0."
-
-#: src/gui/core/canvas.cpp:636
-msgid "Area to draw has negative size"
-msgstr "Obszar rysowania ma ujemny rozmiar"
-
-#: src/gui/core/canvas.cpp:638
-msgid "Area to draw is larger than widget size"
-msgstr "Obszar rysowania jest większy niż rozmiar wtyczki"
 
 #: src/gui/core/widget_definition.cpp:31
 msgid "No state or draw section defined."
@@ -6004,11 +5995,11 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Powiązana grupa '$id' posiada wiele definicji."
 
 #: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:730
-#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:127
+#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:713
+#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:125
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
-#: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:283
+#: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
 #: src/gui/widgets/unit_preview_pane.cpp:611
 msgid "No grid defined."
 msgstr "Nie zdefiniowano siatki."
@@ -6316,7 +6307,7 @@ msgid "The add-on was rejected by the server:"
 msgstr "Ten dodatek został odrzucony przez serwer:"
 
 #: src/gui/dialogs/addon/manager.cpp:887 src/gui/dialogs/addon/manager.cpp:914
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:513
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "Odpowiedź"
 
@@ -6378,9 +6369,9 @@ msgstr "Brak"
 #: src/gui/dialogs/chat_log.cpp:404 src/gui/dialogs/game_cache_options.cpp:68
 #: src/gui/dialogs/game_version_dialog.cpp:154
 #: src/gui/dialogs/gamestate_inspector.cpp:409
-#: src/gui/dialogs/lua_interpreter.cpp:479
+#: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:69
-#: src/gui/dialogs/wml_error.cpp:193
+#: src/gui/dialogs/wml_error.cpp:191
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Brak wsparcie dla schowka, skontaktuj się z osobą, która przygotowała grę "
@@ -6438,23 +6429,23 @@ msgstr "Wyspa"
 msgid "Find File"
 msgstr "Znajdź plik"
 
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:301
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Plik już istnieje. Czy chcesz go nadpisać?"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:325
 msgid "The file or folder $path cannot be created."
 msgstr "Plik lub katalog $path nie mógł zostać stworzony."
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:331
 msgid "The file or folder $path does not exist."
 msgstr "Plik lub katalog $path nie istnieje."
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:706
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6462,19 +6453,19 @@ msgstr ""
 "Nie udało się stworzyć nowego katalogu w $path|. Upewnij się, że masz "
 "uprawnienia do zapisu w tej lokalizacji."
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:724
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Następujący folder zostanie całkowicie usunięty wraz z zawartością:"
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following file will be permanently deleted:"
 msgstr "Następujący plik zostanie usunięty na zawsze:"
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "Do you wish to continue?"
 msgstr "Czy chcesz kontynuować?"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:738
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6491,8 +6482,8 @@ msgid "dir_size^Unknown"
 msgstr "Nieznany"
 
 #: src/gui/dialogs/game_cache_options.cpp:102
-#: src/gui/dialogs/network_transmission.cpp:87
-#: src/gui/dialogs/network_transmission.cpp:88
+#: src/gui/dialogs/network_transmission.cpp:52
+#: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/screenshot_notification.cpp:116
 msgid "unit_byte^B"
 msgstr "B"
@@ -6615,7 +6606,7 @@ msgid "yes"
 msgstr "tak"
 
 #: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:197
+#: src/gui/dialogs/title_screen.cpp:195
 msgid "Version $version"
 msgstr "Wersja $version"
 
@@ -6631,101 +6622,101 @@ msgstr "Etykiety drużyny"
 msgid "Side $side_number ($name)"
 msgstr "Strona $side_number ($name)"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Building terrain rules"
 msgstr "Budowanie reguł terenu"
 
-#: src/gui/dialogs/loading_screen.cpp:46
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Reading files and creating cache"
 msgstr "Odczytywanie plików i wypełnianie pamięci podręcznej"
 
-#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:52 src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing display"
 msgstr "Inicjalizacja ekranu"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Reinitialize fonts for the current language"
 msgstr "Ponownie załaduj czcionki dla wybranego języka"
 
-#: src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing teams"
 msgstr "Inicjalizacja drużyn"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
 msgstr "Ładowanie konfiguracji gry"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading data files"
 msgstr "Ładowanie plików"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading level"
 msgstr "Ładowanie poziomu"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Initializing scripting engine"
 msgstr "Inicjalizacja silnika skryptowego"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Initializing planning mode"
 msgstr "Inicjalizacja trybu planowania"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Reading unit files"
 msgstr "Odczytywanie plików jednostek"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Loading units"
 msgstr "Ładowanie jednostek"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
 msgstr "Wyszukiwanie zainstalowanych dodatków"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Starting game"
 msgstr "Rozpoczynanie gry"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Verifying cache"
 msgstr "Weryfikacja pamięci podręcznej"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Connecting to server"
 msgstr "Łączenie z serwerem"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Logging in"
 msgstr "Logowanie"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:68
 msgid "Waiting for server"
 msgstr "Oczekiwanie na serwer"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:69
 msgid "Connecting to redirected server"
 msgstr "Łączenie do serwera po przekierowaniu"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
 msgstr "Oczekiwanie na następny scenariusz"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:71
 msgid "Getting game data"
 msgstr "Pobieranie danych gry"
 
-#: src/gui/dialogs/loading_screen.cpp:67
+#: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
 msgstr "Pobieranie danych poczekalni"
 
-#: src/gui/dialogs/lua_interpreter.cpp:678
+#: src/gui/dialogs/lua_interpreter.cpp:674
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
 "Konsola lua może być używana tylko w trybie debugowania! (Uruchom najpierw "
 "komendę ':debug')"
 
-#: src/gui/dialogs/lua_interpreter.cpp:679
+#: src/gui/dialogs/lua_interpreter.cpp:675
 msgid "lua console"
 msgstr "konsola lua"
 
@@ -6859,7 +6850,7 @@ msgstr ""
 msgid "Side $side"
 msgstr "Strona $side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
 msgid "Add Server"
 msgstr "Dodaj serwer"
 
@@ -6904,24 +6895,24 @@ msgstr "Nie znaleziono er"
 msgid "No eras available for this game."
 msgstr "Brak dostępnych er dla tej gry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
 msgid "number of players^$min to $max"
 msgstr "od $min do $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:818
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr "Wybrana gra nie ma dostępnych stron!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:825
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr "Wybrana gra nie może zostać utworzona."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:897
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr "Wybierz scenariusz początkowy"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:897
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr "Wybierz, w którym momencie kampanii chcesz zacząć."
 
@@ -6979,12 +6970,12 @@ msgstr "Nieprawidłowa nazwa użytkownika"
 msgid "Not on friends or ignore lists"
 msgstr "Nie jest na listach przyjaciół lub ignorowanych"
 
-#: src/gui/dialogs/preferences_dialog.cpp:842
-#: src/gui/dialogs/preferences_dialog.cpp:907
+#: src/gui/dialogs/preferences_dialog.cpp:839
+#: src/gui/dialogs/preferences_dialog.cpp:903
 msgid "No hotkey selected"
 msgstr "Nie wybrano skrótu klawiszowego"
 
-#: src/gui/dialogs/preferences_dialog.cpp:870
+#: src/gui/dialogs/preferences_dialog.cpp:867
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6992,15 +6983,15 @@ msgstr ""
 "„<b>$hotkey_sequence|</b>” jest używana przez „<b>$old_hotkey_action|</b>”.\n"
 "Czy chcesz teraz przypisać ją do „<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:876
+#: src/gui/dialogs/preferences_dialog.cpp:873
 msgid "Reassign Hotkey"
 msgstr "Przypisz inny klawisz skrótu"
 
-#: src/gui/dialogs/preferences_dialog.cpp:893
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "All hotkeys have been reset to their default values."
 msgstr "Przywrócono domyślną konfigurację klawiszy skrótu."
 
-#: src/gui/dialogs/preferences_dialog.cpp:893
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "Hotkeys Reset"
 msgstr "Zresetuj klawisze skrótu"
 
@@ -7014,24 +7005,24 @@ msgstr ""
 "\n"
 "Spróbuj zapisać zrzut ekranu w formacie PNG."
 
-#: src/gui/dialogs/statistics_dialog.cpp:81
+#: src/gui/dialogs/statistics_dialog.cpp:79
 msgid "All Scenarios"
 msgstr "Wszystkie scenariusze"
 
-#: src/gui/dialogs/statistics_dialog.cpp:179
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:177
+#: src/gui/dialogs/statistics_dialog.cpp:336
 msgid "This Turn"
 msgstr "Ta tura"
 
-#: src/gui/dialogs/statistics_dialog.cpp:215
+#: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Actual hit rates, by chance to hit:"
 msgstr "Faktyczna szansa trafienia:"
 
-#: src/gui/dialogs/statistics_dialog.cpp:217
+#: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "(no attacks have taken place yet)"
 msgstr "(nie było jeszcze żadnych walk)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:325
+#: src/gui/dialogs/statistics_dialog.cpp:323
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -7047,45 +7038,47 @@ msgstr ""
 "Suma (lub różnica) dwóch liczb we wtrąceniu to właściwa ilość zadanych/"
 "otrzymanych uderzeń."
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Recalls"
 msgstr "Przywołania"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Advancements"
 msgstr "Awanse"
 
-#: src/gui/dialogs/statistics_dialog.cpp:372
+#: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Losses"
 msgstr "Straty"
 
-#: src/gui/dialogs/statistics_dialog.cpp:373
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Kills"
 msgstr "Zabite"
 
-#: src/gui/dialogs/statistics_dialog.cpp:395
-#: src/gui/dialogs/statistics_dialog.cpp:402
+#: src/gui/dialogs/statistics_dialog.cpp:393
+#: src/gui/dialogs/statistics_dialog.cpp:400
 msgid "Inflicted"
 msgstr "Zadane"
 
-#: src/gui/dialogs/statistics_dialog.cpp:408
-#: src/gui/dialogs/statistics_dialog.cpp:415
+#: src/gui/dialogs/statistics_dialog.cpp:406
+#: src/gui/dialogs/statistics_dialog.cpp:413
 msgid "Taken"
 msgstr "Otrzymane"
 
-#: src/gui/dialogs/statistics_dialog.cpp:456
+#: src/gui/dialogs/statistics_dialog.cpp:454
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:113 src/hotkey/hotkey_command.cpp:97
+#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:97
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
-#: src/gui/dialogs/title_screen.cpp:443
-msgid "Choose Test"
-msgstr "Wybierz test"
+#: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
+#, fuzzy
+#| msgid "Choose Starting Scenario"
+msgid "Choose Test Scenario"
+msgstr "Wybierz scenariusz początkowy"
 
-#: src/gui/dialogs/unit_create.cpp:198
+#: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
 msgstr "Domyślny wariant"
 
@@ -7173,7 +7166,7 @@ msgstr ""
 "Napisano prywatną wiadomość do <i>$name</i>. Jeśli nie chcesz otrzymywać "
 "wiadomości od tego użytkownika, wpis polecenie <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:98
+#: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Wymagany widget '$id' nie został zdefiniowany."
 
@@ -7191,18 +7184,18 @@ msgstr "Otworzyć link?"
 msgid "Copied link!"
 msgstr "Odnośnik skopiowany!"
 
-#: src/gui/widgets/listbox.cpp:745 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:728 src/gui/widgets/multi_page.cpp:219
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musi mieć taką samą liczbę kolumn jak 'list_definition'"
 
-#: src/gui/widgets/listbox.cpp:789 src/gui/widgets/listbox.cpp:832
-#: src/gui/widgets/listbox.cpp:875 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:772 src/gui/widgets/listbox.cpp:815
+#: src/gui/widgets/listbox.cpp:858 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Nie zdefiniowano listy."
 
-#: src/gui/widgets/listbox.cpp:794 src/gui/widgets/listbox.cpp:837
-#: src/gui/widgets/listbox.cpp:880
+#: src/gui/widgets/listbox.cpp:777 src/gui/widgets/listbox.cpp:820
+#: src/gui/widgets/listbox.cpp:863
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' powinien zawierać jeden rząd"
 
@@ -7229,7 +7222,7 @@ msgstr[2] "$excess innych"
 msgid "multimenu^None Selected"
 msgstr "Nie wybrano"
 
-#: src/gui/widgets/pane.cpp:373
+#: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
 msgstr "Potrzeba co najmniej 1 równoległego obiektu."
 
@@ -7241,7 +7234,7 @@ msgstr "Nieprawidłowa rozmiar."
 msgid "No widget defined."
 msgstr "Nie zdefiniowano widżeta."
 
-#: src/gui/widgets/slider.cpp:355
+#: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
 msgstr "Liczby elementów value_label i value się nie zgadzają."
 
@@ -7253,15 +7246,15 @@ msgstr "Nie zdefiniowano warstw stosu."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Znaleziono widżet z podpowiedzią pomocy, a bez podpowiedzi narzędzia."
 
-#: src/gui/widgets/tree_view.cpp:303
+#: src/gui/widgets/tree_view.cpp:292
 msgid "No nodes defined for a tree view."
 msgstr "Nie zdefiniowano węzłów widoku drzewa."
 
-#: src/gui/widgets/tree_view.cpp:338
+#: src/gui/widgets/tree_view.cpp:327
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "Identyfikator węzła „root” jest zarezerwowany dla implementacji."
 
-#: src/gui/widgets/tree_view.cpp:342
+#: src/gui/widgets/tree_view.cpp:331
 msgid "No node defined."
 msgstr "Nie zdefiniowano węzła."
 
@@ -7321,11 +7314,11 @@ msgstr "PR: "
 msgid "Abilities"
 msgstr "Umiejętności"
 
-#: src/gui/widgets/window.cpp:922
+#: src/gui/widgets/window.cpp:773
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Odrzucenie kliknięciem wymaga przycisku 'click_dismiss' lub 'ok'."
 
-#: src/gui/widgets/window.cpp:947 src/gui/widgets/window.cpp:984
+#: src/gui/widgets/window.cpp:798 src/gui/widgets/window.cpp:835
 #: src/tests/gui/test_gui2.cpp:565
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -8131,10 +8124,6 @@ msgstr "Uruchom edytor"
 msgid "Show Credits"
 msgstr "Pokaż zasługi"
 
-#: src/hotkey/hotkey_command.cpp:297
-msgid "Start Test Scenario"
-msgstr "Uruchom scenariusz testowy"
-
 #: src/hotkey/hotkey_command.cpp:299
 msgid "Show Helptip"
 msgstr "Pokaż podpowiedź pomocy"
@@ -8172,14 +8161,6 @@ msgstr "[%H:%M]"
 #: src/preferences/game.cpp:869
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
-
-#: src/terrain/translation.cpp:713
-msgid ""
-"A terrain with a string with more than 4 characters has been found, the "
-"affected terrain is:"
-msgstr ""
-"Znaleziono teren o łańcuchu dłuższym niż 4 znaki. Dotyczy to następującego "
-"terenu:"
 
 #: src/wml_exception.cpp:66
 msgid ""
@@ -8220,6 +8201,25 @@ msgid ""
 msgstr ""
 "Nazwa klucza „$deprecated_key” została zmieniona na „$key”. Obsługa klucza "
 "„$deprecated_key” zostanie usunięta w wersji $removal_version."
+
+#~ msgid "Area to draw has negative size"
+#~ msgstr "Obszar rysowania ma ujemny rozmiar"
+
+#~ msgid "Area to draw is larger than widget size"
+#~ msgstr "Obszar rysowania jest większy niż rozmiar wtyczki"
+
+#~ msgid "Choose Test"
+#~ msgstr "Wybierz test"
+
+#~ msgid "Start Test Scenario"
+#~ msgstr "Uruchom scenariusz testowy"
+
+#~ msgid ""
+#~ "A terrain with a string with more than 4 characters has been found, the "
+#~ "affected terrain is:"
+#~ msgstr ""
+#~ "Znaleziono teren o łańcuchu dłuższym niż 4 znaki. Dotyczy to "
+#~ "następującego terenu:"
 
 #, fuzzy
 #~| msgid "Desert Castle"

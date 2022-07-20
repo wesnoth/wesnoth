@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -33,8 +33,6 @@ msgstr "地下"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "回復 +4"
@@ -72,8 +70,6 @@ msgstr "このユニットには基本的な回復能力と脱水症状を遅ら
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:71
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "回復 +8"
@@ -139,224 +135,154 @@ msgstr ""
 "このユニットはその周りにいるユニットを回復する他、脱水症状を遅らせ、毒を治療"
 "することができます。"
 
+#. [artifact]
+#. [chance]
+#. [teleport]: id=teleport
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
+#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/core/macros/abilities.cfg:250
+msgid "teleport"
+msgstr "瞬間移動"
+
+#. [artifact]
+#. [regenerate]: id=regenerates
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
+#: data/core/macros/abilities.cfg:94
+msgid "regenerates"
+msgstr "再生"
+
+#. [chance]
 #. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/campaigns/World_Conquest/resources/data/training.cfg:257
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "常時休息回復"
 
-#. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
-#: data/core/macros/abilities.cfg:282
-msgid "ambush"
-msgstr "伏兵"
-
-#. [damage]: id=backstab
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:410
-msgid "backstab"
-msgstr "奇襲"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
-msgid "Castle"
-msgstr "城"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
-msgid "Cave"
-msgstr "洞窟"
-
-#. [damage]: id=charge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "突撃"
-
-#. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:343
-msgid "concealment"
-msgstr "潜伏"
-
-#. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:137
-#: data/core/macros/abilities.cfg:61
-msgid "cures"
-msgstr "治療"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:739
-msgid "Defense"
-msgstr "回避"
-
-#. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:555
-msgid "drains"
-msgstr "生命吸収"
-
+#. [chance]
 #. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "勇敢"
 
+#. [chance]
+#. [damage]: id=backstab
+#: data/campaigns/World_Conquest/resources/data/training.cfg:438
+#: data/core/macros/abilities.cfg:410
+msgid "backstab"
+msgstr "奇襲"
+
+#. [chance]
 #. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/campaigns/World_Conquest/resources/data/training.cfg:500
 #: data/core/macros/abilities.cfg:384
 msgid "feeding"
 msgstr "摂食"
 
-#. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:386
-msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
-"except units that are immune to plague."
-msgstr "このユニットは生きているユニットを殺すことで最大HPが 1 増加します。"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
-#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
-msgid "+1 max HP"
-msgstr "最大 HP +1"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-msgid "firststrike"
-msgstr "先制"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
-msgid "Flat"
-msgstr "平地"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
-msgid "Forest"
-msgstr "森"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
-msgid "Frozen"
-msgstr "凍土"
-
-#. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
-#: data/core/macros/traits.cfg:227
-msgid "healthy"
-msgstr "壮健"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
-msgid "Hills"
-msgstr "丘"
-
-#. [illuminates]: id=illumination
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
-#: data/core/macros/abilities.cfg:235
-msgid "illuminates"
-msgstr "照明"
-
+#. [chance]
 #. [leadership]: id=leadership
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
+#: data/campaigns/World_Conquest/resources/data/training.cfg:527
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "統率"
 
-#. [chance_to_hit]: id=magical
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "魔法"
+#. [hides]: id=ambush
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
+#: data/core/macros/abilities.cfg:282
+msgid "ambush"
+msgstr "伏兵"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+msgid "Castle"
+msgstr "城"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+msgid "Cave"
+msgstr "洞窟"
+
+#. [hides]: id=concealment
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
+#: data/core/macros/abilities.cfg:343
+msgid "concealment"
+msgstr "潜伏"
+
+#. [drains]: id=drains
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
+#: data/core/macros/abilities.cfg:555
+msgid "drains"
+msgstr "生命吸収"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+msgid "firststrike"
+msgstr "先制"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+msgid "Forest"
+msgstr "森"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+msgid "Frozen"
+msgstr "凍土"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+msgid "Hills"
+msgstr "丘"
 
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
 #: data/core/macros/abilities.cfg:475
 msgid "marksman"
 msgstr "精密"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "隠密"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "疫病"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
 #: data/core/macros/abilities.cfg:577
 msgid "poison"
 msgstr "毒"
 
-#. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:104
-#: data/core/macros/abilities.cfg:94
-msgid "regenerates"
-msgstr "再生"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:700
-msgid "Resistances"
-msgstr "耐性"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
 msgid "Sand"
 msgstr "砂地"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
 msgstr "散兵"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
 #: data/core/macros/abilities.cfg:453
 msgid "slows"
 msgstr "遅化"
 
-#. [resistance]: id=steadfast
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "装甲"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:619
-msgid "Strikes"
-msgstr "攻撃回数"
-
-#. [hides]: id=submerge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:363
-msgid "submerge"
-msgstr "潜水"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
 msgid "Swamp"
 msgstr "沼地"
 
-#. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
-#: data/core/macros/abilities.cfg:250
-msgid "teleport"
-msgstr "瞬間移動"
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "アンデッド"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
-msgid "Village"
-msgstr "村"
+#. [heals]: id=curing
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
+#: data/core/macros/abilities.cfg:61
+msgid "cures"
+msgstr "治療"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -2146,8 +2072,8 @@ msgstr "ゲームの遊び方"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:476
-#: src/help/help_topic_generators.cpp:499
+#: src/help/help_topic_generators.cpp:475
+#: src/help/help_topic_generators.cpp:498
 msgid "Traits"
 msgstr "特性"
 
@@ -5125,6 +5051,11 @@ msgstr ""
 "このユニットは、村での回復には及びませんが、ターンごとに自身を回復します。"
 
 #. [resistance]: id=steadfast
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "装甲"
+
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "装甲"
@@ -5198,6 +5129,11 @@ msgid ""
 msgstr ""
 "このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配領域"
 "（ZOC）を無視できます。"
+
+#. [illuminates]: id=illumination
+#: data/core/macros/abilities.cfg:235
+msgid "illuminates"
+msgstr "照明"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:236
@@ -5319,6 +5255,11 @@ msgstr ""
 "の残り移動力を全て失います。"
 
 #. [hides]: id=submerge
+#: data/core/macros/abilities.cfg:363
+msgid "submerge"
+msgstr "潜水"
+
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:364
 msgid "female^submerge"
 msgstr "潜水"
@@ -5342,6 +5283,13 @@ msgstr ""
 #: data/core/macros/abilities.cfg:385
 msgid "female^feeding"
 msgstr "摂食"
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:386
+msgid ""
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
+msgstr "このユニットは生きているユニットを殺すことで最大HPが 1 増加します。"
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:398
@@ -5442,6 +5390,11 @@ msgid ""
 msgstr "このユニットの防御技術により、敵の攻撃成功率が低下します。"
 
 #. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:504
+msgid "magical"
+msgstr "魔法"
+
+#. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -5464,6 +5417,11 @@ msgstr ""
 "ユニットが傷ついているとこの攻撃の回数が減少します。攻撃回数はそのユニットが"
 "持つ HP と最大 HP の割合に比例します。例えばユニットの HP がその最大 HP の "
 "3/4 だった場合、攻撃回数も 3/4 になります。"
+
+#. [damage]: id=charge
+#: data/core/macros/abilities.cfg:528
+msgid "charge"
+msgstr "突撃"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:529
@@ -5932,8 +5890,8 @@ msgstr ""
 "では、上限回避率以上の回避率を得ることができません。"
 
 #: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:185
-#: src/help/help_topic_generators.cpp:602
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
 msgid "Special Notes:"
 msgstr "特記事項："
 
@@ -5983,6 +5941,11 @@ msgstr ""
 "忠義ユニットには維持費がかかりません。ほとんどのユニットは、各ターンの終了時"
 "に、そのレベルに等しい維持費がかかりますが、忠義ユニットにはこの費用がかかり"
 "ません。"
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "アンデッド"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -6271,6 +6234,11 @@ msgid ""
 msgstr ""
 "<italic>text='頑強'</italic>ユニットは最大HPが（4+ユニットのレベル）増加しま"
 "す。"
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:227
+msgid "healthy"
+msgstr "壮健"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:228
@@ -7995,34 +7963,38 @@ msgstr ""
 "ん。彼らは衛兵のように何世紀も立っているだけで満足し、文明世界に無関心です。"
 "住処である自然世界と森を守るためだけに奮起するのです。"
 
+#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+msgid "+1 max HP"
+msgstr "最大 HP +1"
+
 #: src/help/help.cpp:213
 msgid "Close"
 msgstr "閉じる"
 
-#: src/help/help.cpp:216
+#: src/help/help.cpp:217
 msgid "Help"
 msgstr "ヘルプ"
 
-#: src/help/help.cpp:270 src/help/help.cpp:274
+#: src/help/help.cpp:269 src/help/help.cpp:273
 msgid "Parse error when parsing help text:"
 msgstr "ヘルプテキストをパース中にエラーが発生しました："
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Best of"
 msgstr "次のうち良い方："
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
 msgstr "次のうち悪い方："
 
-#: src/help/help_topic_generators.cpp:162
+#: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr "村に留まる限りユニットは回復または解毒されます。"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:167
+#: src/help/help_topic_generators.cpp:166
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8033,14 +8005,14 @@ msgstr[0] ""
 "この地形は村と同様にユニットを滞在させることでHPを $amount 回復するか解毒を行"
 "えます。"
 
-#: src/help/help_topic_generators.cpp:174
+#: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr "この地形は城です。繋がっている主塔から城の上にユニットを雇用できます。"
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:178
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8049,7 +8021,7 @@ msgstr ""
 "す。"
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:180
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8057,155 +8029,173 @@ msgstr ""
 "この少々変わった主塔の上にいる間リーダーは雇用を行えますが、この主塔に繋がっ"
 "ている別の主塔からこのヘクス上にユニットを雇用することはできません。"
 
-#: src/help/help_topic_generators.cpp:194
+#: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
 msgstr "ベース地形："
 
-#: src/help/help_topic_generators.cpp:214
+#: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
 msgstr "移動特性："
 
-#: src/help/help_topic_generators.cpp:218
+#: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
 msgstr "回避特性："
 
-#: src/help/help_topic_generators.cpp:298
+#: src/help/help_topic_generators.cpp:297
 msgid "Level"
 msgstr "レベル"
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:358
 msgid "Advances from: "
 msgstr "レベルアップ元："
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances to: "
 msgstr "レベルアップ先："
 
-#: src/help/help_topic_generators.cpp:390
+#: src/help/help_topic_generators.cpp:389
 msgid "Base unit: "
 msgstr "ベースユニット："
 
-#: src/help/help_topic_generators.cpp:395
+#: src/help/help_topic_generators.cpp:394
 msgid "Base units: "
 msgstr "ベースユニット："
 
-#: src/help/help_topic_generators.cpp:413
+#: src/help/help_topic_generators.cpp:412
 msgid "Variations: "
 msgstr "バリエーション："
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
 msgstr "その他"
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:438
 msgid "Race: "
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:509
+#: src/help/help_topic_generators.cpp:508
 msgid "Abilities: "
 msgstr "能力："
 
-#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:534
 msgid "Ability Upgrades: "
 msgstr "能力のアップグレード："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:565
+#: src/help/help_topic_generators.cpp:564
 msgid "HP:"
 msgstr "HP："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:569
+#: src/help/help_topic_generators.cpp:568
 msgid "Moves:"
 msgstr "移動力："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:573
 msgid "Vision:"
 msgstr "視界："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 msgid "Jamming:"
 msgstr "ジャミング："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 msgid "Cost:"
 msgstr "コスト: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:588
 msgid "Alignment:"
 msgstr "アラインメント："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:595
 msgid "Required XP:"
 msgstr "必要 XP："
 
-#: src/help/help_topic_generators.cpp:611
+#: src/help/help_topic_generators.cpp:610
 msgid "unit help^Attacks"
 msgstr "攻撃"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:617
 msgid "unit help^Name"
 msgstr "名前"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:618
+msgid "Strikes"
+msgstr "攻撃回数"
+
+#: src/help/help_topic_generators.cpp:619
 msgid "Range"
 msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Type"
 msgstr "種類"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Special"
 msgstr "特殊"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:699
+msgid "Resistances"
+msgstr "耐性"
+
+#: src/help/help_topic_generators.cpp:703
 msgid "Attack Type"
 msgstr "ダメージ型"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:704
 msgid "Resistance"
 msgstr "耐性"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
 msgstr "地形効果"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:738
+msgid "Defense"
+msgstr "回避"
+
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "移動コスト"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr "上限回避率"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr "視界コスト"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr "ジャミングコスト"
+
+#~ msgid "Flat"
+#~ msgstr "平地"
+
+#~ msgid "Village"
+#~ msgstr "村"

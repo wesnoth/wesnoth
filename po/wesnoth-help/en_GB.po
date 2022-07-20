@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
 "PO-Revision-Date: 2022-06-20 09:01+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -29,8 +29,6 @@ msgstr "Underground"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "heals +4"
@@ -69,8 +67,6 @@ msgstr "This unit is capable of basic healing and slowing dehydration."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:71
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "heals +8"
@@ -138,226 +134,154 @@ msgstr ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 
+#. [artifact]
+#. [chance]
+#. [teleport]: id=teleport
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
+#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/core/macros/abilities.cfg:250
+msgid "teleport"
+msgstr "teleport"
+
+#. [artifact]
+#. [regenerate]: id=regenerates
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
+#: data/core/macros/abilities.cfg:94
+msgid "regenerates"
+msgstr "regenerates"
+
+#. [chance]
 #. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/campaigns/World_Conquest/resources/data/training.cfg:257
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "Always rest heals"
 
-#. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
-#: data/core/macros/abilities.cfg:282
-msgid "ambush"
-msgstr "ambush"
-
-#. [damage]: id=backstab
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:410
-msgid "backstab"
-msgstr "backstab"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
-msgid "Castle"
-msgstr "Castle"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
-msgid "Cave"
-msgstr "Cave"
-
-#. [damage]: id=charge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "charge"
-
-#. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:343
-msgid "concealment"
-msgstr "concealment"
-
-#. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:137
-#: data/core/macros/abilities.cfg:61
-msgid "cures"
-msgstr "cures"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:739
-msgid "Defense"
-msgstr "Defence"
-
-#. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:555
-msgid "drains"
-msgstr "drains"
-
+#. [chance]
 #. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "fearless"
 
+#. [chance]
+#. [damage]: id=backstab
+#: data/campaigns/World_Conquest/resources/data/training.cfg:438
+#: data/core/macros/abilities.cfg:410
+msgid "backstab"
+msgstr "backstab"
+
+#. [chance]
 #. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/campaigns/World_Conquest/resources/data/training.cfg:500
 #: data/core/macros/abilities.cfg:384
 msgid "feeding"
 msgstr "feeding"
 
-#. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:386
-msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
-"except units that are immune to plague."
-msgstr ""
-"This unit gains 1 hit-point added to its maximum whenever it kills a unit, "
-"except units that are immune to plague."
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
-#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
-msgid "+1 max HP"
-msgstr "+1 max HP"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-msgid "firststrike"
-msgstr "firststrike"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
-msgid "Flat"
-msgstr "Flat"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
-msgid "Forest"
-msgstr "Forest"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
-msgid "Frozen"
-msgstr "Frozen"
-
-#. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
-#: data/core/macros/traits.cfg:227
-msgid "healthy"
-msgstr "healthy"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
-msgid "Hills"
-msgstr "Hills"
-
-#. [illuminates]: id=illumination
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
-#: data/core/macros/abilities.cfg:235
-msgid "illuminates"
-msgstr "illuminates"
-
+#. [chance]
 #. [leadership]: id=leadership
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
+#: data/campaigns/World_Conquest/resources/data/training.cfg:527
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "leadership"
 
-#. [chance_to_hit]: id=magical
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "magical"
+#. [hides]: id=ambush
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
+#: data/core/macros/abilities.cfg:282
+msgid "ambush"
+msgstr "ambush"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+msgid "Castle"
+msgstr "Castle"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+msgid "Cave"
+msgstr "Cave"
+
+#. [hides]: id=concealment
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
+#: data/core/macros/abilities.cfg:343
+msgid "concealment"
+msgstr "concealment"
+
+#. [drains]: id=drains
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
+#: data/core/macros/abilities.cfg:555
+msgid "drains"
+msgstr "drains"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+msgid "firststrike"
+msgstr "firststrike"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+msgid "Forest"
+msgstr "Forest"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+msgid "Frozen"
+msgstr "Frozen"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+msgid "Hills"
+msgstr "Hills"
 
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
 #: data/core/macros/abilities.cfg:475
 msgid "marksman"
 msgstr "marksman"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
 msgstr "Mushroom Grove"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "nightstalk"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "plague"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
 #: data/core/macros/abilities.cfg:577
 msgid "poison"
 msgstr "poison"
 
-#. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:104
-#: data/core/macros/abilities.cfg:94
-msgid "regenerates"
-msgstr "regenerates"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:700
-msgid "Resistances"
-msgstr "Resistances"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
 msgid "Sand"
 msgstr "Sand"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
 msgstr "skirmisher"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
 #: data/core/macros/abilities.cfg:453
 msgid "slows"
 msgstr "slows"
 
-#. [resistance]: id=steadfast
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "steadfast"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:619
-msgid "Strikes"
-msgstr "Strikes"
-
-#. [hides]: id=submerge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:363
-msgid "submerge"
-msgstr "submerge"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
 msgid "Swamp"
 msgstr "Swamp"
 
-#. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
-#: data/core/macros/abilities.cfg:250
-msgid "teleport"
-msgstr "teleport"
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "undead"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
-msgid "Village"
-msgstr "Village"
+#. [heals]: id=curing
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
+#: data/core/macros/abilities.cfg:61
+msgid "cures"
+msgstr "cures"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -2172,8 +2096,8 @@ msgstr "Gameplay"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:476
-#: src/help/help_topic_generators.cpp:499
+#: src/help/help_topic_generators.cpp:475
+#: src/help/help_topic_generators.cpp:498
 msgid "Traits"
 msgstr "Traits"
 
@@ -5199,6 +5123,11 @@ msgstr ""
 "village."
 
 #. [resistance]: id=steadfast
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "steadfast"
+
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "steadfast"
@@ -5273,6 +5202,11 @@ msgid ""
 msgstr ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
+
+#. [illuminates]: id=illumination
+#: data/core/macros/abilities.cfg:235
+msgid "illuminates"
+msgstr "illuminates"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:236
@@ -5393,6 +5327,11 @@ msgstr ""
 "immediately loses all its remaining movement."
 
 #. [hides]: id=submerge
+#: data/core/macros/abilities.cfg:363
+msgid "submerge"
+msgstr "submerge"
+
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:364
 msgid "female^submerge"
 msgstr "submerge"
@@ -5416,6 +5355,15 @@ msgstr ""
 #: data/core/macros/abilities.cfg:385
 msgid "female^feeding"
 msgstr "feeding"
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:386
+msgid ""
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
+msgstr ""
+"This unit gains 1 hit-point added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:398
@@ -5523,6 +5471,11 @@ msgstr ""
 "attack."
 
 #. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:504
+msgid "magical"
+msgstr "magical"
+
+#. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -5548,6 +5501,11 @@ msgstr ""
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
+
+#. [damage]: id=charge
+#: data/core/macros/abilities.cfg:528
+msgid "charge"
+msgstr "charge"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:529
@@ -6022,8 +5980,8 @@ msgstr ""
 "higher defence rating on mixed terrains with such terrain types."
 
 #: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:185
-#: src/help/help_topic_generators.cpp:602
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
 msgid "Special Notes:"
 msgstr "Special Notes:"
 
@@ -6073,6 +6031,11 @@ msgstr ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "undead"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -6364,6 +6327,11 @@ msgid ""
 msgstr ""
 "<italic>text='Resilient'</italic> units have an additional 4 hit-points, and "
 "gain 1 more per level."
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:227
+msgid "healthy"
+msgstr "healthy"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:228
@@ -8132,27 +8100,31 @@ msgstr ""
 "only to march to the defence of the natural world and the forests it calls "
 "home."
 
+#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+msgid "+1 max HP"
+msgstr "+1 max HP"
+
 #: src/help/help.cpp:213
 msgid "Close"
 msgstr "Close"
 
-#: src/help/help.cpp:216
+#: src/help/help.cpp:217
 msgid "Help"
 msgstr "Help"
 
-#: src/help/help.cpp:270 src/help/help.cpp:274
+#: src/help/help.cpp:269 src/help/help.cpp:273
 msgid "Parse error when parsing help text:"
 msgstr "Parse error when parsing help text:"
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Best of"
 msgstr "Best of"
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
 msgstr "Worst of"
 
-#: src/help/help_topic_generators.cpp:162
+#: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
@@ -8160,7 +8132,7 @@ msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:167
+#: src/help/help_topic_generators.cpp:166
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8174,7 +8146,7 @@ msgstr[1] ""
 "This terrain allows units to heal $amount hit-points, or to be cured of "
 "poison, as if stationed in a village."
 
-#: src/help/help_topic_generators.cpp:174
+#: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
@@ -8183,7 +8155,7 @@ msgstr ""
 "keep."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:178
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8192,7 +8164,7 @@ msgstr ""
 "castle hexes."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:180
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8200,158 +8172,176 @@ msgstr ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit on this hex."
 
-#: src/help/help_topic_generators.cpp:194
+#: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
 msgstr "Base Terrain: "
 
-#: src/help/help_topic_generators.cpp:214
+#: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
 msgstr "Movement properties: "
 
-#: src/help/help_topic_generators.cpp:218
+#: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
 msgstr "Defence properties: "
 
-#: src/help/help_topic_generators.cpp:298
+#: src/help/help_topic_generators.cpp:297
 msgid "Level"
 msgstr "Level"
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:358
 msgid "Advances from: "
 msgstr "Advances from: "
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances to: "
 msgstr "Advances to: "
 
-#: src/help/help_topic_generators.cpp:390
+#: src/help/help_topic_generators.cpp:389
 msgid "Base unit: "
 msgstr "Base unit: "
 
-#: src/help/help_topic_generators.cpp:395
+#: src/help/help_topic_generators.cpp:394
 msgid "Base units: "
 msgstr "Base units: "
 
-#: src/help/help_topic_generators.cpp:413
+#: src/help/help_topic_generators.cpp:412
 msgid "Variations: "
 msgstr "Variations: "
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
 msgstr "Miscellaneous"
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:438
 msgid "Race: "
 msgstr "Race: "
 
-#: src/help/help_topic_generators.cpp:509
+#: src/help/help_topic_generators.cpp:508
 msgid "Abilities: "
 msgstr "Abilities: "
 
-#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:534
 msgid "Ability Upgrades: "
 msgstr "Ability Upgrades: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:565
+#: src/help/help_topic_generators.cpp:564
 msgid "HP:"
 msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:569
+#: src/help/help_topic_generators.cpp:568
 msgid "Moves:"
 msgstr "Moves:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:573
 msgid "Vision:"
 msgstr "Vision:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 msgid "Jamming:"
 msgstr "Jamming:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 msgid "Cost:"
 msgstr "Cost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:588
 msgid "Alignment:"
 msgstr "Alignment:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:595
 msgid "Required XP:"
 msgstr "Required XP:"
 
-#: src/help/help_topic_generators.cpp:611
+#: src/help/help_topic_generators.cpp:610
 msgid "unit help^Attacks"
 msgstr "Attacks"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:617
 msgid "unit help^Name"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:618
+msgid "Strikes"
+msgstr "Strikes"
+
+#: src/help/help_topic_generators.cpp:619
 msgid "Range"
 msgstr "Range"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Special"
 msgstr "Special"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:699
+msgid "Resistances"
+msgstr "Resistances"
+
+#: src/help/help_topic_generators.cpp:703
 msgid "Attack Type"
 msgstr "Attack Type"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:704
 msgid "Resistance"
 msgstr "Resistance"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
 msgstr "Terrain Modifiers"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:738
+msgid "Defense"
+msgstr "Defence"
+
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "Movement Cost"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr "Defence Cap"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr "Vision Cost"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr "Jamming Cost"
+
+#~ msgid "Flat"
+#~ msgstr "Flat"
+
+#~ msgid "Village"
+#~ msgstr "Village"
 
 #~ msgid ""
 #~ "This unit can lead your own units that are next to it, making them fight "

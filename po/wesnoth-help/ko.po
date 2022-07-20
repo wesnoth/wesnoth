@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 17:27+0300\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -27,8 +27,6 @@ msgstr "지하"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "치료 +4"
@@ -68,8 +66,6 @@ msgstr " 이 유닛은 기본적인 치료를 할 수 있습니다."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:71
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "치료 +8"
@@ -152,228 +148,154 @@ msgid ""
 "curing them of poison."
 msgstr " 이 유닛은 주변의 유닛들을 치료하며, 독을 치유할 수 있습니다."
 
+#. [artifact]
+#. [chance]
+#. [teleport]: id=teleport
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
+#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/core/macros/abilities.cfg:250
+msgid "teleport"
+msgstr "전이"
+
+#. [artifact]
+#. [regenerate]: id=regenerates
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
+#: data/core/macros/abilities.cfg:94
+msgid "regenerates"
+msgstr "재생"
+
+#. [chance]
 #. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/campaigns/World_Conquest/resources/data/training.cfg:257
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "항상 휴식 회복을 받는다"
 
-#. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
-#: data/core/macros/abilities.cfg:282
-msgid "ambush"
-msgstr "기습"
-
-#. [damage]: id=backstab
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
-#: data/core/macros/abilities.cfg:410
-msgid "backstab"
-msgstr "뒷치기"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
-msgid "Castle"
-msgstr "성채"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
-msgid "Cave"
-msgstr "동굴"
-
-#. [damage]: id=charge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "돌격"
-
-#. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
-#: data/core/macros/abilities.cfg:343
-msgid "concealment"
-msgstr "은폐"
-
-#. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:137
-#: data/core/macros/abilities.cfg:61
-msgid "cures"
-msgstr "해독"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
-#: src/help/help_topic_generators.cpp:739
-msgid "Defense"
-msgstr "방어도"
-
-#. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
-#: data/core/macros/abilities.cfg:555
-msgid "drains"
-msgstr "흡수"
-
+#. [chance]
 #. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "용맹한"
 
+#. [chance]
+#. [damage]: id=backstab
+#: data/campaigns/World_Conquest/resources/data/training.cfg:438
+#: data/core/macros/abilities.cfg:410
+msgid "backstab"
+msgstr "뒷치기"
+
+#. [chance]
 #. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/campaigns/World_Conquest/resources/data/training.cfg:500
 #: data/core/macros/abilities.cfg:384
 msgid "feeding"
 msgstr "식귀"
 
-#. [dummy]: id=feeding
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
-#: data/core/macros/abilities.cfg:386
-#, fuzzy
-#| msgid ""
-#| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
-msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
-"except units that are immune to plague."
-msgstr "이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 얻습니다."
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
-#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
-msgid "+1 max HP"
-msgstr "최대 HP +1"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
-msgid "firststrike"
-msgstr "선공"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
-msgid "Flat"
-msgstr "평지"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
-msgid "Forest"
-msgstr "숲"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
-msgid "Frozen"
-msgstr "냉동"
-
-#. [trait]: id=healthy
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:74
-#: data/core/macros/traits.cfg:227
-msgid "healthy"
-msgstr "건강한"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:77
-msgid "Hills"
-msgstr "언덕"
-
-#. [illuminates]: id=illumination
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:80
-#: data/core/macros/abilities.cfg:235
-msgid "illuminates"
-msgstr "광휘"
-
+#. [chance]
 #. [leadership]: id=leadership
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:83
+#: data/campaigns/World_Conquest/resources/data/training.cfg:527
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
 msgstr "통솔"
 
-#. [chance_to_hit]: id=magical
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:86
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "마법"
+#. [hides]: id=ambush
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
+#: data/core/macros/abilities.cfg:282
+msgid "ambush"
+msgstr "기습"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+msgid "Castle"
+msgstr "성채"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+msgid "Cave"
+msgstr "동굴"
+
+#. [hides]: id=concealment
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
+#: data/core/macros/abilities.cfg:343
+msgid "concealment"
+msgstr "은폐"
+
+#. [drains]: id=drains
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
+#: data/core/macros/abilities.cfg:555
+msgid "drains"
+msgstr "흡수"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+msgid "firststrike"
+msgstr "선공"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+msgid "Forest"
+msgstr "숲"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+msgid "Frozen"
+msgstr "냉동"
+
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+msgid "Hills"
+msgstr "언덕"
 
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:89
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
 #: data/core/macros/abilities.cfg:475
 msgid "marksman"
 msgstr "저격"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:92
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
 msgstr "버섯 숲"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:95
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "암습"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "역병"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
 #: data/core/macros/abilities.cfg:577
 msgid "poison"
 msgstr "중독"
 
-#. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:104
-#: data/core/macros/abilities.cfg:94
-msgid "regenerates"
-msgstr "재생"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:107
-#: src/help/help_topic_generators.cpp:700
-msgid "Resistances"
-msgstr "저항력"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:110
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
 msgid "Sand"
 msgstr "모래 지대"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:113
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
 msgstr "척후"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:116
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
 #: data/core/macros/abilities.cfg:453
 msgid "slows"
 msgstr "둔화"
 
-#. [resistance]: id=steadfast
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "철벽"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
-#: src/help/help_topic_generators.cpp:619
-msgid "Strikes"
-msgstr "공격력"
-
-#. [hides]: id=submerge
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:125
-#: data/core/macros/abilities.cfg:363
-msgid "submerge"
-msgstr "잠수"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:128
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
 msgid "Swamp"
 msgstr "늪"
 
-#. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:131
-#: data/core/macros/abilities.cfg:250
-msgid "teleport"
-msgstr "전이"
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "언데드"
-
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
-msgid "Village"
-msgstr "마을"
+#. [heals]: id=curing
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
+#: data/core/macros/abilities.cfg:61
+msgid "cures"
+msgstr "해독"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -1598,8 +1520,8 @@ msgstr "게임 플레이"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:476
-#: src/help/help_topic_generators.cpp:499
+#: src/help/help_topic_generators.cpp:475
+#: src/help/help_topic_generators.cpp:498
 msgid "Traits"
 msgstr "특성"
 
@@ -4302,6 +4224,11 @@ msgstr ""
 "합니다."
 
 #. [resistance]: id=steadfast
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "철벽"
+
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
 msgstr "철벽"
@@ -4381,6 +4308,11 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr "이 유닛은 빠르게 적을 지나가는 데 능숙하여 적의 ZOC를 무시합니다."
+
+#. [illuminates]: id=illumination
+#: data/core/macros/abilities.cfg:235
+msgid "illuminates"
+msgstr "광휘"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:236
@@ -4516,6 +4448,11 @@ msgstr ""
 "다. 가장 먼저 이 유닛을 발견한 적은 즉시 모든 이동력을 상실합니다."
 
 #. [hides]: id=submerge
+#: data/core/macros/abilities.cfg:363
+msgid "submerge"
+msgstr "잠수"
+
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:364
 msgid "female^submerge"
 msgstr "잠수"
@@ -4538,6 +4475,17 @@ msgstr ""
 #: data/core/macros/abilities.cfg:385
 msgid "female^feeding"
 msgstr "식귀"
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:386
+#, fuzzy
+#| msgid ""
+#| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#| "living unit."
+msgid ""
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
+msgstr "이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 얻습니다."
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:398
@@ -4646,6 +4594,11 @@ msgid ""
 msgstr ""
 
 #. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:504
+msgid "magical"
+msgstr "마법"
+
+#. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -4670,6 +4623,11 @@ msgstr ""
 "이 공격의 타격횟수는 유닛이 상처를 입어갈때마다 감소합니다. 타격횟수는 유닛"
 "의 HP가 몇 % 남았느냐에 비례합니다. 예를 들어 HP가 30% 남은 유닛은 타격횟수"
 "도 30%가 됩니다."
+
+#. [damage]: id=charge
+#: data/core/macros/abilities.cfg:528
+msgid "charge"
+msgstr "돌격"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:529
@@ -5261,8 +5219,8 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:185
-#: src/help/help_topic_generators.cpp:602
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5320,6 +5278,11 @@ msgstr ""
 "<italic>text='심복'</italic> 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛"
 "은 턴이 끝날때마다 그들의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비"
 "용이 들지 않습니다."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "언데드"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5616,6 +5579,11 @@ msgid ""
 msgstr ""
 "<italic>text='튼튼한'</italic> 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1"
 "의 HP를 추가로 더 받습니다."
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:227
+msgid "healthy"
+msgstr "건강한"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:228
@@ -6894,34 +6862,38 @@ msgid ""
 "home."
 msgstr ""
 
+#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+msgid "+1 max HP"
+msgstr "최대 HP +1"
+
 #: src/help/help.cpp:213
 msgid "Close"
 msgstr "닫기"
 
-#: src/help/help.cpp:216
+#: src/help/help.cpp:217
 msgid "Help"
 msgstr "도움말"
 
-#: src/help/help.cpp:270 src/help/help.cpp:274
+#: src/help/help.cpp:269 src/help/help.cpp:273
 msgid "Parse error when parsing help text:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:65
+#: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:162
+#: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:167
+#: src/help/help_topic_generators.cpp:166
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -6930,96 +6902,96 @@ msgid_plural ""
 "poison, as if stationed in a village."
 msgstr[0] ""
 
-#: src/help/help_topic_generators.cpp:174
+#: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:178
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:180
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:194
+#: src/help/help_topic_generators.cpp:193
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "지형"
 
-#: src/help/help_topic_generators.cpp:214
+#: src/help/help_topic_generators.cpp:213
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "소모 이동력"
 
-#: src/help/help_topic_generators.cpp:218
+#: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:298
+#: src/help/help_topic_generators.cpp:297
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "레벨"
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:358
 msgid "Advances from: "
 msgstr "해당 유닛으로부터 승급:"
 
-#: src/help/help_topic_generators.cpp:361
+#: src/help/help_topic_generators.cpp:360
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "해당 유닛으로부터 승급:"
 
-#: src/help/help_topic_generators.cpp:390
+#: src/help/help_topic_generators.cpp:389
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "지형"
 
-#: src/help/help_topic_generators.cpp:395
+#: src/help/help_topic_generators.cpp:394
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "지형"
 
-#: src/help/help_topic_generators.cpp:413
+#: src/help/help_topic_generators.cpp:412
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "당파:"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
 msgstr "기타"
 
-#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:438
 msgid "Race: "
 msgstr "종족:"
 
-#: src/help/help_topic_generators.cpp:509
+#: src/help/help_topic_generators.cpp:508
 msgid "Abilities: "
 msgstr "능력:"
 
-#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:534
 msgid "Ability Upgrades: "
 msgstr "추가 능력:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:565
+#: src/help/help_topic_generators.cpp:564
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -7028,7 +7000,7 @@ msgstr "체력: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:569
+#: src/help/help_topic_generators.cpp:568
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -7037,21 +7009,21 @@ msgstr "이동력: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:574
+#: src/help/help_topic_generators.cpp:573
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:580
+#: src/help/help_topic_generators.cpp:579
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -7060,7 +7032,7 @@ msgstr "소집비용: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:589
+#: src/help/help_topic_generators.cpp:588
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -7069,67 +7041,85 @@ msgstr "선호시간대: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:595
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "필요 경험치: "
 
-#: src/help/help_topic_generators.cpp:611
+#: src/help/help_topic_generators.cpp:610
 msgid "unit help^Attacks"
 msgstr "공격"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:617
 msgid "unit help^Name"
 msgstr "이름"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:618
+msgid "Strikes"
+msgstr "공격력"
+
+#: src/help/help_topic_generators.cpp:619
 msgid "Range"
 msgstr "공격범위"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Type"
 msgstr "속성"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Special"
 msgstr "특수능력"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:699
+msgid "Resistances"
+msgstr "저항력"
+
+#: src/help/help_topic_generators.cpp:703
 msgid "Attack Type"
 msgstr "공격 유형"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:704
 msgid "Resistance"
 msgstr "저항도"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "지형 수정"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "지형"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:738
+msgid "Defense"
+msgstr "방어도"
+
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "소모 이동력"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "방어도"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr ""
+
+#~ msgid "Flat"
+#~ msgstr "평지"
+
+#~ msgid "Village"
+#~ msgstr "마을"
 
 #, fuzzy
 #~| msgid ""
