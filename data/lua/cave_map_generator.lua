@@ -188,10 +188,9 @@ function callbacks.generate_map(params)
 				end
 				local res = 1.0
 				local tile = map:get_tile(x, y)
+				res = v.costs[tile] or 1.0
 				if tile == params.terrain_wall then
-					res = laziness
-				else
-					res = v.costs[tile] or 1.0
+					res = laziness * res
 				end
 				if windiness > 1 then
 					res = res * random(windiness)
