@@ -616,8 +616,7 @@ void pump()
 			// an expose is triggered to display the changed content.
 			case SDL_WINDOWEVENT_EXPOSED:
 				LOG_DP << "events/EXPOSED";
-				draw_manager::invalidate_region(
-					video::draw_area());
+				draw_manager::invalidate_all();
 				break;
 
 			case SDL_WINDOWEVENT_MAXIMIZED:

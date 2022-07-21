@@ -89,6 +89,9 @@ namespace draw_manager
  */
 void invalidate_region(const rect& region);
 
+/** Mark the entire screen as requiring redraw. */
+void invalidate_all();
+
 /**
  * Ensure that everything which needs to be drawn is drawn.
  *

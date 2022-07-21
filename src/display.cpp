@@ -2475,7 +2475,7 @@ void display::redraw_everything()
 
 	invalidate_all();
 
-	draw_manager::invalidate_region(video::draw_area());
+	draw_manager::invalidate_all();
 }
 
 void display::add_redraw_observer(std::function<void(display&)> f)
