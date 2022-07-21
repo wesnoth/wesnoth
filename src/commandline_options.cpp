@@ -257,6 +257,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
+		("log-to-file", "log output is written to a file rather than to standard error.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -268,7 +269,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("ignore-map-settings", "do not use map settings.")
-		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
+		("label", po::value<std::string>(), "sets the label for AIs.") // TODO: is the description precise? this option was undocumented before.
 		("multiplayer-repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("nogui", "runs the game without the GUI.")
 		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")

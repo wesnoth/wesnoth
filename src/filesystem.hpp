@@ -165,6 +165,7 @@ void set_user_data_dir(std::string path);
 
 std::string get_user_config_dir();
 std::string get_user_data_dir();
+std::string get_logs_dir();
 std::string get_cache_dir();
 
 struct other_version_dir

@@ -583,9 +583,12 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "data" / "add-ons");
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
+	create_directory_if_missing(filesystem::get_logs_dir());
 
 #ifdef _WIN32
 	lg::finish_log_file_setup();
+#else
+	lg::rotate_logs(filesystem::get_logs_dir());
 #endif
 }
 
@@ -790,6 +793,11 @@ std::string get_user_config_dir()
 std::string get_user_data_dir()
 {
 	return get_user_data_path().string();
+}
+
+std::string get_logs_dir()
+{
+	return filesystem::get_user_data_dir() + "/logs";
 }
 
 std::string get_cache_dir()
@@ -1042,7 +1050,6 @@ filesystem::scoped_istream istream_file(const std::string& fname, bool treat_fai
 filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.";
-#if 1
 	try {
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), mode);
 		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_sink>>(fd, 4096, 0);
@@ -1056,9 +1063,6 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base:
 
 		throw filesystem::io_exception(e.what());
 	}
-#else
-	return new bfs::ofstream(bfs::path(fname), mode);
-#endif
 }
 
 // Throws io_exception if an error occurs

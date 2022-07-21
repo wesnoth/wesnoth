@@ -44,90 +44,11 @@ static lg::log_domain log_setup("logsetup");
 #define LOG_LS LOG_STREAM(info,  log_setup)
 #define DBG_LS LOG_STREAM(debug, log_setup)
 
-namespace filesystem
-{
-
-std::string get_logs_dir()
-{
-	return filesystem::get_user_data_dir() + "/logs";
-}
-
-}
-
 namespace lg
 {
 
 namespace
 {
-
-// Prefix and extension for log files. This is used both to generate the unique
-// log file name during startup and to find old files to delete.
-const std::string log_file_prefix = "wesnoth-";
-const std::string log_file_suffix = ".log";
-
-// Maximum number of older log files to keep intact. Other files are deleted.
-// Note that this count does not include the current log file!
-const unsigned max_logs = 8;
-
-/** Helper function for rotate_logs. */
-bool is_not_log_file(const std::string& fn)
-{
-	return !(boost::algorithm::istarts_with(fn, log_file_prefix) &&
-			 boost::algorithm::iends_with(fn, log_file_suffix));
-}
-
-/**
- * Deletes old log files from the log directory.
- */
-void rotate_logs(const std::string& log_dir)
-{
-	std::vector<std::string> files;
-	filesystem::get_files_in_dir(log_dir, &files);
-
-	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
-
-	if(files.size() <= max_logs) {
-		return;
-	}
-
-	// Sorting the file list and deleting all but the last max_logs items
-	// should hopefully be faster than stat'ing every single file for its
-	// time attributes (which aren't very reliable to begin with.
-
-	std::sort(files.begin(), files.end());
-
-	for(std::size_t j = 0; j < files.size() - max_logs; ++j) {
-		const std::string path = log_dir + '/' + files[j];
-		LOG_LS << "rotate_logs(): delete " << path;
-		if(!filesystem::delete_file(path)) {
-			WRN_LS << "rotate_logs(): failed to delete " << path << "!";
-		}
-	}
-}
-
-/**
- * Generates a "unique" log file name.
- *
- * This is really not guaranteed to be unique, but it's close enough, since
- * the odds of having multiple Wesnoth instances spawn with the same PID within
- * a second span are close to zero.
- *
- * The file name includes a timestamp in order to satisfy the requirements of
- * the rotate_logs logic.
- */
-std::string unique_log_filename()
-{
-	std::ostringstream o;
-
-	o << log_file_prefix;
-
-	const std::time_t cur = std::time(nullptr);
-	o << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
-
-	o << GetCurrentProcessId() << log_file_suffix;
-
-	return o.str();
-}
 
 /**
  * Returns the path to a system-defined temporary files dir.
@@ -291,7 +212,7 @@ private:
 };
 
 log_file_manager::log_file_manager(bool native_console)
-	: fn_(unique_log_filename())
+	: fn_(lg::unique_log_filename())
 	, cur_path_()
 	, use_wincon_(console_attached())
 	, created_wincon_(false)
@@ -531,7 +452,7 @@ void finish_log_file_setup()
 		log_init_panic(std::string("Could not create logs directory at ") +
 					   log_dir + ".");
 	} else {
-		rotate_logs(log_dir);
+		lg::rotate_logs(log_dir);
 	}
 
 	lfm->move_log_file(log_dir);

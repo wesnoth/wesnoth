@@ -39,16 +39,6 @@
  * and later versions, requiring UAC virtualization to be enabled).
  */
 
-namespace filesystem
-{
-
-/**
- * Returns the path to the permanent log storage directory.
- */
-std::string get_logs_dir();
-
-}
-
 namespace lg
 {
 
