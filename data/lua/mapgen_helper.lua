@@ -127,4 +127,28 @@ function mapgen_helper.adjacent_tiles(x, y)
 	end
 end
 
+function mapgen_helper.get_chamber(params, id_or_idx)
+	if type(id_or_idx) == 'number' then
+		local cfg, i = wml.get_nth_child(params, 'chamber', id_or_idx)
+		if not cfg then return nil end
+		return params[i].contents
+	else
+		local cfg, i = wml.get_child(params, 'chamber', id_or_idx)
+		if not cfg then return nil end
+		return params[i].contents
+	end
+end
+
+function mapgen_helper.get_passage(chamber, id_or_idx)
+	if type(id_or_idx) == 'number' then
+		local cfg, i = wml.get_nth_child(chamber, 'passage', id_or_idx)
+		if not cfg then return nil end
+		return chamber[i].contents
+	else
+		local cfg, i = wml.get_child(chamber, 'passage', id_or_idx)
+		if not cfg then return nil end
+		return chamber[i].contents
+	end
+end
+
 return mapgen_helper

@@ -1,19 +1,54 @@
 local params = ...
+local MG = wesnoth.require "mapgen_helper"
 
 local function pre_show(window)
     window.players.value = params.nplayers
     window.width.value = params.map_width
     window.height.value = params.map_height
     window.village_density.value = params.village_density
-    window.jagged.value = wml.get_nth_child(params, "chamber", 1).jagged
-    window.lake_size.value = wml.get_nth_child(params, "chamber", 2).size
 
-    local first_player = wml.get_nth_child(params, "chamber", 3)
-    local windiness = wml.get_nth_child(first_player, "passage", 1).windiness
-    window.windiness.value = windiness
+    local central_chamber = MG.get_chamber(params, 'central_chamber')
+    if central_chamber then
+        window.jagged.value = central_chamber.jagged
+    else
+        -- TODO: Error message?
+    end
 
-    local roads = not wml.get_nth_child(first_player, "passage", 2).ignore
-    window.roads.selected = roads
+    local lake = MG.get_chamber(params, 'lake')
+    if lake then
+        window.lake_size.value = lake.size
+    else
+        -- TODO: Error?
+    end
+
+    local first_player = MG.get_chamber(params, 'player_1')
+    if first_player then
+        local tunnel = MG.get_passage(first_player, 1)
+        if tunnel then
+            window.windiness.value = tunnel.windiness
+        else
+            -- TODO: Error?
+        end
+
+        local road = MG.get_passage(first_player, 2)
+        if road then
+            window.roads.selected = not road.ignore
+        else
+            -- TODO: Error?
+        end
+    else
+        -- TODO: Should there be an error message?
+    end
+
+    local all_players = {first_player}
+    for i = 2, #params do
+        local next_player = MG.get_chamber(params, 'player_' .. i)
+        if next_player then
+            table.insert(all_players, next_player)
+        else
+            break
+        end
+    end
 
     -- Init labels
     window.players_label.label = window.players.value
@@ -48,47 +83,31 @@ local function pre_show(window)
     end
 
     function window.jagged.on_modified()
-        -- We're setting the value, so wml.get_child and co won't work
-        -- However they do return the all-children index of the child
-        local _, i = wml.get_nth_child(params, "chamber", 1)
         local val = window.jagged.value
-        params[i].contents.jagged = val
+        central_chamber.jagged = val
         window.jagged_label.label = val
     end
 
     function window.lake_size.on_modified()
-        -- We're setting the value, so wml.get_child and co won't work
-        -- However they do return the all-children index of the child
-        local _, i = wml.get_nth_child(params, "chamber", 2)
         local val = window.lake_size.value
-        params[i].contents.size = val
+        lake.size = val
         window.lake_size_label.label = val
     end
 
     function window.windiness.on_modified()
-        -- We're setting the value, so wml.get_child and co won't work
-        -- However they do return the all-children index of the child
-        local _, i = wml.get_nth_child(params, "chamber", 3)
         local val = window.windiness.value
-        for j = i, #params do
-            if params[i].tag == "chamber" then
-                local _, k = wml.get_nth_child(params[i].contents, "passage", 1)
-                params[i].contents[k].contents.windiness = val
-            end
+        for i = 1, #all_players do
+            local tunnel = MG.get_passage(all_players[i], 1)
+            tunnel.windiness = val
         end
         window.windiness_label.label = val
     end
 
     function window.roads.on_modified()
-        -- We're setting the value, so wml.get_child and co won't work
-        -- However they do return the all-children index of the child
-        local _, i = wml.get_nth_child(params, "chamber", 3)
         local val = not window.roads.selected
-        for j = i, #params do
-            if params[i].tag == "chamber" then
-                local _, k = wml.get_nth_child(params[i].contents, "passage", 2)
-                params[i].contents[k].contents.ignore = val
-            end
+        for i = 1, #all_players do
+            local road = MG.get_passage(all_players[i], 2)
+            road.ignore = val
         end
     end
 end
