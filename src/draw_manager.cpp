@@ -115,6 +115,11 @@ void invalidate_region(const rect& region)
 	invalidated_regions_.push_back(region);
 }
 
+void invalidate_all()
+{
+	invalidate_region(video::draw_area());
+}
+
 void sparkle()
 {
 	if (drawing_) {

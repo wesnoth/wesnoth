@@ -777,7 +777,7 @@ void update_buffers(bool autoupdate)
 {
 	LOG_DP << "updating buffers";
 	if(update_framebuffer() && autoupdate) {
-		draw_manager::invalidate_region(draw_area());
+		draw_manager::invalidate_all();
 	}
 }
 
