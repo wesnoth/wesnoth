@@ -11,14 +11,14 @@ local function pre_show(window)
     if central_chamber then
         window.jagged.value = central_chamber.jagged
     else
-        -- TODO: Error message?
+        error('cave_map_settings requires a [chamber] with id=central_chamber')
     end
 
     local lake = MG.get_chamber(params, 'lake')
     if lake then
         window.lake_size.value = lake.size
     else
-        -- TODO: Error?
+        error('cave_map_settings requires a [chamber] with id=lake')
     end
 
     local first_player = MG.get_chamber(params, 'player_1')
@@ -27,17 +27,17 @@ local function pre_show(window)
         if tunnel then
             window.windiness.value = tunnel.windiness
         else
-            -- TODO: Error?
+            error('cave_map_settings requires that each player [chamber] contains at least two [passage] tags')
         end
 
         local road = MG.get_passage(first_player, 2)
         if road then
             window.roads.selected = not road.ignore
         else
-            -- TODO: Error?
+            error('cave_map_settings requires that each player [chamber] contains at least two [passage] tags')
         end
     else
-        -- TODO: Should there be an error message?
+        error('cave_map_settings requires a [chamber] for each player with id=player_n where n is the player number')
     end
 
     local all_players = {first_player}
