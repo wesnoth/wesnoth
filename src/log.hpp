@@ -61,6 +61,15 @@
 
 namespace lg {
 
+// Prefix and extension for log files. This is used both to generate the unique
+// log file name during startup and to find old files to delete.
+const std::string log_file_prefix = "wesnoth-";
+const std::string log_file_suffix = ".log";
+
+// Maximum number of older log files to keep intact. Other files are deleted.
+// Note that this count does not include the current log file!
+const unsigned max_logs = 8;
+
 enum severity
 {
 	LG_ERROR=0,
@@ -117,6 +126,11 @@ std::string list_logdomains(const std::string& filter);
 void set_strict_severity(int severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
+void set_log_to_file();
+
+bool is_not_log_file(const std::string& filename);
+void rotate_logs(const std::string& log_dir);
+std::string unique_log_filename();
 
 // A little "magic" to surround the logging operation in a mutex.
 // This works by capturing the output first to a stringstream formatter, then

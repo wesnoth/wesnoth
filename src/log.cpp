@@ -21,6 +21,10 @@
  */
 
 #include "log.hpp"
+
+#include "filesystem.hpp"
+#include "mt_rng.hpp"
+
 #include <boost/algorithm/string.hpp>
 
 #include <map>
@@ -29,6 +33,12 @@
 #include <mutex>
 #include <iostream>
 #include <iomanip>
+
+static lg::log_domain log_setup("logsetup");
+#define ERR_LS LOG_STREAM(err,   log_setup)
+#define WRN_LS LOG_STREAM(warn,  log_setup)
+#define LOG_LS LOG_STREAM(info,  log_setup)
+#define DBG_LS LOG_STREAM(debug, log_setup)
 
 namespace {
 
@@ -47,27 +57,97 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
-static std::ostream *output_stream = nullptr;
+static std::ostream *output_stream_ = nullptr;
 
 static std::ostream& output()
 {
-	if(output_stream) {
-		return *output_stream;
+	if(output_stream_) {
+		return *output_stream_;
 	}
 	return std::cerr;
 }
 
+// custom deleter needed to reset cerr and cout
+// otherwise wesnoth segfaults on closing (such as clicking the Quit button on the main menu)
+// seems to be that there's a final flush done outside of wesnoth's code just before exiting
+// but at that point the output_file_ has already been cleaned up
+static std::unique_ptr<std::ostream, void(*)(std::ostream*)> output_file_(nullptr, [](std::ostream*){
+	std::cerr.rdbuf(nullptr);
+	std::cout.rdbuf(nullptr);
+});
+
 namespace lg {
 
-redirect_output_setter::redirect_output_setter(std::ostream& stream)
-	: old_stream_(output_stream)
+/** Helper function for rotate_logs. */
+bool is_not_log_file(const std::string& fn)
 {
-	output_stream = &stream;
+	return !(boost::algorithm::istarts_with(fn, lg::log_file_prefix) &&
+			 boost::algorithm::iends_with(fn, lg::log_file_suffix));
+}
+
+/**
+ * Deletes old log files from the log directory.
+ */
+void rotate_logs(const std::string& log_dir)
+{
+	std::vector<std::string> files;
+	filesystem::get_files_in_dir(log_dir, &files);
+
+	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
+
+	if(files.size() <= lg::max_logs) {
+		return;
+	}
+
+	// Sorting the file list and deleting all but the last max_logs items
+	// should hopefully be faster than stat'ing every single file for its
+	// time attributes (which aren't very reliable to begin with).
+
+	std::sort(files.begin(), files.end());
+
+	for(std::size_t j = 0; j < files.size() - lg::max_logs; ++j) {
+		const std::string path = log_dir + '/' + files[j];
+		LOG_LS << "rotate_logs(): delete " << path;
+		if(!filesystem::delete_file(path)) {
+			ERR_LS << "rotate_logs(): failed to delete " << path << "!";
+		}
+	}
+}
+
+/**
+ * Generates a unique log file name.
+ */
+std::string unique_log_filename()
+{
+	std::ostringstream o;
+	const std::time_t cur = std::time(nullptr);
+	randomness::mt_rng rng;
+
+	o << lg::log_file_prefix
+	  << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-")
+	  << rng.get_next_random()
+	  << lg::log_file_suffix;
+
+	return o.str();
+}
+
+void set_log_to_file()
+{
+	// get the log file stream and assign cerr+cout to it
+	output_file_.reset(filesystem::ostream_file(filesystem::get_logs_dir()+"/"+unique_log_filename()).release());
+	std::cerr.rdbuf(output_file_.get()->rdbuf());
+	std::cout.rdbuf(output_file_.get()->rdbuf());
+}
+
+redirect_output_setter::redirect_output_setter(std::ostream& stream)
+	: old_stream_(output_stream_)
+{
+	output_stream_ = &stream;
 }
 
 redirect_output_setter::~redirect_output_setter()
 {
-	output_stream = old_stream_;
+	output_stream_ = old_stream_;
 }
 
 typedef std::map<std::string, int> domain_map;
