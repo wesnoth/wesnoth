@@ -322,7 +322,11 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 			{ s.begin(), std::size_t(s.size()) }
 		};
 
-		async_write(*socket, buffers, yield);
+		boost::system::error_code ec;
+		async_write(*socket, buffers, yield[ec]);
+		if(check_error(ec, socket)) {
+			return;
+		}
 	} catch (simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 		throw;
