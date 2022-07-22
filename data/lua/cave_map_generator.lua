@@ -245,8 +245,15 @@ function callbacks.generate_scenario(params)
 	for chamber in wml.child_range(params, "chamber") do
 		local chamber_items = wml.get_child(chamber, "items")
 		if (chamber.chance or 100) == 100 and chamber_items then
-			-- TODO: Should we support [event]same_location_as_previous=yes?
 			for i,tag in ipairs(chamber_items) do
+				if tag.tag == 'event' and tag.contents.same_location_as_previous then
+					local evt_data = tag.contents;
+					evt_data.same_location_as_previous = nil
+					table.insert(evt_data, wml.tag.filter{
+						x = chamber.x,
+						y = chamber.y
+					})
+				end
 				table.insert(scenario, tag)
 			end
 		end
