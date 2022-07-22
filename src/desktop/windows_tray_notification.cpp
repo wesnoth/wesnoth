@@ -173,9 +173,9 @@ HWND windows_tray_notification::get_window_handle()
 {
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
-	sdl::window* window = video::get_window();
+	SDL_Window* window = video::get_window();
 	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
-	if (!window || SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*window), &wmInfo) != SDL_TRUE) {
+	if (!window || SDL_GetWindowWMInfo (window, &wmInfo) != SDL_TRUE) {
 		return nullptr;
 	}
 

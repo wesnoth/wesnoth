@@ -28,6 +28,10 @@ uint32_t get_mouse_state(int *x, int *y)
 {
 	uint32_t buttons = SDL_GetMouseState(x, y);
 
+	if (video::headless()) {
+		return buttons;
+	}
+
 	// The game canvas may be offset inside the window,
 	// as well as potentially having a different size.
 	rect input_area = video::input_area();
