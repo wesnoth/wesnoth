@@ -503,7 +503,6 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		char buf[4];
 	} data_size {};
 	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
-	if(*yield.ec_) return {};
 	uint32_t size = ntohl(data_size.size);
 
 	if(size == 0) {
