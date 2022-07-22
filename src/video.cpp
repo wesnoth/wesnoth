@@ -69,14 +69,17 @@ rect input_area_ = {};
 namespace video
 {
 
-// Forward declarations
-void init_window();
-void init_test_window();
-void init_fake();
-void init_test();
-bool update_framebuffer();
-bool update_test_framebuffer();
-point draw_offset();
+// Non-public interface
+void render_screen(); // exposed and used only in draw_manager.cpp
+
+// Internal functions
+static void init_window();
+static void init_test_window();
+static void init_fake();
+static void init_test();
+static bool update_framebuffer();
+static bool update_test_framebuffer();
+static point draw_offset();
 
 
 void init(fake type)
@@ -414,14 +417,6 @@ rect output_area()
 	return {0, 0, p.x, p.y};
 }
 
-point to_output(const point& p)
-{
-	// Multiply p by the integer scale, then add the draw offset if any.
-	point dsize = current_render_target_.draw_size();
-	point osize = current_render_target_.get_raw_size();
-	return (p * (osize / dsize)) + draw_offset();
-}
-
 rect to_output(const rect& r)
 {
 	// Multiply r by integer scale, adding draw_offset to the position.
@@ -602,6 +597,11 @@ SDL_Renderer* get_renderer()
 	} else {
 		return nullptr;
 	}
+}
+
+SDL_Window* get_window()
+{
+	return *window;
 }
 
 std::string current_driver()

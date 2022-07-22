@@ -316,4 +316,9 @@ private:
  * texture creation. Try not to use it for anything else. */
 SDL_Renderer* get_renderer();
 
+/* This should not be used unless absolutely necessary. It's currently used
+ * for Windows tray notification and that's it. If it can be refactored out
+ * somehow then that would be best. */
+SDL_Window* get_window();
+
 } // namespace video
