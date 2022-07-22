@@ -68,11 +68,13 @@ local function pre_show(window)
     function window.width.on_modified()
         params.map_width = window.width.value
         window.width_label.label = params.map_width
+        central_chamber.size = mathx.round((params.map_height + params.map_width) / 4)
     end
 
     function window.height.on_modified()
         params.map_height = window.height.value
         window.height_label.label = params.map_height
+        central_chamber.size = mathx.round((params.map_height + params.map_width) / 4)
     end
 
     function window.village_density.on_modified()
