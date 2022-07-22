@@ -30,6 +30,14 @@ wesnoth.map = {}
 ---@class terrain_filter_tag
 ---@class terrain_filter
 
+---Converts a terrain code string to a special value that, when assigned to a hex on the map,
+--- will first attempt to replace just the base or just the overlay, and if that produces an
+--- invalid combination, will instead replace both.
+---@param terrain string
+---@param mode 'base'|'overlay'
+---@return string
+function wesnoth.map.replace_if_failed(terrain, mode) end
+
 ---Get a list of hexes matching a filter
 ---@param map terrain_map
 ---@param filter terrain_filter
@@ -50,6 +58,12 @@ function wesnoth.map.find_in_radius(map, center, radius, filter) end
 ---@param data table<string, location[]>
 ---@return terrain_filter
 function wesnoth.map.filter(filter, data) end
+
+---Iterate over the entire map.
+---@param map terrain_map
+---@param include_border boolean? Whether to include border hexes.
+---@return fun():integer,integer
+function wesnoth.map.iter(map, include_border) end
 
 ---Test if a location matches a filter
 ---@param location location
@@ -204,12 +218,16 @@ function wesnoth.map.generate(width, height, options) end
 ---@param dir direction
 ---@param steps? integer
 ---@return location
+---@overload fun(from_x:integer, from_y:integer, dir:direction):location
 function wesnoth.map.get_direction(from, dir, steps) end
 
 ---Get the direction you need to travel to get from one hex to another
 ---@param from location
 ---@param to location
 ---@return direction
+---@overload fun(from:location, to_x:integer, to_y:integer):direction
+---@overload fun(from_x:integer, from_y:integer, to:location):direction
+---@overload fun(from_x:integer, from_y:integer, to_x:integer, to_y:integer):direction
 function wesnoth.map.get_relative_dir(from, to) end
 
 ---Get the hex obtained by rotating a location around the specified center
