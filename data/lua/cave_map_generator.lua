@@ -5,14 +5,14 @@ local random = mathx.random
 local callbacks = {}
 
 function callbacks.generate_map(params)
-	local map = MG.create_map(params.map_width, params.map_height, params.terrain_wall)
+	local map = wesnoth.map.create(params.map_width, params.map_height, params.terrain_wall)
 
 	local function build_chamber(x, y, locs_set, size, jagged)
-		if locs_set:get(x,y) or not map:on_board(x, y) or size == 0 then
+		if locs_set:get(x,y) or not map:on_board(x, y, true) or size == 0 then
 			return
 		end
 		locs_set:insert(x,y)
-		for xn, yn in MG.adjacent_tiles(x, y) do
+		for xn, yn in map:iter_adjacent(x, y) do
 			if random(100) <= 100 - jagged then
 				build_chamber(xn, yn, locs_set, size - 1, jagged)
 			end
@@ -20,28 +20,28 @@ function callbacks.generate_map(params)
 	end
 
 	local function clear_tile(x, y, terrain_clear)
-		if not map:on_board(x,y) then
+		if not map:on_board(x,y,true) then
 			return
 		end
-		if map:get_tile(x,y) == params.terrain_castle or map:get_tile(x,y) == params.terrain_keep then
+		if map[{x,y}] == params.terrain_castle or map[{x,y}] == params.terrain_keep then
 			return
 		end
 		local r = random(1000)
 		if r <= params.village_density then
-			map:set_tile(x, y, mathx.random_choice(params.terrain_village))
+			map[{x, y}] = mathx.random_choice(params.terrain_village)
 		else
-			map:set_tile(x, y, mathx.random_choice(terrain_clear or params.terrain_clear))
+			map[{x, y}] = mathx.random_choice(terrain_clear or params.terrain_clear)
 		end
 	end
 
 	local function place_road(to_x, to_y, from_x, from_y, road_ops, terrain_clear)
-		if not map:on_board(to_x, to_y) then
+		if not map:on_board(to_x, to_y, true) then
 			return
 		end
-		if map:get_tile(to_x, to_y) == params.terrain_castle or map:get_tile(to_x, to_y) == params.terrain_keep then
+		if map[{to_x, to_y}] == params.terrain_castle or map[{to_x, to_y}] == params.terrain_keep then
 			return
 		end
-		local tile_op = road_ops[map:get_tile(to_x, to_y)]
+		local tile_op = road_ops[map[{to_x, to_y}]]
 		if tile_op then
 			if tile_op.convert_to_bridge and from_x and from_y then
 				local bridges = {}
@@ -50,19 +50,19 @@ function callbacks.generate_map(params)
 				end
 				local dir = wesnoth.map.get_relative_dir(from_x, from_y, to_x, to_y)
 				if dir == 'n' or dir == 's' then
-					map:set_tile(to_x, to_y, bridges[1])
+					map[{to_x, to_y}] = bridges[1]
 				elseif dir == 'sw' or dir == 'ne' then
-					map:set_tile(to_x, to_y, bridges[2])
+					map[{to_x, to_y}] = bridges[2]
 				elseif dir == 'se' or dir == 'nw' then
-					map:set_tile(to_x, to_y, bridges[3])
+					map[{to_x, to_y}] = bridges[3]
 				end
 			elseif tile_op.convert_to then
 				local tile = mathx.random_choice(tile_op.convert_to)
-				map:set_tile(to_x, to_y, tile)
+				map[{to_x, to_y}] = tile
 			end
 		else
 			local tile = mathx.random_choice(terrain_clear or params.terrain_clear)
-			map:set_tile(to_x, to_y, tile)
+			map[{to_x, to_y}] = tile
 		end
 	end
 
@@ -76,25 +76,25 @@ function callbacks.generate_map(params)
 		local x, y = MG.random_location(chamber.x, chamber.y)
 		-- Note: x,y run from (0,0) to (w+1,h+1)
 		if chamber.relative_to == "top-right" then
-			x = map.w - x - 1
+			x = map.width - x - 1
 		elseif chamber.relative_to == "bottom-right" then
-			x = map.w - x - 1
-			y = map.h - y - 1
+			x = map.width - x - 1
+			y = map.height - y - 1
 		elseif chamber.relative_to == "bottom-left" then
-			y = map.h - y - 1
+			y = map.height - y - 1
 		elseif chamber.relative_to == "top-middle" then
-			x = math.ceil(map.w / 2) + x
+			x = math.ceil(map.width / 2) + x
 		elseif chamber.relative_to == "bottom-middle" then
-			x = math.ceil(map.w / 2) + x
-			y = map.h - y - 1
+			x = math.ceil(map.width / 2) + x
+			y = map.height - y - 1
 		elseif chamber.relative_to == "middle-left" then
-			y = math.ceil(map.h / 2) + y
+			y = math.ceil(map.height / 2) + y
 		elseif chamber.relative_to == "middle-right" then
-			y = math.ceil(map.h / 2) + y
-			x = map.w - x - 1
+			y = math.ceil(map.height / 2) + y
+			x = map.width - x - 1
 		elseif chamber.relative_to == "center" then
-			x = math.ceil(map.w / 2) + x
-			y = math.ceil(map.h / 2) + y
+			x = math.ceil(map.width / 2) + x
+			y = math.ceil(map.height / 2) + y
 		end -- Default is "top-left" which means no adjustments needed
 		local id = chamber.id
 		if chance == 0 or random(100) > chance then
@@ -152,7 +152,7 @@ function callbacks.generate_map(params)
 		local locs_list = {}
 		for x, y in v.locs_set:stable_iter() do
 			clear_tile(x, y, v.data.terrain_clear)
-			if map:on_inner_board(x, y) then
+			if map:on_board(x, y, false) then
 				table.insert(locs_list, {x,y})
 			end
 		end
@@ -163,13 +163,13 @@ function callbacks.generate_map(params)
 			local x, y = table.unpack(loc)
 
 			if item.id then
-				map:add_location(x, y, item.id)
+				map.special_locations[item.id] = {x, y}
 			end
 
 			if item.place_castle then
-				map:set_tile(x, y, params.terrain_keep)
-				for x2, y2 in MG.adjacent_tiles(x, y) do
-					map:set_tile(x2, y2, params.terrain_castle)
+				map[{x, y}] = params.terrain_keep
+				for x2, y2 in map:iter_adjacent(x, y) do
+					map[{x2, y2}] = params.terrain_castle
 				end
 			end
 		end
@@ -187,7 +187,7 @@ function callbacks.generate_map(params)
 					return math.huge
 				end
 				local res = 1.0
-				local tile = map:get_tile(x, y)
+				local tile = map[{x, y}]
 				res = v.costs[tile] or 1.0
 				if tile == params.terrain_wall then
 					res = laziness * res
@@ -231,11 +231,11 @@ function callbacks.generate_map(params)
 					wml.error("Unknown transformation '" .. t .. "'")
 				end
 			end
-			map[transforms[random(#transforms)]](map)
+			MG[transforms[random(#transforms)]](map)
 		end
 	end
 
-	return tostring(map)
+	return map.data
 end
 
 function callbacks.generate_scenario(params)
