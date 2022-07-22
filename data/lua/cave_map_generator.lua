@@ -244,7 +244,7 @@ function callbacks.generate_scenario(params)
 	scenario.map_data = callbacks.generate_map(params)
 	for chamber in wml.child_range(params, "chamber") do
 		local chamber_items = wml.get_child(chamber, "items")
-		if chamber.chance == 100 and chamber_items then
+		if (chamber.chance or 100) == 100 and chamber_items then
 			-- TODO: Should we support [event]same_location_as_previous=yes?
 			for i,tag in ipairs(chamber_items) do
 				table.insert(scenario, tag)
