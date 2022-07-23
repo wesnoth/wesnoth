@@ -764,9 +764,38 @@ void set_zoom(unsigned int amount)
 static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 {
 	surface image(get_surface(i_locator, UNSCALED, skip_cache));
+	surface mask(get_hexmask());
+	// Ensure the image is the correct size by cropping and/or centering.
+	// TODO: this should probably be a function of sdl/utils
+	if(image && (image->w != mask->w || image->h != mask->h)) {
+		DBG_IMG << "adjusting [" << image->w << ',' << image->h << ']'
+			<< " image to hex mask: " << i_locator;
+		// the fitted surface
+		surface fit(mask->w, mask->h);
+		// if the image is too large in either dimension, crop it.
+		if(image->w > mask->w || image->h >= mask->h) {
+			// fill the crop surface with transparency
+			sdl::fill_surface_rect(fit, nullptr,
+				SDL_MapRGBA(fit->format, 0, 0, 0, 0)
+			);
+			// crop the input image to hexmask dimensions
+			int cutx = std::max(0, image->w - mask->w) / 2;
+			int cuty = std::max(0, image->h - mask->h) / 2;
+			int cutw = std::min(image->w, mask->w);
+			int cuth = std::min(image->h, mask->h);
+			image = cut_surface(image, {cutx, cuty, cutw, cuth});
+			// image will now have dimensions <= mask
+		}
+		// center image
+		int placex = (mask->w - image->w) / 2;
+		int placey = (mask->h - image->h) / 2;
+		rect dst = {placex, placey, image->w, image->h};
+		sdl_blit(image, nullptr, fit, &dst);
+		image = fit;
+	}
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
-	surface res = mask_surface(image, get_hexmask(), &is_empty, i_locator.get_filename());
+	surface res = mask_surface(image, mask, &is_empty, i_locator.get_filename());
 	i_locator.add_to_cache(is_empty_hex_, is_empty);
 	return res;
 }
