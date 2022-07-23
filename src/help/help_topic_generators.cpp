@@ -646,7 +646,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 
 			// Range, with icon
-			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
+			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
@@ -655,7 +655,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 
 			// Damage type, with icon
-			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO_SHARP(16,16)";
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO(16,16)";
 			push_tab_pair(row, lang_type, type_icon, padding);
 
 			// Show this attack's special, if it has any. Cross
@@ -718,7 +718,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 		std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + dam_it.first];
-		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO_SHARP(16,16)";
+		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
 		push_tab_pair(row, lang_type, type_icon, padding);
 		std::stringstream str;
 		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";
@@ -813,10 +813,8 @@ std::string unit_topic_generator::operator()() const {
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
 			const bool cannot_move = m.movement_cost > type_.movement();        // cannot move in this terrain
-			double movement_red_to_green = 0.0;
-			if (type_.movement() != 0) {
-				movement_red_to_green = (100.0 * (type_.movement() - m.movement_cost)) / type_.movement();
-			}
+			double movement_red_to_green = 100.0 - 25.0 * m.movement_cost;
+
 			// passing false to select the more saturated red-to-green scale
 			std::string movement_color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 			str << "<format>color='" << movement_color << "' text='";
@@ -830,6 +828,14 @@ std::string unit_topic_generator::operator()() const {
 				str << m.movement_cost;
 			}
 			str << "'</format>";
+			if(m.movement_cost != 0) {
+				const int movement_hexes_per_turn = type_.movement() / m.movement_cost;
+				std::string movement_color_hashless = movement_color.substr(1);
+				str  << font::nbsp;
+				for(int i = 0; i < movement_hexes_per_turn; ++i) {
+					str << "<img>src='terrain/alphamask.png~RC(000000 > " << movement_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+				}
+			}
 			markup = str.str();
 			str.str(clear_stringstream);
 			str << m.movement_cost;
@@ -858,10 +864,8 @@ std::string unit_topic_generator::operator()() const {
 			if (has_vision) {
 				str.str(clear_stringstream);
 				const bool cannot_view = m.vision_cost > type_.vision();        // cannot view in this terrain
-				double vision_red_to_green = 0.0;
-				if (type_.vision() != 0) {
-					vision_red_to_green = (100.0 * (type_.vision() - m.vision_cost)) / type_.vision();
-				}
+				double vision_red_to_green = 100.0 - 25.0 * m.vision_cost;
+
 				// passing false to select the more saturated red-to-green scale
 				std::string vision_color = game_config::red_to_green(vision_red_to_green, false).to_hex_string();
 				str << "<format>color='" << vision_color << "' text='";
@@ -875,6 +879,14 @@ std::string unit_topic_generator::operator()() const {
 					str << m.vision_cost;
 				}
 				str << "'</format>";
+				if(m.vision_cost != 0) {
+					const int vision_hexes_per_turn = type_.vision() / m.vision_cost;
+					std::string vision_color_hashless = vision_color.substr(1);
+					str  << font::nbsp;
+					for(int i = 0; i < vision_hexes_per_turn; ++i) {
+						str << "<img>src='terrain/alphamask.png~RC(000000 > " << vision_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+					}
+				}
 				markup = str.str();
 				str.str(clear_stringstream);
 				str << m.vision_cost;
@@ -885,10 +897,8 @@ std::string unit_topic_generator::operator()() const {
 			if (has_jamming) {
 				str.str(clear_stringstream);
 				const bool cannot_jam = m.jamming_cost > type_.jamming();       // cannot jam in this terrain
-				double jamming_red_to_green = 0.0;
-				if (type_.jamming() != 0) {
-					jamming_red_to_green = (100.0 * (type_.jamming() - m.jamming_cost)) / type_.jamming();
-				}
+				double jamming_red_to_green = 100.0 - 25.0 * m.jamming_cost;
+
 				// passing false to select the more saturated red-to-green scale
 				std::string jamming_color = game_config::red_to_green(jamming_red_to_green, false).to_hex_string();
 				str << "<format>color='" << jamming_color << "' text='";
@@ -902,6 +912,14 @@ std::string unit_topic_generator::operator()() const {
 					str << m.jamming_cost;
 				}
 				str << "'</format>";
+				if(m.jamming_cost != 0) {
+					const int jamming_hexes_per_turn = type_.jamming() / m.jamming_cost;
+					std::string jamming_color_hashless = jamming_color.substr(1);
+					str  << font::nbsp;
+					for(int i = 0; i < jamming_hexes_per_turn; ++i) {
+						str << "<img>src='terrain/alphamask.png~RC(000000 > " << jamming_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+					}
+				}
 
 				push_tab_pair(row, str.str());
 			}

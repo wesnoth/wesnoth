@@ -177,10 +177,8 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
-		double movement_red_to_green = 0.0;
-		if (total_movement != 0) {
-			movement_red_to_green = (100.0 * (total_movement - tm.moves)) / total_movement;
-		}
+		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
+
 		// passing false to select the more saturated red-to-green scale
 		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 
@@ -219,8 +217,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	);
 
 	for(const auto& a : attacks) {
-		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
 		const bool range_png_exists = ::image::locator(range_png).file_exists();
 		const bool type_png_exists = ::image::locator(type_png).file_exists();
 

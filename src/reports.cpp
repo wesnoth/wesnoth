@@ -686,10 +686,8 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 		const bool cannot_move = tm.moves > u->total_movement();		// cannot move in this terrain
-		double movement_red_to_green = 0.0;
-		if (u->total_movement() != 0) {
-			movement_red_to_green = (100.0 * (u->total_movement() - tm.moves)) / u->total_movement();
-		}
+		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
+
 		// passing false to select the more saturated red-to-green scale
 		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 		tooltip << "<span foreground=\"" << color << "\">";
@@ -743,8 +741,8 @@ REPORT_GENERATOR(selected_unit_moves, rc)
 }
 
 /**
- * Maps resistance <= -100 (resistance value <= -100%) to intense red.
- * Maps resistance >= 100 (resistance value >= 100%) to intense green.
+ * Maps resistance <= -60 (resistance value <= -60%) to intense red.
+ * Maps resistance >= 60 (resistance value >= 60%) to intense green.
  * Intermediate values are affinely mapped to the red-to-green scale,
  * with 0 (0%) being mapped to yellow.
  * Compare unit_helper::resistance_color().
@@ -752,7 +750,7 @@ REPORT_GENERATOR(selected_unit_moves, rc)
 static inline const color_t attack_info_percent_color(int resistance)
 {
 	// Passing false to select the more saturated red-to-green scale.
-	return game_config::red_to_green(50.0 + 0.5 * resistance, false);
+	return game_config::red_to_green(50.0 + resistance * 5.0 / 6.0, false);
 }
 
 static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
@@ -859,9 +857,9 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		std::string range = string_table["range_" + at.range()];
 		std::string lang_type = string_table["type_" + at.type()];
 
-		// SCALE_INTO_SHARP() is needed in case the 72x72 images/misc/missing-image.png is substituted.
-		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
+		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO(16,16)";
 		const bool range_png_exists = image::locator(range_png).file_exists();
 		const bool type_png_exists = image::locator(type_png).file_exists();
 
