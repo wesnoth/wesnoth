@@ -92,12 +92,18 @@ function map_mt.__index.add_location(map, x, y, name)
 	map.__map.special_locations[name] = {x, y}
 end
 
----Flip the map horizontally
+----Flip the map horizontally
 ---@param map terrain_map
 function mapgen_helper.flip_x(map)
 	for x, y in map:iter(true) do
-		local x_opp = map.width - x - 1
-		map[{x,y}], map[{x_opp,y}] = map[{x_opp,y}], map[{x,y}]
+		if x <= map.width / 2 or y <= map.height / 2 then
+			local x_opp = map.width - x - 1
+			map[{x,y}], map[{x_opp,y}] = map[{x_opp,y}], map[{x,y}]
+		end
+	end
+	for id, loc in map.special_locations do
+		loc.x = map.width - loc.x - 1
+		map.special_locations[id] = loc
 	end
 end
 
@@ -105,16 +111,32 @@ end
 ---@param map terrain_map
 function mapgen_helper.flip_y(map)
 	for x, y in map:iter(true) do
-		local y_opp = map.height - y - 1
-		map[{x,y}], map[{x,y_opp}] = map[{x,y_opp}], map[{x,y}]
+		if x <= map.width / 2 or y <= map.height / 2 then
+			local y_opp = map.height - y - 1
+			map[{x,y}], map[{x,y_opp}] = map[{x,y_opp}], map[{x,y}]
+		end
+	end
+	for id, loc in map.special_locations do
+		loc.y = map.height - loc.y - 1
+		map.special_locations[id] = loc
 	end
 end
 
 ---Flip the map diagonally
 ---@param map terrain_map
 function mapgen_helper.flip_xy(map)
-	mapgen_helper.flip_x(map)
-	mapgen_helper.flip_y(map)
+	for x, y in map:iter(true) do
+		if x <= map.width / 2 or y <= map.height / 2 then
+			local x_opp = map.width - x - 1
+			local y_opp = map.height - y - 1
+			map[{x,y}], map[{x_opp,y_opp}] = map[{x_opp,y_opp}], map[{x,y}]
+		end
+	end
+	for id, loc in map.special_locations do
+		loc.x = map.width - loc.x - 1
+		loc.y = map.height - loc.y - 1
+		map.special_locations[id] = loc
+	end
 end
 
 ---Convert to string
