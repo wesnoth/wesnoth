@@ -5,20 +5,21 @@
 # Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
 # Samu Voutilainen <smar@smar.fi>, 2010, 2011.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2011, 2012.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2012-04-07 02:20+0300\n"
-"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
+"PO-Revision-Date: 2022-07-22 19:18+0300\n"
+"Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 2.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -120,17 +121,13 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "hoivaa +4"
+msgstr "hoivaa 12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "hoivaa +4"
+msgstr "hoivaa +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
@@ -234,11 +231,11 @@ msgstr "väijytys"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
 msgid "Castle"
-msgstr "linna"
+msgstr "Linna"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
 msgid "Cave"
-msgstr "luola"
+msgstr "Luola"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
@@ -258,15 +255,15 @@ msgstr "ensi-isku"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
 msgid "Forest"
-msgstr "metsä"
+msgstr "Metsä"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
 msgid "Frozen"
-msgstr "jäätynyt"
+msgstr "Jäätynyt"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
 msgid "Hills"
-msgstr "mäki"
+msgstr "Mäki"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
@@ -276,7 +273,7 @@ msgstr "tarkk’ampuja"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
-msgstr "sienilehto"
+msgstr "Sienilehto"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
@@ -299,7 +296,7 @@ msgstr "myrkky"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
 msgid "Sand"
-msgstr "hiekkaa"
+msgstr "Hiekkaa"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
@@ -326,7 +323,7 @@ msgstr "lääkitsee"
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Kartta ja skenaario editori"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
@@ -347,7 +344,7 @@ msgstr "Maaston vaikutus"
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "Maalaustyökalu"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -1149,7 +1146,7 @@ msgstr "<ref>dst='..geography' text='Maantietoa'</ref>"
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalenteri"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1893,7 +1890,7 @@ msgstr "Hyökkäystaidot"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
-msgstr ""
+msgstr "Aikakaudet"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -1905,7 +1902,7 @@ msgstr "Maastot"
 #. [topic]: id=..addons
 #: data/core/help.cfg:78 data/core/help.cfg:599
 msgid "Add-ons"
-msgstr ""
+msgstr "Lisäosat"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -2447,10 +2444,8 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:251
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Ylenee yksiköksi: "
+msgstr "Yleneminen"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2578,17 +2573,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit generates a zone of control in the hexes "
-#| "immediately surrounding it, and any enemy unit entering those hexes "
-#| "immediately ends its movement. Learning how to use zones of control to "
-#| "your advantage is an important part of Wesnoth, as only "
-#| "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones "
-#| "of control."
 msgid ""
 "\n"
 "\n"
@@ -2602,13 +2586,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Toinen käsite, joka liikkuessa tulee muistaa on ”yksikköjen hallitsemat "
-"alueet”. Kukin yksikkö hallitsee vieressään olevia heksoja. Jos "
-"vihollisyksikkö siirtyy tällaiseen heksaan, se ei voi liikkua enempää "
-"vuoronsa aikana. Yksiköiden hallitsemien aluiden käytön opettelu on tärkeä "
-"osa Wesnothia, sillä vain <ref>dst='ability_skirmisher' "
-"text='kahakoitsijat'</ref> voivat liikkua vihollisen hallitsemalla alueella "
-"ongelmitta."
+"Toinen käsite, joka liikkuessa tulee muistaa on <italic>text='yksikköjen "
+"hallitsemat alueet</italic>. Kukin yksikkö (paitsi tason 0 yksiköt) "
+"hallitsee vieressään olevia heksoja. Jos vihollisyksikkö siirtyy tällaiseen "
+"heksaan, se ei voi liikkua enempää vuoronsa aikana. Yksiköiden hallitsemien "
+"alueiden käytön opettelu on tärkeä osa Wesnothia, sillä vain "
+"<ref>dst='ability_skirmisher' text='kahakoitsijat'</ref> voivat liikkua "
+"vihollisen hallitsemalla alueella ongelmitta."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:268
@@ -3403,15 +3387,11 @@ msgstr "Aamuyö"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Muista, että jotkin taistelut käydään maan alla, missä on jatkuvasti yö!"
+"Muista, että jotkin taistelut käydään maan alla, missä on jatkuvasti yö!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:485
@@ -4160,8 +4140,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
-#, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
 msgstr "Yleiset komennot"
 
@@ -4319,8 +4297,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:723
-#, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Moninpelikomennot"
 
@@ -4356,8 +4332,8 @@ msgstr ""
 "(kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi). Voit tarkistaa, "
 "mikä puoli kuuluu millekin pelaajalle <bold>text='tehtävän asetukset'</bold> "
 "-valintaikkunassa (paina <bold>text='Lisää'</bold>-nappia "
-"<bold>text='tilastoä</bold>taulukossa, jonne pääsee näppäinyhdistelmällä alt"
-"+s). Pelin isäntä voi vaihtaa minkä tahansa puolen hallintaa.\n"
+"<bold>text='tilastoä</bold>taulukossa, jonne pääsee näppäinyhdistelmällä "
+"alt+s). Pelin isäntä voi vaihtaa minkä tahansa puolen hallintaa.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -4456,8 +4432,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:761
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Testaustilan komennot"
 
@@ -4575,16 +4549,6 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -4593,7 +4557,6 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Hoivaa +4:\n"
 "Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä oman vuoronsa alussa.\n"
 "\n"
 "Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 4 EP per vuoro, tai "
@@ -4603,16 +4566,6 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:37
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -4622,7 +4575,6 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Hoivaa +8:\n"
 "Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
 "nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
 "\n"
@@ -4637,16 +4589,10 @@ msgstr "lääkitsee"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:63
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Lääkitsee:\n"
 "Lääkitsijä osaa parantaa yksikön myrkytystilan. Yksikkö, jonka myrkytystila "
 "on parannettu, ei saa muuta parannusta samalla vuorolla."
 
@@ -4657,60 +4603,39 @@ msgstr "uusiutuu"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Uusiutuu:\n"
 "Yksikkö parantaa itseään 8 elämäpistettä vuorossa. Jos yksikkö myrkytetään, "
 "se poistaa myrkyn paranemisen sijasta."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "uusiutuu"
+msgstr "uusiutuu +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "uusiutuu"
+msgstr "uusiutuu +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Uusiutuu:\n"
-"Yksikkö parantaa itseään 8 elämäpistettä vuorossa. Jos yksikkö myrkytetään, "
+"Yksikkö parantaa itseään 4 elämäpistettä vuorossa. Jos yksikkö myrkytetään, "
 "se poistaa myrkyn paranemisen sijasta."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Tämä yksikkö uusiutuu, jolloin se paranee missä tahansa kuten kylässä oleva "
-"normaali yksikkö."
+"Tämä yksikkö parantaa itseään joka vuoro, tosin ei yhtä paljon kuin kylässä."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:130
@@ -4724,59 +4649,41 @@ msgstr "vankkumaton"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Vankkumaton:\n"
-"Tämän yksikön vastustukset tuplataan (korkeintaan 50%:iin) puolustettaessa. "
-"Ei vaikuta heikkouksiin."
+"Tämän yksikön vastustukset tuplataan (korkeintaan 50%) puolustettaessa. Ei "
+"vaikuta heikkouksiin."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "harhautus"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "johtaja"
+msgstr "harhautus"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
-"yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
+"Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
+"yksikkö voi harhauttaa kohdetta ja vähentää sen mahdollisuutta osua 20%."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target's attention and reduces its "
 "chance to hit."
 msgstr ""
-" Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
-"yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
+"Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
+"yksikkö voi harhauttaa kohdetta ja vähentää sen mahdollisuutta osua."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -4799,16 +4706,10 @@ msgstr "kahakointi"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:221
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Kahakointi:\n"
 "Tämä yksikkö osaa liikkua nopeasti vihollisyksiköiden ohitse, eikä välitä "
 "vihollisen hallitsemista alueista."
 
@@ -4824,14 +4725,6 @@ msgstr "valaisee"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4839,7 +4732,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Valaistus:\n"
 "Tämä yksikkö valaisee ympäröivän alueen, jolloin lainkuuliaiset yksiköt "
 "taistelevat paremmin, ja kaoottiset huonommin.\n"
 "\n"
@@ -4853,16 +4745,10 @@ msgstr "kaukosiirto"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:252
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Kaukosiirto:\n"
 "Tämä yksikkö voi kaukosiirtyä kahden ystävällisen kylän välillä kuluttamalla "
 "(vain) yhden liikepisteen."
 
@@ -4873,14 +4759,6 @@ msgstr "väijytys"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:284
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4888,7 +4766,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Väijytys:\n"
 "Tämä yksikkö voi piiloutua metsään, jolloin viholliset eivät huomaa sitä.\n"
 "\n"
 "Vihollisyksiköt eivät näe tätä yksikköä, paitsi jos niillä on vihollisia "
@@ -4909,14 +4786,6 @@ msgstr "hidas"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4925,7 +4794,6 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"Väijytys:\n"
 "Tämä yksikkö voi piiloutua metsään, jolloin viholliset eivät huomaa sitä.\n"
 "\n"
 "Vihollisyksiköt eivät näe tätä yksikköä, paitsi jos niillä on vihollisia "
@@ -4934,14 +4802,6 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:325
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4949,7 +4809,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Yöväijyntä:\n"
 "Tämä yksikkö on näkymätön öisin.\n"
 "\n"
 "Vihollisyksiköt eivät näe tätä yksikköä, eivätkä kykene hyökkäämään tämän "
@@ -4965,16 +4824,6 @@ msgstr "piiloutuminen"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4983,7 +4832,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Piiloutuminen:\n"
 "Tämä yksikkö voi piiloutua kylissä (poikkeuksena vesikylät) ja pysyä pois "
 "vihollisten näkyvistä, paitsi niiltä, jotka seisovat yksikön vieressä.\n"
 "\n"
@@ -5003,14 +4851,6 @@ msgstr "sukellusväijytys"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:365
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5018,7 +4858,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Sukellusväijytys:\n"
 "Tämä yksikkö voi piiloutua syvään veteen, jolloin viholliset eivät huomaa "
 "sitä.\n"
 "\n"
@@ -5051,92 +4890,54 @@ msgstr "hurmos"
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:399
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Hurmos:\n"
 "Sekä puolustaessaan että hyökätessään hurmayksiköt jatkavat, kunnes "
 "jompikumpi osapuoli kuolee tai taistelu on jatkunut 30 kierrosta."
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Selkäänpuukotus:\n"
 "Yksikön hyökätessä tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen "
 "vastakkaisella puolella on kohteelle vihamielinen ja taistelukykyinen "
-"yksikkö (yksikköä ei ole esimerkiksi  muutettu kiveksi)."
+"yksikkö (yksikköä ei ole esimerkiksi muutettu kiveksi)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:431
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
-"Rutto:\n"
 "Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
-"yksiköllä kävelevällä ruumiiilla ja samalla on puolella kuin "
-"ruttohyökkäyksen tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä "
-"yksiköihin kylissä)."
+"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
+"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:442
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Rutto:\n"
 "Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
-"yksiköllä kävelevällä ruumiiilla ja samalla on puolella kuin "
-"ruttohyökkäyksen tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä "
-"yksiköihin kylissä)."
+"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
+"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:454
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Hidastus:\n"
 "Tämä hyökkäys hidastaa kohteen vuoron loppuun saakka. Hidastus puolittaa "
 "aiheutetun vahingon määrän ja hidastetun yksikön liikkumiskustannukset "
 "tuplaantuvat. Yksikkö, joka on hidastettu, saa käärmeikonin sivupalkkiin "
@@ -5149,31 +4950,18 @@ msgstr "kivettää"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Kivetys:\n"
 "Tämä hyökkäys muuttaa kohteen kiveksi. Kivetetyt yksiköt eivät voi liikkua "
 "eivätkä hyökätä."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:476
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Tarkk’ampuja:\n"
-"Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
+msgstr "Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
@@ -5182,17 +4970,11 @@ msgstr ""
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
 msgstr ""
-"Tarkk’ampuja:\n"
-"Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
+"Puolustaessa tämä hyökkäys vähentää vastustajan mahdollisuutta osua 10%."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
@@ -5208,16 +4990,10 @@ msgstr "maaginen"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Maaginen:\n"
 "Tällä hyökkäyksellä on aina 70% mahdollisuus osua riippumatta puolustavan "
 "yksikön puolustuskyvystä."
 
@@ -5228,23 +5004,15 @@ msgstr "parvi"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:518
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Parvi:\n"
 "Kun yksikkö haavoittuu, sen iskujen lukumäärä määrä vähenee. Iskujen "
 "väheneminen on suoraan verrannollista elämäpisteiden vähenemiseen. "
-"Rsimerkiksi, jos yksiköllä on jäljellä 3/4 elämäpisteistä, sillä on iskuja "
+"Esimerkiksi, jos yksiköllä on jäljellä 3/4 elämäpisteistä, sillä on iskuja "
 "vain 3/4 alkuperäisestä."
 
 #. [damage]: id=charge
@@ -5254,17 +5022,10 @@ msgstr "rynnäkkö"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Rynnäkkö:\n"
 "Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta aiheuttaa myös "
 "kaksinkertaisen vahingon yksikölle vastahyökkäyksessä."
 
@@ -5288,54 +5049,33 @@ msgstr ""
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Elämänimu:\n"
 "Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
 "vahingosta, jonka tekee (pyöristetään alas)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:566
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "ensi-isku"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Ensi-isku:\n"
-"Yksikkö iskee taistelussa aina ensin tällä hyökkäuksellä, myös "
+"Yksikkö iskee taistelussa aina ensin tällä hyökkäyksellä, myös "
 "puolustautuessaan."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:578
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
 "a unit."
 msgstr ""
-"Myrkky:\n"
 "Tämä hyökkäys myrkyttää elävät kohteet. Myrkytetyt yksiköt menettävät "
 "kahdeksan elämäpistettä jokaisella vuorolle, kunnes ne ovat parannettu tai "
 "elämäpisteitä on jäljellä vain yksi."
@@ -5553,330 +5293,219 @@ msgid "The Long Dark (4)"
 msgstr ""
 
 #: data/core/macros/special-notes.cfg:10
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Henkiolennot kestävät vahinkoa epätavallisen paljon, ja pystyvät myös "
+"Henkiolennot kestävät vahinkoa epätavallisen paljon, ja pystyvät myös "
 "liikkumaan hitaahkosti veden päällä."
 
 #: data/core/macros/special-notes.cfg:13
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Tämän yksikön salatiedehyökkäys tekee valtavaa vahinkoa maagisille "
+"Tämän yksikön salatiedehyökkäys tekee valtavaa vahinkoa maagisille "
 "olennoille, ja jopa joillekin maallisille olennoille."
 
 #: data/core/macros/special-notes.cfg:20
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
-msgstr " Tämä yksikkö kykenee perustason hoivaamiseen."
+msgstr "Tämä yksikkö kykenee perustason hoivaamiseen."
 
 #: data/core/macros/special-notes.cfg:23
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " Tämä yksikkö kykenee nopeaan hoivaamiseen."
+msgstr "Tämä yksikkö kykenee nopeaan hoivaamiseen."
 
 #: data/core/macros/special-notes.cfg:26
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
+"Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
 "myrkytykset."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Tämä yksikkö pystyy neutralisoimaan myrkyn vaikutukset yksiköistä hänen "
+"Tämä yksikkö pystyy neutralisoimaan myrkyn vaikutukset yksiköistä hänen "
 "ympäriltään."
 
 #: data/core/macros/special-notes.cfg:32
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Tämä yksikkö uusiutuu, jolloin se paranee missä tahansa kuten kylässä oleva "
+"Tämä yksikkö uusiutuu, jolloin se paranee missä tahansa kuten kylässä oleva "
 "normaali yksikkö."
 
 #: data/core/macros/special-notes.cfg:35
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" Tämä yksikkö on sisukas. Kun se puolustautuu, se ottaa vähemmän vauriota "
+"Tämä yksikkö on sisukas. Kun se puolustautuu, se ottaa vähemmän vauriota "
 "joistain hyökkäyksistä."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Tämä yksikön johtamistaidot auttavat vieressä olevia ystävällisiä yksiköitä "
+"Tämä yksikön johtamistaidot auttavat vieressä olevia ystävällisiä yksiköitä "
 "tekemään enemmän vahinkoa taistelussa, joskin tämä pätee vain "
 "alempitasoisiin yksiköihin."
 
 #: data/core/macros/special-notes.cfg:41
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Tämä yksikkö on tottunut kahakoimaan, ja pystyy siksi liikkumaan "
-"normaalisti myös vihollisten läheisyydessä."
+"Tämä yksikkö on tottunut kahakoimaan, ja pystyy siksi liikkumaan normaalisti "
+"myös vihollisten läheisyydessä."
 
 #: data/core/macros/special-notes.cfg:44
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
-" Tämä yksikkö hohtaa valoa. Se muuttaa läheisten alueiden valaistustason "
+"Tämä yksikkö hohtaa valoa. Se muuttaa läheisten alueiden valaistustason "
 "astetta kirkkaammaksi."
 
 #: data/core/macros/special-notes.cfg:47
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Tämä yksikkö voi käyttää yhden liikepisteen kaukosiirtyäkseen minkä tahansa "
+"Tämä yksikkö voi käyttää yhden liikepisteen kaukosiirtyäkseen minkä tahansa "
 "tyhjän sekä oman puolensa kylän välillä."
 
 #: data/core/macros/special-notes.cfg:50
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Tämä yksikkö on kokenut sissi. Jos se on metsässä, viholliset eivät huomaa "
+"Tämä yksikkö on kokenut sissi. Jos se on metsässä, viholliset eivät huomaa "
 "sitä, paitsi jos nämä ovat sen vieressä, tai jos yksikkö on itse paljastanut "
 "olinpaikkansa hyökkäämällä."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr " Tämä yksikkö pystyy piiloutumaan yöllä jäljettömiin."
+msgstr "Tämä yksikkö pystyy piiloutumaan yöllä jäljettömiin."
 
 #: data/core/macros/special-notes.cfg:56
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Tämä yksikkö voi piileskellä kylissä (poikkeuksena vesikylät), ja pysyä "
+"Tämä yksikkö voi piileskellä kylissä (poikkeuksena vesikylät), ja pysyä "
 "piilossa vastustajilta, paitsi niiltä, jotka seisovat tämän yksikön vieressä."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Tämä yksikkö voi liikkua veden alla näkymättömänä, koska sen ei tarvitse "
+"Tämä yksikkö voi liikkua veden alla näkymättömänä, koska sen ei tarvitse "
 "nousta pintaan hengittämään."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Tämä yksikkö saa yhden elämäpisteen maksimimääräänsä aina tappaessaan "
-"elävän yksikön."
+"Tämä yksikkö saa yhden elämäpisteen maksimimääräänsä aina tappaessaan elävän "
+"yksikön."
 
 #: data/core/macros/special-notes.cfg:65
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Tämä yksikkö pystyy saattamaan itsensä eläimellisen raivon valtaan "
+"Tämä yksikkö pystyy saattamaan itsensä eläimellisen raivon valtaan "
 "hyökätessään. Käyttäessään tällaista hyökkäystä, yksikkö jatkaa taistelua, "
 "kunnes vihollinen tai se itse on tuhottu."
 
 #: data/core/macros/special-notes.cfg:68
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
+"Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
 "yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
 
 #: data/core/macros/special-notes.cfg:71
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Jos vihollinen kuolee tämän yksikön levittämään ruttoon, se herää henkiin "
+"Jos vihollinen kuolee tämän yksikön levittämään ruttoon, se herää henkiin "
 "epäkuolleena, ellei yksikkö ole kylässä."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Tämä yksikkö pystyy hidastamaan vihollisiaan. Hidastus puolittaa "
+"Tämä yksikkö pystyy hidastamaan vihollisiaan. Hidastus puolittaa "
 "liikkumisnopeuden ja hyökkäysvahingon oman puolen vuoron loppuun saakka."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Tämä yksikkö on erityisen vaarallinen, koska se pystyy kivettämään elävät "
+"Tämä yksikkö on erityisen vaarallinen, koska se pystyy kivettämään elävät "
 "yksiköt."
 
 #: data/core/macros/special-notes.cfg:80
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" Tämä yksikkö on kokenut tarkk’ampuja. Se osuu hyökätessään melko varmasti "
+"Tämä yksikkö on kokenut tarkk’ampuja. Se osuu hyökätessään melko varmasti "
 "viholliseen maastosta riippumatta."
 
 #: data/core/macros/special-notes.cfg:83
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Tällä yksiköllä on maagisia hyökkäyksiä, joilla on aina suuri mahdollisuus "
+"Tällä yksiköllä on maagisia hyökkäyksiä, joilla on aina suuri mahdollisuus "
 "osua vastustajaan."
 
 #: data/core/macros/special-notes.cfg:86
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Tämä yksikkö on parvi. Jos se kärsii vauriota, sen yksilöt kuolevat ja "
+"Tämä yksikkö on parvi. Jos se kärsii vauriota, sen yksilöt kuolevat ja "
 "hyökkäykset heikkenevät vastaavasti."
 
 #: data/core/macros/special-notes.cfg:89
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Tämä yksikkö tekee rynnäköidessään kaksinkertaiset vauriot, mutta myös "
+"Tämä yksikkö tekee rynnäköidessään kaksinkertaiset vauriot, mutta myös "
 "kärsii kaksinkertaisesti. Puolustaessaan yksikkö tekee vauriota normaalisti."
 
 #: data/core/macros/special-notes.cfg:92
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
-msgstr " Tämä yksikkö imee uhriensa elinvoiman itselleen."
+msgstr "Tämä yksikkö imee uhriensa elinvoiman itselleen."
 
 #: data/core/macros/special-notes.cfg:95
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-" Tällä yksiköllä on pitkä keihäs tai hilpari, joten se saa lyödä taistelussa "
+"Tällä yksiköllä on pitkä keihäs tai hilpari, joten se saa lyödä taistelussa "
 "ensimmäisenä myös puolustautuessaan."
 
 #: data/core/macros/special-notes.cfg:98
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Tämä yksikkö myrkyttää. Sen uhrit kärsivät jatkuvasti vahinkoa, kunnes ne "
+"Tämä yksikkö myrkyttää. Sen uhrit kärsivät jatkuvasti vahinkoa, kunnes ne "
 "pääsevät parannettaviksi joko kaupungissa tai lääkitsevän yksikön vieressä."
 
 #: data/core/macros/special-notes.cfg:101
@@ -5888,16 +5517,8 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:116
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:601
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Erityistiedot:"
+msgstr "Erityistiedot:"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6945,24 +6566,18 @@ msgstr ""
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Ihminen"
+msgstr "Haukka"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:138
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Ihminen"
+msgstr "Haukka"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:139
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Ihmiset"
+msgstr "Haukat"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:140
@@ -7075,24 +6690,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Puupaimen"
+msgstr "Hevonen"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Jätti"
+msgstr "Hevonen"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Puupaimenet"
+msgstr "Hevoset"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -7264,10 +6873,8 @@ msgstr "Ihminen"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:223
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Epäkuolleet"
+msgstr "Dyynikansa"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:225
@@ -7446,10 +7053,8 @@ msgstr "Merenneito"
 
 #. [race]: id=merman
 #: data/core/units.cfg:288
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Peikko"
+msgstr "Merenväki"
 
 #. [race]: id=merman
 #: data/core/units.cfg:290
@@ -8137,10 +7742,8 @@ msgid "Help"
 msgstr "Apua"
 
 #: src/help/help.cpp:269 src/help/help.cpp:273
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "Tulkintavirhe aputekstissä: "
+msgstr "Tulkintavirhe aputekstissä:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
@@ -8204,20 +7807,16 @@ msgid "Defense properties: "
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:297
-#, fuzzy
-#| msgid "level"
 msgid "Level"
-msgstr "taso"
+msgstr "Taso"
 
 #: src/help/help_topic_generators.cpp:358
 msgid "Advances from: "
 msgstr "Ylenee yksiköstä: "
 
 #: src/help/help_topic_generators.cpp:360
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Ylenee yksiköstä: "
+msgstr "Ylenee yksiköksi: "
 
 #: src/help/help_topic_generators.cpp:389
 #, fuzzy
@@ -8232,10 +7831,8 @@ msgid "Base units: "
 msgstr "maasto"
 
 #: src/help/help_topic_generators.cpp:412
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Liittoumat:"
+msgstr "Variaatiot:"
 
 #: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
@@ -8257,19 +7854,15 @@ msgstr "Taitopäivitykset: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "EP: "
+msgstr "EP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:568
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Liikepisteitä: "
+msgstr "Liikepisteitä:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -8291,28 +7884,22 @@ msgstr "parveilu"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:584
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Hinta: "
+msgstr "Hinta:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:588
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Suuntautuminen: "
+msgstr "Suuntautuminen:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:595
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Vaadittu kokemus (KP): "
+msgstr "Vaadittu kokemus (KP):"
 
 #: src/help/help_topic_generators.cpp:610
 msgid "unit help^Attacks"
@@ -8324,7 +7911,7 @@ msgstr "Nimi"
 
 #: src/help/help_topic_generators.cpp:618
 msgid "Strikes"
-msgstr "iskut"
+msgstr "Iskut"
 
 #: src/help/help_topic_generators.cpp:619
 msgid "Range"
@@ -8351,8 +7938,6 @@ msgid "Resistance"
 msgstr "vastustus"
 
 #: src/help/help_topic_generators.cpp:733
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Maaston vaikutus"
 
@@ -8383,7 +7968,7 @@ msgid "Jamming Cost"
 msgstr ""
 
 #~ msgid "Flat"
-#~ msgstr "tasamaa"
+#~ msgstr "Tasamaa"
 
 #~ msgid "Village"
 #~ msgstr "kylä"
