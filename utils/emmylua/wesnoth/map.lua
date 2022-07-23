@@ -51,6 +51,12 @@ function wesnoth.map.find_in_radius(map, center, radius, filter) end
 ---@return terrain_filter
 function wesnoth.map.filter(filter, data) end
 
+---Iterate over the entire map.
+---@param map terrain_map
+---@param include_border boolean Whether to include border hexes.
+---@return fun():integer,integer
+function wesnoth.map.iter(map, include_border) end
+
 ---Test if a location matches a filter
 ---@param location location
 ---@param filter WML
@@ -204,12 +210,16 @@ function wesnoth.map.generate(width, height, options) end
 ---@param dir direction
 ---@param steps? integer
 ---@return location
+---@overload fun(from_x:integer, from_y:integer, dir:direction):location
 function wesnoth.map.get_direction(from, dir, steps) end
 
 ---Get the direction you need to travel to get from one hex to another
 ---@param from location
 ---@param to location
 ---@return direction
+---@overload fun(from:location, to_x:integer, to_y:integer):direction
+---@overload fun(from_x:integer, from_y:integer, to:location):direction
+---@overload fun(from_x:integer, from_y:integer, to_x:integer, to_y:integer):direction
 function wesnoth.map.get_relative_dir(from, to) end
 
 ---Get the hex obtained by rotating a location around the specified center

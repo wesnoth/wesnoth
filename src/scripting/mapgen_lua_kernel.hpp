@@ -31,7 +31,7 @@ public:
 
 	virtual std::string my_name() { return "Mapgen Lua Kernel"; }
 
-	void user_config(const char * prog, const config & generator); // throws game::lua_error
+	void user_config(const char * prog, config & generator); // throws game::lua_error
 	std::string create_map(const char * prog, const config & generator, std::optional<uint32_t> seed); // throws game::lua_error
 	config create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed); // throws game::lua_error
 

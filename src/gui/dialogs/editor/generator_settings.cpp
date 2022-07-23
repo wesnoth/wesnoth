@@ -22,6 +22,7 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"
+#include "formula/string_utils.hpp"
 
 #include <functional>
 
@@ -67,7 +68,12 @@ void generator_settings::pre_show(window& window)
 	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
 	adjust_minimum_size_by_players();
 
-	gui2::bind_status_label<slider>(&window, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
+	gui2::bind_status_label<slider>(&window, "villages", [](const slider& s) {
+		std::string val = std::to_string(s.get_value());
+		utils::string_map args;
+		args["villages"] = val;
+		return t_string(VGETTEXT("$villages/1000 tiles", args));
+	});
 	gui2::bind_status_label<slider>(&window, "castle_size");
 	gui2::bind_status_label<slider>(&window, "landform", [](const slider& s) {
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });

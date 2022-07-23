@@ -841,6 +841,7 @@ void luaW_pushconfig(lua_State *L, const config& cfg)
 
 bool luaW_toconfig(lua_State *L, int index, config &cfg)
 {
+	cfg.clear();
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
 
@@ -1044,7 +1045,6 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 		case LUA_TTABLE:
 			{
 				config &cfg = v.as_container();
-				cfg.clear();
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}

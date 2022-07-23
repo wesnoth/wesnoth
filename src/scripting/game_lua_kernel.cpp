@@ -3197,7 +3197,6 @@ namespace
 
 		void query_lua(int side, int function_index, config& cfg) const
 		{
-			assert(cfg.empty());
 			lua_pushvalue(L, function_index);
 			lua_pushnumber(L, side);
 			if (luaW_pcall(L, 1, 1, false)) {
