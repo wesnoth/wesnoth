@@ -674,6 +674,7 @@ void unit_attack(display * disp, game_board & board,
 		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
 		assert(leader.valid());
 		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+		leader->anim_comp().invalidate(*disp);
 		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
 			att->get_location(), damage, true,  "", {0,0,0},
 			hit_type, weapon, secondary_attack, swing);
