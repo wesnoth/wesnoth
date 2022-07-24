@@ -700,6 +700,13 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 		} else {
 			tooltip << tm.moves;
 		}
+		if(tm.moves != 0) {
+			const int movement_hexes_per_turn = u->total_movement() / tm.moves;
+			tooltip << " ";
+			for(int i = 0; i < movement_hexes_per_turn; ++i) {
+				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+			}
+		}
 		tooltip << naps << '\n';
 	}
 

@@ -830,11 +830,11 @@ std::string unit_topic_generator::operator()() const {
 			str << "'</format>";
 			if(m.movement_cost != 0) {
 				const int movement_hexes_per_turn = type_.movement() / m.movement_cost;
-				std::string movement_color_hashless = movement_color.substr(1);
-				str  << font::nbsp;
+				str << "<format>color='" << movement_color << "' font_size='" << font::SIZE_SMALL << "' text=' ";
 				for(int i = 0; i < movement_hexes_per_turn; ++i) {
-					str << "<img>src='terrain/alphamask.png~RC(000000 > " << movement_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+					str << "\u2b23";	// Unicode horizontal black hexagon
 				}
+				str << "'</format>";
 			}
 			markup = str.str();
 			str.str(clear_stringstream);
@@ -881,11 +881,11 @@ std::string unit_topic_generator::operator()() const {
 				str << "'</format>";
 				if(m.vision_cost != 0) {
 					const int vision_hexes_per_turn = type_.vision() / m.vision_cost;
-					std::string vision_color_hashless = vision_color.substr(1);
-					str  << font::nbsp;
+					str << "<format>color='" << vision_color << "' font_size='" << font::SIZE_SMALL << "' text=' ";
 					for(int i = 0; i < vision_hexes_per_turn; ++i) {
-						str << "<img>src='terrain/alphamask.png~RC(000000 > " << vision_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+						str << "\u2b23";	// Unicode horizontal black hexagon
 					}
+					str << "'</format>";
 				}
 				markup = str.str();
 				str.str(clear_stringstream);
@@ -914,11 +914,11 @@ std::string unit_topic_generator::operator()() const {
 				str << "'</format>";
 				if(m.jamming_cost != 0) {
 					const int jamming_hexes_per_turn = type_.jamming() / m.jamming_cost;
-					std::string jamming_color_hashless = jamming_color.substr(1);
-					str  << font::nbsp;
+					str << "<format>color='" << jamming_color << "' font_size='" << font::SIZE_SMALL << "' text=' ";
 					for(int i = 0; i < jamming_hexes_per_turn; ++i) {
-						str << "<img>src='terrain/alphamask.png~RC(000000 > " << jamming_color_hashless << ")~SCALE_INTO(8,8)'</img>";
+						str << "\u2b23";	// Unicode horizontal black hexagon
 					}
+					str << "'</format>";
 				}
 
 				push_tab_pair(row, str.str());
