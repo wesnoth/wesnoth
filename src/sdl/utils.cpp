@@ -1022,6 +1022,7 @@ surface adjust_surface_alpha_add(const surface &surf, int amount)
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result, const std::string& filename)
 {
 	if(surf == nullptr) {
+		*empty_result = true;
 		return nullptr;
 	}
 	if(mask == nullptr) {
