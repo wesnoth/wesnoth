@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Implemented logging to file for Linux and macOS, and enabled it be default for Steam Linux.
 
 ## Version 1.17.6
  ### Campaigns
