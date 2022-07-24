@@ -86,7 +86,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 		if base == '' then -- ^ or ^B
 			-- There's no way to find a base to replace with in this case.
 			-- Could use the existing base, but that's not really replacing both, is it?
-			error('replace_both: no base terrain specified')
+			error('replace.both: no base terrain specified')
 		elseif overlay == '' then -- A^
 			-- This would normally mean replace base while preserving overlay,
 			-- but we actually want to replace base and clear overlay.
@@ -96,6 +96,13 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return code
 		end
 	end
+	
+	wesnoth.map.replace = {
+		both = wesnoth.map.replace_both,
+		base = wesnoth.map.replace_base,
+		overlay = wesnoth.map.replace_overlay,
+		if_failed = wesnoth.map.replace_if_failed,
+	}
 
 	---Iterate over on-map hexes adjacent to a given hex.
 	---@param map terrain_map
@@ -202,9 +209,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		elseif key == 'terrain' then
 			wesnoth.current.map[self] = val
 		elseif key == 'base_terrain' then
-			wesnoth.current.map[self] = wesnoth.map.replace_base(val)
+			wesnoth.current.map[self] = wesnoth.map.replace.base(val)
 		elseif key == 'overlay_terrain' then
-			wesnoth.current.map[self] = wesnoth.map.replace_overlay(val)
+			wesnoth.current.map[self] = wesnoth.map.replace.overlay(val)
 		elseif key == 1 then
 			self.x = val
 		elseif key == 2 then
@@ -313,9 +320,9 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if new_ter == '' or type(new_ter) ~= 'string' then error('set_terrain: expected terrain string') end
 		if replace_if_failed then
 			mode = mode or 'both'
-			new_ter = wesnoth.map.replace_if_failed(new_ter, mode)
+			new_ter = wesnoth.map.replace.if_failed(new_ter, mode)
 		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
-			new_ter = wesnoth.map['replace_' .. mode](new_ter)
+			new_ter = wesnoth.map.replace[mode](new_ter)
 		elseif mode ~= nil then
 			error('set_terrain: invalid mode')
 		end
