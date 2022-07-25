@@ -14,6 +14,9 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Implemented logging to file for Linux and macOS, and enabled it be default for Steam Linux.
+   * Fixed drake flare leadership animation over water (issue #3996)
+   * Fixed animations not clearing properly when zoomed (issues #6589, #6891, #6892)
+   * Fixed inconsistent cropping of unusually-sized item images (issue #6118)
 
 ## Version 1.17.6
  ### Campaigns
