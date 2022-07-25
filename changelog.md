@@ -13,6 +13,8 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed drake flare leadership animation over water (issue #3996)
+   * Fixed animations not clearing properly when zoomed (issue #6589)
 
 ## Version 1.16.5
  ### Miscellaneous and Bug Fixes
