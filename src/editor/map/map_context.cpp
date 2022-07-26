@@ -513,6 +513,9 @@ config map_context::to_config()
 			item["name"].write_if_not_empty(o.name);
 			item["team_name"].write_if_not_empty(o.team_name);
 			item["halo"].write_if_not_empty(o.halo);
+			if(o.submerge) {
+				item["submerge"] = o.submerge;
+			}
 		}
 	}
 

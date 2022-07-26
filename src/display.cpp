@@ -139,7 +139,7 @@ void display::parse_team_overlays()
 }
 
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float z_order)
+void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
 {
 	halo::handle halo_handle;
 	if(halo != "") {
@@ -149,7 +149,7 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 
 	std::vector<overlay>& overlays = get_overlays()[loc];
 	auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
-	overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, z_order);
+	overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, submerge, z_order);
 }
 
 void display::remove_overlay(const map_location& loc)
@@ -1516,8 +1516,16 @@ void display::draw_text_in_hex(const map_location& loc,
 static void add_submerge_ipf_mod(
 	std::string& image_path,
 	int image_height,
-	double submersion_amount)
+	double submersion_amount,
+	int shift = 0)
 {
+	// We may also want to shift the position so that the waterline matches.
+	// Note: This currently has blending problems (see the note on sdl_blit),
+	// but if that blending problem is fixed it should work.
+	if (shift) {
+		image_path = "misc/blank-hex.png~BLIT(" + image_path;
+	}
+
 	// general formula for submerge alpha:
 	//   if (y > WATERLINE)
 	//   then min(max(alpha_mod, 0), 1) * alpha
@@ -1542,6 +1550,13 @@ static void add_submerge_ipf_mod(
 	// but that's not available below SDL 2.0.18.
 	// Alternately it could also be done fairly easily using shaders,
 	// if a graphics system supporting them (such as openGL) is moved to.
+
+	if (shift) {
+		// Finish the shifting blit. This assumes a hex-sized image.
+		image_path += ",0,";
+		image_path += std::to_string(shift);
+		image_path += ')';
+	}
 }
 
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
@@ -2814,10 +2829,17 @@ void display::draw_hex(const map_location& loc)
 					{
 						point isize = image::get_size(ov.image, image::HEXED);
 						std::string ipf = ov.image;
-						add_submerge_ipf_mod(ipf, isize.y, submerge);
-						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-							image::get_lighted_texture(ipf, lt) :
-							image::get_texture(ipf, image::HEXED);
+						if(ov.submerge) {
+							// Adjust submerge appropriately
+							double sub = submerge * ov.submerge;
+							// Shift the image so the waterline remains static.
+							// This is so that units swimming there look okay.
+							int shift = isize.y * (sub - submerge);
+							add_submerge_ipf_mod(ipf, isize.y, sub, shift);
+						}
+						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+							? image::get_lighted_texture(ipf, lt)
+							: image::get_texture(ipf, image::HEXED);
 						drawing_buffer_add(LAYER_TERRAIN_BG, loc, dest, tex);
 					}
 				}

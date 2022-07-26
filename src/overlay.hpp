@@ -26,6 +26,7 @@ struct overlay
 			const std::string& overlay_team_name,
 			const std::string& item_id,
 			const bool fogged,
+			float submerge,
 			float item_z_order = 0)
 		: image(img)
 		, halo(halo_img)
@@ -33,6 +34,7 @@ struct overlay
 		, id(item_id)
 		, halo_handle(handle)
 		, visible_in_fog(fogged)
+		, submerge(submerge)
 		, z_order(item_z_order)
 	{}
 
@@ -45,6 +47,7 @@ struct overlay
 		, id(cfg["id"])
 		, halo_handle()
 		, visible_in_fog(cfg["visible_in_fog"].to_bool())
+		, submerge(cfg["submerge"].to_double(0))
 		, z_order(cfg["z_order"].to_double(0))
 	{
 	}
@@ -57,6 +60,7 @@ struct overlay
 
 	halo::handle halo_handle;
 	bool visible_in_fog;
+	float submerge;
 	float z_order;
 
 };
