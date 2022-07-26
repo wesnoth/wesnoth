@@ -55,6 +55,12 @@ inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const uint32_t c
 
 
 inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+	// Note: this is incorrect when both src and dst combine transparent pixels.
+	// The correct equation is, per-pixel:
+	//   outA = srcA + dstA * (1 - srcA)
+	//   outRGB = (srcRGB * srcA + dstRGB * dstA * (1 - srcA)) / outA
+	// When outA is 0, outRGB can of course be anything.
+	// TODO: implement proper transparent blending using the above formula
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
