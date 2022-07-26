@@ -37,6 +37,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/schema_validator.hpp"
 #include "sound.hpp"
+#include "serialization/string_utils.hpp"
 #include "terrain/builder.hpp"
 #include "terrain/type_data.hpp"
 #include "theme.hpp"
@@ -322,17 +323,20 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 		}
 
 		// only after addon configs have been loaded do we check for which addons are needed and whether they exist to be used
+		LOG_CONFIG << "active_addons_ has size " << active_addons_.size() << " and contents: " << utils::join(active_addons_);
 		if(classification) {
+			LOG_CONFIG << "Enabling only some add-ons!";
 			std::set<std::string> active_addons = classification->active_addons(scenario_id);
 			// IMPORTANT: this is a significant performance optimization, particularly for the worst case example of the batched WML unit tests
 			if(!reload_everything && active_addons == active_addons_) {
 				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.";
+				LOG_CONFIG << "active_addons has size " << active_addons_.size() << " and contents: " << utils::join(active_addons);
 				return;
 			}
 			active_addons_ = active_addons;
 			set_enabled_addon(active_addons_);
 		} else {
-			active_addons_.clear();
+			LOG_CONFIG << "Enabling all add-ons!";
 			set_enabled_addon_all();
 		}
 
@@ -761,18 +765,24 @@ void game_config_manager::set_enabled_addon(std::set<std::string> addon_ids)
 	for(const std::string& id : addon_ids) {
 		auto it = addon_cfgs_.find(id);
 		if(it != addon_cfgs_.end()) {
+			LOG_CONFIG << "Enabling add-on " << id;
 			vec.push_back(it->second);
+		} else {
+			ERR_CONFIG << "Attempted to enable add-on '" << id << "' but its config could not be found";
 		}
 	}
 }
 
 void game_config_manager::set_enabled_addon_all()
 {
+	active_addons_.clear();
 	auto& vec = game_config_view_.data();
 	vec.clear();
 	vec.push_back(game_config_);
 
 	for(const auto& pair : addon_cfgs_) {
+		LOG_CONFIG << "Enabling add-on " << pair.first;
 		vec.push_back(pair.second);
+		active_addons_.emplace(pair.first);
 	}
 }
