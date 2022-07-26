@@ -23,7 +23,6 @@
 #include "formula/callable_objects.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp" //thrown sometimes
-//#include "gettext.hpp"
 #include "language.hpp" // for string_table
 #include "log.hpp"
 #include "units/abilities.hpp"
@@ -1248,7 +1247,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		hide_help_all_ = hide_help["all"].to_bool();
 		read_hide_help(hide_help);
 	}
-	DBG_UT << "Finished creatign unti types\n";
+	DBG_UT << "Finished creating unit types\n";
 }
 
 void unit_type_data::build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
