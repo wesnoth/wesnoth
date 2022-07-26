@@ -2389,23 +2389,31 @@ void display::fade_to(const color_t& c, int duration)
 {
 	uint32_t start = SDL_GetTicks();
 	color_t fade_start = fade_color_;
+	color_t fade_end = c;
 
 	// If we started transparent, assume the same colour
 	if(fade_start.a == 0) {
-		fade_start.r = c.r;
-		fade_start.g = c.g;
-		fade_start.b = c.b;
+		fade_start.r = fade_end.r;
+		fade_start.g = fade_end.g;
+		fade_start.b = fade_end.b;
+	}
+
+	// If we are ending transparent, assume the same colour
+	if(fade_end.a == 0) {
+		fade_end.r = fade_start.r;
+		fade_end.g = fade_start.g;
+		fade_end.b = fade_start.b;
 	}
 
 	// Smoothly blend and display
 	for(uint32_t now = start; now < start + duration; now = SDL_GetTicks()) {
 		float prop_f = float(now - start) / float(duration);
 		uint8_t p = float_to_color(prop_f);
-		fade_color_ = fade_start.smooth_blend(c, p);
+		fade_color_ = fade_start.smooth_blend(fade_end, p);
 		draw_manager::invalidate_region(map_outside_area());
 		events::pump_and_draw();
 	}
-	fade_color_ = c;
+	fade_color_ = fade_end;
 }
 
 void display::set_fade(const color_t& c)
