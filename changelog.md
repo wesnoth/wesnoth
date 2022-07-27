@@ -17,6 +17,7 @@
    * Fixed drake flare leadership animation over water (issue #3996)
    * Fixed animations not clearing properly when zoomed (issues #6589, #6891, #6892)
    * Fixed inconsistent cropping of unusually-sized item images (issue #6118)
+   * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
 
 ## Version 1.17.6
  ### Campaigns
