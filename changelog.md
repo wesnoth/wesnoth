@@ -15,6 +15,7 @@
  ### Miscellaneous and Bug Fixes
    * Fixed drake flare leadership animation over water (issue #3996)
    * Fixed animations not clearing properly when zoomed (issue #6589)
+   * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
 
 ## Version 1.16.5
  ### Miscellaneous and Bug Fixes
