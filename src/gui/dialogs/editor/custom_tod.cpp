@@ -234,12 +234,6 @@ void custom_tod::update_tod_display()
 	display* disp = display::get_singleton();
 	assert(disp && "Display pointer is null!");
 
-	// Prevent a floating slice of window appearing alone over the
-	// theme UI sidebar after redrawing tiles and before we have a
-	// chance to redraw the rest of this window.
-	get_window()->undraw();
-	// TODO: draw_manager - do this properly, probably by removing this undraw
-
 	// NOTE: We only really want to re-render the gamemap tiles here.
 	// Redrawing everything is a significantly more expensive task.
 	// At this time, tiles are the only elements on which ToD tint is
