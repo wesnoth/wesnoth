@@ -250,7 +250,7 @@ void button::set_check(bool check)
 
 	if (state_ != new_state) {
 		state_ = new_state;
-		set_dirty();
+		queue_redraw();
 	}
 }
 
@@ -258,10 +258,10 @@ void button::set_active(bool active)
 {
 	if ((state_ == NORMAL) && active) {
 		state_ = ACTIVE;
-		set_dirty();
+		queue_redraw();
 	} else if ((state_ == ACTIVE) && !active) {
 		state_ = NORMAL;
-		set_dirty();
+		queue_redraw();
 	}
 }
 
@@ -389,7 +389,7 @@ void button::set_image(const std::string& image_file)
 
 	button_image_name_ = "buttons/" + image_file;
 	load_images();
-	set_dirty();
+	queue_redraw();
 }
 
 void button::set_overlay(const std::string& image_file)
@@ -401,7 +401,7 @@ void button::set_overlay(const std::string& image_file)
 
 	button_overlay_image_name_ = image_file;
 	load_images();
-	set_dirty();
+	queue_redraw();
 }
 
 void button::set_label(const std::string& val)
@@ -418,8 +418,7 @@ void button::set_label(const std::string& val)
 	}
 
 	calculate_size();
-
-	set_dirty(true);
+	queue_redraw();
 }
 
 void button::mouse_motion(const SDL_MouseMotionEvent& event)
@@ -561,8 +560,9 @@ void button::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if (start_state != state_)
-		set_dirty(true);
+	if (start_state != state_) {
+		queue_redraw();
+	}
 }
 
 bool button::pressed()

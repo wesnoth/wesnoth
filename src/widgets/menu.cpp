@@ -248,7 +248,7 @@ void menu::do_sort()
 		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::recalculate_pos()
@@ -345,7 +345,7 @@ void menu::change_item(int pos1, int pos2,const std::string& str)
 	}
 
 	items_[item_pos_[pos1]].fields[pos2] = str;
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::erase_item(std::size_t index)
@@ -374,7 +374,7 @@ void menu::erase_item(std::size_t index)
 	update_scrollbar_grip_height();
 	adjust_viewport_to_selection();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_heading(const std::vector<std::string>& heading)
@@ -385,7 +385,7 @@ void menu::set_heading(const std::vector<std::string>& heading)
 	heading_ = heading;
 	max_items_ = -1;
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
@@ -416,7 +416,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	if(!keep_viewport) {
 		adjust_viewport_to_selection();
 	}
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_max_height(const int new_max_height)
@@ -714,7 +714,7 @@ void menu::set_numeric_keypress_selection(bool value)
 void menu::scroll(unsigned int)
 {
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_sorter(sorter *s)
@@ -746,7 +746,7 @@ void menu::sort_by(int column)
 
 	do_sort();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {

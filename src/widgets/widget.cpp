@@ -82,18 +82,13 @@ void widget::set_location(const SDL_Rect& rect)
 		state_ = DRAWN;
 
 	rect_ = rect;
-	set_dirty(true);
+	queue_redraw();
 	update_location(rect);
 }
 
 void widget::layout()
 {
 	// this basically happens in set_location, so there's nothing to do here.
-}
-
-const SDL_Rect* widget::clip_rect() const
-{
-	return clip_ ? &clip_rect_ : nullptr;
 }
 
 void widget::set_location(int x, int y)
@@ -136,7 +131,7 @@ void widget::set_focus(bool focus)
 	if (focus)
 		events::focus_handler(this);
 	focus_ = focus;
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool widget::focus(const SDL_Event* event)
@@ -153,7 +148,7 @@ void widget::hide(bool value)
 		state_ = HIDDEN;
 	} else if (state_ == HIDDEN) {
 		state_ = DRAWN;
-		set_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -161,7 +156,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 {
 	clip_rect_ = rect;
 	clip_ = true;
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool widget::hidden() const
@@ -174,7 +169,7 @@ void widget::enable(bool new_val)
 {
 	if (enabled_ != new_val) {
 		enabled_ = new_val;
-		set_dirty();
+		queue_redraw();
 	}
 }
 
@@ -183,13 +178,14 @@ bool widget::enabled() const
 	return enabled_;
 }
 
-// TODO: draw_manager - this needs to die
 void widget::set_dirty(bool dirty)
 {
-	if ((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY))
+	if ((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY)) {
 		return;
+	}
 
 	state_ = dirty ? DIRTY : DRAWN;
+
 	if (dirty) {
 		queue_redraw();
 	}
@@ -224,19 +220,19 @@ void widget::queue_redraw()
 
 bool widget::expose(const SDL_Rect& region)
 {
-	// TODO: draw_manager - draw always? or only when dirty?
-	//if (!dirty()) {
-	//	return false;
-	//}
-	(void)region;
+	if (hidden()) { return false; }
+	if (!rect_.overlaps(region)) { return false; }
+	if (clip_ && !clip_rect_.overlaps(region)) { return false; }
+
 	draw();
 	return true;
 }
 
 void widget::draw()
 {
-	if (hidden())
+	if (hidden()) {
 		return;
+	}
 
 	if (clip_) {
 		auto clipper = draw::reduce_clip(clip_rect_);

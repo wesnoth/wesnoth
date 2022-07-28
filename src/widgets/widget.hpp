@@ -55,8 +55,9 @@ public:
 	  * This is in absolute drawing coordinates, and is not clipped. */
 	void queue_redraw(const rect&);
 
-	void set_dirty(bool dirty=true); // TODO: draw_manager - remove
-	bool dirty() const; // TODO: draw_manager - remove
+	// Note: all that needs the dirty handling is the editor palette.
+	void set_dirty(bool dirty=true);
+	bool dirty() const;
 	const std::string& id() const;
 	void set_id(const std::string& id);
 
@@ -89,8 +90,6 @@ protected:
 	virtual void draw_contents() {}
 	virtual void update_location(const SDL_Rect&) {};
 
-	const SDL_Rect* clip_rect() const;
-
 	virtual void handle_event(const SDL_Event&) override {};
 	bool focus_;		// Should user input be ignored?
 
@@ -105,7 +104,7 @@ private:
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
 	bool enabled_;
 	bool clip_;
-	SDL_Rect clip_rect_;
+	rect clip_rect_;
 
 	std::string help_text_;
 	std::string tooltip_text_;

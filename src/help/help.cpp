@@ -242,7 +242,7 @@ void show_with_toplevel(const section &toplevel_sec,
 		else {
 			hb.show_topic(default_show_topic);
 		}
-		hb.set_dirty(true);
+		hb.queue_redraw();
 		events::raise_draw_event();
 		CKey key;
 		for (;;) {

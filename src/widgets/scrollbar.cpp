@@ -79,7 +79,7 @@ void scrollbar::set_position(unsigned pos)
 	if (pos == grip_position_)
 		return;
 	grip_position_ = pos;
-	set_dirty();
+	queue_redraw();
 }
 
 void scrollbar::adjust_position(unsigned pos)
@@ -110,7 +110,7 @@ void scrollbar::set_shown_size(unsigned h)
 	if (at_bottom)
 		grip_position_ = get_max_position();
 	set_position(grip_position_);
-	set_dirty(true);
+	queue_redraw();
 }
 
 void scrollbar::set_full_size(unsigned h)
@@ -123,7 +123,7 @@ void scrollbar::set_full_size(unsigned h)
 		grip_position_ = get_max_position();
 	set_shown_size(grip_height_);
 	set_position(grip_position_);
-	set_dirty(true);
+	queue_redraw();
 }
 
 void scrollbar::set_scroll_rate(unsigned r)
@@ -288,8 +288,8 @@ void scrollbar::handle_event(const SDL_Event& event)
 
 
 	if (new_state != state_) {
-		set_dirty();
 		state_ = new_state;
+		queue_redraw();
 	}
 }
 

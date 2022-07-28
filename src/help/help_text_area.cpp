@@ -67,7 +67,7 @@ void help_text_area::show_topic(const topic &t)
 {
 	shown_topic_ = &t;
 	set_items();
-	set_dirty(true);
+	queue_redraw();
 	DBG_HP << "Showing topic: " << t.id << ": " << t.title;
 }
 
@@ -570,7 +570,7 @@ void help_text_area::scroll(unsigned int)
 	// Nothing will be done on the actual scroll event. The scroll
 	// position is checked when drawing instead and things drawn
 	// accordingly.
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {
