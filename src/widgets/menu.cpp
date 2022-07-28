@@ -969,33 +969,6 @@ void menu::draw_contents()
 	}
 }
 
-
-void menu::layout()
-{
-	widget::layout();
-
-	if(!dirty()) {
-
-		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
-			if(*i == -1) {
-				SDL_Rect heading_rect = inner_location();
-				heading_rect.h = heading_height();
-				queue_redraw(heading_rect);
-			} else if(*i >= 0 && *i < int(item_pos_.size())) {
-				const SDL_Rect& rect = get_item_rect(*i);
-				queue_redraw(rect);
-			}
-		}
-
-		invalid_.clear();
-		return;
-	}
-
-	invalid_.clear();
-
-	queue_redraw();
-}
-
 int menu::hit(int x, int y) const
 {
 	const SDL_Rect& loc = inner_location();
@@ -1162,7 +1135,7 @@ void menu::invalidate_row(std::size_t id)
 		return;
 	}
 
-	invalid_.insert(int(id));
+	queue_redraw(get_item_rect(id));
 }
 
 void menu::invalidate_row_pos(std::size_t pos)
@@ -1176,7 +1149,9 @@ void menu::invalidate_row_pos(std::size_t pos)
 
 void menu::invalidate_heading()
 {
-	invalid_.insert(-1);
+	rect heading_rect = inner_location();
+	heading_rect.h = heading_height();
+	queue_redraw(heading_rect);
 }
 
 }

@@ -69,8 +69,9 @@ bool widget::mouse_locked() const
 
 void widget::set_location(const SDL_Rect& rect)
 {
-	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
+	if(rect_ == rect) {
 		return;
+	}
 
 	// If we were shown somewhere else, queue it to be cleared.
 	if(state_ == DIRTY || state_ == DRAWN) {

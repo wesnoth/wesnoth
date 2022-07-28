@@ -208,7 +208,6 @@ public:
 
 private:
 	void clear();
-	void draw();
 	bool hidden() const;
 	bool viewable(const display& disp) const;
 

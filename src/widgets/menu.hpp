@@ -166,9 +166,6 @@ public:
 	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
 				   bool keep_viewport=false);
 
-	/** top_level_drawable */
-	virtual void layout() override;
-
 	/**
 	 * Set a new max height for this menu. Note that this does not take
 	 * effect immediately, only after certain operations that clear

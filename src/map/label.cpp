@@ -337,7 +337,7 @@ terrain_label::terrain_label(const map_labels& parent,
 	, parent_(&parent)
 	, loc_(loc)
 {
-	draw();
+	recalculate();
 }
 
 /** Load label from config. */
@@ -456,7 +456,7 @@ void terrain_label::update_info(const t_string& text,
 	team_name_ = team_name;
 	creator_ = creator;
 
-	draw();
+	recalculate();
 }
 
 void terrain_label::update_info(const t_string& text,
@@ -477,11 +477,6 @@ void terrain_label::update_info(const t_string& text,
 	update_info(text, creator, tooltip, team_name, color);
 }
 
-void terrain_label::recalculate()
-{
-	draw();
-}
-
 void terrain_label::calculate_shroud()
 {
 	if(handle_) {
@@ -496,7 +491,6 @@ void terrain_label::calculate_shroud()
 
 	// tooltips::update_tooltip(tooltip_handle, get_rect(), tooltip_.str(), "", true);
 
-	// TODO: draw_manager - why the fuck is this happening in "calculate_shroud"?
 	if(tooltip_handle_) {
 		tooltips::update_tooltip(tooltip_handle_, get_rect(), tooltip_.str());
 	} else {
@@ -528,7 +522,7 @@ static int scale_to_map_zoom(int val)
 	return val * std::max(1.0, display::get_zoom_factor());
 }
 
-void terrain_label::draw()
+void terrain_label::recalculate()
 {
 	display* disp = display::get_singleton();
 	if(!disp) {
