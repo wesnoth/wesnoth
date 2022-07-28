@@ -80,8 +80,11 @@ public:
 	/** The current draw location of the display, on the screen. */
 	virtual rect screen_location() override { return location(); }
 
-public:
-	virtual void draw() override; // TODO: draw_manager - private nonvirtual
+private:
+	// This could be made public again, but GUI1 widgets are deprecated.
+	// It's better to replace with GUI2 systems than to improve this.
+	void draw();
+
 protected:
 	virtual void draw_contents() {}
 	virtual void update_location(const SDL_Rect&) {};

@@ -353,10 +353,11 @@ void editor_palette<Item>::layout()
 template<class Item>
 void editor_palette<Item>::draw_contents()
 {
-	for(std::size_t i = 0; i < buttons_.size(); ++i) {
-		gui::tristate_button& tile = buttons_[i];
-		tile.draw();
-	}
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//for(std::size_t i = 0; i < buttons_.size(); ++i) {
+	//	gui::tristate_button& tile = buttons_[i];
+	//	tile.draw();
+	//}
 }
 
 // Force compilation of the following template instantiations

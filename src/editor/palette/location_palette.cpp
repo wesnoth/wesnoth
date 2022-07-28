@@ -127,7 +127,7 @@ public:
 	{
 		state_.selected = selected;
 	}
-	void draw() override { gui::widget::draw(); }
+
 private:
 	std::string id_;
 	std::string desc_;
@@ -216,7 +216,7 @@ bool location_palette::scroll_up()
 		scrolled = true;
 		set_dirty(true);
 	}
-	draw();
+
 	return scrolled;
 }
 bool location_palette::can_scroll_up()
@@ -237,7 +237,7 @@ bool location_palette::scroll_down()
 		scrolled = true;
 		set_dirty(true);
 	}
-	draw();
+
 	return scrolled;
 }
 
@@ -392,10 +392,11 @@ void location_palette::layout()
 
 void location_palette::draw_contents()
 {
-	for(std::size_t i = 0; i < num_visible_items(); ++i) {
-		location_palette_item& tile = buttons_[i];
-		tile.draw();
-	}
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//for(std::size_t i = 0; i < num_visible_items(); ++i) {
+	//	location_palette_item& tile = buttons_[i];
+	//	tile.draw();
+	//}
 }
 
 std::vector<std::string> location_palette::action_pressed() const

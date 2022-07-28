@@ -949,21 +949,24 @@ void display::create_buttons()
 
 void display::draw_buttons()
 {
-	const rect clip = draw::get_clip();
-	for(auto& btn : menu_buttons_) {
-		if(clip.overlaps(btn->location())) {
-			//btn->set_dirty(true);
-			// TODO: draw_manager - this won't actually draw, because it's not "dirty", but dirty can't be set because that invalidates. Overhaul.
-			btn->draw();
-		}
-	}
+	// This is currently unnecessary because every GUI1 widget is a TLD.
+	// They will draw themselves.
+	return;
 
-	for(auto& btn : action_buttons_) {
-		if(clip.overlaps(btn->location())) {
-			//btn->set_dirty(true);
-			btn->draw();
-		}
-	}
+	//const rect clip = draw::get_clip();
+	//for(auto& btn : menu_buttons_) {
+	//	if(clip.overlaps(btn->location())) {
+	//		btn->set_dirty(true);
+	//		btn->draw();
+	//	}
+	//}
+
+	//for(auto& btn : action_buttons_) {
+	//	if(clip.overlaps(btn->location())) {
+	//		btn->set_dirty(true);
+	//		btn->draw();
+	//	}
+	//}
 }
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)

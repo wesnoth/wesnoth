@@ -128,7 +128,8 @@ void palette_manager::layout()
 
 void palette_manager::draw_contents()
 {
-	active_palette().draw();
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//active_palette().draw();
 }
 
 sdl_handler_vector palette_manager::handler_members()
