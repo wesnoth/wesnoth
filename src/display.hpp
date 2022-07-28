@@ -413,8 +413,9 @@ public:
 	 */
 	void draw_report(const std::string& report_name, bool test_run = false);
 
-	/** Draw all reports. This will respect the clipping region, if set. */
-	void draw_reports();
+	/** Draw all reports in the given region.
+	  * Returns true if something was drawn, false otherwise. */
+	bool draw_reports(const rect& region);
 
 	void draw_minimap_units();
 
@@ -1086,8 +1087,10 @@ protected:
 	/** Clears the drawing buffer. */
 	void drawing_buffer_clear();
 
-	/** redraw all panels associated with the map display */
-	void draw_all_panels();
+	/** Redraws all panels intersecting the given region.
+	  * Returns true if something was drawn, false otherwise. */
+	bool draw_all_panels(const rect& region);
+
 private:
 	void draw_panel(const theme::panel& panel);
 	void draw_label(const theme::label& label);

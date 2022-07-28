@@ -146,7 +146,9 @@ class halo_impl
 	void remove(int handle);
 
 	void update();
-	void render();
+
+	/** Render all halos overlapping the given region */
+	void render(const rect&);
 
 }; //end halo_impl
 
@@ -404,17 +406,14 @@ void halo_impl::update()
 	}
 }
 
-void halo_impl::render()
+void halo_impl::render(const rect& region)
 {
 	if(haloes.empty()) {
 		return;
 	}
 
-	// TODO: draw_manager - pass in rect in stead of assuming clip makes sense
-	rect clip = draw::get_clip();
-
 	for(auto& [id, effect] : haloes) {
-		if(clip.overlaps(effect.get_draw_location())) {
+		if(region.overlaps(effect.get_draw_location())) {
 			DBG_HL << "drawing intersected halo " << id;
 			effect.render();
 		}
@@ -456,9 +455,9 @@ void manager::update()
 	impl_->update();
 }
 
-void manager::render()
+void manager::render(const rect& r)
 {
-	impl_->render();
+	impl_->render(r);
 }
 
 // end halo::manager implementation

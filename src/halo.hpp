@@ -16,6 +16,7 @@
 #pragma once
 
 class display;
+struct rect;
 
 #include "map/location.hpp"
 
@@ -62,8 +63,8 @@ public:
 	  * regions now requiring redraw. */
 	void update();
 
-	/** Render halos. */
-	void render();
+	/** Render halos in region. */
+	void render(const rect& r);
 
 private:
 	std::shared_ptr<halo_impl> impl_;

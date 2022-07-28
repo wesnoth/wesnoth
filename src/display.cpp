@@ -1458,15 +1458,26 @@ void display::draw_label(const theme::label& label)
 	}
 }
 
-void display::draw_all_panels()
+bool display::draw_all_panels(const rect& region)
 {
+	bool drew = false;
+	const rect game_canvas = video::game_canvas();
+
 	for(const auto& panel : theme_.panels()) {
-		draw_panel(panel);
+		if(region.overlaps(panel.location(game_canvas))) {
+			draw_panel(panel);
+			drew = true;
+		}
 	}
 
 	for(const auto& label : theme_.labels()) {
-		draw_label(label);
+		if(region.overlaps(label.location(game_canvas))) {
+			draw_label(label);
+			drew = true;
+		}
 	}
+
+	return drew;
 }
 
 void display::draw_text_in_hex(const map_location& loc,
@@ -2574,28 +2585,30 @@ void display::render()
 
 bool display::expose(const SDL_Rect& region)
 {
-	// Note: clipping region is set by draw_manager,
-	// and will be contained by <region>.
-
 	if(prevent_draw_) {
 		DBG_DP << "draw prevented";
 		return false;
 	}
 
+	rect clipped_region = draw::get_clip().intersect(region);
+
 	// Blit from the pre-rendered front buffer.
-	front_.set_src(region);
-	draw::blit(front_, region);
-	front_.clear_src();
+	if(clipped_region.overlaps(map_outside_area())) {
+		front_.set_src(clipped_region);
+		draw::blit(front_, clipped_region);
+		front_.clear_src();
+	}
 
 	// Render halos.
-	// TODO: draw_manager - halo render region not rely on clip?
-	halo_man_.render();
+	halo_man_.render(clipped_region);
 
-	// These all check for clip region overlap before drawing
-	draw_all_panels();
-	draw_reports();
-	draw_minimap();
-	draw_buttons();
+	// Render UI elements.
+	draw_all_panels(clipped_region);
+	draw_reports(clipped_region);
+	if(clipped_region.overlaps(minimap_area())) {
+		draw_minimap();
+	}
+	//draw_buttons();
 
 	// TODO: draw_manager - hmm... buttons redraw over tooltips, because they are TLDs
 	font::draw_floating_labels();
@@ -2607,7 +2620,9 @@ bool display::expose(const SDL_Rect& region)
 
 	DBG_DP << "display::expose " << region;
 
-	return true; // TODO: draw_manager - maybe don't flip yeah?
+	// The display covers the entire screen.
+	// We will always be drawing something.
+	return true;
 }
 
 rect display::screen_location()
@@ -3141,17 +3156,18 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 	}
 }
 
-// TODO: draw_manager - pass in bounds in stead of using clip region
-// TODO: draw_manager - return whether anything was drawn
-void display::draw_reports()
+bool display::draw_reports(const rect& region)
 {
+	bool drew = false;
 	for(const auto& it : reports_) {
 		const std::string& name = it.first;
 		const rect& loc = reportLocations_[name];
-		if(loc.overlaps(draw::get_clip())) {
+		if(loc.overlaps(region)) {
 			draw_report(name);
+			drew = true;
 		}
 	}
+	return drew;
 }
 
 void display::invalidate_all()
