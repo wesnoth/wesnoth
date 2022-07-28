@@ -18,7 +18,7 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/widgets/window.hpp"
-#include "video.hpp" // TODO: draw_manager - only for faked(), is it needed?
+#include "video.hpp"
 
 namespace gui2::dialogs
 {

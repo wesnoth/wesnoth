@@ -981,7 +981,6 @@ void menu::layout()
 
 		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
 			if(*i == -1) {
-				// TODO: draw_manager - is this ever actually used?
 				SDL_Rect heading_rect = inner_location();
 				heading_rect.h = heading_height();
 				queue_redraw(heading_rect);

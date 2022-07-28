@@ -564,7 +564,6 @@ public:
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc) const;
 
-	// TODO: draw_manager - this isn't really the correct solution
 	/** Prevent the game display from drawing.
 	  * Used while story screen is showing to prevent flicker. */
 	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }

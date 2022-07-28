@@ -96,7 +96,6 @@ protected:
 
 	const SDL_Rect* clip_rect() const;
 
-	// TODO: draw_manager - only things that need events should be handlers
 	virtual void handle_event(const SDL_Event&) override {};
 	bool focus_;		// Should user input be ignored?
 

@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
-#include "video.hpp" // TODO: draw_manager - only needed for pixel scale
 #include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");

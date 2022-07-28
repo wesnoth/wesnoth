@@ -313,7 +313,6 @@ bool game_launcher::init_language()
 
 bool game_launcher::init_video()
 {
-	// TODO: draw_manager - this should probably be set in more situations, e.g. render_image
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui
 		|| cmdline_opts_.headless_unit_test
