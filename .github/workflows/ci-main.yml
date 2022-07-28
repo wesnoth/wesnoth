@@ -210,7 +210,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-10.15
+          - os: macos-11.0
             cfg: Debug
           - os: macos-11.0
             cfg: Release
