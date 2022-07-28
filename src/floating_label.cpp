@@ -49,7 +49,6 @@ std::stack<std::set<int>> label_contexts;
 int help_string_ = 0;
 }
 
-// TODO: draw_manager - why tf is this in namespace font?
 namespace font
 {
 floating_label::floating_label(const std::string& text, const surface& surf)
@@ -111,6 +110,11 @@ bool floating_label::create_texture()
 		return true;
 	}
 
+	if(text_.empty()) {
+		// Empty labels are unfortunately still used sometimes
+		return false;
+	}
+
 	DBG_FT << "creating floating label texture";
 	font::pango_text& text = font::get_text_renderer();
 
@@ -140,8 +144,7 @@ bool floating_label::create_texture()
 	const int sf = ps * display::get_singleton()->get_zoom_factor();
 
 	if(foreground == nullptr) {
-		// TODO: draw_manager - find what triggers this and fix it
-		//ERR_FT << "could not create floating label's text";
+		ERR_FT << "could not create floating label's text";
 		return false;
 	}
 
@@ -197,13 +200,12 @@ void floating_label::undraw()
 
 void floating_label::update(int time)
 {
-	if(video::headless()) {
+	if(video::headless() || text_.empty()) {
 		return;
 	}
 
 	if(!create_texture()) {
-		// TODO: draw_manager - find what triggers this and fix it
-		//ERR_FT << "failed to create texture for floating label";
+		ERR_FT << "failed to create texture for floating label";
 		return;
 	}
 
@@ -249,7 +251,6 @@ void floating_label::draw()
 
 	DBG_FT << "drawing floating label to " << screen_loc_;
 
-	// TODO: draw_manager - is this actually useful?
 	// Clip if appropriate.
 	auto clipper = draw::reduce_clip(clip_rect_);
 
