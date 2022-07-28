@@ -105,9 +105,7 @@ void game_display::new_turn()
 
 	first_turn = false;
 
-	display::update_tod();
-
-	invalidate_all();
+	update_tod();
 }
 
 void game_display::select_hex(map_location hex)

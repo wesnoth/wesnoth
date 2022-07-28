@@ -444,6 +444,8 @@ void display::update_tod(const time_of_day* tod_override)
 
 	const tod_color col = color_adjust_ + tod->color;
 	image::set_color_adjustment(col.r, col.g, col.b);
+
+	invalidate_all();
 }
 
 void display::adjust_color_overlay(int r, int g, int b)
