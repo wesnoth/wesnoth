@@ -27,6 +27,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
+#define LOG_SWML LOG_STREAM(info, log_config)
 
 namespace simple_wml {
 
@@ -1237,32 +1238,3 @@ void swap(document& lhs, document& rhs)
 }
 
 }
-
-#ifdef UNIT_TEST_SIMPLE_WML
-
-int main(int argc, char** argv)
-{
-	char* doctext = strdup(
-"[test]\n"
-"a=\"blah\"\n"
-"b=\"blah\"\n"
-"c=\"\\\\\"\n"
-"d=\"\\\"\"\n"
-"[/test]");
-	std::cerr << doctext << "\n";
-	simple_wml::document doc(doctext);
-
-	simple_wml::node& node = doc.root();
-	simple_wml::node* test_node = node.child("test");
-	assert(test_node);
-	assert((*test_node)["a"] == "blah");
-	assert((*test_node)["b"] == "blah");
-	assert((*test_node)["c"] == "\\\\");
-	assert((*test_node)["d"] == "\\\"");
-
-	node.set_attr("blah", "blah");
-	test_node->set_attr("e", "f");
-	std::cerr << doc.output();
-}
-
-#endif
