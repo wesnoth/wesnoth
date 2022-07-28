@@ -27,6 +27,7 @@
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
+#define LOG_FT LOG_STREAM(info, log_font)
 
 namespace {
 
@@ -41,10 +42,19 @@ struct tooltip
 	std::string message;
 	std::string action;
 	font::floating_label label;
+
+	void init_label();
+	void update_label_pos();
 };
 
 tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act)
 	: origin(r), message(msg), action(act), label(msg)
+{
+	init_label();
+	DBG_FT << "created tooltip for " << origin << " at " << loc;
+}
+
+void tooltip::init_label()
 {
 	const color_t bgcolor {0,0,0,192};
 	rect game_canvas = video::game_canvas();
@@ -59,6 +69,14 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 	label.set_border_size(border);
 
 	label.create_texture();
+
+	update_label_pos();
+}
+
+void tooltip::update_label_pos()
+{
+	rect game_canvas = video::game_canvas();
+
 	point lsize = label.get_draw_size();
 	loc = {0, 0, lsize.x, lsize.y};
 
@@ -77,9 +95,7 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 		loc.x = game_canvas.w - loc.w;
 	}
 
-	label.move(loc.x, loc.y);
-
-	DBG_FT << "created tooltip for " << origin << " at " << loc;
+	label.set_position(loc.x, loc.y);
 }
 
 
@@ -162,7 +178,7 @@ rect manager::screen_location()
 
 void clear_tooltips()
 {
-	DBG_FT << "clearing all tooltips";
+	LOG_FT << "clearing all tooltips";
 	clear_active();
 	tips.clear();
 }
@@ -188,16 +204,29 @@ void clear_tooltips(const SDL_Rect& r)
 
 bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 {
-	// TODO: draw_manager - update floating label
 	std::map<int, tooltip>::iterator it = tips.find(id);
 	if (it == tips.end() ) return false;
-	it->second.message = message;
-	it->second.origin = origin;
+	tooltip& tip = it->second;
+	if(tip.message == message && tip.origin == origin) {
+		return false;
+	}
+	if(tip.message != message) {
+		LOG_FT << "updating tooltip " << id << " message";
+		tip.message = message;
+		tip.label = font::floating_label(message);
+		tip.init_label();
+	}
+	if(tip.origin != origin) {
+		DBG_FT << "updating tooltip " << id << " origin " << origin;
+		tip.origin = origin;
+		tip.update_label_pos();
+	}
 	return true;
 }
 
 void remove_tooltip(int id)
 {
+	if(!id) { return; }
 	DBG_FT << "removing tooltip " << id;
 	if(id == active_tooltip) {
 		clear_active();
@@ -239,7 +268,7 @@ static void select_active(int id)
 		return;
 	}
 	tooltip& tip = tips.at(id);
-	DBG_FT << "showing tip " << id << " for " << tip.origin;
+	LOG_FT << "showing tip " << id << " for " << tip.origin;
 	clear_active();
 	active_tooltip = id;
 	tip.label.update(SDL_GetTicks());
@@ -257,7 +286,7 @@ void process(int mousex, int mousey)
 	}
 
 	if(active_tooltip) {
-		DBG_FT << "clearing tooltip because none hovered";
+		LOG_FT << "clearing tooltip because none hovered";
 		clear_active();
 	}
 }
