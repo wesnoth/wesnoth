@@ -364,7 +364,7 @@ void statistics_dialog::update_lists()
 
 	const statistics::stats& stats = current_stats();
 
-	add_stat_row(_("number_of^Recruits"),     stats.recruits);
+	add_stat_row(_("stats^Recruits"),     stats.recruits);
 	add_stat_row(_("Recalls"),      stats.recalls);
 	add_stat_row(_("Advancements"), stats.advanced_to, false);
 	add_stat_row(_("Losses"),       stats.deaths);
