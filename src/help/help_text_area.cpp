@@ -57,9 +57,8 @@ help_text_area::help_text_area(const section &toplevel) :
 	set_scroll_rate(40);
 }
 
-void help_text_area::set_inner_location(const SDL_Rect& rect)
+void help_text_area::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	bg_register(rect);
 	if (shown_topic_)
 		set_items();
 }
@@ -541,7 +540,6 @@ int help_text_area::get_remaining_width()
 void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
-	//bg_restore();
 	auto clipper = draw::reduce_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect_;

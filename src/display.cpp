@@ -2470,7 +2470,6 @@ void display::draw()
 			invalidated_.clear();
 		}
 		drawing_buffer_commit();
-		post_commit();
 	}
 
 	if(preferences::show_fps() || benchmark) {

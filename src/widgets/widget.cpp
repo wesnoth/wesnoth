@@ -32,8 +32,8 @@ namespace gui {
 bool widget::mouse_lock_ = false;
 
 widget::widget(const bool auto_join)
-	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect), needs_restore_(false),
-	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
+	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect),
+	  state_(UNINIT), enabled_(true), clip_(false),
 	  clip_rect_(EmptyRect), has_help_(false), mouse_lock_local_(false)
 {
 }
@@ -43,7 +43,6 @@ widget::~widget()
 	if (!hidden()) {
 		queue_redraw();
 	}
-	bg_cancel();
 	free_mouse_lock();
 }
 
@@ -68,33 +67,22 @@ bool widget::mouse_locked() const
 	return mouse_lock_ && !mouse_lock_local_;
 }
 
-// TODO: draw_manager - kill surface restorers
-void widget::bg_cancel()
-{
-	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->cancel();*/
-	restorer_.clear();
-}
-
 void widget::set_location(const SDL_Rect& rect)
 {
 	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
 		return;
+
+	// If we were shown somewhere else, queue it to be cleared.
+	if(state_ == DIRTY || state_ == DRAWN) {
+		queue_redraw();
+	}
+
 	if(state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
 		state_ = DRAWN;
 
-	// TODO: draw_manager - overhaul
-	bg_restore();
-	bg_cancel();
 	rect_ = rect;
 	set_dirty(true);
 	update_location(rect);
-}
-
-void widget::update_location(const SDL_Rect& rect)
-{
-	bg_register(rect);
 }
 
 void widget::layout()
@@ -105,11 +93,6 @@ void widget::layout()
 const SDL_Rect* widget::clip_rect() const
 {
 	return clip_ ? &clip_rect_ : nullptr;
-}
-
-void widget::bg_register(const SDL_Rect& rect)
-{
-	restorer_.emplace_back(rect);
 }
 
 void widget::set_location(int x, int y)
@@ -163,29 +146,13 @@ bool widget::focus(const SDL_Event* event)
 void widget::hide(bool value)
 {
 	if (value) {
-		if ((state_ == DIRTY || state_ == DRAWN) && !hidden_override_)
-			bg_restore();
+		if (state_ == DIRTY || state_ == DRAWN) {
+			queue_redraw();
+		}
 		state_ = HIDDEN;
 	} else if (state_ == HIDDEN) {
 		state_ = DRAWN;
-		if (!hidden_override_) {
-			bg_update();
-			set_dirty(true);
-		}
-	}
-}
-
-void widget::hide_override(bool value) {
-	if (hidden_override_ != value) {
-		hidden_override_ = value;
-		if (state_ == DIRTY || state_ == DRAWN) {
-			if (value) {
-				bg_restore();
-			} else {
-				bg_update();
-				set_dirty(true);
-			}
-		}
+		set_dirty(true);
 	}
 }
 
@@ -198,7 +165,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 
 bool widget::hidden() const
 {
-	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
+	return (state_ == HIDDEN || state_ == UNINIT
 		|| (clip_ && !rect_.overlaps(clip_rect_)));
 }
 
@@ -218,15 +185,13 @@ bool widget::enabled() const
 // TODO: draw_manager - this needs to die
 void widget::set_dirty(bool dirty)
 {
-	if ((dirty && (hidden_override_ || state_ != DRAWN)) || (!dirty && state_ != DIRTY))
+	if ((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY))
 		return;
 
 	state_ = dirty ? DIRTY : DRAWN;
 	if (dirty) {
 		queue_redraw();
 	}
-	//if (!dirty)
-	//	needs_restore_ = true;
 }
 
 bool widget::dirty() const
@@ -244,43 +209,6 @@ void widget::set_id(const std::string& id)
 	if (id_.empty()){
 		id_ = id;
 	}
-}
-
-void widget::bg_update()
-{
-	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->update();*/
-}
-
-void widget::bg_restore() const
-{
-	if (needs_restore_) {
-		for(const rect& r : restorer_) {
-			if(clip_) {
-				draw_manager::invalidate_region(r.intersect(clip_rect_));
-			} else {
-				draw_manager::invalidate_region(r);
-			}
-		}
-		/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-		    i_end = restorer_.end(); i != i_end; ++i)
-			i->restore();*/
-		needs_restore_ = false;
-	}
-}
-
-void widget::bg_restore(const SDL_Rect& where) const
-{
-	rect c = clip_ ? clip_rect_ : where;
-	c.clip(where);
-
-	for(const rect& r : restorer_) {
-		draw_manager::invalidate_region(r.intersect(c));
-	}
-	/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->restore(rect);*/
 }
 
 void widget::queue_redraw(const rect& r)
@@ -308,8 +236,6 @@ void widget::draw()
 {
 	if (hidden())
 		return;
-
-	//bg_restore();
 
 	if (clip_) {
 		auto clipper = draw::reduce_clip(clip_rect_);

@@ -48,11 +48,9 @@ void palette_manager::set_group(std::size_t index)
 
 void palette_manager::adjust_size()
 {
-	restore_palette_bg(false);
 	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
-	bg_register(rect);
 	active_palette().adjust_size(rect);
 	set_dirty();
 }
@@ -87,17 +85,7 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
-	restore_palette_bg(true);
-}
-
-// TODO: draw_manager - can probably remove this...
-void palette_manager::restore_palette_bg(bool scroll_top)
-{
-	const SDL_Rect rect = gui_.palette_area();
-	if (scroll_top) {
-		active_palette().set_start_item(0);
-	}
-	bg_restore(rect);
+	active_palette().set_start_item(0);
 	set_dirty();
 }
 

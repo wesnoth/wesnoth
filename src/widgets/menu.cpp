@@ -331,11 +331,10 @@ int menu::selection() const
 	return items_[selected_].id;
 }
 
-void menu::set_inner_location(const SDL_Rect& rect)
+void menu::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-	bg_register(rect);
 }
 
 void menu::change_item(int pos1, int pos2,const std::string& str)
@@ -785,8 +784,6 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 
 void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
 {
-	//menu_ref.bg_restore(rect);
-
 	int rgb = 0;
 	double alpha = 0.0;
 
@@ -869,7 +866,7 @@ void menu::clear_item(int item)
 	SDL_Rect rect = get_item_rect(item);
 	if (rect.w == 0)
 		return;
-	bg_restore(rect);
+	queue_redraw(rect);
 }
 
 void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)

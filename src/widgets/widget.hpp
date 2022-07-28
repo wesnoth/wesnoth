@@ -70,14 +70,6 @@ protected:
 	widget(const bool auto_join=true);
 	virtual ~widget();
 
-	// During each relocation, this function should be called to register
-	// the rectangles the widget needs to refresh automatically
-	void bg_register(const SDL_Rect& rect); // TODO: draw_manager - remove
-	void bg_restore() const; // TODO: draw_manager - remove
-	void bg_restore(const SDL_Rect& rect) const; // TODO: draw_manager - remove
-	void bg_update(); // TODO: draw_manager - remove
-	void bg_cancel(); // TODO: draw_manager - remove
-
 public:
 	/* draw_manager interface */
 
@@ -92,7 +84,7 @@ public:
 	virtual void draw() override; // TODO: draw_manager - private nonvirtual
 protected:
 	virtual void draw_contents() {}
-	virtual void update_location(const SDL_Rect& rect);
+	virtual void update_location(const SDL_Rect&) {};
 
 	const SDL_Rect* clip_rect() const;
 
@@ -103,15 +95,11 @@ protected:
 
 	void aquire_mouse_lock();
 	void free_mouse_lock();
-private:
-	void hide_override(bool value = true);
 
-	std::vector<rect> restorer_;
+private:
 	rect rect_;
-	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
-	bool hidden_override_;
 	bool enabled_;
 	bool clip_;
 	SDL_Rect clip_rect_;

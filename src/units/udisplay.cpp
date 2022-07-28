@@ -110,8 +110,6 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 	}
 
 	temp_unit.anim_comp().set_standing();
-	// TODO: draw_manager - ugh, don't. WTF do you even think you're doing here
-	disp.update_display();
 	events::pump();
 }
 

@@ -50,7 +50,6 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
-	void restore_palette_bg(bool scroll_top);
 	void scroll_bottom();
 
 //TODO

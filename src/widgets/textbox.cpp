@@ -63,9 +63,8 @@ void textbox::update_location(const SDL_Rect& rect)
 	set_dirty(true);
 }
 
-void textbox::set_inner_location(const SDL_Rect& rect)
+void textbox::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	bg_register(rect);
 	if (!text_image_) return;
 	text_pos_ = 0;
 	update_text_cache(false);

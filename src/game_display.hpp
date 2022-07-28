@@ -148,9 +148,6 @@ protected:
 
 	virtual void draw_invalidated() override;
 
-	// TODO: draw_manager - maybe delete
-	//virtual void post_commit() override;
-
 	virtual void draw_hex(const map_location& loc) override;
 
 	/** Inherited from display. */

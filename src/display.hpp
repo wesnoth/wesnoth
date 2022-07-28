@@ -471,12 +471,6 @@ public:
 
 	terrain_builder& get_builder() {return *builder_;}
 
-	// TODO: draw_manager - remove
-	void flip() {}
-
-	// TODO: draw_manager - remove
-	/** Copy the backbuffer to the framebuffer. */
-	void update_display() {}
 	void update_fps_label();
 	void clear_fps_label();
 	void update_fps_count();
@@ -731,12 +725,6 @@ protected:
 	 * base class's function.
 	 */
 	virtual void draw_invalidated();
-
-	/**
-	 * Hook for actions to take right after draw() calls drawing_buffer_commit
-	 * No action here by default.
-	 */
-	virtual void post_commit() {}
 
 	/**
 	 * Redraws a single gamemap location.

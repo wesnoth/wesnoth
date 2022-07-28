@@ -66,8 +66,6 @@ void scrollarea::test_scrollbar()
 		return;
 	recursive_ = true;
 	if (shown_scrollbar_ != has_scrollbar()) {
-		bg_restore();
-		bg_cancel();
 		update_location(location());
 	}
 	recursive_ = false;
