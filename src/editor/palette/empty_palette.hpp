@@ -42,7 +42,6 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
-	virtual void draw() override {}
 
 	void hide(bool /*hidden*/) override
 	{

@@ -170,10 +170,6 @@ private:
 	/** Fires a raw SDL event. */
 	void raw_event(const SDL_Event &event);
 
-	/** Fires a draw event. */
-	using events::sdl_handler::draw;
-	void draw() override;
-
 	/**
 	 * Fires a video resize event.
 	 *
@@ -575,14 +571,6 @@ void sdl_event_handler::activate()
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
-	}
-}
-
-void sdl_event_handler::draw()
-{
-	for(auto dispatcher : dispatchers_)
-	{
-		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 }
 
