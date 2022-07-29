@@ -381,7 +381,7 @@ void scope_logger::do_log_entry(const std::string& str) noexcept
 	try {
 		ticks_ = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	} catch(...) {}
-	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_ << "\n";
+	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_;
 	++indent;
 }
 
@@ -395,7 +395,7 @@ void scope_logger::do_log_exit() noexcept
 	auto output = debug()(domain_, false, true);
 	output.set_indent(indent);
 	if(timestamp) output.enable_timestamp();
-	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)\n";
+	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)";
 }
 
 std::stringstream& log_to_chat()
