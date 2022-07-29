@@ -135,7 +135,7 @@ private:
 	 *
 	 * Currently this is every frame, as pre_show() registers as an animator.
 	 */
-	virtual bool expose(const SDL_Rect& region) override;
+	virtual bool expose(const rect& region) override;
 
 	/** The current draw location of the window, on the screen. */
 	virtual rect screen_location() override;

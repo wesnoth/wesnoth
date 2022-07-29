@@ -581,7 +581,7 @@ void window::undraw()
 	queue_redraw();
 }
 
-bool window::expose(const SDL_Rect& region)
+bool window::expose(const rect& region)
 {
 	DBG_DP << "window::expose " << region;
 	rect i = get_rectangle().intersect(region);

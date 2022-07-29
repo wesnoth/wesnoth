@@ -159,7 +159,7 @@ private:
 	// TODO: draw_manager - modeless dialog should be a window, fix
 	/* top_level_drawable interface */
 	virtual void layout() override;
-	virtual bool expose(const SDL_Rect& region) override;
+	virtual bool expose(const rect& region) override;
 	virtual rect screen_location() override;
 };
 

@@ -152,7 +152,7 @@ void manager::layout()
 	tips.at(active_tooltip).label.update(SDL_GetTicks());
 }
 
-bool manager::expose(const SDL_Rect& region)
+bool manager::expose(const rect& region)
 {
 	// Only the active tip is shown.
 	if(!active_tooltip) {

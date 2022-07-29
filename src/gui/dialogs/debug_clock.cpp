@@ -82,7 +82,7 @@ rect debug_clock::screen_location()
 	return get_window()->get_rectangle();
 }
 
-bool debug_clock::expose(const SDL_Rect& /*region*/)
+bool debug_clock::expose(const rect& /*region*/)
 {
 	// Drawing is handled by the window that this should be, but is not.
 	return false;

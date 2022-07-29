@@ -207,7 +207,7 @@ void loading_screen::layout()
 	animation_->queue_redraw();
 }
 
-bool loading_screen::expose(const SDL_Rect& region)
+bool loading_screen::expose(const rect& region)
 {
 	DBG_DP << "loading_screen::expose " << region;
 	return get_window()->expose(region);

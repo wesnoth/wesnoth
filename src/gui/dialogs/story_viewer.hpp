@@ -47,7 +47,7 @@ public:
 	// TODO: draw_manager - better animation step / hook
 	// TODO: draw_manager - i still am horrified that a modal_dialog is not a window
 	virtual void layout() override;
-	virtual bool expose(const SDL_Rect&) override { return false; }
+	virtual bool expose(const rect&) override { return false; }
 	virtual rect screen_location() override { return {0,0,0,0}; }
 
 private:

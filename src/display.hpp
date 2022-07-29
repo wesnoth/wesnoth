@@ -593,7 +593,7 @@ public:
 	virtual void render() override;
 
 	/** Paint the indicated region to the screen. */
-	virtual bool expose(const SDL_Rect& region) override;
+	virtual bool expose(const rect& region) override;
 
 	/** Return the current draw location of the display, on the screen. */
 	virtual rect screen_location() override;

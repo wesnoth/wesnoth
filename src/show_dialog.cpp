@@ -363,11 +363,10 @@ void dialog_frame::layout()
 	dirty_ = false;
 }
 
-bool dialog_frame::expose(const SDL_Rect& region)
+bool dialog_frame::expose(const rect& region)
 {
 	DBG_DP << "dialog_frame::expose " << region;
 	// Just draw everthing.
-	(void)region;
 	draw();
 	return true;
 }

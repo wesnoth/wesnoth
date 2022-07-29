@@ -2606,7 +2606,7 @@ void display::render()
 	}
 }
 
-bool display::expose(const SDL_Rect& region)
+bool display::expose(const rect& region)
 {
 	if(prevent_draw_) {
 		DBG_DP << "draw prevented";

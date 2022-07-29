@@ -77,7 +77,7 @@ public:
 	/** Called by draw_manager to validate layout. */
 	virtual void layout() override;
 	/** Called by draw_manager when it believes a redraw is necessary. */
-	virtual bool expose(const SDL_Rect &region) override;
+	virtual bool expose(const rect& region) override;
 	/** The current draw location of the display, on the screen. */
 	virtual rect screen_location() override { return location(); }
 

@@ -218,7 +218,7 @@ void widget::queue_redraw()
 	queue_redraw(location());
 }
 
-bool widget::expose(const SDL_Rect& region)
+bool widget::expose(const rect& region)
 {
 	if (hidden()) { return false; }
 	if (!rect_.overlaps(region)) { return false; }
