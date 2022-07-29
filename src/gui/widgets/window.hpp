@@ -144,10 +144,8 @@ public:
 	 */
 	void draw();
 
-	/**
-	 * Undraws the window.
-	 */
-	void undraw();
+	/** Hides the window. It will not draw until it is shown again. */
+	void hide();
 
 	/**
 	 * Lays out the window.
@@ -416,11 +414,6 @@ public:
 		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
 	}
 
-	void set_suspend_drawing(bool s = true)
-	{
-		suspend_drawing_ = s;
-	}
-
 	enum class show_mode {
 		none,
 		modal,
@@ -460,7 +453,7 @@ private:
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
-	bool suspend_drawing_;
+	bool hidden_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;
