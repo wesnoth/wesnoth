@@ -242,7 +242,8 @@ const std::vector<addon_tag> tag_filter_types_{
 };
 
 addon_manager::addon_manager(addons_client& client)
-	: orders_()
+	: modal_dialog(window_id())
+	, orders_()
 	, cfg_()
 	, client_(client)
 	, addons_()

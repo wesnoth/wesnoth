@@ -38,7 +38,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(end_credits)
 
 end_credits::end_credits(const std::string& campaign)
-	: focus_on_(campaign)
+	: modal_dialog(window_id())
+	, focus_on_(campaign)
 	, backgrounds_()
 	, text_widget_(nullptr)
 	, scroll_speed_(100)

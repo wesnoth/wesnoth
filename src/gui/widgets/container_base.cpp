@@ -275,7 +275,7 @@ point container_base::border_space() const
 
 void container_base::inject_linked_groups()
 {
-	for(const auto& lg : config()->linked_groups) {
+	for(const auto& lg : get_config()->linked_groups) {
 		if(!get_window()->has_linked_size_group(lg.id)) {
 			get_window()->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 		}

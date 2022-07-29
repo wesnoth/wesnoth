@@ -81,7 +81,8 @@ REGISTER_DIALOG(loading_screen)
 loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
-	: load_funcs_{f}
+	: modal_dialog(window_id())
+	, load_funcs_{f}
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
@@ -173,13 +174,15 @@ void loading_screen::process(events::pump_info&)
 
 	// If there's nothing more to do, close.
 	if (load_funcs_.empty()) {
-		draw_manager::invalidate_region(get_window()->get_rectangle());
-		get_window()->close();
+		queue_redraw();
+		window::close();
 	}
 }
 
 void loading_screen::layout()
 {
+	modal_dialog::layout();
+
 	DBG_DP << "loading_screen::layout";
 
 	loading_stage stage = current_stage_.load(std::memory_order_acquire);
@@ -205,17 +208,6 @@ void loading_screen::layout()
 
 	animation_->get_drawing_canvas().set_variable("time", wfl::variant(duration_cast<milliseconds>(now - *animation_start_).count()));
 	animation_->queue_redraw();
-}
-
-bool loading_screen::expose(const rect& region)
-{
-	DBG_DP << "loading_screen::expose " << region;
-	return get_window()->expose(region);
-}
-
-rect loading_screen::screen_location()
-{
-	return get_window()->screen_location();
 }
 
 loading_screen::~loading_screen()

@@ -25,7 +25,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_match_history)
 
 mp_match_history::mp_match_history(mp::user_info& info, wesnothd_connection& connection)
-	: info_(info)
+	: modal_dialog(window_id())
+	, info_(info)
 	, connection_(connection)
 {
 	register_label("title", true, VGETTEXT("Match History — $player", {{"player", info_.name}}));

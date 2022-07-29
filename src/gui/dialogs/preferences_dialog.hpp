@@ -77,11 +77,11 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void post_build(window& window) override;
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& /*window*/) override;
 
 	/** Initializers */
+	void initialize_callbacks();
 	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
 	listbox& setup_hotkey_list();
@@ -112,7 +112,7 @@ private:
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback();
-	void hotkey_filter_callback() const;
+	void hotkey_filter_callback();
 
 	group<preferences::lobby_joins> lobby_joins_group;
 

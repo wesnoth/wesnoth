@@ -46,7 +46,8 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   std::vector<battle_context>&& weapons,
 						   const int best_weapon)
-	: selected_weapon_(-1)
+	: modal_dialog(window_id())
+	, selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
 	, defender_itor_(defender_itor)
 	, weapons_(std::move(weapons))

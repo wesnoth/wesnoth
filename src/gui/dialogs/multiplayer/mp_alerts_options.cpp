@@ -91,6 +91,7 @@ static void revert_to_default_pref_values(window & window)
 REGISTER_DIALOG(mp_alerts_options)
 
 mp_alerts_options::mp_alerts_options()
+	: modal_dialog(window_id())
 {
 }
 

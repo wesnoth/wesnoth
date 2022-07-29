@@ -29,7 +29,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(editor_edit_side)
 
 editor_edit_side::editor_edit_side(editor::editor_team_info& info)
-	: controller_(info.controller)
+	: modal_dialog(window_id())
+	, controller_(info.controller)
 	, share_vision_(info.share_vision)
 {
 	register_label("side_number", true, std::to_string(info.side), true);

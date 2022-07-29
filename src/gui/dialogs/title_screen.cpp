@@ -73,10 +73,10 @@ REGISTER_DIALOG(title_screen)
 bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
-	: debug_clock_()
+	: modal_dialog(window_id())
+	, debug_clock_()
 	, game_(game)
 {
-	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
 }
 

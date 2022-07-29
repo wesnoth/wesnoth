@@ -69,7 +69,8 @@ bool mp_lobby::logout_prompt()
 }
 
 mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
-	: quit_confirmation(&mp_lobby::logout_prompt)
+	: modal_dialog(window_id())
+	, quit_confirmation(&mp_lobby::logout_prompt)
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
@@ -107,10 +108,16 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
 {
-	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
 	set_always_save_fields(true);
+
+	/*** Local hotkeys. ***/
+	window::register_hotkey(hotkey::HOTKEY_HELP,
+		std::bind(&mp_lobby::show_help_callback, this));
+
+	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
+		std::bind(&mp_lobby::show_preferences_button_callback, this));
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -131,16 +138,6 @@ mp_lobby::~mp_lobby()
 	if(lobby_update_timer_) {
 		remove_timer(lobby_update_timer_);
 	}
-}
-
-void mp_lobby::post_build(window& win)
-{
-	/*** Local hotkeys. ***/
-	win.register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
-
-	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
 }
 
 namespace
