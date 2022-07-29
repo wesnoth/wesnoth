@@ -74,7 +74,7 @@ class window : public panel, public top_level_drawable
 public:
 	explicit window(const builder_window::window_resolution& definition);
 
-	~window();
+	virtual ~window();
 
 	/**
 	 * Returns the instance of a window.
@@ -87,6 +87,8 @@ public:
 
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);
+
+	void finish_build(const builder_window::window_resolution&);
 
 	/**
 	 * Shows the window, running an event loop until it should close.

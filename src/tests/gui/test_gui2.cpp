@@ -152,11 +152,6 @@ std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 	return dialog.window_id();
 }
 
-window* unit_test_window(const modeless_dialog& dialog)
-{
-	return dialog.window_.get();
-}
-
 } // namespace dialogs
 } // namespace gui2
 
@@ -235,7 +230,7 @@ namespace {
 				std::string exception;
 				try {
 					dlg->show(interact);
-					gui2::window* window = unit_test_window((*dlg.get()));
+					gui2::window* window = dlg.get();
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(const gui2::layout_exception_width_modified&) {

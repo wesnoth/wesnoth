@@ -17,19 +17,21 @@
 
 #include "gui/dialogs/modeless_dialog.hpp"
 
-#include "gui/widgets/window.hpp"
+#include "gui/core/gui_definition.hpp" // get_window_builder
 #include "video.hpp"
 
 namespace gui2::dialogs
 {
 
-modeless_dialog::modeless_dialog() : window_(nullptr)
+modeless_dialog::modeless_dialog(const std::string& window_id)
+	: window(get_window_builder(window_id))
 {
+	window::finish_build(get_window_builder(window_id));
+	widget::set_id(window_id);
 }
 
 modeless_dialog::~modeless_dialog()
 {
-	hide();
 }
 
 void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
@@ -38,47 +40,13 @@ void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_c
 		return;
 	}
 
-	hide();
-
-	window_ = build_window();
-
-	post_build(*window_);
-
-	pre_show(*window_);
-
 	if(allow_interaction) {
-		open_window_stack.push_back(window_.get());
-		window_->show_non_modal();
+		open_window_stack.push_back(this);
+		window::show_non_modal();
+		remove_from_window_stack(this);
 	} else {
-		window_->show_tooltip(/*auto_close_time*/);
+		window::show_tooltip(/*auto_close_time*/);
 	}
-}
-
-void modeless_dialog::hide()
-{
-	if(window_) {
-		// Don't bother if show_mode_ == tooltip, because in that case we didn't add it anyway.
-		if(window_->mode() == window::show_mode::modeless) {
-			remove_from_window_stack(window_.get());
-		}
-
-		window_->undraw();
-		window_.reset(nullptr);	}
-}
-
-std::unique_ptr<window> modeless_dialog::build_window() const
-{
-	return build(window_id());
-}
-
-void modeless_dialog::post_build(window& /*window*/)
-{
-	/* DO NOTHING */
-}
-
-void modeless_dialog::pre_show(window& /*window*/)
-{
-	/* DO NOTHING */
 }
 
 } // namespace dialogs
