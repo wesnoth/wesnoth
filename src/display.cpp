@@ -2543,9 +2543,6 @@ void display::update()
 	if(benchmark) {
 		invalidate_all();
 	}
-
-	// TODO: draw_manager - can probably just override update() on subclasses
-	pre_draw();
 }
 
 void display::layout()
@@ -2577,10 +2574,6 @@ void display::layout()
 
 	// Update and invalidate floating labels as necessary
 	font::update_floating_labels();
-
-	// TODO: draw_manager - should this just be moved into subclass layout() overrides?
-	// update and invalidate reports
-	refresh_reports();
 }
 
 void display::render()
@@ -2611,9 +2604,6 @@ void display::render()
 			return;
 		}
 	}
-
-	// TODO: draw_manager - subclass override in stead of this maybe
-	post_draw();
 }
 
 bool display::expose(const SDL_Rect& region)

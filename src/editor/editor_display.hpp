@@ -42,15 +42,21 @@ public:
 		return controller_;
 	}
 
+	/**
+	 * TLD layout() override. Replaces old refresh_reports(). Be sure to
+	 * call the base class method as well.
+	 *
+	 * This updates some reports that may need to be refreshed every frame.
+	 */
+	virtual void layout() override;
+
 protected:
-	void pre_draw() override;
 	void draw_hex(const map_location& loc) override;
 
 	/** Inherited from display. */
 	virtual overlay_map& get_overlays() override;
 
 	rect get_clip_rect() const override;
-	void refresh_reports() override;
 
 	std::set<map_location> brush_locations_;
 

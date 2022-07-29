@@ -66,10 +66,6 @@ void editor_display::rebuild_terrain(const map_location &loc) {
 	builder_->rebuild_terrain(loc);
 }
 
-void editor_display::pre_draw()
-{
-}
-
 void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
@@ -97,8 +93,10 @@ rect editor_display::get_clip_rect() const
 	return map_outside_area();
 }
 
-void editor_display::refresh_reports()
+void editor_display::layout()
 {
+	display::layout();
+
 	config element;
 	config::attribute_value &text = element.add_child("element")["text"];
 	// Fill in the terrain report

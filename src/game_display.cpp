@@ -173,7 +173,10 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 	}
 }
 
-void game_display::pre_draw() {
+void game_display::update()
+{
+	display::update();
+
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->pre_draw();
 	}
@@ -186,7 +189,10 @@ void game_display::pre_draw() {
 }
 
 
-void game_display::post_draw() {
+void game_display::render()
+{
+	display::render();
+
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
 	}
@@ -326,8 +332,10 @@ bool game_display::has_time_area() const
 	return resources::tod_manager->has_time_area();
 }
 
-void game_display::refresh_reports()
+void game_display::layout()
 {
+	display::layout();
+
 	if ( !team_valid() )
 		return;
 

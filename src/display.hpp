@@ -699,19 +699,6 @@ protected:
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	map_location get_middle_location() const;
-	/**
-	 * Called near the beginning of each draw() call.
-	 * Derived classes can use this to add extra actions before redrawing
-	 * invalidated hexes takes place. No action here by default.
-	 */
-	virtual void pre_draw() {}
-
-	/**
-	 * Called at the very end of each draw() call.
-	 * Derived classes can use this to add extra actions after redrawing
-	 * invalidated hexes takes place. No action here by default.
-	 */
-	virtual void post_draw() {}
 
 	/**
 	 * Get the clipping rectangle for drawing.
@@ -731,14 +718,6 @@ protected:
 	 * Redraws a single gamemap location.
 	 */
 	virtual void draw_hex(const map_location& loc);
-
-	/**
-	 * Choose which reports, if any, to refresh.
-	 *
-	 * This function should make individual refresh_report() calls for
-	 * whichever reports need to be updated.
-	 */
-	virtual void refresh_reports() {}
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 

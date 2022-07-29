@@ -135,17 +135,33 @@ public:
 
 	virtual bool has_time_area() const override;
 
-protected:
 	/**
-	 * game_display pre_draw does specific things related e.g. to unit rendering
-	 * and calls the whiteboard pre-draw method.
+	 * TLD update() override. Replaces old pre_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * game_display does specific things related e.g. to unit rendering
+	 * and calls the whiteboard pre-draw method here.
 	 */
-	virtual void pre_draw() override;
-	/**
-	 * Calls the whiteboard's post-draw method.
-	 */
-	virtual void post_draw() override;
+	virtual void update() override;
 
+	/**
+	 * TLD layout() override. Replaces old refresh_reports(). Be sure to
+	 * call the base class method as well.
+	 *
+	 * This updates some reports, like clock, that need to be refreshed
+	 * every frame.
+	 */
+	virtual void layout() override;
+
+	/**
+	 * TLD render() override. Replaces old post_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * This calls the whiteboard's post-draw method after rendering.
+	 */
+	virtual void render() override;
+
+protected:
 	virtual void draw_invalidated() override;
 
 	virtual void draw_hex(const map_location& loc) override;
@@ -216,8 +232,6 @@ public:
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
-
-	virtual void refresh_reports() override;
 
 	overlay_map overlay_map_;
 
