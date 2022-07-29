@@ -37,21 +37,21 @@ namespace gui2::dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WINDOW(id)                                                                                            \
-	namespace                                                                                                          \
-	{                                                                                                                  \
-	namespace ns_##id                                                                                                  \
-	{                                                                                                                  \
-		struct register_helper                                                                                         \
-		{                                                                                                              \
-			register_helper()                                                                                          \
-			{                                                                                                          \
-				register_window(#id);                                                                                  \
-			}                                                                                                          \
-		};                                                                                                             \
-                                                                                                                       \
-		struct register_helper register_helper;                                                                        \
-	}                                                                                                                  \
+#define REGISTER_WINDOW(id)                                                  \
+	namespace                                                                \
+	{                                                                        \
+	namespace ns_##id                                                        \
+	{                                                                        \
+		struct register_helper                                               \
+		{                                                                    \
+			register_helper()                                                \
+			{                                                                \
+				register_window(#id);                                        \
+			}                                                                \
+		};                                                                   \
+                                                                             \
+		struct register_helper register_helper;                              \
+	}                                                                        \
 	}
 
 /**
@@ -72,11 +72,12 @@ namespace gui2::dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_DIALOG2(type, id)                                                                                     \
-	REGISTER_WINDOW(id) const std::string& type::window_id() const                                                     \
-	{                                                                                                                  \
-		static const std::string result(#id);                                                                          \
-		return result;                                                                                                 \
+#define REGISTER_DIALOG2(type, id)                                           \
+	REGISTER_WINDOW(id)                                                      \
+	const std::string& type::window_id() const                               \
+	{                                                                        \
+		static const std::string result(#id);                                \
+		return result;                                                       \
 	}
 
 /**
@@ -93,11 +94,11 @@ namespace gui2::dialogs
  *
  * See the modal_dialog documentation (below) for more info.
  */
-#define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                                                          \
-	template<typename... T>                                                                                            \
-	static void display(T&&... args)                                                                                   \
-	{                                                                                                                  \
-		dialog(std::forward<T>(args)...).show();                                                                       \
+#define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                \
+	template<typename... T>                                                  \
+	static void display(T&&... args)                                         \
+	{                                                                        \
+		dialog(std::forward<T>(args)...).show();                             \
 	}
 
 /**
@@ -107,11 +108,11 @@ namespace gui2::dialogs
  *
  * See the modal_dialog documentation (below) for more info.
  */
-#define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                                                          \
-	template<typename... T>                                                                                            \
-	static bool execute(T&&... args)                                                                                   \
-	{                                                                                                                  \
-		return dialog(std::forward<T>(args)...).show();                                                                \
+#define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                \
+	template<typename... T>                                                  \
+	static bool execute(T&&... args)                                         \
+	{                                                                        \
+		return dialog(std::forward<T>(args)...).show();                      \
 	}
 
 /**
