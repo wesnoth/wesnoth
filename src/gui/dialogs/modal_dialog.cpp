@@ -82,7 +82,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		return false;
 	}
 
-	init_fields(*this);
+	init_fields();
 
 	pre_show(*this);
 
@@ -236,17 +236,17 @@ void modal_dialog::post_show(window& /*window*/)
 	/* DO NOTHING */
 }
 
-void modal_dialog::init_fields(window& window)
+void modal_dialog::init_fields()
 {
 	for(auto& field : fields_)
 	{
-		field->attach_to_window(window);
+		field->attach_to_window(*this);
 		field->widget_init();
 	}
 
 	if(!focus_.empty()) {
-		if(widget* widget = window.find(focus_, false)) {
-			window.keyboard_capture(widget);
+		if(widget* widget = window::find(focus_, false)) {
+			window::keyboard_capture(widget);
 		}
 	}
 }

@@ -420,8 +420,8 @@ private:
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void init_fields(window& window);
-	// TODO: this window parameter is now redundant
+	virtual void init_fields();
+	// TODO: Nothing else uses this. Why is it virtual?
 
 	/**
 	 * When the dialog is closed with the OK status saves all fields.
@@ -431,6 +431,7 @@ private:
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
 	virtual void finalize_fields(const bool save_fields);
+	// TODO: Nothing else uses this. Why is it virtual?
 };
 
 } // namespace dialogs
