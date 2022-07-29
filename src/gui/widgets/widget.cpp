@@ -441,11 +441,9 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 
 void widget::queue_redraw()
 {
-	if (x_ < 0 || y_ < 0) {
+	if (!width_ && !height_) {
 		// Do nothing if the widget hasn't yet been placed.
 		return;
-		// TODO: draw_manager - does this miss anything?
-		// TODO: draw_manager - yes, if a widget is partially offscreen
 	}
 	queue_redraw(get_rectangle());
 }
