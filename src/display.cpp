@@ -2065,7 +2065,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
 		scroll(xmove,ymove,true);
 		redraw_minimap();
-		events::raise_draw_event();
+		events::draw();
 		return;
 	}
 
@@ -2124,7 +2124,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		y_old += dy;
 
 		redraw_minimap();
-		events::raise_draw_event();
+		events::draw();
 	}
 }
 
@@ -2355,8 +2355,7 @@ void display::fade_tod_mask(
 		tod_hex_alpha2 = p;
 		tod_hex_alpha1 = ~p;
 		draw_manager::invalidate_region(map_outside_area());
-		events::pump();
-		events::raise_draw_event();
+		events::pump_and_draw();
 	}
 
 	tod_hex_mask1.reset();
@@ -2381,8 +2380,7 @@ void display::fade_to(const color_t& c, int duration)
 		uint8_t p = float_to_color(prop_f);
 		fade_color_ = fade_start.smooth_blend(c, p);
 		draw_manager::invalidate_region(map_outside_area());
-		events::pump();
-		events::raise_draw_event();
+		events::pump_and_draw();
 	}
 	fade_color_ = c;
 }

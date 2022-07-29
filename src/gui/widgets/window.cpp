@@ -464,8 +464,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	DBG_DP << "show non-modal queued to " << get_rectangle();
 
-	events::pump();
-	events::raise_draw_event();
+	events::pump_and_draw();
 }
 
 int window::show(const unsigned auto_close_timeout)
@@ -494,8 +493,7 @@ int window::show(const unsigned auto_close_timeout)
 	queue_redraw();
 
 	// Make sure we display at least once in all cases.
-	// TODO: draw_manager - rename this so it's clear what's going on
-	events::raise_draw_event();
+	events::draw();
 
 	if(auto_close_timeout) {
 		SDL_Event event;
@@ -512,10 +510,6 @@ int window::show(const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
-			// process installed callback if valid, to allow e.g. network
-			// polling
-			events::pump();
-
 			if(!mouse_button_state_initialized) {
 				/*
 				 * The state must be initialize when showing the dialog.
@@ -536,7 +530,7 @@ int window::show(const unsigned auto_close_timeout)
 			}
 
 			// This will rate limit to vsync
-			events::raise_draw_event();
+			events::pump_and_draw();
 		}
 	}
 	catch(...)

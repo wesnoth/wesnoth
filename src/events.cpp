@@ -718,6 +718,11 @@ void pump()
 	}
 }
 
+void draw()
+{
+	draw_manager::sparkle();
+}
+
 void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
@@ -740,11 +745,6 @@ void raise_resize_event()
 	event.window.data2 = size.y;
 
 	raise_window_event(event);
-}
-
-void raise_draw_event()
-{
-	draw_manager::sparkle();
 }
 
 void raise_help_string_event(int mousex, int mousey)

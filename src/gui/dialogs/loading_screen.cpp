@@ -121,9 +121,7 @@ void loading_screen::progress(loading_stage stage)
 	if(singleton_ && stage != loading_stage::none) {
 		singleton_->current_stage_.store(stage, std::memory_order_release);
 		// Allow display to update, close events to be handled, etc.
-		// TODO: draw_manager - draws should probably go after pumping
-		events::raise_draw_event();
-		events::pump();
+		events::pump_and_draw();
 	}
 }
 
@@ -142,8 +140,7 @@ void loading_screen::spin()
 	// Restrict actual update rate.
 	int elapsed = SDL_GetTicks() - last_spin_;
 	if (elapsed > 10 || elapsed < 0) {
-		events::raise_draw_event();
-		events::pump();
+		events::pump_and_draw();
 		last_spin_ = SDL_GetTicks();
 	}
 }

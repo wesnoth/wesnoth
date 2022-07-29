@@ -142,11 +142,15 @@ struct event_context
 	~event_context();
 };
 
-//causes events to be dispatched to all handler objects.
+/** Process all events currently in the queue. */
 void pump();
 
-//look for resize events and update references to the screen area
-void peek_for_resize();
+/** Trigger a draw cycle. */
+void draw();
+
+/** pump() then immediately draw() */
+inline void pump_and_draw() { pump(); draw(); }
+// TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}
@@ -166,7 +170,6 @@ public:
 
 void raise_process_event();
 void raise_resize_event();
-void raise_draw_event();
 void raise_help_string_event(int mousex, int mousey);
 
 

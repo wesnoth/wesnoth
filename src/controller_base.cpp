@@ -391,7 +391,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	events::pump();
 	events::raise_process_event();
-	events::raise_draw_event();
+	events::draw();
 
 	// Update sound sources before scrolling
 	if(soundsource::manager* l = get_soundsource_man()) {

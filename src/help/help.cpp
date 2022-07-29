@@ -23,7 +23,7 @@
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "events.hpp"                   // for raise_draw_event, pump, etc
+#include "events.hpp"                   // for draw, pump, etc
 #include "font/constants.hpp"           // for relative_size
 #include "preferences/game.hpp"
 #include "game_config_manager.hpp"
@@ -243,7 +243,7 @@ void show_with_toplevel(const section &toplevel_sec,
 			hb.show_topic(default_show_topic);
 		}
 		hb.queue_redraw();
-		events::raise_draw_event();
+		events::draw();
 		CKey key;
 		for (;;) {
 			events::pump();
@@ -260,7 +260,7 @@ void show_with_toplevel(const section &toplevel_sec,
 				}
 			}
 			// This also rate limits to vsync
-			events::raise_draw_event();
+			events::draw();
 		}
 	}
 	catch (const parse_error& e) {
