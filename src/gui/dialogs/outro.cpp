@@ -95,12 +95,9 @@ void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
-
-	//connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
-	// TODO: draw_manager - modal_dialog should be a window, i'm not hacking any more of these
 }
 
-void outro::draw_callback()
+void outro::update()
 {
 	/* If we've faded fully in...
 	 *
@@ -117,7 +114,7 @@ void outro::draw_callback()
 		return;
 	}
 
-	canvas& window_canvas = get_window()->get_canvas(0);
+	canvas& window_canvas = window::get_canvas(0);
 
 	// If we've faded fully out...
 	if(!fading_in_ && fade_step_ < 0) {
@@ -125,7 +122,7 @@ void outro::draw_callback()
 
 		// ...and we've just showed the last text bit, close the window.
 		if(current_text_ == text_.end()) {
-			get_window()->close();
+			window::close();
 			return;
 		}
 
@@ -141,7 +138,7 @@ void outro::draw_callback()
 
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
 	window_canvas.update_size_variables();
-	get_window()->queue_redraw();
+	queue_redraw();
 
 	if(fading_in_) {
 		fade_step_++;
