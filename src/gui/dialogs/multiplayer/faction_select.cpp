@@ -41,7 +41,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(faction_select)
 
 faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& color, const int side)
-	: flg_manager_(flg_manager)
+	: modal_dialog(window_id())
+	, flg_manager_(flg_manager)
 	, tc_color_(color)
 	, side_(side)
 	, last_faction_(flg_manager.current_faction_index())

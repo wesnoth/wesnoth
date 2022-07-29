@@ -33,7 +33,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(outro)
 
 outro::outro(const game_classification& info)
-	: text_()
+	: modal_dialog(window_id())
+	, text_()
 	, current_text_()
 	, duration_(info.end_text_duration)
 	, fade_step_(0)

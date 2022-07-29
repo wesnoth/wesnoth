@@ -33,7 +33,9 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_login)
 
 mp_login::mp_login(const std::string& host, const std::string& label, const bool focus_password)
-	: host_(host), focus_password_(focus_password)
+	: modal_dialog(window_id())
+	, host_(host)
+	, focus_password_(focus_password)
 {
 	register_label("login_label", false, label);
 	username_ = register_text("user_name", true,
@@ -46,15 +48,15 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 		&preferences::set_remember_password);
 }
 
-void mp_login::load_password() const
+void mp_login::load_password()
 {
-	text_box& pwd = find_widget<text_box>(get_window(), "password", false);
+	text_box& pwd = find_widget<text_box>(this, "password", false);
 	pwd.set_value(preferences::password(host_, username_->get_widget_value()));
 }
 
-void mp_login::save_password() const
+void mp_login::save_password()
 {
-	password_box& pwd = find_widget<password_box>(get_window(), "password", false);
+	password_box& pwd = find_widget<password_box>(this, "password", false);
 	preferences::set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 

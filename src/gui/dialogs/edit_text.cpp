@@ -33,7 +33,8 @@ edit_text::edit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text,
 					   bool disallow_empty)
-	: disallow_empty_(disallow_empty)
+	: modal_dialog(window_id())
+	, disallow_empty_(disallow_empty)
 {
 	register_label("title", true, title, true);
 	register_label("label", true, label, true);

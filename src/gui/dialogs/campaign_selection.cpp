@@ -46,7 +46,7 @@ REGISTER_DIALOG(campaign_selection)
 
 void campaign_selection::campaign_selected()
 {
-	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
 	if(tree.empty()) {
 		return;
 	}
@@ -61,18 +61,18 @@ void campaign_selection::campaign_selected()
 			return;
 		}
 
-		multi_page& pages = find_widget<multi_page>(get_window(), "campaign_details", false);
+		multi_page& pages = find_widget<multi_page>(this, "campaign_details", false);
 		pages.select_page(choice);
 
 		engine_.set_current_level(choice);
 
-		styled_widget& background = find_widget<styled_widget>(get_window(), "campaign_background", false);
+		styled_widget& background = find_widget<styled_widget>(this, "campaign_background", false);
 		background.set_label(engine_.current_level().data()["background"].str());
 
 		// Rebuild difficulty menu
 		difficulties_.clear();
 
-		auto& diff_menu = find_widget<menu_button>(get_window(), "difficulty_menu", false);
+		auto& diff_menu = find_widget<menu_button>(this, "difficulty_menu", false);
 
 		const auto& diff_config = generate_difficulty_config(engine_.current_level().data());
 		diff_menu.set_active(diff_config.child_count("difficulty") > 1);
@@ -141,7 +141,7 @@ void campaign_selection::campaign_selected()
 
 void campaign_selection::difficulty_selected()
 {
-	const std::size_t selection = find_widget<menu_button>(get_window(), "difficulty_menu", false).get_value();
+	const std::size_t selection = find_widget<menu_button>(this, "difficulty_menu", false).get_value();
 	current_difficulty_ = difficulties_.at(std::min(difficulties_.size() - 1, selection));
 }
 
@@ -189,7 +189,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		break;
 	}
 
-	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
 
 	// Remember which campaign was selected...
 	std::string was_selected;
@@ -233,7 +233,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	}
 
 	if(!was_selected.empty() && exists_in_filtered_result) {
-		find_widget<tree_view_node>(get_window(), was_selected, false).select_node();
+		find_widget<tree_view_node>(this, was_selected, false).select_node();
 	} else {
 		campaign_selected();
 	}
@@ -263,9 +263,9 @@ void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 		force = true;
 
 		if(order == NAME) {
-			find_widget<toggle_button>(get_window(), "sort_time", false).set_value(0);
+			find_widget<toggle_button>(this, "sort_time", false).set_value(0);
 		} else if(order == DATE) {
-			find_widget<toggle_button>(get_window(), "sort_name", false).set_value(0);
+			find_widget<toggle_button>(this, "sort_name", false).set_value(0);
 		}
 
 		force = false;
@@ -368,7 +368,7 @@ void campaign_selection::pre_show(window& window)
 	//
 	// Set up Difficulty dropdown
 	//
-	menu_button& diff_menu = find_widget<menu_button>(get_window(), "difficulty_menu", false);
+	menu_button& diff_menu = find_widget<menu_button>(this, "difficulty_menu", false);
 
 	diff_menu.set_use_markup(true);
 	connect_signal_notify_modified(diff_menu, std::bind(&campaign_selection::difficulty_selected, this));
@@ -376,9 +376,9 @@ void campaign_selection::pre_show(window& window)
 	campaign_selected();
 }
 
-void campaign_selection::add_campaign_to_tree(const config& campaign) const
+void campaign_selection::add_campaign_to_tree(const config& campaign)
 {
-	tree_view& tree = find_widget<tree_view>(get_window(), "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
 	widget_data data;
 	widget_item item;
 
@@ -448,7 +448,7 @@ void campaign_selection::post_show(window& window)
 void campaign_selection::mod_toggled()
 {
 	boost::dynamic_bitset<> new_mod_states =
-		find_widget<multimenu_button>(get_window(), "mods_menu", false).get_toggle_states();
+		find_widget<multimenu_button>(this, "mods_menu", false).get_toggle_states();
 
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;

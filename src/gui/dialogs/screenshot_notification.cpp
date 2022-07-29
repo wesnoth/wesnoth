@@ -41,7 +41,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(screenshot_notification)
 
 screenshot_notification::screenshot_notification(const std::string& path, surface screenshot)
-	: path_(path)
+	: modal_dialog(window_id())
+	, path_(path)
 	, screenshots_dir_path_(filesystem::get_screenshot_dir())
 	, screenshot_(screenshot)
 {

@@ -42,7 +42,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(unit_recruit)
 
 unit_recruit::unit_recruit(std::map<const unit_type*, t_string>& recruit_map, team& team)
-	: recruit_list_()
+	: modal_dialog(window_id())
+	, recruit_list_()
 	, recruit_map_(recruit_map)
 	, team_(team)
 	, selected_index_(0)

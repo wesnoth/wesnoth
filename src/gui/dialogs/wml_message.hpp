@@ -45,11 +45,14 @@ private:
 class wml_message_base : public modal_dialog
 {
 public:
-	wml_message_base(const std::string& title,
-				  const std::string& message,
-				  const std::string& portrait,
-				  const bool mirror)
-		: title_(title)
+	wml_message_base(
+			const std::string& window_id,
+			const std::string& title,
+			const std::string& message,
+			const std::string& portrait,
+			const bool mirror)
+		: modal_dialog(window_id)
+		, title_(title)
 		, image_("")
 		, message_(message)
 		, portrait_(portrait)
@@ -137,7 +140,7 @@ public:
 					  const std::string& message,
 					  const std::string& portrait,
 					  const bool mirror)
-		: wml_message_base(title, message, portrait, mirror)
+		: wml_message_base(window_id(), title, message, portrait, mirror)
 	{
 	}
 
@@ -153,7 +156,7 @@ public:
 					   const std::string& message,
 					   const std::string& portrait,
 					   const bool mirror)
-		: wml_message_base(title, message, portrait, mirror)
+		: wml_message_base(window_id(), title, message, portrait, mirror)
 	{
 	}
 

@@ -54,7 +54,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(statistics_dialog)
 
 statistics_dialog::statistics_dialog(const team& current_team)
-	: current_team_(current_team)
+	: modal_dialog(window_id())
+	, current_team_(current_team)
 	, campaign_(statistics::calculate_stats(current_team.save_id_or_number()))
 	, scenarios_(statistics::level_stats(current_team.save_id_or_number()))
 	, selection_index_(scenarios_.size()) // The extra All Scenarios menu entry makes size() a valid initial index.

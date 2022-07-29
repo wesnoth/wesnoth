@@ -24,6 +24,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(addon_license_prompt)
 
 addon_license_prompt::addon_license_prompt(const std::string& license_terms)
+	: modal_dialog(window_id())
 {
 	register_label("terms", true, license_terms, true);
 }

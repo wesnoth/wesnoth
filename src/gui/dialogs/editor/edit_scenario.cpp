@@ -35,6 +35,7 @@ editor_edit_scenario::editor_edit_scenario(
 		int& experience_modifier,
 		bool& victory_when_enemies_defeated,
 		bool& random_start_time)
+	: modal_dialog(window_id())
 {
 	register_text("id", true, id, true);
 	register_text("name", true, name, false);

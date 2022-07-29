@@ -29,7 +29,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(addon_auth)
 
 addon_auth::addon_auth(config& cfg)
-	: cfg_(cfg)
+	: modal_dialog(window_id())
+	, cfg_(cfg)
 {
 	register_bool("remember_password", false,
 		&preferences::remember_password,

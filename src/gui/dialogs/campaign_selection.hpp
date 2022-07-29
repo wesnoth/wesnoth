@@ -57,7 +57,8 @@ public:
 	};
 
 	explicit campaign_selection(ng::create_engine& eng)
-		: engine_(eng)
+		: modal_dialog(window_id())
+		, engine_(eng)
 		, choice_(-1)
 		, rng_mode_(RNG_DEFAULT)
 		, mod_states_()
@@ -101,7 +102,7 @@ private:
 
 	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending);
 
-	void add_campaign_to_tree(const config& campaign) const;
+	void add_campaign_to_tree(const config& campaign);
 
 	void toggle_sorting_selection(CAMPAIGN_ORDER order);
 

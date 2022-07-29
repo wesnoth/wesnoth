@@ -31,7 +31,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(terrain_layers)
 
 terrain_layers::terrain_layers(display_t& disp, const map_location& loc)
-	: tile_(nullptr)
+	: modal_dialog(window_id())
+	, tile_(nullptr)
 	, tile_logs_()
 {
 	terrain_builder& builder = disp.get_builder();

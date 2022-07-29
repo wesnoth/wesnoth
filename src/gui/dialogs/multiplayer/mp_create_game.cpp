@@ -66,7 +66,8 @@ namespace prefs = preferences;
 REGISTER_DIALOG(mp_create_game)
 
 mp_create_game::mp_create_game(saved_game& state, bool local_mode)
-	: create_engine_(state)
+	: modal_dialog(window_id())
+	, create_engine_(state)
 	, config_engine_()
 	, options_manager_()
 	, selected_game_index_(-1)

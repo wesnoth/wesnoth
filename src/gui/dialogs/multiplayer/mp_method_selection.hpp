@@ -35,7 +35,8 @@ public:
 	/** Corresponds to each connection option. */
 	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
 
-	mp_method_selection() : user_name_(), choice_()
+	mp_method_selection()
+		: modal_dialog(window_id()) , user_name_(), choice_()
 	{
 	}
 

@@ -35,7 +35,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(synched_choice_wait)
 
 synched_choice_wait::synched_choice_wait(user_choice_manager& mgr)
-	: mgr_(mgr)
+	: modal_dialog(window_id())
+	, mgr_(mgr)
 	, message_()
 {
 	mgr_.changed_event_.attach_handler(this);

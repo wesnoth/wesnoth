@@ -36,7 +36,9 @@ transient_message::transient_message(const std::string& title,
 									   const std::string& message,
 									   const bool message_use_markup,
 									   const std::string& image)
-	: hide_title_(title.empty()), hide_image_(image.empty())
+	: modal_dialog(window_id())
+	, hide_title_(title.empty())
+	, hide_image_(image.empty())
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);

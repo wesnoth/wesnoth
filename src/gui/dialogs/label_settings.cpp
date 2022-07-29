@@ -38,7 +38,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(label_settings)
 
 label_settings::label_settings(display_context& dc)
-	: viewer_(dc)
+	: modal_dialog(window_id())
+	, viewer_(dc)
 {
 	const std::vector<std::string>& all_categories = display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer_.hidden_label_categories();

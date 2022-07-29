@@ -29,7 +29,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(folder_create)
 
 folder_create::folder_create(std::string& folder_name)
-	: bookmark_mode_(false)
+	: modal_dialog(window_id())
+	, bookmark_mode_(false)
 {
 	register_text("name", true, folder_name, true);
 }
