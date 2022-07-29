@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/debug_clock.hpp"
 
-#include "draw_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
@@ -35,57 +34,43 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(debug_clock)
 
-void debug_clock::pre_show(window& window)
+debug_clock::debug_clock()
+	: modeless_dialog(window_id())
+	, signal_()
+	, time_()
 {
 	hour_percentage_ = find_widget<progress_bar>(
-			&window, "hour_percentage", false, false);
+			this, "hour_percentage", false, false);
 	minute_percentage_ = find_widget<progress_bar>(
-			&window, "minute_percentage", false, false);
+			this, "minute_percentage", false, false);
 	second_percentage_ = find_widget<progress_bar>(
-			&window, "second_percentage", false, false);
+			this, "second_percentage", false, false);
 
-	hour_ = find_widget<integer_selector>(&window, "hour", false, false);
+	hour_ = find_widget<integer_selector>(this, "hour", false, false);
 	if(styled_widget *hour = dynamic_cast<styled_widget*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
 		hour->set_active(false);
 	}
-	minute_ = find_widget<integer_selector>(&window, "minute", false, false);
+	minute_ = find_widget<integer_selector>(this, "minute", false, false);
 	if(styled_widget *minute = dynamic_cast<styled_widget*>(minute_)) {
 		minute->set_active(false);
 	}
-	second_ = find_widget<integer_selector>(&window, "second", false, false);
+	second_ = find_widget<integer_selector>(this, "second", false, false);
 	if(styled_widget *second = dynamic_cast<styled_widget*>(second_)) {
 		second->set_active(false);
 	}
 
-	pane_ = find_widget<pane>(&window, "pane", false, false);
+	pane_ = find_widget<pane>(this, "pane", false, false);
 
-	clock_ = find_widget<styled_widget>(&window, "clock", false, false);
-
-	draw_manager::register_drawable(this);
+	clock_ = find_widget<styled_widget>(this, "clock", false, false);
 
 	time_.set_current_time();
 	update_time(true);
 }
 
-void debug_clock::post_show()
-{
-	draw_manager::deregister_drawable(this);
-}
-
-void debug_clock::layout()
+void debug_clock::update()
 {
 	update_time(false);
-}
-
-rect debug_clock::screen_location()
-{
-	return get_window()->get_rectangle();
-}
-
-bool debug_clock::expose(const rect& /*region*/)
-{
-	// Drawing is handled by the window that this should be, but is not.
-	return false;
+	window::update();
 }
 
 void debug_clock::update_time(const bool force)

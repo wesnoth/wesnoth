@@ -47,23 +47,10 @@ namespace dialogs
  * second            | integer_selector |no       |This shows the seconds since the beginning of the current minute. The control should have a minimum_value of 0 and a maximum_value of 59.
  * clock             | control          |no       |A control which will have set three variables in its canvas:<ul><li>hour - the same value as the hour integer_selector.</li><li>minute - the same value as the minute integer_selector.</li><li>second - the same value as the second integer_selector.</li></ul>The control can then show the time in its own preferred format(s).
  */
-class debug_clock : public modeless_dialog, public top_level_drawable
+class debug_clock : public modeless_dialog
 {
 public:
-	debug_clock()
-		: modeless_dialog()
-		, hour_percentage_(nullptr)
-		, minute_percentage_(nullptr)
-		, second_percentage_(nullptr)
-		, hour_(nullptr)
-		, minute_(nullptr)
-		, second_(nullptr)
-		, pane_(nullptr)
-		, clock_(nullptr)
-		, signal_()
-		, time_()
-	{
-	}
+	debug_clock();
 
 private:
 	/** Progress bar for displaying the hours as a percentage. */
@@ -139,11 +126,8 @@ private:
 	 */
 	time time_;
 
+	/** The type of window this is. */
 	virtual const std::string& window_id() const override;
-
-	virtual void pre_show(window& window) override;
-
-	virtual void post_show();
 
 	/**
 	 * The callback for the drawing routine.
@@ -156,11 +140,8 @@ private:
 	 */
 	void update_time(const bool force);
 
-	// TODO: draw_manager - modeless dialog should be a window, fix
 	/* top_level_drawable interface */
-	virtual void layout() override;
-	virtual bool expose(const rect& region) override;
-	virtual rect screen_location() override;
+	virtual void update() override;
 };
 
 } // namespace dialogs

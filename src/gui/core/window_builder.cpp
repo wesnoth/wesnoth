@@ -41,31 +41,7 @@ std::unique_ptr<window> build(const builder_window::window_resolution& definitio
 	// best size (if needed) after all widgets have been placed.
 	auto win = std::make_unique<window>(definition);
 	assert(win);
-
-	for(const auto& lg : definition.linked_groups) {
-		if(win->has_linked_size_group(lg.id)) {
-			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
-
-			FAIL(msg);
-		}
-
-		win->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-	}
-
-	win->set_click_dismiss(definition.click_dismiss);
-
-	const auto conf = win->cast_config_to<window_definition>();
-	assert(conf);
-
-	if(conf->grid) {
-		win->init_grid(*conf->grid);
-		win->finalize(*definition.grid);
-	} else {
-		win->init_grid(*definition.grid);
-	}
-
-	win->add_to_keyboard_chain(win.get());
-
+	win->finish_build(definition);
 	return win;
 }
 
