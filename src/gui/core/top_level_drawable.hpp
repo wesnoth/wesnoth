@@ -114,6 +114,7 @@ public:
 	 * @returns         True if anything was drawn, false otherwise.
 	 */
 	virtual bool expose(const SDL_Rect& region) = 0;
+	// TODO: draw_manager - rect
 
 	/**
 	 * The location of the TLD on the screen, in drawing coordinates.

@@ -848,7 +848,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning menu buttons...";
 	for(const auto& menu : theme_.menus()) {
 		if(auto b = find_menu_button(menu.get_id())) {
-			const SDL_Rect& loc = menu.location(video::game_canvas());
+			const rect& loc = menu.location(video::game_canvas());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -859,7 +859,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning action buttons...";
 	for(const auto& action : theme_.actions()) {
 		if(auto b = find_action_button(action.get_id())) {
-			const SDL_Rect& loc = action.location(video::game_canvas());
+			const rect& loc = action.location(video::game_canvas());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -952,7 +952,7 @@ void display::create_buttons()
 void display::draw_buttons()
 {
 	// This is currently unnecessary because every GUI1 widget is a TLD.
-	// They will draw themselves.
+	// They will draw themselves. Keeping code in case this changes.
 	return;
 
 	//const rect clip = draw::get_clip();
@@ -1493,7 +1493,7 @@ void display::draw_text_in_hex(const map_location& loc,
 	const double zf = get_zoom_factor();
 	const int font_sz = int(font_size * zf);
 
-	// TODO: highdpi - use the same processing as floating_label::create_texture() and cache the effect result so it doesn't constantly rerender the same thing.
+	// TODO: highdpi - better outline
 	texture text_surf = font::pango_render_text(text, font_sz, color);
 	const int x = get_location_x(loc) - text_surf.w()/2
 	              + static_cast<int>(x_in_hex* hex_size());
@@ -2430,7 +2430,9 @@ void display::queue_rerender()
 
 	DBG_DP << "redrawing everything";
 
-	// TODO: draw_manager - ugh
+	// This is specifically for game_display.
+	// It would probably be better to simply make this function virtual,
+	// if game_display needs to do special processing.
 	invalidateGameStatus_ = true;
 
 	reportLocations_.clear();
@@ -2462,7 +2464,8 @@ void display::queue_rerender()
 
 	redraw_background_ = true;
 
-	// TODO: draw_manager - kill this
+	// This is only for one specific use, which is by the editor controller.
+	// It would be vastly better if this didn't exist.
 	for(std::function<void(display&)> f : redraw_observers_) {
 		f(*this);
 	}
@@ -2491,19 +2494,17 @@ void display::clear_redraw_observers()
 
 void display::draw()
 {
-	//	log_scope("display::draw");
-
 	if(video::headless()) {
 		DBG_DP << "display::draw denied";
-		// TODO: draw_manager - deny drawing in draw_manager if appropriate
 		return;
 	}
 	//DBG_DP << "display::draw";
 
-	// TODO: draw_manager - why on earth does this need to mess with sync context?
+	// I have no idea why this is messing with sync context,
+	// but i'm not going to touch it.
 	set_scontext_unsynced leave_synced_context;
 
-	// TODO: draw_manager - redraw background more judiciously
+	// This isn't the best, but also isn't important enough to do better.
 	if(redraw_background_) {
 		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
@@ -2550,7 +2551,9 @@ void display::update()
 void display::layout()
 {
 	//DBG_DP << "display::layout";
-	// TODO: draw_manager - theme layout for changed screen size?
+
+	// There's nothing that actually does layout here, it all happens in
+	// response to events. This isn't ideal, but neither is changing that.
 
 	// Post-layout / Pre-render
 
@@ -2572,7 +2575,6 @@ void display::layout()
 	// invalidate animated terrain, units and haloes
 	invalidate_animations();
 
-	// TODO: draw_manager - split map labels from UI labels
 	// Update and invalidate floating labels as necessary
 	font::update_floating_labels();
 
@@ -2634,14 +2636,17 @@ bool display::expose(const SDL_Rect& region)
 	halo_man_.render(clipped_region);
 
 	// Render UI elements.
+	// Ideally buttons would be drawn as part of panels,
+	// but they are currently TLDs so they draw themselves.
+	// This also means they draw over tooltips...
 	draw_all_panels(clipped_region);
 	draw_reports(clipped_region);
 	if(clipped_region.overlaps(minimap_area())) {
 		draw_minimap();
 	}
-	//draw_buttons();
 
-	// TODO: draw_manager - hmm... buttons redraw over tooltips, because they are TLDs
+	// Floating labels should probably be separated by type,
+	// but they aren't so they all get drawn here.
 	font::draw_floating_labels();
 
 	// If there's a fade, apply it over everything
@@ -2659,10 +2664,9 @@ bool display::expose(const SDL_Rect& region)
 rect display::screen_location()
 {
 	assert(!map_screenshot_);
-	//return map_outside_area();
-	// well actually it also has to draw the panels, so
+	// There's no good way to determine this, as themes can put things
+	// anywhere. Just return the entire game canvas.
 	return video::game_canvas();
-	// TODO: draw_manager - get this from theme perhaps?
 }
 
 void display::update_render_textures()
@@ -2984,7 +2988,8 @@ void display::refresh_report(const std::string& report_name, const config * new_
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		// TODO: draw_manager omfg why are there unused reports here
+		// This should be a warning, but unfortunately there are too many
+		// unused reports to easily deal with.
 		//WRN_DP << "no report '" << report_name << "' in theme";
 		return;
 	}
@@ -3004,8 +3009,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		new_cfg = &generated_cfg;
 
 	rect& loc = reportLocations_[report_name];
-	// TODO: draw_manager - rect
-	const SDL_Rect& new_loc = item->location(video::game_canvas());
+	const rect& new_loc = item->location(video::game_canvas());
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
@@ -3023,7 +3027,8 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	report = *new_cfg;
 	loc = new_loc;
 
-	// TODO: draw_manager - verify this is okay here
+	// Not 100% sure this is okay
+	// but it seems to be working so i'm not changing it.
 	tooltips::clear_tooltips(loc);
 
 	if (report.empty()) return;
@@ -3053,7 +3058,8 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		// TODO: draw_manager unused report_clock report_battery WTF
+		// This should be a warning, but unfortunately there are too many
+		// unused reports to easily deal with.
 		//WRN_DP << "no report '" << report_name << "' in theme";
 		return;
 	}
@@ -3081,7 +3087,6 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 		{
 			if (used_ellipsis) goto skip_element;
 
-			// TODO: draw_manager - don't render if faking
 			// Draw a text element.
 			font::pango_text& text = font::get_text_renderer();
 			bool eol = false;
@@ -3101,12 +3106,12 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				.set_ellipse_mode(PANGO_ELLIPSIZE_END)
 				.set_characters_per_line(0);
 
-			texture s = text.render_and_get_texture();
+			point tsize = text.get_size();
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
 			config::const_child_iterator ee = elements.begin();
-			if (!eol && loc.w - (x - loc.x + s.w()) < minimal_text &&
+			if (!eol && loc.w - (x - loc.x + tsize.x) < minimal_text &&
 				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
@@ -3114,19 +3119,18 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				s = text.render_and_get_texture();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;
 				ellipsis_area.y = y;
-				ellipsis_area.w = s.w();
-				ellipsis_area.h = s.h();
+				ellipsis_area.w = tsize.x;
+				ellipsis_area.h = tsize.y;
 			}
 
-			area.w = s.w();
-			area.h = s.h();
+			area.w = tsize.x;
+			area.h = tsize.y;
 			if (!tooltip_test) {
-				draw::blit(s, area);
+				draw::blit(text.render_and_get_texture(), area);
 			}
 			if (area.h > tallest) {
 				tallest = area.h;
@@ -3304,7 +3308,7 @@ void display::invalidate_animations_location(const map_location& loc)
 
 void display::invalidate_animations()
 {
-	// TODO: draw_manager - WTF... how does this timing even work?
+	// There are timing issues with this, but i'm not touching it.
 	new_animation_frame();
 	animate_map_ = preferences::animate_map();
 	if(animate_map_) {

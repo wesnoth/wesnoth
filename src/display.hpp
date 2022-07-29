@@ -578,11 +578,11 @@ public:
 private:
 	color_t fade_color_ = {0,0,0,0};
 
+public:
 	/*-------------------------------------------------------*/
 	/* top_level_drawable interface (called by draw_manager) */
 	/*-------------------------------------------------------*/
 
-public:
 	/** Update animations and internal state */
 	virtual void update() override;
 
