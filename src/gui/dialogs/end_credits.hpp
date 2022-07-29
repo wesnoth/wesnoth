@@ -36,6 +36,9 @@ public:
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(end_credits)
 
+	/** TLD override to update animations, called once per frame */
+	virtual void update() override;
+
 private:
 	virtual const std::string& window_id() const override;
 
