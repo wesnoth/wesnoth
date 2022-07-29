@@ -85,9 +85,9 @@ public:
 	 *
 	 * TLDs must not perform any actual drawing during layout.
 	 *
-	 * Implementation of this interface is mandatory.
+	 * This interface is optional.
 	 */
-	virtual void layout() = 0;
+	virtual void layout() {};
 
 	/**
 	 * Perform any internal rendering necessary to prepare the drawable.
