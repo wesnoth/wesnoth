@@ -105,6 +105,13 @@ void invalidate_all();
  */
 void sparkle();
 
+/**
+ * Returns the length of one display frame, in milliseconds.
+ *
+ * This will usually be determined by the active monitor's refresh rate.
+ */
+int get_frame_length();
+
 /** Register a top-level drawable.
  *
  * Registered drawables will be drawn in the order of registration,

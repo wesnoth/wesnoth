@@ -18,6 +18,7 @@
 #include "exceptions.hpp"
 #include "log.hpp"
 #include "gui/core/top_level_drawable.hpp"
+#include "preferences/general.hpp"
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
@@ -161,7 +162,7 @@ void sparkle()
 	last_sparkle_ = SDL_GetTicks();
 }
 
-static void wait_for_vsync()
+int get_frame_length()
 {
 	int rr = video::current_refresh_rate();
 	if (rr <= 0) {
@@ -170,7 +171,13 @@ static void wait_for_vsync()
 	}
 	// allow 1ms for general processing
 	int vsync_delay = (1000 / rr) - 1;
-	int time_to_wait = last_sparkle_ + vsync_delay - SDL_GetTicks();
+	// if there's a preferred limit, limit to that
+	return std::clamp(vsync_delay, preferences::draw_delay(), 1000);
+}
+
+static void wait_for_vsync()
+{
+	int time_to_wait = last_sparkle_ + get_frame_length() - SDL_GetTicks();
 	if (time_to_wait > 0) {
 		// delay a maximum of 1 second in case something crazy happens
 		SDL_Delay(std::min(time_to_wait, 1000));

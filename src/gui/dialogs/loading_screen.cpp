@@ -139,9 +139,9 @@ void loading_screen::spin()
 
 	// Restrict actual update rate.
 	int elapsed = SDL_GetTicks() - last_spin_;
-	if (elapsed > 10 || elapsed < 0) {
-		events::pump_and_draw();
+	if (elapsed > draw_manager::get_frame_length() || elapsed < 0) {
 		last_spin_ = SDL_GetTicks();
+		events::pump_and_draw();
 	}
 }
 
