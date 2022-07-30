@@ -57,6 +57,7 @@
 #include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/file_progress.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
@@ -437,6 +438,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	//test<end_credits>();
 	test<faction_select>();
 	test<file_dialog>();
+	//test<file_progress>();
 	test<folder_create>();
 	test<formula_debugger>();
 	test<game_cache_options>();
@@ -541,6 +543,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"game_stats", // segfault with LTO
 		"gamestate_inspector", // segfault with LTO
 		"server_info",
+		"file_progress",
 	};
 
 	std::vector<std::string> missing;
