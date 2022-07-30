@@ -16,6 +16,8 @@
 
 #include "gui/dialogs/file_progress.hpp"
 
+#include "draw_manager.hpp"
+#include "events.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -23,6 +25,8 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include <chrono>
 
 namespace gui2::dialogs {
 
@@ -67,14 +71,19 @@ void file_progress::update_progress(unsigned value)
 	using namespace std::chrono_literals;
 
 	auto now = clock::now();
+	auto elapsed = duration_cast<milliseconds>(now - update_time_);
 
-	if(duration_cast<milliseconds>(now - update_time_) < 120ms) {
+	// Update at most once per vsync.
+	if(elapsed < milliseconds(draw_manager::get_frame_length())) {
 		return;
 	}
 
-	find_widget<progress_bar>(window, "progress", false).set_percentage(value);
-	force_redraw();
 	update_time_ = now;
+
+	find_widget<progress_bar>(window, "progress", false).set_percentage(value);
+
+	get_window()->queue_redraw();
+	events::draw();
 }
 
 }
